@@ -1,36 +1,38 @@
 import { gradientStopsFadeDark } from '@porsche-design-system/tokens';
 import { scssIdentifier } from '../deprecation';
-import type { DeprecatedScssMixin, ScssMeta } from '../types';
+import type { ScssCatalog } from '../types';
 
-/** Gradient theme variable, keyed by variant (e.g. `gradient.stopsFadeDark`). */
+const stopsFadeDark = {
+  name: '$gradient-stops-fade-dark',
+  value: gradientStopsFadeDark,
+  description: 'Holds color stops for a faded gradient, used as `background-image`.',
+};
+
+/** Gradient declarations, keyed by variant (e.g. `gradient.stopsFadeDark`). */
 export const gradient = {
-  stopsFadeDark: {
-    name: '$gradient-stops-fade-dark',
-    value: gradientStopsFadeDark,
-    description: 'Holds color stops for a faded gradient, used as `background-image`.',
-  },
-} satisfies ScssMeta['gradient'];
-
-/** The deprecated `pds-gradient-to-*` mixins, replaced by `linear-gradient()` with the documented color stops. */
-export const gradientDeprecations = {
+  stopsFadeDark,
   toBottom: {
     name: 'pds-gradient-to-bottom',
-    raw: `  background: linear-gradient(to bottom, ${gradient.stopsFadeDark.name});`,
-    deprecation: { replacement: scssIdentifier(gradient.stopsFadeDark) },
+    raw: `  background: linear-gradient(to bottom, ${stopsFadeDark.name});`,
+    description: 'Applies a faded gradient **to bottom** as `background`.',
+    deprecation: { replacement: scssIdentifier(stopsFadeDark) },
   },
   toLeft: {
     name: 'pds-gradient-to-left',
-    raw: `  background: linear-gradient(to left, ${gradient.stopsFadeDark.name});`,
-    deprecation: { replacement: scssIdentifier(gradient.stopsFadeDark) },
+    raw: `  background: linear-gradient(to left, ${stopsFadeDark.name});`,
+    description: 'Applies a faded gradient **to left** as `background`.',
+    deprecation: { replacement: scssIdentifier(stopsFadeDark) },
   },
   toRight: {
     name: 'pds-gradient-to-right',
-    raw: `  background: linear-gradient(to right, ${gradient.stopsFadeDark.name});`,
-    deprecation: { replacement: scssIdentifier(gradient.stopsFadeDark) },
+    raw: `  background: linear-gradient(to right, ${stopsFadeDark.name});`,
+    description: 'Applies a faded gradient **to right** as `background`.',
+    deprecation: { replacement: scssIdentifier(stopsFadeDark) },
   },
   toTop: {
     name: 'pds-gradient-to-top',
-    raw: `  background: linear-gradient(to top, ${gradient.stopsFadeDark.name});`,
-    deprecation: { replacement: scssIdentifier(gradient.stopsFadeDark) },
+    raw: `  background: linear-gradient(to top, ${stopsFadeDark.name});`,
+    description: 'Applies a faded gradient **to top** as `background`.',
+    deprecation: { replacement: scssIdentifier(stopsFadeDark) },
   },
-} satisfies Record<string, DeprecatedScssMixin>;
+} satisfies ScssCatalog;

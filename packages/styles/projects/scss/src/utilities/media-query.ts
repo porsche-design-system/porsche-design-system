@@ -1,8 +1,8 @@
 import { scssIdentifier } from '../deprecation';
-import type { DeprecatedScssMixin, ScssMixin, ScssRaw } from '../types';
+import type { ScssCatalog, ScssRaw } from '../types';
 
 /** The documented `media-query-*` mixins: look a breakpoint key up in `$pds-breakpoints`, guard with `@error` and wrap `@content`. */
-export const mediaQuery = [
+const mediaQueries = [
   {
     name: 'media-query-min',
     signature: '($min: null)',
@@ -39,7 +39,7 @@ export const mediaQuery = [
     @error "Passed #{$min} and/or #{$max} breakpoint is not available for used media-query-min-max() mixin.";
   }`,
   },
-] satisfies ScssMixin[];
+];
 
 // The `$pds-breakpoints` lookup map the mixins consult (plumbing). Emitted before them — Sass needs it first.
 // Its deprecated keys stay plumbing rather than catalog entries: they are map keys, not declarations.
@@ -64,30 +64,34 @@ export const breakpointsMap: ScssRaw = {
 );`,
 };
 
-/** The deprecated `pds-media-query-*` mixins, replaced by the documented `media-query-*` mixins. */
-export const mediaQueryDeprecations = {
-  min: {
+/** Media query declarations: the documented `media-query-*` mixins plus their deprecated `pds-media-query-*` aliases. */
+export const mediaQuery = [
+  ...mediaQueries,
+  {
     name: 'pds-media-query-min',
     signature: '($min: null)',
-    raw: `  @include ${mediaQuery[0].name}($min) {
+    description: 'Applies a **min** media query with the specified breakpoint.',
+    raw: `  @include ${mediaQueries[0].name}($min) {
     @content;
   }`,
-    deprecation: { replacement: scssIdentifier(mediaQuery[0]) },
+    deprecation: { replacement: scssIdentifier(mediaQueries[0]) },
   },
-  max: {
+  {
     name: 'pds-media-query-max',
     signature: '($max: null)',
-    raw: `  @include ${mediaQuery[1].name}($max) {
+    description: 'Applies a **max** media query with the specified breakpoint.',
+    raw: `  @include ${mediaQueries[1].name}($max) {
     @content;
   }`,
-    deprecation: { replacement: scssIdentifier(mediaQuery[1]) },
+    deprecation: { replacement: scssIdentifier(mediaQueries[1]) },
   },
-  minMax: {
+  {
     name: 'pds-media-query-min-max',
     signature: '($min: null, $max: null)',
-    raw: `  @include ${mediaQuery[2].name}($min, $max) {
+    description: 'Applies a **min-max** media query with the specified breakpoints.',
+    raw: `  @include ${mediaQueries[2].name}($min, $max) {
     @content;
   }`,
-    deprecation: { replacement: scssIdentifier(mediaQuery[2]) },
+    deprecation: { replacement: scssIdentifier(mediaQueries[2]) },
   },
-} satisfies Record<string, DeprecatedScssMixin>;
+] satisfies ScssCatalog;

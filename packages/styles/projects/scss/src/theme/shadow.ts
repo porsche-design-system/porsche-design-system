@@ -1,41 +1,32 @@
 import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
 import { scssIdentifier } from '../deprecation';
-import type { DeprecatedScssMixin, ScssMeta } from '../types';
+import type { ScssCatalog } from '../types';
 
-/** Shadow theme variables, keyed by size (e.g. `shadow.md`). */
+const sm = { name: '$shadow-sm', value: shadowSm, description: 'Holds a **small** `shadow`.' };
+const md = { name: '$shadow-md', value: shadowMd, description: 'Holds a **medium** `shadow`.' };
+const lg = { name: '$shadow-lg', value: shadowLg, description: 'Holds a **large** `shadow`.' };
+
+/** Shadow declarations, keyed by size (e.g. `shadow.md`). */
 export const shadow = {
-  sm: {
-    name: '$shadow-sm',
-    value: shadowSm,
-    description: 'Holds a **small** `shadow`.',
-  },
-  md: {
-    name: '$shadow-md',
-    value: shadowMd,
-    description: 'Holds a **medium** `shadow`.',
-  },
-  lg: {
-    name: '$shadow-lg',
-    value: shadowLg,
-    description: 'Holds a **large** `shadow`.',
-  },
-} satisfies ScssMeta['shadow'];
-
-/** The deprecated `pds-drop-shadow-*` mixins, replaced by the documented `$shadow-*` variables. */
-export const shadowDeprecations = {
-  high: {
-    name: 'pds-drop-shadow-high',
-    raw: `  box-shadow: ${shadowLg};`,
-    deprecation: { replacement: scssIdentifier(shadow.lg) },
-  },
-  low: {
+  sm,
+  md,
+  lg,
+  dropShadowLow: {
     name: 'pds-drop-shadow-low',
     raw: `  box-shadow: ${shadowSm};`,
-    deprecation: { replacement: scssIdentifier(shadow.sm) },
+    description: 'Applies a **small** `box-shadow`.',
+    deprecation: { replacement: scssIdentifier(sm) },
   },
-  medium: {
+  dropShadowMedium: {
     name: 'pds-drop-shadow-medium',
     raw: `  box-shadow: ${shadowMd};`,
-    deprecation: { replacement: scssIdentifier(shadow.md) },
+    description: 'Applies a **medium** `box-shadow`.',
+    deprecation: { replacement: scssIdentifier(md) },
   },
-} satisfies Record<string, DeprecatedScssMixin>;
+  dropShadowHigh: {
+    name: 'pds-drop-shadow-high',
+    raw: `  box-shadow: ${shadowLg};`,
+    description: 'Applies a **large** `box-shadow`.',
+    deprecation: { replacement: scssIdentifier(lg) },
+  },
+} satisfies ScssCatalog;

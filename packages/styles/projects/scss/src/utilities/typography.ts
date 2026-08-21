@@ -2,7 +2,7 @@ import { scssIdentifier } from '../deprecation';
 import { colorRef, fontRef, namespace } from '../namespaces';
 import { color } from '../theme/color';
 import { cjkFontFamily, font } from '../theme/font';
-import type { DeprecatedScssMixin, ScssMixin } from '../types';
+import type { ScssCatalog, ScssMixin } from '../types';
 
 // The documented `prose-heading-*` / `prose-text-*` mixins delegate to the private `-prose-*` helpers
 // and reference the `font` / `color` partials via `ref()`.
@@ -28,7 +28,7 @@ export const proseTextHelper: ScssMixin = {
 };
 
 /** The documented heading variants, applied primarily to heading tags (largest → smallest). */
-export const heading = [
+const proseHeadings = [
   {
     name: 'prose-heading-5xl',
     description:
@@ -92,7 +92,7 @@ export const heading = [
 ] satisfies ScssMixin[];
 
 /** The documented text variants, applied primarily to flow-content tags (largest → smallest). */
-export const text = [
+const proseTexts = [
   {
     name: 'prose-text-5xl',
     description:
@@ -155,104 +155,126 @@ export const text = [
   },
 ] satisfies ScssMixin[];
 
-/** No documented display mixins — the `pds-display-*` aliases are deprecated plumbing. */
-export const display = [] satisfies ScssMixin[];
-
-/** Typography mixins grouped like the storefront API tables and the tailwind taxonomy. */
-export const typography = { heading, text, display };
-
-/** The documented mixins keyed by name, so a deprecated alias references the node instead of retyping its name. */
-const proseHeading = Object.fromEntries(heading.map((mixin) => [mixin.name, mixin])) as Record<string, ScssMixin>;
-const proseText = Object.fromEntries(text.map((mixin) => [mixin.name, mixin])) as Record<string, ScssMixin>;
+/** The documented mixins keyed by name, so a deprecated alias references the declaration instead of retyping its name. */
+const proseHeading = Object.fromEntries(proseHeadings.map((mixin) => [mixin.name, mixin])) as Record<string, ScssMixin>;
+const proseText = Object.fromEntries(proseTexts.map((mixin) => [mixin.name, mixin])) as Record<string, ScssMixin>;
 
 /** The deprecated `pds-heading-*` mixins, replaced by the documented `prose-heading-*` mixins. */
-export const headingDeprecations = [
+const headingDeprecations = [
   {
     name: 'pds-heading-xx-large',
+    description:
+      'Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
     raw: `  @include ${scssIdentifier(proseHeading['prose-heading-2xl'])};`,
     deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-2xl']) },
   },
   {
     name: 'pds-heading-x-large',
+    description:
+      'Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
     raw: `  @include ${scssIdentifier(proseHeading['prose-heading-xl'])};`,
     deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-xl']) },
   },
   {
     name: 'pds-heading-large',
+    description:
+      'Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
     raw: `  @include ${scssIdentifier(proseHeading['prose-heading-lg'])};`,
     deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-lg']) },
   },
   {
     name: 'pds-heading-medium',
+    description:
+      'Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
     raw: `  @include ${scssIdentifier(proseHeading['prose-heading-md'])};`,
     deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-md']) },
   },
   {
     name: 'pds-heading-small',
+    description:
+      'Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
     raw: `  @include ${scssIdentifier(proseHeading['prose-heading-sm'])};`,
     deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-sm']) },
   },
-] satisfies DeprecatedScssMixin[];
+];
 
 /** The deprecated `pds-text-*` mixins, replaced by the documented `prose-text-*` mixins. */
-export const textDeprecations = [
+const textDeprecations = [
   {
     name: 'pds-text-x-large',
+    description:
+      'Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${scssIdentifier(proseText['prose-text-xl'])};`,
     deprecation: { replacement: scssIdentifier(proseText['prose-text-xl']) },
   },
   {
     name: 'pds-text-large',
+    description:
+      'Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${scssIdentifier(proseText['prose-text-lg'])};`,
     deprecation: { replacement: scssIdentifier(proseText['prose-text-lg']) },
   },
   {
     name: 'pds-text-medium',
+    description:
+      'Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${scssIdentifier(proseText['prose-text-md'])};`,
     deprecation: { replacement: scssIdentifier(proseText['prose-text-md']) },
   },
   {
     name: 'pds-text-small',
+    description:
+      'Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${scssIdentifier(proseText['prose-text-sm'])};`,
     deprecation: { replacement: scssIdentifier(proseText['prose-text-sm']) },
   },
   {
     name: 'pds-text-x-small',
+    description:
+      'Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${scssIdentifier(proseText['prose-text-xs'])};`,
     deprecation: { replacement: scssIdentifier(proseText['prose-text-xs']) },
   },
   {
     name: 'pds-text-xx-small',
+    description:
+      'Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${scssIdentifier(proseText['prose-text-2xs'])};`,
     deprecation: { replacement: scssIdentifier(proseText['prose-text-2xs']) },
   },
-] satisfies DeprecatedScssMixin[];
+];
 
 /**
  * The deprecated `pds-display-*` mixins, routed through the `prose-heading-*` mixins of the separately
  * `@use`d `heading` partial — hence the namespaced `@include`.
  */
-export const displayDeprecations = [
+const displayDeprecations = [
   {
     name: 'pds-display-large',
+    description:
+      'Applies the **large** display typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
     raw: `  @include ${namespace.heading}.${proseHeading['prose-heading-5xl'].name};`,
     deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-5xl']) },
   },
   {
     name: 'pds-display-medium',
+    description:
+      'Applies the **medium** display typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
     raw: `  @include ${namespace.heading}.${proseHeading['prose-heading-4xl'].name};`,
     deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-4xl']) },
   },
   {
     name: 'pds-display-small',
+    description:
+      'Applies the **small** display typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
     raw: `  @include ${namespace.heading}.${proseHeading['prose-heading-3xl'].name};`,
     deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-3xl']) },
   },
-] satisfies DeprecatedScssMixin[];
+];
 
-/** Deprecated typography mixins, grouped like the documented `typography` catalog. */
-export const typographyDeprecations = {
-  heading: headingDeprecations,
-  text: textDeprecations,
+/** Typography declarations, grouped like the storefront API tables. `display` holds only the deprecated `pds-display-*` aliases. */
+export const typography = {
+  heading: [...proseHeadings, ...headingDeprecations],
+  text: [...proseTexts, ...textDeprecations],
   display: displayDeprecations,
-};
+} satisfies ScssCatalog;

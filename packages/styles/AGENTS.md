@@ -49,22 +49,20 @@ npm run test:vrt:styles
 - When possible, make changes in the relevant style target package rather than patching the demo only.
 - Keep naming and token usage aligned across style targets unless a package intentionally exposes a target-specific API.
 - Deprecation metadata uses one contract, from `@porsche-design-system/shared/deprecation`: the `Deprecation` marker,
-  the `Deprecated<T>` wrapper, the lifecycle wording and the `deprecationMessage` / `deprecationText` / `isDeprecated`
-  helpers. Do not add a package-local marker type, default sentence or message helper — intersect or import the shared
-  one. Only the canonical identity helper (`scssIdentifier`, `tailwindIdentifier`) is package-owned. Import the deep
-  path, never the package barrel, which is 53 modules against the contract's one.
-- Deprecated nodes carry **no** `description` — `Deprecated<T>` strips it; extra guidance goes in `deprecation.message`.
-- Keep the deprecation types in one block at the **end** of each package's types file, in the same order everywhere:
-  leaf aliases (where the package has leaf kinds), their union, then
-  `DeprecationsMeta<PackageMeta, DeprecatedPackageNode>`. Four types at most, two for the annotation-first packages.
-- Each package keeps a domain-keyed deprecations catalog beside its meta (`scssDeprecationsMeta`,
-  `tailwindDeprecationsMeta`, `emotionDeprecationsMeta`, `vanillaExtractDeprecationsMeta`) but **publishes only the flat
-  `<pkg>Deprecations`** built from it with the shared `publishDeprecations(catalog, identifierOf)`, which the knowledge
-  skill's deprecation index is built from. The grouping is authoring and composition routing, and the identity helper is
-  internal; do not export either. In `scss` and `tailwindcss` the catalog is authored and the shipped artifact's
-  deprecation markers are generated from it; in `emotion` and `vanilla-extract` the `@deprecated` annotation on the
-  declaration is the source and the catalog is generated from it (`scripts/deprecations.ts`). See
+  the lifecycle wording and the `deprecationMessage` / `deprecationText` / `isDeprecated` helpers. Do not add a
+  package-local marker type, default sentence or message helper. Only the canonical identity helper (`scssIdentifier`,
+  `tailwindIdentifier`) is package-owned. Import the deep path, never the package barrel, which is 53 modules against
+  the contract's one.
+- `scss` authors **one catalog** per domain holding every public declaration, deprecated ones marked by an optional
+  `deprecation` field, and derives both public exports from it: `scssMeta` (the catalog minus its deprecated
+  declarations, checked against the hand-authored `StylesMeta` contract) and the flat `scssDeprecations`. Deprecating is
+  adding one field — never moving a declaration. See
   [`docs/scss-deprecation-metadata-design.md`](../../docs/scss-deprecation-metadata-design.md).
+- `tailwindcss`, `emotion` and `vanilla-extract` still use the two-catalog model: a domain-keyed `<pkg>DeprecationsMeta`
+  beside the meta, with `Deprecated<T>`-wrapped nodes that carry **no** `description`, publishing only the flat
+  `<pkg>Deprecations` built with the shared `publishDeprecations(catalog, identifierOf)`. In `tailwindcss` the catalog
+  is authored; in `emotion` and `vanilla-extract` the `@deprecated` annotation is the source and the catalog is
+  generated (`scripts/deprecations.ts`). They adopt the scss catalog model when the four solutions are aligned.
 - The global styles (single source of truth for `variables.css`, `color-scheme.css`, `normalize.css` and
   `font-face.css`) now live in
   [`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). Add or change CSS

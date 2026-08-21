@@ -1,20 +1,17 @@
 import { scssIdentifier } from '../deprecation';
 import { colorRef } from '../namespaces';
 import { color } from '../theme/color';
-import type { DeprecatedScssMixin, ScssMixin, ScssRaw } from '../types';
+import type { ScssCatalog, ScssRaw } from '../types';
 
-/** The documented `focus-visible()` mixin. The `raw` body references `color` via `ref()` (`@use` declared in the descriptor). */
-export const focus = [
-  {
-    name: 'focus-visible',
-    signature: '($offset: 2px)',
-    description: 'Applies a **focus-visible** style.',
-    raw: `  &:focus-visible {
+const focusVisible = {
+  name: 'focus-visible',
+  signature: '($offset: 2px)',
+  description: 'Applies a **focus-visible** style.',
+  raw: `  &:focus-visible {
     outline: 2px solid ${colorRef(color.a11y.focus)};
     outline-offset: $offset;
   }`,
-  },
-] satisfies ScssMixin[];
+};
 
 /** The lookup maps `pds-focus()` consults — non-public plumbing, emitted before the mixin. */
 export const focusMaps: ScssRaw = {
@@ -29,10 +26,12 @@ $pds-focus-border-radius-map: (
 );`,
 };
 
-/** The deprecated `pds-focus` mixin, replaced by the documented `focus-visible()` mixin. */
-export const focusDeprecations = {
-  focus: {
+/** Focus declarations: the documented `focus-visible()` mixin plus the deprecated `pds-focus` variant. */
+export const focus = [
+  focusVisible,
+  {
     name: 'pds-focus',
+    description: 'Applies a **focus** style.',
     signature: "($offset: 'small', $border-radius: 'small')",
     raw: `  // it can easily be overwritten on purpose (when placed here) and visually reflected
   @if map.has-key($pds-focus-border-radius-map, $border-radius) {
@@ -60,6 +59,6 @@ export const focusDeprecations = {
   &:focus:not(:focus-visible) {
     outline-color: transparent;
   }`,
-    deprecation: { replacement: scssIdentifier(focus[0]) },
+    deprecation: { replacement: scssIdentifier(focusVisible) },
   },
-} satisfies Record<string, DeprecatedScssMixin>;
+] satisfies ScssCatalog;

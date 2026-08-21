@@ -100,7 +100,7 @@ import {
   colorWarningMediumLight,
 } from '@porsche-design-system/tokens';
 import { scssIdentifier } from '../deprecation';
-import type { DeprecatedScssVariable, ScssMeta, ScssRaw } from '../types';
+import type { ScssCatalog, ScssRaw } from '../types';
 
 /** The `light-dark()` MDN link prefixing every color description. */
 const ld =
@@ -110,7 +110,8 @@ const ld =
 const cssVar = (name: string, token: string): string => `var(--_${name}, ${token})`;
 
 /** Color theme variables (`background` / `foreground` / `semantic` / `a11y`), each a `var(--_color-*, token)` resolved by `color-scheme()`. */
-export const color = {
+/** The documented `light-dark()` aware color scale. */
+const colors = {
   background: {
     canvas: {
       name: '$color-canvas',
@@ -284,7 +285,7 @@ export const color = {
       description: `${ld} **focus** color, typically used as the outline for \`:focus-visible\` states.`,
     },
   },
-} satisfies ScssMeta['color'];
+};
 
 // The light-mode custom-property assignments shared by the `@supports` fallback's light selectors.
 const lightCustomProps = `--_color-focus: ${colorFocusLight};
@@ -397,212 +398,250 @@ ${darkCustomProps}
 };
 
 /**
- * Deprecated `$pds-theme-*` aliases. Each maps to the `light-dark()` aware `$color-*` variable that
- * replaces both its light and dark spelling; the state colors have no modern equivalent.
+ * Color declarations. Deprecated `$pds-theme-*` aliases each map to the `light-dark()` aware
+ * `$color-*` variable replacing both their light and dark spelling; the state colors have no
+ * modern equivalent.
  */
-export const colorDeprecations = {
-  light: {
-    primary: {
-      name: '$pds-theme-light-primary',
-      value: colorPrimaryLight,
-      deprecation: { replacement: scssIdentifier(color.foreground.primary) },
-    },
-    backgroundBase: {
-      name: '$pds-theme-light-background-base',
-      value: colorCanvasLight,
-      deprecation: { replacement: scssIdentifier(color.background.canvas) },
-    },
-    backgroundSurface: {
-      name: '$pds-theme-light-background-surface',
-      value: colorSurfaceLight,
-      deprecation: { replacement: scssIdentifier(color.background.surface) },
-    },
-    backgroundShading: {
-      name: '$pds-theme-light-background-shading',
-      value: colorBackdropLight,
-      deprecation: { replacement: scssIdentifier(color.background.backdrop) },
-    },
-    backgroundFrosted: {
-      name: '$pds-theme-light-background-frosted',
-      value: colorFrostedLight,
-      deprecation: { replacement: scssIdentifier(color.background.frosted) },
-    },
-    contrastLow: {
-      name: '$pds-theme-light-contrast-low',
-      value: colorContrastLowLight,
-      deprecation: { replacement: scssIdentifier(color.foreground.contrastLow) },
-    },
-    contrastMedium: {
-      name: '$pds-theme-light-contrast-medium',
-      value: colorContrastMediumLight,
-      deprecation: { replacement: scssIdentifier(color.foreground.contrastMedium) },
-    },
-    contrastHigh: {
-      name: '$pds-theme-light-contrast-high',
-      value: colorContrastHighLight,
-      deprecation: { replacement: scssIdentifier(color.foreground.contrastHigh) },
-    },
-    notificationSuccess: {
-      name: '$pds-theme-light-notification-success',
-      value: colorSuccessLight,
-      deprecation: { replacement: scssIdentifier(color.semantic.success) },
-    },
-    notificationSuccessSoft: {
-      name: '$pds-theme-light-notification-success-soft',
-      value: colorSuccessFrostedLight,
-      deprecation: { replacement: scssIdentifier(color.semantic.successFrosted) },
-    },
-    notificationWarning: {
-      name: '$pds-theme-light-notification-warning',
-      value: colorWarningLight,
-      deprecation: { replacement: scssIdentifier(color.semantic.warning) },
-    },
-    notificationWarningSoft: {
-      name: '$pds-theme-light-notification-warning-soft',
-      value: colorWarningFrostedLight,
-      deprecation: { replacement: scssIdentifier(color.semantic.warningFrosted) },
-    },
-    notificationError: {
-      name: '$pds-theme-light-notification-error',
-      value: colorErrorLight,
-      deprecation: { replacement: scssIdentifier(color.semantic.error) },
-    },
-    notificationErrorSoft: {
-      name: '$pds-theme-light-notification-error-soft',
-      value: colorErrorFrostedLight,
-      deprecation: { replacement: scssIdentifier(color.semantic.errorFrosted) },
-    },
-    notificationInfo: {
-      name: '$pds-theme-light-notification-info',
-      value: colorInfoLight,
-      deprecation: { replacement: scssIdentifier(color.semantic.info) },
-    },
-    notificationInfoSoft: {
-      name: '$pds-theme-light-notification-info-soft',
-      value: colorInfoFrostedLight,
-      deprecation: { replacement: scssIdentifier(color.semantic.infoFrosted) },
-    },
-    stateHover: {
-      name: '$pds-theme-light-state-hover',
-      value: 'hsla(236, 6.4%, 51%, 0.148)',
-      deprecation: {},
-    },
-    stateActive: {
-      name: '$pds-theme-light-state-active',
-      value: 'hsla(236, 6.4%, 51%, 0.148)',
-      deprecation: {},
-    },
-    stateFocus: {
-      name: '$pds-theme-light-state-focus',
-      value: '#1a44ea',
-      deprecation: { replacement: scssIdentifier(color.a11y.focus) },
-    },
-    stateDisabled: {
-      name: '$pds-theme-light-state-disabled',
-      value: 'hsla(233,6.6%,23.9%,0.412)',
-      deprecation: {},
-    },
+export const color = {
+  ...colors,
+  lightPrimary: {
+    name: '$pds-theme-light-primary',
+    value: colorPrimaryLight,
+    description: 'Holds the **primary** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.foreground.primary) },
   },
-  dark: {
-    primary: {
-      name: '$pds-theme-dark-primary',
-      value: colorPrimaryDark,
-      deprecation: { replacement: scssIdentifier(color.foreground.primary) },
-    },
-    backgroundBase: {
-      name: '$pds-theme-dark-background-base',
-      value: colorCanvasDark,
-      deprecation: { replacement: scssIdentifier(color.background.canvas) },
-    },
-    backgroundSurface: {
-      name: '$pds-theme-dark-background-surface',
-      value: colorSurfaceDark,
-      deprecation: { replacement: scssIdentifier(color.background.surface) },
-    },
-    backgroundShading: {
-      name: '$pds-theme-dark-background-shading',
-      value: colorBackdropDark,
-      deprecation: { replacement: scssIdentifier(color.background.backdrop) },
-    },
-    backgroundFrosted: {
-      name: '$pds-theme-dark-background-frosted',
-      value: colorFrostedDark,
-      deprecation: { replacement: scssIdentifier(color.background.frosted) },
-    },
-    contrastLow: {
-      name: '$pds-theme-dark-contrast-low',
-      value: colorContrastLowDark,
-      deprecation: { replacement: scssIdentifier(color.foreground.contrastLow) },
-    },
-    contrastMedium: {
-      name: '$pds-theme-dark-contrast-medium',
-      value: colorContrastMediumDark,
-      deprecation: { replacement: scssIdentifier(color.foreground.contrastMedium) },
-    },
-    contrastHigh: {
-      name: '$pds-theme-dark-contrast-high',
-      value: colorContrastHighDark,
-      deprecation: { replacement: scssIdentifier(color.foreground.contrastHigh) },
-    },
-    notificationSuccess: {
-      name: '$pds-theme-dark-notification-success',
-      value: colorSuccessDark,
-      deprecation: { replacement: scssIdentifier(color.semantic.success) },
-    },
-    notificationSuccessSoft: {
-      name: '$pds-theme-dark-notification-success-soft',
-      value: colorSuccessFrostedDark,
-      deprecation: { replacement: scssIdentifier(color.semantic.successFrosted) },
-    },
-    notificationWarning: {
-      name: '$pds-theme-dark-notification-warning',
-      value: colorWarningDark,
-      deprecation: { replacement: scssIdentifier(color.semantic.warning) },
-    },
-    notificationWarningSoft: {
-      name: '$pds-theme-dark-notification-warning-soft',
-      value: colorWarningFrostedDark,
-      deprecation: { replacement: scssIdentifier(color.semantic.warningFrosted) },
-    },
-    notificationError: {
-      name: '$pds-theme-dark-notification-error',
-      value: colorErrorDark,
-      deprecation: { replacement: scssIdentifier(color.semantic.error) },
-    },
-    notificationErrorSoft: {
-      name: '$pds-theme-dark-notification-error-soft',
-      value: colorErrorFrostedDark,
-      deprecation: { replacement: scssIdentifier(color.semantic.errorFrosted) },
-    },
-    notificationInfo: {
-      name: '$pds-theme-dark-notification-info',
-      value: colorInfoDark,
-      deprecation: { replacement: scssIdentifier(color.semantic.info) },
-    },
-    notificationInfoSoft: {
-      name: '$pds-theme-dark-notification-info-soft',
-      value: colorInfoFrostedDark,
-      deprecation: { replacement: scssIdentifier(color.semantic.infoFrosted) },
-    },
-    stateHover: {
-      name: '$pds-theme-dark-state-hover',
-      value: 'hsla(240, 2.2%, 44.1%, 0.228)',
-      deprecation: {},
-    },
-    stateActive: {
-      name: '$pds-theme-dark-state-active',
-      value: 'hsla(240, 2.2%, 44.1%, 0.228)',
-      deprecation: {},
-    },
-    stateFocus: {
-      name: '$pds-theme-dark-state-focus',
-      value: '#1a44ea',
-      deprecation: { replacement: scssIdentifier(color.a11y.focus) },
-    },
-    stateDisabled: {
-      name: '$pds-theme-dark-state-disabled',
-      value: 'hsla(240,1.5%,61.8%,0.302)',
-      deprecation: {},
-    },
+  lightBackgroundBase: {
+    name: '$pds-theme-light-background-base',
+    value: colorCanvasLight,
+    description: 'Holds the **base background** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.background.canvas) },
   },
-} satisfies Record<string, Record<string, DeprecatedScssVariable>>;
+  lightBackgroundSurface: {
+    name: '$pds-theme-light-background-surface',
+    value: colorSurfaceLight,
+    description: 'Holds the **surface background** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.background.surface) },
+  },
+  lightBackgroundShading: {
+    name: '$pds-theme-light-background-shading',
+    value: colorBackdropLight,
+    description: 'Holds the **shading background** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.background.backdrop) },
+  },
+  lightBackgroundFrosted: {
+    name: '$pds-theme-light-background-frosted',
+    value: colorFrostedLight,
+    description: 'Holds the **frosted background** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.background.frosted) },
+  },
+  lightContrastLow: {
+    name: '$pds-theme-light-contrast-low',
+    value: colorContrastLowLight,
+    description: 'Holds the **low contrast** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.foreground.contrastLow) },
+  },
+  lightContrastMedium: {
+    name: '$pds-theme-light-contrast-medium',
+    value: colorContrastMediumLight,
+    description: 'Holds the **medium contrast** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.foreground.contrastMedium) },
+  },
+  lightContrastHigh: {
+    name: '$pds-theme-light-contrast-high',
+    value: colorContrastHighLight,
+    description: 'Holds the **high contrast** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.foreground.contrastHigh) },
+  },
+  lightNotificationSuccess: {
+    name: '$pds-theme-light-notification-success',
+    value: colorSuccessLight,
+    description: 'Holds the **success notification** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.success) },
+  },
+  lightNotificationSuccessSoft: {
+    name: '$pds-theme-light-notification-success-soft',
+    value: colorSuccessFrostedLight,
+    description: 'Holds the **soft success notification** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.successFrosted) },
+  },
+  lightNotificationWarning: {
+    name: '$pds-theme-light-notification-warning',
+    value: colorWarningLight,
+    description: 'Holds the **warning notification** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.warning) },
+  },
+  lightNotificationWarningSoft: {
+    name: '$pds-theme-light-notification-warning-soft',
+    value: colorWarningFrostedLight,
+    description: 'Holds the **soft warning notification** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.warningFrosted) },
+  },
+  lightNotificationError: {
+    name: '$pds-theme-light-notification-error',
+    value: colorErrorLight,
+    description: 'Holds the **error notification** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.error) },
+  },
+  lightNotificationErrorSoft: {
+    name: '$pds-theme-light-notification-error-soft',
+    value: colorErrorFrostedLight,
+    description: 'Holds the **soft error notification** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.errorFrosted) },
+  },
+  lightNotificationInfo: {
+    name: '$pds-theme-light-notification-info',
+    value: colorInfoLight,
+    description: 'Holds the **info notification** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.info) },
+  },
+  lightNotificationInfoSoft: {
+    name: '$pds-theme-light-notification-info-soft',
+    value: colorInfoFrostedLight,
+    description: 'Holds the **soft info notification** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.infoFrosted) },
+  },
+  lightStateHover: {
+    name: '$pds-theme-light-state-hover',
+    value: 'hsla(236, 6.4%, 51%, 0.148)',
+    description: 'Holds the **hover state** color of the **light** theme. The current scale has no equivalent.',
+    deprecation: {},
+  },
+  lightStateActive: {
+    name: '$pds-theme-light-state-active',
+    value: 'hsla(236, 6.4%, 51%, 0.148)',
+    description: 'Holds the **active state** color of the **light** theme. The current scale has no equivalent.',
+    deprecation: {},
+  },
+  lightStateFocus: {
+    name: '$pds-theme-light-state-focus',
+    value: '#1a44ea',
+    description: 'Holds the **focus state** color of the **light** theme.',
+    deprecation: { replacement: scssIdentifier(colors.a11y.focus) },
+  },
+  lightStateDisabled: {
+    name: '$pds-theme-light-state-disabled',
+    value: 'hsla(233,6.6%,23.9%,0.412)',
+    description: 'Holds the **disabled state** color of the **light** theme. The current scale has no equivalent.',
+    deprecation: {},
+  },
+  darkPrimary: {
+    name: '$pds-theme-dark-primary',
+    value: colorPrimaryDark,
+    description: 'Holds the **primary** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.foreground.primary) },
+  },
+  darkBackgroundBase: {
+    name: '$pds-theme-dark-background-base',
+    value: colorCanvasDark,
+    description: 'Holds the **base background** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.background.canvas) },
+  },
+  darkBackgroundSurface: {
+    name: '$pds-theme-dark-background-surface',
+    value: colorSurfaceDark,
+    description: 'Holds the **surface background** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.background.surface) },
+  },
+  darkBackgroundShading: {
+    name: '$pds-theme-dark-background-shading',
+    value: colorBackdropDark,
+    description: 'Holds the **shading background** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.background.backdrop) },
+  },
+  darkBackgroundFrosted: {
+    name: '$pds-theme-dark-background-frosted',
+    value: colorFrostedDark,
+    description: 'Holds the **frosted background** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.background.frosted) },
+  },
+  darkContrastLow: {
+    name: '$pds-theme-dark-contrast-low',
+    value: colorContrastLowDark,
+    description: 'Holds the **low contrast** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.foreground.contrastLow) },
+  },
+  darkContrastMedium: {
+    name: '$pds-theme-dark-contrast-medium',
+    value: colorContrastMediumDark,
+    description: 'Holds the **medium contrast** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.foreground.contrastMedium) },
+  },
+  darkContrastHigh: {
+    name: '$pds-theme-dark-contrast-high',
+    value: colorContrastHighDark,
+    description: 'Holds the **high contrast** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.foreground.contrastHigh) },
+  },
+  darkNotificationSuccess: {
+    name: '$pds-theme-dark-notification-success',
+    value: colorSuccessDark,
+    description: 'Holds the **success notification** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.success) },
+  },
+  darkNotificationSuccessSoft: {
+    name: '$pds-theme-dark-notification-success-soft',
+    value: colorSuccessFrostedDark,
+    description: 'Holds the **soft success notification** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.successFrosted) },
+  },
+  darkNotificationWarning: {
+    name: '$pds-theme-dark-notification-warning',
+    value: colorWarningDark,
+    description: 'Holds the **warning notification** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.warning) },
+  },
+  darkNotificationWarningSoft: {
+    name: '$pds-theme-dark-notification-warning-soft',
+    value: colorWarningFrostedDark,
+    description: 'Holds the **soft warning notification** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.warningFrosted) },
+  },
+  darkNotificationError: {
+    name: '$pds-theme-dark-notification-error',
+    value: colorErrorDark,
+    description: 'Holds the **error notification** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.error) },
+  },
+  darkNotificationErrorSoft: {
+    name: '$pds-theme-dark-notification-error-soft',
+    value: colorErrorFrostedDark,
+    description: 'Holds the **soft error notification** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.errorFrosted) },
+  },
+  darkNotificationInfo: {
+    name: '$pds-theme-dark-notification-info',
+    value: colorInfoDark,
+    description: 'Holds the **info notification** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.info) },
+  },
+  darkNotificationInfoSoft: {
+    name: '$pds-theme-dark-notification-info-soft',
+    value: colorInfoFrostedDark,
+    description: 'Holds the **soft info notification** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.semantic.infoFrosted) },
+  },
+  darkStateHover: {
+    name: '$pds-theme-dark-state-hover',
+    value: 'hsla(240, 2.2%, 44.1%, 0.228)',
+    description: 'Holds the **hover state** color of the **dark** theme. The current scale has no equivalent.',
+    deprecation: {},
+  },
+  darkStateActive: {
+    name: '$pds-theme-dark-state-active',
+    value: 'hsla(240, 2.2%, 44.1%, 0.228)',
+    description: 'Holds the **active state** color of the **dark** theme. The current scale has no equivalent.',
+    deprecation: {},
+  },
+  darkStateFocus: {
+    name: '$pds-theme-dark-state-focus',
+    value: '#1a44ea',
+    description: 'Holds the **focus state** color of the **dark** theme.',
+    deprecation: { replacement: scssIdentifier(colors.a11y.focus) },
+  },
+  darkStateDisabled: {
+    name: '$pds-theme-dark-state-disabled',
+    value: 'hsla(240,1.5%,61.8%,0.302)',
+    description: 'Holds the **disabled state** color of the **dark** theme. The current scale has no equivalent.',
+    deprecation: {},
+  },
+} satisfies ScssCatalog;

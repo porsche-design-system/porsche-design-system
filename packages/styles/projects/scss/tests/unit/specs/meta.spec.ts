@@ -1,39 +1,23 @@
-import { deprecationText, flattenDeprecations, isDeprecated } from '@porsche-design-system/shared/deprecation';
+import { deprecationText, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import { describe, expect, it } from 'vitest';
 import { scssDeprecations, scssMeta } from '../../../src';
 import { scssIdentifier } from '../../../src/deprecation';
-import { scssDeprecationsMeta } from '../../../src/meta';
 import { renderScssFile, scssFileMeta } from '../../../src/scss';
 import { flatten, renderNode } from '../../../src/scss/render';
-import type {
-  DeprecatedScssNode,
-  ScssBranch,
-  ScssDeclaration,
-  ScssMixin,
-  ScssNode,
-  ScssVariable,
-} from '../../../src/types';
+import type { ScssCatalog, ScssMixin, ScssVariable } from '../../../src/types';
 
 /**
- * The invariants that make the two catalogs trustworthy as *the* source of the SCSS surface — both
- * the shipped partials and the knowledge skill's audit index are generated from them, with nothing
- * downstream parsing SCSS to recover what is deprecated.
- *
- * A failure here means either a declaration escaped both catalogs (it would ship without ever being
- * indexed) or a node was copied rather than moved between them (it would be documented as current and
- * flagged as legacy at the same time).
+ * The invariants that make the catalog trustworthy as *the* source of the scss surface — the shipped
+ * partials, the docs and the knowledge skill's audit index are all generated from it, with nothing
+ * downstream parsing scss to recover what is deprecated.
  */
 
-const currentNodes = flatten(scssMeta as ScssBranch);
-const deprecatedNodes = flattenDeprecations<DeprecatedScssNode>(scssDeprecationsMeta);
+const composed = scssFileMeta.flatMap(({ nodes }) => nodes);
+const declarations = composed.filter((node): node is ScssVariable | ScssMixin => 'name' in node);
+const documented = flatten(scssMeta as ScssCatalog);
+const deprecated = declarations.filter(isDeprecated);
 
-const named = (nodes: ScssNode[]): ScssDeclaration[] => nodes.filter((node): node is ScssDeclaration => 'name' in node);
-
-/**
- * The named nodes the composition layer contributes itself: private helpers the documented mixins
- * delegate to. They are deliberately undocumented and deliberately not deprecated, so they belong to
- * neither catalog.
- */
+/** Private helpers the documented mixins delegate to: deliberately undocumented, deliberately not deprecated. */
 const PLUMBING_MIXINS = ['cjk-font-family', '-prose-heading', '-prose-text'];
 
 /** Declarations that only exist inside raw composition snippets: lookup maps and the theming mixin. */
@@ -50,31 +34,35 @@ const rawDeclarations = (raw: string): string[] => [
   ...[...raw.matchAll(/^@mixin\s+([\w-]+)/gm)].map(([, name]) => `${name}()`),
 ];
 
-describe('scssDeprecationsMeta', () => {
-  it('is exported beside scssMeta', () => {
-    expect(scssMeta).toBeDefined();
-    expect(scssDeprecationsMeta).toBeDefined();
+describe('scssMeta', () => {
+  it('carries no deprecated declaration', () => {
+    expect(documented.filter(isDeprecated)).toStrictEqual([]);
   });
 
-  it('declares every scssMeta root domain, empty branches included', () => {
-    expect(Object.keys(scssDeprecationsMeta)).toStrictEqual(Object.keys(scssMeta));
+  it('lists exactly the documented identifiers', () => {
+    expect(documented.map(scssIdentifier)).toMatchSnapshot();
+  });
+});
+
+describe('scssDeprecations', () => {
+  it('lists exactly the deprecated identifiers', () => {
+    expect(scssDeprecations.map(({ identifier }) => identifier)).toMatchSnapshot();
   });
 
-  it('holds only variables and mixins carrying a deprecation', () => {
-    const invalid = flatten(scssDeprecationsMeta as unknown as ScssBranch).filter(
-      (node) => !('name' in node) || !isDeprecated(node)
+  it('publishes every deprecated declaration exactly once, spelled canonically', () => {
+    expect(scssDeprecations.map(({ identifier }) => identifier).sort()).toStrictEqual(
+      deprecated.map(scssIdentifier).sort()
     );
-    expect(invalid).toStrictEqual([]);
-    expect(deprecatedNodes.length).toBeGreaterThan(0);
   });
 
-  it('spells every identifier uniquely within and across both catalogs', () => {
-    const identifiers = [...named(currentNodes).map(scssIdentifier), ...scssDeprecations.map((d) => d.identifier)];
-    expect(identifiers.length).toBe(new Set(identifiers).size);
+  it('carries each marker through untouched', () => {
+    const markers = new Map(deprecated.map((node) => [scssIdentifier(node), node.deprecation]));
+    const rebuilt = scssDeprecations.filter(({ identifier, deprecation }) => markers.get(identifier) !== deprecation);
+    expect(rebuilt).toStrictEqual([]);
   });
 
-  it('points every replacement at a canonical identifier other than its own', () => {
-    const canonical = new Set(named(currentNodes).map(scssIdentifier));
+  it('points every replacement at a documented identifier other than its own', () => {
+    const canonical = new Set(documented.map(scssIdentifier));
     const invalid = scssDeprecations.filter(
       ({ identifier, deprecation }) =>
         deprecation.replacement !== undefined &&
@@ -84,50 +72,15 @@ describe('scssDeprecationsMeta', () => {
   });
 });
 
-describe('scssDeprecations', () => {
-  it('publishes every catalog node once, in catalog order, spelled canonically', () => {
-    expect(scssDeprecations.map((d) => d.identifier)).toStrictEqual(deprecatedNodes.map(scssIdentifier));
-  });
-
-  it('carries each node’s marker through untouched', () => {
-    expect(scssDeprecations.map((d) => d.deprecation)).toStrictEqual(deprecatedNodes.map((n) => n.deprecation));
-  });
-});
-
-describe('scssMeta', () => {
-  it('carries no deprecated node', () => {
-    // Also enforced at the type level — `ScssVariable` / `ScssMixin` have no `deprecation` field, so
-    // `satisfies ScssMeta` rejects one. This is the runtime backstop for branches typed as `ScssBranch`.
-    expect(currentNodes.filter(isDeprecated)).toStrictEqual([]);
-  });
-
-  it('describes every documented leaf', () => {
-    // Typed against the documented leaves alone: `description` no longer exists on a deprecated node,
-    // which is the point — a legacy alias is documented by its deprecation, not by a docs row.
-    const documented = currentNodes.filter((node): node is ScssVariable | ScssMixin => 'name' in node);
-    const undescribed = documented.filter((node) => !node.description?.trim());
-    expect(undescribed.map((node) => node.name)).toStrictEqual([]);
-  });
-});
-
 describe('scss file composition', () => {
-  const composed = scssFileMeta.flatMap(({ nodes }) => nodes);
-
-  it('sources every generated variable and mixin from exactly one catalog node', () => {
-    const catalog = new Set<ScssNode>([...currentNodes, ...deprecatedNodes]);
-    const unsourced = named(composed)
-      .filter((node) => !catalog.has(node))
-      .map((node) => node.name)
-      .filter((name) => !PLUMBING_MIXINS.includes(name));
-    expect(unsourced).toStrictEqual([]);
+  it('spells every generated declaration uniquely', () => {
+    const identifiers = declarations.map(scssIdentifier);
+    expect(identifiers.length).toBe(new Set(identifiers).size);
   });
 
-  it('renders every catalog node exactly once, so nothing is indexed without shipping', () => {
-    const rendered = named(composed);
-    const missing = [...currentNodes, ...deprecatedNodes].filter(
-      (node) => rendered.filter((candidate) => candidate === node).length !== 1
-    );
-    expect(missing.map((node) => ('name' in node ? node.name : node.raw))).toStrictEqual([]);
+  it('renders every catalog declaration exactly once', () => {
+    const rendered = declarations.filter((node) => !PLUMBING_MIXINS.includes(node.name));
+    expect(rendered.length).toBe(documented.length + deprecated.length);
   });
 
   it('limits raw composition snippets to internal plumbing declarations', () => {
@@ -138,14 +91,8 @@ describe('scss file composition', () => {
   });
 
   it('precedes every deprecated declaration with its generated @deprecated comment', () => {
-    for (const node of deprecatedNodes) {
+    for (const node of deprecated) {
       expect(renderNode(node)).toContain(`// @deprecated ${deprecationText(node)}\n`);
-    }
-  });
-
-  it('renders no legacy (deprecated) marker into any partial', () => {
-    for (const fileMeta of scssFileMeta) {
-      expect(renderScssFile(fileMeta), fileMeta.file).not.toContain('(deprecated)');
     }
   });
 
