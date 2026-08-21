@@ -1,7 +1,7 @@
 import { breakpoint2Xl, breakpointSm } from '@porsche-design-system/tokens';
 import { prefix } from '../prefix';
 import { spacing } from '../theme/spacing';
-import type { TailwindMeta } from '../types';
+import type { TailwindCatalog } from '../types';
 
 // Documented Tailwind grid utilities — the responsive Porsche Grid template together with its named
 // area, position, and division helpers. Grouped by grid area to match the aligned cross-solution meta
@@ -233,4 +233,4 @@ export const grid = {
       raw: '  grid-column: span var(--_pds-grid-two-thirds, 1) / span var(--_pds-grid-two-thirds, 1);',
     },
   },
-} satisfies TailwindMeta['grid'];
+} satisfies TailwindCatalog;

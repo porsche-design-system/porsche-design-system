@@ -49,6 +49,18 @@ export default [
                   default: './index.js',
                 },
               },
+              // deep import so the metadata bundles of the styling packages can share the deprecation
+              // contract and its wording at runtime without dragging this package's barrel along
+              './deprecation': {
+                import: {
+                  types: './deprecation/index.d.ts',
+                  default: './deprecation/esm/index.mjs',
+                },
+                require: {
+                  types: './deprecation/index.d.ts',
+                  default: './deprecation/cjs/index.cjs',
+                },
+              },
               './testing': {
                 import: {
                   types: './testing/index.d.ts',
@@ -122,6 +134,21 @@ export default [
       format: 'cjs',
     },
     plugins: [typescript()],
+  },
+  {
+    input: 'src/deprecation/index.ts',
+    external,
+    output: [
+      {
+        file: 'dist/deprecation/esm/index.mjs',
+        format: 'esm',
+      },
+      {
+        file: 'dist/deprecation/cjs/index.cjs',
+        format: 'cjs',
+      },
+    ],
+    plugins: [typescript({ rootDir: 'src/deprecation' })],
   },
   {
     input: 'src/testing/index.ts',

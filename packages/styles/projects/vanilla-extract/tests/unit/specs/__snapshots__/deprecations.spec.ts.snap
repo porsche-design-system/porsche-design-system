@@ -1,0 +1,722 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`vanillaExtractDeprecations > matches snapshot 1`] = `
+[
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "border",
+  },
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "borderRadius",
+  },
+  {
+    "deprecation": {
+      "replacement": "radiusLg",
+    },
+    "identifier": "borderRadiusLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "radiusMd",
+    },
+    "identifier": "borderRadiusMedium",
+  },
+  {
+    "deprecation": {
+      "replacement": "radiusSm",
+    },
+    "identifier": "borderRadiusSmall",
+  },
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "borderWidth",
+  },
+  {
+    "deprecation": {
+      "note": "Use 2px instead.",
+    },
+    "identifier": "borderWidthBase",
+  },
+  {
+    "deprecation": {
+      "note": "Use 1px instead.",
+    },
+    "identifier": "borderWidthThin",
+  },
+  {
+    "deprecation": {
+      "note": "Use backdropFilter: blurFrosted instead.",
+    },
+    "identifier": "frostedGlassStyle",
+  },
+  {
+    "deprecation": {
+      "note": "Use individual variables instead.",
+    },
+    "identifier": "theme",
+  },
+  {
+    "deprecation": {
+      "note": "Use individual variables instead.",
+    },
+    "identifier": "themeDark",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorCanvasDark instead.",
+    },
+    "identifier": "themeDarkBackgroundBase",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorFrostedDark instead.",
+    },
+    "identifier": "themeDarkBackgroundFrosted",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorBackdropDark instead.",
+    },
+    "identifier": "themeDarkBackgroundShading",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorSurfaceDark instead.",
+    },
+    "identifier": "themeDarkBackgroundSurface",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorContrastHighDark instead.",
+    },
+    "identifier": "themeDarkContrastHigh",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorContrastLowDark instead.",
+    },
+    "identifier": "themeDarkContrastLow",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorContrastMediumDark instead.",
+    },
+    "identifier": "themeDarkContrastMedium",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorErrorDark instead.",
+    },
+    "identifier": "themeDarkNotificationError",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorErrorFrostedDark instead.",
+    },
+    "identifier": "themeDarkNotificationErrorSoft",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorInfoDark instead.",
+    },
+    "identifier": "themeDarkNotificationInfo",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorInfoFrostedDark instead.",
+    },
+    "identifier": "themeDarkNotificationInfoSoft",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorSuccessDark instead.",
+    },
+    "identifier": "themeDarkNotificationSuccess",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorSuccessFrostedDark instead.",
+    },
+    "identifier": "themeDarkNotificationSuccessSoft",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorWarningDark instead.",
+    },
+    "identifier": "themeDarkNotificationWarning",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorWarningFrostedDark instead.",
+    },
+    "identifier": "themeDarkNotificationWarningSoft",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorPrimaryDark instead.",
+    },
+    "identifier": "themeDarkPrimary",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorFrostedDark instead.",
+    },
+    "identifier": "themeDarkStateActive",
+  },
+  {
+    "deprecation": {},
+    "identifier": "themeDarkStateDisabled",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorFocusDark instead.",
+    },
+    "identifier": "themeDarkStateFocus",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorFrostedDark instead.",
+    },
+    "identifier": "themeDarkStateHover",
+  },
+  {
+    "deprecation": {
+      "note": "Use individual variables instead.",
+    },
+    "identifier": "themeLight",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorCanvasLight instead.",
+    },
+    "identifier": "themeLightBackgroundBase",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorFrostedLight instead.",
+    },
+    "identifier": "themeLightBackgroundFrosted",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorBackdropLight instead.",
+    },
+    "identifier": "themeLightBackgroundShading",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorSurfaceLight instead.",
+    },
+    "identifier": "themeLightBackgroundSurface",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorContrastHighLight instead.",
+    },
+    "identifier": "themeLightContrastHigh",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorContrastLowLight instead.",
+    },
+    "identifier": "themeLightContrastLow",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorContrastMediumLight instead.",
+    },
+    "identifier": "themeLightContrastMedium",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorErrorLight instead.",
+    },
+    "identifier": "themeLightNotificationError",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorErrorFrostedLight instead.",
+    },
+    "identifier": "themeLightNotificationErrorSoft",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorInfoLight instead.",
+    },
+    "identifier": "themeLightNotificationInfo",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorInfoFrostedLight instead.",
+    },
+    "identifier": "themeLightNotificationInfoSoft",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorSuccessLight instead.",
+    },
+    "identifier": "themeLightNotificationSuccess",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorSuccessFrostedLight instead.",
+    },
+    "identifier": "themeLightNotificationSuccessSoft",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorWarningLight instead.",
+    },
+    "identifier": "themeLightNotificationWarning",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorWarningFrostedLight instead.",
+    },
+    "identifier": "themeLightNotificationWarningSoft",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorPrimaryLight instead.",
+    },
+    "identifier": "themeLightPrimary",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorFrostedLight instead.",
+    },
+    "identifier": "themeLightStateActive",
+  },
+  {
+    "deprecation": {},
+    "identifier": "themeLightStateDisabled",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorFocusLight instead.",
+    },
+    "identifier": "themeLightStateFocus",
+  },
+  {
+    "deprecation": {
+      "note": "Use colorFrostedLight instead.",
+    },
+    "identifier": "themeLightStateHover",
+  },
+  {
+    "deprecation": {
+      "replacement": "fontPorscheNext",
+    },
+    "identifier": "fontFamily",
+  },
+  {
+    "deprecation": {
+      "replacement": "leadingNormal",
+    },
+    "identifier": "fontLineHeight",
+  },
+  {
+    "deprecation": {
+      "note": "Use typescale variables instead.",
+    },
+    "identifier": "fontSize",
+  },
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "fontSizeDisplay",
+  },
+  {
+    "deprecation": {
+      "note": "Use typescale variables instead.",
+    },
+    "identifier": "fontSizeHeading",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleLg",
+    },
+    "identifier": "fontSizeHeadingLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleMd",
+    },
+    "identifier": "fontSizeHeadingMedium",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleSm",
+    },
+    "identifier": "fontSizeHeadingSmall",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleXl",
+    },
+    "identifier": "fontSizeHeadingXLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescale2Xl",
+    },
+    "identifier": "fontSizeHeadingXXLarge",
+  },
+  {
+    "deprecation": {
+      "note": "Use typescale variables instead.",
+    },
+    "identifier": "fontSizeText",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleLg",
+    },
+    "identifier": "fontSizeTextLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleMd",
+    },
+    "identifier": "fontSizeTextMedium",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleSm",
+    },
+    "identifier": "fontSizeTextSmall",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleXl",
+    },
+    "identifier": "fontSizeTextXLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleXs",
+    },
+    "identifier": "fontSizeTextXSmall",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescale2Xs",
+    },
+    "identifier": "fontSizeTextXXSmall",
+  },
+  {
+    "deprecation": {
+      "note": "Use 'normal' | 'italic' instead.",
+    },
+    "identifier": "fontStyle",
+  },
+  {
+    "deprecation": {
+      "note": "Use 'italic' instead.",
+    },
+    "identifier": "fontStyleItalic",
+  },
+  {
+    "deprecation": {
+      "note": "Use 'normal' instead.",
+    },
+    "identifier": "fontStyleNormal",
+  },
+  {
+    "deprecation": {
+      "note": "Use 'normal' instead.",
+    },
+    "identifier": "fontVariant",
+  },
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "fontWeight",
+  },
+  {
+    "deprecation": {
+      "replacement": "fontWeightNormal",
+    },
+    "identifier": "fontWeightRegular",
+  },
+  {
+    "deprecation": {
+      "replacement": "fontWeightSemibold",
+    },
+    "identifier": "fontWeightSemiBold",
+  },
+  {
+    "deprecation": {
+      "note": "Use boxShadow: shadowLg instead.",
+    },
+    "identifier": "dropShadowHighStyle",
+  },
+  {
+    "deprecation": {
+      "note": "Use boxShadow: shadowSm instead.",
+    },
+    "identifier": "dropShadowLowStyle",
+  },
+  {
+    "deprecation": {
+      "note": "Use boxShadow: shadowMd instead.",
+    },
+    "identifier": "dropShadowMediumStyle",
+  },
+  {
+    "deprecation": {
+      "note": "Use spacing variables directly instead.",
+    },
+    "identifier": "spacing",
+  },
+  {
+    "deprecation": {
+      "note": "Use spacing variables directly instead.",
+    },
+    "identifier": "spacingFluid",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidLg",
+    },
+    "identifier": "spacingFluidLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidMd",
+    },
+    "identifier": "spacingFluidMedium",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidSm",
+    },
+    "identifier": "spacingFluidSmall",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidXl",
+    },
+    "identifier": "spacingFluidXLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidXs",
+    },
+    "identifier": "spacingFluidXSmall",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluid2Xl",
+    },
+    "identifier": "spacingFluidXXLarge",
+  },
+  {
+    "deprecation": {
+      "note": "Use spacing variables directly instead.",
+    },
+    "identifier": "spacingStatic",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticLg",
+    },
+    "identifier": "spacingStaticLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticMd",
+    },
+    "identifier": "spacingStaticMedium",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticSm",
+    },
+    "identifier": "spacingStaticSmall",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticXl",
+    },
+    "identifier": "spacingStaticXLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticXs",
+    },
+    "identifier": "spacingStaticXSmall",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStatic2Xl",
+    },
+    "identifier": "spacingStaticXXLarge",
+  },
+  {
+    "deprecation": {
+      "replacement": "durationLg",
+    },
+    "identifier": "motionDurationLong",
+  },
+  {
+    "deprecation": {
+      "replacement": "durationMd",
+    },
+    "identifier": "motionDurationModerate",
+  },
+  {
+    "deprecation": {
+      "replacement": "durationSm",
+    },
+    "identifier": "motionDurationShort",
+  },
+  {
+    "deprecation": {
+      "replacement": "durationXl",
+    },
+    "identifier": "motionDurationVeryLong",
+  },
+  {
+    "deprecation": {
+      "replacement": "easeInOut",
+    },
+    "identifier": "motionEasingBase",
+  },
+  {
+    "deprecation": {
+      "replacement": "easeIn",
+    },
+    "identifier": "motionEasingIn",
+  },
+  {
+    "deprecation": {
+      "replacement": "easeOut",
+    },
+    "identifier": "motionEasingOut",
+  },
+  {
+    "deprecation": {
+      "note": "Use background: \`linear-gradient(to bottom, \${gradientStopsFadeDark});\` instead.",
+    },
+    "identifier": "gradientToBottomStyle",
+  },
+  {
+    "deprecation": {
+      "note": "Use background: \`linear-gradient(to left, \${gradientStopsFadeDark});\` instead.",
+    },
+    "identifier": "gradientToLeftStyle",
+  },
+  {
+    "deprecation": {
+      "note": "background: \`linear-gradient(to right, \${gradientStopsFadeDark});\` instead.",
+    },
+    "identifier": "gradientToRightStyle",
+  },
+  {
+    "deprecation": {
+      "note": "background: \`linear-gradient(to top, \${gradientStopsFadeDark});\` instead.",
+    },
+    "identifier": "gradientToTopStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeading3XlStyle",
+    },
+    "identifier": "displaySmallStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeading4XlStyle",
+    },
+    "identifier": "displayMediumStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeading5XlStyle",
+    },
+    "identifier": "displayLargeStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeadingSmStyle",
+    },
+    "identifier": "headingSmallStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeadingMdStyle",
+    },
+    "identifier": "headingMediumStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeadingLgStyle",
+    },
+    "identifier": "headingLargeStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeadingXlStyle",
+    },
+    "identifier": "headingXLargeStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeading2XlStyle",
+    },
+    "identifier": "headingXXLargeStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseText2XsStyle",
+    },
+    "identifier": "textXXSmallStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextXsStyle",
+    },
+    "identifier": "textXSmallStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextSmStyle",
+    },
+    "identifier": "textSmallStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextMdStyle",
+    },
+    "identifier": "textMediumStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextLgStyle",
+    },
+    "identifier": "textLargeStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextXlStyle",
+    },
+    "identifier": "textXLargeStyle",
+  },
+  {
+    "deprecation": {
+      "replacement": "getFocusVisibleStyle",
+    },
+    "identifier": "getFocusStyle",
+  },
+]
+`;

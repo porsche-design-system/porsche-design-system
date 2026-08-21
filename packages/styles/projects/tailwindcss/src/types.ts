@@ -1,3 +1,9 @@
+import type { Deprecation } from '@porsche-design-system/shared/deprecation';
+
+// The tailwind meta model. `tailwindCatalog` holds every public declaration, documented and
+// deprecated alike; `tailwindMeta` is that catalog minus its deprecated declarations, checked
+// against the hand-authored `StylesMeta` contract.
+
 /** A single CSS declaration, e.g. `color-scheme: dark` or `--p-color-canvas: #fff`. */
 export type CssDeclaration = {
   /** Optional leading comment rendered above the declaration. */
@@ -61,6 +67,8 @@ export type TailwindThemeVariable = {
   classes?: string[];
   /** Optional leading comment rendered above the declaration in the `@theme` block. */
   comment?: string;
+  /** Present means deprecated: excluded from `tailwindMeta`, published in `tailwindDeprecations`. */
+  deprecation?: Deprecation;
 };
 
 /**
@@ -79,173 +87,187 @@ export type TailwindUtility = {
   class: string;
   /** The raw CSS declaration body (implementation detail, rendered verbatim). */
   raw: string;
+  /** Present means deprecated: excluded from `tailwindMeta`, published in `tailwindDeprecations`. */
+  deprecation?: Deprecation;
 };
 
-/** A documented meta leaf — a token ({@link TailwindThemeVariable}) or a utility ({@link TailwindUtility}). */
-export type TailwindNode = TailwindThemeVariable | TailwindUtility;
+/** A catalog is a leaf, a list, or a group. Only leaves render; lists and groups only structure. */
+export type TailwindCatalog =
+  | TailwindThemeVariable
+  | TailwindUtility
+  | TailwindCatalog[]
+  | { [key: string]: TailwindCatalog };
 
-/** Any branch of the meta tree: a leaf {@link TailwindNode}, an array, or a nested record. Only leaves render; records and arrays group. */
-export type TailwindBranch = TailwindNode | TailwindBranch[] | { [key: string]: TailwindBranch };
+/** A catalog without its deprecated declarations. */
+export type TailwindMeta<T> = T extends { deprecation: unknown }
+  ? never
+  : T extends readonly (infer U)[]
+    ? TailwindMeta<U>[]
+    : T extends TailwindThemeVariable | TailwindUtility
+      ? T
+      : { [K in keyof T as [TailwindMeta<T[K]>] extends [never] ? never : K]: TailwindMeta<T[K]> };
 
 /**
- * The documented single source of truth, shared with the storefront docs and LLM context. A flat,
- * domain-keyed catalog mirroring `tokensMeta` (and the scss `ScssMeta`); each leaf's kind
- * (`token` | `utility`) is recoverable via `kindOf`. `gradient` is a utility domain here (Tailwind
- * emits CSS classes, not a token), and there are no `focus` / `mediaQuery` domains (Tailwind
- * built-in variants). Catalog groups are the same object references the CSS is built from, so docs
- * and generated CSS can't diverge. CSS-only plumbing (resets, defaults, layers, keyframes,
- * deprecated aliases) lives in the composition layer (`css/index.ts`).
+ * How we want styles categorised and named, independent of the styling solution. Hand-authored
+ * intent: `tailwindMeta` is checked against it, so deprecating or renaming a documented declaration
+ * fails the build until this shape is updated. Parameterized so it can become the shared
+ * cross-solution contract, but still package-local — Tailwind's shape genuinely differs today:
+ * `gradient` is a utility domain (Tailwind emits classes, not a token), there are no `focus` /
+ * `mediaQuery` domains (built-in variants) and `grid` ships utilities rather than tokens.
+ *
+ * CSS-only plumbing (resets, defaults, layers, keyframes) is not part of the model and lives in the
+ * composition layer (`css/index.ts`).
  */
-export type TailwindMeta = {
+export type StylesMeta<TToken, TUtility> = {
   border: {
     radius: {
-      xs: TailwindThemeVariable;
-      sm: TailwindThemeVariable;
-      md: TailwindThemeVariable;
-      lg: TailwindThemeVariable;
-      xl: TailwindThemeVariable;
-      '2xl': TailwindThemeVariable;
-      '3xl': TailwindThemeVariable;
-      '4xl': TailwindThemeVariable;
-      full: TailwindThemeVariable;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
+      '3xl': TToken;
+      '4xl': TToken;
+      full: TToken;
     };
-    width: TailwindThemeVariable[];
+    width: TToken[];
   };
   blur: {
-    frosted: TailwindThemeVariable;
+    frosted: TToken;
   };
   breakpoint: {
-    xs: TailwindThemeVariable;
-    sm: TailwindThemeVariable;
-    md: TailwindThemeVariable;
-    lg: TailwindThemeVariable;
-    xl: TailwindThemeVariable;
-    '2xl': TailwindThemeVariable;
+    xs: TToken;
+    sm: TToken;
+    md: TToken;
+    lg: TToken;
+    xl: TToken;
+    '2xl': TToken;
   };
   color: {
     a11y: {
-      focus: TailwindThemeVariable;
+      focus: TToken;
     };
     background: {
-      canvas: TailwindThemeVariable;
-      surface: TailwindThemeVariable;
-      frosted: TailwindThemeVariable;
-      frostedSoft: TailwindThemeVariable;
-      frostedStrong: TailwindThemeVariable;
-      backdrop: TailwindThemeVariable;
+      canvas: TToken;
+      surface: TToken;
+      frosted: TToken;
+      frostedSoft: TToken;
+      frostedStrong: TToken;
+      backdrop: TToken;
     };
     foreground: {
-      contrastLower: TailwindThemeVariable;
-      contrastLow: TailwindThemeVariable;
-      contrastMedium: TailwindThemeVariable;
-      contrastHigh: TailwindThemeVariable;
-      contrastHigher: TailwindThemeVariable;
-      primary: TailwindThemeVariable;
+      contrastLower: TToken;
+      contrastLow: TToken;
+      contrastMedium: TToken;
+      contrastHigh: TToken;
+      contrastHigher: TToken;
+      primary: TToken;
     };
     semantic: {
-      success: TailwindThemeVariable;
-      successLow: TailwindThemeVariable;
-      successMedium: TailwindThemeVariable;
-      successFrosted: TailwindThemeVariable;
-      successFrostedSoft: TailwindThemeVariable;
-      warning: TailwindThemeVariable;
-      warningLow: TailwindThemeVariable;
-      warningMedium: TailwindThemeVariable;
-      warningFrosted: TailwindThemeVariable;
-      warningFrostedSoft: TailwindThemeVariable;
-      error: TailwindThemeVariable;
-      errorLow: TailwindThemeVariable;
-      errorMedium: TailwindThemeVariable;
-      errorFrosted: TailwindThemeVariable;
-      errorFrostedSoft: TailwindThemeVariable;
-      info: TailwindThemeVariable;
-      infoLow: TailwindThemeVariable;
-      infoMedium: TailwindThemeVariable;
-      infoFrosted: TailwindThemeVariable;
-      infoFrostedSoft: TailwindThemeVariable;
+      success: TToken;
+      successLow: TToken;
+      successMedium: TToken;
+      successFrosted: TToken;
+      successFrostedSoft: TToken;
+      warning: TToken;
+      warningLow: TToken;
+      warningMedium: TToken;
+      warningFrosted: TToken;
+      warningFrostedSoft: TToken;
+      error: TToken;
+      errorLow: TToken;
+      errorMedium: TToken;
+      errorFrosted: TToken;
+      errorFrostedSoft: TToken;
+      info: TToken;
+      infoLow: TToken;
+      infoMedium: TToken;
+      infoFrosted: TToken;
+      infoFrostedSoft: TToken;
     };
   };
   font: {
     family: {
-      porscheNext: TailwindThemeVariable;
-      sans: TailwindThemeVariable;
+      porscheNext: TToken;
+      sans: TToken;
     };
     weight: {
-      normal: TailwindThemeVariable;
-      semibold: TailwindThemeVariable;
-      bold: TailwindThemeVariable;
+      normal: TToken;
+      semibold: TToken;
+      bold: TToken;
     };
     lineHeight: {
-      normal: TailwindThemeVariable;
+      normal: TToken;
     };
     size: {
-      '2xs': TailwindThemeVariable;
-      xs: TailwindThemeVariable;
-      sm: TailwindThemeVariable;
-      md: TailwindThemeVariable;
-      lg: TailwindThemeVariable;
-      xl: TailwindThemeVariable;
-      '2xl': TailwindThemeVariable;
-      '3xl': TailwindThemeVariable;
-      '4xl': TailwindThemeVariable;
-      '5xl': TailwindThemeVariable;
+      '2xs': TToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
+      '3xl': TToken;
+      '4xl': TToken;
+      '5xl': TToken;
     };
   };
   shadow: {
-    sm: TailwindThemeVariable;
-    md: TailwindThemeVariable;
-    lg: TailwindThemeVariable;
+    sm: TToken;
+    md: TToken;
+    lg: TToken;
   };
   spacing: {
     fluid: {
-      xs: TailwindThemeVariable;
-      sm: TailwindThemeVariable;
-      md: TailwindThemeVariable;
-      lg: TailwindThemeVariable;
-      xl: TailwindThemeVariable;
-      '2xl': TailwindThemeVariable;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
     };
     static: {
-      '2xs': TailwindThemeVariable;
-      xs: TailwindThemeVariable;
-      sm: TailwindThemeVariable;
-      md: TailwindThemeVariable;
-      lg: TailwindThemeVariable;
-      xl: TailwindThemeVariable;
-      '2xl': TailwindThemeVariable;
+      '2xs': TToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
     };
   };
   motion: {
     duration: {
-      sm: TailwindThemeVariable;
-      md: TailwindThemeVariable;
-      lg: TailwindThemeVariable;
-      xl: TailwindThemeVariable;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
     };
     ease: {
-      inOut: TailwindThemeVariable;
-      in: TailwindThemeVariable;
-      out: TailwindThemeVariable;
+      inOut: TToken;
+      in: TToken;
+      out: TToken;
     };
   };
-  gradient: TailwindUtility[];
+  gradient: TUtility[];
   typography: {
-    heading: TailwindUtility[];
-    text: TailwindUtility[];
-    display: TailwindUtility[];
+    heading: TUtility[];
+    text: TUtility[];
+    display: TUtility[];
   };
-  skeleton: TailwindUtility[];
+  skeleton: TUtility[];
   // Grouped by grid area, aligned with `EmotionMeta['grid']` / `ScssMeta['grid']`. `template` is the
   // whole-grid layout; each area exposes its placement utility (`column`) and line utilities
   // (`start`/`end`). Tailwind ships no grid tokens or per-area offsets, and its `span` division
   // utilities are area-agnostic, so they sit at the top level rather than nested under an area.
   grid: {
-    template: TailwindUtility;
-    narrow: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
-    basic: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
-    extended: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
-    wide: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
-    full: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
-    span: { oneHalf: TailwindUtility; oneThird: TailwindUtility; twoThirds: TailwindUtility };
+    template: TUtility;
+    narrow: { column: TUtility; start: TUtility; end: TUtility };
+    basic: { column: TUtility; start: TUtility; end: TUtility };
+    extended: { column: TUtility; start: TUtility; end: TUtility };
+    wide: { column: TUtility; start: TUtility; end: TUtility };
+    full: { column: TUtility; start: TUtility; end: TUtility };
+    span: { oneHalf: TUtility; oneThird: TUtility; twoThirds: TUtility };
   };
 };

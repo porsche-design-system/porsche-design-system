@@ -57,7 +57,7 @@
     "@playwright/test": "1.61.0",
     "@porsche-design-system/scss": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/skill": "0.0.0",
+    "@porsche-design-system/skills": "0.0.0",
     "@porsche-design-system/stackblitz": "0.0.0",
     "@porsche-design-system/stylesheets": "0.0.0",
     "@porsche-design-system/tailwindcss": "0.0.0",
