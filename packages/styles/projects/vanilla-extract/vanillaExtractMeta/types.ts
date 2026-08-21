@@ -1,10 +1,8 @@
-import type { Deprecated } from '@porsche-design-system/shared/deprecation';
-
 // The vanilla-extract meta model — the documented single source of truth these types validate. Leaves
 // (`VanillaExtractToken`, `VanillaExtractUtility`) carry payloads; records and arrays only group.
 // Mirrors the scss meta skeleton (`scss/src/types.ts`); a leaf's kind is recovered via `kindOf` (`./kind`).
-// A node carrying `deprecation` belongs to `vanillaExtractDeprecationsMeta`, never to `vanillaExtractMeta`; those types
-// live in the `Deprecated surface` block at the end of this file.
+// A deprecated export is never documented here: it is published by `vanillaExtractDeprecations`, the
+// shared `Deprecations` list generated from the `@deprecated` annotations — the whole deprecated surface.
 
 /** A documented referenceable value (color, radius, breakpoint, font-size, …). */
 export type VanillaExtractToken = {
@@ -281,14 +279,3 @@ export type StylesMeta<TToken, TUtility> = {
  * short keys; the full export name is preserved in each leaf's `name`.
  */
 export type VanillaExtractMeta = StylesMeta<VanillaExtractToken, VanillaExtractUtility>;
-
-// --- Deprecated surface ------------------------------------------------------------------------
-// The legacy exports that still ship, beside the documented catalog above. Shape and placement are
-// identical in every styling package: the leaf, then the catalog. There are no per-kind aliases
-// here, because a deprecated export is only ever a name — nothing renders it.
-
-/** A deprecated public export: its name plus the marker recovered from its `@deprecated` annotation. */
-export type DeprecatedVanillaExtractNode = Deprecated<{ name: string }>;
-
-/** The deprecated surface, keyed by the same root domains as {@link VanillaExtractMeta}. */
-export type VanillaExtractDeprecationsMeta = Record<keyof VanillaExtractMeta, DeprecatedVanillaExtractNode[]>;

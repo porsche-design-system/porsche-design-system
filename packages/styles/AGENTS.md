@@ -63,11 +63,14 @@ npm run test:vrt:styles
   [`docs/tailwindcss-deprecation-metadata-design.md`](../../docs/tailwindcss-deprecation-metadata-design.md).
 - `emotion` and `vanilla-extract` deliberately keep the **two-source** model and do not adopt the catalog: their `src/`
   is hand-written TypeScript and is itself the shipped library, so the meta describes it rather than generating it, and
-  the `@deprecated` annotation on the declaration — which also drives the IDE hint — is the source the domain-keyed
-  `<pkg>DeprecationsMeta` is generated from (`scripts/deprecations.ts`). Those annotations are written to read exactly
-  as `getDeprecationComment` renders them, naming the replacement as `{@link …}`; the extractor recovers the marker and
+  the `@deprecated` annotation on the declaration — which also drives the IDE hint — is the source the flat
+  `<pkg>Deprecations` is generated from (`scripts/deprecations.ts`). Those annotations are written to read exactly as
+  `getDeprecationComment` renders them, naming the replacement as `{@link …}`; the extractor recovers the marker and
   **fails the build** on one it cannot structure. Package tests already assert the meta documents every public export,
   so meta and library cannot drift.
+- Every package's deprecated surface is **one** export, the shared `Deprecations` — no deprecated leaf type, no second
+  catalog and no type describing one. `@porsche-design-system/tokens-meta` publishes `tokenDeprecations` the same way;
+  see [`docs/token-deprecation-metadata-design.md`](../../docs/token-deprecation-metadata-design.md).
 - All four packages state their documented shape as a package-local `StylesMeta<TToken, TUtility>`, parameterized so it
   can later become one shared cross-solution contract. The blocker for merging them is shape, not taxonomy: utility
   groups are positional arrays in `scss` / `tailwindcss` but keyed records in `emotion` / `vanilla-extract`, and `grid`

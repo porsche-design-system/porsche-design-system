@@ -1,12 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import * as prettier from 'prettier';
-import { buildEmotionDeprecationsMeta, renderEmotionDeprecationsMeta } from './deprecations';
+import { buildEmotionDeprecations, renderEmotionDeprecations } from './deprecations';
 
 const target = path.join(__dirname, '..', 'emotionMeta', 'deprecations.ts');
 
-export const buildEmotionDeprecations = async () => {
-  const source = renderEmotionDeprecationsMeta(buildEmotionDeprecationsMeta());
+const writeEmotionDeprecations = async () => {
+  const source = renderEmotionDeprecations(buildEmotionDeprecations());
   fs.writeFileSync(
     target,
     await prettier.format(source, { ...(await prettier.resolveConfig(target)), parser: 'typescript' })
@@ -14,4 +14,4 @@ export const buildEmotionDeprecations = async () => {
   console.log('Built emotionMeta/deprecations.ts');
 };
 
-buildEmotionDeprecations();
+writeEmotionDeprecations();

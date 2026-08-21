@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { emotionDeprecationsMeta } from '../../../emotionMeta/deprecations';
-import { emotionMeta } from '../../../emotionMeta/meta';
-import { buildEmotionDeprecationsMeta } from '../../../scripts/deprecations';
+import { emotionDeprecations } from '../../../emotionMeta/deprecations';
+import { buildEmotionDeprecations } from '../../../scripts/deprecations';
 import * as blurDeprecated from '../../../src/blur/deprecated';
 import * as borderDeprecated from '../../../src/border/deprecated';
 import * as colorDeprecated from '../../../src/color/deprecated';
@@ -14,13 +13,11 @@ import * as spacingDeprecated from '../../../src/spacing/deprecated';
 import * as typographyDeprecated from '../../../src/typography/deprecated';
 
 /**
- * The knowledge skill's deprecation index is built from this catalog, so a legacy export missing
- * here is one an audit would never flag — and a private helper appearing here is one it would tell a
- * project to migrate off. The expectation is the barrels' own runtime exports, never a hand-written
- * list; the catalog is generated, so it is also compared with a fresh extraction.
+ * The knowledge skill's deprecation index is built from this list, so a legacy export missing here is
+ * one an audit would never flag — and a private helper appearing here is one it would tell a project
+ * to migrate off. The expectation is the barrels' own runtime exports, never a hand-written list; the
+ * list is generated, so it is also compared with a fresh extraction, which is what pins its order.
  */
-
-const nodes = Object.values(emotionDeprecationsMeta).flat();
 
 const published = [
   blurDeprecated,
@@ -35,15 +32,15 @@ const published = [
   typographyDeprecated,
 ].flatMap((module) => Object.keys(module));
 
-describe('emotionDeprecationsMeta', () => {
+describe('emotionDeprecations', () => {
   it('reports every published deprecated export exactly once, and no private helper', () => {
-    expect(nodes.map(({ name }) => name).sort()).toStrictEqual([...published].sort());
+    expect(emotionDeprecations.map(({ identifier }) => identifier).sort()).toStrictEqual([...published].sort());
   });
 
   it('structures every marker, carrying no field the contract does not define', () => {
     // The extractor throws on an annotation it cannot structure, so reaching here already proves
     // every one conformed; this pins the shape it produced.
-    const malformed = nodes.filter(
+    const malformed = emotionDeprecations.filter(
       ({ deprecation }) =>
         Object.keys(deprecation).some((key) => !['replacement', 'note'].includes(key)) ||
         Object.values(deprecation).some((value) => !value.trim())
@@ -51,15 +48,11 @@ describe('emotionDeprecationsMeta', () => {
     expect(malformed).toStrictEqual([]);
   });
 
-  it('is keyed by every emotionMeta domain, in catalog order', () => {
-    expect(Object.keys(emotionDeprecationsMeta)).toStrictEqual(Object.keys(emotionMeta));
-  });
-
-  it('is up to date with the annotations it is generated from', () => {
-    expect(emotionDeprecationsMeta).toStrictEqual(buildEmotionDeprecationsMeta());
+  it('is up to date with the annotations it is generated from, in domain then barrel order', () => {
+    expect(emotionDeprecations).toStrictEqual(buildEmotionDeprecations());
   });
 
   it('matches snapshot', () => {
-    expect(emotionDeprecationsMeta).toMatchSnapshot();
+    expect(emotionDeprecations).toMatchSnapshot();
   });
 });

@@ -2,9 +2,10 @@
 
 ## Summary
 
-vanilla-extract's deprecated surface shall be published as `vanillaExtractDeprecationsMeta` beside `vanillaExtractMeta`,
-generated at build time from the `@deprecated` annotations its exports already carry. No hand-authored catalog is
-introduced.
+vanilla-extract's deprecated surface shall be published as `vanillaExtractDeprecations` beside `vanillaExtractMeta`,
+generated at build time from the `@deprecated` annotations its exports already carry. It is the shared `Deprecations` —
+an ordered flat list of canonical identifiers and markers — and nothing else, the shape scss publishes. No hand-authored
+catalog and no deprecated leaf type are introduced.
 
 This replaces the knowledge skill's traversal of `src/*/deprecated/index.ts`, its declaration lookup, its JSDoc parsing
 and its package-root resolution — the last of that machinery in the skill. `vanillaExtractMeta` is unaffected: it
@@ -21,7 +22,7 @@ This design is implemented.
 ```text
 @deprecated annotations on the legacy exports
   -> scripts/deprecations.ts                 (build time, TypeScript type checker)
-  -> vanillaExtractDeprecationsMeta          (@porsche-design-system/vanilla-extract meta entry)
+  -> vanillaExtractDeprecations              (@porsche-design-system/vanilla-extract meta entry)
   -> knowledge-skill deprecations.md
 ```
 
@@ -36,28 +37,30 @@ IDE — so a catalog beside it would be a second thing to keep in sync.
 on each `src/<domain>/deprecated/index.ts` for the public names, `getAliasedSymbol()` to reach the declaration a barrel
 re-exports, and `getJsDocTags()` for the `@deprecated` tag, from which the marker is recovered and validated.
 
-It builds a domain-keyed catalog in meta key order, which a build step emits as static data on the package's metadata
-entry — the compiler and the `src` reads stay out of every consumer's build graph.
+It walks the domains in meta key order and emits one flat list, which a build step writes as static data on the
+package's metadata entry — the compiler and the `src` reads stay out of every consumer's build graph. The domains fix
+the order and are checked against `vanillaExtractMeta`, but never materialise: the published surface is one array.
 
 The two packages share a directory layout, a barrel convention and an annotation style, so this is the Emotion extractor
 with a different `src` root. It is copied rather than shared: the file is ~55 lines, and a shared module would add a
-build-order edge between two packages that are otherwise independent.
+build-order edge between two packages that are otherwise independent. `tokens-meta` runs a third copy over the token
+declarations for the same reason — the wording they all validate against is shared, which is the part that must not
+drift.
 
 ### Knowledge-skill adapter
 
-`collectors/vanillaExtract.ts` — which held the filesystem parser — is a one-to-one mapping over the catalog that adds
-only the `styleAlias/vanillaExtract/<name>` rule ID, the source category and `references/styles/vanilla-extract.md`. It
+`collectors/vanillaExtract.ts` — which held the filesystem parser — is a one-to-one mapping over the list that adds only
+the `styleAlias/vanillaExtract/<name>` rule ID, the source category and `references/styles/vanilla-extract.md`. It
 preserves the package's order, sorts nothing, and touches no filesystem. `vanillaExtractRoot()` is dropped from the
 skill's package-root helpers, which now hold only the roots the remaining marker scans need.
 
 ## Data & state
 
-The stable identity is the public export name; the rule ID is `styleAlias/vanillaExtract/<name>`. The node is
-`Deprecated<{ name: string }>` carrying the shared marker unnarrowed: an annotation names its replacement as a
-`{@link …}` reference, so an entry carries a structured `replacement` when there is an exported symbol to name, plus a
-`note` when the annotation adds guidance beyond the generated sentence. `vanillaExtractDeprecations` — the catalog as an
-ordered flat list — is what the meta entry publishes, the domain-keyed catalog staying internal, matching the other
-three.
+The stable identity is the public export name; the rule ID is `styleAlias/vanillaExtract/<name>`. An entry is
+`{ identifier, deprecation }` carrying the shared marker unnarrowed: an annotation names its replacement as a
+`{@link …}` reference, so it carries a structured `replacement` when there is an exported symbol to name, plus a `note`
+when the annotation adds guidance beyond the generated sentence. `vanillaExtractDeprecations` is the whole published
+deprecated surface — one export, the same one every other source offers the audit.
 
 ## Trade-offs
 
@@ -74,9 +77,9 @@ with a fresh extraction.
 
 **Chosen:** read the annotations, as Emotion does.
 
-An earlier revision of this design proposed _authoring_ `vanillaExtractDeprecationsMeta` with deprecated leaf types,
-identity and message helpers, mirroring SCSS. The published shape is the same either way; what is rejected is authoring
-it. That is the right mechanism for a package whose metadata _generates_ its declarations; vanilla-extract's
+An earlier revision of this design proposed _authoring_ a `vanillaExtractDeprecationsMeta` catalog with deprecated leaf
+types, identity and message helpers, mirroring SCSS. The published shape is the same either way; what is rejected is
+authoring it. That is the right mechanism for a package whose metadata _generates_ its declarations; vanilla-extract's
 declarations are hand-written TypeScript that already carry the annotation, so authoring a catalog restates them. Doing
 so for Emotion measured 741 lines to produce a 120-row table.
 
@@ -121,23 +124,23 @@ contracts can later be merged into one.
 | Risk                                                          | Mitigation                                                                                                                      |
 | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | A private helper is reported to a project.                    | The public surface comes from `getExportsOfModule`, not directory traversal; a package test asserts it.                         |
-| A legacy export ships without an annotation, so is unindexed. | A package test compares the catalog with the `deprecated` barrels' own runtime exports, and with a fresh extraction.            |
-| A deprecated domain is missing from the catalog.              | The extractor reads the domains from `src` and fails when one has no `vanillaExtractMeta` key.                                  |
-| The generated catalog goes stale.                             | The build regenerates it; a package test compares it with a fresh extraction.                                                   |
+| A legacy export ships without an annotation, so is unindexed. | A package test compares the list with the `deprecated` barrels' own runtime exports, and with a fresh extraction.               |
+| A deprecated domain is missing from the list.                 | The extractor reads the domains from `src` and fails when one has no `vanillaExtractMeta` key.                                  |
+| The generated list goes stale, or its order drifts.           | The build regenerates it; a package test compares it with a fresh extraction, which is what pins the order.                     |
 | Emotion and vanilla-extract drift apart.                      | Both use the same extraction and the same adapter shape; their deprecated surfaces are compared where they intentionally match. |
 
 ## Testing strategy
 
-The package proves the catalog equals the `deprecated` barrels' runtime exports — never a hand-written list — that every
-entry carries a non-empty annotation, and that it matches a fresh extraction.
+The package proves the list equals the `deprecated` barrels' runtime exports — never a hand-written list — that every
+entry carries a structured marker, and that it matches a fresh extraction, which is what pins its order.
 
-The skills completeness gate derives its expectations from `vanillaExtractDeprecationsMeta` and proves that collected
-names, order, rule IDs and messages match it entry for entry, that every entry links to the vanilla-extract reference,
-and that the collector performs no filesystem access.
+The skills completeness gate derives its expectations from `vanillaExtractDeprecations` and proves that collected names,
+order, rule IDs and messages match it entry for entry, that every entry links to the vanilla-extract reference, and that
+the collector performs no filesystem access.
 
 ## Rollout
 
-1. Add the deprecation types, the build-time extractor and the generated catalog on the metadata entry.
+1. Add the build-time extractor and the generated list on the metadata entry.
 2. Replace `collectors/vanillaExtract.ts` with the adapter; drop `vanillaExtractRoot()`.
 3. Update the skills completeness gate and snapshots.
 
