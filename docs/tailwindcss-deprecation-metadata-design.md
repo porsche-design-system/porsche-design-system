@@ -1,230 +1,162 @@
-# Tailwind CSS deprecation metadata design
+# Tailwind CSS metadata design
 
 ## Summary
 
-Tailwind CSS deprecations shall be authored in `tailwindDeprecationsMeta`, exported beside `tailwindMeta` from
-`@porsche-design-system/tailwindcss`. The current `tailwindMeta` remains the recommended API.
+The Tailwind package authors **one catalog**. Every public declaration lives in it exactly once — documented and
+deprecated alike — and deprecation is an optional `deprecation` marker on the declaration itself, so deprecating an API
+adds one field instead of moving a node between catalogs.
 
-Deprecated custom-property aliases currently stored as CSS-only nodes with `alias (deprecated)` comments shall move into
-structured metadata. The Tailwind build renders those nodes, and the knowledge skill maps the same object directly into
-`deprecations.md`.
+The catalog is what the shipped `index.css` is generated from. The package's two public metadata exports are projections
+of it:
 
-This design follows the conventions established by the implemented
-[SCSS deprecation metadata design](./scss-deprecation-metadata-design.md#conventions-for-other-sources); the sections
-below record only how they apply to Tailwind CSS, where the generated artifact is plain CSS rather than SCSS.
+```text
+tailwindCatalog ──┬─ stripDeprecated ─→ tailwindMeta          (documented API, checked against the contract)
+                  ├─ flatten + filter ─→ tailwindDeprecations (flat list for the knowledge skill)
+                  └─ tailwindCssMeta ──→ dist/index.css
+```
 
-This design is implemented.
+This supersedes the earlier two-catalog design, in which `tailwindMeta` and `tailwindDeprecationsMeta` were authored
+separately. It is the same model the SCSS package uses — see
+[SCSS metadata design](./scss-deprecation-metadata-design.md), which holds the shared rationale; the sections below
+record only what differs for Tailwind, where the generated artifact is plain CSS.
 
-Tailwind CSS is the **meta-first** case of
+Tailwind CSS remains the **meta-first** case of
 [the rule that decides the mechanism](./scss-deprecation-metadata-design.md#the-rule-that-decides-the-mechanism): the
-metadata generates `index.css`, so the metadata is where a deprecation is authored, and the catalog below is that
-authoring surface. The knowledge skill's current scan of the generated `index.css` for `alias (deprecated)` markers is
-exactly what this replaces — a generated artifact is never the source it is read back from. Emotion and vanilla-extract
-publish the same catalog shape but sit in the annotation-first row: theirs is generated from the `@deprecated`
-annotations their declarations already carry, rather than authored.
+metadata generates `index.css`, so the metadata is where a deprecation is authored. A generated artifact is never the
+source it is read back from.
 
 ## Architecture & approach
 
-```text
-tailwindMeta + tailwindDeprecationsMeta
-  -> Tailwind CSS composition and index.css
-  -> package metadata exports
-  -> knowledge-skill deprecations.md
-```
+Three layers, each with one job:
 
-Every supported public Tailwind variable or utility belongs to exactly one current or deprecated catalog. Internal
-defaults, resets, keyframes, and implementation-only declarations remain in the composition layer.
+| Layer                                      | Owns                                                                              |
+| ------------------------------------------ | --------------------------------------------------------------------------------- |
+| **catalog** (`src/theme`, `src/utilities`) | the data model of the public surface: every documented and deprecated declaration |
+| **composition** (`src/css/index.ts`)       | CSS assembly: `@theme` ordering, resets, defaults, layers, keyframes              |
+| **projections** (`src/meta.ts`)            | `tailwindMeta` and `tailwindDeprecations`                                         |
+
+CSS-only plumbing — namespace resets, retained base colors, `--default-*` globals, the `--*--line-height` companions,
+the skeleton animation and the `--_*` per-scheme fallbacks — is not part of the model and stays in the composition
+layer.
 
 ## Components
 
-### Deprecation field
+### Declaration types
 
-Add a Tailwind-owned deprecation detail and one deprecated subtype per renderable public leaf:
-
-```ts
-export type DeprecatedTailwindThemeVariable = Deprecated<TailwindThemeVariable>;
-export type DeprecatedTailwindUtility = Deprecated<TailwindUtility>;
-export type DeprecatedTailwindNode = DeprecatedTailwindThemeVariable | DeprecatedTailwindUtility;
-```
-
-`Deprecated<T>` and the `Deprecation` marker it carries are the shared contract from `@porsche-design-system/shared`;
-Tailwind declares no deprecation detail type of its own.
-
-Both subtypes exist from the start even though only theme variables are deprecated today, so the first deprecated
-utility is an authoring change rather than a type change — the same shape SCSS settled on.
-
-`TailwindThemeVariable` and `TailwindUtility` gain **no** `deprecation` field, and `Deprecated<T>` requires one, so a
-node in the wrong catalog fails to compile rather than relying on a test. `description` is optional on the deprecated
-subtypes and is omitted in practice.
-
-Deprecated custom-property aliases use `property` as their identifier; deprecated utilities use `class` or `selector`.
-
-### Identity and message helpers
-
-Mirror the SCSS helpers. `tailwindIdentifier(node)` returns the public identity as a consumer writes it — the plain
-custom property (`--shadow-sm`) for a theme variable, the class or selector for a utility. It is deliberately _not_
-prefixed: `prefix()` / `--theme()` wraps an alias's **value** so it resolves under a configured Tailwind prefix, while
-the declared property in `index.css` — and therefore the audit identity — stays unprefixed.
-
-Author `replacement` as `tailwindIdentifier(<current node>)` read from the exported `tailwindMeta`, never a retyped
-string and never an intermediate local const.
-
-Identity is all the package adds. The marker, the guard and the wording come from
-`@porsche-design-system/shared/deprecation`, shared with SCSS:
-
-- with replacement: `This API will be removed with the next major release.`;
-- without replacement: `This API will be removed with the next major release and has no replacement.`.
-
-`deprecationMessage(node)` returns the lifecycle sentence the knowledge skill records as `message`;
-`deprecationText(node)` prefixes `Use <replacement> instead.` for a generated comment — unused here, since the marker in
-`index.css` stays terse.
-
-Rather than making consumers walk the nested catalog, the package publishes `tailwindDeprecations`: the same catalog as
-an ordered flat list, mirroring `scssDeprecations`, so the adapter and the tests need neither a tree walk nor a cast.
-
-### Authoring conventions
-
-Deprecated entries are authored as literal repeated objects — no factory functions and no `.map()` over a tuple table.
-
-### Domain metadata
-
-Each domain module exports its current metadata and its deprecated metadata beside each other — `shadow` and
-`shadowDeprecations` in `src/theme/shadow.ts` — replacing today's `shadowDeprecatedThemeVariables` /
-`motionDeprecatedThemeVariables` `CssNode[]` arrays and the two aliases mixed into `borderWidthThemeVariables`. Every
-node carries a structured replacement, e.g. `--shadow-low` records `tailwindIdentifier(tailwindMeta.shadow.sm)`.
-
-No deprecated alias remains an unclassified `CssNode` in `src/css/index.ts`.
-
-The border-width aliases need one decision the shadow and motion aliases do not: they are currently in **both** catalogs
-— documented leaves of `tailwindMeta.border.width` _and_ index entries, because their `comment` marker reaches the
-generated CSS the collector scans. Moving them out is what makes the catalogs disjoint, and it is a deliberate change to
-the recommended shape:
-
-- `tailwindMeta.border.width` keeps only `--default-border-width`. No type edit is needed —
-  `TailwindMeta['border'].width` is a `TailwindThemeVariable[]`, not a keyed record — but the documented surface
-  genuinely shrank;
-- the storefront `tailwindcss/border/api` table and the Tailwind skill reference each lose two rows;
-- both aliases record `tailwindIdentifier(<the default border width node>)` as their replacement, following the
-  migration guide: _"The CSS variables `--border-width-thin` and `--border-width-regular` are deprecated. The default
-  border width is now `1px` via `--default-border-width`."_ Because `--border-width-regular` is `2px` and the default is
-  `1px`, it also authors
-  `message: 'The default border width is now 1px. This API will be removed with the next major release.'`, so the
-  remediation states the value change rather than implying an equivalent swap.
-
-### Root deprecation catalog
-
-Assemble `tailwindDeprecationsMeta` beside `tailwindMeta` in `src/meta.ts`; the package root already provides the stable
-JavaScript metadata export, so no new subpath is needed.
-
-The nested catalog stays **internal**, as in SCSS: its grouping is routing information for the `@theme` composition, and
-`src/index.ts` publishes the flat `tailwindDeprecations` instead.
+`TailwindThemeVariable` (a token) and `TailwindUtility` (a utility) each gain an optional `deprecation?: Deprecation`
+from `@porsche-design-system/shared/deprecation`. Its presence is what makes a declaration deprecated, and both types
+keep `description` required, deprecated declarations included.
 
 ```ts
-export const tailwindDeprecationsMeta = {
-  border: borderDeprecations,
-  blur: [],
-  // Remaining domains, empty ones included.
-} satisfies Record<keyof TailwindMeta, TailwindDeprecationsBranch>;
+export type TailwindCatalog =
+  | TailwindThemeVariable
+  | TailwindUtility
+  | TailwindCatalog[]
+  | { [key: string]: TailwindCatalog };
+
+export type TailwindMeta<T> = /* T without its deprecated declarations */;
+
+export type StylesMeta<TToken, TUtility> = { /* the hand-authored contract */ };
 ```
 
-Every root domain of `TailwindMeta` is spelled out, empty branches included, so "checked, nothing deprecated" stays
-distinguishable from "forgotten". Key order is the rendered contract: the knowledge skill emits entries in exactly this
-order, which replaces today's alphabetical sort. Only `border`, `shadow` and `motion` are populated.
+`TailwindCatalog` is the only type validation a deprecated declaration receives — the contract covers documented
+declarations only.
 
-### CSS renderer and composition
+### The contract
 
-Compose `tailwindDeprecationsMeta` into the same positions in the `@theme` block so declaration order and generated
-behavior remain stable.
+`StylesMeta<TToken, TUtility>` is parameterized so it can later become the shared cross-solution contract, but stays
+package-local: Tailwind's shape genuinely differs today. `gradient` is a utility domain (Tailwind emits classes, not a
+token), there are no `focus` / `mediaQuery` domains (both are built-in variants) and `grid` ships per-area utilities
+rather than tokens.
 
-Comments need a decision the SCSS phase did not: **CSS has no silent comment form.** SCSS could move its markers to `//`
-so they document the shipped partial while contributing nothing to a consumer's compiled output. `index.css` is consumed
-as-is, so every byte of every comment reaches the browser. The SCSS migration measured this: standardizing 126 terse
-`/* alias (deprecated) */` markers into full sentences would have grown the payload from 3 KB to 12 KB.
+```ts
+export const tailwindMeta = stripDeprecated(tailwindCatalog) satisfies StylesMeta<
+  TailwindThemeVariable,
+  TailwindUtility
+>;
+```
 
-**Decided:** keep the existing terse `/* alias (deprecated) */` marker, but render it from the node's `deprecation`
-instead of its generic `comment` field, exactly as `render.ts` derives the SCSS marker. The nine markers are unchanged
-strings in unchanged positions, so the byte delta is **0** and `index.css` still tells a reader an alias is legacy.
-Expanding them into sentences stays rejected, and the full guidance — replacement and lifecycle message — lives in the
-catalog and `deprecations.md`.
+The check is asymmetric in the same way as SCSS: removing, renaming, moving or deprecating a documented declaration
+fails the build; adding one the contract doesn't declare passes silently and is caught by the identifier snapshot.
 
-### Package and skill exports
+### Where a legacy alias lives
 
-Export `tailwindDeprecations`, the deprecated types and `tailwindIdentifier` from the existing package root; the marker
-and message helpers come from `@porsche-design-system/shared/deprecation`. Replace `collectTailwindcssDeprecations()`
-with a direct metadata adapter that derives rule IDs and the Tailwind reference path, sets `message` from the package
-message helper and carries `replacement` through, omitting it rather than setting `undefined` when absent. The adapter
-preserves metadata order and performs no CSS parsing, sorting, or package-root resolution.
+Author it where it renders — in the group of the declarations it aliases:
 
-`tailwindcssRoot()` is dropped from the skill's package-root helpers, as is the completeness gate's `index.css` marker
-scan. The rendered index changes accordingly: the nine entries keep their identifiers and rule IDs but move to catalog
-order, gain a populated remediation column, and their message becomes the shared default (or the authored one) instead
-of the collector's hardcoded sentence.
+- the two `--border-width-*` aliases join `border.width`, after the `--default-border-width` they point at;
+- the three `--shadow-{low,medium,high}` aliases join `shadow`, after the `sm`/`md`/`lg` scale;
+- the four `--transition-duration-*` word-scale aliases join `motion.duration`.
+
+### Identity and walkers
+
+`tailwindIdentifier` is unchanged: the custom property of a theme variable, the class of a utility, deliberately
+unprefixed. `flatten` is shared with the CSS composition layer and therefore widens catalog leaves to `CssNode`;
+`meta.ts` restates the catalog's narrower leaf type once, at the single place it derives the deprecations from.
+
+`stripDeprecated` sits beside `flatten` in `src/css/render.ts` and reuses its `property` / `selector` / `raw` leaf
+predicate. The generated marker stays the terse `/* alias (deprecated) */`: CSS has no silent comment, so every byte
+reaches every consumer of `index.css`, and the replacement and lifecycle wording live in `tailwindDeprecations` and the
+knowledge skill's index instead.
 
 ## Data & state
 
-Custom-property identity is `property`; utility identity is its public class or selector. Package metadata owns
-deprecation wording, replacement, values, and order. The skill owns `styleAlias/tailwindcss/` IDs and
-`references/styles/tailwindcss.md`.
+Build-time data only. Each public declaration has one identity — the custom property for a token, the class for a
+utility — spelled by `tailwindIdentifier` before publication.
+
+`tailwindDeprecations` keeps the shared `PublishedDeprecation[]` shape every styling package publishes, so the knowledge
+skill's `styleAliasSource` adapter is unchanged.
 
 ## Trade-offs
 
-The current Tailwind leaf types lack a common `name`, but adding one only for deprecations would duplicate `property` or
-`class`. Structural identity remains simpler and matches existing renderers, and the identity helper hides the
-difference from consumers.
+The rationale for one catalog over two, for an optional marker over dedicated deprecated types, for a derived meta type,
+and for `satisfies` over an annotation is identical to SCSS and recorded in
+[its design](./scss-deprecation-metadata-design.md#trade-offs). Two points are Tailwind-specific:
 
-Keeping deprecated aliases as generic CSS plumbing is rejected because it forces downstream parsing. Internal non-public
-CSS nodes remain outside both public catalogs.
+**Interleaved `@theme` output.** Rendering from the catalog moves the `--shadow-*` and `--transition-duration-*` aliases
+from a block near the end of `@theme` to directly beneath the scales they alias. The generated custom-property set is
+unchanged; only order differs. Custom properties are not order-dependent for `var()` resolution, and the aliases resolve
+through `--theme(…)` at use time, so this is safe — and it reads better, since each alias now sits under its
+replacement.
 
-Dedicated deprecated leaf types with a required `deprecation` are preferred over an optional field on the shared type,
-so a node in the wrong catalog is a compile error rather than a test failure — the same reasoning as SCSS.
-
-Unlike SCSS, generated comments are not standardized into full sentences, because CSS offers no silent comment and the
-generated stylesheet is shipped verbatim. The metadata catalog carries the full guidance instead.
+**One narrowing in `meta.ts`.** SCSS ended cast-free because its raw nodes left the catalog branch type. Tailwind's
+`flatten` is shared with the CSS layer and must keep returning `CssNode[]`, so the catalog's leaf type is restated once
+rather than introducing a second walker.
 
 ## Risks & mitigations
 
-| Risk                                                    | Mitigation                                                                                                   |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| Moving aliases changes `index.css` order or values.     | Preserve composition positions and compare generated CSS snapshots.                                          |
-| Internal declarations are mistaken for public aliases.  | Require `deprecation` and a public identity before inclusion in `tailwindDeprecationsMeta`.                  |
-| The border-width aliases silently vanish from the docs. | The move is intentional and recorded here; the API table and skill snapshots are updated in the same change. |
-| Replacement properties drift.                           | Derive replacement identifiers from current metadata nodes through the identity helper.                      |
-| Generated comments inflate every consumer's CSS.        | Do not expand markers into sentences; measure the byte delta of any comment change.                          |
+| Risk                                                                  | Mitigation                                                                                                          |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| A documented declaration is added that the contract does not declare. | Passes the compiler by design; the identifier snapshot test surfaces it in review.                                  |
+| The `@theme` reordering hides a real change.                          | The generated `index.css` snapshot is reviewed; the custom-property set was verified identical before and after.    |
+| A deprecated alias keeps a stale description of the modern API.       | The description is authored beside the declaration it describes and reviewed with it.                               |
+| Replacement strings drift after a rename.                             | `replacement` is authored as `tailwindIdentifier(<current node>)` read from the catalog, never as a retyped string. |
 
 ## Testing strategy
 
-Package tests shall prove:
+Metadata invariants and the output snapshot are the two verification boundaries; nothing parses the generated CSS.
 
-1. `tailwindMeta` has no deprecated nodes, and every documented leaf has a non-empty `description`.
-2. Every deprecated node has a unique public identity and deprecation details.
-3. Current and deprecated identities are disjoint.
-4. Every generated public Tailwind declaration originates from one catalog, and every catalog node is rendered exactly
-   once.
-5. Internal CSS plumbing remains explicitly outside both catalogs. Two families are matched by pattern rather than
-   listed: the `--_*`-prefixed per-scheme fallbacks (the package's own private-name convention) and the
-   Tailwind-required `--*--line-height` size companions.
-6. Generated CSS values and order remain stable, and the generated comment payload does not grow.
-7. An empty `deprecation: {}` receives the no-replacement default, a replacement prefixes the sentence, and an authored
-   `message` overrides the default.
-8. The root package exports both metadata objects, and the deprecated catalog is keyed by every `tailwindMeta` domain in
-   catalog order.
-
-Skills tests derive their expectations from `tailwindDeprecationsMeta` using the package's own helpers — never a
-hand-authored identity list and never a re-parse of `index.css` — and prove that collected identities, order, rule IDs,
-messages, replacements and reference links match it entry for entry, with no CSS file access remaining.
+1. `tailwindMeta` carries no deprecated declaration, and every documented declaration has a description.
+2. Snapshots of the documented and deprecated identifier lists — the review artifact for what the contract cannot check.
+3. `tailwindDeprecations` publishes every deprecated declaration exactly once, spelled canonically, carrying its marker
+   by reference.
+4. Every `replacement` points at a documented identifier other than its own.
+5. Every generated declaration is spelled uniquely, and the catalog renders exactly once into the stylesheet; the
+   remaining generated properties are CSS-only plumbing from an explicit allowlist.
+6. Every deprecated declaration renders the terse marker, and the marker never expands into the lifecycle message.
 
 ## Rollout
 
-1. Add the deprecation detail, the `Deprecated*` leaf subtypes, the identity helper, the two message helpers and the
-   `isDeprecated` guard; export `flatten`.
-2. Convert border-width, shadow, and motion aliases to structured deprecated metadata, and shrink
-   `TailwindMeta['border'].width` to the default border width.
-3. Assemble and export `tailwindDeprecationsMeta`.
-4. Compose deprecated metadata into `tailwindCssMeta` at the same positions; render the terse marker from `deprecation`.
-5. Update renderer, CSS and skill snapshots, and the storefront border API table.
-6. Replace the skill collector with the direct adapter.
-7. Remove generated-CSS parsing and Tailwind package-root resolution.
+One change: add the marker to the two leaf types, add `TailwindCatalog` / `TailwindMeta<T>` / `StylesMeta` and
+`stripDeprecated`, merge each `*Deprecations` export into its domain catalog with a description, rewrite `meta.ts` to
+the catalog and the two projections, point the `@theme` recipe at the domain objects, and update the tests, the
+`index.css` snapshot and the collector's origin sentence.
+
+`tailwindMeta` keeps its shape and `tailwindDeprecations` keeps its contract, so nothing downstream changes.
 
 ## Open questions
 
-None. A future deprecated utility uses the same catalog with its class as identity, and its type already exists.
+None for this change.
+
+Open for later: aligning the four styling solutions onto one shared `StylesMeta`. The blocker is shape, not taxonomy —
+`typography.heading`, `skeleton` and the other utility groups are positional arrays here and in SCSS but keyed records
+in Emotion and vanilla-extract, and `grid` has three different shapes across the four.

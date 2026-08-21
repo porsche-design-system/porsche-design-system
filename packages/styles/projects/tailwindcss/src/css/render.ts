@@ -1,5 +1,5 @@
 import { isDeprecated } from '@porsche-design-system/shared/deprecation';
-import type { CssNode, ThemeBranch } from '../types';
+import type { CssNode, TailwindMeta, ThemeBranch } from '../types';
 
 /**
  * The marker a deprecated declaration is preceded by, derived from its `deprecation` rather than
@@ -15,6 +15,18 @@ const isLeaf = (node: ThemeBranch): node is CssNode => 'property' in node || 'se
 /** Recursively flatten any meta branch into a flat {@link CssNode} list, in source order. */
 export const flatten = (node: ThemeBranch): CssNode[] =>
   Array.isArray(node) ? node.flatMap(flatten) : isLeaf(node) ? [node] : Object.values(node).flatMap(flatten);
+
+/** Walk a catalog into the same tree without its deprecated declarations. Leaves keep their identity. */
+export const stripDeprecated = <T>(branch: T): TailwindMeta<T> =>
+  (Array.isArray(branch)
+    ? branch.filter((node) => !isDeprecated(node)).map(stripDeprecated)
+    : isLeaf(branch as ThemeBranch)
+      ? branch
+      : Object.fromEntries(
+          Object.entries(branch as object)
+            .filter(([, node]) => !isDeprecated(node))
+            .map(([key, node]) => [key, stripDeprecated(node)])
+        )) as TailwindMeta<T>;
 
 /**
  * Serializes a single {@link CssNode}. Declarations and rules render structurally,

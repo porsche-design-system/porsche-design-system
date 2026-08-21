@@ -1,24 +1,16 @@
-import { deprecationMessage, flattenDeprecations, isDeprecated } from '@porsche-design-system/shared/deprecation';
+import { deprecationMessage, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import { describe, expect, it } from 'vitest';
 import { tailwindDeprecations, tailwindMeta } from '../../../src';
 import { tailwindCssMeta } from '../../../src/css';
 import { flatten, renderNode } from '../../../src/css/render';
 import { tailwindIdentifier } from '../../../src/deprecation';
-import { tailwindDeprecationsMeta } from '../../../src/meta';
-import type { CssNode, DeprecatedTailwindNode, TailwindBranch, TailwindNode } from '../../../src/types';
+import type { CssNode, TailwindCatalog, TailwindThemeVariable, TailwindUtility } from '../../../src/types';
 
 /**
- * The invariants that make the two catalogs trustworthy as *the* source of the Tailwind surface —
- * both the generated `index.css` and the knowledge skill's audit index are built from them, with
+ * The invariants that make the catalog trustworthy as *the* source of the Tailwind surface — the
+ * generated `index.css`, the docs and the knowledge skill's audit index are all built from it, with
  * nothing downstream parsing CSS to recover what is deprecated.
- *
- * A failure here means either a declaration escaped both catalogs (it would ship without ever being
- * indexed) or a node was copied rather than moved between them (it would be documented as current
- * and flagged as legacy at the same time).
  */
-
-const currentNodes = flatten(tailwindMeta as TailwindBranch) as TailwindNode[];
-const deprecatedNodes = flattenDeprecations<DeprecatedTailwindNode>(tailwindDeprecationsMeta);
 
 /** Every declaration the composed stylesheet contains, descending into rules. */
 const composedDeclarations = (nodes: CssNode[]): CssNode[] =>
@@ -27,13 +19,16 @@ const composedDeclarations = (nodes: CssNode[]): CssNode[] =>
   );
 
 const composed = composedDeclarations(tailwindCssMeta.meta);
+const declarations = composed.filter((node): node is TailwindThemeVariable | TailwindUtility => 'description' in node);
+const documented = flatten(tailwindMeta as TailwindCatalog) as (TailwindThemeVariable | TailwindUtility)[];
+const deprecated = declarations.filter(isDeprecated);
 
 /**
  * The CSS-only plumbing the composition layer contributes itself: namespace resets, retained base
  * colors, global defaults and the skeleton animation. None is an independently supported consumer
- * API, so none belongs to either catalog. Two families are matched by pattern rather than listed:
- * the `--_*`-prefixed per-scheme fallback assignments (the package's own private-name convention)
- * and the Tailwind-required `--*--line-height` companions of each documented text size.
+ * API, so none belongs to the catalog. Two families are matched by pattern rather than listed: the
+ * `--_*`-prefixed per-scheme fallback assignments (the package's own private-name convention) and
+ * the Tailwind-required `--*--line-height` companions of each documented text size.
  */
 const PLUMBING_PROPERTIES = [
   '--breakpoint-*',
@@ -54,29 +49,41 @@ const PLUMBING_PROPERTIES = [
 const isPlumbing = (property: string): boolean =>
   PLUMBING_PROPERTIES.includes(property) || property.startsWith('--_') || property.endsWith('--line-height');
 
-describe('tailwindDeprecationsMeta', () => {
-  it('is exported beside tailwindMeta', () => {
-    expect(tailwindMeta).toBeDefined();
-    expect(tailwindDeprecationsMeta).toBeDefined();
+describe('tailwindMeta', () => {
+  it('carries no deprecated declaration', () => {
+    expect(documented.filter(isDeprecated)).toStrictEqual([]);
   });
 
-  it('declares every tailwindMeta root domain, empty branches included', () => {
-    expect(Object.keys(tailwindDeprecationsMeta)).toStrictEqual(Object.keys(tailwindMeta));
+  it('describes every documented declaration', () => {
+    expect(documented.filter((node) => !node.description.trim())).toStrictEqual([]);
   });
 
-  it('holds only nodes carrying a deprecation and a public identity', () => {
-    const invalid = deprecatedNodes.filter((node) => !isDeprecated(node) || !tailwindIdentifier(node));
-    expect(invalid).toStrictEqual([]);
-    expect(deprecatedNodes.length).toBeGreaterThan(0);
+  it('lists exactly the documented identifiers', () => {
+    expect(documented.map(tailwindIdentifier)).toMatchSnapshot();
+  });
+});
+
+describe('tailwindDeprecations', () => {
+  it('lists exactly the deprecated identifiers', () => {
+    expect(tailwindDeprecations.map(({ identifier }) => identifier)).toMatchSnapshot();
   });
 
-  it('spells every identifier uniquely within and across both catalogs', () => {
-    const identifiers = [...currentNodes.map(tailwindIdentifier), ...tailwindDeprecations.map((d) => d.identifier)];
-    expect(identifiers.length).toBe(new Set(identifiers).size);
+  it('publishes every deprecated declaration exactly once, spelled canonically', () => {
+    expect(tailwindDeprecations.map(({ identifier }) => identifier).sort()).toStrictEqual(
+      deprecated.map(tailwindIdentifier).sort()
+    );
   });
 
-  it('points every replacement at a canonical identifier other than its own', () => {
-    const canonical = new Set(currentNodes.map(tailwindIdentifier));
+  it('carries each marker through untouched', () => {
+    const markers = new Map(deprecated.map((node) => [tailwindIdentifier(node), node.deprecation]));
+    const rebuilt = tailwindDeprecations.filter(
+      ({ identifier, deprecation }) => markers.get(identifier) !== deprecation
+    );
+    expect(rebuilt).toStrictEqual([]);
+  });
+
+  it('points every replacement at a documented identifier other than its own', () => {
+    const canonical = new Set(documented.map(tailwindIdentifier));
     const invalid = tailwindDeprecations.filter(
       ({ identifier, deprecation }) =>
         deprecation.replacement !== undefined &&
@@ -86,49 +93,26 @@ describe('tailwindDeprecationsMeta', () => {
   });
 });
 
-describe('tailwindDeprecations', () => {
-  it('publishes every catalog node once, in catalog order, spelled canonically', () => {
-    expect(tailwindDeprecations.map((d) => d.identifier)).toStrictEqual(deprecatedNodes.map(tailwindIdentifier));
-  });
-
-  it('carries each node’s marker through untouched', () => {
-    expect(tailwindDeprecations.map((d) => d.deprecation)).toStrictEqual(deprecatedNodes.map((n) => n.deprecation));
-  });
-});
-
-describe('tailwindMeta', () => {
-  it('carries no deprecated node', () => {
-    // Also enforced at the type level — the current leaf types have no `deprecation` field, so
-    // `satisfies TailwindMeta` rejects one. This is the runtime backstop for `TailwindBranch` walks.
-    expect(currentNodes.filter(isDeprecated)).toStrictEqual([]);
-  });
-
-  it('describes every documented leaf', () => {
-    const undescribed = currentNodes.filter((node) => !node.description?.trim());
-    expect(undescribed.map(tailwindIdentifier)).toStrictEqual([]);
-  });
-});
-
 describe('tailwind css composition', () => {
-  it('sources every generated public declaration from exactly one catalog node', () => {
-    const catalog = new Set<unknown>([...currentNodes, ...deprecatedNodes]);
+  it('spells every generated declaration uniquely', () => {
+    const identifiers = declarations.map(tailwindIdentifier);
+    expect(identifiers.length).toBe(new Set(identifiers).size);
+  });
+
+  it('renders every catalog declaration exactly once', () => {
+    expect(declarations.length).toBe(documented.length + deprecated.length);
+  });
+
+  it('limits the remaining generated properties to CSS-only plumbing', () => {
     const unsourced = composed
-      .filter((node) => !catalog.has(node))
-      .filter((node): node is CssNode & { property: string } => 'property' in node)
+      .filter((node): node is CssNode & { property: string } => 'property' in node && !('description' in node))
       .map((node) => node.property)
       .filter((property) => !isPlumbing(property));
     expect(unsourced).toStrictEqual([]);
   });
 
-  it('renders every catalog node exactly once, so nothing is indexed without shipping', () => {
-    const missing = [...currentNodes, ...deprecatedNodes].filter(
-      (node) => composed.filter((candidate) => (candidate as unknown) === node).length !== 1
-    );
-    expect(missing.map(tailwindIdentifier)).toStrictEqual([]);
-  });
-
   it('marks every deprecated declaration in the generated CSS', () => {
-    for (const node of deprecatedNodes) {
+    for (const node of deprecated) {
       expect(renderNode(node)).toContain('/* alias (deprecated) */\n');
     }
   });
@@ -136,7 +120,7 @@ describe('tailwind css composition', () => {
   it('keeps the generated marker terse, since CSS has no silent comment', () => {
     // Every byte of a comment in `index.css` reaches every consumer, so the replacement and
     // lifecycle guidance stays in the catalog rather than being expanded into the stylesheet.
-    for (const node of deprecatedNodes) {
+    for (const node of deprecated) {
       const rendered = renderNode(node);
       expect(rendered).not.toContain(deprecationMessage(node));
       expect(rendered).not.toContain('@deprecated');

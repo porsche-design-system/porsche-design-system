@@ -1,21 +1,31 @@
-import { tailwindDeprecationsMeta, tailwindMeta } from '../meta';
-import { fontBaseLayer, textSizeCompanions } from '../theme/font';
-import { defaultTransitionDuration, defaultTransitionTimingFunction } from '../theme/motion';
+import { blur } from '../theme/blur';
+import { border } from '../theme/border';
+import { breakpoint } from '../theme/breakpoint';
+import { color } from '../theme/color';
+import { font, fontBaseLayer, textSizeCompanions } from '../theme/font';
+import { defaultTransitionDuration, defaultTransitionTimingFunction, motion } from '../theme/motion';
+import { shadow } from '../theme/shadow';
+import { spacing } from '../theme/spacing';
 import type { CssNode, CssRule, TailwindCssMeta } from '../types';
-import { animateSkeletonThemeVariable, skeletonKeyframes } from '../utilities/skeleton';
+import { displayUtilities } from '../utilities/display';
+import { gradientUtilities } from '../utilities/gradient';
+import { grid } from '../utilities/grid';
+import { headingUtilities } from '../utilities/heading';
+import { animateSkeletonThemeVariable, skeletonKeyframes, skeletonUtilities } from '../utilities/skeleton';
+import { textUtilities } from '../utilities/text';
 import { flatten, renderNode } from './render';
 import { schemeRootFallback, schemeUtilities } from './scheme';
 
 /**
  * The CSS-generation layer for the Tailwind styling solution: the assembly that composes the
- * documented {@link tailwindMeta} with the non-documented, CSS-only implementation detail (resets,
- * base colors, the focus-outline default, line-height companions, transition defaults, deprecated
- * aliases, keyframes and the outside-`@theme` layers) into the final stylesheet
- * ({@link tailwindCssMeta} / {@link getTailwindcssTheme}).
+ * declaration catalog with the non-documented, CSS-only implementation detail (resets, base colors,
+ * the focus-outline default, line-height companions, transition defaults, keyframes and the
+ * outside-`@theme` layers) into the final stylesheet ({@link tailwindCssMeta} /
+ * {@link getTailwindcssTheme}).
  *
- * Kept separate from `meta.ts` on purpose: `meta.ts` is the documented model (what the storefront
- * and the LLM skill consume), this file is *how the CSS is produced*. The documented catalog is
- * referenced here by the same object identity, so the docs and the generated CSS can never diverge.
+ * Kept separate from `meta.ts` on purpose: `meta.ts` derives the documented model and the published
+ * deprecations, this file is *how the CSS is produced*. Both read the same domain objects, so the
+ * docs and the generated CSS can never diverge.
  */
 
 // `@theme` namespace resets — clear the framework defaults so only the Porsche Design System
@@ -36,46 +46,43 @@ const baseColors: CssNode[] = [
 
 const outlineWidth: CssNode = { property: '--default-outline-width', value: '2px' };
 
-// The `@theme` block: the documented catalog (referenced from `tailwindMeta`) interleaved with the
-// CSS-only implementation detail in the exact render order. `flatten()` walks each branch (record /
-// array / leaf) in source order, so this explicit recipe is the single place the `@theme` ordering
-// is decided. Only resets/baseColors must functionally come first; the rest is grouped for clarity.
+// The `@theme` block: the declaration catalog interleaved with the CSS-only implementation detail in
+// the exact render order. `flatten()` walks each branch (record / array / leaf) in source order, so
+// this explicit recipe is the single place the `@theme` ordering is decided, and each domain emits
+// its deprecated aliases beside the declarations they replace. Only resets/baseColors must
+// functionally come first; the rest is grouped for clarity.
 const themeBlock: CssRule = {
   selector: '@theme',
   declarations: flatten([
     resets,
     baseColors,
-    tailwindMeta.color,
-    tailwindMeta.font,
+    color,
+    font,
     textSizeCompanions,
-    tailwindMeta.breakpoint,
-    tailwindMeta.spacing,
-    tailwindMeta.border,
-    tailwindDeprecationsMeta.border,
-    tailwindMeta.blur,
-    tailwindMeta.shadow,
+    breakpoint,
+    spacing,
+    border,
+    blur,
+    shadow,
     outlineWidth,
-    tailwindMeta.motion,
+    motion,
     defaultTransitionTimingFunction,
     defaultTransitionDuration,
-    tailwindDeprecationsMeta.shadow,
-    tailwindDeprecationsMeta.motion,
     animateSkeletonThemeVariable,
     skeletonKeyframes,
   ]),
 };
 
-// The documented `@utility` blocks in CSS render order. The documented model groups them for the
-// docs (`typography` super-group); here they are listed explicitly so the stylesheet order is
-// decided by this recipe rather than the model's grouping.
-const { typography, gradient, grid, skeleton } = tailwindMeta;
+// The `@utility` blocks in CSS render order. The documented model groups them for the docs
+// (`typography` super-group); here they are listed explicitly so the stylesheet order is decided by
+// this recipe rather than the model's grouping.
 const utilities: CssNode[] = [
-  ...gradient,
+  ...gradientUtilities,
   ...flatten(grid),
-  ...skeleton,
-  ...typography.text,
-  ...typography.heading,
-  ...typography.display,
+  ...skeletonUtilities,
+  ...textUtilities,
+  ...headingUtilities,
+  ...displayUtilities,
 ];
 
 // The final CSS tree used to generate the index.css file containing the tailwind theme which gets exposed.

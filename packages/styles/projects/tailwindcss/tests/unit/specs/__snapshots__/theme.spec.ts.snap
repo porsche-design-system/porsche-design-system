@@ -204,22 +204,17 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --shadow-sm: 0px 3px 8px rgba(0, 0, 0, 0.16);
   --shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.16);
   --shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
-  --default-outline-width: 2px;
-  --transition-duration-sm: 0.25s;
-  --transition-duration-md: 0.4s;
-  --transition-duration-lg: 0.6s;
-  --transition-duration-xl: 1.2s;
-  --ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --ease-in: cubic-bezier(0, 0, 0.2, 1);
-  --ease-out: cubic-bezier(0.4, 0, 0.5, 1);
-  --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --default-transition-duration: 0.25s;
   /* alias (deprecated) */
   --shadow-low: --theme(--shadow-sm);
   /* alias (deprecated) */
   --shadow-medium: --theme(--shadow-md);
   /* alias (deprecated) */
   --shadow-high: --theme(--shadow-lg);
+  --default-outline-width: 2px;
+  --transition-duration-sm: 0.25s;
+  --transition-duration-md: 0.4s;
+  --transition-duration-lg: 0.6s;
+  --transition-duration-xl: 1.2s;
   /* alias (deprecated) */
   --transition-duration-short: --theme(--transition-duration-sm);
   /* alias (deprecated) */
@@ -228,6 +223,11 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --transition-duration-long: --theme(--transition-duration-lg);
   /* alias (deprecated) */
   --transition-duration-very-long: --theme(--transition-duration-xl);
+  --ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-in: cubic-bezier(0, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.4, 0, 0.5, 1);
+  --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --default-transition-duration: 0.25s;
   --animate-skeleton: skeleton --theme(--transition-duration-xl)
     --theme(--ease-in-out) infinite;
   @keyframes skeleton {

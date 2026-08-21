@@ -53,16 +53,17 @@ npm run test:vrt:styles
   package-local marker type, default sentence or message helper. Only the canonical identity helper (`scssIdentifier`,
   `tailwindIdentifier`) is package-owned. Import the deep path, never the package barrel, which is 53 modules against
   the contract's one.
-- `scss` authors **one catalog** per domain holding every public declaration, deprecated ones marked by an optional
-  `deprecation` field, and derives both public exports from it: `scssMeta` (the catalog minus its deprecated
-  declarations, checked against the hand-authored `StylesMeta` contract) and the flat `scssDeprecations`. Deprecating is
-  adding one field — never moving a declaration. See
-  [`docs/scss-deprecation-metadata-design.md`](../../docs/scss-deprecation-metadata-design.md).
-- `tailwindcss`, `emotion` and `vanilla-extract` still use the two-catalog model: a domain-keyed `<pkg>DeprecationsMeta`
-  beside the meta, with `Deprecated<T>`-wrapped nodes that carry **no** `description`, publishing only the flat
-  `<pkg>Deprecations` built with the shared `publishDeprecations(catalog, identifierOf)`. In `tailwindcss` the catalog
-  is authored; in `emotion` and `vanilla-extract` the `@deprecated` annotation is the source and the catalog is
-  generated (`scripts/deprecations.ts`). They adopt the scss catalog model when the four solutions are aligned.
+- `scss` and `tailwindcss` author **one catalog** per domain holding every public declaration, deprecated ones marked by
+  an optional `deprecation` field, and derive both public exports from it: `<pkg>Meta` (the catalog minus its deprecated
+  declarations, checked against the package-local hand-authored `StylesMeta` contract) and the flat `<pkg>Deprecations`.
+  Deprecating is adding one field — never moving a declaration. See
+  [`docs/scss-deprecation-metadata-design.md`](../../docs/scss-deprecation-metadata-design.md) and
+  [`docs/tailwindcss-deprecation-metadata-design.md`](../../docs/tailwindcss-deprecation-metadata-design.md).
+- `emotion` and `vanilla-extract` still use the two-catalog model: a domain-keyed `<pkg>DeprecationsMeta` beside the
+  meta, with `Deprecated<T>`-wrapped nodes that carry **no** `description`, publishing only the flat `<pkg>Deprecations`
+  built with the shared `publishDeprecations(catalog, identifierOf)`. There the `@deprecated` annotation is the source
+  and the catalog is generated (`scripts/deprecations.ts`). They adopt the catalog model when the solutions are aligned
+  — the blocker is shape (positional arrays versus keyed records, and three `grid` shapes), not taxonomy.
 - The global styles (single source of truth for `variables.css`, `color-scheme.css`, `normalize.css` and
   `font-face.css`) now live in
   [`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). Add or change CSS

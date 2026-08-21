@@ -1,4 +1,4 @@
-import type { DeprecatedTailwindNode, TailwindNode } from './types';
+import type { TailwindThemeVariable, TailwindUtility } from './types';
 
 // Canonical identity, owned by this package because the custom property versus class spelling is
 // exactly what differs between styling solutions. The marker, the wording and the message helpers are
@@ -12,5 +12,5 @@ import type { DeprecatedTailwindNode, TailwindNode } from './types';
  * Authored `replacement` values are derived from a current node through this, so a rename of the
  * recommended API cannot leave a deprecation pointing at a name that no longer exists.
  */
-export const tailwindIdentifier = (node: TailwindNode | DeprecatedTailwindNode): string =>
+export const tailwindIdentifier = (node: TailwindThemeVariable | TailwindUtility): string =>
   'property' in node ? node.property : node.class;
