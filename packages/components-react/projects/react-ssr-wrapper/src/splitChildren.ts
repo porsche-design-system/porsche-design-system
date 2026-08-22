@@ -20,7 +20,9 @@ export const splitChildren = (
   otherChildren: any[]; // TODO: Improve typing
 } => {
   children =
-    typeof children === 'object' && 'type' in children && children.type === Fragment
+    // `children !== null` is required because `typeof null === 'object'`, which would
+    // make the `in` check throw for a single `null` child (e.g. `{cond ? <X/> : null}`).
+    typeof children === 'object' && children !== null && 'type' in children && children.type === Fragment
       ? (children.props as any).children // Unpack children of React.Fragment
       : children;
 
