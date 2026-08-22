@@ -103,6 +103,32 @@ describe('splitChildren()', () => {
         otherChildren: [1],
       },
     ],
+    // A single falsy child, as produced by `{cond ? <X/> : null}` or `{cond && <X/>}`.
+    // `null` used to throw here since `typeof null === 'object'`.
+    [
+      [null],
+      {
+        children: [],
+        namedSlotChildren: [],
+        otherChildren: [],
+      },
+    ],
+    [
+      [undefined],
+      {
+        children: [],
+        namedSlotChildren: [],
+        otherChildren: [],
+      },
+    ],
+    [
+      [false],
+      {
+        children: [],
+        namedSlotChildren: [],
+        otherChildren: [],
+      },
+    ],
   ])('should for case %# return correct children, namedSlotChildren and otherChildren', (args, result) => {
     expect(splitChildren(...args)).toEqual(result);
   });
