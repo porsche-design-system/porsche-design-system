@@ -139,6 +139,10 @@ export class Carousel {
   /** Overrides the default label strings used for the previous, next, and page indicators — useful for localization. */
   @Prop() public intl?: CarouselInternationalization;
 
+  // TODO: this prop seeds the initial slide and is the controlled value at the same time. React splits
+  //  those into defaultValue and value, so a consumer cannot reliably drive it. To be split into
+  //  defaultActiveSlideIndex + activeSlideIndex in v5, see
+  //  https://github.com/porsche-design-system/porsche-design-system/issues/4689
   /** Sets the zero-based index of the currently visible slide. Update this to navigate programmatically. */
   @Prop() public activeSlideIndex?: number = 0;
 
