@@ -1,11 +1,8 @@
 import { collectComponentDeprecations } from './collectors/componentMeta';
 import { collectEmotionDeprecations } from './collectors/emotion';
-import {
-  collectIconDeprecations,
-  collectPartialDeprecations,
-  collectStylesheetDeprecations,
-} from './collectors/scanned';
+import { collectIconDeprecations, collectPartialDeprecations } from './collectors/scanned';
 import { collectScssDeprecations } from './collectors/scss';
+import { collectStylesheetDeprecations } from './collectors/stylesheets';
 import { collectTailwindcssDeprecations } from './collectors/tailwindcss';
 import { collectTokenDeprecations } from './collectors/tokens';
 import { collectVanillaExtractDeprecations } from './collectors/vanillaExtract';

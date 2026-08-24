@@ -5,6 +5,7 @@ import { componentMeta } from '@porsche-design-system/component-meta';
 import { emotionDeprecations } from '@porsche-design-system/emotion/meta';
 import { scssDeprecations } from '@porsche-design-system/scss';
 import type { Deprecations } from '@porsche-design-system/shared/deprecation';
+import { stylesheetsDeprecations } from '@porsche-design-system/stylesheets/meta';
 import { tailwindDeprecations } from '@porsche-design-system/tailwindcss';
 import { tokenDeprecations } from '@porsche-design-system/tokens-meta';
 import { vanillaExtractDeprecations } from '@porsche-design-system/vanilla-extract/meta';
@@ -35,8 +36,9 @@ import { describe, expect, it } from 'vitest';
  * expectations for every one of them and a sixth source is a row rather than another thirty lines of
  * assertions.
  *
- * `expectedEmpty` records the release state the row is gated against: tokens publish an empty list
- * today, and saying so here is what keeps the other rows' emptiness a failure rather than a shrug.
+ * `expectedEmpty` records the release state the row is gated against: tokens and stylesheets publish
+ * an empty list today, and saying so here is what keeps the other rows' emptiness a failure rather
+ * than a shrug.
  */
 const METADATA_SOURCES: {
   category: SourceCategory;
@@ -82,6 +84,14 @@ const METADATA_SOURCES: {
     reference: 'references/tokens.md',
     collector: 'tokens.ts',
     specifier: '@porsche-design-system/tokens-meta',
+    expectedEmpty: true,
+  },
+  {
+    category: 'stylesheets',
+    deprecations: stylesheetsDeprecations,
+    reference: 'references/stylesheets.md',
+    collector: 'stylesheets.ts',
+    specifier: '@porsche-design-system/stylesheets/meta',
     expectedEmpty: true,
   },
 ];

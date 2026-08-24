@@ -1,6 +1,14 @@
+import type { Deprecated } from '@porsche-design-system/shared/deprecation';
+
 // Meta types describing the global styles. This package is intentionally the single
 // source of truth for the global styles and is NOT derived from the design tokens,
 // since the set of exposed CSS variables is not guaranteed to map 1:1 to tokens.
+//
+// The catalog (`cssVariableTokens` + `colorScheme`) holds every public declaration, documented and
+// deprecated alike, and is what the generated CSS is built from. A declaration is deprecated by
+// carrying the shared `Deprecated` marker in place. `stylesheetsMeta` is that catalog minus its
+// deprecated declarations; `stylesheetsDeprecations` is the deprecated remainder. A declaration
+// therefore cannot reach a consumer without being documented or published as deprecated.
 //
 // The documented catalog (`stylesheetsMeta`) is a domain-keyed tree whose leaves are a
 // discriminated `StylesheetNode` union: a `CssVariableMeta` token (carries `property`) or a
@@ -39,12 +47,13 @@ export type CssVariableMeta = CssVariableMetaBase &
   );
 
 /** Properties shared by every CSS variable, regardless of its `type`. */
-type CssVariableMetaBase = CssDeclaration & {
-  /** Markdown-enabled description (supports `**bold**` and `` `code` ``). */
-  description: string;
-  /** The category this variable belongs to; also acts as the union discriminant. */
-  type: CssVariableType;
-};
+type CssVariableMetaBase = CssDeclaration &
+  Deprecated & {
+    /** Markdown-enabled description (supports `**bold**` and `` `code` ``). */
+    description: string;
+    /** The category this variable belongs to; also acts as the union discriminant. */
+    type: CssVariableType;
+  };
 
 /** A theme-aware color variable (`type: 'color'`) carrying explicit light/dark values. */
 export type ColorCssVariableMeta = Extract<CssVariableMeta, { type: 'color' }>;
@@ -58,12 +67,13 @@ export type ColorCssVariableMeta = Extract<CssVariableMeta, { type: 'color' }>;
  * into CSS directly (via the `renderCss` helper) without an intermediate
  * transform.
  */
-export type ColorSchemeClassMeta = CssRule & {
-  /** Example usage snippet. */
-  usage: string;
-  /** Markdown-enabled description. */
-  description: string;
-};
+export type ColorSchemeClassMeta = CssRule &
+  Deprecated & {
+    /** Example usage snippet. */
+    usage: string;
+    /** Markdown-enabled description. */
+    description: string;
+  };
 
 /**
  * A documented leaf of the meta catalog: either a CSS variable {@link CssVariableMeta} token

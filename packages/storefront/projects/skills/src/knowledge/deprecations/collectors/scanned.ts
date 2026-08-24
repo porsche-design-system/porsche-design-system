@@ -2,22 +2,24 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import type { DeprecationEntry, DeprecationSource } from '../types';
-import { partialsRoot, stylesheetsRoot } from './packageRoots';
+import { partialsRoot } from './packageRoots';
 
 /**
- * Collectors for the source categories that currently hold no deprecations: icons, stylesheets and
- * partials.
+ * Collectors for the source categories that currently hold no deprecations *and* do not publish a
+ * deprecated surface of their own: icons and partials.
  *
  * They exist precisely *because* those categories are empty. Declaring emptiness would be an
- * assertion nobody re-checks; these scan for the same markers the populated collectors read, so
- * "nothing deprecated here" is a verified result. Paired with the completeness gate — which fails a
- * category that is empty without an `expectedEmpty` declaration, and equally fails one that is
- * declared empty but is not — the day stylesheets gain their first deprecation someone has to decide
- * about it instead of the index quietly staying short.
+ * assertion nobody re-checks; these read the same markers a real collector would, so "nothing
+ * deprecated here" is a checked result. Paired with the completeness gate — which fails a category
+ * that is empty without an `expectedEmpty` declaration, and equally fails one that is declared empty
+ * but is not — the day partials gain their first deprecation someone has to decide about it instead
+ * of the index quietly staying short.
  *
- * A scan is the weaker of the two ways to verify that: it can name a file, never an API. Categories
- * whose package publishes its own deprecation catalog leave this file for a metadata adapter — as
- * tokens did — and this one shrinks as the remaining ones follow.
+ * A scan is the weaker of the two ways to verify that: it can name a file, never an API, and it only
+ * finds a marker somebody already knew to write. Categories whose package publishes its own
+ * deprecation catalog leave this file for a metadata adapter — as tokens and stylesheets did — and
+ * this one shrinks as the remaining ones follow. Both that remain are tracked: partials are reworked
+ * with the next major, and icons want package-owned metadata (`docs/icon-deprecation-metadata-design.md`).
  */
 
 const DEPRECATION_MARKER = /@deprecated|\(deprecated\)/i;
@@ -61,9 +63,6 @@ const scanned = (category: DeprecationSource['category'], origin: string, root: 
   const entries = hitsAsEntries(category, root);
   return entries.length > 0 ? { category, origin, entries } : { category, origin, entries, expectedEmpty: true };
 };
-
-export const collectStylesheetDeprecations = (): DeprecationSource =>
-  scanned('stylesheets', 'the shipped global stylesheets', stylesheetsRoot());
 
 export const collectPartialDeprecations = (): DeprecationSource =>
   scanned('partials', 'the build-time partials', partialsRoot());
