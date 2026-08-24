@@ -1,6 +1,18 @@
 import { gridGap, motionEasingBase } from '@porsche-design-system/emotion';
 import { Splide } from '@splidejs/splide';
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  Host,
+  h,
+  type JSX,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
@@ -179,7 +191,11 @@ export class Carousel {
   }
 
   public connectedCallback(): void {
-    observeChildren(this.host, this.updateSlidesAndPagination);
+    observeChildren(this.host, () => {
+      this.updateSlidesAndPagination();
+      // the amount of pages can stay the same while the amount of slides changes, so the slots have to be re-rendered explicitly
+      forceUpdate(this.host);
+    });
     this.observeBreakpointChange();
 
     if (this.splide) {
