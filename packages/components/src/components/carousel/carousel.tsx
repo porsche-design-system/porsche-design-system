@@ -139,8 +139,7 @@ export class Carousel {
   /** Overrides the default label strings used for the previous, next, and page indicators — useful for localization. */
   @Prop() public intl?: CarouselInternationalization;
 
-  /** Sets the zero-based index of the currently visible slide. Update this to navigate programmatically. */
-  @Prop() public activeSlideIndex?: number = 0;
+  @Prop({ mutable: true }) public activeSlideIndex?: number = 0;
 
   /** Sets the `href` of an in-page skip link that lets keyboard users jump past the carousel slides. */
   @Prop() public skipLinkTarget?: string;
@@ -222,6 +221,9 @@ export class Carousel {
       this.observeSlides(); // on reconnect, adjust aria attributes on slides
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
+      // splideJS reads `start` when it mounts, so a destroyed and re-mounted instance would
+      // otherwise jump back to the index it was constructed with instead of where the user is
+      this.splide.options = { start: this.activeSlideIndex };
       this.registerSplideHandlers(this.splide);
     }
   }
@@ -410,6 +412,7 @@ export class Carousel {
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
+      this.activeSlideIndex = activeIndex;
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updatePagination(this.paginationEl, this.getPageCount(), activeIndex);
       this.update.emit({ activeIndex, previousIndex });
