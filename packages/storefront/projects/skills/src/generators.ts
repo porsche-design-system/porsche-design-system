@@ -1,4 +1,4 @@
-import { generateAuditSkill } from './audit/generate';
+import { generateAuditDeprecationsSkill } from './audit-deprecations/generate';
 import type { ComponentDocsMetaMap } from './knowledge/components/reference';
 import { generateKnowledgeSkill } from './knowledge/generate';
 import type { SkillId } from './registry';
@@ -28,5 +28,5 @@ export type StorefrontInputs = {
  */
 export const SKILL_GENERATORS = {
   knowledge: generateKnowledgeSkill,
-  audit: generateAuditSkill,
+  'audit-deprecations': generateAuditDeprecationsSkill,
 } as const satisfies Record<SkillId, SkillGenerator<StorefrontInputs>>;

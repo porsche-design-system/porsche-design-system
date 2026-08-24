@@ -1,3 +1,3 @@
 import { describeSkillTreeDrift } from '../../helpers/skillTreeDrift';
 
-describeSkillTreeDrift('audit');
+describeSkillTreeDrift('audit-deprecations');

@@ -12,8 +12,14 @@
  * `generators.ts`; the distributed directory names are derived from the id.
  */
 
-/** Every distributed skill. */
-export const SKILL_IDS = ['knowledge', 'audit'] as const;
+/**
+ * Every distributed skill.
+ *
+ * Audit skills are named per subject rather than as one `audit`, so each stays small enough to run
+ * end to end on a large project and `pds-audit-<framework>` remains free for a future skill that
+ * composes them.
+ */
+export const SKILL_IDS = ['knowledge', 'audit-deprecations'] as const;
 export type SkillId = (typeof SKILL_IDS)[number];
 
 /**

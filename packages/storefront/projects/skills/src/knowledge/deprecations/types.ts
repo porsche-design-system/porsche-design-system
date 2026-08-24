@@ -27,17 +27,15 @@ export const EFFORTS = ['trivial', 'small', 'medium', 'large'] as const;
 export type Effort = (typeof EFFORTS)[number];
 
 /**
- * Baseline remediation effort per entry kind — a deterministic default so the action plan has a
- * stable order. With severity flat at `medium` for every deprecation and confidence usually `high`,
- * effort is the only thing left ordering the plan; deriving it from the kind keeps two runs of the
- * same audit in agreement, which a per-finding judgement call would not.
+ * Baseline remediation effort per entry kind — a deterministic default, so ordering a report by
+ * effort keeps two runs of the same audit in agreement where a per-finding judgement call would not.
  *
- * It is a baseline, not a verdict: a project can implement a deprecated API in a way that changes the
- * real cost, so the audit may deviate on concrete project evidence as long as it records the observed
- * effort and the reason. Because the baseline is known, the deviation stays auditable.
+ * Only the kind lives here. The audit raises it a level when an entry documents no replacement (see
+ * `audit-deprecations/grading.ts`), and may deviate further on concrete project evidence as long as
+ * it records the observed effort and the reason. Because the baseline is known, both stay reviewable.
  *
- * It lives here as a mapping rather than on each entry because it is fully determined by the kind —
- * the audit skill states the table once instead of the index repeating a constant on ~400 rows.
+ * It is a mapping rather than a field on each entry because the kind fully determines it — the audit
+ * states the table once instead of the index repeating a constant on ~400 rows.
  */
 export const BASELINE_EFFORT: Record<EntryKind, Effort> = {
   value: 'trivial',
