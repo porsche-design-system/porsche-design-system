@@ -14,12 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-### Changed
-
-- `Carousel`: the `activeSlideIndex` prop is now updated by the component itself as the carousel moves, which is what
-  its API documentation already described. Consumers that bind the prop one-way will now observe it changing.
-  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
-
 ### Fixed
 
 - `Carousel`: slides were dropped or left over when the amount of slides changed without also changing the amount of
