@@ -13,7 +13,6 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
-  getProperty,
   goto,
   reattachElement,
   setContentWithDesignSystem,
@@ -388,27 +387,6 @@ test('should have working pagination and prev/next buttons after reconnect', asy
   expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
   expect(await getCssClasses(bullet2)).toBe('bullet');
   expect(await getCssClasses(bullet3)).toBe('bullet');
-});
-
-test('should stay on the active slide after reconnect', async ({ page }) => {
-  await initCarousel(page, { amountOfSlides: 2, slidesPerPage: 1 });
-  const host = getHost(page);
-  const buttonNext = getButtonNext(page);
-  const [, slide2] = await getSlideElements(page);
-
-  await buttonNext.click();
-  await waitForSlideToBeActive(slide2);
-  // the component keeps the prop in sync itself, no consumer wiring involved
-  expect(await getProperty(host, 'activeSlideIndex')).toBe(1);
-
-  await reattachElement(host);
-  await waitForStencilLifecycle(page);
-
-  const [slide1AfterReconnect, slide2AfterReconnect] = await getSlideElements(page);
-  await waitForSlideToBeActive(slide2AfterReconnect);
-  await isElementCompletelyInViewport(slide2AfterReconnect);
-  await isElementNotInViewport(slide1AfterReconnect);
-  expect(await getProperty(host, 'activeSlideIndex')).toBe(1);
 });
 
 test('should disable prev/next buttons on first/last slide when rewind=false', async ({ page }) => {

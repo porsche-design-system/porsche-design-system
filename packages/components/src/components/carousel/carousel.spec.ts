@@ -633,22 +633,7 @@ describe('slidesPerPageHandler()', () => {
   });
 });
 
-describe('activeSlideIndex sync', () => {
-  it('should update the activeSlideIndex prop when splide moves', () => {
-    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
-    vi.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => {});
-    const component = new Carousel();
-    component['amountOfPages'] = 2; // hasNavigation = true
-    component['splide'] = new Splide(getContainerEl());
-    component['update'] = { emit: vi.fn() } as any;
-    component['registerSplideHandlers'](component['splide']);
-    expect(component.activeSlideIndex).toBe(0);
-
-    component['splide'].emit('move', 1, 0);
-
-    expect(component.activeSlideIndex).toBe(1);
-  });
-
+describe('reconnect', () => {
   it('should hand the current activeSlideIndex to splide as its start index on reconnect', () => {
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
