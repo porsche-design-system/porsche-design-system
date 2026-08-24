@@ -533,15 +533,16 @@ test.describe('adding/removing slides', () => {
     ]);
   });
 
+  // 3 slides at 2 per page is 2 pages, so every step here moves the amount of pages.
   test('should render one slot per slide when the amount of pages changes', async ({ page }) => {
     await initCarousel(page, { amountOfSlides: 3, slidesPerPage: 2 });
     const host = getHost(page);
-    await expect(getSlides(page)).toHaveCount(2);
+    await expect(getSlides(page)).toHaveCount(3);
 
     await addSlide(host);
     await waitForStencilLifecycle(page);
 
-    await expect(getSlides(page)).toHaveCount(2);
+    await expect(getSlides(page)).toHaveCount(4);
     expect(await host.evaluate((el) => Array.from(el.children).map((c) => c.assignedSlot?.name ?? null))).toEqual([
       'slide-0',
       'slide-1',
@@ -552,7 +553,7 @@ test.describe('adding/removing slides', () => {
     await removeSlide(host);
     await waitForStencilLifecycle(page);
 
-    await expect(getSlides(page)).toHaveCount(2);
+    await expect(getSlides(page)).toHaveCount(3);
     expect(await host.evaluate((el) => Array.from(el.children).map((c) => c.assignedSlot?.name ?? null))).toEqual([
       'slide-0',
       'slide-1',
