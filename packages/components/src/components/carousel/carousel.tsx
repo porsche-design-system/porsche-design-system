@@ -202,11 +202,20 @@ export class Carousel {
   }
 
   public connectedCallback(): void {
-    observeChildren(this.host, () => {
-      this.updateSlidesAndPagination();
-      // the amount of pages can stay the same while the amount of slides changes, so the slots have to be re-rendered explicitly
-      forceUpdate(this.host);
-    });
+    observeChildren(
+      this.host,
+      () => {
+        const prevAmountOfPages = this.amountOfPages;
+        this.updateSlidesAndPagination();
+        // a changed amountOfPages already re-renders through its own state change but when it stays the
+        // same nothing does, and the slots keep the old count which leaves added slides unprojected
+        if (this.amountOfPages === prevAmountOfPages) {
+          forceUpdate(this.host);
+        }
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
     this.observeBreakpointChange();
 
     if (this.splide) {
