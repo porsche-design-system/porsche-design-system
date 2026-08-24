@@ -18,8 +18,14 @@ import { partialsRoot } from './packageRoots';
  * A scan is the weaker of the two ways to verify that: it can name a file, never an API, and it only
  * finds a marker somebody already knew to write. Categories whose package publishes its own
  * deprecation catalog leave this file for a metadata adapter — as tokens and stylesheets did — and
- * this one shrinks as the remaining ones follow. Both that remain are tracked: partials are reworked
- * with the next major, and icons want package-owned metadata (`docs/icon-deprecation-metadata-design.md`).
+ * this one shrinks as the remaining ones follow. Both that remain are deferred to the next major:
+ * partials are reworked wholesale, and icons want package-owned metadata rather than being read out
+ * of `p-icon`'s allowed values.
+ *
+ * One known consequence of that deferral: the icon entries below and `componentMeta.ts` build the
+ * same `value/p-icon/name/<name>` id from the same `deprecatedValues` field. Both are empty today, so
+ * nothing collides; the first deprecated icon fails the index's unique-id and component-parity gates
+ * until icons own their metadata and the component collector stops claiming those values.
  */
 
 const DEPRECATION_MARKER = /@deprecated|\(deprecated\)/i;

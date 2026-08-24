@@ -53,14 +53,14 @@ npm run test:vrt:styles
   `getDeprecationComment`. That last one owns the wording _and_ the comment syntax (`line` / `block` / `jsdoc`), so no
   package writes an `@deprecated` sentence of its own. `note` **appends** to the generated sentence; it never replaces
   it. Only the canonical identity helper (`scssIdentifier`, `tailwindIdentifier`) is package-owned. Import the deep
-  path, never the package barrel, which is 53 modules against the contract's one. See
-  [`docs/deprecation-contract-design.md`](../../docs/deprecation-contract-design.md).
+  path, never the package barrel, which is 53 modules against the contract's one. Each export is documented where it is
+  declared.
 - `scss` and `tailwindcss` author **one catalog** per domain holding every public declaration, deprecated ones marked in
   place by intersecting `Deprecated` into the leaf type (`type ScssVariable = { … } & Deprecated`), and derive both
   public exports from it: `<pkg>Meta` (the catalog minus its deprecated declarations, checked against the package-local
   hand-authored `StylesMeta` contract) and the flat `<pkg>Deprecations`. Deprecating is adding one field — never moving
-  a declaration. See [`docs/scss-deprecation-metadata-design.md`](../../docs/scss-deprecation-metadata-design.md) and
-  [`docs/tailwindcss-deprecation-metadata-design.md`](../../docs/tailwindcss-deprecation-metadata-design.md).
+  a declaration. `@porsche-design-system/stylesheets` follows the same model; see
+  [`packages/components/projects/stylesheets/AGENTS.md`](../components/projects/stylesheets/AGENTS.md).
 - `emotion` and `vanilla-extract` deliberately keep the **two-source** model and do not adopt the catalog: their `src/`
   is hand-written TypeScript and is itself the shipped library, so the meta describes it rather than generating it, and
   the `@deprecated` annotation on the declaration — which also drives the IDE hint — is the source the flat
@@ -70,7 +70,7 @@ npm run test:vrt:styles
   so meta and library cannot drift.
 - Every package's deprecated surface is **one** export, the shared `Deprecations` — no deprecated leaf type, no second
   catalog and no type describing one. `@porsche-design-system/tokens-meta` publishes `tokenDeprecations` the same way;
-  see [`docs/token-deprecation-metadata-design.md`](../../docs/token-deprecation-metadata-design.md).
+  see [`packages/tokens/AGENTS.md`](../tokens/AGENTS.md).
 - All four packages state their documented shape as a package-local `StylesMeta<TToken, TUtility>`, parameterized so it
   can later become one shared cross-solution contract. The blocker for merging them is shape, not taxonomy: utility
   groups are positional arrays in `scss` / `tailwindcss` but keyed records in `emotion` / `vanilla-extract`, and `grid`

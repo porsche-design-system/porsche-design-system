@@ -144,9 +144,9 @@ export const blur = {
   and tests deliberately.
 
 The knowledge skill's deprecation index reads `stylesheetsDeprecations` directly, so the field above is what makes a
-deprecated global style show up for an audit. Background:
-[`docs/stylesheet-deprecation-metadata-design.md`](../../../../docs/stylesheet-deprecation-metadata-design.md) and the
-shared contract in [`docs/deprecation-contract-design.md`](../../../../docs/deprecation-contract-design.md).
+deprecated global style show up for an audit. The contract itself is documented on its exports in
+`@porsche-design-system/shared/deprecation`; the styling packages that follow the same model are described in
+[`packages/styles/AGENTS.md`](../../../styles/AGENTS.md).
 
 ## Working Guidelines
 
