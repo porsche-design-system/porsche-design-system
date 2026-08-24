@@ -190,6 +190,17 @@ export class Carousel {
     this.splide.go(newValue); // change event is emitted via splide.on('move')
   }
 
+  @Watch('slidesPerPage')
+  public slidesPerPageHandler(): void {
+    if (this.splide) {
+      // splideJS reads its breakpoints only when constructed, so a new instance is needed to apply the new value
+      const { index } = this.splide;
+      this.splide.destroy();
+      this.initSplide(index); // splideJS clamps the start index if it exceeds the new amount of pages
+    }
+    this.updateAmountOfPages();
+  }
+
   public connectedCallback(): void {
     observeChildren(this.host, () => {
       this.updateSlidesAndPagination();
@@ -221,31 +232,7 @@ export class Carousel {
 
   public componentDidLoad(): void {
     this.observeSlides(); // initial, adjust aria attributes on slides
-    this.splide = new Splide(this.container, {
-      start: this.activeSlideIndex,
-      arrows: false,
-      easing: motionEasingBase,
-      focus: this.focusOnCenterSlide ? 'center' : undefined,
-      trimSpace: this.trimSpace,
-      pagination: false,
-      rewind: this.rewind,
-      rewindByDrag: true, // only works when rewind: true
-      drag: this.hasNavigation,
-      perMove: 1,
-      mediaQuery: 'min',
-      speed: Number.parseFloat(carouselTransitionDuration) * 1000,
-      gap: gridGap,
-      live: false,
-      // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(
-        this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<CarouselSlidesPerPage> | 'auto', string>
-      ),
-      // https://splidejs.com/guides/i18n/#default-texts
-      i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
-      direction: getLangDirection(this.host),
-    });
-
-    this.registerSplideHandlers(this.splide);
+    this.initSplide(this.activeSlideIndex);
   }
 
   public componentDidUpdate(): void {
@@ -375,6 +362,34 @@ export class Carousel {
         <div class="slide-status" aria-live="polite" aria-atomic="true" ref={(ref) => (this.slideStatusEl = ref)} />
       </Host>
     );
+  }
+
+  private initSplide(startIndex: number): void {
+    this.splide = new Splide(this.container, {
+      start: startIndex,
+      arrows: false,
+      easing: motionEasingBase,
+      focus: this.focusOnCenterSlide ? 'center' : undefined,
+      trimSpace: this.trimSpace,
+      pagination: false,
+      rewind: this.rewind,
+      rewindByDrag: true, // only works when rewind: true
+      drag: this.hasNavigation,
+      perMove: 1,
+      mediaQuery: 'min',
+      speed: Number.parseFloat(carouselTransitionDuration) * 1000,
+      gap: gridGap,
+      live: false,
+      // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
+      breakpoints: getSplideBreakpoints(
+        this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<CarouselSlidesPerPage> | 'auto', string>
+      ),
+      // https://splidejs.com/guides/i18n/#default-texts
+      i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
+      direction: getLangDirection(this.host),
+    });
+
+    this.registerSplideHandlers(this.splide);
   }
 
   private registerSplideHandlers(splide: Splide): void {
