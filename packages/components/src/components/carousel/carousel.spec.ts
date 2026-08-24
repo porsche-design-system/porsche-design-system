@@ -633,6 +633,40 @@ describe('slidesPerPageHandler()', () => {
   });
 });
 
+describe('activeSlideIndex sync', () => {
+  it('should update the activeSlideIndex prop when splide moves', () => {
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    vi.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => {});
+    const component = new Carousel();
+    component['amountOfPages'] = 2; // hasNavigation = true
+    component['splide'] = new Splide(getContainerEl());
+    component['update'] = { emit: vi.fn() } as any;
+    component['registerSplideHandlers'](component['splide']);
+    expect(component.activeSlideIndex).toBe(0);
+
+    component['splide'].emit('move', 1, 0);
+
+    expect(component.activeSlideIndex).toBe(1);
+  });
+
+  it('should hand the current activeSlideIndex to splide as its start index on reconnect', () => {
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    const splide = new Splide(getContainerEl());
+    splide.mount(); // splide only exposes its options setter once mounted, as on the real reconnect path
+    component['splide'] = splide;
+    component.activeSlideIndex = 2; // where the user navigated to before the disconnect
+    vi.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation(() => {});
+    vi.spyOn(component, 'registerSplideHandlers' as any).mockImplementation(() => {});
+    vi.spyOn(component, 'observeSlides' as any).mockImplementation(() => {});
+    expect(component['splide'].options.start).toBeUndefined();
+
+    component.connectedCallback();
+
+    expect(component['splide'].options.start).toBe(2);
+  });
+});
+
 describe('active slide control', () => {
   it('should move the slider to the new active slide index', () => {
     const component = new Carousel();
