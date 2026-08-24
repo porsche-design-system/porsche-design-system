@@ -1,8 +1,9 @@
-import type { Deprecation } from '@porsche-design-system/shared/deprecation';
+import type { Deprecated } from '@porsche-design-system/shared/deprecation';
 
 // The tailwind meta model. `tailwindCatalog` holds every public declaration, documented and
-// deprecated alike; `tailwindMeta` is that catalog minus its deprecated declarations, checked
-// against the hand-authored `StylesMeta` contract.
+// deprecated alike; a declaration is deprecated by carrying the shared `Deprecated` marker in place.
+// `tailwindMeta` is that catalog minus its deprecated declarations, checked against the
+// hand-authored `StylesMeta` contract; `tailwindDeprecations` is the deprecated remainder.
 
 /** A single CSS declaration, e.g. `color-scheme: dark` or `--p-color-canvas: #fff`. */
 export type CssDeclaration = {
@@ -67,9 +68,7 @@ export type TailwindThemeVariable = {
   classes?: string[];
   /** Optional leading comment rendered above the declaration in the `@theme` block. */
   comment?: string;
-  /** Present means deprecated: excluded from `tailwindMeta`, published in `tailwindDeprecations`. */
-  deprecation?: Deprecation;
-};
+} & Deprecated;
 
 /**
  * A documented Tailwind `@utility`: a `description` plus `selector` / `class` (docs) and the `raw`
@@ -87,9 +86,7 @@ export type TailwindUtility = {
   class: string;
   /** The raw CSS declaration body (implementation detail, rendered verbatim). */
   raw: string;
-  /** Present means deprecated: excluded from `tailwindMeta`, published in `tailwindDeprecations`. */
-  deprecation?: Deprecation;
-};
+} & Deprecated;
 
 /** A catalog is a leaf, a list, or a group. Only leaves render; lists and groups only structure. */
 export type TailwindCatalog =

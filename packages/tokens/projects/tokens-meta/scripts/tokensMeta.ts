@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { Deprecation, Deprecations } from '@porsche-design-system/shared/deprecation';
+import type { Deprecated, Deprecations } from '@porsche-design-system/shared/deprecation';
 import * as tokens from '@porsche-design-system/tokens';
 import { camelCase } from 'change-case';
 import ts from 'typescript';
@@ -31,9 +31,7 @@ export type TokenSource = {
   description: string;
   /** Source directory relative to the package root — the catalog path, and the catalog order. */
   directory: string;
-  /** Present exactly when the declaration carries a `@deprecated` annotation. */
-  deprecation?: Deprecation;
-};
+} & Deprecated;
 
 type TokenTree = { [key: string]: TokenTree | TokenMeta };
 export type TokenCatalogs = { tokensMeta: TokenTree; tokenDeprecations: Deprecations };
@@ -43,9 +41,10 @@ const isLeaf = (node: TokenTree | TokenMeta): node is TokenMeta => typeof (node 
 /**
  * Every token the package exports, read through its barrel.
  *
- * An export is read when it is documented **or** deprecated: `Deprecated<T>` drops the description,
- * so deprecating a token and removing its now-unrendered docs row must not drop the token out of the
- * metadata — the one way a legacy token could reach a consumer unindexed.
+ * An export is read when it is documented **or** deprecated: a deprecated token is not rendered into
+ * `tokensMeta` and its docs row may be dropped along with it, so reading only documented exports
+ * would drop the token out of the metadata entirely — the one way a legacy token could reach a
+ * consumer unindexed.
  *
  * The exports are resolved first and the markers second, because a `{@link}` replacement is checked
  * against the documented ones — the tokens a consumer can actually migrate to.

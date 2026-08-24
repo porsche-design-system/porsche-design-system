@@ -15,14 +15,14 @@ export type Deprecation = {
   replacement?: string;
 };
 
-/** A declaration plus the marker. */
-export type Deprecated<T> = T & { deprecation: Deprecation };
+/** A declaration's marker slot. Intersect it into a leaf type: `type ScssVariable = { … } & Deprecated`. */
+export type Deprecated = { deprecation?: Deprecation };
 
 /** A package's published deprecated surface, in rendered order. */
 export type Deprecations = { identifier: string; deprecation: Deprecation }[];
 
-/** Whether a node carries the marker. */
-export const isDeprecated: <T>(node: T) => node is T & Deprecated<unknown>;
+/** Whether a node carries the marker. Narrows to the required form so `node.deprecation` is readable. */
+export const isDeprecated: <T>(node: T) => node is T & Required<Deprecated>;
 
 /** The `@deprecated` comment a generated artifact carries, in the target syntax. */
 export const getDeprecationComment: (deprecation: Deprecation, style: CommentStyle) => string;
@@ -84,12 +84,22 @@ The returned string carries no trailing newline; callers compose that.
 overridden by a package and can never drift. Only one authored message exists across the styling packages today
 (Tailwind's `--border-width-regular`), and it becomes `note: 'The default border width is now 1px.'`.
 
-### `Deprecated<T>` no longer strips `description`
+### `Deprecated` is a non-generic marker slot
 
-`Deprecated<T> = T & { deprecation: Deprecation }`. The distributive `Omit<T, 'description'>` is gone, so `description`
-is required wherever the leaf type has one (scss, Tailwind) and simply absent where the node never had one.
-`tokens-meta` was the only package relying on the strip, and it no longer needs it either: emotion, vanilla-extract and
-tokens publish `{ identifier, deprecation }` entries, which carry no description to strip.
+`Deprecated = { deprecation?: Deprecation }`. It is not a wrapper that transforms a declaration — the earlier
+`Deprecated<T> = T & { deprecation: Deprecation }` was generic and **required**, which suited neither of the two shapes
+that actually exist: a catalog leaf that _may_ carry the marker, and the narrowed node `isDeprecated` produces. It was
+used nowhere as a declared node type.
+
+The non-generic slot is intersected into a leaf type instead — `type ScssVariable = { … } & Deprecated` — so the marker
+key is declared once and spelled identically by every source. `isDeprecated` narrows to `Required<Deprecated>`, which
+derives the required form from the same declaration, so a caller can read `node.deprecation` and build a `Deprecations`
+entry without a non-null assertion.
+
+The distributive `Omit<T, 'description'>` the generic once carried is gone, so `description` is required wherever the
+leaf type has one (scss, Tailwind, stylesheets) and simply absent where the node never had one. `tokens-meta` was the
+only package relying on the strip, and it no longer needs it either: emotion, vanilla-extract and tokens publish
+`{ identifier, deprecation }` entries, which carry no description to strip.
 
 ### Annotation convention for emotion, vanilla-extract and tokens
 

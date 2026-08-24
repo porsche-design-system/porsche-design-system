@@ -19,8 +19,8 @@ export type Deprecation = {
   replacement?: string;
 };
 
-/** A declaration plus the marker. */
-export type Deprecated<T> = T & { deprecation: Deprecation };
+/** A declaration's marker slot. Intersect it into a leaf type: `type ScssVariable = { … } & Deprecated`. */
+export type Deprecated = { deprecation?: Deprecation };
 
 /**
  * A package's published deprecated surface: canonical identifiers and their markers, in the order
@@ -29,8 +29,14 @@ export type Deprecated<T> = T & { deprecation: Deprecation };
  */
 export type Deprecations = { identifier: string; deprecation: Deprecation }[];
 
-/** Whether a node carries the deprecation lifecycle marker. */
-export const isDeprecated = <T>(node: T): node is T & Deprecated<unknown> =>
+/**
+ * Whether a node carries the deprecation lifecycle marker.
+ *
+ * Narrows to the *required* form so a caller can read `node.deprecation` and build a
+ * {@link Deprecations} entry from it. `Required<Deprecated>` derives that from the declaration above,
+ * so the marker key is spelled in exactly one place.
+ */
+export const isDeprecated = <T>(node: T): node is T & Required<Deprecated> =>
   typeof node === 'object' && node !== null && 'deprecation' in node;
 
 /**

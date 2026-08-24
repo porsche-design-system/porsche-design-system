@@ -236,10 +236,14 @@ domain-keyed deprecations catalog and thirteen `*Deprecations` exports all disap
 
 **Chosen:** an optional `deprecation` field on `ScssVariable` / `ScssMixin`.
 
-The `Deprecated<T>` wrapper existed to keep two catalogs from absorbing each other's entries. With one catalog there is
-nothing to keep apart, and the wrapper's cost is real: four derived types, a distributive `Omit`, and leaf types that no
-longer read as the render inputs they are. The compiler check the wrapper provided is replaced by a stronger one — the
-contract, which sees the _absence_ of a declaration rather than the presence of a field.
+The generic `Deprecated<T>` wrapper existed to keep two catalogs from absorbing each other's entries. With one catalog
+there is nothing to keep apart, and the wrapper's cost is real: four derived types, a distributive `Omit`, and leaf
+types that no longer read as the render inputs they are. The compiler check the wrapper provided is replaced by a
+stronger one — the contract, which sees the _absence_ of a declaration rather than the presence of a field.
+
+What remains of it is the non-generic `Deprecated = { deprecation?: Deprecation }` slot, intersected into the leaf type
+(`type ScssVariable = { … } & Deprecated`) so the marker key is declared once in `shared` rather than spelled out in
+every leaf type across every package.
 
 ### Derived meta type versus a hand-written shape
 
@@ -342,7 +346,7 @@ that is the only place a deprecation can be recorded without being stated twice:
 
 | The declaration is authored in…                | The deprecation is…                                         | Sources                                                |
 | ---------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------ |
-| metadata, which generates the shipped artifact | authored in a deprecated catalog beside the current one     | scss, Tailwind CSS, stylesheets                        |
+| metadata, which generates the shipped artifact | authored in place, as a field on the declaration            | scss, Tailwind CSS, stylesheets                        |
 | code that can carry a `@deprecated` annotation | read from that annotation, by the package itself            | Emotion, vanilla-extract, tokens, partials, components |
 | an artifact with no annotation site            | authored in a catalog, because there is nowhere else for it | icons                                                  |
 
@@ -355,7 +359,7 @@ metadata entry. Identifiers are spelled by the package _before_ publication, so 
 collectors need no per-source callback. Where a package keeps a grouped `<pkg>DeprecationsMeta` to derive it from, that
 stays internal: the grouping is authoring and routing information, not something a consumer needs, and publishing both
 invites downstream code to re-walk a tree it should not know about. Markers carry the **shared contract** from
-`@porsche-design-system/shared/deprecation` — `Deprecation` (`{ note?, replacement? }`), the `Deprecated<T>` wrapper,
+`@porsche-design-system/shared/deprecation` — `Deprecation` (`{ note?, replacement? }`), the `Deprecated` marker slot,
 `isDeprecated` and `getDeprecationComment`, which owns both the wording and the comment syntax. The rows differ only in
 how the marker is produced — authored beside the declaration, or recovered from its annotation.
 
@@ -371,14 +375,17 @@ Conventions 1 and 2 shape every deprecated surface; 3–6 and 8 describe an auth
 rows. Conventions 7 and 9 apply to every source. Conventions 10–13 describe the annotation-first row.
 
 1. **The marker is a field, not a parallel type.** A declaration is deprecated because it carries a `deprecation`;
-   nothing else distinguishes it. Where a package generates its declarations (scss, Tailwind CSS, stylesheets) the field
-   is optional on the leaf type and authored in place, so deprecating is one edit and never a move between catalogs.
-   Where they are hand-written TypeScript the node is `Deprecated<{ name }>`, produced by the extractor. Do not
-   redeclare a package-local marker type; a package needing more intersects the shared one.
-2. **`description` follows the leaf type.** `Deprecated<T>` strips nothing. A generated declaration keeps its
-   `description` when deprecated, because it is still rendered into the artifact and read by the catalog's reader; an
-   annotation-derived node never had one, and gains none — its documentation is the annotation. A package that wants the
-   omission spells it locally (`Deprecated<Omit<TokenMeta, 'description'>>`) so it is visible where it is made.
+   nothing else distinguishes it. The key itself is declared once, by the shared non-generic
+   `Deprecated = { deprecation?: Deprecation }`, and intersected into the leaf type
+   (`type ScssVariable = { … } & Deprecated`) — never re-spelled per package, and never redeclared as a package-local
+   marker type. Where a package generates its declarations (scss, Tailwind CSS, stylesheets) the marker is authored in
+   place, so deprecating is one edit and never a move between catalogs. Where they are hand-written TypeScript the
+   extractor fills the same optional slot on its own source node. A package needing more intersects the shared type.
+2. **`description` follows the leaf type.** `Deprecated` strips nothing — it only adds the marker slot. A generated
+   declaration keeps its `description` when deprecated, because it is still rendered into the artifact and read by the
+   catalog's reader; an annotation-derived node never had one, and gains none — its documentation is the annotation. A
+   package that wants the omission spells it locally (`Omit<TokenMeta, 'description'> & Deprecated`) so it is visible
+   where it is made.
 3. **Fixed default wording, shared not repeated.** One sentence:
    `This API will be removed with the next major release.`, prefixed by `Use <replacement> instead.` when there is a
    replacement and followed by the optional `note`. It is built by the single shared `getDeprecationComment`, which also

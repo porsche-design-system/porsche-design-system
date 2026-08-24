@@ -1,4 +1,8 @@
-import type { Deprecation } from '@porsche-design-system/shared/deprecation';
+import type { Deprecated } from '@porsche-design-system/shared/deprecation';
+
+// The scss meta model. `scssCatalog` holds every public declaration, documented and deprecated
+// alike; a declaration is deprecated by carrying the shared `Deprecated` marker in place. `scssMeta`
+// is that catalog minus its deprecated declarations, `scssDeprecations` the deprecated remainder.
 
 /** A scss variable. Renders a `$name: value;` declaration and, unless deprecated, a docs row. */
 export type ScssVariable = {
@@ -8,9 +12,7 @@ export type ScssVariable = {
   description: string;
   /** Trailing comment rendered after the declaration. Never carries deprecation semantics. */
   comment?: string;
-  /** Present means deprecated: excluded from `scssMeta`, published in `scssDeprecations`. */
-  deprecation?: Deprecation;
-};
+} & Deprecated;
 
 /** A scss mixin. Renders a `@mixin` and, unless deprecated, a docs row. */
 export type ScssMixin = {
@@ -22,9 +24,7 @@ export type ScssMixin = {
   description: string;
   /** Comment rendered on its own line above the `@mixin` declaration. Never carries deprecation semantics. */
   comment?: string;
-  /** Present means deprecated: excluded from `scssMeta`, published in `scssDeprecations`. */
-  deprecation?: Deprecation;
-};
+} & Deprecated;
 
 /** A raw scss snippet (`@use`/`@forward` lines, lookup maps, …) rendered verbatim. Composition plumbing, never catalogued. */
 export type ScssRaw = {
