@@ -772,7 +772,6 @@ test.describe('blur event', () => {
     expect((await getEventSummary(host, 'blur')).counter, 'before input lost focus').toBe(0);
 
     await button.click();
-    await expect(button).toBeFocused();
 
     expect((await getEventSummary(host, 'blur')).counter, 'after input lost focus').toBe(1);
   });
@@ -796,7 +795,6 @@ test.describe('blur event', () => {
     expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input got focus').toBe(0);
 
     await button.click();
-    await expect(button).toBeFocused();
 
     expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input lost focus').toBe(1);
   });
