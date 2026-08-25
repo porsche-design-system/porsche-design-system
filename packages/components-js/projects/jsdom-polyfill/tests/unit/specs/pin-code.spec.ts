@@ -25,7 +25,7 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
-  const input = getByLabelTextShadowed('1-4');
+  const input = getByLabelTextShadowed('1 of 4');
   await userEvent.click(input);
   await userEvent.keyboard('1');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
@@ -39,5 +39,5 @@ it('should expose its pin inputs to shadow queries', async () => {
   expect(screen.getAllByShadowRole('textbox')).toHaveLength(4);
 
   const { shadowRoot } = document.querySelector('p-pin-code');
-  expect(screen.getByShadowRole('textbox', { name: '1-4' })).toBe(shadowRoot.querySelector('input#current-input'));
+  expect(screen.getByShadowRole('textbox', { name: '1 of 4' })).toBe(shadowRoot.querySelector('input#current-input'));
 });
