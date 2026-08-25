@@ -23,9 +23,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
   carousel was initialised with.
   ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
-- `Carousel`: the active slide was lost when the element was removed from the DOM and re-inserted, jumping back to the
-  first slide.
-  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 
 ## [4.6.0] - 2026-08-20
 
