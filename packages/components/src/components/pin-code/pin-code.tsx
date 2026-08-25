@@ -20,6 +20,7 @@ import { getFieldsetAriaAttributes } from '../fieldset/fieldset-utils';
 import { getComponentCss } from './pin-code-styles';
 import {
   getConcatenatedInputValues,
+  getPinCodeInputAriaLabel,
   getSanitisedValue,
   type HTMLInputElementEventTarget,
   isCurrentInput,
@@ -150,18 +151,7 @@ export class PinCode {
     this.internals?.setFormValue(this.parsedValue);
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
     for (const input of this.inputElements) {
-      input.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
-        const { data, inputType, target } = event;
-
-        // This is equivalent to maxLength={1} but since some keyboard suggestions fire a single input event we cant use the maxLength attribute
-        // This causes the keyboard suggestion to only work if input is empty
-        const preventMultipleInput = inputType === 'insertText' && target.value.length > 0;
-        const preventNonDigitInput = data && !isInputOnlyDigits(data);
-
-        if (preventMultipleInput || preventNonDigitInput || this.loading) {
-          event.preventDefault();
-        }
-      });
+      input.addEventListener('beforeinput', this.onBeforeInput);
     }
   }
 
@@ -202,7 +192,6 @@ export class PinCode {
     this.inputElements = [];
 
     const currentInputId = 'current-input';
-    const inputLabelId = hasLabel(this.host, this.label) ? labelId : undefined;
     const inputDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
     const inputMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
@@ -233,8 +222,8 @@ export class PinCode {
               form={this.form}
               {...(isCurrentInput(index, this.parsedValue, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
-              aria-label={`${index + 1}-${this.length}`}
-              aria-describedby={setAriaIDREF(inputLabelId, inputMessageId)}
+              aria-label={getPinCodeInputAriaLabel(index, this.length)}
+              aria-describedby={setAriaIDREF(inputMessageId)}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-disabled={this.loading ? 'true' : null}
               autoComplete="one-time-code"
@@ -243,6 +232,7 @@ export class PinCode {
               value={this.parsedValue[index] === ' ' ? null : this.parsedValue[index]}
               disabled={this.disabled}
               required={this.required}
+              onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
               ref={(el) => this.inputElements.push(el)}
             />
@@ -254,6 +244,51 @@ export class PinCode {
       </fieldset>
     );
   }
+
+  private onBeforeInput = (event: InputEvent & HTMLInputElementEventTarget): void => {
+    const { data, inputType, target } = event;
+
+    if (this.loading) {
+      event.preventDefault();
+      return;
+    }
+
+    const preventNonDigitInput = data && !isInputOnlyDigits(data);
+    if (preventNonDigitInput) {
+      event.preventDefault();
+      return;
+    }
+
+    // Replace an occupied cell with a single typed digit, then move focus forward
+    if (inputType === 'insertText' && target.value.length > 0 && data?.length === 1) {
+      const isFullySelected = target.selectionStart === 0 && target.selectionEnd === target.value.length;
+      event.preventDefault();
+      if (!isFullySelected) {
+        return;
+      }
+      target.value = data;
+      this.updateValue(getConcatenatedInputValues(this.inputElements));
+      if (target.nextElementSibling) {
+        target.nextElementSibling.focus();
+      } else {
+        target.select();
+      }
+      return;
+    }
+
+    // Equivalent to maxLength={1}; some keyboard suggestions fire a single input event so we cannot use the maxLength attribute
+    // Multi-character suggestions therefore only work when the cell is empty
+    if (inputType === 'insertText' && target.value.length > 0) {
+      event.preventDefault();
+    }
+  };
+
+  private onInputFocus = (event: FocusEvent & HTMLInputElementEventTarget): void => {
+    const { target } = event;
+    if (target.value) {
+      target.select();
+    }
+  };
 
   private onInput = (event: InputEvent & HTMLInputElementEventTarget): void => {
     // Validation already happened in the beforeinput event
@@ -276,7 +311,19 @@ export class PinCode {
       target,
       target: { previousElementSibling, nextElementSibling },
     } = event;
-    if (key === 'Backspace' || key === 'Delete') {
+    if (key === 'ArrowLeft') {
+      event.preventDefault();
+      previousElementSibling?.focus();
+    } else if (key === 'ArrowRight') {
+      event.preventDefault();
+      nextElementSibling?.focus();
+    } else if (key === 'Home') {
+      event.preventDefault();
+      this.inputElements[0]?.focus();
+    } else if (key === 'End') {
+      event.preventDefault();
+      this.inputElements[this.inputElements.length - 1]?.focus();
+    } else if (key === 'Backspace' || key === 'Delete') {
       // transfer focus backward/forward, if the input value is empty
       if (!target.value) {
         event.preventDefault();
