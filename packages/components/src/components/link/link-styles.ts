@@ -1,10 +1,21 @@
-import { addImportantToEachRule, addImportantToRule, getFocusBaseStyles } from '../../styles';
 import { radiusFull, radiusLg, radiusXl, ref } from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, addImportantToRule, getFocusBaseStyles } from '../../styles';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant } from '../../types';
+import type { BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import type { LinkVariant } from './link-utils';
 
 const cssVariableInternalLinkScaling = '--_p-link-a';
+
+/**
+ * @css-variable {"name": "--p-link-bg", "description": "Overrides the background color of the link in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.", "defaultValue": ""}
+ */
+const cssVarBackground = '--p-link-bg';
+
+/**
+ *  @css-variable {"name": "--p-link-fg", "description": "Overrides the foreground color (label and icon) of the link in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.", "defaultValue": ""}
+ */
+const cssVarForeground = '--p-link-fg';
 
 export const getComponentCss = (
   icon: LinkButtonIconName,
@@ -24,7 +35,9 @@ export const getComponentCss = (
         false,
         hasSlottedAnchor,
         isCompact,
-        cssVariableInternalLinkScaling
+        cssVariableInternalLinkScaling,
+        cssVarBackground,
+        cssVarForeground
       ),
       {
         label: {

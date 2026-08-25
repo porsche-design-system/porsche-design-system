@@ -26,6 +26,10 @@ describe('getComponentCss()', () => {
     ['none', '', 'primary', false, true, true, false],
     ['arrow-right', '', 'primary', false, false, false, true],
     ['arrow-right', '', 'secondary', false, false, false, true],
+    ['arrow-right', '', 'destructive', false, false, false, false],
+    ['arrow-right', '', 'destructive', false, true, false, false],
+    ['arrow-right', '', 'destructive', false, false, true, false],
+    ['arrow-right', '', 'destructive', false, false, false, true],
   ])(
     'should return correct css for icon: %s, iconSource: %s, variant: %s, hideLabel: %s, disabled: %s and loading: %s',
     (...args) => {

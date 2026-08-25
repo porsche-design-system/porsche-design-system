@@ -56,8 +56,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-link-bg,var(--p-color-primary));
+  color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px);
@@ -201,7 +201,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-link-fg,var(--p-color-canvas));
+    background-color: var(--p-link-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -239,8 +240,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-link-bg,var(--p-color-primary));
+  color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
@@ -284,7 +285,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-link-fg,var(--p-color-canvas));
+    background-color: var(--p-link-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -341,8 +343,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-link-bg,var(--p-color-primary));
+  color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
@@ -379,7 +381,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-link-fg,var(--p-color-canvas));
+    background-color: var(--p-link-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -436,8 +439,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-link-bg,var(--p-color-primary));
+  color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
@@ -474,7 +477,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-link-fg,var(--p-color-canvas));
+    background-color: var(--p-link-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -531,8 +535,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-link-bg,var(--p-color-primary));
+  color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
@@ -569,7 +573,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-link-fg,var(--p-color-canvas));
+    background-color: var(--p-link-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -626,8 +631,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-link-bg,var(--p-color-frosted-strong));
+  color: var(--p-link-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
@@ -664,7 +669,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-link-fg,var(--p-color-primary));
+    background-color: var(--p-link-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -721,8 +727,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-link-bg,var(--p-color-frosted-strong));
+  color: var(--p-link-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
@@ -759,7 +765,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-link-fg,var(--p-color-primary));
+    background-color: var(--p-link-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -816,8 +823,8 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-link-bg,var(--p-color-primary));
+  color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
@@ -848,7 +855,8 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-link-fg,var(--p-color-canvas));
+    background-color: var(--p-link-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {

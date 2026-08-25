@@ -1,21 +1,9 @@
-import type { Styles } from 'jss';
-import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant } from '../types';
-import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
-import {
-  addImportantToEachRule,
-  addImportantToRule,
-  forcedColorsMediaQuery,
-  getFocusBaseStyles,
-  getHiddenTextJssStyle,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from './';
 import {
   blurFrosted,
   colorCanvas,
   colorContrastHigh,
+  colorError,
+  colorErrorMedium,
   colorFrosted,
   colorFrostedStrong,
   colorPrimary,
@@ -28,26 +16,55 @@ import {
   ref,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
+import type { Styles } from 'jss';
+import type { ButtonVariant } from '../components/button/button-utils';
+import type { LinkVariant } from '../components/link/link-utils';
+import type { BreakpointCustomizable, LinkButtonIconName } from '../types';
+import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
+import {
+  addImportantToEachRule,
+  addImportantToRule,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
+  getHiddenTextJssStyle,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from './';
 
 type Colors = {
   textColor: string;
+  textColorHover: string;
   backgroundColor: string;
   backgroundColorHover: string;
 };
 
-const getVariantColors = (variant: LinkButtonVariant): Colors => {
+const getVariantColors = (
+  variant: LinkVariant | ButtonVariant,
+  cssVariableBackground: string,
+  cssVariableForeground: string
+): Colors => {
   const colors: {
-    [v in LinkButtonVariant]: Colors;
+    [v in LinkVariant | ButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: ref(colorCanvas),
-      backgroundColor: ref(colorPrimary),
-      backgroundColorHover: ref(colorContrastHigh),
+      textColor: ref(cssVariableForeground, ref(colorCanvas)),
+      textColorHover: ref(cssVariableForeground, ref(colorCanvas)),
+      backgroundColor: ref(cssVariableBackground, ref(colorPrimary)),
+      backgroundColorHover: ref(cssVariableBackground, ref(colorContrastHigh)),
     },
     secondary: {
-      textColor: ref(colorPrimary),
-      backgroundColor: ref(colorFrostedStrong),
-      backgroundColorHover: ref(colorFrosted),
+      textColor: ref(cssVariableForeground, ref(colorPrimary)),
+      textColorHover: ref(cssVariableForeground, ref(colorPrimary)),
+      backgroundColor: ref(cssVariableBackground, ref(colorFrostedStrong)),
+      backgroundColorHover: ref(cssVariableBackground, ref(colorFrosted)),
+    },
+    destructive: {
+      textColor: ref(cssVariableForeground, ref(colorCanvas)),
+      textColorHover: ref(cssVariableForeground, ref(colorPrimary)),
+      backgroundColor: ref(cssVariableBackground, ref(colorError)),
+      backgroundColorHover: ref(cssVariableBackground, ref(colorErrorMedium)),
     },
   };
 
@@ -57,14 +74,20 @@ const getVariantColors = (variant: LinkButtonVariant): Colors => {
 export const getLinkButtonStyles = (
   icon: LinkButtonIconName,
   iconSource: string,
-  variant: LinkButtonVariant,
+  variant: LinkVariant | ButtonVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
   isCompact: BreakpointCustomizable<boolean>,
-  cssVariableInternalScaling: string
+  cssVariableInternalScaling: string,
+  cssVariableBackground: string,
+  cssVariableForeground: string
 ): Styles => {
-  const { textColor, backgroundColor, backgroundColorHover } = getVariantColors(variant);
+  const { textColor, textColorHover, backgroundColor, backgroundColorHover } = getVariantColors(
+    variant,
+    cssVariableBackground,
+    cssVariableForeground
+  );
 
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
@@ -129,6 +152,7 @@ export const getLinkButtonStyles = (
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover': {
+            color: textColorHover,
             backgroundColor: backgroundColorHover,
             ...forcedColorsMediaQuery({
               background: 'Canvas',

@@ -3,7 +3,6 @@ import type {
   BreakpointCustomizable,
   ButtonAriaAttribute,
   ButtonType,
-  ButtonVariant,
   PropTypes,
   SelectedAriaAttributes,
 } from '../../types';
@@ -17,18 +16,17 @@ import {
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  LINK_BUTTON_VARIANTS,
   validateProps,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './button-styles';
-import { type ButtonIcon, getButtonAriaAttributes } from './button-utils';
+import { BUTTON_VARIANTS, type ButtonIcon, type ButtonVariant, getButtonAriaAttributes } from './button-utils';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
   name: AllowedTypes.string,
   value: AllowedTypes.string,
-  variant: AllowedTypes.oneOf<ButtonVariant>(LINK_BUTTON_VARIANTS),
+  variant: AllowedTypes.oneOf<ButtonVariant>(BUTTON_VARIANTS),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   icon: AllowedTypes.string,
@@ -65,7 +63,7 @@ export class Button {
   /** Disables the button and replaces its content with a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Sets the visual style variant of the button (`primary` or `secondary`). */
+  /** Sets the visual style variant of the button (`primary`, `secondary` or `destructive`). Use `destructive` for actions with irreversible consequences, e.g. deleting data. */
   @Prop() public variant?: ButtonVariant = 'primary';
 
   /** Sets the icon displayed inside the button. Use `none` to show no icon. */
