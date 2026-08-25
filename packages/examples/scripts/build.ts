@@ -55,9 +55,26 @@ const writeFile = (filePath: string, content: string): void => {
   fs.writeFileSync(filePath, content.endsWith('\n') ? content : `${content}\n`);
 };
 
+/**
+ * Sets the modes of an emitted tree explicitly: `755` for folders, `644` for files.
+ *
+ * `fs.cpSync()` carries the mode of every source file over, and a bind mount does not always report a sane one – in
+ * the Playwright container the copied assets come out write-only, which makes the generated project answer its own
+ * images with a permission error and a VRT baseline record a page without them. What is emitted here are public
+ * static files, so their modes are decided rather than inherited.
+ */
+const normalizePermissions = (target: string): void => {
+  fs.chmodSync(target, 0o755);
+
+  for (const entry of fs.readdirSync(target, { withFileTypes: true, recursive: true })) {
+    fs.chmodSync(path.join(entry.parentPath, entry.name), entry.isDirectory() ? 0o755 : 0o644);
+  }
+};
+
 const copyDir = (from: string, to: string): void => {
   if (fs.existsSync(from)) {
     fs.cpSync(from, to, { recursive: true });
+    normalizePermissions(to);
   }
 };
 
