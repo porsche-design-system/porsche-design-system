@@ -226,9 +226,6 @@ export class Carousel {
       this.observeSlides(); // on reconnect, adjust aria attributes on slides
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
-      // splideJS reads `start` when it mounts, so a destroyed and re-mounted instance would
-      // otherwise jump back to the index it was constructed with instead of where the user is
-      this.splide.options = { start: this.activeSlideIndex };
       this.registerSplideHandlers(this.splide);
     }
   }
