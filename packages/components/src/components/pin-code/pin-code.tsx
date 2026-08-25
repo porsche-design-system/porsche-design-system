@@ -233,6 +233,7 @@ export class PinCode {
               disabled={this.disabled}
               required={this.required}
               onFocus={this.onInputFocus}
+              onMouseUp={this.onInputMouseUp}
               onBlur={this.onInputBlur}
               ref={(el) => this.inputElements.push(el)}
             />
@@ -287,6 +288,13 @@ export class PinCode {
     const { target } = event;
     if (target.value) {
       target.select();
+    }
+  };
+
+  // WebKit places the caret on mouseup after focus, which would undo select() and block overwrite.
+  private onInputMouseUp = (event: MouseEvent & HTMLInputElementEventTarget): void => {
+    if (event.target.value) {
+      event.preventDefault();
     }
   };
 
