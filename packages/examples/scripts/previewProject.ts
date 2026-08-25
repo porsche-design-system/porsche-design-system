@@ -19,7 +19,14 @@ import { buildGeneratedProject, scratchDir } from './buildGeneratedProject.ts';
  * HTML is rewritten to `http://localhost:3001`, where `serve-cdn` serves the locally built components. Only the
  * throwaway copy in `dist-tmp/` is touched – `dist/`, the source handed to the examples repository, keeps the
  * production URLs.
+ *
+ * Usage: `tsx scripts/previewProject.ts <category> [--no-open]`. The VRT suite starts this script as its web server,
+ * where a browser must not be opened and the port must not silently move – hence the flag and `strictPort`.
  */
+
+/** `--no-open` keeps the preview headless, which is what the VRT web server and any CI usage need. */
+const args = process.argv.slice(2);
+const shouldOpen = !args.includes('--no-open');
 
 /** Points the built pages at `serve-cdn`, mirroring the rewrite the dev server does per request. */
 const rewriteCdnUrls = (outDir: string): number => {
@@ -34,7 +41,7 @@ const rewriteCdnUrls = (outDir: string): number => {
 };
 
 const previewProject = async (): Promise<void> => {
-  const category = process.argv[2];
+  const category = args.find((arg) => !arg.startsWith('--'));
   const project = category ? getProject(category) : undefined;
 
   if (!project) {
@@ -59,7 +66,9 @@ const previewProject = async (): Promise<void> => {
     build: { outDir: project.category },
     preview: {
       port: project.previewPort,
-      open: '/',
+      // A moved port is a silent failure for the VRT web server, which waits on exactly this one.
+      strictPort: true,
+      open: shouldOpen && '/',
     },
   });
 

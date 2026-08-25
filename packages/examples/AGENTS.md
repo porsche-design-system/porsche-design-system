@@ -70,6 +70,9 @@ scripts/verify.ts                 # builds both generated projects into dist-tmp
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 tests/unit/jsx.spec.tsx           # tests describing the rendering contract
+tests/vrt/config/                 # playwright config: engines, viewports, the three web servers
+tests/vrt/helpers/                # page enumeration + everything a capture has to pin down
+tests/vrt/specs/examples.vrt.ts   # one capture set per page, plus the committed __screenshots__
 src/
 ├── index.page.tsx                # overview of the source tree – dev only, never emitted
 ├── _data.ts                      # templateItems, patternItems (URLs inside their project), chrome nav
@@ -133,6 +136,7 @@ A test asserts that the overview pages contain no `href="#"` and that the chrome
 npm run start:examples      # dev server on http://localhost:3010
 npm run build:examples      # writes ./dist (gitignored)
 npm run test:unit:examples  # vitest
+npm run test:vrt:examples   # playwright – builds both projects and screenshots every page
 
 # build one generated project and serve the result against the local CDN
 npm run preview:examples/patterns    # http://localhost:3011
@@ -141,6 +145,36 @@ npm run preview:examples/templates   # http://localhost:3012
 # from within this package
 npm run build:verify        # build + `vite build` of both generated projects into ./dist-tmp
 ```
+
+**Run the VRT in Docker** – `./docker.sh npm run test:vrt:examples` – like every other visual regression suite in this
+monorepo. The committed baselines are the ones the container produces; a run on macOS renders different pixels.
+
+## Visual regression tests
+
+The suite lives in [`tests/vrt/`](tests/vrt) and screenshots **every page of both projects in its initial state**.
+
+- **It tests the built projects, not the dev server.** The web servers of
+  [`tests/vrt/config/playwright.config.ts`](tests/vrt/config/playwright.config.ts) are `serve-cdn` plus the two
+  `preview:*:app` scripts, so each run does the same `vite build` as `build:verify` and captures pages that carry the
+  bundled entry, the copied stylesheet and the injected partials – what the examples repository ships.
+- **Two projects, one viewport each:** `chrome` (chromium, 1000 = `viewportWidthM`) and `safari` (webkit, 320 =
+  `viewportWidthXXS`). They are named after the engine because `prepare-vrt-snapshots` derives the names of the
+  regression artifacts from the project name. Dark scheme, both High Contrast Mode schemes, 200% font size and `rtl` are
+  captured on `chrome` only – font scaling and forced colors go through CDP, and the responsive behaviour is already
+  covered by the two widths.
+- **Pages are globbed, not listed.** [`tests/vrt/helpers/pages.ts`](tests/vrt/helpers/pages.ts) resolves every
+  `*.page.tsx` to the URL of its preview server, so a new example is covered without touching the spec; a count
+  assertion fails if a page appears or disappears unnoticed.
+- **What `setupExamplePage()` pins down** ([`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)): components
+  upgraded (`:defined` plus Stencil's `hydrated` class – the loader partial ships no `componentsReady()`), the design
+  system fonts requested explicitly (`document.fonts.ready` alone settles nothing that has not started, and fallback
+  metrics wrap a line differently), images complete, videos reset to their poster, the focus a pattern took on load
+  released, and a one pixel viewport nudge so self-measuring components measure with the final layout.
+- **Third-party images are stubbed.** The footer loads three payment logos from a Porsche CDN; the run answers every
+  non-local request itself, so a baseline records the layout of the page rather than the availability of a network.
+- `patterns-header-stacked` has no 200% font size capture: its category tabs flip between showing and hiding their
+  scroll affordance while the suite runs in parallel, which changes the page height by 34px. The other five captures of
+  that page still cover it – see the comment in the spec.
 
 ## Conventions that are easy to get wrong
 
@@ -275,7 +309,13 @@ approach, and it is paid on every review:
   `dist-tmp/` and serve that with `vite preview`. So the name is literal: it is the built site, with bundled scripts and
   hashed assets, not the source tree and not `dist/`. `dist/` itself is never touched and keeps the production URLs. The
   ports (3011, 3012) live on the projects in [`plugins/projects.ts`](plugins/projects.ts) and are **not** part of the
-  generated `vite.config.ts`.
+  generated `vite.config.ts`. The `preview:*:app` variants add `--no-open` and bring no CDN of their own – they are what
+  the VRT web servers start, next to one `serve-cdn`.
+- **The emitted files carry decided modes, not inherited ones.** `fs.cpSync()` copies the mode of every source file, and
+  a bind mount does not always report a sane one: in the Playwright container the copied `public/` assets came out
+  write-only, so the generated project answered its own images with a permission error and a VRT baseline recorded a
+  page without them. [`scripts/build.ts`](scripts/build.ts) therefore sets `755`/`644` on everything it emits.
+
 - **`start` and `preview` mean what they mean elsewhere in the monorepo.** `npm start` is the dev server on the source,
   `preview:*` serves build output – the same split as `start` vs. `start-app` in the wrapper packages and as `preview`
   in `packages/styles`. A change that makes `preview:*` serve sources again should rename it.
@@ -329,6 +369,22 @@ section.
 Point-in-time notes, last updated 2026-08-21.
 
 Done:
+
+- **Visual regression tests added (2026-08-21)**, in `tests/vrt/`, run by `npm run test:vrt:examples` and by a new
+  `Examples` job in [`test.yml`](../../.github/workflows/test.yml) (which also runs the unit tests – the package had no
+  CI job before). Notable:
+  - they test the **built** projects: the Playwright web servers are `serve-cdn` plus the two `preview:*:app` scripts,
+    so every capture goes through the same `vite build` as `build:verify`;
+  - two engine × viewport pairings, `chrome` at 1000 and `safari` at 320, with dark, both HCM schemes, 200% font size
+    and `rtl` on chromium only – font scaling and forced colors need CDP;
+  - the pages are globbed from `*.page.tsx`, so a new example is captured without touching the spec;
+  - three races had to be closed for the baselines to be reproducible: the fonts (requested explicitly, because
+    `document.fonts.ready` settles nothing that has not started), the hero video (reset to its poster) and
+    self-measuring components (a one pixel viewport nudge before the capture);
+  - `scripts/build.ts` now sets the modes of everything it emits, after the copied `public/` assets came out write-only
+    in the container and the first baselines recorded pages without their images;
+  - `previewProject.ts` gained `--no-open` and `strictPort`, and `docker-compose.yml` the ports 3010–3012 plus a volume
+    for this package's `node_modules`.
 
 - Full port of the demo pages, unit tests covering page URL resolution, escaping, optional props, navigation overrides,
   the accessibility baseline and the "no framework attribute names in the output" rule.
@@ -438,3 +494,6 @@ Open:
 5. Derive the preloaded component chunks per project from the rendered markup, instead of the hand kept lists in
    [`plugins/projects.ts`](plugins/projects.ts).
 6. `public/` is copied into both projects in full; split it per category once the asset lists diverge.
+7. The category tabs of `patterns/header/stacked` do not settle at 200% font size when the machine is busy – they flip
+   between showing and hiding their scroll affordance, which is why that one VRT capture is skipped. Worth a look at the
+   pattern (or at `p-tabs-bar`), not at the test.
