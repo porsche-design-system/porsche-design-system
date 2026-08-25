@@ -17,11 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Added
 
 - `Button`: `destructive` variant for actions with irreversible consequences, e.g. deleting data
-  ([#4452](https://github.com/porsche-design-system/porsche-design-system/issues/4452))
+  ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
 - `Button`, `Link`: `--p-button-bg`, `--p-button-fg`, `--p-link-bg` and `--p-link-fg` CSS variables to override the
   background and foreground color in every state, including hover. You are responsible for ensuring sufficient contrast
-  and brand compliance. ([#4452](https://github.com/porsche-design-system/porsche-design-system/issues/4452))
-- `Icon`: `ai-chat` icon ([#4452](https://github.com/porsche-design-system/porsche-design-system/issues/4452))
+  and brand compliance. ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Icon`: `ai-chat` icon ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
 
 ## [4.6.0] - 2026-08-20
 
