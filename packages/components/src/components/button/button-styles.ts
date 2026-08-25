@@ -57,13 +57,11 @@ export const getComponentCss = (
         },
         ...(isLoading && {
           spinner: {
+            '--p-spinner-color': 'currentcolor',
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            ...((variant === 'primary' || variant === 'destructive') && {
-              '--p-spinner-color': 'currentcolor',
-            }),
           },
         }),
         label: {

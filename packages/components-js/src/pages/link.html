@@ -1,7 +1,27 @@
 <style>
-  .w-0 {
-    width: 0px;
-  }
+.w-0 {
+  width: 0px;
+}
+
+.custom-colors-1 {
+  --p-link-bg: light-dark(#0d164c, #7a85db);
+  --p-link-fg: light-dark(#7a85db, #0d164c);
+}
+
+.custom-colors-1:hover {
+  --p-link-bg: light-dark(#060d33, #a8b1ea);
+  --p-link-fg: light-dark(#a8b1ea, #060d33);
+}
+
+.custom-colors-2 {
+  --p-link-bg: light-dark(#025b3f, #21eeae);
+  --p-link-fg: light-dark(#21eeae, #025b3f);
+}
+
+.custom-colors-2:hover {
+  --p-link-bg: light-dark(#013d2a, #6ef7cf);
+  --p-link-fg: light-dark(#6ef7cf, #013d2a);
+}
 </style>
 
 <div class="playground auto-layout-inline" title="should render primary with label only">
@@ -178,14 +198,33 @@
   >
 </div>
 
+<div class="playground auto-layout-block" title="should not render link smaller than min-content if set to 0px width">
+  <p-link class="w-0" href="https://porsche.com" icon="arrow-right" hide-label="true">Some label</p-link>
+  <p-link class="w-0" href="https://porsche.com" variant="secondary">Some label</p-link>
+  <p-link class="w-0" href="https://porsche.com" variant="secondary" icon="arrow-right">Some label</p-link>
+  <p-link class="w-0" variant="secondary" icon="arrow-right"><a href="https://porsche.com">Some label</a></p-link>
+</div>
+
 <div
-  class="playground auto-layout-block"
-  title="should not render link smaller than min-content if set to 0px width"
+  class="playground auto-layout-inline"
+  title="should render button with variant primary and custom background and foreground color"
 >
-    <p-link class="w-0" href="https://porsche.com" icon="arrow-right" hide-label="true">Some label</p-link>
-    <p-link class="w-0" href="https://porsche.com" variant="secondary">Some label</p-link>
-    <p-link class="w-0" href="https://porsche.com" variant="secondary" icon="arrow-right">Some label</p-link>
-    <p-link class="w-0" variant="secondary" icon="arrow-right"
-      ><a href="https://porsche.com">Some label</a></p-link
-    >
+  <p-link class="custom-colors-1" href="https://porsche.com">Some label</p-link>
+  <p-link class="custom-colors-1" href="https://porsche.com" icon="car">Some label</p-link>
+  <p-link class="custom-colors-1" href="https://porsche.com" hide-label="true" icon="car">Some label</p-link>
+  <p-link class="custom-colors-1" href="https://porsche.com" compact="true" icon="car">Some label</p-link>
+</div>
+
+<div
+  class="playground auto-layout-inline"
+  title="should render button with variant secondary and custom background and foreground color"
+>
+  <p-link class="custom-colors-2" href="https://porsche.com" variant="secondary">Some label</p-link>
+  <p-link class="custom-colors-2" href="https://porsche.com" variant="secondary" icon="car">Some label</p-link>
+  <p-link class="custom-colors-2" href="https://porsche.com" variant="secondary" hide-label="true" icon="car"
+    >Some label</p-link
+  >
+  <p-link class="custom-colors-2" href="https://porsche.com" variant="secondary" compact="true" icon="car"
+    >Some label</p-link
+  >
 </div>
