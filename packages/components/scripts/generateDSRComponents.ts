@@ -146,7 +146,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     return (
       <>
         {/* @ts-ignore */}
-        <template shadowroot="open" shadowrootmode="open"${delegatesFocusProp}>
+        <template shadowroot="open" shadowrootmode="open" shadowrootclonable="true"${delegatesFocusProp}>
           <style dangerouslySetInnerHTML={{ __html: style }} />
           ${g1.trim().replace(/\n/g, '$&    ')}
         </template>${children}
