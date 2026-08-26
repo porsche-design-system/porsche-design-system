@@ -146,7 +146,10 @@ const generateComponentMeta = (): void => {
     const isChunked = (TAG_NAMES_WITH_CHUNK as unknown as TagName[]).includes(tagName);
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAria'); // used only partial "SelectedAria" string to cover both type variants of "SelectedAriaAttributes" and "SelectedAriaRole"
-    // matches the decorator only when it's used as such (start of a line) to avoid false positives from mentions within comments
+    // Only components which let Stencil attach ElementInternals via the `@AttachInternals()` decorator are flagged,
+    // since those are form-associated and require the `attachInternals` API to exist (e.g. mocked in tests).
+    // Matching at the start of a line ensures mentions within comments (e.g. `p-link`, which attaches internals
+    // manually and defensively) don't produce false positives.
     const hasElementInternals = /^\s*@AttachInternals\(\)/m.test(source);
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
