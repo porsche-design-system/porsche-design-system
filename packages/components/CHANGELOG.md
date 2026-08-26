@@ -14,6 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Carousel`: slides were dropped or left over when the amount of slides changed without also changing the amount of
+  pages, for example going from 1 to 2 slides at `slides-per-page="3"`. An added slide was never rendered and a
+  removed slide left an empty slot and a surplus pagination bullet behind.
+  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+- `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
+  carousel was initialised with.
+  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+
 ## [4.6.0] - 2026-08-20
 
 ## [4.6.0-rc.3] - 2026-08-19
