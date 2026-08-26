@@ -1,4 +1,4 @@
 import { colorContrastHighLight } from '@porsche-design-system/tokens';
 
-/** @deprecated This API will be removed with the next major release. Use colorContrastHighLight instead. */
+/** @deprecated Use {@link colorContrastHigh} instead. This API will be removed with the next major release. */
 export const themeLightContrastHigh = colorContrastHighLight;

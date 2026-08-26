@@ -1,4 +1,4 @@
 import { colorSuccessFrostedLight } from '@porsche-design-system/tokens';
 
-/** @deprecated This API will be removed with the next major release. Use colorSuccessFrostedLight instead. */
+/** @deprecated Use {@link colorSuccessFrosted} instead. This API will be removed with the next major release. */
 export const themeLightNotificationSuccessSoft = colorSuccessFrostedLight;

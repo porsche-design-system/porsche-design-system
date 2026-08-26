@@ -1,4 +1,4 @@
 import { colorSurfaceDark } from '@porsche-design-system/tokens';
 
-/** @deprecated This API will be removed with the next major release. Use colorSurfaceDark instead. */
+/** @deprecated Use {@link colorSurface} instead. This API will be removed with the next major release. */
 export const themeDarkBackgroundSurface = colorSurfaceDark;

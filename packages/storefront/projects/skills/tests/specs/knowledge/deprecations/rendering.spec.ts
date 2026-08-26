@@ -148,6 +148,23 @@ describe('deprecations reference rendering', () => {
         expect(reference(framework)).toContain(`| \`${entry.id}\` | \`${entry.identifier}\` |`);
       });
 
+      it('never leaves a named successor stranded in the note column', () => {
+        // A row whose note reads `Use x instead.` while its Replacement column is empty is graded one
+        // effort level dearer and loses its exact edit, and the audit says "no replacement documented"
+        // beside a note that names one. Section 6 reads only the Replacement column, so the column is
+        // where a single-identifier successor has to be. 76 rows shipped this way. The identifier has
+        // to start like one: `Use 1px instead.` is guidance, not an export, and stays a note.
+        const rows = reference(framework)
+          .split('\n')
+          .filter((line) => line.startsWith('| `'))
+          .map((line) => line.trim().replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim()));
+        const stranded = rows.filter(
+          ([, , replacement, note]) =>
+            replacement === '—' && /^Use `?[A-Za-z_$][\w$]*`? instead\.$/.test(note ?? '')
+        );
+        expect(stranded.map(([ruleId, , , note]) => `${ruleId} ${note}`)).toStrictEqual([]);
+      });
+
       it('gives every source category its own section, including the empty ones', () => {
         const headings = Object.keys(sections(reference(framework)));
         for (const source of SOURCES) {

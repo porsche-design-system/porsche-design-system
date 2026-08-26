@@ -81,119 +81,119 @@ exports[`vanillaExtractDeprecations > matches snapshot 1`] = `
   },
   {
     "deprecation": {
-      "note": "Use colorCanvasDark instead.",
+      "replacement": "colorCanvas",
     },
     "identifier": "themeDarkBackgroundBase",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorFrostedDark instead.",
+      "replacement": "colorFrosted",
     },
     "identifier": "themeDarkBackgroundFrosted",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorBackdropDark instead.",
+      "replacement": "colorBackdrop",
     },
     "identifier": "themeDarkBackgroundShading",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorSurfaceDark instead.",
+      "replacement": "colorSurface",
     },
     "identifier": "themeDarkBackgroundSurface",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorContrastHighDark instead.",
+      "replacement": "colorContrastHigh",
     },
     "identifier": "themeDarkContrastHigh",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorContrastLowDark instead.",
+      "replacement": "colorContrastLow",
     },
     "identifier": "themeDarkContrastLow",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorContrastMediumDark instead.",
+      "replacement": "colorContrastMedium",
     },
     "identifier": "themeDarkContrastMedium",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorErrorDark instead.",
+      "replacement": "colorError",
     },
     "identifier": "themeDarkNotificationError",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorErrorFrostedDark instead.",
+      "replacement": "colorErrorFrosted",
     },
     "identifier": "themeDarkNotificationErrorSoft",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorInfoDark instead.",
+      "replacement": "colorInfo",
     },
     "identifier": "themeDarkNotificationInfo",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorInfoFrostedDark instead.",
+      "replacement": "colorInfoFrosted",
     },
     "identifier": "themeDarkNotificationInfoSoft",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorSuccessDark instead.",
+      "replacement": "colorSuccess",
     },
     "identifier": "themeDarkNotificationSuccess",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorSuccessFrostedDark instead.",
+      "replacement": "colorSuccessFrosted",
     },
     "identifier": "themeDarkNotificationSuccessSoft",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorWarningDark instead.",
+      "replacement": "colorWarning",
     },
     "identifier": "themeDarkNotificationWarning",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorWarningFrostedDark instead.",
+      "replacement": "colorWarningFrosted",
     },
     "identifier": "themeDarkNotificationWarningSoft",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorPrimaryDark instead.",
+      "replacement": "colorPrimary",
     },
     "identifier": "themeDarkPrimary",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorFrostedDark instead.",
+      "replacement": "colorFrosted",
     },
     "identifier": "themeDarkStateActive",
     "usageKind": "jsExport",
@@ -205,14 +205,14 @@ exports[`vanillaExtractDeprecations > matches snapshot 1`] = `
   },
   {
     "deprecation": {
-      "note": "Use colorFocusDark instead.",
+      "replacement": "colorFocus",
     },
     "identifier": "themeDarkStateFocus",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorFrostedDark instead.",
+      "replacement": "colorFrosted",
     },
     "identifier": "themeDarkStateHover",
     "usageKind": "jsExport",
@@ -226,119 +226,119 @@ exports[`vanillaExtractDeprecations > matches snapshot 1`] = `
   },
   {
     "deprecation": {
-      "note": "Use colorCanvasLight instead.",
+      "replacement": "colorCanvas",
     },
     "identifier": "themeLightBackgroundBase",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorFrostedLight instead.",
+      "replacement": "colorFrosted",
     },
     "identifier": "themeLightBackgroundFrosted",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorBackdropLight instead.",
+      "replacement": "colorBackdrop",
     },
     "identifier": "themeLightBackgroundShading",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorSurfaceLight instead.",
+      "replacement": "colorSurface",
     },
     "identifier": "themeLightBackgroundSurface",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorContrastHighLight instead.",
+      "replacement": "colorContrastHigh",
     },
     "identifier": "themeLightContrastHigh",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorContrastLowLight instead.",
+      "replacement": "colorContrastLow",
     },
     "identifier": "themeLightContrastLow",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorContrastMediumLight instead.",
+      "replacement": "colorContrastMedium",
     },
     "identifier": "themeLightContrastMedium",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorErrorLight instead.",
+      "replacement": "colorError",
     },
     "identifier": "themeLightNotificationError",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorErrorFrostedLight instead.",
+      "replacement": "colorErrorFrosted",
     },
     "identifier": "themeLightNotificationErrorSoft",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorInfoLight instead.",
+      "replacement": "colorInfo",
     },
     "identifier": "themeLightNotificationInfo",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorInfoFrostedLight instead.",
+      "replacement": "colorInfoFrosted",
     },
     "identifier": "themeLightNotificationInfoSoft",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorSuccessLight instead.",
+      "replacement": "colorSuccess",
     },
     "identifier": "themeLightNotificationSuccess",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorSuccessFrostedLight instead.",
+      "replacement": "colorSuccessFrosted",
     },
     "identifier": "themeLightNotificationSuccessSoft",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorWarningLight instead.",
+      "replacement": "colorWarning",
     },
     "identifier": "themeLightNotificationWarning",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorWarningFrostedLight instead.",
+      "replacement": "colorWarningFrosted",
     },
     "identifier": "themeLightNotificationWarningSoft",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorPrimaryLight instead.",
+      "replacement": "colorPrimary",
     },
     "identifier": "themeLightPrimary",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorFrostedLight instead.",
+      "replacement": "colorFrosted",
     },
     "identifier": "themeLightStateActive",
     "usageKind": "jsExport",
@@ -350,14 +350,14 @@ exports[`vanillaExtractDeprecations > matches snapshot 1`] = `
   },
   {
     "deprecation": {
-      "note": "Use colorFocusLight instead.",
+      "replacement": "colorFocus",
     },
     "identifier": "themeLightStateFocus",
     "usageKind": "jsExport",
   },
   {
     "deprecation": {
-      "note": "Use colorFrostedLight instead.",
+      "replacement": "colorFrosted",
     },
     "identifier": "themeLightStateHover",
     "usageKind": "jsExport",

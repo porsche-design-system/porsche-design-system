@@ -1,4 +1,4 @@
 import { colorWarningDark } from '@porsche-design-system/tokens';
 
-/** @deprecated This API will be removed with the next major release. Use colorWarningDark instead. */
+/** @deprecated Use {@link colorWarning} instead. This API will be removed with the next major release. */
 export const themeDarkNotificationWarning = colorWarningDark;

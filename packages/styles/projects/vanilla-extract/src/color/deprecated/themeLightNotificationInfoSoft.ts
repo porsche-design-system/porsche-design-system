@@ -1,4 +1,4 @@
 import { colorInfoFrostedLight } from '@porsche-design-system/tokens';
 
-/** @deprecated This API will be removed with the next major release. Use colorInfoFrostedLight instead. */
+/** @deprecated Use {@link colorInfoFrosted} instead. This API will be removed with the next major release. */
 export const themeLightNotificationInfoSoft = colorInfoFrostedLight;

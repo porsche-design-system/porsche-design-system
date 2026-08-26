@@ -1,4 +1,4 @@
 import { colorPrimaryDark } from '@porsche-design-system/tokens';
 
-/** @deprecated This API will be removed with the next major release. Use colorPrimaryDark instead. */
+/** @deprecated Use {@link colorPrimary} instead. This API will be removed with the next major release. */
 export const themeDarkPrimary = colorPrimaryDark;

@@ -1,4 +1,4 @@
 import { colorBackdropLight } from '@porsche-design-system/tokens';
 
-/** @deprecated This API will be removed with the next major release. Use colorBackdropLight instead. */
+/** @deprecated Use {@link colorBackdrop} instead. This API will be removed with the next major release. */
 export const themeLightBackgroundShading = colorBackdropLight;
