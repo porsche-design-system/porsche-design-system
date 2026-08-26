@@ -179,16 +179,33 @@ const FILE_SCOPE: Record<Framework, { globs: string; note: string }> = {
 const renderScope = (framework: Framework): string => {
   const { globs, note } = FILE_SCOPE[framework];
   return [
-    'Determine the project root from the Git or workspace root, falling back to the current directory. Resolve any ' +
-      'user-supplied include and exclude paths against it, and record them in the report. Never read outside the ' +
-      'root, and never follow a symlink that leaves it.',
+    'Determine the project root from the Git or workspace root, falling back to the current directory. Never read ' +
+      'outside the root, and never follow a symlink that leaves it.',
+    '',
+    '**Discover the packages before auditing any of them.** Enumerate every `package.json` under the root, skipping ' +
+      `ignored paths, and audit each one that declares \`${wrapperPackage(framework)}\` in \`dependencies\`, ` +
+      '`devDependencies` or `peerDependencies`. Do not take a monorepo\u2019s `workspaces` globs as the list: a ' +
+      'directory that declares the dependency without being a workspace member is in scope all the same, and a ' +
+      'workspace member that does not declare it is not.',
+    '',
+    'Record every discovered package in `scope.includedPaths` — `.` when the project is a single package — and every ' +
+      'path you deliberately leave out in `scope.excludedPaths`, each with its reason. That includes a discovered ' +
+      'package you decided not to audit. This list is what \u00a79 checks `completed` against, because a package ' +
+      'never discovered was never an eligible file either, so no file-level check can catch it.',
+    '',
+    'Resolve any user-supplied include and exclude paths against the root and apply them on top of that list, ' +
+      'recording them the same way.',
     '',
     `Audit production source and PDS configuration: ${globs}.`,
     '',
     note,
     '',
     'Respect version-control ignore rules, and exclude dependencies, build output, tests, examples and generated ' +
-      'files by default. Every eligible file must end up either audited or recorded in `coverage.skippedFiles` — ' +
+      'files by default. A default exclusion goes in `scope.excludedPaths` with its reason and **nowhere else** — it ' +
+      'is a choice the audit made, not something that stopped it, so repeating it in `coverage.limitations` reports ' +
+      'a working decision as a coverage failure.',
+    '',
+    'Every eligible file in a discovered package must end up either audited or recorded in `coverage.skippedFiles` — ' +
       'any skipped eligible file makes the run `partial`.',
   ].join('\n');
 };
@@ -268,11 +285,55 @@ const renderCandidates = (): string =>
       ['`valueResolution`', 'Where the value comes from'],
       [
         ...Object.entries(VALUE_RESOLUTIONS).map(([id, { description }]) => [`\`${id}\``, description]),
-        ['—', 'Component props, state, or a spread — a manual follow-up, never a finding.'],
+        ['—', 'A prop, state or spread that **no** call site resolves — a manual follow-up, never a finding.'],
       ]
     ),
     '',
     'Resolve constants **one hop** — the declaration a value refers to — and no further.',
+    '',
+    '**A value arriving through one of the project\u2019s own wrappers is a finding, not a follow-up.** \u00a74 ' +
+      'already anchored the prop by checking that every hop forwards it; keep following it in the same direction, to ' +
+      'the call sites that supply it. Each call site that resolves — a literal, or a constant one hop away — is an ' +
+      'evidence location on the finding, and the route it travelled is what its `detection` records. Reaching a ' +
+      'value through a wrapper is what `wrapper-forwarded` and `wrapper-transformed` are *for*; sending those cases ' +
+      'to follow-ups instead leaves half of \u00a76\u2019s table unreachable and reports resolved usage as ' +
+      'unresolvable. A value is a follow-up only when **no** call site resolves it: genuinely dynamic input, state, ' +
+      'or a spread whose contents you cannot see.',
+    '',
+    'A value that resolves **inside** a wrapper — a lookup table, a default, a mapped constant — is a finding on the ' +
+      'same terms, whether or not any call site selects it. It is written in the source and breaks at the next major ' +
+      'release regardless of which branch runs today, so do not weigh up reachability: resolved is the test, reached ' +
+      'is not.',
+    '',
+    'Such a location is `direct`, not a wrapper detection. The line is the PDS usage itself and the route from this ' +
+      'file\u2019s own PDS root to it never leaves the file — a component being a wrapper says nothing about how its ' +
+      'own body was reached, and neither does the value having been picked by one of that wrapper\u2019s own props. ' +
+      '`wrapper-forwarded` and `wrapper-transformed` describe the other end: a location that **is** a call site of the ' +
+      'wrapper. Grading a wrapper\u2019s own body as wrapper-reached lowers confidence on findings nothing was ' +
+      'inferred about, and \u00a76 derives confidence precisely so that it cannot be a judgement call.',
+    '',
+    'The two are not alternatives. **One finding carries both** \u2014 the resolution inside the wrapper and every ' +
+      'call site that supplies one \u2014 for the reason just given: the wrapper\u2019s own default or lookup entry ' +
+      'breaks at the next major release whether or not a caller selects it. Report only the call sites and every ' +
+      'branch no caller selects disappears with them, which costs whole rules rather than locations \u2014 a default ' +
+      'nothing overrides is exactly the one no call site points at. Report only the wrapper and the report cannot ' +
+      'show a reader which callers the fix has to reach.',
+    '',
+    'That first half is *where the value is written*, not where the PDS element happens to sit. A wrapper earns a ' +
+      'location when the value resolves in its own file \u2014 a literal on the element, a default, a lookup entry. ' +
+      'Where the wrapper only forwards a prop, nothing resolves on that line: the call site is the location and the ' +
+      'wrapper is the route, which `detection` already records. Listing both counts one flow twice, and inflates the ' +
+      'occurrence count \u00a78 sorts by. A `valueResolution` of `literal` on a line holding no literal is the ' +
+      'symptom.',
+    '',
+    'A call site counts whether it **names** the deprecated value or only **selects** one. Passing the deprecated ' +
+      'spelling through a renamed prop names it; passing a variant name that the wrapper maps onto the deprecated ' +
+      'value \u2014 through a lookup, a condition or a default \u2014 selects it. Both are locations, because the ' +
+      'test is whether the line has to change for the deprecation to go away, and a selector does have to: the ' +
+      'entry it reaches is the one being removed. Its `valueResolution` describes the literal **at that line** ' +
+      '\u2014 the variant name is written in place, so `literal` \u2014 not the deprecated spelling it resolves ' +
+      'to, which the in-wrapper location carries. Leave selector call sites out and the report names the wrapper ' +
+      'but none of the callers a migration has to visit.',
     '',
     '**Breakpoint objects are the easiest thing to miss and the most costly.** A responsive value is nested inside a ' +
       'structure, so comparing a whole attribute value against a deprecated value matches none of them:',
@@ -295,13 +356,40 @@ const renderCandidates = (): string =>
   ].join('\n');
 
 /**
+ * The one case where "where the API sits" and "how the location was reached" disagree, answered per
+ * framework because the roots differ.
+ *
+ * A tag assembled as a string is never reached by traversal. Where components enter through an
+ * import, that makes it a `fallback-search` hit even in a file the import already anchors; where the
+ * tag *is* the root, the same line is `direct`. Both fixture runs graded the React case `direct`,
+ * reading `direct` as "the API appears in this file" — the reading the one-axis table removes.
+ */
+const STRING_TAG_FROM_IMPORTED_ROOT =
+  'All four describe the route, so a file can carry a PDS root and still hold a `fallback-search` location. A tag ' +
+  "built as a string — passed to `createElement('p-text', …)`, or written into markup in a template literal — is " +
+  'not reached from the import that anchors the file, only by searching for it. It is `fallback-search`, and the ' +
+  'import goes in its `anchor`.';
+
+const STRING_TAG_FROM_TAG_ROOT =
+  'All four describe the route. A `p-` tag is itself a root wherever it is written, including one assembled as a ' +
+  "string, so `createElement('p-text', …)` and markup built in a template literal are `direct` — the traversal " +
+  'starts there rather than arriving there.';
+
+const STRING_TAG_DETECTION: Record<Framework, string> = {
+  react: STRING_TAG_FROM_IMPORTED_ROOT,
+  vue: STRING_TAG_FROM_IMPORTED_ROOT,
+  js: STRING_TAG_FROM_TAG_ROOT,
+  angular: STRING_TAG_FROM_TAG_ROOT,
+};
+
+/**
  * The finding contract, and the two derived grades.
  *
  * Both grades are lookups rather than judgements — from how a location was reached, and from what
  * kind of API it is. That is deliberate: a reader can check a lookup against the evidence printed
  * beside it, where an asserted score proves nothing and costs the same to fabricate.
  */
-const renderFindings = (): string =>
+const renderFindings = (framework: Framework): string =>
   [
     'A finding is one deprecated API, carrying **every** place the project uses it. Split into two findings only when ' +
       'the fix genuinely differs — the same deprecated prop fixed the same way twice is one finding, not two.',
@@ -312,9 +400,15 @@ const renderFindings = (): string =>
       'segment. Do not reconstruct either from the identifier or infer a kind from what the API looks like: a ' +
       '`--`-prefixed Tailwind alias is a `styleAlias`, not a `cssVariable`. Rule ids are what make findings ' +
       'comparable across runs and releases, and an invented one breaks that silently while looking correct.',
-    '- `evidence` — every location, each with a project-relative path, a line number and the source line **quoted ' +
-      'verbatim**. The quote is not decoration: it is what lets a reader, or a later fix, confirm the finding against ' +
-      'the file instead of trusting it.',
+    '- `evidence` — every location where the project **uses** the API, each with a project-relative path, a line ' +
+      'number and the source line **quoted verbatim**. The quote is not decoration: it is what lets a reader, or a ' +
+      'later fix, confirm the finding against the file instead of trusting it.',
+    '- `anchor` on a location — the line that proves that usage is PDS, with its own path, line and quoted source. ' +
+      'The import, the resolved SCSS `@use` **including one injected by build config**, the Tailwind `@theme` ' +
+      'import, or the PDS root at the far end of a wrapper chain. Record it whenever it is not the evidence line ' +
+      'itself; it is frequently in another file, and it is the only truthful place to put `vite.config.ts` for a ' +
+      'stylesheet that names PDS nowhere. Omit it only where the usage anchors itself, as a `--p-` custom property ' +
+      'does.',
     '- `remediation` — a `replacement` with the exact `from` and `to` spelling whenever the index documents an ' +
       'unambiguous one, plus an `instruction` in words. Where the index documents no replacement, say so plainly in ' +
       'the instruction rather than inventing one.',
@@ -323,10 +417,20 @@ const renderFindings = (): string =>
     '- the index entry\u2019s message as `deprecationMessage`, verbatim, when it has one. Some say an API has no ' +
       'effect anymore; that wording matters to whoever reads the finding, so do not paraphrase it.',
     '',
+    'An evidence `line` is the **usage** — the attribute, tag, custom property or alias reference itself. Never the ' +
+      '`import`, `@use` or `@theme` that anchored it, never the wrapper call it arrived through, and never the ' +
+      'declaration line of a constant it resolved from \u2014 including a key inside an object that is spread onto ' +
+      'the element, which is such a declaration and not a usage. For a spread, the evidence line is the element the ' +
+      'object is spread onto. Those lines are real and they matter, which is exactly why ' +
+      'the anchor has a field of its own: counted as locations instead, they inflate a finding by however many ' +
+      'anchors it happens to have, and occurrence count is a sort key in \u00a78 — so two runs of an unchanged ' +
+      'project stop being comparable.',
+    '',
     'Findings carry no severity. Every deprecation in this version is the same impact — it works today and breaks at ' +
       'the next major release — so a per-finding severity would be one value repeated on every row.',
     '',
-    '**Confidence is derived, not judged.** Record on each evidence location *how* you reached it:',
+    '**Confidence is derived, not judged.** Record on each evidence location *how you reached it* — the route, not ' +
+      'where the API sits:',
     '',
     markdownTable(
       ['`detection`', 'How the location was reached', 'Confidence'],
@@ -336,6 +440,8 @@ const renderFindings = (): string =>
         `\`${confidence}\``,
       ])
     ),
+    '',
+    STRING_TAG_DETECTION[framework],
     '',
     'For a deprecated value, its `valueResolution` grades the same way — `literal` and `same-file-constant` are ' +
       '`high`, `imported-constant` is `medium`. A location\u2019s confidence is the lower of its two grades, and the ' +
@@ -358,6 +464,15 @@ const renderFindings = (): string =>
       ])
     ),
     '',
+    '"Documented" means the index row\u2019s **Replacement / note** column names one — the cell opens with `Use`, ' +
+      'followed by the exact successor — and nothing else counts. Not a successor you could work out yourself: a ' +
+      'value row lists the prop\u2019s current values in the same cell, and reading that list as a mapping turns the ' +
+      'lookup back into the judgement call it exists to replace. The index puts the successor in that opening ' +
+      'position whenever the source names one, so read only there: a replacement mentioned further into the cell, ' +
+      'inside the verbatim deprecation message, is prose the row already accounted for, and hunting through it for ' +
+      'one reintroduces the judgement the position exists to settle. Where the column names a replacement, copy it ' +
+      'into `remediation.replacement`; where it does not, the row is one level dearer and the instruction says so.',
+    '',
     'The baseline is what the deprecation costs; this project may cost more or less. A prop threaded through a shared ' +
       'wrapper is harder, a value funnelled through one shared constant is a single edit fixing fifty usages. When ' +
       'that is the case, record `observedEffort` and an `effortRationale` **pointing at evidence already listed on ' +
@@ -377,8 +492,11 @@ const renderVerification = (): string =>
     'Before writing anything, check every finding against the sources it claims. For each one:',
     '',
     '1. `ruleId` appears **verbatim** in the deprecation index.',
-    '2. Every evidence `path` exists, and each `snippet` is really the content of the `line` it names.',
-    '3. `remediation.replacement`, where present, matches what the index and its linked reference actually document.',
+    '2. Every evidence `path` exists, and each `snippet` is really the content of the `line` it names — including on ' +
+      'an `anchor`, which quotes a second file as often as not.',
+    '3. Every evidence `line` is a usage rather than the import, `@use`, `@theme` or declaration that anchored or ' +
+      'resolved it.',
+    '4. `remediation.replacement`, where present, matches what the index and its linked reference actually document.',
     '',
     'Anything that fails is not a finding. Drop it, or record it as a manual follow-up with the reason — a finding ' +
       'that cannot survive its own check is exactly the kind a fix would apply wrongly.',
@@ -431,19 +549,31 @@ const renderResultStates = (): string =>
     markdownTable(
       ['Result', 'When'],
       [
-        ['`completed`', 'Every eligible file was checked, against every category of the index.'],
+        [
+          '`completed`',
+          'Every discovered PDS-dependent package was audited, every eligible file in it checked, against every ' +
+            'category of the index.',
+        ],
         [
           '`partial`',
-          'Some eligible file, requested path or index category could not be checked. Disclose every gap in `coverage`.',
+          'A discovered package went unaudited, or some eligible file, requested path or index category could not ' +
+            'be checked. Disclose every gap in `coverage`.',
         ],
         ['`failed`', 'No meaningful audit was possible — no deprecation index, or no eligible files.'],
       ]
     ),
     '',
-    'Before writing `completed`, check the claim rather than assuming it: every index category worked through, every ' +
-      'eligible file read. If you cannot say that, the answer is `partial`, which is an honest and useful result. ' +
-      '`completed` on an audit that skipped things is the one outcome that actively misleads — a short report reads ' +
-      'as a clean codebase, and nobody looks again.',
+    'Before writing `completed`, check the claim against `scope.includedPaths` rather than against the walk you ' +
+      'happened to run: every package \u00a73 discovered is in that list, every one of them was audited, every index ' +
+      'category was worked through, every eligible file read. A package you never discovered holds no eligible files ' +
+      'either, so file-level eligibility cannot catch it and the package list is the only thing that can. If you ' +
+      'cannot say all of that, the answer is `partial`, which is an honest and useful result. `completed` on an ' +
+      'audit that skipped things is the one outcome that actively misleads — a short report reads as a clean ' +
+      'codebase, and nobody looks again.',
+    '',
+    '`coverage.limitations` carries only what the audit **could not** do. Anything it chose to leave out is a ' +
+      'decision and belongs in `scope.excludedPaths` with its reason — recording a choice in both places reports it ' +
+      'as a failure, and recording it in neither hides the one exclusion a reader most needs to see.',
     '',
     'Keep the report to what a reader can check: findings with paths and lines they can open, and gaps stated in ' +
       'words. Do not pad `coverage` with self-assessment — nobody can verify it, so it reads as assurance while ' +
@@ -516,7 +646,7 @@ export const buildAuditDeprecationsSkillMd = (framework: Framework): string =>
     '',
     '## 6. Record and grade each finding',
     '',
-    renderFindings(),
+    renderFindings(framework),
     '',
     '## 7. Verify before writing',
     '',

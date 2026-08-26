@@ -106,6 +106,162 @@ describe('audit-deprecations skill', () => {
         expect(skillMd).not.toMatch(/one hop only/i);
       });
 
+      it('discovers PDS-dependent packages by their manifests, not by workspace globs', () => {
+        // An unscoped run against this monorepo narrowed itself to three npm workspaces, audited them
+        // perfectly and wrote `completed` — while the workspace holding 49 deprecations was never
+        // enumerated, and the one it did drop was named nowhere. Workspace globs are a plausible
+        // guess for "the packages", and they silently omit any directory that declares the dependency
+        // without being a member.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('**Discover the packages before auditing any of them.**');
+        expect(skillMd).toContain('`package.json`');
+        expect(skillMd).toContain('`peerDependencies`');
+        expect(skillMd).toMatch(/Do not take a monorepo\u2019s `workspaces` globs as the list/);
+      });
+
+      it('ties completed to the discovered packages rather than to file eligibility', () => {
+        // A package never discovered holds no eligible files either, so a self-check phrased over
+        // "every eligible file" agrees with itself and reports success. The package list is the only
+        // thing that can catch it.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('Every discovered PDS-dependent package was audited');
+        expect(skillMd).toContain('A discovered package went unaudited');
+        expect(skillMd).toContain('check the claim against `scope.includedPaths`');
+      });
+
+      it('gives every excluded path a reason, so a dropped package cannot hide', () => {
+        const excludedPaths = schemaOf(framework).properties.scope.properties.excludedPaths;
+        expect(excludedPaths.items.required).toStrictEqual(['path', 'reason']);
+      });
+
+      it('gives a deliberate exclusion exactly one home', () => {
+        // Three runs put default exclusions in three different places — both fields, neither, and one
+        // list that omitted the exclusion that mattered. `scope.excludedPaths` records a choice;
+        // `coverage.limitations` records something that stopped the audit.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('with its reason and **nowhere else**');
+        expect(skillMd).toContain('`coverage.limitations` carries only what the audit **could not** do');
+      });
+
+      it('reports a wrapper-borne value as a finding rather than a follow-up', () => {
+        // §4 says to follow the prop through the project's own wrappers and §6 grades two detections
+        // that only a wrapper can produce, but §5 used to send anything arriving through a prop to
+        // follow-ups. Both readings were faithful, and two runs picked one each — leaving half the
+        // detection table unreachable in the run that chose §5.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain(
+          '**A value arriving through one of the project\u2019s own wrappers is a finding, not a follow-up.**'
+        );
+        expect(skillMd).toContain('A value is a follow-up only when **no** call site resolves it');
+      });
+
+      it('grades a wrapper\u2019s own body as `direct`, not as a wrapper detection', () => {
+        // The paragraph settling that a value resolving inside a wrapper is a finding did not say
+        // what detection it carries, and "resolves **inside** a wrapper" reads as a route. One run
+        // graded four such locations `wrapper-transformed`, pulling their findings to `medium` —
+        // confidence is derived precisely so it cannot come out two ways.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('Such a location is `direct`, not a wrapper detection');
+        for (const detection of ['wrapper-forwarded', 'wrapper-transformed'] as const) {
+          expect(DETECTIONS[detection].description, `${detection} does not name the call site`).toContain('call site');
+        }
+      });
+
+      it('keeps the in-wrapper resolution and its call sites on one finding', () => {
+        // Saying the in-wrapper location grades `direct` and that wrapper detections describe a call
+        // site read as alternatives: one run reported only the call sites, which dropped every branch
+        // no caller selects — losing a whole rule, not a location, since a default nothing overrides
+        // is exactly the one no call site points at.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('The two are not alternatives. **One finding carries both**');
+      });
+
+      it('counts a call site that selects a deprecated value, not only one that names it', () => {
+        // "every call site that supplies one" left the selector case open: two runs agreed on every
+        // call site carrying the deprecated spelling — including under a renamed prop — and split on
+        // the two carrying a variant name that a lookup maps onto it. Four locations and the
+        // confidence of two findings turned on the word "supplies".
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain(
+          'A call site counts whether it **names** the deprecated value or only **selects** one'
+        );
+        expect(skillMd).toContain('the test is whether the line has to change for the deprecation to go away');
+      });
+
+      it('gives the wrapper a location only where the value resolves in its own file', () => {
+        // "One finding carries both" read as "the wrapper's PDS element line, always": one run listed
+        // `<PText size={scale}>` beside the call site that supplies the literal, counting one flow
+        // twice and recording a `literal` resolution on a line holding no literal.
+        expect(read(framework, 'SKILL.md')).toContain('That first half is *where the value is written*');
+      });
+
+      it('decides reachability rather than leaving it to the reader', () => {
+        // A lookup table inside a wrapper holds values no call site selects. They still break at the
+        // next major release, and silence here had one run report them and one skip them.
+        expect(read(framework, 'SKILL.md')).toContain('resolved is the test, reached is not');
+      });
+
+      it('reads the replacement only from the opening of the index cell', () => {
+        // The effort lookup keys off whether a replacement is documented, and the index puts one at
+        // the head of the cell whenever the source names one. Two runs graded the `p-accordion` prop
+        // rows differently by disagreeing about whether a mention later in the verbatim message
+        // counted — so say where to read, not just what to look for.
+        expect(read(framework, 'SKILL.md')).toContain('The index puts the successor in that opening position');
+      });
+
+      it('names the spread object key as a declaration rather than a usage', () => {
+        // Two runs split on `const textProps = { size: 'large' }` spread onto a PDS element: one cited
+        // the element, one the key. Eight of the thirteen location differences between them were this
+        // one question, and both runs already graded it `same-file-constant`.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('including a key inside an object that is spread onto the element');
+        expect(skillMd).toContain('the evidence line is the element the object is spread onto');
+      });
+
+      it('names the usage line as the evidence line, and gives the anchor its own field', () => {
+        // Same project, same model, 49% difference in location count between two runs: one cited the
+        // `@use`/import line beside every usage, the other cited neither. Occurrence count is a sort
+        // key, so the two reports could not even be ordered comparably.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('An evidence `line` is the **usage**');
+        expect(skillMd).toContain('- `anchor` on a location');
+        const anchor = findingOf(framework).properties.evidence.items.properties.anchor;
+        expect(anchor.required).toStrictEqual(expect.arrayContaining(['path', 'line', 'snippet']));
+        expect(anchor.properties.detection).toBeUndefined();
+      });
+
+      it('defines every detection on the one axis of how the location was reached', () => {
+        // `direct` used to be defined by where the API sits and `fallback-search` by how it was
+        // reached, so a string-built tag in an imported file satisfied both.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('Record on each evidence location *how you reached it*');
+        expect(DETECTIONS.direct.description).toBe('Reached from a root in this file, without leaving it.');
+        for (const { description } of Object.values(DETECTIONS)) {
+          expect(description, `${description} does not describe a route`).toMatch(/^Reached /);
+        }
+      });
+
+      it('answers the string-built tag against this framework\u2019s roots', () => {
+        // Where components enter through an import, nothing reaches a tag assembled as a string, so
+        // it is a fallback-search hit in a file the import already anchors. Where the tag is itself
+        // the root, the same line is direct.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain("`createElement('p-text', …)`");
+        expect(skillMd).toContain(
+          ['react', 'vue'].includes(framework)
+            ? 'It is `fallback-search`, and the import goes in its `anchor`.'
+            : 'are `direct` — the traversal starts there rather than arriving there'
+        );
+      });
+
+      it('settles what a documented replacement is, so value effort stops flipping', () => {
+        // All 219 value rules render a current-values list. Grading off whether a successor looks
+        // derivable from it flipped every shared value rule between two runs of the same project.
+        expect(read(framework, 'SKILL.md')).toContain(
+          '"Documented" means the index row\u2019s **Replacement / note** column names one'
+        );
+      });
+
       it('names the roots that exist without an import', () => {
         // The easiest anchoring holes: PDS custom properties come from a global stylesheet no file
         // imports, and SCSS is commonly injected by build config rather than written in a file. Both

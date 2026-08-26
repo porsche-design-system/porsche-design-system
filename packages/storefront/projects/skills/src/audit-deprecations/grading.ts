@@ -16,42 +16,61 @@ export type Confidence = 'high' | 'medium';
 /**
  * How an evidence location was reached, and what that is worth.
  *
+ * Every value below describes the **route**, never where the API happens to sit. The two axes read
+ * the same on most locations and disagree on exactly the interesting ones: a tag built as a string in
+ * a file that also imports PDS *is* in an anchored file, but nothing reached it from that import — it
+ * was found by searching for it. Keeping one axis makes that a lookup rather than a judgement call.
+ *
  * Recorded per location rather than per finding: one finding collects every use of the same
  * deprecated API, and those can be reached differently. A direct usage and a fallback-search hit in
  * the same finding are not equally certain, so grading the finding as a whole would misreport one of
  * them.
+ *
+ * The two wrapper rows are about *what the location is*, not what file it sits in: they describe a
+ * call site of a project wrapper. A location that is the PDS usage itself is `direct` even when the
+ * component holding it is a wrapper, and even when the value it carries was selected by that
+ * wrapper's own prop — the route from the file's PDS root to that line never leaves the file. Read
+ * the other way, every wrapper's internals grade `wrapper-transformed` and confidence drops on
+ * findings nothing was actually inferred about.
  */
 export const DETECTIONS = {
   direct: {
     confidence: 'high',
-    description: 'The deprecated API appears in the file itself.',
+    description: 'Reached from a root in this file, without leaving it.',
   },
   'wrapper-forwarded': {
     confidence: 'high',
-    description: "Reached through the project's own wrapper(s), with forwarding explicit at every hop.",
+    description:
+      "Reached at a call site of one of the project's own wrappers, with forwarding explicit at every hop between it and PDS.",
   },
   'wrapper-transformed': {
     confidence: 'medium',
-    description: 'Reached through a wrapper that renames, conditions or otherwise transforms it along the way.',
+    description:
+      "Reached at a call site of one of the project's own wrappers, one of which renames, conditions or transforms it on the way to PDS.",
   },
   'fallback-search': {
     confidence: 'medium',
-    description: 'Found by searching index spellings after the traversal ran out, then anchored to PDS.',
+    description: 'Reached by searching index spellings after the traversal ran out, then anchored to PDS.',
   },
 } as const satisfies Record<string, { confidence: Confidence; description: string }>;
 
 /**
  * How a deprecated *value* was resolved. Values are the one entry kind the source does not guarantee
  * statically — a plain string can arrive from anywhere — so they carry a second grade.
+ *
+ * Each row names where the string was written, which is not the same question as which route reached
+ * it. A literal handed to a project wrapper three hops from PDS is `literal` here and
+ * `wrapper-forwarded` on the other axis; treating a wrapper as a *resolution* instead would leave
+ * half the detection table unreachable.
  */
 export const VALUE_RESOLUTIONS = {
   literal: {
     confidence: 'high',
-    description: 'Written in place, including inside a breakpoint object.',
+    description: 'Written in place — at the PDS usage or at a wrapper call site, breakpoint objects included.',
   },
   'same-file-constant': {
     confidence: 'high',
-    description: 'A constant declared in the same file.',
+    description: 'A constant declared in the same file as the location.',
   },
   'imported-constant': {
     confidence: 'medium',
@@ -70,6 +89,13 @@ export const VALUE_RESOLUTION_IDS = Object.keys(VALUE_RESOLUTIONS);
  * routine work; removing one with nothing to swap in means designing what replaces it, which is a
  * different job on the same row. `replacement` is optional on an index entry, so the audit can tell
  * the two apart without judging anything.
+ *
+ * "Documented" is that field and only that field — rendered as `Use \`x\`.` in the index's
+ * **Replacement / note** column. It is deliberately not "a successor a reader could work out": a
+ * value row lists the prop's current values beside the replacement, and grading off whether one of
+ * them looks derivable turns a lookup back into a judgement, which is exactly what flipped the effort
+ * of every value rule between two runs of the same project. The index answers the question; the audit
+ * reads the answer.
  */
 export const baselineEffort = (entryKind: EntryKind, hasReplacement: boolean): Effort =>
   hasReplacement

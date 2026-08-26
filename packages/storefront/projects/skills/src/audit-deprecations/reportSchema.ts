@@ -18,7 +18,7 @@ import { DETECTION_IDS, VALUE_RESOLUTION_IDS } from './grading';
  */
 
 /** Bumped when the report shape changes in a way a consumer must react to. */
-export const REPORT_SCHEMA_VERSION = '1.0.0';
+export const REPORT_SCHEMA_VERSION = '2.0.0';
 
 /** Discriminates this report from a future audit's, for a consumer reading a run directory. */
 export const AUDIT_KIND = 'deprecations';
@@ -99,9 +99,27 @@ export const buildReportSchema = (framework: Framework): string => {
         type: 'object',
         additionalProperties: false,
         required: ['includedPaths', 'excludedPaths'],
+        description:
+          'What the run covered, as a list rather than as a claim about the file walk. A package that was never ' +
+          'discovered is a package nobody can see was missed, so `completed` is checked against these two arrays.',
         properties: {
-          includedPaths: stringArray('Project-relative paths the run was limited to; empty means the whole project.'),
-          excludedPaths: stringArray('Project-relative paths excluded from the run.'),
+          includedPaths: stringArray(
+            'Every path the run audited, project-relative: one entry per discovered PDS-dependent package root, ' +
+              'narrowed by any user-supplied include paths. `.` when the project is a single package.'
+          ),
+          excludedPaths: {
+            type: 'array',
+            description:
+              'Every path deliberately left out, each with why — user-supplied excludes, default exclusions such ' +
+              'as tests or build output, and any discovered package the run chose not to audit. A choice belongs ' +
+              'here and not in `coverage.limitations`, which is for what the audit could not do.',
+            items: {
+              type: 'object',
+              additionalProperties: false,
+              required: ['path', 'reason'],
+              properties: { path: { type: 'string' }, reason: { type: 'string' } },
+            },
+          },
         },
       },
       summary: {
@@ -115,8 +133,9 @@ export const buildReportSchema = (framework: Framework): string => {
           result: {
             enum: ['completed', 'partial', 'failed'],
             description:
-              'Execution state only, never project quality: completed = every eligible file checked; ' +
-              'partial = something eligible could not be; failed = no meaningful audit was possible.',
+              'Execution state only, never project quality: completed = every discovered PDS-dependent package ' +
+              'audited and every eligible file in it checked; partial = a discovered package went unaudited or ' +
+              'something eligible could not be checked; failed = no meaningful audit was possible.',
           },
         },
       },
@@ -138,7 +157,10 @@ export const buildReportSchema = (framework: Framework): string => {
               properties: { path: { type: 'string' }, reason: { type: 'string' } },
             },
           },
-          limitations: stringArray('Anything that prevented a complete check, disclosed in full.'),
+          limitations: stringArray(
+            'Anything that prevented a complete check, disclosed in full. Only what the audit could not do — ' +
+              'anything it chose to leave out is a decision and belongs in `scope.excludedPaths` with its reason.'
+          ),
         },
       },
       findings: {
@@ -221,6 +243,14 @@ export const buildReportSchema = (framework: Framework): string => {
               minItems: 1,
               items: evidenceLocation(
                 {
+                  line: {
+                    type: 'integer',
+                    minimum: 1,
+                    description:
+                      'The usage itself — the attribute, tag, property or alias reference. Never the import, @use, ' +
+                      '@theme or declaration line that anchored or resolved it: those belong in `anchor`, and ' +
+                      'counting them as locations makes two runs of the same project disagree on how many there are.',
+                  },
                   detection: {
                     enum: [...DETECTION_IDS],
                     description: 'How this location was reached. Determines its confidence.',
@@ -228,6 +258,21 @@ export const buildReportSchema = (framework: Framework): string => {
                   valueResolution: {
                     enum: [...VALUE_RESOLUTION_IDS],
                     description: 'How the deprecated value was resolved. Only for entryKind `value`.',
+                  },
+                  anchor: {
+                    ...evidenceLocation({
+                      line: {
+                        type: 'integer',
+                        minimum: 1,
+                        description: 'The anchoring line, which is frequently in a different file from the usage.',
+                      },
+                    }),
+                    description:
+                      'The line that proves this usage is PDS — the import, the resolved SCSS @use including one ' +
+                      'injected by build config, the Tailwind @theme import, or the PDS root at the far end of a ' +
+                      'wrapper chain. The only truthful home for the vite.config.ts line that anchors a stylesheet ' +
+                      'naming PDS nowhere. Omitted only when the usage anchors itself, as a --p- custom property ' +
+                      'does.',
                   },
                 },
                 ['detection']
