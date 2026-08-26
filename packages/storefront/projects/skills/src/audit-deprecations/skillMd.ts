@@ -266,7 +266,47 @@ const renderAnchoring = (framework: Framework): string =>
       'were worth.',
   ].join('\n');
 
-const renderCandidates = (): string =>
+/**
+ * How a responsive value is written, per framework — the spellings a whole-attribute comparison
+ * never matches.
+ *
+ * The **string-attribute** form is first and is the same everywhere: a quoted attribute holding
+ * single-quoted pseudo-JSON. It is the one that gets missed, because it looks like a plain string
+ * value and the deprecated identifier sits inside it. An earlier revision replaced this block with
+ * prose naming no spelling at all, and the next run lost every value in
+ * `size="{'base': 'small', 'l': 'x-large'}"` while finding the bound form in the same file.
+ *
+ * The bound form differs per framework, which is why the block is a table rather than one example:
+ * the JSX spelling shipped to all four skills for as long as it was hard-coded, naming a syntax that
+ * cannot occur in three of them.
+ */
+const RESPONSIVE_SPELLINGS: Record<Framework, [spelling: string, gloss: string][]> = {
+  react: [
+    ["size=\"{'base': 'small', 'l': 'medium'}\"", 'string attribute holding single-quoted pseudo-JSON'],
+    ["size={{ base: 'small', l: 'medium' }}", 'JSX expression'],
+  ],
+  vue: [
+    ["size=\"{'base': 'small', 'l': 'medium'}\"", 'string attribute holding single-quoted pseudo-JSON'],
+    [":size=\"{ base: 'small', l: 'medium' }\"", 'bound attribute, also spelled `v-bind:size`'],
+  ],
+  angular: [
+    ["size=\"{'base': 'small', 'l': 'medium'}\"", 'string attribute holding single-quoted pseudo-JSON'],
+    ["[size]=\"{ base: 'small', l: 'medium' }\"", 'property binding'],
+  ],
+  js: [
+    ["size=\"{'base': 'small', 'l': 'medium'}\"", 'string attribute holding single-quoted pseudo-JSON'],
+    ["el.size = { base: 'small', l: 'medium' }", 'property assigned on the element'],
+  ],
+};
+
+/** The spellings as an aligned code block, so the gloss reads as a column rather than a sentence. */
+const renderResponsiveSpellings = (framework: Framework): string[] => {
+  const rows = RESPONSIVE_SPELLINGS[framework];
+  const width = Math.max(...rows.map(([spelling]) => spelling.length)) + 3;
+  return ['```text', ...rows.map(([spelling, gloss]) => `${spelling.padEnd(width)}${gloss}`), '```'];
+};
+
+const renderCandidates = (framework: Framework): string =>
   [
     'Each index entry names one deprecated API. Its rule ID carries the usage kind and full context; use the index\u2019s ' +
       'framework-specific locating guide to check every anchored usage. A usage the traversal never reaches is not a ' +
@@ -334,8 +374,13 @@ const renderCandidates = (): string =>
       'but none of the callers a migration has to visit.',
     '',
     '**Responsive objects are the easiest thing to miss and the most costly.** Resolve every value inside the object ' +
-      'rather than comparing the whole prop value with the deprecated identifier. Missing this does not fail loudly — ' +
-      'it silently drops every responsive usage in the project.',
+      'rather than comparing the whole prop value with the deprecated identifier — in both spellings:',
+    '',
+    ...renderResponsiveSpellings(framework),
+    '',
+    'Missing this does not fail loudly — it silently drops every responsive usage in the project. The first spelling ' +
+      'is the one that gets missed: the whole value is one quoted string, so it reads as a plain value rather than an ' +
+      'object, and the deprecated identifier is inside it.',
     '',
     'Dynamic usage recorded as a manual follow-up is the correct outcome, not a gap. It does **not** make the run ' +
       '`partial`, and it does **not** belong in `coverage.limitations` — it was detected and disclosed. Recording it ' +
@@ -627,7 +672,7 @@ export const buildAuditDeprecationsSkillMd = (framework: Framework): string =>
     '',
     '## 5. Decide what counts',
     '',
-    renderCandidates(),
+    renderCandidates(framework),
     '',
     '## 6. Record and grade each finding',
     '',

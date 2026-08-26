@@ -293,7 +293,30 @@ describe('audit-deprecations skill', () => {
         // usage at all, and nothing about the failure is visible in the report.
         const skillMd = read(framework, 'SKILL.md');
         expect(skillMd).toContain('Resolve every value inside the object');
-        expect(skillMd).not.toContain("size={{'base': 'small'");
+      });
+
+      it('names the string-attribute responsive spelling, which every framework can hold', () => {
+        // Naming no spelling is what lost it: a run found the bound form and dropped every value in
+        // `size="{'base': 'small', 'l': 'x-large'}"` in the same file, because one quoted string
+        // reads as a plain value rather than an object.
+        expect(read(framework, 'SKILL.md')).toContain("size=\"{'base': 'small', 'l': 'medium'}\"");
+      });
+
+      it("names this framework's bound responsive spelling and no other's", () => {
+        // Hard-coding the JSX form shipped a syntax three of the four frameworks cannot write.
+        const skillMd = read(framework, 'SKILL.md');
+        const bound: Record<string, string> = {
+          react: "size={{ base: 'small', l: 'medium' }}",
+          vue: ':size="{ base: \'small\', l: \'medium\' }"',
+          angular: '[size]="{ base: \'small\', l: \'medium\' }"',
+          js: "el.size = { base: 'small', l: 'medium' }",
+        };
+        expect(skillMd).toContain(bound[framework]);
+        for (const [other, spelling] of Object.entries(bound)) {
+          if (other !== framework) {
+            expect(skillMd, `${framework} names the ${other} spelling`).not.toContain(spelling);
+          }
+        }
       });
 
       it('states positively that a medium-confidence candidate is a finding', () => {
