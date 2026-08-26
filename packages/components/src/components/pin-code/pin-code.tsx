@@ -292,8 +292,8 @@ export class PinCode {
     }
   };
 
-  // WebKit places the caret on mouseup after focus, which would undo select() and block overwrite.
   private onInputMouseUp = (event: MouseEvent & HTMLInputElementEventTarget): void => {
+    // WebKit places the caret on mouseup after focus, which would undo select() and block overwrite.
     if (event.target.value) {
       event.preventDefault();
     }
@@ -383,8 +383,8 @@ export class PinCode {
     ]?.focus();
   };
 
-  // Chrome with delegatesFocus focuses always the current input when the label is clicked.
   private focusCurrentInput = (): void => {
+    // Chrome with delegatesFocus focuses always the current input when the label is clicked.
     this.inputElements.find((input) => input.id === 'current-input')?.focus();
   };
 
