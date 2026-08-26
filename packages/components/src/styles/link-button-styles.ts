@@ -95,12 +95,9 @@ export const getLinkButtonStyles = (
 
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
-  const paddingBlock = ref(cssVarPaddingBlock, `calc(28px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 6px)`);
-  const paddingInline = ref(
-    cssVarPaddingInline,
-    `calc(33.6px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 16px)`
-  );
-  const gap = ref(cssVarGap, `calc(11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px)`);
+  const paddingBlock = `calc(28px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 6px)`;
+  const paddingInline = `calc(33.6px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 16px)`;
+  const gap = `calc(11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px)`;
   const iconMarginInlineStart = `calc(-1 * (11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px))`;
 
   return {
@@ -142,8 +139,8 @@ export const getLinkButtonStyles = (
       cursor: 'pointer',
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-        padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
-        gap: hideLabelValue ? 0 : gap,
+        padding: `${ref(cssVarPaddingBlock, paddingBlock)} ${ref(cssVarPaddingInline, hideLabelValue ? paddingBlock : paddingInline)}`,
+        gap: ref(cssVarGap, hideLabelValue ? 0 : gap),
       })),
       ...forcedColorsMediaQuery({
         forcedColorAdjust: 'none',

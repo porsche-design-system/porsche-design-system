@@ -452,8 +452,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-button-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
-  gap: 0;
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+  gap: var(--p-button-gap,0);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -509,8 +509,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:760px) {
   .root {
-    padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
-    gap: 0;
+    padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+    gap: var(--p-button-gap,0);
   }
   .label {
     position: absolute;
@@ -549,8 +549,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1300px) {
   .root {
-    padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
-    gap: 0;
+    padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+    gap: var(--p-button-gap,0);
   }
   .label {
     position: absolute;
@@ -678,8 +678,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-button-fg,var(--p-color-canvas));
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
-  gap: 0;
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+  gap: var(--p-button-gap,0);
   opacity: 0.4;
 }
 .root:focus-visible {
@@ -738,8 +738,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:760px) {
   .root {
-    padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
-    gap: 0;
+    padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+    gap: var(--p-button-gap,0);
   }
   .label {
     position: absolute;
@@ -778,8 +778,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1300px) {
   .root {
-    padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
-    gap: 0;
+    padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+    gap: var(--p-button-gap,0);
   }
   .label {
     position: absolute;
@@ -1642,8 +1642,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-button-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
-  gap: 0;
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+  gap: var(--p-button-gap,0);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1738,8 +1738,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-button-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
-  gap: 0;
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+  gap: var(--p-button-gap,0);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);

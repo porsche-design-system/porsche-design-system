@@ -60,8 +60,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
-  gap: 0;
+  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
+  gap: var(--p-link-gap,0);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -105,8 +105,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:760px) {
   .root {
-    padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
-    gap: 0;
+    padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
+    gap: var(--p-link-gap,0);
   }
   .label {
     position: absolute;
@@ -145,8 +145,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1300px) {
   .root {
-    padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
-    gap: 0;
+    padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
+    gap: var(--p-link-gap,0);
   }
   .label {
     position: absolute;
@@ -318,8 +318,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
-  gap: 0;
+  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
+  gap: var(--p-link-gap,0);
 }
 .label {
   position: absolute;
@@ -359,8 +359,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:760px) {
   .root {
-    padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
-    gap: 0;
+    padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
+    gap: var(--p-link-gap,0);
   }
   .label {
     position: absolute;
@@ -399,8 +399,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1300px) {
   .root {
-    padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
-    gap: 0;
+    padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
+    gap: var(--p-link-gap,0);
   }
   .label {
     position: absolute;
@@ -867,8 +867,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
-  gap: 0;
+  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
+  gap: var(--p-link-gap,0);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -970,8 +970,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
-  gap: 0;
+  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
+  gap: var(--p-link-gap,0);
 }
 .label {
   position: absolute;
@@ -1066,8 +1066,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
-  gap: 0;
+  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px));
+  gap: var(--p-link-gap,0);
 }
 .label {
   position: absolute;
