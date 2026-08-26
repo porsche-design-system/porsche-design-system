@@ -30,6 +30,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Button`: CSS custom states (`disabled`, `loading`, `variant-primary`, `variant-secondary`, `variant-destructive`)
   which can be targeted with the `:state()` pseudo-class, e.g. `p-button:state(disabled) { --p-button-bg: deeppink; }`.
   Browsers without support for `CustomStateSet` simply ignore these rules.
+  ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Link`: CSS custom states (`variant-primary`, `variant-secondary`) which can be targeted with the `:state()`
+  pseudo-class, e.g. `p-link:state(variant-secondary) { --p-link-bg: deeppink; }`. Browsers without support for
+  `CustomStateSet` simply ignore these rules.
+  ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
 
 ## [4.6.0] - 2026-08-20
 
