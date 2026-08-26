@@ -748,6 +748,43 @@ test.describe('change event', () => {
       },
     ]);
   });
+
+  test('should overwrite last input after typing the complete pin without re-selecting', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    const input1 = getInput(page, 1);
+
+    await input1.click();
+    await page.keyboard.type('1234');
+    await waitForStencilLifecycle(page);
+
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+    expect(await getProperty<string>(host, 'value')).toBe('1234');
+
+    await page.keyboard.press('9');
+    await waitForStencilLifecycle(page);
+
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+    expect(await getProperty<string>(host, 'value')).toBe('1239');
+  });
+
+  test('should overwrite a one-cell pin without re-selecting', async ({ page }) => {
+    await initPinCode(page, { props: { length: 1 } });
+    const host = getHost(page);
+    const input1 = getInput(page, 1);
+
+    await input1.click();
+    await page.keyboard.press('1');
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty<string>(host, 'value')).toBe('1');
+
+    await page.keyboard.press('9');
+    await waitForStencilLifecycle(page);
+
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1 of 1');
+    expect(await getProperty<string>(host, 'value')).toBe('9');
+  });
 });
 
 test.describe('keyboard navigation', () => {
@@ -968,7 +1005,7 @@ test.describe('events', () => {
       expect(await getProperty<string>(host, 'value')).toStrictEqual('12  ');
     });
 
-    test('should spread value over input elements and focus last empty input element if value is too long', async ({
+    test('should overwrite last input when more digits are typed than the pin length', async ({
       page,
     }) => {
       await initPinCode(page);
@@ -987,12 +1024,12 @@ test.describe('events', () => {
       expect(await getProperty<string>(input1, 'value')).toBe('1');
       expect(await getProperty<string>(input2, 'value')).toBe('2');
       expect(await getProperty<string>(input3, 'value')).toBe('3');
-      expect(await getProperty<string>(input4, 'value')).toBe('4');
+      expect(await getProperty<string>(input4, 'value')).toBe('5');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
-      expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('1235');
     });
 
-    test('should spread value over input elements and focus last empty input element if value is too long and inputs events are delayed', async ({
+    test('should overwrite last input when more digits are typed than the pin length and input events are delayed', async ({
       page,
     }) => {
       await initPinCode(page);
@@ -1011,9 +1048,9 @@ test.describe('events', () => {
       expect(await getProperty<string>(input1, 'value')).toBe('1');
       expect(await getProperty<string>(input2, 'value')).toBe('2');
       expect(await getProperty<string>(input3, 'value')).toBe('3');
-      expect(await getProperty<string>(input4, 'value')).toBe('4');
+      expect(await getProperty<string>(input4, 'value')).toBe('5');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
-      expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('1235');
     });
 
     skipInBrowsers(['firefox', 'webkit'], () => {

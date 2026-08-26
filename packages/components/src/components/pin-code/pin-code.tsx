@@ -263,11 +263,7 @@ export class PinCode {
 
     // Replace an occupied cell with a single typed digit, then move focus forward
     if (inputType === 'insertText' && target.value.length > 0 && data?.length === 1) {
-      const isFullySelected = target.selectionStart === 0 && target.selectionEnd === target.value.length;
       event.preventDefault();
-      if (!isFullySelected) {
-        return;
-      }
       target.value = data;
       this.updateValue(getConcatenatedInputValues(this.inputElements));
       if (target.nextElementSibling) {
