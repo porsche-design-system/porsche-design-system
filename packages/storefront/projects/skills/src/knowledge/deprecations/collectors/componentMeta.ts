@@ -1,5 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import type { DeprecationEntry, DeprecationSource } from '../types';
+import { valueReplacement } from '../valueReplacements';
 
 /**
  * Collects every deprecated entity `component-meta` knows about — components, props, prop values,
@@ -8,8 +9,13 @@ import type { DeprecationEntry, DeprecationSource } from '../types';
  * human or an agent and would have to be parsed back.
  *
  * The deprecation *message* is taken verbatim. Only the replacement hint is derived, and only by
- * looking for the two shapes the codebase actually writes (`Use X instead`, `use native X`); when
- * neither matches, no replacement is claimed rather than a guess being rendered.
+ * looking for the shapes the codebase actually writes (`Use X instead`, `use native X on …`), where
+ * X may be a multi-word phrase with only part of it quoted; when none matches, no replacement is
+ * claimed rather than a guess being rendered.
+ *
+ * Whether a replacement parses is not cosmetic: the rendered cell opens with it, and the audit skill
+ * reads that position to decide whether a replacement is documented at all — which sets the finding's
+ * effort. A shape that fails to parse therefore grades every finding built on it one level dearer.
  */
 
 /** The component reference documenting a tag, relative to the skill root. */
@@ -23,8 +29,14 @@ const componentReference = (tag: string): string => `references/components/${tag
  * the reader falls back to the verbatim message, which is always carried alongside.
  */
 const parseReplacement = (message: string): string | undefined => {
-  const match = message.match(/\b[Uu]se (?:the )?(?:native )?[`']?([^`'.,]+?)[`']?(?: instead| on )/);
-  return match?.[1]?.trim() || undefined;
+  // The successor may be several words with only part of it quoted — `Use the \`summary\` slot
+  // instead` names "summary slot", the same shape as the already-handled `Use the default slot
+  // instead`. So the phrase is captured whole and its quoting stripped afterwards, rather than the
+  // quotes bounding the capture: bounding them stopped this shape at "summary" and then failed to
+  // find " instead", yielding no replacement at all. Sentence punctuation still bounds the phrase,
+  // so a message offering a choice ("Use X, or Y instead") matches nothing and stays unparsed.
+  const match = message.match(/\b[Uu]se (?:the )?(?:native )?([^.,;]+?)(?: instead| on )/);
+  return match?.[1]?.replace(/[`']/g, '').trim() || undefined;
 };
 
 /** Strip the `@deprecated` marker and surrounding whitespace, keeping the message itself verbatim. */
@@ -75,9 +87,10 @@ export const collectComponentDeprecations = (): DeprecationSource => {
       // and `'semi-bold'` values are not. They are collected even when the prop itself is deprecated,
       // since a project may use both and each has its own remediation.
       const deprecatedValues = new Set((prop.deprecatedValues ?? []).map(String));
-      // `component-meta` records which values are deprecated but not what replaced them, so the
-      // remediation offered is the prop's remaining allowed values. That is the whole choice a reader
-      // has, and without it a deprecated-value row would carry no next step at all.
+      // `component-meta` records which values are deprecated but not what replaced them. The prop's
+      // remaining allowed values are carried as the context a reader needs, and `valueReplacement`
+      // derives the successor from them where the deprecation was a renaming — without which every
+      // value row would offer a list to choose from and no exact edit.
       const currentValues = (Array.isArray(prop.allowedValues) ? prop.allowedValues : [])
         .map(String)
         .filter((value) => !deprecatedValues.has(value));
@@ -90,7 +103,9 @@ export const collectComponentDeprecations = (): DeprecationSource => {
             prop: name,
             identifier: value,
             message: currentValues.length > 0 ? `Current values: ${currentValues.join(', ')}.` : '',
-            replacement: '',
+            // Never parsed out of the message: the message is a list of allowed values, and
+            // `parseReplacement` would read the first of them as an instruction.
+            replacement: valueReplacement(value, currentValues) ?? '',
             reference,
           })
         );
