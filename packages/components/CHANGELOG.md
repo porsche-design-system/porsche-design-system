@@ -14,9 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-### Changed
+### ADDED
 
-- `Pin Code`: Improved digit overwrite behavior of focused cell and added support for `ArrowLeft`/`ArrowRight` navigation.
+- `Pin Code`: Support for `ArrowLeft`/`ArrowRight` keyboard navigation.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+
+### Fixed
+
+- `Pin Code`: Focus management on label click and digit overwrite behavior of focused cell.
   ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
 
 ## [4.6.0] - 2026-08-20

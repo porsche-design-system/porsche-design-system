@@ -69,6 +69,42 @@ test.describe('focus state', () => {
 
     expect((await getEventSummary(input, 'focus')).counter).toBe(1);
   });
+
+  test('should focus first empty input when label is clicked after some digits are entered', async ({ page }) => {
+    await initPinCode(page, { props: { label: 'Some label' } });
+    const host = getHost(page);
+    const label = getLabel(page);
+    const input1 = getInput(page, 1);
+
+    await input1.click();
+    await page.keyboard.type('12');
+    await waitForStencilLifecycle(page);
+
+    const currentInput = getCurrentInput(page);
+    await expect(currentInput).toHaveAttribute('aria-label', '3 of 4');
+
+    await label.click();
+
+    await expect(currentInput).toBeFocused();
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3 of 4');
+  });
+
+  test('should focus last input when label is clicked and pin is complete', async ({ page }) => {
+    await initPinCode(page, { props: { label: 'Some label', value: '1234' } });
+    const host = getHost(page);
+    const label = getLabel(page);
+
+    await waitForStencilLifecycle(page);
+
+    const currentInput = getCurrentInput(page);
+    await expect(currentInput).toHaveAttribute('aria-label', '4 of 4');
+
+    await label.click();
+
+    await expect(currentInput).toBeFocused();
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+  });
+
   test('should focus input with id="current-input" when host is focused', async ({ page }) => {
     await initPinCode(page);
     const host = getHost(page);

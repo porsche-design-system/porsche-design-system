@@ -211,6 +211,7 @@ export class PinCode {
           isRequired={this.required}
           isLoading={this.loading}
           isDisabled={this.disabled}
+          onClick={this.focusCurrentInput}
         />
         {/* dir overwrites default behavior in RTL mode, because pin codes are always numeric and should be treated in ltr direction. */}
         {/* biome-ignore lint/a11y/noStaticElementInteractions: ok */}
@@ -380,6 +381,11 @@ export class PinCode {
     this.inputElements[
       sanitisedValue.length === this.length ? sanitisedValue.length - 1 : sanitisedValue.length
     ]?.focus();
+  };
+
+  // Chrome with delegatesFocus focuses always the current input when the label is clicked.
+  private focusCurrentInput = (): void => {
+    this.inputElements.find((input) => input.id === 'current-input')?.focus();
   };
 
   private onInputBlur = (e: FocusEvent): void => {
