@@ -1,5 +1,5 @@
+import { componentMeta } from '@porsche-design-system/component-meta';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
-import type { DeprecationEntry } from '@skills/knowledge/deprecations/types';
 import { valueReplacement } from '@skills/knowledge/deprecations/valueReplacements';
 import { describe, expect, it } from 'vitest';
 
@@ -16,9 +16,18 @@ const VALUES = collectDeprecations()
   .flatMap((source) => source.entries)
   .filter((entry) => entry.kind === 'value');
 
-/** The prop's remaining allowed values, as the entry renders them. */
-const currentValues = (entry: DeprecationEntry): string[] =>
-  (entry.message?.match(/^Current values: (.+)\.$/)?.[1] ?? '').split(', ').filter(Boolean);
+/** Remaining allowed values by deprecation rule id, derived directly from component metadata. */
+const CURRENT_VALUES = new Map(
+  Object.entries(componentMeta).flatMap(([tag, meta]) =>
+    Object.entries(meta.propsMeta ?? {}).flatMap(([name, prop]) => {
+      const deprecatedValues = new Set((prop.deprecatedValues ?? []).map(String));
+      const currentValues = (Array.isArray(prop.allowedValues) ? prop.allowedValues : [])
+        .map(String)
+        .filter((value) => !deprecatedValues.has(value));
+      return [...deprecatedValues].map((value) => [`value/${tag}/${name}/${value}`, currentValues] as const);
+    })
+  )
+);
 
 describe('deprecated value replacements', () => {
   it('derives a renamed spelling only when the prop offers it', () => {
@@ -53,7 +62,7 @@ describe('deprecated value replacements', () => {
   });
 
   it('only ever names a spelling the prop actually offers', () => {
-    const wrong = VALUES.filter((entry) => !currentValues(entry).includes(entry.replacement as string));
+    const wrong = VALUES.filter((entry) => !CURRENT_VALUES.get(entry.id)?.includes(entry.replacement as string));
     expect(wrong.map((entry) => [entry.id, entry.replacement])).toStrictEqual([]);
   });
 });

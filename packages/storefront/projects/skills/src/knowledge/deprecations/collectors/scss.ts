@@ -1,5 +1,5 @@
 import { scssDeprecations } from '@porsche-design-system/scss';
-import type { DeprecationSource } from '../types';
+import { type DeprecationSource, publicWrapperExport } from '../types';
 import { styleAliasSource } from './styleAlias';
 
 /**
@@ -14,9 +14,7 @@ import { styleAliasSource } from './styleAlias';
 export const collectScssDeprecations = (): DeprecationSource =>
   styleAliasSource({
     category: 'scss',
-    origin:
-      'the declaration catalog of `@porsche-design-system/scss`, which the shipped SCSS partials ' +
-      '(`@porsche-design-system/components-{js|angular|react|vue}/scss`) are generated from',
+    origin: (framework) => `the SCSS API exposed by ${publicWrapperExport(framework, '/scss')}`,
     reference: 'references/styles/scss.md',
     deprecations: scssDeprecations,
   });

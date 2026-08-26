@@ -2,11 +2,9 @@
  * The current spelling of a deprecated prop value, where one exists.
  *
  * `component-meta` records *which* values are deprecated but not what replaced them, so without this
- * the index could only offer the prop's remaining allowed values as a list — and an audit reading
- * `Current values: 2xs, xs, sm, …` has no way to tell which one `small` became. That gap cost the
- * audit twice: every value finding carried a sentence explaining the missing replacement instead of
- * an exact `from`/`to`, and the effort grading — which keys off whether a replacement is documented —
- * had no answer to key off at all.
+ * the index could only identify the deprecated spelling, not what `small` became. That gap cost the
+ * audit twice: every value finding lacked an exact `from`/`to`, and the effort grading — which keys
+ * off whether a replacement is documented — had no answer to key off at all.
  *
  * Every deprecated value in this release is a *renaming*: the deprecated spelling and its successor
  * resolve to the same thing (`sizeMap` and `weightMap` in `packages/components` alias both spellings

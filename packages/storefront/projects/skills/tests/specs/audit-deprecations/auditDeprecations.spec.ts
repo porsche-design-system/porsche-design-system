@@ -6,7 +6,7 @@ import { AUDIT_KIND } from '@skills/audit-deprecations/reportSchema';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
 import { ENTRY_KINDS } from '@skills/knowledge/deprecations/types';
 import { DEPRECATIONS_REFERENCE } from '@skills/knowledge/skillMd';
-import { getSkillName } from '@skills/registry';
+import { getSkillName, getWrapperPackageName } from '@skills/registry';
 import { FRAMEWORKS, stagedSkillDir } from '@skills/shared/skillTree';
 import { describe, expect, it } from 'vitest';
 
@@ -74,12 +74,12 @@ describe('audit-deprecations skill', () => {
         // the spec's `compatibility` field where something can see it first.
         const compatibility = (read(framework, 'SKILL.md').match(/^compatibility: (.+)$/mu) as RegExpMatchArray)[1];
         expect(compatibility).toContain(getSkillName('knowledge', framework));
-        expect(compatibility).toContain(`@porsche-design-system/components-${framework}`);
+        expect(compatibility).toContain(getWrapperPackageName(framework));
         expect(compatibility.length).toBeLessThanOrEqual(500);
       });
 
       it('carries a framework self-check', () => {
-        expect(read(framework, 'SKILL.md')).toContain(`@porsche-design-system/components-${framework}`);
+        expect(read(framework, 'SKILL.md')).toContain(getWrapperPackageName(framework));
       });
 
       it('points at the deprecation index as its only source of what is deprecated', () => {
@@ -439,9 +439,7 @@ describe('audit-deprecations skill', () => {
   it('inverts the js self-check, since components-js is a dependency of every wrapper', () => {
     const skillMd = read('js', 'SKILL.md');
     for (const wrapper of ['react', 'angular', 'vue']) {
-      expect(skillMd, `js SKILL.md does not exclude the ${wrapper} wrapper`).toContain(
-        `@porsche-design-system/components-${wrapper}`
-      );
+      expect(skillMd, `js SKILL.md does not exclude the ${wrapper} wrapper`).toContain(getWrapperPackageName(wrapper));
     }
   });
 

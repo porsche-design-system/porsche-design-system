@@ -5,15 +5,13 @@ import * as fs from 'node:fs';
 import { tmpdir } from 'node:os';
 import * as path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
+import { getWrapperPackageName, SKILL_FRAMEWORKS, type SkillFramework } from '../../../src/registry';
 
 const realBinPath = path.resolve(__dirname, '../../../bin/pds-skill.js');
 const DEST = '.claude/skills';
-const PACKAGE_NAMES = {
-  js: '@porsche-design-system/components-js',
-  angular: '@porsche-design-system/components-angular',
-  react: '@porsche-design-system/components-react',
-  vue: '@porsche-design-system/components-vue',
-} as const;
+const PACKAGE_NAMES = Object.fromEntries(
+  SKILL_FRAMEWORKS.map((framework) => [framework, getWrapperPackageName(framework)])
+) as Record<SkillFramework, string>;
 const DEFAULT_PACKAGE_NAME = PACKAGE_NAMES.js;
 const DEFAULT_SKILL_NAME = 'pds-knowledge-js';
 const canTestPosixPermissions = process.platform !== 'win32' && process.getuid?.() !== 0;

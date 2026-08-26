@@ -61,9 +61,12 @@ export const SOURCE_CATEGORIES = [
   'tokens',
   'icons',
   'stylesheets',
-  'partials',
 ] as const;
 export type SourceCategory = (typeof SOURCE_CATEGORIES)[number];
+
+/** Public wrapper export formatted for generated Markdown. */
+export const publicWrapperExport = (framework: SkillFramework, subpath = ''): string =>
+  `\`${getWrapperPackageName(framework)}${subpath}\``;
 
 /** One deprecated API. */
 export type DeprecationEntry = {
@@ -101,7 +104,8 @@ export type DeprecationEntry = {
 export type DeprecationSource = {
   category: SourceCategory;
   /** Human-readable origin, rendered into the index so a reader can verify the claim. */
-  origin: string;
+  origin: (framework: SkillFramework) => string;
   entries: DeprecationEntry[];
   expectedEmpty?: true;
 };
+import { getWrapperPackageName, type SkillFramework } from '../../registry';

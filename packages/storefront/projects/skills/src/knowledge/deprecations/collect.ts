@@ -1,6 +1,6 @@
 import { collectComponentDeprecations } from './collectors/componentMeta';
 import { collectEmotionDeprecations } from './collectors/emotion';
-import { collectIconDeprecations, collectPartialDeprecations } from './collectors/scanned';
+import { collectIconDeprecations } from './collectors/icons';
 import { collectScssDeprecations } from './collectors/scss';
 import { collectStylesheetDeprecations } from './collectors/stylesheets';
 import { collectTailwindcssDeprecations } from './collectors/tailwindcss';
@@ -25,7 +25,6 @@ const COLLECTORS: Record<SourceCategory, () => DeprecationSource> = {
   tokens: collectTokenDeprecations,
   icons: collectIconDeprecations,
   stylesheets: collectStylesheetDeprecations,
-  partials: collectPartialDeprecations,
 };
 
 /** Every source category, populated or verified-empty, in declaration order. */

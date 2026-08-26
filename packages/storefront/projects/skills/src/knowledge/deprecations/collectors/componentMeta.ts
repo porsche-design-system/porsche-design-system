@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import type { DeprecationEntry, DeprecationSource } from '../types';
+import { type DeprecationEntry, type DeprecationSource, publicWrapperExport } from '../types';
 import { valueReplacement } from '../valueReplacements';
 
 /**
@@ -87,10 +87,9 @@ export const collectComponentDeprecations = (): DeprecationSource => {
       // and `'semi-bold'` values are not. They are collected even when the prop itself is deprecated,
       // since a project may use both and each has its own remediation.
       const deprecatedValues = new Set((prop.deprecatedValues ?? []).map(String));
-      // `component-meta` records which values are deprecated but not what replaced them. The prop's
-      // remaining allowed values are carried as the context a reader needs, and `valueReplacement`
-      // derives the successor from them where the deprecation was a renaming — without which every
-      // value row would offer a list to choose from and no exact edit.
+      // `component-meta` records which values are deprecated but not what replaced them.
+      // `valueReplacement` derives the successor from the remaining allowed values where the
+      // deprecation was a renaming.
       const currentValues = (Array.isArray(prop.allowedValues) ? prop.allowedValues : [])
         .map(String)
         .filter((value) => !deprecatedValues.has(value));
@@ -102,9 +101,7 @@ export const collectComponentDeprecations = (): DeprecationSource => {
             owner: tag,
             prop: name,
             identifier: value,
-            message: currentValues.length > 0 ? `Current values: ${currentValues.join(', ')}.` : '',
-            // Never parsed out of the message: the message is a list of allowed values, and
-            // `parseReplacement` would read the first of them as an instruction.
+            message: '',
             replacement: valueReplacement(value, currentValues) ?? '',
             reference,
           })
@@ -160,5 +157,9 @@ export const collectComponentDeprecations = (): DeprecationSource => {
 
   entries.sort((a, b) => a.id.localeCompare(b.id));
 
-  return { category: 'components', origin: '`@porsche-design-system/component-meta`', entries };
+  return {
+    category: 'components',
+    origin: (framework) => `the component API exposed by ${publicWrapperExport(framework)}`,
+    entries,
+  };
 };

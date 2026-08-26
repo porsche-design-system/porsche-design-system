@@ -1,5 +1,5 @@
 import { vanillaExtractDeprecations } from '@porsche-design-system/vanilla-extract/meta';
-import type { DeprecationSource } from '../types';
+import { type DeprecationSource, publicWrapperExport } from '../types';
 import { styleAliasSource } from './styleAlias';
 
 /**
@@ -16,9 +16,7 @@ import { styleAliasSource } from './styleAlias';
 export const collectVanillaExtractDeprecations = (): DeprecationSource =>
   styleAliasSource({
     category: 'vanillaExtract',
-    origin:
-      'the `vanillaExtractDeprecations` list of `@porsche-design-system/vanilla-extract`, ' +
-      'generated from the `@deprecated` annotations on its legacy exports',
+    origin: (framework) => `the vanilla-extract API exposed by ${publicWrapperExport(framework, '/vanilla-extract')}`,
     reference: 'references/styles/vanilla-extract.md',
     deprecations: vanillaExtractDeprecations,
   });

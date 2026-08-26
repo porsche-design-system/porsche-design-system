@@ -1,5 +1,5 @@
 import { emotionDeprecations } from '@porsche-design-system/emotion/meta';
-import type { DeprecationSource } from '../types';
+import { type DeprecationSource, publicWrapperExport } from '../types';
 import { styleAliasSource } from './styleAlias';
 
 /**
@@ -16,9 +16,7 @@ import { styleAliasSource } from './styleAlias';
 export const collectEmotionDeprecations = (): DeprecationSource =>
   styleAliasSource({
     category: 'emotion',
-    origin:
-      'the `emotionDeprecations` list of `@porsche-design-system/emotion`, generated from the ' +
-      '`@deprecated` annotations on its legacy exports',
+    origin: (framework) => `the Emotion API exposed by ${publicWrapperExport(framework, '/emotion')}`,
     reference: 'references/styles/emotion.md',
     deprecations: emotionDeprecations,
   });

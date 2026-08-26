@@ -66,7 +66,10 @@ const classify = (target: string, source: 'markdown' | 'code'): ReferenceKind | 
  * are written as inline code, not links. Placeholder rows like `references/components/<p-component>/<p-component>.md`
  * (the SKILL.md map's per-component pattern) are dropped via the `<` guard.
  */
-export const extractReferences = (markdown: string): ReferenceLink[] => {
+export const extractReferences = (
+  markdown: string,
+  { includePackageSpecifiers = true }: { includePackageSpecifiers?: boolean } = {}
+): ReferenceLink[] => {
   const prose = markdown.replace(FENCED_CODE_RE, '');
   const byTarget = new Map<string, ReferenceKind>();
   const add = (raw: string, source: 'markdown' | 'code'): void => {
@@ -74,7 +77,10 @@ export const extractReferences = (markdown: string): ReferenceLink[] => {
     if (!target || target.includes('<')) {
       return;
     }
-    const kind = classify(target, source);
+    const kind =
+      !includePackageSpecifiers && (target === JS_PEER_META_SPECIFIER || target === JS_PEER_SCSS_SPECIFIER)
+        ? null
+        : classify(target, source);
     if (kind) {
       byTarget.set(target, kind);
     }

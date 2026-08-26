@@ -21,7 +21,7 @@ export const styleAliasSource = ({
 }: {
   category: SourceCategory;
   /** Human-readable origin, rendered into the index so a reader can verify the claim. */
-  origin: string;
+  origin: DeprecationSource['origin'];
   /** Skill-relative reference documenting the package's current API. */
   reference: string;
   /** The package's published deprecations, in catalog order — the rendered order. */

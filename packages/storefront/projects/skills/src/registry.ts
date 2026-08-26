@@ -29,6 +29,11 @@ export type SkillId = (typeof SKILL_IDS)[number];
 export const SKILL_FRAMEWORKS = ['js', 'angular', 'react', 'vue'] as const;
 export type SkillFramework = (typeof SKILL_FRAMEWORKS)[number];
 
+/** Canonical npm package name of one framework wrapper. */
+export const getWrapperPackageName = <TFramework extends SkillFramework>(
+  framework: TFramework
+): `@porsche-design-system/components-${TFramework}` => `@porsche-design-system/components-${framework}`;
+
 /**
  * Canonical name of a skill for one wrapper — `pds-<skill>-<framework>`. It is both the distributed
  * directory name (`skills/pds-knowledge-react`) and the `name` in the generated SKILL.md frontmatter,

@@ -30,7 +30,6 @@ const CATEGORY_LABEL: Record<DeprecationSource['category'], string> = {
   tokens: 'Tokens',
   icons: 'Icons',
   stylesheets: 'Stylesheets',
-  partials: 'Partials',
 };
 
 /** How an entry is written, including its owner and prop where those give it meaning. */
@@ -78,31 +77,34 @@ const styleTable = (entries: DeprecationEntry[]): string =>
     entries.map((entry) => [code(entry.id), code(entry.identifier), remediation(entry), referenceLink(entry)])
   );
 
+const sourceOrigin = (source: DeprecationSource, framework: Framework): string => source.origin(framework);
+
 const renderSource = (source: DeprecationSource, framework: Framework): string => {
   const heading = `## ${CATEGORY_LABEL[source.category]}`;
+  const origin = sourceOrigin(source, framework);
   if (source.entries.length === 0) {
     return [
       heading,
       '',
-      `No deprecations in \`${localPorscheDesignSystemVersion}\`. Derived from ${source.origin}, which was ` +
+      `No deprecations in \`${localPorscheDesignSystemVersion}\`. Derived from ${origin}, which was ` +
         'checked and found to carry none — this is a verified result, not an omission.',
     ].join('\n');
   }
   return [
     heading,
     '',
-    `Derived from ${source.origin}.`,
+    `Derived from ${origin}.`,
     '',
     source.category === 'components' ? componentTable(source.entries, framework) : styleTable(source.entries),
   ].join('\n');
 };
 
-const renderCoverage = (sources: DeprecationSource[]): string =>
+const renderCoverage = (sources: DeprecationSource[], framework: Framework): string =>
   markdownTable(
     ['Source', 'Derived from', 'Deprecations'],
     sources.map((source) => [
       CATEGORY_LABEL[source.category],
-      escapeCell(source.origin),
+      escapeCell(sourceOrigin(source, framework)),
       source.entries.length === 0 ? 'none' : String(source.entries.length),
     ])
   );
@@ -136,7 +138,7 @@ export const renderDeprecationsReference = (sources: DeprecationSource[], framew
     '',
     '## Coverage',
     '',
-    renderCoverage(sources),
+    renderCoverage(sources, framework),
     '',
     ...sources.flatMap((source) => [renderSource(source, framework), '']),
   ]

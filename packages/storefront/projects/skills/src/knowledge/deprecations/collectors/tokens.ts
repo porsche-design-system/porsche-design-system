@@ -1,5 +1,5 @@
 import { tokenDeprecations } from '@porsche-design-system/tokens-meta';
-import type { DeprecationSource } from '../types';
+import { type DeprecationSource, publicWrapperExport } from '../types';
 import { styleAliasSource } from './styleAlias';
 
 /**
@@ -18,9 +18,7 @@ import { styleAliasSource } from './styleAlias';
 export const collectTokenDeprecations = (): DeprecationSource =>
   styleAliasSource({
     category: 'tokens',
-    origin:
-      'the `tokenDeprecations` list of `@porsche-design-system/tokens-meta`, generated from the ' +
-      '`@deprecated` annotations on the declarations of `@porsche-design-system/tokens`',
+    origin: (framework) => `the design-token API exposed by ${publicWrapperExport(framework, '/tokens')}`,
     reference: 'references/tokens.md',
     deprecations: tokenDeprecations,
   });

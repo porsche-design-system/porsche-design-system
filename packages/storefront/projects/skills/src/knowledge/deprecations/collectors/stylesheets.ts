@@ -1,5 +1,5 @@
 import { stylesheetsDeprecations } from '@porsche-design-system/stylesheets/meta';
-import type { DeprecationSource } from '../types';
+import { type DeprecationSource, publicWrapperExport } from '../types';
 import { styleAliasSource } from './styleAlias';
 
 /**
@@ -18,9 +18,9 @@ import { styleAliasSource } from './styleAlias';
 export const collectStylesheetDeprecations = (): DeprecationSource =>
   styleAliasSource({
     category: 'stylesheets',
-    origin:
-      'the declaration catalog of `@porsche-design-system/stylesheets`, generated into the shipped ' +
-      'global stylesheets (`variables.css`, `color-scheme.css`)',
+    origin: (framework) =>
+      `the global CSS exposed by ${publicWrapperExport(framework, '/index.css')}, including ` +
+      `${publicWrapperExport(framework, '/variables.css')} and ${publicWrapperExport(framework, '/color-scheme.css')}`,
     reference: 'references/stylesheets.md',
     deprecations: stylesheetsDeprecations,
   });

@@ -68,7 +68,7 @@ describe('resolveFrameworkPlaceholder', () => {
         "@import '@porsche-design-system/components-{js|angular|react|vue}/scss';",
         framework
       );
-      expect(resolved).toBe(`@import '@porsche-design-system/components-${framework}/scss';`);
+      expect(resolved).toBe(`@import '${getWrapperPackageName(framework)}/scss';`);
     }
   });
 
@@ -88,3 +88,4 @@ describe('resolveFrameworkPlaceholder', () => {
     expect(resolveFrameworkPlaceholder(md, 'react')).toBe(md);
   });
 });
+import { getWrapperPackageName } from '@skills/registry';

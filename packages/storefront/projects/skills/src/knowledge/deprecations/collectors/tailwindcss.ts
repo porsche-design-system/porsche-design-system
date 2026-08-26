@@ -1,5 +1,5 @@
 import { tailwindDeprecations } from '@porsche-design-system/tailwindcss';
-import type { DeprecationSource } from '../types';
+import { type DeprecationSource, publicWrapperExport } from '../types';
 import { styleAliasSource } from './styleAlias';
 
 /**
@@ -18,9 +18,7 @@ import { styleAliasSource } from './styleAlias';
 export const collectTailwindcssDeprecations = (): DeprecationSource =>
   styleAliasSource({
     category: 'tailwindcss',
-    origin:
-      'the declaration catalog of `@porsche-design-system/tailwindcss`, which the shipped Tailwind ' +
-      'theme (`index.css`) is generated from',
+    origin: (framework) => `the Tailwind theme exposed by ${publicWrapperExport(framework, '/tailwindcss')}`,
     reference: 'references/styles/tailwindcss.md',
     deprecations: tailwindDeprecations,
   });

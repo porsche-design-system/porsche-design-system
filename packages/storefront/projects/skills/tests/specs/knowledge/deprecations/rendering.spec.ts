@@ -4,7 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
 import { spellings } from '@skills/knowledge/deprecations/spellings';
 import type { SourceCategory } from '@skills/knowledge/deprecations/types';
-import { FRAMEWORKS, stagedSkillDir } from '@skills/shared/skillTree';
+import { getWrapperPackageName } from '@skills/registry';
+import { FRAMEWORKS, stagedSkillDir, WRAPPER_DIST_DIRS } from '@skills/shared/skillTree';
 import { describe, expect, it } from 'vitest';
 
 /**
@@ -30,8 +31,31 @@ const LABELS: Record<SourceCategory, string> = {
   tokens: 'Tokens',
   icons: 'Icons',
   stylesheets: 'Stylesheets',
-  partials: 'Partials',
 };
+
+const PUBLIC_EXPORTS = [
+  '.',
+  './scss',
+  './emotion',
+  './vanilla-extract',
+  './tailwindcss',
+  './tokens',
+  './index.css',
+  './variables.css',
+  './color-scheme.css',
+] as const;
+
+const INTERNAL_WORKSPACES = [
+  '@porsche-design-system/component-meta',
+  '@porsche-design-system/scss',
+  '@porsche-design-system/emotion',
+  '@porsche-design-system/vanilla-extract',
+  '@porsche-design-system/tailwindcss',
+  '@porsche-design-system/tokens-meta',
+  '@porsche-design-system/tokens',
+  '@porsche-design-system/stylesheets',
+  '@porsche-design-system/partials',
+] as const;
 
 const SOURCES = collectDeprecations();
 const POPULATED = SOURCES.filter((source) => source.entries.length > 0);
@@ -134,6 +158,27 @@ describe('deprecations reference rendering', () => {
 
       it('states that empty categories were checked rather than skipped', () => {
         expect(reference(framework).match(/verified result, not an omission/g) ?? []).toHaveLength(EMPTY.length);
+      });
+
+      it("names this framework's public exports instead of internal workspaces", () => {
+        const packageJson: { name: string; exports: Record<string, unknown> } = JSON.parse(
+          fs.readFileSync(path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'package.json'), 'utf-8')
+        );
+        const rendered = reference(framework);
+        expect(packageJson.name).toBe(getWrapperPackageName(framework));
+
+        for (const exportPath of PUBLIC_EXPORTS) {
+          expect(packageJson.exports[exportPath], `missing public export ${exportPath}`).toBeDefined();
+          const specifier = exportPath === '.' ? packageJson.name : `${packageJson.name}/${exportPath.slice(2)}`;
+          expect(rendered, `missing public specifier ${specifier}`).toContain(`\`${specifier}\``);
+        }
+        for (const workspace of INTERNAL_WORKSPACES) {
+          expect(rendered, `internal workspace leaked: ${workspace}`).not.toContain(workspace);
+        }
+        expect(rendered).not.toContain(`${packageJson.name}/stylesheets`);
+        expect(rendered).not.toContain(`${packageJson.name}/partials`);
+        expect(rendered).not.toContain('{js|angular|react|vue}');
+        expect(rendered).not.toContain('Current values:');
       });
     });
   }

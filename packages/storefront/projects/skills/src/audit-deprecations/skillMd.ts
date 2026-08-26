@@ -1,6 +1,6 @@
 import { ENTRY_KINDS } from '../knowledge/deprecations/types';
 import { DEPRECATIONS_REFERENCE, skillName as knowledgeSkillName } from '../knowledge/skillMd';
-import { getSkillName } from '../registry';
+import { getSkillName, getWrapperPackageName } from '../registry';
 import { renderFrontmatter } from '../shared/frontmatter';
 import { markdownTable } from '../shared/markdown';
 import type { Framework } from '../shared/skillTree';
@@ -24,8 +24,6 @@ import { REPORT_SCHEMA_FILE, REPORT_SCHEMA_VERSION } from './reportSchema';
 
 /** Canonical name of the wrapper's deprecation audit — `pds-audit-deprecations-<framework>`. */
 export const skillName = (framework: Framework): string => getSkillName('audit-deprecations', framework);
-
-const wrapperPackage = (framework: Framework): string => `@porsche-design-system/components-${framework}`;
 
 /** The wrapper packages whose presence means a project is *not* a plain Vanilla JS project. */
 const FRAMEWORK_WRAPPERS = ['react', 'angular', 'vue'] as const;
@@ -76,7 +74,7 @@ const DISABLE_MODEL_INVOCATION = true;
  */
 const COMPATIBILITY = (framework: Framework): string =>
   `Requires the ${knowledgeSkillName(framework)} skill, which ships alongside this one in ` +
-  `${wrapperPackage(framework)}@${localPorscheDesignSystemVersion}. The audited project must depend ` +
+  `${getWrapperPackageName(framework)}@${localPorscheDesignSystemVersion}. The audited project must depend ` +
   'on that exact version.';
 
 /**
@@ -93,7 +91,7 @@ const renderSelfCheck = (framework: Framework): string => {
       'Before anything else, confirm this is a Vanilla JS PDS project:',
       '',
       '1. `@porsche-design-system/components-js` is a project dependency.',
-      `2. **None** of ${FRAMEWORK_WRAPPERS.map((wrapper) => `\`${wrapperPackage(wrapper)}\``).join(', ')} is a ` +
+      `2. **None** of ${FRAMEWORK_WRAPPERS.map((wrapper) => `\`${getWrapperPackageName(wrapper)}\``).join(', ')} is a ` +
         'project dependency.',
       '',
       'The second check is not redundant. `components-js` is a dependency of every wrapper, so its presence ' +
@@ -105,7 +103,7 @@ const renderSelfCheck = (framework: Framework): string => {
     ].join('\n');
   }
   return [
-    `Before anything else, confirm \`${wrapperPackage(framework)}\` is a project dependency.`,
+    `Before anything else, confirm \`${getWrapperPackageName(framework)}\` is a project dependency.`,
     '',
     'If it is not, stop and tell the user which PDS wrapper the project actually uses so they can run that ' +
       'audit skill instead. Do not write a report. An audit run against the wrong framework finds none of that ' +
@@ -124,7 +122,7 @@ const indexSiblingPath = (framework: Framework): string =>
   `../${knowledgeSkillName(framework)}/${DEPRECATIONS_REFERENCE}`;
 
 const indexPackagePath = (framework: Framework): string =>
-  `node_modules/${wrapperPackage(framework)}/skills/${knowledgeSkillName(framework)}/${DEPRECATIONS_REFERENCE}`;
+  `node_modules/${getWrapperPackageName(framework)}/skills/${knowledgeSkillName(framework)}/${DEPRECATIONS_REFERENCE}`;
 
 const renderIndex = (framework: Framework): string =>
   [
@@ -145,7 +143,7 @@ const renderIndex = (framework: Framework): string =>
     `Each index row also links a reference in \`${knowledgeSkillName(framework)}\` documenting its replacement. Open ` +
       'that reference whenever a row gives you less than a concrete fix needs — the component whose prop you are ' +
       'replacing, or the styling integration an alias belongs to. Read that skill from ' +
-      `\`node_modules/${wrapperPackage(framework)}/skills/${knowledgeSkillName(framework)}/SKILL.md\` if it is not ` +
+      `\`node_modules/${getWrapperPackageName(framework)}/skills/${knowledgeSkillName(framework)}/SKILL.md\` if it is not ` +
       'already loaded.',
     '',
     'If the index cannot be read, write a report with `summary.result: "failed"` and no findings, then stop. An audit ' +
@@ -183,7 +181,7 @@ const renderScope = (framework: Framework): string => {
       'outside the root, and never follow a symlink that leaves it.',
     '',
     '**Discover the packages before auditing any of them.** Enumerate every `package.json` under the root, skipping ' +
-      `ignored paths, and audit each one that declares \`${wrapperPackage(framework)}\` in \`dependencies\`, ` +
+      `ignored paths, and audit each one that declares \`${getWrapperPackageName(framework)}\` in \`dependencies\`, ` +
       '`devDependencies` or `peerDependencies`. Do not take a monorepo\u2019s `workspaces` globs as the list: a ' +
       'directory that declares the dependency without being a workspace member is in scope all the same, and a ' +
       'workspace member that does not declare it is not.',

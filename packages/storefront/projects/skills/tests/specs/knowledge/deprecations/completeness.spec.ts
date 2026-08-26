@@ -238,7 +238,7 @@ describe('deprecation index completeness', () => {
   it('maps a published deprecation onto an entry, wording, replacement and reference alike', () => {
     const source = styleAliasSource({
       category: 'tokens',
-      origin: 'a fixture',
+      origin: () => 'a fixture',
       reference: 'references/tokens.md',
       deprecations: [
         { identifier: 'spacingLegacy', deprecation: { replacement: 'spacingStaticMd' } },

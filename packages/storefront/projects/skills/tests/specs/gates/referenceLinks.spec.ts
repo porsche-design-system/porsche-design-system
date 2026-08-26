@@ -46,7 +46,11 @@ const SKILL_ID = 'knowledge';
 
 const treeReferences = (skillRoot: string) =>
   listMarkdownFiles(skillRoot).flatMap((sourceFile) =>
-    extractReferences(fs.readFileSync(path.join(skillRoot, sourceFile), 'utf-8')).map((reference) => ({
+    extractReferences(fs.readFileSync(path.join(skillRoot, sourceFile), 'utf-8'), {
+      // The deprecation index names consumer-facing package exports as provenance, not as raw files
+      // the agent should inspect through this gate.
+      includePackageSpecifiers: sourceFile !== 'references/deprecations.md',
+    }).map((reference) => ({
       sourceFile,
       ...reference,
     }))
