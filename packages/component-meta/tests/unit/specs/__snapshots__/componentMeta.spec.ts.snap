@@ -830,6 +830,22 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "Overrides the foreground color (label, icon and loading spinner) of the button in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.",
       },
+      "--p-button-gap": {
+        "defaultValue": "",
+        "description": "Gap between the button's content (label and icon).",
+      },
+      "--p-button-px": {
+        "defaultValue": "",
+        "description": "Horizontal padding of the button.",
+      },
+      "--p-button-py": {
+        "defaultValue": "",
+        "description": "Vertical padding of the button.",
+      },
+      "--p-button-radius": {
+        "defaultValue": "",
+        "description": "Radius of the button",
+      },
     },
     "hasAriaProp": true,
     "hasElementInternals": true,
@@ -6452,6 +6468,22 @@ exports[`should match snapshot 1`] = `
       "--p-link-fg": {
         "defaultValue": "",
         "description": "Overrides the foreground color (label and icon) of the link in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.",
+      },
+      "--p-link-gap": {
+        "defaultValue": "",
+        "description": "Gap between the link's content (label and icon).",
+      },
+      "--p-link-px": {
+        "defaultValue": "",
+        "description": "Horizontal padding of the link.",
+      },
+      "--p-link-py": {
+        "defaultValue": "",
+        "description": "Vertical padding of the link.",
+      },
+      "--p-link-radius": {
+        "defaultValue": "",
+        "description": "Radius of the link",
       },
     },
     "hasAriaProp": true,
