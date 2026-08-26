@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- **Shadow DOM**: shadow roots are now attached with `clonable: true`, so `cloneNode(true)` on a component returns a
+  clone that carries its Shadow DOM content instead of an empty shadow root.
+  ([#4692](https://github.com/porsche-design-system/porsche-design-system/pull/4692))
+
 ### Fixed
 
 - `Carousel`: slides were dropped or left over when the amount of slides changed without also changing the amount of
@@ -23,9 +29,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
   carousel was initialised with.
   ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
-- **Shadow DOM**: shadow roots are now attached with `clonable: true`, so `cloneNode(true)` on a component returns a
-  clone that carries its Shadow DOM content instead of an empty shadow root.
-  ([#4692](https://github.com/porsche-design-system/porsche-design-system/pull/4692))
 
 ## [4.6.0] - 2026-08-20
 
