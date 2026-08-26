@@ -81,7 +81,11 @@ export const getLinkButtonStyles = (
   isCompact: BreakpointCustomizable<boolean>,
   cssVariableInternalScaling: string,
   cssVariableBackground: string,
-  cssVariableForeground: string
+  cssVariableForeground: string,
+  cssVarPaddingInline: string,
+  cssVarPaddingBlock: string,
+  cssVarGap: string,
+  cssVarRadius: string
 ): Styles => {
   const { textColor, textColorHover, backgroundColor, backgroundColorHover } = getVariantColors(
     variant,
@@ -91,9 +95,12 @@ export const getLinkButtonStyles = (
 
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
-  const paddingBlock = `calc(28px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 6px)`;
-  const paddingInline = `calc(33.6px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 16px)`;
-  const gap = `calc(11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px)`;
+  const paddingBlock = ref(cssVarPaddingBlock, `calc(28px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 6px)`);
+  const paddingInline = ref(
+    cssVarPaddingInline,
+    `calc(33.6px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 16px)`
+  );
+  const gap = ref(cssVarGap, `calc(11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px)`);
   const iconMarginInlineStart = `calc(-1 * (11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px))`;
 
   return {
@@ -107,7 +114,9 @@ export const getLinkButtonStyles = (
             '--_p-link-button-a': compactValue ? ref(radiusLg) : ref(radiusXl),
           })),
           buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-            borderRadius: addImportantToRule(hideLabelValue ? ref(radiusFull) : ref('--_p-link-button-a')),
+            borderRadius: addImportantToRule(
+              ref(cssVarRadius, hideLabelValue ? ref(radiusFull) : ref('--_p-link-button-a'))
+            ),
           }))
         ),
         ...addImportantToEachRule({

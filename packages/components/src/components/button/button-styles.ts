@@ -17,6 +17,26 @@ const cssVarBackground = '--p-button-bg';
  */
 const cssVarForeground = '--p-button-fg';
 
+/**
+ * @css-variable {"name": "--p-button-px", "description": "Horizontal padding of the button.", "defaultValue": ""}
+ */
+const cssVarPaddingInline = '--p-button-px';
+
+/**
+ * @css-variable {"name": "--p-button-py", "description": "Vertical padding of the button.", "defaultValue": ""}
+ */
+const cssVarPaddingBlock = '--p-button-py';
+
+/**
+ * @css-variable {"name": "--p-button-gap", "description": "Gap between the button's content (label and icon).", "defaultValue": ""}
+ */
+const cssVarGap = '--p-button-gap';
+
+/**
+ * @css-variable {"name": "--p-button-radius", "description": "Radius of the button", "defaultValue": ""}
+ */
+const cssVarRadius = '--p-button-radius';
+
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,
@@ -40,7 +60,11 @@ export const getComponentCss = (
         isCompact,
         cssVariableInternalButtonScaling,
         cssVarBackground,
-        cssVarForeground
+        cssVarForeground,
+        cssVarPaddingInline,
+        cssVarPaddingBlock,
+        cssVarGap,
+        cssVarRadius
       ),
       {
         root: {

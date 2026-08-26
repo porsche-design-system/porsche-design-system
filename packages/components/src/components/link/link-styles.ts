@@ -17,6 +17,26 @@ const cssVarBackground = '--p-link-bg';
  */
 const cssVarForeground = '--p-link-fg';
 
+/**
+ * @css-variable {"name": "--p-link-px", "description": "Horizontal padding of the link.", "defaultValue": ""}
+ */
+const cssVarPaddingInline = '--p-link-px';
+
+/**
+ * @css-variable {"name": "--p-link-py", "description": "Vertical padding of the link.", "defaultValue": ""}
+ */
+const cssVarPaddingBlock = '--p-link-py';
+
+/**
+ * @css-variable {"name": "--p-link-gap", "description": "Gap between the link's content (label and icon).", "defaultValue": ""}
+ */
+const cssVarGap = '--p-link-gap';
+
+/**
+ * @css-variable {"name": "--p-link-radius", "description": "Radius of the link", "defaultValue": ""}
+ */
+const cssVarRadius = '--p-link-radius';
+
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,
@@ -37,7 +57,11 @@ export const getComponentCss = (
         isCompact,
         cssVariableInternalLinkScaling,
         cssVarBackground,
-        cssVarForeground
+        cssVarForeground,
+        cssVarPaddingInline,
+        cssVarPaddingBlock,
+        cssVarGap,
+        cssVarRadius
       ),
       {
         label: {
