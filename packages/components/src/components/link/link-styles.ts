@@ -80,11 +80,11 @@ export const getComponentCss = (
               inset: 0,
               ...mergeDeep(
                 buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
-                  borderRadius: compactValue ? ref(radiusLg) : ref(radiusXl),
+                  borderRadius: ref(cssVarRadius, compactValue ? ref(radiusLg) : ref(radiusXl)),
                 })),
                 buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
                   ...(hideLabelValue && {
-                    borderRadius: ref(radiusFull),
+                    borderRadius: ref(cssVarRadius, ref(radiusFull)),
                   }),
                 }))
               ),
