@@ -21,6 +21,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Button`, `Link`: `--p-button-bg`, `--p-button-fg`, `--p-link-bg` and `--p-link-fg` CSS variables to override the
   background and foreground color in every state, including hover. You are responsible for ensuring sufficient contrast
   and brand compliance. ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Button`, `Link`: `--p-button-px`, `--p-button-py`, `--p-button-gap`, `--p-button-radius`, `--p-link-px`,
+  `--p-link-py`, `--p-link-gap` and `--p-link-radius` CSS variables to override horizontal padding, vertical padding,
+  the gap between label and icon as well as the border radius. You are responsible for ensuring a minimum target size of
+  24px by 24px and brand compliance.
+  ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
 - `Icon`: `ai-chat` icon ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
 
 ## [4.6.0] - 2026-08-20
