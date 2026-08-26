@@ -8,6 +8,7 @@ const initComponent = (): Button => {
   component['internals'] = {
     setFormValue: vi.fn(),
     form: { requestSubmit: vi.fn(), reset: vi.fn() } as unknown as HTMLFormElement,
+    states: { add: vi.fn(), delete: vi.fn() } as unknown as CustomStateSet,
   } as unknown as ElementInternals;
   component.form = 'some-form';
   return component;
@@ -67,6 +68,38 @@ describe('componentWillLoad', () => {
     component.form = undefined;
     component.componentWillLoad();
     expect(component['internals'].setFormValue).not.toHaveBeenCalled();
+  });
+});
+
+describe('componentWillRender()', () => {
+  it('should sync custom states for disabled, loading and variant', () => {
+    const component = initComponent();
+    component.disabled = true;
+    component.loading = false;
+    component.variant = 'secondary';
+
+    component.componentWillRender();
+
+    const { add, delete: remove } = component['internals'].states;
+    expect(add).toHaveBeenCalledWith('disabled');
+    expect(remove).toHaveBeenCalledWith('loading');
+    expect(add).toHaveBeenCalledWith('variant-secondary');
+    expect(remove).toHaveBeenCalledWith('variant-primary');
+    expect(remove).toHaveBeenCalledWith('variant-destructive');
+  });
+
+  it('should not throw if CustomStateSet is not supported', () => {
+    const component = initComponent();
+    component['internals'] = { setFormValue: vi.fn() } as unknown as ElementInternals;
+
+    expect(() => component.componentWillRender()).not.toThrow();
+  });
+
+  it('should not throw if ElementInternals is not supported', () => {
+    const component = initComponent();
+    component['internals'] = undefined;
+
+    expect(() => component.componentWillRender()).not.toThrow();
   });
 });
 

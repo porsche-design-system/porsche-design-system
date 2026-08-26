@@ -16,6 +16,7 @@ import {
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
+  setCustomStates,
   validateProps,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
@@ -131,6 +132,10 @@ export class Button {
     }
   }
 
+  public componentWillRender(): void {
+    this.syncCustomStates();
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -145,6 +150,24 @@ export class Button {
         () => this.value
       );
     }
+  }
+
+  /**
+   * Exposes the component's state as CSS custom states, which can be targeted with the `:state()` pseudo-class,
+   * e.g. `p-button:state(disabled) { --p-button-bg: deeppink; }`.
+   * This is a progressive enhancement and silently does nothing in browsers without `CustomStateSet` support.
+   */
+  private syncCustomStates(): void {
+    const states: Record<string, boolean> = {
+      disabled: this.disabled,
+      loading: this.loading,
+    };
+
+    for (const variant of BUTTON_VARIANTS) {
+      states[`variant-${variant}`] = this.variant === variant;
+    }
+
+    setCustomStates(this.internals, states);
   }
 
   public render(): JSX.Element {

@@ -1,8 +1,9 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import {
-  type ClickableTests,
   addEventListener,
+  type ClickableTests,
   getActiveElementId,
+  getElementStyle,
   getEventSummary,
   getFormDataValue,
   getLifecycleStatus,
@@ -457,6 +458,50 @@ test.describe('focus state', () => {
     await waitForStencilLifecycle(page);
 
     expect(await hasFocus(host), 'final focus style').toBe(true);
+  });
+});
+
+test.describe('custom states', () => {
+  const customStatesStyle = `<style>
+    p-button:state(variant-primary) { --p-button-bg: rgb(1, 1, 1); }
+    p-button:state(variant-secondary) { --p-button-bg: rgb(2, 2, 2); }
+    p-button:state(variant-destructive) { --p-button-bg: rgb(3, 3, 3); }
+    p-button:state(loading) { --p-button-bg: rgb(4, 4, 4); }
+    p-button:state(disabled) { --p-button-bg: rgb(5, 5, 5); }
+  </style>`;
+
+  const initButtonWithCustomStates = (page: Page): Promise<void> =>
+    setContentWithDesignSystem(page, `${customStatesStyle}<p-button>Some label</p-button>`);
+
+  test('should expose variant, loading and disabled as custom states', async ({ page }) => {
+    await initButtonWithCustomStates(page);
+
+    const host = getHost(page);
+    const button = getButton(page);
+
+    expect(await getElementStyle(button, 'backgroundColor'), 'initial variant primary').toBe('rgb(1, 1, 1)');
+
+    await setProperty(host, 'variant', 'secondary');
+    await waitForStencilLifecycle(page);
+    expect(await getElementStyle(button, 'backgroundColor'), 'variant secondary').toBe('rgb(2, 2, 2)');
+
+    await setProperty(host, 'variant', 'destructive');
+    await waitForStencilLifecycle(page);
+    expect(await getElementStyle(button, 'backgroundColor'), 'variant destructive').toBe('rgb(3, 3, 3)');
+
+    await setProperty(host, 'loading', true);
+    await waitForStencilLifecycle(page);
+    expect(await getElementStyle(button, 'backgroundColor'), 'loading').toBe('rgb(4, 4, 4)');
+
+    await setProperty(host, 'loading', false);
+    await setProperty(host, 'disabled', true);
+    await waitForStencilLifecycle(page);
+    expect(await getElementStyle(button, 'backgroundColor'), 'disabled').toBe('rgb(5, 5, 5)');
+
+    await setProperty(host, 'disabled', false);
+    await setProperty(host, 'variant', 'primary');
+    await waitForStencilLifecycle(page);
+    expect(await getElementStyle(button, 'backgroundColor'), 'reset to variant primary').toBe('rgb(1, 1, 1)');
   });
 });
 

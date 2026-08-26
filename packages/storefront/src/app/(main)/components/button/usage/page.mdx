@@ -8,7 +8,7 @@ export const metadata = {
 
 # Button <ComponentStatus tagName="p-button"></ComponentStatus>
 
-<TableOfContents headings={['Usage', 'Related components']} />
+<TableOfContents headings={['Usage', 'Custom states', 'Related components']} />
 
 ## Usage
 
@@ -35,6 +35,38 @@ situations.
   interface.
 - Don't use disabled buttons without providing context for why the button is disabled. This can lead to confusion and
   frustration for users.
+
+---
+
+## Custom states
+
+The button exposes its internal state as [CSS custom states](https://developer.mozilla.org/en-US/docs/Web/CSS/:state),
+which can be targeted with the `:state()` pseudo-class. This is handy to conditionally override the exposed CSS
+variables (e.g. `--p-button-bg` and `--p-button-fg`) without having to duplicate the state logic in your application.
+
+| Custom state          | Applied when               |
+| --------------------- | -------------------------- |
+| `disabled`            | `disabled` is `true`       |
+| `loading`             | `loading` is `true`        |
+| `variant-primary`     | `variant` is `primary`     |
+| `variant-secondary`   | `variant` is `secondary`   |
+| `variant-destructive` | `variant` is `destructive` |
+
+```scss
+p-button:state(variant-secondary) {
+  --p-button-bg: #025b3f;
+  --p-button-fg: #21eeae;
+}
+
+p-button:state(disabled) {
+  --p-button-bg: #6f3d0b;
+  --p-button-fg: #ffaa4f;
+}
+```
+
+Custom states are a progressive enhancement: browsers without support for `CustomStateSet` or the `:state()`
+pseudo-class simply ignore these rules, the button keeps working and falls back to its default styling. As with all
+color customizations, you are responsible for ensuring sufficient contrast and brand compliance.
 
 ---
 

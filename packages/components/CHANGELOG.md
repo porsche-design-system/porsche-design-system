@@ -27,6 +27,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   24px by 24px and brand compliance.
   ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
 - `Icon`: `ai-chat` icon ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Button`: CSS custom states (`disabled`, `loading`, `variant-primary`, `variant-secondary`, `variant-destructive`)
+  which can be targeted with the `:state()` pseudo-class, e.g. `p-button:state(disabled) { --p-button-bg: deeppink; }`.
+  Browsers without support for `CustomStateSet` simply ignore these rules.
 
 ## [4.6.0] - 2026-08-20
 
