@@ -221,6 +221,21 @@ const COMPONENT_ROOT: Record<Framework, string> = {
   vue: 'An import from `@porsche-design-system/components-vue`. Templates write it as either `<PText>` or `<p-text>`.',
 };
 
+const PROP_FORWARDING: Record<Framework, string> = {
+  react: '`{...props}` or an explicit JSX pass-through',
+  vue: '`v-bind="$attrs"` or explicit prop bindings',
+  angular: 'a declared input rebound in the template',
+  js: 'an explicit property or attribute pass-through to the custom element',
+};
+
+const FALLBACK_CASES: Record<Framework, string> = {
+  react: 'dynamic `createElement`, markup built in template strings, re-exports you cannot resolve',
+  vue: 'dynamic `createElement`, markup built in template strings, re-exports you cannot resolve',
+  angular:
+    "a tag name assembled at runtime (`'p-' + kind`), an attribute name held in a variable, re-exports you cannot resolve",
+  js: "a tag name assembled at runtime (`'p-' + kind`), an attribute name held in a variable, re-exports you cannot resolve",
+};
+
 /**
  * Anchoring, structured as work-outward-from-PDS rather than search-and-filter.
  *
@@ -245,7 +260,8 @@ const renderAnchoring = (framework: Framework): string =>
     '- A resolved SCSS `@use` of the PDS entry point, **including one injected by build config** (Angular or Vite ' +
       '`additionalData`) rather than written in the file. A project can use PDS Sass without any file naming it.',
     '- An import of the PDS Tailwind theme. Its custom properties are unprefixed and generic, so they count only in a ' +
-      'project that imports the theme, and not where the project redefines one itself.',
+      'project that imports the theme. A project redefinition disqualifies an alias only where that `@theme` block ' +
+      'is in effect; the imported alias still counts elsewhere.',
     '- An import of the Emotion or vanilla-extract entry point, resolving aliases.',
     '',
     '**Traverse outward.** From each root, follow usage through the project\u2019s own code: a component that renders ' +
@@ -253,12 +269,12 @@ const renderAnchoring = (framework: Framework): string =>
       'against cycles and stop when nothing new is reached. Wrapping PDS two or three layers deep is normal, and a ' +
       'limit would drop most real usage.',
     '',
-    'Follow the **prop**, not just the component. A wrapper anchors a prop only if it forwards it — `{...props}` or an ' +
-      'explicit pass-through. Wrapper layers often rename or reinterpret an API, so a wrapper that accepts `size` ' +
+    `Follow the **prop**, not just the component. A wrapper anchors a prop only if it forwards it — ${PROP_FORWARDING[framework]}. ` +
+      'Wrapper layers often rename or reinterpret an API, so a wrapper that accepts `size` ' +
       'without forwarding it is not PDS usage, and reporting it would be a false positive.',
     '',
-    '**When the graph runs out**, fall back to searching index identifiers and anchoring each match — dynamic ' +
-      '`createElement`, markup built in template strings, re-exports you cannot resolve. Anything still unanchored is ' +
+    `**When the graph runs out**, fall back to searching index identifiers and anchoring each match — ${FALLBACK_CASES[framework]}. ` +
+      'Anything still unanchored is ' +
       'a manual follow-up. Record the gap in `coverage.limitations`; a fallback you do not disclose looks like a ' +
       'clean project.',
     '',
@@ -316,6 +332,10 @@ const renderCandidates = (framework: Framework): string =>
       'statically present in the source whatever data flows through it — `<PAccordion heading={anything}>` already ' +
       'proves the deprecated prop is used.',
     '',
+    'For these non-value kinds, the deprecated API is written at exactly one line. A wrapper call site does not add ' +
+      'another location, and `wrapper-forwarded` or `wrapper-transformed` applies only to deprecated value locations; ' +
+      'the wrapper chain belongs in the location\u2019s `anchor`.',
+    '',
     'A deprecated **value** is the exception. It is a plain string that can come from anywhere, so it has to be ' +
       'resolved before it can be reported, and how it resolved is recorded as the location\u2019s `valueResolution`:',
     '',
@@ -358,7 +378,7 @@ const renderCandidates = (framework: Framework): string =>
       'show a reader which callers the fix has to reach.',
     '',
     'That first half is *where the value is written*, not where the PDS element happens to sit. A wrapper earns a ' +
-      'location when the value resolves in its own file \u2014 a literal on the element, a default, a lookup entry. ' +
+      'location when the value resolves in its own file \u2014 a literal on the element or a default. ' +
       'Where the wrapper only forwards a prop, nothing resolves on that line: the call site is the location and the ' +
       'wrapper is the route, which `detection` already records. Listing both counts one flow twice, and inflates the ' +
       'occurrence count \u00a78 sorts by. A `valueResolution` of `literal` on a line holding no literal is the ' +
@@ -389,6 +409,10 @@ const renderCandidates = (framework: Framework): string =>
     'A follow-up carries a `subject` naming what could not be resolved (`p-text size`). Give it a `ruleId` only when ' +
       'it maps to exactly one index entry; when the value could be any of several, omit the id rather than inventing ' +
       'one — an id that is not in the index cannot be looked up.',
+    '',
+    'A rule that appears in `findings` must not also appear in `manualFollowUps`. Unresolvable usage of an ' +
+      'already-reported rule belongs with that finding\u2019s evidence when it can be quoted as a usage, or in ' +
+      '`coverage.limitations` when it cannot be resolved well enough to be evidence.',
   ].join('\n');
 
 /**
@@ -454,9 +478,10 @@ const renderFindings = (framework: Framework): string =>
     '',
     'An evidence `line` is the **usage** — the attribute, tag, custom property or alias reference itself. Never the ' +
       '`import`, `@use` or `@theme` that anchored it, never the wrapper call it arrived through, and never the ' +
-      'declaration line of a constant it resolved from \u2014 including a key inside an object that is spread onto ' +
-      'the element, which is such a declaration and not a usage. For a spread, the evidence line is the element the ' +
-      'object is spread onto. Those lines are real and they matter, which is exactly why ' +
+      'declaration line of a constant it resolved from \u2014 including a key inside an object that is applied to the ' +
+      'element as a whole, which is such a declaration and not a usage. For such an object, the evidence line is the ' +
+      'element it is applied to. Where a component is reached through a local binding, the evidence line is the ' +
+      'reference to the PDS binding, not the render of the local alias. Those lines are real and they matter, which is exactly why ' +
       'the anchor has a field of its own: counted as locations instead, they inflate a finding by however many ' +
       'anchors it happens to have, and occurrence count is a sort key in \u00a78 — so two runs of an unchanged ' +
       'project stop being comparable.',
@@ -543,7 +568,8 @@ const renderOutput = (framework: Framework): string =>
     '```',
     '',
     'The `runId` is a filesystem-safe UTC timestamp, e.g. `2026-07-23T09-21-27Z`. The run directory is shared: a ' +
-      'future audit skill writes its own report beside this one, so never clear it — write only your two files.',
+      'future audit skill writes its own report beside this one, so never clear it — write only your two files. ' +
+      `Resolve \`${RUN_DIRECTORY}\` against \`project.root\`, not the current working directory or repository root.`,
     '',
     `The JSON must validate against [\`${REPORT_SCHEMA_FILE}\`](${REPORT_SCHEMA_FILE}) ` +
       `(schema version \`${REPORT_SCHEMA_VERSION}\`). Build and check it **before** rendering the Markdown, and ` +
@@ -594,8 +620,9 @@ const renderResultStates = (): string =>
     ),
     '',
     'Before writing `completed`, check the claim against `scope.includedPaths` rather than against the walk you ' +
-      'happened to run: every package \u00a73 discovered is in that list, every one of them was audited, every index ' +
-      'category was worked through, every eligible file read. A package you never discovered holds no eligible files ' +
+      'happened to run: every package \u00a73 discovered is in that list, every one of them was audited, and every index ' +
+      'category was worked through. Re-enumerate eligible files in each included package and confirm every file was ' +
+      'visited or appears in `coverage.skippedFiles`; any file in neither place makes the run `partial`. A package you never discovered holds no eligible files ' +
       'either, so file-level eligibility cannot catch it and the package list is the only thing that can. If you ' +
       'cannot say all of that, the answer is `partial`, which is an honest and useful result. `completed` on an ' +
       'audit that skipped things is the one outcome that actively misleads — a short report reads as a clean ' +

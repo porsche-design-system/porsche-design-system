@@ -49,7 +49,7 @@ export const BASELINE_EFFORT: Record<UsageKind, Effort> = {
   prop: 'small',
   slot: 'small',
   event: 'small',
-  cssCustomProperty: 'small',
+  cssCustomProperty: 'trivial',
   component: 'medium',
 };
 

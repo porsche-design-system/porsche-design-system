@@ -195,6 +195,13 @@ describe('audit-deprecations skill', () => {
         expect(read(framework, 'SKILL.md')).toContain('That first half is *where the value is written*');
       });
 
+      it('does not offer a lookup declaration as an evidence location', () => {
+        const skillMd = read(framework, 'SKILL.md');
+        const locationRule = skillMd.match(/A wrapper earns a location[\s\S]*?Where the wrapper only forwards/u)?.[0];
+        expect(locationRule).toBeDefined();
+        expect(locationRule).not.toContain('lookup entry');
+      });
+
       it('decides reachability rather than leaving it to the reader', () => {
         // A lookup table inside a wrapper holds values no call site selects. They still break at the
         // next major release, and silence here had one run report them and one skip them.
@@ -207,13 +214,20 @@ describe('audit-deprecations skill', () => {
         expect(skillMd).toContain('the note or the linked reference');
       });
 
-      it('names the spread object key as a declaration rather than a usage', () => {
+      it('names a whole-object key as a declaration rather than a usage', () => {
         // Two runs split on `const textProps = { size: 'large' }` spread onto a PDS element: one cited
         // the element, one the key. Eight of the thirteen location differences between them were this
         // one question, and both runs already graded it `same-file-constant`.
         const skillMd = read(framework, 'SKILL.md');
-        expect(skillMd).toContain('including a key inside an object that is spread onto the element');
-        expect(skillMd).toContain('the evidence line is the element the object is spread onto');
+        expect(skillMd).toContain('including a key inside an object that is applied to the element as a whole');
+        expect(skillMd).toContain('the evidence line is the element it is applied to');
+        expect(skillMd).not.toContain('For a spread');
+      });
+
+      it('uses the PDS binding reference as evidence for an indirectly referenced component', () => {
+        expect(read(framework, 'SKILL.md')).toContain(
+          'the evidence line is the reference to the PDS binding, not the render of the local alias'
+        );
       });
 
       it('names the usage line as the evidence line, and gives the anchor its own field', () => {
@@ -277,7 +291,20 @@ describe('audit-deprecations skill', () => {
       it('requires the wrapper to forward a prop before it anchors it', () => {
         // Wrapper layers routinely rename or reinterpret an API, so following the component without
         // checking the prop reports a project's own `size` as PDS usage.
-        expect(read(framework, 'SKILL.md')).toContain('only if it forwards it');
+        const skillMd = read(framework, 'SKILL.md');
+        const forwarding: Record<string, string> = {
+          react: '`{...props}` or an explicit JSX pass-through',
+          vue: '`v-bind="$attrs"` or explicit prop bindings',
+          angular: 'a declared input rebound in the template',
+          js: 'an explicit property or attribute pass-through to the custom element',
+        };
+        expect(skillMd).toContain('only if it forwards it');
+        expect(skillMd).toContain(forwarding[framework]);
+        for (const [other, spelling] of Object.entries(forwarding)) {
+          if (other !== framework) {
+            expect(skillMd, `${framework} names the ${other} forwarding mechanism`).not.toContain(spelling);
+          }
+        }
       });
 
       it('keeps a disclosed fallback for what the graph cannot reach', () => {
@@ -286,6 +313,20 @@ describe('audit-deprecations skill', () => {
         const skillMd = read(framework, 'SKILL.md');
         expect(skillMd).toContain('When the graph runs out');
         expect(skillMd).toContain('coverage.limitations');
+      });
+
+      it('does not classify a tag-root example as both direct and fallback', () => {
+        const skillMd = read(framework, 'SKILL.md');
+        const anchoring = skillMd.match(/## 4\. Work outward from PDS([\s\S]*?)## 5\./u)?.[1];
+        expect(anchoring).toBeDefined();
+        if (['js', 'angular'].includes(framework)) {
+          expect(anchoring).toContain("a tag name assembled at runtime (`'p-' + kind`)");
+          expect(anchoring).not.toContain('dynamic `createElement`');
+          expect(anchoring).not.toContain('markup built in template strings');
+        } else {
+          expect(anchoring).toContain('dynamic `createElement`');
+          expect(anchoring).toContain('markup built in template strings');
+        }
       });
 
       it('tells the agent to resolve values inside responsive objects', () => {
@@ -307,8 +348,8 @@ describe('audit-deprecations skill', () => {
         const skillMd = read(framework, 'SKILL.md');
         const bound: Record<string, string> = {
           react: "size={{ base: 'small', l: 'medium' }}",
-          vue: ':size="{ base: \'small\', l: \'medium\' }"',
-          angular: '[size]="{ base: \'small\', l: \'medium\' }"',
+          vue: ":size=\"{ base: 'small', l: 'medium' }\"",
+          angular: "[size]=\"{ base: 'small', l: 'medium' }\"",
           js: "el.size = { base: 'small', l: 'medium' }",
         };
         expect(skillMd).toContain(bound[framework]);
@@ -324,6 +365,14 @@ describe('audit-deprecations skill', () => {
         // stated only by negation ("anything weaker is a follow-up"), which needs an inference to
         // read correctly.
         expect(read(framework, 'SKILL.md')).toContain('**A `medium` finding is a finding**');
+      });
+
+      it('restricts wrapper detections to deprecated value locations', () => {
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain(
+          '`wrapper-forwarded` or `wrapper-transformed` applies only to deprecated value locations'
+        );
+        expect(skillMd).toContain('the wrapper chain belongs in the location\u2019s `anchor`');
       });
 
       it('offers the same detections in the prompt and the schema', () => {
@@ -443,6 +492,12 @@ describe('audit-deprecations skill', () => {
         expect(read(framework, 'SKILL.md')).toContain('must not be fixed automatically');
       });
 
+      it('does not report one rule as both a finding and a follow-up', () => {
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('A rule that appears in `findings` must not also appear in `manualFollowUps`');
+        expect(skillMd).toContain('Unresolvable usage of an already-reported rule belongs with that finding');
+      });
+
       it('verifies findings against the index and the files before writing', () => {
         // Schema validation proves shape only: an invented rule id and a snippet that is not really
         // at that line both validate perfectly.
@@ -465,8 +520,29 @@ describe('audit-deprecations skill', () => {
       it('leaves other audits\u2019 reports in the shared run directory alone', () => {
         expect(read(framework, 'SKILL.md')).toContain('never clear it');
       });
+
+      it('resolves the report directory against the audited project root', () => {
+        expect(read(framework, 'SKILL.md')).toContain('Resolve `.pds/audits/<runId>/` against `project.root`');
+      });
+
+      it('re-enumerates eligible files before reporting completed', () => {
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('Re-enumerate eligible files in each included package');
+        expect(skillMd).toContain('visited or appears in `coverage.skippedFiles`');
+      });
+
+      it('limits a Tailwind redefinition to the scope where its theme block applies', () => {
+        expect(read(framework, 'SKILL.md')).toContain(
+          'A project redefinition disqualifies an alias only where that `@theme` block is in effect'
+        );
+      });
     });
   }
+
+  it('grades CSS custom-property aliases like the other styling aliases', () => {
+    expect(baselineEffort('cssCustomProperty', true)).toBe('trivial');
+    expect(baselineEffort('cssCustomProperty', false)).toBe('small');
+  });
 
   it('inverts the js self-check, since components-js is a dependency of every wrapper', () => {
     const skillMd = read('js', 'SKILL.md');
