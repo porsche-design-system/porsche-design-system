@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { baselineEffort, DETECTIONS, VALUE_RESOLUTIONS } from '@skills/audit-deprecations/grading';
 import { AUDIT_KIND } from '@skills/audit-deprecations/reportSchema';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
-import { ENTRY_KINDS } from '@skills/knowledge/deprecations/types';
+import { USAGE_KINDS } from '@skills/knowledge/deprecations/types';
 import { DEPRECATIONS_REFERENCE } from '@skills/knowledge/skillMd';
 import { getSkillName, getWrapperPackageName } from '@skills/registry';
 import { FRAMEWORKS, stagedSkillDir } from '@skills/shared/skillTree';
@@ -201,12 +201,10 @@ describe('audit-deprecations skill', () => {
         expect(read(framework, 'SKILL.md')).toContain('resolved is the test, reached is not');
       });
 
-      it('reads the replacement only from the opening of the index cell', () => {
-        // The effort lookup keys off whether a replacement is documented, and the index puts one at
-        // the head of the cell whenever the source names one. Two runs graded the `p-accordion` prop
-        // rows differently by disagreeing about whether a mention later in the verbatim message
-        // counted — so say where to read, not just what to look for.
-        expect(read(framework, 'SKILL.md')).toContain('The index puts the successor in that opening position');
+      it('reads the replacement only from the dedicated index column', () => {
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('**Replacement** column');
+        expect(skillMd).toContain('the note or the linked reference');
       });
 
       it('names the spread object key as a declaration rather than a usage', () => {
@@ -255,11 +253,16 @@ describe('audit-deprecations skill', () => {
       });
 
       it('settles what a documented replacement is, so value effort stops flipping', () => {
-        // All 219 value rules render a current-values list. Grading off whether a successor looks
-        // derivable from it flipped every shared value rule between two runs of the same project.
+        // A successor is documented only when the generated index states it explicitly.
         expect(read(framework, 'SKILL.md')).toContain(
-          '"Documented" means the index row\u2019s **Replacement / note** column names one'
+          '"Documented" means the index row\u2019s **Replacement** column names one'
         );
+      });
+
+      it('names only categories present in the deprecation index', () => {
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('tokens, icons and stylesheets');
+        expect(skillMd).not.toContain('stylesheets, partials');
       });
 
       it('names the roots that exist without an import', () => {
@@ -285,12 +288,12 @@ describe('audit-deprecations skill', () => {
         expect(skillMd).toContain('coverage.limitations');
       });
 
-      it('tells the agent to look inside breakpoint objects', () => {
+      it('tells the agent to resolve values inside responsive objects', () => {
         // The single easiest silent under-report: a whole-attribute comparison matches no responsive
         // usage at all, and nothing about the failure is visible in the report.
         const skillMd = read(framework, 'SKILL.md');
-        expect(skillMd).toContain("size=\"{'base': 'small', 'l': 'medium'}\"");
-        expect(skillMd).toContain("size={{'base': 'small', 'l': 'medium'}}");
+        expect(skillMd).toContain('Resolve every value inside the object');
+        expect(skillMd).not.toContain("size={{'base': 'small'");
       });
 
       it('states positively that a medium-confidence candidate is a finding', () => {
@@ -338,15 +341,21 @@ describe('audit-deprecations skill', () => {
         }
       });
 
-      it('states a baseline effort for every entry kind, in both replacement cases', () => {
+      it('states a baseline effort for every usage kind, in both replacement cases', () => {
         // A deprecated component with a documented successor is routine work; one with nothing to
         // swap in means designing the replacement. Both cases are derived, so neither is a judgement.
         const skillMd = read(framework, 'SKILL.md');
-        for (const kind of ENTRY_KINDS) {
+        for (const kind of USAGE_KINDS) {
           expect(skillMd, `no baseline effort stated for ${kind}`).toContain(
             `| \`${kind}\` | \`${baselineEffort(kind, true)}\` | \`${baselineEffort(kind, false)}\` |`
           );
         }
+      });
+
+      it('requires the shared usage-kind vocabulary on every finding', () => {
+        const finding = findingOf(framework);
+        expect(finding.required).toContain('usageKind');
+        expect(finding.properties.usageKind.enum).toStrictEqual([...USAGE_KINDS]);
       });
 
       it('requires an effort rationale whenever the baseline is overridden', () => {
@@ -397,7 +406,7 @@ describe('audit-deprecations skill', () => {
 
       it('lets a follow-up omit a rule id rather than invent one', () => {
         // Found on the second fixture run: a follow-up spanning several index entries was given
-        // `value/p-text/size`, which no entry has. A required id forces exactly that — an
+        // `propValue/p-text/size`, which no entry has. A required id forces exactly that — an
         // unresolvable value maps to no single entry, so `subject` carries the description instead.
         const followUp = schemaOf(framework).properties.manualFollowUps.items;
         expect(followUp.required).toContain('subject');
@@ -438,8 +447,12 @@ describe('audit-deprecations skill', () => {
 
   it('inverts the js self-check, since components-js is a dependency of every wrapper', () => {
     const skillMd = read('js', 'SKILL.md');
-    for (const wrapper of ['react', 'angular', 'vue']) {
-      expect(skillMd, `js SKILL.md does not exclude the ${wrapper} wrapper`).toContain(getWrapperPackageName(wrapper));
+    for (const packageName of [
+      getWrapperPackageName('react'),
+      getWrapperPackageName('angular'),
+      getWrapperPackageName('vue'),
+    ]) {
+      expect(skillMd, `js SKILL.md does not exclude ${packageName}`).toContain(packageName);
     }
   });
 
@@ -462,7 +475,7 @@ describe('audit-deprecations skill', () => {
     const shipped = read('react', 'SKILL.md');
     const owned = collectDeprecations()
       .flatMap((source) => source.entries)
-      .filter((entry) => entry.identifier.startsWith('$pds-') || entry.kind === 'component')
+      .filter((entry) => entry.identifier.startsWith('$pds-') || entry.usageKind === 'component')
       .map((entry) => entry.identifier);
     expect(owned.length).toBeGreaterThan(0);
     expect(owned.filter((identifier) => shipped.includes(identifier))).toStrictEqual([]);

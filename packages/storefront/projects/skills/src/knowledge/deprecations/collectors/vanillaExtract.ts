@@ -1,6 +1,6 @@
 import { vanillaExtractDeprecations } from '@porsche-design-system/vanilla-extract/meta';
 import { type DeprecationSource, publicWrapperExport } from '../types';
-import { styleAliasSource } from './styleAlias';
+import { publishedSource } from './published';
 
 /**
  * Adapts the vanilla-extract package's own published deprecations into index entries.
@@ -14,7 +14,7 @@ import { styleAliasSource } from './styleAlias';
  * `variables directly` as a migration target.
  */
 export const collectVanillaExtractDeprecations = (): DeprecationSource =>
-  styleAliasSource({
+  publishedSource({
     category: 'vanillaExtract',
     origin: (framework) => `the vanilla-extract API exposed by ${publicWrapperExport(framework, '/vanilla-extract')}`,
     reference: 'references/styles/vanilla-extract.md',

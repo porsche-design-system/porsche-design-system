@@ -10,9 +10,9 @@ import { tailwindDeprecations } from '@porsche-design-system/tailwindcss';
 import { tokenDeprecations } from '@porsche-design-system/tokens-meta';
 import { vanillaExtractDeprecations } from '@porsche-design-system/vanilla-extract/meta';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
-import { styleAliasSource } from '@skills/knowledge/deprecations/collectors/styleAlias';
+import { publishedSource } from '@skills/knowledge/deprecations/collectors/published';
 import type { DeprecationEntry, SourceCategory } from '@skills/knowledge/deprecations/types';
-import { BASELINE_EFFORT, ENTRY_KINDS, SOURCE_CATEGORIES } from '@skills/knowledge/deprecations/types';
+import { BASELINE_EFFORT, SOURCE_CATEGORIES, USAGE_KINDS } from '@skills/knowledge/deprecations/types';
 import { describe, expect, it } from 'vitest';
 
 /**
@@ -130,7 +130,7 @@ const componentMetaExpectations = (): string[] => {
         expected.push(`prop ${tag} ${name}`);
       }
       for (const value of prop.deprecatedValues ?? []) {
-        expected.push(`value ${tag} ${name} ${value}`);
+        expected.push(`propValue ${tag} ${name} ${value}`);
       }
     }
     for (const [name, event] of Object.entries(meta.eventsMeta ?? {})) {
@@ -145,7 +145,7 @@ const componentMetaExpectations = (): string[] => {
     }
     for (const [name, cssVariable] of Object.entries(meta.cssVariablesMeta ?? {})) {
       if (cssVariable.isDeprecated) {
-        expected.push(`cssVariable ${tag} ${name}`);
+        expected.push(`cssCustomProperty ${tag} ${name}`);
       }
     }
   }
@@ -157,9 +157,9 @@ const componentIndexLabels = (): string[] =>
   SOURCES.flatMap((source) => source.entries)
     .filter((entry) => entry.source === 'components' || entry.source === 'icons')
     .map((entry) =>
-      entry.kind === 'value'
-        ? `value ${entry.owner} ${entry.prop} ${entry.identifier}`
-        : `${entry.kind} ${entry.owner ?? ''} ${entry.identifier}`.replace('  ', ' ').trim()
+      entry.usageKind === 'propValue'
+        ? `propValue ${entry.owner} ${entry.prop} ${entry.identifier}`
+        : `${entry.usageKind} ${entry.owner ?? ''} ${entry.identifier}`.replace('  ', ' ').trim()
     )
     .map((label) => (label.startsWith('component ') ? label : label))
     .sort();
@@ -173,8 +173,8 @@ describe('deprecation index completeness', () => {
     expect(IDS.length).toBe(new Set(IDS).size);
   });
 
-  it('has a baseline effort for every entry kind', () => {
-    expect(Object.keys(BASELINE_EFFORT).sort()).toStrictEqual([...ENTRY_KINDS].sort());
+  it('has a baseline effort for every usage kind', () => {
+    expect(Object.keys(BASELINE_EFFORT).sort()).toStrictEqual([...USAGE_KINDS].sort());
   });
 
   it('collects every deprecated entity component-meta declares', () => {
@@ -185,10 +185,10 @@ describe('deprecation index completeness', () => {
     expect(componentMetaExpectations().length).toBeGreaterThan(0);
   });
 
-  it('keeps the shared styleAlias adapter off the filesystem, for every metadata source', () => {
+  it('keeps the shared published-source adapter off the filesystem, for every metadata source', () => {
     // The metadata collectors delegate their entry construction here, so the "no parsing another
     // package's artifacts" guarantee now has to hold for this file as well as for each collector.
-    expect(collectorSource('styleAlias.ts')).not.toMatch(/from 'node:(fs|path)'/);
+    expect(collectorSource('published.ts')).not.toMatch(/from 'node:(fs|path)'/);
   });
 
   describe.each(METADATA_SOURCES)(
@@ -204,9 +204,15 @@ describe('deprecation index completeness', () => {
         expect(entries().map((entry) => entry.identifier)).toStrictEqual(deprecations.map((d) => d.identifier));
       });
 
+      it('preserves every published usage kind', () => {
+        expect(entries().map((entry) => entry.usageKind)).toStrictEqual(
+          deprecations.map((deprecation) => deprecation.usageKind)
+        );
+      });
+
       it('builds every rule id from the package identifier, so reports stay comparable', () => {
         expect(entries().map((entry) => entry.id)).toStrictEqual(
-          deprecations.map((d) => `styleAlias/${category}/${d.identifier}`)
+          deprecations.map((deprecation) => `${deprecation.usageKind}/${category}/${deprecation.identifier}`)
         );
       });
 
@@ -236,29 +242,33 @@ describe('deprecation index completeness', () => {
    * the adapter renders it. Gated on a fixture rather than on a token nobody has deprecated yet.
    */
   it('maps a published deprecation onto an entry, wording, replacement and reference alike', () => {
-    const source = styleAliasSource({
+    const source = publishedSource({
       category: 'tokens',
       origin: () => 'a fixture',
       reference: 'references/tokens.md',
       deprecations: [
-        { identifier: 'spacingLegacy', deprecation: { replacement: 'spacingStaticMd' } },
-        { identifier: 'colorLegacy', deprecation: { note: 'Merged into the light-dark tokens.' } },
+        { usageKind: 'jsExport', identifier: 'spacingLegacy', deprecation: { replacement: 'spacingStaticMd' } },
+        {
+          usageKind: 'jsExport',
+          identifier: 'colorLegacy',
+          deprecation: { note: 'Merged into the light-dark tokens.' },
+        },
       ],
     });
 
     expect(source.expectedEmpty).toBeUndefined();
     expect(source.entries).toStrictEqual([
       {
-        id: 'styleAlias/tokens/spacingLegacy',
-        kind: 'styleAlias',
+        id: 'jsExport/tokens/spacingLegacy',
+        usageKind: 'jsExport',
         source: 'tokens',
         identifier: 'spacingLegacy',
         replacement: 'spacingStaticMd',
         reference: 'references/tokens.md',
       },
       {
-        id: 'styleAlias/tokens/colorLegacy',
-        kind: 'styleAlias',
+        id: 'jsExport/tokens/colorLegacy',
+        usageKind: 'jsExport',
         source: 'tokens',
         identifier: 'colorLegacy',
         message: 'Merged into the light-dark tokens.',
@@ -283,10 +293,10 @@ describe('deprecation index completeness', () => {
   });
 
   it('leaves an entry without guidance only where the source genuinely has none', () => {
-    // A styling alias may have no replacement and no note: the API is going away with nothing to
+    // A published package API may have no replacement and no note: the API is going away with nothing to
     // migrate to, which the empty remediation cell states. Every other kind carries its own wording.
     const bare = ENTRIES.filter((entry) => !entry.replacement && !entry.message);
-    expect(bare.filter((entry) => entry.kind !== 'styleAlias')).toStrictEqual([]);
+    expect(bare.filter((entry) => entry.source === 'components')).toStrictEqual([]);
   });
 
   it('has collected a meaningful number of deprecations', () => {

@@ -1,6 +1,6 @@
 import { tailwindDeprecations } from '@porsche-design-system/tailwindcss';
 import { type DeprecationSource, publicWrapperExport } from '../types';
-import { styleAliasSource } from './styleAlias';
+import { publishedSource } from './published';
 
 /**
  * Adapts the Tailwind package's own deprecated surface into index entries.
@@ -16,7 +16,7 @@ import { styleAliasSource } from './styleAlias';
  * audit skill states that requirement explicitly.
  */
 export const collectTailwindcssDeprecations = (): DeprecationSource =>
-  styleAliasSource({
+  publishedSource({
     category: 'tailwindcss',
     origin: (framework) => `the Tailwind theme exposed by ${publicWrapperExport(framework, '/tailwindcss')}`,
     reference: 'references/styles/tailwindcss.md',

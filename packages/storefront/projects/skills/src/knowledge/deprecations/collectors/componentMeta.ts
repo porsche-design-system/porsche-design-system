@@ -62,7 +62,7 @@ export const collectComponentDeprecations = (): DeprecationSource => {
       entries.push(
         entry({
           id: `component/${tag}`,
-          kind: 'component',
+          usageKind: 'component',
           identifier: tag,
           message: cleanMessage(meta.deprecationMessage),
           reference,
@@ -75,7 +75,7 @@ export const collectComponentDeprecations = (): DeprecationSource => {
         entries.push(
           entry({
             id: `prop/${tag}/${name}`,
-            kind: 'prop',
+            usageKind: 'prop',
             owner: tag,
             identifier: name,
             message: cleanMessage(prop.description),
@@ -96,8 +96,8 @@ export const collectComponentDeprecations = (): DeprecationSource => {
       for (const value of deprecatedValues) {
         entries.push(
           entry({
-            id: `value/${tag}/${name}/${value}`,
-            kind: 'value',
+            id: `propValue/${tag}/${name}/${value}`,
+            usageKind: 'propValue',
             owner: tag,
             prop: name,
             identifier: value,
@@ -114,7 +114,7 @@ export const collectComponentDeprecations = (): DeprecationSource => {
         entries.push(
           entry({
             id: `event/${tag}/${name}`,
-            kind: 'event',
+            usageKind: 'event',
             owner: tag,
             identifier: name,
             message: cleanMessage(event.description),
@@ -129,7 +129,7 @@ export const collectComponentDeprecations = (): DeprecationSource => {
         entries.push(
           entry({
             id: `slot/${tag}/${name || '(default)'}`,
-            kind: 'slot',
+            usageKind: 'slot',
             owner: tag,
             identifier: name,
             message: cleanMessage(slot.description),
@@ -143,8 +143,8 @@ export const collectComponentDeprecations = (): DeprecationSource => {
       if (cssVariable.isDeprecated) {
         entries.push(
           entry({
-            id: `cssVariable/${tag}/${name}`,
-            kind: 'cssVariable',
+            id: `cssCustomProperty/${tag}/${name}`,
+            usageKind: 'cssCustomProperty',
             owner: tag,
             identifier: name,
             message: cleanMessage(cssVariable.description),

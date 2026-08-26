@@ -13,7 +13,7 @@ import { describe, expect, it } from 'vitest';
  */
 const COMPONENT_ENTRIES = collectDeprecations()
   .flatMap((source) => source.entries)
-  .filter((entry) => entry.source === 'components' && entry.kind !== 'value');
+  .filter((entry) => entry.source === 'components' && entry.usageKind !== 'propValue');
 
 const byId = (id: string) => {
   const entry = COMPONENT_ENTRIES.find((candidate) => candidate.id === id);

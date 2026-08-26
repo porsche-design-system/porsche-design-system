@@ -163,7 +163,7 @@ export const buildCatalogs = (sources: TokenSource[], values: Record<string, unk
     if (deprecation) {
       // The identifier is the export name: a token is imported by it, where scss spells `$name` and
       // Tailwind a custom property.
-      tokenDeprecations.push({ identifier: name, deprecation });
+      tokenDeprecations.push({ usageKind: 'jsExport', identifier: name, deprecation });
     } else {
       insert(tokensMeta, directory, { name, value, description });
     }

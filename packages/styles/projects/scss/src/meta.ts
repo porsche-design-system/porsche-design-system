@@ -1,5 +1,6 @@
 import { type Deprecations, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import { scssIdentifier } from './deprecation';
+import { kindOf } from './kind';
 import { flatten, stripDeprecated } from './scss/render';
 import { blur } from './theme/blur';
 import { border } from './theme/border';
@@ -56,4 +57,8 @@ export const scssMeta = stripDeprecated(scssCatalog) satisfies StylesMeta<ScssVa
 /** The deprecated public scss surface as an ordered flat list of canonical identifiers and markers. */
 export const scssDeprecations: Deprecations = flatten(scssCatalog)
   .filter(isDeprecated)
-  .map((node) => ({ identifier: scssIdentifier(node), deprecation: node.deprecation }));
+  .map((node) => ({
+    usageKind: kindOf(node) === 'token' ? 'scssVariable' : 'scssMixin',
+    identifier: scssIdentifier(node),
+    deprecation: node.deprecation,
+  }));

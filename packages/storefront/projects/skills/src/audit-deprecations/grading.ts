@@ -1,4 +1,4 @@
-import { BASELINE_EFFORT, EFFORTS, type Effort, type EntryKind } from '../knowledge/deprecations/types';
+import { BASELINE_EFFORT, EFFORTS, type Effort, type UsageKind } from '../knowledge/deprecations/types';
 
 /**
  * How a finding is graded: how certain it is, and how much the fix costs.
@@ -50,12 +50,12 @@ export const DETECTIONS = {
   },
   'fallback-search': {
     confidence: 'medium',
-    description: 'Reached by searching index spellings after the traversal ran out, then anchored to PDS.',
+    description: 'Reached by searching an index identifier after the traversal ran out, then anchored to PDS.',
   },
 } as const satisfies Record<string, { confidence: Confidence; description: string }>;
 
 /**
- * How a deprecated *value* was resolved. Values are the one entry kind the source does not guarantee
+ * How a deprecated prop value was resolved. Values are the one usage kind the source does not guarantee
  * statically — a plain string can arrive from anywhere — so they carry a second grade.
  *
  * Each row names where the string was written, which is not the same question as which route reached
@@ -82,7 +82,7 @@ export const DETECTION_IDS = Object.keys(DETECTIONS);
 export const VALUE_RESOLUTION_IDS = Object.keys(VALUE_RESOLUTIONS);
 
 /**
- * Baseline effort for one deprecation: its entry kind, raised one level when the index documents no
+ * Baseline effort for one deprecation: its usage kind, raised one level when the index documents no
  * replacement.
  *
  * The kind alone is not enough. Swapping a deprecated component for its documented successor is
@@ -90,14 +90,10 @@ export const VALUE_RESOLUTION_IDS = Object.keys(VALUE_RESOLUTIONS);
  * different job on the same row. `replacement` is optional on an index entry, so the audit can tell
  * the two apart without judging anything.
  *
- * "Documented" is that field and only that field — rendered as `Use \`x\`.` in the index's
- * **Replacement / note** column. It is deliberately not "a successor a reader could work out": a
- * value row lists the prop's current values beside the replacement, and grading off whether one of
- * them looks derivable turns a lookup back into a judgement, which is exactly what flipped the effort
- * of every value rule between two runs of the same project. The index answers the question; the audit
- * reads the answer.
+ * "Documented" means the index's dedicated **Replacement** column names one. The index answers the
+ * question; the audit reads the answer.
  */
-export const baselineEffort = (entryKind: EntryKind, hasReplacement: boolean): Effort =>
+export const baselineEffort = (usageKind: UsageKind, hasReplacement: boolean): Effort =>
   hasReplacement
-    ? BASELINE_EFFORT[entryKind]
-    : EFFORTS[Math.min(EFFORTS.indexOf(BASELINE_EFFORT[entryKind]) + 1, EFFORTS.length - 1)];
+    ? BASELINE_EFFORT[usageKind]
+    : EFFORTS[Math.min(EFFORTS.indexOf(BASELINE_EFFORT[usageKind]) + 1, EFFORTS.length - 1)];

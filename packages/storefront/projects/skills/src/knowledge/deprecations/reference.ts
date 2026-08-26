@@ -1,8 +1,7 @@
 import { escapeCell, markdownTable } from '../../shared/markdown';
 import type { Framework } from '../../shared/skillTree';
 import { localPorscheDesignSystemVersion } from '../../shared/version';
-import { spellings } from './spellings';
-import type { DeprecationEntry, DeprecationSource } from './types';
+import { type DeprecationEntry, type DeprecationSource, USAGE_KINDS, type UsageKind } from './types';
 
 /**
  * Renders `references/deprecations.md` — every deprecated Porsche Design System API in the installed
@@ -14,8 +13,7 @@ import type { DeprecationEntry, DeprecationSource } from './types';
  * shorter list that looks like a cleaner project. This is the inverse index, so one read answers the
  * question.
  *
- * Rendered per framework, so each tree carries only its own spellings rather than four columns of
- * which three are noise.
+ * Rendered per framework so component locating guidance matches the source syntax.
  */
 
 const code = (value: string): string => `\`${value}\``;
@@ -32,50 +30,83 @@ const CATEGORY_LABEL: Record<DeprecationSource['category'], string> = {
   stylesheets: 'Stylesheets',
 };
 
-/** How an entry is written, including its owner and prop where those give it meaning. */
-const subject = (entry: DeprecationEntry): string => {
-  switch (entry.kind) {
-    case 'value':
-      return `${code(entry.owner ?? '')} ${code(`${entry.prop}="${entry.identifier}"`)}`;
-    case 'component':
-      return code(entry.identifier);
-    case 'slot':
-      return `${code(entry.owner ?? '')} ${code(`slot="${entry.identifier}"`)}`;
-    default:
-      return entry.owner ? `${code(entry.owner)} ${code(entry.identifier)}` : code(entry.identifier);
-  }
-};
-
-/**
- * The replacement column. The verbatim message is the fallback rather than an omission: when no
- * replacement could be parsed from it, the message is the only authoritative remediation there is,
- * and dropping it would leave a reader with a deprecation and no next step.
- */
-const remediation = (entry: DeprecationEntry): string => {
-  const parts = [entry.replacement && `Use ${code(entry.replacement)}.`, entry.message].filter(Boolean) as string[];
-  return escapeCell(parts.join(' ')) || '—';
-};
-
 const referenceLink = (entry: DeprecationEntry): string =>
   entry.reference ? `[${entry.reference}](${entry.reference})` : '—';
 
-const componentTable = (entries: DeprecationEntry[], framework: Framework): string =>
+const entryTable = (entries: DeprecationEntry[]): string =>
   markdownTable(
-    ['Rule ID', 'Deprecated', 'Search for', 'Replacement / note', 'Reference'],
+    ['Rule ID', 'Deprecated', 'Replacement', 'Note', 'Reference'],
     entries.map((entry) => [
       code(entry.id),
-      subject(entry),
-      spellings(entry, framework).map(code).join(' ') || '—',
-      remediation(entry),
+      code(entry.identifier),
+      entry.replacement ? code(entry.replacement) : '—',
+      escapeCell(entry.message ?? '') || '—',
       referenceLink(entry),
     ])
   );
 
-const styleTable = (entries: DeprecationEntry[]): string =>
-  markdownTable(
-    ['Rule ID', 'Deprecated', 'Replacement / note', 'Reference'],
-    entries.map((entry) => [code(entry.id), code(entry.identifier), remediation(entry), referenceLink(entry)])
-  );
+type ComponentUsageKind = Extract<UsageKind, 'component' | 'prop' | 'propValue' | 'event' | 'slot'>;
+
+const COMPONENT_GUIDANCE: Record<Framework, Record<ComponentUsageKind, string>> = {
+  react: {
+    component: 'Follow PDS component imports, including `/ssr`, aliases and re-exports, to their JSX usage.',
+    prop: 'Inspect the named JSX prop on anchored PDS components and wrappers that forward it.',
+    propValue:
+      'Resolve values assigned to the named JSX prop, including literals, constants, wrappers, spreads and responsive objects.',
+    event: 'Inspect React handler props corresponding to the named PDS event.',
+    slot: 'Inspect `slot` attributes and default content rendered into the owning PDS component.',
+  },
+  angular: {
+    component: 'Inspect PDS custom-element tags in inline and external Angular templates.',
+    prop: 'Inspect static attributes and Angular property bindings on anchored PDS elements and forwarding wrappers.',
+    propValue:
+      'Resolve values assigned through static attributes and property bindings, including constants, wrappers and responsive objects.',
+    event: 'Inspect Angular event bindings corresponding to the named PDS event.',
+    slot: 'Inspect `slot` attributes and default content projected into the owning PDS element.',
+  },
+  vue: {
+    component: 'Follow PDS component imports to PascalCase and kebab-case template usage, including aliases.',
+    prop: 'Inspect static attributes and Vue bindings on anchored PDS components and forwarding wrappers.',
+    propValue:
+      'Resolve values assigned through static attributes and Vue bindings, including constants, wrappers and responsive objects.',
+    event: 'Inspect Vue listeners corresponding to the named PDS event.',
+    slot: 'Inspect `slot` attributes and default content rendered into the owning PDS component.',
+  },
+  js: {
+    component: 'Inspect PDS custom-element tags and calls that create the named element.',
+    prop: 'Inspect attributes, property assignments and `setAttribute` calls on anchored PDS elements and wrappers.',
+    propValue:
+      'Resolve values assigned through attributes, properties and `setAttribute`, including constants, wrappers and responsive objects.',
+    event: 'Inspect event listeners registered for the named PDS event.',
+    slot: 'Inspect `slot` attributes and default content placed inside the owning PDS element.',
+  },
+};
+
+const SHARED_GUIDANCE: Record<Exclude<UsageKind, ComponentUsageKind>, string> = {
+  cssCustomProperty:
+    'Inspect declarations and uses of the exact custom property, anchored to its component, stylesheet or imported theme.',
+  cssClass: 'Inspect the exact class in usage anchored to the PDS stylesheet or utility source.',
+  scssVariable:
+    'Follow PDS Sass roots through namespaces, aliases and configured global imports to the exact variable.',
+  scssMixin: 'Follow PDS Sass roots through namespaces and aliases to inclusions of the exact mixin.',
+  jsExport: 'Follow imports from the stated package entry point through aliases, namespace access and re-exports.',
+};
+
+const renderLocatingGuidance = (framework: Framework): string =>
+  [
+    'Use the rule ID for context: its first segment is the usage kind, followed by the component or source, the ' +
+      'owning prop where applicable, and finally the deprecated identifier.',
+    '',
+    markdownTable(
+      ['Kind', 'How to locate it'],
+      USAGE_KINDS.map((usageKind) => [
+        code(usageKind),
+        usageKind in COMPONENT_GUIDANCE[framework]
+          ? COMPONENT_GUIDANCE[framework][usageKind as ComponentUsageKind]
+          : SHARED_GUIDANCE[usageKind as Exclude<UsageKind, ComponentUsageKind>],
+      ])
+    ),
+  ].join('\n');
 
 const sourceOrigin = (source: DeprecationSource, framework: Framework): string => source.origin(framework);
 
@@ -90,13 +121,7 @@ const renderSource = (source: DeprecationSource, framework: Framework): string =
         'checked and found to carry none — this is a verified result, not an omission.',
     ].join('\n');
   }
-  return [
-    heading,
-    '',
-    `Derived from ${origin}.`,
-    '',
-    source.category === 'components' ? componentTable(source.entries, framework) : styleTable(source.entries),
-  ].join('\n');
+  return [heading, '', `Derived from ${origin}.`, '', entryTable(source.entries)].join('\n');
 };
 
 const renderCoverage = (sources: DeprecationSource[], framework: Framework): string =>
@@ -124,8 +149,7 @@ const renderIntro = (): string =>
       '"not checked".',
     '',
     "**Rule ID** is each entry's stable identifier. Copy it verbatim when reporting — never reconstruct it — and " +
-      'read its first segment as the entry kind (`component`, `prop`, `value`, `event`, `slot`, `cssVariable` or ' +
-      '`styleAlias`). It is what makes findings comparable across runs and releases, so an invented one silently ' +
+      'read its first segment as the usage kind. It is what makes findings comparable across runs and releases, so an invented one silently ' +
       'breaks that comparison.',
   ].join('\n');
 
@@ -139,6 +163,10 @@ export const renderDeprecationsReference = (sources: DeprecationSource[], framew
     '## Coverage',
     '',
     renderCoverage(sources, framework),
+    '',
+    '## How to locate deprecated usage',
+    '',
+    renderLocatingGuidance(framework),
     '',
     ...sources.flatMap((source) => [renderSource(source, framework), '']),
   ]

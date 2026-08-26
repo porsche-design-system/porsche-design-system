@@ -4,7 +4,7 @@ import { type DeprecationEntry, type DeprecationSource, publicWrapperExport } fr
 /**
  * Icon names do not publish a deprecation catalog of their own, so this collector reads the same
  * `component-meta` field as the component collector. One known consequence: both collectors build the
- * same `value/p-icon/name/<name>` id from the same `deprecatedValues` field. Both are empty today, so
+ * same `propValue/p-icon/name/<name>` id from the same `deprecatedValues` field. Both are empty today, so
  * nothing collides; the first deprecated icon fails the index's unique-id and component-parity gates
  * until icons own their metadata and the component collector stops claiming those values.
  */
@@ -18,8 +18,8 @@ import { type DeprecationEntry, type DeprecationSource, publicWrapperExport } fr
 export const collectIconDeprecations = (): DeprecationSource => {
   const deprecatedNames = componentMeta['p-icon']?.propsMeta?.name?.deprecatedValues ?? [];
   const entries: DeprecationEntry[] = deprecatedNames.map((name) => ({
-    id: `value/p-icon/name/${name}`,
-    kind: 'value' as const,
+    id: `propValue/p-icon/name/${name}`,
+    usageKind: 'propValue' as const,
     source: 'icons' as const,
     owner: 'p-icon',
     prop: 'name',

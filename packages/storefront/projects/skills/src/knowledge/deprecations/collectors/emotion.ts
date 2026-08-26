@@ -1,6 +1,6 @@
 import { emotionDeprecations } from '@porsche-design-system/emotion/meta';
 import { type DeprecationSource, publicWrapperExport } from '../types';
-import { styleAliasSource } from './styleAlias';
+import { publishedSource } from './published';
 
 /**
  * Adapts the Emotion package's own published deprecations into index entries.
@@ -14,7 +14,7 @@ import { styleAliasSource } from './styleAlias';
  * target.
  */
 export const collectEmotionDeprecations = (): DeprecationSource =>
-  styleAliasSource({
+  publishedSource({
     category: 'emotion',
     origin: (framework) => `the Emotion API exposed by ${publicWrapperExport(framework, '/emotion')}`,
     reference: 'references/styles/emotion.md',

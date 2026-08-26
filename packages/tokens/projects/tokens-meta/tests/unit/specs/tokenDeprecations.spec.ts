@@ -175,7 +175,7 @@ export const tokenA = '1px';
   it('routes a deprecated export into the published list only, never into the documented catalog', () => {
     expect(buildCatalogs(sources, values)).toStrictEqual({
       tokensMeta: { tokenB: { name: 'tokenB', value: '2px', description: 'The recommended token.' } },
-      tokenDeprecations: [{ identifier: 'tokenA', deprecation: { replacement: 'tokenB' } }],
+      tokenDeprecations: [{ usageKind: 'jsExport', identifier: 'tokenA', deprecation: { replacement: 'tokenB' } }],
     });
   });
 });

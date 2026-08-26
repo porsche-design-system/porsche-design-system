@@ -14,7 +14,7 @@ import { describe, expect, it } from 'vitest';
  */
 const VALUES = collectDeprecations()
   .flatMap((source) => source.entries)
-  .filter((entry) => entry.kind === 'value');
+  .filter((entry) => entry.usageKind === 'propValue');
 
 /** Remaining allowed values by deprecation rule id, derived directly from component metadata. */
 const CURRENT_VALUES = new Map(
@@ -24,7 +24,7 @@ const CURRENT_VALUES = new Map(
       const currentValues = (Array.isArray(prop.allowedValues) ? prop.allowedValues : [])
         .map(String)
         .filter((value) => !deprecatedValues.has(value));
-      return [...deprecatedValues].map((value) => [`value/${tag}/${name}/${value}`, currentValues] as const);
+      return [...deprecatedValues].map((value) => [`propValue/${tag}/${name}/${value}`, currentValues] as const);
     })
   )
 );

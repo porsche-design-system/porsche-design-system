@@ -1,3 +1,6 @@
+import { USAGE_KINDS, type UsageKind } from '@porsche-design-system/shared/deprecation';
+import { getWrapperPackageName, type SkillFramework } from '../../registry';
+
 /**
  * The vocabulary of the deprecation index — the inverse of the knowledge skill's per-component
  * references: every deprecated Porsche Design System API in the installed version, in one place, so
@@ -10,24 +13,24 @@
  * would break the day a maintainer rewords a comment.
  */
 
+export type { UsageKind };
 /**
  * What kind of API a deprecated entry names. This is the only axis the index classifies on, and it
  * drives {@link BASELINE_EFFORT} and how the audit searches for the entry.
  *
- * The split that matters for detection is identifier-vs-value: every kind except `value` is
+ * The split that matters for detection is identifier-vs-value: every kind except `propValue` is
  * statically present in source no matter what data flows through it (`<PAccordion heading={x}>`
- * already proves the deprecated prop is used), while a deprecated `value` is a plain string that can
+ * already proves the deprecated prop is used), while a deprecated `propValue` is a plain string that can
  * arrive from a variable, a constant or a spread.
  */
-export const ENTRY_KINDS = ['component', 'prop', 'value', 'event', 'slot', 'cssVariable', 'styleAlias'] as const;
-export type EntryKind = (typeof ENTRY_KINDS)[number];
+export { USAGE_KINDS };
 
 /** Ordinal remediation effort, cheapest first. */
 export const EFFORTS = ['trivial', 'small', 'medium', 'large'] as const;
 export type Effort = (typeof EFFORTS)[number];
 
 /**
- * Baseline remediation effort per entry kind — a deterministic default, so ordering a report by
+ * Baseline remediation effort per usage kind — a deterministic default, so ordering a report by
  * effort keeps two runs of the same audit in agreement where a per-finding judgement call would not.
  *
  * Only the kind lives here. The audit raises it a level when an entry documents no replacement (see
@@ -37,13 +40,16 @@ export type Effort = (typeof EFFORTS)[number];
  * It is a mapping rather than a field on each entry because the kind fully determines it — the audit
  * states the table once instead of the index repeating a constant on ~400 rows.
  */
-export const BASELINE_EFFORT: Record<EntryKind, Effort> = {
-  value: 'trivial',
-  styleAlias: 'trivial',
+export const BASELINE_EFFORT: Record<UsageKind, Effort> = {
+  propValue: 'trivial',
+  cssClass: 'trivial',
+  scssVariable: 'trivial',
+  scssMixin: 'trivial',
+  jsExport: 'trivial',
   prop: 'small',
   slot: 'small',
   event: 'small',
-  cssVariable: 'small',
+  cssCustomProperty: 'small',
   component: 'medium',
 };
 
@@ -75,13 +81,13 @@ export type DeprecationEntry = {
    * compared across runs and releases by this, so it must not change when unrelated content does.
    */
   id: string;
-  kind: EntryKind;
+  usageKind: UsageKind;
   source: SourceCategory;
-  /** Owning component tag, for `prop` / `value` / `event` / `slot` / `cssVariable`. */
+  /** Owning component tag, for `prop` / `propValue` / `event` / `slot` / `cssCustomProperty`. */
   owner?: string;
   /** The deprecated name itself — `heading`, `semi-bold`, `$pds-border-radius-small`. */
   identifier: string;
-  /** For `value`: the prop the deprecated value belongs to. */
+  /** For `propValue`: the prop the deprecated value belongs to. */
   prop?: string;
   /**
    * The deprecation message exactly as the source states it, omitted when it carries none. Styling
@@ -108,4 +114,3 @@ export type DeprecationSource = {
   entries: DeprecationEntry[];
   expectedEmpty?: true;
 };
-import { getWrapperPackageName, type SkillFramework } from '../../registry';

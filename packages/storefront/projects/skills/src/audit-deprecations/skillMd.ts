@@ -1,4 +1,4 @@
-import { ENTRY_KINDS } from '../knowledge/deprecations/types';
+import { USAGE_KINDS } from '../knowledge/deprecations/types';
 import { DEPRECATIONS_REFERENCE, skillName as knowledgeSkillName } from '../knowledge/skillMd';
 import { getSkillName, getWrapperPackageName } from '../registry';
 import { renderFrontmatter } from '../shared/frontmatter';
@@ -134,7 +134,7 @@ const renderIndex = (framework: Framework): string =>
       'source — so it is complete by construction, and anything absent from it is not deprecated.',
     '',
     'Its **Coverage** table gives the entry count per source category. Work through every one — components, SCSS, ' +
-      'Emotion, vanilla-extract, Tailwind, tokens, icons, stylesheets, partials. The styling categories are the ' +
+      'Emotion, vanilla-extract, Tailwind, tokens, icons and stylesheets. The styling categories are the ' +
       'easiest to skip, because they live in `.css` and style-definition files rather than component files.',
     '',
     'Do not use recalled knowledge, the public documentation site, or a changelog to decide that something is ' +
@@ -224,7 +224,7 @@ const COMPONENT_ROOT: Record<Framework, string> = {
 /**
  * Anchoring, structured as work-outward-from-PDS rather than search-and-filter.
  *
- * The difference is structural, not stylistic. Searching the project for index spellings and then
+ * The difference is structural, not stylistic. Searching the project for index identifiers and then
  * proving each hit is PDS makes anchoring a step that can be performed badly; starting at PDS and
  * following usage outward makes a non-PDS match unrepresentable. `size="small"` on a project's own
  * component is never a candidate, because the traversal never reaches it.
@@ -257,7 +257,7 @@ const renderAnchoring = (framework: Framework): string =>
       'explicit pass-through. Wrapper layers often rename or reinterpret an API, so a wrapper that accepts `size` ' +
       'without forwarding it is not PDS usage, and reporting it would be a false positive.',
     '',
-    '**When the graph runs out**, fall back to searching the index spellings and anchoring each match — dynamic ' +
+    '**When the graph runs out**, fall back to searching index identifiers and anchoring each match — dynamic ' +
       '`createElement`, markup built in template strings, re-exports you cannot resolve. Anything still unanchored is ' +
       'a manual follow-up. Record the gap in `coverage.limitations`; a fallback you do not disclose looks like a ' +
       'clean project.',
@@ -268,9 +268,9 @@ const renderAnchoring = (framework: Framework): string =>
 
 const renderCandidates = (): string =>
   [
-    'Each index entry names one deprecated API and its kind. Check every anchored usage against the index — the ' +
-      'entry\u2019s spellings for this framework say what that usage looks like. A usage the traversal never reaches ' +
-      'is not a finding; it is whatever the fallback makes of it.',
+    'Each index entry names one deprecated API. Its rule ID carries the usage kind and full context; use the index\u2019s ' +
+      'framework-specific locating guide to check every anchored usage. A usage the traversal never reaches is not a ' +
+      'finding; it is whatever the fallback makes of it.',
     '',
     'Most kinds need nothing further: a deprecated component, prop, event, slot, CSS variable or style alias is ' +
       'statically present in the source whatever data flows through it — `<PAccordion heading={anything}>` already ' +
@@ -333,16 +333,9 @@ const renderCandidates = (): string =>
       'to, which the in-wrapper location carries. Leave selector call sites out and the report names the wrapper ' +
       'but none of the callers a migration has to visit.',
     '',
-    '**Breakpoint objects are the easiest thing to miss and the most costly.** A responsive value is nested inside a ' +
-      'structure, so comparing a whole attribute value against a deprecated value matches none of them:',
-    '',
-    '```text',
-    "size=\"{'base': 'small', 'l': 'medium'}\"   string attribute holding single-quoted pseudo-JSON",
-    "size={{'base': 'small', 'l': 'medium'}}     expression form",
-    '```',
-    '',
-    'Look **inside** the object in both spellings. Missing this does not fail loudly — it silently drops every ' +
-      'responsive usage in the project.',
+    '**Responsive objects are the easiest thing to miss and the most costly.** Resolve every value inside the object ' +
+      'rather than comparing the whole prop value with the deprecated identifier. Missing this does not fail loudly — ' +
+      'it silently drops every responsive usage in the project.',
     '',
     'Dynamic usage recorded as a manual follow-up is the correct outcome, not a gap. It does **not** make the run ' +
       '`partial`, and it does **not** belong in `coverage.limitations` — it was detected and disclosed. Recording it ' +
@@ -394,9 +387,8 @@ const renderFindings = (framework: Framework): string =>
     '',
     'Every finding carries:',
     '',
-    '- `ruleId` — the index row\u2019s **Rule ID**, copied verbatim, and `entryKind` set to that id\u2019s first ' +
-      'segment. Do not reconstruct either from the identifier or infer a kind from what the API looks like: a ' +
-      '`--`-prefixed Tailwind alias is a `styleAlias`, not a `cssVariable`. Rule ids are what make findings ' +
+    '- `ruleId` — the index row\u2019s **Rule ID**, copied verbatim, and `usageKind` set to that id\u2019s first ' +
+      'segment. Do not reconstruct either from the identifier or infer a kind from what the API looks like. Rule ids are what make findings ' +
       'comparable across runs and releases, and an invented one breaks that silently while looking correct.',
     '- `evidence` — every location where the project **uses** the API, each with a project-relative path, a line ' +
       'number and the source line **quoted verbatim**. The quote is not decoration: it is what lets a reader, or a ' +
@@ -449,27 +441,22 @@ const renderFindings = (framework: Framework): string =>
       '**A `medium` finding is a finding**, not a downgrade to a follow-up. Only a candidate you cannot place in the ' +
       'table at all — an unresolvable value, an unanchored match — is a manual follow-up.',
     '',
-    '**Baseline effort is derived too**, from the entry kind and whether the index documents a replacement. Swapping ' +
+    '**Baseline effort is derived too**, from the usage kind and whether the index documents a replacement. Swapping ' +
       'in a documented successor is routine; removing an API with nothing to swap in means designing what replaces ' +
       'it, which is a different job:',
     '',
     markdownTable(
-      ['Entry kind', 'Replacement documented', 'No replacement documented'],
-      ENTRY_KINDS.map((kind) => [
+      ['Usage kind', 'Replacement documented', 'No replacement documented'],
+      USAGE_KINDS.map((kind) => [
         `\`${kind}\``,
         `\`${baselineEffort(kind, true)}\``,
         `\`${baselineEffort(kind, false)}\``,
       ])
     ),
     '',
-    '"Documented" means the index row\u2019s **Replacement / note** column names one — the cell opens with `Use`, ' +
-      'followed by the exact successor — and nothing else counts. Not a successor you could work out yourself: a ' +
-      'value row lists the prop\u2019s current values in the same cell, and reading that list as a mapping turns the ' +
-      'lookup back into the judgement call it exists to replace. The index puts the successor in that opening ' +
-      'position whenever the source names one, so read only there: a replacement mentioned further into the cell, ' +
-      'inside the verbatim deprecation message, is prose the row already accounted for, and hunting through it for ' +
-      'one reintroduces the judgement the position exists to settle. Where the column names a replacement, copy it ' +
-      'into `remediation.replacement`; where it does not, the row is one level dearer and the instruction says so.',
+    '"Documented" means the index row\u2019s **Replacement** column names one, and nothing else counts. Do not derive ' +
+      'one from the deprecated identifier, the note or the linked reference. Where the column names a replacement, copy it into ' +
+      '`remediation.replacement`; where it does not, the row is one level dearer and the instruction says so.',
     '',
     'The baseline is what the deprecation costs; this project may cost more or less. A prop threaded through a shared ' +
       'wrapper is harder, a value funnelled through one shared constant is a single edit fixing fifty usages. When ' +

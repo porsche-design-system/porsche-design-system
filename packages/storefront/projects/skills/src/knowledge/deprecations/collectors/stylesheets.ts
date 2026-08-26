@@ -1,6 +1,6 @@
 import { stylesheetsDeprecations } from '@porsche-design-system/stylesheets/meta';
 import { type DeprecationSource, publicWrapperExport } from '../types';
-import { styleAliasSource } from './styleAlias';
+import { publishedSource } from './published';
 
 /**
  * Adapts the stylesheets package's own deprecated surface into index entries.
@@ -16,7 +16,7 @@ import { styleAliasSource } from './styleAlias';
  * gains a `deprecation`, the entry appears here with the replacement it names.
  */
 export const collectStylesheetDeprecations = (): DeprecationSource =>
-  styleAliasSource({
+  publishedSource({
     category: 'stylesheets',
     origin: (framework) =>
       `the global CSS exposed by ${publicWrapperExport(framework, '/index.css')}, including ` +

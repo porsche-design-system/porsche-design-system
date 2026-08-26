@@ -1,6 +1,7 @@
 import { type Deprecations, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import { stylesheetIdentifier } from './deprecation';
 import { flattenCssVariables, stripDeprecated } from './helpers';
+import { kindOf } from './kind';
 import { cssVariableTokens } from './theme';
 import type { StylesheetsMeta } from './types';
 import { colorScheme } from './utilities/color-scheme';
@@ -32,7 +33,11 @@ export const stylesheetsMeta = {
  */
 export const stylesheetsDeprecations: Deprecations = [...flattenCssVariables(cssVariableTokens), ...colorScheme]
   .filter(isDeprecated)
-  .map((node) => ({ identifier: stylesheetIdentifier(node), deprecation: node.deprecation }));
+  .map((node) => ({
+    usageKind: kindOf(node) === 'token' ? 'cssCustomProperty' : 'cssClass',
+    identifier: stylesheetIdentifier(node),
+    deprecation: node.deprecation,
+  }));
 
 export { kindOf, type StylesheetKind } from './kind';
 export type * from './types';

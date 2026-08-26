@@ -19,6 +19,20 @@ export type Deprecation = {
   replacement?: string;
 };
 
+export const USAGE_KINDS = [
+  'component',
+  'prop',
+  'propValue',
+  'event',
+  'slot',
+  'cssCustomProperty',
+  'cssClass',
+  'scssVariable',
+  'scssMixin',
+  'jsExport',
+] as const;
+export type UsageKind = (typeof USAGE_KINDS)[number];
+
 /** A declaration's marker slot. Intersect it into a leaf type: `type ScssVariable = { … } & Deprecated`. */
 export type Deprecated = { deprecation?: Deprecation };
 
@@ -27,7 +41,7 @@ export type Deprecated = { deprecation?: Deprecation };
  * they are rendered. This is the whole read surface the deprecation index needs, so a collector adds
  * only audit vocabulary and re-spells nothing.
  */
-export type Deprecations = { identifier: string; deprecation: Deprecation }[];
+export type Deprecations = { usageKind: UsageKind; identifier: string; deprecation: Deprecation }[];
 
 /**
  * Whether a node carries the deprecation lifecycle marker.

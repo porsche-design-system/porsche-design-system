@@ -1,4 +1,4 @@
-import { EFFORTS, ENTRY_KINDS } from '../knowledge/deprecations/types';
+import { EFFORTS, USAGE_KINDS } from '../knowledge/deprecations/types';
 import { getSkillName } from '../registry';
 import type { Framework } from '../shared/skillTree';
 import { DETECTION_IDS, VALUE_RESOLUTION_IDS } from './grading';
@@ -6,8 +6,8 @@ import { DETECTION_IDS, VALUE_RESOLUTION_IDS } from './grading';
 /**
  * The versioned JSON Schema the audit's machine-readable report validates against.
  *
- * Built rather than hand-written so the enums that also exist in code — entry kinds, efforts,
- * detections — cannot drift from what the skill actually ships. A schema claiming `entryKind` values
+ * Built rather than hand-written so the enums that also exist in code — usage kinds, efforts,
+ * detections — cannot drift from what the skill actually ships. A schema claiming `usageKind` values
  * the index never emits, or a `detection` the method never tells an agent to record, would be a
  * contract nobody could satisfy.
  *
@@ -18,7 +18,7 @@ import { DETECTION_IDS, VALUE_RESOLUTION_IDS } from './grading';
  */
 
 /** Bumped when the report shape changes in a way a consumer must react to. */
-export const REPORT_SCHEMA_VERSION = '2.0.0';
+export const REPORT_SCHEMA_VERSION = '3.0.0';
 
 /** Discriminates this report from a future audit's, for a consumer reading a run directory. */
 export const AUDIT_KIND = 'deprecations';
@@ -174,7 +174,7 @@ export const buildReportSchema = (framework: Framework): string => {
           required: [
             'id',
             'ruleId',
-            'entryKind',
+            'usageKind',
             'title',
             'confidence',
             'baselineEffort',
@@ -190,7 +190,7 @@ export const buildReportSchema = (framework: Framework): string => {
                 'The deprecation index entry id, e.g. prop/p-accordion/heading, copied verbatim. Stable across ' +
                 'releases, so findings stay comparable between runs.',
             },
-            entryKind: { enum: [...ENTRY_KINDS], description: "The rule id's first segment." },
+            usageKind: { enum: [...USAGE_KINDS], description: "The rule id's first segment." },
             title: {
               type: 'string',
               description: 'One line naming the deprecated API, e.g. "Deprecated prop heading on p-accordion".',
@@ -205,7 +205,7 @@ export const buildReportSchema = (framework: Framework): string => {
             },
             baselineEffort: {
               enum: [...EFFORTS],
-              description: 'Derived from entryKind, one level higher when the index documents no replacement.',
+              description: 'Derived from usageKind, one level higher when the index documents no replacement.',
             },
             observedEffort: {
               enum: [...EFFORTS],
@@ -257,7 +257,7 @@ export const buildReportSchema = (framework: Framework): string => {
                   },
                   valueResolution: {
                     enum: [...VALUE_RESOLUTION_IDS],
-                    description: 'How the deprecated value was resolved. Only for entryKind `value`.',
+                    description: 'How the deprecated value was resolved. Only for usageKind `propValue`.',
                   },
                   anchor: {
                     ...evidenceLocation({

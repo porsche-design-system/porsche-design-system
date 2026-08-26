@@ -93,7 +93,7 @@ const entriesOf = (source: ts.SourceFile | undefined, checker: ts.TypeChecker, e
     const tag = declaration.getJsDocTags(checker).find(({ name }) => name === 'deprecated');
     const name = symbol.getName();
 
-    return tag ? [{ identifier: name, deprecation: deprecationOf(tag, name, exported) }] : [];
+    return tag ? [{ usageKind: 'jsExport', identifier: name, deprecation: deprecationOf(tag, name, exported) }] : [];
   });
 };
 

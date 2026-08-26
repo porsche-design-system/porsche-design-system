@@ -1,6 +1,6 @@
 import { tokenDeprecations } from '@porsche-design-system/tokens-meta';
 import { type DeprecationSource, publicWrapperExport } from '../types';
-import { styleAliasSource } from './styleAlias';
+import { publishedSource } from './published';
 
 /**
  * Adapts the token package's own published deprecations into index entries.
@@ -16,7 +16,7 @@ import { styleAliasSource } from './styleAlias';
  * declaration gains an annotation, the entry appears here with the replacement its `{@link}` names.
  */
 export const collectTokenDeprecations = (): DeprecationSource =>
-  styleAliasSource({
+  publishedSource({
     category: 'tokens',
     origin: (framework) => `the design-token API exposed by ${publicWrapperExport(framework, '/tokens')}`,
     reference: 'references/tokens.md',

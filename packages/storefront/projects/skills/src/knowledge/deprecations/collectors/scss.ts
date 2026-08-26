@@ -1,6 +1,6 @@
 import { scssDeprecations } from '@porsche-design-system/scss';
 import { type DeprecationSource, publicWrapperExport } from '../types';
-import { styleAliasSource } from './styleAlias';
+import { publishedSource } from './published';
 
 /**
  * Adapts the SCSS package's own deprecated surface into index entries.
@@ -12,7 +12,7 @@ import { styleAliasSource } from './styleAlias';
  * only ever recovered wording the package had already thrown away.
  */
 export const collectScssDeprecations = (): DeprecationSource =>
-  styleAliasSource({
+  publishedSource({
     category: 'scss',
     origin: (framework) => `the SCSS API exposed by ${publicWrapperExport(framework, '/scss')}`,
     reference: 'references/styles/scss.md',

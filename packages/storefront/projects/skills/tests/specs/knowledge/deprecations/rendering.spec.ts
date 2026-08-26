@@ -2,8 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
-import { spellings } from '@skills/knowledge/deprecations/spellings';
-import type { SourceCategory } from '@skills/knowledge/deprecations/types';
+import { type SourceCategory, USAGE_KINDS } from '@skills/knowledge/deprecations/types';
 import { getWrapperPackageName } from '@skills/registry';
 import { FRAMEWORKS, stagedSkillDir, WRAPPER_DIST_DIRS } from '@skills/shared/skillTree';
 import { describe, expect, it } from 'vitest';
@@ -13,7 +12,7 @@ import { describe, expect, it } from 'vitest';
  *
  * The collectors being complete is necessary but not sufficient: a renderer that silently drops rows
  * produces exactly the failure the index exists to prevent — an audit scanning a short list and
- * reporting a clean project. This gates the last step, per framework, since spellings differ.
+ * reporting a clean project. This gates the last step, per framework, since component locating guidance differs.
  *
  * Rows are counted rather than matched by identifier, because an identifier is rendered inside a
  * larger subject (`p-banner` with `slot="description"`) and a substring check would happily accept a
@@ -105,9 +104,7 @@ describe('deprecations reference rendering', () => {
 
       it('renders every entry rule id, so a report never has to invent one', () => {
         // Found by running the audit against a real project: the index rendered no ids at all, so the
-        // agent guessed the scheme — right for props by luck, wrong for values (`size=small` instead
-        // of `size/small`) and wrong for Tailwind aliases, which it typed as `cssVariable` rather than
-        // `styleAlias` and therefore graded at the wrong baseline effort.
+        // agent guessed the scheme — right for props by luck and wrong for values.
         const rendered = reference(framework);
         const missing = SOURCES.flatMap((source) => source.entries).filter(
           (entry) => !rendered.includes(`\`${entry.id}\``)
@@ -131,22 +128,24 @@ describe('deprecations reference rendering', () => {
         expect(unresolved.map((entry) => [entry.id, entry.reference])).toStrictEqual([]);
       });
 
-      it('leads every table with the rule id, so the kind is readable from it', () => {
-        // The kind is the id's first segment. Style tables never carried a kind column, which is how
-        // a Tailwind alias got reported as a `cssVariable`.
+      it('uses one table shape with identifiers and guidance in separate columns', () => {
         const rendered = reference(framework);
-        for (const header of ['| Rule ID | Deprecated | Search for |', '| Rule ID | Deprecated | Replacement']) {
-          expect(rendered, `missing table header: ${header}`).toContain(header);
+        expect(rendered).toContain('| Rule ID | Deprecated | Replacement | Note | Reference |');
+        expect(rendered).not.toContain('| Search for |');
+      });
+
+      it('renders locating guidance once for every usage kind', () => {
+        const rendered = reference(framework);
+        for (const usageKind of USAGE_KINDS) {
+          expect(rendered).toContain(`| \`${usageKind}\` |`);
         }
       });
 
-      it("renders this framework's spellings, not another's", () => {
-        const rendered = reference(framework);
-        const component = SOURCES.flatMap((source) => source.entries).find((entry) => entry.kind === 'component');
-        expect(component, 'no deprecated component to gate against').toBeDefined();
-        for (const spelling of spellings(component as NonNullable<typeof component>, framework)) {
-          expect(rendered, `missing ${framework} spelling ${spelling}`).toContain(spelling);
-        }
+      it('keeps the deprecated column to the exact identifier', () => {
+        const entry = SOURCES.flatMap((source) => source.entries).find(
+          ({ usageKind }) => usageKind === 'propValue'
+        ) as NonNullable<(typeof SOURCES)[number]['entries'][number]>;
+        expect(reference(framework)).toContain(`| \`${entry.id}\` | \`${entry.identifier}\` |`);
       });
 
       it('gives every source category its own section, including the empty ones', () => {
@@ -154,6 +153,13 @@ describe('deprecations reference rendering', () => {
         for (const source of SOURCES) {
           expect(headings, `no section for ${source.category}`).toContain(LABELS[source.category]);
         }
+      });
+
+      it('varies component locating guidance by framework', () => {
+        expect(reference('react')).toContain('named JSX prop');
+        expect(reference('angular')).toContain('Angular property bindings');
+        expect(reference('vue')).toContain('Vue bindings');
+        expect(reference('js')).toContain('`setAttribute`');
       });
 
       it('states that empty categories were checked rather than skipped', () => {

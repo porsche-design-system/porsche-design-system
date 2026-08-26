@@ -1,6 +1,7 @@
 import { type Deprecations, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import { flatten, stripDeprecated } from './css/render';
 import { tailwindIdentifier } from './deprecation';
+import { kindOf } from './kind';
 import { blur } from './theme/blur';
 import { border } from './theme/border';
 import { breakpoint } from './theme/breakpoint';
@@ -63,6 +64,8 @@ export const tailwindMeta = stripDeprecated(tailwindCatalog) satisfies StylesMet
  */
 const declarations = flatten(tailwindCatalog) as (TailwindThemeVariable | TailwindUtility)[];
 
-export const tailwindDeprecations: Deprecations = declarations
-  .filter(isDeprecated)
-  .map((node) => ({ identifier: tailwindIdentifier(node), deprecation: node.deprecation }));
+export const tailwindDeprecations: Deprecations = declarations.filter(isDeprecated).map((node) => ({
+  usageKind: kindOf(node) === 'token' ? 'cssCustomProperty' : 'cssClass',
+  identifier: tailwindIdentifier(node),
+  deprecation: node.deprecation,
+}));
