@@ -22,6 +22,13 @@
   --p-link-bg: light-dark(#013d2a, #6ef7cf);
   --p-link-fg: light-dark(#6ef7cf, #013d2a);
 }
+
+.custom-padding-gap-radius {
+  --p-link-px: 48px;
+  --p-link-py: 32px;
+  --p-link-gap: 24px;
+  --p-link-radius: 4px;
+}
 </style>
 
 <div class="playground auto-layout-inline" title="should render primary with label only">
@@ -207,7 +214,7 @@
 
 <div
   class="playground auto-layout-inline"
-  title="should render button with variant primary and custom background and foreground color"
+  title="should render link with variant primary and custom background and foreground color"
 >
   <p-link class="custom-colors-1" href="https://porsche.com">Some label</p-link>
   <p-link class="custom-colors-1" href="https://porsche.com" icon="car">Some label</p-link>
@@ -217,7 +224,7 @@
 
 <div
   class="playground auto-layout-inline"
-  title="should render button with variant secondary and custom background and foreground color"
+  title="should render link with variant secondary and custom background and foreground color"
 >
   <p-link class="custom-colors-2" href="https://porsche.com" variant="secondary">Some label</p-link>
   <p-link class="custom-colors-2" href="https://porsche.com" variant="secondary" icon="car">Some label</p-link>
@@ -227,4 +234,11 @@
   <p-link class="custom-colors-2" href="https://porsche.com" variant="secondary" compact="true" icon="car"
     >Some label</p-link
   >
+</div>
+
+<div class="playground auto-layout-inline" title="should render link with custom padding, gap and radius">
+  <p-link class="custom-padding-gap-radius" href="https://porsche.com">Some label</p-link>
+  <p-link class="custom-padding-gap-radius" href="https://porsche.com" icon="car">Some label</p-link>
+  <p-link class="custom-padding-gap-radius" href="https://porsche.com" hide-label="true" icon="car">Some label</p-link>
+  <p-link class="custom-padding-gap-radius" href="https://porsche.com" compact="true" icon="car">Some label</p-link>
 </div>
