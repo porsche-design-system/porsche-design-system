@@ -146,7 +146,8 @@ const generateComponentMeta = (): void => {
     const isChunked = (TAG_NAMES_WITH_CHUNK as unknown as TagName[]).includes(tagName);
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAria'); // used only partial "SelectedAria" string to cover both type variants of "SelectedAriaAttributes" and "SelectedAriaRole"
-    const hasElementInternals = source.includes('@AttachInternals()');
+    // matches the decorator only when it's used as such (start of a line) to avoid false positives from mentions within comments
+    const hasElementInternals = /^\s*@AttachInternals\(\)/m.test(source);
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
     const usesScss = source.includes('styleUrl:');
