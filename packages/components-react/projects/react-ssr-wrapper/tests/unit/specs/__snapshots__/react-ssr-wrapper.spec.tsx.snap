@@ -6,6 +6,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -274,6 +275,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -328,6 +330,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -500,6 +503,7 @@ input::-webkit-search-cancel-button {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootmode="open"
                   >
                     <style>
@@ -559,6 +563,7 @@ img {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootdelegatesfocus="true"
                     shadowrootmode="open"
                   >
@@ -655,6 +660,7 @@ img {
                       >
                         <template
                           shadowroot="open"
+                          shadowrootclonable="true"
                           shadowrootmode="open"
                         >
                           <style>
@@ -774,6 +780,7 @@ img {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -876,6 +883,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -978,6 +986,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -1080,6 +1089,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -1182,6 +1192,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -1284,6 +1295,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -1390,6 +1402,7 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -1579,6 +1592,7 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -1678,6 +1692,7 @@ slot:not([name]) {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootdelegatesfocus="true"
       shadowrootmode="open"
     >
@@ -1737,6 +1752,7 @@ span {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootdelegatesfocus="true"
       shadowrootmode="open"
     >
@@ -1808,6 +1824,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -1832,6 +1849,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -1981,6 +1999,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootdelegatesfocus="true"
       shadowrootmode="open"
     >
@@ -2118,6 +2137,7 @@ button:focus-visible {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootdelegatesfocus="true"
       shadowrootmode="open"
     >
@@ -2258,6 +2278,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -2342,6 +2363,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -2506,6 +2528,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -2528,6 +2551,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -2612,6 +2636,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -2775,6 +2800,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -2806,6 +2832,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -2840,6 +2867,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-list
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -2879,6 +2907,7 @@ ol,ul {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -2915,6 +2944,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -2954,6 +2984,7 @@ exports[`should render dsr component for PAccordion 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -3128,6 +3159,7 @@ exports[`should render dsr component for PAiTag 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -3187,6 +3219,7 @@ exports[`should render dsr component for PBanner 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -3368,6 +3401,7 @@ exports[`should render dsr component for PButton 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -3487,6 +3521,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -3583,6 +3618,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootclonable="true"
           shadowrootmode="open"
         >
           <style>
@@ -3651,6 +3687,7 @@ exports[`should render dsr component for PButtonTile 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -3783,6 +3820,7 @@ p {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -3906,6 +3944,7 @@ exports[`should render dsr component for PCanvas 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -4230,6 +4269,7 @@ h2 {
           >
             <template
               shadowroot="open"
+              shadowrootclonable="true"
               shadowrootdelegatesfocus="true"
               shadowrootmode="open"
             >
@@ -4339,6 +4379,7 @@ h2 {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootmode="open"
                   >
                     <style>
@@ -4407,6 +4448,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -4481,6 +4523,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -4567,6 +4610,7 @@ svg {
           >
             <template
               shadowroot="open"
+              shadowrootclonable="true"
               shadowrootdelegatesfocus="true"
               shadowrootmode="open"
             >
@@ -4676,6 +4720,7 @@ svg {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootmode="open"
                   >
                     <style>
@@ -4756,6 +4801,7 @@ exports[`should render dsr component for PCarousel 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -4926,6 +4972,7 @@ exports[`should render dsr component for PCheckbox 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -5132,6 +5179,7 @@ exports[`should render dsr component for PCrest 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -5208,6 +5256,7 @@ exports[`should render dsr component for PDisplay 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -5245,6 +5294,7 @@ exports[`should render dsr component for PDivider 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -5279,6 +5329,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -5474,6 +5525,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -5569,6 +5621,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
               >
                 <template
                   shadowroot="open"
+                  shadowrootclonable="true"
                   shadowrootmode="open"
                 >
                   <style>
@@ -5635,6 +5688,7 @@ img:dir(rtl) {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -5743,6 +5797,7 @@ img:dir(rtl) {
               >
                 <template
                   shadowroot="open"
+                  shadowrootclonable="true"
                   shadowrootmode="open"
                 >
                   <style>
@@ -5806,6 +5861,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -5914,6 +5970,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootclonable="true"
                   shadowrootmode="open"
                 >
                   <style>
@@ -5989,6 +6046,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6076,6 +6134,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootdelegatesfocus="true"
         shadowrootmode="open"
       >
@@ -6172,6 +6231,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
           >
             <template
               shadowroot="open"
+              shadowrootclonable="true"
               shadowrootmode="open"
             >
               <style>
@@ -6237,6 +6297,7 @@ img:dir(rtl) {
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootdelegatesfocus="true"
         shadowrootmode="open"
       >
@@ -6348,6 +6409,7 @@ img:dir(rtl) {
           >
             <template
               shadowroot="open"
+              shadowrootclonable="true"
               shadowrootmode="open"
             >
               <style>
@@ -6428,6 +6490,7 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -6482,6 +6545,7 @@ exports[`should render dsr component for PFieldset 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6532,6 +6596,7 @@ exports[`should render dsr component for PFlag 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6574,6 +6639,7 @@ exports[`should render dsr component for PFlyout 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6776,6 +6842,7 @@ exports[`should render dsr component for PHeading 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6814,6 +6881,7 @@ exports[`should render dsr component for PIcon 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6868,6 +6936,7 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -7012,6 +7081,7 @@ exports[`should render dsr component for PInputDate 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7198,6 +7268,7 @@ exports[`should render dsr component for PInputEmail 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7379,6 +7450,7 @@ exports[`should render dsr component for PInputMonth 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7566,6 +7638,7 @@ exports[`should render dsr component for PInputNumber 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7749,6 +7822,7 @@ exports[`should render dsr component for PInputPassword 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7927,6 +8001,7 @@ exports[`should render dsr component for PInputSearch 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8108,6 +8183,7 @@ exports[`should render dsr component for PInputTel 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8289,6 +8365,7 @@ exports[`should render dsr component for PInputText 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8467,6 +8544,7 @@ exports[`should render dsr component for PInputTime 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8653,6 +8731,7 @@ exports[`should render dsr component for PInputUrl 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8834,6 +8913,7 @@ exports[`should render dsr component for PInputWeek 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9021,6 +9101,7 @@ exports[`should render dsr component for PLink 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9132,6 +9213,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9230,6 +9312,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootclonable="true"
           shadowrootmode="open"
         >
           <style>
@@ -9293,6 +9376,7 @@ exports[`should render dsr component for PLinkTile 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9429,6 +9513,7 @@ p {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -9544,6 +9629,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9672,6 +9758,7 @@ slot[name="header"] {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -9768,6 +9855,7 @@ slot[name="header"] {
               >
                 <template
                   shadowroot="open"
+                  shadowrootclonable="true"
                   shadowrootmode="open"
                 >
                   <style>
@@ -9846,6 +9934,7 @@ exports[`should render dsr component for PModal 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -10042,6 +10131,7 @@ exports[`should render dsr component for PModelSignature 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -10094,6 +10184,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -10362,6 +10453,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -10416,6 +10508,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -10588,6 +10681,7 @@ input::-webkit-search-cancel-button {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootmode="open"
                   >
                     <style>
@@ -10647,6 +10741,7 @@ img {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootdelegatesfocus="true"
                     shadowrootmode="open"
                   >
@@ -10743,6 +10838,7 @@ img {
                       >
                         <template
                           shadowroot="open"
+                          shadowrootclonable="true"
                           shadowrootmode="open"
                         >
                           <style>
@@ -10867,6 +10963,7 @@ exports[`should render dsr component for PMultiSelectOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -10972,6 +11069,7 @@ exports[`should render dsr component for POptgroup 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -11015,6 +11113,7 @@ exports[`should render dsr component for PPagination 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -11138,6 +11237,7 @@ span:not(.ellipsis):focus-visible {
             >
               <template
                 shadowroot="open"
+                shadowrootclonable="true"
                 shadowrootmode="open"
               >
                 <style>
@@ -11212,6 +11312,7 @@ img:dir(rtl) {
             >
               <template
                 shadowroot="open"
+                shadowrootclonable="true"
                 shadowrootmode="open"
               >
                 <style>
@@ -11272,6 +11373,7 @@ exports[`should render dsr component for PPinCode 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -11458,6 +11560,7 @@ exports[`should render dsr component for PPopover 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -11613,6 +11716,7 @@ exports[`should render dsr component for PRadioGroup 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -11755,6 +11859,7 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -11916,6 +12021,7 @@ exports[`should render dsr component for PScroller 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12065,6 +12171,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12169,6 +12276,7 @@ exports[`should render dsr component for PSegmentedControlItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -12238,6 +12346,7 @@ exports[`should render dsr component for PSelect 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -12513,6 +12622,7 @@ exports[`should render dsr component for PSelect 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -12592,6 +12702,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12670,6 +12781,7 @@ exports[`should render dsr component for PSheet 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12868,6 +12980,7 @@ exports[`should render dsr component for PSpinner 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12981,6 +13094,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13005,6 +13119,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -13159,6 +13274,7 @@ exports[`should render dsr component for PStepperHorizontalItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -13298,6 +13414,7 @@ exports[`should render dsr component for PSwitch 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -13437,6 +13554,7 @@ exports[`should render dsr component for PTable 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13473,6 +13591,7 @@ exports[`should render dsr component for PTable 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -13645,6 +13764,7 @@ exports[`should render dsr component for PTableBody 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13668,6 +13788,7 @@ exports[`should render dsr component for PTableCell 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13695,6 +13816,7 @@ exports[`should render dsr component for PTableHead 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13725,6 +13847,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13756,6 +13879,7 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13779,6 +13903,7 @@ exports[`should render dsr component for PTableRow 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13809,6 +13934,7 @@ exports[`should render dsr component for PTabs 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13831,6 +13957,7 @@ exports[`should render dsr component for PTabs 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -13915,6 +14042,7 @@ exports[`should render dsr component for PTabs 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -14080,6 +14208,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14159,6 +14288,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -14314,6 +14444,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14348,6 +14479,7 @@ exports[`should render dsr component for PTag 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14422,6 +14554,7 @@ exports[`should render dsr component for PTagDismissible 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -14508,6 +14641,7 @@ button:focus-visible {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -14564,6 +14698,7 @@ exports[`should render dsr component for PText 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14602,6 +14737,7 @@ exports[`should render dsr component for PTextList 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14643,6 +14779,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14681,6 +14818,7 @@ exports[`should render dsr component for PTextarea 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -14825,6 +14963,7 @@ exports[`should render dsr component for PToast 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14845,6 +14984,7 @@ exports[`should render dsr component for PWordmark 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >

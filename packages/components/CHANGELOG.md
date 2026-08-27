@@ -18,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Pin Code`: Support for `ArrowLeft`/`ArrowRight` keyboard navigation.
   ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+- **Shadow DOM**: shadow roots are now attached with `clonable: true`, so `cloneNode(true)` on a component returns a
+  clone that carries its Shadow DOM content instead of an empty shadow root.
+  ([#4692](https://github.com/porsche-design-system/porsche-design-system/pull/4692))
 
 ### Fixed
 
