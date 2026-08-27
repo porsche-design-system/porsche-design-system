@@ -1,12 +1,15 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import {
-  type ClickableTests,
   addEventListener,
+  type ClickableTests,
   getActiveElementId,
+  getElementStyle,
   getEventSummary,
   getFormDataValue,
   getLifecycleStatus,
   hasFocus,
+  removeAttribute,
+  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -457,6 +460,53 @@ test.describe('focus state', () => {
     await waitForStencilLifecycle(page);
 
     expect(await hasFocus(host), 'final focus style').toBe(true);
+  });
+});
+
+test.describe('custom states', () => {
+  const customStatesStyle = `<style>
+    p-button { --p-button-bg: rgb(1, 1, 1); }
+    p-button:state(loading) { --p-button-bg: rgb(4, 4, 4); }
+    p-button:disabled { --p-button-bg: rgb(5, 5, 5); }
+  </style>`;
+
+  const initButtonWithCustomStates = (page: Page): Promise<void> =>
+    setContentWithDesignSystem(page, `${customStatesStyle}<p-button>Some label</p-button>`);
+
+  test('should expose loading as custom state', async ({ page }) => {
+    await initButtonWithCustomStates(page);
+
+    const host = getHost(page);
+    const button = getButton(page);
+
+    expect(await getElementStyle(button, 'backgroundColor'), 'initial').toBe('rgb(1, 1, 1)');
+
+    await setProperty(host, 'loading', true);
+    await waitForStencilLifecycle(page);
+    expect(await getElementStyle(button, 'backgroundColor'), 'loading').toBe('rgb(4, 4, 4)');
+
+    await setProperty(host, 'loading', false);
+    await waitForStencilLifecycle(page);
+    expect(await getElementStyle(button, 'backgroundColor'), 'reset to initial').toBe('rgb(1, 1, 1)');
+  });
+
+  // the button is form-associated, therefore it is matched by the native ":disabled" pseudo-class
+  // as soon as the "disabled" content attribute is set, no custom state is needed for it
+  test('should be matched by the native :disabled pseudo-class', async ({ page }) => {
+    await initButtonWithCustomStates(page);
+
+    const host = getHost(page);
+    const button = getButton(page);
+
+    expect(await getElementStyle(button, 'backgroundColor'), 'initial').toBe('rgb(1, 1, 1)');
+
+    await setAttribute(host, 'disabled', 'true');
+    await waitForStencilLifecycle(page);
+    expect(await getElementStyle(button, 'backgroundColor'), 'disabled').toBe('rgb(5, 5, 5)');
+
+    await removeAttribute(host, 'disabled');
+    await waitForStencilLifecycle(page);
+    expect(await getElementStyle(button, 'backgroundColor'), 'not disabled anymore').toBe('rgb(1, 1, 1)');
   });
 });
 
