@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
   carousel was initialised with.
   ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+- `Ai Tag`: Sanitize translations
+  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
 
 ## [4.6.0] - 2026-08-20
 
@@ -48,11 +50,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Popover`: the `dismiss` event now carries a payload identifying how the component was closed. The event detail
   changed from `void` to `{ reason: 'outside-click' | 'focus-out' | 'escape' }`, exported as
   `PopoverDismissEventDetail`. ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
-
-### Fixed
-
-- `Ai Tag`: Sanitize translations
-  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
 
 ## [4.6.0-rc.2] - 2026-08-13
 
