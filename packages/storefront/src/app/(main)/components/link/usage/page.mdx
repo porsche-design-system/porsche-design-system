@@ -8,7 +8,7 @@ export const metadata = {
 
 # Link <ComponentStatus tagName="p-link"></ComponentStatus>
 
-<TableOfContents headings={['Usage', 'Custom states', 'Related components']} />
+<TableOfContents headings={['Usage', 'Related components']} />
 
 ## Usage
 
@@ -32,35 +32,6 @@ situations.
 - Don't use a Primary Link for all links on a page.
 - Don't use a multiline Link, as it is recommended to keep the text label short and avoid multiline links.
 - Don't use a width that's too wide and makes the link difficult to read.
-
----
-
-## Custom states
-
-The link exposes its internal state as [CSS custom states](https://developer.mozilla.org/en-US/docs/Web/CSS/:state),
-which can be targeted with the `:state()` pseudo-class. This is handy to conditionally override the exposed CSS
-variables (e.g. `--p-link-bg` and `--p-link-fg`) without having to duplicate the state logic in your application.
-
-| Custom state        | Applied when             |
-| ------------------- | ------------------------ |
-| `variant-primary`   | `variant` is `primary`   |
-| `variant-secondary` | `variant` is `secondary` |
-
-```scss
-p-link:state(variant-secondary) {
-  --p-link-bg: light-dark(#025b3f, #21eeae);
-  --p-link-fg: light-dark(#21eeae, #025b3f);
-}
-
-p-link:state(variant-secondary):hover {
-  --p-link-bg: light-dark(#013d2a, #6ef7cf);
-  --p-link-fg: light-dark(#6ef7cf, #013d2a);
-}
-```
-
-Custom states are a progressive enhancement: browsers without support for `CustomStateSet` or the `:state()`
-pseudo-class simply ignore these rules, the link keeps working and falls back to its default styling. As with all color
-customizations, you are responsible for ensuring sufficient contrast and brand compliance.
 
 ---
 
