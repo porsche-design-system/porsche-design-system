@@ -1,0 +1,206 @@
+import {
+  auditRunId,
+  renderAuditFiles,
+  renderAuditReport,
+} from '@/app/(main)/skills/audit-deprecations/auditReportSample';
+import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
+import { FrameworkTabs } from '@/components/common/FrameworkTabs';
+import { SkillFacts } from '@/components/common/SkillFacts';
+import { FrameworkSkill } from '@/components/common/StorefrontFramework';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Audit Deprecations Skill - Porsche Design System',
+  description:
+    'Audit a project for deprecated Porsche Design System API usage with Claude Code, GitHub Copilot, Codex and compatible AI coding tools.',
+};
+
+# Audit Deprecations Skill
+
+<TableOfContents
+  headings={[
+    'Introduction',
+    'What It Audits',
+    'Installation',
+    'How to Use the Skill',
+    'Example Report',
+    'How to Act on the Report',
+  ]}
+/>
+
+## Introduction
+
+The Porsche Design System Audit Deprecations Skill runs a read-only audit of an existing project and reports where it
+uses Porsche Design System APIs that are deprecated. Every deprecated API still works in the installed version and is
+scheduled to be removed with the next major release, so the report doubles as the migration plan for that release.
+
+What counts as deprecated comes solely from the version-exact deprecation index that ships inside the installed package,
+and the skill instructs the agent to report nothing that is absent from it. Every finding carries the file, the line and
+the source line quoted verbatim, and has to survive a check against the index before it is written, so a finding can be
+verified against the code rather than taken on trust.
+
+The skill never changes your code. It writes two report files and stops; applying the findings is a separate step you
+ask for explicitly. There is one variant per supported framework; select yours to adapt the skill name, paths and
+prompts on this page.
+
+<FrameworkTabs className="my-fluid-md" label="Select the framework the Audit Deprecations Skill examples apply to" />
+
+Invoking it looks like this, using your agent's skill selection syntax:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('audit-deprecations')} Audit apps/checkout.
+  `}
+/>
+
+<SkillFacts
+  caption="Audit Deprecations Skill facts"
+  invocation={
+    <>
+      Explicit only. An agent never starts an audit on its own; you invoke{' '}
+      <code>
+        <FrameworkSkill skill="audit-deprecations" />
+      </code>{' '}
+      yourself.
+    </>
+  }
+  dependencies={
+    <>
+      The <a href="/skills/knowledge">Knowledge Skill</a> (
+      <code>
+        <FrameworkSkill skill="knowledge" />
+      </code>
+      ), which supplies the deprecation index and the replacement references.
+    </>
+  }
+  reads="Project source, styles and Porsche Design System configuration, within the scope you give it. When you name none, that is the project root the agent runs in."
+  writes={
+    <>
+      Nothing but its two report files, below <code>.pds/audits/&lt;runId&gt;/</code>.
+    </>
+  }
+  executes="Nothing. It does not install dependencies, build, test or start the application."
+/>
+
+## What It Audits
+
+The audit covers every deprecation category the installed package publishes:
+
+- **Components:** deprecated components, wherever they are rendered.
+- **Component APIs:** deprecated props, prop values, events and slots, including values inside responsive objects.
+- **CSS custom properties and design tokens:** deprecated `--p-` custom properties and token exports.
+- **Styling integrations:** deprecated aliases in SCSS, Emotion, vanilla-extract and the Tailwind CSS theme.
+- **Stylesheets and icons:** deprecated stylesheet classes and icon names.
+
+It follows usage outward from where the Porsche Design System enters your project and through your own wrapper
+components, so a deprecated prop passed down several layers is reported together with the call sites a migration has to
+visit.
+
+Nothing else is in scope: not code quality, security, performance, accessibility or business logic.
+
+## Installation
+
+The Audit Deprecations Skill is bundled with the Porsche Design System npm packages and is exposed to your AI coding
+tool the same way as every other skill. Follow the [skill installation guide](/skills/introduction/installation) for the
+available installation methods.
+
+The [Knowledge Skill](/skills/knowledge) is mandatory alongside it: the audit holds no Porsche Design System facts of
+its own and reads what is deprecated from the Knowledge Skill's deprecation index. Both ship in the same package, so
+install both.
+
+## How to Use the Skill
+
+The skill runs only when you ask for it: invoke it yourself and tell it what to audit.
+
+Scope is the part worth getting right. Name none and the skill falls back to the project root the agent runs in and
+audits every package below it that depends on the Porsche Design System, which on a large project or monorepo leaves a
+far-reaching decision to the model and makes one run cover more code than it can do well. Scope every run to a single
+application or package instead, and name include and exclude paths in the prompt; they narrow what the skill discovers
+rather than replace it. Each run writes its own report, so per-package runs add up instead of overwriting each other.
+
+To get the most out of the skill:
+
+- **Always start with a fresh agent session.** A long preceding conversation leaves less room for the index and
+  everything the audit traverses.
+- **Scope every run.** Name what to audit and what to leave out. An unscoped run over a large repository is the most
+  common reason findings are missed.
+- **Run it more than once.** A second run over the same scope surfaces what the first did not reach, most often in the
+  styling categories, which live in stylesheets rather than component files.
+- **Use a strong model.** Following usage through wrappers, resolving values and grading findings is reasoning work, and
+  the model is the single biggest factor in how complete a report is.
+- **Re-run narrowed when the result is `partial`.** The report's coverage section names each gap; re-run those paths on
+  their own.
+
+Audit a single application, leaving out what you do not want checked:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('audit-deprecations')} Audit apps/checkout. Exclude apps/checkout/e2e and any
+    generated files.
+  `}
+/>
+
+Re-run a gap that a previous run reported as `partial`:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('audit-deprecations')} The last run came back partial and listed
+    apps/checkout/src/styles under coverage. Audit only that directory.
+  `}
+/>
+
+## Example Report
+
+Each run writes two files into a fresh, timestamped run directory:
+
+<FrameworkCodeBlock language="text" render={renderAuditFiles} />
+
+The JSON validates against a published schema; the Markdown is rendered from it and is the one you read. Run directories
+accumulate and are never deleted, so keep `.pds/` in version control to diff findings across releases, or ignore it and
+treat the reports as scratch.
+
+A shortened Markdown report looks like this. The layout is illustrative, since the agent renders it, but the rule ids,
+deprecation messages and replacements are the real ones:
+
+<FrameworkCodeBlock language="markdown" render={renderAuditReport} />
+
+The result at the top describes the run, not your project: `completed` means everything the run set out to check was
+checked, `partial` means something eligible was not, with each gap named in the report's coverage section.
+
+## How to Act on the Report
+
+Findings are ordered cheapest first, so the list is the action plan: work down it. Each finding carries the effort a fix
+takes, how confident the audit is, and every place the API is used with the source line quoted verbatim.
+
+Two parts need your attention:
+
+- **Manual follow-ups.** Usages the audit could not resolve, such as a value arriving from state. They are not findings,
+  they may or may not be deprecated, and they must be checked by hand rather than handed to an agent.
+- **Findings with `medium` confidence.** The usage was reached through a wrapper that transforms it, or by a fallback
+  search. It is still a real finding, but open the file before changing it.
+
+Fixing is deliberately not part of the audit, so that a run can be repeated to verify itself. Ask for the fixes as a
+separate step, with the [Knowledge Skill](/skills/knowledge) loaded so the replacements come from the installed version:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Apply the findings in
+    .pds/audits/${auditRunId}/${getSkillName('audit-deprecations')}.md, in the order they are listed.
+    Use each finding's documented replacement, verify every usage against its quoted evidence before
+    changing it, and leave the manual follow-ups to me.
+  `}
+/>
+
+Then audit the same scope again: a report that no longer lists what you fixed is the verification, and a re-run tends to
+surface usage the first run did not reach.
+
+No report is guaranteed to list every deprecated usage, since that depends on the model and on how much code one run
+covers. Treat it as a strong starting point rather than a closed list, and re-run the audit repeatedly, including after
+applying fixes.
+
+The report is only valid for the Porsche Design System version it names. After upgrading the package, run the audit
+again rather than working from an older report.
