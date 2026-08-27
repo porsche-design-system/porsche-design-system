@@ -1,0 +1,281 @@
+name: dependency-bump
+version: "1.0"
+description: >-
+  Minimal TurboSpec dependency bump workflow
+# `npm ci` prepares the tree once before any stage runs — a clean, deterministic
+# install that matches package-lock.json and never mutates the lockfile. It is
+# environment setup, not a stage/gate; a non-zero exit aborts the pipeline before
+# the first stage. The 20m timeout overrides the 5m default for this monorepo.
+setup_command: "npm ci"
+setup_command_timeout: "20m"
+stages:
+  - name: update_dependencies
+    orchestrator: implementation
+    pre_command: "npm run npm:update:all"
+
+  - name: resolve_dependencies
+    orchestrator: bumpy_mc_bumpface
+    depends_on: [update_dependencies]
+    agents:
+      - id: dependency_updater
+        type: dependency_updater
+        skills: []
+        tools: [file, shell]
+        system_prompt: dependency-bump
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        loop_back:
+          target_agent: dependency_updater
+        post_command: "npm run npm:format:fix && npm run npm:lint:fix"
+        config:
+          gate_name: npm-install
+          failure_verdict: loop_back
+          steps:
+            - name: npm-install
+              command: [npm, install]
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        loop_back:
+          target_agent: dependency_updater
+        config:
+          gate_name: npm-format
+          failure_verdict: loop_back
+          steps:
+            - name: npm-format
+              command: [npm, run, "npm:format"]
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        loop_back:
+          target_agent: dependency_updater
+        config:
+          gate_name: npm-lint
+          failure_verdict: loop_back
+          steps:
+            - name: npm-lint
+              command: [npm, run, "npm:lint"]
+
+  - name: revalidate_overrides
+    orchestrator: implementation
+    depends_on: [resolve_dependencies]
+    timeout: "220m"
+    pre_command: "node .turbo-spec/scripts/revalidate-overrides.mjs --self-test && node .turbo-spec/scripts/revalidate-overrides.mjs run"
+    hook_timeout: "180m"
+    outputs:
+      override_reviewer: .turbo-spec/out/override-reviewer.json
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: escalate
+        config:
+          gate_name: npm-install-final
+          failure_verdict: escalate
+          environment_verdict: escalate
+          steps:
+            - name: npm-install
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, gate, install]
+      - evaluator: script_gate
+        on_fail: escalate
+        config:
+          gate_name: npm-audit-baseline
+          failure_verdict: escalate
+          environment_verdict: escalate
+          steps:
+            - name: npm-audit-baseline
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, gate, audit]
+      - evaluator: script_gate
+        on_fail: escalate
+        config:
+          gate_name: npm-format
+          failure_verdict: escalate
+          environment_verdict: escalate
+          steps:
+            - name: npm-format
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, gate, format]
+      - evaluator: script_gate
+        on_fail: escalate
+        config:
+          gate_name: npm-lint
+          failure_verdict: escalate
+          environment_verdict: escalate
+          steps:
+            - name: npm-lint
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, gate, lint]
+
+  - name: document_overrides
+    orchestrator: review
+    depends_on: [revalidate_overrides]
+    timeout: "30m"
+    agents:
+      - id: override_cleanup_reviewer
+        type: override_cleanup_reviewer
+        skills: []
+        tools: [file]
+        system_prompt: override-cleanup
+        output_schema: reviewer
+        artifact_type: review
+    quality_gates:
+      - evaluator: review_approved
+        on_fail: escalate
+      - evaluator: script_gate
+        on_fail: escalate
+        config:
+          gate_name: documentation-write-scope
+          failure_verdict: escalate
+          environment_verdict: escalate
+          steps:
+            - name: documentation-write-scope
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, verify-docs]
+
+  - name: verify_ci
+    orchestrator: implementation
+    depends_on: [document_overrides]
+    agents:
+      - id: ci_repairer
+        type: implementer
+        skills: []
+        tools: [file, shell]
+        system_prompt: dependency-ci-repair
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 2
+        loop_back:
+          target_agent: ci_repairer
+        config:
+          gate_name: ci-minimum
+          failure_verdict: loop_back
+          environment_verdict: escalate
+          steps:
+            - name: dependency-metadata-before
+              command: &dependency-metadata-check
+                - sh
+                - -c
+                - >-
+                  metadata_status="$(git status --porcelain
+                  --untracked-files=all --
+                  ':(glob)**/package.json' package-lock.json
+                  docs/dependencies.md)" || exit 2;
+                  if test -n "$metadata_status"; then
+                  git restore --source=HEAD --staged --worktree --
+                  ':(glob)**/package.json' package-lock.json
+                  docs/dependencies.md || exit 2;
+                  git clean -f --
+                  ':(glob)**/package.json' package-lock.json
+                  docs/dependencies.md || exit 2;
+                  printf '%s\n' "$metadata_status" >&2;
+                  exit 1;
+                  fi
+            - name: lint
+              command: [npm, run, lint]
+            # ponytail: restore tracked generated outputs here until the engine
+            # can clean them without discarding repair-agent source edits.
+            - name: build
+              command:
+                - sh
+                - -c
+                - >-
+                  log="$(mktemp)" || exit 2;
+                  npm run build >"$log" 2>&1; status=$?;
+                  if test "$status" -ne 0; then
+                  printf '\n--- build failure summary ---\n' >&2;
+                  if ! sed -n '/error during build:/,$p' "$log" |
+                  head -n 35 | grep . >&2; then
+                  tail -n 35 "$log" >&2;
+                  fi;
+                  fi;
+                  git restore -- packages/components/src/components.d.ts
+                  packages/components-react/projects/nextjs/next-env.d.ts ||
+                  exit 2;
+                  rm -f "$log" || exit 2;
+                  if test "$status" -eq 0; then exit 0; fi;
+                  exit 1
+            - name: unit-tests
+              command:
+                - sh
+                - -c
+                - |-
+                  run_check() {{
+                    log="$(mktemp)" || return 2
+                    printf 'Running'
+                    printf ' %s' "$@"
+                    printf '\n'
+                    "$@" >"$log" 2>&1
+                    status=$?
+                    if test "$status" -ne 0; then
+                      printf '\nCommand failed with exit status %s:' "$status" >&2
+                      printf ' %s' "$@" >&2
+                      printf '\n--- unit gate failure summary ---\n' >&2
+                      if ! sed -n '/FAIL/,$p' "$log" |
+                        head -n 10 | cut -b 1-300 | grep . >&2; then
+                        tail -n 10 "$log" | cut -b 1-300 >&2
+                      fi
+                      printf '\n--- end unit gate failure summary ---\n' >&2
+                    fi
+                    rm -f "$log" || return 2
+                    return "$status"
+                  }}
+                  run_check npm run test:unit:assets:assets || exit $?
+                  run_check npm run test:unit:assets:flags || exit $?
+                  run_check npm run test:unit:assets:icons || exit $?
+                  run_check npm run test:unit:assets:font-face || exit $?
+                  run_check npm run test:unit:tokens || exit $?
+                  run_check npm run test:unit:styles:tailwindcss || exit $?
+                  run_check npm run test:unit:styles:scss || exit $?
+                  run_check npm run test:unit:styles:emotion || exit $?
+                  run_check npm run test:unit:styles:vanilla-extract || exit $?
+                  run_check npm run build:stylesheets-prod || exit $?
+                  run_check npm run test:unit:stylesheets || exit $?
+                  run_check npm run test:unit:components || exit $?
+                  run_check npm run build:components-prod
+                  status=$?
+                  git restore -- packages/components/src/components.d.ts || exit 2
+                  test "$status" -eq 0 || exit "$status"
+                  run_check npm run build:components-js-prod || exit $?
+                  run_check npm run test:unit:components-js:components-manager-core || exit $?
+                  run_check npm run test:unit:components-js:components-manager-cli || exit $?
+                  run_check npm run test:unit:components-js:components-wrapper || exit $?
+                  run_check npm run test:unit:components-js:jsdom-polyfill || exit $?
+                  run_check npm run test:unit:components-js:partials || exit $?
+                  run_check npm run test:unit:components-angular:vitest || exit $?
+                  # ponytail: use the host browser; install Playwright only if
+                  # GitHub's runner image stops shipping Chrome.
+                  chrome_bin="$(command -v google-chrome ||
+                    command -v google-chrome-stable ||
+                    command -v chromium-browser ||
+                    command -v chromium)"
+                  if test -z "$chrome_bin" &&
+                    test -x "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"; then
+                    chrome_bin="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+                  fi
+                  if test -z "$chrome_bin"; then
+                    printf 'Chrome or Chromium is required for Angular Karma tests.\n' >&2
+                    exit 2
+                  fi
+                  run_check env CI= CHROME_BIN="$chrome_bin" npm run test:unit:components-angular:karma-ci || exit $?
+                  run_check npm run test:unit:components-react:react-wrapper || exit $?
+                  run_check npm run build:components
+                  status=$?
+                  git restore -- packages/components/src/components.d.ts || exit 2
+                  test "$status" -eq 0 || exit "$status"
+                  run_check npm run test:unit:components-react:react-ssr-wrapper || exit $?
+                  run_check npm run test:unit:components-vue || exit $?
+                  run_check npm run test:unit:component-meta || exit $?
+                  run_check npm run build:generateTokensMeta --workspace=@porsche-design-system/tokens-meta || exit $?
+                  run_check npm run test:unit:tokens-meta || exit $?
+                  run_check npm run test:unit:shared || exit $?
+                  run_check npm run test:unit:skill || exit $?
+                  run_check npm run test:unit:storefront || exit $?
+                  run_check npm run test:unit:utilities || exit $?
+            - name: dependency-metadata-after
+              command: *dependency-metadata-check
+
+settings:
+  timeout_total: "350m"
+
+model_provider:
+  primary: copilot
+  config:
+    model_id: claude-sonnet-5
