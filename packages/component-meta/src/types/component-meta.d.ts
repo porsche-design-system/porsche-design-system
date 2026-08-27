@@ -84,7 +84,14 @@ export type ComponentMeta = {
   cssVariablesMeta?: { [cssVariableName: string]: CssVariableMeta };
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
-  /** Indicates if a component uses the ElementInternals API */
+  /**
+   * Indicates if a component is form-associated and lets Stencil attach ElementInternals via `@AttachInternals()`.
+   * For those components the `attachInternals` API must exist, so consumers have to mock it in test environments.
+   *
+   * Note: this is deliberately narrower than "uses the ElementInternals API". Components which attach internals
+   * manually and defensively (via optional chaining and `try`/`catch`) keep working without the API being available
+   * and therefore are not flagged.
+   */
   hasElementInternals: boolean;
   observedAttributes?: string[];
   hasObserveChildren: boolean;

@@ -137,6 +137,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         {this.children}`
           : '';
 
+        // TODO: remove the `shadowroot` attribute from template tag with v5 https://github.com/porsche-design-system/porsche-design-system/issues/4694
         newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
           const delegatesFocusProp = isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
@@ -146,7 +147,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     return (
       <>
         {/* @ts-ignore */}
-        <template shadowroot="open" shadowrootmode="open"${delegatesFocusProp}>
+        <template shadowroot="open" shadowrootmode="open" shadowrootclonable="true"${delegatesFocusProp}>
           <style dangerouslySetInnerHTML={{ __html: style }} />
           ${g1.trim().replace(/\n/g, '$&    ')}
         </template>${children}
