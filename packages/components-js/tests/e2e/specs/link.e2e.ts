@@ -169,33 +169,6 @@ test.describe('slotted anchor', () => {
   });
 });
 
-test.describe('custom states', () => {
-  const customStatesStyle = `<style>
-    p-link:state(variant-primary) { --p-link-bg: rgb(1, 1, 1); }
-    p-link:state(variant-secondary) { --p-link-bg: rgb(2, 2, 2); }
-  </style>`;
-
-  const initLinkWithCustomStates = (page: Page): Promise<void> =>
-    setContentWithDesignSystem(page, `${customStatesStyle}<p-link href="#">Some label</p-link>`);
-
-  test('should expose variant as custom state', async ({ page }) => {
-    await initLinkWithCustomStates(page);
-
-    const host = getHost(page);
-    const link = getLink(page);
-
-    expect(await getElementStyle(link, 'backgroundColor'), 'initial variant primary').toBe('rgb(1, 1, 1)');
-
-    await setProperty(host, 'variant', 'secondary');
-    await waitForStencilLifecycle(page);
-    expect(await getElementStyle(link, 'backgroundColor'), 'variant secondary').toBe('rgb(2, 2, 2)');
-
-    await setProperty(host, 'variant', 'primary');
-    await waitForStencilLifecycle(page);
-    expect(await getElementStyle(link, 'backgroundColor'), 'reset to variant primary').toBe('rgb(1, 1, 1)');
-  });
-});
-
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initLink(page);

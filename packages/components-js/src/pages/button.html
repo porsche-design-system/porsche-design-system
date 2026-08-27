@@ -4,7 +4,7 @@
   --p-button-fg: light-dark(#7a85db, #0d164c);
 }
 
-.custom-colors-1:not(:state(loading), :state(disabled)):hover {
+.custom-colors-1:not(:disabled, :state(loading)):hover {
   --p-button-bg: light-dark(#060d33, #a8b1ea);
   --p-button-fg: light-dark(#a8b1ea, #060d33);
 }
@@ -14,7 +14,7 @@
   --p-button-fg: light-dark(#21eeae, #025b3f);
 }
 
-.custom-colors-2:not(:state(loading), :state(disabled)):hover {
+.custom-colors-2:not(:disabled, :state(loading)):hover {
   --p-button-bg: light-dark(#013d2a, #6ef7cf);
   --p-button-fg: light-dark(#6ef7cf, #013d2a);
 }
@@ -24,7 +24,7 @@
   --p-button-fg: light-dark(#ffaa4f, #6f3d0b);
 }
 
-.custom-colors-3:not(:state(loading), :state(disabled)):hover {
+.custom-colors-3:not(:disabled, :state(loading)):hover {
   --p-button-bg: light-dark(#4d2a07, #ffc484);
   --p-button-fg: light-dark(#ffc484, #4d2a07);
 }
@@ -34,7 +34,7 @@
   --p-button-fg: var(--p-color-primary);
 }
 
-.custom-colors-4:not(:state(loading), :state(disabled)):hover {
+.custom-colors-4:not(:disabled, :state(loading)):hover {
   --p-button-bg: var(--p-color-frosted);
   --p-button-fg: #fff;
 }
@@ -91,27 +91,12 @@
   }
 }
 
-.custom-states:state(variant-primary) {
-  --p-button-bg: rebeccapurple;
-  --p-button-fg: #fff;
-}
-
-.custom-states:state(variant-secondary) {
-  --p-button-bg: gold;
-  --p-button-fg: #000;
-}
-
-.custom-states:state(variant-destructive) {
-  --p-button-bg: darkslategray;
-  --p-button-fg: #fff;
-}
-
 .custom-states:state(loading) {
   --p-button-bg: dodgerblue;
   --p-button-fg: #fff;
 }
 
-.custom-states:state(disabled) {
+.custom-states:disabled {
   --p-button-bg: deeppink;
   --p-button-fg: lime;
 }
@@ -287,10 +272,10 @@
   <p-button class="custom-colors-4 custom-shadow" icon="ai-chat">Some label</p-button>
 </div>
 
-<div class="playground auto-layout-inline" title="should render button with custom colors based on css custom states">
-  <p-button class="custom-states" variant="primary" icon="car">Some label</p-button>
-  <p-button class="custom-states" variant="secondary" icon="car">Some label</p-button>
-  <p-button class="custom-states" variant="destructive" icon="car">Some label</p-button>
-  <p-button class="custom-states" variant="primary" icon="car" loading="true">Some label</p-button>
-  <p-button class="custom-states" variant="primary" icon="car" disabled="true">Some label</p-button>
+<div
+  class="playground auto-layout-inline"
+  title="should render button with custom colors based on css custom state loading and native disabled"
+>
+  <p-button class="custom-states" icon="car" loading="true">Some label</p-button>
+  <p-button class="custom-states" icon="car" disabled="true">Some label</p-button>
 </div>

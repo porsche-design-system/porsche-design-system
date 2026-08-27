@@ -29,16 +29,6 @@
   --p-link-gap: 24px;
   --p-link-radius: 4px;
 }
-
-.custom-states:state(variant-primary) {
-  --p-link-bg: rebeccapurple;
-  --p-link-fg: #fff;
-}
-
-.custom-states:state(variant-secondary) {
-  --p-link-bg: gold;
-  --p-link-fg: #000;
-}
 </style>
 
 <div class="playground auto-layout-inline" title="should render primary with label only">
@@ -253,9 +243,3 @@
   <p-link class="custom-padding-gap-radius" href="https://porsche.com" compact="true" icon="car">Some label</p-link>
 </div>
 
-<div class="playground auto-layout-inline" title="should render link with custom colors based on css custom states">
-  <p-link class="custom-states" href="https://porsche.com" variant="primary" icon="car">Some label</p-link>
-  <p-link class="custom-states" href="https://porsche.com" variant="secondary" icon="car">Some label</p-link>
-  <p-link class="custom-states" variant="primary" icon="car"><a href="https://porsche.com">Some label</a></p-link>
-  <p-link class="custom-states" variant="secondary" icon="car"><a href="https://porsche.com">Some label</a></p-link>
-</div>
