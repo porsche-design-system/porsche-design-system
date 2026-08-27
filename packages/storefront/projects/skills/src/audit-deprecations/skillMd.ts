@@ -153,15 +153,21 @@ const renderIndex = (framework: Framework): string =>
 /** Files worth reading per framework, and the traps in each. */
 const FILE_SCOPE: Record<Framework, { globs: string; note: string }> = {
   js: {
-    globs: '`**/*.html`, `**/*.js`, `**/*.mjs`, `**/*.cjs`, `**/*.ts`, `**/*.css`, `**/*.scss`',
+    globs:
+      '`**/*.html`, `**/*.js`, `**/*.mjs`, `**/*.cjs`, `**/*.ts`, `**/*.astro`, `**/*.svelte`, `**/*.vue`, ' +
+      '`**/*.css`, `**/*.scss`, `**/*.sass`',
     note: 'Components are custom elements, so usage appears in HTML and in any JavaScript that builds markup — template strings, `innerHTML`, `createElement` and `setAttribute` calls all count.',
   },
   react: {
-    globs: '`**/*.tsx`, `**/*.jsx`, `**/*.ts`, `**/*.js`, `**/*.css`, `**/*.scss`',
+    globs:
+      '`**/*.tsx`, `**/*.jsx`, `**/*.ts`, `**/*.js`, `**/*.mjs`, `**/*.cjs`, `**/*.mdx`, `**/*.astro`, ' +
+      '`**/*.html`, `**/*.css`, `**/*.scss`, `**/*.sass`',
     note: 'Imports may be aliased (`import { PText as Text }`), so the anchor is the local binding, not the exported name. Both the package root and the `/ssr` entry point count.',
   },
   angular: {
-    globs: '`**/*.ts`, `**/*.html`, `**/*.css`, `**/*.scss`, `**/angular.json`, `**/project.json`, `**/workspace.json`',
+    globs:
+      '`**/*.ts`, `**/*.html`, `**/*.css`, `**/*.scss`, `**/*.sass`, `**/*.less`, `**/angular.json`, ' +
+      '`**/project.json`, `**/workspace.json`',
     note:
       '**Templates live in two places** — inline backtick `template:` strings inside `.ts` files and external ' +
       '`templateUrl` `.html` files. Scanning only one silently halves coverage with no error, so scan both. ' +
@@ -169,7 +175,9 @@ const FILE_SCOPE: Record<Framework, { globs: string; note: string }> = {
       'workspace/project JSON build configuration too.',
   },
   vue: {
-    globs: '`**/*.vue`, `**/*.ts`, `**/*.js`, `**/*.css`, `**/*.scss`',
+    globs:
+      '`**/*.vue`, `**/*.ts`, `**/*.js`, `**/*.mjs`, `**/*.cjs`, `**/*.tsx`, `**/*.jsx`, `**/*.astro`, ' +
+      '`**/*.html`, `**/*.css`, `**/*.scss`, `**/*.sass`',
     note: 'A single import can be written two ways in a template — `<PText>` and `<p-text>` are both valid — so check both spellings for every component.',
   },
 };
@@ -194,9 +202,31 @@ const renderScope = (framework: Framework): string => {
     'Resolve any user-supplied include and exclude paths against the root and apply them on top of that list, ' +
       'recording them the same way.',
     '',
-    `Audit production source and PDS configuration: ${globs}.`,
+    `Audit production source and PDS configuration. These always count: ${globs}.`,
     '',
     note,
+    '',
+    '**The list is a floor, not a definition.** No extension list survives contact with a real project — a component ' +
+      'can live in a template language nobody thought of, and a file type absent from the list above is invisible ' +
+      'rather than clean. So after the list, find the rest by content: search every non-ignored text file in each ' +
+      'discovered package for a PDS root — an import of the wrapper package or one of its styling entry points, a ' +
+      '`p-`-prefixed custom element, a `--p-` custom property, or a PDS SCSS `@use`. A file that holds one is in ' +
+      'scope whatever it is called.',
+    '',
+    'Then audit each of those files, **or** record it in `scope.excludedPaths` with a reason — a changelog, a ' +
+      'documentation snippet and a test fixture can all quote PDS markup without being production source, and ' +
+      'excluding them is a decision a reader can review. What must not happen is the third option: a file that ' +
+      'references PDS appearing in neither place, which is the same silent gap as a package that was never ' +
+      'discovered.',
+    '',
+    'The list covers where components, styles and PDS configuration are normally written, and deliberately stops ' +
+      'there: prose and data formats — `.md`, `.json`, `.yaml` — quote markup often enough that auditing them by ' +
+      'default would trade real findings for plausible ones. The search below still reaches them, and excluding one ' +
+      'with a reason is a decision a reader can see.',
+    '',
+    'Content decides scope; the extension list only makes the common case fast. Search by root marker rather than ' +
+      'reading every file: a match is what makes a file eligible, so a repository of any size yields a handful of ' +
+      'extra candidates rather than a full-text scan.',
     '',
     'Respect version-control ignore rules, and exclude dependencies, build output, tests, examples and generated ' +
       'files by default. A default exclusion goes in `scope.excludedPaths` with its reason and **nowhere else** — it ' +

@@ -129,6 +129,49 @@ describe('audit-deprecations skill', () => {
         expect(skillMd).toContain('check the claim against `scope.includedPaths`');
       });
 
+      it('treats the file-extension list as a floor rather than a definition', () => {
+        // An extension list cannot enumerate every template language, and a file type missing from it
+        // is invisible rather than clean: the js audit listed `frameworks/astro` in scope and reported
+        // `completed` while structurally unable to read its `.astro` and `.vue` components.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('**The list is a floor, not a definition.**');
+        expect(skillMd).toContain('search every non-ignored text file in each discovered package for a PDS root');
+        expect(skillMd).toContain('or** record it in `scope.excludedPaths` with a reason');
+      });
+
+      it('keeps prose and data formats out of the default scan', () => {
+        // They quote markup often enough that auditing them by default trades real findings for
+        // plausible ones; the root-marker search still reaches them, and excluding one is disclosed.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('prose and data formats');
+        for (const glob of ['`**/*.md`,', '`**/*.json`,', '`**/*.yaml`,']) {
+          expect(skillMd, `${glob} should not be in the always-audit list`).not.toContain(glob);
+        }
+      });
+
+      it('names the root markers that make an unlisted file eligible', () => {
+        // Content-gated, not open: a file counts because it references PDS, so the extra candidates stay
+        // a handful on a repository of any size and a changelog cannot become a finding by accident.
+        const skillMd = read(framework, 'SKILL.md');
+        for (const marker of ['`p-`-prefixed custom element', '`--p-` custom property', 'PDS SCSS `@use`']) {
+          expect(skillMd, `missing root marker: ${marker}`).toContain(marker);
+        }
+      });
+
+      it('covers the meta-framework template extensions its components can live in', () => {
+        // Custom elements and JSX both travel into template languages outside the primary list.
+        const extras: Record<string, string[]> = {
+          js: ['`**/*.astro`', '`**/*.svelte`', '`**/*.vue`', '`**/*.sass`'],
+          react: ['`**/*.mdx`', '`**/*.astro`', '`**/*.html`', '`**/*.mjs`', '`**/*.cjs`', '`**/*.sass`'],
+          vue: ['`**/*.astro`', '`**/*.html`', '`**/*.tsx`', '`**/*.jsx`', '`**/*.sass`'],
+          angular: ['`**/*.sass`', '`**/*.less`'],
+        };
+        const skillMd = read(framework, 'SKILL.md');
+        for (const glob of extras[framework]) {
+          expect(skillMd, `${framework} scope omits ${glob}`).toContain(glob);
+        }
+      });
+
       it('gives every excluded path a reason, so a dropped package cannot hide', () => {
         const excludedPaths = schemaOf(framework).properties.scope.properties.excludedPaths;
         expect(excludedPaths.items.required).toStrictEqual(['path', 'reason']);
