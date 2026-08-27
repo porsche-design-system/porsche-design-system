@@ -72,20 +72,35 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentWillRender()', () => {
-  it('should sync custom states for disabled, loading and variant', () => {
+  it('should sync custom state for loading', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    component.componentWillRender();
+
+    expect(component['internals'].states.add).toHaveBeenCalledWith('loading');
+  });
+
+  it('should remove custom state if not loading', () => {
+    const component = initComponent();
+    component.loading = false;
+
+    component.componentWillRender();
+
+    expect(component['internals'].states.delete).toHaveBeenCalledWith('loading');
+  });
+
+  it('should not sync custom states for disabled and variant', () => {
     const component = initComponent();
     component.disabled = true;
-    component.loading = false;
     component.variant = 'secondary';
 
     component.componentWillRender();
 
     const { add, delete: remove } = component['internals'].states;
-    expect(add).toHaveBeenCalledWith('disabled');
-    expect(remove).toHaveBeenCalledWith('loading');
-    expect(add).toHaveBeenCalledWith('variant-secondary');
-    expect(remove).toHaveBeenCalledWith('variant-primary');
-    expect(remove).toHaveBeenCalledWith('variant-destructive');
+    expect(add).not.toHaveBeenCalledWith('disabled');
+    expect(add).not.toHaveBeenCalledWith('variant-secondary');
+    expect(remove).not.toHaveBeenCalledWith('variant-primary');
   });
 
   it('should not throw if CustomStateSet is not supported', () => {

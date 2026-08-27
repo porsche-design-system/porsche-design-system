@@ -15,7 +15,6 @@ import {
   isSsrHydration,
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
-  setCustomStates,
   throwIfInvalidLinkUsage,
   validateProps,
 } from '../../utils';
@@ -75,21 +74,6 @@ export class Link {
   /** Sets ARIA attributes on the link element to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
-  private internals: ElementInternals | undefined;
-
-  public connectedCallback(): void {
-    // ElementInternals is attached manually instead of using Stencil's @AttachInternals() decorator,
-    // since the decorator requires the component to be form-associated which isn't the case for a link.
-    // Custom states are a progressive enhancement, therefore environments without support are silently skipped.
-    if (!this.internals) {
-      try {
-        this.internals = this.host.attachInternals?.();
-      } catch {
-        // ElementInternals is not supported or was already attached, nothing to do
-      }
-    }
-  }
-
   public componentWillLoad(): void {
     if (!isSsrHydration(this.host)) {
       // when ssr rendered component is partially hydrated before being rerendered by its parent (e.g. link-tile)
@@ -98,27 +82,8 @@ export class Link {
     }
   }
 
-  public componentWillRender(): void {
-    this.syncCustomStates();
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
-  }
-
-  /**
-   * Exposes the component's state as CSS custom states, which can be targeted with the `:state()` pseudo-class,
-   * e.g. `p-link:state(variant-secondary) { --p-link-bg: deeppink; }`.
-   * This is a progressive enhancement and silently does nothing in browsers without `CustomStateSet` support.
-   */
-  private syncCustomStates(): void {
-    const states: Record<string, boolean> = {};
-
-    for (const variant of LINK_VARIANTS) {
-      states[`variant-${variant}`] = this.variant === variant;
-    }
-
-    setCustomStates(this.internals, states);
   }
 
   public render(): JSX.Element {

@@ -16,7 +16,7 @@ import {
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  setCustomStates,
+  setCustomState,
   validateProps,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
@@ -153,21 +153,15 @@ export class Button {
   }
 
   /**
-   * Exposes the component's state as CSS custom states, which can be targeted with the `:state()` pseudo-class,
-   * e.g. `p-button:state(disabled) { --p-button-bg: deeppink; }`.
-   * This is a progressive enhancement and silently does nothing in browsers without `CustomStateSet` support.
+   * Exposes the loading state as CSS custom state, which can be targeted with the `:state()` pseudo-class,
+   * e.g. `p-button:state(loading) { --p-button-bg: deeppink; }`.
+   * This is experimental and a progressive enhancement: it silently does nothing in browsers without `CustomStateSet`
+   * support and it can't be expressed during SSR, since custom states are only applied once the component hydrates.
+   * The disabled state doesn't need a custom state, since the button is form-associated and therefore matched by the
+   * native `:disabled` pseudo-class.
    */
   private syncCustomStates(): void {
-    const states: Record<string, boolean> = {
-      disabled: this.disabled,
-      loading: this.loading,
-    };
-
-    for (const variant of BUTTON_VARIANTS) {
-      states[`variant-${variant}`] = this.variant === variant;
-    }
-
-    setCustomStates(this.internals, states);
+    setCustomState(this.internals, 'loading', this.loading);
   }
 
   public render(): JSX.Element {
