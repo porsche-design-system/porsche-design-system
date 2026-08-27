@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- **Shadow DOM**: shadow roots are now attached with `clonable: true`, so `cloneNode(true)` on a component returns a
+  clone that carries its Shadow DOM content instead of an empty shadow root.
+  ([#4692](https://github.com/porsche-design-system/porsche-design-system/pull/4692))
 - `Button`: `destructive` variant for actions with irreversible consequences, e.g. deleting data
   ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
 - `Button`, `Link`: `--p-button-bg`, `--p-button-fg`, `--p-link-bg` and `--p-link-fg` CSS variables to override the
