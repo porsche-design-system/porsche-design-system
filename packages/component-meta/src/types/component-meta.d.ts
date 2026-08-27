@@ -89,8 +89,8 @@ export type ComponentMeta = {
    * For those components the `attachInternals` API must exist, so consumers have to mock it in test environments.
    *
    * Note: this is deliberately narrower than "uses the ElementInternals API". Components which attach internals
-   * manually and defensively (e.g. `p-link` for custom states, via optional chaining and `try`/`catch`) keep working
-   * without the API being available and therefore are not flagged.
+   * manually and defensively (via optional chaining and `try`/`catch`) keep working without the API being available
+   * and therefore are not flagged.
    */
   hasElementInternals: boolean;
   observedAttributes?: string[];

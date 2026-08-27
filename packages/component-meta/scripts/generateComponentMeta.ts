@@ -148,8 +148,7 @@ const generateComponentMeta = (): void => {
     const hasAriaProp = source.includes('public aria?: SelectedAria'); // used only partial "SelectedAria" string to cover both type variants of "SelectedAriaAttributes" and "SelectedAriaRole"
     // Only components which let Stencil attach ElementInternals via the `@AttachInternals()` decorator are flagged,
     // since those are form-associated and require the `attachInternals` API to exist (e.g. mocked in tests).
-    // Matching at the start of a line ensures mentions within comments (e.g. `p-link`, which attaches internals
-    // manually and defensively) don't produce false positives.
+    // Matching at the start of a line ensures mentions within comments don't produce false positives.
     const hasElementInternals = /^\s*@AttachInternals\(\)/m.test(source);
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
