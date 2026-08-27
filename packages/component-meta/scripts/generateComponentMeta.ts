@@ -41,6 +41,37 @@ const getImportFilePath = (source: string, constName: string, tagName: TagName):
     : importPath; // absolute path to other package
 };
 
+// Looks a type up in the given file and follows a relative import if it isn't declared there. Returns undefined when
+// the name can't be resolved, so callers leave it untouched rather than emitting something wrong.
+const findTypeDefinition = (typeName: string, filePath: string): string | undefined => {
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+
+  const [, localDefinition] = fileContent.match(new RegExp(`\\btype ${typeName} = ([^;\\n]+);`)) || [];
+  if (localDefinition) {
+    return localDefinition.trim();
+  }
+
+  const [, relativeImportPath] =
+    fileContent.match(new RegExp(`import [\\s\\S]+?${typeName}[\\s\\S]+?from '([\\s\\S]+?)';`)) || [];
+  if (!relativeImportPath) {
+    return undefined;
+  }
+
+  const importedFileContent = fs.readFileSync(path.resolve(filePath, `../${relativeImportPath}.ts`), 'utf8');
+  const [, importedDefinition] = importedFileContent.match(new RegExp(`\\btype ${typeName} = ([^;\\n]+);`)) || [];
+
+  return importedDefinition?.trim();
+};
+
+// Resolves type names appearing inside an already-extracted event-detail object literal, e.g. turns
+// `{ reason: DialogDismissReason }` into `{ reason: 'dismiss-button' | 'backdrop' | 'escape' }`.
+const resolveNestedTypeNames = (typeDetail: string, containingFilePath: string): string =>
+  typeDetail.replace(/\b[A-Z][A-Za-z]*\b/g, (typeName) => {
+    const definition = findTypeDefinition(typeName, containingFilePath);
+
+    return definition && !definition.includes('{') ? definition : typeName;
+  });
+
 const getEvaluablePropTypeString = (propTypes: string): string => {
   return propTypes
     ?.replace(/([a-zA-Z]+): (.+),/g, '$1: "$2",') // wrap values in quotes to make the object evaluable
@@ -525,6 +556,10 @@ const generateComponentMeta = (): void => {
           let [, eventTypeDetail] =
             eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
 
+          // The literal may come from the component's own utils file or via an alias from another file.
+          // `resolveNestedTypeNames` has to look up nested names in whichever file actually declared it.
+          let typeDetailFilePath = eventTypePath;
+
           // Standard lib types don't need to be resolved
           if (['TransitionEvent', 'InputEvent', 'Event'].includes(eventTypeAlias)) {
             typeDetail = eventTypeAlias;
@@ -548,10 +583,11 @@ const generateComponentMeta = (): void => {
               // check if type or imported from somewhere else
               const [, relativeAliasTypePath] =
                 eventTypeFileContent.match(
-                  new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
+                  new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias || eventTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
                 ) || [];
               const eventAliasTypePath = path.resolve(eventTypePath, `../${relativeAliasTypePath}.ts`);
               const eventAliasTypeFileContent = fs.readFileSync(eventAliasTypePath, 'utf8');
+              typeDetailFilePath = eventAliasTypePath;
 
               eventAliasTypeDetail = eventAliasTypeFileContent.match(
                 new RegExp(`type ${eventAliasTypeAlias || eventTypeAlias} = ({[\\s\\S]+?});\\n`)
@@ -571,6 +607,9 @@ const generateComponentMeta = (): void => {
             .replace(/ \/\/.+/g, '') // remove comments
             .replace(/\s+/g, ' ') // multi line to single line
             .replace(/; }/, ' }'); // remove last semi colon
+
+          // runs after the comments are stripped, so a capitalized word in a source comment is never taken for a type
+          typeDetail = resolveNestedTypeNames(typeDetail, typeDetailFilePath);
         }
 
         eventsMeta[eventName] = {

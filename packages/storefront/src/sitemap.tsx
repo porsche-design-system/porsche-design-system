@@ -392,6 +392,11 @@ export const sitemap: Routes = {
             path: '/developing/vue/form',
             type: 'TAB',
           },
+          testing: {
+            name: 'Testing',
+            path: '/developing/vue/testing',
+            type: 'TAB',
+          },
           advanced: {
             name: 'Advanced',
             path: '/developing/vue/advanced',

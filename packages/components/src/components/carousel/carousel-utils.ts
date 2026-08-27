@@ -38,6 +38,12 @@ export type CarouselInternationalization =
 
 export type CarouselUpdateEventDetail = { activeIndex: number; previousIndex: number };
 
+/** Default Splide i18n slideLabel — "%s of %s" as "{slide number} of {slide length}". */
+export const DEFAULT_SLIDE_LABEL = '%s of %s';
+
+export const getSlideStatusMessage = (slideLabel: string, activeIndex: number, total: number): string =>
+  slideLabel.replace('%s', String(activeIndex + 1)).replace('%s', String(total));
+
 export type SplideBreakpoints = Options['breakpoints'];
 
 export type CarouselLanguageDirection = Extract<Options['direction'], 'ltr' | 'rtl'>;

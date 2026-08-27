@@ -225,6 +225,7 @@ export const getComponentCss = (
         pointerEvents: 'none',
       },
     },
+    'slide-status': getHiddenTextJssStyle(),
     splide: {
       overflow: 'hidden',
       padding: '4px 0', // for slide focus outline

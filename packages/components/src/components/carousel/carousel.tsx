@@ -1,6 +1,18 @@
 import { gridGap, motionEasingBase } from '@porsche-design-system/emotion';
 import { Splide } from '@splidejs/splide';
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  Host,
+  h,
+  type JSX,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
@@ -37,8 +49,10 @@ import {
   type CarouselSlidesPerPage,
   type CarouselUpdateEventDetail,
   type CarouselWidth,
+  DEFAULT_SLIDE_LABEL,
   getAmountOfPages,
   getLangDirection,
+  getSlideStatusMessage,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
   isInfinitePagination,
@@ -125,6 +139,10 @@ export class Carousel {
   /** Overrides the default label strings used for the previous, next, and page indicators — useful for localization. */
   @Prop() public intl?: CarouselInternationalization;
 
+  // TODO: this prop seeds the initial slide and is the controlled value at the same time. React splits
+  //  those into defaultValue and value, so a consumer cannot reliably drive it. To be split into
+  //  defaultActiveSlideIndex + activeSlideIndex in v5, see
+  //  https://github.com/porsche-design-system/porsche-design-system/issues/4689
   /** Sets the zero-based index of the currently visible slide. Update this to navigate programmatically. */
   @Prop() public activeSlideIndex?: number = 0;
 
@@ -150,7 +168,10 @@ export class Carousel {
   private btnPrev: HTMLPButtonPureElement;
   private btnNext: HTMLPButtonPureElement;
   private paginationEl: HTMLElement;
+  private slideStatusEl: HTMLElement;
   private slides: HTMLElement[] = [];
+  /** Skips the next live-region update when navigation was caused by focusing a slide. */
+  private suppressNextStatusAnnounce = false;
 
   private get parsedSlidesPerPage(): BreakpointValues<CarouselSlidesPerPage> | number | 'auto' {
     return parseJSON(this.slidesPerPage) as BreakpointValues<CarouselSlidesPerPage> | number | 'auto';
@@ -173,8 +194,32 @@ export class Carousel {
     this.splide.go(newValue); // change event is emitted via splide.on('move')
   }
 
+  @Watch('slidesPerPage')
+  public slidesPerPageHandler(): void {
+    if (this.splide) {
+      // splideJS reads its breakpoints only when constructed, so a new instance is needed to apply the new value
+      const { index } = this.splide;
+      this.splide.destroy();
+      this.initSplide(index); // splideJS clamps the start index if it exceeds the new amount of pages
+    }
+    this.updateAmountOfPages();
+  }
+
   public connectedCallback(): void {
-    observeChildren(this.host, this.updateSlidesAndPagination);
+    observeChildren(
+      this.host,
+      () => {
+        const prevAmountOfPages = this.amountOfPages;
+        this.updateSlidesAndPagination();
+        // a changed amountOfPages already re-renders through its own state change but when it stays the
+        // same nothing does, and the slots keep the old count which leaves added slides unprojected
+        if (this.amountOfPages === prevAmountOfPages) {
+          forceUpdate(this.host);
+        }
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
     this.observeBreakpointChange();
 
     if (this.splide) {
@@ -200,30 +245,7 @@ export class Carousel {
 
   public componentDidLoad(): void {
     this.observeSlides(); // initial, adjust aria attributes on slides
-    this.splide = new Splide(this.container, {
-      start: this.activeSlideIndex,
-      arrows: false,
-      easing: motionEasingBase,
-      focus: this.focusOnCenterSlide ? 'center' : undefined,
-      trimSpace: this.trimSpace,
-      pagination: false,
-      rewind: this.rewind,
-      rewindByDrag: true, // only works when rewind: true
-      drag: this.hasNavigation,
-      perMove: 1,
-      mediaQuery: 'min',
-      speed: Number.parseFloat(carouselTransitionDuration) * 1000,
-      gap: gridGap,
-      // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(
-        this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<CarouselSlidesPerPage> | 'auto', string>
-      ),
-      // https://splidejs.com/guides/i18n/#default-texts
-      i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
-      direction: getLangDirection(this.host),
-    });
-
-    this.registerSplideHandlers(this.splide);
+    this.initSplide(this.activeSlideIndex);
   }
 
   public componentDidUpdate(): void {
@@ -350,8 +372,37 @@ export class Carousel {
             <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
           </div>
         )}
+        <div class="slide-status" aria-live="polite" aria-atomic="true" ref={(ref) => (this.slideStatusEl = ref)} />
       </Host>
     );
+  }
+
+  private initSplide(startIndex: number): void {
+    this.splide = new Splide(this.container, {
+      start: startIndex,
+      arrows: false,
+      easing: motionEasingBase,
+      focus: this.focusOnCenterSlide ? 'center' : undefined,
+      trimSpace: this.trimSpace,
+      pagination: false,
+      rewind: this.rewind,
+      rewindByDrag: true, // only works when rewind: true
+      drag: this.hasNavigation,
+      perMove: 1,
+      mediaQuery: 'min',
+      speed: Number.parseFloat(carouselTransitionDuration) * 1000,
+      gap: gridGap,
+      live: false,
+      // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
+      breakpoints: getSplideBreakpoints(
+        this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<CarouselSlidesPerPage> | 'auto', string>
+      ),
+      // https://splidejs.com/guides/i18n/#default-texts
+      i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
+      direction: getLangDirection(this.host),
+    });
+
+    this.registerSplideHandlers(this.splide);
   }
 
   private registerSplideHandlers(splide: Splide): void {
@@ -366,6 +417,16 @@ export class Carousel {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updatePagination(this.paginationEl, this.getPageCount(), activeIndex);
       this.update.emit({ activeIndex, previousIndex });
+    });
+
+    splide.on('moved', (activeIndex): void => {
+      if (this.suppressNextStatusAnnounce) {
+        this.suppressNextStatusAnnounce = false;
+        return;
+      }
+      // Update imperatively to avoid a Stencil re-render that would steal focus from slides/controls
+      const slideLabel = splide.options.i18n?.slideLabel ?? DEFAULT_SLIDE_LABEL;
+      this.slideStatusEl.textContent = getSlideStatusMessage(slideLabel, activeIndex, this.getPageCount());
     });
 
     splide.mount();
@@ -422,8 +483,10 @@ export class Carousel {
 
     if (splideIndex !== slideIndexOfFocusedElement) {
       if (slideIndexOfFocusedElement > splideIndex && (!slideIsVisible || this.focusOnCenterSlide)) {
+        this.suppressNextStatusAnnounce = true;
         slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       } else if (slideIndexOfFocusedElement < splideIndex) {
+        this.suppressNextStatusAnnounce = true;
         slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       }
     }
@@ -431,11 +494,15 @@ export class Carousel {
 
   private observeSlides(): void {
     // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
-    observeChildren(this.container, () => {
-      for (const el of this.splideSlides) {
-        el.removeAttribute('aria-hidden');
-        el.setAttribute('tabindex', '0');
-      }
-    }, ['aria-hidden']);
+    observeChildren(
+      this.container,
+      () => {
+        for (const el of this.splideSlides) {
+          el.removeAttribute('aria-hidden');
+          el.setAttribute('tabindex', '0');
+        }
+      },
+      ['aria-hidden']
+    );
   }
 }

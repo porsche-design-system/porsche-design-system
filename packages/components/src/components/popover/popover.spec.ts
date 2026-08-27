@@ -3,6 +3,7 @@ import { forceUpdate } from '@stencil/core';
 import { autoUpdate } from '@floating-ui/dom';
 import * as childrenObserverUtils from '../../utils/children-observer';
 import { Popover } from './popover';
+import type { PopoverDismissEventDetail } from './popover-utils';
 
 // `autoUpdate` is an ESM export and cannot be spied on directly, so the module is mocked. Only the members used by the
 // component are stubbed; the rest keep their real implementations.
@@ -270,6 +271,7 @@ describe('onFocusout', () => {
     component.onFocusout({ relatedTarget: document.createElement('a') } as unknown as FocusEvent);
 
     expect(dismissSpy).toHaveBeenCalledTimes(1);
+    expect(dismissSpy).toHaveBeenCalledWith('focus-out');
   });
 
   it('should not dismiss when relatedTarget is null', () => {
@@ -355,6 +357,7 @@ describe('onEscape', () => {
 
     expect(focusTriggerSpy).toHaveBeenCalledTimes(1);
     expect(dismissSpy).toHaveBeenCalledTimes(1);
+    expect(dismissSpy).toHaveBeenCalledWith('escape');
   });
 
   it('should not dismiss for other keys', () => {
@@ -387,6 +390,7 @@ describe('onClickOutside', () => {
     component['onClickOutside']({ target: outside, composedPath: () => [outside] } as unknown as MouseEvent);
 
     expect(dismissSpy).toHaveBeenCalledTimes(1);
+    expect(dismissSpy).toHaveBeenCalledWith('outside-click');
   });
 
   it('should not dismiss when clicking inside the panel', () => {
@@ -429,17 +433,20 @@ describe('onClickOutside', () => {
 });
 
 describe('dismissPopover', () => {
-  it('should emit dismiss and keep isOpen in controlled mode', () => {
-    const emit = vi.fn();
-    component.dismiss = { emit } as any;
-    component.open = true;
-    component['isOpen'] = true;
+  it.each<PopoverDismissEventDetail['reason']>(['outside-click', 'focus-out', 'escape'])(
+    'should emit dismiss with reason %s and keep isOpen in controlled mode',
+    (reason) => {
+      const emit = vi.fn();
+      component.dismiss = { emit } as any;
+      component.open = true;
+      component['isOpen'] = true;
 
-    component['dismissPopover']();
+      component['dismissPopover'](reason);
 
-    expect(emit).toHaveBeenCalledTimes(1);
-    expect(component['isOpen']).toBe(true);
-  });
+      expect(emit).toHaveBeenCalledWith({ reason });
+      expect(component['isOpen']).toBe(true);
+    }
+  );
 
   it('should set isOpen to false in uncontrolled mode', () => {
     const emit = vi.fn();
@@ -447,7 +454,7 @@ describe('dismissPopover', () => {
     component.open = undefined;
     component['isOpen'] = true;
 
-    component['dismissPopover']();
+    component['dismissPopover']('escape');
 
     expect(emit).not.toHaveBeenCalled();
     expect(component['isOpen']).toBe(false);

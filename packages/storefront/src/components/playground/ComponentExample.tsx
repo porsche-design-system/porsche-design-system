@@ -34,12 +34,12 @@ export const ComponentExample = ({
   // Vanilla Js Markup needs to be wrapped in containing html code
   const frameworkMarkup = useMemo(() => {
     if (codeSample.frameworkMarkup['vanilla-js']) {
-      const { markup, script } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js']);
+      const { markup, script, scriptAttributes } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js']);
       return {
         ...codeSample.frameworkMarkup,
         'vanilla-js': getVanillaJsCode(
           { markup, eventHandlers: script },
-          { isFullConfig: false, theme: storefrontColorScheme }
+          { isFullConfig: false, theme: storefrontColorScheme, scriptAttributes }
         ),
       };
     }

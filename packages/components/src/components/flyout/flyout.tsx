@@ -32,6 +32,7 @@ import {
   type FlyoutAriaAttribute,
   type FlyoutBackdrop,
   type FlyoutBackground,
+  type FlyoutDismissEventDetail,
   type FlyoutFooterBehavior,
   type FlyoutMotionHiddenEndEventDetail,
   type FlyoutMotionVisibleEndEventDetail,
@@ -89,8 +90,8 @@ export class Flyout {
   /** Sets ARIA attributes on the flyout dialog element for improved screen reader accessibility. */
   @Prop() public aria?: SelectedAriaAttributes<FlyoutAriaAttribute>;
 
-  /** Emitted when the user closes the flyout via the close button, backdrop click, or Escape key. */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+  /** Emitted when the user closes the flyout via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<FlyoutDismissEventDetail>;
 
   /** Emitted after the flyout's open transition completes and the panel is fully visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<FlyoutMotionVisibleEndEventDetail>;
@@ -191,11 +192,11 @@ export class Flyout {
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
         dismissable={true}
-        onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
+        onCancel={this.onDialogCancel}
         onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick, this.isPointerDownInside)}
+        onClick={this.onDialogBackdropClick}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        onDismiss={this.dismissDialog}
+        onDismiss={this.onDismissButtonClick}
         containerClass="flyout"
         header={this.hasHeader ? <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} /> : undefined}
         footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}
@@ -211,8 +212,15 @@ export class Flyout {
     );
   }
 
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
+  private onDialogCancel = (e: Event): void => onCancelDialog(e, () => this.dismissDialog('escape'));
+
+  private onDialogBackdropClick = (e: MouseEvent): void =>
+    onClickDialog(e, () => this.dismissDialog('backdrop'), this.disableBackdropClick, this.isPointerDownInside);
+
+  private onDismissButtonClick = (): void => this.dismissDialog('dismiss-button');
+
+  private dismissDialog = (reason: FlyoutDismissEventDetail['reason']): void => {
+    this.dismiss.emit({ reason });
   };
 
   private updateSlotObserver = (): void => {

@@ -14,10 +14,54 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Carousel`: slides were dropped or left over when the amount of slides changed without also changing the amount of
+  pages, for example going from 1 to 2 slides at `slides-per-page="3"`. An added slide was never rendered and a
+  removed slide left an empty slot and a surplus pagination bullet behind.
+  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+- `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
+  carousel was initialised with.
+  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+
+## [4.6.0] - 2026-08-20
+
+## [4.6.0-rc.3] - 2026-08-19
+
 ### Added
 
+- **Testing**: the `testing` sub-package now provides a `Shadow` counterpart for every Testing Library query, so
+  elements rendered inside Shadow DOM can be queried directly. Eight query families (`AltText`, `DisplayValue`,
+  `LabelText`, `PlaceholderText`, `Role`, `TestId`, `Text`, `Title`) in six variants each, plus `screen`, `within`,
+  `deepQuerySelector` and `deepQuerySelectorAll`. The existing `getByRoleShadowed`, `getByLabelTextShadowed` and
+  `getByTextShadowed` helpers remain available.
+  ([#4492](https://github.com/porsche-design-system/porsche-design-system/pull/4492))
+
+### Changed
+
+- **Testing**: the `testing` sub-package requires a DOM. Importing it where no DOM is available now throws an explicit
+  error on import. ([#4492](https://github.com/porsche-design-system/porsche-design-system/pull/4492))
+- `Flyout`, `Modal`, `Sheet`, `Drilldown`: the `dismiss` event now carries a payload identifying how the component was
+  closed. The event detail changed from `void` to `{ reason: 'dismiss-button' | 'backdrop' | 'escape' }`, exported as
+  `FlyoutDismissEventDetail`, `ModalDismissEventDetail`, `SheetDismissEventDetail` and `DrilldownDismissEventDetail`.
+  ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
+- `Popover`: the `dismiss` event now carries a payload identifying how the component was closed. The event detail
+  changed from `void` to `{ reason: 'outside-click' | 'focus-out' | 'escape' }`, exported as
+  `PopoverDismissEventDetail`. ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
+
+## [4.6.0-rc.2] - 2026-08-13
+
+### Added
+
+- `Ai Tag`: Support for enhanced locales in BCP47 (`en-US`) and POSIX (`en_US`) format
+  ([#4643](https://github.com/porsche-design-system/porsche-design-system/pull/4643))
 - `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+- `Icon`: `connect-services` and `shopping-cart-off` icons
+  ([#4665](https://github.com/porsche-design-system/porsche-design-system/pull/4665))
+- `Carousel`: Live region announcing page status after control-driven navigation (prev/next, pagination, drag)
+  ([#4654](https://github.com/porsche-design-system/porsche-design-system/pull/4654))
+- `Icon`: `customer-support` ([#4672](https://github.com/porsche-design-system/porsche-design-system/pull/4672))
 
 ### Changed
 
@@ -36,9 +80,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   which jsdom only provides since v30. On older versions the polyfill throws an explicit error on import. `jsdom` is
   declared as an optional peer dependency to make the requirement visible.
   ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
+- `AG Grid`: Updated `accentColor` from `colorInfo` to `colorFocus`, removed `focusShadow` and `inputFocusShadow` which
+  were previously hiding the focus ring on the grid's native input elements.
+  ([#4667](https://github.com/porsche-design-system/porsche-design-system/pull/4667))
 
 ### Fixed
 
+- `Link Tile` / `Button Tile`: Interactive content in the header slot (e.g. tags with links/buttons) is clickable again
+  ([#4648](https://github.com/porsche-design-system/porsche-design-system/pull/4648))
 - `Angular`: `Checkbox` treats `null` Reactive Forms values as unchecked instead of forwarding `null` to the `checked`
   prop ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Multi Select`: Announcement of the active/selected option in screen readers
@@ -54,6 +103,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **Jsdom Polyfill**: `TypeError: 'escape' called on an object that is not a valid instance of CSS.` when rendering
   components in jsdom v30, caused by consumers (e.g. `jss`) caching `CSS.escape` detached from the `CSS` namespace
   ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
+
+### Deprecated
+
+- `Ai Tag`: POSIX locales (e.g. `en_US`) are deprecated in favor of BCP47 locales (e.g. `en-US`)
+  ([#4643](https://github.com/porsche-design-system/porsche-design-system/pull/4643))
 
 ## [4.6.0-rc.1] - 2026-08-03
 

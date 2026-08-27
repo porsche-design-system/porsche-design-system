@@ -1,5 +1,6 @@
 <nav aria-label="Main">
   <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Drilldown</p-button>
+  <p-text id="dismiss-reason">Last dismissed via: not dismissed yet</p-text>
   <p-drilldown>
     <p-drilldown-item identifier="id-1" label="Some Label (1)">
       <p-drilldown-item identifier="id-1-1" label="Some Label (1-1)">
@@ -50,7 +51,8 @@
   document.querySelector('p-button').addEventListener('click', () => {
     drilldown.open = true;
   });
-  drilldown.addEventListener('dismiss', () => {
+  drilldown.addEventListener('dismiss', (e) => {
+    document.querySelector('#dismiss-reason').innerText = `Last dismissed via: ${e.detail.reason}`;
     drilldown.open = false;
   });
   drilldown.addEventListener('update', (e) => {

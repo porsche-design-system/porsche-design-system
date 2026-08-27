@@ -3677,7 +3677,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -4790,6 +4790,16 @@ exports[`should render dsr component for PCarousel 1`] = `
   opacity: 0;
   pointer-events: none;
 }
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -4898,6 +4908,11 @@ exports[`should render dsr component for PCarousel 1`] = `
         </div>
       </div>
     </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="slide-status"
+    />
   </template>
   <div>
     Some child
@@ -9304,7 +9319,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;

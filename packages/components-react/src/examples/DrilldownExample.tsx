@@ -1,9 +1,11 @@
 import {
+  type DrilldownDismissEventDetail,
   type DrilldownUpdateEventDetail,
   PButton,
   PDrilldown,
   PDrilldownItem,
   PDrilldownLink,
+  PText,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
@@ -11,10 +13,12 @@ export const DrilldownExamplePage = () => {
   const [isDrilldownOpen, setIsDrilldownOpen] = useState<boolean>(false);
   const [drilldownActiveIdentifier, setDrilldownActiveIdentifier] =
     useState<DrilldownUpdateEventDetail['activeIdentifier']>(undefined);
+  const [dismissReason, setDismissReason] = useState<DrilldownDismissEventDetail['reason'] | undefined>(undefined);
   const onOpen = useCallback(() => {
     setIsDrilldownOpen(true);
   }, []);
-  const onDismiss = useCallback(() => {
+  const onDismiss = useCallback((e: CustomEvent<DrilldownDismissEventDetail>) => {
+    setDismissReason(e.detail.reason);
     setIsDrilldownOpen(false);
   }, []);
   const onUpdate = useCallback(
@@ -28,6 +32,7 @@ export const DrilldownExamplePage = () => {
         <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
           Open Drilldown
         </PButton>
+        <PText>Last dismissed via: {dismissReason ?? 'not dismissed yet'}</PText>
         <PDrilldown
           open={isDrilldownOpen}
           activeIdentifier={drilldownActiveIdentifier}
