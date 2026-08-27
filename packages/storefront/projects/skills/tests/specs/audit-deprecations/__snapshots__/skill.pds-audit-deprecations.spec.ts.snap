@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`audit-deprecations skill tree content > matches the staged angular content snapshots > SKILL.md 1`] = `
+exports[`pds-audit-deprecations skill tree content > matches the staged angular content snapshots > SKILL.md 1`] = `
 [
   "---",
   "name: pds-audit-deprecations-angular",
@@ -251,7 +251,7 @@ exports[`audit-deprecations skill tree content > matches the staged angular cont
 ]
 `;
 
-exports[`audit-deprecations skill tree content > matches the staged angular content snapshots > references/report.schema.json 1`] = `
+exports[`pds-audit-deprecations skill tree content > matches the staged angular content snapshots > references/report.schema.json 1`] = `
 [
   "{",
   "  "$schema": "https://json-schema.org/draft/2020-12/schema",",
@@ -703,7 +703,7 @@ exports[`audit-deprecations skill tree content > matches the staged angular cont
 ]
 `;
 
-exports[`audit-deprecations skill tree content > matches the staged js content snapshots > SKILL.md 1`] = `
+exports[`pds-audit-deprecations skill tree content > matches the staged js content snapshots > SKILL.md 1`] = `
 [
   "---",
   "name: pds-audit-deprecations-js",
@@ -959,7 +959,7 @@ exports[`audit-deprecations skill tree content > matches the staged js content s
 ]
 `;
 
-exports[`audit-deprecations skill tree content > matches the staged js content snapshots > references/report.schema.json 1`] = `
+exports[`pds-audit-deprecations skill tree content > matches the staged js content snapshots > references/report.schema.json 1`] = `
 [
   "{",
   "  "$schema": "https://json-schema.org/draft/2020-12/schema",",
@@ -1411,7 +1411,7 @@ exports[`audit-deprecations skill tree content > matches the staged js content s
 ]
 `;
 
-exports[`audit-deprecations skill tree content > matches the staged react content snapshots > SKILL.md 1`] = `
+exports[`pds-audit-deprecations skill tree content > matches the staged react content snapshots > SKILL.md 1`] = `
 [
   "---",
   "name: pds-audit-deprecations-react",
@@ -1662,7 +1662,7 @@ exports[`audit-deprecations skill tree content > matches the staged react conten
 ]
 `;
 
-exports[`audit-deprecations skill tree content > matches the staged react content snapshots > references/report.schema.json 1`] = `
+exports[`pds-audit-deprecations skill tree content > matches the staged react content snapshots > references/report.schema.json 1`] = `
 [
   "{",
   "  "$schema": "https://json-schema.org/draft/2020-12/schema",",
@@ -2114,7 +2114,7 @@ exports[`audit-deprecations skill tree content > matches the staged react conten
 ]
 `;
 
-exports[`audit-deprecations skill tree content > matches the staged vue content snapshots > SKILL.md 1`] = `
+exports[`pds-audit-deprecations skill tree content > matches the staged vue content snapshots > SKILL.md 1`] = `
 [
   "---",
   "name: pds-audit-deprecations-vue",
@@ -2365,7 +2365,7 @@ exports[`audit-deprecations skill tree content > matches the staged vue content 
 ]
 `;
 
-exports[`audit-deprecations skill tree content > matches the staged vue content snapshots > references/report.schema.json 1`] = `
+exports[`pds-audit-deprecations skill tree content > matches the staged vue content snapshots > references/report.schema.json 1`] = `
 [
   "{",
   "  "$schema": "https://json-schema.org/draft/2020-12/schema",",
