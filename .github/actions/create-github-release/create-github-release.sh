@@ -29,8 +29,7 @@ INPUT_SHA="${INPUT_SHA:-}"
 # changelog. Without it, a maintenance release of an older major (e.g. 3.36.0 released
 # after 4.6.0) would steal the "Latest" badge.
 INPUT_MAKE_LATEST="${INPUT_MAKE_LATEST:-auto}"
-# Drafts are used by scripts/backfill-github-releases.ts to review legacy releases
-# before publishing them in one batch. Draft releases don't create the git tag.
+# Drafts allow reviewing a release before it becomes public (a draft doesn't create the git tag).
 INPUT_DRAFT="${INPUT_DRAFT:-false}"
 # Dry run prints the request payload instead of calling the GitHub API (no token needed).
 INPUT_DRY_RUN="${INPUT_DRY_RUN:-false}"

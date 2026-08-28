@@ -12,9 +12,7 @@
 # appears only once in the resulting release body, with their items concatenated in
 # chronological (file) order.
 #
-# Shared by:
-# - .github/actions/create-github-release/create-github-release.sh (CI)
-# - scripts/backfill-github-releases.ts (one-off backfill of legacy releases)
+# Used by ./create-github-release.sh.
 
 BEGIN { collecting = 0; section = ""; n = 0 }
 

@@ -85,40 +85,24 @@ sections (`-rc.*`, `-beta.*`, …) are merged, so each `### Added|Changed|Fixed`
 The `make-latest` input defaults to `auto`: a release is only marked as **Latest** if it is the highest stable version
 in the changelog, so maintenance releases of an older major (e.g. `3.36.0` after `4.6.0`) don't steal the badge.
 
-### Backfilling legacy releases
+Releases for versions published before this automation existed (`1.0.0` - `3.35.0`) were added retroactively, so the
+release list is complete. Their tags point at the release commit (usually the merge commit of the release PR), and
+because GitHub derives `created_at` from the tagged commit they keep their historic date and ordering – only
+`published_at` ("released this …") shows when they were backfilled.
 
-Versions released before the automation existed can be added afterwards with `scripts/backfill-github-releases.ts`. It
-reuses the action script (and therefore the same bodies and payloads), creates the releases as **drafts** first and
-publishes them in one batch. All commands are dry runs unless `--yes` is passed; a token with `contents: write` is
-required in `GITHUB_TOKEN` (or `GH_TOKEN`) for everything but the dry runs.
+To create a release manually (e.g. if CI ever misses one), run the action script locally with a token that has
+`contents: write`:
 
 ```bash
-# 1. What's missing? (npm state, existing tag, existing release, resolved commit per version)
-npm run backfill-github-releases -- inventory
-
-# 2. Create and push the missing tags (draft releases don't create tags)
-npm run backfill-github-releases -- tags --yes
-
-# 3. Create the missing releases as drafts, never marked as "Latest"
-npm run backfill-github-releases -- drafts --yes
-
-# 4. Publish all drafts in one batch (watchers get a single wave of notifications)
-npm run backfill-github-releases -- publish --yes
+INPUT_VERSION=4.6.0 \
+INPUT_SHA=main \
+INPUT_REPOSITORY=porsche-design-system/porsche-design-system \
+INPUT_CHANGELOG_PATH=packages/components/CHANGELOG.md \
+INPUT_DRY_RUN=true \
+GITHUB_TOKEN=$(gh auth token) \
+bash .github/actions/create-github-release/create-github-release.sh
 ```
 
-Useful flags: `--from=2.0.0` (lowest version), `--limit=5` (batch size), `--repo=owner/name`, `--remote=origin`,
-`--only-npm` (skip versions missing on the public npm registry – note that everything below `2.13.0` was published to an
-internal registry only).
-
-The commit a version is tagged at is resolved in descending confidence: existing tag → release commit (all historic
-message conventions are covered, and the merge commit of the release PR is preferred as it is the state on `main` the
-release was built from) → commit introducing the version into `packages/components/package.json` → newest commit up to
-the changelog date. The `inventory` command shows which strategy matched, and versions without a resolvable commit are
-skipped.
-
-Note: GitHub derives a release's `created_at` from the tagged commit, so backfilled releases keep their historic date
-and sort correctly in the release list. Only `published_at` ("released this …") reflects the moment the draft was
-published.
-
-Note: a release binds to an already existing tag, which is why `tags` runs before `drafts`. No `target_commitish` is
-sent in that case – GitHub answers `404 Not Found` when a plain commit SHA is passed for a tag that already exists.
+`INPUT_DRY_RUN=true` only prints the payload; drop it to actually create the release. `INPUT_SHA` may be left empty when
+the tag already exists – GitHub answers `404 Not Found` when a plain commit SHA is passed as `target_commitish` for an
+existing tag, so it is omitted from the payload in that case.
