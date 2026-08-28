@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { baselineEffort, DETECTIONS, VALUE_RESOLUTIONS } from '@skills/audit-deprecations/grading';
 import { AUDIT_KIND } from '@skills/audit-deprecations/reportSchema';
+import { REPORT_TEMPLATE_FILE } from '@skills/audit-deprecations/reportTemplate';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
 import { USAGE_KINDS } from '@skills/knowledge/deprecations/types';
 import { DEPRECATIONS_REFERENCE } from '@skills/knowledge/skillMd';
@@ -38,12 +39,16 @@ const findingOf = (framework: (typeof FRAMEWORKS)[number]) => schemaOf(framework
 describe('audit-deprecations skill', () => {
   for (const framework of FRAMEWORKS) {
     describe(`${framework} tree`, () => {
-      it('ships exactly SKILL.md and the report schema', () => {
+      it('ships SKILL.md, the report schema and the Markdown template', () => {
         // The method is one self-contained file: a reference an agent may or may not open is a
-        // reference it can answer from memory instead. The schema is the exception, because the
-        // agent validates against it rather than reads it.
+        // reference it can answer from memory instead. The two exceptions are the artifacts the agent
+        // produces its reports *against* — it validates the JSON against the schema and renders the
+        // Markdown against the template — and neither is prose it could substitute recall for.
         expect(fs.existsSync(treeFile(framework, 'SKILL.md'))).toBe(true);
-        expect(fs.readdirSync(treeFile(framework, 'references'))).toStrictEqual(['report.schema.json']);
+        expect(fs.readdirSync(treeFile(framework, 'references')).sort()).toStrictEqual([
+          'report-template.md',
+          'report.schema.json',
+        ]);
       });
 
       it('names itself pds-audit-deprecations-<framework> in its frontmatter', () => {
@@ -572,6 +577,110 @@ describe('audit-deprecations skill', () => {
         const skillMd = read(framework, 'SKILL.md');
         expect(skillMd).toContain('Re-enumerate eligible files in each included package');
         expect(skillMd).toContain('visited or appears in `coverage.skippedFiles`');
+      });
+
+      it('renders the Markdown against a template rather than composing it per run', () => {
+        // The JSON had a schema and the Markdown had nothing, so its shape was the model's to choose
+        // — and the Markdown is the file a user actually opens. Two runs of the same project sectioned
+        // their reports differently, which is not something a reader can even see is happening.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain(`[\`${REPORT_TEMPLATE_FILE}\`](${REPORT_TEMPLATE_FILE})`);
+        expect(fs.existsSync(treeFile(framework, REPORT_TEMPLATE_FILE))).toBe(true);
+      });
+
+      it('renders a section for every top-level part of the report', () => {
+        // A section the template forgets is a part of the JSON no reader of the Markdown ever sees.
+        const template = read(framework, REPORT_TEMPLATE_FILE);
+        for (const heading of [
+          '## Scope',
+          '## Coverage',
+          '## Summary',
+          '## Findings',
+          '## Manual follow-ups',
+          '## How to act on this report',
+        ]) {
+          expect(template, `the template renders no ${heading} section`).toContain(`\n${heading}\n`);
+        }
+      });
+
+      it('places a JSON path behind every rendered value, so nothing can be written from recall', () => {
+        // Placeholders name the field rather than describing the value, which is what makes a line in
+        // the report traceable to the field it came from — and what a fix skill reads it back through.
+        const template = read(framework, REPORT_TEMPLATE_FILE);
+        for (const jsonPath of [
+          '<audit.runId>',
+          '<audit.pdsVersion>',
+          '<audit.generatedAt>',
+          '<project.root>',
+          '<scope.includedPaths[]>',
+          '<scope.excludedPaths[].reason>',
+          '<summary.result>',
+          '<coverage.skippedFiles[].reason>',
+          '<coverage.limitations[]>',
+          '<findings[].ruleId>',
+          '<findings[].usageKind>',
+          '<findings[].title>',
+          '<findings[].confidence>',
+          '<findings[].baselineEffort>',
+          '<findings[].observedEffort>',
+          '<findings[].effortRationale>',
+          '<findings[].deprecationMessage>',
+          '<findings[].remediation.instruction>',
+          '<findings[].remediation.replacement.from>',
+          '<findings[].evidence[].detection>',
+          '<findings[].evidence[].valueResolution>',
+          '<findings[].evidence[].snippet>',
+          '<findings[].evidence[].anchor.snippet>',
+          '<findings[].sources[].reference>',
+          '<manualFollowUps[].subject>',
+          '<manualFollowUps[].ruleId>',
+          '<manualFollowUps[].reason>',
+          '<manualFollowUps[].evidence[].snippet>',
+        ]) {
+          expect(template, `the template renders nothing for ${jsonPath}`).toContain(jsonPath);
+        }
+      });
+
+      it('gives every list an empty-state sentence, so an empty section is not a missing one', () => {
+        // A dropped section and an empty one look identical in a rendered report, and the difference
+        // is the whole meaning: "nothing was skipped" versus "coverage was never written down".
+        const template = read(framework, REPORT_TEMPLATE_FILE);
+        for (const sentence of [
+          'Nothing was excluded.',
+          'No eligible files were skipped.',
+          'No limitations to report.',
+          'No deprecated usage was found.',
+          'No manual follow-ups.',
+        ]) {
+          expect(template, `the template gives no empty state for "${sentence}"`).toContain(sentence);
+        }
+      });
+
+      it('qualifies a source with the knowledge skill it is relative to', () => {
+        // The JSON stores the reference relative to the knowledge skill's root, so the bare path in
+        // the Markdown named no base directory — a reader could not open it without knowing the
+        // convention, and it read as a path in the audited project.
+        expect(read(framework, REPORT_TEMPLATE_FILE)).toContain(
+          `\`${getSkillName('knowledge', framework)}/<findings[].sources[].reference>\``
+        );
+      });
+
+      it('sends a fix to both the index and the reference, which answer different questions', () => {
+        // The index is keyed by rule id and is the only thing that establishes an API is still
+        // deprecated; the per-component reference is the only thing that shows how the replacement is
+        // actually written. Naming just the index left the `Sources` line on every finding with no
+        // part to play in acting on the report.
+        const template = read(framework, REPORT_TEMPLATE_FILE);
+        expect(template).toContain('Re-check the rule id against the deprecation index');
+        expect(template).toContain('the reference the finding lists under **Sources**');
+      });
+
+      it('keeps anything the JSON does not carry out of the Markdown', () => {
+        // The git-ignore hint used to be written into the report, where it was the one paragraph no
+        // field backed — and an escape hatch of that kind is where a report starts getting padded.
+        const skillMd = read(framework, 'SKILL.md');
+        expect(skillMd).toContain('Nothing goes in the Markdown that is not in the JSON');
+        expect(skillMd).toContain('in your reply, never in the report');
       });
 
       it('limits a Tailwind redefinition to the scope where its theme block applies', () => {

@@ -7,6 +7,7 @@ import type { Framework } from '../shared/skillTree';
 import { localPorscheDesignSystemVersion } from '../shared/version';
 import { baselineEffort, DETECTIONS, VALUE_RESOLUTIONS } from './grading';
 import { REPORT_SCHEMA_FILE, REPORT_SCHEMA_VERSION } from './reportSchema';
+import { REPORT_TEMPLATE_FILE } from './reportTemplate';
 
 /**
  * Builds the skill's `SKILL.md` — the whole method, in one file.
@@ -610,22 +611,27 @@ const renderOutput = (framework: Framework): string =>
       'is the action plan — there is no separate one. The final tiebreak is what makes two runs of an unchanged ' +
       'project produce the same report, so it can be diffed across releases.',
     '',
-    'The Markdown is a rendering of the JSON, so **compute every number in it** — how many findings, how many ' +
-      'locations, how many follow-ups — from the arrays you just validated. Never write a count from memory: a ' +
-      'number that disagrees with the list under it discredits the whole report.',
+    'The Markdown is a rendering of that same validated data, written to the structure in ' +
+      `[\`${REPORT_TEMPLATE_FILE}\`](${REPORT_TEMPLATE_FILE}). Open it and follow it — the sections, their order, ` +
+      'the per-finding shape and the sentence an empty section carries are all fixed there, so every run produces ' +
+      'the same document and a reader, or an agent later asked to apply the report, knows where to look. Compute ' +
+      'every number in it — how many findings, how many locations, how many follow-ups — from the arrays you just ' +
+      'validated. Never write a count from memory: a number that disagrees with the list under it discredits the ' +
+      'whole report.',
     '',
-    'End the Markdown with a **How to act on this report** section, so the file still explains itself when it is ' +
-      'shared or read weeks later. State that it describes PDS `' +
-      localPorscheDesignSystemVersion +
-      '` and is only valid for that version; that an agent can be asked to apply the findings, in the order given, ' +
-      'using each `remediation` and re-checking each rule against the deprecation index first; that manual ' +
-      'follow-ups are for a human and must not be fixed automatically; and that re-running this audit is how the ' +
-      'work is verified.',
+    'Nothing goes in the Markdown that is not in the JSON. Anything else worth saying belongs in your reply to the ' +
+      'user.',
+    '',
+    "The template's closing **How to act on this report** section stays in the report, so the file still explains " +
+      'itself when it is shared or read weeks later: it names the version the report is only valid for, sends an ' +
+      'agent applying the findings back to the deprecation index for the rule and to the knowledge-skill reference ' +
+      "the finding names for the replacement's current API, states that manual follow-ups are for a human and must " +
+      'not be fixed automatically, and that re-running this audit is how the work is verified.',
     '',
     'Run directories accumulate and this skill must not delete them. Check whether `.pds/` is already ignored ' +
-      '(`git check-ignore -q .pds`, read-only) and mention it **only** when it is not — and mention it as a ' +
-      'choice: reports can be tracked to diff findings across releases, or ignored as scratch. Never edit an ' +
-      'ignore file yourself.',
+      '(`git check-ignore -q .pds`, read-only) and mention it **only** when it is not — in your reply, never in ' +
+      'the report — and mention it as a choice: reports can be tracked to diff findings across releases, or ' +
+      'ignored as scratch. Never edit an ignore file yourself.',
   ].join('\n');
 
 const renderResultStates = (): string =>
