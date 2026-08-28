@@ -104,6 +104,18 @@ create it as a lightweight tag:
 git update-ref refs/tags/v4.6.0 <sha> "" && git push origin refs/tags/v4.6.0
 ```
 
+The naming convention is enforced by two repository rulesets (**Settings → Rules → Rulesets**), so no other tag can be
+created – neither by a person nor by CI:
+
+| Ruleset                           | Applies to                              | Effect                                                   |
+| --------------------------------- | --------------------------------------- | -------------------------------------------------------- |
+| `Tags: release naming convention` | all tags except `v[0-9]*.[0-9]*.[0-9]*` | blocks e.g. `components-js-v3.33.0`, `v0.13.0/core`      |
+| `Tags: no pre-release tags`       | all tags containing `-`                 | blocks e.g. `v4.7.0-rc.0`, `components-vue-v3.33.0-rc.0` |
+
+Both only restrict **creation**, so existing tags can still be deleted or moved. They have no bypass actors: to create
+an exceptional tag, set the ruleset to `Disabled` temporarily. Since `v{version}` tags are not matched by either
+ruleset, the release workflow needs no bypass permission.
+
 To create a release manually (e.g. if CI ever misses one), run the action script locally with a token that has
 `contents: write`:
 
