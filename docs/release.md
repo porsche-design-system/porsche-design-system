@@ -90,6 +90,20 @@ release list is complete. Their tags point at the release commit (usually the me
 because GitHub derives `created_at` from the tagged commit they keep their historic date and ordering – only
 `published_at` ("released this …") shows when they were backfilled.
 
+## Git tags
+
+The only tags in this repository are `v{MAJOR}.{MINOR}.{PATCH}` of stable releases – one per GitHub Release, nothing
+else. Pre-release versions (`-rc.*`, `-beta.*`, `-alpha.*`) are published to npm but are not tagged.
+
+The legacy per-package tags of the old release process (e.g. `components-js-v3.33.0`, `assets-v5.0.2`, `v0.13.0/core`,
+`v0.8.0/react`) as well as all pre-release tags were deleted, since the released code is fully covered by the
+`v{version}` tags and the npm registry. When a tag has to be recreated, use the commit of the corresponding release and
+create it as a lightweight tag:
+
+```bash
+git update-ref refs/tags/v4.6.0 <sha> "" && git push origin refs/tags/v4.6.0
+```
+
 To create a release manually (e.g. if CI ever misses one), run the action script locally with a token that has
 `contents: write`:
 
