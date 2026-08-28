@@ -266,7 +266,7 @@ stages:
                   run_check npm run build:generateTokensMeta --workspace=@porsche-design-system/tokens-meta || exit $?
                   run_check npm run test:unit:tokens-meta || exit $?
                   run_check npm run test:unit:shared || exit $?
-                  run_check npm run test:unit:skill || exit $?
+                  run_check npm run test:unit:skills || exit $?
                   run_check npm run test:unit:storefront || exit $?
                   run_check npm run test:unit:utilities || exit $?
             - name: dependency-metadata-after
