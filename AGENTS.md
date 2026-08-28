@@ -112,6 +112,16 @@ Key test files:
 
 See [`docs/coding-standards-and-guidelines.md`](docs/coding-standards-and-guidelines.md) for details.
 
+## Changelog
+
+Consumer-facing changes are documented in [`packages/components/CHANGELOG.md`](packages/components/CHANGELOG.md) under
+`[Unreleased]`. [`docs/changelog.md`](docs/changelog.md) defines what belongs there, which section an entry goes in, and
+how entries are worded — it is the single source of truth for both humans and agents.
+
+- Run the `update-changelog` skill to reconcile the changelog with the current branch
+- When reviewing a pull request, apply the `.github/skills/code-review-changelog` skill — including when the pull
+  request does not touch the changelog at all, since a missing entry is the most common error
+
 ## Accessibility (WCAG 2.2 AA — Non-negotiable)
 
 All UI code must:

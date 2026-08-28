@@ -143,7 +143,17 @@ packages/components/src/components/{name}/
 - **Don't** remove focus outlines without providing accessible alternatives
 - **Do** use Docker for VRT to match CI environment
 - **Do** check `docs/dependencies.md` before upgrading packages
+- **Do** document consumer-facing changes in `packages/components/CHANGELOG.md` following `docs/changelog.md`
 - **Do** follow `docs/runbooks/dependency-updates-agent.md` for the recurring automated npm dependency update task
+
+## Changelog
+
+Consumer-facing changes are documented in `packages/components/CHANGELOG.md` under `[Unreleased]`. The rules for what
+belongs there and how entries are worded are in `docs/changelog.md`.
+
+When performing a code review, always apply the `.github/skills/code-review-changelog` skill to check whether the
+changelog was updated correctly for the changes in the pull request — including when the pull request does not touch
+`packages/components/CHANGELOG.md` at all.
 
 ## Accessibility (Critical)
 
