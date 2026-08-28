@@ -110,9 +110,10 @@ Useful flags: `--from=2.0.0` (lowest version), `--limit=5` (batch size), `--repo
 `--only-npm` (skip versions missing on the public npm registry – note that everything below `2.13.0` was published to an
 internal registry only).
 
-The commit a version is tagged at is resolved in descending confidence: existing tag → release commit (see the message
-conventions above) → commit introducing the version into `packages/components/package.json` → newest commit up to the
-changelog date. The `inventory` command shows which strategy matched, and versions without a resolvable commit are
+The commit a version is tagged at is resolved in descending confidence: existing tag → release commit (all historic
+message conventions are covered, and the merge commit of the release PR is preferred as it is the state on `main` the
+release was built from) → commit introducing the version into `packages/components/package.json` → newest commit up to
+the changelog date. The `inventory` command shows which strategy matched, and versions without a resolvable commit are
 skipped.
 
 Note: GitHub sets the release date to the moment of publishing; backfilled releases therefore show the current date,

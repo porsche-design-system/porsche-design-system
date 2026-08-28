@@ -38,11 +38,19 @@ const GITHUB_API_VERSION = '2026-03-10';
 // Historic release commit messages of the components packages (see docs/release.md), e.g.
 // "Release Porsche Design System Components (JS/Angular/React) v1.0.0 | sas" (2020)
 // "Release Porsche Design System - Components (JS/Angular/React) 2.0.2 | as / bh" (no "v" prefix)
+// "Release Porsche Design System - Components (JS/Angular/React) v2.11.0| mh" (no space before "|")
 // "Release Porsche Design System - Components (JS/Angular/React/Vue) v4.0.0 | hj / sas"
 // "Release Porsche Design System v4.6.0 | hj"
+// "feat: release components-v2.13.0 | sas" / "feat: prepare release v2.14.0 | sas | #1888"
 // Releases of other packages ("... - Assets v1.0.0", "... - Utilities v1.0.0") must not match.
-const getReleaseCommitPattern = (version: string): string =>
-  `^Release Porsche Design System( -)?( Components \\(JS/Angular/React(/Vue)?\\))? v?${escapeRegExp(version)}( |$)`;
+const getReleaseCommitPatterns = (version: string): string[] => {
+  const tail = `v?${escapeRegExp(version)}( |\\||$)`;
+
+  return [
+    `^Release Porsche Design System( -)?( Components \\(JS/Angular/React(/Vue)?\\))? ${tail}`,
+    `^(feat|chore)(\\([^)]*\\))?: (prepare )?release (components-)?${tail}`,
+  ];
+};
 // GitHub throttles bursts of write requests (secondary rate limit).
 const WRITE_REQUEST_DELAY = 1500;
 
@@ -218,7 +226,9 @@ const getSearchRefs = (): string[] =>
 /**
  * Resolves the commit a version was released from. Strategies in descending confidence:
  * 1. an already existing tag (v1.x and v4.x are tagged, v1.5.0 - v3.35.0 aren't)
- * 2. the release commit itself (see docs/release.md for the message convention)
+ * 2. the release commit itself (see docs/release.md for the message convention). Since git matches
+ *    `--grep` per line, the merge commit of the release PR usually wins over the release commit it
+ *    contains – which is what we want, as that is the state on main the release was built from.
  * 3. the commit introducing the version into `packages/components/package.json`
  * 4. the newest commit up to the changelog date (imprecise, but better than a gap in the release list)
  */
@@ -233,17 +243,19 @@ const resolveSha = (entry: ChangelogEntry, existingTags: Set<string>): { sha?: s
   }
 
   for (const ref of getSearchRefs()) {
-    const releaseCommitSha = tryGit([
-      'log',
-      ref,
-      '--max-count=1',
-      '--format=%H',
-      '--extended-regexp',
-      `--grep=${getReleaseCommitPattern(entry.version)}`,
-    ]);
+    for (const pattern of getReleaseCommitPatterns(entry.version)) {
+      const releaseCommitSha = tryGit([
+        'log',
+        ref,
+        '--max-count=1',
+        '--format=%H',
+        '--extended-regexp',
+        `--grep=${pattern}`,
+      ]);
 
-    if (isCommit(releaseCommitSha)) {
-      return { sha: releaseCommitSha, strategy: 'release-commit' };
+      if (isCommit(releaseCommitSha)) {
+        return { sha: releaseCommitSha, strategy: 'release-commit' };
+      }
     }
   }
 
