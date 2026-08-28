@@ -116,5 +116,9 @@ release was built from) → commit introducing the version into `packages/compon
 the changelog date. The `inventory` command shows which strategy matched, and versions without a resolvable commit are
 skipped.
 
-Note: GitHub sets the release date to the moment of publishing; backfilled releases therefore show the current date,
-while the changelog and the tagged commit carry the original one.
+Note: GitHub derives a release's `created_at` from the tagged commit, so backfilled releases keep their historic date
+and sort correctly in the release list. Only `published_at` ("released this …") reflects the moment the draft was
+published.
+
+Note: a release binds to an already existing tag, which is why `tags` runs before `drafts`. No `target_commitish` is
+sent in that case – GitHub answers `404 Not Found` when a plain commit SHA is passed for a tag that already exists.

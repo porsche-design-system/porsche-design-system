@@ -70,6 +70,7 @@ type BackfillCandidate = ChangelogEntry & {
   sha?: string;
   strategy: ShaStrategy;
   tagExists: boolean;
+  localTagExists: boolean;
   releaseState: ReleaseState;
   publishedOnNpm: boolean;
 };
@@ -152,10 +153,16 @@ const getPublishedNpmVersions = async (): Promise<Set<string>> => {
   return new Set(Object.keys(versions));
 };
 
-const getExistingTags = (): Set<string> => {
-  tryGit(['fetch', '--tags', '--quiet', remote]); // local tags may be stale
-  return new Set(tryGit(['tag', '--list', 'v*']).split('\n').filter(Boolean));
-};
+const getLocalTags = (): Set<string> => new Set(tryGit(['tag', '--list', 'v*']).split('\n').filter(Boolean));
+
+/** Tags on the remote – authoritative, since a release can only bind to a tag GitHub knows. */
+const getRemoteTags = (): Set<string> =>
+  new Set(
+    tryGit(['ls-remote', '--tags', remote])
+      .split('\n')
+      .map((line) => line.split('refs/tags/')[1])
+      .filter((tag) => tag !== undefined && !tag.endsWith('^{}'))
+  );
 
 const githubRequest = async <T>(path: string, init?: RequestInit): Promise<T> => {
   if (!token) {
@@ -287,7 +294,8 @@ const resolveSha = (entry: ChangelogEntry, existingTags: Set<string>): { sha?: s
 
 const getCandidates = async (): Promise<BackfillCandidate[]> => {
   const [publishedVersions, existingReleases] = await Promise.all([getPublishedNpmVersions(), getExistingReleases()]);
-  const existingTags = getExistingTags();
+  const remoteTags = getRemoteTags();
+  const localTags = getLocalTags();
 
   return getStableChangelogEntries()
     .filter((entry) => semver.gte(entry.version, minVersion))
@@ -298,9 +306,10 @@ const getCandidates = async (): Promise<BackfillCandidate[]> => {
 
       return {
         ...entry,
-        ...resolveSha(entry, existingTags),
+        ...resolveSha(entry, localTags),
         tagName,
-        tagExists: existingTags.has(tagName),
+        tagExists: remoteTags.has(tagName),
+        localTagExists: localTags.has(tagName),
         releaseState: release ? (release.draft ? 'draft' : 'published') : 'none',
         publishedOnNpm: publishedVersions.has(entry.version),
       } satisfies BackfillCandidate;
@@ -349,14 +358,17 @@ const runTags = async (): Promise<void> => {
   const candidates = getMissingCandidates(await getCandidates()).filter((candidate) => !candidate.tagExists);
 
   if (candidates.length === 0) {
-    console.log('No tags to create – all backfill candidates are already tagged.');
+    console.log('No tags to create – all backfill candidates are already tagged on the remote.');
     return;
   }
 
-  for (const { tagName, sha, strategy } of candidates) {
-    console.log(`${apply ? 'Creating' : '[dry-run] Would create'} tag ${tagName} -> ${sha?.slice(0, 8)} (${strategy})`);
+  for (const { tagName, sha, strategy, localTagExists } of candidates) {
+    const action = localTagExists ? 'Pushing existing local tag' : 'Creating tag';
+    console.log(
+      `${apply ? action : `[dry-run] Would ${action.toLowerCase()}`} ${tagName} -> ${sha?.slice(0, 8)} (${strategy})`
+    );
 
-    if (apply) {
+    if (apply && !localTagExists) {
       // "update-ref" instead of "git tag": creates the same lightweight tag the GitHub API creates,
       // without running into "tag.gpgsign=true" (which would turn it into an annotated tag and open
       // an editor for the tag message). The empty <oldvalue> asserts the ref doesn't exist yet.
@@ -383,16 +395,26 @@ const runTags = async (): Promise<void> => {
 
 const runDrafts = async (): Promise<void> => {
   const candidates = getMissingCandidates(await getCandidates());
+  const untagged = candidates.filter((candidate) => !candidate.tagExists);
+
+  if (untagged.length > 0) {
+    throw new Error(
+      `${untagged.length} version(s) have no tag on "${remote}" yet (e.g. ${untagged[0].tagName}). ` +
+        'Run the "tags --yes" command first – a release can only bind to an existing tag.'
+    );
+  }
 
   if (candidates.length === 0) {
     console.log('No draft releases to create – every version already has a release.');
     return;
   }
 
-  for (const { version, tagName, sha } of candidates) {
-    console.log(apply ? `Creating draft release ${tagName} ...` : `\n[dry-run] ${tagName} -> ${sha?.slice(0, 8)}`);
+  for (const { version, tagName } of candidates) {
+    console.log(apply ? `Creating draft release ${tagName} ...` : `\n[dry-run] ${tagName}`);
 
     // The action script is the single place building release bodies and API payloads.
+    // INPUT_SHA stays empty on purpose: the tag already exists, and GitHub answers "404 Not Found"
+    // when a plain commit SHA is passed as "target_commitish".
     execFileSync('bash', [CREATE_GITHUB_RELEASE_SH], {
       cwd: ROOT_DIR,
       encoding: 'utf8',
@@ -400,7 +422,7 @@ const runDrafts = async (): Promise<void> => {
       env: {
         ...process.env,
         INPUT_VERSION: version,
-        INPUT_SHA: sha as string,
+        INPUT_SHA: '',
         INPUT_REPOSITORY: repository,
         INPUT_CHANGELOG_PATH: changelogPath,
         INPUT_MAKE_LATEST: 'false',

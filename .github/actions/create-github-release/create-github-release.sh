@@ -17,9 +17,13 @@ set -o nounset
 set -o pipefail
 
 : "${INPUT_VERSION:?version input is required}"
-: "${INPUT_SHA:?sha input is required}"
 : "${INPUT_REPOSITORY:?repository input is required}"
 : "${INPUT_CHANGELOG_PATH:?changelog-path input is required}"
+
+# Commit the git tag is created at. Only needed when the tag doesn't exist yet (the CI case);
+# it must be a branch name or the SHA of a branch tip, otherwise the API answers "404 Not Found".
+# For an already existing tag (the backfill case) it is left empty and omitted from the payload.
+INPUT_SHA="${INPUT_SHA:-}"
 
 # "auto" marks the release as latest only if it is the highest stable version in the
 # changelog. Without it, a maintenance release of an older major (e.g. 3.36.0 released
@@ -58,7 +62,7 @@ if [[ ! "${INPUT_DRAFT}" =~ ^(true|false)$ ]]; then
   exit 1
 fi
 
-echo "task: [$(date)] \"create_github_release\" ${GIT_TAG_NAME} -> ${INPUT_SHA} (${INPUT_REPOSITORY})"
+echo "task: [$(date)] \"create_github_release\" ${GIT_TAG_NAME} -> ${INPUT_SHA:-<existing tag>} (${INPUT_REPOSITORY})"
 
 # Idempotency: bail out if a release for this tag already exists.
 if [[ "${INPUT_DRY_RUN}" != "true" ]]; then
@@ -111,7 +115,8 @@ if [[ -z "${RELEASE_BODY}" ]]; then
   RELEASE_BODY="See [CHANGELOG.md](https://github.com/${INPUT_REPOSITORY}/blob/${GIT_TAG_NAME}/${INPUT_CHANGELOG_PATH}) for details."
 fi
 
-# Build JSON payload safely via jq.
+# Build JSON payload safely via jq. "target_commitish" is only sent when a sha is given,
+# because for an existing tag GitHub rejects a plain commit SHA with "404 Not Found".
 PAYLOAD=$(jq -n \
   --arg tag "${GIT_TAG_NAME}" \
   --arg name "${GIT_TAG_NAME}" \
@@ -121,13 +126,12 @@ PAYLOAD=$(jq -n \
   --argjson draft "${INPUT_DRAFT}" \
   '{
     tag_name: $tag,
-    target_commitish: $target,
     name: $name,
     body: $body,
     draft: $draft,
     prerelease: false,
     make_latest: $makeLatest
-  }')
+  } + (if $target == "" then {} else { target_commitish: $target } end)')
 
 if [[ "${INPUT_DRY_RUN}" == "true" ]]; then
   echo "[dry-run] Payload for \"${GIT_TAG_NAME}\":"
@@ -135,12 +139,16 @@ if [[ "${INPUT_DRY_RUN}" == "true" ]]; then
   exit 0
 fi
 
-curl --fail-with-body -sS -X POST \
+if ! RESPONSE=$(curl --fail-with-body -sS -X POST \
   -H "Authorization: Bearer ${GITHUB_TOKEN}" \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2026-03-10" \
   "https://api.github.com/repos/${INPUT_REPOSITORY}/releases" \
-  -d "${PAYLOAD}" > /dev/null
+  -d "${PAYLOAD}"); then
+  echo "Failed to create GitHub Release \"${GIT_TAG_NAME}\":" >&2
+  echo "${RESPONSE}" >&2
+  exit 1
+fi
 
 if [[ "${INPUT_DRAFT}" == "true" ]]; then
   echo "Created draft GitHub Release \"${GIT_TAG_NAME}\" 📝"
