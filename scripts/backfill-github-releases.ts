@@ -357,7 +357,10 @@ const runTags = async (): Promise<void> => {
     console.log(`${apply ? 'Creating' : '[dry-run] Would create'} tag ${tagName} -> ${sha?.slice(0, 8)} (${strategy})`);
 
     if (apply) {
-      git(['tag', tagName, sha as string]);
+      // "update-ref" instead of "git tag": creates the same lightweight tag the GitHub API creates,
+      // without running into "tag.gpgsign=true" (which would turn it into an annotated tag and open
+      // an editor for the tag message). The empty <oldvalue> asserts the ref doesn't exist yet.
+      git(['update-ref', `refs/tags/${tagName}`, sha as string, '']);
     }
   }
 
