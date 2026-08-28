@@ -3,12 +3,12 @@
 # Creates a GitHub Release "v${INPUT_VERSION}" in ${INPUT_REPOSITORY} via the
 # GitHub REST API. The release POST also creates the underlying git tag at
 # ${INPUT_SHA} via the "tag_name" + "target_commitish" fields, so no separate
-# tag-creation step is required.
+# tag-creation step is required (except for drafts, which don't create tags).
 #
-# Only stable versions (no -rc/-beta/-alpha suffix) produce a release. The
-# body is built by merging the changelog section for the stable version with
-# all directly preceding pre-release sections of the same base version (so
-# e.g. 4.0.0 includes 4.0.0-rc.2, 4.0.0-rc.1, ...).
+# Only stable versions (no pre-release suffix) produce a release. The body is
+# built by merging the changelog section for the stable version with all directly
+# preceding pre-release sections of the same base version (so e.g. 4.0.0 includes
+# 4.0.0-rc.2, 4.0.0-rc.1, ...), see ./extract-release-body.awk.
 #
 # Idempotent: if a release for the tag already exists, the script exits 0.
 
@@ -20,11 +20,25 @@ set -o pipefail
 : "${INPUT_SHA:?sha input is required}"
 : "${INPUT_REPOSITORY:?repository input is required}"
 : "${INPUT_CHANGELOG_PATH:?changelog-path input is required}"
-: "${GITHUB_TOKEN:?github-token input is required}"
 
+# "auto" marks the release as latest only if it is the highest stable version in the
+# changelog. Without it, a maintenance release of an older major (e.g. 3.36.0 released
+# after 4.6.0) would steal the "Latest" badge.
+INPUT_MAKE_LATEST="${INPUT_MAKE_LATEST:-auto}"
+# Drafts are used by scripts/backfill-github-releases.ts to review legacy releases
+# before publishing them in one batch. Draft releases don't create the git tag.
+INPUT_DRAFT="${INPUT_DRAFT:-false}"
+# Dry run prints the request payload instead of calling the GitHub API (no token needed).
+INPUT_DRY_RUN="${INPUT_DRY_RUN:-false}"
+
+if [[ "${INPUT_DRY_RUN}" != "true" ]]; then
+  : "${GITHUB_TOKEN:?github-token input is required}"
+fi
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GIT_TAG_NAME="v${INPUT_VERSION}"
 
-if [[ "${INPUT_VERSION}" =~ -(rc|beta|alpha) ]]; then
+if [[ "${INPUT_VERSION}" == *-* ]]; then
   echo "Skipping GitHub Release for pre-release version \"${INPUT_VERSION}\"."
   exit 0
 fi
@@ -34,74 +48,54 @@ if [[ ! -f "${INPUT_CHANGELOG_PATH}" ]]; then
   exit 1
 fi
 
+if [[ ! "${INPUT_MAKE_LATEST}" =~ ^(auto|true|false)$ ]]; then
+  echo "Invalid make-latest input \"${INPUT_MAKE_LATEST}\" (expected \"auto\", \"true\" or \"false\")." >&2
+  exit 1
+fi
+
+if [[ ! "${INPUT_DRAFT}" =~ ^(true|false)$ ]]; then
+  echo "Invalid draft input \"${INPUT_DRAFT}\" (expected \"true\" or \"false\")." >&2
+  exit 1
+fi
+
 echo "task: [$(date)] \"create_github_release\" ${GIT_TAG_NAME} -> ${INPUT_SHA} (${INPUT_REPOSITORY})"
 
 # Idempotency: bail out if a release for this tag already exists.
-EXISTING_STATUS=$(curl -sS -o /dev/null -w '%{http_code}' \
-  -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-  -H "Accept: application/vnd.github+json" \
-  -H "X-GitHub-Api-Version: 2026-03-10" \
-  "https://api.github.com/repos/${INPUT_REPOSITORY}/releases/tags/${GIT_TAG_NAME}")
+if [[ "${INPUT_DRY_RUN}" != "true" ]]; then
+  EXISTING_STATUS=$(curl -sS -o /dev/null -w '%{http_code}' \
+    -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2026-03-10" \
+    "https://api.github.com/repos/${INPUT_REPOSITORY}/releases/tags/${GIT_TAG_NAME}")
 
-if [[ "${EXISTING_STATUS}" == "200" ]]; then
-  echo "GitHub Release \"${GIT_TAG_NAME}\" already exists – nothing to do."
-  exit 0
+  if [[ "${EXISTING_STATUS}" == "200" ]]; then
+    echo "GitHub Release \"${GIT_TAG_NAME}\" already exists – nothing to do."
+    exit 0
+  fi
 fi
 
-# Extract release body: starts at the heading "## [${INPUT_VERSION}]" and
-# continues through any subsequent pre-release headings of the same base
-# version (e.g. "## [4.0.0-rc.2]"); stops at the next stable heading or EOF.
-# Sections under "### Heading" (e.g. "### Added", "### Changed", "### Fixed")
-# from the stable version and all related pre-releases are merged so that each
-# heading appears only once in the resulting release body, with their items
-# concatenated in chronological (file) order.
-RELEASE_BODY=$(awk -v version="${INPUT_VERSION}" '
-  BEGIN { collecting = 0; section = ""; n = 0 }
-  /^## \[/ {
-    # Extract the version inside the first "[...]" pair on the heading line.
-    line = $0
-    sub(/^## \[/, "", line)
-    sub(/\].*$/, "", line)
-    v = line
-    if (collecting == 0) {
-      if (v == version) { collecting = 1; section = ""; next }
-      next
+# Resolve "auto": latest only if the changelog holds no higher stable version.
+MAKE_LATEST="${INPUT_MAKE_LATEST}"
+if [[ "${MAKE_LATEST}" == "auto" ]]; then
+  HIGHEST_STABLE_VERSION=$(awk '
+    /^## \[/ {
+      line = $0
+      sub(/^## \[/, "", line)
+      sub(/\].*$/, "", line)
+      if (line ~ /^[0-9]+\.[0-9]+\.[0-9]+$/) print line
     }
-    # Already collecting: stop at the next stable heading (no -rc/-beta/-alpha).
-    if (v !~ /-(rc|beta|alpha)/) { collecting = 0; next }
-    # Otherwise it is a related pre-release; keep its content but drop the heading.
-    section = ""
-    next
-  }
-  {
-    if (collecting != 1) next
-    if ($0 ~ /^### /) {
-      section = $0
-      if (!(section in seen)) {
-        seen[section] = 1
-        order[n++] = section
-      }
-      next
-    }
-    if (section == "") {
-      # Content before any "### " heading (rare); bucket under empty key.
-      if (!("" in seen)) { seen[""] = 1; order[n++] = "" }
-    }
-    bucket[section] = bucket[section] $0 ORS
-  }
-  END {
-    for (i = 0; i < n; i++) {
-      key = order[i]
-      body = bucket[key]
-      # Trim leading/trailing blank lines from each bucket.
-      sub(/^(\n)+/, "", body)
-      sub(/[[:space:]]+$/, "", body)
-      if (key != "") print key
-      if (body != "") print body
-      if (i < n - 1) print ""
-    }
-  }
-' "${INPUT_CHANGELOG_PATH}")
+  ' "${INPUT_CHANGELOG_PATH}" | sort -V | tail -n 1)
+
+  if [[ "${HIGHEST_STABLE_VERSION}" == "${INPUT_VERSION}" ]]; then
+    MAKE_LATEST="true"
+  else
+    MAKE_LATEST="false"
+  fi
+
+  echo "Resolved make-latest=\"${MAKE_LATEST}\" (highest stable version in changelog: \"${HIGHEST_STABLE_VERSION}\")."
+fi
+
+RELEASE_BODY=$(awk -v version="${INPUT_VERSION}" -f "${SCRIPT_DIR}/extract-release-body.awk" "${INPUT_CHANGELOG_PATH}")
 
 # Trim leading/trailing blank lines.
 RELEASE_BODY=$(printf '%s\n' "${RELEASE_BODY}" | awk '
@@ -123,23 +117,33 @@ PAYLOAD=$(jq -n \
   --arg name "${GIT_TAG_NAME}" \
   --arg body "${RELEASE_BODY}" \
   --arg target "${INPUT_SHA}" \
+  --arg makeLatest "${MAKE_LATEST}" \
+  --argjson draft "${INPUT_DRAFT}" \
   '{
     tag_name: $tag,
     target_commitish: $target,
     name: $name,
     body: $body,
-    draft: false,
+    draft: $draft,
     prerelease: false,
-    make_latest: "true"
+    make_latest: $makeLatest
   }')
+
+if [[ "${INPUT_DRY_RUN}" == "true" ]]; then
+  echo "[dry-run] Payload for \"${GIT_TAG_NAME}\":"
+  echo "${PAYLOAD}"
+  exit 0
+fi
 
 curl --fail-with-body -sS -X POST \
   -H "Authorization: Bearer ${GITHUB_TOKEN}" \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2026-03-10" \
   "https://api.github.com/repos/${INPUT_REPOSITORY}/releases" \
-  -d "${PAYLOAD}"
+  -d "${PAYLOAD}" > /dev/null
 
-echo "Created GitHub Release \"${GIT_TAG_NAME}\" 🚀"
-
-
+if [[ "${INPUT_DRAFT}" == "true" ]]; then
+  echo "Created draft GitHub Release \"${GIT_TAG_NAME}\" 📝"
+else
+  echo "Created GitHub Release \"${GIT_TAG_NAME}\" 🚀"
+fi

@@ -72,3 +72,48 @@ release can be published.
 
 1. Write a Slack notification by coping last entry of `./packages/components-js/CHANGELOG.md` in public Porsche Design
    System Slack channel
+
+## GitHub Releases
+
+Every stable release is published as a
+[GitHub Release](https://github.com/porsche-design-system/porsche-design-system/releases) by the `Release` workflow via
+`.github/actions/create-github-release`. The action creates the git tag `v{version}` at the released commit and builds
+the release body from `./packages/components/CHANGELOG.md`: the section of the stable version and all its pre-release
+sections (`-rc.*`, `-beta.*`, …) are merged, so each `### Added|Changed|Fixed` heading appears once (see
+`extract-release-body.awk`). Pre-release versions don't get a release.
+
+The `make-latest` input defaults to `auto`: a release is only marked as **Latest** if it is the highest stable version
+in the changelog, so maintenance releases of an older major (e.g. `3.36.0` after `4.6.0`) don't steal the badge.
+
+### Backfilling legacy releases
+
+Versions released before the automation existed can be added afterwards with `scripts/backfill-github-releases.ts`. It
+reuses the action script (and therefore the same bodies and payloads), creates the releases as **drafts** first and
+publishes them in one batch. All commands are dry runs unless `--yes` is passed; a token with `contents: write` is
+required in `GITHUB_TOKEN` (or `GH_TOKEN`) for everything but the dry runs.
+
+```bash
+# 1. What's missing? (npm state, existing tag, existing release, resolved commit per version)
+npm run backfill-github-releases -- inventory
+
+# 2. Create and push the missing tags (draft releases don't create tags)
+npm run backfill-github-releases -- tags --yes
+
+# 3. Create the missing releases as drafts, never marked as "Latest"
+npm run backfill-github-releases -- drafts --yes
+
+# 4. Publish all drafts in one batch (watchers get a single wave of notifications)
+npm run backfill-github-releases -- publish --yes
+```
+
+Useful flags: `--from=2.0.0` (lowest version), `--limit=5` (batch size), `--repo=owner/name`, `--remote=origin`,
+`--only-npm` (skip versions missing on the public npm registry – note that everything below `2.13.0` was published to an
+internal registry only).
+
+The commit a version is tagged at is resolved in descending confidence: existing tag → release commit (see the message
+conventions above) → commit introducing the version into `packages/components/package.json` → newest commit up to the
+changelog date. The `inventory` command shows which strategy matched, and versions without a resolvable commit are
+skipped.
+
+Note: GitHub sets the release date to the moment of publishing; backfilled releases therefore show the current date,
+while the changelog and the tagged commit carry the original one.
