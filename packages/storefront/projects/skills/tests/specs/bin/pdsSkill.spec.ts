@@ -14,7 +14,9 @@ const PACKAGE_NAMES = Object.fromEntries(
 ) as Record<SkillFramework, string>;
 const DEFAULT_PACKAGE_NAME = PACKAGE_NAMES.js;
 const DEFAULT_SKILL_NAME = 'pds-knowledge-js';
-const canTestPosixPermissions = process.platform !== 'win32' && process.getuid?.() !== 0;
+const isWindows = process.platform === 'win32';
+const canTestPosixPermissions = !isWindows && process.getuid?.() !== 0;
+const canTestRelativeLinks = !isWindows;
 
 const fixtures: string[] = [];
 
@@ -48,7 +50,9 @@ const createFixture = ({
   skillMdEntryType?: 'file' | 'directory';
   skillMdContent?: string;
 } = {}): Fixture => {
-  const root = fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-'));
+  // Resolve symlinked ancestors (e.g. /var -> /private/var on macOS) so the fixture paths match
+  // the cwd the bin observes, which is what its relative link targets are computed from.
+  const root = fs.realpathSync(fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-')));
   fixtures.push(root);
 
   const binDir = path.join(root, 'executor', 'bin');
@@ -129,7 +133,7 @@ const createFixtureWithTwoSkills = (): {
   skillNames: [string, string];
   run: (args?: string[]) => string;
 } => {
-  const root = fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-multi-'));
+  const root = fs.realpathSync(fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-multi-')));
   fixtures.push(root);
 
   const binDir = path.join(root, 'executor', 'bin');
@@ -201,6 +205,93 @@ describe('pds-skill bin', () => {
 
     expect(fs.readlinkSync(linkPath)).toBe(firstTarget);
     expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+  });
+
+  it.runIf(canTestRelativeLinks)('should create a relative link target', () => {
+    const { run, linkPath, skillDir } = createFixture();
+
+    run();
+
+    const target = fs.readlinkSync(linkPath);
+    expect(path.isAbsolute(target)).toBe(false);
+    expect(target).toBe(path.join('..', '..', 'node_modules', DEFAULT_PACKAGE_NAME, 'skills', DEFAULT_SKILL_NAME));
+    expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+  });
+
+  it.runIf(canTestRelativeLinks)('should compute the target from a symlinked destination directory', () => {
+    const { run, projectDir, skillName, skillDir } = createFixture();
+    const realDest = path.join(projectDir, '.real-skills');
+    const symlinkedDest = path.join(projectDir, '.linked-skills');
+    fs.mkdirSync(realDest);
+    fs.symlinkSync(realDest, symlinkedDest, 'dir');
+
+    run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', symlinkedDest] });
+
+    const linkPath = path.join(realDest, skillName);
+    expect(fs.readlinkSync(linkPath)).toBe(path.relative(realDest, skillDir as string));
+    expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+  });
+
+  it.runIf(canTestRelativeLinks)('should use an absolute target when a destination symlink leaves the project', () => {
+    const { run, projectDir, skillName, skillDir } = createFixture();
+    const outsideDest = fs.realpathSync(fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-outside-')));
+    fixtures.push(outsideDest);
+    const symlinkedDest = path.join(projectDir, '.linked-skills');
+    fs.symlinkSync(outsideDest, symlinkedDest, 'dir');
+
+    run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', symlinkedDest] });
+
+    const linkPath = path.join(outsideDest, skillName);
+    expect(fs.readlinkSync(linkPath)).toBe(skillDir);
+    expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+  });
+
+  it.runIf(isWindows)('should create an absolute junction target on Windows', () => {
+    const { run, linkPath, skillDir } = createFixture();
+
+    run();
+
+    expect(path.resolve(fs.readlinkSync(linkPath))).toBe(path.resolve(skillDir as string));
+  });
+
+  it.runIf(canTestRelativeLinks)('should migrate a pre-existing absolute symlink to a relative one', () => {
+    const { run, linkPath, skillDir } = createFixture();
+    fs.mkdirSync(path.dirname(linkPath), { recursive: true });
+    fs.symlinkSync(skillDir as string, linkPath, 'dir');
+
+    const output = run();
+
+    expect(output).toContain('Linked Porsche Design System skill');
+    expect(output).not.toContain('already linked');
+    expect(path.isAbsolute(fs.readlinkSync(linkPath))).toBe(false);
+    expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+  });
+
+  it.runIf(canTestRelativeLinks)('should keep resolving after the project directory is moved', () => {
+    const { run, projectDir, skillName } = createFixture();
+
+    run();
+    const movedProjectDir = `${projectDir}-moved`;
+    fs.renameSync(projectDir, movedProjectDir);
+
+    const movedLinkPath = path.join(movedProjectDir, DEST, skillName);
+    expect(fs.realpathSync(movedLinkPath)).toBe(
+      fs.realpathSync(path.join(movedProjectDir, 'node_modules', DEFAULT_PACKAGE_NAME, 'skills', skillName))
+    );
+    expect(fs.readFileSync(path.join(movedLinkPath, 'SKILL.md'), 'utf8')).toContain('# marker');
+  });
+
+  it.runIf(canTestRelativeLinks)('should use an absolute target for a destination outside the project', () => {
+    const { run, skillName, skillDir } = createFixture();
+    const outsideDest = fs.realpathSync(fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-outside-')));
+    fixtures.push(outsideDest);
+
+    run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', outsideDest] });
+
+    const linkPath = path.join(outsideDest, skillName);
+    expect(fs.readlinkSync(linkPath)).toBe(skillDir);
+    expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+    expect(run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', outsideDest] })).toContain('already linked');
   });
 
   it('should repair a dangling symlink', () => {
@@ -404,7 +495,9 @@ describe('pds-skill bin', () => {
 
     run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', absoluteDest] });
 
-    expect(fs.realpathSync(path.join(absoluteDest, skillName))).toBe(fs.realpathSync(skillDir as string));
+    const linkPath = path.join(absoluteDest, skillName);
+    expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+    expect(path.isAbsolute(fs.readlinkSync(linkPath))).toBe(isWindows);
   });
 
   it('should support short package and location options', () => {

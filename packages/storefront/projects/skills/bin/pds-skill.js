@@ -12,6 +12,9 @@
 //
 //   pds-skill --package <package> --location <dir> [--skill <name>...]
 //
+// The links point at the package with a relative target so they stay valid in every clone and can
+// be committed. Windows junctions are the exception; see the comment in main().
+//
 // This is the canonical source copied into all four wrapper package distributions by their
 // `build:subPackages:skill:bin` steps.
 
@@ -158,7 +161,10 @@ const preflightDestLink = (linkPath, show) => {
   }
 };
 
-/** Resolve the installed package directory by walking up from cwd. Fails if not found. */
+/**
+ * Resolve the installed package directory by walking up from cwd. Fails if not found.
+ * Returns the package directory together with the project root holding its `node_modules`.
+ */
 const resolvePackageDir = (packageName, cwd) => {
   if (!SUPPORTED_PACKAGES.includes(packageName)) {
     fail(`Unsupported package: ${packageName}\n${USAGE}`);
@@ -174,7 +180,7 @@ const resolvePackageDir = (packageName, cwd) => {
       if (installedName !== packageName) {
         fail(`Expected ${packageName} at ${packageDir}, but found ${installedName || 'a package without a name'}.`);
       }
-      return packageDir;
+      return { packageDir, projectRoot: dir };
     }
 
     const parent = path.dirname(dir);
@@ -205,6 +211,21 @@ const discoverSkillNames = (skillsDir) => {
     .sort();
 };
 
+/** Whether target is parentDir itself or lives below it. */
+const isInside = (parentDir, target) => {
+  const rel = path.relative(parentDir, target);
+  return rel === '' || (rel !== '..' && !rel.startsWith(`..${path.sep}`) && !path.isAbsolute(rel));
+};
+
+/** Resolve symlinked ancestors. Falls back to the given path when it cannot be resolved. */
+const resolveRealPath = (target) => {
+  try {
+    return fs.realpathSync(target);
+  } catch {
+    return target;
+  }
+};
+
 const main = () => {
   const options = parseOptions(process.argv.slice(2));
   if (options.help) {
@@ -228,7 +249,7 @@ const main = () => {
   const destArg = options.location;
   const requestedSkills = options.skill ?? [];
 
-  const packageDir = resolvePackageDir(packageName, cwd);
+  const { packageDir, projectRoot } = resolvePackageDir(packageName, cwd);
   const skillsDir = path.join(packageDir, 'skills');
   const discovered = discoverSkillNames(skillsDir);
 
@@ -283,11 +304,33 @@ const main = () => {
     preflightDestLink(path.join(destDir, skillName), show);
   }
 
-  // All preflights passed — perform link operations.
+  // The links are created inside the resolved destination, so a relative target has to be computed
+  // from there: only a path without symlinked ancestors resolves its `..` segments in the file
+  // system exactly like path.relative() does lexically.
+  const realDestDir = resolveRealPath(destDir);
+
+  // Relative targets stay valid when the project is moved, cloned or checked out somewhere else,
+  // which is what makes the links portable enough to be committed. Two deliberate exceptions:
+  // - Windows: Node normalizes the target of a 'junction' to an absolute path, so a relative
+  //   junction is impossible. A 'dir' symlink would support one but requires elevated privileges
+  //   or Developer Mode, so the junction with its absolute target is kept.
+  // - A destination outside the project does not move together with the package, so a relative
+  //   target would only add a long `../` chain without buying any portability.
   const linkType = process.platform === 'win32' ? 'junction' : 'dir';
+  const useRelativeTarget = linkType !== 'junction' && isInside(projectRoot, realDestDir);
+
+  // An existing absolute link resolves to the same directory as the desired relative one, so the
+  // raw target has to be compared to migrate links created by earlier versions.
+  const matchesDesiredTarget = (currentTarget, desiredTarget) =>
+    useRelativeTarget
+      ? path.normalize(currentTarget) === path.normalize(desiredTarget)
+      : path.resolve(realDestDir, currentTarget) === desiredTarget;
+
+  // All preflights passed — perform link operations.
   for (const skillName of selected) {
     const skillDir = path.join(skillsDir, skillName);
     const linkPath = path.join(destDir, skillName);
+    const linkTarget = useRelativeTarget ? path.relative(realDestDir, skillDir) : skillDir;
 
     // Idempotent: repoint an existing symlink (including a dangling one), but never touch a
     // real directory a user may have hand-maintained — the preflight above already rejected that.
@@ -301,20 +344,25 @@ const main = () => {
     }
 
     if (existingLink?.isSymbolicLink()) {
+      let currentTarget = null;
       try {
-        if (fs.realpathSync(linkPath) === fs.realpathSync(skillDir)) {
-          console.log(`Porsche Design System skill already linked: ${show(linkPath)} -> ${skillDir}`);
-          continue;
-        }
+        currentTarget = fs.readlinkSync(linkPath);
       } catch (error) {
-        if (error.code !== 'ENOENT') {
-          if (isPermissionError(error)) {
-            fail(`Cannot inspect ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
-          }
+        if (isPermissionError(error)) {
+          fail(`Cannot inspect ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
+        }
+        // ENOENT: vanished in the meantime. EINVAL: a reparse point Node cannot read as a link,
+        // which lstat still reports as a symlink on Windows. Both fall through to replace it.
+        if (error.code !== 'ENOENT' && error.code !== 'EINVAL') {
           throw error;
         }
-        // Dangling symlink — fall through to replace it.
       }
+
+      if (currentTarget !== null && matchesDesiredTarget(currentTarget, linkTarget)) {
+        console.log(`Porsche Design System skill already linked: ${show(linkPath)} -> ${skillDir}`);
+        continue;
+      }
+
       try {
         fs.rmSync(linkPath, { force: true });
       } catch (error) {
@@ -326,7 +374,7 @@ const main = () => {
     }
 
     try {
-      fs.symlinkSync(skillDir, linkPath, linkType);
+      fs.symlinkSync(linkTarget, linkPath, linkType);
     } catch (error) {
       if (process.platform === 'win32' && error.code === 'EPERM') {
         fail(

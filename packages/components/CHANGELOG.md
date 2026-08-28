@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `pds-skill`: Skill links are now created with a relative target on macOS and Linux, so they stay valid across
+  symlink-capable clones and in CI and can be committed. Re-run the command to migrate links created by an earlier
+  version. Windows keeps using directory junctions, which cannot be relative
+  ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
+
 ## [4.7.0-beta.0] - 2026-08-27
 
 ### Added
