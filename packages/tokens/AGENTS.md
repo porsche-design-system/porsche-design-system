@@ -5,9 +5,17 @@
 
 ## Overview
 
-This package is the source of truth for design tokens used throughout the design system. It publishes typed token
-exports for color, typography, spacing, motion, border, blur, gradient, breakpoint, and shadow values. Tokens are used
-in the `../styles/` package to define style declarations for Emotion, Tailwind, SCSS amd Vanilla-Extract.
+This package is the source of truth for design tokens used throughout the design system. It exposes typed token exports
+for color, typography, spacing, motion, border, blur, gradient, breakpoint, and shadow values. Tokens are used in the
+`../styles/` package to define style declarations for Emotion, Tailwind, SCSS amd Vanilla-Extract.
+
+Neither `@porsche-design-system/tokens` nor `@porsche-design-system/tokens-meta` is published to npm. Tokens reach
+consumers as the `./tokens` subpath of the wrapper packages, which copy `packages/tokens/dist`. **`tokens-meta` is
+copied nowhere** — `tokensMeta` and `tokenDeprecations` exist for the storefront docs and the skills generator, so
+changing them is never a breaking change and never earns a changelog entry, while changing a token in
+`@porsche-design-system/tokens` does. Confirm either way in the built wrapper `dist/` folders, which are the npm
+packages themselves: `grep -rl "tokensMeta\|tokenDeprecations" packages/components-*/dist/*-wrapper/` returns nothing.
+See [`docs/public-api.md`](../../docs/public-api.md).
 
 ## Structure
 

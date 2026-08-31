@@ -23,6 +23,13 @@ lived in two separate packages (a meta package and a CSS build package):
    the `scss` / `tailwindcss` skill layout. The storefront skill generator imports it directly; this package does not
    emit a separate skill artifact and the serializer is snapshot-tested here.
 
+The package itself is `"private": true`. Only `lib/*.css` reaches npm consumers, via the wrapper subpaths `./index.css`,
+`./variables.css`, `./normalize.css`, `./font-face.css`, `./color-scheme.css` and `./cn/*`. Neither `dist/` (the name
+consts and `ref`, a build-time input for `packages/components`) nor `meta/` is copied into a wrapper, so
+`stylesheetsMeta` and `stylesheetsDeprecations` are internal. Confirm in the built wrapper `dist/` folders, which are
+the npm packages themselves: `ls packages/components-js/dist/components-wrapper/stylesheets` shows CSS only. See
+[`docs/public-api.md`](../../../../docs/public-api.md).
+
 ## Structure
 
 ```text
@@ -106,7 +113,7 @@ walk it and use `kindOf` to split CSS-variable **tokens** from `.scheme-*` **uti
 alike, and what the generated CSS is built from. `meta.ts` derives two projections from it — `stylesheetsMeta` (the
 catalog minus its deprecated declarations, what the docs and the skill render) and `stylesheetsDeprecations` (the
 deprecated remainder, as the shared `Deprecations` list). A declaration therefore cannot reach a consumer without being
-either documented or published as deprecated.
+either documented or listed as deprecated.
 
 To deprecate one, add a `deprecation` field to the declaration. That is the whole edit — there is no second catalog to
 move it to, and both projections update automatically:

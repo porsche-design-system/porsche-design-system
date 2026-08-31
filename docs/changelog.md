@@ -31,18 +31,47 @@ Anything a consumer can observe from outside the packages:
 The published surface is broader than `packages/components`. Entries for `**Testing**`, `**Jsdom Polyfill**`,
 `**AG Grid**`, `**Angular**` or `pds-skill` are all legitimate.
 
+### "Public API" means published
+
+[`docs/public-api.md`](public-api.md) defines exactly which subpath of the four published packages an export reaches,
+and which internal entry points only look public. **Check it before filing an export change as `Added`, `Changed`,
+`Deprecated` or `Removed`** — it is the difference between a real breaking change and a phantom one.
+
+The quickest reliable check is to read the built wrapper `dist/` folders, which _are_ the npm packages
+(`packages/components-js/dist/components-wrapper`, `packages/components-angular/dist/angular-wrapper`,
+`packages/components-react/dist/react-wrapper`, `packages/components-vue/dist/vue-wrapper`). If a symbol does not appear
+under `packages/components-*/dist/*-wrapper/`, it is internal and gets no entry.
+
+The traps, concretely:
+
+- Every workspace package other than the four wrappers is `"private": true`, however scoped its name and however
+  complete its `exports` map and `.d.ts` output.
+- The `meta/` build output of `scss`, `tailwindcss`, `emotion`, `vanilla-extract` and `stylesheets` is never copied into
+  a wrapper. `scssMeta`, `tailwindMeta`, `emotionMeta`, `vanillaExtractMeta`, `stylesheetsMeta`, `tokensMeta`, the
+  `*Deprecations` lists, `kindOf`, `flatten` and their types are **internal**. Renaming or removing one is not a
+  breaking change and gets no entry.
+- `@porsche-design-system/…/scss` publishes `.scss` files only and `@porsche-design-system/…/tailwindcss` publishes
+  `index.css` only — neither ships JavaScript or types, so a TypeScript-only change to those packages is invisible.
+- Deprecation _metadata_ is internal. Deprecating a _declaration_ it describes — a prop, CSS variable, SCSS variable,
+  style utility or token — is public and does need a `Deprecated` entry.
+
 ## What does not belong in it
 
 - Documentation, storefront pages, examples and README changes
 - Tests of any kind, including VRT baselines and snapshots
 - Internal refactoring, renames and file moves with no observable effect
+- Changes to a package that is not published, or to a build artifact that no published subpath exposes — see
+  [`docs/public-api.md`](public-api.md)
 - Build, tooling, CI, linting and formatting changes
 - Dependency bumps that do not change the published surface or the supported versions
 - Anything a consumer cannot observe from outside the package
 
 Do not decide this by file path. Decide it by asking: **would a consumer notice this after upgrading?** Some
 consumer-facing code lives in unexpected places, and plenty of `packages/components` changes are invisible from the
-outside.
+outside. When the answer hinges on whether an export is published, resolve it by reading the built wrapper `dist/`
+folders (`packages/components-*/dist/*-wrapper/`), which are the npm packages themselves — see
+[`docs/public-api.md`](public-api.md). Do not inspect the workspace package's `exports` map, which describes workspace
+resolution and not what npm ships.
 
 ## Structure
 

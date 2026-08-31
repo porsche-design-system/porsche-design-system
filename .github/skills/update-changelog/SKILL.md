@@ -1,6 +1,8 @@
 ---
 name: update-changelog
-description: Update packages/components/CHANGELOG.md to match the current branch. Use when the user wants to write, update, sync or check the changelog for the branch or pull request they are working on.
+description:
+  Update packages/components/CHANGELOG.md to match the current branch. Use when the user wants to write, update, sync or
+  check the changelog for the branch or pull request they are working on.
 ---
 
 Reconcile `packages/components/CHANGELOG.md` with everything this branch changes, so it documents exactly the
@@ -9,6 +11,10 @@ consumer-facing changes — no more, no less.
 The editorial rules live in [`docs/changelog.md`](../../../docs/changelog.md). **Read that file first**; it decides what
 belongs in the changelog, which section an entry goes in, and how entries are worded. This skill only describes the
 procedure.
+
+[`docs/public-api.md`](../../../docs/public-api.md) decides what "consumer-facing" means — which of the four published
+packages' subpaths an export actually reaches, and which internal entry points only look public. Read it before deciding
+on any entry about an export.
 
 `packages/assets/CHANGELOG.md` is maintained manually and must not be touched.
 
@@ -69,6 +75,32 @@ For every change in the diff, ask **"would a consumer notice this after upgradin
 
 Judge by what the code does, not by which package it sits in. Consumer-facing code lives in unexpected places, and many
 `packages/components` changes are invisible from the outside.
+
+When a change touches an export, resolve whether it is published before writing anything about it. **The most reliable
+and easiest way is to read the built wrapper `dist/` folders** — each one _is_ the npm package:
+
+```
+packages/components-js/dist/components-wrapper     → @porsche-design-system/components-js
+packages/components-angular/dist/angular-wrapper   → @porsche-design-system/components-angular
+packages/components-react/dist/react-wrapper       → @porsche-design-system/components-react
+packages/components-vue/dist/vue-wrapper           → @porsche-design-system/components-vue
+```
+
+```bash
+ls packages/components-js/dist/components-wrapper          # top-level folders = published subpaths
+grep -rl "<exact-identifier>" packages/components-*/dist/*-wrapper/  # no hit = internal, no entry
+```
+
+Grep for the exact identifier, not a loose word: the generated skill markdown contains prose like "deprecations".
+
+Never decide this from the workspace package's own `package.json`. If the folders are not built, fall back to
+`grep -n "cp -r \.\./" packages/components-{js,angular,react,vue}/package.json` and
+`npm view @porsche-design-system/components-js@latest exports --json`.
+
+Most workspace packages are `"private": true` and only look published. The `meta/` output of `scss`, `tailwindcss`,
+`emotion`, `vanilla-extract` and `stylesheets`, all of `@porsche-design-system/tokens-meta` and
+`@porsche-design-system/shared`, and every `*Meta` / `*Deprecations` / `kindOf` / `flatten` export are internal and get
+no entry. `…/scss` ships `.scss` only and `…/tailwindcss` ships `index.css` only.
 
 When a change adds or modifies an API, check its JSDoc or `@css-variable` description for a `🧪Experimental` marker and
 mirror it as `(🧪Experimental)`.

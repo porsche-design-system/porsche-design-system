@@ -1,12 +1,18 @@
 ---
 name: code-review-changelog
-description: Code review check that verifies packages/components/CHANGELOG.md was updated correctly for the changes in a pull request. Use when reviewing a pull request to confirm consumer-facing changes are documented and that no unnecessary entries were added.
+description:
+  Code review check that verifies packages/components/CHANGELOG.md was updated correctly for the changes in a pull
+  request. Use when reviewing a pull request to confirm consumer-facing changes are documented and that no unnecessary
+  entries were added.
 ---
 
 Review whether `packages/components/CHANGELOG.md` correctly documents this pull request.
 
 The editorial rules live in [`docs/changelog.md`](../../../docs/changelog.md). **Read that file first**; it is the
 standard you are reviewing against. This skill only describes what to check and how to report it.
+
+[`docs/public-api.md`](../../../docs/public-api.md) decides what "consumer-facing" means. **Read it too before flagging
+anything about an export**, and re-check any finding against it before posting.
 
 `packages/assets/CHANGELOG.md` is maintained manually and is out of scope — never comment on it.
 
@@ -22,6 +28,34 @@ Judge relevance by what the code does, not by which package it sits in. Consumer
 — published sub-projects, wrappers, style packages, testing helpers — and many `packages/components` changes are
 invisible from the outside.
 
+The converse trap is the more expensive one: most workspace packages are `"private": true` and only _look_ published.
+Before claiming an export was added, changed or removed for consumers, **read the built wrapper `dist/` folders** — each
+one _is_ the npm package, so this is the most reliable and easiest check there is:
+
+```
+packages/components-js/dist/components-wrapper     → @porsche-design-system/components-js
+packages/components-angular/dist/angular-wrapper   → @porsche-design-system/components-angular
+packages/components-react/dist/react-wrapper       → @porsche-design-system/components-react
+packages/components-vue/dist/vue-wrapper           → @porsche-design-system/components-vue
+```
+
+```bash
+ls packages/components-js/dist/components-wrapper          # top-level folders = published subpaths
+grep -rl "<exact-identifier>" packages/components-*/dist/*-wrapper/  # no hit = internal, do not comment
+```
+
+Grep for the exact identifier, not a loose word: the generated skill markdown contains prose like "deprecations".
+
+Never base the claim on the workspace package's own `package.json` — its `exports`, `files` and `types` describe
+workspace resolution, not what npm ships. If the folders are not built, fall back to
+`grep -n "cp -r \.\./" packages/components-{js,angular,react,vue}/package.json` and
+`npm view @porsche-design-system/components-js@latest exports --json`.
+
+In particular, the `meta/` output of `scss`, `tailwindcss`, `emotion`, `vanilla-extract` and `stylesheets`, all of
+`@porsche-design-system/tokens-meta`, all of `@porsche-design-system/shared`, and every `*Meta` / `*Deprecations` /
+`kindOf` / `flatten` export are internal. `…/scss` ships `.scss` only and `…/tailwindcss` ships `index.css` only, so
+neither has a TypeScript surface at all.
+
 ## Checks
 
 ### 1. Missing entry
@@ -36,7 +70,8 @@ Also flag a pull request that documents _some_ of its consumer-facing changes bu
 ### 2. Unnecessary entry
 
 The pull request added an entry for something a consumer cannot observe — documentation, tests, internal refactoring,
-tooling, build or CI. These bloat the changelog and should be removed.
+tooling, build or CI, or a change to a package or build artifact that no published subpath exposes. These bloat the
+changelog and should be removed.
 
 ### 3. Wrong section
 
@@ -70,6 +105,10 @@ somewhere else. Common cases:
   should produce no comment from this check. Do not post a comment to say things look fine.
 - **Only comment on findings you are confident about.** If you are unsure whether a change is consumer-facing, say
   nothing. A false positive here is worse than a miss, because it trains reviewers to ignore the check.
+- **Never assert that an export is public without having verified it** in the built wrapper `dist/` folders
+  (`packages/components-{js,angular,react,vue}/dist/*-wrapper/`), which are the npm packages themselves. "This removes
+  the public `X` type exported in v4.6.0" is a claim about what ships — check it there, not in the workspace package's
+  `exports` map.
 - There is no opt-out label or phrase. Decide for yourself whether an entry is warranted.
 - For a missing entry, attach the comment to the code that introduced the undocumented change and propose concrete entry
   text, including the section it belongs in and the pull request link.
