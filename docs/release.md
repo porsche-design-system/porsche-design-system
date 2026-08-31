@@ -72,3 +72,63 @@ release can be published.
 
 1. Write a Slack notification by coping last entry of `./packages/components-js/CHANGELOG.md` in public Porsche Design
    System Slack channel
+
+## GitHub Releases
+
+Every stable release is published as a
+[GitHub Release](https://github.com/porsche-design-system/porsche-design-system/releases) by the `Release` workflow via
+`.github/actions/create-github-release`. The action creates the git tag `v{version}` at the released commit and builds
+the release body from `./packages/components/CHANGELOG.md`: the section of the stable version and all its pre-release
+sections (`-rc.*`, `-beta.*`, …) are merged, so each `### Added|Changed|Fixed` heading appears once (see
+`extract-release-body.awk`). Pre-release versions don't get a release.
+
+The `make-latest` input defaults to `auto`: a release is only marked as **Latest** if it is the highest stable version
+in the changelog, so maintenance releases of an older major (e.g. `3.36.0` after `4.6.0`) don't steal the badge.
+
+Releases for versions published before this automation existed (`1.0.0` - `3.35.0`) were added retroactively, so the
+release list is complete. Their tags point at the release commit (usually the merge commit of the release PR), and
+because GitHub derives `created_at` from the tagged commit they keep their historic date and ordering – only
+`published_at` ("released this …") shows when they were backfilled.
+
+## Git tags
+
+The only tags in this repository are `v{MAJOR}.{MINOR}.{PATCH}` of stable releases – one per GitHub Release, nothing
+else. Pre-release versions (`-rc.*`, `-beta.*`, `-alpha.*`) are published to npm but are not tagged.
+
+The legacy per-package tags of the old release process (e.g. `components-js-v3.33.0`, `assets-v5.0.2`, `v0.13.0/core`,
+`v0.8.0/react`) as well as all pre-release tags were deleted, since the released code is fully covered by the
+`v{version}` tags and the npm registry. When a tag has to be recreated, use the commit of the corresponding release and
+create it as a lightweight tag:
+
+```bash
+git update-ref refs/tags/v4.6.0 <sha> "" && git push origin refs/tags/v4.6.0
+```
+
+The naming convention is enforced by two repository rulesets (**Settings → Rules → Rulesets**), so no other tag can be
+created – neither by a person nor by CI:
+
+| Ruleset                           | Applies to                              | Effect                                                   |
+| --------------------------------- | --------------------------------------- | -------------------------------------------------------- |
+| `Tags: release naming convention` | all tags except `v[0-9]*.[0-9]*.[0-9]*` | blocks e.g. `components-js-v3.33.0`, `v0.13.0/core`      |
+| `Tags: no pre-release tags`       | all tags containing `-`                 | blocks e.g. `v4.7.0-rc.0`, `components-vue-v3.33.0-rc.0` |
+
+Both only restrict **creation**, so existing tags can still be deleted or moved. They have no bypass actors: to create
+an exceptional tag, set the ruleset to `Disabled` temporarily. Since `v{version}` tags are not matched by either
+ruleset, the release workflow needs no bypass permission.
+
+To create a release manually (e.g. if CI ever misses one), run the action script locally with a token that has
+`contents: write`:
+
+```bash
+INPUT_VERSION=4.6.0 \
+INPUT_SHA=main \
+INPUT_REPOSITORY=porsche-design-system/porsche-design-system \
+INPUT_CHANGELOG_PATH=packages/components/CHANGELOG.md \
+INPUT_DRY_RUN=true \
+GITHUB_TOKEN=$(gh auth token) \
+bash .github/actions/create-github-release/create-github-release.sh
+```
+
+`INPUT_DRY_RUN=true` only prints the payload; drop it to actually create the release. `INPUT_SHA` may be left empty when
+the tag already exists – GitHub answers `404 Not Found` when a plain commit SHA is passed as `target_commitish` for an
+existing tag, so it is omitted from the payload in that case.

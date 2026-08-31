@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
 import { buttonMeta } from '@/app/(main)/components/button/button.meta';
 
 export const metadata = {
@@ -10,7 +11,14 @@ export const metadata = {
 
 # Button <ComponentStatus tagName="p-button"></ComponentStatus>
 
-<TableOfContents headings={[buttonMeta.examples.form.name, buttonMeta.examples.formAttribute.name]} />
+<TableOfContents
+  headings={[
+    buttonMeta.examples.form.name,
+    buttonMeta.examples.formAttribute.name,
+    buttonMeta.examples.aiDropShadow.name,
+    buttonMeta.examples.aiGradientGlow.name,
+  ]}
+/>
 
 ## {buttonMeta.examples.form.name}
 
@@ -23,3 +31,15 @@ export const metadata = {
 <buttonMeta.examples.formAttribute.description />
 
 <ComponentExample codeSample={buttonMeta.examples.formAttribute.example} />
+
+## {buttonMeta.examples.aiDropShadow.name}
+
+<buttonMeta.examples.aiDropShadow.description />
+
+<ComponentStory story={buttonMeta.examples.aiDropShadow.story} />
+
+## {buttonMeta.examples.aiGradientGlow.name}
+
+<buttonMeta.examples.aiGradientGlow.description />
+
+<ComponentStory story={buttonMeta.examples.aiGradientGlow.story} />
