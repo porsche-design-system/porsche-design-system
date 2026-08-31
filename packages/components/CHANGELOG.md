@@ -14,23 +14,43 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Ai Tag`: Sanitize translations
+  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
+
+## [4.7.0-beta.0] - 2026-08-27
+
 ### Added
 
 - **Shadow DOM**: shadow roots are now attached with `clonable: true`, so `cloneNode(true)` on a component returns a
   clone that carries its Shadow DOM content instead of an empty shadow root.
   ([#4692](https://github.com/porsche-design-system/porsche-design-system/pull/4692))
+- `Button`: `destructive` variant for actions with irreversible consequences, e.g. deleting data
+  ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Button`, `Link`: `--p-button-bg`, `--p-button-fg`, `--p-link-bg` and `--p-link-fg` CSS variables to override the
+  background and foreground color in every state, including hover. You are responsible for ensuring sufficient contrast
+  and brand compliance. ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Button`, `Link`: `--p-button-px`, `--p-button-py`, `--p-button-gap`, `--p-button-radius`, `--p-link-px`,
+  `--p-link-py`, `--p-link-gap` and `--p-link-radius` CSS variables to override horizontal padding, vertical padding,
+  the gap between label and icon as well as the border radius. You are responsible for ensuring a minimum target size of
+  24px by 24px and brand compliance. ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Icon`: `ai-chat` icon ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Button`: (🧪Experimental) CSS custom state `loading` which can be targeted with the `:state()` pseudo-class, e.g.
+  `p-button:state(loading) { --p-button-bg: deeppink; }`. Browsers without support for `CustomStateSet` simply ignore
+  these rules. Be aware that custom states can't be expressed during server side rendering, they are only applied once
+  the component is hydrated on the client.
+  ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
 
 ### Fixed
 
 - `Carousel`: slides were dropped or left over when the amount of slides changed without also changing the amount of
-  pages, for example going from 1 to 2 slides at `slides-per-page="3"`. An added slide was never rendered and a
-  removed slide left an empty slot and a surplus pagination bullet behind.
+  pages, for example going from 1 to 2 slides at `slides-per-page="3"`. An added slide was never rendered and a removed
+  slide left an empty slot and a surplus pagination bullet behind.
   ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 - `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
   carousel was initialised with.
   ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
-- `Ai Tag`: Sanitize translations
-  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
 
 ## [4.6.0] - 2026-08-20
 

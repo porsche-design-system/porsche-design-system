@@ -3411,7 +3411,7 @@ exports[`should render dsr component for PButton 1`] = `
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-button-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3431,12 +3431,12 @@ exports[`should render dsr component for PButton 1`] = `
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-button-bg,var(--p-color-primary));
+  color: var(--p-button-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px));
+  gap: var(--p-button-gap,calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px));
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -3484,7 +3484,8 @@ exports[`should render dsr component for PButton 1`] = `
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-button-fg,var(--p-color-canvas));
+    background-color: var(--p-button-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -3830,7 +3831,7 @@ p {
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-button-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3850,12 +3851,12 @@ p {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px));
+  gap: var(--p-button-gap,calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px));
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -3903,7 +3904,8 @@ p {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -4279,7 +4281,7 @@ h2 {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-button-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4299,12 +4301,12 @@ h2 {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px));
+  gap: var(--p-button-gap,calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px));
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -4356,7 +4358,8 @@ h2 {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -4620,7 +4623,7 @@ svg {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-button-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4640,12 +4643,12 @@ svg {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px));
+  gap: var(--p-button-gap,calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px));
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -4697,7 +4700,8 @@ svg {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -5698,7 +5702,7 @@ img:dir(rtl) {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--p-radius-full) !important;
+  border-radius: var(--p-button-radius,var(--p-radius-full)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5718,12 +5722,12 @@ img:dir(rtl) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
-  gap: 0;
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+  gap: var(--p-button-gap,0);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -5775,7 +5779,8 @@ img:dir(rtl) {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -5871,7 +5876,7 @@ img {
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--p-radius-full) !important;
+  border-radius: var(--p-button-radius,var(--p-radius-full)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5891,12 +5896,12 @@ img {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
-  gap: 0;
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+  gap: var(--p-button-gap,0);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -5948,7 +5953,8 @@ img {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -9111,7 +9117,7 @@ exports[`should render dsr component for PLink 1`] = `
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-link-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -9126,7 +9132,7 @@ exports[`should render dsr component for PLink 1`] = `
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--p-radius-xl) !important;
+  border-radius: var(--p-link-radius,var(--p-radius-xl)) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -9150,12 +9156,12 @@ exports[`should render dsr component for PLink 1`] = `
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-link-bg,var(--p-color-primary));
+  color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
+  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px));
+  gap: var(--p-link-gap,calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 .label {
   position: static;
@@ -9182,7 +9188,8 @@ exports[`should render dsr component for PLink 1`] = `
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-link-fg,var(--p-color-canvas));
+    background-color: var(--p-link-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -9523,7 +9530,7 @@ p {
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-link-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -9538,7 +9545,7 @@ p {
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--p-radius-xl) !important;
+  border-radius: var(--p-link-radius,var(--p-radius-xl)) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -9562,12 +9569,12 @@ p {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-link-bg,var(--p-color-frosted-strong));
+  color: var(--p-link-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
+  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px));
+  gap: var(--p-link-gap,calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 .label {
   position: static;
@@ -9594,7 +9601,8 @@ p {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-link-fg,var(--p-color-primary));
+    background-color: var(--p-link-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {

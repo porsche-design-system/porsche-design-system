@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "4.6.0",
+    "@porsche-design-system/components-js": "4.7.0-beta.0",
     "ag-grid-community": "36.1.0"
   },
   "devDependencies": {

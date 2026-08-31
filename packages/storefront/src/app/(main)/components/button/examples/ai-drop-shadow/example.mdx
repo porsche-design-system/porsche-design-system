@@ -1,0 +1,9 @@
+🧪 **Experimental**: This example shows what's technically possible with the exposed `--p-button-bg` and `--p-button-fg`
+CSS variables. It is **not approved by brand compliance** and must not be treated as an official AI button style.
+
+An elevated button on a plain background, combining a custom foreground/background pair with a drop shadow from the
+`--p-shadow-lg` token. Hover is scoped with `:not(:disabled, :state(loading))` so the styling isn't applied while the
+button is disabled or loading.
+
+When you override the colors, you are responsible for sufficient contrast (at least 4.5:1 between label and background)
+in both light and dark color scheme.
