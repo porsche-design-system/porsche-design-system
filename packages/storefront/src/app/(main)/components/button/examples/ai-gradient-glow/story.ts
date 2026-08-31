@@ -11,7 +11,7 @@ const style = `.custom-ai-orb {
 
 .custom-ai-orb:not(:disabled, :state(loading)):hover {
   --p-button-bg: var(--p-color-frosted-strong);
-  --p-button-fg: var(--p-color-primary);
+  --p-button-fg: #fff;
 }
 
 .custom-ai-orb::before,
