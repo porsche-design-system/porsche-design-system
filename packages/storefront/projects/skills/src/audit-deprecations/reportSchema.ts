@@ -18,7 +18,7 @@ import { DETECTION_IDS, VALUE_RESOLUTION_IDS } from './grading';
  */
 
 /** Bumped when the report shape changes in a way a consumer must react to. */
-export const REPORT_SCHEMA_VERSION = '3.0.0';
+export const REPORT_SCHEMA_VERSION = '1.0.0';
 
 /** Discriminates this report from a future audit's, for a consumer reading a run directory. */
 export const AUDIT_KIND = 'deprecations';
