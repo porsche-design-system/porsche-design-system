@@ -61,7 +61,7 @@ irm https://aka.ms/apm-windows | iex
 Run from your product repository root:
 
 ```bash
-apm install porsche-design-system/skills/packages/web-accessibility-audit#v0.1.0
+apm install porsche-design-system/skills/packages/web-accessibility-audit#web-accessibility-audit--v0.1.0
 ```
 
 This installs the package and deploys supported primitives for your detected targets (for example Copilot, Claude,
@@ -80,7 +80,7 @@ dependencies:
   apm:
     - git: https://github.com/porsche-design-system/skills.git
       path: packages/web-accessibility-audit
-      ref: v0.1.0
+      ref: web-accessibility-audit--v0.1.0
 ```
 
 ### Common APM commands
@@ -88,7 +88,7 @@ dependencies:
 | Command                                                                            | Purpose                                                    |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | `apm install`                                                                      | Install from `apm.yml` / refresh deployed primitives       |
-| `apm install porsche-design-system/skills/packages/web-accessibility-audit#v0.1.0` | Add the package with an explicit version                   |
+| `apm install porsche-design-system/skills/packages/web-accessibility-audit#web-accessibility-audit--v0.1.0` | Add the package with an explicit version                   |
 | `apm update`                                                                       | Update dependencies according to declared refs/constraints |
 | `apm uninstall porsche-design-system/skills/packages/web-accessibility-audit`      | Remove the package dependency                              |
 | `apm prune`                                                                        | Remove no-longer-required cached packages                  |
