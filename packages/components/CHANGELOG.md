@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Storefront Docs`: Refactor A11Y AI Context pages to use the new `web-accessibility-codegen` and `web-accessibility-audit` apm packages.
+  ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
+
 ## [4.7.0-beta.0] - 2026-08-27
 
 ### Added

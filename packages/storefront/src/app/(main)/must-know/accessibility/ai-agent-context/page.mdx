@@ -1,231 +1,194 @@
+import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { PLink } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
   title: 'Accessibility: AI Agent Context - Porsche Design System',
   description:
-    'Learn how to configure AI coding assistants like GitHub Copilot, Cursor, and Claude Code to generate accessible code that follows WCAG 2.2 AA standards.',
+    'Install the Porsche web-accessibility-codegen APM package so GitHub Copilot, Claude Code, and Cursor generate WCAG 2.2 AA and EN 301 549 frontend code.',
 };
 
 # AI Agent Context
 
 <TableOfContents
   headings={[
-    'AGENTS.md overview',
-    'GitHub Copilot Instructions',
-    'Cursor Rules',
-    'Claude Code',
-    'Accessibility specific instructions',
-    'Download instruction files',
-    'Installation steps',
-    'Next step: run an accessibility audit',
+    'Install the codegen package',
+    'How it works',
+    'Installed files',
+    'Update and uninstall',
+    'Limitations',
   ]}
 />
 
-AI coding assistants like **GitHub Copilot**, **Cursor**, and **Claude Code** can significantly accelerate development,
-but without proper guidance they often generate code that lacks **semantic HTML**, **keyboard accessibility**, **focus
-management**, and proper **ARIA patterns**. By providing accessibility context to your AI agent, you ensure generated
-code follows **WCAG 2.2 AA** standards from the start.
+Install generation-time **WCAG 2.2 AA** and **EN 301 549** (web clauses) context for GitHub Copilot, Claude Code, and
+Cursor with the
+[**web-accessibility-codegen** package](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-codegen)
+from the [**porsche-design-system/skills**](https://github.com/porsche-design-system/skills) repository.
 
-## AGENTS.md overview
+Installation uses [**APM (Agent Package Manager)**](https://microsoft.github.io/apm/). APM installs and updates the
+always-on instruction and the on-demand `accessible-frontend` skill in your target repository.
 
-`AGENTS.md` is a tool-agnostic standard for providing AI agents with repository context. It should be the **canonical**
-source of instructions, with package-specific `AGENTS.md` files used to add scoped guidance.
+This package does **not** duplicate Porsche Design System component APIs. When `@porsche-design-system/components-*` is
+installed, the skill loads the version-exact `pds-knowledge-*` skill that ships in that npm package. Prefer PDS
+components when that skill loads; otherwise use semantic HTML.
 
-Learn more at [agents.md](https://agents.md/).
+APM deploys Copilot, Cursor, and Claude files. It does not overwrite an existing project `AGENTS.md`. Do not paste a
+stub `AGENTS.md`.
 
-Recommended structure (monorepo example):
+<Notification heading="Prerequisite" headingTag="h3" state="warning">
+  {/*<!-- prettier-ignore --> */}
+  | Requirement | Details |
+  | ---------------- | ----------------------------------------------------------------------------------------------- |
+  | **Platform** | macOS, Linux, or Windows (APM-supported environments) |
+  | **Supported Editors** | VS Code with a current [GitHub Copilot](https://docs.github.com/en/copilot) release <br /> [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI or VS Code integration with project `.claude/` discovery <br /> Cursor |
+  | **Runtime** | [APM CLI](https://microsoft.github.io/apm/) |
+  | **GitHub access** | Read access to [github.com/porsche-design-system](https://github.com/porsche-design-system/) and the private package source repository |
+  | **Authentication** | For private/org package installs, configure credentials as described in APM [Private and org packages](https://microsoft.github.io/apm/consumer/private-and-org-packages/) |
+  | **Product** | A local checkout of the web application |
+</Notification>
 
-```diff
-packages/
-├── package1/AGENTS.md
-├── package2/AGENTS.md
-└── ...
+## Install the codegen package
+
+Install the package from `porsche-design-system/skills` with APM.
+
+### 1) Install APM
+
+#### macOS / Linux
+
+```bash
+curl -sSL https://aka.ms/apm-unix | sh
 ```
 
-**Best practice**: Keep `AGENTS.md` concise and link to detailed documentation. Use package-level files for deeper,
-context-specific rules (e.g., accessibility, build steps, test expectations).
+#### Windows
 
-## GitHub Copilot Instructions
-
-GitHub Copilot supports **custom instructions** through Markdown files in your repository, and **agent skills** via
-`.agents/skills/` ([about agent skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)). We
-recommend:
-
-1. Use `AGENTS.md` as the canonical source for repository guidance.
-2. Keep `.github/copilot-instructions.md` in sync with `AGENTS.md` for Copilot compatibility.
-3. Use scoped instruction files in `.github/instructions/` for file-type specific rules (like accessibility).
-4. Install workflow skills in **`.agents/skills/`** (also `.github/skills/`).
-
-### Global Instructions
-
-Create a file at `.github/copilot-instructions.md` in your repository root. This file applies to **all** Copilot
-interactions in your project.
-
-```diff
-.github/
-└── copilot-instructions.md
+```powershell
+irm https://aka.ms/apm-windows | iex
 ```
 
-### Scoped Instructions
+### 2) Install the codegen package in your product repository
 
-For more granular control, add instruction files to `.github/instructions/` and include frontmatter specifying the
-target files using glob patterns:
+Run from your product repository root:
 
-```diff
-.github/
-└── instructions/
-    ├── accessibility.instructions.md # Applies to all frontend files
-    └── project.instructions.md # Project-specific rules
+```bash
+apm install porsche-design-system/skills/packages/web-accessibility-codegen#v1.0.0
 ```
 
-Each instruction file should include an `applyTo` frontmatter that uses glob patterns:
+This installs the package and deploys supported primitives for your detected targets (for example Copilot, Claude,
+Cursor).
 
-The `applyTo` pattern determines which files these instructions apply to. For accessibility rules, we recommend applying
-them to **all frontend file types**.
+### 3) Optional: manage via `apm.yml`
 
-```markdown
----
-applyTo: '**/*.{html,css,scss,js,ts,tsx,jsx,vue,mdx}'
----
+For team workflows, declare the dependency in your repository's `apm.yml` and run `apm install`:
+
+```bash
+apm install
 ```
 
-## Cursor Rules
-
-Cursor uses `.cursor/rules/` for **coding rules**:
-
-```diff
-.cursor/
-└── rules/
-    ├── accessibility.mdc    # Accessibility coding rules
-    └── project.mdc          # Project-specific rules
+```yaml
+dependencies:
+  apm:
+    - git: https://github.com/porsche-design-system/skills.git
+      path: packages/web-accessibility-codegen
+      ref: v1.0.0
 ```
 
-Cursor rule files use the `.mdc` extension (Markdown with Cursor metadata). The format is similar to GitHub Copilot
-instructions:
+You can list `web-accessibility-audit` next to it in the same `apm.yml`.
 
-```markdown
----
-description: Accessibility rules for frontend code
-globs: ['**/*.{html,css,scss,js,ts,tsx,jsx,vue}']
----
+### Common APM commands
+
+| Command                                                                              | Purpose                                                    |
+| ------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| `apm install`                                                                        | Install from `apm.yml` / refresh deployed primitives       |
+| `apm install porsche-design-system/skills/packages/web-accessibility-codegen#v1.0.0` | Add the package with an explicit version                   |
+| `apm update`                                                                         | Update dependencies according to declared refs/constraints |
+| `apm uninstall porsche-design-system/skills/packages/web-accessibility-codegen`      | Remove the package dependency                              |
+| `apm prune`                                                                          | Remove no-longer-required cached packages                  |
+
+For first-time APM setup and authentication troubleshooting, see the official
+[APM Quickstart](https://microsoft.github.io/apm/quickstart/).
+
+## How it works
+
+After install, generate or edit frontend code as usual. The instruction applies to frontend globs (`html`, `css`,
+`scss`, `js`, `ts`, `tsx`, `jsx`, `vue`, `mdx`). The agent should load `accessible-frontend` before writing markup.
+
+Typical triggers: pages, forms, modals, tables, navigation, buttons, links, toasts.
+
+### Always-on instruction (`frontend-a11y`)
+
+Non-negotiable WCAG 2.2 AA / EN 301 549 rules: keyboard, focus, High Contrast Mode, zoom, forms, landmarks. It points at
+`accessible-frontend` for the rest.
+
+### On-demand skill (`accessible-frontend`)
+
+Topic files for structure, keyboard and focus, forms, live regions, visual/HCM/zoom, and EN 301 549. Then, if PDS is in
+the project, the skill resolves `pds-knowledge-js` / `-react` / `-vue` / `-angular`.
+
+### Porsche Design System component skill
+
+`pds-knowledge-*` ships inside `@porsche-design-system/components-*` (for example
+`node_modules/@porsche-design-system/components-react/skills/pds-knowledge-react/`). For each PDS component, load both
+`references/components/<tag>/<tag>.md` and `references/components/<tag>/accessibility.md` when that file exists.
+
+Cursor and Copilot do not scan `node_modules` for skills. The APM skill still reads those files from disk. Product
+examples often symlink the matching skill into `.agents/skills` so the catalog name resolves as well.
+
+If PDS is a dependency but those files are missing, the agent should say so and fall back to generic HTML rules. Do not
+treat `https://designsystem.porsche.com/v4/` as the installed version. If there is no PDS dependency, generate native
+HTML and do not invent `p-*` tags.
+
+## Installed files
+
+See package docs in
+[web-accessibility-codegen README](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-codegen).
+
+After install, APM typically updates:
+
+| Category                          | What gets installed or updated                                                         |
+| --------------------------------- | -------------------------------------------------------------------------------------- |
+| **Manifest/lock**                 | `apm.yml`, `apm.lock.yaml`                                                             |
+| **APM cache**                     | `apm_modules/`                                                                         |
+| **Copilot/Claude/Cursor targets** | Instruction and `accessible-frontend` skill for available targets                      |
+
+`apm install` deploys:
+
+| Primitive   | Copilot                                                | Cursor                                 | Claude                                 |
+| ----------- | ------------------------------------------------------ | -------------------------------------- | -------------------------------------- |
+| Instruction | `.github/instructions/frontend-a11y.instructions.md`   | `.cursor/rules/frontend-a11y.mdc`      | `.claude/rules/frontend-a11y.md`       |
+| Skill       | `.agents/skills/accessible-frontend/`                  | `.agents/skills/accessible-frontend/`  | `.claude/skills/accessible-frontend/`  |
+
+For Codex/Gemini (root `AGENTS.md` / `GEMINI.md`), run `apm compile` after install. Do not paste a stub `AGENTS.md` over
+an existing project file.
+
+## Update and uninstall
+
+**Update installed dependencies:**
+
+```bash
+apm update
 ```
 
-## Claude Code
+Or bump the package ref in `apm.yml` and run:
 
-[Claude Code](https://code.claude.com/docs) reads project context from `CLAUDE.md` at the repository root. We recommend:
-
-1. Use `AGENTS.md` as the canonical source and keep `CLAUDE.md` in sync for **coding rules**.
-
-```diff
-.
-├── AGENTS.md                              # Canonical agent context (tool-agnostic)
-└── CLAUDE.md                              # Claude Code coding rules (sync with AGENTS.md)
+```bash
+apm install
 ```
 
-For **web accessibility audits**, use the GitHub Copilot web audit bundle described in
-[Web Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/).
+**Uninstall the package:**
 
-## Accessibility specific instructions
+```bash
+apm uninstall porsche-design-system/skills/packages/web-accessibility-codegen
+apm prune
+```
 
-### Accessibility rules template
+If your repo manages dependencies in `apm.yml`, remove the dependency entry there and run `apm install`.
 
-Below is a comprehensive accessibility rules template you can use with GitHub Copilot, Cursor, or Claude Code. This
-template includes the Porsche Design System's internal accessibility guidelines and ensures compliance with **WCAG 2.2
-AA**.
+## Limitations
 
-As always, providing context to AI agents is not a one-time setup. Custom instruction files are **living documents**.
-Continuously refine and expand your instruction files based on the specific accessibility challenges you encounter in
-your project or if the AI agent is hallucinating and generates inaccessible code patterns.
+Generation-time context does not certify accessibility and does not replace an audit. After the UI exists, run a guided
+**WCAG 2.2 AA** audit via the `a11y-audit` prompt. See the
+[**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/) guide.
 
-#### Non-negotiable requirements
+Component do/don'ts and the `aria` prop live in the installed PDS package skill, not in `web-accessibility-codegen`.
 
-1. **Must comply with WCAG 2.2 AA**
-2. **Must be fully keyboard accessible** (no mouse-only interactions, no keyboard traps)
-3. **Must provide visible focus** for all interactive elements
-4. **Must support High Contrast Mode** / forced-colors
-5. **Prefer Porsche Design System components** where available
-
-#### Semantics first
-
-- Prefer **native HTML elements** (`button`, `a`, `input`, `select`, `details/summary`, `dialog`) over custom div/span
-  widgets
-- Use correct landmarks (`header`, `nav`, `main`, `footer`) and maintain consistent heading order
-- Every interactive element must have an **accessible name** via visible text, `<label>`, `aria-label`, or
-  `aria-labelledby`
-
-#### Keyboard interactions
-
-- Everything interactive must be reachable via **Tab** and operable via keyboard
-- Use standard key mappings: `Enter`/`Space` for buttons, arrow keys for roving focus patterns
-- Don't remove focus outlines globally; use `:focus-visible` for custom focus styling
-- When opening overlays/modals, move focus into the region and return focus to the trigger on close
-
-#### High Contrast Mode
-
-- Ensure UI is usable with `@media (forced-colors: active)`
-- Avoid relying solely on background images or subtle shadows for affordances
-- Don't disable forced-color adjustments unless implementing a correct alternative
-
-#### Porsche Design System (PDS) component usage
-
-When using Porsche Design System components, include these rules:
-
-- Use `@porsche-design-system/components-{react|angular|vue}` for UI primitives
-- If a PDS component needs extra ARIA, use the `aria` property according to PDS documentation
-- Never place native `aria` attributes on PDS components `:host` elements directly
-- Preserve PDS focus styling; don't override focus rings unless required
-- Check PDS component documentation for accessibility best practices
-
-## Download instruction files
-
-Download ready-to-use instruction files for your project:
-
-<div className="flex gap-static-sm mt-fluid-sm mb-fluid-lg flex-wrap">
-  {/* prettier-ignore */}
-  <PLink variant="secondary" href="../../../assets/downloads/AGENTS.md" download="AGENTS.md" icon="download">AGENTS.md</PLink>
-  {/* prettier-ignore */}
-  <PLink variant="secondary" href="../../../assets/downloads/accessibility.instructions.md" download="accessibility.instructions.md" icon="download">Copilot (accessibility.instructions.md)</PLink>
-  {/* prettier-ignore */}
-  <PLink variant="secondary" href="../../../assets/downloads/accessibility.mdc" download="accessibility.mdc" icon="download">Cursor (accessibility.mdc)</PLink>
-</div>
-
-## Installation steps
-
-**For AGENTS.md:**
-
-1. Create `AGENTS.md` in the repository root
-2. Add package-specific `AGENTS.md` files where needed (e.g., `packages/package1/AGENTS.md`)
-3. Keep `AGENTS.md` in sync with Copilot, Cursor, and Claude Code instruction files
-
-**For GitHub Copilot:**
-
-1. Download `accessibility.instructions.md`
-2. Create `.github/instructions/` directory in your repository root
-3. Place the file in `.github/instructions/accessibility.instructions.md`
-4. For **audits**, install the
-   [web-accessibility-audit package](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-audit)
-   via APM (`apm install porsche-design-system/skills/packages/web-accessibility-audit#v1.0.0`) — see
-   [Web Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/)
-5. Commit and push to your repository
-
-**For Cursor Rules:**
-
-1. Download `accessibility.mdc`
-2. Create `.cursor/rules/` directory in your project root
-3. Place the file in `.cursor/rules/accessibility.mdc`
-4. Restart Cursor or reload the workspace
-
-**For Claude Code:**
-
-1. Download `accessibility.instructions.md` and merge the rules into `CLAUDE.md`, or reference `AGENTS.md`
-
-Once configured, your AI agent will automatically apply these accessibility **coding rules** when generating or
-modifying frontend code. For **audits**, use the APM-installed web accessibility audit package described in
-[Web Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/).
-
-## Next step: run an accessibility audit
-
-With agent context in place, the next step is to run a guided **WCAG 2.2 AA audit** via the `a11y-audit` prompt. See the
-[**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/) guide for installation, example prompts,
-and report output.
+**Standard:** [WCAG 2.2 Level AA](https://w3.org/WAI/standards-guidelines/wcag). Porsche guidance:
+[Accessibility of digital products at Porsche](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction).

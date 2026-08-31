@@ -79,7 +79,8 @@ const renderCoverageSection = (): string =>
   [
     'This skill currently covers components, global stylesheets and theming, tokens, and styling integrations. It does ' +
       'not yet include complete getting-started, setup, and installation guidance; the v3-to-v4 migration guide; ' +
-      'the changelog; partials; patterns and templates; the AG Grid theme; or the Storefront\u2019s Must Know and Help sections.',
+      'the changelog; partials; patterns and templates; the AG Grid theme; or the Storefront\u2019s Must Know and Help sections. ' +
+      'Page-level WCAG 2.2 AA and EN 301 549 composition is not in this skill. If the APM skill `accessible-frontend` is installed, load it.',
     '',
     `Before using documentation outside this skill or the installed package, match it to the installed PDS version. ` +
       `This skill was generated for \`${localPorscheDesignSystemVersion}\`; prefer the ` +
