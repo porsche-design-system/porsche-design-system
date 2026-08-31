@@ -10,14 +10,8 @@ import { type RouteReferences, rewriteDocLinks } from '../shared/links';
 import { escapeCell, markdownTable } from '../shared/markdown';
 import type { Framework, SkillTree } from '../shared/skillTree';
 
-/**
- * Mounts the package-owned `PackageSkill` fragments (the four styling solutions, stylesheets and
- * tokens) into every wrapper tree and renders their SKILL.md sections (`## Stylesheets`,
- * `## Tokens`, `## Styling`). Adding another package skill requires its PackageSkill export and one
- * registration here; paths, route links and SKILL.md rows are derived from that registration.
- */
+/** Registers package-owned skill fragments and mounts them into each wrapper's skill tree. */
 
-/** Every wrapper ships a real copy of the generated Tailwind stylesheet. */
 export const rawTailwindcssReference = (): string => '../../tailwindcss/index.css';
 
 /** Only the js wrapper ships the real SCSS partials; framework wrappers expose re-export shims. */
@@ -43,7 +37,6 @@ const PACKAGE_SKILLS = [...STYLING_SKILLS, STYLESHEETS_SKILL, TOKENS_SKILL];
 const referencePath = ({ skill, mount }: PackageSkillRegistration): string =>
   path.posix.join(mount, `${skill.name}.md`);
 
-/** Skill-root-relative path of a registration's mounted reference file. */
 const resolvedPath = (registration: PackageSkillRegistration): string =>
   path.posix.join('references', referencePath(registration));
 
@@ -62,11 +55,7 @@ export const writePackageSkillReferences = (tree: SkillTree, routeReferences: Ro
     return tree.writeReference(reference, rewriteDocLinks(content, resolvedPath(registration), routeReferences));
   });
 
-/**
- * The initialization API each framework configures PDS through — the place a reader might wrongly
- * expect a `theme` option. React/Vue take the `PorscheDesignSystemProvider` component; js calls
- * `load()`; Angular calls `PorscheDesignSystemModule.load()`. Each accepts only `prefix` and `cdn`.
- */
+/** Framework APIs commonly mistaken as accepting the removed `theme` option. */
 const THEME_INIT_TARGET: Record<Framework, string> = {
   react: '`PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`)',
   vue: '`PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`)',
@@ -74,20 +63,13 @@ const THEME_INIT_TARGET: Record<Framework, string> = {
   angular: '`PorscheDesignSystemModule.load()` (it takes only `prefix` and `cdn`)',
 };
 
-/**
- * The theming inoculation, rendered into the `## Stylesheets` section (theming is a stylesheet
- * concern). The removed-in-earlier-majors `theme` prop is the common hallucination this pre-empts.
- * Skill-only anti-hallucination content — it stays aggregator-owned, never in the package fragment;
- * the `.scheme-*` mechanics themselves live only in the fragment's `stylesheets.md`.
- */
+/** Prevents stale guidance from reintroducing the removed `theme` option. */
 const renderThemingNote = (framework: Framework): string =>
   '**Theming is one mechanism — CSS `color-scheme`, nothing else** (the `.scheme-*` mechanics live in ' +
   `[stylesheets.md](${resolvedPath(STYLESHEETS_SKILL)})). There is **no** \`theme\` prop — not on ${THEME_INIT_TARGET[framework]} and not on components. A ` +
   '`theme="light|dark|auto"` prop existed in earlier majors and was removed; if you recall one, it is a ' +
   'stale prior — do not add it, verify against the installed types.';
 
-/** The `## Stylesheets` section body: the fragment's "use when" prose, a pointer to the reference, and
- * the theming note. */
 export const renderStylesheetsSection = (framework: Framework): string => {
   const { skill } = STYLESHEETS_SKILL;
   const reference = resolvedPath(STYLESHEETS_SKILL);
@@ -100,13 +82,7 @@ export const renderStylesheetsSection = (framework: Framework): string => {
   ].join('\n');
 };
 
-/**
- * The `## Styling` section body (last section): the styling-solutions overview so the agent always
- * knows PDS offers these integrations and what they are for. They are independent of the components
- * but build on the same tokens and the same `color-scheme` theming, so custom UI shares the exact
- * palette, spacing and typography as PDS components — the full mechanics live in the Stylesheets
- * section / reference. Each row links the solution's reference for setup and the full catalog.
- */
+/** Summarizes styling integrations and links each package-owned reference. */
 export const renderStylingSection = (): string => {
   const tailwindPath = resolvedPath(
     STYLING_SKILLS.find(({ skill }) => skill === tailwindcssSkill) ?? STYLING_SKILLS[0]
@@ -136,6 +112,5 @@ export const renderStylingSection = (): string => {
   ].join('\n');
 };
 
-/** The `## Tokens` SKILL.md section body: the fragment's intro plus the pointer at the mounted reference. */
 export const renderTokensSection = (): string =>
   `${tokensSkill.intro} Open [tokens.md](${resolvedPath(TOKENS_SKILL)}) when using tokens directly in custom UI.`;

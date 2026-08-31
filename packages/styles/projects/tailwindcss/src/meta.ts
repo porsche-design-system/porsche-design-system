@@ -19,14 +19,8 @@ import { skeletonUtilities } from './utilities/skeleton';
 import { textUtilities } from './utilities/text';
 
 /**
- * Every public Tailwind declaration, documented and deprecated alike, keyed by domain. This is what
- * the generated `index.css` is built from and what `tailwindMeta` and `tailwindDeprecations` are
- * projections of, so a declaration cannot reach a consumer without being documented or published as
- * deprecated.
- *
- * Internal on purpose: consumers read the two projections, never the catalog. Key order mirrors the
- * scss catalog (and `tokensMeta`) verbatim, minus the `focus` / `mediaQuery` domains Tailwind
- * doesn't ship, so the domains line up one-to-one across solutions.
+ * Internal source for generated CSS, documentation, and deprecations. Domain order mirrors SCSS
+ * where both integrations expose the same concepts.
  */
 const tailwindCatalog = {
   border,
@@ -48,20 +42,14 @@ const tailwindCatalog = {
 };
 
 /**
- * The documented single source of truth, shared with the storefront docs and LLM context: the
- * catalog without its deprecated declarations, checked against the cross-solution contract. Leaves
- * are the same object references the CSS is built from, so docs and generated CSS can't diverge.
+ * Documented catalog with deprecated declarations removed. Shared leaf references keep docs and
+ * generated CSS aligned.
  */
 export const tailwindMeta = stripDeprecated(tailwindCatalog) satisfies StylesMeta<
   TailwindThemeVariable,
   TailwindUtility
 >;
 
-/**
- * The deprecated public Tailwind surface as an ordered flat list of canonical identifiers and
- * markers. `flatten` is shared with the CSS composition layer and so widens catalog leaves to
- * `CssNode`; the catalog holds nothing else, which is what the annotation restates.
- */
 const declarations = flatten(tailwindCatalog) as (TailwindThemeVariable | TailwindUtility)[];
 
 export const tailwindDeprecations: Deprecations = declarations.filter(isDeprecated).map((node) => ({

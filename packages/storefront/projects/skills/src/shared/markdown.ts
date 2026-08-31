@@ -1,27 +1,12 @@
 /**
- * Shared markdown helpers for the skill generators. Centralised so every generated
- * table escapes cells, strips redundant headings and extracts lead sentences the same
- * way — divergent per-module copies previously produced inconsistently escaped tables.
- */
-
-/**
  * Collapse whitespace and escape table-breaking characters for a single markdown cell. Backslashes are
  * escaped before pipes so an escaped pipe already in the text (`\|`) is not misread as a live delimiter.
  */
 export const escapeCell = (text: string): string =>
   text.replace(/\s+/g, ' ').trim().replace(/\\/g, '\\\\').replace(/\|/g, '\\|');
 
-/**
- * Drop a redundant leading top-level heading. MDX sections often open with a
- * `# <Title>` that duplicates the per-file H1 we emit, so it is stripped before the
- * section is nested.
- */
 export const stripLeadingH1 = (markdown: string): string => markdown.replace(/^#\s+[^\n]*\n+/, '');
 
-/**
- * Drop leading blockquote block(s) (e.g. a notification admonition an introduction opens with) so the
- * roster summary is derived from the first real prose sentence, not the admonition text.
- */
 export const stripLeadingBlockquotes = (markdown: string): string => markdown.replace(/^(?:>[^\n]*(?:\n|$))+\s*/, '');
 
 /**
@@ -52,15 +37,10 @@ export const leadSentence = (markdown: string): string => {
   return leadParagraph;
 };
 
-/** A markdown table from a header row and pre-rendered cell rows (no heading). */
 export const markdownTable = (headers: string[], rows: string[][]): string =>
   [headers, headers.map(() => '---'), ...rows].map((row) => `| ${row.join(' | ')} |`).join('\n');
 
-/**
- * GitHub-compatible heading anchor slug: lower-cased, non-alphanumeric characters
- * dropped, runs of whitespace collapsed to single hyphens. Keeps in-page Contents
- * links in step with the headings they target.
- */
+/** Matches GitHub's heading-anchor normalization used by generated contents links. */
 export const headingSlug = (heading: string): string =>
   heading
     .toLowerCase()

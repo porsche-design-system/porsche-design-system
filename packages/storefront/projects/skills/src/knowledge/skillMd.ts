@@ -5,30 +5,11 @@ import { localPorscheDesignSystemVersion } from '../shared/version';
 import { rawMetaReference } from './components/section';
 import { rawScssReference, rawTailwindcssReference } from './packageSkills';
 
-/**
- * Builds the always-loaded `SKILL.md` entry point: fixed-`name` frontmatter with the tuned
- * activation description, the headline intro, and one topical `##` section per domain. The section
- * bodies are rendered by the domain modules (`components/section.ts`, `packageSkills.ts`) and
- * assembled here in reading order.
- */
-
-/**
- * Canonical name of the wrapper's knowledge skill — `pds-knowledge-<framework>`. Every wrapper ships
- * it under `skills/pds-knowledge-<framework>/SKILL.md`; the `pds-skill` bin discovers it (and any
- * other skill) from the installed package's `skills/` directory at link time. Derived from the
- * registry, which owns the naming convention.
- */
 export const skillName = (framework: Framework): string => getSkillName('knowledge', framework);
 
 /**
- * Auto-activation description of the knowledge skill — the only matching surface Claude Code uses to
- * decide whether to load it. Rendered verbatim into the SKILL.md YAML frontmatter, so it must stay a
- * single line and free of `: ` sequences that would break the frontmatter parse. It names concrete UI
- * triggers so it fires broadly on frontend work even when PDS is not mentioned, and also on documents
- * that assert PDS behavior (requirements, specs, design docs, acceptance criteria) — a wrong API fact
- * written upstream in a doc propagates into every task that consumes it. The "do not activate" clause
- * keeps it dormant on backend/non-UI, tooling, *non-PDS* prose, foreign-library, and opt-out prompts —
- * but no longer on PDS-asserting docs.
+ * Auto-activation text, kept as one YAML-safe line. Concrete UI triggers intentionally activate the
+ * skill even when a frontend task does not mention PDS.
  */
 export const ACTIVATION_DESCRIPTION =
   'Build, style, or review web user interfaces with the Porsche Design System (PDS), or author ' +
@@ -42,11 +23,7 @@ export const ACTIVATION_DESCRIPTION =
   'work that clearly targets a different UI library, or when the user opts out of PDS.';
 
 /**
- * The extended headline intro. Version-exact knowledge is the framing; it also absorbs three former
- * core rules — content is version-exact, reference paths are skill-root-relative, prefer PDS for new
- * UI — and identifies the package artifacts available beside the skill. The Stencil implementation is
- * deliberately handled as a version-matched fallback because it is deployed through the CDN rather
- * than included in the wrapper package.
+ * Identifies local package artifacts and the exact-version source fallback for CDN-loaded Stencil.
  */
 const renderIntro = (framework: Framework): string => {
   const peerNote =
@@ -125,16 +102,12 @@ const renderReactSsrSection = (): string =>
       'Remix users should follow the React Router guidance because Remix v2 was upstreamed into React Router.',
   ].join('\n');
 
-/** The `references/deprecations.md` file name, relative to the tree's `references/` directory. */
 export const DEPRECATIONS_REFERENCE_FILE = 'deprecations.md';
 
-/** Skill-root-relative path of the deprecation index. */
 export const DEPRECATIONS_REFERENCE = `references/${DEPRECATIONS_REFERENCE_FILE}`;
 
 /**
- * The `## Deprecations` section body. It points at the index rather than summarising it, because the
- * whole value of the index is being one read instead of many — restating any of it here would invite
- * an agent to answer from the summary and stop.
+ * Links the complete index instead of duplicating a summary that could be mistaken for full coverage.
  */
 export const renderDeprecationsSection = (): string =>
   [
@@ -147,7 +120,6 @@ export const renderDeprecationsSection = (): string =>
       'styling references cover the same facts per component. Never introduce a deprecated API in new code.',
   ].join('\n');
 
-/** The domain-rendered section bodies, in the order they appear in SKILL.md. */
 export type SkillMdSections = {
   components: string;
   stylesheets: string;
@@ -156,7 +128,6 @@ export type SkillMdSections = {
   deprecations: string;
 };
 
-/** Assemble the full SKILL.md from the frontmatter, intro and the domain-rendered sections. */
 export const buildSkillMd = (framework: Framework, sections: SkillMdSections): string => {
   const frontmatter = renderFrontmatter({
     name: skillName(framework),

@@ -6,25 +6,11 @@ import { cssVariableTokens } from './theme';
 import type { StylesheetsMeta } from './types';
 import { colorScheme } from './utilities/color-scheme';
 
-// The `./meta` entry point — INTERNAL. `meta/` is never copied into the wrapper packages; only
-// `lib/*.css` is published. This entry point exists for the storefront docs and the skills
-// generator — the CSS it describes is what consumers actually get. Verify with
-// `ls packages/components-js/dist/components-wrapper/stylesheets`, which is the npm package's copy.
-// See `docs/public-api.md`.
-//
-// `cssVariableTokens` and `colorScheme` together are the catalog: every public declaration,
-// documented and deprecated alike, and what the generated CSS is built from. The two exports below
-// are its projections, so a declaration cannot reach a consumer without being documented or
-// published as deprecated. There is no separate deprecated catalog — deprecating is one
-// `deprecation` field on the declaration, never a move between two places.
+// Internal metadata for storefront docs and skill generation; wrappers publish only generated CSS.
 
 /**
- * The documented single source of truth, shared with the storefront docs and the LLM skill: the
- * catalog without its deprecated declarations. A domain-keyed catalog whose leaves are a
- * discriminated `StylesheetNode` union: CSS variables are `token`s, the `.scheme-*` classes are
- * `utility`s. Use `kindOf` to recover a leaf's kind. Leaves are the same object references the CSS
- * is built from, so docs and generated CSS can't diverge. The `normalize` reset has no documented
- * leaves and therefore lives only in the composition layer (`css/index.ts`), not here.
+ * Documented catalog with deprecated declarations removed. Shared leaf references keep docs and
+ * generated CSS aligned.
  */
 export const stylesheetsMeta = {
   ...stripDeprecated(cssVariableTokens),

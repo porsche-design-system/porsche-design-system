@@ -2,35 +2,26 @@ import path from 'node:path';
 import type { Framework } from './skillTree';
 
 /**
- * Rewrites storefront site-absolute markdown links in generated prose so they resolve inside the
- * skill tree. The MDX sources link to storefront pages by absolute path (`](/components/button/)`,
- * `](/patterns/forms/)`); those paths do not exist inside the shipped skill, so left untouched they
- * are dead links. Each is remapped to the local reference that covers the same topic — a component's
- * own reference, a styling-solution / stylesheets / tokens reference — relative to the file the link
- * appears in. Anything with no local equivalent (patterns, must-know, developing guides) is pointed
- * at the canonical docs URL so it still resolves.
+ * Rewrites storefront-absolute links to local skill references, falling back to the live docs when
+ * no local equivalent exists.
  */
 
-/** Live docs origin, used as the fallback for storefront pages the skill does not ship a reference for. */
 const STOREFRONT_ORIGIN = 'https://designsystem.porsche.com';
 
 export type RouteReferences = Readonly<Record<string, string>>;
 
-/** File-relative link from `fromDir` to a tree-relative target, always prefixed (`./` or `../`). */
 const relativeLink = (fromDir: string, target: string): string => {
   const relative = path.posix.relative(fromDir, target);
   return relative.startsWith('.') ? relative : `./${relative}`;
 };
 
-/** Map a single storefront-absolute href to its in-tree target, or `null` to fall back to the docs URL. */
 const localTarget = (href: string, routeReferences: RouteReferences): string | null => {
   const [first, second] = href
     .replace(/[?#].*$/, '')
     .split('/')
     .filter(Boolean);
 
-  // A component page (`/components/<slug>[/...]`) maps to that component's own reference. Any sub-path
-  // (examples, api, accessibility) collapses to the reference, which already covers all of it.
+  // One generated component reference covers every storefront tab.
   if (first === 'components' && second) {
     const tag = `p-${second}`;
     return `references/components/${tag}/${tag}.md`;
@@ -39,21 +30,12 @@ const localTarget = (href: string, routeReferences: RouteReferences): string | n
 };
 
 /**
- * The multi-framework package placeholder the storefront MDX and style serializers author, e.g.
- * `@porsche-design-system/components-{js|angular|react|vue}`. Correct in the framework-agnostic
- * storefront, but each skill tree ships for one framework — so the placeholder must resolve to the
- * concrete package name (the whole point of shipping four trees).
+ * Framework-agnostic source uses this placeholder; each generated skill resolves it to one wrapper.
  */
 const FRAMEWORK_PLACEHOLDER = '{js|angular|react|vue}';
 
-/** A `Replace {js|angular|react|vue} with your framework …` instruction line — obsolete once resolved. */
 const PLACEHOLDER_INSTRUCTION = /^.*Replace \{js\|angular\|react\|vue\} with your framework[^\n]*\n?/gm;
 
-/**
- * Resolve the framework placeholder in generated content to this tree's concrete package name, and
- * drop the now-pointless "replace it with your framework" instruction. A no-op on content that does
- * not carry the placeholder, so it is safe to run over every produced file.
- */
 export const resolveFrameworkPlaceholder = (markdown: string, framework: Framework): string =>
   markdown.replace(PLACEHOLDER_INSTRUCTION, '').replaceAll(FRAMEWORK_PLACEHOLDER, framework);
 

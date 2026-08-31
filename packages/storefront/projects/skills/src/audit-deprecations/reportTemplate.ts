@@ -3,30 +3,15 @@ import { skillName as knowledgeSkillName } from '../knowledge/skillMd';
 import type { Framework } from '../shared/skillTree';
 
 /**
- * The Markdown report's structure, as a literal skeleton the agent fills in.
- *
- * The JSON has a schema; the Markdown had nothing, so its shape was composed per run — two audits of
- * the same project produced differently sectioned reports, and the report is the artifact a user
- * actually opens. This file is the Markdown's equivalent of the schema: the sections, their order and
- * the per-finding shape are fixed, so a reader finds the same document every time and an agent later
- * asked to apply the report can rely on where things are.
- *
- * It ships as a reference rather than inline in `SKILL.md` for the same reason the schema does — the
- * agent renders *against* it, one section at a time, and a whole document skeleton pasted into the
- * method would outweigh the method itself.
- *
- * Placeholders name the JSON path they render (`<audit.pdsVersion>`) rather than describing the value
- * in words, so every line in the report is traceable to the field it came from and nothing in it can
- * be sourced from memory.
+ * Fixed Markdown report structure. Placeholders use JSON paths so every rendered value remains
+ * traceable to the validated report.
  */
 
-/** Where the template lives inside the skill tree. */
 export const REPORT_TEMPLATE_FILE = 'references/report-template.md';
 
-/** The document skeleton, fenced so its own headings cannot be mistaken for this file's. */
+/** Prevents template headings from being parsed as this file's structure. */
 const TEMPLATE_FENCE = '````';
 
-/** Fence used for a quoted source line inside the template. */
 const SNIPPET_FENCE = '```';
 
 const renderTemplate = (framework: Framework): string =>
@@ -149,7 +134,6 @@ const renderTemplate = (framework: Framework): string =>
       'finding has been resolved.',
   ].join('\n');
 
-/** Assemble the reference: how to read the skeleton, the skeleton, and the values it derives. */
 export const buildReportTemplate = (framework: Framework): string =>
   [
     '# Markdown report template',

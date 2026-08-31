@@ -4,17 +4,8 @@ import type { Framework } from '../shared/skillTree';
 import { DETECTION_IDS, VALUE_RESOLUTION_IDS } from './grading';
 
 /**
- * The versioned JSON Schema the audit's machine-readable report validates against.
- *
- * Built rather than hand-written so the enums that also exist in code — usage kinds, efforts,
- * detections — cannot drift from what the skill actually ships. A schema claiming `usageKind` values
- * the index never emits, or a `detection` the method never tells an agent to record, would be a
- * contract nobody could satisfy.
- *
- * The top-level frame — `schemaVersion`, `audit`, `summary.result`, `findings` — says nothing about
- * deprecations on purpose. A later `pds-audit-<framework>` is meant to index every focused audit's
- * report without knowing what each one audits, and `audit.auditKind` is what tells them apart. Only
- * `findings` is subject-specific.
+ * The report schema derives shared enums from code to prevent drift. Its generic top-level shape
+ * allows future audit types to share the same report reader.
  */
 
 /** Bumped when the report shape changes in a way a consumer must react to. */
@@ -23,7 +14,6 @@ export const REPORT_SCHEMA_VERSION = '1.0.0';
 /** Discriminates this report from a future audit's, for a consumer reading a run directory. */
 export const AUDIT_KIND = 'deprecations';
 
-/** File name of the schema inside the skill tree. */
 export const REPORT_SCHEMA_FILE = 'references/report.schema.json';
 
 const stringArray = (description: string) => ({ type: 'array', description, items: { type: 'string' } });

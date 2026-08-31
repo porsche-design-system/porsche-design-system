@@ -1,18 +1,9 @@
-// The emotion meta model — the documented single source of truth these types validate. Leaves
-// (`EmotionToken`, `EmotionUtility`) carry payloads; records and arrays only group. Mirrors the
-// scss meta skeleton (`scss/src/types.ts`); a leaf's kind is recovered via `kindOf` (`./kind`).
-// A deprecated export is never documented here: it is published by `emotionDeprecations`, the shared
-// `Deprecations` list generated from the `@deprecated` annotations, which is the whole deprecated surface.
-
-/** A documented referenceable value (color, radius, breakpoint, font-size, …). */
 export type EmotionToken = {
   name: string;
   description: string;
   value: string | number;
 };
 
-/** A documented applied style — an emotion style object or a function returning one
- *  (focus/mediaQuery/skeleton/typography helpers, grid styles, …). */
 export type EmotionUtility = {
   name: string;
   description: string;
@@ -21,13 +12,10 @@ export type EmotionUtility = {
 
 export type EmotionNode = EmotionToken | EmotionUtility;
 
-/** Any branch of the meta tree: a leaf {@link EmotionNode}, an array, or a nested record. Only leaves carry payloads. */
 export type EmotionBranch = EmotionNode | EmotionBranch[] | { [key: string]: EmotionBranch };
 
 /**
- * How we want styles categorised and named, independent of the styling solution. Hand-authored
- * intent, parameterized so it can become the shared cross-solution contract; package-local for now,
- * since the four solutions still differ in shape. Mirrors the scss and tailwind packages.
+ * Package-local cross-solution catalog contract; styling solutions still differ in shape.
  */
 export type StylesMeta<TToken, TUtility> = {
   border: {

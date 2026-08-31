@@ -14,22 +14,13 @@ import {
 } from './packageSkills';
 import { buildSkillMd, DEPRECATIONS_REFERENCE_FILE, renderDeprecationsSection } from './skillMd';
 
-/** Reference sub-directories the knowledge tree lays out before any content is written. */
 const KNOWLEDGE_DIRECTORY_LAYOUT = ['references/components', 'references/styles'] as const;
 
-/** The storefront sources the knowledge skill reads. */
 type KnowledgeInputs = { docsMeta: ComponentDocsMetaMap };
 
 /**
- * Orchestrates one framework's knowledge tree, mirroring the generated layout: the package-skill
- * references (`references/stylesheets.md`, `references/styles/*.md`, `references/tokens.md`), the
- * component references (`references/components/**`, `references/icons.md`), and finally `SKILL.md`
- * assembled from the domain-rendered sections. Adding a domain means adding its write call (and
- * section, if it owns one) here.
- *
- * The component docs meta is passed in rather than imported: it is the storefront's MDX-backed
- * `components.meta`, which only resolves under the MDX/alias-aware runtime the `build:skills` CLI
- * wires up (see `scripts/build-skills.ts`).
+ * Component docs are injected because MDX-backed metadata resolves only in the build CLI's
+ * alias-aware runtime.
  */
 export const generateKnowledgeSkill: SkillGenerator<KnowledgeInputs> = (root, framework, { docsMeta }) => {
   const routeReferences = getPackageSkillRouteReferences();

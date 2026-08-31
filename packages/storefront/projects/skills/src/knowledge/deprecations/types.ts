@@ -2,26 +2,14 @@ import { USAGE_KINDS, type UsageKind } from '@porsche-design-system/shared/depre
 import { getWrapperPackageName, type SkillFramework } from '../../registry';
 
 /**
- * The vocabulary of the deprecation index — the inverse of the knowledge skill's per-component
- * references: every deprecated Porsche Design System API in the installed version, in one place, so
- * an audit can scan a project in a single pass instead of reconstructing the catalog from ~63
- * reference files.
- *
- * Nothing here parses a deprecation message. Messages are carried verbatim (see
- * {@link DeprecationEntry.message}) because their wording is inconsistent across the codebase
- * (`Has no effect anymore.` versus `has no effect anymore`) and a consumer that branched on the prose
- * would break the day a maintainer rewords a comment.
+ * Shared deprecation-index vocabulary. Messages remain opaque source text; consumers must not derive
+ * behavior from their wording.
  */
 
 export type { UsageKind };
 /**
- * What kind of API a deprecated entry names. This is the only axis the index classifies on, and it
- * drives {@link BASELINE_EFFORT} and how the audit searches for the entry.
- *
- * The split that matters for detection is identifier-vs-value: every kind except `propValue` is
- * statically present in source no matter what data flows through it (`<PAccordion heading={x}>`
- * already proves the deprecated prop is used), while a deprecated `propValue` is a plain string that can
- * arrive from a variable, a constant or a spread.
+ * Drives search behavior and baseline effort. Unlike identifiers, `propValue` requires resolving the
+ * value's origin.
  */
 export { USAGE_KINDS };
 
@@ -30,15 +18,8 @@ export const EFFORTS = ['trivial', 'small', 'medium', 'large'] as const;
 export type Effort = (typeof EFFORTS)[number];
 
 /**
- * Baseline remediation effort per usage kind — a deterministic default, so ordering a report by
- * effort keeps two runs of the same audit in agreement where a per-finding judgement call would not.
- *
- * Only the kind lives here. The audit raises it a level when an entry documents no replacement (see
- * `audit-deprecations/grading.ts`), and may deviate further on concrete project evidence as long as
- * it records the observed effort and the reason. Because the baseline is known, both stay reviewable.
- *
- * It is a mapping rather than a field on each entry because the kind fully determines it — the audit
- * states the table once instead of the index repeating a constant on ~400 rows.
+ * Deterministic remediation baseline per usage kind. Missing replacements and project evidence may
+ * adjust it later.
  */
 export const BASELINE_EFFORT: Record<UsageKind, Effort> = {
   propValue: 'trivial',
@@ -70,11 +51,9 @@ export const SOURCE_CATEGORIES = [
 ] as const;
 export type SourceCategory = (typeof SOURCE_CATEGORIES)[number];
 
-/** Public wrapper export formatted for generated Markdown. */
 export const publicWrapperExport = (framework: SkillFramework, subpath = ''): string =>
   `\`${getWrapperPackageName(framework)}${subpath}\``;
 
-/** One deprecated API. */
 export type DeprecationEntry = {
   /**
    * Stable rule id, e.g. `prop/p-accordion/heading`. Part of the report contract: findings are
@@ -102,10 +81,8 @@ export type DeprecationEntry = {
 };
 
 /**
- * One source category's contribution. `expectedEmpty` marks a category that legitimately has no
- * deprecations in this release; the completeness gate fails a category that is empty *without* the
- * declaration, so the day tokens or icons gain their first deprecation someone has to decide about it
- * rather than the index silently staying short.
+ * `expectedEmpty` distinguishes a checked empty source from a collector that silently returned no
+ * entries.
  */
 export type DeprecationSource = {
   category: SourceCategory;

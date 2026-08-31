@@ -9,36 +9,17 @@ import { baselineEffort, DETECTIONS, VALUE_RESOLUTIONS } from './grading';
 import { REPORT_SCHEMA_FILE, REPORT_SCHEMA_VERSION } from './reportSchema';
 import { REPORT_TEMPLATE_FILE } from './reportTemplate';
 
-/**
- * Builds the skill's `SKILL.md` — the whole method, in one file.
- *
- * The skill audits one subject, so it reads as one continuous procedure: check the framework, load
- * the index, find usage, grade it, verify it, write it. An earlier draft split a general "audit
- * method" from a "deprecated usage" reference to leave room for further domains; that room is now
- * left by shipping a *separate* audit skill per subject instead, which keeps each one small enough to
- * run end to end on a large project and keeps `pds-audit-<framework>` free for a skill that composes
- * them.
- *
- * It carries no Porsche Design System facts. Those live in the knowledge skill, which ships beside
- * this one in the same package and therefore cannot describe a different version.
- */
+/** Builds the complete audit procedure. Version-specific facts stay in the sibling knowledge skill. */
 
-/** Canonical name of the wrapper's deprecation audit — `pds-audit-deprecations-<framework>`. */
 export const skillName = (framework: Framework): string => getSkillName('audit-deprecations', framework);
 
-/** The wrapper packages whose presence means a project is *not* a plain Vanilla JS project. */
 const FRAMEWORK_WRAPPERS = ['react', 'angular', 'vue'] as const;
 
-/** Where the run's two report files land, relative to the project root. */
 const RUN_DIRECTORY = '.pds/audits/<runId>/';
 
 /**
- * What the skill does, shown to a user choosing it. Not activation guidance: the skill is
- * manual-only (see {@link DISABLE_MODEL_INVOCATION}), so "use when…" and "do not activate for…"
- * clauses would address a reader that never sees this — the model. It names the framework because
- * four of these can be installed side by side and the user has to pick the right one.
- *
- * Rendered verbatim into the YAML frontmatter, so it must stay a single line.
+ * User-facing skill description. It names the framework because variants can be installed together
+ * and must remain a single YAML-safe line.
  */
 const DESCRIPTION = (framework: Framework): string =>
   `Audit an existing ${framework === 'js' ? 'Vanilla JS' : framework} project for deprecated Porsche Design System ` +
@@ -46,32 +27,12 @@ const DESCRIPTION = (framework: Framework): string =>
   'aliases. Produces a JSON report and a Markdown report rendered from it, every finding carrying quoted evidence, a ' +
   'concrete fix and a derived confidence. Read-only apart from its two report files.';
 
-/**
- * Auditing is a deliberate act with a deliberate cost — it reads the whole project and writes report
- * files — so it runs when a user asks for it, never because a prompt looked adjacent to it.
- *
- * Manual-only also removes the risk that most concerned the design: an audit triggered as a side
- * effect of some other task would produce a report nobody asked for and nobody reads, and a
- * half-attended audit that reports nothing is indistinguishable from a clean codebase.
- *
- * The knowledge skill deliberately does **not** carry this flag — it exists to fire broadly on
- * frontend work, including work the user never thought to connect to PDS.
- */
+/** Audits read the project and write reports, so they require explicit invocation. */
 const DISABLE_MODEL_INVOCATION = true;
 
 /**
- * The specification's `compatibility` field, for a skill with real environment requirements.
- *
- * This audit has exactly one: it carries no Porsche Design System facts and cannot produce a single
- * finding without `pds-knowledge-<framework>`. Declaring that here puts it in the metadata layer
- * agents load at startup, so the dependency is discoverable before the body is — otherwise it exists
- * only in prose that nothing reads until the skill is already running.
- *
- * The requirement names the **exact** version rather than the package alone. Everything this audit
- * reports is version-specific — a deprecation added in the next release is simply absent from the
- * index — so auditing against a different version under-reports and reads as a clean project. In the
- * normal install that requirement is satisfied by construction, since the skill ships inside the
- * package it names; stating it is what makes the mismatch legible when the skill has been copied out.
+ * Declares the knowledge-skill dependency before execution. The exact package version matters
+ * because the deprecation index is version-specific.
  */
 const COMPATIBILITY = (framework: Framework): string =>
   `Requires the ${knowledgeSkillName(framework)} skill, which ships alongside this one in ` +
@@ -79,12 +40,8 @@ const COMPATIBILITY = (framework: Framework): string =>
   'on that exact version.';
 
 /**
- * The framework guard. A wrong-framework audit is worse than wrong-framework guidance: it finds
- * nothing and reads as a clean report, so it has to stop rather than degrade.
- *
- * The `js` variant is inverted because `@porsche-design-system/components-js` is a dependency of
- * every wrapper — its presence proves nothing on its own, so the js audit additionally requires that
- * no wrapper is present.
+ * Stops wrong-framework audits from producing false clean reports. The JS check excludes wrapper
+ * packages because they also depend on `components-js`.
  */
 const renderSelfCheck = (framework: Framework): string => {
   if (framework === 'js') {
@@ -113,11 +70,7 @@ const renderSelfCheck = (framework: Framework): string => {
 };
 
 /**
- * The deprecation index, addressed two ways.
- *
- * It lives in a *sibling* skill, so a tree-relative markdown link would dangle. The sibling path is
- * correct wherever both skills are installed together — in the package and once linked into
- * `.agents/skills/` — and the package path is the fallback for when only this skill was linked.
+ * Supports both colocated skills and installations where only the audit skill was linked.
  */
 const indexSiblingPath = (framework: Framework): string =>
   `../${knowledgeSkillName(framework)}/${DEPRECATIONS_REFERENCE}`;
@@ -151,7 +104,6 @@ const renderIndex = (framework: Framework): string =>
       'that cannot read its own catalog finds nothing, which is indistinguishable from a clean project.',
   ].join('\n');
 
-/** Files worth reading per framework, and the traps in each. */
 const FILE_SCOPE: Record<Framework, { globs: string; note: string }> = {
   js: {
     globs:
@@ -239,10 +191,7 @@ const renderScope = (framework: Framework): string => {
   ].join('\n');
 };
 
-/**
- * How PDS enters a project, per framework. Components are the part that differs: two frameworks
- * import them and two get them as custom elements, which have no import to follow at all.
- */
+/** Framework-specific roots from which component usage can be traced. */
 const COMPONENT_ROOT: Record<Framework, string> = {
   js: 'Components are custom elements, so a `p-` tag is itself the root — there is no import to follow.',
   angular: 'Components are custom elements in templates, so a `p-` tag is itself the root.',
@@ -268,15 +217,8 @@ const FALLBACK_CASES: Record<Framework, string> = {
 };
 
 /**
- * Anchoring, structured as work-outward-from-PDS rather than search-and-filter.
- *
- * The difference is structural, not stylistic. Searching the project for index identifiers and then
- * proving each hit is PDS makes anchoring a step that can be performed badly; starting at PDS and
- * following usage outward makes a non-PDS match unrepresentable. `size="small"` on a project's own
- * component is never a candidate, because the traversal never reaches it.
- *
- * It also removes any hop limit. Following usage outward *is* the wrapper graph, so depth stops being
- * a constant to argue about.
+ * Starting from PDS roots avoids matching similarly named non-PDS APIs and naturally follows wrapper
+ * chains without an arbitrary hop limit.
  */
 const renderAnchoring = (framework: Framework): string =>
   [
@@ -314,18 +256,8 @@ const renderAnchoring = (framework: Framework): string =>
   ].join('\n');
 
 /**
- * How a responsive value is written, per framework — the spellings a whole-attribute comparison
- * never matches.
- *
- * The **string-attribute** form is first and is the same everywhere: a quoted attribute holding
- * single-quoted pseudo-JSON. It is the one that gets missed, because it looks like a plain string
- * value and the deprecated identifier sits inside it. An earlier revision replaced this block with
- * prose naming no spelling at all, and the next run lost every value in
- * `size="{'base': 'small', 'l': 'x-large'}"` while finding the bound form in the same file.
- *
- * The bound form differs per framework, which is why the block is a table rather than one example:
- * the JSX spelling shipped to all four skills for as long as it was hard-coded, naming a syntax that
- * cannot occur in three of them.
+ * Responsive values need framework-specific examples because bound syntax differs, while quoted
+ * pseudo-JSON is easy to misclassify as a plain string.
  */
 const RESPONSIVE_SPELLINGS: Record<Framework, [spelling: string, gloss: string][]> = {
   react: [
@@ -346,7 +278,6 @@ const RESPONSIVE_SPELLINGS: Record<Framework, [spelling: string, gloss: string][
   ],
 };
 
-/** The spellings as an aligned code block, so the gloss reads as a column rather than a sentence. */
 const renderResponsiveSpellings = (framework: Framework): string[] => {
   const rows = RESPONSIVE_SPELLINGS[framework];
   const width = Math.max(...rows.map(([spelling]) => spelling.length)) + 3;
@@ -447,13 +378,8 @@ const renderCandidates = (framework: Framework): string =>
   ].join('\n');
 
 /**
- * The one case where "where the API sits" and "how the location was reached" disagree, answered per
- * framework because the roots differ.
- *
- * A tag assembled as a string is never reached by traversal. Where components enter through an
- * import, that makes it a `fallback-search` hit even in a file the import already anchors; where the
- * tag *is* the root, the same line is `direct`. Both fixture runs graded the React case `direct`,
- * reading `direct` as "the API appears in this file" — the reading the one-axis table removes.
+ * A string-built tag is `fallback-search` for import-based frameworks, but `direct` where the tag
+ * itself is the PDS root.
  */
 const STRING_TAG_FROM_IMPORTED_ROOT =
   'All four describe the route, so a file can carry a PDS root and still hold a `fallback-search` location. A tag ' +
@@ -474,11 +400,7 @@ const STRING_TAG_DETECTION: Record<Framework, string> = {
 };
 
 /**
- * The finding contract, and the two derived grades.
- *
- * Both grades are lookups rather than judgements — from how a location was reached, and from what
- * kind of API it is. That is deliberate: a reader can check a lookup against the evidence printed
- * beside it, where an asserted score proves nothing and costs the same to fabricate.
+ * Confidence and effort are derived lookups so readers can verify them against reported evidence.
  */
 const renderFindings = (framework: Framework): string =>
   [
@@ -567,11 +489,7 @@ const renderFindings = (framework: Framework): string =>
   ].join('\n');
 
 /**
- * The pre-write pass.
- *
- * Schema validation proves shape and nothing else: an invented rule id and a snippet that is not
- * really at that line both validate perfectly. This is the only step that checks the report against
- * the two things it makes claims about — the index and the project.
+ * Schema validation covers shape; this pass verifies claims against the index and source files.
  */
 const renderVerification = (): string =>
   [
@@ -696,7 +614,6 @@ const renderConstraints = (): string =>
       'business logic — is out of scope; say so if asked, rather than improvising a check the index cannot ground.',
   ].join('\n');
 
-/** Assemble the skill's SKILL.md. */
 export const buildAuditDeprecationsSkillMd = (framework: Framework): string =>
   [
     renderFrontmatter({

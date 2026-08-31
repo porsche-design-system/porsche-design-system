@@ -5,14 +5,10 @@ import { resolveExamplePayload } from '../../../../../src/utils/generator/resolv
 import type { Framework } from '../../shared/skillTree';
 
 /**
- * Renders a component's accessibility integration examples (anti-pattern/recommended pairs) inline
- * into its reference — the skill-side counterpart of the Storefront's `A11yIntegrationExamples`. Both
- * consume the same `ExamplePayload` shape and resolve markup through the same `resolveExamplePayload`
- * pipeline — generated snippets (for `kind: 'story'`) or authored `frameworkMarkup` (for
- * `kind: 'example'`) — so Storefront and skill output cannot drift.
+ * Uses the storefront's example pipeline so accessibility snippets stay identical in skill output.
  */
 
-/** Skill `Framework` → `FrameworkMarkup` key (the js skill is the vanilla-JS variant). */
+/** Maps the skill's `js` identifier to the markup model's `vanilla-js`. */
 const FRAMEWORK_MARKUP_KEY: Record<Framework, keyof FrameworkMarkup> = {
   js: 'vanilla-js',
   angular: 'angular',
@@ -20,8 +16,6 @@ const FRAMEWORK_MARKUP_KEY: Record<Framework, keyof FrameworkMarkup> = {
   vue: 'vue',
 };
 
-/** Skill `Framework` → fence language for the emitted anti-pattern/recommended code blocks. Snippets
- * are bare markup, so only React's JSX warrants a non-markup fence. */
 const FENCE_LANGUAGE: Record<Framework, string> = {
   js: 'html',
   angular: 'html',
@@ -29,9 +23,6 @@ const FENCE_LANGUAGE: Record<Framework, string> = {
   vue: 'html',
 };
 
-/** A component's accessibility source — the structural subset of `ComponentDocsMeta.accessibility`
- * the skill reads. The skill consumes prose as rendered mdast where the storefront holds MDX
- * components; the example payloads are the storefront types verbatim, so the two cannot drift. */
 export type SkillAccessibilityMeta = {
   overview: Root;
   examples: Record<string, AccessibilityExample>;
@@ -39,9 +30,7 @@ export type SkillAccessibilityMeta = {
 };
 
 /**
- * Resolve one example side to markup for the given skill framework. Throws — rather than skipping or
- * degrading — identifying the component tag, example key, side and framework, so a missing/empty
- * variant fails the build at its exact source instead of shipping silently blank guidance.
+ * Resolves one side and throws with source context instead of shipping empty guidance.
  */
 export const resolvePayload = (
   payload: ExamplePayload,
@@ -53,11 +42,6 @@ export const resolvePayload = (
   return resolveExamplePayload(payload, FRAMEWORK_MARKUP_KEY[framework], { tag, key, side, framework });
 };
 
-/**
- * Render the `## Integration examples` section for a component: one `### <name>` subsection per pair,
- * then fenced `#### ❌ Anti-pattern` / `#### ✅ Recommended` code blocks. Returns an empty string for
- * an empty examples map so the section is omitted entirely.
- */
 export const renderA11yIntegrationExamples = (
   tag: string,
   examples: Record<string, AccessibilityExample>,

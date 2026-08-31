@@ -3,24 +3,13 @@ import type { Framework } from '../../shared/skillTree';
 import type { ComponentRosterEntry } from './reference';
 
 /**
- * Renders the `## Components` section of SKILL.md — the components domain's presence in the
- * always-loaded entry point, next to the reference files the domain writes.
- */
-
-/**
- * Raw `component-meta` link target. The authoritative data lives only in the js
- * package; the framework wrappers' local `../../meta` is a re-export shim, so they
- * link the js peer's `/meta` subpath instead (see design "Data & state").
+ * Framework wrappers expose component metadata through the JS peer.
  */
 export const rawMetaReference = (framework: Framework): string =>
   framework === 'js' ? '../../meta' : '@porsche-design-system/components-js/meta';
 
 /**
- * Framework-specific "how the framework's syntax maps to the custom-element tags the references use"
- * note. React and Vue expose PascalCase component wrappers with framework-native prop/event syntax,
- * so the tag→component and event-name mapping is essential; Angular and vanilla JS use the
- * custom-element tags directly. This is skill-only anti-hallucination content (it carries several
- * audit correctness fixes).
+ * Maps framework syntax to the custom-element names used by shared component references.
  */
 const FRAMEWORK_SYNTAX: Record<Framework, string> = {
   react: [
@@ -55,12 +44,7 @@ const FRAMEWORK_SYNTAX: Record<Framework, string> = {
 };
 
 /**
- * The `## Components` section body: the authoritative component set inlined so it is in context the
- * moment the skill activates — the agent never has to read a separate overview first to learn what
- * exists, and the closed list anchors it against reaching for non-PDS elements. Besides the roster
- * table it carries the component-scoped rules (`component-meta` authority, the accessibility test
- * matrix) and the framework-syntax note, so the tag↔component mapping and the anti-hallucination
- * fixes survive.
+ * Inlines the authoritative component roster so unavailable components are not inferred.
  */
 export const renderComponentsSection = (framework: Framework, roster: readonly ComponentRosterEntry[]): string => {
   const rows = roster.map(({ tag, summary, status }) => [

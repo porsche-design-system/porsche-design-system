@@ -1,12 +1,7 @@
 import type { Deprecated } from '@porsche-design-system/shared/deprecation';
 
-// The scss meta model. `scssCatalog` holds every public declaration, documented and deprecated
-// alike; a declaration is deprecated by carrying the shared `Deprecated` marker in place. `scssMeta`
-// is that catalog minus its deprecated declarations, `scssDeprecations` the deprecated remainder.
-
-/** A scss variable. Renders a `$name: value;` declaration and, unless deprecated, a docs row. */
+/** A SCSS variable rendered into source and, unless deprecated, documentation. */
 export type ScssVariable = {
-  /** The `$`-prefixed Sass variable name, e.g. `$radius-xs`. */
   name: string;
   value: string | number;
   description: string;
@@ -14,30 +9,25 @@ export type ScssVariable = {
   comment?: string;
 } & Deprecated;
 
-/** A scss mixin. Renders a `@mixin` and, unless deprecated, a docs row. */
+/** A SCSS mixin rendered into source and, unless deprecated, documentation. */
 export type ScssMixin = {
   name: string;
-  /** Parameter list including parentheses, e.g. `()` or `($offset: 2px)`. */
   signature?: string;
-  /** Verbatim mixin body — the escape hatch for `@if`, `@each`, `@content`, keyframes, … */
+  /** Verbatim body supporting control flow and `@content`. */
   raw: string;
   description: string;
   /** Comment rendered on its own line above the `@mixin` declaration. Never carries deprecation semantics. */
   comment?: string;
 } & Deprecated;
 
-/** A raw scss snippet (`@use`/`@forward` lines, lookup maps, …) rendered verbatim. Composition plumbing, never catalogued. */
 export type ScssRaw = {
   raw: string;
 };
 
-/** Anything a partial renders. */
 export type ScssNode = ScssVariable | ScssMixin | ScssRaw;
 
-/** A catalog is a leaf, a list, or a group. Only leaves render; lists and groups only structure. */
 export type ScssCatalog = ScssVariable | ScssMixin | ScssCatalog[] | { [key: string]: ScssCatalog };
 
-/** A catalog without its deprecated declarations. */
 export type ScssMeta<T> = T extends { deprecation: unknown }
   ? never
   : T extends readonly (infer U)[]
@@ -46,20 +36,16 @@ export type ScssMeta<T> = T extends { deprecation: unknown }
       ? T
       : { [K in keyof T as [ScssMeta<T[K]>] extends [never] ? never : K]: ScssMeta<T[K]> };
 
-/** A per-file composition descriptor: output file, `@use` headers, description and ordered render nodes. */
 export type ScssFileMeta = {
   file: string;
   description: string;
-  /** `@use` headers this file needs so namespaced cross-references resolve, e.g. `['color']`. */
+  /** Dependencies required for namespaced cross-references. */
   uses?: string[];
   nodes: ScssNode[];
 };
 
 /**
- * How we want styles categorised and named, independent of the styling solution. Hand-authored
- * intent: `scssMeta` is checked against it, so deprecating or renaming a documented declaration
- * fails the build until this shape is updated. Parameterized so it can become the shared
- * cross-solution contract once the other styling packages adopt the catalog model.
+ * Cross-solution catalog contract. Exact keys make deprecations and renames explicit type changes.
  */
 export type StylesMeta<TToken, TUtility> = {
   border: {

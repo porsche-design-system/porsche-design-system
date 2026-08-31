@@ -1,101 +1,62 @@
 import type { Deprecated } from '@porsche-design-system/shared/deprecation';
 
-// The tailwind meta model. `tailwindCatalog` holds every public declaration, documented and
-// deprecated alike; a declaration is deprecated by carrying the shared `Deprecated` marker in place.
-// `tailwindMeta` is that catalog minus its deprecated declarations, checked against the
-// hand-authored `StylesMeta` contract; `tailwindDeprecations` is the deprecated remainder.
-
-/** A single CSS declaration, e.g. `color-scheme: dark` or `--p-color-canvas: #fff`. */
 export type CssDeclaration = {
-  /** Optional leading comment rendered above the declaration. */
   comment?: string;
-  /** The CSS property or custom property. */
   property: string;
-  /** The declaration value. */
   value: string | number;
 };
 
 /** A CSS rule or at-rule. Body is structured (`declarations`) or verbatim (`raw`). */
 export type CssRule = {
-  /** Optional leading comment rendered above the rule. */
   comment?: string;
-  /** The selector or at-rule prelude, e.g. `:root`, `@supports …`. */
   selector: string;
-  /** Declarations and/or nested rules belonging to this rule. */
   declarations?: CssNode[];
-  /** Raw CSS body rendered verbatim instead of `declarations`. */
   raw?: string;
 };
 
-/** A raw CSS snippet (comment, deprecated alias, `@keyframes`, …) rendered verbatim. */
 export type CssRaw = {
-  /** The raw CSS rendered verbatim. */
   raw: string;
 };
 
-/** A declaration, a (possibly nested) rule, or a raw snippet. */
 export type CssNode = CssRule | CssDeclaration | CssRaw;
 
-/**
- * Any branch of the meta tree: a {@link CssNode} leaf, an array, or a nested record.
- * Records/arrays group for the docs; only leaves render. Lets the assembly flatten uniformly.
- */
+/** Grouping branches organize documentation; only `CssNode` leaves render. */
 export type ThemeBranch = CssNode | ThemeBranch[] | { [key: string]: ThemeBranch };
 
-/** The full Tailwind CSS theme as data: output {@link file}, {@link description}, ordered {@link meta} tree. */
 export type TailwindCssMeta = {
-  /** The generated output file name, e.g. `index.css`. */
   file: string;
-  /** Human readable description rendered in the docs and LLM context. */
   description: string;
-  /** The ordered CssNode tree assembled into the final stylesheet. */
   meta: CssNode[];
 };
 
 /**
- * A documented Tailwind theme variable: a `description` + rendered `value`, extended with the
- * Tailwind-specific `property` (source for the `@theme` block) plus doc metadata. A `token` leaf
- * (recovered via `kindOf` by its `value`). Assignable to {@link CssDeclaration}.
+ * Documented `@theme` variable. `kindOf` recognizes token leaves by their `value`.
  */
 export type TailwindThemeVariable = {
-  /** Human readable description rendered in the docs and LLM context. */
   description: string;
-  /** The rendered value (a token, a CSS expression, …). */
   value: string | number;
-  /** The CSS custom property feeding the `@theme` block, e.g. `--color-canvas`. */
   property: string;
-  /** The Tailwind utility classes generated from this variable, e.g. `.bg-canvas`. */
   classes?: string[];
-  /** Optional leading comment rendered above the declaration in the `@theme` block. */
   comment?: string;
 } & Deprecated;
 
 /**
- * A documented Tailwind `@utility`: a `description` plus `selector` / `class` (docs) and the `raw`
- * declaration body (implementation detail, rendered verbatim). A `utility` leaf (recovered via
- * `kindOf` by the absence of `value`).
+ * Documented `@utility`. `kindOf` recognizes utility leaves by the absence of `value`.
  */
 export type TailwindUtility = {
-  /** Human readable description rendered in the docs and LLM context. */
   description: string;
-  /** Optional leading comment rendered above the utility, e.g. `Grid: Area Narrow`. */
   comment?: string;
-  /** The at-rule prelude, e.g. `@utility col-full`. */
   selector: string;
-  /** The generated utility class, e.g. `.col-full`. */
   class: string;
-  /** The raw CSS declaration body (implementation detail, rendered verbatim). */
   raw: string;
 } & Deprecated;
 
-/** A catalog is a leaf, a list, or a group. Only leaves render; lists and groups only structure. */
 export type TailwindCatalog =
   | TailwindThemeVariable
   | TailwindUtility
   | TailwindCatalog[]
   | { [key: string]: TailwindCatalog };
 
-/** A catalog without its deprecated declarations. */
 export type TailwindMeta<T> = T extends { deprecation: unknown }
   ? never
   : T extends readonly (infer U)[]

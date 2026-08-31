@@ -4,21 +4,12 @@ import { localPorscheDesignSystemVersion } from '../../shared/version';
 import { type DeprecationEntry, type DeprecationSource, USAGE_KINDS, type UsageKind } from './types';
 
 /**
- * Renders `references/deprecations.md` — every deprecated Porsche Design System API in the installed
- * version, in one file.
- *
- * The knowledge skill already records all of this, but indexed *by component*: right for building a
- * `p-button`, wrong for checking a codebase. Reconstructing "everything deprecated" from ~63
- * reference files costs a read each and fails silently — an agent that opens 55 of them produces a
- * shorter list that looks like a cleaner project. This is the inverse index, so one read answers the
- * question.
- *
- * Rendered per framework so component locating guidance matches the source syntax.
+ * Renders one inverse index for codebase audits instead of requiring every component reference.
+ * Framework variants provide syntax-specific locating guidance.
  */
 
 const code = (value: string): string => `\`${value}\``;
 
-/** Human label per source category, used for headings and the coverage table. */
 const CATEGORY_LABEL: Record<DeprecationSource['category'], string> = {
   components: 'Components',
   scss: 'SCSS',
@@ -153,7 +144,6 @@ const renderIntro = (): string =>
       'breaks that comparison.',
   ].join('\n');
 
-/** The full `references/deprecations.md` body for one framework. */
 export const renderDeprecationsReference = (sources: DeprecationSource[], framework: Framework): string =>
   [
     '# Deprecated API',

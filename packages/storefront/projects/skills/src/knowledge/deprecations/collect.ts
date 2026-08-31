@@ -10,11 +10,7 @@ import type { DeprecationSource, SourceCategory } from './types';
 import { SOURCE_CATEGORIES } from './types';
 
 /**
- * Assembles the deprecation index from every source, in the order {@link SOURCE_CATEGORIES} declares.
- *
- * The index is derived, never hand-authored — that is the property the whole audit rests on. A
- * deprecation that exists anywhere in the shipped surface cannot be missing from here without a
- * collector changing, and the completeness gates fail the build when one is.
+ * Derives the index from every collector in `SOURCE_CATEGORIES` order.
  */
 const COLLECTORS: Record<SourceCategory, () => DeprecationSource> = {
   components: collectComponentDeprecations,
@@ -27,6 +23,5 @@ const COLLECTORS: Record<SourceCategory, () => DeprecationSource> = {
   stylesheets: collectStylesheetDeprecations,
 };
 
-/** Every source category, populated or verified-empty, in declaration order. */
 export const collectDeprecations = (): DeprecationSource[] =>
   SOURCE_CATEGORIES.map((category) => COLLECTORS[category]());

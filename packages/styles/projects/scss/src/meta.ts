@@ -20,12 +20,8 @@ import { skeleton } from './utilities/skeleton';
 import { typography } from './utilities/typography';
 
 /**
- * Every public scss declaration, documented and deprecated alike, keyed by domain. This is what the
- * shipped partials are generated from and what `scssMeta` and `scssDeprecations` are projections of,
- * so a declaration cannot reach a consumer without being documented or published as deprecated.
- *
- * Internal on purpose: consumers read the two projections, never the catalog. Key order is the
- * rendered contract — the docs and the deprecation index emit entries in exactly this order.
+ * Internal source for generated partials, documentation, and deprecations. Key order is preserved in
+ * rendered output.
  */
 const scssCatalog = {
   border,
@@ -48,9 +44,8 @@ const scssCatalog = {
 };
 
 /**
- * The documented single source of truth, shared with the storefront docs and LLM context: the
- * catalog without its deprecated declarations, checked against the cross-solution contract. Leaves
- * are the same object references the scss is built from, so docs and generated scss can't diverge.
+ * Documented catalog with deprecated declarations removed. Shared leaf references keep docs and
+ * generated SCSS aligned.
  */
 export const scssMeta = stripDeprecated(scssCatalog) satisfies StylesMeta<ScssVariable, ScssMixin>;
 

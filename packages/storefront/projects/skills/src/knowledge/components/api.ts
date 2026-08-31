@@ -9,43 +9,27 @@ import { escapeCell, markdownTable } from '../../shared/markdown';
 import { ICONS_REFERENCE, isIconUnion } from './icons';
 
 /**
- * Renders the props / slots / events / CSS-variable API tables for a component's
- * `references/components/<tag>/<tag>.md`, driven entirely from `componentMeta` (the
- * authoritative source). `reference.ts` owns creation of the file and its prose; this
- * module produces only the API and sub-component sections that get appended to it.
- *
- * Deprecation is surfaced, never silently dropped: a fully deprecated prop / slot /
- * event / variable is kept but flagged `(deprecated)`, and deprecated *values* are
- * split out of a prop's recommended value list into a separate `deprecated:` note so
- * they can never be read as a recommended value.
+ * Renders component API tables from `componentMeta`. Deprecated entries remain visible, while
+ * deprecated values are separated from recommended values.
  */
 
 const code = (text: string | number): string => `\`${text}\``;
 
-/**
- * Component-level status for the roster row and headings: `'deprecated'` takes precedence over
- * `'experimental'` (a component is never both), `undefined` when neither applies.
- */
 export type ComponentStatus = 'deprecated' | 'experimental';
 
-/** The component-level status of a tag, or `undefined` when it is neither deprecated nor experimental. */
 export const componentStatus = (meta: {
   isDeprecated?: boolean;
   isExperimental?: boolean;
 }): ComponentStatus | undefined =>
   meta.isDeprecated ? 'deprecated' : meta.isExperimental ? 'experimental' : undefined;
 
-/** Trailing status suffix for a heading or roster cell, e.g. ` _(deprecated)_`; empty when neither applies. */
 export const componentStatusFlag = (meta: { isDeprecated?: boolean; isExperimental?: boolean }): string => {
   const status = componentStatus(meta);
   return status ? ` _(${status})_` : '';
 };
 
 /**
- * A prominent blockquote admonition surfacing a component's deprecated/experimental status, placed
- * directly under the `# <tag>` heading. Component-level status lives only on `componentMeta` (not the
- * prose MDX), so without this the agent would never learn a documented component is deprecated or
- * experimental. Returns `''` for a normal component.
+ * Surfaces status from `componentMeta`, which is absent from the component's prose MDX.
  */
 export const renderComponentStatusBanner = (meta: ComponentMeta): string => {
   if (meta.isDeprecated) {
@@ -58,14 +42,12 @@ export const renderComponentStatusBanner = (meta: ComponentMeta): string => {
   return '';
 };
 
-/** Trailing status markers appended to an item's name column. */
 const flags = (meta: { isDeprecated?: boolean; isExperimental?: boolean; isRequired?: boolean }): string =>
   [meta.isRequired && '(required)', meta.isDeprecated && '(deprecated)', meta.isExperimental && '(experimental)']
     .filter(Boolean)
     .map((flag) => ` _${flag}_`)
     .join('');
 
-/** Render a single allowed value the way it is written in source (string values quoted, others bare). */
 const renderValue = (value: unknown): string => {
   if (value === null) {
     return code('undefined');
@@ -91,10 +73,7 @@ const formatDefault = (meta: PropMeta): string => {
 };
 
 /**
- * Primitive type keywords. When a prop's `allowedValues` array is composed *entirely* of these, it is
- * the decomposition of a union type (e.g. `value` → `['string', 'number', 'null']` for the type
- * `string | number | null`), not a set of enumerable string literals — so it must be rendered as the
- * type, not as quoted values (`'string'`).
+ * An `allowedValues` array containing only these represents a type union, not literal choices.
  */
 const PRIMITIVE_TYPE_KEYWORDS = new Set([
   'string',
@@ -111,11 +90,6 @@ const isTypeUnionDecomposition = (allowedValues: readonly unknown[]): boolean =>
   allowedValues.length > 0 &&
   allowedValues.every((value) => typeof value === 'string' && PRIMITIVE_TYPE_KEYWORDS.has(value));
 
-/**
- * The prop's type cell: its named type plus the recommended (non-deprecated) allowed
- * values, with any deprecated values listed separately so they are never presented as
- * recommended. Breakpoint-customizable props note the generic wrapper.
- */
 const formatType = (meta: PropMeta, iconNames: ReadonlySet<string>): string => {
   const parts: string[] = [];
 
@@ -125,8 +99,7 @@ const formatType = (meta: PropMeta, iconNames: ReadonlySet<string>): string => {
     const deprecatedValues = meta.allowedValues.filter((value) => deprecated.has(value as string));
 
     if (isIconUnion(recommended, iconNames)) {
-      // Collapse the ~290-name icon enumeration to a pointer at the shared list, keeping any non-icon
-      // extras (e.g. `'none'`) inline so they are not lost.
+      // Keep non-icon union members inline when replacing the icon enumeration with a reference.
       const extras = recommended.filter((value) => !iconNames.has(value as string));
       if (extras.length > 0) {
         parts.push(extras.map(renderValue).join(' '));
@@ -141,7 +114,6 @@ const formatType = (meta: PropMeta, iconNames: ReadonlySet<string>): string => {
       }
     }
   } else {
-    // boolean / string / number / aria-object props: the named type is the documentation
     parts.push(code(meta.type));
   }
 
@@ -156,12 +128,7 @@ const buildTable = (heading: string, columns: string[], rows: string[][], level:
   [`${'#'.repeat(level)} ${heading}`, '', markdownTable(columns, rows)].join('\n');
 
 /**
- * Controlled-property notes from `componentMeta`'s `controlledMeta` — dropped entirely until now, so the
- * agent had no signal that a prop's state is owned by the consumer. Without it, `p-banner`/`p-modal`
- * read as if they hide themselves (they do not: the `dismiss` event fires but `open` stays `true` until
- * the consumer sets it back). `isInternallyMutated` marks the components that also update the prop
- * themselves (`p-select`, `p-carousel`, `p-pagination`, …) — there the consumer only needs to observe
- * the event, not write the value back.
+ * Explains whether controlled props require consumers to write event values back.
  */
 const controlledSection = (controlledMeta: NonNullable<ComponentMeta['controlledMeta']>, level: number): string => {
   const bullets = controlledMeta.map(({ props, event, isInternallyMutated }) => {
@@ -221,7 +188,6 @@ const cssVariablesTable = (cssVariablesMeta: NonNullable<ComponentMeta['cssVaria
   return buildTable('CSS Variables', ['CSS Variable', 'Default', 'Description'], rows, level);
 };
 
-/** The non-empty props/slots/events/CSS-variable tables for a component, headings at the given level. */
 const apiTables = (meta: ComponentMeta, level: number, iconNames: ReadonlySet<string>): string[] => {
   const tables: string[] = [];
   if (meta.propsMeta && Object.keys(meta.propsMeta).length > 0) {
@@ -242,7 +208,6 @@ const apiTables = (meta: ComponentMeta, level: number, iconNames: ReadonlySet<st
   return tables;
 };
 
-/** Normalize `requiredParent` (a tag, a comma-list, or an array) to a list of parent tags. */
 export const parseRequiredParents = (requiredParent: string | string[] | undefined): string[] => {
   if (!requiredParent) {
     return [];
@@ -252,10 +217,7 @@ export const parseRequiredParents = (requiredParent: string | string[] | undefin
 };
 
 /**
- * The top-level (standalone, documented) ancestors of a tag: follow `requiredParent`
- * up until a component with no parent is reached. A sub-component may resolve to more
- * than one top-level parent (e.g. `p-select-option` belongs to both `p-select` and
- * `p-multi-select`), so it is documented under each. Guards against cycles.
+ * Resolves every top-level parent, including multi-parent sub-components, while guarding cycles.
  */
 const topLevelAncestors = (
   tag: string,
@@ -268,7 +230,7 @@ const topLevelAncestors = (
   seen.add(tag);
   const parents = parseRequiredParents(componentMeta[tag]?.requiredParent);
   if (parents.length === 0) {
-    return [tag]; // no parent → this is a top-level component
+    return [tag];
   }
   const ancestors = new Set<string>();
   for (const parent of parents) {
@@ -280,9 +242,7 @@ const topLevelAncestors = (
 };
 
 /**
- * Map each top-level component tag to the sub-components (tags with a `requiredParent`)
- * that resolve to it, sorted for a deterministic tree. Sub-components have no standalone
- * docs page, so their authoritative API is documented under their parent(s).
+ * Maps sub-components to every top-level parent because they have no standalone reference.
  */
 export const buildSubComponentMap = (
   componentMeta: Record<string, ComponentMeta>
@@ -290,7 +250,7 @@ export const buildSubComponentMap = (
   const map: Record<string, { tag: string; meta: ComponentMeta }[]> = {};
   for (const [tag, meta] of Object.entries(componentMeta)) {
     if (parseRequiredParents(meta.requiredParent).length === 0) {
-      continue; // top-level component, not a sub-component
+      continue;
     }
     for (const ancestor of topLevelAncestors(tag, componentMeta)) {
       (map[ancestor] ??= []).push({ tag, meta });
@@ -302,24 +262,13 @@ export const buildSubComponentMap = (
   return map;
 };
 
-/**
- * Render the `## API` section to append to a component's `<tag>.md`. Only tables that
- * have entries are emitted. The "component-meta is authoritative" rule and the raw-meta
- * location are stated once in SKILL.md's core rules rather than per file.
- */
 export const renderComponentApi = (meta: ComponentMeta, iconNames: ReadonlySet<string> = new Set()): string => {
-  // The "component-meta is authoritative" rule and the raw-meta location live once in SKILL.md's core
-  // rules (always in context when the skill is active), so the per-file preamble that repeated it in all
-  // 58 component references is dropped — just the heading and the tables remain here.
   const sections: string[] = ['## API', ...apiTables(meta, 3, iconNames)];
   return sections.join('\n\n');
 };
 
 /**
- * Render the `## Sub-components` section appended to a parent component's `<tag>.md`.
- * Sub-components (e.g. `p-table-row`, `p-select-option`) have no standalone docs page —
- * they are only valid inside a parent — so their authoritative `component-meta` API is
- * documented here, under the parent, with each sub-component's tables demoted one level.
+ * Renders sub-component APIs under their parent because they have no standalone reference.
  */
 export const renderSubComponents = (
   subComponents: { tag: string; meta: ComponentMeta }[],

@@ -1,18 +1,9 @@
-// The vanilla-extract meta model — the documented single source of truth these types validate. Leaves
-// (`VanillaExtractToken`, `VanillaExtractUtility`) carry payloads; records and arrays only group.
-// Mirrors the scss meta skeleton (`scss/src/types.ts`); a leaf's kind is recovered via `kindOf` (`./kind`).
-// A deprecated export is never documented here: it is published by `vanillaExtractDeprecations`, the
-// shared `Deprecations` list generated from the `@deprecated` annotations — the whole deprecated surface.
-
-/** A documented referenceable value (color, radius, breakpoint, font-size, …). */
 export type VanillaExtractToken = {
   name: string;
   description: string;
   value: string | number;
 };
 
-/** A documented applied style — a vanilla-extract style object or a function returning one
- *  (focus/mediaQuery/skeleton/typography helpers, grid styles, …). */
 export type VanillaExtractUtility = {
   name: string;
   description: string;
@@ -21,16 +12,13 @@ export type VanillaExtractUtility = {
 
 export type VanillaExtractNode = VanillaExtractToken | VanillaExtractUtility;
 
-/** Any branch of the meta tree: a leaf {@link VanillaExtractNode}, an array, or a nested record. Only leaves carry payloads. */
 export type VanillaExtractBranch =
   | VanillaExtractNode
   | VanillaExtractBranch[]
   | { [key: string]: VanillaExtractBranch };
 
 /**
- * How we want styles categorised and named, independent of the styling solution. Hand-authored
- * intent, parameterized so it can become the shared cross-solution contract; package-local for now,
- * since the four solutions still differ in shape. Mirrors the scss and tailwind packages.
+ * Package-local cross-solution catalog contract; styling solutions still differ in shape.
  */
 export type StylesMeta<TToken, TUtility> = {
   border: {

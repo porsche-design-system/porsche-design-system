@@ -25,10 +25,7 @@ import { mdxjs } from 'micromark-extension-mdxjs';
 import { escapeCell, markdownTable } from '../../shared/markdown';
 import type { Framework } from '../../shared/skillTree';
 
-/**
- * Skill framework → the storefront's own framework identifier. They differ only in the vanilla-js
- * name (`js` here, `vanilla-js` in the storefront `FrameworkNotification` `showForFrameworks` prop).
- */
+/** Maps the skill's `js` identifier to the storefront's `vanilla-js`. */
 const STOREFRONT_FRAMEWORK: Record<Framework, StorefrontFramework> = {
   js: 'vanilla-js',
   angular: 'angular',
@@ -36,7 +33,6 @@ const STOREFRONT_FRAMEWORK: Record<Framework, StorefrontFramework> = {
   vue: 'vue',
 };
 
-/** The two doc components whose slotted children carry real guidance, surfaced as blockquotes. */
 const NOTIFICATION_COMPONENTS = new Set(['Notification', 'FrameworkNotification']);
 
 type MdxJsxElement = MdxJsxFlowElement | MdxJsxTextElement;
@@ -44,7 +40,6 @@ type MdxJsxElement = MdxJsxFlowElement | MdxJsxTextElement;
 const isJsxElement = (node: RootContent): node is MdxJsxElement =>
   node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement';
 
-/** Node types that carry no markdown content (ESM import/export lines, JS expressions, frontmatter). */
 const isDroppedNodeType = (type: string): boolean =>
   type === 'mdxjsEsm' || type === 'mdxFlowExpression' || type === 'mdxTextExpression' || type === 'yaml';
 
@@ -54,16 +49,14 @@ const hasChildren = (node: unknown): node is Parent =>
 const attribute = (node: MdxJsxElement, name: string): MdxJsxAttribute | undefined =>
   node.attributes.find((attr): attr is MdxJsxAttribute => attr.type === 'mdxJsxAttribute' && attr.name === name);
 
-/** Plain string value of a JSX attribute (`heading="…"`), or `undefined` for expression/boolean attributes. */
 const stringAttribute = (node: MdxJsxElement, name: string): string | undefined => {
   const value = attribute(node, name)?.value;
   return typeof value === 'string' ? value : undefined;
 };
 
 /**
- * `showForFrameworks={['react', 'vue']}` → the listed storefront frameworks. The attribute is a JS
- * expression string; the values are string literals, so the framework names are read out directly
- * (no `eval`) — anything unparseable yields an empty list, hiding the notification for every framework.
+ * Reads literal framework names without evaluating the MDX expression. Invalid input matches no
+ * framework.
  */
 const showForFrameworks = (node: MdxJsxElement): StorefrontFramework[] => {
   const expression = attribute(node, 'showForFrameworks')?.value;
@@ -71,7 +64,6 @@ const showForFrameworks = (node: MdxJsxElement): StorefrontFramework[] => {
   return [...raw.matchAll(/'([^']+)'|"([^"]+)"/g)].map((match) => (match[1] ?? match[2]) as StorefrontFramework);
 };
 
-/** Build the `link` node for an MDX `<Link href="…">…</Link>` (Next.js link → markdown link). */
 const toLink = (node: MdxJsxElement, framework: Framework): Link => ({
   type: 'link',
   url: stringAttribute(node, 'href') ?? '',
@@ -79,9 +71,7 @@ const toLink = (node: MdxJsxElement, framework: Framework): Link => ({
 });
 
 /**
- * A `Notification` / `FrameworkNotification` → a blockquote admonition: an optional bold heading line
- * followed by the slotted guidance. `FrameworkNotification` is framework-gated, so it collapses to
- * nothing for a framework it is not shown for.
+ * Converts notifications to blockquotes and drops framework-gated content from other variants.
  */
 const toNotification = (node: MdxJsxElement, framework: Framework): RootContent[] => {
   if (node.name === 'FrameworkNotification' && !showForFrameworks(node).includes(STOREFRONT_FRAMEWORK[framework])) {
@@ -106,10 +96,9 @@ const toNotification = (node: MdxJsxElement, framework: Framework): RootContent[
   return [blockquote];
 };
 
-/** A PDS custom element (`p-button`, `p-drilldown-item`, …) — non-prose, dropped. */
 const isCustomElement = (name: string): boolean => name.includes('-');
 
-/** Interactive / media / chrome HTML tags that are live-demo noise (mirrors the previous drop-list). */
+// Live-demo elements do not contribute documentation prose.
 const DROPPED_HTML = new Set([
   'input',
   'button',
@@ -134,7 +123,6 @@ const DROPPED_HTML = new Set([
 
 const HEADING_DEPTHS: Record<string, Heading['depth']> = { h1: 1, h2: 2, h3: 3, h4: 4, h5: 5, h6: 6 };
 
-/** `<ul>` / `<ol>` written as HTML in MDX → an mdast list of its `<li>` children. */
 const buildList = (node: MdxJsxElement, ordered: boolean, framework: Framework): List => ({
   type: 'list',
   ordered,
@@ -143,9 +131,8 @@ const buildList = (node: MdxJsxElement, ordered: boolean, framework: Framework):
 });
 
 /**
- * Map a plain HTML tag written as JSX in MDX (`<code>`, `<br>`, `<a href>`, `<strong>`, `<p>`, …) to its
- * mdast equivalent. Interactive/media tags are dropped; unknown wrappers keep their prose, dropping only
- * the wrapper.
+ * Converts semantic HTML to mdast, drops live-demo elements, and preserves prose from unknown
+ * wrappers.
  */
 const transformHtmlElement = (node: MdxJsxElement, framework: Framework): RootContent[] => {
   const name = node.name as string;
@@ -189,15 +176,12 @@ const transformHtmlElement = (node: MdxJsxElement, framework: Framework): RootCo
   if (DROPPED_HTML.has(name)) {
     return [];
   }
-  // Generic wrapper (span, div, section, abbr, figure, …): keep the prose, drop the wrapper.
   return transformChildren(node, framework);
 };
 
-/** Transform a single JSX element to its markdown-node replacement (0..n plain mdast nodes). */
 const transformJsxElement = (node: MdxJsxElement, framework: Framework): RootContent[] => {
   const name = node.name;
   if (name === null) {
-    // `<>…</>` fragment: keep the prose, drop the wrapper.
     return transformChildren(node, framework);
   }
   if (NOTIFICATION_COMPONENTS.has(name)) {
@@ -208,21 +192,17 @@ const transformJsxElement = (node: MdxJsxElement, framework: Framework): RootCon
     return node.type === 'mdxJsxFlowElement' ? [{ type: 'paragraph', children: [link] }] : [link];
   }
   if (isCustomElement(name)) {
-    // PDS custom element (`p-button`, …): non-prose noise.
     return [];
   }
   if (name[0] === name[0]?.toLowerCase()) {
     return transformHtmlElement(node, framework);
   }
-  // Capitalized doc-chrome component (ComponentStatus, TableOfContents, …): dropped with its children.
   return [];
 };
 
-/** Containers whose edge whitespace is insignificant — trimmed so a dropped inline JSX element
- * (e.g. `# Button <ComponentStatus/>`) does not leave an encoded trailing space in the output. */
+/** Containers trimmed after dropping inline JSX elements. */
 const EDGE_TRIMMED = new Set(['heading', 'paragraph', 'tableCell']);
 
-/** Left/right-trim the whitespace of the first/last text node so dropped inline elements leave no gap. */
 const trimEdgeWhitespace = (children: RootContent[]): RootContent[] => {
   const first = children[0];
   if (first?.type === 'text') {
@@ -236,9 +216,7 @@ const trimEdgeWhitespace = (children: RootContent[]): RootContent[] => {
 };
 
 /**
- * Merge consecutive text siblings, collapsing the whitespace across the join and dropping a space left
- * before punctuation. A dropped inline element (e.g. a live `p-tag` demo between "info button" and ",")
- * otherwise leaves two adjacent text nodes that serialize with a double space / an orphaned space.
+ * Repairs whitespace between text nodes left by removed inline elements.
  */
 const mergeAdjacentText = (children: RootContent[]): RootContent[] => {
   const merged: RootContent[] = [];
@@ -253,16 +231,13 @@ const mergeAdjacentText = (children: RootContent[]): RootContent[] => {
   return merged;
 };
 
-/** Depth-first transform of a node's children into plain mdast nodes. */
 const transformChildren = (node: Parent, framework: Framework): RootContent[] => {
   const children = mergeAdjacentText(node.children.flatMap((child) => transformNode(child as RootContent, framework)));
   return EDGE_TRIMMED.has(node.type) ? trimEdgeWhitespace(children) : children;
 };
 
 /**
- * Split a paragraph's content at hard breaks (`<br>`) into separate paragraphs — an admonition body
- * or prose that uses `<br>` to separate sentences reads as distinct blocks, not one paragraph with
- * stray line-break markers.
+ * Converts hard breaks into paragraphs so blockquotes and lists retain valid block children.
  */
 const splitParagraphAtBreaks = (children: RootContent[]): Paragraph[] => {
   const groups: RootContent[][] = [[]];
@@ -280,9 +255,7 @@ const splitParagraphAtBreaks = (children: RootContent[]): Paragraph[] => {
 };
 
 /**
- * Wrap runs of loose phrasing content (e.g. a `Notification`'s inline body) into paragraphs, splitting
- * at hard breaks, while passing block-level nodes through untouched — so a blockquote/list only ever
- * contains valid block children.
+ * Wraps loose phrasing content into valid block children.
  */
 const PHRASING_TYPES = new Set(['text', 'emphasis', 'strong', 'delete', 'inlineCode', 'link', 'image', 'break']);
 const blockify = (children: RootContent[]): RootContent[] => {
@@ -306,7 +279,6 @@ const blockify = (children: RootContent[]): RootContent[] => {
   return result;
 };
 
-/** Transform one node: strip ESM/expressions, resolve JSX elements, recurse into containers. */
 const transformNode = (node: RootContent, framework: Framework): RootContent[] => {
   if (isDroppedNodeType(node.type)) {
     return [];
@@ -315,9 +287,7 @@ const transformNode = (node: RootContent, framework: Framework): RootContent[] =
     return transformJsxElement(node, framework);
   }
   if (node.type === 'text') {
-    // Collapse the source's hard line-wrapping (soft breaks) to single spaces and drop a space left
-    // before punctuation (e.g. by a dropped inline element) — matching the previous renderer and
-    // keeping the boilerplate-stripping regexes in `prose.ts` intact.
+    // Preserve normalized prose after source wrapping and inline element removal.
     node.value = node.value.replace(/\s+/g, ' ').replace(/ ([,.;:!?])/g, '$1');
     return [node];
   }
@@ -333,8 +303,6 @@ const transformNode = (node: RootContent, framework: Framework): RootContent[] =
   return [node];
 };
 
-/** Serializer options shared by the full render and the per-cell inline render, so both agree on
- * emphasis/bullet style. */
 const TO_MARKDOWN_OPTIONS: Options = {
   extensions: [gfmToMarkdown()],
   bullet: '-',
@@ -346,7 +314,6 @@ const TO_MARKDOWN_OPTIONS: Options = {
   strong: '*',
 };
 
-/** Serialize inline (phrasing) content to a single markdown line — used for table cells. */
 const inlineToMarkdown = (children: RootContent[]): string =>
   toMarkdown(
     {
@@ -358,15 +325,12 @@ const inlineToMarkdown = (children: RootContent[]): string =>
     TO_MARKDOWN_OPTIONS
   )
     .replace(/\n+/g, ' ')
-    // A list flattened into a single-line cell leaves `\-` bullet escapes; the leading `-` needs no
-    // escaping mid-cell, so restore it.
+    // Markdown escapes flattened list markers unnecessarily inside table cells.
     .replace(/(^|\s)\\-/g, '$1-')
     .trim();
 
 /**
- * Render a GFM table through the shared `markdownTable` helper so MDX tables match the compact
- * `| --- |` style of the generator's own API tables (`api.ts`) — one table style per file. Emitted as
- * a raw `html` node so the serializer passes it through verbatim.
+ * Uses the shared table renderer so converted MDX and generated API tables have identical syntax.
  */
 const tableToMarkdown = (node: Table, framework: Framework): Html => {
   const rows = node.children.map((row) =>
@@ -384,10 +348,8 @@ export const parseMdxToMdast = (source: string): Root =>
 
 const normalize = (markdown: string): string => markdown.replace(/\n{3,}/g, '\n\n').trim();
 
-/** Rendered to nothing meaningful: empty, whitespace, or no textual content at all. */
 const isMeaningless = (markdown: string): boolean => markdown.length === 0 || !/[A-Za-z0-9]/.test(markdown);
 
-/** Serialize an (already parsed) MDX mdast tree to plain markdown for the target framework. */
 const render = (tree: Root, framework: Framework): string => {
   // The parsed tree is cached by the loader and rendered once per framework; transforms mutate nodes
   // in place, so clone first to keep every render independent (and byte-for-byte deterministic).
@@ -399,14 +361,8 @@ const render = (tree: Root, framework: Framework): string => {
 };
 
 /**
- * Renders a storefront MDX tree (component introduction / usage / accessibility / notes / example
- * description) to plain markdown. Pure and synchronous; performs no I/O and imports no built
- * component wrappers — the embedded doc components are resolved structurally from the mdast, not by
- * executing them.
- *
- * Throws when the source renders to nothing meaningful (empty / no textual content): a degraded
- * render would ship an invisible content regression, so the build fails at the exact source. Callers
- * with a designed fallback use {@link tryRenderMdxToMarkdown} instead.
+ * Renders storefront MDX structurally without executing components. Throws when no meaningful prose
+ * remains; callers with a designed fallback use {@link tryRenderMdxToMarkdown}.
  *
  * @param framework the tree being generated; gates `FrameworkNotification` to the matching content.
  * @param label optional source identifier (e.g. `p-button › usage`) used to give a failure an
@@ -421,9 +377,7 @@ export const renderMdxToMarkdown = (tree: Root, framework: Framework = 'js', lab
 };
 
 /**
- * Non-throwing variant of {@link renderMdxToMarkdown} for prose whose absence is legitimate and has a
- * designed fallback (e.g. an example's "when to use" cell falling back to the example name). Returns
- * `null` when the source renders to nothing meaningful.
+ * Non-throwing variant for optional prose; returns `null` when no meaningful content remains.
  */
 export const tryRenderMdxToMarkdown = (tree: Root, framework: Framework = 'js'): string | null => {
   const markdown = render(tree, framework);
