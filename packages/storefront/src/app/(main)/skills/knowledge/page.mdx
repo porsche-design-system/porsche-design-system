@@ -26,6 +26,15 @@ select yours to adapt the skill name and prompts on this page.
 
 <FrameworkTabs className="my-fluid-md" label="Select the framework the Knowledge Skill examples apply to" />
 
+Invoking it looks like this, using your agent's skill selection syntax:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Recommend PDS components for a responsive sign-in form.
+  `}
+/>
+
 <SkillFacts
   caption="Knowledge Skill facts"
   invocation={
