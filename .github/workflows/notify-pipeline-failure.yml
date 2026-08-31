@@ -26,6 +26,10 @@ on:
         description: 'Workflow run ID to build a notification for.'
         required: true
         type: string
+      attempt:
+        description: 'Which attempt of that run. Leave empty for the latest.'
+        required: false
+        type: string
 
 permissions:
   actions: read # list the jobs of the observed run
@@ -63,8 +67,28 @@ jobs:
         id: resolve
         # Always read run metadata from the API rather than the event payload, so that the
         # dispatch test path and the real path execute identical code.
+        #
+        # Re-running a build creates a new "attempt" of the same run. The API always answers
+        # for the newest attempt, so if someone re-ran the build while this workflow was
+        # starting up, we would describe the re-run instead of the failure we were told about.
+        # That is how a passing run once got announced with "0 failed jobs". Asking for one
+        # specific attempt avoids it.
         run: |
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID" > "$RUNNER_TEMP/run.json"
+          # Which attempt failed? The event tells us. If it ever stops telling us, stop here
+          # rather than guess, because guessing brings the bug above straight back.
+          if [ -n "$EVENT_ATTEMPT" ]; then
+            run_attempt="$EVENT_ATTEMPT"
+          elif [ "$GITHUB_EVENT_NAME" = 'workflow_run' ]; then
+            echo "::error::event did not say which attempt failed, refusing to guess"; exit 1
+          elif [ -n "$INPUT_ATTEMPT" ]; then
+            run_attempt="$INPUT_ATTEMPT"
+          else
+            run_attempt=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID" --jq '.run_attempt')
+          fi
+          echo "::notice::reporting on run $RUN_ID attempt $run_attempt"
+          attempt="repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/attempts/$run_attempt"
+
+          gh api "$attempt" > "$RUNNER_TEMP/run.json"
 
           head_branch=$(node -p "require('$RUNNER_TEMP/run.json').head_branch")
           # Mirrors contribution.yml:10-12. It lives in bash, not the `if:`, because GitHub
@@ -74,13 +98,19 @@ jobs:
             *) echo "::notice::$head_branch is not a monitored branch, skipping"; echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0 ;;
           esac
 
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs?per_page=100" > "$RUNNER_TEMP/jobs.json"
+          # Read every page of jobs, not just the first 100, so a big run loses nothing.
+          # `--slurp` gathers the pages and the jq expression merges them back into one list.
+          gh api --paginate --slurp "$attempt/jobs?per_page=100" \
+            --jq '{ jobs: (map(.jobs) | add) }' > "$RUNNER_TEMP/jobs.json"
 
           head_sha=$(node -p "require('$RUNNER_TEMP/run.json').head_sha")
           gh api "repos/$GITHUB_REPOSITORY/commits/$head_sha/pulls" > "$RUNNER_TEMP/pulls.json"
         env:
           GH_TOKEN: ${{ github.token }}
           RUN_ID: ${{ inputs.run-id || github.event.workflow_run.id }}
+          # Only one of these is ever set, depending on how this workflow was triggered.
+          EVENT_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+          INPUT_ATTEMPT: ${{ inputs.attempt }}
 
       - name: 'Build payload'
         if: steps.resolve.outputs.skip != 'true'
