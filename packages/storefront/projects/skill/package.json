@@ -37,7 +37,7 @@
     "mdast-util-to-string": "^4.0.0",
     "micromark-extension-gfm": "^3.0.0",
     "micromark-extension-mdxjs": "^3.0.0",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.9",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   },

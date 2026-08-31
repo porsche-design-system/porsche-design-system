@@ -46,7 +46,7 @@
     "next": "^16.3.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-instantsearch": "^7.41.0",
+    "react-instantsearch": "^7.42.0",
     "react-syntax-highlighter": "^16.1.1"
   },
   "devDependencies": {

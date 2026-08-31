@@ -61,7 +61,7 @@
     "local-web-server": "^5.4.0",
     "postcss": "^8",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.9",
     "typescript": "^6.0.3",
     "vite": "^8.2.0",
     "vite-plugin-html": "^3.2.2",

@@ -269,7 +269,7 @@
     "svgo": "^4.0.2",
     "syncpack": "^15.3.2",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.9",
     "typescript": "^6.0.3",
     "vite": "^8.2.0",
     "vitest": "^4.1.10",
@@ -279,8 +279,7 @@
   "overrides": {
     "madge": {
       "typescript": "$typescript"
-    },
-    "playwright-core": "1.61.0"
+    }
   },
   "volta": {
     "node": "24.15.0",
