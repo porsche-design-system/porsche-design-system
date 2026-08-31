@@ -1,12 +1,18 @@
 /**
- * The one deprecation contract every metadata-producing package shares: the marker, the published
+ * The one deprecation contract every metadata-producing package shares: the marker, the shared
  * shape and the generated wording.
+ *
+ * Internal. `@porsche-design-system/shared` is never published — this contract and the
+ * `<pkg>Deprecations` lists built from it are consumed by the storefront docs and the skills
+ * generator only — no wrapper `dist/` contains them (see `docs/public-api.md`). The *declarations*
+ * it marks — props, CSS variables, SCSS variables, style utilities, tokens — are public; the
+ * metadata describing them is not.
  *
  * A node carrying a `deprecation` is deprecated — the mere presence of the marker says so, even when
  * both fields are omitted. How the marker is *produced* differs per package (authored beside the
  * declarations it generates, or read from the `@deprecated` annotation a hand-written declaration
- * already carries), but the shape and the sentence do not, so every source publishes and renders the
- * same way.
+ * already carries), but the shape and the sentence do not, so every source is generated and
+ * rendered the same way.
  *
  * This is a deep entry point (`@porsche-design-system/shared/deprecation`) so the metadata bundles
  * that import it at runtime do not drag the package barrel along.
@@ -37,9 +43,9 @@ export type UsageKind = (typeof USAGE_KINDS)[number];
 export type Deprecated = { deprecation?: Deprecation };
 
 /**
- * A package's published deprecated surface: canonical identifiers and their markers, in the order
- * they are rendered. This is the whole read surface the deprecation index needs, so a collector adds
- * only audit vocabulary and re-spells nothing.
+ * A package's deprecated surface: canonical identifiers and their markers, in the order they are
+ * rendered. This is the whole read surface the deprecation index needs, so a collector adds only
+ * audit vocabulary and re-spells nothing.
  */
 export type Deprecations = { usageKind: UsageKind; identifier: string; deprecation: Deprecation }[];
 
