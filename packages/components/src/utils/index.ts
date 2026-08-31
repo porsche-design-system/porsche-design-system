@@ -11,6 +11,7 @@ export * from './color';
 export * from './device-detection';
 export * from './dialog';
 export * from './dom';
+export * from './element-internals';
 export { OPTION_LIST_SAFE_ZONE, optionListUpdatePosition } from './floating-ui';
 export * from './form';
 export * from './getCDNBaseURL';

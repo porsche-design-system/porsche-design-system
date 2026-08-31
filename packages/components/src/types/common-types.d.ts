@@ -9,15 +9,8 @@ export type { PropTypes, ValidatorFunction } from '../utils/validation/validateP
 
 export type LinkButtonIconName = IconName | 'none';
 
-import type { LinkButtonVariant } from '../utils/link-button/link-button-variant';
-
-export type { LinkButtonVariant } from '../utils/link-button/link-button-variant';
-export type ButtonVariant = LinkButtonVariant;
-export type { ButtonType } from '../utils/link-button/button-type';
-
-export type LinkVariant = LinkButtonVariant;
-
 export type { AlignLabel } from '../utils/link-button/align-label';
+export type { ButtonType } from '../utils/link-button/button-type';
 export type { LinkTarget } from '../utils/link-button/link-target';
 
 // TODO: Share type across repo
