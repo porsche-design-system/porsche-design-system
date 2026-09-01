@@ -1,0 +1,842 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`vanillaExtractDeprecations > matches snapshot 1`] = `
+[
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "border",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "borderRadius",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "radiusLg",
+    },
+    "identifier": "borderRadiusLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "radiusMd",
+    },
+    "identifier": "borderRadiusMedium",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "radiusSm",
+    },
+    "identifier": "borderRadiusSmall",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "borderWidth",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use 2px instead.",
+    },
+    "identifier": "borderWidthBase",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use 1px instead.",
+    },
+    "identifier": "borderWidthThin",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use backdropFilter: blurFrosted instead.",
+    },
+    "identifier": "frostedGlassStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use individual variables instead.",
+    },
+    "identifier": "theme",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use individual variables instead.",
+    },
+    "identifier": "themeDark",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorCanvas",
+    },
+    "identifier": "themeDarkBackgroundBase",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorFrosted",
+    },
+    "identifier": "themeDarkBackgroundFrosted",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorBackdrop",
+    },
+    "identifier": "themeDarkBackgroundShading",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorSurface",
+    },
+    "identifier": "themeDarkBackgroundSurface",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorContrastHigh",
+    },
+    "identifier": "themeDarkContrastHigh",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorContrastLow",
+    },
+    "identifier": "themeDarkContrastLow",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorContrastMedium",
+    },
+    "identifier": "themeDarkContrastMedium",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorError",
+    },
+    "identifier": "themeDarkNotificationError",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorErrorFrosted",
+    },
+    "identifier": "themeDarkNotificationErrorSoft",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorInfo",
+    },
+    "identifier": "themeDarkNotificationInfo",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorInfoFrosted",
+    },
+    "identifier": "themeDarkNotificationInfoSoft",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorSuccess",
+    },
+    "identifier": "themeDarkNotificationSuccess",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorSuccessFrosted",
+    },
+    "identifier": "themeDarkNotificationSuccessSoft",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorWarning",
+    },
+    "identifier": "themeDarkNotificationWarning",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorWarningFrosted",
+    },
+    "identifier": "themeDarkNotificationWarningSoft",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorPrimary",
+    },
+    "identifier": "themeDarkPrimary",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorFrosted",
+    },
+    "identifier": "themeDarkStateActive",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {},
+    "identifier": "themeDarkStateDisabled",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorFocus",
+    },
+    "identifier": "themeDarkStateFocus",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorFrosted",
+    },
+    "identifier": "themeDarkStateHover",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use individual variables instead.",
+    },
+    "identifier": "themeLight",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorCanvas",
+    },
+    "identifier": "themeLightBackgroundBase",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorFrosted",
+    },
+    "identifier": "themeLightBackgroundFrosted",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorBackdrop",
+    },
+    "identifier": "themeLightBackgroundShading",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorSurface",
+    },
+    "identifier": "themeLightBackgroundSurface",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorContrastHigh",
+    },
+    "identifier": "themeLightContrastHigh",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorContrastLow",
+    },
+    "identifier": "themeLightContrastLow",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorContrastMedium",
+    },
+    "identifier": "themeLightContrastMedium",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorError",
+    },
+    "identifier": "themeLightNotificationError",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorErrorFrosted",
+    },
+    "identifier": "themeLightNotificationErrorSoft",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorInfo",
+    },
+    "identifier": "themeLightNotificationInfo",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorInfoFrosted",
+    },
+    "identifier": "themeLightNotificationInfoSoft",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorSuccess",
+    },
+    "identifier": "themeLightNotificationSuccess",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorSuccessFrosted",
+    },
+    "identifier": "themeLightNotificationSuccessSoft",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorWarning",
+    },
+    "identifier": "themeLightNotificationWarning",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorWarningFrosted",
+    },
+    "identifier": "themeLightNotificationWarningSoft",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorPrimary",
+    },
+    "identifier": "themeLightPrimary",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorFrosted",
+    },
+    "identifier": "themeLightStateActive",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {},
+    "identifier": "themeLightStateDisabled",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorFocus",
+    },
+    "identifier": "themeLightStateFocus",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "colorFrosted",
+    },
+    "identifier": "themeLightStateHover",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "fontPorscheNext",
+    },
+    "identifier": "fontFamily",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "leadingNormal",
+    },
+    "identifier": "fontLineHeight",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use typescale variables instead.",
+    },
+    "identifier": "fontSize",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "fontSizeDisplay",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use typescale variables instead.",
+    },
+    "identifier": "fontSizeHeading",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleLg",
+    },
+    "identifier": "fontSizeHeadingLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleMd",
+    },
+    "identifier": "fontSizeHeadingMedium",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleSm",
+    },
+    "identifier": "fontSizeHeadingSmall",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleXl",
+    },
+    "identifier": "fontSizeHeadingXLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescale2Xl",
+    },
+    "identifier": "fontSizeHeadingXXLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use typescale variables instead.",
+    },
+    "identifier": "fontSizeText",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleLg",
+    },
+    "identifier": "fontSizeTextLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleMd",
+    },
+    "identifier": "fontSizeTextMedium",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleSm",
+    },
+    "identifier": "fontSizeTextSmall",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleXl",
+    },
+    "identifier": "fontSizeTextXLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescaleXs",
+    },
+    "identifier": "fontSizeTextXSmall",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "typescale2Xs",
+    },
+    "identifier": "fontSizeTextXXSmall",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use 'normal' | 'italic' instead.",
+    },
+    "identifier": "fontStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use 'italic' instead.",
+    },
+    "identifier": "fontStyleItalic",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use 'normal' instead.",
+    },
+    "identifier": "fontStyleNormal",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use 'normal' instead.",
+    },
+    "identifier": "fontVariant",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use variables directly instead.",
+    },
+    "identifier": "fontWeight",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "fontWeightNormal",
+    },
+    "identifier": "fontWeightRegular",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "fontWeightSemibold",
+    },
+    "identifier": "fontWeightSemiBold",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use boxShadow: shadowLg instead.",
+    },
+    "identifier": "dropShadowHighStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use boxShadow: shadowSm instead.",
+    },
+    "identifier": "dropShadowLowStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use boxShadow: shadowMd instead.",
+    },
+    "identifier": "dropShadowMediumStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use spacing variables directly instead.",
+    },
+    "identifier": "spacing",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use spacing variables directly instead.",
+    },
+    "identifier": "spacingFluid",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidLg",
+    },
+    "identifier": "spacingFluidLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidMd",
+    },
+    "identifier": "spacingFluidMedium",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidSm",
+    },
+    "identifier": "spacingFluidSmall",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidXl",
+    },
+    "identifier": "spacingFluidXLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluidXs",
+    },
+    "identifier": "spacingFluidXSmall",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingFluid2Xl",
+    },
+    "identifier": "spacingFluidXXLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use spacing variables directly instead.",
+    },
+    "identifier": "spacingStatic",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticLg",
+    },
+    "identifier": "spacingStaticLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticMd",
+    },
+    "identifier": "spacingStaticMedium",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticSm",
+    },
+    "identifier": "spacingStaticSmall",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticXl",
+    },
+    "identifier": "spacingStaticXLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStaticXs",
+    },
+    "identifier": "spacingStaticXSmall",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "spacingStatic2Xl",
+    },
+    "identifier": "spacingStaticXXLarge",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "durationLg",
+    },
+    "identifier": "motionDurationLong",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "durationMd",
+    },
+    "identifier": "motionDurationModerate",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "durationSm",
+    },
+    "identifier": "motionDurationShort",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "durationXl",
+    },
+    "identifier": "motionDurationVeryLong",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "easeInOut",
+    },
+    "identifier": "motionEasingBase",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "easeIn",
+    },
+    "identifier": "motionEasingIn",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "easeOut",
+    },
+    "identifier": "motionEasingOut",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use background: \`linear-gradient(to bottom, \${gradientStopsFadeDark});\` instead.",
+    },
+    "identifier": "gradientToBottomStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "Use background: \`linear-gradient(to left, \${gradientStopsFadeDark});\` instead.",
+    },
+    "identifier": "gradientToLeftStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "background: \`linear-gradient(to right, \${gradientStopsFadeDark});\` instead.",
+    },
+    "identifier": "gradientToRightStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "note": "background: \`linear-gradient(to top, \${gradientStopsFadeDark});\` instead.",
+    },
+    "identifier": "gradientToTopStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeading3XlStyle",
+    },
+    "identifier": "displaySmallStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeading4XlStyle",
+    },
+    "identifier": "displayMediumStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeading5XlStyle",
+    },
+    "identifier": "displayLargeStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeadingSmStyle",
+    },
+    "identifier": "headingSmallStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeadingMdStyle",
+    },
+    "identifier": "headingMediumStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeadingLgStyle",
+    },
+    "identifier": "headingLargeStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeadingXlStyle",
+    },
+    "identifier": "headingXLargeStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseHeading2XlStyle",
+    },
+    "identifier": "headingXXLargeStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseText2XsStyle",
+    },
+    "identifier": "textXXSmallStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextXsStyle",
+    },
+    "identifier": "textXSmallStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextSmStyle",
+    },
+    "identifier": "textSmallStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextMdStyle",
+    },
+    "identifier": "textMediumStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextLgStyle",
+    },
+    "identifier": "textLargeStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "proseTextXlStyle",
+    },
+    "identifier": "textXLargeStyle",
+    "usageKind": "jsExport",
+  },
+  {
+    "deprecation": {
+      "replacement": "getFocusVisibleStyle",
+    },
+    "identifier": "getFocusStyle",
+    "usageKind": "jsExport",
+  },
+]
+`;

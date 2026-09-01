@@ -97,8 +97,9 @@ reference below to discover what is available; read the shipped partials for the
 ### Deprecated aliases
 
 The package still ships the legacy \`$pds-*\` variables and \`pds-*\` mixins as deprecated aliases so
-existing stylesheets keep compiling. Prefer the documented variables and mixins listed here for new
-code.
+existing stylesheets keep compiling. Each is preceded by a \`// @deprecated …\` comment in the
+shipped partials naming its replacement, and the complete list is in the knowledge skill's
+\`references/deprecations.md\`. Prefer the documented variables and mixins listed here for new code.
 
 ## Contents
 

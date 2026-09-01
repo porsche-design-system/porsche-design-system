@@ -2,8 +2,7 @@
 
 exports[`should contain correct scss content for file ./dist/_blur.scss 1`] = `
 "$blur-frosted: blur(32px);
-
-/* alias (deprecated) */
+// @deprecated Use $blur-frosted instead. This API will be removed with the next major release.
 @mixin pds-frosted-glass {
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
@@ -21,12 +20,16 @@ $radius-2xl: 16px;
 $radius-3xl: 24px;
 $radius-4xl: 32px;
 $radius-full: calc(infinity * 1px);
-
-$pds-border-radius-small: 4px; /* alias (deprecated) */
-$pds-border-radius-medium: 6px; /* alias (deprecated) */
-$pds-border-radius-large: 8px; /* alias (deprecated) */
-$pds-border-width-base: 2px; /* alias (deprecated) */
-$pds-border-width-thin: 1px; /* alias (deprecated) */
+// @deprecated Use $radius-sm instead. This API will be removed with the next major release.
+$pds-border-radius-small: 4px;
+// @deprecated Use $radius-md instead. This API will be removed with the next major release.
+$pds-border-radius-medium: 6px;
+// @deprecated Use $radius-lg instead. This API will be removed with the next major release.
+$pds-border-radius-large: 8px;
+// @deprecated This API will be removed with the next major release.
+$pds-border-width-base: 2px;
+// @deprecated This API will be removed with the next major release.
+$pds-border-width-thin: 1px;
 "
 `;
 
@@ -37,14 +40,20 @@ $breakpoint-md: 1000;
 $breakpoint-lg: 1300;
 $breakpoint-xl: 1760;
 $breakpoint-2xl: 1920;
-
-$pds-breakpoint-base: 0; /* alias (deprecated) */
-$pds-breakpoint-xs: 480; /* alias (deprecated) */
-$pds-breakpoint-s: 760; /* alias (deprecated) */
-$pds-breakpoint-m: 1000; /* alias (deprecated) */
-$pds-breakpoint-l: 1300; /* alias (deprecated) */
-$pds-breakpoint-xl: 1760; /* alias (deprecated) */
-$pds-breakpoint-xxl: 1920; /* alias (deprecated) */
+// @deprecated This API will be removed with the next major release.
+$pds-breakpoint-base: 0;
+// @deprecated Use $breakpoint-xs instead. This API will be removed with the next major release.
+$pds-breakpoint-xs: 480;
+// @deprecated Use $breakpoint-sm instead. This API will be removed with the next major release.
+$pds-breakpoint-s: 760;
+// @deprecated Use $breakpoint-md instead. This API will be removed with the next major release.
+$pds-breakpoint-m: 1000;
+// @deprecated Use $breakpoint-lg instead. This API will be removed with the next major release.
+$pds-breakpoint-l: 1300;
+// @deprecated Use $breakpoint-xl instead. This API will be removed with the next major release.
+$pds-breakpoint-xl: 1760;
+// @deprecated Use $breakpoint-2xl instead. This API will be removed with the next major release.
+$pds-breakpoint-xxl: 1920;
 "
 `;
 
@@ -175,6 +184,86 @@ $color-error-frosted-soft: var(
   light-dark(hsl(0 80% 95% / 0.55), hsl(0 59% 15% / 0.66))
 );
 $color-focus: var(--_color-focus, light-dark(#1a44ea, #1a44ea));
+// @deprecated Use $color-primary instead. This API will be removed with the next major release.
+$pds-theme-light-primary: hsl(225 66.7% 1.2%);
+// @deprecated Use $color-canvas instead. This API will be removed with the next major release.
+$pds-theme-light-background-base: #fff;
+// @deprecated Use $color-surface instead. This API will be removed with the next major release.
+$pds-theme-light-background-surface: hsl(240 10% 95%);
+// @deprecated Use $color-backdrop instead. This API will be removed with the next major release.
+$pds-theme-light-background-shading: hsl(240 5.3% 14.9% / 0.5);
+// @deprecated Use $color-frosted instead. This API will be removed with the next major release.
+$pds-theme-light-background-frosted: hsl(240 5% 70% / 0.148);
+// @deprecated Use $color-contrast-low instead. This API will be removed with the next major release.
+$pds-theme-light-contrast-low: hsl(240 5.3% 14.9% / 0.5);
+// @deprecated Use $color-contrast-medium instead. This API will be removed with the next major release.
+$pds-theme-light-contrast-medium: hsl(240 6.1% 7% / 0.6);
+// @deprecated Use $color-contrast-high instead. This API will be removed with the next major release.
+$pds-theme-light-contrast-high: hsl(240 7.1% 11% / 0.7);
+// @deprecated Use $color-success instead. This API will be removed with the next major release.
+$pds-theme-light-notification-success: hsl(115 77.5% 27.8%);
+// @deprecated Use $color-success-frosted instead. This API will be removed with the next major release.
+$pds-theme-light-notification-success-soft: hsl(109 100% 90% / 0.55);
+// @deprecated Use $color-warning instead. This API will be removed with the next major release.
+$pds-theme-light-notification-warning: hsl(28 97.7% 34.1%);
+// @deprecated Use $color-warning-frosted instead. This API will be removed with the next major release.
+$pds-theme-light-notification-warning-soft: hsl(40 100% 90% / 0.55);
+// @deprecated Use $color-error instead. This API will be removed with the next major release.
+$pds-theme-light-notification-error: hsl(357 78% 41%);
+// @deprecated Use $color-error-frosted instead. This API will be removed with the next major release.
+$pds-theme-light-notification-error-soft: hsl(0 100% 90% / 0.55);
+// @deprecated Use $color-info instead. This API will be removed with the next major release.
+$pds-theme-light-notification-info: hsl(228 83.2% 51%);
+// @deprecated Use $color-info-frosted instead. This API will be removed with the next major release.
+$pds-theme-light-notification-info-soft: hsl(211 100% 90% / 0.55);
+// @deprecated This API will be removed with the next major release.
+$pds-theme-light-state-hover: hsla(236, 6.4%, 51%, 0.148);
+// @deprecated This API will be removed with the next major release.
+$pds-theme-light-state-active: hsla(236, 6.4%, 51%, 0.148);
+// @deprecated Use $color-focus instead. This API will be removed with the next major release.
+$pds-theme-light-state-focus: #1a44ea;
+// @deprecated This API will be removed with the next major release.
+$pds-theme-light-state-disabled: hsla(233, 6.6%, 23.9%, 0.412);
+// @deprecated Use $color-primary instead. This API will be removed with the next major release.
+$pds-theme-dark-primary: hsl(225 100% 99%);
+// @deprecated Use $color-canvas instead. This API will be removed with the next major release.
+$pds-theme-dark-background-base: hsl(225 66.7% 1.2%);
+// @deprecated Use $color-surface instead. This API will be removed with the next major release.
+$pds-theme-dark-background-surface: hsl(240 2% 10%);
+// @deprecated Use $color-backdrop instead. This API will be removed with the next major release.
+$pds-theme-dark-background-shading: hsl(240 5.3% 14.9% / 0.5);
+// @deprecated Use $color-frosted instead. This API will be removed with the next major release.
+$pds-theme-dark-background-frosted: hsl(240 2% 43% / 0.228);
+// @deprecated Use $color-contrast-low instead. This API will be removed with the next major release.
+$pds-theme-dark-contrast-low: hsl(240 12.5% 96.9% / 0.45);
+// @deprecated Use $color-contrast-medium instead. This API will be removed with the next major release.
+$pds-theme-dark-contrast-medium: hsl(240 12.5% 96.9% / 0.56);
+// @deprecated Use $color-contrast-high instead. This API will be removed with the next major release.
+$pds-theme-dark-contrast-high: hsl(240 12.5% 96.9% / 0.67);
+// @deprecated Use $color-success instead. This API will be removed with the next major release.
+$pds-theme-dark-notification-success: hsl(157 84.9% 41.6%);
+// @deprecated Use $color-success-frosted instead. This API will be removed with the next major release.
+$pds-theme-dark-notification-success-soft: hsl(157 79% 20% / 0.66);
+// @deprecated Use $color-warning instead. This API will be removed with the next major release.
+$pds-theme-dark-notification-warning: hsl(28 90.2% 56.1%);
+// @deprecated Use $color-warning-frosted instead. This API will be removed with the next major release.
+$pds-theme-dark-notification-warning-soft: hsl(52 79% 20% / 0.66);
+// @deprecated Use $color-error instead. This API will be removed with the next major release.
+$pds-theme-dark-notification-error: hsl(0 96.9% 62%);
+// @deprecated Use $color-error-frosted instead. This API will be removed with the next major release.
+$pds-theme-dark-notification-error-soft: hsl(0 79% 20% / 0.66);
+// @deprecated Use $color-info instead. This API will be removed with the next major release.
+$pds-theme-dark-notification-info: hsl(210 100% 54.5%);
+// @deprecated Use $color-info-frosted instead. This API will be removed with the next major release.
+$pds-theme-dark-notification-info-soft: hsl(210 79% 20% / 0.66);
+// @deprecated This API will be removed with the next major release.
+$pds-theme-dark-state-hover: hsla(240, 2.2%, 44.1%, 0.228);
+// @deprecated This API will be removed with the next major release.
+$pds-theme-dark-state-active: hsla(240, 2.2%, 44.1%, 0.228);
+// @deprecated Use $color-focus instead. This API will be removed with the next major release.
+$pds-theme-dark-state-focus: #1a44ea;
+// @deprecated This API will be removed with the next major release.
+$pds-theme-dark-state-disabled: hsla(240, 1.5%, 61.8%, 0.302);
 
 @mixin color-scheme() {
   .scheme-normal {
@@ -313,136 +402,21 @@ $color-focus: var(--_color-focus, light-dark(#1a44ea, #1a44ea));
     }
   }
 }
-
-$pds-theme-light-primary: hsl(225 66.7% 1.2%); /* alias (deprecated) */
-$pds-theme-light-background-base: #fff; /* alias (deprecated) */
-$pds-theme-light-background-surface: hsl(240 10% 95%); /* alias (deprecated) */
-$pds-theme-light-background-shading: hsl(
-  240 5.3% 14.9% / 0.5
-); /* alias (deprecated) */
-$pds-theme-light-background-frosted: hsl(
-  240 5% 70% / 0.148
-); /* alias (deprecated) */
-$pds-theme-light-contrast-low: hsl(
-  240 5.3% 14.9% / 0.5
-); /* alias (deprecated) */
-$pds-theme-light-contrast-medium: hsl(
-  240 6.1% 7% / 0.6
-); /* alias (deprecated) */
-$pds-theme-light-contrast-high: hsl(
-  240 7.1% 11% / 0.7
-); /* alias (deprecated) */
-$pds-theme-light-notification-success: hsl(
-  115 77.5% 27.8%
-); /* alias (deprecated) */
-$pds-theme-light-notification-success-soft: hsl(
-  109 100% 90% / 0.55
-); /* alias (deprecated) */
-$pds-theme-light-notification-warning: hsl(
-  28 97.7% 34.1%
-); /* alias (deprecated) */
-$pds-theme-light-notification-warning-soft: hsl(
-  40 100% 90% / 0.55
-); /* alias (deprecated) */
-$pds-theme-light-notification-error: hsl(357 78% 41%); /* alias (deprecated) */
-$pds-theme-light-notification-error-soft: hsl(
-  0 100% 90% / 0.55
-); /* alias (deprecated) */
-$pds-theme-light-notification-info: hsl(228 83.2% 51%); /* alias (deprecated) */
-$pds-theme-light-notification-info-soft: hsl(
-  211 100% 90% / 0.55
-); /* alias (deprecated) */
-$pds-theme-light-state-hover: hsla(
-  236,
-  6.4%,
-  51%,
-  0.148
-); /* alias (deprecated) */
-$pds-theme-light-state-active: hsla(
-  236,
-  6.4%,
-  51%,
-  0.148
-); /* alias (deprecated) */
-$pds-theme-light-state-focus: #1a44ea; /* alias (deprecated) */
-$pds-theme-light-state-disabled: hsla(
-  233,
-  6.6%,
-  23.9%,
-  0.412
-); /* (deprecated) */
-$pds-theme-dark-primary: hsl(225 100% 99%); /* alias (deprecated) */
-$pds-theme-dark-background-base: hsl(225 66.7% 1.2%); /* alias (deprecated) */
-$pds-theme-dark-background-surface: hsl(240 2% 10%); /* alias (deprecated) */
-$pds-theme-dark-background-shading: hsl(
-  240 5.3% 14.9% / 0.5
-); /* alias (deprecated) */
-$pds-theme-dark-background-frosted: hsl(
-  240 2% 43% / 0.228
-); /* alias (deprecated) */
-$pds-theme-dark-contrast-low: hsl(
-  240 12.5% 96.9% / 0.45
-); /* alias (deprecated) */
-$pds-theme-dark-contrast-medium: hsl(
-  240 12.5% 96.9% / 0.56
-); /* alias (deprecated) */
-$pds-theme-dark-contrast-high: hsl(
-  240 12.5% 96.9% / 0.67
-); /* alias (deprecated) */
-$pds-theme-dark-notification-success: hsl(
-  157 84.9% 41.6%
-); /* alias (deprecated) */
-$pds-theme-dark-notification-success-soft: hsl(
-  157 79% 20% / 0.66
-); /* alias (deprecated) */
-$pds-theme-dark-notification-warning: hsl(
-  28 90.2% 56.1%
-); /* alias (deprecated) */
-$pds-theme-dark-notification-warning-soft: hsl(
-  52 79% 20% / 0.66
-); /* alias (deprecated) */
-$pds-theme-dark-notification-error: hsl(0 96.9% 62%); /* alias (deprecated) */
-$pds-theme-dark-notification-error-soft: hsl(
-  0 79% 20% / 0.66
-); /* alias (deprecated) */
-$pds-theme-dark-notification-info: hsl(210 100% 54.5%); /* alias (deprecated) */
-$pds-theme-dark-notification-info-soft: hsl(
-  210 79% 20% / 0.66
-); /* alias (deprecated) */
-$pds-theme-dark-state-hover: hsla(
-  240,
-  2.2%,
-  44.1%,
-  0.228
-); /* alias (deprecated) */
-$pds-theme-dark-state-active: hsla(
-  240,
-  2.2%,
-  44.1%,
-  0.228
-); /* alias (deprecated) */
-$pds-theme-dark-state-focus: #1a44ea; /* alias (deprecated) */
-$pds-theme-dark-state-disabled: hsla(
-  240,
-  1.5%,
-  61.8%,
-  0.302
-); /* (deprecated) */
 "
 `;
 
 exports[`should contain correct scss content for file ./dist/_display.scss 1`] = `
 "@use "heading";
 
-/* alias (deprecated) */
+// @deprecated Use prose-heading-5xl() instead. This API will be removed with the next major release.
 @mixin pds-display-large {
   @include heading.prose-heading-5xl;
 }
-/* alias (deprecated) */
+// @deprecated Use prose-heading-4xl() instead. This API will be removed with the next major release.
 @mixin pds-display-medium {
   @include heading.prose-heading-4xl;
 }
-/* alias (deprecated) */
+// @deprecated Use prose-heading-3xl() instead. This API will be removed with the next major release.
 @mixin pds-display-small {
   @include heading.prose-heading-3xl;
 }
@@ -454,13 +428,6 @@ exports[`should contain correct scss content for file ./dist/_focus.scss 1`] = `
 @use "color";
 @use "sass:map";
 
-@mixin focus-visible($offset: 2px) {
-  &:focus-visible {
-    outline: 2px solid color.$color-focus;
-    outline-offset: $offset;
-  }
-}
-
 $pds-focus-offset-map: (
   "small": 2px,
   "none": 0,
@@ -471,7 +438,13 @@ $pds-focus-border-radius-map: (
   "medium": border.$radius-md,
 );
 
-/* alias (deprecated) */
+@mixin focus-visible($offset: 2px) {
+  &:focus-visible {
+    outline: 2px solid color.$color-focus;
+    outline-offset: $offset;
+  }
+}
+// @deprecated Use focus-visible() instead. This API will be removed with the next major release.
 @mixin pds-focus($offset: "small", $border-radius: "small") {
   // it can easily be overwritten on purpose (when placed here) and visually reflected
   @if map.has-key($pds-focus-border-radius-map, $border-radius) {
@@ -518,6 +491,9 @@ $font-porsche-next-ja:
 $font-porsche-next-ko:
   "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
   "Arial Narrow", Arial, sans-serif;
+// @deprecated Use $font-porsche-next instead. This API will be removed with the next major release.
+$pds-font-family:
+  "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
 
 @mixin cjk-font-family {
   /* Simplified Chinese */
@@ -547,6 +523,8 @@ $font-porsche-next-ko:
 }
 
 $leading-normal: calc(6px + 2.125ex);
+// @deprecated Use $leading-normal instead. This API will be removed with the next major release.
+$pds-font-line-height: calc(6px + 2.125ex);
 
 $typescale-2xs: 0.75rem;
 $typescale-xs: 0.875rem;
@@ -558,79 +536,55 @@ $typescale-2xl: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
 $typescale-3xl: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem);
 $typescale-4xl: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
 $typescale-5xl: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
+// @deprecated Use $typescale-2xs instead. This API will be removed with the next major release.
+$pds-font-size-text-xx-small: 0.75rem;
+// @deprecated Use $typescale-xs instead. This API will be removed with the next major release.
+$pds-font-size-text-x-small: 0.875rem;
+// @deprecated Use $typescale-sm instead. This API will be removed with the next major release.
+$pds-font-size-text-small: 1rem;
+// @deprecated Use $typescale-md instead. This API will be removed with the next major release.
+$pds-font-size-text-medium: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+// @deprecated Use $typescale-lg instead. This API will be removed with the next major release.
+$pds-font-size-text-large: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+// @deprecated Use $typescale-xl instead. This API will be removed with the next major release.
+$pds-font-size-text-x-large: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+// @deprecated Use $typescale-sm instead. This API will be removed with the next major release.
+$pds-font-size-heading-small: 1rem;
+// @deprecated Use $typescale-md instead. This API will be removed with the next major release.
+$pds-font-size-heading-medium: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+// @deprecated Use $typescale-lg instead. This API will be removed with the next major release.
+$pds-font-size-heading-large: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+// @deprecated Use $typescale-xl instead. This API will be removed with the next major release.
+$pds-font-size-heading-x-large: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+// @deprecated Use $typescale-2xl instead. This API will be removed with the next major release.
+$pds-font-size-heading-xx-large: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
+// @deprecated Use $typescale-3xl instead. This API will be removed with the next major release.
+$pds-font-size-display-small: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem);
+// @deprecated Use $typescale-4xl instead. This API will be removed with the next major release.
+$pds-font-size-display-medium: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
+// @deprecated Use $typescale-5xl instead. This API will be removed with the next major release.
+$pds-font-size-display-large: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 
 $font-weight-normal: 400;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
+// @deprecated Use $font-weight-normal instead. This API will be removed with the next major release.
+$pds-font-weight-regular: 400;
+// @deprecated Use $font-weight-semibold instead. This API will be removed with the next major release.
+$pds-font-weight-semi-bold: 600;
+// @deprecated Use $font-weight-bold instead. This API will be removed with the next major release.
+$pds-font-weight-bold: 700;
 
-$pds-font-family:
-  "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif; /* alias (deprecated) */
-$pds-font-hyphenation-style-overflow-wrap: break-word; /* alias (deprecated) */
-$pds-font-hyphenation-style-hyphens: var(
-  --p-hyphens,
-  auto
-); /* alias (deprecated) */
-$pds-font-line-height: calc(6px + 2.125ex); /* alias (deprecated) */
-$pds-font-size-text-xx-small: 0.75rem; /* alias (deprecated) */
-$pds-font-size-text-x-small: 0.875rem; /* alias (deprecated) */
-$pds-font-size-text-small: 1rem; /* alias (deprecated) */
-$pds-font-size-text-medium: clamp(
-  1.13rem,
-  0.21vw + 1.08rem,
-  1.33rem
-); /* alias (deprecated) */
-$pds-font-size-text-large: clamp(
-  1.27rem,
-  0.51vw + 1.16rem,
-  1.78rem
-); /* alias (deprecated) */
-$pds-font-size-text-x-large: clamp(
-  1.42rem,
-  0.94vw + 1.23rem,
-  2.37rem
-); /* alias (deprecated) */
-$pds-font-size-heading-small: 1rem; /* alias (deprecated) */
-$pds-font-size-heading-medium: clamp(
-  1.13rem,
-  0.21vw + 1.08rem,
-  1.33rem
-); /* alias (deprecated) */
-$pds-font-size-heading-large: clamp(
-  1.27rem,
-  0.51vw + 1.16rem,
-  1.78rem
-); /* alias (deprecated) */
-$pds-font-size-heading-x-large: clamp(
-  1.42rem,
-  0.94vw + 1.23rem,
-  2.37rem
-); /* alias (deprecated) */
-$pds-font-size-heading-xx-large: clamp(
-  1.6rem,
-  1.56vw + 1.29rem,
-  3.16rem
-); /* alias (deprecated) */
-$pds-font-size-display-small: clamp(
-  1.8rem,
-  2.41vw + 1.32rem,
-  4.21rem
-); /* alias (deprecated) */
-$pds-font-size-display-medium: clamp(
-  2.03rem,
-  3.58vw + 1.31rem,
-  5.61rem
-); /* alias (deprecated) */
-$pds-font-size-display-large: clamp(
-  2.28rem,
-  5.2vw + 1.24rem,
-  7.48rem
-); /* alias (deprecated) */
-$pds-font-style-normal: normal; /* alias (deprecated) */
-$pds-font-style-italic: italic; /* alias (deprecated) */
-$pds-font-variant: normal; /* alias (deprecated) */
-$pds-font-weight-regular: 400; /* alias (deprecated) */
-$pds-font-weight-semi-bold: 600; /* alias (deprecated) */
-$pds-font-weight-bold: 700; /* alias (deprecated) */
+// @deprecated This API will be removed with the next major release.
+$pds-font-hyphenation-style-overflow-wrap: break-word;
+// @deprecated This API will be removed with the next major release.
+$pds-font-hyphenation-style-hyphens: var(--p-hyphens, auto);
+// @deprecated This API will be removed with the next major release.
+$pds-font-style-normal: normal;
+// @deprecated This API will be removed with the next major release.
+$pds-font-style-italic: italic;
+// @deprecated This API will be removed with the next major release.
+$pds-font-variant: normal;
 "
 `;
 
@@ -652,20 +606,19 @@ exports[`should contain correct scss content for file ./dist/_gradient.scss 1`] 
   hsla(0, 0%, 0%, 0.05) 84.5%,
   hsla(0, 0%, 0%, 0.011) 91.9%,
   hsla(0, 0%, 0%, 0) 100%;
-
-/* alias (deprecated) */
+// @deprecated Use $gradient-stops-fade-dark instead. This API will be removed with the next major release.
 @mixin pds-gradient-to-bottom {
   background: linear-gradient(to bottom, $gradient-stops-fade-dark);
 }
-/* alias (deprecated) */
+// @deprecated Use $gradient-stops-fade-dark instead. This API will be removed with the next major release.
 @mixin pds-gradient-to-left {
   background: linear-gradient(to left, $gradient-stops-fade-dark);
 }
-/* alias (deprecated) */
+// @deprecated Use $gradient-stops-fade-dark instead. This API will be removed with the next major release.
 @mixin pds-gradient-to-right {
   background: linear-gradient(to right, $gradient-stops-fade-dark);
 }
-/* alias (deprecated) */
+// @deprecated Use $gradient-stops-fade-dark instead. This API will be removed with the next major release.
 @mixin pds-gradient-to-top {
   background: linear-gradient(to top, $gradient-stops-fade-dark);
 }
@@ -957,24 +910,23 @@ exports[`should contain correct scss content for file ./dist/_heading.scss 1`] =
 @mixin prose-heading-2xs {
   @include -prose-heading(font.$typescale-2xs, font.$font-weight-semibold);
 }
-
-/* alias (deprecated) */
+// @deprecated Use prose-heading-2xl() instead. This API will be removed with the next major release.
 @mixin pds-heading-xx-large {
   @include prose-heading-2xl();
 }
-/* alias (deprecated) */
+// @deprecated Use prose-heading-xl() instead. This API will be removed with the next major release.
 @mixin pds-heading-x-large {
   @include prose-heading-xl();
 }
-/* alias (deprecated) */
+// @deprecated Use prose-heading-lg() instead. This API will be removed with the next major release.
 @mixin pds-heading-large {
   @include prose-heading-lg();
 }
-/* alias (deprecated) */
+// @deprecated Use prose-heading-md() instead. This API will be removed with the next major release.
 @mixin pds-heading-medium {
   @include prose-heading-md();
 }
-/* alias (deprecated) */
+// @deprecated Use prose-heading-sm() instead. This API will be removed with the next major release.
 @mixin pds-heading-small {
   @include prose-heading-sm();
 }
@@ -1023,12 +975,16 @@ $pds-breakpoints: (
   "lg": breakpoint.$breakpoint-lg,
   "xl": breakpoint.$breakpoint-xl,
   "2xl": breakpoint.$breakpoint-2xl,
+  // @deprecated
   "base": breakpoint.$pds-breakpoint-base,
-  /* (deprecated) */ "s": breakpoint.$breakpoint-sm,
-  /* alias (deprecated) */ "m": breakpoint.$breakpoint-md,
-  /* alias (deprecated) */ "l": breakpoint.$breakpoint-lg,
-  /* alias (deprecated) */ "xxl": breakpoint.$breakpoint-2xl
-    /* alias (deprecated) */,
+  // @deprecated Use 'sm' instead.
+  "s": breakpoint.$breakpoint-sm,
+  // @deprecated Use 'md' instead.
+  "m": breakpoint.$breakpoint-md,
+  // @deprecated Use 'lg' instead.
+  "l": breakpoint.$breakpoint-lg,
+  // @deprecated Use '2xl' instead.
+  "xxl": breakpoint.$breakpoint-2xl,
 );
 
 @mixin media-query-min($min: null) {
@@ -1060,22 +1016,19 @@ $pds-breakpoints: (
     @error "Passed #{$min} and/or #{$max} breakpoint is not available for used media-query-min-max() mixin.";
   }
 }
-
-/* alias (deprecated) */
+// @deprecated Use media-query-min() instead. This API will be removed with the next major release.
 @mixin pds-media-query-min($min: null) {
   @include media-query-min($min) {
     @content;
   }
 }
-
-/* alias (deprecated) */
+// @deprecated Use media-query-max() instead. This API will be removed with the next major release.
 @mixin pds-media-query-max($max: null) {
   @include media-query-max($max) {
     @content;
   }
 }
-
-/* alias (deprecated) */
+// @deprecated Use media-query-min-max() instead. This API will be removed with the next major release.
 @mixin pds-media-query-min-max($min: null, $max: null) {
   @include media-query-min-max($min, $max) {
     @content;
@@ -1089,22 +1042,23 @@ exports[`should contain correct scss content for file ./dist/_motion.scss 1`] = 
 $duration-md: 0.4s;
 $duration-lg: 0.6s;
 $duration-xl: 1.2s;
+// @deprecated Use $duration-sm instead. This API will be removed with the next major release.
+$pds-motion-duration-short: 0.25s;
+// @deprecated Use $duration-md instead. This API will be removed with the next major release.
+$pds-motion-duration-moderate: 0.4s;
+// @deprecated Use $duration-lg instead. This API will be removed with the next major release.
+$pds-motion-duration-long: 0.6s;
+// @deprecated Use $duration-xl instead. This API will be removed with the next major release.
+$pds-motion-duration-very-long: 1.2s;
 $ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
 $ease-in: cubic-bezier(0, 0, 0.2, 1);
 $ease-out: cubic-bezier(0.4, 0, 0.5, 1);
-
-$pds-motion-duration-long: 0.6s; /* alias (deprecated) */
-$pds-motion-duration-moderate: 0.4s; /* alias (deprecated) */
-$pds-motion-duration-short: 0.25s; /* alias (deprecated) */
-$pds-motion-duration-very-long: 1.2s; /* alias (deprecated) */
-$pds-motion-easing-base: cubic-bezier(
-  0.25,
-  0.1,
-  0.25,
-  1
-); /* alias (deprecated) */
-$pds-motion-easing-in: cubic-bezier(0, 0, 0.2, 1); /* alias (deprecated) */
-$pds-motion-easing-out: cubic-bezier(0.4, 0, 0.5, 1); /* alias (deprecated) */
+// @deprecated Use $ease-in-out instead. This API will be removed with the next major release.
+$pds-motion-easing-base: cubic-bezier(0.25, 0.1, 0.25, 1);
+// @deprecated Use $ease-in instead. This API will be removed with the next major release.
+$pds-motion-easing-in: cubic-bezier(0, 0, 0.2, 1);
+// @deprecated Use $ease-out instead. This API will be removed with the next major release.
+$pds-motion-easing-out: cubic-bezier(0.4, 0, 0.5, 1);
 "
 `;
 
@@ -1112,20 +1066,17 @@ exports[`should contain correct scss content for file ./dist/_shadow.scss 1`] = 
 "$shadow-sm: 0px 3px 8px rgba(0, 0, 0, 0.16);
 $shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.16);
 $shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
-
-/* alias (deprecated) */
-@mixin pds-drop-shadow-high {
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
-}
-
-/* alias (deprecated) */
+// @deprecated Use $shadow-sm instead. This API will be removed with the next major release.
 @mixin pds-drop-shadow-low {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
-
-/* alias (deprecated) */
+// @deprecated Use $shadow-md instead. This API will be removed with the next major release.
 @mixin pds-drop-shadow-medium {
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+}
+// @deprecated Use $shadow-lg instead. This API will be removed with the next major release.
+@mixin pds-drop-shadow-high {
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
 }
 "
 `;
@@ -1157,7 +1108,7 @@ exports[`should contain correct scss content for file ./dist/_skeleton.scss 1`] 
     0 0 / 200% 100%;
   animation: skeleton motion.$duration-xl motion.$ease-in-out infinite;
 }
-
+// @deprecated Use skeleton() instead. This API will be removed with the next major release.
 @mixin pds-skeleton($theme: "light") {
   @include skeleton();
   @if ($theme == "dark") {
@@ -1178,6 +1129,18 @@ $spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
 $spacing-fluid-lg: clamp(32px, 2.75vw + 23px, 76px);
 $spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
 $spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
+// @deprecated Use $spacing-fluid-xs instead. This API will be removed with the next major release.
+$pds-spacing-fluid-x-small: clamp(4px, 0.25vw + 3px, 8px);
+// @deprecated Use $spacing-fluid-sm instead. This API will be removed with the next major release.
+$pds-spacing-fluid-small: clamp(8px, 0.5vw + 6px, 16px);
+// @deprecated Use $spacing-fluid-md instead. This API will be removed with the next major release.
+$pds-spacing-fluid-medium: clamp(16px, 1.25vw + 12px, 36px);
+// @deprecated Use $spacing-fluid-lg instead. This API will be removed with the next major release.
+$pds-spacing-fluid-large: clamp(32px, 2.75vw + 23px, 76px);
+// @deprecated Use $spacing-fluid-xl instead. This API will be removed with the next major release.
+$pds-spacing-fluid-x-large: clamp(48px, 3vw + 38px, 96px);
+// @deprecated Use $spacing-fluid-2xl instead. This API will be removed with the next major release.
+$pds-spacing-fluid-xx-large: clamp(80px, 7.5vw + 56px, 200px);
 $spacing-static-2xs: 1px;
 $spacing-static-xs: 4px;
 $spacing-static-sm: 8px;
@@ -1185,44 +1148,18 @@ $spacing-static-md: 16px;
 $spacing-static-lg: 32px;
 $spacing-static-xl: 48px;
 $spacing-static-2xl: 80px;
-
-$pds-spacing-static-x-small: 4px; /* alias (deprecated) */
-$pds-spacing-static-small: 8px; /* alias (deprecated) */
-$pds-spacing-static-medium: 16px; /* alias (deprecated) */
-$pds-spacing-static-large: 32px; /* alias (deprecated) */
-$pds-spacing-static-x-large: 48px; /* alias (deprecated) */
-$pds-spacing-static-xx-large: 80px; /* alias (deprecated) */
-
-$pds-spacing-fluid-x-small: clamp(
-  4px,
-  0.25vw + 3px,
-  8px
-); /* alias (deprecated) */
-$pds-spacing-fluid-small: clamp(
-  8px,
-  0.5vw + 6px,
-  16px
-); /* alias (deprecated) */
-$pds-spacing-fluid-medium: clamp(
-  16px,
-  1.25vw + 12px,
-  36px
-); /* alias (deprecated) */
-$pds-spacing-fluid-large: clamp(
-  32px,
-  2.75vw + 23px,
-  76px
-); /* alias (deprecated) */
-$pds-spacing-fluid-x-large: clamp(
-  48px,
-  3vw + 38px,
-  96px
-); /* alias (deprecated) */
-$pds-spacing-fluid-xx-large: clamp(
-  80px,
-  7.5vw + 56px,
-  200px
-); /* alias (deprecated) */
+// @deprecated Use $spacing-static-xs instead. This API will be removed with the next major release.
+$pds-spacing-static-x-small: 4px;
+// @deprecated Use $spacing-static-sm instead. This API will be removed with the next major release.
+$pds-spacing-static-small: 8px;
+// @deprecated Use $spacing-static-md instead. This API will be removed with the next major release.
+$pds-spacing-static-medium: 16px;
+// @deprecated Use $spacing-static-lg instead. This API will be removed with the next major release.
+$pds-spacing-static-large: 32px;
+// @deprecated Use $spacing-static-xl instead. This API will be removed with the next major release.
+$pds-spacing-static-x-large: 48px;
+// @deprecated Use $spacing-static-2xl instead. This API will be removed with the next major release.
+$pds-spacing-static-xx-large: 80px;
 "
 `;
 
@@ -1267,28 +1204,27 @@ exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
 @mixin prose-text-2xs {
   @include -prose-text(font.$typescale-2xs);
 }
-
-/* alias (deprecated) */
+// @deprecated Use prose-text-xl() instead. This API will be removed with the next major release.
 @mixin pds-text-x-large {
   @include prose-text-xl();
 }
-/* alias (deprecated) */
+// @deprecated Use prose-text-lg() instead. This API will be removed with the next major release.
 @mixin pds-text-large {
   @include prose-text-lg();
 }
-/* alias (deprecated) */
+// @deprecated Use prose-text-md() instead. This API will be removed with the next major release.
 @mixin pds-text-medium {
   @include prose-text-md();
 }
-/* alias (deprecated) */
+// @deprecated Use prose-text-sm() instead. This API will be removed with the next major release.
 @mixin pds-text-small {
   @include prose-text-sm();
 }
-/* alias (deprecated) */
+// @deprecated Use prose-text-xs() instead. This API will be removed with the next major release.
 @mixin pds-text-x-small {
   @include prose-text-xs();
 }
-/* alias (deprecated) */
+// @deprecated Use prose-text-2xs() instead. This API will be removed with the next major release.
 @mixin pds-text-xx-small {
   @include prose-text-2xs();
 }
