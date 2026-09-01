@@ -6,7 +6,7 @@ import { fontSizeDisplay } from './fontSizeDisplay';
 import { fontSizeHeading } from './fontSizeHeading';
 import { fontSizeText } from './fontSizeText';
 
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead. */
+/** @deprecated This API will be removed with the next major release. Use typescale variables instead. */
 export const fontSize = {
   text: fontSizeText,
   heading: fontSizeHeading,
