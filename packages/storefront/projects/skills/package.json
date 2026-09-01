@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build:skills": "node --import tsx --require ./scripts/skill-mdx-loader.cjs scripts/build-skills.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "biome lint",
     "test": "npm run test:unit:skills",
     "test:unit:skills": "npm run build:skills && vitest --config tests/config/vitest.node.config.ts && vitest --config tests/config/vitest.config.ts"

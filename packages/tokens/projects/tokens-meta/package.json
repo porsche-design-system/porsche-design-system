@@ -25,9 +25,10 @@
     "./dist/"
   ],
   "scripts": {
-    "build": "npm run clean:build && npm run build:generateTokensMeta && npm run build:package",
+    "build": "npm run clean:build && npm run build:generateTokensMeta && npm run typecheck && npm run build:package",
     "build:generateTokensMeta": "tsx scripts/generateTokensMeta.ts",
     "build:package": "rollup -c rollup.config.js",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./src/lib"

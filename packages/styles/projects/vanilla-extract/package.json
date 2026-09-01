@@ -25,11 +25,12 @@
     }
   },
   "scripts": {
-    "build": "npm run clean:build && npm run build:bundle && npm run build:meta:deprecations && npm run build:bundle:meta",
+    "build": "npm run clean:build && npm run build:meta:deprecations && npm run build:bundle && npm run build:bundle:meta",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
     "build:meta:deprecations": "tsx scripts/build.ts",
     "build:bundle:meta": "rollup -c rollup-meta.config.mjs --bundleConfigAsCjs",
     "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.mjs --bundleConfigAsCjs",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "npm run test:unit",
     "test:unit": "npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta ./vanillaExtractMeta/deprecations.ts"

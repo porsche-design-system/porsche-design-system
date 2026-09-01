@@ -25,6 +25,7 @@
     "build": "npm run clean:build && npm run build:generateComponentMeta && npm run build:bundle",
     "build:generateComponentMeta": "tsx scripts/generateComponentMeta.ts",
     "build:bundle": "rollup -c rollup.config.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
