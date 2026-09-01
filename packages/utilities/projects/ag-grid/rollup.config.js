@@ -35,7 +35,7 @@ export default [
       preserveModules: true,
       preserveModulesRoot: 'src',
     },
-    plugins: [...sharedPlugins, typescript()],
+    plugins: [...sharedPlugins, typescript({ noEmitOnError: true, exclude: ['**/*.spec.ts'] })],
   },
   // Default JS Build - ESM
   {
@@ -51,9 +51,10 @@ export default [
     plugins: [
       ...sharedPlugins,
       typescript({
+        noEmitOnError: true,
         declaration: true,
         declarationDir: `${outputDir}/esm`,
-        exclude: '**.spec.ts',
+        exclude: ['**/*.spec.ts'],
         rootDir: 'src',
       }),
       generatePackageJson({

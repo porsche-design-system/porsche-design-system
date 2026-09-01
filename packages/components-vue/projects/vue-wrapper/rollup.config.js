@@ -7,6 +7,7 @@ const outputDir = 'dist/vue-wrapper';
 
 const typescriptOpts = {
   tsconfig: `${projectDir}/tsconfig.json`,
+  noEmitOnError: true,
 };
 
 const external = [
