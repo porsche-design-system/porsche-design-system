@@ -20,7 +20,7 @@ import type { Styles } from 'jss';
 import type { ButtonVariant } from '../components/button/button-utils';
 import type { LinkVariant } from '../components/link/link-utils';
 import type { BreakpointCustomizable, LinkButtonIconName } from '../types';
-import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
+import { buildResponsiveStyles, hasVisibleIcon, isTruthyForAnyBreakpoint, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -93,7 +93,7 @@ export const getLinkButtonStyles = (
     cssVariableForeground
   );
 
-  const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
+  const hasIcon = hasVisibleIcon(icon, iconSource) || isTruthyForAnyBreakpoint(hideLabel);
 
   const paddingBlock = `calc(28px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 6px)`;
   const paddingInline = `calc(33.6px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 16px)`;

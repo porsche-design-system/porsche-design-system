@@ -2,7 +2,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as globby from 'fast-glob';
 import type { BreakpointValue, BreakpointValues } from './breakpoint-customizable';
-import { parseJSON } from './breakpoint-customizable';
+import { isTruthyForAnyBreakpoint, parseJSON } from './breakpoint-customizable';
 
 describe('parseJSON()', () => {
   it.each<
@@ -24,8 +24,27 @@ describe('parseJSON()', () => {
     [false, false],
     [1, 1],
     [{ base: 'initial' }, { base: 'initial' }],
+    // HTML boolean attribute shorthand, e.g. <p-input-text hide-label>
+    ['', true],
   ])('should for %s return %s', (input, result) => {
     expect(parseJSON(input)).toStrictEqual(result);
+  });
+});
+
+describe('isTruthyForAnyBreakpoint()', () => {
+  it.each<[boolean | string | BreakpointValues<boolean>, boolean]>([
+    [true, true],
+    [false, false],
+    ['true', true],
+    ['false', false],
+    ['', true], // HTML boolean attribute shorthand
+    [{ base: true }, true],
+    [{ base: false }, false],
+    [{ base: false, l: true }, true],
+    ['{base: false, l: true}', true],
+    ['{base: false, l: false}', false],
+  ])('should for %s return %s', (input, result) => {
+    expect(isTruthyForAnyBreakpoint(input)).toBe(result);
   });
 });
 

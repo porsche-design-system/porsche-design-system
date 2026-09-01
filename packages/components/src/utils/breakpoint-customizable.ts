@@ -15,6 +15,12 @@ export const parseJSON = (
   prop: BreakpointCustomizable<BreakpointValue>
 ): BreakpointValues<BreakpointValue> | BreakpointValue => {
   if (typeof prop === 'string') {
+    // prop is an HTML boolean attribute used without a value, e.g. <p-input-text hide-label>
+    // Stencil resolves BreakpointCustomizable<T> to "any" and therefore skips its own boolean coercion
+    if (prop === '') {
+      return true;
+    }
+
     try {
       // prop is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "false"
       return JSON.parse(
@@ -30,4 +36,11 @@ export const parseJSON = (
     // prop is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
     return prop;
   }
+};
+
+// a BreakpointCustomizable value can be true for certain breakpoints only, e.g. { base: false, l: true },
+// therefore styles which are needed as soon as it is true anywhere have to be determined like this
+export const isTruthyForAnyBreakpoint = (prop: BreakpointCustomizable<boolean>): boolean => {
+  const value = parseJSON(prop);
+  return typeof value === 'object' ? Object.values(value).some(Boolean) : !!value;
 };

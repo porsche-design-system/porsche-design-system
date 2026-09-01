@@ -267,6 +267,20 @@ describe('buildResponsiveStyles()', () => {
       });
     });
   });
+
+  describe('for boolean getJssStyle', () => {
+    const getJssStyle = (val: boolean): JssStyle => ({ display: val ? 'none' : 'block' });
+
+    it('should treat empty string of boolean attribute shorthand like true', () => {
+      expect(buildResponsiveStyles('', getJssStyle)).toStrictEqual(buildResponsiveStyles(true, getJssStyle));
+      expect(buildResponsiveStyles('', getJssStyle)).toStrictEqual({ display: 'none' });
+    });
+
+    it('should treat "true" and "false" strings like their boolean counterpart', () => {
+      expect(buildResponsiveStyles('true', getJssStyle)).toStrictEqual({ display: 'none' });
+      expect(buildResponsiveStyles('false', getJssStyle)).toStrictEqual({ display: 'block' });
+    });
+  });
 });
 
 describe('isObject()', () => {

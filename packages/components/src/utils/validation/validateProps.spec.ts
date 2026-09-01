@@ -545,6 +545,10 @@ describe('AllowedTypes', () => {
         const result2 = validatorFunctionBoolean('propName', { base: true, s: false });
         expect(result2).toBe(undefined);
       });
+
+      it('should return undefined via anonymous ValidatorFunction if value is empty string of boolean attribute shorthand', () => {
+        expect(validatorFunctionBoolean('propName', '')).toBe(undefined);
+      });
     });
   });
 
