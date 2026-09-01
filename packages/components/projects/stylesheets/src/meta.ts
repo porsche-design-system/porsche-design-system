@@ -1,16 +1,35 @@
+import { type Deprecations, isDeprecated } from '@porsche-design-system/shared/deprecation';
+import { stylesheetIdentifier } from './deprecation';
+import { flattenCssVariables, stripDeprecated } from './helpers';
+import { kindOf } from './kind';
 import { cssVariableTokens } from './theme';
-import { colorScheme } from './utilities/color-scheme';
 import type { StylesheetsMeta } from './types';
+import { colorScheme } from './utilities/color-scheme';
 
-// The `./meta` entry point — the documented single source of truth, shared with the storefront
-// docs and the (future) LLM skill. A domain-keyed catalog whose leaves are a discriminated
-// `StylesheetNode` union: CSS variables are `token`s, the `.scheme-*` classes are `utility`s. Use
-// `kindOf` to recover a leaf's kind. The `normalize` reset has no documented leaves and therefore
-// lives only in the composition layer (`css/index.ts`), not here.
+// Internal metadata for storefront docs and skill generation; wrappers publish only generated CSS.
+
+/**
+ * Documented catalog with deprecated declarations removed. Shared leaf references keep docs and
+ * generated CSS aligned.
+ */
 export const stylesheetsMeta = {
-  ...cssVariableTokens,
-  colorScheme,
+  ...stripDeprecated(cssVariableTokens),
+  colorScheme: colorScheme.filter((node) => !isDeprecated(node)),
 } satisfies StylesheetsMeta;
+
+/**
+ * The deprecated public surface as an ordered flat list of canonical identifiers and markers.
+ *
+ * Order is the rendered order of the deprecation index, and matches the generated stylesheets:
+ * variables in `variables.css` order, then color-scheme classes in `color-scheme.css` order.
+ */
+export const stylesheetsDeprecations: Deprecations = [...flattenCssVariables(cssVariableTokens), ...colorScheme]
+  .filter(isDeprecated)
+  .map((node) => ({
+    usageKind: kindOf(node) === 'token' ? 'cssCustomProperty' : 'cssClass',
+    identifier: stylesheetIdentifier(node),
+    deprecation: node.deprecation,
+  }));
 
 export { kindOf, type StylesheetKind } from './kind';
 export type * from './types';

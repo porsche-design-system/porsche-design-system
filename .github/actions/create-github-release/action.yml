@@ -20,6 +20,14 @@ inputs:
     description: 'Path to the changelog file used to extract the release body.'
     required: false
     default: 'packages/components/CHANGELOG.md'
+  make-latest:
+    description: 'Whether the release is marked as "Latest": "true", "false" or "auto" (only if it is the highest stable version in the changelog, so maintenance releases of older majors don''t steal the badge).'
+    required: false
+    default: 'auto'
+  draft:
+    description: 'Create the release as a draft ("true"/"false"). Drafts don''t create the underlying git tag.'
+    required: false
+    default: 'false'
 
 runs:
   using: 'composite'
@@ -31,6 +39,8 @@ runs:
         INPUT_SHA: ${{ inputs.sha }}
         INPUT_REPOSITORY: ${{ inputs.repository }}
         INPUT_CHANGELOG_PATH: ${{ inputs.changelog-path }}
+        INPUT_MAKE_LATEST: ${{ inputs.make-latest }}
+        INPUT_DRAFT: ${{ inputs.draft }}
         GITHUB_TOKEN: ${{ inputs.github-token }}
       run: ${{ github.action_path }}/create-github-release.sh
 

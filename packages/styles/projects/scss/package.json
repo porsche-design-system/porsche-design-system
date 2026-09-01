@@ -8,9 +8,6 @@
   "homepage": "https://designsystem.porsche.com",
   "sideEffects": false,
   "type": "commonjs",
-  "main": "./meta/cjs/index.cjs",
-  "module": "./meta/esm/index.mjs",
-  "types": "./meta/esm/index.d.ts",
   "exports": {
     ".": {
       "sass": "./dist/_index.scss",
@@ -23,6 +20,9 @@
       "default": "./skill/skill.ts"
     }
   },
+  "main": "./meta/cjs/index.cjs",
+  "module": "./meta/esm/index.mjs",
+  "types": "./meta/esm/index.d.ts",
   "files": [
     "./dist/",
     "./meta/"
@@ -36,11 +36,11 @@
     "clean:build": "rm -rf ./dist ./meta"
   },
   "dependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.7",
-    "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/node": "^26.1.2",
     "prettier": "^3.9.6",
