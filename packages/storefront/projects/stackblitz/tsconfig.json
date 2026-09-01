@@ -1,6 +1,8 @@
 {
-  "extends": "@porsche-design-system/shared/tsconfig.json",
+  "extends": "shared/src/tsconfig.json",
   "compilerOptions": {
-    "ignoreDeprecations": "6.0"
-  }
+    "ignoreDeprecations": "6.0",
+    "types": ["node"]
+  },
+  "include": ["scripts"]
 }

@@ -1,3 +1,7 @@
 {
-  "extends": "shared/src/tsconfig.json"
+  "extends": "shared/src/tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["scripts"]
 }

@@ -1,5 +1,5 @@
 {
-  "extends": "@porsche-design-system/shared/tsconfig.json",
+  "extends": "shared/src/tsconfig.json",
   "compilerOptions": {
     "useDefineForClassFields": false,
     "strict": false,

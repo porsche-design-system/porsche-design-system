@@ -1,0 +1,5 @@
+{
+  "extends": ["./tsconfig.json", "../../../../tsconfig.paths.json"],
+  "include": ["scripts"],
+  "exclude": ["**/*.spec.ts"]
+}

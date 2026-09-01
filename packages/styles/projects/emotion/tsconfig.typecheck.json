@@ -1,0 +1,9 @@
+{
+  "//": "The normal setup for this package allows Node features and includes the metadata folder, which imports a file the build creates. This file removes the Node allowance and checks only `src`, so the browser-facing code can be checked before anything is built.",
+  "extends": ["./tsconfig.json", "../../../../tsconfig.paths.json"],
+  "compilerOptions": {
+    "types": []
+  },
+  "include": ["src"],
+  "exclude": ["**/*.spec.ts"]
+}

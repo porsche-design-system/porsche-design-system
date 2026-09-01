@@ -1,10 +1,13 @@
 {
-  "extends": "@porsche-design-system/shared/tsconfig.json",
+  "extends": "shared/src/tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "node",
     "ignoreDeprecations": "6.0",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    // `skill/skill.ts` is published as raw source (`exports["./skill"]`) and imports `node:fs`/`node:path`,
+    // matching the scss and tailwindcss flavours which already declare this for the same reason.
+    "types": ["node"]
   },
-  "include": ["./src", "./emotionMeta"],
+  "include": ["./src", "./emotionMeta", "./skill"],
   "exclude": ["**/*.spec.ts"]
 }

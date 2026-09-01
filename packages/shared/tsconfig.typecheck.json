@@ -1,0 +1,6 @@
+{
+  "//": "The normal setup for this package is also used to build it, so it must include example files that refer to packages built much later and cannot be checked yet. This file leaves those examples out and adds the `scripts` folder, so everything else in the package still gets checked.",
+  "extends": ["./tsconfig.json", "../../tsconfig.paths.json"],
+  "include": ["src", "scripts"],
+  "exclude": ["**/*.spec.ts", "src/examples", "src/lib"]
+}
