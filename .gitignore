@@ -25,6 +25,8 @@ ort/
 
 # Cache
 .npm
+# TypeScript writes this even under --noEmit for composite/incremental projects
+*.tsbuildinfo
 
 
 # dotenv environment variables file
