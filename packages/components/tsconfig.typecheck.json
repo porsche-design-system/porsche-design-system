@@ -1,5 +1,4 @@
 {
-  "//": "The normal setup for this package covers only the `src` folder. This file also covers `scripts`, so the code generators that produce every framework wrapper are checked too.",
   "extends": "./tsconfig.json",
   "include": ["src", "scripts"]
 }

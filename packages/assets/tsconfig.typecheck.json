@@ -1,5 +1,4 @@
 {
-  "//": "The normal setup for this package only checks the `src` folder, so the build script in `scripts` was never checked. This file adds that folder, and it runs after the build because it needs files the build creates.",
   "extends": "./tsconfig.json",
   "include": ["src", "scripts"],
   "exclude": ["**/*.spec.ts"]
