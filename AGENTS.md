@@ -133,7 +133,8 @@ npm run typecheck:all         # Every package, in build order. Needs a built tre
 npm run typecheck:{package}   # One package only, e.g. typecheck:tokens
 ```
 
-Root holds two chains, and both are composed from the per-package `typecheck:{package}` entries.
+Root holds two chains, and both are composed from the per-package `typecheck:{package}` entries, with nested
+projects called by `--workspace` inside `typecheck:all`.
 `typecheck` covers only the packages whose sources exist in a fresh clone, because the CI Typecheck job
 runs on a fresh checkout. `typecheck:all` covers every package in the order `build` uses, and it needs a
 built tree, so nothing automated calls it.
