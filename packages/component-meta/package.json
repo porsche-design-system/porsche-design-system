@@ -22,7 +22,7 @@
   "module": "./dist/esm/index.mjs",
   "types": "./dist/esm/index.d.ts",
   "scripts": {
-    "build": "npm run clean:build && npm run build:generateComponentMeta && npm run build:bundle",
+    "build": "npm run clean:build && npm run build:generateComponentMeta && npm run typecheck && npm run build:bundle",
     "build:generateComponentMeta": "tsx scripts/generateComponentMeta.ts",
     "build:bundle": "rollup -c rollup.config.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
+    "@stencil/core": "4.43.3",
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
     "tsx": "^4.23.7",
