@@ -1538,7 +1538,7 @@ input:focus-visible {
         dir="ltr"
       >
         <input
-          aria-label="1-4"
+          aria-label="1 of 4"
           autocomplete="one-time-code"
           inputmode="numeric"
           pattern="\\d*"
@@ -1546,7 +1546,7 @@ input:focus-visible {
           value="1"
         />
         <input
-          aria-label="2-4"
+          aria-label="2 of 4"
           autocomplete="one-time-code"
           inputmode="numeric"
           pattern="\\d*"
@@ -1554,7 +1554,7 @@ input:focus-visible {
           value="2"
         />
         <input
-          aria-label="3-4"
+          aria-label="3 of 4"
           autocomplete="one-time-code"
           inputmode="numeric"
           pattern="\\d*"
@@ -1562,7 +1562,7 @@ input:focus-visible {
           value="3"
         />
         <input
-          aria-label="4-4"
+          aria-label="4 of 4"
           autocomplete="one-time-code"
           id="current-input"
           inputmode="numeric"
@@ -11517,7 +11517,7 @@ input:focus-visible {
         dir="ltr"
       >
         <input
-          aria-label="1-4"
+          aria-label="1 of 4"
           autocomplete="one-time-code"
           id="current-input"
           inputmode="numeric"
@@ -11525,21 +11525,21 @@ input:focus-visible {
           type="text"
         />
         <input
-          aria-label="2-4"
+          aria-label="2 of 4"
           autocomplete="one-time-code"
           inputmode="numeric"
           pattern="\\d*"
           type="text"
         />
         <input
-          aria-label="3-4"
+          aria-label="3 of 4"
           autocomplete="one-time-code"
           inputmode="numeric"
           pattern="\\d*"
           type="text"
         />
         <input
-          aria-label="4-4"
+          aria-label="4 of 4"
           autocomplete="one-time-code"
           inputmode="numeric"
           pattern="\\d*"

@@ -102,3 +102,5 @@ export const isCurrentInput = (index: number, value: string, length: number): bo
   }
   return index === firstWhitespaceIndex; // Some value is entered: set current-input id on the first input element which does not have a value
 };
+
+export const getPinCodeInputAriaLabel = (index: number, length: number): string => `${index + 1} of ${length}`;

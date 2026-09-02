@@ -23,6 +23,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: `references/deprecations.md`, a version-exact index of every deprecated component, prop, prop
   value, event, slot, CSS variable and styling alias together with what to use instead
   ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
+- `Pin Code`: Support for `ArrowLeft`/`ArrowRight` keyboard navigation.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+
 
 ### Changed
 
@@ -30,6 +33,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   symlink-capable clones and in CI and can be committed. Re-run the command to migrate links created by an earlier
   version. Windows keeps using directory junctions, which cannot be relative
   ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
+
+### Fixed
+
+- `Pin Code`: Focus management on label click and digit overwrite behavior of focused cell.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
 
 ## [4.7.0-beta.0] - 2026-08-27
 

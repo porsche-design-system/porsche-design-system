@@ -257,6 +257,17 @@ describe('isCurrentInput()', () => {
   });
 });
 
+describe('getPinCodeInputAriaLabel()', () => {
+  it.each<[number, number, string]>([
+    [0, 4, '1 of 4'],
+    [3, 4, '4 of 4'],
+    [0, 6, '1 of 6'],
+    [5, 6, '6 of 6'],
+  ])('should for index: %d and length: %d return: %s', (index, length, expected) => {
+    expect(pinCodeUtils.getPinCodeInputAriaLabel(index, length)).toBe(expected);
+  });
+});
+
 describe('isFormSubmittable()', () => {
   const getHost = (): HTMLElement => document.createElement('p-pin-code');
 

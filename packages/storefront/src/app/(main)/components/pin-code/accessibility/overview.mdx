@@ -2,9 +2,15 @@
 
 ### Keyboard
 
-| Key / state        | Function                                                 |
-| ------------------ | -------------------------------------------------------- |
-| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| Key / state               | Function                                                                                          |
+| ------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`        | Moves focus to the next (or previous) focusable element.                                          |
+| `0`–`9`                   | Enters a digit in the focused input, replacing any existing digit, then moves focus to the next input. |
+| `Backspace`               | Clears the focused input. If it is already empty, clears the previous input and moves focus there. |
+| `Delete`                  | Clears the focused input. If it is already empty, clears the next input and moves focus there.    |
+| `ArrowLeft`, `ArrowRight` | Moves focus to the previous or next input. Does not wrap.                                         |
+| `Home`, `End`             | Moves focus to the first or last input.                                                           |
+| `Enter`                   | Submits the surrounding form when native submit rules allow it.                                   |
 
 ### ARIA enhancements
 
@@ -12,8 +18,8 @@
 
 | ARIA                            | Usage                                                                                 |
 | ------------------------------- | ------------------------------------------------------------------------------------- |
-| `aria-label="STRING"`           | References the current position of the input group.                                   |
-| `aria-describedby="IDREF"`      | References the accessible description and status messages.                            |
+| `aria-label="STRING"`           | Names each input by its position in the group, for example `1 of 4`.                  |
+| `aria-describedby="IDREF"`      | References the status message when `state` and `message` are set.                     |
 | `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced. |
 
 ## Development considerations
