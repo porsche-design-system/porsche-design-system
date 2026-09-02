@@ -79,8 +79,6 @@ copy, rather than the built one.
 
 ## Known gaps
 
-- `packages/components/scripts` is not covered, so the wrapper generators and `generateDSRComponents.ts`
-  are typechecked by nothing. See the `TODO` in `packages/components/tsconfig.typecheck.json`.
 - Four rollup configs deliberately call `typescript()` without `noEmitOnError`, because their `tsconfig`
   scope contains something that cannot resolve when the bundler runs. See the third trap above for why
   the plugin's `exclude` cannot fix this.

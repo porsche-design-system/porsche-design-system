@@ -1,8 +1,5 @@
 {
-  // This file checks exactly the same files as the normal setup today, so it changes nothing yet. It
-  // exists so the checked folders can change later without touching the setup Stencil finds on its own.
-  // TODO: the `scripts` folder is not checked, so the code generators that produce every framework
-  // wrapper are unchecked. Adding that folder needs 18 existing errors in those files fixed first.
+  "//": "The normal setup for this package covers only the `src` folder. This file also covers `scripts`, so the code generators that produce every framework wrapper are checked too.",
   "extends": "./tsconfig.json",
-  "include": ["src"]
+  "include": ["src", "scripts"]
 }

@@ -17,8 +17,10 @@ const cleanupLoader = () => {
   const directory = path.resolve(srcFilePath, '..');
   // find the file that contains definition of isBrowser util
   const [fileName] = fs.readdirSync(directory).filter((el) => !!el.match(/^index-[\d\w-]*.js$/));
-  const filePath = path.resolve(directory, fileName);
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+
+  if (!fileName) {
+    throw new Error('Failed cleaning up Loader: no index-*.js chunk found.\n');
+  }
   // const [, hasWindowExport] = /export\s*{.*?hasWindow\s*as\s*([^,\s]+).*?};/.exec(fileContent) || [];
 
   // if (hasWindowExport === undefined) {

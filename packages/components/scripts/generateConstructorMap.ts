@@ -23,6 +23,8 @@ const generateConstructorMap = (): void => {
 
         return `'${tagName}': ${className}`;
       }
+
+      return undefined;
     })
     .filter((x) => x)
     .sort()
