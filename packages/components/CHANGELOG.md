@@ -33,10 +33,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
-- Boolean attribute shorthand for breakpoint customizable props, e.g. `<p-input-text hide-label>`, was ignored and
-  logged a validation error. It now behaves like `<p-input-text hide-label="true">`, matching standard HTML semantics.
-  Affects `hide-label`, `compact`, `stretch`, `indent`, `fullscreen` and `pagination` on all components exposing them.
-  ([#4404](https://github.com/porsche-design-system/porsche-design-system/issues/4404))
+- **Breakpoint Customizable Props**: setting a boolean prop as an HTML boolean attribute without a value, e.g.
+  `<p-input-text hide-label>`, was ignored and logged a validation error instead of behaving like
+  `<p-input-text hide-label="true">`. Affects `compact`, `fullscreen`, `hide-label`, `indent`, `pagination` and
+  `stretch` on every component exposing them.
+  ([#4701](https://github.com/porsche-design-system/porsche-design-system/pull/4701))
 
 ## [4.7.0-beta.0] - 2026-08-27
 
