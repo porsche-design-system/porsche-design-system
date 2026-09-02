@@ -1,42 +1,32 @@
 import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { ScssCatalog } from '../types';
 
-/** Shadow theme variables, keyed by size (e.g. `shadow.md`). */
+const sm = { name: '$shadow-sm', value: shadowSm, description: 'Holds a **small** `shadow`.' };
+const md = { name: '$shadow-md', value: shadowMd, description: 'Holds a **medium** `shadow`.' };
+const lg = { name: '$shadow-lg', value: shadowLg, description: 'Holds a **large** `shadow`.' };
+
+/** Shadow declarations, keyed by size (e.g. `shadow.md`). */
 export const shadow = {
-  sm: {
-    name: '$shadow-sm',
-    value: shadowSm,
-    description: 'Holds a **small** `shadow`.',
+  sm,
+  md,
+  lg,
+  dropShadowLow: {
+    name: 'pds-drop-shadow-low',
+    raw: `  box-shadow: ${shadowSm};`,
+    description: 'Applies a **small** `box-shadow`.',
+    deprecation: { replacement: scssIdentifier(sm) },
   },
-  md: {
-    name: '$shadow-md',
-    value: shadowMd,
-    description: 'Holds a **medium** `shadow`.',
+  dropShadowMedium: {
+    name: 'pds-drop-shadow-medium',
+    raw: `  box-shadow: ${shadowMd};`,
+    description: 'Applies a **medium** `box-shadow`.',
+    deprecation: { replacement: scssIdentifier(md) },
   },
-  lg: {
-    name: '$shadow-lg',
-    value: shadowLg,
-    description: 'Holds a **large** `shadow`.',
+  dropShadowHigh: {
+    name: 'pds-drop-shadow-high',
+    raw: `  box-shadow: ${shadowLg};`,
+    description: 'Applies a **large** `box-shadow`.',
+    deprecation: { replacement: scssIdentifier(lg) },
   },
-} satisfies ScssMeta['shadow'];
-
-/**
- * Deprecated `pds-drop-shadow-*` mixins (plumbing).
- * @deprecated Use the documented `$shadow-*` variables.
- */
-export const shadowDeprecatedMixins: ScssRaw = {
-  raw: `/* alias (deprecated) */
-@mixin pds-drop-shadow-high {
-  box-shadow: ${shadowLg};
-}
-
-/* alias (deprecated) */
-@mixin pds-drop-shadow-low {
-  box-shadow: ${shadowSm};
-}
-
-/* alias (deprecated) */
-@mixin pds-drop-shadow-medium {
-  box-shadow: ${shadowMd};
-}`,
-};
+} satisfies ScssCatalog;

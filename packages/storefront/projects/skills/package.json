@@ -1,0 +1,47 @@
+{
+  "name": "@porsche-design-system/skills",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "exports": {
+    "./registry": {
+      "types": "./src/registry.ts",
+      "default": "./src/registry.ts"
+    }
+  },
+  "scripts": {
+    "build:skills": "node --import tsx --require ./scripts/skill-mdx-loader.cjs scripts/build-skills.ts",
+    "lint": "biome lint",
+    "test": "npm run test:unit:skills",
+    "test:unit:skills": "npm run build:skills && vitest --config tests/config/vitest.node.config.ts && vitest --config tests/config/vitest.config.ts"
+  },
+  "devDependencies": {
+    "@porsche-design-system/component-meta": "0.0.0",
+    "@porsche-design-system/components-react": "4.7.0-beta.0",
+    "@porsche-design-system/emotion": "0.0.0",
+    "@porsche-design-system/scss": "0.0.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/stylesheets": "0.0.0",
+    "@porsche-design-system/tailwindcss": "0.0.0",
+    "@porsche-design-system/tokens-meta": "0.0.0",
+    "@porsche-design-system/vanilla-extract": "0.0.0",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^26.1.2",
+    "mdast-util-from-markdown": "^2.0.3",
+    "mdast-util-gfm": "^3.1.0",
+    "mdast-util-mdx": "^3.0.0",
+    "mdast-util-mdx-jsx": "^3.2.0",
+    "mdast-util-to-markdown": "^2.1.2",
+    "mdast-util-to-string": "^4.0.0",
+    "micromark-extension-gfm": "^3.0.0",
+    "micromark-extension-mdxjs": "^3.0.0",
+    "tsx": "^4.23.7",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

@@ -48,7 +48,7 @@ jobs:
       - run: npm run build:stylesheets
       - run: npm run build:component-meta
       - run: npm run build:components
-      - run: npm run build:skill
+      - run: npm run build:skills
       - run: npm run build:components-js
       - run: npm run build:components-angular
       - run: npm run build:components-react
@@ -60,7 +60,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
-            ./packages/storefront/projects/skill/generated/
+            ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
@@ -76,8 +76,10 @@ jobs:
             ./packages/styles/projects/scss/meta/
             ./packages/styles/projects/emotion/dist/
             ./packages/styles/projects/emotion/meta/
+            ./packages/styles/projects/emotion/emotionMeta/deprecations.ts
             ./packages/styles/projects/vanilla-extract/dist/
             ./packages/styles/projects/vanilla-extract/meta/
+            ./packages/styles/projects/vanilla-extract/vanillaExtractMeta/deprecations.ts
             ./packages/components/dist/
             ./packages/components/projects/stylesheets/dist/
             ./packages/components/projects/stylesheets/lib/
@@ -135,7 +137,7 @@ jobs:
       - run: npm run build:stylesheets-prod
       - run: npm run build:component-meta
       - run: npm run build:components-prod
-      - run: npm run build:skill
+      - run: npm run build:skills
       - run: npm run build:components-js-prod
       - run: npm run build:components-angular
       - run: npm run build:components-react
@@ -147,7 +149,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
-            ./packages/storefront/projects/skill/generated/
+            ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
@@ -163,8 +165,10 @@ jobs:
             ./packages/styles/projects/scss/meta/
             ./packages/styles/projects/emotion/dist/
             ./packages/styles/projects/emotion/meta/
+            ./packages/styles/projects/emotion/emotionMeta/deprecations.ts
             ./packages/styles/projects/vanilla-extract/dist/
             ./packages/styles/projects/vanilla-extract/meta/
+            ./packages/styles/projects/vanilla-extract/vanillaExtractMeta/deprecations.ts
             ./packages/components/dist/
             ./packages/components/projects/stylesheets/dist/
             ./packages/components/projects/stylesheets/lib/

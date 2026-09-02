@@ -23,18 +23,19 @@
     }
   },
   "scripts": {
-    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta",
+    "build": "npm run clean:build && npm run build:bundle && npm run build:meta:deprecations && npm run build:bundle:meta",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
+    "build:meta:deprecations": "tsx scripts/build.ts",
     "build:bundle:meta": "rollup -c rollup-meta.config.mjs --bundleConfigAsCjs",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist ./meta"
+    "clean:build": "rm -rf ./dist ./meta ./emotionMeta/deprecations.ts"
   },
   "dependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/madge": "^5.0.3",

@@ -1,5 +1,6 @@
 import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
 import { FrameworkTabs } from '@/components/common/FrameworkTabs';
+import { SkillFacts } from '@/components/common/SkillFacts';
 import { FrameworkSkill } from '@/components/common/StorefrontFramework';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
@@ -24,6 +25,32 @@ packages, so it always describes the version your project actually uses. There i
 select yours to adapt the skill name and prompts on this page.
 
 <FrameworkTabs className="my-fluid-md" label="Select the framework the Knowledge Skill examples apply to" />
+
+Invoking it looks like this, using your agent's skill selection syntax:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Recommend PDS components for a responsive sign-in form.
+  `}
+/>
+
+<SkillFacts
+  caption="Knowledge Skill facts"
+  invocation={
+    <>
+      Automatic or explicit. Your agent activates{' '}
+      <code>
+        <FrameworkSkill />
+      </code>{' '}
+      when a task matches its description, and you can invoke it yourself.
+    </>
+  }
+  dependencies="None."
+  reads="Its own reference files, plus whatever the task at hand requires."
+  writes="Nothing of its own. It guides the work you asked your agent to do."
+  executes="Nothing of its own."
+/>
 
 ## What It Covers
 
