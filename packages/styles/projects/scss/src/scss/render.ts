@@ -1,21 +1,37 @@
-import type { ScssBranch, ScssNode } from '../types';
+import { getDeprecationComment, isDeprecated } from '@porsche-design-system/shared/deprecation';
+import type { ScssCatalog, ScssMeta, ScssMixin, ScssNode, ScssVariable } from '../types';
 
-/** A leaf carries a variable/mixin `name` or a verbatim `raw` body. */
-const isLeaf = (node: ScssBranch): node is ScssNode => 'name' in node || 'raw' in node;
+const isLeaf = (branch: ScssCatalog): branch is ScssVariable | ScssMixin => 'name' in branch;
 
-/** Walk the meta tree (records/arrays group; only leaves render) into a flat node list in source order. */
-export const flatten = (node: ScssBranch): ScssNode[] =>
-  Array.isArray(node) ? node.flatMap(flatten) : isLeaf(node) ? [node] : Object.values(node).flatMap(flatten);
+export const flatten = (branch: ScssCatalog): (ScssVariable | ScssMixin)[] =>
+  Array.isArray(branch) ? branch.flatMap(flatten) : isLeaf(branch) ? [branch] : Object.values(branch).flatMap(flatten);
 
-/** Serialize a node: a mixin to `@mixin name(sig) { raw }`, a variable to `$name: value;`, a raw snippet verbatim. */
+export const stripDeprecated = <T>(branch: T): ScssMeta<T> =>
+  (Array.isArray(branch)
+    ? branch.filter((node) => !isDeprecated(node)).map(stripDeprecated)
+    : isLeaf(branch as ScssCatalog)
+      ? branch
+      : Object.fromEntries(
+          Object.entries(branch as object)
+            .filter(([, node]) => !isDeprecated(node))
+            .map(([key, node]) => [key, stripDeprecated(node)])
+        )) as ScssMeta<T>;
+
+/**
+ * Uses silent Sass comments so deprecation guidance remains in source without entering every
+ * consumer's compiled CSS.
+ */
+const deprecationComment = (node: ScssNode): string =>
+  isDeprecated(node) ? `${getDeprecationComment(node.deprecation, 'line')}\n` : '';
+
 export const renderNode = (node: ScssNode): string => {
   if ('name' in node && 'raw' in node) {
     const comment = node.comment ? `/* ${node.comment} */\n` : '';
-    return `${comment}@mixin ${node.name}${node.signature ?? ''} {\n${node.raw}\n}`;
+    return `${deprecationComment(node)}${comment}@mixin ${node.name}${node.signature ?? ''} {\n${node.raw}\n}`;
   }
   if ('name' in node) {
     const comment = node.comment ? ` /* ${node.comment} */` : '';
-    return `${node.name}: ${node.value};${comment}`;
+    return `${deprecationComment(node)}${node.name}: ${node.value};${comment}`;
   }
   return node.raw;
 };

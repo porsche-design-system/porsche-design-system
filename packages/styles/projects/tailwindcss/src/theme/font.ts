@@ -20,7 +20,7 @@ import {
   typescaleXs,
 } from '@porsche-design-system/tokens';
 import { prefix } from '../prefix';
-import type { CssNode, CssRule, TailwindMeta, TailwindThemeVariable } from '../types';
+import type { CssNode, CssRule, TailwindCatalog, TailwindThemeVariable } from '../types';
 
 // The "Bridge Variable" pointing the Tailwind `--font-porsche-next` theme variable
 // to the dynamic, locale-aware font stack. Shared as a single source so the base
@@ -192,7 +192,7 @@ export const font = {
       description: 'Applies the **5x-large** font size and line height optimized for the Porsche Next typeface.',
     },
   },
-} satisfies TailwindMeta['font'];
+} satisfies TailwindCatalog;
 
 // Companion theme variables for each text size: the Tailwind-required `--*--line-height`
 // pairing plus the `--text-base` alias for `xs`. Non-documented CSS-only plumbing: kept out of

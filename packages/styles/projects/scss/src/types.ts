@@ -1,241 +1,240 @@
-// The scss meta model — the documented single source of truth these types validate. Leaves
-// (`ScssVariable`, `ScssMixin`, `ScssRaw`) render to scss and docs; records and arrays only group.
+import type { Deprecated } from '@porsche-design-system/shared/deprecation';
 
-/** A documented scss variable. Renders a docs row and a `$name: value;` declaration. */
+/** A SCSS variable rendered into source and, unless deprecated, documentation. */
 export type ScssVariable = {
-  description: string;
+  name: string;
   value: string | number;
-  /** The `$`-prefixed Sass variable name, e.g. `$radius-xs`. */
-  name: string;
-  /** Trailing comment rendered after the declaration, e.g. `alias (deprecated)`. */
-  comment?: string;
-};
-
-/** A documented scss mixin. Renders a `@mixin` and a docs row. */
-export type ScssMixin = {
   description: string;
-  name: string;
-  /** Parameter list including parentheses, e.g. `()` or `($offset: 2px)`. */
-  signature?: string;
-  /** Verbatim mixin body — the escape hatch for `@if`, `@each`, `@content`, keyframes, … */
-  raw: string;
-  /** Comment rendered on its own line above the `@mixin` declaration. */
+  /** Trailing comment rendered after the declaration. Never carries deprecation semantics. */
   comment?: string;
-};
+} & Deprecated;
 
-/** A raw scss snippet (deprecated alias block, `@use`/`@forward` lines, …) rendered verbatim. */
+/** A SCSS mixin rendered into source and, unless deprecated, documentation. */
+export type ScssMixin = {
+  name: string;
+  signature?: string;
+  /** Verbatim body supporting control flow and `@content`. */
+  raw: string;
+  description: string;
+  /** Comment rendered on its own line above the `@mixin` declaration. Never carries deprecation semantics. */
+  comment?: string;
+} & Deprecated;
+
 export type ScssRaw = {
   raw: string;
 };
 
 export type ScssNode = ScssVariable | ScssMixin | ScssRaw;
 
-/** Any branch of the meta tree: a leaf {@link ScssNode}, an array, or a nested record. Only leaves render; records and arrays group. */
-export type ScssBranch = ScssNode | ScssBranch[] | { [key: string]: ScssBranch };
+export type ScssCatalog = ScssVariable | ScssMixin | ScssCatalog[] | { [key: string]: ScssCatalog };
 
-/** A per-file composition descriptor: output file, `@use` headers, description and ordered render nodes. */
+export type ScssMeta<T> = T extends { deprecation: unknown }
+  ? never
+  : T extends readonly (infer U)[]
+    ? ScssMeta<U>[]
+    : T extends ScssVariable | ScssMixin
+      ? T
+      : { [K in keyof T as [ScssMeta<T[K]>] extends [never] ? never : K]: ScssMeta<T[K]> };
+
 export type ScssFileMeta = {
   file: string;
   description: string;
-  /** `@use` headers this file needs so namespaced cross-references resolve, e.g. `['color']`. */
+  /** Dependencies required for namespaced cross-references. */
   uses?: string[];
   nodes: ScssNode[];
 };
 
 /**
- * The documented single source of truth, shared with the storefront docs and LLM context. A flat,
- * domain-keyed catalog mirroring `tokensMeta`; each leaf's kind (`token` | `utility`) is recoverable
- * via `kindOf`. Catalog groups are the same object references the SCSS is built from, so docs and
- * generated SCSS can't diverge. SCSS-only plumbing lives in the composition layer (`scss/index.ts`).
+ * Cross-solution catalog contract. Exact keys make deprecations and renames explicit type changes.
  */
-export type ScssMeta = {
+export type StylesMeta<TToken, TUtility> = {
   border: {
     radius: {
-      xs: ScssVariable;
-      sm: ScssVariable;
-      md: ScssVariable;
-      lg: ScssVariable;
-      xl: ScssVariable;
-      '2xl': ScssVariable;
-      '3xl': ScssVariable;
-      '4xl': ScssVariable;
-      full: ScssVariable;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
+      '3xl': TToken;
+      '4xl': TToken;
+      full: TToken;
     };
-    width: ScssVariable[];
+    width: TToken[];
   };
   blur: {
-    frosted: ScssVariable;
+    frosted: TToken;
   };
   breakpoint: {
-    xs: ScssVariable;
-    sm: ScssVariable;
-    md: ScssVariable;
-    lg: ScssVariable;
-    xl: ScssVariable;
-    '2xl': ScssVariable;
+    xs: TToken;
+    sm: TToken;
+    md: TToken;
+    lg: TToken;
+    xl: TToken;
+    '2xl': TToken;
   };
   color: {
     background: {
-      canvas: ScssVariable;
-      surface: ScssVariable;
-      frosted: ScssVariable;
-      frostedSoft: ScssVariable;
-      frostedStrong: ScssVariable;
-      backdrop: ScssVariable;
+      canvas: TToken;
+      surface: TToken;
+      frosted: TToken;
+      frostedSoft: TToken;
+      frostedStrong: TToken;
+      backdrop: TToken;
     };
     foreground: {
-      primary: ScssVariable;
-      contrastHigher: ScssVariable;
-      contrastHigh: ScssVariable;
-      contrastMedium: ScssVariable;
-      contrastLow: ScssVariable;
-      contrastLower: ScssVariable;
+      primary: TToken;
+      contrastHigher: TToken;
+      contrastHigh: TToken;
+      contrastMedium: TToken;
+      contrastLow: TToken;
+      contrastLower: TToken;
     };
     semantic: {
-      info: ScssVariable;
-      infoMedium: ScssVariable;
-      infoLow: ScssVariable;
-      infoFrosted: ScssVariable;
-      infoFrostedSoft: ScssVariable;
-      success: ScssVariable;
-      successMedium: ScssVariable;
-      successLow: ScssVariable;
-      successFrosted: ScssVariable;
-      successFrostedSoft: ScssVariable;
-      warning: ScssVariable;
-      warningMedium: ScssVariable;
-      warningLow: ScssVariable;
-      warningFrosted: ScssVariable;
-      warningFrostedSoft: ScssVariable;
-      error: ScssVariable;
-      errorMedium: ScssVariable;
-      errorLow: ScssVariable;
-      errorFrosted: ScssVariable;
-      errorFrostedSoft: ScssVariable;
+      info: TToken;
+      infoMedium: TToken;
+      infoLow: TToken;
+      infoFrosted: TToken;
+      infoFrostedSoft: TToken;
+      success: TToken;
+      successMedium: TToken;
+      successLow: TToken;
+      successFrosted: TToken;
+      successFrostedSoft: TToken;
+      warning: TToken;
+      warningMedium: TToken;
+      warningLow: TToken;
+      warningFrosted: TToken;
+      warningFrostedSoft: TToken;
+      error: TToken;
+      errorMedium: TToken;
+      errorLow: TToken;
+      errorFrosted: TToken;
+      errorFrostedSoft: TToken;
     };
     a11y: {
-      focus: ScssVariable;
+      focus: TToken;
     };
   };
   font: {
     family: {
-      porscheNext: ScssVariable;
-      porscheNextZhHans: ScssVariable;
-      porscheNextZhHant: ScssVariable;
-      porscheNextJa: ScssVariable;
-      porscheNextKo: ScssVariable;
+      porscheNext: TToken;
+      porscheNextZhHans: TToken;
+      porscheNextZhHant: TToken;
+      porscheNextJa: TToken;
+      porscheNextKo: TToken;
     };
     weight: {
-      normal: ScssVariable;
-      semibold: ScssVariable;
-      bold: ScssVariable;
+      normal: TToken;
+      semibold: TToken;
+      bold: TToken;
     };
     lineHeight: {
-      normal: ScssVariable;
+      normal: TToken;
     };
     size: {
-      '2xs': ScssVariable;
-      xs: ScssVariable;
-      sm: ScssVariable;
-      md: ScssVariable;
-      lg: ScssVariable;
-      xl: ScssVariable;
-      '2xl': ScssVariable;
-      '3xl': ScssVariable;
-      '4xl': ScssVariable;
-      '5xl': ScssVariable;
+      '2xs': TToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
+      '3xl': TToken;
+      '4xl': TToken;
+      '5xl': TToken;
     };
   };
   shadow: {
-    sm: ScssVariable;
-    md: ScssVariable;
-    lg: ScssVariable;
+    sm: TToken;
+    md: TToken;
+    lg: TToken;
   };
   spacing: {
     fluid: {
-      xs: ScssVariable;
-      sm: ScssVariable;
-      md: ScssVariable;
-      lg: ScssVariable;
-      xl: ScssVariable;
-      '2xl': ScssVariable;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
     };
     static: {
-      '2xs': ScssVariable;
-      xs: ScssVariable;
-      sm: ScssVariable;
-      md: ScssVariable;
-      lg: ScssVariable;
-      xl: ScssVariable;
-      '2xl': ScssVariable;
+      '2xs': TToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
     };
   };
   motion: {
     duration: {
-      sm: ScssVariable;
-      md: ScssVariable;
-      lg: ScssVariable;
-      xl: ScssVariable;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
     };
     ease: {
-      inOut: ScssVariable;
-      in: ScssVariable;
-      out: ScssVariable;
+      inOut: TToken;
+      in: TToken;
+      out: TToken;
     };
   };
   gradient: {
-    stopsFadeDark: ScssVariable;
+    stopsFadeDark: TToken;
   };
   typography: {
-    heading: ScssMixin[];
-    text: ScssMixin[];
-    display: ScssMixin[];
+    heading: TUtility[];
+    text: TUtility[];
+    display: TUtility[];
   };
-  skeleton: ScssMixin[];
+  skeleton: TUtility[];
   // Grouped by grid area, aligned with `EmotionMeta['grid']` / `TailwindMeta['grid']`. `template` is the
   // `pds-grid` layout mixin, `gap` a token. scss has no per-area placement utility (`column`), so areas
   // expose only line tokens (`start`/`end`), per-area `span`s and offsets; only `full` has a composed
   // `offset` variable. The per-area `offset{Base,S,XXL}` tokens read the `--pds-grid-*` custom properties.
   grid: {
-    template: ScssMixin;
-    gap: ScssVariable;
+    template: TUtility;
+    gap: TToken;
     narrow: {
-      start: ScssVariable;
-      end: ScssVariable;
-      span: { oneHalf: ScssVariable };
-      offsetBase: ScssVariable;
-      offsetS: ScssVariable;
-      offsetXXL: ScssVariable;
+      start: TToken;
+      end: TToken;
+      span: { oneHalf: TToken };
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     basic: {
-      start: ScssVariable;
-      end: ScssVariable;
-      span: { oneHalf: ScssVariable; oneThird: ScssVariable; twoThirds: ScssVariable };
-      offsetBase: ScssVariable;
-      offsetS: ScssVariable;
-      offsetXXL: ScssVariable;
+      start: TToken;
+      end: TToken;
+      span: { oneHalf: TToken; oneThird: TToken; twoThirds: TToken };
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     extended: {
-      start: ScssVariable;
-      end: ScssVariable;
-      span: { oneHalf: ScssVariable };
-      offsetBase: ScssVariable;
-      offsetS: ScssVariable;
-      offsetXXL: ScssVariable;
+      start: TToken;
+      end: TToken;
+      span: { oneHalf: TToken };
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     wide: {
-      start: ScssVariable;
-      end: ScssVariable;
-      offsetBase: ScssVariable;
-      offsetS: ScssVariable;
-      offsetXXL: ScssVariable;
+      start: TToken;
+      end: TToken;
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     full: {
-      start: ScssVariable;
-      end: ScssVariable;
-      offset: ScssVariable;
+      start: TToken;
+      end: TToken;
+      offset: TToken;
     };
   };
-  focus: ScssMixin[];
-  mediaQuery: ScssMixin[];
+  focus: TUtility[];
+  mediaQuery: TUtility[];
 };
