@@ -9,6 +9,7 @@ const languageMap = {
   tsx: 'typescript',
   diff: 'diff',
   json: 'json',
+  markdown: 'markdown',
   text: 'plaintext',
   html: 'xml',
   xml: 'xml',

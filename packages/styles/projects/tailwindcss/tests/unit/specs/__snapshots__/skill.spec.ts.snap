@@ -89,8 +89,6 @@ valid when sections need independent grids.
 | Theme variable | Tailwind class(es) | Description | Value |
 | --- | --- | --- | --- |
 | \`--default-border-width\` | – | Default border width applied globally via the Tailwind \`@theme\` block. | \`1px\` |
-| \`--border-width-regular\` | – | Alias for the regular (2 px) border width. **Deprecated** — prefer \`--default-border-width\`. | \`2px\` |
-| \`--border-width-thin\` | – | Alias for the thin (1 px) border width. **Deprecated** — prefer \`--default-border-width\`. | \`1px\` |
 
 ### Blur
 

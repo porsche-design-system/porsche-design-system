@@ -23,13 +23,21 @@ lived in two separate packages (a meta package and a CSS build package):
    the `scss` / `tailwindcss` skill layout. The storefront skill generator imports it directly; this package does not
    emit a separate skill artifact and the serializer is snapshot-tested here.
 
+The package itself is `"private": true`. Only `lib/*.css` reaches npm consumers, via the wrapper subpaths `./index.css`,
+`./variables.css`, `./normalize.css`, `./font-face.css`, `./color-scheme.css` and `./cn/*`. Neither `dist/` (the name
+consts and `ref`, a build-time input for `packages/components`) nor `meta/` is copied into a wrapper, so
+`stylesheetsMeta` and `stylesheetsDeprecations` are internal. Confirm in the built wrapper `dist/` folders, which are
+the npm packages themselves: `ls packages/components-js/dist/components-wrapper/stylesheets` shows CSS only. See
+[`docs/public-api.md`](../../../../docs/public-api.md).
+
 ## Structure
 
 ```text
 src/
 ├── types.ts                        # Meta types: discriminated StylesheetNode (CssVariableMeta token | ColorSchemeClassMeta utility), CssVariableTokens/StylesheetsMeta catalog + CSS resolution model (CssDeclaration/CssRule/CssNode)
 ├── kind.ts                         # kindOf(node) => 'token' | 'utility' (token has `property`, utility has `selector`)
-├── meta.ts                         # `./meta` ENTRY: assembles the documented `stylesheetsMeta` catalog (theme tokens + colorScheme utilities); re-exports types, kindOf, helpers
+├── meta.ts                         # `./meta` ENTRY: derives `stylesheetsMeta` + `stylesheetsDeprecations` from the catalog (theme tokens + colorScheme utilities); re-exports types, kindOf, helpers
+├── deprecation.ts                  # `stylesheetIdentifier(node)`: canonical identity (custom property | selector)
 ├── theme/                          # SOURCE OF TRUTH (tokens): one file per domain — color, font, spacing, border, blur, shadow, motion
 │   └── index.ts                    #   `cssVariableTokens` (the 7 token domains, in stable variables.css order)
 ├── utilities/
@@ -40,7 +48,7 @@ src/
 ├── generated/                      # GITIGNORED build artifact (regenerated from cssVariableTokens)
 │   └── cssVariables/               #   one tree-shakeable const per variable, e.g. color/background/colorCanvas.ts
 │       └── index.ts                #   generated barrels (re-export every name const)
-├── helpers.ts                      # Token-tree flatten helpers + renderCss serializer
+├── helpers.ts                      # Token-tree flatten helpers + stripDeprecated + renderCss serializer
 └── index.ts                        # Main (`.`) entry: generated name consts + `ref` only (meta lives behind `./meta`)
 scripts/
 ├── buildCssVariableConstants.ts    # Generates src/generated/cssVariables/** (one plain-literal const per variable) from cssVariableTokens
@@ -99,6 +107,54 @@ walk it and use `kindOf` to split CSS-variable **tokens** from `.scheme-*` **uti
 `stylesheetsMeta.color.background.canvas`) can be read directly; the storefront imports it from
 `@porsche-design-system/stylesheets/meta`.
 
+## Deprecating a Global Style
+
+`cssVariableTokens` and `colorScheme` together are the **catalog**: every public declaration, documented and deprecated
+alike, and what the generated CSS is built from. `meta.ts` derives two projections from it — `stylesheetsMeta` (the
+catalog minus its deprecated declarations, what the docs and the skill render) and `stylesheetsDeprecations` (the
+deprecated remainder, as the shared `Deprecations` list). A declaration therefore cannot reach a consumer without being
+either documented or listed as deprecated.
+
+To deprecate one, add a `deprecation` field to the declaration. That is the whole edit — there is no second catalog to
+move it to, and both projections update automatically:
+
+```ts
+// src/theme/blur.ts
+export const blur = {
+  legacy: {
+    type: 'blur',
+    property: '--p-blur-legacy',
+    description: 'Applies a legacy blur.',
+    value: blurLegacy,
+    deprecation: { replacement: '--p-blur-frosted' },
+  },
+  frosted: {/* … */},
+} satisfies CssVariableTokens['blur'];
+```
+
+- The marker is the shared contract from `@porsche-design-system/shared/deprecation`: `Deprecation` is
+  `{ note?, replacement? }`, and its mere presence — `{}` included — means deprecated. The key itself comes from the
+  shared `Deprecated` slot, intersected into the leaf type (`CssDeclaration & Deprecated & { … }`), so never redeclare a
+  package-local marker type or re-spell the field.
+- **Do not write an `@deprecated` sentence.** `getDeprecationComment` owns the wording _and_ the comment syntax, and
+  `renderCssNode` calls it, so the generated CSS carries
+  `/* @deprecated Use --p-blur-frosted instead. This API will be removed with the next major release. */` on its own.
+- `note` **appends** to that sentence; it never replaces it. Write one only when the migration needs more than the
+  sentence itself.
+- Author `replacement` as the canonical identity of a **current** declaration — the custom property for a variable, the
+  selector for a class. `stylesheetIdentifier(node)` spells it; deriving it from the catalog means a rename cannot leave
+  a deprecation pointing at a name that no longer exists.
+- A deprecated declaration keeps its `description` and **keeps rendering into the generated CSS**. It is deprecated, not
+  removed; removal happens in the next major.
+- Because the `CssVariableTokens` groups are `Record`-keyed, `satisfies StylesheetsMeta` will _not_ fail the build when
+  you deprecate a documented declaration — unlike Tailwind's exact-keyed contract. Update the affected storefront pages
+  and tests deliberately.
+
+The knowledge skill's deprecation index reads `stylesheetsDeprecations` directly, so the field above is what makes a
+deprecated global style show up for an audit. The contract itself is documented on its exports in
+`@porsche-design-system/shared/deprecation`; the styling packages that follow the same model are described in
+[`packages/styles/AGENTS.md`](../../../styles/AGENTS.md).
+
 ## Working Guidelines
 
 - To add or change a CSS variable, edit the relevant domain file in `src/theme/` — never hardcode it in the build
@@ -106,6 +162,8 @@ walk it and use `kindOf` to split CSS-variable **tokens** from `.scheme-*` **uti
 - Color leaves must provide `value` (the `light-dark()` value), `valueLight` and `valueDark` (for the polyfill).
 - A token leaf carries `property`; a utility leaf carries `selector` — `kindOf` relies on this. Keep that invariant.
 - After changing the meta, rebuild the package and update the snapshots, then verify the storefront docs.
+- Changing the catalog also changes the knowledge skill's `deprecations.md` drift snapshots
+  (`packages/storefront/projects/skills`). Update those in the same change.
 
 ## Commands
 

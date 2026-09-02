@@ -1,30 +1,28 @@
+import { type Deprecations, isDeprecated } from '@porsche-design-system/shared/deprecation';
+import { flatten, stripDeprecated } from './css/render';
+import { tailwindIdentifier } from './deprecation';
+import { kindOf } from './kind';
 import { blur } from './theme/blur';
 import { border } from './theme/border';
 import { breakpoint } from './theme/breakpoint';
 import { color } from './theme/color';
-import { displayUtilities } from './utilities/display';
 import { font } from './theme/font';
+import { motion } from './theme/motion';
+import { shadow } from './theme/shadow';
+import { spacing } from './theme/spacing';
+import type { StylesMeta, TailwindThemeVariable, TailwindUtility } from './types';
+import { displayUtilities } from './utilities/display';
 import { gradientUtilities } from './utilities/gradient';
 import { grid } from './utilities/grid';
 import { headingUtilities } from './utilities/heading';
-import { motion } from './theme/motion';
-import { shadow } from './theme/shadow';
 import { skeletonUtilities } from './utilities/skeleton';
-import { spacing } from './theme/spacing';
 import { textUtilities } from './utilities/text';
-import type { TailwindMeta } from './types';
 
 /**
- * The documented single source of truth — a flat, domain-keyed catalog mirroring `tokensMeta` (and
- * the scss `scssMeta`). Token domains use the tokens vocabulary; `typography` holds the prose
- * shorthands, `gradient` / `grid` / `skeleton` are the remaining `@utility` groups. A leaf's kind is
- * recovered via `kindOf`. CSS-only plumbing (resets, defaults, layers, keyframes, deprecated
- * aliases) lives in `css/index.ts`, which assembles the stylesheet from these same object
- * references — so docs and generated CSS can never diverge. Key order mirrors the scss `scssMeta`
- * (and `tokensMeta`) verbatim, minus the `focus` / `mediaQuery` domains Tailwind doesn't ship, so the
- * domains line up one-to-one across solutions for the shared skill / storefront renderer.
+ * Internal source for generated CSS, documentation, and deprecations. Domain order mirrors SCSS
+ * where both integrations expose the same concepts.
  */
-export const tailwindMeta = {
+const tailwindCatalog = {
   border,
   blur,
   breakpoint,
@@ -41,4 +39,21 @@ export const tailwindMeta = {
   },
   skeleton: skeletonUtilities,
   grid,
-} satisfies TailwindMeta;
+};
+
+/**
+ * Documented catalog with deprecated declarations removed. Shared leaf references keep docs and
+ * generated CSS aligned.
+ */
+export const tailwindMeta = stripDeprecated(tailwindCatalog) satisfies StylesMeta<
+  TailwindThemeVariable,
+  TailwindUtility
+>;
+
+const declarations = flatten(tailwindCatalog) as (TailwindThemeVariable | TailwindUtility)[];
+
+export const tailwindDeprecations: Deprecations = declarations.filter(isDeprecated).map((node) => ({
+  usageKind: kindOf(node) === 'token' ? 'cssCustomProperty' : 'cssClass',
+  identifier: tailwindIdentifier(node),
+  deprecation: node.deprecation,
+}));
