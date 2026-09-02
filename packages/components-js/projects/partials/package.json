@@ -16,10 +16,11 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "npm run clean:build && npm run build:partials && npm run build:package && npm run build:copyToComponentsJs",
+    "build": "npm run clean:build && npm run build:partials && npm run typecheck && npm run build:package && npm run build:copyToComponentsJs",
     "build:package": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "build:partials": "tsx scripts/buildPartials.ts",
     "build:copyToComponentsJs": "TARGET=../../dist/components-wrapper/partials && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist && rm -rf ./dist-tmp"
