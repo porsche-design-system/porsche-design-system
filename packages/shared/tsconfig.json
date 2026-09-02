@@ -8,5 +8,5 @@
     "types": ["node"],
   },
   "include": ["./src", "./scripts"],
-  "exclude": ["**/*.spec.ts"]
+  "exclude": ["**/*.spec.ts", "src/examples"] // generated, imports the framework wrappers built later; the gated bundler cannot resolve them
 }
