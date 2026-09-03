@@ -64,13 +64,15 @@ pipeline five steps later rather than at once.
 
 ## How a fresh clone resolves internal packages
 
-`tsconfig.paths.json` at the repo root maps internal specifiers to sibling **source**, so pass one works
-before anything is compiled. It is extended only from a package's `tsconfig.typecheck.json`, never from
-its `tsconfig.json`, so the build keeps resolving from published declarations and a declaration-bundling
-fault is still caught.
+`packages/shared/tsconfig.paths.json` maps internal package names to their source, so pass one can run in a
+fresh clone. Only the check configs extend it, `tsconfig.typecheck.json` and `tsconfig.scripts.json`, never a
+`tsconfig.json` that a build reads, so builds keep resolving `@porsche-design-system/shared` from `dist`.
 
-For the same reason, configs read at build time extend `shared/src/tsconfig.json`, the tracked source
-copy, rather than the built one.
+`packages/shared/tsconfig.base.json` is the shared compiler base. Every config that extends either file uses
+the workspace name `shared`, except `packages/shared/tsconfig.json`, which extends `./tsconfig.base.json`
+beside it. `npm install` links `node_modules/shared` to the package, so nothing needs a build and no config
+encodes its own depth to reach them. `shared` has no `exports` map. If one is ever added it must list both
+files, or every config that extends them stops resolving.
 
 ## Adding a package
 
