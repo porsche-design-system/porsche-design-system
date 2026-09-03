@@ -88,8 +88,12 @@ const toPlainText = (line: string): string =>
     .replace(/\*\*Breaking Change\*\*/g, ':warning: Breaking Change')
     .replace(/\*\*([^*]+)\*\*/g, '$1')
     .replace(HEADING, (_match, heading: string) => `*** ${heading.toUpperCase()} ***`)
-    .replace(/\(\[#\d+\]\(([^)]*)\)\)/g, '($1)')
+    .replace(/\[#\d+\]\(([^)]*)\)/g, '$1')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1 ($2)');
+
+/** Merging the pre-release sections leaves runs of blank lines behind, which read as big gaps. */
+const collapseBlankRuns = (lines: string[]): string[] =>
+  lines.filter((line, index) => line.trim() !== '' || (lines[index - 1] ?? '').trim() !== '');
 
 /** "A", "A and B", "A, B and C". */
 const list = (items: string[]): string =>
@@ -141,9 +145,11 @@ const toSlackBody = (markdown: string): string => {
   const trimmed = markdown.replace(/\r\n?/g, '\n').trim();
   if (trimmed === '') return '';
   return truncate(
-    unwrap(trimmed)
-      .filter((line) => !FENCE.test(line))
-      .map(toPlainText)
+    collapseBlankRuns(
+      unwrap(trimmed)
+        .filter((line) => !FENCE.test(line))
+        .map(toPlainText)
+    )
   );
 };
 
