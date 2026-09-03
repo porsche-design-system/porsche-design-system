@@ -1,12 +1,15 @@
 # Slack notifications
 
-Two workflows post to Slack. Both use `slackapi/slack-github-action` with `webhook-type: webhook-trigger`, which starts
-a **Slack Workflow Builder** workflow. The message layout lives in Slack. The repository only delivers variables.
+Two workflows post to Slack, and they work differently.
 
-| Notification     | Workflow                                        | Fires on                                       | Secret                      |
-| ---------------- | ----------------------------------------------- | ---------------------------------------------- | --------------------------- |
-| Release          | `.github/workflows/release.yml`                 | a release the run actually created             | `SLACK_RELEASE_WEBHOOK_URL` |
-| Pipeline failure | `.github/workflows/notify-pipeline-failure.yml` | `Contribution` or `OSS Review Toolkit` failing | `SLACK_WEBHOOK_URL`         |
+| Notification     | Workflow                                        | Fires on                                       | How it posts                        |
+| ---------------- | ----------------------------------------------- | ---------------------------------------------- | ----------------------------------- |
+| Release          | `.github/workflows/release.yml`                 | a release the run actually created             | `chat.postMessage` with a bot token |
+| Pipeline failure | `.github/workflows/notify-pipeline-failure.yml` | `Contribution` or `OSS Review Toolkit` failing | a Workflow Builder trigger          |
+
+The difference is deliberate. The release announcement needs formatted release notes, which only a Block Kit `markdown`
+block renders, and that needs a bot token. The failure notification is six short fields, which Workflow Builder handles
+without an app install.
 
 ## Release announcement
 
@@ -15,60 +18,59 @@ only fires when a release was really created, so a pre-release and a re-run of a
 post nothing.
 
 The job reads the release back from the GitHub API rather than re-reading the changelog, so the Slack message and the
-GitHub Release cannot disagree. `scripts/build-slack-release-payload.ts` turns those release notes into three variables:
+GitHub Release cannot disagree.
 
-| Variable      | Contents                                  |
-| ------------- | ----------------------------------------- |
-| `version`     | `v4.7.0`                                  |
-| `body`        | the release notes, stripped to plain text |
-| `release_url` | the GitHub Release link                   |
+### Secrets
 
-The names must match the Slack workflow's `input_parameters` exactly or the request is rejected. `release_url` is
-separate from `body` so truncation can never eat it.
+| Secret                     | What                                                                                                    |
+| -------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `SLACK_BOT_TOKEN`          | bot token with the `chat:write` scope                                                                   |
+| `SLACK_RELEASE_CHANNEL_ID` | destination channel, a secret so it can change without a PR                                             |
+| `SLACK_TEST_CHANNEL_ID`    | rehearsal channel, read only by the temporary test workflow so a rehearsal can never reach the real one |
 
-## Why the notes are stripped rather than formatted
+The app must be invited to the channel, otherwise Slack answers `not_in_channel`.
 
-Workflow Builder renders variable values as **plain text**. Markdown and Slack mrkdwn both print literally, so the
-script removes them instead of converting: headings become `*** ADDED ***`, `**Breaking Change**` becomes
-`:warning: Breaking Change`, pull request links are reduced to the bare URL, and Prettier's hard wrapping is undone.
-Backticks stay, because in a message where nothing renders they are the only sign that a word is an API name.
+### The message
 
-Two consequences that are easy to trip over:
+`scripts/build-slack-release-payload.ts` builds four blocks: an intro, a divider, the release notes, and a link to the
+full notes. The notes go across **almost untouched**, because the `markdown` block renders standard markdown — links
+keep their labels, headings are headings, nested lists stay nested, and hard-wrapped lines reflow on their own.
 
-- **Bare URLs are the only clickable form.** Slack auto-links them, but there is no way to give one a label, which is
-  why pull request numbers are gone.
-- **Nothing needs HTML-escaping**, unlike everywhere else in Slack, because `&`, `<` and `>` are only special where
-  mrkdwn is parsed.
+Two things the script still has to do, both found by testing rather than documented by Slack:
 
-There are no unit tests. The transform order inside the script matters and is commented there; after changing it, send a
-real message and read it.
+- **Fenced code blocks are de-indented to column 0.** At column 0 they render with syntax highlighting; indented under a
+  bullet, as they are throughout the changelog, they come out as plain text.
+- **The payload stays under 12,000 characters**, Slack's cumulative limit across every `markdown` block in one message,
+  so the intro and footer count against the notes. Past that the notes are cut on an entry boundary and a tail names the
+  sections that were dropped. Only a major release has ever come close.
 
-## Size limit
+There are no unit tests. After changing the script, send a real message and read it.
 
-Slack documents none, so it was measured: **12,153 characters is delivered, 19,990 is rejected** with _"The message
-content exceeded the size limit"_. The script caps the body at 12,000 and cuts on an entry boundary, adding a tail
-naming the sections it dropped. Only a major release has ever come close.
+### Changing things
 
-## Changing things
+- **Wording and layout** live in `scripts/build-slack-release-payload.ts`, so changing them is a pull request.
+- **The channel** is `SLACK_RELEASE_CHANNEL_ID`, changeable without one.
+- **Rotating the token** is done in the Slack app under **OAuth & Permissions**, then updating the secret.
 
-- **Wording, layout or channel** are edited in Workflow Builder and republished. The trigger URL and the repository
-  secret do not change.
-- **What the message says about a release** is `scripts/build-slack-release-payload.ts`.
-- **A new variable** must be declared on the Slack workflow first. A key Slack does not know about fails the whole
-  request.
-- **Rotating a webhook** means deleting the trigger in Workflow Builder, creating a new one, and updating the secret
-  under **Settings → Secrets and variables → Actions**.
-
-A revoked or missing webhook fails the sending job rather than passing green, because both Send steps set `errors: true`
+A missing or revoked token fails the sending job rather than passing green, because the Send step sets `errors: true`
 against the action's default of `false`.
+
+### If it ever has to go back to a webhook
+
+The `markdown` block works on neither an incoming webhook, where it returns HTTP 500
+(`slackapi/slack-github-action#440`), nor a Workflow Builder trigger, which accepts no blocks at all. A webhook version
+has to strip the markdown to plain text instead: Workflow Builder renders variables literally, so `**bold**`,
+`[label](url)` and backticks all print as written, though bare URLs are still auto-linked and nothing needs
+HTML-escaping.
 
 ## Pipeline failure
 
-`notify-pipeline-failure.yml` watches the `Contribution` and `OSS Review Toolkit` workflows and posts when one fails on
-a monitored branch. It runs the default-branch copy of itself and checks the triggering run came from this repository,
-so a fork cannot reach the webhook. There is also a `workflow_dispatch` path taking a run ID, for rehearsing against a
-past failure. `scripts/build-slack-payload.ts` builds its seven variables: `workflow`, `branch`, `event`, `run_url`,
-`author`, `failed_count` and `failed_jobs`.
+`notify-pipeline-failure.yml` watches the `Contribution` and `OSS Review Toolkit` workflows and posts to the
+`SLACK_WEBHOOK_URL` trigger when one fails on a monitored branch. It runs the default-branch copy of itself and checks
+the triggering run came from this repository, so a fork cannot reach the webhook. There is also a `workflow_dispatch`
+path taking a run ID, for rehearsing against a past failure. `scripts/build-slack-payload.ts` builds its seven
+variables: `workflow`, `branch`, `event`, `run_url`, `author`, `failed_count` and `failed_jobs`. Their names must match
+the Slack workflow's `input_parameters` exactly or the request is rejected.
 
 > **Slack side to be filled in.** The app manifest and the trigger definition behind `SLACK_WEBHOOK_URL` were never
 > recorded anywhere. Still missing: the Slack app name, the destination channel, and the name of the Workflow Builder
