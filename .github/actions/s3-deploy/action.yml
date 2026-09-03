@@ -78,6 +78,13 @@ runs:
         # `.vtt` is not cosmetic: browsers refuse a caption track that is not `text/vtt`. The values
         # reproduce what GitHub Pages served. `.mdc` is deliberately absent - GitHub Pages served it
         # as octet-stream too, so the fallback is already correct.
+        #
+        # This whole table, and the pass below that applies it, is scheduled to move into the
+        # distribution as a viewer-response function (storefront-cdk#7), after which the upload
+        # becomes a single `aws s3 sync`. It earns little where it is: measured against a current
+        # build, the overrides cover 4 objects out of 3,938 - three `.md` (one being the
+        # `version.md` written above) and one `.vtt`. `.hbs` and `.map` exist only in the legacy
+        # `v0` slug, which is migrated and never redeployed.
         OVERRIDE_EXTENSIONS=(hbs map md vtt)
         override_content_type() {
           case "$1" in
