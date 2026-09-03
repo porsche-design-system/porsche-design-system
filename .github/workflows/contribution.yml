@@ -118,6 +118,23 @@ jobs:
     secrets:
       linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
       linode-aws-secret-access-key: ${{ secrets.LINODE_AWS_SECRET_ACCESS_KEY }}
+      # Storefront hosting lives in AWS account 473157801658 (eu-central-1) and is provisioned by
+      # the private `porsche-design-system/storefront-cdk` repository, which is the source of truth
+      # for every value below. They are secrets rather than `vars` because this repository is
+      # public: account IDs, bucket names and role ARNs are individually harmless but collectively
+      # free reconnaissance.
+      #
+      #   AWS_STOREFRONT_PREVIEW_ROLE_ARN   iam.Role `storefront-preview-deployer`
+      #                                     trusts `repo:<this repo>:pull_request`
+      #                                     read/write/delete confined to `pr-*`
+      #   AWS_STOREFRONT_RELEASE_ROLE_ARN   iam.Role `storefront-release-deployer`
+      #                                     trusts `repo:<this repo>:environment:storefront`
+      #                                     writes `nightly/*` and `v*`; deletes `nightly/*` only
+      #   AWS_STOREFRONT_BUCKET             origin bucket behind the CloudFront distribution
+      #   AWS_STOREFRONT_DISTRIBUTION_ID    distribution to invalidate after a deploy
+      #
+      # Both roles are assumed via OIDC, so no long-lived AWS keys exist for the storefront - unlike
+      # the Linode/Akamai pair above.
       aws-storefront-preview-role-arn: ${{ secrets.AWS_STOREFRONT_PREVIEW_ROLE_ARN }}
       aws-storefront-release-role-arn: ${{ secrets.AWS_STOREFRONT_RELEASE_ROLE_ARN }}
       aws-storefront-bucket: ${{ secrets.AWS_STOREFRONT_BUCKET }}
@@ -149,6 +166,9 @@ jobs:
       aws-storefront-release-role-arn: ${{ secrets.AWS_STOREFRONT_RELEASE_ROLE_ARN }}
       aws-storefront-bucket: ${{ secrets.AWS_STOREFRONT_BUCKET }}
       aws-storefront-distribution-id: ${{ secrets.AWS_STOREFRONT_DISTRIBUTION_ID }}
+      # Origin the published storefront is served from, used only to check whether a version is
+      # already published. At DNS cutover this becomes designsystem.porsche.com and nothing else
+      # changes. See the deploy job above for where these values are provisioned.
       aws-storefront-base-url: ${{ secrets.AWS_STOREFRONT_BASE_URL }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}

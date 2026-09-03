@@ -23,9 +23,25 @@ concurrency:
 jobs:
   cleanup:
     name: 'Cleanup'
-    # Gated exactly as the deploy job in contribution.yml: secrets and the OIDC token are not
-    # available to fork pull requests, and bot-authored pull requests must not reach the AWS role
-    # even when approved.
+    # What actually stops a fork from reaching the AWS role is NOT this condition. A fork pull
+    # request runs the workflow file from its own head branch, so an attacker can simply delete
+    # these lines. Two platform guarantees are the real boundary, and both hold regardless of what
+    # the fork's workflow file says:
+    #
+    #   1. "With the exception of GITHUB_TOKEN, secrets are not passed to the runner when a workflow
+    #      is triggered from a forked repository" - so `AWS_STOREFRONT_PREVIEW_ROLE_ARN` is empty and
+    #      there is no role to assume.
+    #   2. `permissions` can only add or remove *read* access for forks; write scopes are downgraded.
+    #      `id-token: write` is therefore not granted, and no OIDC token can be minted at all.
+    #
+    # This is worth stating plainly because the OIDC subject would otherwise match: for a fork pull
+    # request the `repository` claim is still the *base* repository, so the subject really is
+    # `repo:porsche-design-system/porsche-design-system:pull_request`. The role's trust policy alone
+    # would not turn a fork away - the absence of a token is what does.
+    #
+    # So the condition below is defense in depth and noise reduction: it keeps the job from starting
+    # and failing confusingly, and it keeps bot-authored pull requests away from the role even though
+    # those do run in this repository and would otherwise have credentials.
     #
     # We gate on the PR *author* (`github.event.pull_request.user.login`), NOT on `github.actor`:
     # `github.actor` is whoever triggered the current run, so it does not reliably identify an
@@ -51,6 +67,10 @@ jobs:
           role-to-assume: ${{ secrets.AWS_STOREFRONT_PREVIEW_ROLE_ARN }}
           aws-region: eu-central-1
       - name: 'Remove preview'
+        # Both commands are no-ops rather than errors when the pull request never deployed - a run
+        # that was cancelled before the deploy job, or whose tests failed. `aws s3 rm --recursive`
+        # over a prefix with no keys exits 0, and an invalidation for a path with nothing cached is
+        # accepted and completes normally. Verified against this distribution; not worth guarding.
         run: |
           set -euo pipefail
           aws s3 rm --recursive "s3://${BUCKET}/pr-${PR_NUMBER}/"

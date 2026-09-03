@@ -23,8 +23,14 @@ runs:
       # exist, and the distribution deliberately has no custom error response remapping that: a
       # SPA-style `403 -> /index.html` returning 200 would report every unpublished version as
       # published and silently skip the storefront deploy of a real release.
+      #
+      # Timeouts are not optional here: without them a stalled connection hangs the release
+      # pipeline indefinitely. A failed request yields `000`, which reads as "not published" and so
+      # deploys again - the sync is idempotent and never deletes, so retrying is the safe direction.
       run: |
-        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/v${VERSION}/")"
+        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" \
+          --connect-timeout 10 --max-time 30 --retry 2 --retry-delay 5 \
+          "${BASE_URL}/v${VERSION}/")"
 
         if [[ ${http_status_code} == 200 ]]; then
           echo "Storefront version is published."

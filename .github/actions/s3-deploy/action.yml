@@ -37,7 +37,7 @@ runs:
     - name: 'Verify source'
       run: |
         set -euo pipefail
-        if [[ ! -d $SOURCE ]]; then
+        if [[ ! -d "$SOURCE" ]]; then
           echo "source directory does not exist: $SOURCE" >&2
           exit 1
         fi
