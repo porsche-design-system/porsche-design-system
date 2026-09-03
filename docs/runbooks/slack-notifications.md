@@ -22,11 +22,10 @@ GitHub Release cannot disagree.
 
 ### Secrets
 
-| Secret                     | What                                                                                                    |
-| -------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `SLACK_BOT_TOKEN`          | bot token with the `chat:write` scope                                                                   |
-| `SLACK_RELEASE_CHANNEL_ID` | destination channel, a secret so it can change without a PR                                             |
-| `SLACK_TEST_CHANNEL_ID`    | rehearsal channel, read only by the temporary test workflow so a rehearsal can never reach the real one |
+| Secret                     | What                                                        |
+| -------------------------- | ----------------------------------------------------------- |
+| `SLACK_BOT_TOKEN`          | bot token with the `chat:write` scope                       |
+| `SLACK_RELEASE_CHANNEL_ID` | destination channel, a secret so it can change without a PR |
 
 The app must be invited to the channel, otherwise Slack answers `not_in_channel`.
 
