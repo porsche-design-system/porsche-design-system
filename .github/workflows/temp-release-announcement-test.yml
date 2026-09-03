@@ -1,0 +1,51 @@
+# TEMPORARY — DELETE THIS FILE BEFORE MERGING #4670.
+#
+# It exists only to rehearse the release announcement. That normally fires from the
+# `notify-release` job in release.yml, and therefore only on a real release to main or v4.
+# Pointing the real path at a branch is not an option: it would drag the four npm publish
+# jobs along with it and attempt real publishes.
+name: 'Release Announcement (test)'
+
+on:
+  push:
+    branches:
+      - 'issue/4670'
+
+permissions:
+  contents: read
+
+env:
+  # Which existing release to rehearse with. v4.0.0 is the worst case on record — 52,039 characters
+  # of changelog, so it exercises truncation, the section-naming tail and the fenced code blocks all
+  # at once. Swap to v4.5.0 (903 characters) to check the ordinary, untruncated path.
+  RELEASE_TAG: 'v4.0.0'
+
+jobs:
+  notify:
+    name: 'Notify (test)'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+        with:
+          node_modules: 'false'
+      - name: 'Fetch release'
+        run: gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" > "$RUNNER_TEMP/release.json"
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: 'Build payload'
+        run: |
+          node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-release-payload.ts \
+            "$RUNNER_TEMP/release.json" \
+            > "$RUNNER_TEMP/slack-payload.json"
+          cat "$RUNNER_TEMP/slack-payload.json"
+      - name: 'Send'
+        uses: slackapi/slack-github-action@v4.0.0
+        with:
+          webhook: ${{ secrets.SLACK_RELEASE_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
+          payload-file-path: ${{ runner.temp }}/slack-payload.json
+          errors: true
