@@ -97,12 +97,27 @@ runs:
           sync_flags+=(--delete)
         fi
 
-        # `--delete` is safe to combine with `--exclude`: the filters are applied to the destination
-        # listing as well, so an excluded key is never a deletion candidate. Verified against this
-        # bucket - the document pass leaves `_next/static/*` and the override extensions untouched,
-        # and each pass prunes only what it owns.
+        # Why sync-with-delete rather than the simpler "wipe the prefix, then upload"?
+        #
+        # `aws s3 rm --recursive` would delete files the new build also contains, and the upload
+        # takes ~2.5 minutes for the ~3,900 objects a storefront build produces. That is a 2.5
+        # minute window in which `/nightly/` - and, after cutover, the live `/v4/` - is partly or
+        # entirely 403. A failed run in the middle leaves it that way.
+        #
+        # `sync --delete` only ever removes keys with no counterpart in the new build, so no file
+        # the site still needs is missing at any point: a reader sees the old bytes or the new
+        # bytes, never nothing. A crashed run leaves the previous version fully serving.
+        #
+        # The three passes exist for content types and cache classes, not for speed. `sync` is not
+        # incremental here - `download-artifact` resets mtimes, so every object is re-uploaded on
+        # every run either way. The pruning is what it genuinely buys us.
 
-        # Pass 1: content-hashed assets. Only ever `.js` and `.css`, both typed correctly by the CLI.
+        # Pass 1: content-hashed assets. Only ever `.js` and `.css` (verified against the bucket),
+        # both typed correctly by the CLI, so this pass needs no content-type override.
+        #
+        # `--delete` combines safely with the `--exclude` filters used below: they are applied to
+        # the destination listing too, so an excluded key is never a deletion candidate. Each pass
+        # therefore prunes only what it owns, and together the three cover every key.
         if [[ -d "$SOURCE/_next/static" ]]; then
           echo "--- immutable assets"
           aws s3 sync "$SOURCE/_next/static/" "s3://$BUCKET/$SLUG/_next/static/" \
