@@ -260,8 +260,9 @@ jobs:
           slug: 'v${{ needs.check-publication-status.outputs.components-version }}'
           bucket: ${{ secrets.aws-storefront-bucket }}
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
-          # Published versions are append-only. The role cannot delete outside `nightly/` either, so
-          # this holds by command and by policy.
+          # A pinned version is published once and never changes, unlike the moving `nightly` and
+          # `v4` slugs that deploy.yml replaces wholesale. The role cannot delete under a pinned
+          # prefix either, so this holds by command and by policy.
           delete: 'false'
           algolia: 'true'
         env:

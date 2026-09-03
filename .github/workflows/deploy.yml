@@ -220,11 +220,15 @@ jobs:
           slug: ${{ inputs.storefront-slug }}
           bucket: ${{ secrets.aws-storefront-bucket }}
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
-          # Only `nightly` is prunable, and only because the role permits it. A push to a `v*` branch
-          # republishes the major-version alias without removing anything: published content is
-          # append-only so that a buggy pipeline cannot unpublish a release. Orphans left behind are
-          # unreachable unless something links to them directly.
-          delete: ${{ inputs.storefront-slug == 'nightly' }}
+          # Every deploy here is a complete rebuild of a *moving* slug - `nightly`, or a major-version
+          # alias like `v4` - so it replaces the previous one wholesale, exactly as the GitHub Pages
+          # deployment did when it removed the target folder before copying. Without this, a page
+          # removed from the storefront would stay reachable under `/v4/` forever.
+          #
+          # Pinned versions are a different matter and are published by release.yml without
+          # `--delete`; the release role cannot delete under `v4.7.0/` either, so a buggy pipeline
+          # still cannot unpublish a release.
+          delete: 'true'
           # Algolia indexing flag is also resolved once in the caller (contribution.yml → context job).
           algolia: ${{ inputs.storefront-algolia }}
         env:
