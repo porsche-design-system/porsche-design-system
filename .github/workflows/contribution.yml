@@ -142,4 +142,5 @@ jobs:
       gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
-      slack-release-webhook-url: ${{ secrets.SLACK_RELEASE_WEBHOOK_URL }}
+      slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+      slack-release-channel-id: ${{ secrets.SLACK_RELEASE_CHANNEL_ID }}

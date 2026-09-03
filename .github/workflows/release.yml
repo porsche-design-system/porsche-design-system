@@ -23,8 +23,11 @@ on:
       algolia-api-key:
         description: 'Algolia API Key (Storefront).'
         required: true
-      slack-release-webhook-url:
-        description: 'Slack Workflow Builder trigger URL for the release announcement. Not required: a missing secret must not stop a release, it fails the announcement job instead.'
+      slack-bot-token:
+        description: 'Slack bot token (chat:write) for the release announcement. Not required: a missing secret must not stop a release, it fails the announcement job instead.'
+        required: false
+      slack-release-channel-id:
+        description: 'Slack channel the release announcement is posted to. A secret rather than a literal so the channel can be changed without a pull request.'
         required: false
 
 # Default to the least privilege; jobs that need more declare it explicitly.
@@ -253,18 +256,20 @@ jobs:
             "$RUNNER_TEMP/release.json" \
             > "$RUNNER_TEMP/slack-payload.json"
           cat "$RUNNER_TEMP/slack-payload.json"
+        env:
+          SLACK_CHANNEL_ID: ${{ secrets.slack-release-channel-id }}
       - name: 'Send'
-        # Starts a Slack workflow built in Workflow Builder. The message LAYOUT lives in Slack, not
-        # here — this step only delivers the variables. See docs/runbooks/slack-notifications.md.
-        # The keys `version`, `body` and `release_url` must stay in sync with the workflow's
-        # `input_parameters` or Slack rejects the request with `parameter_validation_failed`.
+        # `chat.postMessage` with a bot token rather than a webhook, because the Block Kit
+        # `markdown` block is what renders the release notes and it works on neither an incoming
+        # webhook (slackapi/slack-github-action#440) nor a Workflow Builder trigger.
+        # See docs/runbooks/slack-notifications.md.
         #
-        # `errors: true` because the action's default is FALSE — without it a rejected webhook
+        # `errors: true` because the action's default is FALSE — without it a rejected request
         # passes the step green and consumers are never told, with nothing to show for it.
         uses: slackapi/slack-github-action@v4.0.0
         with:
-          webhook: ${{ secrets.slack-release-webhook-url }}
-          webhook-type: webhook-trigger
+          method: chat.postMessage
+          token: ${{ secrets.slack-bot-token }}
           payload-file-path: ${{ runner.temp }}/slack-payload.json
           errors: true
   github-pages-storefront:

@@ -42,10 +42,15 @@ jobs:
             "$RUNNER_TEMP/release.json" \
             > "$RUNNER_TEMP/slack-payload.json"
           cat "$RUNNER_TEMP/slack-payload.json"
+        env:
+          # Deliberately NOT SLACK_RELEASE_CHANNEL_ID: that one points at the real consumer
+          # channel from day one, so this rehearsal can never reach it and there is no cutover
+          # step to forget at merge time.
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_TEST_CHANNEL_ID }}
       - name: 'Send'
         uses: slackapi/slack-github-action@v4.0.0
         with:
-          webhook: ${{ secrets.SLACK_RELEASE_WEBHOOK_URL }}
-          webhook-type: webhook-trigger
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload-file-path: ${{ runner.temp }}/slack-payload.json
           errors: true
