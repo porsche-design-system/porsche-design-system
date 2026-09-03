@@ -23,6 +23,9 @@ on:
       algolia-api-key:
         description: 'Algolia API Key (Storefront).'
         required: true
+      slack-release-webhook-url:
+        description: 'Slack Workflow Builder trigger URL for the release announcement. Not required: a missing secret must not stop a release, it fails the announcement job instead.'
+        required: false
 
 # Default to the least privilege; jobs that need more declare it explicitly.
 permissions:
@@ -203,13 +206,67 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # Required to create GitHub releases (and the underlying tag) via the GitHub API
+    outputs:
+      # The action exits 0 for a pre-release, for an already-existing tag AND for a real creation,
+      # so this job going green does not mean a release exists. Only this output says so.
+      created: ${{ steps.create_release.outputs.created }}
     steps:
       - uses: actions/checkout@v7
       - name: 'Create GitHub Release'
+        id: create_release
         uses: ./.github/actions/create-github-release
         with:
           version: ${{ needs.check-publication-status.outputs.components-version }}
           github-token: ${{ secrets.github-token }}
+  notify-release:
+    name: 'Notify Release'
+    needs:
+      - check-publication-status
+      - github-release
+    # Only for a release this run actually created. Skipped jobs and a failed `github-release`
+    # both leave this empty, so neither announces.
+    if: ${{ needs.github-release.outputs.created == 'true' }}
+    runs-on: ubuntu-latest
+    # Reads the release it is announcing; the webhook is a secret, not a token scope.
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      # `node_modules: 'false'` gives us Node without `npm ci` across ~35 workspaces.
+      # The payload builder has zero dependencies precisely so this is possible.
+      - uses: ./.github/actions/install
+        with:
+          node_modules: 'false'
+      - name: 'Fetch release'
+        # Read the release back rather than re-extracting the changelog, so the Slack message and
+        # the GitHub Release cannot disagree. Also yields `html_url` in the same call.
+        run: gh api "repos/$GITHUB_REPOSITORY/releases/tags/v$VERSION" > "$RUNNER_TEMP/release.json"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.check-publication-status.outputs.components-version }}
+      - name: 'Build payload'
+        # Bare `node`, not `tsx`: Node 24 strips types natively, so no `npm ci` is needed.
+        # `--disable-warning` silences a stderr-only notice about the missing root `"type"` field.
+        run: |
+          node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-release-payload.ts \
+            "$RUNNER_TEMP/release.json" \
+            > "$RUNNER_TEMP/slack-payload.json"
+          cat "$RUNNER_TEMP/slack-payload.json"
+      - name: 'Send'
+        # Starts a Slack workflow built in Workflow Builder. The message LAYOUT lives in Slack, not
+        # here — this step only delivers the variables. See docs/runbooks/slack-notifications.md.
+        # The keys `version`, `body` and `release_url` must stay in sync with the workflow's
+        # `input_parameters` or Slack rejects the request with `parameter_validation_failed`.
+        #
+        # `errors: true` because the action's default is FALSE — without it a rejected webhook
+        # passes the step green and consumers are never told, with nothing to show for it.
+        uses: slackapi/slack-github-action@v4.0.0
+        with:
+          webhook: ${{ secrets.slack-release-webhook-url }}
+          webhook-type: webhook-trigger
+          payload-file-path: ${{ runner.temp }}/slack-payload.json
+          errors: true
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     needs: check-publication-status
