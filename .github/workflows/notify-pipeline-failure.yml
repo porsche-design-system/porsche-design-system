@@ -1,5 +1,5 @@
 # Posts a Slack message when an important pipeline fails. See
-# docs/runbooks/pipeline-failure-notifications.md.
+# docs/runbooks/slack-notifications.md.
 #
 # `workflow_run` runs the DEFAULT-BRANCH copy of this file, so a contributor cannot alter the
 # notifier from inside their PR. That, plus the fork check in the job's `if:`, is what keeps the
@@ -128,7 +128,7 @@ jobs:
         if: steps.resolve.outputs.skip != 'true'
         # Starts a Slack workflow built in Workflow Builder. The message LAYOUT lives in Slack, not
         # here — this step only delivers the variables. The matching Slack app manifest and webhook
-        # trigger definition are in docs/runbooks/pipeline-failure-notifications.md, and the key
+        # trigger definition are in docs/runbooks/slack-notifications.md, and the key
         # names below must stay in sync with the workflow's `input_parameters` or Slack rejects
         # the request.
         #
