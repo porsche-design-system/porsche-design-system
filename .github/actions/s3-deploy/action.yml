@@ -1,0 +1,156 @@
+name: 'S3 Deploy'
+description: 'Publishes a built storefront to the S3 origin bucket and invalidates the CloudFront distribution.'
+
+# AWS credentials are deliberately NOT configured here. The calling job assumes the role, so the
+# choice of role stays next to the `environment:` declaration that authorises it (the environment
+# name is the release role's OIDC trust condition). An action that silently picked a role would put
+# that decision out of sight of the security boundary it belongs to.
+
+inputs:
+  source:
+    description: 'Path to the built storefront (the directory that becomes the slug root).'
+    required: true
+  slug:
+    description: 'Deploy target slug, i.e. the key prefix in the bucket (e.g. "pr-1234", "nightly", "v4", "v4.7.0"). Must match the storefront basePath baked in at build time.'
+    required: true
+  bucket:
+    description: 'Origin bucket name.'
+    required: true
+  distribution-id:
+    description: 'CloudFront distribution to invalidate.'
+    required: true
+  delete:
+    description: 'Whether to remove objects that are absent from the source. Only ever "true" where the assumed role is allowed to delete: `pr-*` for previews, `nightly/*` for the nightly build. Published `v*` slugs are append-only.'
+    required: false
+    default: 'false'
+  algolia:
+    description: 'Whether to update the Algolia search index or not.'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'composite'
+  steps:
+    # Provenance marker, one per slug, carried over from the GitHub Pages deployment. Nothing reads
+    # it programmatically, but it is the only way to tell which commit a published slug came from.
+    - name: 'Stamp'
+      run: echo "${GITHUB_SHA}" > "${SOURCE}/version.md"
+      shell: bash
+      env:
+        SOURCE: ${{ inputs.source }}
+
+    # Three passes, mirroring the one-off migration that seeded this bucket. Any divergence would
+    # republish the existing objects with different metadata, so the passes, the two cache classes
+    # and the content-type overrides are kept identical on purpose.
+    #
+    # Inputs are passed through the environment rather than interpolated into the script body:
+    # `${{ }}` inside `run:` splices its value into the source text, which is the standard Actions
+    # script-injection vector.
+    - name: 'Upload'
+      run: |
+        set -euo pipefail
+
+        # Content-hashed by Next.js, so the bytes behind a given key never change.
+        IMMUTABLE_CACHE_CONTROL="public, max-age=31536000, immutable"
+        # "Revalidate before reuse", not "do not store". CloudFront still caches these; the
+        # distribution's document cache policy forwards the header to the browser.
+        DOCUMENT_CACHE_CONTROL="no-cache"
+
+        # Extensions the AWS CLI cannot guess. It falls back to `binary/octet-stream`, which for
+        # `.vtt` is not cosmetic: browsers refuse a caption track that is not `text/vtt`. The values
+        # reproduce what GitHub Pages served. `.mdc` is deliberately absent - GitHub Pages served it
+        # as octet-stream too, so the fallback is already correct.
+        OVERRIDE_EXTENSIONS=(hbs map md vtt)
+        override_content_type() {
+          case "$1" in
+            hbs) echo 'text/x-handlebars-template' ;;
+            map) echo 'application/json' ;;
+            md) echo 'text/markdown' ;;
+            vtt) echo 'text/vtt' ;;
+            *) return 1 ;;
+          esac
+        }
+
+        # Seeded with `--no-progress` so the array is never empty: expanding an empty array under
+        # `set -u` is an error on bash before 4.4, which is what a developer running this logic on
+        # macOS gets.
+        sync_flags=(--no-progress)
+        if [[ $DELETE == 'true' ]]; then
+          sync_flags+=(--delete)
+        fi
+
+        # `--delete` is safe to combine with `--exclude`: the filters are applied to the destination
+        # listing as well, so an excluded key is never a deletion candidate. Verified against this
+        # bucket - the document pass leaves `_next/static/*` and the override extensions untouched,
+        # and each pass prunes only what it owns.
+
+        # Pass 1: content-hashed assets. Only ever `.js` and `.css`, both typed correctly by the CLI.
+        if [[ -d "$SOURCE/_next/static" ]]; then
+          echo "--- immutable assets"
+          aws s3 sync "$SOURCE/_next/static/" "s3://$BUCKET/$SLUG/_next/static/" \
+            --cache-control "$IMMUTABLE_CACHE_CONTROL" \
+            "${sync_flags[@]}"
+        fi
+
+        # Pass 2: everything else. The override extensions are held back so that no object is
+        # uploaded twice and re-runs stay incremental.
+        exclusions=(--exclude "_next/static/*")
+        for extension in "${OVERRIDE_EXTENSIONS[@]}"; do
+          exclusions+=(--exclude "*.${extension}")
+        done
+
+        echo "--- documents"
+        aws s3 sync "$SOURCE/" "s3://$BUCKET/$SLUG/" \
+          --cache-control "$DOCUMENT_CACHE_CONTROL" \
+          "${sync_flags[@]}" "${exclusions[@]}"
+
+        # Pass 3: one pass per extension the CLI cannot type. Filters are evaluated in order and the
+        # last match wins, so `_next/static` is re-excluded at the end.
+        #
+        # The emptiness check is deliberately pipe-free. `find ... | grep -q` looks equivalent but is
+        # not: `grep -q` exits on the first match, `find` then dies of SIGPIPE, and under `pipefail`
+        # the pipeline reports 141 - so a slug that *does* contain the extension is reported as not
+        # containing it and the pass is skipped.
+        for extension in "${OVERRIDE_EXTENSIONS[@]}"; do
+          if [[ -z "$(find "$SOURCE" -type f -name "*.${extension}" -not -path "$SOURCE/_next/static/*" -print -quit)" ]]; then
+            continue
+          fi
+
+          echo "--- *.${extension}"
+          aws s3 sync "$SOURCE/" "s3://$BUCKET/$SLUG/" \
+            --cache-control "$DOCUMENT_CACHE_CONTROL" \
+            --content-type "$(override_content_type "$extension")" \
+            "${sync_flags[@]}" \
+            --exclude "*" --include "*.${extension}" --exclude "_next/static/*"
+        done
+      shell: bash
+      env:
+        SOURCE: ${{ inputs.source }}
+        SLUG: ${{ inputs.slug }}
+        BUCKET: ${{ inputs.bucket }}
+        DELETE: ${{ inputs.delete }}
+
+    # A wildcard counts as a single invalidation path, and the first 1,000 per month are free, so
+    # one per deploy is well inside the free allowance.
+    - name: 'Invalidate'
+      run: |
+        set -euo pipefail
+        aws cloudfront create-invalidation \
+          --distribution-id "$DISTRIBUTION_ID" \
+          --paths "/${SLUG}/*" \
+          --query 'Invalidation.Id' --output text
+      shell: bash
+      env:
+        SLUG: ${{ inputs.slug }}
+        DISTRIBUTION_ID: ${{ inputs.distribution-id }}
+
+    # Host-agnostic: the index is named after the slug and its records hold relative paths, so
+    # nothing here has to change when the site moves to its final hostname.
+    - name: 'Algolia'
+      if: inputs.algolia == 'true'
+      run: |
+        result=$(P_CURRENT_BRANCH="${SLUG}" npm run updateAlgolia)
+        echo $result | sed "s/.*updateAlgoliaIndex\\.ts' //g"
+      shell: bash
+      env:
+        SLUG: ${{ inputs.slug }}

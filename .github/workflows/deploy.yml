@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       storefront-slug:
-        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the gh-pages folder; must match the storefront basePath baked in at build time.'
+        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the key prefix in the origin bucket; must match the storefront basePath baked in at build time.'
         required: true
         type: string
       storefront-algolia:
@@ -22,8 +22,17 @@ on:
       linode-aws-secret-access-key:
         description: 'AWS Secret Access Key for Linode / Akamai CDN.'
         required: true
-      gh-deploy-key-storefront:
-        description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
+      aws-storefront-preview-role-arn:
+        description: 'IAM role assumed via OIDC to publish pull request previews. Confined to `pr-*` prefixes.'
+        required: true
+      aws-storefront-release-role-arn:
+        description: 'IAM role assumed via OIDC to publish nightly and version slugs. Cannot delete outside `nightly/`.'
+        required: true
+      aws-storefront-bucket:
+        description: 'Storefront origin bucket.'
+        required: true
+      aws-storefront-distribution-id:
+        description: 'Storefront CloudFront distribution to invalidate.'
         required: true
       algolia-app-id:
         description: 'Algolia App ID (Storefront).'
@@ -32,10 +41,10 @@ on:
         description: 'Algolia API Key (Storefront).'
         required: true
 
-# Least privilege: this workflow deploys via the `gh-deploy-key-storefront` SSH deploy key and AWS
-# secrets — never the workflow `GITHUB_TOKEN` — so read access is all it needs. Declared explicitly
-# (rather than relying on caller inheritance) to document intent and stay safe if ever called from a
-# more-privileged caller.
+# Least privilege: the Akamai jobs deploy via the Linode AWS secrets, and the storefront jobs via a
+# short-lived OIDC token — never the workflow `GITHUB_TOKEN` — so read access is all this workflow
+# needs from it. `id-token: write` is granted per job rather than here, so the Akamai jobs cannot
+# mint an AWS token they have no use for.
 permissions:
   contents: read
 
@@ -144,34 +153,79 @@ jobs:
       - run: npm run test:smoke:components-angular
       - run: npm run test:smoke:components-react
       - run: npm run test:smoke:components-vue
-  github-pages-storefront:
-    name: 'GitHub Pages (Storefront)'
+  storefront-preview:
+    name: 'Storefront (Preview)'
+    # Previews assume `storefront-preview-deployer`, whose OIDC trust condition is the bare
+    # `repo:…/porsche-design-system:pull_request` subject. Declaring a GitHub Environment here would
+    # change the token's subject to `…:environment:<name>` and the role would refuse it — the preview
+    # path deliberately has no environment. The `pr-*` prefix confinement is what isolates a preview
+    # from published content; there is no account boundary doing that job.
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
+    permissions:
+      contents: read
+      id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/checkout@v7
-        with:
-          repository: 'porsche-design-system/porsche-design-system-storefront'
-          ssh-key: ${{ secrets.gh-deploy-key-storefront }}
-          ref: 'main'
-          path: 'gh-pages'
-      - uses: ./.github/actions/install
+      # No `install` step on purpose: only the Algolia step needs `node_modules`, and previews never
+      # index. The bin files `restore` fixes up come from the artifact, not from an install.
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - name: 'Deploy (GH Pages)'
-        uses: ./.github/actions/gh-pages
+      - name: 'Assume AWS role'
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ secrets.aws-storefront-preview-role-arn }}
+          aws-region: eu-central-1
+      - name: 'Deploy (S3)'
+        uses: ./.github/actions/s3-deploy
         with:
           source: ./packages/storefront/dist
-          # Target is resolved once in the caller (contribution.yml → context job)
-          # and passed through, so the gh-pages folder always matches the
-          # storefront basePath that was baked in at build time.
-          target: ${{ inputs.storefront-slug }}
-          # Algolia indexing flag is also resolved once in the caller
-          # (contribution.yml → context job) and passed through.
+          # Slug is resolved once in the caller (contribution.yml → context job) and passed through,
+          # so the key prefix always matches the storefront basePath baked in at build time.
+          slug: ${{ inputs.storefront-slug }}
+          bucket: ${{ secrets.aws-storefront-bucket }}
+          distribution-id: ${{ secrets.aws-storefront-distribution-id }}
+          # A preview should mirror its branch exactly, and the role may delete under `pr-*`.
+          delete: 'true'
+  storefront-release:
+    name: 'Storefront (Release)'
+    # `nightly` and the major-version aliases. The `storefront` environment is not decoration: its
+    # name is the OIDC trust condition of `storefront-release-deployer`, and the branch policy on it
+    # (`main`, `v[0-9]`, `v[0-9][0-9]` — mirroring `on.push.branches` in contribution.yml) is the
+    # only thing standing between an arbitrary branch and that role.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: storefront
+    permissions:
+      contents: read
+      id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install # `node_modules` for the Algolia indexing step
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Assume AWS role'
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
+          aws-region: eu-central-1
+      - name: 'Deploy (S3)'
+        uses: ./.github/actions/s3-deploy
+        with:
+          source: ./packages/storefront/dist
+          slug: ${{ inputs.storefront-slug }}
+          bucket: ${{ secrets.aws-storefront-bucket }}
+          distribution-id: ${{ secrets.aws-storefront-distribution-id }}
+          # Only `nightly` is prunable, and only because the role permits it. A push to a `v*` branch
+          # republishes the major-version alias without removing anything: published content is
+          # append-only so that a buggy pipeline cannot unpublish a release. Orphans left behind are
+          # unreachable unless something links to them directly.
+          delete: ${{ inputs.storefront-slug == 'nightly' }}
+          # Algolia indexing flag is also resolved once in the caller (contribution.yml → context job).
           algolia: ${{ inputs.storefront-algolia }}
         env:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}

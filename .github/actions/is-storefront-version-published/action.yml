@@ -1,9 +1,12 @@
 name: 'Is Storefront version published'
-description: 'Checks if a specific Storefront version is already published on GH Pages.'
+description: 'Checks if a specific Storefront version is already published.'
 
 inputs:
   version:
     description: 'The specific version of the Storefront (e.g., 3.0.0).'
+    required: true
+  base-url:
+    description: 'Origin serving the published storefront, without a trailing slash. Passed in as a secret so the hostname is not baked into this public repository, and so the cutover to the final domain is a secret edit rather than a code change.'
     required: true
 
 outputs:
@@ -14,16 +17,23 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - name: 'Check GH Pages'
+    - name: 'Check'
       id: check
+      # Only a 200 counts as published. The origin answers 403, not 404, for a key that does not
+      # exist, and the distribution deliberately has no custom error response remapping that: a
+      # SPA-style `403 -> /index.html` returning 200 would report every unpublished version as
+      # published and silently skip the storefront deploy of a real release.
       run: |
-        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "https://designsystem.porsche.com/v${{ inputs.version }}/")"
+        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/v${VERSION}/")"
 
         if [[ ${http_status_code} == 200 ]]; then
           echo "Storefront version is published."
           echo "published=true" >> "$GITHUB_OUTPUT"
         else
-          echo "Storefront version is NOT published."
+          echo "Storefront version is NOT published (HTTP ${http_status_code})."
           echo "published=false" >> "$GITHUB_OUTPUT"
         fi
       shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+        BASE_URL: ${{ inputs.base-url }}
