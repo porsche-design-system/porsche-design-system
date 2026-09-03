@@ -1,0 +1,64 @@
+# TEMPORARY — DELETE BEFORE MERGING #4670.
+#
+# Rehearses the pipeline failure notification. The real workflow only fires from `workflow_run`
+# when Contribution or ORT actually fails on a monitored branch, which is not something to arrange
+# on demand, so this replays a past failure on every push to the branch.
+#
+# It reproduces the API fetches the real `Resolve run` step performs, then runs the same
+# `Build payload` and `Send` steps. The resolve logic itself is unchanged by this branch; what
+# needs proving is the payload builder and the switch to `chat.postMessage`.
+name: 'Pipeline Failure Notification (test)'
+
+on:
+  push:
+    branches:
+      - 'issue/4670'
+
+permissions:
+  actions: read # read the observed run and its jobs
+  contents: read # read commit metadata
+  pull-requests: read # resolve commit -> PR author
+
+env:
+  # A real Contribution failure on main, 2026-09-01: one failed job (Test / Components Angular)
+  # out of 56, on the merge commit of PR #4645 so PR attribution is exercised too.
+  RUN_ID: '33505075338'
+  ATTEMPT: '1'
+
+jobs:
+  notify:
+    name: 'Notify (test)'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+        with:
+          node_modules: 'false'
+      - name: 'Fetch run'
+        run: |
+          attempt="repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/attempts/$ATTEMPT"
+          gh api "$attempt" > "$RUNNER_TEMP/run.json"
+          gh api --paginate --slurp "$attempt/jobs?per_page=100" \
+            --jq '{ jobs: (map(.jobs) | add) }' > "$RUNNER_TEMP/jobs.json"
+          head_sha=$(node -p "require('$RUNNER_TEMP/run.json').head_sha")
+          gh api "repos/$GITHUB_REPOSITORY/commits/$head_sha/pulls" > "$RUNNER_TEMP/pulls.json"
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: 'Build payload'
+        run: |
+          node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-payload.ts \
+            "$RUNNER_TEMP/run.json" \
+            "$RUNNER_TEMP/jobs.json" \
+            "$RUNNER_TEMP/pulls.json" \
+            > "$RUNNER_TEMP/slack-payload.json"
+          cat "$RUNNER_TEMP/slack-payload.json"
+        env:
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_TEST_CHANNEL_ID }}
+      - name: 'Send'
+        uses: slackapi/slack-github-action@v4.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload-file-path: ${{ runner.temp }}/slack-payload.json
+          errors: true
