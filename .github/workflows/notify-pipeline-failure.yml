@@ -99,9 +99,11 @@ jobs:
           esac
 
           # Read every page of jobs, not just the first 100, so a big run loses nothing.
-          # `--slurp` gathers the pages and the jq expression merges them back into one list.
-          gh api --paginate --slurp "$attempt/jobs?per_page=100" \
-            --jq '{ jobs: (map(.jobs) | add) }' > "$RUNNER_TEMP/jobs.json"
+          # `--slurp` gathers the pages into an array; jq merges them back into one list.
+          # It cannot be combined with `--jq` ("the --slurp option is not supported with --jq"),
+          # and this is two commands rather than a pipe so `-e` catches either one failing.
+          gh api --paginate --slurp "$attempt/jobs?per_page=100" > "$RUNNER_TEMP/job-pages.json"
+          jq '{ jobs: (map(.jobs) | add) }' "$RUNNER_TEMP/job-pages.json" > "$RUNNER_TEMP/jobs.json"
 
           head_sha=$(node -p "require('$RUNNER_TEMP/run.json').head_sha")
           gh api "repos/$GITHUB_REPOSITORY/commits/$head_sha/pulls" > "$RUNNER_TEMP/pulls.json"

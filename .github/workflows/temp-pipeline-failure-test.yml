@@ -39,8 +39,8 @@ jobs:
         run: |
           attempt="repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/attempts/$ATTEMPT"
           gh api "$attempt" > "$RUNNER_TEMP/run.json"
-          gh api --paginate --slurp "$attempt/jobs?per_page=100" \
-            --jq '{ jobs: (map(.jobs) | add) }' > "$RUNNER_TEMP/jobs.json"
+          gh api --paginate --slurp "$attempt/jobs?per_page=100" > "$RUNNER_TEMP/job-pages.json"
+          jq '{ jobs: (map(.jobs) | add) }' "$RUNNER_TEMP/job-pages.json" > "$RUNNER_TEMP/jobs.json"
           head_sha=$(node -p "require('$RUNNER_TEMP/run.json').head_sha")
           gh api "repos/$GITHUB_REPOSITORY/commits/$head_sha/pulls" > "$RUNNER_TEMP/pulls.json"
         env:
