@@ -85,7 +85,6 @@ export default [
               },
               './css/styles.css': './css/styles.css',
               './css/styles': './css/styles.css',
-              './tsconfig.json': './tsconfig.json',
               './examples': './examples/index.ts', // Examples is not bundled to avoid problems with next.js "use client" in mdx
               './examples/*': './examples/*.tsx', // deep imports let a page pull one example without dragging the whole barrel into its chunk
             },
@@ -97,7 +96,6 @@ export default [
       copy({
         targets: [
           { src: 'src/css/*', dest: 'dist/css' },
-          { src: 'src/tsconfig.json', dest: 'dist' },
           { src: 'src/dummyassets/*', dest: 'dist/dummyassets' },
           { src: 'src/examples/*', dest: 'dist/examples' },
         ],

@@ -1,5 +1,5 @@
 {
-  "extends": "shared/src/tsconfig.json",
+  "extends": "shared/tsconfig.base.json",
   "compilerOptions": {
     "ignoreDeprecations": "6.0"
   }

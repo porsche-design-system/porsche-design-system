@@ -1,5 +1,5 @@
 {
-  "extends": "./src/tsconfig.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "strict": false, // 🙈 too many issues
     "verbatimModuleSyntax": false,

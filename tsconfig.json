@@ -1,5 +1,5 @@
 {
-  "extends": "./packages/shared/src/tsconfig.json",
+  "extends": "shared/tsconfig.base.json",
   "compilerOptions": {
     "types": ["node"],
     "noEmit": true

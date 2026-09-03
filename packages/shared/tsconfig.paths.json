@@ -1,0 +1,16 @@
+{
+  "//": "Path mappings for the pre-build typecheck. They point internal package names at source so a fresh clone can be checked before anything is built.",
+  "compilerOptions": {
+    "paths": {
+      "@porsche-design-system/shared": ["./src/index.ts"],
+      "@porsche-design-system/shared/deprecation": ["./src/deprecation/index.ts"],
+      "@porsche-design-system/shared/testing": ["./src/testing/index.ts"],
+      "@porsche-design-system/tokens": ["../tokens/src/index.ts"],
+      "@porsche-design-system/emotion": ["../styles/projects/emotion/src/index.ts"],
+      "@porsche-design-system/vanilla-extract": ["../styles/projects/vanilla-extract/src/index.ts"],
+      "@porsche-design-system/components-manager-core": [
+        "../components-js/projects/components-manager-core/src/index.ts"
+      ]
+    }
+  }
+}
