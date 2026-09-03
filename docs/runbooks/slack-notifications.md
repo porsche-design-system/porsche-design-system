@@ -70,7 +70,3 @@ the triggering run came from this repository, so a fork cannot reach the webhook
 path taking a run ID, for rehearsing against a past failure. `scripts/build-slack-payload.ts` builds its seven
 variables: `workflow`, `branch`, `event`, `run_url`, `author`, `failed_count` and `failed_jobs`. Their names must match
 the Slack workflow's `input_parameters` exactly or the request is rejected.
-
-> **Slack side to be filled in.** The app manifest and the trigger definition behind `SLACK_WEBHOOK_URL` were never
-> recorded anywhere. Still missing: the Slack app name, the destination channel, and the name of the Workflow Builder
-> workflow.
