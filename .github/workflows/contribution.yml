@@ -28,7 +28,7 @@ jobs:
   context:
     name: 'Context'
     # Resolve the storefront deployment target (used as both the storefront
-    # `basePath` at build time AND the gh-pages folder at deploy time) ONCE
+    # `basePath` at build time AND the bucket key prefix at deploy time) ONCE
     # here, so build and deploy can never disagree.
     #
     # Strategy:
@@ -94,14 +94,18 @@ jobs:
     # re-running, a bot's PR), so it does not reliably identify an automation-authored PR. The PR
     # author is stable regardless of who later pushes or re-runs the workflow.
     #
-    # NOTE: deploy.yml pushes the storefront to a separate repo via the `gh-deploy-key-storefront`
-    # SSH deploy key (not the workflow `GITHUB_TOKEN`), so no `contents: write` elevation is needed here.
+    # NOTE: deploy.yml publishes the storefront to S3 using a short-lived OIDC token, not the workflow
+    # `GITHUB_TOKEN`, so no `contents: write` elevation is needed. `id-token: write` must be granted
+    # here though: a reusable workflow can only narrow the caller's scope, never widen it.
     if: >-
       github.event_name == 'push' ||
       (github.event.pull_request.head.repo.full_name == github.repository &&
        github.event.pull_request.user.login != 'dependabot[bot]' &&
        github.event.pull_request.user.login != 'copilot-swe-agent[bot]' &&
        github.event.pull_request.user.login != 'Copilot')
+    permissions:
+      contents: read
+      id-token: write
     uses: ./.github/workflows/deploy.yml
     with:
       image: mcr.microsoft.com/playwright:v1.61.0-jammy
@@ -114,7 +118,27 @@ jobs:
     secrets:
       linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
       linode-aws-secret-access-key: ${{ secrets.LINODE_AWS_SECRET_ACCESS_KEY }}
-      gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
+      # Storefront hosting lives in AWS account 473157801658 (eu-central-1) and is provisioned by
+      # the private `porsche-design-system/storefront-cdk` repository, which is the source of truth
+      # for every value below. They are secrets rather than `vars` because this repository is
+      # public: account IDs, bucket names and role ARNs are individually harmless but collectively
+      # free reconnaissance.
+      #
+      #   AWS_STOREFRONT_PREVIEW_ROLE_ARN   iam.Role `storefront-preview-deployer`
+      #                                     trusts `repo:<this repo>:pull_request`
+      #                                     read/write/delete confined to `pr-*`
+      #   AWS_STOREFRONT_RELEASE_ROLE_ARN   iam.Role `storefront-release-deployer`
+      #                                     trusts `repo:<this repo>:environment:storefront`
+      #                                     writes `nightly/*` and `v*`; deletes `nightly/*` only
+      #   AWS_STOREFRONT_BUCKET             origin bucket behind the CloudFront distribution
+      #   AWS_STOREFRONT_DISTRIBUTION_ID    distribution to invalidate after a deploy
+      #
+      # Both roles are assumed via OIDC, so no long-lived AWS keys exist for the storefront - unlike
+      # the Linode/Akamai pair above.
+      aws-storefront-preview-role-arn: ${{ secrets.AWS_STOREFRONT_PREVIEW_ROLE_ARN }}
+      aws-storefront-release-role-arn: ${{ secrets.AWS_STOREFRONT_RELEASE_ROLE_ARN }}
+      aws-storefront-bucket: ${{ secrets.AWS_STOREFRONT_BUCKET }}
+      aws-storefront-distribution-id: ${{ secrets.AWS_STOREFRONT_DISTRIBUTION_ID }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
   release:
@@ -139,7 +163,13 @@ jobs:
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       npm-token: ${{ secrets.NPM_TOKEN }}
-      gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
+      aws-storefront-release-role-arn: ${{ secrets.AWS_STOREFRONT_RELEASE_ROLE_ARN }}
+      aws-storefront-bucket: ${{ secrets.AWS_STOREFRONT_BUCKET }}
+      aws-storefront-distribution-id: ${{ secrets.AWS_STOREFRONT_DISTRIBUTION_ID }}
+      # Origin the published storefront is served from, used only to check whether a version is
+      # already published. At DNS cutover this becomes designsystem.porsche.com and nothing else
+      # changes. See the deploy job above for where these values are provisioned.
+      aws-storefront-base-url: ${{ secrets.AWS_STOREFRONT_BASE_URL }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
       slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}

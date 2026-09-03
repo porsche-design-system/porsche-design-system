@@ -14,8 +14,17 @@ on:
       npm-token:
         description: 'npm access token for publishing to npmjs.org'
         required: true
-      gh-deploy-key-storefront:
-        description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
+      aws-storefront-release-role-arn:
+        description: 'IAM role assumed via OIDC to publish the released version slug. Cannot delete outside `nightly/`.'
+        required: true
+      aws-storefront-bucket:
+        description: 'Storefront origin bucket.'
+        required: true
+      aws-storefront-distribution-id:
+        description: 'Storefront CloudFront distribution to invalidate.'
+        required: true
+      aws-storefront-base-url:
+        description: 'Origin serving the published storefront, used to check whether a version is already published.'
         required: true
       algolia-app-id:
         description: 'Algolia App ID (Storefront).'
@@ -88,6 +97,7 @@ jobs:
         uses: ./.github/actions/is-storefront-version-published
         with:
           version: ${{ steps.get_npm_version.outputs.version }}
+          base-url: ${{ secrets.aws-storefront-base-url }}
   npm-components-js:
     name: 'NPM (Components JS)'
     needs: check-publication-status
@@ -230,7 +240,7 @@ jobs:
     # both leave this empty, so neither announces.
     if: ${{ needs.github-release.outputs.created == 'true' }}
     runs-on: ubuntu-latest
-    # Reads the release it is announcing; the webhook is a secret, not a token scope.
+    # Reads the release it is announcing. The Slack bot token is a secret, not a token scope.
     permissions:
       contents: read
     timeout-minutes: 5
@@ -272,37 +282,50 @@ jobs:
           token: ${{ secrets.slack-bot-token }}
           payload-file-path: ${{ runner.temp }}/slack-payload.json
           errors: true
-  github-pages-storefront:
-    name: 'GitHub Pages (Storefront)'
+  storefront:
+    name: 'Storefront'
     needs: check-publication-status
     if: ${{ needs.check-publication-status.outputs.is-storefront-published == 'false' }}
     runs-on: ubuntu-latest
-    # Deploys via the `gh-deploy-key-storefront` SSH deploy key — not the workflow `GITHUB_TOKEN` — so
-    # read access suffices. Declared explicitly so it doesn't inherit the caller's broader write scope.
+    # The `storefront` environment is the OIDC trust condition of `storefront-release-deployer`, and
+    # the branch policy on it (`main`, `v[0-9]`, `v[0-9][0-9]`) is what keeps that role out of reach
+    # of any other ref.
+    environment: storefront
+    # Deploys via a short-lived OIDC token, not the workflow `GITHUB_TOKEN`, so read access to the
+    # repository suffices. Declared explicitly so it does not inherit the caller's broader write scope.
     permissions:
       contents: read
-    container:
-      image: ${{ inputs.image }}
+      id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
+    # Deliberately not the Playwright container the other jobs use: it has no AWS CLI, and Ubuntu's
+    # `awscli` apt package is still v1. The standard runner image ships v2, and this job only builds
+    # the storefront and uploads it — none of it needs a browser.
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/checkout@v7
-        with:
-          repository: 'porsche-design-system/porsche-design-system-storefront'
-          ssh-key: ${{ secrets.gh-deploy-key-storefront }}
-          ref: 'main'
-          path: 'gh-pages'
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
+      # Rebuilt rather than reused: the artifact was built with the branch slug as `basePath`, and a
+      # released version is served from `/v<version>/`.
       - name: 'Build Storefront'
         run: NEXT_PUBLIC_BASE_PATH="v${{ needs.check-publication-status.outputs.components-version }}" npm run build:storefront
-      - name: 'Deploy (GH Pages)'
-        uses: ./.github/actions/gh-pages
+      - name: 'Assume AWS role'
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
+          aws-region: eu-central-1
+      - name: 'Deploy (S3)'
+        uses: ./.github/actions/s3-deploy
         with:
           source: ./packages/storefront/dist
-          target: 'v${{ needs.check-publication-status.outputs.components-version }}'
+          slug: 'v${{ needs.check-publication-status.outputs.components-version }}'
+          bucket: ${{ secrets.aws-storefront-bucket }}
+          distribution-id: ${{ secrets.aws-storefront-distribution-id }}
+          # A pinned version is published once and never changes, unlike the moving `nightly` and
+          # `v4` slugs that deploy.yml replaces wholesale. The role cannot delete under a pinned
+          # prefix either, so this holds by command and by policy.
+          delete: 'false'
           algolia: 'true'
         env:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
