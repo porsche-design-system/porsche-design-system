@@ -31,6 +31,24 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    # `aws s3 sync --delete` against a missing or empty source would empty the whole slug prefix. The
+    # artifact restore should make that impossible, so treat it as a broken pipeline and stop before
+    # anything destructive runs rather than publishing an empty storefront.
+    - name: 'Verify source'
+      run: |
+        set -euo pipefail
+        if [[ ! -d $SOURCE ]]; then
+          echo "source directory does not exist: $SOURCE" >&2
+          exit 1
+        fi
+        if [[ ! -f "$SOURCE/index.html" ]]; then
+          echo "source has no index.html, refusing to publish: $SOURCE" >&2
+          exit 1
+        fi
+      shell: bash
+      env:
+        SOURCE: ${{ inputs.source }}
+
     # Provenance marker, one per slug, carried over from the GitHub Pages deployment. Nothing reads
     # it programmatically, but it is the only way to tell which commit a published slug came from.
     - name: 'Stamp'
