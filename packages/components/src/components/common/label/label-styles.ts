@@ -11,7 +11,7 @@ import {
 } from '@porsche-design-system/stylesheets';
 import type { JssStyle, Styles } from 'jss';
 import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
-import { buildResponsiveStyles } from '../../../utils';
+import { buildResponsiveBooleanStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
@@ -56,7 +56,7 @@ export const getFunctionalComponentLabelStyles = (
   const isDisabledOrLoading = isDisabled || isLoading;
   return {
     'label-wrapper': {
-      ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
+      ...buildResponsiveBooleanStyles(hideLabel, (isHidden: boolean) => ({
         ...(!isHidden && { minWidth: 'fit-content' }), // ensures label contents don't shrink to zero in grid containers
         ...getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle),
       })),
@@ -82,7 +82,7 @@ export const getFunctionalComponentLabelStyles = (
         cursor: 'unset',
         fontSize: ref(typescaleXs),
         color: ref(colorContrastHigh),
-        ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
+        ...buildResponsiveBooleanStyles(hideLabel, (isHidden: boolean) =>
           getHiddenTextJssStyle(isHidden, { marginTop: `calc(-1 * ${ref(spacingStaticXs)})` })
         ),
         marginTop: `calc(-1 * ${ref(spacingStaticXs)})`,

@@ -35,7 +35,7 @@ import {
   typescaleXl,
 } from '@porsche-design-system/stylesheets';
 import type { BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveBooleanStyles, getCss } from '../../utils';
 import type { CarouselAlignControls, CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 
 /**
@@ -280,7 +280,7 @@ export const getComponentCss = (
     },
     ...(hasPagination && {
       'pagination-container': {
-        ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
+        ...buildResponsiveBooleanStyles(hasPagination, (hasPaginationValue: boolean) => ({
           display: hasPaginationValue ? 'flex' : 'none',
         })),
         position: 'relative',

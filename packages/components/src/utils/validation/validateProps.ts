@@ -1,6 +1,11 @@
 import { type Breakpoint, breakpoints } from '@porsche-design-system/emotion';
 import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
-import { type BreakpointValues, parseJSON } from '../breakpoint-customizable';
+import {
+  type BreakpointCustomizable,
+  type BreakpointValues,
+  parseJSON,
+  parseJSONBoolean,
+} from '../breakpoint-customizable';
 import { parseJSONAttribute } from '../json';
 import { consoleError } from '../log/logger';
 import { getTagNameWithoutPrefix } from '../tag-name';
@@ -173,7 +178,11 @@ export const AllowedTypes: {
     // @ts-expect-error: Not all code paths return a value
     function breakpoint(propName, propValue) {
       // TODO: do parseJSON once in the component, currently it is happening multiple times in a single lifecycle
-      const value = parseJSON(propValue as BreakpointValues<any>);
+      // only a boolean prop supports the HTML boolean attribute shorthand, all other props report their actual value
+      const value =
+        allowedValues === 'boolean'
+          ? parseJSONBoolean(propValue as BreakpointCustomizable<boolean>)
+          : parseJSON(propValue as BreakpointValues<any>);
       let isInvalid = false;
 
       if (typeof value === 'object') {

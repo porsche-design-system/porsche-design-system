@@ -6,6 +6,8 @@ describe('throwIfAlignTopAndNotCompact()', () => {
   it.each<[TileAlign, BreakpointCustomizable<boolean>]>([
     ['top', false],
     ['top', 'false'],
+    ['top', { base: false }],
+    ['top', '{base: false, l: false}'],
   ])('should throw error for align: %s and compact: %s', (align, compact) => {
     const divElement = document.createElement('div');
     expect(() => throwIfAlignTopAndNotCompact(divElement, align, compact)).toThrowError(
@@ -18,7 +20,9 @@ describe('throwIfAlignTopAndNotCompact()', () => {
     ['bottom', true],
     ['bottom', false],
     ['top', { base: true, xs: false, m: true }],
+    ['top', { base: false, l: true }],
     ['top', 'true'],
+    ['top', ''], // HTML boolean attribute shorthand
   ])('should not throw error for align: %s and compact: %s', (align, compact) => {
     const divElement = document.createElement('div');
     expect(() => throwIfAlignTopAndNotCompact(divElement, align, compact)).not.toThrow();

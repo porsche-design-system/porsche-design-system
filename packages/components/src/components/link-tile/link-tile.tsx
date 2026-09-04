@@ -16,6 +16,7 @@ import {
 } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
 import {
+  getParsedTileCompact,
   type LinkTileAlign,
   type LinkTileAriaAttribute,
   type LinkTileAspectRatio,
@@ -103,8 +104,8 @@ export class LinkTile implements ITileProps {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    // TODO: BreakpointCustomizable breaks stencils boolean conversion from string to boolean
-    const parsedCompact = this.compact === 'true' ? true : this.compact === 'false' ? false : this.compact;
+    const parsedCompact = getParsedTileCompact(this.compact);
+
     attachComponentCss(
       this.host,
       getComponentCss,
