@@ -31,7 +31,7 @@ inputs:
 
 outputs:
   created:
-    description: 'Whether a release was actually created ("true"/"false"). False for a pre-release version, for a tag that already had a release, and for a dry run — all of which exit 0, so the step succeeding is not the same as a release existing.'
+    description: 'Whether a release consumers can see was created ("true"/"false"). False for a pre-release version, a tag that already had a release, a dry run, and a draft — all of which exit 0, so the step succeeding is not the same as a release existing.'
     value: ${{ steps.create_github_release.outputs.created }}
 
 runs:

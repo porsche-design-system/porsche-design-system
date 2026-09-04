@@ -38,8 +38,7 @@ if [[ "${INPUT_DRY_RUN}" != "true" ]]; then
   : "${GITHUB_TOKEN:?github-token input is required}"
 fi
 
-# Downstream jobs need to tell "created a release" apart from the two no-ops below, since all
-# three exit 0. Silent when run outside Actions, e.g. the manual path in docs/release.md.
+# Every exit below is 0, so only this output distinguishes a real release from a no-op.
 set_created() {
   if [[ -n "${GITHUB_OUTPUT:-}" ]]; then
     echo "created=$1" >> "${GITHUB_OUTPUT}"
@@ -160,10 +159,11 @@ if ! RESPONSE=$(curl --fail-with-body -sS -X POST \
   exit 1
 fi
 
-set_created true
-
 if [[ "${INPUT_DRAFT}" == "true" ]]; then
+  # A draft is not public and has no git tag, so there is nothing to announce yet.
+  set_created false
   echo "Created draft GitHub Release \"${GIT_TAG_NAME}\" 📝"
 else
+  set_created true
   echo "Created GitHub Release \"${GIT_TAG_NAME}\" 🚀"
 fi
