@@ -32,6 +32,12 @@ on:
       algolia-api-key:
         description: 'Algolia API Key (Storefront).'
         required: true
+      slack-bot-token:
+        description: 'Slack bot token (chat:write) for the release announcement. Not required: a missing secret must not stop a release, it fails the announcement job instead.'
+        required: false
+      slack-release-channel-id:
+        description: 'Slack channel the release announcement is posted to. A secret rather than a literal so the channel can be changed without a pull request.'
+        required: false
 
 # Default to the least privilege; jobs that need more declare it explicitly.
 permissions:
@@ -213,13 +219,36 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # Required to create GitHub releases (and the underlying tag) via the GitHub API
+    outputs:
+      # The action exits 0 for the no-op cases too, so a green job does not mean a release exists.
+      created: ${{ steps.create_release.outputs.created }}
     steps:
       - uses: actions/checkout@v7
       - name: 'Create GitHub Release'
+        id: create_release
         uses: ./.github/actions/create-github-release
         with:
           version: ${{ needs.check-publication-status.outputs.components-version }}
           github-token: ${{ secrets.github-token }}
+  notify-release:
+    name: 'Notify Release'
+    needs:
+      - check-publication-status
+      - github-release
+    # A pre-release, an already-released tag and a draft all report false, and a failed
+    # `github-release` leaves this empty.
+    if: ${{ needs.github-release.outputs.created == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # read the release being announced
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/notify-slack-release
+        with:
+          tag: v${{ needs.check-publication-status.outputs.components-version }}
+          slack-bot-token: ${{ secrets.slack-bot-token }}
+          slack-channel-id: ${{ secrets.slack-release-channel-id }}
   storefront:
     name: 'Storefront'
     needs: check-publication-status

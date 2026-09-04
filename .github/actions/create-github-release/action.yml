@@ -29,10 +29,16 @@ inputs:
     required: false
     default: 'false'
 
+outputs:
+  created:
+    description: 'Whether a release consumers can see was created ("true"/"false"). False for a pre-release version, a tag that already had a release, a dry run, and a draft — all of which exit 0, so the step succeeding is not the same as a release existing.'
+    value: ${{ steps.create_github_release.outputs.created }}
+
 runs:
   using: 'composite'
   steps:
     - name: 'Create GitHub Release'
+      id: create_github_release
       shell: bash
       env:
         INPUT_VERSION: ${{ inputs.version }}
