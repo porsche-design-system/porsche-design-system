@@ -6,7 +6,13 @@ import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import { addImportantToEachRule } from '../styles';
-import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
+import {
+  type BreakpointCustomizable,
+  type BreakpointValue,
+  type BreakpointValues,
+  parseJSON,
+  parseJSONBoolean,
+} from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 import { hasPropValueChanged } from './has-prop-value-changed';
 import { getTagNameWithoutPrefix } from './tag-name';
@@ -101,12 +107,10 @@ export const doNothing = (): void => {
 
 export type GetJssStyleFunction = (value?: any) => JssStyle;
 
-export const buildResponsiveStyles = <T>(
-  rawValue: BreakpointCustomizable<T>,
+const buildStyles = (
+  value: BreakpointValues<BreakpointValue> | BreakpointValue,
   getJssStyle: GetJssStyleFunction
 ): Styles => {
-  const value = parseJSON(rawValue as any);
-
   return typeof value === 'object'
     ? Object.keys(value)
         // base styles are applied on root object, responsive styles are nested within
@@ -121,6 +125,19 @@ export const buildResponsiveStyles = <T>(
         )
     : (getJssStyle(value) as Styles);
 };
+
+// boolean props have to use buildResponsiveBooleanStyles(), therefore the generic excludes them to make it impossible
+// to lose the HTML boolean attribute shorthand by accident
+export const buildResponsiveStyles = <T extends string | number>(
+  rawValue: BreakpointCustomizable<T>,
+  getJssStyle: GetJssStyleFunction
+): Styles => buildStyles(parseJSON(rawValue), getJssStyle);
+
+// TODO: [v5] can be merged back into buildResponsiveStyles() once objects can only be set via property, see #4708
+export const buildResponsiveBooleanStyles = (
+  rawValue: BreakpointCustomizable<boolean>,
+  getJssStyle: GetJssStyleFunction
+): Styles => buildStyles(parseJSONBoolean(rawValue), getJssStyle);
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>
   typeof obj === 'object' && !Array.isArray(obj);

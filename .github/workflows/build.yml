@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       storefront-slug:
-        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the storefront basePath so the build matches the gh-pages folder produced by the deploy workflow.'
+        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the storefront basePath so the build matches the bucket key prefix produced by the deploy workflow.'
         required: true
         type: string
 

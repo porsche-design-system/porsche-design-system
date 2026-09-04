@@ -24,7 +24,7 @@ import {
   hoverMediaQuery,
   motionDurationMap,
 } from '../../styles';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveBooleanStyles, buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import type { AccordionAlignMarker, AccordionBackground, AccordionSize } from './accordion-utils';
@@ -163,7 +163,7 @@ export const getComponentCss = (
         }),
         '& > div': {
           gridArea: '2/1/auto/-1',
-          ...buildResponsiveStyles(indent, (isIndented: boolean) => ({
+          ...buildResponsiveBooleanStyles(indent, (isIndented: boolean) => ({
             gridColumnStart: isIndented ? summaryColumnStart : 1,
           })),
           zIndex: 0, // ensures stacking to be below the summary section

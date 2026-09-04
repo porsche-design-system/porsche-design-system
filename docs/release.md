@@ -70,8 +70,14 @@ release can be published.
 
 ### Communicate
 
-1. Write a Slack notification by coping last entry of `./packages/components-js/CHANGELOG.md` in public Porsche Design
-   System Slack channel
+Nothing to do by hand. The `notify-release` job in `.github/workflows/release.yml` announces the release in the public
+Porsche Design System Slack channel as soon as the GitHub Release exists, built from the release notes themselves rather
+than from the changelog, so the two cannot disagree.
+
+Only stable releases are announced, and only when the run actually created a release — a pre-release, or a re-run of a
+job whose release already existed, posts nothing. See
+[`docs/runbooks/slack-notifications.md`](runbooks/slack-notifications.md) for the message, the Slack side and how to
+change either.
 
 ## GitHub Releases
 
