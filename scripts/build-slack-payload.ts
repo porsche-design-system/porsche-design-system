@@ -4,13 +4,11 @@
  *
  * SLACK_CHANNEL_ID=C0... node scripts/build-slack-payload.ts <run.json> <jobs.json> <pulls.json>
  *
- * The message is a Block Kit `markdown` block, so a job links to its own failing step rather than
- * trailing a bare URL underneath. That means run, branch, job and step names now land in a markdown
- * context and have to be escaped — a step named `Run npm test -- --grep "*"` would otherwise
- * garble the very message reporting it.
+ * A Block Kit `markdown` block, so each job links to its own failing step. Names land in a
+ * markdown context and must be escaped — a step named `Run npm test -- --grep "*"` would
+ * otherwise garble the message reporting it.
  *
- * Runs on bare `node` (Node 24 strips types) so the workflow can skip `npm ci`. Keep it free of
- * dependencies and of TypeScript that needs a transform.
+ * Zero dependencies and no TypeScript needing a transform, so the workflow can skip `npm ci`.
  */
 import { readFileSync } from 'node:fs';
 
@@ -31,11 +29,7 @@ type Pull = { number: number; html_url: string; user: { login: string }; merged_
 /** Same conclusions the workflow's `if:` guards on. */
 const FAILED = new Set(['failure', 'timed_out']);
 
-/**
- * A labelled link is roughly half the ~180 characters the old bare-URL entry cost, against a
- * budget of 12,000 for all `markdown` blocks in a payload. 40 covers every run this repo produces
- * (the largest has ~54 jobs) and still leaves the cap as a safety valve rather than a routine cut.
- */
+/** A labelled link costs ~half the old bare-URL entry; the largest run here has ~54 jobs. */
 const MAX_JOBS_LISTED = 40;
 
 const [runPath, jobsPath, pullsPath] = process.argv.slice(2);

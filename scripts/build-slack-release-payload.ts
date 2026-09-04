@@ -1,27 +1,14 @@
 /**
  * Builds the `chat.postMessage` payload announcing a release.
- * Used by .github/workflows/release.yml.
+ * Used by .github/actions/notify-slack-release.
  *
  * SLACK_CHANNEL_ID=C0... node scripts/build-slack-release-payload.ts <release.json>
  *
- * <release.json> is a GitHub release as returned by `gh api repos/{owner}/{repo}/releases/tags/{tag}`.
+ * The release notes go across almost untouched: a Block Kit `markdown` block renders standard
+ * markdown. It needs `chat.postMessage` with a bot token — the block works on neither an incoming
+ * webhook (slackapi/slack-github-action#440) nor a Workflow Builder trigger.
  *
- * The release notes go across almost untouched, inside a Block Kit `markdown` block, which renders
- * standard markdown: links keep their labels, headings are headings, nested lists stay nested and
- * hard-wrapped lines reflow on their own. Verified against the real v4.0.0 body.
- *
- * Two things it still has to do, both established by testing rather than documented by Slack:
- *
- * - **De-indent fenced code blocks.** At column 0 they render with syntax highlighting; indented
- *   under a bullet, as they are throughout the changelog, they come out as plain text.
- * - **Stay inside 12,000 characters**, which is Slack's cumulative limit across every `markdown`
- *   block in one payload, so the intro and the footer count against the body.
- *
- * Note this needs `chat.postMessage` with a bot token. The `markdown` block does not work over an
- * incoming webhook (slackapi/slack-github-action#440) and Workflow Builder takes no blocks at all.
- *
- * Runs on bare `node` (Node 24 strips types) so the workflow can skip `npm ci`. Keep it free of
- * dependencies and of TypeScript that needs a transform.
+ * Zero dependencies and no TypeScript needing a transform, so the workflow can skip `npm ci`.
  */
 import { readFileSync } from 'node:fs';
 
@@ -43,13 +30,9 @@ const HEADING = /^### (.+)$/;
 const ENTRY = /^- /;
 
 /**
- * Slack's `markdown` block treats a single newline as a HARD line break, so Prettier's
- * `proseWrap: 'always'` wrapping would show through as ragged 120-column breaks. Joining the
- * continuation lines lets Slack wrap to each reader's window instead.
- *
- * Runs while the fences are still detectable: a line inside a code block is not a continuation and
- * joining it destroys the example. Nor is a line opening a nested bullet or a heading. Top-level
- * prose wraps at column 0 rather than indented, so indentation cannot be part of the test.
+ * A single newline is a HARD line break here, so Prettier's `proseWrap: 'always'` would show
+ * through as ragged 120-column breaks. Runs before the fences are dropped, since joining a line
+ * inside a code block destroys the example.
  */
 const unwrap = (lines: string[]): string[] => {
   const out: string[] = [];
@@ -75,11 +58,7 @@ const unwrap = (lines: string[]): string[] => {
   return out;
 };
 
-/**
- * A fenced block renders as a real code block only at column 0. Indented under a list item it is
- * emitted as plain text, so the whole block and its contents are shifted left by the fence's own
- * indentation. It loses its visual attachment to the parent bullet, which is the cheaper loss.
- */
+/** A fence renders as a code block only at column 0; indented under a bullet it stays plain text. */
 const deindentFences = (lines: string[]): string[] => {
   const out: string[] = [];
   let indent: string | null = null;
@@ -108,9 +87,8 @@ const list = (items: string[]): string =>
   items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 
 /**
- * Cuts on an entry boundary so an entry is never split in half, and names every section that still
- * has content below the cut. The partly-cut section is named too: a reader who saw two thirds of
- * `Added` has not read all of `Added`, and nothing else in the message would tell them.
+ * Cuts on an entry boundary and names every section with content below the cut, the partly-cut
+ * one included — a reader who saw two thirds of `Added` has not read all of it.
  */
 const truncate = (lines: string[], budget: number): string => {
   const sections: string[] = [];
@@ -147,7 +125,7 @@ const truncate = (lines: string[], budget: number): string => {
 };
 
 const toReleaseNotes = (markdown: string, budget: number): string => {
-  // The GitHub API returns release bodies with CRLF, which markdown renders as stray breaks.
+  // The API returns CRLF, and `.` never matches `\r`, so `/^### (.+)$/` would stop matching.
   const trimmed = markdown.replace(/\r\n?/g, '\n').trim();
   if (trimmed === '') return '';
   return truncate(collapseBlankRuns(deindentFences(unwrap(trimmed.split('\n')))), budget);
@@ -165,8 +143,7 @@ const version = release.tag_name ?? '';
 const releaseUrl = release.html_url ?? '';
 
 const intro = `Check out release **${version}** of the [Porsche Design System](${STOREFRONT_URL}). Here is what changed. Happy coding! :porsche:`;
-// The URL is its own label so the whole thing is visible and definitely clickable, rather than
-// relying on Slack auto-linking a bare URL inside a `markdown` block.
+// Its own label, so the whole URL shows and is certainly a link, not relying on autolinking.
 const footer = `[${releaseUrl}](${releaseUrl})`;
 const notes = toReleaseNotes(release.body ?? '', MARKDOWN_BUDGET - intro.length - footer.length);
 
@@ -179,10 +156,7 @@ console.log(
       blocks: [
         { type: 'markdown', text: intro },
         { type: 'divider' },
-        // A release with no notes still gets announced, just without the empty block.
         ...(notes === '' ? [] : [{ type: 'markdown', text: notes }]),
-        // Blocks butt up against each other, so the notes would otherwise run straight into the
-        // link. A divider also mirrors the one under the intro.
         { type: 'divider' },
         { type: 'markdown', text: footer },
       ],
