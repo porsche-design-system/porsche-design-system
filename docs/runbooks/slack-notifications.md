@@ -1,12 +1,13 @@
 # Slack notifications
 
-Two workflows post to Slack. Both use `slackapi/slack-github-action` with `method: chat.postMessage` and one shared bot
-token, and both build their message as a Block Kit `markdown` block.
+Three workflows post to Slack. All use `slackapi/slack-github-action` with `method: chat.postMessage` and one shared bot
+token, and all build their message as a Block Kit `markdown` block.
 
-| Notification     | Workflow                                        | Fires on                                       | Channel secret             |
-| ---------------- | ----------------------------------------------- | ---------------------------------------------- | -------------------------- |
-| Release          | `.github/workflows/release.yml`                 | a release the run actually created             | `SLACK_RELEASE_CHANNEL_ID` |
-| Pipeline failure | `.github/workflows/notify-pipeline-failure.yml` | `Contribution` or `OSS Review Toolkit` failing | `SLACK_FAILURE_CHANNEL_ID` |
+| Notification     | Workflow                                         | Fires on                                       | Channel secret             |
+| ---------------- | ------------------------------------------------ | ---------------------------------------------- | -------------------------- |
+| Release          | `.github/workflows/release.yml`                  | a release the pipeline created                 | `SLACK_RELEASE_CHANNEL_ID` |
+| Release          | `.github/workflows/notify-release-published.yml` | a release a person published                   | `SLACK_RELEASE_CHANNEL_ID` |
+| Pipeline failure | `.github/workflows/notify-pipeline-failure.yml`  | `Contribution` or `OSS Review Toolkit` failing | `SLACK_FAILURE_CHANNEL_ID` |
 
 ## Secrets
 
@@ -24,13 +25,29 @@ against the action's default of `false`.
 
 ## Release announcement
 
-On a push to `main` or `v4`, `release.yml` creates the GitHub Release and then the `notify-release` job announces it. It
-only fires when a release was really created, so a pre-release and a re-run of a job whose release already existed both
-post nothing.
+Two workflows announce a release, and they are complements rather than duplicates. Both delegate to
+`.github/actions/notify-slack-release`, so there is one code path and the message cannot drift.
 
-The job reads the release back from the GitHub API rather than re-reading the changelog, so the Slack message and the
-GitHub Release cannot disagree. `scripts/build-slack-release-payload.ts` builds an intro, the release notes and a link
-to the full notes.
+**The pipeline path.** On a push to `main` or `v4`, `release.yml` creates the release and the `notify-release` job
+announces it. It only fires when a release consumers can see was really created, so a pre-release, a draft, and a re-run
+of a job whose release already existed all post nothing.
+
+**The manual path.** `notify-release-published.yml` covers a release a person published, most usefully a draft, which is
+invisible until someone publishes it. Three documented GitHub behaviours keep the two from overlapping:
+
+- "events triggered by the `GITHUB_TOKEN` will not create a new workflow run", so a pipeline release does not fire
+  `release: published`
+- "Workflows are not triggered for the `created`, `edited`, or `deleted` activity types for draft releases", so creating
+  a draft announces nothing
+- "The `prereleased` type will not trigger for pre-releases published from draft releases, but the `published` type will
+  trigger", so publishing that draft does announce
+
+**The `GITHUB_TOKEN` condition is load-bearing.** If `release.yml` ever creates releases with a PAT or a GitHub App
+token, `published` starts firing for pipeline releases too and every release is announced twice.
+
+Either way the release is read back from the GitHub API rather than the changelog, so the Slack message and the GitHub
+Release cannot disagree. `scripts/build-slack-release-payload.ts` builds an intro, the release notes and a link to the
+full notes.
 
 The notes go across **almost untouched**, because the `markdown` block renders standard markdown. Three things the
 script still has to do, all found by testing rather than documented by Slack:
