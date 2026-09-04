@@ -30,6 +30,22 @@ jobs:
       # Guards against npm pruning platform-specific native bindings from the lockfile
       # (https://github.com/npm/cli/issues/4828) — see docs/dependencies.md.
       - run: npm run npm:verify-lock
+  # Gates the builds so a type error stops a build being attempted. Install and typecheck only, with no
+  # codegen and no compilation, so it runs on a fresh checkout. Packages whose sources only exist after a
+  # build are gated inside their own `build` instead, not here.
+  typecheck:
+    name: 'Typecheck'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    needs:
+      - lint
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - run: npm run typecheck
   build-development:
     name: 'Development'
     runs-on: ubuntu-latest
@@ -37,6 +53,8 @@ jobs:
     container:
       image: ${{ inputs.image }}
       options: --user 1001
+    needs:
+      - typecheck
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install
@@ -126,6 +144,8 @@ jobs:
     container:
       image: ${{ inputs.image }}
       options: --user 1001
+    needs:
+      - typecheck
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install

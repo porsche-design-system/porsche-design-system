@@ -33,6 +33,7 @@
     "build": "npm run clean:build && npm run build:meta && npm run build:package",
     "build:meta": "rollup -c rollup.config.meta.mjs",
     "build:package": "tsx scripts/build.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta"

@@ -14,13 +14,12 @@ import {
   spacingStaticMd,
 } from '@porsche-design-system/emotion';
 
-const EmotionMotionWrapper = styled.div(({ theme }) => ({
+const EmotionMotionWrapper = styled.div({
   display: 'grid',
   gap: spacingFluidMd,
   padding: spacingStaticMd,
-  color: theme.primary,
   ...proseTextSmStyle,
-}));
+});
 
 const baseItemStyle = ({ theme }: { theme: any }) => ({
   borderRadius: radiusLg,

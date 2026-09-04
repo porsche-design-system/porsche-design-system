@@ -75,7 +75,11 @@ export default [
       format: 'cjs',
       entryFileNames: '[name].cjs',
     },
-    plugins: [commonjs(), typescript(), modifyFinalOutputCjs()],
+    plugins: [
+      commonjs(),
+      typescript({ noEmitOnError: true, exclude: ['**/*.spec.ts', 'tests/**'] }),
+      modifyFinalOutputCjs(),
+    ],
   },
   // Default JS Build - ESM
   {
@@ -88,9 +92,10 @@ export default [
     },
     plugins: [
       typescript({
+        noEmitOnError: true,
         declaration: true,
         declarationDir: `${outputDir}/esm`,
-        exclude: '**.spec.ts',
+        exclude: ['**/*.spec.ts', 'tests/**'],
         rootDir: 'src',
       }),
       generatePackageJson({

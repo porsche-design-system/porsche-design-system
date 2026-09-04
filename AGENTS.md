@@ -126,7 +126,27 @@ npm run test:a11y:components-js       # Accessibility tests
 # Lint and format
 npm run lint
 npm run format
+
+# Typecheck (no compilation)
+npm run typecheck             # Everything a fresh clone can check. Runs in CI and at the start of `build`.
+npm run typecheck:all         # Every package, in build order. Needs a built tree, so it is local only.
+npm run typecheck:{package}   # One package only, e.g. typecheck:tokens
 ```
+
+Root holds two chains, and both are composed from the per-package `typecheck:{package}` entries, with nested
+projects called by `--workspace` inside `typecheck:all`.
+`typecheck` covers only the packages whose sources exist in a fresh clone, because the CI Typecheck job
+runs on a fresh checkout. `typecheck:all` covers every package in the order `build` uses, and it needs a
+built tree, so nothing automated calls it.
+
+A package missing from `typecheck` is still gated inside its own `build`, either by a named `typecheck`
+step (`packages/shared/package.json`, `packages/components/package.json`) or by its bundler and framework
+compiler refusing to emit on a type error (`noEmitOnError` in the rollup configs, `ng build`, `next build`).
+See `docs/typecheck.md`.
+
+`npm run build` and `build-prod` both begin with `typecheck`, so a local build gets the same coverage CI
+does. That adds no duplicate work, because CI runs the individual `build:*` steps rather than the root
+`build`.
 
 ## Testing
 

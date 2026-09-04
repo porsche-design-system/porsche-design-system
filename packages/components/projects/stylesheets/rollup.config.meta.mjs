@@ -18,7 +18,7 @@ export default [
       entryFileNames: '[name].cjs',
       preserveModules: true,
     },
-    plugins: [typescript({ exclude: ['**/*.spec.ts'] })],
+    plugins: [typescript({ noEmitOnError: true, exclude: ['**/*.spec.ts', 'tests/**'] })],
   },
   {
     input,
@@ -30,7 +30,13 @@ export default [
       preserveModulesRoot: 'src',
     },
     plugins: [
-      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src', exclude: ['**/*.spec.ts'] }),
+      typescript({
+        noEmitOnError: true,
+        declaration: true,
+        declarationDir: `${outputDir}/esm`,
+        rootDir: 'src',
+        exclude: ['**/*.spec.ts', 'tests/**'],
+      }),
     ],
   },
 ];

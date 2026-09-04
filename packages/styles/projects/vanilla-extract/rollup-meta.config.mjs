@@ -14,7 +14,7 @@ export default [
       preserveModules: true,
       preserveModulesRoot: 'vanillaExtractMeta',
     },
-    plugins: [typescript({ exclude: ['**/*.spec.ts'] })],
+    plugins: [typescript({ noEmitOnError: true, exclude: ['**/*.spec.ts'] })],
   },
   {
     input: 'vanillaExtractMeta/index.ts',
@@ -28,6 +28,7 @@ export default [
     },
     plugins: [
       typescript({
+        noEmitOnError: true,
         declaration: true,
         declarationDir: `${outputDir}/esm`,
         rootDir: '.',

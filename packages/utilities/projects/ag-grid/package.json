@@ -12,6 +12,7 @@
     "prebuild:generateThemesObject": "tsx scripts/generateThemesObject.ts",
     "build": "npm run clean:build && npm run prebuild:generateThemesObject && npm run build:bundle",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "npm run build && npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"

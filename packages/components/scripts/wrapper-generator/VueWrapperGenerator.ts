@@ -88,6 +88,8 @@ ${[importsFromVue, importsFromUtils].filter(Boolean).join('\n')}`;
 
           return `${key}: ${defaultPropValue},${eslintAnnotation}`;
         }
+
+        return undefined;
       })
       .filter(Boolean)
       .join('\n  ');

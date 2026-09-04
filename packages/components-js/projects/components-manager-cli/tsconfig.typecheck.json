@@ -1,0 +1,8 @@
+{
+  "extends": ["./tsconfig.json", "shared/tsconfig.paths.json"],
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["bin", "src", "shared-definitions"],
+  "exclude": ["**/*.spec.ts"]
+}
