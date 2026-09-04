@@ -3,6 +3,7 @@ export { default as AGGridExampleCommunity } from './AGGridExampleCommunity.vue'
 export { default as AGGridCompactExampleCommunity } from './AGGridCompactExampleCommunity.vue';
 export { default as AGGridExampleEnterprise } from './AGGridExampleEnterprise.vue';
 export { default as AGGridCompactExampleEnterprise } from './AGGridCompactExampleEnterprise.vue';
+export { default as BooleanAttributeShorthandExample } from './BooleanAttributeShorthandExample.vue';
 export { default as ButtonExampleForm } from './ButtonExampleForm.vue';
 export { default as ButtonExampleFormAttribute } from './ButtonExampleFormAttribute.vue';
 export { default as ButtonPureExampleForm } from './ButtonPureExampleForm.vue';

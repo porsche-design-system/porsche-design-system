@@ -76,6 +76,11 @@ export const routes: RouteType[] = [
     component: fromPages.CanvasPrefixedPage,
   },
   {
+    path: '/boolean-attribute-shorthand-example',
+    name: 'Boolean Attribute Shorthand Example',
+    component: fromExamples.BooleanAttributeShorthandExample,
+  },
+  {
     path: '/button-example-form',
     name: 'Button Example Form',
     component: fromExamples.ButtonExampleForm,

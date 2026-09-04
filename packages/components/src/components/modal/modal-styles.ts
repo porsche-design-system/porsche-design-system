@@ -2,7 +2,7 @@ import { gridExtendedOffsetBase } from '@porsche-design-system/emotion';
 import { ref } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import type { BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveBooleanStyles, getCss } from '../../utils';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -84,7 +84,7 @@ export const getComponentCss = (
       ...dialogGridJssStyle(),
       ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
-      ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
+      ...buildResponsiveBooleanStyles(fullscreen, (fullscreenValue: boolean) =>
         fullscreenValue
           ? {
               width: 'auto',
