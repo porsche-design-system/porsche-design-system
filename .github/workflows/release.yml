@@ -220,8 +220,7 @@ jobs:
     permissions:
       contents: write # Required to create GitHub releases (and the underlying tag) via the GitHub API
     outputs:
-      # The action exits 0 for a pre-release, for an already-existing tag AND for a real creation,
-      # so this job going green does not mean a release exists. Only this output says so.
+      # The action exits 0 for the no-op cases too, so a green job does not mean a release exists.
       created: ${{ steps.create_release.outputs.created }}
     steps:
       - uses: actions/checkout@v7
@@ -236,52 +235,21 @@ jobs:
     needs:
       - check-publication-status
       - github-release
-    # Only for a release this run actually created. Skipped jobs and a failed `github-release`
-    # both leave this empty, so neither announces.
+    # A pre-release, an already-released tag and a draft all report false, and a failed
+    # `github-release` leaves this empty.
     if: ${{ needs.github-release.outputs.created == 'true' }}
     runs-on: ubuntu-latest
-    # Reads the release it is announcing. The Slack bot token is a secret, not a token scope.
     permissions:
-      contents: read
+      contents: read # read the release being announced
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
-      # `node_modules: 'false'` gives us Node without `npm ci` across ~35 workspaces.
-      # The payload builder has zero dependencies precisely so this is possible.
-      - uses: ./.github/actions/install
+      - uses: ./.github/actions/notify-slack-release
         with:
-          node_modules: 'false'
-      - name: 'Fetch release'
-        # Read the release back rather than re-extracting the changelog, so the Slack message and
-        # the GitHub Release cannot disagree. Also yields `html_url` in the same call.
-        run: gh api "repos/$GITHUB_REPOSITORY/releases/tags/v$VERSION" > "$RUNNER_TEMP/release.json"
-        env:
-          GH_TOKEN: ${{ github.token }}
-          VERSION: ${{ needs.check-publication-status.outputs.components-version }}
-      - name: 'Build payload'
-        # Bare `node`, not `tsx`: Node 24 strips types natively, so no `npm ci` is needed.
-        # `--disable-warning` silences a stderr-only notice about the missing root `"type"` field.
-        run: |
-          node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-release-payload.ts \
-            "$RUNNER_TEMP/release.json" \
-            > "$RUNNER_TEMP/slack-payload.json"
-          cat "$RUNNER_TEMP/slack-payload.json"
-        env:
-          SLACK_CHANNEL_ID: ${{ secrets.slack-release-channel-id }}
-      - name: 'Send'
-        # `chat.postMessage` with a bot token rather than a webhook, because the Block Kit
-        # `markdown` block is what renders the release notes and it works on neither an incoming
-        # webhook (slackapi/slack-github-action#440) nor a Workflow Builder trigger.
-        # See docs/runbooks/slack-notifications.md.
-        #
-        # `errors: true` because the action's default is FALSE — without it a rejected request
-        # passes the step green and consumers are never told, with nothing to show for it.
-        uses: slackapi/slack-github-action@v4.0.0
-        with:
-          method: chat.postMessage
-          token: ${{ secrets.slack-bot-token }}
-          payload-file-path: ${{ runner.temp }}/slack-payload.json
-          errors: true
+          tag: v${{ needs.check-publication-status.outputs.components-version }}
+          github-token: ${{ github.token }}
+          slack-bot-token: ${{ secrets.slack-bot-token }}
+          slack-channel-id: ${{ secrets.slack-release-channel-id }}
   storefront:
     name: 'Storefront'
     needs: check-publication-status
