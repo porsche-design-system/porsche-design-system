@@ -5,9 +5,6 @@ inputs:
   tag:
     description: 'Release tag to announce, e.g. "v4.7.0".'
     required: true
-  github-token:
-    description: 'Token used to read the release. `${{ github.token }}` is enough.'
-    required: true
   slack-bot-token:
     description: 'Slack bot token with the `chat:write` scope.'
     required: true
@@ -26,7 +23,7 @@ runs:
       shell: bash
       run: gh api "repos/$GITHUB_REPOSITORY/releases/tags/$INPUT_TAG" > "$RUNNER_TEMP/release.json"
       env:
-        GH_TOKEN: ${{ inputs.github-token }}
+        GH_TOKEN: ${{ github.token }}
         INPUT_TAG: ${{ inputs.tag }}
     - name: 'Build payload'
       shell: bash

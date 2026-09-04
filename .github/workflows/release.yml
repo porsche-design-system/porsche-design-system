@@ -247,7 +247,6 @@ jobs:
       - uses: ./.github/actions/notify-slack-release
         with:
           tag: v${{ needs.check-publication-status.outputs.components-version }}
-          github-token: ${{ github.token }}
           slack-bot-token: ${{ secrets.slack-bot-token }}
           slack-channel-id: ${{ secrets.slack-release-channel-id }}
   storefront:
