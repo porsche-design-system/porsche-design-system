@@ -1,0 +1,8 @@
+{
+  "extends": ["@tsconfig/node18/tsconfig.json", "@vue/tsconfig/tsconfig.json"],
+  "include": ["vite.config.app.mts", "vite.config.package.mts", "scripts/addDeprecatedAnnotations.ts"],
+  "compilerOptions": {
+    "types": ["node"],
+    "noEmit": true
+  }
+}

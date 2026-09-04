@@ -28,6 +28,7 @@
     "build": "npm run clean:build && npm run build:meta-icons && npm run build:lib",
     "build:meta-icons": "tsx scripts/build.ts",
     "build:lib": "rollup -c",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {

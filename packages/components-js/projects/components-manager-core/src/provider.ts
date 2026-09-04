@@ -3,4 +3,5 @@
  * library to provide a compatible library
  */
 
+export type { ComponentsManagerData } from './services/components-manager';
 export { loadComponentLibrary, setRegisterComponentsCallback } from './services/library-handler';

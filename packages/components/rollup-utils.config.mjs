@@ -63,8 +63,10 @@ export default [
       ...sharedPlugins,
       typescript({
         tsconfig: './tsconfig.json',
+        noEmitOnError: true,
         declaration: true,
         declarationDir: outputDir,
+        rootDir: '.',
         include: ['src/**/*.ts'],
         verbatimModuleSyntax: false,
       }),
@@ -88,6 +90,7 @@ export default [
       ...sharedPlugins,
       typescript({
         tsconfig: './tsconfig.json',
+        noEmitOnError: true,
         verbatimModuleSyntax: false,
       }),
     ],

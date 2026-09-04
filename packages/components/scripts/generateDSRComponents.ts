@@ -296,7 +296,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         }
 
         if (newFileContent.includes('export const DialogBase:')) {
-          const removedProps = ['dialogRef', 'scrollerRef', 'onCancel', 'onClick', 'onTransitionEnd', 'onDismiss'];
+          const removedProps = [
+            'dialogRef',
+            'scrollerRef',
+            'onCancel',
+            'onClick',
+            'onMouseDown',
+            'onTransitionEnd',
+            'onDismiss',
+          ];
           newFileContent = newFileContent
             .replace(/^/, "import type { AriaAttributes } from '../types';\n")
             .replace(/(type DialogBaseProps = {)/, '$1\n  children?: JSX.Element;')
@@ -432,10 +440,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // `showPopover()` (via the top-layer controller). Declarative Shadow DOM SSR output is static HTML with no JS,
           // so the popover never opens and the banner is invisible. Force it visible when `open` — `display:grid!important`
           // beats both our own `display:none` and the UA `[popover]:not(:popover-open){display:none}` rule.
-          .replace(
-            /__html: style }/,
-            "__html: style + (this.props.open ? '[popover]{display:grid!important}' : '') }"
-          );
+          .replace(/__html: style }/, "__html: style + (this.props.open ? '[popover]{display:grid!important}' : '') }");
       } else if (tagName === 'p-inline-notification') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeadingSlot|hasDescriptionSlot)/g, '$1')

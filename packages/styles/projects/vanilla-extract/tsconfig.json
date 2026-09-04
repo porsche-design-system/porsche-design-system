@@ -1,9 +1,12 @@
 {
-  "extends": "@porsche-design-system/shared/tsconfig.json",
+  "extends": "shared/tsconfig.base.json",
   "compilerOptions": {
     "moduleResolution": "bundler",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    // `skill/skill.ts` is published as raw source (`exports["./skill"]`) and imports `node:fs`/`node:path`,
+    // matching the scss and tailwindcss flavours which already declare this for the same reason.
+    "types": ["node"]
   },
-  "include": ["./src", "./vanillaExtractMeta"],
+  "include": ["./src", "./vanillaExtractMeta", "./skill"],
   "exclude": ["**/*.spec.ts"]
 }
