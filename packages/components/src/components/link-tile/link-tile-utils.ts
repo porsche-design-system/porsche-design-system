@@ -2,7 +2,7 @@ import {
   AllowedTypes,
   type LinkAriaAttribute,
   type LinkTarget,
-  parseJSON,
+  parseJSONBoolean,
   TILE_ALIGNS,
   TILE_ASPECT_RATIOS,
   TILE_SIZES,
@@ -41,4 +41,4 @@ export const sharedTilePropTypes: Omit<CommonButtonAndLinkTileProps, 'aria' | 'w
 
 // both tiles need the parsed value to decide whether only one or both link/button variants have to be rendered
 export const getParsedTileCompact = (compact: BreakpointCustomizable<boolean>): BreakpointValues<boolean> | boolean =>
-  parseJSON(compact) as BreakpointValues<boolean> | boolean;
+  parseJSONBoolean(compact);

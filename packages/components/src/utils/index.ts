@@ -1,7 +1,7 @@
 export * from './a11y';
 export * from './applyConstructableStylesheetStyle';
 export * from './attribute-observer';
-export { isTruthyForAnyBreakpoint, parseJSON } from './breakpoint-customizable';
+export { isTruthyForAnyBreakpoint, parseJSON, parseJSONBoolean } from './breakpoint-customizable';
 export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint-observer';
 export { getCurrentMatchingBreakpointValue } from './breakpoint-observer-utils';
 export * from './button-handling';

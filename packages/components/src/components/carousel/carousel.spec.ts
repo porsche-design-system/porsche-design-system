@@ -146,7 +146,9 @@ describe('componentWillLoad', () => {
 describe('componentDidLoad', () => {
   it('should call getSplideBreakpoints() with correct parameters', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
     const spy = vi.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
     component.host = getHostEl();
@@ -159,7 +161,9 @@ describe('componentDidLoad', () => {
 
   it('should call parseJSONAttribute() with correct parameter', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
     const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute');
     const component = new Carousel();
     component.host = getHostEl();
@@ -172,7 +176,9 @@ describe('componentDidLoad', () => {
 
   it('should call Splide constructor with correct parameters and set this.splide', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
 
     const component = new Carousel();
     component.host = getHostEl();
@@ -187,7 +193,9 @@ describe('componentDidLoad', () => {
 
   it('should call Splide constructor with correct parameters and set this.splide for slidesPerPage=auto', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
 
     const component = new Carousel();
     component.host = getHostEl();
@@ -203,7 +211,9 @@ describe('componentDidLoad', () => {
 
   it('should call this.registerSplideHandlers() with correct parameters', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
     const component = new Carousel();
     component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
@@ -237,9 +247,9 @@ describe('render', () => {
     expect(spy).toHaveBeenCalledWith(component.host, component.description);
   });
 
-  it('should call parseJSON() with correct parameter and set this.parsedPagination', () => {
+  it('should call parseJSONBoolean() with correct parameter and set this.parsedPagination', () => {
     vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
-    const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
+    const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSONBoolean').mockReturnValue(false);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.host.attachShadow({ mode: 'open' });

@@ -20,7 +20,7 @@ import type { Styles } from 'jss';
 import type { ButtonVariant } from '../components/button/button-utils';
 import type { LinkVariant } from '../components/link/link-utils';
 import type { BreakpointCustomizable, LinkButtonIconName } from '../types';
-import { buildResponsiveStyles, hasVisibleIcon, isTruthyForAnyBreakpoint, mergeDeep } from '../utils';
+import { buildResponsiveBooleanStyles, hasVisibleIcon, isTruthyForAnyBreakpoint, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -106,11 +106,11 @@ export const getLinkButtonStyles = (
         display: 'inline-block',
         verticalAlign: 'top',
         ...mergeDeep(
-          buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
+          buildResponsiveBooleanStyles(isCompact, (compactValue: boolean) => ({
             [`${cssVariableInternalScaling}`]: compactValue ? 0.64285714 : 1,
             '--_p-link-button-a': compactValue ? ref(radiusLg) : ref(radiusXl),
           })),
-          buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+          buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
             borderRadius: addImportantToRule(
               ref(cssVarRadius, hideLabelValue ? ref(radiusFull) : ref('--_p-link-button-a'))
             ),
@@ -138,7 +138,7 @@ export const getLinkButtonStyles = (
       color: textColor,
       cursor: 'pointer',
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-      ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+      ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: `${ref(cssVarPaddingBlock, paddingBlock)} ${ref(cssVarPaddingInline, hideLabelValue ? paddingBlock : paddingInline)}`,
         gap: ref(cssVarGap, hideLabelValue ? 0 : gap),
       })),
@@ -166,13 +166,13 @@ export const getLinkButtonStyles = (
           },
         })),
     },
-    label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
+    label: buildResponsiveBooleanStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {
       icon: {
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
         width: ref(leadingNormal), // ensure space is already reserved until icon component is loaded (ssr)
         height: ref(leadingNormal), // ensure space is already reserved until icon component is loaded (ssr)
-        ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+        ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
           marginInlineStart: hideLabelValue ? 0 : iconMarginInlineStart, // compensate white space of svg icon and optimize visual alignment
         })),
       },

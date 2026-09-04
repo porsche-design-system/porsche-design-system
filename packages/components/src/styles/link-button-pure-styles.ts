@@ -2,7 +2,13 @@ import type { JssStyle, Styles } from 'jss';
 import type { ButtonPureColor, ButtonPureSize } from '../components/button-pure/button-pure-utils';
 import type { LinkPureColor, LinkPureSize } from '../components/link-pure/link-pure-utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../types';
-import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
+import {
+  buildResponsiveBooleanStyles,
+  buildResponsiveStyles,
+  type GetJssStyleFunction,
+  hasVisibleIcon,
+  mergeDeep,
+} from '../utils';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -67,7 +73,7 @@ export const getLinkButtonPureStyles = (
           transform: 'translate3d(0,0,0)', // creates new stacking context
           ...hostHiddenStyles,
         }),
-        ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({
+        ...buildResponsiveBooleanStyles(stretch, (responsiveStretch: boolean) => ({
           display: responsiveStretch ? 'block' : 'inline-block',
           width: responsiveStretch ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
           ...(!responsiveStretch && { verticalAlign: 'top' }),
@@ -84,10 +90,10 @@ export const getLinkButtonPureStyles = (
       textDecoration: underline ? 'underline' : 'none',
       font: `${ref(fontWeightNormal)} ${ref(typescaleSm)}/${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       ...mergeDeep(
-        buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
+        buildResponsiveBooleanStyles(hideLabel, (hidelabelValue: boolean) => ({
           gap: hidelabelValue ? 0 : ref(spacingStaticXs),
         })),
-        buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
+        buildResponsiveBooleanStyles(stretch, (stretchValue: boolean) => ({
           justifyContent: stretchValue ? 'space-between' : 'flex-start',
           alignItems: stretchValue ? 'center' : 'flex-start',
         })),
@@ -106,7 +112,7 @@ export const getLinkButtonPureStyles = (
         position: 'absolute', // mobile Safari -> prevent lagging active state
         top: offsetVertical,
         bottom: offsetVertical,
-        ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+        ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
           right: hideLabelValue ? offsetVertical : offsetHorizontal,
           left: hideLabelValue ? offsetVertical : offsetHorizontal,
           borderRadius: hideLabelValue ? ref(radiusFull) : ref(radiusLg),
@@ -138,7 +144,7 @@ export const getLinkButtonPureStyles = (
           },
           label: mergeDeep(
             { zIndex: '1' }, // fix Firefox bug on :hover (#2583) & pure-link with nested anchor & hidden label (#3349)
-            buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
+            buildResponsiveBooleanStyles(hideLabel, getVisibilityJssStyle),
             buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
               order: alignLabelValue === 'start' ? -1 : 0,
             }))
