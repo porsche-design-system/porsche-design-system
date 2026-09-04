@@ -1,0 +1,34 @@
+# Announces a release published by a PERSON, most usefully a draft. The pipeline path in
+# release.yml covers the rest, and the two cannot overlap: GitHub does not create workflow runs for
+# events triggered by GITHUB_TOKEN, and drafts fire nothing until they are published.
+#
+# THAT GITHUB_TOKEN CONDITION IS LOAD-BEARING. If release.yml ever creates releases with a PAT or a
+# GitHub App token, every release gets announced twice.
+name: 'Notify Release Published'
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: read # read the release being announced
+
+jobs:
+  notify:
+    name: 'Notify'
+    # Stable only, matching create-github-release.sh. The tag check also catches a pre-release
+    # nobody flagged as one.
+    if: >-
+      github.event.release.prerelease == false &&
+      !contains(github.event.release.tag_name, '-')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/notify-slack-release
+        with:
+          tag: ${{ github.event.release.tag_name }}
+          github-token: ${{ github.token }}
+          slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ secrets.SLACK_RELEASE_CHANNEL_ID }}
