@@ -21,6 +21,7 @@ import {
 } from '../../styles';
 import { sizeMap, weightMap } from '../../styles/maps';
 import {
+  buildResponsiveBooleanStyles,
   buildResponsiveStyles,
   getCss,
   mergeDeep,
@@ -159,7 +160,7 @@ export const getComponentCss = (
     },
     footer: {
       gridArea: `${isTopAligned ? 2 : 4}/2`,
-      ...buildResponsiveStyles(compact, (compactValue: boolean) =>
+      ...buildResponsiveBooleanStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
               display: 'grid',
@@ -178,7 +179,7 @@ export const getComponentCss = (
       gridColumn: 2,
       gridRow: `1/${hasFooterSlot ? 3 : 2}`,
       alignSelf: isTopAligned ? 'flex-start' : 'flex-end',
-      ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
+      ...buildResponsiveBooleanStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',
       })),
     },
@@ -186,7 +187,7 @@ export const getComponentCss = (
       minHeight: '54px', // prevent content shift
       zIndex: 5,
       marginTop: ref(spacingStaticMd),
-      ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
+      ...buildResponsiveBooleanStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'none' : 'inline-block',
       })),
     },

@@ -31,6 +31,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   version. Windows keeps using directory junctions, which cannot be relative
   ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
 
+### Fixed
+
+- **Breakpoint Customizable Props**: setting a breakpoint customizable boolean prop as an HTML boolean attribute without
+  a value, e.g. `<p-input-text hide-label>`, was ignored and logged a validation error instead of behaving like
+  `<p-input-text hide-label="true">`. Affects `hide-label`, `stretch`, `indent`, `fullscreen`, `pagination` and
+  `compact` (the latter only on `Button`, `Link`, `Link Tile` and `Button Tile`, where it is breakpoint customizable).
+  ([#4701](https://github.com/porsche-design-system/porsche-design-system/pull/4701))
+
 ## [4.7.0-beta.0] - 2026-08-27
 
 ### Added
