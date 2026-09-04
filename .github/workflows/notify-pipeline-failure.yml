@@ -3,7 +3,7 @@
 #
 # `workflow_run` runs the DEFAULT-BRANCH copy of this file, so a contributor cannot alter the
 # notifier from inside their PR. That, plus the fork check in the job's `if:`, is what keeps the
-# webhook out of a stranger's reach in this public repo.
+# bot token out of a stranger's reach in this public repo.
 #
 name: 'Notify Pipeline Failure'
 

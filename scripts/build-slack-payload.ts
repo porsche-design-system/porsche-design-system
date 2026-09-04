@@ -39,10 +39,11 @@ if (!runPath || !jobsPath || !pullsPath) {
 }
 
 const run: WorkflowRun = JSON.parse(readFileSync(runPath, 'utf8'));
-const { jobs }: { jobs: Job[] } = JSON.parse(readFileSync(jobsPath, 'utf8'));
+// `null` when jq's `add` merged zero pages.
+const { jobs }: { jobs: Job[] | null } = JSON.parse(readFileSync(jobsPath, 'utf8'));
 const pulls: Pull[] = JSON.parse(readFileSync(pullsPath, 'utf8'));
 
-const failedJobs = jobs.filter((job) => FAILED.has(job.conclusion ?? ''));
+const failedJobs = (jobs ?? []).filter((job) => FAILED.has(job.conclusion ?? ''));
 
 /** URL fallback — JSON.stringify drops undefined keys, and Slack rejects a missing one. */
 const runUrl = run.html_url ?? '';
