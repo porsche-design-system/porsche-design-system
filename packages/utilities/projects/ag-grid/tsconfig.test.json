@@ -3,6 +3,6 @@
   "compilerOptions": {
     "types": ["node", "vitest/globals"]
   },
-  "include": ["**/*.spec.ts"],
+  "include": ["tests/unit"],
   "exclude": []
 }
