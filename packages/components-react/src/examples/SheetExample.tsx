@@ -3,6 +3,7 @@ import {
   PHeading,
   PSheet,
   PText,
+  type SheetDismissEvent,
   type SheetDismissEventDetail,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
@@ -13,7 +14,7 @@ export const SheetExamplePage = () => {
   const onOpen = useCallback(() => {
     setIsSheetOpen(true);
   }, []);
-  const onDismiss = useCallback((e: CustomEvent<SheetDismissEventDetail>) => {
+  const onDismiss = useCallback((e: SheetDismissEvent) => {
     setDismissReason(e.detail.reason);
     setIsSheetOpen(false);
   }, []);

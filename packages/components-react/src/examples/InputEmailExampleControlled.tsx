@@ -1,5 +1,5 @@
 import {
-  type InputEmailInputEventDetail,
+  type InputEmailInputEvent,
   PInputEmail,
   type PInputEmailProps,
   PText,
@@ -9,18 +9,13 @@ import { useState } from 'react';
 export const InputEmailControlledExamplePage = () => {
   const [value, setValue] = useState<PInputEmailProps['value']>('');
 
-  const onInput = (e: CustomEvent<InputEmailInputEventDetail>) => {
-    setValue((e.detail.target as HTMLInputElement).value);
+  const onInput = (e: InputEmailInputEvent) => {
+    setValue(e.target.value);
   };
 
   return (
     <>
-      <PInputEmail
-        name="some-name"
-        label="Some Label"
-        value={value}
-        onInput={(e) => onInput(e as CustomEvent<InputEmailInputEventDetail>)}
-      />
+      <PInputEmail name="some-name" label="Some Label" value={value} onInput={onInput} />
       <PText>Value: {value}</PText>
     </>
   );

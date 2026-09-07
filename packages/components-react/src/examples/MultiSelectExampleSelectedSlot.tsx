@@ -1,5 +1,5 @@
 import {
-  type MultiSelectChangeEventDetail,
+  type MultiSelectChangeEvent,
   PMultiSelect,
   PMultiSelectOption,
   type PMultiSelectProps,
@@ -59,10 +59,10 @@ export const MultiSelectExampleSelectedSlot = () => {
   const [options] = useState<Option[]>(optionsData);
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
 
-  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
-    const value = (e.target as HTMLElement & { value: string[] }).value;
+  const onChange = (e: MultiSelectChangeEvent) => {
+    const value = e.target.value;
     setValue(value);
-    setSelectedOptions(options.filter((option) => value.includes(option.value)));
+    setSelectedOptions(options.filter((option) => value?.some((selectedValue) => selectedValue === option.value)));
   };
 
   return (

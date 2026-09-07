@@ -1,6 +1,6 @@
 import {
-  type InputTextInputEventDetail,
-  type MultiSelectChangeEventDetail,
+  type InputTextInputEvent,
+  type MultiSelectChangeEvent,
   PButton,
   PInputText,
   PMultiSelect,
@@ -14,7 +14,7 @@ export const MultiSelectExampleDynamicPage = () => {
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);
 
-  const onChangeInput = (e: CustomEvent<InputTextInputEventDetail>) => {
+  const onChangeInput = (e: InputTextInputEvent) => {
     setInputValue((e.detail.target as HTMLInputElement).value);
   };
 
@@ -27,7 +27,7 @@ export const MultiSelectExampleDynamicPage = () => {
     setInputValue('');
   };
 
-  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+  const onChange = (e: MultiSelectChangeEvent) => {
     setSelectedValues(e.detail.value);
     setInputValue(e.detail.value.join(','));
   };
@@ -44,13 +44,7 @@ export const MultiSelectExampleDynamicPage = () => {
 
   return (
     <div className="flex flex-col gap-fluid-sm">
-      <PInputText
-        name="input-value"
-        label="Value:"
-        placeholder="e.g. 1,2"
-        value={inputValue}
-        onInput={(e) => onChangeInput(e as CustomEvent<InputTextInputEventDetail>)}
-      />
+      <PInputText name="input-value" label="Value:" placeholder="e.g. 1,2" value={inputValue} onInput={onChangeInput} />
       <div className="flex gap-fluid-sm">
         <PButton type="button" onClick={onSetValue} compact={true}>
           Set Value

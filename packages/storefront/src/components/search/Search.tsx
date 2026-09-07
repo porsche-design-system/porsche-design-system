@@ -1,6 +1,6 @@
 'use client';
 
-import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
+import { PHeading, type PInputSearchElement, PModal } from '@porsche-design-system/components-react/ssr';
 import type { SearchOptions, SearchResponses } from 'algoliasearch-helper/types/algoliasearch';
 import type React from 'react';
 import { useEffect, useRef } from 'react';
@@ -55,7 +55,7 @@ const searchClient = {
 };
 
 export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<PInputSearchElement>(null);
 
   useEffect(() => {
     if (isSearchOpen) {

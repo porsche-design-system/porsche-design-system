@@ -1,10 +1,10 @@
 import { cleanup, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { type JSX, useRef } from 'react';
+import { createRef, type JSX, type MutableRefObject, useRef } from 'react';
 import { afterEach, beforeEach, describe, expect, it, test, vi } from 'vitest';
 import * as hooks from '../../../src/hooks';
 import { PButton } from '../../../src/public-api';
-import { getMergedClassName, skipPorscheDesignSystemCDNRequestsDuringTests } from '../../../src/utils';
+import { getMergedClassName, skipPorscheDesignSystemCDNRequestsDuringTests, syncRef } from '../../../src/utils';
 
 describe('getMergedClassName()', () => {
   test.each`
@@ -91,6 +91,45 @@ describe('syncRefs()', () => {
     await userEvent.click(button);
 
     expect(button.className).toBe(CLASS_NAME);
+  });
+
+  it('should preserve the element type and clear object refs on detach', () => {
+    const element = document.createElement('input');
+    const elementRef: MutableRefObject<HTMLInputElement | undefined> = { current: undefined };
+    const forwardedRef = createRef<HTMLInputElement>();
+    const callback = syncRef(elementRef, forwardedRef);
+
+    callback(element);
+    expect(elementRef.current).toBe(element);
+    expect(forwardedRef.current).toBe(element);
+
+    callback(null);
+    expect(elementRef.current).toBeUndefined();
+    expect(forwardedRef.current).toBeNull();
+  });
+
+  it('should forward the element and null to callback refs', () => {
+    const element = document.createElement('input');
+    const elementRef: MutableRefObject<HTMLInputElement | undefined> = { current: undefined };
+    const forwardedRef = vi.fn<(element: HTMLInputElement | null) => void>();
+    const callback = syncRef(elementRef, forwardedRef);
+
+    callback(element);
+    callback(null);
+
+    expect(forwardedRef.mock.calls).toEqual([[element], [null]]);
+    expect(elementRef.current).toBeUndefined();
+  });
+
+  it('should synchronize the internal ref without a forwarded ref', () => {
+    const element = document.createElement('input');
+    const elementRef: MutableRefObject<HTMLInputElement | undefined> = { current: undefined };
+    const callback = syncRef(elementRef, null);
+
+    callback(element);
+    expect(elementRef.current).toBe(element);
+    callback(null);
+    expect(elementRef.current).toBeUndefined();
   });
 });
 

@@ -1,18 +1,19 @@
 import {
   PButton,
-  type PinCodeChangeEventDetail,
+  type PinCodeChangeEvent,
   PPinCode,
   type PPinCodeProps,
   PText,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const PinCodeExampleFormPage = () => {
-  const [form, setForm] = useState({ myPinCode: '' });
+  const [form, setForm] = useState<{ myPinCode: PPinCodeProps['value'] }>({ myPinCode: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onChange = (e: CustomEvent<PinCodeChangeEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PPinCodeProps;
+  const onChange = (e: PinCodeChangeEvent) => {
+    const { name, value } = e.target;
+    if (name === undefined) return;
     setForm((prev) => ({
       ...prev,
       [name]: value,

@@ -1,5 +1,5 @@
 import {
-  type InputNumberInputEventDetail,
+  type InputNumberInputEvent,
   PButton,
   PInputNumber,
   type PInputNumberProps,
@@ -8,11 +8,11 @@ import {
 import { FormEvent, useState } from 'react';
 
 export const InputNumberExampleFormPage = () => {
-  const [form, setForm] = useState({ myInputNumber: '' });
+  const [form, setForm] = useState<{ myInputNumber: PInputNumberProps['value'] }>({ myInputNumber: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: CustomEvent<InputNumberInputEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PInputNumberProps;
+  const onInput = (e: InputNumberInputEvent) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [name]: value,

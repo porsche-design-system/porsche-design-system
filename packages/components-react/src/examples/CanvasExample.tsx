@@ -1,5 +1,5 @@
 import {
-  type CanvasSidebarStartUpdateEventDetail,
+  type CanvasSidebarStartUpdateEvent,
   PButton,
   PCanvas,
   PHeading,
@@ -15,7 +15,7 @@ export const CanvasExamplePage = () => {
   );
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState<boolean>(false);
 
-  const onSidebarStartUpdate = useCallback((e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
+  const onSidebarStartUpdate = useCallback((e: CanvasSidebarStartUpdateEvent) => {
     setIsSidebarStartOpen(e.detail.open);
   }, []);
   const onSidebarEndOpen = useCallback(() => {

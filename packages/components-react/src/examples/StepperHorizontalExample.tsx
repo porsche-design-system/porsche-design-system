@@ -4,7 +4,7 @@ import {
   PStepperHorizontalItem,
   PText,
   type StepperHorizontalItemState,
-  type StepperHorizontalUpdateEventDetail,
+  type StepperHorizontalUpdateEvent,
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
@@ -51,7 +51,7 @@ export const StepperHorizontalExamplePage = () => {
     setSteps(newState);
   };
 
-  const onUpdate = (e: CustomEvent<StepperHorizontalUpdateEventDetail>): void => {
+  const onUpdate = (e: StepperHorizontalUpdateEvent): void => {
     const { activeStepIndex } = e.detail;
 
     const newState = [...steps];

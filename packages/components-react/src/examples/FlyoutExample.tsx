@@ -1,4 +1,5 @@
 import {
+  type FlyoutDismissEvent,
   type FlyoutDismissEventDetail,
   PButton,
   PFlyout,
@@ -13,7 +14,7 @@ export const FlyoutExamplePage = () => {
   const onOpen = useCallback(() => {
     setIsFlyoutOpen(true);
   }, []);
-  const onDismiss = useCallback((e: CustomEvent<FlyoutDismissEventDetail>) => {
+  const onDismiss = useCallback((e: FlyoutDismissEvent) => {
     setDismissReason(e.detail.reason);
     setIsFlyoutOpen(false);
   }, []);

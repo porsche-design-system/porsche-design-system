@@ -1,5 +1,5 @@
 import {
-  type InputTextInputEventDetail,
+  type InputTextInputEvent,
   PInputText,
   type PInputTextProps,
   PText,
@@ -9,10 +9,10 @@ import { useState } from 'react';
 export const InputTextControlledExamplePage = () => {
   const [value, setValue] = useState<PInputTextProps['value']>('');
 
-  const onInput = (e: CustomEvent<InputTextInputEventDetail>) => {
-    const target = e.target as HTMLElement & { value: string };
+  const onInput = (e: InputTextInputEvent) => {
+    const target = e.target;
 
-    if (target.value.length > 3) {
+    if (typeof target.value === 'string' && target.value.length > 3) {
       const newValue = target.value.slice(0, 3);
       setValue(newValue);
       // The web component doesn't prevent native input, so we must manually reset the input element's value.
@@ -23,12 +23,7 @@ export const InputTextControlledExamplePage = () => {
 
   return (
     <>
-      <PInputText
-        name="some-name"
-        label="Some Label"
-        value={value}
-        onInput={(e) => onInput(e as CustomEvent<InputTextInputEventDetail>)}
-      />
+      <PInputText name="some-name" label="Some Label" value={value} onInput={onInput} />
       <PText>PInputText Value: {value}</PText>
     </>
   );

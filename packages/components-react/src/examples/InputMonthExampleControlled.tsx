@@ -1,5 +1,5 @@
 import {
-  type InputMonthInputEventDetail,
+  type InputMonthInputEvent,
   PInputMonth,
   type PInputMonthProps,
   PText,
@@ -9,18 +9,13 @@ import { useState } from 'react';
 export const InputMonthControlledExamplePage = () => {
   const [value, setValue] = useState<PInputMonthProps['value']>('');
 
-  const onInput = (e: CustomEvent<InputMonthInputEventDetail>) => {
-    setValue((e.target as HTMLElement & { value: PInputMonthProps['value'] }).value);
+  const onInput = (e: InputMonthInputEvent) => {
+    setValue(e.target.value);
   };
 
   return (
     <>
-      <PInputMonth
-        name="some-name"
-        label="Some Label"
-        value={value}
-        onInput={(e) => onInput(e as CustomEvent<InputMonthInputEventDetail>)}
-      />
+      <PInputMonth name="some-name" label="Some Label" value={value} onInput={onInput} />
       <PText>Value: {value}</PText>
     </>
   );

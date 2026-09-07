@@ -1,4 +1,5 @@
 import {
+  type ModalDismissEvent,
   type ModalDismissEventDetail,
   PButton,
   PHeading,
@@ -13,7 +14,7 @@ export const ModalExampleAccessibilityPage = () => {
   const onOpen = useCallback(() => {
     setIsModalOpen(true);
   }, []);
-  const onDismiss = useCallback((e: CustomEvent<ModalDismissEventDetail>) => {
+  const onDismiss = useCallback((e: ModalDismissEvent) => {
     setDismissReason(e.detail.reason);
     setIsModalOpen(false);
   }, []);

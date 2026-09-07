@@ -1,7 +1,7 @@
 import {
-  type InputSearchInputEventDetail,
-  type MultiSelectChangeEventDetail,
-  type MultiSelectToggleEventDetail,
+  type InputSearchInputEvent,
+  type MultiSelectChangeEvent,
+  type MultiSelectToggleEvent,
   PIcon,
   PInputSearch,
   PMultiSelect,
@@ -80,17 +80,18 @@ export const MultiSelectExampleAsyncFilter = () => {
 
   const debouncedFetch = useDebounce(fetchOptions, 400);
 
-  const onInput = (e: CustomEvent<InputSearchInputEventDetail>) => {
-    const term = (e.target as HTMLElement & { value: string }).value;
+  const onInput = (e: InputSearchInputEvent) => {
+    const term = e.target.value;
+    if (typeof term !== 'string') return;
     setSearchValue(term);
     debouncedFetch(term.trim() || undefined);
   };
 
-  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
-    setValue((e.target as HTMLElement & { value: string[] }).value);
+  const onChange = (e: MultiSelectChangeEvent) => {
+    setValue(e.target.value);
   };
 
-  const onToggle = async (e: CustomEvent<MultiSelectToggleEventDetail>) => {
+  const onToggle = async (e: MultiSelectToggleEvent) => {
     if (e.detail.open && !hasLoadedOnce.current) {
       fetchOptions(undefined, true);
     }
@@ -114,8 +115,8 @@ export const MultiSelectExampleAsyncFilter = () => {
         autoComplete="off"
         onInput={onInput}
         // Prevent bubbling
-        onBlur={(e: any) => e.stopPropagation()}
-        onChange={(e: any) => e.stopPropagation()}
+        onBlur={(e) => e.stopPropagation()}
+        onChange={(e) => e.stopPropagation()}
       />
 
       {/* Persistent status announcer for assistive technologies (keep always in the DOM) */}

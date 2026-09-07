@@ -1,5 +1,5 @@
 import {
-  type InputSearchInputEventDetail,
+  type InputSearchInputEvent,
   PInputSearch,
   type PInputSearchProps,
   PText,
@@ -9,20 +9,13 @@ import { useState } from 'react';
 export const InputSearchControlledExamplePage = () => {
   const [value, setValue] = useState<PInputSearchProps['value']>('');
 
-  const onInput = (e: CustomEvent<InputSearchInputEventDetail>) => {
-    setValue((e.detail.target as HTMLInputElement).value);
+  const onInput = (e: InputSearchInputEvent) => {
+    setValue(e.target.value);
   };
 
   return (
     <>
-      <PInputSearch
-        name="some-name"
-        label="Some Label"
-        value={value}
-        indicator={true}
-        clear={true}
-        onInput={(e) => onInput(e as CustomEvent<InputSearchInputEventDetail>)}
-      />
+      <PInputSearch name="some-name" label="Some Label" value={value} indicator={true} clear={true} onInput={onInput} />
       <PText>Value: {value}</PText>
     </>
   );

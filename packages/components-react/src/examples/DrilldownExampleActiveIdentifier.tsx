@@ -1,4 +1,5 @@
 import {
+  type DrilldownUpdateEvent,
   type DrilldownUpdateEventDetail,
   PButton,
   PDrilldown,
@@ -18,7 +19,7 @@ export const DrilldownExampleActiveIdentifierPage = () => {
     setIsDrilldownOpen(false);
   }, []);
   const onUpdate = useCallback(
-    (e: CustomEvent<DrilldownUpdateEventDetail>) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
+    (e: DrilldownUpdateEvent) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
     []
   );
 

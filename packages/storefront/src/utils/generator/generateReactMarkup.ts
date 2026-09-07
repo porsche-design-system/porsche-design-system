@@ -125,8 +125,12 @@ export const generateReactControlledScript = (
   const eventHandler = eventEntries
     .map(([eventName, { prop, value, eventValueKey, eventType, negateValue, toggleValue }]) => {
       if (eventValueKey) {
-        eventType && types.push(eventType);
-        return `  const ${eventName} = (e: CustomEvent<${eventType}>) => {
+        const concreteEventType = tagName.startsWith('p-')
+          ? `${pascalCase(tagName.slice(2))}${eventName.slice(2)}Event`
+          : undefined;
+        const importedType = concreteEventType ?? eventType;
+        importedType && types.push(importedType);
+        return `  const ${eventName} = (e: ${concreteEventType ?? `CustomEvent<${eventType}>`}) => {
     set${pascalCase(prop)}(${negateValue ? '!' : ''}e.detail.${eventValueKey});
   }`;
       }

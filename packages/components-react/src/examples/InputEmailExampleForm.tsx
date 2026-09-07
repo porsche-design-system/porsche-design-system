@@ -1,18 +1,18 @@
 import {
-  type InputEmailInputEventDetail,
+  type InputEmailInputEvent,
   PButton,
   PInputEmail,
   type PInputEmailProps,
   PText,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const InputEmailExampleFormPage = () => {
-  const [form, setForm] = useState({ myInputEmail: '' });
+  const [form, setForm] = useState<{ myInputEmail: PInputEmailProps['value'] }>({ myInputEmail: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: CustomEvent<InputEmailInputEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PInputEmailProps;
+  const onInput = (e: InputEmailInputEvent) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [name]: value,

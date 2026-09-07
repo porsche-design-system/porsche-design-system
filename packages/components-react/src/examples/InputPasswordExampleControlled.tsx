@@ -1,5 +1,5 @@
 import {
-  type InputPasswordInputEventDetail,
+  type InputPasswordInputEvent,
   PInputPassword,
   type PInputPasswordProps,
   PText,
@@ -9,18 +9,13 @@ import { useState } from 'react';
 export const InputPasswordControlledExamplePage = () => {
   const [value, setValue] = useState<PInputPasswordProps['value']>('');
 
-  const onInput = (e: CustomEvent<InputPasswordInputEventDetail>) => {
-    setValue((e.detail.target as HTMLInputElement).value);
+  const onInput = (e: InputPasswordInputEvent) => {
+    setValue(e.target.value);
   };
 
   return (
     <>
-      <PInputPassword
-        name="some-name"
-        label="Some Label"
-        value={value}
-        onInput={(e) => onInput(e as CustomEvent<InputPasswordInputEventDetail>)}
-      />
+      <PInputPassword name="some-name" label="Some Label" value={value} onInput={onInput} />
       <PText>Value: {value}</PText>
     </>
   );

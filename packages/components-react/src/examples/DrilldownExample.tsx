@@ -1,5 +1,7 @@
 import {
+  type DrilldownDismissEvent,
   type DrilldownDismissEventDetail,
+  type DrilldownUpdateEvent,
   type DrilldownUpdateEventDetail,
   PButton,
   PDrilldown,
@@ -17,12 +19,12 @@ export const DrilldownExamplePage = () => {
   const onOpen = useCallback(() => {
     setIsDrilldownOpen(true);
   }, []);
-  const onDismiss = useCallback((e: CustomEvent<DrilldownDismissEventDetail>) => {
+  const onDismiss = useCallback((e: DrilldownDismissEvent) => {
     setDismissReason(e.detail.reason);
     setIsDrilldownOpen(false);
   }, []);
   const onUpdate = useCallback(
-    (e: CustomEvent<DrilldownUpdateEventDetail>) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
+    (e: DrilldownUpdateEvent) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
     []
   );
 

@@ -1,11 +1,11 @@
 import {
-  type InputTextInputEventDetail,
+  type InputTextInputEvent,
   PButton,
   PInputText,
   PSelect,
   PSelectOption,
   type PSelectProps,
-  SelectChangeEventDetail,
+  type SelectChangeEvent,
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
@@ -14,7 +14,7 @@ export const SelectExampleDynamicPage = () => {
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);
 
-  const onChangeInput = (e: CustomEvent<InputTextInputEventDetail>) => {
+  const onChangeInput = (e: InputTextInputEvent) => {
     setInputValue((e.detail.target as HTMLInputElement).value);
   };
 
@@ -27,7 +27,7 @@ export const SelectExampleDynamicPage = () => {
     setInputValue('');
   };
 
-  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
+  const onChange = (e: SelectChangeEvent) => {
     setSelectedValue(e.detail.value);
     setInputValue(String(e.detail.value ?? ''));
   };
@@ -44,13 +44,7 @@ export const SelectExampleDynamicPage = () => {
 
   return (
     <div className="flex flex-col gap-fluid-sm">
-      <PInputText
-        name="input-value"
-        label="Value:"
-        placeholder="e.g. 1"
-        value={inputValue}
-        onInput={(e) => onChangeInput(e as CustomEvent<InputTextInputEventDetail>)}
-      />
+      <PInputText name="input-value" label="Value:" placeholder="e.g. 1" value={inputValue} onInput={onChangeInput} />
       <div className="flex gap-fluid-sm">
         <PButton type="button" onClick={onSetValue} compact={true}>
           Set Value

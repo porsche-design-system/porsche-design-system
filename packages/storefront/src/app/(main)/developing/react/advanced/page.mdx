@@ -7,7 +7,7 @@ export const metadata = {
 
 # React
 
-<TableOfContents headings={['Global Theme', 'Prefixing']} />
+<TableOfContents headings={['Global Theme', 'Typed Events and Element Refs', 'Prefixing']} />
 
 ## Global Theme
 
@@ -22,6 +22,119 @@ settings, add the `.scheme-light`, `.scheme-dark` or `.scheme-light-dark` CSS cl
 element. This applies the selected theme to all child elements.
 
 Learn more in the [Theme](/must-know/theme) section.
+
+## Typed Events and Element Refs
+
+React components with custom events export concrete event and host element types, for example `InputNumberInputEvent`,
+`InputNumberChangeEvent`, `InputNumberBlurEvent`, and `PInputNumberElement`. Import these from
+`@porsche-design-system/components-react`, or from `@porsche-design-system/components-react/ssr` in Next.js and React
+Router SSR applications. Both entry points provide the same typings.
+
+### Named and inline handlers
+
+Replace a plain `CustomEvent<...EventDetail>` annotation with the concrete event type to access the host's properties
+without a cast:
+
+```diff
+- import type { InputNumberInputEventDetail } from '@porsche-design-system/components-react';
++ import type { InputNumberInputEvent } from '@porsche-design-system/components-react';
+
+- function handleInput(event: CustomEvent<InputNumberInputEventDetail>) {
+-   setValue((event.target as HTMLElement & { value: PInputNumberProps['value'] }).value);
++ function handleInput(event: InputNumberInputEvent) {
++   setValue(event.target.value);
+  }
+```
+
+Named functions need an annotation: TypeScript does not infer their parameter types backwards from a later
+`onInput={handleInput}` assignment. Inline JSX handlers are inferred automatically:
+
+```tsx
+import { useState } from 'react';
+import { PInputNumber, type PInputNumberProps } from '@porsche-design-system/components-react';
+
+export function Quantity() {
+  const [value, setValue] = useState<PInputNumberProps['value']>('');
+
+  return (
+    <PInputNumber
+      name="quantity"
+      label="Quantity"
+      value={value}
+      onInput={(event) => {
+        setValue(event.target.value);
+      }}
+    />
+  );
+}
+```
+
+The inferred event is `InputNumberInputEvent` and its `target` is `PInputNumberElement`, the `<p-input-number>` host.
+Property unions and optionality are unchanged: `PInputNumberProps['value']` is still
+`string | number | null | undefined`, not just `number`.
+
+Existing `CustomEvent<InputNumberInputEventDetail>` handlers remain assignable, but that annotation loses the more
+precise `target` type. `event.detail` remains the original payload; for this input event it is the native `InputEvent`.
+`event.detail.target` is **not** newly typed as the PDS host. Other event detail payloads are unchanged too. Keep native
+React event annotations, such as `FormEvent<HTMLFormElement>`, for native React events.
+
+### Element refs and DOM listeners
+
+Use the exported element type for object refs rather than intersecting `PInputNumberProps` with `HTMLElement`.
+`PInputNumberProps` describes JSX props, including React attributes and callbacks, not the DOM element.
+
+Existing object refs typed as `HTMLElement` or `HTMLInputElement` must also migrate to `PInputNumberElement`, for
+example `createRef<PInputNumberElement>()` or `useRef<PInputNumberElement>(null)`. The ref points to the custom-element
+host, not its inner native input.
+
+```tsx
+import { useEffect, useRef, useState } from 'react';
+import {
+  PInputNumber,
+  type InputNumberInputEvent,
+  type PInputNumberElement,
+  type PInputNumberProps,
+} from '@porsche-design-system/components-react';
+
+export function QuantityWithListener() {
+  const inputRef = useRef<PInputNumberElement>(null);
+  const [value, setValue] = useState<PInputNumberProps['value']>('');
+
+  useEffect(() => {
+    const element = inputRef.current;
+    if (!element) return;
+
+    const handleInput = (event: InputNumberInputEvent) => {
+      setValue(event.target.value);
+    };
+    element.addEventListener('input', handleInput);
+    return () => element.removeEventListener('input', handleInput);
+  }, []);
+
+  return <PInputNumber ref={inputRef} name="quantity" label="Quantity" value={value} />;
+}
+```
+
+Use either the DOM listener above or an `onInput` prop, not both for the same handler. `addEventListener` and
+`removeEventListener` recognize the component's custom events while retaining native event and string-name fallbacks. An
+inline listener passed to `element.addEventListener('input', (event) => { ... })` also infers the concrete event.
+
+Alternatively, a callback ref infers `PInputNumberElement | null` without an annotation. Inside a component using the
+`inputRef` above, replace the object ref with:
+
+```tsx
+<PInputNumber
+  name="quantity"
+  label="Quantity"
+  value={value}
+  ref={(element) => {
+    inputRef.current = element;
+  }}
+/>
+```
+
+Element types are currently exported only for components with custom events; components without custom events retain
+their existing ref typings.
 
 ## Prefixing
 

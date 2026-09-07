@@ -1,5 +1,5 @@
 import {
-  type InputDateInputEventDetail,
+  type InputDateInputEvent,
   PInputDate,
   type PInputDateProps,
   PText,
@@ -9,18 +9,13 @@ import { useState } from 'react';
 export const InputDateControlledExamplePage = () => {
   const [value, setValue] = useState<PInputDateProps['value']>('');
 
-  const onInput = (e: CustomEvent<InputDateInputEventDetail>) => {
-    setValue((e.detail.target as HTMLInputElement).value);
+  const onInput = (e: InputDateInputEvent) => {
+    setValue(e.target.value);
   };
 
   return (
     <>
-      <PInputDate
-        name="some-name"
-        label="Some Label"
-        value={value}
-        onInput={(e) => onInput(e as CustomEvent<InputDateInputEventDetail>)}
-      />
+      <PInputDate name="some-name" label="Some Label" value={value} onInput={onInput} />
       <PText>Value: {value}</PText>
     </>
   );

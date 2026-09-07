@@ -1,11 +1,11 @@
-import { type PinCodeChangeEventDetail, PPinCode, PText } from '@porsche-design-system/components-react';
+import { type PinCodeChangeEvent, PPinCode, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
 export const PinCodeExampleControlledPage = () => {
   const [value, setValue] = useState('');
   const [isComplete, setIsComplete] = useState(false);
 
-  const onChange = useCallback((e: CustomEvent<PinCodeChangeEventDetail>) => {
+  const onChange = useCallback((e: PinCodeChangeEvent) => {
     setValue(e.detail.value);
     setIsComplete(e.detail.isComplete);
   }, []);
