@@ -1,8 +1,8 @@
-import { vi } from 'vitest';
+import { type Mock, vi } from 'vitest';
 import { implicitSubmit } from './implicitSubmit';
 
 describe('implicitSubmit', () => {
-  let mockClick: ReturnType<typeof vi.fn>;
+  let mockClick: Mock<() => void>;
   let mockRequestSubmit: ReturnType<typeof vi.fn>;
   let form: HTMLFormElement;
   let internals: { form: HTMLFormElement };
@@ -37,7 +37,7 @@ describe('implicitSubmit', () => {
   it('clicks a native submit button', () => {
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
-    submitButton.matches = vi.fn().mockReturnValue(true);
+    vi.spyOn(submitButton, 'matches').mockReturnValue(true);
     submitButton.click = mockClick;
 
     form.appendChild(submitButton);
@@ -52,7 +52,7 @@ describe('implicitSubmit', () => {
   it('clicks a PDS submit button', () => {
     const submitButton = document.createElement('p-button');
     submitButton.type = 'submit';
-    submitButton.matches = vi.fn().mockReturnValue(true);
+    vi.spyOn(submitButton, 'matches').mockReturnValue(true);
     submitButton.click = mockClick;
     // Manually include in form.elements
     Object.defineProperty(form, 'elements', {
