@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import { renderToString } from 'react-dom/server';
 import { getFontLinks } from '../../../src';
 import { describe, it, expect } from 'vitest';
