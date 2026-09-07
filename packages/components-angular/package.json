@@ -43,7 +43,7 @@
     "test:unit:vitest": "npm run typecheck:tests && vitest -c tests/unit/config/vitest.config.ts",
     "test:unit:karma": "concurrently -k -s 'first' -n 'cdn,test' 'serve-cdn' 'ng test'",
     "test:unit:karma-ci": "concurrently -k -s 'first' -n 'cdn,test' 'serve-cdn' 'ng test --browsers=ChromeHeadlessCI --watch=false'",
-    "test:e2e": "npm run build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:e2e": "npm run typecheck:tests:e2e && npm run build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "npm run typecheck:tests:vrt && playwright test --config=tests/vrt/config/playwright.config.ts",
     "test:smoke": "npm run typecheck:tests:smoke && npm run test:smoke:unit",
     "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts",

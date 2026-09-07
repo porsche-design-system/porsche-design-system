@@ -5,7 +5,7 @@ const getCombobox = (page: Page) => page.locator('p-multi-select [role="combobox
 const getPopover = (page: Page) => page.locator('p-multi-select [popover]');
 const getOptions = (page: Page) => page.locator('p-multi-select-option');
 
-const setValue = async (page) => {
+const setValue = async (page: Page) => {
   const host = getHost(page);
   const combobox = getCombobox(page);
   const dialog = getPopover(page);

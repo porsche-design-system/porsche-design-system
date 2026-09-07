@@ -3,7 +3,7 @@ import { expect, Page, test } from '@playwright/test';
 const getHost = (page: Page) => page.locator('p-textarea');
 const getTextarea = (page: Page) => page.locator('p-textarea textarea');
 
-const setValue = async (page) => {
+const setValue = async (page: Page) => {
   const host = getHost(page);
   const textarea = getTextarea(page);
 
