@@ -22,8 +22,9 @@
     "build:generatePartialNames": "tsx scripts/generatePartialNames.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js && chmod +x bin/prepareVRTSnapshots.js",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {

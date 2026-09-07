@@ -29,7 +29,8 @@
     "build:icons": "tsx scripts/build.ts",
     "build:lib": "rollup -c",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {

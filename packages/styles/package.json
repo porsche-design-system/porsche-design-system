@@ -24,6 +24,7 @@
     "typecheck:scss": "npm run typecheck --workspace=@porsche-design-system/scss",
     "typecheck:emotion": "npm run typecheck --workspace=@porsche-design-system/emotion",
     "typecheck:vanilla-extract": "npm run typecheck --workspace=@porsche-design-system/vanilla-extract",
+    "typecheck:tests:vrt": "tsc --noEmit -p tsconfig.vrt.json",
     "test": "npm run test:unit && npm run test:vrt",
     "test:unit": "npm run test:unit:tailwindcss && npm run test:unit:scss && npm run test:unit:emotion && npm run test:unit:vanilla-extract",
     "test:unit:tailwindcss": "npm run test:unit --workspace=@porsche-design-system/tailwindcss",
