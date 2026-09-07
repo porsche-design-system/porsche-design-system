@@ -3,17 +3,17 @@
 exports[`should return correct partial markup for getVanillaJsPartialExample 1`] = `
 "<!-- index.html -->
 <head>
-  <!--PLACEHOLDER_INITIAL_STYLES-->
+  <!--PLACEHOLDER_FONT_LINKS-->
 </head>
 
 <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
 <!-- make sure to adjust the path to the index.html file -->
 "scripts": {
   "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\\"@porsche-design-system/components-js/partials\\").getInitialStyles())') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\\"@porsche-design-system/components-js/partials\\").getFontLinks())') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"
   <!-- Alternative: With custom prefix to match your prefixed components -->
-  "replace": "placeholder='<!--PLACEHOLDER_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\\"@porsche-design-system/components-js/partials\\").getInitialStyles({ prefix: \\"custom-prefix\\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\\"@porsche-design-system/components-js/partials\\").getFontLinks({ prefix: \\"custom-prefix\\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"
   <!-- Alternative: With multiple prefixes to match prefixed components coming from micro frontends -->
-  "replace": "placeholder='<!--PLACEHOLDER_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\\"@porsche-design-system/components-js/partials\\").getInitialStyles({ prefix: [\\"\\", \\"custom-prefix\\", \\"another-prefix\\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\\"@porsche-design-system/components-js/partials\\").getFontLinks({ prefix: [\\"\\", \\"custom-prefix\\", \\"another-prefix\\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"
 }"
 `;
