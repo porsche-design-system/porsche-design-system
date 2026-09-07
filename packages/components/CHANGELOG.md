@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: `references/deprecations.md`, a version-exact index of every deprecated component, prop, prop
   value, event, slot, CSS variable and styling alias together with what to use instead
   ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
+- **Partials**: `getMetaTagsAndIconLinks()` now links a webmanifest with maskable icons for Android PWA installation
+  ([#4709](https://github.com/porsche-design-system/porsche-design-system/pull/4709))
 
 ### Changed
 
