@@ -36,7 +36,7 @@
     "typecheck:tests:smoke": "tsc --noEmit -p tsconfig.smoke.json",
     "test": "npm run test:unit && npm run test:e2e && npm run test:vrt",
     "test:unit": "npm run test:unit:react-wrapper && npm run test:unit:react-ssr-wrapper",
-    "test:unit:react-wrapper": "vitest -c projects/react-wrapper/tests/unit/config/vitest.config.ts",
+    "test:unit:react-wrapper": "npm run typecheck:tests && vitest -c projects/react-wrapper/tests/unit/config/vitest.config.ts",
     "test:unit:react-ssr-wrapper": "npm run test:unit --workspace=@porsche-design-system/react-ssr-wrapper",
     "test:e2e": "npm run build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "npm run typecheck:tests:vrt && playwright test --config=tests/vrt/config/playwright.config.ts",
