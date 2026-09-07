@@ -4,7 +4,7 @@ import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers';
 const getHost = (page: Page) => page.locator('p-checkbox');
 const getInput = (page: Page) => page.locator('p-checkbox input');
 
-const setValue = async (page) => {
+const setValue = async (page: Page) => {
   const host = getHost(page);
   const input = getInput(page);
 
