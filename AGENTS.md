@@ -130,11 +130,15 @@ npm run format
 # Typecheck (no compilation)
 npm run typecheck             # Everything a fresh clone can check. Runs in CI and at the start of `build`.
 npm run typecheck:all         # Every package, in build order. Needs a built tree, so it is local only.
+npm run typecheck:all:tests   # Every test scope, by workspace. Needs a built tree, so it is local only.
 npm run typecheck:{package}   # One package only, e.g. typecheck:tokens
+npm run typecheck:tests       # Test code of one workspace, with --workspace={name}. Its test scripts run it first.
 ```
 
-Root holds two chains, and both are composed from the per-package `typecheck:{package}` entries, with nested
-projects called by `--workspace` inside `typecheck:all`.
+Root holds three chains. `typecheck` and `typecheck:all` are composed from the per-package `typecheck:{package}`
+entries, with nested projects called by `--workspace` inside `typecheck:all`. Test scopes, `typecheck:tests` and
+`typecheck:tests:{e2e,vrt,a11y,smoke}`, are chained into `typecheck:all:tests` the same way and open the test
+script that runs those files.
 `typecheck` covers only the packages whose sources exist in a fresh clone, because the CI Typecheck job
 runs on a fresh checkout. `typecheck:all` covers every package in the order `build` uses, and it needs a
 built tree, so nothing automated calls it.
