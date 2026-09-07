@@ -23,14 +23,14 @@ import { COMPONENT_CHUNKS_MANIFEST } from '../../../../projects/components-wrapp
 describe('cdn', () => {
   let fetchCounter = 0;
 
-  function unpackObject(obj: Object): any[] {
+  function unpackObject(obj: Object): any {
     return typeof obj === 'object' ? Object.values(obj).map(unpackObject) : typeof obj === 'string' ? obj : null;
   }
 
   function objectToFlatArray(object: Object): string[] {
     return unpackObject(object)
       .flat(3)
-      .filter((x) => x !== null);
+      .filter((x: string | null) => x !== null);
   }
 
   function bulkRequestItems(chunks: string[], baseUrl: string): void {
@@ -39,7 +39,7 @@ describe('cdn', () => {
         const { status, headers } = await fetch(`${baseUrl}/${chunk}`);
         // Mime library returns application/javascript but should be text/javascript
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
-        const ext = chunk.split('.').pop();
+        const ext = chunk.split('.').pop() as string;
         const mimeType = ext === 'js' ? 'text/javascript' : mime.getType(ext);
 
         expect(status).toBe(200); // 200: OK
