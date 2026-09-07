@@ -1,9 +1,9 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import { camelCase, kebabCase } from 'change-case';
 import * as crypto from 'crypto';
 import { sync as globbySync } from 'fast-glob';
-import { kebabCase, camelCase } from 'change-case';
-import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
+import * as fs from 'fs';
+import * as path from 'path';
+import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 
 type Cdn = 'auto' | 'cn';
 
@@ -36,14 +36,16 @@ const generateWebManifestAndExtendIconManifest = (metaIconsManifest: MetaIconsMa
 const writeWebManifest = (androidIconPaths: string[], cdn: Cdn): string => {
   const cdnURL = cdn === 'auto' ? CDN_BASE_URL_COM : CDN_BASE_URL_CN;
   const icons = androidIconPaths.map((androidIconPath: string) => {
-    const [, size] = androidIconPath.match(/android-chrome-([0-9]+)x\1/) || [];
-    if (isNaN(parseInt(size))) {
+    const match = androidIconPath.match(/^android-chrome-(maskable-)?([0-9]+)x\2\.[a-f0-9]{7}\.png$/);
+    if (!match) {
       throw new Error('Size of android icon could not be extracted');
     }
+    const [, maskable, size] = match;
     return {
       src: `${cdnURL}/${CDN_BASE_PATH_META_ICONS}/${androidIconPath}`,
       sizes: `${size}x${size}`,
       type: 'image/png',
+      ...(maskable ? { purpose: 'maskable' } : {}),
     };
   });
 
