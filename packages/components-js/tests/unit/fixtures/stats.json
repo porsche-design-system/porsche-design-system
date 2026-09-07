@@ -186,8 +186,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 49166,
-    "gzipSize": 17497
+    "size": 48932,
+    "gzipSize": 17418
   },
   {
     "chunkShortName": "optgroup",
@@ -211,8 +211,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 18093,
-    "gzipSize": 6716
+    "size": 18010,
+    "gzipSize": 6664
   },
   {
     "chunkShortName": "scroller",
@@ -226,8 +226,8 @@
   },
   {
     "chunkShortName": "select",
-    "size": 47569,
-    "gzipSize": 17022
+    "size": 47417,
+    "gzipSize": 16936
   },
   {
     "chunkShortName": "sheet",
