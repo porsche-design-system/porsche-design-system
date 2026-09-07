@@ -38,7 +38,7 @@ const writeWebManifest = (androidIconPaths: string[], cdn: Cdn): string => {
   const icons = androidIconPaths.map((androidIconPath: string) => {
     const match = androidIconPath.match(/^android-chrome-(maskable-)?([0-9]+)x\2\.[a-f0-9]{7}\.png$/);
     if (!match) {
-      throw new Error('Size of android icon could not be extracted');
+      throw new Error(`Invalid Android icon filename: "${androidIconPath}"`);
     }
     const [, maskable, size] = match;
     return {
