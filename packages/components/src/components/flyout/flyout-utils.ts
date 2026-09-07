@@ -34,7 +34,7 @@ export const addStickyTopCssVarStyleSheet = (host: HTMLElement): void => {
   if (getHasConstructableStylesheetSupport()) {
     stickyTopCssVarStyleSheetMap.set(host, new CSSStyleSheet());
     // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
-    host.shadowRoot.adoptedStyleSheets.push(stickyTopCssVarStyleSheetMap.get(host));
+    (host.shadowRoot.adoptedStyleSheets as CSSStyleSheet[]).push(stickyTopCssVarStyleSheetMap.get(host));
     updateStickyTopCssVarStyleSheet(host, 0);
   }
 };
