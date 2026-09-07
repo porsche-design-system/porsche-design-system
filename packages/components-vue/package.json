@@ -39,7 +39,7 @@
     "test": "npm run test:unit && npm run test:e2e && npm run test:vrt && npm run test:smoke",
     "test:unit": "npm run test:unit:vue-wrapper",
     "test:unit:vue-wrapper": "npm run typecheck:tests && vitest --config projects/vue-wrapper/tests/unit/config/vitest.config.ts",
-    "test:e2e": "npm run build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:e2e": "npm run typecheck:tests:e2e && npm run build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "npm run typecheck:tests:vrt && playwright test --config=tests/vrt/config/playwright.config.ts",
     "test:smoke": "npm run typecheck:tests:smoke && npm run test:smoke:unit && npm run test:smoke:vue-wrapper",
     "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts",
