@@ -133,7 +133,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
-export const getAttribute = (element: Locator, attribute: string): Promise<string> => {
+export const getAttribute = (element: Locator, attribute: string): Promise<string | null> => {
   return element.evaluate((el, attr: string) => el.getAttribute(attr), attribute);
 };
 
@@ -152,7 +152,7 @@ export const removeAttribute = async (element: Locator, key: string): Promise<vo
 };
 
 export const getProperty = async <T>(element: Locator, prop: string): Promise<keyof T> => {
-  return element.evaluate((el, prop: string) => el[prop], prop);
+  return element.evaluate((el, prop: string) => (el as unknown as Record<string, any>)[prop], prop);
 };
 
 export const setProperty = async <T>(
@@ -160,7 +160,10 @@ export const setProperty = async <T>(
   key: string,
   value: string | boolean | number | T
 ): Promise<void> => {
-  await element.evaluate((el, { key, value }) => (el[key] = value), { key, value } as any);
+  await element.evaluate((el, { key, value }) => ((el as unknown as Record<string, unknown>)[key] = value), {
+    key,
+    value,
+  } as any);
 };
 
 export const getCssClasses = async (element: Locator): Promise<string> => {
@@ -170,10 +173,10 @@ export const getCssClasses = async (element: Locator): Promise<string> => {
 export const getActiveElementTagNameInShadowRoot = async (element: Locator): Promise<string> => {
   return element.evaluate((el) => {
     try {
-      return el.shadowRoot.activeElement.tagName;
+      return el.shadowRoot!.activeElement!.tagName;
     } catch (e) {
       throw new Error(
-        `Could not get "tagName" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+        `Could not get "tagName" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot?.activeElement}) `
       );
     }
   });
@@ -182,10 +185,10 @@ export const getActiveElementTagNameInShadowRoot = async (element: Locator): Pro
 export const getActiveElementClassNameInShadowRoot = (element: Locator): Promise<string> => {
   return element.evaluate((el) => {
     try {
-      return el.shadowRoot.activeElement.className;
+      return el.shadowRoot!.activeElement!.className;
     } catch (e) {
       throw new Error(
-        `Could not get "className" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+        `Could not get "className" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot?.activeElement}) `
       );
     }
   });
@@ -194,10 +197,10 @@ export const getActiveElementClassNameInShadowRoot = (element: Locator): Promise
 export const getActiveElementIdInShadowRoot = (element: Locator): Promise<string> => {
   return element.evaluate((el) => {
     try {
-      return el.shadowRoot.activeElement.id;
+      return el.shadowRoot!.activeElement!.id;
     } catch (e) {
       throw new Error(
-        `Could not get "id" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+        `Could not get "id" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot?.activeElement}) `
       );
     }
   });
@@ -206,7 +209,7 @@ export const getActiveElementIdInShadowRoot = (element: Locator): Promise<string
 export const getActiveElementId = (page: Page): Promise<string> => {
   return page.evaluate(() => {
     try {
-      return document.activeElement.id;
+      return document.activeElement!.id;
     } catch (e) {
       throw new Error(`Could not get "id" from document.activeElement (${document.activeElement}) `);
     }
@@ -216,7 +219,7 @@ export const getActiveElementId = (page: Page): Promise<string> => {
 export const getActiveElementTagName = (page: Page): Promise<string> => {
   return page.evaluate(() => {
     try {
-      return document.activeElement.tagName;
+      return document.activeElement!.tagName;
     } catch (e) {
       throw new Error(`Could not get "tagName" from document.activeElement (${document.activeElement}) `);
     }
@@ -226,7 +229,7 @@ export const getActiveElementTagName = (page: Page): Promise<string> => {
 export const getActiveElementProp = (page: Page, prop: string): Promise<string> => {
   return page.evaluate((prop) => {
     try {
-      return document.activeElement[prop];
+      return (document.activeElement as unknown as Record<string, string>)[prop];
     } catch (e) {
       throw new Error(`Could not get "${prop}" from document.activeElement (${document.activeElement}) `);
     }
@@ -236,7 +239,7 @@ export const getActiveElementProp = (page: Page, prop: string): Promise<string> 
 type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
 type GetElementStyleOptions = {
   waitForTransition?: boolean;
-  pseudo?: Pseudo;
+  pseudo?: Pseudo | null;
 };
 
 export const getElementStyle = (
@@ -255,7 +258,7 @@ export const getElementStyle = (
       if (options.waitForTransition) {
         await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
       }
-      return style[property].toString();
+      return (style as unknown as Record<string, string>)[property as string].toString();
     },
     { property, opts }
   );
@@ -263,7 +266,7 @@ export const getElementStyle = (
 
 export const getElementIndex = (element: Locator, selector: string): Promise<number> => {
   return element.evaluate(async (el, selector: string): Promise<number> => {
-    let option: ChildNode = el.querySelector(selector);
+    let option: ChildNode | null = el.querySelector(selector);
     let pos = 0;
     while (option && (option = option.previousSibling) !== null) {
       pos++;
@@ -277,7 +280,7 @@ export const getElementInnerText = (element: Locator): Promise<string> =>
 
 export const getElementPositions = async (page: Page, element: Locator): Promise<DOMRect> => {
   const elementHandle = await element.elementHandle();
-  return page.evaluate((el) => el.getBoundingClientRect(), elementHandle);
+  return page.evaluate((el) => el!.getBoundingClientRect(), elementHandle);
 };
 
 export const reattachElement = (locator: Locator): Promise<void> => {
@@ -293,7 +296,8 @@ export const enableBrowserLogging = (page: Page): void => {
   });
 };
 
-export const waitForInputTransition = (page: Page): Promise<void> => new Promise((resolve) => setTimeout(resolve, 250));
+export const waitForInputTransition = (_page: Page): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, 250));
 
 export const hasFocus = (element: Locator): Promise<boolean> => element.evaluate((el) => document.activeElement === el);
 
@@ -354,8 +358,8 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   } = getComponentMeta(tagName);
 
   const buildChildMarkup = (
-    requiredChild: string,
-    requiredNamedSlots: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[],
+    requiredChild: string | undefined,
+    requiredNamedSlots: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[] | undefined,
     hasDefaultSlot: boolean
   ): string | undefined => {
     if (requiredChild) {
@@ -377,7 +381,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     return undefined;
   };
 
-  const buildParentMarkup = (markup: string, requiredParent: TagName | TagName[]): string => {
+  const buildParentMarkup = (markup: string, requiredParent: TagName | TagName[] | undefined): string => {
     const firstRequiredParent = Array.isArray(requiredParent) ? requiredParent[0] : requiredParent;
     if (firstRequiredParent) {
       const markupWithParent = `<${firstRequiredParent}>${markup}</${firstRequiredParent}>`;
@@ -403,16 +407,20 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     slotsMeta &&
     Object.entries(slotsMeta)
       .filter(([, value]) => value.isRequired)
-      .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
+      .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames![0] }));
 
-  const childMarkup = buildChildMarkup(requiredChild, requiredNamedSlots, hasSlot && '' in slotsMeta);
+  const childMarkup = buildChildMarkup(
+    requiredChild,
+    requiredNamedSlots,
+    hasSlot && slotsMeta !== undefined && '' in slotsMeta
+  );
   const label = childMarkup === undefined && propsMeta?.label ? 'label="Some label"' : '';
   const componentMarkup = `<${tagName}${attributes} ${label}>${childMarkup ?? ''}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, requiredParent);
 };
 
-export const expectToSkipFocusOnComponent = async (page: Page, component: Locator, before: Locator) => {
+export const expectToSkipFocusOnComponent = async (page: Page, _component: Locator, before: Locator) => {
   await before.focus();
 
   await page.keyboard.press('Tab');

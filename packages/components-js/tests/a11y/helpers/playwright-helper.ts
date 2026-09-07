@@ -1,4 +1,4 @@
-import { type ConsoleMessage, expect, type Locator, Page } from '@playwright/test';
+import type { ConsoleMessage, Locator, Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { waitForComponentsReady } from './stencil';
@@ -131,7 +131,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
-export const getAttribute = (locator: Locator, attribute: string): Promise<string> => {
+export const getAttribute = (locator: Locator, attribute: string): Promise<string | null> => {
   return locator.evaluate((el, attr: string) => el.getAttribute(attr), attribute);
 };
 
@@ -150,7 +150,7 @@ export const removeAttribute = async (element: Locator, key: string): Promise<vo
 };
 
 export const getProperty = async <T>(locator: Locator, prop: string): Promise<T> => {
-  return locator.evaluate((el, prop: string) => el[prop], prop);
+  return locator.evaluate((el, prop: string) => (el as unknown as Record<string, any>)[prop], prop);
 };
 
 export const setProperty = async <T>(
@@ -158,16 +158,19 @@ export const setProperty = async <T>(
   key: string,
   value: string | boolean | number | T
 ): Promise<void> => {
-  await element.evaluate((el, { key, value }) => (el[key] = value), { key, value } as any);
+  await element.evaluate((el, { key, value }) => ((el as unknown as Record<string, unknown>)[key] = value), {
+    key,
+    value,
+  } as any);
 };
 
 export const getActiveElementTagNameInShadowRoot = async (element: Locator): Promise<string> => {
   return element.evaluate((el) => {
     try {
-      return el.shadowRoot.activeElement.tagName;
+      return el.shadowRoot!.activeElement!.tagName;
     } catch (e) {
       throw new Error(
-        `Could not get "tagName" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+        `Could not get "tagName" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot?.activeElement}) `
       );
     }
   });
@@ -176,7 +179,7 @@ export const getActiveElementTagNameInShadowRoot = async (element: Locator): Pro
 export const getActiveElementId = (page: Page): Promise<string> => {
   return page.evaluate(() => {
     try {
-      return document.activeElement.id;
+      return document.activeElement!.id;
     } catch (e) {
       throw new Error(`Could not get "id" from document.activeElement (${document.activeElement}) `);
     }
@@ -186,7 +189,7 @@ export const getActiveElementId = (page: Page): Promise<string> => {
 type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
 type GetElementStyleOptions = {
   waitForTransition?: boolean;
-  pseudo?: Pseudo;
+  pseudo?: Pseudo | null;
 };
 
 export const getElementStyle = (
@@ -205,7 +208,7 @@ export const getElementStyle = (
       if (options.waitForTransition) {
         await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
       }
-      return style[property].toString();
+      return (style as unknown as Record<string, string>)[property as string].toString();
     },
     { property, opts }
   );
@@ -241,8 +244,8 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   } = getComponentMeta(tagName);
 
   const buildChildMarkup = (
-    requiredChild: string,
-    requiredNamedSlots: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[]
+    requiredChild: string | undefined,
+    requiredNamedSlots: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[] | undefined
   ): string => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
@@ -258,10 +261,11 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const buildParentMarkup = (markup: string, requiredParent: TagName): string => {
-    if (requiredParent) {
-      const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
-      return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent).requiredParent);
+  const buildParentMarkup = (markup: string, requiredParent: TagName | TagName[] | undefined): string => {
+    const firstRequiredParent = Array.isArray(requiredParent) ? requiredParent[0] : requiredParent;
+    if (firstRequiredParent) {
+      const markupWithParent = `<${firstRequiredParent}>${markup}</${firstRequiredParent}>`;
+      return buildParentMarkup(markupWithParent, getComponentMeta(firstRequiredParent).requiredParent);
     } else {
       return markup;
     }
@@ -283,7 +287,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     slotsMeta &&
     Object.entries(slotsMeta)
       .filter(([, value]) => value.isRequired)
-      .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
+      .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames![0] }));
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
     requiredChild,
