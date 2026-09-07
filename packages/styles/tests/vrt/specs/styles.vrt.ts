@@ -28,7 +28,7 @@ const styleViewportMap: Partial<Record<(typeof styles)[number], number[]>> = {
   ],
 };
 
-const getViewportsForStyle = (style: string): number[] => {
+const getViewportsForStyle = (style: (typeof styles)[number]): number[] => {
   return styleViewportMap[style] ?? [viewportWidthM];
 };
 
