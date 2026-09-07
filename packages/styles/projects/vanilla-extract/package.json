@@ -34,7 +34,7 @@
     "typecheck:scripts": "tsc --noEmit -p tsconfig.scripts.json",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta ./vanillaExtractMeta/deprecations.ts"
   },
   "dependencies": {
