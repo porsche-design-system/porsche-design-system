@@ -22,16 +22,16 @@ npm install --save-dev @angular-builders/custom-webpack
 
 <!-- ./scripts/injectPartials.ts -->
 import type { TargetOptions } from '@angular-builders/custom-webpack';
-import { getInitialStyles } from '@porsche-design-system/components-angular/partials';
+import { getFontLinks } from '@porsche-design-system/components-angular/partials';
 
 export default (targetOptions: TargetOptions, indexHtml: string): string => {
-  let partialContent = getInitialStyles();
+  let partialContent = getFontLinks();
 
   // Alternative: With custom prefix to match your prefixed components
-  partialContent = getInitialStyles({ prefix: 'custom-prefix' });
+  partialContent = getFontLinks({ prefix: 'custom-prefix' });
 
   // Alternative: With multiple prefixes to match prefixed components coming from micro frontends
-  partialContent = getInitialStyles({ prefix: ['', 'custom-prefix', 'another-prefix'] });
+  partialContent = getFontLinks({ prefix: ['', 'custom-prefix', 'another-prefix'] });
 
   return indexHtml.replace(/<\\/head>/, \`\${partialContent}$&\`);
 };"
