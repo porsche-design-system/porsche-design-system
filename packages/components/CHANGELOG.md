@@ -44,6 +44,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4685](https://github.com/porsche-design-system/porsche-design-system/pull/4685))
 - `Select`, `Multi Select`, `Radio Group`: unmatched values triggered misleading console warnings, including empty
   strings and values whose options had not loaded yet. Option matching remains strict by type and value.
+  ([#4710](https://github.com/porsche-design-system/porsche-design-system/pull/4710))
 
 ## [4.7.0-beta.0] - 2026-08-27
 
