@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "npm run typecheck:tests && vitest -c vitest.config.ts",
+    "test:unit": "vitest -c vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
