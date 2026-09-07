@@ -38,12 +38,12 @@ const getSelectOptgroups = (page: Page) => page.locator('p-select p-optgroup');
 const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(
   page: Page,
   property: K
-): Promise<SelectOption[K]> =>
+): Promise<SelectOption[K] | undefined> =>
   await page
     .locator('p-select p-select-option')
     .evaluateAll(
       (options, property) =>
-        ((options.find((option: SelectOption) => option.selected) as SelectOption)?.[property] as SelectOption[K]) ??
+        ((options as unknown as SelectOption[]).find((option) => option.selected)?.[property] as SelectOption[K]) ??
         undefined,
       property
     );
@@ -56,7 +56,7 @@ const getHighlightedSelectOptionProperty = async <K extends keyof SelectOption>(
     .locator('p-select p-select-option')
     .evaluateAll(
       (options, property) =>
-        ((options.find((option: SelectOption) => option.highlighted) as SelectOption)?.[property] as SelectOption[K]) ??
+        ((options as unknown as SelectOption[]).find((option) => option.highlighted)?.[property] as SelectOption[K]) ??
         undefined,
       property
     );
@@ -64,19 +64,21 @@ const getHighlightedSelectOptionProperty = async <K extends keyof SelectOption>(
 const getSelectedOptionIndex = async (page: Page): Promise<number> =>
   await page
     .locator('p-select p-select-option')
-    .evaluateAll((options: SelectOption[]) => options.indexOf(options.find((option: SelectOption) => option.selected)));
+    .evaluateAll((options) => (options as unknown as SelectOption[]).findIndex((option) => option.selected));
 const getHighlightedOptionIndex = async (page: Page): Promise<number> =>
   await page
     .locator('p-select p-select-option')
-    .evaluateAll((options: SelectOption[]) =>
-      options.filter((option) => !option.hidden).indexOf(options.find((option: SelectOption) => option.highlighted))
-    );
+    .evaluateAll((options) => {
+      const opts = options as unknown as SelectOption[];
+      const highlighted = opts.find((option) => option.highlighted);
+      return highlighted ? opts.filter((option) => !option.hidden).indexOf(highlighted) : -1;
+    });
 
 const getLabel = (page: Page) => page.locator('p-select label');
 
 const getForm = (page: Page) => page.locator('form');
 
-const setValue = async (page: Page, value: string) => {
+const setValue = async (page: Page, value: string | undefined) => {
   const host: Locator = getHost(page);
   await host.evaluate((el, value) => {
     (el as HTMLPSelectElement).value = value;
@@ -726,7 +728,7 @@ test.describe('focus', () => {
 test.describe('keyboard behavior', () => {
   skipInBrowsers(['webkit']);
   test.describe('closed combobox', () => {
-    let buttonElement;
+    let buttonElement: Locator;
     test.beforeEach(async ({ page }) => {
       await initSelect(page);
       buttonElement = getButton(page);
@@ -815,8 +817,8 @@ test.describe('keyboard behavior', () => {
   });
 
   test.describe('within listbox', () => {
-    let buttonElement;
-    let buttonAfter;
+    let buttonElement: Locator;
+    let buttonAfter: Locator;
     test.beforeEach(async ({ page }) => {
       await initSelect(page, {
         options: { values: testValues.map((x) => ({ value: x })), markupAfter: '<p-button>Button</p-button>' },
@@ -1040,7 +1042,7 @@ test.describe('keyboard behavior', () => {
       await buttonElement.press('n');
       await waitForStencilLifecycle(page);
 
-      const valueIndex = testValues.indexOf(testValues.find((val) => val.startsWith('Ben')));
+      const valueIndex = testValues.findIndex((val) => val.startsWith('Ben'));
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[valueIndex]);
 
@@ -2464,7 +2466,7 @@ test.describe('slots', () => {
 
     const host: Locator = getHost(page);
     await host.evaluate((el) => {
-      (el as HTMLPSelectElement).lastElementChild.remove();
+      (el as HTMLPSelectElement).lastElementChild!.remove();
     });
 
     await waitForStencilLifecycle(page);
@@ -2628,7 +2630,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
-      expect(disabled).toEqual(!!item.disabled);
+      expect(disabled).toEqual(!!item!.disabled);
 
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
@@ -2641,7 +2643,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const item = group.find((item) => item.value === value);
       // The option's own disabled state should be preserved
-      expect(await getProperty<boolean>(child, 'disabled')).toEqual(!!item.disabled);
+      expect(await getProperty<boolean>(child, 'disabled')).toEqual(!!item!.disabled);
       // The parent's disabled state should be propagated
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
@@ -2653,7 +2655,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
-      expect(disabled).toEqual(!!item.disabled);
+      expect(disabled).toEqual(!!item!.disabled);
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
   });

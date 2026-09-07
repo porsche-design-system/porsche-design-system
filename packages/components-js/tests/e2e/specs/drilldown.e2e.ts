@@ -37,7 +37,7 @@ const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
 const initBasicDrilldown = (
   page: Page,
-  drilldownProps?: Components.PDrilldown,
+  drilldownProps: Components.PDrilldown,
   items?: {
     amount?: number;
     content?: string[];
@@ -385,7 +385,7 @@ test.describe('focus behavior', () => {
 
     await page.evaluate(() => {
       const flyout: any = document.querySelector('p-drilldown');
-      document.getElementById('btn-open').addEventListener('click', () => {
+      document.getElementById('btn-open')!.addEventListener('click', () => {
         flyout.open = true;
       });
       flyout.addEventListener('dismiss', () => {
@@ -467,7 +467,7 @@ test.describe('scroll lock', () => {
     expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
 
     await page.evaluate(() => {
-      document.querySelector('p-drilldown').remove();
+      document.querySelector('p-drilldown')!.remove();
     });
     await waitForStencilLifecycle(page);
 
@@ -570,7 +570,7 @@ test.describe('second level', () => {
     await expect(getDrilldownItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
 
     await host.evaluate((el) => {
-      el.removeChild(el.lastElementChild);
+      el.removeChild(el.lastElementChild!);
     });
     await waitForStencilLifecycle(page);
 

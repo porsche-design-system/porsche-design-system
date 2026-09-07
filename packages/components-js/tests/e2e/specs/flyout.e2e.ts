@@ -25,15 +25,12 @@ const flyoutMinWidth = 320;
 const getHost = (page: Page) => page.locator('p-flyout');
 const getFlyout = (page: Page) => page.locator('p-flyout dialog');
 const getFlyoutScroller = (page: Page) => page.locator('p-flyout dialog .scroller');
-const getHeader = (page: Page) => page.locator('p-flyout slot[name="header"]');
 const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss');
 const getBody = (page: Page) => page.locator('body');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 const waitForSlotChange = () => sleep();
-const getStickyTopCssVarValue = async (page: Page) =>
-  getHost(page).evaluate((element) => getComputedStyle(element).getPropertyValue('--p-flyout-sticky-top'));
 
 const initBasicFlyout = (
   page: Page,
@@ -130,7 +127,7 @@ const addHeaderSlot = async (host: Locator) => {
 
 const removeHeaderSlot = async (host: Locator) => {
   await host.evaluate((el: HTMLElement) => {
-    el.querySelector('[slot="header"]').remove();
+    el.querySelector('[slot="header"]')!.remove();
   });
 };
 
@@ -140,23 +137,11 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
-const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
+const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, _failMessage?: string) => {
   // In order to assure that its correct we press tab to assure the next element will be the dismiss button
   await expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
   await page.keyboard.press('Tab');
   await expectDismissButtonToBeFocused(page);
-};
-
-const expectHeaderShadowToAppear = async (page: Page) => {
-  const headerLocator = getHeader(page);
-  await expect(headerLocator).toHaveCSS('boxShadow', 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px');
-  // await page.waitForFunction(
-  //   (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
-  //   await headerLocator.evaluateHandle((el) => el)
-  // );
-  // expect(await getElementStyle(getHeader(page), 'boxShadow'), 'after scroll outside threshold').toBe(
-  //   'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
-  // );
 };
 
 test('should render and be visible when open', async ({ page }) => {
@@ -271,7 +256,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside flyout', async ({ page }) => {
-    const viewportSize = page.viewportSize();
+    const viewportSize = page.viewportSize()!;
     await page.mouse.move(viewportSize.width - 1, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -283,7 +268,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside flyout and mouseup on backdrop (drag out)', async ({ page }) => {
-    const viewportSize = page.viewportSize();
+    const viewportSize = page.viewportSize()!;
     await page.mouse.move(viewportSize.width - 1, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -608,7 +593,7 @@ test.describe('scroll lock', () => {
     await expect(body).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
-      document.querySelector('p-flyout').remove();
+      document.querySelector('p-flyout')!.remove();
     });
     await waitForStencilLifecycle(page);
 
@@ -709,7 +694,7 @@ test.describe('lifecycle', () => {
       .toBe(0);
 
     await host.evaluate((el) => {
-      const header = el.querySelector('[slot="header"]');
+      const header = el.querySelector('[slot="header"]')!;
       header.innerHTML = `<h2>Some new header content</h2>`;
     });
     await waitForStencilLifecycle(page);
@@ -839,7 +824,6 @@ test.describe('after dynamic slot change', () => {
   test('should show footer with shadow', async ({ page }) => {
     await initBasicFlyout(page);
     const host = getHost(page);
-    const footer = getFlyout(page);
     const footerText = 'Some slotted footer content';
 
     await expect(page.getByText(footerText)).not.toBeVisible();

@@ -48,7 +48,7 @@ const getDetails = (page: Page) => page.locator('p-accordion details');
 const getInput = (page: Page) => page.locator('input');
 const getCollapsible = (page: Page) => page.locator('p-accordion details > div');
 const getBody = (page: Page) => page.locator('body');
-const getCollapsibleHeight = async (page: Page): Promise<number> => {
+const getCollapsibleHeight = async (page: Page): Promise<number | undefined> => {
   return await getCollapsible(page)
     .boundingBox()
     .then((box) => box?.height);

@@ -113,7 +113,7 @@ test.describe('value', () => {
 
     // Add input event listener that always sets value to '1'
     await page.evaluate(() => {
-      const hostElement = document.querySelector('p-input-number');
+      const hostElement = document.querySelector('p-input-number')!;
       hostElement.addEventListener('input', () => {
         hostElement.value = '1';
       });

@@ -1,9 +1,8 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { Page } from 'playwright';
 import {
   getElementStyle,
   getLifecycleStatus,
-  getProperty,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -45,7 +44,6 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-text'], 'componentDidUpdate: p-text').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
-
 });
 
 skipInBrowsers(['firefox', 'webkit'], () => {

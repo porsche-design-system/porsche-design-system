@@ -22,8 +22,8 @@ for (const tagName of tagNames) {
 
       await page.evaluate(
         ({ tagName, markup }) => {
-          document.getElementById('app').innerHTML = markup;
-          document.getElementById('app').querySelector(tagName).remove(); // remove component immediately
+          document.getElementById('app')!.innerHTML = markup;
+          document.getElementById('app')!.querySelector(tagName)!.remove(); // remove component immediately
         },
         { tagName, markup }
       );

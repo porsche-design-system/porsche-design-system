@@ -30,7 +30,7 @@ const buildMarkup = (tagName: TagName, propName: string, value: string | undefin
 
 const getComponentCss = (page: Page, id: string): Promise<string> =>
   page.locator(`#${id}`).evaluate((el) =>
-    Array.from(el.shadowRoot.adoptedStyleSheets)
+    Array.from(el.shadowRoot!.adoptedStyleSheets)
       .map((sheet) =>
         Array.from(sheet.cssRules)
           .map((rule) => rule.cssText)

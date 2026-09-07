@@ -113,7 +113,7 @@ test.describe('value', () => {
 
     // Add input event listener that always sets value to 'b'
     await page.evaluate(() => {
-      const hostElement = document.querySelector('p-input-text');
+      const hostElement = document.querySelector('p-input-text')!;
       hostElement.addEventListener('input', () => {
         hostElement.value = 'b';
       });

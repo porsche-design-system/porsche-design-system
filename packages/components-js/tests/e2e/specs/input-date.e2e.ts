@@ -112,7 +112,7 @@ test.describe('value', () => {
 
     // Add input event listener that always sets value to '2018-07-22'
     await page.evaluate(() => {
-      const hostElement = document.querySelector('p-input-date');
+      const hostElement = document.querySelector('p-input-date')!;
       hostElement.addEventListener('input', () => {
         hostElement.value = '2018-07-22';
       });

@@ -106,7 +106,7 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs');
+      const tabs = document.querySelector('p-tabs')!;
       const tab = document.createElement('p-tabs-item');
       (tab as any).label = 'Tabs Item Added';
       tab.innerText = 'Added Tabs Item Content';
@@ -131,7 +131,7 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs');
+      const tabs = document.querySelector('p-tabs')!;
       tabs.removeChild(tabs.children[2]);
     });
     await waitForStencilLifecycle(page);
@@ -147,7 +147,7 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs');
+      const tabs = document.querySelector('p-tabs')!;
       tabs.removeChild(tabs.children[2]);
     });
     await waitForStencilLifecycle(page);
@@ -165,7 +165,7 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs');
+      const tabs = document.querySelector('p-tabs')!;
       tabs.removeChild(tabs.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -181,7 +181,7 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs');
+      const tabs = document.querySelector('p-tabs')!;
       tabs.removeChild(tabs.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -197,12 +197,12 @@ test.describe('text selection', () => {
   test('should be possible to select/highlight text within tabs item', async ({ page }) => {
     await initTabs(page);
     const tabContentRect = await page.evaluate(() => {
-      const tabContent1 = document.querySelector('[label="Tab 1"]');
+      const tabContent1 = document.querySelector('[label="Tab 1"]')!;
       const { x, y } = tabContent1.getBoundingClientRect();
       return { x, y };
     });
     await page.mouse.click(tabContentRect.x, tabContentRect.y, { clickCount: 2 });
-    const selection = await page.evaluate(() => window.getSelection().toString());
+    const selection = await page.evaluate(() => window.getSelection()!.toString());
     expect(selection).toBe('Content');
   });
 });
@@ -243,8 +243,8 @@ test.describe('events', () => {
       });
 
       // count events in browser
-      window[COUNTER_KEY] = 0;
-      el.addEventListener('update', () => window[COUNTER_KEY]++);
+      (window as any)[COUNTER_KEY] = 0;
+      el.addEventListener('update', () => (window as any)[COUNTER_KEY]++);
 
       document.body.appendChild(el);
     }, COUNTER_KEY);
@@ -253,7 +253,7 @@ test.describe('events', () => {
 
     // retrieve counted events from browser
     const getCountedEvents = (): Promise<number> =>
-      page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+      page.evaluate((COUNTER_KEY: string) => (window as any)[COUNTER_KEY], COUNTER_KEY);
 
     expect(await getCountedEvents()).toBe(0);
 

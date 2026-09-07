@@ -57,6 +57,6 @@ ${component}
     await page.keyboard.press('Tab');
 
     expect(await getActiveElementTagName(page)).toBe(elTagName);
-    expect(await page.evaluate(() => document.activeElement.shadowRoot.activeElement.tagName)).not.toBeNull();
+    expect(await page.evaluate(() => document.activeElement!.shadowRoot!.activeElement!.tagName)).not.toBeNull();
   });
 }

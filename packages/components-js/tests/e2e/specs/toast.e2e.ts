@@ -6,7 +6,6 @@ import {
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
-  getProperty,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -50,7 +49,7 @@ const addMessage = async (page: Page, message?: Partial<ToastMessage>): Promise<
   };
 
   await page.evaluate(async (msg: ToastMessage) => {
-    document.querySelector('p-toast').addMessage(msg);
+    document.querySelector('p-toast')!.addMessage(msg);
   }, msg);
 
   await waitForStencilLifecycle(page);

@@ -115,7 +115,7 @@ test.describe('value', () => {
 
     // Add input event listener that always sets value to 'b'
     await page.evaluate(() => {
-      const hostElement = document.querySelector('p-textarea');
+      const hostElement = document.querySelector('p-textarea')!;
       hostElement.addEventListener('input', () => {
         hostElement.value = 'b';
       });

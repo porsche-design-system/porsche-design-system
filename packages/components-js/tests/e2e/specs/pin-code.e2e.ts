@@ -17,13 +17,12 @@ import {
 } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-pin-code');
-const getFieldset = (page: Page) => page.locator('fieldset');
 const getLabel = (page: Page) => page.locator('p-pin-code label');
 const getCurrentInput = (page: Page) => page.locator('p-pin-code #current-input');
 const getInput = (page: Page, n: number) => page.locator(`p-pin-code .wrapper input:nth-child(${n})`);
 const getForm = (page: Page) => page.locator('form');
-const getActiveElementsAriaLabelInShadowRoot = (page: Page, element: Locator): Promise<string> => {
-  return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
+const getActiveElementsAriaLabelInShadowRoot = (_page: Page, element: Locator): Promise<string | null> => {
+  return element.evaluate((el) => el.shadowRoot!.activeElement!.ariaLabel);
 };
 
 type InitOptions = {
@@ -90,7 +89,7 @@ test.describe('render', () => {
     test(`should render correct amount of inputs with length=${length}`, async ({ page }) => {
       await initPinCode(page, { props: { length } });
       const host = getHost(page);
-      const amountOfInputs = await host.evaluate((el) => Array.from(el.shadowRoot.querySelectorAll('input')).length);
+      const amountOfInputs = await host.evaluate((el) => Array.from(el.shadowRoot!.querySelectorAll('input')).length);
       expect(amountOfInputs).toBe(length);
     });
   }

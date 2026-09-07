@@ -304,14 +304,14 @@ test('should update slide width and pagination when slidesPerPage is changed at 
   const pagination = getPagination(page);
 
   expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
-  const { width: widthBefore } = await getSlides(page).first().boundingBox();
+  const { width: widthBefore } = (await getSlides(page).first().boundingBox())!;
 
   await setProperty(host, 'slidesPerPage', 3);
   await waitForStencilLifecycle(page);
 
   // 6 slides at 3 per page = 6 - 3 + 1 = 4 pages
   expect(await pagination.evaluate((el) => el.children.length)).toBe(4);
-  const { width: widthAfter } = await getSlides(page).first().boundingBox();
+  const { width: widthAfter } = (await getSlides(page).first().boundingBox())!;
   expect(widthAfter).toBeLessThan(widthBefore / 2);
 });
 
@@ -829,7 +829,7 @@ test.describe('focus behavior', () => {
   test('should have correct focus cycle if next button is clicked and then tabbed', async ({ page }) => {
     await initCarousel(page, { slidesPerPage: 1, withFocusableElements: false });
     const host = getHost(page);
-    const [slide1, slide2, slide3] = await getSlideElements(page);
+    const [_slide1, slide2, _slide3] = await getSlideElements(page);
     const btnNext = getButtonNext(page);
 
     await btnNext.focus();
@@ -1173,7 +1173,6 @@ test.describe('activeSlideIndex', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initCarousel(page);
-    const status = await getLifecycleStatus(page);
 
     await expect
       .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-carousel'], {
@@ -1365,7 +1364,7 @@ test.describe('focusOnCenterSlide', () => {
       withFocusableElements: false,
       focusOnCenterSlide: true,
     });
-    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlideElements(page);
+    const [slide1, slide2, slide3, slide4, slide5, _slide6] = await getSlideElements(page);
 
     await slide1.focus();
     await isElementCompletelyInViewport(slide1);

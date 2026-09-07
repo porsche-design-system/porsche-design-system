@@ -11,7 +11,7 @@ const initHeading = (
     tag?: HeadingTag;
   }
 ): Promise<void> => {
-  const { size, slot, tag } = opts;
+  const { size, slot, tag } = opts || {};
 
   const attrs = [
     size ? `size="${typeof size === 'object' ? JSON.stringify(size).replace(/"/g, "'") : size}"` : '',
@@ -30,7 +30,7 @@ const initHeading = (
 const getHost = (page: Page) => page.locator('p-heading');
 
 const getHeadingTagName = async (page: Page): Promise<string> =>
-  getHost(page).evaluate((el) => el.shadowRoot.querySelector('.root').tagName);
+  getHost(page).evaluate((el) => el.shadowRoot!.querySelector('.root')!.tagName);
 
 test.describe('tag', () => {
   test('should render according to size', async ({ page }) => {

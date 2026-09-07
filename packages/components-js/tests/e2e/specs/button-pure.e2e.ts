@@ -62,7 +62,7 @@ for (const { state, setContent } of clickableTests) {
     await host.click();
     await button.click({ force: true });
 
-    const coords = await host.boundingBox();
+    const coords = (await host.boundingBox())!;
     await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
     await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
     await page.mouse.click(coords.x + coords.width - 1, coords.y + 1); // click the top right corner

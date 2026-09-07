@@ -238,7 +238,7 @@ test.describe('mouse behavior', () => {
       await strongEl.click({ clickCount: 2 });
 
       // Some browsers (e.g. Firefox) include surrounding whitespace in the double-click selection, so compare trimmed.
-      const selection = await page.evaluate(() => window.getSelection().toString());
+      const selection = await page.evaluate(() => window.getSelection()!.toString());
       expect(selection.trim()).toBe('strong');
     });
 
@@ -252,7 +252,7 @@ test.describe('mouse behavior', () => {
 
       // Press inside the panel content, drag outside the popover, and release. The resulting `click` retargets to an
       // outside ancestor, but must not dismiss because the gesture started inside.
-      const strongBox = await page.locator('strong').boundingBox();
+      const strongBox = (await page.locator('strong').boundingBox())!;
       await page.mouse.move(strongBox.x + 2, strongBox.y + strongBox.height / 2);
       await page.mouse.down();
       await page.mouse.move(strongBox.x + 2, strongBox.y + strongBox.height / 2 + 300, { steps: 5 });
@@ -336,7 +336,7 @@ test.describe('mouse behavior', () => {
       await strongEl.click({ clickCount: 2 });
 
       // Some browsers (e.g. Firefox) include surrounding whitespace in the double-click selection, so compare trimmed.
-      const selection = await page.evaluate(() => window.getSelection().toString());
+      const selection = await page.evaluate(() => window.getSelection()!.toString());
       expect(selection.trim()).toBe('strong');
     });
   });
@@ -534,7 +534,7 @@ test.describe('dynamic content change', () => {
       const slottedButton = document.createElement('button');
       slottedButton.slot = 'button';
       slottedButton.textContent = 'Dynamic Button';
-      document.querySelector('p-popover').appendChild(slottedButton);
+      document.querySelector('p-popover')!.appendChild(slottedButton);
     });
 
     // Wait for the component to re-render: the default info button is replaced by the slotted button slot,
@@ -920,8 +920,8 @@ test.describe('viewport clamping', () => {
     const popover = getPopover(page);
     await expect(popover).toBeVisible();
 
-    const box = await popover.boundingBox();
-    const viewport = page.viewportSize();
+    const box = (await popover.boundingBox())!;
+    const viewport = page.viewportSize()!;
 
     // The panel must never exceed the viewport minus the safe zone on both edges (default `100dvw/dvh - 2 * safeZone`).
     expect(box.width, 'panel width within viewport safe zone').toBeLessThanOrEqual(

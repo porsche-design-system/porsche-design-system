@@ -152,8 +152,8 @@ export const removeAttribute = async (element: Locator, key: string): Promise<vo
   await element.evaluate((el, key) => el.removeAttribute(key), key);
 };
 
-export const getProperty = async <T>(element: Locator, prop: string): Promise<keyof T> => {
-  return element.evaluate((el, prop: string) => (el as unknown as Record<string, keyof T>)[prop], prop);
+export const getProperty = async <T>(element: Locator, prop: string): Promise<T> => {
+  return element.evaluate((el, prop: string) => (el as unknown as Record<string, T>)[prop], prop);
 };
 
 export const setProperty = async <T>(
@@ -168,7 +168,7 @@ export const setProperty = async <T>(
 };
 
 export const getCssClasses = async (element: Locator): Promise<string> => {
-  return Object.values(await getProperty(element, 'classList')).join(' ');
+  return Object.values(await getProperty<Record<string, string>>(element, 'classList')).join(' ');
 };
 
 export const getActiveElementTagNameInShadowRoot = async (element: Locator): Promise<string> => {

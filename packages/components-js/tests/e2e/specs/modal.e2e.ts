@@ -21,12 +21,9 @@ import {
 const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 
 const getHost = (page: Page) => page.locator('p-modal');
-const getScrollContainer = (page: Page) => page.locator('p-modal .scroller');
 const getHeader = (page: Page) => page.locator('p-modal slot[name="header"]');
 const getModal = (page: Page) => page.locator('p-modal dialog');
 const getDismissButton = (page: Page) => page.locator('p-modal .dismiss');
-const getFooter = (page: Page) => page.locator('p-modal slot[name="footer"]');
-const getFooterBoxShadow = async (page: Page): Promise<string> => getElementStyle(getFooter(page), 'boxShadow');
 const waitForModalTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
 const initBasicModal = (
@@ -116,7 +113,7 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
-const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
+const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, _failMessage?: string) => {
   // In order to assure that its correct we press tab to assure the next element will be the dismiss button
   await expect(await getActiveElementTagName(page)).toBe('P-MODAL');
   await page.keyboard.press('Tab');
@@ -187,7 +184,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside modal', async ({ page }) => {
-    const viewportSize = page.viewportSize();
+    const viewportSize = page.viewportSize()!;
     await page.mouse.move(viewportSize.width / 2, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -199,7 +196,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside modal and mouseup on backdrop (drag out)', async ({ page }) => {
-    const viewportSize = page.viewportSize();
+    const viewportSize = page.viewportSize()!;
     await page.mouse.move(viewportSize.width / 2, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -554,7 +551,7 @@ test.describe('scroll lock', () => {
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
-      document.querySelector('p-modal').remove();
+      document.querySelector('p-modal')!.remove();
     });
     await waitForStencilLifecycle(page);
 
@@ -628,7 +625,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await host.evaluate((el) => {
-      const header = el.querySelector('[slot="footer"]');
+      const header = el.querySelector('[slot="footer"]')!;
       header.innerHTML = `<p>Some new footer content</p>`;
     });
     await waitForStencilLifecycle(page);

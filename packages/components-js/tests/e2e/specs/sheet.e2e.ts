@@ -111,7 +111,7 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
-const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
+const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, _failMessage?: string) => {
   // In order to assure that its correct we press tab to assure the next element will be the dismiss button
   await expect(await getActiveElementTagName(page)).toBe('P-SHEET');
   await page.keyboard.press('Tab');
@@ -185,7 +185,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside sheet', async ({ page }) => {
-    const viewportSize = page.viewportSize();
+    const viewportSize = page.viewportSize()!;
     await page.mouse.move(viewportSize.width / 2, viewportSize.height - 1);
     await page.mouse.down();
 
@@ -197,7 +197,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside sheet and mouseup on backdrop (drag out)', async ({ page }) => {
-    const viewportSize = page.viewportSize();
+    const viewportSize = page.viewportSize()!;
     await page.mouse.move(viewportSize.width / 2, viewportSize.height - 1);
     await page.mouse.down();
 
@@ -560,7 +560,7 @@ test.describe('scroll lock', () => {
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
-      document.querySelector('p-sheet').remove();
+      document.querySelector('p-sheet')!.remove();
     });
     await waitForStencilLifecycle(page);
 

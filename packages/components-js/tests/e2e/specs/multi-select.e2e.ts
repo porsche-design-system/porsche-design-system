@@ -2213,7 +2213,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
-      expect(disabled).toEqual(!!item.disabled);
+      expect(disabled).toEqual(!!item!.disabled);
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
     await optgroup.evaluate((element) => ((element as HTMLPOptgroupElement).disabled = true));
@@ -2225,7 +2225,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const item = group.find((item) => item.value === value);
       // The option's own disabled state should be preserved
-      expect(await getProperty<boolean>(child, 'disabled')).toEqual(!!item.disabled);
+      expect(await getProperty<boolean>(child, 'disabled')).toEqual(!!item!.disabled);
       // The parent's disabled state should be propagated
       await expect.poll(async () => await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
@@ -2237,7 +2237,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
-      expect(disabled).toEqual(!!item.disabled);
+      expect(disabled).toEqual(!!item!.disabled);
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
   });

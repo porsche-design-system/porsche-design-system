@@ -44,7 +44,7 @@ const appendVideo = async (page: Page): Promise<void> => {
     video.muted = true;
     video.autoplay = true;
 
-    document.querySelector('p-button-tile').appendChild(video);
+    document.querySelector('p-button-tile')!.appendChild(video);
   });
 };
 

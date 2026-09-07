@@ -4,7 +4,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { setContentWithDesignSystem, sleep } from '../helpers';
 
 const getReadyAmount = (page: Page, selector?: string): Promise<number> =>
-  page.evaluate((selector: string) => {
+  page.evaluate((selector?: string) => {
     const el = selector ? document.querySelector(selector) : undefined;
     return (window as any).porscheDesignSystem.componentsReady(el);
   }, selector);

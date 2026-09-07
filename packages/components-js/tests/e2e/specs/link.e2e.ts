@@ -150,7 +150,7 @@ test('should provide functionality to focus & blur the custom element', async ({
   await link.focus();
   expect(await linkHasFocus()).toBe(true);
   await page.evaluate(() => {
-    const linkElement: HTMLElement = document.querySelector('p-link');
+    const linkElement: HTMLElement = document.querySelector('p-link')!;
     linkElement.blur();
   });
   expect(await linkHasFocus()).toBe(false);
@@ -186,7 +186,6 @@ test.describe('lifecycle', () => {
 
     await setProperty(host, 'icon', 'arrow-right');
     await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
 
     await expect
       .poll(

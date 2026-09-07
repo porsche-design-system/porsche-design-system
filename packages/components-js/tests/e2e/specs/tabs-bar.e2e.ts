@@ -1,11 +1,10 @@
-import { expect, Locator, type Page, test } from '@playwright/test';
-import type { BreakpointCustomizable } from '@porsche-design-system/components';
+import { expect, type Page, test } from '@playwright/test';
+import type { BreakpointCustomizable, TabsBarSize } from '@porsche-design-system/components';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,
   getAttribute,
   getConsoleErrorsAmount,
-  getElementPositions,
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
@@ -16,7 +15,6 @@ import {
   reattachElement,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -24,7 +22,7 @@ import {
 type InitOptions = {
   amount?: number;
   activeTabIndex?: number;
-  size?: BreakpointCustomizable<TabSize>;
+  size?: BreakpointCustomizable<TabsBarSize>;
   isWrapped?: boolean;
   beforeMarkup?: string;
   otherMarkup?: string;
@@ -72,12 +70,6 @@ const getAllButtons = (page: Page) => page.locator('button[role="tab"]').all();
 const getScrollArea = (page: Page) => page.locator('p-tabs-bar p-scroller .scroll');
 const getBar = (page: Page) => page.locator('p-tabs-bar .bar');
 const getBarWidth = async (page: Page): Promise<string> => getElementStyle(getBar(page), 'width');
-
-const clickElement = async (page: Page, el: Locator) => {
-  await el.click();
-  await waitForStencilLifecycle(page);
-  await waitForAnimation();
-};
 
 const waitForAnimation = () => sleep(CSS_ANIMATION_DURATION);
 
@@ -161,7 +153,7 @@ test.describe('slotted content changes', () => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 2 });
 
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
+      const tabsBar = document.querySelector('p-tabs-bar')!;
       tabsBar.removeChild(tabsBar.children[2]);
     });
     await waitForStencilLifecycle(page);
@@ -184,7 +176,7 @@ test.describe('slotted content changes', () => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 2 });
 
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
+      const tabsBar = document.querySelector('p-tabs-bar')!;
       tabsBar.removeChild(tabsBar.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -206,7 +198,7 @@ test.describe('slotted content changes', () => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 1 });
 
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
+      const tabsBar = document.querySelector('p-tabs-bar')!;
       tabsBar.removeChild(tabsBar.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -226,7 +218,7 @@ test.describe('slotted content changes', () => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 1 });
 
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
+      const tabsBar = document.querySelector('p-tabs-bar')!;
       const tab = document.createElement('button');
       tab.innerText = 'New Tab';
       tabsBar.append(tab);
@@ -249,7 +241,7 @@ test.describe('slotted content changes', () => {
 });
 
 const parseTranslateX = (transform: string): number => {
-  const match = transform.match(/translate3d\(([^,]+)/);
+  const match = transform.match(/translate3d\(([^,]+)/)!;
   return parseFloat(match[1]);
 };
 
@@ -258,9 +250,9 @@ const getKeyframeTranslateX = (keyframe: Keyframe): number => parseTranslateX(ke
 
 const getBarAnimationInfo = (page: Page, buttonIndices: number[]) =>
   page.evaluate((indices) => {
-    const host = document.querySelector('p-tabs-bar');
-    const bar = host.shadowRoot.querySelector('.bar');
-    const scroller = host.shadowRoot.querySelector('p-scroller') as HTMLElement;
+    const host = document.querySelector('p-tabs-bar')!;
+    const bar = host.shadowRoot!.querySelector('.bar')!;
+    const scroller = host.shadowRoot!.querySelector('p-scroller') as HTMLElement;
     const buttons = Array.from(host.querySelectorAll('button[role="tab"]'));
     const scrollerRect = scroller.getBoundingClientRect();
 
@@ -287,7 +279,7 @@ const getBarAnimationInfo = (page: Page, buttonIndices: number[]) =>
 
 const waitForBarAnimationFinished = (page: Page) =>
   page.evaluate(() => {
-    const bar = document.querySelector('p-tabs-bar').shadowRoot.querySelector('.bar');
+    const bar = document.querySelector('p-tabs-bar')!.shadowRoot!.querySelector('.bar')!;
     return Promise.all(bar.getAnimations().map((a) => a.finished));
   });
 
@@ -371,7 +363,7 @@ test.describe('bar animation', () => {
 
     // add a new button to the end
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
+      const tabsBar = document.querySelector('p-tabs-bar')!;
       const tab = document.createElement('button');
       tab.innerText = 'New Tab';
       tabsBar.append(tab);
@@ -400,9 +392,9 @@ test.describe('bar animation', () => {
 
 const isTabInView = (page: Page, tabIndex: number) =>
   page.evaluate((index) => {
-    const host = document.querySelector('p-tabs-bar');
-    const scroller = host.shadowRoot.querySelector('p-scroller') as HTMLElement;
-    const scrollArea = scroller.shadowRoot.querySelector('.scroll') as HTMLElement;
+    const host = document.querySelector('p-tabs-bar')!;
+    const scroller = host.shadowRoot!.querySelector('p-scroller') as HTMLElement;
+    const scrollArea = scroller.shadowRoot!.querySelector('.scroll') as HTMLElement;
     const tab = host.querySelectorAll('button[role="tab"]')[index] as HTMLElement;
 
     const scrollRect = scrollArea.getBoundingClientRect();
@@ -460,7 +452,7 @@ test.describe('tab visibility', () => {
 
     // add multiple tabs after the active one, causing a re-evaluation of the scroll position
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
+      const tabsBar = document.querySelector('p-tabs-bar')!;
       for (let i = 0; i < 5; i++) {
         const tab = document.createElement('button');
         tab.innerText = `New Tab ${i + 1}`;
@@ -652,8 +644,8 @@ test.describe('events', () => {
       });
 
       // count events in browser
-      window[COUNTER_KEY] = 0;
-      el.addEventListener('update', () => window[COUNTER_KEY]++);
+      (window as any)[COUNTER_KEY] = 0;
+      el.addEventListener('update', () => (window as any)[COUNTER_KEY]++);
 
       document.body.appendChild(el);
     }, COUNTER_KEY);
@@ -662,7 +654,7 @@ test.describe('events', () => {
 
     // retrieve counted events from browser
     const getCountedEvents = (): Promise<number> =>
-      page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+      page.evaluate((COUNTER_KEY: string) => (window as any)[COUNTER_KEY], COUNTER_KEY);
 
     expect(await getCountedEvents()).toBe(0);
 
