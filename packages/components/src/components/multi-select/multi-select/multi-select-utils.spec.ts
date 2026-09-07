@@ -47,7 +47,6 @@ describe('getSelectedOptions()', () => {
   });
 });
 
-
 describe('getSelectedOptionsString', () => {
   it('should return all selected options textContent joined to one string', () => {
     const options = generateMultiSelectOptions();
@@ -61,12 +60,11 @@ describe('getSelectedOptionsString', () => {
 
 describe('setSelectedOptions', () => {
   it('should update the selected state of options not fitting the value', () => {
-    const host = document.createElement('p-multi-select');
     const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const options = generateMultiSelectOptions({ amount: 5, selectedIndices: [0, 2, 3] });
     const value1 = ['Value 1', 'Value 2'];
 
-    selectOptionsByValue(host, options, value1);
+    selectOptionsByValue(options, value1);
     expect(options[0].selected).toBeFalsy();
     expect(options[1].selected).toBeTruthy();
     expect(options[2].selected).toBeTruthy();
@@ -75,7 +73,7 @@ describe('setSelectedOptions', () => {
 
     const value2 = ['Value 0', 'Value 4'];
 
-    selectOptionsByValue(host, options, value2);
+    selectOptionsByValue(options, value2);
     expect(options[0].selected).toBeTruthy();
     expect(options[1].selected).toBeFalsy();
     expect(options[2].selected).toBeFalsy();
@@ -84,24 +82,19 @@ describe('setSelectedOptions', () => {
 
     const value3 = ['Value 2', '3', 'test'];
 
-    selectOptionsByValue(host, options, value3);
+    selectOptionsByValue(options, value3);
     expect(options[0].selected).toBeFalsy();
     expect(options[1].selected).toBeFalsy();
     expect(options[2].selected).toBeTruthy();
     expect(options[3].selected).toBeFalsy();
     expect(options[4].selected).toBeFalsy();
 
-    expect(consoleWarnMock).toHaveBeenCalledWith(
-      '[Porsche Design System]',
-      'The provided value: 3, test is not included in the options of the p-multi-select:',
-      host
-    );
+    expect(consoleWarnMock).not.toHaveBeenCalled();
   });
 
-  it('should deselect all options when value is null', () => {
-    const host = document.createElement('p-multi-select');
+  it.each([null, undefined])('should deselect all options when value is %p', (value) => {
     const options = generateMultiSelectOptions({ amount: 3, selectedIndices: [0, 2] });
-    const result = selectOptionsByValue(host, options, null);
+    const result = selectOptionsByValue(options, value);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(false);
@@ -109,9 +102,8 @@ describe('setSelectedOptions', () => {
   });
 
   it('should deselect all options when value is empty array', () => {
-    const host = document.createElement('p-multi-select');
     const options = generateMultiSelectOptions({ amount: 3, selectedIndices: [0, 2] });
-    const result = selectOptionsByValue(host, options, []);
+    const result = selectOptionsByValue(options, []);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(false);
@@ -119,13 +111,12 @@ describe('setSelectedOptions', () => {
   });
 
   it('should match numeric values against numeric option.values (same type)', () => {
-    const host = document.createElement('p-multi-select');
     const options = [
       { value: 1, selected: false },
       { value: 2, selected: false },
       { value: 3, selected: false },
     ] as unknown as MultiSelectOption[];
-    const result = selectOptionsByValue(host, options, [1, 3]);
+    const result = selectOptionsByValue(options, [1, 3]);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(true);
@@ -133,97 +124,87 @@ describe('setSelectedOptions', () => {
   });
 
   it('should match numeric option.value=0 against value=[0] (no falsy regression)', () => {
-    const host = document.createElement('p-multi-select');
     const options = [{ value: 0, selected: false }] as unknown as MultiSelectOption[];
-    selectOptionsByValue(host, options, [0]);
+    selectOptionsByValue(options, [0]);
     expect(options[0].selected).toBe(true);
   });
 
   it('should NOT match numeric option.values against string host values (strict-typed)', () => {
-    const host = document.createElement('p-multi-select');
     const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const options = [
       { value: 1, selected: false },
       { value: 2, selected: false },
     ] as unknown as MultiSelectOption[];
-    selectOptionsByValue(host, options, ['1', '2']);
+    selectOptionsByValue(options, ['1', '2']);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(false);
-    expect(consoleWarnMock).toHaveBeenCalled();
+    expect(consoleWarnMock).not.toHaveBeenCalled();
   });
 
   it('should NOT match string option.values against numeric host values (strict-typed)', () => {
-    const host = document.createElement('p-multi-select');
     const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const options = [
       { value: '1', selected: false },
       { value: '2', selected: false },
     ] as unknown as MultiSelectOption[];
-    selectOptionsByValue(host, options, [1, 2]);
+    selectOptionsByValue(options, [1, 2]);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(false);
-    expect(consoleWarnMock).toHaveBeenCalled();
+    expect(consoleWarnMock).not.toHaveBeenCalled();
   });
 
-  it('should warn only for values that do not match any option', () => {
-    const host = document.createElement('p-multi-select');
+  it('should select matching options without warning about unmatched values', () => {
     const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const options = [
       { value: 'a', selected: false },
       { value: 'b', selected: false },
     ] as unknown as MultiSelectOption[];
-    selectOptionsByValue(host, options, ['a', 'missing']);
+    selectOptionsByValue(options, ['a', 'missing']);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
-    expect(consoleWarnMock).toHaveBeenCalledWith(
-      '[Porsche Design System]',
-      'The provided value: missing is not included in the options of the p-multi-select:',
-      host
-    );
+    expect(consoleWarnMock).not.toHaveBeenCalled();
   });
 
   it('should NOT warn when all values match (number[])', () => {
-    const host = document.createElement('p-multi-select');
     const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const options = [
       { value: 1, selected: false },
       { value: 2, selected: false },
     ] as unknown as MultiSelectOption[];
-    selectOptionsByValue(host, options, [1, 2]);
+    selectOptionsByValue(options, [1, 2]);
     expect(consoleWarnMock).not.toHaveBeenCalled();
   });
 
-  it('should NOT warn when value is null', () => {
-    const host = document.createElement('p-multi-select');
-    const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const options = generateMultiSelectOptions({ amount: 2 });
-    selectOptionsByValue(host, options, null);
-    expect(consoleWarnMock).not.toHaveBeenCalled();
-  });
+  it.each<string[] | number[] | null | undefined>([null, undefined, [], [''], ['missing'], [0]])(
+    'should deselect without warning when value=%p has no matches',
+    (value) => {
+      const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const options = generateMultiSelectOptions({ amount: 2, selectedIndices: [0] });
+      expect(selectOptionsByValue(options, value)).toEqual([]);
+      expect(options.every((option) => !option.selected)).toBe(true);
+      expect(consoleWarnMock).not.toHaveBeenCalled();
+    }
+  );
 
-  it('should suppress warning when preventWarning is true (e.g. when filterSlot is used)', () => {
-    const host = document.createElement('p-multi-select');
-    const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const options = [{ value: 'a', selected: false }] as unknown as MultiSelectOption[];
-    selectOptionsByValue(host, options, ['a', 'missing'], true);
-    expect(consoleWarnMock).not.toHaveBeenCalled();
+  it('should match an empty-string option', () => {
+    const options = [{ value: '', selected: false }] as MultiSelectOption[];
+    expect(selectOptionsByValue(options, [''])).toEqual(options);
+    expect(options[0].selected).toBe(true);
   });
 
   it('should return only currently selected options', () => {
-    const host = document.createElement('p-multi-select');
     const options = generateMultiSelectOptions({ amount: 4 });
-    const result = selectOptionsByValue(host, options, ['Value 1', 'Value 3']);
+    const result = selectOptionsByValue(options, ['Value 1', 'Value 3']);
     expect(result).toEqual([options[1], options[3]]);
   });
 
   it('should not call forceUpdate when option.selected already matches the desired state', () => {
-    const host = document.createElement('p-multi-select');
     const options = [
       { value: 'a', selected: true },
       { value: 'b', selected: false },
     ] as unknown as MultiSelectOption[];
     // Both options already in their target state; calling with current values should be a no-op
-    selectOptionsByValue(host, options, ['a']);
+    selectOptionsByValue(options, ['a']);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
   });

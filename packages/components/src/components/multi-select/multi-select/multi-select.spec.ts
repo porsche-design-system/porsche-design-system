@@ -1,5 +1,6 @@
 import { vi } from 'vitest';
 import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
+import * as loggerUtils from '../../../utils/log/logger';
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
 
@@ -41,7 +42,7 @@ describe('componentWillLoad', () => {
     formData.append(component.name, value);
 
     component.componentWillLoad();
-    expect(setSelectedOptionsSpy).toHaveBeenCalledWith(component.host, [], component.value);
+    expect(setSelectedOptionsSpy).toHaveBeenCalledWith([], component.value);
     expect(setFormValueSpy).toHaveBeenCalledWith(formData);
   });
 });
@@ -57,6 +58,44 @@ describe('componentDidLoad', () => {
     component.componentDidLoad();
     expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot:not([name])');
     expect(slotSpy).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('asynchronous options', () => {
+  it.each([false, true])('should reconcile options silently with an initial partial list=%p', (hasInitialOptions) => {
+    const component = initComponent();
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    const emit = vi.fn();
+    component.change = { emit };
+    const value = [42, 7];
+    component.value = value;
+    const firstOption = Object.assign(document.createElement('p-multi-select-option'), { value: 42, selected: false });
+    if (hasInitialOptions) {
+      component.host.append(firstOption);
+    }
+
+    component.componentWillLoad();
+    expect(component['selectedOptions']).toEqual(hasInitialOptions ? [firstOption] : []);
+    component.host.append(firstOption);
+    component['onSlotchange']();
+    component.onValueChange();
+    expect(firstOption.selected).toBe(true);
+    expect(component['selectedOptions']).toEqual([firstOption]);
+    expect(component.value).toBe(value);
+
+    const secondOption = Object.assign(document.createElement('p-multi-select-option'), { value: 7, selected: false });
+    component.host.append(secondOption);
+    component['onSlotchange']();
+    expect(secondOption.selected).toBe(true);
+    expect(component['selectedOptions']).toEqual([firstOption, secondOption]);
+
+    secondOption.remove();
+    component['onSlotchange']();
+    expect(component['selectedOptions']).toEqual([firstOption, secondOption]);
+    expect(component.value).toBe(value);
+    expect(value).toEqual([42, 7]);
+    expect(emit).not.toHaveBeenCalled();
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 });
 
@@ -195,7 +234,7 @@ describe('componentWillLoad value coercion', () => {
     formData.append(component.name, '7');
     expect(setFormValueSpy).toHaveBeenCalledWith(formData);
     // strict-typed matching: pass raw values, not stringified
-    expect(selectOptionsByValueSpy).toHaveBeenCalledWith(component.host, component['multiSelectOptions'], [42, 7]);
+    expect(selectOptionsByValueSpy).toHaveBeenCalledWith(component['multiSelectOptions'], [42, 7]);
     // public value retains its original (number[]) type
     expect(component.value).toStrictEqual([42, 7]);
   });
@@ -210,7 +249,7 @@ describe('componentWillLoad value coercion', () => {
 
     expect(setFormValueSpy).toHaveBeenCalledWith(null);
     // strict-typed matching: null is passed through; utils internally coalesces to []
-    expect(selectOptionsByValueSpy).toHaveBeenCalledWith(component.host, component['multiSelectOptions'], null);
+    expect(selectOptionsByValueSpy).toHaveBeenCalledWith(component['multiSelectOptions'], null);
   });
 
   it('should preserve the original (non-normalized) value as defaultValue', () => {
