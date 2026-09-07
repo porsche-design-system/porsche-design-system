@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { throwIfRootNodeIsNotOneOfKind } from './throwIfRootNodeIsNotOneOfKind';
 
 it('should throw error if root node tag does not match', () => {

@@ -1,5 +1,6 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { expect, it } from 'vitest';
 import {
   addParentAndSetRequiredProps,
   componentFactory,

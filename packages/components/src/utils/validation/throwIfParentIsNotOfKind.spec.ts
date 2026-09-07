@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { throwIfParentIsNotOfKind } from './throwIfParentIsNotOfKind';
 
 it('should throw error if parent tag does not match', () => {

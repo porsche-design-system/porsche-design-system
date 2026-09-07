@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as throwIfElementHasAttributeUtils from '../../../utils/validation/throwIfElementHasAttribute';
 import { TableHeadCell } from './table-head-cell';
 

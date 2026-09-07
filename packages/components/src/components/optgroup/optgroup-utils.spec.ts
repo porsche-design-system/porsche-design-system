@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import type { MultiSelectOption } from '../multi-select/multi-select/multi-select-utils';
 import type { SelectOption } from '../select/select/select-utils';
 import { updateOptionsDisabled } from './optgroup-utils';

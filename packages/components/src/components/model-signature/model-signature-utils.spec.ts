@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { getSvgUrl, MODEL_SIGNATURE_MODELS } from './model-signature-utils';
 import type { ModelSignatureModel } from './model-signature-utils';
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/model-signatures';

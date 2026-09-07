@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import type { TextListType } from './text-list-utils';
 import { isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
 

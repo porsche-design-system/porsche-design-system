@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as implicitSubmitUtils from '../../utils/form/implicitSubmit';
 import { InputWeek } from './input-week';
 
@@ -173,7 +173,7 @@ describe('componentWillLoad', () => {
     expect(component['initialLoading']).toBe(false);
   });
 
-  it("should not mutate value when null is passed, but should preserve null as defaultValue", () => {
+  it('should not mutate value when null is passed, but should preserve null as defaultValue', () => {
     const component = initComponent();
     component.value = null;
     component.componentWillLoad();

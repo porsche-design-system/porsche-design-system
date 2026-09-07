@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { getComponentCss } from './drilldown-item-styles';
 
 describe('getComponentCss()', () => {

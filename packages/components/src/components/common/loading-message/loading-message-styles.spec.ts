@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { getFunctionalComponentLoadingMessageStyles } from './loading-message-styles';
 import { getCss } from '../../../utils';
 

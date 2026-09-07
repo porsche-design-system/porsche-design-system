@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { mergeInputNativeAria } from './input-base-utils';
 
 describe('mergeInputNativeAria', () => {

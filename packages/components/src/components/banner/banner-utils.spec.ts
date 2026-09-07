@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { BANNER_STATES, type BannerState, getBannerAriaAttributes } from './banner-utils';
 
 describe('getBannerAriaAttributes()', () => {

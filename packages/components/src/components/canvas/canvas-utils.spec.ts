@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { CANVAS_BACKGROUNDS } from './canvas-utils';
 
 describe('CANVAS_BACKGROUNDS', () => {

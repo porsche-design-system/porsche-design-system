@@ -1,5 +1,5 @@
 import * as stencilCore from '@stencil/core';
-import { vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import * as loggerUtils from '../../../utils/log/logger';
 import {
   findNextEnabledIndex,

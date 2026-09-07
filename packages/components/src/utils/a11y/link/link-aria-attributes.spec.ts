@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { LINK_ARIA_ATTRIBUTES } from './link-aria-attribute';
 
 describe('LINK_ARIA_ATTRIBUTES', () => {

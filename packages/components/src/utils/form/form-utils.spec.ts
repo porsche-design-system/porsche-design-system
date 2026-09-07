@@ -1,4 +1,4 @@
-import { type Mock, vi } from 'vitest';
+import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import * as formUtils from './form-utils';
 import { hasCounter, setAriaElementInnerHtml, setCounterInnerHtml, updateCounter } from './form-utils';
 

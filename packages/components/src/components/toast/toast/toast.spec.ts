@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Toast } from './toast';
 import { toastManager } from './toast-manager';
 

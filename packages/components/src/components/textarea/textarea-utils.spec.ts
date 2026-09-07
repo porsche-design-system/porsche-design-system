@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { TEXTAREA_RESIZE, TEXTAREA_WRAPS } from './textarea-utils';
 
 describe('TEXTAREA_WRAPS', () => {

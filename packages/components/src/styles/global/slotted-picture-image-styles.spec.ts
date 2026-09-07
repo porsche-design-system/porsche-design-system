@@ -1,5 +1,5 @@
 import { componentFactory } from '../../test-utils';
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import * as getSlottedPictureImageStylesUtils from './slotted-picture-image-styles';
 import { getSlottedPictureImageStyles, tagNamesWithSlottedPictureImageArray } from './slotted-picture-image-styles';
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';

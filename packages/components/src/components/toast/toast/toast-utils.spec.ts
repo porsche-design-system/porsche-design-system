@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { TOAST_STATES } from './toast-utils';
 
 describe('TOAST_STATES', () => {

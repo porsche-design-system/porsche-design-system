@@ -1,6 +1,6 @@
 import type { Breakpoint } from '@porsche-design-system/emotion';
 import { breakpoints } from '@porsche-design-system/emotion';
-import { vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { mediaQueryLists, overrideMediaQueryLists } from './breakpoint-observer';
 import * as breakpointObserverUtils from './breakpoint-observer-utils';

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 import { Select } from './select';
 import * as selectUtils from './select-utils';

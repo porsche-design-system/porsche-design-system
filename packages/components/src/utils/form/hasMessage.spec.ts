@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { hasMessage } from './hasMessage';
 import type { FormState } from './form-state';
 

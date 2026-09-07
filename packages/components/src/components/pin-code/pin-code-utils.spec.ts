@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as consoleWarnUtils from '../../utils/log/logger';
 import * as getTagNameWithoutPrefixUtils from '../../utils/tag-name';
 import { PinCode } from './pin-code';

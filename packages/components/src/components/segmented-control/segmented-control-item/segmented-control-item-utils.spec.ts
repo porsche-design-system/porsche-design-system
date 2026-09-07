@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import type { IconColor } from '../../icon/icon-utils';
 import { getIconColor, getSegmentedControlItemAriaAttributes } from './segmented-control-item-utils';
 

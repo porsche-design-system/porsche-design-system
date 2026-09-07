@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { MODAL_ARIA_ATTRIBUTES, MODAL_BACKGROUNDS } from './modal-utils';
 
 describe('MODAL_ARIA_ATTRIBUTES', () => {

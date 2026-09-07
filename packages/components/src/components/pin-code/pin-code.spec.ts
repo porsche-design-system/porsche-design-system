@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { PinCode } from './pin-code';
 import * as pinCodeUtils from './pin-code-utils';
 

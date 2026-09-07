@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { getInlineSVGBackgroundImage } from './getInlineSVGBackgroundImage';
 
 it.each<Parameters<typeof getInlineSVGBackgroundImage>>([['some svg path'], ['<circle cx="12" cy="12" r="7"/>']])(

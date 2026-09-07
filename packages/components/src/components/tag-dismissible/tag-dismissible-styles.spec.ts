@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 import { getComponentCss } from './tag-dismissible-styles';
 

@@ -1,5 +1,5 @@
 import * as stencilCore from '@stencil/core';
-import { vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { type ToastManager, ToastManagerClass } from './toast-manager';
 
 let toastManager: ToastManager;

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { SPINNER_ARIA_ATTRIBUTES, SPINNER_COLORS, SPINNER_SIZES, SPINNER_SIZES_DEPRECATED } from './spinner-utils';
 
 describe('SPINNER_COLORS', () => {

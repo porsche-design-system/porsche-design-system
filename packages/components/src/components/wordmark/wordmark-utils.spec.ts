@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { WORDMARK_SIZES } from './wordmark-utils';
 
 describe('WORDMARK_SIZES', () => {

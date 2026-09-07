@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import * as isParentOfKindUtils from '../dom/isParentOfKind';
 import { isParentFieldsetRequired } from './isParentFieldsetRequired';
 import * as isRequiredUtils from './isRequired';

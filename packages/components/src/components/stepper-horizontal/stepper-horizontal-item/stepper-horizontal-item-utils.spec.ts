@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
 import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 import {

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as domUtils from '../../../utils/dom';
 import * as loggerUtils from '../../../utils/log/logger';
 import { warnIfCaptionIsMissing } from './table-utils';

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { TABS_ARIA_ATTRIBUTES, TABS_BACKGROUNDS, TABS_SIZES, TABS_WEIGHTS } from './tabs-utils';
 
 describe('TABS_ARIA_ATTRIBUTES', () => {

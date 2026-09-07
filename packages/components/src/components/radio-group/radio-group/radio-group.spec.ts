@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { RadioGroup } from './radio-group';
 import type { RadioGroupOption } from './radio-group-utils';
 import * as radioGroupUtils from './radio-group-utils';

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import * as helperUtils from './helper';
 import * as loggerUtils from './logger';
 import { warnIfDeprecatedPropValueIsUsed } from './warnIfDeprecatedPropValueIsUsed';

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as throwIfPropIsUndefinedUtils from '../../../utils/validation/throwIfPropIsUndefined';
 import { SegmentedControlItem } from './segmented-control-item';
 

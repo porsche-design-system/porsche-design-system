@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { isRequired } from './isRequired';
 
 it('should return true if required property is true on element', () => {

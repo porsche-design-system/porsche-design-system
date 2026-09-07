@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { Switch } from './switch';
 
 const initComponent = (): Switch => {

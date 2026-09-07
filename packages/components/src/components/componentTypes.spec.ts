@@ -5,6 +5,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case';
 import * as globby from 'fast-glob';
+import { describe, expect, it } from 'vitest';
 
 const componentsDir = path.resolve(__dirname);
 const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();

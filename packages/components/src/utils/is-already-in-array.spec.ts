@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { isAlreadyInArray } from './is-already-in-array';
 
 describe('isAlreadyInArray()', () => {

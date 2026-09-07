@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { throwIfPropIsUndefined } from './throwIfPropIsUndefined';
 
 const element = document.createElement('div');

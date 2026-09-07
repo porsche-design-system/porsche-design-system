@@ -1,5 +1,6 @@
 import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
+import { describe, expect, it } from 'vitest';
 import {
   addImportantToEachRule,
   addImportantToRule,

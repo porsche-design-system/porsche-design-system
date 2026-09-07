@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { getButtonBaseAriaAttributes } from './get-button-base-aria-attributes';
 
 describe('getButtonAttributes()', () => {

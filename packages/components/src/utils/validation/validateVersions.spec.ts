@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as loggerUtils from '../log/logger';
 import { VERSION_VALIDATION_TIMEOUT, validateVersions } from './validateVersions';
 

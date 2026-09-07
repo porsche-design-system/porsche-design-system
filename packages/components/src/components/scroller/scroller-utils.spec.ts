@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { isScrollable } from './scroller-utils';
 
 describe('isScrollable()', () => {

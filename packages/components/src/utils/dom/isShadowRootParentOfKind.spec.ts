@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { isShadowRootParentOfKind } from './isShadowRootParentOfKind';
 
 it('should return true if child is inside shadow dom and parent tag matches', () => {

@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { getSlotTextContent } from './getSlotTextContent';
 
 it('should return correct text content if element has slotted child with correct label', () => {

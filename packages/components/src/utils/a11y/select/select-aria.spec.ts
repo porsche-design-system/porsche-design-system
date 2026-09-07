@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { getComboboxAriaAttributes, getListboxAriaAttributes, getOptionAriaAttributes } from './select-aria';
 
 describe('getComboboxAriaAttributes()', () => {

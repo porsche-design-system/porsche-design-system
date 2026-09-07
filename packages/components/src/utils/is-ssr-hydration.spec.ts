@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { isSsrHydration } from './is-ssr-hydration';
 
 it('should return true if element has "data-ssr" attribute', () => {

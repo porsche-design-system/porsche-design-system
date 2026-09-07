@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import * as observerUtils from './observer';
 import {
   getIntersectionObserverStickyArea,

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import * as utils from '../../../utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { SegmentedControl } from './segmented-control';

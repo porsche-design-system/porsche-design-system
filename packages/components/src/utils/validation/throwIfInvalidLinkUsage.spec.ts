@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { throwIfInvalidLinkUsage } from './throwIfInvalidLinkUsage';
 
 const errorMessage = `[Error: [Porsche Design System] usage of div is not valid. Please provide a href property or a single and direct <a> child element.]`;

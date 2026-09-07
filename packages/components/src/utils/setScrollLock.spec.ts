@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import { setScrollLock } from './setScrollLock';
 
 it('should add correct body styles on Desktop Safari for parameter isOpen: true', () => {

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { createTopLayerController, type TopLayerOptions } from './createTopLayerController';
 
 const mockOverlaySupport = (supported: boolean): void => {

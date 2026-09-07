@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { hasPropValueChanged } from './has-prop-value-changed';
 
 describe('hasPropValueChanged()', () => {

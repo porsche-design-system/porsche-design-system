@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Table } from './table';
 import * as tableUtils from './table-utils';
 

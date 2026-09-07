@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { hasLabel } from './hasLabel';
 
 const label = 'Some description';

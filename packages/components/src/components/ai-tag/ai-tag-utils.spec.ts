@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import {
   AI_TAG_ICON_PATH,
   AI_TAG_LOCALES,

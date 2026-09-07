@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as getDirectChildHTMLElementUtils from '../../utils/dom/getDirectChildHTMLElement';
 import { Tag } from './tag';
 

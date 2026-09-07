@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { getComponentCss, getKeyframesMobile, type KeyframesDirection } from './toast-styles';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import * as getDirectChildHTMLElementUtils from './getDirectChildHTMLElement';
 import { hasSpecificDirectChildTag } from './hasSpecificDirectChildTag';
 

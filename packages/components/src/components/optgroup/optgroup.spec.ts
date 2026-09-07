@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as throwIfParentIsNotOfKindUtils from '../../utils/validation/throwIfParentIsNotOfKind';
 import { Optgroup } from './optgroup';
 import * as optgroupUtils from './optgroup-utils';

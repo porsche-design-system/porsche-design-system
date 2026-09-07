@@ -1,6 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
-import { vi } from 'vitest';
-import { onCancelDialog, onClickDialog, isDialogBackdropTarget, onTransitionEnd, showDialog } from './dialog';
+import { describe, expect, it, vi } from 'vitest';
+import { isDialogBackdropTarget, onCancelDialog, onClickDialog, onTransitionEnd, showDialog } from './dialog';
 
 const createMockDialog = (open: boolean): HTMLDialogElement => {
   const dialog = document.createElement('dialog');

@@ -1,3 +1,4 @@
+import { describe, it } from 'vitest';
 import { getComponentCss } from './table-cell-styles';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 

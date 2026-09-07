@@ -1,5 +1,6 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES } from '@porsche-design-system/shared';
+import { describe, expect, it } from 'vitest';
 
 /**
  * Reflecting 'form' and 'name' as an attribute ensures it is properly handled in the form submission process when using ElementInternals API.
