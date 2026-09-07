@@ -4,5 +4,5 @@
     "types": ["node", "vitest/globals", "@testing-library/jest-dom/vitest"]
   },
   "exclude": ["node_modules", "generated", "projects"],
-  "include": ["**/*.spec.ts"]
+  "include": ["**/*.spec.ts", "**/*.spec.tsx"]
 }
