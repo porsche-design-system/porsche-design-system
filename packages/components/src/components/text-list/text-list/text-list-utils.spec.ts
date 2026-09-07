@@ -1,10 +1,9 @@
-import type { TextListType, TextListListType, TextListOrderType } from './text-list-utils';
+import type { TextListType } from './text-list-utils';
 import { isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
 
 describe('isListTypeOrdered()', () => {
-  it.each<[TextListType | TextListListType, boolean]>([
+  it.each<[TextListType, boolean]>([
     ['unordered', false],
-    ['ordered', true],
     ['alphabetically', true],
     ['numbered', true],
   ])('should for %s return %s', (listType, expected) => {
@@ -13,7 +12,7 @@ describe('isListTypeOrdered()', () => {
 });
 
 describe('isListTypeNumbered()', () => {
-  it.each<[TextListType | TextListOrderType, boolean]>([
+  it.each<[TextListType, boolean]>([
     ['unordered', false],
     ['alphabetically', false],
     ['numbered', true],

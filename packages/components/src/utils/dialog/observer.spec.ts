@@ -9,9 +9,9 @@ import {
 
 describe('getIntersectionObserverStickyArea()', () => {
   const mockObserverInstance = {
-    observe: () => null,
-    unobserve: () => null,
-    disconnect: () => null,
+    observe: (): null => null,
+    unobserve: (): null => null,
+    disconnect: (): null => null,
   };
 
   beforeEach(() => {
@@ -34,9 +34,9 @@ describe('observeStickyArea()', () => {
   let scrollArea: HTMLElement;
   let stickyNode: HTMLElement;
   const mockObserverInstance = {
-    observe: () => null,
-    unobserve: () => null,
-    disconnect: () => null,
+    observe: (): null => null,
+    unobserve: (): null => null,
+    disconnect: (): null => null,
   } as unknown as IntersectionObserver;
 
   beforeEach(() => {

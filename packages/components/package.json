@@ -45,7 +45,7 @@
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
     "pretest:unit": "npm run prebuild:generateConstructorMap",
-    "test:unit": "vitest -c tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest -c tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www && rm -rf ./src/styles-entry.ts && rm -rf ./src/utils-entry.ts"
   },
   "dependencies": {

@@ -1,4 +1,5 @@
-import { vi } from 'vitest';
+import { type Mock, vi } from 'vitest';
+import type { ButtonType } from '../types';
 import * as handleButtonUtils from './button-handling';
 import { handleButtonEvent, improveButtonHandlingForCustomElement } from './button-handling';
 
@@ -28,17 +29,17 @@ describe('improveButtonHandlingForCustomElement()', () => {
 
 describe('handleButtonEvent()', () => {
   let element: HTMLButtonElement;
-  let getType: ReturnType<typeof vi.fn>;
-  let getName: ReturnType<typeof vi.fn>;
-  let getValue: ReturnType<typeof vi.fn>;
-  let getDisabled: ReturnType<typeof vi.fn>;
+  let getType: Mock<() => ButtonType>;
+  let getName: Mock<() => string>;
+  let getValue: Mock<() => string>;
+  let getDisabled: Mock<() => boolean>;
 
   beforeEach(() => {
     element = document.createElement('button');
-    getType = vi.fn().mockReturnValue('submit');
-    getName = vi.fn().mockReturnValue('name');
-    getValue = vi.fn().mockReturnValue('value');
-    getDisabled = vi.fn().mockReturnValue(false);
+    getType = vi.fn<() => ButtonType>().mockReturnValue('submit');
+    getName = vi.fn<() => string>().mockReturnValue('name');
+    getValue = vi.fn<() => string>().mockReturnValue('value');
+    getDisabled = vi.fn<() => boolean>().mockReturnValue(false);
   });
 
   it('should create a submit button and click it', async () => {
