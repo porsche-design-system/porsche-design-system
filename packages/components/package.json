@@ -42,6 +42,7 @@
     "build-prod": "PDS_IS_STAGING=0 npm run build",
     "pretypecheck": "npm run prebuild:generateConstructorMap",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
     "pretest:unit": "npm run prebuild:generateConstructorMap",
     "test:unit": "vitest -c tests/unit/config/vitest.config.ts",
