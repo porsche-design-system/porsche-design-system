@@ -15,7 +15,7 @@ test('overview should work without errors', async ({ page }) => {
 test('should stringify object props correctly', async ({ page }) => {
   await goto(page, 'overview-components');
 
-  const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
+  const innerHTML = await page.evaluate(() => document.querySelector('#app')!.innerHTML);
 
   expect(innerHTML).toContain('<p-heading');
   expect(innerHTML).toContain('<my-prefix-p-heading');
