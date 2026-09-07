@@ -2,7 +2,7 @@ import type { Locator } from '@playwright/test';
 
 type SerializedTarget = {
   nodeName: string;
-  nodeValue: string;
+  nodeValue: string | null;
   nodeType: number;
   tagName: string;
   className: string;
@@ -14,9 +14,10 @@ export const addEventListener = (locator: Locator, eventName: string): Promise<v
     const counterKey = `${evtName}Counter`;
     const detailsKey = `${evtName}Details`;
     const targetsKey = `${evtName}Targets`;
+    const store = el as unknown as Record<string, any>;
 
-    el.addEventListener(evtName, (e: CustomEvent & { target: HTMLElement }) => {
-      const { detail, target } = e;
+    el.addEventListener(evtName, (e: Event) => {
+      const { detail, target } = e as CustomEvent & { target: HTMLElement };
       const serializedTarget: SerializedTarget = {
         nodeName: target.nodeName,
         nodeValue: target.nodeValue,
@@ -25,9 +26,9 @@ export const addEventListener = (locator: Locator, eventName: string): Promise<v
         className: target.className,
         id: target.id,
       };
-      el[counterKey] = (el[counterKey] || 0) + 1;
-      el[detailsKey] = [...(el[detailsKey] || []), detail];
-      el[targetsKey] = [...(el[targetsKey] || []), serializedTarget];
+      store[counterKey] = (store[counterKey] || 0) + 1;
+      store[detailsKey] = [...(store[detailsKey] || []), detail];
+      store[targetsKey] = [...(store[targetsKey] || []), serializedTarget];
     });
   }, eventName);
 };
