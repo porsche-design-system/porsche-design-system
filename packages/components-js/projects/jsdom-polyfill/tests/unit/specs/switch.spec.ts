@@ -7,7 +7,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-switch');
   expect(await componentsReady()).toBe(1);
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -17,16 +17,16 @@ it('should have working events', async () => {
     getMarkup('p-switch') + `<div id="debug">Checked: <span>false</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
-  const el = document.body.firstElementChild;
-  el.addEventListener('update', (e: CustomEvent) => {
-    (el as any).checked = e.detail.checked;
-    debugEl.querySelector('span').innerHTML = e.detail.checked;
-    debugEl.querySelector('span:last-child').innerHTML = `${
-      parseInt(debugEl.querySelector('span:last-child').innerHTML) + 1
+  const el = document.body.firstElementChild!;
+  el.addEventListener('update', (e) => {
+    (el as any).checked = (e as CustomEvent).detail.checked;
+    debugEl.querySelector('span')!.innerHTML = (e as CustomEvent).detail.checked;
+    debugEl.querySelector('span:last-child')!.innerHTML = `${
+      parseInt(debugEl.querySelector('span:last-child')!.innerHTML) + 1
     }`;
   });
 
-  const debugEl = document.querySelector('#debug');
+  const debugEl = document.querySelector('#debug')!;
   expect(debugEl.innerHTML).toBe('Checked: <span>false</span>; Event Counter: <span>0</span>;');
 
   const button = getByRoleShadowed('switch');
@@ -44,6 +44,6 @@ it('should expose its switch to shadow queries', async () => {
   expect(screen.queryAllByRole('switch')).toHaveLength(0);
   expect(screen.getAllByShadowRole('switch')).toHaveLength(1);
 
-  const { shadowRoot } = document.querySelector('p-switch');
-  expect(screen.getByShadowRole('switch')).toBe(shadowRoot.querySelector('button#x'));
+  const { shadowRoot } = document.querySelector('p-switch')!;
+  expect(screen.getByShadowRole('switch')).toBe(shadowRoot!.querySelector('button#x'));
 });

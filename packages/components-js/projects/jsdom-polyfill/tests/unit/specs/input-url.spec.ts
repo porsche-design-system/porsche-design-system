@@ -6,7 +6,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-input-url');
   expect(await componentsReady()).toBe(1);
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -18,6 +18,6 @@ it('should expose its label to shadow queries', async () => {
   expect(screen.queryAllByLabelText('Some label')).toHaveLength(0);
   expect(screen.getAllByShadowLabelText('Some label')).toHaveLength(1);
 
-  const { shadowRoot } = document.querySelector('p-input-url');
-  expect(screen.getByShadowLabelText('Some label')).toBe(shadowRoot.querySelector('input'));
+  const { shadowRoot } = document.querySelector('p-input-url')!;
+  expect(screen.getByShadowLabelText('Some label')).toBe(shadowRoot!.querySelector('input'));
 });

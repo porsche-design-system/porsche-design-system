@@ -21,13 +21,13 @@ it('should have working events', async () => {
     `<div id="debug">Current Value: <span>1</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
-  const el = document.querySelector('p-segmented-control');
+  const el = document.querySelector('p-segmented-control')!;
   el.addEventListener('change', (e: CustomEvent) => {
-    debugEl.querySelector('span').innerHTML = e.detail.value;
-    debugEl.querySelector('span:last-child').innerHTML = '1';
+    debugEl.querySelector('span')!.innerHTML = e.detail.value;
+    debugEl.querySelector('span:last-child')!.innerHTML = '1';
   });
 
-  const debugEl = document.querySelector('#debug');
+  const debugEl = document.querySelector('#debug')!;
   expect(debugEl.innerHTML).toBe('Current Value: <span>1</span>; Event Counter: <span>0</span>;');
 
   const button = getByRoleShadowed('button', { name: /Item 2/i });
@@ -42,6 +42,6 @@ it('should expose its item buttons to shadow queries', async () => {
   expect(screen.queryAllByRole('button')).toHaveLength(0);
   // each button sits in the shadow root of its own light DOM item, so compare the whole list
   expect(screen.getAllByShadowRole('button')).toEqual(
-    [...document.querySelectorAll('p-segmented-control-item')].map((item) => item.shadowRoot.querySelector('button'))
+    [...document.querySelectorAll('p-segmented-control-item')].map((item) => item.shadowRoot!.querySelector('button'))
   );
 });

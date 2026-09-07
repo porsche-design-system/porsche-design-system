@@ -9,7 +9,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-popover');
   expect(await componentsReady()).toBe(1);
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -18,14 +18,14 @@ it('should be opened on click and closed on second click', async () => {
   document.body.innerHTML = getMarkup('p-popover');
   await componentsReady();
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   const button = getByRoleShadowed('button');
 
   await userEvent.click(button);
-  await waitFor(() => expect(el.shadowRoot.querySelector('[popover]')).not.toBeNull());
+  await waitFor(() => expect(el.shadowRoot!.querySelector('[popover]')).not.toBeNull());
 
   await userEvent.click(button);
-  await waitFor(() => expect(el.shadowRoot.querySelector('[popover]')).not.toBeNull());
+  await waitFor(() => expect(el.shadowRoot!.querySelector('[popover]')).not.toBeNull());
 });
 
 it('should emit dismiss event in controlled mode on Escape', async () => {
@@ -37,18 +37,18 @@ it('should emit dismiss event in controlled mode on Escape', async () => {
   </p-popover>`;
   await componentsReady();
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   const dismiss = vi.fn();
   el.addEventListener('dismiss', dismiss);
 
   // panel is open initially because `open` is set
-  await waitFor(() => expect(el.shadowRoot.querySelector('[popover]').hasAttribute('inert')).toBe(false));
+  await waitFor(() => expect(el.shadowRoot!.querySelector('[popover]')!.hasAttribute('inert')).toBe(false));
 
   await userEvent.keyboard('{Escape}');
 
   expect(dismiss).toHaveBeenCalledTimes(1);
   // panel stays open because the consumer owns `open` and hasn't updated it yet
-  expect(el.shadowRoot.querySelector('[popover]').hasAttribute('inert')).toBe(false);
+  expect(el.shadowRoot!.querySelector('[popover]')!.hasAttribute('inert')).toBe(false);
 });
 
 it('should emit dismiss event in controlled mode on outside click', async () => {
@@ -58,17 +58,17 @@ it('should emit dismiss event in controlled mode on outside click', async () => 
   </p-popover>`;
   await componentsReady();
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   const dismiss = vi.fn();
   el.addEventListener('dismiss', dismiss);
 
-  await waitFor(() => expect(el.shadowRoot.querySelector('[popover]').hasAttribute('inert')).toBe(false));
+  await waitFor(() => expect(el.shadowRoot!.querySelector('[popover]')!.hasAttribute('inert')).toBe(false));
 
   await userEvent.click(document.body);
 
   expect(dismiss).toHaveBeenCalledTimes(1);
   // panel stays open because the consumer owns `open` and hasn't updated it yet
-  expect(el.shadowRoot.querySelector('[popover]').hasAttribute('inert')).toBe(false);
+  expect(el.shadowRoot!.querySelector('[popover]')!.hasAttribute('inert')).toBe(false);
 });
 
 it('should expose its toggle button to shadow queries', async () => {
@@ -78,7 +78,7 @@ it('should expose its toggle button to shadow queries', async () => {
   expect(screen.queryAllByRole('button')).toHaveLength(0);
   expect(screen.getAllByShadowRole('button')).toHaveLength(1);
 
-  const { shadowRoot } = document.querySelector('p-popover');
-  expect(screen.getByShadowRole('button')).toBe(shadowRoot.querySelector('button[aria-label="More information"]'));
+  const { shadowRoot } = document.querySelector('p-popover')!;
+  expect(screen.getByShadowRole('button')).toBe(shadowRoot!.querySelector('button[aria-label="More information"]'));
 });
 

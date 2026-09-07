@@ -18,7 +18,7 @@ describe('window.PDS_SKIP_FETCH = true', () => {
   });
 
   it('should not fetch font-face css', () => {
-    const link = document.querySelector('head').querySelector('link[rel="stylesheet"]');
+    const link = document.querySelector('head')!.querySelector('link[rel="stylesheet"]');
 
     expect(link).toBeNull();
   });
@@ -27,7 +27,7 @@ describe('window.PDS_SKIP_FETCH = true', () => {
     document.body.innerHTML = '<p-crest></p-crest>';
     expect(await componentsReady()).toBe(1);
 
-    const picture = document.querySelector('p-crest').shadowRoot.querySelector('picture');
+    const picture = document.querySelector('p-crest')!.shadowRoot!.querySelector('picture');
 
     expect(picture).toBeNull();
   });
@@ -38,7 +38,7 @@ describe('window.PDS_SKIP_FETCH = true', () => {
     document.body.innerHTML = '<p-icon></p-icon>';
     expect(await componentsReady()).toBe(1);
 
-    const img = document.querySelector('p-icon').shadowRoot.querySelector('img');
+    const img = document.querySelector('p-icon')!.shadowRoot!.querySelector('img')!;
 
     expect(spy).not.toHaveBeenCalled();
     expect(img.src).toBe('');
@@ -52,7 +52,7 @@ describe('window.PDS_SKIP_FETCH = false', () => {
 
   // TODO: can't get this since this is skipped in the jsdom-polyfill entry
   it.skip('should fetch font-face css', () => {
-    const link = document.querySelector('head').querySelector('link[rel="stylesheet"]');
+    const link = document.querySelector('head')!.querySelector('link[rel="stylesheet"]');
     console.log(link);
 
     expect(link).not.toBeNull();
@@ -62,7 +62,7 @@ describe('window.PDS_SKIP_FETCH = false', () => {
     document.body.innerHTML = '<p-crest></p-crest>';
     expect(await componentsReady()).toBe(1);
 
-    const picture = document.querySelector('p-crest').shadowRoot.querySelector('picture');
+    const picture = document.querySelector('p-crest')!.shadowRoot!.querySelector('picture');
 
     expect(picture).not.toBeNull();
   });
@@ -71,7 +71,7 @@ describe('window.PDS_SKIP_FETCH = false', () => {
     document.body.innerHTML = '<p-icon></p-icon>';
     expect(await componentsReady()).toBe(1);
 
-    const img = document.querySelector('p-icon').shadowRoot.querySelector('img');
+    const img = document.querySelector('p-icon')!.shadowRoot!.querySelector('img')!;
 
     expect(img.src).toContain(`/icons/${ICONS_MANIFEST['arrow-right']}`);
   });

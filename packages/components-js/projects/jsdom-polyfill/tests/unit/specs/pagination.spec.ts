@@ -7,7 +7,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-pagination');
   expect(await componentsReady()).toBe(1);
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -17,18 +17,18 @@ it('should have working events', async () => {
     getMarkup('p-pagination') + `<div id="debug">Current Page: <span>1</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
-  const el = document.body.firstElementChild;
-  el.addEventListener('update', (e: CustomEvent) => {
-    debugEl.querySelector('span').innerHTML = e.detail.page;
-    debugEl.querySelector('span:last-child').innerHTML = `${
-      parseInt(debugEl.querySelector('span:last-child').innerHTML) + 1
+  const el = document.body.firstElementChild!;
+  el.addEventListener('update', (e) => {
+    debugEl.querySelector('span')!.innerHTML = (e as CustomEvent).detail.page;
+    debugEl.querySelector('span:last-child')!.innerHTML = `${
+      parseInt(debugEl.querySelector('span:last-child')!.innerHTML) + 1
     }`;
   });
 
-  const debugEl = document.querySelector('#debug');
+  const debugEl = document.querySelector('#debug')!;
   expect(debugEl.innerHTML).toBe('Current Page: <span>1</span>; Event Counter: <span>0</span>;');
 
-  const [, btn2, btn3] = Array.from(el.shadowRoot.querySelectorAll('span:not(.ellipsis)')).slice(1, -1); // without prev and next
+  const [, btn2, btn3] = Array.from(el.shadowRoot!.querySelectorAll('span:not(.ellipsis)')).slice(1, -1); // without prev and next
 
   await userEvent.click(btn2);
   expect(debugEl.innerHTML).toBe('Current Page: <span>2</span>; Event Counter: <span>1</span>;');
@@ -44,6 +44,6 @@ it('should expose its page buttons to shadow queries', async () => {
   expect(screen.queryAllByRole('button')).toHaveLength(0);
   expect(screen.getAllByShadowRole('button')).toHaveLength(8);
 
-  const { shadowRoot } = document.querySelector('p-pagination');
-  expect(screen.getByShadowRole('button', { name: 'Page 2' })).toBe(shadowRoot.querySelector('[aria-label="Page 2"]'));
+  const { shadowRoot } = document.querySelector('p-pagination')!;
+  expect(screen.getByShadowRole('button', { name: 'Page 2' })).toBe(shadowRoot!.querySelector('[aria-label="Page 2"]'));
 });

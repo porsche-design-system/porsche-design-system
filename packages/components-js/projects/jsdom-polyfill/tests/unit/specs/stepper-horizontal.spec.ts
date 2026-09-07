@@ -7,7 +7,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-stepper-horizontal');
   expect(await componentsReady()).toBe(4);
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -18,22 +18,22 @@ it('should have working events', async () => {
     `<div id="debug">Current Value: <span>2</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
-  const el = document.body.firstElementChild;
-  el.addEventListener('update', (e: CustomEvent) => {
-    debugEl.querySelector('span').innerHTML = e.detail.activeStepIndex;
-    debugEl.querySelector('span:last-child').innerHTML = `${
-      parseInt(debugEl.querySelector('span:last-child').innerHTML) + 1
+  const el = document.body.firstElementChild!;
+  el.addEventListener('update', (e) => {
+    debugEl.querySelector('span')!.innerHTML = (e as CustomEvent).detail.activeStepIndex;
+    debugEl.querySelector('span:last-child')!.innerHTML = `${
+      parseInt(debugEl.querySelector('span:last-child')!.innerHTML) + 1
     }`;
   });
 
-  const debugEl = document.querySelector('#debug');
+  const debugEl = document.querySelector('#debug')!;
   expect(debugEl.innerHTML).toBe('Current Value: <span>2</span>; Event Counter: <span>0</span>;');
 
-  const step1 = document.querySelector('p-stepper-horizontal-item');
+  const step1 = document.querySelector('p-stepper-horizontal-item')!;
   await userEvent.click(step1);
   expect(debugEl.innerHTML).toBe('Current Value: <span>0</span>; Event Counter: <span>1</span>;');
 
-  const step2 = document.querySelector('p-stepper-horizontal-item:nth-child(2)');
+  const step2 = document.querySelector('p-stepper-horizontal-item:nth-child(2)')!;
   await userEvent.click(step2);
   expect(debugEl.innerHTML).toBe('Current Value: <span>1</span>; Event Counter: <span>2</span>;');
 });
@@ -45,6 +45,6 @@ it('should expose its step buttons to shadow queries', async () => {
   expect(screen.queryAllByRole('button')).toHaveLength(0);
   // each button sits in the shadow root of its own light DOM item, so compare the whole list
   expect(screen.getAllByShadowRole('button')).toEqual(
-    [...document.querySelectorAll('p-stepper-horizontal-item')].map((item) => item.shadowRoot.querySelector('button'))
+    [...document.querySelectorAll('p-stepper-horizontal-item')].map((item) => item.shadowRoot!.querySelector('button'))
   );
 });

@@ -7,7 +7,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-carousel');
   expect(await componentsReady()).toBe(1);
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -16,12 +16,12 @@ it('should have working events', async () => {
   document.body.innerHTML = getMarkup('p-carousel') + `<div id="debug">Event Counter: <span>0</span></div>`;
   await componentsReady();
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   el.addEventListener('update', () => {
-    debugEl.querySelector('span').innerHTML = '1';
+    debugEl.querySelector('span')!.innerHTML = '1';
   });
 
-  const debugEl = document.querySelector('#debug');
+  const debugEl = document.querySelector('#debug')!;
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
   // p-carousel renders two navigation buttons and both compute an empty accessible
@@ -38,5 +38,5 @@ it('should expose its heading to shadow queries before hydration completes', asy
   expect(screen.queryAllByText('Some heading')).toHaveLength(0);
 
   const heading = await screen.findByShadowText('Some heading');
-  expect(heading).toBe(document.querySelector('p-carousel').shadowRoot.querySelector('h2'));
+  expect(heading).toBe(document.querySelector('p-carousel')!.shadowRoot!.querySelector('h2'));
 });

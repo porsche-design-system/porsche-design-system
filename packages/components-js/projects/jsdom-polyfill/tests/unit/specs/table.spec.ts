@@ -23,6 +23,6 @@ it('should expose its table to shadow queries', async () => {
   expect(screen.queryAllByRole('table')).toHaveLength(0);
   expect(screen.getAllByShadowRole('table')).toHaveLength(1);
 
-  const { shadowRoot } = document.querySelector('p-table');
-  expect(screen.getByShadowRole('table', { name: 'Some caption' })).toBe(shadowRoot.querySelector('div.table'));
+  const { shadowRoot } = document.querySelector('p-table')!;
+  expect(screen.getByShadowRole('table', { name: 'Some caption' })).toBe(shadowRoot!.querySelector('div.table'));
 });

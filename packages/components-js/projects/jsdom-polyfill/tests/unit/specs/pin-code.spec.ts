@@ -8,7 +8,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-pin-code');
   expect(await componentsReady()).toBe(1);
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -17,12 +17,12 @@ it('should have working events', async () => {
   document.body.innerHTML = getMarkup('p-pin-code') + `<div id="debug">Event Counter: <span>0</span></div>`;
   await componentsReady();
 
-  const el = document.body.firstElementChild;
+  const el = document.body.firstElementChild!;
   el.addEventListener('change', () => {
-    debugEl.querySelector('span').innerHTML = '1';
+    debugEl.querySelector('span')!.innerHTML = '1';
   });
 
-  const debugEl = document.querySelector('#debug');
+  const debugEl = document.querySelector('#debug')!;
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
   const input = getByLabelTextShadowed('1-4');
@@ -38,6 +38,6 @@ it('should expose its pin inputs to shadow queries', async () => {
   expect(screen.queryAllByRole('textbox')).toHaveLength(0);
   expect(screen.getAllByShadowRole('textbox')).toHaveLength(4);
 
-  const { shadowRoot } = document.querySelector('p-pin-code');
-  expect(screen.getByShadowRole('textbox', { name: '1-4' })).toBe(shadowRoot.querySelector('input#current-input'));
+  const { shadowRoot } = document.querySelector('p-pin-code')!;
+  expect(screen.getByShadowRole('textbox', { name: '1-4' })).toBe(shadowRoot!.querySelector('input#current-input'));
 });
