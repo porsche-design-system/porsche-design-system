@@ -67,10 +67,11 @@ added, it must expose both files.
 
 ## Root scripts
 
-Root holds one `typecheck:{package}` entry per top-level package, plus `typecheck`, `typecheck:all`,
-`typecheck:all:tests` and `typecheck:scripts` for the repo's own `scripts/` folder. A project below a top-level
-package has no root entry. Its parent's `typecheck` fans out to it when both are in the same pass, and
-`typecheck:all` calls it with `--workspace` otherwise.
+Root holds one `typecheck:{package}` entry per top-level package, and one `typecheck:{package}:tests` entry for
+every top-level package that owns test code, plus `typecheck`, `typecheck:all`, `typecheck:all:tests` and
+`typecheck:scripts` for the repo's own `scripts/` folder. A project below a top-level package has no root entry.
+Its parent's `typecheck` fans out to it when both are in the same pass, and `typecheck:all` calls it with
+`--workspace` otherwise. Its test scopes are called by the parent's `typecheck:{package}:tests` entry.
 
 ## Adding a package
 
@@ -86,7 +87,8 @@ package has no root entry. Its parent's `typecheck` fans out to it when both are
    the package's `typecheck`. Never add them to a `tsconfig` that a bundler reads.
 6. Give unit specs a `tsconfig.test.json` and a `typecheck:tests` script, and each `tests/{e2e,vrt,a11y,smoke}`
    folder a `tsconfig.{scope}.json` and a `typecheck:tests:{scope}` script. Make the script the first command of
-   the test script that runs those files, and append it to root `typecheck:all:tests` by workspace.
+   the test script that runs those files, and add it to the `typecheck:{package}:tests` entry of the top-level
+   package that owns it. A new top-level package also needs that entry, chained into `typecheck:all:tests`.
 
 ## Traps
 
@@ -116,8 +118,9 @@ unit specs has a `tsconfig.test.json` and a `typecheck:tests` script; a `tests/{
 folder has a `tsconfig.{e2e,vrt,a11y,smoke}.json` and a matching `typecheck:tests:{scope}` script. Each
 script runs `tsc --noEmit` (`vue-tsc` in the Vue package) and is the first command of the test script
 that executes those files, so a type error fails the test job before the runner starts. Specs import
-built packages and test utilities, so these scopes belong to pass two. Root `typecheck:all:tests` chains every
-one of them by workspace; `typecheck` and `typecheck:all` cover source only.
+built packages and test utilities, so these scopes belong to pass two. Root `typecheck:all:tests` chains one
+`typecheck:{package}:tests` entry per top-level package, and each entry calls its own scopes by workspace.
+`typecheck` and `typecheck:all` cover source only.
 
 A test scope extends the config its workspace already compiles with and adds the `types` the runner
 provides. Nothing a bundler reads extends a test scope.
