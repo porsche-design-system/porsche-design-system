@@ -11,8 +11,18 @@ test('should focus correct element', async ({ page }) => {
   await goto(page, 'modal-focus-cycle');
 
   const host = page.locator('p-modal');
-  const getActiveElementTagName = () => page.evaluate(() => document.activeElement!.tagName);
-  const getActiveElementId = () => page.evaluate(() => document.activeElement!.id);
+  const getActiveElementTagName = () =>
+    page.evaluate(() => {
+      const activeElement = document.activeElement;
+      if (!activeElement) throw new Error('no active element');
+      return activeElement.tagName;
+    });
+  const getActiveElementId = () =>
+    page.evaluate(() => {
+      const activeElement = document.activeElement;
+      if (!activeElement) throw new Error('no active element');
+      return activeElement.id;
+    });
 
   const waitForFocus = async (el: Locator) => {
     await host.evaluateHandle((el) => el.shadowRoot?.activeElement);
@@ -39,7 +49,11 @@ test('should focus correct element', async ({ page }) => {
   await page.waitForSelector('p-table');
 
   await page.keyboard.press('Tab');
-  const activeElementTagName = await page.evaluate(() => document.activeElement!.tagName);
+  const activeElementTagName = await page.evaluate(() => {
+    const activeElement = document.activeElement;
+    if (!activeElement) throw new Error('no active element');
+    return activeElement.tagName;
+  });
   expect(await getActiveElementTagName(), 'after loading 1st tab').toBe(activeElementTagName); // should be P-TABLE when table is scrollable, but sometimes this is P-TABLE-HEAD-CELL 🤷‍
 
   const btnReload = page.locator('#btn-reload');

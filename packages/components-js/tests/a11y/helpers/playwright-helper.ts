@@ -1,6 +1,7 @@
 import type { ConsoleMessage, Locator, Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import { waitForComponentsReady } from './stencil';
 
 // TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
@@ -167,7 +168,9 @@ export const setProperty = async <T>(
 export const getActiveElementTagNameInShadowRoot = async (element: Locator): Promise<string> => {
   return element.evaluate((el) => {
     try {
-      return el.shadowRoot!.activeElement!.tagName;
+      const activeElement = el.shadowRoot?.activeElement;
+      if (!activeElement) throw new Error('no active element');
+      return activeElement.tagName;
     } catch (e) {
       throw new Error(
         `Could not get "tagName" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot?.activeElement}) `
@@ -179,7 +182,9 @@ export const getActiveElementTagNameInShadowRoot = async (element: Locator): Pro
 export const getActiveElementId = (page: Page): Promise<string> => {
   return page.evaluate(() => {
     try {
-      return document.activeElement!.id;
+      const activeElement = document.activeElement;
+      if (!activeElement) throw new Error('no active element');
+      return activeElement.id;
     } catch (e) {
       throw new Error(`Could not get "id" from document.activeElement (${document.activeElement}) `);
     }
@@ -287,7 +292,11 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     slotsMeta &&
     Object.entries(slotsMeta)
       .filter(([, value]) => value.isRequired)
-      .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames![0] }));
+      .map(([key, value]) => {
+        const { allowedTagNames } = value;
+        assertDefined(allowedTagNames);
+        return { slotName: key, tagName: allowedTagNames[0] };
+      });
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
     requiredChild,
