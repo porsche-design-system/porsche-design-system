@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { screen } from '@porsche-design-system/components-js/testing';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
@@ -21,6 +22,7 @@ it('should expose its list to shadow queries', async () => {
   expect(screen.queryAllByRole('list')).toHaveLength(0);
   expect(screen.getAllByShadowRole('list')).toHaveLength(1);
 
-  const { shadowRoot } = document.querySelector('p-text-list')!;
-  expect(screen.getByShadowRole('list')).toBe(shadowRoot!.querySelector('ul'));
+  const shadowRoot = document.querySelector('p-text-list')?.shadowRoot;
+  assertDefined(shadowRoot);
+  expect(screen.getByShadowRole('list')).toBe(shadowRoot.querySelector('ul'));
 });

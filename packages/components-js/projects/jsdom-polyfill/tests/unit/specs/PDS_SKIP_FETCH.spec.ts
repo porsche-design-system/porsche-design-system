@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import { vi } from 'vitest';
 
 let prevValue: boolean;
@@ -18,7 +19,9 @@ describe('window.PDS_SKIP_FETCH = true', () => {
   });
 
   it('should not fetch font-face css', () => {
-    const link = document.querySelector('head')!.querySelector('link[rel="stylesheet"]');
+    const head = document.querySelector('head');
+    assertDefined(head);
+    const link = head.querySelector('link[rel="stylesheet"]');
 
     expect(link).toBeNull();
   });
@@ -27,7 +30,9 @@ describe('window.PDS_SKIP_FETCH = true', () => {
     document.body.innerHTML = '<p-crest></p-crest>';
     expect(await componentsReady()).toBe(1);
 
-    const picture = document.querySelector('p-crest')!.shadowRoot!.querySelector('picture');
+    const shadowRoot = document.querySelector('p-crest')?.shadowRoot;
+    assertDefined(shadowRoot);
+    const picture = shadowRoot.querySelector('picture');
 
     expect(picture).toBeNull();
   });
@@ -38,7 +43,10 @@ describe('window.PDS_SKIP_FETCH = true', () => {
     document.body.innerHTML = '<p-icon></p-icon>';
     expect(await componentsReady()).toBe(1);
 
-    const img = document.querySelector('p-icon')!.shadowRoot!.querySelector('img')!;
+    const shadowRoot = document.querySelector('p-icon')?.shadowRoot;
+    assertDefined(shadowRoot);
+    const img = shadowRoot.querySelector('img');
+    assertDefined(img);
 
     expect(spy).not.toHaveBeenCalled();
     expect(img.src).toBe('');
@@ -52,7 +60,9 @@ describe('window.PDS_SKIP_FETCH = false', () => {
 
   // TODO: can't get this since this is skipped in the jsdom-polyfill entry
   it.skip('should fetch font-face css', () => {
-    const link = document.querySelector('head')!.querySelector('link[rel="stylesheet"]');
+    const head = document.querySelector('head');
+    assertDefined(head);
+    const link = head.querySelector('link[rel="stylesheet"]');
     console.log(link);
 
     expect(link).not.toBeNull();
@@ -62,7 +72,9 @@ describe('window.PDS_SKIP_FETCH = false', () => {
     document.body.innerHTML = '<p-crest></p-crest>';
     expect(await componentsReady()).toBe(1);
 
-    const picture = document.querySelector('p-crest')!.shadowRoot!.querySelector('picture');
+    const shadowRoot = document.querySelector('p-crest')?.shadowRoot;
+    assertDefined(shadowRoot);
+    const picture = shadowRoot.querySelector('picture');
 
     expect(picture).not.toBeNull();
   });
@@ -71,7 +83,10 @@ describe('window.PDS_SKIP_FETCH = false', () => {
     document.body.innerHTML = '<p-icon></p-icon>';
     expect(await componentsReady()).toBe(1);
 
-    const img = document.querySelector('p-icon')!.shadowRoot!.querySelector('img')!;
+    const shadowRoot = document.querySelector('p-icon')?.shadowRoot;
+    assertDefined(shadowRoot);
+    const img = shadowRoot.querySelector('img');
+    assertDefined(img);
 
     expect(img.src).toContain(`/icons/${ICONS_MANIFEST['arrow-right']}`);
   });

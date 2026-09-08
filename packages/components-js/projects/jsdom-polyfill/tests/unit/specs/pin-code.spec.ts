@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { screen } from '@porsche-design-system/components-js/testing';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import { getMarkup } from '../helper';
 import userEvent from '@testing-library/user-event';
 import { getByLabelTextShadowed } from '../../../src/testing';
@@ -8,7 +9,8 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-pin-code');
   expect(await componentsReady()).toBe(1);
 
-  const el = document.body.firstElementChild!;
+  const el = document.body.firstElementChild;
+  assertDefined(el);
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -17,12 +19,17 @@ it('should have working events', async () => {
   document.body.innerHTML = getMarkup('p-pin-code') + `<div id="debug">Event Counter: <span>0</span></div>`;
   await componentsReady();
 
-  const el = document.body.firstElementChild!;
+  const el = document.body.firstElementChild;
+  assertDefined(el);
+  const debugEl = document.querySelector('#debug');
+  assertDefined(debugEl);
+
   el.addEventListener('change', () => {
-    debugEl.querySelector('span')!.innerHTML = '1';
+    const span = debugEl.querySelector('span');
+    assertDefined(span);
+    span.innerHTML = '1';
   });
 
-  const debugEl = document.querySelector('#debug')!;
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
   const input = getByLabelTextShadowed('1-4');
@@ -38,6 +45,7 @@ it('should expose its pin inputs to shadow queries', async () => {
   expect(screen.queryAllByRole('textbox')).toHaveLength(0);
   expect(screen.getAllByShadowRole('textbox')).toHaveLength(4);
 
-  const { shadowRoot } = document.querySelector('p-pin-code')!;
-  expect(screen.getByShadowRole('textbox', { name: '1-4' })).toBe(shadowRoot!.querySelector('input#current-input'));
+  const shadowRoot = document.querySelector('p-pin-code')?.shadowRoot;
+  assertDefined(shadowRoot);
+  expect(screen.getByShadowRole('textbox', { name: '1-4' })).toBe(shadowRoot.querySelector('input#current-input'));
 });

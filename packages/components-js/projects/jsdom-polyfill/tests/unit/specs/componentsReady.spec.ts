@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import userEvent from '@testing-library/user-event';
 
 const getMarkup = (): string => {
@@ -16,7 +17,8 @@ it('should return 1 after component is rendered initially', async () => {
   expect(document.body.innerHTML).toEqual('<p-button>Button 1</p-button>');
 
   expect(await componentsReady()).toBe(1);
-  const el = document.body.firstElementChild!;
+  const el = document.body.firstElementChild;
+  assertDefined(el);
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
