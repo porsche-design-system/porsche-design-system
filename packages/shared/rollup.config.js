@@ -83,6 +83,18 @@ export default [
                   default: './testing/normalize-css-namespace/cjs/index.cjs',
                 },
               },
+              // deep import so that the Vitest specs can assert a value is defined without dragging the
+              // Playwright configs and W3C validator of the barrel along
+              './testing/assert-defined': {
+                import: {
+                  types: './testing/assertDefined.d.ts',
+                  default: './testing/assert-defined/esm/index.mjs',
+                },
+                require: {
+                  types: './testing/assertDefined.d.ts',
+                  default: './testing/assert-defined/cjs/index.cjs',
+                },
+              },
               './css/styles.css': './css/styles.css',
               './css/styles': './css/styles.css',
               './examples': './examples/index.ts', // Examples is not bundled to avoid problems with next.js "use client" in mdx
@@ -174,6 +186,23 @@ export default [
       },
       {
         file: 'dist/testing/normalize-css-namespace/cjs/index.cjs',
+        format: 'cjs',
+        exports: 'named',
+      },
+    ],
+    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/testing' })],
+  },
+  {
+    // standalone bundle for the `./testing/assert-defined` deep import, see the exports map above
+    input: 'src/testing/assertDefined.ts',
+    external,
+    output: [
+      {
+        file: 'dist/testing/assert-defined/esm/index.mjs',
+        format: 'esm',
+      },
+      {
+        file: 'dist/testing/assert-defined/cjs/index.cjs',
         format: 'cjs',
         exports: 'named',
       },
