@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   getConsoleWarnings,
   getOldLoaderScriptForPrefixes,
@@ -39,9 +40,9 @@ test('should show warning about multiple different versions correctly', async ({
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
-  expect(versionWarning).toBeDefined();
+  assertDefined(versionWarning);
 
-  const warningArgs = await Promise.all(versionWarning!.args().map(async (arg) => await arg.evaluate((arg) => arg)));
+  const warningArgs = await Promise.all(versionWarning.args().map(async (arg) => await arg.evaluate((arg) => arg)));
 
   expect(warningArgs).toEqual([
     `[Porsche Design System v${version}]`,

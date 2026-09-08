@@ -56,7 +56,8 @@ const clickElement = async (page: Page, el: Locator) => {
 
 const addNewButton = async (page: Page) => {
   await page.evaluate(() => {
-    const scroller = document.querySelector('p-scroller')!;
+    const scroller = document.querySelector('p-scroller');
+    if (!scroller) throw new Error('p-scroller not found');
     const element = document.createElement('button');
     element.innerText = 'Added Element Text';
     scroller.append(element);

@@ -112,7 +112,8 @@ test.describe('value', () => {
 
     // Add input event listener that always sets value to '2025-W26'
     await page.evaluate(() => {
-      const hostElement = document.querySelector('p-input-week')!;
+      const hostElement = document.querySelector('p-input-week');
+      if (!hostElement) throw new Error('p-input-week not found');
       hostElement.addEventListener('input', () => {
         hostElement.value = '2025-W26';
       });

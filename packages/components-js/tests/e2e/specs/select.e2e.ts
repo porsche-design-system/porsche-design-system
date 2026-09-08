@@ -1,6 +1,7 @@
 import { expect, Locator, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -2466,7 +2467,9 @@ test.describe('slots', () => {
 
     const host: Locator = getHost(page);
     await host.evaluate((el) => {
-      (el as HTMLPSelectElement).lastElementChild!.remove();
+      const lastElementChild = (el as HTMLPSelectElement).lastElementChild;
+      if (!lastElementChild) throw new Error('no last element child');
+      lastElementChild.remove();
     });
 
     await waitForStencilLifecycle(page);
@@ -2630,7 +2633,8 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
-      expect(disabled).toEqual(!!item!.disabled);
+      assertDefined(item);
+      expect(disabled).toEqual(!!item.disabled);
 
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
@@ -2642,8 +2646,9 @@ test.describe('optgroups', () => {
     for (const child of children) {
       const value = await getProperty<string>(child, 'value');
       const item = group.find((item) => item.value === value);
+      assertDefined(item);
       // The option's own disabled state should be preserved
-      expect(await getProperty<boolean>(child, 'disabled')).toEqual(!!item!.disabled);
+      expect(await getProperty<boolean>(child, 'disabled')).toEqual(!!item.disabled);
       // The parent's disabled state should be propagated
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
@@ -2655,7 +2660,8 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
-      expect(disabled).toEqual(!!item!.disabled);
+      assertDefined(item);
+      expect(disabled).toEqual(!!item.disabled);
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
   });

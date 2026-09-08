@@ -1,5 +1,6 @@
 import { expect, Locator, type Page, test } from '@playwright/test';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -184,7 +185,8 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside modal', async ({ page }) => {
-    const viewportSize = page.viewportSize()!;
+    const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width / 2, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -196,7 +198,8 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside modal and mouseup on backdrop (drag out)', async ({ page }) => {
-    const viewportSize = page.viewportSize()!;
+    const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width / 2, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -551,7 +554,9 @@ test.describe('scroll lock', () => {
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
-      document.querySelector('p-modal')!.remove();
+      const modal = document.querySelector('p-modal');
+      if (!modal) throw new Error('p-modal not found');
+      modal.remove();
     });
     await waitForStencilLifecycle(page);
 
@@ -625,7 +630,8 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await host.evaluate((el) => {
-      const header = el.querySelector('[slot="footer"]')!;
+      const header = el.querySelector('[slot="footer"]');
+      if (!header) throw new Error('[slot="footer"] not found');
       header.innerHTML = `<p>Some new footer content</p>`;
     });
     await waitForStencilLifecycle(page);

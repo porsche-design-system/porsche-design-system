@@ -152,7 +152,8 @@ test('should provide functionality to focus & blur the custom element', async ({
   await link.focus();
   expect(await linkHasFocus()).toBe(true);
   await page.evaluate(() => {
-    const linkElement: HTMLElement = document.querySelector('p-link-pure')!;
+    const linkElement = document.querySelector('p-link-pure');
+    if (!linkElement) throw new Error('p-link-pure not found');
     linkElement.blur();
   });
   expect(await linkHasFocus()).toBe(false);

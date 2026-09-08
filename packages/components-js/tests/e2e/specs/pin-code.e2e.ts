@@ -22,7 +22,11 @@ const getCurrentInput = (page: Page) => page.locator('p-pin-code #current-input'
 const getInput = (page: Page, n: number) => page.locator(`p-pin-code .wrapper input:nth-child(${n})`);
 const getForm = (page: Page) => page.locator('form');
 const getActiveElementsAriaLabelInShadowRoot = (_page: Page, element: Locator): Promise<string | null> => {
-  return element.evaluate((el) => el.shadowRoot!.activeElement!.ariaLabel);
+  return element.evaluate((el) => {
+    const activeElement = el.shadowRoot?.activeElement;
+    if (!activeElement) throw new Error('no active element');
+    return activeElement.ariaLabel;
+  });
 };
 
 type InitOptions = {
@@ -89,7 +93,11 @@ test.describe('render', () => {
     test(`should render correct amount of inputs with length=${length}`, async ({ page }) => {
       await initPinCode(page, { props: { length } });
       const host = getHost(page);
-      const amountOfInputs = await host.evaluate((el) => Array.from(el.shadowRoot!.querySelectorAll('input')).length);
+      const amountOfInputs = await host.evaluate((el) => {
+        const shadowRoot = el.shadowRoot;
+        if (!shadowRoot) throw new Error('shadow root not found');
+        return Array.from(shadowRoot.querySelectorAll('input')).length;
+      });
       expect(amountOfInputs).toBe(length);
     });
   }

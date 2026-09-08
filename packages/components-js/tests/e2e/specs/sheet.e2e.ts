@@ -1,5 +1,6 @@
 import { type Locator, type Page, expect, test } from '@playwright/test';
 import type { SelectedAriaAttributes, SheetAriaAttribute } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   type Options,
   addEventListener,
@@ -185,7 +186,8 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside sheet', async ({ page }) => {
-    const viewportSize = page.viewportSize()!;
+    const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width / 2, viewportSize.height - 1);
     await page.mouse.down();
 
@@ -197,7 +199,8 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside sheet and mouseup on backdrop (drag out)', async ({ page }) => {
-    const viewportSize = page.viewportSize()!;
+    const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width / 2, viewportSize.height - 1);
     await page.mouse.down();
 
@@ -560,7 +563,9 @@ test.describe('scroll lock', () => {
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
-      document.querySelector('p-sheet')!.remove();
+      const sheet = document.querySelector('p-sheet');
+      if (!sheet) throw new Error('p-sheet not found');
+      sheet.remove();
     });
     await waitForStencilLifecycle(page);
 

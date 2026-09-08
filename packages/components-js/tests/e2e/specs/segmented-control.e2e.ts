@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -24,7 +25,13 @@ const getOuterFieldset = (page: Page) => page.locator('fieldset').first();
 const getAllItemButtons = async (page: Page) =>
   Promise.all(
     (await getAllItemHosts(page)).map(async (x) =>
-      (await x.evaluateHandle((x) => x.shadowRoot!.querySelector('button'))).asElement()
+      (
+        await x.evaluateHandle((x) => {
+          const shadowRoot = x.shadowRoot;
+          if (!shadowRoot) throw new Error('shadow root not found');
+          return shadowRoot.querySelector('button');
+        })
+      ).asElement()
     )
   );
 const getSegmentedControlItems = (page: Page) => page.locator('p-segmented-control-item');
@@ -503,6 +510,8 @@ test.describe('form', () => {
     await initSegmentedControl(page, { amount: 2, props: { disabled: true } });
     const host = getHost(page);
     const [button1, button2] = await getAllItemButtons(page);
+    assertDefined(button1);
+    assertDefined(button2);
     await addEventListener(host, 'change');
     await expect(host).toHaveJSProperty('disabled', true);
 
@@ -510,10 +519,10 @@ test.describe('form', () => {
     await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('disabled', false);
-    await button1!.click();
+    await button1.click();
     expect((await getEventSummary(host, 'change')).counter).toBe(1);
 
-    await button2!.click();
+    await button2.click();
     expect((await getEventSummary(host, 'change')).counter).toBe(2);
   });
 });

@@ -29,15 +29,17 @@ const buildMarkup = (tagName: TagName, propName: string, value: string | undefin
 };
 
 const getComponentCss = (page: Page, id: string): Promise<string> =>
-  page.locator(`#${id}`).evaluate((el) =>
-    Array.from(el.shadowRoot!.adoptedStyleSheets)
+  page.locator(`#${id}`).evaluate((el) => {
+    const shadowRoot = el.shadowRoot;
+    if (!shadowRoot) throw new Error('shadow root not found');
+    return Array.from(shadowRoot.adoptedStyleSheets)
       .map((sheet) =>
         Array.from(sheet.cssRules)
           .map((rule) => rule.cssText)
           .join('')
       )
-      .join('')
-  );
+      .join('');
+  });
 
 const getLabelWrapperWidth = async (page: Page, id: string): Promise<number> => {
   const boundingBox = await page.locator(`#${id} .label-wrapper`).boundingBox();

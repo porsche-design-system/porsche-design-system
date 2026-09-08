@@ -1,5 +1,6 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { CheckboxState } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementTagName,
@@ -29,7 +30,8 @@ const setChecked = async (locator: Locator, value: boolean) => {
 };
 
 async function performBoundaryClicks(host: Locator, page: Page) {
-  const coords = (await host.boundingBox())!;
+  const coords = await host.boundingBox();
+  assertDefined(coords);
 
   await page.mouse.click(coords.x + 1, coords.y + 1); // Top left corner
   await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // Bottom left corner

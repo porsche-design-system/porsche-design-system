@@ -1,5 +1,6 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -127,7 +128,9 @@ const addHeaderSlot = async (host: Locator) => {
 
 const removeHeaderSlot = async (host: Locator) => {
   await host.evaluate((el: HTMLElement) => {
-    el.querySelector('[slot="header"]')!.remove();
+    const header = el.querySelector('[slot="header"]');
+    if (!header) throw new Error('[slot="header"] not found');
+    header.remove();
   });
 };
 
@@ -256,7 +259,8 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside flyout', async ({ page }) => {
-    const viewportSize = page.viewportSize()!;
+    const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width - 1, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -268,7 +272,8 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside flyout and mouseup on backdrop (drag out)', async ({ page }) => {
-    const viewportSize = page.viewportSize()!;
+    const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width - 1, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -593,7 +598,9 @@ test.describe('scroll lock', () => {
     await expect(body).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
-      document.querySelector('p-flyout')!.remove();
+      const flyout = document.querySelector('p-flyout');
+      if (!flyout) throw new Error('p-flyout not found');
+      flyout.remove();
     });
     await waitForStencilLifecycle(page);
 
@@ -694,7 +701,8 @@ test.describe('lifecycle', () => {
       .toBe(0);
 
     await host.evaluate((el) => {
-      const header = el.querySelector('[slot="header"]')!;
+      const header = el.querySelector('[slot="header"]');
+      if (!header) throw new Error('[slot="header"] not found');
       header.innerHTML = `<h2>Some new header content</h2>`;
     });
     await waitForStencilLifecycle(page);

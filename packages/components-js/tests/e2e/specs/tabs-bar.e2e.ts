@@ -1,5 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import type { BreakpointCustomizable, TabsBarSize } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,
@@ -153,7 +154,8 @@ test.describe('slotted content changes', () => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 2 });
 
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar')!;
+      const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       tabsBar.removeChild(tabsBar.children[2]);
     });
     await waitForStencilLifecycle(page);
@@ -176,7 +178,8 @@ test.describe('slotted content changes', () => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 2 });
 
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar')!;
+      const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       tabsBar.removeChild(tabsBar.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -198,7 +201,8 @@ test.describe('slotted content changes', () => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 1 });
 
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar')!;
+      const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       tabsBar.removeChild(tabsBar.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -218,7 +222,8 @@ test.describe('slotted content changes', () => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 1 });
 
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar')!;
+      const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       const tab = document.createElement('button');
       tab.innerText = 'New Tab';
       tabsBar.append(tab);
@@ -241,7 +246,8 @@ test.describe('slotted content changes', () => {
 });
 
 const parseTranslateX = (transform: string): number => {
-  const match = transform.match(/translate3d\(([^,]+)/)!;
+  const match = transform.match(/translate3d\(([^,]+)/);
+  assertDefined(match);
   return parseFloat(match[1]);
 };
 
@@ -250,9 +256,13 @@ const getKeyframeTranslateX = (keyframe: Keyframe): number => parseTranslateX(ke
 
 const getBarAnimationInfo = (page: Page, buttonIndices: number[]) =>
   page.evaluate((indices) => {
-    const host = document.querySelector('p-tabs-bar')!;
-    const bar = host.shadowRoot!.querySelector('.bar')!;
-    const scroller = host.shadowRoot!.querySelector('p-scroller') as HTMLElement;
+    const host = document.querySelector('p-tabs-bar');
+    if (!host) throw new Error('p-tabs-bar not found');
+    const bar = host.shadowRoot?.querySelector('.bar');
+    if (!bar) throw new Error('.bar not found');
+    const shadowRoot = host.shadowRoot;
+    if (!shadowRoot) throw new Error('shadow root not found');
+    const scroller = shadowRoot.querySelector('p-scroller') as HTMLElement;
     const buttons = Array.from(host.querySelectorAll('button[role="tab"]'));
     const scrollerRect = scroller.getBoundingClientRect();
 
@@ -279,7 +289,8 @@ const getBarAnimationInfo = (page: Page, buttonIndices: number[]) =>
 
 const waitForBarAnimationFinished = (page: Page) =>
   page.evaluate(() => {
-    const bar = document.querySelector('p-tabs-bar')!.shadowRoot!.querySelector('.bar')!;
+    const bar = document.querySelector('p-tabs-bar')?.shadowRoot?.querySelector('.bar');
+    if (!bar) throw new Error('.bar not found');
     return Promise.all(bar.getAnimations().map((a) => a.finished));
   });
 
@@ -363,7 +374,8 @@ test.describe('bar animation', () => {
 
     // add a new button to the end
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar')!;
+      const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       const tab = document.createElement('button');
       tab.innerText = 'New Tab';
       tabsBar.append(tab);
@@ -392,9 +404,14 @@ test.describe('bar animation', () => {
 
 const isTabInView = (page: Page, tabIndex: number) =>
   page.evaluate((index) => {
-    const host = document.querySelector('p-tabs-bar')!;
-    const scroller = host.shadowRoot!.querySelector('p-scroller') as HTMLElement;
-    const scrollArea = scroller.shadowRoot!.querySelector('.scroll') as HTMLElement;
+    const host = document.querySelector('p-tabs-bar');
+    if (!host) throw new Error('p-tabs-bar not found');
+    const shadowRoot = host.shadowRoot;
+    if (!shadowRoot) throw new Error('shadow root not found');
+    const scroller = shadowRoot.querySelector('p-scroller') as HTMLElement;
+    const scrollerShadowRoot = scroller.shadowRoot;
+    if (!scrollerShadowRoot) throw new Error('shadow root not found');
+    const scrollArea = scrollerShadowRoot.querySelector('.scroll') as HTMLElement;
     const tab = host.querySelectorAll('button[role="tab"]')[index] as HTMLElement;
 
     const scrollRect = scrollArea.getBoundingClientRect();
@@ -452,7 +469,8 @@ test.describe('tab visibility', () => {
 
     // add multiple tabs after the active one, causing a re-evaluation of the scroll position
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar')!;
+      const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       for (let i = 0; i < 5; i++) {
         const tab = document.createElement('button');
         tab.innerText = `New Tab ${i + 1}`;

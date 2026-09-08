@@ -44,7 +44,9 @@ const appendVideo = async (page: Page): Promise<void> => {
     video.muted = true;
     video.autoplay = true;
 
-    document.querySelector('p-link-tile')!.appendChild(video);
+    const linkTile = document.querySelector('p-link-tile');
+    if (!linkTile) throw new Error('p-link-tile not found');
+    linkTile.appendChild(video);
   });
 };
 

@@ -106,7 +106,8 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs')!;
+      const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       const tab = document.createElement('p-tabs-item');
       (tab as any).label = 'Tabs Item Added';
       tab.innerText = 'Added Tabs Item Content';
@@ -131,7 +132,8 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs')!;
+      const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       tabs.removeChild(tabs.children[2]);
     });
     await waitForStencilLifecycle(page);
@@ -147,7 +149,8 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs')!;
+      const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       tabs.removeChild(tabs.children[2]);
     });
     await waitForStencilLifecycle(page);
@@ -165,7 +168,8 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs')!;
+      const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       tabs.removeChild(tabs.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -181,7 +185,8 @@ test.describe('slotted content changes', () => {
     await waitForStencilLifecycle(page);
 
     await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs')!;
+      const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       tabs.removeChild(tabs.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -197,12 +202,17 @@ test.describe('text selection', () => {
   test('should be possible to select/highlight text within tabs item', async ({ page }) => {
     await initTabs(page);
     const tabContentRect = await page.evaluate(() => {
-      const tabContent1 = document.querySelector('[label="Tab 1"]')!;
+      const tabContent1 = document.querySelector('[label="Tab 1"]');
+      if (!tabContent1) throw new Error('[label="Tab 1"] not found');
       const { x, y } = tabContent1.getBoundingClientRect();
       return { x, y };
     });
     await page.mouse.click(tabContentRect.x, tabContentRect.y, { clickCount: 2 });
-    const selection = await page.evaluate(() => window.getSelection()!.toString());
+    const selection = await page.evaluate(() => {
+      const selection = window.getSelection();
+      if (!selection) throw new Error('no selection');
+      return selection.toString();
+    });
     expect(selection).toBe('Content');
   });
 });

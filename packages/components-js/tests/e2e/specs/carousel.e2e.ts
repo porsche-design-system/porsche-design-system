@@ -3,6 +3,7 @@ import type {
   CarouselAriaAttribute,
   SelectedAriaAttributes,
 } from '@porsche-design-system/components/dist/types/bundle';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementId,
@@ -304,14 +305,18 @@ test('should update slide width and pagination when slidesPerPage is changed at 
   const pagination = getPagination(page);
 
   expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
-  const { width: widthBefore } = (await getSlides(page).first().boundingBox())!;
+  const boundingBoxBefore = await getSlides(page).first().boundingBox();
+  assertDefined(boundingBoxBefore);
+  const { width: widthBefore } = boundingBoxBefore;
 
   await setProperty(host, 'slidesPerPage', 3);
   await waitForStencilLifecycle(page);
 
   // 6 slides at 3 per page = 6 - 3 + 1 = 4 pages
   expect(await pagination.evaluate((el) => el.children.length)).toBe(4);
-  const { width: widthAfter } = (await getSlides(page).first().boundingBox())!;
+  const boundingBoxAfter = await getSlides(page).first().boundingBox();
+  assertDefined(boundingBoxAfter);
+  const { width: widthAfter } = boundingBoxAfter;
   expect(widthAfter).toBeLessThan(widthBefore / 2);
 });
 

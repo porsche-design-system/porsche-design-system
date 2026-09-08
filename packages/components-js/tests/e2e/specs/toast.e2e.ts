@@ -49,7 +49,9 @@ const addMessage = async (page: Page, message?: Partial<ToastMessage>): Promise<
   };
 
   await page.evaluate(async (msg: ToastMessage) => {
-    document.querySelector('p-toast')!.addMessage(msg);
+    const toast = document.querySelector('p-toast');
+    if (!toast) throw new Error('p-toast not found');
+    toast.addMessage(msg);
   }, msg);
 
   await waitForStencilLifecycle(page);

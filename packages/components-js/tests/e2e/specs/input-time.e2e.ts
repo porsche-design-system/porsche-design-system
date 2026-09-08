@@ -112,7 +112,8 @@ test.describe('value', () => {
 
     // Add input event listener that always sets value to '13:30'
     await page.evaluate(() => {
-      const hostElement = document.querySelector('p-input-time')!;
+      const hostElement = document.querySelector('p-input-time');
+      if (!hostElement) throw new Error('p-input-time not found');
       hostElement.addEventListener('input', () => {
         hostElement.value = '13:30';
       });

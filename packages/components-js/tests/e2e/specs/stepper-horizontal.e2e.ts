@@ -196,7 +196,9 @@ test.describe('scrolling', () => {
     const host = getHost(page);
 
     await host.evaluate((host) => {
-      host.removeChild(host.firstChild!);
+      const firstChild = host.firstChild;
+      if (!firstChild) throw new Error('no first child');
+      host.removeChild(firstChild);
     });
     await waitForStencilLifecycle(page);
     await sleep(CSS_ANIMATION_DURATION);
