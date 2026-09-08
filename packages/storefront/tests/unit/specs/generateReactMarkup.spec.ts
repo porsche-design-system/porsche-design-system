@@ -4,6 +4,7 @@ import {
   generateReactMarkup,
   generateReactProperties,
 } from '../../../src/utils/generator/generateReactMarkup';
+import type { ElementConfig } from '../../../src/utils/generator/generator';
 import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateReactMarkup()', () => {
@@ -19,9 +20,48 @@ describe('generateReactMarkup()', () => {
     const output = generateReactMarkup(carouselTestConfig, {});
     expect(output).toMatchSnapshot();
   });
+
+  it('deduplicates event type imports across top-level and nested components', () => {
+    const accordion: ElementConfig<'p-accordion'> = {
+      tag: 'p-accordion',
+      events: {
+        onUpdate: { target: 'p-accordion', prop: 'open', eventValueKey: 'open' },
+      },
+    };
+    const { imports } = generateReactMarkup([accordion, { tag: 'div', children: [accordion] }], {});
+
+    expect(imports.match(/type AccordionUpdateEvent/g)).toHaveLength(1);
+  });
 });
 
 describe('generateReactControlledScript()', () => {
+  it('requires an explicit payload type for non-PDS detail-based handlers', () => {
+    expect(() =>
+      generateReactControlledScript('div', [['onUpdate', { target: 'div', prop: 'open', eventValueKey: 'open' }]], {})
+    ).toThrow('Missing eventType for div.onUpdate with eventValueKey "open"');
+  });
+
+  it('preserves explicit payload types for non-PDS detail-based handlers', () => {
+    const { eventHandler, types } = generateReactControlledScript(
+      'div',
+      [
+        [
+          'onUpdate',
+          {
+            target: 'div',
+            prop: 'open',
+            eventValueKey: 'open',
+            eventType: 'AccordionUpdateEventDetail',
+          },
+        ],
+      ],
+      {}
+    );
+
+    expect(types).toEqual(['AccordionUpdateEventDetail']);
+    expect(eventHandler).toContain('(e: CustomEvent<AccordionUpdateEventDetail>)');
+  });
+
   it('should return correct selector & eventHandler for direct value', () => {
     const { states, eventHandler } = generateReactControlledScript(
       'p-flyout',

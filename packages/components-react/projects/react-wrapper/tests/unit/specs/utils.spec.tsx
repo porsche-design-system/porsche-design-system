@@ -1,6 +1,6 @@
 import { cleanup, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { createRef, type JSX, type MutableRefObject, useRef } from 'react';
+import { createRef, type JSX, type RefObject, useRef } from 'react';
 import { afterEach, beforeEach, describe, expect, it, test, vi } from 'vitest';
 import * as hooks from '../../../src/hooks';
 import { PButton } from '../../../src/public-api';
@@ -95,7 +95,7 @@ describe('syncRefs()', () => {
 
   it('should preserve the element type and clear object refs on detach', () => {
     const element = document.createElement('input');
-    const elementRef: MutableRefObject<HTMLInputElement | undefined> = { current: undefined };
+    const elementRef: RefObject<HTMLInputElement | undefined> = { current: undefined };
     const forwardedRef = createRef<HTMLInputElement>();
     const callback = syncRef(elementRef, forwardedRef);
 
@@ -110,7 +110,7 @@ describe('syncRefs()', () => {
 
   it('should forward the element and null to callback refs', () => {
     const element = document.createElement('input');
-    const elementRef: MutableRefObject<HTMLInputElement | undefined> = { current: undefined };
+    const elementRef: RefObject<HTMLInputElement | undefined> = { current: undefined };
     const forwardedRef = vi.fn<(element: HTMLInputElement | null) => void>();
     const callback = syncRef(elementRef, forwardedRef);
 
@@ -123,7 +123,7 @@ describe('syncRefs()', () => {
 
   it('should synchronize the internal ref without a forwarded ref', () => {
     const element = document.createElement('input');
-    const elementRef: MutableRefObject<HTMLInputElement | undefined> = { current: undefined };
+    const elementRef: RefObject<HTMLInputElement | undefined> = { current: undefined };
     const callback = syncRef(elementRef, null);
 
     callback(element);

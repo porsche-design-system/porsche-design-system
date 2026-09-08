@@ -1,6 +1,6 @@
 'use client';
 
-import type { MutableRefObject } from 'react';
+import type { RefObject } from 'react';
 import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import type { ToastMessage } from './lib/types';
 import { PorscheDesignSystemContext } from './provider';
@@ -31,7 +31,7 @@ export const usePrefix = (tagName: string): string => {
 };
 
 export const useEventCallback = (
-  ref: MutableRefObject<HTMLElement | undefined>,
+  ref: RefObject<HTMLElement | undefined>,
   eventName: string,
   eventHandler: (e: Event) => void
 ): void => {
@@ -45,7 +45,7 @@ export const useEventCallback = (
   }, [eventHandler]); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
-export const useMergedClass = (ref: MutableRefObject<HTMLElement | undefined>, className?: string) => {
+export const useMergedClass = (ref: RefObject<HTMLElement | undefined>, className?: string) => {
   const prevComponentClassName = useRef<string>(undefined);
 
   return useMemo(() => {

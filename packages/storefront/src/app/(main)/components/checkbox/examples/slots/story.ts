@@ -59,7 +59,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
         },
         {
           tag: 'p-checkbox',
-          properties: { ...properties, disabled: 'true' },
+          properties: { ...properties, disabled: true },
           children: [
             {
               tag: 'span',
@@ -68,7 +68,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
                 'Disabled slotted label, a nested ',
                 {
                   tag: 'a',
-                  properties: { href: 'https://www.porsche.com', className: 'underline', tabindex: '-1' },
+                  properties: { href: 'https://www.porsche.com', className: 'underline', tabIndex: -1 },
                   children: ['link'],
                 },
                 ' and a label-after slot.',
@@ -115,4 +115,3 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
     },
   ],
 };
-
