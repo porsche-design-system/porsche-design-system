@@ -158,6 +158,7 @@ export const specialProps: Record<string, (value: unknown) => string> = {
   maxLength: (value: unknown) => (value !== undefined ? ` maxlength="${value}"` : ''),
   minLength: (value: unknown) => (value !== undefined ? ` minlength="${value}"` : ''),
   srcSet: (value: unknown) => (value !== undefined ? ` srcset="${value}"` : ''),
+  tabIndex: (value: unknown) => (value !== undefined ? ` tabindex="${value}"` : ''),
 };
 
 export const isSelfClosingTag = (tag: string): boolean => {
