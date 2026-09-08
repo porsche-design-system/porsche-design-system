@@ -9,6 +9,8 @@ import {
   type PInputNumberInputEvent,
   type PInputNumberProps,
   type PInputTextProps,
+  type PModalElement,
+  type PModalMotionHiddenEndEvent,
   type PMultiSelectProps,
   type PSelectProps,
   type PTextareaProps,
@@ -150,14 +152,125 @@ element.addEventListener('blur', (event) => {
   expectType<Equal<typeof event, PInputNumberBlurEvent>>(true);
 });
 element.addEventListener('input', namedHandler, {
+  capture: false,
+  once: true,
+  passive: true,
+  signal: new AbortController().signal,
+});
+element.removeEventListener('input', namedHandler, { capture: false });
+element.addEventListener('input', existingHandler, false);
+element.removeEventListener('input', existingHandler, false);
+
+for (const options of [undefined, false, {}, { capture: false }, { passive: true, once: true }] as const) {
+  element.addEventListener(
+    'input',
+    function (event) {
+      expectType<Equal<typeof event, PInputNumberInputEvent>>(true);
+      expectType<Equal<typeof this, PInputNumberElement>>(true);
+    },
+    options
+  );
+}
+for (const options of [undefined, false, {}, { capture: false }] as const) {
+  element.removeEventListener(
+    'input',
+    (event) => {
+      expectType<Equal<typeof event, PInputNumberInputEvent>>(true);
+    },
+    options
+  );
+}
+
+declare const capture: boolean;
+declare const addOptions: AddEventListenerOptions;
+declare const removeOptions: EventListenerOptions;
+type CapturedInputEvent = PInputNumberInputEvent | HTMLElementEventMap['input'];
+
+for (const options of [true, { capture: true }, capture, addOptions] as const) {
+  element.addEventListener(
+    'input',
+    function (event) {
+      expectType<Equal<typeof event, CapturedInputEvent>>(true);
+      expectType<Equal<typeof this, PInputNumberElement>>(true);
+      // @ts-expect-error The native event does not contain the PDS custom-event payload.
+      event.detail.preventDefault();
+      // @ts-expect-error Capture listeners cannot assume the custom event's host target contract.
+      event.target.value;
+    },
+    options
+  );
+}
+for (const options of [true, { capture: true }, capture, removeOptions] as const) {
+  element.removeEventListener(
+    'input',
+    function (event) {
+      expectType<Equal<typeof event, CapturedInputEvent>>(true);
+      expectType<Equal<typeof this, PInputNumberElement>>(true);
+    },
+    options
+  );
+}
+
+const captureHandler = (_event: CapturedInputEvent): void => {};
+element.addEventListener('input', captureHandler, {
   capture: true,
   once: true,
   passive: true,
   signal: new AbortController().signal,
 });
-element.removeEventListener('input', namedHandler, { capture: true });
-element.addEventListener('input', existingHandler, true);
-element.removeEventListener('input', existingHandler, true);
+element.removeEventListener('input', captureHandler, { capture: true });
+element.addEventListener(
+  'blur',
+  (event) => {
+    expectType<Equal<typeof event, PInputNumberBlurEvent | FocusEvent>>(true);
+  },
+  true
+);
+element.addEventListener(
+  'change',
+  (event) => {
+    expectType<Equal<typeof event, PInputNumberChangeEvent | Event>>(true);
+  },
+  { capture: true }
+);
+declare const inputOrBlur: 'input' | 'blur';
+element.addEventListener(
+  inputOrBlur,
+  (event) => {
+    expectType<Equal<typeof event, CapturedInputEvent | PInputNumberBlurEvent | FocusEvent>>(true);
+  },
+  capture
+);
+
+// @ts-expect-error A custom-only handler cannot handle captured native events.
+element.addEventListener('input', namedHandler, true);
+// @ts-expect-error Capture-enabled options must not select the custom-only overload.
+element.addEventListener('input', existingHandler, { capture: true });
+// @ts-expect-error Unknown capture options also require a native-compatible handler.
+element.addEventListener('input', namedHandler, capture);
+// @ts-expect-error Broad options may enable capture.
+element.addEventListener('input', namedHandler, addOptions);
+// @ts-expect-error Removal uses the same capture-aware listener contract.
+element.removeEventListener('input', namedHandler, true);
+// @ts-expect-error Capture-enabled removal cannot promise custom-only events.
+element.removeEventListener('input', existingHandler, { capture: true });
+
+declare const modal: PModalElement;
+modal.addEventListener(
+  'motionHiddenEnd',
+  function (event) {
+    expectType<Equal<typeof event, PModalMotionHiddenEndEvent>>(true);
+    expectType<Equal<typeof this, PModalElement>>(true);
+  },
+  true
+);
+modal.removeEventListener(
+  'motionHiddenEnd',
+  (event) => {
+    expectType<Equal<typeof event, PModalMotionHiddenEndEvent>>(true);
+  },
+  removeOptions
+);
 
 element.addEventListener('keydown', function (event) {
   expectType<Equal<typeof event, KeyboardEvent>>(true);
@@ -166,6 +279,13 @@ element.addEventListener('keydown', function (event) {
 element.removeEventListener('keydown', (event) => {
   expectType<Equal<typeof event, KeyboardEvent>>(true);
 });
+element.addEventListener(
+  'keydown',
+  (event) => {
+    expectType<Equal<typeof event, KeyboardEvent>>(true);
+  },
+  true
+);
 element.addEventListener('third-party-event', (event) => {
   expectType<Equal<typeof event, Event>>(true);
 });
@@ -176,6 +296,8 @@ element.removeEventListener('third-party-event', (event) => {
 const listenerObject: EventListenerObject = { handleEvent: (_event: Event) => {} };
 element.addEventListener('input', listenerObject);
 element.removeEventListener('input', listenerObject);
+element.addEventListener('input', listenerObject, true);
+element.removeEventListener('input', listenerObject, true);
 const nativeListener: EventListener = (_event) => {};
 element.addEventListener('third-party-event', nativeListener);
 element.removeEventListener('third-party-event', nativeListener);

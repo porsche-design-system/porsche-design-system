@@ -28,7 +28,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **React**: components with custom events now export host element and complete event types from both the main and
   `/ssr` entry points, e.g. `PInputNumberElement` and `PInputNumberInputEvent`. Named handlers can use
   `(event: PInputNumberInputEvent) => event.target.value`; element types also infer custom events in `addEventListener`
-  and `removeEventListener`. Existing `...EventDetail` types are unchanged
+  and `removeEventListener`. For event names shared with native events, capture-enabled or dynamically configured
+  listeners include the native event type and require narrowing before accessing custom payloads. Existing
+  `...EventDetail` types are unchanged
   ([#4711](https://github.com/porsche-design-system/porsche-design-system/pull/4711))
 
 ### Changed

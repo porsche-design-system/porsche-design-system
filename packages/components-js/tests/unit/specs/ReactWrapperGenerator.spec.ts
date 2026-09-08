@@ -120,7 +120,7 @@ describe('ReactWrapperGenerator event typings', () => {
     );
   });
 
-  it('generates custom, native and fallback listener overloads in that order for both methods', () => {
+  it('generates non-capturing, capture-aware, native and fallback overloads in that order for both methods', () => {
     const props = generator.generateProps('p-input-number', parser.getRawComponentInterface('p-input-number'));
 
     expect(props).toContain("interface InputNumberEventMap {\n  'blur': PInputNumberBlurEvent;");
@@ -128,14 +128,17 @@ describe('ReactWrapperGenerator event typings', () => {
     expect(props).not.toContain('export interface InputNumberEventMap');
     for (const method of ['addEventListener', 'removeEventListener']) {
       const optionsType = method === 'addEventListener' ? 'AddEventListenerOptions' : 'EventListenerOptions';
-      const custom = `${method}<K extends keyof InputNumberEventMap>(type: K, listener: (this: PInputNumberElement, event: InputNumberEventMap[K]) => void, options?: boolean | ${optionsType}): void;`;
+      const custom = `${method}<K extends keyof InputNumberEventMap>(type: K, listener: (this: PInputNumberElement, event: InputNumberEventMap[K]) => void, options?: false | (${optionsType} & { capture?: false })): void;`;
+      const capture = `${method}<K extends keyof InputNumberEventMap>(type: K, listener: (this: PInputNumberElement, event: InputNumberEventMap[K] | HTMLElementEventMap[K & keyof HTMLElementEventMap]) => void, options?: boolean | ${optionsType}): void;`;
       const native = `${method}<K extends keyof HTMLElementEventMap>`;
       const fallback = `${method}(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | ${optionsType}): void;`;
 
       expect(props).toContain(custom);
+      expect(props).toContain(capture);
       expect(props).toContain(native);
       expect(props).toContain(fallback);
-      expect(props.indexOf(custom)).toBeLessThan(props.indexOf(native));
+      expect(props.indexOf(custom)).toBeLessThan(props.indexOf(capture));
+      expect(props.indexOf(capture)).toBeLessThan(props.indexOf(native));
       expect(props.indexOf(native)).toBeLessThan(props.indexOf(fallback));
     }
   });

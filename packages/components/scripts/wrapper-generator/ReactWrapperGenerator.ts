@@ -242,12 +242,15 @@ ${eventTypes.join('\n\n')}`;
   }
 
   private generateEventListenerOverloads(elementName: string, eventMapName: string): string {
-    // Custom overloads must come first: names such as input and blur also exist in the native map.
+    // Host capture listeners see composed native events before the inner control can stop propagation.
+    // A same-name CustomEvent is a separate dispatch, regardless of its detail payload (V5: #4689).
+    // Only known non-capturing options can promise custom-only types for overlapping native names.
     // Retain native and string fallbacks so the element remains compatible with HTMLElement.
     return ['addEventListener', 'removeEventListener']
       .map((method) => {
         const optionsType = method === 'addEventListener' ? 'AddEventListenerOptions' : 'EventListenerOptions';
-        return `  ${method}<K extends keyof ${eventMapName}>(type: K, listener: (this: ${elementName}, event: ${eventMapName}[K]) => void, options?: boolean | ${optionsType}): void;
+        return `  ${method}<K extends keyof ${eventMapName}>(type: K, listener: (this: ${elementName}, event: ${eventMapName}[K]) => void, options?: false | (${optionsType} & { capture?: false })): void;
+  ${method}<K extends keyof ${eventMapName}>(type: K, listener: (this: ${elementName}, event: ${eventMapName}[K] | HTMLElementEventMap[K & keyof HTMLElementEventMap]) => void, options?: boolean | ${optionsType}): void;
   ${method}<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, event: HTMLElementEventMap[K]) => void, options?: boolean | ${optionsType}): void;
   ${method}(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | ${optionsType}): void;`;
       })
