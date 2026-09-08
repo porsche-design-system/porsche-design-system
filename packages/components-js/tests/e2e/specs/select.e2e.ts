@@ -1,6 +1,5 @@
 import { expect, Locator, test } from '@playwright/test';
-import type { Components } from '@porsche-design-system/components/src/components';
-import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
+import type { Components } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import type { Page } from 'playwright';
 import {
@@ -36,6 +35,10 @@ const getFilterInput = (page: Page) => page.locator('p-select p-input-search inp
 const getSelectOption = (page: Page, n: number) => page.locator(`p-select p-select-option:nth-child(${n})`);
 const getSelectOptions = (page: Page) => page.locator('p-select p-select-option');
 const getSelectOptgroups = (page: Page) => page.locator('p-select p-optgroup');
+
+// The option's internal props (SelectOptionInternalHTMLProps) are not part of the package's public types.
+type SelectOption = HTMLPSelectOptionElement & { selected?: boolean; highlighted?: boolean };
+
 const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(
   page: Page,
   property: K

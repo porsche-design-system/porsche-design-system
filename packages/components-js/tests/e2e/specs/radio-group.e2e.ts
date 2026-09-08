@@ -1,6 +1,5 @@
 import { expect, Locator, test } from '@playwright/test';
-import type { Components } from '@porsche-design-system/components/src/components';
-import { RadioGroupOption } from '@porsche-design-system/components/src/components/radio-group/radio-group/radio-group-utils';
+import type { Components } from '@porsche-design-system/components';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -25,6 +24,10 @@ const getRadioGroupValue = async (page: Page): Promise<string | number> => await
 const getRadioGroupOption = (page: Page, n: number) =>
   page.locator(`p-radio-group p-radio-group-option:nth-child(${n})`);
 const getRadioGroupOptions = (page: Page) => page.locator('p-radio-group p-radio-group-option');
+
+// The option's internal props (RadioGroupOptionInternalHTMLProps) are not part of the package's public types.
+type RadioGroupOption = HTMLPRadioGroupOptionElement & { selected?: boolean };
+
 const getSelectedRadioGroupOptionProperty = async <K extends keyof RadioGroupOption>(
   page: Page,
   property: K

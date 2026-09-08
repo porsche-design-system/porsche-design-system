@@ -1,5 +1,5 @@
 import { expect, type Locator, test } from '@playwright/test';
-import type { Components } from '@porsche-design-system/components/src/components';
+import type { Components } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import type { Page } from 'playwright';
 import {

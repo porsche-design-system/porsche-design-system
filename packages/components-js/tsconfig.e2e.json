@@ -1,9 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "paths": {
-      "@porsche-design-system/components/src/*": ["../components/dist/types/*"]
-    }
-  },
   "include": ["tests/e2e"]
 }
