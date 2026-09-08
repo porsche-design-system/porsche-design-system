@@ -1,9 +1,9 @@
-import { type CarouselUpdateEvent, PCarousel, PText } from '@porsche-design-system/components-react';
+import { PCarousel, type PCarouselUpdateEvent, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
 export const CarouselExampleEventsPage = () => {
   const [lastEventDetail, setLastEventDetail] = useState('none');
-  const onUpdate = useCallback((e: CarouselUpdateEvent) => setLastEventDetail(JSON.stringify(e.detail)), []);
+  const onUpdate = useCallback((e: PCarouselUpdateEvent) => setLastEventDetail(JSON.stringify(e.detail)), []);
 
   const slideStyle = {
     display: 'flex',

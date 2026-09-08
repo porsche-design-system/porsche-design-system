@@ -1,6 +1,6 @@
 import {
-  type MultiSelectChangeEvent,
   PMultiSelect,
+  type PMultiSelectChangeEvent,
   PMultiSelectOption,
   type PMultiSelectProps,
   PTag,
@@ -59,7 +59,7 @@ export const MultiSelectExampleSelectedSlot = () => {
   const [options] = useState<Option[]>(optionsData);
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
 
-  const onChange = (e: MultiSelectChangeEvent) => {
+  const onChange = (e: PMultiSelectChangeEvent) => {
     const value = e.target.value;
     setValue(value);
     setSelectedOptions(options.filter((option) => value?.some((selectedValue) => selectedValue === option.value)));

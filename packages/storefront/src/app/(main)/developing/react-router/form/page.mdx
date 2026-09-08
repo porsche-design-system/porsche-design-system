@@ -42,14 +42,14 @@ integration with any form library.
 import { useState } from 'react';
 import {
   PInputText,
-  type InputTextInputEvent,
+  type PInputTextInputEvent,
   type PInputTextProps,
 } from '@porsche-design-system/components-react/ssr';
 
 export function TextField() {
   const [value, setValue] = useState<PInputTextProps['value']>('');
 
-  const onInput = (e: InputTextInputEvent) => {
+  const onInput = (e: PInputTextInputEvent) => {
     setValue(e.target.value);
   };
 

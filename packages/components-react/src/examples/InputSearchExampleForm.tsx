@@ -1,7 +1,7 @@
 import {
-  type InputSearchInputEvent,
   PButton,
   PInputSearch,
+  type PInputSearchInputEvent,
   type PInputSearchProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -11,7 +11,7 @@ export const InputSearchExampleFormPage = () => {
   const [form, setForm] = useState<{ myInputSearch: PInputSearchProps['value'] }>({ myInputSearch: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: InputSearchInputEvent) => {
+  const onInput = (e: PInputSearchInputEvent) => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,

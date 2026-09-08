@@ -30,7 +30,7 @@ describe('generateReactMarkup()', () => {
     };
     const { imports } = generateReactMarkup([accordion, { tag: 'div', children: [accordion] }], {});
 
-    expect(imports.match(/type AccordionUpdateEvent/g)).toHaveLength(1);
+    expect(imports?.match(/type PAccordionUpdateEvent/g)).toHaveLength(1);
   });
 });
 
@@ -106,11 +106,11 @@ describe('generateReactControlledScript()', () => {
     );
     expect(states).toMatchInlineSnapshot('"  const [open, setOpen] = useState(true);"');
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onUpdate = (e: AccordionUpdateEvent) => {
+      `"  const onUpdate = (e: PAccordionUpdateEvent) => {
     setOpen(e.detail.open);
   }"`
     );
-    expect(types).toEqual(['AccordionUpdateEvent']);
+    expect(types).toEqual(['PAccordionUpdateEvent']);
   });
   it('should return correct selector & eventHandler for event value string', () => {
     const { states, eventHandler } = generateReactControlledScript(
@@ -134,7 +134,7 @@ describe('generateReactControlledScript()', () => {
     );
     expect(states).toMatchInlineSnapshot('"  const [activeIdentifier, setActiveIdentifier] = useState("id-1");"');
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onUpdate = (e: DrilldownUpdateEvent) => {
+      `"  const onUpdate = (e: PDrilldownUpdateEvent) => {
     setActiveIdentifier(e.detail.activeIdentifier);
   }"`
     );
@@ -149,7 +149,7 @@ describe('generateReactControlledScript()', () => {
             target: 'p-link-tile-product',
             prop: 'liked',
             eventValueKey: 'liked',
-            eventType: 'LinkTileProductLikeEvent',
+            eventType: 'LinkTileProductLikeEventDetail',
             negateValue: true,
           },
         ],
@@ -158,7 +158,7 @@ describe('generateReactControlledScript()', () => {
     );
     expect(states).toMatchInlineSnapshot('"  const [liked, setLiked] = useState(undefined);"');
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onLike = (e: LinkTileProductLikeEvent) => {
+      `"  const onLike = (e: PLinkTileProductLikeEvent) => {
     setLiked(!e.detail.liked);
   }"`
     );
@@ -181,8 +181,8 @@ describe('generateReactControlledScript()', () => {
       {}
     );
 
-    expect(types).toEqual(['ModalDismissEvent']);
-    expect(eventHandler).toContain('(e: ModalDismissEvent)');
+    expect(types).toEqual(['PModalDismissEvent']);
+    expect(eventHandler).toContain('(e: PModalDismissEvent)');
     expect(eventHandler).toContain('setDismissReason(e.detail.reason)');
   });
 

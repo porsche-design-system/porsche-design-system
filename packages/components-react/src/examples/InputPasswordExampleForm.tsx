@@ -1,7 +1,7 @@
 import {
-  type InputPasswordInputEvent,
   PButton,
   PInputPassword,
+  type PInputPasswordInputEvent,
   type PInputPasswordProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -11,7 +11,7 @@ export const InputPasswordExampleFormPage = () => {
   const [form, setForm] = useState<{ myInputPassword: PInputPasswordProps['value'] }>({ myInputPassword: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: InputPasswordInputEvent) => {
+  const onInput = (e: PInputPasswordInputEvent) => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,

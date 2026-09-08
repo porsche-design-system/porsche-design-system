@@ -1,6 +1,6 @@
 import {
-  type InputNumberInputEvent,
   PInputNumber,
+  type PInputNumberInputEvent,
   type PInputNumberProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 export const InputNumberControlledExamplePage = () => {
   const [value, setValue] = useState<PInputNumberProps['value']>('');
 
-  const onInput = (e: InputNumberInputEvent) => {
+  const onInput = (e: PInputNumberInputEvent) => {
     setValue(e.target.value);
   };
 

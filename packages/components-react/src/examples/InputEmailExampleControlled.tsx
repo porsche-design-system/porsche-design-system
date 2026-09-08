@@ -1,6 +1,6 @@
 import {
-  type InputEmailInputEvent,
   PInputEmail,
+  type PInputEmailInputEvent,
   type PInputEmailProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 export const InputEmailControlledExamplePage = () => {
   const [value, setValue] = useState<PInputEmailProps['value']>('');
 
-  const onInput = (e: InputEmailInputEvent) => {
+  const onInput = (e: PInputEmailInputEvent) => {
     setValue(e.target.value);
   };
 

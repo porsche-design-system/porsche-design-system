@@ -1,6 +1,6 @@
 import {
-  type InputSearchInputEvent,
   PInputSearch,
+  type PInputSearchInputEvent,
   type PInputSearchProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 export const InputSearchControlledExamplePage = () => {
   const [value, setValue] = useState<PInputSearchProps['value']>('');
 
-  const onInput = (e: InputSearchInputEvent) => {
+  const onInput = (e: PInputSearchInputEvent) => {
     setValue(e.target.value);
   };
 

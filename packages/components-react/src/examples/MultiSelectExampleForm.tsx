@@ -1,7 +1,7 @@
 import {
-  type MultiSelectChangeEvent,
   PButton,
   PMultiSelect,
+  type PMultiSelectChangeEvent,
   PMultiSelectOption,
   type PMultiSelectProps,
   PText,
@@ -12,7 +12,7 @@ export const MultiSelectExampleFormPage = () => {
   const [form, setForm] = useState<{ myMultiSelect: PMultiSelectProps['value'] }>({ myMultiSelect: [] });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onChange = (e: MultiSelectChangeEvent) => {
+  const onChange = (e: PMultiSelectChangeEvent) => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,

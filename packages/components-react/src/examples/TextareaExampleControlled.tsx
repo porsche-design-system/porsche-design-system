@@ -1,15 +1,15 @@
 import {
   PText,
   PTextarea,
+  type PTextareaInputEvent,
   type PTextareaProps,
-  type TextareaInputEvent,
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
 export const TextareaExampleControlledPage = () => {
   const [value, setValue] = useState<PTextareaProps['value']>('');
 
-  const onInput = (e: TextareaInputEvent) => {
+  const onInput = (e: PTextareaInputEvent) => {
     setValue(e.target.value);
   };
 

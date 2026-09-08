@@ -1,12 +1,12 @@
 import {
-  type InputSearchInputEvent,
   PIcon,
   PInputSearch,
+  type PInputSearchInputEvent,
   PSelect,
+  type PSelectChangeEvent,
   PSelectOption,
   type PSelectProps,
-  type SelectChangeEvent,
-  type SelectToggleEvent,
+  type PSelectToggleEvent,
 } from '@porsche-design-system/components-react';
 import { useCallback, useMemo, useRef, useState } from 'react';
 
@@ -80,18 +80,18 @@ export const SelectExampleAsyncFilter = () => {
 
   const debouncedFetch = useDebounce(fetchOptions, 400);
 
-  const onInput = (e: InputSearchInputEvent) => {
+  const onInput = (e: PInputSearchInputEvent) => {
     const term = e.target.value;
     if (typeof term !== 'string') return;
     setSearchValue(term);
     debouncedFetch(term.trim() || undefined);
   };
 
-  const onChange = (e: SelectChangeEvent) => {
+  const onChange = (e: PSelectChangeEvent) => {
     setValue(e.target.value);
   };
 
-  const onToggle = async (e: SelectToggleEvent) => {
+  const onToggle = async (e: PSelectToggleEvent) => {
     if (e.detail.open && !hasLoadedOnce.current) {
       fetchOptions(undefined, true);
     }

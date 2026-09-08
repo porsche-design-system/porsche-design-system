@@ -1,12 +1,12 @@
 import {
-  type InputNumberBlurEvent,
-  type InputNumberChangeEvent,
-  type InputNumberInputEvent,
   type InputNumberInputEventDetail,
   PButton,
   type PCheckboxProps,
   PInputNumber,
+  type PInputNumberBlurEvent,
+  type PInputNumberChangeEvent,
   type PInputNumberElement,
+  type PInputNumberInputEvent,
   type PInputNumberProps,
   type PInputTextProps,
   type PMultiSelectProps,
@@ -27,7 +27,7 @@ expectType<Equal<ComponentRef<typeof PInputNumber>, PInputNumberElement>>(true);
     if (element) {
       expectType<Equal<typeof element.value, string | number | null | undefined>>(true);
       element.addEventListener('input', (event) => {
-        expectType<Equal<typeof event, InputNumberInputEvent>>(true);
+        expectType<Equal<typeof event, PInputNumberInputEvent>>(true);
       });
     }
   }}
@@ -59,7 +59,7 @@ const onInput: NonNullable<PInputNumberProps['onInput']> = (event) => {
   expectType<Equal<typeof event.detail, InputEvent>>(true);
   expectType<Equal<typeof event.detail.target, EventTarget | null>>(true);
   expectType<Equal<typeof event.currentTarget, EventTarget | null>>(true);
-  expectType<Equal<typeof event, InputNumberInputEvent>>(true);
+  expectType<Equal<typeof event, PInputNumberInputEvent>>(true);
   expectType<Equal<typeof event.target, PInputNumberElement>>(true);
   const nativeHost: HTMLElement = event.target;
   void nativeHost;
@@ -83,12 +83,12 @@ const onInput: NonNullable<PInputNumberProps['onInput']> = (event) => {
     onInput(event);
   }}
   onChange={(event) => {
-    expectType<Equal<typeof event, InputNumberChangeEvent>>(true);
+    expectType<Equal<typeof event, PInputNumberChangeEvent>>(true);
     expectType<Equal<typeof event.detail, Event>>(true);
     expectType<Equal<typeof event.target, PInputNumberElement>>(true);
   }}
   onBlur={(event) => {
-    expectType<Equal<typeof event, InputNumberBlurEvent>>(true);
+    expectType<Equal<typeof event, PInputNumberBlurEvent>>(true);
     expectType<Equal<typeof event.target.value, string | number | null | undefined>>(true);
   }}
   onClick={(event) => {
@@ -100,7 +100,7 @@ const onInput: NonNullable<PInputNumberProps['onInput']> = (event) => {
 
 const existingHandler = (_event: CustomEvent<InputNumberInputEventDetail>): void => {};
 <PInputNumber name="quantity" onInput={existingHandler} value={null} />;
-const namedHandler = (event: InputNumberInputEvent): void => {
+const namedHandler = (event: PInputNumberInputEvent): void => {
   expectType<Equal<typeof event.target.value, string | number | null | undefined>>(true);
   expectType<Equal<typeof event.detail, InputNumberInputEventDetail>>(true);
 };
@@ -134,20 +134,20 @@ export const onCheckboxChange: NonNullable<PCheckboxProps['onChange']> = (event)
 declare const element: PInputNumberElement;
 
 element.addEventListener('input', function (event) {
-  expectType<Equal<typeof event, InputNumberInputEvent>>(true);
+  expectType<Equal<typeof event, PInputNumberInputEvent>>(true);
   expectType<Equal<typeof event.target, PInputNumberElement>>(true);
   expectType<Equal<typeof event.target.value, string | number | null | undefined>>(true);
   expectType<Equal<typeof this, PInputNumberElement>>(true);
 });
 element.removeEventListener('input', function (event) {
-  expectType<Equal<typeof event, InputNumberInputEvent>>(true);
+  expectType<Equal<typeof event, PInputNumberInputEvent>>(true);
   expectType<Equal<typeof this, PInputNumberElement>>(true);
 });
 element.addEventListener('change', (event) => {
-  expectType<Equal<typeof event, InputNumberChangeEvent>>(true);
+  expectType<Equal<typeof event, PInputNumberChangeEvent>>(true);
 });
 element.addEventListener('blur', (event) => {
-  expectType<Equal<typeof event, InputNumberBlurEvent>>(true);
+  expectType<Equal<typeof event, PInputNumberBlurEvent>>(true);
 });
 element.addEventListener('input', namedHandler, {
   capture: true,

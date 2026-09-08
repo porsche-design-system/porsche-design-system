@@ -36,12 +36,12 @@ integration with any form library.
 
 ```tsx
 import { useState } from 'react';
-import { PInputText, type InputTextInputEvent, type PInputTextProps } from '@porsche-design-system/components-react';
+import { PInputText, type PInputTextInputEvent, type PInputTextProps } from '@porsche-design-system/components-react';
 
 export function TextField() {
   const [value, setValue] = useState<PInputTextProps['value']>('');
 
-  const onInput = (e: InputTextInputEvent) => {
+  const onInput = (e: PInputTextInputEvent) => {
     setValue(e.target.value);
   };
 

@@ -1,10 +1,10 @@
 import {
-  type DrilldownUpdateEvent,
   type DrilldownUpdateEventDetail,
   PButton,
   PDrilldown,
   PDrilldownItem,
   PDrilldownLink,
+  type PDrilldownUpdateEvent,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
@@ -19,7 +19,7 @@ export const DrilldownExampleActiveIdentifierPage = () => {
     setIsDrilldownOpen(false);
   }, []);
   const onUpdate = useCallback(
-    (e: DrilldownUpdateEvent) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
+    (e: PDrilldownUpdateEvent) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
     []
   );
 

@@ -226,9 +226,9 @@ ${eventTypes.join('\n\n')}`;
         throw new Error(`Expected a CustomEvent callback for ${component}.${key}`);
       }
 
-      // Match the DOM event name used by useEventCallback, while retaining the existing
-      // component/event naming family for public types (e.g. InputNumberInputEvent).
-      const typeName = `${pascalCase(component.slice(2))}${key.slice(2)}Event${genericType}`;
+      // Match the DOM event name used by useEventCallback. Public event types follow the
+      // component's P-prefixed name; existing event-detail names remain unchanged.
+      const typeName = `${pascalCase(component)}${key.slice(2)}Event${genericType}`;
       const typeStart = eventType.getStart(source) - member.getFullStart();
       const typeEnd = eventType.end - member.getFullStart();
       events.push({

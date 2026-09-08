@@ -1,12 +1,12 @@
 import {
-  type DrilldownDismissEvent,
   type DrilldownDismissEventDetail,
-  type DrilldownUpdateEvent,
   type DrilldownUpdateEventDetail,
   PButton,
   PDrilldown,
+  type PDrilldownDismissEvent,
   PDrilldownItem,
   PDrilldownLink,
+  type PDrilldownUpdateEvent,
   PText,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
@@ -19,12 +19,12 @@ export const DrilldownExamplePage = () => {
   const onOpen = useCallback(() => {
     setIsDrilldownOpen(true);
   }, []);
-  const onDismiss = useCallback((e: DrilldownDismissEvent) => {
+  const onDismiss = useCallback((e: PDrilldownDismissEvent) => {
     setDismissReason(e.detail.reason);
     setIsDrilldownOpen(false);
   }, []);
   const onUpdate = useCallback(
-    (e: DrilldownUpdateEvent) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
+    (e: PDrilldownUpdateEvent) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
     []
   );
 

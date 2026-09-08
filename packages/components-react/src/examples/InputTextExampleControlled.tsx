@@ -1,6 +1,6 @@
 import {
-  type InputTextInputEvent,
   PInputText,
+  type PInputTextInputEvent,
   type PInputTextProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 export const InputTextControlledExamplePage = () => {
   const [value, setValue] = useState<PInputTextProps['value']>('');
 
-  const onInput = (e: InputTextInputEvent) => {
+  const onInput = (e: PInputTextInputEvent) => {
     const target = e.target;
 
     if (typeof target.value === 'string' && target.value.length > 3) {

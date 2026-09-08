@@ -1,11 +1,11 @@
 import {
-  type InputTextInputEvent,
   PButton,
   PInputText,
+  type PInputTextInputEvent,
   PSelect,
+  type PSelectChangeEvent,
   PSelectOption,
   type PSelectProps,
-  type SelectChangeEvent,
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
@@ -14,7 +14,7 @@ export const SelectExampleDynamicPage = () => {
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);
 
-  const onChangeInput = (e: InputTextInputEvent) => {
+  const onChangeInput = (e: PInputTextInputEvent) => {
     setInputValue((e.detail.target as HTMLInputElement).value);
   };
 
@@ -27,7 +27,7 @@ export const SelectExampleDynamicPage = () => {
     setInputValue('');
   };
 
-  const onChange = (e: SelectChangeEvent) => {
+  const onChange = (e: PSelectChangeEvent) => {
     setSelectedValue(e.detail.value);
     setInputValue(String(e.detail.value ?? ''));
   };

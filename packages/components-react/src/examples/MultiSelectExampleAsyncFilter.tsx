@@ -1,12 +1,12 @@
 import {
-  type InputSearchInputEvent,
-  type MultiSelectChangeEvent,
-  type MultiSelectToggleEvent,
   PIcon,
   PInputSearch,
+  type PInputSearchInputEvent,
   PMultiSelect,
+  type PMultiSelectChangeEvent,
   PMultiSelectOption,
   type PMultiSelectProps,
+  type PMultiSelectToggleEvent,
 } from '@porsche-design-system/components-react';
 import { useCallback, useMemo, useRef, useState } from 'react';
 
@@ -80,18 +80,18 @@ export const MultiSelectExampleAsyncFilter = () => {
 
   const debouncedFetch = useDebounce(fetchOptions, 400);
 
-  const onInput = (e: InputSearchInputEvent) => {
+  const onInput = (e: PInputSearchInputEvent) => {
     const term = e.target.value;
     if (typeof term !== 'string') return;
     setSearchValue(term);
     debouncedFetch(term.trim() || undefined);
   };
 
-  const onChange = (e: MultiSelectChangeEvent) => {
+  const onChange = (e: PMultiSelectChangeEvent) => {
     setValue(e.target.value);
   };
 
-  const onToggle = async (e: MultiSelectToggleEvent) => {
+  const onToggle = async (e: PMultiSelectToggleEvent) => {
     if (e.detail.open && !hasLoadedOnce.current) {
       fetchOptions(undefined, true);
     }

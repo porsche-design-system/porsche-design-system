@@ -1,9 +1,9 @@
 import {
-  type InputTextInputEvent,
-  type MultiSelectChangeEvent,
   PButton,
   PInputText,
+  type PInputTextInputEvent,
   PMultiSelect,
+  type PMultiSelectChangeEvent,
   PMultiSelectOption,
   type PMultiSelectProps,
 } from '@porsche-design-system/components-react';
@@ -14,7 +14,7 @@ export const MultiSelectExampleDynamicPage = () => {
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);
 
-  const onChangeInput = (e: InputTextInputEvent) => {
+  const onChangeInput = (e: PInputTextInputEvent) => {
     setInputValue((e.detail.target as HTMLInputElement).value);
   };
 
@@ -27,7 +27,7 @@ export const MultiSelectExampleDynamicPage = () => {
     setInputValue('');
   };
 
-  const onChange = (e: MultiSelectChangeEvent) => {
+  const onChange = (e: PMultiSelectChangeEvent) => {
     setSelectedValues(e.detail.value);
     setInputValue(e.detail.value.join(','));
   };

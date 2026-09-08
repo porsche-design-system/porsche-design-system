@@ -1,6 +1,6 @@
 import {
-  type InputUrlInputEvent,
   PInputUrl,
+  type PInputUrlInputEvent,
   type PInputUrlProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 export const InputUrlControlledExamplePage = () => {
   const [value, setValue] = useState<PInputUrlProps['value']>('');
 
-  const onInput = (e: InputUrlInputEvent) => {
+  const onInput = (e: PInputUrlInputEvent) => {
     setValue(e.target.value);
   };
 

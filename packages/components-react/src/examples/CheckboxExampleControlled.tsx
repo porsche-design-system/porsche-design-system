@@ -1,11 +1,11 @@
-import { type CheckboxChangeEvent, PCheckbox, PText } from '@porsche-design-system/components-react';
+import { PCheckbox, type PCheckboxChangeEvent, PText } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
 export const CheckboxExampleControlledPage = () => {
   const [state, setState] = useState({
     'some-name': true,
   });
-  const onChange = (event: CheckboxChangeEvent) => {
+  const onChange = (event: PCheckboxChangeEvent) => {
     const { name, checked } = event.target;
     if (name === undefined || checked === undefined) return;
     setState((prev) => ({

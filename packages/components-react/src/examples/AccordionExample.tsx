@@ -1,14 +1,14 @@
-import { type AccordionUpdateEvent, PAccordion, PHeading, PText } from '@porsche-design-system/components-react';
+import { PAccordion, type PAccordionUpdateEvent, PHeading, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
 export const AccordionExamplePage = () => {
   const [isOpen1, setIsOpen1] = useState<boolean>(false);
   const [isOpen2, setIsOpen2] = useState<boolean>(false);
 
-  const onUpdate1 = useCallback((e: AccordionUpdateEvent) => {
+  const onUpdate1 = useCallback((e: PAccordionUpdateEvent) => {
     setIsOpen1(e.detail.open);
   }, []);
-  const onUpdate2 = useCallback((e: AccordionUpdateEvent) => {
+  const onUpdate2 = useCallback((e: PAccordionUpdateEvent) => {
     setIsOpen2(e.detail.open);
   }, []);
 

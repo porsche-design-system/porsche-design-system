@@ -1,7 +1,7 @@
 import {
-  type InputUrlInputEvent,
   PButton,
   PInputUrl,
+  type PInputUrlInputEvent,
   type PInputUrlProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -11,7 +11,7 @@ export const InputUrlExampleFormPage = () => {
   const [form, setForm] = useState<{ myInputUrl: PInputUrlProps['value'] }>({ myInputUrl: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: InputUrlInputEvent) => {
+  const onInput = (e: PInputUrlInputEvent) => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,

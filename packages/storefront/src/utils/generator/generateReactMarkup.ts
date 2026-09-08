@@ -126,7 +126,7 @@ export const generateReactControlledScript = (
     .map(([eventName, { prop, value, eventValueKey, eventType, negateValue, toggleValue }]) => {
       if (eventValueKey) {
         const concreteEventType = tagName.startsWith('p-')
-          ? `${pascalCase(tagName.slice(2))}${eventName.slice(2)}Event`
+          ? `${pascalCase(tagName)}${eventName.slice(2)}Event`
           : undefined;
         if (!concreteEventType && !eventType) {
           throw new Error(`Missing eventType for ${tagName}.${eventName} with eventValueKey "${eventValueKey}"`);

@@ -1,73 +1,73 @@
 import {
-  type AccordionUpdateEvent,
-  type CarouselUpdateEvent,
-  type InputDateBlurEvent,
-  type InputDateChangeEvent,
-  type InputDateInputEvent,
-  type InputEmailBlurEvent,
-  type InputEmailChangeEvent,
-  type InputEmailInputEvent,
-  type InputMonthBlurEvent,
-  type InputMonthChangeEvent,
-  type InputMonthInputEvent,
-  type InputNumberBlurEvent,
-  type InputNumberChangeEvent,
-  type InputNumberInputEvent,
-  type InputPasswordBlurEvent,
-  type InputPasswordChangeEvent,
-  type InputPasswordInputEvent,
-  type InputSearchBlurEvent,
-  type InputSearchChangeEvent,
-  type InputSearchInputEvent,
-  type InputTelBlurEvent,
-  type InputTelChangeEvent,
-  type InputTelInputEvent,
-  type InputTextBlurEvent,
-  type InputTextChangeEvent,
-  type InputTextInputEvent,
-  type InputTimeBlurEvent,
-  type InputTimeChangeEvent,
-  type InputTimeInputEvent,
-  type InputUrlBlurEvent,
-  type InputUrlChangeEvent,
-  type InputUrlInputEvent,
-  type InputWeekBlurEvent,
-  type InputWeekChangeEvent,
-  type InputWeekInputEvent,
   PAccordion,
-  type PaginationUpdateEvent,
+  type PAccordionUpdateEvent,
   PBanner,
   PCarousel,
+  type PCarouselUpdateEvent,
   PHeading,
   PInputDate,
+  type PInputDateBlurEvent,
+  type PInputDateChangeEvent,
+  type PInputDateInputEvent,
   PInputEmail,
+  type PInputEmailBlurEvent,
+  type PInputEmailChangeEvent,
+  type PInputEmailInputEvent,
   PInputMonth,
+  type PInputMonthBlurEvent,
+  type PInputMonthChangeEvent,
+  type PInputMonthInputEvent,
   PInputNumber,
+  type PInputNumberBlurEvent,
+  type PInputNumberChangeEvent,
+  type PInputNumberInputEvent,
   PInputPassword,
+  type PInputPasswordBlurEvent,
+  type PInputPasswordChangeEvent,
+  type PInputPasswordInputEvent,
   PInputSearch,
+  type PInputSearchBlurEvent,
+  type PInputSearchChangeEvent,
+  type PInputSearchInputEvent,
   PInputTel,
+  type PInputTelBlurEvent,
+  type PInputTelChangeEvent,
+  type PInputTelInputEvent,
   PInputText,
+  type PInputTextBlurEvent,
+  type PInputTextChangeEvent,
+  type PInputTextInputEvent,
   PInputTime,
+  type PInputTimeBlurEvent,
+  type PInputTimeChangeEvent,
+  type PInputTimeInputEvent,
   PInputUrl,
+  type PInputUrlBlurEvent,
+  type PInputUrlChangeEvent,
+  type PInputUrlInputEvent,
   PInputWeek,
+  type PInputWeekBlurEvent,
+  type PInputWeekChangeEvent,
+  type PInputWeekInputEvent,
   PModal,
   PPagination,
+  type PPaginationUpdateEvent,
   PSwitch,
+  type PSwitchUpdateEvent,
   PTable,
   PTableHead,
   PTableHeadCell,
   PTableHeadRow,
+  type PTableUpdateEvent,
   PTabs,
   PTabsBar,
+  type PTabsBarUpdateEvent,
   PTabsItem,
+  type PTabsUpdateEvent,
   PTextarea,
-  type SwitchUpdateEvent,
-  type TableUpdateEvent,
-  type TabsBarUpdateEvent,
-  type TabsUpdateEvent,
-  type TextareaBlurEvent,
-  type TextareaChangeEvent,
-  type TextareaInputEvent,
+  type PTextareaBlurEvent,
+  type PTextareaChangeEvent,
+  type PTextareaInputEvent,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
@@ -148,16 +148,16 @@ export const EventsPage = () => {
 
   // unused event parameters are used to verify that types can be imported from package root
   const onAccordionUpdate = useCallback(
-    (_: AccordionUpdateEvent) => setAccordionUpdateEventCounter((prev) => prev + 1),
+    (_: PAccordionUpdateEvent) => setAccordionUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onPaginationUpdate = useCallback(
-    (_: PaginationUpdateEvent) => setPaginationUpdateEventCounter((prev) => prev + 1),
+    (_: PPaginationUpdateEvent) => setPaginationUpdateEventCounter((prev) => prev + 1),
     []
   );
-  const onTabsBarUpdate = useCallback((_: TabsBarUpdateEvent) => setTabsBarUpdateEventCounter((prev) => prev + 1), []);
-  const onTabsUpdate = useCallback((_: TabsUpdateEvent) => setTabsUpdateEventCounter((prev) => prev + 1), []);
-  const onSwitchUpdate = useCallback((_: SwitchUpdateEvent) => setSwitchUpdateEventCounter((prev) => prev + 1), []);
+  const onTabsBarUpdate = useCallback((_: PTabsBarUpdateEvent) => setTabsBarUpdateEventCounter((prev) => prev + 1), []);
+  const onTabsUpdate = useCallback((_: PTabsUpdateEvent) => setTabsUpdateEventCounter((prev) => prev + 1), []);
+  const onSwitchUpdate = useCallback((_: PSwitchUpdateEvent) => setSwitchUpdateEventCounter((prev) => prev + 1), []);
   const onBannerClose = useCallback(() => {
     setBannerDismissEventCounter((prev) => prev + 1);
     setIsBannerOpen(false);
@@ -166,125 +166,143 @@ export const EventsPage = () => {
     setModalDismissEventCounter((prev) => prev + 1);
     setIsModalOpen(false);
   }, []);
-  const onTableUpdate = useCallback((_: TableUpdateEvent) => setTableUpdateEventCounter((prev) => prev + 1), []);
+  const onTableUpdate = useCallback((_: PTableUpdateEvent) => setTableUpdateEventCounter((prev) => prev + 1), []);
   const onCarouselUpdate = useCallback(
-    (_: CarouselUpdateEvent) => setCarouselUpdateEventCounter((prev) => prev + 1),
+    (_: PCarouselUpdateEvent) => setCarouselUpdateEventCounter((prev) => prev + 1),
     []
   );
 
   // PInputDate
   const onInputDateInput = useCallback(
-    (e: InputDateInputEvent) => setInputDateValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputDateInputEvent) => setInputDateValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputDateBlur = useCallback((_: InputDateBlurEvent) => setInputDateBlurCounter((prev) => prev + 1), []);
-  const onInputDateChange = useCallback((_: InputDateChangeEvent) => setInputDateChangeCounter((prev) => prev + 1), []);
+  const onInputDateBlur = useCallback((_: PInputDateBlurEvent) => setInputDateBlurCounter((prev) => prev + 1), []);
+  const onInputDateChange = useCallback(
+    (_: PInputDateChangeEvent) => setInputDateChangeCounter((prev) => prev + 1),
+    []
+  );
 
   // PInputMonth
   const onInputMonthInput = useCallback(
-    (e: InputMonthInputEvent) => setInputMonthValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputMonthInputEvent) => setInputMonthValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputMonthBlur = useCallback((_: InputMonthBlurEvent) => setInputMonthBlurCounter((prev) => prev + 1), []);
+  const onInputMonthBlur = useCallback((_: PInputMonthBlurEvent) => setInputMonthBlurCounter((prev) => prev + 1), []);
   const onInputMonthChange = useCallback(
-    (_: InputMonthChangeEvent) => setInputMonthChangeCounter((prev) => prev + 1),
+    (_: PInputMonthChangeEvent) => setInputMonthChangeCounter((prev) => prev + 1),
     []
   );
 
   // PInputWeek
   const onInputWeekInput = useCallback(
-    (e: InputWeekInputEvent) => setInputWeekValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputWeekInputEvent) => setInputWeekValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputWeekBlur = useCallback((_: InputWeekBlurEvent) => setInputWeekBlurCounter((prev) => prev + 1), []);
-  const onInputWeekChange = useCallback((_: InputWeekChangeEvent) => setInputWeekChangeCounter((prev) => prev + 1), []);
+  const onInputWeekBlur = useCallback((_: PInputWeekBlurEvent) => setInputWeekBlurCounter((prev) => prev + 1), []);
+  const onInputWeekChange = useCallback(
+    (_: PInputWeekChangeEvent) => setInputWeekChangeCounter((prev) => prev + 1),
+    []
+  );
 
   // PInputEmail
   const onInputEmailInput = useCallback(
-    (e: InputEmailInputEvent) => setInputEmailValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputEmailInputEvent) => setInputEmailValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputEmailBlur = useCallback((_: InputEmailBlurEvent) => setInputEmailBlurCounter((prev) => prev + 1), []);
+  const onInputEmailBlur = useCallback((_: PInputEmailBlurEvent) => setInputEmailBlurCounter((prev) => prev + 1), []);
   const onInputEmailChange = useCallback(
-    (_: InputEmailChangeEvent) => setInputEmailChangeCounter((prev) => prev + 1),
+    (_: PInputEmailChangeEvent) => setInputEmailChangeCounter((prev) => prev + 1),
     []
   );
 
   // PInputNumber
   const onInputNumberInput = useCallback(
-    (e: InputNumberInputEvent) => setInputNumberValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputNumberInputEvent) => setInputNumberValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputNumberBlur = useCallback((_: InputNumberBlurEvent) => setInputNumberBlurCounter((prev) => prev + 1), []);
+  const onInputNumberBlur = useCallback(
+    (_: PInputNumberBlurEvent) => setInputNumberBlurCounter((prev) => prev + 1),
+    []
+  );
   const onInputNumberChange = useCallback(
-    (_: InputNumberChangeEvent) => setInputNumberChangeCounter((prev) => prev + 1),
+    (_: PInputNumberChangeEvent) => setInputNumberChangeCounter((prev) => prev + 1),
     []
   );
 
   // PInputPassword
   const onInputPasswordInput = useCallback(
-    (e: InputPasswordInputEvent) => setInputPasswordValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputPasswordInputEvent) => setInputPasswordValue((e.detail.target as HTMLInputElement).value),
     []
   );
   const onInputPasswordBlur = useCallback(
-    (_: InputPasswordBlurEvent) => setInputPasswordBlurCounter((prev) => prev + 1),
+    (_: PInputPasswordBlurEvent) => setInputPasswordBlurCounter((prev) => prev + 1),
     []
   );
   const onInputPasswordChange = useCallback(
-    (_: InputPasswordChangeEvent) => setInputPasswordChangeCounter((prev) => prev + 1),
+    (_: PInputPasswordChangeEvent) => setInputPasswordChangeCounter((prev) => prev + 1),
     []
   );
 
   // PInputSearch
   const onInputSearchInput = useCallback(
-    (e: InputSearchInputEvent) => setInputSearchValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputSearchInputEvent) => setInputSearchValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputSearchBlur = useCallback((_: InputSearchBlurEvent) => setInputSearchBlurCounter((prev) => prev + 1), []);
+  const onInputSearchBlur = useCallback(
+    (_: PInputSearchBlurEvent) => setInputSearchBlurCounter((prev) => prev + 1),
+    []
+  );
   const onInputSearchChange = useCallback(
-    (_: InputSearchChangeEvent) => setInputSearchChangeCounter((prev) => prev + 1),
+    (_: PInputSearchChangeEvent) => setInputSearchChangeCounter((prev) => prev + 1),
     []
   );
 
   // PInputTel
   const onInputTelInput = useCallback(
-    (e: InputTelInputEvent) => setInputTelValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputTelInputEvent) => setInputTelValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputTelBlur = useCallback((_: InputTelBlurEvent) => setInputTelBlurCounter((prev) => prev + 1), []);
-  const onInputTelChange = useCallback((_: InputTelChangeEvent) => setInputTelChangeCounter((prev) => prev + 1), []);
+  const onInputTelBlur = useCallback((_: PInputTelBlurEvent) => setInputTelBlurCounter((prev) => prev + 1), []);
+  const onInputTelChange = useCallback((_: PInputTelChangeEvent) => setInputTelChangeCounter((prev) => prev + 1), []);
 
   // PInputText
   const onInputTextInput = useCallback(
-    (e: InputTextInputEvent) => setInputTextValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputTextInputEvent) => setInputTextValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputTextBlur = useCallback((_: InputTextBlurEvent) => setInputTextBlurCounter((prev) => prev + 1), []);
-  const onInputTextChange = useCallback((_: InputTextChangeEvent) => setInputTextChangeCounter((prev) => prev + 1), []);
+  const onInputTextBlur = useCallback((_: PInputTextBlurEvent) => setInputTextBlurCounter((prev) => prev + 1), []);
+  const onInputTextChange = useCallback(
+    (_: PInputTextChangeEvent) => setInputTextChangeCounter((prev) => prev + 1),
+    []
+  );
 
   // PInputTime
   const onInputTimeInput = useCallback(
-    (e: InputTimeInputEvent) => setInputTimeValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputTimeInputEvent) => setInputTimeValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputTimeBlur = useCallback((_: InputTimeBlurEvent) => setInputTimeBlurCounter((prev) => prev + 1), []);
-  const onInputTimeChange = useCallback((_: InputTimeChangeEvent) => setInputTimeChangeCounter((prev) => prev + 1), []);
+  const onInputTimeBlur = useCallback((_: PInputTimeBlurEvent) => setInputTimeBlurCounter((prev) => prev + 1), []);
+  const onInputTimeChange = useCallback(
+    (_: PInputTimeChangeEvent) => setInputTimeChangeCounter((prev) => prev + 1),
+    []
+  );
 
   // PInputUrl
   const onInputUrlInput = useCallback(
-    (e: InputUrlInputEvent) => setInputUrlValue((e.detail.target as HTMLInputElement).value),
+    (e: PInputUrlInputEvent) => setInputUrlValue((e.detail.target as HTMLInputElement).value),
     []
   );
-  const onInputUrlBlur = useCallback((_: InputUrlBlurEvent) => setInputUrlBlurCounter((prev) => prev + 1), []);
-  const onInputUrlChange = useCallback((_: InputUrlChangeEvent) => setInputUrlChangeCounter((prev) => prev + 1), []);
+  const onInputUrlBlur = useCallback((_: PInputUrlBlurEvent) => setInputUrlBlurCounter((prev) => prev + 1), []);
+  const onInputUrlChange = useCallback((_: PInputUrlChangeEvent) => setInputUrlChangeCounter((prev) => prev + 1), []);
 
   // PTextarea
   const onTextareaInput = useCallback(
-    (e: TextareaInputEvent) => setTextareaValue((e.detail.target as HTMLTextAreaElement).value),
+    (e: PTextareaInputEvent) => setTextareaValue((e.detail.target as HTMLTextAreaElement).value),
     []
   );
-  const onTextareaBlur = useCallback((_: TextareaBlurEvent) => setTextareaBlurCounter((prev) => prev + 1), []);
-  const onTextareaChange = useCallback((_: TextareaChangeEvent) => setTextareaChangeCounter((prev) => prev + 1), []);
+  const onTextareaBlur = useCallback((_: PTextareaBlurEvent) => setTextareaBlurCounter((prev) => prev + 1), []);
+  const onTextareaChange = useCallback((_: PTextareaChangeEvent) => setTextareaChangeCounter((prev) => prev + 1), []);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import {
-  type InputTextInputEvent,
   PButton,
   PInputText,
+  type PInputTextInputEvent,
   type PInputTextProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -11,7 +11,7 @@ export const InputTextExampleFormPage = () => {
   const [form, setForm] = useState<{ myInputText: PInputTextProps['value'] }>({ myInputText: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: InputTextInputEvent) => {
+  const onInput = (e: PInputTextInputEvent) => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,

@@ -1,7 +1,7 @@
 import {
-  type InputTimeInputEvent,
   PButton,
   PInputTime,
+  type PInputTimeInputEvent,
   type PInputTimeProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -11,7 +11,7 @@ export const InputTimeExampleFormPage = () => {
   const [form, setForm] = useState<{ myInputTime: PInputTimeProps['value'] }>({ myInputTime: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: InputTimeInputEvent) => {
+  const onInput = (e: PInputTimeInputEvent) => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,

@@ -3,9 +3,9 @@ import {
   type PFlagProps,
   POptgroup,
   PSelect,
+  type PSelectChangeEvent,
   PSelectOption,
   type PSelectProps,
-  type SelectChangeEvent,
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
@@ -90,7 +90,7 @@ export const SelectExampleSelectedSlot = () => {
     {} as Record<string, Option[]>
   );
 
-  const onChange = (e: SelectChangeEvent) => {
+  const onChange = (e: PSelectChangeEvent) => {
     const value = e.target.value;
     setValue(value);
     setSelectedOption(options.find((option) => option.code === value));

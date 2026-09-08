@@ -1,10 +1,10 @@
-import { type LinkTileProductLikeEvent, PLinkTileProduct, PTag } from '@porsche-design-system/components-react';
+import { PLinkTileProduct, type PLinkTileProductLikeEvent, PTag } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
 export const LinkTileProductExamplePage = () => {
   const [liked, setLiked] = useState(false);
 
-  const handleLike = (e: LinkTileProductLikeEvent) => {
+  const handleLike = (e: PLinkTileProductLikeEvent) => {
     setLiked(!e.detail.liked);
   };
 

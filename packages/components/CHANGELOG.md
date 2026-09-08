@@ -26,8 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **Partials**: `getMetaTagsAndIconLinks()` now links a webmanifest with maskable icons for Android PWA installation
   ([#4709](https://github.com/porsche-design-system/porsche-design-system/pull/4709))
 - **React**: components with custom events now export host element and complete event types from both the main and
-  `/ssr` entry points, e.g. `PInputNumberElement` and `InputNumberInputEvent`. Named handlers can use
-  `(event: InputNumberInputEvent) => event.target.value`; element types also infer custom events in `addEventListener`
+  `/ssr` entry points, e.g. `PInputNumberElement` and `PInputNumberInputEvent`. Named handlers can use
+  `(event: PInputNumberInputEvent) => event.target.value`; element types also infer custom events in `addEventListener`
   and `removeEventListener`. Existing `...EventDetail` types are unchanged
   ([#4711](https://github.com/porsche-design-system/porsche-design-system/pull/4711))
 
@@ -60,7 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4711](https://github.com/porsche-design-system/porsche-design-system/pull/4711))
 - **Breaking Change** **React**: custom `onBlur` callbacks in the main and `/ssr` entry points conflicted with React's
   synthetic focus-event typing. Callbacks now receive the component's actual custom event; replace React `FocusEvent`
-  annotations with the matching event type, e.g. `InputNumberBlurEvent`
+  annotations with the matching event type, e.g. `PInputNumberBlurEvent`
   ([#4711](https://github.com/porsche-design-system/porsche-design-system/pull/4711))
 
 ## [4.7.0-beta.0] - 2026-08-27

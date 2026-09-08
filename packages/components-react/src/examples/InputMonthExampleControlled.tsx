@@ -1,6 +1,6 @@
 import {
-  type InputMonthInputEvent,
   PInputMonth,
+  type PInputMonthInputEvent,
   type PInputMonthProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 export const InputMonthControlledExamplePage = () => {
   const [value, setValue] = useState<PInputMonthProps['value']>('');
 
-  const onInput = (e: InputMonthInputEvent) => {
+  const onInput = (e: PInputMonthInputEvent) => {
     setValue(e.target.value);
   };
 

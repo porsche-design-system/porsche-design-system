@@ -17,13 +17,14 @@ describe('ReactWrapperGenerator event typings', () => {
     const props = generator.generateProps('p-input-number', rawProps);
 
     expect(rawProps).toContain('onInput?: (event: CustomEvent<InputNumberInputEventDetail>) => void;');
-    expect(props).toContain('onInput?: (event: InputNumberInputEvent) => void;');
-    expect(props).toContain('export interface InputNumberInputEvent extends CustomEvent<InputNumberInputEventDetail>');
+    expect(props).toContain('onInput?: (event: PInputNumberInputEvent) => void;');
+    expect(props).toContain('export interface PInputNumberInputEvent extends CustomEvent<InputNumberInputEventDetail>');
     expect(props).toContain(
-      'export interface InputNumberChangeEvent extends CustomEvent<InputNumberChangeEventDetail>'
+      'export interface PInputNumberChangeEvent extends CustomEvent<InputNumberChangeEventDetail>'
     );
-    expect(props).toContain('export interface InputNumberBlurEvent extends CustomEvent<InputNumberBlurEventDetail>');
+    expect(props).toContain('export interface PInputNumberBlurEvent extends CustomEvent<InputNumberBlurEventDetail>');
     expect(props).not.toContain('PInputNumberCustomEvent');
+    expect(props).not.toMatch(/\b(?:type|interface) InputNumberInputEvent\b/);
     expect(props).toContain(
       'export type PInputNumberProps = Omit<BaseProps, keyof InputNumberEventHandlers> & InputNumberProperties & InputNumberEventHandlers;'
     );
@@ -55,14 +56,14 @@ describe('ReactWrapperGenerator event typings', () => {
     expect(props).toContain('interface TableProperties<T>');
     expect(props).toContain('interface TableEventHandlers<T>');
     expect(props).toContain('interface TableEventMap<T>');
-    expect(props).toContain("'update': TableUpdateEvent<T>;");
+    expect(props).toContain("'update': PTableUpdateEvent<T>;");
     expect(props).toContain(
       'addEventListener<K extends keyof TableEventMap<T>>(type: K, listener: (this: PTableElement<T>, event: TableEventMap<T>[K]) => void'
     );
     expect(props).toContain('export type PTableProps<T>');
     expect(props).toContain('export interface PTableElement<T> extends HTMLElement, TableProperties<T>');
-    expect(props).toContain('onUpdate?: (event: TableUpdateEvent<T>) => void;');
-    expect(props).toContain('export interface TableUpdateEvent<T> extends CustomEvent<Array<T>>');
+    expect(props).toContain('onUpdate?: (event: PTableUpdateEvent<T>) => void;');
+    expect(props).toContain('export interface PTableUpdateEvent<T> extends CustomEvent<Array<T>>');
     expect(props).toContain('target: PTableElement<T>;');
   });
 
@@ -72,10 +73,10 @@ describe('ReactWrapperGenerator event typings', () => {
       '{ onInput?: (event: CustomEvent<InputEvent>) => void; onBlur?: (event: CustomEvent<Event>) => void; }'
     );
 
-    expect(props).toContain('onInput?: (event: InputNumberInputEvent) => void;');
-    expect(props).toContain('onBlur?: (event: InputNumberBlurEvent) => void;');
-    expect(props).toContain('export interface InputNumberInputEvent extends CustomEvent<InputEvent>');
-    expect(props).toContain('export interface InputNumberBlurEvent extends CustomEvent<Event>');
+    expect(props).toContain('onInput?: (event: PInputNumberInputEvent) => void;');
+    expect(props).toContain('onBlur?: (event: PInputNumberBlurEvent) => void;');
+    expect(props).toContain('export interface PInputNumberInputEvent extends CustomEvent<InputEvent>');
+    expect(props).toContain('export interface PInputNumberBlurEvent extends CustomEvent<Event>');
   });
 
   it('separates properties and callbacks while preserving comments, optionality, and nested members', () => {
@@ -108,7 +109,7 @@ describe('ReactWrapperGenerator event typings', () => {
     expect(properties).toContain('onInput: string;');
     expect(properties).not.toContain('Input notification');
     expect(eventHandlers).toContain('/** Input notification. */\n  onInput?: (');
-    expect(eventHandlers).toContain('event: InputNumberInputEvent');
+    expect(eventHandlers).toContain('event: PInputNumberInputEvent');
     expect(eventHandlers).not.toContain('options');
     expect(props).toContain('extends CustomEvent<{\n      value: number;\n    }>');
   });
@@ -122,8 +123,8 @@ describe('ReactWrapperGenerator event typings', () => {
   it('generates custom, native and fallback listener overloads in that order for both methods', () => {
     const props = generator.generateProps('p-input-number', parser.getRawComponentInterface('p-input-number'));
 
-    expect(props).toContain("interface InputNumberEventMap {\n  'blur': InputNumberBlurEvent;");
-    expect(props).toContain("'input': InputNumberInputEvent;");
+    expect(props).toContain("interface InputNumberEventMap {\n  'blur': PInputNumberBlurEvent;");
+    expect(props).toContain("'input': PInputNumberInputEvent;");
     expect(props).not.toContain('export interface InputNumberEventMap');
     for (const method of ['addEventListener', 'removeEventListener']) {
       const optionsType = method === 'addEventListener' ? 'AddEventListenerOptions' : 'EventListenerOptions';
@@ -142,8 +143,8 @@ describe('ReactWrapperGenerator event typings', () => {
   it('uses the same camel-cased DOM event names as the runtime listeners', () => {
     const props = generator.generateProps('p-modal', parser.getRawComponentInterface('p-modal'));
 
-    expect(props).toContain("'motionHiddenEnd': ModalMotionHiddenEndEvent;");
-    expect(props).toContain("'motionVisibleEnd': ModalMotionVisibleEndEvent;");
+    expect(props).toContain("'motionHiddenEnd': PModalMotionHiddenEndEvent;");
+    expect(props).toContain("'motionVisibleEnd': PModalMotionVisibleEndEvent;");
     expect(props).not.toContain("'onMotionHiddenEnd'");
   });
 

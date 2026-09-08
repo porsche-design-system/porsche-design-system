@@ -25,8 +25,8 @@ Learn more in the [Theme](/must-know/theme) section.
 
 ## Typed Events and Element Refs
 
-React components with custom events export concrete event and host element types, for example `InputNumberInputEvent`,
-`InputNumberChangeEvent`, `InputNumberBlurEvent`, and `PInputNumberElement`. Import these from
+React components with custom events export concrete event and host element types, for example `PInputNumberInputEvent`,
+`PInputNumberChangeEvent`, `PInputNumberBlurEvent`, and `PInputNumberElement`. Import these from
 `@porsche-design-system/components-react`, or from `@porsche-design-system/components-react/ssr` in Next.js and React
 Router SSR applications. Both entry points provide the same typings.
 
@@ -37,11 +37,11 @@ without a cast:
 
 ```diff
 - import type { InputNumberInputEventDetail } from '@porsche-design-system/components-react';
-+ import type { InputNumberInputEvent } from '@porsche-design-system/components-react';
++ import type { PInputNumberInputEvent } from '@porsche-design-system/components-react';
 
 - function handleInput(event: CustomEvent<InputNumberInputEventDetail>) {
 -   setValue((event.target as HTMLElement & { value: PInputNumberProps['value'] }).value);
-+ function handleInput(event: InputNumberInputEvent) {
++ function handleInput(event: PInputNumberInputEvent) {
 +   setValue(event.target.value);
   }
 ```
@@ -69,7 +69,7 @@ export function Quantity() {
 }
 ```
 
-The inferred event is `InputNumberInputEvent` and its `target` is `PInputNumberElement`, the `<p-input-number>` host.
+The inferred event is `PInputNumberInputEvent` and its `target` is `PInputNumberElement`, the `<p-input-number>` host.
 Property unions and optionality are unchanged: `PInputNumberProps['value']` is still
 `string | number | null | undefined`, not just `number`.
 
@@ -91,7 +91,7 @@ host, not its inner native input.
 import { useEffect, useRef, useState } from 'react';
 import {
   PInputNumber,
-  type InputNumberInputEvent,
+  type PInputNumberInputEvent,
   type PInputNumberElement,
   type PInputNumberProps,
 } from '@porsche-design-system/components-react';
@@ -104,7 +104,7 @@ export function QuantityWithListener() {
     const element = inputRef.current;
     if (!element) return;
 
-    const handleInput = (event: InputNumberInputEvent) => {
+    const handleInput = (event: PInputNumberInputEvent) => {
       setValue(event.target.value);
     };
     element.addEventListener('input', handleInput);
