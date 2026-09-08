@@ -2,16 +2,16 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "projects/vue-wrapper/src"],
   "exclude": [
-    "projects/vue-wrapper/src/styles/index.ts",
+    "projects/vue-wrapper/src/emotion/index.ts",
     "projects/vue-wrapper/src/partials/index.ts",
     "projects/vue-wrapper/src/testing/index.ts",
     "projects/vue-wrapper/src/jsdom-polyfill/index.ts"
   ],
   "compilerOptions": {
+    "rootDir": "projects/vue-wrapper/src",
     "outDir": "dist/vue-wrapper",
     "declaration": true,
     "declarationDir": "dist/vue-wrapper/esm",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./projects/vue-wrapper/src/public-api.ts"]
     },

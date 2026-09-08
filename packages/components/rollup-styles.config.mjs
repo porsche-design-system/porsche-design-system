@@ -7,9 +7,11 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 import { pascalCase } from 'change-case';
-import { globbySync } from 'globby';
+import fg from 'fast-glob';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import pkgJson from './package.json' with { type: 'json' };
+
+const { sync: globbySync } = fg;
 
 const outputDir = 'dist/styles';
 const input = 'src/styles-entry.ts';
@@ -77,7 +79,7 @@ export default [
         baseContents: {
           main: 'styles-entry.js',
           module: 'esm/styles-entry.js',
-          types: 'styles-entry.d.ts',
+          types: 'src/styles-entry.d.ts',
           sideEffects: false,
         },
       }),

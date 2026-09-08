@@ -1,0 +1,34 @@
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `aria-describedby="IDREF"`      | Defines the accessible description combined with the status message.                                  |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+| `aria-live="polite"`            | If the `maxlength` attribute is present, the counter is announced via ARIA live region.               |
+
+## Development considerations
+
+### Disabled state
+
+In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
+reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
+
+### Common do's and don'ts
+
+- **Do** provide a descriptive label, especially for open text questions.
+- **Do** use helper text to describe expected format, length, or sensitive content rules.
+- **Do** surface validation with state/message so screen readers get updates.
+- **Don't** use placeholder-only instructions.
+- **Don't** use `hide-label` without an accessible name.

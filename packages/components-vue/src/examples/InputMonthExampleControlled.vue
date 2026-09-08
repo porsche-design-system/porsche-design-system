@@ -1,16 +1,21 @@
 <script setup lang="ts">
-  import { type InputMonthInputEventDetail, PInputMonth, PText } from '@porsche-design-system/components-vue';
-  import { computed, ref } from 'vue';
+import {
+  type InputMonthInputEventDetail,
+  PInputMonth,
+  type PInputMonthProps,
+  PText,
+} from '@porsche-design-system/components-vue';
+import { computed, ref } from 'vue';
 
-  const value = ref<string>('');
+const value = ref<PInputMonthProps['value']>('');
 
-  const onInput = (e: InputMonthInputEventDetail) => {
-    value.value = (e.target as HTMLInputElement).value;
-  };
+const onInput = (e: CustomEvent<InputMonthInputEventDetail>) => {
+  value.value = (e.target as HTMLInputElement).value;
+};
 
-  const debugText = computed(() => {
-    return `Value: ${value.value}`;
-  });
+const debugText = computed(() => {
+  return `Value: ${value.value}`;
+});
 </script>
 
 <template>

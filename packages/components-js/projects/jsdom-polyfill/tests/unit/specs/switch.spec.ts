@@ -1,5 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -35,4 +35,15 @@ it('should have working events', async () => {
 
   await userEvent.click(button);
   expect(debugEl.innerHTML).toBe('Checked: <span>false</span>; Event Counter: <span>2</span>;');
+});
+
+it('should expose its switch to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-switch');
+  await componentsReady();
+
+  expect(screen.queryAllByRole('switch')).toHaveLength(0);
+  expect(screen.getAllByShadowRole('switch')).toHaveLength(1);
+
+  const { shadowRoot } = document.querySelector('p-switch');
+  expect(screen.getByShadowRole('switch')).toBe(shadowRoot.querySelector('button#x'));
 });

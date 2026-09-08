@@ -5,6 +5,7 @@ import type { SelectAction } from './getSelectActionFromKeyboardEvent';
 export type Option = HTMLElement &
   HTMLStencilElement & {
     disabled?: boolean;
+    disabledParent?: boolean;
     highlighted?: boolean;
     selected?: boolean;
   };
@@ -119,7 +120,7 @@ export const getUsableSelectOptions = <T extends Option>(options: T[]): T[] =>
  * @returns {boolean} - A boolean flag indicating if the option is usable.
  */
 export const isUsableOption = <T extends Option>(option: T): boolean =>
-  !option.hidden && !option.disabled && option.style.display !== 'none';
+  !option.hidden && !option.disabled && !option.disabledParent && option.style.display !== 'none';
 
 /**
  * Filters an array of select options based on a filter string, considering visibility and usability.

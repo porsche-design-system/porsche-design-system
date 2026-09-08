@@ -1,6 +1,13 @@
 analyzer:
   skip_excluded: true
-  enabled_package_managers: [Yarn]
+  enabled_package_managers: [NPM]
+  package_managers:
+    NPM:
+      options:
+        # Required to match the `legacy-peer-deps=true` setting in `.npmrc`;
+        # without it, ORT surfaces transitive peer-dependency mismatches that
+        # npm itself ignores during install.
+        legacyPeerDeps: "true"
 
 excludes:
   # -----------------------------
@@ -27,9 +34,6 @@ excludes:
       reason: EXAMPLE_OF
       comment: "Example integration project demonstrating framework usage; not included in any distributed artifacts."
 
-    - pattern: "packages/components-react/projects/remix/**"
-      reason: EXAMPLE_OF
-      comment: "Example integration project demonstrating framework usage; not included in any distributed artifacts."
 
     # -----------------------------
     # components-angular
@@ -67,3 +71,26 @@ excludes:
     - pattern: "peerDependencies"
       reason: PROVIDED_DEPENDENCY_OF
       comment: "Peer dependencies must be provided by the consuming project; not part of delivered artifacts."
+
+# -----------------------------
+# Issue resolutions
+# -----------------------------
+# `analyzer.package_managers.NPM.options.legacyPeerDeps: "true"` only controls how
+# ORT installs the dependency tree (equivalent to `npm install --legacy-peer-deps`).
+# After install, ORT still runs an `npm list`-style validation whose output surfaces
+# peer-dependency mismatches as ERROR issues. Those cannot be silenced via the
+# analyzer option, so we resolve them here — matching what npm itself ignores at
+# install time thanks to `legacy-peer-deps=true` in `.npmrc`.
+#
+# The `invalid: …` markers are, by design, the byproduct of the intentional
+# security `overrides` in the root `package.json` (e.g. `koa`, `@tootallnate/once`,
+# and `next > postcss`), which force transitive dev-tooling dependencies onto
+# CVE-patched versions. `npm list` still flags the overridden version as "invalid"
+# against the dependent's original declared range, but the override IS the fix.
+# Reverting the overrides to satisfy `npm list` would re-introduce known CVEs, so
+# these dev-only, non-distributed conflicts are resolved here instead.
+resolutions:
+  issues:
+    - message: "^invalid: .+ /project/node_modules/.+$"
+      reason: BUILD_TOOL_ISSUE
+      comment: "Transitive dev-dependency version mismatch reported by `npm list`, caused by intentional CVE-patching `overrides` in the root package.json (e.g. koa, @tootallnate/once, next>postcss). The override is the security fix. Not relevant for distributed artifacts."

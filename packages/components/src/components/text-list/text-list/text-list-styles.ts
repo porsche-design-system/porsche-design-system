@@ -1,25 +1,27 @@
-import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../../styles';
-import type { Theme } from '../../../types';
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  ref,
+  spacingStaticMd,
+  spacingStaticXs,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import { isListTypeNumbered, isListTypeOrdered, type TextListType } from './text-list-utils';
 
-export const cssVariablePaddingTop = '--p-internal-text-list-padding-top';
-export const cssVariablePaddingBottom = '--p-internal-text-list-padding-bottom';
-export const cssVariablePseudoSpace = '--p-internal-text-list-pseudo-space';
-export const cssVariableUnorderedGridColumn = '--p-internal-text-list-unordered-grid-column';
-export const cssVariableUnorderedPseudoContent = '--p-internal-text-list-unordered-pseudo-content';
-export const cssVariableOrderedGridColumn = '--p-internal-text-list-ordered-grid-column';
-export const cssVariableOrderedPseudoSuffix = '--p-internal-text-list-ordered-pseudo-suffix';
+export const cssVariableOrderedGridColumn = '--_p-text-list-a';
+export const cssVariableOrderedPseudoSuffix = '--_p-text-list-b';
+export const cssVariablePaddingBottom = '--_p-text-list-c';
+export const cssVariablePaddingTop = '--_p-text-list-d';
+export const cssVariablePseudoSpace = '--_p-text-list-e';
+export const cssVariableUnorderedGridColumn = '--_p-text-list-f';
+export const cssVariableUnorderedPseudoContent = '--_p-text-list-g';
 const counter = 'p-text-list-counter';
 
-export const getComponentCss = (type: TextListType, theme: Theme): string => {
+export const getComponentCss = (type: TextListType): string => {
   const isOrderedList = isListTypeOrdered(type);
 
   return getCss({
@@ -28,38 +30,34 @@ export const getComponentCss = (type: TextListType, theme: Theme): string => {
         display: 'block',
         ...addImportantToEachRule({
           counterReset: counter,
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       'ol,ul': {
-        ...textSmallStyle,
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         margin: 0,
-        padding: `var(${cssVariablePaddingTop},0) 0 var(${cssVariablePaddingBottom},0) 0`,
+        padding: `${ref(cssVariablePaddingTop, '0')} 0 ${ref(cssVariablePaddingBottom, '0')} 0`,
         listStyleType: 'none',
-        color: getThemedColors(theme).primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: getThemedColors('dark').primaryColor,
-        }),
+        color: ref(colorPrimary),
       },
       // css selector for text-list-item
       '::slotted(*)': addImportantToEachRule({
-        [cssVariablePaddingTop]: spacingStaticXSmall, // padding top for nested list
-        [cssVariablePaddingBottom]: spacingStaticMedium, // padding bottom for nested list, TODO: in case it's last root list item with a nested list it would result in outer spacing which is not desired
+        [cssVariablePaddingTop]: ref(spacingStaticXs), // padding top for nested list
+        [cssVariablePaddingBottom]: ref(spacingStaticMd), // padding bottom for nested list, TODO: in case it's last root list item with a nested list it would result in outer spacing which is not desired
         [cssVariablePseudoSpace]: isOrderedList
-          ? `var(${cssVariableOrderedGridColumn},1.5rem)`
-          : `var(${cssVariableUnorderedGridColumn},.375rem)`,
+          ? ref(cssVariableOrderedGridColumn, '1.5rem')
+          : ref(cssVariableUnorderedGridColumn, '.375rem'),
         '&::before': isOrderedList
           ? {
               content: `counters(${counter},'.',${
                 isListTypeNumbered(type) ? 'decimal' : 'lower-latin'
-              }) var(${cssVariableOrderedPseudoSuffix},'.')`,
+              }) ${ref(cssVariableOrderedPseudoSuffix, "'.'")}`,
               counterIncrement: counter,
               justifySelf: 'flex-end',
               whiteSpace: 'nowrap',
             }
           : {
-              content: `var(${cssVariableUnorderedPseudoContent},'•')`,
+              content: ref(cssVariableUnorderedPseudoContent, "'•'"),
             },
       }),
     },

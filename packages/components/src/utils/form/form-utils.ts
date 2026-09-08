@@ -34,7 +34,6 @@ export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, 
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
 };
 
-// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function debounce<T extends (...args: any[]) => void>(fn: T, ms = 800) {
   let timeoutId: ReturnType<typeof setTimeout>;
 

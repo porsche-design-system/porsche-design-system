@@ -4,10 +4,10 @@ Copies crest in multiple resolutions, creates a manifest and private npm package
 
 ## Build
 
-- `yarn build`
-  - `yarn build:crest` (copies crest in multiple resolutions and creates a manifest)
-  - `yarn build:lib` (bundles library)
+- `npm run build`
+  - `npm run build:crest` (copies crest in multiple resolutions and creates a manifest)
+  - `npm run build:lib` (bundles library)
 
 ## Clean
 
-- `yarn clean:build` (removes all auto generated files created by `yarn build`)
+- `npm run clean:build` (removes all auto generated files created by `npm run build`)

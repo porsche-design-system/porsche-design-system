@@ -6,8 +6,9 @@ import {
   PInputSearch,
   PMultiSelect,
   PMultiSelectOption,
+  type PMultiSelectProps,
 } from '@porsche-design-system/components-react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
 const useDebounce = <T,>(callback: (value: T) => void, delay = 400) => {
   const timer = useRef<number | undefined>(undefined);
@@ -17,8 +18,22 @@ const useDebounce = <T,>(callback: (value: T) => void, delay = 400) => {
   };
 };
 
-export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
-  const [value, setValue] = useState<string[]>([]);
+const getFilterStatusMessage = (
+  searchValue: string,
+  optionCount: number,
+  isLoading: boolean,
+  error: string | null
+): string => {
+  if (error) return '';
+  if (isLoading) return 'Loading options';
+  const term = searchValue.trim();
+  if (!term) return '';
+  if (optionCount === 0) return 'No results found';
+  return optionCount === 1 ? '1 result available' : `${optionCount} results available`;
+};
+
+export const MultiSelectExampleAsyncFilter = () => {
+  const [value, setValue] = useState<PMultiSelectProps['value']>([]);
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
 
   const [searchValue, setSearchValue] = useState('');
@@ -81,6 +96,11 @@ export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
     }
   };
 
+  const filterStatusMessage = useMemo(
+    () => getFilterStatusMessage(searchValue, options.length, initialLoading || loading, error),
+    [searchValue, options.length, initialLoading, loading, error]
+  );
+
   return (
     <PMultiSelect name="async-search-select" label="Async Search" value={value} onChange={onChange} onToggle={onToggle}>
       <PInputSearch
@@ -98,6 +118,11 @@ export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
         onChange={(e: any) => e.stopPropagation()}
       />
 
+      {/* Persistent status announcer for assistive technologies (keep always in the DOM) */}
+      <div slot="options-status" className="sr-only" aria-live="polite" aria-atomic="true">
+        {filterStatusMessage}
+      </div>
+
       {/* Initial skeleton loading */}
       {initialLoading &&
         !error &&
@@ -110,22 +135,21 @@ export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
         </PMultiSelectOption>
       ))}
 
-      {/* No filter results */}
-      {!initialLoading && options.length === 0 && !error && (
+      {/* No filter results (visual only; announcements come from the live region) */}
+      {!initialLoading && !loading && options.length === 0 && !error && (
         <div
           slot="options-status"
           className="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
-          role="alert"
+          aria-hidden="true"
         >
-          <span aria-hidden="true">–</span>
-          <span className="sr-only">No results found</span>
+          –
         </div>
       )}
 
       {/* Error state */}
       {error && (
         <div slot="options-status" className="flex gap-static-sm py-static-sm px-[12px]" role="alert">
-          <PIcon name="information" color="notification-error" />
+          <PIcon name="information" color="error" />
           <span className="text-error">{error}</span>
         </div>
       )}

@@ -1,8 +1,9 @@
-import { type Breakpoint, breakpoints } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoints } from '@porsche-design-system/emotion';
 import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
-import { consoleError, getTagNameWithoutPrefix } from '..';
 import { type BreakpointValues, parseJSON } from '../breakpoint-customizable';
 import { parseJSONAttribute } from '../json';
+import { consoleError } from '../log/logger';
+import { getTagNameWithoutPrefix } from '../tag-name';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionArrayCreator = (allowedType: ValidatorFunction) => ValidatorFunction;
@@ -36,15 +37,11 @@ export const formatObjectOutput = (value: any): string => {
 };
 
 export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
-  return (
-    // eslint-disable-next-line @typescript-eslint/no-base-to-string
-    JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
-      .replace(/'/g, '') // remove single quotes
-      // eslint-disable-next-line @typescript-eslint/quotes
-      .replace(/"/g, "'") // replace double quotes with single quotes
-      .replace(/'(undefined)'/, '$1') // remove quotes around undefined
-      .replace(/,/g, ', ') // add space after comma
-  );
+  return JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
+    .replace(/'/g, '') // remove single quotes
+    .replace(/"/g, "'") // replace double quotes with single quotes
+    .replace(/'(undefined)'/, '$1') // remove quotes around undefined
+    .replace(/,/g, ', '); // add space after comma
 };
 
 export const printErrorMessage = ({
@@ -52,11 +49,13 @@ export const printErrorMessage = ({
   propValue, // TODO: might be nicer if this is always a string
   propType,
   componentName,
-}: ValidationError & { componentName: string }): void => {
+  instance,
+}: ValidationError & { componentName: string; instance: any }): void => {
   consoleError(
     `Invalid property '${propName}' with value '${internalValidateProps.formatObjectOutput(
       propValue
-    )}' supplied to ${componentName}, expected one of: ${propType}`
+    )}' supplied to ${componentName}, expected one of: ${propType}.`,
+    instance.host
   );
 };
 
@@ -91,21 +90,18 @@ export const getBreakpointCustomizableStructure = <T>(
 };
 
 export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {
-  return (
-    internalValidateProps
-      .formatObjectOutput(
-        allowedAriaAttributes.reduce(
-          (prev, key) => ({
-            ...prev,
-            [key as any]: 'value',
-          }),
-          {}
-        )
+  return internalValidateProps
+    .formatObjectOutput(
+      allowedAriaAttributes.reduce(
+        (prev, key) => ({
+          ...prev,
+          [key as any]: 'value',
+        }),
+        {}
       )
-      .replace(/":/g, '"?:') // add optional modifier on keys before colon
-      // eslint-disable-next-line @typescript-eslint/quotes
-      .replace(/"/g, "'") // replace double quotes with single quotes
-  );
+    )
+    .replace(/":/g, '"?:') // add optional modifier on keys before colon
+    .replace(/"/g, "'"); // replace double quotes with single quotes
 };
 
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
@@ -135,26 +131,22 @@ type AllowedTypeKey = 'string' | 'number' | 'boolean';
 export const AllowedTypes: {
   [key in AllowedTypeKey]: ValidatorFunction;
 } & {
+  null: ValidatorFunction;
   array: ValidatorFunctionArrayCreator;
   oneOf: ValidatorFunctionOneOfCreator;
   aria: ValidatorFunctionOneOfCreator;
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
-  // eslint-disable-next-line id-blacklist
   string: (...args) => internalValidateProps.validateValueOfType(...args, 'string'),
-  // eslint-disable-next-line id-blacklist
   number: (...args) => internalValidateProps.validateValueOfType(...args, 'number'),
-  // eslint-disable-next-line id-blacklist
   boolean: (...args) => internalValidateProps.validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function array(propName, propValue) {
       return internalValidateProps.isValidArray(propName, propValue, allowedType);
     },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
     // @ts-expect-error: Not all code paths return a value
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function oneOf(propName, propValue) {
       // use first item to determine if we've got primitive types or validator functions
       if (typeof allowedValuesOrValidatorFunctions[0] !== 'function') {
@@ -179,7 +171,6 @@ export const AllowedTypes: {
     },
   breakpoint: (allowedValues): ValidatorFunction =>
     // @ts-expect-error: Not all code paths return a value
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function breakpoint(propName, propValue) {
       // TODO: do parseJSON once in the component, currently it is happening multiple times in a single lifecycle
       const value = parseJSON(propValue as BreakpointValues<any>);
@@ -212,7 +203,6 @@ export const AllowedTypes: {
     },
   aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction =>
     // @ts-expect-error: Not all code paths return a value
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function aria(propName, propValue) {
       const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue as string);
       if (
@@ -228,7 +218,6 @@ export const AllowedTypes: {
     },
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
     // @ts-expect-error: Not all code paths return a value
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function shape(propName, propValue) {
       if (propValue) {
         // const propValueKeys = Object.keys(propValue);
@@ -250,6 +239,11 @@ export const AllowedTypes: {
         }
       }
     },
+  // method shorthand allows the reserved word `null` as a name, giving func.name === 'null'
+  // which yields readable `oneOf` error messages like "expected one of: string, null"
+  null(propName, propValue) {
+    return propValue === null || propValue === undefined ? undefined : { propName, propValue, propType: 'null' };
+  },
 };
 
 // utility type to retrieve all props based on a class
@@ -267,6 +261,7 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
     internalValidateProps.printErrorMessage({
       ...error,
       componentName: getTagNameWithoutPrefix(instance.host as HTMLElement),
+      instance,
     });
   }
 };
@@ -288,7 +283,11 @@ export const isValidArray = (propName: string, arr: any, validator: ValidatorFun
     : {
         propName,
         propValue: arr,
-        propType: validator(propName, null).propType, // Get propType by passing in null which will always result in error
+        // Derive propType for the error message by invoking the validator with a value that is
+        // guaranteed to fail. `null` works for most built-in validators (string/number/boolean),
+        // but not for `AllowedTypes.null` itself, so fall back to a unique Symbol which fails
+        // every typeof-based validator.
+        propType: (validator(propName, null) ?? validator(propName, Symbol('invalid')))?.propType,
       };
 
   if (validationError) {

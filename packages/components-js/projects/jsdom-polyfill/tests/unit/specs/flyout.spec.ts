@@ -1,5 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 import { Components } from '@porsche-design-system/components';
@@ -38,4 +38,15 @@ it('should work without errors when using header slot', async () => {
   await componentsReady();
 
   expect(spy).not.toHaveBeenCalled();
+});
+
+it('should expose its dismiss button to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-flyout');
+  await componentsReady();
+
+  expect(screen.queryAllByRole('button')).toHaveLength(0);
+  expect(screen.getAllByShadowRole('button')).toHaveLength(1);
+
+  const { shadowRoot } = document.querySelector('p-flyout');
+  expect(screen.getByShadowRole('button')).toBe(shadowRoot.querySelector('button.dismiss'));
 });

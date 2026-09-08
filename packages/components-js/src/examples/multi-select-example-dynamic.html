@@ -1,18 +1,24 @@
-<p-text-field-wrapper label="Value:"><input name="input-value" type="text" placeholder="e.g. 1,2" /></p-text-field-wrapper>
-<p-button id="btn-input-value" type="button" compact="true">Set Value</p-button>
-<p-button id="btn-reset" type="button" compact="true">Reset value</p-button>
+<div class="flex flex-col gap-fluid-sm">
+  <p-input-text name="input-value" label="Value:" placeholder="e.g. 1,2"></p-input-text>
+  <div class="flex gap-fluid-sm">
+    <p-button id="btn-input-value" type="button" compact="true">Set Value</p-button>
+    <p-button id="btn-reset" type="button" compact="true">Reset value</p-button>
+  </div>
 
-<p-multi-select name="options" label="Some Label">
-  <p-multi-select-option value="1">Option 1</p-multi-select-option>
-  <p-multi-select-option value="2">Option 2</p-multi-select-option>
-  <p-multi-select-option value="3">Option 3</p-multi-select-option>
-</p-multi-select>
+  <p-multi-select name="options" label="Some Label">
+    <p-multi-select-option value="1">Option 1</p-multi-select-option>
+    <p-multi-select-option value="2">Option 2</p-multi-select-option>
+    <p-multi-select-option value="3">Option 3</p-multi-select-option>
+  </p-multi-select>
 
-<p-button id="btn-add" type="button" compact="true">Add option</p-button>
-<p-button id="btn-remove" type="button" compact="true">Remove last option</p-button>
+  <div class="flex gap-fluid-sm">
+    <p-button id="btn-add" type="button" compact="true">Add option</p-button>
+    <p-button id="btn-remove" type="button" compact="true">Remove last option</p-button>
+  </div>
+</div>
 
 <script>
-  const input = document.querySelector('input');
+  const input = document.querySelector('p-input-text');
   const multiSelect = document.querySelector('p-multi-select');
 
   multiSelect.addEventListener('change', (e) => {
@@ -33,7 +39,7 @@
 
   document.querySelector('#btn-remove').addEventListener('click', () => {
     if (multiSelect.children.length > 0) {
-      multiSelect.lastChild.remove();
+      multiSelect.lastElementChild.remove();
     }
   });
 

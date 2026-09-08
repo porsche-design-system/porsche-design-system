@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { textareaMeta } from '@/app/(main)/components/textarea/textarea.meta';
+
+export const metadata = {
+  title: 'Textarea: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Textarea component',
+};
+
+# Textarea <ComponentStatus tagName="p-textarea"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<textareaMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-textarea" examples={textareaMeta.accessibility.examples} />
+
+<textareaMeta.accessibility.tests />

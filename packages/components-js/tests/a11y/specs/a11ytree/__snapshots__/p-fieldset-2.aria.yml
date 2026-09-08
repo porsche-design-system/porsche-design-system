@@ -1,8 +1,9 @@
 - group "Some label":
-  - radio "Some label"
-  - alert
-  - status
-  - radio "Some label"
-  - alert
-  - status
+  - radiogroup "Some Label":
+    - radio "Some Label"
+    - status
+    - radio "Some Label"
+    - status
+    - alert
+    - status
   - alert: Some error message

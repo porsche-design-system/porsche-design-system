@@ -3,7 +3,6 @@
 exports[`should have no regression for cjs dependency tree 1`] = `
 {
   "../projects/crest/dist/index.cjs": [],
-  "../projects/fallbacks/dist/index.cjs": [],
   "../projects/flags/dist/index.cjs": [],
   "../projects/font-face/dist/index.cjs": [],
   "../projects/fonts/dist/index.cjs": [],
@@ -13,7 +12,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "../projects/model-signatures/dist/index.cjs": [],
   "index.cjs": [
     "../projects/crest/dist/index.cjs",
-    "../projects/fallbacks/dist/index.cjs",
     "../projects/flags/dist/index.cjs",
     "../projects/font-face/dist/index.cjs",
     "../projects/fonts/dist/index.cjs",
@@ -28,7 +26,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
 exports[`should have no regression for esm dependency tree 1`] = `
 {
   "../projects/crest/dist/index.mjs": [],
-  "../projects/fallbacks/dist/index.mjs": [],
   "../projects/flags/dist/index.mjs": [],
   "../projects/font-face/dist/index.mjs": [],
   "../projects/fonts/dist/index.mjs": [],
@@ -38,7 +35,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "../projects/model-signatures/dist/index.mjs": [],
   "index.mjs": [
     "../projects/crest/dist/index.mjs",
-    "../projects/fallbacks/dist/index.mjs",
     "../projects/flags/dist/index.mjs",
     "../projects/font-face/dist/index.mjs",
     "../projects/fonts/dist/index.mjs",

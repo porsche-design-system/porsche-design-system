@@ -1,6 +1,5 @@
 import {
   PButton,
-  PButtonGroup,
   PStepperHorizontal,
   PStepperHorizontalItem,
   PText,
@@ -14,7 +13,7 @@ type StepperHorizontalItemProps = {
   name: string;
 };
 
-export const StepperHorizontalExamplePage = (): JSX.Element => {
+export const StepperHorizontalExamplePage = () => {
   const [steps, setSteps] = useState<StepperHorizontalItemProps[]>([
     {
       state: 'current',
@@ -65,7 +64,7 @@ export const StepperHorizontalExamplePage = (): JSX.Element => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-fluid-sm">
       <PStepperHorizontal onUpdate={onUpdate}>
         {steps.map(({ state, name }) => (
           <PStepperHorizontalItem key={name} state={state}>
@@ -76,11 +75,11 @@ export const StepperHorizontalExamplePage = (): JSX.Element => {
 
       {stepContent.map((content, i) => getActiveStepIndex(steps) === i && <PText key={i}>{content}</PText>)}
 
-      <PButtonGroup>
+      <div className="flex gap-fluid-sm">
         <PButton
           type="button"
           icon="arrow-head-left"
-          variant="tertiary"
+          variant="secondary"
           onClick={() => onNextPrevStep('prev')}
           disabled={getActiveStepIndex(steps) === 0}
         >
@@ -94,7 +93,7 @@ export const StepperHorizontalExamplePage = (): JSX.Element => {
         >
           Next Step
         </PButton>
-      </PButtonGroup>
-    </>
+      </div>
+    </div>
   );
 };

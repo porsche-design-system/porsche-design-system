@@ -37,7 +37,6 @@ export const ComponentMetaProps = ({ propsMeta }: ComponentMetaPropsProps) => {
 
   return (
     <>
-      {/** biome-ignore lint/correctness/useUniqueElementIds: <Needed> */}
       <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)" id="properties">
         Properties
       </PHeading>
@@ -64,14 +63,10 @@ export const ComponentMetaProps = ({ propsMeta }: ComponentMetaPropsProps) => {
                 <code>{kebabCase(propName)}</code>
               </PTableCell>
               <PTableCell multiline={true} className="min-w-40 align-top">
-                <span // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
-                  dangerouslySetInnerHTML={{ __html: formatDescription(propMeta) }}
-                />
+                <span dangerouslySetInnerHTML={{ __html: formatDescription(propMeta) }} />
               </PTableCell>
               <PTableCell className="align-top">
-                <span // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
-                  dangerouslySetInnerHTML={{ __html: formatPropType(propMeta) }}
-                />
+                <span dangerouslySetInnerHTML={{ __html: formatPropType(propMeta) }} />
               </PTableCell>
               <PTableCell className="align-top">{formatPropDefaultValue(propMeta)}</PTableCell>
             </PTableRow>

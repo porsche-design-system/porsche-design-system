@@ -40,11 +40,12 @@ const getSelectedRadioGroupOptionProperty = async <K extends keyof RadioGroupOpt
     );
 
 const getSelectedOptionIndex = async (page: Page): Promise<number> =>
-  await page
-    .locator('p-radio-group p-radio-group-option')
-    .evaluateAll((options: RadioGroupOption[]) =>
-      options.filter((option) => !option.hidden).indexOf(options.find((option: RadioGroupOption) => option.selected))
-    );
+  await page.locator('p-radio-group p-radio-group-option').evaluateAll((options) => {
+    const opts = options as unknown as RadioGroupOption[];
+    const visible = opts.filter((option) => !option.hidden);
+    const selected = opts.find((option) => option.selected);
+    return selected ? visible.indexOf(selected) : -1;
+  });
 
 const getForm = (page: Page) => page.locator('form');
 
@@ -239,131 +240,169 @@ test.describe('Blur Event', () => {
 });
 
 test.describe('keyboard behavior', () => {
-  test('should focus 1st available element on tab', async ({ page }) => {
-    await initRadioGroup(page, {
-      props: { name: 'options', label: 'Some Label' },
-      options: {
-        values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
-      },
+  skipInBrowsers(['webkit'], () => {
+    test('should focus 1st available element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(0)).toBeFocused();
     });
 
-    const options = getRadioGroupOptions(page);
+    test('should focus checked element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { value: 'b', name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+        },
+      });
 
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    await expect(options.nth(0)).toBeFocused();
+      const options = getRadioGroupOptions(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should skip disabled option and focus 1st available element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should skip disabled option and focus checked element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { value: 'c', name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(2)).toBeFocused();
+    });
+
+    test('should skip checked disabled option and focus 1st available element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { value: 'a', name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should skip disabled and loading options when pressing ArrowUp/ArrowDown', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { value: 'a', name: 'options', label: 'Some Label' },
+        options: {
+          values: [
+            { value: 'a' },
+            { value: 'b', disabled: true },
+            { value: 'c' },
+            { value: 'd', loading: true },
+            { value: 'e' },
+            { value: 'f', disabled: true },
+          ],
+        },
+      });
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty<boolean>(getRadioGroupOption(page, 2), 'disabled'), 'disabled option').toBe(true);
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getSelectedOptionIndex(page)).toBe(2);
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getSelectedOptionIndex(page)).toBe(4);
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getSelectedOptionIndex(page)).toBe(0);
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getSelectedOptionIndex(page)).toBe(2);
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getSelectedOptionIndex(page)).toBe(4);
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getSelectedOptionIndex(page)).toBe(0);
+    });
   });
+});
 
-  test('should focus checked element on tab', async ({ page }) => {
-    await initRadioGroup(page, {
-      props: { value: 'b', name: 'options', label: 'Some Label' },
-      options: {
-        values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
-      },
+test.describe('label-after slot', () => {
+  test('should not select the option when label-after content is clicked', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" value="b">
+        <p-radio-group-option value="a" label="Option A">
+          <button type="button" slot="label-after" id="label-after-btn">More info</button>
+        </p-radio-group-option>
+        <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+        <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+      </p-radio-group>`
+    );
+    await waitForStencilLifecycle(page);
+
+    const host = getHost(page);
+    await addEventListener(host, 'change');
+
+    await page.locator('#label-after-btn').click();
+    await waitForStencilLifecycle(page);
+
+    await expect
+      .poll(async () => (await getEventSummary(host, 'change')).counter, { message: 'after label-after click' })
+      .toBe(0);
+    await expect(host).toHaveJSProperty('value', 'b');
+
+    await getRadioGroupOption(page, 1).evaluate((option) => {
+      option.shadowRoot?.querySelector('label')?.click();
     });
 
-    const options = getRadioGroupOptions(page);
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    await expect(options.nth(1)).toBeFocused();
-  });
-
-  test('should skip disabled option and focus 1st available element on tab', async ({ page }) => {
-    await initRadioGroup(page, {
-      props: { name: 'options', label: 'Some Label' },
-      options: {
-        values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
-      },
-    });
-
-    const options = getRadioGroupOptions(page);
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    await expect(options.nth(1)).toBeFocused();
-  });
-
-  test('should skip disabled option and focus checked element on tab', async ({ page }) => {
-    await initRadioGroup(page, {
-      props: { value: 'c', name: 'options', label: 'Some Label' },
-      options: {
-        values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
-      },
-    });
-
-    const options = getRadioGroupOptions(page);
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    await expect(options.nth(2)).toBeFocused();
-  });
-
-  test('should skip checked disabled option and focus 1st available element on tab', async ({ page }) => {
-    await initRadioGroup(page, {
-      props: { value: 'a', name: 'options', label: 'Some Label' },
-      options: {
-        values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
-      },
-    });
-
-    const options = getRadioGroupOptions(page);
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    await expect(options.nth(1)).toBeFocused();
-  });
-
-  test('should skip disabled and loading options when pressing ArrowUp/ArrowDown', async ({ page }) => {
-    await initRadioGroup(page, {
-      props: { value: 'a', name: 'options', label: 'Some Label' },
-      options: {
-        values: [
-          { value: 'a' },
-          { value: 'b', disabled: true },
-          { value: 'c' },
-          { value: 'd', loading: true },
-          { value: 'e' },
-          { value: 'f', disabled: true },
-        ],
-      },
-    });
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty<boolean>(getRadioGroupOption(page, 2), 'disabled'), 'disabled option').toBe(true);
-
-    await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectedOptionIndex(page)).toBe(2);
-
-    await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectedOptionIndex(page)).toBe(4);
-
-    await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectedOptionIndex(page)).toBe(0);
-
-    await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectedOptionIndex(page)).toBe(2);
-
-    await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectedOptionIndex(page)).toBe(4);
-
-    await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectedOptionIndex(page)).toBe(0);
+    await expect
+      .poll(async () => (await getEventSummary(host, 'change')).counter, { message: 'after label click' })
+      .toBe(1);
+    await expect(host).toHaveJSProperty('value', 'a');
   });
 });
 
@@ -412,19 +451,24 @@ test.describe('click events', () => {
 test.describe('slots', () => {
   test('should update when selected option is added', async ({ page }) => {
     await initRadioGroup(page, undefined);
-    expect(await getRadioGroupValue(page)).toBe('');
+    const host = getHost(page);
+
+    await expect(host).toHaveJSProperty('value', undefined);
 
     await setValue(page, 'c');
     await waitForStencilLifecycle(page);
-    expect(await getRadioGroupValue(page)).toBe('c');
+    await expect(host).toHaveJSProperty('value', 'c');
 
     await addOption(page, 'd', 'd');
     await waitForStencilLifecycle(page);
 
     await setValue(page, 'd');
     await waitForStencilLifecycle(page);
-    expect(await getRadioGroupValue(page), 'after option added').toBe('d');
-    expect(await getSelectedRadioGroupOptionProperty(page, 'value'), 'after option added').toEqual('d');
+    await expect(host).toHaveJSProperty('value', 'd');
+    await expect(
+      page.locator('p-radio-group p-radio-group-option').getByText('d'),
+      'after option added'
+    ).toHaveJSProperty('selected', true);
   });
 
   test('should update when selected option is removed', async ({ page }) => {
@@ -436,7 +480,7 @@ test.describe('slots', () => {
 
     const host: Locator = getHost(page);
     await host.evaluate((el) => {
-      (el as HTMLPRadioGroupElement).lastElementChild.remove();
+      (el as HTMLPRadioGroupElement).lastElementChild?.remove();
     });
 
     await waitForStencilLifecycle(page);
@@ -489,7 +533,7 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad['p-radio-group-option'], 'componentDidLoad: p-radio-group-option').toBe(3);
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
-    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     const option1 = getRadioGroupOption(page, 2);
     await option1.click();
@@ -506,7 +550,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidUpdate: p-radio-group-option',
         }
       )
-      .toBe(6);
+      .toBe(5);
     await expect
       .poll(
         async () => {
@@ -528,7 +572,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidUpdate: all',
         }
       )
-      .toBe(7);
+      .toBe(6);
   });
 
   skipInBrowsers(['webkit'], () => {
@@ -545,15 +589,15 @@ test.describe('lifecycle', () => {
       expect(status1.componentDidLoad['p-radio-group-option'], 'componentDidLoad: p-radio-group-option').toBe(3);
 
       expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
-      expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       const status2 = await getLifecycleStatus(page);
-      expect(status2.componentDidUpdate['p-radio-group-option'], 'componentDidUpdate: p-radio-group-option').toBe(6);
+      expect(status2.componentDidUpdate['p-radio-group-option'], 'componentDidUpdate: p-radio-group-option').toBe(5);
       expect(status2.componentDidUpdate['p-radio-group'], 'componentDidUpdate: p-radio-group').toBe(1);
-      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(7);
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(6);
     });
   });
 });

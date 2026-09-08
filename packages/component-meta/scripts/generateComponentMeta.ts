@@ -1,9 +1,9 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 import type { PropOptions } from '@porsche-design-system/components/dist/types/stencil-public-runtime';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
-import { kebabCase } from 'change-case';
+import { kebabCase, pascalCase } from 'change-case';
+import { sync as globbySync } from 'fast-glob';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
 import * as path from 'path';
 import type { ComponentMeta, ComponentsMeta, CssVariableMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 import { isDeprecatedComponent } from '../src/utils';
@@ -40,6 +40,37 @@ const getImportFilePath = (source: string, constName: string, tagName: TagName):
     ? path.resolve(componentFilePath, '..', importPath) // relative path
     : importPath; // absolute path to other package
 };
+
+// Looks a type up in the given file and follows a relative import if it isn't declared there. Returns undefined when
+// the name can't be resolved, so callers leave it untouched rather than emitting something wrong.
+const findTypeDefinition = (typeName: string, filePath: string): string | undefined => {
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+
+  const [, localDefinition] = fileContent.match(new RegExp(`\\btype ${typeName} = ([^;\\n]+);`)) || [];
+  if (localDefinition) {
+    return localDefinition.trim();
+  }
+
+  const [, relativeImportPath] =
+    fileContent.match(new RegExp(`import [\\s\\S]+?${typeName}[\\s\\S]+?from '([\\s\\S]+?)';`)) || [];
+  if (!relativeImportPath) {
+    return undefined;
+  }
+
+  const importedFileContent = fs.readFileSync(path.resolve(filePath, `../${relativeImportPath}.ts`), 'utf8');
+  const [, importedDefinition] = importedFileContent.match(new RegExp(`\\btype ${typeName} = ([^;\\n]+);`)) || [];
+
+  return importedDefinition?.trim();
+};
+
+// Resolves type names appearing inside an already-extracted event-detail object literal, e.g. turns
+// `{ reason: DialogDismissReason }` into `{ reason: 'dismiss-button' | 'backdrop' | 'escape' }`.
+const resolveNestedTypeNames = (typeDetail: string, containingFilePath: string): string =>
+  typeDetail.replace(/\b[A-Z][A-Za-z]*\b/g, (typeName) => {
+    const definition = findTypeDefinition(typeName, containingFilePath);
+
+    return definition && !definition.includes('{') ? definition : typeName;
+  });
 
 const getEvaluablePropTypeString = (propTypes: string): string => {
   return propTypes
@@ -80,6 +111,28 @@ const generateComponentMeta = (): void => {
     {} as Record<TagName, string>
   );
 
+  // The top-level source scan only detects PDS components rendered directly via PrefixedTagNames.
+  // Some Web Components delegate rendering to shared functional components in common/ (e.g. InputBase,
+  // DialogBase, StateMessage), which themselves render PDS components internally. This transitive usage
+  // is invisible to the scanner because functional components have no TAG_NAMES entry.
+  // To cover these cases, pre-scan all .tsx files in common/ and build a map of
+  // { FunctionalComponentName → [nested PDS tags] }. Any future functional component added to common/
+  // that uses PrefixedTagNames will be picked up automatically without touching this script.
+  const commonDir = path.join(sourceDirectory, 'common');
+  const functionalComponentNestedMap = new Map<string, TagName[]>(
+    componentFileNames
+      .filter((filePath) => filePath.startsWith(commonDir))
+      .map((filePath) => {
+        const fcSource = fs.readFileSync(filePath, 'utf8');
+        const componentName = pascalCase(path.basename(filePath, '.tsx'));
+        const nested = Array.from(fcSource.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g)).map(
+          ([, tagName]) => kebabCase(tagName) as TagName
+        );
+        return [componentName, nested] as const;
+      })
+      .filter(([, nested]) => nested.length > 0)
+  );
+
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
     const stylesSource = componentStylesSourceCode[tagName];
@@ -91,7 +144,6 @@ const generateComponentMeta = (): void => {
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isChunked = (TAG_NAMES_WITH_CHUNK as unknown as TagName[]).includes(tagName);
-    const isThemeable = source.includes('public theme?: Theme');
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAria'); // used only partial "SelectedAria" string to cover both type variants of "SelectedAriaAttributes" and "SelectedAriaRole"
     const hasElementInternals = source.includes('@AttachInternals()');
@@ -156,7 +208,9 @@ const generateComponentMeta = (): void => {
       ...Array.from(source.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g)).map(
         ([, tagName]) => kebabCase(tagName) as TagName
       ),
-      ...(source.match(/<StateMessage/) ? ['p-icon' as TagName] : []),
+      ...Array.from(functionalComponentNestedMap.entries()).flatMap(([componentName, nestedTags]) =>
+        source.match(new RegExp(`<${componentName}[\\s>/]`)) ? nestedTags : []
+      ),
     ].filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
 
     // props
@@ -365,6 +419,13 @@ const generateComponentMeta = (): void => {
                     }
                   } else if (!variable) {
                     // must be array of inline values
+                    if (values.includes('AllowedTypes.')) {
+                      throw new Error(
+                        `oneOf in "${tagName}" "${propName}" contains validator-function references but is missing the explicit \`<ValidatorFunction>\` generic. ` +
+                          `Change \`AllowedTypes.oneOf([...])\` to \`AllowedTypes.oneOf<ValidatorFunction>([...])\` so generateComponentMeta can process it correctly. ` +
+                          `Got: ${propType}`
+                      );
+                    }
                     result[propName] = eval(`(${values})`);
                   } else {
                     throw new Error(
@@ -426,27 +487,6 @@ const generateComponentMeta = (): void => {
             {} as { [propName: string]: PropMeta['allowedValues'] }
           );
 
-    // custom workaround for variant prop of p-headline which isn't validated because of complexity
-    // and therefore can't be easily extracted
-    if (tagName === 'p-headline') {
-      allowedPropValues.variant = [
-        'large-title',
-        'headline-1',
-        'headline-2',
-        'headline-3',
-        'headline-4',
-        'headline-5',
-        'xx-small', // only these are breakpoint customizable
-        'x-small', // only these are breakpoint customizable
-        'small', // only these are breakpoint customizable
-        'medium', // only these are breakpoint customizable
-        'large', // only these are breakpoint customizable
-        'x-large', // only these are breakpoint customizable
-        'inherit', // only these are breakpoint customizable
-      ];
-      breakpointCustomizableProps.push('variant');
-    }
-
     // new format
     breakpointCustomizableProps.forEach((propName) => (propsMeta[propName].isBreakpointCustomizable = true));
     Object.entries(allowedPropValues).forEach(
@@ -467,11 +507,15 @@ const generateComponentMeta = (): void => {
         .replace(/\/\/.*/g, '') // strip comments
         .split(rawAttachComponentCssParams.includes('\n') ? '\n' : ',')
         .map((x) => x.trim());
-      const internalPropParams = attachComponentCssParams
+      const internalPropParams: [string, string | undefined][] = attachComponentCssParams
         .slice(2) // get rid of first 2 params: this.host and getComponentCss
-        .filter((param) => param.startsWith('this.host.')) // get rid of regular props, states and private members
-        .map((param) => /this\.host\.([A-Za-z]+)(?: \|\| '?([\dA-Za-z: ,{}]+)'?)?/.exec(param) || []) // extract param and default value if there is any
-        .map(([, param, value]) => [param, value]);
+        .filter((param: string): boolean => param.startsWith('this.host.')) // get rid of regular props, states and private members
+        .map((param: string): string[] => {
+          const match = /this\.host\.([A-Za-z]+)(?: \|\| '?([\dA-Za-z: ,{}]+)'?)?/.exec(param);
+          return (match || []) as (string | undefined)[];
+        })
+        .filter((matchArray: string[]): matchArray is [string, string, string | undefined] => matchArray.length >= 2) // Filter for successful matches
+        .map((matchArray) => [matchArray[1], matchArray[2]]);
 
       internalPropParams.forEach(([prop, value]) => {
         internalProps[prop] = value || null; // null is needed to not lose property in JSON.stringify
@@ -512,6 +556,10 @@ const generateComponentMeta = (): void => {
           let [, eventTypeDetail] =
             eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
 
+          // The literal may come from the component's own utils file or via an alias from another file.
+          // `resolveNestedTypeNames` has to look up nested names in whichever file actually declared it.
+          let typeDetailFilePath = eventTypePath;
+
           // Standard lib types don't need to be resolved
           if (['TransitionEvent', 'InputEvent', 'Event'].includes(eventTypeAlias)) {
             typeDetail = eventTypeAlias;
@@ -535,10 +583,11 @@ const generateComponentMeta = (): void => {
               // check if type or imported from somewhere else
               const [, relativeAliasTypePath] =
                 eventTypeFileContent.match(
-                  new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
+                  new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias || eventTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
                 ) || [];
               const eventAliasTypePath = path.resolve(eventTypePath, `../${relativeAliasTypePath}.ts`);
               const eventAliasTypeFileContent = fs.readFileSync(eventAliasTypePath, 'utf8');
+              typeDetailFilePath = eventAliasTypePath;
 
               eventAliasTypeDetail = eventAliasTypeFileContent.match(
                 new RegExp(`type ${eventAliasTypeAlias || eventTypeAlias} = ({[\\s\\S]+?});\\n`)
@@ -558,6 +607,9 @@ const generateComponentMeta = (): void => {
             .replace(/ \/\/.+/g, '') // remove comments
             .replace(/\s+/g, ' ') // multi line to single line
             .replace(/; }/, ' }'); // remove last semi colon
+
+          // runs after the comments are stripped, so a capitalized word in a source comment is never taken for a type
+          typeDetail = resolveNestedTypeNames(typeDetail, typeDetailFilePath);
         }
 
         eventsMeta[eventName] = {
@@ -594,7 +646,6 @@ const generateComponentMeta = (): void => {
       isDelegatingFocus,
       isInternal,
       isChunked,
-      isThemeable,
       requiredParent,
       ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }), // TODO: singular / plural mismatch?
       requiredChild,

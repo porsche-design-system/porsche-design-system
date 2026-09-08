@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
   PButton,
-  PButtonGroup,
   PStepperHorizontal,
   PStepperHorizontalItem,
   PText,
@@ -52,8 +51,8 @@ const onNextPrevStep = (direction: 'next' | 'prev'): void => {
   steps.value = newState;
 };
 
-const onUpdate = (e: StepperHorizontalUpdateEventDetail): void => {
-  const { activeStepIndex } = e;
+const onUpdate = (e: CustomEvent<StepperHorizontalUpdateEventDetail>): void => {
+  const { activeStepIndex } = e.detail;
 
   const newState = [...steps.value];
   for (let i = activeStepIndex + 1; i < newState.length; i++) {
@@ -66,32 +65,33 @@ const onUpdate = (e: StepperHorizontalUpdateEventDetail): void => {
 </script>
 
 <template>
-  <PStepperHorizontal @update="onUpdate">
-    <PStepperHorizontalItem v-for="step in steps" :key="step.name" :state="step.state">
-      {{ step.name }}
-    </PStepperHorizontalItem>
-  </PStepperHorizontal>
+  <div class="flex flex-col gap-fluid-sm">
+    <PStepperHorizontal @update="onUpdate">
+      <PStepperHorizontalItem v-for="step in steps" :key="step.name" :state="step.state">
+        {{ step.name }}
+      </PStepperHorizontalItem>
+    </PStepperHorizontal>
 
-  <PText :key="getActiveStepIndex(steps)">{{ stepContent[getActiveStepIndex(steps)] }}</PText>
+    <PText :key="getActiveStepIndex(steps)">{{ stepContent[getActiveStepIndex(steps)] }}</PText>
+    <div class="flex gap-fluid-sm">
+      <PButton
+        type="button"
+        :icon="'arrow-head-left'"
+        :variant="'secondary'"
+        @click="onNextPrevStep('prev')"
+        :disabled="getActiveStepIndex(steps) === 0"
+      >
+        Previous Step
+      </PButton>
 
-  <PButtonGroup>
-    <PButton
-      type="button"
-      :icon="'arrow-head-left'"
-      :variant="'tertiary'"
-      @click="onNextPrevStep('prev')"
-      :disabled="getActiveStepIndex(steps) === 0"
-    >
-      Previous Step
-    </PButton>
-
-    <PButton
-      type="button"
-      :variant="'primary'"
-      :disabled="getActiveStepIndex(steps) === steps.length - 1"
-      @click="onNextPrevStep('next')"
-    >
-      Next Step
-    </PButton>
-  </PButtonGroup>
+      <PButton
+        type="button"
+        :variant="'primary'"
+        :disabled="getActiveStepIndex(steps) === steps.length - 1"
+        @click="onNextPrevStep('next')"
+      >
+        Next Step
+      </PButton>
+    </div>
+  </div>
 </template>

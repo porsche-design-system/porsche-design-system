@@ -1,5 +1,12 @@
 'use client';
 
+import { componentMeta } from '@porsche-design-system/component-meta';
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-react/ssr';
+import type React from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { ConfigureBehavior, type ConfiguratorMode } from '@/components/playground/ConfigureBehavior';
+import { ConfigureColorScheme } from '@/components/playground/ConfigureColorScheme';
 import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
@@ -12,11 +19,6 @@ import type {
   PropTypeMapping,
 } from '@/utils/generator/generator';
 import { isAllowedValue } from '@/utils/isAllowedValue';
-import { componentMeta } from '@porsche-design-system/component-meta';
-import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-react/ssr';
-import type React from 'react';
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 
 type ConfiguratorControlsProps<T extends ConfiguratorTagNames> = {
   tagName: T;
@@ -24,6 +26,14 @@ type ConfiguratorControlsProps<T extends ConfiguratorTagNames> = {
   storyState: StoryState<T>;
   setStoryState: React.Dispatch<React.SetStateAction<StoryState<HTMLTagOrComponent>>>;
   slotStories?: SlotStories<T>;
+  /** Slot names locked "on" for the active story (rendered active but disabled). */
+  requiredSlots?: string[];
+  /** Prop names locked for the active story (rendered but disabled). */
+  disabledProps?: string[];
+  /** Present only for dual-mode components; renders the "Behavior" card above "Properties". */
+  mode?: ConfiguratorMode;
+  onUpdateMode?: (mode: ConfiguratorMode) => void;
+  hasControlledStory?: boolean;
 };
 
 export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
@@ -32,11 +42,24 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
   storyState,
   setStoryState,
   slotStories,
+  requiredSlots,
+  disabledProps,
+  mode,
+  onUpdateMode,
+  hasControlledStory,
 }: ConfiguratorControlsProps<T>) => {
   const meta = componentMeta[tagName];
   const [domReady, setDomReady] = useState(false);
-  const [accordionState, setAccordionState] = useState<Record<number, boolean>>({
-    0: true,
+  // When the "Behavior" card is prepended (dual-mode components), it becomes accordion index 0 and
+  // "Properties" shifts to index 1. Keep both open by default so Properties is not collapsed.
+  const hasBehaviorCard = !!(hasControlledStory && mode && onUpdateMode);
+  const [accordionState, setAccordionState] = useState<Record<number, boolean>>(() => {
+    const initialState: Record<number, boolean> = { 0: true };
+    // "Properties" shifts to index 1 when the Behavior card is prepended, so keep it open too.
+    if (hasBehaviorCard) {
+      initialState[1] = true;
+    }
+    return initialState;
   });
 
   const handleAccordionUpdate = (index: number, e: CustomEvent<AccordionUpdateEventDetail>) => {
@@ -125,6 +148,20 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
     });
   };
 
+  const handleUpdateColorScheme = (colorScheme: string) => {
+    setStoryState((prev) => {
+      const updatedProps = { ...prev.properties, style: { ...prev.properties?.style, colorScheme } };
+      if (!colorScheme) {
+        delete (updatedProps.style as Record<string, string>).colorScheme;
+        if (Object.keys(updatedProps.style).length === 0) {
+          // @ts-expect-error TODO: Fix typing
+          delete updatedProps.style;
+        }
+      }
+      return { ...prev, properties: updatedProps as PropTypeMapping[typeof tagName] };
+    });
+  };
+
   useEffect(() => {
     requestAnimationFrame(() => setDomReady(true));
   }, []);
@@ -132,11 +169,13 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
   if (!meta.propsMeta) return null;
 
   const controls = [
+    hasControlledStory && mode && onUpdateMode && <ConfigureBehavior mode={mode} onUpdateMode={onUpdateMode} />,
     <ConfigureProps
       tagName={tagName}
       componentProps={meta.propsMeta}
       configuredProps={storyState?.properties}
       defaultProps={defaultStoryState?.properties}
+      disabledProps={disabledProps}
       onUpdateProps={handleUpdateProps}
       onResetAllProps={() => setStoryState(defaultStoryState ?? {})}
     />,
@@ -146,6 +185,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
         componentSlots={meta.slotsMeta}
         configuredSlots={storyState}
         slotStories={slotStories ?? {}}
+        requiredSlots={requiredSlots}
         onUpdateSlots={handleUpdateSlots}
       />
     ),
@@ -161,6 +201,10 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
         }}
       />
     ),
+    <ConfigureColorScheme
+      style={(storyState.properties?.style as Record<string, string>) ?? {}}
+      handleUpdateColorScheme={handleUpdateColorScheme}
+    />,
   ];
 
   return (
@@ -170,7 +214,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
             controls.filter(Boolean).map((control, index) => (
               <PAccordion
                 key={index}
-                headingTag="h2"
+                background="surface"
                 open={accordionState[index] || false}
                 onUpdate={(e) => handleAccordionUpdate(index, e)}
               >

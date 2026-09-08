@@ -1,0 +1,30 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { TokensTable } from '@/components/common/TokensTable';
+import { tokensMeta } from '@porsche-design-system/tokens-meta';
+
+export const metadata = {
+  title: 'Tokens: Color - Porsche Design System',
+  description: 'Detailed API reference for the Color tokens.',
+};
+
+# Color
+
+<TableOfContents headings={[]} />
+
+## Tokens
+
+### Background
+
+<TokensTable showColorSwatch meta={tokensMeta.color.lightDark.background} />
+
+### Foreground
+
+<TokensTable showColorSwatch meta={tokensMeta.color.lightDark.foreground} />
+
+### Semantic
+
+<TokensTable showColorSwatch meta={tokensMeta.color.lightDark.semantic} />
+
+### A11y
+
+<TokensTable showColorSwatch meta={tokensMeta.color.lightDark.a11y} />

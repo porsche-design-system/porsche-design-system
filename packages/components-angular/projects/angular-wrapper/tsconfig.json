@@ -1,4 +1,7 @@
 {
   "extends": "@porsche-design-system/shared/tsconfig.json",
-  "include": ["./src/partials/index.ts", "./src/styles/index.ts", "./src/testing/index.ts"]
+  "compilerOptions": {
+    "experimentalDecorators": true
+  },
+  "include": ["./src/partials/index.ts", "./src/emotion/index.ts", "./src/testing/index.ts"]
 }

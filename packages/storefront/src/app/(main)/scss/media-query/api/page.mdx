@@ -1,0 +1,21 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ScssVariablesTable } from '@/components/common/ScssVariablesTable';
+import { ScssMixinsTable } from '@/components/common/ScssMixinsTable';
+import { scssMeta } from '@porsche-design-system/scss';
+
+export const metadata = {
+  title: 'SCSS: Media Query - Porsche Design System',
+  description: 'Detailed API reference for the Media Query style.',
+};
+
+# Media Query
+
+<TableOfContents headings={['SCSS Mixins', 'SCSS Variables']} />
+
+## SCSS Mixins
+
+<ScssMixinsTable mixins={scssMeta.mediaQuery} />
+
+## SCSS Variables
+
+<ScssVariablesTable variables={scssMeta.breakpoint} />

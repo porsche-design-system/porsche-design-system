@@ -1,14 +1,14 @@
-import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-inline-notification-example-events',
   template: `
-    <button type="button" (click)="onShow()">Show Inline Notification</button>
+    <p-button [type]="'button'" [compact]="true" (click)="onShow()">Show Inline Notification</p-button>
     @if (isActive) {
       <p-inline-notification
         [heading]="'Some heading'"
-        [heading-tag]="'h4'"
+        [headingTag]="'h3'"
         [description]="'Some description.'"
         (dismiss)="onDismiss()"
       ></p-inline-notification>

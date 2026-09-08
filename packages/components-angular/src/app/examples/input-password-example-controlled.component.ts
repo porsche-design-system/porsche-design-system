@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { type InputPasswordInputEventDetail } from '@porsche-design-system/components-angular';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  type InputPasswordInputEventDetail,
+  type PInputPasswordProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-password-example-controlled',
@@ -14,7 +17,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputPasswordExampleControlledComponent {
-  value: string = '';
+  value: PInputPasswordProps['value'] = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }

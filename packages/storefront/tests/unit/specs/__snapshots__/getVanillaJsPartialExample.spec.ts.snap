@@ -9,7 +9,7 @@ exports[`should return correct partial markup for getVanillaJsPartialExample 1`]
 <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
 <!-- make sure to adjust the path to the index.html file -->
 "scripts": {
-  "prestart": "yarn replace",
+  "prestart": "npm run replace",
   "replace": "placeholder='<!--PLACEHOLDER_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\\"@porsche-design-system/components-js/partials\\").getInitialStyles())') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"
   <!-- Alternative: With custom prefix to match your prefixed components -->
   "replace": "placeholder='<!--PLACEHOLDER_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\\"@porsche-design-system/components-js/partials\\").getInitialStyles({ prefix: \\"custom-prefix\\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"

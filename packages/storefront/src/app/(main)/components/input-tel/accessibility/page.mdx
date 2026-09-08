@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputTelMeta } from '@/app/(main)/components/input-tel/input-tel.meta';
+
+export const metadata = {
+  title: 'Input Tel: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input Tel component',
+};
+
+# Input Tel <ComponentStatus tagName="p-input-tel"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
+/>
+
+<inputTelMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-input-tel" examples={inputTelMeta.accessibility.examples} />
+
+<inputTelMeta.accessibility.tests />

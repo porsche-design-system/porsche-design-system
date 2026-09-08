@@ -2,7 +2,8 @@
   "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
     "types": ["node"],
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "ignoreDeprecations": "6.0"
   },
   "include": ["./projects/components-wrapper/environment.ts"]
 }

@@ -2,13 +2,13 @@ import { expect, Page, test } from '@playwright/test';
 
 const getHost = (page: Page) => page.locator('p-multi-select');
 const getCombobox = (page: Page) => page.locator('p-multi-select [role="combobox"]');
-const getDialog = (page: Page) => page.locator('p-multi-select [role="dialog"]');
+const getPopover = (page: Page) => page.locator('p-multi-select [popover]');
 const getOptions = (page: Page) => page.locator('p-multi-select-option');
 
 const setValue = async (page) => {
   const host = getHost(page);
   const combobox = getCombobox(page);
-  const dialog = getDialog(page);
+  const dialog = getPopover(page);
   const options = getOptions(page);
 
   await combobox.click();

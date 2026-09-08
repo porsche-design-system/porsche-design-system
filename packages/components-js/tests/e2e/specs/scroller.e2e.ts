@@ -2,11 +2,10 @@ import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
 import {
   CSS_ANIMATION_DURATION,
-  getAttribute,
   getElementStyle,
   getLifecycleStatus,
-  getProperty,
-  SCROLL_PERCENTAGE,
+  getOffsetWidth,
+  getScrollLeft,
   setContentWithDesignSystem,
   setProperty,
   sleep,
@@ -29,7 +28,9 @@ const initScroller = (page: Page, opts?: InitOptions) => {
   const elements = Array.from(Array(amount), (_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`).join('');
 
   const attrs = [
-    scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '',
+    scrollToPosition
+      ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition}${scrollToPosition.isSmooth !== undefined ? `, isSmooth: ${scrollToPosition.isSmooth}` : ''} }"`
+      : '',
     hasScrollbar ? `scrollbar="${hasScrollbar}"` : '',
   ].join(' ');
 
@@ -41,24 +42,12 @@ const initScroller = (page: Page, opts?: InitOptions) => {
 };
 
 const getHost = (page: Page) => page.locator('p-scroller');
-const getAllButtons = (page: Page) => page.locator('button').all();
-const getScrollArea = (page: Page) => page.locator('p-scroller .scroll-area');
-const getActionContainers = async (page: Page) => {
-  const actionPrev = page.locator('p-scroller .action-prev');
-  const actionNext = page.locator('p-scroller .action-next');
-  return { actionPrev, actionNext };
-};
-const getPrevNextButton = async (page: Page) => {
-  const prevButton = page.locator('p-scroller .action-prev button');
-  const nextButton = page.locator('p-scroller .action-next button');
+const getScrollArea = (page: Page) => page.locator('p-scroller .scroll');
+const getScrollIndicators = async (page: Page) => {
+  const prevButton = page.locator('p-scroller .prev');
+  const nextButton = page.locator('p-scroller .next');
   return { prevButton, nextButton };
 };
-const getScrollLeft = (element: Locator) => getProperty(element, 'scrollLeft');
-const getOffsetWidth = (element: Locator) => getProperty(element, 'offsetWidth');
-
-const getScrollDistance = (page: Page, scrollAreaWidth: number): number =>
-  Math.round(scrollAreaWidth * SCROLL_PERCENTAGE);
-
 const clickElement = async (page: Page, el: Locator) => {
   await el.click();
   await waitForStencilLifecycle(page);
@@ -74,187 +63,323 @@ const addNewButton = async (page: Page) => {
   });
 };
 
-test.describe('scrolling', () => {
-  test('should have correct initial scroll position when scrollToPosition is set', async ({ page }) => {
-    await initScroller(page, { isWrapped: true, scrollToPosition: { scrollPosition: 50 } });
+const getPrevIndicator = (page: Page) => page.locator('p-scroller .prev');
+const getNextIndicator = (page: Page) => page.locator('p-scroller .next');
 
-    expect(await getScrollLeft(getScrollArea(page))).toBe(50);
+test.describe('scroll indicator', () => {
+  test('should hide both indicators when content does not overflow', async ({ page }) => {
+    await initScroller(page, { amount: 2 });
+    const prevIndicator = getPrevIndicator(page);
+    const nextIndicator = getNextIndicator(page);
+
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
   });
-});
 
-test.describe('slotted content changes', () => {
-  test('should show next button after adding a button', async ({ page }) => {
+  test('should show only next indicator when content overflows to the right', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const prevIndicator = getPrevIndicator(page);
+    const nextIndicator = getNextIndicator(page);
+
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+  });
+
+  test('should show both indicators when scrolled to the middle', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const prevIndicator = getPrevIndicator(page);
+    const nextIndicator = getNextIndicator(page);
+    const { nextButton } = await getScrollIndicators(page);
+
+    await clickElement(page, nextButton);
+
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+  });
+
+  test('should show only prev indicator when scrolled to the end', async ({ page }) => {
+    await initScroller(page, { amount: 6, isWrapped: true });
+    const prevIndicator = getPrevIndicator(page);
+    const nextIndicator = getNextIndicator(page);
+    const scrollArea = getScrollArea(page);
+
+    // Scroll to the very end
+    await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
+    await sleep(CSS_ANIMATION_DURATION);
+
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
+  });
+
+  test('should update indicators when scrolling back to the start', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const prevIndicator = getPrevIndicator(page);
+    const nextIndicator = getNextIndicator(page);
+    const scrollArea = getScrollArea(page);
+
+    // Scroll to the middle first
+    await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth / 2, behavior: 'instant' }));
+    await sleep(CSS_ANIMATION_DURATION);
+
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+
+    // Scroll back to start
+    await scrollArea.evaluate((el) => el.scrollTo({ left: 0, behavior: 'instant' }));
+    await sleep(CSS_ANIMATION_DURATION);
+
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+  });
+
+  test('should show next indicator after dynamically adding content that causes overflow', async ({ page }) => {
     await initScroller(page, { amount: 3, isWrapped: true });
-    const { actionNext } = await getActionContainers(page);
+    const nextIndicator = getNextIndicator(page);
 
-    await expect(actionNext).toBeHidden();
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
 
     await addNewButton(page);
+    await addNewButton(page);
+    await addNewButton(page);
     await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
 
-    await expect(actionNext).toBeVisible();
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+  });
+
+  test('should hide both indicators when scroller has no children', async ({ page }) => {
+    await setContentWithDesignSystem(page, `<p-scroller></p-scroller>`);
+    const prevIndicator = getPrevIndicator(page);
+    const nextIndicator = getNextIndicator(page);
+
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
+  });
+
+  test('should correctly observe sentinel elements after component loads', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+
+    // Verify sentinels exist in the shadow DOM
+    const sentinelCount = await page.locator('p-scroller .sentinel').count();
+    expect(sentinelCount).toBe(2);
+  });
+
+  test('should react to programmatic scroll position changes', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const prevIndicator = getPrevIndicator(page);
+    const nextIndicator = getNextIndicator(page);
+    const scrollArea = getScrollArea(page);
+
+    // Initially: only next is visible
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+
+    // Programmatically scroll to end
+    await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
+    await sleep(CSS_ANIMATION_DURATION);
+
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
+
+    // Programmatically scroll back to start
+    await scrollArea.evaluate((el) => el.scrollTo({ left: 0, behavior: 'instant' }));
+    await sleep(CSS_ANIMATION_DURATION);
+
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 });
 
-// TODO: Include this test again
-test.describe('next/prev buttons', () => {
-  test.skip();
-  test('should scroll by 20% on button prev/next click', async ({ page }) => {
-    await initScroller(page, { isWrapped: true });
-    const { prevButton, nextButton } = await getPrevNextButton(page);
+test.describe('scroll behavior', () => {
+  test('should scroll forward by half the visible width when clicking next indicator', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
     const scrollArea = getScrollArea(page);
-    const scrollAreaWidth = await getOffsetWidth(scrollArea);
-    const scrollDistance = getScrollDistance(page, +scrollAreaWidth);
+    const { nextButton } = await getScrollIndicators(page);
 
-    expect(await getScrollLeft(scrollArea)).toEqual(0);
-
-    await clickElement(page, nextButton);
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
+    const scrollLeftBefore = await getScrollLeft(scrollArea);
+    expect(scrollLeftBefore).toBe(0);
 
     await clickElement(page, nextButton);
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance * 2);
 
-    await clickElement(page, prevButton);
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
-
-    await clickElement(page, prevButton);
-    expect(await getScrollLeft(scrollArea)).toEqual(0);
+    const scrollLeftAfter = await getScrollLeft(scrollArea);
+    expect(scrollLeftAfter).toBeGreaterThan(0);
   });
 
-  test('should scroll to max scroll-position on multiple next clicks', async ({ page }) => {
-    await initScroller(page, { amount: 6, isWrapped: true });
-    const [firstButton] = await getAllButtons(page);
-    const { nextButton } = await getPrevNextButton(page);
+  test('should scroll backward by half the visible width when clicking prev indicator', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const scrollArea = getScrollArea(page);
+    const { prevButton, nextButton } = await getScrollIndicators(page);
+
+    // First scroll forward
+    await clickElement(page, nextButton);
+    const scrollLeftAfterNext = await getScrollLeft(scrollArea);
+    expect(scrollLeftAfterNext).toBeGreaterThan(0);
+
+    // Then scroll backward
+    await clickElement(page, prevButton);
+    const scrollLeftAfterPrev = await getScrollLeft(scrollArea);
+    expect(scrollLeftAfterPrev).toBeLessThan(scrollLeftAfterNext);
+  });
+
+  test('should scroll forward multiple times consecutively', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const scrollArea = getScrollArea(page);
+    const { nextButton } = await getScrollIndicators(page);
+
+    await clickElement(page, nextButton);
+    const scrollLeftFirst = await getScrollLeft(scrollArea);
+
+    await clickElement(page, nextButton);
+    const scrollLeftSecond = await getScrollLeft(scrollArea);
+
+    expect(scrollLeftSecond).toBeGreaterThan(scrollLeftFirst);
+  });
+
+  test('should scroll back to start after scrolling forward and then clicking prev enough times', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const scrollArea = getScrollArea(page);
+    const { prevButton, nextButton } = await getScrollIndicators(page);
+
+    // Scroll forward once
+    await clickElement(page, nextButton);
+    expect(await getScrollLeft(scrollArea)).toBeGreaterThan(0);
+
+    // Scroll backward once (same distance)
+    await clickElement(page, prevButton);
+    const scrollLeftBack = await getScrollLeft(scrollArea);
+    expect(scrollLeftBack).toBe(0);
+  });
+
+  test('should not scroll past the beginning when clicking prev at start', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
     const scrollArea = getScrollArea(page);
 
-    expect(await getScrollLeft(scrollArea)).toEqual(0);
+    // Scroll area should be at position 0
+    expect(await getScrollLeft(scrollArea)).toBe(0);
 
-    await clickElement(page, nextButton);
-    await clickElement(page, nextButton);
-    await clickElement(page, nextButton);
-    await clickElement(page, nextButton);
-    await clickElement(page, nextButton);
+    // Programmatically invoke a prev scroll by clicking the prev indicator area
+    // Since prev is hidden at start, scroll via JS and then go back
+    await scrollArea.evaluate((el) => el.scrollBy({ left: -100, behavior: 'instant' }));
+    await sleep(CSS_ANIMATION_DURATION);
 
-    const scrollPosition = await getScrollLeft(scrollArea);
-
-    await clickElement(page, firstButton);
-    const scrollMax = await scrollArea.evaluate((el): number => {
-      el.scrollTo({ left: el.scrollWidth });
-      return el.scrollLeft;
-    });
-
-    expect(scrollPosition).toEqual(scrollMax);
+    // scrollLeft should not go below 0
+    expect(await getScrollLeft(scrollArea)).toBe(0);
   });
 
-  test('should have type="button" attribute', async ({ page }) => {
-    await initScroller(page);
+  test('should not scroll past the end when clicking next at the end', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const scrollArea = getScrollArea(page);
 
-    const { prevButton, nextButton } = await getPrevNextButton(page);
+    // Scroll to the very end
+    await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
+    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getProperty(prevButton, 'type')).toBe('button');
-    expect(await getProperty(nextButton, 'type')).toBe('button');
+    const scrollLeftAtEnd = await getScrollLeft(scrollArea);
+
+    // Try to scroll further right
+    await scrollArea.evaluate((el) => el.scrollBy({ left: 200, behavior: 'instant' }));
+    await sleep(CSS_ANIMATION_DURATION);
+
+    // scrollLeft should not increase beyond max
+    expect(await getScrollLeft(scrollArea)).toBe(scrollLeftAtEnd);
   });
 
-  test('should not show prev/next buttons on vertical scroll', async ({ page }) => {
-    await initScroller(page, {
-      amount: 5,
-      otherMarkup: '<div style="height: 120vh"></div>',
-    });
-    const { actionPrev, actionNext } = await getActionContainers(page);
+  test('should use half the scroll area offsetWidth as scroll distance', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const scrollArea = getScrollArea(page);
+    const { nextButton } = await getScrollIndicators(page);
+    const offsetWidth = await getOffsetWidth(scrollArea);
 
-    await page.evaluate(() => window.scroll(0, 20));
+    await clickElement(page, nextButton);
+
+    const scrollLeft = await getScrollLeft(scrollArea);
+    // The scroll distance should be approximately half the visible width
+    // Allow small rounding tolerance
+    expect(scrollLeft).toBeGreaterThanOrEqual(Math.floor(offsetWidth * 0.5) - 1);
+    expect(scrollLeft).toBeLessThanOrEqual(Math.ceil(offsetWidth * 0.5) + 1);
+  });
+});
+
+test.describe('scrollToPosition', () => {
+  test('should scroll to the specified position on initial load', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true, scrollToPosition: { scrollPosition: 100 } });
+    const scrollArea = getScrollArea(page);
+
+    await sleep(CSS_ANIMATION_DURATION);
+
+    expect(await getScrollLeft(scrollArea)).toBe(100);
+  });
+
+  test('should scroll to the specified position when prop is updated', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const host = getHost(page);
+    const scrollArea = getScrollArea(page);
+
+    expect(await getScrollLeft(scrollArea)).toBe(0);
+
+    await setProperty(host, 'scrollToPosition', { scrollPosition: 150, isSmooth: false });
     await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('hidden');
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('hidden');
+    expect(await getScrollLeft(scrollArea)).toBe(150);
   });
 
-  test('should only show next button', async ({ page }) => {
-    await initScroller(page, { amount: 4, isWrapped: true });
-    const { actionPrev, actionNext } = await getActionContainers(page);
+  test('should scroll to a different position when prop is updated multiple times', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true });
+    const host = getHost(page);
+    const scrollArea = getScrollArea(page);
 
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('visible');
-    expect(await getElementStyle(actionPrev, 'visibility')).toBe('hidden');
+    await setProperty(host, 'scrollToPosition', { scrollPosition: 50, isSmooth: false });
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    expect(await getScrollLeft(scrollArea)).toBe(50);
+
+    await setProperty(host, 'scrollToPosition', { scrollPosition: 200, isSmooth: false });
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    expect(await getScrollLeft(scrollArea)).toBe(200);
   });
 
-  test('should only show prev button', async ({ page }) => {
-    await initScroller(page, { amount: 6, isWrapped: true });
-    const { actionPrev, actionNext } = await getActionContainers(page);
-    const { nextButton } = await getPrevNextButton(page);
+  test('should scroll back to start when scrollPosition is set to 0', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true, scrollToPosition: { scrollPosition: 100 } });
+    const host = getHost(page);
+    const scrollArea = getScrollArea(page);
 
-    await clickElement(page, nextButton);
-    await clickElement(page, nextButton);
-    await clickElement(page, nextButton);
-    await clickElement(page, nextButton);
-    await clickElement(page, nextButton);
+    await sleep(CSS_ANIMATION_DURATION);
+    expect(await getScrollLeft(scrollArea)).toBe(100);
 
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('hidden');
-    expect(await getElementStyle(actionPrev, 'visibility')).toBe('visible');
+    await setProperty(host, 'scrollToPosition', { scrollPosition: 0, isSmooth: false });
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    expect(await getScrollLeft(scrollArea)).toBe(0);
   });
 
-  test('should show prev and next button', async ({ page }) => {
-    await initScroller(page, { amount: 7, isWrapped: true });
-    const { actionPrev, actionNext } = await getActionContainers(page);
-    const { nextButton } = await getPrevNextButton(page);
+  test('should not update when scroller is not scrollable', async ({ page }) => {
+    // Only 2 items, should not overflow in a non-wrapped container
+    await initScroller(page, { amount: 2 });
+    const host = getHost(page);
+    const scrollArea = getScrollArea(page);
 
-    await clickElement(page, nextButton);
+    await setProperty(host, 'scrollToPosition', { scrollPosition: 50, isSmooth: false });
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(actionPrev, 'visibility')).toBe('visible');
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('visible');
+    // scrollLeft should remain 0 since content does not overflow and componentShouldUpdate prevents update
+    expect(await getScrollLeft(scrollArea)).toBe(0);
   });
 
-  test('should not show prev/next buttons without children', async ({ page }) => {
-    await setContentWithDesignSystem(page, `<p-scroller active-element-index="0"></p-scroller>`);
-    const { actionPrev, actionNext } = await getActionContainers(page);
+  test('should update scroll indicators after scrollToPosition is applied', async ({ page }) => {
+    await initScroller(page, { amount: 8, isWrapped: true, scrollToPosition: { scrollPosition: 100 } });
+    const prevIndicator = getPrevIndicator(page);
+    const nextIndicator = getNextIndicator(page);
 
-    expect(await getElementStyle(actionPrev, 'visibility')).toBe('hidden');
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('hidden');
-  });
+    await sleep(CSS_ANIMATION_DURATION);
 
-  test('should have aria-label in prev/next buttons in dom', async ({ page }) => {
-    await initScroller(page);
-
-    const { nextButton, prevButton } = await getPrevNextButton(page);
-
-    expect(await getAttribute(prevButton, 'aria-label')).toBe('prev');
-    expect(await getAttribute(nextButton, 'aria-label')).toBe('next');
-  });
-
-  test.describe('gradient next rounding edge case', () => {
-    const setContentWithWidth = async (page: Page, width: number) => {
-      const style = `style="background: deeppink; width:${width}px"`;
-
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 150px">
-          <p-scroller>
-            <div ${style}>A</div>
-          </p-scroller>
-        </div>`
-      );
-    };
-
-    // There seems to be a rounding issue that causes the element inside scroller to exceed the scroll container,
-    // therefore the trigger gets pushed outside and the gradient is always shown.
-    // To ensure the element exceeds the width of the wrapping div we need to assign static width values.
-    const steps = Array.from(Array(10)).map((_, index) => Number.parseFloat(`150.${index}`));
-
-    for (const width of steps) {
-      test(`should not show actionNext for element with a width of ${width}`, async ({ page }) => {
-        await setContentWithWidth(page, width);
-        const { actionNext } = await getActionContainers(page);
-
-        expect(await getElementStyle(actionNext, 'visibility'), `On size ${width}`).toBe('hidden');
-      });
-    }
-
-    test('should show actionNext when more than 0.9px of the trigger are hidden', async ({ page }) => {
-      await setContentWithWidth(page, 150.91);
-      const { actionNext } = await getActionContainers(page);
-
-      expect(await getElementStyle(actionNext, 'visibility')).toBe('visible');
-    });
+    // After scrolling to 100, both indicators should be visible (middle of scroll)
+    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 });
 
@@ -264,10 +389,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -278,10 +401,8 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
@@ -289,16 +410,14 @@ test.describe('lifecycle', () => {
     await initScroller(page, { amount: 3, tag: 'button' });
     const host = getHost(page);
 
-    await setProperty(host, 'theme', 'dark');
+    await setProperty(host, 'scrollbar', true);
     await waitForStencilLifecycle(page);
 
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
-    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate:  p-icon').toBe(2);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });

@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { linkTileMeta } from '@/app/(main)/components/link-tile/link-tile.meta';
+
+export const metadata = {
+  title: 'Link Tile: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Link Tile component',
+};
+
+# Link Tile <ComponentStatus tagName="p-link-tile"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<linkTileMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-link-tile" examples={linkTileMeta.accessibility.examples} />
+
+<linkTileMeta.accessibility.tests />

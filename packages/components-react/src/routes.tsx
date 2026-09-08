@@ -1,7 +1,6 @@
 import type { RouteProps } from 'react-router-dom';
 import * as fromExamples from './examples';
 import * as fromPages from './pages';
-import * as fromStyles from './styles';
 
 export type RouteType = RouteProps & {
   name: string;
@@ -21,11 +20,6 @@ export const routes: RouteType[] = [
   {
     name: '---',
     isDisabled: true,
-  },
-  {
-    name: 'Overview',
-    path: '/overview',
-    element: <fromPages.OverviewPage />,
   },
   {
     name: 'Core Initializer',
@@ -58,11 +52,6 @@ export const routes: RouteType[] = [
     element: <fromPages.StencilLifecyclesPage />,
   },
   {
-    name: 'Theme Injection',
-    path: '/theme-injection',
-    element: <fromPages.ThemeInjectionPage />,
-  },
-  {
     name: 'Utilities',
     path: '/utilities',
     element: <fromPages.UtilitiesPage />,
@@ -82,14 +71,24 @@ export const routes: RouteType[] = [
     element: <fromExamples.SheetExamplePage />,
   },
   {
-    name: 'AG Grid Example',
-    path: '/aggrid-example',
-    element: <fromExamples.AGGridExamplePage />,
+    name: 'AG Grid Community Example',
+    path: '/aggrid-example-community',
+    element: <fromExamples.AGGridExampleCommunityPage />,
   },
   {
-    name: 'AG Grid Example Storefront',
-    path: '/aggrid-example-storefront',
-    element: <fromExamples.AGGridExampleStorefrontPage />,
+    name: 'AG Grid Compact Community Example',
+    path: '/aggrid-compact-example-community',
+    element: <fromExamples.AGGridCompactExampleCommunityPage />,
+  },
+  {
+    name: 'AG Grid Enterprise Example',
+    path: '/aggrid-example-enterprise',
+    element: <fromExamples.AGGridExampleEnterprisePage />,
+  },
+  {
+    name: 'AG Grid Compact Enterprise Example',
+    path: '/aggrid-compact-example-enterprise',
+    element: <fromExamples.AGGridCompactExampleEnterprisePage />,
   },
   {
     name: 'Banner Example',
@@ -562,92 +561,8 @@ export const routes: RouteType[] = [
     element: <fromExamples.TextareaExampleFormPage />,
   },
   {
-    name: 'Text Field Wrapper Example IMask',
-    path: '/text-field-wrapper-example-imask',
-    element: <fromExamples.TextFieldWrapperExampleIMaskPage />,
-  },
-  {
-    name: 'Text Field Wrapper Example Search',
-    path: '/text-field-wrapper-example-search',
-    element: <fromExamples.TextFieldWrapperExampleSearchPage />,
-  },
-  {
     name: 'Toast Example',
     path: '/toast-example',
     element: <fromExamples.ToastExamplePage />,
-  },
-  {
-    name: '---',
-    isDisabled: true,
-  },
-  {
-    name: 'Styles Border',
-    path: '/styles-border',
-    element: <fromStyles.StylesBorderExample />,
-  },
-  {
-    name: 'Styles Drop Shadow',
-    path: '/styles-drop-shadow',
-    element: <fromStyles.StylesDropShadowExample />,
-  },
-  {
-    name: 'Styles Flyout Grid',
-    path: '/styles-flyout-grid',
-    element: <fromStyles.StylesFlyoutGridExample />,
-  },
-  {
-    name: 'Styles Focus',
-    path: '/styles-focus',
-    element: <fromStyles.StylesFocusExample />,
-  },
-  {
-    name: 'Styles Frosted Glass',
-    path: '/styles-frosted-glass',
-    element: <fromStyles.StylesFrostedGlassExample />,
-  },
-  {
-    name: 'Styles Gradient',
-    path: '/styles-gradient',
-    element: <fromStyles.StylesGradientExample />,
-  },
-  {
-    name: 'Styles Grid',
-    path: '/styles-grid',
-    element: <fromStyles.StylesGridExample />,
-  },
-  {
-    name: 'Styles Hover',
-    path: '/styles-hover',
-    element: <fromStyles.StylesHoverExample />,
-  },
-  {
-    name: 'Styles Media Query',
-    path: '/styles-media-query',
-    element: <fromStyles.StylesMediaQueryExample />,
-  },
-  {
-    name: 'Styles Motion',
-    path: '/styles-motion',
-    element: <fromStyles.StylesMotionExample />,
-  },
-  {
-    name: 'Styles Skeleton',
-    path: '/styles-skeleton',
-    element: <fromStyles.StylesSkeletonExample />,
-  },
-  {
-    name: 'Styles Spacing',
-    path: '/styles-spacing',
-    element: <fromStyles.StylesSpacingExample />,
-  },
-  {
-    name: 'Styles Theme',
-    path: '/styles-theme',
-    element: <fromStyles.StylesThemeExample />,
-  },
-  {
-    name: 'Styles Typography',
-    path: '/styles-typography',
-    element: <fromStyles.StylesTypographyExample />,
   },
 ];

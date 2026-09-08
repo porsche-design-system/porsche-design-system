@@ -1,0 +1,45 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { TailwindUtilitiesTable } from '@/components/common/TailwindUtilitiesTable';
+import { TailwindVariablesTable } from '@/components/common/TailwindVariablesTable';
+import { tailwindMeta } from '@porsche-design-system/tailwindcss';
+
+export const metadata = {
+  title: 'Tailwind CSS: Typography - Porsche Design System',
+  description: 'Detailed API reference for the typography style.',
+};
+
+# Typography
+
+<TableOfContents headings={['Classes', 'Variables']} />
+
+## Classes
+
+### Heading
+
+<TailwindUtilitiesTable utilities={tailwindMeta.typography.heading} />
+
+### Text
+
+<TailwindUtilitiesTable utilities={tailwindMeta.typography.text} />
+
+### Display
+
+<TailwindUtilitiesTable utilities={tailwindMeta.typography.display} />
+
+## Variables
+
+### Font Family
+
+<TailwindVariablesTable variables={tailwindMeta.font.family} />
+
+### Font Weight
+
+<TailwindVariablesTable variables={tailwindMeta.font.weight} />
+
+### Line Height
+
+<TailwindVariablesTable variables={tailwindMeta.font.lineHeight} />
+
+### Typescale
+
+<TailwindVariablesTable variables={tailwindMeta.font.size} />

@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { type InputEmailInputEventDetail } from '@porsche-design-system/components-angular';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  type InputEmailInputEventDetail,
+  type PInputEmailProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-email-example-controlled',
@@ -14,7 +17,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputEmailExampleControlledComponent {
-  value: string = '';
+  value: PInputEmailProps['value'] = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }

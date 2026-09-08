@@ -1,0 +1,18 @@
+<style>
+.media {
+  margin: calc(var(--ref-p-sheet-pt) * -1) calc(var(--ref-p-sheet-px) * -1) calc(var(--ref-p-sheet-pb) * -1);
+  height: 50vh;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+
+<p-sheet open="true" aria="{ 'aria-label': 'Some Heading' }">
+  <div class="media">
+    <img src="http://localhost:3002/lights.jpg" alt="Some alt text" width="1366" height="2048" />
+  </div>
+</p-sheet>

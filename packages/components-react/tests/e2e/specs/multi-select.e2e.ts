@@ -1,9 +1,8 @@
 import { expect, type Page, test } from '@playwright/test';
-import { addEventListener, getEventSummary, setProperty } from '../../../../components-js/tests/e2e/helpers';
+import { addEventListener, getEventSummary, setProperty, sleep } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-multi-select');
-const getButton = (page: Page) => page.locator('p-multi-select button[role="combobox"]');
 const getForm = (page: Page) => page.locator('form');
 
 test.describe('form', () => {
@@ -45,15 +44,17 @@ test.describe('form', () => {
 });
 
 test.describe('optgroups', () => {
-  test('should reflect option appended into an already-mounted optgroup in the displayed value', async ({ page }) => {
-    await goto(page, 'multi-select-example-dynamic-optgroup');
-    await waitForComponentsReady(page);
+  test.describe('optgroups', () => {
+    test('should reflect option appended into an already-mounted optgroup in the displayed value', async ({ page }) => {
+      await goto(page, 'multi-select-example-dynamic-optgroup');
+      await waitForComponentsReady(page);
 
-    const host = getHost(page);
-    const button = page.getByRole('button', { name: 'Add & change value' });
+      const host = getHost(page);
+      const button = page.getByRole('button', { name: 'Add & change value' });
 
-    await button.dblclick();
+      await button.dblclick();
 
-    await expect(host).toHaveJSProperty('value', ['a']);
+      await expect(host).toHaveJSProperty('value', ['a']);
+    });
   });
 });

@@ -1,36 +1,31 @@
-import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes, Theme } from '../../types';
-import {
-  type HeadingAlign,
-  type HeadingAlignDeprecated,
-  type HeadingColor,
-  getHeadingTagType,
-  HEADING_COLORS,
-} from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
+import { getComponentCss } from './heading-styles';
 import {
-  AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
-  hasPropValueChanged,
+  getHeadingTagType,
+  HEADING_ALIGNS,
+  HEADING_COLORS,
+  HEADING_HYPHENS,
   HEADING_SIZES,
   HEADING_TAGS,
-  THEMES,
-  TYPOGRAPHY_ALIGNS,
-  validateProps,
-  warnIfDeprecatedPropValueIsUsed,
-} from '../../utils';
-import { getComponentCss } from './heading-styles';
-import { getSlottedAnchorStyles } from '../../styles';
-
-type AlignDeprecationMapType = Record<HeadingAlignDeprecated, Exclude<HeadingAlign, HeadingAlignDeprecated>>;
+  HEADING_WEIGHTS,
+  type HeadingAlign,
+  type HeadingColor,
+  type HeadingHyphens,
+  type HeadingSize,
+  type HeadingTag,
+  type HeadingWeight,
+} from './heading-utils';
 
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
   size: AllowedTypes.breakpoint<HeadingSize>(HEADING_SIZES),
-  align: AllowedTypes.oneOf<HeadingAlign>(TYPOGRAPHY_ALIGNS),
+  weight: AllowedTypes.oneOf<HeadingWeight>(HEADING_WEIGHTS),
+  align: AllowedTypes.oneOf<HeadingAlign>(HEADING_ALIGNS),
   color: AllowedTypes.oneOf<HeadingColor>(HEADING_COLORS),
+  hyphens: AllowedTypes.oneOf<HeadingHyphens>(HEADING_HYPHENS),
   ellipsis: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -43,27 +38,26 @@ const propTypes: PropTypes<typeof Heading> = {
 export class Heading {
   @Element() public host!: HTMLElement;
 
-  /** Sets a heading tag, so it fits correctly within the outline of the page. */
+  /** Sets the HTML heading tag (h1–h6) for correct document outline placement. When omitted, the tag is inferred from `size`. */
   @Prop() public tag?: HeadingTag;
 
-  /** Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
-  @Prop() public size?: BreakpointCustomizable<HeadingSize> = 'xx-large';
+  /** Sets the visual size of the heading. Use `inherit` to derive size from the parent. Supports responsive breakpoint values. */
+  @Prop() public size?: BreakpointCustomizable<HeadingSize> = '2xl';
 
-  /** Text alignment of the component. */
+  /** Sets the font weight — `normal`, `semibold`, or `bold`. */
+  @Prop() public weight?: HeadingWeight = 'normal';
+
+  /** Sets the horizontal text alignment (`start`, `center`, `end`, or `inherit`). */
   @Prop() public align?: HeadingAlign = 'start';
 
-  /** Basic text color variations depending on theme property. */
+  /** Sets the text color using PDS color tokens. */
   @Prop() public color?: HeadingColor = 'primary';
 
-  /** Adds an ellipsis to a single line of text if it overflows. */
+  /** Controls hyphenation behavior — `auto` lets the browser decide, `manual` only breaks at `&shy;`, `none` disables it entirely. */
+  @Prop() public hyphens?: HeadingHyphens = 'none';
+
+  /** Truncates the text with an ellipsis when it overflows the container on a single line. Cannot be combined with multi-line content. */
   @Prop() public ellipsis?: boolean = false;
-
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -71,28 +65,15 @@ export class Heading {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignDeprecationMap: AlignDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Heading, HeadingAlignDeprecated, HeadingAlign>(
-      this,
-      'align',
-      alignDeprecationMap
-    );
-
     attachComponentCss(
       this.host,
       getComponentCss,
       this.size,
-      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
-        HeadingAlign,
-        HeadingAlignDeprecated
-      >,
+      this.weight,
+      this.align,
       this.color,
-      this.ellipsis,
-      this.theme
+      this.hyphens,
+      this.ellipsis
     );
 
     const TagType = getHeadingTagType(this.host, this.size, this.tag);

@@ -1,7 +1,7 @@
-import { PButtonGroup, PButtonPure, PText, PTextarea } from '@porsche-design-system/components-react';
+import { PButtonPure, PText, PTextarea } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
-export const ButtonPureExampleFormAttributePage = (): JSX.Element => {
+export const ButtonPureExampleFormAttributePage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -16,14 +16,14 @@ export const ButtonPureExampleFormAttributePage = (): JSX.Element => {
         <PTextarea name="some-name" label="Some Label"></PTextarea>
       </form>
 
-      <PButtonGroup>
+      <div className="flex gap-fluid-sm mt-fluid-sm">
         <PButtonPure type="submit" form="some-form">
           Submit
         </PButtonPure>
         <PButtonPure type="reset" form="some-form">
           Reset
         </PButtonPure>
-      </PButtonGroup>
+      </div>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>
     </>

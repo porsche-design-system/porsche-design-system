@@ -1,13 +1,13 @@
 <button
   aria-checked="false"
-  id="switch"
+  id="x"
   type="button"
   role="switch"
   aria-labelledby="label"
 >
   <span class="toggle"> </span>
 </button>
-<label id="label" for="switch">
+<label id="label" for="x">
   <slot> </slot>
 </label>
 <span id="loading" class="loading" role="status"> </span>

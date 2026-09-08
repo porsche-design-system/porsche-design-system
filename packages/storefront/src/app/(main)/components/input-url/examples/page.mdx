@@ -1,0 +1,26 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { inputUrlMeta } from '@/app/(main)/components/input-url/input-url.meta';
+
+export const metadata = {
+  title: 'Input URL - Porsche Design System',
+  description: 'Explore detailed examples and integration guidance for the Input URL component.',
+};
+
+# Input URL <ComponentStatus tagName="p-input-url"></ComponentStatus>
+
+<TableOfContents headings={[inputUrlMeta.examples.form.name, inputUrlMeta.examples.slots.name]} />
+
+## {inputUrlMeta.examples.form.name}
+
+<inputUrlMeta.examples.form.description />
+
+<ComponentExample codeSample={inputUrlMeta.examples.form.example} />
+
+## {inputUrlMeta.examples.slots.name}
+
+<inputUrlMeta.examples.slots.description />
+
+<ComponentStory story={inputUrlMeta.examples.slots.story} />

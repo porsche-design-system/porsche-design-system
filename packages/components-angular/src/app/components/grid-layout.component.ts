@@ -5,7 +5,8 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
   selector: 'grid-layout',
   styles: [
     `
-      @use '@porsche-design-system/components-angular/styles' as *;
+      @use 'sass:map';
+      @use '@porsche-design-system/components-angular/scss' as *;
 
       // Visualize Grid
       .visualize-grid {
@@ -14,7 +15,7 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
         inset: 0;
         pointer-events: none;
 
-        > span {
+        & > span {
           background: rgba(0, 0, 255, 0.1);
           &:first-child,
           &:last-child {
@@ -51,7 +52,7 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
         @if $border-radius == true {
           border-radius: $pds-border-radius-large;
         }
-        background: map-get($color-map, $color);
+        background: map.get($color-map, $color);
       }
 
       // Typography

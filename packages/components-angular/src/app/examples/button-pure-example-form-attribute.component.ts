@@ -7,11 +7,11 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <form (submit)="handleSubmit($event)" id="some-form">
       <p-textarea name="some-name" label="Some Label"></p-textarea>
     </form>
-
-    <p-button-group>
+    
+    <div class="flex gap-fluid-sm mt-fluid-sm">
       <p-button-pure type="submit" form="some-form">Submit</p-button-pure>
       <p-button-pure type="reset" form="some-form">Reset</p-button-pure>
-    </p-button-group>
+    </div>
 
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
   `,

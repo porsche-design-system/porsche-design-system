@@ -4,38 +4,37 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
-  },
-  "types": "./dist/index.d.ts",
-  "files": ["./dist/"],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
+  "files": [
+    "./dist/"
+  ],
   "scripts": {
-    "build": "yarn clean:build && yarn build:package",
-    "build:package": "tsup",
-    "test": "yarn test:unit",
+    "build": "npm run clean:build && npm run build:package && npm run build:tokens-meta",
+    "build:tokens-meta": "npm run build --workspace=@porsche-design-system/tokens-meta",
+    "build:package": "rollup -c rollup.config.js",
+    "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
-  },
-  "peerDependencies": {
-    "tsup": "*",
-    "typescript": "*",
-    "vitest": "*"
+    "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/node": "^26.1.2",
+    "rollup": "^4.62.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
   },
   "volta": {
     "extends": "../../package.json"

@@ -1,9 +1,8 @@
-import type { NextPage } from 'next';
 import { PHeading } from '@porsche-design-system/components-react/ssr';
-import { routes } from '../routes';
 import Link from 'next/link';
+import { routes } from '../routes';
 
-const HomePage: NextPage = (): JSX.Element => {
+const HomePage = () => {
   return (
     <>
       <PHeading>

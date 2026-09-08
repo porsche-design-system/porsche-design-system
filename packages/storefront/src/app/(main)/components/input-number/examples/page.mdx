@@ -1,0 +1,26 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { inputNumberMeta } from '@/app/(main)/components/input-number/input-number.meta';
+
+export const metadata = {
+  title: 'Input Number - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Input Number component.',
+};
+
+# Input Number <ComponentStatus tagName="p-input-number"></ComponentStatus>
+
+<TableOfContents headings={[inputNumberMeta.examples.form.name, inputNumberMeta.examples.slots.name]} />
+
+## {inputNumberMeta.examples.form.name}
+
+<inputNumberMeta.examples.form.description />
+
+<ComponentExample codeSample={inputNumberMeta.examples.form.example} />
+
+## {inputNumberMeta.examples.slots.name}
+
+<inputNumberMeta.examples.slots.description />
+
+<ComponentStory story={inputNumberMeta.examples.slots.story} />

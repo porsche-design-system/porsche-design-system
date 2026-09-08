@@ -1,15 +1,13 @@
+import { pascalCase } from 'change-case';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
 import { isSelfClosingTag } from '@/utils/generator/generateVanillaJsMarkup';
 import type {
-  ConfiguratorTagNames,
   ElementConfig,
   EventConfig,
-  EventsConfig,
   HTMLElementOrComponentProps,
   HTMLTagOrComponent,
 } from '@/utils/generator/generator';
-import { pascalCase } from 'change-case';
 
 export const getReactCode = ({
   imports,
@@ -125,7 +123,7 @@ export const generateReactControlledScript = (
     .join('\n');
 
   const eventHandler = eventEntries
-    .map(([eventName, { prop, value, eventValueKey, eventType, negateValue }]) => {
+    .map(([eventName, { prop, value, eventValueKey, eventType, negateValue, toggleValue }]) => {
       if (eventValueKey) {
         eventType && types.push(eventType);
         return `  const ${eventName} = (e: CustomEvent<${eventType}>) => {
@@ -133,7 +131,7 @@ export const generateReactControlledScript = (
   }`;
       }
       return `  const ${eventName} = () => {
-    set${pascalCase(prop)}(${negateValue ? '!' : ''}${value});
+    set${pascalCase(prop)}(${toggleValue ? '(prev) => !prev' : `${negateValue ? '!' : ''}${value}`});
   }`;
     })
     .join('\n');

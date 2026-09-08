@@ -1,0 +1,36 @@
+<!doctype html>
+<html dir="ltr" lang="en" class="bg-surface">
+<head>
+  <meta charset="utf-8" />
+  <title>Playground</title>
+  <base href="/" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+  <link href="http://localhost:3001/styles/font-face.css" rel="stylesheet" type="text/css" />
+  <script nomodule src="/build/porsche-design-system.js"></script>
+  <script src="/build/porsche-design-system.esm.js" type="module"></script>
+  <link rel="stylesheet" href="/assets/tailwind.css">
+</head>
+<body>
+
+<main class="p-fluid-md">
+    <p-button>Some Button</p-button>
+</main>
+
+<script>
+  const el = document.querySelector('p-button');
+</script>
+
+<script>
+  // biome-ignore lint/suspicious/useIterableCallbackReturn: ok
+  ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+    window.addEventListener(`stencil_${x}`, (e) => {
+      const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+      // biome-ignore lint/suspicious/noConsole: ok
+      console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+    })
+  );
+</script>
+
+</body>
+</html>

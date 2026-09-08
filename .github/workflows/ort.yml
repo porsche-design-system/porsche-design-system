@@ -17,18 +17,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Production Builds'
-        run: yarn build-prod
+        run: npm run build-prod
       - name: "Login"
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ${{ vars.OSO_AWS_ECR_REGISTRY }}
           username: ${{ secrets.OSO_AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.OSO_AWS_SECRET_ACCESS_KEY }}
       - name: "Analyze"
+        id: analyze
+        # Don't fail the job on unresolved issues (exit 2); analyzer-result.yml is still written.
+        continue-on-error: true
         run: |
           docker run \
             --user root \
@@ -50,11 +53,20 @@ jobs:
             -f StaticHtml
         shell: bash
       - name: 'Upload'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ort-analysis
           path: ./ort
+      - name: "Check analyzer result"
+        # Fails the job if the analyzer reported unresolved issues, regardless of event type.
+        run: |
+          if [ "${{ steps.analyze.outcome }}" != "success" ]; then
+            echo "Analyzer reported unresolved issues (outcome: ${{ steps.analyze.outcome }}). Failing the job."
+            exit 1
+          fi
+        shell: bash
       - name: "Send"
+        # Only on scheduled runs.
         if: github.event_name == 'schedule'
         run: |
           zip \

@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { crestMeta } from '@/app/(main)/components/crest/crest.meta';
+
+export const metadata = {
+  title: 'Crest: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Crest component',
+};
+
+# Crest <ComponentStatus tagName="p-crest"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<crestMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-crest" examples={crestMeta.accessibility.examples} />
+
+<crestMeta.accessibility.tests />

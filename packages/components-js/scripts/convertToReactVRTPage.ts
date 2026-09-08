@@ -1,6 +1,6 @@
 import { convertToReact } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case';
-import { byAlphabet, comment, iconsRegEx, flagsRegEx, templateRegEx } from './generateVRTPages';
+import { byAlphabet, comment, flagsRegEx, iconsRegEx, templateRegEx } from './generateVRTPages';
 
 export type ReactCharacteristics = {
   usesSetAllReady: boolean;
@@ -165,7 +165,7 @@ $2`
   fileContent = `${comment}
 ${imports}
 
-export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
+export const ${pascalCase(fileName)}Page = () => {${componentLogic}
   return (
     <>${styleJsx}
       ${convertToReact(fileContent).replace(/<PToast/g, '<Toast')}

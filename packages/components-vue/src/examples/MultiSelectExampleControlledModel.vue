@@ -14,10 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-vue';
+import { PMultiSelect, PMultiSelectOption, type PMultiSelectProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myMultiSelect = ref([]);
+const myMultiSelect = ref<PMultiSelectProps['value']>([]);
 
 const resetValue = () => {
   myMultiSelect.value = [];

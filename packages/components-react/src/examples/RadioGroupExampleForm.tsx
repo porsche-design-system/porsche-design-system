@@ -8,8 +8,8 @@ import {
 } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const RadioGroupExampleFormPage = (): JSX.Element => {
-  const [form, setForm] = useState({ myRadioGroup: '' });
+export const RadioGroupExampleFormPage = () => {
+  const [form, setForm] = useState<{ myRadioGroup: PRadioGroupProps['value'] }>({ myRadioGroup: null });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
   const onChange = (e: CustomEvent<RadioGroupChangeEventDetail>) => {
@@ -27,7 +27,7 @@ export const RadioGroupExampleFormPage = (): JSX.Element => {
 
   const onReset = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setForm({ myRadioGroup: '' });
+    setForm({ myRadioGroup: null });
   };
 
   return (

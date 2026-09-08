@@ -1,4 +1,4 @@
-import { Component, Element, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type {
   BreakpointCustomizable,
   LinkAriaAttribute,
@@ -6,18 +6,16 @@ import type {
   LinkVariant,
   PropTypes,
   SelectedAriaAttributes,
-  Theme,
 } from '../../types';
 import {
   AllowedTypes,
-  LINK_ARIA_ATTRIBUTES,
-  LINK_BUTTON_VARIANTS,
-  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   hasVisibleIcon,
   isSsrHydration,
+  LINK_ARIA_ATTRIBUTES,
+  LINK_BUTTON_VARIANTS,
   parseAndGetAriaAttributes,
   throwIfInvalidLinkUsage,
   validateProps,
@@ -35,7 +33,6 @@ const propTypes: PropTypes<typeof Link> = {
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   compact: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
@@ -49,37 +46,34 @@ const propTypes: PropTypes<typeof Link> = {
 export class Link {
   @Element() public host!: HTMLElement;
 
-  /** The style variant of the link. */
+  /** Sets the visual style variant of the link (`primary` or `secondary`). */
   @Prop() public variant?: LinkVariant = 'primary';
 
-  /** The icon shown. By choosing 'none', no icon is displayed. */
+  /** Sets the icon displayed next to the link label. Use `none` to show no icon. */
   @Prop() public icon?: LinkIcon = 'none';
 
-  /** A URL path to a custom icon. */
+  /** Sets a path to a custom SVG icon, used instead of the built-in icon set. */
   @Prop() public iconSource?: string;
 
-  /** When providing an url then the component will be rendered as `<a>`. */
+  /** When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element. */
   @Prop() public href?: string;
 
-  /** Target attribute where the link should be opened. */
+  /** Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set. */
   @Prop() public target?: LinkTarget = '_self';
 
-  /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
+  /** Sets the native `download` attribute to trigger a file download. Only applies when `href` is set. */
   @Prop() public download?: string;
 
-  /** Specifies the relationship of the target object to the link object. */
+  /** Sets the `rel` attribute on the link (e.g. `noopener`). Only applies when `href` is set. */
   @Prop() public rel?: string;
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Displays as compact version. */
+  /** Reduces the link's padding and height for denser layouts. Supports responsive breakpoint values. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
-  /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes on the link element to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
   public componentWillLoad(): void {
@@ -104,8 +98,7 @@ export class Link {
       this.variant,
       this.hideLabel,
       !this.href,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const TagType = this.href === undefined ? 'span' : 'a';
@@ -128,7 +121,7 @@ export class Link {
             size="inherit"
             name={this.iconSource ? undefined : this.icon}
             source={this.iconSource}
-            theme={this.theme}
+            color="inherit"
             aria-hidden="true"
           />
         )}

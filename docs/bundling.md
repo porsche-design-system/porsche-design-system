@@ -138,7 +138,7 @@ from `colors.ts`.
 The constant `doGetThemedColors` should be used at least once in some component (doesn't matter which one), so that the
 workaround works.
 
-You can easily check it by removing `doGetThemedColors` usage and running `yarn build` in components.
+You can easily check it by removing `doGetThemedColors` usage and running `npm run build` in components.
 
 In `components/dist/esm` you'll see constructions like this:
 
@@ -167,7 +167,7 @@ export const doNothing = (): void => {
 We experience that by using only `brand` in react, other objects and functions are in the final bundle.
 
 ```tsx
-import { themeLight } from '@porsche-design-system/components-js/styles';
+import { themeLight } from '@porsche-design-system/components-js/emotion';
 
 export const App = (): JSX.Element => {
   const { brand } = themeLight;

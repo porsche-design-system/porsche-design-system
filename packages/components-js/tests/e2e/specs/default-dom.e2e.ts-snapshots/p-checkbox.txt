@@ -1,16 +1,11 @@
 <div class="root">
   <div class="wrapper">
     <div class="input-wrapper">
-      <input
-        type="checkbox"
-        id="checkbox"
-        aria-describedby="description message"
-        value="on"
-        name=""
-      />
+      <input type="checkbox" id="x" value="on" name="" />
     </div>
     <div class="label-wrapper">
-      <label class="label" id="label" for="checkbox"> Some label</label>
+      <label class="label" id="label" for="x"> Some label</label>
+      <slot name="label-after"> </slot>
     </div>
   </div>
   <span id="message" class="message" role="alert"> </span>

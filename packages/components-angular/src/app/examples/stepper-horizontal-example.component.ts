@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
+  type PStepperHorizontalItemProps,
   PorscheDesignSystemModule,
-  StepperHorizontalItemState,
   StepperHorizontalUpdateEventDetail,
 } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-stepper-horizontal-example',
   template: `
+  <div class="flex flex-col gap-fluid-sm">
     <p-stepper-horizontal (update)="onUpdate($event)">
       @for (step of steps; track step) {
         <p-stepper-horizontal-item [state]="step.state">
@@ -22,14 +23,14 @@ import {
       }
     }
 
-    <p-button-group>
+    <div class="flex gap-fluid-sm">
       <p-button
         type="button"
         [icon]="'arrow-head-left'"
-        [variant]="'tertiary'"
+        [variant]="'secondary'"
         [disabled]="getActiveStepIndex(steps) === 0"
         (click)="onNextPrevStep('prev')"
-        >
+      >
         Previous Step
       </p-button>
 
@@ -41,8 +42,9 @@ import {
         >
         Next Step
       </p-button>
-    </p-button-group>
-    `,
+    </div>
+  </div>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule],
@@ -100,7 +102,6 @@ export class StepperHorizontalExampleComponent {
   }
 }
 
-type StepperHorizontalItemProps = {
-  state?: StepperHorizontalItemState;
+type StepperHorizontalItemProps = PStepperHorizontalItemProps & {
   name: string;
 };

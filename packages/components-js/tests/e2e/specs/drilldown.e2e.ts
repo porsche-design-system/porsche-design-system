@@ -1,4 +1,4 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
@@ -24,7 +24,7 @@ const CSS_TRANSITION_DURATION = 600;
 
 const getHost = (page: Page) => page.locator('p-drilldown');
 const getDrilldownDialog = (page: Page) => page.locator('p-drilldown dialog');
-const getDrilldownDismissButton = (page: Page) => page.locator('p-drilldown p-button-pure.dismiss-desktop');
+const getDrilldownDismissButton = (page: Page) => page.locator('p-drilldown p-button.dismiss-desktop');
 const getDrilldownDialogVisibility = async (page: Page) =>
   await getElementStyle(getDrilldownDialog(page), 'visibility');
 const getDrilldownItem = (page: Page, identifier: string) =>
@@ -96,7 +96,7 @@ const addButtonsBeforeAndAfterFlyout = (page: Page) =>
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
+  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
@@ -214,7 +214,9 @@ test.describe('dismiss event', () => {
     await dismissBtn.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'dismiss-button' }]);
   });
 
   test('should be emitted when pressing ESC', async ({ page }) => {
@@ -223,7 +225,9 @@ test.describe('dismiss event', () => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'escape' }]);
   });
 
   test('should be emitted when clicking backdrop', async ({ page }) => {
@@ -236,7 +240,9 @@ test.describe('dismiss event', () => {
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
 
     await page.mouse.up();
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter, 'after mouse up').toBe(1);
+    expect(details).toEqual([{ reason: 'backdrop' }]);
   });
 
   test('should not be emitted when clicking within dialog', async ({ page }) => {
@@ -605,7 +611,8 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-drilldown'], 'componentDidLoad: p-drilldown').toBe(1);
     expect(status.componentDidLoad['p-drilldown-item'], 'componentDidLoad: p-drilldown-item').toBe(3);
     expect(status.componentDidLoad['p-drilldown-link'], 'componentDidLoad: p-drilldown-link').toBe(9);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(8); // 3 cascade button + 3 item back buttons + 1 root back button + 1 dismiss button
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2); // 2 Dismiss buttons (mobile + desktop)
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(7); // 3 cascade button + 3 item back buttons + 1 root back button
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(9);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(31);

@@ -1,25 +1,36 @@
-import { borderRadiusSmall, spacingFluidSmall, textMediumStyle } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import {
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusSm,
+  ref,
+  spacingFluidSm,
+  typescaleMd,
+} from '@porsche-design-system/stylesheets';
 import { getCss } from '../../../utils';
 import { cssVarColorPrimary } from '../drilldown/drilldown-styles';
+
+const anchorHoverJssStyle: JssStyle = {
+  textDecorationColor: 'inherit',
+};
 
 export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): string => {
   const anchorJssStyle: JssStyle = {
     all: 'unset',
-    padding: `calc(${spacingFluidSmall} + 2px) calc(${spacingFluidSmall} + 4px)`, // aligned with link-pure
-    margin: `-2px calc(${spacingFluidSmall} * -1 - 4px)`, // aligned with link-pure
-    borderRadius: borderRadiusSmall, // needed for focus outline
-    font: textMediumStyle.font,
-    color: `var(${cssVarColorPrimary})`,
+    padding: `calc(${ref(spacingFluidSm)} + 2px) calc(${ref(spacingFluidSm)} + 4px)`, // aligned with link-pure
+    margin: `-2px calc(${ref(spacingFluidSm)} * -1 - 4px)`, // aligned with link-pure
+    borderRadius: ref(radiusSm), // needed for focus outline
+    font: `${ref(fontWeightNormal)} ${ref(typescaleMd)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+    color: ref(cssVarColorPrimary),
     textDecoration: 'underline',
     textDecorationColor: isActive ? 'inherit' : 'transparent',
     cursor: isActive ? 'default' : 'pointer',
@@ -31,7 +42,6 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): s
       ':host': {
         display: 'grid',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -41,24 +51,18 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): s
             '::slotted': addImportantToEachRule({
               '&(a)': anchorJssStyle,
               ...hoverMediaQuery({
-                '&(a:hover)': {
-                  textDecorationColor: 'inherit',
-                },
+                '&(a:hover)': anchorHoverJssStyle,
               }),
-              // TODO: focus color is the same for all themes but could change in the future
-              ...getFocusJssStyle('light', { slotted: 'a', offset: '-2px' }),
+              '&(a:focus-visible)': getFocusBaseStyles(),
             }),
           }
         : {
             a: {
               ...anchorJssStyle,
               ...hoverMediaQuery({
-                '&:hover': {
-                  textDecorationColor: 'inherit',
-                },
+                '&:hover': anchorHoverJssStyle,
               }),
-              // TODO: focus color is the same for all themes but could change in the future
-              ...getFocusJssStyle('light', { offset: '-2px' }),
+              '&:focus-visible': getFocusBaseStyles(),
             },
           }),
     },

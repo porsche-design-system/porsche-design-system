@@ -2,7 +2,7 @@ import { createHash } from 'crypto';
 
 export type Cdn = 'auto' | 'cn';
 
-export type Format = 'html' | 'jsx';
+type Format = 'html' | 'jsx';
 export type FormatWithJS = 'html' | 'jsx' | 'js';
 export type FormatWithCSP = Format | 'sha256';
 

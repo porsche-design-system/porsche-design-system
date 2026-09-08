@@ -1,5 +1,5 @@
 - img "Some alt text"
 - paragraph: Compact
-- paragraph: Some footer text
+- paragraph: Some footer
 - button "Some label"
 - status

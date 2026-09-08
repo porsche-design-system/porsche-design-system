@@ -1,0 +1,17 @@
+import { PPopover } from '@porsche-design-system/components-react/ssr';
+
+The `p-popover` component displays additional contextual content in an overlay and should be used when users need optional
+details without leaving their current context. It is triggered by a button and renders its own info button by default
+<PPopover description="Hello World"></PPopover>, or you can provide a custom trigger via the `button` slot.
+
+By default, the Popover works **uncontrolled**: it manages its own visibility and toggles open or closed when its info
+button (or a slotted trigger) is clicked. It is dismissed on outside click, on `Escape`, or when keyboard focus leaves
+the Popover.
+
+Alternatively, the Popover can be used in a **controlled** mode by setting the `open` prop together with a slotted
+`button` (the default info button does not toggle in this mode). In this mode you own the open state: the Popover only
+emits the `dismiss` event when the user requests to close it (via `Escape`, an outside click or when keyboard focus
+leaves the Popover), and you decide whether to update `open` in response.
+
+**Hint:** The `p-popover` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) and
+gets rendered on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container.

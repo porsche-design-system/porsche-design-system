@@ -1,5 +1,5 @@
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
-import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable } from '../../types';
 import { getComponentCss } from './switch-styles';
 
 describe('getComponentCss()', () => {
@@ -36,7 +36,6 @@ describe('getComponentCss()', () => {
     disabled: boolean;
     loading: boolean;
     compact: boolean;
-    theme: Theme;
   }>([
     {
       alignLabel: 'end',
@@ -46,7 +45,6 @@ describe('getComponentCss()', () => {
       disabled: false,
       loading: false,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: 'right',
@@ -56,7 +54,6 @@ describe('getComponentCss()', () => {
       disabled: false,
       loading: false,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: 'left',
@@ -66,7 +63,6 @@ describe('getComponentCss()', () => {
       disabled: false,
       loading: false,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: 'end',
@@ -76,7 +72,6 @@ describe('getComponentCss()', () => {
       disabled: true,
       loading: false,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: 'start',
@@ -86,7 +81,6 @@ describe('getComponentCss()', () => {
       disabled: false,
       loading: false,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: breakpointCustomizableAlignLabel,
@@ -96,7 +90,6 @@ describe('getComponentCss()', () => {
       disabled: false,
       loading: false,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: 'end',
@@ -106,7 +99,6 @@ describe('getComponentCss()', () => {
       disabled: false,
       loading: false,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: 'end',
@@ -116,7 +108,6 @@ describe('getComponentCss()', () => {
       disabled: false,
       loading: false,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: 'end',
@@ -126,7 +117,6 @@ describe('getComponentCss()', () => {
       disabled: false,
       loading: true,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: 'end',
@@ -136,7 +126,6 @@ describe('getComponentCss()', () => {
       disabled: true,
       loading: true,
       compact: false,
-      theme: 'light',
     },
     {
       alignLabel: 'end',
@@ -146,7 +135,6 @@ describe('getComponentCss()', () => {
       disabled: true,
       loading: true,
       compact: false,
-      theme: 'dark',
     },
     {
       alignLabel: 'end',
@@ -156,14 +144,8 @@ describe('getComponentCss()', () => {
       disabled: false,
       loading: false,
       compact: true,
-      theme: 'light',
     },
-  ])(
-    'should return correct css for %j',
-    ({ alignLabel, hideLabel, stretch, checked, disabled, loading, compact, theme }) => {
-      validateCssAndMatchSnapshot(
-        getComponentCss(alignLabel, hideLabel, stretch, checked, disabled, loading, compact, theme)
-      );
-    }
-  );
+  ])('should return correct css for %j', ({ alignLabel, hideLabel, stretch, checked, disabled, loading, compact }) => {
+    validateCssAndMatchSnapshot(getComponentCss(alignLabel, hideLabel, stretch, checked, disabled, loading, compact));
+  });
 });

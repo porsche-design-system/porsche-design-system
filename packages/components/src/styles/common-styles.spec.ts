@@ -1,15 +1,13 @@
+import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  getBackdropJssStyle,
-  getFocusJssStyle,
   getHiddenTextJssStyle,
   getTransition,
   type MotionDurationKey,
   type motionEasingMap,
 } from './common-styles';
-import type { PropertiesHyphen } from 'csstype';
 
 describe('getTransition()', () => {
   it.each<
@@ -105,41 +103,5 @@ describe('getHiddenTextStyles()', () => {
     [false, { width: 'fit-content' }],
   ])('should return correct JssStyle for isHidden: %s and shownStyles: %s', (isHidden, shownStyles) => {
     expect(getHiddenTextJssStyle(isHidden, shownStyles)).toMatchSnapshot();
-  });
-});
-
-describe('getBackdropJssStyle()', () => {
-  it.each<Parameters<typeof getBackdropJssStyle>>([
-    [true, 9999, 'light', 'short'],
-    [false, 9999, 'dark', 'moderate'],
-    [true, 9999, 'light', 'long'],
-    [false, 9999, 'dark', 'veryLong'],
-  ])('should return correct JssStyle for isVisible: %s, zIndex: %s, theme: %s and duration: %s', (...args) => {
-    expect(getBackdropJssStyle(...args)).toMatchSnapshot();
-  });
-});
-
-describe('getFocusJssStyle()', () => {
-  it.each<Parameters<typeof getFocusJssStyle>>([
-    ['light'],
-    ['dark'],
-    ['auto'],
-    ['light', { offset: '911px' }],
-    ['dark', { offset: '911px' }],
-    ['auto', { offset: '911px' }],
-    ['light', { slotted: true }],
-    ['dark', { slotted: true }],
-    ['auto', { slotted: true }],
-    ['light', { slotted: '.some-slotted-selector' }],
-    ['dark', { slotted: '.some-slotted-selector' }],
-    ['auto', { slotted: '.some-slotted-selector' }],
-    ['light', { slotted: true, pseudo: true }],
-    ['dark', { slotted: true, pseudo: true }],
-    ['auto', { slotted: true, pseudo: true }],
-    ['light', { slotted: '.some-slotted-selector', pseudo: true }],
-    ['dark', { slotted: '.some-slotted-selector', pseudo: true }],
-    ['auto', { slotted: '.some-slotted-selector', pseudo: true }],
-  ])('should return correct JssStyle for theme: %s and options: %o', (...args) => {
-    expect(getFocusJssStyle(...args)).toMatchSnapshot();
   });
 });

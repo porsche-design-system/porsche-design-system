@@ -1,9 +1,8 @@
-import { breakpointS } from '@porsche-design-system/styles';
-import { Component, Element, Event, type EventEmitter, type JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
+import { breakpointS } from '@porsche-design-system/emotion';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop, State, Watch } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes } from '../../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
   getHTMLElementOfKind,
   getPrefixedTagNames,
@@ -17,10 +16,10 @@ import { getComponentCss } from './drilldown-styles';
 import {
   DRILLDOWN_ARIA_ATTRIBUTES,
   type DrilldownAriaAttribute,
+  type DrilldownDismissEventDetail,
   type DrilldownUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
   type Item,
-  syncThemeToItems,
   updateDrilldownItemState,
   validateActiveIdentifier,
 } from './drilldown-utils';
@@ -28,7 +27,6 @@ import {
 const propTypes: PropTypes<typeof Drilldown> = {
   activeIdentifier: AllowedTypes.string,
   open: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<DrilldownAriaAttribute>(DRILLDOWN_ARIA_ATTRIBUTES),
 };
 
@@ -47,22 +45,19 @@ const propTypes: PropTypes<typeof Drilldown> = {
 export class Drilldown {
   @Element() public host!: HTMLElement;
 
-  /** If true, the drilldown is visualized as opened. */
+  /** Controls whether the drilldown navigation panel is visible. */
   @Prop() public open?: boolean = false;
 
-  /** Defines which drilldown-item to be visualized as opened. */
+  /** Sets which `p-drilldown-item` (by `identifier`) is currently expanded to show its sub-navigation level. */
   @Prop() public activeIdentifier?: string | undefined;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes on the drilldown dialog element for improved screen reader accessibility. */
   @Prop() public aria?: SelectedAriaAttributes<DrilldownAriaAttribute>;
 
-  /** Adapts the drilldown color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  /** Emitted when the user closes the drilldown via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<DrilldownDismissEventDetail>;
 
-  /** Emitted when the component requests to be dismissed. */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
-
-  /** Emitted when activeIdentifier is changed. */
+  /** Emitted when the active navigation level changes, with the new `activeIdentifier` in the event detail. */
   @Event({ bubbles: false }) public update?: EventEmitter<DrilldownUpdateEventDetail>;
 
   @State() private drilldownItemElements: Item[] = [];
@@ -72,6 +67,9 @@ export class Drilldown {
   private dialog: HTMLDialogElement;
   private drawer: HTMLDivElement;
   private isDesktop = false;
+  // Tracks whether the current pointer gesture started inside the drawer (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the drawer and released on the backdrop.
+  private isPointerDownInside = false;
   private matchMediaQueryS = window.matchMedia(`(min-width: ${breakpointS}px)`);
 
   @Watch('open')
@@ -82,11 +80,6 @@ export class Drilldown {
   @Watch('activeIdentifier')
   public async activeIdentifierChangeHandler(newVal: string | undefined, oldVal: string | undefined): Promise<void> {
     await this.updateDrilldownState(oldVal, newVal);
-  }
-
-  @Watch('theme')
-  public themeChangeHandler(theme: Theme): void {
-    syncThemeToItems(theme, this.drilldownItemElements);
   }
 
   @Listen(INTERNAL_UPDATE_EVENT_NAME)
@@ -103,7 +96,6 @@ export class Drilldown {
 
   public async componentWillLoad(): Promise<void> {
     this.defineDrilldownItemElements();
-    syncThemeToItems(this.theme, this.drilldownItemElements);
     const activeItem = this.drilldownItemElements.find((item: Item) => item.identifier === this.activeIdentifier);
     activeItem && updateDrilldownItemState(activeItem, true); // Set item state
     this.primary = !activeItem || activeItem.parentElement === this.host;
@@ -134,7 +126,7 @@ export class Drilldown {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     validateActiveIdentifier(this, this.drilldownItemElements, this.activeIdentifier);
-    attachComponentCss(this.host, getComponentCss, this.open, this.primary, this.isSecondaryDrawerVisible, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.open, this.primary, this.isSecondaryDrawerVisible);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -144,6 +136,7 @@ export class Drilldown {
         ref={(ref) => (this.dialog = ref)}
         {...parseAndGetAriaAttributes(this.aria)}
         onCancel={this.onCancelDialog}
+        onMouseDown={this.onMouseDownDialog}
         onClick={this.onClickDialog}
       >
         <div class="drawer" ref={(ref) => (this.drawer = ref)}>
@@ -154,7 +147,6 @@ export class Drilldown {
             alignLabel="end"
             stretch={true}
             icon="arrow-left"
-            theme={this.theme}
             hideLabel={true}
             onClick={() => this.emitCloseSecondaryUpdate()}
           >
@@ -163,25 +155,24 @@ export class Drilldown {
           <PrefixedTagNames.pButton
             class="dismiss-mobile"
             type="button"
-            variant="ghost"
-            hideLabel={true}
             icon="close"
-            theme={this.theme}
-            onClick={this.dismissDialog}
+            compact={true}
+            variant="secondary"
+            hideLabel={true}
+            onClick={this.onDismissButtonClick}
           >
             Dismiss drilldown
           </PrefixedTagNames.pButton>
-          <PrefixedTagNames.pButtonPure
+          <PrefixedTagNames.pButton
             class="dismiss-desktop"
             type="button"
-            size="medium"
             icon="close"
+            variant="secondary"
             hideLabel={true}
-            theme={this.theme}
-            onClick={this.dismissDialog}
+            onClick={this.onDismissButtonClick}
           >
             Dismiss drilldown
-          </PrefixedTagNames.pButtonPure>
+          </PrefixedTagNames.pButton>
           <div class="scroller">
             <slot />
           </div>
@@ -194,21 +185,33 @@ export class Drilldown {
     this.drilldownItemElements = getHTMLElementOfKind(this.host, 'p-drilldown-item') as Item[];
   };
 
-  private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
-    if (e.target.tagName === 'DIALOG') {
+  private onClickDialog = (e: PointerEvent & { target: HTMLDialogElement }): void => {
+    // Skip dismissal when the pointer gesture started inside the drawer (e.g. a text selection dragged out and released
+    // on the backdrop). A `click` only fires on the nearest common ancestor of `mousedown`/`mouseup`, so such a gesture
+    // retargets the resulting `click` to the backdrop and would otherwise wrongly dismiss. Mirrors `p-popover`.
+    const startedInside = this.isPointerDownInside;
+    this.isPointerDownInside = false;
+    if (!startedInside && e.target.tagName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
-      this.dismissDialog();
+      this.dismissDialog('backdrop');
     }
+  };
+
+  private onMouseDownDialog = (e: MouseEvent & { target: HTMLElement }): void => {
+    // Record whether the press began inside the drawer (any target other than the `<dialog>` backdrop itself).
+    this.isPointerDownInside = e.target.tagName !== 'DIALOG';
   };
 
   private onCancelDialog = (e: Event): void => {
     // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
     e.preventDefault();
-    this.dismissDialog();
+    this.dismissDialog('escape');
   };
 
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
+  private onDismissButtonClick = (): void => this.dismissDialog('dismiss-button');
+
+  private dismissDialog = (reason: DrilldownDismissEventDetail['reason']): void => {
+    this.dismiss.emit({ reason });
   };
 
   private setDialogVisibility(isOpen: boolean): void {

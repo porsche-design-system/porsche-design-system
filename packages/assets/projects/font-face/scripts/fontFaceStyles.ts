@@ -1,11 +1,9 @@
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
-import { camelCase } from 'change-case';
-import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
-
 import { getMinifiedCss } from '@porsche-design-system/shared';
-// TODO: This should be imported from @porsche-design-system/styles but we currently have a circular dependency between the assets and utilities package
-import { fontWeight } from '@porsche-design-system/styles/src/js';
+import { fontWeightBold, fontWeightNormal, fontWeightSemibold } from '@porsche-design-system/tokens';
+import { camelCase } from 'change-case';
 import type { Styles } from 'jss';
+import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 
 type Cdn = 'com' | 'cn' | 'localhost';
 export type GetMinifiedPorscheNextFontFaceCssOptions = {
@@ -21,6 +19,12 @@ export type GetMinifiedPorscheNextFontFaceCssOptions = {
 // The following letters are specific to Vietnamese:
 // - U+01A0, U+01A1, U+01AF, U+01B0 (part of U+0180-024F "Latin Extended-B")
 // - U+1EA0-1EF1 (part of U+1E00-1EFF "Latin Extended Additional")
+
+const fontWeight = {
+  regular: fontWeightNormal,
+  semiBold: fontWeightSemibold,
+  bold: fontWeightBold,
+};
 
 // while persian "pe" font files exist, they are identical to pashto "pa"
 type LanguageCode = 'cyril' | 'greek' | 'latin' | 'arabic' | 'pashto' | 'urdu' | 'thai';
@@ -42,16 +46,19 @@ export const cdnUrlMap: Record<Cdn, string> = {
   localhost: 'http://localhost:3001/fonts',
 };
 
-export const getMinifiedPorscheNextFontFaceCss = (path: string = './..'): string => {
+export const getMinifiedPorscheNextFontFaceCss = (
+  pathOrOptions: string | GetMinifiedPorscheNextFontFaceCssOptions = './..'
+): string => {
+  const fontPath = typeof pathOrOptions === 'string' ? `${pathOrOptions}/fonts` : cdnUrlMap[pathOrOptions.cdn];
   const style: Styles = {
     '@font-face': Object.entries(FONTS_MANIFEST).map(([name, resource]) => {
       const [, charset, weight] =
         /porscheNext(Latin|Greek|Cyril|Arabic|Pashto|Urdu|Thai)(Regular|SemiBold|Bold)/.exec(name) || [];
       return {
-        fontFamily: 'Porsche Next',
+        fontFamily: '"Porsche Next"',
         fontStyle: 'normal',
         fontWeight: fontWeight[camelCase(weight) as keyof typeof fontWeight],
-        src: `url('${path}/fonts/${resource}') format('woff2')`,
+        src: `url('${fontPath}/${resource}') format('woff2')`,
         unicodeRange: unicodeRangeMap[charset.toLowerCase() as LanguageCode],
         fontDisplay: 'swap',
       };

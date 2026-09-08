@@ -7,7 +7,7 @@ import { Example } from './Example.tsx';
 // biome-ignore lint/style/noNonNullAssertion: ok
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <PorscheDesignSystemProvider theme={'auto'}>
+    <PorscheDesignSystemProvider>
       <Example />
     </PorscheDesignSystemProvider>
   </StrictMode>

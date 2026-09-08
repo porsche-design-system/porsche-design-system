@@ -17,7 +17,8 @@ describe('getIntersectionObserverStickyArea()', () => {
   beforeEach(() => {
     // IntersectionObserver isn't available in test environment
     const mockIntersectionObserver = vi.fn();
-    mockIntersectionObserver.mockReturnValue(mockObserverInstance);
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    mockIntersectionObserver.mockImplementation(function () { return mockObserverInstance; });
     window.IntersectionObserver = mockIntersectionObserver;
   });
 
@@ -44,7 +45,8 @@ describe('observeStickyArea()', () => {
     scrollArea.appendChild(stickyNode);
     // IntersectionObserver isn't available in test environment
     const mockIntersectionObserver = vi.fn();
-    mockIntersectionObserver.mockReturnValue(mockObserverInstance);
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    mockIntersectionObserver.mockImplementation(function () { return mockObserverInstance; });
     window.IntersectionObserver = mockIntersectionObserver;
     scrollAreaObserverMap.clear();
     observedStickyNodesMap.clear();

@@ -1,7 +1,8 @@
 {
   "name": "@porsche-design-system/components-angular",
-  "version": "3.35.0",
+  "version": "4.6.0",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
+  "type": "commonjs",
   "keywords": [
     "porsche",
     "design",
@@ -16,15 +17,20 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/porsche-design-system/porsche-design-system"
+  },
   "dependencies": {
-    "@porsche-design-system/components-js": "3.35.0",
+    "@porsche-design-system/components-js": "4.6.0",
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
-    "@angular/common": ">=21.0.0 <22.0.0",
-    "@angular/core": ">=21.0.0 <22.0.0",
-    "ag-grid-angular": ">= 35.0.0 <36.0.0",
-    "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
+    "@angular/common": ">=21.0.0 <23.0.0",
+    "@angular/core": ">=21.0.0 <23.0.0",
+    "ag-grid-angular": ">= 36.0.0 <37.0.0",
+    "ag-grid-enterprise": ">= 36.0.0 <37.0.0",
+    "jsdom": ">=30.0.0",
     "rxjs": "^6.5.3 || ^7.4.0",
     "tailwindcss": ">= 4.0.0 <5.0.0"
   },
@@ -35,11 +41,17 @@
     "ag-grid-angular": {
       "optional": true
     },
+    "jsdom": {
+      "optional": true
+    },
     "tailwindcss": {
       "optional": true
     }
   },
   "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
     "./jsdom-polyfill": {
       "types": "./jsdom-polyfill/index.d.ts",
       "default": "./jsdom-polyfill/index.cjs"
@@ -49,19 +61,28 @@
       "module": "./partials/esm/index.mjs",
       "default": "./partials/cjs/index.cjs"
     },
-    "./styles": {
-      "sass": "./styles/_index.scss",
-      "types": "./styles/esm/index.d.ts",
-      "import": "./styles/esm/index.mjs",
-      "default": "./styles/cjs/index.cjs"
+    "./tokens": {
+      "types": "./tokens/esm/index.d.ts",
+      "import": "./tokens/esm/index.mjs",
+      "default": "./tokens/cjs/index.cjs"
     },
-    "./styles/vanilla-extract": {
-      "types": "./styles/vanilla-extract/esm/vanilla-extract/index.d.ts",
-      "import": "./styles/vanilla-extract/esm/vanilla-extract/index.mjs",
-      "default": "./styles/vanilla-extract/cjs/vanilla-extract/index.cjs"
+    "./scss": {
+      "sass": "./scss/_index.scss"
     },
-    "./tailwindcss": {
-      "style": "./tailwindcss/index.css"
+    "./emotion": {
+      "types": "./emotion/esm/index.d.ts",
+      "import": "./emotion/esm/index.mjs",
+      "default": "./emotion/cjs/index.cjs"
+    },
+    "./meta": {
+      "types": "./meta/esm/index.d.ts",
+      "import": "./meta/esm/index.mjs",
+      "default": "./meta/cjs/index.cjs"
+    },
+    "./vanilla-extract": {
+      "types": "./vanilla-extract/esm/index.d.ts",
+      "import": "./vanilla-extract/esm/index.mjs",
+      "default": "./vanilla-extract/cjs/index.cjs"
     },
     "./ag-grid": {
       "types": "./ag-grid/esm/index.d.ts",
@@ -71,6 +92,39 @@
     "./testing": {
       "types": "./testing/index.d.ts",
       "default": "./testing/index.cjs"
-    }
+    },
+    "./styles": {
+      "types": "./emotion/esm/index.d.ts",
+      "sass": "./scss/_index.scss",
+      "import": "./emotion/esm/index.mjs",
+      "default": "./emotion/cjs/index.cjs"
+    },
+    "./styles/vanilla-extract": {
+      "types": "./vanilla-extract/esm/index.d.ts",
+      "import": "./vanilla-extract/esm/index.mjs",
+      "default": "./vanilla-extract/cjs/index.cjs"
+    },
+    "./tailwindcss": "./tailwindcss/index.css",
+    "./tailwindcss/index.css": "./tailwindcss/index.css",
+    "./tailwindcss/index": "./tailwindcss/index.css",
+    "./index.css": "./stylesheets/index.css",
+    "./index": "./stylesheets/index.css",
+    "./color-scheme.css": "./stylesheets/color-scheme.css",
+    "./color-scheme": "./stylesheets/color-scheme.css",
+    "./font-face.css": "./stylesheets/font-face.css",
+    "./font-face": "./stylesheets/font-face.css",
+    "./normalize.css": "./stylesheets/normalize.css",
+    "./normalize": "./stylesheets/normalize.css",
+    "./variables.css": "./stylesheets/variables.css",
+    "./variables": "./stylesheets/variables.css",
+    "./cn": "./stylesheets/cn/index.css",
+    "./cn/index.css": "./stylesheets/cn/index.css",
+    "./cn/index": "./stylesheets/cn/index.css",
+    "./cn/font-face.css": "./stylesheets/cn/font-face.css",
+    "./cn/font-face": "./stylesheets/cn/font-face.css"
+  },
+  "style": "./stylesheets/index.css",
+  "bin": {
+    "pds-skill": "./bin/pds-skill.js"
   }
 }

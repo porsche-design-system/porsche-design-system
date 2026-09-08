@@ -1,12 +1,12 @@
-import { resolve } from 'path';
 import {
   getComponentChunkLinks,
-  getFontFaceStyles,
   getFontLinks,
-  getInitialStyles,
   getLoaderScript,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
+import tailwindcss from '@tailwindcss/vite';
+import { Features } from 'lightningcss';
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import { COMPONENT_CHUNK_NAMES } from './projects/components-wrapper';
 
@@ -17,12 +17,10 @@ const transformIndexHtmlPlugin = () => {
     name: 'html-transform',
     transformIndexHtml(html) {
       const headPartials = [
-        getInitialStyles({ prefix: ['', 'my-prefix'] }),
         getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }),
         // Icon links produce too many requests in flyout iframes page which leads to ERR_INSUFFICIENT_RESOURCES error
         // getIconLinks({ icons: [...ICON_NAMES] }),
         // '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.css">',
-        getFontFaceStyles().replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
         getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
         getMetaTagsAndIconLinks({ appTitle: 'Porsche Design System' }),
       ]
@@ -44,6 +42,7 @@ export default defineConfig({
     port: 8575,
   },
   build: {
+    chunkSizeWarningLimit: Number.POSITIVE_INFINITY, // Does not matter for demo-app
     emptyOutDir: true,
     outDir: 'dist/demo-app',
     rollupOptions: {
@@ -52,5 +51,12 @@ export default defineConfig({
       },
     },
   },
-  plugins: [transformIndexHtmlPlugin()],
+  css: {
+    transformer: 'lightningcss',
+    // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
+    lightningcss: {
+      exclude: Features.LightDark,
+    },
+  },
+  plugins: [tailwindcss(), transformIndexHtmlPlugin()],
 });

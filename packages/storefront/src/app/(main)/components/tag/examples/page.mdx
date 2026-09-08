@@ -1,0 +1,33 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { tagMeta } from '@/app/(main)/components/tag/tag.meta';
+
+export const metadata = {
+  title: 'Tag - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Tag component.',
+};
+
+# Tag <ComponentStatus tagName="p-tag"></ComponentStatus>
+
+<TableOfContents
+  headings={[tagMeta.examples.slottedButton.name, tagMeta.examples.slottedLink.name, tagMeta.examples.multiline.name]}
+/>
+
+## {tagMeta.examples.slottedButton.name}
+
+<tagMeta.examples.slottedButton.description />
+
+<ComponentStory story={tagMeta.examples.slottedButton.story} />
+
+## {tagMeta.examples.slottedLink.name}
+
+<tagMeta.examples.slottedLink.description />
+
+<ComponentStory story={tagMeta.examples.slottedLink.story} />
+
+## {tagMeta.examples.multiline.name}
+
+<tagMeta.examples.multiline.description />
+
+<ComponentStory story={tagMeta.examples.multiline.story} />

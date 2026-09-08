@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { iconMeta } from '@/app/(main)/components/icon/icon.meta';
+
+export const metadata = {
+  title: 'Icon: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Icon component',
+};
+
+# Icon <ComponentStatus tagName="p-icon"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<iconMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-icon" examples={iconMeta.accessibility.examples} />
+
+<iconMeta.accessibility.tests />

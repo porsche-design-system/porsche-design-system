@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { linkMeta } from '@/app/(main)/components/link/link.meta';
+
+export const metadata = {
+  title: 'Link: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Link component',
+};
+
+# Link <ComponentStatus tagName="p-link"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<linkMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-link" examples={linkMeta.accessibility.examples} />
+
+<linkMeta.accessibility.tests />

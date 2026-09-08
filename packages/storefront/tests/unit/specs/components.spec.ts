@@ -3,17 +3,13 @@ import path from 'node:path';
 import { describe, it } from 'vitest';
 import { COMPONENT_ROUTES } from '@/sitemap';
 
-const componentsBasePath = path.resolve(__dirname, '../../../src/app/components');
+const componentsBasePath = path.resolve(__dirname, '../../../src/app/(main)/components');
 const requiredSubpages = ['accessibility', 'api', 'configurator', 'examples', 'usage'];
 
 // Exceptions: Following components don't have an example page
 const exceptions: { component: string; subfolders: string[] }[] = [
   { component: 'canvas', subfolders: ['examples'] },
-  { component: 'content-wrapper', subfolders: ['examples'] },
-  { component: 'flex', subfolders: ['examples'] },
   { component: 'flag', subfolders: ['examples'] },
-  { component: 'grid', subfolders: ['examples'] },
-  { component: 'marque', subfolders: ['examples'] },
   { component: 'pagination', subfolders: ['examples'] },
   { component: 'popover', subfolders: ['examples'] },
   { component: 'sheet', subfolders: ['examples'] },

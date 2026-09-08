@@ -38,12 +38,11 @@ for (const exampleUrl of exampleUrls) {
         '/select-example',
         '/multi-select-example-dynamic', // TODO: Active once text-field-wrapper validation warning bug is fixed (https://github.com/porsche-design-system/porsche-design-system/issues/3821)
         '/select-example-dynamic', // TODO: Active once text-field-wrapper validation warning bug is fixed (https://github.com/porsche-design-system/porsche-design-system/issues/3821)
-        '/text-field-wrapper-example-imask',
         '/text-field-wrapper-example-search',
       ].includes(exampleUrl)
     );
-    // Skip AG Grid pages since they will show licensing errors
-    test.skip(['/ag-grid-example', '/ag-grid-example-storefront'].includes(exampleUrl));
+    // AG Grid Enterprise logs a license error for every grid, so these pages can never be console clean
+    test.skip(exampleUrl.endsWith('-enterprise'));
     await goto(page, exampleUrl);
     expect(getConsoleErrorsAmount()).toBe(0);
     expect(getConsoleWarningsAmount()).toBe(0);

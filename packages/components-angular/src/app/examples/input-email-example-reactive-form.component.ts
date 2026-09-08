@@ -27,7 +27,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>Disabled: <span data-field="disabled">{{ form.controls.myInputEmail.disabled }}</span></div>
     <div>Value: <span data-field="value">{{ form.controls.myInputEmail.value }}</span></div>
     <div>Valid: <span data-field="valid">{{ form.controls.myInputEmail.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
+    <div [@if]="submittedValue !== null">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -35,17 +35,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputEmailExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputEmail: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputEmail: new FormControl<string | null>(null, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: string | null = null;
 
   setValue(): void {
     this.form.controls.myInputEmail.setValue('example@mail.com');
   }
 
   resetValue(): void {
-    this.form.controls.myInputEmail.reset('');
+    this.form.controls.myInputEmail.reset(null);
   }
 
   toggleDisabled(): void {

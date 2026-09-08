@@ -1,0 +1,56 @@
+{
+  "name": "@porsche-design-system/scss",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "sideEffects": false,
+  "type": "commonjs",
+  "main": "./meta/cjs/index.cjs",
+  "module": "./meta/esm/index.mjs",
+  "types": "./meta/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "sass": "./dist/_index.scss",
+      "types": "./meta/esm/index.d.ts",
+      "import": "./meta/esm/index.mjs",
+      "require": "./meta/cjs/index.cjs"
+    },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
+    }
+  },
+  "files": [
+    "./dist/",
+    "./meta/"
+  ],
+  "scripts": {
+    "build": "npm run clean:build && npm run build:meta && npm run build:package",
+    "build:meta": "rollup -c rollup.config.meta.mjs",
+    "build:package": "tsx scripts/build.ts",
+    "test": "npm run test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist ./meta"
+  },
+  "dependencies": {
+    "@porsche-design-system/tokens": "0.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.7",
+    "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/node": "^26.1.2",
+    "prettier": "^3.9.6",
+    "rollup": "^4.62.4",
+    "sass": "^1.102.0",
+    "tsx": "^4.23.7",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

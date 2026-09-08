@@ -1,6 +1,6 @@
 import { expect, type Locator, test } from '@playwright/test';
-import { goto } from '../helpers';
 import { getProperty } from '../../../../components-js/tests/a11y/helpers';
+import { goto } from '../helpers';
 
 test.use({
   // to prevent horizontal scrollable table
@@ -22,7 +22,7 @@ test('should focus correct element', async ({ page }) => {
   const expectDismissButtonToBeFocused = async (failMessage: string) => {
     const dismissHandle = page.locator('p-modal .dismiss');
     const focused = await waitForFocus(dismissHandle);
-    expect(await getProperty(focused, 'tagName'), failMessage).toBe('P-BUTTON');
+    expect(await getProperty(focused, 'tagName'), failMessage).toBe('BUTTON');
     expect(await getProperty(focused, 'className'), failMessage).toContain('dismiss');
   };
 

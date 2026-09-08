@@ -28,7 +28,6 @@ import type {
   ButtonTileAlign,
   ButtonTileAriaAttribute,
   ButtonTileAspectRatio,
-  ButtonTileBackground,
   ButtonTileIcon,
   ButtonTileSize,
   ButtonTileType,
@@ -58,49 +57,46 @@ const propTypes: PropTypes<typeof ButtonTile> = {
 export class ButtonTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
-  /** Font size of the description. */
+  /** Sets the font size of the description text in the tile content area. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<ButtonTileSize> = 'medium';
 
-  /** Font weight of the description. */
+  /** Sets the font weight of the description text in the tile content area. Supports responsive breakpoint values. */
   @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semi-bold';
 
-  /** Adapts the description and button theme when used on light background image. */
-  @Prop() public background?: ButtonTileBackground = 'dark';
-
-  /** Aspect ratio of the button-tile. */
+  /** Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values. */
   @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4/3';
 
-  /** Label of the button. */
+  /** Sets the accessible label text of the action button rendered inside the tile. */
   @Prop() public label: string;
 
-  /** Description text. */
+  /** Sets the description text displayed in the tile's content area. */
   @Prop() public description: string;
 
-  /** Alignment of button and description. */
+  /** Controls the vertical placement of the description and button — `top` or `bottom`. */
   @Prop() public align?: ButtonTileAlign = 'bottom';
 
-  /** Show gradient. */
-  @Prop() public gradient?: boolean = true;
+  /** Shows a gradient overlay over the media slot to improve text legibility on bright images or videos. */
+  @Prop() public gradient?: boolean = false;
 
-  /** Displays the button-tile as compact version with description and button icon only. */
+  /** Renders only the icon button without the full label. Supports responsive breakpoint values. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
-  /** Specifies the type of the button. */
+  /** Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action. */
   @Prop() public type?: ButtonTileType = 'submit';
 
-  /** Disables the button. No events will be triggered while disabled state is active. */
+  /** Disables the tile, preventing button interaction. */
   @Prop() public disabled?: boolean = false;
 
-  /** Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active. */
+  /** Disables the tile and shows a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** The icon shown. By choosing 'none', no icon is displayed. */
+  /** Sets the icon displayed in the tile's action button. Use `none` to show no icon. */
   @Prop() public icon?: ButtonTileIcon = 'none';
 
-  /** A URL path to a custom icon. */
+  /** Sets a path to a custom SVG icon for the action button, used instead of the built-in icon set. */
   @Prop() public iconSource?: string;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes on the tile's action button to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
 
   @State() private hasFooterSlot: boolean = false;
@@ -127,6 +123,9 @@ export class ButtonTile implements ITileProps {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    // TODO: BreakpointCustomizable breaks stencils boolean conversion from string to boolean
+    const parsedCompact = this.compact === 'true' ? true : this.compact === 'false' ? false : this.compact;
+
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -134,9 +133,8 @@ export class ButtonTile implements ITileProps {
       this.aspectRatio,
       this.size,
       this.weight,
-      this.background,
       this.align,
-      this.compact,
+      parsedCompact,
       this.gradient,
       this.hasFooterSlot,
       this.disabled
@@ -145,7 +143,6 @@ export class ButtonTile implements ITileProps {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const buttonProps = {
-      theme: this.background,
       variant: 'secondary',
       iconSource: this.iconSource,
       type: this.type,
@@ -160,16 +157,17 @@ export class ButtonTile implements ITileProps {
       </PrefixedTagNames.pButton>
     );
 
-    const buttonPure: JSX.Element = (
-      <PrefixedTagNames.pButtonPure
+    const buttonCompact: JSX.Element = (
+      <PrefixedTagNames.pButton
         {...buttonProps}
         key="link-or-button-pure"
         class="link-or-button-pure"
         hideLabel={true}
+        compact={true}
         icon={this.icon === 'none' ? 'arrow-right' : this.icon}
       >
         {this.label}
-      </PrefixedTagNames.pButtonPure>
+      </PrefixedTagNames.pButton>
     );
 
     return (
@@ -181,7 +179,7 @@ export class ButtonTile implements ITileProps {
         <div class="footer">
           <p>{this.description}</p>
           <slot name="footer" onSlotchange={this.updateSlotObserver} />
-          {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
+          {typeof parsedCompact === 'boolean' ? (parsedCompact ? buttonCompact : button) : [buttonCompact, button]}
         </div>
       </div>
     );

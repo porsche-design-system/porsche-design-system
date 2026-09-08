@@ -4,8 +4,8 @@ import { ref } from 'vue';
 
 const activeSlideIndex = ref(1);
 
-const onUpdate = (e: CarouselUpdateEventDetail): void => {
-  activeSlideIndex.value = e.activeIndex;
+const onUpdate = (e: CustomEvent<CarouselUpdateEventDetail>): void => {
+  activeSlideIndex.value = e.detail.activeIndex;
 };
 const onButtonClick = (e: MouseEvent): void => {
   activeSlideIndex.value = parseInt((e.target as HTMLButtonElement).innerText) - 1;
@@ -19,15 +19,17 @@ const onButtonClick = (e: MouseEvent): void => {
     <div>Slide 3</div>
   </PCarousel>
 
-  <PButton
-    v-for="(_, i) in Array.from(Array(3))"
-    :key="i"
-    type="button"
-    @click="onButtonClick"
-    :disabled="activeSlideIndex === i"
-  >
-    {{ i + 1 }}
-  </PButton>
+  <div class="flex gap-fluid-sm mt-fluid-sm">
+    <PButton
+      v-for="(_, i) in Array.from(Array(3))"
+      :key="i"
+      type="button"
+      @click="onButtonClick"
+      :disabled="activeSlideIndex === i"
+    >
+      {{ i + 1 }}
+    </PButton>
+  </div>
 </template>
 <style scoped>
   p-carousel div {

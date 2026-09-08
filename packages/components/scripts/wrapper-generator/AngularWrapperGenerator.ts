@@ -20,7 +20,6 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
     const hasControlValueAccessor = this.hasControlValueAccessor(component);
 
     const angularImports = [
@@ -32,8 +31,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     const importsFromComponentsWrapperModule = '';
 
-    const utilsImports = [hasThemeProp ? 'BaseComponentWithTheme' : 'BaseComponent'].sort();
-    const importsFromUtils = `import { ${utilsImports.join(', ')} } from '../../utils';`;
+    const importsFromUtils = `import { BaseComponent } from '../../utils';`;
 
     const typesImports = nonPrimitiveTypes;
     const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
@@ -53,12 +51,24 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       .join('\n');
   }
 
-  public generateProps(_: TagName, __: string): string {
-    return '';
+  public generateProps(component: TagName, rawComponentInterface: string): string {
+    const propsName = this.generatePropsName(component);
+    // Strip event handlers (`on*`) since they are exposed as `EventEmitter` outputs in Angular,
+    // not as inputs. The resulting type describes only the component inputs.
+    const componentInterfaceWithoutEventProps = rawComponentInterface
+      .slice(1, -1)
+      .split(';\n')
+      .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
+      .join(';\n');
+
+    return `export type ${propsName} = {${componentInterfaceWithoutEventProps}};`;
+  }
+
+  private generatePropsName(component: TagName): string {
+    return `${pascalCase(component)}Props`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
-    const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
     const inputProps = extendedProps.filter(({ isEvent }) => !isEvent);
     const outputProps = extendedProps
       .filter(({ isEvent }) => isEvent)
@@ -100,8 +110,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const classMembers = [
       ...inputProps.map(
         (x) =>
-          (x.isDeprecated ? '/** @deprecated */\n  ' : '') +
-          `${(x.key === 'theme' ? 'declare ' : '') + x.key}${x.isOptional ? '?' : ''}: ${x.rawValueType};`
+          (x.isDeprecated ? '/** @deprecated */\n  ' : '') + `${x.key}${x.isOptional ? '?' : '!'}: ${x.rawValueType};`
       ),
       ...outputProps.map(
         (x) =>
@@ -111,7 +120,6 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     ].join('\n  ');
 
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
-    const baseClass = hasThemeProp ? 'BaseComponentWithTheme' : 'BaseComponent';
 
     const controlValueAccessor = hasControlValueAccessor ? ' implements ControlValueAccessor' : '';
     const controlValueAccessorImpl = hasControlValueAccessor
@@ -127,7 +135,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   _onTouched: () => void = () => {};
 
   writeValue(value: any): void {
-    this._renderer.setProperty(this._elementRef.nativeElement, '${component === 'p-checkbox' ? 'checked' : 'value'}', value);
+    this._renderer.setProperty(this._elementRef.nativeElement, '${component === 'p-checkbox' ? 'checked' : 'value'}', ${component === 'p-checkbox' ? 'value ?? false' : 'value'});
   }
 
   registerOnChange(fn: any): void {
@@ -146,7 +154,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     return `${this.inputParser.getDeprecationMessage(component)}@Component({
   ${componentOpts}
 })
-export class ${componentName}${genericType} extends ${baseClass}${controlValueAccessor} {
+export class ${componentName}${genericType} extends BaseComponent${controlValueAccessor} {
   ${classMembers}
   ${controlValueAccessorImpl}
 }`;

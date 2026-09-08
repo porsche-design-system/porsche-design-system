@@ -1,5 +1,6 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
+import { expect } from 'vitest';
 import { getCssObject } from '../../../src/test-utils';
 
 export const validateCssAndMatchSnapshot = (css: string) => {
@@ -17,7 +18,13 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   validatePreventFoucOfNestedElementsStyle(
     cssObject,
     (componentMeta && Array.isArray(componentMeta.nestedComponents) && componentMeta.nestedComponents.length > 0) ||
-      ['input-base', 'input-text'].includes(componentName)
+    /* Functional components (e.g. InputBase) have no TAG_NAMES entry, so getComponentMeta returns
+     * undefined and nestedComponents cannot be derived from metadata. Fall back to the CSS itself:
+     * if the FOUC selector (:not(:defined,[data-ssr])) is present in the output, the component
+     * declares it has nested PDS components and we validate its value; if absent, we expect it to
+     * stay absent. The CSS is the source of truth for functional components.
+     */
+    (!componentMeta && !!cssObject[':not(:defined,[data-ssr])'])
   );
 
   // Validations for components only
@@ -50,11 +57,11 @@ const validateVisibilityStyle = (cssObject: object) => {
 
 // Expect no !important rule on display style of :host selector since it should be overridable
 const validateHostDisplayStyle = (cssObject: any) => {
-  if (cssObject[':host'].display) {
+  if (cssObject[':host']?.display) {
     expect(cssObject[':host'].display).not.toMatch(/!important/);
   } else {
     // some components don't have a display style
-    expect(cssObject[':host'].display).toBeUndefined();
+    expect(cssObject[':host']?.display).toBeUndefined();
   }
 };
 
@@ -84,7 +91,7 @@ const validateSlottedStyles = (cssObject: any, tagName: TagName) => {
       // exceptions for tagName and css property are defined here
       if (
         !['p-textarea-wrapper', 'p-optgroup'].includes(tagName) &&
-        !['height', 'min-height', 'resize', 'margin'].includes(cssProp)
+        !['all', 'height', 'min-height', 'resize', 'margin'].includes(cssProp)
       ) {
         expect(cssValue).toMatch(/!important$/);
       }

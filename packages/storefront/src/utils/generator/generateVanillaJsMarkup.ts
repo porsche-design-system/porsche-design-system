@@ -1,7 +1,7 @@
 import { camelCase, kebabCase } from 'change-case';
 import type { CSSProperties } from 'react';
+import type { StorefrontColorScheme } from '@/models/colorScheme';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
-import type { StorefrontTheme } from '@/models/theme';
 import type {
   ElementConfig,
   EventConfig,
@@ -11,9 +11,13 @@ import type {
 
 export const getVanillaJsCode = (
   { markup, states, eventHandlers }: FrameworkConfiguratorMarkup['vanilla-js'],
-  { isFullConfig, theme }: { isFullConfig: boolean; theme: StorefrontTheme } = {
+  {
+    isFullConfig,
+    theme,
+    scriptAttributes = '',
+  }: { isFullConfig: boolean; theme: StorefrontColorScheme; scriptAttributes?: string } = {
     isFullConfig: false,
-    theme: 'light',
+    theme: 'scheme-light',
   }
 ) => {
   const metaTags = isFullConfig
@@ -30,7 +34,7 @@ ${metaTags}
 <body class="bg-canvas">
 
 ${markup ?? ''}
-<script>
+<script${scriptAttributes && ` ${scriptAttributes}`}>
 ${[states, eventHandlers].filter(Boolean).join('\n')}
 </script>
 </body>
@@ -99,12 +103,12 @@ export const generateVanillaJSControlledScript = (
   const selector = `  const ${constant} = document.querySelector("${tagName}");`;
 
   const eventHandler = eventEntries
-    .map(([eventName, { target, prop, value, eventValueKey, negateValue }]) => {
+    .map(([eventName, { target, prop, value, eventValueKey, negateValue, toggleValue }]) => {
       const element = camelCase(target);
       const nativeEventName = camelCase(eventName.replace('on', ''));
       return eventValueKey
         ? `  ${constant}.addEventListener('${nativeEventName}', (e) => e.target.${prop} = ${negateValue ? '!' : ''}e.detail.${eventValueKey});`
-        : `  ${constant}.addEventListener('${nativeEventName}', () => (${element}.${prop} = ${negateValue ? '!' : ''}${value}));`;
+        : `  ${constant}.addEventListener('${nativeEventName}', () => (${element}.${prop} = ${toggleValue ? `!${element}.${prop}` : `${negateValue ? '!' : ''}${value}`}));`;
     })
     .join('\n');
 
@@ -122,7 +126,10 @@ export const generateVanillaJsProperties = (
       // TODO: Move this logic to a separate function
       // Some props need to be treated differently for vanilla-js e.g. boolean props without value (loop: true => loop) only for non pds tags
       if (!tag.startsWith('p-') && specialProps[key]) return specialProps[key](value);
-      if (typeof value === 'string') return ` ${kebabCase(key === 'className' ? 'class' : key)}="${value}"`;
+      if (typeof value === 'string') {
+        const attributeName = key === 'className' ? 'class' : key.startsWith('aria-') ? key : kebabCase(key);
+        return ` ${attributeName}="${value}"`;
+      }
       if (key === 'style')
         return ` style="${Object.entries(value as CSSProperties)
           .map(

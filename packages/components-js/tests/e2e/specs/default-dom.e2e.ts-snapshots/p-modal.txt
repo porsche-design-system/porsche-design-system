@@ -1,7 +1,9 @@
 <dialog inert="" tabindex="-1" aria-modal="true">
   <div class="scroller">
     <div class="modal">
-      <p-button class="dismiss hydrated"> Dismiss modal</p-button>
+      <button class="dismiss" type="button">
+        <span> Dismiss modal</span>
+      </button>
       <slot> </slot>
     </div>
   </div>

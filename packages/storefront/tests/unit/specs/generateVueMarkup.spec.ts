@@ -70,7 +70,7 @@ describe('generateVueControlledScript()', () => {
     expect(eventHandler).toMatchInlineSnapshot(
       `
       "  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
-          open.value = e.open;
+          open.value = e.detail.open;
         }"
     `
     );
@@ -99,7 +99,7 @@ describe('generateVueControlledScript()', () => {
     expect(eventHandler).toMatchInlineSnapshot(
       `
       "  const onUpdate = (e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) => {
-          activeIdentifier.value = e.activeIdentifier;
+          activeIdentifier.value = e.detail.activeIdentifier;
         }"
     `
     );
@@ -125,7 +125,7 @@ describe('generateVueControlledScript()', () => {
     expect(eventHandler).toMatchInlineSnapshot(
       `
       "  const onLike = (e: CustomEvent<LinkTileProductLikeEvent>) => {
-          liked.value = !e.liked;
+          liked.value = !e.detail.liked;
         }"
     `
     );
@@ -151,6 +151,31 @@ describe('generateVueControlledScript()', () => {
       `
       "  const onClick = () => {
           open.value = true;
+        }"
+    `
+    );
+  });
+
+  it('should return a toggling eventHandler for toggleValue', () => {
+    const { states, eventHandler } = generateVueControlledScript(
+      'p-button',
+      [
+        [
+          'onClick',
+          {
+            target: 'p-popover',
+            prop: 'open',
+            toggleValue: true,
+          },
+        ],
+      ],
+      {}
+    );
+    expect(states).toMatchInlineSnapshot('""');
+    expect(eventHandler).toMatchInlineSnapshot(
+      `
+      "  const onClick = () => {
+          open.value = !open.value;
         }"
     `
     );

@@ -1,7 +1,7 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { getMarkup } from '../helper';
 import userEvent from '@testing-library/user-event';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
 
 it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-link-tile-product');
@@ -27,4 +27,15 @@ it('should have working events', async () => {
   const button = getByRoleShadowed('button');
   await userEvent.click(button);
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
+});
+
+it('should expose its product link to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-link-tile-product');
+  await componentsReady();
+
+  expect(screen.queryAllByRole('link')).toHaveLength(0);
+  expect(screen.getAllByShadowRole('link')).toHaveLength(1);
+
+  const { shadowRoot } = document.querySelector('p-link-tile-product');
+  expect(screen.getByShadowRole('link')).toBe(shadowRoot.querySelector('a.anchor'));
 });

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "types": ["node", "@playwright/test", "vitest/globals", "vitest/jsdom"],
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "noImplicitReturns": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false
+  },
+  "include": ["**/*.ts"]
+}
+

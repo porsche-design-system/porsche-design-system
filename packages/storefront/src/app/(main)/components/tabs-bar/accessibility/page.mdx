@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tabsBarMeta } from '@/app/(main)/components/tabs-bar/tabs-bar.meta';
+
+export const metadata = {
+  title: 'Tabs Bar: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Tabs Bar component',
+};
+
+# Tabs Bar <ComponentStatus tagName="p-tabs-bar"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<tabsBarMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-tabs-bar" examples={tabsBarMeta.accessibility.examples} />
+
+<tabsBarMeta.accessibility.tests />

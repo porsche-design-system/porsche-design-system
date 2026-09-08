@@ -1,69 +1,70 @@
-<div class="playground light" title="should show whole text in thin and bold">
-  <p-text weight="thin" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text weight="regular">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text weight="semi-bold">The quick brown fox jumps over the lazy dog</p-text>
+<div class="playground" title="default">
+  <p-text>The quick brown fox jumps over the lazy dog</p-text>
+</div>
+
+<div class="playground" title="size=2xs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, inherit">
+  <p-text size="2xs">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="xs">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="sm">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="md">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="lg">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="2xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="3xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="4xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="5xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="inherit" style="font-size: 48px">The quick brown fox jumps over the lazy dog</p-text>
+</div>
+
+<div class="playground" title="size={ base: '2xs', xs: 'xs', s: 'sm', m: 'md', l: 'lg', xl: 'xl' }">
+  <p-text size="{ base: '2xs', xs: 'xs', s: 'sm', m: 'md', l: 'lg', xl: 'xl' }">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+</div>
+
+<div class="playground" title="color=primary, contrast-higher, contrast-high, contrast-medium, success, warning, error, info, inherit">
+  <p-text color="primary">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="contrast-higher">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="contrast-high">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="contrast-medium">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="success">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="warning" class="skip-axe-core-test"
+  >The quick brown fox jumps over the lazy dog</p-text
+  >
+  <p-text color="error">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="info">The quick brown fox jumps over the lazy dog</p-text>
+  <!-- skip this axe-core test because it is just needed for vrt -->
+  <p-text color="inherit" class="skip-axe-core-test" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
+</div>
+
+<div class="playground" title="weight=normal, semibold, bold">
+  <p-text weight="normal" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-text>
   <p-text weight="semibold">The quick brown fox jumps over the lazy dog</p-text>
   <p-text weight="bold">The quick brown fox jumps over the lazy dog</p-text>
 </div>
 
-<div class="playground light" title="should show text with different color variants">
-  <p-text color="primary" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="default" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="brand" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="contrast-high" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="neutral-contrast-high" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="contrast-medium" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="neutral-contrast-medium" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <!-- skip this axe-core test because it is just needed for vrt -->
-  <p-text color="contrast-low" class="skip-axe-core-test" style="color: deeppink"
-    >The quick brown fox jumps over the lazy dog</p-text
-  >
-  <!-- skip this axe-core test because it is just needed for vrt -->
-  <p-text color="neutral-contrast-low" class="skip-axe-core-test" style="color: deeppink"
-    >The quick brown fox jumps over the lazy dog</p-text
-  >
-  <p-text color="notification-success" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <!-- skip this axe-core test because it is just valid for vrt. BUT: actually the warning color doesn't meet WCAG contrast ration requirements! -->
-  <p-text color="notification-warning" class="skip-axe-core-test" style="color: deeppink"
-    >The quick brown fox jumps over the lazy dog</p-text
-  >
-  <p-text color="notification-error" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="notification-info" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="notification-neutral" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <!-- skip this axe-core test because it is just needed for vrt -->
-  <p-text color="inherit" class="skip-axe-core-test" style="color: deeppink"
-    >The quick brown fox jumps over the lazy dog</p-text
-  >
-</div>
-
-<div class="playground light" title="should show text with different alignments">
-  <div style="text-align: center">
-    <p-text align="inherit">Inherit</p-text>
-  </div>
+<div class="playground" title="align=start, center, end, inherit">
   <p-text align="start">Start</p-text>
-  <p-text align="left">Left (deprecated)</p-text>
   <p-text align="center">Center</p-text>
   <p-text align="end">End</p-text>
-  <p-text align="right">Right (deprecated)</p-text>
+  <p-text align="inherit" style="text-align: center">Inherit</p-text>
 </div>
 
-<div class="playground light" title="should cut off too long text">
+<div class="playground" title="hyphens=none, auto, manual, inherit">
+  <p-text hyphens="none" style="max-width: 100px;">An extra&shy;ordinarily Porsche</p-text>
+  <p-text hyphens="auto" style="max-width: 100px;">An extra&shy;ordinarily Porsche</p-text>
+  <p-text hyphens="manual" style="max-width: 100px;">An extra&shy;ordinarily Porsche</p-text>
+  <p-text hyphens="inherit" style="max-width: 100px; hyphens: auto">An extra&shy;ordinarily Porsche</p-text>
+</div>
+
+<div class="playground" title="ellipsis=true">
   <p-text ellipsis="true">
-    Text ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
   </p-text>
 </div>
 
-<div class="playground light" title="should apply custom styles for dedicated slotted content">
-  <p-text>
-    <span>
-      Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-      <em>emphasized</em> and <i>italic</i> text.
-    </span>
-  </p-text>
-</div>
-
-<div class="playground light" title="should show text with different slotted tags in same layout as default">
+<div class="playground" title="should show text with different slotted tags in same layout as default">
   <p-text><p>The quick brown fox jumps over the lazy dog</p></p-text>
   <p-text><address>The quick brown fox jumps over the lazy dog</address></p-text>
   <p-text><blockquote>The quick brown fox jumps over the lazy dog</blockquote></p-text>
@@ -71,35 +72,4 @@
   <p-text><cite>The quick brown fox jumps over the lazy dog</cite></p-text>
   <p-text><time>The quick brown fox jumps over the lazy dog</time></p-text>
   <p-text><legend>The quick brown fox jumps over the lazy dog</legend></p-text>
-</div>
-
-<!-- skip this axe-core test because it is just needed for vrt -->
-<div
-  class="playground light skip-axe-core-test"
-  title="should automatically break words/strings into new line being too long to fit inside their container"
->
-  <p-text style="width: 15rem; background: deeppink">
-    This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-  </p-text>
-  <p-text style="width: 15rem; background: deepskyblue">
-    <p style="overflow-wrap: normal; word-wrap: normal; hyphens: manual">
-      This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-    </p>
-  </p-text>
-</div>
-
-<div class="playground light" title="should show text in different sizes">
-  <p-text size="xx-small">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="x-small">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text>The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="medium">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="large">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="x-large">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="inherit" style="font-size: 48px">The quick brown fox jumps over the lazy dog</p-text>
-</div>
-
-<div class="playground light" title="should show text in different sizes on different viewports">
-  <p-text size="{ base: 'small', m: 'inherit', l: 'medium' }" style="font-size: 80px">
-    The quick brown fox jumps over the lazy dog
-  </p-text>
 </div>

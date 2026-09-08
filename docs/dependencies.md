@@ -1,78 +1,380 @@
 # Dependencies
 
+> **AI cloud agents**: For the recurring automated update task, follow the deterministic runbook in
+> [`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md). The sections below provide the
+> full rationale.
+
 ## Dependency updates
 
-Every week, we update our NPM packages:
+Every week, we update our NPM packages. Updates are driven by [`syncpack`](#syncpack-helper-scripts) via the root
+scripts — do **not** edit versions in each `package.json` by hand, as syncpack keeps the version ranges consistent
+across all workspaces.
 
-1. Switch to **project root directory**
-2. Run `yarn upgrade-interactive --latest`  
-   This should output the dependencies you might want to update. Select the NPM dependencies to be updated and press _
-   Enter_. Afterwards execute automated tests to make sure application still works.
-3. Angular has to be updated with `ng update`.
-4. `cd packages/components-angular`
-5. `./node_modules/.bin/ng update`
-6. `./node_modules/.bin/ng update @angular/cli @angular/core`
-7. Check `MAX_TS_VERSION` in `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`
-   which indicates whether `typescript` can be updated for Angular packages or not.
-8. `exit` to leave the docker container
-9. Run `yarn`
+1. Switch to the **project root directory** and make sure you pulled the latest version.
+2. Run `npm run npm:outdated` to see which dependencies have newer versions available (held-back deps are excluded
+   automatically, see [Held-back dependencies](#held-back-dependencies)).
+3. Run `npm run npm:update` to interactively pick and apply updates. syncpack writes the new ranges into every
+   `package.json` across the workspaces in one go. Don't upgrade too many dependencies at once — keep related upgrades
+   grouped (e.g. if React types can be upgraded, also check whether React itself can be upgraded).
+4. Run `npm install` to update `package-lock.json`, then execute the automated tests to make sure the application still
+   works.
+5. Once everything is updated, delete `package-lock.json` and recreate it by running `npm install` again, so the
+   transitive dependencies of our dependencies are refreshed too.
+6. Run `npm run npm:verify-lock` to make sure the regenerated lockfile still records **all** platform-specific native
+   bindings — see
+   [Platform-specific native bindings in the lockfile](#platform-specific-native-bindings-in-the-lockfile).
 
-### Hints for updating
+Some dependencies (Playwright, Stencil, internal packages) are intentionally excluded from this flow and updated
+manually — see [Held-back dependencies](#held-back-dependencies). Angular **versions** now go through this normal
+syncpack flow; only Angular's framework **migrations** are applied separately — see
+[Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations).
 
-1. Make sure you pulled the latest version before starting.
-2. To avoid corrupting the `yarn.lock` start with Angular (by using `ng update`). The following upgrades should be
-   grouped e.g. if React types can be upgraded also look if React can be upgraded.
-3. Don't upgrade too many dependencies at once, keep them logically together.
-4. Certain dependencies can not be upgraded which are documented in `docs/dependencies.md`
-5. In case you discover new dependencies that can not be upgraded, e.g. due to esm builds not compatible with nodejs,
-   add them to the list
-6. Update `docs/dependencies.md` to reflect the current date and adjust framework versions if needed
-7. Once you updated everything possible, delete `yarn.lock` and have it created again by running `yarn` in order to
-   update dependencies of our dependencies
+### Syncpack helper scripts
 
-We are using Dependabot to manage our dependencies. Every note about not updatable dependencies in this document is also
-reflected in the configuration file under `.github/dependabot.yml` and must be kept in sync!
+[`syncpack`](https://syncpack.dev) is pinned as a root `devDependency` (do **not** rely on an unpinned `npx syncpack`,
+as its CLI changed across major versions). Its behavior is configured centrally in
+[`.syncpackrc.json`](../.syncpackrc.json) (JSON with `$schema` for editor validation, matching our `biome.json`
+convention). The following root scripts help keep dependency versions consistent across the workspaces:
 
-## Overview of Framework Versions
+| Script                    | Purpose                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------- |
+| `npm run npm:lint`        | Lint `prod` + `dev` dependency versions for mismatches across workspaces.       |
+| `npm run npm:lint:fix`    | Fix mismatched versions so all workspaces use the same version.                 |
+| `npm run npm:list`        | List every dependency and its version usage across workspaces.                  |
+| `npm run npm:format`      | Check that each `package.json` is formatted (field order, sorting).             |
+| `npm run npm:format:fix`  | Apply `package.json` formatting.                                                |
+| `npm run npm:outdated`    | Check the npm registry for newer versions (excludes held-back deps, see below). |
+| `npm run npm:update`      | Interactively pick updates to apply (excludes held-back deps, see below).       |
+| `npm run npm:verify-lock` | Verify `package-lock.json` records all platform-specific native bindings.       |
 
-|         | Monorepo | Sample Integrations   |
-| ------- | -------- | --------------------- |
-| Angular | 20.1.2   | 19.0.5                |
-| React   | 19.1.0   | 19.0.0                |
-| Next.js | 15.1.3   | 15.1.4 (React 19.0.0) |
+The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
+from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
+`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `playwright-core`, `@stencil/core`). The
+`npm:outdated` and `npm:update` scripts additionally pass `--dependencies '!@porsche-design-system/**'` so the
+unpublished internal workspace packages are not even looked up against the npm registry (which would otherwise emit
+`Failed to fetch` warnings). When you add a new held-back dependency, also add it to the `updateGroups` entry in
+`.syncpackrc.json` and to the ignore list in `.github/dependabot.yml`.
 
----
+### StackBlitz starter templates (npm workspace members)
 
-## Jest & JSDom
+The four StackBlitz starter templates under
+`packages/storefront/projects/stackblitz/src/{vanilla-js,angular,react,vue}/package.json` are **npm workspace members**
+(listed in the root [`package.json`](../package.json) `workspaces` array). `.syncpackrc.json` therefore no longer needs
+an explicit `source` array — `syncpack` scans the npm `workspaces` by default, so it keeps the starters' shared tooling
+(`vite`, `tailwindcss`, `react`, `vue`, …) in lockstep with the rest of the monorepo automatically.
 
-Causing lots of problems with the `jsdom-polyfill` package.
+Even though each starter pins the **published** `@porsche-design-system/components-*` version (e.g. `4.2.0-rc.5`),
+`npm install` works as a workspace member because the local wrapper packages (`packages/components-*/dist/*-wrapper`)
+carry that **same** release version, so npm satisfies the pin by symlinking to the local workspace. Off the monorepo (on
+StackBlitz), the identical pin resolves the published package from the registry instead. The pin stays in sync with the
+release version via the release process (see `docs/release.md`), and `@porsche-design-system/**` is shielded from
+automated bumps by the held-back `updateGroups` entry, alongside `@playwright/test`, `playwright-core` and
+`@stencil/core`.
 
-- `jest`
-- `jest-environment-jsdom`
-- `jsdom`
-- `@types/jest`
+When you add or remove a workspace, update only the `workspaces` array in the root `package.json` — there is no separate
+syncpack `source` list to keep in sync anymore.
 
-## Globby (components-angular/components-manager-cli)
+### Dependabot (security-only for npm)
 
-`globby` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately there's no stable way
-of using it with Jest / Angular Karma.
+Routine npm **version** updates are handled by `syncpack` (above) and, for the recurring automated task, by the AI agent
+runbook ([`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md)) — **not** by Dependabot.
+The npm entry in `.github/dependabot.yml` sets `open-pull-requests-limit: 0`, which disables Dependabot version-update
+PRs while still allowing **security** PRs (grouped via `applies-to: security-updates`). The `ignore` list there keeps
+the held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
+Dependabot on a monthly schedule.
 
-- [Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#how-can-i-make-my-typescript-project-output-esm)
-- [ESM support: soliciting feedback](https://github.com/TypeStrong/ts-node/issues/1007)
+## Strict peer dependency resolution
 
-### Affected dependencies:
+`npm install` runs with **strict** peer dependency resolution (npm 7+ default). We intentionally do **not** use
+`--legacy-peer-deps` or `--force`, and these are not enabled in `.npmrc`.
 
-- `globby`
+When a third-party package declares a peer dependency range that conflicts with the versions we pin, resolve it
+explicitly via the `overrides` field in the root `package.json` instead of disabling peer-dependency checks globally.
 
----
+Current overrides:
 
-## Change Case
+- `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
+  `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
+  TypeScript optionally for analyzing TS sources.
+- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.61.0`). `@axe-core/playwright`
+  declares a wide peer (`playwright-core >= 1.0.0`), so on a clean lockfile regeneration npm auto-installs the
+  **latest** `playwright-core` at the root while the held-back `playwright` nests its own matching copy. The resulting
+  two copies of the Playwright type definitions break `next build`'s type check in the storefront
+  (`tests/a11y/helpers/axe-helper.ts`). Bump this pin together with [`@playwright/test`](#held-back-dependencies).
 
-Since v5.0.0 `change-case` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately
-there's no stable way of using it with Node or TS-Node.
+**Security overrides** force vulnerable transitive dependencies up to their first patched release (see
+[Remediation policy](#remediation-policy)). There are currently **none**: every previous entry (`@tootallnate/once`,
+`brace-expansion@1`/`@2`, `braces`, `ejs`, `follow-redirects`, `js-cookie`, `koa`, `lodash`, `mdast-util-to-hast`,
+`micromatch`, `minimatch@3`/`@5`/`@9`/`@10`, `qs`, `tmp`, `js-beautify > glob`, `next > postcss`) became obsolete once
+the upstream tree started resolving to patched versions on its own, and pinning them to an older patch actually
+**froze** transitive dependencies below their fixed release. Re-validate this on every dependency-update round (see
+[`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md) → _Re-validate the existing
+overrides_).
 
-### Affected dependencies:
+When a security override is genuinely needed again, note that for libraries whose newer majors are not API-compatible
+with older consumers (`minimatch`, `brace-expansion`), per-major version-selector keys (e.g. `"minimatch@3": "3.1.4"`)
+keep each major on its own backported patch — `minimatch@10`/`brace-expansion@5` export non-callable objects, so a
+blanket override would break `^3.x`/`^1.x` consumers (e.g. `glob@7`) that call the default export directly. Overrides
+that would collide with a different major required elsewhere must be scoped to a single parent (e.g.
+`"js-beautify": { "glob": "^10.5.0" }`).
 
-- `change-case`
+## Auditing dependencies (`npm audit`)
 
----
+Use `npm run npm:audit` (plain `npm audit`) to review advisories. **Do not run `npm audit fix` /
+`npm audit fix --force`** on this monorepo. `npm audit fix` does not understand our workspace setup and will try to
+"repair" a transitive advisory by **downgrading a hoisted dev tool** to an old version, which then violates our pinned
+tooling and aborts with `ERESOLVE` under [strict peer resolution](#strict-peer-dependency-resolution).
+
+### Why `npm audit fix` aborts with `ERESOLVE`
+
+The private workspace sub-projects (e.g. `packages/assets/projects/*`) declare their shared dev tooling
+(`@rollup/plugin-typescript`, `rollup`, `rollup-plugin-dts`, `tsx`, `typescript`, `change-case`, …) as
+`peerDependencies: "*"`. This is **intentional**: it lets each private workspace consume the single version pinned once
+in the root [`package.json`](../package.json) instead of re-pinning (and drifting) per project. `syncpack` keeps that
+single root version consistent.
+
+`npm audit fix` does not understand this hoisting contract. When it finds a transitive advisory whose only "fix" is to
+**downgrade a hoisted build tool**, it picks an old version that pulls in an incompatible `typescript` peer, and the
+conflict surfaces as an `ERESOLVE` against the workspace tree.
+
+> **Historical example:** before the build tooling was consolidated onto rollup, the private libs used `tsup`. The
+> `esbuild` advisory had no fixed version reachable from `tsup@8.5.1` (it caps `esbuild` at `^0.27.0`), so
+> `npm audit fix` proposed downgrading `tsup` to `6.5.0`, which pulls `typescript@^4.1.0` and collided with the root
+> `typescript`. Migrating the `--dts` libs to `rollup` + `rollup-plugin-dts` removed `tsup` (and that downgrade path)
+> entirely.
+
+**The `"*"` peers are not the bug** — removing them would only hide the conflict, break the single-version hoisting
+contract, and allow duplicate tool versions across workspaces. Keep them.
+
+### Remediation policy
+
+- For a **genuinely fixable** advisory, add a pinned [`overrides`](#strict-peer-dependency-resolution) entry in the root
+  `package.json` (same pattern as `madge > typescript`) and run `npm install`.
+- For an advisory in a **held-back** dependency (Angular, Stencil, Playwright — see
+  [Held-back dependencies](#held-back-dependencies)), wait for the upstream-sanctioned upgrade path.
+- Never reach for `--legacy-peer-deps` or `--force`.
+- After adding/changing overrides, delete `package-lock.json` and `node_modules` and re-run `npm install`
+  ([Dependency updates](#dependency-updates) step 5). A plain `npm install` only re-resolves changed nodes, so stale
+  transitive entries keep their old (vulnerable) versions and the override appears to have no effect.
+
+### Known unfixable advisory: `html-minifier`
+
+`html-minifier@4` (used only by the build-time partials generator in
+[`packages/components-js/projects/partials`](../packages/components-js/projects/partials)) has an unpatched ReDoS
+advisory with **no fixed release**. It was replaced with the maintained drop-in fork
+[`html-minifier-terser`](https://www.npmjs.com/package/html-minifier-terser), whose `minify()` is async — the partial
+generators and `minifyHTML()` were made `async` accordingly. Output is byte-for-byte identical, so the generated
+`partials.tsx` is unchanged.
+
+### Accepted advisories (held-back build tooling)
+
+The remaining advisories all originate from **dev-only** build tooling we hold back, are not reachable from shipped
+package output, and several are Windows-dev-server-only:
+
+- `@angular/build`, `@angular/compiler-cli`, `@babel/core` (pulled by Angular) — Angular **versions** are bumped via
+  syncpack, but only as upstream ships fixes; framework migrations are applied via the `ng:update` wrapper (see
+  [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations)).
+- `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` (held back) and the React Router dev server
+  (`@react-router/dev` → `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These
+  clear once Angular and `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
+
+## Build tooling for `--dts` libraries
+
+The private workspace libraries that ship `index.js`/`index.mjs` plus bundled `.d.ts`/`.d.mts` (the
+`packages/assets/projects/*` manifests and the storefront `stackblitz` helper) are bundled with **rollup**, the same
+bundler used everywhere else in the monorepo, via the shared factory
+[`packages/assets/projects/rollup.config.base.mjs`](../packages/assets/projects/rollup.config.base.mjs). It uses
+`@rollup/plugin-typescript` for the JS bundles and `rollup-plugin-dts` for the bundled declaration (the same library
+`tsup --dts` used internally). Each project's `build:lib` runs `rollup -c` against a tiny `rollup.config.mjs` that calls
+the factory. This replaced the previous `tsup` setup, removing `tsup` (and its vulnerable transitive `esbuild`) from the
+dependency tree.
+
+## Platform-specific native bindings in the lockfile
+
+Many build tools ship their native binary as a set of platform-specific packages declared as `optionalDependencies`
+(e.g. `oxc-parser` → `@oxc-parser/binding-linux-x64-gnu`, `esbuild` → `@esbuild/darwin-arm64`, `sharp`, `lmdb`,
+`@tailwindcss/oxide`, `@rolldown/binding-*`, `@next/swc-*`). A **complete** lockfile records **all** of them; npm then
+installs only the one matching the current platform and skips the rest.
+
+npm has a long-standing bug ([npm/cli#4828](https://github.com/npm/cli/issues/4828)): during an **incremental**
+`npm install` (i.e. one that updates an existing `package-lock.json`) it persists only the binding matching the current
+platform — typically `*-darwin-arm64` on our machines — and prunes the other platforms. The pruned entries are also
+written **without** `resolved`/`integrity`, which is the easiest way to spot the problem.
+
+The failure mode is nasty because it is **silent at install time**: `npm ci` on Linux CI does not error on a missing
+_optional_ dependency, so the build only fails much later, e.g.
+
+```text
+✘ [ERROR] Cannot find native binding. npm has a bug related to optional dependencies … [plugin angular-compiler]
+```
+
+(seen for `oxc-parser`, pulled in by `@angular/build`, in the Angular e2e job).
+
+### Rules
+
+- **Never** patch this in CI by installing the missing binding ad hoc (`npm i --no-save @scope/binding-linux-x64-gnu`).
+  That defeats `npm ci` reproducibility, installs an unpinned package without integrity check, and only fixes the one
+  platform/job that happens to be patched.
+- **Always** regenerate the lockfile from scratch instead — a clean resolve records the full set again:
+
+  ```bash
+  rm -rf package-lock.json node_modules && npm install
+  npm run npm:verify-lock
+  ```
+
+- `npm run npm:verify-lock` ([`scripts/verify-lockfile.ts`](../scripts/verify-lockfile.ts)) fails when a package's
+  platform bindings are only **partially** present, or when a binding is recorded without `resolved`/`integrity`. It
+  runs in CI in the `Lint` job of [`build.yml`](../.github/workflows/build.yml).
+- Only if a clean regeneration still prunes them, declare the bindings explicitly as `optionalDependencies` in the
+  workspace that needs them — the approach already used for `next`, see
+  [Explicit `@next/swc-*` optional dependencies (storefront)](#explicit-nextswc--optional-dependencies-storefront).
+
+## Explicit `@next/swc-*` optional dependencies (storefront)
+
+The storefront's [`package.json`](../packages/storefront/package.json) declares all eight `@next/swc-*` platform
+binaries as `optionalDependencies` (pinned to the same range as `next`). **Do not remove them.** The same block is
+declared in every workspace that runs `next build`
+([`packages/components-react/projects/nextjs`](../packages/components-react/projects/nextjs/package.json)), so each one
+is self-sufficient.
+
+`next` lists these native SWC binaries as its own `optionalDependencies`, but npm only persists the binary matching the
+current platform (e.g. `@next/swc-darwin-arm64`) into `package-lock.json` and prunes the other seven. On `next build`,
+Next.js detects the "missing" platforms, tries to patch the lockfile, and fails with
+`Found lockfile missing swc dependencies, patching...` → `Failed to get registry from "yarn"` (it mis-detects the
+package manager when yarn is not installed).
+
+Declaring the binaries explicitly forces npm to record all eight entries in `package-lock.json` with their `resolved`
+and `integrity` fields, so the lockfile stays complete even after the regenerate step
+([Dependency updates](#dependency-updates) step 5: delete `package-lock.json` and run `npm install`). On any given
+machine npm still installs only the matching binary; the rest are recorded but skipped.
+
+> **Verify the range manually after every `next` bump.** `syncpack` treats `@next/swc-*` as eight independent packages —
+> it does **not** couple them to `next`, so they silently drift out of sync if they are not selected in the same
+> `npm run npm:update` round (this happened when `next` moved to `^16.3.0` while the binaries stayed on `^16.2.9`). A
+> stale range still resolves, but it may install SWC binaries/types from a different minor than `next`. Always bump the
+> eight entries in **both** workspaces to the same range as `next`.
+
+## Held-back dependencies
+
+These dependencies are intentionally excluded from the automated `syncpack` / `npm run npm:update` flow. They are also
+listed in Dependabot's `ignore` list so they stay out of Dependabot's **security** PRs (npm version updates are already
+off — see [Dependabot (security-only for npm)](#dependabot-security-only-for-npm)). The exclusion is configured in two
+places that must be kept in sync when adding a new entry:
+
+- the `isIgnored` `updateGroups` entry in [`.syncpackrc.json`](../.syncpackrc.json), and
+- the `ignore` list in `.github/dependabot.yml`.
+
+### Why they are held back
+
+- `@porsche-design-system/*` – internal workspace packages, versioned via the release process.
+- `@playwright/test` – pinned to keep browser binaries and committed VRT snapshots in sync; upgrade deliberately.
+- `playwright-core` – pinned via the root `overrides` to the **exact** `@playwright/test` version (see
+  [Strict peer dependency resolution](#strict-peer-dependency-resolution)). `syncpack` scans `overrides` too, so without
+  this entry every update round would offer to bump it independently and reintroduce duplicated Playwright type
+  definitions. Bump it **only together with** `@playwright/test`.
+- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
+  version. Bumping it breaks `patch-package` on `postinstall`.
+
+> **`jsdom` and `@oddbird/popover-polyfill` are no longer held back.** They are bumped by `syncpack` like any other
+> dependency, but they remain **coupled** — see
+> [Updating jsdom and the popover polyfill](#updating-jsdom-and-the-popover-polyfill).
+
+> **Angular is no longer held back for versions.** `@angular/*`, `ng-packagr` and `zone.js` are now bumped by `syncpack`
+> like any other dependency (`npm run npm:update`). Only Angular's **framework migration schematics** need special
+> handling — see [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations). `typescript`
+> must still stay within Angular's `MAX_TS_VERSION`.
+
+### How to update them
+
+### Updating Angular (versions vs. migrations)
+
+Angular splits into two concerns that are handled separately:
+
+- **Version ranges** (`@angular/*`, `ng-packagr`, `zone.js`) — owned by `syncpack`. Bump them via `npm run npm:update`
+  (pick the `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep
+  `typescript` within Angular's `MAX_TS_VERSION` (see
+  `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back
+  for the round if a bump would exceed that ceiling.
+- **Framework migrations** (code transforms) — owned by the
+  [`packages/components-angular/scripts/ng-update.sh`](../packages/components-angular/scripts/ng-update.sh) wrapper
+  (`npm run ng:update`).
+
+> **Why a wrapper script?** Running `ng update` directly fails in this monorepo. Because dependencies are **hoisted** to
+> the repo-root `node_modules`, `packages/components-angular` has no local `node_modules`, so `ng update` reports
+> `Found 0 dependencies`. It also queries the npm registry for every dependency, including the **unpublished** private
+> workspace packages (`@porsche-design-system/shared@0.0.0`, `@porsche-design-system/assets`,
+> `@porsche-design-system/components-angular`), which aborts the run with a `404 Not Found`. The wrapper works around
+> both by running `ng update` in an isolated, throwaway install that contains only the public Angular tooling.
+
+1. `cd packages/components-angular`
+2. `npm run ng:update` — lists available Angular updates/migrations (informational; no changes are written).
+3. Bump the versions with `syncpack`: from the repo root run `npm run npm:update`, select the `@angular/*` family (and
+   `ng-packagr` / `zone.js`), then `npm install`.
+4. Apply the framework migrations only (the wrapper runs the schematics in the isolated install and copies the changed
+   source back into this package, leaving `package.json` and the lockfile to syncpack):
+   `npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>`.
+5. Review the migration diff (`git diff packages/components-angular`) and run `npm install` again from the project root.
+
+**`@playwright/test`** — bump the exact pin deliberately, then update the Docker image tag
+(`mcr.microsoft.com/playwright:vX.Y.Z-jammy`) in `docker-compose.yml` (×2) and `.github/workflows/contribution.yml` (×4)
+to match, and regenerate/verify the committed VRT snapshots so browser binaries and screenshots stay in sync. A mismatch
+between the installed Playwright and the Docker image makes CI fail.
+
+**`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
+dependency; otherwise `patch-package` fails on `postinstall`.
+
+**`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
+
+### Updating jsdom and the popover polyfill
+
+`jsdom` and `@oddbird/popover-polyfill` are not held back, but they must be bumped **together** and verified with a
+rebuild. Three properties are easy to break:
+
+1. **They are coupled.** Since `v0.7` the popover polyfill calls `CSS.escape` while applying its styles, and jsdom only
+   exposes a `CSS` namespace from `v30` onwards. Bumping the polyfill alone on an older jsdom makes every
+   `jsdom-polyfill` test file fail to load with `TypeError: Cannot read properties of undefined (reading 'escape')`.
+2. **`jsdom` must stay hoisted.** It is declared in the **root** `package.json` (next to `vitest`) on purpose: since
+   `v30` it declares `canvas` as an optional **peer** dependency, and npm nests any workspace-level declaration instead
+   of hoisting it, after which root-level `vitest` cannot resolve the `jsdom` environment at all
+   (`Cannot find package 'jsdom'`). Never move the declaration into a workspace. After bumping, verify:
+
+   ```bash
+   ls node_modules/jsdom                                        # must exist
+   find packages -maxdepth 4 -name jsdom -type d -path '*node_modules*'   # must be empty
+   ```
+
+3. **jsdom's `CSS` namespace is not browser-faithful.** Its operations brand-check `this`, so consumers that cache them
+   unbound break — most notably `jss` (`var nativeEscape = typeof CSS !== 'undefined' && CSS.escape`). The single
+   `normalizeCssNamespace()` helper in `packages/shared/src/testing/normalizeCssNamespace.ts` rebinds them. Import it
+   via its dedicated deep export, never via the `testing` barrel (which would drag the Playwright configs and the W3C
+   validator along):
+
+   ```ts
+   import { normalizeCssNamespace } from '@porsche-design-system/shared/testing/normalize-css-namespace';
+   ```
+
+   It is called from the Vitest setups of `shared`, `components` and `components-react/react-ssr-wrapper` (all built
+   **before** `components-js`, so they cannot use the polyfill) and is bundled into the published polyfill through
+   `packages/components-js/projects/jsdom-polyfill/src/normalizeCssNamespace.js`. That local module is a one-line
+   re-export and must stay: importing the helper directly lets Rollup treeshake the call away, because it proves the
+   function body pure. `jsdom-build.spec.ts` asserts that the normalization survives in the built bundle. Upstream
+   tracking issue: https://github.com/jsdom/jsdom/issues/4228.
+
+The polyfill is bundled into `dist/components-wrapper/jsdom-polyfill/index.cjs`, so always rebuild before testing a
+bump, then run the jsdom-based suites:
+
+```bash
+npm run build:jsdom-polyfill --workspace=@porsche-design-system/js
+npm run test:unit:components-js:jsdom-polyfill
+npm run test:unit:shared && npm run test:unit:components && npm run test:unit:components-react
+```
+
+Because the polyfill ships to consumers, a jsdom bump also raises **their** minimum jsdom version. Whenever that floor
+changes, update all four places accordingly:
+
+- the guard in `packages/components-js/projects/jsdom-polyfill/src/index.js` (throws an actionable error on older jsdom
+  versions instead of a cryptic `TypeError` from within the popover polyfill),
+- the optional `jsdom` peer dependency in `components-wrapper`, `angular-wrapper`, `react-wrapper` and `vue-wrapper`
+  `package.json`,
+- the testing pages under `packages/storefront/src/app/(main)/developing/{react,next-js,angular}/testing`, and
+- `packages/components/CHANGELOG.md`.

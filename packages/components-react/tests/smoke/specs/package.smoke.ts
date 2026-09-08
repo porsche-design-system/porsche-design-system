@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { createRequire } from 'node:module';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import { test, expect, describe } from 'vitest';
 
 const nodeRequire = createRequire(import.meta.url);

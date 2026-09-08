@@ -1,0 +1,26 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { textareaMeta } from '@/app/(main)/components/textarea/textarea.meta';
+
+export const metadata = {
+  title: 'Textarea - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Textarea component.',
+};
+
+# Textarea <ComponentStatus tagName="p-textarea"></ComponentStatus>
+
+<TableOfContents headings={[textareaMeta.examples.form.name, textareaMeta.examples.slots.name]} />
+
+## {textareaMeta.examples.form.name}
+
+<textareaMeta.examples.form.description />
+
+<ComponentExample codeSample={textareaMeta.examples.form.example} />
+
+## {textareaMeta.examples.slots.name}
+
+<textareaMeta.examples.slots.description />
+
+<ComponentStory story={textareaMeta.examples.slots.story} />

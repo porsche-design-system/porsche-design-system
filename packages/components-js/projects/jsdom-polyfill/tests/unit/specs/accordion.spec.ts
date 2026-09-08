@@ -1,5 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { getByTextShadowed } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -24,7 +24,7 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
-  const button = getByRoleShadowed('button');
-  await userEvent.click(button);
+  const summary = getByTextShadowed('Some summary');
+  await userEvent.click(summary);
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
 });

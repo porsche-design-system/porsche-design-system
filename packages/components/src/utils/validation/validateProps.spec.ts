@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, vi } from 'vitest';
 import * as breakpointCustomizableUtils from '../breakpoint-customizable';
 import * as jsonUtils from '../json';
 import * as loggerUtils from '../log/logger';
@@ -178,20 +178,27 @@ describe('isValidArray()', () => {
     ['propName', undefined, AllowedTypes.number, undefined, 'number[]'],
     ['propName', [{}], AllowedTypes.number, {}, 'number[]'],
     ['propName', [null], AllowedTypes.number, null, 'number[]'],
-  ])(
-    'should for propName: %s, arr: %s and validator: %s return %s',
-    (propName, arr, validator, valueResult, typeResult) => {
-      expect(isValidArray(propName, arr, validator)).toEqual(
-        typeResult
-          ? {
-              propName,
-              propValue: valueResult,
-              propType: typeResult,
-            }
-          : undefined
-      );
-    }
-  );
+    // AllowedTypes.null: null/undefined are valid items, anything else is not.
+    // The previously crashing case is the "non array" row, which now gracefully derives
+    // propType via the Symbol fallback because validator(propName, null) returns undefined.
+    ['propName', [null], AllowedTypes.null, undefined, undefined],
+    ['propName', [null, undefined], AllowedTypes.null, undefined, undefined],
+    ['propName', [], AllowedTypes.null, undefined, undefined],
+    ['propName', ['a'], AllowedTypes.null, 'a', 'null[]'],
+    ['propName', [1], AllowedTypes.null, 1, 'null[]'],
+    ['propName', 'non array', AllowedTypes.null, 'non array', 'null[]'],
+    ['propName', undefined, AllowedTypes.null, undefined, 'null[]'],
+  ])('should for propName: %s, arr: %s and validator: %s return %s', (propName, arr, validator, valueResult, typeResult) => {
+    expect(isValidArray(propName, arr, validator)).toEqual(
+      typeResult
+        ? {
+            propName,
+            propValue: valueResult,
+            propType: typeResult,
+          }
+        : undefined
+    );
+  });
 });
 
 describe('validateProps()', () => {
@@ -221,11 +228,12 @@ describe('validateProps()', () => {
 
   it('should call printErrorMessage() for each validation error', () => {
     const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'printErrorMessage').mockReturnValue();
-    const error1: ValidationError & { componentName: string } = {
+    const error1: ValidationError & { componentName: string; instance: any } = {
       propName: 'prop1',
       propValue: 'value1',
       propType: 'string',
       componentName: 'p-button',
+      instance,
     };
     const error2: ValidationError = { ...error1, propName: 'prop2', propValue: 'value2' };
 
@@ -294,6 +302,39 @@ describe('AllowedTypes', () => {
       vi.spyOn(validatePropsUtils.internalValidateProps, 'validateValueOfType').mockReturnValue(mockResult);
       const result = AllowedTypes.boolean('propName', 'propValue');
       expect(result).toEqual(mockResult);
+    });
+  });
+
+  describe('.null', () => {
+    it.each<[any, ValidationError | undefined]>([
+      [null, undefined],
+      [undefined, undefined],
+      ['a string', { propName: 'propName', propValue: 'a string', propType: 'null' }],
+      [0, { propName: 'propName', propValue: 0 as any, propType: 'null' }],
+      [false, { propName: 'propName', propValue: false as any, propType: 'null' }],
+      [{}, { propName: 'propName', propValue: {} as any, propType: 'null' }],
+      [[], { propName: 'propName', propValue: [] as any, propType: 'null' }],
+    ])('should for propValue: %s return %s', (propValue, expected) => {
+      expect(AllowedTypes.null('propName', propValue)).toEqual(expected);
+    });
+
+    it("should expose function name 'null' for readable oneOf error messages", () => {
+      // `func.name` is used by `oneOf` to build the `expected one of: ...` error message.
+      // The method-shorthand definition in `validateProps.ts` ensures this is the literal 'null'.
+      expect(AllowedTypes.null.name).toBe('null');
+    });
+
+    it('should produce a readable error via oneOf when combined with AllowedTypes.string', () => {
+      const validator = AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.null]);
+
+      expect(validator('value', 'hello')).toBe(undefined);
+      expect(validator('value', null)).toBe(undefined);
+      expect(validator('value', undefined)).toBe(undefined);
+      expect(validator('value', 42)).toEqual({
+        propName: 'value',
+        propValue: 42,
+        propType: 'string, null',
+      });
     });
   });
 
@@ -633,10 +674,14 @@ describe('formatArrayOutput()', () => {
 
 describe('printErrorMessage()', () => {
   it('should call consoleError() util with correct parameter', () => {
+    const instance = {
+      href: 'a',
+      host: document.createElement('p-link'),
+    };
     const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
-    printErrorMessage({ propName: 'href', propValue: 'a', propType: 'string', componentName: 'p-link' });
+    printErrorMessage({ propName: 'href', propValue: 'a', propType: 'string', componentName: 'p-link', instance });
 
-    expect(spy).toHaveBeenCalledWith(expect.any(String));
+    expect(spy).toHaveBeenCalledWith(expect.any(String), instance.host);
     expect(spy.mock.calls[0][0]).toMatchSnapshot();
   });
 });

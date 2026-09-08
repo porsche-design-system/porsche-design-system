@@ -10,6 +10,7 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
       <div>Slide 3</div>
     </p-carousel>
 
+    <div class="flex gap-fluid-sm mt-fluid-sm">
     @for (_ of [].constructor(3); track _; let i = $index) {
       <p-button
         type="button"
@@ -19,9 +20,10 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
         {{ i + 1 }}
       </p-button>
     }
+    </div>
     `,
   styles: `
-    @use '@porsche-design-system/components-angular/styles' as *;
+    @use '@porsche-design-system/components-angular/scss' as *;
 
     p-carousel div {
       display: flex;
@@ -29,7 +31,7 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
       justify-content: center;
       background: #00b0f4;
       height: 150px;
-      color: $pds-theme-light-primary;
+      color: $color-primary;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

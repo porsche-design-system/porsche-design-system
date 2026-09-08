@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { segmentedControlMeta } from '@/app/(main)/components/segmented-control/segmented-control.meta';
+
+export const metadata = {
+  title: 'Segmented Control - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Segmented Control component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Segmented Control <ComponentStatus tagName="p-segmented-control"></ComponentStatus>
+
+<segmentedControlMeta.introduction />
+
+<Configurator
+  tagName="p-segmented-control"
+  story={segmentedControlMeta.configurator.story}
+  slotStories={segmentedControlMeta.configurator.slotStories}
+/>

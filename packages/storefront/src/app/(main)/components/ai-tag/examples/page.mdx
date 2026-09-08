@@ -1,0 +1,65 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { aiTagMeta } from '@/app/(main)/components/ai-tag/ai-tag.meta';
+
+export const metadata = {
+  title: 'AI Tag - Porsche Design System',
+  description: 'Discover detailed examples and insights of the AI Tag component.',
+};
+
+# AI Tag <ComponentStatus tagName="p-ai-tag"></ComponentStatus>
+
+<TableOfContents
+  headings={[
+    aiTagMeta.examples.withinCheckbox.name,
+    aiTagMeta.examples.withinRadioGroup.name,
+    aiTagMeta.examples.withinFormLabel.name,
+    aiTagMeta.examples.withinInputSearch.name,
+    aiTagMeta.examples.withinText.name,
+    aiTagMeta.examples.withinImage.name,
+    aiTagMeta.examples.withinTable.name,
+  ]}
+/>
+
+## {aiTagMeta.examples.withinCheckbox.name}
+
+<aiTagMeta.examples.withinCheckbox.description />
+
+<ComponentStory story={aiTagMeta.examples.withinCheckbox.story} />
+
+## {aiTagMeta.examples.withinRadioGroup.name}
+
+<aiTagMeta.examples.withinRadioGroup.description />
+
+<ComponentStory story={aiTagMeta.examples.withinRadioGroup.story} />
+
+## {aiTagMeta.examples.withinFormLabel.name}
+
+<aiTagMeta.examples.withinFormLabel.description />
+
+<ComponentStory story={aiTagMeta.examples.withinFormLabel.story} />
+
+## {aiTagMeta.examples.withinInputSearch.name}
+
+<aiTagMeta.examples.withinInputSearch.description />
+
+<ComponentStory story={aiTagMeta.examples.withinInputSearch.story} />
+
+## {aiTagMeta.examples.withinText.name}
+
+<aiTagMeta.examples.withinText.description />
+
+<ComponentStory story={aiTagMeta.examples.withinText.story} />
+
+## {aiTagMeta.examples.withinImage.name}
+
+<aiTagMeta.examples.withinImage.description />
+
+<ComponentStory story={aiTagMeta.examples.withinImage.story} />
+
+## {aiTagMeta.examples.withinTable.name}
+
+<aiTagMeta.examples.withinTable.description />
+
+<ComponentStory story={aiTagMeta.examples.withinTable.story} />

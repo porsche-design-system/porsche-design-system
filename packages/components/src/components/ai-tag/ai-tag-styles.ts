@@ -1,22 +1,22 @@
-import { borderRadiusSmall, frostedGlassStyle, textXXSmallStyle } from '@porsche-design-system/styles';
 import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode } from '../../utils';
+  blurFrosted,
+  colorContrastHigh,
+  colorFrostedStrong,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  ref,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescale2Xs,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, forcedColorsMediaQuery, getTransition, hostHiddenStyles } from '../../styles';
+import { getCss } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { AI_TAG_ICON_PATH } from './ai-tag-utils';
 
-export const getComponentCss = (theme: Theme): string => {
-  const { backgroundFrostedColor, contrastHighColor } = getThemedColors(theme);
-  const { backgroundFrostedColor: backgroundFrostedColorDark, contrastHighColor: contrastHighColorDark } =
-    getThemedColors('dark');
-
+export const getComponentCss = (): string => {
   const iconMask = `${getInlineSVGBackgroundImage(AI_TAG_ICON_PATH)} center/contain no-repeat`;
 
   return getCss({
@@ -26,8 +26,8 @@ export const getComponentCss = (theme: Theme): string => {
         verticalAlign: 'top',
         whiteSpace: 'nowrap',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
+          font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         }),
       },
       abbr: {
@@ -37,31 +37,27 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'flex',
         alignItems: 'center',
         gap: '2px',
-        padding: '1px 6px 1px 4px',
-        borderRadius: borderRadiusSmall,
-        font: textXXSmallStyle.font,
-        color: contrastHighColor,
-        background: backgroundFrostedColor,
-        ...frostedGlassStyle,
-        ...(isHighContrastMode && {
+        padding: `0 ${ref(spacingStaticSm)} 0 ${ref(spacingStaticXs)}`,
+        borderRadius: `calc(${ref(spacingStaticXs)} + (${ref(leadingNormal)} / 2))`, // ensures pill shape has a maximum border radius to support multiline.
+        fontSize: ref(typescale2Xs),
+        color: ref(colorContrastHigh),
+        background: ref(colorFrostedStrong),
+        WebkitBackdropFilter: ref(blurFrosted),
+        backdropFilter: ref(blurFrosted),
+        ...forcedColorsMediaQuery({
           outline: '1px solid transparent',
         }),
         transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastHighColorDark,
-          background: backgroundFrostedColorDark,
-        }),
         '&::before': {
           content: '""',
           width: '1rem',
           height: '1rem',
-          backgroundColor: contrastHighColor,
+          background: ref(colorContrastHigh),
           mask: iconMask,
           WebkitMask: iconMask,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            backgroundColor: contrastHighColorDark,
+          ...forcedColorsMediaQuery({
+            background: 'CanvasText',
           }),
-          ...(isHighContrastMode && { backgroundColor: 'CanvasText' }),
         },
       },
     },

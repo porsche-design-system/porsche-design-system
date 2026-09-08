@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-design-system/styles-2",
+  "name": "@porsche-design-system/styles",
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
@@ -9,22 +9,45 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "build": "yarn clean:build && yarn build:tailwindcss && yarn build:app",
+    "build": "npm run clean:build && npm run build:tailwindcss && npm run build:scss && npm run build:emotion && npm run build:vanilla-extract && npm run build:app",
+    "build-app": "tsc -b && vite build",
+    "build-prod": "npm run clean:build && npm run build:tailwindcss && npm run build:scss && npm run build:emotion && npm run build:vanilla-extract && npm run build:app",
     "build:app": "vite build",
-    "build:tailwindcss": "yarn --cwd projects/tailwindcss build",
-    "test:unit": "yarn test:unit:tailwindcss",
-    "test:unit:tailwindcss": "yarn --cwd projects/tailwindcss test:unit",
-    "clean:build": "yarn clean:build:app && yarn clean:build:tailwindcss",
+    "build:tailwindcss": "npm run build --workspace=@porsche-design-system/tailwindcss",
+    "build:scss": "npm run build --workspace=@porsche-design-system/scss",
+    "build:emotion": "npm run build --workspace=@porsche-design-system/emotion",
+    "build:vanilla-extract": "npm run build --workspace=@porsche-design-system/vanilla-extract",
+    "test": "npm run test:unit && npm run test:vrt",
+    "test:unit": "npm run test:unit:tailwindcss && npm run test:unit:scss && npm run test:unit:emotion && npm run test:unit:vanilla-extract",
+    "test:unit:tailwindcss": "npm run test:unit --workspace=@porsche-design-system/tailwindcss",
+    "test:unit:scss": "npm run test:unit --workspace=@porsche-design-system/scss",
+    "test:unit:emotion": "npm run test:unit --workspace=@porsche-design-system/emotion",
+    "test:unit:vanilla-extract": "npm run test:unit --workspace=@porsche-design-system/vanilla-extract",
+    "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
+    "clean:build": "npm run clean:build:app && npm run clean:build:tailwindcss && npm run clean:build:scss && npm run clean:build:emotion && npm run clean:build:vanilla-extract",
     "clean:build:app": "rm -rf ./dist",
-    "clean:build:tailwindcss": "yarn --cwd projects/tailwindcss clean:build"
+    "clean:build:tailwindcss": "npm run clean:build --workspace=@porsche-design-system/tailwindcss",
+    "clean:build:scss": "npm run clean:build --workspace=@porsche-design-system/scss",
+    "clean:build:emotion": "npm run clean:build --workspace=@porsche-design-system/emotion",
+    "clean:build:vanilla-extract": "npm run clean:build --workspace=@porsche-design-system/vanilla-extract"
+  },
+  "dependencies": {
+    "@emotion/styled": "^11.14.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
-  },
-  "peerDependencies": {
-    "typescript": "*",
-    "@tailwindcss/vite": "*",
-    "vite": "*"
+    "@playwright/test": "1.61.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vanilla-extract/css": "^1.21.2",
+    "@vanilla-extract/vite-plugin": "^5.2.6",
+    "@vitejs/plugin-react": "^6.0.5",
+    "react-router": "^8.3.0",
+    "sass": "^1.102.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.0"
   },
   "volta": {
     "extends": "../../package.json"

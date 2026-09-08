@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { inputMonthMeta } from '@/app/(main)/components/input-month/input-month.meta';
+
+export const metadata = {
+  title: 'Input Month - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Input Month component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Input Month <ComponentStatus tagName="p-input-month"></ComponentStatus>
+
+<inputMonthMeta.introduction />
+
+<Configurator
+  tagName="p-input-month"
+  story={inputMonthMeta.configurator.story}
+  slotStories={inputMonthMeta.configurator.slotStories}
+/>

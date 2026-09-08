@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 export const isPreferredColorSchemeDark = () =>
-  global?.window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  global?.window && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
 
 const handlersSet: Set<() => void> = new Set();
 

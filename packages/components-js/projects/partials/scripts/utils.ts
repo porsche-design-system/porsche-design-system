@@ -1,6 +1,6 @@
-import { minify as htmlMinifier } from 'html-minifier';
+import { minify as htmlMinifier } from 'html-minifier-terser';
 
-export const minifyHTML = (str: string): string => {
+export const minifyHTML = (str: string): Promise<string> => {
   return htmlMinifier(str, {
     collapseWhitespace: true,
     collapseInlineTagWhitespace: true,

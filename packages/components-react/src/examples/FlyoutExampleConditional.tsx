@@ -1,7 +1,7 @@
-import { useCallback, useState } from 'react';
 import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';
+import { useCallback, useState } from 'react';
 
-export const FlyoutExampleConditionalPage = (): JSX.Element => {
+export const FlyoutExampleConditionalPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onOpen = useCallback(() => {

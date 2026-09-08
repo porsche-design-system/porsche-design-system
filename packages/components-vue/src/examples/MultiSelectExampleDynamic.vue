@@ -2,13 +2,14 @@
 import {
   type MultiSelectChangeEventDetail,
   PButton,
+  PInputText,
   PMultiSelect,
   PMultiSelectOption,
-  PTextFieldWrapper,
+  type PMultiSelectProps,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const selectedValues = ref<string[]>([]);
+const selectedValues = ref<PMultiSelectProps['value']>([]);
 const inputValue = ref('');
 const optionCount = ref(3);
 
@@ -21,9 +22,9 @@ const onResetValue = () => {
   inputValue.value = '';
 };
 
-const onChange = (e: MultiSelectChangeEventDetail) => {
-  selectedValues.value = e.value;
-  inputValue.value = e.value.join(',');
+const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+  selectedValues.value = e.detail.value;
+  inputValue.value = e.detail.value.join(',');
 };
 
 const onAddOption = () => {
@@ -38,20 +39,21 @@ const onRemoveOption = () => {
 </script>
 
 <template>
-  <div>
-    <PTextFieldWrapper label="Value:">
-      <input name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1,2" />
-    </PTextFieldWrapper>
-    <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
-    <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
+  <div class="flex flex-col gap-fluid-sm">
+    <PInputText label="Value:" name="input-value" v-model:value="inputValue" placeholder="e.g. 1,2" />
+    <div class="flex gap-fluid-sm">
+      <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
+      <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
+    </div>
 
     <PMultiSelect :name="'options'" :label="'Some Label'" :value="selectedValues" @change="onChange">
       <PMultiSelectOption v-for="idx in optionCount" :key="idx" :value="`${idx}`">
         Option {{ idx }}
       </PMultiSelectOption>
     </PMultiSelect>
-
-    <PButton type="button" @click="onAddOption" :compact="true">Add option</PButton>
-    <PButton type="button" @click="onRemoveOption" :compact="true">Remove last option</PButton>
+    <div class="flex gap-fluid-sm">
+      <PButton type="button" @click="onAddOption" :compact="true">Add option</PButton>
+      <PButton type="button" @click="onRemoveOption" :compact="true">Remove last option</PButton>
+    </div>
   </div>
 </template>

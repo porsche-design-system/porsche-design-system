@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { PInputSearch } from '@porsche-design-system/components-vue';
+import { PInputSearch, type PInputSearchProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myInputSearch = ref('');
+const myInputSearch = ref<PInputSearchProps['value']>('');
 
 const resetValue = () => {
   myInputSearch.value = '';

@@ -1,3 +1,4 @@
+export * from './bundles';
 export * from './data';
 export * from './lib/partialNames';
 export * from './lib/tagNames';

@@ -7,8 +7,13 @@
   const inputText = document.querySelector('p-input-text');
 
   inputText.addEventListener('input', (e) => {
-    e.target.value = e.detail.target.value;
-    setDebugText(e.detail.target.value);
+    const target = e.target;
+
+    if (target.value.length > 3) {
+      const newValue = target.value.slice(0, 3);
+      target.value = newValue;
+      setDebugText(newValue);
+    }
   });
 
   function setDebugText(value) {

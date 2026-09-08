@@ -1,18 +1,22 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   hasPropValueChanged,
-  THEMES,
+  setAriaIDREF,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId, labelId } from '../common/label/label-utils';
-import { LoadingMessage } from '../common/loading-message/loading-message';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
+import { getFieldsetAriaAttributes } from '../fieldset/fieldset-utils';
 import { getComponentCss } from './pin-code-styles';
 import {
   getConcatenatedInputValues,
@@ -27,7 +31,6 @@ import {
   type PinCodeLength,
   type PinCodeState,
   type PinCodeType,
-  type PinCodeUpdateEventDetail,
   removeWhiteSpaces,
 } from './pin-code-utils';
 
@@ -44,9 +47,8 @@ const propTypes: PropTypes<typeof PinCode> = {
   form: AllowedTypes.string,
   message: AllowedTypes.string,
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -55,7 +57,7 @@ const propTypes: PropTypes<typeof PinCode> = {
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  *
- * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-pin-code',
@@ -65,69 +67,66 @@ const propTypes: PropTypes<typeof PinCode> = {
 export class PinCode {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Sets the visible label text displayed above the pin code fields to identify their purpose. */
   @Prop() public label?: string = '';
 
-  /** The description text. */
+  /** Sets a supplementary description displayed below the label to give users additional guidance about the pin code. */
   @Prop() public description?: string = '';
 
-  /** Name of the control. */
+  /** Sets the name of the control submitted with the form data to identify the pin code value on the server. */
   @Prop({ reflect: true }) public name?: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** Number of characters of the Pin Code. */
+  /** Sets the number of individual input fields rendered, determining how many characters the pin code consists of. */
   @Prop() public length?: PinCodeLength = 4;
 
-  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
+  /** Hides the visible label and description while keeping them accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** The validation state. */
+  /** Sets the validation state of the pin code, which controls its visual appearance and feedback message style (`none`, `success`, `error`). */
   @Prop() public state?: PinCodeState = 'none';
 
-  /** Disables the Pin Code. No events will be triggered while disabled state is active. */
+  /** Prevents user interaction with all pin code fields and blocks events while the component is disabled. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active. */
+  /** Disables the pin code fields and shows a loading spinner to indicate an ongoing background operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Marks the Pin Code as required. */
+  /** Marks the pin code as required so the form cannot be submitted until all fields are filled. */
   @Prop() public required?: boolean = false;
 
-  /** The message styled depending on validation state. */
+  /** Sets the validation feedback message displayed below the pin code when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Pin Code type. */
+  /** Controls whether the individual input fields mask their content as password dots (`password`) or show digits (`number`). */
   @Prop() public type?: PinCodeType = 'number';
 
-  /** Sets the initial value of the Pin Code. */
-  @Prop({ mutable: true }) public value?: string = '';
+  /** Sets the current concatenated value. Numbers are accepted for programmatic assignment, but user input updates the value as a string. */
+  @Prop({ mutable: true }) public value?: string | number | null = '';
 
-  /** A boolean value that, if present, renders the pin-code as a compact version. */
+  /** Reduces the pin code field height and spacing for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
-  /** Adapts the color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** The id of a form element the pin-code should be associated with. */
+  /** Associates the pin code with a form element by its ID when it is not a direct descendant of that form. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Emitted when the pin-code has lost focus. */
+  /** Emitted when the pin code component loses focus after the user finishes entering characters. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
-  /** Emitted when the input is changed. */
+  /** Emitted when the pin code value changes as the user types, carrying `{ value: string; isComplete: boolean }` in the event detail. */
   @Event({ bubbles: true }) public change: EventEmitter<PinCodeChangeEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the input is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
   private initialLoading: boolean = false;
-  private defaultValue: string;
+  private defaultValue: string | number | null | undefined;
   private inputElements: HTMLInputElement[] = [];
+
+  // Coerce number/null/undefined to string for internal handling
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
@@ -135,7 +134,9 @@ export class PinCode {
 
   public componentWillLoad(): void {
     this.initialLoading = this.loading;
-    this.value = getSanitisedValue(this.host, this.value, this.length);
+    if (this.value !== null && this.value !== undefined) {
+      this.value = getSanitisedValue(this.host, this.parsedValue, this.length);
+    }
     this.defaultValue = this.value;
   }
 
@@ -146,7 +147,7 @@ export class PinCode {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
     for (const input of this.inputElements) {
       input.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
@@ -169,7 +170,7 @@ export class PinCode {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
+    this.internals?.setFormValue(String(this.defaultValue ?? '')); // coerce defaultValue to string for form value
     this.value = this.defaultValue;
   }
 
@@ -192,8 +193,7 @@ export class PinCode {
       this.disabled,
       this.loading,
       this.length,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -202,9 +202,18 @@ export class PinCode {
     this.inputElements = [];
 
     const currentInputId = 'current-input';
+    const inputLabelId = hasLabel(this.host, this.label) ? labelId : undefined;
+    const inputDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
+    const inputMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
     return (
-      <div class="root">
+      <fieldset
+        class="root"
+        disabled={this.disabled}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
+        aria-describedby={setAriaIDREF(this.loading && loadingId, inputMessageId, inputDescriptionId)}
+        aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
+      >
         <Label
           host={this.host}
           label={this.label}
@@ -222,29 +231,27 @@ export class PinCode {
               key={index}
               name={this.name}
               form={this.form}
-              {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}
+              {...(isCurrentInput(index, this.parsedValue, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
-              aria-describedby={`${labelId} ${descriptionId} ${messageId}`}
+              aria-describedby={setAriaIDREF(inputLabelId, inputMessageId)}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-disabled={this.loading ? 'true' : null}
               autoComplete="one-time-code"
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
-              value={this.value[index] === ' ' ? null : this.value[index]}
+              value={this.parsedValue[index] === ' ' ? null : this.parsedValue[index]}
               disabled={this.disabled}
               required={this.required}
               onBlur={this.onInputBlur}
               ref={(el) => this.inputElements.push(el)}
             />
           ))}
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
-      </div>
+      </fieldset>
     );
   }
 
@@ -300,7 +307,7 @@ export class PinCode {
     const sanitisedPastedValue = removeWhiteSpaces(
       getSanitisedValue(this.host, event.clipboardData.getData('Text'), this.length)
     );
-    if (sanitisedPastedValue !== this.value) {
+    if (sanitisedPastedValue !== this.parsedValue) {
       this.updateValue(sanitisedPastedValue);
       this.focusFirstEmptyOrLastInput(sanitisedPastedValue);
     }
@@ -312,7 +319,6 @@ export class PinCode {
     this.internals?.setFormValue(this.value);
     const details = { value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length };
     this.change.emit(details);
-    this.update.emit(details);
   };
 
   private focusFirstEmptyOrLastInput = (sanitisedValue: string): void => {

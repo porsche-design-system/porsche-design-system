@@ -1,7 +1,7 @@
 import { PButton, PInputSearch, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
-export const InputSearchExamplePage = (): JSX.Element => {
+export const InputSearchExamplePage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('');
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {

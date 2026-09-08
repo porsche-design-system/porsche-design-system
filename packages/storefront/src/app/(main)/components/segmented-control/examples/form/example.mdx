@@ -1,0 +1,23 @@
+import { Notification } from '@/components/common/Notification';
+
+The `p-segmented-control` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on
+your needs.
+
+In the **controlled** approach, the `p-segmented-control` state is externally managed using the `value` property and
+`change` event to keep it in sync with your application logic. This approach is ideal for complex forms or when using a
+form library. Note that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the `p-segmented-control` automatically manages its own state and includes its value
+in form submissions through the [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals)
+API. This is convenient for smaller forms or simple submissions.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  The <code>p-segmented-control</code> lacks access to native <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
+  validation behavior and error display will need to be implemented separately if required.
+</Notification>
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+

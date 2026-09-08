@@ -8,7 +8,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const SegmentedControlExampleFormPage = (): JSX.Element => {
+export const SegmentedControlExampleFormPage = () => {
   const [form, setForm] = useState({ mySegmentedControl: undefined });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 

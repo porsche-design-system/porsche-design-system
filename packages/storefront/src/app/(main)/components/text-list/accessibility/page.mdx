@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { textListMeta } from '@/app/(main)/components/text-list/text-list.meta';
+
+export const metadata = {
+  title: 'Text List: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Text List component',
+};
+
+# Text List <ComponentStatus tagName="p-text-list"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<textListMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-text-list" examples={textListMeta.accessibility.examples} />
+
+<textListMeta.accessibility.tests />

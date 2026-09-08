@@ -10,7 +10,7 @@ const handleSubmit = (e: Event) => {
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit" class="flex gap-fluid-sm">
     <PButtonPure name="option" value="A" type="submit">Button A</PButtonPure>
     <PButtonPure name="option" value="B" type="submit">Button B</PButtonPure>
   </form>

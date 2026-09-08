@@ -1,37 +1,29 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import { Component, Element, type JSX, Prop, h } from '@stencil/core';
-import type { IconName, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, IconName, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
-  TEXT_SIZES,
-  THEMES,
   attachComponentCss,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './icon-styles';
 import {
+  buildIconUrl,
   ICON_ARIA_ATTRIBUTES,
   ICON_COLORS,
+  ICON_SIZES,
   type IconAriaAttribute,
   type IconColor,
-  type IconColorDeprecated,
   type IconSize,
-  buildIconUrl,
 } from './icon-utils';
-
-type DeprecationMapType = Record<IconColorDeprecated, Exclude<IconColor, IconColorDeprecated>>;
 
 const propTypes: PropTypes<typeof Icon> = {
   name: AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]),
   source: AllowedTypes.string,
   color: AllowedTypes.oneOf<IconColor>(ICON_COLORS),
-  size: AllowedTypes.oneOf<IconSize>(TEXT_SIZES),
-  lazy: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
+  size: AllowedTypes.breakpoint<IconSize>(ICON_SIZES),
   aria: AllowedTypes.aria<IconAriaAttribute>(ICON_ARIA_ATTRIBUTES),
 };
 
@@ -42,28 +34,19 @@ const propTypes: PropTypes<typeof Icon> = {
 export class Icon {
   @Element() public host!: HTMLElement;
 
-  /** Specifies which icon to use. */
+  /** Selects an icon from the built-in PDS icon library by name (e.g. `arrow-right`, `close`). */
   @Prop() public name?: IconName = 'arrow-right';
 
-  /** Specifies a whole icon path which can be used for custom icons. */
+  /** Sets a path to a custom SVG icon, used instead of the built-in icon library. */
   @Prop() public source?: string;
 
-  /** Basic color variations depending on theme property. */
+  /** Sets the fill color of the icon using PDS color tokens. */
   @Prop() public color?: IconColor = 'primary';
 
-  /** The size of the icon. */
-  @Prop() public size?: IconSize = 'small';
+  /** Sets the icon size using the PDS typographic scale. Use `inherit` to derive size from the parent element. Supports responsive breakpoint values. */
+  @Prop() public size?: BreakpointCustomizable<IconSize> = 'sm';
 
-  /**
-   * Has no effect anymore (the component is now using the native `loading="lazy"` attribute by default)
-   * @deprecated since v3.0.0, will be removed with next major release
-   */
-  @Prop() public lazy?: boolean;
-
-  /** Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes on the icon — use `aria-label` to make the icon meaningful to screen readers when it conveys information. */
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -72,25 +55,7 @@ export class Icon {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Icon>(this, 'lazy');
-    const deprecationMap: DeprecationMapType = {
-      brand: 'primary',
-      default: 'primary',
-      'neutral-contrast-low': 'contrast-low',
-      'neutral-contrast-medium': 'contrast-medium',
-      'neutral-contrast-high': 'contrast-high',
-      'notification-neutral': 'notification-info',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Icon, IconColorDeprecated, IconColor>(this, 'color', deprecationMap);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.name,
-      this.source,
-      (deprecationMap[this.color as keyof DeprecationMapType] || this.color) as Exclude<IconColor, IconColorDeprecated>,
-      this.size,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.name, this.source, this.color, this.size);
 
     return (
       <img

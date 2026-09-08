@@ -1,24 +1,20 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
-import { type ToastState, type ToastStateDeprecated, TOAST_STATES } from '../toast/toast-utils';
-import type { IconColor } from '../../icon/icon-utils';
-import type { PropTypes, Theme } from '../../../types';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getHasNativePopoverSupport,
-  getPrefixedTagNames,
-  THEMES,
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../../utils';
+import { FCDismissButton } from '../../common/fc-dismiss-button/fc-dismiss-button';
+import { NotificationBase } from '../../common/notification-base/notification-base';
+import { TOAST_STATES, type ToastState } from '../toast/toast-utils';
 import { getComponentCss } from './toast-item-styles';
-import { getInlineNotificationIconName } from '../../inline-notification/inline-notification-utils';
 
 const propTypes: PropTypes<typeof ToastItem> = {
   text: AllowedTypes.string,
   state: AllowedTypes.oneOf<ToastState>(TOAST_STATES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -28,17 +24,14 @@ const propTypes: PropTypes<typeof ToastItem> = {
 export class ToastItem {
   @Element() public host!: HTMLElement;
 
-  /** Text of the toast-item. */
+  /** Sets the notification message text displayed inside the toast item to inform the user about the outcome of an action. */
   @Prop() public text?: string = '';
 
-  /** State of the toast-item. */
+  /** Sets the visual and semantic state of the toast item, controlling its icon and color scheme (`info`, `warning`, `error`, `success`). */
   @Prop() public state?: ToastState = 'info';
 
-  /** Adapts the toast-item color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   // Since the event listener is registered on parent p-toast, the event needs to bubble
-  /** Emitted when the close button is clicked. */
+  /** Emitted when the user clicks the close button on the toast item, signalling that it should be dismissed. */
   @Event() public dismiss?: EventEmitter<void>;
 
   public connectedCallback(): void {
@@ -53,34 +46,15 @@ export class ToastItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof ToastItem, ToastStateDeprecated, ToastState>(this, 'state', {
-      neutral: 'info',
-    });
-    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
+    attachComponentCss(this.host, getComponentCss, this.state);
 
     return (
       <Host popover="manual">
-        <PrefixedTagNames.pIcon
-          class="icon"
-          name={getInlineNotificationIconName(this.state)}
-          color={`notification-${this.state}` as IconColor}
-          theme={this.theme}
-          aria-hidden="true"
+        <NotificationBase
+          description={this.text}
+          innerHTML={true}
+          dismissButton={<FCDismissButton label="Close notification message" onClick={this.dismiss.emit} />}
         />
-        <p innerHTML={this.text} />
-        <PrefixedTagNames.pButton
-          variant="ghost"
-          theme={this.theme}
-          class="close"
-          type="button"
-          icon="close"
-          hideLabel={true}
-          onClick={this.dismiss.emit}
-        >
-          Close notification message
-        </PrefixedTagNames.pButton>
       </Host>
     );
   }

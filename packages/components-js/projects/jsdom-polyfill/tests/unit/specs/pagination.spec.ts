@@ -1,4 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
+import { screen } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -34,4 +35,15 @@ it('should have working events', async () => {
 
   await userEvent.click(btn3);
   expect(debugEl.innerHTML).toBe('Current Page: <span>3</span>; Event Counter: <span>2</span>;');
+});
+
+it('should expose its page buttons to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-pagination');
+  await componentsReady();
+
+  expect(screen.queryAllByRole('button')).toHaveLength(0);
+  expect(screen.getAllByShadowRole('button')).toHaveLength(8);
+
+  const { shadowRoot } = document.querySelector('p-pagination');
+  expect(screen.getByShadowRole('button', { name: 'Page 2' })).toBe(shadowRoot.querySelector('[aria-label="Page 2"]'));
 });

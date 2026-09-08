@@ -3,11 +3,11 @@ import {
   PButton,
   PDrilldown,
   PDrilldownItem,
-  PDrilldownLink
+  PDrilldownLink,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const DrilldownExampleActiveIdentifierPage = (): JSX.Element => {
+export const DrilldownExampleActiveIdentifierPage = () => {
   const [isDrilldownOpen, setIsDrilldownOpen] = useState<boolean>(false);
   const [drilldownActiveIdentifier, setDrilldownActiveIdentifier] =
     useState<DrilldownUpdateEventDetail['activeIdentifier']>('id-2');
@@ -18,8 +18,7 @@ export const DrilldownExampleActiveIdentifierPage = (): JSX.Element => {
     setIsDrilldownOpen(false);
   }, []);
   const onUpdate = useCallback(
-    (e: CustomEvent<DrilldownUpdateEventDetail>) =>
-      setDrilldownActiveIdentifier(e.detail.activeIdentifier),
+    (e: CustomEvent<DrilldownUpdateEventDetail>) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
     []
   );
 

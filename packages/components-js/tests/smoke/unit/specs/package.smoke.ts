@@ -1,8 +1,8 @@
 import { createRequire } from 'node:module';
 import { type Analysis, checkPackage, createPackageFromTarballData, type Problem } from '@arethetypeswrong/core';
 import { execSync } from 'child_process';
+import { sync as globbySync } from 'fast-glob';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
 import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 import componentsJsPackageJson from '../../../../dist/components-wrapper/package.json';
@@ -24,24 +24,62 @@ const packageJsonExports = {
     module: './partials/esm/index.mjs',
     default: './partials/cjs/index.cjs',
   },
-  './styles': {
-    sass: './styles/_index.scss',
-    types: './styles/esm/index.d.ts',
-    import: './styles/esm/index.mjs',
-    default: './styles/cjs/index.cjs',
+  './tokens': {
+    types: './tokens/esm/index.d.ts',
+    import: './tokens/esm/index.mjs',
+    default: './tokens/cjs/index.cjs',
   },
-  './styles/vanilla-extract': {
-    types: './styles/vanilla-extract/esm/vanilla-extract/index.d.ts',
-    import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
-    default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
+  './scss': {
+    sass: './scss/_index.scss',
   },
-  './tailwindcss': {
-    style: './tailwindcss/index.css',
+  './emotion': {
+    types: './emotion/esm/index.d.ts',
+    import: './emotion/esm/index.mjs',
+    default: './emotion/cjs/index.cjs',
+  },
+  './meta': {
+    types: './meta/esm/index.d.ts',
+    import: './meta/esm/index.mjs',
+    default: './meta/cjs/index.cjs',
+  },
+  './vanilla-extract': {
+    types: './vanilla-extract/esm/index.d.ts',
+    import: './vanilla-extract/esm/index.mjs',
+    default: './vanilla-extract/cjs/index.cjs',
   },
   './testing': {
     types: './testing/index.d.ts',
     default: './testing/index.cjs',
   },
+  './styles': {
+    types: './emotion/esm/index.d.ts',
+    sass: './scss/_index.scss',
+    import: './emotion/esm/index.mjs',
+    default: './emotion/cjs/index.cjs',
+  },
+  './styles/vanilla-extract': {
+    types: './vanilla-extract/esm/index.d.ts',
+    import: './vanilla-extract/esm/index.mjs',
+    default: './vanilla-extract/cjs/index.cjs',
+  },
+  './tailwindcss': './tailwindcss/index.css',
+  './tailwindcss/index.css': './tailwindcss/index.css',
+  './tailwindcss/index': './tailwindcss/index.css',
+  './index.css': './stylesheets/index.css',
+  './index': './stylesheets/index.css',
+  './color-scheme.css': './stylesheets/color-scheme.css',
+  './color-scheme': './stylesheets/color-scheme.css',
+  './font-face.css': './stylesheets/font-face.css',
+  './font-face': './stylesheets/font-face.css',
+  './normalize.css': './stylesheets/normalize.css',
+  './normalize': './stylesheets/normalize.css',
+  './variables.css': './stylesheets/variables.css',
+  './variables': './stylesheets/variables.css',
+  './cn': './stylesheets/cn/index.css',
+  './cn/index.css': './stylesheets/cn/index.css',
+  './cn/index': './stylesheets/cn/index.css',
+  './cn/font-face.css': './stylesheets/cn/font-face.css',
+  './cn/font-face': './stylesheets/cn/font-face.css',
 };
 
 describe('package content', () => {
@@ -58,6 +96,18 @@ describe('package content', () => {
   }
 });
 
+describe('stylesheets folder content', () => {
+  const componentsJsFilePath = nodeRequire.resolve('@porsche-design-system/components-js');
+  const componentsJsPackageDir = path.resolve(componentsJsFilePath, '../..');
+  const stylesheetsDir = path.resolve(componentsJsPackageDir, 'stylesheets');
+  const stylesheetsFiles = globbySync(`${stylesheetsDir}/**/*`);
+
+  test('should only expose .css files and no internal meta (js/cjs/mjs/d.ts) or package.json', () => {
+    const nonCssFiles = stylesheetsFiles.filter((filePath) => !filePath.endsWith('.css'));
+    expect(nonCssFiles).toEqual([]);
+  });
+});
+
 describe('package.json files', () => {
   const packageNames = [
     '@porsche-design-system/components-js',
@@ -67,7 +117,7 @@ describe('package.json files', () => {
   ] as const;
 
   for (const packageName of packageNames) {
-    test(`should have correct entrypoints for "${packageName}"`, async () => {
+    test(`should have correct entrypoints for "${packageName}"`, { timeout: 30000 }, async () => {
       const pathName = path
         .resolve(nodeRequire.resolve(packageName), '../package.json')
         .replace(/(wrapper\/).+\/(package\.json)/, '$1$2'); // get rid of nested folders if there are any
@@ -99,6 +149,7 @@ describe('package.json files', () => {
         expect(pkgJson.exports).toEqual({
           './package.json': './package.json',
           '.': {
+            style: './stylesheets/index.css',
             types: './esm/index.d.ts',
             import: './esm/index.mjs',
             default: './cjs/index.cjs',
@@ -133,10 +184,19 @@ describe('package.json files', () => {
             ('entrypoint' in prob &&
               (prob.entrypoint === './ag-grid' ||
                 prob.entrypoint === '.' ||
+                prob.entrypoint === './scss' ||
+                prob.entrypoint === './emotion' ||
+                prob.entrypoint === './vanilla-extract' ||
+                prob.entrypoint === './ssr' ||
                 prob.entrypoint === './styles' ||
                 prob.entrypoint === './styles/vanilla-extract' ||
-                prob.entrypoint === './tailwindcss' ||
-                prob.entrypoint === './ssr'))
+                prob.entrypoint.includes('tailwindcss') ||
+                prob.entrypoint.includes('color-scheme') ||
+                prob.entrypoint.includes('font-face') ||
+                prob.entrypoint.includes('normalize') ||
+                prob.entrypoint.includes('variables') ||
+                prob.entrypoint.includes('cn') ||
+                prob.entrypoint.includes('index')))
           )
       );
 

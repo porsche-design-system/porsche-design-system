@@ -1,7 +1,6 @@
-import { getBasePath } from '@/utils/getBasePath';
 import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
-import remarkGfm from 'remark-gfm';
+import { getBasePath } from '@/utils/getBasePath';
 
 const basePath = getBasePath();
 
@@ -13,19 +12,27 @@ const nextConfig: NextConfig = {
   //skipTrailingSlashRedirect: true,
   distDir: 'dist',
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  // The skill registry is exported as raw TypeScript, so it has to be compiled by the storefront build.
+  transpilePackages: ['@porsche-design-system/skill'],
   images: {
     unoptimized: true,
   },
   compiler: {
     styledComponents: true,
   },
+  experimental: {
+    useLightningcss: true,
+    // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
+    lightningCssFeatures: {
+      exclude: ['light-dark'],
+    },
+  },
 };
 
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
+    remarkPlugins: ['remark-gfm'],
   },
 });
 

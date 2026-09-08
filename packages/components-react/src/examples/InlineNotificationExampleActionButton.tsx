@@ -1,7 +1,7 @@
+import { PButton, PInlineNotification } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
-import { PInlineNotification } from '@porsche-design-system/components-react';
 
-export const InlineNotificationExampleActionButtonPage = (): JSX.Element => {
+export const InlineNotificationExampleActionButtonPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const onAction = useCallback(() => setIsLoading((prevValue) => !prevValue), []);
 
@@ -9,16 +9,16 @@ export const InlineNotificationExampleActionButtonPage = (): JSX.Element => {
     <>
       <PInlineNotification
         heading="Some heading"
-        headingTag="h4"
+        headingTag="h3"
         description="Some description."
         actionLabel="Retry"
         actionIcon="reset"
         actionLoading={isLoading}
         onAction={onAction}
       />
-      <button type="button" onClick={onAction}>
+      <PButton type="button" compact={true} onClick={onAction}>
         Reset `actionLoading`
-      </button>
+      </PButton>
     </>
   );
 };

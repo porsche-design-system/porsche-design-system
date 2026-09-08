@@ -1,26 +1,31 @@
-import { Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
-  getPrefixedTagNames,
+  createTopLayerController,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
+  isDialogBackdropTarget,
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
-  setDialogVisibility,
   setScrollLock,
+  showDialog,
+  type TopLayerController,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
+import { DialogBase } from '../common/dialog-base/dialog-base';
 import { getComponentCss } from './sheet-styles';
 import {
   SHEET_ARIA_ATTRIBUTES,
+  SHEET_BACKGROUNDS,
   type SheetAriaAttribute,
+  type SheetBackground,
+  type SheetDismissEventDetail,
   type SheetMotionHiddenEndEventDetail,
   type SheetMotionVisibleEndEventDetail,
 } from './sheet-utils';
@@ -29,8 +34,8 @@ const propTypes: PropTypes<typeof Sheet> = {
   open: AllowedTypes.boolean,
   dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
+  background: AllowedTypes.oneOf<SheetBackground>(SHEET_BACKGROUNDS),
   aria: AllowedTypes.aria<SheetAriaAttribute>(SHEET_ARIA_ATTRIBUTES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -46,33 +51,42 @@ const propTypes: PropTypes<typeof Sheet> = {
 export class Sheet {
   @Element() public host!: HTMLElement;
 
-  /** If true, the sheet is open. */
+  /** Controls whether the sheet panel slides in from the bottom and is visible to the user. */
   @Prop() public open: boolean = false;
 
-  /** If false, the sheet will not have a dismiss button. */
+  /** Shows a dismiss button in the sheet header so users can manually close it. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** If true, the sheet will not be closable via backdrop click. */
+  /**When enabled, clicking the backdrop will not close the sheet. */
   @Prop() public disableBackdropClick?: boolean = false;
 
-  /** Add ARIA attributes. */
+  /** Sets the background color of the sheet panel (`canvas` or `surface`). */
+  @Prop() public background?: SheetBackground = 'canvas';
+
+  /** Sets ARIA attributes on the sheet dialog element for improved accessibility when the default `aria-label` is insufficient. */
   @Prop() public aria?: SelectedAriaAttributes<SheetAriaAttribute>;
 
-  /** Adapts the sheet color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  /** Emitted when the user closes the sheet via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<SheetDismissEventDetail>;
 
-  /** Emitted when the component requests to be dismissed. */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
-
-  /** Emitted when the sheet is opened and the transition is finished. */
+  /** Emitted after the sheet's open transition has fully completed and the panel is visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<SheetMotionVisibleEndEventDetail>;
 
-  /** Emitted when the sheet is closed and the transition is finished. */
+  /** Emitted after the sheet's close transition has fully completed and the panel is hidden. */
   @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<SheetMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
   private hasHeader: boolean;
+  // Tracks whether the current pointer gesture started inside the panel (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the panel and released on the backdrop.
+  private isPointerDownInside = false;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.dialog,
+    isShown: () => !!this.dialog?.open,
+    show: () => showDialog(this.dialog, this.scroller),
+    hide: () => this.dialog?.close(),
+  });
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -83,11 +97,16 @@ export class Sheet {
   }
 
   public componentDidRender(): void {
-    setDialogVisibility(this.open, this.dialog, this.scroller);
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
   }
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    this.topLayer.cancel();
   }
 
   public render(): JSX.Element {
@@ -99,20 +118,26 @@ export class Sheet {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
     }
 
-    attachComponentCss(this.host, getComponentCss, this.open, this.dismissButton, this.theme);
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
+    attachComponentCss(this.host, getComponentCss, this.open, this.background, this.dismissButton);
 
     return (
-      <dialog
-        inert={!this.open} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
-        tabIndex={-1} // dialog always has a dismiss button to be focused
-        ref={(el) => (this.dialog = el)}
-        onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
-        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on sheet and mouseup on backdrop) but changed back to native behavior
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+      <DialogBase
+        // `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
+        // fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
+        // during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
+        // `inert` avoids that and mirrors the pattern used by `p-modal` / `p-popover` / `p-drilldown`.
+        inert={!this.open}
+        dialogRef={(el) => (this.dialog = el)}
+        scrollerRef={(el) => (this.scroller = el)}
+        dismissable={this.dismissButton ?? undefined}
+        onCancel={this.onDialogCancel}
+        onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
+        onClick={this.onDialogBackdropClick}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        {...parseAndGetAriaAttributes({
+        onDismiss={this.dismissButton ? this.onDismissButtonClick : undefined}
+        containerClass="sheet"
+        header={this.hasHeader ? <slot name="header" /> : undefined}
+        ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,
           ...(this.hasHeader && {
             'aria-label': hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'),
@@ -120,30 +145,20 @@ export class Sheet {
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        <div class="scroller" ref={(el) => (this.scroller = el)}>
-          <div class="sheet">
-            {this.dismissButton && (
-              <PrefixedTagNames.pButton
-                variant="ghost"
-                class="dismiss"
-                type="button"
-                hideLabel={true}
-                icon="close"
-                onClick={this.dismissDialog}
-                theme={this.theme}
-              >
-                Dismiss sheet
-              </PrefixedTagNames.pButton>
-            )}
-            {this.hasHeader && <slot name="header" />}
-            <slot />
-          </div>
-        </div>
-      </dialog>
+        <slot />
+      </DialogBase>
     );
   }
 
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
+  private onDialogCancel = (e: Event): void =>
+    onCancelDialog(e, () => this.dismissDialog('escape'), !this.dismissButton);
+
+  private onDialogBackdropClick = (e: MouseEvent): void =>
+    onClickDialog(e, () => this.dismissDialog('backdrop'), this.disableBackdropClick, this.isPointerDownInside);
+
+  private onDismissButtonClick = (): void => this.dismissDialog('dismiss-button');
+
+  private dismissDialog = (reason: SheetDismissEventDetail['reason']): void => {
+    this.dismiss.emit({ reason });
   };
 }

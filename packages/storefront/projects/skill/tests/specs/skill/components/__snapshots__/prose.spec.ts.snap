@@ -1,0 +1,32 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderComponentProse > renders representative component prose 1`] = `
+"# p-button
+
+The \`p-button\` component is essential for performing **interaction** events such as submitting a form. Whenever you want to provide navigational elements, use the [Link](/components/link/) component instead.
+
+## Usage
+
+Guidance on how to use this component in different situations.
+
+### Do:
+
+- Use buttons for actions with clear consequences.
+
+### Don't:
+
+- Don't use a button for navigation.
+
+## Accessibility support
+
+The component follows the [WAI-ARIA Button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/).
+
+1. Tab moves focus to the button.
+2. Enter or Space activates it.
+
+## Notes
+
+### Form attribute
+
+Use the \`form\` attribute to associate the button with a form by its \`id\`."
+`;

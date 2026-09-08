@@ -27,7 +27,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>Disabled: <span data-field="disabled">{{ form.controls.myInputSearch.disabled }}</span></div>
     <div>Value: <span data-field="value">{{ form.controls.myInputSearch.value }}</span></div>
     <div>Valid: <span data-field="valid">{{ form.controls.myInputSearch.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
+    <div [@if]="submittedValue !== null">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -35,17 +35,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputSearchExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputSearch: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputSearch: new FormControl<string | null>(null, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: string | null = null;
 
   setValue(): void {
     this.form.controls.myInputSearch.setValue('Some search term');
   }
 
   resetValue(): void {
-    this.form.controls.myInputSearch.reset('');
+    this.form.controls.myInputSearch.reset(null);
   }
 
   toggleDisabled(): void {

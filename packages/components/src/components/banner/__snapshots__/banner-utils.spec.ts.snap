@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`getBannerAriaAttributes() > should return correct aria attributes for state: error 1`] = `
+{
+  "aria-label": "Some label",
+  "aria-live": "assertive",
+  "role": "alert",
+}
+`;
+
+exports[`getBannerAriaAttributes() > should return correct aria attributes for state: info 1`] = `
+{
+  "aria-label": "Some label",
+  "aria-live": "polite",
+  "role": "status",
+}
+`;
+
+exports[`getBannerAriaAttributes() > should return correct aria attributes for state: success 1`] = `
+{
+  "aria-label": "Some label",
+  "aria-live": "polite",
+  "role": "status",
+}
+`;
+
+exports[`getBannerAriaAttributes() > should return correct aria attributes for state: warning 1`] = `
+{
+  "aria-label": "Some label",
+  "aria-live": "assertive",
+  "role": "alert",
+}
+`;

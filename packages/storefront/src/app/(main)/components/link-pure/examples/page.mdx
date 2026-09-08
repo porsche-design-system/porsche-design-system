@@ -1,0 +1,42 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { linkPureMeta } from '@/app/(main)/components/link-pure/link-pure.meta';
+
+export const metadata = {
+  title: 'Link Pure - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Link Pure component.',
+};
+
+# Link Pure <ComponentStatus tagName="p-link-pure"></ComponentStatus>
+
+<TableOfContents
+  headings={[
+    linkPureMeta.examples.icon.name,
+    linkPureMeta.examples.frameworkRouting.name,
+    linkPureMeta.examples.frameworkRoutingActiveState.name,
+    linkPureMeta.examples.customClickableArea.name,
+  ]}
+/>
+
+## {linkPureMeta.examples.icon.name}
+
+<linkPureMeta.examples.icon.description />
+
+<ComponentStory story={linkPureMeta.examples.icon.story} />
+
+## {linkPureMeta.examples.frameworkRouting.name}
+
+<linkPureMeta.examples.frameworkRouting.description />
+
+<ComponentStory story={linkPureMeta.examples.frameworkRouting.story} />
+
+## {linkPureMeta.examples.frameworkRoutingActiveState.name}
+
+<linkPureMeta.examples.frameworkRoutingActiveState.description />
+
+## {linkPureMeta.examples.customClickableArea.name}
+
+<linkPureMeta.examples.customClickableArea.description />
+
+<ComponentStory story={linkPureMeta.examples.customClickableArea.story} />

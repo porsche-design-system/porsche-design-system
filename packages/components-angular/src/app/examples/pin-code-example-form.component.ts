@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, PPinCodeProps } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-pin-code-example-form',
@@ -20,7 +20,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class PinCodeExampleFormComponent {
   form = new FormGroup({
-    myPinCode: new FormControl<string>(''),
+    myPinCode: new FormControl<PPinCodeProps['value']>(''),
   });
 
   submittedValue: any = undefined;

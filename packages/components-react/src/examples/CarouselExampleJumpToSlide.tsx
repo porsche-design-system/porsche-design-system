@@ -1,7 +1,7 @@
 import { type CarouselUpdateEventDetail, PButton, PCarousel } from '@porsche-design-system/components-react';
 import { type MouseEvent, useCallback, useState } from 'react';
 
-export const CarouselExampleJumpToSlidePage = (): JSX.Element => {
+export const CarouselExampleJumpToSlidePage = () => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(1);
   const onUpdate = useCallback(
     (e: CustomEvent<CarouselUpdateEventDetail>) => setActiveSlideIndex(e.detail.activeIndex),
@@ -29,11 +29,13 @@ export const CarouselExampleJumpToSlidePage = (): JSX.Element => {
         <div style={slideStyle}>Slide 3</div>
       </PCarousel>
 
-      {Array.from(Array(3)).map((_, i) => (
-        <PButton key={i} type="button" onClick={onButtonClick} disabled={activeSlideIndex === i}>
-          {i + 1}
-        </PButton>
-      ))}
+      <div className="flex gap-fluid-sm mt-fluid-sm">
+        {Array.from(Array(3)).map((_, i) => (
+          <PButton key={i} type="button" onClick={onButtonClick} disabled={activeSlideIndex === i}>
+            {i + 1}
+          </PButton>
+        ))}
+      </div>
     </>
   );
 };

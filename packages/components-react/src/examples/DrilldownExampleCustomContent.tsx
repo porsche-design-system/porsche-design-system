@@ -1,17 +1,17 @@
 import {
   type DrilldownUpdateEventDetail,
   PButton,
+  PButtonTile,
   PDrilldown,
   PDrilldownItem,
-  PLink,
-  PButtonTile,
-  PModelSignature,
   PDrilldownLink,
+  PLink,
+  PModelSignature,
 } from '@porsche-design-system/components-react';
-import { spacingFluidSmall } from '@porsche-design-system/components-react/styles';
+import { spacingFluidSmall } from '@porsche-design-system/components-react/emotion';
 import React, { useCallback, useState } from 'react';
 
-export const DrilldownExampleCustomContentPage = (): JSX.Element => {
+export const DrilldownExampleCustomContentPage = () => {
   const [isDrilldownOpen, setIsDrilldownOpen] = useState<boolean>(false);
   const [drilldownActiveIdentifier, setDrilldownActiveIdentifier] =
     useState<DrilldownUpdateEventDetail['activeIdentifier']>('id-1');

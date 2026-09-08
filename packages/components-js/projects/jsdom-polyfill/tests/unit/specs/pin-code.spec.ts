@@ -1,4 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
+import { screen } from '@porsche-design-system/components-js/testing';
 import { getMarkup } from '../helper';
 import userEvent from '@testing-library/user-event';
 import { getByLabelTextShadowed } from '../../../src/testing';
@@ -17,7 +18,7 @@ it('should have working events', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
-  el.addEventListener('update', () => {
+  el.addEventListener('change', () => {
     debugEl.querySelector('span').innerHTML = '1';
   });
 
@@ -28,4 +29,15 @@ it('should have working events', async () => {
   await userEvent.click(input);
   await userEvent.keyboard('1');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
+});
+
+it('should expose its pin inputs to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-pin-code');
+  await componentsReady();
+
+  expect(screen.queryAllByRole('textbox')).toHaveLength(0);
+  expect(screen.getAllByShadowRole('textbox')).toHaveLength(4);
+
+  const { shadowRoot } = document.querySelector('p-pin-code');
+  expect(screen.getByShadowRole('textbox', { name: '1-4' })).toBe(shadowRoot.querySelector('input#current-input'));
 });

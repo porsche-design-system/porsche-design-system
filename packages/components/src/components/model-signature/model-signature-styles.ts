@@ -1,47 +1,42 @@
+import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
+import { colorContrastHigh, colorContrastLow, colorContrastMedium, colorPrimary, ref } from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  forcedColorsMediaQuery,
-  getHighContrastColors,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-  type ThemedColors,
-} from '../../styles';
-import {
+  getSvgUrl,
   type ModelSignatureColor,
   type ModelSignatureModel,
   type ModelSignatureSize,
-  getSvgUrl,
 } from './model-signature-utils';
-import type { Theme } from '../../types';
-import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 
+/**
+ * @css-variable {"name": "--p-model-signature-width", "description": "Overrides the width of the model signature.", "defaultValue": ""}
+ */
 const cssVariableWidth = '--p-model-signature-width';
+
+/**
+ * @css-variable {"name": "--p-model-signature-height", "description": "Overrides the height of the model signature.", "defaultValue": "auto"}
+ */
 const cssVariableHeight = '--p-model-signature-height';
+
+/**
+ * @css-variable {"name": "--p-model-signature-color", "description": "Overrides the fill color of the model signature. Overrides the `color` property when set.", "defaultValue": ""}
+ */
 const cssVariableColor = '--p-model-signature-color';
 
-const { canvasTextColor } = getHighContrastColors();
-
-const getThemedColor = (color: ModelSignatureColor, themedColors: ThemedColors): string => {
-  const colorMap: Record<ModelSignatureColor, string> = {
-    primary: themedColors.primaryColor,
-    inherit: 'black',
-    'contrast-low': themedColors.contrastLowColor,
-    'contrast-medium': themedColors.contrastMediumColor,
-    'contrast-high': themedColors.contrastHighColor,
-  };
-
-  return colorMap[color];
+const colorMap: Record<ModelSignatureColor, string> = {
+  primary: ref(colorPrimary),
+  'contrast-low': ref(colorContrastLow),
+  'contrast-medium': ref(colorContrastMedium),
+  'contrast-high': ref(colorContrastHigh),
+  inherit: 'currentcolor',
 };
 
 export const getComponentCss = (
   model: ModelSignatureModel,
   safeZone: boolean,
   size: ModelSignatureSize,
-  color: ModelSignatureColor,
-  theme: Theme
+  color: ModelSignatureColor
 ): string => {
   const { width, height } = MODEL_SIGNATURES_MANIFEST[model];
   const isSizeInherit = size === 'inherit';
@@ -54,19 +49,15 @@ export const getComponentCss = (
         maxWidth: '100%',
         maxHeight: '100%',
         // width + height style can't be !important atm to be backwards compatible with e.g. `<p-model-signature size="inherit" style="height: 50px"/>`
-        width: `var(${cssVariableWidth},${isSizeInherit ? 'auto' : `${width}px`})`,
-        height: `var(${cssVariableHeight},auto)`,
+        width: ref(cssVariableWidth, isSizeInherit ? 'auto' : `${width}px`),
+        height: ref(cssVariableHeight, 'auto'),
         ...addImportantToEachRule({
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
           aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
-          background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors(theme))})`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors('dark'))})`,
-          }),
+          background: ref(cssVariableColor, colorMap[color]), // color="inherit" will use currentcolor for inheritance
           ...forcedColorsMediaQuery({
-            background: canvasTextColor,
+            background: 'CanvasText',
           }),
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

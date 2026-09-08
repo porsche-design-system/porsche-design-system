@@ -1,45 +1,22 @@
 import { forceUpdate } from '@stencil/core';
-import {
-  consoleWarn,
-  getTagNameWithoutPrefix,
-  type SelectComponentsDropdownDirection,
-  type Theme,
-} from '../../../utils';
+import { consoleWarn, getTagNameWithoutPrefix, type SelectComponentsDropdownDirection } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
-export type MultiSelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
+export type MultiSelectOptgroup = HTMLPOptgroupElement;
 
-/** @deprecated */
-export type MultiSelectUpdateEvent = {
+export type MultiSelectChangeEventDetail = {
   name: string;
-  value: string[];
+  value: string[] | number[];
 };
-/** @deprecated */
-export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
-export type MultiSelectChangeEventDetail = MultiSelectUpdateEventDetail;
 export type MultiSelectToggleEventDetail = { open: boolean };
-
-// TODO: share between select & multi-select
-export const syncMultiSelectChildrenProps = (
-  children: (MultiSelectOption | MultiSelectOptgroup)[],
-  theme: Theme
-): void => {
-  for (const child of children.filter((child) => child.theme !== theme)) {
-    child.theme = theme;
-    forceUpdate(child);
-  }
-};
 
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => option.selected);
 
-export const getSelectedOptionValues = (options: MultiSelectOption[]): string[] =>
-  options.filter((option) => option.selected).map((option) => option.value);
 
 export const getSelectedOptionsString = (options: MultiSelectOption[]): string =>
   getSelectedOptions(options)
@@ -49,10 +26,11 @@ export const getSelectedOptionsString = (options: MultiSelectOption[]): string =
 export const selectOptionsByValue = (
   host: HTMLElement,
   options: MultiSelectOption[],
-  value: string[],
+  value: string[] | number[] | null,
   preventWarning = false
 ): MultiSelectOption[] => {
-  const selectedValues = new Set(value);
+  const values: (string | number)[] = value ?? [];
+  const selectedValues = new Set<string | number>(values);
   const selectedOptions: MultiSelectOption[] = [];
 
   for (const option of options) {
@@ -66,7 +44,7 @@ export const selectOptionsByValue = (
     }
   }
 
-  const valuesNotIncluded = value.filter((val) => !options.some((option) => option.value === val));
+  const valuesNotIncluded = values.filter((val) => !options.some((option) => option.value === val));
 
   if (valuesNotIncluded.length > 0 && !preventWarning) {
     consoleWarn(

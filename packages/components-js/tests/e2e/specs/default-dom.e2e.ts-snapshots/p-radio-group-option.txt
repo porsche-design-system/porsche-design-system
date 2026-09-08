@@ -1,14 +1,12 @@
 <div class="root">
   <div class="wrapper">
-    <input
-      id="radio-group-option"
-      type="radio"
-      aria-describedby="message"
-      tabindex="0"
-    />
+    <input id="radio-group-option" type="radio" value="value" tabindex="0" />
   </div>
   <div class="label-wrapper">
     <label class="label" id="label" for="radio-group-option"> Some label</label>
+    <span class="label-after">
+      <slot name="label-after"> </slot>
+    </span>
   </div>
   <span id="loading" class="loading" role="status"> </span>
 </div>

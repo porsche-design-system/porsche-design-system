@@ -1,4 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
+import { screen } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 import { vi } from 'vitest';
@@ -50,4 +51,16 @@ it('should not console.error because of Object.getOwnPropertyDescriptor', async 
   await componentsReady();
 
   expect(spy).not.toHaveBeenCalled();
+});
+
+it('should expose its tab buttons to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-tabs');
+  await componentsReady();
+
+  // the fixture also ships two light DOM buttons named "Button 1" and "Button 2", so filter by name
+  expect(screen.queryAllByRole('button', { name: 'Some label' })).toHaveLength(0);
+  // p-tabs renders its buttons into the LIGHT DOM of the nested p-tabs-bar, which then slots them
+  expect(screen.getAllByShadowRole('button', { name: 'Some label' })).toEqual([
+    ...document.querySelector('p-tabs').shadowRoot.querySelector('p-tabs-bar').querySelectorAll('button'),
+  ]);
 });

@@ -1,7 +1,7 @@
 import { PButton, POptgroup, PSelect, PSelectOption, type PSelectProps } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const SelectExampleDynamicOptgroupPage = (): JSX.Element => {
+export const SelectExampleDynamicOptgroupPage = () => {
   const [value, setValue] = useState<PSelectProps['value']>();
   const [options, setOptions] = useState<string[]>([]);
 

@@ -1,35 +1,18 @@
 import { forceUpdate } from '@stencil/core';
-import {
-  consoleWarn,
-  getTagNameWithoutPrefix,
-  type SelectComponentsDropdownDirection,
-  type Theme,
-} from '../../../utils';
+import { consoleWarn, getTagNameWithoutPrefix, type SelectComponentsDropdownDirection } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 
 export type SelectState = FormState;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
-export type SelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
+export type SelectOptgroup = HTMLPOptgroupElement;
 
-/** @deprecated */
-export type SelectUpdateEventDetail = {
+export type SelectChangeEventDetail = {
   name: string;
-  value: string;
+  value: string | number | null | undefined; // Mirrors the p-select-option value type
 };
-
-export type SelectChangeEventDetail = SelectUpdateEventDetail;
 export type SelectToggleEventDetail = { open: boolean };
-
-// TODO: share between select & multi-select
-export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
-  for (const child of children.filter((child) => child.theme !== theme)) {
-    child.theme = theme;
-    forceUpdate(child);
-  }
-};
 
 export const getSelectedOptionString = (options: SelectOption[]): string =>
   options.find((option) => option.selected)?.textContent ?? '';
@@ -49,10 +32,14 @@ export const internalSelect = {
 export const selectOptionByValue = (
   host: HTMLElement,
   options: SelectOption[],
-  value: string,
+  value: string | number | null | undefined,
   preventWarning = false
 ): SelectOption | null => {
   internalSelect.resetSelectedOption(options);
+  // Strict equality matching: a host value of `null`, `undefined`, a `string` or a `number`
+  // only matches an option whose `value` is strictly equal (same type and value). No
+  // cross-type coercion (e.g. number `5` does NOT match string `"5"`), and `null` and
+  // `undefined` are treated as distinct values.
   const optionToSelect = options.find((option) => option.value === value);
 
   if (optionToSelect) {
@@ -61,7 +48,7 @@ export const selectOptionByValue = (
     return optionToSelect;
   }
 
-  if (value !== undefined && !preventWarning) {
+  if (value !== undefined && value !== null && !preventWarning) {
     consoleWarn(
       `The provided value: ${value} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
       host

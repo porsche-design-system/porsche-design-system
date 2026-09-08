@@ -1,7 +1,7 @@
 import { PSegmentedControl, PSegmentedControlItem, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
-export const SegmentedControlExamplePage = (): JSX.Element => {
+export const SegmentedControlExamplePage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {

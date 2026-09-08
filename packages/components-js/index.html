@@ -5,8 +5,6 @@
     <title>Porsche Design System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- TODO: import imask by vite config -->
-    <script type="text/javascript" src="/assets/imask.min.js"></script>
   </head>
   <body>
     <header id="controls" dir="ltr">
@@ -25,22 +23,16 @@
           <option value="canvas">Canvas</option>
           <option value="carousel">Carousel</option>
           <option value="checkbox">Checkbox</option>
-          <option value="checkbox-wrapper">Checkbox Wrapper</option>
-          <option value="content-wrapper">Content Wrapper</option>
           <option value="crest">Crest</option>
           <option value="display">Display</option>
           <option value="divider">Divider</option>
           <option value="fieldset">Fieldset</option>
-          <option value="fieldset-wrapper">Fieldset Wrapper</option>
           <option value="flag">Flag</option>
-          <option value="flex">Flex</option>
           <option value="flyout-1">Flyout 1</option>
           <option value="flyout-2">Flyout 2</option>
           <option value="flyout-3">Flyout 3</option>
           <option value="drilldown">Drilldown</option>
-          <option value="grid">Grid</option>
           <option value="heading">Heading</option>
-          <option value="headline">Headline</option>
           <option value="icon">Icon</option>
           <option value="inline-notification">Inline Notification</option>
           <option value="input-password">Input Password</option>
@@ -56,23 +48,18 @@
           <option value="input-search">Input Search</option>
           <option value="link">Link</option>
           <option value="link-pure">Link Pure</option>
-          <option value="link-social">Link Social</option>
           <option value="link-tile">Link Tile</option>
-          <option value="link-tile-model-signature">Link Tile Model Signature</option>
           <option value="link-tile-product">Link Tile Product</option>
-          <option value="marque">Marque</option>
           <option value="modal">Modal</option>
           <option value="model-signature">Model Signature</option>
           <option value="multi-select">Multi Select</option>
           <option value="pagination">Pagination</option>
           <option value="pin-code">Pin Code</option>
           <option value="popover">Popover</option>
-          <option value="radio-button-wrapper">Radio Button Wrapper</option>
           <option value="radio-group">Radio Group</option>
           <option value="scroller">Scroller</option>
           <option value="segmented-control">Segmented Control</option>
           <option value="select">Select</option>
-          <option value="select-wrapper">Select Wrapper</option>
           <option value="spinner">Spinner</option>
           <option value="stepper-horizontal">Stepper Horizontal</option>
           <option value="switch">Switch</option>
@@ -82,10 +69,8 @@
           <option value="tag">Tag</option>
           <option value="tag-dismissible">Tag Dismissible</option>
           <option value="text">Text</option>
-          <option value="text-field-wrapper">Text Field Wrapper</option>
           <option value="text-list">Text List</option>
           <option value="textarea">Textarea</option>
-          <option value="textarea-wrapper">Textarea Wrapper</option>
           <option value="toast">Toast</option>
           <option value="wordmark">Wordmark</option>
         </optgroup>
@@ -98,15 +83,18 @@
           <option value="typography-fallback">Fallback</option>
         </optgroup>
         <optgroup label="Overview">
-          <option value="overview">Overview</option>
-          <option value="overview-notifications">Notifications</option>
+          <option value="overview-components">Components</option>
+          <option value="overview-forms">Forms</option>
+          <option value="overview-typescale">Typescale</option>
           <option value="core-initializer">Core Initializer</option>
         </optgroup>
         <optgroup label="Examples">
           <option value="accordion-example">Accordion</option>
           <option value="sheet-example">Sheet</option>
-          <option value="ag-grid-example">AG Grid</option>
-          <option value="ag-grid-example-storefront">AG Grid Storefront</option>
+          <option value="ag-grid-example-community">AG Grid Community</option>
+          <option value="ag-grid-example-compact-community">AG Grid Compact Community</option>
+          <option value="ag-grid-example-enterprise">AG Grid Enterprise</option>
+          <option value="ag-grid-example-compact-enterprise">AG Grid Compact Enterprise</option>
           <option value="banner-example">Banner</option>
           <option value="button-example-form">Button Form</option>
           <option value="button-example-form-attribute">Button Form Attribute</option>
@@ -200,16 +188,15 @@
           <option value="textarea-example">Textarea Example</option>
           <option value="textarea-example-controlled">Textarea Example Controlled</option>
           <option value="textarea-example-form">Textarea Example Form</option>
-          <option value="text-field-wrapper-example-imask">Text Field Wrapper IMask</option>
           <option value="text-field-wrapper-example-search">Text Field Wrapper Search</option>
           <option value="toast-example">Toast</option>
         </optgroup>
       </select>
-      <select id="theme">
-        <option disabled selected>Select a theme</option>
+      <select id="scheme">
+        <option disabled selected>Select a scheme</option>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
-        <option value="auto">Auto</option>
+        <option value="light-dark">Light Dark</option>
       </select>
       <select id="dir">
         <option disabled selected>Select a direction</option>

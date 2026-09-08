@@ -1,5 +1,5 @@
 import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../types';
+import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -13,7 +13,7 @@ import { getComponentCss } from './select-option-styles';
 import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
 const propTypes: PropTypes<typeof SelectOption> = {
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   disabled: AllowedTypes.boolean,
 };
 
@@ -27,10 +27,10 @@ const propTypes: PropTypes<typeof SelectOption> = {
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
 
-  /** The option value. */
-  @Prop() public value?: string;
+  /** Sets the value submitted with the form data when this option is selected in the parent select control. */
+  @Prop() public value?: string | number | null;
 
-  /** Disables the option. */
+  /** Prevents the option from being selected and visually dims it to indicate it is unavailable. */
   @Prop() public disabled?: boolean = false;
 
   public connectedCallback(): void {
@@ -39,9 +39,9 @@ export class SelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected: isSelected, highlighted, hidden } = this.host;
+    const { selected: isSelected, highlighted, hidden } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
-    attachComponentCss(this.host, getComponentCss, theme);
+    attachComponentCss(this.host, getComponentCss, isDisabled);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -49,7 +49,7 @@ export class SelectOption {
       <Host
         onClick={!isDisabled && this.onClick}
         role="option"
-        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, !!this.value)}
+        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, this.value !== undefined && this.value !== null)}
       >
         <div
           class={{
@@ -60,15 +60,7 @@ export class SelectOption {
           }}
         >
           <slot onSlotchange={this.onSlotChange} />
-          {isSelected && (
-            <PrefixedTagNames.pIcon
-              class="icon"
-              aria-hidden="true"
-              name="check"
-              color={isDisabled ? 'state-disabled' : 'primary'}
-              theme={theme}
-            />
-          )}
+          {isSelected && <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="primary" />}
         </div>
       </Host>
     );

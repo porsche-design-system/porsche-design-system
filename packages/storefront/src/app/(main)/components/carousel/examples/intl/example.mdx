@@ -1,0 +1,14 @@
+Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property. It has
+the following defaults:
+
+```ts
+type CarouselInternationalization = {
+  prev: 'Previous slide'; // aria-label of prev button
+  next: 'Next slide'; // aria-label of next button
+  first: 'Go to first slide'; // aria-label of next button when on last slide
+  last: 'Go to last slide'; // aria-label of prev button when on first slide
+  slideLabel: '%s of %s'; // aria-label of each slide as "1 of 6"
+  slide: 'slide'; // aria-roledescription of each slide
+};
+```
+

@@ -1,33 +1,25 @@
-import * as stencilCore from '@stencil/core';
-import { vi } from 'vitest';
-import type { Theme } from '../../../types';
-import type { TabsItemInternalHTMLProps } from '../tabs-item/tabs-item-utils';
-import { syncTabsItemsProps } from './tabs-utils';
+import { TABS_ARIA_ATTRIBUTES, TABS_BACKGROUNDS, TABS_SIZES, TABS_WEIGHTS } from './tabs-utils';
 
-describe('syncTabsItemsProps()', () => {
-  const child1: HTMLPTabsItemElement & TabsItemInternalHTMLProps = document.createElement('div') as any;
-  const child2: HTMLPTabsItemElement & TabsItemInternalHTMLProps = document.createElement('div') as any;
-  const children = [child1, child2];
-
-  const theme: Theme = 'dark';
-
-  it('should set theme property on every item', () => {
-    expect(child1.theme).toBeUndefined();
-    expect(child2.theme).toBeUndefined();
-
-    syncTabsItemsProps(children, theme);
-
-    expect(child1.theme).toBe(theme);
-    expect(child2.theme).toBe(theme);
+describe('TABS_ARIA_ATTRIBUTES', () => {
+  it('should list supported aria attributes', () => {
+    expect(TABS_ARIA_ATTRIBUTES).toStrictEqual(['aria-label', 'aria-description']);
   });
+});
 
-  it('should call forceUpdate() on every item', () => {
-    const spy = vi.spyOn(stencilCore, 'forceUpdate');
+describe('TABS_SIZES', () => {
+  it('should list supported size values', () => {
+    expect(TABS_SIZES).toStrictEqual(['small', 'medium']);
+  });
+});
 
-    syncTabsItemsProps(children, theme);
+describe('TABS_BACKGROUNDS', () => {
+  it('should list supported background values', () => {
+    expect(TABS_BACKGROUNDS).toStrictEqual(['canvas', 'surface', 'frosted', 'none']);
+  });
+});
 
-    expect(spy).toHaveBeenCalledTimes(2);
-    expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
-    expect(spy.mock.calls[1][0]).toEqual(child2);
+describe('TABS_WEIGHTS', () => {
+  it('should list deprecated weight values', () => {
+    expect(TABS_WEIGHTS).toStrictEqual(['regular', 'semi-bold']);
   });
 });

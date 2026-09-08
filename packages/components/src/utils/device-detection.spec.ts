@@ -17,10 +17,12 @@ describe('isTouchDevice()', () => {
   });
 
   it('should return false for non touch device', () => {
-    vi.spyOn(window, 'navigator', 'get').mockImplementation(
+    vi.spyOn(window, 'window', 'get').mockImplementation(
       () =>
         ({
-          maxTouchPoints: 0,
+          navigator: {
+            maxTouchPoints: 0,
+          },
         }) as any
     );
 

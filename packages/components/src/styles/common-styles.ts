@@ -1,22 +1,19 @@
+import type * as fromMotionType from '@porsche-design-system/emotion';
 import {
-  borderWidthBase,
-  frostedGlassStyle,
-  motionDurationLong,
-  motionDurationModerate,
-  motionDurationShort,
-  motionDurationVeryLong,
-  motionEasingBase,
-  motionEasingIn,
-  motionEasingOut,
-  themeDarkBackgroundShading,
-  themeLightBackgroundShading,
-} from '@porsche-design-system/styles';
-import type * as fromMotionType from '@porsche-design-system/styles/dist/esm/motion';
+  colorFocus,
+  durationLg,
+  durationMd,
+  durationSm,
+  durationXl,
+  easeIn,
+  easeInOut,
+  easeOut,
+  ref,
+} from '@porsche-design-system/stylesheets';
 import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
-import type { Theme } from '../types';
-import { isThemeDark } from '../utils';
-import { type ThemedColors, getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
+import { alphaDisabled } from './alpha-disabled';
+import { forcedColorsMediaQuery } from './media-query/forced-colors-media-query';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
@@ -24,16 +21,16 @@ type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapit
 export type MotionEasingKey = WithoutMotionEasingPrefix<keyof typeof fromMotionType>;
 
 export const motionDurationMap: Record<MotionDurationKey, string> = {
-  short: motionDurationShort,
-  moderate: motionDurationModerate,
-  long: motionDurationLong,
-  veryLong: motionDurationVeryLong,
+  short: ref(durationSm),
+  moderate: ref(durationMd),
+  long: ref(durationLg),
+  veryLong: ref(durationXl),
 };
 
 export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
-  base: motionEasingBase,
-  in: motionEasingIn,
-  out: motionEasingOut,
+  base: ref(easeInOut),
+  in: ref(easeIn),
+  out: ref(easeOut),
   linear: 'linear',
 };
 
@@ -51,7 +48,7 @@ export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
 export const SCALING_BASE_VALUE = '16px';
 
 export const dismissButtonJssStyle: JssStyle = {
-  '--p-internal-button-scaling': 0,
+  '--_p-button-a': 0.5,
 };
 
 export const cssVariableTransitionDuration = '--p-transition-duration';
@@ -62,7 +59,7 @@ export const getAnimation = (
   duration: MotionDurationKey = 'short',
   easing: keyof typeof motionEasingMap = 'base'
 ): string => {
-  return `${name} var(${cssVariableAnimationDuration}, ${motionDurationMap[duration]}) ${motionEasingMap[easing]}`;
+  return `${name} ${ref(cssVariableAnimationDuration, motionDurationMap[duration])} ${motionEasingMap[easing]}`;
 };
 
 export const getTransition = (
@@ -71,9 +68,9 @@ export const getTransition = (
   easing: keyof typeof motionEasingMap = 'base',
   delay?: MotionDurationKey
 ): string => {
-  return `${cssProperty} var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}) ${
+  return `${cssProperty} ${ref(cssVariableTransitionDuration, motionDurationMap[duration])} ${
     motionEasingMap[easing]
-  }${delay ? ` var(${cssVariableTransitionDuration}, ${motionDurationMap[delay]})` : ''}`;
+  }${delay ? ` ${ref(cssVariableTransitionDuration, motionDurationMap[delay])}` : ''}`;
 };
 
 export const addImportantToRule = (value: any): string => `${value} !important`;
@@ -92,52 +89,25 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
   );
 };
 
-// TODO: this is workaround, in order the colors to be bundled in the main bundle, we need to have at least one function here, which is used in project and which calls "getThemedColors"
-// TODO: This mechanism needs to be investigated as part of refactoring
-export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {
-  return getThemedColors(theme);
-};
-
-type Options = {
-  offset?: string | 0;
-  slotted?: true | string;
-  pseudo?: boolean;
-};
-export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
-  const { offset = '2px', slotted = '', pseudo = false } = opts || {};
-  const { focusColor } = getThemedColors(theme);
-  const { focusColor: focusColorDark } = getThemedColors('dark');
-  const slottedSelector = slotted && slotted !== true ? slotted : '';
-
+export const getFocusBaseStyles = (offset: number = 2) => {
   return {
-    [`&${slotted ? '(' : ''}${slottedSelector}::-moz-focus-inner${slotted ? ')' : ''}`]: {
-      border: 0, // reset ua-style (for FF)
-    },
-    [`&${slotted ? '(' : ''}${slottedSelector}:focus${slotted ? ')' : ''}`]: {
-      outline: 0, // reset ua-style (for older browsers)
-    },
-    ...(pseudo && {
-      [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${slotted ? ')' : ''}`]: {
-        outline: 0, // reset ua-style (for modern browsers)
-      },
+    outline: `2px solid ${ref(colorFocus)}`,
+    outlineOffset: `${offset}px`,
+    ...forcedColorsMediaQuery({
+      outlineColor: 'Highlight',
     }),
-    [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]: {
-      outline: `${borderWidthBase} solid ${focusColor}`,
-      outlineOffset: offset,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        outlineColor: focusColorDark,
-      }),
-    },
-  };
+  } as const;
 };
 
-// reset initial styles, e.g. in case link-pure is used with slotted anchor and nested within e.g. an accordion
-export const getResetInitialStylesForSlottedAnchor: JssStyle = {
-  margin: 0,
-  padding: 0,
-  outline: 0, // reset native blue outline
-  borderRadius: 0,
-  background: 'transparent',
+export const getDisabledBaseStyles = (addForcedColorsDisabledStyles?: JssStyle) => {
+  return {
+    opacity: alphaDisabled,
+    ...forcedColorsMediaQuery({
+      opacity: 1,
+      color: 'GrayText',
+      ...addForcedColorsDisabledStyles,
+    }),
+  } as const;
 };
 
 /**
@@ -146,7 +116,7 @@ export const getResetInitialStylesForSlottedAnchor: JssStyle = {
  * @param {JssStyle} isShownJssStyle - Additional styles applied when isHidden = false
  * @returns {JssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownJssStyle.
  */
-export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyle): JssStyle => {
+export const getHiddenTextJssStyle = (isHidden: boolean = true, isShownJssStyle?: JssStyle): JssStyle => {
   return isHidden
     ? {
         position: 'absolute',
@@ -169,50 +139,4 @@ export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyl
         whiteSpace: 'normal',
         ...isShownJssStyle,
       };
-};
-
-// TODO: migrate drilldown to use shared backdrop of dialog-styles.ts
-/**
- * Generates JSS styles for a frosted glass background.
- * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
- * @param {number} zIndex - The z-index to be used.
- * @param {Theme} theme - The theme to be used.
- * @param {string} duration - The duration of the transition animation.
- * @param {'blur' | 'shading'} backdrop - The backdrop variant.
- * @returns {JssStyle} - The JSS styles for the frosted glass backdrop.
- */
-export const getBackdropJssStyle = (
-  isVisible: boolean,
-  zIndex: number,
-  theme: Theme,
-  duration: MotionDurationKey = 'long'
-): JssStyle => {
-  return {
-    position: 'fixed',
-    inset: 0,
-    zIndex,
-    // TODO: background shading is missing in getThemedColors(theme).backgroundShading
-    background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: themeDarkBackgroundShading,
-    }),
-    ...(isVisible
-      ? {
-          visibility: 'inherit',
-          pointerEvents: 'auto',
-          ...frostedGlassStyle,
-          opacity: 1,
-        }
-      : {
-          visibility: 'hidden', // element shall not be tabbable after fade out transition has finished
-          pointerEvents: 'none',
-          WebkitBackdropFilter: 'blur(0px)',
-          backdropFilter: 'blur(0px)',
-          opacity: 0,
-        }),
-    transition: `${getTransition('opacity', duration)}, ${getTransition('backdrop-filter', duration)}, ${getTransition(
-      '-webkit-backdrop-filter',
-      duration
-    )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]})`,
-  };
 };

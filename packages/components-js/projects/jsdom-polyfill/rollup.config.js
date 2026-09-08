@@ -1,12 +1,19 @@
-import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import modify from 'rollup-plugin-modify';
-import { version } from '../components-wrapper/package.json';
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
+import { dts } from 'rollup-plugin-dts';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
+import modify from 'rollup-plugin-modify';
+import { version } from '../components-wrapper/package.json';
 
 const outputDir = '../../dist/components-wrapper';
+const DOM_ENVIRONMENT_GUARD = `if (typeof ShadowRoot === 'undefined') {
+  throw new Error(
+    '[Porsche Design System] the testing sub package requires a DOM environment, but no \`ShadowRoot\` was found. Use a jsdom or browser test environment instead of plain node, for example Vitest with \`environment: "jsdom"\`.'
+  );
+}`;
 
 export default [
   {
@@ -15,8 +22,12 @@ export default [
       file: `${outputDir}/jsdom-polyfill/index.cjs`,
       format: 'cjs',
       exports: 'auto', // fixes rollup warning
+      inlineDynamicImports: true,
     },
     plugins: [
+      dynamicImportVars({
+        include: ['src/**/*.js'],
+      }),
       commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
       resolve(),
       /* Fixes flaky problem with https://github.com/GoogleChromeLabs/intersection-observer polyfill where window is not defined:
@@ -51,12 +62,6 @@ export default [
         find: /'ROLLUP_REPLACE_VERSION'/,
         replace: `'${version}'`,
       }),
-      // patch conditions into build to allow opt-out of CDN requests
-      modify({
-        // font-face css via injectGlobalStyle() and validatePartialUsage()
-        find: /appGlobals\.globalScripts\(\);/,
-        replace: (match) => `if(!window.PDS_SKIP_FETCH) { ${match} }`,
-      }),
       modify({
         // icon svgs (img src)
         find: /(src:) (buildIconUrl\()/,
@@ -81,22 +86,35 @@ export default [
   },
   {
     input: 'src/testing.ts',
-    external: ['@testing-library/dom'],
+    // shadow-dom-testing-library patches ShadowRoot.prototype on import, so a bundled copy crashes as soon as the
+    // consumer's own copy loads. It stays external and is shipped as a regular dependency of components-wrapper.
+    external: ['@testing-library/dom', 'shadow-dom-testing-library'],
     output: {
       file: `${outputDir}/testing/index.cjs`,
       format: 'cjs',
+      intro: DOM_ENVIRONMENT_GUARD,
     },
-    // emitted declarations are named `testing.d.ts` because of input file
-    // this is renamed to `index.d.ts` via npm script for consistency
     plugins: [
-      typescript({ declaration: true, declarationDir: `${outputDir}/testing`, rootDir: 'src' }),
+      typescript({ rootDir: 'src' }),
       generatePackageJson({
         baseContents: {
           main: 'index.cjs',
           types: 'index.d.ts',
-          sideEffects: false,
         },
       }),
     ],
+  },
+  {
+    // Emits index.d.ts directly, so the input filename no longer has to be renamed afterwards. Everything is external:
+    // shadow-dom-testing-library is a real dependency of components-wrapper and always installed, so re-exporting its
+    // declarations keeps the published types in step with whichever 1.x the consumer actually resolved. Inlining them
+    // instead would freeze the type surface at our build time while the runtime re-export stays dynamic.
+    input: 'src/testing.ts',
+    external: ['@testing-library/dom', 'shadow-dom-testing-library'],
+    output: {
+      file: `${outputDir}/testing/index.d.ts`,
+      format: 'es',
+    },
+    plugins: [dts({ respectExternal: true })],
   },
 ];

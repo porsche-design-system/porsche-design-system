@@ -69,7 +69,7 @@
       const sortedRows = rows.sort((a, b) => {
         const aText = a.querySelectorAll('p-table-cell')[id].textContent.trim();
         const bText = b.querySelectorAll('p-table-cell')[id].textContent.trim();
-        const compare = aText.localeCompare(bText);
+        const compare = aText.localeCompare(bText, undefined, { numeric: true });
         return direction === 'asc' ? compare : -compare;
       });
 

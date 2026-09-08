@@ -1,9 +1,8 @@
-import { vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import * as childrenObserverUtils from '../../utils/children-observer';
 import * as dialogUtils from '../../utils/dialog/dialog';
 import * as observerUtils from '../../utils/dialog/observer';
 import * as domUtils from '../../utils/dom';
-import * as hasHeading from '../../utils/form/hasHeading';
 import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAriaAndHeadingPropsAreUndefined';
 import * as setScrollLockUtils from '../../utils/setScrollLock';
 import { Modal } from './modal';
@@ -14,7 +13,6 @@ beforeEach(() => {
   component = new Modal();
   component.host = document.createElement('p-modal');
   component.host.attachShadow({ mode: 'open' });
-  component['closeBtn'] = document.createElement('button');
   component['dialog'] = document.createElement('dialog');
 });
 
@@ -50,11 +48,20 @@ describe('componentWillRender', () => {
 });
 
 describe('componentDidRender', () => {
-  it('should call setDialogVisibility() with correct parameters', () => {
-    const setDialogVisibilitySpy = vi.spyOn(dialogUtils, 'setDialogVisibility');
+  it('should call showDialog() with correct parameters when open', () => {
+    const showDialogSpy = vi.spyOn(dialogUtils, 'showDialog').mockReturnValueOnce();
+    component.open = true;
     component.componentDidRender();
 
-    expect(setDialogVisibilitySpy).toHaveBeenCalledWith(component.open, component['dialog'], component['scroller']);
+    expect(showDialogSpy).toHaveBeenCalledWith(component['dialog'], component['scroller']);
+  });
+
+  it('should not call showDialog() when closed', () => {
+    const showDialogSpy = vi.spyOn(dialogUtils, 'showDialog').mockReturnValueOnce();
+    component.open = false;
+    component.componentDidRender();
+
+    expect(showDialogSpy).not.toHaveBeenCalled();
   });
 });
 
@@ -64,7 +71,7 @@ describe('componentDidLoad', () => {
     component['hasFooter'] = true;
     component.componentDidLoad();
 
-    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['header']);
+    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['footer']);
   });
   it('should not call observeStickyArea() with if hasFooter is false', () => {
     const observeStickyAreaSpy = vi.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
@@ -81,7 +88,7 @@ describe('componentDidUpdate', () => {
     component['hasFooter'] = true;
     component.componentDidUpdate();
 
-    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['header']);
+    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['footer']);
   });
   it('should not call observeStickyArea() with if hasFooter is false', () => {
     const observeStickyAreaSpy = vi.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
@@ -120,11 +127,10 @@ describe('render', () => {
       'warnIfAriaAndHeadingPropsAreUndefined'
     );
     component.open = true;
-    component.heading = 'Some Heading';
     component.aria = {};
     component.render();
 
-    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toHaveBeenCalledWith(component.host, true, component.aria);
+    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toHaveBeenCalledWith(component.host, false, component.aria);
   });
 
   it('should not call warnIfAriaAndHeadingPropsAreUndefined() when open="false"', () => {
@@ -138,14 +144,6 @@ describe('render', () => {
     expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).not.toHaveBeenCalled();
   });
 
-  it('should call hasHeading() with correct parameters', () => {
-    const spy = vi.spyOn(hasHeading, 'hasHeading');
-    component.heading = 'Some Heading';
-    component.render();
-
-    expect(spy).toHaveBeenCalledWith(component.host, component.heading);
-  });
-
   it('should call hasNamedSlot() with correct parameters', () => {
     const hasNamedSlotSpy = vi.spyOn(domUtils, 'hasNamedSlot');
 
@@ -154,12 +152,131 @@ describe('render', () => {
     component.host.appendChild(header);
     component.render();
 
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(1, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(2, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(3, component.host, 'footer');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(4, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(5, component.host, 'header');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(6, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenCalledTimes(6);
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(1, component.host, 'header');
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(2, component.host, 'footer');
+    expect(hasNamedSlotSpy).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('body scroll lock', () => {
+  afterEach(() => {
+    document.body.style.overflow = '';
+  });
+
+  it('should lock body scrolling while open', () => {
+    component.open = true;
+    component.componentWillRender();
+    expect(document.body.style.overflow).toBe('hidden');
+  });
+
+  it('should unlock body scrolling when closed', () => {
+    component.open = true;
+    component.componentWillRender();
+    component.open = false;
+    component.componentWillRender();
+    expect(document.body.style.overflow).toBe('');
+  });
+
+  it('should unlock body scrolling when removed from the DOM while open', () => {
+    component.open = true;
+    component.componentWillRender();
+    component.disconnectedCallback();
+    expect(document.body.style.overflow).toBe('');
+  });
+});
+
+describe('dismiss request', () => {
+  it('should emit dismiss with reason dismiss-button when the dismiss button is activated', () => {
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+
+    component['onDismissButtonClick']();
+
+    expect(emitSpy).toHaveBeenCalledWith({ reason: 'dismiss-button' });
+  });
+
+  it('should emit dismiss with reason escape and prevent the native close', () => {
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+    const event = new Event('cancel', { cancelable: true });
+
+    component['onDialogCancel'](event);
+
+    expect(event.defaultPrevented).toBe(true);
+    expect(emitSpy).toHaveBeenCalledWith({ reason: 'escape' });
+  });
+
+  it('should not emit dismiss on escape when dismissButton is false', () => {
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+    component.dismissButton = false;
+    const event = new Event('cancel', { cancelable: true });
+
+    component['onDialogCancel'](event);
+
+    expect(event.defaultPrevented).toBe(true);
+    expect(emitSpy).not.toHaveBeenCalled();
+  });
+
+  it('should emit dismiss with reason backdrop when the backdrop is clicked', () => {
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+
+    component['onDialogBackdropClick']({ target: { tagName: 'DIALOG' } } as any);
+
+    expect(emitSpy).toHaveBeenCalledWith({ reason: 'backdrop' });
+  });
+
+  it('should not emit dismiss when the pointer went down inside the panel', () => {
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+    component['isPointerDownInside'] = true;
+
+    component['onDialogBackdropClick']({ target: { tagName: 'DIALOG' } } as any);
+
+    expect(emitSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('native dialog control', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  const stubDialog = (): HTMLDialogElement => {
+    const dialog = component['dialog'];
+    dialog.showModal = vi.fn(() => {
+      dialog.open = true;
+    });
+    dialog.close = vi.fn(() => {
+      dialog.open = false;
+    });
+    dialog.focus = vi.fn();
+    component['scroller'] = document.createElement('div');
+    component['scroller'].scrollTo = vi.fn();
+    return dialog;
+  };
+
+  it('should show the native dialog exactly once while open', () => {
+    const dialog = stubDialog();
+    component.open = true;
+
+    component.componentDidRender();
+    component.componentDidRender();
+
+    expect(dialog.showModal).toHaveBeenCalledTimes(1);
+  });
+
+  it('should close the native dialog when open becomes false', () => {
+    vi.useFakeTimers();
+    const dialog = stubDialog();
+    component.open = true;
+    component.componentDidRender();
+    component.open = false;
+
+    component.componentDidRender();
+    vi.runAllTimers();
+
+    expect(dialog.close).toHaveBeenCalledTimes(1);
   });
 });

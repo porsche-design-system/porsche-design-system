@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { PInputPassword } from '@porsche-design-system/components-vue';
+import { PInputPassword, type PInputPasswordProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myInputPassword = ref('');
+const myInputPassword = ref<PInputPasswordProps['value']>('');
 
 const resetValue = () => {
   myInputPassword.value = '';

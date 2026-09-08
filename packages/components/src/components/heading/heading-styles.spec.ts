@@ -1,25 +1,18 @@
-import { getComponentCss } from './heading-styles';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import { getComponentCss } from './heading-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['xx-large', 'start', 'primary', false, 'light'],
-    ['x-large', 'start', 'primary', false, 'light'],
-    ['x-large', 'left', 'primary', false, 'light'],
-    ['x-large', 'right', 'primary', false, 'light'],
-    ['large', 'center', 'inherit', true, 'dark'],
-    ['medium', 'center', 'inherit', true, 'dark'],
-    ['small', 'center', 'inherit', true, 'dark'],
-    ['small', 'inherit', 'inherit', true, 'dark'],
-    ['inherit', 'center', 'inherit', true, 'dark'],
-    [
-      { base: 'small', xs: 'medium', s: 'large', m: 'x-large', l: 'xx-large', xl: 'large' },
-      'end',
-      'inherit',
-      false,
-      'dark',
-    ],
-  ])('should return correct css for size: %j, align: %s, color: %s, ellipsis: %s and theme: %s', (...args) => {
+    ['2xl', 'normal', 'start', 'primary', 'none', false],
+    ['xl', 'normal', 'start', 'primary', 'auto', false],
+    ['xl', 'normal', 'end', 'primary', 'manual', false],
+    ['lg', 'normal', 'center', 'inherit', 'inherit', true],
+    ['md', 'normal', 'center', 'inherit', 'none', true],
+    ['sm', 'normal', 'center', 'inherit', 'none', true],
+    ['sm', 'normal', 'inherit', 'inherit', 'none', true],
+    ['inherit', 'normal', 'center', 'inherit', 'none', true],
+    [{ base: 'sm', xs: 'md', s: 'lg', m: 'xl', l: '2xl', xl: 'lg' }, 'normal', 'end', 'inherit', 'none', false],
+  ])('should return correct css for size: %j, align: %s, color: %s, hyphens: %s, and ellipsis: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

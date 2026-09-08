@@ -1,7 +1,7 @@
 import { PTabsBar, PText, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const TabsBarExampleAccessibilityPage = (): JSX.Element => {
+export const TabsBarExampleAccessibilityPage = () => {
   const [tabIndex, setTabIndex] = useState<number>(0);
   const onUpdate = useCallback((e: CustomEvent<TabsBarUpdateEventDetail>) => {
     setTabIndex(e.detail.activeTabIndex);

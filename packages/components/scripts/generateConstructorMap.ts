@@ -3,7 +3,7 @@ import * as path from 'path';
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 
 const generateConstructorMap = (): void => {
   const sourceDirectory = path.resolve('./src/components');

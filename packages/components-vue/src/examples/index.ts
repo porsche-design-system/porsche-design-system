@@ -1,6 +1,8 @@
 export { default as AccordionExample } from './AccordionExample.vue';
-export { default as AGGridExample } from './AGGridExample.vue';
-export { default as AGGridExampleStorefront } from './AGGridExampleStorefront.vue';
+export { default as AGGridExampleCommunity } from './AGGridExampleCommunity.vue';
+export { default as AGGridCompactExampleCommunity } from './AGGridCompactExampleCommunity.vue';
+export { default as AGGridExampleEnterprise } from './AGGridExampleEnterprise.vue';
+export { default as AGGridCompactExampleEnterprise } from './AGGridCompactExampleEnterprise.vue';
 export { default as ButtonExampleForm } from './ButtonExampleForm.vue';
 export { default as ButtonExampleFormAttribute } from './ButtonExampleFormAttribute.vue';
 export { default as ButtonPureExampleForm } from './ButtonPureExampleForm.vue';
@@ -109,6 +111,4 @@ export { default as TextareaExample } from './TextareaExample.vue';
 export { default as TextareaExampleControlled } from './TextareaExampleControlled.vue';
 export { default as TextareaExampleControlledModel } from './TextareaExampleControlledModel.vue';
 export { default as TextareaExampleForm } from './TextareaExampleForm.vue';
-export { default as TextFieldWrapperExampleIMask } from './TextFieldWrapperExampleIMask.vue';
-export { default as TextFieldWrapperExampleSearch } from './TextFieldWrapperExampleSearch.vue';
 export { default as ToastExample } from './ToastExample.vue';

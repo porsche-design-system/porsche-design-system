@@ -1,5 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, getTagName, paramCaseToCamelCase } from '..';
+import { getPrefixedTagNames, getTagName } from '../tag-name';
+import { paramCaseToCamelCase } from '../paramCaseToCamelCase';
 import type { PrefixedTagNames } from '../tag-name';
 
 export const areAllChildrenOfKind = (element: HTMLElement, tagName: TagName): boolean => {

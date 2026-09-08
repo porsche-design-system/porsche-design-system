@@ -1,12 +1,12 @@
-import { getCss } from '../../../utils';
+import { ref, spacingStaticMd } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
-import { spacingStaticMedium } from '@porsche-design-system/styles';
+import { getCss } from '../../../utils';
 import {
-  cssVariableUnorderedPseudoContent,
   cssVariableOrderedGridColumn,
-  cssVariablePseudoSpace,
   cssVariableOrderedPseudoSuffix,
+  cssVariablePseudoSpace,
   cssVariableUnorderedGridColumn,
+  cssVariableUnorderedPseudoContent,
 } from '../text-list/text-list-styles';
 
 export const getComponentCss = (): string => {
@@ -15,12 +15,15 @@ export const getComponentCss = (): string => {
       ':host': {
         display: 'grid',
         ...addImportantToEachRule({
-          gridTemplateColumns: `var(${cssVariablePseudoSpace}) 1fr`,
-          columnGap: spacingStaticMedium,
+          gridTemplateColumns: `${ref(cssVariablePseudoSpace)} 1fr`,
+          columnGap: ref(spacingStaticMd),
           font: 'inherit', // ensures style can't be overwritten from outside
           color: 'inherit', // ensures style can't be overwritten from outside
           ...hostHiddenStyles,
         }),
+      },
+      slot: {
+        display: 'inline',
       },
       ...addImportantToEachRule({
         '::slotted(*)': {

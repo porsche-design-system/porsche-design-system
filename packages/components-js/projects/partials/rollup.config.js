@@ -38,7 +38,7 @@ const modifyFinalOutputEsm = () => ({
   name: 'modify-final-output',
   generateBundle: (_, bundle) => {
     // Match the top level require of react/jsx-runtime and save assigned var name as regex group
-    const replacementRegex = /import \{ jsxs, Fragment, jsx } from 'react\/jsx-runtime';/;
+    const replacementRegex = /import \{ jsx, Fragment, jsxs } from 'react\/jsx-runtime';/;
     for (const [fileName, file] of Object.entries(bundle)) {
       if (file.type === 'chunk' && file.code) {
         if (!file.code.match(replacementRegex)) {
@@ -63,10 +63,13 @@ maybeImportJSXRuntime();`
   },
 });
 
+const external = ['crypto', 'react/jsx-runtime'];
+
 export default [
   // Default JS Build - CJS
   {
     input,
+    external,
     output: {
       dir: `${outputDir}/cjs`,
       format: 'cjs',
@@ -77,6 +80,7 @@ export default [
   // Default JS Build - ESM
   {
     input,
+    external,
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',
@@ -96,14 +100,10 @@ export default [
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
           sideEffects: false,
-          exports: {
-            // Default export (JS)
-            '.': {
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-          },
+          // Note: no `exports` field here on purpose. This package.json is copied into the
+          // wrapper packages (components-js/react/vue) as a nested folder, where the parent's
+          // root `exports` map governs resolution. A nested `exports` field would be ignored
+          // and triggers publint's NESTED_PACKAGE_JSON_FIELD_IGNORED warning.
         },
       }),
       modifyFinalOutputEsm(),

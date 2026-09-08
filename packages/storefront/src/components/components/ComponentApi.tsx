@@ -1,19 +1,20 @@
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import React from 'react';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentMetaCssVariables } from '@/components/components/ComponentMetaCssVariables';
 import { ComponentMetaEvents } from '@/components/components/ComponentMetaEvents';
 import { ComponentMetaSlots } from '@/components/components/ComponentMetaSlots';
-import { componentMeta } from '@porsche-design-system/component-meta';
-import type { TagName } from '@porsche-design-system/shared';
-import React from 'react';
 import { ComponentMetaProps } from './ComponentMetaProps';
 
 type ComponentApiProps = {
-  tagName: TagName;
+  api: ComponentMeta;
   showTableOfContents?: boolean;
 };
 
-export const ComponentApi = ({ tagName, showTableOfContents = true }: ComponentApiProps) => {
-  const { propsMeta, eventsMeta, slotsMeta, cssVariablesMeta } = componentMeta[tagName];
+export const ComponentApi = ({
+  api: { propsMeta, eventsMeta, slotsMeta, cssVariablesMeta },
+  showTableOfContents = true,
+}: ComponentApiProps) => {
   return (
     <>
       {showTableOfContents && (

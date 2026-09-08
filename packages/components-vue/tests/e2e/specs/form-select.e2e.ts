@@ -1,16 +1,15 @@
-
 import { expect, Page, test } from '@playwright/test';
 
 const getHost = (page: Page) => page.locator('p-select');
 const getCombobox = (page: Page) => page.locator('p-select [role="combobox"]');
-const getDialog = (page: Page) => page.locator('p-select [role="dialog"]');
+const getPopover = (page: Page) => page.locator('p-select [popover]');
 const getOptions = (page: Page) => page.locator('p-select-option');
 
 test('should work with v-model:checked manually and programmatic', async ({ page }) => {
   await page.goto('/select-example-controlled-model');
   const host = getHost(page);
   const combobox = getCombobox(page);
-  const dialog = getDialog(page);
+  const dialog = getPopover(page);
   const options = getOptions(page);
 
   await expect(host).toHaveJSProperty('value', 'a');

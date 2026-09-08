@@ -3,8 +3,8 @@ import * as path from 'node:path';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import { pascalCase } from 'change-case-legacy';
-import * as globby from 'globby-legacy';
+import { pascalCase } from 'change-case';
+import * as globby from 'fast-glob';
 
 const componentsDir = path.resolve(__dirname);
 const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();
@@ -28,9 +28,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
             )
           ) || [];
 
-        if (prop === 'theme') {
-          expect(type).toBe('Theme');
-        } else if (
+        if (
           type === 'string' ||
           type === 'string[]' ||
           type === 'boolean' ||
@@ -63,20 +61,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
           [];
 
         // Skip @deprecated events since naming pattern doesn't apply there
-        if (
-          [
-            'accordionChange',
-            'carouselChange',
-            'stepChange',
-            'segmentedControlChange',
-            'switchChange',
-            'sortingChange',
-            'tabChange',
-            'pageChange',
-          ].includes(eventName) ||
-          type === 'void' ||
-          type === 'LinkTileProductLikeEventDetail'
-        ) {
+        if (['sortingChange'].includes(eventName) || type === 'void' || type === 'LinkTileProductLikeEventDetail') {
           expect(true).toBe(true);
         } else {
           expect(type).toMatch(new RegExp(`^${pascalCase(componentName)}${pascalCase(eventName)}EventDetail$`));

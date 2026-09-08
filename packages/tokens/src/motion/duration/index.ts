@@ -1,4 +1,4 @@
-export { motionDurationLong } from './motionDurationLong';
-export { motionDurationModerate } from './motionDurationModerate';
-export { motionDurationShort } from './motionDurationShort';
-export { motionDurationVeryLong } from './motionDurationVeryLong';
+export { durationLg } from './durationLg';
+export { durationMd } from './durationMd';
+export { durationSm } from './durationSm';
+export { durationXl } from './durationXl';

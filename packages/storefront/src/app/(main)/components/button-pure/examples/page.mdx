@@ -1,0 +1,38 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { buttonPureMeta } from '@/app/(main)/components/button-pure/button-pure.meta';
+
+export const metadata = {
+  title: 'Button Pure - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Button Pure component.',
+};
+
+# Button Pure <ComponentStatus tagName="p-button-pure"></ComponentStatus>
+
+<TableOfContents
+  headings={[
+    buttonPureMeta.examples.customClickableArea.name,
+    buttonPureMeta.examples.form.name,
+    buttonPureMeta.examples.formAttribute.name,
+  ]}
+/>
+
+## {buttonPureMeta.examples.customClickableArea.name}
+
+<buttonPureMeta.examples.customClickableArea.description />
+
+<ComponentStory story={buttonPureMeta.examples.customClickableArea.story} />
+
+## {buttonPureMeta.examples.form.name}
+
+<buttonPureMeta.examples.form.description />
+
+<ComponentExample codeSample={buttonPureMeta.examples.form.example} />
+
+## {buttonPureMeta.examples.formAttribute.name}
+
+<buttonPureMeta.examples.formAttribute.description />
+
+<ComponentExample codeSample={buttonPureMeta.examples.formAttribute.example} />

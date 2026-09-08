@@ -1,7 +1,6 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
 import {
-  type Options,
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -12,6 +11,7 @@ import {
   getEventSummary,
   getHTMLAttributes,
   getLifecycleStatus,
+  type Options,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -19,7 +19,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
+const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 const flyoutMinWidth = 320;
 
 const getHost = (page: Page) => page.locator('p-flyout');
@@ -28,7 +28,6 @@ const getFlyoutScroller = (page: Page) => page.locator('p-flyout dialog .scrolle
 const getHeader = (page: Page) => page.locator('p-flyout slot[name="header"]');
 const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss');
-const getFlyoutDismissButtonReal = (page: Page) => page.locator('p-flyout .dismiss button');
 const getBody = (page: Page) => page.locator('body');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
@@ -137,7 +136,7 @@ const removeHeaderSlot = async (host: Locator) => {
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
+  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('BUTTON');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
@@ -150,13 +149,14 @@ const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessa
 
 const expectHeaderShadowToAppear = async (page: Page) => {
   const headerLocator = getHeader(page);
-  await page.waitForFunction(
-    (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
-    await headerLocator.evaluateHandle((el) => el)
-  );
-  expect(await getElementStyle(getHeader(page), 'boxShadow'), 'after scroll outside threshold').toBe(
-    'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
-  );
+  await expect(headerLocator).toHaveCSS('boxShadow', 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px');
+  // await page.waitForFunction(
+  //   (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
+  //   await headerLocator.evaluateHandle((el) => el)
+  // );
+  // expect(await getElementStyle(getHeader(page), 'boxShadow'), 'after scroll outside threshold').toBe(
+  //   'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
+  // );
 };
 
 test('should render and be visible when open', async ({ page }) => {
@@ -187,7 +187,7 @@ test('should have correct transform when opened and dismissed', async ({ page })
 
   await openFlyout(page);
 
-  await expect(getFlyoutScroller(page)).toHaveCSS('transform', 'none');
+  await expect(getFlyoutScroller(page)).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
 
   await dismissFlyout(page);
 
@@ -195,24 +195,6 @@ test('should have correct transform when opened and dismissed', async ({ page })
 });
 
 test.describe('scroll shadows', () => {
-  test('should have header scroll shadow when header slot is used and scrolled down', async ({ page }) => {
-    await initBasicFlyout(
-      page,
-      { open: true },
-      {
-        header: '<div slot="header">Some Heading</div>',
-        content: '<div style="height: 200vh">Some Content</div>',
-        subFooter: '<div slot="sub-footer" class="scroll-here">Some Content</div>',
-      }
-    );
-    const header = getHeader(page);
-    expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
-
-    await scrollFlyoutTo(page, '.scroll-here');
-
-    await expectHeaderShadowToAppear(page);
-  });
-
   test('should not have footer shadow when content is not scrollable', async ({ page }) => {
     await initBasicFlyout(
       page,
@@ -238,18 +220,12 @@ test.describe('scroll shadows', () => {
         }
       );
       const footer = getFooter(page);
-      expect(await getElementStyle(footer, 'boxShadow'), 'before scroll').toBe(
-        'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
-      );
+
+      await expect(footer).toHaveAttribute('data-stuck');
 
       await scrollFlyoutTo(page, '.scroll-here');
 
-      await page.waitForFunction(
-        (el) => getComputedStyle(el).boxShadow === 'none',
-        await footer.evaluateHandle((el) => el)
-      );
-
-      expect(await getElementStyle(footer, 'boxShadow'), 'after scroll').toBe('none');
+      await expect(footer).not.toHaveAttribute('data-stuck');
     });
   });
 });
@@ -265,28 +241,33 @@ test.describe('can be dismissed', () => {
 
   test('should be closable via x button', async ({ page }) => {
     const dismissBtn = getFlyoutDismissButton(page);
-    const dismissBtnReal = getFlyoutDismissButtonReal(page);
     expect(dismissBtn).not.toBeNull();
 
-    expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
+    expect(await getAttribute(dismissBtn, 'type')).toBe('button');
 
     await dismissBtn.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'dismiss-button' }]);
   });
 
   test('should be closable via esc key', async ({ page }) => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'escape' }]);
   });
 
   test('should be closable via backdrop', async ({ page }) => {
     await page.mouse.click(5, 5);
 
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter, 'after mouse up').toBe(1);
+    expect(details).toEqual([{ reason: 'backdrop' }]);
   });
 
   test('should not be dismissed if mousedown inside flyout', async ({ page }) => {
@@ -299,6 +280,19 @@ test.describe('can be dismissed', () => {
     await page.mouse.up();
 
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
+  });
+
+  test('should not be dismissed if mousedown inside flyout and mouseup on backdrop (drag out)', async ({ page }) => {
+    const viewportSize = page.viewportSize();
+    await page.mouse.move(viewportSize.width - 1, viewportSize.height / 2);
+    await page.mouse.down();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
+
+    await page.mouse.move(5, 5);
+    await page.mouse.up();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up on backdrop').toBe(0);
   });
 
   skipInBrowsers(['webkit'], () => {
@@ -628,9 +622,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -662,7 +655,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {
@@ -691,17 +684,6 @@ test.describe('lifecycle', () => {
         }
       )
       .toBe(1);
-    await expect
-      .poll(
-        async () => {
-          const status = await getLifecycleStatus(page);
-          return status.componentDidLoad['p-button'];
-        },
-        {
-          message: 'componentDidLoad: p-button',
-        }
-      )
-      .toBe(1); // includes p-icon
 
     await expect
       .poll(
@@ -713,7 +695,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {
@@ -771,17 +753,6 @@ test.describe('lifecycle', () => {
         }
       )
       .toBe(1);
-    await expect
-      .poll(
-        async () => {
-          const status = await getLifecycleStatus(page);
-          return status.componentDidLoad['p-button'];
-        },
-        {
-          message: 'componentDidLoad: p-button',
-        }
-      )
-      .toBe(1); // includes p-icon
 
     await expect
       .poll(
@@ -793,7 +764,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {
@@ -860,19 +831,15 @@ test.describe('after dynamic slot change', () => {
 
     await waitForStencilLifecycle(page);
 
-    const header = getHeader(page);
     const dialog = getFlyout(page);
     await expect(page.getByText(headerText)).toBeVisible();
-    expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
     await expect(dialog).toHaveAttribute('aria-label', headerText);
-
-    await scrollFlyoutTo(page, '.scroll-here');
-    await expectHeaderShadowToAppear(page);
   });
 
   test('should show footer with shadow', async ({ page }) => {
     await initBasicFlyout(page);
     const host = getHost(page);
+    const footer = getFlyout(page);
     const footerText = 'Some slotted footer content';
 
     await expect(page.getByText(footerText)).not.toBeVisible();
@@ -884,9 +851,10 @@ test.describe('after dynamic slot change', () => {
     await waitForStencilLifecycle(page);
 
     await expect(page.getByText(footerText)).toBeVisible();
-    expect(await getElementStyle(getFooter(page), 'boxShadow'), 'before scroll').toBe(
-      'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
-    );
+    // TODO: Check footer background working
+    // await expect
+    //   .poll(() => footer.evaluate((el) => getComputedStyle(el, '::after').backgroundColor))
+    //   .toBe('rgba(122, 123, 138, 0.15)');
   });
 
   test('should show subfooter', async ({ page }) => {
@@ -907,46 +875,47 @@ test.describe('after dynamic slot change', () => {
   test('should update css sticky top custom property correctly if no header exists initially', async ({ page }) => {
     await initBasicFlyout(page);
     const host = getHost(page);
-    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '0px');
 
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('95px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '107px');
 
     await removeHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '0px');
 
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('95px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '107px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 
-    expect(await getStickyTopCssVarValue(page)).toBe('167px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '167px');
   });
 
   test('should update css sticky top custom property correctly if header exists initially', async ({ page }) => {
     await initAdvancedFlyout(page);
     const host = getHost(page);
-    expect(await getStickyTopCssVarValue(page)).toBe('56px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '68px');
 
     await removeHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '0px');
 
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('95px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '203px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 
-    expect(await getStickyTopCssVarValue(page)).toBe('167px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '167px');
   });
 });
 

@@ -1,15 +1,20 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { type DrilldownUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  type DrilldownDismissEventDetail,
+  type DrilldownUpdateEventDetail,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-drilldown-example',
   template: `
     <nav aria-label="Main">
       <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Drilldown</p-button>
+      <p-text>Last dismissed via: {{ dismissReason ?? 'not dismissed yet' }}</p-text>
       <p-drilldown
         [open]="isDrilldownOpen"
         [activeIdentifier]="drilldownActiveIdentifier"
-        (dismiss)="onDismiss()"
+        (dismiss)="onDismiss($event)"
         (update)="onUpdate($event)"
       >
         <p-drilldown-item identifier="id-1" label="Some Label (1)">
@@ -63,11 +68,13 @@ import { type DrilldownUpdateEventDetail, PorscheDesignSystemModule } from '@por
 export class DrilldownExampleComponent {
   isDrilldownOpen = false;
   drilldownActiveIdentifier: string | undefined = undefined;
+  dismissReason?: DrilldownDismissEventDetail['reason'];
 
   onOpen(): void {
     this.isDrilldownOpen = true;
   }
-  onDismiss(): void {
+  onDismiss(e: CustomEvent<DrilldownDismissEventDetail>): void {
+    this.dismissReason = e.detail.reason;
     this.isDrilldownOpen = false;
   }
   onUpdate(e: CustomEvent<DrilldownUpdateEventDetail>): void {

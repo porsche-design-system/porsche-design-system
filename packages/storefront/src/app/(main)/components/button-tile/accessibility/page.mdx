@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { buttonTileMeta } from '@/app/(main)/components/button-tile/button-tile.meta';
+
+export const metadata = {
+  title: 'Button Tile: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Button Tile component',
+};
+
+# Button Tile <ComponentStatus tagName="p-button-tile"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Limitations', 'Development considerations', 'Integration examples', 'Tests']}
+/>
+
+<buttonTileMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-button-tile" examples={buttonTileMeta.accessibility.examples} />
+
+<buttonTileMeta.accessibility.tests />

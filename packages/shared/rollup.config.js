@@ -8,7 +8,17 @@ import shebang from 'rollup-plugin-preserve-shebang';
 import pkg from './package.json';
 
 const input = 'src/index.ts';
-const external = [...Object.keys(pkg.dependencies), 'fs', 'path'];
+const external = [
+  ...Object.keys(pkg.dependencies),
+  // JSS packages are hoisted from workspace root; keep them external at runtime
+  'jss',
+  'jss-preset-default',
+  'jss-plugin-sort-css-media-queries',
+  // change-case is ESM-only; must stay external to avoid CJS bundling issues
+  'change-case',
+  'fs',
+  'path',
+];
 
 export default [
   {
@@ -49,10 +59,23 @@ export default [
                   default: './testing/cjs/index.cjs',
                 },
               },
+              // deep import so that Vitest setups (and the bundled jsdom-polyfill) can normalize the `CSS`
+              // namespace without dragging the Playwright configs and W3C validator of the barrel along
+              './testing/normalize-css-namespace': {
+                import: {
+                  types: './testing/normalizeCssNamespace.d.ts',
+                  default: './testing/normalize-css-namespace/esm/index.mjs',
+                },
+                require: {
+                  types: './testing/normalizeCssNamespace.d.ts',
+                  default: './testing/normalize-css-namespace/cjs/index.cjs',
+                },
+              },
               './css/styles.css': './css/styles.css',
               './css/styles': './css/styles.css',
               './tsconfig.json': './tsconfig.json',
               './examples': './examples/index.ts', // Examples is not bundled to avoid problems with next.js "use client" in mdx
+              './examples/*': './examples/*.tsx', // deep imports let a page pull one example without dragging the whole barrel into its chunk
             },
           }),
         }),
@@ -116,12 +139,36 @@ export default [
     plugins: [typescript({ rootDir: 'src/testing' })],
   },
   {
+    // standalone bundle for the `./testing/normalize-css-namespace` deep import, see the exports map above
+    input: 'src/testing/normalizeCssNamespace.ts',
+    external,
+    output: [
+      {
+        file: 'dist/testing/normalize-css-namespace/esm/index.mjs',
+        format: 'esm',
+      },
+      {
+        file: 'dist/testing/normalize-css-namespace/cjs/index.cjs',
+        format: 'cjs',
+        exports: 'named',
+      },
+    ],
+    plugins: [typescript({ rootDir: 'src/testing' })],
+  },
+  {
     input: 'src/serve-dummyassets.ts',
     output: {
       dir: 'bin',
       format: 'cjs',
     },
-    plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    // Suppress circular dependency warnings from third-party node_modules (e.g. union, spdy-transport).
+    // These are well-known, harmless internal cycles in bundled dependencies and are not actionable.
+    // Warnings from our own source files are still surfaced via the fallback to `warn(warning)`.
+    onwarn(warning, warn) {
+      if (warning.code === 'CIRCULAR_DEPENDENCY' && warning.ids?.some((id) => id.includes('node_modules'))) return;
+      warn(warning);
+    },
+    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
   {
     input: 'src/scripts/vrt/prepareVRTSnapshots.ts',
@@ -129,6 +176,11 @@ export default [
       dir: 'bin',
       format: 'cjs',
     },
-    plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    // Same as above: suppress node_modules circular dependency noise for this bin bundle.
+    onwarn(warning, warn) {
+      if (warning.code === 'CIRCULAR_DEPENDENCY' && warning.ids?.some((id) => id.includes('node_modules'))) return;
+      warn(warning);
+    },
+    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
 ];

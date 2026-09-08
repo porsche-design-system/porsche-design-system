@@ -3,6 +3,7 @@ import {
   type InputSearchInputEventDetail,
   type MultiSelectChangeEventDetail,
   type MultiSelectToggleEventDetail,
+  PMultiSelect,
   PorscheDesignSystemModule,
 } from '@porsche-design-system/components-angular';
 
@@ -30,6 +31,9 @@ import {
         (change)="$event.stopPropagation()"
       ></p-input-search>
 
+      <!-- Persistent status announcer for assistive technologies (keep always in the DOM) -->
+      <div slot="options-status" class="sr-only" aria-live="polite" aria-atomic="true">{{ filterStatusMessage }}</div>
+
       <!-- Initial skeleton loading -->
       @if (initialLoading && !error) {
         @for (_ of [1,2,3,4,5,6,7,8,9]; track $index) {
@@ -44,15 +48,14 @@ import {
         </p-multi-select-option>
       }
 
-      <!-- No filter results -->
-      @if (!initialLoading && options.length === 0 && !error) {
+      <!-- No filter results (visual only; announcements come from the live region) -->
+      @if (!initialLoading && !loading && options.length === 0 && !error) {
         <div
           slot="options-status"
           class="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
-          role="alert"
+          aria-hidden="true"
         >
-          <span aria-hidden="true">–</span>
-          <span class="sr-only">No results found</span>
+          –
         </div>
       }
 
@@ -63,7 +66,7 @@ import {
           class="flex gap-static-sm py-static-sm px-[12px]"
           role="alert"
         >
-          <p-icon name="information" color="notification-error"></p-icon>
+          <p-icon name="information" color="error"></p-icon>
           <span class="text-error">{{ error }}</span>
         </div>
       }
@@ -75,13 +78,14 @@ import {
   imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleAsyncFilterComponent {
-  value?: string[] = [];
+  value?: PMultiSelect['value'] = [];
   options: { value: string; label: string }[] = [];
 
   searchValue = '';
   initialLoading = false;
   loading = false;
   error: string | null = null;
+  filterStatusMessage = '';
 
   private hasLoadedOnce = false;
   private currentFetchId = 0;
@@ -93,6 +97,7 @@ export class MultiSelectExampleAsyncFilterComponent {
     const fetchId = ++this.currentFetchId;
     if (isInitial) this.initialLoading = true;
     else this.loading = true;
+    this.updateFilterStatusMessage();
 
     this.cdr.markForCheck();
 
@@ -121,6 +126,7 @@ export class MultiSelectExampleAsyncFilterComponent {
     } finally {
       if (isInitial) this.initialLoading = false;
       else this.loading = false;
+      this.updateFilterStatusMessage();
 
       this.cdr.markForCheck();
     }
@@ -144,5 +150,27 @@ export class MultiSelectExampleAsyncFilterComponent {
     if (event.detail.open && !this.hasLoadedOnce) {
       this.fetchOptions(undefined, true);
     }
+  }
+
+  private updateFilterStatusMessage(): void {
+    if (this.error) {
+      this.filterStatusMessage = '';
+      return;
+    }
+    if (this.initialLoading || this.loading) {
+      this.filterStatusMessage = 'Loading options';
+      return;
+    }
+    const term = this.searchValue.trim();
+    if (!term) {
+      this.filterStatusMessage = '';
+      return;
+    }
+    if (this.options.length === 0) {
+      this.filterStatusMessage = 'No results found';
+      return;
+    }
+    this.filterStatusMessage =
+      this.options.length === 1 ? '1 result available' : `${this.options.length} results available`;
   }
 }

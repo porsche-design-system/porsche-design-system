@@ -1,10 +1,12 @@
-import { spacingStaticSmall } from '@porsche-design-system/styles';
+import { ref } from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
 
-export const getOptionsJssStyle = (scalingVar: string): JssStyle => {
+export const getOptionsJssStyle = (scalingVarName: string): JssStyle => {
+  const gap = `calc(11.2px * (${ref(scalingVarName)} - 0.64285714) + 4px)`;
+
   return {
     display: 'flex',
     flexDirection: 'column',
-    gap: `max(2px, ${scalingVar} * ${spacingStaticSmall})`,
+    gap,
   };
 };

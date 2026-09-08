@@ -1,16 +1,11 @@
 <div class="root">
   <div class="label-wrapper">
     <label class="label" id="label" for="input-search"> Some label</label>
+    <slot name="label-after"> </slot>
   </div>
   <div class="wrapper">
     <slot name="start"> </slot>
-    <input
-      aria-describedby="description message"
-      id="input-search"
-      name="value"
-      type="search"
-      dir="auto"
-    />
+    <input id="input-search" name="value" type="search" dir="auto" />
     <slot name="end"> </slot>
   </div>
   <span id="message" class="message" role="alert"> </span>

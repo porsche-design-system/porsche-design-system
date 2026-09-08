@@ -1,4 +1,4 @@
-import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche-design-system/styles';
+import { fontPorscheNext, fontWeightSemibold, leadingNormal, ref, typescaleXs } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import {
@@ -13,10 +13,8 @@ export const getComponentCss = (): string => {
       ':host': {
         display: 'table-header-group',
         ...addImportantToEachRule({
-          fontSize: fontSizeTextXSmall,
-          lineHeight: fontLineHeight,
-          fontWeight: fontWeightSemiBold,
-          borderBottom: `1px solid var(${cssVariableTableBorderColor})`,
+          font: `${ref(fontWeightSemibold)} ${ref(typescaleXs)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+          borderBottom: `1px solid ${ref(cssVariableTableBorderColor)}`,
           ...hostHiddenStyles,
         }),
       },

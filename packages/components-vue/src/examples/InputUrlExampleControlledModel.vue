@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { PInputUrl } from '@porsche-design-system/components-vue';
+import { PInputUrl, type PInputUrlProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myInputUrl = ref('');
+const myInputUrl = ref<PInputUrlProps['value']>('');
 
 const resetValue = () => {
   myInputUrl.value = '';

@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { inputTimeMeta } from '@/app/(main)/components/input-time/input-time.meta';
+
+export const metadata = {
+  title: 'Input Time - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Input Time component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Input Time <ComponentStatus tagName="p-input-time"></ComponentStatus>
+
+<inputTimeMeta.introduction />
+
+<Configurator tagName="p-input-time" story={inputTimeMeta.configurator.story} slotStories={inputTimeMeta.configurator.slotStories} />

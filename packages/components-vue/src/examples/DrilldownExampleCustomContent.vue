@@ -2,25 +2,26 @@
 import {
   type DrilldownUpdateEventDetail,
   PButton,
+  PButtonTile,
   PDrilldown,
   PDrilldownItem,
-  PLink,
-  PButtonTile,
-  PModelSignature,
   PDrilldownLink,
+  type PDrilldownProps,
+  PLink,
+  PModelSignature,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const isDrilldownOpen = ref(false);
-const drilldownActiveIdentifier = ref<DrilldownUpdateEventDetail['activeIdentifier']>('id-1');
+const drilldownActiveIdentifier = ref<PDrilldownProps['activeIdentifier']>('id-1');
 const onOpen = (): void => {
   isDrilldownOpen.value = true;
 };
 const onDismiss = (): void => {
   isDrilldownOpen.value = false;
 };
-const onUpdate = (e: DrilldownUpdateEventDetail): void => {
-  drilldownActiveIdentifier.value = e.activeIdentifier;
+const onUpdate = (e: CustomEvent<DrilldownUpdateEventDetail>): void => {
+  drilldownActiveIdentifier.value = e.detail.activeIdentifier;
 };
 </script>
 
@@ -126,7 +127,7 @@ const onUpdate = (e: DrilldownUpdateEventDetail): void => {
 </template>
 
 <style lang="scss" scoped>
-  @use '@porsche-design-system/components-vue/styles' as *;
+  @use '@porsche-design-system/components-vue/scss' as *;
 
   p-drilldown {
     --p-drilldown-grid-template: repeat(5, auto) minmax(0, 1fr) / auto

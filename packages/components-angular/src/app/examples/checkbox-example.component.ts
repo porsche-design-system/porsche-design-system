@@ -5,7 +5,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-checkbox-example',
   template: `
     <form (submit)="onSubmit($event)">
-      <p-checkbox name="some-name" label="Some Label" value="some-value" />
+      <p-checkbox name="some-name" label="Some Label" value="some-value"></p-checkbox>
       <p-button type="submit">Submit</p-button>
       <p-button type="reset">Reset</p-button>
     </form>

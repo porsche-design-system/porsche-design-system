@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { radioGroupMeta } from '@/app/(main)/components/radio-group/radio-group.meta';
+
+export const metadata = {
+  title: 'Radio Group - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Radio Group component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Radio Group <ComponentStatus tagName="p-radio-group"></ComponentStatus>
+
+<radioGroupMeta.introduction />
+
+<Configurator tagName="p-radio-group" story={radioGroupMeta.configurator.story} slotStories={radioGroupMeta.configurator.slotStories} />

@@ -1,5 +1,5 @@
-import { getAngularPartialExample } from '@/utils/partials/getAngularPartialExample';
 import { expect } from 'vitest';
+import { getAngularPartialExample } from '@/utils/partials/getAngularPartialExample';
 
 it('should return correct partial markup for getVanillaJsPartialExample', () => {
   const partialCalls = [

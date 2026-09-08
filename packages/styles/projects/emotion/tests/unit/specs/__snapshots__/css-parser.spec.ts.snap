@@ -1,0 +1,131 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match compiled getFocusStyle() with jss (styles package) 1`] = `
+".test {
+  border-radius: 4px;
+}
+.test:focus {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+.test:focus:not(:focus-visible) {
+  outline-color: transparent;
+}"
+`;
+
+exports[`should match compiled getFocusStyle() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+".test {
+  border-radius: 4px;
+}
+.test:focus {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+.test:focus:not(:focus-visible) {
+  outline-color: transparent;
+}"
+`;
+
+exports[`should match compiled getHoverStyle() with jss (styles package) 1`] = `
+".test {
+  border-radius: 4px;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  transition: background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+@media(hover:hover) {
+  .test:hover {
+    background: hsla(236, 6.4%, 51%, 0.148);
+  }
+}
+"
+`;
+
+exports[`should match compiled getHoverStyle() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+".test {
+  border-radius: 4px;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  transition: background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+@media (hover:hover) {
+  .test:hover {
+    background: hsla(236, 6.4%, 51%, 0.148);
+  }
+}"
+`;
+
+exports[`should match compiled getMediaQueryMax() with jss (styles package) 1`] = `
+"
+@media(max-width:1919px) {
+  .test {
+    margin: 0;
+  }
+}
+"
+`;
+
+exports[`should match compiled getMediaQueryMax() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+"@media (max-width:1919px) {
+  .test {
+    margin: 0;
+  }
+}"
+`;
+
+exports[`should match compiled getMediaQueryMin() with jss (styles package) 1`] = `
+"
+@media(min-width:1920px) {
+  .test {
+    margin: 0;
+  }
+}
+"
+`;
+
+exports[`should match compiled getMediaQueryMin() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+"@media (min-width:1920px) {
+  .test {
+    margin: 0;
+  }
+}"
+`;
+
+exports[`should match compiled getMediaQueryMinMax() with jss (styles package) 1`] = `
+"
+@media(min-width:0px) and (max-width:1919px) {
+  .test {
+    margin: 0;
+  }
+}
+"
+`;
+
+exports[`should match compiled getMediaQueryMinMax() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+"@media (min-width:0px) and (max-width:1919px) {
+  .test {
+    margin: 0;
+  }
+}"
+`;
+
+exports[`should match compiled getSkeletonStyle() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+"@keyframes test {
+  from {
+    background-position-x: 100%;
+  }
+  to {
+    background-position-x: -100%;
+  }
+}
+.test {
+  display: block;
+  background: hsl(240, 7.7%, 97.5%) linear-gradient(to right, transparent 0%, #f7f7f7 25%, transparent 50%) 0 0 / 200% 100%;
+  border-radius: 4px;
+  animation: test .6s cubic-bezier(.25,.1,.25,1) infinite;
+}"
+`;

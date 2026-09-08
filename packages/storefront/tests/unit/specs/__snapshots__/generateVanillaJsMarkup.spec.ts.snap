@@ -63,14 +63,14 @@ exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup f
   <p-text>
     Some Content End
   </p-text>
-  <p-button-group slot="footer">
+  <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
     <p-button type="button">
       Proceed
     </p-button>
     <p-button type="button" variant="secondary">
       Cancel
     </p-button>
-  </p-button-group>
+  </div>
   <p-text slot="sub-footer">
     Some additional Sub-Footer
   </p-text>

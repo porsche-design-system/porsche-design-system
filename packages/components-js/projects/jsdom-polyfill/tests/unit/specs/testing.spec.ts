@@ -2,11 +2,70 @@ import {
   getByLabelTextShadowed,
   getByRoleShadowed,
   getByTextShadowed,
+  screen,
 } from '@porsche-design-system/components-js/testing';
 import '@porsche-design-system/components-js/jsdom-polyfill';
 import { componentsReady } from '@porsche-design-system/components-js';
-import { fireEvent, getByRole } from '@testing-library/dom';
-import { vi } from 'vitest';
+import * as pdsTesting from '@porsche-design-system/components-js/testing';
+import { fireEvent, getByRole, waitFor } from '@testing-library/dom';
+import { describe, expect, it, vi } from 'vitest';
+
+const describeExports = (module: object): string[] =>
+  Object.entries(module)
+    .map(([name, value]) => `${name}: ${typeof value}`)
+    .sort();
+
+describe('export surface', () => {
+  // Everything re-exported from shadow-dom-testing-library, so a dependency update shows up as a reviewable diff
+  // instead of a silent change. `screen` is expanded too because it carries its own document-bound queries.
+  it('should match snapshot', () => {
+    expect({ exports: describeExports(pdsTesting), screen: describeExports(screen) }).toMatchSnapshot();
+  });
+
+  it('should keep the three deprecated aliases', () => {
+    expect(typeof pdsTesting.getByRoleShadowed).toBe('function');
+    expect(typeof pdsTesting.getByLabelTextShadowed).toBe('function');
+    expect(typeof pdsTesting.getByTextShadowed).toBe('function');
+  });
+});
+
+describe('optional container as first argument', () => {
+  it('should scope getByRoleShadowed to the given container', async () => {
+    document.body.innerHTML = `<div id="a"><p-button>A</p-button></div><div id="b"><p-button>B</p-button></div>`;
+    await componentsReady();
+
+    const containerB = document.getElementById('b') as HTMLElement;
+    expect(getByRoleShadowed(containerB, 'button')).toBeInTheDocument();
+    expect(() => getByRoleShadowed('button')).toThrow(/multiple/i);
+  });
+
+  it('should scope getByTextShadowed to the given container', async () => {
+    document.body.innerHTML = `<div id="a"><p-accordion><h3 slot="summary">Only here</h3><p>x</p></p-accordion></div><div id="b"></div>`;
+    await componentsReady();
+
+    const containerA = document.getElementById('a') as HTMLElement;
+    const containerB = document.getElementById('b') as HTMLElement;
+    expect(getByTextShadowed(containerA, 'Only here')).toBeInTheDocument();
+    expect(() => getByTextShadowed(containerB, 'Only here')).toThrow(/Unable to find/i);
+  });
+
+  it('should scope getByLabelTextShadowed to the given container and keep the element type generic', async () => {
+    document.body.innerHTML = `<div id="a"><p-input-text label="Message" name="n"></p-input-text></div>`;
+    await componentsReady();
+
+    const containerA = document.getElementById('a') as HTMLElement;
+    const el = getByLabelTextShadowed<HTMLInputElement>(containerA, 'Message');
+    expect(el).toBeInTheDocument();
+    expect(el.type).toBe('text');
+  });
+
+  it('should still default to the whole document when no container is passed', async () => {
+    document.body.innerHTML = `<p-button>Button</p-button>`;
+    await componentsReady();
+
+    expect(getByRoleShadowed('button')).toBeInTheDocument();
+  });
+});
 
 describe('getByRoleShadowed()', () => {
   it('should work for native button', async () => {
@@ -22,18 +81,18 @@ describe('getByRoleShadowed()', () => {
     expect(getByRoleShadowed('button')).toBeInTheDocument();
   });
 
-  it('should work for nested button within p-text-field-wrapper', async () => {
-    document.body.innerHTML = `<p-text-field-wrapper>
-  <input type="password" />
-</p-text-field-wrapper>`;
+  it('should work for nested button within p-input-password', async () => {
+    document.body.innerHTML = `<p-input-password label="Some label" name="some-name" toggle="true"></p-input-password>`;
     await componentsReady();
 
     expect(getByRoleShadowed('button')).toBeInTheDocument();
 
-    const input = document.querySelector('input');
-    expect(input.type).toBe('password');
-    await getByRoleShadowed('button').click();
-    expect(input.type).toBe('text');
+    const input = document.querySelector('p-input-password')?.shadowRoot?.querySelector('input');
+    expect(input?.type).toBe('password');
+    getByRoleShadowed('button').click();
+    await waitFor(() => {
+      expect(input?.type).toBe('text');
+    });
   });
 });
 
@@ -49,10 +108,8 @@ describe('getByLabelTextShadowed()', () => {
     expect(el.type).toBe('text');
   });
 
-  it('should work for p-text-field-wrapper', async () => {
-    document.body.innerHTML = `<p-text-field-wrapper label="Message">
-  <input type="text" />
-</p-text-field-wrapper>`;
+  it('should work for p-input-text', async () => {
+    document.body.innerHTML = `<p-input-text label="Message" name="some-name"></p-input-text>`;
     await componentsReady();
 
     const el = getByLabelTextShadowed<HTMLInputElement>('Message');
@@ -71,36 +128,32 @@ describe('getByTextShadowed()', () => {
   });
 
   it('should work for p-accordion', async () => {
-    document.body.innerHTML = `<p-accordion heading="Headline">Content</p-accordion>`;
+    document.body.innerHTML = `<p-accordion><h3 slot="summary">Some summary</h3><p>Some details</p></p-accordion>`;
     await componentsReady();
 
-    const el = getByTextShadowed('Headline');
+    const el = getByTextShadowed('Some summary');
     expect(el).toBeInTheDocument();
-    expect(el.tagName).toBe('BUTTON');
+    expect(el.tagName).toBe('H3');
   });
 });
 
-describe('getByRole()', () => {
-  it('should be supported for most form wrappers', async () => {
+describe('getByRoleShadowed()', () => {
+  it('should be supported for form components', async () => {
     document.body.innerHTML = `
-<p-checkbox-wrapper label="Checkbox">
-  <input type="checkbox" />
-</p-checkbox-wrapper>
-<p-radio-button-wrapper label="Radio Button">
-  <input type="radio" />
-</p-radio-button-wrapper>
-<p-text-field-wrapper label="Text Field">
-  <input type="text" />
-</p-text-field-wrapper>
-<p-textarea-wrapper label="Textarea">
-  <textarea />
-</p-textarea-wrapper>`;
+<p-checkbox label="Checkbox" name="some-name"></p-checkbox>
+<p-radio-group label="Radio Button" name="some-name">
+  <p-radio-group-option value="a" label="Radio Option A"></p-radio-group-option>
+  <p-radio-group-option value="b" label="Radio Option B"></p-radio-group-option>
+  <p-radio-group-option value="c" label="Radio Option C"></p-radio-group-option>
+</p-radio-group>
+<p-input-text label="Text Field" name="some-name"></p-input-text>
+<p-textarea label="Textarea" name="some-name"></p-textarea>`;
     await componentsReady();
 
-    expect(getByRole(document.body, 'checkbox', { name: 'Checkbox' })).toBeInTheDocument();
-    expect(getByRole(document.body, 'radio', { name: 'Radio Button' })).toBeInTheDocument();
-    expect(getByRole(document.body, 'textbox', { name: 'Text Field' })).toBeInTheDocument();
-    expect(getByRole(document.body, 'textbox', { name: 'Textarea' })).toBeInTheDocument();
+    expect(getByRoleShadowed('checkbox', { name: 'Checkbox' })).toBeInTheDocument();
+    expect(getByRoleShadowed('radio', { name: 'Radio Option A' })).toBeInTheDocument();
+    expect(getByRoleShadowed('textbox', { name: 'Text Field' })).toBeInTheDocument();
+    expect(getByRoleShadowed('textbox', { name: 'Textarea' })).toBeInTheDocument();
   });
 
   it('should be supported for p-button with role button', async () => {
@@ -110,19 +163,17 @@ describe('getByRole()', () => {
     expect(getByRole(document.body, 'button', { name: 'Button' })).toBeInTheDocument();
   });
 
-  it('should be supported for p-select-wrapper', async () => {
+  it('should be supported for p-select', async () => {
     const callback = vi.fn();
 
-    document.body.innerHTML = `<p-select-wrapper>
-  <select value="1">
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-  </select>
-</p-select-wrapper>`;
+    document.body.innerHTML = `<p-select name="options" label="Some Label">
+  <p-select-option value="a">Option A</p-select-option>
+  <p-select-option value="b">Option B</p-select-option>
+  <p-select-option value="c">Option C</p-select-option>
+</p-select>`;
     await componentsReady();
 
-    const selectEl: HTMLSelectElement | null = document.querySelector('select');
+    const selectEl: HTMLElement | null = document.querySelector('p-select');
     selectEl?.addEventListener('change', (e: Event) => {
       const target = e.target as HTMLSelectElement | null;
       callback(target?.value);

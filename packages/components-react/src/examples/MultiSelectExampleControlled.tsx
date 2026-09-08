@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const MultiSelectExampleControlledPage = (): JSX.Element => {
+export const MultiSelectExampleControlledPage = () => {
   const [selectedValues, setSelectedValues] = useState<PMultiSelectProps['value']>([]);
 
   const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {

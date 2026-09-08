@@ -1,53 +1,51 @@
-import { Component, Element, Event, type EventEmitter, type JSX, Prop, forceUpdate, h } from '@stencil/core';
-import { BACKDROPS } from '../../styles/dialog-styles';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
-  consoleWarn,
-  getPrefixedTagNames,
+  createTopLayerController,
   getSlotTextContent,
-  hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
+  isDialogBackdropTarget,
   observeChildren,
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
-  setDialogVisibility,
   setScrollLock,
+  showDialog,
+  type TopLayerController,
   unobserveChildren,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
-  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { observeStickyArea } from '../../utils/dialog/observer';
-import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
+import { DialogBase } from '../common/dialog-base/dialog-base';
+import { BACKDROPS } from '../common/dialog-base/dialog-base-styles';
 import { getComponentCss } from './modal-styles';
 import {
   MODAL_ARIA_ATTRIBUTES,
+  MODAL_BACKGROUNDS,
   type ModalAriaAttribute,
   type ModalBackdrop,
+  type ModalBackground,
+  type ModalDismissEventDetail,
   type ModalMotionHiddenEndEventDetail,
   type ModalMotionVisibleEndEventDetail,
 } from './modal-utils';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
-  disableCloseButton: AllowedTypes.boolean,
   dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
-  heading: AllowedTypes.string,
+  background: AllowedTypes.oneOf<ModalBackground>(MODAL_BACKGROUNDS),
   backdrop: AllowedTypes.oneOf<ModalBackdrop>(BACKDROPS),
   fullscreen: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<ModalAriaAttribute>(MODAL_ARIA_ATTRIBUTES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
- * @slot {"name": "heading", "description": "Renders a heading section above the content area.", "isDeprecated": true }
  * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the main content." }
  * @slot {"name": "footer", "description": "Shows a sticky footer section, flowing under the content area when scrollable." }
@@ -61,49 +59,34 @@ const propTypes: PropTypes<typeof Modal> = {
 export class Modal {
   @Element() public host!: HTMLElement;
 
-  /** If true, the modal is open. */
-  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  /** Controls whether the modal dialog is visible. */
+  @Prop() public open: boolean = false;
 
-  /**
-   * If true, the modal will not have a dismiss button.
-   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. */
-  @Prop() public disableCloseButton?: boolean;
-
-  /** If false, the modal will not have a dismiss button. */
+  /** Shows a dismiss button in the modal header so the user can manually close it. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** If true, the modal will not be closable via backdrop click. */
+  /** When enabled, clicking the backdrop will not close the modal. */
   @Prop() public disableBackdropClick?: boolean = false;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `header` slot instead
-   * The title of the modal */
-  @Prop() public heading?: string;
-
-  /** Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent). */
+  /** Sets the backdrop style. Use `blur` when the modal is opened by user interaction; use `shading` when opened automatically (e.g. Cookie Consent). */
   @Prop() public backdrop?: ModalBackdrop = 'blur';
 
-  /** If true the modal uses max viewport height and width. Should only be used for mobile. */
+  /** Sets the background color of the modal panel (`canvas` or `surface`). */
+  @Prop() public background?: ModalBackground = 'canvas';
+
+  /** Expands the modal to the full viewport size, intended for mobile use cases. Supports responsive breakpoint values. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes on the dialog element for improved accessibility when no visible heading is present. */
   @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttribute>;
 
-  /** Adapts the modal color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  /** Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<ModalDismissEventDetail>;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `dismiss` event instead.
-   * Emitted when the component requests to be dismissed. */
-  @Event({ bubbles: false }) public close?: EventEmitter<void>;
-
-  /** Emitted when the component requests to be dismissed. */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
-
-  /** Emitted when the modal is opened and the transition is finished. */
+  /** Emitted after the modal's open transition completes and the dialog is fully visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<ModalMotionVisibleEndEventDetail>;
 
-  /** Emitted when the modal is closed and the transition is finished. */
+  /** Emitted after the modal's close transition completes and the dialog is fully hidden. */
   @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<ModalMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;
@@ -111,10 +94,15 @@ export class Modal {
   private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
-
-  private get hasDismissButton(): boolean {
-    return this.disableCloseButton ? false : this.dismissButton;
-  }
+  // Tracks whether the current pointer gesture started inside the panel (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the panel and released on the backdrop.
+  private isPointerDownInside = false;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.dialog,
+    isShown: () => !!this.dialog?.open,
+    show: () => showDialog(this.dialog, this.scroller),
+    hide: () => this.dialog?.close(),
+  });
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -137,7 +125,11 @@ export class Modal {
   }
 
   public componentDidRender(): void {
-    setDialogVisibility(this.open, this.dialog, this.scroller);
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
   }
 
   public componentDidLoad(): void {
@@ -157,22 +149,14 @@ export class Modal {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    this.topLayer.cancel();
     unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'disableCloseButton', 'Please use dismissButton prop instead.');
-    warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'heading', 'Please use the slot="header" instead.');
 
-    if (hasNamedSlot(this.host, 'heading')) {
-      consoleWarn(
-        getDeprecatedPropOrSlotWarningMessage(this.host, 'slot="heading"'),
-        'Please use the slot="header" instead.'
-      );
-    }
-
-    this.hasHeader = hasHeading(this.host, this.heading) || hasNamedSlot(this.host, 'header');
+    this.hasHeader = hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
 
     // TODO: why do we validate only when opened?
@@ -184,72 +168,56 @@ export class Modal {
       this.host,
       getComponentCss,
       this.open,
+      this.background,
       this.backdrop,
       this.fullscreen,
-      this.hasDismissButton,
+      this.dismissButton,
       this.hasHeader,
-      this.hasFooter,
-      this.theme
+      this.hasFooter
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
-      <dialog
-        inert={!this.open} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
-        tabIndex={-1} // dialog always has a dismiss button to be focused
-        ref={(el) => (this.dialog = el)}
-        onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.hasDismissButton)}
-        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+      <DialogBase
+        // `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
+        // fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
+        // during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
+        // `inert` avoids that and mirrors the pattern used by `p-flyout` / `p-popover` / `p-drilldown`.
+        inert={!this.open}
+        dialogRef={(el) => (this.dialog = el)}
+        scrollerRef={(el) => (this.scroller = el)}
+        dismissable={this.dismissButton ?? undefined}
+        containerClass="modal"
+        onCancel={this.onDialogCancel}
+        onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
+        onClick={this.onDialogBackdropClick}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        {...parseAndGetAriaAttributes({
+        onDismiss={this.dismissButton ? this.onDismissButtonClick : undefined}
+        header={this.hasHeader ? <slot name="header" /> : undefined}
+        footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}
+        ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,
           ...(this.hasHeader && { 'aria-label': this.ariaLabel() }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        <div class="scroller" ref={(el) => (this.scroller = el)}>
-          <div class="modal">
-            {this.hasDismissButton && (
-              <PrefixedTagNames.pButton
-                variant="ghost"
-                class="dismiss"
-                type="button"
-                hideLabel={true}
-                icon="close"
-                onClick={this.dismissDialog}
-                theme={this.theme}
-              >
-                Dismiss modal
-              </PrefixedTagNames.pButton>
-            )}
-            {this.hasHeader &&
-              (this.heading ? (
-                <h2>{this.heading}</h2>
-              ) : hasNamedSlot(this.host, 'heading') ? (
-                <slot name="heading" />
-              ) : (
-                <slot name="header" />
-              ))}
-            <slot />
-            {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
-          </div>
-        </div>
-      </dialog>
+        <slot />
+      </DialogBase>
     );
   }
 
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
-    this.close.emit();
+  private onDialogCancel = (e: Event): void =>
+    onCancelDialog(e, () => this.dismissDialog('escape'), !this.dismissButton);
+
+  private onDialogBackdropClick = (e: MouseEvent): void =>
+    onClickDialog(e, () => this.dismissDialog('backdrop'), this.disableBackdropClick, this.isPointerDownInside);
+
+  private onDismissButtonClick = (): void => this.dismissDialog('dismiss-button');
+
+  private dismissDialog = (reason: ModalDismissEventDetail['reason']): void => {
+    this.dismiss.emit({ reason });
   };
 
   private ariaLabel = (): string => {
-    return (
-      this.heading ||
-      (hasNamedSlot(this.host, 'heading') && getSlotTextContent(this.host, 'heading')) ||
-      (hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'))
-    );
+    return hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header');
   };
 }

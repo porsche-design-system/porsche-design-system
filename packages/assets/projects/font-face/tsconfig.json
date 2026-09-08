@@ -1,4 +1,7 @@
 {
   "extends": "@porsche-design-system/shared/tsconfig.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0"
+  },
   "exclude": ["**/*.spec.ts"]
 }

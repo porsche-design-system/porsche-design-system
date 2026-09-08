@@ -1,10 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PinCodeUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  PinCodeChangeEventDetail,
+  type PPinCodeProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-pin-code-example-controlled',
   template: `
-    <p-pin-code [label]="'Some Label'" [value]="value" (update)="onUpdate($event)"></p-pin-code>
+    <p-pin-code [label]="'Some Label'" [value]="value" (change)="onChange($event)"></p-pin-code>
     <p-text>Current value: {{ value }}</p-text>
     <p-text>Completely filled: {{ isComplete }}</p-text>
   `,
@@ -13,10 +17,10 @@ import { PinCodeUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-de
   imports: [PorscheDesignSystemModule],
 })
 export class PinCodeExampleControlledComponent {
-  value = '';
+  value: PPinCodeProps['value'] = '';
   isComplete = false;
 
-  onUpdate(e: CustomEvent<PinCodeUpdateEventDetail>) {
+  onChange(e: CustomEvent<PinCodeChangeEventDetail>) {
     this.value = e.detail.value;
     this.isComplete = e.detail.isComplete;
   }

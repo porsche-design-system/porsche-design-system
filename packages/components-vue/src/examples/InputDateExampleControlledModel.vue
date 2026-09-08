@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { PInputDate } from '@porsche-design-system/components-vue';
+import { PInputDate, type PInputDateProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myInputDate = ref('');
+const myInputDate = ref<PInputDateProps['value']>('');
 
 const resetValue = () => {
   myInputDate.value = '';

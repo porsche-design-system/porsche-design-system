@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { type InputDateInputEventDetail, PInputDate, PText } from '@porsche-design-system/components-vue';
+import {
+  type InputDateInputEventDetail,
+  PInputDate,
+  type PInputDateProps,
+  PText,
+} from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
-const value = ref<string>('');
+const value = ref<PInputDateProps['value']>('');
 
-const onInput = (e: InputDateInputEventDetail) => {
+const onInput = (e: CustomEvent<InputDateInputEventDetail>) => {
   value.value = (e.target as HTMLInputElement).value;
 };
 

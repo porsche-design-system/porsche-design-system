@@ -1,5 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, getTagName, paramCaseToCamelCase, throwException } from '..';
+import { throwException } from '../log/logger';
+import { getPrefixedTagNames, getTagName } from '../tag-name';
+import { paramCaseToCamelCase } from '../paramCaseToCamelCase';
 import { isParentOfKind } from '../dom';
 import type { PrefixedTagNames } from '../tag-name';
 

@@ -1,6 +1,6 @@
+import { describe, expect, it } from 'vitest';
 import type { PartialParam } from '@/models/partials';
 import { formatPartialParams } from '@/utils/partials/formatPartialParams';
-import { describe, expect, it } from 'vitest';
 
 describe('formatPartialParams', () => {
   it('should return an empty string for an empty param array', () => {

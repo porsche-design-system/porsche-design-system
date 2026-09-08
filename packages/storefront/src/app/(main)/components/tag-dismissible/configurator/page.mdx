@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { tagDismissibleMeta } from '@/app/(main)/components/tag-dismissible/tag-dismissible.meta';
+
+export const metadata = {
+  title: 'Tag Dismissible - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Tag Dismissible component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Tag Dismissible <ComponentStatus tagName="p-tag-dismissible"></ComponentStatus>
+
+<tagDismissibleMeta.introduction />
+
+<Configurator tagName="p-tag-dismissible" story={tagDismissibleMeta.configurator.story} />

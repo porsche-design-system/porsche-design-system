@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { inputPasswordMeta } from '@/app/(main)/components/input-password/input-password.meta';
+
+export const metadata = {
+  title: 'Input Password - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Input Password component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Input Password <ComponentStatus tagName="p-input-password"></ComponentStatus>
+
+<inputPasswordMeta.introduction />
+
+<Configurator
+  tagName="p-input-password"
+  story={inputPasswordMeta.configurator.story}
+  slotStories={inputPasswordMeta.configurator.slotStories}
+/>

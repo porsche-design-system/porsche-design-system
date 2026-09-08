@@ -1,4 +1,5 @@
 export * from './filter';
+export * from './filter-status';
 export * from './getMultiSelectActionFromKeyboardEvent';
 export * from './getSelectActionFromKeyboardEvent';
 export * from './keyboard-behavior';

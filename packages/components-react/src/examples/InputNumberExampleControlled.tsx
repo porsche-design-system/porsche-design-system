@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const InputNumberControlledExamplePage = (): JSX.Element => {
+export const InputNumberControlledExamplePage = () => {
   const [value, setValue] = useState<PInputNumberProps['value']>('');
 
   const onInput = (e: CustomEvent<InputNumberInputEventDetail>) => {

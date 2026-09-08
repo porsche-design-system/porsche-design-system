@@ -1,10 +1,10 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { breakpoint } from '@porsche-design-system/emotion';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { breakpoint } from '@porsche-design-system/styles';
 import { kebabCase, pascalCase } from 'change-case';
+import { sync as globbySync } from 'fast-glob';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
 import * as path from 'path';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
@@ -25,6 +25,7 @@ const generateDSRComponents = (): void => {
     .filter((filePath) => !EXCLUDED_COMPONENTS.includes(`p-${path.basename(filePath).split('.')[0]}` as TagName))
     .map((filePath) => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
+      const isFunctionalComponent = fileContent.includes('FunctionalComponent');
 
       const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
       const tagName = kebabCase(`P${componentName}`) as TagName;
@@ -50,7 +51,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
         .replace(/private(.*?)window.matchMedia(.*?);/g, '')
-        .replace(/\n  private (?!get).+(\n.+)*?\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/\n  private (?!get).+(\n.+)*?(?<!\()\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
@@ -59,6 +60,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n.+parseJSON[\s\S]+?.*/g, '')
         .replace(/ as HTML[A-Za-z]+/g, '')
         .replace(/\s+ref={.*?}/g, '') // ref props
+        .replace(/\s+refCallback={.*?}/g, '') // refCallback props (interactive-only, not used in static DSR output)
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
         .replace(/\s+onToggle={.*?}/g, '') // onToggle props
@@ -70,9 +72,9 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onWheel={.*?}/g, '') // onWheel props
         .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/\s+onUpdate={.*?}/g, '') // onUpdate props
-        .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
-        .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
-        .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
+        .replace(/ +ref: [^;\n]*?,\n/g, '') // ref object-literal props (single line, must not cross `;`-terminated type members)
+        .replace(/ +onClick: [^;\n]*?,\n/g, '') // onClick object-literal props (single line, must not cross `;`-terminated type members)
+        .replace(/ +onKeyDown: [^;\n]*?,\n/g, '') // onKeyDown object-literal props (single line, must not cross `;`-terminated type members)
         .replace(/(private [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any') // change type of private members to any
         .replace(/( class)([:=])/g, '$1Name$2') // change class prop to className in JSX
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
@@ -89,9 +91,13 @@ const generateDSRComponents = (): void => {
             : group.endsWith('state-message') ||
                 group.endsWith('loading-message') ||
                 group.endsWith('input-base') ||
+                group.endsWith('notification-base') ||
+                group.endsWith('dialog-base') ||
+                group.endsWith('fc-dismiss-button') ||
                 group.endsWith('required') ||
                 group.endsWith('label') ||
-                group.endsWith('no-results-option')
+                group.endsWith('no-results-option') ||
+                group.endsWith('filter-status-announcer')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
@@ -100,6 +106,7 @@ const generateDSRComponents = (): void => {
         .replace(
           /^/g,
           `import { Component } from 'react';
+import type { JSX } from 'react';
 import { minifyCss } from '../../minifyCss';
 import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
@@ -112,7 +119,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/{(!isParentFieldsetRequired\(.*)}/, '{/* $1 */}') // comment out isParentFieldsetRequired for now
         .replace(/(<\/?)Fragment(>)/g, '$1$2'); // replace <Fragment> with <> or </Fragment> with </>
 
-      if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
+      if (hasSlot && !isFunctionalComponent) {
         newFileContent = newFileContent.replace(
           /^/,
           `import { splitChildren } from '../../splitChildren';
@@ -120,7 +127,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         );
       }
 
-      if (!newFileContent.includes('FunctionalComponent')) {
+      if (!isFunctionalComponent) {
         // inject DSR template
         const getComponentCssParams =
           /attachComponentCss\([\s\S]*?getComponentCss(?:, ?([\s\S]*?))?\);/.exec(fileContent)![1] || '';
@@ -152,7 +159,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
-        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides|inputElements)/g, '$1$2'); // revert for certain private members
+        .replace(/(this\.)props\.(key\+\+|tabsItems|slides|inputElements)/g, '$1$2'); // revert for certain private members
 
       // take care of nested components of PrefixedTagNames
       const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
@@ -169,7 +176,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/<PToastItem[\S\s]+?\/>/, '<></>'); // remove internal components that don't have wrapper and are not visible anyway
 
       // rewire default slot
-      if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
+      if (hasSlot && !isFunctionalComponent) {
         newFileContent = newFileContent
           .replace(
             /public render\(\): JSX\.Element {/,
@@ -184,7 +191,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // adjust named slot conditions
         newFileContent = newFileContent
           .replace(
-            /has(?:Heading|Label|Description)\(this\.props\.host, (this\.props\.(heading|label|description))\)/g,
+            /has(?:Heading|Label|Description|Summary|SummaryBefore|SummaryAfter)\(this\.props\.host, (this\.props\.(heading|label|description|summary|summaryBefore|summaryAfter))\)/g,
             `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$2').length > 0)`
           )
           .replace(
@@ -197,10 +204,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(summary|summary-before|summary-after|caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
-      } else if (newFileContent.includes('FunctionalComponent')) {
+      } else if (isFunctionalComponent) {
         newFileContent = newFileContent
           .replace(/import { Component } from 'react';/, "import type { FC } from 'react';")
           .replace(/FunctionalComponent/, 'FC')
@@ -228,6 +235,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         }
         if (newFileContent.includes('export const InputBase:')) {
           newFileContent = newFileContent
+            .replace(/^/, "import type { AriaAttributes } from '../types';\n")
             .replace(/(type InputBaseProps = {)/, '$1 children?: JSX.Element; ')
             .replace(/(InputBase: FC<InputBaseProps> = \({)/, '$1 children, ')
             .replace(/(host={)host(})/g, '$1null$2')
@@ -244,10 +252,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
               `$&
     const { namedSlotChildren } = splitChildren(children);\n`
             )
+            .replace(/^/, `import { splitChildren } from '../../splitChildren';`)
             .replace(
-              /^/,
-              `import { splitChildren } from '../../splitChildren';
-`
+              /hasDescription\(\/\/ host, (description)\)/g,
+              `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0)`
+            )
+            .replace(
+              /hasMessage\(\/\/ host, (message), (state)\)/g,
+              `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes($2)`
             );
         }
         if (newFileContent.includes('export const LegacyLabel:')) {
@@ -266,10 +278,44 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(StateMessage: FC<StateMessageProps> = \({)/, '$1 hasMessage, ') // destructure newly introduced hasMessage
             .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2'); // remove unused destructured host
         }
+
+        if (newFileContent.includes('export const NotificationBase:')) {
+          newFileContent = newFileContent.replace(/innerHTML=\{([^}]*)}/, 'dangerouslySetInnerHTML={{__html: $1}}');
+        }
+
+        if (newFileContent.includes('export const FCDismissButton:')) {
+          // `onClick`/`refCallback` are interactive-only props; the DSR output is static HTML so their
+          // JSX bindings were already stripped. Drop them from the type and destructuring too, otherwise
+          // they'd be unused (TS6133) and required-but-unpassed by consumers (TS2741).
+          newFileContent = newFileContent
+            .replace(/\n  (?:\/\*\*[^\n]*\*\/\n  )?onClick: \(\) => void;/, '')
+            .replace(/\n  (?:\/\*\*[^\n]*\*\/\n  )?refCallback\?: \(el: HTMLButtonElement\) => void;/, '')
+            .replace(/\n  onClick,/, '')
+            .replace(/\n  refCallback,/, '');
+        }
+
+        if (newFileContent.includes('export const DialogBase:')) {
+          const removedProps = ['dialogRef', 'scrollerRef', 'onCancel', 'onClick', 'onTransitionEnd', 'onDismiss'];
+          newFileContent = newFileContent
+            .replace(/^/, "import type { AriaAttributes } from '../types';\n")
+            .replace(/(type DialogBaseProps = {)/, '$1\n  children?: JSX.Element;')
+            .replace(
+              /export const DialogBase: FC<DialogBaseProps> = \(\s*\{([\s\S]*?)\n\s*},\n\s*children\n\) => \{/,
+              (_, props) => {
+                const normalized = props
+                  .replace(/\n    /g, '\n  ')
+                  .replace(/^\n/, '')
+                  .trim();
+                return `export const DialogBase: FC<DialogBaseProps> = ({\n  children,\n  ${normalized}\n}) => {`;
+              }
+            )
+            .replace(new RegExp(`\\n\\s*(${removedProps.join('|')}),`, 'g'), '')
+            .replace(/\n\s*onTransitionEnd=\{[^}]+}/, '');
+        }
       }
 
       if (!newFileContent.includes('export const InputBase:')) {
-        // radio-group-option uses a label component without allowing slots
+        // radio-group-option uses a label component
         if (tagName === 'p-radio-group-option') {
           newFileContent = newFileContent
             .replace(/(<Label(?!Props))([\s\S]*?\/>)/, '$1 hasLabel={this.props.label} hasDescription={false}$2')
@@ -373,9 +419,27 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // remove warning about deprecated title slot
         newFileContent = newFileContent
           .replace(/.+consoleWarn\([\s\S]+?\);\n/g, '')
-          .replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
+          .replace(/this\.props\.(hasHeadingSlot|hasDescriptionSlot)/g, '$1')
+          .replace(/(?:hasHeadingSlot|hasDescriptionSlot) =/g, 'const $&')
+          .replace(/this\.props\.(hasDismissButton)/g, 'this.$1')
+          // `isInitialRender` is a private field (not a `@Prop`), so the generic `this.x -> this.props.x` rewrite turned
+          // it into `this.props.isInitialRender`, which is `undefined` in static DSR output. Hardcode `true` so the
+          // `@starting-style` entry transition is skipped and an initially-open banner renders instantly (no animation
+          // flash) — mirroring the live component's first render.
+          .replace(/this\.props\.isInitialRender/, 'true')
+          // The refactored banner uses the native Popover API: the `[popover]` panel stays `display:none` until JS calls
+          // `showPopover()` (via the top-layer controller). Declarative Shadow DOM SSR output is static HTML with no JS,
+          // so the popover never opens and the banner is invisible. Force it visible when `open` — `display:grid!important`
+          // beats both our own `display:none` and the UA `[popover]:not(:popover-open){display:none}` rule.
+          .replace(
+            /__html: style }/,
+            "__html: style + (this.props.open ? '[popover]{display:grid!important}' : '') }"
+          );
       } else if (tagName === 'p-inline-notification') {
-        newFileContent = newFileContent.replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasHeadingSlot|hasDescriptionSlot)/g, '$1')
+          .replace(/(?:hasHeadingSlot|hasDescriptionSlot) =/g, 'const $&')
+          .replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-pagination') {
         newFileContent = newFileContent
           // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
@@ -390,7 +454,19 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.(hasHeader|hasDismissButton)/g, '$1')
           .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')
           .replace(/hasHeader =/, 'const $&')
-          .replace(/onTransitionEnd={[^}]*}\s*/, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '')
+          .replace(/\n\s*dialogRef,/, '')
+          .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
+      } else if (tagName === 'p-accordion') {
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasSummary)/g, '$1')
+          .replace(/hasSummary =/, 'const $&')
+          .replace(/this\.props\.(hasSummaryBefore)/g, '$1')
+          .replace(/hasSummaryBefore =/, 'const $&')
+          .replace(/this\.props\.(hasSummaryAfter)/g, '$1')
+          .replace(/hasSummaryAfter =/, 'const $&');
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
@@ -405,22 +481,25 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onScroll=\{hasFooter && this\.props\.onScroll}/, '')
           .replace(/if\s\(.*[^}]*}/, '') // Remove deprecation warning check
-          .replace(/onTransitionEnd={[^}]*}\s*/, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '')
+          .replace(/\n\s*dialogRef,/, '')
+          .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
-          .replace(/onTransitionEnd={[^}]*}\s*/, '');
-      } else if (tagName === 'p-radio-button-wrapper') {
-        newFileContent = newFileContent.replace(
-          /&& !(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0]) && (otherChildren\[0]\?\.props\.checked)/g,
-          '&& !($1 && ($2 || otherChildren[0]?.props.defaultChecked))' // wrap in brackets because of negation
-        );
+          .replace(/onTransitionEnd={[^}]*}\s*/, '')
+          .replace(/\n\s*dialogRef,/, '')
+          .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
-          .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
+          .replace(/this\.tabsItems(\.map)/, `otherChildren$1`)
           .replace(
             /(<button key={index} type="button">)\s*{tab\.label}\s*(<\/button>)/g,
             "$1{typeof tab === 'object' && 'props' in tab && tab.props.label}$2"
@@ -441,47 +520,25 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme')
           .replace(/(deprecationMap\[this\.props\.gradientColor)/, '$1 as ScrollerGradientColor');
       } else if (tagName === 'p-popover') {
-        // only keep :host , button, .icon & .label styles
-        newFileContent = newFileContent
-          .replace(
-            /getPopoverCss\(.+?\)/,
-            `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
-          )
-          .replace(/this\.props\.(hasSlottedButton)/g, '$1')
-          .replace(/hasSlottedButton =/g, 'const $&');
+        // only keep :host , button, .icon & .label styles — i.e. the trigger only, NOT the open panel.
+        // Unlike `p-banner` (viewport-anchored via pure CSS, so its open state IS forced visible in static DSR), the
+        // popover panel is positioned at runtime by Floating UI (`computePosition` + `autoUpdate` assign inline
+        // `left`/`top`; the CSS only sets a `top:0;left:0` placeholder). With no JS in Declarative Shadow DOM output
+        // there is no correct static position, so forcing the panel visible would pin it to the viewport's top-left,
+        // detached from its trigger, with an unpositioned arrow. Therefore the open panel is intentionally NOT rendered
+        // in SSR — do NOT add a `[popover]{display:grid!important}`-style override here like `p-banner` does.
+        // Note: `hasSlottedButton` is already a local `const` derived from `hasNamedSlot(...)` in the source render()
+        // and the generic named-slot rewiring above converts it to a `namedSlotChildren.filter(...)` expression, so no
+        // private-member reversal is needed here (doing so would produce invalid `const const hasSlottedButton = ...`).
+        newFileContent = newFileContent.replace(
+          /getPopoverCss\(.+?\)/,
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
+        );
       } else if (tagName === 'p-tabs-bar') {
         newFileContent = newFileContent
           // get rid of left over
           .replace(/\n.*this\.props\.setAccessibilityAttributes\(\);/, '')
-          // set aria attributes on button and anchor children, what at runtime is done via this.setAccessibilityAttributes()
-          .replace(
-            /const { children, namedSlotChildren, otherChildren } =.*/,
-            `$&
-    const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
-        ? child.type === 'button'
-          ? {
-              ...child,
-              props: {
-                ...child.props,
-                role: 'tab',
-                tabIndex: (this.props.activeTabIndex || 0) === i ? '0' : '-1',
-                'aria-selected': this.props.activeTabIndex === i ? 'true' : 'false',
-              },
-            }
-          : child.type === 'a'
-          ? {
-              ...child,
-              props: {
-                ...child.props,
-                'aria-current': this.props.activeTabIndex === i ? 'true' : 'false',
-              },
-            }
-          : child
-        : child
-    );`
-          )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+          .replace(/(getSanitizedActiveTabIndex\(this\.props\.activeTabIndex, )(this\.props\.tabs)/, '$1children');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
         newFileContent = newFileContent.replace(
@@ -489,19 +546,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
         );
         // TODO: recover @media query for :host style if needed
-      } else if (tagName === 'p-grid') {
-        // pass down gutter prop to p-grid-item children
-        newFileContent = newFileContent
-          .replace(
-            /const { children, namedSlotChildren, otherChildren } =.*/,
-            `$&
-    const manipulatedChildren = children.map((child) =>
-      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
-        ? { ...child, props: { ...child.props, gutter: this.props.gutter } }
-        : child
-    );`
-          )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-segmented-control') {
         // pass down value, backgroundColor and theme prop to p-segmented-control-item children
         newFileContent = newFileContent
@@ -538,35 +582,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     );`
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
-      } else if (tagName === 'p-select-wrapper-dropdown') {
-        newFileContent = newFileContent
-          // part prop is not typed in JSX, although it's valid HTML attribute
-          .replace(/( +)part=/g, '$1/* @ts-ignore */\n$&')
-          // Remove markup after button
-          .replace(/\{\[\n\s*this\.props\.description && \([\s\S]+?]}/, '')
-          // Change isOpen, optionMaps, searchString to not be a prop
-          .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1')
-          // fix warning about read-only field
-          .replace(/value={/, 'defaultValue={')
-          .replace(/\{\.\.\.getFilterInputAriaAttributes([\s\S]*?)\)}/, '')
-          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes([\s\S]*?)\)}/, '');
-      } else if (tagName === 'p-select-wrapper') {
-        newFileContent = newFileContent
-          .replace(/(required={).*(})/, '$1false$2')
-          // Add PSelectWrapperDropdown component import
-          .replace(
-            /(import\s*{\s*PIcon\s*}\s*from\s*'\.\.\/components';\s*)/,
-            "$1import { PSelectWrapperDropdown } from '../components/select-wrapper-dropdown.wrapper';\r"
-          )
-          // Remove hasCustomDropdown attribute
-          .replace(/^\s*private\s+hasCustomDropdown\s*:\s*any\s*;\s*$/gm, '')
-          // Add hasCustomDropdown fn
-          .replace(
-            /(public\s+render\(\): JSX\.Element\s*{)/,
-            '$1\nconst hasCustomDropdown = isCustomDropdown(this.props.filter, this.props.native);'
-          )
-          // Change hasCustomDropdown to use fn instead of prop
-          .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
@@ -628,57 +643,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /className=\{(\{[\S\s]+?})}/g,
             `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
           );
-      } else if (tagName === 'p-text-field-wrapper') {
-        // make private like isSearch, isPassword and hasUnit work
-        const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
-          .map(([match]) => match)
-          .filter((member, idx, arr) => arr.findIndex((m) => member.startsWith(m.split('=')[0])) === idx); // remove duplicates
-
-        const constants = rawPrivateMembers
-          .map((member) => member.replace(/^this\./, 'const ')) // make it local constants
-          .map((member, _, arr) =>
-            member
-              .replace(
-                // use local constants
-                new RegExp('this.(' + arr.map((m) => /^const ([A-Za-z]+)/.exec(m)![1]).join('|') + ')'),
-                '$1'
-              )
-              .replace(/(const isWithinForm) /, '$1Value ') // fix collision with imported function
-              .replace(/this\.input\.(type)/, '$1') // reuse already destructured const
-              .replace(/this\.input/, 'otherChildren[0]?.props') // use input child
-              .replace(/this\./, '$&props.') // all others must be actual props
-              .replace(/const (?:hasUnit|hasCounter) = /, '$&false; // ') // TODO: unsupported because of inline styles calculated via js
-              .replace(
-                /!!otherChildren\[0\]\?\.props\.value/,
-                "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && $&" // fix typing of otherChildren
-              )
-          )
-          .join('\n    ');
-
-        newFileContent = newFileContent
-          .replace(
-            // use local constants instead of previously replaced private members that became something like
-            // this.props.isSearch, this.props.hasUnit, etc.
-            new RegExp(
-              `this\.props\.(${Array.from(constants.matchAll(/const ([A-Za-z]+)/g))
-                .map(([, group]) => group)
-                .join('|')})`,
-              'g'
-            ),
-            '$1'
-          )
-          .replace(
-            // inject local constants
-            / +const style = minifyCss/,
-            `    ${constants}
-
-$&`
-          );
       } else if (tagName === 'p-pin-code') {
         newFileContent = newFileContent
           .replace(/value={/, 'defaultValue={') // fix warning about read-only field
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.parsedValue/g, 'this.parsedValue')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')
@@ -701,32 +671,6 @@ $&`
           .replace(/hasSlottedButton =/, 'const $&')
           .replace(/if \(hasSlottedButton\).*{[\s\S]*?}/, '');
         // .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
-      } else if (tagName === 'p-link-tile-model-signature') {
-        newFileContent = newFileContent
-          .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
-          .replace(/ {4}.*throwIfElementIsNotOfKind[\s\S]+?;\n/g, '') // remove validation
-          .replace(/(const overlayLinkProps).+?=([\s\S]+?);/, '$1 = $2 as const;') // remove typing
-          .replace(
-            /setRequiredPropsOfSlottedLinks.+?;/,
-            `const manipulatedChildren = children.map((child) =>
-      typeof child === 'object' && 'props' in child && namedSlotChildren.includes(child)
-        ? { ...child, props: { ...child.props, theme: 'dark', variant: child.props.slot } }
-        : child
-    );` // manipulate p-link children like our web component does at runtime
-          )
-          .replace(
-            /(const linkEl) = getLinkOrSlottedAnchorElement.+;/,
-            `const primaryLink = manipulatedChildren.find(
-      (child) => typeof child === 'object' && 'props' in child && child.props.variant === 'primary'
-    ) as any;
-    $1 = primaryLink.props.href
-      ? primaryLink.props
-      : (Array.isArray(primaryLink.props.children) ? primaryLink.props.children : [primaryLink.props.children]).find(
-          (child: any) => child.type === 'a' || child.props.href || child.props.to // href and to check is for framework links
-        ).props;`
-          ) // rewire source for linkEl
-          .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
       } else if (tagName === 'p-link-tile-product') {
         // TODO: why is something like this only needed here?
         newFileContent = newFileContent
@@ -748,7 +692,8 @@ $&`
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
-          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+          .replace(/formStateRestoreCallback\(state: string \| null\)/, 'formStateRestoreCallback()')
+          .replace(/this\.props\.parsedValue/g, 'this.parsedValue');
       } else if (tagName === 'p-input-password') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
@@ -768,7 +713,8 @@ $&`
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
-          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+          .replace(/formStateRestoreCallback\(state: string \| null\)/, 'formStateRestoreCallback()')
+          .replace(/this\.props\.parsedValue/g, 'this.parsedValue');
       } else if (
         tagName === 'p-input-number' ||
         tagName === 'p-input-date' ||
@@ -799,7 +745,8 @@ $&`
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
-          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+          .replace(/formStateRestoreCallback\(state: string \| null\)/, 'formStateRestoreCallback()')
+          .replace(/this\.props\.parsedValue/g, 'this.parsedValue');
       } else if (tagName === 'p-canvas') {
         newFileContent = newFileContent
           .replace(
@@ -828,6 +775,8 @@ $&`
           'VARIANT_TO_COLOR_MAP[this.props.variant as TagVariant]' // cast needed since this.props is typed as any
         );
       }
+      // remove empty named imports left by symbol-stripping steps (e.g. getPrefixedTagNames was sole import)
+      newFileContent = newFileContent.replace(/^import\s*\{\s*\}\s*from\s*'[^']+';?\n/gm, '');
 
       return newFileContent;
     });
@@ -836,7 +785,13 @@ $&`
   fs.mkdirSync(destinationDirectory, { recursive: true });
 
   componentFileContents.forEach((fileContent) => {
-    const name = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent)![1];
+    const nameMatch = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent);
+    if (!nameMatch) {
+      throw new Error(
+        `Failed to extract component name from generated DSR content (no matching \`export class|const\` found). This usually means a transform above removed the export declaration. Content start:\n${fileContent.slice(0, 200)}`
+      );
+    }
+    const name = nameMatch[1];
 
     const fileName = `${kebabCase(name.replace('DSR', ''))}.tsx`;
     const filePath = path.resolve(destinationDirectory, fileName);

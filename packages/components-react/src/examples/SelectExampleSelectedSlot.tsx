@@ -1,9 +1,10 @@
 import {
   PFlag,
-  PFlagProps,
+  type PFlagProps,
   POptgroup,
   PSelect,
   PSelectOption,
+  type PSelectProps,
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
@@ -75,7 +76,7 @@ const optionsData: Option[] = [
 ];
 
 export const SelectExampleSelectedSlot = () => {
-  const [value, setValue] = useState<string | undefined>(undefined);
+  const [value, setValue] = useState<PSelectProps['value']>(undefined);
   const [options] = useState<Option[]>(optionsData);
   const [selectedOption, setSelectedOption] = useState<Option | undefined>(undefined);
 

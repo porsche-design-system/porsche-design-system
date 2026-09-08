@@ -35,7 +35,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class CheckboxExampleReactiveFormComponent {
   form = new FormGroup({
-    myCheckbox: new FormControl<boolean>(false, { validators: Validators.requiredTrue }),
+    myCheckbox: new FormControl<boolean | null>(null, { validators: Validators.requiredTrue }),
   });
 
   submittedValue: any = undefined;
@@ -45,7 +45,7 @@ export class CheckboxExampleReactiveFormComponent {
   }
 
   resetValue(): void {
-    this.form.controls.myCheckbox.reset(false);
+    this.form.controls.myCheckbox.reset();
   }
 
   toggleDisabled(): void {

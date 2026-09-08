@@ -1,29 +1,20 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
-  getPrefixedTagNames,
-  hasNamedSlot,
-  THEMES,
-  validateProps,
-} from '../../../utils';
-import type { PropTypes, Theme } from '../../../types';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../../types';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasNamedSlot, validateProps } from '../../../utils';
 import { getComponentCss } from './table-styles';
 import {
-  type TableUpdateEventDetail,
   SORT_EVENT_NAME,
-  warnIfCaptionIsMissing,
-  type TableLayout,
   TABLE_LAYOUTS,
+  type TableLayout,
+  type TableUpdateEventDetail,
+  warnIfCaptionIsMissing,
 } from './table-utils';
-import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
   compact: AllowedTypes.boolean,
   layout: AllowedTypes.oneOf<TableLayout>(TABLE_LAYOUTS),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
+  sticky: AllowedTypes.boolean,
 };
 
 /**
@@ -37,43 +28,35 @@ const propTypes: PropTypes<typeof Table> = {
 export class Table {
   @Element() public host!: HTMLElement;
 
-  /** A caption describing the contents of the table for accessibility only. This won't be visible in the browser.
-   * Use an element with an attribute of `slot="caption"` for a visible caption. */
+  /** Sets a screen-reader-only accessible caption that describes the table's content; it is not visible in the browser.
+   * Use an element with `slot="caption"` for a visible caption instead. */
   @Prop() public caption?: string;
 
-  /** Displays as compact version. */
+  /** Reduces the cell padding and spacing for a more condensed table layout in data-dense UIs. */
   @Prop() public compact?: boolean = false;
 
-  /** Controls the layout behavior of the table. */
+  /** Controls the CSS `table-layout` algorithm: `auto` sizes columns to fit their content, `fixed` distributes width equally. */
   @Prop() public layout?: TableLayout = 'auto';
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableUpdateEventDetail>;
+   * @experimental Makes the scroll position indicator sticky at the viewport edge while scrolling, indicating overflow in the table.
+   */
+  @Prop() public sticky?: boolean = false;
 
-  /** Emitted when sorting is changed. */
+  /** Emitted when the user clicks a sortable column header, carrying the new sort configuration in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEventDetail>;
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
 
   public componentWillLoad(): void {
     warnIfCaptionIsMissing(this.host, this.caption);
     this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableUpdateEventDetail>) => {
       e.stopPropagation();
       this.update.emit(e.detail);
-      this.sortingChange.emit(e.detail);
     });
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.compact, this.layout, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.compact, this.layout);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const hasSlottedCaption = hasNamedSlot(this.host, 'caption');
@@ -89,8 +72,7 @@ export class Table {
             <slot name="caption" />
           </div>
         )}
-
-        <PrefixedTagNames.pScroller scrollbar={true} theme={this.theme}>
+        <PrefixedTagNames.pScroller scrollbar={true} compact={this.compact} sticky={this.sticky}>
           <div class="table" role="table" {...tableAttr}>
             <slot />
           </div>

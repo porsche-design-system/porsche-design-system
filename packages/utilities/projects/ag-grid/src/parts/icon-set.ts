@@ -1,4 +1,4 @@
-import { type Part, iconOverrides } from 'ag-grid-community';
+import { iconOverrides, type Part } from 'ag-grid-community';
 
 export const pdsSvgIcons: Part = iconOverrides({
   type: 'image',

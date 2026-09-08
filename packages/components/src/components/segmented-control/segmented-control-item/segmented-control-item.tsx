@@ -13,7 +13,6 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import {
-  getIconColor,
   getSegmentedControlItemAriaAttributes,
   SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES,
   type SegmentedControlItemAriaAttribute,
@@ -40,22 +39,22 @@ const propTypes: PropTypes<typeof SegmentedControlItem> = {
 export class SegmentedControlItem {
   @Element() public host!: HTMLElement & SegmentedControlItemInternalHTMLProps;
 
-  /** The value of this item which is emitted by the parent element if it becomes selected. This property is **required**. */
+  /** Sets the value emitted by the parent `p-segmented-control` when this item is selected. This property is **required**. */
   @Prop() public value: string | number;
 
-  /** Disables the button. No events will be triggered while disabled state is active. */
+  /** Prevents this item from being selected and visually dims it; the parent's value will not change to this item's value. */
   @Prop() public disabled?: boolean = false;
 
-  /** The label text. */
+  /** Sets a visible text label rendered inside the item button, used when no slotted content is provided. */
   @Prop() public label?: string;
 
-  /** The icon shown. */
+  /** Sets an icon rendered inside the item button using an icon name from the PDS icon library. */
   @Prop() public icon?: SegmentedControlItemIcon;
 
-  /** A URL path to a custom icon. */
+  /** Sets a URL to a custom SVG icon for the item button, overriding the built-in icon set. */
   @Prop() public iconSource?: string;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes on the item's button element to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
 
   @Watch('label')
@@ -91,8 +90,7 @@ export class SegmentedControlItem {
       this.host.selected,
       this.host.state,
       hasIcon,
-      hasSlottedContent,
-      this.host.theme || 'light' // default as fallback
+      hasSlottedContent
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -115,8 +113,7 @@ export class SegmentedControlItem {
               size="inherit"
               name={this.icon}
               source={this.iconSource}
-              color={getIconColor(this.disabled)}
-              theme={this.host.theme || 'light'}
+              color="inherit"
               aria-hidden="true"
             />
           )}

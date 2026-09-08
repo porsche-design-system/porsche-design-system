@@ -36,7 +36,7 @@ export const metadata = {
 }\n\n${replacedContent}`;
 
   const targetFileName = 'page.mdx';
-  const targetFolder = path.resolve(__dirname, '../src/app/news/changelog');
+  const targetFolder = path.resolve(__dirname, '../src/app/(main)/news/changelog');
 
   // Ensure folder exists
   fs.mkdirSync(targetFolder, { recursive: true });

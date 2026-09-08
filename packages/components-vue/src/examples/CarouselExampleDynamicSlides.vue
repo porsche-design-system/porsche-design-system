@@ -17,8 +17,10 @@ const onRemoveClick = (): void => {
     <div v-for="(_, i) in Array.from(Array(amountOfSlides))" :key="i">Slide {{ i + 1 }}</div>
   </PCarousel>
 
-  <PButton type="button" @click="onAddClick">Add slide</PButton>
-  <PButton type="button" @click="onRemoveClick">Remove last slide</PButton>
+  <div class="flex gap-fluid-sm mt-fluid-sm"> 
+    <PButton type="button" @click="onAddClick">Add slide</PButton>
+    <PButton type="button" @click="onRemoveClick">Remove last slide</PButton>
+  </div>
 </template>
 <style scoped>
   p-carousel div {

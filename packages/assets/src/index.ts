@@ -1,5 +1,4 @@
 import { CDN_BASE_PATH as CRESTS_CDN_BASE_PATH, CRESTS_MANIFEST } from '@porsche-design-system/crest';
-import { CDN_BASE_PATH as FALLBACKS_CDN_BASE_PATH, FALLBACKS_MANIFEST } from '@porsche-design-system/fallbacks';
 import { FLAG_NAMES, CDN_BASE_PATH as FLAGS_CDN_BASE_PATH, FLAGS_MANIFEST } from '@porsche-design-system/flags';
 import {
   CDN_BASE_PATH as FONT_FACE_CDN_BASE_PATH,
@@ -19,8 +18,6 @@ import {
 export {
   CRESTS_CDN_BASE_PATH,
   CRESTS_MANIFEST,
-  FALLBACKS_CDN_BASE_PATH,
-  FALLBACKS_MANIFEST,
   FONTS_CDN_BASE_PATH,
   FONTS_MANIFEST,
   FLAGS_CDN_BASE_PATH,

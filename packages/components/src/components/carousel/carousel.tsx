@@ -1,11 +1,9 @@
-import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
+import { gridGap, motionEasingBase } from '@porsche-design-system/emotion';
 import { Splide } from '@splidejs/splide';
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
@@ -18,12 +16,9 @@ import {
   parseAndGetAriaAttributes,
   parseJSON,
   parseJSONAttribute,
-  THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { BreakpointValues } from '../../utils/breakpoint-customizable';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
@@ -31,21 +26,21 @@ import {
   CAROUSEL_ALIGN_CONTROLS,
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
-  CAROUSEL_GRADIENT_COLORS,
+  CAROUSEL_HEADING_SIZES,
   CAROUSEL_SLIDES_PER_PAGE,
   CAROUSEL_WIDTHS,
   type CarouselAlignControls,
   type CarouselAlignHeader,
-  type CarouselAlignHeaderDeprecated,
   type CarouselAriaAttribute,
-  type CarouselGradientColor,
   type CarouselHeadingSize,
   type CarouselInternationalization,
   type CarouselSlidesPerPage,
   type CarouselUpdateEventDetail,
   type CarouselWidth,
+  DEFAULT_SLIDE_LABEL,
   getAmountOfPages,
   getLangDirection,
+  getSlideStatusMessage,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
   isInfinitePagination,
@@ -56,26 +51,19 @@ import {
   updatePrevNextButtons,
 } from './carousel-utils';
 
-type AlignHeaderDeprecationMapType = Record<
-  CarouselAlignHeaderDeprecated,
-  Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>
->;
-
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
-  headingSize: AllowedTypes.oneOf<CarouselHeadingSize>(['x-large', 'xx-large']),
+  headingSize: AllowedTypes.oneOf<CarouselHeadingSize>(CAROUSEL_HEADING_SIZES),
   description: AllowedTypes.string,
   alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   rewind: AllowedTypes.boolean,
-  wrapContent: AllowedTypes.boolean,
   width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
   slidesPerPage: AllowedTypes.oneOf<ValidatorFunction>([
     AllowedTypes.breakpoint<CarouselSlidesPerPage>(CAROUSEL_SLIDES_PER_PAGE),
   ]),
-  gradientColor: AllowedTypes.oneOf<CarouselGradientColor>(CAROUSEL_GRADIENT_COLORS),
+  gradient: AllowedTypes.boolean,
   focusOnCenterSlide: AllowedTypes.boolean,
   trimSpace: AllowedTypes.boolean,
-  disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
@@ -86,7 +74,6 @@ const propTypes: PropTypes<typeof Carousel> = {
     slideLabel: AllowedTypes.string,
     slide: AllowedTypes.string,
   }),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeSlideIndex: AllowedTypes.number,
   skipLinkTarget: AllowedTypes.string,
   alignControls: AllowedTypes.oneOf<CarouselAlignControls>(CAROUSEL_ALIGN_CONTROLS),
@@ -94,8 +81,8 @@ const propTypes: PropTypes<typeof Carousel> = {
 
 /**
  * @slot {"name": "heading", "description": "Renders a heading above the carousel." }
- * @slot {"name": "description", "description": "Shows a footer section, flowing under the content area when scrollable." }
- * @slot {"name": "controls", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "description", "description": "Renders descriptive content below the heading." }
+ * @slot {"name": "controls", "description": "Renders custom controls such as navigation buttons or indicators." }
  * @slot {"name": "", "description": "Default slot for the carousel slides." }
  *
  * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
@@ -107,77 +94,55 @@ const propTypes: PropTypes<typeof Carousel> = {
 export class Carousel {
   @Element() public host!: HTMLElement;
 
-  /** Defines the heading used in the carousel. */
+  /** Sets the heading text displayed above the carousel. Also used as the accessible label when no `aria` prop is set. */
   @Prop() public heading?: string;
 
-  /** Defines the heading size used in the carousel. */
+  /** Sets the font size of the carousel heading. */
   @Prop() public headingSize?: CarouselHeadingSize = 'x-large';
 
-  /** Defines the description used in the carousel. */
+  /** Sets the description text displayed below the heading for additional context. */
   @Prop() public description?: string;
 
-  /** Alignment of heading and description */
+  /** Controls the horizontal alignment of the heading and description. */
   @Prop() public alignHeader?: CarouselAlignHeader = 'start';
 
-  /** Alignment of slotted controls */
+  /** Controls the alignment of custom slotted controls within the header area. */
   @Prop() public alignControls?: CarouselAlignControls = 'auto';
 
-  /** Whether the slides should rewind from last to first slide and vice versa. */
-  @Prop() public rewind?: boolean = true;
+  /** Enables infinite looping — navigating past the last slide wraps back to the first, and vice versa. */
+  @Prop() public rewind?: boolean = false;
 
-  /**
-   * Has no effect anymore
-   * @deprecated since v3.0.0, will be removed with next major release
-   */
-  @Prop() public wrapContent?: boolean;
-
-  /** Defines the outer spacings between the carousel and the left and right screen sides. */
+  /** Sets the maximum width and outer spacing of the carousel, aligned to PDS grid widths. */
   @Prop() public width?: CarouselWidth = 'basic';
 
-  /** Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS. */
+  /** Sets how many slides are visible at once. Use `auto` to control each slide's width via CSS. Supports responsive breakpoint values. */
   @Prop() public slidesPerPage?: BreakpointCustomizable<CarouselSlidesPerPage> = 1;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead.
-   * If true, the carousel will not show pagination bullets at the bottom. */
-  @Prop() public disablePagination?: BreakpointCustomizable<boolean>;
+  /** Shows pagination dot indicators below the carousel. Supports responsive breakpoint values. */
+  @Prop() public pagination?: BreakpointCustomizable<boolean> = false;
 
-  /** If false, the carousel will not show pagination bullets at the bottom. */
-  @Prop() public pagination?: BreakpointCustomizable<boolean> = true;
-
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes on the carousel region element for improved accessibility. */
   @Prop() public aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
 
-  /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
+  /** Overrides the default label strings used for the previous, next, and page indicators — useful for localization. */
   @Prop() public intl?: CarouselInternationalization;
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** Defines which slide to be active (zero-based numbering). */
+  /** Sets the zero-based index of the currently visible slide. Update this to navigate programmatically. */
   @Prop() public activeSlideIndex?: number = 0;
 
-  /** Defines target of skip link (to skip carousel entries). */
+  /** Sets the `href` of an in-page skip link that lets keyboard users jump past the carousel slides. */
   @Prop() public skipLinkTarget?: string;
 
-  /**
-   * Indicates whether focus should be set on the center slide.
-   * If true, the carousel loops by individual slide; otherwise, it loops by page.
-   */
+  /** When enabled, each slide is individually focusable and the carousel navigates one slide at a time instead of one page. */
   @Prop() public focusOnCenterSlide?: boolean = false;
 
-  /** Adapts the background gradient for the left and right edge. */
-  @Prop() public gradientColor?: CarouselGradientColor = 'none';
+  /** Shows a gradient fade at the start and end edges to visually indicate more slides beyond the viewport. */
+  @Prop() public gradient?: boolean = false;
 
-  /** Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true. */
-  @Prop() public trimSpace?: boolean = true;
+  /** Removes whitespace before the first and after the last slide when `focusOnCenterSlide` is enabled. */
+  @Prop() public trimSpace?: boolean = false;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when carousel's content slides. */
-  @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselUpdateEventDetail>;
-
-  /** Emitted when carousel's content slides. */
+  /** Emitted when the carousel navigates to a new slide, with the active and previous slide indexes in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<CarouselUpdateEventDetail>;
 
   @State() private amountOfPages: number;
@@ -187,14 +152,13 @@ export class Carousel {
   private btnPrev: HTMLPButtonPureElement;
   private btnNext: HTMLPButtonPureElement;
   private paginationEl: HTMLElement;
+  private slideStatusEl: HTMLElement;
   private slides: HTMLElement[] = [];
+  /** Skips the next live-region update when navigation was caused by focusing a slide. */
+  private suppressNextStatusAnnounce = false;
 
   private get parsedSlidesPerPage(): BreakpointValues<CarouselSlidesPerPage> | number | 'auto' {
     return parseJSON(this.slidesPerPage) as BreakpointValues<CarouselSlidesPerPage> | number | 'auto';
-  }
-
-  private get parsedDisablePagination(): BreakpointValues<boolean> | boolean {
-    return parseJSON(this.disablePagination) as BreakpointValues<boolean> | boolean;
   }
 
   private get parsedPagination(): BreakpointValues<boolean> | boolean {
@@ -215,7 +179,6 @@ export class Carousel {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     observeChildren(this.host, this.updateSlidesAndPagination);
     this.observeBreakpointChange();
 
@@ -256,10 +219,11 @@ export class Carousel {
       mediaQuery: 'min',
       speed: Number.parseFloat(carouselTransitionDuration) * 1000,
       gap: gridGap,
+      live: false,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(
         this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<CarouselSlidesPerPage> | 'auto', string>
-      ), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+      ),
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
       direction: getLangDirection(this.host),
@@ -286,40 +250,21 @@ export class Carousel {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const alignHeaderDeprecationMap: AlignHeaderDeprecationMapType = {
-      left: 'start',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Carousel, CarouselAlignHeaderDeprecated, CarouselAlignHeader>(
-      this,
-      'alignHeader',
-      alignHeaderDeprecationMap
-    );
-    warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
-    warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
     const hasControlsSlot = hasNamedSlot(this.host, 'controls');
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.gradientColor,
+      this.gradient,
       hasHeadingPropOrSlot,
       hasDescriptionPropOrSlot,
       hasControlsSlot,
       this.headingSize,
       this.width,
-      // flip boolean values of disablePagination since it is the inverse of pagination
-      this.parsedDisablePagination
-        ? typeof this.parsedDisablePagination === 'object'
-          ? (Object.fromEntries(
-              Object.entries(this.parsedDisablePagination).map(([key, value]) => [key, !value])
-            ) as BreakpointCustomizable<boolean>)
-          : !this.parsedDisablePagination
-        : this.parsedPagination,
+      this.parsedPagination,
       isInfinitePagination(this.focusOnCenterSlide ? this.slides.length : this.amountOfPages),
-      (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
-        this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
-      this.theme,
+      this.alignHeader,
       this.hasNavigation,
       this.alignControls
     );
@@ -330,7 +275,6 @@ export class Carousel {
       class: 'btn',
       type: 'button',
       hideLabel: true,
-      theme: this.theme,
       // 'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
     };
 
@@ -355,7 +299,6 @@ export class Carousel {
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure
                 href={this.skipLinkTarget}
-                theme={this.theme}
                 icon="arrow-last"
                 class="btn skip-link"
                 alignLabel="start"
@@ -408,12 +351,12 @@ export class Carousel {
           </div>
         </div>
 
-        {(this.parsedDisablePagination ? this.parsedDisablePagination !== true : this.parsedPagination) &&
-          this.hasNavigation && (
-            <div class="pagination-container" aria-hidden="true">
-              <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
-            </div>
-          )}
+        {this.parsedPagination && this.hasNavigation && (
+          <div class="pagination-container" aria-hidden="true">
+            <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
+          </div>
+        )}
+        <div class="slide-status" aria-live="polite" aria-atomic="true" ref={(ref) => (this.slideStatusEl = ref)} />
       </Host>
     );
   }
@@ -430,7 +373,16 @@ export class Carousel {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updatePagination(this.paginationEl, this.getPageCount(), activeIndex);
       this.update.emit({ activeIndex, previousIndex });
-      this.carouselChange.emit({ activeIndex, previousIndex });
+    });
+
+    splide.on('moved', (activeIndex): void => {
+      if (this.suppressNextStatusAnnounce) {
+        this.suppressNextStatusAnnounce = false;
+        return;
+      }
+      // Update imperatively to avoid a Stencil re-render that would steal focus from slides/controls
+      const slideLabel = splide.options.i18n?.slideLabel ?? DEFAULT_SLIDE_LABEL;
+      this.slideStatusEl.textContent = getSlideStatusMessage(slideLabel, activeIndex, this.getPageCount());
     });
 
     splide.mount();
@@ -487,8 +439,10 @@ export class Carousel {
 
     if (splideIndex !== slideIndexOfFocusedElement) {
       if (slideIndexOfFocusedElement > splideIndex && (!slideIsVisible || this.focusOnCenterSlide)) {
+        this.suppressNextStatusAnnounce = true;
         slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       } else if (slideIndexOfFocusedElement < splideIndex) {
+        this.suppressNextStatusAnnounce = true;
         slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       }
     }
@@ -496,11 +450,15 @@ export class Carousel {
 
   private observeSlides(): void {
     // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
-    observeChildren(this.container, () => {
-      for (const el of this.splideSlides) {
-        el.removeAttribute('aria-hidden');
-        el.setAttribute('tabindex', '0');
-      }
-    }, ['aria-hidden']);
+    observeChildren(
+      this.container,
+      () => {
+        for (const el of this.splideSlides) {
+          el.removeAttribute('aria-hidden');
+          el.setAttribute('tabindex', '0');
+        }
+      },
+      ['aria-hidden']
+    );
   }
 }

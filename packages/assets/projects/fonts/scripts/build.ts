@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import { kebabCase, camelCase } from 'change-case';
 import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 
@@ -32,6 +32,20 @@ const createManifestAndCopyFonts = (files: string[]): void => {
     fs.writeFileSync(targetPath, font, { encoding: 'binary' });
 
     console.log(`Font "${name}${ext}" copied.`);
+  }
+
+  // Fallback: for any "*Bold" entry without a matching "*SemiBold" entry,
+  // alias the semi-bold key to the bold file so consumers can rely on a
+  // semi-bold weight being available for every script.
+  for (const [key, filename] of Object.entries(manifest)) {
+    // Match keys ending in "Bold" but not "SemiBold" (negative lookbehind).
+    const boldMatch = key.match(/^(.*?)(?<!Semi)Bold$/);
+    if (!boldMatch) continue;
+    const semiBoldKey = `${boldMatch[1]}SemiBold`;
+    if (!(semiBoldKey in manifest)) {
+      manifest[semiBoldKey] = filename;
+      console.log(`Font "${semiBoldKey}" aliased to "${key}" (no dedicated semi-bold variant).`);
+    }
   }
 
   fs.writeFileSync(

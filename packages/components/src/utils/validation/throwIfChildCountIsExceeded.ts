@@ -1,4 +1,5 @@
-import { getTagNameWithoutPrefix, throwException } from '..';
+import { throwException } from '../log/logger';
+import { getTagNameWithoutPrefix } from '../tag-name';
 
 export const throwIfChildCountIsExceeded = (element: HTMLElement, allowedAmount: number): void => {
   const childCount = element.children.length;

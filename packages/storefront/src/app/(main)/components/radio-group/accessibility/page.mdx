@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { radioGroupMeta } from '@/app/(main)/components/radio-group/radio-group.meta';
+
+export const metadata = {
+  title: 'Radio Group: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Radio Group component',
+};
+
+# Radio Group <ComponentStatus tagName="p-radio-group"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<radioGroupMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-radio-group" examples={radioGroupMeta.accessibility.examples} />
+
+<radioGroupMeta.accessibility.tests />

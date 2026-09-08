@@ -1,43 +1,50 @@
-# Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
-# Please check docs/dependencies.md for ignore entries
 
 version: 2
 updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      github-actions-updates:
+        patterns:
+          - "*"
+
+  # npm dependencies.
+  #
+  # Routine version bumps are handled by the weekly Copilot coding agent, which
+  # follows docs/runbooks/dependency-updates-agent.md (syncpack-driven, override-
+  # aware) and is dispatched by .github/workflows/weekly-dependency-agent.yml.
+  # To avoid two competing weekly PRs over package.json/package-lock.json, we run
+  # Dependabot npm in SECURITY-ONLY mode:
+  #   - `open-pull-requests-limit: 0` disables version-update PRs but still lets
+  #     Dependabot raise security PRs (defense-in-depth) and still honors `ignore`.
+  #   - The held-back `ignore` list below therefore also protects these packages
+  #     from automatic security bumps (they are upgraded deliberately).
   - package-ecosystem: "npm"
     directory: "/"
-    versioning-strategy: increase
     schedule:
-      interval: "daily"
-    groups:
-      production-dependencies:
-        dependency-type: "production"
-      development-dependencies:
-        dependency-type: "development"
+      interval: "weekly"
+    # Disable routine version-update PRs (owned by the weekly agent); keep
+    # security updates enabled.
+    open-pull-requests-limit: 0
+    # Held-back dependencies — kept in sync with docs/dependencies.md and the
+    # updateGroups entry in .syncpackrc.json
     ignore:
-      - dependency-name: "change-case"
-        versions: [ ">=5" ]
-      - dependency-name: "globby"
-        versions: [ ">=12" ]
-      - dependency-name: "styled-components"
-        versions: [ ">=6" ]
+      # Internal workspace packages, versioned via the release process (see docs/dependencies.md)
+      - dependency-name: "@porsche-design-system/*"
+      # Pinned to keep browser binaries in sync with committed VRT snapshots; upgrade deliberately (see docs/dependencies.md)
       - dependency-name: "@playwright/test"
-        versions: [ "1.43", "1.44" ]
-      - dependency-name: "vue"
-        versions: [ ">=3" ]
-      - dependency-name: "vue-router"
-        versions: [ ">=4" ]
-      - dependency-name: "vue-template-compiler"
-        versions: [ ">=3" ]
-      - dependency-name: "vuex"
-        versions: [ ">=4" ]
-      - dependency-name: "@vue/*"
-        versions: [ ">=5" ]
-      - dependency-name: "sass-loader"
-        versions: [ ">=11" ]
-      - dependency-name: "@vue/test-utils"
-      - dependency-name: "imask"
-      - dependency-name: "vmark*"
-      - dependency-name: "@stackblitz/sdk"
-      - dependency-name: "@porsche-design-system*"
+      # Pinned via root `overrides` to the exact @playwright/test version; drift duplicates the Playwright types (see docs/dependencies.md)
+      - dependency-name: "playwright-core"
+      # Pinned: a patch-package patch targets this exact version (see docs/dependencies.md)
+      - dependency-name: "@stencil/core"
+    groups:
+      # Version-update groups don't apply while version updates are disabled, so
+      # group SECURITY updates instead (one PR per batch of advisories).
+      npm-security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"

@@ -1,15 +1,11 @@
-// 'left' is deprecated and will be mapped to 'start'
-// 'right' is deprecated and will be mapped to 'end'
-
-import type { Backdrop } from '../../styles/dialog-styles';
 import { getHasConstructableStylesheetSupport } from '../../utils';
+import type { DialogDismissEventDetail } from '../../utils/dialog/dialog';
+import type { Backdrop } from '../common/dialog-base/dialog-base-styles';
 
-/** @deprecated */
-export const FLYOUT_POSITIONS_DEPRECATED = ['left', 'right'] as const;
-/** @deprecated */
-export type FlyoutPositionDeprecated = (typeof FLYOUT_POSITIONS_DEPRECATED)[number];
+export const FLYOUT_BACKGROUNDS = ['canvas', 'surface'] as const;
+export type FlyoutBackground = (typeof FLYOUT_BACKGROUNDS)[number];
 
-export const FLYOUT_POSITIONS = ['start', 'end', ...FLYOUT_POSITIONS_DEPRECATED] as const;
+export const FLYOUT_POSITIONS = ['start', 'end'] as const;
 export type FlyoutPosition = (typeof FLYOUT_POSITIONS)[number];
 
 export const FLYOUT_FOOTER_BEHAVIOR = ['sticky', 'fixed'] as const;
@@ -20,6 +16,7 @@ export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 
 export type FlyoutMotionVisibleEndEventDetail = TransitionEvent;
 export type FlyoutMotionHiddenEndEventDetail = TransitionEvent;
+export type FlyoutDismissEventDetail = DialogDismissEventDetail;
 
 export type FlyoutBackdrop = Backdrop;
 
@@ -37,8 +34,6 @@ export const addStickyTopCssVarStyleSheet = (host: HTMLElement): void => {
   if (getHasConstructableStylesheetSupport()) {
     stickyTopCssVarStyleSheetMap.set(host, new CSSStyleSheet());
     // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
-    // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
-    /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
     host.shadowRoot.adoptedStyleSheets.push(stickyTopCssVarStyleSheetMap.get(host));
     updateStickyTopCssVarStyleSheet(host, 0);
   }

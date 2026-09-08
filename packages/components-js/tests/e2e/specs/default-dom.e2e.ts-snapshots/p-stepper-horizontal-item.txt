@@ -1,3 +1,4 @@
 <button type="button" aria-disabled="true">
+  <span class="icon" aria-hidden="true"> </span>
   <slot> </slot>
 </button>

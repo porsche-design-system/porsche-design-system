@@ -1,0 +1,28 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  typographyEmotionStoryHeading,
+  typographyEmotionStoryText,
+} from '@/app/(main)/emotion/typography/examples/typography.stories';
+
+export const metadata = {
+  title: 'Emotion: Typography - Porsche Design System',
+  description: 'Learn about the Emotion typography styles of our design language and how to use them.',
+};
+
+# Typography
+
+<TableOfContents headings={['Heading', 'Text']} />
+
+The Porsche Design System provides multiple JS Objects for the typography style to be used in Emotion.
+
+Styles import:
+`import { proseDisplayLgStyle, proseHeadingMdStyle, proseTextSmStyle … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';`
+
+## Heading
+
+<ComponentStory story={typographyEmotionStoryHeading} showCodeBlock={false} />
+
+## Text
+
+<ComponentStory story={typographyEmotionStoryText} showCodeBlock={false} />

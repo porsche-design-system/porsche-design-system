@@ -1,6 +1,6 @@
 import { getHiddenTextJssStyle } from '../../styles';
 import { getUnitCounterJssStyle } from '../../styles/form-styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentInputBaseStyles } from '../common/input-base/input-base-styles';
@@ -12,10 +12,7 @@ import { getFunctionalComponentInputBaseStyles } from '../common/input-base/inpu
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
+
 export const getComponentCss = (
   disabled: boolean,
   loading: boolean,
@@ -23,23 +20,13 @@ export const getComponentCss = (
   state: FormState,
   compact: boolean,
   readOnly: boolean,
-  theme: Theme,
   counter: boolean
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
-      textOverflow: 'ellipsis',
-      MozAppearance: 'textfield',
-      '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
-        WebkitAppearance: 'none',
-      },
-    }),
+    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly),
     ...(counter && {
-      counter: {
-        ...getUnitCounterJssStyle(disabled, readOnly, theme),
-        cursor: 'text',
-      },
+      counter: getUnitCounterJssStyle(),
+      'sr-only': getHiddenTextJssStyle(),
     }),
-    'sr-only': getHiddenTextJssStyle(),
   });
 };

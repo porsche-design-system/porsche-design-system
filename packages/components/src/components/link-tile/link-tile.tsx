@@ -11,15 +11,14 @@ import {
   type ITileProps,
   LINK_ARIA_ATTRIBUTES,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
+  TILE_WEIGHTS,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
 import {
-  LINK_TILE_WEIGHTS,
   type LinkTileAlign,
   type LinkTileAriaAttribute,
   type LinkTileAspectRatio,
-  type LinkTileBackground,
   type LinkTileSize,
   type LinkTileTarget,
   type LinkTileWeight,
@@ -28,7 +27,7 @@ import {
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,
-  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(TILE_WEIGHTS),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   download: AllowedTypes.string,
@@ -48,46 +47,43 @@ const propTypes: PropTypes<typeof LinkTile> = {
 export class LinkTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
-  /** Font size of the description. */
+  /** Sets the font size of the description text in the tile content area. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'medium';
 
-  /** Font weight of the description. */
+  /** Sets the font weight of the description text in the tile content area. Supports responsive breakpoint values. */
   @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
-  /** Adapts the description and link theme when used on light background image. */
-  @Prop() public background?: LinkTileBackground = 'dark';
-
-  /** Aspect ratio of the link-tile. */
+  /** Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4/3';
 
-  /** Label of the <a />. */
+  /** Sets the accessible label text of the link rendered inside the tile. */
   @Prop() public label: string;
 
-  /** Description text. */
+  /** Sets the description text displayed in the tile's content area. */
   @Prop() public description: string;
 
-  /** Alignment of link and description. */
+  /** Controls the vertical placement of the description and link — `top` or `bottom`. */
   @Prop() public align?: LinkTileAlign = 'bottom';
 
-  /** Show gradient. */
-  @Prop() public gradient?: boolean = true;
+  /** Shows a gradient overlay over the media slot to improve text legibility on bright images or videos. */
+  @Prop() public gradient?: boolean = false;
 
-  /** Displays the link-tile as compact version with description and link icon only. */
+  /** Renders only the icon link without the full label. Supports responsive breakpoint values. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
-  /** href of the `<a>`. */
+  /** Sets the URL the tile's anchor element navigates to when clicked. */
   @Prop() public href: string;
 
-  /** Target attribute where the link should be opened. */
+  /** Specifies where to open the linked URL (e.g. `_self`, `_blank`). */
   @Prop() public target?: LinkTileTarget = '_self';
 
-  /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
+  /** Sets the native `download` attribute to trigger a file download. */
   @Prop() public download?: string;
 
-  /** Specifies the relationship of the target object to the link object. */
+  /** Sets the `rel` attribute on the link (e.g. `noopener`). */
   @Prop() public rel?: string;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes on the tile's anchor element to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
   @State() private hasFooterSlot: boolean = false;
@@ -107,15 +103,16 @@ export class LinkTile implements ITileProps {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    // TODO: BreakpointCustomizable breaks stencils boolean conversion from string to boolean
+    const parsedCompact = this.compact === 'true' ? true : this.compact === 'false' ? false : this.compact;
     attachComponentCss(
       this.host,
       getComponentCss,
       this.aspectRatio,
       this.size,
       this.weight,
-      this.background,
       this.align,
-      this.compact,
+      parsedCompact,
       this.gradient,
       this.hasFooterSlot
     );
@@ -123,7 +120,6 @@ export class LinkTile implements ITileProps {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const linkProps = {
-      theme: this.background,
       variant: 'secondary',
       aria: this.aria,
     };
@@ -141,17 +137,18 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLink>
     );
 
-    const linkPure: JSX.Element = (
-      <PrefixedTagNames.pLinkPure
+    const linkCompact: JSX.Element = (
+      <PrefixedTagNames.pLink
         {...sharedLinkProps}
         {...linkProps}
-        key="link-or-button-pure"
-        class="link-or-button-pure"
         hideLabel={true}
         icon="arrow-right"
+        key="link-or-button-pure"
+        compact={true}
+        class="link-or-button-pure"
       >
         {this.label}
-      </PrefixedTagNames.pLinkPure>
+      </PrefixedTagNames.pLink>
     );
 
     return (
@@ -164,7 +161,7 @@ export class LinkTile implements ITileProps {
         <div class="footer">
           <p>{this.description}</p>
           <slot name="footer" onSlotchange={this.updateSlotObserver} />
-          {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
+          {typeof parsedCompact === 'boolean' ? (parsedCompact ? linkCompact : link) : [linkCompact, link]}
         </div>
       </div>
     );

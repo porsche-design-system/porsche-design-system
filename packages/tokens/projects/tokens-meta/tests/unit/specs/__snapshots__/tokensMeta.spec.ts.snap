@@ -1,0 +1,842 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+{
+  "blur": {
+    "blurFrosted": {
+      "description": "Holds a **frosted** blur effect value.",
+      "name": "blurFrosted",
+      "value": "blur(32px)",
+    },
+  },
+  "border": {
+    "radius": {
+      "radius2Xl": {
+        "description": "Holds a **2xl** \`border-radius\`. Used for notification components (e.g. \`p-banner\`, \`p-inline-notification\`, \`p-toast\`,…).",
+        "name": "radius2Xl",
+        "value": "16px",
+      },
+      "radius3Xl": {
+        "description": "Holds a **3xl** \`border-radius\`. Used for card-like containers or dialogs (e.g. \`p-link-tile\`, \`p-modal\`, \`p-flyout\`, \`p-sheet\`,…). Defines the primary visual appearance alongside **radiusXl**.",
+        "name": "radius3Xl",
+        "value": "24px",
+      },
+      "radius4Xl": {
+        "description": "Holds a **4xl** \`border-radius\`.",
+        "name": "radius4Xl",
+        "value": "32px",
+      },
+      "radiusFull": {
+        "description": "Holds a **full** \`border-radius\`. Used for pill shapes (e.g. \`p-tag\`, \`p-switch\`,…). Recommended only for standalone indicators.",
+        "name": "radiusFull",
+        "value": "calc(infinity * 1px)",
+      },
+      "radiusLg": {
+        "description": "Holds a **lg** \`border-radius\`. Used for interactive controls in **compact mode** (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…).",
+        "name": "radiusLg",
+        "value": "8px",
+      },
+      "radiusMd": {
+        "description": "Holds a **md** \`border-radius\`. Used for \`p-checkbox\` in **compact mode**.",
+        "name": "radiusMd",
+        "value": "6px",
+      },
+      "radiusSm": {
+        "description": "Holds a **sm** \`border-radius\`.",
+        "name": "radiusSm",
+        "value": "4px",
+      },
+      "radiusXl": {
+        "description": "Holds a **xl** \`border-radius\`. Used for interactive controls (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…). Defines the primary visual appearance alongside **radius3Xl**.",
+        "name": "radiusXl",
+        "value": "12px",
+      },
+      "radiusXs": {
+        "description": "Holds a **xs** \`border-radius\`.",
+        "name": "radiusXs",
+        "value": "2px",
+      },
+    },
+  },
+  "breakpoint": {
+    "breakpoint2Xl": {
+      "description": "Holds the \`2xl\` breakpoint value, usable with \`px\`.",
+      "name": "breakpoint2Xl",
+      "value": 1920,
+    },
+    "breakpointLg": {
+      "description": "Holds the \`lg\` breakpoint value, usable with \`px\`.",
+      "name": "breakpointLg",
+      "value": 1300,
+    },
+    "breakpointMd": {
+      "description": "Holds the \`md\` breakpoint value, usable with \`px\`.",
+      "name": "breakpointMd",
+      "value": 1000,
+    },
+    "breakpointSm": {
+      "description": "Holds the \`sm\` breakpoint value, usable with \`px\`.",
+      "name": "breakpointSm",
+      "value": 760,
+    },
+    "breakpointXl": {
+      "description": "Holds the \`xl\` breakpoint value, usable with \`px\`.",
+      "name": "breakpointXl",
+      "value": 1760,
+    },
+    "breakpointXs": {
+      "description": "Holds the \`xs\` breakpoint value, usable with \`px\`.",
+      "name": "breakpointXs",
+      "value": 480,
+    },
+  },
+  "color": {
+    "dark": {
+      "a11y": {
+        "colorFocusDark": {
+          "description": "Holds the **focus** color (dark), typically used as the outline for \`:focus-visible\` states.",
+          "name": "colorFocusDark",
+          "value": "#1A44EA",
+        },
+      },
+      "background": {
+        "colorBackdropDark": {
+          "description": "Holds the **backdrop** color, typically used for backdrops.",
+          "name": "colorBackdropDark",
+          "value": "hsl(240 5.3% 14.9% / 0.5)",
+        },
+        "colorCanvasDark": {
+          "description": "Holds the **canvas** color (dark), typically used for surfaces.",
+          "name": "colorCanvasDark",
+          "value": "hsl(225 66.7% 1.2%)",
+        },
+        "colorFrostedDark": {
+          "description": "Holds the **frosted** color (dark), typically used as a background in combination with a blur effect.",
+          "name": "colorFrostedDark",
+          "value": "hsl(240 2% 43% / 0.228)",
+        },
+        "colorFrostedSoftDark": {
+          "description": "Holds the **frosted-soft** color (dark), typically used as a background \`:hover\`.",
+          "name": "colorFrostedSoftDark",
+          "value": "hsl(240 3.7% 26.5% / 0.154)",
+        },
+        "colorFrostedStrongDark": {
+          "description": "Holds the **frosted-strong** color (dark), typically used as a stronger frosted background.",
+          "name": "colorFrostedStrongDark",
+          "value": "hsl(240 1.5% 61.8% / 0.302)",
+        },
+        "colorSurfaceDark": {
+          "description": "Holds the **surface** color (dark), typically used for surfaces.",
+          "name": "colorSurfaceDark",
+          "value": "hsl(240 2% 10%)",
+        },
+      },
+      "foreground": {
+        "colorContrastHighDark": {
+          "description": "Holds the **contrast-high** color (dark), typically used for text.",
+          "name": "colorContrastHighDark",
+          "value": "hsl(240 12.5% 96.9% / 0.67)",
+        },
+        "colorContrastHigherDark": {
+          "description": "Holds the **contrast-higher** color (dark), typically used for text.",
+          "name": "colorContrastHigherDark",
+          "value": "hsl(240 12.5% 96.9% / 0.78)",
+        },
+        "colorContrastLowDark": {
+          "description": "Holds the **contrast-low** color (dark), intended only for decorative elements, as it is not accessibility-compliant.",
+          "name": "colorContrastLowDark",
+          "value": "hsl(240 12.5% 96.9% / 0.45)",
+        },
+        "colorContrastLowerDark": {
+          "description": "Holds the **contrast-lower** color (dark), intended only for decorative elements, as it is not accessibility-compliant.",
+          "name": "colorContrastLowerDark",
+          "value": "hsl(240 1.5% 61.8% / 0.302)",
+        },
+        "colorContrastMediumDark": {
+          "description": "Holds the **contrast-medium** color (dark), typically used for text.",
+          "name": "colorContrastMediumDark",
+          "value": "hsl(240 12.5% 96.9% / 0.56)",
+        },
+        "colorPrimaryDark": {
+          "description": "Holds the **primary** color (dark), typically used for text.",
+          "name": "colorPrimaryDark",
+          "value": "hsl(225 100% 99%)",
+        },
+      },
+      "semantic": {
+        "colorErrorDark": {
+          "description": "Holds the **error** color (dark), typically used for text.",
+          "name": "colorErrorDark",
+          "value": "hsl(0 96.9% 62%)",
+        },
+        "colorErrorFrostedDark": {
+          "description": "Holds the **error-frosted** color (dark), typically used as background in combination with a blur effect.",
+          "name": "colorErrorFrostedDark",
+          "value": "hsl(0 79% 20% / 0.66)",
+        },
+        "colorErrorFrostedSoftDark": {
+          "description": "Holds the **error-frosted-soft** color (dark), typically used as background \`:hover\`.",
+          "name": "colorErrorFrostedSoftDark",
+          "value": "hsl(0 59% 15% / 0.66)",
+        },
+        "colorErrorLowDark": {
+          "description": "Holds the **error-low** color (dark), typically used for text or border.",
+          "name": "colorErrorLowDark",
+          "value": "hsl(0 96.9% 62% / 0.18)",
+        },
+        "colorErrorMediumDark": {
+          "description": "Holds the **error-medium** color (dark), typically used for text or border.",
+          "name": "colorErrorMediumDark",
+          "value": "hsl(0 96.9% 62% / 0.6)",
+        },
+        "colorInfoDark": {
+          "description": "Holds the **info** color (dark), typically used for text.",
+          "name": "colorInfoDark",
+          "value": "hsl(210 100% 54.5%)",
+        },
+        "colorInfoFrostedDark": {
+          "description": "Holds the **info-frosted** color (dark), typically used as background in combination with a blur effect.",
+          "name": "colorInfoFrostedDark",
+          "value": "hsl(210 79% 20% / 0.66)",
+        },
+        "colorInfoFrostedSoftDark": {
+          "description": "Holds the **info-frosted-soft** color (dark), typically used as background \`:hover\`.",
+          "name": "colorInfoFrostedSoftDark",
+          "value": "hsl(210 59% 15% / 0.66)",
+        },
+        "colorInfoLowDark": {
+          "description": "Holds the **info-low** color (dark), typically used for text or border.",
+          "name": "colorInfoLowDark",
+          "value": "hsl(210 100% 54.5% / 0.18)",
+        },
+        "colorInfoMediumDark": {
+          "description": "Holds the **info-medium** color (dark), typically used for text or border.",
+          "name": "colorInfoMediumDark",
+          "value": "hsl(210 100% 54.5% / 0.6)",
+        },
+        "colorSuccessDark": {
+          "description": "Holds the **success** color (dark), typically used for text.",
+          "name": "colorSuccessDark",
+          "value": "hsl(157 84.9% 41.6%)",
+        },
+        "colorSuccessFrostedDark": {
+          "description": "Holds the **success-frosted** color (dark), typically used as background in combination with a blur effect.",
+          "name": "colorSuccessFrostedDark",
+          "value": "hsl(157 79% 20% / 0.66)",
+        },
+        "colorSuccessFrostedSoftDark": {
+          "description": "Holds the **success-frosted-soft** color (dark), typically used as background \`:hover\`.",
+          "name": "colorSuccessFrostedSoftDark",
+          "value": "hsl(157 59% 15% / 0.66)",
+        },
+        "colorSuccessLowDark": {
+          "description": "Holds the **success-low** color (dark), typically used for text or border.",
+          "name": "colorSuccessLowDark",
+          "value": "hsl(157 84.9% 41.6% / 0.18)",
+        },
+        "colorSuccessMediumDark": {
+          "description": "Holds the **success-medium** color (dark), typically used for text or border.",
+          "name": "colorSuccessMediumDark",
+          "value": "hsl(157 84.9% 41.6% / 0.6)",
+        },
+        "colorWarningDark": {
+          "description": "Holds the **warning** color (dark), typically used for text.",
+          "name": "colorWarningDark",
+          "value": "hsl(28 90.2% 56.1%)",
+        },
+        "colorWarningFrostedDark": {
+          "description": "Holds the **warning-frosted** color (dark), typically used as background in combination with a blur effect.",
+          "name": "colorWarningFrostedDark",
+          "value": "hsl(52 79% 20% / 0.66)",
+        },
+        "colorWarningFrostedSoftDark": {
+          "description": "Holds the **warning-frosted-soft** color (dark), typically used as background \`:hover\`.",
+          "name": "colorWarningFrostedSoftDark",
+          "value": "hsl(52 59% 15% / 0.66)",
+        },
+        "colorWarningLowDark": {
+          "description": "Holds the **warning-low** color (dark), typically used for text or border.",
+          "name": "colorWarningLowDark",
+          "value": "hsl(28 90.2% 56.1% / 0.18)",
+        },
+        "colorWarningMediumDark": {
+          "description": "Holds the **warning-medium** color (dark), typically used for text or border.",
+          "name": "colorWarningMediumDark",
+          "value": "hsl(28 90.2% 56.1% / 0.6)",
+        },
+      },
+    },
+    "light": {
+      "a11y": {
+        "colorFocusLight": {
+          "description": "Holds the **focus** color (light), typically used as the outline for \`:focus-visible\` states.",
+          "name": "colorFocusLight",
+          "value": "#1A44EA",
+        },
+      },
+      "background": {
+        "colorBackdropLight": {
+          "description": "Holds the **backdrop** color, typically used for backdrops.",
+          "name": "colorBackdropLight",
+          "value": "hsl(240 5.3% 14.9% / 0.5)",
+        },
+        "colorCanvasLight": {
+          "description": "Holds the **canvas** color (light), typically used for surfaces.",
+          "name": "colorCanvasLight",
+          "value": "#fff",
+        },
+        "colorFrostedLight": {
+          "description": "Holds the **frosted** color (light), typically used as a background in combination with a blur effect.",
+          "name": "colorFrostedLight",
+          "value": "hsl(240 5% 70% / 0.148)",
+        },
+        "colorFrostedSoftLight": {
+          "description": "Holds the **frosted-soft** color (light), typically used as a background \`:hover\`.",
+          "name": "colorFrostedSoftLight",
+          "value": "hsl(234 9.8% 60% / 0.06)",
+        },
+        "colorFrostedStrongLight": {
+          "description": "Holds the **frosted-strong** color (light), typically used as a stronger frosted background.",
+          "name": "colorFrostedStrongLight",
+          "value": "hsl(236 6.5% 42% / 0.236)",
+        },
+        "colorSurfaceLight": {
+          "description": "Holds the **surface** color (light), typically used for surfaces.",
+          "name": "colorSurfaceLight",
+          "value": "hsl(240 10% 95%)",
+        },
+      },
+      "foreground": {
+        "colorContrastHighLight": {
+          "description": "Holds the **contrast-high** color (light), typically used for text.",
+          "name": "colorContrastHighLight",
+          "value": "hsl(240 7.1% 11% / 0.7)",
+        },
+        "colorContrastHigherLight": {
+          "description": "Holds the **contrast-higher** color (light), typically used for text.",
+          "name": "colorContrastHigherLight",
+          "value": "hsl(240 8.7% 9% / 0.8)",
+        },
+        "colorContrastLowLight": {
+          "description": "Holds the **contrast-low** color (light), intended only for decorative elements, as it is not accessibility-compliant.",
+          "name": "colorContrastLowLight",
+          "value": "hsl(240 5.3% 14.9% / 0.5)",
+        },
+        "colorContrastLowerLight": {
+          "description": "Holds the **contrast-lower** color (light), intended only for decorative elements, as it is not accessibility-compliant.",
+          "name": "colorContrastLowerLight",
+          "value": "hsl(234 6% 32.9% / 0.324)",
+        },
+        "colorContrastMediumLight": {
+          "description": "Holds the **contrast-medium** color (light), typically used for text.",
+          "name": "colorContrastMediumLight",
+          "value": "hsl(240 6.1% 7% / 0.6)",
+        },
+        "colorPrimaryLight": {
+          "description": "Holds the **primary** color (light), typically used for text.",
+          "name": "colorPrimaryLight",
+          "value": "hsl(225 66.7% 1.2%)",
+        },
+      },
+      "semantic": {
+        "colorErrorFrostedLight": {
+          "description": "Holds the **error-frosted** color (light), typically used as background in combination with a blur effect.",
+          "name": "colorErrorFrostedLight",
+          "value": "hsl(0 100% 90% / 0.55)",
+        },
+        "colorErrorFrostedSoftLight": {
+          "description": "Holds the **error-frosted-soft** color (light), typically used as background \`:hover\`.",
+          "name": "colorErrorFrostedSoftLight",
+          "value": "hsl(0 80% 95% / 0.55)",
+        },
+        "colorErrorLight": {
+          "description": "Holds the **error** color (light), typically used for text.",
+          "name": "colorErrorLight",
+          "value": "hsl(357 78% 41%)",
+        },
+        "colorErrorLowLight": {
+          "description": "Holds the **error-low** color (light), typically used for text or border.",
+          "name": "colorErrorLowLight",
+          "value": "hsl(357 78% 41% / 0.18)",
+        },
+        "colorErrorMediumLight": {
+          "description": "Holds the **error-medium** color (light), typically used for text or border.",
+          "name": "colorErrorMediumLight",
+          "value": "hsl(357 78% 41% / 0.6)",
+        },
+        "colorInfoFrostedLight": {
+          "description": "Holds the **info-frosted** color (light), typically used as background in combination with a blur effect.",
+          "name": "colorInfoFrostedLight",
+          "value": "hsl(211 100% 90% / 0.55)",
+        },
+        "colorInfoFrostedSoftLight": {
+          "description": "Holds the **info-frosted-soft** color (light), typically used as background \`:hover\`.",
+          "name": "colorInfoFrostedSoftLight",
+          "value": "hsl(211 80% 95% / 0.55)",
+        },
+        "colorInfoLight": {
+          "description": "Holds the **info** color (light), typically used for text.",
+          "name": "colorInfoLight",
+          "value": "hsl(228 83.2% 51%)",
+        },
+        "colorInfoLowLight": {
+          "description": "Holds the **info-low** color (light), typically used for text or border.",
+          "name": "colorInfoLowLight",
+          "value": "hsl(228 83.2% 51% / 0.18)",
+        },
+        "colorInfoMediumLight": {
+          "description": "Holds the **info-medium** color (light), typically used for text or border.",
+          "name": "colorInfoMediumLight",
+          "value": "hsl(228 83.2% 51% / 0.6)",
+        },
+        "colorSuccessFrostedLight": {
+          "description": "Holds the **success-frosted** color (light), typically used as background in combination with a blur effect.",
+          "name": "colorSuccessFrostedLight",
+          "value": "hsl(109 100% 90% / 0.55)",
+        },
+        "colorSuccessFrostedSoftLight": {
+          "description": "Holds the **success-frosted-soft** color (light), typically used as background \`:hover\`.",
+          "name": "colorSuccessFrostedSoftLight",
+          "value": "hsl(109 80% 95% / 0.55)",
+        },
+        "colorSuccessLight": {
+          "description": "Holds the **success** color (light), typically used for text.",
+          "name": "colorSuccessLight",
+          "value": "hsl(115 77.5% 27.8%)",
+        },
+        "colorSuccessLowLight": {
+          "description": "Holds the **success-low** color (light), typically used for text or border.",
+          "name": "colorSuccessLowLight",
+          "value": "hsl(115 77.5% 27.8% / 0.18)",
+        },
+        "colorSuccessMediumLight": {
+          "description": "Holds the **success-medium** color (light), typically used for text or border.",
+          "name": "colorSuccessMediumLight",
+          "value": "hsl(115 77.5% 27.8% / 0.6)",
+        },
+        "colorWarningFrostedLight": {
+          "description": "Holds the **warning-frosted** color (light), typically used as background in combination with a blur effect.",
+          "name": "colorWarningFrostedLight",
+          "value": "hsl(40 100% 90% / 0.55)",
+        },
+        "colorWarningFrostedSoftLight": {
+          "description": "Holds the **warning-frosted-soft** color (light), typically used as background \`:hover\`.",
+          "name": "colorWarningFrostedSoftLight",
+          "value": "hsl(40 80% 95% / 0.55)",
+        },
+        "colorWarningLight": {
+          "description": "Holds the **warning** color (light), typically used for text.",
+          "name": "colorWarningLight",
+          "value": "hsl(28 97.7% 34.1%)",
+        },
+        "colorWarningLowLight": {
+          "description": "Holds the **warning-low** color (light), typically used for text or border.",
+          "name": "colorWarningLowLight",
+          "value": "hsl(28 97.7% 34.1% / 0.18)",
+        },
+        "colorWarningMediumLight": {
+          "description": "Holds the **warning-medium** color (light), typically used for text or border.",
+          "name": "colorWarningMediumLight",
+          "value": "hsl(28 97.7% 34.1% / 0.6)",
+        },
+      },
+    },
+    "lightDark": {
+      "a11y": {
+        "colorFocus": {
+          "description": "Holds the **focus** color, typically used as the outline for \`:focus-visible\` states.",
+          "name": "colorFocus",
+          "value": "light-dark(#1A44EA,#1A44EA)",
+        },
+      },
+      "background": {
+        "colorBackdrop": {
+          "description": "Holds the **backdrop** color, typically used for backdrops.",
+          "name": "colorBackdrop",
+          "value": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 5.3% 14.9% / 0.5))",
+        },
+        "colorCanvas": {
+          "description": "Holds the **canvas** color, typically used for surfaces.",
+          "name": "colorCanvas",
+          "value": "light-dark(#fff,hsl(225 66.7% 1.2%))",
+        },
+        "colorFrosted": {
+          "description": "Holds the **frosted** color, typically used as a background in combination with a blur effect.",
+          "name": "colorFrosted",
+          "value": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
+        },
+        "colorFrostedSoft": {
+          "description": "Holds the **frosted-soft** color, typically used as a background \`:hover\`.",
+          "name": "colorFrostedSoft",
+          "value": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
+        },
+        "colorFrostedStrong": {
+          "description": "Holds the **frosted-strong** color, typically used as a stronger frosted background.",
+          "name": "colorFrostedStrong",
+          "value": "light-dark(hsl(236 6.5% 42% / 0.236),hsl(240 1.5% 61.8% / 0.302))",
+        },
+        "colorSurface": {
+          "description": "Holds the **surface** color, typically used for surfaces.",
+          "name": "colorSurface",
+          "value": "light-dark(hsl(240 10% 95%),hsl(240 2% 10%))",
+        },
+      },
+      "foreground": {
+        "colorContrastHigh": {
+          "description": "Holds the **contrast-high** color, typically used for text.",
+          "name": "colorContrastHigh",
+          "value": "light-dark(hsl(240 7.1% 11% / 0.7),hsl(240 12.5% 96.9% / 0.67))",
+        },
+        "colorContrastHigher": {
+          "description": "Holds the **contrast-higher** color, typically used for text.",
+          "name": "colorContrastHigher",
+          "value": "light-dark(hsl(240 8.7% 9% / 0.8),hsl(240 12.5% 96.9% / 0.78))",
+        },
+        "colorContrastLow": {
+          "description": "Holds the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.",
+          "name": "colorContrastLow",
+          "value": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))",
+        },
+        "colorContrastLower": {
+          "description": "Holds the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant.",
+          "name": "colorContrastLower",
+          "value": "light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))",
+        },
+        "colorContrastMedium": {
+          "description": "Holds the **contrast-medium** color, typically used for text.",
+          "name": "colorContrastMedium",
+          "value": "light-dark(hsl(240 6.1% 7% / 0.6),hsl(240 12.5% 96.9% / 0.56))",
+        },
+        "colorPrimary": {
+          "description": "Holds the **primary** color, typically used for text.",
+          "name": "colorPrimary",
+          "value": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
+        },
+      },
+      "semantic": {
+        "colorError": {
+          "description": "Holds the **error** color, typically used for text.",
+          "name": "colorError",
+          "value": "light-dark(hsl(357 78% 41%),hsl(0 96.9% 62%))",
+        },
+        "colorErrorFrosted": {
+          "description": "Holds the **error-frosted** color, typically used as background in combination with a blur effect.",
+          "name": "colorErrorFrosted",
+          "value": "light-dark(hsl(0 100% 90% / 0.55),hsl(0 79% 20% / 0.66))",
+        },
+        "colorErrorFrostedSoft": {
+          "description": "Holds the **error-frosted-soft** color, typically used as background \`:hover\`.",
+          "name": "colorErrorFrostedSoft",
+          "value": "light-dark(hsl(0 80% 95% / 0.55),hsl(0 59% 15% / 0.66))",
+        },
+        "colorErrorLow": {
+          "description": "Holds the **error-low** color, typically used for text or border.",
+          "name": "colorErrorLow",
+          "value": "light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18))",
+        },
+        "colorErrorMedium": {
+          "description": "Holds the **error-medium** color, typically used for text or border.",
+          "name": "colorErrorMedium",
+          "value": "light-dark(hsl(357 78% 41% / 0.6),hsl(0 96.9% 62% / 0.6))",
+        },
+        "colorInfo": {
+          "description": "Holds the **info** color, typically used for text.",
+          "name": "colorInfo",
+          "value": "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))",
+        },
+        "colorInfoFrosted": {
+          "description": "Holds the **info-frosted** color, typically used as background in combination with a blur effect.",
+          "name": "colorInfoFrosted",
+          "value": "light-dark(hsl(211 100% 90% / 0.55),hsl(210 79% 20% / 0.66))",
+        },
+        "colorInfoFrostedSoft": {
+          "description": "Holds the **info-frosted-soft** color, typically used as background \`:hover\`.",
+          "name": "colorInfoFrostedSoft",
+          "value": "light-dark(hsl(211 80% 95% / 0.55),hsl(210 59% 15% / 0.66))",
+        },
+        "colorInfoLow": {
+          "description": "Holds the **info-low** color, typically used for text or border.",
+          "name": "colorInfoLow",
+          "value": "light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18))",
+        },
+        "colorInfoMedium": {
+          "description": "Holds the **info-medium** color, typically used for text or border.",
+          "name": "colorInfoMedium",
+          "value": "light-dark(hsl(228 83.2% 51% / 0.6),hsl(210 100% 54.5% / 0.6))",
+        },
+        "colorSuccess": {
+          "description": "Holds the **success** color, typically used for text.",
+          "name": "colorSuccess",
+          "value": "light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%))",
+        },
+        "colorSuccessFrosted": {
+          "description": "Holds the **success-frosted** color, typically used as background in combination with a blur effect.",
+          "name": "colorSuccessFrosted",
+          "value": "light-dark(hsl(109 100% 90% / 0.55),hsl(157 79% 20% / 0.66))",
+        },
+        "colorSuccessFrostedSoft": {
+          "description": "Holds the **success-frosted-soft** color, typically used as background \`:hover\`.",
+          "name": "colorSuccessFrostedSoft",
+          "value": "light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66))",
+        },
+        "colorSuccessLow": {
+          "description": "Holds the **success-low** color, typically used for text or border.",
+          "name": "colorSuccessLow",
+          "value": "light-dark(hsl(115 77.5% 27.8% / 0.18),hsl(157 84.9% 41.6% / 0.18))",
+        },
+        "colorSuccessMedium": {
+          "description": "Holds the **success-medium** color, typically used for text or border.",
+          "name": "colorSuccessMedium",
+          "value": "light-dark(hsl(115 77.5% 27.8% / 0.6),hsl(157 84.9% 41.6% / 0.6))",
+        },
+        "colorWarning": {
+          "description": "Holds the **warning** color, typically used for text.",
+          "name": "colorWarning",
+          "value": "light-dark(hsl(28 97.7% 34.1%),hsl(28 90.2% 56.1%))",
+        },
+        "colorWarningFrosted": {
+          "description": "Holds the **warning-frosted** color, typically used as background in combination with a blur effect.",
+          "name": "colorWarningFrosted",
+          "value": "light-dark(hsl(40 100% 90% / 0.55),hsl(52 79% 20% / 0.66))",
+        },
+        "colorWarningFrostedSoft": {
+          "description": "Holds the **warning-frosted-soft** color, typically used as background \`:hover\`.",
+          "name": "colorWarningFrostedSoft",
+          "value": "light-dark(hsl(40 80% 95% / 0.55),hsl(52 59% 15% / 0.66))",
+        },
+        "colorWarningLow": {
+          "description": "Holds the **warning-low** color, typically used for text or border.",
+          "name": "colorWarningLow",
+          "value": "light-dark(hsl(28 97.7% 34.1% / 0.18),hsl(28 90.2% 56.1% / 0.18))",
+        },
+        "colorWarningMedium": {
+          "description": "Holds the **warning-medium** color, typically used for text or border.",
+          "name": "colorWarningMedium",
+          "value": "light-dark(hsl(28 97.7% 34.1% / 0.6),hsl(28 90.2% 56.1% / 0.6))",
+        },
+      },
+    },
+  },
+  "font": {
+    "family": {
+      "fontPorscheNext": {
+        "description": "Holds the **Porsche Next** font family along with fallback fonts.",
+        "name": "fontPorscheNext",
+        "value": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+      },
+    },
+    "lineHeight": {
+      "leadingNormal": {
+        "description": "Holds a dynamic default line height specifically optimized for the Porsche Next typeface.",
+        "name": "leadingNormal",
+        "value": "calc(6px + 2.125ex)",
+      },
+    },
+    "size": {
+      "typescale2Xl": {
+        "description": "Holds the **2x-large** font size optimized for the Porsche Next typeface.",
+        "name": "typescale2Xl",
+        "value": "clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)",
+      },
+      "typescale2Xs": {
+        "description": "Holds the **2x-small** font size optimized for the Porsche Next typeface.",
+        "name": "typescale2Xs",
+        "value": ".75rem",
+      },
+      "typescale3Xl": {
+        "description": "Holds the **3x-large** font size optimized for the Porsche Next typeface.",
+        "name": "typescale3Xl",
+        "value": "clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)",
+      },
+      "typescale4Xl": {
+        "description": "Holds the **4x-large** font size optimized for the Porsche Next typeface.",
+        "name": "typescale4Xl",
+        "value": "clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)",
+      },
+      "typescale5Xl": {
+        "description": "Holds the **5x-large** font size optimized for the Porsche Next typeface.",
+        "name": "typescale5Xl",
+        "value": "clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)",
+      },
+      "typescaleLg": {
+        "description": "Holds the **large** font size optimized for the Porsche Next typeface.",
+        "name": "typescaleLg",
+        "value": "clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)",
+      },
+      "typescaleMd": {
+        "description": "Holds the **medium** font size optimized for the Porsche Next typeface.",
+        "name": "typescaleMd",
+        "value": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+      },
+      "typescaleSm": {
+        "description": "Holds the **small** font size optimized for the Porsche Next typeface.",
+        "name": "typescaleSm",
+        "value": "1rem",
+      },
+      "typescaleXl": {
+        "description": "Holds the **x-large** font size optimized for the Porsche Next typeface.",
+        "name": "typescaleXl",
+        "value": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
+      },
+      "typescaleXs": {
+        "description": "Holds the **x-small** font size optimized for the Porsche Next typeface.",
+        "name": "typescaleXs",
+        "value": ".875rem",
+      },
+    },
+    "weight": {
+      "fontWeightBold": {
+        "description": "Holds the **bold** font weight optimized for the Porsche Next typeface.",
+        "name": "fontWeightBold",
+        "value": 700,
+      },
+      "fontWeightNormal": {
+        "description": "Holds the **normal** font weight optimized for the Porsche Next typeface.",
+        "name": "fontWeightNormal",
+        "value": 400,
+      },
+      "fontWeightSemibold": {
+        "description": "Holds the **semibold** font weight optimized for the Porsche Next typeface.",
+        "name": "fontWeightSemibold",
+        "value": 600,
+      },
+    },
+  },
+  "gradient": {
+    "gradientStopsFadeDark": {
+      "description": "Holds a gradient fade.",
+      "name": "gradientStopsFadeDark",
+      "value": "hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%",
+    },
+  },
+  "motion": {
+    "duration": {
+      "durationLg": {
+        "description": "Holds a **long** motion/transition duration value.",
+        "name": "durationLg",
+        "value": ".6s",
+      },
+      "durationMd": {
+        "description": "Holds a **moderate** motion/transition duration value.",
+        "name": "durationMd",
+        "value": ".4s",
+      },
+      "durationSm": {
+        "description": "Holds a **short** motion/transition duration value.",
+        "name": "durationSm",
+        "value": ".25s",
+      },
+      "durationXl": {
+        "description": "Holds a **very long** motion/transition duration value.",
+        "name": "durationXl",
+        "value": "1.2s",
+      },
+    },
+    "ease": {
+      "easeIn": {
+        "description": "Holds an **in** \`transition-timing-function\`.",
+        "name": "easeIn",
+        "value": "cubic-bezier(0,0,.2,1)",
+      },
+      "easeInOut": {
+        "description": "Holds an **in-out** \`transition-timing-function\`.",
+        "name": "easeInOut",
+        "value": "cubic-bezier(.25,.1,.25,1)",
+      },
+      "easeOut": {
+        "description": "Holds an **out** \`transition-timing-function\`.",
+        "name": "easeOut",
+        "value": "cubic-bezier(.4,0,.5,1)",
+      },
+    },
+  },
+  "shadow": {
+    "shadowLg": {
+      "description": "Holds a **high** \`box-shadow\`.",
+      "name": "shadowLg",
+      "value": "0px 8px 40px rgba(0,0,0,.16)",
+    },
+    "shadowMd": {
+      "description": "Holds a **medium** \`box-shadow\`.",
+      "name": "shadowMd",
+      "value": "0px 4px 16px rgba(0,0,0,.16)",
+    },
+    "shadowSm": {
+      "description": "Holds a **low** \`box-shadow\`.",
+      "name": "shadowSm",
+      "value": "0px 3px 8px rgba(0,0,0,.16)",
+    },
+  },
+  "spacing": {
+    "fluid": {
+      "spacingFluid2Xl": {
+        "description": "Holds the **2x-large fluid** spacing.",
+        "name": "spacingFluid2Xl",
+        "value": "clamp(80px, 7.5vw + 56px, 200px)",
+      },
+      "spacingFluidLg": {
+        "description": "Holds the **large fluid** spacing.",
+        "name": "spacingFluidLg",
+        "value": "clamp(32px, 2.75vw + 23px, 76px)",
+      },
+      "spacingFluidMd": {
+        "description": "Holds the **medium fluid** spacing.",
+        "name": "spacingFluidMd",
+        "value": "clamp(16px, 1.25vw + 12px, 36px)",
+      },
+      "spacingFluidSm": {
+        "description": "Holds the **small fluid** spacing.",
+        "name": "spacingFluidSm",
+        "value": "clamp(8px, 0.5vw + 6px, 16px)",
+      },
+      "spacingFluidXl": {
+        "description": "Holds the **x-large fluid** spacing.",
+        "name": "spacingFluidXl",
+        "value": "clamp(48px, 3vw + 38px, 96px)",
+      },
+      "spacingFluidXs": {
+        "description": "Holds the **x-small fluid** spacing.",
+        "name": "spacingFluidXs",
+        "value": "clamp(4px, 0.25vw + 3px, 8px)",
+      },
+    },
+    "static": {
+      "spacingStatic2Xl": {
+        "description": "Holds the **2x-large static** spacing.",
+        "name": "spacingStatic2Xl",
+        "value": "80px",
+      },
+      "spacingStatic2Xs": {
+        "description": "Holds the **2x-small static** spacing.",
+        "name": "spacingStatic2Xs",
+        "value": "1px",
+      },
+      "spacingStaticLg": {
+        "description": "Holds the **large static** spacing.",
+        "name": "spacingStaticLg",
+        "value": "32px",
+      },
+      "spacingStaticMd": {
+        "description": "Holds the **medium static** spacing.",
+        "name": "spacingStaticMd",
+        "value": "16px",
+      },
+      "spacingStaticSm": {
+        "description": "Holds the **small static** spacing.",
+        "name": "spacingStaticSm",
+        "value": "8px",
+      },
+      "spacingStaticXl": {
+        "description": "Holds the **x-large static** spacing.",
+        "name": "spacingStaticXl",
+        "value": "48px",
+      },
+      "spacingStaticXs": {
+        "description": "Holds the **x-small static** spacing.",
+        "name": "spacingStaticXs",
+        "value": "4px",
+      },
+    },
+  },
+}
+`;

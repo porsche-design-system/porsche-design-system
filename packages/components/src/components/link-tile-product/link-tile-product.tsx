@@ -1,9 +1,8 @@
-import { Component, Element, Event, type EventEmitter, Fragment, type JSX, Prop, h } from '@stencil/core';
-import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, Fragment, h, type JSX, Prop } from '@stencil/core';
+import { getSlottedPictureImageStyles } from '../../styles';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
@@ -13,12 +12,12 @@ import {
 } from '../../utils';
 import { getComponentCss } from './link-tile-product-styles';
 import {
+  anchorSlot,
+  headerSlot,
   type LinkTileProductAspectRatio,
   type LinkTileProductLikeEventDetail,
   type LinkTileProductTarget,
   TILE_PRODUCT_ASPECT_RATIOS,
-  anchorSlot,
-  headerSlot,
 } from './link-tile-product-utils';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
@@ -32,7 +31,6 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
   aspectRatio: AllowedTypes.breakpoint<LinkTileProductAspectRatio>(TILE_PRODUCT_ASPECT_RATIOS),
   target: AllowedTypes.string,
   rel: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -51,40 +49,37 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
 export class LinkTileProduct {
   @Element() public host!: HTMLElement;
 
-  /** Product heading. */
+  /** Sets the product name displayed prominently at the top of the tile. */
   @Prop() public heading: string;
 
-  /** Product retail price (with or without discount). */
+  /** Sets the current retail price of the product, displayed with or without a discount. */
   @Prop() public price: string;
 
-  /** Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect. */
+  /** Sets the original recommended retail price shown with a strikethrough to indicate a discount. Requires `price` to be set. */
   @Prop() public priceOriginal?: string;
 
-  /** Additional product description. */
+  /** Sets an optional short description providing additional product details below the price. */
   @Prop() public description?: string;
 
-  /** A Boolean attribute indicating that a like button should be shown. */
+  /** Shows a like/bookmark button so users can save the product. */
   @Prop() public likeButton?: boolean = true;
 
-  /** A Boolean attribute indicating that a product is liked. */
+  /** Reflects whether the product is currently liked — controls the filled state of the like button. */
   @Prop() public liked?: boolean = false;
 
-  /** href of the `<a>`. */
+  /** Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element. */
   @Prop() public href?: string;
 
-  /** Aspect ratio of the link-tile-product. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileProductAspectRatio> = '3:4';
+  /** Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values. */
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileProductAspectRatio> = '3/4';
 
-  /** Target attribute where the link should be opened. */
+  /** Specifies where to open the linked URL (e.g. `_self`, `_blank`). */
   @Prop() public target?: LinkTileProductTarget = '_self';
 
-  /** Specifies the relationship of the target object to the link object. */
+  /** Sets the `rel` attribute on the link (e.g. `noopener`). */
   @Prop() public rel?: string;
 
-  /** Adapts the link-tile-product color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** Emitted when the like button is clicked. */
+  /** Emitted when the user clicks the like button, with the new liked state in the event detail. */
   @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEventDetail>;
 
   public connectedCallback(): void {
@@ -108,8 +103,7 @@ export class LinkTileProduct {
       !this.href,
       !!this.priceOriginal,
       !!this.description,
-      this.aspectRatio,
-      this.theme
+      this.aspectRatio
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -141,7 +135,6 @@ export class LinkTileProduct {
               icon={this.liked ? 'heart-filled' : 'heart'}
               hideLabel={true}
               onClick={this.onLikeClick}
-              theme={this.theme}
             >
               {this.liked ? 'Remove from wishlist' : 'Add to wishlist'}
             </PrefixedTagNames.pButtonPure>

@@ -1,0 +1,408 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should expose correct scss package skill 1`] = `
+{
+  "content": "# Porsche Design System — SCSS
+
+The Porsche Design System ships a ready-made SCSS package: a curated catalog of design tokens
+exposed as Sass variables (colors, typography, spacing, border radii, blur, shadow, motion and
+breakpoints) plus a set of documented mixins (the layout grid, focus, skeletons,
+media queries and typography shorthands). Importing it under the \`pds\` namespace makes every
+documented \`pds.$variable\` and \`pds.mixin\` available to your stylesheets.
+
+> Requires the [Dart Sass](https://sass-lang.com/dart-sass/) module system (\`@use\`).
+
+Reach for these foundational styles when you build a custom component or pattern that is not yet
+available in the component library, or for foundational layout work such as typography, surfaces and
+boxes.
+
+## How to use
+
+### Import
+
+Install Sass (see the [official guide](https://sass-lang.com/install/)), then add the Porsche Design
+System SCSS package to your stylesheet with the Sass module system. Always import it under the \`pds\`
+namespace so the variables and mixins are clearly scoped:
+
+\`\`\`scss
+@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as pds;
+
+.my-card {
+  border-radius: pds.$radius-md;
+}
+\`\`\`
+
+You can also forward it with \`as *\` to drop the namespace, but the explicit \`pds\` namespace is
+recommended to avoid collisions.
+
+### Color scheme (light / dark)
+
+Colors are driven by the native CSS [\`light-dark()\`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark)
+function via the CSS [\`color-scheme\`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme)
+property — no proprietary switching logic. Include the \`color-scheme()\` mixin **once** in your global
+styles to generate the \`.scheme-*\` utility classes and add a polyfill for browsers without
+\`light-dark()\` support:
+
+\`\`\`scss
+// global styles
+@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as pds;
+
+@include pds.color-scheme();
+
+html, body {…}
+\`\`\`
+
+Then use the light-dark color variables in your component styles; they resolve to the correct value
+for the active theme automatically:
+
+\`\`\`scss
+.my-component {
+  background-color: pds.$color-frosted;
+  color: pds.$color-primary;
+}
+\`\`\`
+
+Apply one of the \`.scheme-*\` classes to the document or any container; the selected context cascades
+to all child elements:
+
+- \`.scheme-light\` — forces light mode.
+- \`.scheme-dark\` — forces dark mode.
+- \`.scheme-light-dark\` — dynamically follows the system/OS setting.
+
+The same class themes **both** the PDS components and your own SCSS-styled markup — one \`light-dark()\`
+palette drives both layers. There is no separate component theming API and no \`theme\` prop on
+\`PorscheDesignSystemProvider\` or on components; the \`.scheme-*\` class is the whole switch.
+
+\`\`\`html
+<html class="scheme-dark">
+  <body>
+    <!-- rendered in dark mode -->
+    <div class="my-component"></div>
+  </body>
+</html>
+\`\`\`
+
+### Grid
+
+For pages whose sections share one alignment system, include \`pds-grid\` once on the page root. Make each full-width
+section a subgrid, then place its content with the Porsche Grid variables. This avoids repeating the mixin and keeps all
+sections aligned. Section-level grid instances remain valid when sections need independent grids.
+
+### Variables and mixins
+
+Every documented variable is a \`$\`-prefixed Sass variable (e.g. \`pds.$radius-md\`), and every
+documented mixin is included with \`@include\` (e.g. \`@include pds.media-query-min(m) { … }\`). Use the
+reference below to discover what is available; read the shipped partials for the exact values.
+
+### Deprecated aliases
+
+The package still ships the legacy \`$pds-*\` variables and \`pds-*\` mixins as deprecated aliases so
+existing stylesheets keep compiling. Prefer the documented variables and mixins listed here for new
+code.
+
+## Contents
+
+- [Variables](#variables) — Border, Blur, Breakpoint, Color, Font, Shadow, Spacing, Motion, Gradient, Grid
+- [Mixins](#mixins) — Typography, Skeleton, Focus, Media query, Grid
+
+## Variables
+
+### Border — Radius
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$radius-xs\` | Holds a **x-small** \`border-radius\`. | \`2px\` |
+| \`$radius-sm\` | Holds a **small** \`border-radius\`. | \`4px\` |
+| \`$radius-md\` | Holds a **medium** \`border-radius\`. Used for \`p-checkbox\` in **compact mode**. | \`6px\` |
+| \`$radius-lg\` | Holds a **large** \`border-radius\`. Used for interactive controls in **compact mode** (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…). | \`8px\` |
+| \`$radius-xl\` | Holds a **x-large** \`border-radius\`. Used for interactive controls (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…). Defines the primary visual appearance alongside **radius3Xl**. | \`12px\` |
+| \`$radius-2xl\` | Holds a **2x-large** \`border-radius\`. Used for notification components (e.g. \`p-banner\`, \`p-inline-notification\`, \`p-toast\`,…). | \`16px\` |
+| \`$radius-3xl\` | Holds a **3x-large** \`border-radius\`. Used for card-like containers or dialogs (e.g. \`p-link-tile\`, \`p-modal\`, \`p-flyout\`, \`p-sheet\`,…). Defines the primary visual appearance alongside **radiusXl**. | \`24px\` |
+| \`$radius-4xl\` | Holds a **4x-large** \`border-radius\`. | \`32px\` |
+| \`$radius-full\` | Holds a **fully** rounded \`border-radius\`. Used for pill shapes (e.g. \`p-tag\`, \`p-switch\`,…). Recommended only for standalone indicators. | \`calc(infinity * 1px)\` |
+
+### Blur
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$blur-frosted\` | Holds a blur value for a **frosted** effect when combined with a semi-transparent color. | \`blur(32px)\` |
+
+### Breakpoint
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$breakpoint-xs\` | Holds the **x-small** responsive breakpoint. | \`480\` |
+| \`$breakpoint-sm\` | Holds the **small** responsive breakpoint. | \`760\` |
+| \`$breakpoint-md\` | Holds the **medium** responsive breakpoint. | \`1000\` |
+| \`$breakpoint-lg\` | Holds the **large** responsive breakpoint. | \`1300\` |
+| \`$breakpoint-xl\` | Holds the **x-large** responsive breakpoint. | \`1760\` |
+| \`$breakpoint-2xl\` | Holds the **2x-large** responsive breakpoint. | \`1920\` |
+
+### Color — Background
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$color-canvas\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **canvas** color, typically used for surfaces. | \`var(--_color-canvas, light-dark(#fff,hsl(225 66.7% 1.2%)))\` |
+| \`$color-surface\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **surface** color, typically used for surfaces. | \`var(--_color-surface, light-dark(hsl(240 10% 95%),hsl(240 2% 10%)))\` |
+| \`$color-frosted\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted** color, typically used as a background in combination with \`blur()\`. | \`var(--_color-frosted, light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228)))\` |
+| \`$color-frosted-soft\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-soft** color, typically used as a background \`:hover\`. | \`var(--_color-frosted-soft, light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154)))\` |
+| \`$color-frosted-strong\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted** color, typically used as a background in combination with \`blur()\`. | \`var(--_color-frosted-strong, light-dark(hsl(236 6.5% 42% / 0.236),hsl(240 1.5% 61.8% / 0.302)))\` |
+| \`$color-backdrop\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **backdrop** color, typically used for backdrops. | \`var(--_color-backdrop, light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 5.3% 14.9% / 0.5)))\` |
+
+### Color — Foreground
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$color-primary\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **primary** color, typically used for text. | \`var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))\` |
+| \`$color-contrast-higher\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-higher** color, typically used for text. | \`var(--_color-contrast-higher, light-dark(hsl(240 8.7% 9% / 0.8),hsl(240 12.5% 96.9% / 0.78)))\` |
+| \`$color-contrast-high\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-high** color, typically used for text. | \`var(--_color-contrast-high, light-dark(hsl(240 7.1% 11% / 0.7),hsl(240 12.5% 96.9% / 0.67)))\` |
+| \`$color-contrast-medium\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-medium** color, typically used for text. | \`var(--_color-contrast-medium, light-dark(hsl(240 6.1% 7% / 0.6),hsl(240 12.5% 96.9% / 0.56)))\` |
+| \`$color-contrast-low\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-low** color, intended only for decorative elements. | \`var(--_color-contrast-low, light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45)))\` |
+| \`$color-contrast-lower\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-lower** color, intended only for decorative elements. | \`var(--_color-contrast-lower, light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302)))\` |
+
+### Color — Semantic
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$color-info\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info** color, typically used for text. | \`var(--_color-info, light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%)))\` |
+| \`$color-info-medium\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-medium** color, typically used for text or border. | \`var(--_color-info-medium, light-dark(hsl(228 83.2% 51% / 0.6),hsl(210 100% 54.5% / 0.6)))\` |
+| \`$color-info-low\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-low** color, typically used for text or border. | \`var(--_color-info-low, light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18)))\` |
+| \`$color-info-frosted\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted** color, typically used as background with \`.backdrop-blur-frosted\`. | \`var(--_color-info-frosted, light-dark(hsl(211 100% 90% / 0.55),hsl(210 79% 20% / 0.66)))\` |
+| \`$color-info-frosted-soft\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted-soft** color, typically used as background \`:hover\`. | \`var(--_color-info-frosted-soft, light-dark(hsl(211 80% 95% / 0.55),hsl(210 59% 15% / 0.66)))\` |
+| \`$color-success\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success** color, typically used for text. | \`var(--_color-success, light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%)))\` |
+| \`$color-success-medium\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-medium** color, typically used for text or border. | \`var(--_color-success-medium, light-dark(hsl(115 77.5% 27.8% / 0.6),hsl(157 84.9% 41.6% / 0.6)))\` |
+| \`$color-success-low\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-low** color, typically used for text or border. | \`var(--_color-success-low, light-dark(hsl(115 77.5% 27.8% / 0.18),hsl(157 84.9% 41.6% / 0.18)))\` |
+| \`$color-success-frosted\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted** color, typically used as background with \`.backdrop-blur-frosted\`. | \`var(--_color-success-frosted, light-dark(hsl(109 100% 90% / 0.55),hsl(157 79% 20% / 0.66)))\` |
+| \`$color-success-frosted-soft\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted-soft** color, typically used as background \`:hover\`. | \`var(--_color-success-frosted-soft, light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66)))\` |
+| \`$color-warning\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning** color, typically used for text. | \`var(--_color-warning, light-dark(hsl(28 97.7% 34.1%),hsl(28 90.2% 56.1%)))\` |
+| \`$color-warning-medium\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-medium** color, typically used for text or border. | \`var(--_color-warning-medium, light-dark(hsl(28 97.7% 34.1% / 0.6),hsl(28 90.2% 56.1% / 0.6)))\` |
+| \`$color-warning-low\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-low** color, typically used for text or border. | \`var(--_color-warning-low, light-dark(hsl(28 97.7% 34.1% / 0.18),hsl(28 90.2% 56.1% / 0.18)))\` |
+| \`$color-warning-frosted\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted** color, typically used as background with \`.backdrop-blur-frosted\`. | \`var(--_color-warning-frosted, light-dark(hsl(40 100% 90% / 0.55),hsl(52 79% 20% / 0.66)))\` |
+| \`$color-warning-frosted-soft\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted-soft** color, typically used as background \`:hover\`. | \`var(--_color-warning-frosted-soft, light-dark(hsl(40 80% 95% / 0.55),hsl(52 59% 15% / 0.66)))\` |
+| \`$color-error\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error** color, typically used for text. | \`var(--_color-error, light-dark(hsl(357 78% 41%),hsl(0 96.9% 62%)))\` |
+| \`$color-error-medium\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-medium** color, typically used for text or border. | \`var(--_color-error-medium, light-dark(hsl(357 78% 41% / 0.6),hsl(0 96.9% 62% / 0.6)))\` |
+| \`$color-error-low\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-low** color, typically used for text or border. | \`var(--_color-error-low, light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18)))\` |
+| \`$color-error-frosted\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted** color, typically used as background with \`.backdrop-blur-frosted\`. | \`var(--_color-error-frosted, light-dark(hsl(0 100% 90% / 0.55),hsl(0 79% 20% / 0.66)))\` |
+| \`$color-error-frosted-soft\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted-soft** color, typically used as background \`:hover\`. | \`var(--_color-error-frosted-soft, light-dark(hsl(0 80% 95% / 0.55),hsl(0 59% 15% / 0.66)))\` |
+
+### Color — A11y
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$color-focus\` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **focus** color, typically used as the outline for \`:focus-visible\` states. | \`var(--_color-focus, light-dark(#1A44EA,#1A44EA))\` |
+
+### Font — Family
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$font-porsche-next\` | Holds the **Porsche Next** font family along with fallback fonts. | \`'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif\` |
+| \`$font-porsche-next-zh-hans\` | Holds the **Porsche Next** font family along with fallback fonts for **Simplified Chinese**. | \`'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif\` |
+| \`$font-porsche-next-zh-hant\` | Holds the **Porsche Next** font family along with fallback fonts for **Traditional Chinese**. | \`'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif\` |
+| \`$font-porsche-next-ja\` | Holds the **Porsche Next** font family along with fallback fonts for **Japanese**. | \`'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif\` |
+| \`$font-porsche-next-ko\` | Holds the **Porsche Next** font family along with fallback fonts for **Korean**. | \`'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif\` |
+
+### Font — Weight
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$font-weight-normal\` | Holds the **normal** font weight optimized for the Porsche Next typeface. | \`400\` |
+| \`$font-weight-semibold\` | Holds the **semibold** font weight optimized for the Porsche Next typeface. | \`600\` |
+| \`$font-weight-bold\` | Holds the **bold** font weight optimized for the Porsche Next typeface. | \`700\` |
+
+### Font — Line height
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$leading-normal\` | Holds a dynamic default line height specifically optimized for the Porsche Next typeface. | \`calc(6px + 2.125ex)\` |
+
+### Font — Size
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$typescale-2xs\` | Holds the **2x-small** font size optimized for the Porsche Next typeface. | \`.75rem\` |
+| \`$typescale-xs\` | Holds the **x-small** font size optimized for the Porsche Next typeface. | \`.875rem\` |
+| \`$typescale-sm\` | Holds the **small** font size optimized for the Porsche Next typeface. | \`1rem\` |
+| \`$typescale-md\` | Holds the **medium** font size optimized for the Porsche Next typeface. | \`clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)\` |
+| \`$typescale-lg\` | Holds the **large** font size optimized for the Porsche Next typeface. | \`clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)\` |
+| \`$typescale-xl\` | Holds the **x-large** font size optimized for the Porsche Next typeface. | \`clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)\` |
+| \`$typescale-2xl\` | Holds the **2x-large** font size optimized for the Porsche Next typeface. | \`clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)\` |
+| \`$typescale-3xl\` | Holds the **3x-large** font size optimized for the Porsche Next typeface. | \`clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)\` |
+| \`$typescale-4xl\` | Holds the **4x-large** font size optimized for the Porsche Next typeface. | \`clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)\` |
+| \`$typescale-5xl\` | Holds the **5x-large** font size optimized for the Porsche Next typeface. | \`clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)\` |
+
+### Shadow
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$shadow-sm\` | Holds a **small** \`shadow\`. | \`0px 3px 8px rgba(0,0,0,.16)\` |
+| \`$shadow-md\` | Holds a **medium** \`shadow\`. | \`0px 4px 16px rgba(0,0,0,.16)\` |
+| \`$shadow-lg\` | Holds a **large** \`shadow\`. | \`0px 8px 40px rgba(0,0,0,.16)\` |
+
+### Spacing — Fluid
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$spacing-fluid-xs\` | Holds the **x-small fluid** spacing. | \`clamp(4px, 0.25vw + 3px, 8px)\` |
+| \`$spacing-fluid-sm\` | Holds the **small fluid** spacing. | \`clamp(8px, 0.5vw + 6px, 16px)\` |
+| \`$spacing-fluid-md\` | Holds the **medium fluid** spacing. | \`clamp(16px, 1.25vw + 12px, 36px)\` |
+| \`$spacing-fluid-lg\` | Holds the **large fluid** spacing. | \`clamp(32px, 2.75vw + 23px, 76px)\` |
+| \`$spacing-fluid-xl\` | Holds the **x-large fluid** spacing. | \`clamp(48px, 3vw + 38px, 96px)\` |
+| \`$spacing-fluid-2xl\` | Holds the **2x-large fluid** spacing. | \`clamp(80px, 7.5vw + 56px, 200px)\` |
+
+### Spacing — Static
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$spacing-static-2xs\` | Holds the **2x-small static** spacing. | \`1px\` |
+| \`$spacing-static-xs\` | Holds the **x-small static** spacing. | \`4px\` |
+| \`$spacing-static-sm\` | Holds the **small static** spacing. | \`8px\` |
+| \`$spacing-static-md\` | Holds the **medium static** spacing. | \`16px\` |
+| \`$spacing-static-lg\` | Holds the **large static** spacing. | \`32px\` |
+| \`$spacing-static-xl\` | Holds the **x-large static** spacing. | \`48px\` |
+| \`$spacing-static-2xl\` | Holds the **2x-large static** spacing. | \`80px\` |
+
+### Motion — Duration
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$duration-sm\` | Holds a **short** \`transition-duration\` / \`animation-duration\`. | \`.25s\` |
+| \`$duration-md\` | Holds a **moderate** \`transition-duration\` / \`animation-duration\`. | \`.4s\` |
+| \`$duration-lg\` | Holds a **long** \`transition-duration\` / \`animation-duration\`. | \`.6s\` |
+| \`$duration-xl\` | Holds a **very long** \`transition-duration\` / \`animation-duration\`. | \`1.2s\` |
+
+### Motion — Ease
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$ease-in-out\` | Holds an **in-out** \`transition-timing-function\`. | \`cubic-bezier(.25,.1,.25,1)\` |
+| \`$ease-in\` | Holds an **in** \`transition-timing-function\`. | \`cubic-bezier(0,0,.2,1)\` |
+| \`$ease-out\` | Holds an **out** \`transition-timing-function\`. | \`cubic-bezier(.4,0,.5,1)\` |
+
+### Gradient
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$gradient-stops-fade-dark\` | Holds color stops for a faded gradient, used as \`background-image\`. | \`hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%\` |
+
+### Grid — Base
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$pds-grid-gap\` | Holds the grid **gap** the Porsche Grid. | \`clamp(16px, 1.25vw + 12px, 36px)\` |
+
+### Grid — Narrow
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$pds-grid-narrow-column-start\` | Holds the **start** position of the \`narrow\` area within the Porsche Grid. | \`narrow-start\` |
+| \`$pds-grid-narrow-column-end\` | Holds the **end** position of the \`narrow\` area within the Porsche Grid. | \`narrow-end\` |
+| \`$pds-grid-narrow-span-one-half\` | Holds a **one third** span within the \`narrow\` area of the Porsche Grid. | \`var(--pds-grid-narrow-span-one-half)\` |
+| \`$pds-grid-narrow-offset-base\` | Holds a **base** offset within the \`narrow\` area of the Porsche Grid. | \`max(22px, 10.625vw - 12px)\` |
+| \`$pds-grid-narrow-offset-s\` | Holds a **small** offset within the \`narrow\` area of the Porsche Grid. | \`calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)) * 4)\` |
+| \`$pds-grid-narrow-offset-xxl\` | Holds a **xxl** offset within the \`narrow\` area of the Porsche Grid. | \`calc(max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)) * 4)\` |
+
+### Grid — Basic
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$pds-grid-basic-column-start\` | Holds the **start** position of the \`basic\` area within the Porsche Grid. | \`basic-start\` |
+| \`$pds-grid-basic-column-end\` | Holds the **end** position of the \`basic\` area within the Porsche Grid. | \`basic-end\` |
+| \`$pds-grid-basic-span-one-half\` | Holds a **half** span within the \`basic\` area of the Porsche Grid. | \`var(--pds-grid-basic-span-one-half)\` |
+| \`$pds-grid-basic-span-one-third\` | Holds a **one third** span within the \`basic\` area of the Porsche Grid. | \`var(--pds-grid-basic-span-one-third)\` |
+| \`$pds-grid-basic-span-two-thirds\` | Holds a **two thirds** span within the \`basic\` area of the Porsche Grid. | \`var(--pds-grid-basic-span-two-thirds)\` |
+| \`$pds-grid-basic-offset-base\` | Holds a **base** offset within the \`base\` area of the Porsche Grid. | \`max(22px, 10.625vw - 12px)\` |
+| \`$pds-grid-basic-offset-s\` | Holds a **small** offset within the \`base\` area of the Porsche Grid. | \`calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)) * 2)\` |
+| \`$pds-grid-basic-offset-xxl\` | Holds a **xxl** offset within the \`base\` area of the Porsche Grid. | \`calc(max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)) * 2)\` |
+
+### Grid — Extended
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$pds-grid-extended-column-start\` | Holds the **start** position of the \`extended\` area within the Porsche Grid. | \`extended-start\` |
+| \`$pds-grid-extended-column-end\` | Holds the **end** position of the \`extended\` area within the Porsche Grid. | \`extended-end\` |
+| \`$pds-grid-extended-span-one-half\` | Holds a **half** span within the \`extended\` area of the Porsche Grid. | \`var(--pds-grid-extended-span-one-half)\` |
+| \`$pds-grid-extended-offset-base\` | Holds a **base** offset within the \`extended\` area of the Porsche Grid. | \`max(22px, 10.625vw - 12px)\` |
+| \`$pds-grid-extended-offset-s\` | Holds a **small** offset within the \`extended\` area of the Porsche Grid. | \`calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)) * 1)\` |
+| \`$pds-grid-extended-offset-xxl\` | Holds a **xxl** offset within the \`extended\` area of the Porsche Grid. | \`calc(max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)) * 1)\` |
+
+### Grid — Wide
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$pds-grid-wide-column-start\` | Holds the **start** position of the \`wide\` area within the Porsche Grid. | \`wide-start\` |
+| \`$pds-grid-wide-column-end\` | Holds the **end** position of the \`wide\` area within the Porsche Grid. | \`wide-end\` |
+| \`$pds-grid-wide-offset-base\` | Holds a **base** offset within the \`wide\` area of the Porsche Grid. | \`max(22px, 10.625vw - 12px)\` |
+| \`$pds-grid-wide-offset-s\` | Holds a **small** offset within the \`wide\` area of the Porsche Grid. | \`calc(5vw - 16px)\` |
+| \`$pds-grid-wide-offset-xxl\` | Holds a **xxl** offset within the \`wide\` area of the Porsche Grid. | \`calc(max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px))\` |
+
+### Grid — Full
+
+| SCSS variable | Description | Value |
+| --- | --- | --- |
+| \`$pds-grid-full-column-start\` | Holds the **start** position of the \`full\` area within the Porsche Grid. | \`full-start\` |
+| \`$pds-grid-full-column-end\` | Holds the **end** position of the \`full\` area within the Porsche Grid. | \`full-end\` |
+| \`$pds-grid-full-offset\` | Holds a **full** offset within the \`full\` area of the Porsche Grid. | \`max(0px, 50vw - 2560px/2)\` |
+
+## Mixins
+
+### Typography — Heading
+
+| SCSS mixin | Description |
+| --- | --- |
+| \`@include prose-heading-5xl\` | Applies the **5x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+| \`@include prose-heading-4xl\` | Applies the **4x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+| \`@include prose-heading-3xl\` | Applies the **3x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+| \`@include prose-heading-2xl\` | Applies the **2x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+| \`@include prose-heading-xl\` | Applies the **x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+| \`@include prose-heading-lg\` | Applies the **large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+| \`@include prose-heading-md\` | Applies the **medium** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+| \`@include prose-heading-sm\` | Applies the **small** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+| \`@include prose-heading-xs\` | Applies the **x-small** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+| \`@include prose-heading-2xs\` | Applies the **2x-small** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags. |
+
+### Typography — Text
+
+| SCSS mixin | Description |
+| --- | --- |
+| \`@include prose-text-5xl\` | Applies the **5x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+| \`@include prose-text-4xl\` | Applies the **4x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+| \`@include prose-text-3xl\` | Applies the **3x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+| \`@include prose-text-2xl\` | Applies the **2x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+| \`@include prose-text-xl\` | Applies the **x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+| \`@include prose-text-lg\` | Applies the **large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+| \`@include prose-text-md\` | Applies the **medium** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+| \`@include prose-text-sm\` | Applies the **small** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+| \`@include prose-text-xs\` | Applies the **x-small** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+| \`@include prose-text-2xs\` | Applies the **2x-small** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags. |
+
+### Skeleton
+
+| SCSS mixin | Description |
+| --- | --- |
+| \`@include skeleton()\` | Applies a skeleton placeholder style to indicate loading state. |
+
+### Focus
+
+| SCSS mixin | Description |
+| --- | --- |
+| \`@include focus-visible($offset: 2px)\` | Applies a **focus-visible** style. |
+
+### Media query
+
+| SCSS mixin | Description |
+| --- | --- |
+| \`@include media-query-min($min: null)\` | Applies a **min** media query with the specified breakpoint. |
+| \`@include media-query-max($max: null)\` | Applies a **max** media query with the specified breakpoint. |
+| \`@include media-query-min-max($min: null, $max: null)\` | Applies a **min-max** media query with the specified breakpoints. |
+
+### Grid
+
+| SCSS mixin | Description |
+| --- | --- |
+| \`@include pds-grid\` | Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). |
+",
+  "description": "Sass variables and mixins under the \`pds\` namespace",
+  "name": "scss",
+  "title": "SCSS",
+}
+`;

@@ -1,7 +1,7 @@
 {
-  "name": "vue",
-  "private": true,
+  "name": "@porsche-design-system/stackblitz-vue",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,17 +9,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.34.0",
-    "vue": "^3.5.22"
+    "@porsche-design-system/components-vue": "4.6.0",
+    "ag-grid-community": "36.1.0",
+    "ag-grid-vue3": "36.1.0",
+    "vue": "^3.5.41"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.1",
-    "@vue/tsconfig": "^0.8.1",
-    "typescript": "~5.9.3",
-    "vite": "^7.1.9",
-    "vue-tsc": "^3.1.1",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/tsconfig": "^0.9.1",
     "postcss": "^8",
-    "tailwindcss": "^4.1.14",
-    "@tailwindcss/postcss": "^4.1.14"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.0",
+    "vue-tsc": "^3.3.9"
   }
 }

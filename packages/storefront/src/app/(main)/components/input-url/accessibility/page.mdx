@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputUrlMeta } from '@/app/(main)/components/input-url/input-url.meta';
+
+export const metadata = {
+  title: 'Input URL: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input URL component',
+};
+
+# Input URL <ComponentStatus tagName="p-input-url"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
+/>
+
+<inputUrlMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-input-url" examples={inputUrlMeta.accessibility.examples} />
+
+<inputUrlMeta.accessibility.tests />

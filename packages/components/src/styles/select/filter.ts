@@ -1,21 +1,17 @@
-import type { Theme } from '@porsche-design-system/styles';
+import { colorCanvas, ref } from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
-import { isThemeDark } from '../../utils';
-import { getThemedColors } from '../colors';
-import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
 
-export const getFilterJssStyle = (scalingVar: string, theme: Theme): JssStyle => {
-  const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
+export const getFilterJssStyle = (scalingVarName: string): JssStyle => {
+  const padding = `calc(11.2px * (${ref(scalingVarName)} - 0.64285714) + 4px)`;
+  const margin = `calc(${padding} * -1)`;
+  const top = margin;
+
   return {
     position: 'sticky',
-    top: `calc(max(2px, ${scalingVar} * 6px) * -1)`,
-    padding: `max(2px, ${scalingVar} * 6px)`,
-    margin: `calc(max(2px, ${scalingVar} * 6px) * -1)`,
-    background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: backgroundSurfaceColorDark,
-    }),
+    top,
+    padding,
+    margin,
+    background: ref(colorCanvas),
     zIndex: 1,
   };
 };

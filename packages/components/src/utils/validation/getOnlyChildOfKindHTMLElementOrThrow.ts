@@ -1,6 +1,6 @@
-/* eslint-disable prefer-arrow/prefer-arrow-functions */
-import { getTagNameWithoutPrefix, throwException } from '..';
 import { getDirectChildHTMLElements } from '../dom/getDirectChildHTMLElements';
+import { throwException } from '../log/logger';
+import { getTagNameWithoutPrefix } from '../tag-name';
 
 // prettier-ignore
 export function getOnlyChildOfKindHTMLElementOrThrow<K extends keyof HTMLElementTagNameMap>(

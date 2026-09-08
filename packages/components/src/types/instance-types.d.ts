@@ -8,5 +8,5 @@ export type FunctionPropertyNames<T> = {
 
 // biome-ignore lint/complexity/noBannedTypes: to be refactored
 export type Class<T> = Function & {
-  new (...args: any[]): T; // eslint-disable-line @typescript-eslint/prefer-function-type
+  new (...args: any[]): T;
 };

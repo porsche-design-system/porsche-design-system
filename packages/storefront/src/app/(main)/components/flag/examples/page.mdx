@@ -1,0 +1,33 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { flagMeta } from '@/app/(main)/components/flag/flag.meta';
+
+export const metadata = {
+  title: 'Flag - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Flag component.',
+};
+
+# Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
+
+<TableOfContents
+  headings={[flagMeta.examples.size.name, flagMeta.examples.sizeCssVar.name, flagMeta.examples.responsiveSize.name]}
+/>
+
+## {flagMeta.examples.size.name}
+
+<flagMeta.examples.size.description />
+
+<ComponentStory story={flagMeta.examples.size.story} />
+
+## {flagMeta.examples.sizeCssVar.name}
+
+<flagMeta.examples.sizeCssVar.description />
+
+<ComponentStory story={flagMeta.examples.sizeCssVar.story} />
+
+## {flagMeta.examples.responsiveSize.name}
+
+<flagMeta.examples.responsiveSize.description />
+
+<ComponentStory story={flagMeta.examples.responsiveSize.story} />

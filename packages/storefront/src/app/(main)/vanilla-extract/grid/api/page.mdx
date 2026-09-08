@@ -1,0 +1,38 @@
+import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract/meta';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { StylesTable } from '@/components/common/StylesTable';
+
+export const metadata = {
+  title: 'Vanilla Extract: Grid - Porsche Design System',
+  description: 'Detailed API reference for the Grid style.',
+};
+
+# Grid
+
+<TableOfContents headings={['Base', 'Narrow', 'Basic', 'Extended', 'Wide', 'Full']} />
+
+## JS
+
+### Base
+
+<StylesTable meta={{ template: vanillaExtractMeta.grid.template, gap: vanillaExtractMeta.grid.gap }} columnLabel="JS" />
+
+### Narrow
+
+<StylesTable meta={vanillaExtractMeta.grid.narrow} columnLabel="JS" />
+
+### Basic
+
+<StylesTable meta={vanillaExtractMeta.grid.basic} columnLabel="JS" />
+
+### Extended
+
+<StylesTable meta={vanillaExtractMeta.grid.extended} columnLabel="JS" />
+
+### Wide
+
+<StylesTable meta={vanillaExtractMeta.grid.wide} columnLabel="JS" />
+
+### Full
+
+<StylesTable meta={vanillaExtractMeta.grid.full} columnLabel="JS" />

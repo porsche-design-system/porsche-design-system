@@ -1,9 +1,9 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../types';
-import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../utils';
+import type { PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, validateProps } from '../../utils';
 import { getComponentCss } from './ai-tag-styles';
 import {
-  AI_TAG_TRANSLATIONS,
+  AI_TAG_LOCALES,
   AI_TAG_VARIANTS,
   type AiTagLocale,
   type AiTagVariant,
@@ -11,8 +11,7 @@ import {
 } from './ai-tag-utils';
 
 const propTypes: PropTypes<typeof AiTag> = {
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
-  locale: AllowedTypes.oneOf<AiTagLocale>(Object.keys(AI_TAG_TRANSLATIONS) as AiTagLocale[]),
+  locale: AllowedTypes.oneOf<AiTagLocale>(AI_TAG_LOCALES),
   variant: AllowedTypes.oneOf<AiTagVariant>(AI_TAG_VARIANTS),
 };
 
@@ -23,11 +22,11 @@ const propTypes: PropTypes<typeof AiTag> = {
 export class AiTag {
   @Element() public host!: HTMLElement;
 
-  /** Adapts the tag color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** Locale for the AI text (ISO format, e.g. "de_DE"). */
-  @Prop() public locale?: AiTagLocale = 'en_US';
+  /**
+   * Market locale for the AI text (BCP47, e.g. `en-US`). Language-only `en` is supported for international markets.
+   * POSIX forms (e.g. `en_US`) are deprecated but still accepted. Copy is resolved by language; unknown languages fall back to English.
+   */
+  @Prop() public locale?: AiTagLocale = 'en-US';
 
   /** Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified"). */
   @Prop() public variant?: AiTagVariant = 'generated';
@@ -35,7 +34,7 @@ export class AiTag {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(this.host, getComponentCss);
 
     const { short, long, generated, modified } = getAiTagTranslation(this.locale);
 

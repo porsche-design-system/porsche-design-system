@@ -19,9 +19,12 @@ const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
-  '@porsche-design-system/components-js/styles',
+  '@porsche-design-system/components-js/tokens',
+  '@porsche-design-system/components-js/emotion',
+  '@porsche-design-system/components-js/meta',
   '@porsche-design-system/components-js/ag-grid',
-  '@porsche-design-system/components-js/styles/vanilla-extract',
+  '@porsche-design-system/components-js/scss',
+  '@porsche-design-system/components-js/vanilla-extract',
   '@porsche-design-system/components-js/testing',
   'react',
   'react/jsx-runtime',
@@ -86,53 +89,10 @@ export default [
       generatePackageJson({
         inputFolder: 'projects/react-wrapper', // defaults to current working directory, which is the wrong one
         outputFolder: outputDir,
+        // `exports` and `style` are defined in the source package.json (single source of truth, like components-js),
+        // so they are kept here simply by spreading `...pkg`.
         baseContents: (pkg) => ({
           ...pkg,
-          exports: {
-            './package.json': './package.json',
-            '.': {
-              types: './esm/public-api.d.ts',
-              import: './esm/public-api.mjs',
-              default: './cjs/public-api.cjs',
-            },
-            './jsdom-polyfill': {
-              types: './jsdom-polyfill/index.d.ts',
-              default: './jsdom-polyfill/index.cjs',
-            },
-            './partials': {
-              types: './partials/esm/index.d.ts',
-              module: './partials/esm/index.mjs',
-              default: './partials/cjs/index.cjs',
-            },
-            './ssr': {
-              types: './ssr/esm/public-api.d.ts',
-              import: './ssr/esm/components-react/projects/react-ssr-wrapper/src/public-api.mjs',
-              default: './ssr/cjs/components-react/projects/react-ssr-wrapper/src/public-api.cjs',
-            },
-            './styles': {
-              sass: './styles/_index.scss',
-              types: './styles/esm/index.d.ts',
-              import: './styles/esm/index.mjs',
-              default: './styles/cjs/index.cjs',
-            },
-            './styles/vanilla-extract': {
-              types: './styles/vanilla-extract/esm/vanilla-extract/index.d.ts',
-              import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
-              default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
-            },
-            './tailwindcss': {
-              style: './tailwindcss/index.css',
-            },
-            './ag-grid': {
-              types: './ag-grid/esm/index.d.ts',
-              import: './ag-grid/esm/index.mjs',
-              default: './ag-grid/cjs/index.cjs',
-            },
-            './testing': {
-              types: './testing/index.d.ts',
-              default: './testing/index.cjs',
-            },
-          },
         }),
       }),
     ],
@@ -231,66 +191,120 @@ export default [
     ],
   },
   {
-    input: `${projectDir}/src/styles/index.ts`,
+    input: `${projectDir}/src/tokens/index.ts`,
     external,
     output: [
       {
-        file: `${outputDir}/styles/cjs/index.cjs`,
+        file: `${outputDir}/tokens/cjs/index.cjs`,
         format: 'cjs',
       },
       {
-        file: `${outputDir}/styles/esm/index.mjs`,
+        file: `${outputDir}/tokens/esm/index.mjs`,
         format: 'esm',
       },
     ],
     plugins: [
       // typings are produced by main build
       typescript(typescriptOpts),
-      copy({
-        targets: [
-          {
-            src: `${projectDir}/src/styles/_index.scss`,
-            dest: `${outputDir}/styles`,
-          },
-        ],
-      }),
       generatePackageJson({
-        outputFolder: `${outputDir}/styles`,
+        outputFolder: `${outputDir}/tokens`,
         baseContents: {
           main: 'cjs/index.cjs',
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
           sideEffects: false,
-          exports: {
-            // Default export (JS)
-            '.': {
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-            // Vanilla-Extract export
-            './vanilla-extract': {
-              types: './vanilla-extract/esm/vanilla-extract/index.d.ts',
-              import: './vanilla-extract/esm/vanilla-extract/index.mjs',
-              default: './vanilla-extract/cjs/vanilla-extract/index.cjs',
-            },
-          },
         },
       }),
     ],
   },
   {
-    input: `${projectDir}/src/styles/vanilla-extract/index.ts`,
+    input: `${projectDir}/src/emotion/index.ts`,
     external,
     output: [
       {
-        file: `${outputDir}/styles/vanilla-extract/cjs/vanilla-extract/index.cjs`,
+        file: `${outputDir}/emotion/cjs/index.cjs`,
         format: 'cjs',
       },
       {
-        file: `${outputDir}/styles/vanilla-extract/esm/vanilla-extract/index.mjs`,
+        file: `${outputDir}/emotion/esm/index.mjs`,
         format: 'esm',
       },
+    ],
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/emotion`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
+  },
+  {
+    input: `${projectDir}/src/meta/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/meta/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/meta/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/meta`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
+  },
+  {
+    input: `${projectDir}/src/vanilla-extract/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/vanilla-extract/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/vanilla-extract/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      // SCSS
+      copy({
+        targets: [
+          {
+            src: `${projectDir}/src/scss/_index.scss`,
+            dest: `${outputDir}/scss`,
+          },
+        ],
+      }),
+      generatePackageJson({
+        outputFolder: `${outputDir}/vanilla-extract`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
     ],
   },
   {

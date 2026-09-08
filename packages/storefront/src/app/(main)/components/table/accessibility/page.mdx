@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tableMeta } from '@/app/(main)/components/table/table.meta';
+
+export const metadata = {
+  title: 'Table: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Table component',
+};
+
+# Table <ComponentStatus tagName="p-table"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<tableMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-table" examples={tableMeta.accessibility.examples} />
+
+<tableMeta.accessibility.tests />

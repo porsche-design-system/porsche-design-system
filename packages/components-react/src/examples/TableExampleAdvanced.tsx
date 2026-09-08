@@ -113,7 +113,7 @@ const dataAdvanced: DataAdvanced[] = [
   },
 ];
 
-export const TableExampleAdvancedPage = (): JSX.Element => {
+export const TableExampleAdvancedPage = () => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 

@@ -8,25 +8,26 @@ import {
   PCanvas,
   PHeading,
   PLink,
+  PLinkPure,
 } from '@porsche-design-system/components-react/ssr';
-import { breakpointM, breakpointS } from '@porsche-design-system/components-react/styles';
+import { breakpointMd, breakpointSm } from '@porsche-design-system/tokens';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { DirectionSelect } from '@/components/common/DirectionSelect';
 import { Navigation } from '@/components/common/Navigation';
-import Tabs from '@/components/common/Tabs';
 import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { Search } from '@/components/search/Search';
 import { useDirection } from '@/hooks/useDirection';
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import { useFocusMainContentOnRouteChange } from '@/hooks/useFocusMainContentOnRouteChange';
+import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontVersion } from '@/hooks/useStorefrontVersion';
 import { useTextZoom } from '@/hooks/useTextZoom';
+import type { StorefrontColorScheme } from '@/models/colorScheme';
 import type { StorefrontDirection } from '@/models/dir';
 import type { StorefrontTextZoom } from '@/models/textZoom';
-import type { StorefrontTheme } from '@/models/theme';
 
 declare global {
   interface Window {
@@ -40,20 +41,22 @@ if (global?.window) {
 
 export const Canvas = ({ children }: PropsWithChildren) => {
   const { pdsVersion, isOutdatedVersionBannerOpen, setIsIsOutdatedVersionBannerOpen } = useStorefrontVersion();
-  const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
+  const { storefrontColorScheme, setStorefrontColorScheme } = useStorefrontColorScheme();
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
   const pathname = usePathname();
+  useFocusMainContentOnRouteChange();
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(false);
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const isDesktop = typeof window !== 'undefined' && window.matchMedia(`(min-width: ${breakpointMd}px)`).matches;
 
   const onSidebarStartUpdate = (e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
     setIsSidebarStartOpen(e.detail.open);
   };
-  const onSidebarEndOpen = () => {
-    setIsSidebarEndOpen(true);
+  const onSidebarEndToggle = () => {
+    setIsSidebarEndOpen((isOpen) => !isOpen);
   };
   const onSidebarEndDismiss = () => {
     setIsSidebarEndOpen(false);
@@ -72,22 +75,30 @@ export const Canvas = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     // initially, sidebar should be closed on mobile and opened on desktop
-    setIsSidebarStartOpen(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
+    setIsSidebarStartOpen(window.matchMedia(`(min-width: ${breakpointSm}px)`).matches);
   }, []);
 
   useEffect(() => {
-    setIsSidebarEndOpen(
-      (window.matchMedia(`(min-width: ${breakpointM}px)`).matches && pathname?.includes('configurator')) ?? false
-    );
-  }, [pathname]);
+    setIsSidebarEndOpen((isDesktop && pathname?.includes('configurator')) ?? false);
+  }, [pathname, isDesktop]);
+
+  const onNavigationChange = () => {
+    if (!isDesktop && isSidebarStartOpen) {
+      setIsSidebarStartOpen(false);
+    }
+  };
 
   return (
     <PCanvas
+      className="[--p-canvas-sidebar-start-width:315px] [--p-canvas-sidebar-end-width:315px]"
       sidebarStartOpen={isSidebarStartOpen}
       sidebarEndOpen={isSidebarEndOpen}
       onSidebarStartUpdate={onSidebarStartUpdate}
       onSidebarEndDismiss={onSidebarEndDismiss}
     >
+      <PLinkPure slot="header-start" icon="arrow-down" className="sr-only focus-within:not-sr-only">
+        <Link href="#main-content">Skip to content</Link>
+      </PLinkPure>
       <Link slot="title" href="/">
         Porsche Design System
       </Link>
@@ -104,61 +115,65 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <PButton
         slot="header-end"
         icon="search"
-        variant="ghost"
+        variant="secondary"
+        type="button"
         compact={true}
         hideLabel={true}
         onClick={onOpenSearch}
-        aria={{ 'aria-label': 'Search' }}
+        aria={{ 'aria-haspopup': 'dialog' }}
       >
         Search
       </PButton>
       <PLink
         slot="header-end"
         iconSource="assets/github.svg"
-        variant="ghost"
+        variant="secondary"
         compact={true}
         hideLabel={true}
         href="https://github.com/porsche-design-system/porsche-design-system"
         target="_blank"
+        aria={{ 'aria-description': 'External link, opens in new tab' }}
       >
-        Navigate to GitHub repository of Porsche Design System
+        GitHub repository of Porsche Design System
       </PLink>
       <PButton
         slot="header-end"
         icon="configurate"
-        variant="ghost"
+        variant="secondary"
+        type="button"
         compact={true}
         hideLabel={true}
-        onClick={onSidebarEndOpen}
+        onClick={onSidebarEndToggle}
+        aria={{ 'aria-expanded': isSidebarEndOpen }}
       >
-        Open sidebar
+        {isSidebarEndOpen ? 'Close' : 'Open'} settings sidebar
       </PButton>
 
-      <div className="-p-canvas-grid">
+      <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md">
         <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
-        <Tabs />
         {children}
       </div>
+
       <div slot="sidebar-start">
-        <Navigation pdsVersion={pdsVersion} />
+        <Navigation pdsVersion={pdsVersion} onNavigate={onNavigationChange} />
       </div>
-      <div slot="sidebar-end">
+      <div slot="sidebar-end" className="flex flex-col gap-fluid-sm">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">
-          <PHeading size="small" tag="h2">
+          <PHeading size="small" tag="h2" weight="semibold">
             Global settings
           </PHeading>
           <ThemeSelect
-            value={storefrontTheme}
-            onUpdate={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)}
+            value={storefrontColorScheme}
+            onThemeChange={(e): void => setStorefrontColorScheme(e.detail.value as StorefrontColorScheme)}
             compact={true}
           />
           <DirectionSelect
             value={storefrontDirection}
-            onUpdate={(e): void => setStorefrontDirection(e.detail.value as StorefrontDirection)}
+            onDirectionChange={(e): void => setStorefrontDirection(e.detail.value as StorefrontDirection)}
           />
           <TextZoomSelect
             value={storefrontTextZoom}
-            onUpdate={(e): void => setStorefrontTextZoom(e.detail.value as StorefrontTextZoom)}
+            onTextZoomChange={(e): void => setStorefrontTextZoom(e.detail.value as StorefrontTextZoom)}
           />
         </div>
       </div>

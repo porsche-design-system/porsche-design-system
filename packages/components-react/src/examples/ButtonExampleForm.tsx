@@ -1,7 +1,7 @@
-import { type FormEvent, useState } from 'react';
 import { PButton, PText } from '@porsche-design-system/components-react';
+import { type FormEvent, useState } from 'react';
 
-export const ButtonExampleFormPage = (): JSX.Element => {
+export const ButtonExampleFormPage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -12,7 +12,7 @@ export const ButtonExampleFormPage = (): JSX.Element => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex gap-fluid-sm">
         <PButton name="option" value="A" type="submit">
           Button A
         </PButton>

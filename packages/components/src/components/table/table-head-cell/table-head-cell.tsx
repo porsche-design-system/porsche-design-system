@@ -1,4 +1,4 @@
-import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
@@ -38,13 +38,13 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
 export class TableHeadCell {
   @Element() public host!: HTMLElement;
 
-  /** Defines sortability properties. */
+  /** Configures sorting behavior for this column by providing an `id`, `active` state, and current `direction` (`asc` or `desc`). */
   @Prop() public sort?: TableHeadCellSort;
 
-  /** Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined. */
+  /** Hides the visible column label while keeping it accessible to screen readers. Only applies when `sort` is not set. */
   @Prop() public hideLabel?: boolean = false;
 
-  /** Displays slotted text multiline or forced into a single line. */
+  /** Allows the column header text to wrap onto multiple lines instead of being truncated to a single line. */
   @Prop() public multiline?: boolean = false;
 
   public connectedCallback(): void {

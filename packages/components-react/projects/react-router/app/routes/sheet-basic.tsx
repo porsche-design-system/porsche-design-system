@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PHeading, PSheet, PText } from '@porsche-design-system/components-react/ssr';
 
-const SheetBasicPage = (): JSX.Element => {
+const SheetBasicPage = () => {
   return (
     <>
       <PSheet open={true} aria={{ 'aria-label': 'Some Heading' }}>

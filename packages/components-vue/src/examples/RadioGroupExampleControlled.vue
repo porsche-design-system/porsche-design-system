@@ -1,22 +1,23 @@
 <script setup lang="ts">
-  import {
-    PRadioGroup,
-    PRadioGroupOption,
-    PText,
-    type RadioGroupChangeEventDetail,
-  } from '@porsche-design-system/components-vue';
-  import { computed, ref } from 'vue';
+import {
+  PRadioGroup,
+  PRadioGroupOption,
+  type PRadioGroupProps,
+  PText,
+  type RadioGroupChangeEventDetail,
+} from '@porsche-design-system/components-vue';
+import { computed, ref } from 'vue';
 
-  const selectedValue = ref<string>('a');
+const selectedValue = ref<PRadioGroupProps['value']>('a');
 
-  const onChange = (e: RadioGroupChangeEventDetail) => {
-    const input = e.target as HTMLElement & { value: string };
-    selectedValue.value = input.value;
-  };
+const onChange = (e: CustomEvent<RadioGroupChangeEventDetail>) => {
+  const input = e.target as HTMLElement & { value: string };
+  selectedValue.value = input.value;
+};
 
-  const debugText = computed(() => {
-    return `Selected values: ${selectedValue.value}`;
-  });
+const debugText = computed(() => {
+  return `Selected values: ${selectedValue.value}`;
+});
 </script>
 
 <template>

@@ -7,73 +7,81 @@ on:
         description: 'Docker image to be used in workflow.'
         required: true
         type: string
+      storefront-slug:
+        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the storefront basePath so the build matches the gh-pages folder produced by the deploy workflow.'
+        required: true
+        type: string
+
+permissions:
+  contents: read
 
 jobs:
   lint:
     name: 'Lint'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     container:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Lint'
-        run: yarn lint
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - run: npm run lint
+      # Guards against npm pruning platform-specific native bindings from the lockfile
+      # (https://github.com/npm/cli/issues/4828) — see docs/dependencies.md.
+      - run: npm run npm:verify-lock
   build-development:
     name: 'Development'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     container:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Shared'
-        run: yarn build:shared
-      - name: 'Assets'
-        run: yarn build:assets
-      - name: 'Tokens'
-        run: yarn build:tokens
-      - name: 'Styles'
-        run: yarn build:styles
-      - name: 'Utilities'
-        run: yarn build:utilities
-      - name: 'Component Meta'
-        run: yarn build:component-meta
-      - name: 'Components'
-        run: yarn build:components
-      - name: 'Components JS'
-        run: yarn build:components-js
-      - name: 'Components Angular'
-        run: yarn build:components-angular
-      - name: 'Components React'
-        run: yarn build:components-react
-      - name: 'Components Vue'
-        run: yarn build:components-vue
-      - name: 'Storefront'
-        run: yarn build:storefront
-      - name: 'Upload artifact'
-        uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - run: npm run build:shared
+      - run: npm run build:tokens
+      - run: npm run build:assets
+      - run: npm run build:styles
+      - run: npm run build:utilities
+      - run: npm run build:stylesheets
+      - run: npm run build:component-meta
+      - run: npm run build:components
+      - run: npm run build:skill
+      - run: npm run build:components-js
+      - run: npm run build:components-angular
+      - run: npm run build:components-react
+      - run: npm run build:components-vue
+      - run: npm run build:storefront
+      - uses: actions/upload-artifact@v7
         with:
           name: build-development
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
+            ./packages/storefront/projects/skill/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/
             ./packages/shared/dist/
-            ./packages/utilities/projects/utilities/dist/
             ./packages/utilities/projects/ag-grid/dist/
             ./packages/styles/dist/
+            ./packages/styles/projects/shared-styles/dist/
+            ./packages/styles/projects/shared-styles/src/generated/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/tailwindcss/meta/
+            ./packages/styles/projects/scss/dist/
+            ./packages/styles/projects/scss/meta/
+            ./packages/styles/projects/emotion/dist/
+            ./packages/styles/projects/emotion/meta/
+            ./packages/styles/projects/vanilla-extract/dist/
+            ./packages/styles/projects/vanilla-extract/meta/
             ./packages/components/dist/
+            ./packages/components/projects/stylesheets/dist/
+            ./packages/components/projects/stylesheets/lib/
+            ./packages/components/projects/stylesheets/meta/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/
             ./packages/components-js/projects/components-manager-core/dist/
@@ -84,11 +92,11 @@ jobs:
             ./packages/assets/projects/crest/dist/
             ./packages/assets/projects/meta-icons/dist/
             ./packages/assets/projects/icons/dist/
-            ./packages/assets/projects/fallbacks/dist/
             ./packages/assets/projects/flags/dist/
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
             ./packages/tokens/dist/
+            ./packages/tokens/projects/tokens-meta/dist/
             ./packages/components-angular/dist/
             ./packages/assets/cdn/
             ./packages/shared/bin/
@@ -103,67 +111,64 @@ jobs:
             ./packages/components-react/projects/react-ssr-wrapper/src/
             ./packages/components-react/src/pages/generated/
             ./packages/components-react/projects/nextjs/.next/
-            ./packages/components-react/projects/remix/build/
-            ./packages/components-react/projects/remix/public/build/
             ./packages/components-react/projects/react-router/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/tokens/projects/tokens-meta/src/lib/tokensMeta.ts
             ./packages/shared/src/lib/
-            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
-            ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error
   build-production:
     name: 'Production'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     container:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Shared'
-        run: yarn build:shared
-      - name: 'Assets'
-        run: yarn build:assets
-      - name: 'Tokens'
-        run: yarn build:tokens
-      - name: 'Styles'
-        run: yarn build:styles
-      - name: 'Utilities'
-        run: yarn build:utilities
-      - name: 'Component Meta'
-        run: yarn build:component-meta
-      - name: 'Components'
-        run: yarn build:components-prod
-      - name: 'Components JS'
-        run: yarn build:components-js-prod
-      - name: 'Components Angular'
-        run: yarn build:components-angular
-      - name: 'Components React'
-        run: yarn build:components-react
-      - name: 'Components Vue'
-        run: yarn build:components-vue
-      - name: 'Storefront'
-        run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" yarn build:storefront
-      - name: 'Upload artifact'
-        uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - run: npm run build:shared
+      - run: npm run build:tokens
+      - run: npm run build:assets
+      - run: npm run build:styles-prod
+      - run: npm run build:utilities
+      - run: npm run build:stylesheets-prod
+      - run: npm run build:component-meta
+      - run: npm run build:components-prod
+      - run: npm run build:skill
+      - run: npm run build:components-js-prod
+      - run: npm run build:components-angular
+      - run: npm run build:components-react
+      - run: npm run build:components-vue
+      - run: NEXT_PUBLIC_BASE_PATH="${{ inputs.storefront-slug }}" npm run build:storefront
+      - uses: actions/upload-artifact@v7
         with:
           name: build-production
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
+            ./packages/storefront/projects/skill/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/
             ./packages/shared/dist/
-            ./packages/utilities/projects/utilities/dist/
             ./packages/utilities/projects/ag-grid/dist/
             ./packages/styles/dist/
+            ./packages/styles/projects/shared-styles/dist/
+            ./packages/styles/projects/shared-styles/src/generated/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/tailwindcss/meta/
+            ./packages/styles/projects/scss/dist/
+            ./packages/styles/projects/scss/meta/
+            ./packages/styles/projects/emotion/dist/
+            ./packages/styles/projects/emotion/meta/
+            ./packages/styles/projects/vanilla-extract/dist/
+            ./packages/styles/projects/vanilla-extract/meta/
             ./packages/components/dist/
+            ./packages/components/projects/stylesheets/dist/
+            ./packages/components/projects/stylesheets/lib/
+            ./packages/components/projects/stylesheets/meta/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/
             ./packages/components-js/projects/components-manager-core/dist/
@@ -174,11 +179,11 @@ jobs:
             ./packages/assets/projects/crest/dist/
             ./packages/assets/projects/meta-icons/dist/
             ./packages/assets/projects/icons/dist/
-            ./packages/assets/projects/fallbacks/dist/
             ./packages/assets/projects/flags/dist/
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
             ./packages/tokens/dist/
+            ./packages/tokens/projects/tokens-meta/dist/
             ./packages/components-angular/dist/
             ./packages/assets/cdn/
             ./packages/shared/bin/
@@ -192,12 +197,9 @@ jobs:
             ./packages/components-react/projects/react-ssr-wrapper/src/
             ./packages/components-react/src/pages/generated/
             ./packages/components-react/projects/nextjs/.next/
-            ./packages/components-react/projects/remix/build/
-            ./packages/components-react/projects/remix/public/build/
             ./packages/components-react/projects/react-router/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/tokens/projects/tokens-meta/src/lib/tokensMeta.ts
             ./packages/shared/src/lib/
-            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
-            ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error

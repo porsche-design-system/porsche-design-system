@@ -2,21 +2,22 @@ import './style.css';
 
 import { FLAG_NAMES, ICON_NAMES } from '@porsche-design-system/assets';
 import { componentsReady } from '@porsche-design-system/components-js';
-import { pdsTheme } from '@porsche-design-system/components-js/ag-grid';
+import { pdsTheme, pdsThemeCompact } from '@porsche-design-system/components-js/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
-import * as agGrid from 'ag-grid-enterprise';
+import * as agGrid from 'ag-grid-community';
 import {
-  AllEnterpriseModule,
+  AllCommunityModule,
   ModuleRegistry,
   provideGlobalGridOptions,
   ValidationModule /* Development Only */,
-} from 'ag-grid-enterprise';
+} from 'ag-grid-community';
+import { AllEnterpriseModule } from 'ag-grid-enterprise';
 
 window.FLAG_NAMES = FLAG_NAMES;
 window.ICON_NAMES = ICON_NAMES;
 
 const getPage = () => window.location.pathname.substring(1);
-const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
+const getScheme = () => new URL(document.location).searchParams.get('scheme') || 'light';
 const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
 const getScale = () => new URL(document.location).searchParams.get('scale') || '100';
 const getTransition = () => new URL(document.location).searchParams.get('transition') || 'none';
@@ -31,8 +32,8 @@ const updateRoute = async (opts) => {
     if (opts.pathname) {
       url.pathname = opts.pathname;
     }
-    if (opts.theme) {
-      url.searchParams.set('theme', opts.theme);
+    if (opts.scheme) {
+      url.searchParams.set('scheme', opts.scheme);
     }
     if (opts.dir) {
       url.searchParams.set('dir', opts.dir);
@@ -54,7 +55,7 @@ const updateRoute = async (opts) => {
 
   const page = getPage();
   if (page) {
-    const theme = getTheme();
+    const scheme = getScheme();
     const dir = getDir();
     const scale = getScale();
     const transition = getTransition();
@@ -62,8 +63,8 @@ const updateRoute = async (opts) => {
     const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
     document.querySelector('html').setAttribute('dir', dir);
     document.querySelector('html').style.fontSize = `${scale}%`;
-    document.querySelector('body').classList.remove('light', 'dark', 'auto');
-    document.querySelector('body').classList.add(theme);
+    document.querySelector('body').classList.remove('scheme-light', 'scheme-dark', 'scheme-light-dark');
+    document.querySelector('body').classList.add(`scheme-${scheme}`);
 
     if (isPageLoadedInIFrame()) {
       controls.remove();
@@ -82,21 +83,22 @@ const updateRoute = async (opts) => {
         .replace(/>(\s)*</g, '><') // trim whitespace between tags
         .replace(
           /(<iframe.*?src=".*?\?iframe=true).*?(".*?>)/gs,
-          `$1&theme=${theme}&dir=${dir}&scale=${scale}&transition=${transition}&animation=${animation}$2`
-        )
-        .replace(
-          /(<(?:my-prefix-)?p-[a-z-]+[\S\s]*?)>/g, // tweak components
-          (m, g1) =>
-            g1.includes('theme') ? g1.replace(/theme="[a-z]+"/, `theme="${theme}"`) : `${g1} theme="${theme}">`
-        )
-        .replace(/(?<!\.)(playground)(?!--)(?: light| dark)?/g, `$1 ${theme}`); // tweak playgrounds, some pages include a "." before or a "--" after the "playground" thus we exclude them
+          `$1&scheme=${scheme}&dir=${dir}&scale=${scale}&transition=${transition}&animation=${animation}$2`
+        );
 
     app.innerHTML = '';
     app.innerHTML = template;
 
     const scripts = app.getElementsByTagName('script');
     for (let i = 0; i < scripts.length; i++) {
-      eval(scripts[i].innerText); // execute scripts inserted via innerHTML
+      // Module examples declare real imports so they also run standalone (storefront snippet, StackBlitz). Here they
+      // are executed as plain scripts, where `import` is a SyntaxError, so the imports are dropped and the bindings
+      // they would create come from the globals set below instead.
+      const code =
+        scripts[i].type === 'module'
+          ? scripts[i].innerText.replace(/^[ \t]*import\b[\s\S]*?;$/gm, '')
+          : scripts[i].innerText;
+      (0, eval)(code); // execute scripts inserted via innerHTML (indirect eval avoids bundler warnings)
     }
   }
 };
@@ -130,18 +132,22 @@ const updateSelect = (id, value) => {
     );
   };
 
-  ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
+  ModuleRegistry.registerModules([AllCommunityModule, ValidationModule]);
 
   provideGlobalGridOptions({
     theme: pdsTheme,
   });
 
   window.agGrid = agGrid;
+  // registered per grid via createGrid(), since registerModules() would apply the license check to every grid
+  window.AllEnterpriseModule = AllEnterpriseModule;
+  window.pdsTheme = pdsTheme;
+  window.pdsThemeCompact = pdsThemeCompact;
   window.rowData = dataAdvanced;
 
   if (!isPageLoadedInIFrame()) {
     updateSelect('page', getPage());
-    updateSelect('theme', getTheme());
+    updateSelect('scheme', getScheme());
     updateSelect('dir', getDir());
     updateSelect('scale', getScale());
     updateSelect('transition', getTransition());
@@ -151,8 +157,8 @@ const updateSelect = (id, value) => {
       await updateRoute({ pathname: e.srcElement.value });
     });
 
-    document.querySelector('select#theme').addEventListener('change', async (e) => {
-      await updateRoute({ theme: e.srcElement.value });
+    document.querySelector('select#scheme').addEventListener('change', async (e) => {
+      await updateRoute({ scheme: e.srcElement.value });
     });
 
     document.querySelector('select#dir').addEventListener('change', async (e) => {

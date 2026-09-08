@@ -2,21 +2,21 @@
 
 exports[`should call validateProps() with correct parameters via render for p-accordion > propTypes with ValidatorFunctions 1`] = `
 {
+  "alignMarker": "oneOf",
+  "background": "oneOf",
   "compact": "boolean",
   "heading": "string",
   "headingTag": "oneOf",
+  "indent": "breakpoint",
   "open": "boolean",
   "size": "breakpoint",
   "sticky": "boolean",
-  "tag": "oneOf",
-  "theme": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-ai-tag > propTypes with ValidatorFunctions 1`] = `
 {
   "locale": "oneOf",
-  "theme": "oneOf",
   "variant": "oneOf",
 }
 `;
@@ -28,9 +28,8 @@ exports[`should call validateProps() with correct parameters via render for p-ba
   "heading": "string",
   "headingTag": "oneOf",
   "open": "boolean",
-  "persistent": "boolean",
+  "position": "breakpoint",
   "state": "oneOf",
-  "theme": "oneOf",
 }
 `;
 
@@ -45,16 +44,9 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "iconSource": "string",
   "loading": "boolean",
   "name": "string",
-  "theme": "oneOf",
   "type": "oneOf",
   "value": "string",
   "variant": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-button-group > propTypes with ValidatorFunctions 1`] = `
-{
-  "direction": "breakpoint",
 }
 `;
 
@@ -63,6 +55,7 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "active": "boolean",
   "alignLabel": "breakpoint",
   "aria": "aria",
+  "color": "oneOf",
   "disabled": "boolean",
   "form": "string",
   "hideLabel": "breakpoint",
@@ -72,11 +65,9 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "name": "string",
   "size": "breakpoint",
   "stretch": "breakpoint",
-  "theme": "oneOf",
   "type": "oneOf",
   "underline": "boolean",
   "value": "string",
-  "weight": "oneOf",
 }
 `;
 
@@ -85,7 +76,6 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "align": "oneOf",
   "aria": "aria",
   "aspectRatio": "breakpoint",
-  "background": "oneOf",
   "compact": "breakpoint",
   "description": "string",
   "disabled": "boolean",
@@ -102,9 +92,9 @@ exports[`should call validateProps() with correct parameters via render for p-bu
 
 exports[`should call validateProps() with correct parameters via render for p-canvas > propTypes with ValidatorFunctions 1`] = `
 {
+  "background": "oneOf",
   "sidebarEndOpen": "boolean",
   "sidebarStartOpen": "boolean",
-  "theme": "oneOf",
 }
 `;
 
@@ -115,9 +105,8 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "alignHeader": "oneOf",
   "aria": "aria",
   "description": "string",
-  "disablePagination": "breakpoint",
   "focusOnCenterSlide": "boolean",
-  "gradientColor": "oneOf",
+  "gradient": "boolean",
   "heading": "string",
   "headingSize": "oneOf",
   "intl": "shape",
@@ -125,10 +114,8 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "rewind": "boolean",
   "skipLinkTarget": "string",
   "slidesPerPage": "oneOf",
-  "theme": "oneOf",
   "trimSpace": "boolean",
   "width": "oneOf",
-  "wrapContent": "boolean",
 }
 `;
 
@@ -146,27 +133,7 @@ exports[`should call validateProps() with correct parameters via render for p-ch
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
   "value": "string",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-checkbox-wrapper > propTypes with ValidatorFunctions 1`] = `
-{
-  "hideLabel": "breakpoint",
-  "label": "string",
-  "loading": "boolean",
-  "message": "string",
-  "state": "oneOf",
-  "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-content-wrapper > propTypes with ValidatorFunctions 1`] = `
-{
-  "backgroundColor": "oneOf",
-  "theme": "oneOf",
-  "width": "oneOf",
 }
 `;
 
@@ -185,7 +152,6 @@ exports[`should call validateProps() with correct parameters via render for p-di
   "ellipsis": "boolean",
   "size": "breakpoint",
   "tag": "oneOf",
-  "theme": "oneOf",
 }
 `;
 
@@ -193,8 +159,6 @@ exports[`should call validateProps() with correct parameters via render for p-di
 {
   "color": "oneOf",
   "direction": "breakpoint",
-  "orientation": "breakpoint",
-  "theme": "oneOf",
 }
 `;
 
@@ -203,7 +167,6 @@ exports[`should call validateProps() with correct parameters via render for p-dr
   "activeIdentifier": "string",
   "aria": "aria",
   "open": "boolean",
-  "theme": "oneOf",
 }
 `;
 
@@ -236,18 +199,6 @@ exports[`should call validateProps() with correct parameters via render for p-fi
   "message": "string",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-fieldset-wrapper > propTypes with ValidatorFunctions 1`] = `
-{
-  "label": "string",
-  "labelSize": "oneOf",
-  "message": "string",
-  "required": "boolean",
-  "state": "oneOf",
-  "theme": "oneOf",
 }
 `;
 
@@ -255,29 +206,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 {
   "aria": "aria",
   "name": "oneOf",
-  "size": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-flex > propTypes with ValidatorFunctions 1`] = `
-{
-  "alignContent": "breakpoint",
-  "alignItems": "breakpoint",
-  "direction": "breakpoint",
-  "inline": "breakpoint",
-  "justifyContent": "breakpoint",
-  "wrap": "breakpoint",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-flex-item > propTypes with ValidatorFunctions 1`] = `
-{
-  "alignSelf": "breakpoint",
-  "flex": "breakpoint",
-  "grow": "breakpoint",
-  "offset": "breakpoint",
-  "shrink": "breakpoint",
-  "width": "breakpoint",
+  "size": "breakpoint",
 }
 `;
 
@@ -285,26 +214,12 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 {
   "aria": "aria",
   "backdrop": "oneOf",
+  "background": "oneOf",
   "disableBackdropClick": "boolean",
   "footerBehavior": "oneOf",
+  "fullscreen": "breakpoint",
   "open": "boolean",
   "position": "oneOf",
-  "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-grid > propTypes with ValidatorFunctions 1`] = `
-{
-  "direction": "breakpoint",
-  "gutter": "breakpoint",
-  "wrap": "breakpoint",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-grid-item > propTypes with ValidatorFunctions 1`] = `
-{
-  "offset": "breakpoint",
-  "size": "breakpoint",
 }
 `;
 
@@ -313,19 +228,10 @@ exports[`should call validateProps() with correct parameters via render for p-he
   "align": "oneOf",
   "color": "oneOf",
   "ellipsis": "boolean",
+  "hyphens": "oneOf",
   "size": "breakpoint",
   "tag": "oneOf",
-  "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-headline > propTypes with ValidatorFunctions 1`] = `
-{
-  "align": "oneOf",
-  "color": "oneOf",
-  "ellipsis": "boolean",
-  "tag": "oneOf",
-  "theme": "oneOf",
+  "weight": "oneOf",
 }
 `;
 
@@ -333,11 +239,9 @@ exports[`should call validateProps() with correct parameters via render for p-ic
 {
   "aria": "aria",
   "color": "oneOf",
-  "lazy": "boolean",
   "name": "oneOf",
-  "size": "oneOf",
+  "size": "breakpoint",
   "source": "string",
-  "theme": "oneOf",
 }
 `;
 
@@ -350,9 +254,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "dismissButton": "boolean",
   "heading": "string",
   "headingTag": "oneOf",
-  "persistent": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
 }
 `;
 
@@ -374,8 +276,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -400,8 +301,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -423,8 +323,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -448,8 +347,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -471,14 +369,14 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
   "toggle": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-input-search > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "clear": "boolean",
   "compact": "boolean",
@@ -497,8 +395,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -522,8 +419,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -547,8 +443,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "spellCheck": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -570,8 +465,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -595,8 +489,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -618,8 +511,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -634,7 +526,6 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "iconSource": "string",
   "rel": "string",
   "target": "string",
-  "theme": "oneOf",
   "variant": "oneOf",
 }
 `;
@@ -644,6 +535,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "active": "boolean",
   "alignLabel": "breakpoint",
   "aria": "aria",
+  "color": "oneOf",
   "download": "string",
   "hideLabel": "breakpoint",
   "href": "string",
@@ -653,22 +545,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "size": "breakpoint",
   "stretch": "breakpoint",
   "target": "string",
-  "theme": "oneOf",
   "underline": "boolean",
-  "weight": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-link-social > propTypes with ValidatorFunctions 1`] = `
-{
-  "compact": "boolean",
-  "hideLabel": "breakpoint",
-  "href": "string",
-  "icon": "string",
-  "iconSource": "string",
-  "rel": "string",
-  "target": "string",
-  "theme": "oneOf",
 }
 `;
 
@@ -677,7 +554,6 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "align": "oneOf",
   "aria": "aria",
   "aspectRatio": "breakpoint",
-  "background": "oneOf",
   "compact": "breakpoint",
   "description": "string",
   "download": "string",
@@ -687,18 +563,6 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "rel": "string",
   "size": "breakpoint",
   "target": "string",
-  "weight": "breakpoint",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-link-tile-model-signature > propTypes with ValidatorFunctions 1`] = `
-{
-  "aspectRatio": "breakpoint",
-  "description": "string",
-  "heading": "string",
-  "headingTag": "oneOf",
-  "linkDirection": "breakpoint",
-  "model": "oneOf",
   "weight": "breakpoint",
 }
 `;
@@ -715,18 +579,6 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "priceOriginal": "string",
   "rel": "string",
   "target": "string",
-  "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-marque > propTypes with ValidatorFunctions 1`] = `
-{
-  "aria": "aria",
-  "href": "string",
-  "size": "oneOf",
-  "target": "string",
-  "trademark": "boolean",
-  "variant": "oneOf",
 }
 `;
 
@@ -734,13 +586,11 @@ exports[`should call validateProps() with correct parameters via render for p-mo
 {
   "aria": "aria",
   "backdrop": "oneOf",
+  "background": "oneOf",
   "disableBackdropClick": "boolean",
-  "disableCloseButton": "boolean",
   "dismissButton": "boolean",
   "fullscreen": "breakpoint",
-  "heading": "string",
   "open": "boolean",
-  "theme": "oneOf",
 }
 `;
 
@@ -752,7 +602,6 @@ exports[`should call validateProps() with correct parameters via render for p-mo
   "model": "oneOf",
   "safeZone": "boolean",
   "size": "oneOf",
-  "theme": "oneOf",
 }
 `;
 
@@ -769,15 +618,14 @@ exports[`should call validateProps() with correct parameters via render for p-mu
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-  "value": "array",
+  "value": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-multi-select-option > propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -791,14 +639,9 @@ exports[`should call validateProps() with correct parameters via render for p-op
 exports[`should call validateProps() with correct parameters via render for p-pagination > propTypes with ValidatorFunctions 1`] = `
 {
   "activePage": "number",
-  "allyLabel": "string",
-  "allyLabelNext": "string",
-  "allyLabelPage": "string",
-  "allyLabelPrev": "string",
   "intl": "shape",
   "itemsPerPage": "number",
   "showLastPage": "boolean",
-  "theme": "oneOf",
   "totalItemsCount": "number",
 }
 `;
@@ -817,29 +660,18 @@ exports[`should call validateProps() with correct parameters via render for p-pi
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
   "type": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-popover > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "compact": "boolean",
   "description": "string",
   "direction": "oneOf",
-  "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-radio-button-wrapper > propTypes with ValidatorFunctions 1`] = `
-{
-  "hideLabel": "breakpoint",
-  "label": "string",
-  "loading": "boolean",
-  "message": "string",
-  "state": "oneOf",
-  "theme": "oneOf",
+  "open": "boolean",
 }
 `;
 
@@ -857,8 +689,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -867,7 +698,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
   "disabled": "boolean",
   "label": "string",
   "loading": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -875,18 +706,15 @@ exports[`should call validateProps() with correct parameters via render for p-sc
 {
   "alignScrollIndicator": "oneOf",
   "aria": "aria",
-  "gradientColor": "oneOf",
-  "gradientColorScheme": "oneOf",
-  "scrollIndicatorPosition": "oneOf",
+  "compact": "boolean",
   "scrollToPosition": "shape",
   "scrollbar": "boolean",
-  "theme": "oneOf",
+  "sticky": "boolean",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-segmented-control > propTypes with ValidatorFunctions 1`] = `
 {
-  "backgroundColor": "oneOf",
   "columns": "breakpoint",
   "compact": "boolean",
   "description": "string",
@@ -899,7 +727,6 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "noWrap": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
   "value": "oneOf",
 }
 `;
@@ -929,54 +756,38 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-select-option > propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
-  "value": "string",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-select-wrapper > propTypes with ValidatorFunctions 1`] = `
-{
-  "description": "string",
-  "dropdownDirection": "oneOf",
-  "filter": "boolean",
-  "hideLabel": "breakpoint",
-  "label": "string",
-  "message": "string",
-  "native": "boolean",
-  "state": "oneOf",
-  "theme": "oneOf",
+  "value": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-sheet > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "background": "oneOf",
   "disableBackdropClick": "boolean",
   "dismissButton": "boolean",
   "open": "boolean",
-  "theme": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-spinner > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "color": "oneOf",
   "size": "breakpoint",
-  "theme": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-stepper-horizontal > propTypes with ValidatorFunctions 1`] = `
 {
   "size": "breakpoint",
-  "theme": "oneOf",
 }
 `;
 
@@ -996,7 +807,6 @@ exports[`should call validateProps() with correct parameters via render for p-sw
   "hideLabel": "breakpoint",
   "loading": "boolean",
   "stretch": "breakpoint",
-  "theme": "oneOf",
 }
 `;
 
@@ -1005,7 +815,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
   "caption": "string",
   "compact": "boolean",
   "layout": "oneOf",
-  "theme": "oneOf",
+  "sticky": "boolean",
 }
 `;
 
@@ -1026,10 +836,10 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
-  "gradientColor": "oneOf",
-  "gradientColorScheme": "oneOf",
+  "aria": "aria",
+  "background": "oneOf",
+  "compact": "boolean",
   "size": "breakpoint",
-  "theme": "oneOf",
   "weight": "oneOf",
 }
 `;
@@ -1037,10 +847,10 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs-bar > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
-  "gradientColor": "oneOf",
-  "gradientColorScheme": "oneOf",
+  "aria": "aria",
+  "background": "oneOf",
+  "compact": "boolean",
   "size": "breakpoint",
-  "theme": "oneOf",
   "weight": "oneOf",
 }
 `;
@@ -1053,11 +863,9 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 
 exports[`should call validateProps() with correct parameters via render for p-tag > propTypes with ValidatorFunctions 1`] = `
 {
-  "color": "oneOf",
   "compact": "boolean",
   "icon": "string",
   "iconSource": "string",
-  "theme": "oneOf",
   "variant": "oneOf",
 }
 `;
@@ -1065,10 +873,8 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tag-dismissible > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
-  "color": "oneOf",
   "compact": "boolean",
   "label": "string",
-  "theme": "oneOf",
 }
 `;
 
@@ -1077,37 +883,15 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "align": "oneOf",
   "color": "oneOf",
   "ellipsis": "boolean",
+  "hyphens": "oneOf",
   "size": "breakpoint",
   "tag": "oneOf",
-  "theme": "oneOf",
   "weight": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-text-field-wrapper > propTypes with ValidatorFunctions 1`] = `
-{
-  "actionIcon": "oneOf",
-  "actionLoading": "boolean",
-  "description": "string",
-  "hideLabel": "breakpoint",
-  "label": "string",
-  "message": "string",
-  "showCharacterCount": "boolean",
-  "showCounter": "boolean",
-  "showPasswordToggle": "boolean",
-  "state": "oneOf",
-  "submitButton": "boolean",
-  "theme": "oneOf",
-  "unit": "string",
-  "unitPosition": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-text-list > propTypes with ValidatorFunctions 1`] = `
 {
-  "listType": "oneOf",
-  "orderType": "oneOf",
-  "theme": "oneOf",
   "type": "oneOf",
 }
 `;
@@ -1133,28 +917,8 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "rows": "number",
   "spellCheck": "boolean",
   "state": "oneOf",
-  "theme": "oneOf",
-  "value": "string",
+  "value": "oneOf",
   "wrap": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-textarea-wrapper > propTypes with ValidatorFunctions 1`] = `
-{
-  "description": "string",
-  "hideLabel": "breakpoint",
-  "label": "string",
-  "message": "string",
-  "showCharacterCount": "boolean",
-  "showCounter": "boolean",
-  "state": "oneOf",
-  "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-toast > propTypes with ValidatorFunctions 1`] = `
-{
-  "theme": "oneOf",
 }
 `;
 
@@ -1164,6 +928,5 @@ exports[`should call validateProps() with correct parameters via render for p-wo
   "href": "string",
   "size": "oneOf",
   "target": "string",
-  "theme": "oneOf",
 }
 `;

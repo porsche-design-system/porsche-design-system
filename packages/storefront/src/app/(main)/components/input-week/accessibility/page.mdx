@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputWeekMeta } from '@/app/(main)/components/input-week/input-week.meta';
+
+export const metadata = {
+  title: 'Input Week: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input Week component',
+};
+
+# Input Week <ComponentStatus tagName="p-input-week"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
+/>
+
+<inputWeekMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-input-week" examples={inputWeekMeta.accessibility.examples} />
+
+<inputWeekMeta.accessibility.tests />

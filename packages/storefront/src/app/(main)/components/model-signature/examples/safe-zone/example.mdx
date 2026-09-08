@@ -1,0 +1,11 @@
+import { componentMeta } from '@porsche-design-system/component-meta';
+
+export const modelSignatureSafeZoneDefault = JSON.stringify(
+  componentMeta['p-model-signature'].propsMeta.safeZone.defaultValue
+);
+
+The `safe-zone` prop's default is <code>{modelSignatureSafeZoneDefault}</code>, which ensures a visual balance across
+all model signatures. This is most likely the best option when the model signatures are used in combination or within
+tiles next to each other. When `false` is set as value, the model signatures come without any safe zone which is
+probably preferred when the element is positioned independently.
+

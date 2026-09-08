@@ -1,0 +1,30 @@
+import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract/meta';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { StylesTable } from '@/components/common/StylesTable';
+
+export const metadata = {
+  title: 'Vanilla Extract: Color - Porsche Design System',
+  description: 'Detailed API reference for the Color style.',
+};
+
+# Color
+
+<TableOfContents headings={['JS']} />
+
+## JS
+
+### Background
+
+<StylesTable meta={vanillaExtractMeta.color.background} columnLabel="JS" showColorSwatch />
+
+### Foreground
+
+<StylesTable meta={vanillaExtractMeta.color.foreground} columnLabel="JS" showColorSwatch />
+
+### Semantic
+
+<StylesTable meta={vanillaExtractMeta.color.semantic} columnLabel="JS" showColorSwatch />
+
+### A11y
+
+<StylesTable meta={vanillaExtractMeta.color.a11y} columnLabel="JS" showColorSwatch />

@@ -1,29 +1,34 @@
 <script setup lang="ts">
 import {
+  type DrilldownDismissEventDetail,
   type DrilldownUpdateEventDetail,
   PButton,
   PDrilldown,
   PDrilldownItem,
   PDrilldownLink,
+  PText,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const isDrilldownOpen = ref(false);
 const drilldownActiveIdentifier = ref();
+const dismissReason = ref<DrilldownDismissEventDetail['reason'] | undefined>(undefined);
 const onOpen = (): void => {
   isDrilldownOpen.value = true;
 };
-const onDismiss = (): void => {
+const onDismiss = (e: CustomEvent<DrilldownDismissEventDetail>): void => {
+  dismissReason.value = e.detail.reason;
   isDrilldownOpen.value = false;
 };
-const onUpdate = (e: DrilldownUpdateEventDetail): void => {
-  drilldownActiveIdentifier.value = e.activeIdentifier;
+const onUpdate = (e: CustomEvent<DrilldownUpdateEventDetail>): void => {
+  drilldownActiveIdentifier.value = e.detail.activeIdentifier;
 };
 </script>
 
 <template>
   <nav aria-label="Main">
     <PButton type="button" :aria="{ 'aria-haspopup': 'dialog' }" @click="onOpen">Open Drilldown</PButton>
+    <PText>Last dismissed via: {{ dismissReason ?? 'not dismissed yet' }}</PText>
     <PDrilldown
       :open="isDrilldownOpen"
       :active-identifier="drilldownActiveIdentifier"

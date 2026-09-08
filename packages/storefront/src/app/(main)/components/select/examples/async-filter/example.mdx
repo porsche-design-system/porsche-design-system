@@ -1,0 +1,10 @@
+The `p-select` component automatically filters options based on user input. However, if you have a large dataset or need
+custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter` slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+For accessibility, keep a persistent visually hidden live region in the `options-status` slot and update its text when
+filtering finishes (for example, `Loading options`, `No results found`, or `N results available`). Do not mount and
+unmount the live region with each status change — screen readers are more reliable when only the text content updates.

@@ -17,25 +17,23 @@ export const SearchInput = forwardRef<HTMLInputElement, UseSearchBoxProps>((prop
   }
 
   return (
-    <div>
-      <form action="" role="search" noValidate={true}>
-        <PInputSearch
-          clear={true}
-          indicator={true}
-          name="search-input"
-          label="Search"
-          hideLabel={true}
-          ref={ref}
-          autoComplete="off"
-          placeholder="What are you looking for?"
-          value={inputValue}
-          onInput={(event) => {
-            setQuery(((event as CustomEvent<InputSearchInputEventDetail>).detail.target as HTMLInputElement).value);
-          }}
-        ></PInputSearch>
-        <span hidden={!isSearchStalled}>Searching…</span>
-      </form>
-    </div>
+    <form action="" role="search" noValidate={true}>
+      <PInputSearch
+        clear={true}
+        indicator={true}
+        name="search-input"
+        label="Search"
+        hideLabel={true}
+        ref={ref}
+        autoComplete="off"
+        placeholder="What are you looking for?"
+        value={inputValue}
+        onInput={(event) => {
+          setQuery(((event as CustomEvent<InputSearchInputEventDetail>).detail.target as HTMLInputElement).value);
+        }}
+      ></PInputSearch>
+      <span hidden={!isSearchStalled}>Searching…</span>
+    </form>
   );
 });
 

@@ -1,4 +1,6 @@
-import { getOnlyChildOfKindHTMLElementOrThrow, getTagNameWithoutPrefix, throwException } from '../../utils';
+import { throwException } from '../log/logger';
+import { getTagNameWithoutPrefix } from '../tag-name';
+import { getOnlyChildOfKindHTMLElementOrThrow } from './getOnlyChildOfKindHTMLElementOrThrow';
 
 export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): void => {
   let isInvalid = hrefValue && host.children.length > 0;

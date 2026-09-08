@@ -5,6 +5,7 @@ import {
   Element,
   Event,
   type EventEmitter,
+  Fragment,
   forceUpdate,
   h,
   type JSX,
@@ -13,18 +14,24 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  debounce,
+  FILTER_STATUS_ANNOUNCE_TIMEOUT,
   FORM_STATES,
   getComboboxAriaAttributes,
+  getFilterStatusMessage,
   getHasNativePopoverSupport,
   getLastSelectedOption,
+  getListboxAriaAttributes,
   getMultiSelectActionFromKeyboardEvent,
   getNextOptionToHighlight,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  hasDescription,
+  hasLabel,
   hasMessage,
   hasNamedSlot,
   hasPropValueChanged,
@@ -35,14 +42,14 @@ import {
   optionListUpdatePosition,
   SELECT_DROPDOWN_DIRECTIONS,
   setHighlightedSelectOption,
-  THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
   updateHighlightedOption,
   validateProps,
 } from '../../../utils';
+import { FilterStatusAnnouncer } from '../../common/filter-status-announcer/filter-status-announcer';
 import { Label } from '../../common/label/label';
-import { labelId } from '../../common/label/label-utils';
+import { descriptionId, labelId } from '../../common/label/label-utils';
 import { NoResultsOption } from '../../common/no-results-option/no-results-option';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
@@ -54,18 +61,20 @@ import {
   type MultiSelectOption,
   type MultiSelectState,
   type MultiSelectToggleEventDetail,
-  type MultiSelectUpdateEventDetail,
   resetSelectedOptions,
   selectOptionsByValue,
   setSelectedMultiSelectOption,
-  syncMultiSelectChildrenProps,
 } from './multi-select-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.array(AllowedTypes.string),
+  value: AllowedTypes.oneOf<ValidatorFunction>([
+    AllowedTypes.array(AllowedTypes.string),
+    AllowedTypes.array(AllowedTypes.number),
+    AllowedTypes.null,
+  ]),
   state: AllowedTypes.oneOf<MultiSelectState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -74,7 +83,6 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<MultiSelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -87,7 +95,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
  *
- * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-multi-select',
@@ -97,68 +105,74 @@ const propTypes: PropTypes<typeof MultiSelect> = {
 export class MultiSelect {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Sets the visible label text displayed above the multi-select control. */
   @Prop() public label?: string = '';
 
-  /** The description text. */
+  /** Sets a supplementary description displayed below the label to provide additional context. */
   @Prop() public description?: string = '';
 
-  /** The name of the control. */
+  /** Sets the name submitted with the form data to identify the selected values on the server. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The selected values. */
-  @Prop({ mutable: true }) public value?: string[] = [];
+  /**
+   * The selected values. Matches options strictly by type and value, meaning
+   * a string value only matches options whose value is the same string,
+   * a number value only matches options whose value is the same number.
+   * Pass null or [] to clear the selection.
+   *
+   * Please note that FormData always serializes values as
+   * strings, so when participating in a native (uncontrolled) form a
+   * number[] value is restored as string[] via formStateRestoreCallback
+   * and will no longer strictly match number-typed options. This limitation
+   * only applies to native form state restoration; in controlled forms
+   * (where the consumer manages value directly via the change event),
+   * number[] types are preserved end-to-end.
+   */
+  @Prop({ mutable: true }) public value?: string[] | number[] | null = [];
 
-  /** The validation state. */
+  /** Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). */
   @Prop() public state?: MultiSelectState = 'none';
 
-  /** The message styled depending on validation state. */
+  /** Sets the validation feedback message displayed below the control when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Disables the multi-select */
+  /** Disables the multi-select, preventing all interaction. Selected values are not submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
+  /** Marks the multi-select as required — form submission is blocked unless at least one option is selected. */
   @Prop() public required?: boolean = false;
 
-  /** Changes the direction to which the dropdown list appears. */
+  /** Controls whether the dropdown opens upward (`up`) or downward (`down`), or decides automatically (`auto`). */
   @Prop() public dropdownDirection?: MultiSelectDropdownDirection = 'auto';
 
-  /** Displays as compact version. */
+  /** Reduces the control height and padding for a more compact layout. */
   @Prop() public compact?: boolean = false;
 
-  /** Adapts the multi-select color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** The id of a form element the multi-select should be associated with. */
+  /** Associates the multi-select with a form element by its ID when not directly nested inside it. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Emitted when the multi-select has lost focus. */
+  /** Emitted when the multi-select loses focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
-  /** Emitted when the selection is changed. */
+  /** Emitted when the user selects or deselects an option, with the updated array of values in the event detail. */
   @Event({ bubbles: true }) public change: EventEmitter<MultiSelectChangeEventDetail>;
 
-  /** Emitted when the dropdown is toggled. */
+  /** Emitted when the dropdown opens or closes, with the new open state in the event detail. */
   @Event({ bubbles: false }) public toggle: EventEmitter<MultiSelectToggleEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEventDetail>;
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
+  @State() private filterStatusMessage = '';
   @State() private selectedOptions: MultiSelectOption[] = [];
 
   @AttachInternals() private internals: ElementInternals;
 
-  private defaultValue: string[];
+  private defaultValue: string[] | number[] | null;
   private multiSelectOptions: MultiSelectOption[] = [];
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private buttonElement: HTMLButtonElement;
@@ -173,6 +187,14 @@ export class MultiSelect {
 
   private currentlyHighlightedOption: Option | null = null;
 
+  private announceFilterStatus = debounce((filterValue: string, visibleOptionCount: number): void => {
+    this.filterStatusMessage = getFilterStatusMessage(filterValue, visibleOptionCount);
+  }, FILTER_STATUS_ANNOUNCE_TIMEOUT);
+
+  private get hasFilter(): boolean {
+    return !hasNamedSlot(this.host, 'filter') || !!this.filterSlot;
+  }
+
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: MultiSelectOption }): void {
     e.stopPropagation();
@@ -183,12 +205,11 @@ export class MultiSelect {
   public optgroupUpdateHandler(e: Event): void {
     e.stopPropagation();
     this.updateOptions();
-    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
   }
 
   @Watch('value')
   public onValueChange(): void {
-    this.setFormValue(this.value);
+    this.setFormValue();
     // When setting initial value the watcher gets called before the options are defined
     if (this.multiSelectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
@@ -231,10 +252,15 @@ export class MultiSelect {
     }
   }
 
-  public setFormValue(value: string[]): void {
+  public setFormValue(): void {
+    if (this.value == null || this.value.length === 0) {
+      // null excludes the control from form submission (mirrors native behavior)
+      this.internals?.setFormValue(null);
+      return;
+    }
     const formData = new FormData();
-    for (const val of value) {
-      formData.append(this.name, val);
+    for (const val of this.value) {
+      formData.append(this.name, String(val));
     }
     this.internals?.setFormValue(formData);
   }
@@ -253,7 +279,7 @@ export class MultiSelect {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
-    this.setFormValue(this.value);
+    this.setFormValue();
     this.updateOptions();
     // Use initial value to set options
     this.selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value);
@@ -288,8 +314,7 @@ export class MultiSelect {
   }
 
   public formResetCallback(): void {
-    this.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher which syncs form value
   }
 
   public render(): JSX.Element {
@@ -301,20 +326,17 @@ export class MultiSelect {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.compact,
-      this.theme
+      this.compact
     );
-    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const hasCustomFilterSlot = hasNamedSlot(this.host, 'filter');
     const hasCustomSelectedSlot = hasNamedSlot(this.host, 'selected');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
-    const popoverId = 'list';
-    const descriptionId = this.description ? 'description' : undefined;
+    const listboxId = 'listbox';
+    const selectDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
-    const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
 
     return (
       <div class="root">
@@ -331,7 +353,15 @@ export class MultiSelect {
           type="button"
           role="combobox"
           id={buttonId}
-          {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, popoverId)}
+          tabIndex={0}
+          {...getComboboxAriaAttributes(
+            this.isOpen,
+            this.required,
+            hasLabel(this.host, this.label) && labelId,
+            selectMessageId,
+            selectDescriptionId,
+            listboxId
+          )}
           disabled={this.disabled}
           onClick={this.onComboClick}
           onBlur={this.onComboBlur}
@@ -343,13 +373,12 @@ export class MultiSelect {
           ) : (
             <span>{this.selectedOptions.map((option) => (option.textContent ?? '').toString().trim()).join(', ')}</span>
           )}
-          {this.value.length > 0 && (
+          {this.value?.length > 0 && (
             <PrefixedTagNames.pButtonPure
               type="button"
               class="button"
               icon="close"
               hideLabel={true}
-              theme={this.theme}
               onClick={this.onResetClick}
               onKeyDown={(e: KeyboardEvent) => e.key === 'Tab' && (this.isOpen = false)}
               disabled={this.disabled}
@@ -358,51 +387,44 @@ export class MultiSelect {
               Reset selection
             </PrefixedTagNames.pButtonPure>
           )}
-          <PrefixedTagNames.pIcon
-            class="icon"
-            name="arrow-head-down"
-            theme={this.theme}
-            color={this.disabled ? 'state-disabled' : 'primary'}
-            aria-hidden="true"
-          />
+          <PrefixedTagNames.pIcon class="icon" name="arrow-head-down" color="primary" aria-hidden="true" />
         </button>
-        <div
-          id={popoverId}
-          popover="manual"
-          tabIndex={-1}
-          onToggle={() => this.onToggle()}
-          onBlur={(e: any) => e.stopPropagation()}
-          role="dialog"
-          aria-label={this.label}
-          aria-hidden={this.isOpen ? null : 'true'}
-          ref={(el) => (this.popoverElement = el)}
-        >
+        <div popover="manual" tabIndex={0} onToggle={() => this.onToggle()} ref={(el) => (this.popoverElement = el)}>
           {hasCustomFilterSlot ? (
             <slot name="filter" ref={(el: HTMLSlotElement) => (this.filterSlot = el)}></slot>
           ) : (
-            <PrefixedTagNames.pInputSearch
-              class="filter"
-              name="filter"
-              label="Filter options"
-              hideLabel={true}
-              autoComplete="off"
-              clear={true}
-              indicator={true}
-              compact={true}
-              theme={this.theme}
-              onInput={this.onFilterInput}
-              onBlur={(e: any) => e.stopPropagation()}
-              onChange={(e: any) => e.stopPropagation()}
-              onKeyDown={this.onComboKeyDown}
-              ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
-            />
+            <Fragment>
+              <PrefixedTagNames.pInputSearch
+                class="filter"
+                name="filter"
+                label="Filter options"
+                hideLabel={true}
+                autoComplete="off"
+                clear={true}
+                indicator={true}
+                compact={true}
+                onInput={this.onFilterInput}
+                onBlur={(e: any) => e.stopPropagation()}
+                onChange={(e: any) => e.stopPropagation()}
+                onKeyDown={this.onComboKeyDown}
+                ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
+              />
+              <FilterStatusAnnouncer message={this.filterStatusMessage} />
+            </Fragment>
           )}
+          {/** biome-ignore lint/a11y/noStaticElementInteractions: role listbox is added through getListboxAriaAttributes */}
           <div
+            id={listboxId}
             class="options"
-            role="listbox"
-            aria-label={this.label}
-            aria-multiselectable="true"
+            {...getListboxAriaAttributes(
+              this.required,
+              hasLabel(this.host, this.label) && labelId,
+              selectMessageId,
+              selectDescriptionId,
+              true
+            )}
             onPointerMove={this.onPointerMove}
+            onBlur={(e: any) => e.stopPropagation()}
             ref={(el) => (this.listboxElement = el)}
           >
             {!this.hasFilterResults && <NoResultsOption />}
@@ -410,7 +432,7 @@ export class MultiSelect {
             <slot />
           </div>
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </div>
     );
   }
@@ -421,6 +443,7 @@ export class MultiSelect {
       hoveredOption &&
       isElementOfKind(hoveredOption, 'p-multi-select-option') &&
       !hoveredOption.disabled &&
+      !hoveredOption.disabledParent &&
       hoveredOption !== this.currentlyHighlightedOption
     ) {
       this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, hoveredOption, false);
@@ -429,7 +452,6 @@ export class MultiSelect {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
     const selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value, !!this.filterSlot);
     // Add new matching options if there is any but still keep the old ones as selected
     selectedOptions.forEach((option) => {
@@ -458,6 +480,7 @@ export class MultiSelect {
   private resetFilter = (): void => {
     this.inputSearchElement.value = '';
     this.hasFilterResults = true;
+    this.filterStatusMessage = '';
     for (const option of this.multiSelectOptions) {
       option.style.display = 'block';
     }
@@ -497,7 +520,7 @@ export class MultiSelect {
           getNextOptionToHighlight(this.multiSelectOptions, this.currentlyHighlightedOption, action)
         );
         const targetElement = (
-          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+          this.hasFilter ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
         ) as
           | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
           | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
@@ -532,7 +555,7 @@ export class MultiSelect {
         this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
 
         const targetElement = (
-          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+          this.hasFilter ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
         ) as
           | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
           | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
@@ -549,6 +572,7 @@ export class MultiSelect {
       (el) =>
         el.tagName !== 'SELECT' &&
         el.slot !== 'label' &&
+        el.slot !== 'label-after' &&
         el.slot !== 'description' &&
         el.slot !== 'message' &&
         el.slot !== 'filter'
@@ -577,12 +601,13 @@ export class MultiSelect {
     if (selectedOption) {
       this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
       setSelectedMultiSelectOption(selectedOption);
+      const currentValue = this.value ?? [];
       if (selectedOption.selected) {
         this.selectedOptions = [...this.selectedOptions, selectedOption];
-        this.value = [...this.value, selectedOption.value];
+        this.value = [...currentValue, selectedOption.value] as string[] | number[];
       } else {
         this.selectedOptions = this.selectedOptions.filter((option) => option.value !== selectedOption.value);
-        this.value = this.value.filter((val) => val !== selectedOption.value);
+        this.value = currentValue.filter((val) => val !== selectedOption.value) as string[] | number[];
       }
       this.emitUpdateEvent();
     }
@@ -603,21 +628,19 @@ export class MultiSelect {
       value: this.value,
       name: this.name,
     });
-    this.update.emit({
-      value: this.value,
-      name: this.name,
-    });
   };
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
     e.stopPropagation();
-    const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
+    const filterValue = (e.detail.target as HTMLInputElement).value;
+    const { hasFilterResults, visibleOptionCount, resetCurrentlyHighlightedOption } = updateFilterResults(
       this.multiSelectOptions,
       this.multiSelectOptgroups,
-      (e.detail.target as HTMLInputElement).value
+      filterValue
     );
     resetCurrentlyHighlightedOption && (this.currentlyHighlightedOption = null);
     this.hasFilterResults = hasFilterResults;
+    this.announceFilterStatus(filterValue, visibleOptionCount);
   };
 
   private onToggle = (): void => {

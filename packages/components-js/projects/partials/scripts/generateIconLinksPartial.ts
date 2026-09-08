@@ -2,7 +2,7 @@ import { ICONS_MANIFEST, ICON_NAMES } from '@porsche-design-system/icons';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
 import { minifyHTML } from './utils';
 
-export const generateIconLinksPartial = (): string => {
+export const generateIconLinksPartial = async (): Promise<string> => {
   const iconType = ICON_NAMES.map((x) => `'${x}'`).join(' | ');
   const types = `type IconName = ${iconType};
 
@@ -12,7 +12,7 @@ type GetIconLinksOptions = {
   format?: FormatWithJS;
 };`;
 
-  const link = minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
+  const link = await minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
 
   const func = `export function getIconLinks(opts: GetIconLinksOptions & { format: 'js' }): PartialLink[];
 export function getIconLinks(opts: GetIconLinksOptions & { format: 'jsx' }): JSX.Element;

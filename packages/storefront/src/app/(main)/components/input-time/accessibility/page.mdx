@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputTimeMeta } from '@/app/(main)/components/input-time/input-time.meta';
+
+export const metadata = {
+  title: 'Input Time: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input Time component',
+};
+
+# Input Time <ComponentStatus tagName="p-input-time"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
+/>
+
+<inputTimeMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-input-time" examples={inputTimeMeta.accessibility.examples} />
+
+<inputTimeMeta.accessibility.tests />

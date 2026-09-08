@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { npmDistTmpSubPath } from '../../../../components-wrapper/environment';
 import { renderToString } from 'react-dom/server';
+import { describe, it, expect } from 'vitest';
 
 const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
 const packageDir = path.resolve(path.dirname(componentsJsFilePath), '../../..');

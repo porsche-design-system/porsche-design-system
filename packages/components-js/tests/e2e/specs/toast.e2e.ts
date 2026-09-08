@@ -67,7 +67,7 @@ const waitForAnimationFinish = () => sleep(ANIMATION_DURATION);
 
 const getHost = (page: Page) => page.locator('p-toast');
 const getToastItem = (page: Page) => page.locator('p-toast p-toast-item');
-const getCloseButton = (page: Page) => page.locator('p-toast p-toast-item p-button');
+const getCloseButton = (page: Page) => page.locator('p-toast p-toast-item .dismiss');
 
 for (const state of TOAST_STATES) {
   test(`should forward state: ${state} to p-toast-item`, async ({ page }) => {
@@ -135,11 +135,9 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-toast'], 'componentDidLoad: p-toast').toBe(1);
     expect(status.componentDidLoad['p-toast-item'], 'componentDidLoad: p-icon').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
   });
 
   test('should not update on theme prop change', async ({ page }) => {
@@ -159,7 +157,7 @@ test.describe('lifecycle', () => {
 test.describe('toast-item', () => {
   test('should render close button with type of "button"', async ({ page }) => {
     await initToastWithToastItem(page);
-    const closeBtnReal = page.locator('p-toast p-toast-item p-button button');
+    const closeBtnReal = page.locator('p-toast p-toast-item .dismiss');
     expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 
@@ -170,16 +168,14 @@ test.describe('toast-item', () => {
       const toastItem = getToastItem(page);
       const animationIn = await getElementStyle(toastItem, 'animation');
 
-      expect(animationIn, 'for animationIn').toBe('0.6s cubic-bezier(0, 0, 0.2, 1) 0s 1 normal forwards running in');
+      expect(animationIn, 'for animationIn').toBe('0.6s cubic-bezier(0, 0, 0.2, 1) forwards in');
       await expect(toastItem).toHaveCount(1);
 
       // toast stay open for a total of 1000ms, we need to hit the middle of closing animation
       await waitForAnimationFinish();
       const animationOut = await getElementStyle(toastItem, 'animation');
 
-      expect(animationOut, 'for animationOut').toBe(
-        '0.4s cubic-bezier(0.4, 0, 0.5, 1) 0s 1 normal forwards running out'
-      );
+      expect(animationOut, 'for animationOut').toBe('0.4s cubic-bezier(0.4, 0, 0.5, 1) forwards out');
       await expect(toastItem).toHaveCount(0);
     });
   });

@@ -1,6 +1,6 @@
 import { forceUpdate } from '@stencil/core';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
-import { consoleWarn, type Theme } from '../../../utils';
+import { consoleWarn } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { RadioGroupOptionInternalHTMLProps } from '../radio-group-option/radio-group-option-utils';
 export type RadioGroupState = FormState;
@@ -18,16 +18,21 @@ export const resetSelectedRadioGroupOption = (options: RadioGroupOption[]): void
   }
 };
 
-export const updateRadioGroupOptions = (options: RadioGroupOption[], value: string): void => {
+export const updateRadioGroupOptions = (
+  options: RadioGroupOption[],
+  value: string | number | null | undefined
+): void => {
   resetSelectedRadioGroupOption(options);
+  // `undefined`/`null` means "no preselection" – do not match any option
+  if (value === undefined || value === null) {
+    return;
+  }
   const optionToSelect = options.find((option) => option.value === value);
   if (optionToSelect) {
     optionToSelect.selected = true;
     forceUpdate(optionToSelect);
   } else {
-    if (value !== '') {
-      consoleWarn('The provided value is not included in the options of the radio group:', value);
-    }
+    consoleWarn('The provided value is not included in the options of the radio group:', String(value));
   }
 };
 
@@ -39,14 +44,12 @@ export const setSelectedRadioGroupOption = (options: RadioGroupOption[], selecte
 
 export const syncRadioGroupChildrenProps = (
   children: RadioGroupOption[],
-  theme: Theme,
   disabled: boolean,
   loading: boolean,
   state: RadioGroupState,
   name: string
 ): void => {
   for (const child of children) {
-    child.theme = theme;
     child.disabledParent = disabled;
     child.name = name;
     child.loadingParent = loading;

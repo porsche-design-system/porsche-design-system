@@ -1,6 +1,7 @@
 import type { BreakpointCustomizable } from '../breakpoint-customizable';
+import { throwException } from '../log/logger';
 import { getTagNameWithoutPrefix } from '../tag-name';
-import { type TileAlign, type TileAspectRatio, type TileSize, throwException } from '../';
+import type { TileAlign, TileAspectRatio, TileSize } from '../tile/tile-utils';
 
 // does not take care of breakpoint customizable
 export const throwIfAlignTopAndNotCompact = (

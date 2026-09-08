@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { FRAMEWORK_TYPES, type Framework } from '@porsche-design-system/shared';
 import { camelCase, pascalCase } from 'change-case';
 
@@ -28,40 +28,47 @@ const selectMarkupFramework = async (page: Page, framework: Framework) => {
 };
 
 // Tests select input of type string[] and checks if default is handled (Accordion)
-const selectStringProperty: { framework: Framework; expectedTag: string; sizePropText: string }[] = [
-  { framework: 'vanilla-js', expectedTag: 'p-accordion', sizePropText: 'size="medium"' },
-  { framework: 'react', expectedTag: 'PAccordion', sizePropText: 'size="medium"' },
-  { framework: 'angular', expectedTag: 'p-accordion', sizePropText: 'size="medium"' },
-  { framework: 'vue', expectedTag: 'PAccordion', sizePropText: 'size="medium"' },
+const selectStringProperty: { framework: Framework; expectedTag: string; backgroundPropText: string }[] = [
+  { framework: 'vanilla-js', expectedTag: 'p-accordion', backgroundPropText: 'background="frosted"' },
+  { framework: 'react', expectedTag: 'PAccordion', backgroundPropText: 'background="frosted"' },
+  { framework: 'angular', expectedTag: 'p-accordion', backgroundPropText: 'background="frosted"' },
+  { framework: 'vue', expectedTag: 'PAccordion', backgroundPropText: 'background="frosted"' },
 ];
 
 test.describe('properties > select', () => {
-  for (const { framework, expectedTag, sizePropText } of selectStringProperty) {
+  for (const { framework, expectedTag, backgroundPropText } of selectStringProperty) {
     test(`should reflect selection correctly for ${framework}`, async ({ page }) => {
       await page.goto('/components/accordion/configurator');
 
       await selectMarkupFramework(page, framework);
       const markup = page.locator('.markup');
       const accordion = page.locator('.demo p-accordion');
+      const backgroundSelect = page.locator('p-select[name="background"]');
+      const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
       await expect(accordion).toBeVisible();
-      await expect(accordion).toHaveJSProperty('size', 'small');
+      await expect(backgroundSelect).toBeVisible();
+      await expect(markup).toBeVisible();
+
+      await expect(accordion).toHaveJSProperty('background', 'none');
+      await expect(backgroundSelect).toHaveJSProperty('value', 'none');
       await expect(markup).toContainText(expectedTag);
+      await expect(markup).not.toContainText(backgroundPropText);
 
-      const sizeSelect = page.locator('p-select[name="size"]');
-      await expect(sizeSelect).toBeVisible();
-      await expect(sizeSelect).toHaveJSProperty('value', 'small');
-      await expect(markup).not.toContainText('size');
+      await backgroundSelect.click();
+      await backgroundSelect.locator('p-select-option').nth(2).click();
 
-      await sizeSelect.click();
-      await sizeSelect.locator('p-select-option').last().click();
-      await expect(markup).toContainText(sizePropText);
-      await expect(accordion).toHaveJSProperty('size', 'medium');
+      await expect(accordion).toHaveJSProperty('background', 'frosted');
+      await expect(backgroundSelect).toHaveJSProperty('value', 'frosted');
+      await expect(markup).toContainText(expectedTag);
+      await expect(markup).toContainText(backgroundPropText);
 
-      await sizeSelect.getByText('Reset').click();
-      await expect(sizeSelect).toHaveJSProperty('value', 'small');
-      await expect(accordion).toHaveJSProperty('size', 'small');
-      await expect(markup).not.toContainText('size');
+      await resetAllButton.click();
+
+      await expect(accordion).toHaveJSProperty('background', 'none');
+      await expect(backgroundSelect).toHaveJSProperty('value', 'none');
+      await expect(markup).toContainText(expectedTag);
+      await expect(markup).not.toContainText(backgroundPropText);
     });
   }
 });
@@ -82,6 +89,7 @@ test.describe('properties > switch', () => {
       await selectMarkupFramework(page, framework);
       const markup = page.locator('.markup');
       const accordion = page.locator('.demo p-accordion');
+      const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
       await expect(accordion).toBeVisible();
       await expect(markup).toContainText(expectedTag);
@@ -99,7 +107,7 @@ test.describe('properties > switch', () => {
       await expect(accordion).toHaveJSProperty('compact', true);
 
       // Reset prop
-      await page.locator('p-switch + p-tag button').click();
+      await resetAllButton.click();
       await expect(compactSwitch).toHaveJSProperty('checked', false);
       await expect(accordion).toHaveJSProperty('compact', undefined);
       await expect(markup).not.toContainText('compact');
@@ -114,6 +122,7 @@ test.describe('properties > input-text', () => {
 
     const markup = page.locator('.markup');
     const button = page.locator('.demo p-button');
+    const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
     await expect(button).toBeVisible();
     await expect(markup).toContainText('p-button');
@@ -132,9 +141,8 @@ test.describe('properties > input-text', () => {
     // Default value is for name is undefined but prop is not removed until reset is clicked
     await expect(markup).toContainText('name=""');
 
-    await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
-    // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
-    await expect(button).toHaveJSProperty('name', null);
+    await resetAllButton.click();
+    await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
   test('should reflect input correctly for react', async ({ page }) => {
@@ -144,6 +152,7 @@ test.describe('properties > input-text', () => {
 
     const markup = page.locator('.markup');
     const button = page.locator('.demo p-button');
+    const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
     await expect(button).toBeVisible();
     await expect(markup).toContainText('PButton');
@@ -162,9 +171,8 @@ test.describe('properties > input-text', () => {
     // Default value is for name is undefined but prop is not removed until reset is clicked
     await expect(markup).toContainText('name=""');
 
-    await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
-    // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
-    await expect(button).toHaveJSProperty('name', null);
+    await resetAllButton.click();
+    await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
   test('should reflect input correctly for angular', async ({ page }) => {
@@ -174,6 +182,7 @@ test.describe('properties > input-text', () => {
 
     const markup = page.locator('.markup');
     const button = page.locator('.demo p-button');
+    const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
     await expect(button).toBeVisible();
     await expect(markup).toContainText('p-button');
@@ -192,9 +201,8 @@ test.describe('properties > input-text', () => {
     // Default value is for name is undefined but prop is not removed until reset is clicked
     await expect(markup).toContainText('name=""');
 
-    await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
-    // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
-    await expect(button).toHaveJSProperty('name', null);
+    await resetAllButton.click();
+    await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
   test('should reflect input correctly for vue', async ({ page }) => {
@@ -204,6 +212,7 @@ test.describe('properties > input-text', () => {
 
     const markup = page.locator('.markup');
     const button = page.locator('.demo p-button');
+    const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
     await expect(button).toBeVisible();
     await expect(markup).toContainText('PButton');
@@ -222,9 +231,8 @@ test.describe('properties > input-text', () => {
     // Default value is for name is undefined but prop is not removed until reset is clicked
     await expect(markup).toContainText('name=""');
 
-    await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
-    // This is a stencil bug; when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
-    await expect(button).toHaveJSProperty('name', null);
+    await resetAllButton.click();
+    await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
 });
@@ -280,6 +288,7 @@ test.describe('properties > input number', () => {
 
         const markup = page.locator('.markup');
         const pagination = page.locator('.demo p-pagination');
+        const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
         await expect(pagination).toBeVisible();
         await expect(markup).toContainText(componentTag);
@@ -299,7 +308,7 @@ test.describe('properties > input number', () => {
         await expect(pagination).toHaveJSProperty('activePage', 2);
         await expect(markup).toContainText(getProp(framework as Framework, 'active-page', '2'));
 
-        await page.locator('p-input-number').filter({ hasText: 'Active Page' }).getByText('Reset').click();
+        await resetAllButton.click();
 
         await expect(pagination).toHaveJSProperty('activePage', 1);
         await expect(textField).toHaveJSProperty('value', '1');
@@ -318,6 +327,7 @@ test.describe('properties > input number', () => {
 
         const markup = page.locator('.markup');
         const textarea = page.locator('.demo p-textarea');
+        const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
         await expect(textarea).toBeVisible();
         await expect(markup).toContainText(componentTag);
@@ -344,7 +354,7 @@ test.describe('properties > input number', () => {
         await expect(textField).toHaveJSProperty('value', '2');
         await expect(markup).toContainText(getProp(framework as Framework, 'max-length', '2'));
 
-        await page.locator('p-input-number').filter({ hasText: 'Max Length' }).getByText('Reset').click();
+        await resetAllButton.click();
 
         await expect(textarea).toHaveJSProperty('maxLength', undefined);
         await expect(textField).toHaveJSProperty('value', '');
@@ -363,6 +373,7 @@ test.describe('properties > input number', () => {
 
         const markup = page.locator('.markup');
         const tabsBar = page.locator('.demo p-tabs-bar');
+        const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
         await expect(tabsBar).toBeVisible();
         await expect(markup).toContainText(componentTag);
@@ -393,7 +404,7 @@ test.describe('properties > input number', () => {
           await expect(markup).toContainText(getProp(framework as Framework, 'active-tab-index', 'activeTabIndex'));
         }
 
-        await page.locator('p-input-number').filter({ hasText: 'Active Tab Index' }).getByText('Reset').click();
+        await resetAllButton.click();
 
         await expect(tabsBar).toHaveJSProperty('activeTabIndex', 0);
         await expect(textField).toHaveJSProperty('value', '0');

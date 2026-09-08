@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { displayMeta } from '@/app/(main)/components/display/display.meta';
+
+export const metadata = {
+  title: 'Display - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Display component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Display <ComponentStatus tagName="p-display"></ComponentStatus>
+
+<displayMeta.introduction />
+
+<Configurator tagName="p-display" story={displayMeta.configurator.story} />

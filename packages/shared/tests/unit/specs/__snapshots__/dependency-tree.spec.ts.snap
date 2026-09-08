@@ -2,11 +2,13 @@
 
 exports[`should have no regression for dependency tree 1`] = `
 {
+  "bundles.js": [],
   "data/table-data-advanced.js": [],
   "data/table-data-basic.js": [],
   "data/table-data-sorting.js": [],
   "data/table-data-vrt.js": [],
   "index.js": [
+    "bundles.js",
     "data/table-data-advanced.js",
     "data/table-data-basic.js",
     "data/table-data-sorting.js",
@@ -15,7 +17,6 @@ exports[`should have no regression for dependency tree 1`] = `
     "lib/tagNames.js",
     "lib/tagNamesWithChunk.js",
     "models/framework.js",
-    "styles/color-utils.js",
     "styles/getMinifiedCss.js",
     "utils/convertToAngular.js",
     "utils/convertToReact.js",
@@ -25,7 +26,6 @@ exports[`should have no regression for dependency tree 1`] = `
   "lib/tagNames.js": [],
   "lib/tagNamesWithChunk.js": [],
   "models/framework.js": [],
-  "styles/color-utils.js": [],
   "styles/getMinifiedCss.js": [],
   "utils/convertToAngular.js": [],
   "utils/convertToReact.js": [],

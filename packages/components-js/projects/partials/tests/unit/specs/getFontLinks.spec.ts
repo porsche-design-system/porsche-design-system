@@ -1,5 +1,6 @@
 import { renderToString } from 'react-dom/server';
 import { getFontLinks } from '../../../src';
+import { describe, it, expect } from 'vitest';
 
 const hash = '[a-z0-9]{7}';
 const baseHrefCom = 'https:\\/\\/cdn\\.ui\\.porsche.com\\/porsche-design-system\\/fonts';

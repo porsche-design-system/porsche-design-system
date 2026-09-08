@@ -1,6 +1,8 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { areAllChildrenOfKind } from '../dom/areAllChildrenOfKind';
-import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix, paramCaseToCamelCase, throwException } from '..';
+import { throwException } from '../log/logger';
+import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from '../tag-name';
+import { paramCaseToCamelCase } from '../paramCaseToCamelCase';
 import type { PrefixedTagNames } from '../tag-name';
 
 export const throwIfChildrenAreNotOfKind = (element: HTMLElement, tagName: TagName): void => {

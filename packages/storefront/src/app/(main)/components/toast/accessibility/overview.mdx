@@ -1,0 +1,29 @@
+## Accessibility support
+
+### Keyboard
+
+| Key / state | Function                                                |
+| ----------- | ------------------------------------------------------- |
+| `Tab`       | Moves focus to the close button of the `Toast` element. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                 | Usage                                                                                             |
+| -------------------- | ------------------------------------------------------------------------------------------------- |
+| `role="status"`      | When content is populated or changed in `state="info"`, the component announces it unobtrusively. |
+| `aria-hidden="true"` | State `icon` is hidden from the screen reader.                                                    |
+
+## Development considerations
+
+### ARIA live announcements
+
+The `Toast` component uses `role="status"` to announce **content changes** for assistive technologies. Therefore, it is
+**mandatory** that the component is **pre-rendered** and the content (`Toast Item`) is added dynamically.
+
+### Common do's and don'ts
+
+- **Do** pre-render `p-toast` and add `p-toast-item` elements dynamically.
+- **Do** provide specific `text` that explains what happened and what to do next.
+- **Don't** create the toast container only when a message should be announced.

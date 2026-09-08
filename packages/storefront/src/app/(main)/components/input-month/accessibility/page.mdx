@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputMonthMeta } from '@/app/(main)/components/input-month/input-month.meta';
+
+export const metadata = {
+  title: 'Input Month: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input Month component',
+};
+
+# Input Month <ComponentStatus tagName="p-input-month"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
+/>
+
+<inputMonthMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-input-month" examples={inputMonthMeta.accessibility.examples} />
+
+<inputMonthMeta.accessibility.tests />

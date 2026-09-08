@@ -8,7 +8,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const SelectExampleFormPage = (): JSX.Element => {
+export const SelectExampleFormPage = () => {
   const [form, setForm] = useState({ mySelect: undefined });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 

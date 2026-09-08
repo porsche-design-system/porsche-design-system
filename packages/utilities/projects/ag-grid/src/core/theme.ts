@@ -1,100 +1,131 @@
 import { type Theme, themeQuartz } from 'ag-grid-community';
-import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../parts';
 import {
-  borderRadiusMedium,
-  borderRadiusSmall,
-  fontFamily,
-  fontSizeTextSmall,
-  fontSizeTextXSmall,
-  fontWeightSemiBold,
-  themeDarkBackgroundBase,
-  themeDarkBackgroundFrosted,
-  themeDarkBackgroundSurface,
-  themeDarkBackgroundSurfaceDarken,
-  themeDarkContrastLow,
-  themeDarkContrastMedium,
-  themeDarkNotificationError,
-  themeDarkNotificationInfo,
-  themeDarkPrimary,
-  themeDarkStateDisabled,
-  themeDarkStateFocus,
-  themeDarkStateHover,
-  themeLightBackgroundBase,
-  themeLightBackgroundFrosted,
-  themeLightBackgroundSurface,
-  themeLightBackgroundSurfaceDarken,
-  themeLightContrastLow,
-  themeLightContrastMedium,
-  themeLightNotificationError,
-  themeLightNotificationInfo,
-  themeLightPrimary,
-  themeLightStateDisabled,
-  themeLightStateFocus,
-  themeLightStateHover,
+  checkboxStyle,
+  checkboxStyleCompact,
+  inputStyles,
+  inputStylesCompact,
+  pdsSvgIcons,
+  toggleButtonStyle,
+  toggleButtonStyleCompact,
+} from '../parts';
+import {
+  colorCanvas,
+  colorContrastLow,
+  colorContrastLower,
+  colorErrorLow,
+  colorFocus,
+  colorFrosted,
+  colorInfoLow,
+  colorPrimary,
+  colorSurface,
+  fontPorscheNext,
+  fontWeightSemibold,
+  gridSpacing,
+  gridSpacingCompact,
+  pdsCheckboxBorderWidth,
+  pdsIconSize,
+  pdsIconSizeCompact,
+  pdsSwitchHeight,
+  pdsSwitchInset,
+  pdsSwitchWidth,
+  radiusMd,
+  radiusSm,
+  typescaleSm,
+  typescaleXs,
 } from '../styles';
-import { pdsThemeModeDark } from '../types/theme-mode';
 
+/**
+ * Porsche Design System theme for AG Grid v35
+ *
+ * This theme extends the Quartz theme with Porsche Design System styling.
+ * It supports both light and dark modes via CSS `color-scheme`.
+ *
+ * Features:
+ * - Custom Porsche Design System colors
+ * - PorscheNext font family
+ * - Custom checkbox, toggle, and input styling
+ * - Optimized spacing and sizing
+ * - Full dark mode support
+ *
+ * Usage:
+ * ```typescript
+ * import { pdsTheme } from '@porsche-design-system/utilities/ag-grid';
+ *
+ * const gridOptions = {
+ *   theme: pdsTheme,
+ *   // ... other options
+ * };
+ * ```
+ *
+ * For dark mode, set `color-scheme` on a parent element:
+ * ```html
+ * <body style="color-scheme: dark;">
+ *   <!-- Grid will render in dark mode -->
+ * </body>
+ * ```
+ *
+ * For light dark mode, set `color-scheme` on a parent element:
+ * ```html
+ * <body style="color-scheme: light dark;">
+ *   <!-- Grid will render in light or dark mode depending on OS settings -->
+ * </body>
+ * ```
+ */
 export const pdsTheme: Theme = themeQuartz
+  // Light mode parameters (default)
   .withParams({
-    checkboxBorderWidth: 2,
-    checkboxBorderRadius: borderRadiusSmall,
-    focusShadow: 'none',
-    inputFocusShadow: 'none',
-    spacing: 10,
-    toggleButtonHeight: 28,
-    toggleButtonWidth: 48,
-    iconSize: 24,
-    borderRadius: borderRadiusSmall,
-    wrapperBorderRadius: borderRadiusMedium,
-    fontFamily: fontFamily,
-    fontSize: fontSizeTextSmall,
-    headerFontWeight: fontWeightSemiBold,
-    headerFontSize: fontSizeTextXSmall,
+    // Component sizing
+    checkboxBorderWidth: pdsCheckboxBorderWidth,
+    checkboxBorderRadius: radiusSm,
+    spacing: gridSpacing,
+    toggleButtonHeight: pdsSwitchHeight,
+    toggleButtonWidth: pdsSwitchWidth,
+    toggleButtonSwitchInset: pdsSwitchInset,
+    iconSize: pdsIconSize,
+    borderRadius: radiusSm,
+    wrapperBorderRadius: radiusMd,
+
+    // Grid structure
     headerHeight: 'calc(var(--ag-font-size) + var(--ag-spacing) * 2.9)',
     rowHeight: 'calc(var(--ag-font-size) + var(--ag-spacing) * 4)',
-    toggleButtonSwitchInset: 3,
-    browserColorScheme: 'light',
-    accentColor: themeLightNotificationInfo,
-    backgroundColor: themeLightBackgroundBase,
-    foregroundColor: themeLightPrimary,
-    headerBackgroundColor: themeLightBackgroundSurface,
-    selectedRowBackgroundColor: themeLightBackgroundSurfaceDarken,
-    oddRowBackgroundColor: themeLightBackgroundSurface,
-    modalOverlayBackgroundColor: themeLightBackgroundFrosted,
-    rowHoverColor: themeLightStateHover,
-    columnHoverColor: themeLightStateHover,
-    rangeSelectionBorderColor: themeLightStateFocus,
-    borderColor: themeLightContrastLow,
-    inputBorder: `1px solid ${themeLightContrastMedium}`,
-    inputInvalidBorder: `1px solid ${themeLightNotificationError}`,
-    inputDisabledBorder: `1px solid ${themeLightStateDisabled}`,
-    inputDisabledBackgroundColor: themeLightBackgroundBase,
-    invalidColor: themeLightNotificationError,
-    inputFocusBorder: `1px solid ${themeLightPrimary}`,
+
+    // Typography
+    fontFamily: fontPorscheNext,
+    fontSize: typescaleSm,
+    fontWeight: 'inherit',
+    headerFontWeight: fontWeightSemibold,
+    headerFontSize: typescaleXs,
+
+    // Color scheme
+    browserColorScheme: 'inherit',
+
+    // Core Colors
+    accentColor: colorFocus,
+    backgroundColor: colorCanvas,
+    foregroundColor: colorPrimary,
+    borderColor: colorContrastLow,
+    invalidColor: colorErrorLow,
+
+    // Grid colors
+    headerBackgroundColor: colorContrastLower,
+    selectedRowBackgroundColor: colorInfoLow,
+    oddRowBackgroundColor: colorSurface,
+    modalOverlayBackgroundColor: colorFrosted,
+    rowHoverColor: colorFrosted,
+    columnHoverColor: colorFrosted,
+    rangeSelectionBorderColor: colorFocus,
   })
-  .withParams(
-    {
-      browserColorScheme: 'dark',
-      accentColor: themeDarkNotificationInfo,
-      backgroundColor: themeDarkBackgroundBase,
-      foregroundColor: themeDarkPrimary,
-      headerBackgroundColor: themeDarkBackgroundSurface,
-      selectedRowBackgroundColor: themeDarkBackgroundSurfaceDarken,
-      oddRowBackgroundColor: themeDarkBackgroundSurface,
-      modalOverlayBackgroundColor: themeDarkBackgroundFrosted,
-      rowHoverColor: themeDarkStateHover,
-      columnHoverColor: themeDarkStateHover,
-      rangeSelectionBorderColor: themeDarkStateFocus,
-      borderColor: themeDarkContrastLow,
-      inputBorder: `1px solid ${themeDarkContrastMedium}`,
-      inputInvalidBorder: `1px solid ${themeDarkNotificationError}`,
-      inputDisabledBorder: `1px solid ${themeDarkStateDisabled}`,
-      inputDisabledBackgroundColor: themeDarkBackgroundBase,
-      invalidColor: themeDarkNotificationError,
-      inputFocusBorder: `1px solid ${themeDarkPrimary}`,
-    },
-    pdsThemeModeDark
-  )
+  // Apply custom parts
   .withPart(pdsSvgIcons)
   .withPart(toggleButtonStyle)
-  .withPart(checkboxStyle);
+  .withPart(checkboxStyle)
+  .withPart(inputStyles);
+
+export const pdsThemeCompact: Theme = pdsTheme
+  .withParams({
+    spacing: gridSpacingCompact,
+    iconSize: pdsIconSizeCompact,
+  })
+  .withPart(checkboxStyleCompact)
+  .withPart(toggleButtonStyleCompact)
+  .withPart(inputStylesCompact);

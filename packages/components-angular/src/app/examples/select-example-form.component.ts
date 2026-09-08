@@ -6,7 +6,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-select-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
-      <p-select formControlName="mySelect" [label]="'Some Label'">
+      <p-select name="mySelect" formControlName="mySelect" [label]="'Some Label'">
         <p-select-option value="a">Option A</p-select-option>
         <p-select-option value="b">Option B</p-select-option>
         <p-select-option value="c">Option C</p-select-option>

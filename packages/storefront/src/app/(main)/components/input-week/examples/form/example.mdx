@@ -1,0 +1,16 @@
+The `p-input-week` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the input state is externally managed using the `value` property and `input` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the input behaves similarly to a native `<input type="week" />`, automatically manages
+its own state, and includes its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+

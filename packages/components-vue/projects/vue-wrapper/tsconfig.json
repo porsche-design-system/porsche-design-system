@@ -3,5 +3,14 @@
   "compilerOptions": {
     "jsx": "preserve"
   },
-  "include": ["./src"]
+  "include": [
+    "./src/emotion/index.ts",
+    "./src/vanilla-extract/index.ts",
+    "./src/tokens/index.ts",
+    "./src/partials/index.ts",
+    "./src/meta/index.ts",
+    "./src/jsdom-polyfill/index.ts",
+    "./src/testing/index.ts",
+    "./src/ag-grid/index.ts"
+  ]
 }

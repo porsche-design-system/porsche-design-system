@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tagDismissibleMeta } from '@/app/(main)/components/tag-dismissible/tag-dismissible.meta';
+
+export const metadata = {
+  title: 'Tag Dismissible: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Tag Dismissible component',
+};
+
+# Tag Dismissible <ComponentStatus tagName="p-tag-dismissible"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<tagDismissibleMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-tag-dismissible" examples={tagDismissibleMeta.accessibility.examples} />
+
+<tagDismissibleMeta.accessibility.tests />

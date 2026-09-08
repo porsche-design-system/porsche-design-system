@@ -1,5 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, paramCaseToCamelCase } from '..';
+import { getPrefixedTagNames } from '../tag-name';
+import { paramCaseToCamelCase } from '../paramCaseToCamelCase';
 import type { PrefixedTagNames } from '../tag-name';
 
 export const getClickedItem = <T>(host: HTMLElement, tagName: TagName, targets: EventTarget[]): HTMLElement & T => {

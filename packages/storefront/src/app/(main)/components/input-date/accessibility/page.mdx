@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputDateMeta } from '@/app/(main)/components/input-date/input-date.meta';
+
+export const metadata = {
+  title: 'Input Date: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input Date component',
+};
+
+# Input Date <ComponentStatus tagName="p-input-date"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
+/>
+
+<inputDateMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-input-date" examples={inputDateMeta.accessibility.examples} />
+
+<inputDateMeta.accessibility.tests />

@@ -1,13 +1,12 @@
 import * as splideModule from '@splidejs/splide';
 import { Splide } from '@splidejs/splide';
-import { vi } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizable';
 import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
 import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
 import * as hasDescription from '../../utils/form/hasDescription';
 import * as hasHeading from '../../utils/form/hasHeading';
 import * as jsonUtils from '../../utils/json';
-import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
 import * as validatePropsUtils from '../../utils/validation/validateProps';
 import { Carousel } from './carousel';
 import * as carouselUtils from './carousel-utils';
@@ -129,7 +128,8 @@ describe('componentWillLoad', () => {
 
 describe('componentDidLoad', () => {
   it('should call getSplideBreakpoints() with correct parameters', () => {
-    vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
     const spy = vi.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
     component.host = getHostEl();
@@ -141,7 +141,8 @@ describe('componentDidLoad', () => {
   });
 
   it('should call parseJSONAttribute() with correct parameter', () => {
-    vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
     const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute');
     const component = new Carousel();
     component.host = getHostEl();
@@ -153,7 +154,8 @@ describe('componentDidLoad', () => {
   });
 
   it('should call Splide constructor with correct parameters and set this.splide', () => {
-    const spy = vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
 
     const component = new Carousel();
     component.host = getHostEl();
@@ -167,7 +169,8 @@ describe('componentDidLoad', () => {
   });
 
   it('should call Splide constructor with correct parameters and set this.splide for slidesPerPage=auto', () => {
-    const spy = vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
 
     const component = new Carousel();
     component.host = getHostEl();
@@ -182,7 +185,8 @@ describe('componentDidLoad', () => {
   });
 
   it('should call this.registerSplideHandlers() with correct parameters', () => {
-    vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
     const component = new Carousel();
     component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
@@ -194,18 +198,6 @@ describe('componentDidLoad', () => {
 });
 
 describe('render', () => {
-  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
-    const spy = vi.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
-    const component = new Carousel();
-    component.host = document.createElement('p-carousel');
-    component.wrapContent = true;
-    component.host.attachShadow({ mode: 'open' });
-
-    component.render();
-
-    expect(spy).toHaveBeenCalledWith(component, 'wrapContent');
-  });
-
   it('should call hasHeading() with correct parameters', () => {
     const spy = vi.spyOn(hasHeading, 'hasHeading');
     const component = new Carousel();
@@ -226,20 +218,6 @@ describe('render', () => {
 
     component.render();
     expect(spy).toHaveBeenCalledWith(component.host, component.description);
-  });
-
-  it('should call parseJSON() with correct parameter and set this.parsedDisablePagination', () => {
-    vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
-    const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
-    const component = new Carousel();
-    component.host = document.createElement('p-carousel');
-    component.host.attachShadow({ mode: 'open' });
-    component.disablePagination = true;
-
-    component.render();
-    expect(spy).toHaveBeenCalledWith(true);
-
-    expect((component as any).parsedDisablePagination).toBe(false);
   });
 
   it('should call parseJSON() with correct parameter and set this.parsedPagination', () => {
@@ -400,9 +378,10 @@ describe('registerSplideHandlers()', () => {
     const splide = { ...splideMock, on: onSpy } as Splide;
 
     component['registerSplideHandlers'](splide);
-    expect(onSpy).toHaveBeenCalledTimes(2);
+    expect(onSpy).toHaveBeenCalledTimes(3);
     expect(onSpy).toHaveBeenNthCalledWith(1, 'mounted', expect.any(Function));
     expect(onSpy).toHaveBeenNthCalledWith(2, 'move', expect.any(Function));
+    expect(onSpy).toHaveBeenNthCalledWith(3, 'moved', expect.any(Function));
   });
 
   it('should call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = true with correct parameters on mounted event', () => {
@@ -442,12 +421,10 @@ describe('registerSplideHandlers()', () => {
     const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const updatePaginationSpy = vi.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => {});
     const changeEmitSpy = vi.fn();
-    const carouselChangeEmitSpy = vi.fn();
     const component = new Carousel();
     component['amountOfPages'] = 2; // hasNavigation = true
     component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
     component['update'] = { emit: changeEmitSpy };
-    component['carouselChange'] = { emit: carouselChangeEmitSpy };
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('move', 1, 0);
@@ -458,7 +435,49 @@ describe('registerSplideHandlers()', () => {
     );
     expect(updatePaginationSpy).toHaveBeenCalledWith(component['paginationEl'], 2, 1);
     expect(changeEmitSpy).toHaveBeenCalledWith({ activeIndex: 1, previousIndex: 0 });
-    expect(carouselChangeEmitSpy).toHaveBeenCalledWith({ activeIndex: 1, previousIndex: 0 });
+  });
+
+  it('should update slide status live region on moved event using page count', () => {
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
+    const component = new Carousel();
+    component['amountOfPages'] = 8;
+    component['slides'] = Array.from({ length: 10 }, () => document.createElement('div'));
+    component['slideStatusEl'] = document.createElement('div');
+    component['splide'] = new Splide(getContainerEl(), { i18n: { slideLabel: 'Slide %s of %s' } });
+    component['registerSplideHandlers'](component['splide']);
+
+    expect(component['slideStatusEl'].textContent).toBe('');
+    component['splide'].emit('moved', 2);
+    expect(component['slideStatusEl'].textContent).toBe('Slide 3 of 8');
+  });
+
+  it('should use DEFAULT_SLIDE_LABEL when i18n.slideLabel is not set on moved event', () => {
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
+    const component = new Carousel();
+    component['amountOfPages'] = 3;
+    component['slideStatusEl'] = document.createElement('div');
+    component['splide'] = new Splide(getContainerEl());
+    component['registerSplideHandlers'](component['splide']);
+
+    component['splide'].emit('moved', 0);
+    expect(component['slideStatusEl'].textContent).toBe('1 of 3');
+  });
+
+  it('should not update slide status live region on moved when suppressNextStatusAnnounce is set', () => {
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
+    const component = new Carousel();
+    component['amountOfPages'] = 5;
+    component['slideStatusEl'] = document.createElement('div');
+    component['splide'] = new Splide(getContainerEl());
+    component['registerSplideHandlers'](component['splide']);
+    component['suppressNextStatusAnnounce'] = true;
+
+    component['splide'].emit('moved', 1);
+    expect(component['slideStatusEl'].textContent).toBe('');
+    expect(component['suppressNextStatusAnnounce']).toBe(false);
   });
 
   it('should call this.splide.mount()', () => {
@@ -577,5 +596,34 @@ describe('updateAmountOfPages()', () => {
 
     component['updateAmountOfPages']();
     expect(refreshSpy).toHaveBeenCalledWith();
+  });
+});
+
+describe('active slide control', () => {
+  it('should move the slider to the new active slide index', () => {
+    const component = new Carousel();
+    component['splide'] = { go: vi.fn() } as any;
+
+    component.activeSlideHandler(3);
+
+    expect(component['splide'].go).toHaveBeenCalledWith(3);
+  });
+
+  it('should not re-render when only activeSlideIndex changes', () => {
+    const component = new Carousel();
+
+    expect(component.componentShouldUpdate(2, 0, 'activeSlideIndex')).toBe(false);
+  });
+
+  it('should re-render when another prop changes value', () => {
+    const component = new Carousel();
+
+    expect(component.componentShouldUpdate('medium', 'x-large', 'headingSize')).toBe(true);
+  });
+
+  it('should not re-render when another prop keeps the same value', () => {
+    const component = new Carousel();
+
+    expect(component.componentShouldUpdate('medium', 'medium', 'headingSize')).toBe(false);
   });
 });

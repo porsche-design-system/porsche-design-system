@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
 import {
   getConsoleErrorMessages,
   getConsoleErrorsAmount,
@@ -34,8 +34,8 @@ const exampleUrls = exampleRoutes.map((item) => item.path);
 for (const url of exampleUrls) {
   test(`if example at ${url} works without error or warning`, async ({ page, browserName }) => {
     test.skip(browserName !== 'chromium');
-    // Skip AG Grid pages since they will show licensing errors
-    test.skip(['ag-grid-example', 'ag-grid-example-storefront'].includes(url));
+    // AG Grid Enterprise logs a license error for every grid, so these pages can never be console clean
+    test.skip(url.endsWith('-enterprise'));
     await goto(page, url);
 
     if (getConsoleErrorsAmount() !== 0) {

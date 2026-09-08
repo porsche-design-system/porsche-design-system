@@ -1,5 +1,5 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, SelectedAriaRole, Theme } from '../../types';
+import type { PropTypes, SelectedAriaRole } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,7 +7,6 @@ import {
   hasLabel,
   hasMessage,
   hasPropValueChanged,
-  THEMES,
   validateProps,
 } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -29,7 +28,6 @@ const propTypes: PropTypes<typeof Fieldset> = {
   required: AllowedTypes.boolean,
   state: AllowedTypes.oneOf<FormState>(FORM_STATES),
   message: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   // AllowedTypes do not match exactly the @Prop type because the 'aria' function does not allow for key-value pairs.
   aria: AllowedTypes.aria<FieldsetAriaAttribute>(FIELDSET_ARIA_ATTRIBUTES),
 };
@@ -46,25 +44,22 @@ const propTypes: PropTypes<typeof Fieldset> = {
 export class Fieldset {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Sets the visible legend text displayed above the grouped form controls. */
   @Prop() public label?: string = '';
 
-  /** The size of the label text. */
+  /** Sets the font size of the fieldset label (`small`, `medium`, or `large`). */
   @Prop() public labelSize?: FieldsetLabelSize = 'medium';
 
-  /** Marks the Fieldset as required. */
+  /** Marks all controls within the fieldset as required and adds a required indicator to the label. */
   @Prop() public required?: boolean = false;
 
-  /** The validation state. */
+  /** Sets the validation state of the fieldset, controlling the color and style of the feedback message. */
   @Prop() public state?: FieldsetState = 'none';
 
-  /** The message styled depending on validation state. */
+  /** Sets the validation feedback message displayed below the fieldset when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Adapts color depending on theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** Add ARIA attributes. */
+  /** Overrides the ARIA role on the fieldset — use `radiogroup` when grouping radio buttons. */
   @Prop() public aria?: SelectedAriaRole<'radiogroup'>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -73,14 +68,7 @@ export class Fieldset {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.state,
-      this.labelSize,
-      hasLabel(this.host, this.label),
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, hasLabel(this.host, this.label));
 
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
@@ -96,7 +84,7 @@ export class Fieldset {
           </legend>
         )}
         <slot />
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </fieldset>
     );
   }

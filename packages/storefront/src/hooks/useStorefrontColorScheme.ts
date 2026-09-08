@@ -1,0 +1,12 @@
+'use client';
+
+import { useContext } from 'react';
+import { StorefrontColorSchemeContext } from '@/components/providers/StorefrontColorSchemeProvider';
+
+export const useStorefrontColorScheme = () => {
+  const context = useContext(StorefrontColorSchemeContext);
+  if (!context) {
+    throw new Error('useStorefrontColorScheme must be used within a StorefrontColorSchemeProvider');
+  }
+  return context;
+};

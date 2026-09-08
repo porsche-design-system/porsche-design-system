@@ -4,7 +4,6 @@ export const getCssObject = (cssString: string): object => {
   // console.log(mediaQueriesAndSelectors);
 
   const jsonCssString = cssString
-    // eslint-disable-next-line @typescript-eslint/quotes
     .replace(/"/g, "'") // replace double quotes with single quotes
     .replace(/ *(.+) {/g, '"$1": {') // wrap selectors in double quotes, but without leading spaces
     .replace(/ ([\w-:]+): /g, '"$1": ') // wrap css properties in double quotes, initial space is to skip media query values

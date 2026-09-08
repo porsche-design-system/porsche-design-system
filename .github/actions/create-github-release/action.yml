@@ -1,0 +1,36 @@
+name: 'Create GitHub Release'
+description: 'Idempotently creates a GitHub Release (vX.Y.Z) for a stable version, automatically creating the underlying git tag at the given commit. Pre-release versions are skipped.'
+
+inputs:
+  version:
+    description: 'Package version (without leading "v"). The release tag/name will be "v${version}". Pre-release versions (containing "-rc"/"-beta"/"-alpha") are skipped.'
+    required: true
+  github-token:
+    description: 'GitHub token with "contents: write" permission.'
+    required: true
+  sha:
+    description: 'Commit SHA the release (and its tag) should point at. Defaults to github.sha.'
+    required: false
+    default: ${{ github.sha }}
+  repository:
+    description: 'Target repository in "owner/name" form. Defaults to github.repository.'
+    required: false
+    default: ${{ github.repository }}
+  changelog-path:
+    description: 'Path to the changelog file used to extract the release body.'
+    required: false
+    default: 'packages/components/CHANGELOG.md'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Create GitHub Release'
+      shell: bash
+      env:
+        INPUT_VERSION: ${{ inputs.version }}
+        INPUT_SHA: ${{ inputs.sha }}
+        INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_CHANGELOG_PATH: ${{ inputs.changelog-path }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: ${{ github.action_path }}/create-github-release.sh
+

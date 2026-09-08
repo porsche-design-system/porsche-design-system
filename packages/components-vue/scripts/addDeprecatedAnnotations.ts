@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import { kebabCase } from 'change-case';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';

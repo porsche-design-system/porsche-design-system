@@ -1,56 +1,33 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getContentAriaAttributes() > should return correct aria attributes for state: error 1`] = `
+exports[`getInlineNotificationAriaAttributes() > should return correct aria attributes for state: error 1`] = `
 {
-  "aria-describedby": "descriptionId",
-  "aria-labelledby": "labelId",
+  "aria-label": "Some label",
   "aria-live": "assertive",
   "role": "alert",
 }
 `;
 
-exports[`getContentAriaAttributes() > should return correct aria attributes for state: info 1`] = `
+exports[`getInlineNotificationAriaAttributes() > should return correct aria attributes for state: info 1`] = `
 {
-  "aria-describedby": "descriptionId",
-  "aria-labelledby": "labelId",
+  "aria-label": "Some label",
   "aria-live": "polite",
   "role": "status",
 }
 `;
 
-exports[`getContentAriaAttributes() > should return correct aria attributes for state: neutral 1`] = `
+exports[`getInlineNotificationAriaAttributes() > should return correct aria attributes for state: success 1`] = `
 {
-  "aria-describedby": "descriptionId",
-  "aria-labelledby": "labelId",
+  "aria-label": "Some label",
   "aria-live": "polite",
   "role": "status",
 }
 `;
 
-exports[`getContentAriaAttributes() > should return correct aria attributes for state: success 1`] = `
+exports[`getInlineNotificationAriaAttributes() > should return correct aria attributes for state: warning 1`] = `
 {
-  "aria-describedby": "descriptionId",
-  "aria-labelledby": "labelId",
-  "aria-live": "polite",
-  "role": "status",
-}
-`;
-
-exports[`getContentAriaAttributes() > should return correct aria attributes for state: warning 1`] = `
-{
-  "aria-describedby": "descriptionId",
-  "aria-labelledby": "labelId",
+  "aria-label": "Some label",
   "aria-live": "assertive",
   "role": "alert",
 }
 `;
-
-exports[`getInlineNotificationIconName() > should return correct icon for state: error 1`] = `"error-filled"`;
-
-exports[`getInlineNotificationIconName() > should return correct icon for state: info 1`] = `"information-filled"`;
-
-exports[`getInlineNotificationIconName() > should return correct icon for state: neutral 1`] = `"information-filled"`;
-
-exports[`getInlineNotificationIconName() > should return correct icon for state: success 1`] = `"success-filled"`;
-
-exports[`getInlineNotificationIconName() > should return correct icon for state: warning 1`] = `"warning-filled"`;

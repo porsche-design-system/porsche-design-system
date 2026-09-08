@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, type PSegmentedControlProps } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-segmented-control-example-reactive-form',
@@ -34,7 +34,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>Disabled: <span data-field="disabled">{{ form.controls.mySegmentedControl.disabled }}</span></div>
     <div>Value: <span data-field="value">{{ form.controls.mySegmentedControl.value }}</span></div>
     <div>Valid: <span data-field="valid">{{ form.controls.mySegmentedControl.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
+    <div [@if]="submittedValue !== null">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -42,20 +42,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class SegmentedControlExampleReactiveFormComponent {
   form = new FormGroup({
-    mySegmentedControl: new FormControl<string | number | undefined>(
-      { value: undefined, disabled: false },
-      { validators: Validators.required, nonNullable: true }
-    ),
+    mySegmentedControl: new FormControl<PSegmentedControlProps['value']>(null, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: string | null = null;
 
   setValue(): void {
     this.form.controls.mySegmentedControl.setValue(1);
   }
 
   resetValue(): void {
-    this.form.controls.mySegmentedControl.reset({ value: undefined, disabled: false });
+    this.form.controls.mySegmentedControl.reset(null);
   }
 
   toggleDisabled(): void {

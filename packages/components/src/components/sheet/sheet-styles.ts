@@ -1,68 +1,76 @@
+import { ref, spacingFluidLg } from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
+import { getCss } from '../../utils';
 import {
-  borderRadiusLarge,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-} from '@porsche-design-system/styles';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  dismissButtonJssStyle,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
-import {
+  dialogBorderRadius,
   dialogGridJssStyle,
   dialogHostJssStyle,
+  dialogPaddingBottom,
+  dialogPaddingInline,
+  dialogPaddingTop,
   getDialogColorJssStyle,
-  getDialogJssStyle,
+  getDialogDismissButtonJssStyle,
   getDialogTransitionJssStyle,
+  getFunctionalComponentDialogBaseStyles,
   getScrollerJssStyle,
-} from '../../styles/dialog-styles';
-import type { Theme } from '../../types';
-import { getCss } from '../../utils';
+  getSlotJssStyle,
+  getSlotMainJssStyle,
+} from '../common/dialog-base/dialog-base-styles';
+import type { SheetBackground } from './sheet-utils';
 
-export const getComponentCss = (isOpen: boolean, hasDismissButton: boolean, theme: Theme): string => {
+/**
+ * @css-variable {"name": "--ref-p-sheet-pt", "description": "Exposes the internally used padding-top of the Sheet as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Sheet."}
+ */
+export const cssVarRefPaddingTop = '--ref-p-sheet-pt';
+/**
+ * @css-variable {"name": "--ref-p-sheet-pb", "description": "Exposes the internally used padding-bottom of the Sheet as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the bottom of the Sheet."}
+ */
+export const cssVarRefPaddingBottom = '--ref-p-sheet-pb';
+/**
+ * @css-variable {"name": "--ref-p-sheet-px", "description": "Exposes the internally used padding-inline of the Sheet as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Sheet."}
+ */
+export const cssVarRefPaddingInline = '--ref-p-sheet-px';
+
+export const getComponentCss = (isOpen: boolean, background: SheetBackground, hasDismissButton: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
+        display: 'contents',
         ...addImportantToEachRule({
-          ...dialogHostJssStyle,
-          ...colorSchemeStyles,
+          [`${cssVarRefPaddingTop}`]: dialogPaddingTop,
+          [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
+          [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
+          ...dialogHostJssStyle(background),
           ...hostHiddenStyles,
         }),
       },
-      ...preventFoucOfNestedElementsStyles,
       slot: {
-        display: 'block',
-        gridColumn: '2/3',
-        zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+        ...getSlotJssStyle(),
+        '&:not([name])': getSlotMainJssStyle(),
+        '&[name=header]': {
+          gridColumn: '2/3',
+          zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+        },
       },
-      dialog: getDialogJssStyle(isOpen, theme, 'shading'),
+      dialog: getFunctionalComponentDialogBaseStyles(isOpen, 'shading'),
     },
-    scroller: getScrollerJssStyle('fullscreen', theme),
+    scroller: getScrollerJssStyle('fullscreen'),
     sheet: {
-      ...dialogGridJssStyle,
-      ...getDialogColorJssStyle(theme),
+      ...dialogGridJssStyle(),
+      ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       width: '100%',
       alignSelf: 'flex-end',
-      marginBlockStart: spacingFluidLarge, // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
-      borderTopLeftRadius: borderRadiusLarge,
-      borderTopRightRadius: borderRadiusLarge,
+      marginBlockStart: ref(spacingFluidLg), // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
+      borderTopLeftRadius: dialogBorderRadius,
+      borderTopRightRadius: dialogBorderRadius,
+      clipPath: `inset(0 round ${dialogBorderRadius} ${dialogBorderRadius} 0 0)`, // round top corners only
+      ...forcedColorsMediaQuery({
+        borderTop: '2px solid CanvasText',
+      }),
     },
     ...(hasDismissButton && {
-      dismiss: {
-        ...dismissButtonJssStyle,
-        gridArea: '1/3',
-        zIndex: 2, // ensures dismiss button is above header and content
-        position: 'sticky',
-        insetBlockStart: spacingFluidSmall,
-        marginBlockStart: `calc(${spacingFluidMedium} * -1)`,
-        marginInlineEnd: spacingFluidSmall,
-        placeSelf: 'flex-start flex-end',
-      },
+      dismiss: getDialogDismissButtonJssStyle(background),
     }),
   });
 };

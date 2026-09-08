@@ -1,13 +1,8 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { addImportantToEachRule } from '../common-styles';
 import type { Styles } from 'jss';
+import { addImportantToEachRule } from '../common-styles';
 
-export const tagNamesWithSlottedPictureImageArray: TagName[] = [
-  'p-button-tile',
-  'p-link-tile',
-  'p-link-tile-model-signature',
-  'p-link-tile-product',
-];
+export const tagNamesWithSlottedPictureImageArray: TagName[] = ['p-button-tile', 'p-link-tile', 'p-link-tile-product'];
 
 export const getSlottedPictureImageStyles = (tagName: TagName): Styles => ({
   '@global': {

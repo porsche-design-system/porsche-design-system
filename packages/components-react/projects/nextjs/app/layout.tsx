@@ -1,9 +1,10 @@
 import NextScript from 'next/script';
 import type { PropsWithChildren } from 'react';
-import { FooterPartials, HeaderPartials } from '../components';
+import { HeaderPartials } from '../components';
 import { Providers } from './providers';
+import '../styles/globals.css';
 
-export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Element {
+export default function RootLayout({ children }: PropsWithChildren<{}>) {
   const cdn = 'local';
 
   return (
@@ -20,7 +21,6 @@ export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Ele
           <div id="app">{children}</div>
         </Providers>
         <NextScript />
-        <FooterPartials cdn={cdn} />
       </body>
     </html>
   );

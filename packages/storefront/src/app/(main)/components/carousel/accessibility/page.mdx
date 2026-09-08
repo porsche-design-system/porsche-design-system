@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { carouselMeta } from '@/app/(main)/components/carousel/carousel.meta';
+
+export const metadata = {
+  title: 'Carousel: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Carousel component',
+};
+
+# Carousel <ComponentStatus tagName="p-carousel"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<carouselMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-carousel" examples={carouselMeta.accessibility.examples} />
+
+<carouselMeta.accessibility.tests />

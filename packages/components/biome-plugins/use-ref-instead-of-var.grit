@@ -1,0 +1,38 @@
+// Porsche Design System – Biome (GritQL) plugin
+//
+// Disallows raw CSS `var(...)` references inside component styles.
+// The `ref()` helper from `@porsche-design-system/stylesheets` must be used
+// instead, e.g. `ref(colorPrimary)` or `ref('--my-var', fallback)`.
+//
+// This plugin is scoped (via an `overrides` entry in `biome.json`) to
+// `packages/components/src/**`, excluding spec files. The `ref()` helper
+// implementation itself lives outside that scope and is therefore allowed to
+// use `var(...)`.
+//
+// How it works:
+// Biome's GritQL regex matching is full-text (anchored) against a node's
+// source text. We therefore use two mutually exclusive matchers so that only
+// the literal leaf nodes are reported (and never their parent containers):
+//   1. String literals: their full text starts and ends with a quote.
+//   2. Template chunks: their full text contains neither a backtick, a quote
+//      nor a `$` (which would indicate a `${...}` interpolation or a wrapping
+//      container node).
+language js
+
+or {
+  `$node` where {
+    $node <: r"['\"][^'\"]*var\([^'\"]*['\"]",
+    register_diagnostic(
+      span = $node,
+      message = "Avoid using a raw CSS `var(...)` reference. Use the `ref()` helper from `@porsche-design-system/stylesheets` instead, e.g. `ref(colorPrimary)` or `ref('--my-var', fallback)`."
+    )
+  },
+  `$node` where {
+    $node <: r"[^`'\"$]*var\([^`'\"$]*",
+    register_diagnostic(
+      span = $node,
+      message = "Avoid using a raw CSS `var(...)` reference. Use the `ref()` helper from `@porsche-design-system/stylesheets` instead, e.g. `ref(colorPrimary)` or `ref('--my-var', fallback)`."
+    )
+  }
+}
+
