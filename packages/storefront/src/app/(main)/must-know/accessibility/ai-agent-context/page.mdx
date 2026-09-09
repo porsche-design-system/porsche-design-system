@@ -1,0 +1,87 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Accessibility: AI Agent Context - Porsche Design System',
+  description:
+    'Install generic accessibility generation guardrails that complement separately installed Porsche Design System knowledge skills.',
+};
+
+# AI Agent Context
+
+<TableOfContents headings={['Install', 'How it works', 'Limitations']} />
+
+Install generation-time guardrails for **WCAG 2.2 AA** and applicable **EN 301 549** with
+[**web-accessibility-codegen**](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-codegen).
+After install, generate UI as usual: an always-on instruction loads the `accessible-frontend` skill when markup or
+behavior changes.
+
+This package does **not** install Porsche Design System knowledge skills. Expose the version-matched PDS skill
+separately via the [PDS Agent Skills documentation](/skills/introduction/general/). Use that skill for PDS component
+APIs; use `accessible-frontend` for generic page and application accessibility.
+
+To audit generated UI, see [**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/).
+
+<Notification heading="Prerequisite" headingTag="h3" state="warning">
+  {/*<!-- prettier-ignore --> */}
+  | Requirement | Details |
+  | ---------------- | ----------------------------------------------------------------------------------------------- |
+  | **Agents** | [GitHub Copilot](https://docs.github.com/en/copilot), [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Cursor, Windsurf, Gemini, Codex, or a shared `agent-skills` consumer |
+  | **Runtime** | [APM CLI](https://microsoft.github.io/apm/) (tested with [0.29.0](https://github.com/microsoft/apm/releases/tag/v0.29.0)) |
+  | **Access** | Read access to [porsche-design-system/skills](https://github.com/porsche-design-system/skills). For private org installs, see APM [Private and org packages](https://microsoft.github.io/apm/consumer/private-and-org-packages/) |
+  | **Product** | A local checkout of the web application |
+</Notification>
+
+## Install
+
+Install [APM](https://microsoft.github.io/apm/quickstart/) if needed (macOS/Linux: `curl -sSL https://aka.ms/apm-unix | sh`;
+Windows: `irm https://aka.ms/apm-windows | iex`). To match the CLI we tested, add `sh -s -- @v0.29.0` on Unix. Then from
+the product repository root pin the **package**:
+
+```bash
+apm install porsche-design-system/skills/packages/web-accessibility-codegen#web-accessibility-codegen--v0.2.0
+```
+
+Newer APM CLIs can still install that tag. You can list `web-accessibility-audit` in the same `apm.yml`.
+
+```yaml
+dependencies:
+  apm:
+    - git: https://github.com/porsche-design-system/skills.git
+      path: packages/web-accessibility-codegen
+      ref: web-accessibility-codegen--v0.2.0
+```
+
+To move version, bump `ref` and run `apm install`. To remove it, delete the entry (or `apm uninstall`) and run
+`apm install` again.
+
+## How it works
+
+Supported stacks: Next.js, React, Angular, Vue, Astro, and vanilla JavaScript. Svelte is not in scope. The instruction
+applies to `html`, `css`, `scss`, `js`, `ts`, `tsx`, `jsx`, `vue`, `astro`, and `mdx`.
+
+Always-on guardrails cover semantic or installed primitives, keyboard and focus, names/instructions/errors, visual
+adaptability, and dynamic announcements. The skill then loads only what the edit needs:
+
+- **Minimal:** one matching topic for styling or copy.
+- **Component:** the most specific Pattern or Composition topic; keyboard/focus when the control is interactive.
+- **Page or feature:** structure, keyboard/focus, visual, and framework guidance, plus other topics that apply.
+
+**Generate a page:** the skill loads structure, routing, links, media, and each pattern on the page.
+
+**Generate UI with PDS:** use the separately installed `pds-knowledge-*` skill for component APIs; this package covers
+the surrounding page. If no PDS skill is available, it stays generic and does not guess PDS APIs. Setup:
+[PDS skill installation](/skills/introduction/installation/).
+
+Deploy paths and compile notes for Gemini/Codex live in the
+[package README](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-codegen). Do not
+overwrite an existing project `AGENTS.md` with a stub.
+
+## Limitations
+
+This package targets standards while UI is generated; it does not certify accessibility or replace PDS component
+do/don'ts. After generation, run an [**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/) and
+complete keyboard and assistive-technology checks. Source review alone is not enough.
+
+**Standard:** [WCAG 2.2 Level AA](https://w3.org/WAI/standards-guidelines/wcag). Porsche guidance:
+[Accessibility of digital products at Porsche](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction).
