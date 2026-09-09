@@ -83,9 +83,13 @@ React event annotations, such as `FormEvent<HTMLFormElement>`, for native React 
 Use the exported element type for object refs rather than intersecting `PInputNumberProps` with `HTMLElement`.
 `PInputNumberProps` describes JSX props, including React attributes and callbacks, not the DOM element.
 
-Existing object refs typed as `HTMLElement` or `HTMLInputElement` must also migrate to `PInputNumberElement`, for
-example `createRef<PInputNumberElement>()` or `useRef<PInputNumberElement>(null)`. The ref points to the custom-element
-host, not its inner native input.
+Ref typings are unchanged: callback refs infer `HTMLElement | null`, and React's `ComponentRef<typeof PInputNumber>`
+remains `HTMLElement`. Existing object refs and forwarding components keep working. Automatic component-specific ref
+inference and enforcement are deferred to V5.
+
+Opt into accurate host properties and event types with `createRef<PInputNumberElement>()` or
+`useRef<PInputNumberElement>(null)`. The ref points to `<p-input-number>`, not its inner `<input>`; accepting an
+existing `HTMLInputElement` annotation does not make native input APIs available on the host.
 
 ```tsx
 import { useEffect, useRef, useState } from 'react';
@@ -119,22 +123,22 @@ Use either the DOM listener above or an `onInput` prop, not both for the same ha
 `removeEventListener` recognize the component's custom events while retaining native event and string-name fallbacks. An
 inline listener passed to `element.addEventListener('input', (event) => { ... })` also infers the concrete event.
 
-Alternatively, a callback ref infers `PInputNumberElement | null` without an annotation. Inside a component using the
-`inputRef` above, replace the object ref with:
+Alternatively, explicitly annotate a callback ref to use the exported host type. Inside a component using the `inputRef`
+above, replace the object ref with:
 
 ```tsx
 <PInputNumber
   name="quantity"
   label="Quantity"
   value={value}
-  ref={(element) => {
+  ref={(element: PInputNumberElement | null) => {
     inputRef.current = element;
   }}
 />
 ```
 
-Element types are currently exported only for components with custom events; components without custom events retain
-their existing ref typings.
+Element types are currently exported only for components with custom events. All components retain their existing ref
+typings.
 
 ## Prefixing
 

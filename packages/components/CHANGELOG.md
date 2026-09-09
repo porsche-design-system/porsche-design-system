@@ -30,7 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `(event: PInputNumberInputEvent) => event.target.value`; element types also infer custom events in `addEventListener`
   and `removeEventListener`. For event names shared with native events, capture-enabled or dynamically configured
   listeners include the native event type and require narrowing before accessing custom payloads. Existing
-  `...EventDetail` types are unchanged
+  `...EventDetail` types and ref typings are unchanged; use an exported host type explicitly for typed object refs
   ([#4711](https://github.com/porsche-design-system/porsche-design-system/pull/4711))
 
 ### Changed
@@ -39,11 +39,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   symlink-capable clones and in CI and can be committed. Re-run the command to migrate links created by an earlier
   version. Windows keeps using directory junctions, which cannot be relative
   ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
-- **Breaking Change** **React**: refs for components with custom events now use their concrete host element type in both
-  the main and `/ssr` entry points. Replace object refs typed as `HTMLElement` or a native input with the matching host
-  type, e.g. `useRef<PInputNumberElement>(null)` instead of `useRef<HTMLElement>(null)`, and update explicitly typed
-  forwarding components accordingly. Inline callback refs infer the host type automatically
-  ([#4711](https://github.com/porsche-design-system/porsche-design-system/pull/4711))
 
 ### Fixed
 

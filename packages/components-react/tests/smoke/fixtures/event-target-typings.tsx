@@ -16,40 +16,82 @@ import {
   type PTextareaProps,
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react';
-import { type ComponentRef, createRef, useRef } from 'react';
+import { type ComponentPropsWithRef, type ComponentRef, createRef, forwardRef, type Ref, useRef } from 'react';
 
 type Equal<T, U> = (<V>() => V extends T ? 1 : 2) extends <V>() => V extends U ? 1 : 2 ? true : false;
 const expectType = <T extends true>(_equal: T): void => {};
-expectType<Equal<ComponentRef<typeof PInputNumber>, PInputNumberElement>>(true);
+// Automatic ref inference retains the existing HTMLElement contract until V5.
+expectType<Equal<ComponentRef<typeof PInputNumber>, HTMLElement>>(true);
 
 <PInputNumber
   name="quantity"
   ref={(element) => {
-    expectType<Equal<typeof element, PInputNumberElement | null>>(true);
+    expectType<Equal<typeof element, HTMLElement | null>>(true);
     if (element) {
-      expectType<Equal<typeof element.value, string | number | null | undefined>>(true);
+      // @ts-expect-error Ref callbacks do not automatically infer the component host contract yet.
+      element.value;
       element.addEventListener('input', (event) => {
-        expectType<Equal<typeof event, PInputNumberInputEvent>>(true);
+        expectType<Equal<typeof event, HTMLElementEventMap['input']>>(true);
       });
     }
   }}
 />;
 const objectRef = createRef<PInputNumberElement>();
 <PInputNumber name="quantity" ref={objectRef} />;
+objectRef.current?.addEventListener('input', (event) => {
+  expectType<Equal<typeof event, PInputNumberInputEvent>>(true);
+});
+const typedCallback = (element: PInputNumberElement | null): void => {
+  expectType<Equal<typeof element, PInputNumberElement | null>>(true);
+};
+<PInputNumber name="quantity" ref={typedCallback} />;
 const broadCallback = (_element: HTMLElement | null): void => {};
 <PInputNumber name="quantity" ref={broadCallback} />;
 <PInputNumber name="quantity" ref={null} />;
+<PInputNumber name="quantity" ref={undefined} />;
 const nativeInputRef = createRef<HTMLInputElement>();
-// @ts-expect-error The host is not a native input element.
 <PInputNumber name="quantity" ref={nativeInputRef} />;
 const broadObjectRef = createRef<HTMLElement>();
-// @ts-expect-error Object refs must describe the component host, including its required properties.
 <PInputNumber name="quantity" ref={broadObjectRef} />;
+const keyedProps: ComponentPropsWithRef<typeof PInputNumber> = {
+  key: 'quantity',
+  name: 'quantity',
+  ref: broadObjectRef,
+};
+<PInputNumber {...keyedProps} />;
+const invalidObjectRef = createRef<SVGElement>();
+// @ts-expect-error The existing ref contract does not allow non-HTML refs.
+<PInputNumber name="quantity" ref={invalidObjectRef} />;
+const invalidValueRef = createRef<number>();
+// @ts-expect-error Refs must still describe an HTML element.
+<PInputNumber name="quantity" ref={invalidValueRef} />;
+declare const legacyRefProp: Ref<HTMLElement>;
+<PInputNumber name="quantity" ref={legacyRefProp} />;
+export const LegacyForwardingExample = forwardRef<HTMLElement, PInputNumberProps>((props, ref) => (
+  <PInputNumber {...props} ref={ref} />
+));
+export const TypedForwardingExample = forwardRef<PInputNumberElement, PInputNumberProps>((props, ref) => (
+  <PInputNumber {...props} ref={ref} />
+));
+export const NativeForwardingExample = forwardRef<HTMLInputElement, PInputNumberProps>((props, ref) => (
+  <PInputNumber {...props} ref={ref} />
+));
 
 export const RefExample = () => {
   const ref = useRef<PInputNumberElement>(null);
   expectType<Equal<typeof ref.current, PInputNumberElement | null>>(true);
   return <PInputNumber name="quantity" ref={ref} />;
+};
+
+export const LegacyRefExample = () => {
+  const broadRef = useRef<HTMLElement>(null);
+  const nativeRef = useRef<HTMLInputElement>(null);
+  return (
+    <>
+      <PInputNumber name="quantity" ref={broadRef} />
+      <PInputNumber name="quantity" ref={nativeRef} />
+    </>
+  );
 };
 
 const onInput: NonNullable<PInputNumberProps['onInput']> = (event) => {

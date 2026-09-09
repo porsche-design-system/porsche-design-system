@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { createRef, type JSX, type RefObject, useRef } from 'react';
 import { afterEach, beforeEach, describe, expect, it, test, vi } from 'vitest';
 import * as hooks from '../../../src/hooks';
-import { PButton } from '../../../src/public-api';
+import { PButton, PInputNumber } from '../../../src/public-api';
 import { getMergedClassName, skipPorscheDesignSystemCDNRequestsDuringTests, syncRef } from '../../../src/utils';
 
 describe('getMergedClassName()', () => {
@@ -106,6 +106,33 @@ describe('syncRefs()', () => {
     callback(null);
     expect(elementRef.current).toBeUndefined();
     expect(forwardedRef.current).toBeNull();
+  });
+
+  it('should forward the component host to HTMLElement object refs and clear them on unmount', () => {
+    const ref = createRef<HTMLElement>();
+    const { container, unmount } = render(<PInputNumber name="quantity" ref={ref} />);
+
+    expect(ref.current).toBe(container.querySelector('p-input-number'));
+    expect(ref.current).not.toBeNull();
+    unmount();
+    expect(ref.current).toBeNull();
+  });
+
+  it('should forward the host and null to HTMLElement callback refs', () => {
+    const refs: (HTMLElement | null)[] = [];
+    const { container, unmount } = render(
+      <PInputNumber
+        name="quantity"
+        ref={(element) => {
+          refs.push(element);
+        }}
+      />
+    );
+
+    const element = container.querySelector('p-input-number');
+    expect(refs).toEqual([element]);
+    unmount();
+    expect(refs).toEqual([element, null]);
   });
 
   it('should forward the element and null to callback refs', () => {

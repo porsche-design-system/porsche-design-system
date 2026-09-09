@@ -152,15 +152,16 @@ describe('ReactWrapperGenerator event typings', () => {
   });
 
   it.each([ReactWrapperGenerator, NextJsReactWrapperGenerator])(
-    'uses the generated host type for forwarded and internal refs in %s',
+    'preserves HTMLElement refs independently of the custom-event host types in %s',
     (Generator) => {
       const wrapper = new Generator().generateComponent(
         'p-input-number',
         DataStructureBuilder.Instance.convertToExtendedProps('p-input-number')
       );
 
-      expect(wrapper).toContain('ref: ForwardedRef<PInputNumberElement>');
-      expect(wrapper).toContain('useRef<PInputNumberElement | undefined>(undefined)');
+      expect(wrapper).toContain('forwardRef(');
+      expect(wrapper).toContain('ref: ForwardedRef<HTMLElement>');
+      expect(wrapper).toContain('useRef<HTMLElement | undefined>(undefined)');
     }
   );
 
@@ -174,14 +175,15 @@ describe('ReactWrapperGenerator event typings', () => {
     expect(wrapper).toContain('useRef<HTMLElement | undefined>(undefined)');
   });
 
-  it('preserves generic parameters in element refs', () => {
+  it('preserves generic props without changing the ref contract', () => {
     vi.spyOn(parser, 'hasGeneric').mockReturnValue(true);
     const wrapper = generator.generateComponent(
       'p-table',
       DataStructureBuilder.Instance.convertToExtendedProps('p-table')
     );
 
-    expect(wrapper).toContain('ref: ForwardedRef<PTableElement<T>>');
-    expect(wrapper).toContain('useRef<PTableElement<T> | undefined>(undefined)');
+    expect(wrapper).toContain('PTableProps<T>');
+    expect(wrapper).toContain('ref: ForwardedRef<HTMLElement>');
+    expect(wrapper).toContain('useRef<HTMLElement | undefined>(undefined)');
   });
 });

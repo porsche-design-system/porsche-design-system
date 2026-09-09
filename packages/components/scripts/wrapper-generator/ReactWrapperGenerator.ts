@@ -112,11 +112,6 @@ ${eventTypes.join('\n\n')}`;
     const propsToDestructure = extendedProps;
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
-    // Refs and custom-event targets share the same host contract. Components without custom
-    // events do not generate an element interface and retain their existing HTMLElement refs.
-    const elementType = propsToEventListener.length
-      ? `${pascalCase(component)}Element${hasGeneric ? '<T>' : ''}`
-      : 'HTMLElement';
 
     const wrapperPropsArr: string[] = [
       ...propsToDestructure.map(({ key, defaultValue, isEvent }) =>
@@ -133,7 +128,7 @@ ${eventTypes.join('\n\n')}`;
       : propsName;
 
     const componentHooksArr: string[] = [
-      `const elementRef = useRef<${elementType} | undefined>(undefined);`,
+      'const elementRef = useRef<HTMLElement | undefined>(undefined);',
       ...propsToEventListener.map(
         ({ key }) => `useEventCallback(elementRef, '${camelCase(key.substring(2))}', ${key} as any);`
       ),
@@ -172,10 +167,11 @@ ${eventTypes.join('\n\n')}`;
 
     const genericType = hasGeneric ? '<T extends object>' : '';
 
+    // Preserve the existing ref API; concrete ref inference/enforcement is deferred to V5 (#4712).
     return `${this.inputParser.getDeprecationMessage(component)}export const ${pascalCase(component)} = /*#__PURE__*/ forwardRef(
   ${genericType}(
     ${wrapperProps}: ${wrapperPropsType},
-    ref: ForwardedRef<${elementType}>
+    ref: ForwardedRef<HTMLElement>
   ): JSX.Element => {
     ${[componentHooks, componentEffects, componentProps].filter(Boolean).join('\n\n    ')}
 
