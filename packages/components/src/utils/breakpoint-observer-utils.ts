@@ -18,7 +18,7 @@ export const getCurrentBreakpointKey = (): Breakpoint => {
 
 export const getCurrentMatchingBreakpointValue = <T>(data: BreakpointCustomizable<T>): T => {
   if (typeof data === 'object') {
-    const currentBreakpoint = internalBO.getCurrentBreakpointKey();
+    const currentBreakpoint = getCurrentBreakpointKey();
     const result = data[currentBreakpoint as keyof BreakpointCustomizable<T>];
 
     if (result) {
@@ -36,8 +36,4 @@ export const getCurrentMatchingBreakpointValue = <T>(data: BreakpointCustomizabl
   }
 
   return data as T;
-};
-
-export const internalBO = {
-  getCurrentBreakpointKey,
 };

@@ -1,28 +1,35 @@
 import { vi } from 'vitest';
-import * as handleButtonUtils from './button-handling';
 import { handleButtonEvent, improveButtonHandlingForCustomElement } from './button-handling';
 
 describe('improveButtonHandlingForCustomElement()', () => {
-  it('should add a click event listener to the element', () => {
+  it('should on click of the element create and click a submit button within the surrounding form', async () => {
+    vi.useFakeTimers();
+
     const element = document.createElement('button');
-    const getType = vi.fn().mockReturnValue('button');
+    element.type = 'button';
+    const form = document.createElement('form');
+    document.body.appendChild(form);
+    form.append(element);
+
+    const getType = vi.fn().mockReturnValue('submit');
     const getName = vi.fn().mockReturnValue('name');
     const getValue = vi.fn().mockReturnValue('value');
     const getDisabled = vi.fn().mockReturnValue(false);
-    const handleButtonEventSpy = vi.spyOn(handleButtonUtils.internal, 'handleButtonEvent');
+
+    const fakeButton = document.createElement('button');
+    const fakeButtonClickSpy = vi.spyOn(fakeButton, 'click');
+    vi.spyOn(document, 'createElement').mockReturnValueOnce(fakeButton);
 
     improveButtonHandlingForCustomElement(element, getType, getDisabled, getName, getValue);
 
     element.click();
 
-    expect(handleButtonEventSpy).toHaveBeenCalledWith(
-      expect.any(MouseEvent),
-      element,
-      getType,
-      getDisabled,
-      getName,
-      getValue
-    );
+    await vi.runAllTimersAsync();
+
+    expect(fakeButton.getAttribute('type')).toBe('submit');
+    expect(fakeButtonClickSpy).toHaveBeenCalled();
+
+    vi.useRealTimers();
   });
 });
 
