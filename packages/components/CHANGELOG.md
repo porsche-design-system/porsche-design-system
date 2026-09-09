@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.7.0-rc.0] - 2026-09-09
+
 ### Added
 
 - `Audit Deprecations Skill`: new skill shipped as `pds-audit-deprecations-{js|angular|react|vue}` in the package's
