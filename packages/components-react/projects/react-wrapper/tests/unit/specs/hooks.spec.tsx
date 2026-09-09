@@ -2,9 +2,7 @@ import { render } from '@testing-library/react';
 import * as React from 'react';
 import { useLayoutEffect } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import * as hooks from '../../../src/hooks';
 import {
-  internalHooks,
   skipCheckForPorscheDesignSystemProviderDuringTests,
   useBrowserLayoutEffect,
   usePrefix,
@@ -106,10 +104,10 @@ describe('useBrowserLayoutEffect()', () => {
 });
 
 describe('useToastManager()', () => {
-  it('should call usePrefix()', () => {
-    const spy = vi.spyOn(hooks.internalHooks, 'usePrefix');
-    useToastManager();
-    expect(spy).toHaveBeenCalledWith('p-toast');
+  const originalEnv = process.env;
+
+  afterEach(() => {
+    process.env = originalEnv;
   });
 
   it('should provide addMessage()', () => {
@@ -125,6 +123,28 @@ describe('useToastManager()', () => {
       toastElement.addMessage = addMessageMock;
       document.body.appendChild(toastElement);
       customElements.define('p-toast', class PToast extends HTMLElement {});
+
+      const { addMessage } = useToastManager();
+      const message: ToastMessage = { text: 'Test', state: 'success' };
+      addMessage(message);
+
+      // wait for customElements.whenDefined to be resolved
+      await new Promise((resolve) => setTimeout(resolve));
+
+      expect(addMessageMock).toHaveBeenCalledWith(message);
+    });
+
+    it('should call addMessage() on the prefixed toast element when a provider prefix is set', async () => {
+      process.env = { ...originalEnv, NODE_ENV: 'development' };
+      vi.spyOn(React, 'useContext').mockReturnValue({ prefix: 'my-prefix' });
+
+      const toastElement = document.createElement('my-prefix-p-toast') as HTMLElement & {
+        addMessage(message: ToastMessage): void;
+      };
+      const addMessageMock = vi.fn();
+      toastElement.addMessage = addMessageMock;
+      document.body.appendChild(toastElement);
+      customElements.define('my-prefix-p-toast', class MyPrefixPToast extends HTMLElement {});
 
       const { addMessage } = useToastManager();
       const message: ToastMessage = { text: 'Test', state: 'success' };
