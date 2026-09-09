@@ -1,4 +1,4 @@
-import type { ScssMeta } from '../types';
+import type { ScssCatalog } from '../types';
 
 // Static layout expressions (not tokens). The `-s` / `-xxl` offsets differ per area only by the
 // column-count factor (extended 1, basic 2, narrow 4).
@@ -177,4 +177,4 @@ export const grid = {
       description: 'Holds a **full** offset within the `full` area of the Porsche Grid.',
     },
   },
-} satisfies Omit<ScssMeta['grid'], 'template'>;
+} satisfies ScssCatalog;

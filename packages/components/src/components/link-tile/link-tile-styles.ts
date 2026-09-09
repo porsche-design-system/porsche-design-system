@@ -21,6 +21,7 @@ import {
 } from '@porsche-design-system/stylesheets';
 import { sizeMap, weightMap } from '../../styles/maps';
 import {
+  buildResponsiveBooleanStyles,
   buildResponsiveStyles,
   getCss,
   mergeDeep,
@@ -124,7 +125,10 @@ export const getComponentCss = (
           ...(isTopAligned
             ? {
                 gridArea: '1/1/3/-1',
-                background: gradientToBottomStyle.background.replaceAll('0,0%,0%,', `from ${ref(colorCanvas)} h s l / `),
+                background: gradientToBottomStyle.background.replaceAll(
+                  '0,0%,0%,',
+                  `from ${ref(colorCanvas)} h s l / `
+                ),
                 marginBottom: `calc(${ref(spacingFluidLg)} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderStartStartRadius: 'inherit',
                 borderStartEndRadius: 'inherit',
@@ -154,7 +158,7 @@ export const getComponentCss = (
     },
     footer: {
       gridArea: `${isTopAligned ? 2 : 4}/2`,
-      ...buildResponsiveStyles(compact, (compactValue: boolean) =>
+      ...buildResponsiveBooleanStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
               display: 'grid',
@@ -173,7 +177,7 @@ export const getComponentCss = (
       gridColumn: 2,
       gridRow: `1/${hasFooterSlot ? 3 : 2}`,
       alignSelf: isTopAligned ? 'flex-start' : 'flex-end',
-      ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
+      ...buildResponsiveBooleanStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',
       })),
     },
@@ -181,7 +185,7 @@ export const getComponentCss = (
       minHeight: '54px', // prevent content shift
       zIndex: 5,
       marginTop: ref(spacingStaticMd),
-      ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
+      ...buildResponsiveBooleanStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'none' : 'inline-block',
       })),
     },

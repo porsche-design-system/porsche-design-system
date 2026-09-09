@@ -2,8 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
-import type { ScssBranch, ScssMixin, ScssNode, ScssVariable } from '../src';
-import { kindOf, type ScssKind, scssMeta } from '../src';
+import type { ScssCatalog, ScssMixin, ScssVariable } from '../src';
+import { kindOf, scssMeta } from '../src';
+
+type ScssKind = 'token' | 'utility';
 
 /**
  * Markdown serializer for the scss package, driven by {@link scssMeta}. Renders an intro, a
@@ -119,13 +121,13 @@ const deriveOutline = <T>(catalog: object): Outline<T> =>
   ) as Outline<T>;
 
 /** Keep only the leaves of a given {@link ScssKind}, pruning emptied groups. Returns `undefined` when nothing remains. */
-const pruneByKind = (node: ScssBranch, kind: ScssKind): ScssBranch | undefined => {
+const pruneByKind = (node: ScssCatalog, kind: ScssKind): ScssCatalog | undefined => {
   if (isLeaf(node)) {
-    return kindOf(node as ScssNode) === kind ? node : undefined;
+    return kindOf(node as ScssVariable | ScssMixin) === kind ? node : undefined;
   }
   const entries = (Array.isArray(node) ? node.map((n, i) => [i, n] as const) : Object.entries(node))
-    .map(([key, value]) => [key, pruneByKind(value as ScssBranch, kind)] as const)
-    .filter((entry): entry is [string | number, ScssBranch] => entry[1] !== undefined);
+    .map(([key, value]) => [key, pruneByKind(value as ScssCatalog, kind)] as const)
+    .filter((entry): entry is [string | number, ScssCatalog] => entry[1] !== undefined);
   if (entries.length === 0) {
     return undefined;
   }
@@ -133,8 +135,8 @@ const pruneByKind = (node: ScssBranch, kind: ScssKind): ScssBranch | undefined =
 };
 
 /** Split the flat `scssMeta` catalog into a single-kind view, dropping domains/groups that end up empty. */
-const catalogByKind = (kind: ScssKind): Record<string, ScssBranch> =>
-  (pruneByKind(scssMeta as ScssBranch, kind) ?? {}) as Record<string, ScssBranch>;
+const catalogByKind = (kind: ScssKind): Record<string, ScssCatalog> =>
+  (pruneByKind(scssMeta as ScssCatalog, kind) ?? {}) as Record<string, ScssCatalog>;
 
 const themeOutline = deriveOutline<ScssVariable>(catalogByKind('token'));
 

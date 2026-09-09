@@ -1,9 +1,10 @@
 import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
+import { tailwindIdentifier } from '../deprecation';
 import { prefix } from '../prefix';
-import type { CssNode, TailwindMeta } from '../types';
+import type { TailwindCatalog } from '../types';
 
-// Shadow.
-export const shadow = {
+// The documented shadow scale.
+const shadows = {
   sm: {
     property: '--shadow-sm',
     value: shadowSm,
@@ -22,14 +23,28 @@ export const shadow = {
     classes: ['.shadow-lg'],
     description: 'Applies a **large** `box-shadow`.',
   },
-} satisfies TailwindMeta['shadow'];
+};
 
-// Shadow — deprecated aliases. Non-documented CSS-only plumbing (not part of `tailwindMeta`). Each
-// points at the corresponding canonical `shadow` variable via the prefix helper so they stay in
-// sync; the deprecation note lives in the rendered CSS `comment`.
-/** @deprecated Use `shadow` (`--shadow-sm/md/lg`) instead. */
-export const shadowDeprecatedThemeVariables: CssNode[] = [
-  { property: '--shadow-low', value: prefix(shadow.sm.property), comment: 'alias (deprecated)' },
-  { property: '--shadow-medium', value: prefix(shadow.md.property), comment: 'alias (deprecated)' },
-  { property: '--shadow-high', value: prefix(shadow.lg.property), comment: 'alias (deprecated)' },
-];
+// Shadow declarations. Each deprecated alias points at the corresponding canonical `shadow` variable
+// via the prefix helper so the values stay in sync, and records it as the structured replacement.
+export const shadow = {
+  ...shadows,
+  low: {
+    property: '--shadow-low',
+    value: prefix(shadows.sm.property),
+    description: 'Applies a **small** `box-shadow`.',
+    deprecation: { replacement: tailwindIdentifier(shadows.sm) },
+  },
+  medium: {
+    property: '--shadow-medium',
+    value: prefix(shadows.md.property),
+    description: 'Applies a **medium** `box-shadow`.',
+    deprecation: { replacement: tailwindIdentifier(shadows.md) },
+  },
+  high: {
+    property: '--shadow-high',
+    value: prefix(shadows.lg.property),
+    description: 'Applies a **large** `box-shadow`.',
+    deprecation: { replacement: tailwindIdentifier(shadows.lg) },
+  },
+} satisfies TailwindCatalog;

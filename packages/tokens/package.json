@@ -24,6 +24,7 @@
     "build": "npm run clean:build && npm run build:package && npm run build:tokens-meta",
     "build:tokens-meta": "npm run build --workspace=@porsche-design-system/tokens-meta",
     "build:package": "rollup -c rollup.config.js",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"

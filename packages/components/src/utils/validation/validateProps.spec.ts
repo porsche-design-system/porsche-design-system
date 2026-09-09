@@ -188,17 +188,20 @@ describe('isValidArray()', () => {
     ['propName', [1], AllowedTypes.null, 1, 'null[]'],
     ['propName', 'non array', AllowedTypes.null, 'non array', 'null[]'],
     ['propName', undefined, AllowedTypes.null, undefined, 'null[]'],
-  ])('should for propName: %s, arr: %s and validator: %s return %s', (propName, arr, validator, valueResult, typeResult) => {
-    expect(isValidArray(propName, arr, validator)).toEqual(
-      typeResult
-        ? {
-            propName,
-            propValue: valueResult,
-            propType: typeResult,
-          }
-        : undefined
-    );
-  });
+  ])(
+    'should for propName: %s, arr: %s and validator: %s return %s',
+    (propName, arr, validator, valueResult, typeResult) => {
+      expect(isValidArray(propName, arr, validator)).toEqual(
+        typeResult
+          ? {
+              propName,
+              propValue: valueResult,
+              propType: typeResult,
+            }
+          : undefined
+      );
+    }
+  );
 });
 
 describe('validateProps()', () => {
@@ -476,6 +479,12 @@ describe('AllowedTypes', () => {
       expect(spy).toHaveBeenCalledWith(propValue);
     });
 
+    it('should call parseJSONBoolean() with correct parameters via anonymous ValidatorFunction', () => {
+      const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSONBoolean');
+      validatorFunctionBoolean('propName', { base: true, s: false });
+      expect(spy).toHaveBeenCalledWith({ base: true, s: false });
+    });
+
     it('should call isBreakpointCustomizableValueInvalid() with correct parameters for flat value via anonymous ValidatorFunction', () => {
       const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'isBreakpointCustomizableValueInvalid');
       validatorFunctionArray('propName', 'a');
@@ -527,6 +536,10 @@ describe('AllowedTypes', () => {
         const result2 = validatorFunctionArray('propName', { base: true, s: 'c' });
         expect(result2).toEqual({ ...error, propValue: 'formattedValue' });
       });
+
+      it('should return error object with unparsed empty string via anonymous ValidatorFunction for non boolean allowedValues', () => {
+        expect(validatorFunctionArray('propName', '')).toEqual({ ...error, propValue: '""' });
+      });
     });
 
     describe('returns undefined', () => {
@@ -544,6 +557,10 @@ describe('AllowedTypes', () => {
 
         const result2 = validatorFunctionBoolean('propName', { base: true, s: false });
         expect(result2).toBe(undefined);
+      });
+
+      it('should return undefined via anonymous ValidatorFunction if value is empty string of boolean attribute shorthand', () => {
+        expect(validatorFunctionBoolean('propName', '')).toBe(undefined);
       });
     });
   });

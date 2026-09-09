@@ -5,7 +5,7 @@ import { fontSizeTextXLarge } from './fontSizeTextXLarge';
 import { fontSizeTextXSmall } from './fontSizeTextXSmall';
 import { fontSizeTextXXSmall } from './fontSizeTextXXSmall';
 
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead. */
+/** @deprecated This API will be removed with the next major release. Use typescale variables instead. */
 export const fontSizeText = {
   xxSmall: fontSizeTextXXSmall,
   xSmall: fontSizeTextXSmall,

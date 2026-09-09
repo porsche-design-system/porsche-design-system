@@ -1,16 +1,9 @@
-// The emotion meta model — the documented single source of truth these types validate. Leaves
-// (`EmotionToken`, `EmotionUtility`) carry payloads; records and arrays only group. Mirrors the
-// scss meta skeleton (`scss/src/types.ts`); a leaf's kind is recovered via `kindOf` (`./kind`).
-
-/** A documented referenceable value (color, radius, breakpoint, font-size, …). */
 export type EmotionToken = {
   name: string;
   description: string;
   value: string | number;
 };
 
-/** A documented applied style — an emotion style object or a function returning one
- *  (focus/mediaQuery/skeleton/typography helpers, grid styles, …). */
 export type EmotionUtility = {
   name: string;
   description: string;
@@ -19,248 +12,252 @@ export type EmotionUtility = {
 
 export type EmotionNode = EmotionToken | EmotionUtility;
 
-/** Any branch of the meta tree: a leaf {@link EmotionNode}, an array, or a nested record. Only leaves carry payloads. */
 export type EmotionBranch = EmotionNode | EmotionBranch[] | { [key: string]: EmotionBranch };
 
 /**
- * The documented single source of truth, shared with the storefront docs and LLM context. A flat,
- * domain-keyed catalog mirroring `scssMeta`'s skeleton; each leaf's kind (`token` | `utility`) is
- * recoverable via `kindOf`. The catalog is deprecation-free (deprecated symbols stay public via the
- * `src/<domain>/deprecated` barrels but aren't documented). Token sub-groups adopt scss's short keys;
- * the full export name is preserved in each leaf's `name`.
+ * Package-local cross-solution catalog contract; styling solutions still differ in shape.
  */
-export type EmotionMeta = {
+export type StylesMeta<TToken, TUtility> = {
   border: {
     radius: {
-      xs: EmotionToken;
-      sm: EmotionToken;
-      md: EmotionToken;
-      lg: EmotionToken;
-      xl: EmotionToken;
-      '2xl': EmotionToken;
-      '3xl': EmotionToken;
-      '4xl': EmotionToken;
-      full: EmotionToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
+      '3xl': TToken;
+      '4xl': TToken;
+      full: TToken;
     };
   };
   blur: {
-    frosted: EmotionToken;
+    frosted: TToken;
   };
   breakpoint: {
-    xs: EmotionToken;
-    sm: EmotionToken;
-    md: EmotionToken;
-    lg: EmotionToken;
-    xl: EmotionToken;
-    '2xl': EmotionToken;
-    breakpoint: EmotionUtility;
-    breakpoints: EmotionUtility;
-    breakpointBase: EmotionToken;
+    xs: TToken;
+    sm: TToken;
+    md: TToken;
+    lg: TToken;
+    xl: TToken;
+    '2xl': TToken;
+    breakpoint: TUtility;
+    breakpoints: TUtility;
+    breakpointBase: TToken;
   };
   color: {
     background: {
-      canvas: EmotionToken;
-      surface: EmotionToken;
-      frosted: EmotionToken;
-      frostedSoft: EmotionToken;
-      frostedStrong: EmotionToken;
-      backdrop: EmotionToken;
+      canvas: TToken;
+      surface: TToken;
+      frosted: TToken;
+      frostedSoft: TToken;
+      frostedStrong: TToken;
+      backdrop: TToken;
     };
     foreground: {
-      primary: EmotionToken;
-      contrastHigher: EmotionToken;
-      contrastHigh: EmotionToken;
-      contrastMedium: EmotionToken;
-      contrastLow: EmotionToken;
-      contrastLower: EmotionToken;
+      primary: TToken;
+      contrastHigher: TToken;
+      contrastHigh: TToken;
+      contrastMedium: TToken;
+      contrastLow: TToken;
+      contrastLower: TToken;
     };
     semantic: {
-      info: EmotionToken;
-      infoMedium: EmotionToken;
-      infoLow: EmotionToken;
-      infoFrosted: EmotionToken;
-      infoFrostedSoft: EmotionToken;
-      success: EmotionToken;
-      successMedium: EmotionToken;
-      successLow: EmotionToken;
-      successFrosted: EmotionToken;
-      successFrostedSoft: EmotionToken;
-      warning: EmotionToken;
-      warningMedium: EmotionToken;
-      warningLow: EmotionToken;
-      warningFrosted: EmotionToken;
-      warningFrostedSoft: EmotionToken;
-      error: EmotionToken;
-      errorMedium: EmotionToken;
-      errorLow: EmotionToken;
-      errorFrosted: EmotionToken;
-      errorFrostedSoft: EmotionToken;
+      info: TToken;
+      infoMedium: TToken;
+      infoLow: TToken;
+      infoFrosted: TToken;
+      infoFrostedSoft: TToken;
+      success: TToken;
+      successMedium: TToken;
+      successLow: TToken;
+      successFrosted: TToken;
+      successFrostedSoft: TToken;
+      warning: TToken;
+      warningMedium: TToken;
+      warningLow: TToken;
+      warningFrosted: TToken;
+      warningFrostedSoft: TToken;
+      error: TToken;
+      errorMedium: TToken;
+      errorLow: TToken;
+      errorFrosted: TToken;
+      errorFrostedSoft: TToken;
     };
     a11y: {
-      focus: EmotionToken;
+      focus: TToken;
     };
-    colorSchemeStyles: EmotionUtility;
+    colorSchemeStyles: TUtility;
   };
   font: {
     family: {
-      porscheNext: EmotionToken;
-      porscheNextZhHans: EmotionToken;
-      porscheNextZhHant: EmotionToken;
-      porscheNextJa: EmotionToken;
-      porscheNextKo: EmotionToken;
+      porscheNext: TToken;
+      porscheNextZhHans: TToken;
+      porscheNextZhHant: TToken;
+      porscheNextJa: TToken;
+      porscheNextKo: TToken;
     };
     weight: {
-      normal: EmotionToken;
-      semibold: EmotionToken;
-      bold: EmotionToken;
+      normal: TToken;
+      semibold: TToken;
+      bold: TToken;
     };
     lineHeight: {
-      normal: EmotionToken;
+      normal: TToken;
     };
     size: {
-      '2xs': EmotionToken;
-      xs: EmotionToken;
-      sm: EmotionToken;
-      md: EmotionToken;
-      lg: EmotionToken;
-      xl: EmotionToken;
-      '2xl': EmotionToken;
-      '3xl': EmotionToken;
-      '4xl': EmotionToken;
-      '5xl': EmotionToken;
+      '2xs': TToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
+      '3xl': TToken;
+      '4xl': TToken;
+      '5xl': TToken;
     };
-    getCJKFontFamilyStyle: EmotionUtility;
-    fontHyphenationStyle: EmotionUtility;
+    getCJKFontFamilyStyle: TUtility;
+    fontHyphenationStyle: TUtility;
   };
   shadow: {
-    sm: EmotionToken;
-    md: EmotionToken;
-    lg: EmotionToken;
+    sm: TToken;
+    md: TToken;
+    lg: TToken;
   };
   spacing: {
     fluid: {
-      xs: EmotionToken;
-      sm: EmotionToken;
-      md: EmotionToken;
-      lg: EmotionToken;
-      xl: EmotionToken;
-      '2xl': EmotionToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
     };
     static: {
-      '2xs': EmotionToken;
-      xs: EmotionToken;
-      sm: EmotionToken;
-      md: EmotionToken;
-      lg: EmotionToken;
-      xl: EmotionToken;
-      '2xl': EmotionToken;
+      '2xs': TToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
     };
   };
   motion: {
     duration: {
-      sm: EmotionToken;
-      md: EmotionToken;
-      lg: EmotionToken;
-      xl: EmotionToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
     };
     ease: {
-      inOut: EmotionToken;
-      in: EmotionToken;
-      out: EmotionToken;
+      inOut: TToken;
+      in: TToken;
+      out: TToken;
     };
   };
   gradient: {
-    stopsFadeDark: EmotionToken;
+    stopsFadeDark: TToken;
   };
   typography: {
     heading: {
-      '5xl': EmotionUtility;
-      '4xl': EmotionUtility;
-      '3xl': EmotionUtility;
-      '2xl': EmotionUtility;
-      xl: EmotionUtility;
-      lg: EmotionUtility;
-      md: EmotionUtility;
-      sm: EmotionUtility;
-      xs: EmotionUtility;
-      '2xs': EmotionUtility;
+      '5xl': TUtility;
+      '4xl': TUtility;
+      '3xl': TUtility;
+      '2xl': TUtility;
+      xl: TUtility;
+      lg: TUtility;
+      md: TUtility;
+      sm: TUtility;
+      xs: TUtility;
+      '2xs': TUtility;
     };
     text: {
-      '5xl': EmotionUtility;
-      '4xl': EmotionUtility;
-      '3xl': EmotionUtility;
-      '2xl': EmotionUtility;
-      xl: EmotionUtility;
-      lg: EmotionUtility;
-      md: EmotionUtility;
-      sm: EmotionUtility;
-      xs: EmotionUtility;
-      '2xs': EmotionUtility;
+      '5xl': TUtility;
+      '4xl': TUtility;
+      '3xl': TUtility;
+      '2xl': TUtility;
+      xl: TUtility;
+      lg: TUtility;
+      md: TUtility;
+      sm: TUtility;
+      xs: TUtility;
+      '2xs': TUtility;
     };
     // Kept as an empty group for 1:1 shape parity with `ScssMeta['typography'].display`.
     display: Record<string, never>;
   };
   skeleton: {
-    getSkeletonStyle: EmotionUtility;
+    getSkeletonStyle: TUtility;
   };
   focus: {
-    getFocusVisibleStyle: EmotionUtility;
+    getFocusVisibleStyle: TUtility;
   };
   mediaQuery: {
-    getMediaQueryMax: EmotionUtility;
-    getMediaQueryMin: EmotionUtility;
-    getMediaQueryMinMax: EmotionUtility;
+    getMediaQueryMax: TUtility;
+    getMediaQueryMin: TUtility;
+    getMediaQueryMinMax: TUtility;
   };
   // Grouped by grid area, aligned with `ScssMeta['grid']` / `TailwindMeta['grid']`. `template` is the
   // whole-grid layout, `gap` a token; each area carries its placement utility (`column`), line tokens
   // (`start`/`end`), per-area `span`s, the composed `offset` utility and its `offset{Base,S,XXL}` tokens.
   grid: {
-    template: EmotionUtility;
-    gap: EmotionToken;
+    template: TUtility;
+    gap: TToken;
     narrow: {
-      column: EmotionUtility;
-      start: EmotionToken;
-      end: EmotionToken;
-      span: { oneHalf: EmotionToken };
-      offset: EmotionUtility;
-      offsetBase: EmotionToken;
-      offsetS: EmotionToken;
-      offsetXXL: EmotionToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      span: { oneHalf: TToken };
+      offset: TUtility;
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     basic: {
-      column: EmotionUtility;
-      start: EmotionToken;
-      end: EmotionToken;
-      span: { oneHalf: EmotionToken; oneThird: EmotionToken; twoThirds: EmotionToken };
-      offset: EmotionUtility;
-      offsetBase: EmotionToken;
-      offsetS: EmotionToken;
-      offsetXXL: EmotionToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      span: { oneHalf: TToken; oneThird: TToken; twoThirds: TToken };
+      offset: TUtility;
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     extended: {
-      column: EmotionUtility;
-      start: EmotionToken;
-      end: EmotionToken;
-      span: { oneHalf: EmotionToken };
-      offset: EmotionUtility;
-      offsetBase: EmotionToken;
-      offsetS: EmotionToken;
-      offsetXXL: EmotionToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      span: { oneHalf: TToken };
+      offset: TUtility;
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     wide: {
-      column: EmotionUtility;
-      start: EmotionToken;
-      end: EmotionToken;
-      offset: EmotionUtility;
-      offsetBase: EmotionToken;
-      offsetS: EmotionToken;
-      offsetXXL: EmotionToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      offset: TUtility;
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     full: {
-      column: EmotionUtility;
-      start: EmotionToken;
-      end: EmotionToken;
-      offset: EmotionToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      offset: TToken;
     };
   };
 };
+
+/**
+ * The documented single source of truth, shared with the storefront docs and LLM context: the
+ * contract instantiated with this package's leaf types. Deprecation-free by construction — legacy
+ * symbols stay public through the `src/<domain>/deprecated` barrels and are indexed from the
+ * `@deprecated` annotations they already carry, never documented here. Token sub-groups adopt scss's
+ * short keys; the full export name is preserved in each leaf's `name`.
+ */
+export type EmotionMeta = StylesMeta<EmotionToken, EmotionUtility>;

@@ -1,0 +1,27 @@
+# Consumer shim for the reusable TurboSpec agentic watcher.
+# Keep its @ref aligned with weekly-dependency-bump-turbospec.yml.
+
+name: AI Watcher
+
+on:
+  workflow_run:
+    # Workflow display name, not filename.
+    workflows: ["TurboSpec | Weekly Dependency Bump"]
+    types: [completed]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  actions: write
+  copilot-requests: write
+
+jobs:
+  watch:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    uses: porsche-code/turbo-spec/.github/workflows/agentic-watcher.yml@main
+    with:
+      failed_run_id: ${{ github.event.workflow_run.id }}
+      dispatch_workflow: weekly-dependency-bump-turbospec.yml
+      dispatch_ref: ${{ github.event.repository.default_branch }}
+    secrets: inherit

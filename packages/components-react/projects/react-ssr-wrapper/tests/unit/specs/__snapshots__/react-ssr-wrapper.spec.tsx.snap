@@ -6,6 +6,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -274,6 +275,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -328,6 +330,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -500,6 +503,7 @@ input::-webkit-search-cancel-button {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootmode="open"
                   >
                     <style>
@@ -559,6 +563,7 @@ img {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootdelegatesfocus="true"
                     shadowrootmode="open"
                   >
@@ -655,6 +660,7 @@ img {
                       >
                         <template
                           shadowroot="open"
+                          shadowrootclonable="true"
                           shadowrootmode="open"
                         >
                           <style>
@@ -774,6 +780,7 @@ img {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -876,6 +883,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -978,6 +986,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -1080,6 +1089,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -1182,6 +1192,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -1284,6 +1295,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -1390,6 +1402,7 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -1579,6 +1592,7 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -1678,6 +1692,7 @@ slot:not([name]) {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootdelegatesfocus="true"
       shadowrootmode="open"
     >
@@ -1737,6 +1752,7 @@ span {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootdelegatesfocus="true"
       shadowrootmode="open"
     >
@@ -1808,6 +1824,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -1832,6 +1849,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -1981,6 +1999,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootdelegatesfocus="true"
       shadowrootmode="open"
     >
@@ -2118,6 +2137,7 @@ button:focus-visible {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootdelegatesfocus="true"
       shadowrootmode="open"
     >
@@ -2258,6 +2278,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -2342,6 +2363,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -2506,6 +2528,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -2528,6 +2551,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -2612,6 +2636,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -2775,6 +2800,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -2806,6 +2832,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -2840,6 +2867,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-list
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -2879,6 +2907,7 @@ ol,ul {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -2915,6 +2944,7 @@ slot {
   >
     <template
       shadowroot="open"
+      shadowrootclonable="true"
       shadowrootmode="open"
     >
       <style>
@@ -2954,6 +2984,7 @@ exports[`should render dsr component for PAccordion 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -3128,6 +3159,7 @@ exports[`should render dsr component for PAiTag 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -3187,6 +3219,7 @@ exports[`should render dsr component for PBanner 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -3368,6 +3401,7 @@ exports[`should render dsr component for PButton 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -3377,7 +3411,7 @@ exports[`should render dsr component for PButton 1`] = `
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-button-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3397,12 +3431,12 @@ exports[`should render dsr component for PButton 1`] = `
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-button-bg,var(--p-color-primary));
+  color: var(--p-button-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px));
+  gap: var(--p-button-gap,calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px));
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -3450,7 +3484,8 @@ exports[`should render dsr component for PButton 1`] = `
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-button-fg,var(--p-color-canvas));
+    background-color: var(--p-button-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -3487,6 +3522,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -3583,6 +3619,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootclonable="true"
           shadowrootmode="open"
         >
           <style>
@@ -3651,6 +3688,7 @@ exports[`should render dsr component for PButtonTile 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -3783,6 +3821,7 @@ p {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -3792,7 +3831,7 @@ p {
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-button-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3812,12 +3851,12 @@ p {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px));
+  gap: var(--p-button-gap,calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px));
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -3865,7 +3904,8 @@ p {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -3906,6 +3946,7 @@ exports[`should render dsr component for PCanvas 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -4230,6 +4271,7 @@ h2 {
           >
             <template
               shadowroot="open"
+              shadowrootclonable="true"
               shadowrootdelegatesfocus="true"
               shadowrootmode="open"
             >
@@ -4239,7 +4281,7 @@ h2 {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-button-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4259,12 +4301,12 @@ h2 {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px));
+  gap: var(--p-button-gap,calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px));
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -4316,7 +4358,8 @@ h2 {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -4339,6 +4382,7 @@ h2 {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootmode="open"
                   >
                     <style>
@@ -4407,6 +4451,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -4481,6 +4526,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -4567,6 +4613,7 @@ svg {
           >
             <template
               shadowroot="open"
+              shadowrootclonable="true"
               shadowrootdelegatesfocus="true"
               shadowrootmode="open"
             >
@@ -4576,7 +4623,7 @@ svg {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-button-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4596,12 +4643,12 @@ svg {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px));
+  gap: var(--p-button-gap,calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px));
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -4653,7 +4700,8 @@ svg {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -4676,6 +4724,7 @@ svg {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootmode="open"
                   >
                     <style>
@@ -4756,6 +4805,7 @@ exports[`should render dsr component for PCarousel 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -4926,6 +4976,7 @@ exports[`should render dsr component for PCheckbox 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -5132,6 +5183,7 @@ exports[`should render dsr component for PCrest 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -5208,6 +5260,7 @@ exports[`should render dsr component for PDisplay 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -5245,6 +5298,7 @@ exports[`should render dsr component for PDivider 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -5279,6 +5333,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -5474,6 +5529,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -5569,6 +5625,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
               >
                 <template
                   shadowroot="open"
+                  shadowrootclonable="true"
                   shadowrootmode="open"
                 >
                   <style>
@@ -5635,6 +5692,7 @@ img:dir(rtl) {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -5644,7 +5702,7 @@ img:dir(rtl) {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--p-radius-full) !important;
+  border-radius: var(--p-button-radius,var(--p-radius-full)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5664,12 +5722,12 @@ img:dir(rtl) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
-  gap: 0;
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+  gap: var(--p-button-gap,0);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -5721,7 +5779,8 @@ img:dir(rtl) {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -5743,6 +5802,7 @@ img:dir(rtl) {
               >
                 <template
                   shadowroot="open"
+                  shadowrootclonable="true"
                   shadowrootmode="open"
                 >
                   <style>
@@ -5806,6 +5866,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -5815,7 +5876,7 @@ img {
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--p-radius-full) !important;
+  border-radius: var(--p-button-radius,var(--p-radius-full)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5835,12 +5896,12 @@ img {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-button-bg,var(--p-color-frosted-strong));
+  color: var(--p-button-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
-  gap: 0;
+  padding: var(--p-button-py,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px)) var(--p-button-px,calc(28px * (var(--_p-button-a) - 0.64285714) + 6px));
+  gap: var(--p-button-gap,0);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -5892,7 +5953,8 @@ img {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-button-fg,var(--p-color-primary));
+    background-color: var(--p-button-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -5914,6 +5976,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootclonable="true"
                   shadowrootmode="open"
                 >
                   <style>
@@ -5989,6 +6052,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6076,6 +6140,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootdelegatesfocus="true"
         shadowrootmode="open"
       >
@@ -6172,6 +6237,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
           >
             <template
               shadowroot="open"
+              shadowrootclonable="true"
               shadowrootmode="open"
             >
               <style>
@@ -6237,6 +6303,7 @@ img:dir(rtl) {
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootdelegatesfocus="true"
         shadowrootmode="open"
       >
@@ -6348,6 +6415,7 @@ img:dir(rtl) {
           >
             <template
               shadowroot="open"
+              shadowrootclonable="true"
               shadowrootmode="open"
             >
               <style>
@@ -6428,6 +6496,7 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -6482,6 +6551,7 @@ exports[`should render dsr component for PFieldset 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6532,6 +6602,7 @@ exports[`should render dsr component for PFlag 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6574,6 +6645,7 @@ exports[`should render dsr component for PFlyout 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6776,6 +6848,7 @@ exports[`should render dsr component for PHeading 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6814,6 +6887,7 @@ exports[`should render dsr component for PIcon 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -6868,6 +6942,7 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -7012,6 +7087,7 @@ exports[`should render dsr component for PInputDate 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7198,6 +7274,7 @@ exports[`should render dsr component for PInputEmail 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7379,6 +7456,7 @@ exports[`should render dsr component for PInputMonth 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7566,6 +7644,7 @@ exports[`should render dsr component for PInputNumber 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7749,6 +7828,7 @@ exports[`should render dsr component for PInputPassword 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -7927,6 +8007,7 @@ exports[`should render dsr component for PInputSearch 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8108,6 +8189,7 @@ exports[`should render dsr component for PInputTel 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8289,6 +8371,7 @@ exports[`should render dsr component for PInputText 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8467,6 +8550,7 @@ exports[`should render dsr component for PInputTime 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8653,6 +8737,7 @@ exports[`should render dsr component for PInputUrl 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -8834,6 +8919,7 @@ exports[`should render dsr component for PInputWeek 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9021,6 +9107,7 @@ exports[`should render dsr component for PLink 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9030,7 +9117,7 @@ exports[`should render dsr component for PLink 1`] = `
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-link-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -9045,7 +9132,7 @@ exports[`should render dsr component for PLink 1`] = `
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--p-radius-xl) !important;
+  border-radius: var(--p-link-radius,var(--p-radius-xl)) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -9069,12 +9156,12 @@ exports[`should render dsr component for PLink 1`] = `
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-link-bg,var(--p-color-primary));
+  color: var(--p-link-fg,var(--p-color-canvas));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
+  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px));
+  gap: var(--p-link-gap,calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 .label {
   position: static;
@@ -9101,7 +9188,8 @@ exports[`should render dsr component for PLink 1`] = `
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-contrast-high);
+    color: var(--p-link-fg,var(--p-color-canvas));
+    background-color: var(--p-link-bg,var(--p-color-contrast-high));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -9132,6 +9220,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9230,6 +9319,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootclonable="true"
           shadowrootmode="open"
         >
           <style>
@@ -9293,6 +9383,7 @@ exports[`should render dsr component for PLinkTile 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9429,6 +9520,7 @@ p {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -9438,7 +9530,7 @@ p {
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-link-button-a) !important;
+  border-radius: var(--p-link-radius,var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -9453,7 +9545,7 @@ p {
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--p-radius-xl) !important;
+  border-radius: var(--p-link-radius,var(--p-radius-xl)) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -9477,12 +9569,12 @@ p {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-link-bg,var(--p-color-frosted-strong));
+  color: var(--p-link-fg,var(--p-color-primary));
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
+  padding: var(--p-link-py,calc(28px * (var(--_p-link-a) - 0.64285714) + 6px)) var(--p-link-px,calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px));
+  gap: var(--p-link-gap,calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 .label {
   position: static;
@@ -9509,7 +9601,8 @@ p {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    color: var(--p-link-fg,var(--p-color-primary));
+    background-color: var(--p-link-bg,var(--p-color-frosted));
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -9544,6 +9637,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -9672,6 +9766,7 @@ slot[name="header"] {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -9768,6 +9863,7 @@ slot[name="header"] {
               >
                 <template
                   shadowroot="open"
+                  shadowrootclonable="true"
                   shadowrootmode="open"
                 >
                   <style>
@@ -9846,6 +9942,7 @@ exports[`should render dsr component for PModal 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -10042,6 +10139,7 @@ exports[`should render dsr component for PModelSignature 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -10094,6 +10192,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -10362,6 +10461,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -10416,6 +10516,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
@@ -10588,6 +10689,7 @@ input::-webkit-search-cancel-button {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootmode="open"
                   >
                     <style>
@@ -10647,6 +10749,7 @@ img {
                 >
                   <template
                     shadowroot="open"
+                    shadowrootclonable="true"
                     shadowrootdelegatesfocus="true"
                     shadowrootmode="open"
                   >
@@ -10743,6 +10846,7 @@ img {
                       >
                         <template
                           shadowroot="open"
+                          shadowrootclonable="true"
                           shadowrootmode="open"
                         >
                           <style>
@@ -10867,6 +10971,7 @@ exports[`should render dsr component for PMultiSelectOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -10972,6 +11077,7 @@ exports[`should render dsr component for POptgroup 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -11015,6 +11121,7 @@ exports[`should render dsr component for PPagination 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -11138,6 +11245,7 @@ span:not(.ellipsis):focus-visible {
             >
               <template
                 shadowroot="open"
+                shadowrootclonable="true"
                 shadowrootmode="open"
               >
                 <style>
@@ -11212,6 +11320,7 @@ img:dir(rtl) {
             >
               <template
                 shadowroot="open"
+                shadowrootclonable="true"
                 shadowrootmode="open"
               >
                 <style>
@@ -11272,6 +11381,7 @@ exports[`should render dsr component for PPinCode 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -11458,6 +11568,7 @@ exports[`should render dsr component for PPopover 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -11613,6 +11724,7 @@ exports[`should render dsr component for PRadioGroup 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -11755,6 +11867,7 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -11916,6 +12029,7 @@ exports[`should render dsr component for PScroller 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12065,6 +12179,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12169,6 +12284,7 @@ exports[`should render dsr component for PSegmentedControlItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -12238,6 +12354,7 @@ exports[`should render dsr component for PSelect 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -12513,6 +12630,7 @@ exports[`should render dsr component for PSelect 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -12592,6 +12710,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12670,6 +12789,7 @@ exports[`should render dsr component for PSheet 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12868,6 +12988,7 @@ exports[`should render dsr component for PSpinner 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -12981,6 +13102,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13005,6 +13127,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -13159,6 +13282,7 @@ exports[`should render dsr component for PStepperHorizontalItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -13298,6 +13422,7 @@ exports[`should render dsr component for PSwitch 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -13437,6 +13562,7 @@ exports[`should render dsr component for PTable 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13473,6 +13599,7 @@ exports[`should render dsr component for PTable 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -13645,6 +13772,7 @@ exports[`should render dsr component for PTableBody 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13668,6 +13796,7 @@ exports[`should render dsr component for PTableCell 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13695,6 +13824,7 @@ exports[`should render dsr component for PTableHead 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13725,6 +13855,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13756,6 +13887,7 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13779,6 +13911,7 @@ exports[`should render dsr component for PTableRow 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13809,6 +13942,7 @@ exports[`should render dsr component for PTabs 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -13831,6 +13965,7 @@ exports[`should render dsr component for PTabs 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -13915,6 +14050,7 @@ exports[`should render dsr component for PTabs 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -14080,6 +14216,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14159,6 +14296,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootclonable="true"
         shadowrootmode="open"
       >
         <style>
@@ -14314,6 +14452,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14348,6 +14487,7 @@ exports[`should render dsr component for PTag 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14422,6 +14562,7 @@ exports[`should render dsr component for PTagDismissible 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -14508,6 +14649,7 @@ button:focus-visible {
         >
           <template
             shadowroot="open"
+            shadowrootclonable="true"
             shadowrootmode="open"
           >
             <style>
@@ -14564,6 +14706,7 @@ exports[`should render dsr component for PText 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14602,6 +14745,7 @@ exports[`should render dsr component for PTextList 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14643,6 +14787,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14681,6 +14826,7 @@ exports[`should render dsr component for PTextarea 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
@@ -14825,6 +14971,7 @@ exports[`should render dsr component for PToast 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootmode="open"
   >
     <style>
@@ -14845,6 +14992,7 @@ exports[`should render dsr component for PWordmark 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootclonable="true"
     shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >

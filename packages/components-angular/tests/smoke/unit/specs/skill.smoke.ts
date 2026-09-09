@@ -3,7 +3,7 @@ import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 
 const distDir = path.resolve(__dirname, '../../../../dist/angular-wrapper');
-const canonicalBinPath = path.resolve(distDir, '../../../storefront/projects/skill/bin/pds-skill.js');
+const canonicalBinPath = path.resolve(distDir, '../../../storefront/projects/skills/bin/pds-skill.js');
 
 describe('angular-wrapper skill distribution', () => {
   test.each(['skills/pds-knowledge-angular/SKILL.md', 'bin/pds-skill.js'])('should contain %s', (file) => {

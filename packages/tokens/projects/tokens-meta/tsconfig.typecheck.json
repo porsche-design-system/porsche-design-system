@@ -1,0 +1,9 @@
+{
+  "//": "The normal setup for this package skips the `scripts` folder completely, so nothing in it was ever checked. This file adds `scripts` and `skill` back, and tells the checker they run in Node rather than a browser.",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["src", "scripts", "skill"],
+  "exclude": ["**/*.spec.ts"]
+}

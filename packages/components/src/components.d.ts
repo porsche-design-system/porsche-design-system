@@ -6,10 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, FlagName, IconName, LinkAriaAttribute, LinkTarget, SelectedAriaAttributes, SelectedAriaRole } from "./types";
 import { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 import { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
-import { ButtonIcon } from "./components/button/button-utils";
+import { ButtonIcon, ButtonVariant } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CanvasBackground, CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
@@ -37,7 +37,7 @@ import { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEve
 import { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
 import { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 import { InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
-import { LinkIcon } from "./components/link/link-utils";
+import { LinkIcon, LinkVariant } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
@@ -69,10 +69,10 @@ import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, FlagName, IconName, LinkAriaAttribute, LinkTarget, SelectedAriaAttributes, SelectedAriaRole } from "./types";
 export { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 export { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
-export { ButtonIcon } from "./components/button/button-utils";
+export { ButtonIcon, ButtonVariant } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 export { CanvasBackground, CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
@@ -100,7 +100,7 @@ export { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEve
 export { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
 export { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 export { InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
-export { LinkIcon } from "./components/link/link-utils";
+export { LinkIcon, LinkVariant } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
@@ -282,7 +282,7 @@ export namespace Components {
          */
         "value"?: string;
         /**
-          * Sets the visual style variant of the button (`primary` or `secondary`).
+          * Sets the visual style variant of the button (`primary`, `secondary` or `destructive`). Use `destructive` for actions with irreversible consequences, e.g. deleting data.
           * @default 'primary'
          */
         "variant"?: ButtonVariant;
@@ -4473,7 +4473,7 @@ declare namespace LocalJSX {
          */
         "value"?: string;
         /**
-          * Sets the visual style variant of the button (`primary` or `secondary`).
+          * Sets the visual style variant of the button (`primary`, `secondary` or `destructive`). Use `destructive` for actions with irreversible consequences, e.g. deleting data.
           * @default 'primary'
          */
         "variant"?: ButtonVariant;

@@ -95,7 +95,7 @@ export default [
       intro: DOM_ENVIRONMENT_GUARD,
     },
     plugins: [
-      typescript({ rootDir: 'src' }),
+      typescript({ rootDir: 'src', noEmitOnError: true }),
       generatePackageJson({
         baseContents: {
           main: 'index.cjs',

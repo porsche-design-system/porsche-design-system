@@ -80,6 +80,12 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
     </PorscheDesignSystemProvider>
   );
 
+  // a shadow root created by the html parser takes its clonable flag from the template and cannot be
+  // changed afterwards, so ssr rendered components stay unclonable without this attribute
+  for (const template of container.querySelectorAll('template')) {
+    expect(template.getAttribute('shadowrootclonable')).toBe('true');
+  }
+
   expect(container.firstElementChild).toMatchSnapshot();
   expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
 });

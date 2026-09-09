@@ -37,6 +37,7 @@ const getFocusNestedStyles = (offset: Options['offset'] = '2px') => {
   } as const;
 };
 
+/** @deprecated Use {@link getFocusVisibleStyle} instead. This API will be removed with the next major release. */
 export const getFocusStyle = (opts?: Options) => {
   const { borderRadius, offset } = opts || {};
   return {

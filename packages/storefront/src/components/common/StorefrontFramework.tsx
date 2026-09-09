@@ -1,6 +1,6 @@
 'use client';
 
-import type { SkillId } from '@porsche-design-system/skill/registry';
+import type { SkillId } from '@porsche-design-system/skills/registry';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { frameworkRenderContextMap } from '@/models/framework';
 

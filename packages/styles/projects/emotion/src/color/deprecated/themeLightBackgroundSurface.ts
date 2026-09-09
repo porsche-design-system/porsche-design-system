@@ -1,4 +1,4 @@
 import { colorSurfaceLight } from '@porsche-design-system/tokens';
 
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceLight instead. */
+/** @deprecated Use {@link colorSurface} instead. This API will be removed with the next major release. */
 export const themeLightBackgroundSurface = colorSurfaceLight;

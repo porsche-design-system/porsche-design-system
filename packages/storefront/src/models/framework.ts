@@ -1,5 +1,5 @@
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
-import { getSkillName, type SkillFramework, type SkillId } from '@porsche-design-system/skill/registry';
+import { getSkillName, type SkillFramework, type SkillId } from '@porsche-design-system/skills/registry';
 
 export type FrameworkConfiguratorMarkup = {
   [key in Framework]: {

@@ -1,16 +1,15 @@
+import { scssIdentifier } from '../deprecation';
 import { borderRef, colorRef, motionRef } from '../namespaces';
 import { border } from '../theme/border';
 import { color } from '../theme/color';
 import { motion } from '../theme/motion';
-import type { ScssMixin, ScssRaw } from '../types';
+import type { ScssCatalog } from '../types';
 
-/** The documented `skeleton()` mixin. The `raw` body references its `border` / `color` / `motion` cross-references via `ref()`. */
-export const skeleton = [
-  {
-    name: 'skeleton',
-    signature: '()',
-    description: 'Applies a skeleton placeholder style to indicate loading state.',
-    raw: `  @keyframes skeleton {
+const skeletonMixin = {
+  name: 'skeleton',
+  signature: '()',
+  description: 'Applies a skeleton placeholder style to indicate loading state.',
+  raw: `  @keyframes skeleton {
     from {
       background-position-x: 100%;
     }
@@ -23,22 +22,23 @@ export const skeleton = [
   border-radius: ${borderRef(border.radius.sm)};
   background: transparent linear-gradient(to right, ${colorRef(color.background.frosted)} 0%, ${colorRef(color.background.frostedStrong)} 50%, ${colorRef(color.background.frosted)} 100%) 0 0 / 200% 100%;
   animation: skeleton ${motionRef(motion.duration.xl)} ${motionRef(motion.ease.inOut)} infinite;`,
-  },
-] satisfies ScssMixin[];
+};
 
-/**
- * Deprecated theme-parameterized `pds-skeleton` variant (plumbing).
- * @deprecated Use the documented `skeleton()` mixin.
- */
-export const skeletonDeprecatedMixin: ScssRaw = {
-  raw: `@mixin pds-skeleton($theme: 'light') {
-  @include skeleton();
+/** Skeleton declarations: the documented `skeleton()` mixin plus the deprecated theme-parameterized `pds-skeleton` variant. */
+export const skeleton = [
+  skeletonMixin,
+  {
+    name: 'pds-skeleton',
+    description: 'Applies a skeleton placeholder style for a given theme to indicate loading state.',
+    signature: "($theme: 'light')",
+    raw: `  @include ${skeletonMixin.name}();
   @if ($theme == 'dark') {
     color-scheme: dark;
   } @else if ($theme == 'auto') {
     color-scheme: light dark;
   } @else {
     color-scheme: light;
-  }
-}`,
-};
+  }`,
+    deprecation: { replacement: scssIdentifier(skeletonMixin) },
+  },
+] satisfies ScssCatalog;

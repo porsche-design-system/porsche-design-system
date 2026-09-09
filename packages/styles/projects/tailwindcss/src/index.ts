@@ -1,6 +1,4 @@
-// Public API: only the documented model (`tailwindMeta`) and its types are exposed — the single
-// source of truth for the storefront docs and LLM context. Building blocks stay internal. CSS-file
-// generation (`css/index.ts`) is imported directly by `scripts/build.ts`.
-export { kindOf, type TailwindKind } from './kind';
-export { tailwindMeta } from './meta';
+// Internal metadata for storefront docs and skill generation; wrappers publish only `index.css`.
+export { kindOf } from './kind';
+export { tailwindDeprecations, tailwindMeta } from './meta';
 export type * from './types';

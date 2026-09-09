@@ -1,0 +1,145 @@
+import {
+  auditRunId,
+  renderAuditFiles,
+  renderAuditReport,
+} from '@/app/(main)/skills/audit-deprecations/auditReportSample';
+import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
+import { FrameworkTabs } from '@/components/common/FrameworkTabs';
+import { SkillFacts } from '@/components/common/SkillFacts';
+import { FrameworkSkill } from '@/components/common/StorefrontFramework';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Audit Deprecations Skill - Porsche Design System',
+  description:
+    'Audit a project for deprecated Porsche Design System API usage with Claude Code, GitHub Copilot, Codex and compatible AI coding tools.',
+};
+
+# Audit Deprecations Skill
+
+<TableOfContents
+  headings={[
+    'Introduction',
+    'What It Audits',
+    'Installation',
+    'How to Use the Skill',
+    'Example Report',
+    'How to Act on the Report',
+  ]}
+/>
+
+## Introduction
+
+The Audit Deprecations Skill scans a project for Porsche Design System APIs that are deprecated in the installed version
+and scheduled for removal in the next major release. It uses the version-exact deprecation index and includes the file,
+line and source evidence for every finding.
+
+The audit is read-only: it writes two report files but never changes your code. Select your framework to adapt the skill
+name and examples on this page.
+
+<FrameworkTabs className="my-fluid-md" label="Select the framework the Audit Deprecations Skill examples apply to" />
+
+Invoking it looks like this, using your agent's skill selection syntax:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('audit-deprecations')} Audit apps/checkout.
+  `}
+/>
+
+<SkillFacts
+  caption="Audit Deprecations Skill facts"
+  invocation={
+    <>
+      Explicit only. An agent never starts an audit on its own; you invoke{' '}
+      <code>
+        <FrameworkSkill skill="audit-deprecations" />
+      </code>{' '}
+      yourself.
+    </>
+  }
+  dependencies={
+    <>
+      The <a href="/skills/knowledge">Knowledge Skill</a> (
+      <code>
+        <FrameworkSkill skill="knowledge" />
+      </code>
+      ), which supplies the deprecation index and the replacement references.
+    </>
+  }
+  reads="Project source, styles and Porsche Design System configuration, within the scope you give it. When you name none, that is the project root the agent runs in."
+  writes={
+    <>
+      Nothing but its two report files, below <code>.pds/audits/&lt;runId&gt;/</code>.
+    </>
+  }
+  executes="Nothing. It does not install dependencies, build, test or start the application."
+/>
+
+## What It Audits
+
+The audit checks:
+
+- Components, props, prop values, events and slots.
+- CSS custom properties, design tokens and styling integrations.
+- Stylesheet classes and icon names.
+- Usage passed through your own wrapper components.
+
+Code quality, security, performance, accessibility and business logic are not in scope.
+
+## Installation
+
+The skill is bundled with the Porsche Design System npm packages. Follow the
+[skill installation guide](/skills/introduction/installation) and install the required
+[Knowledge Skill](/skills/knowledge) alongside it.
+
+## How to Use the Skill
+
+Scope each run to one application or package and name any excluded paths. Without a scope, the audit starts at the
+project root and may cover too much code to report reliably.
+
+For the best results, start a fresh agent session, use a strong model and re-run any paths listed as `partial` in the
+report's coverage section.
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('audit-deprecations')} Audit apps/checkout. Exclude apps/checkout/e2e and any
+    generated files.
+  `}
+/>
+
+## Example Report
+
+Each run writes two files into a fresh, timestamped run directory:
+
+<FrameworkCodeBlock language="text" render={renderAuditFiles} />
+
+The JSON validates against a published schema; the Markdown is the readable report. A shortened example:
+
+<FrameworkCodeBlock language="markdown" render={renderAuditReport} />
+
+`completed` means the requested scope was checked. `partial` means the coverage section contains gaps that need a
+narrower follow-up run.
+
+## How to Act on the Report
+
+Work through findings in their listed order. Check manual follow-ups yourself and review `medium` confidence findings
+before changing code.
+
+Apply fixes separately with the [Knowledge Skill](/skills/knowledge), which provides replacements for the installed
+version:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Apply the findings in
+    .pds/audits/${auditRunId}/${getSkillName('audit-deprecations')}.md, in the order they are listed.
+    Use each finding's documented replacement, verify every usage against its quoted evidence before
+    changing it, and leave the manual follow-ups to me.
+  `}
+/>
+
+Audit the same scope again after applying fixes. Reports are not guaranteed to find every usage and only apply to the
+Porsche Design System version they name, so run a new audit after upgrading.

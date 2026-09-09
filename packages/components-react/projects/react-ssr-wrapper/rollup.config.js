@@ -1,12 +1,13 @@
-import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
-import preserveDirectives from 'rollup-plugin-preserve-directives';
+import typescript from '@rollup/plugin-typescript';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
+import preserveDirectives from 'rollup-plugin-preserve-directives';
 
 const outputDir = '../../dist/react-wrapper/ssr';
 const input = 'src/public-api.ts';
 
 const typescriptOpts = {
+  noEmitOnError: true,
   tsconfig: 'tsconfig.json',
 };
 

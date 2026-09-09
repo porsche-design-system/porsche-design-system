@@ -2,7 +2,7 @@ import { addImportantToEachRule, getFocusBaseStyles } from '../../styles';
 import { radiusFull, radiusLg, ref } from '@porsche-design-system/stylesheets';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../../types';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveBooleanStyles, getCss, mergeDeep } from '../../utils';
 import type { LinkPureColor, LinkPureSize } from './link-pure-utils';
 
 export const getComponentCss = (
@@ -42,7 +42,7 @@ export const getComponentCss = (
               content: '""',
               position: 'fixed',
               insetBlock: offsetVertical,
-              ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+              ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
                 insetInline: hideLabelValue ? offsetVertical : offsetHorizontal,
                 borderRadius: hideLabelValue ? ref(radiusFull) : ref(radiusLg),
               })),

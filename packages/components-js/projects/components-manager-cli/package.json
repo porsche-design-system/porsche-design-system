@@ -10,6 +10,9 @@
     "build": "npm run clean:build && npm run build:cli && npm run build:lib",
     "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/cm.js",
     "build:lib": "tsc --build tsconfig.library-entry.json",
+    "typecheck": "npm run typecheck:self && npm run typecheck:library-entry",
+    "typecheck:self": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck:library-entry": "tsc --noEmit -p tsconfig.library-entry.typecheck.json",
     "test": "npm run test:unit",
     "test:unit": "vitest -c vitest.config.ts",
     "clean:build": "rm -rf ./dist"

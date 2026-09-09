@@ -15,7 +15,7 @@ export default [
       preserveModules: true,
       preserveModulesRoot: 'src',
     },
-    plugins: [typescript({ exclude: ['**/*.spec.ts'] })],
+    plugins: [typescript({ noEmitOnError: true, exclude: ['**/*.spec.ts'] })],
   },
   {
     input,
@@ -27,7 +27,13 @@ export default [
       preserveModulesRoot: 'src',
     },
     plugins: [
-      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src', exclude: ['**/*.spec.ts'] }),
+      typescript({
+        noEmitOnError: true,
+        declaration: true,
+        declarationDir: `${outputDir}/esm`,
+        rootDir: 'src',
+        exclude: ['**/*.spec.ts'],
+      }),
     ],
   },
 ];

@@ -1,7 +1,7 @@
 import { typescale3Xl } from '../../../font';
 import { _displayFontPartA, _displayFontPartB } from './displayShared';
 
-/** @deprecated since v4.0.0, will be removed with next major release. Use proseHeading3XlStyle instead. */
+/** @deprecated Use {@link proseHeading3XlStyle} instead. This API will be removed with the next major release. */
 export const displaySmallStyle = {
   font: `${_displayFontPartA}${typescale3Xl}${_displayFontPartB}`,
 } as const;

@@ -25,7 +25,7 @@ export default [
       entryFileNames: '[name].cjs',
       preserveModules: true,
     },
-    plugins: [...commonPlugins, typescript()],
+    plugins: [...commonPlugins, typescript({ noEmitOnError: true })],
   },
   {
     input,
@@ -37,7 +37,7 @@ export default [
     },
     plugins: [
       ...commonPlugins,
-      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
+      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src', noEmitOnError: true }),
       copy({
         targets: [
           { src: `${rootDir}/LICENSE.md`, dest: outputDir },
@@ -74,6 +74,6 @@ export default [
       }
       warn(warning);
     },
-    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src', noEmitOnError: true })],
   },
 ];

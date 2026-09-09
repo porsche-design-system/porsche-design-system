@@ -1,7 +1,5 @@
-// Public JS API: the documented `scssMeta` model, its types, the `kindOf` leaf discriminant, and the
-// `flatten` tree walker (collapses a grouped branch — e.g. the nested `grid` domain — into an ordered
-// leaf list). SCSS-file generation (`scss/index.ts`) is imported directly by the build scripts.
-export { kindOf, type ScssKind } from './kind';
+// Internal metadata for storefront docs and skill generation; wrappers publish only generated SCSS.
+export { kindOf } from './kind';
+export { scssDeprecations, scssMeta } from './meta';
 export { flatten } from './scss/render';
-export { scssMeta } from './meta';
 export type * from './types';

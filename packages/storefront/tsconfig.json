@@ -31,5 +31,5 @@
     "dist/dev/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "generated", "projects", "**/*.spec.ts"]
+  "exclude": ["node_modules", "generated", "projects", "tests"]
 }

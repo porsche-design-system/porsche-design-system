@@ -60,6 +60,12 @@ symlink for you. Run it from the project or workspace where the package is insta
 - `--location` sets the integration's parent skills directory. The binary creates the skill folders inside it.
 - `--skill` optionally installs only the named skill and can be repeated. Omit it to install all bundled skills.
 
+On macOS and Linux the created symlinks point at the package with a relative target, so they stay valid across
+symlink-capable clones and in CI. Commit them and teammates whose Git checkout supports symlinks get the skills right
+after `npm install`. On Windows the binary creates a directory junction instead, because a directory symlink requires
+elevated privileges or Developer Mode there. A junction always stores an absolute path, so it is machine-specific and
+should not be committed.
+
 For `--location`, use the directory your AI coding tool reads: `.agents/skills` is the Agent Skills standard and is also
 picked up by Codex and GitHub Copilot, `.claude/skills` is used by Claude Code, and `.github/skills` by GitHub Copilot.
 If your team uses several agents, link the skill into each of the directories they read.
@@ -90,16 +96,20 @@ Create the project-local link yourself, inside the directory your AI coding tool
 Skills standard and is also picked up by Codex and GitHub Copilot, `.claude/skills` is used by Claude Code, and
 `.github/skills` by GitHub Copilot.
 
-On macOS or Linux, run this from the repository root:
+On macOS or Linux, run this from the repository root. The link target is relative to the skills directory, which keeps
+the link portable across clones and CI:
 
 <FrameworkCodeBlock
   language="bash"
   render={({ componentPackageName, getSkillName }) => `
     mkdir -p .agents/skills
-    ln -s "$(pwd)/node_modules/${componentPackageName}/skills/${getSkillName('knowledge')}" \\
+    ln -s ../../node_modules/${componentPackageName}/skills/${getSkillName('knowledge')} \\
       .agents/skills/${getSkillName('knowledge')}
   `}
 />
+
+The `../../` prefix goes up from `.agents/skills` to the repository root. Adjust it if you link into a directory at a
+different depth.
 
 On Windows, create a directory junction from the repository root instead:
 
@@ -110,8 +120,10 @@ On Windows, create a directory junction from the repository root instead:
   }
 />
 
-Create one link per skill you want to use and per skills directory your team's agents read, and commit the links so the
-whole team gets them.
+Create one link per skill you want to use and per skills directory your team's agents read. Commit the relative links so
+teammates with symlink-capable Git checkouts get them right after `npm install`. A Windows junction always stores an
+absolute path, so it is machine-specific and should not be committed. A Windows clone without Git symlink support checks
+a committed link out as a plain text file; delete it and re-run the binary to create a junction.
 
 </ContentTab>
 
@@ -158,4 +170,6 @@ version also updates the linked skills, so no additional step is needed as long 
 keeps pointing at the installed package.
 
 Re-run the installation only if you remove the link, switch to a different Porsche Design System package or want to add
-a skill that was not linked before.
+a skill that was not linked before. Re-running is safe: an existing link that already points at the installed package is
+left untouched, and a link created by a version of `pds-skill` that still wrote absolute targets is converted to a
+relative one.

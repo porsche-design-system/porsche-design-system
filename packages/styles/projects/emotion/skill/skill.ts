@@ -3,7 +3,9 @@ import path from 'node:path';
 import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
 import type { EmotionBranch, EmotionNode, EmotionToken, EmotionUtility } from '../emotionMeta';
-import { type EmotionKind, emotionMeta, kindOf } from '../emotionMeta';
+import { emotionMeta, kindOf } from '../emotionMeta';
+
+type EmotionKind = 'token' | 'utility';
 
 /**
  * Markdown serializer for the Emotion styling solution, driven by the single source of truth

@@ -1,0 +1,5 @@
+{
+  "extends": ["./tsconfig.json", "shared/tsconfig.paths.json"],
+  "include": ["scripts", "svgo.config.ts"],
+  "exclude": ["**/*.spec.ts"]
+}

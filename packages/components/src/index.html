@@ -326,14 +326,45 @@
         <div data-card="button" style="align-items: flex-start">
           <p-button variant="primary">Some label</p-button>
           <p-button variant="secondary">Some label</p-button>
+          <p-button variant="destructive">Some label</p-button>
+          <p-button
+            class="[--p-button-bg:blueviolet] [--p-button-fg:lavender] hover:[--p-button-bg:purple] hover:[--p-button-fg:white]"
+            >Some label</p-button
+          >
           <p-button variant="primary" icon="car">Some label</p-button>
           <p-button variant="secondary" icon="car">Some label</p-button>
+          <p-button variant="destructive" icon="car">Some label</p-button>
+          <p-button
+            class="[--p-button-bg:deeppink] [--p-button-fg:lime] hover:[--p-button-bg:purple] hover:[--p-button-fg:white]"
+            icon="car"
+            >Some label</p-button
+          >
           <p-button variant="primary" icon="car" hide-label="true">Some label</p-button>
           <p-button variant="secondary" icon="car" hide-label="true">Some label</p-button>
+          <p-button variant="destructive" icon="car" hide-label="true">Some label</p-button>
+          <p-button
+            class="[--p-button-bg:deeppink] [--p-button-fg:lime] hover:[--p-button-bg:purple] hover:[--p-button-fg:white]"
+            icon="car"
+            hide-label="true"
+            >Some label</p-button
+          >
           <p-button variant="primary" icon="car" loading="true">Some label</p-button>
           <p-button variant="secondary" icon="car" loading="true">Some label</p-button>
+          <p-button variant="destructive" icon="car" loading="true">Some label</p-button>
+          <p-button class="[--p-button-bg:deeppink] [--p-button-fg:lime] " icon="car" loading="true"
+            >Some label</p-button
+          >
           <p-button variant="primary" icon="car" disabled="true">Some label</p-button>
           <p-button variant="secondary" icon="car" disabled="true">Some label</p-button>
+          <p-button variant="destructive" icon="car" disabled="true">Some label</p-button>
+          <p-button class="[--p-button-bg:deeppink] [--p-button-fg:lime]" icon="car" disabled="true"
+            >Some label</p-button
+          >
+          <p-button
+            class="[--p-button-bg:light-dark(#025b3f,#21eeae)] [--p-button-fg:light-dark(#21eeae,#025b3f)] hover:[--p-button-bg:light-dark(#013d2a,#6ef7cf)]  hover:[--p-button-fg:light-dark(#6ef7cf,#013d2a)] [--p-button-radius:4px] [--p-button-gap:24px] [--p-button-px:48px] [--p-button-py:32px]"
+            icon="car"
+            >Some label</p-button
+          >
         </div>
         <div data-card="button-pure" style="grid-column: span 2;">
           <p-button-pure size="5xl" color="primary" active="true">Some label</p-button-pure>
@@ -862,7 +893,7 @@
           </p-button>
           <p-toast></p-toast>
         </div>
-        <div data-card="link">
+        <div data-card="link" style="align-items: flex-start;">
           <p-link variant="primary">
             <a href="#">Some label</a>
           </p-link>
@@ -879,6 +910,12 @@
             <a href="#">Some label</a>
           </p-link>
           <p-link variant="secondary" icon="car" hide-label="true">
+            <a href="#">Some label</a>
+          </p-link>
+          <p-link
+            class="[--p-link-bg:light-dark(#025b3f,#21eeae)] [--p-link-fg:light-dark(#21eeae,#025b3f)] hover:[--p-link-bg:light-dark(#013d2a,#6ef7cf)]  hover:[--p-link-fg:light-dark(#6ef7cf,#013d2a)] [--p-link-radius:4px] [--p-link-gap:24px] [--p-link-px:48px] [--p-link-py:32px]"
+            icon="car"
+          >
             <a href="#">Some label</a>
           </p-link>
         </div>
@@ -1198,7 +1235,16 @@
                   alt="Seitenansicht eines Porsche Taycan."
                   width="5000"
                   height="1390"
-                  srcset="https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/350x97/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 350w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/520x145/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 520w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/650x181/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 650w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/700x195/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 700w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/705x196/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 705w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1040x289/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1040w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1300x361/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1300w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1410x392/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1410w"
+                  srcset="
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/350x97/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh    350w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/520x145/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   520w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/650x181/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   650w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/700x195/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   700w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/705x196/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   705w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1040x289/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1040w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1300x361/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1300w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1410x392/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1410w
+                  "
                   sizes="(min-width: 1920px) 705px,(min-width: 1760px) 610px,(min-width: 1300px) 650px,(min-width: 1000px) 500px,(min-width: 760px) 520px,(min-width: 480px) 600px,350px"
                   loading="lazy"
                   fetchpriority="auto"
@@ -1274,7 +1320,16 @@
                   alt="Seitenansicht eines Porsche Taycan."
                   width="5000"
                   height="1390"
-                  srcset="https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/350x97/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 350w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/520x145/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 520w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/650x181/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 650w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/700x195/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 700w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/705x196/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 705w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1040x289/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1040w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1300x361/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1300w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1410x392/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1410w"
+                  srcset="
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/350x97/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh    350w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/520x145/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   520w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/650x181/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   650w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/700x195/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   700w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/705x196/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   705w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1040x289/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1040w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1300x361/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1300w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1410x392/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1410w
+                  "
                   sizes="(min-width: 1920px) 705px,(min-width: 1760px) 610px,(min-width: 1300px) 650px,(min-width: 1000px) 500px,(min-width: 760px) 520px,(min-width: 480px) 600px,350px"
                   loading="lazy"
                   fetchpriority="auto"
@@ -1350,7 +1405,16 @@
                   alt="Seitenansicht eines Porsche Taycan."
                   width="5000"
                   height="1390"
-                  srcset="https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/350x97/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 350w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/520x145/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 520w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/650x181/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 650w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/700x195/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 700w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/705x196/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 705w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1040x289/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1040w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1300x361/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1300w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1410x392/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1410w"
+                  srcset="
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/350x97/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh    350w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/520x145/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   520w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/650x181/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   650w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/700x195/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   700w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/705x196/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   705w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1040x289/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1040w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1300x361/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1300w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1410x392/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1410w
+                  "
                   sizes="(min-width: 1920px) 705px,(min-width: 1760px) 610px,(min-width: 1300px) 650px,(min-width: 1000px) 500px,(min-width: 760px) 520px,(min-width: 480px) 600px,350px"
                   loading="lazy"
                   fetchpriority="auto"
@@ -1426,7 +1490,16 @@
                   alt="Seitenansicht eines Porsche Taycan."
                   width="5000"
                   height="1390"
-                  srcset="https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/350x97/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 350w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/520x145/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 520w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/650x181/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 650w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/700x195/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 700w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/705x196/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 705w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1040x289/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1040w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1300x361/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1300w, https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1410x392/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1410w"
+                  srcset="
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/350x97/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh    350w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/520x145/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   520w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/650x181/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   650w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/700x195/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   700w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/705x196/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh   705w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1040x289/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1040w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1300x361/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1300w,
+                    https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/1410x392/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh 1410w
+                  "
                   sizes="(min-width: 1920px) 705px,(min-width: 1760px) 610px,(min-width: 1300px) 650px,(min-width: 1000px) 500px,(min-width: 760px) 520px,(min-width: 480px) 600px,350px"
                   loading="lazy"
                   fetchpriority="auto"

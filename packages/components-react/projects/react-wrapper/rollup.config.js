@@ -12,6 +12,7 @@ const outputDir = 'dist/react-wrapper';
 const input = `${projectDir}/src/public-api.ts`;
 
 const typescriptOpts = {
+  noEmitOnError: true,
   tsconfig: `${projectDir}/tsconfig.json`,
 };
 

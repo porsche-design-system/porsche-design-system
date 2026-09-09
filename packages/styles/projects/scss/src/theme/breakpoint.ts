@@ -6,10 +6,11 @@ import {
   breakpointXl,
   breakpointXs,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { ScssCatalog } from '../types';
 
-/** The responsive breakpoint scale, keyed by size (e.g. `breakpoint.md`). */
-export const breakpoint = {
+/** The documented responsive breakpoint scale. */
+const breakpoints = {
   xs: {
     name: '$breakpoint-xs',
     value: breakpointXs,
@@ -40,18 +41,51 @@ export const breakpoint = {
     value: breakpoint2Xl,
     description: 'Holds the **2x-large** responsive breakpoint.',
   },
-} satisfies ScssMeta['breakpoint'];
-
-/**
- * Deprecated `$pds-breakpoint-*` aliases (plumbing).
- * @deprecated Use the documented `$breakpoint-*` variables.
- */
-export const breakpointDeprecatedAliases: ScssRaw = {
-  raw: `$pds-breakpoint-base: 0; /* alias (deprecated) */
-$pds-breakpoint-xs: ${breakpointXs}; /* alias (deprecated) */
-$pds-breakpoint-s: ${breakpointSm}; /* alias (deprecated) */
-$pds-breakpoint-m: ${breakpointMd}; /* alias (deprecated) */
-$pds-breakpoint-l: ${breakpointLg}; /* alias (deprecated) */
-$pds-breakpoint-xl: ${breakpointXl}; /* alias (deprecated) */
-$pds-breakpoint-xxl: ${breakpoint2Xl}; /* alias (deprecated) */`,
 };
+
+/** Breakpoint declarations, keyed by size (e.g. `breakpoint.md`), plus the deprecated `$pds-breakpoint-*` aliases. */
+export const breakpoint = {
+  ...breakpoints,
+  base: {
+    name: '$pds-breakpoint-base',
+    value: 0,
+    description: 'Holds the **base** responsive breakpoint. The current scale starts at **x-small**.',
+    deprecation: {},
+  },
+  aliasXs: {
+    name: '$pds-breakpoint-xs',
+    value: breakpointXs,
+    description: 'Holds the **x-small** responsive breakpoint.',
+    deprecation: { replacement: scssIdentifier(breakpoints.xs) },
+  },
+  aliasS: {
+    name: '$pds-breakpoint-s',
+    value: breakpointSm,
+    description: 'Holds the **small** responsive breakpoint.',
+    deprecation: { replacement: scssIdentifier(breakpoints.sm) },
+  },
+  aliasM: {
+    name: '$pds-breakpoint-m',
+    value: breakpointMd,
+    description: 'Holds the **medium** responsive breakpoint.',
+    deprecation: { replacement: scssIdentifier(breakpoints.md) },
+  },
+  aliasL: {
+    name: '$pds-breakpoint-l',
+    value: breakpointLg,
+    description: 'Holds the **large** responsive breakpoint.',
+    deprecation: { replacement: scssIdentifier(breakpoints.lg) },
+  },
+  aliasXl: {
+    name: '$pds-breakpoint-xl',
+    value: breakpointXl,
+    description: 'Holds the **x-large** responsive breakpoint.',
+    deprecation: { replacement: scssIdentifier(breakpoints.xl) },
+  },
+  aliasXxl: {
+    name: '$pds-breakpoint-xxl',
+    value: breakpoint2Xl,
+    description: 'Holds the **2x-large** responsive breakpoint.',
+    deprecation: { replacement: scssIdentifier(breakpoints['2xl']) },
+  },
+} satisfies ScssCatalog;

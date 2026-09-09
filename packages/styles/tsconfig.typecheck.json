@@ -1,0 +1,5 @@
+{
+  "extends": ["./tsconfig.app.json", "shared/tsconfig.paths.json"],
+  "include": ["src"],
+  "exclude": ["**/*.spec.ts"]
+}

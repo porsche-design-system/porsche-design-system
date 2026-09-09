@@ -196,38 +196,38 @@ exports[`tailwind package content > snapshot for "/tailwindcss" 1`] = `
   --radius-4xl: 32px;
   --radius-full: calc(infinity * 1px);
   --default-border-width: 1px;
-  /* alias (deprecated) */
+  /* @deprecated Use --default-border-width instead. This API will be removed with the next major release. The default border width is now 1px. */
   --border-width-regular: 2px;
-  /* alias (deprecated) */
+  /* @deprecated Use --default-border-width instead. This API will be removed with the next major release. */
   --border-width-thin: 1px;
   --blur-frosted: 32px;
   --shadow-sm: 0px 3px 8px rgba(0, 0, 0, 0.16);
   --shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.16);
   --shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  /* @deprecated Use --shadow-sm instead. This API will be removed with the next major release. */
+  --shadow-low: --theme(--shadow-sm);
+  /* @deprecated Use --shadow-md instead. This API will be removed with the next major release. */
+  --shadow-medium: --theme(--shadow-md);
+  /* @deprecated Use --shadow-lg instead. This API will be removed with the next major release. */
+  --shadow-high: --theme(--shadow-lg);
   --default-outline-width: 2px;
   --transition-duration-sm: 0.25s;
   --transition-duration-md: 0.4s;
   --transition-duration-lg: 0.6s;
   --transition-duration-xl: 1.2s;
+  /* @deprecated Use --transition-duration-sm instead. This API will be removed with the next major release. */
+  --transition-duration-short: --theme(--transition-duration-sm);
+  /* @deprecated Use --transition-duration-md instead. This API will be removed with the next major release. */
+  --transition-duration-moderate: --theme(--transition-duration-md);
+  /* @deprecated Use --transition-duration-lg instead. This API will be removed with the next major release. */
+  --transition-duration-long: --theme(--transition-duration-lg);
+  /* @deprecated Use --transition-duration-xl instead. This API will be removed with the next major release. */
+  --transition-duration-very-long: --theme(--transition-duration-xl);
   --ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
   --ease-in: cubic-bezier(0, 0, 0.2, 1);
   --ease-out: cubic-bezier(0.4, 0, 0.5, 1);
   --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   --default-transition-duration: 0.25s;
-  /* alias (deprecated) */
-  --shadow-low: --theme(--shadow-sm);
-  /* alias (deprecated) */
-  --shadow-medium: --theme(--shadow-md);
-  /* alias (deprecated) */
-  --shadow-high: --theme(--shadow-lg);
-  /* alias (deprecated) */
-  --transition-duration-short: --theme(--transition-duration-sm);
-  /* alias (deprecated) */
-  --transition-duration-moderate: --theme(--transition-duration-md);
-  /* alias (deprecated) */
-  --transition-duration-long: --theme(--transition-duration-lg);
-  /* alias (deprecated) */
-  --transition-duration-very-long: --theme(--transition-duration-xl);
   --animate-skeleton: skeleton --theme(--transition-duration-xl)
     --theme(--ease-in-out) infinite;
   @keyframes skeleton {

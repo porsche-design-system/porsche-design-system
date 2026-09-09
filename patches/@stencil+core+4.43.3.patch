@@ -1,5 +1,5 @@
 diff --git a/node_modules/@stencil/core/compiler/stencil.js b/node_modules/@stencil/core/compiler/stencil.js
-index 1f97bb5..e9c1023 100644
+index 1f97bb5..538b44d 100644
 --- a/node_modules/@stencil/core/compiler/stencil.js
 +++ b/node_modules/@stencil/core/compiler/stencil.js
 @@ -251954,7 +251954,7 @@ function createLazyAttachInternalsBinding(cmp) {
@@ -12,10 +12,24 @@ index 1f97bb5..e9c1023 100644
                  void 0,
                  []
 diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
-index 7ca390b..e10ed7a 100644
+index 7ca390b..6c04577 100644
 --- a/node_modules/@stencil/core/internal/client/index.js
 +++ b/node_modules/@stencil/core/internal/client/index.js
-@@ -3256,6 +3256,14 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
+@@ -382,6 +382,13 @@ function createShadowRoot(cmpMeta) {
+       opts.slotAssignment = "manual";
+     }
+   }
++
++  //========= PDS PATCH START
++  // Temporary workaround while we wait for Stencil to natively support cloning.
++  // https://github.com/stenciljs/core/issues/6833
++  opts.clonable = true;
++  //========= PDS PATCH END
++
+   const shadowRoot = this.attachShadow(opts);
+   if (globalStyleSheet === void 0) globalStyleSheet = (_a = createStyleSheetIfNeededAndSupported(globalStyles)) != null ? _a : null;
+   if (globalStyleSheet) {
+@@ -3256,6 +3263,14 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
    if (BUILD21.isDev) {
      hostRef.$flags$ |= 1024 /* devOnRender */;
    }
@@ -30,7 +44,7 @@ index 7ca390b..e10ed7a 100644
    if (BUILD21.hydrateServerSide) {
      await callRender(hostRef, instance, elm, isInitialLoad);
    } else {
-@@ -4245,6 +4253,13 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -4245,6 +4260,13 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
            registerHost(self, cmpMeta);
            if (BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
              if (supportsShadow) {

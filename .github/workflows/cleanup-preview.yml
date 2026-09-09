@@ -1,0 +1,84 @@
+name: 'Cleanup Preview'
+
+# Pull request previews are published to `pr-<number>/` in the storefront bucket. Removing them on
+# close is what keeps the bucket from accumulating dead previews forever — the exact failure mode
+# that filled the old GitHub Pages content repository past its size limit.
+#
+# The 90-day lifecycle rule on `pr-*` backs this up; it does not replace it. A rule that expires
+# objects three months late is a safety net for a failed run, not a cleanup strategy.
+on:
+  pull_request:
+    types:
+      - closed
+
+permissions:
+  contents: read
+
+# One cleanup at a time per pull request. Never cancel in flight: a half-deleted prefix is worse
+# than a slightly delayed one.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    name: 'Cleanup'
+    # What actually stops a fork from reaching the AWS role is NOT this condition. A fork pull
+    # request runs the workflow file from its own head branch, so an attacker can simply delete
+    # these lines. Two platform guarantees are the real boundary, and both hold regardless of what
+    # the fork's workflow file says:
+    #
+    #   1. "With the exception of GITHUB_TOKEN, secrets are not passed to the runner when a workflow
+    #      is triggered from a forked repository" - so `AWS_STOREFRONT_PREVIEW_ROLE_ARN` is empty and
+    #      there is no role to assume.
+    #   2. `permissions` can only add or remove *read* access for forks; write scopes are downgraded.
+    #      `id-token: write` is therefore not granted, and no OIDC token can be minted at all.
+    #
+    # This is worth stating plainly because the OIDC subject would otherwise match: for a fork pull
+    # request the `repository` claim is still the *base* repository, so the subject really is
+    # `repo:porsche-design-system/porsche-design-system:pull_request`. The role's trust policy alone
+    # would not turn a fork away - the absence of a token is what does.
+    #
+    # So the condition below is defense in depth and noise reduction: it keeps the job from starting
+    # and failing confusingly, and it keeps bot-authored pull requests away from the role even though
+    # those do run in this repository and would otherwise have credentials.
+    #
+    # We gate on the PR *author* (`github.event.pull_request.user.login`), NOT on `github.actor`:
+    # `github.actor` is whoever triggered the current run, so it does not reliably identify an
+    # automation-authored pull request. The author is stable regardless of who closes it.
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.login != 'dependabot[bot]' &&
+      github.event.pull_request.user.login != 'copilot-swe-agent[bot]' &&
+      github.event.pull_request.user.login != 'Copilot'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
+    steps:
+      # No checkout: nothing from the repository is needed, and the head of a just-closed pull
+      # request is exactly the code we would rather not run while holding AWS credentials.
+      - name: 'Assume AWS role'
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          # `storefront-preview-deployer` may only touch `pr-*`, so a bug here cannot reach
+          # `nightly` or a published version. Its OIDC trust condition is the bare
+          # `repo:…:pull_request` subject, which is why this job declares no environment.
+          role-to-assume: ${{ secrets.AWS_STOREFRONT_PREVIEW_ROLE_ARN }}
+          aws-region: eu-central-1
+      - name: 'Remove preview'
+        # Both commands are no-ops rather than errors when the pull request never deployed - a run
+        # that was cancelled before the deploy job, or whose tests failed. `aws s3 rm --recursive`
+        # over a prefix with no keys exits 0, and an invalidation for a path with nothing cached is
+        # accepted and completes normally. Verified against this distribution; not worth guarding.
+        run: |
+          set -euo pipefail
+          aws s3 rm --recursive "s3://${BUCKET}/pr-${PR_NUMBER}/"
+          aws cloudfront create-invalidation \
+            --distribution-id "$DISTRIBUTION_ID" \
+            --paths "/pr-${PR_NUMBER}/*" \
+            --query 'Invalidation.Id' --output text
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BUCKET: ${{ secrets.AWS_STOREFRONT_BUCKET }}
+          DISTRIBUTION_ID: ${{ secrets.AWS_STOREFRONT_DISTRIBUTION_ID }}

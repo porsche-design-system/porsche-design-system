@@ -1,16 +1,9 @@
-// The vanilla-extract meta model — the documented single source of truth these types validate. Leaves
-// (`VanillaExtractToken`, `VanillaExtractUtility`) carry payloads; records and arrays only group.
-// Mirrors the scss meta skeleton (`scss/src/types.ts`); a leaf's kind is recovered via `kindOf` (`./kind`).
-
-/** A documented referenceable value (color, radius, breakpoint, font-size, …). */
 export type VanillaExtractToken = {
   name: string;
   description: string;
   value: string | number;
 };
 
-/** A documented applied style — a vanilla-extract style object or a function returning one
- *  (focus/mediaQuery/skeleton/typography helpers, grid styles, …). */
 export type VanillaExtractUtility = {
   name: string;
   description: string;
@@ -19,254 +12,258 @@ export type VanillaExtractUtility = {
 
 export type VanillaExtractNode = VanillaExtractToken | VanillaExtractUtility;
 
-/** Any branch of the meta tree: a leaf {@link VanillaExtractNode}, an array, or a nested record. Only leaves carry payloads. */
 export type VanillaExtractBranch =
   | VanillaExtractNode
   | VanillaExtractBranch[]
   | { [key: string]: VanillaExtractBranch };
 
 /**
- * The documented single source of truth, shared with the storefront docs and LLM context. A flat,
- * domain-keyed catalog mirroring `scssMeta`'s skeleton; each leaf's kind (`token` | `utility`) is
- * recoverable via `kindOf`. The catalog is deprecation-free (deprecated symbols stay public via the
- * `src/<domain>/deprecated` barrels but aren't documented). Token sub-groups adopt scss's short keys;
- * the full export name is preserved in each leaf's `name`.
+ * Package-local cross-solution catalog contract; styling solutions still differ in shape.
  */
-export type VanillaExtractMeta = {
+export type StylesMeta<TToken, TUtility> = {
   border: {
     radius: {
-      xs: VanillaExtractToken;
-      sm: VanillaExtractToken;
-      md: VanillaExtractToken;
-      lg: VanillaExtractToken;
-      xl: VanillaExtractToken;
-      '2xl': VanillaExtractToken;
-      '3xl': VanillaExtractToken;
-      '4xl': VanillaExtractToken;
-      full: VanillaExtractToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
+      '3xl': TToken;
+      '4xl': TToken;
+      full: TToken;
     };
   };
   blur: {
-    frosted: VanillaExtractToken;
+    frosted: TToken;
   };
   breakpoint: {
-    xs: VanillaExtractToken;
-    sm: VanillaExtractToken;
-    md: VanillaExtractToken;
-    lg: VanillaExtractToken;
-    xl: VanillaExtractToken;
-    '2xl': VanillaExtractToken;
-    breakpoint: VanillaExtractUtility;
-    breakpoints: VanillaExtractUtility;
-    breakpointBase: VanillaExtractToken;
+    xs: TToken;
+    sm: TToken;
+    md: TToken;
+    lg: TToken;
+    xl: TToken;
+    '2xl': TToken;
+    breakpoint: TUtility;
+    breakpoints: TUtility;
+    breakpointBase: TToken;
   };
   color: {
     background: {
-      canvas: VanillaExtractToken;
-      surface: VanillaExtractToken;
-      frosted: VanillaExtractToken;
-      frostedSoft: VanillaExtractToken;
-      frostedStrong: VanillaExtractToken;
-      backdrop: VanillaExtractToken;
+      canvas: TToken;
+      surface: TToken;
+      frosted: TToken;
+      frostedSoft: TToken;
+      frostedStrong: TToken;
+      backdrop: TToken;
     };
     foreground: {
-      primary: VanillaExtractToken;
-      contrastHigher: VanillaExtractToken;
-      contrastHigh: VanillaExtractToken;
-      contrastMedium: VanillaExtractToken;
-      contrastLow: VanillaExtractToken;
-      contrastLower: VanillaExtractToken;
+      primary: TToken;
+      contrastHigher: TToken;
+      contrastHigh: TToken;
+      contrastMedium: TToken;
+      contrastLow: TToken;
+      contrastLower: TToken;
     };
     semantic: {
-      info: VanillaExtractToken;
-      infoMedium: VanillaExtractToken;
-      infoLow: VanillaExtractToken;
-      infoFrosted: VanillaExtractToken;
-      infoFrostedSoft: VanillaExtractToken;
-      success: VanillaExtractToken;
-      successMedium: VanillaExtractToken;
-      successLow: VanillaExtractToken;
-      successFrosted: VanillaExtractToken;
-      successFrostedSoft: VanillaExtractToken;
-      warning: VanillaExtractToken;
-      warningMedium: VanillaExtractToken;
-      warningLow: VanillaExtractToken;
-      warningFrosted: VanillaExtractToken;
-      warningFrostedSoft: VanillaExtractToken;
-      error: VanillaExtractToken;
-      errorMedium: VanillaExtractToken;
-      errorLow: VanillaExtractToken;
-      errorFrosted: VanillaExtractToken;
-      errorFrostedSoft: VanillaExtractToken;
+      info: TToken;
+      infoMedium: TToken;
+      infoLow: TToken;
+      infoFrosted: TToken;
+      infoFrostedSoft: TToken;
+      success: TToken;
+      successMedium: TToken;
+      successLow: TToken;
+      successFrosted: TToken;
+      successFrostedSoft: TToken;
+      warning: TToken;
+      warningMedium: TToken;
+      warningLow: TToken;
+      warningFrosted: TToken;
+      warningFrostedSoft: TToken;
+      error: TToken;
+      errorMedium: TToken;
+      errorLow: TToken;
+      errorFrosted: TToken;
+      errorFrostedSoft: TToken;
     };
     a11y: {
-      focus: VanillaExtractToken;
+      focus: TToken;
     };
-    colorSchemeStyles: VanillaExtractUtility;
+    colorSchemeStyles: TUtility;
   };
   font: {
     family: {
-      porscheNext: VanillaExtractToken;
-      porscheNextZhHans: VanillaExtractToken;
-      porscheNextZhHant: VanillaExtractToken;
-      porscheNextJa: VanillaExtractToken;
-      porscheNextKo: VanillaExtractToken;
+      porscheNext: TToken;
+      porscheNextZhHans: TToken;
+      porscheNextZhHant: TToken;
+      porscheNextJa: TToken;
+      porscheNextKo: TToken;
     };
     weight: {
-      normal: VanillaExtractToken;
-      semibold: VanillaExtractToken;
-      bold: VanillaExtractToken;
+      normal: TToken;
+      semibold: TToken;
+      bold: TToken;
     };
     lineHeight: {
-      normal: VanillaExtractToken;
+      normal: TToken;
     };
     size: {
-      '2xs': VanillaExtractToken;
-      xs: VanillaExtractToken;
-      sm: VanillaExtractToken;
-      md: VanillaExtractToken;
-      lg: VanillaExtractToken;
-      xl: VanillaExtractToken;
-      '2xl': VanillaExtractToken;
-      '3xl': VanillaExtractToken;
-      '4xl': VanillaExtractToken;
-      '5xl': VanillaExtractToken;
+      '2xs': TToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
+      '3xl': TToken;
+      '4xl': TToken;
+      '5xl': TToken;
     };
-    getCJKFontFamilyStyle: VanillaExtractUtility;
-    fontHyphenationStyle: VanillaExtractUtility;
+    getCJKFontFamilyStyle: TUtility;
+    fontHyphenationStyle: TUtility;
   };
   shadow: {
-    sm: VanillaExtractToken;
-    md: VanillaExtractToken;
-    lg: VanillaExtractToken;
+    sm: TToken;
+    md: TToken;
+    lg: TToken;
   };
   spacing: {
     fluid: {
-      xs: VanillaExtractToken;
-      sm: VanillaExtractToken;
-      md: VanillaExtractToken;
-      lg: VanillaExtractToken;
-      xl: VanillaExtractToken;
-      '2xl': VanillaExtractToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
     };
     static: {
-      '2xs': VanillaExtractToken;
-      xs: VanillaExtractToken;
-      sm: VanillaExtractToken;
-      md: VanillaExtractToken;
-      lg: VanillaExtractToken;
-      xl: VanillaExtractToken;
-      '2xl': VanillaExtractToken;
+      '2xs': TToken;
+      xs: TToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
+      '2xl': TToken;
     };
   };
   motion: {
     duration: {
-      sm: VanillaExtractToken;
-      md: VanillaExtractToken;
-      lg: VanillaExtractToken;
-      xl: VanillaExtractToken;
+      sm: TToken;
+      md: TToken;
+      lg: TToken;
+      xl: TToken;
     };
     ease: {
-      inOut: VanillaExtractToken;
-      in: VanillaExtractToken;
-      out: VanillaExtractToken;
+      inOut: TToken;
+      in: TToken;
+      out: TToken;
     };
   };
   gradient: {
-    stopsFadeDark: VanillaExtractToken;
+    stopsFadeDark: TToken;
   };
   typography: {
     heading: {
-      '5xl': VanillaExtractUtility;
-      '4xl': VanillaExtractUtility;
-      '3xl': VanillaExtractUtility;
-      '2xl': VanillaExtractUtility;
-      xl: VanillaExtractUtility;
-      lg: VanillaExtractUtility;
-      md: VanillaExtractUtility;
-      sm: VanillaExtractUtility;
-      xs: VanillaExtractUtility;
-      '2xs': VanillaExtractUtility;
+      '5xl': TUtility;
+      '4xl': TUtility;
+      '3xl': TUtility;
+      '2xl': TUtility;
+      xl: TUtility;
+      lg: TUtility;
+      md: TUtility;
+      sm: TUtility;
+      xs: TUtility;
+      '2xs': TUtility;
     };
     text: {
-      '5xl': VanillaExtractUtility;
-      '4xl': VanillaExtractUtility;
-      '3xl': VanillaExtractUtility;
-      '2xl': VanillaExtractUtility;
-      xl: VanillaExtractUtility;
-      lg: VanillaExtractUtility;
-      md: VanillaExtractUtility;
-      sm: VanillaExtractUtility;
-      xs: VanillaExtractUtility;
-      '2xs': VanillaExtractUtility;
+      '5xl': TUtility;
+      '4xl': TUtility;
+      '3xl': TUtility;
+      '2xl': TUtility;
+      xl: TUtility;
+      lg: TUtility;
+      md: TUtility;
+      sm: TUtility;
+      xs: TUtility;
+      '2xs': TUtility;
     };
     // Kept as an empty group for 1:1 shape parity with `ScssMeta['typography'].display`.
     display: Record<string, never>;
   };
   skeleton: {
-    getSkeletonStyle: VanillaExtractUtility;
+    getSkeletonStyle: TUtility;
     // vanilla-extract-specific export with no emotion/scss counterpart: the `keyframes` object passed
     // to vanilla-extract's `keyframes()`. Kept keyed by export name.
-    skeletonKeyframes: VanillaExtractUtility;
+    skeletonKeyframes: TUtility;
   };
   focus: {
-    getFocusVisibleStyle: VanillaExtractUtility;
+    getFocusVisibleStyle: TUtility;
   };
   mediaQuery: {
-    getMediaQueryMax: VanillaExtractUtility;
-    getMediaQueryMin: VanillaExtractUtility;
-    getMediaQueryMinMax: VanillaExtractUtility;
+    getMediaQueryMax: TUtility;
+    getMediaQueryMin: TUtility;
+    getMediaQueryMinMax: TUtility;
   };
   // Grouped by grid area, aligned with `ScssMeta['grid']` / `TailwindMeta['grid']`. `template` is the
   // whole-grid layout, `gap` a token; each area carries its placement utility (`column`), line tokens
   // (`start`/`end`), per-area `span`s, the composed `offset` utility and its `offset{Base,S,XXL}` tokens.
   grid: {
-    template: VanillaExtractUtility;
-    gap: VanillaExtractToken;
+    template: TUtility;
+    gap: TToken;
     narrow: {
-      column: VanillaExtractUtility;
-      start: VanillaExtractToken;
-      end: VanillaExtractToken;
-      span: { oneHalf: VanillaExtractToken };
-      offset: VanillaExtractUtility;
-      offsetBase: VanillaExtractToken;
-      offsetS: VanillaExtractToken;
-      offsetXXL: VanillaExtractToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      span: { oneHalf: TToken };
+      offset: TUtility;
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     basic: {
-      column: VanillaExtractUtility;
-      start: VanillaExtractToken;
-      end: VanillaExtractToken;
-      span: { oneHalf: VanillaExtractToken; oneThird: VanillaExtractToken; twoThirds: VanillaExtractToken };
-      offset: VanillaExtractUtility;
-      offsetBase: VanillaExtractToken;
-      offsetS: VanillaExtractToken;
-      offsetXXL: VanillaExtractToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      span: { oneHalf: TToken; oneThird: TToken; twoThirds: TToken };
+      offset: TUtility;
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     extended: {
-      column: VanillaExtractUtility;
-      start: VanillaExtractToken;
-      end: VanillaExtractToken;
-      span: { oneHalf: VanillaExtractToken };
-      offset: VanillaExtractUtility;
-      offsetBase: VanillaExtractToken;
-      offsetS: VanillaExtractToken;
-      offsetXXL: VanillaExtractToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      span: { oneHalf: TToken };
+      offset: TUtility;
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     wide: {
-      column: VanillaExtractUtility;
-      start: VanillaExtractToken;
-      end: VanillaExtractToken;
-      offset: VanillaExtractUtility;
-      offsetBase: VanillaExtractToken;
-      offsetS: VanillaExtractToken;
-      offsetXXL: VanillaExtractToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      offset: TUtility;
+      offsetBase: TToken;
+      offsetS: TToken;
+      offsetXXL: TToken;
     };
     full: {
-      column: VanillaExtractUtility;
-      start: VanillaExtractToken;
-      end: VanillaExtractToken;
-      offset: VanillaExtractToken;
+      column: TUtility;
+      start: TToken;
+      end: TToken;
+      offset: TToken;
     };
   };
 };
+
+/**
+ * The documented single source of truth, shared with the storefront docs and LLM context: the
+ * contract instantiated with this package's leaf types. Deprecation-free by construction — legacy
+ * symbols stay public through the `src/<domain>/deprecated` barrels and are indexed from the
+ * `@deprecated` annotations they already carry, never documented here. Token sub-groups adopt scss's
+ * short keys; the full export name is preserved in each leaf's `name`.
+ */
+export type VanillaExtractMeta = StylesMeta<VanillaExtractToken, VanillaExtractUtility>;

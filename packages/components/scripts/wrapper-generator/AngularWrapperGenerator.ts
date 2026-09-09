@@ -1,6 +1,5 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import { metadata } from '@porsche-design-system/storefront/src/app/layout';
 import { camelCase, pascalCase } from 'change-case';
 import * as path from 'path';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';

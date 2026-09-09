@@ -1,12 +1,11 @@
-import type { Theme } from '@porsche-design-system/components-react/ssr';
 import { PToast, useToastManager } from '@porsche-design-system/components-react/ssr';
-import { type JSX, useEffect } from 'react';
+import { useEffect } from 'react';
 
-export const Toast = ({ text, theme }: { text: string; theme?: Theme }): JSX.Element => {
+export const Toast = ({ text }: { text: string }) => {
   const { addMessage } = useToastManager();
   useEffect(() => {
     addMessage({ text });
   }, [addMessage, text]);
 
-  return <PToast theme={theme} />;
+  return <PToast />;
 };

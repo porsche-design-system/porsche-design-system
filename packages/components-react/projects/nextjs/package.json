@@ -13,6 +13,7 @@
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'next start'",
     "build": "npm run build-app",
     "build-app": "next build",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "npm run test:e2e && npm run test:vrt",
     "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
