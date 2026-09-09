@@ -9,16 +9,12 @@ export const getAriaSort = (sort: TableHeadCellSort): AriaAttributes['aria-sort'
 
 export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(dir) ? 'desc' : 'asc');
 
-export const internalTHCell = {
-  toggleDirection,
-};
-
 export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): CustomEventInit<TableUpdateEventDetail> => ({
   bubbles: true,
   detail: {
     ...sort,
     active: true,
-    direction: sort.active ? internalTHCell.toggleDirection(sort.direction) : sort.direction,
+    direction: sort.active ? toggleDirection(sort.direction) : sort.direction,
   },
 });
 

@@ -25,17 +25,13 @@ export const resetSelectedOption = (options: SelectOption[]): void => {
   }
 };
 
-export const internalSelect = {
-  resetSelectedOption,
-};
-
 export const selectOptionByValue = (
   host: HTMLElement,
   options: SelectOption[],
   value: string | number | null | undefined,
   preventWarning = false
 ): SelectOption | null => {
-  internalSelect.resetSelectedOption(options);
+  resetSelectedOption(options);
   // Strict equality matching: a host value of `null`, `undefined`, a `string` or a `number`
   // only matches an option whose `value` is strictly equal (same type and value). No
   // cross-type coercion (e.g. number `5` does NOT match string `"5"`), and `null` and
@@ -59,7 +55,7 @@ export const selectOptionByValue = (
 };
 
 export const setSelectedOption = (options: SelectOption[], selectedOption: SelectOption): void => {
-  internalSelect.resetSelectedOption(options);
+  resetSelectedOption(options);
   selectedOption.selected = true;
   forceUpdate(selectedOption);
 };
