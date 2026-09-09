@@ -1,6 +1,11 @@
 import { vi } from 'vitest';
 import { handleButtonEvent, improveButtonHandlingForCustomElement } from './button-handling';
 
+// runs even when a test fails, so fake timers can never leak into the next one
+afterEach(() => {
+  vi.useRealTimers();
+});
+
 describe('improveButtonHandlingForCustomElement()', () => {
   it('should on click of the element create and click a submit button within the surrounding form', async () => {
     vi.useFakeTimers();
@@ -28,8 +33,6 @@ describe('improveButtonHandlingForCustomElement()', () => {
 
     expect(fakeButton.getAttribute('type')).toBe('submit');
     expect(fakeButtonClickSpy).toHaveBeenCalled();
-
-    vi.useRealTimers();
   });
 });
 
@@ -73,8 +76,6 @@ describe('handleButtonEvent()', () => {
     expect(formAppendChildSpy).toHaveBeenCalledWith(fakeButton);
     expect(fakeButtonClickSpy).toHaveBeenCalled();
     expect(fakeButtonRemoveSpy).toHaveBeenCalled();
-
-    vi.useRealTimers();
   });
 
   it('should not create a submit button if disabled', () => {
