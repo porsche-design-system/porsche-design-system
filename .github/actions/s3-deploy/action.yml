@@ -20,13 +20,25 @@ inputs:
     description: 'CloudFront distribution to invalidate.'
     required: true
   delete:
-    description: 'Whether to remove objects that are absent from the source. Only ever "true" where the assumed role is allowed to delete: `pr-*` for previews, `nightly/*` for the nightly build. Published `v*` slugs are append-only.'
+    description: 'Remove objects absent from the source. Only for moving slugs: PR previews, nightly, version-branch previews and stable major aliases. Never for pinned versions.'
     required: false
     default: 'false'
   algolia:
     description: 'Whether to update the Algolia search index or not.'
     required: false
     default: 'false'
+  sha:
+    description: 'Commit that produced the source (may differ from the workflow commit during manual recovery).'
+    required: false
+    default: ${{ github.sha }}
+  wait-for-invalidation:
+    description: 'Wait until CloudFront has finished invalidating the deployed slug.'
+    required: false
+    default: 'false'
+  working-directory:
+    description: 'Checkout used to generate the Algolia index.'
+    required: false
+    default: '.'
 
 runs:
   using: 'composite'
@@ -52,10 +64,11 @@ runs:
     # Provenance marker, one per slug, carried over from the GitHub Pages deployment. Nothing reads
     # it programmatically, but it is the only way to tell which commit a published slug came from.
     - name: 'Stamp'
-      run: echo "${GITHUB_SHA}" > "${SOURCE}/version.md"
+      run: echo "${SOURCE_SHA}" > "${SOURCE}/version.md"
       shell: bash
       env:
         SOURCE: ${{ inputs.source }}
+        SOURCE_SHA: ${{ inputs.sha }}
 
     # Three passes, mirroring the one-off migration that seeded this bucket. Any divergence would
     # republish the existing objects with different metadata, so the passes, the two cache classes
@@ -170,27 +183,36 @@ runs:
         BUCKET: ${{ inputs.bucket }}
         DELETE: ${{ inputs.delete }}
 
-    # A wildcard counts as a single invalidation path, and the first 1,000 per month are free, so
-    # one per deploy is well inside the free allowance.
+    # Invalidate both the bare slug's redirect and its content.
     - name: 'Invalidate'
       run: |
         set -euo pipefail
-        aws cloudfront create-invalidation \
+        invalidation_id=$(aws cloudfront create-invalidation \
           --distribution-id "$DISTRIBUTION_ID" \
-          --paths "/${SLUG}/*" \
-          --query 'Invalidation.Id' --output text
+          --paths "/${SLUG}" "/${SLUG}/*" \
+          --query 'Invalidation.Id' --output text)
+        if [[ "$WAIT" == 'true' ]]; then
+          aws cloudfront wait invalidation-completed \
+            --distribution-id "$DISTRIBUTION_ID" --id "$invalidation_id"
+        fi
       shell: bash
       env:
         SLUG: ${{ inputs.slug }}
         DISTRIBUTION_ID: ${{ inputs.distribution-id }}
+        WAIT: ${{ inputs.wait-for-invalidation }}
 
     # Host-agnostic: the index is named after the slug and its records hold relative paths, so
     # nothing here has to change when the site moves to its final hostname.
     - name: 'Algolia'
       if: inputs.algolia == 'true'
+      working-directory: ${{ inputs.working-directory }}
       run: |
-        result=$(P_CURRENT_BRANCH="${SLUG}" npm run updateAlgolia)
-        echo $result | sed "s/.*updateAlgoliaIndex\\.ts' //g"
+        set -euo pipefail
+        P_CURRENT_BRANCH="${SLUG}" \
+          "$GITHUB_ACTION_PATH/../../../node_modules/.bin/tsx" \
+          --tsconfig packages/storefront/tsconfig.json \
+          "$GITHUB_ACTION_PATH/../../../packages/storefront/scripts/updateAlgoliaIndex.tsx" \
+          packages/storefront
       shell: bash
       env:
         SLUG: ${{ inputs.slug }}

@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       storefront-slug:
-        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the key prefix in the origin bucket; must match the storefront basePath baked in at build time.'
+        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4-preview"). Used as the key prefix in the origin bucket; must match the storefront basePath baked in at build time.'
         required: true
         type: string
       storefront-algolia:
@@ -26,7 +26,7 @@ on:
         description: 'IAM role assumed via OIDC to publish pull request previews. Confined to `pr-*` prefixes.'
         required: true
       aws-storefront-release-role-arn:
-        description: 'IAM role assumed via OIDC to publish nightly and version slugs. Cannot delete outside `nightly/`.'
+        description: 'IAM role assumed via OIDC to publish nightly and version-branch previews. Cannot delete pinned versions.'
         required: true
       aws-storefront-bucket:
         description: 'Storefront origin bucket.'
@@ -191,7 +191,7 @@ jobs:
           delete: 'true'
   storefront-release:
     name: 'Storefront (Release)'
-    # `nightly` and the major-version aliases. The `storefront` environment is not decoration: its
+    # `nightly` and version-branch previews, never stable major aliases. The `storefront` environment is not decoration: its
     # name is the OIDC trust condition of `storefront-release-deployer`, and the branch policy on it
     # (`main`, `v[0-9]`, `v[0-9][0-9]` — mirroring `on.push.branches` in contribution.yml) is the
     # only thing standing between an arbitrary branch and that role.
@@ -220,10 +220,8 @@ jobs:
           slug: ${{ inputs.storefront-slug }}
           bucket: ${{ secrets.aws-storefront-bucket }}
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
-          # Every deploy here is a complete rebuild of a *moving* slug - `nightly`, or a major-version
-          # alias like `v4` - so it replaces the previous one wholesale, exactly as the GitHub Pages
-          # deployment did when it removed the target folder before copying. Without this, a page
-          # removed from the storefront would stay reachable under `/v4/` forever.
+          # Moving development slugs replace removed pages. Stable major slugs are
+          # updated only by release.yml, never by a branch deployment.
           #
           # Pinned versions are a different matter and are published by release.yml without
           # `--delete`; the release role cannot delete under `v4.7.0/` either, so a buggy pipeline

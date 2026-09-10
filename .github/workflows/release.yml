@@ -15,7 +15,7 @@ on:
         description: 'npm access token for publishing to npmjs.org'
         required: true
       aws-storefront-release-role-arn:
-        description: 'IAM role assumed via OIDC to publish the released version slug. Cannot delete outside `nightly/`.'
+        description: 'IAM role assumed via OIDC to publish pinned releases and replace major aliases. Cannot delete pinned versions.'
         required: true
       aws-storefront-bucket:
         description: 'Storefront origin bucket.'
@@ -56,6 +56,9 @@ jobs:
       options: --user 1001
     outputs:
       components-version: ${{ steps.get_npm_version.outputs.version }}
+      is-stable: ${{ steps.source.outputs.is-stable }}
+      is-release-commit: ${{ steps.source.outputs.is-release-commit }}
+      major-slug: ${{ steps.source.outputs.major-slug }}
       is-components-js-published: ${{ steps.is_components_js_published_check.outputs.is-published }}
       is-components-angular-published: ${{ steps.is_components_angular_published_check.outputs.is-published }}
       is-components-react-published: ${{ steps.is_components_react_published_check.outputs.is-published }}
@@ -63,11 +66,17 @@ jobs:
       is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+      - uses: ./.github/actions/install
       - name: 'Get Package Version'
         id: get_npm_version
         uses: ./.github/actions/get-local-package-version
         with:
           path: 'packages/components'
+      - name: 'Resolve release source'
+        id: source
+        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/storefront-release.ts source
       - name: 'Check if "@porsche-design-system/components-js" version is published'
         id: is_components_js_published_check
         uses: ./.github/actions/is-npm-package-published
@@ -103,6 +112,9 @@ jobs:
     needs: check-publication-status
     if: ${{ needs.check-publication-status.outputs.is-components-js-published == 'false' }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: release-npm-components-js
+      cancel-in-progress: false
     permissions:
       id-token: write
     steps:
@@ -127,6 +139,9 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: release-npm-components-angular
+      cancel-in-progress: false
     permissions:
       id-token: write
     steps:
@@ -151,6 +166,9 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: release-npm-components-react
+      cancel-in-progress: false
     permissions:
       id-token: write
     steps:
@@ -175,6 +193,9 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: release-npm-components-vue
+      cancel-in-progress: false
     permissions:
       id-token: write
     steps:
@@ -200,22 +221,16 @@ jobs:
       - npm-components-angular
       - npm-components-react
       - npm-components-vue
-    # Only run if at least one npm package was actually published in this run.
-    # Skipped jobs (already-published) shouldn't block the release, but we also
-    # don't want to release if every publish job was skipped or failed. The
-    # action itself skips pre-release versions (no -rc/-beta/-alpha suffix).
-    # Creating the release also creates the underlying git tag at github.sha.
+    # Allow recovery when npm succeeded in an earlier attempt, but only from the
+    # release commit. Ordinary commits retaining its version must never create a tag.
     if: |
-      always()
+      !cancelled()
       && needs.check-publication-status.result == 'success'
-      && (needs.npm-components-js.result == 'success'
-          || needs.npm-components-angular.result == 'success'
-          || needs.npm-components-react.result == 'success'
-          || needs.npm-components-vue.result == 'success')
-      && needs.npm-components-js.result != 'failure'
-      && needs.npm-components-angular.result != 'failure'
-      && needs.npm-components-react.result != 'failure'
-      && needs.npm-components-vue.result != 'failure'
+      && needs.check-publication-status.outputs.is-release-commit == 'true'
+      && (needs.npm-components-js.result == 'success' || needs.npm-components-js.result == 'skipped')
+      && (needs.npm-components-angular.result == 'success' || needs.npm-components-angular.result == 'skipped')
+      && (needs.npm-components-react.result == 'success' || needs.npm-components-react.result == 'skipped')
+      && (needs.npm-components-vue.result == 'success' || needs.npm-components-vue.result == 'skipped')
     runs-on: ubuntu-latest
     permissions:
       contents: write # Required to create GitHub releases (and the underlying tag) via the GitHub API
@@ -235,9 +250,16 @@ jobs:
     needs:
       - check-publication-status
       - github-release
+      - storefront
+      - storefront-major
     # A pre-release, an already-released tag and a draft all report false, and a failed
     # `github-release` leaves this empty.
-    if: ${{ needs.github-release.outputs.created == 'true' }}
+    if: >-
+      !cancelled()
+      && needs.github-release.outputs.created == 'true'
+      && (needs.storefront.result == 'success' || needs.storefront.result == 'skipped')
+      && needs.storefront-major.result == 'success'
+      && needs.storefront-major.outputs.promoted == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read # read the release being announced
@@ -252,7 +274,10 @@ jobs:
   storefront:
     name: 'Storefront'
     needs: check-publication-status
-    if: ${{ needs.check-publication-status.outputs.is-storefront-published == 'false' }}
+    if: >-
+      needs.check-publication-status.outputs.is-storefront-published == 'false'
+      && (needs.check-publication-status.outputs.is-stable == 'false'
+          || needs.check-publication-status.outputs.is-release-commit == 'true')
     runs-on: ubuntu-latest
     # The `storefront` environment is the OIDC trust condition of `storefront-release-deployer`, and
     # the branch policy on it (`main`, `v[0-9]`, `v[0-9][0-9]`) is what keeps that role out of reach
@@ -289,11 +314,55 @@ jobs:
           slug: 'v${{ needs.check-publication-status.outputs.components-version }}'
           bucket: ${{ secrets.aws-storefront-bucket }}
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
-          # A pinned version is published once and never changes, unlike the moving `nightly` and
-          # `v4` slugs that deploy.yml replaces wholesale. The role cannot delete under a pinned
+          # A pinned version is published once and never changes, unlike the moving major aliases.
+          # The role cannot delete under a pinned
           # prefix either, so this holds by command and by policy.
           delete: 'false'
           algolia: 'true'
         env:
+          ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
+          ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
+  storefront-major:
+    name: 'Storefront (Major)'
+    needs:
+      - check-publication-status
+      - github-release
+      - storefront
+    if: >-
+      !cancelled()
+      && needs.check-publication-status.outputs.is-release-commit == 'true'
+      && needs.github-release.result == 'success'
+      && (needs.storefront.result == 'success' || needs.storefront.result == 'skipped')
+    runs-on: ubuntu-latest
+    environment: storefront
+    permissions:
+      contents: read
+      id-token: write
+    # Shared with manual recovery, across main and maintenance branches.
+    # Resolve the newest release only after acquiring this lock.
+    concurrency:
+      group: storefront-major-${{ needs.check-publication-status.outputs.major-slug }}
+      cancel-in-progress: false
+    outputs:
+      promoted: ${{ steps.promote.outputs.promoted }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Assume AWS role'
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
+          aws-region: eu-central-1
+      - name: 'Promote major storefront'
+        id: promote
+        uses: ./.github/actions/promote-major-storefront
+        with:
+          bucket: ${{ secrets.aws-storefront-bucket }}
+          distribution-id: ${{ secrets.aws-storefront-distribution-id }}
+        env:
+          GH_TOKEN: ${{ github.token }}
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}

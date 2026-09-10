@@ -60,22 +60,71 @@ release can be published.
 
 ### Deploy
 
-1. Create a new housekeeping branch from `main` e.g. `git checkout -b housekeeping/components-v4.0.0`
-2. Adapt PDS version in Stackblitz framework `package.json` files, e.g.
-   `./packages/storefront/projects/stackblitz/src/(js/angular/react/vue)/package.json` to the newly released stable
-   version.
-3. Create new pull request from e.g. `housekeeping/components-v4.0.0` into `main` branch and merge
-4. Create pull request from `main` into `v4` branch
-5. Merge into `v4` branch (then CI/CD will trigger a Storefront deployment automatically)
+Deployment is part of the release pipeline; **do not merge `main` into a version branch to update the documentation**.
+The pipeline publishes the pinned storefront (`/v4.7.0/`), then rebuilds only the storefront from the same release
+commit with the major base path (`/v4/`). Both URLs have their own Algolia index. Major promotion waits for CloudFront
+invalidation before the release is announced.
+
+The major comes from the package version, not the branch. Only a stable release commit can update a major URL. Ordinary
+commits that retain an already-published package version, release candidates and older release reruns cannot replace it.
+Major promotions share a concurrency group across automatic releases and manual recovery; after acquiring the lock they
+resolve the latest stable tag for that major again.
+
+Include documentation and example dependency changes in the release PR. `prepare-release` updates the StackBlitz
+workspace package versions along with the other packages. Subsequent housekeeping commits update development previews,
+not released documentation.
+
+### Branches and documentation URLs
+
+| Source                         | Storefront URL                |
+| ------------------------------ | ----------------------------- |
+| Push to `main`                 | `/nightly/`                   |
+| Push to version branch `v5`    | `/v5-preview/`                |
+| Internal pull request          | `/pr-<number>/`               |
+| Stable release `4.7.0`         | `/v4.7.0/` and `/v4/`         |
+| Release candidate `5.0.0-rc.0` | `/v5.0.0-rc.0/`, never `/v5/` |
+
+Keep the next major on its version branch while `main` continues the current major. For example, develop v5 on `v5` and
+use `/v5-preview/`. When ready, merge it into `main` and release `5.0.0`; the release creates `/v5/` without changing
+`/v4/`. Subsequent v4 maintenance releases can come from `v4` and update only the v4 documentation. Stable npm versions
+below the current `latest` are published with `latest-v<major>` instead, so a maintenance release does not move `latest`
+backwards.
+
+The hosting root redirect (`/` to the current major) still needs to be changed when a new major becomes current. Version
+branches must also carry the updated contribution/release workflows before they are used: an old workflow can still
+deploy directly to its branch's major URL.
+
+### Recovery and rollout
+
+If a release fails, use **Re-run failed jobs**. A failed major deployment can run again even if npm packages, the GitHub
+Release and the pinned storefront already exist. GitHub Release creation also tolerates npm publication having finished
+in a previous attempt.
+
+For an existing release such as `v4.7.0`, run **Promote Storefront** on `main` with that tag, or:
+
+```bash
+gh workflow run promote-storefront.yml --ref main -f tag=v4.7.0
+```
+
+This uses the current deployment automation but checks out and builds the tagged release sources, requires the pinned
+storefront to exist, and promotes only the newest stable tag in that major. It does not publish npm packages, alter the
+pinned storefront, or announce the release again. The deployed `version.md` records the release commit, not the workflow
+commit. It is also the recovery path once a release run's build artifacts have expired.
+
+Deploy the hosting permission update for replacing `v<major>-preview/` prefixes **before** enabling these workflows.
+Keep deletion forbidden for full-version prefixes. After merging the workflow change, use the manual promotion above to
+bring the existing `/v4/` up to date; an ordinary merge retaining version `4.7.0` deliberately does not promote itself.
 
 ### Communicate
 
 Nothing to do by hand. The `notify-release` job in `.github/workflows/release.yml` announces the release in the public
-Porsche Design System Slack channel as soon as the GitHub Release exists, built from the release notes themselves rather
-than from the changelog, so the two cannot disagree.
+Porsche Design System Slack channel after the GitHub Release and both documentation URLs are ready, built from the
+release notes themselves rather than from the changelog, so the two cannot disagree.
 
 Only stable releases are announced, and only when the run actually created a release — a pre-release, or a re-run of a
-job whose release already existed, posts nothing. See
+job whose release already existed, posts nothing. Prefer **Re-run failed jobs** to preserve the original successful
+release-creation output when recovering a documentation failure. If all jobs were rerun and the announcement was
+therefore skipped, use **Notify Release Published** after the documentation is ready. See
 [`docs/runbooks/slack-notifications.md`](runbooks/slack-notifications.md) for the message, the Slack side and how to
 change either.
 

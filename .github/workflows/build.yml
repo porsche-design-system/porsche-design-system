@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       storefront-slug:
-        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the storefront basePath so the build matches the bucket key prefix produced by the deploy workflow.'
+        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4-preview"). Used as the storefront basePath so the build matches the bucket key prefix produced by the deploy workflow.'
         required: true
         type: string
 
@@ -30,6 +30,7 @@ jobs:
       # Guards against npm pruning platform-specific native bindings from the lockfile
       # (https://github.com/npm/cli/issues/4828) — see docs/dependencies.md.
       - run: npm run npm:verify-lock
+      - run: npm run test:unit:scripts
   # Gates the builds so a type error stops a build being attempted. Install and typecheck only, with no
   # codegen and no compilation, so it runs on a fresh checkout. Packages whose sources only exist after a
   # build are gated inside their own `build` instead, not here.
