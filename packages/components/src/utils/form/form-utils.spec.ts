@@ -106,7 +106,7 @@ describe('updateCounter()', () => {
 });
 
 describe('debounce', () => {
-  let mockFn: Mock<(...args: any[]) => void>;
+  let mockFn: Mock<(value: string) => void>;
 
   beforeEach(() => {
     mockFn = vi.fn();

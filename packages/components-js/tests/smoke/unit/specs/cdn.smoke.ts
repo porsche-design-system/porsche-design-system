@@ -23,14 +23,15 @@ import { COMPONENT_CHUNKS_MANIFEST } from '../../../../projects/components-wrapp
 describe('cdn', () => {
   let fetchCounter = 0;
 
-  function unpackObject(obj: Object): any {
-    return typeof obj === 'object' ? Object.values(obj).map(unpackObject) : typeof obj === 'string' ? obj : null;
-  }
+  type Manifest = { [key: string]: string | number | Manifest | undefined };
 
-  function objectToFlatArray(object: Object): string[] {
-    return unpackObject(object)
-      .flat(3)
-      .filter((x: string | null) => x !== null);
+  function objectToFlatArray(manifest: Manifest): string[] {
+    return Object.values(manifest).flatMap((value) => {
+      if (typeof value === 'string') {
+        return [value];
+      }
+      return typeof value === 'object' && value !== null ? objectToFlatArray(value) : [];
+    });
   }
 
   function bulkRequestItems(chunks: string[], baseUrl: string): void {

@@ -151,7 +151,7 @@ export const removeAttribute = async (element: Locator, key: string): Promise<vo
 };
 
 export const getProperty = async <T>(locator: Locator, prop: string): Promise<T> => {
-  return locator.evaluate((el, prop: string) => (el as unknown as Record<string, any>)[prop], prop);
+  return locator.evaluate((el, prop: string) => (el as unknown as Record<string, T>)[prop], prop);
 };
 
 export const setProperty = async <T>(
@@ -162,7 +162,7 @@ export const setProperty = async <T>(
   await element.evaluate((el, { key, value }) => ((el as unknown as Record<string, unknown>)[key] = value), {
     key,
     value,
-  } as any);
+  });
 };
 
 export const getActiveElementTagNameInShadowRoot = async (element: Locator): Promise<string> => {

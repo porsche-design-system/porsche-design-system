@@ -9,15 +9,21 @@ type SerializedTarget = {
   id: string;
 };
 
+type EventStore<TDetail = unknown> = {
+  [key: `${string}Counter`]: number;
+  [key: `${string}Details`]: TDetail[];
+  [key: `${string}Targets`]: SerializedTarget[];
+};
+
 export const addEventListener = (locator: Locator, eventName: string): Promise<void> => {
   return locator.evaluate((el, evtName) => {
-    const counterKey = `${evtName}Counter`;
-    const detailsKey = `${evtName}Details`;
-    const targetsKey = `${evtName}Targets`;
-    const store = el as unknown as Record<string, any>;
+    const counterKey: `${string}Counter` = `${evtName}Counter`;
+    const detailsKey: `${string}Details` = `${evtName}Details`;
+    const targetsKey: `${string}Targets` = `${evtName}Targets`;
+    const store = el as unknown as EventStore;
 
     el.addEventListener(evtName, (e: Event) => {
-      const { detail, target } = e as CustomEvent & { target: HTMLElement };
+      const { detail, target } = e as CustomEvent<unknown> & { target: HTMLElement };
       const serializedTarget: SerializedTarget = {
         nodeName: target.nodeName,
         nodeValue: target.nodeValue,

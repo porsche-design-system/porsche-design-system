@@ -153,7 +153,7 @@ export const removeAttribute = async (element: Locator, key: string): Promise<vo
 };
 
 export const getProperty = async <T>(element: Locator, prop: string): Promise<keyof T> => {
-  return element.evaluate((el, prop: string) => (el as unknown as Record<string, any>)[prop], prop);
+  return element.evaluate((el, prop: string) => (el as unknown as Record<string, keyof T>)[prop], prop);
 };
 
 export const setProperty = async <T>(
@@ -164,7 +164,7 @@ export const setProperty = async <T>(
   await element.evaluate((el, { key, value }) => ((el as unknown as Record<string, unknown>)[key] = value), {
     key,
     value,
-  } as any);
+  });
 };
 
 export const getCssClasses = async (element: Locator): Promise<string> => {
