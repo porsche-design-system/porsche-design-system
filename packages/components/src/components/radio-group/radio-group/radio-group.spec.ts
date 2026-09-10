@@ -1,4 +1,5 @@
 import { vi } from 'vitest';
+import * as loggerUtils from '../../../utils/log/logger';
 import { RadioGroup } from './radio-group';
 import type { RadioGroupOption } from './radio-group-utils';
 import * as radioGroupUtils from './radio-group-utils';
@@ -51,6 +52,42 @@ describe('componentWillLoad', () => {
 
     component.componentWillLoad();
     expect(updateRadioGroupOptionsSpy).toHaveBeenCalledWith(component['radioGroupOptions'], component['value']);
+  });
+});
+
+describe('asynchronous options', () => {
+  it.each([false, true])('should reconcile options silently with an initial partial list=%p', (hasInitialOptions) => {
+    const component = initComponent();
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    const emit = vi.fn();
+    component.change = { emit };
+    component.value = 42;
+    const otherOption = Object.assign(document.createElement('p-radio-group-option'), { value: 7, selected: false });
+    if (hasInitialOptions) {
+      component.host.append(otherOption);
+    }
+
+    component.componentWillLoad();
+    component.host.append(otherOption);
+    component['onSlotChange']();
+    component.onValueChange();
+    expect(otherOption.selected).toBe(false);
+    expect(component.value).toBe(42);
+
+    const matchingOption = Object.assign(document.createElement('p-radio-group-option'), {
+      value: 42,
+      selected: false,
+    });
+    component.host.append(matchingOption);
+    component['onSlotChange']();
+    expect(matchingOption.selected).toBe(true);
+
+    matchingOption.remove();
+    component['onSlotChange']();
+    expect(otherOption.selected).toBe(false);
+    expect(component.value).toBe(42);
+    expect(emit).not.toHaveBeenCalled();
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 });
 
