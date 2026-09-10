@@ -8,12 +8,6 @@ inputs:
   distribution-id:
     description: 'Storefront CloudFront distribution.'
     required: true
-  source-directory:
-    description: 'Checkout of the release commit.'
-    default: '.'
-  build-dependencies:
-    description: 'Build from source instead of using restored production dependencies (manual recovery only).'
-    default: 'false'
 
 outputs:
   promoted:
@@ -26,20 +20,10 @@ runs:
     - name: 'Resolve promotion'
       id: resolve
       shell: bash
-      run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON "$GITHUB_ACTION_PATH/../../../scripts/storefront-release.ts" promotion "$SOURCE_DIRECTORY"
-      env:
-        SOURCE_DIRECTORY: ${{ inputs.source-directory }}
-    - name: 'Build release dependencies'
-      if: steps.resolve.outputs.promote == 'true' && inputs.build-dependencies == 'true'
-      shell: bash
-      working-directory: ${{ inputs.source-directory }}
-      run: npm ci && npm run build-prod
-      env:
-        NEXT_PUBLIC_BASE_PATH: ${{ steps.resolve.outputs.slug }}
+      run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON "$GITHUB_ACTION_PATH/../../../scripts/storefront-release.ts" promotion
     - name: 'Build major storefront'
-      if: steps.resolve.outputs.promote == 'true' && inputs.build-dependencies != 'true'
+      if: steps.resolve.outputs.promote == 'true'
       shell: bash
-      working-directory: ${{ inputs.source-directory }}
       run: npm run build:storefront
       env:
         NEXT_PUBLIC_BASE_PATH: ${{ steps.resolve.outputs.slug }}
@@ -47,12 +31,10 @@ runs:
       if: steps.resolve.outputs.promote == 'true'
       uses: ./.github/actions/s3-deploy
       with:
-        source: ${{ inputs.source-directory }}/packages/storefront/dist
+        source: ./packages/storefront/dist
         slug: ${{ steps.resolve.outputs.slug }}
-        sha: ${{ steps.resolve.outputs.sha }}
         bucket: ${{ inputs.bucket }}
         distribution-id: ${{ inputs.distribution-id }}
         delete: 'true'
         algolia: 'true'
         wait-for-invalidation: 'true'
-        working-directory: ${{ inputs.source-directory }}

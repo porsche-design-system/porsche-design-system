@@ -31,7 +31,8 @@ describe('release source CLI', () => {
   };
   const run = (mode = 'source', branch = 'main') => {
     const output = join(directory, 'output');
-    execFileSync(process.execPath, [resolve('scripts/storefront-release.ts'), mode, directory], {
+    execFileSync(process.execPath, [resolve('scripts/storefront-release.ts'), mode], {
+      cwd: directory,
       env: { ...process.env, GITHUB_OUTPUT: output, GITHUB_REF_NAME: branch },
       stdio: 'pipe',
       timeout: 10000,

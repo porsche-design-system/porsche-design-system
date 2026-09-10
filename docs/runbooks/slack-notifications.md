@@ -35,8 +35,7 @@ really created, so a pre-release, a draft, and a re-run of a job whose release a
 
 Use **Re-run failed jobs** after a documentation deployment failure so the original release-creation output remains
 available to the announcement job. If **Re-run all jobs** was used instead, the release already exists and the automatic
-announcement is suppressed; use the manual path below once the documentation is ready. **Promote Storefront** never
-posts an announcement.
+announcement is suppressed; use the manual path below once the documentation is ready.
 
 **The manual path** is `notify-release-published.yml`, run from the Actions tab with a tag. It exists for a release the
 pipeline did not announce — one created by hand, one recovered after CI missed it, or a draft somebody published.

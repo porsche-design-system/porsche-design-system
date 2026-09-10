@@ -49,9 +49,9 @@ function packageVersion(content: string): string {
   return pkg.version;
 }
 
-export function resolveStorefrontRelease(mode: string, source = '.'): Record<string, string | boolean> {
-  const git = (...args: string[]) => execFileSync('git', args, { cwd: source, encoding: 'utf8' }).trim();
-  const version = packageVersion(readFileSync(resolve(source, 'packages/components/package.json'), 'utf8'));
+export function resolveStorefrontRelease(mode: string): Record<string, string | boolean> {
+  const git = (...args: string[]) => execFileSync('git', args, { encoding: 'utf8' }).trim();
+  const version = packageVersion(readFileSync('packages/components/package.json', 'utf8'));
   const sha = git('rev-parse', 'HEAD');
   const major = semver.major(version);
   const tags = parseReleaseTags(git('ls-remote', '--tags', 'origin', `refs/tags/v${major}.*`));
@@ -89,13 +89,13 @@ export function resolveStorefrontRelease(mode: string, source = '.'): Record<str
     }
   }
   process.stdout.write(`${promote ? 'Promoting' : 'Not promoting'} ${version} at ${sha} to v${major}\n`);
-  return { promote, version, sha, slug: `v${major}` };
+  return { promote, slug: `v${major}` };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const output = process.env.GITHUB_OUTPUT;
   if (!output) throw new Error('GITHUB_OUTPUT is required');
-  const values = resolveStorefrontRelease(process.argv[2], process.argv[3]);
+  const values = resolveStorefrontRelease(process.argv[2]);
   appendFileSync(
     output,
     Object.entries(values)

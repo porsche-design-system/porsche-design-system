@@ -338,7 +338,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    # Shared with manual recovery, across main and maintenance branches.
+    # Serialize promotions across main and maintenance branches.
     # Resolve the newest release only after acquiring this lock.
     concurrency:
       group: storefront-major-${{ needs.check-publication-status.outputs.major-slug }}

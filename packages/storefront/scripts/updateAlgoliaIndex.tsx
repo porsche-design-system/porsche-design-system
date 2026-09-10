@@ -1,18 +1,15 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { pathToFileURL } from 'node:url';
 import { algoliasearch } from 'algoliasearch';
 import * as cheerio from 'cheerio';
 import type { AlgoliaRecord } from '@/components/search/Search';
-import type { Route, Routes } from '../src/sitemap';
+import { type Route, type Routes, sitemap } from '../src/sitemap';
 import { replaceAlgoliaIndex } from './replaceAlgoliaIndex';
-
-const sourceDirectory = path.resolve(process.argv[2] || '.');
 
 const extractContentAndSections = (
   route: Route
 ): { content: string; sections: { name: string; id: string; content: string }[] } => {
-  const filePath = path.join(sourceDirectory, 'dist', route.path, 'index.html');
+  const filePath = path.join('dist', route.path, 'index.html');
 
   let content = '';
   const sections: { name: string; id: string; content: string }[] = [];
@@ -174,10 +171,6 @@ const uploadAndOverrideRecords = async (records: AlgoliaRecord[]) => {
 };
 
 const updateAlgoliaIndex = async () => {
-  // Use the release checkout's routes and built pages, but current deployment tooling.
-  const { sitemap }: { sitemap: Routes } = await import(
-    pathToFileURL(path.join(sourceDirectory, 'src/sitemap.tsx')).href
-  );
   // Filter changelog since it's too big, the sections of the changelog page will still be included in the index
   const records = generateAlgoliaRecords(sitemap).filter((record) => record.objectID !== '/news/changelog');
 

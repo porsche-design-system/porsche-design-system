@@ -67,8 +67,8 @@ invalidation before the release is announced.
 
 The major comes from the package version, not the branch. Only a stable release commit can update a major URL. Ordinary
 commits that retain an already-published package version, release candidates and older release reruns cannot replace it.
-Major promotions share a concurrency group across automatic releases and manual recovery; after acquiring the lock they
-resolve the latest stable tag for that major again.
+Major promotions share a concurrency group across main and maintenance branches; after acquiring the lock they resolve
+the latest stable tag for that major again.
 
 Include documentation and example dependency changes in the release PR. `prepare-release` updates the StackBlitz
 workspace package versions along with the other packages. Subsequent housekeeping commits update development previews,
@@ -100,20 +100,10 @@ If a release fails, use **Re-run failed jobs**. A failed major deployment can ru
 Release and the pinned storefront already exist. GitHub Release creation also tolerates npm publication having finished
 in a previous attempt.
 
-For an existing release such as `v4.7.0`, run **Promote Storefront** on `main` with that tag, or:
-
-```bash
-gh workflow run promote-storefront.yml --ref main -f tag=v4.7.0
-```
-
-This uses the current deployment automation but checks out and builds the tagged release sources, requires the pinned
-storefront to exist, and promotes only the newest stable tag in that major. It does not publish npm packages, alter the
-pinned storefront, or announce the release again. The deployed `version.md` records the release commit, not the workflow
-commit. It is also the recovery path once a release run's build artifacts have expired.
-
 Deploy the hosting permission update for replacing `v<major>-preview/` prefixes **before** enabling these workflows.
-Keep deletion forbidden for full-version prefixes. After merging the workflow change, use the manual promotion above to
-bring the existing `/v4/` up to date; an ordinary merge retaining version `4.7.0` deliberately does not promote itself.
+Keep deletion forbidden for full-version prefixes. Major URLs update automatically during stable releases; no separate
+manual deployment workflow is needed. An ordinary merge retaining an already-released version deliberately does not
+promote itself.
 
 ### Communicate
 

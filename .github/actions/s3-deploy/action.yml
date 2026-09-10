@@ -27,18 +27,10 @@ inputs:
     description: 'Whether to update the Algolia search index or not.'
     required: false
     default: 'false'
-  sha:
-    description: 'Commit that produced the source (may differ from the workflow commit during manual recovery).'
-    required: false
-    default: ${{ github.sha }}
   wait-for-invalidation:
     description: 'Wait until CloudFront has finished invalidating the deployed slug.'
     required: false
     default: 'false'
-  working-directory:
-    description: 'Checkout used to generate the Algolia index.'
-    required: false
-    default: '.'
 
 runs:
   using: 'composite'
@@ -64,11 +56,10 @@ runs:
     # Provenance marker, one per slug, carried over from the GitHub Pages deployment. Nothing reads
     # it programmatically, but it is the only way to tell which commit a published slug came from.
     - name: 'Stamp'
-      run: echo "${SOURCE_SHA}" > "${SOURCE}/version.md"
+      run: echo "${GITHUB_SHA}" > "${SOURCE}/version.md"
       shell: bash
       env:
         SOURCE: ${{ inputs.source }}
-        SOURCE_SHA: ${{ inputs.sha }}
 
     # Three passes, mirroring the one-off migration that seeded this bucket. Any divergence would
     # republish the existing objects with different metadata, so the passes, the two cache classes
@@ -205,14 +196,9 @@ runs:
     # nothing here has to change when the site moves to its final hostname.
     - name: 'Algolia'
       if: inputs.algolia == 'true'
-      working-directory: ${{ inputs.working-directory }}
       run: |
         set -euo pipefail
-        P_CURRENT_BRANCH="${SLUG}" \
-          "$GITHUB_ACTION_PATH/../../../node_modules/.bin/tsx" \
-          --tsconfig packages/storefront/tsconfig.json \
-          "$GITHUB_ACTION_PATH/../../../packages/storefront/scripts/updateAlgoliaIndex.tsx" \
-          packages/storefront
+        P_CURRENT_BRANCH="${SLUG}" npm run updateAlgolia
       shell: bash
       env:
         SLUG: ${{ inputs.slug }}
