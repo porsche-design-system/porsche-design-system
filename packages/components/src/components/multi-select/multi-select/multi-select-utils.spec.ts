@@ -175,7 +175,7 @@ describe('setSelectedOptions', () => {
     expect(consoleWarnMock).not.toHaveBeenCalled();
   });
 
-  it.each<string[] | number[] | null | undefined>([null, undefined, [], [''], ['missing'], [0]])(
+  it.each<[string[] | number[] | null | undefined]>([[null], [undefined], [[]], [['']], [['missing']], [[0]]])(
     'should deselect without warning when value=%p has no matches',
     (value) => {
       const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
