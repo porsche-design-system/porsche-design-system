@@ -254,12 +254,12 @@ jobs:
       - storefront-major
     # A pre-release, an already-released tag and a draft all report false, and a failed
     # `github-release` leaves this empty.
+    # A successful major job may intentionally leave a newer release in place.
     if: >-
       !cancelled()
       && needs.github-release.outputs.created == 'true'
       && (needs.storefront.result == 'success' || needs.storefront.result == 'skipped')
       && needs.storefront-major.result == 'success'
-      && needs.storefront-major.outputs.promoted == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read # read the release being announced
@@ -343,8 +343,6 @@ jobs:
     concurrency:
       group: storefront-major-${{ needs.check-publication-status.outputs.major-slug }}
       cancel-in-progress: false
-    outputs:
-      promoted: ${{ steps.resolve.outputs.promote }}
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install
