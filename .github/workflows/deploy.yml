@@ -188,8 +188,8 @@ jobs:
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
           # A preview should mirror its branch exactly, and the role may delete under `pr-*`.
           delete: 'true'
-  storefront-release:
-    name: 'Storefront (Release)'
+  storefront-branch:
+    name: 'Storefront (Nightly / Branch Preview)'
     # `nightly` and version-branch previews, never stable major aliases. The `storefront` environment is not decoration: its
     # name is the OIDC trust condition of `storefront-release-deployer`, and the branch policy on it
     # (`main`, `v[0-9]`, `v[0-9][0-9]` — mirroring `on.push.branches` in contribution.yml) is the
@@ -226,8 +226,8 @@ jobs:
           # still cannot unpublish a release.
           delete: 'true'
   storefront-algolia:
-    name: 'Algolia (Storefront)'
-    needs: storefront-release
+    name: 'Algolia (Nightly / Branch Preview)'
+    needs: storefront-branch
     if: github.event_name == 'push' && inputs.storefront-algolia == 'true'
     runs-on: ubuntu-latest
     steps:
