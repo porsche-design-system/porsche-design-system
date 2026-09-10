@@ -225,8 +225,8 @@ jobs:
           # `--delete`; the release role cannot delete under `v4.7.0/` either, so a buggy pipeline
           # still cannot unpublish a release.
           delete: 'true'
-  storefront-algolia:
-    name: 'Algolia (Nightly / Branch Preview)'
+  storefront-nightly-and-preview-algolia:
+    name: 'Algolia (/nightly or /v<major>-preview)'
     needs: storefront-nightly-and-preview
     if: github.event_name == 'push' && inputs.storefront-algolia == 'true'
     runs-on: ubuntu-latest
