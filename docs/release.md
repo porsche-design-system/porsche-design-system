@@ -89,7 +89,8 @@ Keep the next major on its version branch while `main` continues the current maj
 use `/v5-preview/`. When ready, merge it into `main` and release `5.0.0`; the release creates `/v5/` without changing
 `/v4/`. Subsequent v4 maintenance releases can come from `v4` and update only the v4 documentation. Stable npm versions
 below the current `latest` are published with `latest-v<major>` instead, so a maintenance release does not move `latest`
-backwards.
+backwards. A release that is also older than its own `latest-v<major>` moves no dist-tag at all and stays installable by
+exact version.
 
 The hosting root redirect (`/` to the current major) still needs to be changed when a new major becomes current. Version
 branches must also carry the updated contribution/release workflows before they are used: an old workflow can still
