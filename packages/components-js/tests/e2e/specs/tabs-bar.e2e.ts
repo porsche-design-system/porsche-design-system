@@ -20,6 +20,13 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
+// The counter only exists once the evaluate below sets it, hence optional.
+declare global {
+  interface Window {
+    pdsEventCounter?: number;
+  }
+}
+
 type InitOptions = {
   amount?: number;
   activeTabIndex?: number;
@@ -648,11 +655,10 @@ test.describe('events', () => {
   });
 
   test('should not dispatch update event initially with valid activeTabIndex', async ({ page }) => {
-    const COUNTER_KEY = 'pdsEventCounter';
     await setContentWithDesignSystem(page, ''); // empty page
 
     // render p-tabs with attached event listener at once
-    await page.evaluate((COUNTER_KEY: string) => {
+    await page.evaluate(() => {
       const el = document.createElement('p-tabs-bar');
 
       Array.from(Array(2)).forEach((_, i) => {
@@ -662,17 +668,18 @@ test.describe('events', () => {
       });
 
       // count events in browser
-      (window as any)[COUNTER_KEY] = 0;
-      el.addEventListener('update', () => (window as any)[COUNTER_KEY]++);
+      window.pdsEventCounter = 0;
+      el.addEventListener('update', () => {
+        window.pdsEventCounter = (window.pdsEventCounter ?? 0) + 1;
+      });
 
       document.body.appendChild(el);
-    }, COUNTER_KEY);
+    });
 
     await waitForStencilLifecycle(page);
 
     // retrieve counted events from browser
-    const getCountedEvents = (): Promise<number> =>
-      page.evaluate((COUNTER_KEY: string) => (window as any)[COUNTER_KEY], COUNTER_KEY);
+    const getCountedEvents = (): Promise<number> => page.evaluate(() => window.pdsEventCounter ?? 0);
 
     expect(await getCountedEvents()).toBe(0);
 

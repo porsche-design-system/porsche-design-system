@@ -24,5 +24,5 @@ export const setProperty = async <T>(
   await element.evaluate((el, { key, value }) => ((el as unknown as Record<string, unknown>)[key] = value), {
     key,
     value,
-  } as any);
+  });
 };
