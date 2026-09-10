@@ -276,7 +276,7 @@ jobs:
           slack-bot-token: ${{ secrets.slack-bot-token }}
           slack-channel-id: ${{ secrets.slack-release-channel-id }}
   storefront-exact-version:
-    name: 'Storefront (/v${{ needs.check-publication-status.outputs.components-version }})'
+    name: 'Storefront (/v<major>.<minor>.<patch>)'
     needs: check-publication-status
     if: >-
       needs.check-publication-status.outputs.is-storefront-published == 'false'
@@ -324,7 +324,7 @@ jobs:
           delete: 'false'
           wait-for-invalidation: 'true'
   storefront-exact-version-algolia:
-    name: 'Algolia (/v${{ needs.check-publication-status.outputs.components-version }})'
+    name: 'Algolia (/v<major>.<minor>.<patch>)'
     needs:
       - check-publication-status
       - storefront-exact-version
@@ -355,7 +355,7 @@ jobs:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
   storefront-major-version:
-    name: 'Storefront (/${{ needs.check-publication-status.outputs.major-slug }})'
+    name: 'Storefront (/v<major>)'
     needs:
       - check-publication-status
       - github-release
@@ -408,7 +408,7 @@ jobs:
           delete: 'true'
           wait-for-invalidation: 'true'
   storefront-major-version-algolia:
-    name: 'Algolia (/${{ needs.check-publication-status.outputs.major-slug }})'
+    name: 'Algolia (/v<major>)'
     needs:
       - check-publication-status
       - storefront-major-version
