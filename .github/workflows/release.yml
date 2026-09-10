@@ -251,7 +251,7 @@ jobs:
       - check-publication-status
       - github-release
       - storefront-npm-version
-      - storefront-major
+      - storefront-major-version
       - storefront-algolia
       - storefront-major-algolia
     # A pre-release, an already-released tag and a draft all report false, and a failed
@@ -261,7 +261,7 @@ jobs:
       !cancelled()
       && needs.github-release.outputs.created == 'true'
       && (needs.storefront-npm-version.result == 'success' || needs.storefront-npm-version.result == 'skipped')
-      && needs.storefront-major.result == 'success'
+      && needs.storefront-major-version.result == 'success'
       && needs.storefront-algolia.result == 'success'
       && needs.storefront-major-algolia.result == 'success'
     runs-on: ubuntu-latest
@@ -354,8 +354,8 @@ jobs:
           P_CURRENT_BRANCH: v${{ needs.check-publication-status.outputs.components-version }}
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
-  storefront-major:
-    name: 'Storefront (Major)'
+  storefront-major-version:
+    name: 'Storefront (/${{ needs.check-publication-status.outputs.major-slug }})'
     needs:
       - check-publication-status
       - github-release
@@ -411,10 +411,10 @@ jobs:
     name: 'Algolia (Major Storefront)'
     needs:
       - check-publication-status
-      - storefront-major
+      - storefront-major-version
     if: >-
       !cancelled()
-      && needs.storefront-major.result == 'success'
+      && needs.storefront-major-version.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: read
