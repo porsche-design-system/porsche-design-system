@@ -1,5 +1,5 @@
 import { forceUpdate } from '@stencil/core';
-import { consoleWarn, getTagNameWithoutPrefix, type SelectComponentsDropdownDirection } from '../../../utils';
+import type { SelectComponentsDropdownDirection } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 
@@ -30,10 +30,8 @@ export const internalSelect = {
 };
 
 export const selectOptionByValue = (
-  host: HTMLElement,
   options: SelectOption[],
-  value: string | number | null | undefined,
-  preventWarning = false
+  value: string | number | null | undefined
 ): SelectOption | null => {
   internalSelect.resetSelectedOption(options);
   // Strict equality matching: a host value of `null`, `undefined`, a `string` or a `number`
@@ -46,13 +44,6 @@ export const selectOptionByValue = (
     optionToSelect.selected = true;
     forceUpdate(optionToSelect);
     return optionToSelect;
-  }
-
-  if (value !== undefined && value !== null && !preventWarning) {
-    consoleWarn(
-      `The provided value: ${value} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
-      host
-    );
   }
 
   return null;

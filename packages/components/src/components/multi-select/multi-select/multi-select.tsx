@@ -213,7 +213,7 @@ export class MultiSelect {
     // When setting initial value the watcher gets called before the options are defined
     if (this.multiSelectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
-        this.selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value, !!this.filterSlot);
+        this.selectedOptions = selectOptionsByValue(this.multiSelectOptions, this.value);
       }
       this.preventOptionUpdate = false;
     }
@@ -282,7 +282,7 @@ export class MultiSelect {
     this.setFormValue();
     this.updateOptions();
     // Use initial value to set options
-    this.selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value);
+    this.selectedOptions = selectOptionsByValue(this.multiSelectOptions, this.value);
   }
 
   public componentDidLoad(): void {
@@ -452,7 +452,7 @@ export class MultiSelect {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    const selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value, !!this.filterSlot);
+    const selectedOptions = selectOptionsByValue(this.multiSelectOptions, this.value);
     // Add new matching options if there is any but still keep the old ones as selected
     selectedOptions.forEach((option) => {
       if (!this.selectedOptions.some((o) => o.value === option.value)) {
