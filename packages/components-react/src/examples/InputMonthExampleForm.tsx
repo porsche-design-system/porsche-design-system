@@ -1,18 +1,18 @@
 import {
-  type InputMonthInputEventDetail,
   PButton,
   PInputMonth,
+  type PInputMonthInputEvent,
   type PInputMonthProps,
   PText,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const InputMonthExampleFormPage = () => {
-  const [form, setForm] = useState({ myInputMonth: '' });
+  const [form, setForm] = useState<{ myInputMonth: PInputMonthProps['value'] }>({ myInputMonth: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: CustomEvent<InputMonthInputEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PInputMonthProps;
+  const onInput = (e: PInputMonthInputEvent) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [name]: value,

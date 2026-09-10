@@ -1,9 +1,8 @@
-import type { InputSearchInputEventDetail } from '@porsche-design-system/components-react';
-import { PInputSearch } from '@porsche-design-system/components-react/ssr';
+import { PInputSearch, type PInputSearchElement } from '@porsche-design-system/components-react/ssr';
 import { forwardRef, useState } from 'react';
 import { type UseSearchBoxProps, useInstantSearch, useSearchBox } from 'react-instantsearch';
 
-export const SearchInput = forwardRef<HTMLInputElement, UseSearchBoxProps>((props, ref) => {
+export const SearchInput = forwardRef<PInputSearchElement, UseSearchBoxProps>((props, ref) => {
   const { query, refine } = useSearchBox({ ...props, queryHook });
   const { status } = useInstantSearch();
   const [inputValue, setInputValue] = useState(query);
@@ -29,7 +28,7 @@ export const SearchInput = forwardRef<HTMLInputElement, UseSearchBoxProps>((prop
         placeholder="What are you looking for?"
         value={inputValue}
         onInput={(event) => {
-          setQuery(((event as CustomEvent<InputSearchInputEventDetail>).detail.target as HTMLInputElement).value);
+          setQuery((event.detail.target as HTMLInputElement).value);
         }}
       ></PInputSearch>
       <span hidden={!isSearchStalled}>Searching…</span>

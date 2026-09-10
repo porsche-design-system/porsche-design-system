@@ -4,6 +4,7 @@ import {
   generateReactMarkup,
   generateReactProperties,
 } from '../../../src/utils/generator/generateReactMarkup';
+import type { ElementConfig } from '../../../src/utils/generator/generator';
 import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateReactMarkup()', () => {
@@ -19,9 +20,48 @@ describe('generateReactMarkup()', () => {
     const output = generateReactMarkup(carouselTestConfig, {});
     expect(output).toMatchSnapshot();
   });
+
+  it('deduplicates event type imports across top-level and nested components', () => {
+    const accordion: ElementConfig<'p-accordion'> = {
+      tag: 'p-accordion',
+      events: {
+        onUpdate: { target: 'p-accordion', prop: 'open', eventValueKey: 'open' },
+      },
+    };
+    const { imports } = generateReactMarkup([accordion, { tag: 'div', children: [accordion] }], {});
+
+    expect(imports?.match(/type PAccordionUpdateEvent/g)).toHaveLength(1);
+  });
 });
 
 describe('generateReactControlledScript()', () => {
+  it('requires an explicit payload type for non-PDS detail-based handlers', () => {
+    expect(() =>
+      generateReactControlledScript('div', [['onUpdate', { target: 'div', prop: 'open', eventValueKey: 'open' }]], {})
+    ).toThrow('Missing eventType for div.onUpdate with eventValueKey "open"');
+  });
+
+  it('preserves explicit payload types for non-PDS detail-based handlers', () => {
+    const { eventHandler, types } = generateReactControlledScript(
+      'div',
+      [
+        [
+          'onUpdate',
+          {
+            target: 'div',
+            prop: 'open',
+            eventValueKey: 'open',
+            eventType: 'AccordionUpdateEventDetail',
+          },
+        ],
+      ],
+      {}
+    );
+
+    expect(types).toEqual(['AccordionUpdateEventDetail']);
+    expect(eventHandler).toContain('(e: CustomEvent<AccordionUpdateEventDetail>)');
+  });
+
   it('should return correct selector & eventHandler for direct value', () => {
     const { states, eventHandler } = generateReactControlledScript(
       'p-flyout',
@@ -45,7 +85,7 @@ describe('generateReactControlledScript()', () => {
     );
   });
   it('should return correct selector & eventHandler for event value boolean', () => {
-    const { states, eventHandler } = generateReactControlledScript(
+    const { states, eventHandler, types } = generateReactControlledScript(
       'p-accordion',
       [
         [
@@ -66,22 +106,23 @@ describe('generateReactControlledScript()', () => {
     );
     expect(states).toMatchInlineSnapshot('"  const [open, setOpen] = useState(true);"');
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
+      `"  const onUpdate = (e: PAccordionUpdateEvent) => {
     setOpen(e.detail.open);
   }"`
     );
+    expect(types).toEqual(['PAccordionUpdateEvent']);
   });
   it('should return correct selector & eventHandler for event value string', () => {
     const { states, eventHandler } = generateReactControlledScript(
-      'p-flyout-multilevel',
+      'p-drilldown',
       [
         [
           'onUpdate',
           {
-            target: 'p-flyout-multilevel',
+            target: 'p-drilldown',
             prop: 'activeIdentifier',
             eventValueKey: 'activeIdentifier',
-            eventType: 'FlyoutMultilevelUpdateEventDetail',
+            eventType: 'DrilldownUpdateEventDetail',
           },
         ],
       ],
@@ -93,7 +134,7 @@ describe('generateReactControlledScript()', () => {
     );
     expect(states).toMatchInlineSnapshot('"  const [activeIdentifier, setActiveIdentifier] = useState("id-1");"');
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onUpdate = (e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) => {
+      `"  const onUpdate = (e: PDrilldownUpdateEvent) => {
     setActiveIdentifier(e.detail.activeIdentifier);
   }"`
     );
@@ -108,7 +149,7 @@ describe('generateReactControlledScript()', () => {
             target: 'p-link-tile-product',
             prop: 'liked',
             eventValueKey: 'liked',
-            eventType: 'LinkTileProductLikeEvent',
+            eventType: 'LinkTileProductLikeEventDetail',
             negateValue: true,
           },
         ],
@@ -117,10 +158,32 @@ describe('generateReactControlledScript()', () => {
     );
     expect(states).toMatchInlineSnapshot('"  const [liked, setLiked] = useState(undefined);"');
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onLike = (e: CustomEvent<LinkTileProductLikeEvent>) => {
+      `"  const onLike = (e: PLinkTileProductLikeEvent) => {
     setLiked(!e.detail.liked);
   }"`
     );
+  });
+
+  it('derives concrete event names from the component instead of a shared detail type', () => {
+    const { eventHandler, types } = generateReactControlledScript(
+      'p-modal',
+      [
+        [
+          'onDismiss',
+          {
+            target: 'p-modal',
+            prop: 'dismissReason',
+            eventValueKey: 'reason',
+            eventType: 'DialogDismissEventDetail',
+          },
+        ],
+      ],
+      {}
+    );
+
+    expect(types).toEqual(['PModalDismissEvent']);
+    expect(eventHandler).toContain('(e: PModalDismissEvent)');
+    expect(eventHandler).toContain('setDismissReason(e.detail.reason)');
   });
 
   it('should return correct selector & eventHandler when target is not current tagName', () => {

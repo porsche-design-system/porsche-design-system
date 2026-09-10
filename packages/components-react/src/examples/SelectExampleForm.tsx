@@ -1,19 +1,19 @@
 import {
   PButton,
   PSelect,
+  type PSelectChangeEvent,
   PSelectOption,
   type PSelectProps,
   PText,
-  type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const SelectExampleFormPage = () => {
-  const [form, setForm] = useState({ mySelect: undefined });
+  const [form, setForm] = useState<{ mySelect: PSelectProps['value'] }>({ mySelect: undefined });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PSelectProps;
+  const onChange = (e: PSelectChangeEvent) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [name]: value,

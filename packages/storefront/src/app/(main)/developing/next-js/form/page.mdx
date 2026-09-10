@@ -34,15 +34,30 @@ While all custom form components update their internal state automatically, you 
 the `value` or `checked` props along with `input`, `change`, and `blur` events. This approach allows flexible
 integration with any form library.
 
-```javascript
-const [value, setValue] = useState<PInputTextProps['value']>('');
+```tsx
+'use client';
 
-const onInput = (e: CustomEvent<InputTextInputEventDetail>) => {
-  setValue(e.target.value);
-};
-...
-<PInputText name="myInputText" label="Some Label" value={value} onInput={onInput} />
+import { useState } from 'react';
+import {
+  PInputText,
+  type PInputTextInputEvent,
+  type PInputTextProps,
+} from '@porsche-design-system/components-react/ssr';
+
+export function TextField() {
+  const [value, setValue] = useState<PInputTextProps['value']>('');
+
+  const onInput = (e: PInputTextInputEvent) => {
+    setValue(e.target.value);
+  };
+
+  return <PInputText name="myInputText" label="Some Label" value={value} onInput={onInput} />;
+}
 ```
+
+See [Typed Events and Element Refs](/developing/react/advanced#typed-events-and-element-refs) for inline handler
+inference, typed refs, and the distinction between the host `target` and the event `detail`. Use the `/ssr` import path
+for these examples in Next.js.
 
 ## Native Form Submission
 

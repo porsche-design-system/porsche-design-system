@@ -2,6 +2,7 @@ import {
   type FlyoutDismissEventDetail,
   PButton,
   PFlyout,
+  type PFlyoutDismissEvent,
   PHeading,
   PText,
 } from '@porsche-design-system/components-react';
@@ -13,7 +14,7 @@ export const FlyoutExamplePage = () => {
   const onOpen = useCallback(() => {
     setIsFlyoutOpen(true);
   }, []);
-  const onDismiss = useCallback((e: CustomEvent<FlyoutDismissEventDetail>) => {
+  const onDismiss = useCallback((e: PFlyoutDismissEvent) => {
     setDismissReason(e.detail.reason);
     setIsFlyoutOpen(false);
   }, []);

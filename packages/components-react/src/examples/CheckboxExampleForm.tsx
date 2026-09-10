@@ -1,18 +1,19 @@
 import {
-  type CheckboxChangeEventDetail,
   PButton,
   PCheckbox,
-  PCheckboxProps,
+  type PCheckboxChangeEvent,
+  type PCheckboxProps,
   PText,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const CheckboxExampleFormPage = () => {
-  const [form, setForm] = useState({ myCheckbox: false });
+  const [form, setForm] = useState<{ myCheckbox: PCheckboxProps['checked'] }>({ myCheckbox: false });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onChange = (e: CustomEvent<CheckboxChangeEventDetail>) => {
-    const { name, checked } = e.target as HTMLElement & PCheckboxProps;
+  const onChange = (e: PCheckboxChangeEvent) => {
+    const { name, checked } = e.target;
+    if (name === undefined) return;
     setForm((prev) => ({
       ...prev,
       [name]: checked,

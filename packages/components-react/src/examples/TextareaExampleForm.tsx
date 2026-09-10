@@ -2,17 +2,17 @@ import {
   PButton,
   PText,
   PTextarea,
+  type PTextareaInputEvent,
   type PTextareaProps,
-  type TextareaInputEventDetail,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const TextareaExampleFormPage = () => {
-  const [form, setForm] = useState({ myTextarea: '' });
+  const [form, setForm] = useState<{ myTextarea: PTextareaProps['value'] }>({ myTextarea: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: CustomEvent<TextareaInputEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PTextareaProps;
+  const onInput = (e: PTextareaInputEvent) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [name]: value,

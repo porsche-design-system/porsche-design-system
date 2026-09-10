@@ -1,7 +1,7 @@
 import {
-  type CanvasSidebarStartUpdateEventDetail,
   PButton,
   PCanvas,
+  type PCanvasSidebarStartUpdateEvent,
   PHeading,
   PText,
 } from '@porsche-design-system/components-react';
@@ -15,7 +15,7 @@ export const CanvasExamplePage = () => {
   );
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState<boolean>(false);
 
-  const onSidebarStartUpdate = useCallback((e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
+  const onSidebarStartUpdate = useCallback((e: PCanvasSidebarStartUpdateEvent) => {
     setIsSidebarStartOpen(e.detail.open);
   }, []);
   const onSidebarEndOpen = useCallback(() => {

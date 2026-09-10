@@ -14,6 +14,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- **React**: components with custom events now export host element and complete event types from both the main and
+  `/ssr` entry points, e.g. `PInputNumberElement` and `PInputNumberInputEvent`. Named handlers can use
+  `(event: PInputNumberInputEvent) => event.target.value`; element types also infer custom events in `addEventListener`
+  and `removeEventListener`. For event names shared with native events, capture-enabled or dynamically configured
+  listeners include the native event type and require narrowing before accessing custom payloads. Existing
+  `...EventDetail` types and ref typings are unchanged; use an exported host type explicitly for typed object refs
+  ([#4711](https://github.com/porsche-design-system/porsche-design-system/pull/4711))
+
+### Fixed
+
+- **React**: custom-event handlers in the main and `/ssr` entry points exposed an untyped `target`, requiring unsafe
+  casts such as `HTMLElement & PInputNumberProps` that could resolve to `never`. Inline handlers now infer the host
+  properties without casts; existing property unions and event payloads are unchanged
+  ([#4711](https://github.com/porsche-design-system/porsche-design-system/pull/4711))
+- **Breaking Change** **React**: custom `onBlur` callbacks in the main and `/ssr` entry points conflicted with React's
+  synthetic focus-event typing. Callbacks now receive the component's actual custom event; replace React `FocusEvent`
+  annotations with the matching event type, e.g. `PInputNumberBlurEvent`
+  ([#4711](https://github.com/porsche-design-system/porsche-design-system/pull/4711))
+
 ## [4.7.0] - 2026-09-09
 
 ## [4.7.0-rc.0] - 2026-09-09

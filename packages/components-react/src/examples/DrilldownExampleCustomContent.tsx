@@ -5,6 +5,7 @@ import {
   PDrilldown,
   PDrilldownItem,
   PDrilldownLink,
+  type PDrilldownUpdateEvent,
   PLink,
   PModelSignature,
 } from '@porsche-design-system/components-react';
@@ -22,7 +23,7 @@ export const DrilldownExampleCustomContentPage = () => {
     setIsDrilldownOpen(false);
   }, []);
   const onUpdate = useCallback(
-    (e: CustomEvent<DrilldownUpdateEventDetail>) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
+    (e: PDrilldownUpdateEvent) => setDrilldownActiveIdentifier(e.detail.activeIdentifier),
     []
   );
 

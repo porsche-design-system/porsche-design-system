@@ -7,7 +7,7 @@ export const metadata = {
 
 # React
 
-<TableOfContents headings={['Global Theme', 'Prefixing']} />
+<TableOfContents headings={['Global Theme', 'Typed Events and Element Refs', 'Prefixing']} />
 
 ## Global Theme
 
@@ -22,6 +22,41 @@ settings, add the `.scheme-light`, `.scheme-dark` or `.scheme-light-dark` CSS cl
 element. This applies the selected theme to all child elements.
 
 Learn more in the [Theme](/must-know/theme) section.
+
+## Typed Events and Element Refs
+
+For components with custom events, use the exported event type for named handlers and the element type for DOM refs.
+Props types describe JSX properties, not DOM elements. These types are available from
+`@porsche-design-system/components-react` and `@porsche-design-system/components-react/ssr`.
+
+```tsx
+import { useRef, useState } from 'react';
+import {
+  PInputNumber,
+  type PInputNumberElement,
+  type PInputNumberInputEvent,
+  type PInputNumberProps,
+} from '@porsche-design-system/components-react';
+
+export function Quantity() {
+  const inputRef = useRef<PInputNumberElement>(null);
+  const [value, setValue] = useState<PInputNumberProps['value']>('');
+
+  const handleInput = (event: PInputNumberInputEvent) => {
+    setValue(event.target.value);
+  };
+
+  return <PInputNumber ref={inputRef} name="quantity" label="Quantity" value={value} onInput={handleInput} />;
+}
+```
+
+Inline handlers infer the event type automatically, e.g. `onInput={(event) => setValue(event.target.value)}`.
+`event.target` and the typed ref refer to the PDS host, not its inner native input. `event.detail` contains the
+component's event payload; for this input event, it is the original native `InputEvent`, not a React synthetic event.
+
+Specify the element type explicitly for refs; unannotated callback refs infer `HTMLElement | null`. Typed element refs
+also infer custom events in `addEventListener` and `removeEventListener`. Capture listeners for names shared with native
+events must handle both native and custom events.
 
 ## Prefixing
 

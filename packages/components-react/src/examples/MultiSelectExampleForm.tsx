@@ -1,19 +1,19 @@
 import {
-  type MultiSelectChangeEventDetail,
   PButton,
   PMultiSelect,
+  type PMultiSelectChangeEvent,
   PMultiSelectOption,
   type PMultiSelectProps,
   PText,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const MultiSelectExampleFormPage = () => {
-  const [form, setForm] = useState({ myMultiSelect: [] });
+  const [form, setForm] = useState<{ myMultiSelect: PMultiSelectProps['value'] }>({ myMultiSelect: [] });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PMultiSelectProps;
+  const onChange = (e: PMultiSelectChangeEvent) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [name]: value,

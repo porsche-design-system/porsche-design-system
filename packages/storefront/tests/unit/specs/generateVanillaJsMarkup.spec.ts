@@ -110,6 +110,10 @@ describe('generateVanillaJSControlledScript()', () => {
 });
 
 describe('generateVanillaJsProperties()', () => {
+  it.each([-1, 0])('preserves the native tabindex attribute for tabIndex=%s', (tabIndex) => {
+    expect(generateVanillaJsProperties('a', { tabIndex }, [])).toBe(` tabindex="${tabIndex}"`);
+  });
+
   it('should generate correct properties', () => {
     const props = generateVanillaJsProperties(
       'p-button',

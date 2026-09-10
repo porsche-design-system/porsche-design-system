@@ -1,19 +1,22 @@
 import {
   PButton,
   PSegmentedControl,
+  type PSegmentedControlChangeEvent,
   PSegmentedControlItem,
   type PSegmentedControlProps,
   PText,
-  type SegmentedControlChangeEventDetail,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const SegmentedControlExampleFormPage = () => {
-  const [form, setForm] = useState({ mySegmentedControl: undefined });
+  const [form, setForm] = useState<{ mySegmentedControl: PSegmentedControlProps['value'] }>({
+    mySegmentedControl: undefined,
+  });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onChange = (e: CustomEvent<SegmentedControlChangeEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PSegmentedControlProps;
+  const onChange = (e: PSegmentedControlChangeEvent) => {
+    const { name, value } = e.target;
+    if (name === undefined) return;
     setForm((prev) => ({
       ...prev,
       [name]: value,

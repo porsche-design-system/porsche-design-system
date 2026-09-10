@@ -1,12 +1,12 @@
 import {
-  type InputSearchInputEventDetail,
   PIcon,
   PInputSearch,
+  type PInputSearchInputEvent,
   PSelect,
+  type PSelectChangeEvent,
   PSelectOption,
   type PSelectProps,
-  type SelectChangeEventDetail,
-  type SelectToggleEventDetail,
+  type PSelectToggleEvent,
 } from '@porsche-design-system/components-react';
 import { useCallback, useMemo, useRef, useState } from 'react';
 
@@ -80,17 +80,18 @@ export const SelectExampleAsyncFilter = () => {
 
   const debouncedFetch = useDebounce(fetchOptions, 400);
 
-  const onInput = (e: CustomEvent<InputSearchInputEventDetail>) => {
-    const term = (e.target as HTMLElement & { value: string }).value;
+  const onInput = (e: PInputSearchInputEvent) => {
+    const term = e.target.value;
+    if (typeof term !== 'string') return;
     setSearchValue(term);
     debouncedFetch(term.trim() || undefined);
   };
 
-  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
-    setValue((e.target as HTMLElement & { value: string }).value);
+  const onChange = (e: PSelectChangeEvent) => {
+    setValue(e.target.value);
   };
 
-  const onToggle = async (e: CustomEvent<SelectToggleEventDetail>) => {
+  const onToggle = async (e: PSelectToggleEvent) => {
     if (e.detail.open && !hasLoadedOnce.current) {
       fetchOptions(undefined, true);
     }
@@ -114,8 +115,8 @@ export const SelectExampleAsyncFilter = () => {
         autoComplete="off"
         onInput={onInput}
         // Prevent bubbling
-        onBlur={(e: any) => e.stopPropagation()}
-        onChange={(e: any) => e.stopPropagation()}
+        onBlur={(e) => e.stopPropagation()}
+        onChange={(e) => e.stopPropagation()}
       />
 
       {/* Persistent status announcer for assistive technologies (keep always in the DOM) */}

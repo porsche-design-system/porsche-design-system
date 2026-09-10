@@ -1,18 +1,18 @@
 import {
-  type InputWeekInputEventDetail,
   PButton,
   PInputWeek,
+  type PInputWeekInputEvent,
   type PInputWeekProps,
   PText,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const InputWeekExampleFormPage = () => {
-  const [form, setForm] = useState({ myInputWeek: '' });
+  const [form, setForm] = useState<{ myInputWeek: PInputWeekProps['value'] }>({ myInputWeek: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: CustomEvent<InputWeekInputEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PInputWeekProps;
+  const onInput = (e: PInputWeekInputEvent) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [name]: value,

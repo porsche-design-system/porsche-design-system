@@ -1,10 +1,10 @@
 import { cleanup, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { type JSX, useRef } from 'react';
+import { createRef, type JSX, type RefObject, useRef } from 'react';
 import { afterEach, beforeEach, describe, expect, it, test, vi } from 'vitest';
 import * as hooks from '../../../src/hooks';
-import { PButton } from '../../../src/public-api';
-import { getMergedClassName, skipPorscheDesignSystemCDNRequestsDuringTests } from '../../../src/utils';
+import { PButton, PInputNumber } from '../../../src/public-api';
+import { getMergedClassName, skipPorscheDesignSystemCDNRequestsDuringTests, syncRef } from '../../../src/utils';
 
 describe('getMergedClassName()', () => {
   test.each`
@@ -91,6 +91,72 @@ describe('syncRefs()', () => {
     await userEvent.click(button);
 
     expect(button.className).toBe(CLASS_NAME);
+  });
+
+  it('should preserve the element type and clear object refs on detach', () => {
+    const element = document.createElement('input');
+    const elementRef: RefObject<HTMLInputElement | undefined> = { current: undefined };
+    const forwardedRef = createRef<HTMLInputElement>();
+    const callback = syncRef(elementRef, forwardedRef);
+
+    callback(element);
+    expect(elementRef.current).toBe(element);
+    expect(forwardedRef.current).toBe(element);
+
+    callback(null);
+    expect(elementRef.current).toBeUndefined();
+    expect(forwardedRef.current).toBeNull();
+  });
+
+  it('should forward the component host to HTMLElement object refs and clear them on unmount', () => {
+    const ref = createRef<HTMLElement>();
+    const { container, unmount } = render(<PInputNumber name="quantity" ref={ref} />);
+
+    expect(ref.current).toBe(container.querySelector('p-input-number'));
+    expect(ref.current).not.toBeNull();
+    unmount();
+    expect(ref.current).toBeNull();
+  });
+
+  it('should forward the host and null to HTMLElement callback refs', () => {
+    const refs: (HTMLElement | null)[] = [];
+    const { container, unmount } = render(
+      <PInputNumber
+        name="quantity"
+        ref={(element) => {
+          refs.push(element);
+        }}
+      />
+    );
+
+    const element = container.querySelector('p-input-number');
+    expect(refs).toEqual([element]);
+    unmount();
+    expect(refs).toEqual([element, null]);
+  });
+
+  it('should forward the element and null to callback refs', () => {
+    const element = document.createElement('input');
+    const elementRef: RefObject<HTMLInputElement | undefined> = { current: undefined };
+    const forwardedRef = vi.fn<(element: HTMLInputElement | null) => void>();
+    const callback = syncRef(elementRef, forwardedRef);
+
+    callback(element);
+    callback(null);
+
+    expect(forwardedRef.mock.calls).toEqual([[element], [null]]);
+    expect(elementRef.current).toBeUndefined();
+  });
+
+  it('should synchronize the internal ref without a forwarded ref', () => {
+    const element = document.createElement('input');
+    const elementRef: RefObject<HTMLInputElement | undefined> = { current: undefined };
+    const callback = syncRef(elementRef, null);
+
+    callback(element);
+    expect(elementRef.current).toBe(element);
+    callback(null);
+    expect(elementRef.current).toBeUndefined();
   });
 });
 

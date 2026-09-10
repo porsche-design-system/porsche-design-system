@@ -8,6 +8,7 @@ import {
   PTableHeadCell,
   PTableHeadRow,
   PTableRow,
+  type PTableUpdateEvent,
   PText,
   type TableUpdateEventDetail,
 } from '@porsche-design-system/components-react';
@@ -117,7 +118,7 @@ export const TableExampleAdvancedPage = () => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 
-  const onUpdate = useCallback((e: CustomEvent<TableUpdateEventDetail>) => {
+  const onUpdate = useCallback((e: PTableUpdateEvent) => {
     const { id, direction } = e.detail as TableUpdateEventDetail & { id: keyof DataAdvanced };
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>

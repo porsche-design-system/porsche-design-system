@@ -37,7 +37,7 @@ export const generateReactMarkup = (
     .join('\n');
   const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
   const pdsComponents = new Set(results.flatMap(({ pdsComponents }) => pdsComponents));
-  const types = results.flatMap(({ types }) => types);
+  const types = [...new Set(results.flatMap(({ types }) => types))];
   const allImports = [...pdsComponents].sort();
   if (types.length > 0) {
     allImports.push(...types.map((t) => `type ${t}`));
@@ -125,8 +125,15 @@ export const generateReactControlledScript = (
   const eventHandler = eventEntries
     .map(([eventName, { prop, value, eventValueKey, eventType, negateValue, toggleValue }]) => {
       if (eventValueKey) {
-        eventType && types.push(eventType);
-        return `  const ${eventName} = (e: CustomEvent<${eventType}>) => {
+        const concreteEventType = tagName.startsWith('p-')
+          ? `${pascalCase(tagName)}${eventName.slice(2)}Event`
+          : undefined;
+        if (!concreteEventType && !eventType) {
+          throw new Error(`Missing eventType for ${tagName}.${eventName} with eventValueKey "${eventValueKey}"`);
+        }
+        const importedType = concreteEventType ?? eventType;
+        importedType && types.push(importedType);
+        return `  const ${eventName} = (e: ${concreteEventType ?? `CustomEvent<${eventType}>`}) => {
     set${pascalCase(prop)}(${negateValue ? '!' : ''}e.detail.${eventValueKey});
   }`;
       }

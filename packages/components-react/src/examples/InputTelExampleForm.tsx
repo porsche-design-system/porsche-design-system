@@ -1,18 +1,18 @@
 import {
-  type InputTelInputEventDetail,
   PButton,
   PInputTel,
+  type PInputTelInputEvent,
   type PInputTelProps,
   PText,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 export const InputTelExampleFormPage = () => {
-  const [form, setForm] = useState({ myInputTel: '' });
+  const [form, setForm] = useState<{ myInputTel: PInputTelProps['value'] }>({ myInputTel: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
-  const onInput = (e: CustomEvent<InputTelInputEventDetail>) => {
-    const { name, value } = e.target as HTMLElement & PInputTelProps;
+  const onInput = (e: PInputTelInputEvent) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [name]: value,

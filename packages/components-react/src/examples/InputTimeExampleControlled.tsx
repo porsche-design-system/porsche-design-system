@@ -1,6 +1,6 @@
 import {
-  type InputTimeInputEventDetail,
   PInputTime,
+  type PInputTimeInputEvent,
   type PInputTimeProps,
   PText,
 } from '@porsche-design-system/components-react';
@@ -9,18 +9,13 @@ import { useState } from 'react';
 export const InputTimeControlledExamplePage = () => {
   const [value, setValue] = useState<PInputTimeProps['value']>('');
 
-  const onInput = (e: CustomEvent<InputTimeInputEventDetail>) => {
-    setValue((e.detail.target as HTMLInputElement).value);
+  const onInput = (e: PInputTimeInputEvent) => {
+    setValue(e.target.value);
   };
 
   return (
     <>
-      <PInputTime
-        name="some-name"
-        label="Some Label"
-        value={value}
-        onInput={(e) => onInput(e as CustomEvent<InputTimeInputEventDetail>)}
-      />
+      <PInputTime name="some-name" label="Some Label" value={value} onInput={onInput} />
       <PText>Value: {value}</PText>
     </>
   );

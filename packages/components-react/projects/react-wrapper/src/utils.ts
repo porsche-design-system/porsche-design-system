@@ -1,4 +1,4 @@
-import type { ForwardedRef, MutableRefObject } from 'react';
+import type { ForwardedRef, RefObject } from 'react';
 
 const splitToArray = (str: string) => str.split(' ').filter((str) => str);
 
@@ -24,9 +24,10 @@ export const getMergedClassName = (
 };
 
 export const syncRef =
-  (elementRef: MutableRefObject<HTMLElement | undefined>, ref: ForwardedRef<HTMLElement>) =>
-  (el: HTMLElement): void => {
-    elementRef.current = el;
+  <T extends HTMLElement>(elementRef: RefObject<T | undefined>, ref: ForwardedRef<T>) =>
+  (el: T | null): void => {
+    // Internal refs use undefined for absence; React forwards null when the element is detached.
+    elementRef.current = el ?? undefined;
     if (typeof ref === 'function') {
       ref(el);
     } else if (ref !== null) {

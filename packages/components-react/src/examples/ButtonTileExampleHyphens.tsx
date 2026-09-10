@@ -1,11 +1,11 @@
-import { PButtonTile, PSelect, PSelectOption, SelectChangeEventDetail } from '@porsche-design-system/components-react';
-import { Property } from 'csstype';
+import { PButtonTile, PSelect, type PSelectChangeEvent, PSelectOption } from '@porsche-design-system/components-react';
+import type { Property } from 'csstype';
 import { useState } from 'react';
 
 export const ButtonTileExampleHyphensPage = () => {
   const [hyphens, setHyphens] = useState<Property.Hyphens>('auto');
 
-  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
+  const onChange = (e: PSelectChangeEvent) => {
     setHyphens(e.detail.value as Property.Hyphens);
   };
 

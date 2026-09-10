@@ -1,18 +1,17 @@
 import {
   PRadioGroup,
+  type PRadioGroupChangeEvent,
   PRadioGroupOption,
   type PRadioGroupProps,
   PText,
-  type RadioGroupChangeEventDetail,
 } from '@porsche-design-system/components-react';
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 
 export const RadioGroupExampleControlledPage = () => {
   const [selectedValue, setSelectedValue] = useState<PRadioGroupProps['value']>('a');
 
-  const onChange = (e: CustomEvent<RadioGroupChangeEventDetail> | FormEvent<{}>) => {
-    const input = e.target as HTMLElement & { value: string };
-    setSelectedValue(input.value);
+  const onChange = (e: PRadioGroupChangeEvent) => {
+    setSelectedValue(e.target.value);
   };
 
   const debugText = `Selected values: ${selectedValue}`;

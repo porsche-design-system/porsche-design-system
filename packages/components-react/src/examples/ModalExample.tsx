@@ -3,6 +3,7 @@ import {
   PButton,
   PHeading,
   PModal,
+  type PModalDismissEvent,
   PText,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
@@ -13,7 +14,7 @@ export const ModalExampleAccessibilityPage = () => {
   const onOpen = useCallback(() => {
     setIsModalOpen(true);
   }, []);
-  const onDismiss = useCallback((e: CustomEvent<ModalDismissEventDetail>) => {
+  const onDismiss = useCallback((e: PModalDismissEvent) => {
     setDismissReason(e.detail.reason);
     setIsModalOpen(false);
   }, []);
