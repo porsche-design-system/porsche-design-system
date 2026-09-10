@@ -1,9 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`should return correct jss styles 1`] = `
-{
-  "&([hidden])": {
-    "display": "none",
-  },
-}
-`;
