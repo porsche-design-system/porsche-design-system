@@ -115,7 +115,7 @@
     "typecheck:components-react": "npm run typecheck --workspace=@porsche-design-system/react",
     "typecheck:components-vue": "npm run typecheck --workspace=@porsche-design-system/vue",
     "typecheck:storefront": "npm run typecheck --workspace=@porsche-design-system/storefront",
-    "test:unit:scripts": "vitest run --config scripts/vitest.config.ts",
+    "test:unit:scripts": "vitest run --config .github/scripts/vitest.config.ts",
     "test:unit:tokens": "npm run test:unit --workspace=@porsche-design-system/tokens",
     "test:unit:styles": "npm run test:unit --workspace=@porsche-design-system/styles",
     "test:unit:styles:tailwindcss": "npm run test:unit:tailwindcss --workspace=@porsche-design-system/styles",

@@ -21,7 +21,7 @@ describe('npm release tags', () => {
 
   const publish = (version: string, latest: string) => {
     writeFileSync(join(directory, 'package/package.json'), JSON.stringify({ name: '@pds/test', version }));
-    execFileSync('bash', [resolve('.github/workflows/release-npm.sh'), 'package'], {
+    execFileSync('bash', [resolve('.github/scripts/release-npm.sh'), 'package'], {
       cwd: directory,
       env: {
         ...process.env,

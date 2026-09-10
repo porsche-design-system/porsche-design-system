@@ -76,7 +76,7 @@ jobs:
           path: 'packages/components'
       - name: 'Resolve release source'
         id: source
-        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/storefront-release.ts source
+        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON .github/scripts/storefront-release.ts source
       - name: 'Check if "@porsche-design-system/components-js" version is published'
         id: is_components_js_published_check
         uses: ./.github/actions/is-npm-package-published
@@ -126,9 +126,9 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: chmod +x ./.github/workflows/release-npm.sh
+      - run: chmod +x ./.github/scripts/release-npm.sh
       - name: 'Publish'
-        run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
+        run: ./.github/scripts/release-npm.sh packages/components-js/dist/components-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
@@ -153,9 +153,9 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: chmod +x ./.github/workflows/release-npm.sh
+      - run: chmod +x ./.github/scripts/release-npm.sh
       - name: 'Publish'
-        run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
+        run: ./.github/scripts/release-npm.sh packages/components-angular/dist/angular-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
@@ -180,9 +180,9 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: chmod +x ./.github/workflows/release-npm.sh
+      - run: chmod +x ./.github/scripts/release-npm.sh
       - name: 'Publish'
-        run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
+        run: ./.github/scripts/release-npm.sh packages/components-react/dist/react-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
@@ -207,9 +207,9 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: chmod +x ./.github/workflows/release-npm.sh
+      - run: chmod +x ./.github/scripts/release-npm.sh
       - name: 'Publish'
-        run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
+        run: ./.github/scripts/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
@@ -353,7 +353,7 @@ jobs:
           artifact: 'build-production'
       - name: 'Resolve promotion'
         id: resolve
-        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/storefront-release.ts promotion
+        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON .github/scripts/storefront-release.ts promotion
         env:
           GH_TOKEN: ${{ github.token }}
       - name: 'Build Storefront'

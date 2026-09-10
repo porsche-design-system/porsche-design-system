@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { replaceAlgoliaIndex } from '../packages/storefront/scripts/replaceAlgoliaIndex';
+import { replaceAlgoliaIndex } from './replaceAlgoliaIndex';
 
 const createClient = () => ({
   setSettings: vi.fn(async () => ({ taskID: 1, updatedAt: '2026-09-10T00:00:00Z' })),
