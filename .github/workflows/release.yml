@@ -252,7 +252,7 @@ jobs:
       - github-release
       - storefront-exact-version
       - storefront-major-version
-      - storefront-algolia
+      - storefront-exact-version-algolia
       - storefront-major-algolia
     # A pre-release, an already-released tag and a draft all report false, and a failed
     # `github-release` leaves this empty.
@@ -262,7 +262,7 @@ jobs:
       && needs.github-release.outputs.created == 'true'
       && (needs.storefront-exact-version.result == 'success' || needs.storefront-exact-version.result == 'skipped')
       && needs.storefront-major-version.result == 'success'
-      && needs.storefront-algolia.result == 'success'
+      && needs.storefront-exact-version-algolia.result == 'success'
       && needs.storefront-major-algolia.result == 'success'
     runs-on: ubuntu-latest
     permissions:
@@ -323,8 +323,8 @@ jobs:
           # prefix either, so this holds by command and by policy.
           delete: 'false'
           wait-for-invalidation: 'true'
-  storefront-algolia:
-    name: 'Algolia (Pinned Storefront)'
+  storefront-exact-version-algolia:
+    name: 'Algolia (/v${{ needs.check-publication-status.outputs.components-version }})'
     needs:
       - check-publication-status
       - storefront-exact-version
