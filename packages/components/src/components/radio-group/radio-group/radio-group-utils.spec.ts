@@ -68,10 +68,7 @@ describe('updateRadioGroupOptions()', () => {
     updateRadioGroupOptions(options, '2');
 
     expect(options.every((option) => !option.selected)).toBe(true);
-    expect(consoleWarnSpy).toHaveBeenCalledWith(
-      'The provided value is not included in the options of the radio group:',
-      '2'
-    );
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 
   it('should not match a string option when the provided value is a number of the same numeric content', () => {
@@ -81,10 +78,7 @@ describe('updateRadioGroupOptions()', () => {
     updateRadioGroupOptions(options, 2);
 
     expect(options.every((option) => !option.selected)).toBe(true);
-    expect(consoleWarnSpy).toHaveBeenCalledWith(
-      'The provided value is not included in the options of the radio group:',
-      '2'
-    );
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 
   it('should reset previously selected option without warning when value is null', () => {
@@ -111,19 +105,22 @@ describe('updateRadioGroupOptions()', () => {
     expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 
-  it('should warn when value does not match any option', () => {
-    const options = createOptions([{ value: 'a' }, { value: 'b' }]);
+  it.each(['unknown', '', 0])('should deselect without warning when value=%p has no match', (value) => {
+    const options = createOptions([{ value: 'a', selected: true }, { value: 'b' }]);
     const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
 
-    updateRadioGroupOptions(options, 'unknown');
+    updateRadioGroupOptions(options, value);
 
     options.forEach((option) => {
       expect(option.selected).toBe(false);
     });
-    expect(consoleWarnSpy).toHaveBeenCalledWith(
-      'The provided value is not included in the options of the radio group:',
-      'unknown'
-    );
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
+  });
+
+  it.each([0, ''])('should match a falsy option value %p', (value) => {
+    const options = createOptions([{ value }]);
+    updateRadioGroupOptions(options, value);
+    expect(options[0].selected).toBe(true);
   });
 
   it('should deselect the previously selected option when switching to a new matching value', () => {
