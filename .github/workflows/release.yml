@@ -250,7 +250,7 @@ jobs:
     needs:
       - check-publication-status
       - github-release
-      - storefront
+      - storefront-npm-version
       - storefront-major
       - storefront-algolia
       - storefront-major-algolia
@@ -260,7 +260,7 @@ jobs:
     if: >-
       !cancelled()
       && needs.github-release.outputs.created == 'true'
-      && (needs.storefront.result == 'success' || needs.storefront.result == 'skipped')
+      && (needs.storefront-npm-version.result == 'success' || needs.storefront-npm-version.result == 'skipped')
       && needs.storefront-major.result == 'success'
       && needs.storefront-algolia.result == 'success'
       && needs.storefront-major-algolia.result == 'success'
@@ -275,8 +275,8 @@ jobs:
           tag: v${{ needs.check-publication-status.outputs.components-version }}
           slack-bot-token: ${{ secrets.slack-bot-token }}
           slack-channel-id: ${{ secrets.slack-release-channel-id }}
-  storefront:
-    name: 'Storefront'
+  storefront-npm-version:
+    name: 'Storefront (/v${{ needs.check-publication-status.outputs.components-version }})'
     needs: check-publication-status
     if: >-
       needs.check-publication-status.outputs.is-storefront-published == 'false'
@@ -327,15 +327,15 @@ jobs:
     name: 'Algolia (Pinned Storefront)'
     needs:
       - check-publication-status
-      - storefront
+      - storefront-npm-version
     # Indexing is independent of the upload existence check, including on a full rerun.
     if: >-
       !cancelled()
       && needs.check-publication-status.result == 'success'
       && (needs.check-publication-status.outputs.is-stable == 'false'
           || needs.check-publication-status.outputs.is-release-commit == 'true')
-      && (needs.storefront.result == 'success'
-          || (needs.storefront.result == 'skipped'
+      && (needs.storefront-npm-version.result == 'success'
+          || (needs.storefront-npm-version.result == 'skipped'
               && needs.check-publication-status.outputs.is-storefront-published == 'true'))
     runs-on: ubuntu-latest
     permissions:
@@ -359,12 +359,12 @@ jobs:
     needs:
       - check-publication-status
       - github-release
-      - storefront
+      - storefront-npm-version
     if: >-
       !cancelled()
       && needs.check-publication-status.outputs.is-release-commit == 'true'
       && needs.github-release.result == 'success'
-      && (needs.storefront.result == 'success' || needs.storefront.result == 'skipped')
+      && (needs.storefront-npm-version.result == 'success' || needs.storefront-npm-version.result == 'skipped')
     runs-on: ubuntu-latest
     environment: storefront
     permissions:
