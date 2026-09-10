@@ -153,8 +153,8 @@ jobs:
       - run: npm run test:smoke:components-angular
       - run: npm run test:smoke:components-react
       - run: npm run test:smoke:components-vue
-  storefront-preview:
-    name: 'Storefront (Preview)'
+  storefront-pull-request:
+    name: 'Storefront (Pull Request)'
     # Previews assume `storefront-preview-deployer`, whose OIDC trust condition is the bare
     # `repo:…/porsche-design-system:pull_request` subject. Declaring a GitHub Environment here would
     # change the token's subject to `…:environment:<name>` and the role would refuse it — the preview
@@ -188,7 +188,7 @@ jobs:
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
           # A preview should mirror its branch exactly, and the role may delete under `pr-*`.
           delete: 'true'
-  storefront-branch:
+  storefront-nightly-and-preview:
     name: 'Storefront (Nightly / Branch Preview)'
     # `nightly` and version-branch previews, never stable major aliases. The `storefront` environment is not decoration: its
     # name is the OIDC trust condition of `storefront-release-deployer`, and the branch policy on it
@@ -227,7 +227,7 @@ jobs:
           delete: 'true'
   storefront-algolia:
     name: 'Algolia (Nightly / Branch Preview)'
-    needs: storefront-branch
+    needs: storefront-nightly-and-preview
     if: github.event_name == 'push' && inputs.storefront-algolia == 'true'
     runs-on: ubuntu-latest
     steps:
