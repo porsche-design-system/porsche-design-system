@@ -253,7 +253,7 @@ jobs:
       - storefront-exact-version
       - storefront-major-version
       - storefront-exact-version-algolia
-      - storefront-major-algolia
+      - storefront-major-version-algolia
     # A pre-release, an already-released tag and a draft all report false, and a failed
     # `github-release` leaves this empty.
     # A successful major job may intentionally leave a newer release in place.
@@ -263,7 +263,7 @@ jobs:
       && (needs.storefront-exact-version.result == 'success' || needs.storefront-exact-version.result == 'skipped')
       && needs.storefront-major-version.result == 'success'
       && needs.storefront-exact-version-algolia.result == 'success'
-      && needs.storefront-major-algolia.result == 'success'
+      && needs.storefront-major-version-algolia.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: read # read the release being announced
@@ -407,8 +407,8 @@ jobs:
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
           delete: 'true'
           wait-for-invalidation: 'true'
-  storefront-major-algolia:
-    name: 'Algolia (Major Storefront)'
+  storefront-major-version-algolia:
+    name: 'Algolia (/${{ needs.check-publication-status.outputs.major-slug }})'
     needs:
       - check-publication-status
       - storefront-major-version
