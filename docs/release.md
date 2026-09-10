@@ -63,7 +63,8 @@ release can be published.
 Deployment is part of the release pipeline; **do not merge `main` into a version branch to update the documentation**.
 The pipeline publishes the pinned storefront (`/v4.7.0/`), then rebuilds only the storefront from the same release
 commit with the major base path (`/v4/`). Both URLs have their own Algolia index. Major promotion waits for CloudFront
-invalidation before the release is announced.
+invalidation. Separate Algolia jobs index the pinned and major storefronts after deployment; the release announcement
+waits for both indexing outcomes.
 
 The major comes from the package version, not the branch. Only a stable release commit can update a major URL. Ordinary
 commits that retain an already-published package version, release candidates and older release reruns cannot replace it.
@@ -99,6 +100,18 @@ deploy directly to its branch's major URL.
 If a release fails, use **Re-run failed jobs**. A failed major deployment can run again even if npm packages, the GitHub
 Release and the pinned storefront already exist. GitHub Release creation also tolerates npm publication having finished
 in a previous attempt.
+
+Algolia failures can be retried independently with **Re-run failed jobs**, without rebuilding or uploading the
+storefront. Indexing restores the run's production build artifact; records use page text and relative routes rather than
+the build's base path. On **Re-run all jobs**, pinned indexing still runs when its already-published storefront skips
+uploading. Ordinary commits retaining a released version do not reindex its pinned documentation.
+
+Major indexing shares the deployment's per-major lock and rechecks the latest stable tag before writing, so retrying an
+older indexing job cannot replace a newer release's search index. An older maintenance release indexes only its pinned
+documentation if the major URL intentionally stays on a newer release.
+
+The pinned publication check still tests page availability, not upload completeness. This separation recovers indexing
+failures; it does not detect an interrupted upload where the homepage exists but other files are missing.
 
 Deploy the hosting permission update for replacing `v<major>-preview/` prefixes **before** enabling these workflows.
 Keep deletion forbidden for full-version prefixes. Major URLs update automatically during stable releases; no separate

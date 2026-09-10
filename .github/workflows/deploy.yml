@@ -167,8 +167,7 @@ jobs:
       id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
     steps:
       - uses: actions/checkout@v7
-      # No `install` step on purpose: only the Algolia step needs `node_modules`, and previews never
-      # index. The bin files `restore` fixes up come from the artifact, not from an install.
+      # No install needed for uploads. The bin files restore fixes come from the artifact.
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -203,7 +202,6 @@ jobs:
       id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
     steps:
       - uses: actions/checkout@v7
-      - uses: ./.github/actions/install # `node_modules` for the Algolia indexing step
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -227,8 +225,20 @@ jobs:
           # `--delete`; the release role cannot delete under `v4.7.0/` either, so a buggy pipeline
           # still cannot unpublish a release.
           delete: 'true'
-          # Algolia indexing flag is also resolved once in the caller (contribution.yml → context job).
-          algolia: ${{ inputs.storefront-algolia }}
+  storefront-algolia:
+    name: 'Algolia (Storefront)'
+    needs: storefront-release
+    if: github.event_name == 'push' && inputs.storefront-algolia == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Index storefront'
+        run: npm run updateAlgolia
         env:
+          P_CURRENT_BRANCH: ${{ inputs.storefront-slug }}
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}

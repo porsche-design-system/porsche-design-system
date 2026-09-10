@@ -252,6 +252,8 @@ jobs:
       - github-release
       - storefront
       - storefront-major
+      - storefront-algolia
+      - storefront-major-algolia
     # A pre-release, an already-released tag and a draft all report false, and a failed
     # `github-release` leaves this empty.
     # A successful major job may intentionally leave a newer release in place.
@@ -260,6 +262,8 @@ jobs:
       && needs.github-release.outputs.created == 'true'
       && (needs.storefront.result == 'success' || needs.storefront.result == 'skipped')
       && needs.storefront-major.result == 'success'
+      && needs.storefront-algolia.result == 'success'
+      && needs.storefront-major-algolia.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: read # read the release being announced
@@ -318,8 +322,36 @@ jobs:
           # The role cannot delete under a pinned
           # prefix either, so this holds by command and by policy.
           delete: 'false'
-          algolia: 'true'
+          wait-for-invalidation: 'true'
+  storefront-algolia:
+    name: 'Algolia (Pinned Storefront)'
+    needs:
+      - check-publication-status
+      - storefront
+    # Indexing is independent of the upload existence check, including on a full rerun.
+    if: >-
+      !cancelled()
+      && needs.check-publication-status.result == 'success'
+      && (needs.check-publication-status.outputs.is-stable == 'false'
+          || needs.check-publication-status.outputs.is-release-commit == 'true')
+      && (needs.storefront.result == 'success'
+          || (needs.storefront.result == 'skipped'
+              && needs.check-publication-status.outputs.is-storefront-published == 'true'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      # Records use relative routes and page text, not the build's basePath.
+      # This artifact is available even when pinned uploads are skipped on a full rerun.
+      - uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Index pinned storefront'
+        run: npm run updateAlgolia
         env:
+          P_CURRENT_BRANCH: v${{ needs.check-publication-status.outputs.components-version }}
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
   storefront-major:
@@ -374,8 +406,38 @@ jobs:
           bucket: ${{ secrets.aws-storefront-bucket }}
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
           delete: 'true'
-          algolia: 'true'
           wait-for-invalidation: 'true'
+  storefront-major-algolia:
+    name: 'Algolia (Major Storefront)'
+    needs:
+      - check-publication-status
+      - storefront-major
+    if: >-
+      !cancelled()
+      && needs.storefront-major.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    # Share the deployment lock and recheck eligibility: retrying an old index job
+    # must not overwrite the index of a newer release deployed in the meantime.
+    concurrency:
+      group: storefront-major-${{ needs.check-publication-status.outputs.major-slug }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Resolve promotion'
+        id: resolve
+        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON .github/scripts/storefront-release.ts promotion
         env:
+          GH_TOKEN: ${{ github.token }}
+      - name: 'Index major storefront'
+        if: steps.resolve.outputs.promote == 'true'
+        run: npm run updateAlgolia
+        env:
+          P_CURRENT_BRANCH: ${{ steps.resolve.outputs.slug }}
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}

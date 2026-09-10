@@ -23,10 +23,6 @@ inputs:
     description: 'Remove objects absent from the source. Only for moving slugs: PR previews, nightly, version-branch previews and stable major aliases. Never for pinned versions.'
     required: false
     default: 'false'
-  algolia:
-    description: 'Whether to update the Algolia search index or not.'
-    required: false
-    default: 'false'
   wait-for-invalidation:
     description: 'Wait until CloudFront has finished invalidating the deployed slug.'
     required: false
@@ -191,14 +187,3 @@ runs:
         SLUG: ${{ inputs.slug }}
         DISTRIBUTION_ID: ${{ inputs.distribution-id }}
         WAIT: ${{ inputs.wait-for-invalidation }}
-
-    # Host-agnostic: the index is named after the slug and its records hold relative paths, so
-    # nothing here has to change when the site moves to its final hostname.
-    - name: 'Algolia'
-      if: inputs.algolia == 'true'
-      run: |
-        set -euo pipefail
-        P_CURRENT_BRANCH="${SLUG}" npm run updateAlgolia
-      shell: bash
-      env:
-        SLUG: ${{ inputs.slug }}
