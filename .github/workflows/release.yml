@@ -344,25 +344,40 @@ jobs:
       group: storefront-major-${{ needs.check-publication-status.outputs.major-slug }}
       cancel-in-progress: false
     outputs:
-      promoted: ${{ steps.promote.outputs.promoted }}
+      promoted: ${{ steps.resolve.outputs.promote }}
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
+      - name: 'Resolve promotion'
+        id: resolve
+        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/storefront-release.ts promotion
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: 'Build Storefront'
+        if: steps.resolve.outputs.promote == 'true'
+        run: npm run build:storefront
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.resolve.outputs.slug }}
       - name: 'Assume AWS role'
+        if: steps.resolve.outputs.promote == 'true'
         uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
           aws-region: eu-central-1
-      - name: 'Promote major storefront'
-        id: promote
-        uses: ./.github/actions/promote-major-storefront
+      - name: 'Deploy (S3)'
+        if: steps.resolve.outputs.promote == 'true'
+        uses: ./.github/actions/s3-deploy
         with:
+          source: ./packages/storefront/dist
+          slug: ${{ steps.resolve.outputs.slug }}
           bucket: ${{ secrets.aws-storefront-bucket }}
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
+          delete: 'true'
+          algolia: 'true'
+          wait-for-invalidation: 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
