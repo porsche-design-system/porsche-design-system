@@ -2,7 +2,7 @@ import { type ConsoleMessage, type Locator, type Page } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 
 export const getElementProp = (el: Locator, prop: string): Promise<string> =>
-  el.evaluate((el, prop: string) => el[prop], prop);
+  el.evaluate((el, prop: string) => (el as unknown as Record<string, string>)[prop], prop);
 
 export const getOuterHTML = (el: Locator): Promise<string> => el.evaluate((el) => el.outerHTML);
 

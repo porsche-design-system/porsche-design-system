@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": ["vitest/globals", "@testing-library/jest-dom"]
+    "types": ["vitest/globals", "@testing-library/jest-dom", "@porsche-design-system/components"]
   },
   "include": ["tests/**/*.spec.ts", "tests/**/*.spec.tsx"]
 }

@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { screen } from '@porsche-design-system/components-js/testing';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
@@ -23,6 +24,7 @@ it('should expose its table to shadow queries', async () => {
   expect(screen.queryAllByRole('table')).toHaveLength(0);
   expect(screen.getAllByShadowRole('table')).toHaveLength(1);
 
-  const { shadowRoot } = document.querySelector('p-table');
+  const shadowRoot = document.querySelector('p-table')?.shadowRoot;
+  assertDefined(shadowRoot);
   expect(screen.getByShadowRole('table', { name: 'Some caption' })).toBe(shadowRoot.querySelector('div.table'));
 });

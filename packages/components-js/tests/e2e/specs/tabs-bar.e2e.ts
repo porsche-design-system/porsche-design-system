@@ -1,11 +1,11 @@
-import { expect, Locator, type Page, test } from '@playwright/test';
-import type { BreakpointCustomizable } from '@porsche-design-system/components';
+import { expect, type Page, test } from '@playwright/test';
+import type { BreakpointCustomizable, TabsBarSize } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,
   getAttribute,
   getConsoleErrorsAmount,
-  getElementPositions,
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
@@ -16,15 +16,21 @@ import {
   reattachElement,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
 
+// The counter only exists once the evaluate below sets it, hence optional.
+declare global {
+  interface Window {
+    pdsEventCounter?: number;
+  }
+}
+
 type InitOptions = {
   amount?: number;
   activeTabIndex?: number;
-  size?: BreakpointCustomizable<TabSize>;
+  size?: BreakpointCustomizable<TabsBarSize>;
   isWrapped?: boolean;
   beforeMarkup?: string;
   otherMarkup?: string;
@@ -72,12 +78,6 @@ const getAllButtons = (page: Page) => page.locator('button[role="tab"]').all();
 const getScrollArea = (page: Page) => page.locator('p-tabs-bar p-scroller .scroll');
 const getBar = (page: Page) => page.locator('p-tabs-bar .bar');
 const getBarWidth = async (page: Page): Promise<string> => getElementStyle(getBar(page), 'width');
-
-const clickElement = async (page: Page, el: Locator) => {
-  await el.click();
-  await waitForStencilLifecycle(page);
-  await waitForAnimation();
-};
 
 const waitForAnimation = () => sleep(CSS_ANIMATION_DURATION);
 
@@ -162,6 +162,7 @@ test.describe('slotted content changes', () => {
 
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       tabsBar.removeChild(tabsBar.children[2]);
     });
     await waitForStencilLifecycle(page);
@@ -185,6 +186,7 @@ test.describe('slotted content changes', () => {
 
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       tabsBar.removeChild(tabsBar.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -207,6 +209,7 @@ test.describe('slotted content changes', () => {
 
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       tabsBar.removeChild(tabsBar.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -227,6 +230,7 @@ test.describe('slotted content changes', () => {
 
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       const tab = document.createElement('button');
       tab.innerText = 'New Tab';
       tabsBar.append(tab);
@@ -250,6 +254,7 @@ test.describe('slotted content changes', () => {
 
 const parseTranslateX = (transform: string): number => {
   const match = transform.match(/translate3d\(([^,]+)/);
+  assertDefined(match);
   return parseFloat(match[1]);
 };
 
@@ -259,8 +264,12 @@ const getKeyframeTranslateX = (keyframe: Keyframe): number => parseTranslateX(ke
 const getBarAnimationInfo = (page: Page, buttonIndices: number[]) =>
   page.evaluate((indices) => {
     const host = document.querySelector('p-tabs-bar');
-    const bar = host.shadowRoot.querySelector('.bar');
-    const scroller = host.shadowRoot.querySelector('p-scroller') as HTMLElement;
+    if (!host) throw new Error('p-tabs-bar not found');
+    const bar = host.shadowRoot?.querySelector('.bar');
+    if (!bar) throw new Error('.bar not found');
+    const shadowRoot = host.shadowRoot;
+    if (!shadowRoot) throw new Error('shadow root not found');
+    const scroller = shadowRoot.querySelector('p-scroller') as HTMLElement;
     const buttons = Array.from(host.querySelectorAll('button[role="tab"]'));
     const scrollerRect = scroller.getBoundingClientRect();
 
@@ -287,7 +296,8 @@ const getBarAnimationInfo = (page: Page, buttonIndices: number[]) =>
 
 const waitForBarAnimationFinished = (page: Page) =>
   page.evaluate(() => {
-    const bar = document.querySelector('p-tabs-bar').shadowRoot.querySelector('.bar');
+    const bar = document.querySelector('p-tabs-bar')?.shadowRoot?.querySelector('.bar');
+    if (!bar) throw new Error('.bar not found');
     return Promise.all(bar.getAnimations().map((a) => a.finished));
   });
 
@@ -372,6 +382,7 @@ test.describe('bar animation', () => {
     // add a new button to the end
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       const tab = document.createElement('button');
       tab.innerText = 'New Tab';
       tabsBar.append(tab);
@@ -401,8 +412,13 @@ test.describe('bar animation', () => {
 const isTabInView = (page: Page, tabIndex: number) =>
   page.evaluate((index) => {
     const host = document.querySelector('p-tabs-bar');
-    const scroller = host.shadowRoot.querySelector('p-scroller') as HTMLElement;
-    const scrollArea = scroller.shadowRoot.querySelector('.scroll') as HTMLElement;
+    if (!host) throw new Error('p-tabs-bar not found');
+    const shadowRoot = host.shadowRoot;
+    if (!shadowRoot) throw new Error('shadow root not found');
+    const scroller = shadowRoot.querySelector('p-scroller') as HTMLElement;
+    const scrollerShadowRoot = scroller.shadowRoot;
+    if (!scrollerShadowRoot) throw new Error('shadow root not found');
+    const scrollArea = scrollerShadowRoot.querySelector('.scroll') as HTMLElement;
     const tab = host.querySelectorAll('button[role="tab"]')[index] as HTMLElement;
 
     const scrollRect = scrollArea.getBoundingClientRect();
@@ -461,6 +477,7 @@ test.describe('tab visibility', () => {
     // add multiple tabs after the active one, causing a re-evaluation of the scroll position
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
+      if (!tabsBar) throw new Error('p-tabs-bar not found');
       for (let i = 0; i < 5; i++) {
         const tab = document.createElement('button');
         tab.innerText = `New Tab ${i + 1}`;
@@ -638,11 +655,10 @@ test.describe('events', () => {
   });
 
   test('should not dispatch update event initially with valid activeTabIndex', async ({ page }) => {
-    const COUNTER_KEY = 'pdsEventCounter';
     await setContentWithDesignSystem(page, ''); // empty page
 
     // render p-tabs with attached event listener at once
-    await page.evaluate((COUNTER_KEY: string) => {
+    await page.evaluate(() => {
       const el = document.createElement('p-tabs-bar');
 
       Array.from(Array(2)).forEach((_, i) => {
@@ -652,17 +668,18 @@ test.describe('events', () => {
       });
 
       // count events in browser
-      window[COUNTER_KEY] = 0;
-      el.addEventListener('update', () => window[COUNTER_KEY]++);
+      window.pdsEventCounter = 0;
+      el.addEventListener('update', () => {
+        window.pdsEventCounter = (window.pdsEventCounter ?? 0) + 1;
+      });
 
       document.body.appendChild(el);
-    }, COUNTER_KEY);
+    });
 
     await waitForStencilLifecycle(page);
 
     // retrieve counted events from browser
-    const getCountedEvents = (): Promise<number> =>
-      page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+    const getCountedEvents = (): Promise<number> => page.evaluate(() => window.pdsEventCounter ?? 0);
 
     expect(await getCountedEvents()).toBe(0);
 

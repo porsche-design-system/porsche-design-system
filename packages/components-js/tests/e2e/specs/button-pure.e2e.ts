@@ -1,4 +1,5 @@
 import { type Locator, type Page, expect, test } from '@playwright/test';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   type ClickableTests,
   addEventListener,
@@ -63,6 +64,7 @@ for (const { state, setContent } of clickableTests) {
     await button.click({ force: true });
 
     const coords = await host.boundingBox();
+    assertDefined(coords);
     await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
     await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
     await page.mouse.click(coords.x + coords.width - 1, coords.y + 1); // click the top right corner

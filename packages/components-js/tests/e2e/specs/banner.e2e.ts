@@ -3,10 +3,8 @@ import type { BannerState } from '@porsche-design-system/components';
 import {
   addEventListener,
   getCssClasses,
-  getElementStyle,
   getEventSummary,
   getLifecycleStatus,
-  getProperty,
   reattachElement,
   setContentWithDesignSystem,
   setProperty,
@@ -67,7 +65,6 @@ test.describe('close', () => {
 
   test('should not show dismiss button when dismissButton prop is set false', async ({ page }) => {
     await initBanner(page, { open: true, dismissButton: false });
-    const banner = getHost(page);
     await expect(getCloseButton(page)).toHaveCount(0);
   });
 
@@ -196,8 +193,6 @@ test.describe('lifecycle', () => {
 
     await setProperty(host, 'state', 'warning');
     await waitForStencilLifecycle(page);
-
-    const status = await getLifecycleStatus(page);
 
     await expect
       .poll(

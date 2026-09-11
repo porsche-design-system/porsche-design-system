@@ -21,7 +21,10 @@ test.describe('components', () => {
 `;
 
     function getCountedEvents(): Promise<number> {
-      return page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+      return page.evaluate(
+        (COUNTER_KEY: string) => (window as unknown as Record<string, number>)[COUNTER_KEY],
+        COUNTER_KEY
+      );
     }
 
     await setContentWithDesignSystem(page, content);

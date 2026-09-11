@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import { waitFor } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
@@ -10,6 +11,7 @@ it('should have initialized shadow dom', async () => {
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;
+  assertDefined(el);
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -19,13 +21,16 @@ it('should be opened on click and closed on second click', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
+  assertDefined(el);
+  const shadowRoot = el.shadowRoot;
+  assertDefined(shadowRoot);
   const button = getByRoleShadowed('button');
 
   await userEvent.click(button);
-  await waitFor(() => expect(el.shadowRoot.querySelector('[popover]')).not.toBeNull());
+  await waitFor(() => expect(shadowRoot.querySelector('[popover]')).not.toBeNull());
 
   await userEvent.click(button);
-  await waitFor(() => expect(el.shadowRoot.querySelector('[popover]')).not.toBeNull());
+  await waitFor(() => expect(shadowRoot.querySelector('[popover]')).not.toBeNull());
 });
 
 it('should emit dismiss event in controlled mode on Escape', async () => {
@@ -38,17 +43,26 @@ it('should emit dismiss event in controlled mode on Escape', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
+  assertDefined(el);
+  const shadowRoot = el.shadowRoot;
+  assertDefined(shadowRoot);
   const dismiss = vi.fn();
   el.addEventListener('dismiss', dismiss);
 
   // panel is open initially because `open` is set
-  await waitFor(() => expect(el.shadowRoot.querySelector('[popover]').hasAttribute('inert')).toBe(false));
+  await waitFor(() => {
+    const panel = shadowRoot.querySelector('[popover]');
+    assertDefined(panel);
+    expect(panel.hasAttribute('inert')).toBe(false);
+  });
 
   await userEvent.keyboard('{Escape}');
 
   expect(dismiss).toHaveBeenCalledTimes(1);
   // panel stays open because the consumer owns `open` and hasn't updated it yet
-  expect(el.shadowRoot.querySelector('[popover]').hasAttribute('inert')).toBe(false);
+  const panel = shadowRoot.querySelector('[popover]');
+  assertDefined(panel);
+  expect(panel.hasAttribute('inert')).toBe(false);
 });
 
 it('should emit dismiss event in controlled mode on outside click', async () => {
@@ -59,16 +73,25 @@ it('should emit dismiss event in controlled mode on outside click', async () => 
   await componentsReady();
 
   const el = document.body.firstElementChild;
+  assertDefined(el);
+  const shadowRoot = el.shadowRoot;
+  assertDefined(shadowRoot);
   const dismiss = vi.fn();
   el.addEventListener('dismiss', dismiss);
 
-  await waitFor(() => expect(el.shadowRoot.querySelector('[popover]').hasAttribute('inert')).toBe(false));
+  await waitFor(() => {
+    const panel = shadowRoot.querySelector('[popover]');
+    assertDefined(panel);
+    expect(panel.hasAttribute('inert')).toBe(false);
+  });
 
   await userEvent.click(document.body);
 
   expect(dismiss).toHaveBeenCalledTimes(1);
   // panel stays open because the consumer owns `open` and hasn't updated it yet
-  expect(el.shadowRoot.querySelector('[popover]').hasAttribute('inert')).toBe(false);
+  const panel = shadowRoot.querySelector('[popover]');
+  assertDefined(panel);
+  expect(panel.hasAttribute('inert')).toBe(false);
 });
 
 it('should expose its toggle button to shadow queries', async () => {
@@ -78,7 +101,8 @@ it('should expose its toggle button to shadow queries', async () => {
   expect(screen.queryAllByRole('button')).toHaveLength(0);
   expect(screen.getAllByShadowRole('button')).toHaveLength(1);
 
-  const { shadowRoot } = document.querySelector('p-popover');
+  const shadowRoot = document.querySelector('p-popover')?.shadowRoot;
+  assertDefined(shadowRoot);
   expect(screen.getByShadowRole('button')).toBe(shadowRoot.querySelector('button[aria-label="More information"]'));
 });
 

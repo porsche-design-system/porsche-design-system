@@ -1,18 +1,24 @@
 import { expect, test } from '@playwright/test';
-import type { ToastMessage } from '@porsche-design-system/components';
-import { TOAST_STATES } from '@porsche-design-system/components/src/components/toast/toast/toast-utils';
+import type { ToastMessage, ToastState } from '@porsche-design-system/components';
 import type { Page } from 'playwright';
 import {
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
-  getProperty,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
+
+// Adding a ToastState fails to compile until this spec covers it.
+const TOAST_STATES = Object.keys({
+  info: true,
+  success: true,
+  warning: true,
+  error: true,
+} satisfies Record<ToastState, true>) as ToastState[];
 
 const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
 const ANIMATION_DURATION = 600;
@@ -50,7 +56,9 @@ const addMessage = async (page: Page, message?: Partial<ToastMessage>): Promise<
   };
 
   await page.evaluate(async (msg: ToastMessage) => {
-    document.querySelector('p-toast').addMessage(msg);
+    const toast = document.querySelector('p-toast');
+    if (!toast) throw new Error('p-toast not found');
+    toast.addMessage(msg);
   }, msg);
 
   await waitForStencilLifecycle(page);

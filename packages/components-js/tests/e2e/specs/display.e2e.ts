@@ -1,13 +1,7 @@
-import {
-  getLifecycleStatus,
-  getProperty,
-  setContentWithDesignSystem,
-  setProperty,
-  waitForStencilLifecycle,
-} from '../helpers';
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import type { BreakpointCustomizable, DisplaySize, DisplayTag } from '@porsche-design-system/components';
+import type { Page } from 'playwright';
+import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
 const initDisplay = (
   page: Page,
@@ -17,7 +11,7 @@ const initDisplay = (
     tag?: DisplayTag;
   }
 ): Promise<void> => {
-  const { size, slot, tag } = opts;
+  const { size, slot, tag } = opts || {};
 
   const attrs = [
     size ? `size="${typeof size === 'object' ? JSON.stringify(size).replace(/"/g, "'") : size}"` : '',
@@ -36,7 +30,11 @@ const initDisplay = (
 const getHost = (page: Page) => page.locator('p-display');
 
 const getDisplayTagName = async (page: Page): Promise<string> =>
-  getHost(page).evaluate((el) => el.shadowRoot.querySelector('.root').tagName);
+  getHost(page).evaluate((el) => {
+    const root = el.shadowRoot?.querySelector('.root');
+    if (!root) throw new Error('.root not found');
+    return root.tagName;
+  });
 
 test.describe('tag', () => {
   test('should render according to size', async ({ page }) => {
@@ -117,5 +115,4 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-display'], 'componentDidUpdate: p-display').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
-
 });

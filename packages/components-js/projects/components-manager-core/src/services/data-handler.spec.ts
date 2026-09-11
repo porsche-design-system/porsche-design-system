@@ -3,7 +3,7 @@ import type { ComponentsManagerData } from './components-manager';
 import { CM_KEY, getComponentsManagerData } from './data-handler';
 
 afterEach(() => {
-  delete document[CM_KEY];
+  delete (document as Partial<Document>)[CM_KEY];
 });
 
 it("should return the web components manager data if it's available in document", () => {

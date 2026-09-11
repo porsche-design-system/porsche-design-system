@@ -12,8 +12,9 @@
     "build": "npm run typecheck && npm run build-app",
     "build-app": "react-router build",
     "typecheck": "react-router typegen && tsc",
+    "typecheck:tests:vrt": "tsc --noEmit -p tsconfig.vrt.json",
     "test": "npm run test:vrt",
-    "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
+    "test:vrt": "npm run typecheck:tests:vrt && playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./.react-router && rm -rf ./build"
   },
   "dependencies": {

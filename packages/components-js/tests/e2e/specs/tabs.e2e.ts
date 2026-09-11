@@ -15,6 +15,13 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
+// The counter only exists once the evaluate below sets it, hence optional.
+declare global {
+  interface Window {
+    pdsEventCounter?: number;
+  }
+}
+
 const initTabs = (page: Page, opts?: { amount?: number; activeTabIndex?: number }) => {
   const { amount = 3, activeTabIndex } = opts || {};
 
@@ -107,6 +114,7 @@ test.describe('slotted content changes', () => {
 
     await page.evaluate(() => {
       const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       const tab = document.createElement('p-tabs-item');
       (tab as any).label = 'Tabs Item Added';
       tab.innerText = 'Added Tabs Item Content';
@@ -132,6 +140,7 @@ test.describe('slotted content changes', () => {
 
     await page.evaluate(() => {
       const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       tabs.removeChild(tabs.children[2]);
     });
     await waitForStencilLifecycle(page);
@@ -148,6 +157,7 @@ test.describe('slotted content changes', () => {
 
     await page.evaluate(() => {
       const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       tabs.removeChild(tabs.children[2]);
     });
     await waitForStencilLifecycle(page);
@@ -166,6 +176,7 @@ test.describe('slotted content changes', () => {
 
     await page.evaluate(() => {
       const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       tabs.removeChild(tabs.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -182,6 +193,7 @@ test.describe('slotted content changes', () => {
 
     await page.evaluate(() => {
       const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
       tabs.removeChild(tabs.children[1]);
     });
     await waitForStencilLifecycle(page);
@@ -198,11 +210,16 @@ test.describe('text selection', () => {
     await initTabs(page);
     const tabContentRect = await page.evaluate(() => {
       const tabContent1 = document.querySelector('[label="Tab 1"]');
+      if (!tabContent1) throw new Error('[label="Tab 1"] not found');
       const { x, y } = tabContent1.getBoundingClientRect();
       return { x, y };
     });
     await page.mouse.click(tabContentRect.x, tabContentRect.y, { clickCount: 2 });
-    const selection = await page.evaluate(() => window.getSelection().toString());
+    const selection = await page.evaluate(() => {
+      const selection = window.getSelection();
+      if (!selection) throw new Error('no selection');
+      return selection.toString();
+    });
     expect(selection).toBe('Content');
   });
 });
@@ -228,11 +245,10 @@ test.describe('events', () => {
   });
 
   test('should not dispatch update event initially', async ({ page }) => {
-    const COUNTER_KEY = 'pdsEventCounter';
     await setContentWithDesignSystem(page, ''); // empty page
 
     // render p-tabs with attached event listener at once
-    await page.evaluate((COUNTER_KEY: string) => {
+    await page.evaluate(() => {
       const el = document.createElement('p-tabs');
 
       Array.from(Array(2)).forEach((_, i) => {
@@ -243,17 +259,18 @@ test.describe('events', () => {
       });
 
       // count events in browser
-      window[COUNTER_KEY] = 0;
-      el.addEventListener('update', () => window[COUNTER_KEY]++);
+      window.pdsEventCounter = 0;
+      el.addEventListener('update', () => {
+        window.pdsEventCounter = (window.pdsEventCounter ?? 0) + 1;
+      });
 
       document.body.appendChild(el);
-    }, COUNTER_KEY);
+    });
 
     await waitForComponentsReady(page);
 
     // retrieve counted events from browser
-    const getCountedEvents = (): Promise<number> =>
-      page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+    const getCountedEvents = (): Promise<number> => page.evaluate(() => window.pdsEventCounter ?? 0);
 
     expect(await getCountedEvents()).toBe(0);
 

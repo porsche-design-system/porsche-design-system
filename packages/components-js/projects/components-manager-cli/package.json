@@ -13,8 +13,9 @@
     "typecheck": "npm run typecheck:self && npm run typecheck:library-entry",
     "typecheck:self": "tsc --noEmit -p tsconfig.typecheck.json",
     "typecheck:library-entry": "tsc --noEmit -p tsconfig.library-entry.typecheck.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "vitest -c vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest -c vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {

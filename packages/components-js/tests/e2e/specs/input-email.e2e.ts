@@ -111,6 +111,7 @@ test.describe('value', () => {
     // Add input event listener that always sets value to 'b'
     await page.evaluate(() => {
       const hostElement = document.querySelector('p-input-email');
+      if (!hostElement) throw new Error('p-input-email not found');
       hostElement.addEventListener('input', () => {
         hostElement.value = 'b';
       });

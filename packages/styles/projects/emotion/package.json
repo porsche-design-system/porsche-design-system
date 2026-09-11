@@ -29,8 +29,9 @@
     "build:bundle:meta": "rollup -c rollup-meta.config.mjs --bundleConfigAsCjs",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json && npm run typecheck:scripts",
     "typecheck:scripts": "tsc --noEmit -p tsconfig.scripts.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta ./emotionMeta/deprecations.ts"
   },
   "dependencies": {
