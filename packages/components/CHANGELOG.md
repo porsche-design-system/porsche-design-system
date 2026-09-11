@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- StackBlitz example for Angular now includes the `getFontLinks()`, `getComponentChunkLinks()`, `getIconLinks()`,
+  `getMetaTagsAndIconLinks()` and `getLoaderScript()` partials, matching the Vanilla JS, React and Vue examples.
+  ([#4729](https://github.com/porsche-design-system/porsche-design-system/pull/4729))
+
 ### Fixed
 
 - `Select`, `Multi Select`, `Radio Group`: unmatched values triggered misleading console warnings, including empty

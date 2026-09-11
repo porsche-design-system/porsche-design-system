@@ -17,7 +17,9 @@ export const readSetup = (dir: string) => {
         entry.name === './node_modules' ||
         entry.name === 'node_modules' ||
         entry.name === 'package-lock.json' ||
-        entry.name === '.angular'
+        entry.name === '.angular' ||
+        // written by a sandbox's own injectPartialsIntoIndexHtml script, so a local run must not leak into the bundle
+        entry.name === '.generated'
       ) {
         continue;
       }
