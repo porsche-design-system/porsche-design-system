@@ -4,5 +4,5 @@
     "types": ["node"],
     "noEmit": true
   },
-  "include": ["scripts/*.ts"]
+  "include": ["scripts/*.ts", ".github/scripts/*.ts"]
 }

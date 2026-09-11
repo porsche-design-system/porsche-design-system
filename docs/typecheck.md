@@ -68,9 +68,9 @@ added, it must expose both files.
 ## Root scripts
 
 Root holds one `typecheck:{package}` entry per top-level package, plus `typecheck`, `typecheck:all` and
-`typecheck:scripts` for the repo's own `scripts/` folder. A project below a top-level package has no root
-entry. Its parent's `typecheck` fans out to it when both are in the same pass, and `typecheck:all` calls it
-with `--workspace` otherwise.
+`typecheck:scripts` for the repo's own `scripts/` and `.github/scripts/` folders. A project below a
+top-level package has no root entry. Its parent's `typecheck` fans out to it when both are in the same
+pass, and `typecheck:all` calls it with `--workspace` otherwise.
 
 ## Adding a package
 
