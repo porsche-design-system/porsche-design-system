@@ -128,6 +128,7 @@
     "typecheck:components-vue:tests": "npm run typecheck:tests --workspace=@porsche-design-system/vue && npm run typecheck:tests:e2e --workspace=@porsche-design-system/vue && npm run typecheck:tests:vrt --workspace=@porsche-design-system/vue && npm run typecheck:tests:smoke --workspace=@porsche-design-system/vue",
     "typecheck:storefront": "npm run typecheck --workspace=@porsche-design-system/storefront",
     "typecheck:storefront:tests": "npm run typecheck:tests --workspace=@porsche-design-system/storefront && npm run typecheck:tests:e2e --workspace=@porsche-design-system/storefront && npm run typecheck:tests:vrt --workspace=@porsche-design-system/storefront && npm run typecheck:tests:a11y --workspace=@porsche-design-system/storefront && npm run typecheck:tests --workspace=@porsche-design-system/skills",
+    "test:unit:scripts": "vitest run --config .github/scripts/vitest.config.ts",
     "test:unit:tokens": "npm run test:unit --workspace=@porsche-design-system/tokens",
     "test:unit:styles": "npm run test:unit --workspace=@porsche-design-system/styles",
     "test:unit:styles:tailwindcss": "npm run test:unit:tailwindcss --workspace=@porsche-design-system/styles",

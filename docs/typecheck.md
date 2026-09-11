@@ -69,9 +69,10 @@ added, it must expose both files.
 
 Root holds one `typecheck:{package}` entry per top-level package, and one `typecheck:{package}:tests` entry for
 every top-level package that owns test code, plus `typecheck`, `typecheck:all`, `typecheck:all:tests` and
-`typecheck:scripts` for the repo's own `scripts/` folder. A project below a top-level package has no root entry.
-Its parent's `typecheck` fans out to it when both are in the same pass, and `typecheck:all` calls it with
-`--workspace` otherwise. Its test scopes are called by the parent's `typecheck:{package}:tests` entry.
+`typecheck:scripts` for the repo's own `scripts/` and `.github/scripts/` folders. A project below a top-level
+package has no root entry. Its parent's `typecheck` fans out to it when both are in the same pass, and
+`typecheck:all` calls it with `--workspace` otherwise. Its test scopes are called by the parent's
+`typecheck:{package}:tests` entry.
 
 ## Adding a package
 

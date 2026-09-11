@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       storefront-slug:
-        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the key prefix in the origin bucket; must match the storefront basePath baked in at build time.'
+        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4-preview"). Used as the key prefix in the origin bucket; must match the storefront basePath baked in at build time.'
         required: true
         type: string
       storefront-algolia:
@@ -26,7 +26,7 @@ on:
         description: 'IAM role assumed via OIDC to publish pull request previews. Confined to `pr-*` prefixes.'
         required: true
       aws-storefront-release-role-arn:
-        description: 'IAM role assumed via OIDC to publish nightly and version slugs. Cannot delete outside `nightly/`.'
+        description: 'IAM role assumed via OIDC to publish nightly and version-branch previews. Cannot delete pinned versions.'
         required: true
       aws-storefront-bucket:
         description: 'Storefront origin bucket.'
@@ -153,8 +153,8 @@ jobs:
       - run: npm run test:smoke:components-angular
       - run: npm run test:smoke:components-react
       - run: npm run test:smoke:components-vue
-  storefront-preview:
-    name: 'Storefront (Preview)'
+  storefront-pull-request:
+    name: 'Storefront (/pr-<number>)'
     # Previews assume `storefront-preview-deployer`, whose OIDC trust condition is the bare
     # `repo:…/porsche-design-system:pull_request` subject. Declaring a GitHub Environment here would
     # change the token's subject to `…:environment:<name>` and the role would refuse it — the preview
@@ -167,8 +167,7 @@ jobs:
       id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
     steps:
       - uses: actions/checkout@v7
-      # No `install` step on purpose: only the Algolia step needs `node_modules`, and previews never
-      # index. The bin files `restore` fixes up come from the artifact, not from an install.
+      # No install needed for uploads. The bin files restore fixes come from the artifact.
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -189,9 +188,9 @@ jobs:
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
           # A preview should mirror its branch exactly, and the role may delete under `pr-*`.
           delete: 'true'
-  storefront-release:
-    name: 'Storefront (Release)'
-    # `nightly` and the major-version aliases. The `storefront` environment is not decoration: its
+  storefront-nightly-and-preview:
+    name: 'Storefront (/nightly or /v<major>-preview)'
+    # `nightly` and version-branch previews, never stable major aliases. The `storefront` environment is not decoration: its
     # name is the OIDC trust condition of `storefront-release-deployer`, and the branch policy on it
     # (`main`, `v[0-9]`, `v[0-9][0-9]` — mirroring `on.push.branches` in contribution.yml) is the
     # only thing standing between an arbitrary branch and that role.
@@ -203,7 +202,6 @@ jobs:
       id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
     steps:
       - uses: actions/checkout@v7
-      - uses: ./.github/actions/install # `node_modules` for the Algolia indexing step
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -220,17 +218,27 @@ jobs:
           slug: ${{ inputs.storefront-slug }}
           bucket: ${{ secrets.aws-storefront-bucket }}
           distribution-id: ${{ secrets.aws-storefront-distribution-id }}
-          # Every deploy here is a complete rebuild of a *moving* slug - `nightly`, or a major-version
-          # alias like `v4` - so it replaces the previous one wholesale, exactly as the GitHub Pages
-          # deployment did when it removed the target folder before copying. Without this, a page
-          # removed from the storefront would stay reachable under `/v4/` forever.
+          # Moving development slugs replace removed pages. Stable major slugs are
+          # updated only by release.yml, never by a branch deployment.
           #
           # Pinned versions are a different matter and are published by release.yml without
           # `--delete`; the release role cannot delete under `v4.7.0/` either, so a buggy pipeline
           # still cannot unpublish a release.
           delete: 'true'
-          # Algolia indexing flag is also resolved once in the caller (contribution.yml → context job).
-          algolia: ${{ inputs.storefront-algolia }}
+  storefront-nightly-and-preview-algolia:
+    name: 'Algolia (/nightly or /v<major>-preview)'
+    needs: storefront-nightly-and-preview
+    if: github.event_name == 'push' && inputs.storefront-algolia == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Index storefront'
+        run: npm run updateAlgolia
         env:
+          P_CURRENT_BRANCH: ${{ inputs.storefront-slug }}
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
