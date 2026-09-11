@@ -14,9 +14,11 @@
     "build": "npm run build-app",
     "build-app": "next build",
     "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck:tests:e2e": "tsc --noEmit -p tsconfig.e2e.json",
+    "typecheck:tests:vrt": "tsc --noEmit -p tsconfig.vrt.json",
     "test": "npm run test:e2e && npm run test:vrt",
-    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
-    "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
+    "test:e2e": "npm run typecheck:tests:e2e && playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:vrt": "npm run typecheck:tests:vrt && playwright test --config=tests/vrt/config/playwright.config.ts",
     "test:vrt:prepare-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/results --mode prepare",
     "test:vrt:update-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/specs/__screenshots__ --mode update",
     "clean:build": "rm -rf ./.next"

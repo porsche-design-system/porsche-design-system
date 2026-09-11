@@ -21,6 +21,6 @@ type LifecycleStatus = Record<LifecycleHook, Partial<Record<TagName | 'all', num
 
 export const getLifecycleStatus = async (page: Page): Promise<LifecycleStatus> => {
   return await page.evaluate((LIFECYCLE_STATUS_KEY: string) => {
-    return window[LIFECYCLE_STATUS_KEY];
+    return (window as unknown as Record<string, LifecycleStatus>)[LIFECYCLE_STATUS_KEY];
   }, LIFECYCLE_STATUS_KEY);
 };

@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import type { PopoverDirection } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -238,7 +239,11 @@ test.describe('mouse behavior', () => {
       await strongEl.click({ clickCount: 2 });
 
       // Some browsers (e.g. Firefox) include surrounding whitespace in the double-click selection, so compare trimmed.
-      const selection = await page.evaluate(() => window.getSelection().toString());
+      const selection = await page.evaluate(() => {
+        const selection = window.getSelection();
+        if (!selection) throw new Error('no selection');
+        return selection.toString();
+      });
       expect(selection.trim()).toBe('strong');
     });
 
@@ -253,6 +258,7 @@ test.describe('mouse behavior', () => {
       // Press inside the panel content, drag outside the popover, and release. The resulting `click` retargets to an
       // outside ancestor, but must not dismiss because the gesture started inside.
       const strongBox = await page.locator('strong').boundingBox();
+      assertDefined(strongBox);
       await page.mouse.move(strongBox.x + 2, strongBox.y + strongBox.height / 2);
       await page.mouse.down();
       await page.mouse.move(strongBox.x + 2, strongBox.y + strongBox.height / 2 + 300, { steps: 5 });
@@ -336,7 +342,11 @@ test.describe('mouse behavior', () => {
       await strongEl.click({ clickCount: 2 });
 
       // Some browsers (e.g. Firefox) include surrounding whitespace in the double-click selection, so compare trimmed.
-      const selection = await page.evaluate(() => window.getSelection().toString());
+      const selection = await page.evaluate(() => {
+        const selection = window.getSelection();
+        if (!selection) throw new Error('no selection');
+        return selection.toString();
+      });
       expect(selection.trim()).toBe('strong');
     });
   });
@@ -534,7 +544,9 @@ test.describe('dynamic content change', () => {
       const slottedButton = document.createElement('button');
       slottedButton.slot = 'button';
       slottedButton.textContent = 'Dynamic Button';
-      document.querySelector('p-popover').appendChild(slottedButton);
+      const popover = document.querySelector('p-popover');
+      if (!popover) throw new Error('p-popover not found');
+      popover.appendChild(slottedButton);
     });
 
     // Wait for the component to re-render: the default info button is replaced by the slotted button slot,
@@ -921,7 +933,9 @@ test.describe('viewport clamping', () => {
     await expect(popover).toBeVisible();
 
     const box = await popover.boundingBox();
+    assertDefined(box);
     const viewport = page.viewportSize();
+    assertDefined(viewport);
 
     // The panel must never exceed the viewport minus the safe zone on both edges (default `100dvw/dvh - 2 * safeZone`).
     expect(box.width, 'panel width within viewport safe zone').toBeLessThanOrEqual(

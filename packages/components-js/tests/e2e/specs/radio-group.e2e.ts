@@ -1,6 +1,5 @@
 import { expect, Locator, test } from '@playwright/test';
-import type { Components } from '@porsche-design-system/components/src/components';
-import { RadioGroupOption } from '@porsche-design-system/components/src/components/radio-group/radio-group/radio-group-utils';
+import type { Components } from '@porsche-design-system/components';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -25,15 +24,19 @@ const getRadioGroupValue = async (page: Page): Promise<string | number> => await
 const getRadioGroupOption = (page: Page, n: number) =>
   page.locator(`p-radio-group p-radio-group-option:nth-child(${n})`);
 const getRadioGroupOptions = (page: Page) => page.locator('p-radio-group p-radio-group-option');
+
+// The option's internal props (RadioGroupOptionInternalHTMLProps) are not part of the package's public types.
+type RadioGroupOption = HTMLPRadioGroupOptionElement & { selected?: boolean };
+
 const getSelectedRadioGroupOptionProperty = async <K extends keyof RadioGroupOption>(
   page: Page,
   property: K
-): Promise<RadioGroupOption[K]> =>
+): Promise<RadioGroupOption[K] | undefined> =>
   await page
     .locator('p-radio-group p-radio-group-option')
     .evaluateAll(
       (options, property) =>
-        ((options.find((option: RadioGroupOption) => option.selected) as RadioGroupOption)?.[
+        ((options as unknown as RadioGroupOption[]).find((option) => option.selected)?.[
           property
         ] as RadioGroupOption[K]) ?? undefined,
       property
@@ -114,7 +117,7 @@ const initRadioGroup = (page: Page, opt?: InitOptions): Promise<void> => {
     !Array.isArray(options) ? getOption(options) : options.map((option) => getOption(option));
 
   const radioGroupOptions = values
-    .map((x, idx) => {
+    .map((x, _idx) => {
       const options = getOptions(x);
       return Array.isArray(options) ? options.map((node) => node).join('') : options;
     })
@@ -218,7 +221,6 @@ test.describe('Blur Event', () => {
     const host = getHost(page);
     await addEventListener(host, 'blur');
     const options = getRadioGroupOptions(page);
-    const button = page.locator('#test-button');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
@@ -741,7 +743,6 @@ test.describe('form', () => {
       },
     });
     const form = getForm(page);
-    const text = page.locator('p-text');
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 

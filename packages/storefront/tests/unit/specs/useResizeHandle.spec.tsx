@@ -3,6 +3,16 @@ import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
 
+// @stencil/core's private typings declare a one-argument toHaveAttribute on jest.Matchers, which hides
+// jest-dom's inherited two-argument overload. Merging the interface restores it.
+declare global {
+  namespace jest {
+    interface Matchers<R, T> {
+      toHaveAttribute(attr: string, value?: unknown): R;
+    }
+  }
+}
+
 const MIN_WIDTH = 320;
 const TRACK_WIDTH = 1000;
 

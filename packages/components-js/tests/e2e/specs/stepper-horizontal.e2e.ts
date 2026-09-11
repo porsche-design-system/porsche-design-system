@@ -63,12 +63,6 @@ const initStepperHorizontal = (page: Page, opts?: InitOptions) => {
 
 const getHost = (page: Page) => page.locator('p-stepper-horizontal');
 const getStepItems = (page: Page) => page.locator('p-stepper-horizontal-item').all();
-const getButtons = async (page: Page) =>
-  Promise.all(
-    (await getStepItems(page)).map(async (x) =>
-      (await x.evaluateHandle((x) => x.shadowRoot.querySelector('button'))).asElement()
-    )
-  );
 const getScrollArea = (page: Page) => page.locator('p-stepper-horizontal p-scroller .scroll');
 
 test.describe('validation', () => {
@@ -202,7 +196,9 @@ test.describe('scrolling', () => {
     const host = getHost(page);
 
     await host.evaluate((host) => {
-      host.removeChild(host.firstChild);
+      const firstChild = host.firstChild;
+      if (!firstChild) throw new Error('no first child');
+      host.removeChild(firstChild);
     });
     await waitForStencilLifecycle(page);
     await sleep(CSS_ANIMATION_DURATION);
@@ -354,7 +350,6 @@ test.describe('lifecycle', () => {
       });
       await waitForStencilLifecycle(page);
 
-      const status = await getLifecycleStatus(page);
       await expect
         .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
         .toBe(1);

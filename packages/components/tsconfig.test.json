@@ -1,8 +1,8 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["./tests", "**/*.spec.ts"],
+  "include": ["./tests", "**/*.spec.ts", "src/components.d.ts"],
   "compilerOptions": {
-    "types": ["vitest/jsdom", "vitest/globals"]
+    "types": ["vitest/jsdom", "vitest/globals", "node"]
   },
-  "exclude": []
+  "exclude": ["node_modules", "projects"]
 }

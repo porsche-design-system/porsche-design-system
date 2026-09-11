@@ -25,6 +25,6 @@ it('should return correct partial markup for getVanillaJsPartialExample', () => 
       ],
     },
   ];
-  const partialExample = getAngularPartialExample('getInitialStyles', 'head', partialCalls);
+  const partialExample = getAngularPartialExample('getFontLinks', 'head', partialCalls);
   expect(partialExample).toMatchSnapshot();
 });

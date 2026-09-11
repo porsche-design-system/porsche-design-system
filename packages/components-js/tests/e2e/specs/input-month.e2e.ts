@@ -1,6 +1,5 @@
 import { expect, type Page, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
-import { colorContrastLowerLight } from '@porsche-design-system/tokens';
 import {
   addEventListener,
   getConsoleErrorsAmount,
@@ -114,6 +113,7 @@ test.describe('value', () => {
     // Add input event listener that always sets value to '2025-05'
     await page.evaluate(() => {
       const hostElement = document.querySelector('p-input-month');
+      if (!hostElement) throw new Error('p-input-month not found');
       hostElement.addEventListener('input', () => {
         hostElement.value = '2025-05';
       });

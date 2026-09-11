@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { type Mock, vi } from 'vitest';
 import * as formUtils from './form-utils';
 import { hasCounter, setAriaElementInnerHtml, setCounterInnerHtml, updateCounter } from './form-utils';
 
@@ -105,7 +105,7 @@ describe('updateCounter()', () => {
 });
 
 describe('debounce', () => {
-  let mockFn: ReturnType<typeof vi.fn>;
+  let mockFn: Mock<(value: string) => void>;
 
   beforeEach(() => {
     mockFn = vi.fn();

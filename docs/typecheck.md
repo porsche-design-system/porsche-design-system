@@ -20,7 +20,7 @@ build script is ordered `clean`, then generate, then `typecheck`, then bundle, s
 generated files and the bundle never runs on code that failed.
 
 Root `typecheck:all` chains both passes in the order `build` uses. It needs a built tree, so nothing
-automated calls it. Use it locally to check the whole repo in one command.
+automated calls it. Use it locally to check every package's source in one command.
 
 ## Which pass a package belongs to
 
@@ -67,10 +67,12 @@ added, it must expose both files.
 
 ## Root scripts
 
-Root holds one `typecheck:{package}` entry per top-level package, plus `typecheck`, `typecheck:all` and
-`typecheck:scripts` for the repo's own `scripts/` and `.github/scripts/` folders. A project below a
-top-level package has no root entry. Its parent's `typecheck` fans out to it when both are in the same
-pass, and `typecheck:all` calls it with `--workspace` otherwise.
+Root holds one `typecheck:{package}` entry per top-level package, and one `typecheck:{package}:tests` entry for
+every top-level package that owns test code, plus `typecheck`, `typecheck:all`, `typecheck:all:tests` and
+`typecheck:scripts` for the repo's own `scripts/` and `.github/scripts/` folders. A project below a top-level
+package has no root entry. Its parent's `typecheck` fans out to it when both are in the same pass, and
+`typecheck:all` calls it with `--workspace` otherwise. Its test scopes are called by the parent's
+`typecheck:{package}:tests` entry.
 
 ## Adding a package
 
@@ -84,6 +86,10 @@ pass, and `typecheck:all` calls it with `--workspace` otherwise.
    reads. Extend `shared/tsconfig.paths.json` from it when the check runs before the build.
 5. Give scripts the package runs through `tsx` their own `tsconfig.scripts.json` with `noEmit`, chained into
    the package's `typecheck`. Never add them to a `tsconfig` that a bundler reads.
+6. Give unit specs a `tsconfig.test.json` and a `typecheck:tests` script, and each `tests/{e2e,vrt,a11y,smoke}`
+   folder a `tsconfig.{scope}.json` and a `typecheck:tests:{scope}` script. Make the script the first command of
+   the test script that runs those files, and add it to the `typecheck:{package}:tests` entry of the top-level
+   package that owns it. A new top-level package also needs that entry, chained into `typecheck:all:tests`.
 
 ## Traps
 
@@ -95,8 +101,10 @@ pass, and `typecheck:all` calls it with `--workspace` otherwise.
   at that point in the build.
 - **Declaration emit covers the whole program too.** A bundler with `declaration: true` writes a `.d.ts` for
   every file its `tsconfig` includes. Widening that `tsconfig` publishes declarations for the new files.
-- **`types` replaces the auto-include.** Nothing gets `@types/node` implicitly. Configs that need it declare
-  `"types": ["node"]`.
+- **Nothing gets `@types/node` implicitly.** TypeScript 6 defaults `types` to `[]`, and a child's `types` replaces
+  the parent's rather than merging. Every config that touches Node APIs declares `"types": ["node"]`.
+- **TypeScript 6 defaults `strict` to `true`.** A config that never sets it is strict. The Angular package's
+  configs and every test scope are subject to this.
 - **Relative paths resolve against the file that declares them**, not the file that extends it. A shared
   base cannot carry a relative `extends` on behalf of its children, and mappings in `tsconfig.paths.json`
   are relative to that file.
@@ -104,7 +112,25 @@ pass, and `typecheck:all` calls it with `--workspace` otherwise.
   directory holding the `tsconfig`. A gated bundler fails on it. Set `rootDir` to the directory that keeps
   the existing output layout.
 
-## What is not checked
+## Test code
 
-Test code, by design. Unit specs and the e2e, VRT and a11y suites are excluded from every typecheck
-scope and are compiled by their runners without type checking.
+Test code is checked in a scope of its own, at the start of the script that runs it. A workspace with
+unit specs has a `tsconfig.test.json` and a `typecheck:tests` script; a `tests/{e2e,vrt,a11y,smoke}`
+folder has a `tsconfig.{e2e,vrt,a11y,smoke}.json` and a matching `typecheck:tests:{scope}` script. Each
+script runs `tsc --noEmit` (`vue-tsc` in the Vue package) and is the first command of the test script
+that executes those files, so a type error fails the test job before the runner starts. Specs import
+built packages and test utilities, so these scopes belong to pass two. Root `typecheck:all:tests` chains one
+`typecheck:{package}:tests` entry per top-level package, and each entry calls its own scopes by workspace.
+`typecheck` and `typecheck:all` cover source only.
+
+A test scope extends the config its workspace already compiles with and adds the `types` the runner
+provides. Nothing a bundler reads extends a test scope.
+
+Angular's karma spec is compiled by `@angular/build:karma`, which type checks on its own. Only the
+Angular vitest specs need `typecheck:tests`.
+
+```bash
+git ls-files '*tsconfig.test.json' '*tsconfig.e2e.json' '*tsconfig.vrt.json' '*tsconfig.a11y.json' '*tsconfig.smoke.json'   # every test scope
+git grep -n '"test:[a-z:-]*": "npm run typecheck:tests' -- '*/package.json'   # where each scope is chained
+git grep -n 'typecheck:tests' -- package.json   # what typecheck:all:tests reaches
+```

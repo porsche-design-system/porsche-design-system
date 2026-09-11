@@ -24,7 +24,6 @@ const initTag = (page: Page, props?: InitOpts) => {
 };
 
 const getHost = (page: Page) => page.locator('p-tag');
-const getSpan = (page: Page) => page.locator('p-tag span');
 
 test.describe('lifecycle', () => {
   skipInBrowsers(['webkit'], () => {

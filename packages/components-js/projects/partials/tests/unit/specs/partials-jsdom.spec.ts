@@ -12,7 +12,7 @@ for (const partialName of Object.keys(fromPartials)) {
     const expectedError = new Error(
       `[Porsche Design System] Partials can only be used during build time. You are using '${partialName}' at run time in a browser which defeats the effect of the partial.`
     );
-    expect(() => fromPartials[partialName]()).toThrow(expectedError);
+    expect(() => (fromPartials as Record<string, () => unknown>)[partialName]()).toThrow(expectedError);
     expect(spy).toHaveBeenCalledWith(partialName);
   });
 }

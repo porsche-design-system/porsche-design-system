@@ -1,4 +1,4 @@
-import { expect, type Locator, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { goto } from '../helpers';
 
 test.describe('core-initializer', () => {
