@@ -1,6 +1,5 @@
 import { vi } from 'vitest';
 import { MultiSelectOption } from '../../components/multi-select/multi-select-option/multi-select-option';
-import * as keyboardBehaviorUtils from './keyboard-behavior';
 import {
   filterSelectOptions,
   getHighlightedSelectOption,
@@ -125,44 +124,34 @@ describe('getUpdatedIndex()', () => {
 });
 
 describe('getNextOptionToHighlight()', () => {
-  it('should return null when getUpdatedIndex returns -1', () => {
-    const options = generateOptions();
-    const getUsableSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getUsableSelectOptions');
-    const getUpdatedIndexSpy = vi.spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getUpdatedIndex');
-    getUsableSelectOptionsSpy.mockReturnValueOnce(options);
-    getUpdatedIndexSpy.mockReturnValueOnce(-1);
+  it('should return null when no option is usable', () => {
+    const options = generateOptions({ amount: 2, disabledIndex: 0, hiddenIndex: 1 });
 
     const nextOption = getNextOptionToHighlight(options, null, 'CloseSelect');
 
-    expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
     expect(nextOption).toBeNull();
   });
-  it('should call getUpdatedIndex with correct parameters and return option', () => {
+  it('should return the next usable option', () => {
     const options = generateOptions({ highlightedIndex: 0 });
-    const getUsableSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getUsableSelectOptions');
-    const getUpdatedIndexSpy = vi.spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getUpdatedIndex');
-    getUsableSelectOptionsSpy.mockReturnValueOnce(options);
-    getUpdatedIndexSpy.mockReturnValueOnce(1);
 
     const nextOption = getNextOptionToHighlight(options, options[0], 'Next');
 
-    expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
-    expect(getUpdatedIndexSpy).toHaveBeenCalledWith(0, 2, 'Next');
     expect(nextOption).toEqual(options[1]);
+  });
+  it('should skip unusable options when determining the next one', () => {
+    const options = generateOptions({ highlightedIndex: 0, disabledIndex: 1 });
+
+    const nextOption = getNextOptionToHighlight(options, options[0], 'Next');
+
+    expect(nextOption).toEqual(options[2]);
   });
 });
 
 describe('updateHighlightedOption()', () => {
   it('should return currently highlighted option and return if new option is equal to current', () => {
     const options = generateOptions({ highlightedIndex: 0 });
-    const setHighlightedSelectOptionSpy = vi.spyOn(
-      keyboardBehaviorUtils.internalKeyBehavior,
-      'setHighlightedSelectOption'
-    );
-
     const currentlyhighlightedOption = updateHighlightedOption(options[0], options[0]);
 
-    expect(setHighlightedSelectOptionSpy).not.toHaveBeenCalled();
     expect(currentlyhighlightedOption).toEqual(options[0]);
 
     expect(options[0].highlighted).toBe(true);
@@ -172,16 +161,10 @@ describe('updateHighlightedOption()', () => {
 
   it('should set highlight to new option when only new option is provided', () => {
     const options = generateOptions();
-    const setHighlightedSelectOptionSpy = vi.spyOn(
-      keyboardBehaviorUtils.internalKeyBehavior,
-      'setHighlightedSelectOption'
-    );
     const scrollIntoViewSpy = vi.spyOn(options[1], 'scrollIntoView');
 
     const currentlyhighlightedOption = updateHighlightedOption(null, options[1]);
 
-    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[1], true);
-    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledTimes(1);
     expect(currentlyhighlightedOption).toEqual(options[1]);
     expect(options[0].highlighted).toBe(false);
     expect(options[1].highlighted).toBe(true);
@@ -192,33 +175,25 @@ describe('updateHighlightedOption()', () => {
 
   it('should remove highlight from old and set highlight to new option when two options are provided', () => {
     const options = generateOptions({ highlightedIndex: 1 });
-    const setHighlightedSelectOptionSpy = vi.spyOn(
-      keyboardBehaviorUtils.internalKeyBehavior,
-      'setHighlightedSelectOption'
-    );
     const scrollIntoViewSpy = vi.spyOn(options[1], 'scrollIntoView');
 
     const currentlyhighlightedOption = updateHighlightedOption(options[0], options[1]);
 
-    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[0], false);
-    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[1], true);
     expect(currentlyhighlightedOption).toEqual(options[1]);
+    expect(options[0].highlighted).toBe(false);
+    expect(options[1].highlighted).toBe(true);
     expect(scrollIntoViewSpy).toHaveBeenCalledWith({ block: 'nearest' });
   });
 
   it('should not call scrollIntoView if scrollIntoView parameter is false', () => {
     const options = generateOptions({ highlightedIndex: 1 });
-    const setHighlightedSelectOptionSpy = vi.spyOn(
-      keyboardBehaviorUtils.internalKeyBehavior,
-      'setHighlightedSelectOption'
-    );
     options[1].scrollIntoView = vi.fn();
 
     const currentlyhighlightedOption = updateHighlightedOption(options[0], options[1], false);
 
-    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[0], false);
-    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[1], true);
     expect(currentlyhighlightedOption).toEqual(options[1]);
+    expect(options[0].highlighted).toBe(false);
+    expect(options[1].highlighted).toBe(true);
     expect(options[1].scrollIntoView).not.toHaveBeenCalledWith({ block: 'nearest' });
   });
 });
@@ -238,17 +213,13 @@ describe('getUsableSelectOptions()', () => {
 
 describe('filterSelectOptions()', () => {
   it('should return only matching options', () => {
-    const getUsableSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getUsableSelectOptions');
     const options = generateOptions({ textContents: ['a', 'b', 'c', 'd'] });
     const filteredOptions = filterSelectOptions(options, 'a');
-    expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
     expect(filteredOptions).toEqual([options[0]]);
   });
   it('should return only non hidden or non disabled options', () => {
-    const getUsableSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getUsableSelectOptions');
     const options = generateOptions({ disabledIndex: 0, hiddenIndex: 1 });
     const filteredOptions = filterSelectOptions(options, 'o');
-    expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
     expect(filteredOptions).toEqual([options[2]]);
   });
 });
@@ -256,36 +227,20 @@ describe('filterSelectOptions()', () => {
 describe('getMatchingSelectOptionIndex()', () => {
   it('should return correct matching option', () => {
     const options = generateOptions({ textContents: ['a', 'b', 'c'] });
-    const getHighlightedSelectOptionIndexSpy = vi
-      .spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getHighlightedSelectOptionIndex')
-      .mockReturnValueOnce(-1);
-    const filterSelectOptionsSpy = vi
-      .spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'filterSelectOptions')
-      .mockReturnValueOnce(options);
     const matchingOption = getMatchingSelectOptionIndex(options, 'a');
-    expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
-    expect(filterSelectOptionsSpy).toHaveBeenCalledWith(options, 'a');
     expect(matchingOption).toBe(options[0]);
   });
 
   it('should return correct matching option when same key pressed multiple times', () => {
     const options = generateOptions({ textContents: ['a', 'a', 'c'] });
-    const getHighlightedSelectOptionIndexSpy = vi
-      .spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getHighlightedSelectOptionIndex')
-      .mockReturnValueOnce(-1)
-      .mockReturnValueOnce(0);
-    const filterSelectOptionsSpy = vi
-      .spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'filterSelectOptions')
-      .mockReturnValueOnce(options);
 
     const matchingOption = getMatchingSelectOptionIndex(options, 'a');
-    expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
-    expect(filterSelectOptionsSpy).toHaveBeenCalledTimes(1);
     expect(matchingOption).toBe(options[0]);
 
+    // the caller highlights the match before the next keystroke, which is what shifts the search start
+    setHighlightedSelectOption(options[0], true);
+
     const matchingOption2 = getMatchingSelectOptionIndex(options, 'aa');
-    expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
-    expect(filterSelectOptionsSpy).toHaveBeenCalledTimes(3);
     expect(matchingOption2).toBe(options[1]);
   });
 });
@@ -314,18 +269,15 @@ describe('setHighlightedSelectOption()', () => {
 });
 describe('getHighlightedSelectOptionIndex()', () => {
   it('should return correct highlighted select option index', () => {
-    const options = generateOptions();
-    const getUsableSelectOptionsSpy = vi
-      .spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getUsableSelectOptions')
-      .mockReturnValueOnce(options);
-    const getHighlightedSelectOptionSpy = vi
-      .spyOn(keyboardBehaviorUtils.internalKeyBehavior, 'getHighlightedSelectOption')
-      .mockReturnValueOnce(options[1]);
-
-    const highlightedOptionIndex = getHighlightedSelectOptionIndex(options);
-    expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
-    expect(getHighlightedSelectOptionSpy).toHaveBeenCalledWith(options);
-    expect(highlightedOptionIndex).toBe(1);
+    const options = generateOptions({ highlightedIndex: 1 });
+    expect(getHighlightedSelectOptionIndex(options)).toBe(1);
+  });
+  it('should return the index within the usable options only', () => {
+    const options = generateOptions({ highlightedIndex: 2, disabledIndex: 0 });
+    expect(getHighlightedSelectOptionIndex(options)).toBe(1);
+  });
+  it('should return -1 when no option is highlighted', () => {
+    expect(getHighlightedSelectOptionIndex(generateOptions())).toBe(-1);
   });
 });
 describe('getHighlightedSelectOption()', () => {

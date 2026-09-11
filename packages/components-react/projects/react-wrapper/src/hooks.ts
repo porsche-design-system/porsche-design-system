@@ -68,7 +68,7 @@ export const useMergedClass = (ref: MutableRefObject<HTMLElement | undefined>, c
 export const useBrowserLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export const useToastManager = (): { addMessage: (msg: ToastMessage) => void } => {
-  const tagName = internalHooks.usePrefix('p-toast');
+  const tagName = usePrefix('p-toast');
 
   return {
     addMessage: (message: ToastMessage): void => {
@@ -78,8 +78,4 @@ export const useToastManager = (): { addMessage: (msg: ToastMessage) => void } =
       customElements.whenDefined(tagName).then(() => toast.addMessage(message));
     },
   };
-};
-
-export const internalHooks = {
-  usePrefix,
 };

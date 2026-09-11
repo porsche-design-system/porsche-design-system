@@ -1,6 +1,4 @@
-import { vi } from 'vitest';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
-import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 import {
   getStepperHorizontalIconName,
   isItemClickable,
@@ -57,19 +55,12 @@ describe('isItemClickable()', () => {
   it.each<[state: StepperHorizontalItemState, disabled: boolean, expected: boolean]>([
     ['complete', true, false],
     ['warning', true, false],
-    ['complete', true, false],
+    ['current', true, false],
     [undefined, false, false],
     ['complete', false, true],
     ['warning', false, true],
-    ['complete', false, true],
+    ['current', false, false],
   ])('should for state %s and disabled %s return %s', (state, disabled, expected) => {
     expect(isItemClickable(state, disabled)).toBe(expected);
-  });
-
-  it('should call isStateCompleteOrWarning()', () => {
-    const spy = vi.spyOn(stepperHorizontalItemUtils.internalStepper, 'isStateCompleteOrWarning');
-    isItemClickable('current', false);
-
-    expect(spy).toHaveBeenCalledWith('current');
   });
 });

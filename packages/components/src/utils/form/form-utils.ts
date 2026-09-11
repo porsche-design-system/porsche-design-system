@@ -24,9 +24,9 @@ export const updateCounter = (
   inputChangeCallback?: () => void
 ): void => {
   if (counterElement) {
-    internal.setCounterInnerHtml(el, counterElement);
+    setCounterInnerHtml(el, counterElement);
   }
-  internal.setAriaElementInnerHtml(el, characterCountElement);
+  setAriaElementInnerHtml(el, characterCountElement);
   inputChangeCallback?.();
 };
 
@@ -50,8 +50,3 @@ export const setAriaElementInnerHtml = debounce(
     ariaElement.innerText = `You have ${el.maxLength - el.value.length} out of ${el.maxLength} characters left`;
   }
 );
-
-export const internal = {
-  setCounterInnerHtml,
-  setAriaElementInnerHtml,
-};

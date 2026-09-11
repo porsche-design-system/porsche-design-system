@@ -3,7 +3,6 @@ import * as path from 'node:path';
 import * as globby from 'fast-glob';
 import type { JssStyle, Styles } from 'jss';
 import { vi } from 'vitest';
-import * as jssUtils from './jss';
 import {
   attachComponentCss,
   buildResponsiveBooleanStyles,
@@ -13,8 +12,8 @@ import {
   getCss,
   isObject,
   mergeDeep,
-  supportsConstructableStylesheets,
 } from './jss';
+import * as supportsConstructableStylesheetsUtils from './supportsConstructableStylesheets';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
@@ -216,20 +215,6 @@ describe('getCss()', () => {
   );
 });
 
-describe('supportsConstructableStylesheets()', () => {
-  it('should return true if CSSStyleSheet constructor exists', () => {
-    // due to polyfill
-    expect(supportsConstructableStylesheets()).toBe(true);
-  });
-
-  it('should return false if CSSStyleSheet constructor does not exist', () => {
-    const globalCSSStyleSheet = global.CSSStyleSheet;
-    global.CSSStyleSheet = undefined;
-    expect(supportsConstructableStylesheets()).toBe(false);
-    global.CSSStyleSheet = globalCSSStyleSheet;
-  });
-});
-
 describe('buildResponsiveStyles()', () => {
   describe('for simple getJssStyle', () => {
     const getJssStyle = (val: number): JssStyle => ({ width: 100 * val });
@@ -348,18 +333,20 @@ describe('attachComponentCss()', () => {
     componentCssMap.clear();
   });
 
-  it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
+  it('should retrieve cached css taking infinite parameters into account', () => {
     const host = document.createElement('p-some-component');
     host.attachShadow({ mode: 'open' });
-    const spy = vi.spyOn(jssUtils.internalJss, 'getCachedComponentCss').mockImplementation(() => '');
+    const getComponentCss = vi.fn((_x: boolean, _y: string, _z: number) => 'some css');
 
-    attachComponentCss(host, (_x: boolean) => 'some css', true);
+    attachComponentCss(host, getComponentCss, false, '', 1);
+    attachComponentCss(host, getComponentCss, false, '', 1);
 
-    expect(spy).toHaveBeenCalledWith(host, expect.anything(), true);
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    attachComponentCss(host, (_x: boolean, _y: string, _z: number) => 'some css', false, '', 1);
+    // only misses the cache if the last parameter is part of the key too
+    attachComponentCss(host, getComponentCss, false, '', 2);
 
-    expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, '', 1);
+    expect(getComponentCss).toHaveBeenCalledTimes(2);
   });
 
   describe('with CSSStyleSheet support', () => {
@@ -376,7 +363,9 @@ describe('attachComponentCss()', () => {
 
   describe('without CSSStyleSheet support', () => {
     it('should create style node and prepend it in shadowRoot', () => {
-      const spy = vi.spyOn(jssUtils.internalJss, 'getHasConstructableStylesheetSupport').mockReturnValue(false);
+      const spy = vi
+        .spyOn(supportsConstructableStylesheetsUtils, 'getHasConstructableStylesheetSupport')
+        .mockReturnValue(false);
 
       const div = document.createElement('p-some-component');
       div.attachShadow({ mode: 'open' });
