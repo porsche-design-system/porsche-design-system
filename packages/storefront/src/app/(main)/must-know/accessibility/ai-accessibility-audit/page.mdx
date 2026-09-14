@@ -22,16 +22,17 @@ For generation-time guardrails, see [**AI Agent Context**](/must-know/accessibil
   | Requirement | Details |
   | ---------------- | ----------------------------------------------------------------------------------------------- |
   | **Editors** | [GitHub Copilot](https://docs.github.com/en/copilot) in VS Code, [Claude Code](https://docs.anthropic.com/en/docs/claude-code), or Cursor |
-  | **Runtime** | [APM CLI](https://microsoft.github.io/apm/) (tested with [0.29.0](https://github.com/microsoft/apm/releases/tag/v0.29.0)) and Node.js/npm for scanners such as `npx @axe-core/cli` |
+  | **Runtime** | [APM CLI](https://microsoft.github.io/apm/) (tested with [0.30.0](https://github.com/microsoft/apm/releases/tag/v0.30.0)) and Node.js/npm for scanners such as `npx @axe-core/cli` |
   | **Access** | Read access to [porsche-design-system/skills](https://github.com/porsche-design-system/skills). For private org installs, see APM [Private and org packages](https://microsoft.github.io/apm/consumer/private-and-org-packages/) |
   | **Product** | A local checkout of the application, running locally during the audit |
 </Notification>
 
 ## Install
 
-Install [APM](https://microsoft.github.io/apm/quickstart/) if needed (macOS/Linux: `curl -sSL https://aka.ms/apm-unix | sh`;
-Windows: `irm https://aka.ms/apm-windows | iex`). To match the CLI we tested, add `sh -s -- @v0.29.0` on Unix. Then from
-the product repository root pin the **package** (not the CLI):
+Install [APM](https://microsoft.github.io/apm/quickstart/) if needed (macOS: `brew install apm`; Linux / macOS without
+Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`; Windows: `irm https://aka.ms/apm-windows | iex`). To match the CLI we
+tested, pin Unix curl installs with `sh -s -- @v0.30.0`. Then from the product repository root pin the **package** (not
+the CLI):
 
 ```bash
 apm install porsche-design-system/skills/packages/web-accessibility-audit#web-accessibility-audit--v0.1.1
