@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       storefront-slug:
-        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the storefront basePath so the build matches the gh-pages folder produced by the deploy workflow.'
+        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4-preview"). Used as the storefront basePath so the build matches the bucket key prefix produced by the deploy workflow.'
         required: true
         type: string
 
@@ -30,6 +30,22 @@ jobs:
       # Guards against npm pruning platform-specific native bindings from the lockfile
       # (https://github.com/npm/cli/issues/4828) — see docs/dependencies.md.
       - run: npm run npm:verify-lock
+      - run: npm run test:unit:scripts
+  # Independent of the builds: a failure fails the workflow, and downstream jobs (test, deploy,
+  # release) depend on the whole `Build` workflow, so nothing ships from a run whose lint or
+  # typecheck failed. Running them alongside the builds trades a few wasted build minutes on a
+  # broken commit for a shorter pipeline.
+  typecheck:
+    name: 'Typecheck'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - run: npm run typecheck
   build-development:
     name: 'Development'
     runs-on: ubuntu-latest

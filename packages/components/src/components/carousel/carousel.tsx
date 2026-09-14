@@ -28,6 +28,7 @@ import {
   parseAndGetAriaAttributes,
   parseJSON,
   parseJSONAttribute,
+  parseJSONBoolean,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
@@ -178,7 +179,7 @@ export class Carousel {
   }
 
   private get parsedPagination(): BreakpointValues<boolean> | boolean {
-    return parseJSON(this.pagination) as BreakpointValues<boolean> | boolean;
+    return parseJSONBoolean(this.pagination);
   }
 
   private get splideSlides(): HTMLElement[] {
@@ -494,15 +495,11 @@ export class Carousel {
 
   private observeSlides(): void {
     // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
-    observeChildren(
-      this.container,
-      () => {
-        for (const el of this.splideSlides) {
-          el.removeAttribute('aria-hidden');
-          el.setAttribute('tabindex', '0');
-        }
-      },
-      ['aria-hidden']
-    );
+    observeChildren(this.container, () => {
+      for (const el of this.splideSlides) {
+        el.removeAttribute('aria-hidden');
+        el.setAttribute('tabindex', '0');
+      }
+    }, ['aria-hidden']);
   }
 }

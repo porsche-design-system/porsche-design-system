@@ -4,6 +4,7 @@ import { AgGridExampleCompactEnterpriseComponent } from './ag-grid-example-compa
 import { AgGridExampleCompactCommunityComponent } from './ag-grid-example-compact-community.component';
 import { AgGridExampleCommunityComponent } from './ag-grid-example-community.component';
 import { BannerExampleComponent } from './banner-example.component';
+import { BooleanAttributeShorthandExampleComponent } from './boolean-attribute-shorthand-example.component';
 import { ButtonExampleFormComponent } from './button-example-form.component';
 import { ButtonExampleFormAttributeComponent } from './button-example-form-attribute.component';
 import { ButtonPureExampleFormComponent } from './button-pure-example-form.component';
@@ -124,6 +125,7 @@ export const examples = [
   AgGridExampleCommunityComponent,
   AgGridExampleCompactCommunityComponent,
   BannerExampleComponent,
+  BooleanAttributeShorthandExampleComponent,
   ButtonExampleFormComponent,
   ButtonExampleFormAttributeComponent,
   ButtonPureExampleFormComponent,
@@ -242,6 +244,7 @@ export * from './ag-grid-example-compact-enterprise.component';
 export * from './ag-grid-example-compact-community.component';
 export * from './ag-grid-example-community.component';
 export * from './banner-example.component';
+export * from './boolean-attribute-shorthand-example.component';
 export * from './button-example-form.component';
 export * from './button-example-form-attribute.component';
 export * from './button-pure-example-form.component';

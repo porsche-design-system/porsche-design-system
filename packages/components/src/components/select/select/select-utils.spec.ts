@@ -70,10 +70,9 @@ describe('resetSelectedOption', () => {
 
 describe('updateSelectOptions', () => {
   it('should not select option when value="undefined" and no option with that value exists', () => {
-    const host = document.createElement('p-select');
     const options = generateOptions();
     const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
-    selectUtils.selectOptionByValue(host, options, undefined);
+    selectUtils.selectOptionByValue(options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     options.forEach((option) => {
       expect(option.selected).toBe(false);
@@ -81,41 +80,35 @@ describe('updateSelectOptions', () => {
   });
 
   it('should select correct option when value="undefined" and option with that value exists', () => {
-    const host = document.createElement('p-select');
     const options = [
       { value: undefined, selected: false },
       { value: 'a', selected: false },
       { value: 'b', selected: false },
     ] as selectUtils.SelectOption[];
     const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
-    selectUtils.selectOptionByValue(host, options, undefined);
+    selectUtils.selectOptionByValue(options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(false);
   });
-  it('should not select option and show warning when value="a" and no option with that value exists', () => {
-    const host = document.createElement('p-select');
-    const options = generateOptions();
+  it.each([undefined, null, '', 'a', 0])('should deselect without warning when value=%p has no match', (value) => {
+    const options = generateOptions({ selectedIndices: [0] });
     const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
-    selectUtils.selectOptionByValue(host, options, 'a');
+    expect(selectUtils.selectOptionByValue(options, value)).toBeNull();
     options.forEach((option) => {
       expect(option.selected).toBe(false);
     });
-    expect(consoleWarnSpy).toHaveBeenCalledWith(
-      'The provided value: a is not included in the options of the p-select:',
-      host
-    );
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
   it('should select correct option when value="a" and option with that value exists', () => {
-    const host = document.createElement('p-select');
     const options = [
       { value: 'a', selected: false },
       { value: 'b', selected: false },
       { value: 'c', selected: false },
     ] as selectUtils.SelectOption[];
     const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
-    selectUtils.selectOptionByValue(host, options, 'a');
+    selectUtils.selectOptionByValue(options, 'a');
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
@@ -123,54 +116,50 @@ describe('updateSelectOptions', () => {
   });
 
   it('should NOT match a numeric option.value against a string host value (strict-typed)', () => {
-    const host = document.createElement('p-select');
     const options = [
       { value: 0, selected: false },
       { value: 1, selected: false },
       { value: 2, selected: false },
     ] as unknown as selectUtils.SelectOption[];
     const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
-    selectUtils.selectOptionByValue(host, options, '1');
+    selectUtils.selectOptionByValue(options, '1');
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(false);
-    expect(consoleWarnSpy).toHaveBeenCalled();
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 
   it('should NOT match a string option.value against a numeric host value (strict-typed)', () => {
-    const host = document.createElement('p-select');
     const options = [
       { value: '1', selected: false },
       { value: '2', selected: false },
     ] as selectUtils.SelectOption[];
     const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
-    selectUtils.selectOptionByValue(host, options, 2);
+    selectUtils.selectOptionByValue(options, 2);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(false);
-    expect(consoleWarnSpy).toHaveBeenCalled();
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 
   it('should not match an option with undefined value when value is "undefined" string', () => {
-    const host = document.createElement('p-select');
     const options = [
       { value: undefined, selected: false },
       { value: 'undefined', selected: false },
     ] as selectUtils.SelectOption[];
-    selectUtils.selectOptionByValue(host, options, 'undefined');
+    selectUtils.selectOptionByValue(options, 'undefined');
     // option with the literal string 'undefined' should match, not the one with undefined value
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(true);
   });
 
   it('should match null host value only against an option with null value (strict)', () => {
-    const host = document.createElement('p-select');
     const options = [
       { value: undefined, selected: false },
       { value: null, selected: false },
       { value: 'a', selected: false },
     ] as selectUtils.SelectOption[];
     const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
-    selectUtils.selectOptionByValue(host, options, null);
+    selectUtils.selectOptionByValue(options, null);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(true);
     expect(options[2].selected).toBe(false);
@@ -178,23 +167,21 @@ describe('updateSelectOptions', () => {
   });
 
   it('should not match an option with undefined value when host value is null (strict)', () => {
-    const host = document.createElement('p-select');
     const options = [
       { value: undefined, selected: false },
       { value: 'a', selected: false },
     ] as selectUtils.SelectOption[];
     const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
-    selectUtils.selectOptionByValue(host, options, null);
+    selectUtils.selectOptionByValue(options, null);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(false);
     expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 
   it('should not warn when host value is null and no option matches', () => {
-    const host = document.createElement('p-select');
     const options = generateOptions();
     const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
-    selectUtils.selectOptionByValue(host, options, null);
+    selectUtils.selectOptionByValue(options, null);
     options.forEach((option) => {
       expect(option.selected).toBe(false);
     });
@@ -202,20 +189,18 @@ describe('updateSelectOptions', () => {
   });
 
   it('should match a numeric host value against a numeric option.value (same type)', () => {
-    const host = document.createElement('p-select');
     const options = [
       { value: 1, selected: false },
       { value: 2, selected: false },
     ] as unknown as selectUtils.SelectOption[];
-    selectUtils.selectOptionByValue(host, options, 2);
+    selectUtils.selectOptionByValue(options, 2);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(true);
   });
 
-  it('should match numeric option.value=0 against host value=0 (no falsy regression)', () => {
-    const host = document.createElement('p-select');
-    const options = [{ value: 0, selected: false }] as unknown as selectUtils.SelectOption[];
-    selectUtils.selectOptionByValue(host, options, 0);
+  it.each([0, ''])('should match a falsy option value %p', (value) => {
+    const options = [{ value, selected: false }] as selectUtils.SelectOption[];
+    selectUtils.selectOptionByValue(options, value);
     expect(options[0].selected).toBe(true);
   });
 });

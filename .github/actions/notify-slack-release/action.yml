@@ -1,0 +1,46 @@
+name: 'Notify Slack Release'
+description: 'Announces a published GitHub Release in Slack. Reads the release back from the API so the message and the release cannot disagree.'
+
+inputs:
+  tag:
+    description: 'Release tag to announce, e.g. "v4.7.0".'
+    required: true
+  slack-bot-token:
+    description: 'Slack bot token with the `chat:write` scope.'
+    required: true
+  slack-channel-id:
+    description: 'Slack channel to post to. The app must be a member of it.'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    # Node without `npm ci` across ~35 workspaces; the payload builder has no dependencies.
+    - uses: ./.github/actions/install
+      with:
+        node_modules: 'false'
+    - name: 'Fetch release'
+      shell: bash
+      run: gh api "repos/$GITHUB_REPOSITORY/releases/tags/$INPUT_TAG" > "$RUNNER_TEMP/release.json"
+      env:
+        GH_TOKEN: ${{ github.token }}
+        INPUT_TAG: ${{ inputs.tag }}
+    - name: 'Build payload'
+      shell: bash
+      # `--disable-warning` silences a stderr notice about the missing root `"type"` field.
+      run: |
+        node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-release-payload.ts \
+          "$RUNNER_TEMP/release.json" \
+          > "$RUNNER_TEMP/slack-payload.json"
+        cat "$RUNNER_TEMP/slack-payload.json"
+      env:
+        SLACK_CHANNEL_ID: ${{ inputs.slack-channel-id }}
+    - name: 'Send'
+      # `errors: true` because the action defaults to FALSE — a rejected request would otherwise
+      # pass green and consumers would never be told.
+      uses: slackapi/slack-github-action@v4.0.0
+      with:
+        method: chat.postMessage
+        token: ${{ inputs.slack-bot-token }}
+        payload-file-path: ${{ runner.temp }}/slack-payload.json
+        errors: true

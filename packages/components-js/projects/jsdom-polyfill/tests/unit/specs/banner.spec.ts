@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -8,6 +9,7 @@ it('should have initialized shadow dom', async () => {
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;
+  assertDefined(el);
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -17,11 +19,16 @@ it('should have working events', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
+  assertDefined(el);
+  const debugEl = document.querySelector('#debug');
+  assertDefined(debugEl);
+
   el.addEventListener('dismiss', () => {
-    debugEl.querySelector('span').innerHTML = '1';
+    const span = debugEl.querySelector('span');
+    assertDefined(span);
+    span.innerHTML = '1';
   });
 
-  const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
   // `hidden: true` is required because the banner renders its content inside a Popover API panel
@@ -39,6 +46,7 @@ it('should expose its heading to shadow queries', async () => {
   expect(screen.queryAllByText('Some heading')).toHaveLength(0);
   expect(screen.getAllByShadowText('Some heading')).toHaveLength(1);
 
-  const { shadowRoot } = document.querySelector('p-banner');
+  const shadowRoot = document.querySelector('p-banner')?.shadowRoot;
+  assertDefined(shadowRoot);
   expect(screen.getByShadowText('Some heading')).toBe(shadowRoot.querySelector('h5'));
 });

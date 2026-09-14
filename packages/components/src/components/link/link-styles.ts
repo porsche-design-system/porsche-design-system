@@ -2,7 +2,7 @@ import { radiusFull, radiusLg, radiusXl, ref } from '@porsche-design-system/styl
 import { addImportantToEachRule, addImportantToRule, getFocusBaseStyles } from '../../styles';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName } from '../../types';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveBooleanStyles, getCss, mergeDeep } from '../../utils';
 import type { LinkVariant } from './link-utils';
 
 const cssVariableInternalLinkScaling = '--_p-link-a';
@@ -79,10 +79,10 @@ export const getComponentCss = (
               position: 'fixed',
               inset: 0,
               ...mergeDeep(
-                buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
+                buildResponsiveBooleanStyles(isCompact, (compactValue: boolean) => ({
                   borderRadius: ref(cssVarRadius, compactValue ? ref(radiusLg) : ref(radiusXl)),
                 })),
-                buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+                buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
                   ...(hideLabelValue && {
                     borderRadius: ref(cssVarRadius, ref(radiusFull)),
                   }),

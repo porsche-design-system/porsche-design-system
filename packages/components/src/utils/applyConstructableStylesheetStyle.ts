@@ -36,8 +36,7 @@ export const applyConstructableStylesheetStyles = (
 
       const sheet = new CSSStyleSheet();
       sheet.replaceSync(getStyles.map((getStyle) => getCss(getStyle(element.tagName.toLowerCase()))).join(''));
-      // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
-      documentOrShadowRoot.adoptedStyleSheets?.push(sheet);
+      (documentOrShadowRoot.adoptedStyleSheets as CSSStyleSheet[])?.push(sheet);
     }
   }
 };

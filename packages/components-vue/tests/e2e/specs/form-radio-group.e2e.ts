@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 
 const getHost = (page: Page) => page.locator('p-radio-group');
 const getInputs = (page: Page) => page.locator('p-radio-group input');

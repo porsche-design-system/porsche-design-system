@@ -1,15 +1,11 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { kebabCase, pascalCase } from 'change-case';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 
 export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'react-ssr-wrapper';
-  protected ignoreComponents: TagName[] = INTERNAL_TAG_NAMES.filter(
-    (tagName) => tagName !== 'p-select-wrapper-dropdown'
-  );
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     let imports = super.generateImports(component, extendedProps, nonPrimitiveTypes);

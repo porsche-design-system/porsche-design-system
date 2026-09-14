@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["tests/vrt"],
+  "exclude": ["node_modules", "generated", "projects"]
+}
