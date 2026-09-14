@@ -23,7 +23,7 @@ For generation-time guardrails, see [**AI Agent Context**](/must-know/accessibil
   | ---------------- | ----------------------------------------------------------------------------------------------- |
   | **Editors** | [GitHub Copilot](https://docs.github.com/en/copilot) in VS Code, [Claude Code](https://docs.anthropic.com/en/docs/claude-code), or Cursor |
   | **Runtime** | [APM CLI](https://microsoft.github.io/apm/) (tested with [0.30.0](https://github.com/microsoft/apm/releases/tag/v0.30.0)) and Node.js/npm for scanners such as `npx @axe-core/cli` |
-  | **Access** | Read access to [porsche-design-system/skills](https://github.com/porsche-design-system/skills). For private org installs, see APM [Private and org packages](https://microsoft.github.io/apm/consumer/private-and-org-packages/) |
+  | **Access** | Read access to [porsche-design-system/skills](https://github.com/porsche-design-system/skills) |
   | **Product** | A local checkout of the application, running locally during the audit |
 </Notification>
 
@@ -36,18 +36,6 @@ the CLI):
 
 ```bash
 apm install porsche-design-system/skills/packages/web-accessibility-audit#web-accessibility-audit--v0.1.1
-```
-
-Newer APM CLIs can still install that tag. If install or deploy looks wrong, try the tested CLI.
-
-For a team lockfile, declare the same ref in `apm.yml` and run `apm install`:
-
-```yaml
-dependencies:
-  apm:
-    - git: https://github.com/porsche-design-system/skills.git
-      path: packages/web-accessibility-audit
-      ref: web-accessibility-audit--v0.1.1
 ```
 
 To move version, bump `ref` and run `apm install`. To remove it, delete the entry (or `apm uninstall`) and run

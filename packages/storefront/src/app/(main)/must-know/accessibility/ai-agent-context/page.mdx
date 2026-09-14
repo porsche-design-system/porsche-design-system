@@ -28,28 +28,18 @@ To audit generated UI, see [**AI Accessibility Audit**](/must-know/accessibility
   | ---------------- | ----------------------------------------------------------------------------------------------- |
   | **Agents** | [GitHub Copilot](https://docs.github.com/en/copilot), [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Cursor, Windsurf, Gemini, Codex, or a shared `agent-skills` consumer |
   | **Runtime** | [APM CLI](https://microsoft.github.io/apm/) (tested with [0.30.0](https://github.com/microsoft/apm/releases/tag/v0.30.0)) |
-  | **Access** | Read access to [porsche-design-system/skills](https://github.com/porsche-design-system/skills). For private org installs, see APM [Private and org packages](https://microsoft.github.io/apm/consumer/private-and-org-packages/) |
+  | **Access** | Read access to [porsche-design-system/skills](https://github.com/porsche-design-system/skills) |
   | **Product** | A local checkout of the web application |
 </Notification>
 
 ## Install
 
 Install [APM](https://microsoft.github.io/apm/quickstart/) if needed (macOS: `brew install apm`; Linux / macOS without
-Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`; Windows: `irm https://aka.ms/apm-windows | iex`). To match the CLI we
-tested, pin Unix curl installs with `sh -s -- @v0.30.0`. Then from the product repository root pin the **package**:
+Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`; Windows: `irm https://aka.ms/apm-windows | iex`).
+Then from the product repository root install the **package**:
 
 ```bash
 apm install porsche-design-system/skills/packages/web-accessibility-codegen#web-accessibility-codegen--v0.2.0
-```
-
-Newer APM CLIs can still install that tag. You can list `web-accessibility-audit` in the same `apm.yml`.
-
-```yaml
-dependencies:
-  apm:
-    - git: https://github.com/porsche-design-system/skills.git
-      path: packages/web-accessibility-codegen
-      ref: web-accessibility-codegen--v0.2.0
 ```
 
 To move version, bump `ref` and run `apm install`. To remove it, delete the entry (or `apm uninstall`) and run
