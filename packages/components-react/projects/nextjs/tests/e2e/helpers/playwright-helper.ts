@@ -34,6 +34,6 @@ export const getConsoleWarningsAmount = (): number => {
   return consoleMessages.filter((x: ConsoleMessage): boolean => x.type() === 'warning').length;
 };
 
-export const getAttribute = (element: Locator, attribute: string): Promise<string> => {
+export const getAttribute = (element: Locator, attribute: string): Promise<string | null> => {
   return element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 };

@@ -113,6 +113,7 @@ test.describe('value', () => {
     // Add input event listener that always sets value to 'b'
     await page.evaluate(() => {
       const hostElement = document.querySelector('p-input-password');
+      if (!hostElement) throw new Error('p-input-password not found');
       hostElement.addEventListener('input', () => {
         hostElement.value = 'b';
       });

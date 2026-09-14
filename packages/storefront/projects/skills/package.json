@@ -12,13 +12,15 @@
   },
   "scripts": {
     "build:skills": "node --import tsx --require ./scripts/skill-mdx-loader.cjs scripts/build-skills.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "lint": "biome lint",
     "test": "npm run test:unit:skills",
-    "test:unit:skills": "npm run build:skills && vitest --config tests/config/vitest.node.config.ts && vitest --config tests/config/vitest.config.ts"
+    "test:unit:skills": "npm run typecheck:tests && npm run build:skills && vitest --config tests/config/vitest.node.config.ts && vitest --config tests/config/vitest.config.ts"
   },
   "devDependencies": {
     "@porsche-design-system/component-meta": "0.0.0",
-    "@porsche-design-system/components-react": "4.7.0-beta.0",
+    "@porsche-design-system/components-react": "4.7.0",
     "@porsche-design-system/emotion": "0.0.0",
     "@porsche-design-system/scss": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",

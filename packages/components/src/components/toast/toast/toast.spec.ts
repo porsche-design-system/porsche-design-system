@@ -29,7 +29,6 @@ describe('disconnectedCallback', () => {
   it('should call toastManager.unregister()', () => {
     const spy = vi.spyOn(toastManager, 'unregister');
     const component = new Toast();
-    component['manager'] = toastManager;
     component.disconnectedCallback();
 
     expect(spy).toHaveBeenCalledWith();

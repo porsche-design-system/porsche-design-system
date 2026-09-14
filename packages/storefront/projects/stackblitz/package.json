@@ -23,9 +23,15 @@
     "./dist/"
   ],
   "scripts": {
-    "build": "npm run clean:build && npm run build:generateStackblitzBundle && npm run build:lib",
+    "build": "npm run clean:build && npm run build:generateStackblitzBundle && npm run typecheck && npm run build:lib",
     "build:generateStackblitzBundle": "tsx --tsconfig tsconfig.node.json scripts/generateStackblitzBundle.ts",
     "build:lib": "rollup -c",
+    "typecheck": "npm run typecheck:scripts && npm run typecheck:vanilla-js && npm run typecheck:react && npm run typecheck:vue && npm run typecheck:angular",
+    "typecheck:scripts": "tsc --noEmit -p tsconfig.json",
+    "typecheck:vanilla-js": "tsc --noEmit -p src/vanilla-js/tsconfig.node.json",
+    "typecheck:react": "tsc --noEmit -p src/react/tsconfig.app.json && tsc --noEmit -p src/react/tsconfig.node.json",
+    "typecheck:vue": "vue-tsc --noEmit -p src/vue/tsconfig.app.json && vue-tsc --noEmit -p src/vue/tsconfig.node.json",
+    "typecheck:angular": "ngc -p src/angular/tsconfig.app.json --noEmit",
     "clean:build": "rm -rf ./generated && rm -rf ./dist"
   },
   "dependencies": {

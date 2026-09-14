@@ -4,7 +4,6 @@ import { useLayoutEffect } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import * as hooks from '../../../src/hooks';
 import {
-  internalHooks,
   skipCheckForPorscheDesignSystemProviderDuringTests,
   useBrowserLayoutEffect,
   usePrefix,

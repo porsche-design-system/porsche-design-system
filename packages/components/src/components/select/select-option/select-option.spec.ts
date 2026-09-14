@@ -7,7 +7,7 @@ import { SelectOption } from './select-option';
 
 const initComponent = (): SelectOption => {
   const component = new SelectOption();
-  const host = document.createElement('p-select-option') as HTMLElement & {
+  const host = document.createElement('p-select-option') as unknown as HTMLElement & {
     selected: boolean;
     highlighted: boolean;
     hidden: boolean;

@@ -38,11 +38,19 @@ if [[ "${INPUT_DRY_RUN}" != "true" ]]; then
   : "${GITHUB_TOKEN:?github-token input is required}"
 fi
 
+# Every exit below is 0, so only this output distinguishes a real release from a no-op.
+set_created() {
+  if [[ -n "${GITHUB_OUTPUT:-}" ]]; then
+    echo "created=$1" >> "${GITHUB_OUTPUT}"
+  fi
+}
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GIT_TAG_NAME="v${INPUT_VERSION}"
 
 if [[ "${INPUT_VERSION}" == *-* ]]; then
   echo "Skipping GitHub Release for pre-release version \"${INPUT_VERSION}\"."
+  set_created false
   exit 0
 fi
 
@@ -73,6 +81,7 @@ if [[ "${INPUT_DRY_RUN}" != "true" ]]; then
 
   if [[ "${EXISTING_STATUS}" == "200" ]]; then
     echo "GitHub Release \"${GIT_TAG_NAME}\" already exists – nothing to do."
+    set_created false
     exit 0
   fi
 fi
@@ -135,6 +144,7 @@ PAYLOAD=$(jq -n \
 if [[ "${INPUT_DRY_RUN}" == "true" ]]; then
   echo "[dry-run] Payload for \"${GIT_TAG_NAME}\":"
   echo "${PAYLOAD}"
+  set_created false
   exit 0
 fi
 
@@ -150,7 +160,10 @@ if ! RESPONSE=$(curl --fail-with-body -sS -X POST \
 fi
 
 if [[ "${INPUT_DRAFT}" == "true" ]]; then
+  # A draft is not public and has no git tag, so there is nothing to announce yet.
+  set_created false
   echo "Created draft GitHub Release \"${GIT_TAG_NAME}\" 📝"
 else
+  set_created true
   echo "Created GitHub Release \"${GIT_TAG_NAME}\" 🚀"
 fi

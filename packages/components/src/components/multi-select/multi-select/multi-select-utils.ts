@@ -1,5 +1,5 @@
 import { forceUpdate } from '@stencil/core';
-import { consoleWarn, getTagNameWithoutPrefix, type SelectComponentsDropdownDirection } from '../../../utils';
+import type { SelectComponentsDropdownDirection } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 
@@ -17,17 +17,14 @@ export type MultiSelectToggleEventDetail = { open: boolean };
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => option.selected);
 
-
 export const getSelectedOptionsString = (options: MultiSelectOption[]): string =>
   getSelectedOptions(options)
     .map((option) => option.textContent)
     .join(', ');
 
 export const selectOptionsByValue = (
-  host: HTMLElement,
   options: MultiSelectOption[],
-  value: string[] | number[] | null,
-  preventWarning = false
+  value: string[] | number[] | null | undefined
 ): MultiSelectOption[] => {
   const values: (string | number)[] = value ?? [];
   const selectedValues = new Set<string | number>(values);
@@ -42,15 +39,6 @@ export const selectOptionsByValue = (
     if (option.selected) {
       selectedOptions.push(option);
     }
-  }
-
-  const valuesNotIncluded = values.filter((val) => !options.some((option) => option.value === val));
-
-  if (valuesNotIncluded.length > 0 && !preventWarning) {
-    consoleWarn(
-      `The provided value: ${valuesNotIncluded.join(', ')} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
-      host
-    );
   }
 
   return selectedOptions;

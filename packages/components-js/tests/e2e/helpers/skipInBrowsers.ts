@@ -1,4 +1,4 @@
-import { PlaywrightWorkerOptions } from 'playwright/types/test';
+import type { PlaywrightWorkerOptions } from 'playwright/types/test';
 import { test } from '@playwright/test';
 
 const insertSkipper = (browserNames: PlaywrightWorkerOptions['browserName'][]) =>

@@ -1,5 +1,6 @@
 import { vi } from 'vitest';
 import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
+import * as loggerUtils from '../../../utils/log/logger';
 import { Select } from './select';
 import * as selectUtils from './select-utils';
 
@@ -32,7 +33,7 @@ describe('componentWillLoad', () => {
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.componentWillLoad();
-    expect(updateSelectOptionsSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], component['value']);
+    expect(updateSelectOptionsSpy).toHaveBeenCalledWith(component['selectOptions'], component['value']);
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
@@ -50,6 +51,42 @@ describe('componentDidLoad', () => {
     component.componentDidLoad();
     expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot:not([name])');
     expect(slotSpy).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('asynchronous options', () => {
+  it.each([false, true])('should reconcile options silently with an initial partial list=%p', (hasInitialOptions) => {
+    const component = initComponent();
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    const emit = vi.fn();
+    component.change = { emit };
+    component.value = 42;
+    const otherOption = Object.assign(document.createElement('p-select-option'), { value: 7, selected: false });
+    if (hasInitialOptions) {
+      component.host.append(otherOption);
+    }
+
+    component.componentWillLoad();
+    expect(component['selectedOption']).toBeNull();
+    component.host.append(otherOption);
+    component['onSlotchange']();
+    component.onValueChange();
+    expect(otherOption.selected).toBe(false);
+    expect(component['selectedOption']).toBeNull();
+    expect(component.value).toBe(42);
+
+    const matchingOption = Object.assign(document.createElement('p-select-option'), { value: 42, selected: false });
+    component.host.append(matchingOption);
+    component['onSlotchange']();
+    expect(matchingOption.selected).toBe(true);
+    expect(component['selectedOption']).toBe(matchingOption);
+
+    matchingOption.remove();
+    component['onSlotchange']();
+    expect(component['selectedOption']).toBe(matchingOption);
+    expect(component.value).toBe(42);
+    expect(emit).not.toHaveBeenCalled();
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 });
 
@@ -145,7 +182,7 @@ describe('componentWillLoad value coercion', () => {
 
     expect(setFormValueSpy).toHaveBeenCalledWith('42');
     // strict-typed matching: pass raw value, not stringified
-    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], 42);
+    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component['selectOptions'], 42);
     // public value retains its original (number) type
     expect(component.value).toBe(42);
   });
@@ -160,7 +197,7 @@ describe('componentWillLoad value coercion', () => {
 
     expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
     // strict-typed matching: null is a distinct value, only matches options with value === null
-    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], null);
+    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component['selectOptions'], null);
   });
 
   it('should preserve the original (non-normalized) value as defaultValue', () => {

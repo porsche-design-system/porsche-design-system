@@ -15,7 +15,7 @@ const routes: { name: string; path: string; element: string }[] = eval(
   rawRoutes
     .replace(/\.\.\.\[[\s\S]*?\].*/, '') // get rid of generatedRoutes
     .replace(/<(from(?:Pages|Examples|Styles)\.\w+)\s\/>/g, "'$1'")
-).filter(({ element }) => element);
+).filter(({ element }: { element: string }) => element);
 
 const exampleRoutes = routes.filter((item) => item.element.startsWith('fromExamples.'));
 const exampleUrls = exampleRoutes.map((item) => item.path.slice(1));

@@ -15,7 +15,7 @@ export default [
       entryFileNames: '[name].cjs',
       preserveModules: true,
     },
-    plugins: [typescript()],
+    plugins: [typescript({ noEmitOnError: true })],
   },
   {
     input: utilsInput,
@@ -26,7 +26,7 @@ export default [
       preserveModules: true,
       preserveModulesRoot: 'src',
     },
-    plugins: [typescript()],
+    plugins: [typescript({ noEmitOnError: true })],
   },
   {
     input: input,
@@ -38,7 +38,7 @@ export default [
       preserveModulesRoot: 'src',
     },
     plugins: [
-      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
+      typescript({ noEmitOnError: true, declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
@@ -63,6 +63,8 @@ export default [
       preserveModules: true,
       preserveModulesRoot: 'src',
     },
-    plugins: [typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' })],
+    plugins: [
+      typescript({ noEmitOnError: true, declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
+    ],
   },
 ];

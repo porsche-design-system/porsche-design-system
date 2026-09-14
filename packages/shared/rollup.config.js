@@ -83,9 +83,20 @@ export default [
                   default: './testing/normalize-css-namespace/cjs/index.cjs',
                 },
               },
+              // deep import so that the Vitest specs can assert a value is defined without dragging the
+              // Playwright configs and W3C validator of the barrel along
+              './testing/assert-defined': {
+                import: {
+                  types: './testing/assertDefined.d.ts',
+                  default: './testing/assert-defined/esm/index.mjs',
+                },
+                require: {
+                  types: './testing/assertDefined.d.ts',
+                  default: './testing/assert-defined/cjs/index.cjs',
+                },
+              },
               './css/styles.css': './css/styles.css',
               './css/styles': './css/styles.css',
-              './tsconfig.json': './tsconfig.json',
               './examples': './examples/index.ts', // Examples is not bundled to avoid problems with next.js "use client" in mdx
               './examples/*': './examples/*.tsx', // deep imports let a page pull one example without dragging the whole barrel into its chunk
             },
@@ -97,12 +108,11 @@ export default [
       copy({
         targets: [
           { src: 'src/css/*', dest: 'dist/css' },
-          { src: 'src/tsconfig.json', dest: 'dist' },
           { src: 'src/dummyassets/*', dest: 'dist/dummyassets' },
           { src: 'src/examples/*', dest: 'dist/examples' },
         ],
       }),
-      typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }),
+      typescript({ noEmitOnError: true, declaration: true, declarationDir: 'dist', rootDir: 'src' }),
     ],
   },
   {
@@ -113,7 +123,7 @@ export default [
       format: 'esm',
       preserveModules: true,
     },
-    plugins: [typescript()],
+    plugins: [typescript({ noEmitOnError: true })],
   },
   {
     // is needed for deep import of shared/data
@@ -123,7 +133,7 @@ export default [
       dir: 'dist/esm/data',
       format: 'esm',
     },
-    plugins: [typescript()],
+    plugins: [typescript({ noEmitOnError: true })],
   },
   {
     // additional cjs bundle is needed for jest unit tests
@@ -133,7 +143,7 @@ export default [
       dir: 'dist/data',
       format: 'cjs',
     },
-    plugins: [typescript()],
+    plugins: [typescript({ noEmitOnError: true })],
   },
   {
     input: 'src/deprecation/index.ts',
@@ -148,7 +158,7 @@ export default [
         format: 'cjs',
       },
     ],
-    plugins: [typescript({ rootDir: 'src/deprecation' })],
+    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/deprecation' })],
   },
   {
     input: 'src/testing/index.ts',
@@ -163,7 +173,7 @@ export default [
         format: 'cjs',
       },
     ],
-    plugins: [typescript({ rootDir: 'src/testing' })],
+    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/testing' })],
   },
   {
     // standalone bundle for the `./testing/normalize-css-namespace` deep import, see the exports map above
@@ -180,7 +190,24 @@ export default [
         exports: 'named',
       },
     ],
-    plugins: [typescript({ rootDir: 'src/testing' })],
+    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/testing' })],
+  },
+  {
+    // standalone bundle for the `./testing/assert-defined` deep import, see the exports map above
+    input: 'src/testing/assertDefined.ts',
+    external,
+    output: [
+      {
+        file: 'dist/testing/assert-defined/esm/index.mjs',
+        format: 'esm',
+      },
+      {
+        file: 'dist/testing/assert-defined/cjs/index.cjs',
+        format: 'cjs',
+        exports: 'named',
+      },
+    ],
+    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/testing' })],
   },
   {
     input: 'src/serve-dummyassets.ts',
@@ -195,7 +222,13 @@ export default [
       if (warning.code === 'CIRCULAR_DEPENDENCY' && warning.ids?.some((id) => id.includes('node_modules'))) return;
       warn(warning);
     },
-    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    plugins: [
+      shebang(),
+      resolve({ preferBuiltins: true }),
+      json(),
+      commonjs(),
+      typescript({ noEmitOnError: true, strict: false, rootDir: 'src' }),
+    ],
   },
   {
     input: 'src/scripts/vrt/prepareVRTSnapshots.ts',
@@ -208,6 +241,12 @@ export default [
       if (warning.code === 'CIRCULAR_DEPENDENCY' && warning.ids?.some((id) => id.includes('node_modules'))) return;
       warn(warning);
     },
-    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    plugins: [
+      shebang(),
+      resolve({ preferBuiltins: true }),
+      json(),
+      commonjs(),
+      typescript({ noEmitOnError: true, strict: false, rootDir: 'src' }),
+    ],
   },
 ];

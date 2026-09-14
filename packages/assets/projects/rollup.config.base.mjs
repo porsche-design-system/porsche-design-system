@@ -38,7 +38,7 @@ export const createAssetLibRollupConfig = ({
       format: 'cjs',
       exports: 'named',
     },
-    plugins: [typescript({ tsconfig })],
+    plugins: [typescript({ noEmitOnError: true, tsconfig, exclude: ['**/*.spec.ts'] })],
   },
   {
     input,
@@ -47,7 +47,7 @@ export const createAssetLibRollupConfig = ({
       file: `${outputDir}/${outputName}.mjs`,
       format: 'esm',
     },
-    plugins: [typescript({ tsconfig })],
+    plugins: [typescript({ noEmitOnError: true, tsconfig, exclude: ['**/*.spec.ts'] })],
   },
   {
     input,
@@ -61,4 +61,3 @@ export const createAssetLibRollupConfig = ({
     plugins: [dts({ tsconfig })],
   },
 ];
-

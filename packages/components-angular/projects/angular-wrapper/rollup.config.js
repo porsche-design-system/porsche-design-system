@@ -8,6 +8,7 @@ const outputDir = 'dist/angular-wrapper';
 
 const typescriptOpts = {
   tsconfig: `${projectDir}/tsconfig.json`,
+  noEmitOnError: true,
 };
 
 const external = [

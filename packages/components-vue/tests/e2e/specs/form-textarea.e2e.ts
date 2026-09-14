@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 
 const getHost = (page: Page) => page.locator('p-textarea');
 const getTextarea = (page: Page) => page.locator('p-textarea textarea');
