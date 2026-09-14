@@ -1,5 +1,5 @@
 
-import { expect, Page, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 
 const getHost = (page: Page) => page.locator('p-pin-code');
 const getInputs = (page: Page) => page.locator('p-pin-code input');

@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { screen } from '@porsche-design-system/components-js/testing';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
@@ -7,6 +8,7 @@ it('should have initialized shadow dom', async () => {
   expect(await componentsReady()).toBe(4);
 
   const el = document.body.firstElementChild;
+  assertDefined(el);
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -18,6 +20,10 @@ it('should expose its radio inputs to shadow queries', async () => {
   expect(screen.queryAllByRole('radio')).toHaveLength(0);
   // all three options carry the same accessible name, so compare the whole list instead of filtering by name
   expect(screen.getAllByShadowRole('radio')).toEqual(
-    [...document.querySelectorAll('p-radio-group-option')].map((option) => option.shadowRoot.querySelector('input'))
+    [...document.querySelectorAll('p-radio-group-option')].map((option) => {
+      const shadowRoot = option.shadowRoot;
+      assertDefined(shadowRoot);
+      return shadowRoot.querySelector('input');
+    })
   );
 });

@@ -17,7 +17,7 @@ const VALUES = collectDeprecations()
   .filter((entry) => entry.usageKind === 'propValue');
 
 /** Remaining allowed values by deprecation rule id, derived directly from component metadata. */
-const CURRENT_VALUES = new Map(
+const CURRENT_VALUES = new Map<string, string[]>(
   Object.entries(componentMeta).flatMap(([tag, meta]) =>
     Object.entries(meta.propsMeta ?? {}).flatMap(([name, prop]) => {
       const deprecatedValues = new Set((prop.deprecatedValues ?? []).map(String));

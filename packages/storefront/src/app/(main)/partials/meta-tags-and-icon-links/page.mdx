@@ -19,6 +19,13 @@ partial.
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
+The linked webmanifest also includes **maskable icons** in 192x192 and 512x512 for Android PWA installation. These icons
+have an opaque white background so launchers can crop them to their own shape without letterboxing the crest.
+
+The provided webmanifest contains only icons; it does not make your app installable on its own. For an installable PWA,
+include these icon entries in your app's own manifest alongside its application metadata, such as `name`, `start_url`
+and `display`, and link that manifest instead of the provided CDN manifest.
+
 This partial also provides some default Open Graph and Twitter meta tags which will display a thumbnail image when
 sharing a link on social media. If you want to define your own information you can set the `ogImage` option to false.
 

@@ -1,4 +1,4 @@
-import { expect, type Locator, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import type { Page } from 'playwright';
@@ -16,31 +16,6 @@ const tagNamesWithLoadingProp: TagName[] = TAG_NAMES.filter((tagName) => {
 
 for (const tagName of tagNamesWithLoadingProp) {
   test.describe(tagName, () => {
-    const getLoadingStatus = async (page: Page): Promise<Locator> => {
-      const [nestedComponentWithLoadingProp] = tagNamesWithLoadingProp.filter(
-        (tagNameWithLoadingProp) =>
-          getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp) &&
-          ![
-            'p-input-search',
-            'p-input-number',
-            'p-input-date',
-            'p-input-month',
-            'p-input-week',
-            'p-input-time',
-            'p-input-text',
-            'p-input-email',
-            'p-input-tel',
-            'p-input-url',
-            'p-input-password',
-          ].includes(tagName)
-      );
-
-      return page.locator(
-        nestedComponentWithLoadingProp
-          ? `${tagName} ${nestedComponentWithLoadingProp} .loading` // e.g. for p-button-tile
-          : `${tagName} .loading`
-      );
-    };
 
     const getLoadingMessage = async (page: Page): Promise<string> => {
       const locators = await page.locator(`${tagName} .loading`).all();

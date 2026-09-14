@@ -1,5 +1,5 @@
-import type { PropOptions } from '@porsche-design-system/components/dist/types/stencil-public-runtime';
 import type { TagName } from '@porsche-design-system/shared';
+import type { PropOptions } from '@stencil/core';
 
 export type PropMeta = {
   description?: string;

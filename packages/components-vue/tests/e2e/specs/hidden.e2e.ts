@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { goto, waitForComponentsReady } from '../helpers';
 
 const getSelect = (page: Page) => page.locator('p-select button');

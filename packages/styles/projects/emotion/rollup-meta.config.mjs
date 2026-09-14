@@ -14,7 +14,7 @@ export default [
       preserveModules: true,
       preserveModulesRoot: 'emotionMeta',
     },
-    plugins: [typescript({ exclude: ['**/*.spec.ts'] })],
+    plugins: [typescript({ noEmitOnError: true, exclude: ['**/*.spec.ts'] })],
   },
   {
     input: 'emotionMeta/index.ts',
@@ -28,6 +28,7 @@ export default [
     },
     plugins: [
       typescript({
+        noEmitOnError: true,
         declaration: true,
         declarationDir: `${outputDir}/esm`,
         rootDir: '.',

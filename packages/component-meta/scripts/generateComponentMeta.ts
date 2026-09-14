@@ -1,6 +1,6 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import type { PropOptions } from '@porsche-design-system/components/dist/types/stencil-public-runtime';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
+import type { PropOptions } from '@stencil/core';
 import { kebabCase, pascalCase } from 'change-case';
 import { sync as globbySync } from 'fast-glob';
 import * as fs from 'fs';

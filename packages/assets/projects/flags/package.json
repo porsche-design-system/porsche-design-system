@@ -30,7 +30,9 @@
     "build": "npm run clean:build && npm run build:flags && npm run build:lib",
     "build:flags": "tsx scripts/build.ts",
     "build:lib": "rollup -c",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {

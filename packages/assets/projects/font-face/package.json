@@ -31,7 +31,8 @@
     "build:font-face": "npm run typecheck && tsx scripts/buildFontFace.ts",
     "build:lib": "rollup -c",
     "typecheck": "tsc --noEmit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {

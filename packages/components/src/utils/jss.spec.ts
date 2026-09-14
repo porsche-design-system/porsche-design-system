@@ -6,6 +6,7 @@ import { vi } from 'vitest';
 import * as jssUtils from './jss';
 import {
   attachComponentCss,
+  buildResponsiveBooleanStyles,
   buildResponsiveStyles,
   componentCssMap,
   getCachedComponentCss,
@@ -207,11 +208,12 @@ describe('getCss()', () => {
 }`,
     },
   ];
-  it.each(
-    data.map(({ input, result }) => [input, result])
-  )('should correctly transform %j', (input: Styles, result: string) => {
-    expect(getCss(input)).toBe(result);
-  });
+  it.each(data.map(({ input, result }) => [input, result]))(
+    'should correctly transform %j',
+    (input: Styles, result: string) => {
+      expect(getCss(input)).toBe(result);
+    }
+  );
 });
 
 describe('supportsConstructableStylesheets()', () => {
@@ -264,6 +266,29 @@ describe('buildResponsiveStyles()', () => {
         '@media(min-width:1000px)': { width: 500, display: 'block' },
         '@media(min-width:1300px)': { width: 600, display: 'block' },
         '@media(min-width:1760px)': { width: 700, display: 'block' },
+      });
+    });
+  });
+
+  describe('for boolean getJssStyle', () => {
+    const getJssStyle = (val: boolean): JssStyle => ({ display: val ? 'none' : 'block' });
+
+    it('should treat empty string of boolean attribute shorthand like true', () => {
+      expect(buildResponsiveBooleanStyles('', getJssStyle)).toStrictEqual(
+        buildResponsiveBooleanStyles(true, getJssStyle)
+      );
+      expect(buildResponsiveBooleanStyles('', getJssStyle)).toStrictEqual({ display: 'none' });
+    });
+
+    it('should treat "true" and "false" strings like their boolean counterpart', () => {
+      expect(buildResponsiveBooleanStyles('true', getJssStyle)).toStrictEqual({ display: 'none' });
+      expect(buildResponsiveBooleanStyles('false', getJssStyle)).toStrictEqual({ display: 'block' });
+    });
+
+    it('should return nested jss for responsive type', () => {
+      expect(buildResponsiveBooleanStyles({ base: true, l: false }, getJssStyle)).toStrictEqual({
+        display: 'none',
+        '@media(min-width:1300px)': { display: 'block' },
       });
     });
   });
@@ -453,10 +478,11 @@ describe('all styles snapshots', () => {
   const srcDirPath = path.resolve(__dirname, '..');
   const snapshotFilePaths = globby.sync(`${srcDirPath}/**/*-styles.spec.ts.snap`);
 
-  it.each(
-    snapshotFilePaths.map((filePath) => [path.basename(filePath), filePath])
-  )('should not contain [object Object] in %s', (_, filePath) => {
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    expect(fileContent).not.toContain('[object Object]');
-  });
+  it.each(snapshotFilePaths.map((filePath) => [path.basename(filePath), filePath]))(
+    'should not contain [object Object] in %s',
+    (_, filePath) => {
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      expect(fileContent).not.toContain('[object Object]');
+    }
+  );
 });

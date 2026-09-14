@@ -22,8 +22,12 @@ for (const tagName of tagNames) {
 
       await page.evaluate(
         ({ tagName, markup }) => {
-          document.getElementById('app').innerHTML = markup;
-          document.getElementById('app').querySelector(tagName).remove(); // remove component immediately
+          const app = document.getElementById('app');
+          if (!app) throw new Error('#app not found');
+          app.innerHTML = markup;
+          const component = app.querySelector(tagName);
+          if (!component) throw new Error(`${tagName} not found`);
+          component.remove(); // remove component immediately
         },
         { tagName, markup }
       );
