@@ -34,16 +34,31 @@ To audit generated UI, see [**AI Accessibility Audit**](/must-know/accessibility
 
 ## Install
 
-Install [APM](https://microsoft.github.io/apm/quickstart/) if needed (macOS: `brew install apm`; Linux / macOS without
-Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`; Windows: `irm https://aka.ms/apm-windows | iex`).
-Then from the product repository root install the **package**:
+Install [APM](https://microsoft.github.io/apm/quickstart/) if needed:
+- macOS: `brew install apm`
+- Linux / macOS without Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`
+- Windows: `irm https://aka.ms/apm-windows | iex`)
+
+Then from the product repository root install the **package** and pass `--target` for the agent harnesses that should receive the
+files. Comma-separate several values to target different harnesses.
+
+This package deploys to `copilot`, `cursor`, `claude`, `gemini`, `codex`, `windsurf`, and `agent-skills`. A repo with no
+harness markers and no `targets:` list in `apm.yml` will fail `apm install` until you set `--target`.
+
+One harness:
 
 ```bash
-apm install porsche-design-system/skills/packages/web-accessibility-codegen#web-accessibility-codegen--v0.2.0
+apm install porsche-design-system/skills/packages/web-accessibility-codegen#web-accessibility-codegen--v0.2.0 --target cursor
 ```
 
-To move version, bump `ref` and run `apm install`. To remove it, delete the entry (or `apm uninstall`) and run
-`apm install` again.
+Several harnesses (comma-separated):
+
+```bash
+apm install porsche-design-system/skills/packages/web-accessibility-codegen#web-accessibility-codegen--v0.2.0 --target cursor,claude,copilot
+```
+
+To move version, re-run `apm install` with the new package tag. To remove it, run `apm uninstall` and `apm install`
+again.
 
 ## How it works
 

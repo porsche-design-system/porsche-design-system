@@ -29,17 +29,31 @@ For generation-time guardrails, see [**AI Agent Context**](/must-know/accessibil
 
 ## Install
 
-Install [APM](https://microsoft.github.io/apm/quickstart/) if needed (macOS: `brew install apm`; Linux / macOS without
-Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`; Windows: `irm https://aka.ms/apm-windows | iex`). To match the CLI we
-tested, pin Unix curl installs with `sh -s -- @v0.30.0`. Then from the product repository root pin the **package** (not
-the CLI):
+Install [APM](https://microsoft.github.io/apm/quickstart/) if needed:
+- macOS: `brew install apm`
+- Linux / macOS without Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`
+- Windows: `irm https://aka.ms/apm-windows | iex`)
+
+Then from the product repository root install the **package** and pass `--target` for the agent harnesses that should receive the
+files. Comma-separate several values to target different harnesses.
+
+This package deploys to `copilot`, `cursor`, `claude`, `gemini`, `codex`, `windsurf`, and `agent-skills`. A repo with no
+harness markers and no `targets:` list in `apm.yml` will fail `apm install` until you set `--target`.
+
+One harness:
 
 ```bash
-apm install porsche-design-system/skills/packages/web-accessibility-audit#web-accessibility-audit--v0.1.1
+apm install porsche-design-system/skills/packages/web-accessibility-audit#web-accessibility-audit--v0.1.1 --target cursor
 ```
 
-To move version, bump `ref` and run `apm install`. To remove it, delete the entry (or `apm uninstall`) and run
-`apm install` again.
+Several harnesses (comma-separated):
+
+```bash
+apm install porsche-design-system/skills/packages/web-accessibility-audit#web-accessibility-audit--v0.1.1 --target cursor,claude,copilot
+```
+
+To move version, re-run `apm install` with the new package tag. To remove it, run `apm uninstall` and `apm install`
+again.
 
 ## Run an audit
 
@@ -47,14 +61,14 @@ Start the app locally, then invoke a prompt. Copilot binds them as chat commands
 expose the same names as commands; if the `a11y-audit` agent is not bound, the prompt still runs that workflow with the
 installed skills.
 
-| Prompt | Use when |
-| ------ | -------- |
-| `a11y-audit` | Full single-page audit (axe + code review) |
-| `a11y-quick-check` | Fast axe-only triage |
-| `a11y-audit-multi-page` | Compare several pages |
-| `a11y-lead` | Review specific UI files |
-| `a11y-component-library-audit` | Audit a component directory |
-| `a11y-fix` | Apply fixes from a previous report |
+| Prompt                         | Use when                                   |
+| ------------------------------ | ------------------------------------------ |
+| `a11y-audit`                   | Full single-page audit (axe + code review) |
+| `a11y-quick-check`             | Fast axe-only triage                       |
+| `a11y-audit-multi-page`        | Compare several pages                      |
+| `a11y-lead`                    | Review specific UI files                   |
+| `a11y-component-library-audit` | Audit a component directory                |
+| `a11y-fix`                     | Apply fixes from a previous report         |
 
 The report lands in `.a11y/runs/<timestamp>/` (`ACCESSIBILITY-AUDIT.md` and `findings.json`). Details:
 [package README](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-audit).
