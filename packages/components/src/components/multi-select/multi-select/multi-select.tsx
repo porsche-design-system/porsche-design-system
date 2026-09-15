@@ -203,7 +203,7 @@ export class MultiSelect {
   @Listen('internalOptgroupUpdate')
   public optgroupUpdateHandler(e: Event): void {
     e.stopPropagation();
-    this.updateOptions();
+    this.onSlotchange();
   }
 
   @Watch('value')
