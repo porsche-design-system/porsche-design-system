@@ -14,6 +14,16 @@ const initComponent = (): StepperHorizontal => {
   const scroller = document.createElement('div');
   component.host.shadowRoot.appendChild(scroller);
 
+  // mimics p-scroller's shadow DOM with a .scroll element, matching what
+  // scrollStepperHorizontalItemIntoView queries internally
+  const scrollArea = document.createElement('div');
+  Object.defineProperty(scrollArea, 'scrollLeft', { value: 0, writable: true });
+  Object.defineProperty(scrollArea, 'scrollTo', { value: vi.fn(), writable: true });
+  Object.defineProperty(scroller, 'shadowRoot', {
+    value: { querySelector: vi.fn().mockReturnValue(scrollArea) },
+    writable: true,
+  });
+
   component['scroller'] = scroller;
 
   return component;
@@ -175,19 +185,19 @@ describe('slotchange listener', () => {
 
   it('should not scroll on slotchange when slotted content did not change', () => {
     const component = initComponent();
+    const scrollArea = (component['scroller'].shadowRoot as ShadowRoot).querySelector('.scroll') as HTMLElement;
 
     const item = document.createElement('p-stepper-horizontal-item') as unknown as HTMLPStepperHorizontalItemElement;
     (item as any).state = 'current';
-    (item as any).scrollIntoView = vi.fn();
     component.host.appendChild(item);
 
     component.componentWillLoad();
     component.componentDidLoad();
-    (item.scrollIntoView as any).mockClear();
+    (scrollArea.scrollTo as ReturnType<typeof vi.fn>).mockClear();
 
     component['onSlotChange']();
 
-    expect(item.scrollIntoView).not.toHaveBeenCalled();
+    expect(scrollArea.scrollTo).not.toHaveBeenCalled();
   });
 });
 
