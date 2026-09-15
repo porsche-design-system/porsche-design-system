@@ -15,6 +15,7 @@ import {
 } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 import { hasPropValueChanged } from './has-prop-value-changed';
+import { getHasConstructableStylesheetSupport } from './supportsConstructableStylesheets';
 import { getTagNameWithoutPrefix } from './tag-name';
 
 // NOTE: handpicked selection of plugins from jss-preset-default
@@ -33,19 +34,6 @@ export const getCss = (jssStyles: Styles): string =>
       generateId: (rule) => rule.key,
     })
     .toString();
-
-export const supportsConstructableStylesheets = (): boolean => {
-  try {
-    return typeof new CSSStyleSheet().replaceSync === 'function';
-  } catch {
-    return false;
-  }
-};
-
-// determine it once
-const hasConstructableStylesheetSupport = supportsConstructableStylesheets();
-// getter for easy mocking
-export const getHasConstructableStylesheetSupport = (): boolean => hasConstructableStylesheetSupport;
 
 type CssCacheMap = Map<string, string>;
 export const componentCssMap = new Map<TagName, CssCacheMap>();
@@ -76,9 +64,9 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
   getComponentCss: T,
   ...args: Parameters<T>
 ): void => {
-  const css = internalJss.getCachedComponentCss(host, getComponentCss, ...args);
+  const css = getCachedComponentCss(host, getComponentCss, ...args);
 
-  if (internalJss.getHasConstructableStylesheetSupport()) {
+  if (getHasConstructableStylesheetSupport()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;
     if (sheet) {
       sheet.replaceSync(css);
@@ -158,9 +146,4 @@ export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => 
 
     return prev;
   }, {} as T);
-};
-
-export const internalJss = {
-  getCachedComponentCss,
-  getHasConstructableStylesheetSupport,
 };

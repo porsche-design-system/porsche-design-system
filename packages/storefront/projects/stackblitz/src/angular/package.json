@@ -4,8 +4,12 @@
   "private": true,
   "scripts": {
     "ng": "ng",
+    "injectPartialsIntoIndexHtml": "node scripts/injectPartialsIntoIndexHtml.js",
+    "prestart": "npm run injectPartialsIntoIndexHtml",
     "start": "ng serve",
+    "prebuild": "npm run injectPartialsIntoIndexHtml",
     "build": "ng build",
+    "prewatch": "npm run injectPartialsIntoIndexHtml",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

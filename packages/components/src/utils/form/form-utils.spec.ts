@@ -78,20 +78,19 @@ describe('setAriaElementInnerHtml()', () => {
 });
 
 describe('updateCounter()', () => {
-  it('should initially call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
+  it('should initially set the character count on counter and screen reader element', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
     const ariaElement = getAriaElement();
+    inputElement.maxLength = 20;
+    inputElement.value = 'some';
 
-    const setCounterInnerHtmlSpy = vi.spyOn(formUtils.internal, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = vi.spyOn(formUtils.internal, 'setAriaElementInnerHtml');
     updateCounter(inputElement, ariaElement, counterElement);
 
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(1);
+    expect(counterElement.innerText).toBe('4/20');
 
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(1);
+    vi.advanceTimersByTime(800);
+    expect(ariaElement.innerText).toBe('You have 16 out of 20 characters left');
   });
 
   it('should on input event call inputChangeCallback() if supplied', () => {
