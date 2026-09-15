@@ -29,16 +29,8 @@ export const traverseTreeAndUpdateState = (
 ) => {
   if (isElementOfKind(activeItem, 'p-drilldown-item')) {
     activeItem[prop] = value;
-    internalDrilldown.traverseTreeAndUpdateState(
-      activeItem.parentElement as HTMLPDrilldownItemElement,
-      'cascade',
-      value
-    );
+    traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'cascade', value);
   }
-};
-
-export const internalDrilldown = {
-  traverseTreeAndUpdateState,
 };
 
 /**
@@ -50,7 +42,7 @@ export const internalDrilldown = {
  */
 export const updateDrilldownItemState = (activeItem: HTMLPDrilldownItemElement, value: boolean): void => {
   activeItem.secondary = value;
-  internalDrilldown.traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'primary', value);
+  traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'primary', value);
 };
 
 export const validateActiveIdentifier = <T extends Class<any>>(
