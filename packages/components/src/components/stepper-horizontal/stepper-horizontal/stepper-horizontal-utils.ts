@@ -52,10 +52,7 @@ export const scrollStepperHorizontalItemIntoView = (
   const delta = itemRect.left + itemRect.width / 2 - (areaRect.left + areaRect.width / 2);
 
   scrollArea.scrollTo({
-    // rounded to an integer scroll offset: a fractional offset makes Safari render the centered
-    // item's rounded corners visibly distorted while its text stays crisp (WebKit pixel-snaps
-    // subpixel layout at paint time — https://trac.webkit.org/wiki/LayoutUnit); see #4732 VRT diff
-    left: Math.round(scrollArea.scrollLeft + delta),
+    left: scrollArea.scrollLeft + delta,
     behavior: isSmooth ? 'smooth' : 'instant',
   } as ScrollToOptions);
 };
