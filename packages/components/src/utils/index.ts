@@ -32,6 +32,7 @@ export * from './property-observer';
 export * from './select';
 export * from './setScrollLock';
 export * from './supportsChromiumMediaQuery';
+export * from './supportsConstructableStylesheets';
 export * from './supportsNativePopover';
 export * from './sync';
 export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-name';
