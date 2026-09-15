@@ -69,11 +69,9 @@ describe('resetSelectedOption', () => {
 });
 
 describe('updateSelectOptions', () => {
-  it('should not select option when value="undefined" and no option with that value exists', () => {
-    const options = generateOptions();
-    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
+  it('should deselect the previously selected option when value="undefined" and no option with that value exists', () => {
+    const options = generateOptions({ selectedIndices: [1] });
     selectUtils.selectOptionByValue(options, undefined);
-    expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     options.forEach((option) => {
       expect(option.selected).toBe(false);
     });
@@ -82,12 +80,10 @@ describe('updateSelectOptions', () => {
   it('should select correct option when value="undefined" and option with that value exists', () => {
     const options = [
       { value: undefined, selected: false },
-      { value: 'a', selected: false },
+      { value: 'a', selected: true },
       { value: 'b', selected: false },
     ] as selectUtils.SelectOption[];
-    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
     selectUtils.selectOptionByValue(options, undefined);
-    expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(false);
@@ -104,12 +100,10 @@ describe('updateSelectOptions', () => {
   it('should select correct option when value="a" and option with that value exists', () => {
     const options = [
       { value: 'a', selected: false },
-      { value: 'b', selected: false },
+      { value: 'b', selected: true },
       { value: 'c', selected: false },
     ] as selectUtils.SelectOption[];
-    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
     selectUtils.selectOptionByValue(options, 'a');
-    expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(false);
@@ -206,15 +200,13 @@ describe('updateSelectOptions', () => {
 });
 
 describe('setSelectedOption', () => {
-  it('should set option selected and call resetSelectedOption and forceUpdate', () => {
-    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
+  it('should deselect the previously selected option, set the new one selected and force update it', () => {
     const forceUpdateSpy = vi.spyOn(stencilUtils, 'forceUpdate');
-    const options = generateOptions();
+    const options = generateOptions({ selectedIndices: [0] });
     selectUtils.setSelectedOption(options, options[1]);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(true);
     expect(options[2].selected).toBe(false);
-    expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(forceUpdateSpy).toHaveBeenCalledWith(options[1]);
   });
 });

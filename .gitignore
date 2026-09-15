@@ -96,6 +96,7 @@ packages/storefront/scripts/algoliaRecords.json
 packages/storefront/src/app/(main)/news/changelog/page.mdx
 packages/storefront/src/app/(main)/license/license.mdx
 packages/storefront/public/porsche-design-system
+packages/storefront/projects/stackblitz/src/angular/.generated/
 
 # Lib
 packages/shared/src/lib/*

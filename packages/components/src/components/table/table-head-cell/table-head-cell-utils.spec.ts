@@ -1,4 +1,3 @@
-import { vi } from 'vitest';
 import type { AriaAttributes } from '../../../types';
 import type { Direction, TableHeadCellSort } from '../table/table-utils';
 import * as tableUtils from './table-head-cell-utils';
@@ -40,18 +39,6 @@ describe('getAriaSort()', () => {
 describe('createSortedEventInitDictDetail()', () => {
   const activeSort: TableHeadCellSort = { id: '1', active: true, direction: 'asc' };
   const inactiveSort: TableHeadCellSort = { id: '1', active: false, direction: 'asc' };
-
-  it('should call toggleDirection() when active', () => {
-    const spy = vi.spyOn(tableUtils.internalTHCell, 'toggleDirection');
-    tableUtils.createSortedEventInitDictDetail(activeSort);
-    expect(spy).toHaveBeenCalledWith('asc');
-  });
-
-  it('should not call toggleDirection() when not active', () => {
-    const spy = vi.spyOn(tableUtils.internalTHCell, 'toggleDirection');
-    tableUtils.createSortedEventInitDictDetail(inactiveSort);
-    expect(spy).not.toHaveBeenCalled();
-  });
 
   it('should return correct eventInitDict when active', () => {
     expect(tableUtils.createSortedEventInitDictDetail(activeSort)).toEqual({

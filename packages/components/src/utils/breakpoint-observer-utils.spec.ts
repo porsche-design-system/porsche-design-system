@@ -1,18 +1,28 @@
 import type { Breakpoint } from '@porsche-design-system/emotion';
-import { breakpoints } from '@porsche-design-system/emotion';
-import { vi } from 'vitest';
+import { breakpoint, breakpoints } from '@porsche-design-system/emotion';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { mediaQueryLists, overrideMediaQueryLists } from './breakpoint-observer';
-import * as breakpointObserverUtils from './breakpoint-observer-utils';
-import { flippedBreakpoint, getCurrentMatchingBreakpointValue, internalBO } from './breakpoint-observer-utils';
+import {
+  flippedBreakpoint,
+  getCurrentBreakpointKey,
+  getCurrentMatchingBreakpointValue,
+} from './breakpoint-observer-utils';
+
+const originalMediaQueryLists = [...mediaQueryLists];
+
+// drives getCurrentBreakpointKey() through the real media query seam instead of mocking it
+const setCurrentBreakpoint = (breakpointKey: Breakpoint): void => {
+  const matchingIndex = originalMediaQueryLists.findIndex((item) =>
+    item.media.includes(`${breakpoint[breakpointKey]}px`)
+  );
+  overrideMediaQueryLists(originalMediaQueryLists.map((item, i) => ({ ...item, matches: i <= matchingIndex })));
+};
 
 it('should match flippedBreakpoint snapshot', () => {
   expect(flippedBreakpoint).toMatchSnapshot();
 });
 
 describe('getCurrentBreakpointKey()', () => {
-  const originalMediaQueryLists = [...mediaQueryLists];
-
   afterEach(() => {
     overrideMediaQueryLists(originalMediaQueryLists);
   });
@@ -25,17 +35,19 @@ describe('getCurrentBreakpointKey()', () => {
     ['1300px', 'l'],
     ['1760px', 'xl'],
     ['1920px', 'xxl'],
-  ])('should for breakpoint: %s return: %s', (breakpoint, breakpointKey) => {
-    const matchingIndex = mediaQueryLists.findIndex((item) => item.media.includes(breakpoint));
-    overrideMediaQueryLists(mediaQueryLists.map((item, i) => (i <= matchingIndex ? { ...item, matches: true } : item)));
+  ])('should for breakpoint: %s return: %s', (breakpointPx, breakpointKey) => {
+    const matchingIndex = originalMediaQueryLists.findIndex((item) => item.media.includes(breakpointPx));
+    overrideMediaQueryLists(
+      originalMediaQueryLists.map((item, i) => (i <= matchingIndex ? { ...item, matches: true } : item))
+    );
 
-    expect(internalBO.getCurrentBreakpointKey()).toBe(breakpointKey);
+    expect(getCurrentBreakpointKey()).toBe(breakpointKey);
   });
 });
 
 describe('getCurrentMatchingBreakpointValue()', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
+  afterEach(() => {
+    overrideMediaQueryLists(originalMediaQueryLists);
   });
 
   const breakpointCustomizableValues: BreakpointCustomizable<Breakpoint>[] = [
@@ -73,49 +85,35 @@ describe('getCurrentMatchingBreakpointValue()', () => {
 
   it.each<[BreakpointCustomizable<Breakpoint>, Breakpoint, Breakpoint]>(data)(
     'should for breakpointCustomizable: %s and breakpoint: %s return: %s',
-    (breakpointCustomizable, breakpoint, result) => {
-      vi.spyOn(breakpointObserverUtils.internalBO, 'getCurrentBreakpointKey').mockReturnValue(breakpoint);
+    (breakpointCustomizable, breakpointKey, result) => {
+      setCurrentBreakpoint(breakpointKey);
       expect(getCurrentMatchingBreakpointValue(breakpointCustomizable)).toBe(result);
     }
   );
 
-  it('should return correct breakpoint value for BreakpointCustomizable<boolean>', () => {
-    const value: BreakpointCustomizable<boolean> = { base: true, m: false, xl: true, xxl: false };
-    const spy = vi.spyOn(breakpointObserverUtils.internalBO, 'getCurrentBreakpointKey');
-
-    spy.mockReturnValue('base');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(true);
-    spy.mockReturnValue('xs');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(true);
-    spy.mockReturnValue('s');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(true);
-    spy.mockReturnValue('m');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(false);
-    spy.mockReturnValue('l');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(false);
-    spy.mockReturnValue('xl');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(true);
-    spy.mockReturnValue('xxl');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(false);
+  it.each<[Breakpoint, boolean]>([
+    ['base', true],
+    ['xs', true],
+    ['s', true],
+    ['m', false],
+    ['l', false],
+    ['xl', true],
+    ['xxl', false],
+  ])('should for breakpoint: %s return correct value for BreakpointCustomizable<boolean>', (breakpointKey, result) => {
+    setCurrentBreakpoint(breakpointKey);
+    expect(getCurrentMatchingBreakpointValue<boolean>({ base: true, m: false, xl: true, xxl: false })).toBe(result);
   });
 
-  it('should return correct breakpoint value for BreakpointCustomizable<number>', () => {
-    const value: BreakpointCustomizable<number> = { base: 3, s: 2, m: 1, xl: 5, xxl: 6 };
-    const spy = vi.spyOn(breakpointObserverUtils.internalBO, 'getCurrentBreakpointKey');
-
-    spy.mockReturnValue('base');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(3);
-    spy.mockReturnValue('xs');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(3);
-    spy.mockReturnValue('s');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(2);
-    spy.mockReturnValue('m');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(1);
-    spy.mockReturnValue('l');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(1);
-    spy.mockReturnValue('xl');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(5);
-    spy.mockReturnValue('xxl');
-    expect(getCurrentMatchingBreakpointValue(value)).toBe(6);
+  it.each<[Breakpoint, number]>([
+    ['base', 3],
+    ['xs', 3],
+    ['s', 2],
+    ['m', 1],
+    ['l', 1],
+    ['xl', 5],
+    ['xxl', 6],
+  ])('should for breakpoint: %s return correct value for BreakpointCustomizable<number>', (breakpointKey, result) => {
+    setCurrentBreakpoint(breakpointKey);
+    expect(getCurrentMatchingBreakpointValue<number>({ base: 3, s: 2, m: 1, xl: 5, xxl: 6 })).toBe(result);
   });
 });
