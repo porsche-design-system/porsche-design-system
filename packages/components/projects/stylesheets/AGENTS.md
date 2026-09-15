@@ -17,8 +17,9 @@ lived in two separate packages (a meta package and a CSS build package):
    tree-shakeable name consts + `ref` (what runtime consumers like the components package need); it is built into
    `dist/` by `rollup.config.mjs`, while the `./meta` catalog is built into `meta/` by `rollup.config.meta.mjs`.
 2. **CSS build** — `scripts/` generates the published stylesheets (`variables.css`, `color-scheme.css`, `normalize.css`,
-   `font-face.css` and the combined `index.css`) from the meta into `lib/`. These CSS files are exported via subpath
-   exports (e.g. `@porsche-design-system/stylesheets/index.css`) and copied into the framework wrappers.
+   `font-face.css` and the combined `index.css`) from the meta into `lib/`. Production font URLs resolve to the bundled
+   `lib/fonts/` directory. These CSS files and fonts are copied into every framework wrapper; preserve their relative
+   paths when copying them. CSS files are exported via subpaths (e.g. `@porsche-design-system/stylesheets/index.css`).
 3. **Skill (docs generation)** — `skill/skill.ts` is a pure serializer over the meta for the docs/LLM skill, mirroring
    the `scss` / `tailwindcss` skill layout. The storefront skill generator imports it directly; this package does not
    emit a separate skill artifact and the serializer is snapshot-tested here.

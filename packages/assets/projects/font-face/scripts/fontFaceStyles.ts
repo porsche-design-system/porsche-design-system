@@ -46,9 +46,10 @@ export const cdnUrlMap: Record<Cdn, string> = {
   localhost: 'http://localhost:3001/fonts',
 };
 
-export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFontFaceCssOptions): string => {
-  const { cdn } = opts;
-
+export const getMinifiedPorscheNextFontFaceCss = (
+  pathOrOptions: string | GetMinifiedPorscheNextFontFaceCssOptions = './..'
+): string => {
+  const fontPath = typeof pathOrOptions === 'string' ? `${pathOrOptions}/fonts` : cdnUrlMap[pathOrOptions.cdn];
   const style: Styles = {
     '@font-face': Object.entries(FONTS_MANIFEST).map(([name, resource]) => {
       const [, charset, weight] =
@@ -57,7 +58,7 @@ export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFo
         fontFamily: '"Porsche Next"',
         fontStyle: 'normal',
         fontWeight: fontWeight[camelCase(weight) as keyof typeof fontWeight],
-        src: `url('${cdnUrlMap[cdn]}/${resource}') format('woff2')`,
+        src: `url('${fontPath}/${resource}') format('woff2')`,
         unicodeRange: unicodeRangeMap[charset.toLowerCase() as LanguageCode],
         fontDisplay: 'swap',
       };

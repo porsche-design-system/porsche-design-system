@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { npmDistTmpSubPath } from '../../components-wrapper/environment';
+import { npmDistTmpPath } from '../../components-wrapper/environment';
 
 // TODO: cdn option missing?
 export const generateLoaderScriptPartial = (): string => {
@@ -9,9 +9,7 @@ export const generateLoaderScriptPartial = (): string => {
   format?: FormatWithCSP;
 };`;
 
-  const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
-  const packageDir = path.resolve(componentsJsFilePath, '../..');
-  const tmpFilePath = path.resolve(packageDir, '../..', npmDistTmpSubPath, 'index.js');
+  const tmpFilePath = path.resolve(npmDistTmpPath, 'index.js');
   const fileContent = fs.readFileSync(tmpFilePath, 'utf8');
 
   const func = `export function getLoaderScript(opts: GetLoaderScriptOptions & { format: 'jsx' }): JSX.Element;

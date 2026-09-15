@@ -72,6 +72,10 @@ without them:
 @import '@porsche-design-system/components-{js|angular|react|vue}/color-scheme.css';
 \`\`\`
 
+Production stylesheets load Porsche Next from the bundled \`stylesheets/fonts/\` directory, without a font CDN request.
+CSS bundlers resolve these relative URLs automatically. When copying the CSS manually, preserve the adjacent \`fonts/\`
+directory and the \`cn/\` subdirectory layout.
+
 ### CSS variables
 
 Consume the exposed custom properties with \`var(…)\` in your own styles. Color variables resolve to

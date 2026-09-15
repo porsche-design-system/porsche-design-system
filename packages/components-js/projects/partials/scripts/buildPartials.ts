@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
 import { generateFontLinksPartial } from './generateFontLinksPartial';
 import { generateIconLinksPartial } from './generateIconLinksPartial';
@@ -12,7 +11,8 @@ const generateSharedCode = (): string => {
 import type { Cdn, FormatWithCSP, FormatWithJS } from '../shared';
 import { throwIfRunInBrowser, getSha256Hash } from '../shared';
 
-const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL_COM}');
+// Assets are served relative to the document, so the cdn option no longer affects the base url.
+const getCdnBaseUrl = (_cdn: Cdn): string => './assets';
 
 const convertPropsToAttributeString = (props: { [p: string]: string }): string =>
   Object.entries(props)
