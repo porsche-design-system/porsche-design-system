@@ -40,10 +40,10 @@
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
     "prettier": "^3.9.6",
-    "rollup": "^4.62.4",
+    "rollup": "^4.63.2",
     "rollup-plugin-dts": "^6.5.1",
-    "svgo": "^4.0.2",
-    "tsx": "^4.23.7",
+    "svgo": "^4.1.0",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   },
