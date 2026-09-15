@@ -274,7 +274,7 @@
     "@vanilla-extract/css": "^1.21.2",
     "@vanilla-extract/rollup-plugin": "^1.5.4",
     "@vanilla-extract/vite-plugin": "^5.2.6",
-    "@vitest/ui": "^4.1.10",
+    "@vitest/ui": "^5.0.0",
     "concurrently": "^10.0.5",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
@@ -302,11 +302,14 @@
     "tsx": "^4.23.13",
     "typescript": "^6.0.3",
     "vite": "^8.3.0",
-    "vitest": "^4.1.10",
+    "vitest": "^5.0.0",
     "vue": "^3.5.42",
     "webpack": "^5.111.0"
   },
   "overrides": {
+    "@angular/build": {
+      "vitest": "$vitest"
+    },
     "madge": {
       "typescript": "$typescript"
     },

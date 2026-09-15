@@ -93,6 +93,11 @@ explicitly via the `overrides` field in the root `package.json` instead of disab
 
 Current overrides:
 
+- `@angular/build > vitest` is pinned to our root `vitest` version (`$vitest`). `@angular/build` declares an optional
+  peer on `vitest@^4.0.8`, which blocks Vitest 5 with `ERESOLVE`. The override is safe because we never use Angular's
+  Vitest builder: `packages/components-angular` runs `vitest` directly via its own config, and `angular.json` only uses
+  the `@angular/build:{application,dev-server,extract-i18n,karma,ng-packagr}` builders. **Drop this override** once
+  `@angular/build` widens its peer range to include Vitest 5.
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.

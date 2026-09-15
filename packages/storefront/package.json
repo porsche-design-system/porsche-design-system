@@ -88,7 +88,7 @@
     "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.0"
   },
   "optionalDependencies": {
     "@next/swc-darwin-arm64": "^16.3.5",

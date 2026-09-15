@@ -302,6 +302,7 @@ Then run the **additional suites relevant to the changed packages** (mirror what
 > | -------------------------------------------- | ----------------------------- | ------------------------------------------------------------ |
 > | `test:unit:components-js` (`chunks.spec.ts`) | `npm run build-prod`          | chunk-size mismatches, `should not contain localhost`        |
 > | `test:unit:stylesheets`                      | `npm run build-prod`          | snapshot diff, only `localhost:3001` vs `cdn.ui.porsche.com` |
+> | `test:unit:components-react` (SSR wrapper)   | `npm run build` (development) | snapshot diff, only `cdn.ui.porsche.com` vs `localhost:3001` |
 > | `test:unit:components-angular:karma-ci`      | `npm run build` (development) | all specs time out after 5000 ms                             |
 >
 > CI hits both because its test jobs restore the `build-development` artifact while the prod suites run off the
