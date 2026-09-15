@@ -22,8 +22,6 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </p-carousel>
     `,
   styles: `
-    @use '@porsche-design-system/components-angular/scss' as *;
-
     p-carousel div {
       display: flex;
       align-items: center;
@@ -31,7 +29,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       background: #00b0f4;
       height: 150px;
       transition: background 0.3s ease;
-      color: $color-primary;
+      color: #000;
     }
 
     .is-active {

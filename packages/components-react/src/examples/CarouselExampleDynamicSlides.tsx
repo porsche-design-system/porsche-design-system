@@ -11,6 +11,7 @@ export const CarouselExampleDynamicSlidesPage = () => {
     alignItems: 'center',
     justifyContent: 'center',
     background: '#00b0f4',
+    color: '#000',
     height: '150px',
   };
 
