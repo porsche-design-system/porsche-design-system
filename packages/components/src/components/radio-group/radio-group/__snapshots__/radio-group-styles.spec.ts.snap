@@ -1419,7 +1419,7 @@ slot[name="label-after"]::slotted(*) {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, …(3) }, state: none, compact: false and direction: 'column' 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and direction: 'column' 1`] = `
 ":host {
   --_p-radio-group-a: 1;
   --_p-radio-group-option-a: 1;
@@ -1666,7 +1666,7 @@ slot[name="label-after"]::slotted(*) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, …(3) }, state: none, compact: false and direction: 'column' 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and direction: 'column' 1`] = `
 ":host {
   --_p-radio-group-a: 1;
   --_p-radio-group-option-a: 1;

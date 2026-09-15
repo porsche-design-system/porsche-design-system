@@ -24,7 +24,7 @@ exports[`getButtonPureAriaAttributes() > should return correct aria attributes f
 }
 `;
 
-exports[`getButtonPureAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true and aria: { …(4) } 1`] = `
+exports[`getButtonPureAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true and aria: { 'aria-label': 'Some more detailed label', 'aria-expanded': true, 'aria-haspopup': true, 'aria-pressed': true } 1`] = `
 {
   "aria-disabled": "true",
   "aria-expanded": "true",

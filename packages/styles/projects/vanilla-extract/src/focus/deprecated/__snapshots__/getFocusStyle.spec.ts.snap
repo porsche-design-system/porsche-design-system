@@ -15,7 +15,7 @@ exports[`getFocusStyle() > should return correct css for opts: { offset: '3px', 
 }
 `;
 
-exports[`getFocusStyle() > should return correct css for opts: { offset: 'none', …(1) } 1`] = `
+exports[`getFocusStyle() > should return correct css for opts: { offset: 'none', borderRadius: 'medium' } 1`] = `
 {
   "borderRadius": "6px",
   "selectors": {
@@ -30,7 +30,7 @@ exports[`getFocusStyle() > should return correct css for opts: { offset: 'none',
 }
 `;
 
-exports[`getFocusStyle() > should return correct css for opts: { offset: 'small', …(1) } 1`] = `
+exports[`getFocusStyle() > should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
 {
   "borderRadius": "4px",
   "selectors": {
@@ -45,7 +45,7 @@ exports[`getFocusStyle() > should return correct css for opts: { offset: 'small'
 }
 `;
 
-exports[`getFocusStyle() > should return correct css for opts: { offset: undefined, …(1) } 1`] = `
+exports[`getFocusStyle() > should return correct css for opts: { offset: undefined, borderRadius: undefined } 1`] = `
 {
   "borderRadius": "4px",
   "selectors": {

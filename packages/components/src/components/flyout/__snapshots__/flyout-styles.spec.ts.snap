@@ -2109,7 +2109,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: { base: true, xs: false, s: true, …(3) } 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: { base: true, xs: false, s: true, m: false, l: true, xl: false } 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
