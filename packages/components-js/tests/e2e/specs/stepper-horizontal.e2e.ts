@@ -12,6 +12,7 @@ import {
   initConsoleObserver,
   initPageErrorObserver,
   reattachElement,
+  reattachElementToParent,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -37,10 +38,11 @@ type InitOptions = {
   amount?: number;
   currentStep?: number;
   isWrapped?: boolean;
+  beforeMarkup?: string;
 };
 
 const initStepperHorizontal = (page: Page, opts?: InitOptions) => {
-  const { amount = 3, currentStep = 0, isWrapped } = opts || {};
+  const { amount = 3, currentStep = 0, isWrapped, beforeMarkup = '' } = opts || {};
 
   const getState = (index: number) =>
     index === currentStep ? 'current' : index < currentStep ? 'complete' : undefined;
@@ -58,7 +60,10 @@ const initStepperHorizontal = (page: Page, opts?: InitOptions) => {
   ${steps}
  </p-stepper-horizontal>`;
 
-  return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
+  return setContentWithDesignSystem(
+    page,
+    `${beforeMarkup}${isWrapped ? `<div style="width: 300px">${content}</div>` : content}`
+  );
 };
 
 const getHost = (page: Page) => page.locator('p-stepper-horizontal');
@@ -230,6 +235,81 @@ test.describe('scrolling', () => {
 
     // item6 should be scrolled into view
     expect(await isElementVisibleInScrollArea(page, item6)).toBe(true);
+  });
+
+  test('should scroll to correct position if item added after DOM reattach is set to current', async ({ page }) => {
+    await initStepperHorizontal(page, { amount: 5, currentStep: 0, isWrapped: true });
+    const host = getHost(page);
+
+    // remove and re-attach to the same parent to keep the scroll area intact
+    await reattachElementToParent(host);
+    await waitForStencilLifecycle(page);
+
+    await host.evaluate((host) => {
+      const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item');
+      newStepperHorizontalItem.innerText = 'Step 6';
+      host.appendChild(newStepperHorizontalItem);
+    });
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    const [item1, , , , , item6] = await getStepItems(page);
+
+    await setProperty(item1, 'state', 'complete');
+    await setProperty(item6, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    // item6 should be scrolled into view
+    expect(await isElementVisibleInScrollArea(page, item6)).toBe(true);
+  });
+
+  test('should scroll to correct position if steps are added to a stepper that mounted without steps', async ({
+    page,
+  }) => {
+    await initStepperHorizontal(page, { amount: 0, isWrapped: true });
+    const host = getHost(page);
+
+    expect(await getStepItems(page)).toHaveLength(0);
+
+    await host.evaluate((host) => {
+      for (let i = 0; i < 6; i++) {
+        const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item');
+        newStepperHorizontalItem.innerText = `Step ${i + 1}`;
+        host.appendChild(newStepperHorizontalItem);
+      }
+    });
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    const [item1, , , , , item6] = await getStepItems(page);
+
+    await setProperty(item1, 'state', 'complete');
+    await setProperty(item6, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    // item6 is scrolled into view only if the appended steps were registered
+    expect(await isElementVisibleInScrollArea(page, item6)).toBe(true);
+  });
+
+  test('should not scroll the page on initial render when stepper is below the fold', async ({ page }) => {
+    // place the stepper far below the fold so any vertical bubbling from scrollIntoView
+    // would visibly scroll the document. currentStep on the last step forces an initial
+    // horizontal scroll to bring it into view.
+    await initStepperHorizontal(page, {
+      amount: 9,
+      currentStep: 8,
+      isWrapped: true,
+      beforeMarkup: '<div style="height: 200vh"></div>',
+    });
+    await sleep(CSS_ANIMATION_DURATION);
+
+    const items = await getStepItems(page);
+    // current step is visible horizontally within the scroll area
+    await expect.poll(() => isElementVisibleInScrollArea(page, items[8])).toBe(true);
+    // page must not have scrolled vertically
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   });
 });
 
