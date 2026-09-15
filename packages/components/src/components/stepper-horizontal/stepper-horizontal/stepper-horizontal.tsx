@@ -42,12 +42,10 @@ export class StepperHorizontal {
 
   private scroller: HTMLElement;
   private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
-  private slot: HTMLSlotElement;
   private resizeObserver: ResizeObserver;
 
   public disconnectedCallback(): void {
     this.resizeObserver?.disconnect();
-    this.slot?.removeEventListener('slotchange', this.onSlotChange);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -67,8 +65,6 @@ export class StepperHorizontal {
       false
     );
 
-    // it would be better to use `<slot onslotchange={() => {}} />` in jsx but that doesn't work reliable or triggers initially when component is rendered via js framework
-    this.slot.addEventListener('slotchange', this.onSlotChange);
     this.resizeObserver = new ResizeObserver(() => {
       // scroll into view in case the current step is not centered after resize
       scrollStepperHorizontalItemIntoView(
@@ -108,7 +104,7 @@ export class StepperHorizontal {
           onClick={this.onClickScroller}
           ref={(el: HTMLElement) => (this.scroller = el)}
         >
-          <slot ref={(el: HTMLSlotElement) => (this.slot = el)} />
+          <slot onSlotchange={this.onSlotChange} />
         </PrefixedTagNames.pScroller>
       </Host>
     );
@@ -131,12 +127,16 @@ export class StepperHorizontal {
   };
 
   private onSlotChange = (): void => {
+    const prevItems = this.stepperHorizontalItems;
     this.defineStepperHorizontalItems();
-    // scroll the current step into view after slot change in case the current step has changed or is not centered anymore
-    scrollStepperHorizontalItemIntoView(
-      getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
-      this.scroller,
-      this.stepperHorizontalItems
-    );
+    // slotchange also fires for the initial slot assignment, so only scroll when the slotted steps actually changed
+    if (hasPropValueChanged(this.stepperHorizontalItems, prevItems)) {
+      // scroll the current step into view after slot change in case the current step has changed or is not centered anymore
+      scrollStepperHorizontalItemIntoView(
+        getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
+        this.scroller,
+        this.stepperHorizontalItems
+      );
+    }
   };
 }

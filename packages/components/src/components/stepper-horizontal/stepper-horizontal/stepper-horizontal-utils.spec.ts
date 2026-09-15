@@ -7,12 +7,31 @@ import {
 const createStepperItems = (states: string[]): HTMLPStepperHorizontalItemElement[] =>
   states.map((state) => ({ state }) as HTMLPStepperHorizontalItemElement);
 
-const createStepperItemsWithScrollIntoView = (count: number): HTMLElement[] =>
-  Array.from({ length: count }, () => {
+// items are laid out at left = 100 * index with width 100; the scroll area is 200 wide at left 0,
+// so centering item i means scrollTo left = 100 * i - 50
+const createStepperItemsWithRects = (count: number): HTMLElement[] =>
+  Array.from({ length: count }, (_, i) => {
     const el = document.createElement('div');
-    el.scrollIntoView = vi.fn();
+    el.getBoundingClientRect = vi.fn(() => ({ left: 100 * i, width: 100 }) as DOMRect);
     return el;
   });
+
+type ScrollAreaMock = HTMLElement & { scrollTo: ReturnType<typeof vi.fn> };
+
+// mimics p-scroller's shadow DOM with a .scroll element, matching what
+// scrollStepperHorizontalItemIntoView queries internally
+const createScroller = (): { scroller: HTMLElement; scrollArea: ScrollAreaMock } => {
+  const scroller = document.createElement('div');
+  const scrollArea = document.createElement('div') as unknown as ScrollAreaMock;
+  Object.defineProperty(scrollArea, 'scrollLeft', { value: 0, writable: true });
+  Object.defineProperty(scrollArea, 'scrollTo', { value: vi.fn(), writable: true });
+  scrollArea.getBoundingClientRect = vi.fn(() => ({ left: 0, width: 200 }) as DOMRect);
+  Object.defineProperty(scroller, 'shadowRoot', {
+    value: { querySelector: vi.fn().mockReturnValue(scrollArea) },
+    writable: true,
+  });
+  return { scroller, scrollArea };
+};
 
 describe('getIndexOfStepWithStateCurrent()', () => {
   it('should return -1 when no item has state "current"', () => {
@@ -77,89 +96,91 @@ describe('throwIfMultipleCurrentStates()', () => {
 });
 
 describe('scrollStepperHorizontalItemIntoView()', () => {
-  it('should not throw when scroller is undefined', () => {
-    const items = createStepperItemsWithScrollIntoView(3);
+  it('should not throw or scroll when scroller is undefined', () => {
+    const items = createStepperItemsWithRects(3);
+    for (const item of items) {
+      item.scrollIntoView = vi.fn();
+    }
     expect(() => scrollStepperHorizontalItemIntoView(0, undefined, items)).not.toThrow();
-    expect(items[0].scrollIntoView).not.toHaveBeenCalled();
+    for (const item of items) {
+      expect(item.scrollIntoView).not.toHaveBeenCalled();
+    }
   });
 
   it('should not throw when items array is empty', () => {
-    const scroller = document.createElement('div');
+    const { scroller } = createScroller();
     expect(() => scrollStepperHorizontalItemIntoView(0, scroller, [])).not.toThrow();
   });
 
-  it('should not call scrollIntoView when stepIndex is undefined', () => {
-    const items = createStepperItemsWithScrollIntoView(3);
+  it('should not throw when scroller has no shadow root', () => {
+    const items = createStepperItemsWithRects(3);
     const scroller = document.createElement('div');
+    expect(() => scrollStepperHorizontalItemIntoView(0, scroller, items)).not.toThrow();
+  });
+
+  it('should not throw when scroller has no scroll area', () => {
+    const items = createStepperItemsWithRects(3);
+    const scroller = document.createElement('div');
+    Object.defineProperty(scroller, 'shadowRoot', {
+      value: { querySelector: vi.fn().mockReturnValue(null) },
+    });
+    expect(() => scrollStepperHorizontalItemIntoView(0, scroller, items)).not.toThrow();
+  });
+
+  it('should not scroll when stepIndex is undefined', () => {
+    const items = createStepperItemsWithRects(3);
+    const { scroller, scrollArea } = createScroller();
     scrollStepperHorizontalItemIntoView(undefined, scroller, items);
-    for (const item of items) {
-      expect(item.scrollIntoView).not.toHaveBeenCalled();
-    }
+    expect(scrollArea.scrollTo).not.toHaveBeenCalled();
   });
 
-  it('should not call scrollIntoView when stepIndex is negative', () => {
-    const items = createStepperItemsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+  it('should not scroll when stepIndex is negative', () => {
+    const items = createStepperItemsWithRects(3);
+    const { scroller, scrollArea } = createScroller();
     scrollStepperHorizontalItemIntoView(-1, scroller, items);
-    for (const item of items) {
-      expect(item.scrollIntoView).not.toHaveBeenCalled();
-    }
+    expect(scrollArea.scrollTo).not.toHaveBeenCalled();
   });
 
-  it('should not call scrollIntoView when stepIndex is out of range', () => {
-    const items = createStepperItemsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+  it('should not scroll when stepIndex is out of range', () => {
+    const items = createStepperItemsWithRects(3);
+    const { scroller, scrollArea } = createScroller();
     scrollStepperHorizontalItemIntoView(5, scroller, items);
-    for (const item of items) {
-      expect(item.scrollIntoView).not.toHaveBeenCalled();
-    }
+    expect(scrollArea.scrollTo).not.toHaveBeenCalled();
   });
 
-  it('should call scrollIntoView with smooth behavior by default', () => {
-    const items = createStepperItemsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+  it('should scroll the scroll area with smooth behavior by default', () => {
+    const items = createStepperItemsWithRects(3);
+    const { scroller, scrollArea } = createScroller();
     scrollStepperHorizontalItemIntoView(1, scroller, items);
-    expect(items[1].scrollIntoView).toHaveBeenCalledWith({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center',
-      container: 'nearest',
-    });
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith({ left: 50, behavior: 'smooth' });
   });
 
-  it('should call scrollIntoView with instant behavior when isSmooth is false', () => {
-    const items = createStepperItemsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+  it('should scroll the scroll area with instant behavior when isSmooth is false', () => {
+    const items = createStepperItemsWithRects(3);
+    const { scroller, scrollArea } = createScroller();
     scrollStepperHorizontalItemIntoView(1, scroller, items, false);
-    expect(items[1].scrollIntoView).toHaveBeenCalledWith({
-      behavior: 'instant',
-      block: 'nearest',
-      inline: 'center',
-      container: 'nearest',
-    });
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith({ left: 50, behavior: 'instant' });
   });
 
-  it('should call scrollIntoView on the correct item', () => {
-    const items = createStepperItemsWithScrollIntoView(5);
-    const scroller = document.createElement('div');
+  it('should center the correct item in the scroll area', () => {
+    const items = createStepperItemsWithRects(5);
+    const { scroller, scrollArea } = createScroller();
     scrollStepperHorizontalItemIntoView(3, scroller, items);
-    expect(items[3].scrollIntoView).toHaveBeenCalledTimes(1);
-    for (const item of items.filter((_, i) => i !== 3)) {
-      expect(item.scrollIntoView).not.toHaveBeenCalled();
-    }
+    expect(scrollArea.scrollTo).toHaveBeenCalledTimes(1);
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith({ left: 250, behavior: 'smooth' });
   });
 
-  it('should call scrollIntoView for the first item (index 0)', () => {
-    const items = createStepperItemsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+  it('should scroll for the first item (index 0)', () => {
+    const items = createStepperItemsWithRects(3);
+    const { scroller, scrollArea } = createScroller();
     scrollStepperHorizontalItemIntoView(0, scroller, items);
-    expect(items[0].scrollIntoView).toHaveBeenCalledTimes(1);
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith({ left: -50, behavior: 'smooth' });
   });
 
-  it('should call scrollIntoView for the last item', () => {
-    const items = createStepperItemsWithScrollIntoView(4);
-    const scroller = document.createElement('div');
+  it('should scroll for the last item', () => {
+    const items = createStepperItemsWithRects(4);
+    const { scroller, scrollArea } = createScroller();
     scrollStepperHorizontalItemIntoView(3, scroller, items);
-    expect(items[3].scrollIntoView).toHaveBeenCalledTimes(1);
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith({ left: 250, behavior: 'smooth' });
   });
 });
