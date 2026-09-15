@@ -1,6 +1,6 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import type { PropOptions } from '@porsche-design-system/components/dist/types/stencil-public-runtime';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
+import type { PropOptions } from '@stencil/core';
 import { kebabCase, pascalCase } from 'change-case';
 import { sync as globbySync } from 'fast-glob';
 import * as fs from 'fs';
@@ -146,7 +146,10 @@ const generateComponentMeta = (): void => {
     const isChunked = (TAG_NAMES_WITH_CHUNK as unknown as TagName[]).includes(tagName);
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAria'); // used only partial "SelectedAria" string to cover both type variants of "SelectedAriaAttributes" and "SelectedAriaRole"
-    const hasElementInternals = source.includes('@AttachInternals()');
+    // Only components which let Stencil attach ElementInternals via the `@AttachInternals()` decorator are flagged,
+    // since those are form-associated and require the `attachInternals` API to exist (e.g. mocked in tests).
+    // Matching at the start of a line ensures mentions within comments don't produce false positives.
+    const hasElementInternals = /^\s*@AttachInternals\(\)/m.test(source);
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
     const usesScss = source.includes('styleUrl:');

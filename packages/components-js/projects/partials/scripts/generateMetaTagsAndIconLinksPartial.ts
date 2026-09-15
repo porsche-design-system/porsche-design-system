@@ -1,4 +1,5 @@
 import { META_ICONS_MANIFEST } from '@porsche-design-system/meta-icons';
+import type { JSX } from 'react';
 import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 import { minifyHTML } from './utils';
 

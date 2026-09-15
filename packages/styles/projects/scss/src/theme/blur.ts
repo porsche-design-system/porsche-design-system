@@ -1,23 +1,21 @@
 import { blurFrosted } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { ScssCatalog } from '../types';
 
-/** Blur theme variable, keyed by variant (e.g. `blur.frosted`). */
-export const blur = {
-  frosted: {
-    name: '$blur-frosted',
-    value: blurFrosted,
-    description: 'Holds a blur value for a **frosted** effect when combined with a semi-transparent color.',
-  },
-} satisfies ScssMeta['blur'];
-
-/**
- * Deprecated `pds-frosted-glass` mixin (plumbing).
- * @deprecated Use the documented `$blur-frosted` variable.
- */
-export const blurDeprecatedMixin: ScssRaw = {
-  raw: `/* alias (deprecated) */
-@mixin pds-frosted-glass {
-  backdrop-filter: ${blurFrosted};
-  -webkit-backdrop-filter: ${blurFrosted};
-}`,
+const frosted = {
+  name: '$blur-frosted',
+  value: blurFrosted,
+  description: 'Holds a blur value for a **frosted** effect when combined with a semi-transparent color.',
 };
+
+/** Blur declarations, keyed by variant (e.g. `blur.frosted`). */
+export const blur = {
+  frosted,
+  frostedGlass: {
+    name: 'pds-frosted-glass',
+    raw: `  backdrop-filter: ${blurFrosted};
+  -webkit-backdrop-filter: ${blurFrosted};`,
+    description: 'Applies a **frosted** effect through `backdrop-filter`.',
+    deprecation: { replacement: scssIdentifier(frosted) },
+  },
+} satisfies ScssCatalog;

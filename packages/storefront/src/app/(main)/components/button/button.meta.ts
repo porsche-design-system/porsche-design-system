@@ -7,6 +7,10 @@ import AccessibilityOverview from '@/app/(main)/components/button/accessibility/
 import AccessibilityTests from '@/app/(main)/components/button/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/button/configurator/introduction.mdx';
 import { buttonStory } from '@/app/(main)/components/button/configurator/story';
+import AiDropShadowDescription from '@/app/(main)/components/button/examples/ai-drop-shadow/example.mdx';
+import { buttonStoryAiDropShadow } from '@/app/(main)/components/button/examples/ai-drop-shadow/story';
+import AiGradientGlowDescription from '@/app/(main)/components/button/examples/ai-gradient-glow/example.mdx';
+import { buttonStoryAiGradientGlow } from '@/app/(main)/components/button/examples/ai-gradient-glow/story';
 import FormDescription from '@/app/(main)/components/button/examples/form/example.mdx';
 import FormAttributeDescription from '@/app/(main)/components/button/examples/form-attribute/example.mdx';
 import Usage from '@/app/(main)/components/button/usage/page.mdx';
@@ -29,6 +33,18 @@ export const buttonMeta = {
       name: 'Form Attribute',
       description: FormAttributeDescription,
       example: buttonExampleFormAttribute,
+    },
+    aiDropShadow: {
+      kind: 'story',
+      name: 'Custom AI Styling: Drop Shadow',
+      description: AiDropShadowDescription,
+      story: buttonStoryAiDropShadow,
+    },
+    aiGradientGlow: {
+      kind: 'story',
+      name: 'Custom AI Styling: Gradient Glow',
+      description: AiGradientGlowDescription,
+      story: buttonStoryAiGradientGlow,
     },
   },
   usage: Usage,

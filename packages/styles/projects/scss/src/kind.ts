@@ -1,11 +1,4 @@
-import type { ScssNode } from './types';
+import type { ScssMixin, ScssVariable } from './types';
 
-// The token/utility axis, recovered per leaf instead of grouped at the top level. A documented
-// `ScssVariable` (has `value`) is always a `token`; a `ScssMixin` (has `raw`) is always a `utility`.
-// This is the shared discriminant the skill generator and the future cross-solution renderer use.
-
-/** Whether a leaf is a referenceable value (`token`) or a reusable applied style (`utility`). */
-export type ScssKind = 'token' | 'utility';
-
-/** Derive a leaf's {@link ScssKind} from its shape (`value` → token, otherwise `utility`). */
-export const kindOf = (node: ScssNode): ScssKind => ('value' in node ? 'token' : 'utility');
+/** Whether a declaration is a referenceable value (`token`) or a reusable applied style (`utility`). */
+export const kindOf = (node: ScssVariable | ScssMixin): 'token' | 'utility' => ('value' in node ? 'token' : 'utility');

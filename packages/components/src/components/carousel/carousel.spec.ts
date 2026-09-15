@@ -1,9 +1,11 @@
 import * as splideModule from '@splidejs/splide';
 import { Splide } from '@splidejs/splide';
+import { forceUpdate } from '@stencil/core';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizable';
 import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
 import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
+import * as childrenObserverUtils from '../../utils/children-observer';
 import * as hasDescription from '../../utils/form/hasDescription';
 import * as hasHeading from '../../utils/form/hasHeading';
 import * as jsonUtils from '../../utils/json';
@@ -69,6 +71,21 @@ describe('connectedCallback', () => {
     expect(spy).toHaveBeenCalledWith();
   });
 
+  it('should call this.updateSlidesAndPagination() and forceUpdate() when observed children change', () => {
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    const updateSpy = vi.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation(() => {});
+    const observeChildrenSpy = vi.spyOn(childrenObserverUtils, 'observeChildren');
+
+    component.connectedCallback();
+
+    // invoke the callback passed to observeChildren to simulate a slotted child change
+    observeChildrenSpy.mock.calls[0][1]();
+
+    expect(updateSpy).toHaveBeenCalledWith();
+    expect(forceUpdate).toHaveBeenCalledWith(component.host);
+  });
+
   describe('on reconnect', () => {
     it('should call this.updateSlidesAndPagination()', () => {
       const component = new Carousel();
@@ -129,7 +146,9 @@ describe('componentWillLoad', () => {
 describe('componentDidLoad', () => {
   it('should call getSplideBreakpoints() with correct parameters', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
     const spy = vi.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
     component.host = getHostEl();
@@ -142,7 +161,9 @@ describe('componentDidLoad', () => {
 
   it('should call parseJSONAttribute() with correct parameter', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
     const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute');
     const component = new Carousel();
     component.host = getHostEl();
@@ -155,7 +176,9 @@ describe('componentDidLoad', () => {
 
   it('should call Splide constructor with correct parameters and set this.splide', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
 
     const component = new Carousel();
     component.host = getHostEl();
@@ -170,7 +193,9 @@ describe('componentDidLoad', () => {
 
   it('should call Splide constructor with correct parameters and set this.splide for slidesPerPage=auto', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    const spy = vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
 
     const component = new Carousel();
     component.host = getHostEl();
@@ -186,7 +211,9 @@ describe('componentDidLoad', () => {
 
   it('should call this.registerSplideHandlers() with correct parameters', () => {
     // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
-    vi.spyOn(splideModule, 'Splide').mockImplementation(function () { return splideMock; });
+    vi.spyOn(splideModule, 'Splide').mockImplementation(function () {
+      return splideMock;
+    });
     const component = new Carousel();
     component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
@@ -220,9 +247,9 @@ describe('render', () => {
     expect(spy).toHaveBeenCalledWith(component.host, component.description);
   });
 
-  it('should call parseJSON() with correct parameter and set this.parsedPagination', () => {
+  it('should call parseJSONBoolean() with correct parameter and set this.parsedPagination', () => {
     vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
-    const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
+    const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSONBoolean').mockReturnValue(false);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.host.attachShadow({ mode: 'open' });
@@ -596,6 +623,23 @@ describe('updateAmountOfPages()', () => {
 
     component['updateAmountOfPages']();
     expect(refreshSpy).toHaveBeenCalledWith();
+  });
+});
+
+describe('slidesPerPageHandler()', () => {
+  it('should recreate the splide instance with the current index and call this.updateAmountOfPages()', () => {
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    component['splide'] = { ...splideMock, index: 2, destroy: vi.fn() } as any;
+    const destroySpy = component['splide'].destroy;
+    const initSplideSpy = vi.spyOn(component, 'initSplide' as any).mockImplementation(() => {});
+    const updateAmountOfPagesSpy = vi.spyOn(component, 'updateAmountOfPages' as any).mockImplementation(() => {});
+
+    component.slidesPerPageHandler();
+
+    expect(destroySpy).toHaveBeenCalledWith();
+    expect(initSplideSpy).toHaveBeenCalledWith(2);
+    expect(updateAmountOfPagesSpy).toHaveBeenCalledWith();
   });
 });
 

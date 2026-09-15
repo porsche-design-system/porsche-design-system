@@ -1,59 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`skeleton() > should return correct css 1`] = `
-"/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-/* (deprecated) */
-@keyframes skeleton {
+"@keyframes skeleton {
   from {
     background-position-x: 100%;
   }

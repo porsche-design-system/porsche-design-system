@@ -443,6 +443,11 @@ export const sitemap: Routes = {
         path: '/skills/knowledge',
         type: 'PAGE',
       },
+      'audit-deprecations': {
+        name: 'Audit Deprecations',
+        path: '/skills/audit-deprecations',
+        type: 'PAGE',
+      },
     },
   },
   components: {

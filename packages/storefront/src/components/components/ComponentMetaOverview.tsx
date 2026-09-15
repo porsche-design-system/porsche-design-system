@@ -35,14 +35,17 @@ export const ComponentMetaOverview = () => {
     );
   };
 
-  const formatAllowedValues = (allowedValues: PropMeta['allowedValues'], isDeprecated: boolean): ReactNode => {
+  const formatAllowedValues = ({ allowedValues, deprecatedValues, isDeprecated }: PropMeta): ReactNode => {
     if (Array.isArray(allowedValues)) {
       return allowedValues
-        .map((value) => (value === null ? 'undefined' : value))
-        .map((value) => (isDeprecated ? `${value} 🚫` : value))
-        .map((value) => (
-          <Fragment key={value}>
-            – {value}
+        .map((value) => ({
+          key: `${value}`,
+          value: value === null ? 'undefined' : value,
+          isDeprecated: !!isDeprecated || !!deprecatedValues?.includes(`${value}`),
+        }))
+        .map(({ key, value, isDeprecated: isValueDeprecated }) => (
+          <Fragment key={key}>
+            – {isValueDeprecated ? `${value} 🚫` : value}
             <br />
           </Fragment>
         ));
@@ -126,9 +129,7 @@ export const ComponentMetaOverview = () => {
                   >
                     {propName} {getFlags(propMeta)}
                   </span>
-                  <div className="toggleable hidden">
-                    {formatAllowedValues(propMeta.allowedValues, !!propMeta.isDeprecated)}
-                  </div>
+                  <div className="toggleable hidden">{formatAllowedValues(propMeta)}</div>
                 </code>
                 <br />
               </Fragment>

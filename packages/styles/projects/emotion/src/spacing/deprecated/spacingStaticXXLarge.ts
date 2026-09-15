@@ -1,4 +1,4 @@
 import { spacingStatic2Xl } from '@porsche-design-system/tokens';
 
-/** @deprecated since v4.0.0, will be removed with next major release. Use spacingStatic2Xl instead. */
+/** @deprecated Use {@link spacingStatic2Xl} instead. This API will be removed with the next major release. */
 export const spacingStaticXXLarge = spacingStatic2Xl;

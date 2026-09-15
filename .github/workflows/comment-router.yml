@@ -1,0 +1,28 @@
+# Thin consumer shim for the reusable TurboSpec comment router.
+# Keep its @ref aligned with weekly-dependency-bump-turbospec.yml.
+
+name: Workflow Comment Router
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted]
+
+permissions:
+  actions: write
+  contents: read
+  issues: write
+  pull-requests: write
+  copilot-requests: write
+
+concurrency:
+  group: wf-comment-router-${{ github.event.issue.number || github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  router:
+    uses: porsche-code/turbo-spec/.github/workflows/comment-router.yml@main
+    secrets: inherit
+    with:
+      engine_workflow: weekly-dependency-bump-turbospec.yml

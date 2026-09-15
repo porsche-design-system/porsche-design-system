@@ -1,7 +1,7 @@
 export * from './a11y';
 export * from './applyConstructableStylesheetStyle';
 export * from './attribute-observer';
-export { parseJSON } from './breakpoint-customizable';
+export { isTruthyForAnyBreakpoint, parseJSON, parseJSONBoolean } from './breakpoint-customizable';
 export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint-observer';
 export { getCurrentMatchingBreakpointValue } from './breakpoint-observer-utils';
 export * from './button-handling';
@@ -11,6 +11,7 @@ export * from './color';
 export * from './device-detection';
 export * from './dialog';
 export * from './dom';
+export * from './element-internals';
 export { OPTION_LIST_SAFE_ZONE, optionListUpdatePosition } from './floating-ui';
 export * from './form';
 export * from './getCDNBaseURL';

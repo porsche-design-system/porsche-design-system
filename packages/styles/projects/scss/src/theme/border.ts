@@ -9,10 +9,11 @@ import {
   radiusXl,
   radiusXs,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw, ScssVariable } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { ScssCatalog } from '../types';
 
-/** The border radius scale. The same entries render both the docs rows and the `$radius-*: …;` declarations. */
-export const radius = {
+/** The documented border radius scale. */
+const radius = {
   xs: {
     name: '$radius-xs',
     value: radiusXs,
@@ -63,22 +64,43 @@ export const radius = {
     description:
       'Holds a **fully** rounded `border-radius`. Used for pill shapes (e.g. `p-tag`, `p-switch`,…). Recommended only for standalone indicators.',
   },
-} satisfies Record<string, ScssVariable>;
-
-/** Border theme variables: the `radius` scale. `width` stays empty — the only widths are deprecated `$pds-border-width-*` aliases. */
-export const border = {
-  radius,
-  width: [],
-} satisfies ScssMeta['border'];
-
-/**
- * Deprecated `$pds-border-*` aliases (plumbing).
- * @deprecated Use the documented `$radius-*` variables.
- */
-export const borderDeprecatedAliases: ScssRaw = {
-  raw: `$pds-border-radius-small: ${radiusSm}; /* alias (deprecated) */
-$pds-border-radius-medium: ${radiusMd}; /* alias (deprecated) */
-$pds-border-radius-large: ${radiusLg}; /* alias (deprecated) */
-$pds-border-width-base: 2px; /* alias (deprecated) */
-$pds-border-width-thin: 1px; /* alias (deprecated) */`,
 };
+
+/** Border declarations: the `radius` scale, plus the deprecated `$pds-border-*` aliases beside their replacements. `width` holds only legacy aliases. */
+export const border = {
+  radius: {
+    ...radius,
+    radiusSmall: {
+      name: '$pds-border-radius-small',
+      value: radiusSm,
+      description: 'Holds a **small** `border-radius`.',
+      deprecation: { replacement: scssIdentifier(radius.sm) },
+    },
+    radiusMedium: {
+      name: '$pds-border-radius-medium',
+      value: radiusMd,
+      description: 'Holds a **medium** `border-radius`.',
+      deprecation: { replacement: scssIdentifier(radius.md) },
+    },
+    radiusLarge: {
+      name: '$pds-border-radius-large',
+      value: radiusLg,
+      description: 'Holds a **large** `border-radius`.',
+      deprecation: { replacement: scssIdentifier(radius.lg) },
+    },
+  },
+  width: [
+    {
+      name: '$pds-border-width-base',
+      value: '2px',
+      description: 'Holds a **base** `border-width`. The current scale has no border width declarations.',
+      deprecation: {},
+    },
+    {
+      name: '$pds-border-width-thin',
+      value: '1px',
+      description: 'Holds a **thin** `border-width`. The current scale has no border width declarations.',
+      deprecation: {},
+    },
+  ],
+} satisfies ScssCatalog;

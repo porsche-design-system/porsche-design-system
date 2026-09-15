@@ -1,0 +1,92 @@
+# .github/workflows/weekly-dependency-bump-turbospec.yml — weekly dependency-bump driver (turbo-spec shim)
+#
+# This copy is hard-wired to the dependency-bump blueprint: it runs ONLY
+# on manual workflow_dispatch and always calls
+# .turbo-spec/workflows/dependency-bump.yml. There
+# is no issue-label trigger. The comment-router/watcher re-dispatch it with
+# session_id/feedback on resume (those inputs must stay).
+# `.github/workflows/weekly-dependency-agent.yml` remains the schedule owner;
+# do not add a schedule here unless that workflow is retired.
+#
+# All engine logic — checkout auth, gerhard setup, sandbox wiring, and the
+# interim workarounds for known engine issues (container runtime #851, egress
+# allow-list #853) — lives centrally in the reusable workflow
+# porsche-code/turbo-spec/.github/workflows/engine.yml. When an engine fix
+# ships, the interim is removed THERE; this shim never changes for that.
+#
+# What to customize here:
+#   - The `uses:` pin. It uses @main while this manual-only workflow evaluates
+#     the consumer blueprint. Before scheduling it, pin a release tag (e.g.
+#     @v1.2.3 — see
+#     https://github.com/porsche-code/turbo-spec/releases) and pass the same
+#     tag as `engine_ref:` under `with:` (it defaults to main).
+#   - Nothing else for the default setup. Blueprint overlays stay consumer-side
+#     (e.g. .turbo-spec/workflows/bug-fix.yml appending reporter skills) — the
+#     engine discovers them in your repo; they are not wired here.
+#
+# Prerequisites: org secrets TURBO_SPEC_APP_ID / TURBO_SPEC_APP_KEY (+ optional
+# telemetry key) — forwarded via `secrets: inherit`. GH_COPILOT_TOKEN is now
+# OPTIONAL: when unset, the built-in GITHUB_TOKEN authenticates Copilot via the
+# `copilot-requests: write` permission below (set GH_COPILOT_TOKEN to an
+# OAuth-style Copilot-seat token to use a dedicated no-write credential instead;
+# PATs are rejected by GitHub's Copilot endpoint, see #919). Companion files:
+# ai-watch.yml (failure watcher), comment-router.yml (PR feedback resume).
+name: TurboSpec | Weekly Dependency Bump
+on:
+  # Manual dispatch only — dedicated to the dependency-bump blueprint. The
+  # comment-router re-dispatches this shim with -f session_id/-f feedback on
+  # resume, so those inputs must stay or the dispatch fails with
+  # "Unexpected inputs provided".
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Optional issue number to associate with the run."
+        required: false
+        type: string
+        default: ""
+      session_id:
+        description: "Optional session id to resume a prior run."
+        required: false
+        type: string
+        default: ""
+      feedback:
+        description: "Optional human feedback text (requires session_id). Auto-set by comment-router.yml."
+        required: false
+        type: string
+        default: ""
+# A reusable workflow can only receive — never raise — the caller's token
+# permissions, so the full set must be granted here. packages: read pulls the
+# internal-visibility agent-sandbox image from GHCR.
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  actions: write
+  # Pull the internal ghcr.io/porsche-code/agent-sandbox image. An explicit
+  # permissions block zeroes every unlisted scope, so without this the job
+  # token cannot read the package and the sandbox image pull is denied.
+  packages: read
+  # Lets the built-in GITHUB_TOKEN authenticate Copilot when no GH_COPILOT_TOKEN
+  # secret is set. A reusable workflow can only receive the caller's permissions,
+  # so this must be granted here on the caller.
+  copilot-requests: write
+jobs:
+  run:
+    uses: porsche-code/turbo-spec/.github/workflows/engine.yml@main
+    secrets: inherit
+    with:
+      # Dedicated shim: always run the dependency-bump blueprint. The engine
+      # resolves the bare name consumer-first to
+      # .turbo-spec/workflows/dependency-bump.yml.
+      # On resume (session_id set) the blueprint is recovered from the session
+      # and this value is ignored.
+      blueprint: dependency-bump
+      issue_number: ${{ inputs.issue_number }}
+      session_id: ${{ inputs.session_id }}
+      feedback: ${{ inputs.feedback }}
+      stream: "true"
+      engine_ref: main
+      # Debugging a run? Set the repo Actions VARIABLE TURBOSPEC_PR_REPORT_MODE
+      # to "debug" (Settings → Secrets and variables → Actions → Variables) to
+      # get the live per-stage comment stream on top of the final run report.
+      # No workflow edit needed — delete the variable when done.

@@ -39,6 +39,56 @@ packages/
 └── utilities/          # AG Grid theme, utility functions
 ```
 
+## Public API Surface (Read Before Judging a Breaking Change)
+
+Only **four** packages are published to npm:
+
+```
+@porsche-design-system/components-{js|angular|react|vue}
+```
+
+Every other workspace package is `"private": true`, including all of `packages/styles/projects/*`,
+`@porsche-design-system/tokens-meta`, `@porsche-design-system/stylesheets` and `shared` — regardless of having a scoped
+name, an `exports` map, `files` and `.d.ts` output. The published packages are assembled by copying **selected build
+output** into a wrapper `dist/`; what is not copied does not exist for a consumer.
+
+**The most reliable and easiest way to tell what is published is to read the built wrapper `dist/` folders.** Each one
+_is_ the npm package — the tarball root, `package.json` included:
+
+```
+packages/components-js/dist/components-wrapper     → @porsche-design-system/components-js
+packages/components-angular/dist/angular-wrapper   → @porsche-design-system/components-angular
+packages/components-react/dist/react-wrapper       → @porsche-design-system/components-react
+packages/components-vue/dist/vue-wrapper           → @porsche-design-system/components-vue
+```
+
+```bash
+ls packages/components-js/dist/components-wrapper          # top-level folders = published subpaths
+grep -rl "<exact-identifier>" packages/components-*/dist/*-wrapper/  # no hit = internal, full stop
+```
+
+Grep for the exact identifier, not a loose word: the generated skill markdown contains prose like "deprecations".
+
+Never answer this from a workspace package's own `package.json` — its `exports`, `files` and `types` describe workspace
+resolution, not what npm ships. If `dist/` is not built yet, run `npm run build`, or fall back to
+`grep -n "cp -r \.\./" packages/components-{js,angular,react,vue}/package.json` and
+`npm view @porsche-design-system/components-js@latest exports --json`.
+
+The most common mistake is treating an internal entry point as public:
+
+| Looks public                                                    | Actually                                                            |
+| --------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `@porsche-design-system/scss` JS exports (`scssMeta`, `kindOf`) | Internal — only `dist/*.scss` ships, under the `sass` condition      |
+| `@porsche-design-system/tailwindcss` JS exports                 | Internal — only `dist/index.css` ships                               |
+| `@porsche-design-system/{emotion,vanilla-extract}/meta`         | Internal — `meta/` is never copied; only `dist/` (from `src/`) ships |
+| `@porsche-design-system/tokens-meta`                            | Internal in full — the public token surface is `./tokens`            |
+| `@porsche-design-system/shared/deprecation`                     | Internal in full                                                     |
+| All `*Deprecations` lists                                       | Internal metadata — the _declarations_ they describe are public      |
+
+[`docs/public-api.md`](docs/public-api.md) is the single source of truth, with the full subpath-to-source map and the
+three checks to run when the answer is not obvious. **Verify against it before reporting a removed or changed export as
+breaking, and before writing a changelog entry for one.**
+
 ## Build Order (Critical)
 
 The monorepo has **strict build dependencies**. Always build in this order:
@@ -76,7 +126,27 @@ npm run test:a11y:components-js       # Accessibility tests
 # Lint and format
 npm run lint
 npm run format
+
+# Typecheck (no compilation)
+npm run typecheck             # Everything a fresh clone can check. Runs in CI and at the start of `build`.
+npm run typecheck:all         # Every package, in build order. Needs a built tree, so it is local only.
+npm run typecheck:{package}   # One package only, e.g. typecheck:tokens
 ```
+
+Root holds two chains, and both are composed from the per-package `typecheck:{package}` entries, with nested
+projects called by `--workspace` inside `typecheck:all`.
+`typecheck` covers only the packages whose sources exist in a fresh clone, because the CI Typecheck job
+runs on a fresh checkout. `typecheck:all` covers every package in the order `build` uses, and it needs a
+built tree, so nothing automated calls it.
+
+A package missing from `typecheck` is still gated inside its own `build`, either by a named `typecheck`
+step (`packages/shared/package.json`, `packages/components/package.json`) or by its bundler and framework
+compiler refusing to emit on a type error (`noEmitOnError` in the rollup configs, `ng build`, `next build`).
+See `docs/typecheck.md`.
+
+`npm run build` and `build-prod` both begin with `typecheck`, so a local build gets the same coverage CI
+does. That adds no duplicate work, because CI runs the individual `build:*` steps rather than the root
+`build`.
 
 ## Testing
 
@@ -111,6 +181,19 @@ Key test files:
 - Should enable a feature, not disable it
 
 See [`docs/coding-standards-and-guidelines.md`](docs/coding-standards-and-guidelines.md) for details.
+
+## Changelog
+
+Consumer-facing changes are documented in [`packages/components/CHANGELOG.md`](packages/components/CHANGELOG.md) under
+`[Unreleased]`. [`docs/changelog.md`](docs/changelog.md) defines what belongs there, which section an entry goes in, and
+how entries are worded — it is the single source of truth for both humans and agents.
+
+"Consumer-facing" means reachable through a published subpath — check [`docs/public-api.md`](docs/public-api.md) before
+writing or requesting an entry.
+
+- Run the `update-changelog` skill to reconcile the changelog with the current branch
+- When reviewing a pull request, apply the `.github/skills/code-review-changelog` skill — including when the pull
+  request does not touch the changelog at all, since a missing entry is the most common error
 
 ## Accessibility (WCAG 2.2 AA — Non-negotiable)
 

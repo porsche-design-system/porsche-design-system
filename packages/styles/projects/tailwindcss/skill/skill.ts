@@ -2,8 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
-import type { TailwindBranch, TailwindNode, TailwindThemeVariable, TailwindUtility } from '../src';
-import { kindOf, type TailwindKind, tailwindMeta } from '../src';
+import type { TailwindCatalog, TailwindThemeVariable, TailwindUtility } from '../src';
+import { kindOf, tailwindMeta } from '../src';
+
+type TailwindKind = 'token' | 'utility';
 
 /**
  * Markdown serializer for the Tailwind styling solution — the `getLlmContext()`-style companion to
@@ -130,13 +132,13 @@ const deriveOutline = <T>(catalog: object): Outline<T> =>
   ) as Outline<T>;
 
 /** Keep only the leaves of a given {@link TailwindKind}, pruning emptied groups. Returns `undefined` when nothing remains. */
-const pruneByKind = (node: TailwindBranch, kind: TailwindKind): TailwindBranch | undefined => {
+const pruneByKind = (node: TailwindCatalog, kind: TailwindKind): TailwindCatalog | undefined => {
   if (isLeaf(node)) {
-    return kindOf(node as TailwindNode) === kind ? node : undefined;
+    return kindOf(node as TailwindThemeVariable | TailwindUtility) === kind ? node : undefined;
   }
   const entries = (Array.isArray(node) ? node.map((n, i) => [i, n] as const) : Object.entries(node))
-    .map(([key, value]) => [key, pruneByKind(value as TailwindBranch, kind)] as const)
-    .filter((entry): entry is [string | number, TailwindBranch] => entry[1] !== undefined);
+    .map(([key, value]) => [key, pruneByKind(value as TailwindCatalog, kind)] as const)
+    .filter((entry): entry is [string | number, TailwindCatalog] => entry[1] !== undefined);
   if (entries.length === 0) {
     return undefined;
   }
@@ -144,8 +146,8 @@ const pruneByKind = (node: TailwindBranch, kind: TailwindKind): TailwindBranch |
 };
 
 /** Split the flat `tailwindMeta` catalog into a single-kind view, dropping domains/groups that end up empty. */
-const catalogByKind = (kind: TailwindKind): Record<string, TailwindBranch> =>
-  (pruneByKind(tailwindMeta as TailwindBranch, kind) ?? {}) as Record<string, TailwindBranch>;
+const catalogByKind = (kind: TailwindKind): Record<string, TailwindCatalog> =>
+  (pruneByKind(tailwindMeta as TailwindCatalog, kind) ?? {}) as Record<string, TailwindCatalog>;
 
 const themeOutline = deriveOutline<TailwindThemeVariable>(catalogByKind('token'));
 

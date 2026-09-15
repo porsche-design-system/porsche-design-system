@@ -7,6 +7,7 @@
   { "name": "adjust", "size": 467, "gzipSize": 230 },
   { "name": "aggregation", "size": 163, "gzipSize": 154 },
   { "name": "ai-3d-object", "size": 813, "gzipSize": 460 },
+  { "name": "ai-chat", "size": 772, "gzipSize": 404 },
   { "name": "ai-code", "size": 657, "gzipSize": 381 },
   { "name": "ai-edit", "size": 599, "gzipSize": 379 },
   { "name": "ai-image", "size": 620, "gzipSize": 384 },

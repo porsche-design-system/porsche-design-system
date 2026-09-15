@@ -110,6 +110,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.BannerExampleComponent,
   },
   {
+    name: 'Boolean Attribute Shorthand Example',
+    path: 'boolean-attribute-shorthand-example',
+    component: fromExamples.BooleanAttributeShorthandExampleComponent,
+  },
+  {
     name: 'Button Example Form',
     path: 'button-example-form',
     component: fromExamples.ButtonExampleFormComponent,

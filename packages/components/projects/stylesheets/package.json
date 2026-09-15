@@ -46,6 +46,7 @@
     "build:index": "npm run build:index:default && npm run build:index:cdn",
     "build:index:default": "cat lib/normalize.css lib/variables.css lib/color-scheme.css lib/font-face.css > lib/index.css",
     "build:index:cdn": "mkdir -p lib/cn && cat lib/normalize.css lib/variables.css lib/color-scheme.css lib/cn/font-face.css > lib/cn/index.css",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./lib ./meta"

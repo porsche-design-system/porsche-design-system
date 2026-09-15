@@ -3,7 +3,6 @@ import type {
   BreakpointCustomizable,
   ButtonAriaAttribute,
   ButtonType,
-  ButtonVariant,
   PropTypes,
   SelectedAriaAttributes,
 } from '../../types';
@@ -17,18 +16,18 @@ import {
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  LINK_BUTTON_VARIANTS,
+  setCustomState,
   validateProps,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './button-styles';
-import { type ButtonIcon, getButtonAriaAttributes } from './button-utils';
+import { BUTTON_VARIANTS, type ButtonIcon, type ButtonVariant, getButtonAriaAttributes } from './button-utils';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
   name: AllowedTypes.string,
   value: AllowedTypes.string,
-  variant: AllowedTypes.oneOf<ButtonVariant>(LINK_BUTTON_VARIANTS),
+  variant: AllowedTypes.oneOf<ButtonVariant>(BUTTON_VARIANTS),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   icon: AllowedTypes.string,
@@ -65,7 +64,7 @@ export class Button {
   /** Disables the button and replaces its content with a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Sets the visual style variant of the button (`primary` or `secondary`). */
+  /** Sets the visual style variant of the button (`primary`, `secondary` or `destructive`). Use `destructive` for actions with irreversible consequences, e.g. deleting data. */
   @Prop() public variant?: ButtonVariant = 'primary';
 
   /** Sets the icon displayed inside the button. Use `none` to show no icon. */
@@ -133,6 +132,10 @@ export class Button {
     }
   }
 
+  public componentWillRender(): void {
+    this.syncCustomStates();
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -147,6 +150,18 @@ export class Button {
         () => this.value
       );
     }
+  }
+
+  /**
+   * Exposes the loading state as CSS custom state, which can be targeted with the `:state()` pseudo-class,
+   * e.g. `p-button:state(loading) { --p-button-bg: deeppink; }`.
+   * This is experimental and a progressive enhancement: it silently does nothing in browsers without `CustomStateSet`
+   * support and it can't be expressed during SSR, since custom states are only applied once the component hydrates.
+   * The disabled state doesn't need a custom state, since the button is form-associated and therefore matched by the
+   * native `:disabled` pseudo-class.
+   */
+  private syncCustomStates(): void {
+    setCustomState(this.internals, 'loading', this.loading);
   }
 
   public render(): JSX.Element {

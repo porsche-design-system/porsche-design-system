@@ -8,17 +8,18 @@ export const buildFontFaceCss = () => {
   const stylesCom = getMinifiedPorscheNextFontFaceCss(isDev ? { cdn: 'localhost' } : '.');
   const stylesCn = getMinifiedPorscheNextFontFaceCss(isDev ? { cdn: 'localhost' } : '..');
 
-  const targetPath = './lib';
-  const targetPathCn = './lib/cn';
+  // Resolved from this file so the output cannot follow the caller's working directory.
+  const targetPath = path.resolve(__dirname, '..', 'lib');
+  const targetPathCn = path.join(targetPath, 'cn');
   const targetFile = 'font-face.css';
 
   fs.mkdirSync(targetPath, { recursive: true });
   fs.mkdirSync(targetPathCn, { recursive: true });
-  fs.cpSync(path.resolve(__dirname, '../../../../assets/projects/fonts/dist/fonts'), `${targetPath}/fonts`, {
+  fs.cpSync(path.resolve(__dirname, '../../../../assets/projects/fonts/dist/fonts'), path.join(targetPath, 'fonts'), {
     recursive: true,
   });
-  fs.writeFileSync(`./${targetPath}/${targetFile}`, stylesCom);
-  fs.writeFileSync(`./${targetPathCn}/${targetFile}`, stylesCn);
+  fs.writeFileSync(path.join(targetPath, targetFile), stylesCom);
+  fs.writeFileSync(path.join(targetPathCn, targetFile), stylesCn);
 
   console.log(`Built Font Face CSS in ${isDev ? 'development' : 'production'} mode`);
 };

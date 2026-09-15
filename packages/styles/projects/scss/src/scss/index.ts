@@ -1,27 +1,20 @@
-import { scssMeta } from '../meta';
 import { namespace } from '../namespaces';
-import { blurDeprecatedMixin } from '../theme/blur';
-import { borderDeprecatedAliases } from '../theme/border';
-import { breakpointDeprecatedAliases } from '../theme/breakpoint';
-import { colorDeprecatedAliases, colorSchemeMixin } from '../theme/color';
-import { gradientDeprecatedMixins } from '../theme/gradient';
+import { blur } from '../theme/blur';
+import { border } from '../theme/border';
+import { breakpoint } from '../theme/breakpoint';
+import { color, colorSchemeMixin } from '../theme/color';
+import { cjkFontFamily, font } from '../theme/font';
+import { gradient } from '../theme/gradient';
 import { grid as gridGroups } from '../theme/grid';
-import { grid as gridMixin } from '../utilities/grid';
-import { motionDeprecatedAliases } from '../theme/motion';
-import { shadowDeprecatedMixins } from '../theme/shadow';
-import { spacingDeprecatedAliases } from '../theme/spacing';
-import { cjkFontFamily, fontDeprecatedAliases } from '../theme/font';
+import { motion } from '../theme/motion';
+import { shadow } from '../theme/shadow';
+import { spacing } from '../theme/spacing';
 import type { ScssFileMeta, ScssRaw } from '../types';
-import { focusDeprecatedAliases } from '../utilities/focus';
-import { breakpointsMap, mediaQueryDeprecatedAliases } from '../utilities/media-query';
-import { skeletonDeprecatedMixin } from '../utilities/skeleton';
-import {
-  displayDeprecatedAliases,
-  headingDeprecatedAliases,
-  proseHeadingHelper,
-  proseTextHelper,
-  textDeprecatedAliases,
-} from '../utilities/typography';
+import { focus, focusMaps } from '../utilities/focus';
+import { grid as gridMixin } from '../utilities/grid';
+import { breakpointsMap, mediaQuery } from '../utilities/media-query';
+import { skeleton } from '../utilities/skeleton';
+import { proseHeadingHelper, proseTextHelper, typography } from '../utilities/typography';
 import { flatten, renderNode } from './render';
 
 /** A blank-line separator between sections within a partial (an empty raw node). */
@@ -30,52 +23,52 @@ const blank: ScssRaw = { raw: '' };
 const borderFile: ScssFileMeta = {
   file: `_${namespace.border}.scss`,
   description: 'The border radius scale plus the deprecated `$pds-border-*` aliases.',
-  nodes: [...flatten(scssMeta.border), blank, borderDeprecatedAliases],
+  nodes: [...flatten(border)],
 };
 
 const blurFile: ScssFileMeta = {
   file: '_blur.scss',
   description: 'The frosted blur variable plus the deprecated `pds-frosted-glass` mixin.',
-  nodes: [...flatten(scssMeta.blur), blank, blurDeprecatedMixin],
+  nodes: [...flatten(blur)],
 };
 
 const breakpointFile: ScssFileMeta = {
   file: `_${namespace.breakpoint}.scss`,
   description: 'The responsive breakpoint scale plus the deprecated `$pds-breakpoint-*` aliases.',
-  nodes: [...flatten(scssMeta.breakpoint), blank, breakpointDeprecatedAliases],
+  nodes: [...flatten(breakpoint)],
 };
 
 const shadowFile: ScssFileMeta = {
   file: '_shadow.scss',
   description: 'The shadow scale plus the deprecated `pds-drop-shadow-*` mixins.',
-  nodes: [...flatten(scssMeta.shadow), blank, shadowDeprecatedMixins],
+  nodes: [...flatten(shadow)],
 };
 
 const spacingFile: ScssFileMeta = {
   file: '_spacing.scss',
   description: 'The fluid and static spacing scales plus the deprecated `$pds-spacing-*` aliases.',
-  nodes: [...flatten(scssMeta.spacing), blank, spacingDeprecatedAliases],
+  nodes: [...flatten(spacing)],
 };
 
 const motionFile: ScssFileMeta = {
   file: `_${namespace.motion}.scss`,
   description: 'The duration and easing scales plus the deprecated `$pds-motion-*` aliases.',
-  nodes: [...flatten(scssMeta.motion), blank, motionDeprecatedAliases],
+  nodes: [...flatten(motion)],
 };
 
 const gradientFile: ScssFileMeta = {
   file: '_gradient.scss',
   description: 'The `$gradient-stops-fade-dark` color stops plus the deprecated `pds-gradient-to-*` mixins.',
-  nodes: [...flatten(scssMeta.gradient), blank, gradientDeprecatedMixins],
+  nodes: [...flatten(gradient)],
 };
 
 const colorFile: ScssFileMeta = {
   file: `_${namespace.color}.scss`,
   description: 'The `$color-*` scale plus the `color-scheme()` mixin and deprecated `$pds-theme-*` aliases.',
-  nodes: [...flatten(scssMeta.color), blank, colorSchemeMixin, blank, colorDeprecatedAliases],
+  nodes: [...flatten(color), blank, colorSchemeMixin],
 };
 
-const { family, weight, lineHeight, size } = scssMeta.font;
+const { family, weight, lineHeight, size, ...fontAliases } = font;
 const fontFile: ScssFileMeta = {
   file: `_${namespace.font}.scss`,
   description:
@@ -91,7 +84,7 @@ const fontFile: ScssFileMeta = {
     blank,
     ...flatten(weight),
     blank,
-    fontDeprecatedAliases,
+    ...flatten(Object.values(fontAliases)),
   ],
 };
 
@@ -99,42 +92,42 @@ const skeletonFile: ScssFileMeta = {
   file: '_skeleton.scss',
   description: 'The `skeleton()` loading-placeholder mixin plus the deprecated `pds-skeleton` variant.',
   uses: [namespace.border, namespace.color, namespace.motion],
-  nodes: [...flatten(scssMeta.skeleton), blank, skeletonDeprecatedMixin],
+  nodes: [...flatten(skeleton)],
 };
 
 const focusFile: ScssFileMeta = {
   file: '_focus.scss',
   description: 'The `focus-visible()` mixin plus the deprecated `pds-focus` variant and its lookup maps.',
   uses: [namespace.border, namespace.color, 'sass:map'],
-  nodes: [...flatten(scssMeta.focus), blank, focusDeprecatedAliases],
+  nodes: [focusMaps, blank, ...flatten(focus)],
 };
 
 const headingFile: ScssFileMeta = {
   file: `_${namespace.heading}.scss`,
   description: 'The `prose-heading-*` mixins plus the `-prose-heading` helper and `pds-heading-*` aliases.',
   uses: [namespace.font, namespace.color],
-  nodes: [proseHeadingHelper, blank, ...flatten(scssMeta.typography.heading), blank, headingDeprecatedAliases],
+  nodes: [proseHeadingHelper, blank, ...flatten(typography.heading)],
 };
 
 const textFile: ScssFileMeta = {
   file: '_text.scss',
   description: 'The `prose-text-*` mixins plus the `-prose-text` helper and `pds-text-*` aliases.',
   uses: [namespace.font, namespace.color],
-  nodes: [proseTextHelper, blank, ...flatten(scssMeta.typography.text), blank, textDeprecatedAliases],
+  nodes: [proseTextHelper, blank, ...flatten(typography.text)],
 };
 
 const displayFile: ScssFileMeta = {
   file: '_display.scss',
   description: 'The deprecated `pds-display-*` aliases routed through the `prose-heading-*` mixins.',
   uses: [namespace.heading],
-  nodes: [displayDeprecatedAliases],
+  nodes: [...flatten(typography.display)],
 };
 
 const mediaQueryFile: ScssFileMeta = {
   file: '_media-query.scss',
   description: 'The `media-query-*` mixins plus the `$pds-breakpoints` map and deprecated `pds-media-query-*` aliases.',
   uses: [namespace.breakpoint, 'sass:map'],
-  nodes: [breakpointsMap, blank, ...flatten(scssMeta.mediaQuery), blank, mediaQueryDeprecatedAliases],
+  nodes: [breakpointsMap, blank, ...flatten(mediaQuery)],
 };
 
 // The grid mixin plus one descriptor per `_grid-*.scss` partial: the area-grouped `gridGroups` tree is
@@ -184,9 +177,7 @@ const gridExtendedFile: ScssFileMeta = {
 const gridExtendedOffsetFile: ScssFileMeta = {
   file: '_grid-extended-offset.scss',
   description: 'The `extended` area offset variables.',
-  nodes: [
-    ...flatten([gridGroups.extended.offsetBase, gridGroups.extended.offsetS, gridGroups.extended.offsetXXL]),
-  ],
+  nodes: [...flatten([gridGroups.extended.offsetBase, gridGroups.extended.offsetS, gridGroups.extended.offsetXXL])],
 };
 
 const gridBasicFile: ScssFileMeta = {
@@ -252,7 +243,7 @@ const indexFile: ScssFileMeta = {
   nodes: [{ raw: partialFiles.map(({ file }) => `@forward '${file.slice(1, -'.scss'.length)}';`).join('\n') }],
 };
 
-/** The composition layer: ordered per-file descriptors interleaving `scssMeta` entries with plumbing. The build renders each to `dist/<file>`. */
+/** The composition layer: ordered per-file descriptors interleaving `scssMeta` and `scssDeprecationsMeta` entries with plumbing. The build renders each to `dist/<file>`. */
 export const scssFileMeta: ScssFileMeta[] = [...partialFiles, indexFile];
 
 /** Render a file descriptor to its SCSS string: optional `@use` headers, then the ordered nodes. */

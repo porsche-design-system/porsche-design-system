@@ -19,7 +19,8 @@ import {
   typescaleXl,
   typescaleXs,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssMixin, ScssRaw, ScssVariable } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { ScssCatalog, ScssMixin, ScssVariable } from '../types';
 
 /** The Porsche Next font families (base plus the locale-specific CJK stacks). */
 const family = {
@@ -132,14 +133,6 @@ const size = {
   },
 } satisfies Record<string, ScssVariable>;
 
-/** Font token variables (`family` / `weight` / `lineHeight` / `size`). The prose mixins live in `utilities/typography.ts`. */
-export const font = {
-  family,
-  weight,
-  lineHeight,
-  size,
-} satisfies ScssMeta['font'];
-
 /** The `cjk-font-family` helper mixin: swaps to the locale-specific font stack by nearest `lang` attribute. Referenced via `ref('font')` from the prose helpers (plumbing). */
 export const cjkFontFamily: ScssMixin = {
   name: 'cjk-font-family',
@@ -170,33 +163,162 @@ export const cjkFontFamily: ScssMixin = {
   }`,
 };
 
-/**
- * Deprecated `$pds-font-*` aliases (plumbing).
- * @deprecated Use `$font-porsche-next`, `$typescale-*`, `$font-weight-*`, `$leading-normal`.
- */
-export const fontDeprecatedAliases: ScssRaw = {
-  raw: `$pds-font-family: ${fontPorscheNext}; /* alias (deprecated) */
-$pds-font-hyphenation-style-overflow-wrap: break-word; /* alias (deprecated) */
-$pds-font-hyphenation-style-hyphens: var(--p-hyphens, auto); /* alias (deprecated) */
-$pds-font-line-height: ${leadingNormal}; /* alias (deprecated) */
-$pds-font-size-text-xx-small: ${typescale2Xs}; /* alias (deprecated) */
-$pds-font-size-text-x-small: ${typescaleXs}; /* alias (deprecated) */
-$pds-font-size-text-small: ${typescaleSm}; /* alias (deprecated) */
-$pds-font-size-text-medium: ${typescaleMd}; /* alias (deprecated) */
-$pds-font-size-text-large: ${typescaleLg}; /* alias (deprecated) */
-$pds-font-size-text-x-large: ${typescaleXl}; /* alias (deprecated) */
-$pds-font-size-heading-small: ${typescaleSm}; /* alias (deprecated) */
-$pds-font-size-heading-medium: ${typescaleMd}; /* alias (deprecated) */
-$pds-font-size-heading-large: ${typescaleLg}; /* alias (deprecated) */
-$pds-font-size-heading-x-large: ${typescaleXl}; /* alias (deprecated) */
-$pds-font-size-heading-xx-large: ${typescale2Xl}; /* alias (deprecated) */
-$pds-font-size-display-small: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem); /* alias (deprecated) */
-$pds-font-size-display-medium: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem); /* alias (deprecated) */
-$pds-font-size-display-large: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem); /* alias (deprecated) */
-$pds-font-style-normal: normal; /* alias (deprecated) */
-$pds-font-style-italic: italic; /* alias (deprecated) */
-$pds-font-variant: normal; /* alias (deprecated) */
-$pds-font-weight-regular: ${fontWeightNormal}; /* alias (deprecated) */
-$pds-font-weight-semi-bold: ${fontWeightSemibold}; /* alias (deprecated) */
-$pds-font-weight-bold: ${fontWeightBold}; /* alias (deprecated) */`,
-};
+/** Font declarations, grouped like the storefront API tables, each group followed by its deprecated `$pds-font-*` aliases. */
+export const font = {
+  family: {
+    ...family,
+    family: {
+      name: '$pds-font-family',
+      value: fontPorscheNext,
+      description: 'Holds the **Porsche Next** font family.',
+      deprecation: { replacement: scssIdentifier(family.porscheNext) },
+    },
+  },
+  weight: {
+    ...weight,
+    weightRegular: {
+      name: '$pds-font-weight-regular',
+      value: fontWeightNormal,
+      description: 'Holds the **normal** font weight optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(weight.normal) },
+    },
+    weightSemiBold: {
+      name: '$pds-font-weight-semi-bold',
+      value: fontWeightSemibold,
+      description: 'Holds the **semibold** font weight optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(weight.semibold) },
+    },
+    weightBold: {
+      name: '$pds-font-weight-bold',
+      value: fontWeightBold,
+      description: 'Holds the **bold** font weight optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(weight.bold) },
+    },
+  },
+  lineHeight: {
+    ...lineHeight,
+    lineHeight: {
+      name: '$pds-font-line-height',
+      value: leadingNormal,
+      description: 'Holds a dynamic default line height specifically optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(lineHeight.normal) },
+    },
+  },
+  size: {
+    ...size,
+    sizeTextXxSmall: {
+      name: '$pds-font-size-text-xx-small',
+      value: typescale2Xs,
+      description: 'Holds the **2x-small text** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size['2xs']) },
+    },
+    sizeTextXSmall: {
+      name: '$pds-font-size-text-x-small',
+      value: typescaleXs,
+      description: 'Holds the **x-small text** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size.xs) },
+    },
+    sizeTextSmall: {
+      name: '$pds-font-size-text-small',
+      value: typescaleSm,
+      description: 'Holds the **small text** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size.sm) },
+    },
+    sizeTextMedium: {
+      name: '$pds-font-size-text-medium',
+      value: typescaleMd,
+      description: 'Holds the **medium text** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size.md) },
+    },
+    sizeTextLarge: {
+      name: '$pds-font-size-text-large',
+      value: typescaleLg,
+      description: 'Holds the **large text** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size.lg) },
+    },
+    sizeTextXLarge: {
+      name: '$pds-font-size-text-x-large',
+      value: typescaleXl,
+      description: 'Holds the **x-large text** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size.xl) },
+    },
+    sizeHeadingSmall: {
+      name: '$pds-font-size-heading-small',
+      value: typescaleSm,
+      description: 'Holds the **small heading** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size.sm) },
+    },
+    sizeHeadingMedium: {
+      name: '$pds-font-size-heading-medium',
+      value: typescaleMd,
+      description: 'Holds the **medium heading** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size.md) },
+    },
+    sizeHeadingLarge: {
+      name: '$pds-font-size-heading-large',
+      value: typescaleLg,
+      description: 'Holds the **large heading** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size.lg) },
+    },
+    sizeHeadingXLarge: {
+      name: '$pds-font-size-heading-x-large',
+      value: typescaleXl,
+      description: 'Holds the **x-large heading** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size.xl) },
+    },
+    sizeHeadingXxLarge: {
+      name: '$pds-font-size-heading-xx-large',
+      value: typescale2Xl,
+      description: 'Holds the **2x-large heading** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size['2xl']) },
+    },
+    sizeDisplaySmall: {
+      name: '$pds-font-size-display-small',
+      value: 'clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)',
+      description: 'Holds the **small display** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size['3xl']) },
+    },
+    sizeDisplayMedium: {
+      name: '$pds-font-size-display-medium',
+      value: 'clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)',
+      description: 'Holds the **medium display** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size['4xl']) },
+    },
+    sizeDisplayLarge: {
+      name: '$pds-font-size-display-large',
+      value: 'clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)',
+      description: 'Holds the **large display** font size optimized for the Porsche Next typeface.',
+      deprecation: { replacement: scssIdentifier(size['5xl']) },
+    },
+  },
+  hyphenationStyleOverflowWrap: {
+    name: '$pds-font-hyphenation-style-overflow-wrap',
+    value: 'break-word',
+    description: 'Holds the `overflow-wrap` value used for hyphenation. The current scale has no equivalent.',
+    deprecation: {},
+  },
+  hyphenationStyleHyphens: {
+    name: '$pds-font-hyphenation-style-hyphens',
+    value: 'var(--p-hyphens, auto)',
+    description: 'Holds the `hyphens` value used for hyphenation. The current scale has no equivalent.',
+    deprecation: {},
+  },
+  styleNormal: {
+    name: '$pds-font-style-normal',
+    value: 'normal',
+    description: 'Holds the **normal** `font-style`. The current scale has no equivalent.',
+    deprecation: {},
+  },
+  styleItalic: {
+    name: '$pds-font-style-italic',
+    value: 'italic',
+    description: 'Holds the **italic** `font-style`. The current scale has no equivalent.',
+    deprecation: {},
+  },
+  variant: {
+    name: '$pds-font-variant',
+    value: 'normal',
+    description: 'Holds the **normal** `font-variant`. The current scale has no equivalent.',
+    deprecation: {},
+  },
+} satisfies ScssCatalog;

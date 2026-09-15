@@ -19,7 +19,6 @@ export const vanillaExtractMotionWrapper = style({
   display: 'grid',
   gap: spacingFluidMd,
   padding: spacingStaticMd,
-  color: vars.primary,
   ...proseTextSmStyle,
 });
 

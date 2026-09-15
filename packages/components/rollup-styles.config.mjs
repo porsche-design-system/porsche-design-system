@@ -71,8 +71,10 @@ export default [
       ...sharedPlugins,
       typescript({
         tsconfig: './tsconfig.json',
+        noEmitOnError: true,
         declaration: true,
         declarationDir: outputDir,
+        rootDir: '.',
         include: ['src/**/*.ts'],
       }),
       generatePackageJson({
@@ -95,6 +97,7 @@ export default [
       ...sharedPlugins,
       typescript({
         tsconfig: './tsconfig.json',
+        noEmitOnError: true,
       }),
     ],
   },
