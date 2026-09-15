@@ -12,12 +12,9 @@ const initComponent = (): StepperHorizontal => {
   component.host.attachShadow({ mode: 'open' });
 
   const scroller = document.createElement('div');
-  const slot = document.createElement('slot') as HTMLSlotElement;
-  scroller.appendChild(slot);
   component.host.shadowRoot.appendChild(scroller);
 
   component['scroller'] = scroller;
-  component['slot'] = slot;
 
   return component;
 };
@@ -80,15 +77,6 @@ describe('resizeObserver', () => {
 });
 
 describe('slotchange listener', () => {
-  it('should add slotchange event listener in componentDidLoad()', () => {
-    const component = initComponent();
-    const addEventListenerSpy = vi.spyOn(component['slot'], 'addEventListener');
-
-    component.componentDidLoad();
-
-    expect(addEventListenerSpy).toHaveBeenCalledWith('slotchange', expect.any(Function));
-  });
-
   it('should re-identify stepper horizontal items on slotchange', () => {
     const component = initComponent();
 
@@ -103,7 +91,7 @@ describe('slotchange listener', () => {
     (newItem as any).scrollIntoView = vi.fn();
     component.host.appendChild(newItem);
 
-    component['slot'].dispatchEvent(new Event('slotchange'));
+    component['onSlotChange']();
 
     expect(component['stepperHorizontalItems']).toHaveLength(2);
     expect(component['stepperHorizontalItems'][1]).toBe(newItem);
@@ -122,7 +110,14 @@ describe('slotchange listener', () => {
     component.componentDidLoad();
     scrollSpy.mockClear();
 
-    component['slot'].dispatchEvent(new Event('slotchange'));
+    // change slotted content so the slotchange reflects a real change
+    const addedItem = document.createElement(
+      'p-stepper-horizontal-item'
+    ) as unknown as HTMLPStepperHorizontalItemElement;
+    (addedItem as any).scrollIntoView = vi.fn();
+    component.host.appendChild(addedItem);
+
+    component['onSlotChange']();
 
     expect(scrollSpy).toHaveBeenCalledWith(0, component['scroller'], component['stepperHorizontalItems']);
   });
@@ -140,7 +135,14 @@ describe('slotchange listener', () => {
     component.componentDidLoad();
     scrollSpy.mockClear();
 
-    component['slot'].dispatchEvent(new Event('slotchange'));
+    // change slotted content so the slotchange reflects a real change
+    const addedItem = document.createElement(
+      'p-stepper-horizontal-item'
+    ) as unknown as HTMLPStepperHorizontalItemElement;
+    (addedItem as any).scrollIntoView = vi.fn();
+    component.host.appendChild(addedItem);
+
+    component['onSlotChange']();
 
     // onSlotChange does not pass isSmooth (defaults to true), unlike resize observer which passes false
     expect(scrollSpy).toHaveBeenCalledTimes(1);
@@ -159,44 +161,33 @@ describe('slotchange listener', () => {
     component.componentDidLoad();
     scrollSpy.mockClear();
 
-    component['slot'].dispatchEvent(new Event('slotchange'));
+    // change slotted content so the slotchange reflects a real change
+    const addedItem = document.createElement(
+      'p-stepper-horizontal-item'
+    ) as unknown as HTMLPStepperHorizontalItemElement;
+    (addedItem as any).scrollIntoView = vi.fn();
+    component.host.appendChild(addedItem);
+
+    component['onSlotChange']();
 
     expect(scrollSpy).toHaveBeenCalledWith(-1, component['scroller'], component['stepperHorizontalItems']);
   });
 
-  it('should remove slotchange event listener in disconnectedCallback()', () => {
-    const component = initComponent();
-    const removeEventListenerSpy = vi.spyOn(component['slot'], 'removeEventListener');
-
-    component.componentDidLoad();
-    component.disconnectedCallback();
-
-    expect(removeEventListenerSpy).toHaveBeenCalledWith('slotchange', expect.any(Function));
-  });
-
-  it('should not react to slotchange after disconnectedCallback()', () => {
-    const scrollSpy = vi.spyOn(stepperHorizontalUtils, 'scrollStepperHorizontalItemIntoView');
+  it('should not scroll on slotchange when slotted content did not change', () => {
     const component = initComponent();
 
     const item = document.createElement('p-stepper-horizontal-item') as unknown as HTMLPStepperHorizontalItemElement;
+    (item as any).state = 'current';
     (item as any).scrollIntoView = vi.fn();
     component.host.appendChild(item);
 
     component.componentWillLoad();
     component.componentDidLoad();
-    component.disconnectedCallback();
-    scrollSpy.mockClear();
+    (item.scrollIntoView as any).mockClear();
 
-    // add a new child and dispatch slotchange
-    const newItem = document.createElement('p-stepper-horizontal-item') as unknown as HTMLPStepperHorizontalItemElement;
-    (newItem as any).scrollIntoView = vi.fn();
-    component.host.appendChild(newItem);
+    component['onSlotChange']();
 
-    component['slot'].dispatchEvent(new Event('slotchange'));
-
-    // items should not have been re-identified (still 1, not 2)
-    expect(component['stepperHorizontalItems']).toHaveLength(1);
-    expect(scrollSpy).not.toHaveBeenCalled();
+    expect(item.scrollIntoView).not.toHaveBeenCalled();
   });
 });
 
