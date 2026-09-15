@@ -37,6 +37,7 @@ const onButtonClick = (e: MouseEvent): void => {
     align-items: center;
     justify-content: center;
     background: #00b0f4;
+    color: #000;
     height: 150px;
   }
 </style>
