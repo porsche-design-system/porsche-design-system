@@ -20,6 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   strings and values whose options had not loaded yet. Option matching remains strict by type and value.
   ([#4710](https://github.com/porsche-design-system/porsche-design-system/pull/4710))
 
+- `Ai Tag`: Sanitize translations
+  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
+
 ## [4.7.0] - 2026-09-09
 
 ## [4.7.0-rc.0] - 2026-09-09
@@ -85,7 +88,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   slide left an empty slot and a surplus pagination bullet behind.
   ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 - `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
-  carousel was initialised with. ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+  carousel was initialised with.
+  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 
 ## [4.6.0] - 2026-08-20
 
