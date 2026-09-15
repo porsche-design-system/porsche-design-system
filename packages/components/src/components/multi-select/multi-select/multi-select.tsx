@@ -29,7 +29,6 @@ import {
   getMultiSelectActionFromKeyboardEvent,
   getNextOptionToHighlight,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -286,7 +285,6 @@ export class MultiSelect {
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot:not([name])').addEventListener('slotchange', this.onSlotchange);
     this.inputSearchElement = this.filterSlot
       ? (this.filterSlot.assignedElements()[0] as HTMLPInputSearchElement)
       : this.inputSearchElement;
@@ -429,7 +427,7 @@ export class MultiSelect {
           >
             {!this.hasFilterResults && <NoResultsOption />}
             <slot name="options-status" />
-            <slot />
+            <slot onSlotchange={this.onSlotchange} />
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} host={this.host} />

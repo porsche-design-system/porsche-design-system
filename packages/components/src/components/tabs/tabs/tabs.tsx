@@ -70,24 +70,13 @@ export class Tabs {
 
   @State() private tabsItems: HTMLPTabsItemElement[] = [];
 
-  private slot: HTMLSlotElement;
-
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number): void {
     this.update.emit({ activeTabIndex: newValue });
   }
 
-  public disconnectedCallback(): void {
-    this.slot?.removeEventListener('slotchange', this.defineTabsItems);
-  }
-
   public componentWillLoad(): void {
     this.defineTabsItems();
-  }
-
-  public componentDidLoad(): void {
-    // it would be better to use `<slot onslotchange={() => {}} />` in jsx but that doesn't work reliable or triggers initially when component is rendered via js framework
-    this.slot.addEventListener('slotchange', this.defineTabsItems);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -121,7 +110,7 @@ export class Tabs {
             </button>
           ))}
         </PrefixedTagNames.pTabsBar>
-        <slot ref={(el: HTMLSlotElement) => (this.slot = el)} />
+        <slot onSlotchange={this.defineTabsItems} />
       </Host>
     );
   }
