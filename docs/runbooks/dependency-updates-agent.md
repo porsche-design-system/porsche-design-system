@@ -195,20 +195,34 @@ Then verify the lockfile is **complete**:
 npm run npm:verify-lock
 ```
 
-npm prunes platform-specific native bindings (`@oxc-parser/binding-*`, `@esbuild/*`, `@img/sharp-*`, `@next/swc-*`, …)
-from the lockfile during incremental installs ([npm/cli#4828](https://github.com/npm/cli/issues/4828)). `npm ci` on
-Linux CI then skips them silently and a build fails later with `Cannot find native binding`. If the check fails, do a
-**full** clean regeneration (this normally restores the complete set):
+npm prunes platform-specific native bindings (`@oxc-parser/binding-*`, `@esbuild/*`, `@img/sharp-*`, `@next/swc-*`,
+`@rolldown/binding-*`, …) from the lockfile during incremental installs
+([npm/cli#4828](https://github.com/npm/cli/issues/4828)). `npm ci` on Linux CI then skips them silently and a build
+fails later with `Cannot find native binding`. If the check fails, do a **full** clean regeneration (this normally
+restores the complete set):
 
 ```bash
-rm -rf package-lock.json node_modules
+rm -f package-lock.json
+npm run npm:remove     # deletes node_modules in the root AND in every workspace
 npm install
 npm run npm:verify-lock
 ```
 
-**Never** work around this by installing the missing binding in a CI step. If a clean regeneration still prunes
+Use `npm run npm:remove` rather than `rm -rf node_modules`: removing only the root `node_modules` leaves every
+`packages/*/node_modules` in place, npm reconciles against those, and the bindings stay pruned. Only a full removal
+makes the resolve genuinely clean.
+
+**Never** work around this by installing the missing binding in a CI step. If a **full** clean regeneration still prunes
 bindings, declare them explicitly as `optionalDependencies` in the affected workspace (same approach as `@next/swc-*`) —
 see `docs/dependencies.md` → _Platform-specific native bindings in the lockfile_.
+
+Then confirm no dependency ended up in a directory npm never creates — see `docs/dependencies.md` → _Nested project
+workspaces never get a `node_modules` directory_. `npm install` and `npm ci` both stay silent about this, so check
+explicitly:
+
+```bash
+npm ls 2>&1 | grep 'UNMET DEPENDENCY'   # must print nothing
+```
 
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).
@@ -280,6 +294,23 @@ Then run the **additional suites relevant to the changed packages** (mirror what
 - A build-tool bump (`vite`, `rollup`, `typescript`, `tailwindcss`, `webpack`) → prefer a **full** build + broad unit
   run, since these can break any package.
 - Where feasible, run the relevant `test:e2e:*` / `test:a11y:*` suites for the affected area.
+
+> **Match the build mode to the suite before calling a failure a regression.** A few suites assert against the CDN base
+> URL baked into the build, so they only pass against one of the two modes:
+>
+> | Suite                                        | Needs                         | Wrong-mode symptom                                           |
+> | -------------------------------------------- | ----------------------------- | ------------------------------------------------------------ |
+> | `test:unit:components-js` (`chunks.spec.ts`) | `npm run build-prod`          | chunk-size mismatches, `should not contain localhost`        |
+> | `test:unit:stylesheets`                      | `npm run build-prod`          | snapshot diff, only `localhost:3001` vs `cdn.ui.porsche.com` |
+> | `test:unit:components-react` (SSR wrapper)   | `npm run build` (development) | snapshot diff, only `cdn.ui.porsche.com` vs `localhost:3001` |
+> | `test:unit:components-angular:karma-ci`      | `npm run build` (development) | all specs time out after 5000 ms                             |
+>
+> CI hits both because its test jobs restore the `build-development` artifact while the prod suites run off the
+> production artifact. Locally the two modes are mutually exclusive, so rebuild in the right mode (for stylesheets,
+> `npm run build:stylesheets-prod` is enough) instead of "fixing" a dependency.
+
+Note that `npm run test:unit:components-angular` starts karma in **watch** mode and never exits — use
+`npm run test:unit:components-angular:vitest` and `npm run test:unit:components-angular:karma-ci` instead.
 
 **If any check fails:**
 
