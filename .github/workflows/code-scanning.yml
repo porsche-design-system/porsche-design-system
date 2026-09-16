@@ -1,49 +1,44 @@
 name: 'Code Scanning'
 
-# ⚠️ The `category:` pin on the `analyze` step below is load-bearing. Do not remove it, and
-# do not rename this file, without reading this first.
+# ⚠️ Renaming this file or the `codeql` job below changes the CodeQL analysis *category*,
+# which is derived from "<workflow file path>:<job id>" unless an explicit `category:` is
+# given. GitHub closes an alert only once EVERY category that ever reported it reports it as
+# fixed, so the previous category is orphaned: it never receives another analysis, its last
+# one is frozen, and it keeps reporting whatever it saw at that moment, forever. Findings
+# present at that instant can then never transition to "fixed".
 #
-# CodeQL derives the analysis *category* from "<workflow file path>:<job id>" unless an
-# explicit `category:` is given. GitHub closes an alert only once EVERY category that ever
-# reported it reports it as fixed.
+# That is what happened while this job was briefly named `code-ql`: four alerts survived
+# their own fix, one of them for ten months, until the stale analyses were deleted by hand.
 #
-# A category change therefore orphans the old one: it never receives another analysis, so
-# its last one is frozen and keeps reporting whatever it saw at that moment, forever. Every
-# finding present at that instant can then never transition to "fixed". That is exactly what
-# happened while this job was briefly named `code-ql` — four alerts survived their own fix
-# (one of them for ten months) and had to be cleared by deleting the stale analyses by hand.
+# What a category change does NOT do: alert identity survives it. Alerts keep their number,
+# gain instances under the new category, and dismissals are not lost — 51 of the current
+# dismissals predate the `code-ql` era and came through it untouched.
 #
-# To be precise about what a category change does NOT do: alert identity survives it. Alerts
-# keep their number and gain instances under both categories, and dismissals are not lost —
-# 51 of the current dismissals predate the `code-ql` era and came through it untouched. Only
-# the open/fixed transition is affected, which is why the damage stays invisible until
-# somebody fixes a finding and the alert refuses to close.
+# The category was deliberately allowed to move to `…:codeql` when this job was renamed from
+# `build`. That orphans the old `…:build` category, whose frozen analysis still reports the
+# findings that are dismissed as "won't fix". Accepted knowingly: those alerts are already in
+# a terminal state and keep it, so the only lasting effect is that they can never *also*
+# display "fixed" later. Every alert from here on is tracked solely under `…:codeql` and
+# closes normally.
 #
-# The category is pinned to `.github/workflows/code-scanning.yml:build` — the value it was
-# derived from back when this job was still called `build`. It deliberately no longer
-# matches the job id: the pin is what let the job be renamed to `codeql` without orphaning
-# 981 analyses and the 63 findings they still report. Keep it exactly as is; the string is
-# an identifier for GitHub's alert tracking, not a description of this workflow.
-#
-# Renaming the job is now safe, because the pin decides the category. Changing the pin is
-# not. If it ever has to change, verify on the pull request before merging — the run
-# publishes an analysis whose category can be read back with:
-#
-#   gh api repos/$REPO/code-scanning/analyses?ref=refs/pull/<n>/merge --jq '.[].category'
+# Note that "just fixing or dismissing the findings first" is not a way to avoid this — a
+# published analysis is immutable, so it keeps reporting what it saw regardless of what
+# happens to the alerts afterwards. Only deleting the analyses removes them, and that is
+# what GitHub warns "may result in the loss of historical alert data".
 
 on:
   push:
     branches:
       - main
-      - 'v[0-9]'      # v0–v9
-      - 'v[0-9][0-9]' # v10–v99
-  # Every PR, regardless of target branch — mirrors `contribution.yml`, so PRs against the
-  # maintained version branches are scanned too.
+  # Only PRs targeting `main`. The `v*` branches are not maintained, so they are deliberately
+  # not scanned — unlike `contribution.yml`, which still builds and tests them.
   pull_request:
+    branches:
+      - main
   schedule:
     # Mondays 03:00 UTC. CodeQL ships new and improved queries independently of this
     # repository, so unchanged code can start failing a query that did not exist yet.
-    # Without this, such findings would only surface on the next push to a covered branch.
+    # Without this, such findings would only surface on the next push to `main`.
     - cron: '0 3 * * 1'
   workflow_dispatch:
 
@@ -72,8 +67,3 @@ jobs:
           languages: javascript
       - name: 'Analyze'
         uses: github/codeql-action/analyze@v4
-        with:
-          # Pinned on purpose — see the note at the top of this file. This is the category
-          # derived from the former `build` job id, kept so that renaming the job does not
-          # orphan the existing analyses. It must not be changed to match the job id.
-          category: '.github/workflows/code-scanning.yml:build'
