@@ -23,15 +23,13 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
     </div>
     `,
   styles: `
-    @use '@porsche-design-system/components-angular/scss' as *;
-
     p-carousel div {
       display: flex;
       align-items: center;
       justify-content: center;
       background: #00b0f4;
       height: 150px;
-      color: $color-primary;
+      color: #000;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

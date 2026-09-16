@@ -24,8 +24,8 @@
   "devDependencies": {
     "fast-glob": "^3.3.3",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10",
-    "webpack": "^5.109.2"
+    "vitest": "^5.0.0",
+    "webpack": "^5.111.0"
   },
   "volta": {
     "extends": "../../../../package.json"
