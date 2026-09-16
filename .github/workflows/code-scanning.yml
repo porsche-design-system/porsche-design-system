@@ -56,6 +56,11 @@ concurrency:
 jobs:
   codeql:
     name: 'CodeQL'
+    # `branches:` filters do not apply to workflow_dispatch, which can be started against any
+    # ref. Without this guard a manual run could publish an analysis for an unmaintained `v*`
+    # branch. The event check matters: on a pull_request `github.ref` is `refs/pull/<n>/merge`,
+    # so testing the ref alone would skip the job for every PR.
+    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
