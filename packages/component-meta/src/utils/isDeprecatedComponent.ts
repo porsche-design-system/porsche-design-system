@@ -8,7 +8,8 @@
  * If no deprecation message is found, the second element will be an empty string.
  */
 export const isDeprecatedComponent = (fileContent: string): [boolean, string] => {
-  const componentIndex = fileContent.indexOf('@Component');
+  // match the decorator itself, so that a deprecation message mentioning "@Component" isn't cut off
+  const componentIndex = fileContent.indexOf('@Component(');
   if (componentIndex === -1) {
     return [false, ''];
   }
