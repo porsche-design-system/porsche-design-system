@@ -1,19 +1,36 @@
 name: 'Code Scanning'
 
-# ⚠️ Do NOT rename this file or the `build` job below.
+# ⚠️ Do NOT rename this file or the `build` job below, and do not move CodeQL into another
+# workflow (e.g. `contribution.yml`), without reading this first.
 #
 # CodeQL derives the analysis *category* from "<workflow file path>:<job id>", here
-# `.github/workflows/code-scanning.yml:build`. GitHub only closes an alert once EVERY
-# category that ever reported it reports it as fixed. A rename therefore orphans the old
-# category: its last analysis is frozen forever and every alert it reported stays open,
-# even after the finding is fixed. That is exactly what happened while the job was briefly
-# named `code-ql` — four alerts survived their fix and had to be cleared by deleting the
-# stale analyses by hand.
+# `.github/workflows/code-scanning.yml:build`. GitHub closes an alert only once EVERY
+# category that ever reported it reports it as fixed.
 #
-# The same applies to moving CodeQL into another workflow (e.g. `contribution.yml`) and to
-# introducing an explicit `category:` input: both change the category, and on top of that
-# they re-report every currently dismissed alert as a new one, silently dropping its
-# "won't fix" state.
+# Renaming therefore orphans the old category: it never receives another analysis, so its
+# last one is frozen and keeps reporting whatever it saw at that moment, forever. Every
+# finding present at that instant can then never transition to "fixed". That is exactly
+# what happened while the job was briefly named `code-ql` — four alerts survived their own
+# fix (one of them for ten months) and had to be cleared by deleting the stale analyses by
+# hand.
+#
+# To be precise about what a rename does NOT do: alert identity survives it. Alerts keep
+# their number and gain instances under both categories, and dismissals are not lost — 51
+# of the current dismissals predate the `code-ql` era and came through it untouched. Only
+# the open/fixed transition is affected, which is why the damage is invisible until
+# somebody fixes a finding and the alert refuses to close.
+#
+# If the job ever does need a different id, pin the category to its current value first:
+#
+#   - uses: github/codeql-action/analyze@v4
+#     with:
+#       category: '.github/workflows/code-scanning.yml:build'
+#
+# That decouples the category from the job id, so the rename becomes a no-op for alert
+# tracking. Verify it on the pull request before merging — the run publishes an analysis
+# whose category can be read back with:
+#
+#   gh api repos/$REPO/code-scanning/analyses?ref=refs/pull/<n>/merge --jq '.[].category'
 
 on:
   push:
