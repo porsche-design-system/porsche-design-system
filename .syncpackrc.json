@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/syncpack/schema.json",
+  "minimumReleaseAge": 10080,
   "sortFirst": [
     "name",
     "version",
