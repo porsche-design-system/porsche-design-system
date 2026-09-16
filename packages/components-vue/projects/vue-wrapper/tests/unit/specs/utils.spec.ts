@@ -4,13 +4,14 @@ import * as Vue from 'vue';
 import type { ToastMessage } from '../../../src/lib/types';
 import * as utils from '../../../src/utils';
 
-describe('getPrefixedTagName()', () => {
-  vi.mock('vue', async (importOriginal) =>
-    Object.assign({}, await importOriginal(), {
-      inject: vi.fn().mockReturnValue(''), // Mock inject properly
-    })
-  );
+// hoisted by Vitest regardless of where it is written, so it must live at the top level
+vi.mock('vue', async (importOriginal) =>
+  Object.assign({}, await importOriginal(), {
+    inject: vi.fn().mockReturnValue(''), // Mock inject properly
+  })
+);
 
+describe('getPrefixedTagName()', () => {
   test('should call inject() with correctParameters', () => {
     const spy = vi.spyOn(Vue, 'inject').mockReturnValue('');
 

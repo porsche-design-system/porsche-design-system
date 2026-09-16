@@ -61,9 +61,9 @@
   "devDependencies": {
     "@rollup/plugin-replace": "^6.0.3",
     "@tailwindcss/cli": "^4.3.3",
-    "@types/react": "^19.2.18",
+    "@types/react": "^19.3.0",
     "change-case": "^5.4.4",
-    "concurrently": "^10.0.4",
+    "concurrently": "^10.0.5",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^9.5.1",
     "fast-glob": "^3.3.3",
@@ -71,7 +71,7 @@
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3"
   },
   "volta": {
