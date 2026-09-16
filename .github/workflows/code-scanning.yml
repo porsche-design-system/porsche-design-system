@@ -1,12 +1,34 @@
 name: 'Code Scanning'
 
+# ⚠️ Do NOT rename this file or the `build` job below.
+#
+# CodeQL derives the analysis *category* from "<workflow file path>:<job id>", here
+# `.github/workflows/code-scanning.yml:build`. GitHub only closes an alert once EVERY
+# category that ever reported it reports it as fixed. A rename therefore orphans the old
+# category: its last analysis is frozen forever and every alert it reported stays open,
+# even after the finding is fixed. That is exactly what happened while the job was briefly
+# named `code-ql` — four alerts survived their fix and had to be cleared by deleting the
+# stale analyses by hand.
+#
+# The same applies to moving CodeQL into another workflow (e.g. `contribution.yml`) and to
+# introducing an explicit `category:` input: both change the category, and on top of that
+# they re-report every currently dismissed alert as a new one, silently dropping its
+# "won't fix" state.
+
 on:
   push:
     branches:
       - main
+      - 'v[0-9]'      # v0–v9
+      - 'v[0-9][0-9]' # v10–v99
+  # Every PR, regardless of target branch — mirrors `contribution.yml`, so PRs against the
+  # maintained version branches are scanned too.
   pull_request:
-    branches:
-      - main
+  schedule:
+    # Mondays 03:00 UTC. CodeQL ships new and improved queries independently of this
+    # repository, so unchanged code can start failing a query that did not exist yet.
+    # Without this, such findings would only surface on the next push to a covered branch.
+    - cron: '0 3 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -14,13 +36,17 @@ permissions:
   contents: read
   security-events: write
 
+# Only ever cancel superseded pull_request runs. A cancelled run uploads no analysis, which
+# would leave the category stale — so push, schedule and workflow_dispatch runs must finish.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     name: 'CodeQL'
     runs-on: ubuntu-latest
-    # container:
-    #   image: mcr.microsoft.com/playwright:v1.61.0-jammy
-    #   options: --user 1001
+    timeout-minutes: 30
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v7
