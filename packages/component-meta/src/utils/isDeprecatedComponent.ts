@@ -8,7 +8,13 @@
  * If no deprecation message is found, the second element will be an empty string.
  */
 export const isDeprecatedComponent = (fileContent: string): [boolean, string] => {
+  const componentIndex = fileContent.indexOf('@Component');
+  if (componentIndex === -1) {
+    return [false, ''];
+  }
+
   // Regex does not work for multiline deprecation message
-  const [deprecated, rawDeprecationMessage = ''] = /@deprecated ([^*\n]*)[\s\S]*?@Component/.exec(fileContent) || [];
+  const [deprecated, rawDeprecationMessage = ''] =
+    /@deprecated ([^*\n]*)/.exec(fileContent.slice(0, componentIndex)) || [];
   return [!!deprecated, rawDeprecationMessage];
 };

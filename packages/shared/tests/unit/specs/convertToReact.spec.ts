@@ -206,6 +206,13 @@ describe('transformToSelfClosingTags()', () => {
     const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
     expect(transformToSelfClosingTags(input)).toBe('<p-some-tag><a href="#">Some link</a></p-some-tag>');
   });
+
+  it('should not match across tag boundaries when slotted content looks like an attribute', () => {
+    const input = `<p-select>
+  <p-select-option value="none">style="hyphens: none;"</p-select-option>
+</p-select>`;
+    expect(transformToSelfClosingTags(input)).toBe(input);
+  });
 });
 
 describe('transformStyleAttribute()', () => {
