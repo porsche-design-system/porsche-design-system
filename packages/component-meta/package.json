@@ -36,9 +36,9 @@
     "@stencil/core": "4.43.3",
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.0"
   },
   "volta": {
     "extends": "../../package.json"
