@@ -949,7 +949,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, additionalInputJssStyle: { padding: +0 } and additionalHostJssStyle: { padding: +0 } 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, additionalInputJssStyle: { padding: 0 } and additionalHostJssStyle: { padding: 0 } 1`] = `
 ":host {
   display: block;
   --_p-input-base-a: 1;
@@ -1489,7 +1489,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: false, readOnly: true, additionalInputJssStyle: { padding: +0 } and additionalHostJssStyle: { padding: +0 } 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: false, readOnly: true, additionalInputJssStyle: { padding: 0 } and additionalHostJssStyle: { padding: 0 } 1`] = `
 ":host {
   display: block;
   --_p-input-base-a: 1;

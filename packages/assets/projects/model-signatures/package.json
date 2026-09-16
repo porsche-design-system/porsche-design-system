@@ -36,10 +36,10 @@
     "@rollup/plugin-typescript": "^12.3.0",
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
-    "rollup": "^4.62.4",
+    "rollup": "^4.63.2",
     "rollup-plugin-dts": "^6.5.1",
-    "svgo": "^4.0.2",
-    "tsx": "^4.23.7",
+    "svgo": "^4.1.0",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3"
   },
   "volta": {
