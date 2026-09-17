@@ -1,9 +1,4 @@
-<button
-  aria-checked="false"
-  id="x"
-  type="button"
-  role="switch"
->
+<button aria-checked="false" id="x" type="button" role="switch">
   <span class="toggle"> </span>
 </button>
 <label for="x">
