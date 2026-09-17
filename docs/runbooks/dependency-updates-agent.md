@@ -352,9 +352,8 @@ Keep all of these on the **same** version (npm `X.Y.Z` ↔ image `vX.Y.Z-jammy`)
 1. The exact npm pin in the root [`package.json`](../../package.json): `"@playwright/test": "X.Y.Z"`.
 2. Every Docker image reference `mcr.microsoft.com/playwright:vX.Y.Z-jammy` in
    [`docker-compose.yml`](../../docker-compose.yml) and the workflows under `.github/workflows/` (the `image:` inputs in
-   [`contribution.yml`](../../.github/workflows/contribution.yml); there is also a commented example in
-   `code-scanning.yml`). A mismatch between the installed Playwright and the Docker image makes CI fail, so keep them
-   aligned.
+   [`contribution.yml`](../../.github/workflows/contribution.yml)). A mismatch between the installed Playwright and the
+   Docker image makes CI fail, so keep them aligned.
 
 ```bash
 # 1. Bump the exact npm pin in root package.json ("@playwright/test": "X.Y.Z"), then:
