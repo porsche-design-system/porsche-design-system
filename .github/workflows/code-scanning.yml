@@ -1,12 +1,45 @@
 name: 'Code Scanning'
 
+# ⚠️ Renaming this file or the `codeql` job below changes the CodeQL analysis *category*,
+# which is derived from "<workflow file path>:<job id>" unless an explicit `category:` is
+# given. GitHub closes an alert only once EVERY category that ever reported it reports it as
+# fixed, so the previous category is orphaned: it never receives another analysis, its last
+# one is frozen, and it keeps reporting whatever it saw at that moment, forever. Findings
+# present at that instant can then never transition to "fixed".
+#
+# That is what happened while this job was briefly named `code-ql`: four alerts survived
+# their own fix, one of them for ten months, until the stale analyses were deleted by hand.
+#
+# What a category change does NOT do: alert identity survives it. Alerts keep their number,
+# gain instances under the new category, and dismissals are not lost — 51 of the current
+# dismissals predate the `code-ql` era and came through it untouched.
+#
+# The category was deliberately allowed to move to `…:codeql` when this job was renamed from
+# `build`. That orphans the old `…:build` category, whose frozen analysis still reports the
+# findings that are dismissed as "won't fix". Accepted knowingly: those alerts are already in
+# a terminal state and keep it, so the only lasting effect is that they can never *also*
+# display "fixed" later. Every alert from here on is tracked solely under `…:codeql` and
+# closes normally.
+#
+# Note that "just fixing or dismissing the findings first" is not a way to avoid this — a
+# published analysis is immutable, so it keeps reporting what it saw regardless of what
+# happens to the alerts afterwards. Only deleting the analyses removes them, and that is
+# what GitHub warns "may result in the loss of historical alert data".
+
 on:
   push:
     branches:
       - main
+  # Only PRs targeting `main`. The `v*` branches are not maintained, so they are deliberately
+  # not scanned — unlike `contribution.yml`, which still builds and tests them.
   pull_request:
     branches:
       - main
+  schedule:
+    # Mondays 03:00 UTC. CodeQL ships new and improved queries independently of this
+    # repository, so unchanged code can start failing a query that did not exist yet.
+    # Without this, such findings would only surface on the next push to `main`.
+    - cron: '0 3 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -14,13 +47,22 @@ permissions:
   contents: read
   security-events: write
 
+# Only ever cancel superseded pull_request runs. A cancelled run uploads no analysis, which
+# would leave the category stale — so push, schedule and workflow_dispatch runs must finish.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
-  build:
+  codeql:
     name: 'CodeQL'
+    # `branches:` filters do not apply to workflow_dispatch, which can be started against any
+    # ref. Without this guard a manual run could publish an analysis for an unmaintained `v*`
+    # branch. The event check matters: on a pull_request `github.ref` is `refs/pull/<n>/merge`,
+    # so testing the ref alone would skip the job for every PR.
+    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    # container:
-    #   image: mcr.microsoft.com/playwright:v1.61.0-jammy
-    #   options: --user 1001
+    timeout-minutes: 30
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v7
