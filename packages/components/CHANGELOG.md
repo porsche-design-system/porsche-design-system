@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Checkbox`, `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
   `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Multi Select`, `Select`, `Switch`, `Textarea`: `aria` prop to
   provide additional context for screen readers (`aria-label`, `aria-description`)
+  ([#4740](https://github.com/porsche-design-system/porsche-design-system/pull/4740))
 
 ### Fixed
 
