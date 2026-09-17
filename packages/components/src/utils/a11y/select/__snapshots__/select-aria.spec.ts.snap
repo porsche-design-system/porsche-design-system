@@ -6,7 +6,6 @@ exports[`getComboboxAriaAttributes() > should return correct aria attributes whe
   "aria-describedby": "message-id description-id",
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
-  "aria-labelledby": "label-id",
   "aria-required": "false",
 }
 `;
@@ -17,19 +16,7 @@ exports[`getComboboxAriaAttributes() > should return correct aria attributes whe
   "aria-describedby": "message-id description-id",
   "aria-expanded": "true",
   "aria-haspopup": "listbox",
-  "aria-labelledby": "label-id",
   "aria-required": "true",
-}
-`;
-
-exports[`getComboboxAriaAttributes() > should return correct aria attributes with empty labelId 1`] = `
-{
-  "aria-controls": "dropdown-id",
-  "aria-describedby": "message-id description-id",
-  "aria-expanded": "false",
-  "aria-haspopup": "listbox",
-  "aria-labelledby": null,
-  "aria-required": "false",
 }
 `;
 
@@ -39,7 +26,6 @@ exports[`getComboboxAriaAttributes() > should return correct aria attributes wit
   "aria-describedby": null,
   "aria-expanded": "true",
   "aria-haspopup": "listbox",
-  "aria-labelledby": "label-id",
   "aria-required": "false",
 }
 `;

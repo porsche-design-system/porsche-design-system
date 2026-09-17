@@ -430,6 +430,20 @@ test.describe('lifecycle', () => {
   });
 });
 
+test.describe('aria', () => {
+  test('should forward `aria` prop to the native checkbox', async ({ page }) => {
+    await initCheckbox(page);
+    await setProperty(getHost(page), 'aria', {
+      'aria-label': 'Accept terms',
+      'aria-description': 'Required to continue',
+    });
+    await waitForStencilLifecycle(page);
+    const input = getInput(page);
+    await expect(input).toHaveAttribute('aria-label', 'Accept terms');
+    await expect(input).toHaveAttribute('aria-description', 'Required to continue');
+  });
+});
+
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';

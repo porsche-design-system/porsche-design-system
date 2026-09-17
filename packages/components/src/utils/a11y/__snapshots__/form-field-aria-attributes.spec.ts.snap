@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FORM_FIELD_ARIA_ATTRIBUTES > should match snapshot 1`] = `
+[
+  "aria-label",
+  "aria-description",
+]
+`;

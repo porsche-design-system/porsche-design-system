@@ -1,8 +1,9 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -13,6 +14,7 @@ import {
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-email-styles';
 import type {
+  InputEmailAriaAttribute,
   InputEmailBlurEventDetail,
   InputEmailChangeEventDetail,
   InputEmailInputEventDetail,
@@ -40,6 +42,7 @@ const propTypes: PropTypes<typeof InputEmail> = {
   indicator: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<InputEmailAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -119,6 +122,9 @@ export class InputEmail {
 
   /** Sets a regular expression the entered value must match to be valid. Overrides the browser's default email validation. */
   @Prop() public pattern?: string;
+
+  /** Sets additional ARIA attributes on the native input to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<InputEmailAriaAttribute>;
 
   /** Emitted when the input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputEmailChangeEventDetail>;
@@ -231,6 +237,7 @@ export class InputEmail {
         pattern={this.pattern}
         multiple={this.multiple}
         initialLoading={this.initialLoading}
+        aria={this.aria}
         {...(this.indicator && {
           start: <PrefixedTagNames.pIcon aria-hidden="true" name="email" color="contrast-low" />,
         })}

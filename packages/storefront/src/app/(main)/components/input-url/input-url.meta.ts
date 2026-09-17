@@ -3,6 +3,7 @@ import { inputUrlExampleForm } from '@porsche-design-system/shared/examples';
 import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-url/accessibility/examples/hidden-label-without-accessible-name/example';
 import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-url/accessibility/examples/placeholder-used-as-the-only-label/example';
 import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-url/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/input-url/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 import AccessibilityOverview from '@/app/(main)/components/input-url/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/input-url/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-url/configurator/introduction.mdx';
@@ -37,6 +38,7 @@ export const inputUrlMeta = {
   accessibility: {
     overview: AccessibilityOverview,
     examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
       placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
       hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
       validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,

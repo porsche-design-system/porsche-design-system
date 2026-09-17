@@ -2,25 +2,15 @@ import { getComboboxAriaAttributes, getListboxAriaAttributes, getOptionAriaAttri
 
 describe('getComboboxAriaAttributes()', () => {
   it('should return correct aria attributes when open, required, with all IDs', () => {
-    expect(
-      getComboboxAriaAttributes(true, true, 'label-id', 'message-id', 'description-id', 'dropdown-id')
-    ).toMatchSnapshot();
+    expect(getComboboxAriaAttributes(true, true, 'message-id', 'description-id', 'dropdown-id')).toMatchSnapshot();
   });
 
   it('should return correct aria attributes when closed and not required', () => {
-    expect(
-      getComboboxAriaAttributes(false, false, 'label-id', 'message-id', 'description-id', 'dropdown-id')
-    ).toMatchSnapshot();
-  });
-
-  it('should return correct aria attributes with empty labelId', () => {
-    expect(
-      getComboboxAriaAttributes(false, false, '', 'message-id', 'description-id', 'dropdown-id')
-    ).toMatchSnapshot();
+    expect(getComboboxAriaAttributes(false, false, 'message-id', 'description-id', 'dropdown-id')).toMatchSnapshot();
   });
 
   it('should return correct aria attributes with empty messageId and descriptionId', () => {
-    expect(getComboboxAriaAttributes(true, false, 'label-id', '', '', 'dropdown-id')).toMatchSnapshot();
+    expect(getComboboxAriaAttributes(true, false, '', '', 'dropdown-id')).toMatchSnapshot();
   });
 });
 
