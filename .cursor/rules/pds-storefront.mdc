@@ -11,4 +11,3 @@ alwaysApply: false
 - Keep MDX and docs content accessible: meaningful link text, correct heading order, appropriate image `alt` text, and keyboard-usable examples.
 - Avoid custom clickable `div`/`span` patterns when a PDS component or native semantic element fits.
 - If a change affects interactive UI, consider the matching validation surface: `npm run test:unit:storefront`, `npm run test:e2e:storefront`, `npm run test:a11y:storefront`, and `npm run test:vrt:storefront`.
-- Files in `public/assets/downloads/` are downloadable templates; keep them aligned with active repo guidance instead of treating them as source code behavior.
