@@ -18,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Pin Code`: Support for `ArrowLeft`/`ArrowRight` keyboard navigation.
   ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+- `Ai Tag`: Arabic, Japanese and Korean translations, plus region-specific Chinese translations for `zh-CN`,
+  `zh-HK` and `zh-TW`, replacing the English fallback.
+  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
 
 ### Fixed
 
@@ -26,8 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4710](https://github.com/porsche-design-system/porsche-design-system/pull/4710))
 - `Pin Code`: Focus management on label click and digit overwrite behavior of focused cell.
   ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
-
-- `Ai Tag`: Sanitize translations to be legal compliant
+- `Ai Tag`: the `generated` variant displayed Czech text instead of Slovak for Slovak locales.
   ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
 
 ## [4.7.0] - 2026-09-09
