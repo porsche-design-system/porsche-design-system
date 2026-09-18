@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "ai-tag",
-    "size": 9413,
-    "gzipSize": 4101
+    "size": 10113,
+    "gzipSize": 4431
   },
   {
     "chunkShortName": "banner",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81680,
-    "gzipSize": 25560
+    "size": 81605,
+    "gzipSize": 25546
   },
   {
     "chunkShortName": "modal",
