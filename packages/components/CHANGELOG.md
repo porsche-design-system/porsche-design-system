@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Pin Code`: Support for `ArrowLeft`/`ArrowRight` keyboard navigation.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
 - `Checkbox`, `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
   `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Multi Select`, `Select`, `Switch`, `Textarea`: `aria` prop to
   provide additional context for screen readers (`aria-label`, `aria-description`)
@@ -26,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select`, `Multi Select`, `Radio Group`: unmatched values triggered misleading console warnings, including empty
   strings and values whose options had not loaded yet. Option matching remains strict by type and value.
   ([#4710](https://github.com/porsche-design-system/porsche-design-system/pull/4710))
+- `Pin Code`: Focus management on label click and digit overwrite behavior of focused cell.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
 
 ## [4.7.0] - 2026-09-09
 

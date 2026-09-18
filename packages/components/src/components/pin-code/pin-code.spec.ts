@@ -245,3 +245,115 @@ describe('parsedValue (getter)', () => {
     expect(component['parsedValue']).toBe(expected);
   });
 });
+
+const createLinkedInputs = (values: string[]): HTMLInputElement[] => {
+  const wrapper = document.createElement('div');
+  const inputs = values.map((value) => {
+    const input = document.createElement('input');
+    input.value = value;
+    wrapper.append(input);
+    return input;
+  });
+  return inputs;
+};
+
+const createBeforeInputEvent = ({
+  data,
+  inputType = 'insertText',
+  target,
+}: {
+  data?: string | null;
+  inputType?: string;
+  target: HTMLInputElement;
+}) => ({
+  data,
+  inputType,
+  target,
+  preventDefault: vi.fn(),
+});
+
+describe('onBeforeInput()', () => {
+  it('should preventDefault when loading', () => {
+    const component = initComponent();
+    component.loading = true;
+    const [target] = createLinkedInputs(['']);
+    const event = createBeforeInputEvent({ data: '1', target });
+
+    component['onBeforeInput'](event as any);
+
+    expect(event.preventDefault).toHaveBeenCalled();
+    expect(target.value).toBe('');
+  });
+
+  it('should preventDefault for non-digit input', () => {
+    const component = initComponent();
+    const [target] = createLinkedInputs(['']);
+    const event = createBeforeInputEvent({ data: 'a', target });
+
+    component['onBeforeInput'](event as any);
+
+    expect(event.preventDefault).toHaveBeenCalled();
+    expect(target.value).toBe('');
+  });
+
+  it('should not preventDefault when inserting a digit into an empty input', () => {
+    const component = initComponent();
+    const [target] = createLinkedInputs(['']);
+    const event = createBeforeInputEvent({ data: '1', target });
+
+    component['onBeforeInput'](event as any);
+
+    expect(event.preventDefault).not.toHaveBeenCalled();
+    expect(target.value).toBe('');
+  });
+
+  it('should overwrite occupied input with a single digit and focus the next input', () => {
+    const component = initComponent();
+    const emitSpy = vi.fn();
+    component.change = { emit: emitSpy };
+    const [target, next] = createLinkedInputs(['1', '']);
+    const nextFocusSpy = vi.spyOn(next, 'focus');
+    component['inputElements'] = [target, next];
+    const event = createBeforeInputEvent({ data: '9', target });
+
+    component['onBeforeInput'](event as any);
+
+    expect(event.preventDefault).toHaveBeenCalled();
+    expect(target.value).toBe('9');
+    expect(emitSpy).toHaveBeenCalledWith({ value: '9 ', isComplete: false });
+    expect(nextFocusSpy).toHaveBeenCalled();
+  });
+
+  it('should overwrite last occupied input with a single digit and select it', () => {
+    const component = initComponent();
+    component.length = 2;
+    const emitSpy = vi.fn();
+    component.change = { emit: emitSpy };
+    const [previous, target] = createLinkedInputs(['1', '2']);
+    const selectSpy = vi.spyOn(target, 'select');
+    component['inputElements'] = [previous, target];
+    const event = createBeforeInputEvent({ data: '9', target });
+
+    component['onBeforeInput'](event as any);
+
+    expect(event.preventDefault).toHaveBeenCalled();
+    expect(target.value).toBe('9');
+    expect(emitSpy).toHaveBeenCalledWith({ value: '19', isComplete: true });
+    expect(selectSpy).toHaveBeenCalled();
+  });
+
+  it('should preventDefault for multi-character insertText into an occupied input', () => {
+    const component = initComponent();
+    const emitSpy = vi.fn();
+    component.change = { emit: emitSpy };
+    const [target] = createLinkedInputs(['1']);
+    component['inputElements'] = [target];
+    const event = createBeforeInputEvent({ data: '23', target });
+
+    component['onBeforeInput'](event as any);
+
+    expect(event.preventDefault).toHaveBeenCalled();
+    expect(target.value).toBe('1');
+    expect(emitSpy).not.toHaveBeenCalled();
+  });
+});
