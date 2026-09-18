@@ -212,7 +212,7 @@ export class Select {
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
-        this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
+        this.selectedOption = selectOptionByValue(this.selectOptions, this.value);
       }
       this.preventOptionUpdate = false;
     }
@@ -273,7 +273,7 @@ export class Select {
     this.defaultValue = this.value;
     this.setFormValue();
     this.updateOptions();
-    this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
+    this.selectedOption = selectOptionByValue(this.selectOptions, this.value);
   }
 
   public componentDidLoad(): void {
@@ -439,7 +439,7 @@ export class Select {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value, !!this.filterSlot);
+    const selectedOption = selectOptionByValue(this.selectOptions, this.value);
     // Keep selectedOption state even if value does not match any options
     if (selectedOption !== null && selectedOption !== this.selectedOption) {
       this.selectedOption = selectedOption;

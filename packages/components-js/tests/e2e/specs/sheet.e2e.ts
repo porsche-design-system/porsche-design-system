@@ -1,5 +1,6 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { SelectedAriaAttributes, SheetAriaAttribute } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -111,7 +112,7 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
-const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
+const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, _failMessage?: string) => {
   // In order to assure that its correct we press tab to assure the next element will be the dismiss button
   await expect(await getActiveElementTagName(page)).toBe('P-SHEET');
   await page.keyboard.press('Tab');
@@ -162,24 +163,31 @@ test.describe('can be dismissed', () => {
     await dismissBtn.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'dismiss-button' }]);
   });
 
   test('should be closable via esc key', async ({ page }) => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'escape' }]);
   });
 
   test('should be closable via backdrop', async ({ page }) => {
     await page.mouse.click(5, 5);
 
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter, 'after mouse down').toBe(1);
+    expect(details).toEqual([{ reason: 'backdrop' }]);
   });
 
   test('should not be dismissed if mousedown inside sheet', async ({ page }) => {
     const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width / 2, viewportSize.height - 1);
     await page.mouse.down();
 
@@ -192,6 +200,7 @@ test.describe('can be dismissed', () => {
 
   test('should not be dismissed if mousedown inside sheet and mouseup on backdrop (drag out)', async ({ page }) => {
     const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width / 2, viewportSize.height - 1);
     await page.mouse.down();
 
@@ -554,7 +563,9 @@ test.describe('scroll lock', () => {
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
-      document.querySelector('p-sheet').remove();
+      const sheet = document.querySelector('p-sheet');
+      if (!sheet) throw new Error('p-sheet not found');
+      sheet.remove();
     });
     await waitForStencilLifecycle(page);
 

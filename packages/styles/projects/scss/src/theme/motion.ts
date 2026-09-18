@@ -7,61 +7,100 @@ import {
   easeInOut as easeInOutToken,
   easeOut,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { ScssCatalog } from '../types';
 
-/** Motion token variables, keyed by size (`duration`) / variant (`ease`). Entries are addressable, e.g. `motion.duration.xl`. */
+/** The documented duration scale. */
+const duration = {
+  sm: {
+    name: '$duration-sm',
+    value: durationSm,
+    description: 'Holds a **short** `transition-duration` / `animation-duration`.',
+  },
+  md: {
+    name: '$duration-md',
+    value: durationMd,
+    description: 'Holds a **moderate** `transition-duration` / `animation-duration`.',
+  },
+  lg: {
+    name: '$duration-lg',
+    value: durationLg,
+    description: 'Holds a **long** `transition-duration` / `animation-duration`.',
+  },
+  xl: {
+    name: '$duration-xl',
+    value: durationXlToken,
+    description: 'Holds a **very long** `transition-duration` / `animation-duration`.',
+  },
+};
+
+/** The documented easing scale. */
+const ease = {
+  inOut: {
+    name: '$ease-in-out',
+    value: easeInOutToken,
+    description: 'Holds an **in-out** `transition-timing-function`.',
+  },
+  in: {
+    name: '$ease-in',
+    value: easeIn,
+    description: 'Holds an **in** `transition-timing-function`.',
+  },
+  out: {
+    name: '$ease-out',
+    value: easeOut,
+    description: 'Holds an **out** `transition-timing-function`.',
+  },
+};
+
+/** Motion declarations, keyed by size (`duration`) / variant (`ease`), plus the deprecated `$pds-motion-*` aliases beside their replacements. */
 export const motion = {
   duration: {
-    sm: {
-      name: '$duration-sm',
+    ...duration,
+    short: {
+      name: '$pds-motion-duration-short',
       value: durationSm,
       description: 'Holds a **short** `transition-duration` / `animation-duration`.',
+      deprecation: { replacement: scssIdentifier(duration.sm) },
     },
-    md: {
-      name: '$duration-md',
+    moderate: {
+      name: '$pds-motion-duration-moderate',
       value: durationMd,
       description: 'Holds a **moderate** `transition-duration` / `animation-duration`.',
+      deprecation: { replacement: scssIdentifier(duration.md) },
     },
-    lg: {
-      name: '$duration-lg',
+    long: {
+      name: '$pds-motion-duration-long',
       value: durationLg,
       description: 'Holds a **long** `transition-duration` / `animation-duration`.',
+      deprecation: { replacement: scssIdentifier(duration.lg) },
     },
-    xl: {
-      name: '$duration-xl',
+    veryLong: {
+      name: '$pds-motion-duration-very-long',
       value: durationXlToken,
       description: 'Holds a **very long** `transition-duration` / `animation-duration`.',
+      deprecation: { replacement: scssIdentifier(duration.xl) },
     },
   },
   ease: {
-    inOut: {
-      name: '$ease-in-out',
+    ...ease,
+    easingBase: {
+      name: '$pds-motion-easing-base',
       value: easeInOutToken,
       description: 'Holds an **in-out** `transition-timing-function`.',
+      deprecation: { replacement: scssIdentifier(ease.inOut) },
     },
-    in: {
-      name: '$ease-in',
+    easingIn: {
+      name: '$pds-motion-easing-in',
       value: easeIn,
       description: 'Holds an **in** `transition-timing-function`.',
+      deprecation: { replacement: scssIdentifier(ease.in) },
     },
-    out: {
-      name: '$ease-out',
+    easingOut: {
+      name: '$pds-motion-easing-out',
       value: easeOut,
       description: 'Holds an **out** `transition-timing-function`.',
+      deprecation: { replacement: scssIdentifier(ease.out) },
     },
   },
-} satisfies ScssMeta['motion'];
-
-/**
- * Deprecated `$pds-motion-*` aliases (plumbing).
- * @deprecated Use the documented `$duration-*` / `$ease-*` variables.
- */
-export const motionDeprecatedAliases: ScssRaw = {
-  raw: `$pds-motion-duration-long: ${durationLg}; /* alias (deprecated) */
-$pds-motion-duration-moderate: ${durationMd}; /* alias (deprecated) */
-$pds-motion-duration-short: ${durationSm}; /* alias (deprecated) */
-$pds-motion-duration-very-long: ${durationXlToken}; /* alias (deprecated) */
-$pds-motion-easing-base: ${easeInOutToken}; /* alias (deprecated) */
-$pds-motion-easing-in: ${easeIn}; /* alias (deprecated) */
-$pds-motion-easing-out: ${easeOut}; /* alias (deprecated) */`,
-};
+} satisfies ScssCatalog;

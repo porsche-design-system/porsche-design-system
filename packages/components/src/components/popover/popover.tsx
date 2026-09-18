@@ -38,6 +38,7 @@ import {
   POPOVER_SAFE_ZONE,
   type PopoverAriaAttribute,
   type PopoverDirection,
+  type PopoverDismissEventDetail,
 } from './popover-utils';
 
 const propTypes: PropTypes<typeof Popover> = {
@@ -85,8 +86,8 @@ export class Popover {
   /** Sets ARIA attributes on the popover panel to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
 
-  /** Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+  /** Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the three was used. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<PopoverDismissEventDetail>;
 
   @State() private isOpen = false;
 
@@ -186,7 +187,7 @@ export class Popover {
       !this.refPopover?.contains(relatedTarget) &&
       !relatedTarget.contains(this.host)
     ) {
-      this.dismissPopover();
+      this.dismissPopover('focus-out');
     }
   }
 
@@ -415,7 +416,7 @@ export class Popover {
     // Clicks on the trigger button or inside the panel must not close it; the trigger toggles its own state via the
     // button/`onClick` handlers.
     if (this.effectiveOpen && isClickOutside(e, this.triggerElement) && isClickOutside(e, this.refPopover)) {
-      this.dismissPopover();
+      this.dismissPopover('outside-click');
     }
   };
 
@@ -426,7 +427,7 @@ export class Popover {
       // panel content. Focus must move synchronously here: the closing re-render marks the panel `inert`, which would
       // otherwise drop focus to `<body>`. Mirrors the focus-restore behavior of native `<dialog>` (`p-modal` / `p-flyout`).
       this.focusTrigger();
-      this.dismissPopover();
+      this.dismissPopover('escape');
     }
   };
 
@@ -435,12 +436,12 @@ export class Popover {
     this.triggerElement?.focus();
   };
 
-  private dismissPopover = (): void => {
+  private dismissPopover = (reason: PopoverDismissEventDetail['reason']): void => {
     // Centralizes the dismissal behavior: in controlled mode the consumer owns the open state, so only emit `dismiss`;
     // in uncontrolled mode the component closes itself. The fade-out and top-layer removal are handled by the
     // top-layer controller on the next render.
     if (this.isControlled) {
-      this.dismiss.emit();
+      this.dismiss.emit({ reason });
     } else {
       this.isOpen = false;
     }

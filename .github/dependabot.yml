@@ -7,6 +7,10 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    # Supply-chain cooldown: ignore releases younger than 7 days (see
+    # docs/dependencies.md -> "Release-age cooldown").
+    cooldown:
+      default-days: 7
     groups:
       github-actions-updates:
         patterns:
@@ -30,6 +34,14 @@ updates:
     # Disable routine version-update PRs (owned by the weekly agent); keep
     # security updates enabled.
     open-pull-requests-limit: 0
+    # Supply-chain cooldown: ignore releases younger than 7 days, matching
+    # `min-release-age` in .npmrc and `minimumReleaseAge` in .syncpackrc.json
+    # (see docs/dependencies.md -> "Release-age cooldown"). This is currently a
+    # safety net only: `cooldown` applies to VERSION updates, which are disabled
+    # above, and never to security updates — a security PR must not be delayed.
+    # It takes effect the moment version updates are re-enabled here.
+    cooldown:
+      default-days: 7
     # Held-back dependencies — kept in sync with docs/dependencies.md and the
     # updateGroups entry in .syncpackrc.json
     ignore:

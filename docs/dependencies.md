@@ -29,6 +29,10 @@ manually — see [Held-back dependencies](#held-back-dependencies). Angular **ve
 syncpack flow; only Angular's framework **migrations** are applied separately — see
 [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations).
 
+Releases younger than **7 days** are deliberately invisible to this flow — see
+[Release-age cooldown](#release-age-cooldown-supply-chain-protection). A version that does not show up in
+`npm run npm:outdated` today will show up next week.
+
 ### Syncpack helper scripts
 
 [`syncpack`](https://syncpack.dev) is pinned as a root `devDependency` (do **not** rely on an unpinned `npx syncpack`,
@@ -83,6 +87,55 @@ PRs while still allowing **security** PRs (grouped via `applies-to: security-upd
 the held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
 Dependabot on a monthly schedule.
 
+## Release-age cooldown (supply-chain protection)
+
+The npm worm campaigns of autumn 2025 ("Shai-Hulud" and its successors) all followed the same pattern: a stolen
+maintainer token, a malicious version pushed to the registry, and every `npm install` in the next few hours pulled it
+in. Such versions are typically unpublished or remediated by the registry/maintainer **within one to three days**.
+Simply not installing brand-new releases removes most of that exposure without any extra tooling, scanner or service.
+
+We therefore enforce a **7-day cooldown** on every path through which a new version can enter this repository:
+
+| Path                                | Setting                                                                            | Unit               |
+| ----------------------------------- | ---------------------------------------------------------------------------------- | ------------------ |
+| Manual `npm install` / `npm update` | [`.npmrc`](../.npmrc) → `min-release-age=7`                                        | days               |
+| Dependabot PRs                      | [`.github/dependabot.yml`](../.github/dependabot.yml) → `cooldown.default-days: 7` | days               |
+| `syncpack` (`npm run npm:update`)   | [`.syncpackrc.json`](../.syncpackrc.json) → `minimumReleaseAge: 10080`             | minutes (= 7 days) |
+
+All three must be set: **Dependabot and syncpack do not read `.npmrc`**, and `.npmrc` does not influence how the other
+two pick a target version. Mind the differing units.
+
+Why seven days and not one: one day is inside the typical one-to-three-day takedown window, so it would still catch a
+fresh compromise. At our weekly update rhythm a seven-day delay costs nothing — the release we skip today is the release
+we take next week.
+
+### What is _not_ affected
+
+- **`npm ci`** resolves exclusively from `package-lock.json` and never consults registry metadata for version selection,
+  so CI, Docker and container builds are completely unchanged. (Verified: `npm ci --dry-run` produces an identical tree
+  with and without the flag.)
+- **Internal `@porsche-design-system/*` packages** resolve to the local workspaces (including the StackBlitz starters'
+  published pins, see [StackBlitz starter templates](#stackblitz-starter-templates-npm-workspace-members)), so a fresh
+  release is never blocked by the cooldown.
+- **Security updates.** Dependabot's `cooldown` deliberately applies to _version_ updates only, never to security
+  updates — a fix for a known advisory must not be delayed. Since npm version updates are disabled anyway (see
+  [Dependabot](#dependabot-security-only-for-npm)), the npm `cooldown` entry is a safety net that takes effect the
+  moment version updates are re-enabled; the `github-actions` entry is where it is active today.
+
+### Requirements and escape hatch
+
+`min-release-age` requires **npm >= 11.10.0** (we pin npm via the root `package.json` `volta` field; older npm versions
+just ignore the unknown key with a warning). It is mutually exclusive with `--before`.
+
+When you genuinely need a release that is younger than the cooldown — a hotfix for an advisory, or a package whose very
+first version was published a few days ago — override it per invocation instead of editing `.npmrc`:
+
+```bash
+npm install some-package --min-release-age=0
+```
+
+Note this down in the PR description, so the exception is a conscious, reviewable decision.
+
 ## Strict peer dependency resolution
 
 `npm install` runs with **strict** peer dependency resolution (npm 7+ default). We intentionally do **not** use
@@ -93,6 +146,11 @@ explicitly via the `overrides` field in the root `package.json` instead of disab
 
 Current overrides:
 
+- `@angular/build > vitest` is pinned to our root `vitest` version (`$vitest`). `@angular/build` declares an optional
+  peer on `vitest@^4.0.8`, which blocks Vitest 5 with `ERESOLVE`. The override is safe because we never use Angular's
+  Vitest builder: `packages/components-angular` runs `vitest` directly via its own config, and `angular.json` only uses
+  the `@angular/build:{application,dev-server,extract-i18n,karma,ng-packagr}` builders. **Drop this override** once
+  `@angular/build` widens its peer range to include Vitest 5.
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
@@ -218,9 +276,16 @@ _optional_ dependency, so the build only fails much later, e.g.
 - **Always** regenerate the lockfile from scratch instead — a clean resolve records the full set again:
 
   ```bash
-  rm -rf package-lock.json node_modules && npm install
+  rm -f package-lock.json && npm run npm:remove && npm install
   npm run npm:verify-lock
   ```
+
+  Removing only the **root** `node_modules` is **not** enough. npm reconciles against the `node_modules` directories of
+  every workspace too, so a leftover `packages/*/node_modules` keeps the pruned bindings pruned and
+  `npm run npm:verify-lock` still fails. `npm run npm:remove` deletes **all** of them, which is what makes the resolve
+  truly clean. This was observed with `@rolldown/binding-*` (pulled in via `@angular/build`), where
+  `rm -rf package-lock.json node_modules && npm install` still reported an incomplete lockfile and the full clean fixed
+  it without any `optionalDependencies` workaround.
 
 - `npm run npm:verify-lock` ([`scripts/verify-lockfile.ts`](../scripts/verify-lockfile.ts)) fails when a package's
   platform bindings are only **partially** present, or when a binding is recorded without `resolved`/`integrity`. It
@@ -253,6 +318,48 @@ machine npm still installs only the matching binary; the rest are recorded but s
 > `npm run npm:update` round (this happened when `next` moved to `^16.3.0` while the binaries stayed on `^16.2.9`). A
 > stale range still resolves, but it may install SWC binaries/types from a different minor than `next`. Always bump the
 > eight entries in **both** workspaces to the same range as `next`.
+
+## Nested project workspaces never get a `node_modules` directory
+
+npm never reifies into `packages/*/projects/**/node_modules` in this monorepo — only the root and the top-level
+`packages/*` workspaces ever receive one. When npm's hoisting picks such a nested path for a dependency, it still writes
+a complete entry into `package-lock.json`, but the package is **never installed**. `npm install` and `npm ci` both exit
+successfully and report no problem; the dependency only surfaces as `UNMET DEPENDENCY` in `npm ls` and as a
+module-not-found error during a build.
+
+This bit `@vitejs/plugin-react`, which is declared by the StackBlitz React starter
+([`src/react/package.json`](../packages/storefront/projects/stackblitz/src/react/package.json)). An unrelated shift in
+the tree moved it from `packages/storefront/node_modules` down to
+`packages/storefront/projects/stackblitz/node_modules`, and `npm run build` then failed the starter's `vite.config.ts`
+typecheck with `Cannot find module '@vitejs/plugin-react'`.
+
+**Fix**: declare the dependency in the enclosing **top-level** workspace as well — here
+[`packages/storefront`](../packages/storefront/package.json), which is the workspace whose build runs that typecheck.
+That pulls the placement back up into a directory npm actually creates. Do **not** remove such a declaration because it
+looks redundant; verify with `npm ls <package>` after a clean install first.
+
+```bash
+npm ls @vitejs/plugin-react   # must not print "UNMET DEPENDENCY"
+```
+
+## Watch for peer ranges that widen into a new major
+
+npm auto-installs missing peer dependencies and picks the **highest** version satisfying the range. A dependency that
+merely widens a peer range can therefore drag an unrelated major into the tree, even when `syncpack` was told to skip
+that major.
+
+`karma-jasmine-html-reporter@2.3.0` widened its `jasmine-core` peer from `^4 || ^5 || ^6` to `^4 || ^5 || ^6 || ^7`. npm
+then resolved `jasmine-core` to `7.0.2` at the root, which breaks zone.js' jasmine patch and fails the Angular karma
+suite with:
+
+```text
+TypeError: Cannot assign to read only property 'describe' of object '[object Object]'
+```
+
+`jasmine-core` is therefore declared explicitly as `~6.3.0` in
+[`packages/components-angular`](../packages/components-angular/package.json), matching `@types/jasmine` and the Angular
+starter template. **Do not remove it** — without it the major returns silently on the next update round. Bump it only
+together with `@types/jasmine` and after confirming zone.js supports that jasmine major.
 
 ## Held-back dependencies
 

@@ -3,17 +3,17 @@ import * as path from 'node:path';
 import * as globby from 'fast-glob';
 import type { JssStyle, Styles } from 'jss';
 import { vi } from 'vitest';
-import * as jssUtils from './jss';
 import {
   attachComponentCss,
+  buildResponsiveBooleanStyles,
   buildResponsiveStyles,
   componentCssMap,
   getCachedComponentCss,
   getCss,
   isObject,
   mergeDeep,
-  supportsConstructableStylesheets,
 } from './jss';
+import * as supportsConstructableStylesheetsUtils from './supportsConstructableStylesheets';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
@@ -207,25 +207,12 @@ describe('getCss()', () => {
 }`,
     },
   ];
-  it.each(
-    data.map(({ input, result }) => [input, result])
-  )('should correctly transform %j', (input: Styles, result: string) => {
-    expect(getCss(input)).toBe(result);
-  });
-});
-
-describe('supportsConstructableStylesheets()', () => {
-  it('should return true if CSSStyleSheet constructor exists', () => {
-    // due to polyfill
-    expect(supportsConstructableStylesheets()).toBe(true);
-  });
-
-  it('should return false if CSSStyleSheet constructor does not exist', () => {
-    const globalCSSStyleSheet = global.CSSStyleSheet;
-    global.CSSStyleSheet = undefined;
-    expect(supportsConstructableStylesheets()).toBe(false);
-    global.CSSStyleSheet = globalCSSStyleSheet;
-  });
+  it.each(data.map(({ input, result }) => [input, result]))(
+    'should correctly transform %j',
+    (input: Styles, result: string) => {
+      expect(getCss(input)).toBe(result);
+    }
+  );
 });
 
 describe('buildResponsiveStyles()', () => {
@@ -264,6 +251,29 @@ describe('buildResponsiveStyles()', () => {
         '@media(min-width:1000px)': { width: 500, display: 'block' },
         '@media(min-width:1300px)': { width: 600, display: 'block' },
         '@media(min-width:1760px)': { width: 700, display: 'block' },
+      });
+    });
+  });
+
+  describe('for boolean getJssStyle', () => {
+    const getJssStyle = (val: boolean): JssStyle => ({ display: val ? 'none' : 'block' });
+
+    it('should treat empty string of boolean attribute shorthand like true', () => {
+      expect(buildResponsiveBooleanStyles('', getJssStyle)).toStrictEqual(
+        buildResponsiveBooleanStyles(true, getJssStyle)
+      );
+      expect(buildResponsiveBooleanStyles('', getJssStyle)).toStrictEqual({ display: 'none' });
+    });
+
+    it('should treat "true" and "false" strings like their boolean counterpart', () => {
+      expect(buildResponsiveBooleanStyles('true', getJssStyle)).toStrictEqual({ display: 'none' });
+      expect(buildResponsiveBooleanStyles('false', getJssStyle)).toStrictEqual({ display: 'block' });
+    });
+
+    it('should return nested jss for responsive type', () => {
+      expect(buildResponsiveBooleanStyles({ base: true, l: false }, getJssStyle)).toStrictEqual({
+        display: 'none',
+        '@media(min-width:1300px)': { display: 'block' },
       });
     });
   });
@@ -323,18 +333,20 @@ describe('attachComponentCss()', () => {
     componentCssMap.clear();
   });
 
-  it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
+  it('should retrieve cached css taking infinite parameters into account', () => {
     const host = document.createElement('p-some-component');
     host.attachShadow({ mode: 'open' });
-    const spy = vi.spyOn(jssUtils.internalJss, 'getCachedComponentCss').mockImplementation(() => '');
+    const getComponentCss = vi.fn((_x: boolean, _y: string, _z: number) => 'some css');
 
-    attachComponentCss(host, (_x: boolean) => 'some css', true);
+    attachComponentCss(host, getComponentCss, false, '', 1);
+    attachComponentCss(host, getComponentCss, false, '', 1);
 
-    expect(spy).toHaveBeenCalledWith(host, expect.anything(), true);
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    attachComponentCss(host, (_x: boolean, _y: string, _z: number) => 'some css', false, '', 1);
+    // only misses the cache if the last parameter is part of the key too
+    attachComponentCss(host, getComponentCss, false, '', 2);
 
-    expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, '', 1);
+    expect(getComponentCss).toHaveBeenCalledTimes(2);
   });
 
   describe('with CSSStyleSheet support', () => {
@@ -351,7 +363,9 @@ describe('attachComponentCss()', () => {
 
   describe('without CSSStyleSheet support', () => {
     it('should create style node and prepend it in shadowRoot', () => {
-      const spy = vi.spyOn(jssUtils.internalJss, 'getHasConstructableStylesheetSupport').mockReturnValue(false);
+      const spy = vi
+        .spyOn(supportsConstructableStylesheetsUtils, 'getHasConstructableStylesheetSupport')
+        .mockReturnValue(false);
 
       const div = document.createElement('p-some-component');
       div.attachShadow({ mode: 'open' });
@@ -453,10 +467,11 @@ describe('all styles snapshots', () => {
   const srcDirPath = path.resolve(__dirname, '..');
   const snapshotFilePaths = globby.sync(`${srcDirPath}/**/*-styles.spec.ts.snap`);
 
-  it.each(
-    snapshotFilePaths.map((filePath) => [path.basename(filePath), filePath])
-  )('should not contain [object Object] in %s', (_, filePath) => {
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    expect(fileContent).not.toContain('[object Object]');
-  });
+  it.each(snapshotFilePaths.map((filePath) => [path.basename(filePath), filePath]))(
+    'should not contain [object Object] in %s',
+    (_, filePath) => {
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      expect(fileContent).not.toContain('[object Object]');
+    }
+  );
 });

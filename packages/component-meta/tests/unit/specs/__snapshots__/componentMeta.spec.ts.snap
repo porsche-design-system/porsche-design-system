@@ -821,6 +821,32 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button": {
+    "cssVariablesMeta": {
+      "--p-button-bg": {
+        "defaultValue": "",
+        "description": "Overrides the background color of the button in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.",
+      },
+      "--p-button-fg": {
+        "defaultValue": "",
+        "description": "Overrides the foreground color (label, icon and loading spinner) of the button in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.",
+      },
+      "--p-button-gap": {
+        "defaultValue": "",
+        "description": "Gap between the button's content (label and icon).",
+      },
+      "--p-button-px": {
+        "defaultValue": "",
+        "description": "Horizontal padding of the button.",
+      },
+      "--p-button-py": {
+        "defaultValue": "",
+        "description": "Vertical padding of the button.",
+      },
+      "--p-button-radius": {
+        "defaultValue": "",
+        "description": "Radius of the button",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -887,6 +913,7 @@ exports[`should match snapshot 1`] = `
           "adjust",
           "aggregation",
           "ai-3d-object",
+          "ai-chat",
           "ai-code",
           "ai-edit",
           "ai-image",
@@ -965,6 +992,7 @@ exports[`should match snapshot 1`] = `
           "country-road",
           "coupe",
           "cubic-capacity",
+          "customer-support",
           "cut",
           "delete",
           "disable",
@@ -1218,9 +1246,10 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "primary",
           "secondary",
+          "destructive",
         ],
         "defaultValue": "primary",
-        "description": "Sets the visual style variant of the button (\`primary\` or \`secondary\`).",
+        "description": "Sets the visual style variant of the button (\`primary\`, \`secondary\` or \`destructive\`). Use \`destructive\` for actions with irreversible consequences, e.g. deleting data.",
         "type": "ButtonVariant",
       },
     },
@@ -1320,6 +1349,7 @@ exports[`should match snapshot 1`] = `
           "adjust",
           "aggregation",
           "ai-3d-object",
+          "ai-chat",
           "ai-code",
           "ai-edit",
           "ai-image",
@@ -1398,6 +1428,7 @@ exports[`should match snapshot 1`] = `
           "country-road",
           "coupe",
           "cubic-capacity",
+          "customer-support",
           "cut",
           "delete",
           "disable",
@@ -1786,6 +1817,7 @@ exports[`should match snapshot 1`] = `
           "adjust",
           "aggregation",
           "ai-3d-object",
+          "ai-chat",
           "ai-code",
           "ai-edit",
           "ai-image",
@@ -1864,6 +1896,7 @@ exports[`should match snapshot 1`] = `
           "country-road",
           "coupe",
           "cubic-capacity",
+          "customer-support",
           "cut",
           "delete",
           "disable",
@@ -2762,8 +2795,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the user closes the drilldown via the close button or Escape key.",
-        "type": "void",
+        "description": "Emitted when the user closes the drilldown via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.",
+        "type": "DrilldownDismissEventDetail",
+        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' }",
       },
       "update": {
         "description": "Emitted when the active navigation level changes, with the new \`activeIdentifier\` in the event detail.",
@@ -3257,8 +3291,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the user closes the flyout via the close button, backdrop click, or Escape key.",
-        "type": "void",
+        "description": "Emitted when the user closes the flyout via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.",
+        "type": "FlyoutDismissEventDetail",
+        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' }",
       },
       "motionHiddenEnd": {
         "description": "Emitted after the flyout's close transition completes and the panel is fully hidden.",
@@ -3541,6 +3576,7 @@ exports[`should match snapshot 1`] = `
           "adjust",
           "aggregation",
           "ai-3d-object",
+          "ai-chat",
           "ai-code",
           "ai-edit",
           "ai-image",
@@ -3619,6 +3655,7 @@ exports[`should match snapshot 1`] = `
           "country-road",
           "coupe",
           "cubic-capacity",
+          "customer-support",
           "cut",
           "delete",
           "disable",
@@ -3909,6 +3946,7 @@ exports[`should match snapshot 1`] = `
           "adjust",
           "aggregation",
           "ai-3d-object",
+          "ai-chat",
           "ai-code",
           "ai-edit",
           "ai-image",
@@ -3987,6 +4025,7 @@ exports[`should match snapshot 1`] = `
           "country-road",
           "coupe",
           "cubic-capacity",
+          "customer-support",
           "cut",
           "delete",
           "disable",
@@ -6421,6 +6460,32 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link": {
+    "cssVariablesMeta": {
+      "--p-link-bg": {
+        "defaultValue": "",
+        "description": "Overrides the background color of the link in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.",
+      },
+      "--p-link-fg": {
+        "defaultValue": "",
+        "description": "Overrides the foreground color (label and icon) of the link in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.",
+      },
+      "--p-link-gap": {
+        "defaultValue": "",
+        "description": "Gap between the link's content (label and icon).",
+      },
+      "--p-link-px": {
+        "defaultValue": "",
+        "description": "Horizontal padding of the link.",
+      },
+      "--p-link-py": {
+        "defaultValue": "",
+        "description": "Vertical padding of the link.",
+      },
+      "--p-link-radius": {
+        "defaultValue": "",
+        "description": "Radius of the link",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -6482,6 +6547,7 @@ exports[`should match snapshot 1`] = `
           "adjust",
           "aggregation",
           "ai-3d-object",
+          "ai-chat",
           "ai-code",
           "ai-edit",
           "ai-image",
@@ -6560,6 +6626,7 @@ exports[`should match snapshot 1`] = `
           "country-road",
           "coupe",
           "cubic-capacity",
+          "customer-support",
           "cut",
           "delete",
           "disable",
@@ -6897,6 +6964,7 @@ exports[`should match snapshot 1`] = `
           "adjust",
           "aggregation",
           "ai-3d-object",
+          "ai-chat",
           "ai-code",
           "ai-edit",
           "ai-image",
@@ -6975,6 +7043,7 @@ exports[`should match snapshot 1`] = `
           "country-road",
           "coupe",
           "cubic-capacity",
+          "customer-support",
           "cut",
           "delete",
           "disable",
@@ -7556,8 +7625,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key.",
-        "type": "void",
+        "description": "Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.",
+        "type": "ModalDismissEventDetail",
+        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' }",
       },
       "motionHiddenEnd": {
         "description": "Emitted after the modal's close transition completes and the dialog is fully hidden.",
@@ -8281,8 +8351,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab).",
-        "type": "void",
+        "description": "Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the three was used.",
+        "type": "PopoverDismissEventDetail",
+        "typeDetail": "{ reason: 'outside-click' | 'focus-out' | 'escape' }",
       },
     },
     "hasAriaProp": true,
@@ -8865,6 +8936,7 @@ exports[`should match snapshot 1`] = `
           "adjust",
           "aggregation",
           "ai-3d-object",
+          "ai-chat",
           "ai-code",
           "ai-edit",
           "ai-image",
@@ -8943,6 +9015,7 @@ exports[`should match snapshot 1`] = `
           "country-road",
           "coupe",
           "cubic-capacity",
+          "customer-support",
           "cut",
           "delete",
           "disable",
@@ -9422,8 +9495,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the user dismisses the sheet via the close button, backdrop click, or Escape key.",
-        "type": "void",
+        "description": "Emitted when the user closes the sheet via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.",
+        "type": "SheetDismissEventDetail",
+        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' }",
       },
       "motionHiddenEnd": {
         "description": "Emitted after the sheet's close transition has fully completed and the panel is hidden.",
@@ -9750,7 +9824,7 @@ exports[`should match snapshot 1`] = `
       "update": {
         "description": "Emitted when the user clicks a sortable column header, carrying the new sort configuration in the event detail.",
         "type": "TableUpdateEventDetail",
-        "typeDetail": "{ id: string; active?: boolean; direction?: Direction }",
+        "typeDetail": "{ id: string; active?: boolean; direction?: 'asc' | 'desc' }",
       },
     },
     "hasAriaProp": false,
@@ -10218,6 +10292,7 @@ exports[`should match snapshot 1`] = `
           "adjust",
           "aggregation",
           "ai-3d-object",
+          "ai-chat",
           "ai-code",
           "ai-edit",
           "ai-image",
@@ -10296,6 +10371,7 @@ exports[`should match snapshot 1`] = `
           "country-road",
           "coupe",
           "cubic-capacity",
+          "customer-support",
           "cut",
           "delete",
           "disable",

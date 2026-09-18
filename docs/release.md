@@ -60,15 +60,134 @@ release can be published.
 
 ### Deploy
 
-1. Create a new housekeeping branch from `main` e.g. `git checkout -b housekeeping/components-v4.0.0`
-2. Adapt PDS version in Stackblitz framework `package.json` files, e.g.
-   `./packages/storefront/projects/stackblitz/src/(js/angular/react/vue)/package.json` to the newly released stable
-   version.
-3. Create new pull request from e.g. `housekeeping/components-v4.0.0` into `main` branch and merge
-4. Create pull request from `main` into `v4` branch
-5. Merge into `v4` branch (then CI/CD will trigger a Storefront deployment automatically)
+Deployment is part of the release pipeline; **do not merge `main` into a version branch to update the documentation**.
+The pipeline publishes the pinned storefront (`/v4.7.0/`), then rebuilds only the storefront from the same release
+commit with the major base path (`/v4/`). Both URLs have their own Algolia index. Major promotion waits for CloudFront
+invalidation. Separate Algolia jobs index the pinned and major storefronts after deployment; the release announcement
+waits for both indexing outcomes.
+
+The major comes from the package version, not the branch. Only a stable release commit can update a major URL. Ordinary
+commits that retain an already-published package version, release candidates and older release reruns cannot replace it.
+Major promotions share a concurrency group across main and maintenance branches; after acquiring the lock they resolve
+the latest stable tag for that major again.
+
+Include documentation and example dependency changes in the release PR. `prepare-release` updates the StackBlitz
+workspace package versions along with the other packages. Subsequent housekeeping commits update development previews,
+not released documentation.
+
+### Branches and documentation URLs
+
+| Source                         | Storefront URL                |
+| ------------------------------ | ----------------------------- |
+| Push to `main`                 | `/nightly/`                   |
+| Push to version branch `v5`    | `/v5-preview/`                |
+| Internal pull request          | `/pr-<number>/`               |
+| Stable release `4.7.0`         | `/v4.7.0/` and `/v4/`         |
+| Release candidate `5.0.0-rc.0` | `/v5.0.0-rc.0/`, never `/v5/` |
+
+Keep the next major on its version branch while `main` continues the current major. For example, develop v5 on `v5` and
+use `/v5-preview/`. When ready, merge it into `main` and release `5.0.0`; the release creates `/v5/` without changing
+`/v4/`. Subsequent v4 maintenance releases can come from `v4` and update only the v4 documentation. Stable npm versions
+below the current `latest` are published with `latest-v<major>` instead, so a maintenance release does not move `latest`
+backwards. A release that is also older than its own `latest-v<major>` moves no dist-tag at all and stays installable by
+exact version.
+
+The hosting root redirect (`/` to the current major) still needs to be changed when a new major becomes current. Version
+branches must also carry the updated contribution/release workflows before they are used: an old workflow can still
+deploy directly to its branch's major URL.
+
+### Recovery and rollout
+
+If a release fails, use **Re-run failed jobs**. A failed major deployment can run again even if npm packages, the GitHub
+Release and the pinned storefront already exist. GitHub Release creation also tolerates npm publication having finished
+in a previous attempt.
+
+Algolia failures can be retried independently with **Re-run failed jobs**, without rebuilding or uploading the
+storefront. Indexing restores the run's production build artifact; records use page text and relative routes rather than
+the build's base path. On **Re-run all jobs**, pinned indexing still runs when its already-published storefront skips
+uploading. Ordinary commits retaining a released version do not reindex its pinned documentation.
+
+Major indexing shares the deployment's per-major lock and rechecks the latest stable tag before writing, so retrying an
+older indexing job cannot replace a newer release's search index. An older maintenance release indexes only its pinned
+documentation if the major URL intentionally stays on a newer release.
+
+The pinned publication check still tests page availability, not upload completeness. This separation recovers indexing
+failures; it does not detect an interrupted upload where the homepage exists but other files are missing.
+
+Deploy the hosting permission update for replacing `v<major>-preview/` prefixes **before** enabling these workflows.
+Keep deletion forbidden for full-version prefixes. Major URLs update automatically during stable releases; no separate
+manual deployment workflow is needed. An ordinary merge retaining an already-released version deliberately does not
+promote itself.
 
 ### Communicate
 
-1. Write a Slack notification by coping last entry of `./packages/components-js/CHANGELOG.md` in public Porsche Design
-   System Slack channel
+Nothing to do by hand. The `notify-release` job in `.github/workflows/release.yml` announces the release in the public
+Porsche Design System Slack channel after the GitHub Release and both documentation URLs are ready, built from the
+release notes themselves rather than from the changelog, so the two cannot disagree.
+
+Only stable releases are announced, and only when the run actually created a release — a pre-release, or a re-run of a
+job whose release already existed, posts nothing. Prefer **Re-run failed jobs** to preserve the original successful
+release-creation output when recovering a documentation failure. If all jobs were rerun and the announcement was
+therefore skipped, use **Notify Release Published** after the documentation is ready. See
+[`docs/runbooks/slack-notifications.md`](runbooks/slack-notifications.md) for the message, the Slack side and how to
+change either.
+
+## GitHub Releases
+
+Every stable release is published as a
+[GitHub Release](https://github.com/porsche-design-system/porsche-design-system/releases) by the `Release` workflow via
+`.github/actions/create-github-release`. The action creates the git tag `v{version}` at the released commit and builds
+the release body from `./packages/components/CHANGELOG.md`: the section of the stable version and all its pre-release
+sections (`-rc.*`, `-beta.*`, …) are merged, so each `### Added|Changed|Fixed` heading appears once (see
+`extract-release-body.awk`). Pre-release versions don't get a release.
+
+The `make-latest` input defaults to `auto`: a release is only marked as **Latest** if it is the highest stable version
+in the changelog, so maintenance releases of an older major (e.g. `3.36.0` after `4.6.0`) don't steal the badge.
+
+Releases for versions published before this automation existed (`1.0.0` - `3.35.0`) were added retroactively, so the
+release list is complete. Their tags point at the release commit (usually the merge commit of the release PR), and
+because GitHub derives `created_at` from the tagged commit they keep their historic date and ordering – only
+`published_at` ("released this …") shows when they were backfilled.
+
+## Git tags
+
+The only tags in this repository are `v{MAJOR}.{MINOR}.{PATCH}` of stable releases – one per GitHub Release, nothing
+else. Pre-release versions (`-rc.*`, `-beta.*`, `-alpha.*`) are published to npm but are not tagged.
+
+The legacy per-package tags of the old release process (e.g. `components-js-v3.33.0`, `assets-v5.0.2`, `v0.13.0/core`,
+`v0.8.0/react`) as well as all pre-release tags were deleted, since the released code is fully covered by the
+`v{version}` tags and the npm registry. When a tag has to be recreated, use the commit of the corresponding release and
+create it as a lightweight tag:
+
+```bash
+git update-ref refs/tags/v4.6.0 <sha> "" && git push origin refs/tags/v4.6.0
+```
+
+The naming convention is enforced by two repository rulesets (**Settings → Rules → Rulesets**), so no other tag can be
+created – neither by a person nor by CI:
+
+| Ruleset                           | Applies to                              | Effect                                                   |
+| --------------------------------- | --------------------------------------- | -------------------------------------------------------- |
+| `Tags: release naming convention` | all tags except `v[0-9]*.[0-9]*.[0-9]*` | blocks e.g. `components-js-v3.33.0`, `v0.13.0/core`      |
+| `Tags: no pre-release tags`       | all tags containing `-`                 | blocks e.g. `v4.7.0-rc.0`, `components-vue-v3.33.0-rc.0` |
+
+Both only restrict **creation**, so existing tags can still be deleted or moved. They have no bypass actors: to create
+an exceptional tag, set the ruleset to `Disabled` temporarily. Since `v{version}` tags are not matched by either
+ruleset, the release workflow needs no bypass permission.
+
+To create a release manually (e.g. if CI ever misses one), run the action script locally with a token that has
+`contents: write`:
+
+```bash
+INPUT_VERSION=4.6.0 \
+INPUT_SHA=main \
+INPUT_REPOSITORY=porsche-design-system/porsche-design-system \
+INPUT_CHANGELOG_PATH=packages/components/CHANGELOG.md \
+INPUT_DRY_RUN=true \
+GITHUB_TOKEN=$(gh auth token) \
+bash .github/actions/create-github-release/create-github-release.sh
+```
+
+`INPUT_DRY_RUN=true` only prints the payload; drop it to actually create the release. `INPUT_SHA` may be left empty when
+the tag already exists – GitHub answers `404 Not Found` when a plain commit SHA is passed as `target_commitish` for an
+existing tag, so it is omitted from the payload in that case.

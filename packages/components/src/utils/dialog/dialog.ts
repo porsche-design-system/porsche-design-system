@@ -1,5 +1,12 @@
 import type { EventEmitter } from '@stencil/core';
 
+// Shared by `p-modal`, `p-flyout`, `p-sheet` and `p-drilldown` so their `dismiss` payloads cannot diverge. All four
+// render the same `DialogBase` and therefore have the same three dismissal paths. `p-popover` declares its own union
+// instead: it has no backdrop, it closes via its own trigger rather than a dedicated dismiss button, and it adds a
+// keyboard-only path when focus tabs out of the panel.
+export type DialogDismissReason = 'dismiss-button' | 'backdrop' | 'escape';
+export type DialogDismissEventDetail = { reason: DialogDismissReason };
+
 export const showDialog = (dialog: HTMLDialogElement, scrollArea: HTMLElement): void => {
   // Must only be called when the dialog isn't already open and after the render cycle has finished (e.g. in
   // `componentDidRender()`), so visibility states are ready and the dismiss button can be focused correctly.
@@ -12,6 +19,9 @@ export const showDialog = (dialog: HTMLDialogElement, scrollArea: HTMLElement): 
   dialog.focus(); // set focus programmatically to dialog element to prevent transition bug in Safari
 };
 
+// Callers map this to the `escape` dismiss reason, which only holds because we never set `closedby`. With
+// `closedby="any"` the native `cancel` fires for outside clicks too, indistinguishably, so they would be reported as
+// `escape` and no test would catch it. Backdrop clicks are detected separately via `isDialogBackdropTarget`.
 export const onCancelDialog = (e: Event, cb: () => void, disable = false): void => {
   e.preventDefault(); // prevent closing the dialog uncontrolled by ESC
   if (!disable) {

@@ -25,31 +25,35 @@
     }
   },
   "scripts": {
-    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta",
+    "build": "npm run clean:build && npm run build:meta:deprecations && npm run build:bundle && npm run build:bundle:meta",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
+    "build:meta:deprecations": "tsx scripts/build.ts",
     "build:bundle:meta": "rollup -c rollup-meta.config.mjs --bundleConfigAsCjs",
     "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.mjs --bundleConfigAsCjs",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json && npm run typecheck:scripts",
+    "typecheck:scripts": "tsc --noEmit -p tsconfig.scripts.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist ./meta"
+    "test:unit": "npm run typecheck:tests && npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist ./meta ./vanillaExtractMeta/deprecations.ts"
   },
   "dependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.7",
-    "@porsche-design-system/shared": "0.0.0",
+    "@biomejs/biome": "^2.5.13",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.5.1",
     "@vanilla-extract/css": "^1.21.2",
     "@vanilla-extract/rollup-plugin": "^1.5.4",
     "@vanilla-extract/vite-plugin": "^5.2.6",
     "prettier": "^3.9.6",
-    "rollup": "^4.62.4",
+    "rollup": "^4.63.2",
     "rollup-plugin-generate-package-json": "^3.2.0",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.0"
   },
   "volta": {
     "extends": "../../../../package.json"

@@ -3,6 +3,7 @@ import type {
   CarouselAriaAttribute,
   SelectedAriaAttributes,
 } from '@porsche-design-system/components/dist/types/bundle';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementId,
@@ -89,9 +90,22 @@ const getButtonNext = (page: Page) => page.locator('p-carousel p-button-pure:las
 const getPagination = (page: Page) => page.locator('p-carousel .pagination');
 const getPaginationBullets = async (page: Page) => getPagination(page).locator('span').all();
 const getSkipLink = (page: Page) => page.locator('p-carousel .skip-link a');
+const getSlideStatus = (page: Page) => page.locator('p-carousel .slide-status');
 const isElementCompletelyInViewport = (slide: Locator) => expect(slide).toBeInViewport({ ratio: 1 });
 const isElementNotInViewport = (slide: Locator) => expect(slide).not.toBeInViewport({ ratio: 1 });
 const waitForSlideToBeActive = (slide: Locator) => expect(slide).toHaveClass(/is-active/);
+const addSlide = (host: Locator): Promise<void> => {
+  return host.evaluate((host) => {
+    const el = document.createElement('div');
+    el.innerText = `Slide ${host.children.length + 1}`;
+    host.append(el);
+  });
+};
+const removeSlide = async (host: Locator): Promise<void> => {
+  return host.evaluate((host) => {
+    host.children[host.children.length - 1].remove();
+  });
+};
 
 test('should move slides on prev button clicks', async ({ page }) => {
   await initCarousel(page);
@@ -147,6 +161,17 @@ test('should move slides on next button clicks', async ({ page }) => {
   await isElementCompletelyInViewport(slide1);
   await isElementNotInViewport(slide2);
   await isElementNotInViewport(slide3);
+});
+
+test('should update slide status on navigation button clicks', async ({ page }) => {
+  await initCarousel(page);
+  const slideStatus = getSlideStatus(page);
+
+  await expect(slideStatus).toBeEmpty();
+  await getButtonNext(page).click();
+  await expect(slideStatus).toHaveText('2 of 3');
+  await getButtonPrev(page).click();
+  await expect(slideStatus).toHaveText('1 of 3');
 });
 
 test('should update pagination on prev button clicks', async ({ page }) => {
@@ -272,6 +297,27 @@ test('should update pagination in focusOnCenterSlide mode if slidesPerPage chang
   expect(await getCssClasses(bullet1)).toBe('bullet bullet--infinite');
   expect(await getCssClasses(bullet2)).toBe('bullet');
   expect(await getCssClasses(bullet3)).toBe('bullet bullet--active');
+});
+
+test('should update slide width and pagination when slidesPerPage is changed at runtime', async ({ page }) => {
+  await initCarousel(page, { amountOfSlides: 6, slidesPerPage: 1 });
+  const host = getHost(page);
+  const pagination = getPagination(page);
+
+  expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
+  const boundingBoxBefore = await getSlides(page).first().boundingBox();
+  assertDefined(boundingBoxBefore);
+  const { width: widthBefore } = boundingBoxBefore;
+
+  await setProperty(host, 'slidesPerPage', 3);
+  await waitForStencilLifecycle(page);
+
+  // 6 slides at 3 per page = 6 - 3 + 1 = 4 pages
+  expect(await pagination.evaluate((el) => el.children.length)).toBe(4);
+  const boundingBoxAfter = await getSlides(page).first().boundingBox();
+  assertDefined(boundingBoxAfter);
+  const { width: widthAfter } = boundingBoxAfter;
+  expect(widthAfter).toBeLessThan(widthBefore / 2);
 });
 
 test('should update infinite pagination on next button clicks', async ({ page }) => {
@@ -444,20 +490,6 @@ test('should navigate to slide when infinite pagination is clicked', async ({ pa
 });
 
 test.describe('adding/removing slides', () => {
-  const addSlide = (host: Locator): Promise<void> => {
-    return host.evaluate((host) => {
-      const el = document.createElement('div');
-      el.innerText = `Slide ${host.children.length + 1}`;
-      host.append(el);
-    });
-  };
-
-  const removeSlide = async (host: Locator): Promise<void> => {
-    return host.evaluate((host) => {
-      host.children[host.children.length - 1].remove();
-    });
-  };
-
   test('should update tabindex attribute of slide', async ({ page }) => {
     await initCarousel(page, { amountOfSlides: 2 });
     const host = getHost(page);
@@ -481,6 +513,57 @@ test.describe('adding/removing slides', () => {
 
     expect(await getAttribute(slide1Removed, 'tabindex')).toBe('0');
     expect(await getAttribute(slide2Removed, 'tabindex')).toBe('0');
+  });
+
+  test('should render one slot per slide when the amount of pages stays the same', async ({ page }) => {
+    await initCarousel(page, { amountOfSlides: 1, slidesPerPage: 3 });
+    const host = getHost(page);
+    await expect(getSlides(page)).toHaveCount(1);
+
+    await addSlide(host);
+    await waitForStencilLifecycle(page);
+
+    await expect(getSlides(page)).toHaveCount(2);
+    expect(await host.evaluate((el) => Array.from(el.children).map((c) => c.assignedSlot?.name ?? null))).toEqual([
+      'slide-0',
+      'slide-1',
+    ]);
+
+    await removeSlide(host);
+    await waitForStencilLifecycle(page);
+
+    await expect(getSlides(page)).toHaveCount(1);
+    expect(await host.evaluate((el) => Array.from(el.children).map((c) => c.assignedSlot?.name ?? null))).toEqual([
+      'slide-0',
+    ]);
+  });
+
+  // 3 slides at 2 per page is 2 pages, so every step here moves the amount of pages.
+  test('should render one slot per slide when the amount of pages changes', async ({ page }) => {
+    await initCarousel(page, { amountOfSlides: 3, slidesPerPage: 2 });
+    const host = getHost(page);
+    await expect(getSlides(page)).toHaveCount(3);
+
+    await addSlide(host);
+    await waitForStencilLifecycle(page);
+
+    await expect(getSlides(page)).toHaveCount(4);
+    expect(await host.evaluate((el) => Array.from(el.children).map((c) => c.assignedSlot?.name ?? null))).toEqual([
+      'slide-0',
+      'slide-1',
+      'slide-2',
+      'slide-3',
+    ]);
+
+    await removeSlide(host);
+    await waitForStencilLifecycle(page);
+
+    await expect(getSlides(page)).toHaveCount(3);
+    expect(await host.evaluate((el) => Array.from(el.children).map((c) => c.assignedSlot?.name ?? null))).toEqual([
+      'slide-0',
+      'slide-1',
+      'slide-2',
+    ]);
   });
 
   test('should update pagination', async ({ page }) => {
@@ -751,7 +834,7 @@ test.describe('focus behavior', () => {
   test('should have correct focus cycle if next button is clicked and then tabbed', async ({ page }) => {
     await initCarousel(page, { slidesPerPage: 1, withFocusableElements: false });
     const host = getHost(page);
-    const [slide1, slide2, slide3] = await getSlideElements(page);
+    const [_slide1, slide2, _slide3] = await getSlideElements(page);
     const btnNext = getButtonNext(page);
 
     await btnNext.focus();
@@ -760,6 +843,18 @@ test.describe('focus behavior', () => {
     await waitForSlideToBeActive(slide2);
 
     expect(await getActiveElementIdInShadowRoot(host)).toBe('splide-slide02');
+  });
+
+  test('should not update slide status when movement is caused by focusing a slide', async ({ page }) => {
+    await initCarousel(page, { slidesPerPage: 1, withFocusableElements: false });
+    const [slide1, slide2] = await getSlideElements(page);
+    const slideStatus = getSlideStatus(page);
+
+    await slide1.focus();
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    await expect(slideStatus).toBeEmpty();
   });
 
   test('should have correct focus cycle if skip link has focus and is clicked', async ({ page }) => {
@@ -1083,7 +1178,6 @@ test.describe('activeSlideIndex', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initCarousel(page);
-    const status = await getLifecycleStatus(page);
 
     await expect
       .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-carousel'], {
@@ -1133,6 +1227,33 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+  });
+
+  // slides 1, 2 and 3 all resolve to a single page at slidesPerPage=3, so the amount of pages never changes here
+  test('should work without unnecessary round trips when slides change without changing the amount of pages', async ({
+    page,
+  }) => {
+    await initCarousel(page, { amountOfSlides: 1, slidesPerPage: 3 });
+    const host = getHost(page);
+    const { componentDidLoad } = await getLifecycleStatus(page);
+
+    await addSlide(host);
+    await waitForStencilLifecycle(page);
+    await expect(getSlides(page)).toHaveCount(2);
+
+    const afterAdd = await getLifecycleStatus(page);
+    expect(afterAdd.componentDidUpdate['p-carousel'], 'componentDidUpdate: p-carousel after add').toBe(1);
+    expect(afterAdd.componentDidUpdate.all, 'componentDidUpdate: all after add').toBe(1);
+    expect(afterAdd.componentDidLoad.all, 'componentDidLoad: all after add').toBe(componentDidLoad.all);
+
+    await removeSlide(host);
+    await waitForStencilLifecycle(page);
+    await expect(getSlides(page)).toHaveCount(1);
+
+    const afterRemove = await getLifecycleStatus(page);
+    expect(afterRemove.componentDidUpdate['p-carousel'], 'componentDidUpdate: p-carousel after remove').toBe(2);
+    expect(afterRemove.componentDidUpdate.all, 'componentDidUpdate: all after remove').toBe(2);
+    expect(afterRemove.componentDidLoad.all, 'componentDidLoad: all after remove').toBe(componentDidLoad.all);
   });
 });
 
@@ -1248,7 +1369,7 @@ test.describe('focusOnCenterSlide', () => {
       withFocusableElements: false,
       focusOnCenterSlide: true,
     });
-    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlideElements(page);
+    const [slide1, slide2, slide3, slide4, slide5, _slide6] = await getSlideElements(page);
 
     await slide1.focus();
     await isElementCompletelyInViewport(slide1);

@@ -33,24 +33,26 @@
     "build": "npm run clean:build && npm run build:meta && npm run build:package",
     "build:meta": "rollup -c rollup.config.meta.mjs",
     "build:package": "tsx scripts/build.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta"
   },
   "dependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.7",
-    "@porsche-design-system/shared": "0.0.0",
+    "@biomejs/biome": "^2.5.13",
     "@rollup/plugin-typescript": "^12.3.0",
-    "@types/node": "^26.1.2",
-    "rollup": "^4.62.4",
+    "@types/node": "^26.5.1",
+    "rollup": "^4.63.2",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.0"
   },
   "volta": {
     "extends": "../../../../package.json"

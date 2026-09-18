@@ -1,6 +1,5 @@
 export * from '../link-button/align-label';
 export * from '../link-button/button-type';
-export * from '../link-button/link-button-variant';
 export * from './getNamedSlotOrThrow';
 export * from './getOnlyChildHTMLElementOrThrow';
 export * from './getOnlyChildOfKindHTMLElementOrThrow';

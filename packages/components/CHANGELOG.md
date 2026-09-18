@@ -16,13 +16,122 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Pin Code`: Support for `ArrowLeft`/`ArrowRight` keyboard navigation.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+
+### Fixed
+
+- `Select`, `Multi Select`, `Radio Group`: unmatched values triggered misleading console warnings, including empty
+  strings and values whose options had not loaded yet. Option matching remains strict by type and value.
+  ([#4710](https://github.com/porsche-design-system/porsche-design-system/pull/4710))
+- `Pin Code`: Focus management on label click and digit overwrite behavior of focused cell.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+
+## [4.7.0] - 2026-09-09
+
+## [4.7.0-rc.0] - 2026-09-09
+
+### Added
+
+- `Audit Deprecations Skill`: new skill shipped as `pds-audit-deprecations-{js|angular|react|vue}` in the package's
+  `skills/` directory. Invoke it to audit a project for deprecated Porsche Design System API usage; it writes its report
+  below `.pds/audits/` and never changes your code
+  ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
+- `Knowledge Skill`: `references/deprecations.md`, a version-exact index of every deprecated component, prop, prop
+  value, event, slot, CSS variable and styling alias together with what to use instead
+  ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
+- **Partials**: `getMetaTagsAndIconLinks()` now links a webmanifest with maskable icons for Android PWA installation
+  ([#4709](https://github.com/porsche-design-system/porsche-design-system/pull/4709))
+
+### Changed
+
+- `pds-skill`: Skill links are now created with a relative target on macOS and Linux, so they stay valid across
+  symlink-capable clones and in CI and can be committed. Re-run the command to migrate links created by an earlier
+  version. Windows keeps using directory junctions, which cannot be relative
+  ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
+
+### Fixed
+
+- **Breakpoint Customizable Props**: setting a breakpoint customizable boolean prop as an HTML boolean attribute without
+  a value, e.g. `<p-input-text hide-label>`, was ignored and logged a validation error instead of behaving like
+  `<p-input-text hide-label="true">`. Affects `hide-label`, `stretch`, `indent`, `fullscreen`, `pagination` and
+  `compact` (the latter only on `Button`, `Link`, `Link Tile` and `Button Tile`, where it is breakpoint customizable).
+  ([#4701](https://github.com/porsche-design-system/porsche-design-system/pull/4701))
+- **React Server Components**: prerendering crashed with `Cannot use 'in' operator to search for 'type' in null` when a
+  component from `@porsche-design-system/components-react/ssr` received `null` as its only child, e.g.
+  `<PTableCell>{cond ? <PIcon /> : null}</PTableCell>`
+  ([#4685](https://github.com/porsche-design-system/porsche-design-system/pull/4685))
+
+## [4.7.0-beta.0] - 2026-08-27
+
+### Added
+
+- **Shadow DOM**: shadow roots are now attached with `clonable: true`, so `cloneNode(true)` on a component returns a
+  clone that carries its Shadow DOM content instead of an empty shadow root.
+  ([#4692](https://github.com/porsche-design-system/porsche-design-system/pull/4692))
+- `Button`: `destructive` variant for actions with irreversible consequences, e.g. deleting data
+  ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Button`, `Link`: `--p-button-bg`, `--p-button-fg`, `--p-link-bg` and `--p-link-fg` CSS variables to override the
+  background and foreground color in every state, including hover. You are responsible for ensuring sufficient contrast
+  and brand compliance. ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Button`, `Link`: `--p-button-px`, `--p-button-py`, `--p-button-gap`, `--p-button-radius`, `--p-link-px`,
+  `--p-link-py`, `--p-link-gap` and `--p-link-radius` CSS variables to override horizontal padding, vertical padding,
+  the gap between label and icon as well as the border radius. You are responsible for ensuring a minimum target size of
+  24px by 24px and brand compliance. ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Icon`: `ai-chat` icon ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+- `Button`: (🧪Experimental) CSS custom state `loading` which can be targeted with the `:state()` pseudo-class, e.g.
+  `p-button:state(loading) { --p-button-bg: deeppink; }`. Browsers without support for `CustomStateSet` simply ignore
+  these rules. Be aware that custom states can't be expressed during server side rendering, they are only applied once
+  the component is hydrated on the client.
+  ([#4693](https://github.com/porsche-design-system/porsche-design-system/pull/4693))
+
+### Fixed
+
+- `Carousel`: slides were dropped or left over when the amount of slides changed without also changing the amount of
+  pages, for example going from 1 to 2 slides at `slides-per-page="3"`. An added slide was never rendered and a removed
+  slide left an empty slot and a surplus pagination bullet behind.
+  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+- `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
+  carousel was initialised with. ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+
+## [4.6.0] - 2026-08-20
+
+## [4.6.0-rc.3] - 2026-08-19
+
+### Added
+
+- **Testing**: the `testing` sub-package now provides a `Shadow` counterpart for every Testing Library query, so
+  elements rendered inside Shadow DOM can be queried directly. Eight query families (`AltText`, `DisplayValue`,
+  `LabelText`, `PlaceholderText`, `Role`, `TestId`, `Text`, `Title`) in six variants each, plus `screen`, `within`,
+  `deepQuerySelector` and `deepQuerySelectorAll`. The existing `getByRoleShadowed`, `getByLabelTextShadowed` and
+  `getByTextShadowed` helpers remain available.
+  ([#4492](https://github.com/porsche-design-system/porsche-design-system/pull/4492))
+
+### Changed
+
+- **Testing**: the `testing` sub-package requires a DOM. Importing it where no DOM is available now throws an explicit
+  error on import. ([#4492](https://github.com/porsche-design-system/porsche-design-system/pull/4492))
+- `Flyout`, `Modal`, `Sheet`, `Drilldown`: the `dismiss` event now carries a payload identifying how the component was
+  closed. The event detail changed from `void` to `{ reason: 'dismiss-button' | 'backdrop' | 'escape' }`, exported as
+  `FlyoutDismissEventDetail`, `ModalDismissEventDetail`, `SheetDismissEventDetail` and `DrilldownDismissEventDetail`.
+  ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
+- `Popover`: the `dismiss` event now carries a payload identifying how the component was closed. The event detail
+  changed from `void` to `{ reason: 'outside-click' | 'focus-out' | 'escape' }`, exported as
+  `PopoverDismissEventDetail`. ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
+
+## [4.6.0-rc.2] - 2026-08-13
+
+### Added
+
 - `Ai Tag`: Support for enhanced locales in BCP47 (`en-US`) and POSIX (`en_US`) format
   ([#4643](https://github.com/porsche-design-system/porsche-design-system/pull/4643))
 - `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
 - `Icon`: `connect-services` and `shopping-cart-off` icons
-  ([#3850](https://github.com/porsche-design-system/porsche-design-system/issues/3850),
-  [#3791](https://github.com/porsche-design-system/porsche-design-system/issues/3791))
+  ([#4665](https://github.com/porsche-design-system/porsche-design-system/pull/4665))
+- `Carousel`: Live region announcing page status after control-driven navigation (prev/next, pagination, drag)
+  ([#4654](https://github.com/porsche-design-system/porsche-design-system/pull/4654))
+- `Icon`: `customer-support` ([#4672](https://github.com/porsche-design-system/porsche-design-system/pull/4672))
 
 ### Changed
 
@@ -41,6 +150,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   which jsdom only provides since v30. On older versions the polyfill throws an explicit error on import. `jsdom` is
   declared as an optional peer dependency to make the requirement visible.
   ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
+- `AG Grid`: Updated `accentColor` from `colorInfo` to `colorFocus`, removed `focusShadow` and `inputFocusShadow` which
+  were previously hiding the focus ring on the grid's native input elements.
+  ([#4667](https://github.com/porsche-design-system/porsche-design-system/pull/4667))
 
 ### Fixed
 

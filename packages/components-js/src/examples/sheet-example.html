@@ -1,5 +1,7 @@
 <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Sheet</p-button>
 
+<p-text id="dismiss-reason">Last dismissed via: not dismissed yet</p-text>
+
 <p-sheet open="false" aria="{ 'aria-label': 'A slightly more detailed label' }">
   <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
   <p-text>Some Content</p-text>
@@ -7,6 +9,10 @@
 
 <script>
   const sheet = document.querySelector('p-sheet');
-  sheet.addEventListener('dismiss', () => (sheet.open = false));
+  const dismissReason = document.querySelector('#dismiss-reason');
+  sheet.addEventListener('dismiss', (e) => {
+    dismissReason.innerText = `Last dismissed via: ${e.detail.reason}`;
+    sheet.open = false;
+  });
   document.querySelector('p-button').addEventListener('click', () => (sheet.open = true));
 </script>

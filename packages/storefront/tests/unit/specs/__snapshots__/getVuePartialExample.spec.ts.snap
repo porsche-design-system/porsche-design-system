@@ -7,7 +7,7 @@ npm install --save-dev vite-plugin-html
 
 <!-- index.html -->
 <head>
-  <%- initialStyles %>
+  <%- fontLinks %>
 </head>
 
 <!-- vite.config.ts -->
@@ -21,13 +21,13 @@ export default defineConfig({
     createHtmlPlugin({
       inject: {
         data: {
-          initialStyles: require('@porsche-design-system/components-vue/partials').getInitialStyles(),
+          fontLinks: require('@porsche-design-system/components-vue/partials').getFontLinks(),
 
           // Alternative: With custom prefix to match your prefixed components
-          initialStyles: require('@porsche-design-system/components-vue/partials').getInitialStyles({ prefix: 'custom-prefix' }),
+          fontLinks: require('@porsche-design-system/components-vue/partials').getFontLinks({ prefix: 'custom-prefix' }),
 
           // Alternative: With multiple prefixes to match prefixed components coming from micro frontends
-          initialStyles: require('@porsche-design-system/components-vue/partials').getInitialStyles({ prefix: ['', 'custom-prefix', 'another-prefix'] }),
+          fontLinks: require('@porsche-design-system/components-vue/partials').getFontLinks({ prefix: ['', 'custom-prefix', 'another-prefix'] }),
         },
       },
     }),

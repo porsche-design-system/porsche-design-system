@@ -1,0 +1,7 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["tests/smoke"]
+}

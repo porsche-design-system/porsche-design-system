@@ -17,7 +17,6 @@ describe('Element Internals', () => {
     .filter((tagName) => !['p-select-option', 'p-multi-select-option'].includes(tagName))
     .forEach((tagName) => {
       const componentMeta = getComponentMeta(tagName);
-      console.log(tagName);
       it(`should reflect 'name' and 'form' props for component ${tagName} using ElementInternals API`, () => {
         expect(componentMeta.propsMeta['form'].propOptions['reflect']).toBe(true);
         expect(componentMeta.propsMeta['name'].propOptions['reflect']).toBe(true);

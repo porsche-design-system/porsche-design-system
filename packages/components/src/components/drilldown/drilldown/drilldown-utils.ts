@@ -1,5 +1,6 @@
 import type { Class } from '../../../types';
 import { consoleError, getTagNameWithoutPrefix, isElementOfKind } from '../../../utils';
+import type { DialogDismissEventDetail } from '../../../utils/dialog/dialog';
 
 export const DRILLDOWN_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type DrilldownAriaAttribute = (typeof DRILLDOWN_ARIA_ATTRIBUTES)[number];
@@ -9,6 +10,8 @@ export const INTERNAL_UPDATE_EVENT_NAME = 'internalUpdate';
 export type DrilldownUpdateEventDetail = {
   activeIdentifier: string | undefined;
 };
+
+export type DrilldownDismissEventDetail = DialogDismissEventDetail;
 
 export type Item = HTMLPDrilldownItemElement;
 
@@ -26,16 +29,8 @@ export const traverseTreeAndUpdateState = (
 ) => {
   if (isElementOfKind(activeItem, 'p-drilldown-item')) {
     activeItem[prop] = value;
-    internalDrilldown.traverseTreeAndUpdateState(
-      activeItem.parentElement as HTMLPDrilldownItemElement,
-      'cascade',
-      value
-    );
+    traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'cascade', value);
   }
-};
-
-export const internalDrilldown = {
-  traverseTreeAndUpdateState,
 };
 
 /**
@@ -47,7 +42,7 @@ export const internalDrilldown = {
  */
 export const updateDrilldownItemState = (activeItem: HTMLPDrilldownItemElement, value: boolean): void => {
   activeItem.secondary = value;
-  internalDrilldown.traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'primary', value);
+  traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'primary', value);
 };
 
 export const validateActiveIdentifier = <T extends Class<any>>(

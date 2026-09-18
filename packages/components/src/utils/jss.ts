@@ -6,9 +6,16 @@ import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import { addImportantToEachRule } from '../styles';
-import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
+import {
+  type BreakpointCustomizable,
+  type BreakpointValue,
+  type BreakpointValues,
+  parseJSON,
+  parseJSONBoolean,
+} from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 import { hasPropValueChanged } from './has-prop-value-changed';
+import { getHasConstructableStylesheetSupport } from './supportsConstructableStylesheets';
 import { getTagNameWithoutPrefix } from './tag-name';
 
 // NOTE: handpicked selection of plugins from jss-preset-default
@@ -27,19 +34,6 @@ export const getCss = (jssStyles: Styles): string =>
       generateId: (rule) => rule.key,
     })
     .toString();
-
-export const supportsConstructableStylesheets = (): boolean => {
-  try {
-    return typeof new CSSStyleSheet().replaceSync === 'function';
-  } catch {
-    return false;
-  }
-};
-
-// determine it once
-const hasConstructableStylesheetSupport = supportsConstructableStylesheets();
-// getter for easy mocking
-export const getHasConstructableStylesheetSupport = (): boolean => hasConstructableStylesheetSupport;
 
 type CssCacheMap = Map<string, string>;
 export const componentCssMap = new Map<TagName, CssCacheMap>();
@@ -70,9 +64,9 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
   getComponentCss: T,
   ...args: Parameters<T>
 ): void => {
-  const css = internalJss.getCachedComponentCss(host, getComponentCss, ...args);
+  const css = getCachedComponentCss(host, getComponentCss, ...args);
 
-  if (internalJss.getHasConstructableStylesheetSupport()) {
+  if (getHasConstructableStylesheetSupport()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;
     if (sheet) {
       sheet.replaceSync(css);
@@ -101,12 +95,10 @@ export const doNothing = (): void => {
 
 export type GetJssStyleFunction = (value?: any) => JssStyle;
 
-export const buildResponsiveStyles = <T>(
-  rawValue: BreakpointCustomizable<T>,
+const buildStyles = (
+  value: BreakpointValues<BreakpointValue> | BreakpointValue,
   getJssStyle: GetJssStyleFunction
 ): Styles => {
-  const value = parseJSON(rawValue as any);
-
   return typeof value === 'object'
     ? Object.keys(value)
         // base styles are applied on root object, responsive styles are nested within
@@ -121,6 +113,19 @@ export const buildResponsiveStyles = <T>(
         )
     : (getJssStyle(value) as Styles);
 };
+
+// boolean props have to use buildResponsiveBooleanStyles(), therefore the generic excludes them to make it impossible
+// to lose the HTML boolean attribute shorthand by accident
+export const buildResponsiveStyles = <T extends string | number>(
+  rawValue: BreakpointCustomizable<T>,
+  getJssStyle: GetJssStyleFunction
+): Styles => buildStyles(parseJSON(rawValue), getJssStyle);
+
+// TODO: [v5] can be merged back into buildResponsiveStyles() once objects can only be set via property, see #4708
+export const buildResponsiveBooleanStyles = (
+  rawValue: BreakpointCustomizable<boolean>,
+  getJssStyle: GetJssStyleFunction
+): Styles => buildStyles(parseJSONBoolean(rawValue), getJssStyle);
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>
   typeof obj === 'object' && !Array.isArray(obj);
@@ -141,9 +146,4 @@ export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => 
 
     return prev;
   }, {} as T);
-};
-
-export const internalJss = {
-  getCachedComponentCss,
-  getHasConstructableStylesheetSupport,
 };

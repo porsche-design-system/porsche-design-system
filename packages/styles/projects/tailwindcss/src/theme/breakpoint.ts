@@ -6,7 +6,7 @@ import {
   breakpointXl,
   breakpointXs,
 } from '@porsche-design-system/tokens';
-import type { TailwindMeta } from '../types';
+import type { TailwindCatalog } from '../types';
 
 // Breakpoint — generates the responsive variant prefixes (e.g. `md:`).
 export const breakpoint = {
@@ -46,4 +46,4 @@ export const breakpoint = {
     classes: ['2xl:*'],
     description: 'Defines the **2x-large** responsive breakpoint.',
   },
-} satisfies TailwindMeta['breakpoint'];
+} satisfies TailwindCatalog;

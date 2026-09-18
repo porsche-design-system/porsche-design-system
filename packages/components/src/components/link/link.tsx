@@ -3,7 +3,6 @@ import type {
   BreakpointCustomizable,
   LinkAriaAttribute,
   LinkTarget,
-  LinkVariant,
   PropTypes,
   SelectedAriaAttributes,
 } from '../../types';
@@ -15,16 +14,15 @@ import {
   hasVisibleIcon,
   isSsrHydration,
   LINK_ARIA_ATTRIBUTES,
-  LINK_BUTTON_VARIANTS,
   parseAndGetAriaAttributes,
   throwIfInvalidLinkUsage,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-styles';
-import type { LinkIcon } from './link-utils';
+import { LINK_VARIANTS, type LinkIcon, type LinkVariant } from './link-utils';
 
 const propTypes: PropTypes<typeof Link> = {
-  variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),
+  variant: AllowedTypes.oneOf<LinkVariant>(LINK_VARIANTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   href: AllowedTypes.string,

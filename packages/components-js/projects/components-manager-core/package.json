@@ -8,13 +8,15 @@
   "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "npm run clean:build && tsc --build tsconfig.json && tsc --project tsconfig.json --module CommonJS --outDir ./dist",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "vitest -c vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest -c vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.0"
   },
   "volta": {
     "extends": "../../../../package.json"

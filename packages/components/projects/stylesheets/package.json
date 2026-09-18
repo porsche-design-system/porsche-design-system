@@ -46,8 +46,10 @@
     "build:index": "npm run build:index:default && npm run build:index:cdn",
     "build:index:default": "cat lib/normalize.css lib/variables.css lib/color-scheme.css lib/font-face.css > lib/index.css",
     "build:index:cdn": "mkdir -p lib/cn && cat lib/normalize.css lib/variables.css lib/color-scheme.css lib/cn/font-face.css > lib/cn/index.css",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run build:constants && npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./lib ./meta"
   },
   "dependencies": {
@@ -57,11 +59,11 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
-    "@types/node": "^26.1.2",
-    "rollup": "^4.62.4",
-    "tsx": "^4.23.7",
+    "@types/node": "^26.5.1",
+    "rollup": "^4.63.2",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.0"
   },
   "volta": {
     "extends": "../../../../package.json"

@@ -10,8 +10,12 @@
     "build": "npm run clean:build && npm run build:cli && npm run build:lib",
     "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/cm.js",
     "build:lib": "tsc --build tsconfig.library-entry.json",
+    "typecheck": "npm run typecheck:self && npm run typecheck:library-entry",
+    "typecheck:self": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck:library-entry": "tsc --noEmit -p tsconfig.library-entry.typecheck.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "vitest -c vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest -c vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
@@ -20,8 +24,8 @@
   "devDependencies": {
     "fast-glob": "^3.3.3",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10",
-    "webpack": "^5.109.2"
+    "vitest": "^5.0.0",
+    "webpack": "^5.111.0"
   },
   "volta": {
     "extends": "../../../../package.json"

@@ -1,5 +1,5 @@
 import { blurFrosted } from '@porsche-design-system/tokens';
-import type { TailwindMeta } from '../types';
+import type { TailwindCatalog } from '../types';
 
 // Blur.
 export const blur = {
@@ -10,4 +10,4 @@ export const blur = {
     description:
       'Applies a **frosted** effect when used with `backdrop-filter` or `filter: blur()` when combined with a semi-transparent color.',
   },
-} satisfies TailwindMeta['blur'];
+} satisfies TailwindCatalog;

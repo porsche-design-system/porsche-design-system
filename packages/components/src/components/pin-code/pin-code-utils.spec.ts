@@ -176,40 +176,48 @@ describe('getConcatenatedInputValues()', () => {
 });
 
 describe('getSanitisedValue()', () => {
-  it('should not slice or reset prop value and not call warnAboutTransformedValue() if value already sanitised', () => {
+  const warningPrefix = 'Property value of component p-pin-code:';
+
+  it('should not slice or reset prop value and not warn if value already sanitised', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '1234';
-    const spy = vi.spyOn(pinCodeUtils.internalPin, 'warnAboutTransformedValue');
+    const spyConsoleWarn = vi.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation(() => {});
 
     const sanitisedValue = pinCodeUtils.getSanitisedValue(component.host, component.value, 4);
 
-    expect(spy).not.toHaveBeenCalled();
+    expect(spyConsoleWarn).not.toHaveBeenCalled();
     expect(sanitisedValue).toBe('1234');
   });
 
-  it('should reset prop value and call warnAboutTransformedValue() if value does not consist of digits/whitespaces', () => {
+  it('should reset prop value and warn if value does not consist of digits/whitespaces', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '1a&^b';
-    const spy = vi.spyOn(pinCodeUtils.internalPin, 'warnAboutTransformedValue');
+    const spyConsoleWarn = vi.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation(() => {});
 
     const sanitisedValue = pinCodeUtils.getSanitisedValue(component.host, component.value, 4);
 
-    expect(spy).toHaveBeenCalledWith(component.host);
+    expect(spyConsoleWarn).toHaveBeenCalledWith(
+      warningPrefix,
+      'Provided value contains characters that are not of type number, the value was therefore reset.'
+    );
     expect(sanitisedValue).toBe('');
   });
 
-  it('should slice prop value and call warnAboutTransformedValue() with correct parameters if value.length is longer then prop length', () => {
+  it('should slice prop value and warn if value.length is longer then prop length', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '12345678';
-    const spy = vi.spyOn(pinCodeUtils.internalPin, 'warnAboutTransformedValue');
+    const spyConsoleWarn = vi.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation(() => {});
 
     const sanitisedValue = pinCodeUtils.getSanitisedValue(component.host, component.value, 4);
 
     expect(sanitisedValue).toBe('1234');
-    expect(spy).toHaveBeenCalledWith(component.host, 4);
+    expect(spyConsoleWarn).toHaveBeenCalledWith(
+      warningPrefix,
+      'Provided value has too many characters and was truncated to the max length of 4.'
+    );
   });
 });
 
@@ -254,6 +262,17 @@ describe('isCurrentInput()', () => {
   ])("should for index: %d, value: %s and length: %d' return: %s", (index, value, length, expected) => {
     const result = pinCodeUtils.isCurrentInput(index, value, length);
     expect(result).toBe(expected);
+  });
+});
+
+describe('getPinCodeInputAriaLabel()', () => {
+  it.each<[number, number, string]>([
+    [0, 4, '1 of 4'],
+    [3, 4, '4 of 4'],
+    [0, 6, '1 of 6'],
+    [5, 6, '6 of 6'],
+  ])('should for index: %d and length: %d return: %s', (index, length, expected) => {
+    expect(pinCodeUtils.getPinCodeInputAriaLabel(index, length)).toBe(expected);
   });
 });
 

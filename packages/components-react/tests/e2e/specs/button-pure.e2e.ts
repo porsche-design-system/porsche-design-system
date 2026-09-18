@@ -1,10 +1,5 @@
-import { Page, expect, test } from '@playwright/test';
-import {
-  addEventListener,
-  getEventSummary,
-  getFormDataValue,
-  setProperty,
-} from '../../../../components-js/tests/e2e/helpers';
+import { type Page, expect, test } from '@playwright/test';
+import { addEventListener, getEventSummary, getFormDataValue } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
 const getForm = (page: Page) => page.locator('form');

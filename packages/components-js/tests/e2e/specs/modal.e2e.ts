@@ -1,5 +1,6 @@
 import { expect, Locator, type Page, test } from '@playwright/test';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -21,12 +22,9 @@ import {
 const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 
 const getHost = (page: Page) => page.locator('p-modal');
-const getScrollContainer = (page: Page) => page.locator('p-modal .scroller');
 const getHeader = (page: Page) => page.locator('p-modal slot[name="header"]');
 const getModal = (page: Page) => page.locator('p-modal dialog');
 const getDismissButton = (page: Page) => page.locator('p-modal .dismiss');
-const getFooter = (page: Page) => page.locator('p-modal slot[name="footer"]');
-const getFooterBoxShadow = async (page: Page): Promise<string> => getElementStyle(getFooter(page), 'boxShadow');
 const waitForModalTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
 const initBasicModal = (
@@ -116,7 +114,7 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
-const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
+const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, _failMessage?: string) => {
   // In order to assure that its correct we press tab to assure the next element will be the dismiss button
   await expect(await getActiveElementTagName(page)).toBe('P-MODAL');
   await page.keyboard.press('Tab');
@@ -164,24 +162,31 @@ test.describe('can be dismissed', () => {
     await dismissBtn.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'dismiss-button' }]);
   });
 
   test('should be closable via esc key', async ({ page }) => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'escape' }]);
   });
 
   test('should be closable via backdrop', async ({ page }) => {
     await page.mouse.click(5, 5);
 
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter, 'after mouse down').toBe(1);
+    expect(details).toEqual([{ reason: 'backdrop' }]);
   });
 
   test('should not be dismissed if mousedown inside modal', async ({ page }) => {
     const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width / 2, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -194,6 +199,7 @@ test.describe('can be dismissed', () => {
 
   test('should not be dismissed if mousedown inside modal and mouseup on backdrop (drag out)', async ({ page }) => {
     const viewportSize = page.viewportSize();
+    assertDefined(viewportSize);
     await page.mouse.move(viewportSize.width / 2, viewportSize.height / 2);
     await page.mouse.down();
 
@@ -548,7 +554,9 @@ test.describe('scroll lock', () => {
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
-      document.querySelector('p-modal').remove();
+      const modal = document.querySelector('p-modal');
+      if (!modal) throw new Error('p-modal not found');
+      modal.remove();
     });
     await waitForStencilLifecycle(page);
 
@@ -623,6 +631,7 @@ test.describe('lifecycle', () => {
 
     await host.evaluate((el) => {
       const header = el.querySelector('[slot="footer"]');
+      if (!header) throw new Error('[slot="footer"] not found');
       header.innerHTML = `<p>Some new footer content</p>`;
     });
     await waitForStencilLifecycle(page);

@@ -25,6 +25,7 @@ import {
   SHEET_BACKGROUNDS,
   type SheetAriaAttribute,
   type SheetBackground,
+  type SheetDismissEventDetail,
   type SheetMotionHiddenEndEventDetail,
   type SheetMotionVisibleEndEventDetail,
 } from './sheet-utils';
@@ -65,8 +66,8 @@ export class Sheet {
   /** Sets ARIA attributes on the sheet dialog element for improved accessibility when the default `aria-label` is insufficient. */
   @Prop() public aria?: SelectedAriaAttributes<SheetAriaAttribute>;
 
-  /** Emitted when the user dismisses the sheet via the close button, backdrop click, or Escape key. */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+  /** Emitted when the user closes the sheet via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<SheetDismissEventDetail>;
 
   /** Emitted after the sheet's open transition has fully completed and the panel is visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<SheetMotionVisibleEndEventDetail>;
@@ -129,11 +130,11 @@ export class Sheet {
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
         dismissable={this.dismissButton ?? undefined}
-        onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
+        onCancel={this.onDialogCancel}
         onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick, this.isPointerDownInside)}
+        onClick={this.onDialogBackdropClick}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        onDismiss={this.dismissButton ? this.dismissDialog : undefined}
+        onDismiss={this.dismissButton ? this.onDismissButtonClick : undefined}
         containerClass="sheet"
         header={this.hasHeader ? <slot name="header" /> : undefined}
         ariaAttributes={parseAndGetAriaAttributes({
@@ -149,7 +150,15 @@ export class Sheet {
     );
   }
 
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
+  private onDialogCancel = (e: Event): void =>
+    onCancelDialog(e, () => this.dismissDialog('escape'), !this.dismissButton);
+
+  private onDialogBackdropClick = (e: MouseEvent): void =>
+    onClickDialog(e, () => this.dismissDialog('backdrop'), this.disableBackdropClick, this.isPointerDownInside);
+
+  private onDismissButtonClick = (): void => this.dismissDialog('dismiss-button');
+
+  private dismissDialog = (reason: SheetDismissEventDetail['reason']): void => {
+    this.dismiss.emit({ reason });
   };
 }

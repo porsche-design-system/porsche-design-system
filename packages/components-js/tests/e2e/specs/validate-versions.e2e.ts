@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   getConsoleWarnings,
   getOldLoaderScriptForPrefixes,
@@ -7,9 +8,8 @@ import {
   sleep,
 } from '../helpers';
 import pkg from '@porsche-design-system/components-js/package.json';
-import type { PorscheDesignSystem } from '@porsche-design-system/components';
 
-const version = pkg.version;
+const version = pkg.version as keyof typeof document.porscheDesignSystem;
 const VERSION_VALIDATION_TIMEOUT = 3000;
 
 test.beforeEach(({ page }) => {
@@ -28,7 +28,7 @@ test('should show warning about multiple different versions correctly', async ({
     }
   );
 
-  const porscheDesignSystem = await page.evaluate(() => document.porscheDesignSystem as PorscheDesignSystem);
+  const porscheDesignSystem = await page.evaluate(() => document.porscheDesignSystem);
 
   expect(porscheDesignSystem[version]).toBeDefined();
   expect(porscheDesignSystem['3.7.0']).toBeDefined();
@@ -40,7 +40,7 @@ test('should show warning about multiple different versions correctly', async ({
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
-  expect(versionWarning).toBeDefined();
+  assertDefined(versionWarning);
 
   const warningArgs = await Promise.all(versionWarning.args().map(async (arg) => await arg.evaluate((arg) => arg)));
 

@@ -1,4 +1,5 @@
 import { getHasConstructableStylesheetSupport } from '../../utils';
+import type { DialogDismissEventDetail } from '../../utils/dialog/dialog';
 import type { Backdrop } from '../common/dialog-base/dialog-base-styles';
 
 export const FLYOUT_BACKGROUNDS = ['canvas', 'surface'] as const;
@@ -15,6 +16,7 @@ export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 
 export type FlyoutMotionVisibleEndEventDetail = TransitionEvent;
 export type FlyoutMotionHiddenEndEventDetail = TransitionEvent;
+export type FlyoutDismissEventDetail = DialogDismissEventDetail;
 
 export type FlyoutBackdrop = Backdrop;
 
@@ -32,7 +34,7 @@ export const addStickyTopCssVarStyleSheet = (host: HTMLElement): void => {
   if (getHasConstructableStylesheetSupport()) {
     stickyTopCssVarStyleSheetMap.set(host, new CSSStyleSheet());
     // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
-    host.shadowRoot.adoptedStyleSheets.push(stickyTopCssVarStyleSheetMap.get(host));
+    (host.shadowRoot.adoptedStyleSheets as CSSStyleSheet[]).push(stickyTopCssVarStyleSheetMap.get(host));
     updateStickyTopCssVarStyleSheet(host, 0);
   }
 };

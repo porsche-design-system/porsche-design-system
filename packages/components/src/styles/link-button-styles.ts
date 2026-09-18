@@ -1,21 +1,9 @@
-import type { Styles } from 'jss';
-import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant } from '../types';
-import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
-import {
-  addImportantToEachRule,
-  addImportantToRule,
-  forcedColorsMediaQuery,
-  getFocusBaseStyles,
-  getHiddenTextJssStyle,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from './';
 import {
   blurFrosted,
   colorCanvas,
   colorContrastHigh,
+  colorError,
+  colorErrorMedium,
   colorFrosted,
   colorFrostedStrong,
   colorPrimary,
@@ -28,26 +16,55 @@ import {
   ref,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
+import type { Styles } from 'jss';
+import type { ButtonVariant } from '../components/button/button-utils';
+import type { LinkVariant } from '../components/link/link-utils';
+import type { BreakpointCustomizable, LinkButtonIconName } from '../types';
+import { buildResponsiveBooleanStyles, hasVisibleIcon, isTruthyForAnyBreakpoint, mergeDeep } from '../utils';
+import {
+  addImportantToEachRule,
+  addImportantToRule,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
+  getHiddenTextJssStyle,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from './';
 
 type Colors = {
   textColor: string;
+  textColorHover: string;
   backgroundColor: string;
   backgroundColorHover: string;
 };
 
-const getVariantColors = (variant: LinkButtonVariant): Colors => {
+const getVariantColors = (
+  variant: LinkVariant | ButtonVariant,
+  cssVariableBackground: string,
+  cssVariableForeground: string
+): Colors => {
   const colors: {
-    [v in LinkButtonVariant]: Colors;
+    [v in LinkVariant | ButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: ref(colorCanvas),
-      backgroundColor: ref(colorPrimary),
-      backgroundColorHover: ref(colorContrastHigh),
+      textColor: ref(cssVariableForeground, ref(colorCanvas)),
+      textColorHover: ref(cssVariableForeground, ref(colorCanvas)),
+      backgroundColor: ref(cssVariableBackground, ref(colorPrimary)),
+      backgroundColorHover: ref(cssVariableBackground, ref(colorContrastHigh)),
     },
     secondary: {
-      textColor: ref(colorPrimary),
-      backgroundColor: ref(colorFrostedStrong),
-      backgroundColorHover: ref(colorFrosted),
+      textColor: ref(cssVariableForeground, ref(colorPrimary)),
+      textColorHover: ref(cssVariableForeground, ref(colorPrimary)),
+      backgroundColor: ref(cssVariableBackground, ref(colorFrostedStrong)),
+      backgroundColorHover: ref(cssVariableBackground, ref(colorFrosted)),
+    },
+    destructive: {
+      textColor: ref(cssVariableForeground, ref(colorCanvas)),
+      textColorHover: ref(cssVariableForeground, ref(colorPrimary)),
+      backgroundColor: ref(cssVariableBackground, ref(colorError)),
+      backgroundColorHover: ref(cssVariableBackground, ref(colorErrorMedium)),
     },
   };
 
@@ -57,16 +74,26 @@ const getVariantColors = (variant: LinkButtonVariant): Colors => {
 export const getLinkButtonStyles = (
   icon: LinkButtonIconName,
   iconSource: string,
-  variant: LinkButtonVariant,
+  variant: LinkVariant | ButtonVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
   isCompact: BreakpointCustomizable<boolean>,
-  cssVariableInternalScaling: string
+  cssVariableInternalScaling: string,
+  cssVariableBackground: string,
+  cssVariableForeground: string,
+  cssVarPaddingInline: string,
+  cssVarPaddingBlock: string,
+  cssVarGap: string,
+  cssVarRadius: string
 ): Styles => {
-  const { textColor, backgroundColor, backgroundColorHover } = getVariantColors(variant);
+  const { textColor, textColorHover, backgroundColor, backgroundColorHover } = getVariantColors(
+    variant,
+    cssVariableBackground,
+    cssVariableForeground
+  );
 
-  const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
+  const hasIcon = hasVisibleIcon(icon, iconSource) || isTruthyForAnyBreakpoint(hideLabel);
 
   const paddingBlock = `calc(28px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 6px)`;
   const paddingInline = `calc(33.6px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 16px)`;
@@ -79,12 +106,14 @@ export const getLinkButtonStyles = (
         display: 'inline-block',
         verticalAlign: 'top',
         ...mergeDeep(
-          buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
+          buildResponsiveBooleanStyles(isCompact, (compactValue: boolean) => ({
             [`${cssVariableInternalScaling}`]: compactValue ? 0.64285714 : 1,
             '--_p-link-button-a': compactValue ? ref(radiusLg) : ref(radiusXl),
           })),
-          buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-            borderRadius: addImportantToRule(hideLabelValue ? ref(radiusFull) : ref('--_p-link-button-a')),
+          buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
+            borderRadius: addImportantToRule(
+              ref(cssVarRadius, hideLabelValue ? ref(radiusFull) : ref('--_p-link-button-a'))
+            ),
           }))
         ),
         ...addImportantToEachRule({
@@ -109,9 +138,9 @@ export const getLinkButtonStyles = (
       color: textColor,
       cursor: 'pointer',
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-      ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-        padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
-        gap: hideLabelValue ? 0 : gap,
+      ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
+        padding: `${ref(cssVarPaddingBlock, paddingBlock)} ${ref(cssVarPaddingInline, hideLabelValue ? paddingBlock : paddingInline)}`,
+        gap: ref(cssVarGap, hideLabelValue ? 0 : gap),
       })),
       ...forcedColorsMediaQuery({
         forcedColorAdjust: 'none',
@@ -129,6 +158,7 @@ export const getLinkButtonStyles = (
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover': {
+            color: textColorHover,
             backgroundColor: backgroundColorHover,
             ...forcedColorsMediaQuery({
               background: 'Canvas',
@@ -136,13 +166,13 @@ export const getLinkButtonStyles = (
           },
         })),
     },
-    label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
+    label: buildResponsiveBooleanStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {
       icon: {
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
         width: ref(leadingNormal), // ensure space is already reserved until icon component is loaded (ssr)
         height: ref(leadingNormal), // ensure space is already reserved until icon component is loaded (ssr)
-        ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+        ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
           marginInlineStart: hideLabelValue ? 0 : iconMarginInlineStart, // compensate white space of svg icon and optimize visual alignment
         })),
       },

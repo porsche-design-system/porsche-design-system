@@ -8,7 +8,9 @@ import type {
   VanillaExtractToken,
   VanillaExtractUtility,
 } from '../vanillaExtractMeta';
-import { type VanillaExtractKind, kindOf, vanillaExtractMeta } from '../vanillaExtractMeta';
+import { kindOf, vanillaExtractMeta } from '../vanillaExtractMeta';
+
+type VanillaExtractKind = 'token' | 'utility';
 
 /**
  * Markdown serializer for the Vanilla Extract styling solution, driven by the single source of truth

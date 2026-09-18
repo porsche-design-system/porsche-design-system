@@ -392,6 +392,11 @@ export const sitemap: Routes = {
             path: '/developing/vue/form',
             type: 'TAB',
           },
+          testing: {
+            name: 'Testing',
+            path: '/developing/vue/testing',
+            type: 'TAB',
+          },
           advanced: {
             name: 'Advanced',
             path: '/developing/vue/advanced',
@@ -436,6 +441,11 @@ export const sitemap: Routes = {
       knowledge: {
         name: 'Knowledge',
         path: '/skills/knowledge',
+        type: 'PAGE',
+      },
+      'audit-deprecations': {
+        name: 'Audit Deprecations',
+        path: '/skills/audit-deprecations',
         type: 'PAGE',
       },
     },

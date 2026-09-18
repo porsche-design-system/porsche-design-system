@@ -21,5 +21,8 @@ export const setProperty = async <T>(
   key: string,
   value: string | boolean | number | T
 ): Promise<void> => {
-  await element.evaluate((el, { key, value }) => (el[key] = value), { key, value } as any);
+  await element.evaluate((el, { key, value }) => ((el as unknown as Record<string, unknown>)[key] = value), {
+    key,
+    value,
+  });
 };

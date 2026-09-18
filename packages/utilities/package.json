@@ -6,6 +6,8 @@
   "scripts": {
     "build": "npm run build:ag-grid",
     "build:ag-grid": "npm run build --workspace=@porsche-design-system/ag-grid",
+    "typecheck": "npm run typecheck:ag-grid",
+    "typecheck:ag-grid": "npm run typecheck --workspace=@porsche-design-system/ag-grid",
     "test": "npm run test:unit",
     "test:unit": "npm run test:unit:ag-grid",
     "test:unit:ag-grid": "npm run test --workspace=@porsche-design-system/ag-grid",

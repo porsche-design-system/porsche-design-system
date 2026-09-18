@@ -1,0 +1,11 @@
+{
+  "//": "The normal setup for this folder allows Node features, but `library-entry` ships to browsers, so this file removes that allowance. It also widens the folder the checker treats as the project root, so it can read a sibling package's source without reporting an error.",
+  "extends": ["./tsconfig.library-entry.json", "shared/tsconfig.paths.json"],
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": "..",
+    "types": []
+  },
+  "include": ["library-entry"],
+  "exclude": ["**/*.spec.ts"]
+}

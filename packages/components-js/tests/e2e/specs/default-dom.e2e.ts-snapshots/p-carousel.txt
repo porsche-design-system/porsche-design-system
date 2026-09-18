@@ -10,8 +10,6 @@
   <div
     class="splide__track splide__track--slide splide__track--ltr"
     id="splide-track"
-    aria-live="polite"
-    aria-atomic="true"
     style="padding-left: 0px; padding-right: 0px"
   >
     <div
@@ -22,3 +20,4 @@
     ></div>
   </div>
 </div>
+<div class="slide-status" aria-live="polite" aria-atomic="true"></div>

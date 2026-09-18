@@ -31,7 +31,8 @@
     "build:font-face": "npm run typecheck && tsx scripts/buildFontFace.ts",
     "build:lib": "rollup -c",
     "typecheck": "tsc --noEmit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
@@ -40,9 +41,9 @@
     "@rollup/plugin-typescript": "^12.3.0",
     "change-case": "^5.4.4",
     "jss": "^10.10.0",
-    "rollup": "^4.62.4",
+    "rollup": "^4.63.2",
     "rollup-plugin-dts": "^6.5.1",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3"
   },
   "volta": {

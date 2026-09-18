@@ -37,7 +37,7 @@ const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
 const initBasicDrilldown = (
   page: Page,
-  drilldownProps?: Components.PDrilldown,
+  drilldownProps: Components.PDrilldown,
   items?: {
     amount?: number;
     content?: string[];
@@ -214,7 +214,9 @@ test.describe('dismiss event', () => {
     await dismissBtn.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'dismiss-button' }]);
   });
 
   test('should be emitted when pressing ESC', async ({ page }) => {
@@ -223,7 +225,9 @@ test.describe('dismiss event', () => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'escape' }]);
   });
 
   test('should be emitted when clicking backdrop', async ({ page }) => {
@@ -236,7 +240,9 @@ test.describe('dismiss event', () => {
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
 
     await page.mouse.up();
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter, 'after mouse up').toBe(1);
+    expect(details).toEqual([{ reason: 'backdrop' }]);
   });
 
   test('should not be emitted when clicking within dialog', async ({ page }) => {
@@ -379,7 +385,9 @@ test.describe('focus behavior', () => {
 
     await page.evaluate(() => {
       const flyout: any = document.querySelector('p-drilldown');
-      document.getElementById('btn-open').addEventListener('click', () => {
+      const btnOpen = document.getElementById('btn-open');
+      if (!btnOpen) throw new Error('#btn-open not found');
+      btnOpen.addEventListener('click', () => {
         flyout.open = true;
       });
       flyout.addEventListener('dismiss', () => {
@@ -461,7 +469,9 @@ test.describe('scroll lock', () => {
     expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
 
     await page.evaluate(() => {
-      document.querySelector('p-drilldown').remove();
+      const drilldown = document.querySelector('p-drilldown');
+      if (!drilldown) throw new Error('p-drilldown not found');
+      drilldown.remove();
     });
     await waitForStencilLifecycle(page);
 
@@ -564,7 +574,9 @@ test.describe('second level', () => {
     await expect(getDrilldownItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
 
     await host.evaluate((el) => {
-      el.removeChild(el.lastElementChild);
+      const lastElementChild = el.lastElementChild;
+      if (!lastElementChild) throw new Error('no last element child');
+      el.removeChild(lastElementChild);
     });
     await waitForStencilLifecycle(page);
 

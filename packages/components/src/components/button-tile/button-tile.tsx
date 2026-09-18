@@ -22,7 +22,7 @@ import {
   TILE_WEIGHTS,
   validateProps,
 } from '../../utils';
-import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
+import { getParsedTileCompact, sharedTilePropTypes } from '../link-tile/link-tile-utils';
 import { getComponentCss } from './button-tile-styles';
 import type {
   ButtonTileAlign,
@@ -123,8 +123,7 @@ export class ButtonTile implements ITileProps {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    // TODO: BreakpointCustomizable breaks stencils boolean conversion from string to boolean
-    const parsedCompact = this.compact === 'true' ? true : this.compact === 'false' ? false : this.compact;
+    const parsedCompact = getParsedTileCompact(this.compact);
 
     attachComponentCss(
       this.host,

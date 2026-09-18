@@ -16,6 +16,7 @@ import { getComponentCss } from './drilldown-styles';
 import {
   DRILLDOWN_ARIA_ATTRIBUTES,
   type DrilldownAriaAttribute,
+  type DrilldownDismissEventDetail,
   type DrilldownUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
   type Item,
@@ -53,8 +54,8 @@ export class Drilldown {
   /** Sets ARIA attributes on the drilldown dialog element for improved screen reader accessibility. */
   @Prop() public aria?: SelectedAriaAttributes<DrilldownAriaAttribute>;
 
-  /** Emitted when the user closes the drilldown via the close button or Escape key. */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+  /** Emitted when the user closes the drilldown via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<DrilldownDismissEventDetail>;
 
   /** Emitted when the active navigation level changes, with the new `activeIdentifier` in the event detail. */
   @Event({ bubbles: false }) public update?: EventEmitter<DrilldownUpdateEventDetail>;
@@ -158,7 +159,7 @@ export class Drilldown {
             compact={true}
             variant="secondary"
             hideLabel={true}
-            onClick={this.dismissDialog}
+            onClick={this.onDismissButtonClick}
           >
             Dismiss drilldown
           </PrefixedTagNames.pButton>
@@ -168,7 +169,7 @@ export class Drilldown {
             icon="close"
             variant="secondary"
             hideLabel={true}
-            onClick={this.dismissDialog}
+            onClick={this.onDismissButtonClick}
           >
             Dismiss drilldown
           </PrefixedTagNames.pButton>
@@ -192,7 +193,7 @@ export class Drilldown {
     this.isPointerDownInside = false;
     if (!startedInside && e.target.tagName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
-      this.dismissDialog();
+      this.dismissDialog('backdrop');
     }
   };
 
@@ -204,11 +205,13 @@ export class Drilldown {
   private onCancelDialog = (e: Event): void => {
     // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
     e.preventDefault();
-    this.dismissDialog();
+    this.dismissDialog('escape');
   };
 
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
+  private onDismissButtonClick = (): void => this.dismissDialog('dismiss-button');
+
+  private dismissDialog = (reason: DrilldownDismissEventDetail['reason']): void => {
+    this.dismiss.emit({ reason });
   };
 
   private setDialogVisibility(isOpen: boolean): void {

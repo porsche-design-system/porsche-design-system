@@ -1,0 +1,14 @@
+🧪 **Experimental**: This example demonstrates the technical possibilities of styling around the button host element. It
+is **not approved by brand compliance** and must not be treated as an official AI button style.
+
+The animated gradient glow is built with two decorative pseudo-elements (`::before` and `::after`) on the `p-button`
+host. They sit behind the button via `z-index: -1` and reuse its shape with `border-radius: inherit`, so the button's
+own shadow DOM, focus ring and keyboard behavior stay untouched.
+
+Keep the following accessibility constraints in mind when adopting such a pattern:
+
+- The animation is disabled via `@media (prefers-reduced-motion: reduce)` for users who requested reduced motion.
+- The decorative pseudo-elements are hidden via `@media (forced-colors: active)`, since the gradient carries no meaning
+  and would otherwise be flattened to a system color in High Contrast Mode.
+- The label and icon colors are overridden with tokens that keep sufficient contrast in both color schemes — never rely
+  on the glow to convey state or meaning.

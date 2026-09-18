@@ -1,4 +1,4 @@
 import { fontWeightNormal as _fontWeightRegular } from '@porsche-design-system/tokens';
 
-/** @deprecated since v4.0.0, will be removed with next major release. Use fontWeightNormal instead. */
+/** @deprecated Use {@link fontWeightNormal} instead. This API will be removed with the next major release. */
 export const fontWeightRegular = _fontWeightRegular;

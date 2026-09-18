@@ -2,11 +2,70 @@ import {
   getByLabelTextShadowed,
   getByRoleShadowed,
   getByTextShadowed,
+  screen,
 } from '@porsche-design-system/components-js/testing';
 import '@porsche-design-system/components-js/jsdom-polyfill';
 import { componentsReady } from '@porsche-design-system/components-js';
+import * as pdsTesting from '@porsche-design-system/components-js/testing';
 import { fireEvent, getByRole, waitFor } from '@testing-library/dom';
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+
+const describeExports = (module: object): string[] =>
+  Object.entries(module)
+    .map(([name, value]) => `${name}: ${typeof value}`)
+    .sort();
+
+describe('export surface', () => {
+  // Everything re-exported from shadow-dom-testing-library, so a dependency update shows up as a reviewable diff
+  // instead of a silent change. `screen` is expanded too because it carries its own document-bound queries.
+  it('should match snapshot', () => {
+    expect({ exports: describeExports(pdsTesting), screen: describeExports(screen) }).toMatchSnapshot();
+  });
+
+  it('should keep the three deprecated aliases', () => {
+    expect(typeof pdsTesting.getByRoleShadowed).toBe('function');
+    expect(typeof pdsTesting.getByLabelTextShadowed).toBe('function');
+    expect(typeof pdsTesting.getByTextShadowed).toBe('function');
+  });
+});
+
+describe('optional container as first argument', () => {
+  it('should scope getByRoleShadowed to the given container', async () => {
+    document.body.innerHTML = `<div id="a"><p-button>A</p-button></div><div id="b"><p-button>B</p-button></div>`;
+    await componentsReady();
+
+    const containerB = document.getElementById('b') as HTMLElement;
+    expect(getByRoleShadowed(containerB, 'button')).toBeInTheDocument();
+    expect(() => getByRoleShadowed('button')).toThrow(/multiple/i);
+  });
+
+  it('should scope getByTextShadowed to the given container', async () => {
+    document.body.innerHTML = `<div id="a"><p-accordion><h3 slot="summary">Only here</h3><p>x</p></p-accordion></div><div id="b"></div>`;
+    await componentsReady();
+
+    const containerA = document.getElementById('a') as HTMLElement;
+    const containerB = document.getElementById('b') as HTMLElement;
+    expect(getByTextShadowed(containerA, 'Only here')).toBeInTheDocument();
+    expect(() => getByTextShadowed(containerB, 'Only here')).toThrow(/Unable to find/i);
+  });
+
+  it('should scope getByLabelTextShadowed to the given container and keep the element type generic', async () => {
+    document.body.innerHTML = `<div id="a"><p-input-text label="Message" name="n"></p-input-text></div>`;
+    await componentsReady();
+
+    const containerA = document.getElementById('a') as HTMLElement;
+    const el = getByLabelTextShadowed<HTMLInputElement>(containerA, 'Message');
+    expect(el).toBeInTheDocument();
+    expect(el.type).toBe('text');
+  });
+
+  it('should still default to the whole document when no container is passed', async () => {
+    document.body.innerHTML = `<p-button>Button</p-button>`;
+    await componentsReady();
+
+    expect(getByRoleShadowed('button')).toBeInTheDocument();
+  });
+});
 
 describe('getByRoleShadowed()', () => {
   it('should work for native button', async () => {

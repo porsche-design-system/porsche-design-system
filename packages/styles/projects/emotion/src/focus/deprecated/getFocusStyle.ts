@@ -18,7 +18,6 @@ const getFocusStyles = (borderRadius: Options['borderRadius'] = 'small') => {
         : borderRadius || borderRadiusSmall;
   return {
     // TODO: borderRadius should be removed from interface
-    // TODO: evaluate if '&::-moz-focus-inner': { border: 0 } is useful/needed for FF
     borderRadius: borderRadiusValue, // it's visually being reflected on both (when placed here), element and focus outline
   };
 };
@@ -37,7 +36,7 @@ const getFocusNestedStyles = (offset: Options['offset'] = '2px') => {
   } as const;
 };
 
-/** @deprecated since v4.0.0, will be removed with next major release. Use getFocusVisibleStyle instead. */
+/** @deprecated Use {@link getFocusVisibleStyle} instead. This API will be removed with the next major release. */
 export const getFocusStyle = (opts?: Options) => {
   const { borderRadius, offset } = opts || {};
   return {

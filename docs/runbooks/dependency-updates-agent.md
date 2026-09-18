@@ -25,15 +25,16 @@ mirroring [`.github/actions/install`](../../.github/actions/install/action.yml))
 
 ## Hard rules — never do these
 
-| ❌ Never                                                         | Why                                                                                                                 |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Run `npm audit fix` / `npm audit fix --force`                    | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`).                     |
-| Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                                     |
-| Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3). |
-| Edit `package-lock.json` by hand                                 | Regenerate it via `npm install` only.                                                                               |
-| Patch a missing native binding in a CI workflow step             | Masks an incomplete lockfile; regenerate it cleanly instead (step 9).                                               |
-| Upgrade held-back deps by selecting them in `npm run npm:update` | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3.      |
-| Push directly to `main`                                          | Always open a PR for human review.                                                                                  |
+| ❌ Never                                                                                     | Why                                                                                                                                    |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Run `npm audit fix` / `npm audit fix --force`                                                | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`).                                        |
+| Use `--legacy-peer-deps` or `--force`                                                        | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                                                        |
+| Edit dependency versions in any `package.json` by hand                                       | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3).                    |
+| Edit `package-lock.json` by hand                                                             | Regenerate it via `npm install` only.                                                                                                  |
+| Patch a missing native binding in a CI workflow step                                         | Masks an incomplete lockfile; regenerate it cleanly instead (step 9).                                                                  |
+| Upgrade held-back deps by selecting them in `npm run npm:update`                             | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3.                         |
+| Push directly to `main`                                                                      | Always open a PR for human review.                                                                                                     |
+| Bypass the release-age cooldown (`--min-release-age=0`, editing `.npmrc`/`.syncpackrc.json`) | Versions younger than 7 days are withheld on purpose as supply-chain protection (see `docs/dependencies.md` → _Release-age cooldown_). |
 
 ## Held-back dependencies (special handling)
 
@@ -81,7 +82,11 @@ npm install
 npm run npm:outdated
 ```
 
-This runs `syncpack update --check` and already excludes the held-back/internal packages.
+This runs `syncpack update --check` and already excludes the held-back/internal packages. It also withholds any release
+published less than **7 days** ago (`minimumReleaseAge: 10080` in [`.syncpackrc.json`](../../.syncpackrc.json)) — this
+is deliberate supply-chain protection, **do not lower or override it**. The same 7-day window applies to `npm install`
+via `min-release-age` in [`.npmrc`](../../.npmrc). A version withheld this week simply lands in next week's run. See
+`docs/dependencies.md` → _Release-age cooldown_.
 
 ### 3. Apply Angular framework migrations (after the syncpack version bump)
 
@@ -195,20 +200,34 @@ Then verify the lockfile is **complete**:
 npm run npm:verify-lock
 ```
 
-npm prunes platform-specific native bindings (`@oxc-parser/binding-*`, `@esbuild/*`, `@img/sharp-*`, `@next/swc-*`, …)
-from the lockfile during incremental installs ([npm/cli#4828](https://github.com/npm/cli/issues/4828)). `npm ci` on
-Linux CI then skips them silently and a build fails later with `Cannot find native binding`. If the check fails, do a
-**full** clean regeneration (this normally restores the complete set):
+npm prunes platform-specific native bindings (`@oxc-parser/binding-*`, `@esbuild/*`, `@img/sharp-*`, `@next/swc-*`,
+`@rolldown/binding-*`, …) from the lockfile during incremental installs
+([npm/cli#4828](https://github.com/npm/cli/issues/4828)). `npm ci` on Linux CI then skips them silently and a build
+fails later with `Cannot find native binding`. If the check fails, do a **full** clean regeneration (this normally
+restores the complete set):
 
 ```bash
-rm -rf package-lock.json node_modules
+rm -f package-lock.json
+npm run npm:remove     # deletes node_modules in the root AND in every workspace
 npm install
 npm run npm:verify-lock
 ```
 
-**Never** work around this by installing the missing binding in a CI step. If a clean regeneration still prunes
+Use `npm run npm:remove` rather than `rm -rf node_modules`: removing only the root `node_modules` leaves every
+`packages/*/node_modules` in place, npm reconciles against those, and the bindings stay pruned. Only a full removal
+makes the resolve genuinely clean.
+
+**Never** work around this by installing the missing binding in a CI step. If a **full** clean regeneration still prunes
 bindings, declare them explicitly as `optionalDependencies` in the affected workspace (same approach as `@next/swc-*`) —
 see `docs/dependencies.md` → _Platform-specific native bindings in the lockfile_.
+
+Then confirm no dependency ended up in a directory npm never creates — see `docs/dependencies.md` → _Nested project
+workspaces never get a `node_modules` directory_. `npm install` and `npm ci` both stay silent about this, so check
+explicitly:
+
+```bash
+npm ls 2>&1 | grep 'UNMET DEPENDENCY'   # must print nothing
+```
 
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).
@@ -281,6 +300,23 @@ Then run the **additional suites relevant to the changed packages** (mirror what
   run, since these can break any package.
 - Where feasible, run the relevant `test:e2e:*` / `test:a11y:*` suites for the affected area.
 
+> **Match the build mode to the suite before calling a failure a regression.** A few suites assert against the CDN base
+> URL baked into the build, so they only pass against one of the two modes:
+>
+> | Suite                                        | Needs                         | Wrong-mode symptom                                           |
+> | -------------------------------------------- | ----------------------------- | ------------------------------------------------------------ |
+> | `test:unit:components-js` (`chunks.spec.ts`) | `npm run build-prod`          | chunk-size mismatches, `should not contain localhost`        |
+> | `test:unit:stylesheets`                      | `npm run build-prod`          | snapshot diff, only `localhost:3001` vs `cdn.ui.porsche.com` |
+> | `test:unit:components-react` (SSR wrapper)   | `npm run build` (development) | snapshot diff, only `cdn.ui.porsche.com` vs `localhost:3001` |
+> | `test:unit:components-angular:karma-ci`      | `npm run build` (development) | all specs time out after 5000 ms                             |
+>
+> CI hits both because its test jobs restore the `build-development` artifact while the prod suites run off the
+> production artifact. Locally the two modes are mutually exclusive, so rebuild in the right mode (for stylesheets,
+> `npm run build:stylesheets-prod` is enough) instead of "fixing" a dependency.
+
+Note that `npm run test:unit:components-angular` starts karma in **watch** mode and never exits — use
+`npm run test:unit:components-angular:vitest` and `npm run test:unit:components-angular:karma-ci` instead.
+
 **If any check fails:**
 
 1. Diagnose whether the failure is caused by the dependency bump.
@@ -316,9 +352,8 @@ Keep all of these on the **same** version (npm `X.Y.Z` ↔ image `vX.Y.Z-jammy`)
 1. The exact npm pin in the root [`package.json`](../../package.json): `"@playwright/test": "X.Y.Z"`.
 2. Every Docker image reference `mcr.microsoft.com/playwright:vX.Y.Z-jammy` in
    [`docker-compose.yml`](../../docker-compose.yml) and the workflows under `.github/workflows/` (the `image:` inputs in
-   [`contribution.yml`](../../.github/workflows/contribution.yml); there is also a commented example in
-   `code-scanning.yml`). A mismatch between the installed Playwright and the Docker image makes CI fail, so keep them
-   aligned.
+   [`contribution.yml`](../../.github/workflows/contribution.yml)). A mismatch between the installed Playwright and the
+   Docker image makes CI fail, so keep them aligned.
 
 ```bash
 # 1. Bump the exact npm pin in root package.json ("@playwright/test": "X.Y.Z"), then:

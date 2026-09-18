@@ -24,7 +24,13 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import type { AlignLabel, BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
+import {
+  buildResponsiveBooleanStyles,
+  buildResponsiveStyles,
+  getCss,
+  isDisabledOrLoading,
+  mergeDeep,
+} from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const cssVarInternalSwitchScaling = '--_p-switch-a';
@@ -74,7 +80,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         [`${cssVarInternalSwitchScaling}`]: isCompact ? 0.64285714 : 1,
-        ...buildResponsiveStyles(isStretched, (stretchValue: boolean) => ({
+        ...buildResponsiveBooleanStyles(isStretched, (stretchValue: boolean) => ({
           display: stretchValue ? 'flex' : 'inline-flex',
         })),
         ...addImportantToEachRule({
@@ -83,7 +89,7 @@ export const getComponentCss = (
           font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct gap definition based on ex-unit
           gap,
           ...hostHiddenStyles,
-          ...buildResponsiveStyles(isStretched, (stretchValue: boolean) => ({
+          ...buildResponsiveBooleanStyles(isStretched, (stretchValue: boolean) => ({
             justifyContent: stretchValue ? 'space-between' : 'flex-start',
             width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
             ...(!stretchValue && { verticalAlign: 'top' }),
@@ -140,7 +146,7 @@ export const getComponentCss = (
           buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
             order: alignLabelValue === 'start' ? -1 : 0,
           })),
-          buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
+          buildResponsiveBooleanStyles(hideLabel, (isHidden: boolean) =>
             getHiddenTextJssStyle(isHidden, {
               paddingTop: labelPaddingTop,
             })

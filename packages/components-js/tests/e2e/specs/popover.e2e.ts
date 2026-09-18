@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import type { PopoverDirection } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -238,7 +239,11 @@ test.describe('mouse behavior', () => {
       await strongEl.click({ clickCount: 2 });
 
       // Some browsers (e.g. Firefox) include surrounding whitespace in the double-click selection, so compare trimmed.
-      const selection = await page.evaluate(() => window.getSelection().toString());
+      const selection = await page.evaluate(() => {
+        const selection = window.getSelection();
+        if (!selection) throw new Error('no selection');
+        return selection.toString();
+      });
       expect(selection.trim()).toBe('strong');
     });
 
@@ -253,6 +258,7 @@ test.describe('mouse behavior', () => {
       // Press inside the panel content, drag outside the popover, and release. The resulting `click` retargets to an
       // outside ancestor, but must not dismiss because the gesture started inside.
       const strongBox = await page.locator('strong').boundingBox();
+      assertDefined(strongBox);
       await page.mouse.move(strongBox.x + 2, strongBox.y + strongBox.height / 2);
       await page.mouse.down();
       await page.mouse.move(strongBox.x + 2, strongBox.y + strongBox.height / 2 + 300, { steps: 5 });
@@ -336,7 +342,11 @@ test.describe('mouse behavior', () => {
       await strongEl.click({ clickCount: 2 });
 
       // Some browsers (e.g. Firefox) include surrounding whitespace in the double-click selection, so compare trimmed.
-      const selection = await page.evaluate(() => window.getSelection().toString());
+      const selection = await page.evaluate(() => {
+        const selection = window.getSelection();
+        if (!selection) throw new Error('no selection');
+        return selection.toString();
+      });
       expect(selection.trim()).toBe('strong');
     });
   });
@@ -534,7 +544,9 @@ test.describe('dynamic content change', () => {
       const slottedButton = document.createElement('button');
       slottedButton.slot = 'button';
       slottedButton.textContent = 'Dynamic Button';
-      document.querySelector('p-popover').appendChild(slottedButton);
+      const popover = document.querySelector('p-popover');
+      if (!popover) throw new Error('p-popover not found');
+      popover.appendChild(slottedButton);
     });
 
     // Wait for the component to re-render: the default info button is replaced by the slotted button slot,
@@ -738,6 +750,9 @@ test.describe('controlled mode', () => {
       </p-popover>`
     );
     await setProperty(getHost(page), 'open', open);
+    // Wait for the render that `open` triggers before returning. The document-level dismiss listeners are attached
+    // during that render, so clicking earlier races them and the interaction is silently missed.
+    await expect(getPopover(page)).toBeVisible({ visible: open });
   };
 
   test('should be hidden when open prop is false', async ({ page }) => {
@@ -779,7 +794,9 @@ test.describe('controlled mode', () => {
 
       await page.mouse.click(300, 300);
 
-      expect((await getEventSummary(host, 'dismiss')).counter, 'dismiss after outside click').toBe(1);
+      const { counter, details } = await getEventSummary(host, 'dismiss');
+      expect(counter, 'dismiss after outside click').toBe(1);
+      expect(details).toEqual([{ reason: 'outside-click' }]);
       // popover stays visible because the consumer owns `open` and hasn't updated it yet
       await expect(getPopover(page)).toBeVisible();
     });
@@ -803,10 +820,37 @@ test.describe('controlled mode', () => {
 
       await page.locator('#outside').click();
 
-      expect(
-        (await getEventSummary(host, 'dismiss')).counter,
-        'dismiss after clicking an outside focusable element'
-      ).toBe(1);
+      const { counter, details } = await getEventSummary(host, 'dismiss');
+      expect(counter, 'dismiss after clicking an outside focusable element').toBe(1);
+      // the surviving path is the outside click, which proves `onFocusout` deferred rather than emitting its own reason
+      expect(details).toEqual([{ reason: 'outside-click' }]);
+      // popover stays visible because the consumer owns `open` and hasn't updated it yet
+      await expect(getPopover(page)).toBeVisible();
+    });
+
+    test('should emit dismiss event with reason focus-out when focus tabs out of the popover', async ({ page }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-popover>
+          <button slot="button">Some Button</button>
+          Some Popover Content
+        </p-popover>
+        <button id="outside">Outside Button</button>`
+      );
+      const host = getHost(page);
+      await setProperty(host, 'open', true);
+      await expect(getPopover(page)).toBeVisible();
+      await getButton(page).focus();
+      await addEventListener(host, 'dismiss');
+
+      // Keyboard-only path: Tab moves focus past the panel content (which holds nothing focusable) to the outside
+      // button, so `onFocusout` dismisses without any pointer interaction having taken place.
+      await page.keyboard.press('Tab');
+      await expect(page.locator('#outside')).toBeFocused();
+
+      const { counter, details } = await getEventSummary(host, 'dismiss');
+      expect(counter, 'dismiss after tabbing out').toBe(1);
+      expect(details).toEqual([{ reason: 'focus-out' }]);
       // popover stays visible because the consumer owns `open` and hasn't updated it yet
       await expect(getPopover(page)).toBeVisible();
     });
@@ -818,7 +862,9 @@ test.describe('controlled mode', () => {
 
       await page.keyboard.press('Escape');
 
-      expect((await getEventSummary(host, 'dismiss')).counter, 'dismiss after Escape').toBe(1);
+      const { counter, details } = await getEventSummary(host, 'dismiss');
+      expect(counter, 'dismiss after Escape').toBe(1);
+      expect(details).toEqual([{ reason: 'escape' }]);
     });
 
     test('should return focus to the slotted trigger on Escape when open', async ({ page }) => {
@@ -857,7 +903,10 @@ test.describe('controlled mode', () => {
       await page.locator('p-popover.second button').click();
       await waitForStencilLifecycle(page);
 
-      expect((await getEventSummary(firstHost, 'dismiss')).counter, 'dismiss after second popover opens').toBe(1);
+      const { counter, details } = await getEventSummary(firstHost, 'dismiss');
+      expect(counter, 'dismiss after second popover opens').toBe(1);
+      // the second popover's trigger click lands outside the first, so it travels the outside-click path
+      expect(details).toEqual([{ reason: 'outside-click' }]);
       await expect(page.locator('p-popover.second [popover]'), 'second popover visible').toBeVisible();
       // first popover stays visible because the consumer owns `open` and hasn't updated it yet
       await expect(page.locator('p-popover.first [popover]'), 'first popover still visible').toBeVisible();
@@ -884,7 +933,9 @@ test.describe('viewport clamping', () => {
     await expect(popover).toBeVisible();
 
     const box = await popover.boundingBox();
+    assertDefined(box);
     const viewport = page.viewportSize();
+    assertDefined(viewport);
 
     // The panel must never exceed the viewport minus the safe zone on both edges (default `100dvw/dvh - 2 * safeZone`).
     expect(box.width, 'panel width within viewport safe zone').toBeLessThanOrEqual(
