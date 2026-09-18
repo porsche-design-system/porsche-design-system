@@ -25,15 +25,16 @@ mirroring [`.github/actions/install`](../../.github/actions/install/action.yml))
 
 ## Hard rules — never do these
 
-| ❌ Never                                                         | Why                                                                                                                 |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Run `npm audit fix` / `npm audit fix --force`                    | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`).                     |
-| Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                                     |
-| Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3). |
-| Edit `package-lock.json` by hand                                 | Regenerate it via `npm install` only.                                                                               |
-| Patch a missing native binding in a CI workflow step             | Masks an incomplete lockfile; regenerate it cleanly instead (step 9).                                               |
-| Upgrade held-back deps by selecting them in `npm run npm:update` | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3.      |
-| Push directly to `main`                                          | Always open a PR for human review.                                                                                  |
+| ❌ Never                                                                                     | Why                                                                                                                                    |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Run `npm audit fix` / `npm audit fix --force`                                                | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`).                                        |
+| Use `--legacy-peer-deps` or `--force`                                                        | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                                                        |
+| Edit dependency versions in any `package.json` by hand                                       | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3).                    |
+| Edit `package-lock.json` by hand                                                             | Regenerate it via `npm install` only.                                                                                                  |
+| Patch a missing native binding in a CI workflow step                                         | Masks an incomplete lockfile; regenerate it cleanly instead (step 9).                                                                  |
+| Upgrade held-back deps by selecting them in `npm run npm:update`                             | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3.                         |
+| Push directly to `main`                                                                      | Always open a PR for human review.                                                                                                     |
+| Bypass the release-age cooldown (`--min-release-age=0`, editing `.npmrc`/`.syncpackrc.json`) | Versions younger than 7 days are withheld on purpose as supply-chain protection (see `docs/dependencies.md` → _Release-age cooldown_). |
 
 ## Held-back dependencies (special handling)
 
@@ -81,7 +82,11 @@ npm install
 npm run npm:outdated
 ```
 
-This runs `syncpack update --check` and already excludes the held-back/internal packages.
+This runs `syncpack update --check` and already excludes the held-back/internal packages. It also withholds any release
+published less than **7 days** ago (`minimumReleaseAge: 10080` in [`.syncpackrc.json`](../../.syncpackrc.json)) — this
+is deliberate supply-chain protection, **do not lower or override it**. The same 7-day window applies to `npm install`
+via `min-release-age` in [`.npmrc`](../../.npmrc). A version withheld this week simply lands in next week's run. See
+`docs/dependencies.md` → _Release-age cooldown_.
 
 ### 3. Apply Angular framework migrations (after the syncpack version bump)
 
@@ -347,9 +352,8 @@ Keep all of these on the **same** version (npm `X.Y.Z` ↔ image `vX.Y.Z-jammy`)
 1. The exact npm pin in the root [`package.json`](../../package.json): `"@playwright/test": "X.Y.Z"`.
 2. Every Docker image reference `mcr.microsoft.com/playwright:vX.Y.Z-jammy` in
    [`docker-compose.yml`](../../docker-compose.yml) and the workflows under `.github/workflows/` (the `image:` inputs in
-   [`contribution.yml`](../../.github/workflows/contribution.yml); there is also a commented example in
-   `code-scanning.yml`). A mismatch between the installed Playwright and the Docker image makes CI fail, so keep them
-   aligned.
+   [`contribution.yml`](../../.github/workflows/contribution.yml)). A mismatch between the installed Playwright and the
+   Docker image makes CI fail, so keep them aligned.
 
 ```bash
 # 1. Bump the exact npm pin in root package.json ("@playwright/test": "X.Y.Z"), then:

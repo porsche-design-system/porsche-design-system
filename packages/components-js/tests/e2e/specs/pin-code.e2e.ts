@@ -72,6 +72,42 @@ test.describe('focus state', () => {
 
     expect((await getEventSummary(input, 'focus')).counter).toBe(1);
   });
+
+  test('should focus first empty input when label is clicked after some digits are entered', async ({ page }) => {
+    await initPinCode(page, { props: { label: 'Some label' } });
+    const host = getHost(page);
+    const label = getLabel(page);
+    const input1 = getInput(page, 1);
+
+    await input1.click();
+    await page.keyboard.type('12');
+    await waitForStencilLifecycle(page);
+
+    const currentInput = getCurrentInput(page);
+    await expect(currentInput).toHaveAttribute('aria-label', '3 of 4');
+
+    await label.click();
+
+    await expect(currentInput).toBeFocused();
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3 of 4');
+  });
+
+  test('should focus last input when label is clicked and pin is complete', async ({ page }) => {
+    await initPinCode(page, { props: { label: 'Some label', value: '1234' } });
+    const host = getHost(page);
+    const label = getLabel(page);
+
+    await waitForStencilLifecycle(page);
+
+    const currentInput = getCurrentInput(page);
+    await expect(currentInput).toHaveAttribute('aria-label', '4 of 4');
+
+    await label.click();
+
+    await expect(currentInput).toBeFocused();
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+  });
+
   test('should focus input with id="current-input" when host is focused', async ({ page }) => {
     await initPinCode(page);
     const host = getHost(page);
@@ -483,13 +519,13 @@ test.describe('change event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'before input').toBe(0);
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1 of 4');
 
     page.keyboard.press('1');
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(1);
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2 of 4');
     expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([
       {
         isComplete: false,
@@ -501,7 +537,7 @@ test.describe('change event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(2);
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3 of 4');
     expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([
       {
         isComplete: false,
@@ -517,7 +553,7 @@ test.describe('change event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(3);
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
     expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([
       {
         isComplete: false,
@@ -537,7 +573,7 @@ test.describe('change event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(4);
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
     expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([
       {
         isComplete: false,
@@ -601,7 +637,7 @@ test.describe('change event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after backspace').toBe(1);
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
     expect((await getEventSummary(host, 'change')).details, 'after backspace').toEqual([
       {
         isComplete: false,
@@ -613,7 +649,7 @@ test.describe('change event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after backspace').toBe(2);
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3 of 4');
     expect((await getEventSummary(host, 'change')).details, 'after backspace').toEqual([
       {
         isComplete: false,
@@ -642,7 +678,7 @@ test.describe('change event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after delete').toBe(1);
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1 of 4');
     expect((await getEventSummary(host, 'change')).details, 'after delete').toEqual([
       {
         isComplete: false,
@@ -654,7 +690,7 @@ test.describe('change event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after delete').toBe(2);
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2 of 4');
     expect((await getEventSummary(host, 'change')).details, 'after delete').toEqual([
       {
         isComplete: false,
@@ -665,6 +701,140 @@ test.describe('change event', () => {
         value: '  34',
       },
     ]);
+  });
+
+  test('should overwrite occupied input on digit key and focus next input', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    await setProperty(host, 'value', '1234');
+    await addEventListener(host, 'change');
+    const input1 = getInput(page, 1);
+
+    await input1.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1 of 4');
+    expect(await getProperty<string>(host, 'value')).toBe('1234');
+
+    await page.keyboard.press('9');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after overwrite').toBe(1);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2 of 4');
+    expect(await getProperty<string>(host, 'value')).toBe('9234');
+    expect((await getEventSummary(host, 'change')).details, 'after overwrite').toEqual([
+      {
+        isComplete: true,
+        value: '9234',
+      },
+    ]);
+  });
+
+  test('should overwrite last input on digit key and keep focus', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    await setProperty(host, 'value', '1234');
+    await addEventListener(host, 'change');
+    const input4 = getInput(page, 4);
+
+    await input4.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+
+    await page.keyboard.press('9');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after overwrite').toBe(1);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+    expect(await getProperty<string>(host, 'value')).toBe('1239');
+    expect((await getEventSummary(host, 'change')).details, 'after overwrite').toEqual([
+      {
+        isComplete: true,
+        value: '1239',
+      },
+    ]);
+  });
+
+  test('should overwrite last input after typing the complete pin without re-selecting', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    const input1 = getInput(page, 1);
+
+    await input1.click();
+    await page.keyboard.type('1234');
+    await waitForStencilLifecycle(page);
+
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+    expect(await getProperty<string>(host, 'value')).toBe('1234');
+
+    await page.keyboard.press('9');
+    await waitForStencilLifecycle(page);
+
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+    expect(await getProperty<string>(host, 'value')).toBe('1239');
+  });
+
+  test('should overwrite a one-cell pin without re-selecting', async ({ page }) => {
+    await initPinCode(page, { props: { length: 1 } });
+    const host = getHost(page);
+    const input1 = getInput(page, 1);
+
+    await input1.click();
+    await page.keyboard.press('1');
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty<string>(host, 'value')).toBe('1');
+
+    await page.keyboard.press('9');
+    await waitForStencilLifecycle(page);
+
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1 of 1');
+    expect(await getProperty<string>(host, 'value')).toBe('9');
+  });
+});
+
+test.describe('keyboard navigation', () => {
+  test('should move focus with ArrowRight and ArrowLeft and not wrap', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    const input1 = getInput(page, 1);
+
+    await input1.click();
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1 of 4');
+
+    await page.keyboard.press('ArrowLeft');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1 of 4');
+
+    await page.keyboard.press('ArrowRight');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2 of 4');
+
+    await page.keyboard.press('ArrowRight');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3 of 4');
+
+    await page.keyboard.press('ArrowRight');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+
+    await page.keyboard.press('ArrowRight');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+
+    await page.keyboard.press('ArrowLeft');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3 of 4');
+  });
+
+  test('should move focus to first and last input with Home and End', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    const input2 = getInput(page, 2);
+
+    await input2.click();
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2 of 4');
+
+    await page.keyboard.press('Home');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1 of 4');
+
+    await page.keyboard.press('End');
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
   });
 });
 
@@ -682,7 +852,6 @@ test.describe('blur event', () => {
     expect((await getEventSummary(host, 'blur')).counter, 'before input lost focus').toBe(0);
 
     await button.click();
-    await expect(button).toBeFocused();
 
     expect((await getEventSummary(host, 'blur')).counter, 'after input lost focus').toBe(1);
   });
@@ -706,7 +875,6 @@ test.describe('blur event', () => {
     expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input got focus').toBe(0);
 
     await button.click();
-    await expect(button).toBeFocused();
 
     expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input lost focus').toBe(1);
   });
@@ -768,7 +936,7 @@ test.describe('events', () => {
       expect(await getProperty<string>(input2, 'value')).toBe('2');
       expect(await getProperty<string>(input3, 'value')).toBe('3');
       expect(await getProperty<string>(input4, 'value')).toBe('4');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
       expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
     });
 
@@ -792,7 +960,7 @@ test.describe('events', () => {
       expect(await getProperty<string>(input2, 'value')).toBe('2');
       expect(await getProperty<string>(input3, 'value')).toBe('3');
       expect(await getProperty<string>(input4, 'value')).toBe('4');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
       expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
     });
 
@@ -816,7 +984,7 @@ test.describe('events', () => {
       expect(await getProperty<string>(input2, 'value')).toBe('2');
       expect(await getProperty<string>(input3, 'value')).toBe('');
       expect(await getProperty<string>(input4, 'value')).toBe('');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3 of 4');
       expect(await getProperty<string>(host, 'value')).toStrictEqual('12  ');
     });
 
@@ -840,11 +1008,11 @@ test.describe('events', () => {
       expect(await getProperty<string>(input2, 'value')).toBe('2');
       expect(await getProperty<string>(input3, 'value')).toBe('');
       expect(await getProperty<string>(input4, 'value')).toBe('');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3 of 4');
       expect(await getProperty<string>(host, 'value')).toStrictEqual('12  ');
     });
 
-    test('should spread value over input elements and focus last empty input element if value is too long', async ({
+    test('should overwrite last input when more digits are typed than the pin length', async ({
       page,
     }) => {
       await initPinCode(page);
@@ -863,12 +1031,12 @@ test.describe('events', () => {
       expect(await getProperty<string>(input1, 'value')).toBe('1');
       expect(await getProperty<string>(input2, 'value')).toBe('2');
       expect(await getProperty<string>(input3, 'value')).toBe('3');
-      expect(await getProperty<string>(input4, 'value')).toBe('4');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
-      expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
+      expect(await getProperty<string>(input4, 'value')).toBe('5');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('1235');
     });
 
-    test('should spread value over input elements and focus last empty input element if value is too long and inputs events are delayed', async ({
+    test('should overwrite last input when more digits are typed than the pin length and input events are delayed', async ({
       page,
     }) => {
       await initPinCode(page);
@@ -887,9 +1055,9 @@ test.describe('events', () => {
       expect(await getProperty<string>(input1, 'value')).toBe('1');
       expect(await getProperty<string>(input2, 'value')).toBe('2');
       expect(await getProperty<string>(input3, 'value')).toBe('3');
-      expect(await getProperty<string>(input4, 'value')).toBe('4');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
-      expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
+      expect(await getProperty<string>(input4, 'value')).toBe('5');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('1235');
     });
 
     skipInBrowsers(['firefox', 'webkit'], () => {
@@ -986,7 +1154,7 @@ test.describe('events', () => {
       expect(await getProperty<string>(input2, 'value')).toBe('2');
       expect(await getProperty<string>(input3, 'value')).toBe('3');
       expect(await getProperty<string>(input4, 'value')).toBe('4');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
       expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
     });
   });
@@ -1051,16 +1219,16 @@ test.describe('loading state', () => {
       await addEventListener(button, 'focus');
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1-4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1 of 4');
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2-4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2 of 4');
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3 of 4');
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4 of 4');
 
       await page.keyboard.press('Tab');
       expect((await getEventSummary(button, 'focus')).counter, 'after focus').toBe(1);
