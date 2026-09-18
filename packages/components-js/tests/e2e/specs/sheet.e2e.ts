@@ -1,8 +1,7 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { SelectedAriaAttributes, SheetAriaAttribute } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
-  type Options,
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -12,6 +11,7 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
+  type Options,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -501,7 +501,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-2');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementId(page)).toBe('btn-footer-1');
+      expect(await getActiveElementId(page)).toBe('btn-footer');
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
       await page.keyboard.press('Tab');
@@ -519,7 +519,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementId(page)).toBe('btn-footer-1');
+      expect(await getActiveElementId(page)).toBe('btn-footer');
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-2');
       await page.keyboard.press('Tab');

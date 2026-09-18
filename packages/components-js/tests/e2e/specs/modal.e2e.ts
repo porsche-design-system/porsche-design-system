@@ -492,7 +492,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-2');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementId(page)).toBe('btn-footer-1');
+      expect(await getActiveElementId(page)).toBe('btn-footer');
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
       await page.keyboard.press('Tab');
@@ -510,7 +510,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementId(page)).toBe('btn-footer-1');
+      expect(await getActiveElementId(page)).toBe('btn-footer');
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-2');
       await page.keyboard.press('Tab');

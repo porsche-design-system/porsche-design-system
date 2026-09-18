@@ -32,6 +32,7 @@ packages/
 ├── components-react/  # React wrapper + Next.js/React Router integrations
 ├── components-vue/    # Vue wrapper
 ├── storefront/        # Next.js documentation site
+├── examples/          # Standalone example pages (TSX, rendered to plain HTML at build time)
 ├── tokens/            # Design tokens (colors, spacing, typography)
 ├── styles/            # Shared styles, Tailwind plugin
 ├── assets/            # Icons, fonts, marque, crest
@@ -202,14 +203,16 @@ packages/components/src/components/{name}/
 
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds in the codebase
 2. **Angular updates**: Versions are bumped by syncpack like any other dependency; only Angular's framework migrations
-   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never `ng update`
-   directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check TypeScript compatibility.
+   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never
+   `ng update` directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check
+   TypeScript compatibility.
 
 ## Common Pitfalls
 
 - **Don't** skip `npm run build` before running tests
 - **Don't** modify `package-lock.json` manually; run `npm install` to regenerate
-- **Don't** patch a missing native binding in a CI step; regenerate the lockfile cleanly and verify it with `npm run npm:verify-lock`
+- **Don't** patch a missing native binding in a CI step; regenerate the lockfile cleanly and verify it with
+  `npm run npm:verify-lock`
 - **Don't** patch a missing native binding in a CI step; regenerate the lockfile cleanly and verify it with
   `npm run npm:verify-lock` (see `docs/dependencies.md` → _Platform-specific native bindings in the lockfile_)
 - **Don't** remove focus outlines without providing accessible alternatives

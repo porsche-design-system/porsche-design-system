@@ -321,6 +321,25 @@ jobs:
         with:
           name: regression-components-vue-vrt
           path: ./packages/components-vue/tests/vrt/results
+  examples:
+    name: 'Examples'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - run: npm run test:unit:examples
+      - run: npm run test:vrt:examples
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: regression-examples-vrt
+          path: ./packages/examples/tests/vrt/results
   component-meta:
     name: 'Component Meta'
     runs-on: ubuntu-latest

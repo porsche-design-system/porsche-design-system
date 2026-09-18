@@ -1,17 +1,18 @@
 # AGENTS.md
 
-> This file provides context for AI coding assistants working in this repository.
-> See [agents.md](https://agents.md/) for the specification.
+> This file provides context for AI coding assistants working in this repository. See [agents.md](https://agents.md/)
+> for the specification.
 
 ## Overview
 
-The **Porsche Design System (PDS)** is a monorepo providing design tokens, web components, and framework wrappers for building Porsche web applications. Components are built with **Stencil** and wrapped for Angular, React, and Vue.
+The **Porsche Design System (PDS)** is a monorepo providing design tokens, web components, and framework wrappers for
+building Porsche web applications. Components are built with **Stencil** and wrapped for Angular, React, and Vue.
 
 ## Tech Stack
 
 | Layer              | Technology                                 |
 | ------------------ | ------------------------------------------ |
-| Package Manager    | npm 10+ (workspaces)                     |
+| Package Manager    | npm 10+ (workspaces)                       |
 | Node               | v24 (use Volta)                            |
 | Web Components     | Stencil 4.x                                |
 | Styling            | JSS (CSS-in-JS), Tailwind CSS              |
@@ -31,6 +32,7 @@ packages/
 ├── components-react/   # React wrapper + Next.js/React Router integrations
 ├── components-vue/     # Vue wrapper
 ├── storefront/         # Next.js documentation site
+├── examples/           # Standalone example pages (TSX, rendered to plain HTML at build time)
 ├── tokens/             # Design tokens (colors, spacing, typography)
 ├── styles/             # Shared styles, Tailwind plugin
 ├── assets/             # Icons, fonts, marque, crest
@@ -156,12 +158,12 @@ does. That adds no duplicate work, because CI runs the individual `build:*` step
 
 ## Testing
 
-| Test Type | Command                                     | Notes                                      |
-| --------- | ------------------------------------------- | ------------------------------------------ |
-| Unit      | `npm run test:unit:{package}`                  | Vitest, runs fast                          |
-| E2E       | `npm run test:e2e:components-js`               | Playwright, requires build first           |
-| VRT       | `./docker.sh npm run test:vrt:components-js`   | **Must use Docker** for consistent screenshots |
-| A11Y      | `npm run test:a11y:components-js`              | Axe-core + a11y tree snapshots             |
+| Test Type | Command                                      | Notes                                          |
+| --------- | -------------------------------------------- | ---------------------------------------------- |
+| Unit      | `npm run test:unit:{package}`                | Vitest, runs fast                              |
+| E2E       | `npm run test:e2e:components-js`             | Playwright, requires build first               |
+| VRT       | `./docker.sh npm run test:vrt:components-js` | **Must use Docker** for consistent screenshots |
+| A11Y      | `npm run test:a11y:components-js`            | Axe-core + a11y tree snapshots                 |
 
 Key test files:
 
@@ -227,7 +229,8 @@ All UI code must:
 - Use ARIA only when needed; never add ARIA that conflicts with native semantics
 - Use helpers from `packages/components/src/utils/a11y/a11y.ts`
 
-See [`.github/instructions/accessibility.instructions.md`](.github/instructions/accessibility.instructions.md) for full guidelines.
+See [`.github/instructions/accessibility.instructions.md`](.github/instructions/accessibility.instructions.md) for full
+guidelines.
 
 ## Linting Rules
 
@@ -238,22 +241,23 @@ See [`.github/instructions/accessibility.instructions.md`](.github/instructions/
 
 ## Common Pitfalls
 
-| ❌ Don't                                            | ✅ Do                                              |
-| --------------------------------------------------- | -------------------------------------------------- |
-| Skip `npm run build` before tests                   | Build first, then test                             |
-| Modify `package-lock.json` manually                 | Run `npm install` to regenerate                    |
-| Remove focus outlines                               | Provide accessible alternatives                    |
-| Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                          |
-| Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first |
-| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly, then `npm run npm:verify-lock` |
+| ❌ Don't                                            | ✅ Do                                                             |
+| --------------------------------------------------- | ----------------------------------------------------------------- |
+| Skip `npm run build` before tests                   | Build first, then test                                            |
+| Modify `package-lock.json` manually                 | Run `npm install` to regenerate                                   |
+| Remove focus outlines                               | Provide accessible alternatives                                   |
+| Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                                         |
+| Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first        |
+| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly, then `npm run npm:verify-lock`   |
 | Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly and run `npm run npm:verify-lock` |
 
 ## Known Constraints
 
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds
 2. **Angular updates**: Versions are bumped by syncpack like any other dependency; only Angular's framework migrations
-   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never `ng update`
-   directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check TypeScript compatibility.
+   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never
+   `ng update` directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check
+   TypeScript compatibility.
 
 ## Task Runbooks
 
@@ -271,6 +275,7 @@ Each major package has its own `AGENTS.md` with detailed guidance:
 - [`packages/tokens/AGENTS.md`](packages/tokens/AGENTS.md) — Design tokens
 - [`packages/utilities/AGENTS.md`](packages/utilities/AGENTS.md) — Utility packages such as AG Grid theme
 - [`packages/storefront/AGENTS.md`](packages/storefront/AGENTS.md) — Next.js documentation site
+- [`packages/examples/AGENTS.md`](packages/examples/AGENTS.md) — Standalone example pages (TSX)
 - [`packages/components-react/AGENTS.md`](packages/components-react/AGENTS.md) — React wrapper
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper
@@ -286,12 +291,11 @@ When multiple guidance files exist, prefer them in this order:
 
 ## Quick Reference
 
-| Task           | Command                                    |
-| -------------- | ------------------------------------------ |
-| Fresh install  | `npm install && npm run build`               |
-| Dev components | `npm run start:components`                    |
-| Dev storefront | `npm run start:storefront`                    |
-| Test component | `npm run test:unit:components`                |
+| Task           | Command                                         |
+| -------------- | ----------------------------------------------- |
+| Fresh install  | `npm install && npm run build`                  |
+| Dev components | `npm run start:components`                      |
+| Dev storefront | `npm run start:storefront`                      |
+| Test component | `npm run test:unit:components`                  |
 | Clean rebuild  | `npm run clean && npm install && npm run build` |
-| Run in Docker  | `./docker.sh {command}`                    |
-
+| Run in Docker  | `./docker.sh {command}`                         |
