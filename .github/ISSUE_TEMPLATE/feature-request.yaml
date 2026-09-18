@@ -2,7 +2,6 @@ name: 🆕 Feature Request
 description: Propose new functionality that everyone can benefit from
 title: "Short description"
 type: Feature
-labels: ["refinement"]
 projects: ["porsche-design-system/14"]
 body:
   - type: markdown
