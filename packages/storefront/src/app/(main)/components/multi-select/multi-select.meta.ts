@@ -8,6 +8,7 @@ import {
 import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/hidden-label-without-accessible-name/example';
 import { promptOptionUsedInsteadOfALabelA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/prompt-option-used-instead-of-a-label/example';
 import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 import AccessibilityOverview from '@/app/(main)/components/multi-select/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/multi-select/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/multi-select/configurator/introduction.mdx';
@@ -71,6 +72,7 @@ export const multiSelectMeta = {
   accessibility: {
     overview: AccessibilityOverview,
     examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
       promptOptionUsedInsteadOfALabel: promptOptionUsedInsteadOfALabelA11yExample,
       hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
       validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,

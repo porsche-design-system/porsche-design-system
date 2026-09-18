@@ -9,6 +9,7 @@ describe('INPUT_SEARCH_ARIA_ATTRIBUTES', () => {
       'aria-expanded',
       'aria-haspopup',
       'aria-label',
+      'aria-description',
     ]);
   });
 });

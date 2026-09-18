@@ -121,6 +121,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
 
 exports[`should call validateProps() with correct parameters via render for p-checkbox > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "checked": "boolean",
   "compact": "boolean",
   "disabled": "boolean",
@@ -260,6 +261,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-date > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
@@ -282,6 +284,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-email > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
@@ -307,6 +310,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-month > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
@@ -329,6 +333,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-number > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "controls": "boolean",
@@ -353,6 +358,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-password > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
@@ -401,6 +407,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-tel > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
@@ -425,6 +432,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-text > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "counter": "boolean",
@@ -449,6 +457,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-time > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
@@ -471,6 +480,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-url > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
@@ -495,6 +505,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-week > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
@@ -607,6 +618,7 @@ exports[`should call validateProps() with correct parameters via render for p-mo
 
 exports[`should call validateProps() with correct parameters via render for p-multi-select > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "compact": "boolean",
   "description": "string",
   "disabled": "boolean",
@@ -744,6 +756,7 @@ exports[`should call validateProps() with correct parameters via render for p-se
 
 exports[`should call validateProps() with correct parameters via render for p-select > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "compact": "boolean",
   "description": "string",
   "disabled": "boolean",
@@ -801,6 +814,7 @@ exports[`should call validateProps() with correct parameters via render for p-st
 exports[`should call validateProps() with correct parameters via render for p-switch > propTypes with ValidatorFunctions 1`] = `
 {
   "alignLabel": "breakpoint",
+  "aria": "aria",
   "checked": "boolean",
   "compact": "boolean",
   "disabled": "boolean",
@@ -898,6 +912,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
 
 exports[`should call validateProps() with correct parameters via render for p-textarea > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "compact": "boolean",
   "counter": "boolean",
