@@ -304,6 +304,14 @@ export const reattachElement = (locator: Locator): Promise<void> => {
   });
 };
 
+export const reattachElementToParent = (locator: Locator): Promise<void> => {
+  return locator.evaluate((el) => {
+    const parent = el.parentElement as HTMLElement;
+    el.remove();
+    parent.appendChild(el);
+  });
+};
+
 export const enableBrowserLogging = (page: Page): void => {
   page.on('console', (msg) => {
     console.log(msg.type() + ':', msg.text());

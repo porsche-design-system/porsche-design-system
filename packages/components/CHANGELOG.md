@@ -19,6 +19,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select`, `Multi Select`, `Radio Group`: unmatched values triggered misleading console warnings, including empty
   strings and values whose options had not loaded yet. Option matching remains strict by type and value.
   ([#4710](https://github.com/porsche-design-system/porsche-design-system/pull/4710))
+- `Tabs`, `Tabs Bar`, `Stepper Horizontal`: components permanently stopped reacting to slotted content changes after
+  being moved in the DOM (disconnected and reconnected)
+  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
+- `Select`, `Multi Select`: an option added inside an `Optgroup` was not marked as selected when it matched the
+  currently set value
+  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
+- `Stepper Horizontal`: the page scrolled vertically at initial render in Firefox and Safari when the stepper was
+  below the fold and the current step required a horizontal scroll
+  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
 
 ## [4.7.0] - 2026-09-09
 

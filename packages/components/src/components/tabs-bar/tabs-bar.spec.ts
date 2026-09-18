@@ -78,20 +78,18 @@ describe('slotchange listener', () => {
 
   const initComponentWithSlot = (
     activeTabIndex?: number
-  ): { component: TabsBar; tabs: HTMLElement[]; slot: HTMLSlotElement; scrollArea: ScrollAreaMock } => {
+  ): { component: TabsBar; tabs: HTMLElement[]; scrollArea: ScrollAreaMock } => {
     const component = initComponent();
     component.activeTabIndex = activeTabIndex;
     const tabs = appendChildren(component.host, 'button');
     component['defineTabs']();
     const { scroller, scrollArea } = createScroller();
     component['scroller'] = scroller;
-    const slot = document.createElement('slot') as HTMLSlotElement;
-    component['slot'] = slot;
-    return { component, tabs, slot, scrollArea };
+    return { component, tabs, scrollArea };
   };
 
   it('should re-identify tabs on slotchange', () => {
-    const { component, slot } = initComponentWithSlot(0);
+    const { component } = initComponentWithSlot(0);
 
     component.componentDidLoad();
 
@@ -100,41 +98,36 @@ describe('slotchange listener', () => {
     newButton.scrollIntoView = vi.fn();
     component.host.appendChild(newButton);
 
-    slot.dispatchEvent(new Event('slotchange'));
+    component['onSlotChange']();
 
     expect(component['tabs']).toHaveLength(4);
     expect(component['tabs'][3]).toBe(newButton);
   });
 
   it('should scroll active tab into view on slotchange', () => {
-    const { component, slot, scrollArea } = initComponentWithSlot(1);
+    const { component, scrollArea } = initComponentWithSlot(1);
 
     component.componentDidLoad();
     scrollArea.scrollTo.mockClear();
 
-    slot.dispatchEvent(new Event('slotchange'));
-
-    expect(scrollArea.scrollTo).toHaveBeenCalledWith(expect.objectContaining({ behavior: 'instant' }));
-  });
-
-  it('should not react to slotchange after disconnectedCallback', () => {
-    const { component, slot, scrollArea } = initComponentWithSlot(1);
-
-    component.componentDidLoad();
-    component.disconnectedCallback();
-
-    scrollArea.scrollTo.mockClear();
-
-    // add a new child and dispatch slotchange
+    // change slotted content so the slotchange reflects a real change
     const newButton = document.createElement('button');
     newButton.scrollIntoView = vi.fn();
     component.host.appendChild(newButton);
 
-    slot.dispatchEvent(new Event('slotchange'));
+    component['onSlotChange']();
 
-    // tabs should not have been re-identified (still 3, not 4)
-    expect(component['tabs']).toHaveLength(3);
-    // no scrollTo calls
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith(expect.objectContaining({ behavior: 'instant' }));
+  });
+
+  it('should not scroll on slotchange when slotted content did not change', () => {
+    const { component, scrollArea } = initComponentWithSlot(1);
+
+    component.componentDidLoad();
+    scrollArea.scrollTo.mockClear();
+
+    component['onSlotChange']();
+
     expect(scrollArea.scrollTo).not.toHaveBeenCalled();
   });
 });
@@ -220,8 +213,6 @@ describe('resizeObserver', () => {
     // simulate scroller ref being set during render
     const { scroller, scrollArea } = createScroller();
     component['scroller'] = scroller;
-    // simulate slot ref being set during render
-    component['slot'] = document.createElement('slot') as HTMLSlotElement;
     return { component, tabs, scrollArea };
   };
 

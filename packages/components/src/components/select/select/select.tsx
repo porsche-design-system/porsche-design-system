@@ -28,7 +28,6 @@ import {
   getNextOptionToHighlight,
   getPrefixedTagNames,
   getSelectActionFromKeyboardEvent,
-  getShadowRootHTMLElement,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -203,7 +202,7 @@ export class Select {
   @Listen('internalOptgroupUpdate')
   public optgroupUpdateHandler(e: Event): void {
     e.stopPropagation();
-    this.updateOptions();
+    this.onSlotchange();
   }
 
   @Watch('value')
@@ -277,7 +276,6 @@ export class Select {
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot:not([name])').addEventListener('slotchange', this.onSlotchange);
     if (this.hasFilter) {
       // Does not work if filterSlot is added dynamically after component load, but should be fine
       this.inputSearchElement = this.filterSlot
@@ -416,7 +414,7 @@ export class Select {
           >
             {this.filter && !this.hasFilterResults && <NoResultsOption />}
             <slot name="options-status" />
-            <slot />
+            <slot onSlotchange={this.onSlotchange} />
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} host={this.host} />

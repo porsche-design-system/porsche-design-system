@@ -14,6 +14,7 @@ import {
   getScrollLeft,
   initConsoleObserver,
   reattachElement,
+  reattachElementToParent,
   setContentWithDesignSystem,
   setProperty,
   sleep,
@@ -130,6 +131,49 @@ test('should work with nested or translated markup', async ({ page }) => {
   await waitForStencilLifecycle(page);
   expect(await getProperty(host, 'activeTabIndex')).toBe(0);
   expect((await getEventSummary(host, 'update')).counter).toBe(3);
+});
+
+test('should emit update when tab added after DOM reattach is clicked', async ({ page }) => {
+  await initTabsBar(page, { amount: 3, activeTabIndex: 0 });
+  const host = getHost(page);
+
+  // remove and re-attach to the same parent
+  await reattachElementToParent(host);
+  await waitForStencilLifecycle(page);
+
+  await host.evaluate((el) => {
+    const newButton = document.createElement('button');
+    newButton.innerText = 'Tab Button 4';
+    el.appendChild(newButton);
+  });
+  await waitForStencilLifecycle(page);
+
+  await addEventListener(host, 'update');
+  await host.locator('button').nth(3).click();
+  await waitForStencilLifecycle(page);
+
+  expect((await getEventSummary(host, 'update')).counter).toBe(1);
+});
+
+test('should sync tabs when host mounts without tabs and tabs are appended afterwards', async ({ page }) => {
+  await initTabsBar(page, { amount: 0, activeTabIndex: 0 });
+  const host = getHost(page);
+
+  await expect(page.locator('button[role="tab"]')).toHaveCount(0);
+
+  await host.evaluate((el) => {
+    for (let i = 0; i < 3; i++) {
+      const tab = document.createElement('button');
+      tab.innerText = `Tab Button ${i + 1}`;
+      el.append(tab);
+    }
+  });
+  await waitForStencilLifecycle(page);
+
+  await expect(page.locator('button[role="tab"]')).toHaveCount(3);
+  const firstButton = getButton(page, 0);
+  expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
+  expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
 });
 
 test('correct position of tabindex and aria-selected attributes if changed programmatically', async ({ page }) => {
