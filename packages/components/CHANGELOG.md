@@ -14,11 +14,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Pin Code`: Support for `ArrowLeft`/`ArrowRight` keyboard navigation.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+- `Ai Tag`: Arabic, Japanese and Korean translations, plus region-specific Chinese translations for `zh-CN`,
+  `zh-HK` and `zh-TW`, replacing the English fallback.
+  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
+
 ### Fixed
 
 - `Select`, `Multi Select`, `Radio Group`: unmatched values triggered misleading console warnings, including empty
   strings and values whose options had not loaded yet. Option matching remains strict by type and value.
   ([#4710](https://github.com/porsche-design-system/porsche-design-system/pull/4710))
+- `Pin Code`: Focus management on label click and digit overwrite behavior of focused cell.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+- `Ai Tag`: the `generated` variant displayed Czech text instead of Slovak for Slovak locales.
+  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
 - `Tabs`, `Tabs Bar`, `Stepper Horizontal`: components permanently stopped reacting to slotted content changes after
   being moved in the DOM (disconnected and reconnected)
   ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
@@ -94,7 +106,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   slide left an empty slot and a surplus pagination bullet behind.
   ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 - `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
-  carousel was initialised with. ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+  carousel was initialised with.
+  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 
 ## [4.6.0] - 2026-08-20
 
