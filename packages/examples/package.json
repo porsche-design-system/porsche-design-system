@@ -30,21 +30,21 @@
   },
   "devDependencies": {
     "@playwright/test": "1.61.0",
-    "@porsche-design-system/components": "4.6.0-rc.1",
-    "@porsche-design-system/components-js": "4.6.0-rc.1",
+    "@porsche-design-system/components": "4.7.0",
+    "@porsche-design-system/components-js": "4.7.0",
     "@porsche-design-system/shared": "0.0.0",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.5.1",
     "fast-glob": "^3.3.3",
     "lightningcss": "^1.33.0",
     "preact": "^10.29.8",
     "preact-render-to-string": "^6.7.0",
     "prettier": "^3.9.6",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3",
-    "vite": "^8.2.0",
-    "vitest": "^4.1.10"
+    "vite": "^8.3.0",
+    "vitest": "^5.0.0"
   },
   "volta": {
     "extends": "../../package.json"
