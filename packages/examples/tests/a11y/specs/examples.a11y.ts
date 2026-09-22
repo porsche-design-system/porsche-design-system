@@ -3,7 +3,7 @@ import type { TestInfo } from '@playwright/test';
 import { schemes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/shared/testing';
 import { ids } from '../../../src/_ids.ts';
 import { setupExamplePage, waitForComponentsReady } from '../../vrt/helpers/index.ts';
-import { type ExamplePage, getExamplePages } from '../../vrt/helpers/pages.ts';
+import { getExamplePages } from '../../vrt/helpers/pages.ts';
 import { expect, test } from '../helpers/index.ts';
 
 /**
@@ -42,15 +42,6 @@ const pagesWithoutFirstLevelHeading = ['patterns-footer'];
 
 /** The pages whose own `main.js` ends in a confirmation the initial scan never reaches. */
 const feedbackPages = ['patterns-feedback-inline', 'patterns-feedback-dialog'];
-
-/**
- * The pages that hide their navigation behind the menu button.
- *
- * The drilldown is the largest interactive surface of the examples and is not part of the page in its initial state.
- * The canvas template is not among them: its navigation is the sidebar of `p-canvas`, not this header.
- */
-const hasDrilldown = (page: ExamplePage): boolean =>
-  page.id.startsWith('patterns-header-') || page.id === 'templates-landing-page';
 
 test('should have a page for every example', () => {
   // The same count the VRT asserts: 3 templates and 9 patterns. Kept here too, so a glob that silently stops
@@ -95,11 +86,15 @@ for (const { id, url } of examplePages) {
   });
 }
 
-for (const { id, url } of examplePages.filter(hasDrilldown)) {
+for (const { id, url } of examplePages) {
   test.describe(id, () => {
     test('with the navigation drilldown open', async ({ page, makeAxeBuilder }, testInfo) => {
       // The narrow viewport is where the menu button is the only way into the navigation.
       await setupExamplePage(page, url, viewportWidthXXS);
+
+      // Keyed off the id the page renders rather than a list of page names – the same rule `plugins/entries.ts`
+      // uses to decide whether the drilldown snippet is inlined into this page's entry at all.
+      test.skip((await page.locator(`#${ids.navButton}`).count()) === 0, 'this example renders no menu button');
 
       await page.locator(`#${ids.navButton}`).click();
       // The drilldown is used in controlled mode: `assets/header.js` sets the `open` **property**, which the
