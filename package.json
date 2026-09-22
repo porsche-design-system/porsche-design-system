@@ -188,6 +188,7 @@
     "test:e2e:components-react": "npm run test:e2e --workspace=@porsche-design-system/react",
     "test:e2e:components-react/nextjs": "npm run test:e2e --workspace=@porsche-design-system/nextjs",
     "test:e2e:components-vue": "npm run test:e2e --workspace=@porsche-design-system/vue",
+    "test:e2e:examples": "npm run test:e2e --workspace=@porsche-design-system/examples",
     "test:e2e:storefront": "npm run test:e2e --workspace=@porsche-design-system/storefront",
     "test:e2e:storefront:1/4": "npm run test:e2e:1/4 --workspace=@porsche-design-system/storefront",
     "test:e2e:storefront:2/4": "npm run test:e2e:2/4 --workspace=@porsche-design-system/storefront",

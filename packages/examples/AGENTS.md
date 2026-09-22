@@ -136,6 +136,7 @@ A test asserts that the overview pages contain no `href="#"` and that the chrome
 npm run start:examples      # dev server on http://localhost:3010
 npm run build:examples      # writes ./dist (gitignored)
 npm run test:unit:examples  # vitest
+npm run test:e2e:examples   # playwright – builds both projects and drives the behaviour of every page
 npm run test:a11y:examples  # playwright + axe-core – builds both projects and scans every page
 npm run test:vrt:examples   # playwright – builds both projects and screenshots every page
 
@@ -149,6 +150,40 @@ npm run build:verify        # build + `vite build` of both generated projects in
 
 **Run the VRT in Docker** – `./docker.sh npm run test:vrt:examples` – like every other visual regression suite in this
 monorepo. The committed baselines are the ones the container produces; a run on macOS renders different pixels.
+
+## End-to-end tests
+
+The suite lives in [`tests/e2e/`](tests/e2e) and drives the behaviour the build inlines into each page.
+
+- **`examples.e2e.ts` covers what every page shares.** Each one must load without a `console.error` or an uncaught
+  exception and must carry a title — the cheapest check there is for these demos, and it catches their most likely
+  failure: behaviour is a plain script wired on ids, so a renamed element or a snippet that throws fails _silently_. The
+  page still renders and the VRT still matches.
+- **The shared behaviour is keyed off the ids a page renders**, not off a list of page names — the same rule
+  [`plugins/entries.ts`](plugins/entries.ts) uses to decide which snippet to inline. If a page renders `#nav-button`,
+  the drilldown snippet is in its entry and has to work. A pattern that starts rendering the header is covered on the
+  same commit, without a list to maintain. (The a11y suite does the same.)
+- **`flows.e2e.ts` covers what exactly one page does** — the feedback flows, the local market switch, the feature tour,
+  the priority navigation and the admin panel. The common thread is **controlled mode**: the page owns every open state,
+  which is what lets a trigger mirror it onto `aria-expanded`, and what makes "close" something the page has to write
+  back. Forgetting that half leaves a panel that opens and never closes — which renders and screenshots perfectly.
+
+Three things about these components are easy to get wrong in a test, so they have helpers in
+[`tests/e2e/helpers/`](tests/e2e/helpers):
+
+| Looks like                     | Actually                                                                                                                                                                                  |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-expanded` on the trigger | Set through the `aria` **prop**; the component renders it onto its control **inside the shadow root** and never reflects it onto the host. Use `getTriggerControl()`.                     |
+| `open` as an attribute         | A **property** in controlled mode. Worse, a step the markup renders open keeps a stale `open=""` forever, so an attribute check reports it open for the rest of the tour. Use `isOpen()`. |
+| A popover being "visible"      | Its host is a zero-height anchor and its panel lives in the shadow root. Assert on the content slotted into it, or on `isOpen()`. Only the drilldown renders a real `dialog`.             |
+
+`waitForStablePosition()` exists for a fourth: a popover is positioned _after_ `open` flips, and clicking in between
+lands on whatever is underneath — which for a coachmark is an outside click that dismisses the tour the test was about
+to walk. There is no "finished opening" event on `p-popover`, so the settled box is the signal.
+
+Note that the e2e setup deliberately does **not** reuse the VRT's `setupExamplePage()`: that one freezes videos,
+releases focus and waits for a stable picture, and all three are wrong here — the video is under test, the focus a flow
+moves is what is asserted, and behaviour is not a picture.
 
 ## Accessibility tests
 

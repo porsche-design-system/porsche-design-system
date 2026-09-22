@@ -49,7 +49,7 @@ const externalImageStub = `<svg xmlns="http://www.w3.org/2000/svg" width="64" he
  */
 
 /** Everything outside the preview server and the local CDN is answered by the test, not by the network. */
-const stubExternalRequests = async (page: Page): Promise<void> => {
+export const stubExternalRequests = async (page: Page): Promise<void> => {
   await page.route(/^https?:\/\/(?!localhost|127\.0\.0\.1)/, async (route) => {
     const url = route.request().url();
 

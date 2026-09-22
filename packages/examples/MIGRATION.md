@@ -10,7 +10,7 @@
 
 The **content** of the `patterns` and `templates` workspaces is fully ported, and the build emits the two standalone
 Vite projects that are meant to replace them. What is missing is everything _around_ those pages: the seven framework
-starter apps, a deployment, the storefront wiring that points at them, and two of the four test suites.
+starter apps, a deployment, and the storefront wiring that points at them. All four test suites are in place.
 
 | Area                    | External repo                                   | Here                            | State        |
 | ----------------------- | ----------------------------------------------- | ------------------------------- | ------------ |
@@ -21,7 +21,7 @@ starter apps, a deployment, the storefront wiring that points at them, and two o
 | VRT                     | `patterns/tests/vrt/` (header only)             | `tests/vrt/` (all pages)        | ✅ exceeded  |
 | CI test job             | `test.yml`                                      | `Examples` job in `test.yml`    | ✅ added     |
 | **A11y tests**          | `patterns/tests/a11y/` (axe + aria snapshots)   | `tests/a11y/`, all 12 pages     | ✅ done      |
-| **E2E tests**           | `patterns/tests/e2e/`                           | –                               | ❌ missing   |
+| **E2E tests**           | `patterns/tests/e2e/`                           | `tests/e2e/`, all 12 pages      | ✅ done      |
 | **`robots.txt`**        | `{patterns,templates}/public/robots.txt`        | –                               | ❌ missing   |
 | **Deployment**          | `deploy.yml` → gh-pages per slug                | –                               | ❌ missing   |
 | **Storefront wiring**   | consumed via hardcoded GitHub URLs              | unchanged, still points outside | ❌ missing   |
@@ -94,7 +94,7 @@ headings too ("Variant 1" → "Overlay" / "Stacked"), so the docs match the name
 > **Old URLs will 404** for anyone who bookmarked them, and the numeric paths are baked into released storefront
 > versions. If gh-pages is kept (A2), leave redirects behind; if not, accept the break and note it.
 
-### A4. Port the a11y and e2e suites
+### A4. Port the a11y and e2e suites — done
 
 The external `patterns/tests/` carried two suites this package did not have:
 
@@ -114,9 +114,16 @@ snapshots had already collected `status`, `alert` and `text: ""` nodes that leak
 they covered 2 of 10 pages. Axe is the layer that was genuinely missing, because it checks what the browser _computes_:
 contrast, names resolved through shadow roots, ARIA validity after upgrade.
 
-**e2e is still open.** It is the one place the controlled-mode behaviour in `main.js` is exercised as behaviour rather
-than as a scanned end state. Port it globbed as well, and add `test:e2e:examples` to the root `package.json` and the
-`Examples` CI job.
+**e2e is done too.** [`tests/e2e/`](tests/e2e) has 30 checks in two specs: `examples.e2e.ts` globs every page for a
+title and a clean console, and drives the shared behaviour (drilldown, hero video) keyed off the ids a page renders —
+the same rule `plugins/entries.ts` uses to inline a snippet, so the two cannot drift. `flows.e2e.ts` drives what one
+page does: both feedback flows, the local market switch, the feature tour, the priority navigation and the admin panel.
+Wired into `test:e2e:examples` and the `Examples` CI job.
+
+Porting it surfaced three component facts worth knowing before writing more: `aria-expanded` is set through the `aria`
+prop and lands **inside the shadow root**, `open` is a property that is never reflected (and a stale `open=""` on an
+initially-open step outlives it), and a popover host is a zero-height anchor whose panel is in the shadow root. All
+three are documented with helpers in [`AGENTS.md`](AGENTS.md#end-to-end-tests).
 
 > **Prerequisite discovered while doing this:** the Playwright suites could not run at all, because the loader builds
 > its CDN URL by concatenation and the test helper aborted that request. Fixed in
