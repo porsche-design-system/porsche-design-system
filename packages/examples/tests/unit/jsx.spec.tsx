@@ -477,6 +477,12 @@ describe('renderPage()', () => {
     expect(html).not.toContain('htmlFor');
     expect(html).toContain('class="');
   });
+
+  // The four layouts all funnel through `Head`, and this is what pins that down: a layout rendering its own `<head>`
+  // would silently ship an indexable page, which nothing else here would catch.
+  it.each([...examplePages, ...overviewPages])('should mark "%s" as noindex', async (_name, Page) => {
+    expect(await renderPage(Page)).toContain('<meta name="robots" content="noindex"');
+  });
 });
 
 describe('Head', () => {
@@ -488,6 +494,11 @@ describe('Head', () => {
 
   it('should render the description meta tag', () => {
     expect(html).toContain('<meta name="description" content="A description."');
+  });
+
+  // A `robots.txt` cannot replace this: it is only read at the origin root, and the projects are served from a path.
+  it('should keep the demos out of search results', () => {
+    expect(html).toContain('<meta name="robots" content="noindex"');
   });
 
   it('should not link a stylesheet, which the generated entry of the page brings instead', () => {
