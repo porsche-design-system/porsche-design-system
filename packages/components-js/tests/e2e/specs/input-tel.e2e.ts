@@ -132,6 +132,23 @@ test.describe('value', () => {
   });
 });
 
+test.describe('aria', () => {
+  test('should forward `aria` prop to the native input', async ({ page }) => {
+    await initInputTel(page, {
+      props: {
+        name: 'field',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const input = getInputTel(page);
+    await expect(input).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(input).toHaveAttribute('aria-description', 'Accessible description');
+  });
+});
+
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';

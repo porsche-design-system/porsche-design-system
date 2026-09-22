@@ -10,10 +10,11 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -24,6 +25,7 @@ import {
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-number-styles';
 import type {
+  InputNumberAriaAttribute,
   InputNumberBlurEventDetail,
   InputNumberChangeEventDetail,
   InputNumberInputEventDetail,
@@ -50,6 +52,7 @@ const propTypes: PropTypes<typeof InputNumber> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<InputNumberAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -126,6 +129,9 @@ export class InputNumber {
 
   /** Shows increment/decrement spin buttons inside the field to adjust the numeric value by clicking. */
   @Prop() public controls?: boolean = false;
+
+  /** Sets additional ARIA attributes on the native input to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<InputNumberAriaAttribute>;
 
   /** Emitted when the number input loses focus after its value was changed. The component value and native event target value are strings after user input. */
   @Event({ bubbles: true }) public change: EventEmitter<InputNumberChangeEventDetail>;
@@ -239,6 +245,7 @@ export class InputNumber {
         step={this.step}
         loading={this.loading}
         initialLoading={this.initialLoading}
+        aria={this.aria}
         {...(this.controls && {
           end: (
             <Fragment>

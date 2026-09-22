@@ -213,7 +213,6 @@ test.describe('events', () => {
     await switchElement.blur();
     expect(await hasFocus(host)).toBe(false);
   });
-
 });
 
 test.describe('focus', () => {
@@ -274,5 +273,19 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the switch button', async ({ page }) => {
+    await initSwitch(page);
+    await setProperty(getHost(page), 'aria', {
+      'aria-label': 'Dark mode',
+      'aria-description': 'Toggles the color theme',
+    });
+    await waitForStencilLifecycle(page);
+    const button = getButton(page);
+    await expect(button).toHaveAttribute('aria-label', 'Dark mode');
+    await expect(button).toHaveAttribute('aria-description', 'Toggles the color theme');
   });
 });

@@ -2492,7 +2492,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "Event",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -2506,6 +2506,16 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native checkbox to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "CheckboxAriaAttribute",
+      },
       "checked": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -4328,7 +4338,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -4342,6 +4352,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputDateAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -4515,7 +4535,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -4529,6 +4549,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputEmailAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -4720,7 +4750,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -4734,6 +4764,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputMonthAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -4907,7 +4947,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -4921,6 +4961,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputNumberAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -5107,7 +5157,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -5121,6 +5171,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputPasswordAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -5319,13 +5379,14 @@ exports[`should match snapshot 1`] = `
         "allowedValues": {
           "aria-autocomplete": "string",
           "aria-controls": "string",
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
           "role": "string",
         },
         "defaultValue": null,
-        "description": "Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. \`role="combobox"\`, \`aria-expanded\`).",
+        "description": "Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. \`role="combobox"\`, \`aria-expanded\`) and extra labelling (\`aria-label\`, \`aria-description\`).",
         "isAria": true,
         "type": "InputSearchAriaAttribute",
       },
@@ -5514,7 +5575,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -5528,6 +5589,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputTelAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -5713,7 +5784,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -5726,6 +5797,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputTextAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -5912,7 +5993,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -5926,6 +6007,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputTimeAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -6099,7 +6190,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -6113,6 +6204,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputUrlAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -6298,7 +6399,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -6312,6 +6413,16 @@ exports[`should match snapshot 1`] = `
       "p-spinner",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native input to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "InputWeekAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -7840,7 +7951,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "{ open: boolean }",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -7855,6 +7966,16 @@ exports[`should match snapshot 1`] = `
       "p-input-search",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the combobox to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "MultiSelectAriaAttribute",
+      },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -9284,7 +9405,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "{ open: boolean }",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -9298,6 +9419,16 @@ exports[`should match snapshot 1`] = `
       "p-input-search",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the combobox to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "SelectAriaAttribute",
+      },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -9740,7 +9871,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "{ checked: boolean }",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -9762,6 +9893,16 @@ exports[`should match snapshot 1`] = `
         "description": "Sets the position of the slotted label relative to the switch toggle, either before (\`start\`) or after (\`end\`) it. Supports responsive breakpoint values.",
         "isBreakpointCustomizable": true,
         "type": "SwitchAlignLabel",
+      },
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the switch to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "SwitchAriaAttribute",
       },
       "checked": {
         "allowedValues": "boolean",
@@ -10876,7 +11017,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -10889,6 +11030,16 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets additional ARIA attributes on the native textarea to improve accessibility for screen readers.",
+        "isAria": true,
+        "type": "TextareaAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,

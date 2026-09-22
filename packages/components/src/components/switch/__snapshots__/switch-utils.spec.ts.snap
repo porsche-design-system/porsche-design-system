@@ -1,50 +1,52 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: false and isChecked: false 1`] = `
+exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: false, isChecked: false and aria: undefined 1`] = `
 {
   "aria-checked": "false",
   "aria-disabled": null,
 }
 `;
 
-exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: false and isChecked: true 1`] = `
+exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: false, isChecked: true and aria: undefined 1`] = `
 {
   "aria-checked": "true",
   "aria-disabled": null,
 }
 `;
 
-exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: true and isChecked: false 1`] = `
+exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: true, isChecked: false and aria: undefined 1`] = `
 {
   "aria-checked": "false",
   "aria-disabled": "true",
 }
 `;
 
-exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: true and isChecked: true 1`] = `
+exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: true, isChecked: true and aria: undefined 1`] = `
 {
   "aria-checked": "true",
   "aria-disabled": "true",
 }
 `;
 
-exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: false and isChecked: false 1`] = `
+exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: false, isChecked: false and aria: undefined 1`] = `
 {
   "aria-checked": "false",
   "aria-disabled": "true",
 }
 `;
 
-exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true and isChecked: false 1`] = `
+exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true, isChecked: false and aria: undefined 1`] = `
 {
   "aria-checked": "false",
   "aria-disabled": "true",
 }
 `;
 
-exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true and isChecked: true 1`] = `
+exports[`getSwitchButtonAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true, isChecked: true and aria: { 'aria-label': 'Dark mode', 'aria-description': 'Toggles the color theme' } 1`] = `
 {
   "aria-checked": "true",
+  "aria-description": "Toggles the color theme",
   "aria-disabled": "true",
+  "aria-label": "Dark mode",
 }
 `;

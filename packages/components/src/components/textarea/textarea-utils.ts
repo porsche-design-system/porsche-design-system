@@ -1,5 +1,7 @@
+import type { FormFieldAriaAttribute } from '../../types';
 import type { FormState } from '../../utils/form/form-state';
 export type TextareaState = FormState;
+export type TextareaAriaAttribute = FormFieldAriaAttribute;
 
 export const TEXTAREA_WRAPS = ['hard', 'soft', 'off'] as const;
 export type TextareaWrap = (typeof TEXTAREA_WRAPS)[number];

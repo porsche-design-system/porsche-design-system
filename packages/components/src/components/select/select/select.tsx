@@ -13,12 +13,13 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   debounce,
   FILTER_STATUS_ANNOUNCE_TIMEOUT,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getComboboxAriaAttributes,
   getFilterStatusMessage,
@@ -38,6 +39,7 @@ import {
   isElementOfKind,
   isUsableOption,
   optionListUpdatePosition,
+  parseAndGetAriaAttributes,
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
   setHighlightedSelectOption,
@@ -54,6 +56,7 @@ import { messageId, StateMessage } from '../../common/state-message/state-messag
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './select-styles';
 import {
+  type SelectAriaAttribute,
   type SelectChangeEventDetail,
   type SelectDropdownDirection,
   type SelectOptgroup,
@@ -78,6 +81,7 @@ const propTypes: PropTypes<typeof Select> = {
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   filter: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<SelectAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -153,6 +157,9 @@ export class Select {
 
   /** Associates the select with a form element by its ID when it is not a direct descendant of that form. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
+
+  /** Sets additional ARIA attributes on the combobox to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<SelectAriaAttribute>;
 
   /** Emitted when the select component loses focus, useful for triggering validation on blur. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
@@ -349,14 +356,8 @@ export class Select {
           id={buttonId}
           // only needed for Safari to recognize focus state on click
           tabIndex={0}
-          {...getComboboxAriaAttributes(
-            this.isOpen,
-            this.required,
-            hasLabel(this.host, this.label) && labelId,
-            selectMessageId,
-            selectDescriptionId,
-            listboxId
-          )}
+          {...parseAndGetAriaAttributes(this.aria)}
+          {...getComboboxAriaAttributes(this.isOpen, this.required, selectMessageId, selectDescriptionId, listboxId)}
           aria-autocomplete="none"
           disabled={this.disabled}
           onClick={this.onComboClick}

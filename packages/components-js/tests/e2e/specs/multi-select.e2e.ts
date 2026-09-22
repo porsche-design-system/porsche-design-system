@@ -163,6 +163,23 @@ test('should render', async ({ page }) => {
   expect(await getDropdownDisplay(page)).toBe('flex');
 });
 
+test.describe('aria', () => {
+  test('should forward `aria` prop to the combobox', async ({ page }) => {
+    await initMultiSelect(page, {
+      props: {
+        name: 'name',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const button = getButton(page);
+    await expect(button).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(button).toHaveAttribute('aria-description', 'Accessible description');
+  });
+});
+
 test.describe('Blur Event', () => {
   test('should emit blur event when button loses focus by outside click', async ({ page }) => {
     await initMultiSelect(page);

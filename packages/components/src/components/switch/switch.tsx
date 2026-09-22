@@ -1,9 +1,10 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Listen, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
@@ -11,7 +12,12 @@ import {
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './switch-styles';
-import { getSwitchButtonAriaAttributes, type SwitchAlignLabel, type SwitchUpdateEventDetail } from './switch-utils';
+import {
+  getSwitchButtonAriaAttributes,
+  type SwitchAlignLabel,
+  type SwitchAriaAttribute,
+  type SwitchUpdateEventDetail,
+} from './switch-utils';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -21,6 +27,7 @@ const propTypes: PropTypes<typeof Switch> = {
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<SwitchAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -55,6 +62,9 @@ export class Switch {
 
   /** Reduces the switch size and spacing for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
+
+  /** Sets additional ARIA attributes on the switch to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<SwitchAriaAttribute>;
 
   /** Emitted when the user toggles the switch, carrying the new `checked` state in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
@@ -107,18 +117,17 @@ export class Switch {
     return (
       <Host>
         <button
-          {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
+          {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked, this.aria)}
           id={id}
           type="button"
           role="switch"
-          aria-labelledby="label" // only relevant for axe-core because of https://github.com/dequelabs/axe-core/issues/1393
           aria-describedby={this.loading ? loadingId : null}
           onClick={this.onSwitchClick}
         >
           {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
           <span class="toggle">{this.loading && <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />}</span>
         </button>
-        <label id="label" htmlFor={id}>
+        <label htmlFor={id}>
           <slot />
         </label>
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
