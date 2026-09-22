@@ -27,7 +27,8 @@ maintained; only their PDS version is rewritten at release time.
 | **A11y tests**          | `patterns/tests/a11y/` (axe + aria snapshots)   | `tests/a11y/`, all 12 pages     | ✅ done      |
 | **E2E tests**           | `patterns/tests/e2e/`                           | `tests/e2e/`, all 12 pages      | ✅ done      |
 | **`robots.txt`**        | `{patterns,templates}/public/robots.txt`        | `noindex` meta tag instead      | ✅ done      |
-| **Deployment**          | `deploy.yml` → gh-pages per slug                | –                               | ❌ missing   |
+| **Preview deploy**      | `deploy.yml` → gh-pages per slug                | –                               | ❌ missing   |
+| Released deploy         | `deploy.yml` → gh-pages per slug                | stays there, all 9 artifacts    | ↔ by design  |
 | **Storefront wiring**   | consumed via hardcoded GitHub URLs              | unchanged, still points outside | ❌ missing   |
 | **Release job**         | manual version bump per release                 | –                               | ❌ missing   |
 | Framework apps (7)      | `frameworks/*`                                  | stay there, version rewritten   | ↔ by design  |
@@ -67,26 +68,46 @@ ship an indexable page.
 > Non-HTML assets in `public/` (the dummy `porsche-models.pdf`) are not covered — a meta tag only applies to HTML. That
 > needs an `X-Robots-Tag` response header, which only the deploy target can set, so it belongs to A2.
 
-### A2. Deploy the two generated projects
+### A2. Preview the two generated projects
 
 `dist/patterns` and `dist/templates` are built by CI but published nowhere, so nothing can link to them yet.
 
+**Decided (2026-09-22): the released deployment stays in the examples repository's CI. The monorepo deploys previews
+only.** The earlier framing — gh-pages there versus S3 + CloudFront here, pick one — was wrong, because the two are not
+alternatives for the same artifact.
+
+Why the release deploy cannot move here, from reading that repository's
+[`deploy.yml`](https://github.com/porsche-design-system/examples/blob/main/.github/workflows/deploy.yml): it checks out
+`gh-pages`, runs `rm -rf ./{slug}`, downloads **all nine** artifacts (`patterns`, `templates` and the seven frameworks)
+into `{slug}/{name}/`, and force-pushes.
+
+1. **Deployment follows the build.** Seven of those nine are built there and stay there (Track B), so the deploy has to
+   run where they are.
+2. **That tree admits exactly one publisher.** A second job writing `{slug}/patterns/` would be deleted by the next
+   `rm -rf` and force-push — silently, not with a conflict.
+3. **The URLs are already released.** `GITHUB_PAGES_BASE` is a hardcoded constant compiled into the storefront bundle,
+   so `…/examples/v4/…` has to keep being served for every storefront version already out there.
+
+What the monorepo CI should own instead is the **unreleased** case: a per-slug preview (`pr-1234`, `nightly`) so a
+change here can be reviewed before it reaches a release. In its own namespace — never in the examples `gh-pages` tree,
+for reason 2.
+
 - `base` is already parameterised — `PATTERNS_PUBLIC_BASE_PATH` and `TEMPLATES_PUBLIC_BASE_PATH` in
   [`plugins/projects.ts`](plugins/projects.ts) — and matches what the external `build.yml` set. No source change needed.
-- **Decision required:** gh-pages (what the external repo did, keeps URLs stable) vs. the storefront's S3 + CloudFront
-  path already wired in [`deploy.yml`](../../.github/workflows/deploy.yml). The latter aligns the demos with the
-  storefront's own slug scheme (`pr-1234`, `nightly`, `v4`) and OIDC roles; the former avoids inventing a new bucket
-  layout and keeps the existing public URLs working.
-- Whichever is chosen, the job needs: build → `vite build` both projects (`build:verify` already does this into
-  `dist-tmp/`) → upload per slug.
+- The job needs: build → `vite build` both projects (`build:verify` already does this into `dist-tmp/`) → publish per
+  slug.
 - It also owns the one thing A1 could not: an `X-Robots-Tag: noindex` response header, so the non-HTML assets in
-  `public/` are covered too. If the target is a domain root, an origin-root `robots.txt` becomes possible there as well
-  — unlike the per-project one the external repo shipped.
+  `public/` are covered too.
 
-> **This does not duplicate Track B.** The examples repository keeps deploying the **released** examples, from its own
-> `deploy.yml`, at the stable public URLs. A2 is about the **unreleased** ones: a per-slug preview (`pr-1234`,
-> `nightly`) so a change here can be reviewed visually before it ever reaches a release. The two answer different
-> questions and both are wanted.
+**Still open — which preview mechanism:**
+
+| Mechanism                                                  | For                                                                                                                  | Against                                                                                                                 |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Ride along in `storefront/public/` (AGENTS.md open item 4) | No new infrastructure, bucket layout or OIDC role; same-origin, and version-matched with the storefront consuming it | Adds ~68 MB per storefront deploy — `public/` is 34 MB and is copied into **both** projects, against a 24 MB storefront |
+| Separate per-slug upload to the storefront bucket          | Keeps the storefront deploy lean                                                                                     | Needs its own prefix, wiring and lifecycle                                                                              |
+
+The 68 MB is not fixed: AGENTS.md open item 6 (split `public/` per category) roughly halves it, and the cost is
+CloudFront storage and deploy time, not anything a visitor downloads.
 
 ### A3. Repoint the storefront
 
@@ -97,9 +118,11 @@ const GITHUB_TREE_BASE = 'https://github.com/porsche-design-system/examples/tree
 const GITHUB_PAGES_BASE = 'https://porsche-design-system.github.io/examples';
 ```
 
-Both must follow A2. The `sourceCodePath` also has to point into this monorepo instead — note the source now lives at
-`packages/examples/src/…` and is TSX, while `viewPath` addresses the **built** project, so the two no longer share a
-prefix the way they did.
+`GITHUB_PAGES_BASE` **stays** — A2 settled that the released examples keep being served from `gh-pages` at those URLs.
+What changes is that it can no longer be a single constant: a preview storefront has to address the preview deploy of
+its own slug instead, so the base becomes environment-dependent. `GITHUB_TREE_BASE` moves to this monorepo, and
+`sourceCodePath` with it — note the source now lives at `packages/examples/src/…` and is TSX, while `viewPath` addresses
+the **built** project, so the two no longer share a prefix the way they did.
 
 Paths additionally moved from a numeric scheme to semantic names:
 
@@ -120,7 +143,8 @@ Touches 6 mdx files under `packages/storefront/src/app/(main)/{patterns,template
 headings too ("Variant 1" → "Overlay" / "Stacked"), so the docs match the names the examples now use.
 
 > **Old URLs will 404** for anyone who bookmarked them, and the numeric paths are baked into released storefront
-> versions. If gh-pages is kept (A2), leave redirects behind; if not, accept the break and note it.
+> versions, which keep requesting `…/examples/v4/patterns/header/1`. Since A2 keeps `gh-pages`, the fix is available:
+> leave the numeric paths behind as redirects to the semantic ones. Cheap, and it keeps released storefronts working.
 
 ### A4. Port the a11y and e2e suites — done
 
@@ -241,7 +265,8 @@ stops owning is `patterns/` and `templates/`, which arrive from here.
 
 1. Mark `patterns/` and `templates/` as generated there — a header comment plus CODEOWNERS — so an edit made in that
    repository is not silently lost at the next release.
-2. Leave gh-pages redirects if the deploy target changed in A2.
+2. Leave the numeric `viewPath`s behind as redirects to the semantic ones (A3), so released storefront versions keep
+   working.
 3. Update [`docs/release.md`](../../docs/release.md) — the "Integration test" step tells the releaser to open the
    external repo and bump versions by hand across seven apps. B1 replaces it with the release job; the step becomes
    "review the pull request it opened".
