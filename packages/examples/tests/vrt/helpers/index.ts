@@ -1,4 +1,5 @@
 import type { Page } from '@playwright/test';
+import { rewriteCdnUrlsForDev } from '../../../plugins/partials.ts';
 
 /**
  * What a VRT capture of an example needs before the screenshot is taken.
@@ -33,9 +34,35 @@ export type ExampleScenarioOptions = {
  */
 const externalImageStub = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="40" viewBox="0 0 64 40"><rect width="64" height="40" rx="4" fill="#C8CACB"/></svg>`;
 
+/**
+ * The one external origin a test redirects instead of refusing: the Porsche Design System CDN.
+ *
+ * `previewProject.ts` rewrites the emitted HTML to the local CDN, but it can only reach the URLs that are **literal**
+ * in the markup – the preloads, the fonts, the icons. The loader script builds its own URL at runtime by
+ * concatenation (`"https://cdn.ui.porsche." + ("cn" === … ? "cn" : "com")`), so the production origin never appears
+ * as a string and survives every rewrite. The page therefore fetches the components themselves from the production
+ * CDN, which a test must not do: without a network the components never upgrade and the run times out, and with one
+ * the suite silently measures a released version instead of the build under test.
+ *
+ * Routing it here closes both. The mapping is the same one the preview applies, so the test and the preview agree on
+ * what the local CDN stands for.
+ */
+
 /** Everything outside the preview server and the local CDN is answered by the test, not by the network. */
 const stubExternalRequests = async (page: Page): Promise<void> => {
   await page.route(/^https?:\/\/(?!localhost|127\.0\.0\.1)/, async (route) => {
+    const url = route.request().url();
+
+    // The one external origin that is redirected rather than refused – see the note above.
+    const localCdnUrl = rewriteCdnUrlsForDev(url);
+    if (localCdnUrl !== url) {
+      // Fetched and fulfilled rather than continued: `route.continue()` refuses to cross protocols (the CDN is
+      // https, `serve-cdn` is http). Fulfilling also keeps the response on the original origin as far as the page is
+      // concerned, so the `crossorigin` loader script is not a CORS request in the first place.
+      await route.fulfill({ response: await route.fetch({ url: localCdnUrl }) });
+      return;
+    }
+
     if (route.request().resourceType() === 'image') {
       await route.fulfill({ contentType: 'image/svg+xml', body: externalImageStub });
     } else {
