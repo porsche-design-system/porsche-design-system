@@ -1,7 +1,7 @@
 # Migrating the examples repository into the monorepo
 
-> Status as of 2026-09-18. Tracks the replacement of
-> [`porsche-design-system/examples`](https://github.com/porsche-design-system/examples) by this package.
+> Status as of 2026-09-22. Tracks the move of the example **content** into this package, and the release job that
+> updates [`porsche-design-system/examples`](https://github.com/porsche-design-system/examples) from here.
 >
 > Companion documents: [`AGENTS.md`](AGENTS.md) (how the package works, plus its own open items) and
 > [`COMPARISON.md`](COMPARISON.md) (why the template layer is TSX).
@@ -9,8 +9,12 @@
 ## Where we stand
 
 The **content** of the `patterns` and `templates` workspaces is fully ported, and the build emits the two standalone
-Vite projects that are meant to replace them. What is missing is everything _around_ those pages: the seven framework
-starter apps, a deployment, and the storefront wiring that points at them. All four test suites are in place.
+Vite projects that replace them. All four test suites are in place. What is missing is everything _around_ those pages:
+a deployment, the storefront wiring that points at it, and the release job that pushes the result to the examples
+repository.
+
+The examples repository is **kept**, as a publication target — see Track B. The seven framework apps stay there, hand
+maintained; only their PDS version is rewritten at release time.
 
 | Area                    | External repo                                   | Here                            | State        |
 | ----------------------- | ----------------------------------------------- | ------------------------------- | ------------ |
@@ -22,14 +26,14 @@ starter apps, a deployment, and the storefront wiring that points at them. All f
 | CI test job             | `test.yml`                                      | `Examples` job in `test.yml`    | ✅ added     |
 | **A11y tests**          | `patterns/tests/a11y/` (axe + aria snapshots)   | `tests/a11y/`, all 12 pages     | ✅ done      |
 | **E2E tests**           | `patterns/tests/e2e/`                           | `tests/e2e/`, all 12 pages      | ✅ done      |
-| **`robots.txt`**        | `{patterns,templates}/public/robots.txt`        | –                               | ❌ missing   |
+| **`robots.txt`**        | `{patterns,templates}/public/robots.txt`        | `noindex` meta tag instead      | ✅ done      |
 | **Deployment**          | `deploy.yml` → gh-pages per slug                | –                               | ❌ missing   |
 | **Storefront wiring**   | consumed via hardcoded GitHub URLs              | unchanged, still points outside | ❌ missing   |
-| **Framework apps (7)**  | `frameworks/*`                                  | –                               | ❌ missing   |
+| **Release job**         | manual version bump per release                 | –                               | ❌ missing   |
+| Framework apps (7)      | `frameworks/*`                                  | stay there, version rewritten   | ↔ by design  |
 | **Release docs**        | `docs/release.md` points at the external repo   | unchanged                       | ❌ stale     |
 
-Track A and C below are small. **Track B is the long pole and is the only reason the external repository still has to
-exist.**
+Track A ships what is already here. Track B is the release job. Track C is what the external repository still owns.
 
 ---
 
@@ -37,15 +41,31 @@ exist.**
 
 Unblocks patterns and templates independently of the framework apps. Each step is landable on its own.
 
-### A1. `robots.txt` per generated project
+### A1. Keep the generated projects out of search results — done
 
-The external projects shipped `User-agent: *` / `Disallow: /` so the demos never got indexed. `public/` here has no
-`robots.txt`, so the generated projects would be indexable the moment they are deployed.
+The external projects shipped `User-agent: *` / `Disallow: /` in `{patterns,templates}/public/robots.txt`, with the
+intent that the demos never got indexed.
 
-- Add it to `public/`, or emit it from [`scripts/generateProject.ts`](scripts/generateProject.ts) alongside
-  `package.json` and `vite.config.ts`.
-- Emitting is the better fit: it is deployment policy, not an asset of the examples, and it keeps `public/` purely
-  content. It also survives the per-category `public/` split (AGENTS.md open item 6).
+**That file never did anything, and was deliberately not ported.** A `robots.txt` is only ever read at the **origin
+root**, and the projects are served from a path. Verified against the live deployment:
+
+| URL                                          | Response                      |
+| -------------------------------------------- | ----------------------------- |
+| `porsche-design-system.github.io/robots.txt` | GitHub Pages "Site not found" |
+| `…github.io/examples/v4/patterns/robots.txt` | `200`, `Disallow: /`          |
+
+The origin root has no `robots.txt` at all, so everything has been crawlable the whole time; the shipped file sits where
+no crawler looks. Emitting it from [`scripts/generateProject.ts`](scripts/generateProject.ts) would have faithfully
+reproduced a no-op.
+
+`<meta name="robots" content="noindex" />` in [`src/_partials/Head.tsx`](src/_partials/Head.tsx) does the job instead.
+It is honoured wherever a page is served, so it is independent of the A2 decision below, and one line covers every page:
+all four layouts (`BasePage`, `CanvasPage`, `OverviewPage`, `PatternPage`) render their `<head>` through that partial. A
+unit test asserts it on the partial and on every rendered page, so a layout growing its own `<head>` cannot silently
+ship an indexable page.
+
+> Non-HTML assets in `public/` (the dummy `porsche-models.pdf`) are not covered — a meta tag only applies to HTML. That
+> needs an `X-Robots-Tag` response header, which only the deploy target can set, so it belongs to A2.
 
 ### A2. Deploy the two generated projects
 
@@ -59,6 +79,14 @@ The external projects shipped `User-agent: *` / `Disallow: /` so the demos never
   layout and keeps the existing public URLs working.
 - Whichever is chosen, the job needs: build → `vite build` both projects (`build:verify` already does this into
   `dist-tmp/`) → upload per slug.
+- It also owns the one thing A1 could not: an `X-Robots-Tag: noindex` response header, so the non-HTML assets in
+  `public/` are covered too. If the target is a domain root, an origin-root `robots.txt` becomes possible there as well
+  — unlike the per-project one the external repo shipped.
+
+> **This does not duplicate Track B.** The examples repository keeps deploying the **released** examples, from its own
+> `deploy.yml`, at the stable public URLs. A2 is about the **unreleased** ones: a per-slug preview (`pr-1234`,
+> `nightly`) so a change here can be reviewed visually before it ever reaches a release. The two answer different
+> questions and both are wanted.
 
 ### A3. Repoint the storefront
 
@@ -127,46 +155,98 @@ three are documented with helpers in [`AGENTS.md`](AGENTS.md#end-to-end-tests).
 
 > **Prerequisite discovered while doing this:** the Playwright suites could not run at all, because the loader builds
 > its CDN URL by concatenation and the test helper aborted that request. Fixed in
-> [`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts). One consequence is open and blocks trusting the VRT — see
-> item 0 of [`AGENTS.md`](AGENTS.md#status-and-open-items).
+> [`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts). The VRT baselines have since been verified against that
+> fix — a full Docker run matches all 83 of them — so the suite can be trusted; see
+> [`AGENTS.md`](AGENTS.md#status-and-open-items).
 
 ---
 
-## Track B — port the seven framework apps
+## Track B — release the examples repository from here
 
-**The long pole.** `frameworks/{angular,astro,next-js,react,react-router,vanilla-js,vue}` — each a full starter app with
-its own `package.json`, build, Playwright e2e config, and a `README.md`. All seven are linked from the storefront
-(`/developing/{framework}/demo` and `/developing/{framework}/form`), and `docs/release.md` uses them as the manual
-integration test for release candidates.
+**Decided (2026-09-22): the external repository is kept as a publication target, not retired, and it is updated by a
+release job rather than by hand.** The monorepo is where the examples are developed and tested; the examples repository
+is where they are shown, at a released PDS version.
 
-They are **not** the same as the existing wrapper test apps in `packages/components-{react,angular,vue}/projects/` —
-those exist to test the wrappers; these are consumer-facing demos of a form and a colour-scheme switch. `astro`,
-`vanilla-js` and `react-router` have no monorepo counterpart at all.
+That reframes what used to be this track. The old plan was to port
+`frameworks/{angular,astro,next-js,react,react-router,vanilla-js,vue}` into the monorepo, and it was "the long pole"
+blocking everything. It no longer blocks: **the seven apps stay where they are, hand maintained in the examples
+repository.** What the release job does to them is rewrite their PDS version.
 
-**Decision required before any work starts:** one workspace per framework under `packages/examples/frameworks/*`
-(faithful port, seven new entries in the root `workspaces` array), or fold them into the existing wrapper projects (less
-duplication, but mixes test apps with published demos and does not cover astro / vanilla-js).
+### B1. The release job
 
-Per app, the port needs: workspace registration, dependency reconciliation against the monorepo's syncpack policy, a
-build wired into `build.yml` with its `*_PUBLIC_BASE_PATH`, an e2e job, a deploy artifact, and ORT / Dependabot
-coverage. The external repo's `overrides` block (babel, zod, postcss) also has to be reconciled with the monorepo's.
+Triggered by a release, parameterised by the published version:
 
-The monorepo should consume its **local** PDS build here, which is the main advantage over the external repo: the
-release-candidate integration test in `docs/release.md` becomes automatic instead of a manual version bump in a separate
-repository.
+1. **Replace `patterns/` and `templates/`** with `dist/{patterns,templates}` from this package. They are already
+   drop-in: same workspace names (`@porsche-design-system/{patterns,templates}`), and
+   [`generateProject.ts`](scripts/generateProject.ts) already pins their PDS version from this package's own
+   `package.json` — the comment there says "so they never drift apart". Note that this makes the generated version
+   whatever **this repository** currently declares, which is the released one only at release time; the job should set
+   it from the release explicitly rather than trust the checkout.
+2. **Rewrite the four PDS specifiers** in `frameworks/*/package.json` to the released version. Nothing else in those
+   apps is touched.
+3. **`npm install`** at the repository root, which resolves the single lockfile. This can only run _after_ step 2.
+4. **Build and run the e2e suites** of the assembled tree.
+5. **Open a pull request**, so the examples repository's own CI runs on the result and the diff can be reviewed before
+   it is public. Auto-merge on green if this should be hands-off.
+
+Step 4 is the point of the exercise, not an afterthought: it is the "Integration test" of
+[`docs/release.md`](../../docs/release.md) — open seven apps, bump the version by hand, build, preview, eyeball — turned
+into a gate.
+
+Two things the emitted folders need once they are output: a "generated, do not edit" marker and CODEOWNERS on
+`patterns/` and `templates/`, because an edit made there would otherwise be silently lost at the next release.
+
+### B2. Notes on the shape of this
+
+- **`dist/` is source, not a built site.** `dist/patterns` is a Vite project (`package.json`, `vite.config.ts`, `src/`);
+  the examples repository still runs its own build. Replacing the folder therefore changes nothing about how that
+  repository builds or deploys.
+- **The lockfile is produced, never generated.** A lockfile is the output of resolution against the registry, not
+  authored content — the one place here that already bundles framework projects,
+  `packages/storefront/projects/stackblitz/scripts/generateStackblitzBundle.ts`, explicitly skips `package-lock.json`
+  for that reason. Producing it with one `npm install` per release is right; templating it is not.
+- **Nothing else in the repository shell is generated.** `biome.json`, `docker.sh`, `docker-compose.yml`, `.ort.yml`,
+  `.github/`, `.syncpackrc.json` and `docs/` stay hand maintained there. Generating them would mean owning a templated
+  second copy of infrastructure decisions this monorepo has already made. The root `package.json` is the one open
+  question: it names all nine workspaces across ~30 scripts, so adding or removing an example means editing it.
+
+### B3. Deferred: should the seven apps move into the monorepo after all?
+
+Left open on purpose, and no longer blocking. The trade is narrower than it first looked, because `docs/release.md`
+already publishes release candidates to npm:
+
+|                                      | Tests an RC | Tests an unpublished local build |
+| ------------------------------------ | ----------- | -------------------------------- |
+| Apps stay, release job bumps version | ✅          | ❌                               |
+| Apps move into the monorepo          | ✅          | ✅                               |
+
+Moving them in would mean each app resolves `@porsche-design-system/components-react` to
+`packages/components-react/dist/react-wrapper` through the workspace symlink, so breaking changes surface during
+development instead of at release. It would also bring their dependencies under syncpack — they sit at `4.6.0` today
+while this repository is at `4.7.0`.
+
+Against that: the framework apps are **consumer** demos, and consuming a published package from a separate repository is
+what a consumer actually does; resolving a symlinked wrapper `dist/` is not. Moving them in costs some of that fidelity,
+plus seven workspace registrations, dependency reconciliation (including the external `overrides` block for babel, zod
+and postcss), ORT and Dependabot coverage, and seven more builds in this repository's CI.
+
+If they ever do move, B1 does not change shape — `frameworks/*` simply joins step 1 instead of step 2.
 
 ---
 
-## Track C — retire the external repository
+## Track C — settle what the external repository still owns
 
-Only possible once A and B are done.
+It is **not** retired (see Track B). It keeps its shell, its CI, its deployment and the seven framework apps; what it
+stops owning is `patterns/` and `templates/`, which arrive from here.
 
-1. Archive `porsche-design-system/examples`, or reduce it to a README pointing here.
+1. Mark `patterns/` and `templates/` as generated there — a header comment plus CODEOWNERS — so an edit made in that
+   repository is not silently lost at the next release.
 2. Leave gh-pages redirects if the deploy target changed in A2.
-3. Update [`docs/release.md`](../../docs/release.md) — the "Integration test" step still tells the releaser to open the
-   external repo and bump versions by hand. With the apps in-repo against the local build, that step largely disappears.
-4. Fold the external repo's remaining infrastructure that has no monorepo equivalent (`.ort.yml` entries,
-   `dependabot.yml`, CODEOWNERS) into the monorepo's.
+3. Update [`docs/release.md`](../../docs/release.md) — the "Integration test" step tells the releaser to open the
+   external repo and bump versions by hand across seven apps. B1 replaces it with the release job; the step becomes
+   "review the pull request it opened".
+4. Reconcile the two repositories' infrastructure where it has drifted (`.ort.yml` entries, `dependabot.yml`,
+   CODEOWNERS), rather than folding one into the other.
 5. Close the AGENTS.md open items that this migration subsumes — notably item 4 (storefront hookup), which A2/A3
    resolve.
 

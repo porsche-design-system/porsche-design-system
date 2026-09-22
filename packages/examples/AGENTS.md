@@ -429,9 +429,22 @@ section.
 
 ## Status and open items
 
-Point-in-time notes, last updated 2026-08-21.
+Point-in-time notes, last updated 2026-09-22.
 
 Done:
+
+- **The VRT baselines are verified (2026-09-22).** They were recorded before the loader fix (`b7987a9c21`) and were
+  therefore suspect: `stubExternalRequests()` used to abort the loader's request for the components, so it was unclear
+  what the committed screenshots had actually captured. A full `./docker.sh npm run test:vrt:examples` against a freshly
+  built `components` / `components-js` matches **all 83 baselines**, with no diff and nothing to regenerate. Two things
+  make that a real result rather than a green tick:
+  - the route handler either rewrites `cdn.ui.porsche.com` to the local CDN or aborts the request, so it can never fall
+    through to production – a pass means the local build rendered the page;
+  - confirmed by negative control: with `packages/assets/cdn/components` moved aside, the very same capture hangs in
+    `waitForComponentsReady()` until it times out.
+
+  The baselines therefore predate the fix but do not depend on it, because everything that landed in
+  `packages/components` since they were written is test- and typecheck-only.
 
 - **Visual regression tests added (2026-08-21)**, in `tests/vrt/`, run by `npm run test:vrt:examples` and by a new
   `Examples` job in [`test.yml`](../../.github/workflows/test.yml) (which also runs the unit tests – the package had no
@@ -547,17 +560,12 @@ Done:
 
 Open:
 
-0. **The VRT baselines are unverified, and the suite has never run in CI.** The `Examples` job failed at its first step
-   (`test:unit:examples`) with `Cannot find package 'preact-render-to-string'` – the package's dependency pins were
-   stale, which is fixed now – so `test:vrt:examples` was never reached. On top of that the suite could not have passed
-   anywhere: `stubExternalRequests()` aborted the loader's request for the components, because `rewriteCdnUrlsForDev()`
-   cannot reach a URL the loader **concatenates at runtime** (`"https://cdn.ui.porsche." + (… ? "cn" : "com")`). The
-   test helper now routes that origin to the local CDN instead of refusing it, so the suite runs and genuinely exercises
-   the local build – but the committed baselines predate that and were recorded against whatever the page rendered then.
-   **Regenerate them in Docker and review the diff before trusting the suite.** The same gap still affects
-   `npm run preview:examples/*` for humans: the preview loads its components from the production CDN, which only
-   `serve-cdn` serving the `/porsche-design-system` prefix (or a rewrite that understands the concatenation) would
-   close.
+0. The preview loads its components from the production CDN. `rewriteCdnUrlsForDev()` rewrites the URLs that are
+   **literal** in the markup, but the loader builds its own by concatenation at runtime
+   (`"https://cdn.ui.porsche." + (… ? "cn" : "com")`), so that one origin survives every rewrite. The Playwright suites
+   close it in their route handler (see [`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)); for
+   `npm run preview:examples/*` only `serve-cdn` serving the `/porsche-design-system` prefix, or a rewrite that
+   understands the concatenation, would.
 1. Consider dropping the Prettier formatting pass in favour of accepting dense output.
 2. Revisit whether `_layouts`/`_partials` should become `components/`, and whether the `_` underscore rule is still the
    clearest way to mark build-time-only inputs now that only the `*.page.tsx` marker distinguishes pages.
