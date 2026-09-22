@@ -195,6 +195,7 @@
     "test:e2e:storefront:4/4": "npm run test:e2e:4/4 --workspace=@porsche-design-system/storefront",
     "test:e2e:storefront:sitemap": "npm run test:e2e:sitemap --workspace=@porsche-design-system/storefront",
     "test:a11y:components-js": "npm run test:a11y --workspace=@porsche-design-system/js",
+    "test:a11y:examples": "npm run test:a11y --workspace=@porsche-design-system/examples",
     "test:a11y:storefront": "npm run test:a11y --workspace=@porsche-design-system/storefront",
     "test:a11y:storefront:1/6": "npm run test:a11y:1/6 --workspace=@porsche-design-system/storefront",
     "test:a11y:storefront:2/6": "npm run test:a11y:2/6 --workspace=@porsche-design-system/storefront",

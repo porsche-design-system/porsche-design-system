@@ -136,6 +136,7 @@ A test asserts that the overview pages contain no `href="#"` and that the chrome
 npm run start:examples      # dev server on http://localhost:3010
 npm run build:examples      # writes ./dist (gitignored)
 npm run test:unit:examples  # vitest
+npm run test:a11y:examples  # playwright + axe-core – builds both projects and scans every page
 npm run test:vrt:examples   # playwright – builds both projects and screenshots every page
 
 # build one generated project and serve the result against the local CDN
@@ -148,6 +149,33 @@ npm run build:verify        # build + `vite build` of both generated projects in
 
 **Run the VRT in Docker** – `./docker.sh npm run test:vrt:examples` – like every other visual regression suite in this
 monorepo. The committed baselines are the ones the container produces; a run on macOS renders different pixels.
+
+## Accessibility tests
+
+The suite lives in [`tests/a11y/`](tests/a11y) and scans **every page of both projects** with axe-core, at two viewports
+(320, 1000) × the two colour schemes, plus the states the initial scan cannot reach.
+
+- **It covers the layer the other suites cannot.** The unit tests assert the rendered markup – one `main` landmark, no
+  unlabelled `<nav>`, at most one first level heading, `aria-current` on the active item – before a browser is involved.
+  Axe checks what the browser _computes_: contrast, the accessible name a label resolves to through a shadow root,
+  whether an `aria-*` value is valid on the role it ends up on.
+- **Nothing is scoped or disabled in the fixture.** The component suites of `packages/components-js` switch off the
+  rules that expect a page-level `main` and an `h1`, because they render one component in isolation. An example _is_ a
+  whole page, so those rules are exactly the ones worth running. A rule that genuinely does not apply is disabled **per
+  page** with a reason – today only `page-has-heading-one`, for the footer pattern, which is a section and not a page.
+- **The interaction states are scanned too:** the navigation drilldown (opened through the id contract in
+  [`src/_ids.ts`](src/_ids.ts)) and the confirmation both feedback patterns end in, the dialog variant with its
+  `p-modal` open.
+- Like the VRT it runs against the **built** projects, sharing the web servers in
+  [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts). Chromium only – axe measures the tree the
+  browser computes, so a second engine would measure the engine.
+
+> **Why there are no aria snapshot tests.** They would pin the composed accessibility tree, but every invariant they
+> would catch here is already pinned closer to its cause: the static composition by the unit tests, and each component's
+> own subtree by the a11y tree suite in `packages/components-js/tests/a11y/specs/a11ytree/`. A page-level snapshot sits
+> on top of both and is churned by every prose edit and every component-internal change — the examples repository's own
+> snapshots had already collected `status`, `alert` and `text: ""` nodes that leaked out of component shadow roots. If
+> one is ever added, scope it to a subtree that is genuinely composition, not to `body`.
 
 ## Visual regression tests
 
@@ -484,6 +512,17 @@ Done:
 
 Open:
 
+0. **The VRT baselines are unverified, and the suite has never run in CI.** The `Examples` job failed at its first step
+   (`test:unit:examples`) with `Cannot find package 'preact-render-to-string'` – the package's dependency pins were
+   stale, which is fixed now – so `test:vrt:examples` was never reached. On top of that the suite could not have passed
+   anywhere: `stubExternalRequests()` aborted the loader's request for the components, because `rewriteCdnUrlsForDev()`
+   cannot reach a URL the loader **concatenates at runtime** (`"https://cdn.ui.porsche." + (… ? "cn" : "com")`). The
+   test helper now routes that origin to the local CDN instead of refusing it, so the suite runs and genuinely exercises
+   the local build – but the committed baselines predate that and were recorded against whatever the page rendered then.
+   **Regenerate them in Docker and review the diff before trusting the suite.** The same gap still affects
+   `npm run preview:examples/*` for humans: the preview loads its components from the production CDN, which only
+   `serve-cdn` serving the `/porsche-design-system` prefix (or a rewrite that understands the concatenation) would
+   close.
 1. Consider dropping the Prettier formatting pass in favour of accepting dense output.
 2. Revisit whether `_layouts`/`_partials` should become `components/`, and whether the `_` underscore rule is still the
    clearest way to mark build-time-only inputs now that only the `*.page.tsx` marker distinguishes pages.

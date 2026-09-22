@@ -15,8 +15,10 @@
     "build": "tsx scripts/build.ts",
     "build:verify": "tsx scripts/verify.ts",
     "lint": "biome lint",
-    "test": "npm run test:unit && npm run test:vrt",
+    "test": "npm run test:unit && npm run test:a11y && npm run test:vrt",
     "test:unit": "vitest run",
+    "pretest:a11y": "npm run build",
+    "test:a11y": "playwright test --config=tests/a11y/config/playwright.config.ts",
     "pretest:vrt": "npm run build",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "test:vrt:chrome": "npm run test:vrt -- --project=chrome",
@@ -29,6 +31,7 @@
     "clean:build": "rm -rf ./dist ./dist-tmp"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "1.61.0",
     "@porsche-design-system/components": "4.7.0",
     "@porsche-design-system/components-js": "4.7.0",

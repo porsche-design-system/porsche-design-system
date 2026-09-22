@@ -20,7 +20,7 @@ starter apps, a deployment, the storefront wiring that points at them, and two o
 | Unit tests              | –                                               | `tests/unit/`                   | ✅ added     |
 | VRT                     | `patterns/tests/vrt/` (header only)             | `tests/vrt/` (all pages)        | ✅ exceeded  |
 | CI test job             | `test.yml`                                      | `Examples` job in `test.yml`    | ✅ added     |
-| **A11y tests**          | `patterns/tests/a11y/` (axe + aria snapshots)   | –                               | ❌ missing   |
+| **A11y tests**          | `patterns/tests/a11y/` (axe + aria snapshots)   | `tests/a11y/`, all 12 pages     | ✅ done      |
 | **E2E tests**           | `patterns/tests/e2e/`                           | –                               | ❌ missing   |
 | **`robots.txt`**        | `{patterns,templates}/public/robots.txt`        | –                               | ❌ missing   |
 | **Deployment**          | `deploy.yml` → gh-pages per slug                | –                               | ❌ missing   |
@@ -96,18 +96,32 @@ headings too ("Variant 1" → "Overlay" / "Stacked"), so the docs match the name
 
 ### A4. Port the a11y and e2e suites
 
-The external `patterns/tests/` carried two suites this package does not have:
+The external `patterns/tests/` carried two suites this package did not have:
 
 - **a11y** — `@axe-core/playwright` plus `aria.yml` snapshots, for `feedback-1` and `header-1` only.
 - **e2e** — behavioural specs, for `feedback-1` and `header-1` only.
 
-Both were partial. Since the VRT spec here already globs `*.page.tsx`, prefer porting them **globbed** rather than per
-page, so new examples are covered automatically — the accessibility baseline in `AGENTS.md` is written as a property of
-every page, and a11y coverage of 2 of 10 pages does not enforce it. The e2e suite is the one place the controlled-mode
-behaviour (`main.js`) is actually exercised.
+**a11y is done.** [`tests/a11y/`](tests/a11y) scans all 12 pages (globbed from `*.page.tsx`, so a new example is covered
+without touching the spec) at two viewports × both colour schemes, plus the drilldown and the feedback confirmation — 54
+checks against the built projects. Wired into `test:a11y:examples` and the `Examples` CI job. See
+[`AGENTS.md`](AGENTS.md#accessibility-tests).
 
-Needs `@axe-core/playwright` added to this package and new `test:a11y:examples` / `test:e2e:examples` scripts wired into
-the root `package.json` and the `Examples` CI job.
+**The aria snapshots were deliberately not ported.** Every invariant they would catch here is already pinned closer to
+its cause: the static composition (one `main`, no unlabelled `<nav>`, at most one `h1`, `aria-current`) by the 241 unit
+tests, and each component's own subtree by `packages/components-js/tests/a11y/specs/a11ytree/`. A page-level snapshot
+sits on top of both and is churned by every prose edit and every component-internal change — the external repo's own two
+snapshots had already collected `status`, `alert` and `text: ""` nodes that leaked out of component shadow roots, and
+they covered 2 of 10 pages. Axe is the layer that was genuinely missing, because it checks what the browser _computes_:
+contrast, names resolved through shadow roots, ARIA validity after upgrade.
+
+**e2e is still open.** It is the one place the controlled-mode behaviour in `main.js` is exercised as behaviour rather
+than as a scanned end state. Port it globbed as well, and add `test:e2e:examples` to the root `package.json` and the
+`Examples` CI job.
+
+> **Prerequisite discovered while doing this:** the Playwright suites could not run at all, because the loader builds
+> its CDN URL by concatenation and the test helper aborted that request. Fixed in
+> [`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts). One consequence is open and blocks trusting the VRT — see
+> item 0 of [`AGENTS.md`](AGENTS.md#status-and-open-items).
 
 ---
 
