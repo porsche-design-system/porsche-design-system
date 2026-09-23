@@ -83,15 +83,30 @@ avoid two publishers in one tree; a single publisher to one target removes the p
 it also drops the `rm -rf {slug}` + force-push pattern, which stores every deploy as binary blobs in git forever — fine
 at the examples repository's release cadence, not at the monorepo's pull request cadence.
 
-| Monorepo event             | Slug      | Where PDS comes from                           |
-| -------------------------- | --------- | ---------------------------------------------- |
-| stable / RC / beta / alpha | `v4.8.0`  | the published version — `npm install` from npm |
-| nightly (push to `main`)   | `nightly` | tarballs of the local build                    |
-| pull request               | `pr-1234` | tarballs of the local build                    |
+| Monorepo event              | Slug                           | Where PDS comes from                           |
+| --------------------------- | ------------------------------ | ---------------------------------------------- |
+| stable release `4.8.0`      | `v4.8.0` **and** `v4`          | the published version — `npm install` from npm |
+| RC / beta / alpha           | `v5.0.0-rc.0` — **never** `v5` | the published version — `npm install` from npm |
+| push to version branch `v5` | `v5-preview`                   | tarballs of the local build                    |
+| nightly (push to `main`)    | `nightly`                      | tarballs of the local build                    |
+| pull request                | `pr-1234`                      | tarballs of the local build                    |
 
-The slugs are the ones [`contribution.yml`](../../.github/workflows/contribution.yml) already resolves, so the examples
-land beside the storefront of the same event. Release candidates and betas need no special case: per
-[`docs/release.md`](../../docs/release.md) they are published to npm (just not tagged), so they are an ordinary version.
+The slugs are the ones [`contribution.yml`](../../.github/workflows/contribution.yml) and
+[`release.yml`](../../.github/workflows/release.yml) already resolve, so the examples land beside the storefront of the
+same event. Release candidates and betas need no special case for npm: per [`docs/release.md`](../../docs/release.md)
+they are published (just not tagged), so they are an ordinary version.
+
+**The major alias is the one that matters, and it is the easy thing to get wrong.** A stable release writes _two_ slugs:
+the pinned `v4.8.0` and the moving `v4`. The storefront addresses the examples by **major** — `WebsiteViewer.tsx` builds
+its URL from `localPorscheDesignSystemMajorVersion`, so every released storefront requests `…/v4/patterns/…`, never
+`…/v4.8.0/…`. Publishing only the pinned slug would leave every released storefront pointing at whatever `v4` last
+contained.
+
+The converse is the footgun: a pre-release must **never** write the major alias. Per `docs/release.md`, `5.0.0-rc.0`
+gets `/v5.0.0-rc.0/` and never `/v5/` — an RC that moved the alias would replace the stable examples that every released
+storefront of that major is framing. The release role is already scoped for this (it "writes `nightly/*` and `v*`;
+deletes moving slugs only"), and `release.yml` already distinguishes the two through its `is-stable` and `major-slug`
+outputs, so the deploy job should take the alias decision from there rather than re-deriving it.
 
 #### Unreleased builds already work — the CDN is content-addressed
 
@@ -168,12 +183,13 @@ const GITHUB_TREE_BASE = 'https://github.com/porsche-design-system/examples/tree
 const GITHUB_PAGES_BASE = 'https://porsche-design-system.github.io/examples';
 ```
 
-Both constants go. `GITHUB_PAGES_BASE` disappears entirely: A2 puts the examples in the storefront's own bucket under
-the storefront's own slug, so the viewer addresses them by a **same-origin relative path** instead of a second origin.
-That also removes the cross-origin iframe and the risk of a storefront showing examples from a different build than its
-own. `GITHUB_TREE_BASE` moves to this monorepo, and `sourceCodePath` with it — note the source now lives at
+Both constants go, and with them the `v${localPorscheDesignSystemMajorVersion}` segment each is interpolated into.
+`GITHUB_PAGES_BASE` disappears entirely: A2 puts the examples in the storefront's own bucket under the storefront's own
+slug, so the viewer addresses them by a **same-origin relative path** instead of a second origin and a major it has to
+derive. That removes the cross-origin iframe, and with it the case where a `v4.8.0` storefront frames whatever `v4` last
+contained. `GITHUB_TREE_BASE` moves to this monorepo, and `sourceCodePath` with it — note the source now lives at
 `packages/examples/src/…` and is TSX, while `viewPath` addresses the **built** project, so the two no longer share a
-prefix the way they did.
+prefix the way they did; the ref it points at is this repository's major branch rather than the examples repository's.
 
 Paths additionally moved from a numeric scheme to semantic names:
 
@@ -194,10 +210,11 @@ Touches 6 mdx files under `packages/storefront/src/app/(main)/{patterns,template
 headings too ("Variant 1" → "Overlay" / "Stacked"), so the docs match the names the examples now use.
 
 > **Already released storefronts keep requesting the old URLs** — `…github.io/examples/v4/patterns/header/1` — because
-> both the origin and the numeric path are compiled into their bundles. Since A2 retires `gh-pages` as a live deploy
-> target, those paths get a one-time write of static `index.html` redirect stubs pointing at the new location: ten for
-> the numeric `viewPath`s above, plus the seven framework paths `/developing/{framework}/…` links to. After that the
-> branch is frozen and never written again.
+> the origin, the major segment and the numeric path are all compiled into their bundles. Since A2 retires `gh-pages` as
+> a live deploy target, those paths get a one-time write of static `index.html` redirect stubs pointing at the new
+> location: ten for the numeric `viewPath`s above, plus the seven framework paths `/developing/{framework}/…` links to.
+> Under **every major segment still in the wild**, not just `v4` — `v3` is still a branch there and older storefronts
+> request `…/examples/v3/…`. After that the branch is frozen and never written again.
 
 ### A4. Port the a11y and e2e suites — done
 
@@ -266,7 +283,13 @@ On a release only — `nightly` and `pr-*` deploy without writing anything there
 2. **Rewrite the four PDS specifiers** in `frameworks/*/package.json` to the released version. Nothing else in those
    apps is touched.
 3. **`npm install`** at the repository root, which resolves the single lockfile. This can only run _after_ step 2.
-4. **Open a pull request**, so that repository's own CI runs on the result and the diff can be reviewed.
+4. **Open a pull request against the major branch**, so that repository's own CI runs on the result and the diff can be
+   reviewed.
+
+**Not against `main`.** That repository is branched per major — `main`, `v4`, `v3` — and the storefront links source at
+`…/examples/tree/v4/…`, again from `localPorscheDesignSystemMajorVersion`. So a `4.8.0` release commits to `v4`, and a
+v3 maintenance release commits to `v3`, mirroring how this repository keeps a major on its own branch. A release that
+targeted `main` would leave the branch the storefront actually reads untouched.
 
 The build-and-verify step that used to be item 4 has moved into A2, where it runs for every event rather than only at
 release time. That is a strict improvement on the "Integration test" of [`docs/release.md`](../../docs/release.md) —
