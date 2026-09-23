@@ -91,6 +91,30 @@ describe('asynchronous options', () => {
   });
 });
 
+describe('optionValueChangeHandler', () => {
+  it('should select an option that receives the matching value after the initial matching', () => {
+    const component = initComponent();
+    const emit = vi.fn();
+    component.change = { emit };
+    component.value = 'a';
+    const option = Object.assign(document.createElement('p-radio-group-option'), { value: undefined, selected: false });
+    component.host.append(option);
+
+    component.componentWillLoad();
+    expect(option.selected).toBe(false);
+
+    option.value = 'a';
+    const event = new Event('internalOptionValueChange', { bubbles: true });
+    const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
+    component.optionValueChangeHandler(event);
+
+    expect(stopPropagationSpy).toHaveBeenCalled();
+    expect(option.selected).toBe(true);
+    expect(component.value).toBe('a');
+    expect(emit).not.toHaveBeenCalled();
+  });
+});
+
 describe('componentDidLoad', () => {
   it('should call setFormValue with correct value', () => {
     const component = initComponent();

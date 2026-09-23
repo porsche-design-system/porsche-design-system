@@ -214,6 +214,14 @@ export class MultiSelect {
     this.updateOptions();
   }
 
+  @Listen('internalOptionValueChange')
+  public optionValueChangeHandler(e: Event): void {
+    e.stopPropagation();
+    if (this.multiSelectOptions.length > 0) {
+      this.selectedOptions = selectOptionsByValue(this.multiSelectOptions, this.value);
+    }
+  }
+
   @Watch('value')
   public onValueChange(): void {
     this.setFormValue();

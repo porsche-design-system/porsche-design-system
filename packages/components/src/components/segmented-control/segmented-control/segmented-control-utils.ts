@@ -92,7 +92,8 @@ export const syncSegmentedControlItemsProps = (
   for (const item of Array.from(host.children).filter(
     (el) => el.slot !== 'label' && el.slot !== 'label-after' && el.slot !== 'message' && el.slot !== 'description'
   )) {
-    (item as Item).selected = (item as Item).value === value;
+    // `undefined`/`null` means "no selection", so an item without a value (yet) is never selected
+    (item as Item).selected = value !== undefined && value !== null && (item as Item).value === value;
     (item as Item).state = state;
     (item as Item).message = message;
     (item as Item).compact = compact;

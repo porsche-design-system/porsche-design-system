@@ -1,8 +1,9 @@
-import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  dispatchInternalOptionValueChange,
   getClosestHTMLElement,
   getOptionAriaAttributes,
   getPrefixedTagNames,
@@ -32,6 +33,11 @@ export class SelectOption {
 
   /** Prevents the option from being selected and visually dims it to indicate it is unavailable. */
   @Prop() public disabled?: boolean = false;
+
+  @Watch('value')
+  public onValueChange(): void {
+    dispatchInternalOptionValueChange(this.host);
+  }
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);

@@ -213,6 +213,14 @@ export class Select {
     this.updateOptions();
   }
 
+  @Listen('internalOptionValueChange')
+  public optionValueChangeHandler(e: Event): void {
+    e.stopPropagation();
+    if (this.selectOptions.length > 0) {
+      this.selectedOption = selectOptionByValue(this.selectOptions, this.value);
+    }
+  }
+
   @Watch('value')
   public onValueChange(): void {
     this.setFormValue();

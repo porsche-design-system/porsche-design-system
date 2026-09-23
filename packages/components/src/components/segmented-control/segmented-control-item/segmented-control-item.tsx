@@ -7,7 +7,6 @@ import {
   hasPropValueChanged,
   isElementOfKind,
   throwIfParentIsNotOfKind,
-  throwIfPropIsUndefined,
   updateParent,
   validateProps,
 } from '../../../utils';
@@ -65,6 +64,12 @@ export class SegmentedControlItem {
     updateParent(this.host);
   }
 
+  @Watch('value')
+  public onValueChange(): void {
+    // the parent re-matches its value against all items when it re-renders
+    updateParent(this.host);
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -75,8 +80,6 @@ export class SegmentedControlItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    // this additional validation is still needed because undefined is allowed with current propTypes
-    throwIfPropIsUndefined(this.host, 'value', this.value);
     const hasIcon = !!this.icon || !!this.iconSource;
     const hasSlottedContent = !!this.host.innerHTML;
 

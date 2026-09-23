@@ -1,11 +1,11 @@
-import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  dispatchInternalOptionValueChange,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
-  throwIfPropIsUndefined,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
@@ -49,6 +49,11 @@ export class RadioGroupOption {
   private initialLoading: boolean = false;
   private inputElement!: HTMLInputElement;
 
+  @Watch('value')
+  public onValueChange(): void {
+    dispatchInternalOptionValueChange(this.host);
+  }
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-radio-group']);
     this.initialLoading = this.loading;
@@ -66,7 +71,6 @@ export class RadioGroupOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    throwIfPropIsUndefined(this.host, 'value', this.value);
     const { selected: isSelected, name, state } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
     const isOptionLoading = this.loading && !isSelected;

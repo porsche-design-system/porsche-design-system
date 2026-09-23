@@ -156,6 +156,19 @@ describe('syncSegmentedControlItemsProps()', () => {
     expect(child2.message).toBe('Some message');
   });
 
+  it('should not select an item without value when value is undefined or null', () => {
+    child1.value = undefined;
+    child2.value = 'b';
+
+    syncSegmentedControlItemsProps(host, undefined, disabled, state, message, compact);
+    expect(child1.selected).toBe(false);
+    expect(child2.selected).toBe(false);
+
+    syncSegmentedControlItemsProps(host, null, disabled, state, message, compact);
+    expect(child1.selected).toBe(false);
+    expect(child2.selected).toBe(false);
+  });
+
   it('should call forceUpdate() on every item', () => {
     const spy = vi.spyOn(stencilCore, 'forceUpdate');
 
