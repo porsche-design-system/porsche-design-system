@@ -1,8 +1,9 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -13,6 +14,7 @@ import {
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-url-styles';
 import type {
+  InputUrlAriaAttribute,
   InputUrlBlurEventDetail,
   InputUrlChangeEventDetail,
   InputUrlInputEventDetail,
@@ -39,6 +41,7 @@ const propTypes: PropTypes<typeof InputUrl> = {
   indicator: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<InputUrlAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -115,6 +118,9 @@ export class InputUrl {
 
   /** Sets a regular expression the entered value must match to be valid. Overrides the browser's default URL validation. */
   @Prop() public pattern?: string;
+
+  /** Sets additional ARIA attributes on the native input to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<InputUrlAriaAttribute>;
 
   /** Emitted when the input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputUrlChangeEventDetail>;
@@ -226,6 +232,7 @@ export class InputUrl {
         loading={this.loading}
         pattern={this.pattern}
         initialLoading={this.initialLoading}
+        aria={this.aria}
         {...(this.indicator && {
           start: <PrefixedTagNames.pIcon aria-hidden="true" name="linked" color="contrast-low" />,
         })}

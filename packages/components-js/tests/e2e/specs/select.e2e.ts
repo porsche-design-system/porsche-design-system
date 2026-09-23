@@ -70,13 +70,11 @@ const getSelectedOptionIndex = async (page: Page): Promise<number> =>
     .locator('p-select p-select-option')
     .evaluateAll((options) => (options as unknown as SelectOption[]).findIndex((option) => option.selected));
 const getHighlightedOptionIndex = async (page: Page): Promise<number> =>
-  await page
-    .locator('p-select p-select-option')
-    .evaluateAll((options) => {
-      const opts = options as unknown as SelectOption[];
-      const highlighted = opts.find((option) => option.highlighted);
-      return highlighted ? opts.filter((option) => !option.hidden).indexOf(highlighted) : -1;
-    });
+  await page.locator('p-select p-select-option').evaluateAll((options) => {
+    const opts = options as unknown as SelectOption[];
+    const highlighted = opts.find((option) => option.highlighted);
+    return highlighted ? opts.filter((option) => !option.hidden).indexOf(highlighted) : -1;
+  });
 
 const getLabel = (page: Page) => page.locator('p-select label');
 
@@ -343,6 +341,23 @@ test('should render', async ({ page }) => {
   await waitForStencilLifecycle(page);
 
   expect(await getDropdownDisplay(page)).toBe('flex');
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the combobox', async ({ page }) => {
+    await initSelect(page, {
+      props: {
+        name: 'options',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const button = getButton(page);
+    await expect(button).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(button).toHaveAttribute('aria-description', 'Accessible description');
+  });
 });
 
 test.describe('Blur Event', () => {
