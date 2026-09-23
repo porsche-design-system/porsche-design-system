@@ -1,7 +1,8 @@
 # Migrating the examples repository into the monorepo
 
-> Status as of 2026-09-22. Tracks the move of the example **content** into this package, and the release job that
-> updates [`porsche-design-system/examples`](https://github.com/porsche-design-system/examples) from here.
+> Status as of 2026-09-23. Tracks the move of the example **content** into this package, the deploy job that publishes
+> every example from this repository's CI, and the commit-back that keeps
+> [`porsche-design-system/examples`](https://github.com/porsche-design-system/examples) current.
 >
 > Companion documents: [`AGENTS.md`](AGENTS.md) (how the package works, plus its own open items) and
 > [`COMPARISON.md`](COMPARISON.md) (why the template layer is TSX).
@@ -10,11 +11,11 @@
 
 The **content** of the `patterns` and `templates` workspaces is fully ported, and the build emits the two standalone
 Vite projects that replace them. All four test suites are in place. What is missing is everything _around_ those pages:
-a deployment, the storefront wiring that points at it, and the release job that pushes the result to the examples
-repository.
+the deploy job, the storefront wiring that points at it, and the commit-back that keeps the examples repository current.
 
-The examples repository is **kept**, as a publication target — see Track B. The seven framework apps stay there, hand
-maintained; only their PDS version is rewritten at release time.
+The examples repository is **kept** as the readable reference at the released version — see Track B. The seven framework
+apps stay there, hand maintained. Its **deployment** moves here (A2): the monorepo's CI builds and deploys all nine, for
+every event, to the storefront's bucket.
 
 | Area                    | External repo                                   | Here                            | State        |
 | ----------------------- | ----------------------------------------------- | ------------------------------- | ------------ |
@@ -27,14 +28,14 @@ maintained; only their PDS version is rewritten at release time.
 | **A11y tests**          | `patterns/tests/a11y/` (axe + aria snapshots)   | `tests/a11y/`, all 12 pages     | ✅ done      |
 | **E2E tests**           | `patterns/tests/e2e/`                           | `tests/e2e/`, all 12 pages      | ✅ done      |
 | **`robots.txt`**        | `{patterns,templates}/public/robots.txt`        | `noindex` meta tag instead      | ✅ done      |
-| **Preview deploy**      | `deploy.yml` → gh-pages per slug                | –                               | ❌ missing   |
-| Released deploy         | `deploy.yml` → gh-pages per slug                | stays there, all 9 artifacts    | ↔ by design  |
+| **Deploy job**          | `deploy.yml` → gh-pages per slug                | –                               | ❌ missing   |
 | **Storefront wiring**   | consumed via hardcoded GitHub URLs              | unchanged, still points outside | ❌ missing   |
-| **Release job**         | manual version bump per release                 | –                               | ❌ missing   |
-| Framework apps (7)      | `frameworks/*`                                  | stay there, version rewritten   | ↔ by design  |
+| **Commit-back job**     | manual version bump per release                 | –                               | ❌ missing   |
+| Framework apps (7)      | `frameworks/*`                                  | stay there, built by A2         | ↔ by design  |
 | **Release docs**        | `docs/release.md` points at the external repo   | unchanged                       | ❌ stale     |
 
-Track A ships what is already here. Track B is the release job. Track C is what the external repository still owns.
+Track A ships what is already here, including the deploy job. Track B keeps the examples repository current. Track C is
+what it still owns.
 
 ---
 
@@ -68,48 +69,95 @@ ship an indexable page.
 > Non-HTML assets in `public/` (the images and the hero video) are not covered — a meta tag only applies to HTML. That
 > needs an `X-Robots-Tag` response header, which only the deploy target can set, so it belongs to A2.
 
-### A2. Preview the two generated projects
+### A2. Deploy every example from the monorepo's CI
 
-`dist/patterns` and `dist/templates` are built by CI but published nowhere, so nothing can link to them yet.
+`dist/patterns` and `dist/templates` are built by CI but published nowhere, so nothing can link to them yet — and the
+examples repository is bumped by hand, so what it shows lags behind.
 
-**Decided (2026-09-22): the released deployment stays in the examples repository's CI. The monorepo deploys previews
-only.** The earlier framing — gh-pages there versus S3 + CloudFront here, pick one — was wrong, because the two are not
-alternatives for the same artifact.
+**Decided (2026-09-23): the monorepo's CI drives every deployment, for every event, to the storefront's S3 + CloudFront.
+`gh-pages` is retired to redirect stubs.** Each monorepo event deploys the examples under the slug that event already
+resolves, next to the storefront it belongs to.
 
-Why the release deploy cannot move here, from reading that repository's
-[`deploy.yml`](https://github.com/porsche-design-system/examples/blob/main/.github/workflows/deploy.yml): it checks out
-`gh-pages`, runs `rm -rf ./{slug}`, downloads **all nine** artifacts (`patterns`, `templates` and the seven frameworks)
-into `{slug}/{name}/`, and force-pushes.
+This supersedes the earlier "released deploys stay on gh-pages, the monorepo previews only" split. That split existed to
+avoid two publishers in one tree; a single publisher to one target removes the problem instead of working around it, and
+it also drops the `rm -rf {slug}` + force-push pattern, which stores every deploy as binary blobs in git forever — fine
+at the examples repository's release cadence, not at the monorepo's pull request cadence.
 
-1. **Deployment follows the build.** Seven of those nine are built there and stay there (Track B), so the deploy has to
-   run where they are.
-2. **That tree admits exactly one publisher.** A second job writing `{slug}/patterns/` would be deleted by the next
-   `rm -rf` and force-push — silently, not with a conflict.
-3. **The URLs are already released.** `GITHUB_PAGES_BASE` is a hardcoded constant compiled into the storefront bundle,
-   so `…/examples/v4/…` has to keep being served for every storefront version already out there.
+| Monorepo event             | Slug      | Where PDS comes from                           |
+| -------------------------- | --------- | ---------------------------------------------- |
+| stable / RC / beta / alpha | `v4.8.0`  | the published version — `npm install` from npm |
+| nightly (push to `main`)   | `nightly` | tarballs of the local build                    |
+| pull request               | `pr-1234` | tarballs of the local build                    |
 
-What the monorepo CI should own instead is the **unreleased** case: a per-slug preview (`pr-1234`, `nightly`) so a
-change here can be reviewed before it reaches a release. In its own namespace — never in the examples `gh-pages` tree,
-for reason 2.
+The slugs are the ones [`contribution.yml`](../../.github/workflows/contribution.yml) already resolves, so the examples
+land beside the storefront of the same event. Release candidates and betas need no special case: per
+[`docs/release.md`](../../docs/release.md) they are published to npm (just not tagged), so they are an ordinary version.
+
+#### Unreleased builds already work — the CDN is content-addressed
+
+The obvious objection is that `main` and a pull request have no published version, so the framework apps have nothing to
+install and the components have nothing to load. The second half is already solved:
+
+1. Every file the CDN serves carries a content hash, the entry included:
+   `porsche-design-system.v4.7.0.ddcf26e0ebc20b1e2cb0.js`, `porsche-design-system.accordion.b1b568d824087555d732.js`.
+2. [`deploy.yml`](../../.github/workflows/deploy.yml) rclones `packages/assets/cdn/components/` to the CDN on **every
+   push and same-repo pull request**, not only on releases, with `--ignore-existing`. Hashed names make a collision
+   impossible, so an unreleased build's chunks simply coexist with the released ones.
+3. The **partials** in the built wrapper embed that same hash — it is greppable in
+   `components-wrapper/partials/{esm,cjs}` — and the generated `vite.config.ts` injects those partials at build time.
+
+So an example built against the locally built wrapper requests exactly the chunks that run has just uploaded. Nothing
+new is needed for the CDN; this is how the storefront previews already work.
+
+#### The one real gap: getting the wrappers in without a release
+
+The wrapper `dist/` folders **are** the npm packages (tarball root, `package.json` included — see
+[`docs/public-api.md`](../../docs/public-api.md)), so they can be packed and installed directly:
+
+```bash
+npm pack packages/components-{js,angular,react,vue}/dist/*-wrapper   # → 4 tarballs, uploaded as an artifact
+```
+
+In the examples checkout, point the **root** `package.json` at them and install:
+
+```json
+"overrides": {
+  "@porsche-design-system/components-js": "file:./.pds/components-js.tgz",
+  "@porsche-design-system/components-angular": "file:./.pds/components-angular.tgz",
+  "@porsche-design-system/components-react": "file:./.pds/components-react.tgz",
+  "@porsche-design-system/components-vue": "file:./.pds/components-vue.tgz"
+}
+```
+
+`overrides` is the right lever: it redirects all nine workspaces at once whatever each of them declares, so there is no
+per-workspace juggling and the committed specifiers stay untouched. It has to be **merged** with the block already there
+(babel, zod, postcss), not replace it. For a release this whole step is skipped — the version is rewritten and installed
+from npm instead, which is what makes the release deploy a test of the artifact consumers will actually get.
+
+#### What the job does
+
+1. Check out the examples repository; replace `patterns/` and `templates/` with `dist/{patterns,templates}` built here,
+   so a pull request previews the examples **as changed in that pull request**.
+2. Point PDS at the tarballs (or rewrite to the released version) and `npm install`.
+3. `npm run build --workspaces`, with each app's `*_PUBLIC_BASE_PATH` set from the slug.
+4. Run the e2e suites.
+5. Upload to the storefront bucket under the slug.
+
+Only a release additionally commits the regenerated folders and the version bumps back to the examples repository, as a
+pull request (Track B); `nightly` and `pr-*` deploy without writing anything there.
+
+Other notes:
 
 - `base` is already parameterised — `PATTERNS_PUBLIC_BASE_PATH` and `TEMPLATES_PUBLIC_BASE_PATH` in
-  [`plugins/projects.ts`](plugins/projects.ts) — and matches what the external `build.yml` set. No source change needed.
-- The job needs: build → `vite build` both projects (`build:verify` already does this into `dist-tmp/`) → publish per
-  slug.
-- It also owns the one thing A1 could not: an `X-Robots-Tag: noindex` response header, so the non-HTML assets in
-  `public/` are covered too.
-
-**Still open — which preview mechanism:**
-
-| Mechanism                                                  | For                                                                                                                  | Against                                                                                                                  |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Ride along in `storefront/public/` (AGENTS.md open item 4) | No new infrastructure, bucket layout or OIDC role; same-origin, and version-matched with the storefront consuming it | Adds ~20 MB per storefront deploy — `public/` is 9.9 MB and is copied into **both** projects, against a 24 MB storefront |
-| Separate per-slug upload to the storefront bucket          | Keeps the storefront deploy lean                                                                                     | Needs its own prefix, wiring and lifecycle                                                                               |
-
-The 20 MB is what is left after deleting the 80 unused assets that came across with the port (24 MB of the original 34
-MB, `porsche-models.pdf` alone 12 MB). AGENTS.md open item 6 (split `public/` per category) would save only about 2.2 MB
-more, since the 7.8 MB hero video is used by both projects; the cost is CloudFront storage and deploy time, not anything
-a visitor downloads.
+  [`plugins/projects.ts`](plugins/projects.ts). No source change needed.
+- The bucket also gives A1 the thing a meta tag could not: an `X-Robots-Tag: noindex` response header, covering the
+  images and the hero video.
+- `pr-*` already has a 90-day lifecycle rule and [`cleanup-preview.yml`](../../.github/workflows/cleanup-preview.yml)
+  removing it when the pull request closes, so the preview examples inherit a retention policy rather than needing one.
+- Deploying into the storefront's own slug keeps the examples same-origin with the storefront that links to them, which
+  is what lets A3 drop the cross-origin constant.
+- Publishing next to the storefront rather than inside it (AGENTS.md open item 4, copying into `storefront/public/`)
+  keeps ~20 MB of images out of every storefront build. The two generated projects carry 9.9 MB of `public/` each.
 
 ### A3. Repoint the storefront
 
@@ -120,11 +168,12 @@ const GITHUB_TREE_BASE = 'https://github.com/porsche-design-system/examples/tree
 const GITHUB_PAGES_BASE = 'https://porsche-design-system.github.io/examples';
 ```
 
-`GITHUB_PAGES_BASE` **stays** — A2 settled that the released examples keep being served from `gh-pages` at those URLs.
-What changes is that it can no longer be a single constant: a preview storefront has to address the preview deploy of
-its own slug instead, so the base becomes environment-dependent. `GITHUB_TREE_BASE` moves to this monorepo, and
-`sourceCodePath` with it — note the source now lives at `packages/examples/src/…` and is TSX, while `viewPath` addresses
-the **built** project, so the two no longer share a prefix the way they did.
+Both constants go. `GITHUB_PAGES_BASE` disappears entirely: A2 puts the examples in the storefront's own bucket under
+the storefront's own slug, so the viewer addresses them by a **same-origin relative path** instead of a second origin.
+That also removes the cross-origin iframe and the risk of a storefront showing examples from a different build than its
+own. `GITHUB_TREE_BASE` moves to this monorepo, and `sourceCodePath` with it — note the source now lives at
+`packages/examples/src/…` and is TSX, while `viewPath` addresses the **built** project, so the two no longer share a
+prefix the way they did.
 
 Paths additionally moved from a numeric scheme to semantic names:
 
@@ -144,9 +193,11 @@ Paths additionally moved from a numeric scheme to semantic names:
 Touches 6 mdx files under `packages/storefront/src/app/(main)/{patterns,templates}/`. Consider renaming the storefront
 headings too ("Variant 1" → "Overlay" / "Stacked"), so the docs match the names the examples now use.
 
-> **Old URLs will 404** for anyone who bookmarked them, and the numeric paths are baked into released storefront
-> versions, which keep requesting `…/examples/v4/patterns/header/1`. Since A2 keeps `gh-pages`, the fix is available:
-> leave the numeric paths behind as redirects to the semantic ones. Cheap, and it keeps released storefronts working.
+> **Already released storefronts keep requesting the old URLs** — `…github.io/examples/v4/patterns/header/1` — because
+> both the origin and the numeric path are compiled into their bundles. Since A2 retires `gh-pages` as a live deploy
+> target, those paths get a one-time write of static `index.html` redirect stubs pointing at the new location: ten for
+> the numeric `viewPath`s above, plus the seven framework paths `/developing/{framework}/…` links to. After that the
+> branch is frozen and never written again.
 
 ### A4. Port the a11y and e2e suites — done
 
@@ -198,9 +249,13 @@ That reframes what used to be this track. The old plan was to port
 blocking everything. It no longer blocks: **the seven apps stay where they are, hand maintained in the examples
 repository.** What the release job does to them is rewrite their PDS version.
 
-### B1. The release job
+### B1. The commit-back job
 
-Triggered by a release, parameterised by the published version:
+A2 already builds, tests and deploys every event, including releases. What is left for this track is narrower than it
+was: keeping the examples repository's **source** current, so it stays a readable reference at the released version
+rather than drifting (it sits at `4.6.0` today).
+
+On a release only — `nightly` and `pr-*` deploy without writing anything there:
 
 1. **Replace `patterns/` and `templates/`** with `dist/{patterns,templates}` from this package. They are already
    drop-in: same workspace names (`@porsche-design-system/{patterns,templates}`), and
@@ -211,13 +266,12 @@ Triggered by a release, parameterised by the published version:
 2. **Rewrite the four PDS specifiers** in `frameworks/*/package.json` to the released version. Nothing else in those
    apps is touched.
 3. **`npm install`** at the repository root, which resolves the single lockfile. This can only run _after_ step 2.
-4. **Build and run the e2e suites** of the assembled tree.
-5. **Open a pull request**, so the examples repository's own CI runs on the result and the diff can be reviewed before
-   it is public. Auto-merge on green if this should be hands-off.
+4. **Open a pull request**, so that repository's own CI runs on the result and the diff can be reviewed.
 
-Step 4 is the point of the exercise, not an afterthought: it is the "Integration test" of
-[`docs/release.md`](../../docs/release.md) — open seven apps, bump the version by hand, build, preview, eyeball — turned
-into a gate.
+The build-and-verify step that used to be item 4 has moved into A2, where it runs for every event rather than only at
+release time. That is a strict improvement on the "Integration test" of [`docs/release.md`](../../docs/release.md) —
+open seven apps, bump the version by hand, build, preview, eyeball — which stops being a release chore and becomes a
+pull request gate.
 
 Two things the emitted folders need once they are output: a "generated, do not edit" marker and CODEOWNERS on
 `patterns/` and `templates/`, because an edit made there would otherwise be silently lost at the next release.
@@ -238,40 +292,42 @@ Two things the emitted folders need once they are output: a "generated, do not e
 
 ### B3. Deferred: should the seven apps move into the monorepo after all?
 
-Left open on purpose, and no longer blocking. The trade is narrower than it first looked, because `docs/release.md`
-already publishes release candidates to npm:
+Left open on purpose, and weaker than it was. The argument for moving them used to be that only a workspace can be built
+against an unpublished PDS. A2's tarball overrides do the same thing without moving anything:
 
-|                                      | Tests an RC | Tests an unpublished local build |
-| ------------------------------------ | ----------- | -------------------------------- |
-| Apps stay, release job bumps version | ✅          | ❌                               |
-| Apps move into the monorepo          | ✅          | ✅                               |
+|                                | Tests a release | Tests an RC | Tests an unpublished build |
+| ------------------------------ | --------------- | ----------- | -------------------------- |
+| Apps stay, A2 injects tarballs | ✅              | ✅          | ✅                         |
+| Apps move into the monorepo    | ✅              | ✅          | ✅                         |
 
-Moving them in would mean each app resolves `@porsche-design-system/components-react` to
-`packages/components-react/dist/react-wrapper` through the workspace symlink, so breaking changes surface during
-development instead of at release. It would also bring their dependencies under syncpack — they sit at `4.6.0` today
-while this repository is at `4.7.0`.
+What remains for moving them is narrower: their dependencies would come under syncpack instead of drifting (they sit at
+`4.6.0` today while this repository is at `4.7.0`), and a breaking change would surface in the editor rather than in a
+CI job.
 
-Against that: the framework apps are **consumer** demos, and consuming a published package from a separate repository is
-what a consumer actually does; resolving a symlinked wrapper `dist/` is not. Moving them in costs some of that fidelity,
-plus seven workspace registrations, dependency reconciliation (including the external `overrides` block for babel, zod
-and postcss), ORT and Dependabot coverage, and seven more builds in this repository's CI.
+Against: the framework apps are **consumer** demos, and installing a real tarball from a separate repository is much
+closer to what a consumer does than resolving a symlinked wrapper `dist/` — so A2 arguably has the better fidelity of
+the two. Moving them would also cost seven workspace registrations, dependency reconciliation (including the external
+`overrides` block for babel, zod and postcss), ORT and Dependabot coverage, and seven more builds in this repository's
+CI.
 
-If they ever do move, B1 does not change shape — `frameworks/*` simply joins step 1 instead of step 2.
+If they ever do move, neither A2 nor B1 changes shape — `frameworks/*` is simply already present instead of being
+checked out.
 
 ---
 
 ## Track C — settle what the external repository still owns
 
-It is **not** retired (see Track B). It keeps its shell, its CI, its deployment and the seven framework apps; what it
-stops owning is `patterns/` and `templates/`, which arrive from here.
+It is **not** retired (see Track B). It keeps its shell and the seven framework apps, and stays the readable reference
+at the released version. What it stops owning is `patterns/` and `templates/`, which arrive from here, and its
+**deployment**, which A2 moves to this repository's CI.
 
 1. Mark `patterns/` and `templates/` as generated there — a header comment plus CODEOWNERS — so an edit made in that
    repository is not silently lost at the next release.
-2. Leave the numeric `viewPath`s behind as redirects to the semantic ones (A3), so released storefront versions keep
-   working.
+2. Retire `deploy.yml` there and write the `gh-pages` redirect stubs once (A3), so released storefront versions keep
+   working after the branch is frozen. Its `build.yml` stays useful for validating changes made in that repository.
 3. Update [`docs/release.md`](../../docs/release.md) — the "Integration test" step tells the releaser to open the
-   external repo and bump versions by hand across seven apps. B1 replaces it with the release job; the step becomes
-   "review the pull request it opened".
+   external repo and bump versions by hand across seven apps. A2 makes that a gate on every event; the step becomes
+   "review the pull request B1 opened".
 4. Reconcile the two repositories' infrastructure where it has drifted (`.ort.yml` entries, `dependabot.yml`,
    CODEOWNERS), rather than folding one into the other.
 5. Close the AGENTS.md open items that this migration subsumes — notably item 4 (storefront hookup), which A2/A3
