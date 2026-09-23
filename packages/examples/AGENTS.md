@@ -433,6 +433,16 @@ Point-in-time notes, last updated 2026-09-22.
 
 Done:
 
+- **`public/` reduced to what the pages actually load (2026-09-22).** 80 of its 94 files were unreferenced — they came
+  across with the port and nothing ever linked them. Deleting them takes the folder from 34 MB to 9.9 MB, and since it
+  is copied into both generated projects, the emitted footprint from 68 MB to ~20 MB. The largest were
+  `porsche-models.pdf` (12 MB), `gt3-sound.wav` and `718-rocks.png` (2.4 MB each). Five of them (`lights.jpg`,
+  `ocean.jpg`, `ocean.mp4`, `weekender.webp`, `weekender@2x.webp`) also exist in `packages/shared/src/dummyassets`,
+  which is what the rest of the monorepo references over `serve-dummyassets` on port 3002 — those references are to that
+  copy, not to this one. The 14 survivors were confirmed twice, by grepping the sources and by extracting every asset
+  URL from the built HTML, JS and CSS; the two lists agreed, and the VRT then passed unchanged, which is what proves no
+  page lost an image.
+
 - **The VRT baselines are verified (2026-09-22).** They were recorded before the loader fix (`b7987a9c21`) and were
   therefore suspect: `stubExternalRequests()` used to abort the loader's request for the components, so it was unclear
   what the committed screenshots had actually captured. A full `./docker.sh npm run test:vrt:examples` against a freshly
@@ -575,7 +585,11 @@ Open:
    the docs.
 5. Derive the preloaded component chunks per project from the rendered markup, instead of the hand kept lists in
    [`plugins/projects.ts`](plugins/projects.ts).
-6. `public/` is copied into both projects in full; split it per category once the asset lists diverge.
+6. `public/` is copied into both projects in full; split it per category once the asset lists diverge. With only 14
+   assets left the lists are now known exactly: `trolley.webp` (56 kB) is patterns-only, the other ten are
+   templates-only (2.1 MB), and the `mood-porsche-gts.*` trio (7.8 MB) is genuinely shared. Splitting would therefore
+   save about 2.2 MB of the ~20 MB emitted, not half of it — the hero video dominates and has to be duplicated either
+   way.
 7. The category tabs of `patterns/header/stacked` do not settle at 200% font size when the machine is busy – they flip
    between showing and hiding their scroll affordance, which is why that one VRT capture is skipped. Worth a look at the
    pattern (or at `p-tabs-bar`), not at the test.

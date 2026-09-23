@@ -65,7 +65,7 @@ all four layouts (`BasePage`, `CanvasPage`, `OverviewPage`, `PatternPage`) rende
 unit test asserts it on the partial and on every rendered page, so a layout growing its own `<head>` cannot silently
 ship an indexable page.
 
-> Non-HTML assets in `public/` (the dummy `porsche-models.pdf`) are not covered — a meta tag only applies to HTML. That
+> Non-HTML assets in `public/` (the images and the hero video) are not covered — a meta tag only applies to HTML. That
 > needs an `X-Robots-Tag` response header, which only the deploy target can set, so it belongs to A2.
 
 ### A2. Preview the two generated projects
@@ -101,13 +101,15 @@ for reason 2.
 
 **Still open — which preview mechanism:**
 
-| Mechanism                                                  | For                                                                                                                  | Against                                                                                                                 |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Ride along in `storefront/public/` (AGENTS.md open item 4) | No new infrastructure, bucket layout or OIDC role; same-origin, and version-matched with the storefront consuming it | Adds ~68 MB per storefront deploy — `public/` is 34 MB and is copied into **both** projects, against a 24 MB storefront |
-| Separate per-slug upload to the storefront bucket          | Keeps the storefront deploy lean                                                                                     | Needs its own prefix, wiring and lifecycle                                                                              |
+| Mechanism                                                  | For                                                                                                                  | Against                                                                                                                  |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Ride along in `storefront/public/` (AGENTS.md open item 4) | No new infrastructure, bucket layout or OIDC role; same-origin, and version-matched with the storefront consuming it | Adds ~20 MB per storefront deploy — `public/` is 9.9 MB and is copied into **both** projects, against a 24 MB storefront |
+| Separate per-slug upload to the storefront bucket          | Keeps the storefront deploy lean                                                                                     | Needs its own prefix, wiring and lifecycle                                                                               |
 
-The 68 MB is not fixed: AGENTS.md open item 6 (split `public/` per category) roughly halves it, and the cost is
-CloudFront storage and deploy time, not anything a visitor downloads.
+The 20 MB is what is left after deleting the 80 unused assets that came across with the port (24 MB of the original 34
+MB, `porsche-models.pdf` alone 12 MB). AGENTS.md open item 6 (split `public/` per category) would save only about 2.2 MB
+more, since the 7.8 MB hero video is used by both projects; the cost is CloudFront storage and deploy time, not anything
+a visitor downloads.
 
 ### A3. Repoint the storefront
 
