@@ -7,7 +7,7 @@
   {
     "chunkShortName": "ai-tag",
     "size": 10113,
-    "gzipSize": 4431
+    "gzipSize": 4430
   },
   {
     "chunkShortName": "banner",
@@ -36,8 +36,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 56776,
-    "gzipSize": 22188
+    "size": 56772,
+    "gzipSize": 22185
   },
   {
     "chunkShortName": "checkbox",
@@ -57,7 +57,7 @@
   {
     "chunkShortName": "divider",
     "size": 2782,
-    "gzipSize": 1336
+    "gzipSize": 1335
   },
   {
     "chunkShortName": "drilldown",

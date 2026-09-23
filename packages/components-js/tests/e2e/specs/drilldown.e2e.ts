@@ -585,6 +585,28 @@ test.describe('second level', () => {
     await expect(getDrilldownItem(page, 'item-3')).toHaveCount(0);
   });
 
+  test('should show second level of item added to a drilldown that mounted without items', async ({ page }) => {
+    await initBasicDrilldown(page, { open: true }, { amount: 0 });
+    const host = getHost(page);
+
+    await expect(getDrilldownItem(page, 'item-1')).toHaveCount(0);
+
+    await host.evaluate((el) => {
+      const newItem = document.createElement('p-drilldown-item');
+      newItem.innerHTML = '<a href="#some-anchor">Some anchor</a>';
+      newItem.setAttribute('identifier', 'item-1');
+      el.appendChild(newItem);
+    });
+    await waitForStencilLifecycle(page);
+
+    await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+
+    await setProperty(host, 'activeIdentifier', 'item-1');
+    await waitForStencilLifecycle(page);
+
+    await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'grid');
+  });
+
   skipInBrowsers(['webkit'], () => {
     test.fixme(
       'should show correct second level when drilldown-item with currently activeIdentifier is added',

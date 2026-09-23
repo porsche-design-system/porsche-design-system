@@ -35,6 +35,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
 - `Ai Tag`: the `generated` variant displayed Czech text instead of Slovak for Slovak locales.
   ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
+- `Tabs`, `Tabs Bar`, `Stepper Horizontal`: components permanently stopped reacting to slotted content changes after
+  being moved in the DOM (disconnected and reconnected)
+  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
+- `Select`, `Multi Select`: an option added inside an `Optgroup` was not marked as selected when it matched the
+  currently set value
+  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
+- `Stepper Horizontal`: the page scrolled vertically at initial render in Firefox and Safari when the stepper was
+  below the fold and the current step required a horizontal scroll
+  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
 
 ## [4.7.0] - 2026-09-09
 

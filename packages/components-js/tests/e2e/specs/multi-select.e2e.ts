@@ -2098,6 +2098,38 @@ test.describe('slots', () => {
     await expect(host).toHaveJSProperty('value', ['c']);
     await expect(buttonElement.locator('span').first()).toHaveText('Option C'); // Selection is kept for controlled async filtering to work
   });
+
+  test('should update when option matching the value is added to an optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { values: [[]], includeOptgroups: true } });
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+
+    await setValue(page, ['d']);
+
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('');
+
+    await addOptionToOptgroup(page, '0', 'd', 'Option D');
+
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option D');
+  });
+
+  test('should update when option is added to a multi-select that mounted without options', async ({ page }) => {
+    await initMultiSelect(page, { options: { values: [] } });
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+
+    await setValue(page, ['d']);
+
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('');
+
+    await addOption(page, 'd', 'Option D');
+
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option D');
+  });
 });
 
 test.describe('lifecycle', () => {

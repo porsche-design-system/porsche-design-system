@@ -78,7 +78,6 @@ export class TabsBar {
 
   private bar: HTMLElement;
   private scroller: HTMLElement;
-  private slot: HTMLSlotElement;
   private hasPTabsParent: boolean;
   private isTabList: boolean;
   private resizeObserver: ResizeObserver;
@@ -96,7 +95,6 @@ export class TabsBar {
   }
 
   public disconnectedCallback(): void {
-    this.slot?.removeEventListener('slotchange', this.onSlotChange);
     this.resizeObserver?.disconnect();
   }
 
@@ -112,8 +110,6 @@ export class TabsBar {
     // scroll active tab into view initially
     scrollTabIntoView(this.activeTabIndex, this.scroller, this.tabs, false);
 
-    // it would be better to use `<slot onslotchange={() => {}} />` in jsx but that doesn't work reliable or triggers initially when component is rendered via js framework
-    this.slot.addEventListener('slotchange', this.onSlotChange);
     this.resizeObserver = new ResizeObserver(() => {
       // scroll into view in case the active tab is not centered after resize
       scrollTabIntoView(this.activeTabIndex, this.scroller, this.tabs, false);
@@ -150,7 +146,7 @@ export class TabsBar {
         onClick={this.onClick}
         onKeyDown={this.onKeydown}
       >
-        <slot ref={(el: HTMLSlotElement) => (this.slot = el)} />
+        <slot onSlotchange={this.onSlotChange} />
         <span class="bar" ref={(el) => (this.bar = el)} />
       </PrefixedTagNames.pScroller>
     );
@@ -184,9 +180,13 @@ export class TabsBar {
   };
 
   private onSlotChange = (): void => {
+    const prevTabs = this.tabs;
     this.defineTabs();
-    // scroll the active tab into view after slot change in case the active tab has changed or is not centered anymore
-    scrollTabIntoView(this.activeTabIndex, this.scroller, this.tabs, false);
+    // slotchange also fires for the initial slot assignment, so only scroll when the slotted tabs actually changed
+    if (hasPropValueChanged(this.tabs, prevTabs)) {
+      // scroll the active tab into view after slot change in case the active tab has changed or is not centered anymore
+      scrollTabIntoView(this.activeTabIndex, this.scroller, this.tabs, false);
+    }
   };
 
   private onClick = (e: MouseEvent): void => {

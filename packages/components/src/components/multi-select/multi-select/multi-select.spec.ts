@@ -1,5 +1,4 @@
 import { vi } from 'vitest';
-import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 import * as loggerUtils from '../../../utils/log/logger';
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
@@ -44,20 +43,6 @@ describe('componentWillLoad', () => {
     component.componentWillLoad();
     expect(setSelectedOptionsSpy).toHaveBeenCalledWith([], component.value);
     expect(setFormValueSpy).toHaveBeenCalledWith(formData);
-  });
-});
-
-describe('componentDidLoad', () => {
-  it('should call getShadowRootHTMLElement() with correct parameters and add event listener', () => {
-    const component = initComponent();
-    const slot = document.createElement('slot');
-    const slotSpy = vi.spyOn(slot, 'addEventListener');
-    const getShadowRootHTMLElementSpy = vi
-      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
-      .mockReturnValueOnce(slot);
-    component.componentDidLoad();
-    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot:not([name])');
-    expect(slotSpy).toHaveBeenCalledTimes(1);
   });
 });
 
