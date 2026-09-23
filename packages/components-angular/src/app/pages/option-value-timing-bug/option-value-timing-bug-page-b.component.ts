@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-radio-group-option-timing-bug-page-b',
+  selector: 'page-option-value-timing-bug-page-b',
   template: `
-    <radio-group-option-timing-bug-navigation />
+    <option-value-timing-bug-navigation />
     <p-heading>Page B</p-heading>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
-export class RadioGroupOptionTimingBugPageBComponent {}
+export class OptionValueTimingBugPageBComponent {}

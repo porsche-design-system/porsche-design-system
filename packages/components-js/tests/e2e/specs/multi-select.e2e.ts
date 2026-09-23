@@ -2679,3 +2679,52 @@ test.describe('form', () => {
     expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
+
+test.describe('option value set after initial render', () => {
+  // Frameworks like Angular can connect an option before its `value` binding is applied (#4743)
+  test('should render option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-multi-select name="options" label="Some label"><p-multi-select-option>Option A</p-multi-select-option></p-multi-select>`
+    );
+    const option = getMultiSelectOption(page, 1);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option.locator('.checkbox')).toBeAttached();
+  });
+
+  test('should select option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-multi-select name="options" label="Some label"><p-multi-select-option>Option A</p-multi-select-option></p-multi-select>`
+    );
+    const option = getMultiSelectOption(page, 1);
+    await setProperty(getHost(page), 'value', ['a']);
+    await waitForStencilLifecycle(page);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('.option--selected')).toBeAttached();
+  });
+
+  test('should select option when its value changes to match the multi select value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-multi-select name="options" label="Some label"><p-multi-select-option value="b">Option A</p-multi-select-option></p-multi-select>`
+    );
+    const option = getMultiSelectOption(page, 1);
+    await setProperty(getHost(page), 'value', ['a']);
+    await waitForStencilLifecycle(page);
+    await expect(option).not.toHaveJSProperty('selected', true);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('.option--selected')).toBeAttached();
+  });
+});

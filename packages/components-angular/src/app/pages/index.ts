@@ -2,7 +2,7 @@ import type { ExtendedRoute } from '../app-routing.module';
 import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.component';
 import { EventsComponent } from './events.component';
 import { OptionalPropertiesComponent } from './optional-properties.component';
-import { radioGroupOptionTimingBugComponents } from './radio-group-option-timing-bug';
+import { optionValueTimingBugComponents } from './option-value-timing-bug';
 import { tabsBarNavigationComponents } from './tabs-bar-navigation';
 import { tabsBarNavigationBugComponents } from './tabs-bar-navigation-bug';
 import { UtilitiesComponent } from './utilities.component';
@@ -14,7 +14,7 @@ export const pages = [
   UtilitiesComponent,
   ...tabsBarNavigationComponents,
   ...tabsBarNavigationBugComponents,
-  ...radioGroupOptionTimingBugComponents,
+  ...optionValueTimingBugComponents,
 ];
 
 export * from './core-initializer-prefixed.component';
@@ -23,7 +23,7 @@ export * from './optional-properties.component';
 export * from './utilities.component';
 export * from './tabs-bar-navigation';
 export * from './tabs-bar-navigation-bug';
-export * from './radio-group-option-timing-bug';
+export * from './option-value-timing-bug';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';

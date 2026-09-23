@@ -46,15 +46,15 @@ export const routes: ExtendedRoute[] = [
     ],
   },
   {
-    name: 'Radio Group Option Timing Bug',
-    path: 'radio-group-option-timing-bug',
-    redirectTo: 'radio-group-option-timing-bug/page-a',
+    name: 'Option Value Timing Bug',
+    path: 'option-value-timing-bug',
+    redirectTo: 'option-value-timing-bug/page-a',
   },
   {
-    path: 'radio-group-option-timing-bug',
+    path: 'option-value-timing-bug',
     children: [
-      { path: 'page-a', component: fromPages.RadioGroupOptionTimingBugPageAComponent },
-      { path: 'page-b', component: fromPages.RadioGroupOptionTimingBugPageBComponent },
+      { path: 'page-a', component: fromPages.OptionValueTimingBugPageAComponent },
+      { path: 'page-b', component: fromPages.OptionValueTimingBugPageBComponent },
     ],
   },
   {
