@@ -1,0 +1,33 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/bEXOI0BAd6pXjvIG1mpWIN/Porsche-Web-Design-System--Renato-Code-Connect--Copy-?node-id=34317-74666
+// source=https://designsystem.porsche.com/v4/components/button-tile/api
+// component=p-button-tile
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { slotted } from '../../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const slotHeader = instance.getSlot('slot-header');
+const aspectRatio = instance.getEnum('aspectRatio', {
+  '1/1': '1/1',
+  '16/9': '16/9',
+  '3/4': '3/4',
+  '4/3': '4/3',
+  '9/16': '9/16',
+  auto: 'auto',
+});
+const align = instance.getEnum('align', {
+  bottom: 'bottom',
+  top: 'top',
+});
+
+export default {
+  example: figma.code`<p-button-tile [aspectRatio]="'${aspectRatio}'" [align]="'${align}'">${slotted(slotHeader, 'slot-header', '<!-- slot="header" -->')}</p-button-tile>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4/components/button-tile/api',
+    "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
+  ],
+  id: 'p-button-tile',
+  metadata: { nestable: true },
+};

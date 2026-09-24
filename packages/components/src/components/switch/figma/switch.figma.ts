@@ -1,0 +1,27 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/bEXOI0BAd6pXjvIG1mpWIN/Porsche-Web-Design-System--Renato-Code-Connect--Copy-?node-id=50-552
+// source=https://designsystem.porsche.com/v4/components/switch/api
+// component=p-switch
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+
+const instance = figma.selectedInstance;
+
+const slotDefault = instance.getString('slot-default');
+const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
+const checked = instance.getEnum('checked', { false: false, true: true });
+const alignLabel = instance.getEnum('alignLabel', {
+  end: 'end',
+  start: 'start',
+});
+const disabled = instance.getEnum('disabled', { false: false, true: true });
+const loading = instance.getEnum('loading', { false: false, true: true });
+const stretch = instance.getEnum('stretch', { false: false, true: true });
+const compact = instance.getEnum('compact', { false: false, true: true });
+
+export default {
+  example: figma.code`<p-switch${hideLabel ? ' hide-label="true"' : ''}${checked ? ' checked="true"' : ''} align-label="${alignLabel}"${disabled ? ' disabled="true"' : ''}${loading ? ' loading="true"' : ''}${stretch ? ' stretch="true"' : ''}${compact ? ' compact="true"' : ''}>${slotDefault}</p-switch>`,
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/switch/api -->'],
+  id: 'p-switch',
+  metadata: { nestable: true },
+};
