@@ -2,7 +2,7 @@
   "p-accordion": ["indent", "sticky"],
   "p-ai-tag": ["locale"],
   "p-banner": ["description", "open", "position"],
-  "p-button": ["iconSource", "type", "variant=destructive"],
+  "p-button": ["type", "variant=destructive"],
   "p-button-pure": ["color=inherit", "iconSource", "size", "slot-default", "type", "underline"],
   "p-button-tile": [
     "compact",
