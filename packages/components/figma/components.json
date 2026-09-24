@@ -1,6 +1,6 @@
 {
   "fileUrl": "https://www.figma.com/design/bEXOI0BAd6pXjvIG1mpWIN/Porsche-Web-Design-System--Renato-Code-Connect--Copy-",
-  "pulledAt": "2026-09-23T13:55:40.964Z",
+  "pulledAt": "2026-09-24T09:55:03.616Z",
   "components": [
     {
       "id": "44948:8887",
@@ -2064,7 +2064,8 @@
           "defaultValue": "primary",
           "variantOptions": [
             "primary",
-            "secondary"
+            "secondary",
+            "destructive"
           ]
         },
         "loading": {

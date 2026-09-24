@@ -14,6 +14,7 @@ const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'close') : undef
 const variant = instance.getEnum('variant', {
   primary: 'primary',
   secondary: 'secondary',
+  destructive: 'destructive',
 });
 const loading = instance.getEnum('loading', { false: false, true: true });
 const disabled = instance.getEnum('disabled', { false: false, true: true });
