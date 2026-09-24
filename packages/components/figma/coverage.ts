@@ -1,4 +1,4 @@
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import { figmaSlotName, showLabelStandsForHideLabel } from './naming';
 import { type Component, definitions } from './snapshot';
 
@@ -36,6 +36,25 @@ export const missingInFigma = (
     .filter(([slot, figma]) => !defs[figma] && !(slot !== '' && defs[slot]))
     .map(([, figma]) => figma);
   return [...props, ...values, ...slots];
+};
+
+export type ExpectedProperty = { type: 'BOOLEAN' | 'TEXT' | 'VARIANT' | 'INSTANCE_SWAP'; options?: string[] };
+
+/**
+ * The Figma property the rules place for a PDS prop, so the gap report can tell design what to add: the type, and for a
+ * VARIANT the options. A prop whose allowed values are mostly PDS icon names is an icon swap.
+ */
+export const expectedProperty = (
+  prop: Pick<PropMeta, 'allowedValues' | 'deprecatedValues'>,
+  iconNames: ReadonlySet<string>
+): ExpectedProperty => {
+  if (prop.allowedValues === 'boolean') return { type: 'BOOLEAN' };
+  if (!Array.isArray(prop.allowedValues)) return { type: 'TEXT' };
+  const options = (prop.allowedValues as unknown[])
+    .filter((value) => value != null && value !== '' && !prop.deprecatedValues?.includes(value as string))
+    .map(String);
+  if (options.filter((option) => iconNames.has(option)).length > options.length / 2) return { type: 'INSTANCE_SWAP' };
+  return { type: 'VARIANT', options };
 };
 
 // figma/coverage-baseline.json lists, per PDS tag, the gaps accepted as known: today's backlog plus any line added by

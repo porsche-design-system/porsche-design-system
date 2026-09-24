@@ -29,15 +29,26 @@ export const unplaceableLine = (component: string, id: string, tag: string, figm
 
 /**
  * A PDS prop, slot or allowed value the Figma component has no property or option for, outside the baseline. `name` is
- * the property Figma needs, or `prop=value` for a missing variant option.
+ * the property Figma needs, with the type (and a VARIANT's options) the rules place, or `prop=value` for a missing
+ * variant option, with no `property`.
  */
-export const coverageGapLine = (component: string, id: string, tag: string, name: string): string =>
-  `${component} (${id}) → ${tag}: "${name}" has no Figma ${name.includes('=') ? 'option' : 'property'} — add it in Figma`;
+export const coverageGapLine = (
+  component: string,
+  id: string,
+  tag: string,
+  name: string,
+  property?: { type: string; options?: string[] }
+): string => {
+  const needed = property
+    ? `${property.type} property${property.options?.length ? ` with the options ${property.options.join(', ')}` : ''}`
+    : 'option';
+  return `${component} (${id}) → ${tag}: "${name}" has no Figma ${needed} — add it in Figma`;
+};
 
 /** Groups: component, node id, Figma property, reason. */
 export const UNPLACEABLE = /^✖ (.+?) \((\d+:\d+)\) → p-[\w-]+: "([^"]+)" (.+?) — fix it in Figma$/;
-/** Groups: component, node id, name. */
+/** Groups: component, node id, name, then for a property its type and, for a VARIANT, its options; both empty for an option. */
 export const COVERAGE_GAP =
-  /^✖ (.+?) \((\d+:\d+)\) → p-[\w-]+: "([^"]+)" has no Figma (?:property|option) — add it in Figma$/;
+  /^✖ (.+?) \((\d+:\d+)\) → p-[\w-]+: "([^"]+)" has no Figma (?:(\w+) property(?: with the options (.+?))?|option) — add it in Figma$/;
 /** Either kind; group 1 is the component set's node id. */
 export const WAITING_ON_DESIGN = /^✖ .+? \((\d+:\d+)\) → p-[\w-]+: "[^"]+" .+ — (?:fix|add) it in Figma$/;

@@ -66,18 +66,18 @@ const unplaceableAction = (prop: string, reason: string): string => {
   return `property "${prop}" ${reason}`;
 };
 // A PDS prop, slot or allowed value the library lacks that figma/coverage-baseline.json does not list; `name` is the
-// property name Figma needs, or `prop=value` for a missing variant option.
-const coverageAction = (name: string): string => {
+// property name Figma needs, with the type and options the rules place, or `prop=value` for a missing variant option.
+const coverageAction = (name: string, type?: string, options?: string): string => {
   const [prop, value] = name.split('=');
-  return value === undefined
-    ? `add a property named "${prop}" — PDS has it and the Figma component does not`
-    : `add the option "${value}" to "${prop}" — PDS allows it and the Figma component does not`;
+  if (value !== undefined)
+    return `add the option "${value}" to "${prop}" — PDS allows it and the Figma component does not`;
+  return `add a ${type} property named "${prop}"${options ? ` with the options ${options}` : ''} — PDS has it and the Figma component does not`;
 };
 for (const line of lines) {
   const match = line.match(UNPLACEABLE);
   if (match) add(match[1], nodeUrl(match[2]), unplaceableAction(match[3], match[4]));
   const gap = line.match(COVERAGE_GAP);
-  if (gap) add(gap[1], nodeUrl(gap[2]), coverageAction(gap[3]));
+  if (gap) add(gap[1], nodeUrl(gap[2]), coverageAction(gap[3], gap[4], gap[5]));
 }
 
 if (actions.size === 0) {

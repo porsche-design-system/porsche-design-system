@@ -4,7 +4,7 @@ import { type ComponentMeta, getComponentMeta } from '@porsche-design-system/com
 import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, kebabCase, pascalCase } from 'change-case';
 import { sync as globbySync } from 'fast-glob';
-import { applyBaseline, missingInFigma } from '../figma/coverage';
+import { applyBaseline, expectedProperty, missingInFigma } from '../figma/coverage';
 import { exceptions, type PropertyMapping } from '../figma/exceptions';
 import { coverageGapLine, printed, reasons, unplaceableLine } from '../figma/messages';
 import { pdsSlotName, showLabelStandsForHideLabel } from '../figma/naming';
@@ -381,6 +381,7 @@ const removeStale = (): void => {
 
 const generate = (): void => {
   const icons = iconEntries();
+  const iconNames = new Set(icons.map((icon) => icon.name));
   for (const label of labels)
     for (const [file, content] of Object.entries(iconBatch(label, icons))) emit(file, content);
 
@@ -398,8 +399,17 @@ const generate = (): void => {
       errors.push(`${tag}: no src/components/**/${name}.tsx`);
       continue;
     }
-    const coverage = applyBaseline(missingInFigma(component, getComponentMeta(tag)), baseline[tag] ?? []);
-    for (const name of coverage.fresh) designErrors.push(coverageGapLine(component.name, component.id, tag, name));
+    const meta = getComponentMeta(tag);
+    const coverage = applyBaseline(missingInFigma(component, meta), baseline[tag] ?? []);
+    for (const name of coverage.fresh) {
+      // what design has to add: nothing more for an option, a SLOT for a slot, the type the rules place for a prop
+      const property = name.includes('=')
+        ? undefined
+        : name.startsWith('slot-')
+          ? { type: 'SLOT' }
+          : expectedProperty(meta.propsMeta[name], iconNames);
+      designErrors.push(coverageGapLine(component.name, component.id, tag, name, property));
+    }
     if (coverage.accepted.length) accepted[tag] = coverage.accepted;
     const properties = derive(component, tag);
     components++;
