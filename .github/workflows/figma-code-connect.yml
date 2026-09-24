@@ -108,6 +108,24 @@ jobs:
         env:
           FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
 
+      # What the re-pull would change, for the drift issue and as an artifact a developer can `git apply`. The two
+      # commands produce the same files, so this is a preview, not a shortcut past review. Staging in the runner's
+      # checkout is how new and deleted templates get into the diff; nothing after this step uses git.
+      - name: 'Capture the regenerated diff'
+        id: regenerated
+        if: steps.pull.outcome == 'failure'
+        shell: bash
+        run: |
+          git add -A -- packages/components
+          git diff --cached --stat > "$RUNNER_TEMP/regenerated.stat"
+          git diff --cached > "$RUNNER_TEMP/regenerated.diff"
+          [ -s "$RUNNER_TEMP/regenerated.diff" ] && echo "present=true" >> "$GITHUB_OUTPUT" || echo "::notice::the re-pull changed no file"
+      - uses: actions/upload-artifact@v7
+        if: steps.regenerated.outputs.present == 'true'
+        with:
+          name: code-connect-regenerated
+          path: ${{ runner.temp }}/regenerated.diff
+
       # Only when Figma did not move: the committed snapshot is current, so a code-side gap (a prop, slot or allowed value
       # added in code, a prop removed from it) shows here on every run, the daily one included. Same log as the classify
       # step, which never runs alongside it; the Slack builder reads it.
@@ -126,6 +144,9 @@ jobs:
             [ -f "$RUNNER_TEMP/$log.log" ] || continue
             { echo "## $log"; echo '```'; cat "$RUNNER_TEMP/$log.log"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
           done
+          if [ -s "$RUNNER_TEMP/regenerated.stat" ]; then
+            { echo "## what the re-pull changes"; echo '```'; cat "$RUNNER_TEMP/regenerated.stat"; echo '```'; echo "Full diff: artifact \`code-connect-regenerated\`."; } >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       # The durable, deduplicated record for developers: one open issue while Figma drifts from the snapshot, one while
       # publish fails on a repository mistake or a CLI failure. Held-back files are not a publish failure: they are
@@ -139,6 +160,7 @@ jobs:
           CLASSIFY_OUTCOME: ${{ steps.classify.outcome }}
           PUBLISH_CODE: ${{ steps.publish.outputs.code }}
           PUBLISH_TITLE: 'Figma Code Connect publish failed on main'
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           open_issue() { gh issue list --state open --search "\"$1\" in:title" --json number --jq '.[0].number // empty'; } # $1 title
           upsert() { # $1 title, $2 body file
@@ -150,12 +172,24 @@ jobs:
             [ -n "$existing" ] && gh issue close "$existing" --comment "$2" || true
           }
           fence() { [ -f "$1" ] && { echo '```'; cat "$1"; echo '```'; } || echo "_(no log; the step did not get that far)_"; }
+          # The regenerated diff, whole when it fits an issue body (65,536 characters), otherwise its --stat and a pointer.
+          regenerated() {
+            [ -s "$RUNNER_TEMP/regenerated.diff" ] || return 0
+            echo; echo "What the re-pull changes. Apply it with \`gh run download $GITHUB_RUN_ID -n code-connect-regenerated && git apply regenerated.diff\`, or run the two commands, which write the same files:"
+            if [ "$(wc -c < "$RUNNER_TEMP/regenerated.diff")" -lt 50000 ]; then
+              echo; echo '```diff'; cat "$RUNNER_TEMP/regenerated.diff"; echo '```'
+            else
+              echo; echo '```'; cat "$RUNNER_TEMP/regenerated.stat"; echo '```'
+              echo; echo "The full diff is the artifact \`code-connect-regenerated\` of $RUN_URL."
+            fi
+          }
 
           if [ "$PULL_OUTCOME" = "failure" ]; then
             {
               echo "\`figma:pull --check\` found differences between the library and \`packages/components/figma/components.json\` on $(date -u +%Y-%m-%d):"
               echo; fence "$RUNNER_TEMP/pull.log"; echo
               echo "Run \`npm run figma:pull\`, then \`npm run figma:generate\`, review the diffs, and merge."
+              regenerated
               case "$PUBLISH_CODE" in
                 "") echo "Publish does not run on the scheduled check; the next push or dispatch publishes." ;;
                 0|2) echo "Publish did not wait: the templates of the changed components were held back by Figma's validation and keep their previous record, everything else published." ;;
