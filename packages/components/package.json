@@ -40,6 +40,13 @@
     "build:clean:deletePolyfills": "rm -rf ./dist/esm/polyfills",
     "build:clean:deleteGeneratedLoader": "rm -rf ./dist/loader",
     "build-prod": "PDS_IS_STAGING=0 npm run build",
+    "figma:parse": "tsx scripts/figmaConnect.ts parse",
+    "figma:preview": "tsx scripts/figmaConnect.ts preview",
+    "figma:publish": "tsx scripts/figmaConnect.ts publish",
+    "figma:publish:dry": "tsx scripts/figmaConnect.ts publish --dry-run",
+    "figma:unpublish": "tsx scripts/figmaConnect.ts unpublish",
+    "figma:pull": "tsx scripts/figmaPull.ts",
+    "figma:generate": "tsx scripts/figmaGenerate.ts",
     "pretypecheck": "npm run prebuild:generateConstructorMap",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
@@ -59,6 +66,7 @@
     "@stencil/core": "4.43.3"
   },
   "devDependencies": {
+    "@figma/code-connect": "2.0.0",
     "@rollup/plugin-replace": "^6.0.3",
     "@tailwindcss/cli": "^4.3.3",
     "@types/react": "^19.3.0",

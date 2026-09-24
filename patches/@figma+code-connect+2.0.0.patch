@@ -1,0 +1,92 @@
+diff --git a/node_modules/@figma/code-connect/dist/connect/raw_templates.js b/node_modules/@figma/code-connect/dist/connect/raw_templates.js
+index 371983e..d397d70 100644
+--- a/node_modules/@figma/code-connect/dist/connect/raw_templates.js
++++ b/node_modules/@figma/code-connect/dist/connect/raw_templates.js
+@@ -167,6 +167,38 @@ function extractMetadataFields(fileContent) {
+     }
+     return { fields, templateStartLine };
+ }
++/**
++ * PDS patch: parserless templates carry no `templateData.props`, so `validateProps` (validation.js) returns at its
++ * guard for them and a template that reads a property the Figma component does not have publishes as "valid". Read
++ * every `instance.getString/getBoolean/getEnum('<name>')` call out of the compiled template into the `{ kind, args:
++ * { figmaPropName } }` shape `validateProps` reads (it checks the name only), so publish and --dry-run compare those
++ * names against the live component. `validateProps` is widened to accept the `slot` and `instance` kinds, and to
++ * compare a getEnum value list with the Figma variant's options in both directions.
++ */
++function extractPropertyReads(template) {
++    const kinds = { getString: 'string', getBoolean: 'boolean', getEnum: 'enum', getSlot: 'slot', getInstanceSwap: 'instance' };
++    const props = {};
++    const re = /\.(getString|getBoolean|getEnum|getSlot|getInstanceSwap)\(\s*(['"])((?:(?!\2).)+)\2/g;
++    let match;
++    while ((match = re.exec(template)) !== null) {
++        const figmaPropName = match[3];
++        props[figmaPropName] = { kind: kinds[match[1]], args: { figmaPropName } };
++    }
++    // The value list of a getEnum call, as the generator writes it: `{ key: 'value', 'other-key': 'value', false: false }`
++    // with no nested braces. Its keys are the Figma variant options the template handles.
++    const enums = /\.getEnum\(\s*(['"])((?:(?!\1).)+)\1\s*,\s*\{([^}]*)\}/g;
++    while ((match = enums.exec(template)) !== null) {
++        const valueMapping = {};
++        for (const entry of match[3].split(',')) {
++            const colon = entry.indexOf(':');
++            if (colon === -1) continue;
++            const key = entry.slice(0, colon).trim().replace(/^(['"])(.*)\1$/, '$2');
++            if (key) valueMapping[key] = entry.slice(colon + 1).trim();
++        }
++        if (props[match[2]]) props[match[2]].args.valueMapping = valueMapping;
++    }
++    return Object.keys(props).length ? props : undefined;
++}
+ async function parseRawFile(filePath, label, config, dir, batchOverrides) {
+     let fileContent = fs_1.default.readFileSync(filePath, 'utf-8');
+     let shouldBundleTemplate = false;
+@@ -248,7 +280,7 @@ async function parseRawFile(filePath, label, config, dir, batchOverrides) {
+         // nestable by default unless user specifies in template
+         // (templateData.nestable AND template.metadata.nestable need to
+         // be true for instance to be nested)
+-        templateData: { nestable: true, isParserless: true },
++        templateData: { nestable: true, isParserless: true, props: extractPropertyReads(template) },
+         language,
+         label: effectiveLabel,
+         source,
+diff --git a/node_modules/@figma/code-connect/dist/connect/validation.js b/node_modules/@figma/code-connect/dist/connect/validation.js
+index b55403a..af769ba 100644
+--- a/node_modules/@figma/code-connect/dist/connect/validation.js
++++ b/node_modules/@figma/code-connect/dist/connect/validation.js
+@@ -121,12 +121,32 @@ function validateProps(doc, document) {
+             }
+             if (codeConnectProp.kind === 'boolean' ||
+                 codeConnectProp.kind === 'enum' ||
+-                codeConnectProp.kind === 'string') {
++                codeConnectProp.kind === 'string' ||
++                codeConnectProp.kind === 'slot' ||
++                codeConnectProp.kind === 'instance' /* PDS patch: parserless templates read slots and instance swaps by name too */) {
+                 const codeConnectFigmaPropName = codeConnectProp?.args?.figmaPropName;
+-                if (!document.componentPropertyDefinitions ||
+-                    !Object.keys(document.componentPropertyDefinitions).find((figmaProp) => propMatches(figmaProp, codeConnectFigmaPropName, document.componentPropertyDefinitions))) {
++                const matchedFigmaProp = document.componentPropertyDefinitions &&
++                    Object.keys(document.componentPropertyDefinitions).find((figmaProp) => propMatches(figmaProp, codeConnectFigmaPropName, document.componentPropertyDefinitions));
++                if (!matchedFigmaProp) {
+                     logging_1.logger.error(`Validation failed for ${doc.component} (${doc.figmaNode}): The property "${codeConnectFigmaPropName}" does not exist on the Figma component`);
+                     propsValid = false;
++                    continue;
++                }
++                // PDS patch: a getEnum value list must name exactly the Figma variant's options. An option the template lists
++                // and Figma lacks is dead; an option Figma has and the template lacks renders as an empty value with no error.
++                const definition = document.componentPropertyDefinitions[matchedFigmaProp];
++                const handled = codeConnectProp.kind === 'enum' && codeConnectProp.args?.valueMapping
++                    ? Object.keys(codeConnectProp.args.valueMapping)
++                    : null;
++                if (handled && definition.type === 'VARIANT' && Array.isArray(definition.variantOptions)) {
++                    for (const option of handled.filter((o) => !definition.variantOptions.includes(o))) {
++                        logging_1.logger.error(`Validation failed for ${doc.component} (${doc.figmaNode}): The Figma Variant "${codeConnectFigmaPropName}" does not have an option for ${option}`);
++                        propsValid = false;
++                    }
++                    for (const option of definition.variantOptions.filter((o) => !handled.includes(o))) {
++                        logging_1.logger.error(`Validation failed for ${doc.component} (${doc.figmaNode}): The Figma Variant "${codeConnectFigmaPropName}" option "${option}" is not handled by the template`);
++                        propsValid = false;
++                    }
+                 }
+             }
+         }
