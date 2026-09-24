@@ -26,6 +26,7 @@ name: 'Figma Code Connect'
 on:
   push:
     # issue/4745 is temporary: the end-to-end test against the copy library runs from the branch. Remove before merge.
+    # Test in progress: scenario 2a, design added the option variant=destructive on button (node 64117:100 in the copy).
     branches: [main, issue/4745]
     paths:
       - 'packages/components/src/**' # a prop, slot or allowed value added or removed in code, wherever its constant lives
