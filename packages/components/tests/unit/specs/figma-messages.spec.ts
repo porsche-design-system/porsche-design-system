@@ -25,19 +25,32 @@ describe('figma messages', () => {
     expect(reasons.typeMismatch('TEXT', 'boolean').match(REASON.typeMismatch)?.slice(1)).toEqual(['TEXT', 'boolean']);
   });
 
-  it('round-trips a coverage gap, naming a property or an option by its shape', () => {
-    const property = printed(coverageGapLine('button', '225:216', 'p-button', 'iconSource'));
+  it('round-trips a coverage gap with the property type design must add, or the option', () => {
+    const text = printed(coverageGapLine('button', '225:216', 'p-button', 'iconSource', { type: 'TEXT' }));
+    const variant = printed(
+      coverageGapLine('button', '225:216', 'p-button', 'size', { type: 'VARIANT', options: ['small', 'medium'] })
+    );
+    const slot = printed(coverageGapLine('button', '225:216', 'p-button', 'slot-footer', { type: 'SLOT' }));
     const option = printed(coverageGapLine('button', '225:216', 'p-button', 'variant=destructive'));
-    expect(property).toContain('has no Figma property');
-    expect(option).toContain('has no Figma option');
-    expect(property.match(COVERAGE_GAP)?.slice(1)).toEqual(['button', '225:216', 'iconSource']);
-    expect(option.match(COVERAGE_GAP)?.slice(1)).toEqual(['button', '225:216', 'variant=destructive']);
-    expect(property).not.toMatch(UNPLACEABLE);
+    expect(text).toContain('has no Figma TEXT property — add it in Figma');
+    expect(variant).toContain('has no Figma VARIANT property with the options small, medium — add it in Figma');
+    expect(option).toContain('has no Figma option — add it in Figma');
+    expect(text.match(COVERAGE_GAP)?.slice(1)).toEqual(['button', '225:216', 'iconSource', 'TEXT', undefined]);
+    expect(variant.match(COVERAGE_GAP)?.slice(1)).toEqual(['button', '225:216', 'size', 'VARIANT', 'small, medium']);
+    expect(slot.match(COVERAGE_GAP)?.slice(1)).toEqual(['button', '225:216', 'slot-footer', 'SLOT', undefined]);
+    expect(option.match(COVERAGE_GAP)?.slice(1)).toEqual([
+      'button',
+      '225:216',
+      'variant=destructive',
+      undefined,
+      undefined,
+    ]);
+    expect(text).not.toMatch(UNPLACEABLE);
   });
 
   it('lets figmaConnect.ts read the node id to hold back from either kind of line', () => {
     const unplaceable = printed(unplaceableLine('tag', '106:261', 'p-tag', 'dense', reasons.noProp('VARIANT')));
-    const gap = printed(coverageGapLine('button', '225:216', 'p-button', 'iconSource'));
+    const gap = printed(coverageGapLine('button', '225:216', 'p-button', 'iconSource', { type: 'TEXT' }));
     expect(unplaceable.match(WAITING_ON_DESIGN)?.[1]).toBe('106:261');
     expect(gap.match(WAITING_ON_DESIGN)?.[1]).toBe('225:216');
   });

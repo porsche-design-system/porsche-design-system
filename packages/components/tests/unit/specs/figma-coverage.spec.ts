@@ -1,5 +1,5 @@
 import type { PropMeta } from '@porsche-design-system/component-meta';
-import { applyBaseline, missingInFigma } from '../../../figma/coverage';
+import { applyBaseline, expectedProperty, missingInFigma } from '../../../figma/coverage';
 import type { Component, Definition } from '../../../figma/snapshot';
 
 const component = (definitions: Record<string, Definition>): Component => ({
@@ -83,6 +83,33 @@ describe('missingInFigma', () => {
       },
     };
     expect(missingInFigma(figma, meta)).toEqual([]);
+  });
+});
+
+describe('expectedProperty', () => {
+  const icons = new Set(['arrow-right', 'close', 'search']);
+
+  it('asks for a BOOLEAN for a boolean prop and a TEXT for a free string or number', () => {
+    expect(expectedProperty({ allowedValues: 'boolean' }, icons)).toEqual({ type: 'BOOLEAN' });
+    expect(expectedProperty({ allowedValues: 'string' }, icons)).toEqual({ type: 'TEXT' });
+    expect(expectedProperty({ allowedValues: 'number' }, icons)).toEqual({ type: 'TEXT' });
+  });
+
+  it('asks for a VARIANT with the live options, as strings, for a prop with allowed values', () => {
+    expect(
+      expectedProperty({ allowedValues: ['primary', 'secondary', 'tertiary'], deprecatedValues: ['tertiary'] }, icons)
+    ).toEqual({ type: 'VARIANT', options: ['primary', 'secondary'] });
+    expect(expectedProperty({ allowedValues: [4, 6] }, icons)).toEqual({ type: 'VARIANT', options: ['4', '6'] });
+    expect(expectedProperty({ allowedValues: [null, 'h1', 'h2'] }, icons)).toEqual({
+      type: 'VARIANT',
+      options: ['h1', 'h2'],
+    });
+  });
+
+  it('asks for an INSTANCE_SWAP when the allowed values are the icon names', () => {
+    expect(expectedProperty({ allowedValues: ['', 'arrow-right', 'close', 'none'] }, icons)).toEqual({
+      type: 'INSTANCE_SWAP',
+    });
   });
 });
 
