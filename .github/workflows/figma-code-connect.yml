@@ -25,7 +25,8 @@ name: 'Figma Code Connect'
 
 on:
   push:
-    branches: [main]
+    # issue/4745 is temporary: the end-to-end test against the copy library runs from the branch. Remove before merge.
+    branches: [main, issue/4745]
     paths:
       - 'packages/components/src/**' # a prop, slot or allowed value added or removed in code, wherever its constant lives
       - 'packages/components/figma/**'
