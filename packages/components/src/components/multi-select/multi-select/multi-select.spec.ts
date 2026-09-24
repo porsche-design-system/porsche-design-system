@@ -116,7 +116,7 @@ describe('optionValueChangeHandler', () => {
     expect(component['selectedOptions']).toEqual([]);
 
     option.value = 'a';
-    const event = new Event('internalOptionValueChange', { bubbles: true });
+    const event = new Event('internalMultiSelectOptionValueChange', { bubbles: true });
     const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
     component.optionValueChangeHandler(event);
 

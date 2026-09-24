@@ -16,7 +16,7 @@ describe('render', () => {
     expect(() => component.render()).not.toThrow();
   });
 
-  it('should dispatch "internalOptionValueChange" event when value changes', () => {
+  it('should dispatch "internalRadioGroupOptionValueChange" event when value changes', () => {
     const component = initComponent();
     const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
 
@@ -24,7 +24,7 @@ describe('render', () => {
 
     expect(dispatchEventSpy).toHaveBeenCalledWith(
       expect.objectContaining({
-        type: 'internalOptionValueChange',
+        type: 'internalRadioGroupOptionValueChange',
         bubbles: true,
       })
     );

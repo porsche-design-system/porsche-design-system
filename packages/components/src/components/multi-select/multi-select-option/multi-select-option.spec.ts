@@ -54,7 +54,7 @@ describe('prop validation', () => {
     expect(() => component.render()).not.toThrow();
   });
 
-  it('should dispatch "internalOptionValueChange" event when value changes', () => {
+  it('should dispatch "internalMultiSelectOptionValueChange" event when value changes', () => {
     const component = initComponent();
     const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
 
@@ -62,7 +62,7 @@ describe('prop validation', () => {
 
     expect(dispatchEventSpy).toHaveBeenCalledWith(
       expect.objectContaining({
-        type: 'internalOptionValueChange',
+        type: 'internalMultiSelectOptionValueChange',
         bubbles: true,
       })
     );

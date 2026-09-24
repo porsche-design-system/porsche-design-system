@@ -3,7 +3,6 @@ import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  dispatchInternalOptionValueChange,
   getClosestHTMLElement,
   getOptionAriaAttributes,
   getPrefixedTagNames,
@@ -36,7 +35,12 @@ export class SelectOption {
 
   @Watch('value')
   public onValueChange(): void {
-    dispatchInternalOptionValueChange(this.host);
+    // lets the parent re-match its value, e.g. when a framework sets the value after the parent already did
+    this.host.dispatchEvent(
+      new CustomEvent('internalSelectOptionValueChange', {
+        bubbles: true,
+      })
+    );
   }
 
   public connectedCallback(): void {

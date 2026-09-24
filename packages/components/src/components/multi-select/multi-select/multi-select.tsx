@@ -214,7 +214,7 @@ export class MultiSelect {
     this.updateOptions();
   }
 
-  @Listen('internalOptionValueChange')
+  @Listen('internalMultiSelectOptionValueChange')
   public optionValueChangeHandler(e: Event): void {
     e.stopPropagation();
     if (this.multiSelectOptions.length > 0) {

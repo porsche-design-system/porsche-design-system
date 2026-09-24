@@ -50,7 +50,7 @@ describe('hasValue computation passed to getOptionAriaAttributes', () => {
 });
 
 describe('onValueChange', () => {
-  it('should dispatch "internalOptionValueChange" event', () => {
+  it('should dispatch "internalSelectOptionValueChange" event', () => {
     const component = initComponent();
     const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
 
@@ -58,7 +58,7 @@ describe('onValueChange', () => {
 
     expect(dispatchEventSpy).toHaveBeenCalledWith(
       expect.objectContaining({
-        type: 'internalOptionValueChange',
+        type: 'internalSelectOptionValueChange',
         bubbles: true,
       })
     );

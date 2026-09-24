@@ -104,7 +104,7 @@ describe('optionValueChangeHandler', () => {
     expect(option.selected).toBe(false);
 
     option.value = 'a';
-    const event = new Event('internalOptionValueChange', { bubbles: true });
+    const event = new Event('internalRadioGroupOptionValueChange', { bubbles: true });
     const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
     component.optionValueChangeHandler(event);
 

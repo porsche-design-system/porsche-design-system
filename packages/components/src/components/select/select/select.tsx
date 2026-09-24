@@ -213,7 +213,7 @@ export class Select {
     this.updateOptions();
   }
 
-  @Listen('internalOptionValueChange')
+  @Listen('internalSelectOptionValueChange')
   public optionValueChangeHandler(e: Event): void {
     e.stopPropagation();
     if (this.selectOptions.length > 0) {

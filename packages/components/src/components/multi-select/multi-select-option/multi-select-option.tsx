@@ -3,7 +3,6 @@ import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  dispatchInternalOptionValueChange,
   getOptionAriaAttributes,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -34,7 +33,12 @@ export class MultiSelectOption {
 
   @Watch('value')
   public onValueChange(): void {
-    dispatchInternalOptionValueChange(this.host);
+    // lets the parent re-match its value, e.g. when a framework sets the value after the parent already did
+    this.host.dispatchEvent(
+      new CustomEvent('internalMultiSelectOptionValueChange', {
+        bubbles: true,
+      })
+    );
   }
 
   public connectedCallback(): void {

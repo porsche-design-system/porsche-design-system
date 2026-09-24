@@ -103,7 +103,7 @@ describe('optionValueChangeHandler', () => {
     expect(component['selectedOption']).toBeNull();
 
     option.value = 'a';
-    const event = new Event('internalOptionValueChange', { bubbles: true });
+    const event = new Event('internalSelectOptionValueChange', { bubbles: true });
     const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
     component.optionValueChangeHandler(event);
 
