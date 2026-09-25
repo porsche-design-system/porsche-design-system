@@ -42,6 +42,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Radio Group`, `Select`, `Multi Select`, `Segmented Control`: an option or item was not selected when it received a
   `value` matching the parent's `value` only after the parent had rendered.
   ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
+- `Drilldown`: the active level was not shown and an error was logged when a `Drilldown Item` received the `identifier`
+  matching `activeIdentifier` only after the `Drilldown` had rendered. Without `activeIdentifier`, an item without
+  `identifier` was wrongly shown as active.
+  ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
 
 ## [4.7.0] - 2026-09-09
 

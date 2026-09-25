@@ -16,7 +16,7 @@ const initComponent = (): Drilldown => {
   return component;
 };
 
-const createItem = (identifier: string): HTMLElement => {
+const createItem = (identifier: string | undefined): HTMLElement => {
   const item = document.createElement('p-drilldown-item');
   (item as any).identifier = identifier;
   return item;
@@ -160,6 +160,76 @@ describe('initial item state', () => {
     component.componentWillLoad();
 
     expect((itemA as any).secondary).toBe(true);
+    expect(component['primary']).toBe(true);
+  });
+
+  it('should not mark an item without identifier secondary on load without an active identifier', () => {
+    const component = initComponent();
+    const itemA = createItem(undefined);
+    component.host.appendChild(itemA);
+
+    component.componentWillLoad();
+
+    expect((itemA as any).secondary).toBeFalsy();
+    expect(component['primary']).toBe(true);
+  });
+});
+
+describe('item identifier change', () => {
+  it('should stop propagation of the internal event', () => {
+    const component = initComponent();
+    const event = new CustomEvent('internalDrilldownItemIdentifierChange', { bubbles: true });
+    const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
+
+    component.itemIdentifierChangeHandler(event);
+
+    expect(stopPropagationSpy).toHaveBeenCalled();
+  });
+
+  it('should mark the item secondary whose identifier is set to the active identifier after load', () => {
+    const component = initComponent();
+    const itemA = createItem('a');
+    const itemB = createItem(undefined);
+    component.host.append(itemA, itemB);
+    component.activeIdentifier = 'b';
+    component.componentWillLoad();
+
+    (itemB as any).identifier = 'b';
+    component.itemIdentifierChangeHandler(new CustomEvent('internalDrilldownItemIdentifierChange'));
+
+    expect((itemA as any).secondary).toBeFalsy();
+    expect((itemB as any).secondary).toBe(true);
+    expect(component['primary']).toBe(true);
+  });
+
+  it('should leave the primary level when the identifier of a nested item is set to the active identifier after load', () => {
+    const component = initComponent();
+    const itemA = createItem('a');
+    const nestedItem = createItem(undefined);
+    itemA.appendChild(nestedItem);
+    component.host.appendChild(itemA);
+    component.activeIdentifier = 'a-1';
+    component.componentWillLoad();
+
+    (nestedItem as any).identifier = 'a-1';
+    component.itemIdentifierChangeHandler(new CustomEvent('internalDrilldownItemIdentifierChange'));
+
+    expect((nestedItem as any).secondary).toBe(true);
+    expect((itemA as any).primary).toBe(true);
+    expect(component['primary']).toBe(false);
+  });
+
+  it('should clear the previously active item when its identifier no longer matches the active identifier', () => {
+    const component = initComponent();
+    const itemA = createItem('a');
+    component.host.appendChild(itemA);
+    component.activeIdentifier = 'a';
+    component.componentWillLoad();
+
+    (itemA as any).identifier = 'x';
+    component.itemIdentifierChangeHandler(new CustomEvent('internalDrilldownItemIdentifierChange'));
+
+    expect((itemA as any).secondary).toBe(false);
     expect(component['primary']).toBe(true);
   });
 });

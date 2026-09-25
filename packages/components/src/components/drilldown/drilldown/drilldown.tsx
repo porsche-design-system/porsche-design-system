@@ -1,5 +1,17 @@
 import { breakpointS } from '@porsche-design-system/emotion';
-import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../../types';
 import {
   AllowedTypes,
@@ -89,6 +101,14 @@ export class Drilldown {
     this.update.emit({ activeIdentifier });
   }
 
+  // an item identifier can be set after the drilldown has matched its `activeIdentifier`, e.g. by an Angular binding
+  @Listen('internalDrilldownItemIdentifierChange')
+  public itemIdentifierChangeHandler(e: Event): void {
+    e.stopPropagation();
+    this.syncActiveItem();
+    forceUpdate(this.host); // re-validates the active identifier against the updated identifiers
+  }
+
   public connectedCallback(): void {
     this.handleMediaQueryS(this.matchMediaQueryS);
     this.matchMediaQueryS.addEventListener('change', this.handleMediaQueryS);
@@ -96,9 +116,7 @@ export class Drilldown {
 
   public async componentWillLoad(): Promise<void> {
     this.defineDrilldownItemElements();
-    const activeItem = this.drilldownItemElements.find((item: Item) => item.identifier === this.activeIdentifier);
-    activeItem && updateDrilldownItemState(activeItem, true); // Set item state
-    this.primary = !activeItem || activeItem.parentElement === this.host;
+    this.syncActiveItem();
   }
 
   public componentDidLoad(): void {
@@ -179,6 +197,24 @@ export class Drilldown {
         </div>
       </dialog>
     );
+  }
+
+  // Derives the item states from the current `activeIdentifier` and item identifiers without animation, unlike
+  // `updateDrilldownState()`, which animates a change from one `activeIdentifier` to another
+  private syncActiveItem(): void {
+    // guard, otherwise an item without identifier matches an undefined `activeIdentifier`
+    const activeItem =
+      this.activeIdentifier !== undefined
+        ? this.drilldownItemElements.find((item) => item.identifier === this.activeIdentifier)
+        : undefined;
+    // looked up by state instead of identifier, since the identifier of the previously active item may have changed
+    const previousActiveItem = this.drilldownItemElements.find((item) => item.secondary);
+
+    if (previousActiveItem && previousActiveItem !== activeItem) {
+      updateDrilldownItemState(previousActiveItem, false);
+    }
+    activeItem && updateDrilldownItemState(activeItem, true);
+    this.primary = !activeItem || activeItem.parentElement === this.host;
   }
 
   private defineDrilldownItemElements = (): void => {
