@@ -1,4 +1,6 @@
 import {
+  COMPONENT_GAP,
+  componentGapLine,
   COVERAGE_GAP,
   coverageGapLine,
   printed,
@@ -6,7 +8,6 @@ import {
   reasons,
   UNPLACEABLE,
   unplaceableLine,
-  WAITING_ON_DESIGN,
 } from '../../../figma/messages';
 
 describe('figma messages', () => {
@@ -23,6 +24,17 @@ describe('figma messages', () => {
       'mixed, other',
     ]);
     expect(reasons.typeMismatch('TEXT', 'boolean').match(REASON.typeMismatch)?.slice(1)).toEqual(['TEXT', 'boolean']);
+    expect(reasons.deprecated).toMatch(REASON.deprecated);
+    expect(reasons.deprecatedValues(['tertiary']).match(REASON.deprecatedValues)?.slice(1)).toEqual(['tertiary']);
+    expect(reasons.deprecatedValues(['tertiary'])).not.toMatch(REASON.disallowedValues);
+  });
+
+  it('round-trips a PDS component with no Figma component set, which has no node id to name', () => {
+    const line = printed(componentGapLine('p-sheet'));
+    expect(line).toBe('✖ p-sheet has no Figma component set — add it in Figma');
+    expect(line.match(COMPONENT_GAP)?.[1]).toBe('p-sheet');
+    expect(line).not.toMatch(UNPLACEABLE);
+    expect(line).not.toMatch(COVERAGE_GAP);
   });
 
   it('round-trips a coverage gap with the property type design must add, or the option', () => {
@@ -48,22 +60,15 @@ describe('figma messages', () => {
     expect(text).not.toMatch(UNPLACEABLE);
   });
 
-  it('lets figmaConnect.ts read the node id to hold back from either kind of line', () => {
-    const unplaceable = printed(unplaceableLine('tag', '106:261', 'p-tag', 'dense', reasons.noProp('VARIANT')));
-    const gap = printed(coverageGapLine('button', '225:216', 'p-button', 'iconSource', { type: 'TEXT' }));
-    expect(unplaceable.match(WAITING_ON_DESIGN)?.[1]).toBe('106:261');
-    expect(gap.match(WAITING_ON_DESIGN)?.[1]).toBe('225:216');
-  });
-
-  it('does not mistake a repository mistake for a component waiting on design', () => {
+  it('does not mistake a repository mistake for a design line', () => {
     for (const line of [
       'src/components/tag/figma/tag.figma.ts is stale — run "npm run figma:generate"',
       'p-tag has no prop "foo" (Figma "foo")',
       'p-tag: two Figma properties map to "label" — add an exception to figma/exceptions.ts',
     ].map(printed)) {
-      expect(line).not.toMatch(WAITING_ON_DESIGN);
       expect(line).not.toMatch(UNPLACEABLE);
       expect(line).not.toMatch(COVERAGE_GAP);
+      expect(line).not.toMatch(COMPONENT_GAP);
     }
   });
 });
