@@ -61,8 +61,8 @@
   },
   {
     "chunkShortName": "drilldown",
-    "size": 21151,
-    "gzipSize": 6621
+    "size": 21035,
+    "gzipSize": 6591
   },
   {
     "chunkShortName": "fieldset",
@@ -172,7 +172,7 @@
   {
     "chunkShortName": "main",
     "size": 82236,
-    "gzipSize": 25596
+    "gzipSize": 25599
   },
   {
     "chunkShortName": "modal",
@@ -186,8 +186,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 48697,
-    "gzipSize": 17353
+    "size": 48862,
+    "gzipSize": 17403
   },
   {
     "chunkShortName": "optgroup",
@@ -226,8 +226,8 @@
   },
   {
     "chunkShortName": "select",
-    "size": 47350,
-    "gzipSize": 16932
+    "size": 47426,
+    "gzipSize": 16951
   },
   {
     "chunkShortName": "sheet",
