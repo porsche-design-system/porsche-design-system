@@ -823,6 +823,48 @@ test.describe('item identifier set after initial render', () => {
     }
   });
 
+  test('should show the root level again when the identifier of the active item changes on mobile', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+    await setContentWithDesignSystem(
+      page,
+      `<p-drilldown open active-identifier="item-2">
+  <p-drilldown-item identifier="item-1" label="Item 1"></p-drilldown-item>
+  <p-drilldown-item identifier="item-2" label="Item 2"></p-drilldown-item>
+</p-drilldown>`
+    );
+    const [firstItem, secondItem] = await getItems(page).all();
+    const firstItemButton = firstItem.locator('.button');
+    await expect(firstItemButton).toBeHidden();
+
+    await setProperty(secondItem, 'identifier', 'item-x');
+    await waitForStencilLifecycle(page);
+
+    await expect(secondItem).toHaveJSProperty('secondary', false);
+    await expect(firstItemButton).toBeVisible();
+  });
+
+  test('should hide the secondary drawer when the identifier of the active item changes on desktop', async ({
+    page,
+  }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-drilldown open active-identifier="item-2">
+  <p-drilldown-item identifier="item-1" label="Item 1"></p-drilldown-item>
+  <p-drilldown-item identifier="item-2" label="Item 2"></p-drilldown-item>
+</p-drilldown>`
+    );
+    const drawer = page.locator('p-drilldown dialog > .drawer');
+    const getDrawerWidth = () => drawer.evaluate((el) => el.getBoundingClientRect().width);
+    const drawerWidthWithSecondary = await getDrawerWidth();
+
+    await setProperty(getItems(page).nth(1), 'identifier', 'item-x');
+    await waitForStencilLifecycle(page);
+
+    await expect.poll(getDrawerWidth).toBeLessThan(drawerWidthWithSecondary);
+  });
+
   test('should not log an error when the identifier of the matching item is set after initial render', async ({
     page,
   }) => {

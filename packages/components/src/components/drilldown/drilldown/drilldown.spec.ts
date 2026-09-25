@@ -175,6 +175,28 @@ describe('initial item state', () => {
   });
 });
 
+describe('secondary drawer visibility on load', () => {
+  it('should hide the secondary drawer when the active identifier matches no item yet', () => {
+    const component = initComponent();
+    component.host.appendChild(createItem(undefined));
+    component.activeIdentifier = 'a';
+
+    component.componentWillLoad();
+
+    expect(component['isSecondaryDrawerVisible']).toBe(false);
+  });
+
+  it('should show the secondary drawer when the active identifier matches an item', () => {
+    const component = initComponent();
+    component.host.appendChild(createItem('a'));
+    component.activeIdentifier = 'a';
+
+    component.componentWillLoad();
+
+    expect(component['isSecondaryDrawerVisible']).toBe(true);
+  });
+});
+
 describe('item identifier change', () => {
   it('should stop propagation of the internal event', () => {
     const component = initComponent();
@@ -200,6 +222,7 @@ describe('item identifier change', () => {
     expect((itemA as any).secondary).toBeFalsy();
     expect((itemB as any).secondary).toBe(true);
     expect(component['primary']).toBe(true);
+    expect(component['isSecondaryDrawerVisible']).toBe(true);
   });
 
   it('should leave the primary level when the identifier of a nested item is set to the active identifier after load', () => {
@@ -231,6 +254,7 @@ describe('item identifier change', () => {
 
     expect((itemA as any).secondary).toBe(false);
     expect(component['primary']).toBe(true);
+    expect(component['isSecondaryDrawerVisible']).toBe(false);
   });
 });
 

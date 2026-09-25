@@ -215,6 +215,8 @@ export class Drilldown {
     }
     activeItem && updateDrilldownItemState(activeItem, true);
     this.primary = !activeItem || activeItem.parentElement === this.host;
+    // based on the resolved item instead of `activeIdentifier`, otherwise an unmatched identifier shows an empty drawer
+    this.isSecondaryDrawerVisible = !!activeItem;
   }
 
   private defineDrilldownItemElements = (): void => {
