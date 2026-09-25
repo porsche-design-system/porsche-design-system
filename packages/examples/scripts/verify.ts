@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { getLoaderScript } from '@porsche-design-system/components-js/partials';
 import type { StackblitzPayload } from '../plugins/payload.ts';
 import { categories, payloadName } from '../plugins/projects.ts';
 import { mediaPath } from '../src/_media.ts';
@@ -61,6 +62,10 @@ const verify = (): void => {
       if (!html.includes(expected)) {
         fail(`"${name}" is missing ${expected}`);
       }
+    }
+    // Nothing on the way into the page – the build, the inline plugin – may touch the loader: it carries a CSP hash.
+    if (!html.includes(getLoaderScript())) {
+      fail(`"${name}" does not contain the loader partial byte for byte – its CSP hash would no longer match`);
     }
     if (/<script\b[^>]*\ssrc=/.test(html) || /<link\b[^>]*\srel="?stylesheet/.test(html)) {
       fail(`"${name}" still references a script or a stylesheet instead of inlining it`);
