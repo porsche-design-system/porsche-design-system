@@ -8,11 +8,13 @@ import {
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
+  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
+  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -606,6 +608,13 @@ test.describe('second level', () => {
         await expect(getDrilldownItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
       }
     );
+
+      await waitForStencilLifecycle(page);
+      await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
+    });
   });
 });
 
@@ -762,5 +771,96 @@ test.describe('lifecycle', () => {
         }
       )
       .toBe(1);
+  });
+});
+
+test.describe('item identifier set after initial render', () => {
+  // Frameworks like Angular can connect an item before its `identifier` binding is applied (#4743)
+  const getItems = (page: Page) => page.locator('p-drilldown-item');
+
+  test('should show the active level when the identifier of the matching item is set after initial render', async ({
+    page,
+  }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-drilldown open active-identifier="item-2">
+  <p-drilldown-item identifier="item-1" label="Item 1"></p-drilldown-item>
+  <p-drilldown-item label="Item 2"></p-drilldown-item>
+</p-drilldown>`
+    );
+    const [, secondItem] = await getItems(page).all();
+
+    await setProperty(secondItem, 'identifier', 'item-2');
+    await waitForStencilLifecycle(page);
+
+    await expect(secondItem).toHaveJSProperty('secondary', true);
+  });
+
+  test('should show the active nested level when the identifier of the matching item is set after initial render', async ({
+    page,
+  }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-drilldown open active-identifier="item-1-1">
+  <p-drilldown-item identifier="item-1" label="Item 1">
+    <p-drilldown-item label="Item 1-1"></p-drilldown-item>
+  </p-drilldown-item>
+</p-drilldown>`
+    );
+    const [parentItem, nestedItem] = await getItems(page).all();
+
+    await setProperty(nestedItem, 'identifier', 'item-1-1');
+    await waitForStencilLifecycle(page);
+
+    await expect(parentItem).toHaveJSProperty('primary', true);
+    await expect(nestedItem).toHaveJSProperty('secondary', true);
+  });
+
+  test('should not show any level when neither active-identifier nor item identifiers are set', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-drilldown open>
+  <p-drilldown-item label="Item 1"></p-drilldown-item>
+  <p-drilldown-item label="Item 2"></p-drilldown-item>
+</p-drilldown>`
+    );
+
+    for (const item of await getItems(page).all()) {
+      await expect(item).toHaveJSProperty('secondary', false);
+    }
+  });
+
+  test('should not log an error when the identifier of the matching item is set after initial render', async ({
+    page,
+  }) => {
+    initConsoleObserver(page);
+    await setContentWithDesignSystem(
+      page,
+      `<p-drilldown open active-identifier="item-2">
+  <p-drilldown-item identifier="item-1" label="Item 1"></p-drilldown-item>
+  <p-drilldown-item label="Item 2"></p-drilldown-item>
+</p-drilldown>`
+    );
+
+    await setProperty(getItems(page).nth(1), 'identifier', 'item-2');
+    await waitForStencilLifecycle(page);
+
+    expect(getConsoleErrorsAmount()).toBe(0);
+  });
+
+  test('should log an error when active-identifier matches no item after all identifiers are set', async ({ page }) => {
+    initConsoleObserver(page);
+    await setContentWithDesignSystem(
+      page,
+      `<p-drilldown open active-identifier="item-3">
+  <p-drilldown-item identifier="item-1" label="Item 1"></p-drilldown-item>
+  <p-drilldown-item label="Item 2"></p-drilldown-item>
+</p-drilldown>`
+    );
+
+    await setProperty(getItems(page).nth(1), 'identifier', 'item-2');
+    await waitForStencilLifecycle(page);
+
+    expect(getConsoleErrorsAmount()).toBe(1);
   });
 });

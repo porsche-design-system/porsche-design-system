@@ -12,10 +12,12 @@ export enum EventType {
     <p-heading>Page A</p-heading>
     <p-text>
       Open the flyout, close it, navigate to Page B and back, then open the flyout again. The option values are bound as
-      properties via <code>[value]</code>, so every option must still be rendered and the preselected one selected.
-      Requires the app to be loaded with <code>?eventCoalescing</code>.
+      properties via <code>[value]</code>, so every option must still be rendered and the preselected one selected. The
+      same applies to the drilldown items, whose identifiers are bound via <code>[identifier]</code>. Requires the app
+      to be loaded with <code>?eventCoalescing</code>.
     </p-text>
     <p-button id="open-flyout" (click)="isFlyoutOpen = true">Open Flyout</p-button>
+    <p-button id="open-drilldown" (click)="isDrilldownOpen = true">Open Drilldown</p-button>
     <p-flyout [open]="isFlyoutOpen" (dismiss)="isFlyoutOpen = false">
       <p-heading slot="header" size="large" tag="h2">Create event</p-heading>
       <div class="flex flex-col gap-fluid-md">
@@ -37,6 +39,14 @@ export enum EventType {
         </p-multi-select>
       </div>
     </p-flyout>
+    <p-drilldown [open]="isDrilldownOpen" [activeIdentifier]="activeIdentifier" (dismiss)="isDrilldownOpen = false">
+      <p-drilldown-item [identifier]="EventType.REGULAR" label="Normal event">
+        <p-drilldown-link href="#">Normal event link</p-drilldown-link>
+      </p-drilldown-item>
+      <p-drilldown-item [identifier]="EventType.SPECIAL" label="Special event">
+        <p-drilldown-link href="#">Special event link</p-drilldown-link>
+      </p-drilldown-item>
+    </p-drilldown>
   `,
   changeDetection: ChangeDetectionStrategy.Default,
   standalone: false,
@@ -44,6 +54,8 @@ export enum EventType {
 export class OptionValueTimingBugPageAComponent {
   protected readonly EventType = EventType;
   isFlyoutOpen = false;
+  isDrilldownOpen = false;
   eventType: EventType = EventType.REGULAR;
   eventTypes: EventType[] = [EventType.REGULAR];
+  activeIdentifier: EventType = EventType.SPECIAL;
 }
