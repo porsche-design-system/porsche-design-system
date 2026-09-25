@@ -1,5 +1,9 @@
 # Migrating the examples repository into the monorepo
 
+> **Superseded in part (2026-09-24):** patterns and templates are no longer deployed through the examples repository but
+> served from the storefront. A2, A3, Track B and Track C are replaced by [`STOREFRONT.md`](STOREFRONT.md); A1 and A4
+> remain valid.
+
 > Status as of 2026-09-23. Tracks the move of the example **content** into this package, the deploy job that publishes
 > every example from this repository's CI, and the commit-back that keeps
 > [`porsche-design-system/examples`](https://github.com/porsche-design-system/examples) current.
