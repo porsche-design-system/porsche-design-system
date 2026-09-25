@@ -69,6 +69,7 @@ jobs:
       - run: npm run build:components-angular
       - run: npm run build:components-react
       - run: npm run build:components-vue
+      - run: npm run build:examples
       - run: npm run build:storefront
       - uses: actions/upload-artifact@v7
         with:
@@ -78,6 +79,7 @@ jobs:
             ./packages/storefront/dist/
             ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
+            ./packages/examples/dist-site/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/
@@ -158,6 +160,7 @@ jobs:
       - run: npm run build:components-angular
       - run: npm run build:components-react
       - run: npm run build:components-vue
+      - run: npm run build:examples
       - run: NEXT_PUBLIC_BASE_PATH="${{ inputs.storefront-slug }}" npm run build:storefront
       - uses: actions/upload-artifact@v7
         with:
@@ -167,6 +170,7 @@ jobs:
             ./packages/storefront/dist/
             ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
+            ./packages/examples/dist-site/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/

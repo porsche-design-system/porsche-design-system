@@ -1,5 +1,6 @@
 import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
+import { PHASE_DEVELOPMENT_SERVER } from 'next/constants';
 import { getBasePath } from '@/utils/getBasePath';
 
 const basePath = getBasePath();
@@ -36,5 +37,18 @@ const withMDX = createMDX({
   },
 });
 
+/**
+ * Lets `next dev` answer the folder URL of an example, e.g. `/examples/patterns/header/stacked/`.
+ *
+ * The examples are static files in `public/examples/`, which `next dev` serves by their exact path only, while the
+ * static hosts of the exported site resolve a folder to its `index.html` themselves. Rewrites are not part of a static
+ * export, so this is added to the development server alone; `afterFiles` is the default, so a file that exists – a
+ * medium, an `index.html` – is still served as it is.
+ */
+const devRewrites: NextConfig['rewrites'] = async () => [
+  { source: '/examples/:path*/', destination: '/examples/:path*/index.html' },
+];
+
 // Merge MDX config with Next.js config
-export default withMDX(nextConfig);
+export default (phase: string): NextConfig =>
+  withMDX(phase === PHASE_DEVELOPMENT_SERVER ? { ...nextConfig, rewrites: devRewrites } : nextConfig);

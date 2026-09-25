@@ -106,9 +106,12 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <PBanner open={isOutdatedVersionBannerOpen} onDismiss={() => setIsIsOutdatedVersionBannerOpen(false)}>
         <div slot="description" className="flex flex-col gap-fluid-xs">
           You are currently viewing an earlier release of the Porsche Design System.
-          <Link href={`https://designsystem.porsche.com/`}>
-            Switch to the latest Porsche Design System documentation.
-          </Link>
+          {/* A plain anchor, not `next/link`: the latest release is another deployment, and `next/link` would prefix the
+              basePath of this one. A root-absolute href is resolved against the current origin, unaffected by
+              `<base href>`, so the deployment is not bound to one domain and nothing depends on `window`. */}
+          <PLinkPure className="self-start">
+            <a href="/">Switch to the latest Porsche Design System documentation.</a>
+          </PLinkPure>
         </div>
       </PBanner>
 

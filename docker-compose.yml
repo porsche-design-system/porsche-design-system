@@ -6,6 +6,9 @@ services:
     ports:
       - "3000:3000"
       - "3001:3001"
+      - "3010:3010"
+      - "3011:3011"
+      - "3012:3012"
       - "3333:3333"
       - "3334:3334"
       - "4200:4200"
@@ -40,6 +43,7 @@ services:
       - components-react-react-ssr-wrapper-node-modules:/opt/repository/packages/components-react/projects/react-ssr-wrapper/node_modules
       - components-react-react-router-node-modules:/opt/repository/packages/components-react/projects/react-router/node_modules
       - components-vue-node-modules:/opt/repository/packages/components-vue/node_modules
+      - examples-node-modules:/opt/repository/packages/examples/node_modules
       - shared-node-modules:/opt/repository/packages/shared/node_modules
       - storefront-node-modules:/opt/repository/packages/storefront/node_modules
       - storefront-stackblitz-node-modules:/opt/repository/packages/storefront/projects/stackblitz/node_modules
@@ -76,6 +80,7 @@ services:
       - components-react-react-ssr-wrapper-node-modules:/opt/repository-volumes/components-react-react-ssr-wrapper-node_modules
       - components-react-react-router-node-modules:/opt/repository-volumes/components-react-react-router-node_modules
       - components-vue-node-modules:/opt/repository-volumes/components-vue-node_modules
+      - examples-node-modules:/opt/repository-volumes/examples-node_modules
       - shared-node-modules:/opt/repository-volumes/shared-node_modules
       - storefront-node-modules:/opt/repository-volumes/storefront-node_modules
       - storefront-stackblitz-node-modules:/opt/repository-volumes/storefront-stackblitz-node_modules
@@ -112,6 +117,7 @@ volumes:
   components-react-react-ssr-wrapper-node-modules:
   components-react-react-router-node-modules:
   components-vue-node-modules:
+  examples-node-modules:
   shared-node-modules:
   storefront-node-modules:
   storefront-stackblitz-node-modules:

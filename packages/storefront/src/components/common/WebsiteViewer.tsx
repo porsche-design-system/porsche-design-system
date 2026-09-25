@@ -1,41 +1,122 @@
 'use client';
 
 import { PButtonPure, PLinkPure, PTag } from '@porsche-design-system/components-react/ssr';
+import { openExampleInStackblitz } from '@porsche-design-system/stackblitz';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
+import {
+  type ExamplePath,
+  type ExamplePayload,
+  getExamplePayloadUrl,
+  getExampleUrl,
+  withMediaOrigin,
+} from '@/utils/examples';
+import { getBasePath } from '@/utils/getBasePath';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
-type WebsiteViewerProps = {
-  /** Path segment appended to the GitHub examples tree URL, e.g. "templates/src/landing-page/1" */
+type ExampleProps = {
+  /**
+   * A pattern or template of `@porsche-design-system/examples`, e.g. "patterns/header/overlay". Served by this
+   * deployment from `public/examples/`, and opened in StackBlitz as the project it was built from.
+   */
+  example: ExamplePath;
+  /** Accessible title for the iframe */
+  title: string;
+};
+
+type ExternalProps = {
+  /** Path segment appended to the GitHub examples tree URL, e.g. "frameworks/vue" */
   sourceCodePath: string;
-  /** Path segment appended to the GitHub Pages examples URL, e.g. "templates/landing-page/1" */
+  /** Path segment appended to the GitHub Pages examples URL, e.g. "vue" */
   viewPath: string;
   /** Accessible title for the iframe */
   title: string;
 };
 
+type WebsiteViewerProps = ExampleProps | ExternalProps;
+
+// The framework apps still live in, and are deployed from, the examples repository.
 const GITHUB_TREE_BASE = 'https://github.com/porsche-design-system/examples/tree';
 const GITHUB_PAGES_BASE = 'https://porsche-design-system.github.io/examples';
 const MIN_WIDTH = 320;
 
-export const WebsiteViewer = ({ sourceCodePath, viewPath, title }: WebsiteViewerProps) => {
-  const sourceCodeUrl = `${GITHUB_TREE_BASE}/v${localPorscheDesignSystemMajorVersion}/${sourceCodePath}`;
-  const viewUrl = `${GITHUB_PAGES_BASE}/v${localPorscheDesignSystemMajorVersion}/${viewPath}`;
+/**
+ * Opens an example in StackBlitz.
+ *
+ * The payload is fetched when the viewer mounts, not on click: `sdk.openProject()` opens a new tab, which needs the
+ * user activation of the click – an `await fetch()` in between lets that expire and the popup blocker step in,
+ * notably in Safari. The button is therefore busy until the payload is there.
+ */
+const OpenExampleInStackblitz = ({ example }: { example: ExamplePath }) => {
+  const [payload, setPayload] = useState<ExamplePayload | null>(null);
+  const [hasFailed, setHasFailed] = useState(false);
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    fetch(getExamplePayloadUrl(example, getBasePath()))
+      .then((response) => (response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response.status}`))))
+      .then((data: ExamplePayload) => isCurrent && setPayload(data))
+      .catch((error: Error) => {
+        console.error(`Could not load the StackBlitz project of "${example}": ${error.message}`);
+        if (isCurrent) setHasFailed(true);
+      });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [example]);
+
+  const onOpen = () => {
+    if (payload) {
+      openExampleInStackblitz(withMediaOrigin(payload, window.location.origin, getBasePath()));
+    }
+  };
+
+  return (
+    <PButtonPure
+      type="button"
+      iconSource="assets/icon-stackblitz.svg"
+      loading={!payload && !hasFailed}
+      disabled={hasFailed}
+      onClick={onOpen}
+      aria={{ 'aria-description': 'Opens in a new tab' }}
+    >
+      Open in StackBlitz
+    </PButtonPure>
+  );
+};
+
+export const WebsiteViewer = (props: WebsiteViewerProps) => {
+  const { title } = props;
+  const isExample = 'example' in props;
+  const viewUrl = isExample
+    ? getExampleUrl(props.example, getBasePath())
+    : `${GITHUB_PAGES_BASE}/v${localPorscheDesignSystemMajorVersion}/${props.viewPath}`;
 
   const { trackRef, width, setWidth, isResizing, handleProps } = useResizeHandle({ minWidth: MIN_WIDTH });
 
   return (
     <div className="mt-fluid-lg grid gap-fluid-md">
       <div className="flex flex-wrap gap-static-md">
+        {isExample ? (
+          <OpenExampleInStackblitz example={props.example} />
+        ) : (
+          <PLinkPure icon="external">
+            <Link
+              href={`${GITHUB_TREE_BASE}/v${localPorscheDesignSystemMajorVersion}/${props.sourceCodePath}`}
+              target="_blank"
+            >
+              Source Code
+            </Link>
+          </PLinkPure>
+        )}
         <PLinkPure icon="external">
-          <Link href={sourceCodeUrl} target="_blank">
-            Source Code
-          </Link>
-        </PLinkPure>
-        <PLinkPure icon="external">
-          <Link href={viewUrl} target="_blank">
+          {/* A plain anchor: an example is a file in `public/`, not a route `next/link` could navigate to. */}
+          <a href={viewUrl} target="_blank" rel="noopener">
             View Fullscreen
-          </Link>
+          </a>
         </PLinkPure>
         {width !== null && (
           <>

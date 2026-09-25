@@ -48,6 +48,8 @@ test.describe('storefront pages', () => {
   const internalUrls = allUrls.filter(
     (url) =>
       !url.match(/^\/assets\/.*\.\w{3,4}$/) &&
+      // The examples framed from public/examples/ are no storefront pages; packages/examples scans them with axe itself.
+      !url.startsWith('/examples/') &&
       // Skip redirect "base" pages: category/page routes that have no own content and client-side redirect
       // to their first child (e.g. /components/button/ -> /components/button/configurator/, /developing/vue/
       // -> /developing/vue/getting-started/). The pre-redirect page has no level-one heading, so scanning it
