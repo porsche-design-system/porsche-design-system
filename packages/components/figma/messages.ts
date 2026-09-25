@@ -1,17 +1,18 @@
-// The lines scripts/figmaGenerate.ts prints for problems only design can fix, and the patterns the two readers match
-// them with: scripts/figmaConnect.ts holds back the component sets they name, scripts/build-slack-figma-payload.ts
-// turns them into one action per component for design. One module, so a reworded line cannot break a reader silently.
-// No imports: the Slack builder runs under bare `node`.
+// The design lines: what scripts/figmaGenerate.ts prints for problems only design can fix, and the patterns
+// scripts/build-slack-figma-payload.ts reads them with. One module, so a changed line cannot break the reader
+// silently. No imports: the Slack builder runs under bare `node`.
 
-/** Every problem line starts with this marker; the readers anchor on it. */
+/** Every problem line starts with this marker. The readers match on it. */
 export const printed = (line: string): string => `✖ ${line}`;
 
-/** Why no rule places a Figma property. Each has a matcher in `REASON` and one design action in the Slack builder. */
+/** Why no rule places a Figma property. Each reason has a pattern in `REASON` and one action in the Slack builder. */
 export const reasons = {
   slotMissing: 'is a slot PDS does not have',
   noProp: (figmaType: string): string => `(${figmaType}) has no PDS prop`,
   disallowedValues: (values: string[]): string => `has values PDS does not allow: ${values.join(', ')}`,
   typeMismatch: (figmaType: string, pdsType: string): string => `is ${figmaType} in Figma but ${pdsType} in PDS`,
+  deprecated: 'is deprecated in PDS',
+  deprecatedValues: (values: string[]): string => `has values deprecated in PDS: ${values.join(', ')}`,
 };
 export const REASON = {
   slotMissing: /^is a slot PDS does not have$/,
@@ -21,16 +22,19 @@ export const REASON = {
   disallowedValues: /^has values PDS does not allow: (.+)$/,
   /** Groups: the Figma type, the PDS type. */
   typeMismatch: /^is (.+) in Figma but (.+) in PDS$/,
+  deprecated: /^is deprecated in PDS$/,
+  /** Group: the options, comma-separated. */
+  deprecatedValues: /^has values deprecated in PDS: (.+)$/,
 };
 
-/** A Figma property no rule and no exception places: `tag (106:261) → p-tag: "dense" (VARIANT) has no PDS prop — …` */
+/** An unplaceable Figma property: `tag (106:261) → p-tag: "dense" (VARIANT) has no PDS prop — fix it in Figma` */
 export const unplaceableLine = (component: string, id: string, tag: string, figma: string, reason: string): string =>
   `${component} (${id}) → ${tag}: "${figma}" ${reason} — fix it in Figma`;
 
 /**
- * A PDS prop, slot or allowed value the Figma component has no property or option for, outside the baseline. `name` is
- * the property Figma needs, with the type (and a VARIANT's options) the rules place, or `prop=value` for a missing
- * variant option, with no `property`.
+ * A coverage gap: a PDS prop, slot or allowed value with no Figma property or option, outside the baseline. `name` is
+ * the property Figma needs, with its type and, for a VARIANT, its options. For a missing option, `name` is `prop=value`
+ * and `property` is absent.
  */
 export const coverageGapLine = (
   component: string,
@@ -45,10 +49,13 @@ export const coverageGapLine = (
   return `${component} (${id}) → ${tag}: "${name}" has no Figma ${needed} — add it in Figma`;
 };
 
+/** A coverage gap for a whole component: `p-sheet has no Figma component set — add it in Figma` */
+export const componentGapLine = (tag: string): string => `${tag} has no Figma component set — add it in Figma`;
+
 /** Groups: component, node id, Figma property, reason. */
 export const UNPLACEABLE = /^✖ (.+?) \((\d+:\d+)\) → p-[\w-]+: "([^"]+)" (.+?) — fix it in Figma$/;
-/** Groups: component, node id, name, then for a property its type and, for a VARIANT, its options; both empty for an option. */
+/** Groups: component, node id, name, type, options. Type and options are empty for a missing option. */
 export const COVERAGE_GAP =
   /^✖ (.+?) \((\d+:\d+)\) → p-[\w-]+: "([^"]+)" has no Figma (?:(\w+) property(?: with the options (.+?))?|option) — add it in Figma$/;
-/** Either kind; group 1 is the component set's node id. */
-export const WAITING_ON_DESIGN = /^✖ .+? \((\d+:\d+)\) → p-[\w-]+: "[^"]+" .+ — (?:fix|add) it in Figma$/;
+/** Group: the PDS tag. */
+export const COMPONENT_GAP = /^✖ (p-[\w-]+) has no Figma component set — add it in Figma$/;

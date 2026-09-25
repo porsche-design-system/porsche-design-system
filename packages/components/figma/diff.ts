@@ -5,9 +5,9 @@ type Pulled = Pick<Snapshot, 'components' | 'icons'>;
 const quote = (value: unknown): string => JSON.stringify(value);
 
 /**
- * Every difference between the committed snapshot and a fresh pull, one readable line each; empty when they are equal.
- * Read by `figma:pull --check`, which exits 1 on any line. The last check compares the two as data, so a field this
- * function does not know still fails instead of slipping through.
+ * The Figma drift: one line per difference between the committed snapshot and a fresh pull, empty when they are equal.
+ * `figma:pull --check` exits 1 on any line. The last check compares the two as data, so a field this function does not
+ * know is still a difference.
  */
 export const diffSnapshots = (committed: Pulled, fresh: Pulled): string[] => {
   const lines: string[] = [];

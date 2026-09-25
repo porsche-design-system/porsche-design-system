@@ -1,26 +1,29 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmdirSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, relative } from 'node:path';
 import { type ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
-import type { TagName } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { camelCase, kebabCase, pascalCase } from 'change-case';
 import { sync as globbySync } from 'fast-glob';
-import { applyBaseline, expectedProperty, missingInFigma } from '../figma/coverage';
+import { applyBaseline, componentSetGap, expectedProperty, missingComponentSets } from '../figma/coverage';
+import { derive } from '../figma/derive';
 import { exceptions, type PropertyMapping } from '../figma/exceptions';
-import { coverageGapLine, printed, reasons, unplaceableLine } from '../figma/messages';
-import { pdsSlotName, showLabelStandsForHideLabel } from '../figma/naming';
+import { componentGapLine, coverageGapLine, printed, unplaceableLine } from '../figma/messages';
+import { pdsSlotName } from '../figma/naming';
 import { type Component, type Definition, definitions, readSnapshot } from '../figma/snapshot';
 
 // Generates the Code Connect templates (one per label) into src/components/<component>/figma/ for every component set in
 // figma/components.json that has a PDS component, and deletes the templates of a component set that left the snapshot.
-// Mappings are derived by rule from the Figma property definition and component-meta; figma/exceptions.ts holds only the
-// exceptions. `--check` fails instead of writing when a generated file differs from the one on disk or a generated file
-// has no component set any more. The output is written in the shape `biome format` produces, so `npm run format` never
-// touches a generated file.
+// Mappings are derived by rule in figma/derive.ts, which walks component-meta and looks each prop and slot up in the
+// snapshot; figma/exceptions.ts holds only the exceptions. `--check` fails instead of writing when a generated file
+// differs from the one on disk or a generated file has no component set any more. The output is written in the shape
+// `biome format` produces, so `npm run format` never touches a generated file.
 type Label = {
   suffix: string;
   label: string;
   tagName: (tag: string) => string;
   attr: (name: string, value: string | true) => string;
+  /** An attribute whose value is a number, in the label's expression syntax: `activePage={2}`, `[activePage]="2"`. */
+  expr: (name: string, value: string) => string;
   imports: (tag: string, docs: string) => string[];
   /** A comment inside the element's children, in the label's syntax; used to name the slot a child belongs to. */
   comment: (text: string) => string;
@@ -35,6 +38,7 @@ const labels: Label[] = [
     label: 'Web Components',
     tagName: (t) => t,
     attr: (n, v) => `${kebabCase(n)}=${quoted(v === true ? 'true' : v)}`,
+    expr: (n, v) => `${kebabCase(n)}=${quoted(v)}`,
     imports: (_, docs) => [`<!-- Docs: ${docs} -->`],
     comment: (text) => `<!-- ${text} -->`,
   },
@@ -43,6 +47,7 @@ const labels: Label[] = [
     label: 'React',
     tagName: (t) => pascalCase(t),
     attr: (n, v) => (v === true ? `${camelCase(n)}={true}` : `${camelCase(n)}=${quoted(v)}`),
+    expr: (n, v) => `${camelCase(n)}={${v}}`,
     imports: (t, docs) => [
       `// Docs: ${docs}`,
       `import { ${pascalCase(t)} } from '@porsche-design-system/components-react';`,
@@ -54,6 +59,7 @@ const labels: Label[] = [
     label: 'Angular',
     tagName: (t) => t,
     attr: (n, v) => `[${camelCase(n)}]=${quoted(v === true ? 'true' : `'${v}'`)}`,
+    expr: (n, v) => `[${camelCase(n)}]=${quoted(v)}`,
     imports: (_, docs) => [
       `// Docs: ${docs}`,
       `import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`,
@@ -65,6 +71,7 @@ const labels: Label[] = [
     label: 'Vue',
     tagName: (t) => pascalCase(t),
     attr: (n, v) => `:${camelCase(n)}=${quoted(v === true ? 'true' : `'${v}'`)}`,
+    expr: (n, v) => `:${camelCase(n)}=${quoted(v)}`,
     imports: (t, docs) => [
       `// Docs: ${docs}`,
       `import { ${pascalCase(t)} } from '@porsche-design-system/components-vue';`,
@@ -76,9 +83,8 @@ const labels: Label[] = [
 const snapshot = readSnapshot();
 const check = process.argv.includes('--check');
 // Problems only design can fix (a Figma property the rules cannot place, a PDS prop, slot or allowed value the library
-// lacks) fail only with --strict, which the Figma Code Connect workflow passes; figma:publish holds back only the
-// components they name, and a pull request never waits for Figma.
-const strict = process.argv.includes('--strict');
+// lacks) are printed as design lines (figma/messages.ts) and never fail: the Figma Code Connect workflow reads them from
+// the log, publish leaves each record to Figma's own validation, and a pull request never waits for Figma.
 const baselinePath = 'figma/coverage-baseline.json';
 const baseline: Record<string, string[]> = JSON.parse(readFileSync(baselinePath, 'utf8'));
 // Where the records go. Defaults to the library the snapshot was pulled from. FIGMA_PUBLISH_FILE_URL points the `// url=`
@@ -95,9 +101,6 @@ const emitted = new Set<string>();
 let written = 0;
 let deleted = 0;
 
-const isBooleanVariant = (d: Definition): boolean =>
-  d.type === 'VARIANT' && (d.variantOptions ?? []).every((o) => o === 'true' || o === 'false');
-
 /** Exceptions are the only hand-written entries, so only they can name a prop or value component-meta rejects. */
 const validateException = (tag: TagName, meta: ComponentMeta, mapping: PropertyMapping): void => {
   if (mapping.kind === 'text' || mapping.kind === 'slot') return;
@@ -112,48 +115,6 @@ const validateException = (tag: TagName, meta: ComponentMeta, mapping: PropertyM
         errors.push(`${tag} ${mapping.prop}="${value}" is not an allowed value`);
     }
   }
-};
-
-/** The five library conventions plus the exceptions; anything else is an error naming the property. */
-const derive = (component: Component, tag: TagName): PropertyMapping[] => {
-  const meta = getComponentMeta(tag);
-  const props = meta.propsMeta ?? {};
-  const defs = definitions(component);
-  const fail = (figma: string, reason: string): PropertyMapping[] => {
-    designErrors.push(unplaceableLine(component.name, component.id, tag, figma, reason));
-    return [];
-  };
-  return Object.entries(defs).flatMap(([figma, d]): PropertyMapping[] => {
-    const exception = exceptions[tag]?.[figma];
-    if (exception) {
-      validateException(tag, meta, exception);
-      return [exception];
-    }
-    if (/^fig/.test(figma)) return []; // design-only toggle; instance-swap gates are read by name below
-    if (figma === 'slot-default') return [d.type === 'TEXT' ? { figma, kind: 'text' } : { figma, kind: 'slot' }];
-    if (/^slot-/.test(figma))
-      return meta.slotsMeta?.[figma.slice(5)] ? [{ figma, kind: 'slot' }] : fail(figma, reasons.slotMissing);
-    if (figma === 'showLabel' && showLabelStandsForHideLabel(defs, props))
-      return [{ figma, kind: 'boolean', prop: 'hideLabel', inverted: true }];
-    const prop = props[figma];
-    if (!prop) return fail(figma, reasons.noProp(d.type));
-    if (d.type === 'INSTANCE_SWAP') {
-      const gate = `fig${pascalCase(figma)}`;
-      return [{ figma, kind: 'instance-swap', prop: figma, ...(defs[gate] ? { gate } : {}) }];
-    }
-    if (prop.type === 'boolean' && d.type === 'BOOLEAN') return [{ figma, kind: 'boolean', prop: figma }];
-    if (prop.type === 'boolean' && isBooleanVariant(d)) return [{ figma, kind: 'flag', prop: figma, when: 'true' }];
-    if (d.type === 'TEXT' && /string|number|Tag$/.test(prop.type)) return [{ figma, kind: 'string', prop: figma }];
-    const allowed = prop.allowedValues;
-    if (d.type === 'VARIANT' && Array.isArray(allowed)) {
-      const unknown = (d.variantOptions ?? []).filter((o) => !(allowed as string[]).includes(o));
-      if (unknown.length) return fail(figma, reasons.disallowedValues(unknown));
-      return [
-        { figma, kind: 'enum', prop: figma, values: Object.fromEntries((d.variantOptions ?? []).map((o) => [o, o])) },
-      ];
-    }
-    return fail(figma, reasons.typeMismatch(d.type, prop.type));
-  });
 };
 
 const key = (name: string): string => (/^[A-Za-z_$][\w$]*$/.test(name) ? name : `'${name}'`);
@@ -182,8 +143,8 @@ const fragment = (
     }
     case 'flag': {
       // every Figma option is listed; an option added in Figma later renders as an empty value with no error (measured
-      // 2026-09-18, see docs/figma-code-connect-runtime-facts.md), so figma:pull --check and the patched publish
-      // validation catch it — preview reports success
+      // 2026-09-18 on the real renderer), so figma:pull --check and the patched publish validation catch it — preview
+      // reports success
       const entries = (defs[property.figma]?.variantOptions ?? []).map((o) => `${key(o)}: ${o === property.when}`);
       return {
         read: `const ${variable} = instance.getEnum(${name}, { ${entries.join(', ')} });`,
@@ -199,6 +160,12 @@ const fragment = (
       };
     case 'string': // TEXT properties are often blank in the library; an empty attribute is noise
       return { read: `const ${variable} = instance.getString(${name});`, attr: ifSet(property.prop) };
+    case 'number':
+      // a TEXT property holds any text; only a number is emitted, as an expression in the label's syntax
+      return {
+        read: `const ${variable} = instance.getString(${name});`,
+        attr: `\${/^-?\\d+(\\.\\d+)?$/.test(${variable}) ? \` ${label.expr(property.prop, `\${${variable}}`)}\` : ''}`,
+      };
     case 'text':
       return { read: `const ${variable} = instance.getString(${name});`, attr: '' };
     case 'slot':
@@ -387,6 +354,7 @@ const generate = (): void => {
 
   let components = 0;
   const accepted: Record<string, string[]> = {};
+  const withSet = new Set<string>();
   for (const component of snapshot.components) {
     const name = component.name.replace(/^fig-/, '').toLowerCase();
     const tag = `p-${name}` as TagName;
@@ -394,13 +362,17 @@ const generate = (): void => {
       skipped.push(`${component.name} (${component.id})`);
       continue;
     }
+    withSet.add(tag);
     const [sourceFile] = globbySync(`src/components/**/${name}.tsx`);
     if (!sourceFile) {
       errors.push(`${tag}: no src/components/**/${name}.tsx`);
       continue;
     }
     const meta = getComponentMeta(tag);
-    const coverage = applyBaseline(missingInFigma(component, meta), baseline[tag] ?? []);
+    // every exception of the tag, whether or not the snapshot still has its Figma property: a typo is a repository mistake
+    for (const exception of Object.values(exceptions[tag] ?? {})) validateException(tag, meta, exception);
+    const { mappings, unplaceable, gaps } = derive(component, tag, meta);
+    const coverage = applyBaseline(gaps, baseline[tag] ?? []);
     for (const name of coverage.fresh) {
       // what design has to add: nothing more for an option, a SLOT for a slot, the type the rules place for a prop
       const property = name.includes('=')
@@ -410,15 +382,27 @@ const generate = (): void => {
           : expectedProperty(meta.propsMeta[name], iconNames);
       designErrors.push(coverageGapLine(component.name, component.id, tag, name, property));
     }
+    for (const [figma, reason] of unplaceable)
+      designErrors.push(unplaceableLine(component.name, component.id, tag, figma, reason));
     if (coverage.accepted.length) accepted[tag] = coverage.accepted;
-    const properties = derive(component, tag);
     components++;
     for (const label of labels) {
       emit(
         `${dirname(sourceFile)}/figma/${name}${label.suffix}.figma.ts`,
-        render(component, tag, properties, label, relative(`${dirname(sourceFile)}/figma`, 'figma/helpers'))
+        render(component, tag, mappings, label, relative(`${dirname(sourceFile)}/figma`, 'figma/helpers'))
       );
     }
+  }
+
+  // component level: a PDS component with no Figma component set at all is a design line, unless the baseline accepts
+  // it with the `component-set` entry (drawn inside a parent set, or not drawable); deprecated components are not expected
+  const pdsTags = (TAG_NAMES as readonly string[]).filter(
+    (t) => !(INTERNAL_TAG_NAMES as readonly string[]).includes(t)
+  );
+  const isDeprecated = (t: string): boolean => !!getComponentMeta(t as TagName)?.isDeprecated;
+  for (const tag of missingComponentSets(pdsTags, withSet, isDeprecated)) {
+    if ((baseline[tag] ?? []).includes(componentSetGap)) accepted[tag] = [componentSetGap];
+    else designErrors.push(componentGapLine(tag));
   }
 
   emit(baselinePath, baselineJson(accepted));
@@ -428,10 +412,10 @@ const generate = (): void => {
     console.log(`skipped ${skipped.length} component sets without a PDS component: ${skipped.join(', ')}`);
   if (designErrors.length) {
     console.error(designErrors.map(printed).join('\n'));
-    if (!strict) console.error(`${designErrors.length} problem(s) only design can fix; they fail with --strict only`);
+    console.error(`${designErrors.length} problem(s) only design can fix`);
   }
-  if (errors.length || (strict && designErrors.length)) {
-    if (errors.length) console.error(errors.map(printed).join('\n'));
+  if (errors.length) {
+    console.error(errors.map(printed).join('\n'));
     process.exit(1);
   }
   console.log(
