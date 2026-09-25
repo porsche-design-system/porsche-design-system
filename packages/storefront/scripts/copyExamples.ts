@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { examplesMediaPath, insertBasePath, rewriteCdnUrlsForDev } from '../src/utils/examples';
 import { getBasePath } from '../src/utils/getBasePath';
-import { examplesMediaPath, insertBasePath, rewriteCdnUrlsForDev } from './rewriteExamples';
 
 /**
  * Copies the built examples into `public/examples/`, where `WebsiteViewer` frames them.

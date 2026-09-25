@@ -376,6 +376,19 @@ both artifacts. Verified with `NEXT_PUBLIC_BASE_PATH=pr-4652`: the export contai
 production". The copy step reads `NEXT_PUBLIC_PDS_ENV=development` instead, which the test builds already set and
 `npm run dev` now sets for its `prebuild`.
 
+**Progress (2026-09-25): slice 3 is implemented.** `WebsiteViewer` takes `example="patterns/header/overlay"` next to the
+unchanged framework mode, frames `/<slug>/examples/…`, and replaces "Source Code" with "Open in StackBlitz"
+(`openExampleInStackblitz()` in `projects/stackblitz`, payload fetched on mount, media prefixed with the origin at click
+time). The 6 mdx pages use the new paths; the header headings are now "Overlay" and "Stacked" (confirmed by the page
+titles, "Header 1" and "Header 2"). New e2e spec `websiteViewer.e2e.ts` asserts the frames, their components and media,
+and the StackBlitz form payload against a stubbed stackblitz.com; a manual run against the real StackBlitz built and
+rendered the landing page in a WebContainer. Knock-on changes: the sitemap fixture swaps the 20 GitHub URLs for the 10
+`/examples/…` ones (and drops `https://designsystem.porsche.com/`, gone since the banner links to `/`), the dead-link
+checker treats `/examples/…` as static files and keeps them out of its 600 cap, and the storefront a11y suite skips
+them, because `packages/examples` scans them with axe itself. Found on the way, not caused by this: the table of
+contents links of `/patterns/header/` and `/patterns/feedback/` fail axe `target-size` locally, with the old headings as
+well.
+
 ---
 
 ## Settled decisions
