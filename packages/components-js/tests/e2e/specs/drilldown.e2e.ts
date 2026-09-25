@@ -608,13 +608,6 @@ test.describe('second level', () => {
         await expect(getDrilldownItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
       }
     );
-
-      await waitForStencilLifecycle(page);
-      await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
-      await expect(getDrilldownItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
-      await expect(getDrilldownItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
-      await expect(getDrilldownItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
-    });
   });
 });
 

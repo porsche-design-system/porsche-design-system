@@ -61,8 +61,8 @@
   },
   {
     "chunkShortName": "drilldown",
-    "size": 20696,
-    "gzipSize": 6532
+    "size": 21151,
+    "gzipSize": 6621
   },
   {
     "chunkShortName": "fieldset",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 82115,
-    "gzipSize": 25577
+    "size": 82236,
+    "gzipSize": 25596
   },
   {
     "chunkShortName": "modal",
