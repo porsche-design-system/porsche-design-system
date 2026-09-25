@@ -6,8 +6,8 @@ const quote = (value: unknown): string => JSON.stringify(value);
 
 /**
  * The Figma drift: one line per difference between the committed snapshot and a fresh pull, empty when they are equal.
- * `figma:pull --check` exits 1 on any line. The last check compares the two as data, so a field this function does not
- * know is still a difference.
+ * `figma:pull --check` exits 2 on any line. The last check compares the two as data, in any order, so a field this
+ * function does not know is still a difference.
  */
 export const diffSnapshots = (committed: Pulled, fresh: Pulled): string[] => {
   const lines: string[] = [];
@@ -45,10 +45,15 @@ export const diffSnapshots = (committed: Pulled, fresh: Pulled): string[] => {
   for (const [id, name] of Object.entries(committed.icons).filter(([id]) => !(id in fresh.icons)))
     lines.push(`icon ${id} "${name}" removed`);
 
+  // a republish can list the same sets, properties and icons in another order, so compare them sorted
+  const sorted = <T>(o: Record<string, T>): Record<string, T> =>
+    Object.fromEntries(Object.entries(o).sort(([a], [b]) => a.localeCompare(b)));
   const asData = (p: Pulled): string =>
     quote({
-      components: p.components.map((c: Component) => ({ id: c.id, name: c.name, definitions: definitions(c) })),
-      icons: p.icons,
+      components: [...p.components]
+        .sort((a, b) => a.id.localeCompare(b.id))
+        .map((c: Component) => ({ id: c.id, name: c.name, definitions: sorted(definitions(c)) })),
+      icons: sorted(p.icons),
     });
   if (lines.length === 0 && asData(committed) !== asData(fresh))
     lines.push(

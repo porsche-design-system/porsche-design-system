@@ -16,6 +16,15 @@ describe('diffSnapshots', () => {
     expect(diffSnapshots(committed, fresh)).toEqual([]);
   });
 
+  it('reports nothing when a republish only lists the same sets, properties or icons in another order', () => {
+    const tag = set({ compact: { type: 'BOOLEAN' }, label: { type: 'TEXT' } });
+    const button = set({ variant: { type: 'VARIANT', variantOptions: ['primary'] } }, { id: '2:2', name: 'button' });
+    const tagReordered = set({ label: { type: 'TEXT' }, compact: { type: 'BOOLEAN' } });
+    const committed = snapshot([tag, button], { '9:1': 'close', '9:2': 'globe' });
+    const fresh = snapshot([button, tagReordered], { '9:2': 'globe', '9:1': 'close' });
+    expect(diffSnapshots(committed, fresh)).toEqual([]);
+  });
+
   it('reports a property added, removed or retyped', () => {
     const committed = snapshot([set({ compact: { type: 'BOOLEAN' }, label: { type: 'TEXT' } })]);
     const fresh = snapshot([set({ dense: { type: 'BOOLEAN' }, label: { type: 'VARIANT', variantOptions: ['a'] } })]);

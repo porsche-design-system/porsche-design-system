@@ -39,16 +39,16 @@ a record that would.
    number attribute, `activePage={2}`, for a numeric prop), VARIANT `false`/`true` is a boolean attribute, any other
    VARIANT an identity enum over the options PDS allows. `figma/exceptions.ts` holds only the exceptions. Not expected
    in Figma: props flagged `isAria`, anything deprecated, deprecated values; form participation (`form`, `name`,
-   `value`) is optional, mapped when drawn and never asked for, except a required `value`, which the component throws
-   without. Everything else is a **design line**: a PDS prop, slot or allowed value Figma lacks, unless
-   `figma/coverage-baseline.json` accepts it (`"compact" has no Figma BOOLEAN property — add it in Figma`,
-   `"variant=destructive" has no Figma option`); a PDS component with no Figma component set at all, unless the baseline
-   accepts it with the entry `component-set` (`p-sheet has no Figma component set — add it in Figma`); or a Figma
-   property no rule places (`"dense" (VARIANT) has no PDS prop — fix it in Figma`,
-   `"variant" has values PDS does not allow: ghost`, `"weight" is deprecated in PDS`,
-   `"variant" has values deprecated in PDS: tertiary`, the last two so that snippets stop emitting deprecated API).
-   Design lines print and never fail. The result is four templates per component (`Web Components`, `React`, `Angular`,
-   `Vue`) next to the component source, plus the icon batches
+   `value`) is optional, mapped when drawn and never asked for, required or not: a `value` TEXT property has no text
+   layer to feed and Figma flags it as unused. Everything else is a **design line**: a PDS prop, slot or allowed value
+   Figma lacks, unless `figma/coverage-baseline.json` accepts it
+   (`"compact" has no Figma BOOLEAN property — add it in Figma`, `"variant=destructive" has no Figma option`); a PDS
+   component with no Figma component set at all, unless the baseline accepts it with the entry `component-set`
+   (`p-sheet has no Figma component set — add it in Figma`); or a Figma property no rule places
+   (`"dense" (VARIANT) has no PDS prop — fix it in Figma`, `"variant" has values PDS does not allow: ghost`,
+   `"weight" is deprecated in PDS`, `"variant" has values deprecated in PDS: tertiary`, the last two so that snippets
+   stop emitting deprecated API). Design lines print and never fail. The result is four templates per component
+   (`Web Components`, `React`, `Angular`, `Vue`) next to the component source, plus the icon batches
    `figma/icons/p-icon{,.react,.angular,.vue}.figma.batch.{ts,json}`, one record per PDS icon and label. Every
    template's `// source=` and first `imports` entry are the component's docs API URL
    (`https://designsystem.porsche.com/v4/components/<root>/api`, root resolved through `requiredParent`), because that
@@ -257,10 +257,12 @@ One line each, with what was rejected. Dated by when they were ruled.
     the engineering failure allowlist.
 21. **Only this runbook is committed; research notes live outside the repository** (2026-09-24). Rejected: seven
     research documents that contradicted the current design in 14 places.
-22. **A required `value` is a coverage gap; `name` and `form` stay optional** (2026-09-25). `p-multi-select-option`,
-    `p-radio-group-option` and `p-segmented-control-item` throw without `value`, so their snippets must carry it.
-    Rejected: reporting every required form prop, which asks design to draw `name` on 15 form components for nothing
-    visible.
+22. **Form props stay optional even where component-meta requires them; Copilot's comment 3 on #4747 is declined**
+    (2026-09-25). A Figma TEXT property must feed a text layer, and an option's `value` is never displayed: added to
+    `multi-select-option` on the copy, Figma marked it "Not used within component". The developer supplies `value`
+    (`p-multi-select-option`, `p-radio-group-option`, `p-segmented-control-item` throw without it). Rejected: reporting
+    a required `value` as a gap, tried and reverted the same day on that evidence; reporting every required form prop,
+    which asks for `name` on 15 form components for nothing visible.
 23. **A numeric prop drawn as TEXT is a number attribute, emitted as an expression** (2026-09-25): `activePage={2}`,
     `[activePage]="2"`, `:activePage="2"`; text that is not a number is left out. Rejected: quoting the text, which does
     not type-check in React or in a strict Angular template.

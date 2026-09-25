@@ -1,6 +1,6 @@
 {
   "fileUrl": "https://www.figma.com/design/bEXOI0BAd6pXjvIG1mpWIN/Porsche-Web-Design-System--Renato-Code-Connect--Copy-",
-  "pulledAt": "2026-09-24T09:55:03.616Z",
+  "pulledAt": "2026-09-25T09:24:57.570Z",
   "components": [
     {
       "id": "44948:8887",
@@ -339,20 +339,6 @@
       }
     },
     {
-      "id": "32235:4753",
-      "name": "modal",
-      "componentPropertyDefinitions": {
-        "backdrop": {
-          "type": "VARIANT",
-          "defaultValue": "blur",
-          "variantOptions": [
-            "blur",
-            "shading"
-          ]
-        }
-      }
-    },
-    {
       "id": "8615:60056",
       "name": "wordmark",
       "componentPropertyDefinitions": {
@@ -412,80 +398,6 @@
           "variantOptions": [
             "false",
             "true"
-          ]
-        }
-      }
-    },
-    {
-      "id": "60399:13177",
-      "name": "modal item",
-      "componentPropertyDefinitions": {
-        "Dismiss button#60399:8": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "slot-header#60399:11": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "slot-default#60399:12": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "slot-footer#60399:13": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "figSlotDefault#60399:15": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "figSlotHeader#60399:16": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "figSlotFooter#60399:17": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "Background": {
-          "type": "VARIANT",
-          "defaultValue": "canvas",
-          "variantOptions": [
-            "surface",
-            "canvas"
-          ]
-        }
-      }
-    },
-    {
-      "id": "32496:73770",
-      "name": "container",
-      "componentPropertyDefinitions": {
-        "ratio": {
-          "type": "VARIANT",
-          "defaultValue": "1:1",
-          "variantOptions": [
-            "1:1",
-            "3:4",
-            "4:3",
-            "16:9",
-            "9:16"
           ]
         }
       }
@@ -1546,80 +1458,6 @@
       }
     },
     {
-      "id": "934:5761",
-      "name": "inline-notification",
-      "componentPropertyDefinitions": {
-        "figAction#7610:0": {
-          "type": "BOOLEAN",
-          "defaultValue": false
-        },
-        "dismissButton#7610:33": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "figHeading#7610:66": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "figDescription#7610:71": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "heading#58411:4056": {
-          "type": "TEXT",
-          "defaultValue": "Notification headline"
-        },
-        "slot-default#58411:4061": {
-          "type": "TEXT",
-          "defaultValue": "Notification description with slotted content and link"
-        },
-        "headingTag#58411:4071": {
-          "type": "TEXT",
-          "defaultValue": "h5"
-        },
-        "actionLabel#58411:4081": {
-          "type": "TEXT",
-          "defaultValue": "Some Label"
-        },
-        "actionIcon#58411:4086": {
-          "type": "INSTANCE_SWAP",
-          "defaultValue": "5211:33469"
-        },
-        "state": {
-          "type": "VARIANT",
-          "defaultValue": "info",
-          "variantOptions": [
-            "info",
-            "success",
-            "warning",
-            "error"
-          ]
-        }
-      }
-    },
-    {
-      "id": "25272:1118",
-      "name": "flyout",
-      "componentPropertyDefinitions": {
-        "position": {
-          "type": "VARIANT",
-          "defaultValue": "end",
-          "variantOptions": [
-            "start",
-            "end"
-          ]
-        },
-        "backdrop": {
-          "type": "VARIANT",
-          "defaultValue": "blur",
-          "variantOptions": [
-            "blur",
-            "shading"
-          ]
-        }
-      }
-    },
-    {
       "id": "1002:5592",
       "name": "divider",
       "componentPropertyDefinitions": {
@@ -1905,20 +1743,6 @@
       }
     },
     {
-      "id": "31791:3838",
-      "name": "button-group",
-      "componentPropertyDefinitions": {
-        "direction": {
-          "type": "VARIANT",
-          "defaultValue": "horizontal",
-          "variantOptions": [
-            "vertical",
-            "horizontal"
-          ]
-        }
-      }
-    },
-    {
       "id": "55823:8373",
       "name": "flag",
       "componentPropertyDefinitions": {
@@ -2048,69 +1872,6 @@
       }
     },
     {
-      "id": "225:216",
-      "name": "button",
-      "componentPropertyDefinitions": {
-        "slot-default#3544:0": {
-          "type": "TEXT",
-          "defaultValue": "Some Label"
-        },
-        "icon#58025:0": {
-          "type": "INSTANCE_SWAP",
-          "defaultValue": "5211:35878"
-        },
-        "variant": {
-          "type": "VARIANT",
-          "defaultValue": "primary",
-          "variantOptions": [
-            "primary",
-            "secondary",
-            "destructive"
-          ]
-        },
-        "loading": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        },
-        "disabled": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        },
-        "hideLabel": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        },
-        "compact": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        },
-        "figIcon": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        }
-      }
-    },
-    {
       "id": "5211:53111",
       "name": "Spacer",
       "componentPropertyDefinitions": {
@@ -2171,46 +1932,6 @@
             "contrast-higher",
             "contrast-medium",
             "primary"
-          ]
-        }
-      }
-    },
-    {
-      "id": "7670:54339",
-      "name": "banner",
-      "componentPropertyDefinitions": {
-        "dismissButton#7610:33": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "figDescription#7610:71": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "heading#58411:4046": {
-          "type": "TEXT",
-          "defaultValue": "Notification headline"
-        },
-        "slot-default#58411:4051": {
-          "type": "TEXT",
-          "defaultValue": "Notification description with slotted content and link"
-        },
-        "headingTag#58411:4066": {
-          "type": "TEXT",
-          "defaultValue": "h5"
-        },
-        "figHeading#58411:4076": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "state": {
-          "type": "VARIANT",
-          "defaultValue": "info",
-          "variantOptions": [
-            "info",
-            "warning",
-            "error",
-            "success"
           ]
         }
       }
@@ -2632,38 +2353,6 @@
       }
     },
     {
-      "id": "32735:8125",
-      "name": "tabs-bar",
-      "componentPropertyDefinitions": {
-        "size": {
-          "type": "VARIANT",
-          "defaultValue": "small",
-          "variantOptions": [
-            "small",
-            "medium"
-          ]
-        },
-        "background": {
-          "type": "VARIANT",
-          "defaultValue": "none",
-          "variantOptions": [
-            "canvas",
-            "frosted",
-            "none",
-            "surface"
-          ]
-        },
-        "compact": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        }
-      }
-    },
-    {
       "id": "59836:7910",
       "name": "select-option",
       "componentPropertyDefinitions": {
@@ -2850,20 +2539,6 @@
       }
     },
     {
-      "id": "60560:14624",
-      "name": "feedback",
-      "componentPropertyDefinitions": {
-        "variant": {
-          "type": "VARIANT",
-          "defaultValue": "inline",
-          "variantOptions": [
-            "inline",
-            "dialog"
-          ]
-        }
-      }
-    },
-    {
       "id": "47790:6759",
       "name": "input-email",
       "componentPropertyDefinitions": {
@@ -2985,106 +2660,6 @@
           "variantOptions": [
             "false",
             "true"
-          ]
-        }
-      }
-    },
-    {
-      "id": "33100:10506",
-      "name": "table",
-      "componentPropertyDefinitions": {
-        "figCaption#33100:4": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "figVariant": {
-          "type": "VARIANT",
-          "defaultValue": "basic example",
-          "variantOptions": [
-            "basic example",
-            "advanced",
-            "scroller",
-            "compact"
-          ]
-        }
-      }
-    },
-    {
-      "id": "59836:7480",
-      "name": "multi-select-option",
-      "componentPropertyDefinitions": {
-        "figChecked": {
-          "type": "VARIANT",
-          "defaultValue": "default",
-          "variantOptions": [
-            "false",
-            "true",
-            "default"
-          ]
-        },
-        "disabled": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        }
-      }
-    },
-    {
-      "id": "32496:70159",
-      "name": "toast",
-      "componentPropertyDefinitions": {
-        "figMessageValue#916:4": {
-          "type": "TEXT",
-          "defaultValue": "Some message"
-        },
-        "figState": {
-          "type": "VARIANT",
-          "defaultValue": "info",
-          "variantOptions": [
-            "info",
-            "success"
-          ]
-        }
-      }
-    },
-    {
-      "id": "34317:74666",
-      "name": "button-tile",
-      "componentPropertyDefinitions": {
-        "figSlotHeader#58506:4099": {
-          "type": "BOOLEAN",
-          "defaultValue": false
-        },
-        "slot-header#58506:4125": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "aspectRatio": {
-          "type": "VARIANT",
-          "defaultValue": "4/3",
-          "variantOptions": [
-            "1/1",
-            "16/9",
-            "3/4",
-            "4/3",
-            "9/16",
-            "auto"
-          ]
-        },
-        "align": {
-          "type": "VARIANT",
-          "defaultValue": "bottom",
-          "variantOptions": [
-            "bottom",
-            "top"
           ]
         }
       }
@@ -3214,63 +2789,6 @@
       }
     },
     {
-      "id": "59480:38841",
-      "name": "header",
-      "componentPropertyDefinitions": {
-        "variant": {
-          "type": "VARIANT",
-          "defaultValue": "01",
-          "variantOptions": [
-            "02",
-            "01"
-          ]
-        }
-      }
-    },
-    {
-      "id": "3466:25517",
-      "name": "link-tile",
-      "componentPropertyDefinitions": {
-        "figSlotHeader#58562:4149": {
-          "type": "BOOLEAN",
-          "defaultValue": false
-        },
-        "slot-header#58562:4162": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "href#58562:4201": {
-          "type": "TEXT",
-          "defaultValue": "https://porsche.com"
-        },
-        "aspectRatio": {
-          "type": "VARIANT",
-          "defaultValue": "4/3",
-          "variantOptions": [
-            "1/1",
-            "16/9",
-            "3/4",
-            "4/3",
-            "9/16",
-            "auto"
-          ]
-        },
-        "align": {
-          "type": "VARIANT",
-          "defaultValue": "bottom",
-          "variantOptions": [
-            "bottom",
-            "top"
-          ]
-        }
-      }
-    },
-    {
       "id": "817:3006",
       "name": "textarea",
       "componentPropertyDefinitions": {
@@ -3355,20 +2873,6 @@
       }
     },
     {
-      "id": "32620:8703",
-      "name": "stepper-horizontal",
-      "componentPropertyDefinitions": {
-        "size": {
-          "type": "VARIANT",
-          "defaultValue": "small",
-          "variantOptions": [
-            "small",
-            "medium"
-          ]
-        }
-      }
-    },
-    {
       "id": "26842:12552",
       "name": "link-tile-product",
       "componentPropertyDefinitions": {
@@ -3407,156 +2911,6 @@
       }
     },
     {
-      "id": "3465:24056",
-      "name": "scroller",
-      "componentPropertyDefinitions": {
-        "figScrollerStart#33041:0": {
-          "type": "BOOLEAN",
-          "defaultValue": false
-        },
-        "figScrollerEnd#33041:14": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "slot-default#58285:3900": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "compact": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        },
-        "figBackground": {
-          "type": "VARIANT",
-          "defaultValue": "canvas",
-          "variantOptions": [
-            "canvas",
-            "surface"
-          ]
-        }
-      }
-    },
-    {
-      "id": "22698:3276",
-      "name": "multi-select",
-      "componentPropertyDefinitions": {
-        "figHelperSelection#48709:1524": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "showLabel#48709:1526": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "figDescription#48709:1527": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "figMessage#48804:0": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "label#58233:2901": {
-          "type": "TEXT",
-          "defaultValue": "Some Label"
-        },
-        "description#58233:2918": {
-          "type": "TEXT",
-          "defaultValue": "Some description"
-        },
-        "message#58233:2935": {
-          "type": "TEXT",
-          "defaultValue": "Some message with a link."
-        },
-        "required#58233:2952": {
-          "type": "BOOLEAN",
-          "defaultValue": false
-        },
-        "figReset#58257:3374": {
-          "type": "BOOLEAN",
-          "defaultValue": false
-        },
-        "slot-default#58257:3392": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "slot-filter#58257:3401": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "value#59186:13": {
-          "type": "TEXT",
-          "defaultValue": ""
-        },
-        "slot-label-after#60743:5553": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "figSlotAfterLabel#60743:5683": {
-          "type": "BOOLEAN",
-          "defaultValue": false
-        },
-        "state": {
-          "type": "VARIANT",
-          "defaultValue": "none",
-          "variantOptions": [
-            "error",
-            "success",
-            "none"
-          ]
-        },
-        "dropdownDirection": {
-          "type": "VARIANT",
-          "defaultValue": "auto",
-          "variantOptions": [
-            "auto",
-            "down",
-            "up"
-          ]
-        },
-        "compact": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        },
-        "disabled": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        }
-      }
-    },
-    {
       "id": "50:738",
       "name": "radio-group-option",
       "componentPropertyDefinitions": {
@@ -3583,91 +2937,6 @@
             "none",
             "success",
             "error"
-          ]
-        }
-      }
-    },
-    {
-      "id": "32069:55211",
-      "name": "segmented-control",
-      "componentPropertyDefinitions": {
-        "slot-default#58284:3518": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "label#58285:3723": {
-          "type": "TEXT",
-          "defaultValue": "Some Label"
-        },
-        "showLabel#58285:3748": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "required#58285:3773": {
-          "type": "BOOLEAN",
-          "defaultValue": false
-        },
-        "description#58285:3798": {
-          "type": "TEXT",
-          "defaultValue": "Some description"
-        },
-        "message#58285:3823": {
-          "type": "TEXT",
-          "defaultValue": "Please make a selection"
-        },
-        "figMessage#58285:3848": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "slot-label-after#60747:5934": {
-          "type": "SLOT",
-          "defaultValue": {
-            "guid": {
-              "sessionID": -1,
-              "localID": -1
-            }
-          }
-        },
-        "figSlotAfterLabel#60747:6534": {
-          "type": "BOOLEAN",
-          "defaultValue": true
-        },
-        "state": {
-          "type": "VARIANT",
-          "defaultValue": "none",
-          "variantOptions": [
-            "none",
-            "error",
-            "success"
-          ]
-        },
-        "noWrap": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        },
-        "disabled": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
-          ]
-        },
-        "compact": {
-          "type": "VARIANT",
-          "defaultValue": "false",
-          "variantOptions": [
-            "false",
-            "true"
           ]
         }
       }
@@ -3808,6 +3077,737 @@
           "variantOptions": [
             "false",
             "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32735:8125",
+      "name": "tabs-bar",
+      "componentPropertyDefinitions": {
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "small",
+          "variantOptions": [
+            "small",
+            "medium"
+          ]
+        },
+        "background": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "canvas",
+            "frosted",
+            "none",
+            "surface"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32620:8703",
+      "name": "stepper-horizontal",
+      "componentPropertyDefinitions": {
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "small",
+          "variantOptions": [
+            "small",
+            "medium"
+          ]
+        }
+      }
+    },
+    {
+      "id": "225:216",
+      "name": "button",
+      "componentPropertyDefinitions": {
+        "slot-default#3544:0": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "icon#58025:0": {
+          "type": "INSTANCE_SWAP",
+          "defaultValue": "5211:35878"
+        },
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "primary",
+          "variantOptions": [
+            "primary",
+            "secondary",
+            "destructive"
+          ]
+        },
+        "loading": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "figIcon": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32235:4753",
+      "name": "modal",
+      "componentPropertyDefinitions": {
+        "backdrop": {
+          "type": "VARIANT",
+          "defaultValue": "blur",
+          "variantOptions": [
+            "blur",
+            "shading"
+          ]
+        }
+      }
+    },
+    {
+      "id": "25272:1118",
+      "name": "flyout",
+      "componentPropertyDefinitions": {
+        "position": {
+          "type": "VARIANT",
+          "defaultValue": "end",
+          "variantOptions": [
+            "start",
+            "end"
+          ]
+        },
+        "backdrop": {
+          "type": "VARIANT",
+          "defaultValue": "blur",
+          "variantOptions": [
+            "blur",
+            "shading"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32069:55211",
+      "name": "segmented-control",
+      "componentPropertyDefinitions": {
+        "slot-default#58284:3518": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "label#58285:3723": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "showLabel#58285:3748": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "required#58285:3773": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "description#58285:3798": {
+          "type": "TEXT",
+          "defaultValue": "Some description"
+        },
+        "message#58285:3823": {
+          "type": "TEXT",
+          "defaultValue": "Please make a selection"
+        },
+        "figMessage#58285:3848": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "slot-label-after#60747:5934": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60747:6534": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "noWrap": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "60560:14624",
+      "name": "feedback",
+      "componentPropertyDefinitions": {
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "inline",
+          "variantOptions": [
+            "inline",
+            "dialog"
+          ]
+        }
+      }
+    },
+    {
+      "id": "7670:54339",
+      "name": "banner",
+      "componentPropertyDefinitions": {
+        "dismissButton#7610:33": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figDescription#7610:71": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "heading#58411:4046": {
+          "type": "TEXT",
+          "defaultValue": "Notification headline"
+        },
+        "slot-default#58411:4051": {
+          "type": "TEXT",
+          "defaultValue": "Notification description with slotted content and link"
+        },
+        "headingTag#58411:4066": {
+          "type": "TEXT",
+          "defaultValue": "h5"
+        },
+        "figHeading#58411:4076": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "info",
+          "variantOptions": [
+            "info",
+            "warning",
+            "error",
+            "success"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32496:73770",
+      "name": "container",
+      "componentPropertyDefinitions": {
+        "ratio": {
+          "type": "VARIANT",
+          "defaultValue": "1:1",
+          "variantOptions": [
+            "1:1",
+            "3:4",
+            "4:3",
+            "16:9",
+            "9:16"
+          ]
+        }
+      }
+    },
+    {
+      "id": "934:5761",
+      "name": "inline-notification",
+      "componentPropertyDefinitions": {
+        "figAction#7610:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "dismissButton#7610:33": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figHeading#7610:66": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figDescription#7610:71": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "heading#58411:4056": {
+          "type": "TEXT",
+          "defaultValue": "Notification headline"
+        },
+        "slot-default#58411:4061": {
+          "type": "TEXT",
+          "defaultValue": "Notification description with slotted content and link"
+        },
+        "headingTag#58411:4071": {
+          "type": "TEXT",
+          "defaultValue": "h5"
+        },
+        "actionLabel#58411:4081": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "actionIcon#58411:4086": {
+          "type": "INSTANCE_SWAP",
+          "defaultValue": "5211:33469"
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "info",
+          "variantOptions": [
+            "info",
+            "success",
+            "warning",
+            "error"
+          ]
+        }
+      }
+    },
+    {
+      "id": "33100:10506",
+      "name": "table",
+      "componentPropertyDefinitions": {
+        "figCaption#33100:4": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figVariant": {
+          "type": "VARIANT",
+          "defaultValue": "basic example",
+          "variantOptions": [
+            "basic example",
+            "advanced",
+            "scroller",
+            "compact"
+          ]
+        }
+      }
+    },
+    {
+      "id": "59836:7480",
+      "name": "multi-select-option",
+      "componentPropertyDefinitions": {
+        "figChecked": {
+          "type": "VARIANT",
+          "defaultValue": "default",
+          "variantOptions": [
+            "false",
+            "true",
+            "default"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "31791:3838",
+      "name": "button-group",
+      "componentPropertyDefinitions": {
+        "direction": {
+          "type": "VARIANT",
+          "defaultValue": "horizontal",
+          "variantOptions": [
+            "vertical",
+            "horizontal"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32496:70159",
+      "name": "toast",
+      "componentPropertyDefinitions": {
+        "figMessageValue#916:4": {
+          "type": "TEXT",
+          "defaultValue": "Some message"
+        },
+        "figState": {
+          "type": "VARIANT",
+          "defaultValue": "info",
+          "variantOptions": [
+            "info",
+            "success"
+          ]
+        }
+      }
+    },
+    {
+      "id": "34317:74666",
+      "name": "button-tile",
+      "componentPropertyDefinitions": {
+        "figSlotHeader#58506:4099": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-header#58506:4125": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "aspectRatio": {
+          "type": "VARIANT",
+          "defaultValue": "4/3",
+          "variantOptions": [
+            "1/1",
+            "16/9",
+            "3/4",
+            "4/3",
+            "9/16",
+            "auto"
+          ]
+        },
+        "align": {
+          "type": "VARIANT",
+          "defaultValue": "bottom",
+          "variantOptions": [
+            "bottom",
+            "top"
+          ]
+        }
+      }
+    },
+    {
+      "id": "22698:3276",
+      "name": "multi-select",
+      "componentPropertyDefinitions": {
+        "figHelperSelection#48709:1524": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "showLabel#48709:1526": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figDescription#48709:1527": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figMessage#48804:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58233:2901": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "description#58233:2918": {
+          "type": "TEXT",
+          "defaultValue": "Some description"
+        },
+        "message#58233:2935": {
+          "type": "TEXT",
+          "defaultValue": "Some message with a link."
+        },
+        "required#58233:2952": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figReset#58257:3374": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-default#58257:3392": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-filter#58257:3401": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#59186:13": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60743:5553": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60743:5683": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "error",
+            "success",
+            "none"
+          ]
+        },
+        "dropdownDirection": {
+          "type": "VARIANT",
+          "defaultValue": "auto",
+          "variantOptions": [
+            "auto",
+            "down",
+            "up"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "59480:38841",
+      "name": "header",
+      "componentPropertyDefinitions": {
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "01",
+          "variantOptions": [
+            "02",
+            "01"
+          ]
+        }
+      }
+    },
+    {
+      "id": "3466:25517",
+      "name": "link-tile",
+      "componentPropertyDefinitions": {
+        "figSlotHeader#58562:4149": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-header#58562:4162": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "href#58562:4201": {
+          "type": "TEXT",
+          "defaultValue": "https://porsche.com"
+        },
+        "aspectRatio": {
+          "type": "VARIANT",
+          "defaultValue": "4/3",
+          "variantOptions": [
+            "1/1",
+            "16/9",
+            "3/4",
+            "4/3",
+            "9/16",
+            "auto"
+          ]
+        },
+        "align": {
+          "type": "VARIANT",
+          "defaultValue": "bottom",
+          "variantOptions": [
+            "bottom",
+            "top"
+          ]
+        }
+      }
+    },
+    {
+      "id": "60399:13177",
+      "name": "modal item",
+      "componentPropertyDefinitions": {
+        "Dismiss button#60399:8": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "slot-header#60399:11": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-default#60399:12": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-footer#60399:13": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotDefault#60399:15": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figSlotHeader#60399:16": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figSlotFooter#60399:17": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "Background": {
+          "type": "VARIANT",
+          "defaultValue": "canvas",
+          "variantOptions": [
+            "surface",
+            "canvas"
+          ]
+        }
+      }
+    },
+    {
+      "id": "3465:24056",
+      "name": "scroller",
+      "componentPropertyDefinitions": {
+        "figScrollerStart#33041:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figScrollerEnd#33041:14": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "slot-default#58285:3900": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "figBackground": {
+          "type": "VARIANT",
+          "defaultValue": "canvas",
+          "variantOptions": [
+            "canvas",
+            "surface"
           ]
         }
       }
