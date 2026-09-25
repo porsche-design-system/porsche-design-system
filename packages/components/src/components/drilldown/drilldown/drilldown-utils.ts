@@ -52,7 +52,8 @@ export const validateActiveIdentifier = <T extends Class<any>>(
 ): void => {
   if (activeIdentifier !== undefined) {
     const matchingItems = items.filter((item) => item.identifier === activeIdentifier);
-    if (matchingItems.length === 0) {
+    // an item without identifier can still get it assigned later, e.g. by a framework binding
+    if (matchingItems.length === 0 && items.every((item) => item.identifier !== undefined)) {
       logInvalidIdentifierError(instance, activeIdentifier);
     } else if (matchingItems.length > 1) {
       logMultipleIdentifierError(instance, activeIdentifier, matchingItems);

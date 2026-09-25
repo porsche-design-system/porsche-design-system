@@ -160,6 +160,13 @@ export class RadioGroup {
     this.blur.emit();
   }
 
+  @Listen('internalRadioGroupOptionValueChange')
+  public optionValueChangeHandler(e: Event): void {
+    e.stopPropagation();
+    updateRadioGroupOptions(this.radioGroupOptions, this.value);
+    this.updateTabStops();
+  }
+
   @Watch('value')
   public onValueChange(): void {
     this.setFormValue();

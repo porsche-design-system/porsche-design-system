@@ -1,7 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import * as a11yUtils from '../../../utils/a11y/select/select-aria';
 import * as loggerUtils from '../../../utils/log/logger';
-import * as throwIfPropIsUndefinedUtils from '../../../utils/validation/throwIfPropIsUndefined';
 import { MultiSelectOption } from './multi-select-option';
 
 const initComponent = (parentTag?: string): MultiSelectOption => {
@@ -49,12 +48,24 @@ describe('prop validation', () => {
     expect(consoleErrorSpy).not.toHaveBeenCalled();
   });
 
-  it('should validate that value is defined', () => {
-    const spy = vi.spyOn(throwIfPropIsUndefinedUtils, 'throwIfPropIsUndefined');
+  it('should not throw when value is undefined', () => {
     const component = initComponent();
 
-    expect(() => component.render()).toThrowError(/required property 'value' is undefined/);
-    expect(spy).toHaveBeenCalledWith(component.host, 'value', component.value);
+    expect(() => component.render()).not.toThrow();
+  });
+
+  it('should dispatch "internalMultiSelectOptionValueChange" event when value changes', () => {
+    const component = initComponent();
+    const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
+
+    component.onValueChange();
+
+    expect(dispatchEventSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'internalMultiSelectOptionValueChange',
+        bubbles: true,
+      })
+    );
   });
 
   it('should reject null values', () => {

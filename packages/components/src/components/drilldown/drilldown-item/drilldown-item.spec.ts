@@ -73,3 +73,16 @@ describe('parent validation', () => {
     expect(() => component.connectedCallback()).not.toThrow();
   });
 });
+
+describe('identifier change', () => {
+  it('should dispatch a bubbling internal event so the drilldown can re-match its active identifier', () => {
+    const component = initComponent('p-drilldown');
+    const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
+
+    component.onIdentifierChange();
+
+    expect(dispatchEventSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ type: 'internalDrilldownItemIdentifierChange', bubbles: true })
+    );
+  });
+});
