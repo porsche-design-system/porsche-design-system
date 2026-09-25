@@ -2711,6 +2711,24 @@ test.describe('option value set after initial render', () => {
     await expect(option.locator('.option--selected')).toBeAttached();
   });
 
+  test('should keep the selection of a removed option when the value of another option changes', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-multi-select name="options" label="Some label"><p-multi-select-option value="a">Option A</p-multi-select-option><p-multi-select-option value="c">Option C</p-multi-select-option></p-multi-select>`
+    );
+    await setProperty(getHost(page), 'value', ['c']);
+    await waitForStencilLifecycle(page);
+    await getMultiSelectOption(page, 2).evaluate((el) => el.remove());
+    await waitForStencilLifecycle(page);
+    const selection = getButton(page).locator('span').first();
+    await expect(selection).toHaveText('Option C');
+
+    await setProperty(getMultiSelectOption(page, 1), 'value', 'b');
+    await waitForStencilLifecycle(page);
+
+    await expect(selection).toHaveText('Option C'); // Selection is kept for controlled async filtering to work
+  });
+
   test('should select option when its value changes to match the multi select value', async ({ page }) => {
     await setContentWithDesignSystem(
       page,

@@ -113,6 +113,38 @@ describe('optionValueChangeHandler', () => {
     expect(component.value).toBe('a');
     expect(emit).not.toHaveBeenCalled();
   });
+
+  it('should keep the selection of a removed option when the value of another option changes', () => {
+    const component = initComponent();
+    component.value = 'c';
+    const optionA = Object.assign(document.createElement('p-select-option'), { value: 'a', selected: false });
+    const optionC = Object.assign(document.createElement('p-select-option'), { value: 'c', selected: false });
+    component.host.append(optionA, optionC);
+    component.componentWillLoad();
+    optionC.remove();
+    component['onSlotchange']();
+    expect(component['selectedOption']).toBe(optionC);
+
+    optionA.value = 'b';
+    component.optionValueChangeHandler(new Event('internalSelectOptionValueChange'));
+
+    expect(component['selectedOption']).toBe(optionC);
+  });
+
+  it('should deselect an option when its value changes away from the select value', () => {
+    const component = initComponent();
+    component.value = 'a';
+    const optionA = Object.assign(document.createElement('p-select-option'), { value: 'a', selected: false });
+    component.host.append(optionA);
+    component.componentWillLoad();
+    expect(component['selectedOption']).toBe(optionA);
+
+    optionA.value = 'b';
+    component.optionValueChangeHandler(new Event('internalSelectOptionValueChange'));
+
+    expect(component['selectedOption']).toBeNull();
+    expect(optionA.selected).toBe(false);
+  });
 });
 
 describe('disconnectedCallback', () => {

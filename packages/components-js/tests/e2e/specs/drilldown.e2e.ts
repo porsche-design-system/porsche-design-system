@@ -767,6 +767,29 @@ test.describe('lifecycle', () => {
   });
 });
 
+test.describe('active identifier set after initial render', () => {
+  test('should show the level of the parent item when active-identifier changes to a nested item on desktop', async ({
+    page,
+  }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-drilldown open>
+  <p-drilldown-item identifier="item-1" label="Item 1">
+    <p-drilldown-item identifier="item-1-1" label="Item 1-1"></p-drilldown-item>
+  </p-drilldown-item>
+  <p-drilldown-item identifier="item-2" label="Item 2"></p-drilldown-item>
+</p-drilldown>`
+    );
+    await expect(getDrilldownItem(page, 'item-2')).toBeVisible();
+
+    await setProperty(getHost(page), 'activeIdentifier', 'item-1-1');
+    await waitForStencilLifecycle(page);
+
+    await expect(getDrilldownItem(page, 'item-2')).toBeHidden();
+    await expect(getHost(page).locator('p-drilldown-item[identifier="item-1"]')).toHaveJSProperty('primary', true);
+  });
+});
+
 test.describe('item identifier set after initial render', () => {
   // Frameworks like Angular can connect an item before its `identifier` binding is applied (#4743)
   const getItems = (page: Page) => page.locator('p-drilldown-item');
@@ -863,6 +886,34 @@ test.describe('item identifier set after initial render', () => {
     await waitForStencilLifecycle(page);
 
     await expect.poll(getDrawerWidth).toBeLessThan(drawerWidthWithSecondary);
+  });
+
+  test('should keep the active level when active-identifier and the identifier of the matching item change together on mobile', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+    await setContentWithDesignSystem(
+      page,
+      `<p-drilldown open active-identifier="item-1-1">
+  <p-drilldown-item identifier="item-1" label="Item 1">
+    <p-drilldown-item identifier="item-1-1" label="Item 1-1"></p-drilldown-item>
+    <p-drilldown-item label="Item 1-2"></p-drilldown-item>
+  </p-drilldown-item>
+</p-drilldown>`
+    );
+    const [parentItem, , nestedItem] = await getItems(page).all();
+
+    // e.g. an Angular change detection run applying `[activeIdentifier]` and `[identifier]` bindings in one go
+    await page.evaluate(() => {
+      const [, , item] = Array.from(document.querySelectorAll('p-drilldown-item'));
+      (document.querySelector('p-drilldown') as HTMLPDrilldownElement).activeIdentifier = 'item-1-2';
+      (item as HTMLPDrilldownItemElement).identifier = 'item-1-2';
+    });
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_TRANSITION_DURATION);
+
+    await expect(nestedItem).toHaveJSProperty('secondary', true);
+    await expect(parentItem).toHaveJSProperty('primary', true);
   });
 
   test('should not log an error when the identifier of the matching item is set after initial render', async ({

@@ -327,4 +327,53 @@ describe('active item change', () => {
     expect((itemB as any).secondary).toBe(true);
     expect(component['primary']).toBe(false);
   });
+
+  it('should leave the primary level when navigating into a nested item without a previously active item', async () => {
+    const component = initComponent();
+    component['isDesktop'] = true;
+    component['drawer'] = { animate: vi.fn(() => ({ finished: Promise.resolve() })) } as any;
+    const itemA = createItem('a');
+    const itemB = createItem('b');
+    component.host.appendChild(itemA);
+    itemA.appendChild(itemB);
+    component['drilldownItemElements'] = [itemA, itemB] as any;
+    component.activeIdentifier = 'b';
+
+    await component.activeIdentifierChangeHandler('b', undefined);
+
+    expect((itemB as any).secondary).toBe(true);
+    expect((itemA as any).primary).toBe(true);
+    expect(component['primary']).toBe(false);
+  });
+
+  it('should not revert an item identifier change that arrives while the drawer animates (mobile)', async () => {
+    const component = initComponent();
+    component['isDesktop'] = false;
+    let finishAnimation: () => void;
+    const pendingAnimation = new Promise<void>((resolve) => {
+      finishAnimation = resolve;
+    });
+    component['drawer'] = {
+      animate: vi.fn(() => ({ finished: Promise.resolve() })).mockReturnValueOnce({ finished: pendingAnimation }),
+    } as any;
+    const parentItem = createItem('x');
+    const itemA = createItem('a');
+    const itemB = createItem(undefined);
+    parentItem.append(itemA, itemB);
+    component.host.appendChild(parentItem);
+    component.activeIdentifier = 'a';
+    component.componentWillLoad();
+
+    component.activeIdentifier = 'b';
+    const transition = component.activeIdentifierChangeHandler('b', 'a');
+    (itemB as any).identifier = 'b';
+    component.itemIdentifierChangeHandler(new CustomEvent('internalDrilldownItemIdentifierChange'));
+    finishAnimation?.();
+    await transition;
+
+    expect((itemA as any).secondary).toBe(false);
+    expect((itemB as any).secondary).toBe(true);
+    expect((parentItem as any).primary).toBe(true);
+    expect(component['primary']).toBe(false);
+  });
 });

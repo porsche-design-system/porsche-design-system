@@ -3082,6 +3082,21 @@ test.describe('option value set after initial render', () => {
     await expect(getButton(page)).toHaveText('Option A');
   });
 
+  test('should keep the selection of a removed option when the value of another option changes', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-select name="options" label="Some label" value="c"><p-select-option value="a">Option A</p-select-option><p-select-option value="c">Option C</p-select-option></p-select>`
+    );
+    await getSelectOption(page, 2).evaluate((el) => el.remove());
+    await waitForStencilLifecycle(page);
+    await expect(getButton(page)).toHaveText('Option C');
+
+    await setProperty(getSelectOption(page, 1), 'value', 'b');
+    await waitForStencilLifecycle(page);
+
+    await expect(getButton(page)).toHaveText('Option C'); // Selection is kept for controlled async filtering to work
+  });
+
   test('should select option when its value changes to match the select value', async ({ page }) => {
     await setContentWithDesignSystem(
       page,
