@@ -1,0 +1,32 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/bEXOI0BAd6pXjvIG1mpWIN/Porsche-Web-Design-System--Renato-Code-Connect--Copy-?node-id=934-5761
+// source=https://designsystem.porsche.com/v4/components/inline-notification/api
+// component=PInlineNotification
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { iconOf } from '../../../../figma/helpers/iconOf';
+
+const instance = figma.selectedInstance;
+
+const heading = instance.getString('heading');
+const headingTag = instance.getString('headingTag');
+const state = instance.getEnum('state', {
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  error: 'error',
+});
+const dismissButton = instance.getBoolean('dismissButton');
+const actionLabel = instance.getString('actionLabel');
+const actionIcon = iconOf(instance.getInstanceSwap('actionIcon'), 'arrow-right');
+const slotDefault = instance.getString('slot-default');
+
+export default {
+  example: figma.code`<PInlineNotification${heading ? ` :heading="'${heading}'"` : ''}${headingTag ? ` :headingTag="'${headingTag}'"` : ''} :state="'${state}'"${dismissButton ? ' :dismissButton="true"' : ''}${actionLabel ? ` :actionLabel="'${actionLabel}'"` : ''}${actionIcon ? ` :actionIcon="'${actionIcon}'"` : ''}>${slotDefault}</PInlineNotification>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4/components/inline-notification/api',
+    "import { PInlineNotification } from '@porsche-design-system/components-vue';",
+  ],
+  id: 'p-inline-notification',
+  metadata: { nestable: true },
+};

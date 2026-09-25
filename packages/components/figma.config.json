@@ -1,0 +1,8 @@
+{
+  "codeConnect": {
+    "include": ["src/components/**/figma/*.figma.ts", "figma/icons/p-icon.figma.batch.json"],
+    "exclude": ["**/*.react.figma.ts", "**/*.angular.figma.ts", "**/*.vue.figma.ts"],
+    "label": "Web Components",
+    "language": "html"
+  }
+}

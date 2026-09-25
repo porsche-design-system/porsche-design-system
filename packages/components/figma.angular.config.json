@@ -1,0 +1,7 @@
+{
+  "codeConnect": {
+    "include": ["src/components/**/figma/*.angular.figma.ts", "figma/icons/p-icon.angular.figma.batch.json"],
+    "label": "Angular",
+    "language": "html"
+  }
+}

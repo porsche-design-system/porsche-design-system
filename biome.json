@@ -11,6 +11,7 @@
       "**",
       "!package-lock.json",
       "!**/*.snap",
+      "!packages/components/figma/components.json",
       "!packages/components/src/components.d.ts",
       "!packages/components/src/styles/colors.ts",
       "!packages/components/src/types/aria-types.d.ts",

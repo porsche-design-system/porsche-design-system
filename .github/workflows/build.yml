@@ -63,6 +63,8 @@ jobs:
       - run: npm run build:utilities
       - run: npm run build:stylesheets
       - run: npm run build:component-meta
+      # Code Connect templates are generated from component-meta; a prop change without regeneration fails here.
+      - run: npm run figma:generate --workspace=@porsche-design-system/components -- --check
       - run: npm run build:components
       - run: npm run build:skills
       - run: npm run build:components-js

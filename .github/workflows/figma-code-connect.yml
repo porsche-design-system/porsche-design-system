@@ -1,0 +1,299 @@
+name: 'Figma Code Connect'
+
+# Keeps Figma's Code Connect records in step with the templates in packages/components, without ever gating a merge
+# or a deploy. Repository mistakes (a stale template or coverage baseline, an invalid exception) are caught by
+# `figma:generate --check` in build.yml on every pull request. Everything that compares against the LIVE library runs
+# here, after the merge and on demand: `figma:pull --check`, preview, and publish with its property validation. The
+# daily run only checks the snapshot against the library.
+#
+# Figma's own validation is the only per-record gate: when the library drifted from the snapshot, the templates of the
+# changed components fail it and keep their previous record while everything else publishes. Problems only design can
+# fix (a PDS prop, slot or allowed value the library lacks outside figma/coverage-baseline.json, a Figma property no
+# rule places) are design lines in the generator's log; they hold nothing back and never make this run red.
+#
+# One issue, "Figma Code Connect: action needed", is the durable record: it opens while anything is pending (the
+# library drifted and a developer must re-pull; Figma could not be read; Figma refused records; design lines are open;
+# publish failed) and closes when all is clear. Its design section is also the memory for Slack: design gets one message
+# per change of that section, one imperative line per component with a Figma link and nothing about GitHub, and no
+# repeats. The run is red only when a developer must act: the library drifted, Figma could not be read, or publish
+# failed. Publish runs on dispatch and on a push that touched what gets published (templates, snapshot, configs,
+# generator, patch); a plain component change only reports.
+#
+# A developer closes the loop by hand: `npm run figma:pull`, `npm run figma:generate`, review, merge. The regenerated
+# diff is attached to the issue and as an artifact. Opening that pull request from here is a decision the team still
+# has to take; see the Decisions section of docs/runbooks/figma-code-connect.md.
+#
+# Opt-in: skipped until the repository variable FIGMA_CODE_CONNECT_ENABLED is "true". Secrets: FIGMA_ACCESS_TOKEN
+# (File content: Read, Library content: Read, Code Connect: Write; Figma recommends a Plan Access Token for CI, check
+# that it carries the Code Connect scope when creating it), SLACK_BOT_TOKEN, SLACK_DESIGN_CHANNEL_ID.
+
+on:
+  push:
+    # issue/4745 is temporary: the end-to-end test against the copy library runs from the branch. Remove before merge.
+    branches: [main, issue/4745]
+    paths:
+      - 'packages/components/src/**' # a prop, slot or allowed value added or removed in code, wherever its constant lives
+      - 'packages/components/figma/**'
+      - 'packages/components/figma*.json'
+      - 'packages/components/scripts/figma*.ts' # the generator and the gate themselves
+      - 'packages/assets/projects/icons/**' # the icon, flag and model-signature manifests are allowed values
+      - 'packages/assets/projects/flags/**'
+      - 'packages/assets/projects/model-signatures/**'
+      - 'patches/@figma+code-connect+*.patch' # publish-time property validation
+      - 'scripts/build-slack-figma-payload.ts'
+      - '.github/workflows/figma-code-connect.yml'
+  schedule:
+    - cron: '0 6 * * *' # daily drift check
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write # the one issue
+
+# Never cancel a run in progress: `figma connect publish` uploads once per label config, and a half-done publish leaves
+# Figma with three of four labels from the new commit. A pending run is superseded by the newer one, which is wanted.
+concurrency:
+  group: figma-code-connect
+  cancel-in-progress: false
+
+env:
+  ISSUE_TITLE: 'Figma Code Connect: action needed'
+
+jobs:
+  sync:
+    name: 'Check Figma, publish, notify design'
+    if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      # figma:pull and figma:generate import @porsche-design-system/component-meta, whose dist/ is gitignored.
+      - run: npm run build:core-dependencies
+
+      # Publish only when the push touched what gets published. The wide `paths` filter above is for the coverage
+      # report; republishing 57 components and 292 icons under four labels after every component change is not.
+      # Anything that keeps this step from knowing publishes: a first push (`before` is all zeros), a compare the API
+      # cannot serve, or a push of 300 or more files, where the compare endpoint caps the file list.
+      - name: 'Did this push change what gets published?'
+        id: changed
+        if: github.event_name == 'push'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+        run: |
+          relevant='^(packages/components/src/.+/figma/[^/]+\.figma\.ts|packages/components/figma/|packages/components/figma[^/]*\.json|packages/components/scripts/figma[^/]*\.ts|patches/@figma\+code-connect\+.*\.patch|\.github/workflows/figma-code-connect\.yml)'
+          publish=true
+          if [[ ! "$BEFORE" =~ ^0+$ ]]; then
+            if files=$(gh api "repos/$GITHUB_REPOSITORY/compare/$BEFORE...$SHA" --jq '[.files[].filename]'); then
+              if [ "$(jq length <<< "$files")" -ge 300 ]; then
+                echo "::notice::the compare lists 300 files, its cap; publishing"
+              elif ! jq -r '.[]' <<< "$files" | grep -Eq "$relevant"; then
+                publish=false
+              fi
+            else
+              echo "::notice::could not compare $BEFORE...$SHA; publishing"
+            fi
+          fi
+          echo "publish=$publish" >> "$GITHUB_OUTPUT"
+          echo "publish=$publish"
+
+      # Exit 2 is drift, any other failure is a token, network or API error: the step fails either way, and `drift` tells
+      # the steps below which it was.
+      - name: 'figma:pull --check'
+        id: pull
+        continue-on-error: true
+        shell: bash # explicit `bash` runs with `-o pipefail`, so `| tee` cannot hide a non-zero exit
+        run: |
+          set +e
+          npm run figma:pull --workspace=@porsche-design-system/components -- --check 2>&1 | tee "$RUNNER_TEMP/pull.log"
+          code=${PIPESTATUS[0]}
+          [ "$code" -eq 2 ] && echo "drift=true" >> "$GITHUB_OUTPUT"
+          exit "$code"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # Runs on the committed templates whether or not the library drifted, so it must run before the classify step
+      # regenerates them in the checkout. Exit 0: every record Figma accepted is up, the ones it refused are listed.
+      # Exit 1: a developer must act (a repository mistake, a CLI failure, a template Figma could not render).
+      - name: 'figma:publish'
+        id: publish
+        if: github.event_name == 'workflow_dispatch' || steps.changed.outputs.publish == 'true'
+        continue-on-error: true
+        shell: bash
+        run: npm run figma:publish --workspace=@porsche-design-system/components 2>&1 | tee "$RUNNER_TEMP/publish.log"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # Only when Figma moved. Pull and regenerate into the runner's checkout, never committed, to learn what the change
+      # means: the design lines it prints are the ones design must act on; a developer re-pulls either way.
+      - name: 'Classify the drift'
+        id: classify
+        if: steps.pull.outputs.drift == 'true'
+        continue-on-error: true
+        shell: bash
+        run: |
+          npm run figma:pull --workspace=@porsche-design-system/components
+          npm run figma:generate --workspace=@porsche-design-system/components 2>&1 | tee "$RUNNER_TEMP/generate.log"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # What the re-pull would change, for the issue and as an artifact a developer can `git apply`. The two commands
+      # produce the same files, so this is a preview, not a shortcut past review. Staging in the runner's checkout is
+      # how new and deleted templates get into the diff; nothing after this step uses git.
+      - name: 'Capture the regenerated diff'
+        id: regenerated
+        if: steps.pull.outputs.drift == 'true'
+        shell: bash
+        run: |
+          git add -A -- packages/components
+          git diff --cached --stat > "$RUNNER_TEMP/regenerated.stat"
+          git diff --cached > "$RUNNER_TEMP/regenerated.diff"
+          [ -s "$RUNNER_TEMP/regenerated.diff" ] && echo "present=true" >> "$GITHUB_OUTPUT" || echo "::notice::the re-pull changed no file"
+      - uses: actions/upload-artifact@v7
+        if: steps.regenerated.outputs.present == 'true'
+        with:
+          name: code-connect-regenerated
+          path: ${{ runner.temp }}/regenerated.diff
+
+      # When Figma did not move, or could not be read: the committed snapshot is the best known state, so the design lines
+      # (a prop, slot or allowed value added in code, a prop removed from it, a Figma property no rule places) come from
+      # `--check` on it. Same log as the classify step, which never runs alongside it. Exit 1 only on a repository mistake.
+      - name: 'figma:generate --check'
+        id: coverage
+        if: steps.pull.outputs.drift != 'true'
+        continue-on-error: true
+        shell: bash
+        run: npm run figma:generate --workspace=@porsche-design-system/components -- --check 2>&1 | tee "$RUNNER_TEMP/generate.log"
+
+      - name: 'Job summary'
+        if: always()
+        shell: bash
+        run: |
+          for log in pull publish generate; do
+            [ -f "$RUNNER_TEMP/$log.log" ] || continue
+            { echo "## $log"; echo '```'; cat "$RUNNER_TEMP/$log.log"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          done
+          if [ -s "$RUNNER_TEMP/regenerated.stat" ]; then
+            { echo "## what the re-pull changes"; echo '```'; cat "$RUNNER_TEMP/regenerated.stat"; echo '```'; echo "Full diff: artifact \`code-connect-regenerated\`."; } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # The one issue. Five sections, each present only when it has content; the issue is open while any is, closed when
+      # none is. The design section sits between markers so the next run can compare it with this one and post to
+      # Slack only when it changed.
+      - name: 'Open, update or close the issue'
+        id: issue
+        if: always() && steps.pull.outcome != 'skipped'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PULL_OUTCOME: ${{ steps.pull.outcome }}
+          DRIFT: ${{ steps.pull.outputs.drift }}
+          PUBLISH_OUTCOME: ${{ steps.publish.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          existing=$(gh issue list --state open --search "\"$ISSUE_TITLE\" in:title" --json number --jq '.[0].number // empty')
+          fence() { echo '```'; cat "$1"; echo '```'; }
+          body="$RUNNER_TEMP/issue.md"; : > "$body"
+          pending=false
+
+          # 1. the library drifted from the snapshot: a developer re-pulls
+          if [ "$DRIFT" = "true" ]; then
+            pending=true
+            {
+              echo "## The library changed since the committed snapshot"
+              echo; echo "\`figma:pull --check\` on $(date -u +%Y-%m-%d):"; echo; fence "$RUNNER_TEMP/pull.log"
+              echo; echo "Run \`npm run figma:pull\`, then \`npm run figma:generate\`, review the diffs, and merge. Until then the changed components' records are held back by Figma's validation and keep their previous record."
+              if [ -s "$RUNNER_TEMP/regenerated.diff" ]; then
+                echo; echo "What the re-pull changes. Apply it with \`gh run download $GITHUB_RUN_ID -n code-connect-regenerated && git apply regenerated.diff\`, or run the two commands, which write the same files:"
+                if [ "$(wc -c < "$RUNNER_TEMP/regenerated.diff")" -lt 50000 ]; then
+                  echo; echo '```diff'; cat "$RUNNER_TEMP/regenerated.diff"; echo '```'
+                else
+                  echo; fence "$RUNNER_TEMP/regenerated.stat"; echo; echo "The full diff is the artifact \`code-connect-regenerated\` of $RUN_URL."
+                fi
+              fi
+              echo
+            } >> "$body"
+          fi
+
+          # 1b. Figma could not be read: a token, network or API error, so nothing was compared
+          if [ "$PULL_OUTCOME" = "failure" ] && [ "$DRIFT" != "true" ]; then
+            pending=true
+            {
+              echo "## Figma could not be read"
+              echo; echo "\`figma:pull --check\` failed on $(date -u +%Y-%m-%d) before comparing: a token, network or API error. Fix it or re-run the workflow."; echo; fence "$RUNNER_TEMP/pull.log"
+              echo
+            } >> "$body"
+          fi
+
+          # 2. records Figma refused at publish (drift, an option PDS does not allow, or a generator bug if neither)
+          refused=$([ -f "$RUNNER_TEMP/publish.log" ] && grep -E '^  - figma[^ ]*\.json: ' "$RUNNER_TEMP/publish.log" || true)
+          if [ -n "$refused" ]; then
+            pending=true
+            { echo "## Records Figma refused"; echo; echo "They keep their previous record; everything else published."; echo; echo '```'; echo "$refused"; echo '```'; echo; } >> "$body"
+          fi
+
+          # 3. design lines, between markers: the Slack memory
+          design=$([ -f "$RUNNER_TEMP/generate.log" ] && grep -E '^✖ .* — (fix|add) it in Figma$' "$RUNNER_TEMP/generate.log" | sort || true)
+          section=""
+          if [ -n "$design" ]; then
+            pending=true
+            section=$(printf '<!-- design-lines -->\n## Design must change Figma\n\nSent to the design channel on Slack when this list changes.\n\n```\n%s\n```\n<!-- /design-lines -->' "$design")
+            { echo "$section"; echo; } >> "$body"
+          fi
+
+          # 4. publish needs a developer
+          if [ "$PUBLISH_OUTCOME" = "failure" ]; then
+            pending=true
+            { echo "## Publish failed"; echo; echo "\`figma:publish\` exited 1 on $(date -u +%Y-%m-%d): a stale template or baseline, an invalid exception, an unreadable template, a template Figma could not render in preview, or a token, network or CLI error. Labels upload one after another, so earlier labels may be up."; echo; fence "$RUNNER_TEMP/publish.log"; echo; } >> "$body"
+          fi
+
+          if [ "$pending" = true ]; then
+            echo "See docs/runbooks/figma-code-connect.md. Last run: $RUN_URL" >> "$body"
+            previous=""
+            if [ -n "$existing" ]; then
+              previous=$(gh issue view "$existing" --json body --jq .body | sed -n '/<!-- design-lines -->/,/<!-- \/design-lines -->/p')
+              gh issue edit "$existing" --body-file "$body"
+            else
+              gh issue create --title "$ISSUE_TITLE" --body-file "$body"
+            fi
+            if [ -n "$section" ] && [ "$section" != "$previous" ]; then echo "slack=true" >> "$GITHUB_OUTPUT"; fi
+          elif [ -n "$existing" ]; then
+            gh issue close "$existing" --comment "Nothing pending: the snapshot matches Figma, every record is published, no design line is open."
+          fi
+
+      # Design gets one imperative line per component and a Figma link, nothing about GitHub. Only when the design
+      # section of the issue changed since the last run.
+      - name: 'Build Slack payload'
+        id: slack
+        if: always() && steps.issue.outputs.slack == 'true'
+        shell: bash
+        run: |
+          node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-figma-payload.ts \
+            "$RUNNER_TEMP" packages/components/figma/components.json > "$RUNNER_TEMP/slack-payload.json"
+          if [ -s "$RUNNER_TEMP/slack-payload.json" ]; then
+            cat "$RUNNER_TEMP/slack-payload.json"
+            echo "send=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::no Figma-side action to report to design"
+          fi
+        env:
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_DESIGN_CHANNEL_ID }}
+
+      - name: 'Send'
+        if: always() && steps.slack.outputs.send == 'true'
+        # `errors: true` — the action's default is false and a rejected request would pass green.
+        uses: slackapi/slack-github-action@v4.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload-file-path: ${{ runner.temp }}/slack-payload.json
+          errors: true
+
+      # continue-on-error hides the failures from the job, so restate them at the end. Red means a developer has work:
+      # the library drifted, Figma could not be read, or publish failed. Design lines never make it red.
+      - name: 'Fail the job'
+        if: always() && (steps.pull.outcome == 'failure' || steps.publish.outcome == 'failure')
+        run: exit 1

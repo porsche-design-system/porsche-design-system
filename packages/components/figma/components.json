@@ -1,0 +1,4111 @@
+{
+  "fileUrl": "https://www.figma.com/design/bEXOI0BAd6pXjvIG1mpWIN/Porsche-Web-Design-System--Renato-Code-Connect--Copy-",
+  "pulledAt": "2026-09-25T09:24:57.570Z",
+  "components": [
+    {
+      "id": "44948:8887",
+      "name": "global-header",
+      "componentPropertyDefinitions": {
+        "FigIcon01#59480:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "FigIcon02#59480:37": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "FigIcon03#59480:74": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "FigIcon04#59480:111": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "Background": {
+          "type": "VARIANT",
+          "defaultValue": "None",
+          "variantOptions": [
+            "Canvas",
+            "Gradient",
+            "None"
+          ]
+        }
+      }
+    },
+    {
+      "id": "60:817",
+      "name": "text-field-deprecated",
+      "componentPropertyDefinitions": {
+        "label#958:223": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "subline#3095:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "couter#32212:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "withLocate#32212:97": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "default",
+          "variantOptions": [
+            "default",
+            "success",
+            "error",
+            "suffix",
+            "prefix",
+            "search",
+            "search left",
+            "counter",
+            "password"
+          ]
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "default",
+          "variantOptions": [
+            "active",
+            "default",
+            "disabled",
+            "hover",
+            "loading",
+            "read only"
+          ]
+        },
+        "porscheDi": {
+          "type": "VARIANT",
+          "defaultValue": "true",
+          "variantOptions": [
+            "true",
+            "false"
+          ]
+        }
+      }
+    },
+    {
+      "id": "46261:7395",
+      "name": "input-text",
+      "componentPropertyDefinitions": {
+        "figDescription#45844:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "counter#46261:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#46261:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#46261:20": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotStart#46261:26": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:4": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "placeholder#58170:0": {
+          "type": "TEXT",
+          "defaultValue": " "
+        },
+        "description#58195:66": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58195:77": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "label#58195:88": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "required#58195:99": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58199:230": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58199:251": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#60018:0": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60733:3663": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5469": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "106:261",
+      "name": "tag",
+      "componentPropertyDefinitions": {
+        "slot-default#946:0": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "icon#946:3": {
+          "type": "INSTANCE_SWAP",
+          "defaultValue": "112:726"
+        },
+        "figIcon#58621:4415": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "primary",
+          "variantOptions": [
+            "info-frosted",
+            "warning-frosted",
+            "success-frosted",
+            "error-frosted",
+            "secondary",
+            "primary",
+            "info",
+            "success",
+            "warning",
+            "error"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "54:312",
+      "name": "fig-tabs-item",
+      "componentPropertyDefinitions": {
+        "slot-default#998:51": {
+          "type": "TEXT",
+          "defaultValue": "Tab"
+        },
+        "figSelected": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "1112:7122",
+      "name": "table-column-header",
+      "componentPropertyDefinitions": {
+        "sortable": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "direction": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "ascending",
+            "descending",
+            "none"
+          ]
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "default",
+          "variantOptions": [
+            "default",
+            "hover"
+          ]
+        },
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "default",
+          "variantOptions": [
+            "compact",
+            "default"
+          ]
+        }
+      }
+    },
+    {
+      "id": "31888:50809",
+      "name": "spinner",
+      "componentPropertyDefinitions": {
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "2xs",
+          "variantOptions": [
+            "lg",
+            "md",
+            "2xs",
+            "xs",
+            "xl",
+            "2xl",
+            "3xl",
+            "4xl",
+            "5xl",
+            "inherit",
+            "sm"
+          ]
+        }
+      }
+    },
+    {
+      "id": "8615:60056",
+      "name": "wordmark",
+      "componentPropertyDefinitions": {
+        "figSize": {
+          "type": "VARIANT",
+          "defaultValue": "1920",
+          "variantOptions": [
+            "1920",
+            "480"
+          ]
+        }
+      }
+    },
+    {
+      "id": "819:3146",
+      "name": "popover",
+      "componentPropertyDefinitions": {
+        "slot-button#58621:4375": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-default#59801:0": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "direction": {
+          "type": "VARIANT",
+          "defaultValue": "bottom",
+          "variantOptions": [
+            "bottom",
+            "left",
+            "right",
+            "top"
+          ]
+        },
+        "figControlled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "figCompact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "90:48",
+      "name": "link-pure",
+      "componentPropertyDefinitions": {
+        "icon#58204:2557": {
+          "type": "INSTANCE_SWAP",
+          "defaultValue": "5211:33469"
+        },
+        "figIcon#59583:81": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "alignLabel": {
+          "type": "VARIANT",
+          "defaultValue": "end",
+          "variantOptions": [
+            "end",
+            "start"
+          ]
+        },
+        "active": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "stretch": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "color": {
+          "type": "VARIANT",
+          "defaultValue": "primary",
+          "variantOptions": [
+            "primary",
+            "contrast-high",
+            "contrast-higher",
+            "contrast-medium"
+          ]
+        }
+      }
+    },
+    {
+      "id": "34628:29775",
+      "name": "link",
+      "componentPropertyDefinitions": {
+        "slot-default#3544:0": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "icon#58025:73": {
+          "type": "INSTANCE_SWAP",
+          "defaultValue": "5211:33469"
+        },
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "primary",
+          "variantOptions": [
+            "primary",
+            "secondary"
+          ]
+        },
+        "figIcon": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "59938:25527",
+      "name": "input-week",
+      "componentPropertyDefinitions": {
+        "figDescription#45844:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#46261:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#46261:20": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotStart#46261:26": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:44": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58201:698": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58201:709": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58201:720": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58201:731": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58201:940": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58201:951": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#59980:84": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60733:4923": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5532": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "48501:6689",
+      "name": "input-url",
+      "componentPropertyDefinitions": {
+        "figDescription#48501:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "placeholder#48554:45": {
+          "type": "TEXT",
+          "defaultValue": " "
+        },
+        "loading#48611:18": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "indicator#48611:24": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figSlotStart#48657:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#48657:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:68": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58201:654": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58201:665": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58201:676": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58201:687": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58201:918": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58201:929": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#60045:126": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60733:4503": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5511": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "48551:6605",
+      "name": "input-time",
+      "componentPropertyDefinitions": {
+        "figDescription#48554:18": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotStart#48554:27": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#48554:36": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#48611:12": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:60": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58201:742": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58201:753": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58201:764": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58201:775": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58201:962": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58201:973": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#59980:63": {
+          "type": "TEXT",
+          "defaultValue": "00:00"
+        },
+        "slot-label-after#60733:4083": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5490": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figIndicator#60917:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "48491:7421",
+      "name": "input-tel",
+      "componentPropertyDefinitions": {
+        "figDescription#48491:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#48491:18": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#48491:30": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "indicator#48491:36": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "placeholder#48491:42": {
+          "type": "TEXT",
+          "defaultValue": " "
+        },
+        "figSlotStart#48606:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:52": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58201:610": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58201:621": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58201:632": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58201:643": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58201:896": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58201:907": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#60045:105": {
+          "type": "TEXT",
+          "defaultValue": " "
+        },
+        "slot-label-after#60733:3243": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5448": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "33041:10759",
+      "name": "button-pure",
+      "componentPropertyDefinitions": {
+        "icon#35746:0": {
+          "type": "INSTANCE_SWAP",
+          "defaultValue": "5211:33469"
+        },
+        "figIcon#59583:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "alignLabel": {
+          "type": "VARIANT",
+          "defaultValue": "end",
+          "variantOptions": [
+            "end",
+            "start"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "loading": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "active": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "stretch": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "color": {
+          "type": "VARIANT",
+          "defaultValue": "primary",
+          "variantOptions": [
+            "contrast-high",
+            "contrast-higher",
+            "contrast-medium",
+            "primary"
+          ]
+        }
+      }
+    },
+    {
+      "id": "47790:6920",
+      "name": "input-search",
+      "componentPropertyDefinitions": {
+        "figDescription#45844:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#46261:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#46261:20": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotStart#46261:26": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "indicator#47790:1": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "placeholder#47790:7": {
+          "type": "TEXT",
+          "defaultValue": " "
+        },
+        "clear#47790:13": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:36": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58201:566": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58201:577": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58201:588": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58201:599": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58201:874": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58201:885": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#60045:168": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60733:2823": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5427": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "45843:5743",
+      "name": "input-password",
+      "componentPropertyDefinitions": {
+        "figDescription#45844:18": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#46267:44": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotStart#46267:50": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#48611:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:28": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "placeholder#58170:22": {
+          "type": "TEXT",
+          "defaultValue": " "
+        },
+        "toggle#58170:33": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58201:478": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58201:489": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58201:500": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58201:511": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58201:830": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58201:841": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#60045:147": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60733:2403": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5406": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "52702:279",
+      "name": "ai-tag",
+      "componentPropertyDefinitions": {
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "generated",
+          "variantOptions": [
+            "abbreviation",
+            "generated",
+            "modified"
+          ]
+        }
+      }
+    },
+    {
+      "id": "47753:6077",
+      "name": "input-date",
+      "componentPropertyDefinitions": {
+        "figDescription#45844:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#46261:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#46261:20": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotStart#46261:26": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:44": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58201:698": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58201:709": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58201:720": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58201:731": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58201:940": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58201:951": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#59980:21": {
+          "type": "TEXT",
+          "defaultValue": "01.01.2026"
+        },
+        "slot-label-after#60733:1101": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:1122": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "1002:5592",
+      "name": "divider",
+      "componentPropertyDefinitions": {
+        "color": {
+          "type": "VARIANT",
+          "defaultValue": "contrast-lower",
+          "variantOptions": [
+            "contrast-lower",
+            "contrast-high",
+            "contrast-low",
+            "contrast-medium"
+          ]
+        },
+        "direction": {
+          "type": "VARIANT",
+          "defaultValue": "horizontal",
+          "variantOptions": [
+            "horizontal",
+            "vertical"
+          ]
+        }
+      }
+    },
+    {
+      "id": "15122:92508",
+      "name": "crest",
+      "componentPropertyDefinitions": {
+        "figSize": {
+          "type": "VARIANT",
+          "defaultValue": "xs (< or 100px)",
+          "variantOptions": [
+            "m (> or 200px)",
+            "bimi (<8kb)",
+            "s (100-200px)",
+            "xs (< or 100px)"
+          ]
+        },
+        "figSafeZone": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "minimal",
+            "none"
+          ]
+        }
+      }
+    },
+    {
+      "id": "3436:22803",
+      "name": "carousel-item",
+      "componentPropertyDefinitions": {
+        "slotControls#32007:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "description#32007:23": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "header",
+          "variantOptions": [
+            "header",
+            "pagination"
+          ]
+        },
+        "alignHeader": {
+          "type": "VARIANT",
+          "defaultValue": "start",
+          "variantOptions": [
+            "center",
+            "start"
+          ]
+        }
+      }
+    },
+    {
+      "id": "50:552",
+      "name": "switch",
+      "componentPropertyDefinitions": {
+        "slot-default#955:17": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "showLabel#16458:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "checked": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "alignLabel": {
+          "type": "VARIANT",
+          "defaultValue": "end",
+          "variantOptions": [
+            "end",
+            "start"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "loading": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "stretch": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "33562:44189",
+      "name": "Display (deprecated)",
+      "componentPropertyDefinitions": {
+        "displayValue#33562:14": {
+          "type": "TEXT",
+          "defaultValue": "The quick brown fox jumps over the lazy dog"
+        },
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "small",
+          "variantOptions": [
+            "small",
+            "medium",
+            "large"
+          ]
+        }
+      }
+    },
+    {
+      "id": "45388:27951",
+      "name": "input-number",
+      "componentPropertyDefinitions": {
+        "controls#45388:1": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figDescription#45844:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#46267:32": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotStart#46267:38": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#48611:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:12": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "placeholder#58170:11": {
+          "type": "TEXT",
+          "defaultValue": " "
+        },
+        "label#58201:522": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58201:533": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58201:544": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58201:555": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58201:852": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58201:863": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#60045:63": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60733:1983": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5385": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "55823:8373",
+      "name": "flag",
+      "componentPropertyDefinitions": {
+        "name": {
+          "type": "VARIANT",
+          "defaultValue": "ad",
+          "variantOptions": [
+            "ad",
+            "ae",
+            "al",
+            "am",
+            "ar",
+            "at",
+            "au",
+            "az",
+            "ba",
+            "bd",
+            "be",
+            "bg",
+            "bh",
+            "bn",
+            "bo",
+            "br",
+            "by",
+            "ca",
+            "ch",
+            "cl",
+            "cn",
+            "co",
+            "cr",
+            "cw",
+            "cy",
+            "cz",
+            "de",
+            "dk",
+            "do",
+            "dz",
+            "ec",
+            "ee",
+            "eg",
+            "es",
+            "fi",
+            "fr",
+            "gb",
+            "ge",
+            "gh",
+            "gi",
+            "gr",
+            "gt",
+            "hk",
+            "hn",
+            "hr",
+            "ht",
+            "hu",
+            "id",
+            "ie",
+            "il",
+            "in",
+            "is",
+            "it",
+            "jm",
+            "jo",
+            "jp",
+            "ke",
+            "kh",
+            "kr",
+            "kw",
+            "kz",
+            "lb",
+            "li",
+            "lk",
+            "lt",
+            "lu",
+            "lv",
+            "ma",
+            "mc",
+            "md",
+            "me",
+            "mk",
+            "mn",
+            "mo",
+            "mq",
+            "mt",
+            "mu",
+            "mx",
+            "my",
+            "ng",
+            "nl",
+            "no",
+            "nz",
+            "om",
+            "pa",
+            "pe",
+            "pf",
+            "ph",
+            "pk",
+            "pl",
+            "pr",
+            "pt",
+            "py",
+            "qa",
+            "re",
+            "ro",
+            "rs",
+            "ru",
+            "sa",
+            "se",
+            "sg",
+            "si",
+            "sk",
+            "sv",
+            "th",
+            "tn",
+            "tr",
+            "tt",
+            "tw",
+            "ua",
+            "us",
+            "uy",
+            "uz",
+            "ve",
+            "vn",
+            "xx",
+            "za"
+          ]
+        }
+      }
+    },
+    {
+      "id": "5211:53111",
+      "name": "Spacer",
+      "componentPropertyDefinitions": {
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "xSmall",
+          "variantOptions": [
+            "xSmall",
+            "small",
+            "medium",
+            "large",
+            "xLarge",
+            "xxLarge"
+          ]
+        },
+        "breakpoint": {
+          "type": "VARIANT",
+          "defaultValue": "fluid",
+          "variantOptions": [
+            "static",
+            "fluid"
+          ]
+        }
+      }
+    },
+    {
+      "id": "7855:53842",
+      "name": "model-signature",
+      "componentPropertyDefinitions": {
+        "figSafeZone#47692:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "model": {
+          "type": "VARIANT",
+          "defaultValue": "718",
+          "variantOptions": [
+            "718",
+            "911",
+            "boxster",
+            "cayenne",
+            "cayman",
+            "gt3",
+            "gts",
+            "macan",
+            "panamera",
+            "taycan",
+            "turbo",
+            "gt3-rs",
+            "turbo-s"
+          ]
+        },
+        "color": {
+          "type": "VARIANT",
+          "defaultValue": "primary",
+          "variantOptions": [
+            "contrast-high",
+            "contrast-higher",
+            "contrast-medium",
+            "primary"
+          ]
+        }
+      }
+    },
+    {
+      "id": "58810:26795",
+      "name": "Pagination",
+      "componentPropertyDefinitions": {
+        "figMore#58810:245": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "activePage#58810:246": {
+          "type": "TEXT",
+          "defaultValue": "1"
+        },
+        "totalItemsCount#58810:247": {
+          "type": "TEXT",
+          "defaultValue": "500"
+        },
+        "itemsPerPage#58810:248": {
+          "type": "TEXT",
+          "defaultValue": "25"
+        },
+        "showLastPage": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "33058:30896",
+      "name": "text-list",
+      "componentPropertyDefinitions": {
+        "type": {
+          "type": "VARIANT",
+          "defaultValue": "unordered",
+          "variantOptions": [
+            "unordered",
+            "numbered",
+            "alphabetically",
+            "mixed"
+          ]
+        }
+      }
+    },
+    {
+      "id": "33582:44325",
+      "name": "text",
+      "componentPropertyDefinitions": {
+        "slot-default#33562:14": {
+          "type": "TEXT",
+          "defaultValue": "The quick brown fox jumps over the lazy dog"
+        },
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "sm",
+          "variantOptions": [
+            "2xs",
+            "xl",
+            "xs",
+            "lg",
+            "md",
+            "sm",
+            "2xl",
+            "3xl",
+            "4xl",
+            "5xl"
+          ]
+        }
+      }
+    },
+    {
+      "id": "50:651",
+      "name": "checkbox",
+      "componentPropertyDefinitions": {
+        "figMessage#58120:48": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58233:2606": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "message#58233:2633": {
+          "type": "TEXT",
+          "defaultValue": "Some message with a link."
+        },
+        "required#58233:2660": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "showLabel#58578:4343": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "slot-label-after#60726:0": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60726:27": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "error",
+            "none",
+            "success"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "loading": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "indeterminate": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "checked": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32801:24776",
+      "name": "pin-code",
+      "componentPropertyDefinitions": {
+        "showLabel#32843:134": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figMessage#54670:84": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58233:3091": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "description#58233:3116": {
+          "type": "TEXT",
+          "defaultValue": "Some description"
+        },
+        "message#58233:3141": {
+          "type": "TEXT",
+          "defaultValue": "Some message with a link."
+        },
+        "required#58233:3166": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figItem2#58810:121": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figItem3#58810:142": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figItem4#58810:163": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figItem5#58810:184": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figItem6#58810:205": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-label-after#60747:6559": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60747:6979": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "type": {
+          "type": "VARIANT",
+          "defaultValue": "number",
+          "variantOptions": [
+            "number",
+            "password"
+          ]
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "error",
+            "success",
+            "none"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "loading": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "34134:7773",
+      "name": "heading",
+      "componentPropertyDefinitions": {
+        "slot-default#33562:14": {
+          "type": "TEXT",
+          "defaultValue": "The quick brown fox jumps over the lazy dog"
+        },
+        "tag#58287:4035": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "2xl",
+          "variantOptions": [
+            "5xl",
+            "4xl",
+            "3xl",
+            "2xl",
+            "xl",
+            "lg",
+            "md",
+            "sm",
+            "xs",
+            "2xs"
+          ]
+        }
+      }
+    },
+    {
+      "id": "58007:8772",
+      "name": "input-month",
+      "componentPropertyDefinitions": {
+        "figDescription#45844:18": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#46267:44": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotStart#46267:50": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#48611:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#54669:28": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figIndicator#58170:55": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58201:786": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58201:797": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58201:808": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58201:819": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58201:984": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58201:995": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#59980:42": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60733:1563": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5364": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "59836:7910",
+      "name": "select-option",
+      "componentPropertyDefinitions": {
+        "value#59836:4": {
+          "type": "TEXT",
+          "defaultValue": "Option"
+        },
+        "figSelected#59836:5": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "998:5725",
+      "name": "tag-dismissible",
+      "componentPropertyDefinitions": {
+        "slot-default#946:0": {
+          "type": "TEXT",
+          "defaultValue": "Tag Dismissible"
+        },
+        "label#1082:7": {
+          "type": "TEXT",
+          "defaultValue": "Label"
+        },
+        "figShowLabel#3214:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "53739:19418",
+      "name": "accordion",
+      "componentPropertyDefinitions": {
+        "figSlotSummaryBefore#53739:198": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotSummaryAfter#53739:199": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-default#58287:3903": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-summary#58287:3936": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-summary-before#58287:3969": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-summary-after#58287:4002": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "open": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "alignMarker": {
+          "type": "VARIANT",
+          "defaultValue": "end",
+          "variantOptions": [
+            "end",
+            "start"
+          ]
+        },
+        "background": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "canvas",
+            "frosted",
+            "surface"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "35039:9223",
+      "name": "carousel",
+      "componentPropertyDefinitions": {
+        "pagination#35039:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figSlotContent#57258:168": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "width": {
+          "type": "VARIANT",
+          "defaultValue": "basic",
+          "variantOptions": [
+            "basic",
+            "extended",
+            "wide",
+            "full"
+          ]
+        }
+      }
+    },
+    {
+      "id": "1122:7128",
+      "name": "table-cell",
+      "componentPropertyDefinitions": {
+        "figContentType": {
+          "type": "VARIANT",
+          "defaultValue": "image + text",
+          "variantOptions": [
+            "image + text",
+            "tag",
+            "text",
+            "context menu",
+            "link"
+          ]
+        },
+        "figSize": {
+          "type": "VARIANT",
+          "defaultValue": "default",
+          "variantOptions": [
+            "default",
+            "compact [experiemental]"
+          ]
+        }
+      }
+    },
+    {
+      "id": "47790:6759",
+      "name": "input-email",
+      "componentPropertyDefinitions": {
+        "figDescription#45844:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "loading#46261:6": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotEnd#46261:20": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSlotStart#46261:26": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "indicator#47790:1": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "placeholder#47790:7": {
+          "type": "TEXT",
+          "defaultValue": "max.mustermann@porsche.com"
+        },
+        "figMessage#54669:20": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58200:272": {
+          "type": "TEXT",
+          "defaultValue": "Some label"
+        },
+        "description#58200:283": {
+          "type": "TEXT",
+          "defaultValue": "Description"
+        },
+        "message#58200:294": {
+          "type": "TEXT",
+          "defaultValue": "Message"
+        },
+        "required#58200:305": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-start#58200:436": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-end#58200:457": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#60045:84": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60733:1143": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60733:5343": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "408:167",
+      "name": "select",
+      "componentPropertyDefinitions": {
+        "figHelperSelection#48706:1": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "showLabel#48706:3": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figDescription#48706:4": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "filter#48709:585": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figMessage#48800:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58233:2816": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "description#58233:2833": {
+          "type": "TEXT",
+          "defaultValue": "Some description"
+        },
+        "message#58233:2850": {
+          "type": "TEXT",
+          "defaultValue": "Some message with a link."
+        },
+        "required#58233:2867": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-default#58240:3216": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-filter#58240:3246": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#59186:0": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "figSlotImage#59468:0": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figImageSlot#59468:13": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-label-after#60747:5817": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60747:5921": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "success",
+            "error",
+            "none"
+          ]
+        },
+        "dropdownDirection": {
+          "type": "VARIANT",
+          "defaultValue": "auto",
+          "variantOptions": [
+            "down",
+            "auto",
+            "up"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "817:3006",
+      "name": "textarea",
+      "componentPropertyDefinitions": {
+        "showLabel#965:70": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "value#1087:8": {
+          "type": "TEXT",
+          "defaultValue": "Some placeholder"
+        },
+        "figDescription#3159:7": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figMessage#54670:76": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58233:2741": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "description#58233:2756": {
+          "type": "TEXT",
+          "defaultValue": "Some description"
+        },
+        "message#58233:2771": {
+          "type": "TEXT",
+          "defaultValue": "Some message with a link."
+        },
+        "required#58233:2786": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-label-after#60747:5696": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60747:5806": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "success",
+            "error",
+            "none"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "readOnly": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "26842:12552",
+      "name": "link-tile-product",
+      "componentPropertyDefinitions": {
+        "figDescription#1261:18": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figNew#1261:20": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figWishlist#1261:23": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "heading#26844:0": {
+          "type": "TEXT",
+          "defaultValue": "Some Product"
+        },
+        "price#26844:5": {
+          "type": "TEXT",
+          "defaultValue": "499,99 €"
+        },
+        "description#28147:0": {
+          "type": "TEXT",
+          "defaultValue": "Some Description"
+        },
+        "aspectRatio": {
+          "type": "VARIANT",
+          "defaultValue": "3/4",
+          "variantOptions": [
+            "3/4",
+            "9/16"
+          ]
+        }
+      }
+    },
+    {
+      "id": "50:738",
+      "name": "radio-group-option",
+      "componentPropertyDefinitions": {
+        "label#955:69": {
+          "type": "TEXT",
+          "defaultValue": "Label*"
+        },
+        "figMessage#7730:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figChecked": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "figState": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "success",
+            "error"
+          ]
+        }
+      }
+    },
+    {
+      "id": "1029:5922",
+      "name": "segmented-control-item",
+      "componentPropertyDefinitions": {
+        "icon#1029:14": {
+          "type": "INSTANCE_SWAP",
+          "defaultValue": "5211:35743"
+        },
+        "slot-default#1042:0": {
+          "type": "TEXT",
+          "defaultValue": "Option"
+        },
+        "label#3980:0": {
+          "type": "TEXT",
+          "defaultValue": "Title"
+        },
+        "figIcon#36030:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figShowLabel#58263:3509": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figSelected": {
+          "type": "VARIANT",
+          "defaultValue": "true",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "figState": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "error",
+            "success",
+            "none"
+          ]
+        }
+      }
+    },
+    {
+      "id": "51950:6333",
+      "name": "radio-group",
+      "componentPropertyDefinitions": {
+        "figMessage#51985:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "showLabel#58053:101": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figDescription#58053:122": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58233:2986": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "description#58233:3007": {
+          "type": "TEXT",
+          "defaultValue": "Some description"
+        },
+        "message#58233:3028": {
+          "type": "TEXT",
+          "defaultValue": "Some message with a link"
+        },
+        "required#58233:3049": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-default#58262:3458": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60726:156": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-label-after#60726:681": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "direction": {
+          "type": "VARIANT",
+          "defaultValue": "column",
+          "variantOptions": [
+            "column",
+            "row"
+          ]
+        },
+        "loading": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32735:8125",
+      "name": "tabs-bar",
+      "componentPropertyDefinitions": {
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "small",
+          "variantOptions": [
+            "small",
+            "medium"
+          ]
+        },
+        "background": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "canvas",
+            "frosted",
+            "none",
+            "surface"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32620:8703",
+      "name": "stepper-horizontal",
+      "componentPropertyDefinitions": {
+        "size": {
+          "type": "VARIANT",
+          "defaultValue": "small",
+          "variantOptions": [
+            "small",
+            "medium"
+          ]
+        }
+      }
+    },
+    {
+      "id": "225:216",
+      "name": "button",
+      "componentPropertyDefinitions": {
+        "slot-default#3544:0": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "icon#58025:0": {
+          "type": "INSTANCE_SWAP",
+          "defaultValue": "5211:35878"
+        },
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "primary",
+          "variantOptions": [
+            "primary",
+            "secondary",
+            "destructive"
+          ]
+        },
+        "loading": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "hideLabel": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "figIcon": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32235:4753",
+      "name": "modal",
+      "componentPropertyDefinitions": {
+        "backdrop": {
+          "type": "VARIANT",
+          "defaultValue": "blur",
+          "variantOptions": [
+            "blur",
+            "shading"
+          ]
+        }
+      }
+    },
+    {
+      "id": "25272:1118",
+      "name": "flyout",
+      "componentPropertyDefinitions": {
+        "position": {
+          "type": "VARIANT",
+          "defaultValue": "end",
+          "variantOptions": [
+            "start",
+            "end"
+          ]
+        },
+        "backdrop": {
+          "type": "VARIANT",
+          "defaultValue": "blur",
+          "variantOptions": [
+            "blur",
+            "shading"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32069:55211",
+      "name": "segmented-control",
+      "componentPropertyDefinitions": {
+        "slot-default#58284:3518": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "label#58285:3723": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "showLabel#58285:3748": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "required#58285:3773": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "description#58285:3798": {
+          "type": "TEXT",
+          "defaultValue": "Some description"
+        },
+        "message#58285:3823": {
+          "type": "TEXT",
+          "defaultValue": "Please make a selection"
+        },
+        "figMessage#58285:3848": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "slot-label-after#60747:5934": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60747:6534": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "none",
+            "error",
+            "success"
+          ]
+        },
+        "noWrap": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "60560:14624",
+      "name": "feedback",
+      "componentPropertyDefinitions": {
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "inline",
+          "variantOptions": [
+            "inline",
+            "dialog"
+          ]
+        }
+      }
+    },
+    {
+      "id": "7670:54339",
+      "name": "banner",
+      "componentPropertyDefinitions": {
+        "dismissButton#7610:33": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figDescription#7610:71": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "heading#58411:4046": {
+          "type": "TEXT",
+          "defaultValue": "Notification headline"
+        },
+        "slot-default#58411:4051": {
+          "type": "TEXT",
+          "defaultValue": "Notification description with slotted content and link"
+        },
+        "headingTag#58411:4066": {
+          "type": "TEXT",
+          "defaultValue": "h5"
+        },
+        "figHeading#58411:4076": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "info",
+          "variantOptions": [
+            "info",
+            "warning",
+            "error",
+            "success"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32496:73770",
+      "name": "container",
+      "componentPropertyDefinitions": {
+        "ratio": {
+          "type": "VARIANT",
+          "defaultValue": "1:1",
+          "variantOptions": [
+            "1:1",
+            "3:4",
+            "4:3",
+            "16:9",
+            "9:16"
+          ]
+        }
+      }
+    },
+    {
+      "id": "934:5761",
+      "name": "inline-notification",
+      "componentPropertyDefinitions": {
+        "figAction#7610:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "dismissButton#7610:33": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figHeading#7610:66": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figDescription#7610:71": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "heading#58411:4056": {
+          "type": "TEXT",
+          "defaultValue": "Notification headline"
+        },
+        "slot-default#58411:4061": {
+          "type": "TEXT",
+          "defaultValue": "Notification description with slotted content and link"
+        },
+        "headingTag#58411:4071": {
+          "type": "TEXT",
+          "defaultValue": "h5"
+        },
+        "actionLabel#58411:4081": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "actionIcon#58411:4086": {
+          "type": "INSTANCE_SWAP",
+          "defaultValue": "5211:33469"
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "info",
+          "variantOptions": [
+            "info",
+            "success",
+            "warning",
+            "error"
+          ]
+        }
+      }
+    },
+    {
+      "id": "33100:10506",
+      "name": "table",
+      "componentPropertyDefinitions": {
+        "figCaption#33100:4": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figVariant": {
+          "type": "VARIANT",
+          "defaultValue": "basic example",
+          "variantOptions": [
+            "basic example",
+            "advanced",
+            "scroller",
+            "compact"
+          ]
+        }
+      }
+    },
+    {
+      "id": "59836:7480",
+      "name": "multi-select-option",
+      "componentPropertyDefinitions": {
+        "figChecked": {
+          "type": "VARIANT",
+          "defaultValue": "default",
+          "variantOptions": [
+            "false",
+            "true",
+            "default"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "31791:3838",
+      "name": "button-group",
+      "componentPropertyDefinitions": {
+        "direction": {
+          "type": "VARIANT",
+          "defaultValue": "horizontal",
+          "variantOptions": [
+            "vertical",
+            "horizontal"
+          ]
+        }
+      }
+    },
+    {
+      "id": "32496:70159",
+      "name": "toast",
+      "componentPropertyDefinitions": {
+        "figMessageValue#916:4": {
+          "type": "TEXT",
+          "defaultValue": "Some message"
+        },
+        "figState": {
+          "type": "VARIANT",
+          "defaultValue": "info",
+          "variantOptions": [
+            "info",
+            "success"
+          ]
+        }
+      }
+    },
+    {
+      "id": "34317:74666",
+      "name": "button-tile",
+      "componentPropertyDefinitions": {
+        "figSlotHeader#58506:4099": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-header#58506:4125": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "aspectRatio": {
+          "type": "VARIANT",
+          "defaultValue": "4/3",
+          "variantOptions": [
+            "1/1",
+            "16/9",
+            "3/4",
+            "4/3",
+            "9/16",
+            "auto"
+          ]
+        },
+        "align": {
+          "type": "VARIANT",
+          "defaultValue": "bottom",
+          "variantOptions": [
+            "bottom",
+            "top"
+          ]
+        }
+      }
+    },
+    {
+      "id": "22698:3276",
+      "name": "multi-select",
+      "componentPropertyDefinitions": {
+        "figHelperSelection#48709:1524": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "showLabel#48709:1526": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figDescription#48709:1527": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figMessage#48804:0": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "label#58233:2901": {
+          "type": "TEXT",
+          "defaultValue": "Some Label"
+        },
+        "description#58233:2918": {
+          "type": "TEXT",
+          "defaultValue": "Some description"
+        },
+        "message#58233:2935": {
+          "type": "TEXT",
+          "defaultValue": "Some message with a link."
+        },
+        "required#58233:2952": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figReset#58257:3374": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-default#58257:3392": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-filter#58257:3401": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "value#59186:13": {
+          "type": "TEXT",
+          "defaultValue": ""
+        },
+        "slot-label-after#60743:5553": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotAfterLabel#60743:5683": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "state": {
+          "type": "VARIANT",
+          "defaultValue": "none",
+          "variantOptions": [
+            "error",
+            "success",
+            "none"
+          ]
+        },
+        "dropdownDirection": {
+          "type": "VARIANT",
+          "defaultValue": "auto",
+          "variantOptions": [
+            "auto",
+            "down",
+            "up"
+          ]
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "59480:38841",
+      "name": "header",
+      "componentPropertyDefinitions": {
+        "variant": {
+          "type": "VARIANT",
+          "defaultValue": "01",
+          "variantOptions": [
+            "02",
+            "01"
+          ]
+        }
+      }
+    },
+    {
+      "id": "3466:25517",
+      "name": "link-tile",
+      "componentPropertyDefinitions": {
+        "figSlotHeader#58562:4149": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "slot-header#58562:4162": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "href#58562:4201": {
+          "type": "TEXT",
+          "defaultValue": "https://porsche.com"
+        },
+        "aspectRatio": {
+          "type": "VARIANT",
+          "defaultValue": "4/3",
+          "variantOptions": [
+            "1/1",
+            "16/9",
+            "3/4",
+            "4/3",
+            "9/16",
+            "auto"
+          ]
+        },
+        "align": {
+          "type": "VARIANT",
+          "defaultValue": "bottom",
+          "variantOptions": [
+            "bottom",
+            "top"
+          ]
+        }
+      }
+    },
+    {
+      "id": "60399:13177",
+      "name": "modal item",
+      "componentPropertyDefinitions": {
+        "Dismiss button#60399:8": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "slot-header#60399:11": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-default#60399:12": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "slot-footer#60399:13": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "figSlotDefault#60399:15": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figSlotHeader#60399:16": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "figSlotFooter#60399:17": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "Background": {
+          "type": "VARIANT",
+          "defaultValue": "canvas",
+          "variantOptions": [
+            "surface",
+            "canvas"
+          ]
+        }
+      }
+    },
+    {
+      "id": "3465:24056",
+      "name": "scroller",
+      "componentPropertyDefinitions": {
+        "figScrollerStart#33041:0": {
+          "type": "BOOLEAN",
+          "defaultValue": false
+        },
+        "figScrollerEnd#33041:14": {
+          "type": "BOOLEAN",
+          "defaultValue": true
+        },
+        "slot-default#58285:3900": {
+          "type": "SLOT",
+          "defaultValue": {
+            "guid": {
+              "sessionID": -1,
+              "localID": -1
+            }
+          }
+        },
+        "compact": {
+          "type": "VARIANT",
+          "defaultValue": "false",
+          "variantOptions": [
+            "false",
+            "true"
+          ]
+        },
+        "figBackground": {
+          "type": "VARIANT",
+          "defaultValue": "canvas",
+          "variantOptions": [
+            "canvas",
+            "surface"
+          ]
+        }
+      }
+    }
+  ],
+  "icons": {
+    "5211:36113": "rss",
+    "7446:55171": "logo-apple-podcast",
+    "5211:35786": "moon",
+    "5211:35760": "gift",
+    "5211:36006": "play",
+    "54521:6735": "ai-code",
+    "5211:35990": "image",
+    "5211:35988": "tablet",
+    "5211:35984": "send",
+    "5211:35982": "closed-caption",
+    "5211:35980": "screen",
+    "5211:35972": "printer",
+    "5211:35967": "plug",
+    "5211:35965": "flash",
+    "6354:46298": "charging-station",
+    "5211:35959": "car-battery",
+    "5211:35957": "battery-full",
+    "5211:35952": "sort",
+    "5211:35948": "list",
+    "5211:35946": "search",
+    "5211:35942": "increase",
+    "5211:35940": "save",
+    "5211:35944": "zoom-out",
+    "5211:35936": "grid",
+    "5211:35930": "refresh",
+    "5211:35932": "view",
+    "37488:9380": "battery-empty-co2",
+    "5211:35920": "upload",
+    "5211:35901": "menu-dots-horizontal",
+    "5211:35897": "disable",
+    "5211:35895": "delete",
+    "5211:35891": "compare",
+    "5211:35889": "chart",
+    "7397:53228": "bookmark-filled",
+    "5211:35885": "adjust",
+    "5211:35905": "subtract",
+    "5211:35883": "add",
+    "5211:35872": "check",
+    "39457:24788": "exclamation",
+    "7397:51883": "success-filled",
+    "5211:35857": "success",
+    "5211:35859": "information",
+    "5211:35853": "email",
+    "5211:35851": "chat",
+    "5211:36010": "arrow-last",
+    "5211:33471": "arrow-left",
+    "5211:33469": "arrow-right",
+    "5211:33459": "arrow-head-up",
+    "5211:33457": "arrow-head-down",
+    "5211:33463": "arrow-double-left",
+    "5211:35996": "mobile",
+    "60851:5785": "connect-services",
+    "5211:36111": "logo-facebook",
+    "54521:6873": "logo-apple-carplay",
+    "5211:36086": "logo-baidu",
+    "7397:51508": "skip-forward",
+    "7182:48077": "garage",
+    "54521:6950": "hand",
+    "5211:36131": "logo-gmail",
+    "49950:5711": "arrow-down-right",
+    "5211:33455": "arrow-head-left",
+    "54521:6793": "arrows",
+    "54521:6943": "ear",
+    "54521:6919": "battery-one-quarter",
+    "5211:36105": "logo-youtube",
+    "7397:51841": "cloud",
+    "54521:6889": "paste",
+    "54521:6932": "battery-half",
+    "54521:6958": "radar",
+    "54521:6725": "aggregation",
+    "54521:6841": "file-excel",
+    "7473:55145": "radio",
+    "54521:6804": "cut",
+    "7182:47654": "shopping-bag",
+    "54521:6954": "north-arrow",
+    "5211:35743": "globe",
+    "5211:36127": "logo-qq",
+    "5211:36097": "logo-youku",
+    "5211:35741": "country-road",
+    "54521:6934": "charging-network",
+    "39457:24793": "fingerprint",
+    "7182:48081": "stopwatch",
+    "54521:6962": "seat",
+    "5211:36137": "logo-google",
+    "43453:6482": "history",
+    "7182:47647": "bell",
+    "7808:57577": "highway",
+    "5211:36139": "logo-weibo",
+    "54521:6770": "arrow-compact-down",
+    "5211:36093": "logo-telegram",
+    "5211:35770": "weight",
+    "54521:6935": "logo-apple-music",
+    "48501:6642": "unlinked",
+    "5211:36145": "logo-sohu",
+    "54521:6914": "turismo",
+    "54521:6970": "attachment",
+    "54521:6785": "arrow-compact-up",
+    "54897:24661": "play-filled",
+    "5211:35838": "fuel-station",
+    "48497:6626": "linked",
+    "10999:72837": "pin-filled",
+    "54521:6884": "new-chat",
+    "54521:6856": "group",
+    "37488:9379": "co2-class",
+    "5211:36143": "logo-skyrock",
+    "5211:35739": "city",
+    "39457:28499": "roof-closed",
+    "5211:36107": "logo-tumblr",
+    "10999:72170": "shopping-bag-filled",
+    "54521:6963": "service-technician",
+    "7446:54950": "logo-spotify",
+    "5211:33461": "arrow-double-right",
+    "5211:36088": "logo-yahoo",
+    "5211:35802": "card",
+    "5211:36123": "logo-viber",
+    "5211:35824": "preheating",
+    "5211:36099": "logo-linkedin",
+    "5211:36119": "share",
+    "7182:47651": "light",
+    "7397:51848": "drag",
+    "7182:48078": "horn",
+    "5211:35782": "wrenches",
+    "5211:36121": "logo-qq-share",
+    "5211:35826": "climate",
+    "7397:51513": "fast-backward",
+    "5211:35804": "purchase",
+    "54521:6895": "pivot",
+    "5211:35822": "climate-control",
+    "5211:35848": "active-cabin-ventilation",
+    "5211:35784": "lock",
+    "7182:47649": "leaf",
+    "7397:51463": "fast-forward",
+    "7182:47648": "key",
+    "5211:36103": "logo-digg",
+    "7397:51823": "4-wheel-drive",
+    "54521:6951": "limousine",
+    "54521:6846": "grip",
+    "49950:5710": "arrow-up-left",
+    "54521:6755": "ai-sound",
+    "5211:33465": "arrow-double-down",
+    "54521:6750": "ai-scale",
+    "54521:6944": "flag",
+    "5211:35758": "snowflake",
+    "7397:51484": "skip-backward",
+    "7182:48079": "clock",
+    "5211:35813": "user",
+    "7182:47650": "work",
+    "54521:6740": "ai-edit",
+    "54521:6900": "return",
+    "5211:35846": "oil-can",
+    "5211:33453": "arrow-head-right",
+    "5211:35791": "calendar",
+    "39457:29328": "tire",
+    "54521:6730": "ai-3d-object",
+    "7397:53214": "question-filled",
+    "5211:35795": "duration",
+    "43847:6807": "door",
+    "7397:53237": "star-filled",
+    "60851:5783": "shopping-cart-off",
+    "7397:53205": "menu-dots-vertical",
+    "7182:47653": "lock-open",
+    "54521:6861": "like",
+    "5211:35994": "video",
+    "54521:6936": "highway-filled",
+    "54521:6775": "arrow-compact-left",
+    "54521:6834": "file-csv",
+    "7182:47655": "parking-light",
+    "5211:35893": "configurate",
+    "5211:35998": "volume-off",
+    "5211:35811": "user-group",
+    "5211:36004": "pause",
+    "7397:53248": "heart",
+    "5211:36151": "logo-tecent",
+    "7397:51453": "laptop",
+    "54521:6938": "brain",
+    "54521:6942": "coupe",
+    "7397:51523": "compass",
+    "5211:35963": "charging-state",
+    "7397:53185": "switch",
+    "54521:6929": "cabriolet",
+    "54521:6960": "road",
+    "5211:36155": "logo-xing",
+    "5211:35909": "menu-lines",
+    "5211:36141": "logo-hatena",
+    "54521:6957": "price-tag",
+    "5211:35881": "accessibility",
+    "7182:47643": "user-manual",
+    "54521:6966": "theme",
+    "5211:35887": "bookmark",
+    "5211:35840": "truck",
+    "5211:35816": "parking-brake",
+    "5211:35751": "pin",
+    "7397:51458": "stop",
+    "5211:33475": "arrow-up",
+    "54521:6798": "color-picker",
+    "7182:47646": "home",
+    "10999:72204": "shopping-cart-filled",
+    "54521:6937": "qr-off",
+    "5211:35938": "zoom-in",
+    "7473:55142": "news",
+    "5211:35766": "sun",
+    "5211:35878": "close",
+    "7536:57958": "qr",
+    "5211:35788": "racing-flag",
+    "54521:6809": "dislike",
+    "5211:35808": "shopping-cart",
+    "54521:6965": "suv",
+    "54521:6878": "logo-x",
+    "5211:33467": "arrow-double-up",
+    "5211:35926": "view-off",
+    "5211:35800": "calculator",
+    "59225:30736": "sidebar",
+    "54521:6924": "battery-three-quarters",
+    "7397:53247": "heart-filled",
+    "46747:6292": "ai-spark",
+    "46747:6291": "ai-spark-filled",
+    "5211:35913": "edit",
+    "5211:35907": "download",
+    "5211:35749": "locate",
+    "49950:5709": "arrow-up-right",
+    "5211:36135": "logo-wechat",
+    "7536:57961": "push-pin",
+    "5211:35924": "plus",
+    "5211:36117": "logo-pinterest",
+    "7808:57970": "copy",
+    "7397:51889": "warning",
+    "54521:6949": "geo-localization",
+    "5211:35830": "co2-emission",
+    "5211:35976": "replay",
+    "54521:6968": "weather",
+    "5211:36002": "volume-up",
+    "5211:36125": "logo-foursquare",
+    "5211:35836": "tachometer",
+    "5211:35992": "map",
+    "5211:35955": "battery-empty",
+    "5211:36129": "logo-vk",
+    "7446:54898": "microphone",
+    "5211:36133": "logo-reddit",
+    "5211:36147": "logo-instagram",
+    "5211:35870": "360",
+    "5211:35974": "broadcast",
+    "5211:36149": "logo-whatsapp",
+    "5211:36109": "logo-naver",
+    "54521:6826": "exclamation-filled",
+    "5211:35828": "sidelights",
+    "54521:6933": "logo-snapchat",
+    "5211:35753": "route",
+    "5211:35978": "camera",
+    "5211:33473": "arrow-down",
+    "54521:6948": "genuine-parts",
+    "7397:53253": "error-filled",
+    "5211:35934": "reset",
+    "49950:5712": "arrow-down-left",
+    "5211:35818": "car",
+    "5211:35915": "minus",
+    "54521:6955": "online-search",
+    "43453:6481": "logo-kununu",
+    "5211:35928": "filter",
+    "54521:6760": "ai-text",
+    "54521:6745": "ai-image",
+    "54521:6816": "dislike-filled",
+    "39457:18615": "battery-empty-fuel",
+    "5211:36090": "logo-kakaotalk",
+    "5211:35986": "document",
+    "7536:57960": "push-pin-off",
+    "39457:28500": "roof-open",
+    "5211:35950": "logout",
+    "5211:35834": "cubic-capacity",
+    "5211:35855": "phone",
+    "5211:36000": "wifi",
+    "5211:36153": "logo-kaixin",
+    "5211:36101": "logo-tiktok",
+    "5211:35772": "leather",
+    "5211:36115": "logo-twitter",
+    "5211:35863": "question",
+    "54521:6821": "error",
+    "54521:6765": "ai-video",
+    "5211:35762": "star",
+    "39457:25432": "information-filled",
+    "54521:6868": "like-filled",
+    "5211:35970": "augmented-reality",
+    "5211:35922": "external",
+    "5211:36008": "arrow-first",
+    "5211:35832": "steering-wheel",
+    "5211:36095": "logo-delicious",
+    "54521:6780": "arrow-compact-right",
+    "54521:6967": "trigger-finger",
+    "5211:35961": "charging-active",
+    "10999:72848": "user-filled",
+    "7182:47652": "wrench",
+    "5211:35899": "stack",
+    "7397:51893": "warning-filled",
+    "112:726": "globe"
+  }
+}

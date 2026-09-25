@@ -1,0 +1,7 @@
+{
+  "codeConnect": {
+    "include": ["src/components/**/figma/*.vue.figma.ts", "figma/icons/p-icon.vue.figma.batch.json"],
+    "label": "Vue",
+    "language": "html"
+  }
+}
