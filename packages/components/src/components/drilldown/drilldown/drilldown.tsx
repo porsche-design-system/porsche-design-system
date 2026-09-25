@@ -199,9 +199,9 @@ export class Drilldown {
     );
   }
 
-  // Derives the item states from the current `activeIdentifier` and item identifiers, on load, on an item identifier
-  // change and after the transition animation of `updateDrilldownState()`
   private syncActiveItem(): void {
+    // Derives the item states from the current `activeIdentifier` and item identifiers, on load, on an item identifier
+    // change and after the transition animation of `updateDrilldownState()`
     // guard, otherwise an item without identifier matches an undefined `activeIdentifier`
     const activeItem =
       this.activeIdentifier !== undefined
@@ -261,9 +261,9 @@ export class Drilldown {
     }
   }
 
-  // Items are only used to pick the transition, the state is resolved afterwards by syncActiveItem() because
-  // activeIdentifier or an item identifier may have changed while the fade out animation was running
   private async updateDrilldownState(oldVal: string | undefined, newVal: string | undefined): Promise<void> {
+    // Items are only used to pick the transition, the state is resolved afterwards by syncActiveItem() because
+    // activeIdentifier or an item identifier may have changed while the fade out animation was running
     const oldItem = oldVal && this.drilldownItemElements.find((item) => item.identifier === oldVal);
     const newItem = newVal && this.drilldownItemElements.find((item) => item.identifier === newVal);
 
