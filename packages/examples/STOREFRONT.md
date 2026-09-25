@@ -293,9 +293,10 @@ type WebsiteViewerProps =
 
 For `example`:
 
-- **iframe `src`** and **"View Fullscreen"**: `examples/${example}/`, resolved through the `<base href>` that
-  `layout.tsx` already sets from `getBasePath()`. Use a plain `<a target="_blank">` for the fullscreen link, not
-  `next/link`, because a file in `public/` is not a route.
+- **iframe `src`** and **"View Fullscreen"**: `/<slug>/examples/${example}/index.html`, built from `getBasePath()`. The
+  file is named rather than the folder, because `next dev` serves `public/` by exact path only and answers
+  `/examples/…/overlay/` with a 404, while the static hosts would resolve it (found 2026-09-25). Use a plain
+  `<a target="_blank">` for the fullscreen link, not `next/link`, because a file in `public/` is not a route.
 - **"Source Code" is replaced by "Open in StackBlitz"**: a `PButtonPure` with `icon-source="stackBlitzIcon"` and
   `aria={{ 'aria-description': 'Opens in new tab' }}`, like
   [`OpenBugTemplateInStackBlitz.tsx`](../storefront/src/components/common/OpenBugTemplateInStackBlitz.tsx).

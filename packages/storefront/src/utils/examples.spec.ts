@@ -45,14 +45,14 @@ describe('rewriteCdnUrlsForDev()', () => {
 
 describe('getExampleUrl()', () => {
   it('addresses an example below the slug of this deployment', () => {
-    expect(getExampleUrl('patterns/header/overlay', 'v4')).toBe('/v4/examples/patterns/header/overlay/');
+    expect(getExampleUrl('patterns/header/overlay', 'v4')).toBe('/v4/examples/patterns/header/overlay/index.html');
     expect(getExamplePayloadUrl('templates/landing-page', 'pr-1234')).toBe(
       '/pr-1234/examples/templates/landing-page/stackblitz.json'
     );
   });
 
   it('addresses an example at the root without a basePath', () => {
-    expect(getExampleUrl('patterns/footer', '')).toBe('/examples/patterns/footer/');
+    expect(getExampleUrl('patterns/footer', '')).toBe('/examples/patterns/footer/index.html');
   });
 });
 

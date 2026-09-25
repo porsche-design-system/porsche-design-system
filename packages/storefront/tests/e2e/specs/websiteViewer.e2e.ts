@@ -82,7 +82,7 @@ for (const [path, examples] of pagesWithExamples) {
       const iframes = page.locator('iframe[src*="/examples/"]');
       await expect(iframes).toHaveCount(examples.length);
       for (const [index, example] of examples.entries()) {
-        await expect(iframes.nth(index)).toHaveAttribute('src', `/examples/${example}/`);
+        await expect(iframes.nth(index)).toHaveAttribute('src', `/examples/${example}/index.html`);
       }
 
       for (const frame of await getExampleFrames(page)) {
@@ -104,7 +104,7 @@ for (const [path, examples] of pagesWithExamples) {
       const links = page.getByRole('link', { name: 'View Fullscreen' });
       await expect(links).toHaveCount(examples.length);
       for (const [index, example] of examples.entries()) {
-        await expect(links.nth(index)).toHaveAttribute('href', `/examples/${example}/`);
+        await expect(links.nth(index)).toHaveAttribute('href', `/examples/${example}/index.html`);
       }
     });
   });

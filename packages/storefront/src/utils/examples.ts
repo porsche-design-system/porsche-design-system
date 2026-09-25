@@ -43,17 +43,23 @@ export const insertBasePath = (content: string, basePath: string): string =>
 export const rewriteCdnUrlsForDev = (html: string): string =>
   html.replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001');
 
+const getExampleDir = (example: ExamplePath, basePath: string): string =>
+  withBasePath(`/examples/${example}/`, basePath);
+
 /**
- * The URL of an example in this deployment: `patterns/header/overlay` → `/v4/examples/patterns/header/overlay/`.
+ * The URL of an example in this deployment: `patterns/header/overlay` →
+ * `/v4/examples/patterns/header/overlay/index.html`.
  *
- * Root-absolute rather than relative to `<base href>`, so it means the same wherever it is used.
+ * The file is named, not the folder: the examples are static files in `public/`, and `next dev` serves those by their
+ * exact path only – `/examples/…/overlay/` answers 404 there, while the static hosts would resolve it. Root-absolute
+ * rather than relative to `<base href>`, so it means the same wherever it is used.
  */
 export const getExampleUrl = (example: ExamplePath, basePath: string): string =>
-  withBasePath(`/examples/${example}/`, basePath);
+  `${getExampleDir(example, basePath)}index.html`;
 
 /** The StackBlitz payload of an example, next to its page. */
 export const getExamplePayloadUrl = (example: ExamplePath, basePath: string): string =>
-  `${getExampleUrl(example, basePath)}stackblitz.json`;
+  `${getExampleDir(example, basePath)}stackblitz.json`;
 
 /**
  * The payload as StackBlitz needs it: with the origin in front of every media path.
