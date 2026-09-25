@@ -8,21 +8,21 @@ import { iconOf } from '../../../../figma/helpers/iconOf';
 
 const instance = figma.selectedInstance;
 
-const slotDefault = instance.getString('slot-default');
-const figIcon = instance.getEnum('figIcon', { false: false, true: true });
-const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'close') : undefined;
+const disabled = instance.getEnum('disabled', { false: false, true: true });
+const loading = instance.getEnum('loading', { false: false, true: true });
 const variant = instance.getEnum('variant', {
   primary: 'primary',
   secondary: 'secondary',
   destructive: 'destructive',
 });
-const loading = instance.getEnum('loading', { false: false, true: true });
-const disabled = instance.getEnum('disabled', { false: false, true: true });
+const figIcon = instance.getEnum('figIcon', { false: false, true: true });
+const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'close') : undefined;
 const hideLabel = instance.getEnum('hideLabel', { false: false, true: true });
 const compact = instance.getEnum('compact', { false: false, true: true });
+const slotDefault = instance.getString('slot-default');
 
 export default {
-  example: figma.code`<p-button${icon ? ` [icon]="'${icon}'"` : ''} [variant]="'${variant}'"${loading ? ' [loading]="true"' : ''}${disabled ? ' [disabled]="true"' : ''}${hideLabel ? ' [hideLabel]="true"' : ''}${compact ? ' [compact]="true"' : ''}>${slotDefault}</p-button>`,
+  example: figma.code`<p-button${disabled ? ' [disabled]="true"' : ''}${loading ? ' [loading]="true"' : ''} [variant]="'${variant}'"${icon ? ` [icon]="'${icon}'"` : ''}${hideLabel ? ' [hideLabel]="true"' : ''}${compact ? ' [compact]="true"' : ''}>${slotDefault}</p-button>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/button/api',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",

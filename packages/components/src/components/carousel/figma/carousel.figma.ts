@@ -7,16 +7,16 @@ import figma from 'figma';
 
 const instance = figma.selectedInstance;
 
-const pagination = instance.getBoolean('pagination');
 const width = instance.getEnum('width', {
   basic: 'basic',
   extended: 'extended',
   wide: 'wide',
   full: 'full',
 });
+const pagination = instance.getBoolean('pagination');
 
 export default {
-  example: figma.code`<p-carousel${pagination ? ' pagination="true"' : ''} width="${width}"></p-carousel>`,
+  example: figma.code`<p-carousel width="${width}"${pagination ? ' pagination="true"' : ''}></p-carousel>`,
   imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/carousel/api -->'],
   id: 'p-carousel',
   metadata: { nestable: true },

@@ -7,13 +7,13 @@ import figma from 'figma';
 
 const instance = figma.selectedInstance;
 
-const activePage = instance.getString('activePage');
 const totalItemsCount = instance.getString('totalItemsCount');
 const itemsPerPage = instance.getString('itemsPerPage');
+const activePage = instance.getString('activePage');
 const showLastPage = instance.getEnum('showLastPage', { false: false, true: true });
 
 export default {
-  example: figma.code`<p-pagination${activePage ? ` active-page="${activePage}"` : ''}${totalItemsCount ? ` total-items-count="${totalItemsCount}"` : ''}${itemsPerPage ? ` items-per-page="${itemsPerPage}"` : ''}${showLastPage ? ' show-last-page="true"' : ''}></p-pagination>`,
+  example: figma.code`<p-pagination${/^-?\d+(\.\d+)?$/.test(totalItemsCount) ? ` total-items-count="${totalItemsCount}"` : ''}${/^-?\d+(\.\d+)?$/.test(itemsPerPage) ? ` items-per-page="${itemsPerPage}"` : ''}${/^-?\d+(\.\d+)?$/.test(activePage) ? ` active-page="${activePage}"` : ''}${showLastPage ? ' show-last-page="true"' : ''}></p-pagination>`,
   imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/pagination/api -->'],
   id: 'p-pagination',
   metadata: { nestable: true },

@@ -8,24 +8,24 @@ import { iconOf } from '../../../../figma/helpers/iconOf';
 
 const instance = figma.selectedInstance;
 
-const figIcon = instance.getBoolean('figIcon');
-const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'arrow-right') : undefined;
 const alignLabel = instance.getEnum('alignLabel', {
   end: 'end',
   start: 'start',
 });
-const active = instance.getEnum('active', { false: false, true: true });
 const stretch = instance.getEnum('stretch', { false: false, true: true });
-const hideLabel = instance.getEnum('hideLabel', { false: false, true: true });
 const color = instance.getEnum('color', {
   primary: 'primary',
   'contrast-high': 'contrast-high',
   'contrast-higher': 'contrast-higher',
   'contrast-medium': 'contrast-medium',
 });
+const figIcon = instance.getBoolean('figIcon');
+const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'arrow-right') : undefined;
+const active = instance.getEnum('active', { false: false, true: true });
+const hideLabel = instance.getEnum('hideLabel', { false: false, true: true });
 
 export default {
-  example: figma.code`<p-link-pure${icon ? ` icon="${icon}"` : ''} align-label="${alignLabel}"${active ? ' active="true"' : ''}${stretch ? ' stretch="true"' : ''}${hideLabel ? ' hide-label="true"' : ''} color="${color}"></p-link-pure>`,
+  example: figma.code`<p-link-pure align-label="${alignLabel}"${stretch ? ' stretch="true"' : ''} color="${color}"${icon ? ` icon="${icon}"` : ''}${active ? ' active="true"' : ''}${hideLabel ? ' hide-label="true"' : ''}></p-link-pure>`,
   imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/link-pure/api -->'],
   id: 'p-link-pure',
   metadata: { nestable: true },

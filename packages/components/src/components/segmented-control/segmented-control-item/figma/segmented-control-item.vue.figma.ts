@@ -8,13 +8,13 @@ import { iconOf } from '../../../../../figma/helpers/iconOf';
 
 const instance = figma.selectedInstance;
 
+const label = instance.getString('label');
 const figIcon = instance.getBoolean('figIcon');
 const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'globe') : undefined;
 const slotDefault = instance.getString('slot-default');
-const label = instance.getString('label');
 
 export default {
-  example: figma.code`<PSegmentedControlItem${icon ? ` :icon="'${icon}'"` : ''}${label ? ` :label="'${label}'"` : ''}>${slotDefault}</PSegmentedControlItem>`,
+  example: figma.code`<PSegmentedControlItem${label ? ` :label="'${label}'"` : ''}${icon ? ` :icon="'${icon}'"` : ''}>${slotDefault}</PSegmentedControlItem>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/segmented-control/api',
     "import { PSegmentedControlItem } from '@porsche-design-system/components-vue';",

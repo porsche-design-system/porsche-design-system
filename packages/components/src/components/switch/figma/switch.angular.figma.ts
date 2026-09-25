@@ -7,20 +7,20 @@ import figma from 'figma';
 
 const instance = figma.selectedInstance;
 
-const slotDefault = instance.getString('slot-default');
-const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
-const checked = instance.getEnum('checked', { false: false, true: true });
 const alignLabel = instance.getEnum('alignLabel', {
   end: 'end',
   start: 'start',
 });
+const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
+const stretch = instance.getEnum('stretch', { false: false, true: true });
+const checked = instance.getEnum('checked', { false: false, true: true });
 const disabled = instance.getEnum('disabled', { false: false, true: true });
 const loading = instance.getEnum('loading', { false: false, true: true });
-const stretch = instance.getEnum('stretch', { false: false, true: true });
 const compact = instance.getEnum('compact', { false: false, true: true });
+const slotDefault = instance.getString('slot-default');
 
 export default {
-  example: figma.code`<p-switch${hideLabel ? ' [hideLabel]="true"' : ''}${checked ? ' [checked]="true"' : ''} [alignLabel]="'${alignLabel}'"${disabled ? ' [disabled]="true"' : ''}${loading ? ' [loading]="true"' : ''}${stretch ? ' [stretch]="true"' : ''}${compact ? ' [compact]="true"' : ''}>${slotDefault}</p-switch>`,
+  example: figma.code`<p-switch [alignLabel]="'${alignLabel}'"${hideLabel ? ' [hideLabel]="true"' : ''}${stretch ? ' [stretch]="true"' : ''}${checked ? ' [checked]="true"' : ''}${disabled ? ' [disabled]="true"' : ''}${loading ? ' [loading]="true"' : ''}${compact ? ' [compact]="true"' : ''}>${slotDefault}</p-switch>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/switch/api',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",

@@ -8,21 +8,21 @@ import { iconOf } from '../../../../figma/helpers/iconOf';
 
 const instance = figma.selectedInstance;
 
-const dismissButton = instance.getBoolean('dismissButton');
 const heading = instance.getString('heading');
-const slotDefault = instance.getString('slot-default');
 const headingTag = instance.getString('headingTag');
-const actionLabel = instance.getString('actionLabel');
-const actionIcon = iconOf(instance.getInstanceSwap('actionIcon'), 'arrow-right');
 const state = instance.getEnum('state', {
   info: 'info',
   success: 'success',
   warning: 'warning',
   error: 'error',
 });
+const dismissButton = instance.getBoolean('dismissButton');
+const actionLabel = instance.getString('actionLabel');
+const actionIcon = iconOf(instance.getInstanceSwap('actionIcon'), 'arrow-right');
+const slotDefault = instance.getString('slot-default');
 
 export default {
-  example: figma.code`<PInlineNotification${dismissButton ? ' dismissButton={true}' : ''}${heading ? ` heading="${heading}"` : ''}${headingTag ? ` headingTag="${headingTag}"` : ''}${actionLabel ? ` actionLabel="${actionLabel}"` : ''}${actionIcon ? ` actionIcon="${actionIcon}"` : ''} state="${state}">${slotDefault}</PInlineNotification>`,
+  example: figma.code`<PInlineNotification${heading ? ` heading="${heading}"` : ''}${headingTag ? ` headingTag="${headingTag}"` : ''} state="${state}"${dismissButton ? ' dismissButton={true}' : ''}${actionLabel ? ` actionLabel="${actionLabel}"` : ''}${actionIcon ? ` actionIcon="${actionIcon}"` : ''}>${slotDefault}</PInlineNotification>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/inline-notification/api',
     "import { PInlineNotification } from '@porsche-design-system/components-react';",

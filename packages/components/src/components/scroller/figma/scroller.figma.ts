@@ -8,8 +8,8 @@ import { slotted } from '../../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const slotDefault = instance.getSlot('slot-default');
 const compact = instance.getEnum('compact', { false: false, true: true });
+const slotDefault = instance.getSlot('slot-default');
 
 export default {
   example: figma.code`<p-scroller${compact ? ' compact="true"' : ''}>${slotted(slotDefault, 'slot-default')}</p-scroller>`,

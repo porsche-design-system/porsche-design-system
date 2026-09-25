@@ -8,24 +8,24 @@ import { slotted } from '../../../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const slotDefault = instance.getSlot('slot-default');
 const label = instance.getString('label');
-const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
-const required = instance.getBoolean('required');
 const description = instance.getString('description');
-const message = instance.getString('message');
-const slotLabelAfter = instance.getSlot('slot-label-after');
+const compact = instance.getEnum('compact', { false: false, true: true });
 const state = instance.getEnum('state', {
   none: 'none',
   error: 'error',
   success: 'success',
 });
-const noWrap = instance.getEnum('noWrap', { false: false, true: true });
+const required = instance.getBoolean('required');
+const message = instance.getString('message');
+const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
 const disabled = instance.getEnum('disabled', { false: false, true: true });
-const compact = instance.getEnum('compact', { false: false, true: true });
+const noWrap = instance.getEnum('noWrap', { false: false, true: true });
+const slotLabelAfter = instance.getSlot('slot-label-after');
+const slotDefault = instance.getSlot('slot-default');
 
 export default {
-  example: figma.code`<PSegmentedControl${label ? ` label="${label}"` : ''}${hideLabel ? ' hideLabel={true}' : ''}${required ? ' required={true}' : ''}${description ? ` description="${description}"` : ''}${message ? ` message="${message}"` : ''} state="${state}"${noWrap ? ' noWrap={true}' : ''}${disabled ? ' disabled={true}' : ''}${compact ? ' compact={true}' : ''}>${slotted(slotLabelAfter, 'slot-label-after', '{/* slot="label-after" */}')}${slotted(slotDefault, 'slot-default')}</PSegmentedControl>`,
+  example: figma.code`<PSegmentedControl${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${compact ? ' compact={true}' : ''} state="${state}"${required ? ' required={true}' : ''}${message ? ` message="${message}"` : ''}${hideLabel ? ' hideLabel={true}' : ''}${disabled ? ' disabled={true}' : ''}${noWrap ? ' noWrap={true}' : ''}>${slotted(slotLabelAfter, 'slot-label-after', '{/* slot="label-after" */}')}${slotted(slotDefault, 'slot-default')}</PSegmentedControl>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/segmented-control/api',
     "import { PSegmentedControl } from '@porsche-design-system/components-react';",

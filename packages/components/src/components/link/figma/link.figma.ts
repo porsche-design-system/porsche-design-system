@@ -8,18 +8,18 @@ import { iconOf } from '../../../../figma/helpers/iconOf';
 
 const instance = figma.selectedInstance;
 
-const slotDefault = instance.getString('slot-default');
-const figIcon = instance.getEnum('figIcon', { false: false, true: true });
-const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'arrow-right') : undefined;
 const variant = instance.getEnum('variant', {
   primary: 'primary',
   secondary: 'secondary',
 });
+const figIcon = instance.getEnum('figIcon', { false: false, true: true });
+const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'arrow-right') : undefined;
 const hideLabel = instance.getEnum('hideLabel', { false: false, true: true });
 const compact = instance.getEnum('compact', { false: false, true: true });
+const slotDefault = instance.getString('slot-default');
 
 export default {
-  example: figma.code`<p-link${icon ? ` icon="${icon}"` : ''} variant="${variant}"${hideLabel ? ' hide-label="true"' : ''}${compact ? ' compact="true"' : ''}>${slotDefault}</p-link>`,
+  example: figma.code`<p-link variant="${variant}"${icon ? ` icon="${icon}"` : ''}${hideLabel ? ' hide-label="true"' : ''}${compact ? ' compact="true"' : ''}>${slotDefault}</p-link>`,
   imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/link/api -->'],
   id: 'p-link',
   metadata: { nestable: true },

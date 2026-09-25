@@ -8,9 +8,6 @@ import { iconOf } from '../../../../figma/helpers/iconOf';
 
 const instance = figma.selectedInstance;
 
-const slotDefault = instance.getString('slot-default');
-const figIcon = instance.getBoolean('figIcon');
-const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'globe') : undefined;
 const variant = instance.getEnum('variant', {
   'info-frosted': 'info-frosted',
   'warning-frosted': 'warning-frosted',
@@ -23,10 +20,13 @@ const variant = instance.getEnum('variant', {
   warning: 'warning',
   error: 'error',
 });
+const figIcon = instance.getBoolean('figIcon');
+const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'globe') : undefined;
 const compact = instance.getEnum('compact', { false: false, true: true });
+const slotDefault = instance.getString('slot-default');
 
 export default {
-  example: figma.code`<p-tag${icon ? ` [icon]="'${icon}'"` : ''} [variant]="'${variant}'"${compact ? ' [compact]="true"' : ''}>${slotDefault}</p-tag>`,
+  example: figma.code`<p-tag [variant]="'${variant}'"${icon ? ` [icon]="'${icon}'"` : ''}${compact ? ' [compact]="true"' : ''}>${slotDefault}</p-tag>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/tag/api',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",

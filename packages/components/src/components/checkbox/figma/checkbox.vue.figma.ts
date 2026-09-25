@@ -8,24 +8,24 @@ import { slotted } from '../../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const label = instance.getString('label');
-const message = instance.getString('message');
 const required = instance.getBoolean('required');
-const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
-const slotLabelAfter = instance.getSlot('slot-label-after');
-const compact = instance.getEnum('compact', { false: false, true: true });
+const disabled = instance.getEnum('disabled', { false: false, true: true });
+const indeterminate = instance.getEnum('indeterminate', { false: false, true: true });
+const checked = instance.getEnum('checked', { false: false, true: true });
+const label = instance.getString('label');
 const state = instance.getEnum('state', {
   error: 'error',
   none: 'none',
   success: 'success',
 });
-const disabled = instance.getEnum('disabled', { false: false, true: true });
+const message = instance.getString('message');
+const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
 const loading = instance.getEnum('loading', { false: false, true: true });
-const indeterminate = instance.getEnum('indeterminate', { false: false, true: true });
-const checked = instance.getEnum('checked', { false: false, true: true });
+const compact = instance.getEnum('compact', { false: false, true: true });
+const slotLabelAfter = instance.getSlot('slot-label-after');
 
 export default {
-  example: figma.code`<PCheckbox${label ? ` :label="'${label}'"` : ''}${message ? ` :message="'${message}'"` : ''}${required ? ' :required="true"' : ''}${hideLabel ? ' :hideLabel="true"' : ''}${compact ? ' :compact="true"' : ''} :state="'${state}'"${disabled ? ' :disabled="true"' : ''}${loading ? ' :loading="true"' : ''}${indeterminate ? ' :indeterminate="true"' : ''}${checked ? ' :checked="true"' : ''}>${slotted(slotLabelAfter, 'slot-label-after', '<!-- slot="label-after" -->')}</PCheckbox>`,
+  example: figma.code`<PCheckbox${required ? ' :required="true"' : ''}${disabled ? ' :disabled="true"' : ''}${indeterminate ? ' :indeterminate="true"' : ''}${checked ? ' :checked="true"' : ''}${label ? ` :label="'${label}'"` : ''} :state="'${state}'"${message ? ` :message="'${message}'"` : ''}${hideLabel ? ' :hideLabel="true"' : ''}${loading ? ' :loading="true"' : ''}${compact ? ' :compact="true"' : ''}>${slotted(slotLabelAfter, 'slot-label-after', '<!-- slot="label-after" -->')}</PCheckbox>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/checkbox/api',
     "import { PCheckbox } from '@porsche-design-system/components-vue';",

@@ -8,8 +8,6 @@ import { slotted } from '../../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const slotHeader = instance.getSlot('slot-header');
-const href = instance.getString('href');
 const aspectRatio = instance.getEnum('aspectRatio', {
   '1/1': '1/1',
   '16/9': '16/9',
@@ -22,9 +20,11 @@ const align = instance.getEnum('align', {
   bottom: 'bottom',
   top: 'top',
 });
+const href = instance.getString('href');
+const slotHeader = instance.getSlot('slot-header');
 
 export default {
-  example: figma.code`<PLinkTile${href ? ` href="${href}"` : ''} aspectRatio="${aspectRatio}" align="${align}">${slotted(slotHeader, 'slot-header', '{/* slot="header" */}')}</PLinkTile>`,
+  example: figma.code`<PLinkTile aspectRatio="${aspectRatio}" align="${align}"${href ? ` href="${href}"` : ''}>${slotted(slotHeader, 'slot-header', '{/* slot="header" */}')}</PLinkTile>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/link-tile/api',
     "import { PLinkTile } from '@porsche-design-system/components-react';",

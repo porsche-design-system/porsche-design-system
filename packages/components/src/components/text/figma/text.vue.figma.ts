@@ -7,7 +7,6 @@ import figma from 'figma';
 
 const instance = figma.selectedInstance;
 
-const slotDefault = instance.getString('slot-default');
 const size = instance.getEnum('size', {
   '2xs': '2xs',
   xl: 'xl',
@@ -20,6 +19,7 @@ const size = instance.getEnum('size', {
   '4xl': '4xl',
   '5xl': '5xl',
 });
+const slotDefault = instance.getString('slot-default');
 
 export default {
   example: figma.code`<PText :size="'${size}'">${slotDefault}</PText>`,

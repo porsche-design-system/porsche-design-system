@@ -7,20 +7,20 @@ import figma from 'figma';
 
 const instance = figma.selectedInstance;
 
-const size = instance.getEnum('size', {
-  small: 'small',
-  medium: 'medium',
-});
 const background = instance.getEnum('background', {
   canvas: 'canvas',
   frosted: 'frosted',
   none: 'none',
   surface: 'surface',
 });
+const size = instance.getEnum('size', {
+  small: 'small',
+  medium: 'medium',
+});
 const compact = instance.getEnum('compact', { false: false, true: true });
 
 export default {
-  example: figma.code`<p-tabs-bar [size]="'${size}'" [background]="'${background}'"${compact ? ' [compact]="true"' : ''}></p-tabs-bar>`,
+  example: figma.code`<p-tabs-bar [background]="'${background}'" [size]="'${size}'"${compact ? ' [compact]="true"' : ''}></p-tabs-bar>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/tabs-bar/api',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",

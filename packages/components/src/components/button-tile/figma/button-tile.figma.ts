@@ -8,7 +8,6 @@ import { slotted } from '../../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const slotHeader = instance.getSlot('slot-header');
 const aspectRatio = instance.getEnum('aspectRatio', {
   '1/1': '1/1',
   '16/9': '16/9',
@@ -21,6 +20,7 @@ const align = instance.getEnum('align', {
   bottom: 'bottom',
   top: 'top',
 });
+const slotHeader = instance.getSlot('slot-header');
 
 export default {
   example: figma.code`<p-button-tile aspect-ratio="${aspectRatio}" align="${align}">${slotted(slotHeader, 'slot-header', '<!-- slot="header" -->')}</p-button-tile>`,

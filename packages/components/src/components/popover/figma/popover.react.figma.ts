@@ -8,14 +8,14 @@ import { slotted } from '../../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const slotButton = instance.getSlot('slot-button');
-const slotDefault = instance.getSlot('slot-default');
 const direction = instance.getEnum('direction', {
   bottom: 'bottom',
   left: 'left',
   right: 'right',
   top: 'top',
 });
+const slotDefault = instance.getSlot('slot-default');
+const slotButton = instance.getSlot('slot-button');
 
 export default {
   example: figma.code`<PPopover direction="${direction}">${slotted(slotButton, 'slot-button', '{/* slot="button" */}')}${slotted(slotDefault, 'slot-default')}</PPopover>`,

@@ -7,9 +7,7 @@ import figma from 'figma';
 
 const instance = figma.selectedInstance;
 
-const dismissButton = instance.getBoolean('dismissButton');
 const heading = instance.getString('heading');
-const slotDefault = instance.getString('slot-default');
 const headingTag = instance.getString('headingTag');
 const state = instance.getEnum('state', {
   info: 'info',
@@ -17,9 +15,11 @@ const state = instance.getEnum('state', {
   error: 'error',
   success: 'success',
 });
+const dismissButton = instance.getBoolean('dismissButton');
+const slotDefault = instance.getString('slot-default');
 
 export default {
-  example: figma.code`<PBanner${dismissButton ? ' :dismissButton="true"' : ''}${heading ? ` :heading="'${heading}'"` : ''}${headingTag ? ` :headingTag="'${headingTag}'"` : ''} :state="'${state}'">${slotDefault}</PBanner>`,
+  example: figma.code`<PBanner${heading ? ` :heading="'${heading}'"` : ''}${headingTag ? ` :headingTag="'${headingTag}'"` : ''} :state="'${state}'"${dismissButton ? ' :dismissButton="true"' : ''}>${slotDefault}</PBanner>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/banner/api',
     "import { PBanner } from '@porsche-design-system/components-vue';",

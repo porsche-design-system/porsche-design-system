@@ -8,29 +8,29 @@ import { slotted } from '../../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const placeholder = instance.getString('placeholder');
-const loading = instance.getBoolean('loading');
-const indicator = instance.getBoolean('indicator');
 const label = instance.getString('label');
 const description = instance.getString('description');
-const message = instance.getString('message');
-const required = instance.getBoolean('required');
-const slotStart = instance.getSlot('slot-start');
-const slotEnd = instance.getSlot('slot-end');
+const compact = instance.getEnum('compact', { false: false, true: true });
 const value = instance.getString('value');
-const slotLabelAfter = instance.getSlot('slot-label-after');
+const readOnly = instance.getEnum('readOnly', { false: false, true: true });
+const placeholder = instance.getString('placeholder');
+const disabled = instance.getEnum('disabled', { false: false, true: true });
+const required = instance.getBoolean('required');
+const loading = instance.getBoolean('loading');
 const state = instance.getEnum('state', {
   none: 'none',
   error: 'error',
   success: 'success',
 });
-const compact = instance.getEnum('compact', { false: false, true: true });
-const disabled = instance.getEnum('disabled', { false: false, true: true });
-const readOnly = instance.getEnum('readOnly', { false: false, true: true });
+const indicator = instance.getBoolean('indicator');
+const message = instance.getString('message');
 const hideLabel = instance.getEnum('hideLabel', { false: false, true: true });
+const slotLabelAfter = instance.getSlot('slot-label-after');
+const slotStart = instance.getSlot('slot-start');
+const slotEnd = instance.getSlot('slot-end');
 
 export default {
-  example: figma.code`<PInputUrl${placeholder ? ` placeholder="${placeholder}"` : ''}${loading ? ' loading={true}' : ''}${indicator ? ' indicator={true}' : ''}${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${message ? ` message="${message}"` : ''}${required ? ' required={true}' : ''}${value ? ` value="${value}"` : ''} state="${state}"${compact ? ' compact={true}' : ''}${disabled ? ' disabled={true}' : ''}${readOnly ? ' readOnly={true}' : ''}${hideLabel ? ' hideLabel={true}' : ''}>${slotted(slotStart, 'slot-start', '{/* slot="start" */}')}${slotted(slotEnd, 'slot-end', '{/* slot="end" */}')}${slotted(slotLabelAfter, 'slot-label-after', '{/* slot="label-after" */}')}</PInputUrl>`,
+  example: figma.code`<PInputUrl${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${compact ? ' compact={true}' : ''}${value ? ` value="${value}"` : ''}${readOnly ? ' readOnly={true}' : ''}${placeholder ? ` placeholder="${placeholder}"` : ''}${disabled ? ' disabled={true}' : ''}${required ? ' required={true}' : ''}${loading ? ' loading={true}' : ''} state="${state}"${indicator ? ' indicator={true}' : ''}${message ? ` message="${message}"` : ''}${hideLabel ? ' hideLabel={true}' : ''}>${slotted(slotLabelAfter, 'slot-label-after', '{/* slot="label-after" */}')}${slotted(slotStart, 'slot-start', '{/* slot="start" */}')}${slotted(slotEnd, 'slot-end', '{/* slot="end" */}')}</PInputUrl>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/input-url/api',
     "import { PInputUrl } from '@porsche-design-system/components-react';",

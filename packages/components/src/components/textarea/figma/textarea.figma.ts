@@ -8,24 +8,24 @@ import { slotted } from '../../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
-const value = instance.getString('value');
 const label = instance.getString('label');
 const description = instance.getString('description');
-const message = instance.getString('message');
-const required = instance.getBoolean('required');
-const slotLabelAfter = instance.getSlot('slot-label-after');
+const compact = instance.getEnum('compact', { false: false, true: true });
+const value = instance.getString('value');
 const state = instance.getEnum('state', {
   success: 'success',
   error: 'error',
   none: 'none',
 });
-const compact = instance.getEnum('compact', { false: false, true: true });
+const message = instance.getString('message');
+const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
+const required = instance.getBoolean('required');
 const disabled = instance.getEnum('disabled', { false: false, true: true });
 const readOnly = instance.getEnum('readOnly', { false: false, true: true });
+const slotLabelAfter = instance.getSlot('slot-label-after');
 
 export default {
-  example: figma.code`<p-textarea${hideLabel ? ' hide-label="true"' : ''}${value ? ` value="${value}"` : ''}${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${message ? ` message="${message}"` : ''}${required ? ' required="true"' : ''} state="${state}"${compact ? ' compact="true"' : ''}${disabled ? ' disabled="true"' : ''}${readOnly ? ' read-only="true"' : ''}>${slotted(slotLabelAfter, 'slot-label-after', '<!-- slot="label-after" -->')}</p-textarea>`,
+  example: figma.code`<p-textarea${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${compact ? ' compact="true"' : ''}${value ? ` value="${value}"` : ''} state="${state}"${message ? ` message="${message}"` : ''}${hideLabel ? ' hide-label="true"' : ''}${required ? ' required="true"' : ''}${disabled ? ' disabled="true"' : ''}${readOnly ? ' read-only="true"' : ''}>${slotted(slotLabelAfter, 'slot-label-after', '<!-- slot="label-after" -->')}</p-textarea>`,
   imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/textarea/api -->'],
   id: 'p-textarea',
   metadata: { nestable: true },

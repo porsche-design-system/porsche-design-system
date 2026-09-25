@@ -8,28 +8,28 @@ import { slotted } from '../../../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
 const label = instance.getString('label');
 const description = instance.getString('description');
-const message = instance.getString('message');
+const compact = instance.getEnum('compact', { false: false, true: true });
+const direction = instance.getEnum('direction', {
+  column: 'column',
+  row: 'row',
+});
+const disabled = instance.getEnum('disabled', { false: false, true: true });
 const required = instance.getBoolean('required');
-const slotDefault = instance.getSlot('slot-default');
-const slotLabelAfter = instance.getSlot('slot-label-after');
+const loading = instance.getEnum('loading', { false: false, true: true });
 const state = instance.getEnum('state', {
   none: 'none',
   error: 'error',
   success: 'success',
 });
-const direction = instance.getEnum('direction', {
-  column: 'column',
-  row: 'row',
-});
-const loading = instance.getEnum('loading', { false: false, true: true });
-const disabled = instance.getEnum('disabled', { false: false, true: true });
-const compact = instance.getEnum('compact', { false: false, true: true });
+const message = instance.getString('message');
+const hideLabel = instance.getBoolean('showLabel', { true: false, false: true });
+const slotLabelAfter = instance.getSlot('slot-label-after');
+const slotDefault = instance.getSlot('slot-default');
 
 export default {
-  example: figma.code`<p-radio-group${hideLabel ? ' hide-label="true"' : ''}${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${message ? ` message="${message}"` : ''}${required ? ' required="true"' : ''} state="${state}" direction="${direction}"${loading ? ' loading="true"' : ''}${disabled ? ' disabled="true"' : ''}${compact ? ' compact="true"' : ''}>${slotted(slotLabelAfter, 'slot-label-after', '<!-- slot="label-after" -->')}${slotted(slotDefault, 'slot-default')}</p-radio-group>`,
+  example: figma.code`<p-radio-group${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${compact ? ' compact="true"' : ''} direction="${direction}"${disabled ? ' disabled="true"' : ''}${required ? ' required="true"' : ''}${loading ? ' loading="true"' : ''} state="${state}"${message ? ` message="${message}"` : ''}${hideLabel ? ' hide-label="true"' : ''}>${slotted(slotLabelAfter, 'slot-label-after', '<!-- slot="label-after" -->')}${slotted(slotDefault, 'slot-default')}</p-radio-group>`,
   imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/radio-group/api -->'],
   id: 'p-radio-group',
   metadata: { nestable: true },

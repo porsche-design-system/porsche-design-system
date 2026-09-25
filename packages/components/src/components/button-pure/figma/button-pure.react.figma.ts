@@ -8,26 +8,26 @@ import { iconOf } from '../../../../figma/helpers/iconOf';
 
 const instance = figma.selectedInstance;
 
-const figIcon = instance.getBoolean('figIcon');
-const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'arrow-right') : undefined;
-const alignLabel = instance.getEnum('alignLabel', {
-  end: 'end',
-  start: 'start',
-});
 const disabled = instance.getEnum('disabled', { false: false, true: true });
 const loading = instance.getEnum('loading', { false: false, true: true });
-const active = instance.getEnum('active', { false: false, true: true });
-const stretch = instance.getEnum('stretch', { false: false, true: true });
-const hideLabel = instance.getEnum('hideLabel', { false: false, true: true });
 const color = instance.getEnum('color', {
   'contrast-high': 'contrast-high',
   'contrast-higher': 'contrast-higher',
   'contrast-medium': 'contrast-medium',
   primary: 'primary',
 });
+const figIcon = instance.getBoolean('figIcon');
+const icon = figIcon ? iconOf(instance.getInstanceSwap('icon'), 'arrow-right') : undefined;
+const active = instance.getEnum('active', { false: false, true: true });
+const hideLabel = instance.getEnum('hideLabel', { false: false, true: true });
+const alignLabel = instance.getEnum('alignLabel', {
+  end: 'end',
+  start: 'start',
+});
+const stretch = instance.getEnum('stretch', { false: false, true: true });
 
 export default {
-  example: figma.code`<PButtonPure${icon ? ` icon="${icon}"` : ''} alignLabel="${alignLabel}"${disabled ? ' disabled={true}' : ''}${loading ? ' loading={true}' : ''}${active ? ' active={true}' : ''}${stretch ? ' stretch={true}' : ''}${hideLabel ? ' hideLabel={true}' : ''} color="${color}"></PButtonPure>`,
+  example: figma.code`<PButtonPure${disabled ? ' disabled={true}' : ''}${loading ? ' loading={true}' : ''} color="${color}"${icon ? ` icon="${icon}"` : ''}${active ? ' active={true}' : ''}${hideLabel ? ' hideLabel={true}' : ''} alignLabel="${alignLabel}"${stretch ? ' stretch={true}' : ''}></PButtonPure>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4/components/button-pure/api',
     "import { PButtonPure } from '@porsche-design-system/components-react';",

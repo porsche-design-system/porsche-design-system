@@ -7,9 +7,9 @@ import figma from 'figma';
 
 const instance = figma.selectedInstance;
 
-const slotDefault = instance.getString('slot-default');
 const label = instance.getString('label');
 const compact = instance.getEnum('compact', { false: false, true: true });
+const slotDefault = instance.getString('slot-default');
 
 export default {
   example: figma.code`<PTagDismissible${label ? ` :label="'${label}'"` : ''}${compact ? ' :compact="true"' : ''}>${slotDefault}</PTagDismissible>`,
