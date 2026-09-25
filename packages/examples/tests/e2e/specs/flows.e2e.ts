@@ -248,8 +248,9 @@ test.describe('templates-admin-panel', () => {
     await expect(searchDialog).toBeVisible();
 
     // `p-modal` moves focus into itself as it opens, and Escape only reaches it once that has happened – pressing
-    // too early is a keystroke into the page behind, which under load is exactly what happens.
-    await waitForStablePosition(searchDialog);
+    // too early is a keystroke into the page behind, which under load is exactly what happens. The settled panel is
+    // the `dialog` in its shadow root: the host is `display: contents` and has no box whose position could settle.
+    await waitForStablePosition(page.locator('#search-dialog dialog'));
     await page.keyboard.press('Escape');
 
     await expect(searchDialog).toBeHidden();
