@@ -161,14 +161,14 @@ describe('derive: placing Figma properties', () => {
     expect(derive(component({}), tag, meta).gaps).toEqual([]);
   });
 
-  it('reports a required value the Figma component lacks; a required name stays optional', () => {
+  it('expects no Figma property for a required value or name either', () => {
     const meta = {
       propsMeta: {
         value: prop({ type: 'string | number', allowedValues: ['string', 'number'], isRequired: true }),
         name: prop({ type: 'string', allowedValues: 'string', isRequired: true }),
       },
     };
-    expect(derive(component({}), tag, meta).gaps).toEqual(['value']);
+    expect(derive(component({}), tag, meta).gaps).toEqual([]);
   });
 
   it('orders mappings by component-meta: props first, then slots', () => {

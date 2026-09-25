@@ -20,9 +20,9 @@ export type Derived = {
   gaps: string[];
 };
 
-// Form props go with the form data, so there is nothing to draw. They are optional in Figma: no gap when absent, mapped
-// like any prop when present. The one exception is a required `value`: the component throws without it, so the snippet
-// must carry it. A required `name` stays optional (ruled 2026-09-25).
+// Form props go with the form data, so there is nothing to draw: a `value` TEXT property has no text layer to feed, and
+// Figma flags it as unused. They are optional in Figma, required or not: no gap when absent, mapped like any prop when
+// present (ruled 2026-09-25).
 const formProps = ['form', 'name', 'value'];
 
 const isBooleanVariant = (d: Definition): boolean =>
@@ -65,7 +65,7 @@ export const derive = (
       continue;
     }
     if (!d) {
-      if (!formProps.includes(prop) || (prop === 'value' && p.isRequired)) out.gaps.push(prop);
+      if (!formProps.includes(prop)) out.gaps.push(prop);
       continue;
     }
     // each allowed value needs a variant option with the same name, compared as strings (`4` is "4"). This check also
