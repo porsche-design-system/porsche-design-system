@@ -48,6 +48,31 @@ const externalImageStub = `<svg xmlns="http://www.w3.org/2000/svg" width="64" he
  * what the local CDN stands for.
  */
 
+/**
+ * Switches the transitions and animations of the components off, like the other VRT suites of the monorepo do through
+ * the `:root` block of `packages/shared/src/css/styles.css`.
+ *
+ * Reduced motion alone does not: the canvas of the admin panel opens its sidebar on load, and its
+ * `grid-template-columns` transition could still be running when a high contrast capture was taken, which left the
+ * application title in the sidebar header missing in some runs. Injected when the document has been parsed and before
+ * the deferred page script runs, so the sidebar opens without a transition in the first place.
+ */
+const disableMotion = async (page: Page): Promise<void> => {
+  await page.addInitScript(() => {
+    const inject = () => {
+      const style = document.createElement('style');
+      style.textContent = ':root{--p-transition-duration:0s;--p-animation-duration:0s}';
+      document.head.append(style);
+    };
+
+    if (document.head) {
+      inject();
+    } else {
+      document.addEventListener('readystatechange', inject, { once: true });
+    }
+  });
+};
+
 /** Everything outside the preview server and the local CDN is answered by the test, not by the network. */
 export const stubExternalRequests = async (page: Page): Promise<void> => {
   await page.route(/^https?:\/\/(?!localhost|127\.0\.0\.1)/, async (route) => {
@@ -201,6 +226,7 @@ export const setupExamplePage = async (
   const { forcedColorsEnabled, prefersColorScheme, scalePageFontSize, rtl } = options;
 
   await stubExternalRequests(page);
+  await disableMotion(page);
   await page.setViewportSize({ width: viewportWidth, height: viewportHeight });
 
   // Reduced motion is not a variant, it is a precondition of every capture: it stops the autoplaying hero video and
