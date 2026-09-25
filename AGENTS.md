@@ -99,7 +99,8 @@ The monorepo has **strict build dependencies**. Always build in this order:
 2. `components` (Stencil core)
 3. `components-js`
 4. `components-angular`, `components-react`, `components-vue` (can be parallel)
-5. `storefront`
+5. `examples` (the storefront copies its `dist-site/` into `public/examples/`)
+6. `storefront`
 
 Use `npm run build` to handle this automatically.
 

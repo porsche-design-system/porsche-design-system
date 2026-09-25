@@ -367,6 +367,15 @@ did not anticipate: a page without behaviour (the footer) builds to no script ch
 accepts; and the conceptual sections of `README.md` and `AGENTS.md` still describe the old layout (only their commands
 are updated), which is step 7.
 
+**Progress (2026-09-25): slice 2 is implemented.** `build:copyExamples` runs last in the storefront's `prebuild`
+(`scripts/copyExamples.ts`, pure rewrites in `scripts/rewriteExamples.ts` with a unit test), `build:examples` runs
+before `build:storefront` in the root `build`/`build-prod` and in both jobs of `build.yml`, and `dist-site/` is part of
+both artifacts. Verified with `NEXT_PUBLIC_BASE_PATH=pr-4652`: the export contains `dist/examples/` with
+`/pr-4652/examples/media/…` in the pages and the payloads. One deviation from step 4: the development check cannot use
+`isDevEnvironment`, because `prebuild` runs before Next.js sets `NODE_ENV`, which that helper would read as "not
+production". The copy step reads `NEXT_PUBLIC_PDS_ENV=development` instead, which the test builds already set and
+`npm run dev` now sets for its `prebuild`.
+
 ---
 
 ## Settled decisions
