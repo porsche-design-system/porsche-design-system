@@ -199,8 +199,8 @@ export class Drilldown {
     );
   }
 
-  // Derives the item states from the current `activeIdentifier` and item identifiers without animation, unlike
-  // `updateDrilldownState()`, which animates a change from one `activeIdentifier` to another
+  // Derives the item states from the current `activeIdentifier` and item identifiers, on load, on an item identifier
+  // change and after the transition animation of `updateDrilldownState()`
   private syncActiveItem(): void {
     // guard, otherwise an item without identifier matches an undefined `activeIdentifier`
     const activeItem =
@@ -261,6 +261,8 @@ export class Drilldown {
     }
   }
 
+  // Items are only used to pick the transition, the state is resolved afterwards by syncActiveItem() because
+  // activeIdentifier or an item identifier may have changed while the fade out animation was running
   private async updateDrilldownState(oldVal: string | undefined, newVal: string | undefined): Promise<void> {
     const oldItem = oldVal && this.drilldownItemElements.find((item) => item.identifier === oldVal);
     const newItem = newVal && this.drilldownItemElements.find((item) => item.identifier === newVal);
@@ -268,11 +270,11 @@ export class Drilldown {
     // Secondary Drawer is closed => only update state
     if (!newItem) {
       if (this.isDesktop) {
-        this.updateStates(oldItem, newItem);
+        this.syncActiveItem();
       } else {
         const animation = this.animateDrawerFade('::after', 'out');
         await animation.finished;
-        this.updateStates(oldItem, newItem);
+        this.syncActiveItem();
         this.animateDrawerFade('::after', 'in');
       }
     }
@@ -280,12 +282,12 @@ export class Drilldown {
     // Secondary Drawer is opened => update state + fade in
     if (!oldItem) {
       if (this.isDesktop) {
-        this.updateStates(oldItem, newItem);
+        this.syncActiveItem();
         this.animateDrawerFade('::after', 'in');
       } else {
         const animation = this.animateDrawerFade('::after', 'out');
         await animation.finished;
-        this.updateStates(oldItem, newItem);
+        this.syncActiveItem();
         this.animateDrawerFade('::after', 'in');
       }
     }
@@ -299,7 +301,7 @@ export class Drilldown {
       ].filter(Boolean);
 
       await Promise.all(animations.map((a) => a.finished));
-      this.updateStates(oldItem, newItem);
+      this.syncActiveItem();
       isHierarchyChanged && this.animateDrawerFade('::before', 'in');
       this.animateDrawerFade('::after', 'in');
     }
@@ -307,13 +309,6 @@ export class Drilldown {
 
   private emitCloseSecondaryUpdate(): void {
     this.update.emit({ activeIdentifier: undefined });
-  }
-
-  private updateStates(oldItem: Item | undefined, newItem: Item | undefined): void {
-    this.primary = !oldItem || !newItem || newItem.parentElement === this.host;
-    this.isSecondaryDrawerVisible = !!this.activeIdentifier;
-    oldItem && updateDrilldownItemState(oldItem, false); // Reset old item state
-    newItem && updateDrilldownItemState(newItem, true); // Set new item state
   }
 
   private animateDrawerFade(pseudoElement: '::before' | '::after', direction: 'in' | 'out'): Animation {

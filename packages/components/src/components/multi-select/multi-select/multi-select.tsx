@@ -218,7 +218,14 @@ export class MultiSelect {
   public optionValueChangeHandler(e: Event): void {
     e.stopPropagation();
     if (this.multiSelectOptions.length > 0) {
-      this.selectedOptions = selectOptionsByValue(this.multiSelectOptions, this.value);
+      const selectedOptions = selectOptionsByValue(this.multiSelectOptions, this.value);
+      // Keep the selection of removed options like onSlotchange does, so controlled async filtering keeps working
+      const keptOptions = this.selectedOptions.filter(
+        (option) =>
+          selectedOptions.includes(option) ||
+          (!this.multiSelectOptions.includes(option) && !selectedOptions.some((o) => o.value === option.value))
+      );
+      this.selectedOptions = [...keptOptions, ...selectedOptions.filter((option) => !keptOptions.includes(option))];
     }
   }
 

@@ -217,7 +217,11 @@ export class Select {
   public optionValueChangeHandler(e: Event): void {
     e.stopPropagation();
     if (this.selectOptions.length > 0) {
-      this.selectedOption = selectOptionByValue(this.selectOptions, this.value);
+      const selectedOption = selectOptionByValue(this.selectOptions, this.value);
+      // Keep the selection of a removed option like onSlotchange does, so controlled async filtering keeps working
+      if (selectedOption !== null || this.selectOptions.includes(this.selectedOption)) {
+        this.selectedOption = selectedOption;
+      }
     }
   }
 
