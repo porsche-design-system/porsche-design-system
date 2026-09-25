@@ -12,8 +12,9 @@ import { type Definition, readSnapshot, type Snapshot, snapshotPath } from '../f
 //   npm run figma:pull            three REST requests, four when an INSTANCE_SWAP default is unpublished
 //                                 (FIGMA_ACCESS_TOKEN with "File content: Read" and "Library content: Read";
 //                                 Dev or Full seat on the Organization plan)
-//   npm run figma:pull -- --check compare the fresh pull with the committed snapshot and exit 1 on any difference
-//                                 instead of writing — the drift check the workflow opens the developer issue on
+//   npm run figma:pull -- --check compare the fresh pull with the committed snapshot instead of writing: exit 2 on any
+//                                 difference, 1 on a token, network or API error, so the workflow can tell drift from
+//                                 an outage
 //
 // Requests (verified 2026-09-18 against EkdP468u4ZVuIRwalKCscb): GET /component_sets lists every published set with its
 // node id; GET /nodes?ids=…&depth=1 returns the sets' componentPropertyDefinitions with complete variantOptions;
@@ -107,7 +108,7 @@ const pull = async (): Promise<void> => {
         `✖ Figma changed since the committed pull (${committed.pulledAt}):\n${differences.map((d) => `  - ${d}`).join('\n')}\n` +
           `  Run "npm run figma:pull", then "npm run figma:generate", review, and publish.`
       );
-      process.exit(1);
+      process.exit(2);
     }
     console.log(`${snapshotPath} matches Figma (${fileUrl})`);
     return;

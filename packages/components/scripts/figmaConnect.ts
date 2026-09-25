@@ -1,19 +1,18 @@
 import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { sync as globbySync } from 'fast-glob';
-import { WAITING_ON_DESIGN } from '../figma/messages';
 
 // Runs `figma connect <command>` once per Dev Mode label (one Code Connect config each). `publish` (unless --dry-run)
-// first checks the templates are current, then publishes every record Figma's renderer and validation accept and that
-// waits on nothing from design, and holds back only the rest: one component Figma has moved away from, or that lacks a
-// PDS prop, must not stop the other 56 and the icons. Held-back files are listed at the end.
+// first checks the templates are current, then per label publishes every record Figma's renderer and validation accept
+// and holds back only the rest: a component the library moved away from (a renamed property, an option the template
+// does not list) must not stop the other 56 and the icons. Held-back files are listed at the end and keep their
+// previous record. Problems only design can fix are printed by `figma:generate --check` as design lines and never hold
+// anything back here; Figma's validation is the only gate per record.
 //
-// Exit codes: 0 everything published; 2 only design-side hold-backs (a record Figma's validation rejected, a component
-// waiting on design), everything else is published; 1 a developer must act: a repository mistake (a stale template, an
-// invalid exception) or a CLI failure (token, network, an unreadable file) stopped the publish, or a template did not
-// render in preview and was held back while the rest published. Labels upload one after another, so on 1 the labels
-// before the failure may already be up. The workflow opens the developer issue on 1 only.
-const HELD_BACK = 2;
+// Exit codes: 0 every record Figma accepted was uploaded, the files it refused are listed on stderr; 1 a developer must
+// act: a repository mistake (a stale template, an invalid exception) or a CLI failure (token, network, an unreadable
+// file) stopped the publish, or a template did not render in preview and was held back while the rest published.
+// Labels upload one after another, so on 1 the labels before the failure may already be up.
 const unrendered: string[] = [];
 const configs = ['figma.config.json', 'figma.react.config.json', 'figma.angular.config.json', 'figma.vue.config.json'];
 
@@ -70,11 +69,10 @@ const filesByNode = (config: string): Map<string, string> => {
   return map;
 };
 
-/** Publish one label: everything that renders, validates and waits on nothing from design goes up; the rest is returned. */
-const publishValid = (config: string, args: string[], waiting: Set<string>): string[] => {
+/** Publish one label: everything that renders and validates goes up; the rest is returned. */
+const publishValid = (config: string, args: string[]): string[] => {
   const files = filesByNode(config);
   const excluded = new Set<string>();
-  for (const [id, file] of files) if (waiting.has(id)) excluded.add(file);
   for (const result of previewResults(config)) {
     if (!result.success) {
       console.error(`✖ ${result.filePath}: ${result.error}`);
@@ -104,29 +102,23 @@ const publishValid = (config: string, args: string[], waiting: Set<string>): str
 
 const [command, ...args] = process.argv.slice(2);
 if (command === 'publish' && !args.includes('--dry-run')) {
-  // A stale file or an invalid exception stops everything. A component waiting on design (a Figma property the rules
-  // cannot place, a PDS prop, slot or allowed value the library lacks outside the baseline) is only held back; the
-  // generator names it by node id in the lines figma/messages.ts defines.
-  const generate = run('npm', ['run', 'figma:generate', '--', '--check'], { capture: true });
-  process.stdout.write(generate.stdout);
-  const waiting = new Set(
-    generate.stderr
-      .split('\n')
-      .map((line) => line.match(WAITING_ON_DESIGN)?.[1])
-      .filter((id): id is string => !!id)
-  );
-  const heldBack = configs.flatMap((config) => publishValid(config, args, waiting).map((file) => `${config}: ${file}`));
+  // A stale file or an invalid exception stops everything; the design lines it prints stop nothing.
+  run('npm', ['run', 'figma:generate', '--', '--check']);
+  const heldBack = configs.flatMap((config) => publishValid(config, args).map((file) => `${config}: ${file}`));
   if (heldBack.length) {
     console.error(
-      `\n✖ held back ${heldBack.length} file(s) Figma did not accept or that wait on design; everything else is published:\n${heldBack.map((f) => `  - ${f}`).join('\n')}`
+      `\n✖ held back ${heldBack.length} file(s) Figma did not accept; they keep their previous record, everything else is published:\n${heldBack.map((f) => `  - ${f}`).join('\n')}`
     );
     if (unrendered.length) {
-      console.error(`\n✖ ${unrendered.length} of them did not render in preview; a developer has to look at the template`);
+      console.error(
+        `\n✖ ${unrendered.length} of them did not render in preview; a developer has to look at the template`
+      );
       process.exit(1);
     }
-    process.exit(HELD_BACK);
+    console.log('\nall other records published');
+  } else {
+    console.log('\nall records published');
   }
-  console.log('\nall records published');
 } else {
   for (const config of configs) {
     if (command === 'preview') {
