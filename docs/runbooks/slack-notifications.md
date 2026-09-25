@@ -1,21 +1,23 @@
 # Slack notifications
 
-Three workflows post to Slack. All use `slackapi/slack-github-action` with `method: chat.postMessage` and one shared bot
+Four workflows post to Slack. All use `slackapi/slack-github-action` with `method: chat.postMessage` and one shared bot
 token, and all build their message as a Block Kit `markdown` block.
 
-| Notification     | Workflow                                         | Fires on                                       | Channel secret             |
-| ---------------- | ------------------------------------------------ | ---------------------------------------------- | -------------------------- |
-| Release          | `.github/workflows/release.yml`                  | a release the pipeline created                 | `SLACK_RELEASE_CHANNEL_ID` |
-| Release          | `.github/workflows/notify-release-published.yml` | run by hand, for a release CI did not announce | `SLACK_RELEASE_CHANNEL_ID` |
-| Pipeline failure | `.github/workflows/notify-pipeline-failure.yml`  | `Contribution` or `OSS Review Toolkit` failing | `SLACK_FAILURE_CHANNEL_ID` |
+| Notification        | Workflow                                         | Fires on                                           | Channel secret             |
+| ------------------- | ------------------------------------------------ | -------------------------------------------------- | -------------------------- |
+| Release             | `.github/workflows/release.yml`                  | a release the pipeline created                     | `SLACK_RELEASE_CHANNEL_ID` |
+| Release             | `.github/workflows/notify-release-published.yml` | run by hand, for a release CI did not announce     | `SLACK_RELEASE_CHANNEL_ID` |
+| Pipeline failure    | `.github/workflows/notify-pipeline-failure.yml`  | `Contribution` or `OSS Review Toolkit` failing     | `SLACK_FAILURE_CHANNEL_ID` |
+| Figma change needed | `.github/workflows/figma-code-connect.yml`       | a Figma property or option Code Connect cannot map | `SLACK_DESIGN_CHANNEL_ID`  |
 
 ## Secrets
 
-| Secret                     | What                                                      |
-| -------------------------- | --------------------------------------------------------- |
-| `SLACK_BOT_TOKEN`          | bot token with `chat:write`, shared by both notifications |
-| `SLACK_RELEASE_CHANNEL_ID` | destination for the release announcement                  |
-| `SLACK_FAILURE_CHANNEL_ID` | destination for the failure notification                  |
+| Secret                     | What                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------- |
+| `SLACK_BOT_TOKEN`          | bot token with `chat:write`, shared by both notifications                    |
+| `SLACK_RELEASE_CHANNEL_ID` | destination for the release announcement                                     |
+| `SLACK_FAILURE_CHANNEL_ID` | destination for the failure notification                                     |
+| `SLACK_DESIGN_CHANNEL_ID`  | destination for the message to design about Figma changes Code Connect needs |
 
 The app must be invited to each channel, otherwise Slack answers `not_in_channel`. Channels are secrets rather than
 literals so either can move without a pull request.
@@ -75,6 +77,21 @@ mid-flight once caused a passing run to be announced with "0 failed jobs".
 Each failed job is one labelled link pointing at its own failing step. Because job and step names are repository data
 landing in a markdown context, they are escaped: a step named `Run npm test -- --grep "*"` would otherwise garble the
 message reporting it. The list is capped at 40 entries, which is above any run this repository produces.
+
+## Figma change needed
+
+`.github/workflows/figma-code-connect.yml` builds its message with `scripts/build-slack-figma-payload.ts` from the
+generator's design lines (`figma:generate --check` on the current snapshot, or on the fresh one when the library
+drifted): one imperative line per component, either a Figma property PDS cannot map
+(`property "x" (VARIANT) has no PDS prop — rename it to the PDS prop it stands for, or prefix it with "fig" if it is design-only`)
+or a PDS prop, slot or allowed value Figma lacks
+(`add a BOOLEAN property named "compact" — PDS has it and the Figma component does not`), with a link to the component
+in Figma, and a closing line asking design to reply when done. The line shapes it reads are declared once in
+`packages/components/figma/messages.ts`, shared with the generator. Nothing about GitHub is in the message, because
+designers have no GitHub account; the run link and raw logs go to the job summary and the workflow's issue. The message
+is sent only when the design section of that issue changed since the last run, so an open item is never repeated. The
+builder prints nothing when no line is for design, and the Send step is skipped. Details and the decisions behind it:
+the Decisions section of `docs/runbooks/figma-code-connect.md`.
 
 ## Why not a webhook
 
