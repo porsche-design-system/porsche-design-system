@@ -10,7 +10,7 @@ type VersionSelectProps = {
 export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
   const onVersionChange = (version: PSelectProps['value']) => {
     const ver = version === pdsVersion.latest ? getMajorVersion(version) : version;
-    window.location.href = `https://designsystem.porsche.com/v${ver}`;
+    window.location.href = `${window.location.origin}/v${ver}`;
   };
 
   return (
