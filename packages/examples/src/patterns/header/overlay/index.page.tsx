@@ -1,6 +1,7 @@
 import { navItems } from '../../../_data.ts';
 import { ids } from '../../../_ids.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { media } from '../../../_media.ts';
 import { Header } from '../../../_partials/header/Header.tsx';
 
 /** Header pattern – the `overlay` layout, lying on top of the hero it is shown with. */
@@ -15,14 +16,14 @@ const Page = () => (
         <video
           id={ids.heroVideo}
           class="z-0 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
-          poster="/mood-porsche-gts.webp"
+          poster={media('mood-porsche-gts.webp')}
           loop
           muted
           autoplay
           playsinline
         >
-          <source src="/mood-porsche-gts.mp4" type="video/mp4" />
-          <source src="/mood-porsche-gts.webm" type="video/webm" />
+          <source src={media('mood-porsche-gts.mp4')} type="video/mp4" />
+          <source src={media('mood-porsche-gts.webm')} type="video/webm" />
         </video>
         <div class="z-1 col-extended row-span-full mb-fluid-lg">
           <p-heading tag="h1" size="3xl">

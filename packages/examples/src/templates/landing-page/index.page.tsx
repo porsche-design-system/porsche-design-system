@@ -1,6 +1,7 @@
 import { navItems, placeholderHref } from '../../_data.ts';
 import { ids } from '../../_ids.ts';
 import { BasePage } from '../../_layouts/BasePage.tsx';
+import { media } from '../../_media.ts';
 
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
 const Page = () => (
@@ -19,14 +20,14 @@ const Page = () => (
         <video
           id={ids.heroVideo}
           class="z-1 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
-          poster="/mood-porsche-gts.webp"
+          poster={media('mood-porsche-gts.webp')}
           loop
           muted
           autoplay={true}
           playsinline={true}
         >
-          <source src="/mood-porsche-gts.mp4" type="video/mp4" />
-          <source src="/mood-porsche-gts.webm" type="video/webm" />
+          <source src={media('mood-porsche-gts.mp4')} type="video/mp4" />
+          <source src={media('mood-porsche-gts.webm')} type="video/webm" />
         </video>
         <div class="z-2 col-extended row-span-full mb-fluid-lg">
           <p-heading id="heading-section-1" class="pb-fluid-md" tag="h1" size="3xl">
@@ -62,7 +63,10 @@ const Page = () => (
             weight="regular"
             aspect-ratio="{base: '4/3', xs: '16/9', s: '3/4', m: '1/1'}"
           >
-            <img src="/chrono-car.webp" alt="Some alternative text for screen readers describing the media element" />
+            <img
+              src={media('chrono-car.webp')}
+              alt="Some alternative text for screen readers describing the media element"
+            />
           </p-link-tile>
           <p-link-tile
             class="col-span-full sm:col-span-one-half"
@@ -73,7 +77,10 @@ const Page = () => (
             weight="regular"
             aspect-ratio="{base: '4/3', xs: '16/9', s: '3/4', m: '1/1'}"
           >
-            <img src="/addon.webp" alt="Some alternative text for screen readers describing the media element" />
+            <img
+              src={media('addon.webp')}
+              alt="Some alternative text for screen readers describing the media element"
+            />
           </p-link-tile>
         </div>
       </section>
@@ -95,7 +102,10 @@ const Page = () => (
             aspect-ratio="{base: '1/1', xs: '16/9'}"
             weight="regular"
           >
-            <img src="/interieur-1.webp" alt="Some alternative text for screen readers describing the media element" />
+            <img
+              src={media('interieur-1.webp')}
+              alt="Some alternative text for screen readers describing the media element"
+            />
           </p-link-tile>
           <p-link-tile
             gradient={true}
@@ -106,7 +116,10 @@ const Page = () => (
             aspect-ratio="{base: '1/1', xs: '16/9'}"
             weight="regular"
           >
-            <img src="/interieur-2.webp" alt="Some alternative text for screen readers describing the media element" />
+            <img
+              src={media('interieur-2.webp')}
+              alt="Some alternative text for screen readers describing the media element"
+            />
           </p-link-tile>
           <p-link-tile
             gradient={true}
@@ -117,7 +130,10 @@ const Page = () => (
             aspect-ratio="{base: '1/1', xs: '16/9'}"
             weight="regular"
           >
-            <img src="/interieur-3.webp" alt="Some alternative text for screen readers describing the media element" />
+            <img
+              src={media('interieur-3.webp')}
+              alt="Some alternative text for screen readers describing the media element"
+            />
           </p-link-tile>
           <p-link-tile
             gradient={true}
@@ -128,7 +144,10 @@ const Page = () => (
             aspect-ratio="{base: '1/1', xs: '16/9'}"
             weight="regular"
           >
-            <img src="/interieur-4.webp" alt="Some alternative text for screen readers describing the media element" />
+            <img
+              src={media('interieur-4.webp')}
+              alt="Some alternative text for screen readers describing the media element"
+            />
           </p-link-tile>
         </p-carousel>
       </section>
@@ -137,7 +156,7 @@ const Page = () => (
         <div class="col-span-full grid grid-cols-subgrid gap-y-fluid-lg">
           <img
             class="col-span-full md:col-start-1 md:col-end-7 md:row-start-1 w-full aspect-4/3 md:aspect-3/4 object-cover rounded-3xl"
-            src="/cockpit.webp"
+            src={media('cockpit.webp')}
             alt="Some alternative text for screen readers describing the media element"
           />
           <div class="col-span-full md:col-start-8 md:col-end-13 md:row-start-1 flex flex-col justify-center items-start">
@@ -159,7 +178,7 @@ const Page = () => (
         <div class="col-span-full grid grid-cols-subgrid gap-y-fluid-lg">
           <img
             class="col-span-full md:col-start-7 md:col-end-13 md:row-start-1 w-full aspect-4/3 md:aspect-3/4 object-cover rounded-3xl"
-            src="/chrono.webp"
+            src={media('chrono.webp')}
             alt="Some alternative text for screen readers describing the media element"
           />
           <div class="col-span-full md:col-start-1 md:col-end-6 md:row-start-1 flex flex-col justify-center items-start">

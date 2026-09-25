@@ -15,7 +15,7 @@ import { expect, test } from '../helpers/index.ts';
  * a colour pair, the accessible name a label resolves to **through a shadow root**, whether an `aria-*` value is
  * valid on the role it ends up on, or whether a control is still reachable once the components have upgraded.
  *
- * That is what is scanned here, on the composed page, against the built projects.
+ * That is what is scanned here, on the composed page, against the built site.
  *
  * The matrix is the one the component suites of `packages/components-js` use: two viewports × the two colour
  * schemes. The viewports are the ends of the responsive behaviour the examples demonstrate – at 320 the navigation
@@ -44,9 +44,9 @@ const pagesWithoutFirstLevelHeading = ['patterns-footer'];
 const feedbackPages = ['patterns-feedback-inline', 'patterns-feedback-dialog'];
 
 test('should have a page for every example', () => {
-  // The same count the VRT asserts: 3 templates and 9 patterns. Kept here too, so a glob that silently stops
+  // The same count the VRT asserts: 2 templates and 8 patterns. Kept here too, so a glob that silently stops
   // matching fails the suite instead of passing it with nothing to scan.
-  expect(examplePages.length).toBe(12);
+  expect(examplePages.length).toBe(10);
 });
 
 /** The rules that do not apply to a page, by what that page is – never a blanket exception. */

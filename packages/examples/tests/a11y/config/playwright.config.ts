@@ -5,7 +5,7 @@ import { exampleWebServers } from '../../helpers/previewServers.ts';
 /**
  * Accessibility tests of the examples.
  *
- * Like the VRT, they run against the **built** projects (see
+ * Like the VRT, they run against the **built** site (see
  * [`previewServers.ts`](../../helpers/previewServers.ts)), so what is scanned is the page a consumer gets: the
  * bundled entry, the injected Porsche Design System partials and the upgraded components from the local CDN.
  *

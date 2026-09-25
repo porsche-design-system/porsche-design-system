@@ -1,23 +1,22 @@
 /**
- * The two projects the build emits, one per category.
+ * The categories of examples and the projects the build emits for them – one per page.
  *
- * `dist/` is not a website: it is the **source** of two standalone Vite projects that replace the hand written
- * `patterns` and `templates` workspaces of the examples repository. Each one is self contained – own `package.json`,
- * own `vite.config.ts`, own copy of everything its pages share – because the examples repository does not allow cross
- * workspace imports.
+ * `dist/` holds the **source** of one standalone Vite project per page. It is the project "Open in StackBlitz" hands
+ * over, and the very project `scripts/buildSite.ts` builds into the single HTML file the storefront frames, so what
+ * the viewer shows is what StackBlitz builds:
  *
  * ```text
- * dist/patterns/            # workspace root, `npm run build` builds it
- * ├── package.json          # generated
- * ├── vite.config.ts        # generated, literal rollup inputs, injects the PDS partials
- * ├── public/               # copied verbatim
- * └── src/                  # `root` of the Vite project
- *     ├── index.html        # the overview of this category
- *     └── header/overlay/   # index.html + style.css + main.js
+ * dist/patterns/header/overlay/   # one project, `npm run build` builds it
+ * ├── package.json                # generated
+ * ├── vite.config.ts              # generated, injects the PDS partials
+ * ├── index.html
+ * ├── main.js                     # generated: the stylesheet import and the behaviour of the example
+ * └── style.css                   # the shared Tailwind entry, copied
  * ```
  *
- * There is no `assets/` folder: the shared Tailwind entry and the shared behaviour are inlined into the entries of the
- * pages that need them, so an example is read in one place.
+ * A project has no `public/` and no `assets/` folder: the media are served by the storefront (see `src/_media.ts`),
+ * and the shared Tailwind entry and the shared behaviour are inlined into the entries of the pages that need them, so
+ * an example is read in one place.
  */
 
 /**
@@ -71,48 +70,26 @@ export const templateComponents = [
 
 export type ProjectCategory = 'patterns' | 'templates';
 
-export type Project = {
+export type Category = {
   category: ProjectCategory;
-  /** Workspace name in the examples repository, so a generated project can replace the manual one in place. */
-  packageName: string;
-  /** Accessible name of the link list on the overview page. */
-  label: string;
-  description: string;
-  /** Environment variable the deployment sets to serve the project from a sub path. */
-  baseEnvVariable: string;
-  /**
-   * Port `scripts/previewProject.ts` serves the built project on, next to the dev server of the source tree (3010).
-   * Internal to this package: it is not written into the generated project, which keeps Vite's own default.
-   */
-  previewPort: number;
-  /** Preloaded component chunks, written into the generated Vite config. */
+  /** Preloaded component chunks, written into the generated Vite config of every page of the category. */
   components: readonly string[];
 };
 
-export const projects: Project[] = [
-  {
-    category: 'patterns',
-    packageName: '@porsche-design-system/patterns',
-    label: 'Patterns',
-    description: 'Single sections, shown in the place they occupy on a real page.',
-    baseEnvVariable: 'PATTERNS_PUBLIC_BASE_PATH',
-    previewPort: 3011,
-    components: patternComponents,
-  },
-  {
-    category: 'templates',
-    packageName: '@porsche-design-system/templates',
-    label: 'Templates',
-    description: 'Whole pages, from the skip link to the footer.',
-    baseEnvVariable: 'TEMPLATES_PUBLIC_BASE_PATH',
-    previewPort: 3012,
-    components: templateComponents,
-  },
+export const categories: Category[] = [
+  { category: 'patterns', components: patternComponents },
+  { category: 'templates', components: templateComponents },
 ];
 
-/** The project of a category, for the scripts addressing one of them by name. */
-export const getProject = (category: string): Project | undefined =>
-  projects.find((project) => project.category === category);
+/** The category of a name, for the code addressing one of them by it. */
+export const getCategory = (category: string): Category | undefined =>
+  categories.find((entry) => entry.category === category);
+
+/** Port `scripts/previewSite.ts` serves the built site on, next to the dev server of the source tree (3010). */
+export const previewPort = 3011;
+
+/** Name of the StackBlitz payload written next to every built page. */
+export const payloadName = 'stackblitz.json';
 
 /** Name of the generated script entry of a page, the only script its HTML references. */
 export const scriptEntryName = 'main.js';
@@ -126,38 +103,33 @@ export const assetsDirName = 'assets';
 /** The shared Tailwind entry inside that folder, inlined into every page's `style.css` and linked by the dev server. */
 export const sharedStyleName = 'styles.css';
 
-/** A page inside one of the projects. */
+/** A page of one of the categories – and with that, one generated project. */
 export type PageLocation = {
   category: ProjectCategory;
-  /**
-   * Path of the page relative to the project root: `''` for the overview page of a category,
-   * `'header/overlay'` for a page inside it.
-   */
+  /** Path of the page relative to the root of its category, e.g. `'header/overlay'`. Never empty. */
   pageDir: string;
 };
 
 /**
- * Maps a source path to the project it belongs to.
+ * Maps a source path to the page it renders.
  *
  * `patterns/header/overlay/index.page.tsx` → `{ category: 'patterns', pageDir: 'header/overlay' }`.
- * Returns `undefined` for anything outside a category – the root overview page is the dev server's entry point and
- * belongs to neither project.
+ * Returns `undefined` for anything that is not a page of a category: the root overview page is the dev server's entry
+ * point and is never emitted, and a page at the root of a category is not supported – `scripts/build.ts` rejects it.
  */
 export const resolvePageLocation = (relativePath: string): PageLocation | undefined => {
   const [category, ...rest] = relativePath.split('/');
 
-  if (!projects.some((project) => project.category === category) || rest.length === 0) {
+  // The last segment is the file name (`index.page.tsx`), everything between it and the category is the page folder.
+  if (!categories.some((entry) => entry.category === category) || rest.length < 2) {
     return undefined;
   }
 
-  // The last segment is the file name (`index.page.tsx`), everything between it and the category is the page folder.
   return { category: category as ProjectCategory, pageDir: rest.slice(0, -1).join('/') };
 };
 
 /**
- * Rollup input name of a page: `''` → `'index'`, `'header/overlay'` → `'header-overlay'`.
- *
- * A page sits as deep below its category root in both trees (`src/patterns/header/overlay` and
- * `dist/patterns/src/header/overlay`), so nothing else has to translate paths between them.
+ * Stable name of a page across categories: `{ category: 'patterns', pageDir: 'header/overlay' }` →
+ * `'patterns-header-overlay'`. It names the generated package and prefixes the VRT snapshots of the page.
  */
-export const getInputName = (pageDir: string): string => (pageDir === '' ? 'index' : pageDir.replaceAll('/', '-'));
+export const getPageId = ({ category, pageDir }: PageLocation): string => `${category}-${pageDir.replaceAll('/', '-')}`;

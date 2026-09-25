@@ -134,18 +134,17 @@ A test asserts that the overview pages contain no `href="#"` and that the chrome
 
 ```bash
 npm run start:examples      # dev server on http://localhost:3010
-npm run build:examples      # writes ./dist (gitignored)
+npm run build:examples      # writes ./dist (one project per page) and ./dist-site (one HTML file per page), gitignored
 npm run test:unit:examples  # vitest
-npm run test:e2e:examples   # playwright – builds both projects and drives the behaviour of every page
-npm run test:a11y:examples  # playwright + axe-core – builds both projects and scans every page
-npm run test:vrt:examples   # playwright – builds both projects and screenshots every page
+npm run test:e2e:examples   # playwright – builds the site and drives the behaviour of every page
+npm run test:a11y:examples  # playwright + axe-core – builds the site and scans every page
+npm run test:vrt:examples   # playwright – builds the site and screenshots every page
 
-# build one generated project and serve the result against the local CDN
-npm run preview:examples/patterns    # http://localhost:3011
-npm run preview:examples/templates   # http://localhost:3012
+# build the site and serve it below /examples/ against the local CDN
+npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
 
 # from within this package
-npm run build:verify        # build + `vite build` of both generated projects into ./dist-tmp
+npm run build:verify        # verifies ./dist-site: one self-contained page each, media only through media()
 ```
 
 **Run the VRT in Docker** – `./docker.sh npm run test:vrt:examples` – like every other visual regression suite in this

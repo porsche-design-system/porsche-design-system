@@ -5,8 +5,8 @@
  * they need and pass it on explicitly, which is why a typo in a key is a compile error rather than a render-time one.
  *
  * Two kinds of links live here, and only one of them is real:
- * - `templateItems` / `patternItems` are the examples themselves, linked from the overview pages, so their `href` is a
- *   real relative URL – relative to the root of their category.
+ * - `templateItems` / `patternItems` are the examples themselves, linked from the overview of the dev server, so their
+ *   `href` is a real relative URL – relative to the root of their category.
  * - `navItems` / `metaActionItems` / `categoryItems` are the chrome of a demo. They exist to show a
  *   navigation, not to navigate, so they point at `#` and are never kept in sync with the file tree.
  */
@@ -56,7 +56,7 @@ export type MetaActionItem = {
  */
 export const placeholderHref = '#';
 
-/** An entry of one of the two categories, listed on the overview pages. */
+/** An entry of one of the two categories, listed on the overview of the dev server. */
 export type ExampleItem = NavItem & {
   /** One sentence, shown next to the link on the overview page. */
   description: string;
@@ -65,8 +65,7 @@ export type ExampleItem = NavItem & {
 /**
  * Templates are complete application pages: they own the chrome and demonstrate a full document.
  *
- * The `href` is relative to the root of the generated `templates` project, so the overview of that project links it
- * directly and the overview of the source tree prefixes it with the category.
+ * The `href` is relative to the root of the category, which the overview of the source tree prefixes it with.
  */
 export const templateItems: ExampleItem[] = [
   {

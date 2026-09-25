@@ -4,7 +4,7 @@ import { rewriteCdnUrlsForDev } from '../../../plugins/partials.ts';
 /**
  * What a VRT capture of an example needs before the screenshot is taken.
  *
- * The examples are static pages served from the built projects, so there is no application state to drive – what has
+ * The examples are static pages served from the built site, so there is no application state to drive – what has
  * to be pinned down is everything that can differ between two runs: the components have to be upgraded, the fonts
  * loaded, the hero video parked on a fixed frame and whatever the page focused on load released again.
  */
@@ -37,7 +37,7 @@ const externalImageStub = `<svg xmlns="http://www.w3.org/2000/svg" width="64" he
 /**
  * The one external origin a test redirects instead of refusing: the Porsche Design System CDN.
  *
- * `previewProject.ts` rewrites the emitted HTML to the local CDN, but it can only reach the URLs that are **literal**
+ * `previewSite.ts` rewrites the emitted HTML to the local CDN, but it can only reach the URLs that are **literal**
  * in the markup – the preloads, the fonts, the icons. The loader script builds its own URL at runtime by
  * concatenation (`"https://cdn.ui.porsche." + ("cn" === … ? "cn" : "com")`), so the production origin never appears
  * as a string and survives every rewrite. The page therefore fetches the components themselves from the production

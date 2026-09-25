@@ -1,5 +1,6 @@
 import { navItems, placeholderHref } from '../../../_data.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { media } from '../../../_media.ts';
 import { Header } from '../../../_partials/header/Header.tsx';
 
 /** Header pattern – the `stacked` layout, sitting above the content with a note and a category row. */
@@ -20,7 +21,7 @@ const Page = () => (
       <section class="scheme-dark col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)]">
         <img
           class="col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
-          src="/trolley.webp"
+          src={media('trolley.webp')}
           alt=""
         />
         <div class="col-extended row-span-full mb-fluid-lg">

@@ -8,11 +8,9 @@
   "scripts": {
     "dev": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'vite'",
     "start": "npm run dev",
-    "preview:patterns": "concurrently -k -s 'first' -n 'cdn,patterns' 'serve-cdn' 'tsx scripts/previewProject.ts patterns'",
-    "preview:templates": "concurrently -k -s 'first' -n 'cdn,templates' 'serve-cdn' 'tsx scripts/previewProject.ts templates'",
-    "preview:patterns:app": "tsx scripts/previewProject.ts patterns --no-open",
-    "preview:templates:app": "tsx scripts/previewProject.ts templates --no-open",
-    "build": "tsx scripts/build.ts",
+    "preview": "npm run build && concurrently -k -s 'first' -n 'cdn,site' 'serve-cdn' 'tsx scripts/previewSite.ts'",
+    "preview:app": "tsx scripts/previewSite.ts",
+    "build": "tsx scripts/build.ts && tsx scripts/buildSite.ts && npm run build:verify",
     "build:verify": "tsx scripts/verify.ts",
     "lint": "biome lint",
     "test": "npm run test:unit && npm run test:e2e && npm run test:a11y && npm run test:vrt",
@@ -30,7 +28,7 @@
     "posttest:vrt:safari": "npm run test:vrt:prepare-regression-snapshots",
     "test:vrt:prepare-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/results --mode prepare",
     "test:vrt:update-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/specs/__screenshots__ --mode update",
-    "clean:build": "rm -rf ./dist ./dist-tmp"
+    "clean:build": "rm -rf ./dist ./dist-site ./dist-tmp"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

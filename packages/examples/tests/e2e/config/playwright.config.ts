@@ -5,7 +5,7 @@ import { exampleWebServers } from '../../helpers/previewServers.ts';
 /**
  * End-to-end tests of the examples.
  *
- * Like the other two suites they run against the **built** projects (see
+ * Like the other two suites they run against the **built** site (see
  * [`previewServers.ts`](../../helpers/previewServers.ts)), which matters more here than anywhere else: the behaviour
  * under test is the `main.js` the build *generates*, by inlining the shared snippets a page's markup asks for next to
  * the script authored beside it. Running against the source tree would exercise modules that no example ships.

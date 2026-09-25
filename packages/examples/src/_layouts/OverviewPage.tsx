@@ -13,7 +13,7 @@ export type OverviewPageProps = {
 };
 
 /**
- * Shell of an overview page: the index of a generated project and the index of the source tree.
+ * Shell of the overview page of the source tree, the entry point of the dev server.
  *
  * It renders no header and no footer on purpose – that chrome is the subject of the examples, so repeating it here
  * would demonstrate nothing and would need URLs kept in sync for no benefit. What is left is a link list, which is

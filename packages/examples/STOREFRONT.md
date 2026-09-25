@@ -358,6 +358,15 @@ Storefront:
 
 PR 2 already proves the hosting end to end: its own pull request preview serves `/pr-<n>/examples/…`.
 
+**Progress (2026-09-25): slice 1 is implemented.** `npm run build` now runs `scripts/build.ts` (one project per page),
+`scripts/buildSite.ts` (one HTML file per page plus `stackblitz.json`, media once) and `scripts/verify.ts`, so a page
+that references a local file, a missing or unused medium, or ships a payload that differs from its project fails the
+build. `npm run preview:examples` serves `dist-site/` below `/examples/` on port 3011, and the Playwright suites run
+against it. The 69 VRT baselines left after dropping the overview pages match unchanged in Docker. Two details the plan
+did not anticipate: a page without behaviour (the footer) builds to no script chunk at all, which the inline plugin
+accepts; and the conceptual sections of `README.md` and `AGENTS.md` still describe the old layout (only their commands
+are updated), which is step 7.
+
 ---
 
 ## Settled decisions

@@ -7,6 +7,7 @@ lerna-debug.log*
 # Directories
 node_modules/
 dist/
+dist-site/
 dist-tmp/
 .stencil/
 .angular/

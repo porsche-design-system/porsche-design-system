@@ -5,16 +5,16 @@ import { ExampleList } from './_partials/ExampleList.tsx';
 /**
  * Overview of the source tree – the entry point of the dev server.
  *
- * It is **not** emitted: the build writes one project per category, each with its own overview at its root. This page
- * exists so both categories can be reached from one place while developing, and it is the only page linking across
- * categories.
+ * It is **not** emitted: the build writes one project per example, and the storefront's own navigation is what links
+ * them there. This page exists so every example can be reached from one place while developing, and it is the only
+ * page that navigates at all.
  */
 const Page = () => (
   <OverviewPage
     title="Overview"
     description="Overview of the dummy templates and patterns."
     heading="Dummy examples"
-    intro="Templates are complete application pages. Patterns show a single section of a page, so variations of the same partial can be compared. Links inside an example are placeholders – only the overview pages navigate."
+    intro="Templates are complete application pages. Patterns show a single section of a page, so variations of the same partial can be compared. Links inside an example are placeholders – only this overview navigates."
   >
     <section>
       <h2 class="mb-2 text-3xl font-semibold">Templates</h2>

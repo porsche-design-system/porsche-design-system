@@ -19,8 +19,8 @@ import { collectPageErrors, hasElement, setupExamplePage } from '../helpers/inde
 const examplePages = getExamplePages();
 
 test('should have a page for every example', () => {
-  // 3 templates and 9 patterns, the same count the other suites assert.
-  expect(examplePages.length).toBe(12);
+  // 2 templates and 8 patterns, the same count the other suites assert.
+  expect(examplePages.length).toBe(10);
 });
 
 for (const { id, url } of examplePages) {

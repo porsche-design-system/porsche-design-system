@@ -5,7 +5,7 @@ import { exampleWebServers } from '../../helpers/previewServers.ts';
 /**
  * Visual regression tests of the examples.
  *
- * They run against the **built** projects, not against the dev server – see
+ * They run against the **built** site, not against the dev server – see
  * [`previewServers.ts`](../../helpers/previewServers.ts) for the servers and why.
  *
  * The two Playwright projects are named after their browser, like everywhere else in the monorepo – the shared

@@ -6,8 +6,8 @@ import { getExamplePages } from '../helpers/pages.ts';
 /**
  * Visual regression of every example, in its initial state.
  *
- * The pages are served from the built projects (see the config), so a regression here is a regression of what the
- * examples repository ships – markup, Tailwind utilities, the inlined behaviour and the components from the CDN.
+ * The pages are served from the built site (see the config), so a regression here is a regression of what the
+ * storefront frames – markup, Tailwind utilities, the inlined behaviour and the components from the CDN.
  *
  * Both Playwright projects capture the page as it loads, each at its own viewport: `chrome` at 1000 (M) and `safari`
  * at 320 (XXS). Everything below that is chromium only – scaling the font size and forcing colors go through CDP,
@@ -20,9 +20,9 @@ const examplePages = getExamplePages();
 const getViewportWidth = (): number => (test.info().project.metadata.viewportWidth as number) ?? viewportWidthM;
 
 test('should have a page for every example', () => {
-  // 3 templates (overview, landing page, admin panel) and 9 patterns (overview, 2 header, footer, 3 popover,
-  // 2 feedback) – the overview of the source tree belongs to neither project and is not emitted.
-  expect(examplePages.length).toBe(12);
+  // 2 templates (landing page, admin panel) and 8 patterns (2 header, footer, 3 popover, 2 feedback) – the overview
+  // of the source tree belongs to no category and is not emitted.
+  expect(examplePages.length).toBe(10);
 });
 
 for (const { id, url } of examplePages) {
