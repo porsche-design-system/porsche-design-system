@@ -390,6 +390,19 @@ them, because `packages/examples` scans them with axe itself. Found on the way, 
 contents links of `/patterns/header/` and `/patterns/feedback/` fail axe `target-size` locally, with the old headings as
 well.
 
+**Progress (2026-09-28): code view.** One `PTabsBar` above the viewer – Preview, HTML, CSS, JS – switches between the
+iframe and `index.html`, `style.css` and `main.js` in `CodeBlock`, at the iframe's height (`CodeBlock` got a
+`heightClassName`), so a page with several viewers does not grow. The iframe is hidden rather than unmounted, so it
+neither reloads nor loses its state; the resize handle and the reset button belong to the preview only. The files come
+from the `stackblitz.json` already fetched on mount – the fetch moved from the StackBlitz button into
+`useExamplePayload()`, which both share – so the code shown is the project StackBlitz receives; until it is there the
+code panel shows a spinner. The tab and panel ids derive from the example path, because `useId()` returns different ids
+on the server and the client here. `websiteViewer.e2e.ts` asserts the tabs, the files verbatim, the horizontal scrolling
+and the untouched iframe; the a11y suite scans pages with viewers a second time with the code shown. An info popover
+next to the tabs explains that the examples are plain HTML, CSS and JavaScript but need a bundler for Tailwind CSS, and
+points to StackBlitz for the full setup. `useResizeHandle` now follows its track with a `ResizeObserver`: a chosen width
+is capped at a narrower track, shown and announced as rendered, and returns once the track grows again.
+
 ---
 
 ## Settled decisions

@@ -98,25 +98,42 @@ test.describe('storefront pages', () => {
           if (sb) sb.scrollTop = 0; // no link tucked under the sticky title
         });
 
-        const accessibilityScanResults = await makeAxeBuilder().analyze();
+        const scan = async (name: string): Promise<void> => {
+          const accessibilityScanResults = await makeAxeBuilder().analyze();
 
-        await testInfo.attach(`a11y-scan-results-main-${scheme}`, {
-          body: JSON.stringify(accessibilityScanResults.violations, null, 2),
-          contentType: 'application/json',
-        });
+          await testInfo.attach(`a11y-scan-results-${name}-${scheme}`, {
+            body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+            contentType: 'application/json',
+          });
 
-        console.log(accessibilityScanResults.violations);
+          console.log(accessibilityScanResults.violations);
 
-        // Filter out violations for p-scroller inside p-table.
-        // This is a known issue with p-scroller in chrome when there is a scroll area but the component does not add tabindex=0.
-        const filteredViolations = accessibilityScanResults.violations
-          .map((violation) => ({
-            ...violation,
-            nodes: violation.nodes.filter((node) => node.target.every((selector) => !selector.includes('p-scroller'))),
-          }))
-          .filter((violation) => violation.nodes.length > 0);
+          // Filter out violations for p-scroller inside p-table.
+          // This is a known issue with p-scroller in chrome when there is a scroll area but the component does not add tabindex=0.
+          const filteredViolations = accessibilityScanResults.violations
+            .map((violation) => ({
+              ...violation,
+              nodes: violation.nodes.filter((node) =>
+                node.target.every((selector) => !selector.includes('p-scroller'))
+              ),
+            }))
+            .filter((violation) => violation.nodes.length > 0);
 
-        expect(filteredViolations.length).toBe(0);
+          expect(filteredViolations.length).toBe(0);
+        };
+
+        await scan('main');
+
+        // The examples of a `WebsiteViewer` show their preview first; their code is scanned in a second pass. The code
+        // tab is usable before the code has loaded, so the wait is for the code itself.
+        const codeTabs = await page.getByRole('tab', { name: 'HTML', exact: true }).all();
+        if (codeTabs.length > 0) {
+          for (const codeTab of codeTabs) {
+            await codeTab.click();
+          }
+          await expect(page.getByRole('region', { name: /^HTML of / })).toHaveCount(codeTabs.length);
+          await scan('code');
+        }
       });
     }
   });
