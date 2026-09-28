@@ -21,6 +21,7 @@ export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
         onChange={(e) => onVersionChange(e.detail.value)}
         label="Switch version"
         compact={true}
+        hideLabel={true}
         style={{ '--p-select-background-color': 'var(--p-color-surface)' } as Record<string, string>}
       >
         {pdsVersion.all.map((version) => {

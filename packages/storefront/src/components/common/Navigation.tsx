@@ -63,7 +63,8 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
 
   return (
     <>
-      <nav aria-label="Main" className="flex flex-col gap-static-sm">
+      {pdsVersion.all.length > 1 && <VersionSelect pdsVersion={pdsVersion} />}
+      <nav aria-label="Main" className="mt-fluid-md flex flex-col gap-static-sm">
         {Object.entries(sitemap).map(([path, category]) => {
           const groupLabel = SECTION_GROUP_HEADERS[path];
 
@@ -108,7 +109,6 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
       </nav>
       <PDivider className="my-fluid-lg" />
       <footer className="flex flex-col gap-fluid-md">
-        {pdsVersion.all.length > 1 && <VersionSelect pdsVersion={pdsVersion} />}
         <PLinkPure
           className="self-start"
           href="https://brand.porsche.com"
