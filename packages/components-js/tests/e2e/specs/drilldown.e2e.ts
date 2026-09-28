@@ -947,6 +947,6 @@ test.describe('item identifier set after initial render', () => {
     await setProperty(getItems(page).nth(1), 'identifier', 'item-2');
     await waitForStencilLifecycle(page);
 
-    expect(getConsoleErrorsAmount()).toBe(1);
+    await expect.poll(() => getConsoleErrorsAmount()).toBe(1); // console events can arrive after the lifecycle in WebKit
   });
 });
