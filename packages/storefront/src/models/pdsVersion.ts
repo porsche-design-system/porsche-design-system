@@ -6,5 +6,6 @@ export type Semver = `${number}.${number}.${number}`;
 export type PDSVersionGroup = {
   all: string[];
   current: Semver;
-  latest: Semver;
+  /** Unknown while the published versions are being fetched, and when fetching them failed. */
+  latest: Semver | undefined;
 };

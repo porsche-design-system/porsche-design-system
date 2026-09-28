@@ -8,8 +8,10 @@ type VersionSelectProps = {
 };
 
 export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
+  const { latest } = pdsVersion;
+
   const onVersionChange = (version: PSelectProps['value']) => {
-    const ver = version === pdsVersion.latest ? getMajorVersion(version) : version;
+    const ver = latest !== undefined && version === latest ? getMajorVersion(latest) : version;
     window.location.href = `${window.location.origin}/v${ver}`;
   };
 
@@ -24,22 +26,14 @@ export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
         hideLabel={true}
         style={{ '--p-select-background-color': 'var(--p-color-surface)' } as Record<string, string>}
       >
-        {pdsVersion.all.map((version) => {
-          const prefixedVersion = `v${version}`;
-          return (
-            <PSelectOption key={version} value={version}>
-              {version !== pdsVersion.latest ? prefixedVersion : `${prefixedVersion} (latest)`}
-            </PSelectOption>
-          );
-        })}
+        {pdsVersion.all.map((version) => (
+          <PSelectOption key={version} value={version}>
+            v{version}
+          </PSelectOption>
+        ))}
       </PSelect>
-      {!isDevEnvironment && pdsVersion.current !== null && pdsVersion.current !== pdsVersion.latest && (
-        <PButton
-          compact={true}
-          variant="secondary"
-          icon="arrow-right"
-          onClick={() => onVersionChange(pdsVersion.latest)}
-        >
+      {!isDevEnvironment && latest !== undefined && pdsVersion.current !== latest && (
+        <PButton compact={true} variant="secondary" icon="arrow-right" onClick={() => onVersionChange(latest)}>
           Use Latest Release
         </PButton>
       )}
