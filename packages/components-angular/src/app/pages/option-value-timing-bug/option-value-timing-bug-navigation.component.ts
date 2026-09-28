@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'option-value-timing-bug-navigation',
   template: `
     <nav>
-      <a routerLink="/option-value-timing-bug/page-a">Page A (Flyout)</a>
+      <a routerLink="/option-value-timing-bug/page-a">Page A</a>
       |
       <a routerLink="/option-value-timing-bug/page-b">Page B</a>
     </nav>
