@@ -16,7 +16,7 @@ const initComponent = (): Drilldown => {
   return component;
 };
 
-const createItem = (identifier: string): HTMLElement => {
+const createItem = (identifier: string | undefined): HTMLElement => {
   const item = document.createElement('p-drilldown-item');
   (item as any).identifier = identifier;
   return item;
@@ -162,6 +162,100 @@ describe('initial item state', () => {
     expect((itemA as any).secondary).toBe(true);
     expect(component['primary']).toBe(true);
   });
+
+  it('should not mark an item without identifier secondary on load without an active identifier', () => {
+    const component = initComponent();
+    const itemA = createItem(undefined);
+    component.host.appendChild(itemA);
+
+    component.componentWillLoad();
+
+    expect((itemA as any).secondary).toBeFalsy();
+    expect(component['primary']).toBe(true);
+  });
+});
+
+describe('secondary drawer visibility on load', () => {
+  it('should hide the secondary drawer when the active identifier matches no item yet', () => {
+    const component = initComponent();
+    component.host.appendChild(createItem(undefined));
+    component.activeIdentifier = 'a';
+
+    component.componentWillLoad();
+
+    expect(component['isSecondaryDrawerVisible']).toBe(false);
+  });
+
+  it('should show the secondary drawer when the active identifier matches an item', () => {
+    const component = initComponent();
+    component.host.appendChild(createItem('a'));
+    component.activeIdentifier = 'a';
+
+    component.componentWillLoad();
+
+    expect(component['isSecondaryDrawerVisible']).toBe(true);
+  });
+});
+
+describe('item identifier change', () => {
+  it('should stop propagation of the internal event', () => {
+    const component = initComponent();
+    const event = new CustomEvent('internalDrilldownItemIdentifierChange', { bubbles: true });
+    const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
+
+    component.itemIdentifierChangeHandler(event);
+
+    expect(stopPropagationSpy).toHaveBeenCalled();
+  });
+
+  it('should mark the item secondary whose identifier is set to the active identifier after load', () => {
+    const component = initComponent();
+    const itemA = createItem('a');
+    const itemB = createItem(undefined);
+    component.host.append(itemA, itemB);
+    component.activeIdentifier = 'b';
+    component.componentWillLoad();
+
+    (itemB as any).identifier = 'b';
+    component.itemIdentifierChangeHandler(new CustomEvent('internalDrilldownItemIdentifierChange'));
+
+    expect((itemA as any).secondary).toBeFalsy();
+    expect((itemB as any).secondary).toBe(true);
+    expect(component['primary']).toBe(true);
+    expect(component['isSecondaryDrawerVisible']).toBe(true);
+  });
+
+  it('should leave the primary level when the identifier of a nested item is set to the active identifier after load', () => {
+    const component = initComponent();
+    const itemA = createItem('a');
+    const nestedItem = createItem(undefined);
+    itemA.appendChild(nestedItem);
+    component.host.appendChild(itemA);
+    component.activeIdentifier = 'a-1';
+    component.componentWillLoad();
+
+    (nestedItem as any).identifier = 'a-1';
+    component.itemIdentifierChangeHandler(new CustomEvent('internalDrilldownItemIdentifierChange'));
+
+    expect((nestedItem as any).secondary).toBe(true);
+    expect((itemA as any).primary).toBe(true);
+    expect(component['primary']).toBe(false);
+  });
+
+  it('should clear the previously active item when its identifier no longer matches the active identifier', () => {
+    const component = initComponent();
+    const itemA = createItem('a');
+    component.host.appendChild(itemA);
+    component.activeIdentifier = 'a';
+    component.componentWillLoad();
+
+    (itemA as any).identifier = 'x';
+    component.itemIdentifierChangeHandler(new CustomEvent('internalDrilldownItemIdentifierChange'));
+
+    expect((itemA as any).secondary).toBe(false);
+    expect(component['primary']).toBe(true);
+    expect(component['isSecondaryDrawerVisible']).toBe(false);
+  });
 });
 
 describe('active item change', () => {
@@ -231,6 +325,55 @@ describe('active item change', () => {
 
     expect((itemA as any).secondary).toBe(false);
     expect((itemB as any).secondary).toBe(true);
+    expect(component['primary']).toBe(false);
+  });
+
+  it('should leave the primary level when navigating into a nested item without a previously active item', async () => {
+    const component = initComponent();
+    component['isDesktop'] = true;
+    component['drawer'] = { animate: vi.fn(() => ({ finished: Promise.resolve() })) } as any;
+    const itemA = createItem('a');
+    const itemB = createItem('b');
+    component.host.appendChild(itemA);
+    itemA.appendChild(itemB);
+    component['drilldownItemElements'] = [itemA, itemB] as any;
+    component.activeIdentifier = 'b';
+
+    await component.activeIdentifierChangeHandler('b', undefined);
+
+    expect((itemB as any).secondary).toBe(true);
+    expect((itemA as any).primary).toBe(true);
+    expect(component['primary']).toBe(false);
+  });
+
+  it('should not revert an item identifier change that arrives while the drawer animates (mobile)', async () => {
+    const component = initComponent();
+    component['isDesktop'] = false;
+    let finishAnimation: () => void;
+    const pendingAnimation = new Promise<void>((resolve) => {
+      finishAnimation = resolve;
+    });
+    component['drawer'] = {
+      animate: vi.fn(() => ({ finished: Promise.resolve() })).mockReturnValueOnce({ finished: pendingAnimation }),
+    } as any;
+    const parentItem = createItem('x');
+    const itemA = createItem('a');
+    const itemB = createItem(undefined);
+    parentItem.append(itemA, itemB);
+    component.host.appendChild(parentItem);
+    component.activeIdentifier = 'a';
+    component.componentWillLoad();
+
+    component.activeIdentifier = 'b';
+    const transition = component.activeIdentifierChangeHandler('b', 'a');
+    (itemB as any).identifier = 'b';
+    component.itemIdentifierChangeHandler(new CustomEvent('internalDrilldownItemIdentifierChange'));
+    finishAnimation?.();
+    await transition;
+
+    expect((itemA as any).secondary).toBe(false);
+    expect((itemB as any).secondary).toBe(true);
+    expect((parentItem as any).primary).toBe(true);
     expect(component['primary']).toBe(false);
   });
 });

@@ -35,6 +35,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
 - `Ai Tag`: the `generated` variant displayed Czech text instead of Slovak for Slovak locales.
   ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
+- `Radio Group Option`, `Multi Select Option`, `Segmented Control Item`: stayed empty when `value` was set only after
+  the component had rendered, e.g. by an Angular property binding after navigating back to a route. A missing `value` no
+  longer throws an error; it is still required by the types.
+  ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
+- `Radio Group`, `Select`, `Multi Select`, `Segmented Control`: an option or item was not selected when it received a
+  `value` matching the parent's `value` only after the parent had rendered.
+  ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
+- `Drilldown` (🧪Experimental): the active level was not shown and an error was logged when a `Drilldown Item` received
+  the `identifier` matching `activeIdentifier` only after the `Drilldown` had rendered. Without `activeIdentifier`, an
+  item without `identifier` was wrongly shown as active.
+  ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
+- `Drilldown` (🧪Experimental): setting `activeIdentifier` to a nested `Drilldown Item` while no item was active mixed
+  the root level into the active level on desktop, and an `activeIdentifier` matching no `Drilldown Item` showed an
+  empty level instead of the root level.
+  ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
 
 ## [4.7.0] - 2026-09-09
 

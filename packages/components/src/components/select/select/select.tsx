@@ -213,6 +213,18 @@ export class Select {
     this.updateOptions();
   }
 
+  @Listen('internalSelectOptionValueChange')
+  public optionValueChangeHandler(e: Event): void {
+    e.stopPropagation();
+    if (this.selectOptions.length > 0) {
+      const selectedOption = selectOptionByValue(this.selectOptions, this.value);
+      // Keep the selection of a removed option like onSlotchange does, so controlled async filtering keeps working
+      if (selectedOption !== null || this.selectOptions.includes(this.selectedOption)) {
+        this.selectedOption = selectedOption;
+      }
+    }
+  }
+
   @Watch('value')
   public onValueChange(): void {
     this.setFormValue();

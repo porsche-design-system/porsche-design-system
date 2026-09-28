@@ -46,6 +46,18 @@ export const routes: ExtendedRoute[] = [
     ],
   },
   {
+    name: 'Option Value Timing Bug',
+    path: 'option-value-timing-bug',
+    redirectTo: 'option-value-timing-bug/page-a',
+  },
+  {
+    path: 'option-value-timing-bug',
+    children: [
+      { path: 'page-a', component: fromPages.OptionValueTimingBugPageAComponent },
+      { path: 'page-b', component: fromPages.OptionValueTimingBugPageBComponent },
+    ],
+  },
+  {
     name: 'Tabs Bar Navigation Bug',
     path: 'tabs-bar-navigation-bug',
     redirectTo: 'tabs-bar-navigation-bug/page-1',

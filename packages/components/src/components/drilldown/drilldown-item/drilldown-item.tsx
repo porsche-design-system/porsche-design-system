@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, Host, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, Host, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
@@ -55,6 +55,16 @@ export class DrilldownItem {
 
   private hasSlottedHeader: boolean;
   private hasSlottedButton: boolean;
+
+  @Watch('identifier')
+  public onIdentifierChange(): void {
+    // lets the drilldown re-match its active identifier, e.g. when a framework sets the identifier late
+    this.host.dispatchEvent(
+      new CustomEvent('internalDrilldownItemIdentifierChange', {
+        bubbles: true,
+      })
+    );
+  }
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-drilldown', 'p-drilldown-item']);
