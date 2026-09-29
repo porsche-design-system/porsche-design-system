@@ -1,10 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import fastGlob from 'fast-glob';
 import { type Plugin, preview } from 'vite';
 import { rewriteCdnUrlsForDev } from '../plugins/partials.ts';
-import { previewPort } from '../plugins/projects.ts';
+import { categories, previewPort } from '../plugins/projects.ts';
 import { examplesPath } from '../src/_media.ts';
-import { listProjects, packageDir, siteDir } from './shared.ts';
+import { packageDir, siteDir } from './shared.ts';
 
 /**
  * Serves the built site the way the storefront does, against the local CDN.
@@ -67,12 +68,17 @@ const previewSite = async (): Promise<void> => {
     preview: { port: previewPort, strictPort: true },
   });
 
-  const origin = `http://localhost:${previewPort}`;
-  const locations = listProjects();
+  // Listed from `dist-site/`, not from the projects in `dist/`: CI restores only `dist-site/` from the build artifact.
+  const pages = categories.flatMap(({ category }) =>
+    fastGlob
+      .sync('**/index.html', { cwd: path.join(siteDir, category) })
+      .sort()
+      .map((file) => `${category}/${path.dirname(file)}/`)
+  );
 
-  console.log(`\n▸ ${locations.length} page(s), served against the local CDN on http://localhost:3001\n`);
-  for (const { category, pageDir } of locations) {
-    console.log(`  ${origin}${examplesPath}${category}/${pageDir}/`);
+  console.log(`\n▸ ${pages.length} page(s), served against the local CDN on http://localhost:3001\n`);
+  for (const page of pages) {
+    console.log(`  http://localhost:${previewPort}${examplesPath}${page}`);
   }
   server.printUrls();
 };

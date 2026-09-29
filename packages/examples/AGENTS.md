@@ -133,9 +133,9 @@ A test asserts that the overview contains no `href="#"` and that the chrome data
 npm run start:examples      # dev server on http://localhost:3010
 npm run build:examples      # writes ./dist (one project per page) and ./dist-site (one HTML file per page), gitignored
 npm run test:unit:examples  # vitest
-npm run test:e2e:examples   # playwright – builds the site and drives the behaviour of every page
-npm run test:a11y:examples  # playwright + axe-core – builds the site and scans every page
-npm run test:vrt:examples   # playwright – builds the site and screenshots every page
+npm run test:e2e:examples   # playwright – drives the behaviour of every page of the built site
+npm run test:a11y:examples  # playwright + axe-core – scans every page of the built site
+npm run test:vrt:examples   # playwright – screenshots every page of the built site
 
 # serve the built site below /examples/ against the local CDN – run build:examples first
 npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
@@ -213,7 +213,7 @@ the two colour schemes, plus the states the initial scan cannot reach.
 
 The suite lives in [`tests/vrt/`](tests/vrt) and screenshots **every page in its initial state**.
 
-- **It tests the built site, not the dev server.** `pretest:vrt` runs the build, and the web server of
+- **It tests the built site, not the dev server.** It expects `build:examples` to have run, and the web server of
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts) is `npm run preview` – `serve-cdn` plus
   `scripts/previewSite.ts`, which serves `dist-site/` – so a capture shows the inlined entry and the injected partials,
   exactly what the storefront ships.

@@ -7,8 +7,8 @@ import { previewPort } from '../../plugins/projects.ts';
  * The suites test the **built** site, not the dev server: `dist-site/` is what the storefront serves, one
  * self-contained page per example, built from the generated project StackBlitz opens. The command is `npm run preview`,
  * the one a person starts as `npm run preview:examples`, so the inlined entries, the injected Porsche Design System
- * partials and the media paths are part of what is tested. The site itself is built by the `pretest:*` scripts
- * beforehand.
+ * partials and the media paths are part of what is tested. The site itself has to be built beforehand
+ * (`npm run build:examples`), like every other Playwright suite of the monorepo expects its build.
  *
  * `preview` runs `serve-cdn` next to the site, which the preview rewrites the production CDN URLs to. When port 3001 is
  * already taken, `serve-cdn` keeps idling instead of failing, so a dev session next to the test run is not a conflict.
