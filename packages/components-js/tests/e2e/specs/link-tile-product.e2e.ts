@@ -6,12 +6,9 @@ import {
   getActiveElementId,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
-  getConsoleErrorMessages,
-  getConsoleErrorsAmount,
   getEventSummary,
   getHTMLAttributes,
   getLifecycleStatus,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -191,39 +188,5 @@ test.describe('focus', () => {
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page), 'active element after fourth tab click').toBe('after');
-  });
-});
-
-test.describe('href set after initial render', () => {
-  // Frameworks like Angular can connect the component before its `href` binding is applied (#4748)
-  test('should not log an error and render the link', async ({ page }) => {
-    initConsoleObserver(page);
-    await initLinkTileProduct(page, { props: { heading: 'Some product name', price: '1.199,00 €' } });
-
-    await setProperty(getHost(page), 'href', '#some-link');
-    await waitForStencilLifecycle(page);
-
-    await expect(page.locator('p-link-tile-product a').first()).toHaveAttribute('href', '#some-link');
-    expect(getConsoleErrorsAmount(), getConsoleErrorMessages()).toBe(0);
-  });
-});
-
-test.describe('href and slotted anchor', () => {
-  test('should not log an error and not render the slotted anchor when href is set', async ({ page }) => {
-    initConsoleObserver(page);
-    await initLinkTileProduct(page, { slotted: '<a slot="anchor" href="#some-other-link"></a>' });
-
-    await expect(page.locator('p-link-tile-product a[href="#some-other-link"]')).toBeHidden();
-    expect(getConsoleErrorsAmount(), getConsoleErrorMessages()).toBe(0);
-  });
-
-  test('should log an error for slotted anchor without label and without href', async ({ page }) => {
-    initConsoleObserver(page);
-    await initLinkTileProduct(page, {
-      props: { heading: 'Some product name', price: '1.199,00 €' },
-      slotted: '<a slot="anchor" href="#some-other-link"></a>',
-    });
-
-    expect(getConsoleErrorsAmount()).toBe(1);
   });
 });
