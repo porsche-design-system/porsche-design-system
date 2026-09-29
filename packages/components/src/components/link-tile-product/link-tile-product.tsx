@@ -34,7 +34,7 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
 };
 
 /**
- * @slot {"name": "anchor", "description": "Slotted anchor link which can be used instead of the `href` prop. Ensure the named slot is directly on the anchor element, without nesting." }
+ * @slot {"name": "anchor", "description": "Slotted anchor link which can be used instead of the `href` prop. It is not rendered when `href` is set. Ensure the named slot is directly on the anchor element, without nesting." }
  * @slot {"name": "header", "description": "Shows special features about the product like novelty or exclusivity. Although you can pass in anything, it is recommended to use the `p-tag` component." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
  *
@@ -67,7 +67,7 @@ export class LinkTileProduct {
   /** Reflects whether the product is currently liked — controls the filled state of the like button. */
   @Prop() public liked?: boolean = false;
 
-  /** Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element. */
+  /** Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element, which is not rendered when `href` is set. */
   @Prop() public href?: string;
 
   /** Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values. */

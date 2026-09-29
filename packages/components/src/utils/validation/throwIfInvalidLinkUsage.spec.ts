@@ -1,12 +1,11 @@
-import { vi } from 'vitest';
 import { throwIfInvalidLinkUsage } from './throwIfInvalidLinkUsage';
 
-const errorMessage = `[Error: [Porsche Design System] usage of div is not valid. Please provide a href property or a single and direct <a> child element.]`;
+const errorMessage = `[Error: [Porsche Design System] usage of div is not valid. Please provide either a href property or a slotted <a> element, but not both.]`;
 
 describe('with href value', () => {
   const href = '#';
 
-  it('should throw error with any child', () => {
+  it('should throw error with direct anchor', () => {
     const host = document.createElement('div');
     host.append(document.createElement('a'));
     expect(() => throwIfInvalidLinkUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
@@ -16,12 +15,24 @@ describe('with href value', () => {
     const host = document.createElement('div');
     expect(() => throwIfInvalidLinkUsage(host, href)).not.toThrow();
   });
+
+  it('should not throw error with text content only', () => {
+    const host = document.createElement('div');
+    host.append('Some label');
+    expect(() => throwIfInvalidLinkUsage(host, href)).not.toThrow();
+  });
+
+  it('should not throw error with a child that is not an anchor', () => {
+    const host = document.createElement('div');
+    host.append(document.createElement('span'));
+    expect(() => throwIfInvalidLinkUsage(host, href)).not.toThrow();
+  });
 });
 
 describe('without href value', () => {
   const href: any = undefined;
 
-  it('should not throw error without any child, since href can still be set later', () => {
+  it('should not throw error without any children, since href can still be set later', () => {
     const host = document.createElement('div');
     expect(() => throwIfInvalidLinkUsage(host, href)).not.toThrow();
   });
@@ -32,32 +43,13 @@ describe('without href value', () => {
     expect(() => throwIfInvalidLinkUsage(host, href)).not.toThrow();
   });
 
-  it('should throw error with a child that is not an anchor', () => {
+  it('should not throw error with a child that is not an anchor', () => {
     const host = document.createElement('div');
     host.append(document.createElement('span'));
-    expect(() => throwIfInvalidLinkUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
+    expect(() => throwIfInvalidLinkUsage(host, href)).not.toThrow();
   });
 
-  it('should throw error with multiple children', () => {
-    const host = document.createElement('div');
-    host.append(document.createElement('a'), document.createElement('a'));
-    expect(() => throwIfInvalidLinkUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
-  });
-
-  it('should throw error with nested anchor', () => {
-    const host = document.createElement('div');
-    const child = document.createElement('p');
-    child.append(document.createElement('a'));
-    host.append(child);
-
-    // TODO: workaround until jsdom actually returns null for this case
-    // https://github.com/jsdom/jsdom/issues/2998
-    vi.spyOn(host, 'querySelector').mockReturnValue(null);
-
-    expect(() => throwIfInvalidLinkUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
-  });
-
-  it('should not throw error with direct and only anchor', () => {
+  it('should not throw error with direct anchor', () => {
     const host = document.createElement('div');
     host.append(document.createElement('a'));
     expect(() => throwIfInvalidLinkUsage(host, href)).not.toThrow();

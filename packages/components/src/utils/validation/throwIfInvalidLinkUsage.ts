@@ -1,28 +1,16 @@
+import { getDirectChildHTMLElements } from '../dom/getDirectChildHTMLElements';
 import { throwException } from '../log/logger';
 import { getTagNameWithoutPrefix } from '../tag-name';
-import { getOnlyChildOfKindHTMLElementOrThrow } from './getOnlyChildOfKindHTMLElementOrThrow';
 
+// Only the combination of href and a slotted anchor is reported, since it renders nested links (two tab stops).
+// A missing href and slotted anchor isn't reported, since the link then renders as plain text, which is visible anyway,
+// and href might still be set after the initial load, e.g. by a framework.
 export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): void => {
-  // without child elements a missing href can't be validated, since a framework may set it after the initial load
-  if (!host.children.length) {
-    return;
-  }
-
-  let isInvalid = !!hrefValue;
-
-  if (!hrefValue) {
-    try {
-      getOnlyChildOfKindHTMLElementOrThrow(host, 'a');
-    } catch {
-      isInvalid = true;
-    }
-  }
-
-  if (isInvalid) {
+  if (hrefValue && getDirectChildHTMLElements(host, 'a').length) {
     throwException(
       `usage of ${getTagNameWithoutPrefix(
         host
-      )} is not valid. Please provide a href property or a single and direct <a> child element.`
+      )} is not valid. Please provide either a href property or a slotted <a> element, but not both.`
     );
   }
 };

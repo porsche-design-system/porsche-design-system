@@ -1,14 +1,32 @@
 import { anchorSlot } from '../../components/link-tile-product/link-tile-product-utils';
 import { throwIfInvalidLinkTileProductUsage } from './throwIfInvalidLinkTileProductUsage';
 
-const errorMessage = `[Error: [Porsche Design System] usage of div is not valid. Please provide a href property or a single and direct <a> child element in the anchor slot.]`;
-
 const errorMessageA11y = `[Error: [Porsche Design System] usage of div is not valid. Anchor tag must have slotted text content or an aria-label attribute for accessibility.]`;
+
+const createHostWithSlottedAnchor = (label?: { text?: string; ariaLabel?: string }): HTMLElement => {
+  const host = document.createElement('div');
+  const anchor = document.createElement('a');
+  anchor.slot = anchorSlot;
+  if (label?.text) {
+    anchor.textContent = label.text;
+  }
+  if (label?.ariaLabel) {
+    anchor.setAttribute('aria-label', label.ariaLabel);
+  }
+  host.append(anchor);
+  return host;
+};
 
 describe('with href value', () => {
   const href = '#';
-  it('should not throw error', () => {
+
+  it('should not throw error without anchor slot', () => {
     const host = document.createElement('div');
+    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).not.toThrow();
+  });
+
+  it('should not throw error with slotted anchor without label, since it is not rendered', () => {
+    const host = createHostWithSlottedAnchor();
     expect(() => throwIfInvalidLinkTileProductUsage(host, href)).not.toThrow();
   });
 });
@@ -16,36 +34,36 @@ describe('with href value', () => {
 describe('without href value', () => {
   const href: any = undefined;
 
-  it('should not throw error without using anchor slot, since href can still be set later', () => {
+  it('should not throw error without anchor slot, since href can still be set later', () => {
     const host = document.createElement('div');
     expect(() => throwIfInvalidLinkTileProductUsage(host, href)).not.toThrow();
   });
 
-  it('should throw error with nested anchor in anchor slot', () => {
+  it('should not throw error with anchor slot on an element that is not an anchor', () => {
     const host = document.createElement('div');
     const child = document.createElement('p');
-    const anchor = document.createElement('a');
     child.slot = anchorSlot;
-    child.append(anchor);
     host.append(child);
-
-    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
+    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).not.toThrow();
   });
 
-  it('should throw error with anchor slot but with missing label', () => {
-    const host = document.createElement('div');
-    const anchor = document.createElement('a');
-    anchor.slot = anchorSlot;
-    host.append(anchor);
+  it('should throw error with slotted anchor without label', () => {
+    const host = createHostWithSlottedAnchor();
     expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessageA11y);
   });
 
-  it('should not throw error with direct and only anchor and label', () => {
-    const host = document.createElement('div');
-    const anchor = document.createElement('a');
-    anchor.slot = anchorSlot;
-    anchor.textContent = 'Some label';
-    host.append(anchor);
+  it('should throw error with slotted anchor with whitespace only', () => {
+    const host = createHostWithSlottedAnchor({ text: '   ' });
+    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessageA11y);
+  });
+
+  it('should not throw error with slotted anchor with text content', () => {
+    const host = createHostWithSlottedAnchor({ text: 'Some label' });
+    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).not.toThrow();
+  });
+
+  it('should not throw error with slotted anchor with aria-label', () => {
+    const host = createHostWithSlottedAnchor({ ariaLabel: 'Some label' });
     expect(() => throwIfInvalidLinkTileProductUsage(host, href)).not.toThrow();
   });
 });
