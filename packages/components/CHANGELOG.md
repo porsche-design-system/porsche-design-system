@@ -50,6 +50,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   the root level into the active level on desktop, and an `activeIdentifier` matching no `Drilldown Item` showed an
   empty level instead of the root level.
   ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
+- `Stepper Horizontal`: stopped updating for good after its items were invalid for a moment, e.g. more than one item
+  with `state="current"` while the current step was changed in two steps, or more than 9 items. The error is still
+  logged while the items are invalid.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Stepper Horizontal Item`: stopped updating for good after it was `current` and `disabled` at the same time. The error
+  is still logged while the combination is set.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Link`, `Link Pure`, `Link Tile Product`: an invalid usage error was logged when `href` was set only after the
+  component had rendered, e.g. by an Angular property binding.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Table`: a missing caption warning was logged when `caption` was set only after the component had rendered. The
+  warning has been removed. ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
 
 ## [4.7.0] - 2026-09-09
 
