@@ -8,6 +8,12 @@ it('should throw error with href value and direct anchor', () => {
   expect(() => throwIfInvalidLinkUsage(host, '#')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
 
+it('should throw error with empty href value and direct anchor', () => {
+  const host = document.createElement('div');
+  host.append(document.createElement('a'));
+  expect(() => throwIfInvalidLinkUsage(host, '')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+});
+
 it('should not throw error with href value and label', () => {
   const host = document.createElement('div');
   host.append('Some label');
