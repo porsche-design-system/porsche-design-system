@@ -246,3 +246,23 @@ test.describe('href set after initial render', () => {
     expect(getConsoleErrorsAmount(), getConsoleErrorMessages()).toBe(0);
   });
 });
+
+test.describe('href and slotted anchor', () => {
+  test('should not log an error for href with an element as label', async ({ page }) => {
+    initConsoleObserver(page);
+    await setContentWithDesignSystem(page, `<p-link href="#some-link"><span>Some label</span></p-link>`);
+
+    await expect(page.locator('p-link a')).toHaveAttribute('href', '#some-link');
+    expect(getConsoleErrorsAmount(), getConsoleErrorMessages()).toBe(0);
+  });
+
+  test('should log an error for href combined with slotted anchor', async ({ page }) => {
+    initConsoleObserver(page);
+    await setContentWithDesignSystem(
+      page,
+      `<p-link href="#some-link"><a href="#some-other-link">Some label</a></p-link>`
+    );
+
+    expect(getConsoleErrorsAmount()).toBe(1);
+  });
+});

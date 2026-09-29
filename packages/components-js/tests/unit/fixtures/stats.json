@@ -151,13 +151,13 @@
   },
   {
     "chunkShortName": "link",
-    "size": 7905,
-    "gzipSize": 3360
+    "size": 7664,
+    "gzipSize": 3257
   },
   {
     "chunkShortName": "link-pure",
-    "size": 8811,
-    "gzipSize": 3677
+    "size": 8570,
+    "gzipSize": 3574
   },
   {
     "chunkShortName": "link-tile",
@@ -166,8 +166,8 @@
   },
   {
     "chunkShortName": "link-tile-product",
-    "size": 8124,
-    "gzipSize": 3570
+    "size": 7490,
+    "gzipSize": 3281
   },
   {
     "chunkShortName": "main",

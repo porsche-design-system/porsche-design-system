@@ -207,3 +207,23 @@ test.describe('href set after initial render', () => {
     expect(getConsoleErrorsAmount(), getConsoleErrorMessages()).toBe(0);
   });
 });
+
+test.describe('href and slotted anchor', () => {
+  test('should not log an error and not render the slotted anchor when href is set', async ({ page }) => {
+    initConsoleObserver(page);
+    await initLinkTileProduct(page, { slotted: '<a slot="anchor" href="#some-other-link"></a>' });
+
+    await expect(page.locator('p-link-tile-product a[href="#some-other-link"]')).toBeHidden();
+    expect(getConsoleErrorsAmount(), getConsoleErrorMessages()).toBe(0);
+  });
+
+  test('should log an error for slotted anchor without label and without href', async ({ page }) => {
+    initConsoleObserver(page);
+    await initLinkTileProduct(page, {
+      props: { heading: 'Some product name', price: '1.199,00 €' },
+      slotted: '<a slot="anchor" href="#some-other-link"></a>',
+    });
+
+    expect(getConsoleErrorsAmount()).toBe(1);
+  });
+});
