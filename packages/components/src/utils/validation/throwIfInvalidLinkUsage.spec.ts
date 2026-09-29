@@ -14,6 +14,14 @@ it('should throw error with empty href value and direct anchor', () => {
   expect(() => throwIfInvalidLinkUsage(host, '')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
 
+it('should throw error with href value and nested anchor', () => {
+  const host = document.createElement('div');
+  const span = document.createElement('span');
+  span.append(document.createElement('a'));
+  host.append(span);
+  expect(() => throwIfInvalidLinkUsage(host, '#')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+});
+
 it('should not throw error with href value and label', () => {
   const host = document.createElement('div');
   host.append('Some label');
