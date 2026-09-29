@@ -79,6 +79,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: a `TypeError` was logged when `activeSlideIndex` was set before the `Carousel` had finished loading, e.g.
   by an Angular property binding after navigating back to a route.
   ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Pin Code`: a `value` set after the `Pin Code` had loaded, e.g. by an Angular property binding, was displayed but not
+  submitted with the form. ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Radio Group`: the `Radio Group` couldn't be reached with the Tab key when the first option was loading and no option
+  was selected, or when `disabled` or `loading` of an option changed after the `Radio Group` had loaded.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
 
 ## [4.7.0] - 2026-09-09
 
