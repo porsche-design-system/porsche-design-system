@@ -241,8 +241,8 @@
   },
   {
     "chunkShortName": "stepper-horizontal",
-    "size": 11533,
-    "gzipSize": 4821
+    "size": 11657,
+    "gzipSize": 4852
   },
   {
     "chunkShortName": "switch",
@@ -251,8 +251,8 @@
   },
   {
     "chunkShortName": "table",
-    "size": 10152,
-    "gzipSize": 4016
+    "size": 9979,
+    "gzipSize": 3943
   },
   {
     "chunkShortName": "tabs",
