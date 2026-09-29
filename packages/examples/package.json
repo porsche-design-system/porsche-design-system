@@ -8,8 +8,7 @@
   "scripts": {
     "dev": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'vite'",
     "start": "npm run dev",
-    "preview": "npm run build && concurrently -k -s 'first' -n 'cdn,site' 'serve-cdn' 'tsx scripts/previewSite.ts'",
-    "preview:app": "tsx scripts/previewSite.ts",
+    "preview": "concurrently -k -s 'first' -n 'cdn,site' 'serve-cdn' 'tsx scripts/previewSite.ts'",
     "build": "npm run typecheck && tsx scripts/build.ts && tsx scripts/buildSite.ts && npm run build:verify",
     "build:verify": "tsx scripts/verify.ts",
     "lint": "biome lint",

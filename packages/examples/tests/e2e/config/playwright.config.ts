@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import { playwrightConfigE2E } from '@porsche-design-system/shared/testing';
-import { exampleWebServers } from '../../helpers/previewServers.ts';
+import { exampleWebServer } from '../../helpers/previewServers.ts';
 
 /**
  * End-to-end tests of the examples.
@@ -25,5 +25,5 @@ export default defineConfig({
       },
     },
   ],
-  webServer: exampleWebServers,
+  webServer: exampleWebServer,
 });

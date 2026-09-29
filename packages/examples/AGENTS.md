@@ -68,7 +68,7 @@ scripts/shared.ts                 # output paths and file helpers
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 tests/unit/jsx.spec.tsx           # tests describing the rendering contract
-tests/helpers/previewServers.ts   # the web servers every Playwright suite runs against
+tests/helpers/previewServers.ts   # the web server every Playwright suite runs against
 tests/e2e/                        # behaviour: shared per page, flows per pattern
 tests/a11y/                       # axe-core over every page and its interaction states
 tests/vrt/                        # one capture set per page, plus the committed __screenshots__
@@ -137,7 +137,7 @@ npm run test:e2e:examples   # playwright – builds the site and drives the beha
 npm run test:a11y:examples  # playwright + axe-core – builds the site and scans every page
 npm run test:vrt:examples   # playwright – builds the site and screenshots every page
 
-# build the site and serve it below /examples/ against the local CDN
+# serve the built site below /examples/ against the local CDN – run build:examples first
 npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
 
 # from within this package
@@ -213,9 +213,10 @@ the two colour schemes, plus the states the initial scan cannot reach.
 
 The suite lives in [`tests/vrt/`](tests/vrt) and screenshots **every page in its initial state**.
 
-- **It tests the built site, not the dev server.** `pretest:vrt` runs the build, and the web servers of
-  [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts) are `serve-cdn` plus `preview:app`, which serves
-  `dist-site/` – so a capture shows the inlined entry and the injected partials, exactly what the storefront ships.
+- **It tests the built site, not the dev server.** `pretest:vrt` runs the build, and the web server of
+  [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts) is `npm run preview` – `serve-cdn` plus
+  `scripts/previewSite.ts`, which serves `dist-site/` – so a capture shows the inlined entry and the injected partials,
+  exactly what the storefront ships.
 - **Two projects, one viewport each:** `chrome` (chromium, 1000 = `viewportWidthM`) and `safari` (webkit, 320 =
   `viewportWidthXXS`). They are named after the engine because `prepare-vrt-snapshots` derives the names of the
   regression artifacts from the project name. Dark scheme, both High Contrast Mode schemes, 200% font size and `rtl` are
@@ -363,12 +364,12 @@ approach, and it is paid on every review:
   (`createDevHtmlTransformFn()` orders them `pre` → `devHtmlHook` → `normal` → `post`), so a page still carrying its
   entry tag makes the dev server log `Failed to load url /main.js` for a file that is never generated here. The partials
   need the opposite order and therefore stay in the hook — see [`vite.config.ts`](vite.config.ts).
-- **`preview` serves the built site, it does not build it.** `npm run preview` builds first, then
-  [`scripts/previewSite.ts`](scripts/previewSite.ts) serves `dist-site/` below `/examples/` on port 3011 and rewrites
-  the CDN origin of every HTML response to `http://localhost:3001`, in memory – the server the Playwright suites start
-  as `preview:app`. `dist-site/` itself keeps the production URLs. The loader builds one CDN URL by concatenation at
-  runtime, which no rewrite of the markup reaches; the Playwright suites catch it in their route handler
-  ([`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)).
+- **`preview` serves the built site, it does not build it.** `npm run preview` expects `dist-site/` to exist and starts
+  `serve-cdn` next to [`scripts/previewSite.ts`](scripts/previewSite.ts), which serves `dist-site/` below `/examples/`
+  on port 3011 and rewrites the CDN origin of every HTML response to `http://localhost:3001`, in memory. It is the same
+  command the Playwright suites start as their web server. `dist-site/` itself keeps the production URLs. The loader
+  builds one CDN URL by concatenation at runtime, which no rewrite of the markup reaches; the Playwright suites catch it
+  in their route handler ([`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)).
 - **The emitted files carry decided modes, not inherited ones.** `fs.cpSync()` copies the mode of every source file, and
   a bind mount does not always report a sane one: in the Playwright container copied media came out write-only, so the
   preview answered its own images with a permission error and a VRT baseline recorded a page without them. The scripts
