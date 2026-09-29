@@ -74,6 +74,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `activeIdentifier` could be missing when `activeIdentifier` was set right before the `Drilldown` had rendered for the
   first time, e.g. by an Angular property binding after navigating back to a route.
   ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Link`, `Link Pure`: no invalid usage error was logged when an empty `href` was combined with a slotted `<a>`, which
+  renders nested links. ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Carousel`: a `TypeError` was logged when `activeSlideIndex` was set before the `Carousel` had finished loading, e.g.
+  by an Angular property binding after navigating back to a route.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
 
 ## [4.7.0] - 2026-09-09
 
