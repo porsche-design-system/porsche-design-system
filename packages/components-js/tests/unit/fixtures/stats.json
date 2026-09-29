@@ -151,13 +151,13 @@
   },
   {
     "chunkShortName": "link",
-    "size": 7664,
-    "gzipSize": 3257
+    "size": 7414,
+    "gzipSize": 3130
   },
   {
     "chunkShortName": "link-pure",
-    "size": 8570,
-    "gzipSize": 3574
+    "size": 8320,
+    "gzipSize": 3449
   },
   {
     "chunkShortName": "link-tile",
