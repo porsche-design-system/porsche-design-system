@@ -29,8 +29,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Changed
 
 - `Link`, `Link Pure`, `Link Tile Product`: no error is logged anymore when neither `href` nor a slotted anchor is
-  provided, since the component then renders as plain text. `Link` and `Link Pure` only log an error when `href` is
-  combined with a slotted anchor, which renders nested links.
+  provided. `Link` and `Link Pure` then render their label as plain text, and `Link Tile Product` renders a
+  non-interactive tile. `Link` and `Link Pure` only log an error when `href` is combined with a slotted anchor (also a
+  nested one), which renders nested links.
   ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
 
 ### Fixed
