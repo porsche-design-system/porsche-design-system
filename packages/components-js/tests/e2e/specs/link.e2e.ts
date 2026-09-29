@@ -3,9 +3,12 @@ import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementId,
+  getConsoleErrorMessages,
+  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
+  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -227,5 +230,19 @@ test.describe('lifecycle', () => {
         { message: 'componentDidLoad: all' }
       )
       .toBe(2);
+  });
+});
+
+test.describe('href set after initial render', () => {
+  // Frameworks like Angular can connect the component before its `href` binding is applied (#4748)
+  test('should not log an error and render the link', async ({ page }) => {
+    initConsoleObserver(page);
+    await setContentWithDesignSystem(page, `<p-link>Some label</p-link>`);
+
+    await setProperty(getHost(page), 'href', '#some-link');
+    await waitForStencilLifecycle(page);
+
+    await expect(page.locator('p-link a')).toHaveAttribute('href', '#some-link');
+    expect(getConsoleErrorsAmount(), getConsoleErrorMessages()).toBe(0);
   });
 });

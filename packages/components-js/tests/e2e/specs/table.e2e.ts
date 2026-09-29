@@ -2,9 +2,12 @@ import { expect, test } from '@playwright/test';
 import type { Page } from 'playwright';
 import {
   addEventListener,
+  getConsoleWarningMessages,
   getEventSummary,
   getLifecycleStatus,
+  initConsoleObserver,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -135,5 +138,19 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(5); // 5 p-icons in table head for sorting
     expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5); // 5 p-table-head-cells have been updated
     expect(status.componentDidUpdate['p-table-head-cell'], 'final componentDidUpdate: p-table-head-cell').toBe(5);
+  });
+});
+
+test.describe('caption set after initial render', () => {
+  // Frameworks like Angular can connect the component before its `caption` binding is applied (#4748)
+  test('should not log a warning', async ({ page }) => {
+    initConsoleObserver(page);
+    await initTable(page);
+
+    await setProperty(getHost(page), 'caption', 'Some caption');
+    await waitForStencilLifecycle(page);
+
+    await expect(page.locator('p-table [role="table"]')).toHaveAttribute('aria-label', 'Some caption');
+    expect(getConsoleWarningMessages()).not.toContain('caption');
   });
 });

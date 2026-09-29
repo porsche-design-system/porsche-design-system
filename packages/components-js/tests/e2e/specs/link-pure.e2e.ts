@@ -3,8 +3,11 @@ import { expect, test } from '@playwright/test';
 import {
   addEventListener,
   getActiveElementId,
+  getConsoleErrorMessages,
+  getConsoleErrorsAmount,
   getEventSummary,
   getLifecycleStatus,
+  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -181,5 +184,19 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-link-pure'], 'componentDidUpdate: p-link-pure').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('href set after initial render', () => {
+  // Frameworks like Angular can connect the component before its `href` binding is applied (#4748)
+  test('should not log an error and render the link', async ({ page }) => {
+    initConsoleObserver(page);
+    await setContentWithDesignSystem(page, `<p-link-pure>Some label</p-link-pure>`);
+
+    await setProperty(getHost(page), 'href', '#some-link');
+    await waitForStencilLifecycle(page);
+
+    await expect(page.locator('p-link-pure a')).toHaveAttribute('href', '#some-link');
+    expect(getConsoleErrorsAmount(), getConsoleErrorMessages()).toBe(0);
   });
 });
