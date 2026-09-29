@@ -14,7 +14,7 @@ import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonP
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CanvasBackground, CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 import { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
-import { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from "./components/checkbox/checkbox-utils";
+import { CheckboxAriaAttribute, CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from "./components/checkbox/checkbox-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection } from "./components/divider/divider-utils";
@@ -26,24 +26,24 @@ import { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutDismissEve
 import { HeadingAlign, HeadingColor, HeadingHyphens, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-import { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
-import { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
-import { InputMonthBlurEventDetail, InputMonthChangeEventDetail, InputMonthInputEventDetail, InputMonthState } from "./components/input-month/input-month-utils";
-import { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
-import { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+import { InputDateAriaAttribute, InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
+import { InputEmailAriaAttribute, InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
+import { InputMonthAriaAttribute, InputMonthBlurEventDetail, InputMonthChangeEventDetail, InputMonthInputEventDetail, InputMonthState } from "./components/input-month/input-month-utils";
+import { InputNumberAriaAttribute, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
+import { InputPasswordAriaAttribute, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 import { InputSearchAriaAttribute, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
-import { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
-import { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
-import { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
-import { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
-import { InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
+import { InputTelAriaAttribute, InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
+import { InputTextAriaAttribute, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
+import { InputTimeAriaAttribute, InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
+import { InputUrlAriaAttribute, InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
+import { InputWeekAriaAttribute, InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
 import { LinkIcon, LinkVariant } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalDismissEventDetail, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+import { MultiSelectAriaAttribute, MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection, PopoverDismissEventDetail } from "./components/popover/popover-utils";
@@ -51,12 +51,12 @@ import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } fro
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
+import { SelectAriaAttribute, SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
 import { SheetAriaAttribute, SheetBackground, SheetDismissEventDetail, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerColor, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
-import { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
+import { SwitchAlignLabel, SwitchAriaAttribute, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
 import { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 import { TabsAriaAttribute, TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 import { TabsBarAriaAttribute, TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
@@ -64,7 +64,7 @@ import { TagIcon, TagVariant } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextListType } from "./components/text-list/text-list/text-list-utils";
-import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+import { TextareaAriaAttribute, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
@@ -77,7 +77,7 @@ export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonP
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 export { CanvasBackground, CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 export { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
-export { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from "./components/checkbox/checkbox-utils";
+export { CheckboxAriaAttribute, CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from "./components/checkbox/checkbox-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 export { DividerColor, DividerDirection } from "./components/divider/divider-utils";
@@ -89,24 +89,24 @@ export { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutDismissEve
 export { HeadingAlign, HeadingColor, HeadingHyphens, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-export { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
-export { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
-export { InputMonthBlurEventDetail, InputMonthChangeEventDetail, InputMonthInputEventDetail, InputMonthState } from "./components/input-month/input-month-utils";
-export { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
-export { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+export { InputDateAriaAttribute, InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
+export { InputEmailAriaAttribute, InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
+export { InputMonthAriaAttribute, InputMonthBlurEventDetail, InputMonthChangeEventDetail, InputMonthInputEventDetail, InputMonthState } from "./components/input-month/input-month-utils";
+export { InputNumberAriaAttribute, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
+export { InputPasswordAriaAttribute, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 export { InputSearchAriaAttribute, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
-export { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
-export { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
-export { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
-export { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
-export { InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
+export { InputTelAriaAttribute, InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
+export { InputTextAriaAttribute, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
+export { InputTimeAriaAttribute, InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
+export { InputUrlAriaAttribute, InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
+export { InputWeekAriaAttribute, InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
 export { LinkIcon, LinkVariant } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalDismissEventDetail, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+export { MultiSelectAriaAttribute, MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection, PopoverDismissEventDetail } from "./components/popover/popover-utils";
@@ -114,12 +114,12 @@ export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } fro
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
+export { SelectAriaAttribute, SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
 export { SheetAriaAttribute, SheetBackground, SheetDismissEventDetail, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerColor, SpinnerSize } from "./components/spinner/spinner-utils";
 export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
-export { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
+export { SwitchAlignLabel, SwitchAriaAttribute, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
 export { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 export { TabsAriaAttribute, TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 export { TabsBarAriaAttribute, TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
@@ -127,7 +127,7 @@ export { TagIcon, TagVariant } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 export { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextListType } from "./components/text-list/text-list/text-list-utils";
-export { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+export { TextareaAriaAttribute, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
 export { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
@@ -534,6 +534,10 @@ export namespace Components {
     }
     interface PCheckbox {
         /**
+          * Sets additional ARIA attributes on the native checkbox to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<CheckboxAriaAttribute>;
+        /**
           * Reflects the checkbox's current checked state and allows setting the initial checked value on load.
           * @default false
          */
@@ -928,6 +932,10 @@ export namespace Components {
     }
     interface PInputDate {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputDateAriaAttribute>;
+        /**
           * Provides the browser with a date autofill hint (e.g. `autocomplete='bday'` for a birthday field).
          */
         "autoComplete"?: string;
@@ -1009,6 +1017,10 @@ export namespace Components {
         "value"?: string | null;
     }
     interface PInputEmail {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputEmailAriaAttribute>;
         /**
           * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='email'`).
          */
@@ -1106,6 +1118,10 @@ export namespace Components {
     }
     interface PInputMonth {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputMonthAriaAttribute>;
+        /**
           * Provides the browser with a month/year autofill hint.
          */
         "autoComplete"?: string;
@@ -1187,6 +1203,10 @@ export namespace Components {
         "value"?: string | null;
     }
     interface PInputNumber {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputNumberAriaAttribute>;
         /**
           * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='postal-code'`).
          */
@@ -1280,6 +1300,10 @@ export namespace Components {
     }
     interface PInputPassword {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputPasswordAriaAttribute>;
+        /**
           * Provides the browser with a password autofill hint (e.g. `autocomplete='current-password'` or `autocomplete='new-password'`).
          */
         "autoComplete"?: string;
@@ -1367,7 +1391,7 @@ export namespace Components {
     }
     interface PInputSearch {
         /**
-          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -1463,6 +1487,10 @@ export namespace Components {
     }
     interface PInputTel {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputTelAriaAttribute>;
+        /**
           * Provides the browser with a phone number autofill hint (e.g. `autocomplete='tel'`).
          */
         "autoComplete"?: string;
@@ -1553,6 +1581,10 @@ export namespace Components {
         "value"?: string | null;
     }
     interface PInputText {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputTextAriaAttribute>;
         /**
           * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='name'`).
          */
@@ -1645,6 +1677,10 @@ export namespace Components {
     }
     interface PInputTime {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputTimeAriaAttribute>;
+        /**
           * Provides the browser with a time autofill hint.
          */
         "autoComplete"?: string;
@@ -1726,6 +1762,10 @@ export namespace Components {
         "value"?: string | null;
     }
     interface PInputUrl {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputUrlAriaAttribute>;
         /**
           * Provides the browser with a URL autofill hint (e.g. `autocomplete='url'`).
          */
@@ -1817,6 +1857,10 @@ export namespace Components {
         "value"?: string | null;
     }
     interface PInputWeek {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputWeekAriaAttribute>;
         /**
           * Provides the browser with a week/year autofill hint.
          */
@@ -2198,6 +2242,10 @@ export namespace Components {
      * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PMultiSelect {
+        /**
+          * Sets additional ARIA attributes on the combobox to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<MultiSelectAriaAttribute>;
         /**
           * Reduces the control height and padding for a more compact layout.
           * @default false
@@ -2620,6 +2668,10 @@ export namespace Components {
      */
     interface PSelect {
         /**
+          * Sets additional ARIA attributes on the combobox to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<SelectAriaAttribute>;
+        /**
           * Reduces the control height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
@@ -2765,6 +2817,10 @@ export namespace Components {
           * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
+        /**
+          * Sets additional ARIA attributes on the switch to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<SwitchAriaAttribute>;
         /**
           * Reflects the switch's current on/off state and allows setting the initial checked value when the component first renders.
           * @default false
@@ -3002,6 +3058,10 @@ export namespace Components {
     interface PTextListItem {
     }
     interface PTextarea {
+        /**
+          * Sets additional ARIA attributes on the native textarea to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<TextareaAriaAttribute>;
         /**
           * Provides the browser with a hint to enable text autofill suggestions for the textarea (e.g. `autocomplete='on'`).
          */
@@ -4737,6 +4797,10 @@ declare namespace LocalJSX {
     }
     interface PCheckbox {
         /**
+          * Sets additional ARIA attributes on the native checkbox to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<CheckboxAriaAttribute>;
+        /**
           * Reflects the checkbox's current checked state and allows setting the initial checked value on load.
           * @default false
          */
@@ -5167,6 +5231,10 @@ declare namespace LocalJSX {
     }
     interface PInputDate {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputDateAriaAttribute>;
+        /**
           * Provides the browser with a date autofill hint (e.g. `autocomplete='bday'` for a birthday field).
          */
         "autoComplete"?: string;
@@ -5260,6 +5328,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface PInputEmail {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputEmailAriaAttribute>;
         /**
           * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='email'`).
          */
@@ -5369,6 +5441,10 @@ declare namespace LocalJSX {
     }
     interface PInputMonth {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputMonthAriaAttribute>;
+        /**
           * Provides the browser with a month/year autofill hint.
          */
         "autoComplete"?: string;
@@ -5462,6 +5538,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface PInputNumber {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputNumberAriaAttribute>;
         /**
           * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='postal-code'`).
          */
@@ -5567,6 +5647,10 @@ declare namespace LocalJSX {
     }
     interface PInputPassword {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputPasswordAriaAttribute>;
+        /**
           * Provides the browser with a password autofill hint (e.g. `autocomplete='current-password'` or `autocomplete='new-password'`).
          */
         "autoComplete"?: string;
@@ -5666,7 +5750,7 @@ declare namespace LocalJSX {
     }
     interface PInputSearch {
         /**
-          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -5774,6 +5858,10 @@ declare namespace LocalJSX {
     }
     interface PInputTel {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputTelAriaAttribute>;
+        /**
           * Provides the browser with a phone number autofill hint (e.g. `autocomplete='tel'`).
          */
         "autoComplete"?: string;
@@ -5876,6 +5964,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface PInputText {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputTextAriaAttribute>;
         /**
           * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='name'`).
          */
@@ -5980,6 +6072,10 @@ declare namespace LocalJSX {
     }
     interface PInputTime {
         /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputTimeAriaAttribute>;
+        /**
           * Provides the browser with a time autofill hint.
          */
         "autoComplete"?: string;
@@ -6073,6 +6169,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface PInputUrl {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputUrlAriaAttribute>;
         /**
           * Provides the browser with a URL autofill hint (e.g. `autocomplete='url'`).
          */
@@ -6176,6 +6276,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface PInputWeek {
+        /**
+          * Sets additional ARIA attributes on the native input to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<InputWeekAriaAttribute>;
         /**
           * Provides the browser with a week/year autofill hint.
          */
@@ -6585,6 +6689,10 @@ declare namespace LocalJSX {
      * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PMultiSelect {
+        /**
+          * Sets additional ARIA attributes on the combobox to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<MultiSelectAriaAttribute>;
         /**
           * Reduces the control height and padding for a more compact layout.
           * @default false
@@ -7051,6 +7159,10 @@ declare namespace LocalJSX {
      */
     interface PSelect {
         /**
+          * Sets additional ARIA attributes on the combobox to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<SelectAriaAttribute>;
+        /**
           * Reduces the control height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
@@ -7224,6 +7336,10 @@ declare namespace LocalJSX {
           * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
+        /**
+          * Sets additional ARIA attributes on the switch to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<SwitchAriaAttribute>;
         /**
           * Reflects the switch's current on/off state and allows setting the initial checked value when the component first renders.
           * @default false
@@ -7477,6 +7593,10 @@ declare namespace LocalJSX {
     interface PTextListItem {
     }
     interface PTextarea {
+        /**
+          * Sets additional ARIA attributes on the native textarea to improve accessibility for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<TextareaAriaAttribute>;
         /**
           * Provides the browser with a hint to enable text autofill suggestions for the textarea (e.g. `autocomplete='on'`).
          */
@@ -7737,6 +7857,7 @@ declare namespace LocalJSX {
         "hideLabel": string;
         "loading": boolean;
         "compact": boolean;
+        "aria": SelectedAriaAttributes<CheckboxAriaAttribute>;
     }
     interface PCrestAttributes {
         "href": string;
@@ -7840,6 +7961,7 @@ declare namespace LocalJSX {
         "state": InputDateState;
         "message": string;
         "hideLabel": string;
+        "aria": SelectedAriaAttributes<InputDateAriaAttribute>;
     }
     interface PInputEmailAttributes {
         "label": string;
@@ -7862,6 +7984,7 @@ declare namespace LocalJSX {
         "hideLabel": string;
         "multiple": boolean;
         "pattern": string;
+        "aria": SelectedAriaAttributes<InputEmailAriaAttribute>;
     }
     interface PInputMonthAttributes {
         "label": string;
@@ -7881,6 +8004,7 @@ declare namespace LocalJSX {
         "state": InputMonthState;
         "message": string;
         "hideLabel": string;
+        "aria": SelectedAriaAttributes<InputMonthAriaAttribute>;
     }
     interface PInputNumberAttributes {
         "label": string;
@@ -7902,6 +8026,7 @@ declare namespace LocalJSX {
         "message": string;
         "hideLabel": string;
         "controls": boolean;
+        "aria": SelectedAriaAttributes<InputNumberAriaAttribute>;
     }
     interface PInputPasswordAttributes {
         "label": string;
@@ -7922,6 +8047,7 @@ declare namespace LocalJSX {
         "message": string;
         "hideLabel": string;
         "toggle": boolean;
+        "aria": SelectedAriaAttributes<InputPasswordAriaAttribute>;
     }
     interface PInputSearchAttributes {
         "label": string;
@@ -7965,6 +8091,7 @@ declare namespace LocalJSX {
         "message": string;
         "hideLabel": string;
         "pattern": string;
+        "aria": SelectedAriaAttributes<InputTelAriaAttribute>;
     }
     interface PInputTextAttributes {
         "label": string;
@@ -7986,6 +8113,7 @@ declare namespace LocalJSX {
         "message": string;
         "hideLabel": string;
         "counter": boolean;
+        "aria": SelectedAriaAttributes<InputTextAriaAttribute>;
     }
     interface PInputTimeAttributes {
         "label": string;
@@ -8005,6 +8133,7 @@ declare namespace LocalJSX {
         "state": InputTimeState;
         "message": string;
         "hideLabel": string;
+        "aria": SelectedAriaAttributes<InputTimeAriaAttribute>;
     }
     interface PInputUrlAttributes {
         "label": string;
@@ -8026,6 +8155,7 @@ declare namespace LocalJSX {
         "message": string;
         "hideLabel": string;
         "pattern": string;
+        "aria": SelectedAriaAttributes<InputUrlAriaAttribute>;
     }
     interface PInputWeekAttributes {
         "label": string;
@@ -8045,6 +8175,7 @@ declare namespace LocalJSX {
         "state": InputWeekState;
         "message": string;
         "hideLabel": string;
+        "aria": SelectedAriaAttributes<InputWeekAriaAttribute>;
     }
     interface PLinkAttributes {
         "variant": LinkVariant;
@@ -8130,6 +8261,7 @@ declare namespace LocalJSX {
         "dropdownDirection": MultiSelectDropdownDirection;
         "compact": boolean;
         "form": string;
+        "aria": SelectedAriaAttributes<MultiSelectAriaAttribute>;
     }
     interface PMultiSelectOptionAttributes {
         "value": string;
@@ -8235,6 +8367,7 @@ declare namespace LocalJSX {
         "filter": boolean;
         "compact": boolean;
         "form": string;
+        "aria": SelectedAriaAttributes<SelectAriaAttribute>;
     }
     interface PSelectOptionAttributes {
         "value": string;
@@ -8267,6 +8400,7 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "loading": boolean;
         "compact": boolean;
+        "aria": SelectedAriaAttributes<SwitchAriaAttribute>;
     }
     interface PTableAttributes {
         "caption": string;
@@ -8345,6 +8479,7 @@ declare namespace LocalJSX {
         "wrap": TextareaWrap;
         "resize": TextareaResize;
         "readOnly": boolean;
+        "aria": SelectedAriaAttributes<TextareaAriaAttribute>;
     }
     interface PToastItemAttributes {
         "text": string;

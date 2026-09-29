@@ -3,6 +3,7 @@ import { inputDateExampleForm } from '@porsche-design-system/shared/examples';
 import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-date/accessibility/examples/hidden-label-without-accessible-name/example';
 import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-date/accessibility/examples/placeholder-used-as-the-only-label/example';
 import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-date/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/input-date/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 import AccessibilityOverview from '@/app/(main)/components/input-date/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/input-date/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-date/configurator/introduction.mdx';
@@ -37,6 +38,7 @@ export const inputDateMeta = {
   accessibility: {
     overview: AccessibilityOverview,
     examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
       placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
       hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
       validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,

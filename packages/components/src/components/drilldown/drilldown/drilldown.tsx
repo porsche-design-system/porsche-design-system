@@ -1,5 +1,17 @@
 import { breakpointS } from '@porsche-design-system/emotion';
-import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../../types';
 import {
   AllowedTypes,
@@ -89,6 +101,14 @@ export class Drilldown {
     this.update.emit({ activeIdentifier });
   }
 
+  // an item identifier can be set after the drilldown has matched its `activeIdentifier`, e.g. by an Angular binding
+  @Listen('internalDrilldownItemIdentifierChange')
+  public itemIdentifierChangeHandler(e: Event): void {
+    e.stopPropagation();
+    this.syncActiveItem();
+    forceUpdate(this.host); // re-validates the active identifier against the updated identifiers
+  }
+
   public connectedCallback(): void {
     this.handleMediaQueryS(this.matchMediaQueryS);
     this.matchMediaQueryS.addEventListener('change', this.handleMediaQueryS);
@@ -96,9 +116,7 @@ export class Drilldown {
 
   public async componentWillLoad(): Promise<void> {
     this.defineDrilldownItemElements();
-    const activeItem = this.drilldownItemElements.find((item: Item) => item.identifier === this.activeIdentifier);
-    activeItem && updateDrilldownItemState(activeItem, true); // Set item state
-    this.primary = !activeItem || activeItem.parentElement === this.host;
+    this.syncActiveItem();
   }
 
   public componentDidLoad(): void {
@@ -181,6 +199,26 @@ export class Drilldown {
     );
   }
 
+  private syncActiveItem(): void {
+    // Derives the item states from the current `activeIdentifier` and item identifiers, on load, on an item identifier
+    // change and after the transition animation of `updateDrilldownState()`
+    // guard, otherwise an item without identifier matches an undefined `activeIdentifier`
+    const activeItem =
+      this.activeIdentifier !== undefined
+        ? this.drilldownItemElements.find((item) => item.identifier === this.activeIdentifier)
+        : undefined;
+    // looked up by state instead of identifier, since the identifier of the previously active item may have changed
+    const previousActiveItem = this.drilldownItemElements.find((item) => item.secondary);
+
+    if (previousActiveItem && previousActiveItem !== activeItem) {
+      updateDrilldownItemState(previousActiveItem, false);
+    }
+    activeItem && updateDrilldownItemState(activeItem, true);
+    this.primary = !activeItem || activeItem.parentElement === this.host;
+    // based on the resolved item instead of `activeIdentifier`, otherwise an unmatched identifier shows an empty drawer
+    this.isSecondaryDrawerVisible = !!activeItem;
+  }
+
   private defineDrilldownItemElements = (): void => {
     this.drilldownItemElements = getHTMLElementOfKind(this.host, 'p-drilldown-item') as Item[];
   };
@@ -224,17 +262,19 @@ export class Drilldown {
   }
 
   private async updateDrilldownState(oldVal: string | undefined, newVal: string | undefined): Promise<void> {
+    // Items are only used to pick the transition, the state is resolved afterwards by syncActiveItem() because
+    // activeIdentifier or an item identifier may have changed while the fade out animation was running
     const oldItem = oldVal && this.drilldownItemElements.find((item) => item.identifier === oldVal);
     const newItem = newVal && this.drilldownItemElements.find((item) => item.identifier === newVal);
 
     // Secondary Drawer is closed => only update state
     if (!newItem) {
       if (this.isDesktop) {
-        this.updateStates(oldItem, newItem);
+        this.syncActiveItem();
       } else {
         const animation = this.animateDrawerFade('::after', 'out');
         await animation.finished;
-        this.updateStates(oldItem, newItem);
+        this.syncActiveItem();
         this.animateDrawerFade('::after', 'in');
       }
     }
@@ -242,12 +282,12 @@ export class Drilldown {
     // Secondary Drawer is opened => update state + fade in
     if (!oldItem) {
       if (this.isDesktop) {
-        this.updateStates(oldItem, newItem);
+        this.syncActiveItem();
         this.animateDrawerFade('::after', 'in');
       } else {
         const animation = this.animateDrawerFade('::after', 'out');
         await animation.finished;
-        this.updateStates(oldItem, newItem);
+        this.syncActiveItem();
         this.animateDrawerFade('::after', 'in');
       }
     }
@@ -261,7 +301,7 @@ export class Drilldown {
       ].filter(Boolean);
 
       await Promise.all(animations.map((a) => a.finished));
-      this.updateStates(oldItem, newItem);
+      this.syncActiveItem();
       isHierarchyChanged && this.animateDrawerFade('::before', 'in');
       this.animateDrawerFade('::after', 'in');
     }
@@ -269,13 +309,6 @@ export class Drilldown {
 
   private emitCloseSecondaryUpdate(): void {
     this.update.emit({ activeIdentifier: undefined });
-  }
-
-  private updateStates(oldItem: Item | undefined, newItem: Item | undefined): void {
-    this.primary = !oldItem || !newItem || newItem.parentElement === this.host;
-    this.isSecondaryDrawerVisible = !!this.activeIdentifier;
-    oldItem && updateDrilldownItemState(oldItem, false); // Reset old item state
-    newItem && updateDrilldownItemState(newItem, true); // Set new item state
   }
 
   private animateDrawerFade(pseudoElement: '::before' | '::after', direction: 'in' | 'out'): Animation {

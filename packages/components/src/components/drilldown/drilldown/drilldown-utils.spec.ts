@@ -38,11 +38,20 @@ describe('validateActiveIdentifier()', () => {
 
   it('should call consoleError() util when activeIdentifier of drilldown matches no identifier of a drilldown-item', () => {
     const instance = new SomeInstance();
-    const items = [createChild(), createChild()];
+    const items = [createChild('other-id-1'), createChild('other-id-2')];
 
     const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessage);
+  });
+
+  it('should not call consoleError() util when activeIdentifier of drilldown matches no identifier but a drilldown-item has no identifier yet', () => {
+    const instance = new SomeInstance();
+    const items = [createChild('other-id'), createChild()];
+
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
+    drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it("should call consoleError() util when activeIdentifier of drilldown matches multiple identifier of drilldown-item's", () => {

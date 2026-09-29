@@ -14,12 +14,13 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   debounce,
   FILTER_STATUS_ANNOUNCE_TIMEOUT,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getComboboxAriaAttributes,
   getFilterStatusMessage,
@@ -40,6 +41,7 @@ import {
   isUsableOption,
   type Option,
   optionListUpdatePosition,
+  parseAndGetAriaAttributes,
   SELECT_DROPDOWN_DIRECTIONS,
   setHighlightedSelectOption,
   throwIfElementIsNotOfKind,
@@ -55,6 +57,7 @@ import { messageId, StateMessage } from '../../common/state-message/state-messag
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './multi-select-styles';
 import {
+  type MultiSelectAriaAttribute,
   type MultiSelectChangeEventDetail,
   type MultiSelectDropdownDirection,
   type MultiSelectOptgroup,
@@ -83,6 +86,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<MultiSelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<MultiSelectAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -156,6 +160,9 @@ export class MultiSelect {
   /** Associates the multi-select with a form element by its ID when not directly nested inside it. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
+  /** Sets additional ARIA attributes on the combobox to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<MultiSelectAriaAttribute>;
+
   /** Emitted when the multi-select loses focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
@@ -205,6 +212,21 @@ export class MultiSelect {
   public optgroupUpdateHandler(e: Event): void {
     e.stopPropagation();
     this.updateOptions();
+  }
+
+  @Listen('internalMultiSelectOptionValueChange')
+  public optionValueChangeHandler(e: Event): void {
+    e.stopPropagation();
+    if (this.multiSelectOptions.length > 0) {
+      const selectedOptions = selectOptionsByValue(this.multiSelectOptions, this.value);
+      // Keep the selection of removed options like onSlotchange does, so controlled async filtering keeps working
+      const keptOptions = this.selectedOptions.filter(
+        (option) =>
+          selectedOptions.includes(option) ||
+          (!this.multiSelectOptions.includes(option) && !selectedOptions.some((o) => o.value === option.value))
+      );
+      this.selectedOptions = [...keptOptions, ...selectedOptions.filter((option) => !keptOptions.includes(option))];
+    }
   }
 
   @Watch('value')
@@ -349,6 +371,7 @@ export class MultiSelect {
           isDisabled={this.disabled}
         />
         <button
+          {...parseAndGetAriaAttributes(this.aria)}
           aria-invalid={this.state === 'error' ? 'true' : null}
           type="button"
           role="combobox"
@@ -357,7 +380,6 @@ export class MultiSelect {
           {...getComboboxAriaAttributes(
             this.isOpen,
             this.required,
-            hasLabel(this.host, this.label) && labelId,
             selectMessageId,
             selectDescriptionId,
             listboxId

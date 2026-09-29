@@ -99,6 +99,68 @@ describe('asynchronous options', () => {
   });
 });
 
+describe('optionValueChangeHandler', () => {
+  it('should select an option that receives a matching value after the initial matching', () => {
+    const component = initComponent();
+    const emit = vi.fn();
+    component.change = { emit };
+    const value = ['a'];
+    component.value = value;
+    const option = Object.assign(document.createElement('p-multi-select-option'), {
+      value: undefined,
+      selected: false,
+    });
+    component.host.append(option);
+
+    component.componentWillLoad();
+    expect(component['selectedOptions']).toEqual([]);
+
+    option.value = 'a';
+    const event = new Event('internalMultiSelectOptionValueChange', { bubbles: true });
+    const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
+    component.optionValueChangeHandler(event);
+
+    expect(stopPropagationSpy).toHaveBeenCalled();
+    expect(option.selected).toBe(true);
+    expect(component['selectedOptions']).toEqual([option]);
+    expect(component.value).toBe(value);
+    expect(emit).not.toHaveBeenCalled();
+  });
+
+  it('should keep the selection of a removed option when the value of another option changes', () => {
+    const component = initComponent();
+    component.value = ['c'];
+    const optionA = Object.assign(document.createElement('p-multi-select-option'), { value: 'a', selected: false });
+    const optionC = Object.assign(document.createElement('p-multi-select-option'), { value: 'c', selected: false });
+    component.host.append(optionA, optionC);
+    component.componentWillLoad();
+    optionC.remove();
+    component['onSlotchange']();
+    expect(component['selectedOptions']).toEqual([optionC]);
+
+    optionA.value = 'b';
+    component.optionValueChangeHandler(new Event('internalMultiSelectOptionValueChange'));
+
+    expect(component['selectedOptions']).toEqual([optionC]);
+  });
+
+  it('should deselect an option when its value changes away from the multi select value', () => {
+    const component = initComponent();
+    component.value = ['a', 'c'];
+    const optionA = Object.assign(document.createElement('p-multi-select-option'), { value: 'a', selected: false });
+    const optionC = Object.assign(document.createElement('p-multi-select-option'), { value: 'c', selected: false });
+    component.host.append(optionA, optionC);
+    component.componentWillLoad();
+    expect(component['selectedOptions']).toEqual([optionA, optionC]);
+
+    optionA.value = 'b';
+    component.optionValueChangeHandler(new Event('internalMultiSelectOptionValueChange'));
+
+    expect(component['selectedOptions']).toEqual([optionC]);
+    expect(optionA.selected).toBe(false);
+  });
+});
+
 describe('disconnectedCallback', () => {
   it('should remove event listener', () => {
     const component = initComponent();

@@ -28,7 +28,7 @@ describe('AI_TAG_ICON_PATH', () => {
 describe('AI_TAG_TRANSLATIONS', () => {
   it('should use bare language keys (no POSIX region suffixes)', () => {
     const keys = Object.keys(AI_TAG_TRANSLATIONS);
-    expect(keys.length).toBe(33);
+    expect(keys.length).toBe(39);
     expect(keys).toContain('en');
     expect(keys).not.toContain('en_US');
     expect(keys.every((key) => !key.includes('_') && !key.includes('-'))).toBe(true);
@@ -46,6 +46,7 @@ describe('AI_TAG_TRANSLATIONS', () => {
   });
 
   it.each<[AiTagTranslationLanguage, string]>([
+    ['ar', 'AI'],
     ['bg', 'ИИ'],
     ['bs', 'AI'],
     ['cs', 'AI'],
@@ -62,6 +63,8 @@ describe('AI_TAG_TRANSLATIONS', () => {
     ['hu', 'MI'],
     ['is', 'AI'],
     ['it', 'IA'],
+    ['ja', 'AI'],
+    ['ko', 'AI'],
     ['lt', 'DI'],
     ['lv', 'MI'],
     ['me', 'AI'],
@@ -79,6 +82,9 @@ describe('AI_TAG_TRANSLATIONS', () => {
     ['sv', 'AI'],
     ['tr', 'AI'],
     ['uk', 'ШІ'],
+    ['zhCN', 'AI'],
+    ['zhHK', 'AI'],
+    ['zhTW', 'AI'],
   ])('should return correct short text for language: %s → %s', (language, expected) => {
     expect(AI_TAG_TRANSLATIONS[language].short).toBe(expected);
   });
@@ -151,6 +157,10 @@ describe('getAiTagLanguage()', () => {
     ['nb-NO', 'no'],
     ['me-ME', 'me'],
     ['sr-ME', 'sr'],
+    ['zh-CN', 'zhCN'],
+    ['zh-HK', 'zhHK'],
+    ['zh-TW', 'zhTW'],
+    ['zh_CN', 'zhCN'],
   ])('should extract language from %s → %s', (input, expected) => {
     expect(getAiTagLanguage(input)).toBe(expected);
   });
@@ -163,12 +173,15 @@ describe('resolveAiTagTranslationLanguage()', () => {
     ['cs-SK', 'cs'],
     ['me-ME', 'me'],
     ['sr-ME', 'sr'],
-    ['ja-JP', 'en'],
-    ['ar-SA', 'en'],
+    ['ja-JP', 'ja'],
+    ['ar-SA', 'ar'],
+    ['ko-KR', 'ko'],
     ['az-AZ', 'en'],
     ['ka-GE', 'en'],
-    ['zh-CN', 'en'],
-    ['zh-HK', 'en'],
+    ['zh-CN', 'zhCN'],
+    ['zh-HK', 'zhHK'],
+    ['zh-TW', 'zhTW'],
+    ['zh_CN', 'zhCN'],
     ['hy-AM', 'en'],
     ['xx-XX', 'en'],
     ['', 'en'],
@@ -199,30 +212,27 @@ describe('getAiTagTranslation()', () => {
     ['ru-KZ', 'ИИ', 'искусственный интеллект'],
     ['ru-RU', 'ИИ', 'искусственный интеллект'],
     ['sr-ME', 'AI', 'veštačka inteligencija'],
+    ['sr-RS', 'AI', 'veštačka inteligencija'],
     ['me-ME', 'AI', 'veštačka inteligencija'],
     ['cs-SK', 'AI', 'umělá inteligence'],
     ['is-IS', 'AI', 'gervigreind'],
     ['mt-MT', 'AI', 'artificial intelligence'],
+    ['ar-SA', 'AI', 'الذكاء الاصطناعي'],
+    ['ja-JP', 'AI', '人工知能'],
+    ['ko-KR', 'AI', '인공지능'],
+    ['tr-TR', 'AI', 'yapay zeka'],
+    ['zh-CN', 'AI', '人工智能'],
+    ['zh-HK', 'AI', '人工智能'],
+    ['zh-TW', 'AI', '人工智慧'],
   ])('should resolve %s by language', (locale, expectedShort, expectedLong) => {
     const entry = getAiTagTranslation(locale);
     expect(entry.short).toBe(expectedShort);
     expect(entry.long).toBe(expectedLong);
   });
 
-  it.each([
-    'ja-JP',
-    'ar-SA',
-    'az-AZ',
-    'ka-GE',
-    'zh-CN',
-    'zh-HK',
-    'hy-AM',
-    'ko-KR',
-    'en-XA',
-    'xx_XX',
-    'xx-XX',
-    '',
-  ])('should fall back to English for untranslated locale %s', (locale) => {
+  it.each(['az-AZ', 'ka-GE', 'hy-AM', 'en-XA', 'xx_XX', 'xx-XX', ''])(
+    'should fall back to English for untranslated locale %s',
+    (locale) => {
     expect(getAiTagTranslation(locale)).toStrictEqual(AI_TAG_TRANSLATIONS.en);
   });
 
@@ -244,6 +254,31 @@ describe('getAiTagTranslation()', () => {
     const bg = getAiTagTranslation('bg');
     expect(bg.generated).toBe('генериран от изкуствен интелект');
     expect(bg.modified).toBe('модифициран от изкуствен интелект');
+  });
+
+  it('should use the Slovak generated phrase from the legal sheet', () => {
+    expect(getAiTagTranslation('sk-SK').generated).toBe('Vytvorené AI');
+  });
+
+  it('should map Chinese market locales to distinct translation keys', () => {
+    expect(getAiTagTranslation('zh-CN')).toMatchObject({
+      long: '人工智能',
+      generated: 'AI生成',
+      modified: 'AI润色',
+    });
+    expect(getAiTagTranslation('zh-HK')).toMatchObject({
+      long: '人工智能',
+      generated: '由 AI 生成的',
+      modified: '經 AI 修改的',
+    });
+    expect(getAiTagTranslation('zh-TW')).toMatchObject({
+      long: '人工智慧',
+      generated: 'AI生成',
+      modified: 'AI修改',
+    });
+    expect(getAiTagTranslation('zh_CN')).toBe(AI_TAG_TRANSLATIONS.zhCN);
+    expect(getAiTagTranslation('zh_HK')).toBe(AI_TAG_TRANSLATIONS.zhHK);
+    expect(getAiTagTranslation('zh_TW')).toBe(AI_TAG_TRANSLATIONS.zhTW);
   });
 
   it('should resolve bare de at runtime even when not allowlisted', () => {

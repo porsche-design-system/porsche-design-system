@@ -2,6 +2,7 @@ import { componentMeta } from '@porsche-design-system/component-meta';
 import { checkboxExampleForm } from '@porsche-design-system/shared/examples';
 import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/checkbox/accessibility/examples/hidden-label-without-accessible-name/example';
 import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/checkbox/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/checkbox/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 import AccessibilityOverview from '@/app/(main)/components/checkbox/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/checkbox/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/checkbox/configurator/introduction.mdx';
@@ -52,6 +53,7 @@ export const checkboxMeta = {
   accessibility: {
     overview: AccessibilityOverview,
     examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
       hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
       validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
     },
