@@ -70,6 +70,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
 - `Table`: a missing caption warning was logged when `caption` was set only after the component had rendered. The
   warning has been removed. ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Drilldown` (🧪Experimental): on mobile viewports, an uncaught `TypeError` was thrown and the level matching
+  `activeIdentifier` could be missing when `activeIdentifier` was set right before the `Drilldown` had rendered for the
+  first time, e.g. by an Angular property binding after navigating back to a route.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
 
 ## [4.7.0] - 2026-09-09
 
