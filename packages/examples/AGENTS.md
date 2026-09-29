@@ -350,7 +350,7 @@ approach, and it is paid on every review:
 - Vitest needs its own config because `vite.config.ts` sets `root: 'src'`, which would make Vitest look for tests there.
 - Prettier is used as a **library** in the build to format rendered markup, not as a repo formatter for this package.
 - **The dev server rewrites the CDN URL.** The partials always emit absolute production URLs
-  (`https://cdn.ui.porsche.com/porsche-design-system/…`), regardless of how the monorepo was built. `npm run dev` starts
+  (`https://cdn.ui.porsche.com/porsche-design-system/…`), regardless of how the monorepo was built. `npm start` starts
   `serve-cdn` alongside Vite, so [`vite.config.ts`](vite.config.ts) rewrites those URLs to `http://localhost:3001` —
   without it the browser loads the components from the production CDN and blocks the loader script with a CORS error.
   The same rewrite exists in the react/angular/vue/storefront dev servers. It is **dev only**; the generated projects

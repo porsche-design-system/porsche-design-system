@@ -9,7 +9,7 @@ import { listProjects, packageDir, siteDir } from './shared.ts';
 /**
  * Serves the built site the way the storefront does, against the local CDN.
  *
- * `npm run dev` serves the **source** tree, where the pages are rendered per request. This is the other end:
+ * `npm start` serves the **source** tree, where the pages are rendered per request. This is the other end:
  * `dist-site/` – the self-contained pages `scripts/buildSite.ts` built from their generated projects – served below
  * `/examples/`, like a storefront without a basePath serves `public/examples/`. So the media resolve exactly as they do
  * there, and what the browser gets is what the storefront ships.
