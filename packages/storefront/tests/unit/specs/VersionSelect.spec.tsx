@@ -95,6 +95,17 @@ describe('VersionSelect', () => {
     expect(window.location.href).toBe(`${origin}/v4.7.0`);
   });
 
+  it('should navigate to the production deployment in the development environment', () => {
+    mocks.isDev = true;
+    vi.stubGlobal('location', { origin: 'http://localhost:3000', href: 'http://localhost:3000/' });
+
+    renderVersionSelect();
+
+    selectVersion('4.5.0');
+
+    expect(window.location.href).toBe('https://designsystem.porsche.com/v4.5.0');
+  });
+
   it('should not offer the latest release button in the development environment', () => {
     mocks.isDev = true;
 

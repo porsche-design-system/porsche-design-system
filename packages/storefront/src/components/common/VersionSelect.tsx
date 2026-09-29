@@ -3,6 +3,9 @@ import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { isDevEnvironment } from '@/utils/isDev';
 import { getMajorVersion } from '@/utils/pdsVersion';
 
+// Version deployments only exist in production, so the development server sends every choice there instead.
+const productionOrigin = 'https://designsystem.porsche.com';
+
 type VersionSelectProps = {
   readonly pdsVersion: PDSVersionGroup;
 };
@@ -12,7 +15,8 @@ export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
 
   const onVersionChange = (version: PSelectProps['value']) => {
     const ver = latest !== undefined && version === latest ? getMajorVersion(latest) : version;
-    window.location.href = `${window.location.origin}/v${ver}`;
+    const origin = isDevEnvironment ? productionOrigin : window.location.origin;
+    window.location.href = `${origin}/v${ver}`;
   };
 
   return (
