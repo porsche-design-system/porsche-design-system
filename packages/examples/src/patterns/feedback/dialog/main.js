@@ -17,11 +17,20 @@ const submit = document.getElementById('feedback-submit');
 const thanks = document.getElementById('feedback-thanks');
 const thanksHeading = document.getElementById('feedback-thanks-heading');
 
+// Handle of the simulated request, so dismissing the modal mid-submission can cancel it before the confirmation shows.
+let pendingSubmission;
+
+const cancelSubmission = () => {
+  window.clearTimeout(pendingSubmission);
+  pendingSubmission = undefined;
+};
+
 const openModal = () => {
   modal.open = true;
 };
 
 const closeModal = () => {
+  cancelSubmission();
   modal.open = false;
 };
 
@@ -48,6 +57,7 @@ const revealCommentAndSubmit = () => {
 
 // Reveal the confirmation once the "submission" has completed.
 const showConfirmation = () => {
+  pendingSubmission = undefined;
   submit.loading = false;
   form.hidden = true;
   question.hidden = true;
@@ -66,5 +76,5 @@ submit.addEventListener('click', () => {
   // Simulate a short server round-trip: show a loading spinner while "submitting",
   // then reveal the confirmation. In a real integration the request would happen here.
   submit.loading = true;
-  window.setTimeout(showConfirmation, 1200);
+  pendingSubmission = window.setTimeout(showConfirmation, 1200);
 });

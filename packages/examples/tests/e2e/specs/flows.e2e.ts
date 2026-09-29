@@ -103,6 +103,24 @@ test.describe('patterns-feedback-dialog', () => {
     await expect(page.locator('#feedback-thanks')).toBeHidden();
     await expect(page.locator('#feedback-comment')).toBeHidden();
   });
+
+  test('cancels a pending submission when the dialog is dismissed', async ({ page }) => {
+    await setupExamplePage(page, getUrl('patterns-feedback-dialog'));
+
+    await page.locator('#feedback-trigger').click();
+    await page.locator('p-segmented-control-item[value="4"]').click();
+    await page.locator('#feedback-submit').click();
+    await page.keyboard.press('Escape');
+    await expect(page.locator('#feedback-modal')).toBeHidden();
+
+    // Outlast the simulated request, which would otherwise reveal the confirmation behind the closed dialog.
+    await page.waitForTimeout(1500);
+    await page.locator('#feedback-trigger').click();
+
+    await expect(page.locator('#feedback-form')).toBeVisible();
+    await expect(page.locator('#feedback-thanks')).toBeHidden();
+    await expect(page.locator('#feedback-submit')).toBeHidden();
+  });
 });
 
 test.describe('patterns-popover-local-market-switch', () => {
