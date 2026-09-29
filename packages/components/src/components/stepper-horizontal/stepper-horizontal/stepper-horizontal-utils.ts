@@ -1,4 +1,4 @@
-import { getTagNameWithoutPrefix, throwException } from '../../../utils';
+import { consoleError, getTagNameWithoutPrefix } from '../../../utils';
 
 export const STEPPER_HORIZONTAL_SIZES = ['small', 'medium'] as const;
 export type StepperHorizontalSize = (typeof STEPPER_HORIZONTAL_SIZES)[number];
@@ -9,14 +9,15 @@ export const getIndexOfStepWithStateCurrent = (stepperHorizontalItems: HTMLPStep
   return stepperHorizontalItems.findIndex((item) => item.state === 'current');
 };
 
-export const throwIfMultipleCurrentStates = (
+export const logErrorIfMultipleCurrentStates = (
   host: HTMLElement,
   stepperHorizontalItems: HTMLPStepperHorizontalItemElement[]
 ): void => {
   const currentStateCount = stepperHorizontalItems.filter((item) => item.state === 'current').length;
   if (currentStateCount > 1) {
-    throwException(
-      `only one child with current state is allowed in ${getTagNameWithoutPrefix(host)} but got ${currentStateCount}.`
+    consoleError(
+      `only one child with current state is allowed in ${getTagNameWithoutPrefix(host)} but got ${currentStateCount}.`,
+      host
     );
   }
 };

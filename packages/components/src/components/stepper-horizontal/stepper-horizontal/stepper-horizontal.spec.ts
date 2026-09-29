@@ -1,4 +1,6 @@
 import { vi } from 'vitest';
+import * as throwIfChildCountIsExceededUtils from '../../../utils/validation/throwIfChildCountIsExceeded';
+import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import { StepperHorizontal } from './stepper-horizontal';
 import * as stepperHorizontalUtils from './stepper-horizontal-utils';
 
@@ -296,5 +298,56 @@ describe('onClickScroller()', () => {
     component['onClickScroller']({ composedPath: () => [nestedSpan, items[2]] } as unknown as MouseEvent);
 
     expect(component.update.emit).toHaveBeenCalledWith({ activeStepIndex: 2 });
+  });
+});
+
+describe('validation', () => {
+  it('should validate children in componentWillLoad()', () => {
+    const childrenSpy = vi.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
+    const childCountSpy = vi.spyOn(throwIfChildCountIsExceededUtils, 'throwIfChildCountIsExceeded');
+    const component = initComponent();
+
+    component.componentWillLoad();
+
+    expect(childrenSpy).toHaveBeenCalledWith(component.host, 'p-stepper-horizontal-item');
+    expect(childCountSpy).toHaveBeenCalledWith(component.host, 9);
+  });
+
+  it('should validate children on slotchange after the items have been updated', () => {
+    const component = initComponent();
+    component.componentDidLoad();
+    const childrenSpy = vi
+      .spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind')
+      .mockImplementation(() => {
+        expect(component['stepperHorizontalItems']).toHaveLength(1);
+      });
+    const childCountSpy = vi.spyOn(throwIfChildCountIsExceededUtils, 'throwIfChildCountIsExceeded');
+    component.host.appendChild(document.createElement('p-stepper-horizontal-item'));
+
+    component['slot'].dispatchEvent(new Event('slotchange'));
+
+    expect(childrenSpy).toHaveBeenCalledWith(component.host, 'p-stepper-horizontal-item');
+    expect(childCountSpy).toHaveBeenCalledWith(component.host, 9);
+  });
+
+  it('should log instead of throwing in render() when multiple items have state current', () => {
+    const logSpy = vi.spyOn(stepperHorizontalUtils, 'logErrorIfMultipleCurrentStates').mockImplementation(() => {});
+    const childrenSpy = vi.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
+    const childCountSpy = vi.spyOn(throwIfChildCountIsExceededUtils, 'throwIfChildCountIsExceeded');
+    const component = initComponent();
+    const items = [
+      document.createElement('p-stepper-horizontal-item'),
+      document.createElement('p-stepper-horizontal-item'),
+    ];
+    items.forEach((item) => {
+      (item as any).state = 'current';
+      component.host.appendChild(item);
+    });
+    component['defineStepperHorizontalItems']();
+
+    expect(() => component.render()).not.toThrow();
+    expect(logSpy).toHaveBeenCalledWith(component.host, items);
+    expect(childrenSpy).not.toHaveBeenCalled();
+    expect(childCountSpy).not.toHaveBeenCalled();
   });
 });
