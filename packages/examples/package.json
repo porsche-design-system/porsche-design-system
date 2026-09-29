@@ -10,7 +10,6 @@
     "preview": "concurrently -k -s 'first' -n 'cdn,site' 'serve-cdn' 'tsx scripts/previewSite.ts'",
     "build": "npm run typecheck && tsx scripts/build.ts && tsx scripts/buildSite.ts && npm run build:verify",
     "build:verify": "tsx scripts/verify.ts",
-    "lint": "biome lint",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "typecheck:tests:e2e": "tsc --noEmit -p tsconfig.e2e.json",
