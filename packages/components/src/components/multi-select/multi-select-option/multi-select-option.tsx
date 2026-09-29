@@ -1,11 +1,10 @@
-import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getOptionAriaAttributes,
   throwIfParentIsNotOfKind,
-  throwIfPropIsUndefined,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './multi-select-option-styles';
@@ -32,13 +31,22 @@ export class MultiSelectOption {
   /** Disables the option, preventing it from being selected. */
   @Prop() public disabled?: boolean = false;
 
+  @Watch('value')
+  public onValueChange(): void {
+    // lets the parent re-match its value, e.g. when a framework sets the value after the parent already did
+    this.host.dispatchEvent(
+      new CustomEvent('internalMultiSelectOptionValueChange', {
+        bubbles: true,
+      })
+    );
+  }
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-multi-select', 'p-optgroup']);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    throwIfPropIsUndefined(this.host, 'value', this.value);
     const { selected: isSelected, highlighted, hidden } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
 

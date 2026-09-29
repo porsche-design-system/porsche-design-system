@@ -1,9 +1,11 @@
 import { forceUpdate } from '@stencil/core';
+import type { FormFieldAriaAttribute } from '../../../types';
 import type { SelectComponentsDropdownDirection } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 
 export type SelectState = FormState;
+export type SelectAriaAttribute = FormFieldAriaAttribute;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
 export type SelectOptgroup = HTMLPOptgroupElement;

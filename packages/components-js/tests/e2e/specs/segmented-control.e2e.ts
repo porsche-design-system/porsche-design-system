@@ -526,3 +526,48 @@ test.describe('form', () => {
     expect((await getEventSummary(host, 'change')).counter).toBe(2);
   });
 });
+
+test.describe('item value set after initial render', () => {
+  // Frameworks like Angular can connect an item before its `value` binding is applied (#4743)
+  test('should render item when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-segmented-control label="Some label"><p-segmented-control-item label="Option A"></p-segmented-control-item></p-segmented-control>`
+    );
+    const item = getFirstItemHost(page);
+
+    await setProperty(item, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(item.locator('button')).toBeAttached();
+  });
+
+  test('should select item when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-segmented-control label="Some label" value="a"><p-segmented-control-item label="Option A"></p-segmented-control-item></p-segmented-control>`
+    );
+    const item = getFirstItemHost(page);
+
+    await setProperty(item, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(item).toHaveJSProperty('selected', true);
+    await expect(item.locator('button')).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  test('should select item when its value changes to match the segmented control value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-segmented-control label="Some label" value="a"><p-segmented-control-item label="Option A" value="b"></p-segmented-control-item></p-segmented-control>`
+    );
+    const item = getFirstItemHost(page);
+    await expect(item).not.toHaveJSProperty('selected', true);
+
+    await setProperty(item, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(item).toHaveJSProperty('selected', true);
+    await expect(item.locator('button')).toHaveAttribute('aria-pressed', 'true');
+  });
+});

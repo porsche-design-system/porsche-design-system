@@ -21,6 +21,7 @@ you implement a combobox-style pattern (search field + suggestion list).
 | `aria-expanded`     | Indicates whether the suggestion popup or related surface is expanded or collapsed.                                   |
 | `aria-haspopup`     | Indicates that activating the input triggers a popup (e.g. `listbox`, `dialog`).                                      |
 | `aria-label`        | Defines an accessible name when the visible label is insufficient or hidden; prefer a visible `label` for most cases. |
+| `aria-description`  | Provides additional context for assistive technologies without replacing the accessible name.                          |
 
 You can pass a JSON object on the element (vanilla JS) or use your framework’s prop binding, for example
 `aria={{ role: 'combobox', 'aria-expanded': isOpen, 'aria-haspopup': 'listbox' }}`.

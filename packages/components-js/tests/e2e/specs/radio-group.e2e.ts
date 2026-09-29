@@ -866,3 +866,48 @@ test.describe('form', () => {
     expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
+
+test.describe('option value set after initial render', () => {
+  // Frameworks like Angular can connect an option before its `value` binding is applied (#4743)
+  test('should render option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" label="Some label"><p-radio-group-option label="Some Label A"></p-radio-group-option></p-radio-group>`
+    );
+    const option = getFirstOptionHost(page);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option.locator('input')).toHaveValue('a');
+  });
+
+  test('should select option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" label="Some label" value="a"><p-radio-group-option label="Some Label A"></p-radio-group-option></p-radio-group>`
+    );
+    const option = getFirstOptionHost(page);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('input')).toBeChecked();
+  });
+
+  test('should select option when its value changes to match the radio group value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" label="Some label" value="a"><p-radio-group-option label="Some Label A" value="b"></p-radio-group-option></p-radio-group>`
+    );
+    const option = getFirstOptionHost(page);
+    await expect(option.locator('input')).not.toBeChecked();
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('input')).toBeChecked();
+  });
+});

@@ -8,8 +8,11 @@ describe('getSwitchButtonAriaAttributes()', () => {
     [false, false, true],
     [true, true, false],
     [false, true, true],
-    [true, true, true],
-  ])('should return correct aria attributes for isDisabled: %s, isLoading: %s and isChecked: %s', (...args) => {
-    expect(getSwitchButtonAriaAttributes(...args)).toMatchSnapshot();
-  });
+    [true, true, true, { 'aria-label': 'Dark mode', 'aria-description': 'Toggles the color theme' }],
+  ])(
+    'should return correct aria attributes for isDisabled: %s, isLoading: %s, isChecked: %s and aria: %s',
+    (...args) => {
+      expect(getSwitchButtonAriaAttributes(...args)).toMatchSnapshot();
+    }
+  );
 });

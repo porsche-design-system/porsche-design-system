@@ -13531,7 +13531,6 @@ label {
     </style>
     <button
       aria-checked="false"
-      aria-labelledby="label"
       id="x"
       role="switch"
       type="button"
@@ -13542,7 +13541,6 @@ label {
     </button>
     <label
       for="x"
-      id="label"
     >
       <slot />
     </label>
