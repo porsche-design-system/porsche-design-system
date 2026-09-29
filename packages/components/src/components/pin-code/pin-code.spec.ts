@@ -133,6 +133,27 @@ describe('componentDidLoad', () => {
     expect(setFormValueSpy).toHaveBeenCalledWith('');
   });
 });
+describe('onValueChange()', () => {
+  it.each<[string | number | null | undefined, string]>([
+    ['1234', '1234'],
+    [1234, '1234'],
+    [null, ''],
+    [undefined, ''],
+  ])('should call setFormValue for value %s with %s', (value, expected) => {
+    const component = initComponent();
+    component.value = value;
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.onValueChange();
+    expect(setFormValueSpy).toHaveBeenCalledWith(expected);
+  });
+
+  it('should not sanitise the value', () => {
+    const component = initComponent();
+    component.value = '123456';
+    component.onValueChange();
+    expect(component.value).toBe('123456');
+  });
+});
 describe('formResetCallback', () => {
   it('should reset value to defaultValue', () => {
     const component = initComponent();
