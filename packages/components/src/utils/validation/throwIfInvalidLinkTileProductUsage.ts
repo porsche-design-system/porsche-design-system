@@ -5,20 +5,20 @@ import { getNamedSlot } from '../getNamedSlot';
 import { anchorSlot } from '../../components/link-tile-product/link-tile-product-utils';
 
 export const throwIfInvalidLinkTileProductUsage = (host: HTMLElement, hrefValue: string): void => {
+  // without anchor slot a missing href can't be validated, since a framework may set it after the initial load
+  if (hrefValue || !getNamedSlot(host, anchorSlot)) {
+    return;
+  }
+
   let invalidA11y = false;
 
-  if (!hrefValue) {
-    if (!getNamedSlot(host, anchorSlot)) {
-      throwMissingHrefAndSlottedLinkException(host);
+  try {
+    const linkElement = getOnlyChildOfKindHTMLElementOrThrow(host, 'a');
+    if (!linkElement.textContent.trim() && !linkElement.getAttribute('aria-label')) {
+      invalidA11y = true;
     }
-    try {
-      const linkElement = getOnlyChildOfKindHTMLElementOrThrow(host, 'a');
-      if (!linkElement.textContent.trim() && !linkElement.getAttribute('aria-label')) {
-        invalidA11y = true;
-      }
-    } catch {
-      throwMissingHrefAndSlottedLinkException(host);
-    }
+  } catch {
+    throwMissingHrefAndSlottedLinkException(host);
   }
 
   if (invalidA11y) {

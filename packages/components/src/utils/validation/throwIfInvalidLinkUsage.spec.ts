@@ -21,8 +21,20 @@ describe('with href value', () => {
 describe('without href value', () => {
   const href: any = undefined;
 
-  it('should throw error without any child', () => {
+  it('should not throw error without any child, since href can still be set later', () => {
     const host = document.createElement('div');
+    expect(() => throwIfInvalidLinkUsage(host, href)).not.toThrow();
+  });
+
+  it('should not throw error with text content only, since href can still be set later', () => {
+    const host = document.createElement('div');
+    host.append('Some label');
+    expect(() => throwIfInvalidLinkUsage(host, href)).not.toThrow();
+  });
+
+  it('should throw error with a child that is not an anchor', () => {
+    const host = document.createElement('div');
+    host.append(document.createElement('span'));
     expect(() => throwIfInvalidLinkUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
   });
 

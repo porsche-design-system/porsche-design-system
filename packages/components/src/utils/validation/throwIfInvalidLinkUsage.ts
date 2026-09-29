@@ -3,13 +3,16 @@ import { getTagNameWithoutPrefix } from '../tag-name';
 import { getOnlyChildOfKindHTMLElementOrThrow } from './getOnlyChildOfKindHTMLElementOrThrow';
 
 export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): void => {
-  let isInvalid = hrefValue && host.children.length > 0;
+  // without child elements a missing href can't be validated, since a framework may set it after the initial load
+  if (!host.children.length) {
+    return;
+  }
 
-  if (!isInvalid || !hrefValue) {
+  let isInvalid = !!hrefValue;
+
+  if (!hrefValue) {
     try {
-      if (!hrefValue) {
-        getOnlyChildOfKindHTMLElementOrThrow(host, 'a');
-      }
+      getOnlyChildOfKindHTMLElementOrThrow(host, 'a');
     } catch {
       isInvalid = true;
     }

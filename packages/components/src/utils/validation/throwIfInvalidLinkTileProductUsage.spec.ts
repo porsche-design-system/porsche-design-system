@@ -1,4 +1,3 @@
-import { vi } from 'vitest';
 import { anchorSlot } from '../../components/link-tile-product/link-tile-product-utils';
 import { throwIfInvalidLinkTileProductUsage } from './throwIfInvalidLinkTileProductUsage';
 
@@ -17,9 +16,9 @@ describe('with href value', () => {
 describe('without href value', () => {
   const href: any = undefined;
 
-  it('should throw error without using anchor slot', () => {
+  it('should not throw error without using anchor slot, since href can still be set later', () => {
     const host = document.createElement('div');
-    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
+    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).not.toThrow();
   });
 
   it('should throw error with nested anchor in anchor slot', () => {
@@ -29,10 +28,6 @@ describe('without href value', () => {
     child.slot = anchorSlot;
     child.append(anchor);
     host.append(child);
-
-    // TODO: workaround until jsdom actually returns null for this case
-    // https://github.com/jsdom/jsdom/issues/2998
-    vi.spyOn(host, 'querySelector').mockReturnValue(null);
 
     expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
   });
