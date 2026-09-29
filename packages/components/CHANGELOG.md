@@ -26,6 +26,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   provide additional context for screen readers (`aria-label`, `aria-description`)
   ([#4740](https://github.com/porsche-design-system/porsche-design-system/pull/4740))
 
+### Changed
+
+- `Link`, `Link Pure`, `Link Tile Product`: no error is logged anymore when neither `href` nor a slotted anchor is
+  provided, since the component then renders as plain text. `Link` and `Link Pure` only log an error when `href` is
+  combined with a slotted anchor, which renders nested links.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+
 ### Fixed
 
 - `Select`, `Multi Select`, `Radio Group`: unmatched values triggered misleading console warnings, including empty
@@ -58,7 +65,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   is still logged while the combination is set.
   ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
 - `Link`, `Link Pure`, `Link Tile Product`: an invalid usage error was logged when `href` was set only after the
-  component had rendered, e.g. by an Angular property binding.
+  component had rendered, e.g. by an Angular property binding, and for `Link` and `Link Pure` also when `href` was
+  combined with an element as label, e.g. a `<span>`.
   ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
 - `Table`: a missing caption warning was logged when `caption` was set only after the component had rendered. The
   warning has been removed. ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
