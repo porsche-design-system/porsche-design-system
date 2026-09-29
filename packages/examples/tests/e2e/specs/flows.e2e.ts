@@ -105,6 +105,7 @@ test.describe('patterns-feedback-dialog', () => {
   });
 
   test('cancels a pending submission when the dialog is dismissed', async ({ page }) => {
+    await page.clock.install();
     await setupExamplePage(page, getUrl('patterns-feedback-dialog'));
 
     await page.locator('#feedback-trigger').click();
@@ -114,7 +115,7 @@ test.describe('patterns-feedback-dialog', () => {
     await expect(page.locator('#feedback-modal')).toBeHidden();
 
     // Outlast the simulated request, which would otherwise reveal the confirmation behind the closed dialog.
-    await page.waitForTimeout(1500);
+    await page.clock.runFor(1500);
     await page.locator('#feedback-trigger').click();
 
     await expect(page.locator('#feedback-form')).toBeVisible();
