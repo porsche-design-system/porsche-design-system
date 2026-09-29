@@ -201,6 +201,17 @@ writing or requesting an entry.
 - When reviewing a pull request, apply the `.github/skills/code-review-changelog` skill — including when the pull
   request does not touch the changelog at all, since a missing entry is the most common error
 
+## Pull Requests
+
+- Structure the body after [`.github/pull_request_template.md`](.github/pull_request_template.md) and keep all its
+  sections, even when writing the body yourself or passing `--body`/`--body-file` to `gh pr create`.
+- Internal pull requests deploy the storefront to `https://designsystem.porsche.com/pr-<number>/` (see
+  [`docs/release.md`](docs/release.md)). The number only exists once the pull request is created, so after
+  `gh pr create` run `gh pr edit <number> --body-file …` to fill in the **Preview** section. Link the pages that show
+  the change, e.g. `https://designsystem.porsche.com/pr-4744/components/drilldown/configurator/` (component pages have
+  `configurator`, `examples`, `usage`, `api` and `accessibility`).
+- Pull requests from forks are not deployed; remove the **Preview** section there.
+
 ## Accessibility (WCAG 2.2 AA — Non-negotiable)
 
 All UI code must:
