@@ -9,18 +9,12 @@ import {
   PText,
   type TabsBarUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
-import { openExampleInStackblitz } from '@porsche-design-system/stackblitz';
+import { type ExampleProject, openExampleInStackblitz } from '@porsche-design-system/stackblitz';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { CodeBlock, type CodeLanguage } from '@/components/common/CodeBlock';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
-import {
-  type ExamplePath,
-  type ExamplePayload,
-  getExamplePayloadUrl,
-  getExampleUrl,
-  withMediaOrigin,
-} from '@/utils/examples';
+import { type ExamplePath, getExamplePayloadUrl, getExampleUrl, withMediaOrigin } from '@/utils/examples';
 import { getBasePath } from '@/utils/getBasePath';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
@@ -57,7 +51,7 @@ const codeFiles: { file: string; name: string; language: CodeLanguage }[] = [
   { file: 'main.js', name: 'JS', language: 'js' },
 ];
 
-type ExamplePayloadState = { payload: ExamplePayload | null; hasFailed: boolean };
+type ExamplePayloadState = { payload: ExampleProject | null; hasFailed: boolean };
 
 /**
  * Loads the StackBlitz payload of an example, which both the code view and StackBlitz are fed from – it holds the
@@ -77,7 +71,7 @@ const useExamplePayload = (example: ExamplePath | null): ExamplePayloadState => 
 
     fetch(getExamplePayloadUrl(example, getBasePath()))
       .then((response) => (response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response.status}`))))
-      .then((payload: ExamplePayload) => isCurrent && setState({ payload, hasFailed: false }))
+      .then((payload: ExampleProject) => isCurrent && setState({ payload, hasFailed: false }))
       .catch((error: Error) => {
         console.error(`Could not load the StackBlitz project of "${example}": ${error.message}`);
         if (isCurrent) setState({ payload: null, hasFailed: true });

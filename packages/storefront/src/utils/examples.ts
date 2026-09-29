@@ -1,3 +1,5 @@
+import type { ExampleProject } from '@porsche-design-system/stackblitz';
+
 /**
  * The examples of `@porsche-design-system/examples`, as the storefront serves them.
  *
@@ -17,13 +19,6 @@ export type ExamplePath = `${'patterns' | 'templates'}/${string}`;
  * `copyExamples.ts` fails when the copied pages stop containing it, so the two cannot drift apart silently.
  */
 export const examplesMediaPath = '/examples/media/';
-
-/** The StackBlitz payload the examples build writes next to every page: its generated project, verbatim. */
-export type ExamplePayload = {
-  title: string;
-  description: string;
-  files: Record<string, string>;
-};
 
 const withBasePath = (pathname: string, basePath: string): string => (basePath ? `/${basePath}${pathname}` : pathname);
 
@@ -69,7 +64,7 @@ export const getExamplePayloadUrl = (example: ExamplePath, basePath: string): st
  * build time – one build serves local development, previews and production, and only the running page knows where
  * it is.
  */
-export const withMediaOrigin = (payload: ExamplePayload, origin: string, basePath: string): ExamplePayload => {
+export const withMediaOrigin = (payload: ExampleProject, origin: string, basePath: string): ExampleProject => {
   const mediaPath = withBasePath(examplesMediaPath, basePath);
 
   return {
