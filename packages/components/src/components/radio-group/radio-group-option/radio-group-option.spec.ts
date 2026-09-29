@@ -30,6 +30,20 @@ describe('render', () => {
     );
   });
 
+  it('should dispatch "internalRadioGroupOptionDisabledChange" event when disabled or loading changes', () => {
+    const component = initComponent();
+    const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
+
+    component.onDisabledChange();
+
+    expect(dispatchEventSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'internalRadioGroupOptionDisabledChange',
+        bubbles: true,
+      })
+    );
+  });
+
   it('should reject null values', () => {
     const consoleErrorSpy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     const component = initComponent();

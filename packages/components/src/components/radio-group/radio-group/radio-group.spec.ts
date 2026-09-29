@@ -115,6 +115,20 @@ describe('optionValueChangeHandler', () => {
   });
 });
 
+describe('optionDisabledChangeHandler', () => {
+  it('should stop propagation and call updateTabStops()', () => {
+    const component = initComponent();
+    const updateTabStopsSpy = vi.spyOn(component as any, 'updateTabStops');
+    const event = new Event('internalRadioGroupOptionDisabledChange', { bubbles: true });
+    const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
+
+    component.optionDisabledChangeHandler(event);
+
+    expect(stopPropagationSpy).toHaveBeenCalled();
+    expect(updateTabStopsSpy).toHaveBeenCalled();
+  });
+});
+
 describe('componentDidLoad', () => {
   it('should call setFormValue with correct value', () => {
     const component = initComponent();
