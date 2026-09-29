@@ -73,17 +73,7 @@ const transformIndexHtmlPlugin = () => {
   return {
     name: 'html-transform',
     transformIndexHtml(html: string): string {
-      // biome-ignore lint/correctness/noUnusedVariables: can be re-enabled when config is extended to support home & nav
-      const cspContent = [
-        \`default-src 'self' https://cdn.ui.porsche.com\`,
-        \`style-src 'self' https://cdn.ui.porsche.com 'unsafe-inline'\`,
-        \`script-src 'self' https://cdn.ui.porsche.com \${getLoaderScript({ format: 'sha256' })}\`,
-        \`img-src 'self' https://cdn.ui.porsche.com data:\`, // data: is needed for inline background images, e.g. used in checkbox-wrapper and radio-button-wrapper
-        \`media-src 'self'\`, // the images and videos of the examples are served by the storefront
-      ].join('; ');
-
       const headPartials = [
-        //\`<meta http-equiv="Content-Security-Policy" content="\${cspContent}"/>\`, // disabled due to loading of H&N
         getComponentChunkLinks({ components: ${JSON.stringify(category.components)} }),
         getFontLinks(),
         getIconLinks(),

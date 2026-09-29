@@ -11,7 +11,7 @@ import {
   sharedScripts,
 } from '../../plugins/entries.ts';
 import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../plugins/inline.ts';
-import { doctype, isBuildInput, renderPage, resolvePagePath } from '../../plugins/jsx.ts';
+import { doctype, renderPage, resolvePagePath } from '../../plugins/jsx.ts';
 import { getStackblitzPayload } from '../../plugins/payload.ts';
 import { categories, getPageId, resolvePageLocation, scriptEntryName, styleEntryName } from '../../plugins/projects.ts';
 import { getPackageJson, getViteConfig } from '../../scripts/generateProject.ts';
@@ -127,24 +127,6 @@ describe('resolvePagePath()', () => {
       expect(resolvePagePath(url)).toBeUndefined();
     }
   );
-});
-
-describe('isBuildInput()', () => {
-  it.each(['src/_data.ts', 'src/_layouts/BasePage.tsx', 'src/_layouts/PatternPage.tsx', 'src/_partials/Head.tsx'])(
-    'should detect "%s" as an input',
-    (filePath) => {
-      expect(isBuildInput('src', filePath)).toBe(true);
-    }
-  );
-
-  it.each([
-    'src/index.page.tsx',
-    'src/templates/landing-page/index.page.tsx',
-    'src/patterns/header/overlay/index.page.tsx',
-    'src/assets/styles.css',
-  ])('should not detect "%s" as an input', (filePath) => {
-    expect(isBuildInput('src', filePath)).toBe(false);
-  });
 });
 
 describe('projects', () => {

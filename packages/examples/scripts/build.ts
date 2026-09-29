@@ -84,7 +84,7 @@ const locatePages = (entry: Category): PageLocation[] => {
 const assertPageFolder = (pageSourceDir: string, location: PageLocation): void => {
   const unexpected = fs
     .readdirSync(pageSourceDir, { withFileTypes: true })
-    .filter((file) => file.isFile() && !file.name.endsWith(pageSuffix) && file.name !== scriptEntryName)
+    .filter((file) => file.isFile() && file.name !== `index${pageSuffix}` && file.name !== scriptEntryName)
     .map((file) => file.name);
 
   if (unexpected.length > 0) {

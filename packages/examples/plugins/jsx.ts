@@ -36,18 +36,6 @@ export const renderPage = async (Page: FunctionComponent): Promise<string> =>
   });
 
 /**
- * Files and folders starting with an underscore (layouts, partials, data) are inputs only, never pages.
- *
- * Named after the underscore convention rather than after "templates", which is a category of examples here
- * (`src/templates/`) and has nothing to do with build-time inputs.
- */
-export const isBuildInput = (rootDir: string, filePath: string): boolean =>
-  path
-    .relative(rootDir, filePath)
-    .split(path.sep)
-    .some((segment) => segment.startsWith('_'));
-
-/**
  * Maps a request URL to a page file: `/` → `index.page.tsx`, `/patterns/` → `patterns/index.page.tsx`,
  * `/templates/landing-page/index.html` → `templates/landing-page/index.page.tsx`.
  * Returns `undefined` for anything that is not a page request, so assets fall through to Vite.

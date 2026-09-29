@@ -81,10 +81,6 @@ export const categories: Category[] = [
   { category: 'templates', components: templateComponents },
 ];
 
-/** The category of a name, for the code addressing one of them by it. */
-export const getCategory = (category: string): Category | undefined =>
-  categories.find((entry) => entry.category === category);
-
 /** Port `scripts/previewSite.ts` serves the built site on, next to the dev server of the source tree (3010). */
 export const previewPort = 3011;
 
