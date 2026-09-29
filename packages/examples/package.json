@@ -31,7 +31,7 @@
     "posttest:vrt": "npm run test:vrt:prepare-regression-snapshots",
     "test:vrt:prepare-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/results --mode prepare",
     "test:vrt:update-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/specs/__screenshots__ --mode update",
-    "clean:build": "rm -rf ./dist ./dist-site ./dist-tmp"
+    "clean:build": "rm -rf ./dist ./dist-site"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

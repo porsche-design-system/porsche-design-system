@@ -12,17 +12,15 @@ import { mediaPath } from '../src/_media.ts';
  * ```text
  * dist/        # scripts/build.ts     – one Vite project per page, the StackBlitz source
  * dist-site/   # scripts/buildSite.ts – one self-contained HTML file per page, what the storefront serves
- * dist-tmp/    # scripts/previewSite.ts – dist-site/ rewritten to the local CDN, never shipped
  * ```
  *
- * All three are git-ignored.
+ * Both are git-ignored.
  */
 
 export const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const srcDir = path.join(packageDir, 'src');
 export const distDir = path.join(packageDir, 'dist');
 export const siteDir = path.join(packageDir, 'dist-site');
-export const scratchDir = path.join(packageDir, 'dist-tmp');
 
 /** The media of the examples, below `public/` at the very path the pages reference them by – see `src/_media.ts`. */
 export const mediaSourceDir = path.join(packageDir, 'public', mediaPath);

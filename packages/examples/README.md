@@ -26,9 +26,9 @@ npm run test:unit
 
 `start:examples` serves the **source** tree; `preview:examples` serves the **built site** — the self-contained pages in
 `dist-site/`, below `/examples/` like the storefront serves them, so what the browser gets is the inlined script and
-stylesheet and the injected partials, exactly as the storefront ships them. The only difference is the CDN origin: the
-copy in `dist-tmp/` is rewritten to `http://localhost:3001`, so the locally built components are loaded instead of the
-production CDN. `dist-site/` is never touched and keeps the production URLs. This needs the Porsche Design System built
+stylesheet and the injected partials, exactly as the storefront ships them. The only difference is the CDN origin: every
+HTML response is rewritten to `http://localhost:3001` while it is served, so the locally built components are loaded
+instead of the production CDN. `dist-site/` is never touched and keeps the production URLs. This needs the Porsche Design System built
 (`npm run build:core-dependencies && npm run build:components && npm run build:components-js`).
 
 ## Two categories, one project per page

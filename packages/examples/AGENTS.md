@@ -21,7 +21,7 @@ The package is `private: true` and is not published.
 
 ## Build output
 
-`npm run build` writes three git-ignored trees ([`scripts/shared.ts`](scripts/shared.ts)):
+`npm run build` writes two git-ignored trees ([`scripts/shared.ts`](scripts/shared.ts)):
 
 ```text
 dist/<category>/<page>/        # scripts/build.ts – one standalone Vite project per page, what StackBlitz opens
@@ -34,7 +34,6 @@ dist-site/                     # scripts/buildSite.ts – what the storefront co
 └── <category>/<page>/
     ├── index.html             # the project above, built, script and stylesheet inlined (plugins/inline.ts)
     └── stackblitz.json        # the project above, verbatim (plugins/payload.ts)
-dist-tmp/                      # scripts/previewSite.ts – dist-site/ rewritten to the local CDN, never shipped
 ```
 
 Consequences, and they are the point of the design:
@@ -365,9 +364,9 @@ approach, and it is paid on every review:
   entry tag makes the dev server log `Failed to load url /main.js` for a file that is never generated here. The partials
   need the opposite order and therefore stay in the hook — see [`vite.config.ts`](vite.config.ts).
 - **`preview` serves the built site, it does not build it.** `npm run preview` builds first, then
-  [`scripts/previewSite.ts`](scripts/previewSite.ts) copies `dist-site/` to `dist-tmp/`, rewrites the CDN origin to
-  `http://localhost:3001` and serves it below `/examples/` on port 3011 – the server the Playwright suites start as
-  `preview:app`. `dist-site/` itself keeps the production URLs. The loader builds one CDN URL by concatenation at
+  [`scripts/previewSite.ts`](scripts/previewSite.ts) serves `dist-site/` below `/examples/` on port 3011 and rewrites
+  the CDN origin of every HTML response to `http://localhost:3001`, in memory – the server the Playwright suites start
+  as `preview:app`. `dist-site/` itself keeps the production URLs. The loader builds one CDN URL by concatenation at
   runtime, which no rewrite of the markup reaches; the Playwright suites catch it in their route handler
   ([`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)).
 - **The emitted files carry decided modes, not inherited ones.** `fs.cpSync()` copies the mode of every source file, and
