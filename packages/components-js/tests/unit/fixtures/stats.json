@@ -61,8 +61,8 @@
   },
   {
     "chunkShortName": "drilldown",
-    "size": 21035,
-    "gzipSize": 6591
+    "size": 21092,
+    "gzipSize": 6608
   },
   {
     "chunkShortName": "fieldset",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 82236,
-    "gzipSize": 25599
+    "size": 82480,
+    "gzipSize": 25643
   },
   {
     "chunkShortName": "modal",
@@ -201,8 +201,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 15055,
-    "gzipSize": 5786
+    "size": 15179,
+    "gzipSize": 5819
   },
   {
     "chunkShortName": "popover",
@@ -211,8 +211,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 18098,
-    "gzipSize": 6637
+    "size": 18368,
+    "gzipSize": 6675
   },
   {
     "chunkShortName": "scroller",
