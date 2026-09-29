@@ -6,9 +6,9 @@ import type { Plugin, Rolldown } from 'vite';
  * Added by `scripts/buildSite.ts` only, never written into a generated `vite.config.ts`: the project "Open in
  * StackBlitz" hands over stays a plain Vite project, and only the file the storefront frames is self-contained.
  *
- * Deliberately narrow, which is why it is written here rather than taken from `vite-plugin-singlefile` (see the spike
- * in `STOREFRONT.md`): a page is exactly one HTML file, at most one script chunk and at most one stylesheet. A page
- * without behaviour has no chunk at all – its `main.js` only imports the stylesheet, and Vite drops the empty entry. An asset imported
+ * Deliberately narrow, which is why it is written here rather than taken from `vite-plugin-singlefile`: a page is
+ * exactly one HTML file, at most one script chunk and at most one stylesheet. A page without behaviour has no chunk at
+ * all – its `main.js` only imports the stylesheet, and Vite drops the empty entry. An asset imported
  * from the page or a second chunk – a dynamic `import()` – is not inlined silently, it fails the build and names the
  * file, because an example that grows either has left the shape the storefront and StackBlitz rely on.
  */

@@ -1,13 +1,12 @@
 # AGENTS.md — Examples Package
 
 > This file provides context for AI coding assistants working in `packages/examples/`. See the root
-> [`AGENTS.md`](../../AGENTS.md) for project-wide guidance, [`README.md`](README.md) for the authoring reference and
-> [`COMPARISON.md`](COMPARISON.md) for why this package renders pages the way it does.
+> [`AGENTS.md`](../../AGENTS.md) for project-wide guidance and [`README.md`](README.md) for the authoring reference.
 
 ## Overview
 
-Standalone examples for Porsche Design System usage, rendered from **typed function components** to plain HTML with
-relative paths at build time. They come in two categories:
+Standalone examples for Porsche Design System usage, rendered from **typed function components** to plain HTML at build
+time. They come in two categories:
 
 | Category      | What it shows                                        | Layout                    | Lives in          |
 | ------------- | ---------------------------------------------------- | ------------------------- | ----------------- |
@@ -18,64 +17,65 @@ There is no template syntax. Conditions are ternaries, loops are `map()`, partia
 `children`. Rendering happens once at build time via `preact-render-to-string`; **no framework code reaches the
 browser**.
 
-This approach was picked over an in-house `@include` engine and Nunjucks, which rendered the same pages in two sibling
-packages until 2026-08-13; [`COMPARISON.md`](COMPARISON.md) is the decision record. The package is `private: true` and
-is not published.
+The package is `private: true` and is not published.
 
-## `dist/` is source, not a website
+## Build output
 
-The build does **not** emit a built site. It emits the **source of two standalone Vite projects**, one per category,
-which replace the hand written `patterns` and `templates` workspaces of the
-[examples repository](https://github.com/porsche-design-system/examples):
+`npm run build` writes three git-ignored trees ([`scripts/shared.ts`](scripts/shared.ts)):
 
 ```text
-dist/patterns/                 # workspace @porsche-design-system/patterns
+dist/<category>/<page>/        # scripts/build.ts – one standalone Vite project per page, what StackBlitz opens
 ├── package.json               # generated, dependency versions taken from this package
-├── vite.config.ts             # generated: literal rollup inputs + PDS partial injection
-├── public/                    # copied verbatim
-└── src/                       # `root` of that Vite project
-    ├── index.html             # overview of the category
-    ├── main.js / style.css    # generated entry pair, one per page
-    └── header/overlay/        # index.html + main.js + style.css
+├── vite.config.ts             # generated: PDS partial injection with the component chunks of the category
+├── index.html                 # the rendered page
+└── main.js / style.css        # generated entry pair
+dist-site/                     # scripts/buildSite.ts – what the storefront copies to public/examples/
+├── media/                     # public/examples/media/, once
+└── <category>/<page>/
+    ├── index.html             # the project above, built, script and stylesheet inlined (plugins/inline.ts)
+    └── stackblitz.json        # the project above, verbatim (plugins/payload.ts)
+dist-tmp/                      # scripts/previewSite.ts – dist-site/ rewritten to the local CDN, never shipped
 ```
 
 Consequences, and they are the point of the design:
 
-- **A page's HTML contains no PDS partials, no stylesheet link and no loader script.** All three are added by the
-  generated `vite.config.ts` when the project is built, exactly like in the hand written examples.
+- **A page's HTML in `dist/` contains no PDS partials, no stylesheet link and no loader script.** All three are added by
+  the generated `vite.config.ts` when the project is built, so opening `dist/**/index.html` directly shows unstyled
+  markup.
 - **A page consists of three files: `index.html`, `main.js` and `style.css`.** The script **contains** the behaviour of
   the example and the stylesheet **is** the shared Tailwind entry, copied, so the markup, the utilities, the styles and
-  the JavaScript of a pattern are read in one place. **A generated project has no `assets/` folder** – nothing is shared
-  across its pages.
-- **Opening `dist/**/index.html` in a browser shows unstyled markup.** Run `npm run build:verify`, which builds both
-  generated projects into `dist-tmp/` and asserts the partials, the bundle and the stylesheet made it into the output.
-- **Both projects are self contained** – `public/` is copied into each and everything shared is inlined, because the
-  examples repository does not allow imports across its workspaces.
-
-The depth of a page below its category root is identical in both trees (`src/patterns/header/overlay` and
-`dist/patterns/src/header/overlay`), which is why every relative path a page uses carries over unchanged.
+  the JavaScript of a pattern are read in one place. Nothing is shared across projects.
+- **A built page is one self-contained file.** Besides the PDS CDN and a few absolute https URLs, it references only its
+  media, and those only through `mediaPath` (`/examples/media/`), which is slug-free: one build is deployed under
+  several storefront slugs, so [`packages/storefront/scripts/copyExamples.ts`](../storefront/scripts/copyExamples.ts)
+  inserts the slug when it copies the pages in. [`scripts/verify.ts`](scripts/verify.ts) runs at the end of `build` and
+  fails on any other local URL.
 
 ## Structure
 
 ```text
 plugins/jsx.ts                    # renderPage() + page URL resolution + Vite plugin (dev server)
 plugins/partials.ts               # PDS partials (loader, fonts, icons, chunks) – dev server only
-plugins/projects.ts               # the two projects, their component chunks and the path arithmetic
+plugins/projects.ts               # the categories, their component chunks and the path arithmetic
 plugins/entries.ts                # content of the generated main.js / style.css + the dev rewrite
-scripts/build.ts                  # production build: render pages, generate entries, write both projects
+plugins/inline.ts                 # inlines the bundled script and stylesheet – dist-site/ only
+plugins/payload.ts                # the stackblitz.json of a page
+scripts/build.ts                  # renders the pages and writes one project per page into dist/
 scripts/generateProject.ts        # the generated vite.config.ts and package.json
-scripts/buildGeneratedProject.ts  # runs `vite build` of one generated project into dist-tmp/
-scripts/previewProject.ts         # that build, rewritten to the local CDN and served
-scripts/verify.ts                 # builds both generated projects into dist-tmp/
+scripts/buildSite.ts              # builds every project into one self-contained page in dist-site/
+scripts/verify.ts                 # asserts dist-site/ is what the storefront and StackBlitz need
+scripts/previewSite.ts            # serves dist-site/ below /examples/ against the local CDN
+scripts/shared.ts                 # output paths and file helpers
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 tests/unit/jsx.spec.tsx           # tests describing the rendering contract
-tests/vrt/config/                 # playwright config: engines, viewports, the three web servers
-tests/vrt/helpers/                # page enumeration + everything a capture has to pin down
-tests/vrt/specs/examples.vrt.ts   # one capture set per page, plus the committed __screenshots__
+tests/helpers/previewServers.ts   # the web servers every Playwright suite runs against
+tests/e2e/                        # behaviour: shared per page, flows per pattern
+tests/a11y/                       # axe-core over every page and its interaction states
+tests/vrt/                        # one capture set per page, plus the committed __screenshots__
 src/
 ├── index.page.tsx                # overview of the source tree – dev only, never emitted
-├── _data.ts                      # templateItems, patternItems (URLs inside their project), chrome nav
+├── _data.ts                      # templateItems, patternItems (URLs below their category), chrome nav
 ├── _classes.ts                   # classes(): joins class names, dropping the unset optional ones
 ├── _ids.ts                       # the ids the dummy behaviour is wired on – markup, detection rules
 │                                 # and `assets/*.js` all address the same elements through them
@@ -83,21 +83,20 @@ src/
 │   ├── BasePage.tsx              # full page shell, takes `children`
 │   ├── CanvasPage.tsx            # shell of a page whose chrome is `p-canvas` – no landmark of its own
 │   ├── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
-│   └── OverviewPage.tsx          # shell of the overview pages: a main landmark with link lists
+│   └── OverviewPage.tsx          # shell of the dev overview: a main landmark with link lists
 ├── _partials/                    # Head, Header, Footer, ExampleList – checked props
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav, MetaActions, NoticeBar, CategoryTabs
 │   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask
+├── _media.ts                     # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
 ├── assets/styles.css             # Tailwind entry: @theme, global element defaults – copied next to every page
 ├── assets/header.js              # behaviour of the header drilldown – inlined into the entries, never emitted
 ├── assets/video.js               # behaviour of the hero video and its pause control – inlined, never emitted
-├── templates/                    # → dist/templates
-│   ├── index.page.tsx            # overview of that project
+├── templates/
 │   ├── landing-page/             # index.page.tsx
 │   └── admin-panel/              # index.page.tsx + main.js – application shell on `p-canvas`
-└── patterns/                    # → dist/patterns
-    ├── index.page.tsx            # overview of that project
+└── patterns/
     ├── header/overlay/           # Header in its `overlay` variant
     ├── header/stacked/           # Header in its `stacked` variant
     ├── footer/                   # Footer below the content
@@ -110,9 +109,10 @@ src/
         └── dialog/               # the same flow in a p-modal, reset once it has closed
 ```
 
-**Underscore rule:** files and folders starting with `_` are inputs only and are never emitted. **Page rule:** only
-`*.page.tsx` is rendered, to `index.html` next to it; every other `.ts`/`.tsx` file is a build-time input, a `main.js`
-next to a page is inlined into that page's generated entry, and all other files are copied verbatim.
+**Underscore rule:** files and folders starting with `_` are inputs only and are never emitted. **Page rule:** a page is
+an `index.page.tsx` in a folder of its own, which becomes one project; the folder may additionally hold a `main.js`,
+inlined into that page's generated entry, and the build rejects any other file in it. Media belong into
+`public/examples/media/` and are referenced through `media()`.
 
 ## Links: only the overview navigates
 
@@ -121,14 +121,12 @@ The examples demonstrate chrome, they are not a website:
 - Header, footer and example bodies link to `placeholderHref` (`"#"`). In-page anchors (`#features`) are real, because
   the target is on the page. Use the constant, not a bare `"#"`: Biome's `a11y/useValidAnchor` rejects the literal, and
   the constant says why the link goes nowhere.
-- The overview pages are the only ones whose links go somewhere, and the only ones rendering **no** header and footer.
-  Each project has one at its root; `src/index.page.tsx` adds the one of the source tree, which is the only page linking
-  across categories and is therefore not emitted.
-- Consequently `Header`, `Footer` and the layouts take no `basePath`: an example never links out of itself, not even
-  back to the overview of its project. `ExampleList` is the only component with a `basePath`, because the overview pages
-  are the only ones that navigate.
+- The overview of the dev server, `src/index.page.tsx`, is the only page whose links go somewhere, and the only one
+  rendering **no** header and footer. It is not emitted – in the storefront, its navigation links the examples.
+- Consequently `Header`, `Footer` and the layouts take no `basePath`: an example never links out of itself.
+  `ExampleList` is the only component with a `basePath`, because the overview is the only page that navigates.
 
-A test asserts that the overview pages contain no `href="#"` and that the chrome data contains nothing else.
+A test asserts that the overview contains no `href="#"` and that the chrome data contains nothing else.
 
 ## Commands
 
@@ -145,6 +143,7 @@ npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
 
 # from within this package
 npm run build:verify        # verifies ./dist-site: one self-contained page each, media only through media()
+npm run typecheck           # source; typecheck:tests[:e2e|:a11y|:vrt] check the test scopes
 ```
 
 **Run the VRT in Docker** – `./docker.sh npm run test:vrt:examples` – like every other visual regression suite in this
@@ -186,8 +185,8 @@ moves is what is asserted, and behaviour is not a picture.
 
 ## Accessibility tests
 
-The suite lives in [`tests/a11y/`](tests/a11y) and scans **every page of both projects** with axe-core, at two viewports
-(320, 1000) × the two colour schemes, plus the states the initial scan cannot reach.
+The suite lives in [`tests/a11y/`](tests/a11y) and scans **every page** with axe-core, at two viewports (320, 1000) ×
+the two colour schemes, plus the states the initial scan cannot reach.
 
 - **It covers the layer the other suites cannot.** The unit tests assert the rendered markup – one `main` landmark, no
   unlabelled `<nav>`, at most one first level heading, `aria-current` on the active item – before a browser is involved.
@@ -200,7 +199,7 @@ The suite lives in [`tests/a11y/`](tests/a11y) and scans **every page of both pr
 - **The interaction states are scanned too:** the navigation drilldown (opened through the id contract in
   [`src/_ids.ts`](src/_ids.ts)) and the confirmation both feedback patterns end in, the dialog variant with its
   `p-modal` open.
-- Like the VRT it runs against the **built** projects, sharing the web servers in
+- Like the VRT it runs against the **built** site, sharing the web servers in
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts). Chromium only – axe measures the tree the
   browser computes, so a second engine would measure the engine.
 
@@ -213,19 +212,18 @@ The suite lives in [`tests/a11y/`](tests/a11y) and scans **every page of both pr
 
 ## Visual regression tests
 
-The suite lives in [`tests/vrt/`](tests/vrt) and screenshots **every page of both projects in its initial state**.
+The suite lives in [`tests/vrt/`](tests/vrt) and screenshots **every page in its initial state**.
 
-- **It tests the built projects, not the dev server.** The web servers of
-  [`tests/vrt/config/playwright.config.ts`](tests/vrt/config/playwright.config.ts) are `serve-cdn` plus the two
-  `preview:*:app` scripts, so each run does the same `vite build` as `build:verify` and captures pages that carry the
-  bundled entry, the copied stylesheet and the injected partials – what the examples repository ships.
+- **It tests the built site, not the dev server.** `pretest:vrt` runs the build, and the web servers of
+  [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts) are `serve-cdn` plus `preview:app`, which serves
+  `dist-site/` – so a capture shows the inlined entry and the injected partials, exactly what the storefront ships.
 - **Two projects, one viewport each:** `chrome` (chromium, 1000 = `viewportWidthM`) and `safari` (webkit, 320 =
   `viewportWidthXXS`). They are named after the engine because `prepare-vrt-snapshots` derives the names of the
   regression artifacts from the project name. Dark scheme, both High Contrast Mode schemes, 200% font size and `rtl` are
   captured on `chrome` only – font scaling and forced colors go through CDP, and the responsive behaviour is already
   covered by the two widths.
 - **Pages are globbed, not listed.** [`tests/vrt/helpers/pages.ts`](tests/vrt/helpers/pages.ts) resolves every
-  `*.page.tsx` to the URL of its preview server, so a new example is covered without touching the spec; a count
+  `index.page.tsx` to its URL on the preview server, so a new example is covered without touching the spec; a count
   assertion fails if a page appears or disappears unnoticed.
 - **What `setupExamplePage()` pins down** ([`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)): components
   upgraded (`:defined` plus Stencil's `hydrated` class – the loader partial ships no `componentsReady()`), the design
@@ -251,11 +249,11 @@ The suite lives in [`tests/vrt/`](tests/vrt) and screenshots **every page of bot
 - **Tailwind scans comments too.** The scanner reads whole files, so prose such as "`{% block content %}`" or "relative
   to the page" leaks `.block` and `.relative` into the compiled stylesheet. The same applies to string literals: the
   header variants are named `overlay`/`stacked` precisely because a display keyword would end up as an unused utility.
-  Automatic source detection is on, rooted at the Vite project (`src/` here, `src/` of a generated project there), so
-  everything below it is scanned and nothing above it is. Check the compiled CSS after larger comment edits.
-- **`basePath` belongs to the overview pages only.** `ExampleList` takes it to link the examples of a project relative
-  to that project's root; no layout does. Asset URLs are not built from it either — a page's `style.css` and `main.js`
-  sit next to it and carry no path out of the page folder at all.
+  Automatic source detection is on, rooted at the Vite project (`src/` here, the page folder of a generated project
+  there), so everything below it is scanned and nothing above it is. Check the compiled CSS after larger comment edits.
+- **`basePath` belongs to the dev overview only.** `ExampleList` takes it to link the examples of a category relative to
+  the category root; no layout does. Asset URLs are not built from it either — a page's `style.css` and `main.js` sit
+  next to it and carry no path out of the page folder at all.
 - **The shared stylesheet must stay free of relative paths.** It is copied next to every page, at every depth, so a
   `@source "../…"` or an `@import "./…"` would resolve differently in each copy. A unit test asserts it.
 - **`_data.ts` is imported, not injected.** There is no ambient template scope, so a page can extend the shared
@@ -345,7 +343,8 @@ approach, and it is paid on every review:
 
 - Nothing is excluded from Biome. Pages, layout and partials are ordinary TSX, so they lint **and** format — no
   per-package carve-outs are needed in [`biome.json`](../../biome.json).
-- `npx tsc --noEmit` type-checks pages, partials, the build script and the plugin in one pass.
+- `npm run typecheck` checks pages, partials, plugins and scripts; `build` runs it first. Each test scope has its own
+  `typecheck:tests[:scope]`, run first by its test script.
 - The JSX transform is configured **once**, in [`tsconfig.json`](tsconfig.json) (`jsx: "react-jsx"`,
   `jsxImportSource: "preact"`). Vite and Vitest pick it up from there; do not duplicate it in the configs.
 - Vitest needs its own config because `vite.config.ts` sets `root: 'src'`, which would make Vitest look for tests there.
@@ -365,22 +364,20 @@ approach, and it is paid on every review:
   (`createDevHtmlTransformFn()` orders them `pre` → `devHtmlHook` → `normal` → `post`), so a page still carrying its
   entry tag makes the dev server log `Failed to load url /main.js` for a file that is never generated here. The partials
   need the opposite order and therefore stay in the hook — see [`vite.config.ts`](vite.config.ts).
-- **Previewing a project builds it, it does not serve `dist/`.** `npm run preview:examples/patterns` (and `…/templates`)
-  run the same `vite build` as `build:verify` via
-  [`scripts/buildGeneratedProject.ts`](scripts/buildGeneratedProject.ts), rewrite the CDN origin in the emitted HTML in
-  `dist-tmp/` and serve that with `vite preview`. So the name is literal: it is the built site, with bundled scripts and
-  hashed assets, not the source tree and not `dist/`. `dist/` itself is never touched and keeps the production URLs. The
-  ports (3011, 3012) live on the projects in [`plugins/projects.ts`](plugins/projects.ts) and are **not** part of the
-  generated `vite.config.ts`. The `preview:*:app` variants add `--no-open` and bring no CDN of their own – they are what
-  the VRT web servers start, next to one `serve-cdn`.
+- **`preview` serves the built site, it does not build it.** `npm run preview` builds first, then
+  [`scripts/previewSite.ts`](scripts/previewSite.ts) copies `dist-site/` to `dist-tmp/`, rewrites the CDN origin to
+  `http://localhost:3001` and serves it below `/examples/` on port 3011 – the server the Playwright suites start as
+  `preview:app`. `dist-site/` itself keeps the production URLs. The loader builds one CDN URL by concatenation at
+  runtime, which no rewrite of the markup reaches; the Playwright suites catch it in their route handler
+  ([`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)).
 - **The emitted files carry decided modes, not inherited ones.** `fs.cpSync()` copies the mode of every source file, and
-  a bind mount does not always report a sane one: in the Playwright container the copied `public/` assets came out
-  write-only, so the generated project answered its own images with a permission error and a VRT baseline recorded a
-  page without them. [`scripts/build.ts`](scripts/build.ts) therefore sets `755`/`644` on everything it emits.
+  a bind mount does not always report a sane one: in the Playwright container copied media came out write-only, so the
+  preview answered its own images with a permission error and a VRT baseline recorded a page without them. The scripts
+  therefore set `755`/`644` on everything they emit (`copyDir()` in [`scripts/shared.ts`](scripts/shared.ts)).
 
 - **`start` and `preview` mean what they mean elsewhere in the monorepo.** `npm start` is the dev server on the source,
-  `preview:*` serves build output – the same split as `start` vs. `start-app` in the wrapper packages and as `preview`
-  in `packages/styles`. A change that makes `preview:*` serve sources again should rename it.
+  `preview` serves build output – the same split as `start` vs. `start-app` in the wrapper packages and as `preview` in
+  `packages/styles`. A change that makes `preview` serve sources again should rename it.
 
 ## Adding a template (a whole page)
 
@@ -390,10 +387,12 @@ approach, and it is paid on every review:
    instead, which takes `title` and `description` only – everything else is a slot of the component.
 3. Put the markup in `children`, including the page's own `<main id="main">` – except on `CanvasPage`, where the
    component provides that landmark. Links go to `#`, unless they point at an id on the same page.
-4. Add an entry to `templateItems` in `src/_data.ts`, with an `href` relative to the root of the `templates` project –
-   that is what links it from the overview page.
+4. Add an entry to `templateItems` in `src/_data.ts`, with an `href` relative to `src/templates/` – that is what links
+   it from the dev overview.
 5. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
-6. Run `npm run build:verify` and confirm the project still builds and the CSS contains no stray utilities.
+6. Show it in the storefront with `<WebsiteViewer example="templates/<name>" … />` and raise the page count the
+   Playwright suites assert.
+7. Run `npm run build` and confirm the page still builds and the CSS contains no stray utilities.
 
 ## Adding a pattern (a single section)
 
@@ -403,21 +402,22 @@ approach, and it is paid on every review:
    adds nothing around it but the page's script.
 3. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
-4. Add an entry to `patternItems` in `src/_data.ts`, with an `href` relative to the root of the `patterns` project.
+4. Add an entry to `patternItems` in `src/_data.ts`, with an `href` relative to `src/patterns/`, and show it in the
+   storefront with `<WebsiteViewer example="patterns/<name>" … />`.
 5. If the pattern needs behaviour of its own, put it in a plain `main.js` next to the page; the build inlines it into
    the generated entry, so it imports no stylesheet and carries no banner. Shared behaviour goes to `src/assets/*.js`
    and is inlined by its detection rule — hook it on ids from [`src/_ids.ts`](src/_ids.ts), add new ones there, and
    query them with `getElementById()`.
-6. Run `npm run build:verify`; the unit tests assert the accessibility baseline for every page, patterns included.
+6. Run `npm run build`; the unit tests assert the accessibility baseline for every page, patterns included.
 
 ## Accessibility baseline
 
 Every example ships a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item only,
 visible `:focus-visible` outlines and a `forced-colors: active` block. Templates additionally carry the `header` and
 `footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets all
-of them from the component and therefore renders none itself. The overview pages are each a `main` landmark with
-labelled navigations. These demos are documentation, so they have to be correct by example — keep the baseline when
-adding examples. The unit tests assert it for every page.
+of them from the component and therefore renders none itself. The dev overview is a `main` landmark with labelled
+navigations. These demos are documentation, so they have to be correct by example — keep the baseline when adding
+examples. The unit tests assert it for every page.
 
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
 heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is
@@ -425,170 +425,3 @@ empty and carries no spacing, so the footer is seen on its own instead of below 
 therefore asserts _at most_ one first level heading per example, and the per-pattern suites pin down which of the two a
 page is — do not "fix" a missing heading by adding one back to a pattern that deliberately shows nothing above its
 section.
-
-## Status and open items
-
-Point-in-time notes, last updated 2026-09-22.
-
-Done:
-
-- **`public/` reduced to what the pages actually load (2026-09-22).** 80 of its 94 files were unreferenced — they came
-  across with the port and nothing ever linked them. Deleting them takes the folder from 34 MB to 9.9 MB, and since it
-  is copied into both generated projects, the emitted footprint from 68 MB to ~20 MB. The largest were
-  `porsche-models.pdf` (12 MB), `gt3-sound.wav` and `718-rocks.png` (2.4 MB each). Five of them (`lights.jpg`,
-  `ocean.jpg`, `ocean.mp4`, `weekender.webp`, `weekender@2x.webp`) also exist in `packages/shared/src/dummyassets`,
-  which is what the rest of the monorepo references over `serve-dummyassets` on port 3002 — those references are to that
-  copy, not to this one. The 14 survivors were confirmed twice, by grepping the sources and by extracting every asset
-  URL from the built HTML, JS and CSS; the two lists agreed, and the VRT then passed unchanged, which is what proves no
-  page lost an image.
-
-- **The VRT baselines are verified (2026-09-22).** They were recorded before the loader fix (`b7987a9c21`) and were
-  therefore suspect: `stubExternalRequests()` used to abort the loader's request for the components, so it was unclear
-  what the committed screenshots had actually captured. A full `./docker.sh npm run test:vrt:examples` against a freshly
-  built `components` / `components-js` matches **all 83 baselines**, with no diff and nothing to regenerate. Two things
-  make that a real result rather than a green tick:
-  - the route handler either rewrites `cdn.ui.porsche.com` to the local CDN or aborts the request, so it can never fall
-    through to production – a pass means the local build rendered the page;
-  - confirmed by negative control: with `packages/assets/cdn/components` moved aside, the very same capture hangs in
-    `waitForComponentsReady()` until it times out.
-
-  The baselines therefore predate the fix but do not depend on it, because everything that landed in
-  `packages/components` since they were written is test- and typecheck-only.
-
-- **Visual regression tests added (2026-08-21)**, in `tests/vrt/`, run by `npm run test:vrt:examples` and by a new
-  `Examples` job in [`test.yml`](../../.github/workflows/test.yml) (which also runs the unit tests – the package had no
-  CI job before). Notable:
-  - they test the **built** projects: the Playwright web servers are `serve-cdn` plus the two `preview:*:app` scripts,
-    so every capture goes through the same `vite build` as `build:verify`;
-  - two engine × viewport pairings, `chrome` at 1000 and `safari` at 320, with dark, both HCM schemes, 200% font size
-    and `rtl` on chromium only – font scaling and forced colors need CDP;
-  - the pages are globbed from `*.page.tsx`, so a new example is captured without touching the spec;
-  - three races had to be closed for the baselines to be reproducible: the fonts (requested explicitly, because
-    `document.fonts.ready` settles nothing that has not started), the hero video (reset to its poster) and
-    self-measuring components (a one pixel viewport nudge before the capture);
-  - `scripts/build.ts` now sets the modes of everything it emits, after the copied `public/` assets came out write-only
-    in the container and the first baselines recorded pages without their images;
-  - `previewProject.ts` gained `--no-open` and `strictPort`, and `docker-compose.yml` the ports 3010–3012 plus a volume
-    for this package's `node_modules`.
-
-- Full port of the demo pages, unit tests covering page URL resolution, escaping, optional props, navigation overrides,
-  the accessibility baseline and the "no framework attribute names in the output" rule.
-- **Engine decision made (2026-08-13): TSX wins.** `patterns-html` and `patterns-nunjucks` were deleted and this package
-  is now the single implementation. [`COMPARISON.md`](COMPARISON.md) is kept as the decision record.
-- **Renamed (2026-08-13)** from `patterns-jsx` to `examples` (`@porsche-design-system/examples`), now that there is
-  nothing to disambiguate it from. The Tailwind entry was renamed with it, from `assets/patterns.css` to
-  `assets/styles.css`.
-- **Split into two categories (2026-08-13):** `templates/` for whole pages, `patterns/` for single sections, with their
-  own lists in `_data.ts` and their own layouts (`BasePage` / `PatternPage`). `isTemplateInput()` was renamed to
-  `isBuildInput()` so "template" unambiguously means the category.
-- **Links reduced to placeholders (2026-08-13):** the demo chrome links to `#` and the overview page dropped the chrome.
-- **The header became a real PDS header (2026-08-13):** crest/wordmark, icon affordances and a `p-drilldown` behind a
-  menu button, driven by the shared `navItems`, with `assets/header.js` for its behaviour.
-- **Header deduplicated into blocks (2026-08-13):** `Header` is a composition of `HeaderBar`, `Brand`, `MainNav`,
-  `MetaActions`, `NoticeBar` and `CategoryTabs` in `_partials/header/`, with the variants named `overlay`/`stacked`.
-- **Scheme handling of the overlay header corrected (2026-08-13):** the scheme is passed to the blocks (`scheme` prop)
-  so it reaches only the elements on the hero and never cascades into the drilldown.
-- **`dist/` became buildable source (2026-08-19).** The build emits two standalone Vite projects instead of a built
-  site, so they can replace the hand written `patterns` and `templates` workspaces of the examples repository:
-  - the rendered HTML lost the PDS partials, the stylesheet link and the loader script, which the generated
-    `vite.config.ts` adds at build time instead;
-  - each page got a generated `style.css` and `main.js` (`plugins/entries.ts`), and `pageScript` was dropped: the shared
-    behaviour a page needs is derived from its markup, and `assets/video.js` was extracted along the way;
-  - each project got a generated `package.json` and a category overview page, and `src/index.page.tsx` became the
-    dev-only overview of the source tree;
-  - `npm run build:verify` builds both generated projects into `dist-tmp/`;
-  - the Tailwind CLI step disappeared, `@source` now covers `*.{tsx,html}`, and the `Footer` lost the `navItems` prop it
-    never used.
-- **The behaviour became part of the entry (2026-08-19).** `main.js` no longer imports `assets/header.js` and
-  `assets/video.js`, it contains them, under a section comment naming their source. An example is documentation to be
-  read, so the markup, the Tailwind classes and the dummy JavaScript of a pattern are now in two files instead of spread
-  over four; `assets/` in a generated project holds the stylesheet only, and `getScriptEntry()` rejects two snippets
-  declaring the same top level name, which one module scope cannot hold.
-- **The styles became part of the page too (2026-08-20).** `style.css` no longer `@import`s `assets/styles.css`, it
-  **is** that file, copied next to every page. `assets/` is therefore no longer emitted at all: a page in a generated
-  project is `index.html`, `main.js` and `style.css`, nothing above it. The entry was simplified with it —
-  `source(none)` and the explicit `@source` glob are gone, because Tailwind's automatic detection is rooted at the Vite
-  project and covers exactly the pages (measured: two stray utilities from a doc comment in `src/_types/`, none from the
-  package README). Consequences: the file carries no relative path (a unit test asserts it, since the copy lands at
-  every depth), `getStyleEntry()` and `getRootRelativePath()` were dropped, and a page's CSS again contains the
-  utilities of its whole project rather than only its own — about 1 kB uncompressed.
-- **The dev entry rewrite moved ahead of Vite (2026-08-20).** It ran in a `transformIndexHtml()` hook, which Vite calls
-  _after_ its own HTML hook has already resolved and warmed up every `<script src>` of the page — so the dev server
-  logged `Failed to load url /main.js` for every page, for a file that only the generated projects have.
-  `rewriteEntriesForDev()` is now applied in the middleware of [`plugins/jsx.ts`](plugins/jsx.ts), before the markup is
-  handed to `server.transformIndexHtml()`; the partials stay in the hook, because they need exactly the opposite order.
-  Side effect: the shared scripts and the stylesheet are now part of the module graph, so they hot-update instead of
-  being fetched behind Vite's back.
-- **The wiring ids became a contract (2026-08-20).** `src/_ids.ts` is the single source of the ids the dummy behaviour
-  hooks on; the markup, the detection rules in `plugins/entries.ts` and `assets/*.js` now agree on them by construction.
-  `assets/video.js` stopped selecting its video by tag name (`querySelector('video')` → `getElementById('hero-video')`),
-  so every snippet addresses elements by id only, and `getSharedScripts()` throws when a page renders part of a
-  snippet's ids — that used to be a script quietly doing nothing. Unit tests pin the rules down: id-only selectors, a
-  snippet querying exactly the ids it is registered for, every registered id owned by one snippet, and no literal id
-  left in a `.tsx` file.
-- **Three popover patterns added (2026-08-20)**, in `patterns/popover/`, and with them the first examples carrying a
-  `main.js` of their own: `local-market-switch` (open on load, becoming a `p-sheet` below `s`), `priority-navigation`
-  (entries collapsing into a popover as the bar narrows) and `feature-tour` (a sequence of coachmarks). All three use
-  the popover in **controlled** mode, so the page owns which disclosure is open and can mirror it onto the
-  `aria-expanded` of the trigger. Notable along the way:
-  - the local market switch is composed from `HeaderBar`, `MainNav` and `Brand` instead of a second copy of the bar, and
-    its scheme sits on the popover **triggers** – on the wrapper it cascades into the flyouts;
-  - it takes the shared `assets/header.js` and `assets/video.js` through `ids.navButton` … `ids.pauseButton` rather than
-    repeating them, which the "one module scope" check enforces anyway;
-  - `popover`, `sheet` and `tag` joined the preloaded chunks in [`plugins/projects.ts`](plugins/projects.ts);
-  - they are the first pages with a `main.js` of their own, so the rules for it are now asserted: no stylesheet import,
-    no repeated banner, and the build's entry generation is run over every page in `test:unit`.
-- **Two feedback patterns added (2026-08-20)**, in `patterns/feedback/`: `inline` asks in the page and confirms in
-  place, `dialog` asks the same thing in a `p-modal` opened from a button. Notable:
-  - the flow is one partial, `_partials/feedback/FeedbackForm.tsx`, and the pages pass only what differs – the action
-    next to the confirmation ("Give new feedback" / "Close"). It lives next to `header/` and `footer/` rather than in
-    the pattern folder, because "a variant is a prop, not a copy" holds for a family of pages as much as for a header;
-  - the rating scale is data, so the five items cannot drift apart, and each one names itself for assistive tech
-    (`1 (very dissatisfied)`) while the label is hidden visually from `s` upwards, where the ends of the scale are
-    labelled instead. The space in between is a `{'\u00a0'}`, because JSX drops whitespace between lines;
-  - the flow moves focus to the confirmation heading (and back to the question when it starts over), with `aria-live`
-    covering the case where focus cannot be moved – both headings are `tabindex={-1}` and carry the shared focus ring;
-  - `p-modal` is used in **controlled** mode, which is what lets the dialog variant reset on `motionHiddenEnd` instead
-    of snapping back while the dialog is still visible;
-  - `modal`, `segmented-control` and `textarea` joined the preloaded chunks in
-    [`plugins/projects.ts`](plugins/projects.ts).
-- **An admin panel template added (2026-08-21)**, in `templates/admin-panel/`, and with it the second template shell:
-  [`CanvasPage`](src/_layouts/CanvasPage.tsx), for a page whose chrome is `p-canvas`. Notable:
-  - the page renders no landmark of its own – banner, `main` and the two sidebars come from the component, so the shared
-    accessibility test now counts a `p-canvas` as the page's `main` and the template suites are split into a
-    chrome-based and a canvas-based one;
-  - everything interactive is used in **controlled** mode (both sidebars, the accordions of the navigation, the tabs bar
-    and the search modal), which is what lets the sidebar affordance mirror its state onto `aria-expanded`;
-  - the inline `onclick`/`onchange` attributes of the first draft are gone: behaviour lives in the page's `main.js`,
-    hooked on ids, which is also the only place the three `scheme-*` classes appear – Tailwind scans the entry, so it
-    emits them for the scheme switch;
-  - the repeated markup became data (sidebar groups, rows, link lists, filters), and every repeated control names what
-    it acts on (`Edit 718 Cayman`) instead of sharing one label and one `name`;
-  - `accordion`, `canvas`, `checkbox`, `divider`, `input-search` and `table` joined the preloaded chunks in
-    [`plugins/projects.ts`](plugins/projects.ts).
-
-Open:
-
-0. The preview loads its components from the production CDN. `rewriteCdnUrlsForDev()` rewrites the URLs that are
-   **literal** in the markup, but the loader builds its own by concatenation at runtime
-   (`"https://cdn.ui.porsche." + (… ? "cn" : "com")`), so that one origin survives every rewrite. The Playwright suites
-   close it in their route handler (see [`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)); for
-   `npm run preview:examples/*` only `serve-cdn` serving the `/porsche-design-system` prefix, or a rewrite that
-   understands the concatenation, would.
-1. Consider dropping the Prettier formatting pass in favour of accepting dense output.
-2. Revisit whether `_layouts`/`_partials` should become `components/`, and whether the `_` underscore rule is still the
-   clearest way to mark build-time-only inputs now that only the `*.page.tsx` marker distinguishes pages.
-3. Decide whether `PatternPage` should also offer a side-by-side comparison mode, so two variants can be seen at once
-   without leaving the page.
-4. Storefront hookup: copy the built projects into `packages/storefront/public/` during prebuild so the demos ship with
-   the docs.
-5. Derive the preloaded component chunks per project from the rendered markup, instead of the hand kept lists in
-   [`plugins/projects.ts`](plugins/projects.ts).
-6. `public/` is copied into both projects in full; split it per category once the asset lists diverge. With only 14
-   assets left the lists are now known exactly: `trolley.webp` (56 kB) is patterns-only, the other ten are
-   templates-only (2.1 MB), and the `mood-porsche-gts.*` trio (7.8 MB) is genuinely shared. Splitting would therefore
-   save about 2.2 MB of the ~20 MB emitted, not half of it — the hero video dominates and has to be duplicated either
-   way.
-7. The category tabs of `patterns/header/stacked` do not settle at 200% font size when the machine is busy – they flip
-   between showing and hiding their scroll affordance, which is why that one VRT capture is skipped. Worth a look at the
-   pattern (or at `p-tabs-bar`), not at the test.

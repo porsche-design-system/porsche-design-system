@@ -1,11 +1,8 @@
 # Examples
 
 Standalone examples for Porsche Design System usage — whole page **templates** and single section **patterns**, both
-**typed components rendered to static HTML at build time**. The output is plain HTML with relative paths — no hydration,
-no framework runtime.
-
-This package was chosen over two alternatives (an in-house `@include` engine and Nunjucks) that rendered the same pages;
-[`COMPARISON.md`](COMPARISON.md) records how they compared and why this one won.
+**typed components rendered to static HTML at build time**. The output is plain HTML — no hydration, no framework
+runtime. The storefront frames every page and opens it in StackBlitz.
 
 There is no template syntax here at all. Pages are TypeScript, so conditions are `if`/ternaries, loops are `map()`, and
 partials are function components whose props the compiler checks.
@@ -34,46 +31,59 @@ copy in `dist-tmp/` is rewritten to `http://localhost:3001`, so the locally buil
 production CDN. `dist-site/` is never touched and keeps the production URLs. This needs the Porsche Design System built
 (`npm run build:core-dependencies && npm run build:components && npm run build:components-js`).
 
-## Two categories, two generated projects
+## Two categories, one project per page
 
-| Category      | What it shows                                        | Layout                    | Lives in          | Becomes          |
-| ------------- | ---------------------------------------------------- | ------------------------- | ----------------- | ---------------- |
-| **Templates** | A whole application page, chrome included.           | `BasePage` / `CanvasPage` | `src/templates/…` | `dist/templates` |
-| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`             | `src/patterns/…`  | `dist/patterns`  |
+| Category      | What it shows                                        | Layout                    | Lives in          |
+| ------------- | ---------------------------------------------------- | ------------------------- | ----------------- |
+| **Templates** | A whole application page, chrome included.           | `BasePage` / `CanvasPage` | `src/templates/…` |
+| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`             | `src/patterns/…`  |
 
-Both categories are listed in [`src/_data.ts`](src/_data.ts) (`templateItems`, `patternItems`), so a new example is
-linked from the overview page of its project by adding one entry.
+Both categories are listed in [`src/_data.ts`](src/_data.ts) (`templateItems`, `patternItems`), which is what links an
+example from the overview of the dev server.
 
-`dist/` is **not** a built site: each category becomes the source of a standalone Vite project — `package.json`,
-`vite.config.ts`, `public/` and a `src/` holding the pages — which replaces the hand written workspace of the
-[examples repository](https://github.com/porsche-design-system/examples). The pages therefore ship **without** the
-Porsche Design System partials, without a stylesheet link and without the loader script: the generated `vite.config.ts`
-adds all three when the project is built, and every page loads one generated `main.js` that imports its `style.css` and
-carries the behaviour of the example. Use `npm run build:verify` to build both projects and see the result.
+The build writes two trees:
+
+```text
+dist/patterns/header/overlay/     # scripts/build.ts: the Vite project of one page – what StackBlitz opens
+├── package.json / vite.config.ts # generated; the config injects the Porsche Design System partials
+├── index.html                    # the rendered page, without partials, stylesheet link or loader script
+└── main.js / style.css           # generated entry: the behaviour of the example and the Tailwind entry
+
+dist-site/                        # scripts/buildSite.ts: what the storefront serves from public/examples/
+├── media/                        # public/examples/media/, copied once
+└── patterns/header/overlay/
+    ├── index.html                # the project above, built, with its script and stylesheet inline
+    └── stackblitz.json           # the files of the project above, verbatim
+```
+
+Opening `dist/**/index.html` directly shows unstyled markup, because the partials are only added when the project is
+built. The storefront copies `dist-site/` in its `prebuild` and puts its slug in front of the media paths.
 
 ## Links: only the overview navigates
 
 The examples demonstrate chrome, they are not a website. Every link inside a header, a footer or an example body is a
-placeholder `href="#"`, except for in-page anchors, which are real because the target is on the page. The pages with
-working links are the overview pages: one per generated project, plus `src/index.page.tsx` for the source tree, which is
-the only page linking across categories and is never emitted. None of them renders a header or footer, because repeating
-the demo chrome there would demonstrate nothing and would need URLs kept in sync for no benefit.
+placeholder `href="#"`, except for in-page anchors, which are real because the target is on the page. The only page with
+working links is the overview of the dev server, `src/index.page.tsx`, which is never emitted and renders no header or
+footer.
 
 This is why `Header`, `Footer` and the layouts take no `basePath`: they have no URL to build. `ExampleList`, which the
-overview pages are made of, is the only component that does.
+overview is made of, is the only component that does.
 
 ## Structure
 
 ```text
 src/
 ├── index.page.tsx            # overview of the source tree – dev only, never emitted
-├── _data.ts                  # templateItems, patternItems (URLs inside their project), chrome nav
+├── _data.ts                  # templateItems, patternItems (URLs below their category), chrome nav
 ├── _classes.ts               # classes(): joins class names, dropping the optional ones that are unset
+├── _ids.ts                   # the ids the shared behaviour in assets/*.js is wired on
+├── _media.ts                 # media(): the one path images and videos are referenced by
+├── _types/pds-jsx.d.ts       # JSX typings for the PDS web components
 ├── _layouts/
 │   ├── BasePage.tsx          # full page shell: head, header, content, footer
 │   ├── CanvasPage.tsx        # shell of a page whose chrome is `p-canvas`
 │   ├── PatternPage.tsx       # minimal shell for a single section
-│   └── OverviewPage.tsx      # shell of the overview pages
+│   └── OverviewPage.tsx      # shell of the dev overview
 ├── _partials/                # components, never emitted as pages
 │   ├── Head.tsx
 │   ├── header/               # the header, split into the blocks its variants share
@@ -84,6 +94,7 @@ src/
 │   │   ├── MetaActions.tsx   # icon affordances, from `metaActionItems`
 │   │   ├── NoticeBar.tsx     # note above the bar (stacked only)
 │   │   └── CategoryTabs.tsx  # category navigation below the bar (stacked only)
+│   ├── feedback/FeedbackForm.tsx  # the flow both feedback patterns ask
 │   ├── footer/Footer.tsx
 │   └── ExampleList.tsx
 ├── assets/                   # shared inputs of every page – build inputs, never emitted
@@ -91,24 +102,22 @@ src/
 │   ├── header.js             # behaviour of the header drilldown – inlined into the entries, never emitted
 │   └── video.js              # behaviour of the hero video and its pause control – inlined, never emitted
 ├── templates/
-│   ├── index.page.tsx        # overview of the templates project
 │   ├── admin-panel/
 │   │   ├── index.page.tsx
 │   │   └── main.js
 │   └── landing-page/
 │       └── index.page.tsx
 └── patterns/
-    ├── index.page.tsx        # overview of the patterns project
+    ├── feedback/{inline,dialog}/             # index.page.tsx + main.js each
     ├── footer/index.page.tsx
-    └── header/
-        ├── overlay/index.page.tsx
-        └── stacked/index.page.tsx
+    ├── header/{overlay,stacked}/index.page.tsx
+    └── popover/{local-market-switch,priority-navigation,feature-tour}/  # index.page.tsx + main.js each
 ```
 
-`*.page.tsx` is the page marker: `templates/landing-page/index.page.tsx` becomes
-`dist/templates/src/landing-page/index.html`, together with the `style.css` and `main.js` generated next to it. Every
-other `.ts`/`.tsx` file is a build-time input, a `main.js` next to a page is inlined into that page's entry, and all
-other files are copied verbatim.
+`index.page.tsx` is the page marker: `templates/landing-page/index.page.tsx` becomes the project
+`dist/templates/landing-page/`. A page folder holds that file and optionally a `main.js`, which is inlined into the
+page's entry – the build rejects anything else. Every other `.ts`/`.tsx` file is a build-time input. Images and videos
+live in `public/examples/media/` and are referenced through `media()` from [`src/_media.ts`](src/_media.ts).
 
 ## Authoring a template
 
@@ -230,11 +239,11 @@ Rules:
 - Write **plain HTML attribute names**: `class`, `for`, `charset`, `novalidate`. Preact supports them, so the generated
   markup stays copy-pasteable — do not use `className` or `htmlFor`.
 - Values are HTML-escaped by default. Raw markup would need `dangerouslySetInnerHTML`, which these demos do not use.
-- A typo in a prop is a **compile error**, not a render-time surprise. Run `npx tsc --noEmit` or rely on the editor.
+- A typo in a prop is a **compile error**, not a render-time surprise. Run `npm run typecheck` or rely on the editor.
 - `_data.ts` is imported explicitly rather than injected into an ambient scope, so a page can extend the shared
   navigation (`[...navItems, extra]`) instead of only replacing it.
-- Links inside an example are `#`. Do not wire them up — the overview pages are the only place where a broken URL would
-  actually be noticed, and they are covered by tests.
+- Links inside an example are `#`. Do not wire them up — the dev overview is the only place where a broken URL would
+  actually be noticed, and it is covered by tests.
 - Files and folders starting with `_` are inputs only. Keep pages declarative — see
   [`AGENTS.md`](AGENTS.md#scope-discipline-important).
 - A variation of a partial is a **prop**, not a second copy of the markup. If two variants share a block, that block is
@@ -277,13 +286,13 @@ which runs ahead of the plugin hooks. A page still pointing at its generated `ma
 after Vite's, so the inline loader script keeps the bytes the partial emitted and its CSP hash stays valid.
 
 Preact never reaches the browser: it is a build-time renderer and a source of JSX types, nothing else. The output is
-plain HTML with relative paths, no hydration, no framework runtime.
+plain HTML, no hydration, no framework runtime.
 
 ## Accessibility baseline
 
 Every example ships `main` and section landmarks, labelled `nav` elements, `aria-current` on the active nav item,
 visible `:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header` and
 `footer` landmarks, and a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets
-those landmarks from the component and adds none itself. The overview pages are each a `main` landmark with labelled
+those landmarks from the component and adds none itself. The dev overview is a `main` landmark with labelled
 navigations. Keep that baseline when adding examples — these demos are documentation, so they have to be correct by
 example.
