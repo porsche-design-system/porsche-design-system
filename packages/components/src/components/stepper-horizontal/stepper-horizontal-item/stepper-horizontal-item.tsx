@@ -57,7 +57,6 @@ export class StepperHorizontalItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    // logs instead of throwing, a throwing render() would stop the component from updating ever again
     logErrorIfCurrentAndDisabled(this.host);
     attachComponentCss(this.host, getComponentCss, this.state, this.disabled);
 

@@ -14,6 +14,7 @@ export const getStepperHorizontalIconName = (
   return state === 'complete' ? 'success' : 'warning';
 };
 
+// logs instead of throwing, since it runs in render() and a throwing render() stops the component from updating for good
 export const logErrorIfCurrentAndDisabled = (host: HTMLElement): void => {
   if (
     (host as HTMLPStepperHorizontalItemElement).state === 'current' &&

@@ -9,6 +9,7 @@ export const getIndexOfStepWithStateCurrent = (stepperHorizontalItems: HTMLPStep
   return stepperHorizontalItems.findIndex((item) => item.state === 'current');
 };
 
+// logs instead of throwing, since it runs in render() and a throwing render() stops the component from updating for good
 export const logErrorIfMultipleCurrentStates = (
   host: HTMLElement,
   stepperHorizontalItems: HTMLPStepperHorizontalItemElement[]

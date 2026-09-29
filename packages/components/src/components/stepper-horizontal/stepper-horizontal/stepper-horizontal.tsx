@@ -94,7 +94,6 @@ export class StepperHorizontal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
-    // logs instead of throwing, a throwing render() would stop the component from updating ever again
     logErrorIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
