@@ -102,7 +102,7 @@ export const stubExternalRequests = async (page: Page): Promise<void> => {
  * The examples load the components through the **loader partial**, which deliberately ships no `componentsReady()` –
  * that helper belongs to the JS wrapper the other packages test against. What the page offers instead is what the
  * components themselves put into the DOM: a custom element is registered (`:defined`) and Stencil marks the upgraded
- * element with the `hydrated` class. Both have to hold, because `assets/styles.css` hides undefined elements and an
+ * element with the `hydrated` class. Both have to hold, because `src/style.css` hides undefined elements and an
  * element without that class has not rendered its shadow root yet.
  */
 export const waitForComponentsReady = async (page: Page): Promise<void> => {

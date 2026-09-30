@@ -107,14 +107,11 @@ export const payloadName = 'stackblitz.json';
 /** Name of the generated script entry of a page, the only script its HTML references. */
 export const scriptEntryName = 'main.js';
 
-/** Name of the generated style entry of a page, imported by the script entry. */
+/**
+ * Name of the style entry of a page, imported by the script entry – and of the shared Tailwind entry at the root of
+ * `src/`, which is copied under this very name and linked by the dev server.
+ */
 export const styleEntryName = 'style.css';
-
-/** The folder of the source tree holding what every page shares – build inputs only, never emitted. */
-export const assetsDirName = 'assets';
-
-/** The shared Tailwind entry inside that folder, inlined into every page's `style.css` and linked by the dev server. */
-export const sharedStyleName = 'styles.css';
 
 /** A page of one of the categories – and with that, one generated project. */
 export type PageLocation = {

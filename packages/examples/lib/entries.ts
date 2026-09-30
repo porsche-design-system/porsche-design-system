@@ -1,5 +1,5 @@
 import prettier from 'prettier';
-import { assetsDirName, scriptEntryName, sharedStyleName, styleEntryName } from './projects.ts';
+import { scriptEntryName, styleEntryName } from './projects.ts';
 
 /**
  * The entry files of a page: `style.css` and `main.js`.
@@ -9,7 +9,7 @@ import { assetsDirName, scriptEntryName, sharedStyleName, styleEntryName } from 
  * imports the page's `style.css`, and links it at the end of the body: the shape a Vite project expects, and the shape
  * the hand written examples have.
  *
- * The stylesheet needs no assembling: `src/assets/styles.css` is copied next to every page as it is, which is why there
+ * The stylesheet needs no assembling: `src/style.css` is copied next to every page as it is, which is why there
  * is no `getStyleEntry()` – see `scripts/build.ts`. It carries no relative path, so the copy works at any depth, and
  * Tailwind's automatic source detection covers the pages from the root of the Vite project.
  *
@@ -142,4 +142,4 @@ export const formatScriptEntry = (entry: string): Promise<string> =>
  * page in dev and the emitted one.
  */
 export const linkStylesForDev = (html: string): string =>
-  html.replace(REGEX_HEAD_END, `<link rel="stylesheet" href="/${assetsDirName}/${sharedStyleName}" />$&`);
+  html.replace(REGEX_HEAD_END, `<link rel="stylesheet" href="/${styleEntryName}" />$&`);

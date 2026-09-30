@@ -7,13 +7,11 @@ import { extractScripts, formatScriptEntry, getScriptEntry } from '../lib/entrie
 import { getPackageJson, getViteConfig, type Versions } from '../lib/generateProject.ts';
 import { type PageModule, pageSuffix, renderPage } from '../lib/jsx.ts';
 import {
-  assetsDirName,
   type Category,
   categories,
   type PageLocation,
   resolvePageLocation,
   scriptEntryName,
-  sharedStyleName,
   styleEntryName,
 } from '../lib/projects.ts';
 import { distDir, packageDir, srcDir, writeFile } from '../lib/shared.ts';
@@ -24,7 +22,7 @@ import { distDir, packageDir, srcDir, writeFile } from '../lib/shared.ts';
  * Read once and written unchanged: it carries no relative path, so the same bytes work at any depth, and Tailwind's
  * automatic source detection scans the page from the root of its generated Vite project.
  */
-const sharedStyles = fs.readFileSync(path.join(srcDir, assetsDirName, sharedStyleName), 'utf8');
+const sharedStyles = fs.readFileSync(path.join(srcDir, styleEntryName), 'utf8');
 
 /** Dependency versions of the generated projects – taken from this package, so they cannot drift apart. */
 const readVersions = (): Versions => {

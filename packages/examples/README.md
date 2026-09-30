@@ -90,16 +90,15 @@ src/
 │   │   └── CategoryTabs.tsx  # category navigation below the bar (stacked only)
 │   ├── feedback/FeedbackForm.tsx  # the flow both feedback patterns ask, with its behaviour
 │   └── footer/Footer.tsx
-├── assets/
-│   └── styles.css            # Tailwind entry: theme, global element defaults – copied next to every page
 ├── templates/
 │   ├── admin-panel/index.page.tsx
 │   └── landing-page/index.page.tsx
-└── patterns/
-    ├── feedback/{inline,dialog}/index.page.tsx
-    ├── footer/index.page.tsx
-    ├── header/{overlay,stacked}/index.page.tsx
-    └── popover/{local-market-switch,priority-navigation,feature-tour}/index.page.tsx
+├── patterns/
+│   ├── feedback/{inline,dialog}/index.page.tsx
+│   ├── footer/index.page.tsx
+│   ├── header/{overlay,stacked}/index.page.tsx
+│   └── popover/{local-market-switch,priority-navigation,feature-tour}/index.page.tsx
+└── style.css                 # Tailwind entry: theme, global element defaults – copied next to every page
 ```
 
 `index.page.tsx` is the page marker: `templates/landing-page/index.page.tsx` becomes the project
@@ -169,7 +168,7 @@ const Page = () => (
 
 `<Script>` renders a `<script type="module">` whose content is not escaped, which a plain `<script>` in JSX would be.
 The dev server serves it where it stands. The build moves every one of them, in document order, into a generated
-`main.js`, which imports the page's `style.css` (`assets/styles.css`, copied), and links that entry at the end of the
+`main.js`, which imports the page's `style.css` (`src/style.css`, copied), and links that entry at the end of the
 body — so the markup, the Tailwind classes, the styles and the dummy JavaScript of an example are written in one file
 and emitted as three. A few things follow from that:
 
@@ -279,7 +278,7 @@ Rules:
 
 ## Styling
 
-Tailwind CSS v4, configured CSS-first in [`src/assets/styles.css`](src/assets/styles.css). That entry is **copied** next
+Tailwind CSS v4, configured CSS-first in [`src/style.css`](src/style.css). That entry is **copied** next
 to every page as its `style.css`, which the page's generated `main.js` pulls in, so the project's own Vite build
 compiles, hashes and links it — in dev, `@tailwindcss/vite` compiles the source file directly, which is the only place
 it exists as a file. It deliberately contains nothing but the three imports and the `:not(:defined)` rule: no `@source`,

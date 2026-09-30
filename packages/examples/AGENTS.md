@@ -95,21 +95,21 @@ src/
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask, with its behaviour
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
-├── assets/styles.css             # Tailwind entry: @theme, global element defaults – copied next to every page
 ├── templates/
 │   ├── landing-page/             # index.page.tsx
 │   └── admin-panel/              # index.page.tsx – application shell on `p-canvas`
-└── patterns/
-    ├── header/overlay/           # Header in its `overlay` variant
-    ├── header/stacked/           # Header in its `stacked` variant
-    ├── footer/                   # Footer below the content
-    ├── popover/                  # index.page.tsx each – the behaviour is per example
-    │   ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
-    │   ├── priority-navigation/  # entries that no longer fit collapse into a popover
-    │   └── feature-tour/         # a sequence of coachmarks, one open at a time
-    └── feedback/                 # index.page.tsx each – the flow itself is a partial
-        ├── inline/               # the flow in the page, confirming in place
-        └── dialog/               # the same flow in a p-modal, reset once it has closed
+├── patterns/
+│   ├── header/overlay/           # Header in its `overlay` variant
+│   ├── header/stacked/           # Header in its `stacked` variant
+│   ├── footer/                   # Footer below the content
+│   ├── popover/                  # index.page.tsx each – the behaviour is per example
+│   │   ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
+│   │   ├── priority-navigation/  # entries that no longer fit collapse into a popover
+│   │   └── feature-tour/         # a sequence of coachmarks, one open at a time
+│   └── feedback/                 # index.page.tsx each – the flow itself is a partial
+│       ├── inline/               # the flow in the page, confirming in place
+│       └── dialog/               # the same flow in a p-modal, reset once it has closed
+└── style.css                     # Tailwind entry: @theme, global element defaults – copied next to every page
 ```
 
 **Underscore rule:** files and folders starting with `_` are inputs only and are never emitted. **Page rule:** a page is
@@ -360,7 +360,7 @@ reaches through interaction**.
   [`lib/entries.ts`](lib/entries.ts) instead: it removes every `<script type="module">` from the rendered page, in
   document order, and links the generated `main.js` at the end of the body. That entry imports the page's `style.css`,
   then carries the `DO NOT USE IN PRODUCTION` banner once and the scripts one after the other, with their imports
-  hoisted to the top. The `style.css` is `assets/styles.css` copied verbatim – it needs no assembling, which is why
+  hoisted to the top. The `style.css` is `src/style.css` copied verbatim – it needs no assembling, which is why
   there is no `getStyleEntry()`. So a consumer sees the markup, the Tailwind classes, the styles and the dummy
   JavaScript of a pattern without following imports, while the source of each is a single component.
 - **The scripts of a page share one module scope once built.** In dev each `<Script>` is a module of its own; in
@@ -430,7 +430,7 @@ approach, and it is paid on every review:
   keep the production URLs.
 - **The dev server keeps the scripts inline and links the stylesheet.** `main.js` and `style.css` only exist in the
   generated projects, so the rendered page never references them: the build links the entry, and in dev
-  `linkStylesForDev()` links `/assets/styles.css` instead, in the middleware of [`lib/jsx.ts`](lib/jsx.ts). Vite's own
+  `linkStylesForDev()` links `/style.css` instead, in the middleware of [`lib/jsx.ts`](lib/jsx.ts). Vite's own
   HTML hook turns every `<script type="module">` into a proxy module (`index.html?html-proxy&index=0.js`), which is what
   resolves the bare imports of a script. Together with the CDN rewrite, the stylesheet link and the scripts' position
   are the only differences between dev and the emitted HTML. The partials are injected in a `transformIndexHtml()` hook,
@@ -463,7 +463,7 @@ approach, and it is paid on every review:
    color scheme on `<html>` through `class`.
 3. Put the markup in `children`, including the page's own `<main id="main">` – except inside `p-canvas`, where the
    component provides that landmark. Links go to `#`, unless they point at an id on the same page.
-4. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
+4. Style with Tailwind utilities; touch `src/style.css` only for genuinely global defaults or theme values.
 5. Show it in the storefront with `<WebsiteViewer example="templates/<name>" … />` and raise the page count the
    Playwright suites assert. The dev server lists it on its next start – pages are found by file name, not registered.
 6. Run `npm run build` and confirm the page still builds and the CSS contains no stray utilities.

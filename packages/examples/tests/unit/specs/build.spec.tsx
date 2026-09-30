@@ -53,7 +53,7 @@ describe('resolvePagePath()', () => {
     expect(resolvePagePath('/landing%20page/')).toBe('landing page/index.page.tsx');
   });
 
-  it.each(['/assets/styles.css', '/patterns/header/overlay/main.js', '/@vite/client'])(
+  it.each(['/style.css', '/patterns/header/overlay/main.js', '/@vite/client'])(
     'should return undefined for the asset request "%s"',
     (url) => {
       expect(resolvePagePath(url)).toBeUndefined();
@@ -77,7 +77,7 @@ describe('projects', () => {
   });
 
   // A page at the root of a category would be a project containing every other page of it – the build rejects it.
-  it.each(['index.page.tsx', 'patterns/index.page.tsx', 'assets/styles.css'])(
+  it.each(['index.page.tsx', 'patterns/index.page.tsx', 'style.css'])(
     'should not locate "%s" as a page',
     (relativePath) => {
       expect(resolvePageLocation(relativePath)).toBeUndefined();
@@ -230,10 +230,7 @@ describe('StackBlitz payload', () => {
 });
 
 describe('entries', () => {
-  const sharedStyles = fs.readFileSync(
-    path.join(import.meta.dirname, '../../../src/assets/styles.css'),
-    'utf8'
-  ) as string;
+  const sharedStyles = fs.readFileSync(path.join(import.meta.dirname, '../../../src/style.css'), 'utf8') as string;
 
   it('should keep the shared stylesheet free of relative paths, because it is copied next to every page', () => {
     // It is written to `src/`, `src/footer/` and `src/header/overlay/` alike, so a path out of the folder would
@@ -339,7 +336,7 @@ describe('entries', () => {
 
   it('should link the shared stylesheet in dev, where no entry imports it', () => {
     expect(linkStylesForDev('<head></head><body></body>')).toBe(
-      '<head><link rel="stylesheet" href="/assets/styles.css" /></head><body></body>'
+      '<head><link rel="stylesheet" href="/style.css" /></head><body></body>'
     );
   });
 
