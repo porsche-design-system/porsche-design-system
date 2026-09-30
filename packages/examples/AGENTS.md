@@ -67,6 +67,7 @@ scripts/previewSite.ts            # serves dist-site/ below /examples/ against t
 scripts/shared.ts                 # output paths and file helpers
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
+playwright.config.ts              # every Playwright suite as projects of one config – e2e, a11y, vrt-chrome, vrt-safari
 tests/unit/jsx.spec.tsx           # tests describing the rendering contract
 tests/helpers/                    # shared by the Playwright suites – a helper two suites use lives here
 ├── previewServers.ts             # the web server every suite runs against
@@ -147,7 +148,15 @@ npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
 # from within this package
 npm run build:verify        # verifies ./dist-site: one self-contained page each, media only through media()
 npm run typecheck           # source; typecheck:tests[:e2e|:a11y|:vrt] check the test scopes
+npx playwright test --project=e2e   # any suite directly – projects: e2e, a11y, vrt-chrome, vrt-safari
 ```
+
+**One Playwright config, one project per suite.** [`playwright.config.ts`](playwright.config.ts) is a pilot for the
+monorepo, whose other packages keep one config per suite in `tests/<suite>/config/`. The settings are still those of the
+shared base configs in `@porsche-design-system/shared/testing`; only the options Playwright allows per project – test
+directory and match, timeouts, snapshot path, screenshot comparison, output directory – are taken per suite. The
+`test:*` scripts select their projects, so the suites stay separate steps in CI with separate results. A bare
+`playwright test` runs all of them, VRT included, which only produces the committed pixels inside Docker.
 
 **Run the VRT in Docker** – `./docker.sh npm run test:vrt:examples` – like every other visual regression suite in this
 monorepo. The committed baselines are the ones the container produces; a run on macOS renders different pixels.
@@ -240,17 +249,18 @@ reaches through interaction**.
   | variant of the initial one | `<page>--<width>-<variant>-<project>.png` | `patterns-header-overlay--1000-hcm-dark-chrome.png`        |
   | state reached by a test    | `<page>--<state>--<width>-<project>.png`  | `patterns-header-overlay--drilldown-open--1000-chrome.png` |
 
-  The project suffix is appended by Playwright; `prepare-vrt-snapshots` relies on nothing but that suffix.
+  The engine suffix is fixed per project in `playwright.config.ts`; `prepare-vrt-snapshots` relies on nothing but it.
 
 - **It tests the built site, not the dev server.** It expects `build:examples` to have run, and the web server of
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts) is `npm run preview` – `serve-cdn` plus
   `scripts/previewSite.ts`, which serves `dist-site/` – so a capture shows the inlined entry and the injected partials,
   exactly what the storefront ships.
-- **Two projects, one viewport each:** `chrome` (chromium, 1000 = `viewportWidthM`) and `safari` (webkit, 320 =
-  `viewportWidthXXS`). They are named after the engine because `prepare-vrt-snapshots` derives the names of the
-  regression artifacts from the project name. Dark scheme, both High Contrast Mode schemes, 200% font size and `rtl` are
-  captured on `chrome` only – font scaling and forced colors go through CDP, and the responsive behaviour is already
-  covered by the two widths.
+- **Two projects, one viewport each:** `vrt-chrome` (chromium, 1000 = `viewportWidthM`) and `vrt-safari` (webkit, 320 =
+  `viewportWidthXXS`). Their baselines still end in the bare engine name, `-chrome.png` and `-safari.png`:
+  `prepare-vrt-snapshots` derives the regression artifacts from that suffix, and project names have to be unique across
+  the suites, so the config fixes the suffix per project instead of taking it from `{projectName}`. Dark scheme, both
+  High Contrast Mode schemes, 200% font size and `rtl` are captured on `vrt-chrome` only – font scaling and forced
+  colors go through CDP, and the responsive behaviour is already covered by the two widths.
 - **Pages are globbed to find the specs, not to generate them.** [`tests/helpers/pages.ts`](tests/helpers/pages.ts)
   resolves every `index.page.tsx` to its URL on the preview server; a spec looks its page up by id with
   `getExampleUrl()`, which fails if the page is gone, and the coverage spec fails if a page has no spec.

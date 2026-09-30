@@ -6,7 +6,7 @@ import { getExampleUrl, setupExamplePage, waitForComponentsReady, waitForStableL
 /**
  * The captures every example gets, whatever it demonstrates.
  *
- * Both Playwright projects capture the page as it loads, each at its own viewport: `chrome` at 1000 (M) and `safari`
+ * Both VRT projects capture the page as it loads, each at its own viewport: `vrt-chrome` at 1000 (M) and `vrt-safari`
  * at 320 (XXS). Everything else is chromium only – scaling the font size and forcing colors go through CDP, and the
  * responsive layout is already covered by the two widths.
  *
