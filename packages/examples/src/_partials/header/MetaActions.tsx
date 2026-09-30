@@ -1,5 +1,4 @@
 import type { JSX } from 'preact';
-import { classes } from '../../_classes.ts';
 
 /**
  * Icon names accepted by the PDS components, derived from the JSX typings instead of importing the icon list, so a typo
@@ -43,13 +42,13 @@ type MetaActionsProps = {
  * to the cart" and "open the search". `hide-label` only hides the label visually, so every affordance keeps its
  * accessible name without an `aria-label` duplicating it.
  */
-export const MetaActions = ({ items, scheme }: MetaActionsProps) => (
+export const MetaActions = ({ items, scheme = '' }: MetaActionsProps) => (
   <>
     {items.map((item) =>
       item.href ? (
         <p-link-pure
           key={item.id}
-          class={classes('p-static-xs -m-static-xs', scheme)}
+          class={`p-static-xs -m-static-xs ${scheme}`}
           href={item.href}
           icon={item.icon}
           hide-label="true"
@@ -59,7 +58,7 @@ export const MetaActions = ({ items, scheme }: MetaActionsProps) => (
       ) : (
         <p-button-pure
           key={item.id}
-          class={classes('p-static-xs -m-static-xs', scheme)}
+          class={`p-static-xs -m-static-xs ${scheme}`}
           type="button"
           icon={item.icon}
           hide-label="true"

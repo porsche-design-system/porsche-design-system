@@ -3,7 +3,7 @@ import path from 'node:path';
 import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
 import { extractScripts } from '../../../plugins/entries.ts';
-import { renderPage } from '../../../plugins/jsx.ts';
+import { normalizeClassAttributes, renderPage } from '../../../plugins/jsx.ts';
 import { scriptEntryName } from '../../../plugins/projects.ts';
 import { BasePage } from '../../../src/_layouts/BasePage.tsx';
 import { OverviewPage } from '../../../src/_layouts/OverviewPage.tsx';
@@ -222,7 +222,10 @@ describe('Header', () => {
   });
 
   it('should leave the scheme of the stacked variant to its rows', () => {
-    const html = render(<Header currentPage="home" navItems={navItems} showSearch variant="stacked" />);
+    // Normalized like `renderPage()` does, since the unset scheme leaves a trailing space in the template literal.
+    const html = normalizeClassAttributes(
+      render(<Header currentPage="home" navItems={navItems} showSearch variant="stacked" />)
+    );
 
     // Only the note is an island of its own; the bar sits on the page background.
     expect(countOccurrences(html, 'scheme-dark')).toBe(1);

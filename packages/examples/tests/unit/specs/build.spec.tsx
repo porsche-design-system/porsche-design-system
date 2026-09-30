@@ -12,7 +12,7 @@ import {
   scriptEntryTag,
 } from '../../../plugins/entries.ts';
 import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../../plugins/inline.ts';
-import { doctype, renderPage, resolvePagePath } from '../../../plugins/jsx.ts';
+import { doctype, normalizeClassAttributes, renderPage, resolvePagePath } from '../../../plugins/jsx.ts';
 import { getStackblitzPayload } from '../../../plugins/payload.ts';
 import { categories, getPageId, resolvePageLocation, scriptEntryName } from '../../../plugins/projects.ts';
 import { getPackageJson, getViteConfig } from '../../../scripts/generateProject.ts';
@@ -342,6 +342,20 @@ describe('entries', () => {
 });
 
 describe('renderPage()', () => {
+  it('should trim and collapse class attributes, so an unset class in a template literal leaves no space', () => {
+    expect(normalizeClassAttributes('<p class="a  b "></p><i class=" "></i><b class="c"></b>')).toBe(
+      '<p class="a b"></p><i></i><b class="c"></b>'
+    );
+  });
+
+  it('should leave the content of scripts alone, since it is code rather than markup', () => {
+    const html = '<script type="module">el.innerHTML = \'<b class="a  b">\';</script><p class=" x"></p>';
+
+    expect(normalizeClassAttributes(html)).toBe(
+      '<script type="module">el.innerHTML = \'<b class="a  b">\';</script><p class="x"></p>'
+    );
+  });
+
   it('should prepend the doctype', async () => {
     expect(await renderPage(IndexPage)).toMatch(new RegExp(`^${doctype}\\n<html lang="en">`));
   });

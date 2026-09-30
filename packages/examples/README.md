@@ -75,7 +75,6 @@ overview is made of, is the only component that does.
 ```text
 src/
 ├── index.page.tsx            # overview of the source tree – dev only, never emitted; lists every example
-├── _classes.ts               # classes(): joins class names, dropping the optional ones that are unset
 ├── _media.ts                 # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts       # JSX typings for the PDS web components
 ├── _layouts/

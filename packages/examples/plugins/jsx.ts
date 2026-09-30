@@ -18,6 +18,30 @@ export const pageSuffix = '.page.tsx';
  */
 export const doctype = '<!doctype html>';
 
+const REGEX_SCRIPT_ELEMENT = /(<script\b[^>]*>[\s\S]*?<\/script>)/;
+const REGEX_CLASS_ATTRIBUTE = /\sclass="([^"]*)"/g;
+
+/**
+ * Trims and collapses the whitespace of every `class` attribute, and drops one left empty.
+ *
+ * It is what lets a component write an optional class as a template literal – `` `p-static-xs ${scheme}` `` – without
+ * a stray space in the markup when the class is not set; Prettier leaves attribute values as they are. The content of
+ * `<script>` elements is not touched, since it is code rather than markup.
+ */
+export const normalizeClassAttributes = (html: string): string =>
+  html
+    .split(REGEX_SCRIPT_ELEMENT)
+    .map((part, index) =>
+      // `split()` with a capturing group puts the scripts at the odd indices.
+      index % 2
+        ? part
+        : part.replace(REGEX_CLASS_ATTRIBUTE, (_match, value: string) => {
+            const normalized = value.trim().split(/\s+/).join(' ');
+            return normalized ? ` class="${normalized}"` : '';
+          })
+    )
+    .join('');
+
 /**
  * Renders a page component to a static HTML document.
  *
@@ -29,9 +53,11 @@ export const doctype = '<!doctype html>';
  *
  * `embeddedLanguageFormatting: 'off'` keeps the `<Script>` elements as they are written: the formatter would otherwise
  * reprint them with its own defaults, and the build moves them into `main.js` verbatim – see `extractScripts()`.
+ *
+ * Class attributes are normalized first – see `normalizeClassAttributes()`.
  */
 export const renderPage = async (Page: FunctionComponent): Promise<string> =>
-  prettier.format(`${doctype}${render(createElement(Page, {}))}`, {
+  prettier.format(normalizeClassAttributes(`${doctype}${render(createElement(Page, {}))}`), {
     parser: 'html',
     printWidth: 120,
     htmlWhitespaceSensitivity: 'ignore',

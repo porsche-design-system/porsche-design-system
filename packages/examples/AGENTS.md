@@ -85,7 +85,6 @@ tests/vrt/                        # captures: one spec per page, plus the commit
 src/
 ├── index.page.tsx                # overview of the source tree – dev only, never emitted; lists every
 │                                 # example (templateItems, patternItems – URLs below their category)
-├── _classes.ts                   # classes(): joins class names, dropping the unset optional ones
 ├── _layouts/
 │   ├── BasePage.tsx              # full page shell, takes `children`
 │   ├── CanvasPage.tsx            # shell of a page whose chrome is `p-canvas` – no landmark of its own
@@ -300,6 +299,10 @@ reaches through interaction**.
 
 ## Conventions that are easy to get wrong
 
+- **Write an optional class as a template literal** — ``class={`p-static-xs ${scheme}`}`` with `scheme = ''` as the
+  default. `renderPage()` trims and collapses every `class` attribute (`normalizeClassAttributes()` in
+  [`plugins/jsx.ts`](plugins/jsx.ts)), because Prettier leaves attribute values alone, so an unset class leaves no stray
+  space in the markup.
 - **Use plain HTML attribute names** — `class`, `for`, `charset`, `novalidate`. Preact accepts and types them, and the
   generated markup has to stay copy-pasteable HTML. `className`/`htmlFor` are a test failure, not a style preference.
 - **JSX collapses whitespace between elements.** Elements on separate lines produce no whitespace text node, so

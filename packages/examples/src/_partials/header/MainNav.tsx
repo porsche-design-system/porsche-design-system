@@ -1,4 +1,3 @@
-import { classes } from '../../_classes.ts';
 import { Script } from '../Script.tsx';
 
 export type NavItem = {
@@ -121,11 +120,11 @@ const DrilldownEntries = ({ currentPage, navItems: items }: NavEntriesProps) => 
  * `scheme` reaches the button only. The drilldown is a dialog on top of the page, not part of the bar, so it keeps
  * the color scheme of the page – a header lying on a dark hero must not drag that scheme into an overlay.
  */
-export const MainNav = ({ currentPage, navItems: items = navItems, scheme }: MainNavProps) => (
+export const MainNav = ({ currentPage, navItems: items = navItems, scheme = '' }: MainNavProps) => (
   <nav aria-label="Main">
     <p-button-pure
       id="nav-button"
-      class={classes('p-static-xs -m-static-xs', scheme)}
+      class={`p-static-xs -m-static-xs ${scheme}`}
       type="button"
       icon="menu-lines"
       hide-label="{ base: true, s: false }"
