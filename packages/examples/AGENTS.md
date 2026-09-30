@@ -93,7 +93,7 @@ src/
 │   └── OverviewPage.tsx          # shell of the dev overview: a main landmark with link lists
 ├── _partials/                    # Head, Header, Footer, ExampleList – checked props
 │   ├── Script.tsx                # <script type="module"> with unescaped code – all behaviour goes through it
-│   ├── VideoPauseButton.tsx      # pause control of a hero video, with the script operating the video
+│   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask, with its behaviour
@@ -190,7 +190,7 @@ The suite lives in [`tests/e2e/`](tests/e2e) and drives the behaviour the build 
   behaviour is a plain script wired on ids, so a renamed element or a script that throws fails _silently_. The page
   still renders and the VRT still matches.
 - **The behaviour of the partials is tested in every spec whose page renders it:** the navigation drilldown (`MainNav`)
-  wherever the page renders `#nav-button`, the hero video (`VideoPauseButton`) wherever it renders `#pause-button`.
+  wherever the page renders `#nav-button`, the hero video (`HeroVideo`) wherever it renders `#pause-button`.
 - **Both devices run every spec.** A flow is the same on desktop and mobile, but it runs in a second engine with touch
   and a mobile user agent – on mobile the profile menu of the local market switch opens as a sheet, for example.
 - **The flows are what exactly one page does**, like the feedback flows, the local market switch, the feature tour, the
@@ -345,7 +345,7 @@ reaches through interaction**.
   `<script type="module">` with the code unescaped – a plain `<script>{code}</script>` would reach the browser as
   `&amp;&amp;`, because Preact escapes the text of every element. The behaviour of an example goes to the end of its
   page; behaviour a partial needs wherever it is rendered goes into the partial (`MainNav` wires up its drilldown,
-  `VideoPauseButton` its video, `FeedbackForm` its flow), so a page gets it by rendering the partial – there is no
+  `HeroVideo` its pause control, `FeedbackForm` its flow), so a page gets it by rendering the partial – there is no
   detection rule to keep in sync, and two pages sharing a partial do not duplicate its behaviour. Start every script
   with a comment saying what it does: the build names a script by its first line.
 - **A page talks to the script of a partial through the DOM only.** In dev every `<Script>` is a module of its own, so a
@@ -373,8 +373,9 @@ reaches through interaction**.
   up, so the two are read – and renamed – together; there is no registry. Every id is rendered **once** per page –
   `getElementById()` would only ever find the first one – which a unit test asserts for every page, because axe-core no
   longer reports duplicate ids (`duplicate-id` is deprecated and outside the WCAG tags the a11y suite runs). A script
-  whose element is missing throws on load, which the `loads without reporting an error` check of every e2e spec catches
-  – `VideoPauseButton` needs the page to render the video it operates as `id="hero-video"`.
+  whose element is missing throws on load, which the `loads without reporting an error` check of every e2e spec catches.
+  Keep every element a script looks up in the component that renders the script – `HeroVideo` renders the video and its
+  pause control together, so no page has to repeat an id a partial depends on.
 - **A variant is a prop, not a copy.** `Header` renders both header patterns from one set of blocks
   (`_partials/header/`), driven by `navItems` and `metaActionItems` from `_data.ts`. If two variants need the same
   block, extract the block; do not paste the markup a second time, or one variant silently drifts from the other.

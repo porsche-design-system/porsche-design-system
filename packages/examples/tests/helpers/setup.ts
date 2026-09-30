@@ -121,8 +121,8 @@ export const waitForComponentsReady = async (page: Page): Promise<void> => {
 /**
  * Parks every video on its poster frame.
  *
- * `prefers-reduced-motion` already makes the hero video of an example stop itself (see `src/_partials/VideoPauseButton.tsx`), but it
- * may have played a few frames before the script ran, and which frame a paused video shows differs between the
+ * `prefers-reduced-motion` already makes the hero video of an example stop itself (see `src/_partials/HeroVideo.tsx`),
+ * but it may have played a few frames before the script ran, and which frame a paused video shows differs between the
  * engines. `load()` aborts the playback and restores the poster, which is the one frame a video renders identically
  * everywhere – so that is what the baseline records.
  */

@@ -1,11 +1,10 @@
 import { navItems, placeholderHref } from '../../../_data.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { media } from '../../../_media.ts';
+import { HeroVideo } from '../../../_partials/HeroVideo.tsx';
 import { Brand } from '../../../_partials/header/Brand.tsx';
 import { HeaderBar } from '../../../_partials/header/HeaderBar.tsx';
 import { MainNav } from '../../../_partials/header/MainNav.tsx';
 import { Script } from '../../../_partials/Script.tsx';
-import { VideoPauseButton } from '../../../_partials/VideoPauseButton.tsx';
 
 /**
  * The scheme of the `overlay` header: it is handed to the elements lying on the hero, never to the `<header>`.
@@ -169,25 +168,14 @@ const Page = () => (
   >
     <main id="main" class="grid-template">
       <section class="scheme-dark z-0 col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)]">
-        <video
-          id="hero-video"
-          class="z-0 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
-          poster={media('mood-porsche-gts.webp')}
-          loop
-          muted
-          autoplay
-          playsinline
-        >
-          <source src={media('mood-porsche-gts.mp4')} type="video/mp4" />
-          <source src={media('mood-porsche-gts.webm')} type="video/webm" />
-        </video>
-        <div class="z-1 col-extended row-span-full mb-fluid-lg">
-          <p-heading tag="h1" size="3xl">
-            <span class="text-md block">Pattern</span>
-            Popover
-          </p-heading>
-        </div>
-        <VideoPauseButton class="z-2 col-wide place-self-end row-span-full mb-fluid-lg" />
+        <HeroVideo>
+          <div class="z-1 col-extended row-span-full mb-fluid-lg">
+            <p-heading tag="h1" size="3xl">
+              <span class="text-md block">Pattern</span>
+              Popover
+            </p-heading>
+          </div>
+        </HeroVideo>
       </section>
     </main>
     <Script>{`

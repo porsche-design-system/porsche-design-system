@@ -87,7 +87,7 @@ src/
 ├── _partials/                # components, never emitted as pages
 │   ├── Head.tsx
 │   ├── Script.tsx            # `<script type="module">` with the behaviour of a page or a partial
-│   ├── VideoPauseButton.tsx  # pause control of a hero video, with its behaviour
+│   ├── HeroVideo.tsx         # autoplaying hero video with its pause control and behaviour
 │   ├── header/               # the header, split into the blocks its variants share
 │   │   ├── Header.tsx        # composes the blocks: overlay and stacked variants
 │   │   ├── HeaderBar.tsx     # the three-column row both variants are built from
@@ -148,7 +148,7 @@ export default Page;
 
 Behaviour is written in JSX too, as plain browser JavaScript in a [`<Script>`](src/_partials/Script.tsx) next to the
 markup it wires up — at the end of the page for the behaviour of the example, inside the partial for behaviour a partial
-brings along (`MainNav` opens its drilldown, `VideoPauseButton` operates the hero video, `FeedbackForm` runs its flow):
+brings along (`MainNav` opens its drilldown, `HeroVideo` pauses its video, `FeedbackForm` runs its flow):
 
 ```tsx
 const Page = () => (

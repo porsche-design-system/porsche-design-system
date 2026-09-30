@@ -3,7 +3,7 @@ import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helper
 
 /**
  * `src/templates/landing-page` – the navigation drilldown (`MainNav`) and the hero video
- * (`VideoPauseButton`), both wired up by the scripts of their partials.
+ * (`HeroVideo`), both wired up by the scripts of their partials.
  */
 
 const url = getExampleUrl('templates-landing-page');

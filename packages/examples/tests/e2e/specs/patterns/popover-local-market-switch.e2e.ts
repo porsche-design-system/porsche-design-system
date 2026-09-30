@@ -3,7 +3,7 @@ import { collectPageErrors, getExampleUrl, getTriggerControl, setupExamplePage }
 
 /**
  * `src/patterns/popover/local-market-switch` – two popovers in controlled mode, plus the navigation drilldown
- * and the hero video, each wired up by the script of its partial (`MainNav`, `VideoPauseButton`).
+ * and the hero video, each wired up by the script of its partial (`MainNav`, `HeroVideo`).
  */
 
 const url = getExampleUrl('patterns-popover-local-market-switch');

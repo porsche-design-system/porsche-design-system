@@ -1,7 +1,7 @@
 import { navItems, placeholderHref } from '../../_data.ts';
 import { BasePage } from '../../_layouts/BasePage.tsx';
 import { media } from '../../_media.ts';
-import { VideoPauseButton } from '../../_partials/VideoPauseButton.tsx';
+import { HeroVideo } from '../../_partials/HeroVideo.tsx';
 
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
 const Page = () => (
@@ -14,29 +14,18 @@ const Page = () => (
   >
     <main id="main" class="grid-template gap-y-fluid-xl pb-fluid-2xl">
       <section
-        class="scheme-dark z-0 col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)] relative before:absolute before:inset-[50%_0_0_0] before:z-2 before:pointer-events-none before:bg-linear-to-t before:from-canvas before:to-transparent"
+        class="scheme-dark z-0 col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)] relative before:absolute before:inset-[50%_0_0_0] before:z-1 before:pointer-events-none before:bg-linear-to-t before:from-canvas before:to-transparent"
         aria-labelledby="heading-section-1"
       >
-        <video
-          id="hero-video"
-          class="z-1 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
-          poster={media('mood-porsche-gts.webp')}
-          loop
-          muted
-          autoplay={true}
-          playsinline={true}
-        >
-          <source src={media('mood-porsche-gts.mp4')} type="video/mp4" />
-          <source src={media('mood-porsche-gts.webm')} type="video/webm" />
-        </video>
-        <div class="z-2 col-extended row-span-full mb-fluid-lg">
-          <p-heading id="heading-section-1" class="pb-fluid-md" tag="h1" size="3xl">
-            <span class="text-md block">Template</span>
-            Landing Page
-          </p-heading>
-          <p-button variant="secondary">Some label</p-button>
-        </div>
-        <VideoPauseButton class="z-3 col-wide place-self-end row-span-full mb-fluid-lg" />
+        <HeroVideo>
+          <div class="z-1 col-extended row-span-full mb-fluid-lg">
+            <p-heading id="heading-section-1" class="pb-fluid-md" tag="h1" size="3xl">
+              <span class="text-md block">Template</span>
+              Landing Page
+            </p-heading>
+            <p-button variant="secondary">Some label</p-button>
+          </div>
+        </HeroVideo>
       </section>
 
       <section

@@ -3,7 +3,7 @@ import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helper
 
 /**
  * `src/patterns/header/overlay` – the navigation drilldown (`MainNav`) and the hero video the header overlays
- * (`VideoPauseButton`), both wired up by the scripts of their partials.
+ * (`HeroVideo`), both wired up by the scripts of their partials.
  */
 
 const url = getExampleUrl('patterns-header-overlay');
