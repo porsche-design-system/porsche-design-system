@@ -65,7 +65,8 @@ export function getCheckedOptionIndex(options: RadioGroupOption[]): number {
 }
 
 export function getFirstEnabledOptionIndex(options: RadioGroupOption[]): number {
-  return options.findIndex((opt) => !opt.disabled);
+  // a loading option renders a disabled input, so it can't be focused either
+  return options.findIndex((opt) => !opt.disabled && !opt.loading);
 }
 
 /**

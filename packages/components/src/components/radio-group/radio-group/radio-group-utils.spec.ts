@@ -225,7 +225,9 @@ describe('getFirstEnabledOptionIndex()', () => {
     [[{ disabled: false }, { disabled: false }], 0],
     [[{ disabled: true }, { disabled: false }], 1],
     [[{ disabled: true }, { disabled: true }], -1],
-  ])('should return the first non-disabled index for %j -> %s', (specs, expected) => {
+    [[{ loading: true }, { disabled: false }], 1],
+    [[{ disabled: true }, { loading: true }], -1],
+  ])('should return the first non-disabled and non-loading index for %j -> %s', (specs, expected) => {
     expect(getFirstEnabledOptionIndex(makeOptions(specs))).toBe(expected);
   });
 });

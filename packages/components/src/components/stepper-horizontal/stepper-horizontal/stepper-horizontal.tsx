@@ -13,11 +13,11 @@ import { getClickedItem } from '../../../utils/dom/getClickedItem';
 import { getComponentCss } from './stepper-horizontal-styles';
 import {
   getIndexOfStepWithStateCurrent,
+  logErrorIfMultipleCurrentStates,
   STEPPER_HORIZONTAL_SIZES,
   type StepperHorizontalSize,
   type StepperHorizontalUpdateEventDetail,
   scrollStepperHorizontalItemIntoView,
-  throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
@@ -54,6 +54,7 @@ export class StepperHorizontal {
 
   public componentWillLoad(): void {
     this.defineStepperHorizontalItems();
+    this.validateStepperHorizontalItems();
   }
 
   public componentDidLoad(): void {
@@ -89,10 +90,7 @@ export class StepperHorizontal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
-
-    throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
-    throwIfChildCountIsExceeded(this.host, 9);
-    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+    logErrorIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -112,6 +110,11 @@ export class StepperHorizontal {
 
   private defineStepperHorizontalItems = (): void => {
     this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
+  };
+
+  private validateStepperHorizontalItems = (): void => {
+    throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
+    throwIfChildCountIsExceeded(this.host, 9);
   };
 
   private onClickScroller = (e: MouseEvent): void => {
@@ -138,5 +141,6 @@ export class StepperHorizontal {
         this.stepperHorizontalItems
       );
     }
+    this.validateStepperHorizontalItems();
   };
 }

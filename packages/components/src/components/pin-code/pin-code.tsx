@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
@@ -127,6 +127,13 @@ export class PinCode {
   // Coerce number/null/undefined to string for internal handling
   private get parsedValue(): string {
     return String(this.value ?? '');
+  }
+
+  @Watch('value')
+  public onValueChange(): void {
+    // Syncs the form value when value is set programmatically after load, e.g. by a framework property binding.
+    // Unlike on load, the value isn't sanitised, like a native input with maxlength.
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public connectedCallback(): void {

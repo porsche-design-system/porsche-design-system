@@ -161,6 +161,26 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
+  test('should include name & value in FormData submit when value is set after load', async ({ page }) => {
+    const name = 'name';
+    const value = '1234';
+    await initPinCode(page, {
+      props: { name },
+      options: {
+        isWithinForm: true,
+        markupAfter: '<button type="submit">Submit</button>',
+      },
+    });
+    const host = getHost(page);
+    const form = getForm(page);
+
+    await setProperty(host, 'value', value);
+    await waitForStencilLifecycle(page);
+    await page.locator('button[type="submit"]').click();
+
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
   test('should include name & value in FormData submit if outside of form', async ({ page }) => {
     const name = 'name';
     const value = '1234';

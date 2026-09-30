@@ -58,6 +58,17 @@ export class RadioGroupOption {
     );
   }
 
+  @Watch('disabled')
+  @Watch('loading')
+  public onDisabledChange(): void {
+    // lets the parent move its tab stop, since a disabled or loading option can't be focused
+    this.host.dispatchEvent(
+      new CustomEvent('internalRadioGroupOptionDisabledChange', {
+        bubbles: true,
+      })
+    );
+  }
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-radio-group']);
     this.initialLoading = this.loading;

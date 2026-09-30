@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import React from 'react';
+import React, { act } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
 
@@ -306,6 +306,66 @@ describe('useResizeHandle', () => {
     });
   });
 
+  describe('track resizing', () => {
+    // jsdom has no ResizeObserver; this one lets a test announce a resize of the observed track.
+    let notifyResize: () => void;
+
+    beforeEach(() => {
+      notifyResize = () => {};
+      vi.stubGlobal(
+        'ResizeObserver',
+        class {
+          constructor(callback: () => void) {
+            notifyResize = () => act(callback);
+          }
+          observe() {}
+          disconnect() {}
+        }
+      );
+      return () => vi.unstubAllGlobals();
+    });
+
+    const resizeTrack = (track: HTMLElement, clientWidth: number) => {
+      Object.defineProperty(track, 'clientWidth', { value: clientWidth, configurable: true });
+      notifyResize();
+    };
+
+    it('should cap a chosen width at a narrower track, and restore it once the track grows again', () => {
+      const { track, handle } = renderHook();
+      fireEvent.keyDown(handle, { key: 'PageDown' }); // 1000 - 64 = 936
+
+      resizeTrack(track, 600);
+      expect(getWidth()).toBe('600');
+      expect(handle).toHaveAttribute('aria-valuenow', '600');
+      expect(handle).toHaveAttribute('aria-valuemax', '600');
+
+      resizeTrack(track, TRACK_WIDTH);
+      expect(getWidth()).toBe('936');
+      expect(handle).toHaveAttribute('aria-valuemax', String(TRACK_WIDTH));
+    });
+
+    it('should start keyboard resizing from the capped width', () => {
+      const { track, handle } = renderHook();
+      fireEvent.keyDown(handle, { key: 'PageDown' }); // 936
+      resizeTrack(track, 600);
+
+      fireEvent.keyDown(handle, { key: 'ArrowLeft' });
+
+      expect(getWidth()).toBe('584');
+    });
+
+    it('should keep the width the track was last shown at while it is hidden', () => {
+      const { track, handle } = renderHook();
+      resizeTrack(track, 600);
+      fireEvent.keyDown(handle, { key: 'ArrowLeft' }); // 584
+
+      resizeTrack(track, 0); // hidden, e.g. behind another tab
+
+      expect(getWidth()).toBe('584');
+      expect(handle).toHaveAttribute('aria-valuemax', '600');
+    });
+  });
+
   describe('options', () => {
     it('should reduce the max width by maxWidthOffset and reflect it in aria-valuemax', () => {
       const { handle } = renderHook({ maxWidthOffset: 24 });
@@ -353,5 +413,3 @@ describe('useResizeHandle', () => {
     });
   });
 });
-
-
