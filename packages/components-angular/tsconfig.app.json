@@ -4,7 +4,7 @@
     "outDir": "./dist/app",
     "strict": true
   },
-  "files": ["src/main.ts", "src/polyfills.ts"],
+  "files": ["src/main.ts"],
   "angularCompilerOptions": {
     "extendedDiagnostics": {
       "checks": {

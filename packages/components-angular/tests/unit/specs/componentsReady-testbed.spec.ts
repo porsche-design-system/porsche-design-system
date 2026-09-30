@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { componentsReady } from '@porsche-design-system/components-angular';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
