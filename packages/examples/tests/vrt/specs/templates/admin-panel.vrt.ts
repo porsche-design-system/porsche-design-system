@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
-import { getViewportWidth, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/templates/admin-panel` – an application canvas, captured with its settings sidebar and its search dialog open.
@@ -12,8 +12,8 @@ const url = getExampleUrl(id);
 testInitialStates(id);
 
 test('settings sidebar open', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator('#settings-button').click();
   await expect(page.locator('#settings-button button')).toHaveAttribute('aria-expanded', 'true');
@@ -26,12 +26,12 @@ test('settings sidebar open', async ({ page }) => {
     .toBe(true);
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--settings-open--${viewportWidth}.png`);
+  await expect(page).toHaveScreenshot(`${id}--settings-open--${device}.png`);
 });
 
 test('search dialog open', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator('#search-button').click();
   await expect(page.locator('#search-dialog')).toBeVisible();
@@ -39,5 +39,5 @@ test('search dialog open', async ({ page }) => {
   await waitForStablePosition(page.locator('#search-dialog dialog'));
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--search-open--${viewportWidth}.png`);
+  await expect(page).toHaveScreenshot(`${id}--search-open--${device}.png`);
 });

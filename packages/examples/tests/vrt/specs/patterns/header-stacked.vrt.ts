@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ids } from '../../../../src/_ids.ts';
 
 import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
-import { getViewportWidth, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/header/stacked` – the header with category tabs below it, and the navigation drilldown it opens.
@@ -20,13 +20,13 @@ testInitialStates(id, {
 });
 
 test('navigation drilldown open', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator(`#${ids.navButton}`).click();
   // The host stays a zero-height anchor in the header; what opens is the `dialog` in its shadow root.
   await expect(page.locator(`#${ids.navDrilldown} dialog`)).toBeVisible();
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--drilldown-open--${viewportWidth}.png`);
+  await expect(page).toHaveScreenshot(`${id}--drilldown-open--${device}.png`);
 });

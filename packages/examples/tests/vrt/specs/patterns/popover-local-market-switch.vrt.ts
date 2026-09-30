@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ids } from '../../../../src/_ids.ts';
 
 import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
-import { getViewportWidth, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/popover/local-market-switch` – the market switch open on load, the profile menu that replaces it, and
@@ -17,8 +17,8 @@ const url = getExampleUrl(id);
 testInitialStates(id);
 
 test('profile menu open', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator('#profile-button').click();
   // Mirrored onto the control in the shadow root of the trigger, whichever container the viewport called for.
@@ -26,17 +26,17 @@ test('profile menu open', async ({ page }) => {
   await expect(page.locator('#market-dismiss')).toBeHidden();
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--profile-open--${viewportWidth}.png`);
+  await expect(page).toHaveScreenshot(`${id}--profile-open--${device}.png`);
 });
 
 test('navigation drilldown open', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator(`#${ids.navButton}`).click();
   // The host stays a zero-height anchor in the header; what opens is the `dialog` in its shadow root.
   await expect(page.locator(`#${ids.navDrilldown} dialog`)).toBeVisible();
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--drilldown-open--${viewportWidth}.png`);
+  await expect(page).toHaveScreenshot(`${id}--drilldown-open--${device}.png`);
 });

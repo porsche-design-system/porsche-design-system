@@ -20,7 +20,7 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     page,
     makeAxeBuilder,
   }, testInfo) => {
-    await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: scheme });
+    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
 
     await page.locator('#settings-button').click();
     await expect(page.locator('#settings-button button')).toHaveAttribute('aria-expanded', 'true');
@@ -40,7 +40,7 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     page,
     makeAxeBuilder,
   }, testInfo) => {
-    await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: scheme });
+    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
 
     await page.locator('#search-button').click();
     await expect(page.locator('#search-dialog')).toBeVisible();

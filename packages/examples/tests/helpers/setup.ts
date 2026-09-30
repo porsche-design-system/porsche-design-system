@@ -12,12 +12,17 @@ import { rewriteCdnUrlsForDev } from '../../plugins/partials.ts';
  * tests the video and the focus this setup pins down.
  */
 
-/** Height of the viewport for every capture. The screenshots are full page, so this only fixes the `vh` units. */
+/**
+ * Height of the viewport when a test sets the width itself. The screenshots are full page, so this only fixes the `vh`
+ * units. A test that leaves the width alone keeps the viewport its device emulates, height included.
+ */
 export const viewportHeight = 600;
 
 export type ColorScheme = 'light' | 'dark';
 
 export type ExampleScenarioOptions = {
+  /** Width to lay the page out at. Left out, the page keeps the viewport of the device its project emulates. */
+  viewportWidth?: number;
   /** Windows High Contrast Mode. */
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: ColorScheme;
@@ -188,9 +193,14 @@ const waitForFonts = async (page: Page): Promise<void> => {
  * pixel and back triggers every `ResizeObserver` after everything else has settled, so the run always ends in the
  * state the final layout calls for.
  */
-const remeasureComponents = async (page: Page, viewportWidth: number): Promise<void> => {
-  await page.setViewportSize({ width: viewportWidth - 1, height: viewportHeight });
-  await page.setViewportSize({ width: viewportWidth, height: viewportHeight });
+const remeasureComponents = async (page: Page): Promise<void> => {
+  const viewport = page.viewportSize();
+  if (!viewport) {
+    return;
+  }
+
+  await page.setViewportSize({ ...viewport, width: viewport.width - 1 });
+  await page.setViewportSize(viewport);
 };
 
 /**
@@ -223,14 +233,15 @@ export const waitForStableLayout = async (page: Page): Promise<void> => {
 export const setupExamplePage = async (
   page: Page,
   url: string,
-  viewportWidth: number,
   options: ExampleScenarioOptions = {}
 ): Promise<void> => {
-  const { forcedColorsEnabled, prefersColorScheme, scalePageFontSize, rtl } = options;
+  const { viewportWidth, forcedColorsEnabled, prefersColorScheme, scalePageFontSize, rtl } = options;
 
   await stubExternalRequests(page);
   await disableMotion(page);
-  await page.setViewportSize({ width: viewportWidth, height: viewportHeight });
+  if (viewportWidth) {
+    await page.setViewportSize({ width: viewportWidth, height: viewportHeight });
+  }
 
   // Reduced motion is not a variant, it is a precondition of every capture: it stops the autoplaying hero video and
   // the transitions of the components, both of which would otherwise be timing dependent.
@@ -270,6 +281,6 @@ export const setupExamplePage = async (
   await page.waitForFunction(() => Array.from(document.images).every((image) => image.complete));
   await freezeVideos(page);
   await blurActiveElement(page);
-  await remeasureComponents(page, viewportWidth);
+  await remeasureComponents(page);
   await waitForStableLayout(page);
 };

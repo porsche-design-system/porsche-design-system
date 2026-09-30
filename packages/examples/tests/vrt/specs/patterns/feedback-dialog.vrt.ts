@@ -1,6 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import { getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
-import { getViewportWidth, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/feedback/dialog` – the feedback question asked inside a `p-modal`, which the initial state never shows.
@@ -18,20 +18,20 @@ testInitialStates(id);
 const getModalPanel = (page: Page) => page.locator('#feedback-modal dialog');
 
 test('dialog open', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator('#feedback-trigger').click();
   await expect(page.locator('#feedback-modal')).toBeVisible();
   await waitForStablePosition(getModalPanel(page));
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--dialog-open--${viewportWidth}.png`);
+  await expect(page).toHaveScreenshot(`${id}--dialog-open--${device}.png`);
 });
 
 test('dialog open with a rating chosen', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator('#feedback-trigger').click();
   await expect(page.locator('#feedback-modal')).toBeVisible();
@@ -41,12 +41,12 @@ test('dialog open with a rating chosen', async ({ page }) => {
   await waitForStablePosition(getModalPanel(page));
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--dialog-rated--${viewportWidth}.png`);
+  await expect(page).toHaveScreenshot(`${id}--dialog-rated--${device}.png`);
 });
 
 test('dialog open with the confirmation', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator('#feedback-trigger').click();
   await expect(page.locator('#feedback-modal')).toBeVisible();
@@ -57,5 +57,5 @@ test('dialog open with the confirmation', async ({ page }) => {
   await waitForStablePosition(getModalPanel(page));
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--dialog-confirmation--${viewportWidth}.png`);
+  await expect(page).toHaveScreenshot(`${id}--dialog-confirmation--${device}.png`);
 });

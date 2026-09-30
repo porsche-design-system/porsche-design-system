@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
-import { getViewportWidth, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/feedback/inline` – the feedback question asked in place, the comment a rating reveals and the
@@ -13,20 +13,20 @@ const url = getExampleUrl(id);
 testInitialStates(id);
 
 test('rating chosen', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator('p-segmented-control-item[value="4"]').click();
   await expect(page.locator('#feedback-comment')).toBeVisible();
   await expect(page.locator('#feedback-submit')).toBeVisible();
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--rated--${viewportWidth}.png`, { fullPage: true });
+  await expect(page).toHaveScreenshot(`${id}--rated--${device}.png`, { fullPage: true });
 });
 
 test('confirmation', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   await page.locator('p-segmented-control-item[value="4"]').click();
   await page.locator('#feedback-submit').click();
@@ -34,5 +34,5 @@ test('confirmation', async ({ page }) => {
   await expect(page.locator('#feedback-thanks')).toBeVisible();
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--confirmation--${viewportWidth}.png`, { fullPage: true });
+  await expect(page).toHaveScreenshot(`${id}--confirmation--${device}.png`, { fullPage: true });
 });

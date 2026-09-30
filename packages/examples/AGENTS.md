@@ -67,7 +67,7 @@ scripts/previewSite.ts            # serves dist-site/ below /examples/ against t
 scripts/shared.ts                 # output paths and file helpers
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
-playwright.config.ts              # every Playwright suite as projects of one config – e2e, a11y, vrt-chrome, vrt-safari
+playwright.config.ts              # every Playwright suite as projects of one config – e2e, a11y, vrt-desktop-chrome, vrt-mobile-safari
 tests/unit/jsx.spec.tsx           # tests describing the rendering contract
 tests/helpers/                    # shared by the Playwright suites – a helper two suites use lives here
 ├── previewServers.ts             # the web server every suite runs against
@@ -148,7 +148,7 @@ npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
 # from within this package
 npm run build:verify        # verifies ./dist-site: one self-contained page each, media only through media()
 npm run typecheck           # source; typecheck:tests[:e2e|:a11y|:vrt] check the test scopes
-npx playwright test --project=e2e   # any suite directly – projects: e2e, a11y, vrt-chrome, vrt-safari
+npx playwright test --project=e2e   # any suite directly – projects: e2e, a11y, vrt-desktop-chrome, vrt-mobile-safari
 ```
 
 **One Playwright config, one project per suite.** [`playwright.config.ts`](playwright.config.ts) is a pilot for the
@@ -243,11 +243,11 @@ reaches through interaction**.
 - **Baselines are named so a page's captures sort together**, with `--` between the parts – the page id itself contains
   single dashes:
 
-  | capture                    | name                                      | example                                                    |
-  | -------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
-  | initial state              | `<page>--<width>-<project>.png`           | `patterns-header-overlay--320-safari.png`                  |
-  | variant of the initial one | `<page>--<width>-<variant>-<project>.png` | `patterns-header-overlay--1000-hcm-dark-chrome.png`        |
-  | state reached by a test    | `<page>--<state>--<width>-<project>.png`  | `patterns-header-overlay--drilldown-open--1000-chrome.png` |
+  | capture                    | name                                      | example                                                       |
+  | -------------------------- | ----------------------------------------- | ------------------------------------------------------------- |
+  | initial state              | `<page>--<device>-<engine>.png`           | `patterns-header-overlay--mobile-safari.png`                  |
+  | variant of the initial one | `<page>--<device>-<variant>-<engine>.png` | `patterns-header-overlay--desktop-hcm-dark-chrome.png`        |
+  | state reached by a test    | `<page>--<state>--<device>-<engine>.png`  | `patterns-header-overlay--drilldown-open--desktop-chrome.png` |
 
   The engine suffix is fixed per project in `playwright.config.ts`; `prepare-vrt-snapshots` relies on nothing but it.
 
@@ -255,12 +255,15 @@ reaches through interaction**.
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts) is `npm run preview` – `serve-cdn` plus
   `scripts/previewSite.ts`, which serves `dist-site/` – so a capture shows the inlined entry and the injected partials,
   exactly what the storefront ships.
-- **Two projects, one viewport each:** `vrt-chrome` (chromium, 1000 = `viewportWidthM`) and `vrt-safari` (webkit, 320 =
-  `viewportWidthXXS`). Their baselines still end in the bare engine name, `-chrome.png` and `-safari.png`:
-  `prepare-vrt-snapshots` derives the regression artifacts from that suffix, and project names have to be unique across
-  the suites, so the config fixes the suffix per project instead of taking it from `{projectName}`. Dark scheme, both
-  High Contrast Mode schemes, 200% font size and `rtl` are captured on `vrt-chrome` only – font scaling and forced
-  colors go through CDP, and the responsive behaviour is already covered by the two widths.
+- **Two projects, one device each:** `vrt-desktop-chrome` (Desktop Chrome, chromium, 1280×720) and `vrt-mobile-safari`
+  (iPhone 17 Pro, webkit, 402×681), each on the defaults of its Playwright device descriptor – viewport, user agent,
+  touch – except the pixel density, which is forced to 1 like everywhere else in the monorepo. `setupExamplePage()`
+  leaves the viewport alone unless a test passes `viewportWidth`, which only the a11y suite does. The project names end
+  in the engine, and the config fixes the baseline suffix to it: `prepare-vrt-snapshots` recognises output folders and
+  derives the regression artifacts from exactly that suffix, and project names have to be unique across the suites. Dark
+  scheme, both High Contrast Mode schemes, 200% font size and `rtl` are captured on desktop only – font scaling and
+  forced colors go through CDP. The overflow of the priority navigation only exists on mobile: on desktop every entry
+  fits into the bar.
 - **Pages are globbed to find the specs, not to generate them.** [`tests/helpers/pages.ts`](tests/helpers/pages.ts)
   resolves every `index.page.tsx` to its URL on the preview server; a spec looks its page up by id with
   `getExampleUrl()`, which fails if the page is gone, and the coverage spec fails if a page has no spec.

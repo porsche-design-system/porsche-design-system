@@ -16,7 +16,7 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     page,
     makeAxeBuilder,
   }, testInfo) => {
-    await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: scheme });
+    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
 
     await page.locator(`#${ids.navButton}`).click();
     // The host stays a zero-height anchor in the header; the overlay is the `dialog` in its shadow root.

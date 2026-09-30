@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
-import { getViewportWidth, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/popover/feature-tour` – coachmarks of which only one is open at a time. The initial state shows the
@@ -13,8 +13,8 @@ const url = getExampleUrl(id);
 testInitialStates(id);
 
 test('second step', async ({ page }) => {
-  const viewportWidth = getViewportWidth();
-  await setupExamplePage(page, url, viewportWidth);
+  const device = getDevice();
+  await setupExamplePage(page, url);
 
   const steps = page.locator('[data-tour-step]');
   // A popover is positioned after it opens – clicking before it settled would be an outside click ending the tour.
@@ -27,5 +27,5 @@ test('second step', async ({ page }) => {
   await waitForStablePosition(back);
   await waitForStableState(page);
 
-  await expect(page).toHaveScreenshot(`${id}--step-2--${viewportWidth}.png`);
+  await expect(page).toHaveScreenshot(`${id}--step-2--${device}.png`);
 });

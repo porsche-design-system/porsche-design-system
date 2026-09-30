@@ -13,7 +13,7 @@ testInitialStates(id);
 
 for (const { viewportWidth, scheme } of scanMatrix) {
   test(`dialog open at ${viewportWidth} with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
-    await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: scheme });
+    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
 
     await page.locator('#feedback-trigger').click();
     await expect(page.locator('#feedback-modal')).toBeVisible();
@@ -26,7 +26,7 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     page,
     makeAxeBuilder,
   }, testInfo) => {
-    await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: scheme });
+    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
 
     await page.locator('#feedback-trigger').click();
     await expect(page.locator('#feedback-modal')).toBeVisible();
@@ -42,7 +42,7 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     page,
     makeAxeBuilder,
   }, testInfo) => {
-    await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: scheme });
+    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
 
     await page.locator('#feedback-trigger').click();
     await expect(page.locator('#feedback-modal')).toBeVisible();

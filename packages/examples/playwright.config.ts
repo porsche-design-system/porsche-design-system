@@ -1,11 +1,5 @@
 import { type Config, defineConfig, devices, type Project } from '@playwright/test';
-import {
-  playwrightConfigA11y,
-  playwrightConfigE2E,
-  playwrightConfigVRT,
-  viewportWidthM,
-  viewportWidthXXS,
-} from '@porsche-design-system/shared/testing';
+import { playwrightConfigA11y, playwrightConfigE2E, playwrightConfigVRT } from '@porsche-design-system/shared/testing';
 import { exampleWebServer } from './tests/helpers/previewServers.ts';
 
 /**
@@ -38,7 +32,6 @@ const fromBase = (suite: Suite, base: Config): Project => ({
 });
 
 const desktopChrome = { ...devices['Desktop Chrome'], deviceScaleFactor: 1 };
-const desktopSafari = { ...devices['Desktop Safari'], deviceScaleFactor: 1 };
 
 const e2e = fromBase('e2e', playwrightConfigE2E);
 const a11y = fromBase('a11y', playwrightConfigA11y);
@@ -71,32 +64,33 @@ export default defineConfig({
       use: { ...a11y.use, ...desktopChrome },
     },
     /**
-     * Visual regression, one engine × viewport pairing per project:
+     * Visual regression, one project per device, each on the defaults of its Playwright descriptor – viewport, user
+     * agent, touch – except the pixel density, which stays at 1 like everywhere else in the monorepo:
      *
-     * | project      | engine   | viewport  | captures                                               |
-     * | ------------ | -------- | --------- | ------------------------------------------------------ |
-     * | `vrt-chrome` | chromium | 1000 (M)  | light, dark, hcm light/dark, font-size 200%, rtl, states |
-     * | `vrt-safari` | webkit   | 320 (XXS) | light, states                                          |
+     * | project              | device         | engine   | captures                                                 |
+     * | -------------------- | -------------- | -------- | -------------------------------------------------------- |
+     * | `vrt-desktop-chrome` | Desktop Chrome | chromium | light, dark, hcm light/dark, font-size 200%, rtl, states |
+     * | `vrt-mobile-safari`  | iPhone 17 Pro  | webkit   | light, states                                            |
      *
      * The extended captures are chromium only: scaling the font size and forcing colors go through CDP. The baselines
-     * end in the bare engine name – `-chrome.png`, `-safari.png` – like in every other package, because
-     * `prepare-vrt-snapshots` derives the regression artifacts from exactly that suffix. The project names cannot be
-     * bare engine names here, since they have to be unique across the suites, so the suffix is fixed per project
-     * instead of taken from `{projectName}`.
+     * are named after the device and end in the bare engine name – `--desktop-chrome.png`, `--mobile-safari.png`.
+     * `prepare-vrt-snapshots` derives the regression artifacts from that suffix and recognises a project's output folder
+     * by it, which is why the project names end in the engine too. They cannot be bare engine names, since they have
+     * to be unique across the suites, so the suffix is fixed per project instead of taken from `{projectName}`.
      */
     {
       ...vrt,
-      name: 'vrt-chrome',
+      name: 'vrt-desktop-chrome',
       snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-chrome{ext}',
-      use: { ...vrt.use, ...desktopChrome },
-      metadata: { viewportWidth: viewportWidthM },
+      use: { ...vrt.use, ...devices['Desktop Chrome'], browserName: 'chromium', deviceScaleFactor: 1 },
+      metadata: { device: 'desktop' },
     },
     {
       ...vrt,
-      name: 'vrt-safari',
+      name: 'vrt-mobile-safari',
       snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-safari{ext}',
-      use: { ...vrt.use, ...desktopSafari },
-      metadata: { viewportWidth: viewportWidthXXS },
+      use: { ...vrt.use, ...devices['iPhone 17 Pro'], browserName: 'webkit', deviceScaleFactor: 1 },
+      metadata: { device: 'mobile' },
     },
   ],
 });

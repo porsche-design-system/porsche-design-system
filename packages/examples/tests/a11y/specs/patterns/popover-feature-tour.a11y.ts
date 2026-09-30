@@ -18,7 +18,7 @@ testInitialStates(id);
 
 for (const { viewportWidth, scheme } of scanMatrix) {
   test(`second step at ${viewportWidth} with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
-    await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: scheme });
+    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
 
     const steps = page.locator('[data-tour-step]');
     // A popover is positioned after it opens – clicking before it settled would be an outside click ending the tour.

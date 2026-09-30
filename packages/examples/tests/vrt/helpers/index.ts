@@ -1,20 +1,22 @@
 import type { Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthM } from '@porsche-design-system/shared/testing';
+import { schemes } from '@porsche-design-system/shared/testing';
 import { getExampleUrl, setupExamplePage, waitForComponentsReady, waitForStableLayout } from '../../helpers/index.ts';
 
 /**
  * The captures every example gets, whatever it demonstrates.
  *
- * Both VRT projects capture the page as it loads, each at its own viewport: `vrt-chrome` at 1000 (M) and `vrt-safari`
- * at 320 (XXS). Everything else is chromium only – scaling the font size and forcing colors go through CDP, and the
- * responsive layout is already covered by the two widths.
+ * Both VRT projects capture the page as it loads, each on the device it emulates: `vrt-desktop-chrome` on Desktop
+ * Chrome and `vrt-mobile-safari` on an iPhone. Everything else is chromium only – scaling the font size and forcing
+ * colors go through CDP, and the responsive layout is already covered by the two devices.
  *
  * The states a page reaches through interaction are written out in its own spec, next to this call.
  */
 
-/** The width a project captures at, kept on the project so the specs have no second source of truth. */
-export const getViewportWidth = (): number => (test.info().project.metadata.viewportWidth as number) ?? viewportWidthM;
+export type Device = 'desktop' | 'mobile';
+
+/** The device a project emulates, kept on the project so the specs have no second source of truth. */
+export const getDevice = (): Device => test.info().project.metadata.device as Device;
 
 export type InitialStatesOptions = {
   /** Why this page has no 200% font size capture – leave it out unless the page genuinely cannot settle there. */
@@ -26,9 +28,9 @@ export const testInitialStates = (id: string, { skipFontSize200 }: InitialStates
 
   // executed in Chrome + Safari
   test('initial state', async ({ page }) => {
-    const viewportWidth = getViewportWidth();
-    await setupExamplePage(page, url, viewportWidth);
-    await expect(page).toHaveScreenshot(`${id}--${viewportWidth}.png`, { fullPage: true });
+    const device = getDevice();
+    await setupExamplePage(page, url);
+    await expect(page).toHaveScreenshot(`${id}--${device}.png`, { fullPage: true });
   });
 
   // executed in Chrome only
@@ -36,31 +38,31 @@ export const testInitialStates = (id: string, { skipFontSize200 }: InitialStates
     test.skip(({ browserName }) => browserName !== 'chromium');
 
     test('prefers-color-scheme dark', async ({ page }) => {
-      const viewportWidth = getViewportWidth();
-      await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: 'dark' });
-      await expect(page).toHaveScreenshot(`${id}--${viewportWidth}-dark.png`, { fullPage: true });
+      const device = getDevice();
+      await setupExamplePage(page, url, { prefersColorScheme: 'dark' });
+      await expect(page).toHaveScreenshot(`${id}--${device}-dark.png`, { fullPage: true });
     });
 
     for (const scheme of schemes) {
       test(`hcm ${scheme}`, async ({ page }) => {
-        const viewportWidth = getViewportWidth();
-        await setupExamplePage(page, url, viewportWidth, { forcedColorsEnabled: true, prefersColorScheme: scheme });
-        await expect(page).toHaveScreenshot(`${id}--${viewportWidth}-hcm-${scheme}.png`, { fullPage: true });
+        const device = getDevice();
+        await setupExamplePage(page, url, { forcedColorsEnabled: true, prefersColorScheme: scheme });
+        await expect(page).toHaveScreenshot(`${id}--${device}-hcm-${scheme}.png`, { fullPage: true });
       });
     }
 
     test('font-size 200%', async ({ page }) => {
       test.skip(!!skipFontSize200, skipFontSize200);
 
-      const viewportWidth = getViewportWidth();
-      await setupExamplePage(page, url, viewportWidth, { scalePageFontSize: true });
-      await expect(page).toHaveScreenshot(`${id}--${viewportWidth}-fs200.png`, { fullPage: true });
+      const device = getDevice();
+      await setupExamplePage(page, url, { scalePageFontSize: true });
+      await expect(page).toHaveScreenshot(`${id}--${device}-fs200.png`, { fullPage: true });
     });
 
     test('rtl (right-to-left)', async ({ page }) => {
-      const viewportWidth = getViewportWidth();
-      await setupExamplePage(page, url, viewportWidth, { rtl: true });
-      await expect(page).toHaveScreenshot(`${id}--${viewportWidth}-rtl.png`, { fullPage: true });
+      const device = getDevice();
+      await setupExamplePage(page, url, { rtl: true });
+      await expect(page).toHaveScreenshot(`${id}--${device}-rtl.png`, { fullPage: true });
     });
   });
 };

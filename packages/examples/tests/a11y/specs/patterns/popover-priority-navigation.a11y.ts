@@ -21,7 +21,7 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     page,
     makeAxeBuilder,
   }, testInfo) => {
-    await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: scheme });
+    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
 
     await page.locator('#more-button').click();
     await expect(page.locator('#more-button button')).toHaveAttribute('aria-expanded', 'true');

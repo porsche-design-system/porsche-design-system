@@ -43,7 +43,7 @@ export const testInitialStates = (id: string, { disabledRules = [] }: InitialSta
       page,
       makeAxeBuilder,
     }, testInfo) => {
-      await setupExamplePage(page, url, viewportWidth, { prefersColorScheme: scheme });
+      await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
 
       await expectNoViolations(
         makeAxeBuilder().disableRules(disabledRules),
