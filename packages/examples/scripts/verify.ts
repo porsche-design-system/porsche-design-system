@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { getLoaderScript } from '@porsche-design-system/components-js/partials';
-import type { StackblitzPayload } from '../plugins/payload.ts';
-import { categories, mediaPath, payloadName } from '../plugins/projects.ts';
-import { distDir, listFiles, listProjects, packageDir, siteDir, siteMediaDir } from './shared.ts';
+import type { StackblitzPayload } from '../lib/payload.ts';
+import { categories, mediaPath, payloadName } from '../lib/projects.ts';
+import { distDir, listFiles, listProjects, packageDir, siteDir, siteMediaDir } from '../lib/shared.ts';
 
 /**
  * Asserts that `dist-site/` is what the storefront can serve and StackBlitz can open.

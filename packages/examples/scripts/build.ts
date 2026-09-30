@@ -3,8 +3,9 @@ import path from 'node:path';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
 import prettier from 'prettier';
-import { extractScripts, getScriptEntry } from '../plugins/entries.ts';
-import { type PageModule, pageSuffix, renderPage } from '../plugins/jsx.ts';
+import { extractScripts, getScriptEntry } from '../lib/entries.ts';
+import { getPackageJson, getViteConfig, type Versions } from '../lib/generateProject.ts';
+import { type PageModule, pageSuffix, renderPage } from '../lib/jsx.ts';
 import {
   assetsDirName,
   type Category,
@@ -14,9 +15,8 @@ import {
   scriptEntryName,
   sharedStyleName,
   styleEntryName,
-} from '../plugins/projects.ts';
-import { getPackageJson, getViteConfig, type Versions } from './generateProject.ts';
-import { distDir, packageDir, srcDir, writeFile } from './shared.ts';
+} from '../lib/projects.ts';
+import { distDir, packageDir, srcDir, writeFile } from '../lib/shared.ts';
 
 /**
  * The shared Tailwind entry, copied next to every page as its `style.css`.

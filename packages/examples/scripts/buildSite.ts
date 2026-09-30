@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { build } from 'vite';
-import { inlineEntries } from '../plugins/inline.ts';
-import { getStackblitzPayload } from '../plugins/payload.ts';
-import { payloadName } from '../plugins/projects.ts';
+import { inlineEntries } from '../lib/inline.ts';
+import { getStackblitzPayload } from '../lib/payload.ts';
+import { payloadName } from '../lib/projects.ts';
 import {
   copyDir,
   distDir,
@@ -14,13 +14,13 @@ import {
   siteDir,
   siteMediaDir,
   writeFile,
-} from './shared.ts';
+} from '../lib/shared.ts';
 
 /**
  * Builds every generated project into the page the storefront frames.
  *
  * `dist/patterns/header/overlay/` – the Vite project of that page – is built with **its own** `vite.config.ts`, the
- * same build StackBlitz runs, plus the one thing only this build adds: `plugins/inline.ts`, which puts the bundled
+ * same build StackBlitz runs, plus the one thing only this build adds: `lib/inline.ts`, which puts the bundled
  * script and stylesheet into the HTML. The result is a single self-contained file per page:
  *
  * ```text

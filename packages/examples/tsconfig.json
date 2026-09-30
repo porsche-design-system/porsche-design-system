@@ -17,7 +17,7 @@
     "jsxImportSource": "preact"
   },
   "include": [
-    "plugins/**/*.ts",
+    "lib/**/*.ts",
     "scripts/**/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx",

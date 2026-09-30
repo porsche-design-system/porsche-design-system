@@ -3,10 +3,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
-import { categories, mediaPath, type PageLocation } from '../plugins/projects.ts';
+import { categories, mediaPath, type PageLocation } from './projects.ts';
 
 /**
- * Paths and file helpers shared by the scripts of this package.
+ * Paths and file helpers shared by the scripts of this package (`scripts/`).
  *
  * ```text
  * dist/        # scripts/build.ts     – one Vite project per page, the StackBlitz source
@@ -21,7 +21,7 @@ export const srcDir = path.join(packageDir, 'src');
 export const distDir = path.join(packageDir, 'dist');
 export const siteDir = path.join(packageDir, 'dist-site');
 
-/** The media of the examples, below `public/` at the very path the pages reference them by – see `mediaPath` in `plugins/projects.ts`. */
+/** The media of the examples, below `public/` at the very path the pages reference them by – see `mediaPath`. */
 export const mediaSourceDir = path.join(packageDir, 'public', mediaPath);
 
 /** Where `scripts/buildSite.ts` puts the media: once, next to the categories, as `public/examples/media/` does. */

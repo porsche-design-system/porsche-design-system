@@ -21,7 +21,7 @@ The package is `private: true` and is not published.
 
 ## Build output
 
-`npm run build` writes two git-ignored trees ([`scripts/shared.ts`](scripts/shared.ts)):
+`npm run build` writes two git-ignored trees ([`lib/shared.ts`](lib/shared.ts)):
 
 ```text
 dist/<category>/<page>/        # scripts/build.ts – one standalone Vite project per page, what StackBlitz opens
@@ -32,8 +32,8 @@ dist/<category>/<page>/        # scripts/build.ts – one standalone Vite projec
 dist-site/                     # scripts/buildSite.ts – what the storefront copies to public/examples/
 ├── media/                     # public/examples/media/, once
 └── <category>/<page>/
-    ├── index.html             # the project above, built, script and stylesheet inlined (plugins/inline.ts)
-    └── stackblitz.json        # the project above, verbatim (plugins/payload.ts)
+    ├── index.html             # the project above, built, script and stylesheet inlined (lib/inline.ts)
+    └── stackblitz.json        # the project above, verbatim (lib/payload.ts)
 ```
 
 Consequences, and they are the point of the design:
@@ -54,18 +54,20 @@ Consequences, and they are the point of the design:
 ## Structure
 
 ```text
-plugins/jsx.ts                    # renderPage() + page URL resolution + Vite plugin (dev server)
-plugins/partials.ts               # PDS partials (loader, fonts, icons, chunks) – dev server only
-plugins/projects.ts               # the categories, their component chunks and the path arithmetic
-plugins/entries.ts                # extractScripts() + the generated main.js + the dev stylesheet link
-plugins/inline.ts                 # inlines the bundled script and stylesheet – dist-site/ only
-plugins/payload.ts                # the stackblitz.json of a page
-scripts/build.ts                  # renders the pages and writes one project per page into dist/
-scripts/generateProject.ts        # the generated vite.config.ts and package.json
-scripts/buildSite.ts              # builds every project into one self-contained page in dist-site/
-scripts/verify.ts                 # asserts dist-site/ is what the storefront and StackBlitz need
-scripts/previewSite.ts            # serves dist-site/ below /examples/ against the local CDN
-scripts/shared.ts                 # output paths and file helpers
+lib/                              # everything importable – by vite.config.ts, the scripts and the tests
+├── jsx.ts                        # renderPage(), findPages(), page URL resolution + Vite plugin (dev server)
+├── partials.ts                   # PDS partials (loader, fonts, icons, chunks) – dev server and generated projects
+├── projects.ts                   # the categories, their component chunks and the path arithmetic
+├── entries.ts                    # extractScripts() + the generated main.js + the dev stylesheet link
+├── inline.ts                     # Vite plugin inlining the bundled script and stylesheet – dist-site/ only
+├── payload.ts                    # the stackblitz.json of a page
+├── generateProject.ts            # the generated vite.config.ts and package.json
+└── shared.ts                     # output paths and file helpers
+scripts/                          # the entry points `npm run …` starts with tsx – nothing imports them
+├── build.ts                      # renders the pages and writes one project per page into dist/
+├── buildSite.ts                  # builds every project into one self-contained page in dist-site/
+├── verify.ts                     # asserts dist-site/ is what the storefront and StackBlitz need
+└── previewSite.ts                # serves dist-site/ below /examples/ against the local CDN
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 playwright.config.ts              # every Playwright suite as projects of one config – <suite>-{desktop-chrome,mobile-safari}
@@ -114,7 +116,7 @@ src/
 **Underscore rule:** files and folders starting with `_` are inputs only and are never emitted. **Page rule:** a page is
 an `index.page.tsx` in a folder of its own, which becomes one project; its behaviour is a `<Script>` inside it, and the
 build rejects any other file in the folder. Media belong into `public/examples/media/` and are referenced by that path,
-written as it is: `src="/examples/media/718.webp"` – `mediaPath` in [`plugins/projects.ts`](plugins/projects.ts) is the
+written as it is: `src="/examples/media/718.webp"` – `mediaPath` in [`lib/projects.ts`](lib/projects.ts) is the
 pipeline's copy, and `scripts/verify.ts` fails the build on any other root-absolute URL or a missing file.
 
 ## Links: examples never navigate
@@ -295,8 +297,8 @@ reaches through interaction**.
 
 - **Write an optional class as a template literal** — ``class={`p-static-xs ${scheme}`}`` with `scheme = ''` as the
   default. `renderPage()` trims and collapses every `class` attribute (`normalizeClassAttributes()` in
-  [`plugins/jsx.ts`](plugins/jsx.ts)), because Prettier leaves attribute values alone, so an unset class leaves no stray
-  space in the markup.
+  [`lib/jsx.ts`](lib/jsx.ts)), because Prettier leaves attribute values alone, so an unset class leaves no stray space
+  in the markup.
 - **Use plain HTML attribute names** — `class`, `for`, `charset`, `novalidate`. Preact accepts and types them, and the
   generated markup has to stay copy-pasteable HTML. `className`/`htmlFor` are a test failure, not a style preference.
 - **JSX collapses whitespace between elements.** Elements on separate lines produce no whitespace text node, so
@@ -355,11 +357,11 @@ reaches through interaction**.
   the modal it is rendered in through `form.closest('p-modal')` – so the dialog page only opens and closes its modal.
 - **Scripts are moved, styles are copied.** The dev server serves the scripts where they stand – Vite turns every inline
   module script into a module it transforms, bare imports included. `scripts/build.ts` calls `extractScripts()` of
-  [`plugins/entries.ts`](plugins/entries.ts) instead: it removes every `<script type="module">` from the rendered page,
-  in document order, and links the generated `main.js` at the end of the body. That entry imports the page's
-  `style.css`, then carries the `DO NOT USE IN PRODUCTION` banner once and the scripts one after the other, with their
-  imports hoisted to the top. The `style.css` is `assets/styles.css` copied verbatim – it needs no assembling, which is
-  why there is no `getStyleEntry()`. So a consumer sees the markup, the Tailwind classes, the styles and the dummy
+  [`lib/entries.ts`](lib/entries.ts) instead: it removes every `<script type="module">` from the rendered page, in
+  document order, and links the generated `main.js` at the end of the body. That entry imports the page's `style.css`,
+  then carries the `DO NOT USE IN PRODUCTION` banner once and the scripts one after the other, with their imports
+  hoisted to the top. The `style.css` is `assets/styles.css` copied verbatim – it needs no assembling, which is why
+  there is no `getStyleEntry()`. So a consumer sees the markup, the Tailwind classes, the styles and the dummy
   JavaScript of a pattern without following imports, while the source of each is a single component.
 - **The scripts of a page share one module scope once built.** In dev each `<Script>` is a module of its own; in
   `main.js` they are one, so `getScriptEntry()` fails the build when two of them declare the same top level name.
@@ -392,9 +394,9 @@ reaches through interaction**.
   `Header` hands the scheme to its blocks instead, and each applies it to the elements that really sit on the dark hero;
   `MainNav` puts it on the menu button and not on `p-drilldown`. The same holds for any overlay a partial owns.
 - **The PDS partials are injected by the dev server and by the generated projects**, never by `scripts/build.ts`. The
-  dev server uses [`plugins/partials.ts`](plugins/partials.ts); each generated `vite.config.ts` carries its own copy,
-  written by [`scripts/generateProject.ts`](scripts/generateProject.ts), with the component chunks of that category.
-  Without the loader script the `p-*` elements never upgrade and `:not(:defined)` keeps them invisible.
+  dev server uses [`lib/partials.ts`](lib/partials.ts); each generated `vite.config.ts` carries its own copy, written by
+  [`lib/generateProject.ts`](lib/generateProject.ts), with the component chunks of that category. Without the loader
+  script the `p-*` elements never upgrade and `:not(:defined)` keeps them invisible.
 
 ## Scope discipline (important)
 
@@ -427,15 +429,15 @@ approach, and it is paid on every review:
   keep the production URLs.
 - **The dev server keeps the scripts inline and links the stylesheet.** `main.js` and `style.css` only exist in the
   generated projects, so the rendered page never references them: the build links the entry, and in dev
-  `linkStylesForDev()` links `/assets/styles.css` instead, in the middleware of [`plugins/jsx.ts`](plugins/jsx.ts).
-  Vite's own HTML hook turns every `<script type="module">` into a proxy module (`index.html?html-proxy&index=0.js`),
-  which is what resolves the bare imports of a script. Together with the CDN rewrite, the stylesheet link and the
-  scripts' position are the only differences between dev and the emitted HTML. The partials are injected in a
-  `transformIndexHtml()` hook, after Vite's own – see [`vite.config.ts`](vite.config.ts).
+  `linkStylesForDev()` links `/assets/styles.css` instead, in the middleware of [`lib/jsx.ts`](lib/jsx.ts). Vite's own
+  HTML hook turns every `<script type="module">` into a proxy module (`index.html?html-proxy&index=0.js`), which is what
+  resolves the bare imports of a script. Together with the CDN rewrite, the stylesheet link and the scripts' position
+  are the only differences between dev and the emitted HTML. The partials are injected in a `transformIndexHtml()` hook,
+  after Vite's own – see [`vite.config.ts`](vite.config.ts).
 - **The dev server lists the pages instead of rendering an overview.** `jsxPages()` wraps Vite's `server.printUrls()`
   and prints the URL of every page below Vite's own, grouped by category – found by `findPages()` in
-  [`plugins/jsx.ts`](plugins/jsx.ts), the same search the Playwright suites use. Nothing is served at `/`, which is why
-  the server opens no browser. A page added while the server runs is served right away, but listed after a restart.
+  [`lib/jsx.ts`](lib/jsx.ts), the same search the Playwright suites use. Nothing is served at `/`, which is why the
+  server opens no browser. A page added while the server runs is served right away, but listed after a restart.
 - **`preview` serves the built site, it does not build it.** `npm run preview` expects `dist-site/` to exist and starts
   `serve-cdn` next to [`scripts/previewSite.ts`](scripts/previewSite.ts), which serves `dist-site/` below `/examples/`
   on port 3011 and rewrites the CDN origin of every HTML response to `http://localhost:3001`, in memory. It is the same
@@ -445,7 +447,7 @@ approach, and it is paid on every review:
 - **The emitted files carry decided modes, not inherited ones.** `fs.cpSync()` copies the mode of every source file, and
   a bind mount does not always report a sane one: in the Playwright container copied media came out write-only, so the
   preview answered its own images with a permission error and a VRT baseline recorded a page without them. The scripts
-  therefore set `755`/`644` on everything they emit (`copyDir()` in [`scripts/shared.ts`](scripts/shared.ts)).
+  therefore set `755`/`644` on everything they emit (`copyDir()` in [`lib/shared.ts`](lib/shared.ts)).
 
 - **`start` and `preview` mean what they mean elsewhere in the monorepo.** `npm start` is the dev server on the source,
   `preview` serves build output – the same split as `start` vs. `start-app` in the wrapper packages and as `preview` in

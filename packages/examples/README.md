@@ -285,19 +285,19 @@ automatic source detection is rooted at the Vite project, so it scans the pages 
 
 ## How it works
 
-[`plugins/jsx.ts`](plugins/jsx.ts) exports `renderPage()` — `preact-render-to-string` for the markup, a
-`<!doctype html>` prefix, then Prettier to format the result — plus a thin Vite plugin. The dev server renders pages on
-request through Vite's SSR module runner; [`scripts/build.ts`](scripts/build.ts) imports the same page modules and
-writes the same HTML. One implementation, so dev and build can't drift apart.
+[`lib/jsx.ts`](lib/jsx.ts) exports `renderPage()` — `preact-render-to-string` for the markup, a `<!doctype html>`
+prefix, then Prettier to format the result — plus a thin Vite plugin. The dev server renders pages on request through
+Vite's SSR module runner; [`scripts/build.ts`](scripts/build.ts) imports the same page modules and writes the same HTML.
+One implementation, so dev and build can't drift apart.
 
 That HTML is deliberately bare: no partials, no stylesheet link, no loader script. The build moves its scripts into the
-page's `main.js`, links that entry, copies the `style.css` next to it ([`plugins/entries.ts`](plugins/entries.ts)) and
-writes the project around it ([`scripts/generateProject.ts`](scripts/generateProject.ts)), whose `vite.config.ts`
-injects the Porsche Design System partials — without the loader the `p-*` elements never upgrade, and `:not(:defined)`
-in the stylesheet keeps them invisible. The dev server has neither the entries nor a project: it keeps the scripts
-inline, which Vite serves as modules itself, links the shared stylesheet of the source tree and injects the partials
-from [`plugins/partials.ts`](plugins/partials.ts). Those, plus the CDN origin, are the only differences between dev and
-the emitted pages.
+page's `main.js`, links that entry, copies the `style.css` next to it ([`lib/entries.ts`](lib/entries.ts)) and writes
+the project around it ([`lib/generateProject.ts`](lib/generateProject.ts)), whose `vite.config.ts` injects the Porsche
+Design System partials — without the loader the `p-*` elements never upgrade, and `:not(:defined)` in the stylesheet
+keeps them invisible. The dev server has neither the entries nor a project: it keeps the scripts inline, which Vite
+serves as modules itself, links the shared stylesheet of the source tree and injects the partials from
+[`lib/partials.ts`](lib/partials.ts). Those, plus the CDN origin, are the only differences between dev and the emitted
+pages.
 
 The partials are injected in a `transformIndexHtml()` hook, after Vite's own, so the inline loader script keeps the
 bytes the partial emitted and its CSP hash stays valid.

@@ -10,10 +10,11 @@ import {
   getScriptEntry,
   linkStylesForDev,
   scriptEntryTag,
-} from '../../../plugins/entries.ts';
-import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../../plugins/inline.ts';
-import { doctype, normalizeClassAttributes, renderPage, resolvePagePath } from '../../../plugins/jsx.ts';
-import { getStackblitzPayload } from '../../../plugins/payload.ts';
+} from '../../../lib/entries.ts';
+import { getPackageJson, getViteConfig } from '../../../lib/generateProject.ts';
+import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../../lib/inline.ts';
+import { doctype, normalizeClassAttributes, renderPage, resolvePagePath } from '../../../lib/jsx.ts';
+import { getStackblitzPayload } from '../../../lib/payload.ts';
 import {
   categories,
   examplesPath,
@@ -21,8 +22,7 @@ import {
   mediaPath,
   resolvePageLocation,
   scriptEntryName,
-} from '../../../plugins/projects.ts';
-import { getPackageJson, getViteConfig } from '../../../scripts/generateProject.ts';
+} from '../../../lib/projects.ts';
 import { BasePage } from '../../../src/_layouts/BasePage.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import { countOccurrences, examplePages } from '../helpers/index.ts';

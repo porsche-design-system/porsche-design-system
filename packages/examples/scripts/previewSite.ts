@@ -2,9 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import fastGlob from 'fast-glob';
 import { type Plugin, preview } from 'vite';
-import { rewriteCdnUrlsForDev } from '../plugins/partials.ts';
-import { categories, examplesPath, previewPort } from '../plugins/projects.ts';
-import { packageDir, siteDir } from './shared.ts';
+import { rewriteCdnUrlsForDev } from '../lib/partials.ts';
+import { categories, examplesPath, previewPort } from '../lib/projects.ts';
+import { packageDir, siteDir } from '../lib/shared.ts';
 
 /**
  * Serves the built site the way the storefront does, against the local CDN.

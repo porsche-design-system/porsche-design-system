@@ -1,6 +1,6 @@
 import path from 'node:path';
-import { findPages } from '../../plugins/jsx.ts';
-import { examplesPath, getPageId, type ProjectCategory, previewPort } from '../../plugins/projects.ts';
+import { findPages } from '../../lib/jsx.ts';
+import { examplesPath, getPageId, type ProjectCategory, previewPort } from '../../lib/projects.ts';
 
 /**
  * The pages under test, derived from the source tree instead of from a list.

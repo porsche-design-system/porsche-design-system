@@ -1,5 +1,5 @@
 import type { Page } from '@playwright/test';
-import { rewriteCdnUrlsForDev } from '../../plugins/partials.ts';
+import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
 
 /**
  * What a page needs before it is captured or scanned – shared by the VRT and the a11y suite, and in parts by e2e.

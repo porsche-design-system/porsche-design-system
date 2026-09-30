@@ -9,7 +9,7 @@ type ScriptProps = {
  * Renders a `<script type="module">` with the code as it is: Preact escapes the text of every element, a script
  * included, so `&&` would reach the browser as `&amp;&amp;`. The dev server serves the script where it stands, and
  * `scripts/build.ts` moves every one of them into the `main.js` of the page – see `extractScripts()` in
- * `plugins/entries.ts`. Either way it is a module: deferred, with a scope of its own in dev, and sharing one with the
+ * `lib/entries.ts`. Either way it is a module: deferred, with a scope of its own in dev, and sharing one with the
  * other scripts of the page once built, which is why the build rejects two top level declarations of the same name.
  *
  * The code is a template literal, so a backtick or a `${` meant for the browser has to be escaped.
