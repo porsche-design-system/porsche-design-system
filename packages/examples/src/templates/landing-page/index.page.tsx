@@ -1,5 +1,4 @@
 import { BasePage } from '../../_layouts/BasePage.tsx';
-import { placeholderHref } from '../../_links.ts';
 import { media } from '../../_media.ts';
 import { HeroVideo } from '../../_partials/HeroVideo.tsx';
 import { navItems } from '../../_partials/header/MainNav.tsx';
@@ -152,7 +151,7 @@ const Page = () => (
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr
             </p-text>
             <p-link class="mt-fluid-lg">
-              <a href={placeholderHref}>Some label</a>
+              <a href="#">Some label</a>
             </p-link>
           </div>
         </div>
@@ -174,7 +173,7 @@ const Page = () => (
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr
             </p-text>
             <p-link class="mt-fluid-lg">
-              <a href={placeholderHref}>Some label</a>
+              <a href="#">Some label</a>
             </p-link>
           </div>
         </div>

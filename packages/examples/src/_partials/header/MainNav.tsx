@@ -1,10 +1,12 @@
 import { classes } from '../../_classes.ts';
-import { type LinkItem, placeholderHref } from '../../_links.ts';
 import { Script } from '../Script.tsx';
 
-export type NavItem = LinkItem & {
+export type NavItem = {
   /** Matches the `currentPage` of a page, which is how the active item gets `aria-current="page"`. */
   id: string;
+  /** `#` – the header demonstrates a navigation, it does not provide one – or an id on the same page. */
+  href: string;
+  label: string;
   /**
    * Sub navigation of this entry. An entry with `children` becomes a level of the drilldown to descend into, one
    * without stays a link – which is how the same list renders one, two or three levels without a second data shape.
@@ -21,31 +23,31 @@ export type NavItem = LinkItem & {
 export const navItems: NavItem[] = [
   {
     id: 'home',
-    href: placeholderHref,
+    href: '#',
     label: 'Home',
     children: [
-      { id: 'home-highlights', href: placeholderHref, label: 'Highlights' },
+      { id: 'home-highlights', href: '#', label: 'Highlights' },
       {
         id: 'home-models',
-        href: placeholderHref,
+        href: '#',
         label: 'Models',
         children: [
-          { id: 'home-models-911', href: placeholderHref, label: '911' },
-          { id: 'home-models-taycan', href: placeholderHref, label: 'Taycan' },
+          { id: 'home-models-911', href: '#', label: '911' },
+          { id: 'home-models-taycan', href: '#', label: 'Taycan' },
         ],
       },
     ],
   },
   {
     id: 'features',
-    href: placeholderHref,
+    href: '#',
     label: 'Features',
     children: [
-      { id: 'features-design', href: placeholderHref, label: 'Design' },
-      { id: 'features-technology', href: placeholderHref, label: 'Technology' },
+      { id: 'features-design', href: '#', label: 'Design' },
+      { id: 'features-technology', href: '#', label: 'Technology' },
     ],
   },
-  { id: 'contact', href: placeholderHref, label: 'Contact' },
+  { id: 'contact', href: '#', label: 'Contact' },
 ];
 
 type NavEntriesProps = {

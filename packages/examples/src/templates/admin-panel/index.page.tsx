@@ -1,6 +1,5 @@
 import { Fragment } from 'preact';
 import { CanvasPage } from '../../_layouts/CanvasPage.tsx';
-import { placeholderHref } from '../../_links.ts';
 import { media } from '../../_media.ts';
 import { Script } from '../../_partials/Script.tsx';
 
@@ -127,7 +126,7 @@ const Page = () => (
     description="Productive application page built on p-canvas, with a navigation sidebar, a settings sidebar and a list of models."
   >
     <p-canvas id="admin-canvas">
-      <a href={placeholderHref} slot="title">
+      <a href="#" slot="title">
         Admin Panel
       </a>
 
@@ -217,7 +216,7 @@ const Page = () => (
                 <p-table-cell>{model.interest}</p-table-cell>
                 <p-table-cell>
                   <p-link-pure underline={true} icon="none">
-                    <a href={placeholderHref}>{model.vin}</a>
+                    <a href="#">{model.vin}</a>
                   </p-link-pure>
                 </p-table-cell>
                 <p-table-cell>{model.purchaseIntention}</p-table-cell>
@@ -255,7 +254,7 @@ const Page = () => (
                 {links.map((link) => (
                   <li key={link}>
                     <p-link-pure>
-                      <a href={placeholderHref}>{link}</a>
+                      <a href="#">{link}</a>
                     </p-link-pure>
                   </li>
                 ))}
@@ -282,7 +281,7 @@ const Page = () => (
                   </p-heading>
                   {category.links.map((link) => (
                     <p-link-pure key={link} class="w-full ps-static-sm" icon="none">
-                      <a href={placeholderHref}>{link}</a>
+                      <a href="#">{link}</a>
                     </p-link-pure>
                   ))}
                 </p-accordion>
@@ -298,7 +297,7 @@ const Page = () => (
               {legalLinks.map((link) => (
                 <li key={link}>
                   <p-link-pure icon="none" size="inherit" color="inherit" underline={true}>
-                    <a href={placeholderHref}>{link}</a>
+                    <a href="#">{link}</a>
                   </p-link-pure>
                 </li>
               ))}
@@ -324,16 +323,16 @@ const Page = () => (
         </div>
         <p-divider class="my-fluid-md" />
         <p-link-pure class="my-static-xs w-full" icon="user">
-          <a href={placeholderHref}>Account</a>
+          <a href="#">Account</a>
         </p-link-pure>
         <p-link-pure class="my-static-xs w-full" icon="configurate">
-          <a href={placeholderHref}>Settings</a>
+          <a href="#">Settings</a>
         </p-link-pure>
         <p-link-pure class="my-static-xs w-full" icon="chart">
-          <a href={placeholderHref}>Analytics</a>
+          <a href="#">Analytics</a>
         </p-link-pure>
         <p-link-pure class="my-static-xs w-full" icon="information">
-          <a href={placeholderHref}>Help</a>
+          <a href="#">Help</a>
         </p-link-pure>
         <p-divider class="my-fluid-md" />
         <p-select id="scheme-select" name="color-scheme" value="scheme-light-dark" label="Color Scheme" compact={true}>

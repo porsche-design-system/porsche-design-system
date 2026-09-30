@@ -1,5 +1,4 @@
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { placeholderHref } from '../../../_links.ts';
 import { HeroVideo } from '../../../_partials/HeroVideo.tsx';
 import { Brand } from '../../../_partials/header/Brand.tsx';
 import { HeaderBar } from '../../../_partials/header/HeaderBar.tsx';
@@ -30,10 +29,10 @@ const ProfileMenu = () => (
       </p-heading>
       <div class="grid gap-static-xs">
         <p-link-pure class="py-static-xs" stretch="true" icon="none">
-          <a href={placeholderHref}>My Porsche App</a>
+          <a href="#">My Porsche App</a>
         </p-link-pure>
         <p-link-pure class="py-static-xs" stretch="true" icon="none">
-          <a href={placeholderHref}>
+          <a href="#">
             Messages
             <p-tag class="ms-static-xs" variant="secondary" compact>
               3
@@ -41,7 +40,7 @@ const ProfileMenu = () => (
           </a>
         </p-link-pure>
         <p-link-pure class="py-static-xs" stretch="true" icon="none">
-          <a href={placeholderHref}>Find Connect Services</a>
+          <a href="#">Find Connect Services</a>
         </p-link-pure>
       </div>
     </div>
@@ -51,7 +50,7 @@ const ProfileMenu = () => (
       </p-heading>
       <div class="grid gap-static-xs">
         <p-link-pure class="py-static-xs" stretch="true" icon="none">
-          <a href={placeholderHref}>Profile settings</a>
+          <a href="#">Profile settings</a>
         </p-link-pure>
       </div>
     </div>

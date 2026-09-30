@@ -1,9 +1,10 @@
-import type { LinkItem } from '../_links.ts';
-
 /** An example, listed on the overview of the dev server – the one list whose `href` is a real URL. */
-export type ExampleItem = LinkItem & {
+export type ExampleItem = {
   /** Key of the entry in the list. */
   id: string;
+  /** Relative to the root of the category, which `basePath` prepends. */
+  href: string;
+  label: string;
   /** One sentence, shown next to the link on the overview page. */
   description: string;
 };

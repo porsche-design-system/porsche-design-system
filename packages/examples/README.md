@@ -75,7 +75,6 @@ overview is made of, is the only component that does.
 ```text
 src/
 ├── index.page.tsx            # overview of the source tree – dev only, never emitted; lists every example
-├── _links.ts                 # placeholderHref – the link of the demo chrome that goes nowhere
 ├── _classes.ts               # classes(): joins class names, dropping the optional ones that are unset
 ├── _media.ts                 # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts       # JSX typings for the PDS web components
@@ -268,8 +267,8 @@ Rules:
 - Data lives in the component that renders it, as its default (`navItems` in `MainNav`, `metaActionItems` in
   `MetaActions`, …). A page passes nothing unless it differs, and since the defaults are exported rather than injected,
   a page can extend them (`[...navItems, extra]`) instead of only replacing them.
-- Links inside an example are `#`. Do not wire them up — the dev overview is the only place where a broken URL would
-  actually be noticed, and it is covered by tests.
+- Links inside an example are `href="#"`, written as it is, or point at an id on the same page. Do not wire them up — a
+  unit test fails on any other target. Biome's `a11y/useValidAnchor` is off for the examples for this reason.
 - Files and folders starting with `_` are inputs only. Keep pages declarative — see
   [`AGENTS.md`](AGENTS.md#scope-discipline-important).
 - A variation of a partial is a **prop**, not a second copy of the markup. If two variants share a block, that block is

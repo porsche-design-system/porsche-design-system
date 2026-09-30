@@ -1,6 +1,5 @@
-import type { LinkItem } from '../../_links.ts';
 import { Brand } from './Brand.tsx';
-import { CategoryTabs } from './CategoryTabs.tsx';
+import { type CategoryItem, CategoryTabs } from './CategoryTabs.tsx';
 import { HeaderBar } from './HeaderBar.tsx';
 import { MainNav, type NavItem } from './MainNav.tsx';
 import { MetaActions, metaActionItems } from './MetaActions.tsx';
@@ -30,7 +29,7 @@ type HeaderProps = {
   /** Only the `stacked` variant has a row for it; defaults to the note of `NoticeBar`. */
   notice?: string;
   /** Only the `stacked` variant has a row for them; default to the categories of `CategoryTabs`. */
-  categoryItems?: LinkItem[];
+  categoryItems?: CategoryItem[];
 };
 
 /** Ids of the meta actions each variant shows, in the order `metaActionItems` defines. */

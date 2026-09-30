@@ -1,6 +1,5 @@
 import type { JSX } from 'preact';
 import { classes } from '../../_classes.ts';
-import { placeholderHref } from '../../_links.ts';
 
 /**
  * Icon names accepted by the PDS components, derived from the JSX typings instead of importing the icon list, so a typo
@@ -25,8 +24,8 @@ export type MetaActionItem = {
  */
 export const metaActionItems: MetaActionItem[] = [
   { id: 'search', label: 'Search', icon: 'search' },
-  { id: 'favorites', label: 'Favorites', icon: 'heart', href: placeholderHref },
-  { id: 'cart', label: 'Shopping Cart', icon: 'shopping-cart', href: placeholderHref },
+  { id: 'favorites', label: 'Favorites', icon: 'heart', href: '#' },
+  { id: 'cart', label: 'Shopping Cart', icon: 'shopping-cart', href: '#' },
   { id: 'user', label: 'User', icon: 'user' },
 ];
 

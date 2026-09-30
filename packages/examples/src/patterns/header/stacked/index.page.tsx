@@ -1,5 +1,4 @@
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { placeholderHref } from '../../../_links.ts';
 import { media } from '../../../_media.ts';
 import { Header } from '../../../_partials/header/Header.tsx';
 import { navItems } from '../../../_partials/header/MainNav.tsx';
@@ -12,7 +11,7 @@ const Page = () => (
     beforeMain={
       <Header
         currentPage="features"
-        navItems={[...navItems, { id: 'stories', href: placeholderHref, label: 'Stories' }]}
+        navItems={[...navItems, { id: 'stories', href: '#', label: 'Stories' }]}
         showSearch
         variant="stacked"
       />

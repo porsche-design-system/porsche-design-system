@@ -8,7 +8,6 @@ import { scriptEntryName } from '../../../plugins/projects.ts';
 import { BasePage } from '../../../src/_layouts/BasePage.tsx';
 import { OverviewPage } from '../../../src/_layouts/OverviewPage.tsx';
 import { PatternPage } from '../../../src/_layouts/PatternPage.tsx';
-import { placeholderHref } from '../../../src/_links.ts';
 import { ExampleList } from '../../../src/_partials/ExampleList.tsx';
 import { Footer } from '../../../src/_partials/footer/Footer.tsx';
 import { Head } from '../../../src/_partials/Head.tsx';
@@ -141,7 +140,7 @@ describe('Header', () => {
 
     // Every URL in the header – the navigation, the meta actions, the crest and the wordmark – is the placeholder.
     for (const [, url] of html.matchAll(/href="([^"]*)"/g)) {
-      expect(url).toBe(placeholderHref);
+      expect(url).toBe('#');
     }
   });
 
@@ -253,7 +252,7 @@ describe('Footer', () => {
 
   it('should link nowhere, because the footer demonstrates a navigation', () => {
     for (const [, url] of html.matchAll(/href="([^"]*)"/g)) {
-      expect(url).toBe(placeholderHref);
+      expect(url).toBe('#');
     }
   });
 });
@@ -445,6 +444,21 @@ describe.each(examplePages)('%s page', (_name, Page) => {
   it('should keep the behaviour out of the markup, where its script hooks it on ids', async () => {
     // An example ships no framework and no inline handler either: a page renders ids and its script wires them up.
     expect(await renderPage(Page)).not.toMatch(/\son[a-z]+="/);
+  });
+
+  it('should link nowhere but to "#" or to an id on the same page', async () => {
+    // The examples demonstrate chrome, they are not a website: a link that points somewhere would break in the
+    // storefront and in StackBlitz alike. This replaces Biome's `a11y/useValidAnchor`, which is off for the examples
+    // because it rejects the placeholder `href="#"` – and covers the `p-link*` elements, which the rule never saw.
+    const { html } = extractScripts(await renderPage(Page));
+    const ids = new Set(Array.from(html.matchAll(/\sid="([^"]+)"/g), ([, id]) => id));
+    const targets = Array.from(html.matchAll(/\s(?:href|action)="([^"]*)"/g), ([, target]) => target);
+
+    expect(targets.filter((target) => target !== '#' && !(target.startsWith('#') && ids.has(target.slice(1))))).toEqual(
+      []
+    );
+    // An anchor without an href is not a link at all – not focusable, not announced as one.
+    expect(html.match(/<a\b(?![^>]*\shref=)[^>]*>/g) ?? []).toEqual([]);
   });
 
   it('should render every id once, since a script would only ever find the first one', async () => {

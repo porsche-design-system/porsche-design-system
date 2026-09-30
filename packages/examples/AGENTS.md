@@ -85,7 +85,6 @@ tests/vrt/                        # captures: one spec per page, plus the commit
 src/
 ├── index.page.tsx                # overview of the source tree – dev only, never emitted; lists every
 │                                 # example (templateItems, patternItems – URLs below their category)
-├── _links.ts                     # placeholderHref and LinkItem – the one value every piece of chrome shares
 ├── _classes.ts                   # classes(): joins class names, dropping the unset optional ones
 ├── _layouts/
 │   ├── BasePage.tsx              # full page shell, takes `children`
@@ -126,9 +125,11 @@ build rejects any other file in the folder. Media belong into `public/examples/m
 
 The examples demonstrate chrome, they are not a website:
 
-- Header, footer and example bodies link to `placeholderHref` (`"#"`). In-page anchors (`#features`) are real, because
-  the target is on the page. Use the constant, not a bare `"#"`: Biome's `a11y/useValidAnchor` rejects the literal, and
-  the constant says why the link goes nowhere.
+- Header, footer and example bodies link to `"#"`, written as it is. In-page anchors (`#features`) are real, because the
+  target is on the page. Biome's `a11y/useValidAnchor` rejects the literal and is therefore off for
+  `packages/examples/src` – a unit test takes its place: every `href` and `action` of an example is `#` or points at an
+  id on the same page, and every `<a>` has an `href`. It covers the `p-link*` elements as well, which the rule never
+  saw.
 - The overview of the dev server, `src/index.page.tsx`, is the only page whose links go somewhere, and the only one
   rendering **no** header and footer. It is not emitted – in the storefront, its navigation links the examples.
 - Consequently `Header`, `Footer` and the layouts take no `basePath`: an example never links out of itself.
@@ -320,8 +321,7 @@ reaches through interaction**.
 - **Data lives in the component that renders it, as its default.** `MainNav` owns `navItems`, `MetaActions` owns
   `metaActionItems`, `NoticeBar` its note and `CategoryTabs` its categories; the overview owns the lists of examples. A
   page passes nothing unless it differs – and since the defaults are exported, not injected, a page can extend them
-  (`[...navItems, extra]`) instead of only replacing them. There is no shared data module; `src/_links.ts` holds only
-  `placeholderHref`, the one value every piece of chrome uses.
+  (`[...navItems, extra]`) instead of only replacing them. There is no shared data module.
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
   chrome is what the pattern demonstrates. Pass the section as `beforeMain` (headers) or `afterMain` (footers) so its
   landmark sits where it does on a real page.
@@ -414,8 +414,9 @@ approach, and it is paid on every review:
 
 ## Tooling notes
 
-- Nothing is excluded from Biome. Pages, layout and partials are ordinary TSX, so they lint **and** format — no
-  per-package carve-outs are needed in [`biome.json`](../../biome.json).
+- Pages, layout and partials are ordinary TSX, so they lint **and** format with Biome. The one carve-out in
+  [`biome.json`](../../biome.json) is `a11y/useValidAnchor` for `packages/examples/src/**/*.tsx`, because the
+  placeholder links are the demonstration – see _Links: only the overview navigates_ for the test replacing it.
 - `npm run typecheck` checks pages, partials, plugins and scripts; `build` runs it first. Each test scope has its own
   `typecheck:tests[:scope]`, run first by its test script.
 - The JSX transform is configured **once**, in [`tsconfig.json`](tsconfig.json) (`jsx: "react-jsx"`,

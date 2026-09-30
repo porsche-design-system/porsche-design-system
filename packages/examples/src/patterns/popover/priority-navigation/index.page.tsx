@@ -1,5 +1,4 @@
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { placeholderHref } from '../../../_links.ts';
 import { Script } from '../../../_partials/Script.tsx';
 
 /**
@@ -53,7 +52,7 @@ const Page = () => (
             {barItems.map(({ label, count }) => (
               <li key={label}>
                 <p-link-pure class="p-static-xs -m-static-xs" icon="none">
-                  <a href={placeholderHref}>
+                  <a href="#">
                     {label}
                     {count && (
                       <p-tag class="ms-static-xs" variant="secondary" compact>

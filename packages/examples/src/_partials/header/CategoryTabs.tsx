@@ -1,17 +1,21 @@
-import { type LinkItem, placeholderHref } from '../../_links.ts';
+/** A category of the shop chrome – a placeholder link, like every link of the demo chrome. */
+export type CategoryItem = {
+  href: string;
+  label: string;
+};
 
 /** The categories the `stacked` header shows unless a page passes its own. */
-export const categoryItems: LinkItem[] = [
-  { href: placeholderHref, label: 'All categories' },
-  { href: placeholderHref, label: 'Timepieces' },
-  { href: placeholderHref, label: 'Bags & Luggage' },
-  { href: placeholderHref, label: 'Heritage' },
-  { href: placeholderHref, label: 'Vehicle Accessories' },
-  { href: placeholderHref, label: 'Eyewear' },
+export const categoryItems: CategoryItem[] = [
+  { href: '#', label: 'All categories' },
+  { href: '#', label: 'Timepieces' },
+  { href: '#', label: 'Bags & Luggage' },
+  { href: '#', label: 'Heritage' },
+  { href: '#', label: 'Vehicle Accessories' },
+  { href: '#', label: 'Eyewear' },
 ];
 
 type CategoryTabsProps = {
-  items?: LinkItem[];
+  items?: CategoryItem[];
 };
 
 /**
