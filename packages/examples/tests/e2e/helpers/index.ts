@@ -1,7 +1,8 @@
-import { type ConsoleMessage, expect, type Locator, type Page } from '@playwright/test';
+import type { ConsoleMessage, Locator, Page } from '@playwright/test';
 import { viewportWidthM } from '@porsche-design-system/shared/testing';
-import { stubExternalRequests, waitForComponentsReady } from '../../vrt/helpers/index.ts';
-import { type ExamplePage, getExamplePages } from '../../vrt/helpers/pages.ts';
+import { stubExternalRequests, waitForComponentsReady } from '../../helpers/index.ts';
+
+export { getExampleUrl, getSpecPath, waitForStablePosition } from '../../helpers/index.ts';
 
 /**
  * What an end-to-end test of an example needs, which is deliberately less than a screenshot needs.
@@ -55,24 +56,6 @@ export const collectPageErrors = (page: Page): string[] => {
 };
 
 /**
- * The URL of an example, failing loudly if the page it names is gone.
- *
- * Each spec is written for exactly one page, so a page that is renamed or removed fails this lookup instead of
- * silently testing nothing.
- */
-export const getExampleUrl = (id: string): string => {
-  const examplePage = getExamplePages().find((page) => page.id === id);
-  if (!examplePage) {
-    throw new Error(`[examples] no example page "${id}" – rename the spec or remove it`);
-  }
-  return examplePage.url;
-};
-
-/** Where the spec of an example lives: one file per page, below its category – `patterns/header-overlay.e2e.ts`. */
-export const getSpecPath = ({ category, pageDir }: ExamplePage): string =>
-  `${category}/${pageDir.replaceAll('/', '-')}.e2e.ts`;
-
-/**
  * The control a trigger renders inside its shadow root, which is what carries `aria-expanded`.
  *
  * The examples set the state through the `aria` **prop** of the component (`button.aria = { 'aria-expanded': … }`),
@@ -91,30 +74,3 @@ export const getTriggerControl = (page: Page, id: string): Locator => page.locat
  */
 export const isOpen = (locator: Locator): Promise<boolean> =>
   locator.evaluate((element: HTMLElement & { open?: boolean }) => element.open === true);
-
-/**
- * Waits until an element has stopped moving.
- *
- * A popover is positioned *after* it opens, and the `open` property flips before that has happened. Clicking in
- * between lands on whatever is still underneath — and for a coachmark anchored over the page that is an outside
- * click, which dismisses the very tour the test was about to walk. Playwright's own actionability cannot save this:
- * by the time it retries, the step is gone.
- *
- * `p-popover` emits only `dismiss`, so there is no "finished opening" event to await and the settled box is the
- * signal: two consecutive frames reporting the same position, with a real size.
- */
-export const waitForStablePosition = async (locator: Locator): Promise<void> => {
-  await expect
-    .poll(async () => {
-      const before = await locator.boundingBox();
-      await locator
-        .page()
-        .evaluate(
-          () => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
-        );
-      const after = await locator.boundingBox();
-
-      return !!before && !!after && before.x === after.x && before.y === after.y && after.width > 0;
-    })
-    .toBe(true);
-};

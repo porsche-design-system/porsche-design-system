@@ -68,10 +68,14 @@ scripts/shared.ts                 # output paths and file helpers
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 tests/unit/jsx.spec.tsx           # tests describing the rendering contract
-tests/helpers/previewServers.ts   # the web server every Playwright suite runs against
-tests/e2e/                        # behaviour: shared per page, flows per pattern
-tests/a11y/                       # axe-core over every page and its interaction states
-tests/vrt/                        # one capture set per page, plus the committed __screenshots__
+tests/helpers/                    # shared by the Playwright suites – a helper two suites use lives here
+├── previewServers.ts             # the web server every suite runs against
+├── pages.ts                      # the pages, globbed from the source tree; getExampleUrl(), getSpecPath()
+├── setup.ts                      # hermetic page setup: stubbed origins, upgraded components, pinned media
+└── position.ts                   # waitForStablePosition() – for every suite that opens a popover
+tests/e2e/                        # behaviour: one spec per page, below its category
+tests/a11y/                       # axe-core: one spec per page, its initial and its interaction states
+tests/vrt/                        # captures: one spec per page, plus the committed __screenshots__
 src/
 ├── index.page.tsx                # overview of the source tree – dev only, never emitted
 ├── _data.ts                      # templateItems, patternItems (URLs below their category), chrome nav
@@ -189,8 +193,14 @@ moves is what is asserted, and behaviour is not a picture.
 ## Accessibility tests
 
 The suite lives in [`tests/a11y/`](tests/a11y) and scans **every page** with axe-core, at two viewports (320, 1000) ×
-the two colour schemes, plus the states the initial scan cannot reach.
+the two colour schemes – in its initial state and in every state the page reaches through interaction.
 
+- **One spec per page**, laid out like the e2e specs: `specs/patterns/feedback-dialog.a11y.ts`. The initial scans are
+  the same for every page and come from `testInitialStates()` in
+  [`tests/a11y/helpers/scans.ts`](tests/a11y/helpers/scans.ts); the states the page opens – the drilldown, the feedback
+  dialog with its form and its confirmation, the profile menu, the second tour step, the overflow popover, the settings
+  sidebar and the search dialog – are written out in its spec and run through the same `scanMatrix`. A new state gets
+  its scan next to the page it belongs to. `coverage.a11y.ts` fails for a page without a spec.
 - **It covers the layer the other suites cannot.** The unit tests assert the rendered markup – one `main` landmark, no
   unlabelled `<nav>`, at most one first level heading, `aria-current` on the active item – before a browser is involved.
   Axe checks what the browser _computes_: contrast, the accessible name a label resolves to through a shadow root,
@@ -199,9 +209,6 @@ the two colour schemes, plus the states the initial scan cannot reach.
   rules that expect a page-level `main` and an `h1`, because they render one component in isolation. An example _is_ a
   whole page, so those rules are exactly the ones worth running. A rule that genuinely does not apply is disabled **per
   page** with a reason – today only `page-has-heading-one`, for the footer pattern, which is a section and not a page.
-- **The interaction states are scanned too:** the navigation drilldown (opened through the id contract in
-  [`src/_ids.ts`](src/_ids.ts)) and the confirmation both feedback patterns end in, the dialog variant with its
-  `p-modal` open.
 - Like the VRT it runs against the **built** site, sharing the web servers in
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts). Chromium only – axe measures the tree the
   browser computes, so a second engine would measure the engine.
@@ -215,7 +222,25 @@ the two colour schemes, plus the states the initial scan cannot reach.
 
 ## Visual regression tests
 
-The suite lives in [`tests/vrt/`](tests/vrt) and screenshots **every page in its initial state**.
+The suite lives in [`tests/vrt/`](tests/vrt) and screenshots **every page in its initial state and in the states it
+reaches through interaction**.
+
+- **One spec per page**, laid out like the e2e specs: `specs/templates/admin-panel.vrt.ts`. The initial captures are the
+  same for every page and come from `testInitialStates()` in [`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts);
+  the states the page opens are written out in its spec, in both projects and the light scheme. An overlay is captured
+  at viewport size – the page behind it is the initial capture already – and an in-page state in full. Before a state is
+  captured, `waitForStableState()` parks the pointer, so the hover style of the trigger that opened it is not part of
+  the baseline. `coverage.vrt.ts` fails for a page without a spec.
+- **Baselines are named so a page's captures sort together**, with `--` between the parts – the page id itself contains
+  single dashes:
+
+  | capture                    | name                                      | example                                                    |
+  | -------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
+  | initial state              | `<page>--<width>-<project>.png`           | `patterns-header-overlay--320-safari.png`                  |
+  | variant of the initial one | `<page>--<width>-<variant>-<project>.png` | `patterns-header-overlay--1000-hcm-dark-chrome.png`        |
+  | state reached by a test    | `<page>--<state>--<width>-<project>.png`  | `patterns-header-overlay--drilldown-open--1000-chrome.png` |
+
+  The project suffix is appended by Playwright; `prepare-vrt-snapshots` relies on nothing but that suffix.
 
 - **It tests the built site, not the dev server.** It expects `build:examples` to have run, and the web server of
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts) is `npm run preview` – `serve-cdn` plus
@@ -226,19 +251,20 @@ The suite lives in [`tests/vrt/`](tests/vrt) and screenshots **every page in its
   regression artifacts from the project name. Dark scheme, both High Contrast Mode schemes, 200% font size and `rtl` are
   captured on `chrome` only – font scaling and forced colors go through CDP, and the responsive behaviour is already
   covered by the two widths.
-- **Pages are globbed, not listed.** [`tests/vrt/helpers/pages.ts`](tests/vrt/helpers/pages.ts) resolves every
-  `index.page.tsx` to its URL on the preview server, so a new example is covered without touching the spec; a count
-  assertion fails if a page appears or disappears unnoticed.
-- **What `setupExamplePage()` pins down** ([`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)): components
-  upgraded (`:defined` plus Stencil's `hydrated` class – the loader partial ships no `componentsReady()`), the design
-  system fonts requested explicitly (`document.fonts.ready` alone settles nothing that has not started, and fallback
-  metrics wrap a line differently), images complete, videos reset to their poster, the focus a pattern took on load
-  released, and a one pixel viewport nudge so self-measuring components measure with the final layout.
+- **Pages are globbed to find the specs, not to generate them.** [`tests/helpers/pages.ts`](tests/helpers/pages.ts)
+  resolves every `index.page.tsx` to its URL on the preview server; a spec looks its page up by id with
+  `getExampleUrl()`, which fails if the page is gone, and the coverage spec fails if a page has no spec.
+- **What `setupExamplePage()` pins down** ([`tests/helpers/setup.ts`](tests/helpers/setup.ts), shared with the a11y
+  suite): components upgraded (`:defined` plus Stencil's `hydrated` class – the loader partial ships no
+  `componentsReady()`), the design system fonts requested explicitly (`document.fonts.ready` alone settles nothing that
+  has not started, and fallback metrics wrap a line differently), images complete, videos reset to their poster, the
+  focus a pattern took on load released, and a one pixel viewport nudge so self-measuring components measure with the
+  final layout.
 - **Third-party images are stubbed.** The footer loads three payment logos from a Porsche CDN; the run answers every
   non-local request itself, so a baseline records the layout of the page rather than the availability of a network.
 - `patterns-header-stacked` has no 200% font size capture: its category tabs flip between showing and hiding their
   scroll affordance while the suite runs in parallel, which changes the page height by 34px. The other five captures of
-  that page still cover it – see the comment in the spec.
+  that page still cover it – see the comment in its spec.
 
 ## Conventions that are easy to get wrong
 
@@ -373,7 +399,7 @@ approach, and it is paid on every review:
   on port 3011 and rewrites the CDN origin of every HTML response to `http://localhost:3001`, in memory. It is the same
   command the Playwright suites start as their web server. `dist-site/` itself keeps the production URLs. The loader
   builds one CDN URL by concatenation at runtime, which no rewrite of the markup reaches; the Playwright suites catch it
-  in their route handler ([`tests/vrt/helpers/index.ts`](tests/vrt/helpers/index.ts)).
+  in their route handler ([`tests/helpers/setup.ts`](tests/helpers/setup.ts)).
 - **The emitted files carry decided modes, not inherited ones.** `fs.cpSync()` copies the mode of every source file, and
   a bind mount does not always report a sane one: in the Playwright container copied media came out write-only, so the
   preview answered its own images with a permission error and a VRT baseline recorded a page without them. The scripts
