@@ -1,6 +1,7 @@
 import { type ConsoleMessage, expect, type Locator, type Page } from '@playwright/test';
 import { viewportWidthM } from '@porsche-design-system/shared/testing';
 import { stubExternalRequests, waitForComponentsReady } from '../../vrt/helpers/index.ts';
+import { type ExamplePage, getExamplePages } from '../../vrt/helpers/pages.ts';
 
 /**
  * What an end-to-end test of an example needs, which is deliberately less than a screenshot needs.
@@ -53,9 +54,23 @@ export const collectPageErrors = (page: Page): string[] => {
   return errors;
 };
 
-/** Whether a page renders a given element at all – the flows are keyed off this, not off a list of page names. */
-export const hasElement = async (page: Page, selector: string): Promise<boolean> =>
-  (await page.locator(selector).count()) > 0;
+/**
+ * The URL of an example, failing loudly if the page it names is gone.
+ *
+ * Each spec is written for exactly one page, so a page that is renamed or removed fails this lookup instead of
+ * silently testing nothing.
+ */
+export const getExampleUrl = (id: string): string => {
+  const examplePage = getExamplePages().find((page) => page.id === id);
+  if (!examplePage) {
+    throw new Error(`[examples] no example page "${id}" – rename the spec or remove it`);
+  }
+  return examplePage.url;
+};
+
+/** Where the spec of an example lives: one file per page, below its category – `patterns/header-overlay.e2e.ts`. */
+export const getSpecPath = ({ category, pageDir }: ExamplePage): string =>
+  `${category}/${pageDir.replaceAll('/', '-')}.e2e.ts`;
 
 /**
  * The control a trigger renders inside its shadow root, which is what carries `aria-expanded`.

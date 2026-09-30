@@ -152,18 +152,22 @@ monorepo. The committed baselines are the ones the container produces; a run on 
 
 The suite lives in [`tests/e2e/`](tests/e2e) and drives the behaviour the build inlines into each page.
 
-- **`examples.e2e.ts` covers what every page shares.** Each one must load without a `console.error` or an uncaught
-  exception and must carry a title — the cheapest check there is for these demos, and it catches their most likely
-  failure: behaviour is a plain script wired on ids, so a renamed element or a snippet that throws fails _silently_. The
-  page still renders and the VRT still matches.
-- **The shared behaviour is keyed off the ids a page renders**, not off a list of page names — the same rule
-  [`plugins/entries.ts`](plugins/entries.ts) uses to decide which snippet to inline. If a page renders `#nav-button`,
-  the drilldown snippet is in its entry and has to work. A pattern that starts rendering the header is covered on the
-  same commit, without a list to maintain. (The a11y suite does the same.)
-- **`flows.e2e.ts` covers what exactly one page does** — the feedback flows, the local market switch, the feature tour,
-  the priority navigation and the admin panel. The common thread is **controlled mode**: the page owns every open state,
+- **Every page has a spec of its own**, below its category and named after it: `src/patterns/header/overlay` is tested
+  by `specs/patterns/header-overlay.e2e.ts`. A spec reads on its own, so the scenarios several pages share are
+  **repeated on purpose** rather than generated in a loop.
+- **Each spec starts with the same check:** the page loads without a `console.error` or an uncaught exception and
+  carries a title. It is the cheapest check there is for these demos, and it catches their most likely failure:
+  behaviour is a plain script wired on ids, so a renamed element or a snippet that throws fails _silently_. The page
+  still renders and the VRT still matches.
+- **The shared behaviour is tested in every spec whose page renders it:** the navigation drilldown
+  (`src/assets/header.js`) wherever the page renders `#nav-button`, the hero video (`src/assets/video.js`) wherever it
+  renders `#pause-button`.
+- **The flows are what exactly one page does**, like the feedback flows, the local market switch, the feature tour, the
+  priority navigation and the admin panel. The common thread is **controlled mode**: the page owns every open state,
   which is what lets a trigger mirror it onto `aria-expanded`, and what makes "close" something the page has to write
   back. Forgetting that half leaves a panel that opens and never closes — which renders and screenshots perfectly.
+- **`coverage.e2e.ts` fails for a page without a spec of its own.** The specs are written by hand, so nothing else would
+  notice a new example that is missing one — and it would then miss even the check that it loads without an error.
 
 Three things about these components are easy to get wrong in a test, so they have helpers in
 [`tests/e2e/helpers/`](tests/e2e/helpers):
