@@ -153,7 +153,8 @@ export const jsxPages = (): Plugin => {
         }
         const pages = findPages(rootDir);
         for (const { category } of categories) {
-          server.config.logger.info(`\n  ${styleText('bold', category)}`);
+          const heading = `${category[0].toUpperCase()}${category.slice(1)}`;
+          server.config.logger.info(`\n  ${styleText('bold', heading)}`);
           for (const page of pages.filter((location) => location.category === category)) {
             server.config.logger.info(
               `  ➜  ${styleText('cyan', new URL(`${category}/${page.pageDir}/`, origin).href)}`
