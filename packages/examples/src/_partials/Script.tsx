@@ -12,7 +12,8 @@ type ScriptProps = {
  * `lib/entries.ts`. Either way it is a module: deferred, with a scope of its own in dev, and sharing one with the
  * other scripts of the page once built, which is why the build rejects two top level declarations of the same name.
  *
- * The code is a template literal, so a backtick or a `${` meant for the browser has to be escaped.
+ * The code is a template literal, so a backtick or a `${` meant for the browser has to be escaped. Prefix it with
+ * `/* language=JavaScript *\/` so that JetBrains IDEs highlight it as JavaScript.
  */
 export const Script = ({ children }: ScriptProps) => {
   if (/<\/script/i.test(children)) {

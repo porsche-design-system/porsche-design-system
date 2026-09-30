@@ -363,7 +363,8 @@ const Page = () => (
         hide-label="true"
       />
     </p-modal>
-    <Script>{`
+    <Script>{
+      /* language=JavaScript */ `
       // Behaviour of the admin panel: the two sidebars of the canvas, the categories of its navigation, the tabs above
       // the list, the search dialog and the color scheme switch.
       //
@@ -426,7 +427,8 @@ const Page = () => (
         document.documentElement.classList.remove(...schemes);
         document.documentElement.classList.add(e.detail.value);
       });
-    `}</Script>
+    `
+    }</Script>
   </TemplatePage>
 );
 

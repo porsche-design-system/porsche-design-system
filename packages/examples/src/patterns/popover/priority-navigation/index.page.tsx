@@ -85,7 +85,8 @@ const Page = () => (
         </nav>
       </section>
     </main>
-    <Script>{`
+    <Script>{
+      /* language=JavaScript */ `
       import { componentsReady } from '@porsche-design-system/components-js';
 
       // Behaviour of the priority navigation: keep the bar on one line by moving the entries that no longer fit into
@@ -185,7 +186,8 @@ const Page = () => (
       };
 
       new ResizeObserver(scheduleRecalc).observe(navBar);
-    `}</Script>
+    `
+    }</Script>
   </PatternPage>
 );
 

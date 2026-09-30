@@ -40,7 +40,8 @@ export const HeroVideo = ({ children }: HeroVideoProps) => (
     >
       Pause Video
     </p-button>
-    <Script>{`
+    <Script>{
+      /* language=JavaScript */ `
       // Behaviour of the hero video: a pause control that follows the actual state of the video.
 
       const video = document.getElementById('hero-video');
@@ -69,6 +70,7 @@ export const HeroVideo = ({ children }: HeroVideoProps) => (
       }
 
       syncPauseButton();
-    `}</Script>
+    `
+    }</Script>
   </>
 );

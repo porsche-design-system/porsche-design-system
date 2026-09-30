@@ -177,7 +177,8 @@ const Page = () => (
         </HeroVideo>
       </section>
     </main>
-    <Script>{`
+    <Script>{
+      /* language=JavaScript */ `
       // Behaviour of the popover pattern: which of the two disclosures of the header is open, and in which container.
       //
       // The navigation and the hero video bring their own behaviour, rendered by the partials they are built from. Only
@@ -251,7 +252,8 @@ const Page = () => (
 
       // Crossing the breakpoint moves an open profile menu into the other container instead of closing it.
       desktopQuery.addEventListener('change', () => setProfileOpen(profilePopover.open || profileSheet.open));
-    `}</Script>
+    `
+    }</Script>
   </PatternPage>
 );
 

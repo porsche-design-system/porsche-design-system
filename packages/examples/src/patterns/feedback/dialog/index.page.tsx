@@ -64,7 +64,8 @@ const Page = () => (
         </p-button>
       </section>
     </main>
-    <Script>{`
+    <Script>{
+      /* language=JavaScript */ `
       // Behaviour of the feedback dialog pattern: whether the modal is open. The flow inside it is the script of
       // "FeedbackForm", which also cancels a pending submission and starts over when the modal closes.
       //
@@ -84,7 +85,8 @@ const Page = () => (
       });
       closeButton.addEventListener('click', closeModal);
       modal.addEventListener('dismiss', closeModal);
-    `}</Script>
+    `
+    }</Script>
   </PatternPage>
 );
 

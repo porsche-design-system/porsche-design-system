@@ -135,7 +135,8 @@ export const MainNav = ({ currentPage, navItems: items = navItems, scheme = '' }
     <p-drilldown id="nav-drilldown">
       <DrilldownEntries currentPage={currentPage} navItems={items} />
     </p-drilldown>
-    <Script>{`
+    <Script>{
+      /* language=JavaScript */ `
       // Behaviour of the header navigation: the menu button opens the drilldown, and the drilldown reports the level
       // the user drilled into.
 
@@ -155,6 +156,7 @@ export const MainNav = ({ currentPage, navItems: items = navItems, scheme = '' }
       navDrilldown.addEventListener('update', (e) => {
         e.target.activeIdentifier = e.detail.activeIdentifier;
       });
-    `}</Script>
+    `
+    }</Script>
   </nav>
 );

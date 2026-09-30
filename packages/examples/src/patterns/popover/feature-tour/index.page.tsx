@@ -148,7 +148,8 @@ const Page = () => (
         </p-button>
       </section>
     </main>
-    <Script>{`
+    <Script>{
+      /* language=JavaScript */ `
       // Behaviour of the feature tour: exactly one coachmark is open at a time, and the sequence can be walked with the
       // keyboard alone.
       //
@@ -240,7 +241,8 @@ const Page = () => (
 
       // A tour that can only be seen once cannot be reviewed, so this example offers it again.
       restartButton.addEventListener('click', (e) => showStep(0, isKeyboardActivation(e)));
-    `}</Script>
+    `
+    }</Script>
   </PatternPage>
 );
 

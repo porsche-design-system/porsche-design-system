@@ -134,7 +134,8 @@ export const FeedbackForm = ({ restartable, confirmationAction }: FeedbackFormPr
       )}
       {confirmationAction}
     </div>
-    <Script>{`
+    <Script>{
+      /* language=JavaScript */ `
       // Behaviour of the feedback flow: which of its two steps – the question or the confirmation – is shown.
       //
       // No data is sent anywhere: the submission is simulated, so the flow can be reviewed end to end.
@@ -202,6 +203,7 @@ export const FeedbackForm = ({ restartable, confirmationAction }: FeedbackFormPr
       const enclosingModal = form.closest('p-modal');
       enclosingModal?.addEventListener('dismiss', cancelSubmission);
       enclosingModal?.addEventListener('motionHiddenEnd', startOver);
-    `}</Script>
+    `
+    }</Script>
   </>
 );
