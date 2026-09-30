@@ -68,7 +68,11 @@ scripts/shared.ts                 # output paths and file helpers
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 playwright.config.ts              # every Playwright suite as projects of one config – <suite>-{desktop-chrome,mobile-safari}
-tests/unit/jsx.spec.tsx           # tests describing the rendering contract
+tests/unit/                       # vitest, no build and no browser
+├── specs/build.spec.tsx          # the pipeline: routing, projects, StackBlitz, entries, inlining, renderPage()
+├── specs/ids.spec.ts             # the contract of _ids.ts between markup and snippets
+├── specs/markup.spec.tsx         # the static composition: data, partials, layouts, pages
+└── helpers/index.ts              # the pages under test and the string helpers the specs share
 tests/helpers/                    # shared by the Playwright suites – a helper two suites use lives here
 ├── previewServers.ts             # the web server every suite runs against
 ├── device.ts                     # getDevice() – the device the running project emulates
@@ -228,10 +232,12 @@ schemes – in its initial state and in every state the page reaches through int
   sidebar and the search dialog – are written out in its spec and scanned in both schemes as well. A new state gets its
   scan next to the page it belongs to. The overflow popover of the priority navigation is scanned on mobile only: on
   desktop every entry fits into the bar. `coverage.a11y.ts` fails for a page without a spec.
-- **It covers the layer the other suites cannot.** The unit tests assert the rendered markup – one `main` landmark, no
-  unlabelled `<nav>`, at most one first level heading, `aria-current` on the active item – before a browser is involved.
-  Axe checks what the browser _computes_: contrast, the accessible name a label resolves to through a shadow root,
-  whether an `aria-*` value is valid on the role it ends up on.
+- **It covers the layer the other suites cannot.** The unit tests assert the rendered markup – no unlabelled `<nav>`, at
+  most one first level heading, `aria-current` on the active item – before a browser is involved. Axe checks what the
+  browser _computes_: contrast, the accessible name a label resolves to through a shadow root, whether an `aria-*` value
+  is valid on the role it ends up on – and the landmark rules, which only the composed page can answer since `p-canvas`
+  renders its landmarks in its shadow root: one `main`, no duplicated banner or contentinfo, at least one first level
+  heading. [`markup.spec.tsx`](tests/unit/specs/markup.spec.tsx) does not repeat those.
 - **Nothing is scoped or disabled in the fixture.** The component suites of `packages/components-js` switch off the
   rules that expect a page-level `main` and an `h1`, because they render one component in isolation. An example _is_ a
   whole page, so those rules are exactly the ones worth running. A rule that genuinely does not apply is disabled **per
@@ -465,7 +471,8 @@ approach, and it is paid on every review:
    the generated entry, so it imports no stylesheet and carries no banner. Shared behaviour goes to `src/assets/*.js`
    and is inlined by its detection rule — hook it on ids from [`src/_ids.ts`](src/_ids.ts), add new ones there, and
    query them with `getElementById()`.
-6. Run `npm run build`; the unit tests assert the accessibility baseline for every page, patterns included.
+6. Run `npm run build`, then the unit and a11y tests; together they assert the accessibility baseline for every page,
+   patterns included.
 
 ## Accessibility baseline
 
@@ -474,7 +481,7 @@ visible `:focus-visible` outlines and a `forced-colors: active` block. Templates
 `footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets all
 of them from the component and therefore renders none itself. The dev overview is a `main` landmark with labelled
 navigations. These demos are documentation, so they have to be correct by example — keep the baseline when adding
-examples. The unit tests assert it for every page.
+examples. The unit tests and the a11y suite assert it for every page.
 
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
 heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is

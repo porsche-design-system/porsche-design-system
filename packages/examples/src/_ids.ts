@@ -14,7 +14,7 @@
  * - **the snippets** address elements by id only – never by tag name or class – so the markup around an element stays
  *   free to change and no snippet reaches into a pattern it was not written for.
  *
- * A unit test asserts all three, plus the rule that makes them a contract: a page rendering one id of a snippet
+ * `tests/unit/specs/ids.spec.ts` asserts all three, plus the rule that makes them a contract: a page rendering one id of a snippet
  * renders every id of that snippet, exactly once. Half a wiring is a broken example, not a smaller one.
  *
  * The snippets themselves keep the literals. They are copied verbatim into the `main.js` of a page, so they can import
