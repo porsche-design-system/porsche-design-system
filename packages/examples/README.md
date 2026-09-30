@@ -72,7 +72,6 @@ This is why `Header`, `Footer` and the layouts take no `basePath`: they have no 
 
 ```text
 src/
-├── _media.ts                 # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts       # JSX typings for the PDS web components
 ├── _layouts/
 │   ├── BasePage.tsx          # full page shell: head, header, content, footer
@@ -107,7 +106,8 @@ src/
 `index.page.tsx` is the page marker: `templates/landing-page/index.page.tsx` becomes the project
 `dist/templates/landing-page/`. A page folder holds that file only – its markup, classes and behaviour are all in it,
 and the build rejects anything else. Every other `.ts`/`.tsx` file is a build-time input. Images and videos live in
-`public/examples/media/` and are referenced through `media()` from [`src/_media.ts`](src/_media.ts).
+`public/examples/media/` and are referenced by that path, written as it is (`src="/examples/media/718.webp"`); the build
+fails on any other root-absolute URL and on a missing file.
 
 ## Authoring a template
 

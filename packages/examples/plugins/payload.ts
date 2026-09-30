@@ -6,7 +6,7 @@
  * what `sdk.openProject()` of `@stackblitz/sdk` takes, minus the options the storefront adds (`template`, `openFile`).
  *
  * Media are not part of it: the SDK accepts text files only, and the pages reference their media by `mediaPath`,
- * which the storefront resolves against its own deployment before it hands the files over (see `src/_media.ts`).
+ * which the storefront resolves against its own deployment before it hands the files over (see `mediaPath` in `projects.ts`).
  */
 
 export type StackblitzPayload = {

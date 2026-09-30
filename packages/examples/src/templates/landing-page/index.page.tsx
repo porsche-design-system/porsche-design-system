@@ -1,5 +1,4 @@
 import { BasePage } from '../../_layouts/BasePage.tsx';
-import { media } from '../../_media.ts';
 import { HeroVideo } from '../../_partials/HeroVideo.tsx';
 import { navItems } from '../../_partials/header/MainNav.tsx';
 
@@ -44,7 +43,7 @@ const Page = () => (
             aspect-ratio="{base: '4/3', xs: '16/9', s: '3/4', m: '1/1'}"
           >
             <img
-              src={media('chrono-car.webp')}
+              src="/examples/media/chrono-car.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -58,7 +57,7 @@ const Page = () => (
             aspect-ratio="{base: '4/3', xs: '16/9', s: '3/4', m: '1/1'}"
           >
             <img
-              src={media('addon.webp')}
+              src="/examples/media/addon.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -83,7 +82,7 @@ const Page = () => (
             weight="regular"
           >
             <img
-              src={media('interieur-1.webp')}
+              src="/examples/media/interieur-1.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -97,7 +96,7 @@ const Page = () => (
             weight="regular"
           >
             <img
-              src={media('interieur-2.webp')}
+              src="/examples/media/interieur-2.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -111,7 +110,7 @@ const Page = () => (
             weight="regular"
           >
             <img
-              src={media('interieur-3.webp')}
+              src="/examples/media/interieur-3.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -125,7 +124,7 @@ const Page = () => (
             weight="regular"
           >
             <img
-              src={media('interieur-4.webp')}
+              src="/examples/media/interieur-4.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -136,7 +135,7 @@ const Page = () => (
         <div class="col-span-full grid grid-cols-subgrid gap-y-fluid-lg">
           <img
             class="col-span-full md:col-start-1 md:col-end-7 md:row-start-1 w-full aspect-4/3 md:aspect-3/4 object-cover rounded-3xl"
-            src={media('cockpit.webp')}
+            src="/examples/media/cockpit.webp"
             alt="Some alternative text for screen readers describing the media element"
           />
           <div class="col-span-full md:col-start-8 md:col-end-13 md:row-start-1 flex flex-col justify-center items-start">
@@ -158,7 +157,7 @@ const Page = () => (
         <div class="col-span-full grid grid-cols-subgrid gap-y-fluid-lg">
           <img
             class="col-span-full md:col-start-7 md:col-end-13 md:row-start-1 w-full aspect-4/3 md:aspect-3/4 object-cover rounded-3xl"
-            src={media('chrono.webp')}
+            src="/examples/media/chrono.webp"
             alt="Some alternative text for screen readers describing the media element"
           />
           <div class="col-span-full md:col-start-1 md:col-end-6 md:row-start-1 flex flex-col justify-center items-start">

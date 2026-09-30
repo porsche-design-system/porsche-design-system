@@ -1,5 +1,4 @@
 import type { ComponentChildren } from 'preact';
-import { media } from '../_media.ts';
 import { Script } from './Script.tsx';
 
 type HeroVideoProps = {
@@ -21,14 +20,14 @@ export const HeroVideo = ({ children }: HeroVideoProps) => (
     <video
       id="hero-video"
       class="z-0 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
-      poster={media('mood-porsche-gts.webp')}
+      poster="/examples/media/mood-porsche-gts.webp"
       loop
       muted
       autoplay
       playsinline
     >
-      <source src={media('mood-porsche-gts.mp4')} type="video/mp4" />
-      <source src={media('mood-porsche-gts.webm')} type="video/webm" />
+      <source src="/examples/media/mood-porsche-gts.mp4" type="video/mp4" />
+      <source src="/examples/media/mood-porsche-gts.webm" type="video/webm" />
     </video>
     {children}
     <p-button

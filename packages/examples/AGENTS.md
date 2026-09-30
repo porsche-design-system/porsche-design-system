@@ -93,7 +93,6 @@ src/
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask, with its behaviour
-├── _media.ts                     # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
 ├── assets/styles.css             # Tailwind entry: @theme, global element defaults – copied next to every page
 ├── templates/
@@ -114,8 +113,9 @@ src/
 
 **Underscore rule:** files and folders starting with `_` are inputs only and are never emitted. **Page rule:** a page is
 an `index.page.tsx` in a folder of its own, which becomes one project; its behaviour is a `<Script>` inside it, and the
-build rejects any other file in the folder. Media belong into `public/examples/media/` and are referenced through
-`media()`.
+build rejects any other file in the folder. Media belong into `public/examples/media/` and are referenced by that path,
+written as it is: `src="/examples/media/718.webp"` – `mediaPath` in [`plugins/projects.ts`](plugins/projects.ts) is the
+pipeline's copy, and `scripts/verify.ts` fails the build on any other root-absolute URL or a missing file.
 
 ## Links: examples never navigate
 
@@ -144,7 +144,7 @@ npm run test:vrt:examples   # playwright – screenshots every page of the built
 npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
 
 # from within this package
-npm run build:verify        # verifies ./dist-site: one self-contained page each, media only through media()
+npm run build:verify        # verifies ./dist-site: one self-contained page each, media only below /examples/media/
 npm run typecheck           # source; typecheck:tests[:e2e|:a11y|:vrt] check the test scopes
 npx playwright test --project='e2e-*'   # any suite directly – projects: <suite>-desktop-chrome, <suite>-mobile-safari
 ```

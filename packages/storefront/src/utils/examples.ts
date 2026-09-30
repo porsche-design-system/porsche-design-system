@@ -15,7 +15,7 @@ export type ExamplePath = `${'patterns' | 'templates'}/${string}`;
 /**
  * Where the examples reference their media: storefront-root-relative and slug-free.
  *
- * Owned by `packages/examples/src/_media.ts`, repeated here because the storefront does not depend on that package.
+ * Owned by `packages/examples/plugins/projects.ts`, repeated here because the storefront does not depend on that package.
  * `copyExamples.ts` fails when the copied pages stop containing it, so the two cannot drift apart silently.
  */
 export const examplesMediaPath = '/examples/media/';

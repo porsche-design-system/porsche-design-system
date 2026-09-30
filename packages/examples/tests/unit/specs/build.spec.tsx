@@ -14,10 +14,16 @@ import {
 import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../../plugins/inline.ts';
 import { doctype, normalizeClassAttributes, renderPage, resolvePagePath } from '../../../plugins/jsx.ts';
 import { getStackblitzPayload } from '../../../plugins/payload.ts';
-import { categories, getPageId, resolvePageLocation, scriptEntryName } from '../../../plugins/projects.ts';
+import {
+  categories,
+  examplesPath,
+  getPageId,
+  mediaPath,
+  resolvePageLocation,
+  scriptEntryName,
+} from '../../../plugins/projects.ts';
 import { getPackageJson, getViteConfig } from '../../../scripts/generateProject.ts';
 import { BasePage } from '../../../src/_layouts/BasePage.tsx';
-import { examplesPath, media, mediaPath } from '../../../src/_media.ts';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import { countOccurrences, examplePages } from '../helpers/index.ts';
 
@@ -121,12 +127,12 @@ describe('generated project', () => {
 });
 
 describe('media', () => {
-  it('should reference a file below the path the storefront serves the media from', () => {
-    expect(media('718.webp')).toBe('/examples/media/718.webp');
+  it('should serve the media below the path the storefront serves the examples from', () => {
+    expect(mediaPath).toBe('/examples/media/');
     expect(mediaPath.startsWith(examplesPath)).toBe(true);
   });
 
-  it.each(examplePages)('should reference the media of "%s" only through media()', async (_name, Page) => {
+  it.each(examplePages)('should reference no root-absolute URL in "%s" but its media', async (_name, Page) => {
     const html = await renderPage(Page);
     const rootAbsolute = Array.from(html.matchAll(/\s(?:src|href|poster|srcset)="(\/[^/"][^"]*)"/g), ([, url]) => url);
 

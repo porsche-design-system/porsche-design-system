@@ -2,8 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { getLoaderScript } from '@porsche-design-system/components-js/partials';
 import type { StackblitzPayload } from '../plugins/payload.ts';
-import { categories, payloadName } from '../plugins/projects.ts';
-import { mediaPath } from '../src/_media.ts';
+import { categories, mediaPath, payloadName } from '../plugins/projects.ts';
 import { distDir, listFiles, listProjects, packageDir, siteDir, siteMediaDir } from './shared.ts';
 
 /**
@@ -80,7 +79,7 @@ const verify = (): void => {
         usedMedia.add(fileName);
       } else if (!allowedExternal.test(url)) {
         fail(
-          `"${name}" references "${url}" – a page may only load its media through media(), or an absolute https URL`
+          `"${name}" references "${url}" – a page may only load its media below ${mediaPath}, or an absolute https URL`
         );
       }
     }

@@ -3,8 +3,7 @@ import path from 'node:path';
 import fastGlob from 'fast-glob';
 import { type Plugin, preview } from 'vite';
 import { rewriteCdnUrlsForDev } from '../plugins/partials.ts';
-import { categories, previewPort } from '../plugins/projects.ts';
-import { examplesPath } from '../src/_media.ts';
+import { categories, examplesPath, previewPort } from '../plugins/projects.ts';
 import { packageDir, siteDir } from './shared.ts';
 
 /**

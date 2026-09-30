@@ -1,6 +1,5 @@
 import { Fragment } from 'preact';
 import { CanvasPage } from '../../_layouts/CanvasPage.tsx';
-import { media } from '../../_media.ts';
 import { Script } from '../../_partials/Script.tsx';
 
 /**
@@ -74,7 +73,7 @@ type Model = {
 const models: Model[] = [
   {
     name: '718 Cayman',
-    image: media('718.webp'),
+    image: '/examples/media/718.webp',
     interest: 'New Car',
     vin: '5GAKVCKD8EJ335750',
     purchaseIntention: '08/2021',
@@ -83,7 +82,7 @@ const models: Model[] = [
   },
   {
     name: '911 Carrera',
-    image: media('911.webp'),
+    image: '/examples/media/911.webp',
     interest: 'Used Car',
     vin: 'WP0ZZZ99ZTS392124',
     purchaseIntention: '09/2021',
