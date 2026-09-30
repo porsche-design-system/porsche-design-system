@@ -1,13 +1,12 @@
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { FeedbackForm } from '../../../_partials/feedback/FeedbackForm.tsx';
-import { Script } from '../../../_partials/Script.tsx';
 
 /**
  * Feedback pattern – the flow shown in the page it asks about.
  *
  * Nothing is disclosed: the question is part of the content, and the answer replaces it in place. The scale reveals
  * the optional comment and the submit button only once it has been used, so the page asks one thing at a time – see
- * `FeedbackForm`. The script at the end of the page adds starting over.
+ * `FeedbackForm`, which also offers to start over here.
  */
 const Page = () => (
   <PatternPage
@@ -30,27 +29,9 @@ const Page = () => (
         class="col-extended justify-self-center w-full max-w-prose grid gap-fluid-md justify-items-center"
         aria-label="Feedback"
       >
-        <FeedbackForm
-          confirmationAction={
-            <p-button id="feedback-restart" type="button" variant="secondary" icon="refresh">
-              Give new feedback
-            </p-button>
-          }
-        />
+        <FeedbackForm restartable />
       </section>
     </main>
-    <Script>{`
-      // Behaviour of the inline feedback pattern: starting the flow over from its confirmation. The flow itself is the
-      // script of "FeedbackForm".
-
-      const restart = document.getElementById('feedback-restart');
-
-      restart.addEventListener('click', () => {
-        document.getElementById('feedback-form').reset();
-        // Return focus to the question so the flow is re-announced and can be repeated from the start.
-        document.getElementById('feedback-question').focus();
-      });
-    `}</Script>
   </PatternPage>
 );
 

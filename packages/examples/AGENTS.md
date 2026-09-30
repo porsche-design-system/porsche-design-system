@@ -348,10 +348,11 @@ reaches through interaction**.
   `HeroVideo` its pause control, `FeedbackForm` its flow), so a page gets it by rendering the partial – there is no
   detection rule to keep in sync, and two pages sharing a partial do not duplicate its behaviour. Start every script
   with a comment saying what it does: the build names a script by its first line.
-- **A page talks to the script of a partial through the DOM only.** In dev every `<Script>` is a module of its own, so a
-  page cannot call a function a partial's script declares – it would work once built, where they share a scope, and fail
-  in dev. Use what the elements offer instead: the feedback variants start the flow over with `form.reset()`, which
-  `FeedbackForm` listens for, and the dialog cancels a pending submission by ending the `loading` state of its button.
+- **A page does not reach into the script of a partial.** In dev every `<Script>` is a module of its own, so a page
+  cannot call a function a partial's script declares – it would work once built, where they share a scope, and fail in
+  dev. What differs between the pages rendering a partial is a prop instead, and what the partial has to react to it
+  finds through a relation of its own markup: `FeedbackForm` offers to start over when it is `restartable`, and follows
+  the modal it is rendered in through `form.closest('p-modal')` – so the dialog page only opens and closes its modal.
 - **Scripts are moved, styles are copied.** The dev server serves the scripts where they stand – Vite turns every inline
   module script into a module it transforms, bare imports included. `scripts/build.ts` calls `extractScripts()` of
   [`plugins/entries.ts`](plugins/entries.ts) instead: it removes every `<script type="module">` from the rendered page,
@@ -374,8 +375,9 @@ reaches through interaction**.
   `getElementById()` would only ever find the first one – which a unit test asserts for every page, because axe-core no
   longer reports duplicate ids (`duplicate-id` is deprecated and outside the WCAG tags the a11y suite runs). A script
   whose element is missing throws on load, which the `loads without reporting an error` check of every e2e spec catches.
-  Keep every element a script looks up in the component that renders the script – `HeroVideo` renders the video and its
-  pause control together, so no page has to repeat an id a partial depends on.
+  **A script only looks up ids its own file renders** – `HeroVideo` renders the video and its pause control together, so
+  no page has to repeat an id a partial depends on. A unit test asserts it for every `.tsx` file, from the
+  `getElementById()` and `querySelector('#…')` calls against the `id="…"` attributes of the same file.
 - **A variant is a prop, not a copy.** `Header` renders both header patterns from one set of blocks
   (`_partials/header/`), driven by `navItems` and `metaActionItems` from `_data.ts`. If two variants need the same
   block, extract the block; do not paste the markup a second time, or one variant silently drifts from the other.

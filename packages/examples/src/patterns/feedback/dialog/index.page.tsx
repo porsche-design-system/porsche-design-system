@@ -9,7 +9,7 @@ import { Script } from '../../../_partials/Script.tsx';
  * (`aria-haspopup="dialog"`) and the dialog carries its own label. The modal is the last element of the body, like
  * every dialog: it is opened from the content but is not part of it.
  *
- * `p-modal` is used in *controlled* mode – the script owns `open`, so it can reset the flow after the closing
+ * `p-modal` is used in *controlled* mode – the script owns `open`, and `FeedbackForm` resets the flow once the closing
  * animation has finished instead of letting the content snap back while the dialog is still visible.
  */
 const Page = () => (
@@ -66,19 +66,16 @@ const Page = () => (
     </main>
     <Script>{`
       // Behaviour of the feedback dialog pattern: whether the modal is open. The flow inside it is the script of
-      // "FeedbackForm".
+      // "FeedbackForm", which also cancels a pending submission and starts over when the modal closes.
       //
-      // "p-modal" is used in *controlled* mode – "open" is set from here, which is what allows the reset to wait for
-      // the closing animation instead of running while the dialog is still visible.
+      // "p-modal" is used in *controlled* mode – "open" is set from here, which is what lets the flow wait for the
+      // closing animation before it resets, instead of snapping back while the dialog is still visible.
 
       const trigger = document.getElementById('feedback-trigger');
       const modal = document.getElementById('feedback-modal');
       const closeButton = document.getElementById('feedback-close');
 
       const closeModal = () => {
-        // A submission is pending as long as the submit button is loading – ending that state cancels it, so the
-        // confirmation does not appear behind the closed dialog.
-        document.getElementById('feedback-submit').loading = false;
         modal.open = false;
       };
 
@@ -87,13 +84,6 @@ const Page = () => (
       });
       closeButton.addEventListener('click', closeModal);
       modal.addEventListener('dismiss', closeModal);
-
-      // Starting the flow over so the next open starts fresh is deferred until the modal is fully hidden:
-      // "motionHiddenEnd" fires once the close animation has finished, so the content does not snap back
-      // mid-transition.
-      modal.addEventListener('motionHiddenEnd', () => {
-        document.getElementById('feedback-form').reset();
-      });
     `}</Script>
   </PatternPage>
 );

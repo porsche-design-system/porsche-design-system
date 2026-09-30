@@ -7,9 +7,10 @@
  * it a build input either way.
  *
  * The flow brings its own behaviour, so both variants share it as well: a rating reveals the comment and the submit
- * button, submitting shows the confirmation, and `reset()` of the form starts over. What a variant does around it –
- * opening a modal, offering to start over – is the script of its page, which talks to the flow through the DOM only:
- * in dev every script is a module of its own, so a page cannot call a function declared here.
+ * button, submitting shows the confirmation, and starting over resets it. Everything the script looks up is rendered
+ * here, so the pages never address an element of the flow – a page only wires up what it renders itself, like the
+ * modal of the dialog variant. The flow follows that modal on its own: it cancels a pending submission when the modal
+ * is dismissed and starts over once it is fully hidden.
  */
 
 import type { ComponentChildren } from 'preact';
@@ -34,12 +35,14 @@ const ratings: Rating[] = [
 ];
 
 type FeedbackFormProps = {
-  /** The action offered next to the confirmation – the only part the two variants differ in. */
-  confirmationAction: ComponentChildren;
+  /** Offers to start over from the confirmation – for a flow shown in the page, which stays there once answered. */
+  restartable?: boolean;
+  /** A further action next to the confirmation, wired up by the page – the close button of the dialog variant. */
+  confirmationAction?: ComponentChildren;
 };
 
 /** Question, rating scale with its optional comment, and the confirmation that replaces them. */
-export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
+export const FeedbackForm = ({ restartable, confirmationAction }: FeedbackFormProps) => (
   <>
     {/* Focusable without being a tab stop: the flow moves focus here when it starts over, so the question is
         announced again instead of leaving focus on a control that is no longer there. */}
@@ -124,6 +127,11 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
         Thank you for your feedback
       </p-heading>
       <p-text align="center">Your feedback helps us continuously improve our page.</p-text>
+      {restartable && (
+        <p-button id="feedback-restart" type="button" variant="secondary" icon="refresh">
+          Give new feedback
+        </p-button>
+      )}
       {confirmationAction}
     </div>
     <Script>{`
@@ -139,8 +147,12 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
       const thanks = document.getElementById('feedback-thanks');
       const thanksHeading = document.getElementById('feedback-thanks-heading');
 
-      // Handle of the simulated request, so starting over mid-submission can cancel it.
+      // Handle of the simulated request, so dismissing the modal mid-submission can cancel it.
       let pendingSubmission;
+
+      const cancelSubmission = () => {
+        window.clearTimeout(pendingSubmission);
+      };
 
       // Choosing a rating reveals the optional free-text field and the submit button.
       rating.addEventListener('change', () => {
@@ -162,19 +174,11 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
         // Simulate a short server round-trip: show a loading spinner while "submitting", then reveal the
         // confirmation. In a real integration the request would happen here.
         submit.loading = true;
-        window.clearTimeout(pendingSubmission);
-        pendingSubmission = window.setTimeout(() => {
-          // The submission counts as pending as long as the button is loading, so whoever ends the loading state
-          // cancels it – the dialog variant does when it is closed mid-submission.
-          if (submit.loading) {
-            showConfirmation();
-          }
-        }, 1200);
+        pendingSubmission = window.setTimeout(showConfirmation, 1200);
       });
 
-      // "form.reset()" starts the flow over – it is how a variant asks for it, since it cannot call into this script.
-      form.addEventListener('reset', () => {
-        window.clearTimeout(pendingSubmission);
+      const startOver = () => {
+        cancelSubmission();
         rating.value = '';
         comment.value = '';
         comment.hidden = true;
@@ -183,7 +187,21 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
         thanks.hidden = true;
         question.hidden = false;
         form.hidden = false;
+      };
+
+      // Offered by the flow shown in the page: starting over from the confirmation.
+      document.getElementById('feedback-restart')?.addEventListener('click', () => {
+        startOver();
+        // Return focus to the question so the flow is re-announced and can be repeated from the start.
+        question.focus();
       });
+
+      // Shown in a modal, the flow follows it: a submission still pending when the modal is dismissed is cancelled, and
+      // the next open starts fresh. The reset waits for "motionHiddenEnd", which fires once the close animation has
+      // finished, so the content does not visibly snap back while the dialog is still on screen.
+      const enclosingModal = form.closest('p-modal');
+      enclosingModal?.addEventListener('dismiss', cancelSubmission);
+      enclosingModal?.addEventListener('motionHiddenEnd', startOver);
     `}</Script>
   </>
 );

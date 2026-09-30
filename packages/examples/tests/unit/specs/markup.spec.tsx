@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
 import { extractScripts } from '../../../plugins/entries.ts';
@@ -71,6 +73,26 @@ describe('data', () => {
     const ids = flattenNavItems(navItems).map((item) => item.id);
 
     expect(new Set(ids).size).toBe(ids.length);
+  });
+});
+
+describe('source files', () => {
+  const srcDir = path.join(import.meta.dirname, '../../../src');
+  const sources = (fs.readdirSync(srcDir, { recursive: true }) as string[])
+    .filter((file) => file.endsWith('.tsx'))
+    .map((file) => [file, fs.readFileSync(path.join(srcDir, file), 'utf8') as string] as const);
+
+  it.each(sources)('should only look up ids "%s" renders itself', (_file, source) => {
+    // A script sits in the component whose markup it wires up, so the two are read and renamed together. An id
+    // rendered by another file would couple them invisibly – a page reaching into a partial, say – which a prop or a
+    // relation such as `closest()` expresses instead.
+    const rendered = new Set(Array.from(source.matchAll(/\sid="([^"]+)"/g), ([, id]) => id));
+    const queried = [
+      ...Array.from(source.matchAll(/getElementById\('([^']+)'\)/g), ([, id]) => id),
+      ...Array.from(source.matchAll(/querySelector(?:All)?\('#([\w-]+)/g), ([, id]) => id),
+    ];
+
+    expect(queried.filter((id) => !rendered.has(id))).toEqual([]);
   });
 });
 
@@ -665,16 +687,16 @@ describe('feedback patterns', () => {
     expect(countOccurrences(html, 'aria-live="polite"')).toBe(1);
   });
 
-  it.each(feedbackPages)(
-    'should share the flow in the %s variant, adding only its own behaviour',
-    async (_name, Page) => {
-      const { scripts } = extractScripts(await renderPage(Page));
+  it('should keep the flow and its behaviour in the partial, adding only what the variant renders itself', async () => {
+    const [inline, dialog] = await Promise.all(
+      feedbackPages.map(async ([, Page]) => extractScripts(await renderPage(Page)).scripts)
+    );
 
-      // The flow is the script of `FeedbackForm`; the page adds what its variant does around it.
-      expect(scripts).toHaveLength(2);
-      expect(scripts.filter((script) => script.includes("getElementById('feedback-rating')"))).toHaveLength(1);
-    }
-  );
+    // The inline variant renders nothing interactive of its own; the dialog variant opens and closes its modal.
+    expect(inline).toHaveLength(1);
+    expect(dialog).toHaveLength(2);
+    expect(dialog.filter((script) => script.includes("getElementById('feedback-rating')"))).toHaveLength(1);
+  });
 
   it('should show the inline variant in the page, offering to start over', async () => {
     const html = await renderPage(FeedbackInlinePage);
