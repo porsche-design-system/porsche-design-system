@@ -1,7 +1,13 @@
 import type { Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { schemes } from '@porsche-design-system/shared/testing';
-import { getExampleUrl, setupExamplePage, waitForComponentsReady, waitForStableLayout } from '../../helpers/index.ts';
+import {
+  getDevice,
+  getExampleUrl,
+  setupExamplePage,
+  waitForComponentsReady,
+  waitForStableLayout,
+} from '../../helpers/index.ts';
 
 /**
  * The captures every example gets, whatever it demonstrates.
@@ -12,11 +18,6 @@ import { getExampleUrl, setupExamplePage, waitForComponentsReady, waitForStableL
  *
  * The states a page reaches through interaction are written out in its own spec, next to this call.
  */
-
-export type Device = 'desktop' | 'mobile';
-
-/** The device a project emulates, kept on the project so the specs have no second source of truth. */
-export const getDevice = (): Device => test.info().project.metadata.device as Device;
 
 export type InitialStatesOptions = {
   /** Why this page has no 200% font size capture – leave it out unless the page genuinely cannot settle there. */

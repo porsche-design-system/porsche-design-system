@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { viewportWidthM } from '@porsche-design-system/shared/testing';
 import {
   collectPageErrors,
   getExampleUrl,
@@ -25,7 +24,7 @@ test('loads without reporting an error', async ({ page }) => {
 });
 
 test('mirrors the settings sidebar onto its trigger', async ({ page }) => {
-  await setupExamplePage(page, url, viewportWidthM);
+  await setupExamplePage(page, url);
 
   const settingsTrigger = getTriggerControl(page, 'settings-button');
   const canvas = page.locator('#admin-canvas');
@@ -46,7 +45,7 @@ test('mirrors the settings sidebar onto its trigger', async ({ page }) => {
 });
 
 test('opens the search dialog from the toolbar', async ({ page }) => {
-  await setupExamplePage(page, url, viewportWidthM);
+  await setupExamplePage(page, url);
 
   const searchDialog = page.locator('#search-dialog');
   await expect(searchDialog).toBeHidden();

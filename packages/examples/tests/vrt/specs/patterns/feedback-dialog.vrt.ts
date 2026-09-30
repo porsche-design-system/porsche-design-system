@@ -1,6 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
-import { getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
-import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
+import { testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/feedback/dialog` – the feedback question asked inside a `p-modal`, which the initial state never shows.

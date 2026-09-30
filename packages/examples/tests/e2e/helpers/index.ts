@@ -1,8 +1,7 @@
 import type { ConsoleMessage, Locator, Page } from '@playwright/test';
-import { viewportWidthM } from '@porsche-design-system/shared/testing';
 import { stubExternalRequests, waitForComponentsReady } from '../../helpers/index.ts';
 
-export { getExampleUrl, getSpecPath, waitForStablePosition } from '../../helpers/index.ts';
+export { getDevice, getExampleUrl, getSpecPath, waitForStablePosition } from '../../helpers/index.ts';
 
 /**
  * What an end-to-end test of an example needs, which is deliberately less than a screenshot needs.
@@ -16,16 +15,20 @@ export { getExampleUrl, getSpecPath, waitForStablePosition } from '../../helpers
  * wires up hangs off `p-*` elements.
  */
 
+/** Height of the viewport when a test sets the width itself, for the flows that resize the page. */
 export const defaultViewportHeight = 800;
 
-/** Opens an example page and waits until its components are usable. */
-export const setupExamplePage = async (
-  page: Page,
-  url: string,
-  viewportWidth: number = viewportWidthM
-): Promise<void> => {
+/**
+ * Opens an example page and waits until its components are usable.
+ *
+ * The page is laid out on the viewport of the device its project emulates – see `playwright.config.ts`. Only a flow
+ * about resizing passes a width of its own.
+ */
+export const setupExamplePage = async (page: Page, url: string, viewportWidth?: number): Promise<void> => {
   await stubExternalRequests(page);
-  await page.setViewportSize({ width: viewportWidth, height: defaultViewportHeight });
+  if (viewportWidth) {
+    await page.setViewportSize({ width: viewportWidth, height: defaultViewportHeight });
+  }
   await page.goto(url);
   await waitForComponentsReady(page);
 };

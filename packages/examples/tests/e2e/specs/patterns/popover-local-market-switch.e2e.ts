@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { viewportWidthXXS } from '@porsche-design-system/shared/testing';
 import { ids } from '../../../../src/_ids.ts';
 import { collectPageErrors, getExampleUrl, getTriggerControl, setupExamplePage } from '../../helpers/index.ts';
 
@@ -55,8 +54,7 @@ test('dismisses the market switch from its own action', async ({ page }) => {
 });
 
 test('opens and closes the navigation drilldown', async ({ page }) => {
-  // The menu button is the only way into the navigation at the narrow viewport.
-  await setupExamplePage(page, url, viewportWidthXXS);
+  await setupExamplePage(page, url);
 
   // The host stays a zero-height anchor in the header, so what becomes visible is the `dialog` in its shadow root.
   const drilldown = page.locator(`#${ids.navDrilldown} dialog`);

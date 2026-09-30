@@ -10,6 +10,17 @@ import { exampleWebServer } from './tests/helpers/previewServers.ts';
  * everywhere else – only the options Playwright allows per project are taken from them per suite, and the global ones
  * (parallelism, retries, workers, reporter) are identical in all three bases anyway.
  *
+ * Every suite runs on the same two devices, one project each:
+ *
+ * | project                | device         | engine   | viewport |
+ * | ---------------------- | -------------- | -------- | -------- |
+ * | `<suite>-desktop-chrome` | Desktop Chrome | chromium | 1280×720 |
+ * | `<suite>-mobile-safari`  | iPhone 17 Pro  | webkit   | 402×681  |
+ *
+ * Each on the defaults of its Playwright descriptor – viewport, user agent, touch – except the pixel density, which
+ * stays at 1 like everywhere else in the monorepo. The pairing is the realistic one: an iPhone only ever runs WebKit.
+ * A spec reads its device with `getDevice()` rather than from the project name.
+ *
  * Run one suite at a time through its script – `test:e2e`, `test:a11y`, `test:vrt` – which selects its projects.
  * A bare `playwright test` runs all of them, VRT included, which only produces the committed pixels inside Docker.
  *
@@ -20,22 +31,33 @@ import { exampleWebServer } from './tests/helpers/previewServers.ts';
 
 type Suite = 'e2e' | 'a11y' | 'vrt';
 
-/** The per-project part of a shared base config, rooted at the folder of its suite. */
-const fromBase = (suite: Suite, base: Config): Project => ({
-  testDir: `./tests/${suite}/specs`,
-  testMatch: base.testMatch,
-  timeout: base.timeout,
-  expect: base.expect,
-  snapshotPathTemplate: base.snapshotPathTemplate,
-  outputDir: `./tests/${suite}/results`,
-  use: base.use,
-});
+const devicesUnderTest = [
+  { device: 'desktop', engine: 'chrome', descriptor: { ...devices['Desktop Chrome'], browserName: 'chromium' } },
+  { device: 'mobile', engine: 'safari', descriptor: { ...devices['iPhone 17 Pro'], browserName: 'webkit' } },
+] as const;
 
-const desktopChrome = { ...devices['Desktop Chrome'], deviceScaleFactor: 1 };
-
-const e2e = fromBase('e2e', playwrightConfigE2E);
-const a11y = fromBase('a11y', playwrightConfigA11y);
-const vrt = fromBase('vrt', playwrightConfigVRT);
+/**
+ * The projects of one suite: the per-project part of its shared base config, rooted at the folder of the suite, once
+ * per device.
+ *
+ * The project names end in the engine because `prepare-vrt-snapshots` recognises a project's output folder by that
+ * suffix. For the same reason a VRT baseline ends in the bare engine name – `--desktop-chrome.png`: the tool derives
+ * the regression artifacts from it. Project names have to be unique across the suites, so they cannot be the bare
+ * engine name, and the VRT suffix is fixed per project instead of taken from `{projectName}`.
+ */
+const projectsOf = (suite: Suite, base: Config): Project[] =>
+  devicesUnderTest.map(({ device, engine, descriptor }) => ({
+    name: `${suite}-${device}-${engine}`,
+    testDir: `./tests/${suite}/specs`,
+    testMatch: base.testMatch,
+    timeout: base.timeout,
+    expect: base.expect,
+    snapshotPathTemplate:
+      suite === 'vrt' ? `{testDir}/__screenshots__/{arg}-${engine}{ext}` : base.snapshotPathTemplate,
+    outputDir: `./tests/${suite}/results`,
+    use: { ...base.use, ...descriptor, deviceScaleFactor: 1 },
+    metadata: { device },
+  }));
 
 export default defineConfig({
   fullyParallel: playwrightConfigE2E.fullyParallel,
@@ -45,52 +67,14 @@ export default defineConfig({
   reporter: playwrightConfigE2E.reporter,
   webServer: exampleWebServer,
   projects: [
+    /** End-to-end: the behaviour an example wires up on ids. */
+    ...projectsOf('e2e', playwrightConfigE2E),
+    /** Accessibility, scanned with axe-core in both colour schemes. */
+    ...projectsOf('a11y', playwrightConfigA11y),
     /**
-     * End-to-end: the behaviour an example wires up on ids. Chromium only – these are demos of behaviour, not a
-     * browser compatibility matrix; the rendering differences between engines are the VRT's job.
+     * Visual regression. Dark scheme, both High Contrast Mode schemes, 200% font size and rtl are captured on desktop
+     * only: scaling the font size and forcing colors go through CDP.
      */
-    {
-      ...e2e,
-      name: 'e2e',
-      use: { ...e2e.use, ...desktopChrome },
-    },
-    /**
-     * Accessibility, scanned with axe-core. Chromium only: axe evaluates the accessibility tree the browser computes,
-     * and running the same rules against a second engine measures the engine rather than the examples.
-     */
-    {
-      ...a11y,
-      name: 'a11y',
-      use: { ...a11y.use, ...desktopChrome },
-    },
-    /**
-     * Visual regression, one project per device, each on the defaults of its Playwright descriptor – viewport, user
-     * agent, touch – except the pixel density, which stays at 1 like everywhere else in the monorepo:
-     *
-     * | project              | device         | engine   | captures                                                 |
-     * | -------------------- | -------------- | -------- | -------------------------------------------------------- |
-     * | `vrt-desktop-chrome` | Desktop Chrome | chromium | light, dark, hcm light/dark, font-size 200%, rtl, states |
-     * | `vrt-mobile-safari`  | iPhone 17 Pro  | webkit   | light, states                                            |
-     *
-     * The extended captures are chromium only: scaling the font size and forcing colors go through CDP. The baselines
-     * are named after the device and end in the bare engine name – `--desktop-chrome.png`, `--mobile-safari.png`.
-     * `prepare-vrt-snapshots` derives the regression artifacts from that suffix and recognises a project's output folder
-     * by it, which is why the project names end in the engine too. They cannot be bare engine names, since they have
-     * to be unique across the suites, so the suffix is fixed per project instead of taken from `{projectName}`.
-     */
-    {
-      ...vrt,
-      name: 'vrt-desktop-chrome',
-      snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-chrome{ext}',
-      use: { ...vrt.use, ...devices['Desktop Chrome'], browserName: 'chromium', deviceScaleFactor: 1 },
-      metadata: { device: 'desktop' },
-    },
-    {
-      ...vrt,
-      name: 'vrt-mobile-safari',
-      snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-safari{ext}',
-      use: { ...vrt.use, ...devices['iPhone 17 Pro'], browserName: 'webkit', deviceScaleFactor: 1 },
-      metadata: { device: 'mobile' },
-    },
+    ...projectsOf('vrt', playwrightConfigVRT),
   ],
 });

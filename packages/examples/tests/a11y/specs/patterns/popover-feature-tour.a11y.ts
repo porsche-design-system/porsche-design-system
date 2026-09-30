@@ -1,10 +1,11 @@
+import { schemes } from '@porsche-design-system/shared/testing';
 import {
   getExampleUrl,
   setupExamplePage,
   waitForComponentsReady,
   waitForStablePosition,
 } from '../../../helpers/index.ts';
-import { expect, expectNoViolations, scanMatrix, test, testInitialStates } from '../../helpers/index.ts';
+import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/popover/feature-tour` – coachmarks of which only one is open at a time. The initial scan covers the
@@ -16,9 +17,9 @@ const url = getExampleUrl(id);
 
 testInitialStates(id);
 
-for (const { viewportWidth, scheme } of scanMatrix) {
-  test(`second step at ${viewportWidth} with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
-    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
+for (const scheme of schemes) {
+  test(`second step with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+    await setupExamplePage(page, url, { prefersColorScheme: scheme });
 
     const steps = page.locator('[data-tour-step]');
     // A popover is positioned after it opens – clicking before it settled would be an outside click ending the tour.
@@ -31,6 +32,6 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     await waitForStablePosition(back);
     await waitForComponentsReady(page);
 
-    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}-step-2-${viewportWidth}-${scheme}`);
+    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--step-2--${scheme}`);
   });
 }

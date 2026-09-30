@@ -1,26 +1,24 @@
 import type { AxeBuilder } from '@axe-core/playwright';
 import type { TestInfo } from '@playwright/test';
-import { schemes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/shared/testing';
-import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
+import { schemes } from '@porsche-design-system/shared/testing';
+import { getDevice, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 import { expect, test } from './axe-helper.ts';
 
 /**
- * The scans every example gets, and the matrix its own states are scanned in.
+ * The scans every example gets, and how a scan reports.
  *
- * The matrix is the one the component suites of `packages/components-js` use: two viewports × the two colour schemes.
- * The viewports are the ends of the responsive behaviour the examples demonstrate – at 320 the profile menu of the
- * local market switch is a sheet, at 1000 a popover – and the schemes are what the contrast rules depend on.
+ * Every scan runs in both colour schemes, which is what the contrast rules depend on, on both devices of the config –
+ * on mobile, for example, the profile menu of the local market switch is a sheet, on desktop a popover.
  */
 
-export const scanMatrix = [viewportWidthXXS, viewportWidthM].flatMap((viewportWidth) =>
-  schemes.map((scheme) => ({ viewportWidth, scheme }))
-);
-
-/** Scans with the given builder and attaches the violations, so a CI failure is readable without a rerun. */
+/**
+ * Scans with the given builder and attaches the violations, so a CI failure is readable without a rerun. The device is
+ * appended to the name of the attachment, so the results of the two projects never read alike.
+ */
 export const expectNoViolations = async (builder: AxeBuilder, testInfo: TestInfo, name: string): Promise<void> => {
   const { violations } = await builder.analyze();
 
-  await testInfo.attach(`a11y-scan-results-${name}`, {
+  await testInfo.attach(`a11y-scan-results-${name}--${getDevice()}`, {
     body: JSON.stringify(violations, null, 2),
     contentType: 'application/json',
   });
@@ -38,18 +36,11 @@ export type InitialStatesOptions = {
 export const testInitialStates = (id: string, { disabledRules = [] }: InitialStatesOptions = {}): void => {
   const url = getExampleUrl(id);
 
-  for (const { viewportWidth, scheme } of scanMatrix) {
-    test(`initial state at ${viewportWidth} with color-scheme ${scheme}`, async ({
-      page,
-      makeAxeBuilder,
-    }, testInfo) => {
-      await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
+  for (const scheme of schemes) {
+    test(`initial state with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+      await setupExamplePage(page, url, { prefersColorScheme: scheme });
 
-      await expectNoViolations(
-        makeAxeBuilder().disableRules(disabledRules),
-        testInfo,
-        `${id}-${viewportWidth}-${scheme}`
-      );
+      await expectNoViolations(makeAxeBuilder().disableRules(disabledRules), testInfo, `${id}--${scheme}`);
     });
   }
 };

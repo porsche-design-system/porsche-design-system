@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
-import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
+import { testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/feedback/inline` – the feedback question asked in place, the comment a rating reveals and the

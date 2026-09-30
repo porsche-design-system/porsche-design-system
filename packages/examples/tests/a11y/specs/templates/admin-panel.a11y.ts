@@ -1,10 +1,11 @@
+import { schemes } from '@porsche-design-system/shared/testing';
 import {
   getExampleUrl,
   setupExamplePage,
   waitForComponentsReady,
   waitForStablePosition,
 } from '../../../helpers/index.ts';
-import { expect, expectNoViolations, scanMatrix, test, testInitialStates } from '../../helpers/index.ts';
+import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
  * `src/templates/admin-panel` – an application canvas, scanned with its settings sidebar and its search dialog open.
@@ -15,12 +16,9 @@ const url = getExampleUrl(id);
 
 testInitialStates(id);
 
-for (const { viewportWidth, scheme } of scanMatrix) {
-  test(`settings sidebar open at ${viewportWidth} with color-scheme ${scheme}`, async ({
-    page,
-    makeAxeBuilder,
-  }, testInfo) => {
-    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
+for (const scheme of schemes) {
+  test(`settings sidebar open with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+    await setupExamplePage(page, url, { prefersColorScheme: scheme });
 
     await page.locator('#settings-button').click();
     await expect(page.locator('#settings-button button')).toHaveAttribute('aria-expanded', 'true');
@@ -33,14 +31,11 @@ for (const { viewportWidth, scheme } of scanMatrix) {
       .toBe(true);
     await waitForComponentsReady(page);
 
-    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}-settings-open-${viewportWidth}-${scheme}`);
+    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--settings-open--${scheme}`);
   });
 
-  test(`search dialog open at ${viewportWidth} with color-scheme ${scheme}`, async ({
-    page,
-    makeAxeBuilder,
-  }, testInfo) => {
-    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
+  test(`search dialog open with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+    await setupExamplePage(page, url, { prefersColorScheme: scheme });
 
     await page.locator('#search-button').click();
     await expect(page.locator('#search-dialog')).toBeVisible();
@@ -48,6 +43,6 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     await waitForStablePosition(page.locator('#search-dialog dialog'));
     await waitForComponentsReady(page);
 
-    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}-search-open-${viewportWidth}-${scheme}`);
+    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--search-open--${scheme}`);
   });
 }

@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
 import { ids } from '../../../../src/_ids.ts';
 
-import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
-import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
+import { testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/header/overlay` – the header over a hero video, and the navigation drilldown it opens.

@@ -67,10 +67,11 @@ scripts/previewSite.ts            # serves dist-site/ below /examples/ against t
 scripts/shared.ts                 # output paths and file helpers
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
-playwright.config.ts              # every Playwright suite as projects of one config – e2e, a11y, vrt-desktop-chrome, vrt-mobile-safari
+playwright.config.ts              # every Playwright suite as projects of one config – <suite>-{desktop-chrome,mobile-safari}
 tests/unit/jsx.spec.tsx           # tests describing the rendering contract
 tests/helpers/                    # shared by the Playwright suites – a helper two suites use lives here
 ├── previewServers.ts             # the web server every suite runs against
+├── device.ts                     # getDevice() – the device the running project emulates
 ├── pages.ts                      # the pages, globbed from the source tree; getExampleUrl(), getSpecPath()
 ├── setup.ts                      # hermetic page setup: stubbed origins, upgraded components, pinned media
 └── position.ts                   # waitForStablePosition() – for every suite that opens a popover
@@ -148,15 +149,29 @@ npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
 # from within this package
 npm run build:verify        # verifies ./dist-site: one self-contained page each, media only through media()
 npm run typecheck           # source; typecheck:tests[:e2e|:a11y|:vrt] check the test scopes
-npx playwright test --project=e2e   # any suite directly – projects: e2e, a11y, vrt-desktop-chrome, vrt-mobile-safari
+npx playwright test --project='e2e-*'   # any suite directly – projects: <suite>-desktop-chrome, <suite>-mobile-safari
 ```
 
-**One Playwright config, one project per suite.** [`playwright.config.ts`](playwright.config.ts) is a pilot for the
-monorepo, whose other packages keep one config per suite in `tests/<suite>/config/`. The settings are still those of the
-shared base configs in `@porsche-design-system/shared/testing`; only the options Playwright allows per project – test
-directory and match, timeouts, snapshot path, screenshot comparison, output directory – are taken per suite. The
-`test:*` scripts select their projects, so the suites stay separate steps in CI with separate results. A bare
-`playwright test` runs all of them, VRT included, which only produces the committed pixels inside Docker.
+**One Playwright config, every suite on the same two devices.** [`playwright.config.ts`](playwright.config.ts) is a
+pilot for the monorepo, whose other packages keep one config per suite in `tests/<suite>/config/`. Every suite gets one
+project per device:
+
+| project                  | device         | engine   | viewport |
+| ------------------------ | -------------- | -------- | -------- |
+| `<suite>-desktop-chrome` | Desktop Chrome | chromium | 1280×720 |
+| `<suite>-mobile-safari`  | iPhone 17 Pro  | webkit   | 402×681  |
+
+Each runs on the defaults of its Playwright device descriptor – viewport, user agent, touch – except the pixel density,
+which is forced to 1 like everywhere else in the monorepo. A spec reads its device with `getDevice()` from
+[`tests/helpers/device.ts`](tests/helpers/device.ts), never from the project name; the page setups leave the viewport
+alone, so a page is laid out on its device. Only a flow about resizing – the priority navigation – sets a width itself.
+
+The settings are still those of the shared base configs in `@porsche-design-system/shared/testing`; only the options
+Playwright allows per project – test directory and match, timeouts, snapshot path, screenshot comparison, output
+directory – are taken per suite. The project names end in the engine because `prepare-vrt-snapshots` recognises output
+folders by that suffix. The `test:*` scripts select their projects, so the suites stay separate steps in CI with
+separate results. A bare `playwright test` runs all of them, VRT included, which only produces the committed pixels
+inside Docker.
 
 **Run the VRT in Docker** – `./docker.sh npm run test:vrt:examples` – like every other visual regression suite in this
 monorepo. The committed baselines are the ones the container produces; a run on macOS renders different pixels.
@@ -175,6 +190,8 @@ The suite lives in [`tests/e2e/`](tests/e2e) and drives the behaviour the build 
 - **The shared behaviour is tested in every spec whose page renders it:** the navigation drilldown
   (`src/assets/header.js`) wherever the page renders `#nav-button`, the hero video (`src/assets/video.js`) wherever it
   renders `#pause-button`.
+- **Both devices run every spec.** A flow is the same on desktop and mobile, but it runs in a second engine with touch
+  and a mobile user agent – on mobile the profile menu of the local market switch opens as a sheet, for example.
 - **The flows are what exactly one page does**, like the feedback flows, the local market switch, the feature tour, the
   priority navigation and the admin panel. The common thread is **controlled mode**: the page owns every open state,
   which is what lets a trigger mirror it onto `aria-expanded`, and what makes "close" something the page has to write
@@ -201,15 +218,16 @@ moves is what is asserted, and behaviour is not a picture.
 
 ## Accessibility tests
 
-The suite lives in [`tests/a11y/`](tests/a11y) and scans **every page** with axe-core, at two viewports (320, 1000) ×
-the two colour schemes – in its initial state and in every state the page reaches through interaction.
+The suite lives in [`tests/a11y/`](tests/a11y) and scans **every page** with axe-core, on both devices × the two colour
+schemes – in its initial state and in every state the page reaches through interaction.
 
 - **One spec per page**, laid out like the e2e specs: `specs/patterns/feedback-dialog.a11y.ts`. The initial scans are
   the same for every page and come from `testInitialStates()` in
   [`tests/a11y/helpers/scans.ts`](tests/a11y/helpers/scans.ts); the states the page opens – the drilldown, the feedback
   dialog with its form and its confirmation, the profile menu, the second tour step, the overflow popover, the settings
-  sidebar and the search dialog – are written out in its spec and run through the same `scanMatrix`. A new state gets
-  its scan next to the page it belongs to. `coverage.a11y.ts` fails for a page without a spec.
+  sidebar and the search dialog – are written out in its spec and scanned in both schemes as well. A new state gets its
+  scan next to the page it belongs to. The overflow popover of the priority navigation is scanned on mobile only: on
+  desktop every entry fits into the bar. `coverage.a11y.ts` fails for a page without a spec.
 - **It covers the layer the other suites cannot.** The unit tests assert the rendered markup – one `main` landmark, no
   unlabelled `<nav>`, at most one first level heading, `aria-current` on the active item – before a browser is involved.
   Axe checks what the browser _computes_: contrast, the accessible name a label resolves to through a shadow root,
@@ -219,8 +237,8 @@ the two colour schemes – in its initial state and in every state the page reac
   whole page, so those rules are exactly the ones worth running. A rule that genuinely does not apply is disabled **per
   page** with a reason – today only `page-has-heading-one`, for the footer pattern, which is a section and not a page.
 - Like the VRT it runs against the **built** site, sharing the web servers in
-  [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts). Chromium only – axe measures the tree the
-  browser computes, so a second engine would measure the engine.
+  [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts). WebKit is scanned as well as chromium: axe reads
+  the styles and names the engine computes, and an iPhone only ever runs WebKit.
 
 > **Why there are no aria snapshot tests.** They would pin the composed accessibility tree, but every invariant they
 > would catch here is already pinned closer to its cause: the static composition by the unit tests, and each component's
@@ -255,15 +273,11 @@ reaches through interaction**.
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts) is `npm run preview` – `serve-cdn` plus
   `scripts/previewSite.ts`, which serves `dist-site/` – so a capture shows the inlined entry and the injected partials,
   exactly what the storefront ships.
-- **Two projects, one device each:** `vrt-desktop-chrome` (Desktop Chrome, chromium, 1280×720) and `vrt-mobile-safari`
-  (iPhone 17 Pro, webkit, 402×681), each on the defaults of its Playwright device descriptor – viewport, user agent,
-  touch – except the pixel density, which is forced to 1 like everywhere else in the monorepo. `setupExamplePage()`
-  leaves the viewport alone unless a test passes `viewportWidth`, which only the a11y suite does. The project names end
-  in the engine, and the config fixes the baseline suffix to it: `prepare-vrt-snapshots` recognises output folders and
-  derives the regression artifacts from exactly that suffix, and project names have to be unique across the suites. Dark
-  scheme, both High Contrast Mode schemes, 200% font size and `rtl` are captured on desktop only – font scaling and
-  forced colors go through CDP. The overflow of the priority navigation only exists on mobile: on desktop every entry
-  fits into the bar.
+- **Captured on both devices** of the config, `vrt-desktop-chrome` and `vrt-mobile-safari`. The config fixes the
+  baseline suffix to the bare engine name, because `prepare-vrt-snapshots` derives the regression artifacts from exactly
+  that suffix and project names have to be unique across the suites. Dark scheme, both High Contrast Mode schemes, 200%
+  font size and `rtl` are captured on desktop only – font scaling and forced colors go through CDP. The overflow of the
+  priority navigation only exists on mobile: on desktop every entry fits into the bar.
 - **Pages are globbed to find the specs, not to generate them.** [`tests/helpers/pages.ts`](tests/helpers/pages.ts)
   resolves every `index.page.tsx` to its URL on the preview server; a spec looks its page up by id with
   `getExampleUrl()`, which fails if the page is gone, and the coverage spec fails if a page has no spec.

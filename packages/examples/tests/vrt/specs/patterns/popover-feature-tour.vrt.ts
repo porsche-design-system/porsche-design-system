@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
-import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
+import { testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/popover/feature-tour` – coachmarks of which only one is open at a time. The initial state shows the

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
-import { getDevice, testInitialStates, waitForStableState } from '../../helpers/index.ts';
+import { getDevice, getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
+import { testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
  * `src/templates/admin-panel` – an application canvas, captured with its settings sidebar and its search dialog open.

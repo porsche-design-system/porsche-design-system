@@ -12,17 +12,9 @@ import { rewriteCdnUrlsForDev } from '../../plugins/partials.ts';
  * tests the video and the focus this setup pins down.
  */
 
-/**
- * Height of the viewport when a test sets the width itself. The screenshots are full page, so this only fixes the `vh`
- * units. A test that leaves the width alone keeps the viewport its device emulates, height included.
- */
-export const viewportHeight = 600;
-
 export type ColorScheme = 'light' | 'dark';
 
 export type ExampleScenarioOptions = {
-  /** Width to lay the page out at. Left out, the page keeps the viewport of the device its project emulates. */
-  viewportWidth?: number;
   /** Windows High Contrast Mode. */
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: ColorScheme;
@@ -226,6 +218,8 @@ export const waitForStableLayout = async (page: Page): Promise<void> => {
 /**
  * Opens an example page and brings it into the state a screenshot may be taken in.
  *
+ * The page is laid out on the viewport of the device its project emulates – see `playwright.config.ts`.
+ *
  * The order matters: everything emulated has to be in place before the navigation, so the page is rendered once and
  * with the final conditions – a scheme or a font size applied afterwards would relayout what has already been
  * measured by the components.
@@ -235,13 +229,10 @@ export const setupExamplePage = async (
   url: string,
   options: ExampleScenarioOptions = {}
 ): Promise<void> => {
-  const { viewportWidth, forcedColorsEnabled, prefersColorScheme, scalePageFontSize, rtl } = options;
+  const { forcedColorsEnabled, prefersColorScheme, scalePageFontSize, rtl } = options;
 
   await stubExternalRequests(page);
   await disableMotion(page);
-  if (viewportWidth) {
-    await page.setViewportSize({ width: viewportWidth, height: viewportHeight });
-  }
 
   // Reduced motion is not a variant, it is a precondition of every capture: it stops the autoplaying hero video and
   // the transitions of the components, both of which would otherwise be timing dependent.

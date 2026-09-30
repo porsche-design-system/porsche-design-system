@@ -1,5 +1,6 @@
+import { schemes } from '@porsche-design-system/shared/testing';
 import { getExampleUrl, setupExamplePage, waitForComponentsReady } from '../../../helpers/index.ts';
-import { expect, expectNoViolations, scanMatrix, test, testInitialStates } from '../../helpers/index.ts';
+import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/feedback/dialog` – the feedback question asked inside a `p-modal`, which the initial scan never
@@ -11,22 +12,19 @@ const url = getExampleUrl(id);
 
 testInitialStates(id);
 
-for (const { viewportWidth, scheme } of scanMatrix) {
-  test(`dialog open at ${viewportWidth} with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
-    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
+for (const scheme of schemes) {
+  test(`dialog open with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+    await setupExamplePage(page, url, { prefersColorScheme: scheme });
 
     await page.locator('#feedback-trigger').click();
     await expect(page.locator('#feedback-modal')).toBeVisible();
     await waitForComponentsReady(page);
 
-    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}-dialog-open-${viewportWidth}-${scheme}`);
+    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--dialog-open--${scheme}`);
   });
 
-  test(`dialog open with a rating chosen at ${viewportWidth} with color-scheme ${scheme}`, async ({
-    page,
-    makeAxeBuilder,
-  }, testInfo) => {
-    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
+  test(`dialog open with a rating chosen with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+    await setupExamplePage(page, url, { prefersColorScheme: scheme });
 
     await page.locator('#feedback-trigger').click();
     await expect(page.locator('#feedback-modal')).toBeVisible();
@@ -35,14 +33,11 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     await expect(page.locator('#feedback-submit')).toBeVisible();
     await waitForComponentsReady(page);
 
-    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}-dialog-rated-${viewportWidth}-${scheme}`);
+    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--dialog-rated--${scheme}`);
   });
 
-  test(`dialog open with the confirmation at ${viewportWidth} with color-scheme ${scheme}`, async ({
-    page,
-    makeAxeBuilder,
-  }, testInfo) => {
-    await setupExamplePage(page, url, { viewportWidth, prefersColorScheme: scheme });
+  test(`dialog open with the confirmation with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+    await setupExamplePage(page, url, { prefersColorScheme: scheme });
 
     await page.locator('#feedback-trigger').click();
     await expect(page.locator('#feedback-modal')).toBeVisible();
@@ -52,6 +47,6 @@ for (const { viewportWidth, scheme } of scanMatrix) {
     await expect(page.locator('#feedback-thanks')).toBeVisible();
     await waitForComponentsReady(page);
 
-    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}-dialog-confirmation-${viewportWidth}-${scheme}`);
+    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--dialog-confirmation--${scheme}`);
   });
 }
