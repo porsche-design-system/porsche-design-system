@@ -139,14 +139,14 @@ npm run build:examples      # writes ./dist (one project per page) and ./dist-si
 npm run test:unit:examples  # vitest
 npm run test:e2e:examples   # playwright – drives the behaviour of every page of the built site
 npm run test:a11y:examples  # playwright + axe-core – scans every page of the built site
-npm run test:vrt:examples   # playwright – screenshots every page of the built site
+npm run test:vrt:examples   # playwright – screenshots every page of the built site (:chrome / :safari for one device)
 
 # serve the built site below /examples/ against the local CDN – run build:examples first
 npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
 
 # from within this package
 npm run build:verify        # verifies ./dist-site: one self-contained page each, media only below /examples/media/
-npm run typecheck           # source; typecheck:tests[:e2e|:a11y|:vrt] check the test scopes
+npm run typecheck           # source (from the root: typecheck:examples); typecheck:tests[:e2e|:a11y|:vrt] check the test scopes
 npx playwright test --project='e2e-*'   # any suite directly – projects: <suite>-desktop-chrome, <suite>-mobile-safari
 ```
 
@@ -289,8 +289,8 @@ reaches through interaction**.
 - **Third-party images are stubbed.** The footer loads three payment logos from a Porsche CDN; the run answers every
   non-local request itself, so a baseline records the layout of the page rather than the availability of a network.
 - `patterns-header-stacked` has no 200% font size capture: its category tabs flip between showing and hiding their
-  scroll affordance while the suite runs in parallel, which changes the page height by 34px. The other five captures of
-  that page still cover it – see the comment in its spec.
+  scroll affordance while the suite runs in parallel, which changes the page height by 34px. Its other captures still
+  cover it – see the comment in its spec.
 
 ## Conventions that are easy to get wrong
 
@@ -327,7 +327,7 @@ reaches through interaction**.
   inside another. The page therefore renders the component straight into
   [`TemplatePage`](src/_layouts/TemplatePage.tsx), which writes nothing but the document around it, the color scheme
   classes sit on `<html>` through its `class` prop (the sidebars are rendered on top of the page and a scheme set
-  further down would not reach them), and the shared accessibility test counts the canvas as that page's `main`.
+  further down would not reach them), and it is axe, on the composed page, that checks for exactly one `main`.
 - **The Porsche Grid spans the viewport, the content area of a canvas does not.** Its width changes with the sidebars,
   so `grid-template` and the `col-*` classes of the other examples do not apply there – the admin panel asks the
   container instead (`@container` plus its own columns), which is what the storefront recommends for the default and
@@ -341,8 +341,10 @@ reaches through interaction**.
   not `hideLabel` — and values are restricted to what survives serialization. String and number unions keep their
   autocompletion (`variant="primary"`); structural values such as `BreakpointCustomizable` objects or the `aria` record
   have to be written as JSON strings (`compact="{ base: false, m: true }"`).
-- **No event handler props on PDS components.** The typing deliberately omits them: there is no client-side framework,
-  so behaviour goes into a `<Script>` hooked on ids.
+- **No event handler props on PDS components.** There is no client-side framework: the page is rendered to a string, so
+  a handler prop such as `onClick` is silently dropped from the output. The typing does **not** catch it – the generic
+  DOM attributes of Preact, handlers included, stay allowed on `p-*` elements – so this is a review rule. Behaviour goes
+  into a `<Script>` hooked on ids.
 - **Behaviour is a `<Script>`, written where its markup is.** [`Script`](src/_partials/Script.tsx) renders a
   `<script type="module">` with the code unescaped – a plain `<script>{code}</script>` would reach the browser as
   `&amp;&amp;`, because Preact escapes the text of every element. The behaviour of an example goes to the end of its
@@ -360,9 +362,9 @@ reaches through interaction**.
   [`lib/entries.ts`](lib/entries.ts) instead: it removes every `<script type="module">` from the rendered page, in
   document order, and links the generated `main.js` at the end of the body. That entry imports the page's `style.css`,
   then carries the `DO NOT USE IN PRODUCTION` banner once and the scripts one after the other, with their imports
-  hoisted to the top. The `style.css` is `src/style.css` copied verbatim – it needs no assembling, which is why
-  there is no `getStyleEntry()`. So a consumer sees the markup, the Tailwind classes, the styles and the dummy
-  JavaScript of a pattern without following imports, while the source of each is a single component.
+  hoisted to the top. The `style.css` is `src/style.css` copied verbatim – it needs no assembling, which is why there is
+  no `getStyleEntry()`. So a consumer sees the markup, the Tailwind classes, the styles and the dummy JavaScript of a
+  pattern without following imports, while the source of each is a single component.
 - **The scripts of a page share one module scope once built.** In dev each `<Script>` is a module of its own; in
   `main.js` they are one, so `getScriptEntry()` fails the build when two of them declare the same top level name.
   Rename, or wrap the script in a block. In practice this is what stops a page from re-implementing shared behaviour: a
@@ -371,8 +373,8 @@ reaches through interaction**.
 - **A script is a template literal.** A backtick or a `${` meant for the browser has to be escaped – prefer quotes in
   comments over backticks. The code is not type-checked or linted either; the e2e suite is what exercises it.
   `renderPage()` formats with `embeddedLanguageFormatting: 'off'`, so the code is extracted exactly as written; a unit
-  test compares the two. `formatScriptEntry()` then runs Prettier over the generated `main.js` – the only place the
-  code is formatted, and parsed, so a syntax error fails the build.
+  test compares the two. `formatScriptEntry()` then runs Prettier over the generated `main.js` – the only place the code
+  is formatted, and parsed, so a syntax error fails the build.
 - **Scripts address elements by id, written as literals.** The script sits in the same component as the markup it wires
   up, so the two are read – and renamed – together; there is no registry. Every id is rendered **once** per page –
   `getElementById()` would only ever find the first one – which a unit test asserts for every page, because axe-core no
@@ -416,8 +418,9 @@ approach, and it is paid on every review:
 - Pages, layout and partials are ordinary TSX, so they lint **and** format with Biome. The one carve-out in
   [`biome.json`](../../biome.json) is `a11y/useValidAnchor` for `packages/examples/src/**/*.tsx`, because the
   placeholder links are the demonstration – see _Links: examples never navigate_ for the test replacing it.
-- `npm run typecheck` checks pages, partials, plugins and scripts; `build` runs it first. Each test scope has its own
-  `typecheck:tests[:scope]`, run first by its test script.
+- `npm run typecheck` checks pages, partials, `lib/`, scripts and `vite.config.ts`; `build` runs it first. The root
+  `typecheck` – the one CI runs – does not include the examples; `typecheck:all` and `typecheck:examples` do. Each test
+  scope has its own `typecheck:tests[:scope]`, run first by its test script.
 - The JSX transform is configured **once**, in [`tsconfig.json`](tsconfig.json) (`jsx: "react-jsx"`,
   `jsxImportSource: "preact"`). Vite and Vitest pick it up from there; do not duplicate it in the configs.
 - Vitest needs its own config because `vite.config.ts` sets `root: 'src'`, which would make Vitest look for tests there.
@@ -430,11 +433,11 @@ approach, and it is paid on every review:
   keep the production URLs.
 - **The dev server keeps the scripts inline and links the stylesheet.** `main.js` and `style.css` only exist in the
   generated projects, so the rendered page never references them: the build links the entry, and in dev
-  `linkStylesForDev()` links `/style.css` instead, in the middleware of [`lib/jsx.ts`](lib/jsx.ts). Vite's own
-  HTML hook turns every `<script type="module">` into a proxy module (`index.html?html-proxy&index=0.js`), which is what
-  resolves the bare imports of a script. Together with the CDN rewrite, the stylesheet link and the scripts' position
-  are the only differences between dev and the emitted HTML. The partials are injected in a `transformIndexHtml()` hook,
-  after Vite's own – see [`vite.config.ts`](vite.config.ts).
+  `linkStylesForDev()` links `/style.css` instead, in the middleware of [`lib/jsx.ts`](lib/jsx.ts). Vite's own HTML hook
+  turns every `<script type="module">` into a proxy module (`index.html?html-proxy&index=0.js`), which is what resolves
+  the bare imports of a script. Together with the CDN rewrite, the stylesheet link and the scripts' position are the
+  only differences between dev and the emitted HTML. The partials are injected in a `transformIndexHtml()` hook, after
+  Vite's own – see [`vite.config.ts`](vite.config.ts).
 - **The dev server lists the pages instead of rendering an overview.** `jsxPages()` wraps Vite's `server.printUrls()`
   and prints the URL of every page below Vite's own, grouped by category – found by `findPages()` in
   [`lib/jsx.ts`](lib/jsx.ts), the same search the Playwright suites use. Nothing is served at `/`, which is why the
@@ -459,13 +462,13 @@ approach, and it is paid on every review:
 1. Create `src/templates/<name>/index.page.tsx` – markup, classes and, in a `<Script>`, behaviour.
 2. Default-export a component that renders `<TemplatePage>` with `title` and `description`. The layout writes nothing
    but the document: the page composes its chrome itself, like a pattern does – `<Header currentPage="…" />` (optionally
-   `showSearch`, `variant`, `navItems`) and `<Footer />`, or a `p-canvas` for an application page, which then puts its
-   color scheme on `<html>` through `class`.
+   `showSearch`, `variant`, `navItems`, and for `stacked` also `notice` and `categoryItems`) and `<Footer />`, or a
+   `p-canvas` for an application page, which then puts its color scheme on `<html>` through `class`.
 3. Put the markup in `children`, including the page's own `<main id="main">` – except inside `p-canvas`, where the
    component provides that landmark. Links go to `#`, unless they point at an id on the same page.
 4. Style with Tailwind utilities; touch `src/style.css` only for genuinely global defaults or theme values.
-5. Show it in the storefront with `<WebsiteViewer example="templates/<name>" … />` and raise the page count the
-   Playwright suites assert. The dev server lists it on its next start – pages are found by file name, not registered.
+5. Wire it up as described in _Wiring up a new page_. The dev server lists it on its next start – pages are found by
+   file name, not registered.
 6. Run `npm run build` and confirm the page still builds and the CSS contains no stray utilities.
 
 ## Adding a pattern (a single section)
@@ -476,21 +479,41 @@ approach, and it is paid on every review:
    adds nothing around it, and the build links the page's `main.js`.
 3. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
-4. Show it in the storefront with `<WebsiteViewer example="patterns/<name>" … />`. The dev server lists it on its next
-   start – pages are found by file name, not registered.
+4. Wire it up as described in _Wiring up a new page_. The dev server lists it on its next start – pages are found by
+   file name, not registered.
 5. If the pattern needs behaviour of its own, write it in a `<Script>` at the end of the page; the build moves it into
    the generated entry, which brings the stylesheet import and the banner. Behaviour a partial needs wherever it is
    rendered goes into a `<Script>` of that partial. Hook it on ids and query them with `getElementById()`.
 6. Run `npm run build`, then the unit and a11y tests; together they assert the accessibility baseline for every page,
    patterns included.
 
+## Wiring up a new page
+
+Pages are found by file name – by the build, the dev server and the Playwright suites. A few lists are still kept by
+hand, and nothing fails when one of the first two is forgotten:
+
+1. **Component chunks.** Add every `p-*` element the page renders that is not listed yet to `patternComponents` or
+   `templateComponents` in [`lib/projects.ts`](lib/projects.ts) – the chunks its generated project preloads. A missing
+   entry costs a round trip, not correctness.
+2. **Unit tests.** Add the page to `templatePages` or `patternPages` in
+   [`tests/unit/helpers/index.ts`](tests/unit/helpers/index.ts). Every per-page unit test – links, ids, headings, `nav`
+   labels, script extraction – iterates that list, so a page missing from it is not unit-tested at all.
+3. **Playwright specs.** Write `tests/{e2e,a11y,vrt}/specs/<category>/<page>.<suite>.ts` (the page folder with `/` as
+   `-`: `patterns/header-overlay.e2e.ts`), each starting from the checks the other specs of its suite share. The
+   `coverage.*` specs fail until all three exist. Generate the VRT baselines in Docker –
+   `./docker.sh npm run test:vrt:examples` writes the missing ones.
+4. **Storefront.** Add a `page.mdx` rendering `<WebsiteViewer example="<category>/<page>" … />` and an entry in
+   [`packages/storefront/src/sitemap.tsx`](../storefront/src/sitemap.tsx).
+
 ## Accessibility baseline
 
-Every example ships a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item only,
-visible `:focus-visible` outlines and a `forced-colors: active` block. Templates additionally carry the `header` and
-`footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets all
-of them from the component and therefore renders none itself. These demos are documentation, so they have to be correct
-by example — keep the baseline when adding examples. The unit tests and the a11y suite assert it for every page.
+Every example ships a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item only and
+visible `:focus-visible` outlines on every interactive element no PDS component styles (the Tailwind
+`focus-visible:outline outline-focus` utilities). High Contrast Mode is left to the PDS components – there is no
+`forced-colors` block of our own – and captured in both schemes by the VRT. Templates additionally carry the `header`
+and `footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets
+all of them from the component and therefore renders none itself. These demos are documentation, so they have to be
+correct by example — keep the baseline when adding examples. The unit tests and the a11y suite assert it for every page.
 
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
 heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is

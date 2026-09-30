@@ -24,8 +24,8 @@ const transformIndexHtmlPlugin = () => {
   };
 };
 
-// Dev server only – the production output is written by `scripts/build.ts`, which emits the source of two standalone
-// Vite projects instead of a built site.
+// Dev server only – the production output is written by `scripts/build.ts`, which emits the source of one standalone
+// Vite project per page instead of a built site.
 export default defineConfig({
   root: 'src',
   appType: 'mpa',

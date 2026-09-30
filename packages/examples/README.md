@@ -13,16 +13,23 @@ partials are function components whose props the compiler checks.
 npm run start:examples       # dev server on http://localhost:3010 – prints the URL of every page
 npm run build:examples       # writes ./dist (one project per page) and ./dist-site (one HTML file per page)
 npm run test:unit:examples
+npm run test:e2e:examples    # Playwright – the behaviour of every page, against the built site
+npm run test:a11y:examples   # Playwright + axe-core – every page and the states it opens, against the built site
+./docker.sh npm run test:vrt:examples  # Playwright screenshots – in Docker, which produces the committed baselines
 
 # serve the built site below /examples/ against the local CDN (`serve-cdn`) – run build:examples first
 npm run preview:examples     # http://localhost:3011/examples/<category>/<page>/
 
 # or from within this package
 npm start
-npm run build                # renders the pages, builds them into ./dist-site and verifies the result
+npm run build                # typechecks, renders the pages, builds them into ./dist-site and verifies the result
 npm run build:verify         # only the verification of ./dist-site
+npm run typecheck            # the source – from the root: npm run typecheck:examples
 npm run test:unit
 ```
+
+The Playwright suites run against the built site, so run `build:examples` first. See [`AGENTS.md`](AGENTS.md#commands)
+for how the suites are laid out.
 
 `start:examples` serves the **source** tree; `preview:examples` serves the **built site** — the self-contained pages in
 `dist-site/`, below `/examples/` like the storefront serves them, so what the browser gets is the inlined script and
@@ -139,7 +146,8 @@ export default Page;
 
 `Header` takes `currentPage` (matched against `item.id` to set `aria-current="page"`), and optionally `showSearch`,
 `variant` (`"overlay"` by default, or `"stacked"` – see the header patterns) and `navItems`, which defaults to the
-`navItems` of `MainNav` and which a page may replace or extend.
+`navItems` of `MainNav` and which a page may replace or extend. The `stacked` variant also takes `notice` and
+`categoryItems`, which default to the content of `NoticeBar` and `CategoryTabs`.
 
 ### Behaviour: `<Script>`
 
@@ -168,9 +176,9 @@ const Page = () => (
 
 `<Script>` renders a `<script type="module">` whose content is not escaped, which a plain `<script>` in JSX would be.
 The dev server serves it where it stands. The build moves every one of them, in document order, into a generated
-`main.js`, which imports the page's `style.css` (`src/style.css`, copied), and links that entry at the end of the
-body — so the markup, the Tailwind classes, the styles and the dummy JavaScript of an example are written in one file
-and emitted as three. A few things follow from that:
+`main.js`, which imports the page's `style.css` (`src/style.css`, copied), and links that entry at the end of the body —
+so the markup, the Tailwind classes, the styles and the dummy JavaScript of an example are written in one file and
+emitted as three. A few things follow from that:
 
 - Start every script with a comment saying what it does: it is what an error of the build names the script by.
 - The scripts of a page end up in one module scope, so two of them must not declare the same top level name — the build
@@ -263,7 +271,8 @@ Rules:
 - Write **plain HTML attribute names**: `class`, `for`, `charset`, `novalidate`. Preact supports them, so the generated
   markup stays copy-pasteable — do not use `className` or `htmlFor`.
 - Values are HTML-escaped by default. Raw markup would need `dangerouslySetInnerHTML`, which only `<Script>` uses.
-- A typo in a prop is a **compile error**, not a render-time surprise. Run `npm run typecheck` or rely on the editor.
+- A typo in a prop is a **compile error**, not a render-time surprise. Run `npm run typecheck` in this package
+  (`npm run typecheck:examples` from the root – the root `typecheck` does not cover the examples) or rely on the editor.
 - Data lives in the component that renders it, as its default (`navItems` in `MainNav`, `metaActionItems` in
   `MetaActions`, …). A page passes nothing unless it differs, and since the defaults are exported rather than injected,
   a page can extend them (`[...navItems, extra]`) instead of only replacing them.
@@ -278,12 +287,12 @@ Rules:
 
 ## Styling
 
-Tailwind CSS v4, configured CSS-first in [`src/style.css`](src/style.css). That entry is **copied** next
-to every page as its `style.css`, which the page's generated `main.js` pulls in, so the project's own Vite build
-compiles, hashes and links it — in dev, `@tailwindcss/vite` compiles the source file directly, which is the only place
-it exists as a file. It deliberately contains nothing but the three imports and the `:not(:defined)` rule: no `@source`,
-no `source(none)` and no relative path of any kind, because the same bytes have to work at every depth. Tailwind's
-automatic source detection is rooted at the Vite project, so it scans the pages and nothing above them.
+Tailwind CSS v4, configured CSS-first in [`src/style.css`](src/style.css). That entry is **copied** next to every page
+as its `style.css`, which the page's generated `main.js` pulls in, so the project's own Vite build compiles, hashes and
+links it — in dev, `@tailwindcss/vite` compiles the source file directly, which is the only place it exists as a file.
+It deliberately contains nothing but the three imports and the `:not(:defined)` rule: no `@source`, no `source(none)`
+and no relative path of any kind, because the same bytes have to work at every depth. Tailwind's automatic source
+detection is rooted at the Vite project, so it scans the pages and nothing above them.
 
 > **Watch out:** Tailwind's scanner reads the whole file, comments included. A doc comment mentioning
 > `{% block content %}` makes Tailwind emit an unused `.block` utility. Prefer prose that does not read like a class
@@ -313,8 +322,22 @@ plain HTML, no hydration, no framework runtime.
 
 ## Accessibility baseline
 
-Every example ships `main` and section landmarks, labelled `nav` elements, `aria-current` on the active nav item,
-visible `:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header` and
-`footer` landmarks, and a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets
-those landmarks from the component and adds none itself. Keep that baseline when adding examples — these demos are
-documentation, so they have to be correct by example.
+Every example ships `main` and section landmarks, labelled `nav` elements, `aria-current` on the active nav item and
+visible `:focus-visible` outlines on every interactive element no PDS component styles; templates additionally carry the
+`header` and `footer` landmarks, and a pattern carries the landmark of the section it demonstrates. A page built on
+`p-canvas` gets those landmarks from the component and adds none itself. High Contrast Mode is left to the PDS
+components – there is no `forced-colors` block of our own – and captured in both schemes by the VRT. Keep that baseline
+when adding examples — these demos are documentation, so they have to be correct by example.
+
+## Adding a page
+
+A page is found by its file name, but a few lists are still kept by hand. Besides the `index.page.tsx`:
+
+- Keep the `patternComponents` / `templateComponents` of [`lib/projects.ts`](lib/projects.ts) in sync with the `p-*`
+  elements the page renders – they are the component chunks its generated project preloads.
+- Add the page to `templatePages` / `patternPages` in [`tests/unit/helpers/index.ts`](tests/unit/helpers/index.ts), or
+  the unit tests will not cover it. No test notices if it is missing.
+- Write one spec per suite – `tests/{e2e,a11y,vrt}/specs/<category>/<page>.<suite>.ts` (the page folder with `/` as `-`:
+  `patterns/header-overlay.e2e.ts`). The `coverage.*` specs fail without them. Create the VRT baselines in Docker.
+- Show it in the storefront: a `page.mdx` with `<WebsiteViewer example="<category>/<page>" … />` and an entry in
+  `packages/storefront/src/sitemap.tsx`.
