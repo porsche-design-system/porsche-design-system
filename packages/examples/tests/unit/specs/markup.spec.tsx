@@ -5,22 +5,18 @@ import { describe, expect, it } from 'vitest';
 import { extractScripts } from '../../../plugins/entries.ts';
 import { renderPage } from '../../../plugins/jsx.ts';
 import { scriptEntryName } from '../../../plugins/projects.ts';
-import {
-  categoryItems,
-  navItems,
-  noticeText,
-  patternItems,
-  placeholderHref,
-  templateItems,
-} from '../../../src/_data.ts';
 import { BasePage } from '../../../src/_layouts/BasePage.tsx';
 import { OverviewPage } from '../../../src/_layouts/OverviewPage.tsx';
 import { PatternPage } from '../../../src/_layouts/PatternPage.tsx';
+import { placeholderHref } from '../../../src/_links.ts';
 import { ExampleList } from '../../../src/_partials/ExampleList.tsx';
 import { Footer } from '../../../src/_partials/footer/Footer.tsx';
 import { Head } from '../../../src/_partials/Head.tsx';
+import { categoryItems } from '../../../src/_partials/header/CategoryTabs.tsx';
 import { Header } from '../../../src/_partials/header/Header.tsx';
-import IndexPage from '../../../src/index.page.tsx';
+import { navItems } from '../../../src/_partials/header/MainNav.tsx';
+import { noticeText } from '../../../src/_partials/header/NoticeBar.tsx';
+import IndexPage, { patternItems, templateItems } from '../../../src/index.page.tsx';
 import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page.tsx';
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';
 import FooterPatternPage from '../../../src/patterns/footer/index.page.tsx';

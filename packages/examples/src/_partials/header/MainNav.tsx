@@ -1,6 +1,52 @@
 import { classes } from '../../_classes.ts';
-import type { NavItem } from '../../_data.ts';
+import { type LinkItem, placeholderHref } from '../../_links.ts';
 import { Script } from '../Script.tsx';
+
+export type NavItem = LinkItem & {
+  /** Matches the `currentPage` of a page, which is how the active item gets `aria-current="page"`. */
+  id: string;
+  /**
+   * Sub navigation of this entry. An entry with `children` becomes a level of the drilldown to descend into, one
+   * without stays a link – which is how the same list renders one, two or three levels without a second data shape.
+   */
+  children?: NavItem[];
+};
+
+/**
+ * Placeholder navigation of the demo chrome – enough to show the pattern, deliberately going nowhere.
+ *
+ * The nesting is the point: `Home` has two levels below it, `Features` one, `Contact` none. Every header renders it
+ * unless a page passes its own – exported, so a page can extend it (`[...navItems, extra]`) instead of replacing it.
+ */
+export const navItems: NavItem[] = [
+  {
+    id: 'home',
+    href: placeholderHref,
+    label: 'Home',
+    children: [
+      { id: 'home-highlights', href: placeholderHref, label: 'Highlights' },
+      {
+        id: 'home-models',
+        href: placeholderHref,
+        label: 'Models',
+        children: [
+          { id: 'home-models-911', href: placeholderHref, label: '911' },
+          { id: 'home-models-taycan', href: placeholderHref, label: 'Taycan' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'features',
+    href: placeholderHref,
+    label: 'Features',
+    children: [
+      { id: 'features-design', href: placeholderHref, label: 'Design' },
+      { id: 'features-technology', href: placeholderHref, label: 'Technology' },
+    ],
+  },
+  { id: 'contact', href: placeholderHref, label: 'Contact' },
+];
 
 type NavEntriesProps = {
   /** Id of the active `NavItem`; only that one gets `aria-current="page"`. */
@@ -9,7 +55,9 @@ type NavEntriesProps = {
   navItems: NavItem[];
 };
 
-type MainNavProps = NavEntriesProps & {
+type MainNavProps = Omit<NavEntriesProps, 'navItems'> & {
+  /** Defaults to the shared `navItems`; a page may replace or extend them. */
+  navItems?: NavItem[];
   /** Color scheme class of the bar. It reaches the menu button only – see below. */
   scheme?: string;
 };
@@ -47,9 +95,9 @@ const DrilldownLink = ({ currentPage, item, label = item.label }: DrilldownLinkP
  * gets a leading entry pointing at its own page. An item without `children` stays a link. Both are valid children of
  * `p-drilldown` and of `p-drilldown-item`, which is why one recursive component covers every depth.
  */
-const DrilldownEntries = ({ currentPage, navItems }: NavEntriesProps) => (
+const DrilldownEntries = ({ currentPage, navItems: items }: NavEntriesProps) => (
   <>
-    {navItems.map((item) =>
+    {items.map((item) =>
       item.children ? (
         <p-drilldown-item key={item.id} identifier={item.id} label={item.label}>
           <DrilldownLink currentPage={currentPage} item={item} label={`${item.label} overview`} />
@@ -71,7 +119,7 @@ const DrilldownEntries = ({ currentPage, navItems }: NavEntriesProps) => (
  * `scheme` reaches the button only. The drilldown is a dialog on top of the page, not part of the bar, so it keeps
  * the color scheme of the page – a header lying on a dark hero must not drag that scheme into an overlay.
  */
-export const MainNav = ({ currentPage, navItems, scheme }: MainNavProps) => (
+export const MainNav = ({ currentPage, navItems: items = navItems, scheme }: MainNavProps) => (
   <nav aria-label="Main">
     <p-button-pure
       id="nav-button"
@@ -84,7 +132,7 @@ export const MainNav = ({ currentPage, navItems, scheme }: MainNavProps) => (
       Menu
     </p-button-pure>
     <p-drilldown id="nav-drilldown">
-      <DrilldownEntries currentPage={currentPage} navItems={navItems} />
+      <DrilldownEntries currentPage={currentPage} navItems={items} />
     </p-drilldown>
     <Script>{`
       // Behaviour of the header navigation: the menu button opens the drilldown, and the drilldown reports the level

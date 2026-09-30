@@ -1,7 +1,8 @@
-import { navItems, placeholderHref } from '../../../_data.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { placeholderHref } from '../../../_links.ts';
 import { media } from '../../../_media.ts';
 import { Header } from '../../../_partials/header/Header.tsx';
+import { navItems } from '../../../_partials/header/MainNav.tsx';
 
 /** Header pattern – the `stacked` layout, sitting above the content with a note and a category row. */
 const Page = () => (

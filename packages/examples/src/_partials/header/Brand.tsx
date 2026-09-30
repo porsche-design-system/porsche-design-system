@@ -1,5 +1,5 @@
 import { classes } from '../../_classes.ts';
-import { placeholderHref } from '../../_data.ts';
+import { placeholderHref } from '../../_links.ts';
 
 type BrandProps = {
   /** Color scheme class of the bar, since the brand marks sit on it – see `Header`. */

@@ -1,4 +1,12 @@
-import type { ExampleItem } from '../_data.ts';
+import type { LinkItem } from '../_links.ts';
+
+/** An example, listed on the overview of the dev server – the one list whose `href` is a real URL. */
+export type ExampleItem = LinkItem & {
+  /** Key of the entry in the list. */
+  id: string;
+  /** One sentence, shown next to the link on the overview page. */
+  description: string;
+};
 
 type ExampleListProps = {
   /** Prepended to every `href` – these are the real links of the package. */

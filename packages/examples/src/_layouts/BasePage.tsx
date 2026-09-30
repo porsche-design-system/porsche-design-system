@@ -1,8 +1,8 @@
 import type { ComponentChildren } from 'preact';
-import { type NavItem, navItems } from '../_data.ts';
 import { Footer } from '../_partials/footer/Footer.tsx';
 import { Head } from '../_partials/Head.tsx';
 import { Header, type HeaderVariant } from '../_partials/header/Header.tsx';
+import type { NavItem } from '../_partials/header/MainNav.tsx';
 
 export type BasePageProps = {
   title: string;
@@ -29,7 +29,7 @@ export const BasePage = ({
   currentPage,
   showSearch,
   headerVariant,
-  navItems: pageNavItems = navItems,
+  navItems,
   children,
 }: BasePageProps) => (
   <html lang="en">
@@ -37,7 +37,7 @@ export const BasePage = ({
       <Head title={title} description={description} />
     </head>
     <body>
-      <Header currentPage={currentPage} navItems={pageNavItems} showSearch={showSearch} variant={headerVariant} />
+      <Header currentPage={currentPage} navItems={navItems} showSearch={showSearch} variant={headerVariant} />
       {children}
       <Footer />
     </body>

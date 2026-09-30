@@ -5,7 +5,7 @@ import { HeaderBar } from '../../../_partials/header/HeaderBar.tsx';
 import { Script } from '../../../_partials/Script.tsx';
 
 /**
- * Icon names accepted by the PDS components, derived from the JSX typings – the same trick `_data.ts` uses, so a typo
+ * Icon names accepted by the PDS components, derived from the JSX typings – the same trick `MetaActions` uses, so a typo
  * is a compile error without importing the icon list.
  */
 type IconName = NonNullable<JSX.IntrinsicElements['p-icon']['name']>;

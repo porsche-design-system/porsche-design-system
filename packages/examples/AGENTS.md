@@ -83,8 +83,9 @@ tests/e2e/                        # behaviour: one spec per page, below its cate
 tests/a11y/                       # axe-core: one spec per page, its initial and its interaction states
 tests/vrt/                        # captures: one spec per page, plus the committed __screenshots__
 src/
-├── index.page.tsx                # overview of the source tree – dev only, never emitted
-├── _data.ts                      # templateItems, patternItems (URLs below their category), chrome nav
+├── index.page.tsx                # overview of the source tree – dev only, never emitted; lists every
+│                                 # example (templateItems, patternItems – URLs below their category)
+├── _links.ts                     # placeholderHref and LinkItem – the one value every piece of chrome shares
 ├── _classes.ts                   # classes(): joins class names, dropping the unset optional ones
 ├── _layouts/
 │   ├── BasePage.tsx              # full page shell, takes `children`
@@ -316,8 +317,11 @@ reaches through interaction**.
   next to it and carry no path out of the page folder at all.
 - **The shared stylesheet must stay free of relative paths.** It is copied next to every page, at every depth, so a
   `@source "../…"` or an `@import "./…"` would resolve differently in each copy. A unit test asserts it.
-- **`_data.ts` is imported, not injected.** There is no ambient template scope, so a page can extend the shared
-  navigation (`[...navItems, extra]`) instead of only replacing it wholesale.
+- **Data lives in the component that renders it, as its default.** `MainNav` owns `navItems`, `MetaActions` owns
+  `metaActionItems`, `NoticeBar` its note and `CategoryTabs` its categories; the overview owns the lists of examples. A
+  page passes nothing unless it differs – and since the defaults are exported, not injected, a page can extend them
+  (`[...navItems, extra]`) instead of only replacing them. There is no shared data module; `src/_links.ts` holds only
+  `placeholderHref`, the one value every piece of chrome uses.
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
   chrome is what the pattern demonstrates. Pass the section as `beforeMain` (headers) or `afterMain` (footers) so its
   landmark sits where it does on a real page.
@@ -379,8 +383,9 @@ reaches through interaction**.
   no page has to repeat an id a partial depends on. A unit test asserts it for every `.tsx` file, from the
   `getElementById()` and `querySelector('#…')` calls against the `id="…"` attributes of the same file.
 - **A variant is a prop, not a copy.** `Header` renders both header patterns from one set of blocks
-  (`_partials/header/`), driven by `navItems` and `metaActionItems` from `_data.ts`. If two variants need the same
-  block, extract the block; do not paste the markup a second time, or one variant silently drifts from the other.
+  (`_partials/header/`), driven by the `navItems` of `MainNav` and the `metaActionItems` of `MetaActions`. If two
+  variants need the same block, extract the block; do not paste the markup a second time, or one variant silently drifts
+  from the other.
 - **The navigation is rendered recursively.** A `NavItem` with `children` becomes a `p-drilldown-item` (plus a leading
   entry pointing at its own page, since a level is not a link), one without becomes a `p-drilldown-link`. Both are valid
   children of `p-drilldown` and of `p-drilldown-item`, which is what makes one component cover every depth.
@@ -453,8 +458,8 @@ approach, and it is paid on every review:
    instead, which takes `title` and `description` only – everything else is a slot of the component.
 3. Put the markup in `children`, including the page's own `<main id="main">` – except on `CanvasPage`, where the
    component provides that landmark. Links go to `#`, unless they point at an id on the same page.
-4. Add an entry to `templateItems` in `src/_data.ts`, with an `href` relative to `src/templates/` – that is what links
-   it from the dev overview.
+4. Add an entry to `templateItems` in `src/index.page.tsx`, with an `href` relative to `src/templates/` – that is what
+   links it from the dev overview.
 5. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
 6. Show it in the storefront with `<WebsiteViewer example="templates/<name>" … />` and raise the page count the
    Playwright suites assert.
@@ -468,8 +473,8 @@ approach, and it is paid on every review:
    adds nothing around it, and the build links the page's `main.js`.
 3. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
-4. Add an entry to `patternItems` in `src/_data.ts`, with an `href` relative to `src/patterns/`, and show it in the
-   storefront with `<WebsiteViewer example="patterns/<name>" … />`.
+4. Add an entry to `patternItems` in `src/index.page.tsx`, with an `href` relative to `src/patterns/`, and show it in
+   the storefront with `<WebsiteViewer example="patterns/<name>" … />`.
 5. If the pattern needs behaviour of its own, write it in a `<Script>` at the end of the page; the build moves it into
    the generated entry, which brings the stylesheet import and the banner. Behaviour a partial needs wherever it is
    rendered goes into a `<Script>` of that partial. Hook it on ids and query them with `getElementById()`.

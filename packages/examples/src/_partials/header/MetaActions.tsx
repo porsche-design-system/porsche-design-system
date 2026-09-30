@@ -1,5 +1,34 @@
+import type { JSX } from 'preact';
 import { classes } from '../../_classes.ts';
-import type { MetaActionItem } from '../../_data.ts';
+import { placeholderHref } from '../../_links.ts';
+
+/**
+ * Icon names accepted by the PDS components, derived from the JSX typings instead of importing the icon list, so a typo
+ * is still a compile error.
+ */
+type IconName = NonNullable<JSX.IntrinsicElements['p-icon']['name']>;
+
+/** A compact icon-only affordance of the header – search, favorites, cart, user. */
+export type MetaActionItem = {
+  /** Referenced by the header variants to pick which affordances they show. */
+  id: string;
+  /** Always rendered as text: the icon buttons only hide it visually, so this is the accessible name. */
+  label: string;
+  icon: IconName;
+  /** Set for a link (`p-link-pure`), omitted for an action a page would handle itself (`p-button-pure`). */
+  href?: string;
+};
+
+/**
+ * The icon affordances of the header, in the order they appear. Each variant picks the subset it shows, which is
+ * why they are one list here instead of markup repeated per variant.
+ */
+export const metaActionItems: MetaActionItem[] = [
+  { id: 'search', label: 'Search', icon: 'search' },
+  { id: 'favorites', label: 'Favorites', icon: 'heart', href: placeholderHref },
+  { id: 'cart', label: 'Shopping Cart', icon: 'shopping-cart', href: placeholderHref },
+  { id: 'user', label: 'User', icon: 'user' },
+];
 
 type MetaActionsProps = {
   /** Already narrowed to what the variant shows – see `Header`. */

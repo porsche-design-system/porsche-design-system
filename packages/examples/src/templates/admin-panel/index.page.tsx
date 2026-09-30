@@ -1,6 +1,6 @@
 import { Fragment } from 'preact';
-import { placeholderHref } from '../../_data.ts';
 import { CanvasPage } from '../../_layouts/CanvasPage.tsx';
+import { placeholderHref } from '../../_links.ts';
 import { media } from '../../_media.ts';
 import { Script } from '../../_partials/Script.tsx';
 

@@ -1,7 +1,8 @@
-import { navItems, placeholderHref } from '../../_data.ts';
 import { BasePage } from '../../_layouts/BasePage.tsx';
+import { placeholderHref } from '../../_links.ts';
 import { media } from '../../_media.ts';
 import { HeroVideo } from '../../_partials/HeroVideo.tsx';
+import { navItems } from '../../_partials/header/MainNav.tsx';
 
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
 const Page = () => (

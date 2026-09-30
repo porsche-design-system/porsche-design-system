@@ -1,4 +1,3 @@
-import { navItems } from '../../../_data.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { HeroVideo } from '../../../_partials/HeroVideo.tsx';
 import { Header } from '../../../_partials/header/Header.tsx';
@@ -8,7 +7,7 @@ const Page = () => (
   <PatternPage
     title="Header 1"
     description="Brand, navigation and meta actions on a single row, lying on top of the content."
-    beforeMain={<Header currentPage="home" navItems={navItems} showSearch />}
+    beforeMain={<Header currentPage="home" showSearch />}
   >
     <main id="main" class="grid-template">
       <section class="scheme-dark z-0 col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)]">

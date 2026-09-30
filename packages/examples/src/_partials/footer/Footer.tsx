@@ -1,4 +1,4 @@
-import { placeholderHref } from '../../_data.ts';
+import { placeholderHref } from '../../_links.ts';
 
 /**
  * Page footer.

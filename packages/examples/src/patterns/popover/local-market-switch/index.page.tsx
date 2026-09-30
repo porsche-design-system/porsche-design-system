@@ -1,5 +1,5 @@
-import { navItems, placeholderHref } from '../../../_data.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { placeholderHref } from '../../../_links.ts';
 import { HeroVideo } from '../../../_partials/HeroVideo.tsx';
 import { Brand } from '../../../_partials/header/Brand.tsx';
 import { HeaderBar } from '../../../_partials/header/HeaderBar.tsx';
@@ -148,7 +148,7 @@ const Page = () => (
       // bar, navigation and brand this pattern is built from.
       <header class="z-1 grid-template absolute inset-x-0 before:absolute before:inset-[0_0_-60px_0] before:-z-1 before:pointer-events-none before:bg-fade-to-b">
         <HeaderBar
-          start={<MainNav currentPage="home" navItems={navItems} scheme={scheme} />}
+          start={<MainNav currentPage="home" scheme={scheme} />}
           center={<Brand scheme={scheme} />}
           end={<MarketAndProfile />}
         />

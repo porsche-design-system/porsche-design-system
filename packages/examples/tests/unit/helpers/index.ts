@@ -1,4 +1,4 @@
-import type { NavItem } from '../../../src/_data.ts';
+import type { NavItem } from '../../../src/_partials/header/MainNav.tsx';
 import IndexPage from '../../../src/index.page.tsx';
 import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page.tsx';
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';

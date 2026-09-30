@@ -1,5 +1,5 @@
-import { placeholderHref } from '../../../_data.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { placeholderHref } from '../../../_links.ts';
 import { Script } from '../../../_partials/Script.tsx';
 
 /**

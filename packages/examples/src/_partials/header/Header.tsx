@@ -1,9 +1,9 @@
-import { categoryItems, type LinkItem, metaActionItems, type NavItem, noticeText } from '../../_data.ts';
+import type { LinkItem } from '../../_links.ts';
 import { Brand } from './Brand.tsx';
 import { CategoryTabs } from './CategoryTabs.tsx';
 import { HeaderBar } from './HeaderBar.tsx';
-import { MainNav } from './MainNav.tsx';
-import { MetaActions } from './MetaActions.tsx';
+import { MainNav, type NavItem } from './MainNav.tsx';
+import { MetaActions, metaActionItems } from './MetaActions.tsx';
 import { NoticeBar } from './NoticeBar.tsx';
 
 /**
@@ -22,14 +22,14 @@ export type HeaderVariant = 'overlay' | 'stacked';
 type HeaderProps = {
   /** Id of the active `NavItem`; only that one gets `aria-current="page"`. */
   currentPage: string;
-  /** Placeholder links – the header demonstrates a navigation, it does not provide one. */
-  navItems: NavItem[];
+  /** Defaults to the shared navigation of `MainNav`; a page may replace or extend it. */
+  navItems?: NavItem[];
   /** Renders the search affordance, which both variants show in the same place. */
   showSearch?: boolean;
   variant?: HeaderVariant;
-  /** Only the `stacked` variant has a row for it. */
+  /** Only the `stacked` variant has a row for it; defaults to the note of `NoticeBar`. */
   notice?: string;
-  /** Only the `stacked` variant has a row for them. */
+  /** Only the `stacked` variant has a row for them; default to the categories of `CategoryTabs`. */
   categoryItems?: LinkItem[];
 };
 
@@ -48,8 +48,8 @@ export const Header = ({
   navItems,
   showSearch = false,
   variant = 'overlay',
-  notice = noticeText,
-  categoryItems: pageCategoryItems = categoryItems,
+  notice,
+  categoryItems,
 }: HeaderProps) => {
   /**
    * The `overlay` variant lies on a dark hero, so its contents need the dark scheme – but the scheme is handed to
@@ -71,7 +71,7 @@ export const Header = ({
     <header class="grid-template gap-y-0">
       <NoticeBar>{notice}</NoticeBar>
       {bar}
-      <CategoryTabs items={pageCategoryItems} />
+      <CategoryTabs items={categoryItems} />
     </header>
   ) : (
     // The fade keeps the contrast of the affordances over an arbitrary image or video. It is a fixed gradient, so it

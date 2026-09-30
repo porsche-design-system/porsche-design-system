@@ -39,8 +39,8 @@ the examples themselves (`npm run build:examples`) – `preview` serves, it does
 | **Templates** | A whole application page, chrome included.           | `BasePage` / `CanvasPage` | `src/templates/…` |
 | **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`             | `src/patterns/…`  |
 
-Both categories are listed in [`src/_data.ts`](src/_data.ts) (`templateItems`, `patternItems`), which is what links an
-example from the overview of the dev server.
+Both categories are listed in [`src/index.page.tsx`](src/index.page.tsx) (`templateItems`, `patternItems`), the overview
+of the dev server, which is what links an example from there.
 
 The build writes two trees:
 
@@ -74,8 +74,8 @@ overview is made of, is the only component that does.
 
 ```text
 src/
-├── index.page.tsx            # overview of the source tree – dev only, never emitted
-├── _data.ts                  # templateItems, patternItems (URLs below their category), chrome nav
+├── index.page.tsx            # overview of the source tree – dev only, never emitted; lists every example
+├── _links.ts                 # placeholderHref – the link of the demo chrome that goes nowhere
 ├── _classes.ts               # classes(): joins class names, dropping the optional ones that are unset
 ├── _media.ts                 # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts       # JSX typings for the PDS web components
@@ -141,7 +141,7 @@ export default Page;
 | `currentPage`   | Matched against `item.id` to set `aria-current="page"`.                   |
 | `showSearch`    | Optional; renders the header search affordance.                           |
 | `headerVariant` | Optional; `"overlay"` (default) or `"stacked"` – see the header patterns. |
-| `navItems`      | Defaults to `_data.ts`; a page may replace or extend it.                  |
+| `navItems`      | Defaults to the `navItems` of `MainNav`; a page may replace or extend it. |
 | `children`      | The page content, including its own `<main id="main">`.                   |
 
 ### Behaviour: `<Script>`
@@ -222,7 +222,7 @@ of the markup:
 Both render `HeaderBar` with the same `MainNav`, `Brand` and `MetaActions`, so a change reaches both variants. The
 navigation comes from `navItems` and is rendered recursively: an item with `children` becomes a drilldown level (plus a
 leading entry pointing at its own page), one without stays a link. The icon affordances come from `metaActionItems`;
-each variant picks the subset it shows. Both lists live in `_data.ts`.
+each variant picks the subset it shows. Each list lives in the component rendering it, as its default.
 
 > **Watch out — the color scheme is not set on the `<header>`.** The `overlay` variant lies on a dark hero, so its
 > contents need `scheme-dark`, but the drilldown lives inside the header and is a dialog on top of the _page_. A scheme
@@ -237,16 +237,11 @@ the chrome is what is being demonstrated. It also does not wrap the content: the
 so a header pattern can put a full-bleed hero below the header instead of a padded shell:
 
 ```tsx
-import { navItems } from '../../_data.ts';
 import { PatternPage } from '../../_layouts/PatternPage.tsx';
 import { Header } from '../../_partials/header/Header.tsx';
 
 const Page = () => (
-  <PatternPage
-    title="Header 1"
-    description="…"
-    beforeMain={<Header currentPage="home" navItems={navItems} showSearch />}
-  >
+  <PatternPage title="Header 1" description="…" beforeMain={<Header currentPage="home" showSearch />}>
     <main id="main">…</main>
   </PatternPage>
 );
@@ -270,8 +265,9 @@ Rules:
   markup stays copy-pasteable — do not use `className` or `htmlFor`.
 - Values are HTML-escaped by default. Raw markup would need `dangerouslySetInnerHTML`, which only `<Script>` uses.
 - A typo in a prop is a **compile error**, not a render-time surprise. Run `npm run typecheck` or rely on the editor.
-- `_data.ts` is imported explicitly rather than injected into an ambient scope, so a page can extend the shared
-  navigation (`[...navItems, extra]`) instead of only replacing it.
+- Data lives in the component that renders it, as its default (`navItems` in `MainNav`, `metaActionItems` in
+  `MetaActions`, …). A page passes nothing unless it differs, and since the defaults are exported rather than injected,
+  a page can extend them (`[...navItems, extra]`) instead of only replacing them.
 - Links inside an example are `#`. Do not wire them up — the dev overview is the only place where a broken URL would
   actually be noticed, and it is covered by tests.
 - Files and folders starting with `_` are inputs only. Keep pages declarative — see
