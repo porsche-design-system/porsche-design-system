@@ -1,7 +1,9 @@
+import { vi } from 'vitest';
+import * as loggerUtils from '../../../utils/log/logger';
 import {
   getIndexOfStepWithStateCurrent,
+  logErrorIfMultipleCurrentStates,
   scrollStepperHorizontalItemIntoView,
-  throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 
 const createStepperItems = (states: string[]): HTMLPStepperHorizontalItemElement[] =>
@@ -45,34 +47,38 @@ describe('getIndexOfStepWithStateCurrent()', () => {
   });
 });
 
-describe('throwIfMultipleCurrentStates()', () => {
-  it('should not throw when no item has state "current"', () => {
+describe('logErrorIfMultipleCurrentStates()', () => {
+  it('should not log error when no item has state "current"', () => {
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     const host = document.createElement('p-stepper-horizontal');
-    const items = createStepperItems(['complete', 'warning']);
-    expect(() => throwIfMultipleCurrentStates(host, items)).not.toThrow();
+    logErrorIfMultipleCurrentStates(host, createStepperItems(['complete', 'warning']));
+    expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should not throw when exactly one item has state "current"', () => {
+  it('should not log error when exactly one item has state "current"', () => {
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     const host = document.createElement('p-stepper-horizontal');
-    const items = createStepperItems(['complete', 'current', 'warning']);
-    expect(() => throwIfMultipleCurrentStates(host, items)).not.toThrow();
+    logErrorIfMultipleCurrentStates(host, createStepperItems(['complete', 'current', 'warning']));
+    expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should throw when multiple items have state "current"', () => {
+  it('should not log error for an empty array', () => {
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     const host = document.createElement('p-stepper-horizontal');
-    const items = createStepperItems(['current', 'current']);
-    expect(() => throwIfMultipleCurrentStates(host, items)).toThrow();
+    logErrorIfMultipleCurrentStates(host, []);
+    expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should include the count of current states in the error message', () => {
+  it('should log error with the count of current states and not throw when multiple items have state "current"', () => {
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     const host = document.createElement('p-stepper-horizontal');
-    const items = createStepperItems(['current', 'current', 'current']);
-    expect(() => throwIfMultipleCurrentStates(host, items)).toThrow(/3/);
-  });
-
-  it('should not throw for an empty array', () => {
-    const host = document.createElement('p-stepper-horizontal');
-    expect(() => throwIfMultipleCurrentStates(host, [])).not.toThrow();
+    expect(() =>
+      logErrorIfMultipleCurrentStates(host, createStepperItems(['current', 'current', 'current']))
+    ).not.toThrow();
+    expect(spy).toHaveBeenCalledWith(
+      'only one child with current state is allowed in p-stepper-horizontal but got 3.',
+      host
+    );
   });
 });
 

@@ -35,7 +35,7 @@ const propTypes: PropTypes<typeof Link> = {
 };
 
 /**
- * @slot {"name": "", "description": "Default slot to render the link label. This slot can be used to slot an anchor tag instead of using the href prop." }
+ * @slot {"name": "", "description": "Default slot to render the link label. This slot can be used to slot an anchor tag instead of using the `href` prop, but not in combination with it." }
  */
 @Component({
   tag: 'p-link',
@@ -53,7 +53,7 @@ export class Link {
   /** Sets a path to a custom SVG icon, used instead of the built-in icon set. */
   @Prop() public iconSource?: string;
 
-  /** When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element. */
+  /** When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element, but not both. Without either, it renders as plain text. */
   @Prop() public href?: string;
 
   /** Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set. */

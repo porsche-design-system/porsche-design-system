@@ -377,3 +377,34 @@ describe('active item change', () => {
     expect(component['primary']).toBe(false);
   });
 });
+
+// e.g. when a framework sets `activeIdentifier` late, the drawer to animate does not exist yet
+describe('active identifier change before the first render', () => {
+  it('should resolve the item state without animating when the change arrives after load (mobile)', async () => {
+    const component = initComponent();
+    component['isDesktop'] = false;
+    const itemA = createItem('a');
+    component.host.appendChild(itemA);
+    component.componentWillLoad();
+
+    component.activeIdentifier = 'a';
+    await component.activeIdentifierChangeHandler('a', undefined);
+
+    expect((itemA as any).secondary).toBe(true);
+    expect(component['isSecondaryDrawerVisible']).toBe(true);
+  });
+
+  it('should leave resolving the item state to load when the change arrives before load (mobile)', async () => {
+    const component = initComponent();
+    component['isDesktop'] = false;
+    const itemA = createItem('a');
+    component.host.appendChild(itemA);
+
+    component.activeIdentifier = 'a';
+    await component.activeIdentifierChangeHandler('a', undefined);
+    component.componentWillLoad();
+
+    expect((itemA as any).secondary).toBe(true);
+    expect(component['isSecondaryDrawerVisible']).toBe(true);
+  });
+});

@@ -262,6 +262,12 @@ export class Drilldown {
   }
 
   private async updateDrilldownState(oldVal: string | undefined, newVal: string | undefined): Promise<void> {
+    // Before the first render, e.g. when a framework sets `activeIdentifier` late, there is no drawer to animate yet
+    if (!this.drawer) {
+      this.syncActiveItem();
+      return;
+    }
+
     // Items are only used to pick the transition, the state is resolved afterwards by syncActiveItem() because
     // activeIdentifier or an item identifier may have changed while the fade out animation was running
     const oldItem = oldVal && this.drilldownItemElements.find((item) => item.identifier === oldVal);

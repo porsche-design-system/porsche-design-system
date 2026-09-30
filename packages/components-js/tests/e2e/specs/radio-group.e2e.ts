@@ -318,6 +318,58 @@ test.describe('keyboard behavior', () => {
       await expect(options.nth(1)).toBeFocused();
     });
 
+    test('should skip loading option and focus 1st available element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a', loading: true }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should skip option disabled after load and focus 1st available element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await setProperty(options.nth(0), 'disabled', true);
+      await waitForStencilLifecycle(page);
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should focus option enabled after load on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [
+            { value: 'a', disabled: true },
+            { value: 'b', disabled: true },
+          ],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await setProperty(options.nth(1), 'disabled', false);
+      await waitForStencilLifecycle(page);
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
     test('should skip disabled and loading options when pressing ArrowUp/ArrowDown', async ({ page }) => {
       await initRadioGroup(page, {
         props: { value: 'a', name: 'options', label: 'Some Label' },

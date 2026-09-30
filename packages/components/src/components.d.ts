@@ -1962,7 +1962,7 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element, but not both. Without either, it renders as plain text.
          */
         "href"?: string;
         /**
@@ -2019,7 +2019,7 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element, but not both. Without either, it renders as plain text.
          */
         "href"?: string;
         /**
@@ -2136,7 +2136,7 @@ export namespace Components {
          */
         "heading": string;
         /**
-          * Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element.
+          * Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element, which is not rendered when `href` is set.
          */
         "href"?: string;
         /**
@@ -6393,7 +6393,7 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element, but not both. Without either, it renders as plain text.
          */
         "href"?: string;
         /**
@@ -6450,7 +6450,7 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element, but not both. Without either, it renders as plain text.
          */
         "href"?: string;
         /**
@@ -6567,7 +6567,7 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element.
+          * Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element, which is not rendered when `href` is set.
          */
         "href"?: string;
         /**

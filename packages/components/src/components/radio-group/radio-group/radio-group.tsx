@@ -167,6 +167,12 @@ export class RadioGroup {
     this.updateTabStops();
   }
 
+  @Listen('internalRadioGroupOptionDisabledChange')
+  public optionDisabledChangeHandler(e: Event): void {
+    e.stopPropagation();
+    this.updateTabStops();
+  }
+
   @Watch('value')
   public onValueChange(): void {
     this.setFormValue();
