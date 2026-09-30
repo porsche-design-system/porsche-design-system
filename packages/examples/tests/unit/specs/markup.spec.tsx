@@ -11,7 +11,6 @@ import {
   placeholderHref,
   templateItems,
 } from '../../../src/_data.ts';
-import { idAttribute, ids } from '../../../src/_ids.ts';
 import { BasePage } from '../../../src/_layouts/BasePage.tsx';
 import { OverviewPage } from '../../../src/_layouts/OverviewPage.tsx';
 import { PatternPage } from '../../../src/_layouts/PatternPage.tsx';
@@ -430,6 +429,13 @@ describe.each(examplePages)('%s page', (_name, Page) => {
     expect(await renderPage(Page)).not.toMatch(/\son[a-z]+="/);
   });
 
+  it('should render every id once, since a script would only ever find the first one', async () => {
+    // axe-core no longer reports duplicate ids – the rule is deprecated and outside the WCAG tags the a11y suite runs.
+    const ids = Array.from(extractScripts(await renderPage(Page)).html.matchAll(/\sid="([^"]+)"/g), ([, id]) => id);
+
+    expect(ids.filter((id, index) => ids.indexOf(id) !== index)).toEqual([]);
+  });
+
   it('should leave referencing the entry to the build, which moves every script into it', async () => {
     const html = await renderPage(Page);
 
@@ -466,12 +472,12 @@ describe('landing page', () => {
     const html = await renderPage(LandingPage);
 
     expect(html).toContain('id="pause-button"');
-    expect(extractScripts(html).scripts.join('\n')).toContain(`getElementById('${ids.heroVideo}')`);
+    expect(extractScripts(html).scripts.join('\n')).toContain("getElementById('hero-video')");
   });
 });
 
 describe('admin panel', () => {
-  /** The ids its script looks up – single use, so they are literals of the page rather than part of `_ids.ts`. */
+  /** The ids its script looks up. */
   const behaviourHooks = [
     'admin-canvas',
     'search-button',
@@ -566,7 +572,7 @@ describe('popover patterns', () => {
     const html = await renderPage(PopoverLocalMarketSwitchPage);
 
     expect(html).toContain('<nav aria-label="Main">');
-    expect(html).toContain(idAttribute(ids.navDrilldown));
+    expect(html).toContain('id="nav-drilldown"');
     // The bar, the navigation and the brand come from `_partials/header/`; only the meta actions are the pattern.
     expect(html).toContain('<p-crest class="sm:hidden scheme-dark"');
     expect(html).not.toContain('icon="shopping-cart"');

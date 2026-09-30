@@ -71,7 +71,6 @@ vitest.config.ts                  # separate config, because vite.config.ts sets
 playwright.config.ts              # every Playwright suite as projects of one config – <suite>-{desktop-chrome,mobile-safari}
 tests/unit/                       # vitest, no build and no browser
 ├── specs/build.spec.tsx          # the pipeline: routing, projects, StackBlitz, entries, inlining, renderPage()
-├── specs/ids.spec.ts             # the contract of _ids.ts between markup and scripts, one scope per page
 ├── specs/markup.spec.tsx         # the static composition: data, partials, layouts, pages
 └── helpers/index.ts              # the pages under test and the string helpers the specs share
 tests/helpers/                    # shared by the Playwright suites – a helper two suites use lives here
@@ -87,8 +86,6 @@ src/
 ├── index.page.tsx                # overview of the source tree – dev only, never emitted
 ├── _data.ts                      # templateItems, patternItems (URLs below their category), chrome nav
 ├── _classes.ts                   # classes(): joins class names, dropping the unset optional ones
-├── _ids.ts                       # the ids the behaviour of the partials is wired on – markup, scripts
-│                                 # and tests all address the same elements through them
 ├── _layouts/
 │   ├── BasePage.tsx              # full page shell, takes `children`
 │   ├── CanvasPage.tsx            # shell of a page whose chrome is `p-canvas` – no landmark of its own
@@ -368,16 +365,16 @@ reaches through interaction**.
   Rename, or wrap the script in a block. In practice this is what stops a page from re-implementing shared behaviour: a
   page rendering the header cannot declare `navButton` again, because `MainNav` already did. Unit tests run the build's
   own extraction over every page, so a clash fails `test:unit` rather than only `build`.
-- **A script is a template literal.** `${…}` is resolved at build time, and a backtick or a `${` meant for the browser
-  has to be escaped – prefer quotes in comments over backticks. The code is not type-checked or linted either; the e2e
-  suite is what exercises it. `renderPage()` formats with `embeddedLanguageFormatting: 'off'`, so the code reaches
-  `main.js` exactly as written; a unit test compares the two.
-- **The ids the behaviour of a partial hooks on are a contract, kept in [`src/_ids.ts`](src/_ids.ts).** The markup uses
-  `ids.pauseButton` instead of a literal, and so does the script, through `${ids.pauseButton}` – an id cannot be spelled
-  differently in the two, or in the tests, which import the same constants. Ids are wired **together**: rendering
-  `id="pause-button"` without `id="hero-video"` fails a unit test instead of producing an example that silently does
-  nothing. Unit tests also assert that no `.tsx` file writes one of those ids as a literal. **Only ids of partials
-  belong there** — the hooks of a page's own script (`market-popover`, `more-trigger`, …) stay literals in that page.
+- **A script is a template literal.** A backtick or a `${` meant for the browser has to be escaped – prefer quotes in
+  comments over backticks. The code is not type-checked or linted either; the e2e suite is what exercises it.
+  `renderPage()` formats with `embeddedLanguageFormatting: 'off'`, so the code reaches `main.js` exactly as written; a
+  unit test compares the two.
+- **Scripts address elements by id, written as literals.** The script sits in the same component as the markup it wires
+  up, so the two are read – and renamed – together; there is no registry. Every id is rendered **once** per page –
+  `getElementById()` would only ever find the first one – which a unit test asserts for every page, because axe-core no
+  longer reports duplicate ids (`duplicate-id` is deprecated and outside the WCAG tags the a11y suite runs). A script
+  whose element is missing throws on load, which the `loads without reporting an error` check of every e2e spec catches
+  – `VideoPauseButton` needs the page to render the video it operates as `id="hero-video"`.
 - **A variant is a prop, not a copy.** `Header` renders both header patterns from one set of blocks
   (`_partials/header/`), driven by `navItems` and `metaActionItems` from `_data.ts`. If two variants need the same
   block, extract the block; do not paste the markup a second time, or one variant silently drifts from the other.
@@ -472,8 +469,7 @@ approach, and it is paid on every review:
    storefront with `<WebsiteViewer example="patterns/<name>" … />`.
 5. If the pattern needs behaviour of its own, write it in a `<Script>` at the end of the page; the build moves it into
    the generated entry, which brings the stylesheet import and the banner. Behaviour a partial needs wherever it is
-   rendered goes into a `<Script>` of that partial — hook it on ids from [`src/_ids.ts`](src/_ids.ts), add new ones
-   there, and query them with `getElementById()`.
+   rendered goes into a `<Script>` of that partial. Hook it on ids and query them with `getElementById()`.
 6. Run `npm run build`, then the unit and a11y tests; together they assert the accessibility baseline for every page,
    patterns included.
 

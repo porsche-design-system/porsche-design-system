@@ -1,4 +1,3 @@
-import { ids } from '../../../_ids.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { FeedbackForm } from '../../../_partials/feedback/FeedbackForm.tsx';
 import { Script } from '../../../_partials/Script.tsx';
@@ -79,7 +78,7 @@ const Page = () => (
       const closeModal = () => {
         // A submission is pending as long as the submit button is loading – ending that state cancels it, so the
         // confirmation does not appear behind the closed dialog.
-        document.getElementById('${ids.feedbackSubmit}').loading = false;
+        document.getElementById('feedback-submit').loading = false;
         modal.open = false;
       };
 
@@ -93,7 +92,7 @@ const Page = () => (
       // "motionHiddenEnd" fires once the close animation has finished, so the content does not snap back
       // mid-transition.
       modal.addEventListener('motionHiddenEnd', () => {
-        document.getElementById('${ids.feedbackForm}').reset();
+        document.getElementById('feedback-form').reset();
       });
     `}</Script>
   </PatternPage>

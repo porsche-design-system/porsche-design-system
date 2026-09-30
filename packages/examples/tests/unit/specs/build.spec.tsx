@@ -316,6 +316,14 @@ describe('entries', () => {
     expect(countOccurrences(html, scriptEntryTag)).toBe(1);
   });
 
+  it.each(examplePages)('should fit the scripts of "%s" into one entry', async (_name, Page) => {
+    const { scripts } = extractScripts(await renderPage(Page));
+
+    // The very calls `scripts/build.ts` makes: it throws when two scripts of a page declare the same top level name,
+    // since they end up in a single module scope – in dev each of them is a module of its own and would not tell.
+    expect(() => getScriptEntry(scripts)).not.toThrow();
+  });
+
   it('should link the shared stylesheet in dev, where no entry imports it', () => {
     expect(linkStylesForDev('<head></head><body></body>')).toBe(
       '<head><link rel="stylesheet" href="/assets/styles.css" /></head><body></body>'

@@ -1,6 +1,5 @@
 import { classes } from '../../_classes.ts';
 import type { NavItem } from '../../_data.ts';
-import { ids } from '../../_ids.ts';
 import { Script } from '../Script.tsx';
 
 type NavEntriesProps = {
@@ -66,8 +65,8 @@ const DrilldownEntries = ({ currentPage, navItems }: NavEntriesProps) => (
 /**
  * Main navigation of every header variant: a menu button opening a `p-drilldown`.
  *
- * The behaviour is written once, below the markup it wires up, and hooked on the two ids of `_ids.ts` – nothing here
- * is hydrated. Every page rendering this component therefore carries it, which is both header variants.
+ * The behaviour is written once, below the markup it wires up, and hooked on its two ids – nothing here is hydrated.
+ * Every page rendering this component therefore carries it, which is both header variants.
  *
  * `scheme` reaches the button only. The drilldown is a dialog on top of the page, not part of the bar, so it keeps
  * the color scheme of the page – a header lying on a dark hero must not drag that scheme into an overlay.
@@ -75,7 +74,7 @@ const DrilldownEntries = ({ currentPage, navItems }: NavEntriesProps) => (
 export const MainNav = ({ currentPage, navItems, scheme }: MainNavProps) => (
   <nav aria-label="Main">
     <p-button-pure
-      id={ids.navButton}
+      id="nav-button"
       class={classes('p-static-xs -m-static-xs', scheme)}
       type="button"
       icon="menu-lines"
@@ -84,15 +83,15 @@ export const MainNav = ({ currentPage, navItems, scheme }: MainNavProps) => (
     >
       Menu
     </p-button-pure>
-    <p-drilldown id={ids.navDrilldown}>
+    <p-drilldown id="nav-drilldown">
       <DrilldownEntries currentPage={currentPage} navItems={navItems} />
     </p-drilldown>
     <Script>{`
       // Behaviour of the header navigation: the menu button opens the drilldown, and the drilldown reports the level
       // the user drilled into.
 
-      const navButton = document.getElementById('${ids.navButton}');
-      const navDrilldown = document.getElementById('${ids.navDrilldown}');
+      const navButton = document.getElementById('nav-button');
+      const navDrilldown = document.getElementById('nav-drilldown');
 
       navButton.addEventListener('click', () => {
         navDrilldown.open = true;

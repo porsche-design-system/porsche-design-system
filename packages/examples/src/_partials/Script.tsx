@@ -12,8 +12,7 @@ type ScriptProps = {
  * `plugins/entries.ts`. Either way it is a module: deferred, with a scope of its own in dev, and sharing one with the
  * other scripts of the page once built, which is why the build rejects two top level declarations of the same name.
  *
- * Interpolations are resolved at build time, which is how a script takes the ids of `_ids.ts` instead of repeating
- * them. A `${` meant for the browser has to be escaped as `\${`.
+ * The code is a template literal, so a backtick or a `${` meant for the browser has to be escaped.
  */
 export const Script = ({ children }: ScriptProps) => {
   if (/<\/script/i.test(children)) {

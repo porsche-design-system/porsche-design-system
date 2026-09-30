@@ -1,5 +1,4 @@
 import { navItems, placeholderHref } from '../../_data.ts';
-import { ids } from '../../_ids.ts';
 import { BasePage } from '../../_layouts/BasePage.tsx';
 import { media } from '../../_media.ts';
 import { VideoPauseButton } from '../../_partials/VideoPauseButton.tsx';
@@ -19,7 +18,7 @@ const Page = () => (
         aria-labelledby="heading-section-1"
       >
         <video
-          id={ids.heroVideo}
+          id="hero-video"
           class="z-1 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
           poster={media('mood-porsche-gts.webp')}
           loop

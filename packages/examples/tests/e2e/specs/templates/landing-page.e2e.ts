@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { ids } from '../../../../src/_ids.ts';
 import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
@@ -23,10 +22,10 @@ test('opens and closes the navigation drilldown', async ({ page }) => {
   await setupExamplePage(page, url);
 
   // The host stays a zero-height anchor in the header, so what becomes visible is the `dialog` in its shadow root.
-  const drilldown = page.locator(`#${ids.navDrilldown} dialog`);
+  const drilldown = page.locator('#nav-drilldown dialog');
   await expect(drilldown).toBeHidden();
 
-  await page.locator(`#${ids.navButton}`).click();
+  await page.locator('#nav-button').click();
   await expect(drilldown).toBeVisible();
 
   // Closing is requested by the component and written back by the page – the one half of controlled mode that an
@@ -38,8 +37,8 @@ test('opens and closes the navigation drilldown', async ({ page }) => {
 test('pauses and resumes the hero video from its control', async ({ page }) => {
   await setupExamplePage(page, url);
 
-  const video = page.locator(`#${ids.heroVideo}`);
-  const pauseButton = page.locator(`#${ids.pauseButton}`);
+  const video = page.locator('#hero-video');
+  const pauseButton = page.locator('#pause-button');
   const isPaused = () => video.evaluate((element: HTMLVideoElement) => element.paused);
 
   // The button hides its label, so its text *is* its accessible name – and it is derived from the media events, not

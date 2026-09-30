@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { ids } from '../../../../src/_ids.ts';
 import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
@@ -22,10 +21,10 @@ test('opens and closes the navigation drilldown', async ({ page }) => {
   await setupExamplePage(page, url);
 
   // The host stays a zero-height anchor in the header, so what becomes visible is the `dialog` in its shadow root.
-  const drilldown = page.locator(`#${ids.navDrilldown} dialog`);
+  const drilldown = page.locator('#nav-drilldown dialog');
   await expect(drilldown).toBeHidden();
 
-  await page.locator(`#${ids.navButton}`).click();
+  await page.locator('#nav-button').click();
   await expect(drilldown).toBeVisible();
 
   // Closing is requested by the component and written back by the page – the one half of controlled mode that an

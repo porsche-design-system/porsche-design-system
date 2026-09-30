@@ -77,7 +77,6 @@ src/
 ├── index.page.tsx            # overview of the source tree – dev only, never emitted
 ├── _data.ts                  # templateItems, patternItems (URLs below their category), chrome nav
 ├── _classes.ts               # classes(): joins class names, dropping the optional ones that are unset
-├── _ids.ts                   # the ids the behaviour of the partials is wired on
 ├── _media.ts                 # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts       # JSX typings for the PDS web components
 ├── _layouts/
@@ -179,8 +178,7 @@ and emitted as three. A few things follow from that:
 - Start every script with a comment saying what it does: it is what an error of the build names the script by.
 - The scripts of a page end up in one module scope, so two of them must not declare the same top level name — the build
   fails if they do. In dev each of them is a module of its own and would not tell.
-- A script is a template literal, so `${…}` is resolved at build time — which is how the scripts of the partials take
-  their ids from [`src/_ids.ts`](src/_ids.ts). A `${` or a backtick meant for the browser has to be escaped.
+- A script is a template literal, so a `${` or a backtick meant for the browser has to be escaped.
 - In dev each script is a module of its own, so a page cannot call a function declared by the script of a partial — it
   talks to it through the DOM, as the feedback variants do with `form.reset()`.
 - Imports are allowed (`import { componentsReady } from '@porsche-design-system/components-js';`); the build hoists them

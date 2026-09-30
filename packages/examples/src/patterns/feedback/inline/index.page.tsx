@@ -1,4 +1,3 @@
-import { ids } from '../../../_ids.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { FeedbackForm } from '../../../_partials/feedback/FeedbackForm.tsx';
 import { Script } from '../../../_partials/Script.tsx';
@@ -47,9 +46,9 @@ const Page = () => (
       const restart = document.getElementById('feedback-restart');
 
       restart.addEventListener('click', () => {
-        document.getElementById('${ids.feedbackForm}').reset();
+        document.getElementById('feedback-form').reset();
         // Return focus to the question so the flow is re-announced and can be repeated from the start.
-        document.getElementById('${ids.feedbackQuestion}').focus();
+        document.getElementById('feedback-question').focus();
       });
     `}</Script>
   </PatternPage>

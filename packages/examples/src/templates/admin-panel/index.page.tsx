@@ -13,7 +13,7 @@ import { Script } from '../../_partials/Script.tsx';
  *
  * The repeated parts – the sidebar navigation, the rows of the table, the link lists – are data, so the entries
  * cannot drift apart and a change reaches all of them. Everything interactive is wired up by the script at the end of
- * the page on the ids below, which stay literals: `src/_ids.ts` holds the ids of the partials only.
+ * the page on the ids below.
  *
  * - `admin-canvas` – the shell, whose two sidebars are used in controlled mode;
  * - `settings-button` / `search-button` – the two affordances of the banner, and what they open;

@@ -13,7 +13,6 @@
  */
 
 import type { ComponentChildren } from 'preact';
-import { ids } from '../../_ids.ts';
 import { Script } from '../Script.tsx';
 
 /** One step of the satisfaction scale: the number shown, and what it means. */
@@ -45,7 +44,7 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
     {/* Focusable without being a tab stop: the flow moves focus here when it starts over, so the question is
         announced again instead of leaving focus on a control that is no longer there. */}
     <p-heading
-      id={ids.feedbackQuestion}
+      id="feedback-question"
       class="focus-visible:outline outline-focus outline-offset-2 rounded-md"
       tag="h2"
       size="md"
@@ -56,7 +55,7 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
     </p-heading>
 
     {/* The submit button is a `button`, not a `submit`: nothing is sent anywhere, so the form never navigates. */}
-    <form id={ids.feedbackForm} class="grid gap-fluid-md justify-items-center">
+    <form id="feedback-form" class="grid gap-fluid-md justify-items-center">
       <div class="w-full grid md:grid-cols-[auto_minmax(320px,1fr)_auto] items-center gap-static-md">
         <p-text
           class="max-sm:hidden row-2 md:row-auto col-1 md:col-auto justify-self-start"
@@ -67,7 +66,7 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
           Very dissatisfied
         </p-text>
         <p-segmented-control
-          id={ids.feedbackRating}
+          id="feedback-rating"
           class="row-1 md:row-auto col-span-2 md:col-auto"
           columns="{ base: 1, s: 5 }"
           label="Select your satisfaction from the scale 1 (very dissatisfied) to 5 (very satisfied)"
@@ -93,14 +92,14 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
       </div>
       {/* Both are revealed by the rating, so nothing is asked before there is something to comment on. */}
       <p-textarea
-        id={ids.feedbackComment}
+        id="feedback-comment"
         class="w-full"
         name="comment"
         label="What two things could we do to make this page better?"
         rows={4}
         hidden
       />
-      <p-button id={ids.feedbackSubmit} type="button" hidden>
+      <p-button id="feedback-submit" type="button" hidden>
         Submit feedback
       </p-button>
     </form>
@@ -108,14 +107,14 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
     {/* The confirmation replaces the form in place. `aria-live` covers the case where focus cannot be moved – the
         heading is focused as well, so the change is announced either way. */}
     <div
-      id={ids.feedbackThanks}
+      id="feedback-thanks"
       class="grid gap-fluid-md justify-items-center"
       aria-live="polite"
       aria-atomic="true"
       hidden
     >
       <p-heading
-        id={ids.feedbackThanksHeading}
+        id="feedback-thanks-heading"
         class="focus-visible:outline outline-focus outline-offset-2 rounded-md"
         tag="h2"
         size="md"
@@ -132,13 +131,13 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
       //
       // No data is sent anywhere: the submission is simulated, so the flow can be reviewed end to end.
 
-      const question = document.getElementById('${ids.feedbackQuestion}');
-      const form = document.getElementById('${ids.feedbackForm}');
-      const rating = document.getElementById('${ids.feedbackRating}');
-      const comment = document.getElementById('${ids.feedbackComment}');
-      const submit = document.getElementById('${ids.feedbackSubmit}');
-      const thanks = document.getElementById('${ids.feedbackThanks}');
-      const thanksHeading = document.getElementById('${ids.feedbackThanksHeading}');
+      const question = document.getElementById('feedback-question');
+      const form = document.getElementById('feedback-form');
+      const rating = document.getElementById('feedback-rating');
+      const comment = document.getElementById('feedback-comment');
+      const submit = document.getElementById('feedback-submit');
+      const thanks = document.getElementById('feedback-thanks');
+      const thanksHeading = document.getElementById('feedback-thanks-heading');
 
       // Handle of the simulated request, so starting over mid-submission can cancel it.
       let pendingSubmission;
