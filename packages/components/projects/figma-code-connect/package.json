@@ -1,0 +1,37 @@
+{
+  "name": "@porsche-design-system/figma-code-connect",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "description": "Figma Code Connect for the Porsche Design System: generates the templates from component-meta and publishes them",
+  "scripts": {
+    "figma:generate": "tsx scripts/figmaGenerate.ts",
+    "figma:parse": "tsx scripts/figmaConnect.ts parse",
+    "figma:preview": "tsx scripts/figmaConnect.ts preview",
+    "figma:publish": "tsx scripts/figmaConnect.ts publish",
+    "figma:publish:dry": "tsx scripts/figmaConnect.ts publish --dry-run",
+    "figma:unpublish": "tsx scripts/figmaConnect.ts unpublish",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts"
+  },
+  "dependencies": {
+    "@porsche-design-system/component-meta": "0.0.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "change-case": "^5.4.4",
+    "fast-glob": "^3.3.3"
+  },
+  "devDependencies": {
+    "@figma/code-connect": "2.0.0",
+    "@types/node": "^26.5.1",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

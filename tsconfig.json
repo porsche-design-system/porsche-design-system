@@ -2,7 +2,8 @@
   "extends": "shared/tsconfig.base.json",
   "compilerOptions": {
     "types": ["node"],
-    "noEmit": true
+    "noEmit": true,
+    "allowImportingTsExtensions": true
   },
   "include": ["scripts/*.ts", ".github/scripts/*.ts"]
 }
