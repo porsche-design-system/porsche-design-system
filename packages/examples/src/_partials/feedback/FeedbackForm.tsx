@@ -6,16 +6,15 @@
  * the pages instead of in `src/_partials/`, which holds the chrome every example can use; the leading underscore keeps
  * it a build input either way.
  *
- * The ids are the contract with the script of each page and stay literals: `src/_ids.ts` holds the ids of the
- * partials that bring their own behaviour, and this one brings none.
- *
- * - `feedback-question` – the heading focus returns to when the flow starts over;
- * - `feedback-form` – scale, comment and submit, hidden as a whole once the answer is in;
- * - `feedback-rating` / `feedback-comment` / `feedback-submit` – the three controls of the flow;
- * - `feedback-thanks` / `feedback-thanks-heading` – the confirmation, and the heading focus is moved to.
+ * The flow brings its own behaviour, so both variants share it as well: a rating reveals the comment and the submit
+ * button, submitting shows the confirmation, and `reset()` of the form starts over. What a variant does around it –
+ * opening a modal, offering to start over – is the script of its page, which talks to the flow through the DOM only:
+ * in dev every script is a module of its own, so a page cannot call a function declared here.
  */
 
 import type { ComponentChildren } from 'preact';
+import { ids } from '../../_ids.ts';
+import { Script } from '../Script.tsx';
 
 /** One step of the satisfaction scale: the number shown, and what it means. */
 type Rating = {
@@ -46,7 +45,7 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
     {/* Focusable without being a tab stop: the flow moves focus here when it starts over, so the question is
         announced again instead of leaving focus on a control that is no longer there. */}
     <p-heading
-      id="feedback-question"
+      id={ids.feedbackQuestion}
       class="focus-visible:outline outline-focus outline-offset-2 rounded-md"
       tag="h2"
       size="md"
@@ -57,7 +56,7 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
     </p-heading>
 
     {/* The submit button is a `button`, not a `submit`: nothing is sent anywhere, so the form never navigates. */}
-    <form id="feedback-form" class="grid gap-fluid-md justify-items-center">
+    <form id={ids.feedbackForm} class="grid gap-fluid-md justify-items-center">
       <div class="w-full grid md:grid-cols-[auto_minmax(320px,1fr)_auto] items-center gap-static-md">
         <p-text
           class="max-sm:hidden row-2 md:row-auto col-1 md:col-auto justify-self-start"
@@ -68,7 +67,7 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
           Very dissatisfied
         </p-text>
         <p-segmented-control
-          id="feedback-rating"
+          id={ids.feedbackRating}
           class="row-1 md:row-auto col-span-2 md:col-auto"
           columns="{ base: 1, s: 5 }"
           label="Select your satisfaction from the scale 1 (very dissatisfied) to 5 (very satisfied)"
@@ -94,14 +93,14 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
       </div>
       {/* Both are revealed by the rating, so nothing is asked before there is something to comment on. */}
       <p-textarea
-        id="feedback-comment"
+        id={ids.feedbackComment}
         class="w-full"
         name="comment"
         label="What two things could we do to make this page better?"
         rows={4}
         hidden
       />
-      <p-button id="feedback-submit" type="button" hidden>
+      <p-button id={ids.feedbackSubmit} type="button" hidden>
         Submit feedback
       </p-button>
     </form>
@@ -109,14 +108,14 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
     {/* The confirmation replaces the form in place. `aria-live` covers the case where focus cannot be moved – the
         heading is focused as well, so the change is announced either way. */}
     <div
-      id="feedback-thanks"
+      id={ids.feedbackThanks}
       class="grid gap-fluid-md justify-items-center"
       aria-live="polite"
       aria-atomic="true"
       hidden
     >
       <p-heading
-        id="feedback-thanks-heading"
+        id={ids.feedbackThanksHeading}
         class="focus-visible:outline outline-focus outline-offset-2 rounded-md"
         tag="h2"
         size="md"
@@ -128,5 +127,64 @@ export const FeedbackForm = ({ confirmationAction }: FeedbackFormProps) => (
       <p-text align="center">Your feedback helps us continuously improve our page.</p-text>
       {confirmationAction}
     </div>
+    <Script>{`
+      // Behaviour of the feedback flow: which of its two steps – the question or the confirmation – is shown.
+      //
+      // No data is sent anywhere: the submission is simulated, so the flow can be reviewed end to end.
+
+      const question = document.getElementById('${ids.feedbackQuestion}');
+      const form = document.getElementById('${ids.feedbackForm}');
+      const rating = document.getElementById('${ids.feedbackRating}');
+      const comment = document.getElementById('${ids.feedbackComment}');
+      const submit = document.getElementById('${ids.feedbackSubmit}');
+      const thanks = document.getElementById('${ids.feedbackThanks}');
+      const thanksHeading = document.getElementById('${ids.feedbackThanksHeading}');
+
+      // Handle of the simulated request, so starting over mid-submission can cancel it.
+      let pendingSubmission;
+
+      // Choosing a rating reveals the optional free-text field and the submit button.
+      rating.addEventListener('change', () => {
+        comment.hidden = false;
+        submit.hidden = false;
+      });
+
+      // Reveal the confirmation once the "submission" has completed.
+      const showConfirmation = () => {
+        form.hidden = true;
+        question.hidden = true;
+        thanks.hidden = false;
+        submit.loading = false;
+        // Move focus to the confirmation so keyboard and screen reader users are informed.
+        thanksHeading.focus();
+      };
+
+      submit.addEventListener('click', () => {
+        // Simulate a short server round-trip: show a loading spinner while "submitting", then reveal the
+        // confirmation. In a real integration the request would happen here.
+        submit.loading = true;
+        window.clearTimeout(pendingSubmission);
+        pendingSubmission = window.setTimeout(() => {
+          // The submission counts as pending as long as the button is loading, so whoever ends the loading state
+          // cancels it – the dialog variant does when it is closed mid-submission.
+          if (submit.loading) {
+            showConfirmation();
+          }
+        }, 1200);
+      });
+
+      // "form.reset()" starts the flow over – it is how a variant asks for it, since it cannot call into this script.
+      form.addEventListener('reset', () => {
+        window.clearTimeout(pendingSubmission);
+        rating.value = '';
+        comment.value = '';
+        comment.hidden = true;
+        submit.loading = false;
+        submit.hidden = true;
+        thanks.hidden = true;
+        question.hidden = false;
+        form.hidden = false;
+      });
+    `}</Script>
   </>
 );

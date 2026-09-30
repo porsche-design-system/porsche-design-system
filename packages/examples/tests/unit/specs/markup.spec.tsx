@@ -659,9 +659,16 @@ describe('feedback patterns', () => {
     expect(countOccurrences(html, 'aria-live="polite"')).toBe(1);
   });
 
-  it.each(feedbackPages)('should keep the %s variant on its own behaviour', async (_name, Page) => {
-    expect(extractScripts(await renderPage(Page)).scripts).toHaveLength(1);
-  });
+  it.each(feedbackPages)(
+    'should share the flow in the %s variant, adding only its own behaviour',
+    async (_name, Page) => {
+      const { scripts } = extractScripts(await renderPage(Page));
+
+      // The flow is the script of `FeedbackForm`; the page adds what its variant does around it.
+      expect(scripts).toHaveLength(2);
+      expect(scripts.filter((script) => script.includes("getElementById('feedback-rating')"))).toHaveLength(1);
+    }
+  );
 
   it('should show the inline variant in the page, offering to start over', async () => {
     const html = await renderPage(FeedbackInlinePage);

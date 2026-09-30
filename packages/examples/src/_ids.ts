@@ -18,6 +18,20 @@ export const ids = {
   pauseButton: 'pause-button',
   /** The video that control operates – rendered by the page, operated by `VideoPauseButton`. */
   heroVideo: 'hero-video',
+  /** Heading of the feedback question; focus returns to it when the flow starts over – `FeedbackForm`. */
+  feedbackQuestion: 'feedback-question',
+  /** Scale, comment and submit, hidden as a whole once the answer is in; `reset()` starts over – `FeedbackForm`. */
+  feedbackForm: 'feedback-form',
+  /** The satisfaction scale – `FeedbackForm`. */
+  feedbackRating: 'feedback-rating',
+  /** The optional comment, revealed by a rating – `FeedbackForm`. */
+  feedbackComment: 'feedback-comment',
+  /** The submit button, revealed by a rating; loading while the submission is pending – `FeedbackForm`. */
+  feedbackSubmit: 'feedback-submit',
+  /** The confirmation replacing the form – `FeedbackForm`. */
+  feedbackThanks: 'feedback-thanks',
+  /** Heading of the confirmation, focused once it shows – `FeedbackForm`. */
+  feedbackThanksHeading: 'feedback-thanks-heading',
 } as const;
 
 export type BehaviourId = (typeof ids)[keyof typeof ids];

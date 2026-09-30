@@ -97,7 +97,7 @@ src/
 │   │   ├── MetaActions.tsx   # icon affordances, from `metaActionItems`
 │   │   ├── NoticeBar.tsx     # note above the bar (stacked only)
 │   │   └── CategoryTabs.tsx  # category navigation below the bar (stacked only)
-│   ├── feedback/FeedbackForm.tsx  # the flow both feedback patterns ask
+│   ├── feedback/FeedbackForm.tsx  # the flow both feedback patterns ask, with its behaviour
 │   ├── footer/Footer.tsx
 │   └── ExampleList.tsx
 ├── assets/
@@ -149,7 +149,7 @@ export default Page;
 
 Behaviour is written in JSX too, as plain browser JavaScript in a [`<Script>`](src/_partials/Script.tsx) next to the
 markup it wires up — at the end of the page for the behaviour of the example, inside the partial for behaviour a partial
-brings along (`MainNav` opens its drilldown, `VideoPauseButton` operates the hero video):
+brings along (`MainNav` opens its drilldown, `VideoPauseButton` operates the hero video, `FeedbackForm` runs its flow):
 
 ```tsx
 const Page = () => (
@@ -181,6 +181,8 @@ and emitted as three. A few things follow from that:
   fails if they do. In dev each of them is a module of its own and would not tell.
 - A script is a template literal, so `${…}` is resolved at build time — which is how the scripts of the partials take
   their ids from [`src/_ids.ts`](src/_ids.ts). A `${` or a backtick meant for the browser has to be escaped.
+- In dev each script is a module of its own, so a page cannot call a function declared by the script of a partial — it
+  talks to it through the DOM, as the feedback variants do with `form.reset()`.
 - Imports are allowed (`import { componentsReady } from '@porsche-design-system/components-js';`); the build hoists them
   to the top of `main.js`.
 

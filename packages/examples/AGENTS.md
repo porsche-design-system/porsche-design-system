@@ -99,7 +99,7 @@ src/
 │   ├── VideoPauseButton.tsx      # pause control of a hero video, with the script operating the video
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
-│   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask
+│   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask, with its behaviour
 ├── _media.ts                     # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
 ├── assets/styles.css             # Tailwind entry: @theme, global element defaults – copied next to every page
@@ -348,8 +348,13 @@ reaches through interaction**.
   `<script type="module">` with the code unescaped – a plain `<script>{code}</script>` would reach the browser as
   `&amp;&amp;`, because Preact escapes the text of every element. The behaviour of an example goes to the end of its
   page; behaviour a partial needs wherever it is rendered goes into the partial (`MainNav` wires up its drilldown,
-  `VideoPauseButton` its video), so a page gets it by rendering the partial – there is no detection rule to keep in
-  sync. Start every script with a comment saying what it does: the build names a script by its first line.
+  `VideoPauseButton` its video, `FeedbackForm` its flow), so a page gets it by rendering the partial – there is no
+  detection rule to keep in sync, and two pages sharing a partial do not duplicate its behaviour. Start every script
+  with a comment saying what it does: the build names a script by its first line.
+- **A page talks to the script of a partial through the DOM only.** In dev every `<Script>` is a module of its own, so a
+  page cannot call a function a partial's script declares – it would work once built, where they share a scope, and fail
+  in dev. Use what the elements offer instead: the feedback variants start the flow over with `form.reset()`, which
+  `FeedbackForm` listens for, and the dialog cancels a pending submission by ending the `loading` state of its button.
 - **Scripts are moved, styles are copied.** The dev server serves the scripts where they stand – Vite turns every inline
   module script into a module it transforms, bare imports included. `scripts/build.ts` calls `extractScripts()` of
   [`plugins/entries.ts`](plugins/entries.ts) instead: it removes every `<script type="module">` from the rendered page,

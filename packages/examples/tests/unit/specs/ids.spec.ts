@@ -19,6 +19,15 @@ import { countOccurrences, examplePages } from '../helpers/index.ts';
 const wirings: BehaviourId[][] = [
   [ids.navButton, ids.navDrilldown],
   [ids.pauseButton, ids.heroVideo],
+  [
+    ids.feedbackQuestion,
+    ids.feedbackForm,
+    ids.feedbackRating,
+    ids.feedbackComment,
+    ids.feedbackSubmit,
+    ids.feedbackThanks,
+    ids.feedbackThanksHeading,
+  ],
 ];
 
 /** Every id a script looks up, whether by `getElementById()` or by an `#id` selector. */
