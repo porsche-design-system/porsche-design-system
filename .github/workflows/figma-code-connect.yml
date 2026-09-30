@@ -1,0 +1,323 @@
+name: 'Figma Code Connect'
+
+# Generates the Code Connect templates from component-meta, publishes what changed and tells design what to change in
+# Figma, without gating a merge. Rationale, secrets and exit codes: docs/runbooks/figma-code-connect.md.
+
+on:
+  push:
+    # issue/4745 is temporary: the end-to-end test against the copy library runs from the branch. Remove before merge.
+    branches: [main, issue/4745]
+    paths:
+      - 'packages/components/src/**' # a prop, slot or allowed value added or removed in code, wherever its constant lives
+      - 'packages/components/projects/figma-code-connect/**' # the generator, the rules, the baseline, the configs
+      - 'packages/assets/projects/icons/**' # the icon, flag and model-signature manifests are allowed values
+      - 'packages/assets/projects/flags/**'
+      - 'packages/assets/projects/model-signatures/**'
+      - 'scripts/build-slack-figma-payload.ts'
+      - '.github/workflows/figma-code-connect.yml'
+  schedule:
+    - cron: '0 6 * * *' # daily run against the live library: reports design lines, publishes when a set or icon changed
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Publish even when nothing changed since the last publish (repairs records edited in Figma)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write # the one issue
+
+# Never cancel a run in progress: publish uploads one label config after another, so a cancelled run mixes commits.
+concurrency:
+  group: figma-code-connect
+  cancel-in-progress: false
+
+env:
+  ISSUE_TITLE: 'Figma Code Connect: action needed'
+  # a record Figma refused, as scripts/figmaConnect.ts lists it
+  REFUSED_LINE: '^  - figma[^ ]*\.json: '
+
+jobs:
+  sync:
+    name: 'Pull Figma, generate, publish, notify design'
+    if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      # figma:generate imports @porsche-design-system/component-meta, whose dist/ is gitignored.
+      - run: npm run build:core-dependencies
+
+      # The design lines it prints go to the issue and Slack. Its exit code is kept, so the issue can tell an outage
+      # from a repository mistake.
+      - name: 'figma:generate'
+        id: generate
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          npm run figma:generate --workspace=@porsche-design-system/figma-code-connect 2>&1 | tee "$RUNNER_TEMP/generate.log"
+          code=${PIPESTATUS[0]}
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit "$code"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # Exactly what publish uploads: each label's parse output minus the checkout path, sorted as glob order varies.
+      - name: 'Hash what publish would upload'
+        id: hash
+        if: steps.generate.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        working-directory: packages/components/projects/figma-code-connect
+        run: |
+          mkdir -p "$RUNNER_TEMP/current"
+          for config in figma*.config.json; do
+            npx figma connect parse --config "$config" --exit-on-unreadable-files --skip-update-check | jq -cS '.[] | del(._codeConnectFilePath)'
+          done | LC_ALL=C sort > "$RUNNER_TEMP/current/parse.jsonl"
+          hash=$(sha256sum < "$RUNNER_TEMP/current/parse.jsonl" | cut -c1-64)
+          echo "hash=$hash" >> "$GITHUB_OUTPUT"
+          echo "hash=$hash"
+
+      # The last publish's record, `<hash> clean|partial`: the key is this run's, so restore-keys finds the newest.
+      - name: 'Restore the record of the last publish'
+        if: steps.hash.outcome == 'success'
+        continue-on-error: true
+        uses: actions/cache/restore@v5
+        with:
+          path: ${{ runner.temp }}/published
+          key: figma-code-connect-published-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: figma-code-connect-published-
+
+      # Which records differ from the last publish: the summary names them, the artifact holds the diff.
+      - name: 'What changed since the last publish'
+        id: changes
+        if: steps.hash.outcome == 'success'
+        shell: bash
+        run: |
+          last="$RUNNER_TEMP/published/parse.jsonl"; current="$RUNNER_TEMP/current/parse.jsonl"
+          if [ ! -f "$last" ]; then echo "## no record of a last publish to compare with" >> "$GITHUB_STEP_SUMMARY"; exit 0; fi
+          { grep -vxFf "$last" "$current" || true; grep -vxFf "$current" "$last" || true; } > "$RUNNER_TEMP/changed.jsonl"
+          jq -r '"\(.component) (\(.label))"' "$RUNNER_TEMP/changed.jsonl" | sort -u > "$RUNNER_TEMP/changed.txt"
+          if [ -s "$RUNNER_TEMP/changed.txt" ]; then
+            diff -u "$last" "$current" > "$RUNNER_TEMP/changes.diff" || true
+            { echo "## records that differ from the last publish ($(wc -l < "$RUNNER_TEMP/changed.txt" | tr -d ' '))"; echo '```'; cat "$RUNNER_TEMP/changed.txt"; echo '```'; echo "Full diff: artifact \`code-connect-changes\`."; } >> "$GITHUB_STEP_SUMMARY"
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "## no record differs from the last publish" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v7
+        if: steps.changes.outputs.present == 'true'
+        with:
+          name: code-connect-changes
+          path: ${{ runner.temp }}/changes.diff
+
+      # Publish unless the last publish was clean with this hash. A re-run of a commit that is no longer the branch tip
+      # never publishes: it would upload an older checkout over newer records.
+      - name: 'Decide whether to publish'
+        id: decide
+        if: steps.hash.outcome == 'success'
+        shell: bash
+        env:
+          HASH: ${{ steps.hash.outputs.hash }}
+          FORCE: ${{ inputs.force }}
+          ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          record=$(cat "$RUNNER_TEMP/published/record" 2>/dev/null || true)
+          echo "last publish: ${record:-none}"
+          publish=true
+          tip=$([ "$ATTEMPT" -gt 1 ] && git ls-remote --quiet origin "refs/heads/$GITHUB_REF_NAME" | cut -f1 || true)
+          if [ -n "$tip" ] && [ "$tip" != "$GITHUB_SHA" ]; then
+            publish=false; echo "::notice::re-run of a commit that is no longer the tip of $GITHUB_REF_NAME; not publishing, dispatch the workflow instead"
+          elif [ "$FORCE" = "true" ]; then
+            echo "::notice::force: publishing regardless of the last publish"
+          elif [ "$record" = "$HASH clean" ]; then
+            publish=false; echo "## nothing changed since the last publish, not publishing" >> "$GITHUB_STEP_SUMMARY"; echo "nothing changed since the last publish"
+          fi
+          echo "publish=$publish" >> "$GITHUB_OUTPUT"
+
+      # A record Figma refuses fails nothing here: it is listed in the log, and the next step records a partial publish.
+      - name: 'figma:publish'
+        id: publish
+        if: steps.decide.outputs.publish == 'true'
+        continue-on-error: true
+        shell: bash
+        run: npm run figma:publish --workspace=@porsche-design-system/figma-code-connect 2>&1 | tee "$RUNNER_TEMP/publish.log"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # Partial when publish failed or Figma refused a record, so the next run retries; the parse output feeds its diff.
+      - name: 'Record this publish'
+        id: record
+        if: always() && steps.publish.outcome != 'skipped'
+        shell: bash
+        env:
+          HASH: ${{ steps.hash.outputs.hash }}
+          PUBLISH_OUTCOME: ${{ steps.publish.outcome }}
+        run: |
+          state=clean
+          if [ "$PUBLISH_OUTCOME" != "success" ] || grep -Eq "$REFUSED_LINE" "$RUNNER_TEMP/publish.log"; then state=partial; fi
+          mkdir -p "$RUNNER_TEMP/published"
+          echo "$HASH $state" > "$RUNNER_TEMP/published/record"
+          cp "$RUNNER_TEMP/current/parse.jsonl" "$RUNNER_TEMP/published/parse.jsonl"
+          echo "recorded: $HASH $state"
+      - uses: actions/cache/save@v5
+        if: always() && steps.record.outcome == 'success'
+        with:
+          path: ${{ runner.temp }}/published
+          key: figma-code-connect-published-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: 'Job summary'
+        if: always()
+        shell: bash
+        run: |
+          for log in generate publish; do
+            [ -f "$RUNNER_TEMP/$log.log" ] || continue
+            { echo "## $log"; echo '```'; cat "$RUNNER_TEMP/$log.log"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          done
+          echo "Everything this run generated (templates, icon batches): artifact \`code-connect-generated\`." >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v7
+        if: always() && steps.generate.outcome == 'success'
+        with:
+          name: code-connect-generated
+          path: packages/components/projects/figma-code-connect/generated
+
+      # The issue is open while any section has content. The design section sits between markers, so the next run
+      # compares it and posts to Slack only when it changed.
+      - name: 'Build the issue'
+        id: issue
+        if: always() && steps.generate.outcome != 'skipped'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GENERATE_OUTCOME: ${{ steps.generate.outcome }}
+          GENERATE_CODE: ${{ steps.generate.outputs.code }}
+          HASH_OUTCOME: ${{ steps.hash.outcome }}
+          PUBLISH_OUTCOME: ${{ steps.publish.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          existing=$(gh issue list --state open --search "\"$ISSUE_TITLE\" in:title" --json number --jq '.[0].number // empty')
+          previous=""
+          if [ -n "$existing" ]; then
+            previous=$(gh issue view "$existing" --json body --jq .body | sed -n '/<!-- design-lines -->/,/<!-- \/design-lines -->/p')
+          fi
+          fence() { echo '```'; cat "$1"; echo '```'; }
+          body="$RUNNER_TEMP/issue.md"; : > "$body"
+          pending=false
+
+          # Figma could not be read: nothing was generated or published
+          if [ "$GENERATE_CODE" = "2" ]; then
+            pending=true
+            {
+              echo "## Figma could not be read"
+              echo; echo "\`figma:generate\` could not read Figma on $(date -u +%Y-%m-%d): a token, network or API error. Fix it or re-run the workflow."; echo; fence "$RUNNER_TEMP/generate.log"
+              echo
+            } >> "$body"
+          fi
+
+          # a repository mistake in generation, or a template the CLI cannot parse: nothing was published
+          if { [ "$GENERATE_OUTCOME" = "failure" ] && [ "$GENERATE_CODE" != "2" ]; } || [ "$HASH_OUTCOME" = "failure" ]; then
+            pending=true
+            { echo "## Generation failed"; echo; echo "\`figma:generate\`, or the parse of its output, exited 1 on $(date -u +%Y-%m-%d); nothing was published. See the run's log."; echo; [ -f "$RUNNER_TEMP/generate.log" ] && fence "$RUNNER_TEMP/generate.log"; echo; } >> "$body"
+          fi
+
+          # records Figma refused at publish: a node that is gone or no component set, or a generator bug
+          refused=$([ -f "$RUNNER_TEMP/publish.log" ] && grep -E "$REFUSED_LINE" "$RUNNER_TEMP/publish.log" || true)
+          if [ -n "$refused" ]; then
+            pending=true
+            { echo "## Records Figma refused"; echo; echo "They keep their previous record; everything else published."; echo; echo '```'; echo "$refused"; echo '```'; echo; } >> "$body"
+          fi
+
+          # baseline entries design made obsolete: a developer removes them in the next change, never red
+          cleanup=$([ -f "$RUNNER_TEMP/generate.log" ] && grep -E '^baseline: ' "$RUNNER_TEMP/generate.log" || true)
+          if [ -n "$cleanup" ]; then
+            pending=true
+            { echo "## Baseline cleanup"; echo; echo "These entries no longer match a gap: Figma now has what they accepted as missing, or the component set is gone. Remove them from \`figma/coverage-baseline.json\` in the next pull request that touches the component."; echo; echo '```'; echo "$cleanup"; echo '```'; echo; } >> "$body"
+          fi
+
+          # design lines between markers, the Slack memory; a failed generation carries the previous section forward
+          section=""
+          if [ "$GENERATE_OUTCOME" = "success" ] && [ -f "$RUNNER_TEMP/generate.log" ]; then
+            design=$(grep -E '^design: ' "$RUNNER_TEMP/generate.log" | sort || true)
+            if [ -n "$design" ]; then
+              section=$(printf '<!-- design-lines -->\n## Design must change Figma\n\nSent to the design channel on Slack when this list changes.\n\n```\n%s\n```\n<!-- /design-lines -->' "$design")
+            fi
+          else
+            section="$previous"
+          fi
+          if [ -n "$section" ]; then
+            pending=true
+            { echo "$section"; echo; } >> "$body"
+          fi
+
+          # publish failed: a developer must act
+          if [ "$PUBLISH_OUTCOME" = "failure" ]; then
+            pending=true
+            { echo "## Publish failed"; echo; echo "\`figma:publish\` exited 1 on $(date -u +%Y-%m-%d): an unreadable template, a template Figma could not render in preview, or a token, network or CLI error. Labels upload one after another, so earlier labels may be up."; echo; fence "$RUNNER_TEMP/publish.log"; echo; } >> "$body"
+          fi
+
+          if [ "$pending" = true ]; then
+            echo "See docs/runbooks/figma-code-connect.md. Last run: $RUN_URL" >> "$body"
+            if [ -n "$section" ] && [ "$section" != "$previous" ]; then echo "slack=true" >> "$GITHUB_OUTPUT"; fi
+          fi
+          { echo "existing=$existing"; echo "pending=$pending"; } >> "$GITHUB_OUTPUT"
+
+      # Design gets its changes by component with Figma links, nothing about GitHub: designers have no GitHub account.
+      - name: 'Build Slack payload'
+        id: slack
+        if: always() && steps.issue.outputs.slack == 'true'
+        shell: bash
+        run: |
+          node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-figma-payload.ts \
+            "$RUNNER_TEMP" packages/components/projects/figma-code-connect/figma.config.json > "$RUNNER_TEMP/slack-payload.json"
+          if [ -s "$RUNNER_TEMP/slack-payload.json" ]; then
+            cat "$RUNNER_TEMP/slack-payload.json"
+            echo "send=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::no Figma-side action to report to design"
+          fi
+        env:
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_DESIGN_CHANNEL_ID }}
+
+      - name: 'Send'
+        id: send
+        if: always() && steps.slack.outputs.send == 'true'
+        # `errors: true` — the action's default is false and a rejected request would pass green.
+        uses: slackapi/slack-github-action@v4.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload-file-path: ${{ runner.temp }}/slack-payload.json
+          errors: true
+
+      # After Slack, on every run: a design section Slack did not get is marked unsent, which the next run's sed
+      # skips, so that run sends it again.
+      - name: 'Open, update or close the issue'
+        if: always() && steps.issue.outcome == 'success'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXISTING: ${{ steps.issue.outputs.existing }}
+          PENDING: ${{ steps.issue.outputs.pending }}
+          SLACK_FAILED: ${{ steps.slack.outcome == 'failure' || steps.send.outcome == 'failure' }}
+        run: |
+          if [ "$SLACK_FAILED" = true ]; then
+            sed 's/^<!-- design-lines -->$/<!-- design-lines unsent -->/' "$RUNNER_TEMP/issue.md" > "$RUNNER_TEMP/unsent.md"
+            mv "$RUNNER_TEMP/unsent.md" "$RUNNER_TEMP/issue.md"
+          fi
+          if [ "$PENDING" = true ]; then
+            if [ -n "$EXISTING" ]; then
+              gh issue edit "$EXISTING" --body-file "$RUNNER_TEMP/issue.md"
+            else
+              gh issue create --title "$ISSUE_TITLE" --body-file "$RUNNER_TEMP/issue.md"
+            fi
+          elif [ -n "$EXISTING" ]; then
+            gh issue close "$EXISTING" --comment "Nothing pending: every component is aligned and published, no design line is open."
+          fi
+
+      # continue-on-error hides these failures from the job, so fail it here; design lines never make it red.
+      - name: 'Fail the job'
+        if: always() && (steps.generate.outcome == 'failure' || steps.hash.outcome == 'failure' || steps.publish.outcome == 'failure')
+        run: exit 1
