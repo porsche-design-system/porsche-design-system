@@ -70,3 +70,22 @@ export const openInStackblitz = (framework: Framework, markup: string, colorSche
     }
   );
 };
+
+/** A generated example project, as `@porsche-design-system/examples` writes it into `stackblitz.json`. */
+export type ExampleProject = {
+  title: string;
+  description: string;
+  /** Path inside the project → content: `package.json`, `vite.config.ts`, `index.html`, `main.js`, `style.css`. */
+  files: Record<string, string>;
+};
+
+/**
+ * Opens a pattern or template of the storefront in StackBlitz, as the Vite project it was built from.
+ *
+ * Unlike `openInStackblitz()`, nothing is assembled here: the project is complete as the examples build emitted it,
+ * and the storefront has already pointed its media at the deployment they are served from. `template: 'node'` runs it
+ * in a WebContainer, which installs the released `@porsche-design-system/components-js` from npm.
+ */
+export const openExampleInStackblitz = ({ title, description, files }: ExampleProject) => {
+  sdk.openProject({ files, template: 'node', title, description }, { openFile: 'index.html' });
+};
