@@ -61,8 +61,8 @@
   },
   {
     "chunkShortName": "drilldown",
-    "size": 21035,
-    "gzipSize": 6591
+    "size": 21092,
+    "gzipSize": 6608
   },
   {
     "chunkShortName": "fieldset",
@@ -151,13 +151,13 @@
   },
   {
     "chunkShortName": "link",
-    "size": 7905,
-    "gzipSize": 3360
+    "size": 7414,
+    "gzipSize": 3130
   },
   {
     "chunkShortName": "link-pure",
-    "size": 8811,
-    "gzipSize": 3677
+    "size": 8320,
+    "gzipSize": 3449
   },
   {
     "chunkShortName": "link-tile",
@@ -166,13 +166,13 @@
   },
   {
     "chunkShortName": "link-tile-product",
-    "size": 8124,
-    "gzipSize": 3570
+    "size": 7490,
+    "gzipSize": 3281
   },
   {
     "chunkShortName": "main",
-    "size": 82236,
-    "gzipSize": 25599
+    "size": 82480,
+    "gzipSize": 25643
   },
   {
     "chunkShortName": "modal",
@@ -201,8 +201,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 15055,
-    "gzipSize": 5786
+    "size": 15179,
+    "gzipSize": 5819
   },
   {
     "chunkShortName": "popover",
@@ -211,8 +211,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 18098,
-    "gzipSize": 6637
+    "size": 18368,
+    "gzipSize": 6675
   },
   {
     "chunkShortName": "scroller",
@@ -241,8 +241,8 @@
   },
   {
     "chunkShortName": "stepper-horizontal",
-    "size": 11533,
-    "gzipSize": 4821
+    "size": 11657,
+    "gzipSize": 4852
   },
   {
     "chunkShortName": "switch",
@@ -251,8 +251,8 @@
   },
   {
     "chunkShortName": "table",
-    "size": 10152,
-    "gzipSize": 4016
+    "size": 9979,
+    "gzipSize": 3943
   },
   {
     "chunkShortName": "tabs",

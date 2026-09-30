@@ -6645,7 +6645,7 @@ exports[`should match snapshot 1`] = `
       "href": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.",
+        "description": "When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element, but not both. Without either, it renders as plain text.",
         "type": "string",
       },
       "icon": {
@@ -6986,7 +6986,7 @@ exports[`should match snapshot 1`] = `
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot to render the link label. This slot can be used to slot an anchor tag instead of using the href prop.",
+        "description": "Default slot to render the link label. This slot can be used to slot an anchor tag instead of using the \`href\` prop, but not in combination with it.",
       },
     },
     "styling": "jss",
@@ -7061,7 +7061,7 @@ exports[`should match snapshot 1`] = `
       "href": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.",
+        "description": "When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element, but not both. Without either, it renders as plain text.",
         "type": "string",
       },
       "icon": {
@@ -7439,7 +7439,7 @@ exports[`should match snapshot 1`] = `
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot to render the link label.",
+        "description": "Default slot to render the link label. This slot can be used to slot an anchor tag instead of using the \`href\` prop, but not in combination with it.",
       },
     },
     "styling": "jss",
@@ -7642,7 +7642,7 @@ exports[`should match snapshot 1`] = `
       "href": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element.",
+        "description": "Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element, which is not rendered when \`href\` is set.",
         "type": "string",
       },
       "likeButton": {
@@ -7694,7 +7694,7 @@ exports[`should match snapshot 1`] = `
         "description": "Default slot for the img or picture tag.",
       },
       "anchor": {
-        "description": "Slotted anchor link which can be used instead of the \`href\` prop. Ensure the named slot is directly on the anchor element, without nesting.",
+        "description": "Slotted anchor link which can be used instead of the \`href\` prop. It is not rendered when \`href\` is set. Ensure the named slot is directly on the anchor element, without nesting.",
       },
       "header": {
         "description": "Shows special features about the product like novelty or exclusivity. Although you can pass in anything, it is recommended to use the \`p-tag\` component.",

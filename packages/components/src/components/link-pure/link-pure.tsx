@@ -43,7 +43,7 @@ const propTypes: PropTypes<typeof LinkPure> = {
 };
 
 /**
- * @slot {"name": "", "description": "Default slot to render the link label." }
+ * @slot {"name": "", "description": "Default slot to render the link label. This slot can be used to slot an anchor tag instead of using the `href` prop, but not in combination with it." }
  */
 @Component({
   tag: 'p-link-pure',
@@ -73,7 +73,7 @@ export class LinkPure {
   /** Adds a text underline to the label to reinforce its link-like appearance. */
   @Prop() public underline?: boolean = false;
 
-  /** When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element. */
+  /** When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element, but not both. Without either, it renders as plain text. */
   @Prop() public href?: string;
 
   /** Visually marks the link as the currently active navigation item, e.g. the current page. */

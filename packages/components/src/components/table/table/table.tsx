@@ -2,13 +2,7 @@ import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop }
 import type { PropTypes } from '../../../types';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasNamedSlot, validateProps } from '../../../utils';
 import { getComponentCss } from './table-styles';
-import {
-  SORT_EVENT_NAME,
-  TABLE_LAYOUTS,
-  type TableLayout,
-  type TableUpdateEventDetail,
-  warnIfCaptionIsMissing,
-} from './table-utils';
+import { SORT_EVENT_NAME, TABLE_LAYOUTS, type TableLayout, type TableUpdateEventDetail } from './table-utils';
 
 const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
@@ -47,7 +41,6 @@ export class Table {
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEventDetail>;
 
   public componentWillLoad(): void {
-    warnIfCaptionIsMissing(this.host, this.caption);
     this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableUpdateEventDetail>) => {
       e.stopPropagation();
       this.update.emit(e.detail);
