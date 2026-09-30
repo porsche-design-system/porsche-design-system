@@ -6,6 +6,12 @@ applyTo: "packages/components/**"
 
 > **Note**: See also [`packages/components/AGENTS.md`](../../packages/components/AGENTS.md) for comprehensive component development guidance.
 > The AGENTS.md file is the canonical source for AI assistants.
+>
+> After adding or renaming a prop, slot or allowed value, follow "Figma Code Connect coverage" in
+> `packages/components/projects/figma-code-connect/AGENTS.md`: run `npm run figma:generate` there (needs
+> `FIGMA_ACCESS_TOKEN`; without one, the lines reach you after the merge in the workflow's issue) and decide per gap line
+> whether design adds the property in Figma or the line goes into that package's `figma/coverage-baseline.json` with the
+> user's agreement.
 
 This package contains the **Porsche Design System Web Components** (Stencil/JSS). Generated work here must preserve existing PDS accessibility behavior and styling.
 
