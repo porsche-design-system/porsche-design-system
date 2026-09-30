@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
+import type { Versions } from './generateProject.ts';
 import { categories, mediaPath, type PageLocation } from './projects.ts';
 
 /**
@@ -30,6 +31,18 @@ export const siteMediaDir = path.join(siteDir, path.basename(mediaPath));
 export const writeFile = (filePath: string, content: string): void => {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, content.endsWith('\n') ? content : `${content}\n`);
+};
+
+/**
+ * Dependency versions of this package – the ones the generated projects pin and the note of every page names, read
+ * from one place so they cannot drift apart.
+ */
+export const readVersions = (): Versions => {
+  const { dependencies, devDependencies } = JSON.parse(
+    fs.readFileSync(path.join(packageDir, 'package.json'), 'utf8')
+  ) as { dependencies?: Versions; devDependencies?: Versions };
+
+  return { ...dependencies, ...devDependencies };
 };
 
 /**

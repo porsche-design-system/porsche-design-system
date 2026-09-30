@@ -14,7 +14,7 @@ import {
   scriptEntryName,
   styleEntryName,
 } from '../lib/projects.ts';
-import { distDir, packageDir, srcDir, writeFile } from '../lib/shared.ts';
+import { distDir, packageDir, readVersions, srcDir, writeFile } from '../lib/shared.ts';
 
 /**
  * The shared Tailwind entry, copied next to every page as its `style.css`.
@@ -23,15 +23,6 @@ import { distDir, packageDir, srcDir, writeFile } from '../lib/shared.ts';
  * automatic source detection scans the page from the root of its generated Vite project.
  */
 const sharedStyles = fs.readFileSync(path.join(srcDir, styleEntryName), 'utf8');
-
-/** Dependency versions of the generated projects – taken from this package, so they cannot drift apart. */
-const readVersions = (): Versions => {
-  const { dependencies, devDependencies } = JSON.parse(
-    fs.readFileSync(path.join(packageDir, 'package.json'), 'utf8')
-  ) as { dependencies?: Versions; devDependencies?: Versions };
-
-  return { ...dependencies, ...devDependencies };
-};
 
 /**
  * The pages of a category, located and checked.

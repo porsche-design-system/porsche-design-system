@@ -303,7 +303,10 @@ detection is rooted at the Vite project, so it scans the pages and nothing above
 [`lib/jsx.ts`](lib/jsx.ts) exports `renderPage()` — `preact-render-to-string` for the markup, a `<!doctype html>`
 prefix, then Prettier to format the result — plus a thin Vite plugin. The dev server renders pages on request through
 Vite's SSR module runner; [`scripts/build.ts`](scripts/build.ts) imports the same page modules and writes the same HTML.
-One implementation, so dev and build can't drift apart.
+One implementation, so dev and build can't drift apart. Every page opens with a comment – `exampleNote` in
+[`lib/jsx.ts`](lib/jsx.ts) – on what it is built on, including the version of `@porsche-design-system/components-js` the
+generated `package.json` pins, and on what to change to use it in a JavaScript framework. Tailwind reads that comment
+too, so keep utility-like words out of it; a unit test fails otherwise.
 
 That HTML is deliberately bare: no partials, no stylesheet link, no loader script. The build moves its scripts into the
 page's `main.js`, links that entry, copies the `style.css` next to it ([`lib/entries.ts`](lib/entries.ts)) and writes

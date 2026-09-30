@@ -9,6 +9,7 @@ import prettier from 'prettier';
 import type { Plugin } from 'vite';
 import { linkStylesForDev } from './entries.ts';
 import { categories, type PageLocation, resolvePageLocation } from './projects.ts';
+import { readVersions } from './shared.ts';
 
 /** Every page file default-exports a component that returns the complete `<html>` element. */
 export type PageModule = { default: FunctionComponent };
@@ -21,6 +22,40 @@ export const pageSuffix = '.page.tsx';
  * expressed in JSX.
  */
 export const doctype = '<!doctype html>';
+
+/**
+ * The version of `@porsche-design-system/components-js` the examples are written for – the one the generated projects
+ * pin, since both are read from the dependencies of this package.
+ */
+export const pdsVersion = readVersions()['@porsche-design-system/components-js'];
+if (!pdsVersion) {
+  throw new Error('[examples] "@porsche-design-system/components-js" is missing from the dependencies of this package');
+}
+
+/**
+ * What an example is and how to port it, at the top of every page – the `index.html` is the first file StackBlitz
+ * shows and the one that gets copied. It carries no warning: the markup and its classes are written to be taken over
+ * as they are. Only the behaviour is dummy code, and it says so itself – `exampleBanner` in `entries.ts`.
+ *
+ * Tailwind scans the `index.html` of every generated project, so a word that reads like a utility would end up in
+ * the stylesheet of every example; a unit test compiles the note with Tailwind to keep it free of them.
+ */
+export const exampleNote = `<!--
+  Example of the Porsche Design System, written with web platform technologies – HTML, CSS and JavaScript – but
+  relying on Tailwind CSS, which requires a bundler such as Vite. It is built on the web components and the Tailwind
+  CSS theme of @porsche-design-system/components-js ${pdsVersion}. With another version, check the changelog for
+  changes to the components and the theme.
+
+  To use it in a JavaScript framework, e.g. Next.js, Vue or Angular, adapt it to that framework:
+  - Import the components and the Tailwind CSS theme from the package of your framework instead:
+    @porsche-design-system/components-angular, @porsche-design-system/components-react or
+    @porsche-design-system/components-vue, each with its /tailwindcss entry.
+  - Load the components through the provider or the module of that package instead of the loader script. The other
+    partials vite.config.ts injects are available from its /partials entry.
+  - Pass the attributes as properties: hide-label="true" becomes hideLabel, and a JSON string becomes an object.
+  - Move the behaviour of the page script into the state and the event handlers of your components.
+  - Adapt the :not(:defined) rule of the stylesheet as described there.
+-->`;
 
 const REGEX_SCRIPT_ELEMENT = /(<script\b[^>]*>[\s\S]*?<\/script>)/;
 const REGEX_CLASS_ATTRIBUTE = /\sclass="([^"]*)"/g;
@@ -58,10 +93,11 @@ export const normalizeClassAttributes = (html: string): string =>
  * `embeddedLanguageFormatting: 'off'` keeps the `<Script>` elements as they are written, so `extractScripts()` gives
  * them back unchanged; the build formats the generated `main.js` as a whole – see `formatScriptEntry()`.
  *
- * Class attributes are normalized first – see `normalizeClassAttributes()`.
+ * Class attributes are normalized first – see `normalizeClassAttributes()`. The doctype is followed by
+ * `exampleNote`.
  */
 export const renderPage = async (Page: FunctionComponent): Promise<string> =>
-  prettier.format(normalizeClassAttributes(`${doctype}${render(createElement(Page, {}))}`), {
+  prettier.format(normalizeClassAttributes(`${doctype}${exampleNote}${render(createElement(Page, {}))}`), {
     parser: 'html',
     printWidth: 120,
     htmlWhitespaceSensitivity: 'ignore',

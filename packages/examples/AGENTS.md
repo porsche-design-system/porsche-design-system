@@ -27,7 +27,7 @@ The package is `private: true` and is not published.
 dist/<category>/<page>/        # scripts/build.ts – one standalone Vite project per page, what StackBlitz opens
 ├── package.json               # generated, dependency versions taken from this package
 ├── vite.config.ts             # generated: PDS partial injection with the component chunks of the category
-├── index.html                 # the rendered page
+├── index.html                 # the rendered page, opening with the note on how to port it (exampleNote)
 └── main.js / style.css        # generated entry pair: the page's <Script>s, moved out of it, and the Tailwind entry
 dist-site/                     # scripts/buildSite.ts – what the storefront copies to public/examples/
 ├── media/                     # public/examples/media/, once
@@ -62,7 +62,7 @@ lib/                              # everything importable – by vite.config.ts,
 ├── inline.ts                     # Vite plugin inlining the bundled script and stylesheet – dist-site/ only
 ├── payload.ts                    # the stackblitz.json of a page
 ├── generateProject.ts            # the generated vite.config.ts and package.json
-└── shared.ts                     # output paths and file helpers
+└── shared.ts                     # output paths, file helpers and readVersions() – the dependency versions of this package
 scripts/                          # the entry points `npm run …` starts with tsx – nothing imports them
 ├── build.ts                      # renders the pages and writes one project per page into dist/
 ├── buildSite.ts                  # builds every project into one self-contained page in dist-site/
@@ -357,6 +357,19 @@ reaches through interaction**.
   dev. What differs between the pages rendering a partial is a prop instead, and what the partial has to react to it
   finds through a relation of its own markup: `FeedbackForm` offers to start over when it is `restartable`, and follows
   the modal it is rendered in through `form.closest('p-modal')` – so the dialog page only opens and closes its modal.
+- **Every page opens with `exampleNote`.** [`renderPage()`](lib/jsx.ts) writes it between the doctype and `<html>`, in
+  dev and build alike: a comment saying the example is written with web platform technologies but relies on Tailwind CSS
+  and with it on a bundler – the wording of the setup popover of the storefront's `WebsiteViewer` – and is built on
+  `@porsche-design-system/components-js` in the version the generated projects pin (`pdsVersion`, read like those by
+  `readVersions()` of [`lib/shared.ts`](lib/shared.ts), which a unit test holds them to), and what to change to use it
+  in a framework – the framework package and its `/tailwindcss` entry, the provider instead of the loader script,
+  properties instead of attributes, state and event handlers instead of the page script. It carries no warning, because
+  the markup and its classes are meant to be taken over as they are; only the behaviour is dummy code, which the
+  `DO NOT USE IN PRODUCTION` banner of `main.js` says. Three things constrain the wording: Tailwind scans the
+  `index.html` of every generated project, so a unit test compiles every token of the note and fails on one that yields
+  a utility; the dev markup must not reference the entry, so the note names neither `main.js` nor `style.css`; and it
+  has to stay a valid comment, without `--`. [`scripts/verify.ts`](scripts/verify.ts) fails if Vite's build of a project
+  dropped it.
 - **Scripts are moved, styles are copied.** The dev server serves the scripts where they stand – Vite turns every inline
   module script into a module it transforms, bare imports included. `scripts/build.ts` calls `extractScripts()` of
   [`lib/entries.ts`](lib/entries.ts) instead: it removes every `<script type="module">` from the rendered page, in

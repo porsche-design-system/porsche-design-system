@@ -1,7 +1,9 @@
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import { createElement } from 'preact';
 import { render } from 'preact-render-to-string';
+import { compile } from 'tailwindcss';
 import { describe, expect, it } from 'vitest';
 import {
   dedent,
@@ -14,7 +16,14 @@ import {
 } from '../../../lib/entries.ts';
 import { getPackageJson, getViteConfig } from '../../../lib/generateProject.ts';
 import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../../lib/inline.ts';
-import { doctype, normalizeClassAttributes, renderPage, resolvePagePath } from '../../../lib/jsx.ts';
+import {
+  doctype,
+  exampleNote,
+  normalizeClassAttributes,
+  pdsVersion,
+  renderPage,
+  resolvePagePath,
+} from '../../../lib/jsx.ts';
 import { getStackblitzPayload } from '../../../lib/payload.ts';
 import {
   categories,
@@ -24,6 +33,7 @@ import {
   resolvePageLocation,
   scriptEntryName,
 } from '../../../lib/projects.ts';
+import { readVersions } from '../../../lib/shared.ts';
 import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import { countOccurrences, examplePages } from '../helpers/index.ts';
@@ -124,6 +134,14 @@ describe('generated project', () => {
 
   it('should never add the inline plugin to the project StackBlitz opens', () => {
     expect(getViteConfig(patterns)).not.toContain('inlineEntries');
+  });
+
+  it('should pin the version of the components the note of every page names', () => {
+    const { dependencies } = JSON.parse(getPackageJson(location, readVersions()));
+
+    expect(pdsVersion).toMatch(/^\d+\.\d+\.\d+/);
+    expect(dependencies['@porsche-design-system/components-js']).toBe(pdsVersion);
+    expect(exampleNote).toContain(`@porsche-design-system/components-js ${pdsVersion}.`);
   });
 });
 
@@ -366,8 +384,35 @@ describe('renderPage()', () => {
     );
   });
 
-  it('should prepend the doctype', async () => {
-    expect(await renderPage(LandingPage)).toMatch(new RegExp(`^${doctype}\\n<html lang="en">`));
+  it('should prepend the doctype, followed by the note on what the example is', async () => {
+    expect((await renderPage(LandingPage)).startsWith(`${doctype}\n${exampleNote}\n<html lang="en">`)).toBe(true);
+  });
+
+  it('should keep the note a valid comment', () => {
+    expect(exampleNote).toMatch(/^<!--\n[\s\S]*\n-->$/);
+    // `--` is a parse error inside a comment, and `-->` or `--!>` would end it early.
+    expect(exampleNote.slice('<!--'.length, -'-->'.length)).not.toContain('--');
+  });
+
+  // Tailwind scans the `index.html` of every generated project, and with it the note. Every token of the note, in
+  // every shape Tailwind's extractor could cut it into, is compiled here – a word that reads like a utility (`static`,
+  // `block`, `hidden`, `table`, …) would change the stylesheet.
+  it('should keep the note free of anything Tailwind reads as a utility', async () => {
+    const require = createRequire(import.meta.url);
+    const compiler = await compile('@import "tailwindcss";', {
+      base: import.meta.dirname,
+      loadStylesheet: async (id, base) => {
+        const file = id.startsWith('.') ? path.resolve(base, id) : require.resolve(`${id}/index.css`);
+        return { path: file, base: path.dirname(file), content: fs.readFileSync(file, 'utf8') };
+      },
+    });
+    const candidates = exampleNote
+      .split(/\s+/)
+      .flatMap((token) => [token, ...token.split(/[^\w-]+/), ...token.split(/[^\w:/.()-]+/)])
+      .filter(Boolean);
+    const withoutNote = compiler.build([]);
+
+    expect(compiler.build([...new Set(candidates)])).toBe(withoutNote);
   });
 
   it('should format the output instead of emitting a single line', async () => {

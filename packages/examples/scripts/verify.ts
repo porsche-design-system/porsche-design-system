@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { getLoaderScript } from '@porsche-design-system/components-js/partials';
+import { exampleNote } from '../lib/jsx.ts';
 import type { StackblitzPayload } from '../lib/payload.ts';
 import { categories, mediaPath, payloadName } from '../lib/projects.ts';
 import { distDir, listFiles, listProjects, packageDir, siteDir, siteMediaDir } from '../lib/shared.ts';
@@ -56,10 +57,11 @@ const verify = (): void => {
 
     const html = fs.readFileSync(path.join(pageDir, 'index.html'), 'utf8');
 
-    // What the generated config and the inline plugin are there for – without them the page stays invisible.
-    for (const expected of ['data-pds-loader-script', '<style>']) {
+    // What the generated config and the inline plugin are there for – without them the page stays invisible. And the
+    // note on what the example is, which has to survive Vite's build of the project.
+    for (const expected of ['data-pds-loader-script', '<style>', exampleNote]) {
       if (!html.includes(expected)) {
-        fail(`"${name}" is missing ${expected}`);
+        fail(`"${name}" is missing ${expected.split('\n')[0]}`);
       }
     }
     // Nothing on the way into the page – the build, the inline plugin – may touch the loader: it carries a CSP hash.
