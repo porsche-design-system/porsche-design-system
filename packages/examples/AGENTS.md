@@ -370,8 +370,9 @@ reaches through interaction**.
   own extraction over every page, so a clash fails `test:unit` rather than only `build`.
 - **A script is a template literal.** A backtick or a `${` meant for the browser has to be escaped – prefer quotes in
   comments over backticks. The code is not type-checked or linted either; the e2e suite is what exercises it.
-  `renderPage()` formats with `embeddedLanguageFormatting: 'off'`, so the code reaches `main.js` exactly as written; a
-  unit test compares the two.
+  `renderPage()` formats with `embeddedLanguageFormatting: 'off'`, so the code is extracted exactly as written; a unit
+  test compares the two. `formatScriptEntry()` then runs Prettier over the generated `main.js` – the only place the
+  code is formatted, and parsed, so a syntax error fails the build.
 - **Scripts address elements by id, written as literals.** The script sits in the same component as the markup it wires
   up, so the two are read – and renamed – together; there is no registry. Every id is rendered **once** per page –
   `getElementById()` would only ever find the first one – which a unit test asserts for every page, because axe-core no

@@ -3,7 +3,7 @@ import path from 'node:path';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
 import prettier from 'prettier';
-import { extractScripts, getScriptEntry } from '../lib/entries.ts';
+import { extractScripts, formatScriptEntry, getScriptEntry } from '../lib/entries.ts';
 import { getPackageJson, getViteConfig, type Versions } from '../lib/generateProject.ts';
 import { type PageModule, pageSuffix, renderPage } from '../lib/jsx.ts';
 import {
@@ -107,7 +107,7 @@ const buildPage = async (entry: Category, location: PageLocation, versions: Vers
 
   writeFile(path.join(projectDir, 'index.html'), html);
   writeFile(path.join(projectDir, styleEntryName), sharedStyles);
-  writeFile(path.join(projectDir, scriptEntryName), getScriptEntry(scripts));
+  writeFile(path.join(projectDir, scriptEntryName), await formatScriptEntry(getScriptEntry(scripts)));
   writeFile(
     path.join(projectDir, 'vite.config.ts'),
     await prettier.format(getViteConfig(entry), { parser: 'typescript', printWidth: 120, singleQuote: true })

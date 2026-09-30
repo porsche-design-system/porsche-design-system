@@ -7,6 +7,7 @@ import {
   dedent,
   exampleBanner,
   extractScripts,
+  formatScriptEntry,
   getScriptEntry,
   linkStylesForDev,
   scriptEntryTag,
@@ -321,8 +322,19 @@ describe('entries', () => {
     const { scripts } = extractScripts(await renderPage(Page));
 
     // The very calls `scripts/build.ts` makes: it throws when two scripts of a page declare the same top level name,
-    // since they end up in a single module scope – in dev each of them is a module of its own and would not tell.
-    expect(() => getScriptEntry(scripts)).not.toThrow();
+    // since they end up in a single module scope – in dev each of them is a module of its own and would not tell. The
+    // formatter parses the entry, so a syntax error in a script fails here as well.
+    await expect(formatScriptEntry(getScriptEntry(scripts))).resolves.toEqual(expect.any(String));
+  });
+
+  it('should format the entry the way the repository formats its own code', async () => {
+    expect(await formatScriptEntry('import "./style.css"\nconst a = {b: "c"}\n')).toBe(
+      "import './style.css';\nconst a = { b: 'c' };\n"
+    );
+  });
+
+  it('should fail on a script that is not valid JavaScript', async () => {
+    await expect(formatScriptEntry('const = ;')).rejects.toThrow();
   });
 
   it('should link the shared stylesheet in dev, where no entry imports it', () => {

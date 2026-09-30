@@ -1,3 +1,4 @@
+import prettier from 'prettier';
 import { assetsDirName, scriptEntryName, sharedStyleName, styleEntryName } from './projects.ts';
 
 /**
@@ -122,6 +123,15 @@ export const getScriptEntry = (scripts: string[]): string => {
 
   return `${[[...imports].join('\n'), ...(bodies.length ? [exampleBanner, ...bodies] : [])].join('\n\n')}\n`;
 };
+
+/**
+ * Formats a generated `main.js` the way the repository formats its own code.
+ *
+ * The scripts are template literals, which neither Biome nor `renderPage()` touches, so this is the only place their
+ * code is formatted – and parsed: a syntax error fails the build instead of the browser of whoever opens the example.
+ */
+export const formatScriptEntry = (entry: string): Promise<string> =>
+  prettier.format(entry, { parser: 'babel', printWidth: 120, singleQuote: true, trailingComma: 'es5' });
 
 /**
  * Dev server counterpart of the generated entries: links the shared stylesheet, which the build copies next to every

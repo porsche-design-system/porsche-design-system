@@ -176,7 +176,9 @@ and emitted as three. A few things follow from that:
 - Start every script with a comment saying what it does: it is what an error of the build names the script by.
 - The scripts of a page end up in one module scope, so two of them must not declare the same top level name — the build
   fails if they do. In dev each of them is a module of its own and would not tell.
-- A script is a template literal, so a `${` or a backtick meant for the browser has to be escaped.
+- A script is a template literal, so a `${` or a backtick meant for the browser has to be escaped. Prefix it with
+  `/* language=JavaScript */` for syntax highlighting. Neither Biome nor the page renderer formats it; the build runs
+  Prettier over the generated `main.js`, which also fails on a syntax error.
 - A script only looks up ids its own file renders, which a unit test asserts. A page therefore does not reach into a
   partial: what differs is a prop (`<FeedbackForm restartable />`), and what a partial reacts to it finds through its
   own markup (`FeedbackForm` follows the modal around it via `closest('p-modal')`). In dev each script is a module of

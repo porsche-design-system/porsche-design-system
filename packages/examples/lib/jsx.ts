@@ -55,8 +55,8 @@ export const normalizeClassAttributes = (html: string): string =>
  * `htmlWhitespaceSensitivity: 'ignore'` is required: JSX drops the whitespace between elements that sit on separate
  * lines, so without it the formatter would have to keep inline elements glued together (`</label\n><input`).
  *
- * `embeddedLanguageFormatting: 'off'` keeps the `<Script>` elements as they are written: the formatter would otherwise
- * reprint them with its own defaults, and the build moves them into `main.js` verbatim – see `extractScripts()`.
+ * `embeddedLanguageFormatting: 'off'` keeps the `<Script>` elements as they are written, so `extractScripts()` gives
+ * them back unchanged; the build formats the generated `main.js` as a whole – see `formatScriptEntry()`.
  *
  * Class attributes are normalized first – see `normalizeClassAttributes()`.
  */
