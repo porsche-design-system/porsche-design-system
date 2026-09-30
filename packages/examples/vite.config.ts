@@ -30,9 +30,9 @@ export default defineConfig({
   root: 'src',
   appType: 'mpa',
   publicDir: '../public',
+  // No `open`: there is no page at the root – the URL of every page is listed when the server starts.
   server: {
     port: 3010,
-    open: '/',
   },
   css: {
     transformer: 'lightningcss',

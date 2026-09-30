@@ -1,10 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { styleText } from 'node:util';
+// fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
+import fastGlob from 'fast-glob';
 import { createElement, type FunctionComponent } from 'preact';
 import { render } from 'preact-render-to-string';
 import prettier from 'prettier';
 import type { Plugin } from 'vite';
 import { linkStylesForDev } from './entries.ts';
+import { categories, type PageLocation, resolvePageLocation } from './projects.ts';
 
 /** Every page file default-exports a component that returns the complete `<html>` element. */
 export type PageModule = { default: FunctionComponent };
@@ -65,8 +69,20 @@ export const renderPage = async (Page: FunctionComponent): Promise<string> =>
   });
 
 /**
- * Maps a request URL to a page file: `/` → `index.page.tsx`, `/patterns/` → `patterns/index.page.tsx`,
- * `/templates/landing-page/index.html` → `templates/landing-page/index.page.tsx`.
+ * Every page of the source tree, in a stable order – found by its file name rather than listed anywhere, so a new
+ * example is picked up by the dev server's URL list and by the Playwright suites without being registered.
+ *
+ * A `*.page.tsx` outside a category folder is not a page of any project and is skipped; `scripts/build.ts` rejects it.
+ */
+export const findPages = (srcDir: string): PageLocation[] =>
+  fastGlob
+    .sync(`**/*${pageSuffix}`, { cwd: srcDir, onlyFiles: true, ignore: ['**/_*/**'] })
+    .sort()
+    .flatMap((relativePath) => resolvePageLocation(relativePath) ?? []);
+
+/**
+ * Maps a request URL to a page file: `/templates/landing-page/` or `/templates/landing-page/index.html` →
+ * `templates/landing-page/index.page.tsx`.
  * Returns `undefined` for anything that is not a page request, so assets fall through to Vite.
  */
 export const resolvePagePath = (url: string): string | undefined => {
@@ -125,6 +141,26 @@ export const jsxPages = (): Plugin => {
           next(error);
         }
       });
+
+      // There is no overview page: the URL of every page is listed below Vite's own when the server starts, and the
+      // terminal makes them clickable. Pages added while it runs are served, but only listed after a restart.
+      const printUrls = server.printUrls;
+      server.printUrls = () => {
+        printUrls();
+        const origin = server.resolvedUrls?.local[0];
+        if (!origin) {
+          return;
+        }
+        const pages = findPages(rootDir);
+        for (const { category } of categories) {
+          server.config.logger.info(`\n  ${styleText('bold', category)}`);
+          for (const page of pages.filter((location) => location.category === category)) {
+            server.config.logger.info(
+              `  ➜  ${styleText('cyan', new URL(`${category}/${page.pageDir}/`, origin).href)}`
+            );
+          }
+        }
+      };
 
       // Pages are rendered on the server, so they are not part of the client module graph and cannot hot-update.
       // Vite invalidates the SSR module on change; the browser just needs to ask for the page again.

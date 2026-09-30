@@ -6,16 +6,13 @@ import { extractScripts } from '../../../plugins/entries.ts';
 import { normalizeClassAttributes, renderPage } from '../../../plugins/jsx.ts';
 import { scriptEntryName } from '../../../plugins/projects.ts';
 import { BasePage } from '../../../src/_layouts/BasePage.tsx';
-import { OverviewPage } from '../../../src/_layouts/OverviewPage.tsx';
 import { PatternPage } from '../../../src/_layouts/PatternPage.tsx';
-import { ExampleList } from '../../../src/_partials/ExampleList.tsx';
 import { Footer } from '../../../src/_partials/footer/Footer.tsx';
 import { Head } from '../../../src/_partials/Head.tsx';
 import { categoryItems } from '../../../src/_partials/header/CategoryTabs.tsx';
 import { Header } from '../../../src/_partials/header/Header.tsx';
 import { navItems } from '../../../src/_partials/header/MainNav.tsx';
 import { noticeText } from '../../../src/_partials/header/NoticeBar.tsx';
-import IndexPage, { patternItems, templateItems } from '../../../src/index.page.tsx';
 import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page.tsx';
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';
 import FooterPatternPage from '../../../src/patterns/footer/index.page.tsx';
@@ -32,7 +29,6 @@ import {
   examplePages,
   flattenNavItems,
   getOpeningTag,
-  overviewPages,
   patternPages,
 } from '../helpers/index.ts';
 
@@ -46,18 +42,6 @@ import {
  */
 
 describe('data', () => {
-  it.each([
-    ['template', templateItems],
-    ['pattern', patternItems],
-  ])('should keep every %s href relative to its own project', (_name, items) => {
-    for (const item of items) {
-      expect(item.href.startsWith('/')).toBe(false);
-      expect(item.href.startsWith('patterns/')).toBe(false);
-      expect(item.href.startsWith('templates/')).toBe(false);
-      expect(item.href.endsWith('/')).toBe(true);
-    }
-  });
-
   it('should keep the chrome navigation on placeholder links', () => {
     for (const item of [...flattenNavItems(navItems), ...categoryItems]) {
       expect(item.href).toBe('#');
@@ -260,26 +244,6 @@ describe('Footer', () => {
   });
 });
 
-describe('ExampleList', () => {
-  const html = render(<ExampleList basePath="./" items={patternItems} label="Patterns" />);
-
-  it('should render a labelled navigation landmark', () => {
-    expect(html).toContain('<nav aria-label="Patterns">');
-  });
-
-  it('should link every item against the base path', () => {
-    for (const item of patternItems) {
-      expect(html).toContain(`href="./${item.href}"`);
-      expect(html).toContain(item.label);
-    }
-  });
-
-  it('should render one described entry per item', () => {
-    expect(countOccurrences(html, '<li>')).toBe(patternItems.length);
-    expect(html).toContain(patternItems[0].description);
-  });
-});
-
 describe('BasePage', () => {
   const renderBasePage = (props: Partial<Parameters<typeof BasePage>[0]> = {}) =>
     render(
@@ -374,59 +338,6 @@ describe('PatternPage', () => {
 
     expect(html).not.toContain('<nav aria-label="Main">');
     expect(html).not.toContain('aria-label="Footer"');
-  });
-});
-
-describe('OverviewPage', () => {
-  const html = render(
-    <OverviewPage title="Title" description="Description" heading="Heading" intro="Intro">
-      <section>content</section>
-    </OverviewPage>
-  );
-
-  it('should be a main landmark with the only heading of the page', () => {
-    expect(html).toContain('<main id="main"');
-    expect(countOccurrences(html, '<h1')).toBe(1);
-  });
-
-  it('should render no script, since it has no behaviour and is never built', () => {
-    expect(html).not.toContain('<script');
-  });
-});
-
-describe.each(overviewPages)('%s overview page', (_name, Page) => {
-  it('should render one main landmark and one first level heading', async () => {
-    const html = await renderPage(Page);
-
-    expect(countOccurrences(html, '<main')).toBe(1);
-    expect(countOccurrences(html, '<h1')).toBe(1);
-  });
-
-  it('should not ship the demo chrome', async () => {
-    const html = await renderPage(Page);
-
-    expect(html).not.toContain('<header');
-    expect(html).not.toContain('<footer');
-    expect(html).not.toContain('<nav aria-label="Main">');
-  });
-
-  it('should only contain links that go somewhere', async () => {
-    expect(await renderPage(Page)).not.toContain('href="#"');
-  });
-});
-
-describe('overview pages', () => {
-  it('should link both categories from the source tree overview, prefixed with the category', async () => {
-    const html = await renderPage(IndexPage);
-
-    expect(html).toContain('<nav aria-label="Templates">');
-    expect(html).toContain('<nav aria-label="Patterns">');
-    for (const item of templateItems) {
-      expect(html).toContain(`href="./templates/${item.href}"`);
-    }
-    for (const item of patternItems) {
-      expect(html).toContain(`href="./patterns/${item.href}"`);
-    }
   });
 });
 

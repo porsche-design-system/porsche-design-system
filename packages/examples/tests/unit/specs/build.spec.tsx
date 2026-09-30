@@ -18,9 +18,8 @@ import { categories, getPageId, resolvePageLocation, scriptEntryName } from '../
 import { getPackageJson, getViteConfig } from '../../../scripts/generateProject.ts';
 import { BasePage } from '../../../src/_layouts/BasePage.tsx';
 import { examplesPath, media, mediaPath } from '../../../src/_media.ts';
-import IndexPage from '../../../src/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
-import { countOccurrences, examplePages, overviewPages } from '../helpers/index.ts';
+import { countOccurrences, examplePages } from '../helpers/index.ts';
 
 /**
  * The build pipeline: how a URL maps to a page, how a page becomes a project, what that project and its StackBlitz
@@ -31,10 +30,6 @@ import { countOccurrences, examplePages, overviewPages } from '../helpers/index.
  */
 
 describe('resolvePagePath()', () => {
-  it('should map the root URL to the index page', () => {
-    expect(resolvePagePath('/')).toBe('index.page.tsx');
-  });
-
   it('should map a nested directory URL to its index page', () => {
     expect(resolvePagePath('/templates/landing-page/')).toBe('templates/landing-page/index.page.tsx');
   });
@@ -333,7 +328,7 @@ describe('entries', () => {
   // Regression: Vite's own HTML hook runs before the plugin hooks and warms up every `<script src>` it finds, so a
   // page referencing the generated entry would make the dev server log "Failed to load url /main.js". Only the build
   // links the entry.
-  it.each([...examplePages, ...overviewPages])(
+  it.each(examplePages)(
     'should leave no reference to the generated entry in the dev markup of "%s"',
     async (_name, Page) => {
       expect(linkStylesForDev(await renderPage(Page))).not.toContain(scriptEntryName);
@@ -357,11 +352,11 @@ describe('renderPage()', () => {
   });
 
   it('should prepend the doctype', async () => {
-    expect(await renderPage(IndexPage)).toMatch(new RegExp(`^${doctype}\\n<html lang="en">`));
+    expect(await renderPage(LandingPage)).toMatch(new RegExp(`^${doctype}\\n<html lang="en">`));
   });
 
   it('should format the output instead of emitting a single line', async () => {
-    const html = await renderPage(IndexPage);
+    const html = await renderPage(LandingPage);
 
     expect(html.split('\n').length).toBeGreaterThan(20);
     expect(html).toMatch(/\n {2}<head>\n {4}<meta charset="utf-8" \/>/);
@@ -392,7 +387,7 @@ describe('renderPage()', () => {
 
   // The four layouts all funnel through `Head`, and this is what pins that down: a layout rendering its own `<head>`
   // would silently ship an indexable page, which nothing else here would catch.
-  it.each([...examplePages, ...overviewPages])('should mark "%s" as noindex', async (_name, Page) => {
+  it.each(examplePages)('should mark "%s" as noindex', async (_name, Page) => {
     expect(await renderPage(Page)).toContain('<meta name="robots" content="noindex"');
   });
 });

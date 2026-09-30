@@ -10,7 +10,7 @@ partials are function components whose props the compiler checks.
 ## Commands
 
 ```bash
-npm run start:examples       # dev server on http://localhost:3010
+npm run start:examples       # dev server on http://localhost:3010 – prints the URL of every page
 npm run build:examples       # writes ./dist (one project per page) and ./dist-site (one HTML file per page)
 npm run test:unit:examples
 
@@ -39,8 +39,8 @@ the examples themselves (`npm run build:examples`) – `preview` serves, it does
 | **Templates** | A whole application page, chrome included.           | `BasePage` / `CanvasPage` | `src/templates/…` |
 | **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`             | `src/patterns/…`  |
 
-Both categories are listed in [`src/index.page.tsx`](src/index.page.tsx) (`templateItems`, `patternItems`), the overview
-of the dev server, which is what links an example from there.
+There is no list of them: a page is found by its file name (`index.page.tsx`), and the dev server prints the URL of
+every page when it starts.
 
 The build writes two trees:
 
@@ -60,28 +60,24 @@ dist-site/                        # scripts/buildSite.ts: what the storefront se
 Opening `dist/**/index.html` directly shows unstyled markup, because the partials are only added when the project is
 built. The storefront copies `dist-site/` in its `prebuild` and puts its slug in front of the media paths.
 
-## Links: only the overview navigates
+## Links: examples never navigate
 
 The examples demonstrate chrome, they are not a website. Every link inside a header, a footer or an example body is a
-placeholder `href="#"`, except for in-page anchors, which are real because the target is on the page. The only page with
-working links is the overview of the dev server, `src/index.page.tsx`, which is never emitted and renders no header or
-footer.
+placeholder `href="#"`, except for in-page anchors, which are real because the target is on the page. The examples are
+linked from outside: by the storefront's navigation, and in dev by the URL list the server prints when it starts.
 
-This is why `Header`, `Footer` and the layouts take no `basePath`: they have no URL to build. `ExampleList`, which the
-overview is made of, is the only component that does.
+This is why `Header`, `Footer` and the layouts take no `basePath`: they have no URL to build.
 
 ## Structure
 
 ```text
 src/
-├── index.page.tsx            # overview of the source tree – dev only, never emitted; lists every example
 ├── _media.ts                 # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts       # JSX typings for the PDS web components
 ├── _layouts/
 │   ├── BasePage.tsx          # full page shell: head, header, content, footer
 │   ├── CanvasPage.tsx        # shell of a page whose chrome is `p-canvas`
-│   ├── PatternPage.tsx       # minimal shell for a single section
-│   └── OverviewPage.tsx      # shell of the dev overview
+│   └── PatternPage.tsx       # minimal shell for a single section
 ├── _partials/                # components, never emitted as pages
 │   ├── Head.tsx
 │   ├── Script.tsx            # `<script type="module">` with the behaviour of a page or a partial
@@ -95,8 +91,7 @@ src/
 │   │   ├── NoticeBar.tsx     # note above the bar (stacked only)
 │   │   └── CategoryTabs.tsx  # category navigation below the bar (stacked only)
 │   ├── feedback/FeedbackForm.tsx  # the flow both feedback patterns ask, with its behaviour
-│   ├── footer/Footer.tsx
-│   └── ExampleList.tsx
+│   └── footer/Footer.tsx
 ├── assets/
 │   └── styles.css            # Tailwind entry: theme, global element defaults – copied next to every page
 ├── templates/
@@ -315,6 +310,5 @@ plain HTML, no hydration, no framework runtime.
 Every example ships `main` and section landmarks, labelled `nav` elements, `aria-current` on the active nav item,
 visible `:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header` and
 `footer` landmarks, and a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets
-those landmarks from the component and adds none itself. The dev overview is a `main` landmark with labelled
-navigations. Keep that baseline when adding examples — these demos are documentation, so they have to be correct by
-example.
+those landmarks from the component and adds none itself. Keep that baseline when adding examples — these demos are
+documentation, so they have to be correct by example.

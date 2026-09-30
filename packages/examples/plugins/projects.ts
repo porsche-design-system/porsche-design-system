@@ -110,8 +110,8 @@ export type PageLocation = {
  * Maps a source path to the page it renders.
  *
  * `patterns/header/overlay/index.page.tsx` → `{ category: 'patterns', pageDir: 'header/overlay' }`.
- * Returns `undefined` for anything that is not a page of a category: the root overview page is the dev server's entry
- * point and is never emitted, and a page at the root of a category is not supported – `scripts/build.ts` rejects it.
+ * Returns `undefined` for anything that is not a page of a category: a page outside the category folders belongs to
+ * no project, and a page at the root of a category is not supported – `scripts/build.ts` rejects it.
  */
 export const resolvePageLocation = (relativePath: string): PageLocation | undefined => {
   const [category, ...rest] = relativePath.split('/');

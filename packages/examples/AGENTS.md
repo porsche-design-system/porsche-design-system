@@ -83,14 +83,11 @@ tests/e2e/                        # behaviour: one spec per page, below its cate
 tests/a11y/                       # axe-core: one spec per page, its initial and its interaction states
 tests/vrt/                        # captures: one spec per page, plus the committed __screenshots__
 src/
-├── index.page.tsx                # overview of the source tree – dev only, never emitted; lists every
-│                                 # example (templateItems, patternItems – URLs below their category)
 ├── _layouts/
 │   ├── BasePage.tsx              # full page shell, takes `children`
 │   ├── CanvasPage.tsx            # shell of a page whose chrome is `p-canvas` – no landmark of its own
-│   ├── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
-│   └── OverviewPage.tsx          # shell of the dev overview: a main landmark with link lists
-├── _partials/                    # Head, Header, Footer, ExampleList – checked props
+│   └── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
+├── _partials/                    # Head, Header, Footer – checked props
 │   ├── Script.tsx                # <script type="module"> with unescaped code – all behaviour goes through it
 │   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
@@ -120,7 +117,7 @@ an `index.page.tsx` in a folder of its own, which becomes one project; its behav
 build rejects any other file in the folder. Media belong into `public/examples/media/` and are referenced through
 `media()`.
 
-## Links: only the overview navigates
+## Links: examples never navigate
 
 The examples demonstrate chrome, they are not a website:
 
@@ -129,17 +126,14 @@ The examples demonstrate chrome, they are not a website:
   `packages/examples/src` – a unit test takes its place: every `href` and `action` of an example is `#` or points at an
   id on the same page, and every `<a>` has an `href`. It covers the `p-link*` elements as well, which the rule never
   saw.
-- The overview of the dev server, `src/index.page.tsx`, is the only page whose links go somewhere, and the only one
-  rendering **no** header and footer. It is not emitted – in the storefront, its navigation links the examples.
-- Consequently `Header`, `Footer` and the layouts take no `basePath`: an example never links out of itself.
-  `ExampleList` is the only component with a `basePath`, because the overview is the only page that navigates.
-
-A test asserts that the overview contains no `href="#"` and that the chrome data contains nothing else.
+- Consequently `Header`, `Footer` and the layouts take no `basePath`: an example never links out of itself. The examples
+  are linked from outside – by the storefront's navigation, and in dev by the URL list the server prints when it starts
+  (see _Tooling notes_). There is no overview page.
 
 ## Commands
 
 ```bash
-npm run start:examples      # dev server on http://localhost:3010
+npm run start:examples      # dev server on http://localhost:3010 – prints the URL of every page when it starts
 npm run build:examples      # writes ./dist (one project per page) and ./dist-site (one HTML file per page), gitignored
 npm run test:unit:examples  # vitest
 npm run test:e2e:examples   # playwright – drives the behaviour of every page of the built site
@@ -316,15 +310,14 @@ reaches through interaction**.
   header variants are named `overlay`/`stacked` precisely because a display keyword would end up as an unused utility.
   Automatic source detection is on, rooted at the Vite project (`src/` here, the page folder of a generated project
   there), so everything below it is scanned and nothing above it is. Check the compiled CSS after larger comment edits.
-- **`basePath` belongs to the dev overview only.** `ExampleList` takes it to link the examples of a category relative to
-  the category root; no layout does. Asset URLs are not built from it either — a page's `style.css` and `main.js` sit
-  next to it and carry no path out of the page folder at all.
+- **No component takes a `basePath`.** Nothing links out of an example, and asset URLs are not built from one either — a
+  page's `style.css` and `main.js` sit next to it and carry no path out of the page folder at all.
 - **The shared stylesheet must stay free of relative paths.** It is copied next to every page, at every depth, so a
   `@source "../…"` or an `@import "./…"` would resolve differently in each copy. A unit test asserts it.
 - **Data lives in the component that renders it, as its default.** `MainNav` owns `navItems`, `MetaActions` owns
-  `metaActionItems`, `NoticeBar` its note and `CategoryTabs` its categories; the overview owns the lists of examples. A
-  page passes nothing unless it differs – and since the defaults are exported, not injected, a page can extend them
-  (`[...navItems, extra]`) instead of only replacing them. There is no shared data module.
+  `metaActionItems`, `NoticeBar` its note and `CategoryTabs` its categories. A page passes nothing unless it differs –
+  and since the defaults are exported, not injected, a page can extend them (`[...navItems, extra]`) instead of only
+  replacing them. There is no shared data module.
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
   chrome is what the pattern demonstrates. Pass the section as `beforeMain` (headers) or `afterMain` (footers) so its
   landmark sits where it does on a real page.
@@ -419,7 +412,7 @@ approach, and it is paid on every review:
 
 - Pages, layout and partials are ordinary TSX, so they lint **and** format with Biome. The one carve-out in
   [`biome.json`](../../biome.json) is `a11y/useValidAnchor` for `packages/examples/src/**/*.tsx`, because the
-  placeholder links are the demonstration – see _Links: only the overview navigates_ for the test replacing it.
+  placeholder links are the demonstration – see _Links: examples never navigate_ for the test replacing it.
 - `npm run typecheck` checks pages, partials, plugins and scripts; `build` runs it first. Each test scope has its own
   `typecheck:tests[:scope]`, run first by its test script.
 - The JSX transform is configured **once**, in [`tsconfig.json`](tsconfig.json) (`jsx: "react-jsx"`,
@@ -439,6 +432,10 @@ approach, and it is paid on every review:
   which is what resolves the bare imports of a script. Together with the CDN rewrite, the stylesheet link and the
   scripts' position are the only differences between dev and the emitted HTML. The partials are injected in a
   `transformIndexHtml()` hook, after Vite's own – see [`vite.config.ts`](vite.config.ts).
+- **The dev server lists the pages instead of rendering an overview.** `jsxPages()` wraps Vite's `server.printUrls()`
+  and prints the URL of every page below Vite's own, grouped by category – found by `findPages()` in
+  [`plugins/jsx.ts`](plugins/jsx.ts), the same search the Playwright suites use. Nothing is served at `/`, which is why
+  the server opens no browser. A page added while the server runs is served right away, but listed after a restart.
 - **`preview` serves the built site, it does not build it.** `npm run preview` expects `dist-site/` to exist and starts
   `serve-cdn` next to [`scripts/previewSite.ts`](scripts/previewSite.ts), which serves `dist-site/` below `/examples/`
   on port 3011 and rewrites the CDN origin of every HTML response to `http://localhost:3001`, in memory. It is the same
@@ -462,12 +459,10 @@ approach, and it is paid on every review:
    instead, which takes `title` and `description` only – everything else is a slot of the component.
 3. Put the markup in `children`, including the page's own `<main id="main">` – except on `CanvasPage`, where the
    component provides that landmark. Links go to `#`, unless they point at an id on the same page.
-4. Add an entry to `templateItems` in `src/index.page.tsx`, with an `href` relative to `src/templates/` – that is what
-   links it from the dev overview.
-5. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
-6. Show it in the storefront with `<WebsiteViewer example="templates/<name>" … />` and raise the page count the
-   Playwright suites assert.
-7. Run `npm run build` and confirm the page still builds and the CSS contains no stray utilities.
+4. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
+5. Show it in the storefront with `<WebsiteViewer example="templates/<name>" … />` and raise the page count the
+   Playwright suites assert. The dev server lists it on its next start – pages are found by file name, not registered.
+6. Run `npm run build` and confirm the page still builds and the CSS contains no stray utilities.
 
 ## Adding a pattern (a single section)
 
@@ -477,8 +472,8 @@ approach, and it is paid on every review:
    adds nothing around it, and the build links the page's `main.js`.
 3. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
-4. Add an entry to `patternItems` in `src/index.page.tsx`, with an `href` relative to `src/patterns/`, and show it in
-   the storefront with `<WebsiteViewer example="patterns/<name>" … />`.
+4. Show it in the storefront with `<WebsiteViewer example="patterns/<name>" … />`. The dev server lists it on its next
+   start – pages are found by file name, not registered.
 5. If the pattern needs behaviour of its own, write it in a `<Script>` at the end of the page; the build moves it into
    the generated entry, which brings the stylesheet import and the banner. Behaviour a partial needs wherever it is
    rendered goes into a `<Script>` of that partial. Hook it on ids and query them with `getElementById()`.
@@ -490,9 +485,8 @@ approach, and it is paid on every review:
 Every example ships a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item only,
 visible `:focus-visible` outlines and a `forced-colors: active` block. Templates additionally carry the `header` and
 `footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets all
-of them from the component and therefore renders none itself. The dev overview is a `main` landmark with labelled
-navigations. These demos are documentation, so they have to be correct by example — keep the baseline when adding
-examples. The unit tests and the a11y suite assert it for every page.
+of them from the component and therefore renders none itself. These demos are documentation, so they have to be correct
+by example — keep the baseline when adding examples. The unit tests and the a11y suite assert it for every page.
 
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
 heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is
