@@ -1,5 +1,5 @@
 import { Fragment } from 'preact';
-import { CanvasPage } from '../../_layouts/CanvasPage.tsx';
+import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
 import { Script } from '../../_partials/Script.tsx';
 
 /**
@@ -120,9 +120,10 @@ const linkLists = [
 const legalLinks = ['Privacy Policy', 'Legal Notice', 'License', 'Accessibility Statement'];
 
 const Page = () => (
-  <CanvasPage
+  <TemplatePage
     title="Admin panel"
     description="Productive application page built on p-canvas, with a navigation sidebar, a settings sidebar and a list of models."
+    class="scheme-light-dark bg-surface"
   >
     <p-canvas id="admin-canvas">
       <a href="#" slot="title">
@@ -426,7 +427,7 @@ const Page = () => (
         document.documentElement.classList.add(e.detail.value);
       });
     `}</Script>
-  </CanvasPage>
+  </TemplatePage>
 );
 
 export default Page;

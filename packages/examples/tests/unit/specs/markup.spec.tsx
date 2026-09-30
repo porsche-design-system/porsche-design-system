@@ -5,8 +5,8 @@ import { describe, expect, it } from 'vitest';
 import { extractScripts } from '../../../lib/entries.ts';
 import { normalizeClassAttributes, renderPage } from '../../../lib/jsx.ts';
 import { scriptEntryName } from '../../../lib/projects.ts';
-import { BasePage } from '../../../src/_layouts/BasePage.tsx';
 import { PatternPage } from '../../../src/_layouts/PatternPage.tsx';
+import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
 import { Footer } from '../../../src/_partials/footer/Footer.tsx';
 import { Head } from '../../../src/_partials/Head.tsx';
 import { categoryItems } from '../../../src/_partials/header/CategoryTabs.tsx';
@@ -145,6 +145,12 @@ describe('Header', () => {
     expect(html).toContain('Home overview');
   });
 
+  it('should fall back to the shared navigation', () => {
+    expect(countOccurrences(render(<Header currentPage="home" />), '<p-drilldown-link')).toBe(
+      flattenNavItems(navItems).length
+    );
+  });
+
   it('should keep a top level entry without children a link rather than a level', () => {
     const html = render(<Header currentPage="contact" navItems={navItems} />);
 
@@ -244,52 +250,39 @@ describe('Footer', () => {
   });
 });
 
-describe('BasePage', () => {
-  const renderBasePage = (props: Partial<Parameters<typeof BasePage>[0]> = {}) =>
+describe('TemplatePage', () => {
+  const renderTemplatePage = (props: Partial<Parameters<typeof TemplatePage>[0]> = {}) =>
     render(
-      <BasePage title="Title" description="Description" currentPage="home" {...props}>
+      <TemplatePage title="Template" description="Description" {...props}>
         <main id="main">
           <h1>Content</h1>
         </main>
-      </BasePage>
+      </TemplatePage>
     );
 
-  it('should render the landmarks in document order', () => {
-    const html = renderBasePage();
-
-    expect(html.indexOf('<header')).toBeLessThan(html.indexOf('<main'));
-    expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
+  it('should render the children as the body, and nothing the layout adds around them', () => {
+    expect(renderTemplatePage()).toContain('<body><main id="main"><h1>Content</h1></main></body>');
   });
 
-  it('should render the header as the first element of the body', () => {
-    expect(renderBasePage()).toContain('<body><header');
-  });
+  it('should render no script of its own, leaving the entry to the build', () => {
+    const html = renderTemplatePage();
 
-  it('should render the behaviour of its header as its only script, leaving the entry to the build', () => {
-    const html = renderBasePage();
-
-    expect(countOccurrences(html, '<script')).toBe(1);
-    expect(countOccurrences(html, '<script type="module">')).toBe(1);
+    expect(html).not.toContain('<script');
     expect(html).not.toContain(scriptEntryName);
   });
 
-  it('should render the children inside the body', () => {
-    expect(renderBasePage()).toContain('<main id="main"><h1>Content</h1></main>');
+  it('should leave the chrome to the page', () => {
+    const html = renderTemplatePage();
+
+    expect(html).not.toContain('<header');
+    expect(html).not.toContain('<footer');
   });
 
-  it('should fall back to the shared navigation', () => {
-    expect(countOccurrences(renderBasePage(), '<p-drilldown-link')).toBe(flattenNavItems(navItems).length);
-  });
-
-  it('should let a page override the shared navigation', () => {
-    const html = renderBasePage({ navItems: [{ id: 'only', href: '#', label: 'Only item' }] });
-
-    expect(html).toContain('Only item');
-    expect(html).not.toContain('Features');
-  });
-
-  it('should forward the header variant', () => {
-    expect(renderBasePage({ headerVariant: 'stacked' })).toContain('aria-label="Categories"');
+  it('should put the classes it is given on the document element', () => {
+    expect(renderTemplatePage({ class: 'scheme-light-dark bg-surface' })).toContain(
+      '<html lang="en" class="scheme-light-dark bg-surface">'
+    );
+    expect(renderTemplatePage()).toContain('<html lang="en">');
   });
 });
 

@@ -8,10 +8,10 @@
 Standalone examples for Porsche Design System usage, rendered from **typed function components** to plain HTML at build
 time. They come in two categories:
 
-| Category      | What it shows                                        | Layout                    | Lives in          |
-| ------------- | ---------------------------------------------------- | ------------------------- | ----------------- |
-| **Templates** | A whole application page, chrome included.           | `BasePage` / `CanvasPage` | `src/templates/…` |
-| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`             | `src/patterns/…`  |
+| Category      | What it shows                                        | Layout         | Lives in          |
+| ------------- | ---------------------------------------------------- | -------------- | ----------------- |
+| **Templates** | A whole application page, chrome included.           | `TemplatePage` | `src/templates/…` |
+| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`  | `src/patterns/…`  |
 
 There is no template syntax. Conditions are ternaries, loops are `map()`, partials are components, and the layout takes
 `children`. Rendering happens once at build time via `preact-render-to-string`; **no framework code reaches the
@@ -86,8 +86,7 @@ tests/a11y/                       # axe-core: one spec per page, its initial and
 tests/vrt/                        # captures: one spec per page, plus the committed __screenshots__
 src/
 ├── _layouts/
-│   ├── BasePage.tsx              # full page shell, takes `children`
-│   ├── CanvasPage.tsx            # shell of a page whose chrome is `p-canvas` – no landmark of its own
+│   ├── TemplatePage.tsx          # document shell of a whole page – the page composes Header/Footer or p-canvas
 │   └── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
 ├── _partials/                    # Head, Header, Footer – checked props
 │   ├── Script.tsx                # <script type="module"> with unescaped code – all behaviour goes through it
@@ -325,8 +324,9 @@ reaches through interaction**.
   landmark sits where it does on a real page.
 - **A page built on `p-canvas` adds no landmark of its own.** The component renders the banner, the `main` landmark and
   the two `aside` landmarks in its shadow root, so a `<main id="main">` in the default slot would nest one landmark
-  inside another. [`CanvasPage`](src/_layouts/CanvasPage.tsx) therefore writes nothing but the document around the
-  component, the color scheme classes sit on `<html>` (the sidebars are rendered on top of the page and a scheme set
+  inside another. The page therefore renders the component straight into
+  [`TemplatePage`](src/_layouts/TemplatePage.tsx), which writes nothing but the document around it, the color scheme
+  classes sit on `<html>` through its `class` prop (the sidebars are rendered on top of the page and a scheme set
   further down would not reach them), and the shared accessibility test counts the canvas as that page's `main`.
 - **The Porsche Grid spans the viewport, the content area of a canvas does not.** Its width changes with the sidebars,
   so `grid-template` and the `col-*` classes of the other examples do not apply there – the admin panel asks the
@@ -456,10 +456,11 @@ approach, and it is paid on every review:
 ## Adding a template (a whole page)
 
 1. Create `src/templates/<name>/index.page.tsx` – markup, classes and, in a `<Script>`, behaviour.
-2. Default-export a component that renders `<BasePage>` with `title`, `description`, `currentPage`, and optionally
-   `showSearch`, `headerVariant`, `navItems`. An application page whose chrome is `p-canvas` renders `<CanvasPage>`
-   instead, which takes `title` and `description` only – everything else is a slot of the component.
-3. Put the markup in `children`, including the page's own `<main id="main">` – except on `CanvasPage`, where the
+2. Default-export a component that renders `<TemplatePage>` with `title` and `description`. The layout writes nothing
+   but the document: the page composes its chrome itself, like a pattern does – `<Header currentPage="…" />` (optionally
+   `showSearch`, `variant`, `navItems`) and `<Footer />`, or a `p-canvas` for an application page, which then puts its
+   color scheme on `<html>` through `class`.
+3. Put the markup in `children`, including the page's own `<main id="main">` – except inside `p-canvas`, where the
    component provides that landmark. Links go to `#`, unless they point at an id on the same page.
 4. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
 5. Show it in the storefront with `<WebsiteViewer example="templates/<name>" … />` and raise the page count the

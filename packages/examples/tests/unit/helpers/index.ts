@@ -32,7 +32,7 @@ export const flattenNavItems = (items: NavItem[]): NavItem[] =>
 export const countFirstLevelHeadings = (html: string): number =>
   (html.match(/<h1[\s>]/g) ?? []).length + countOccurrences(html, 'tag="h1"');
 
-/** Templates are whole pages, whichever shell they use – `BasePage` or `CanvasPage`. */
+/** Templates are built on `TemplatePage`: whole pages, whichever chrome they compose – `Header` and `Footer` or `p-canvas`. */
 export const templatePages = [
   ['templates/landing-page', LandingPage],
   ['templates/admin-panel', AdminPanelPage],

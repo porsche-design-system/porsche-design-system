@@ -34,10 +34,10 @@ the examples themselves (`npm run build:examples`) – `preview` serves, it does
 
 ## Two categories, one project per page
 
-| Category      | What it shows                                        | Layout                    | Lives in          |
-| ------------- | ---------------------------------------------------- | ------------------------- | ----------------- |
-| **Templates** | A whole application page, chrome included.           | `BasePage` / `CanvasPage` | `src/templates/…` |
-| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`             | `src/patterns/…`  |
+| Category      | What it shows                                        | Layout         | Lives in          |
+| ------------- | ---------------------------------------------------- | -------------- | ----------------- |
+| **Templates** | A whole application page, chrome included.           | `TemplatePage` | `src/templates/…` |
+| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`  | `src/patterns/…`  |
 
 There is no list of them: a page is found by its file name (`index.page.tsx`), and the dev server prints the URL of
 every page when it starts.
@@ -74,8 +74,7 @@ This is why `Header`, `Footer` and the layouts take no `basePath`: they have no 
 src/
 ├── _types/pds-jsx.d.ts       # JSX typings for the PDS web components
 ├── _layouts/
-│   ├── BasePage.tsx          # full page shell: head, header, content, footer
-│   ├── CanvasPage.tsx        # shell of a page whose chrome is `p-canvas`
+│   ├── TemplatePage.tsx      # document shell of a whole page – the page composes its chrome
 │   └── PatternPage.tsx       # minimal shell for a single section
 ├── _partials/                # components, never emitted as pages
 │   ├── Head.tsx
@@ -111,31 +110,37 @@ fails on any other root-absolute URL and on a missing file.
 
 ## Authoring a template
 
-A page default-exports a component that renders the layout:
+A page default-exports a component that renders `TemplatePage`. The layout writes nothing but the document; the page
+composes its chrome from the same partials the patterns use:
 
 ```tsx
-import { BasePage } from '../../_layouts/BasePage.tsx';
+import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
+import { Footer } from '../../_partials/footer/Footer.tsx';
+import { Header } from '../../_partials/header/Header.tsx';
 
 const Page = () => (
-  <BasePage title="Landing page" description="…" currentPage="home" showSearch>
+  <TemplatePage title="Landing page" description="…">
+    <Header currentPage="home" showSearch />
     <main id="main" class="flex flex-col gap-12">
       <h1>…</h1>
     </main>
-  </BasePage>
+    <Footer />
+  </TemplatePage>
 );
 
 export default Page;
 ```
 
-| Prop            | Purpose                                                                   |
-| --------------- | ------------------------------------------------------------------------- |
-| `title`         | Feeds `<title>`, suffixed with the site name.                             |
-| `description`   | Meta description.                                                         |
-| `currentPage`   | Matched against `item.id` to set `aria-current="page"`.                   |
-| `showSearch`    | Optional; renders the header search affordance.                           |
-| `headerVariant` | Optional; `"overlay"` (default) or `"stacked"` – see the header patterns. |
-| `navItems`      | Defaults to the `navItems` of `MainNav`; a page may replace or extend it. |
-| `children`      | The page content, including its own `<main id="main">`.                   |
+| Prop          | Purpose                                                                     |
+| ------------- | --------------------------------------------------------------------------- |
+| `title`       | Feeds `<title>`, suffixed with the site name.                               |
+| `description` | Meta description.                                                           |
+| `class`       | Optional; classes of `<html>` – the color scheme of an application shell.   |
+| `children`    | The whole page: its chrome and its own `<main id="main">`, or a `p-canvas`. |
+
+`Header` takes `currentPage` (matched against `item.id` to set `aria-current="page"`), and optionally `showSearch`,
+`variant` (`"overlay"` by default, or `"stacked"` – see the header patterns) and `navItems`, which defaults to the
+`navItems` of `MainNav` and which a page may replace or extend.
 
 ### Behaviour: `<Script>`
 
@@ -179,18 +184,18 @@ and emitted as three. A few things follow from that:
 - Imports are allowed (`import { componentsReady } from '@porsche-design-system/components-js';`); the build hoists them
   to the top of `main.js`.
 
-### Application pages: `CanvasPage`
+### Application pages: `p-canvas`
 
-A template whose chrome is `p-canvas` renders [`CanvasPage`](src/_layouts/CanvasPage.tsx) instead, which takes `title`,
-`description` and `children` — everything else is a slot of the component:
+A template whose chrome is `p-canvas` renders the component instead of `Header` and `Footer`, and puts its color scheme
+on `<html>` through `class` — everything else is a slot of the component:
 
 ```tsx
-import { CanvasPage } from '../../_layouts/CanvasPage.tsx';
+import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
 
 const Page = () => (
-  <CanvasPage title="Admin panel" description="…">
+  <TemplatePage title="Admin panel" description="…" class="scheme-light-dark bg-surface">
     <p-canvas id="admin-canvas">…</p-canvas>
-  </CanvasPage>
+  </TemplatePage>
 );
 
 export default Page;

@@ -23,7 +23,7 @@ import {
   resolvePageLocation,
   scriptEntryName,
 } from '../../../lib/projects.ts';
-import { BasePage } from '../../../src/_layouts/BasePage.tsx';
+import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import { countOccurrences, examplePages } from '../helpers/index.ts';
 
@@ -371,11 +371,11 @@ describe('renderPage()', () => {
 
   it('should escape interpolated values', async () => {
     const html = await renderPage(() => (
-      <BasePage title={'<script>alert("x")</script> & more'} description="Escaping check" currentPage="home">
+      <TemplatePage title={'<script>alert("x")</script> & more'} description="Escaping check">
         <main id="main">
           <h1>Escaping</h1>
         </main>
-      </BasePage>
+      </TemplatePage>
     ));
 
     expect(html).not.toContain('<script>alert');
@@ -391,7 +391,7 @@ describe('renderPage()', () => {
     expect(html).toContain('class="');
   });
 
-  // The four layouts all funnel through `Head`, and this is what pins that down: a layout rendering its own `<head>`
+  // The layouts all funnel through `Head`, and this is what pins that down: a layout rendering its own `<head>`
   // would silently ship an indexable page, which nothing else here would catch.
   it.each(examplePages)('should mark "%s" as noindex', async (_name, Page) => {
     expect(await renderPage(Page)).toContain('<meta name="robots" content="noindex"');

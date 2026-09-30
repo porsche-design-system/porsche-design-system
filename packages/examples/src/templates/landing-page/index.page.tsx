@@ -1,16 +1,20 @@
-import { BasePage } from '../../_layouts/BasePage.tsx';
+import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
+import { Footer } from '../../_partials/footer/Footer.tsx';
 import { HeroVideo } from '../../_partials/HeroVideo.tsx';
+import { Header } from '../../_partials/header/Header.tsx';
 import { navItems } from '../../_partials/header/MainNav.tsx';
 
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
 const Page = () => (
-  <BasePage
+  <TemplatePage
     title="Landing page"
     description="Dummy landing page template using the shared layout and partial components."
-    currentPage="home"
-    showSearch
-    navItems={[...navItems, { id: 'landing-features', href: '#features', label: 'Jump to features' }]}
   >
+    <Header
+      currentPage="home"
+      showSearch
+      navItems={[...navItems, { id: 'landing-features', href: '#features', label: 'Jump to features' }]}
+    />
     <main id="main" class="grid-template gap-y-fluid-xl pb-fluid-2xl">
       <section
         class="scheme-dark z-0 col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)] relative before:absolute before:inset-[50%_0_0_0] before:z-1 before:pointer-events-none before:bg-linear-to-t before:from-canvas before:to-transparent"
@@ -178,7 +182,8 @@ const Page = () => (
         </div>
       </section>
     </main>
-  </BasePage>
+    <Footer />
+  </TemplatePage>
 );
 
 export default Page;

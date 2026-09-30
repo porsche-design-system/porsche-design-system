@@ -20,11 +20,11 @@ export type PatternPageProps = {
 /**
  * Shell for a pattern: a single section shown in isolation, in its real place on a page.
  *
- * `BasePage` cannot be reused here, because it ships the very chrome a pattern demonstrates – a header pattern
- * inside its `<main>` would be a section nested in a page that already has one. So this layout deliberately keeps
- * the surroundings to a minimum: the pattern and the page's own `<main>`, and nothing else.
+ * Like `TemplatePage` it ships no chrome, because the chrome is what a pattern demonstrates – a header pattern inside
+ * a page that already has a header would be a banner nested in a banner. So this layout deliberately keeps the
+ * surroundings to a minimum: the pattern and the page's own `<main>`, and nothing else.
  *
- * Like `BasePage` it references no script – the build links the generated `main.js`.
+ * Like `TemplatePage` it references no script – the build links the generated `main.js`.
  */
 export const PatternPage = ({ title, description, beforeMain, afterMain, children }: PatternPageProps) => (
   <html lang="en">
