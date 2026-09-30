@@ -1,6 +1,7 @@
 import { classes } from '../../_classes.ts';
 import type { NavItem } from '../../_data.ts';
 import { ids } from '../../_ids.ts';
+import { Script } from '../Script.tsx';
 
 type NavEntriesProps = {
   /** Id of the active `NavItem`; only that one gets `aria-current="page"`. */
@@ -65,8 +66,8 @@ const DrilldownEntries = ({ currentPage, navItems }: NavEntriesProps) => (
 /**
  * Main navigation of every header variant: a menu button opening a `p-drilldown`.
  *
- * The behaviour is written once in `assets/header.js`, hooked on the two ids of `_ids.ts` – nothing here is hydrated.
- * The build inlines it into the `main.js` of every page rendering this component, which is both variants.
+ * The behaviour is written once, below the markup it wires up, and hooked on the two ids of `_ids.ts` – nothing here
+ * is hydrated. Every page rendering this component therefore carries it, which is both header variants.
  *
  * `scheme` reaches the button only. The drilldown is a dialog on top of the page, not part of the bar, so it keeps
  * the color scheme of the page – a header lying on a dark hero must not drag that scheme into an overlay.
@@ -86,5 +87,26 @@ export const MainNav = ({ currentPage, navItems, scheme }: MainNavProps) => (
     <p-drilldown id={ids.navDrilldown}>
       <DrilldownEntries currentPage={currentPage} navItems={navItems} />
     </p-drilldown>
+    <Script>{`
+      // Behaviour of the header navigation: the menu button opens the drilldown, and the drilldown reports the level
+      // the user drilled into.
+
+      const navButton = document.getElementById('${ids.navButton}');
+      const navDrilldown = document.getElementById('${ids.navDrilldown}');
+
+      navButton.addEventListener('click', () => {
+        navDrilldown.open = true;
+      });
+
+      // Closing is requested by the component (Escape, the close button, a click on the backdrop) – the open state is
+      // owned by the page, so it has to be written back.
+      navDrilldown.addEventListener('dismiss', (e) => {
+        e.target.open = false;
+      });
+
+      navDrilldown.addEventListener('update', (e) => {
+        e.target.activeIdentifier = e.detail.activeIdentifier;
+      });
+    `}</Script>
   </nav>
 );

@@ -6,8 +6,8 @@
  * the pages instead of in `src/_partials/`, which holds the chrome every example can use; the leading underscore keeps
  * it a build input either way.
  *
- * The ids are the contract with the `main.js` of each page and stay literals: `src/_ids.ts` single-sources the ids of
- * the shared snippets in `assets/`, and every id registered there has to be owned by exactly one of them.
+ * The ids are the contract with the script of each page and stay literals: `src/_ids.ts` holds the ids of the
+ * partials that bring their own behaviour, and this one brings none.
  *
  * - `feedback-question` – the heading focus returns to when the flow starts over;
  * - `feedback-form` – scale, comment and submit, hidden as a whole once the answer is in;

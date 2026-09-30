@@ -48,7 +48,7 @@ The build writes two trees:
 dist/patterns/header/overlay/     # scripts/build.ts: the Vite project of one page – what StackBlitz opens
 ├── package.json / vite.config.ts # generated; the config injects the Porsche Design System partials
 ├── index.html                    # the rendered page, without partials, stylesheet link or loader script
-└── main.js / style.css           # generated entry: the behaviour of the example and the Tailwind entry
+└── main.js / style.css           # generated entry: the scripts of the page, moved out of it, and the Tailwind entry
 
 dist-site/                        # scripts/buildSite.ts: what the storefront serves from public/examples/
 ├── media/                        # public/examples/media/, copied once
@@ -77,7 +77,7 @@ src/
 ├── index.page.tsx            # overview of the source tree – dev only, never emitted
 ├── _data.ts                  # templateItems, patternItems (URLs below their category), chrome nav
 ├── _classes.ts               # classes(): joins class names, dropping the optional ones that are unset
-├── _ids.ts                   # the ids the shared behaviour in assets/*.js is wired on
+├── _ids.ts                   # the ids the behaviour of the partials is wired on
 ├── _media.ts                 # media(): the one path images and videos are referenced by
 ├── _types/pds-jsx.d.ts       # JSX typings for the PDS web components
 ├── _layouts/
@@ -87,38 +87,35 @@ src/
 │   └── OverviewPage.tsx      # shell of the dev overview
 ├── _partials/                # components, never emitted as pages
 │   ├── Head.tsx
+│   ├── Script.tsx            # `<script type="module">` with the behaviour of a page or a partial
+│   ├── VideoPauseButton.tsx  # pause control of a hero video, with its behaviour
 │   ├── header/               # the header, split into the blocks its variants share
 │   │   ├── Header.tsx        # composes the blocks: overlay and stacked variants
 │   │   ├── HeaderBar.tsx     # the three-column row both variants are built from
 │   │   ├── Brand.tsx         # crest and wordmark, one per viewport size
-│   │   ├── MainNav.tsx       # menu button + recursive drilldown, from `navItems`
+│   │   ├── MainNav.tsx       # menu button + recursive drilldown, from `navItems`, with its behaviour
 │   │   ├── MetaActions.tsx   # icon affordances, from `metaActionItems`
 │   │   ├── NoticeBar.tsx     # note above the bar (stacked only)
 │   │   └── CategoryTabs.tsx  # category navigation below the bar (stacked only)
 │   ├── feedback/FeedbackForm.tsx  # the flow both feedback patterns ask
 │   ├── footer/Footer.tsx
 │   └── ExampleList.tsx
-├── assets/                   # shared inputs of every page – build inputs, never emitted
-│   ├── styles.css            # Tailwind entry: theme, global element defaults – copied next to every page
-│   ├── header.js             # behaviour of the header drilldown – inlined into the entries, never emitted
-│   └── video.js              # behaviour of the hero video and its pause control – inlined, never emitted
+├── assets/
+│   └── styles.css            # Tailwind entry: theme, global element defaults – copied next to every page
 ├── templates/
-│   ├── admin-panel/
-│   │   ├── index.page.tsx
-│   │   └── main.js
-│   └── landing-page/
-│       └── index.page.tsx
+│   ├── admin-panel/index.page.tsx
+│   └── landing-page/index.page.tsx
 └── patterns/
-    ├── feedback/{inline,dialog}/             # index.page.tsx + main.js each
+    ├── feedback/{inline,dialog}/index.page.tsx
     ├── footer/index.page.tsx
     ├── header/{overlay,stacked}/index.page.tsx
-    └── popover/{local-market-switch,priority-navigation,feature-tour}/  # index.page.tsx + main.js each
+    └── popover/{local-market-switch,priority-navigation,feature-tour}/index.page.tsx
 ```
 
 `index.page.tsx` is the page marker: `templates/landing-page/index.page.tsx` becomes the project
-`dist/templates/landing-page/`. A page folder holds that file and optionally a `main.js`, which is inlined into the
-page's entry – the build rejects anything else. Every other `.ts`/`.tsx` file is a build-time input. Images and videos
-live in `public/examples/media/` and are referenced through `media()` from [`src/_media.ts`](src/_media.ts).
+`dist/templates/landing-page/`. A page folder holds that file only – its markup, classes and behaviour are all in it,
+and the build rejects anything else. Every other `.ts`/`.tsx` file is a build-time input. Images and videos live in
+`public/examples/media/` and are referenced through `media()` from [`src/_media.ts`](src/_media.ts).
 
 ## Authoring a template
 
@@ -148,14 +145,44 @@ export default Page;
 | `navItems`      | Defaults to `_data.ts`; a page may replace or extend it.                  |
 | `children`      | The page content, including its own `<main id="main">`.                   |
 
-The layout renders one script tag, `main.js`. That file is generated next to the page: it imports the page's `style.css`
-and then **contains** the behaviour of the example — the shared snippets the markup asks for (`assets/header.js` for the
-drilldown, `assets/video.js` for a pause control) and the `main.js` authored next to the page, if there is one. The
-`style.css` is `assets/styles.css`, copied rather than imported. Nothing is imported from `assets/`, which is why a
-generated project has none: an example is meant to be read, so its markup, its Tailwind classes, its styles and its
-dummy JavaScript sit in three files instead of being spread across the tree. The sources stay single in `src/assets/`
-and the scripts carry a `// --- <source> ---` section comment into the output; since they end up in one module scope,
-two of them must not declare the same top level name — the build says so if they do.
+### Behaviour: `<Script>`
+
+Behaviour is written in JSX too, as plain browser JavaScript in a [`<Script>`](src/_partials/Script.tsx) next to the
+markup it wires up — at the end of the page for the behaviour of the example, inside the partial for behaviour a partial
+brings along (`MainNav` opens its drilldown, `VideoPauseButton` operates the hero video):
+
+```tsx
+const Page = () => (
+  <PatternPage title="…" description="…">
+    <main id="main">
+      <p-button id="some-trigger">Open</p-button>
+    </main>
+    <Script>{`
+      // Behaviour of this example: what the trigger does.
+
+      const trigger = document.getElementById('some-trigger');
+
+      trigger.addEventListener('click', () => {
+        // …
+      });
+    `}</Script>
+  </PatternPage>
+);
+```
+
+`<Script>` renders a `<script type="module">` whose content is not escaped, which a plain `<script>` in JSX would be.
+The dev server serves it where it stands. The build moves every one of them, in document order, into a generated
+`main.js`, which imports the page's `style.css` (`assets/styles.css`, copied), and links that entry at the end of the
+body — so the markup, the Tailwind classes, the styles and the dummy JavaScript of an example are written in one file
+and emitted as three. A few things follow from that:
+
+- Start every script with a comment saying what it does: it is what an error of the build names the script by.
+- The scripts of a page end up in one module scope, so two of them must not declare the same top level name — the build
+  fails if they do. In dev each of them is a module of its own and would not tell.
+- A script is a template literal, so `${…}` is resolved at build time — which is how the scripts of the partials take
+  their ids from [`src/_ids.ts`](src/_ids.ts). A `${` or a backtick meant for the browser has to be escaped.
+- Imports are allowed (`import { componentsReady } from '@porsche-design-system/components-js';`); the build hoists them
+  to the top of `main.js`.
 
 ### Application pages: `CanvasPage`
 
@@ -233,13 +260,13 @@ export default Page;
 | `afterMain`   | The pattern, when it belongs below the content (a footer). |
 | `children`    | The page content, including its own `<main id="main">`.    |
 
-The layout itself only adds the page's `main.js` — everything a pattern page needs beyond the pattern.
+The layout adds nothing around the pattern and the content — the build links the page's `main.js`.
 
 Rules:
 
 - Write **plain HTML attribute names**: `class`, `for`, `charset`, `novalidate`. Preact supports them, so the generated
   markup stays copy-pasteable — do not use `className` or `htmlFor`.
-- Values are HTML-escaped by default. Raw markup would need `dangerouslySetInnerHTML`, which these demos do not use.
+- Values are HTML-escaped by default. Raw markup would need `dangerouslySetInnerHTML`, which only `<Script>` uses.
 - A typo in a prop is a **compile error**, not a render-time surprise. Run `npm run typecheck` or rely on the editor.
 - `_data.ts` is imported explicitly rather than injected into an ambient scope, so a page can extend the shared
   navigation (`[...navItems, extra]`) instead of only replacing it.
@@ -255,10 +282,10 @@ Rules:
 ## Styling
 
 Tailwind CSS v4, configured CSS-first in [`src/assets/styles.css`](src/assets/styles.css). That entry is **copied** next
-to every page as its `style.css`, which the page's `main.js` pulls in, so the project's own Vite build compiles, hashes
-and links it — in dev, `@tailwindcss/vite` compiles the source file directly, which is the only place it exists as a
-file. It deliberately contains nothing but the three imports and the `:not(:defined)` rule: no `@source`, no
-`source(none)` and no relative path of any kind, because the same bytes have to work at every depth. Tailwind's
+to every page as its `style.css`, which the page's generated `main.js` pulls in, so the project's own Vite build
+compiles, hashes and links it — in dev, `@tailwindcss/vite` compiles the source file directly, which is the only place
+it exists as a file. It deliberately contains nothing but the three imports and the `:not(:defined)` rule: no `@source`,
+no `source(none)` and no relative path of any kind, because the same bytes have to work at every depth. Tailwind's
 automatic source detection is rooted at the Vite project, so it scans the pages and nothing above them.
 
 > **Watch out:** Tailwind's scanner reads the whole file, comments included. A doc comment mentioning
@@ -272,19 +299,17 @@ automatic source detection is rooted at the Vite project, so it scans the pages 
 request through Vite's SSR module runner; [`scripts/build.ts`](scripts/build.ts) imports the same page modules and
 writes the same HTML. One implementation, so dev and build can't drift apart.
 
-That HTML is deliberately bare: no partials, no stylesheet link, no loader script. The build adds the two entries of a
-page ([`plugins/entries.ts`](plugins/entries.ts)) and writes the project around it
-([`scripts/generateProject.ts`](scripts/generateProject.ts)), whose `vite.config.ts` injects the Porsche Design System
-partials — without the loader the `p-*` elements never upgrade, and `:not(:defined)` in the stylesheet keeps them
-invisible. The dev server has neither the entries nor a project, so it injects the partials from
-[`plugins/partials.ts`](plugins/partials.ts) and rewrites the entry tag to the shared files of the source tree. Those
-two rewrites, plus the CDN origin, are the only differences between dev and the emitted pages.
+That HTML is deliberately bare: no partials, no stylesheet link, no loader script. The build moves its scripts into the
+page's `main.js`, links that entry, copies the `style.css` next to it ([`plugins/entries.ts`](plugins/entries.ts)) and
+writes the project around it ([`scripts/generateProject.ts`](scripts/generateProject.ts)), whose `vite.config.ts`
+injects the Porsche Design System partials — without the loader the `p-*` elements never upgrade, and `:not(:defined)`
+in the stylesheet keeps them invisible. The dev server has neither the entries nor a project: it keeps the scripts
+inline, which Vite serves as modules itself, links the shared stylesheet of the source tree and injects the partials
+from [`plugins/partials.ts`](plugins/partials.ts). Those, plus the CDN origin, are the only differences between dev and
+the emitted pages.
 
-The order of those two matters: the entry tag is rewritten in the middleware, **before** the markup is handed to
-`server.transformIndexHtml()`, because Vite resolves and warms up every `<script src>` of a page in its own HTML hook,
-which runs ahead of the plugin hooks. A page still pointing at its generated `main.js` would make the dev server log
-`Failed to load url /main.js`. The partials go the other way round and are injected in a `transformIndexHtml()` hook,
-after Vite's, so the inline loader script keeps the bytes the partial emitted and its CSP hash stays valid.
+The partials are injected in a `transformIndexHtml()` hook, after Vite's own, so the inline loader script keeps the
+bytes the partial emitted and its CSP hash stays valid.
 
 Preact never reaches the browser: it is a build-time renderer and a source of JSX types, nothing else. The output is
 plain HTML, no hydration, no framework runtime.

@@ -3,8 +3,8 @@ import { ids } from '../../../../src/_ids.ts';
 import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/header/overlay` – the navigation drilldown (`src/assets/header.js`) and the hero video the header
- * overlays (`src/assets/video.js`), both inlined by the build.
+ * `src/patterns/header/overlay` – the navigation drilldown (`MainNav`) and the hero video the header overlays
+ * (`VideoPauseButton`), both wired up by the scripts of their partials.
  */
 
 const url = getExampleUrl('patterns-header-overlay');

@@ -15,8 +15,8 @@
  * ```
  *
  * A project has no `public/` and no `assets/` folder: the media are served by the storefront (see `src/_media.ts`),
- * and the shared Tailwind entry and the shared behaviour are inlined into the entries of the pages that need them, so
- * an example is read in one place.
+ * the shared Tailwind entry is copied next to every page and the behaviour is written in the page's components, so an
+ * example is read in one place.
  */
 
 /**

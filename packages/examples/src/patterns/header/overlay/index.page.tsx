@@ -3,6 +3,7 @@ import { ids } from '../../../_ids.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { media } from '../../../_media.ts';
 import { Header } from '../../../_partials/header/Header.tsx';
+import { VideoPauseButton } from '../../../_partials/VideoPauseButton.tsx';
 
 /** Header pattern – the `overlay` layout, lying on top of the hero it is shown with. */
 const Page = () => (
@@ -31,16 +32,7 @@ const Page = () => (
             Header
           </p-heading>
         </div>
-        <p-button
-          class="z-2 col-wide place-self-end row-span-full mb-fluid-lg"
-          variant="secondary"
-          compact="true"
-          hide-label="true"
-          icon="pause"
-          id={ids.pauseButton}
-        >
-          Pause Video
-        </p-button>
+        <VideoPauseButton class="z-2 col-wide place-self-end row-span-full mb-fluid-lg" />
       </section>
     </main>
   </PatternPage>

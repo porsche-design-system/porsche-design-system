@@ -3,7 +3,7 @@ import path from 'node:path';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
 import prettier from 'prettier';
-import { getScriptEntry, getSharedScripts, type SharedBehaviour, scriptEntryTag } from '../plugins/entries.ts';
+import { extractScripts, getScriptEntry } from '../plugins/entries.ts';
 import { type PageModule, pageSuffix, renderPage } from '../plugins/jsx.ts';
 import {
   assetsDirName,
@@ -34,18 +34,6 @@ const readVersions = (): Versions => {
 
   return { ...dependencies, ...devDependencies };
 };
-
-/**
- * The shared behaviour a page needs, read from `src/assets/`.
- *
- * It is inlined into the page's entry instead of being imported from there, so an example is one file to read; the
- * source of a snippet stays single, it is just not emitted.
- */
-const readSharedBehaviour = (html: string): SharedBehaviour[] =>
-  getSharedScripts(html).map((fileName) => ({
-    fileName,
-    content: fs.readFileSync(path.join(srcDir, assetsDirName, fileName), 'utf8'),
-  }));
 
 /**
  * The pages of a category, located and checked.
@@ -80,16 +68,21 @@ const locatePages = (entry: Category): PageLocation[] => {
   return locations;
 };
 
-/** The files a page folder may contain: the page, the behaviour authored next to it, and nothing that is emitted. */
+/**
+ * The files a page folder may contain: the page and nothing else.
+ *
+ * Markup, styles and behaviour of an example are all written in its component, so anything next to it would be a file
+ * the generated project silently leaves behind.
+ */
 const assertPageFolder = (pageSourceDir: string, location: PageLocation): void => {
   const unexpected = fs
     .readdirSync(pageSourceDir, { withFileTypes: true })
-    .filter((file) => file.isFile() && file.name !== `index${pageSuffix}` && file.name !== scriptEntryName)
+    .filter((file) => file.isFile() && file.name !== `index${pageSuffix}`)
     .map((file) => file.name);
 
   if (unexpected.length > 0) {
     throw new Error(
-      `[examples] "${location.category}/${location.pageDir}" contains ${unexpected.join(', ')} – a page folder holds its page and its ${scriptEntryName} only; media belong into public/examples/media/`
+      `[examples] "${location.category}/${location.pageDir}" contains ${unexpected.join(', ')} – a page folder holds its page only: behaviour belongs into a <Script> of the page, media into public/examples/media/`
     );
   }
 };
@@ -98,8 +91,8 @@ const assertPageFolder = (pageSourceDir: string, location: PageLocation): void =
  * Builds the project of one page.
  *
  * `src/patterns/header/overlay/index.page.tsx` becomes `dist/patterns/header/overlay/`, a Vite project with the page
- * as its `index.html`, the generated `main.js` and `style.css` next to it, and its own `package.json` and
- * `vite.config.ts`. It is self-contained – nothing is shared between two projects, because each one is handed to
+ * as its `index.html`, the generated `main.js` – the `<Script>` elements of the page, moved out of it – and `style.css`
+ * next to it, and its own `package.json` and `vite.config.ts`. It is self-contained – nothing is shared between two projects, because each one is handed to
  * StackBlitz on its own.
  */
 const buildPage = async (entry: Category, location: PageLocation, versions: Versions): Promise<void> => {
@@ -110,23 +103,11 @@ const buildPage = async (entry: Category, location: PageLocation, versions: Vers
   assertPageFolder(pageSourceDir, location);
 
   const pageModule = (await import(path.join(pageSourceDir, `index${pageSuffix}`))) as PageModule;
-  const html = await renderPage(pageModule.default);
-
-  if (!html.includes(scriptEntryTag)) {
-    throw new Error(`[examples] "${relativePath}" does not reference its entry – is it using one of the layouts?`);
-  }
-
-  // Behaviour authored next to the page is inlined into the generated entry, like the shared one, so a page keeps
-  // exactly one script – markup, utilities and behaviour of an example are read in one place.
-  const behaviourPath = path.join(pageSourceDir, scriptEntryName);
-  const behaviour = fs.existsSync(behaviourPath) ? fs.readFileSync(behaviourPath, 'utf8') : undefined;
+  const { html, scripts } = extractScripts(await renderPage(pageModule.default));
 
   writeFile(path.join(projectDir, 'index.html'), html);
   writeFile(path.join(projectDir, styleEntryName), sharedStyles);
-  writeFile(
-    path.join(projectDir, scriptEntryName),
-    getScriptEntry({ behaviour, sharedBehaviour: readSharedBehaviour(html) })
-  );
+  writeFile(path.join(projectDir, scriptEntryName), getScriptEntry(scripts));
   writeFile(
     path.join(projectDir, 'vite.config.ts'),
     await prettier.format(getViteConfig(entry), { parser: 'typescript', printWidth: 120, singleQuote: true })

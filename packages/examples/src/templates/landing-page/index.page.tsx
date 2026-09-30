@@ -2,6 +2,7 @@ import { navItems, placeholderHref } from '../../_data.ts';
 import { ids } from '../../_ids.ts';
 import { BasePage } from '../../_layouts/BasePage.tsx';
 import { media } from '../../_media.ts';
+import { VideoPauseButton } from '../../_partials/VideoPauseButton.tsx';
 
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
 const Page = () => (
@@ -36,16 +37,7 @@ const Page = () => (
           </p-heading>
           <p-button variant="secondary">Some label</p-button>
         </div>
-        <p-button
-          class="z-3 col-wide place-self-end row-span-full mb-fluid-lg"
-          variant="secondary"
-          compact="true"
-          hide-label="true"
-          icon="pause"
-          id={ids.pauseButton}
-        >
-          Pause Video
-        </p-button>
+        <VideoPauseButton class="z-3 col-wide place-self-end row-span-full mb-fluid-lg" />
       </section>
 
       <section

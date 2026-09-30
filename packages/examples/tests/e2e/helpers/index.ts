@@ -37,8 +37,8 @@ export const setupExamplePage = async (page: Page, url: string, viewportWidth?: 
  * Collects everything the page reports as broken: `console.error` and uncaught exceptions.
  *
  * This is the cheapest check there is for these examples and it covers their most likely failure. The behaviour of a
- * page is a plain script wired on ids, inlined by the build – so a renamed element, a snippet that ends up in a page
- * it was not written for, or a `main.js` that throws on load all fail silently in the browser. The page still
+ * page is a plain script wired on ids, moved into its `main.js` by the build – so a renamed element, a script that
+ * ends up in a page it was not written for, or a `main.js` that throws on load all fail silently in the browser. The page still
  * renders, the VRT still matches, and nothing works.
  *
  * Must be installed **before** the navigation, since most of it happens while the page loads.

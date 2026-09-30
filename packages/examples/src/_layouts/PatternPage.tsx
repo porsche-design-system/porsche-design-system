@@ -24,7 +24,7 @@ export type PatternPageProps = {
  * inside its `<main>` would be a section nested in a page that already has one. So this layout deliberately keeps
  * the surroundings to a minimum: the pattern and the page's own `<main>`, and nothing else.
  *
- * Like `BasePage` it references one script, `main.js`, which is generated next to the page.
+ * Like `BasePage` it references no script – the build links the generated `main.js`.
  */
 export const PatternPage = ({ title, description, beforeMain, afterMain, children }: PatternPageProps) => (
   <html lang="en">
@@ -35,7 +35,6 @@ export const PatternPage = ({ title, description, beforeMain, afterMain, childre
       {beforeMain}
       {children}
       {afterMain}
-      <script type="module" src="main.js" />
     </body>
   </html>
 );

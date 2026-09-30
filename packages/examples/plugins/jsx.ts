@@ -4,8 +4,7 @@ import { createElement, type FunctionComponent } from 'preact';
 import { render } from 'preact-render-to-string';
 import prettier from 'prettier';
 import type { Plugin } from 'vite';
-import { getSharedScripts, rewriteEntriesForDev, scriptEntryTag } from './entries.ts';
-import { scriptEntryName } from './projects.ts';
+import { linkStylesForDev } from './entries.ts';
 
 /** Every page file default-exports a component that returns the complete `<html>` element. */
 export type PageModule = { default: FunctionComponent };
@@ -27,12 +26,16 @@ export const doctype = '<!doctype html>';
  *
  * `htmlWhitespaceSensitivity: 'ignore'` is required: JSX drops the whitespace between elements that sit on separate
  * lines, so without it the formatter would have to keep inline elements glued together (`</label\n><input`).
+ *
+ * `embeddedLanguageFormatting: 'off'` keeps the `<Script>` elements as they are written: the formatter would otherwise
+ * reprint them with its own defaults, and the build moves them into `main.js` verbatim – see `extractScripts()`.
  */
 export const renderPage = async (Page: FunctionComponent): Promise<string> =>
   prettier.format(`${doctype}${render(createElement(Page, {}))}`, {
     parser: 'html',
     printWidth: 120,
     htmlWhitespaceSensitivity: 'ignore',
+    embeddedLanguageFormatting: 'off',
   });
 
 /**
@@ -53,36 +56,13 @@ export const resolvePagePath = (url: string): string | undefined => {
 };
 
 /**
- * A rendered page, prepared for the dev server: the generated entry tag replaced by what the source tree can serve.
- *
- * The counterpart of the entry generation in `scripts/build.ts`, applied to the same markup the build writes, so the
- * page a browser gets in dev differs from the emitted one in exactly this tag and in the CDN origin. A page missing
- * the tag is only a warning here, where it is an error in the build: the dev server has to keep serving the page so
- * the layout can be fixed with it open.
- */
-const renderForDev = (html: string, pageFilePath: string): string => {
-  if (!html.includes(scriptEntryTag)) {
-    console.warn(
-      `[examples] "${path.relative(process.cwd(), pageFilePath)}" does not reference its entry – is it using one of the layouts?`
-    );
-  }
-
-  return rewriteEntriesForDev(html, {
-    hasBehaviour: fs.existsSync(path.join(path.dirname(pageFilePath), scriptEntryName)),
-    sharedScripts: getSharedScripts(html),
-  });
-};
-
-/**
  * Dev server counterpart of `scripts/build.ts`: renders pages on the fly through Vite's SSR module runner, so a
  * page and its partials are type-checked and transformed by the same pipeline the build uses.
  *
- * The rendered markup is passed through `renderForDev()` **before** `server.transformIndexHtml()`, because Vite's own
- * HTML hook resolves and warms up every `<script src>` it finds, and it runs ahead of the plugin hooks that could
- * rewrite it (`createDevHtmlTransformFn()` places `devHtmlHook` between the `pre` and the `normal` hooks). The
- * generated `main.js` exists in the built projects only, so a page still carrying that tag makes Vite log
- * "Failed to load url /main.js" – the rewrite has to happen before Vite ever sees the HTML. The partials are injected
- * afterwards, in a `transformIndexHtml()` hook – see `vite.config.ts`.
+ * The page keeps its `<Script>` elements: Vite's own HTML hook turns every inline module script into a module it
+ * serves and transforms, bare imports included, so no entry is generated here. Only the shared stylesheet is linked,
+ * which the build imports from the entry instead – see `linkStylesForDev()`. The partials are injected afterwards, in
+ * a `transformIndexHtml()` hook – see `vite.config.ts`.
  */
 export const jsxPages = (): Plugin => {
   let rootDir = '';
@@ -110,7 +90,7 @@ export const jsxPages = (): Plugin => {
 
         try {
           const pageModule = (await server.ssrLoadModule(filePath)) as PageModule;
-          const page = renderForDev(await renderPage(pageModule.default), filePath);
+          const page = linkStylesForDev(await renderPage(pageModule.default));
           const html = await server.transformIndexHtml(req.url ?? '/', page);
           res.setHeader('Content-Type', 'text/html');
           res.end(html);

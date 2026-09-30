@@ -3,8 +3,8 @@ import { ids } from '../../../../src/_ids.ts';
 import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
- * `src/templates/landing-page` – the navigation drilldown (`src/assets/header.js`) and the hero video
- * (`src/assets/video.js`), both inlined by the build.
+ * `src/templates/landing-page` – the navigation drilldown (`MainNav`) and the hero video
+ * (`VideoPauseButton`), both wired up by the scripts of their partials.
  */
 
 const url = getExampleUrl('templates-landing-page');

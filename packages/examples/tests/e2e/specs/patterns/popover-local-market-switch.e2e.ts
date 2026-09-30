@@ -4,7 +4,7 @@ import { collectPageErrors, getExampleUrl, getTriggerControl, setupExamplePage }
 
 /**
  * `src/patterns/popover/local-market-switch` – two popovers in controlled mode, plus the navigation drilldown
- * (`src/assets/header.js`) and the hero video (`src/assets/video.js`) the build inlines.
+ * and the hero video, each wired up by the script of its partial (`MainNav`, `VideoPauseButton`).
  */
 
 const url = getExampleUrl('patterns-popover-local-market-switch');

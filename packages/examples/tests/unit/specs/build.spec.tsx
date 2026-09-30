@@ -1,11 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { createElement } from 'preact';
+import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
 import {
+  dedent,
   exampleBanner,
+  extractScripts,
   getScriptEntry,
-  getSharedScripts,
-  rewriteEntriesForDev,
+  linkStylesForDev,
   scriptEntryTag,
 } from '../../../plugins/entries.ts';
 import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../../plugins/inline.ts';
@@ -240,104 +243,92 @@ describe('entries', () => {
   });
 
   it('should import the stylesheet from the generated script, so a page references one file only', () => {
-    expect(getScriptEntry({ sharedBehaviour: [] })).toBe("import './style.css';\n");
+    expect(getScriptEntry([])).toBe("import './style.css';\n");
   });
 
-  it('should inline the shared behaviour a page needs instead of importing it', () => {
-    const entry = getScriptEntry({
-      sharedBehaviour: [
-        { fileName: 'header.js', content: `${exampleBanner}\n\nconst navButton = null;\n` },
-        { fileName: 'video.js', content: `${exampleBanner}\n\nconst video = null;\n` },
-      ],
-    });
-
-    expect(entry).not.toContain('import ../');
-    expect(entry).toContain('const navButton = null;');
-    expect(entry).toContain('const video = null;');
-    // Named sections keep the single source findable, the banner is not repeated per snippet.
-    expect(entry).toContain('// --- assets/header.js ---');
-    expect(entry).toContain('// --- assets/video.js ---');
-    expect(countOccurrences(entry, exampleBanner)).toBe(1);
-  });
-
-  it('should inline the behaviour authored next to a page, after the shared one', () => {
-    const entry = getScriptEntry({
-      behaviour: 'console.warn("hi");\n',
-      sharedBehaviour: [{ fileName: 'header.js', content: 'const navButton = null;\n' }],
-    });
+  it('should write the scripts of a page into its entry in document order, under one banner', () => {
+    const entry = getScriptEntry(['// header\nconst navButton = null;', '// page\nconsole.warn("hi");']);
 
     expect(entry).toBe(
-      `import './style.css';\n\n${exampleBanner}\n\n// --- assets/header.js ---\n\nconst navButton = null;\n\n// --- behaviour of this example ---\n\nconsole.warn("hi");\n`
+      `import './style.css';\n\n${exampleBanner}\n\n// header\nconst navButton = null;\n\n// page\nconsole.warn("hi");\n`
     );
   });
 
-  it('should keep a single snippet unlabelled, so a one-behaviour example reads as one script', () => {
-    const entry = getScriptEntry({ behaviour: 'console.warn("hi");\n', sharedBehaviour: [] });
+  it('should hoist the imports of the scripts next to the stylesheet import, each of them once', () => {
+    const statement = "import { componentsReady } from '@porsche-design-system/components-js';";
+    const entry = getScriptEntry([`${statement}\n\ngo();`, `${statement}\ngoOn();`]);
 
-    expect(entry).toBe(`import './style.css';\n\n${exampleBanner}\n\nconsole.warn("hi");\n`);
+    expect(entry.startsWith(`import './style.css';\n${statement}\n\n${exampleBanner}\n\ngo();\n\ngoOn();`)).toBe(true);
+    expect(countOccurrences(entry, statement)).toBe(1);
   });
 
-  it('should fail when two inlined snippets declare the same name, which one module scope cannot hold', () => {
-    expect(() =>
-      getScriptEntry({
-        behaviour: 'const video = null;\n',
-        sharedBehaviour: [{ fileName: 'video.js', content: 'const video = null;\n' }],
-      })
-    ).toThrow(/both declare "video"/);
+  it('should fail when two scripts declare the same name, which one module scope cannot hold', () => {
+    expect(() => getScriptEntry(['// video\nconst video = null;', '// page\nconst video = null;'])).toThrow(
+      /both declare "video"[\s\S]*\/\/ video[\s\S]*\/\/ page/
+    );
   });
 
-  it.each([
-    ['<p-button-pure id="nav-button"><p-drilldown id="nav-drilldown">', ['header.js']],
-    ['<video id="hero-video"><p-button id="pause-button">', ['video.js']],
-    [
-      '<p-button-pure id="nav-button"><p-drilldown id="nav-drilldown"><video id="hero-video"><p-button id="pause-button">',
-      ['header.js', 'video.js'],
-    ],
-    ['<p>nothing to wire up</p>', []],
-  ])('should derive the shared behaviour of "%s" from the markup', (html, expected) => {
-    expect(getSharedScripts(html)).toEqual(expected);
+  it('should move the inline scripts out of the page and link the entry at the end of the body instead', () => {
+    const { html, scripts } = extractScripts(
+      [
+        '<html>',
+        '  <body>',
+        '    <nav>',
+        '      <script type="module">',
+        '        // first',
+        '        if (a) {',
+        '          go();',
+        '        }',
+        '      </script>',
+        '    </nav>',
+        '    <script type="module">',
+        '      second();',
+        '    </script>',
+        '  </body>',
+        '</html>',
+        '',
+      ].join('\n')
+    );
+
+    expect(scripts).toEqual(['// first\nif (a) {\n  go();\n}', 'second();']);
+    expect(html).toBe(`<html>\n  <body>\n    <nav>\n    </nav>\n    ${scriptEntryTag}\n  </body>\n</html>\n`);
   });
 
-  it.each([
-    ['<p-drilldown id="nav-drilldown">', 'id="nav-button"'],
-    ['<p-button id="pause-button">', 'id="hero-video"'],
-  ])('should fail on "%s", which wires up only half of what a snippet needs', (html, missing) => {
-    // A menu button without its drilldown, or a pause control without its video, is an example that silently does
-    // nothing – the contract of `_ids.ts` is that a page renders the ids of a snippet together.
-    expect(() => getSharedScripts(html)).toThrow(missing);
+  it('should fail on a page without a body, which has no place for its entry', () => {
+    expect(() => extractScripts('<p>no layout</p>')).toThrow('</body>');
   });
 
-  it('should link the shared stylesheet and drop the generated entry in dev, where neither exists', () => {
-    const html = rewriteEntriesForDev(`<head></head><body>${scriptEntryTag}</body>`, {
-      hasBehaviour: false,
-      sharedScripts: ['header.js'],
-    });
-
-    expect(html).toContain('<link rel="stylesheet" href="/assets/styles.css" />');
-    expect(html).toContain('<script type="module" src="/assets/header.js"></script>');
-    expect(html).not.toContain(scriptEntryTag);
+  it('should keep blank lines inside a script and drop the ones around it', () => {
+    expect(dedent('\n\n    a();\n\n      b();\n  \n')).toBe('a();\n\n  b();');
   });
 
-  it('should keep the page entry in dev when the page has behaviour of its own', () => {
-    const html = rewriteEntriesForDev(`<head></head><body>${scriptEntryTag}</body>`, {
-      hasBehaviour: true,
-      sharedScripts: [],
-    });
+  it.each(examplePages)('should give back the scripts of "%s" exactly as they are authored', async (_name, Page) => {
+    // `renderPage()` indents every script to the depth of its element, which `dedent()` undoes. Compared with the
+    // unformatted render, any other change of the formatter – quotes, wrapping, semicolons – would show up here.
+    const authored = Array.from(
+      render(createElement(Page, {})).matchAll(/<script type="module">([\s\S]*?)<\/script>/g),
+      ([, code]) => dedent(code)
+    );
+    const { html, scripts } = extractScripts(await renderPage(Page));
 
-    expect(html).toContain(scriptEntryTag);
+    expect(scripts).toEqual(authored);
+    expect(html).not.toContain('<script type="module">');
+    expect(countOccurrences(html, scriptEntryTag)).toBe(1);
+  });
+
+  it('should link the shared stylesheet in dev, where no entry imports it', () => {
+    expect(linkStylesForDev('<head></head><body></body>')).toBe(
+      '<head><link rel="stylesheet" href="/assets/styles.css" /></head><body></body>'
+    );
   });
 
   // Regression: Vite's own HTML hook runs before the plugin hooks and warms up every `<script src>` it finds, so a
-  // page still referencing its generated entry makes the dev server log "Failed to load url /main.js". The rewrite
-  // therefore happens in the middleware of `jsxPages()`, before `server.transformIndexHtml()` sees the markup.
+  // page referencing the generated entry would make the dev server log "Failed to load url /main.js". Only the build
+  // links the entry.
   it.each([...examplePages, ...overviewPages])(
     'should leave no reference to the generated entry in the dev markup of "%s"',
     async (_name, Page) => {
-      const html = await renderPage(Page);
-
-      expect(rewriteEntriesForDev(html, { hasBehaviour: false, sharedScripts: getSharedScripts(html) })).not.toContain(
-        scriptEntryName
-      );
+      expect(linkStylesForDev(await renderPage(Page))).not.toContain(scriptEntryName);
     }
   );
 });

@@ -32,7 +32,6 @@ export const OverviewPage = ({ title, description, heading, intro, children }: O
         </section>
         {children}
       </main>
-      <script type="module" src="main.js" />
     </body>
   </html>
 );

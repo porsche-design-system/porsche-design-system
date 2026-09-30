@@ -1,7 +1,8 @@
 import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
-import { getSharedScripts, scriptEntryTag } from '../../../plugins/entries.ts';
+import { extractScripts } from '../../../plugins/entries.ts';
 import { renderPage } from '../../../plugins/jsx.ts';
+import { scriptEntryName } from '../../../plugins/projects.ts';
 import {
   categoryItems,
   navItems,
@@ -281,11 +282,12 @@ describe('BasePage', () => {
     expect(renderBasePage()).toContain('<body><header');
   });
 
-  it('should reference exactly one script, the entry generated next to the page', () => {
+  it('should render the behaviour of its header as its only script, leaving the entry to the build', () => {
     const html = renderBasePage();
 
     expect(countOccurrences(html, '<script')).toBe(1);
-    expect(html).toContain(scriptEntryTag);
+    expect(countOccurrences(html, '<script type="module">')).toBe(1);
+    expect(html).not.toContain(scriptEntryName);
   });
 
   it('should render the children inside the body', () => {
@@ -344,11 +346,8 @@ describe('PatternPage', () => {
     expect(html).not.toContain('<a ');
   });
 
-  it('should reference exactly one script, the entry generated next to the page', () => {
-    const html = renderPatternPage();
-
-    expect(countOccurrences(html, '<script')).toBe(1);
-    expect(html).toContain(scriptEntryTag);
+  it('should render no script of its own, leaving the entry to the build', () => {
+    expect(renderPatternPage()).not.toContain('<script');
   });
 
   it('should not ship the shared chrome, which is what a pattern demonstrates', () => {
@@ -371,8 +370,8 @@ describe('OverviewPage', () => {
     expect(countOccurrences(html, '<h1')).toBe(1);
   });
 
-  it('should reference the entry generated next to it, like every other page', () => {
-    expect(html).toContain(scriptEntryTag);
+  it('should render no script, since it has no behaviour and is never built', () => {
+    expect(html).not.toContain('<script');
   });
 });
 
@@ -426,13 +425,16 @@ describe.each(examplePages)('%s page', (_name, Page) => {
     expect(await renderPage(Page)).not.toContain('<nav>');
   });
 
-  it('should keep the behaviour out of the markup, where `main.js` hooks it on ids', async () => {
+  it('should keep the behaviour out of the markup, where its script hooks it on ids', async () => {
     // An example ships no framework and no inline handler either: a page renders ids and its script wires them up.
     expect(await renderPage(Page)).not.toMatch(/\son[a-z]+="/);
   });
 
-  it('should reference the entry the build generates next to it', async () => {
-    expect(await renderPage(Page)).toContain(scriptEntryTag);
+  it('should leave referencing the entry to the build, which moves every script into it', async () => {
+    const html = await renderPage(Page);
+
+    expect(html).not.toContain(scriptEntryName);
+    expect(countOccurrences(html, '<script')).toBe(countOccurrences(html, '<script type="module">'));
   });
 
   it('should not leave any template syntax in the output', async () => {
@@ -460,16 +462,16 @@ describe('landing page', () => {
     expect(countOccurrences(html, 'aria-current="page"')).toBe(1);
   });
 
-  it('should give its video a labelled pause control, which the shared behaviour wires up', async () => {
+  it('should give its video a labelled pause control, which brings its own behaviour', async () => {
     const html = await renderPage(LandingPage);
 
     expect(html).toContain('id="pause-button"');
-    expect(getSharedScripts(html)).toContain('video.js');
+    expect(extractScripts(html).scripts.join('\n')).toContain(`getElementById('${ids.heroVideo}')`);
   });
 });
 
 describe('admin panel', () => {
-  /** The ids its `main.js` looks up – single use, so they are literals of the page rather than part of `_ids.ts`. */
+  /** The ids its script looks up – single use, so they are literals of the page rather than part of `_ids.ts`. */
   const behaviourHooks = [
     'admin-canvas',
     'search-button',
@@ -486,15 +488,15 @@ describe('admin panel', () => {
     for (const id of behaviourHooks) {
       expect(countOccurrences(html, `id="${id}"`)).toBe(1);
     }
-    // Neither the drilldown nor a hero video is part of an application shell, so no shared snippet is inlined.
-    expect(getSharedScripts(html)).toEqual([]);
+    // Neither the drilldown nor a hero video is part of an application shell, so the page's own script is the only one.
+    expect(extractScripts(html).scripts).toHaveLength(1);
   });
 
   it('should announce what its two affordances open, and keep the dialog outside the shell', async () => {
     const html = await renderPage(AdminPanelPage);
 
     expect(getOpeningTag(html, 'search-button')).toContain(`aria="{ 'aria-haspopup': 'dialog' }"`);
-    // The sidebar is a disclosure, so its trigger ships the state `main.js` keeps in sync.
+    // The sidebar is a disclosure, so its trigger ships the state its script keeps in sync.
     expect(getOpeningTag(html, 'settings-button')).toContain(`aria="{ 'aria-expanded': false }"`);
     expect(html.indexOf('<p-canvas')).toBeLessThan(html.indexOf('<p-modal'));
   });
@@ -518,8 +520,8 @@ describe('header patterns', () => {
     expect(html).not.toContain(noticeText);
   });
 
-  it('should need the shared header and video behaviour, both derived from the markup', async () => {
-    expect(getSharedScripts(await renderPage(HeaderOverlayPage))).toEqual(['header.js', 'video.js']);
+  it('should carry the behaviour of the header and of the video, rendered by their partials', async () => {
+    expect(extractScripts(await renderPage(HeaderOverlayPage)).scripts).toHaveLength(2);
   });
 
   it('should render the stacked variant with its extra rows on stacked', async () => {
@@ -590,8 +592,8 @@ describe('popover patterns', () => {
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<p-sheet'));
   });
 
-  it('should need the shared header and video behaviour of the local market switch, derived from the markup', async () => {
-    expect(getSharedScripts(await renderPage(PopoverLocalMarketSwitchPage))).toEqual(['header.js', 'video.js']);
+  it('should carry the behaviour of the header, the video and the local market switch itself', async () => {
+    expect(extractScripts(await renderPage(PopoverLocalMarketSwitchPage)).scripts).toHaveLength(3);
   });
 
   it('should collapse the priority navigation into a trigger that is not shown while nothing overflows', async () => {
@@ -599,13 +601,14 @@ describe('popover patterns', () => {
 
     expect(html).toContain('<li id="more-trigger" class="ms-auto" hidden>');
     expect(html).toContain(`aria="{ 'aria-expanded': false }"`);
-    // The entries live in the bar; the popover starts empty because `main.js` moves the very same elements into it.
+    // The entries live in the bar; the popover starts empty because its script moves the very same elements into it.
     expect(html).toContain('<ul id="overflow-list"');
     expect(countOccurrences(html, 'Some Item')).toBe(9);
   });
 
   it('should walk the feature tour through one coachmark per affordance, the first one open', async () => {
-    const html = await renderPage(PopoverFeatureTourPage);
+    // The markup only – the script of the page selects the steps by the very attribute counted here.
+    const { html } = extractScripts(await renderPage(PopoverFeatureTourPage));
     const steps = countOccurrences(html, 'data-tour-step');
 
     expect(steps).toBe(4);
@@ -622,8 +625,8 @@ describe('popover patterns', () => {
   it.each([
     ['priority navigation', PopoverPriorityNavigationPage],
     ['feature tour', PopoverFeatureTourPage],
-  ])('should keep the %s on its own behaviour, with no shared snippet to inline', async (_name, Page) => {
-    expect(getSharedScripts(await renderPage(Page))).toEqual([]);
+  ])('should keep the %s on its own behaviour, with no partial bringing any', async (_name, Page) => {
+    expect(extractScripts(await renderPage(Page)).scripts).toHaveLength(1);
   });
 });
 
@@ -648,7 +651,7 @@ describe('feedback patterns', () => {
   it.each(feedbackPages)('should hide everything the rating reveals in the %s variant', async (_name, Page) => {
     const html = await renderPage(Page);
 
-    // Comment, submit and confirmation are revealed by `main.js`; the page ships the state the flow starts in.
+    // Comment, submit and confirmation are revealed by its script; the page ships the state the flow starts in.
     for (const id of ['feedback-comment', 'feedback-submit', 'feedback-thanks']) {
       expect(getOpeningTag(html, id)).toContain('hidden');
     }
@@ -657,7 +660,7 @@ describe('feedback patterns', () => {
   });
 
   it.each(feedbackPages)('should keep the %s variant on its own behaviour', async (_name, Page) => {
-    expect(getSharedScripts(await renderPage(Page))).toEqual([]);
+    expect(extractScripts(await renderPage(Page)).scripts).toHaveLength(1);
   });
 
   it('should show the inline variant in the page, offering to start over', async () => {

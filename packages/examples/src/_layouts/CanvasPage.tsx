@@ -18,18 +18,15 @@ export type CanvasPageProps = {
  *
  * The color scheme classes sit on `<html>` rather than on an element inside it: the sidebars of a canvas are rendered
  * on top of the page, so a scheme set further down would not reach them. `bg-surface` is the background an application
- * shell sits on, and the page's scheme switch swaps the `scheme-*` class of the same element – see its `main.js`.
+ * shell sits on, and the page's scheme switch swaps the `scheme-*` class of the same element – see its script.
  *
- * Like every other layout it references one script, `main.js`, generated next to the page.
+ * Like every other layout it references no script – the build links the generated `main.js`.
  */
 export const CanvasPage = ({ title, description, children }: CanvasPageProps) => (
   <html lang="en" class="scheme-light-dark bg-surface">
     <head>
       <Head title={title} description={description} />
     </head>
-    <body>
-      {children}
-      <script type="module" src="main.js" />
-    </body>
+    <body>{children}</body>
   </html>
 );

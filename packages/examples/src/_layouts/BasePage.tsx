@@ -20,8 +20,8 @@ export type BasePageProps = {
  * Page shell. Pages render this component and pass their content as children – the equivalent of template
  * inheritance in the twins, but with the props checked by the compiler.
  *
- * The only script a page references is `main.js`, generated next to it: it imports the page's `style.css` and the
- * behaviour the page needs, so the generated Vite project has exactly one entry per page.
+ * It references no script: the build moves the `<Script>` elements of the page into a generated `main.js` and links
+ * that entry, which also imports the page's `style.css`.
  */
 export const BasePage = ({
   title,
@@ -40,7 +40,6 @@ export const BasePage = ({
       <Header currentPage={currentPage} navItems={pageNavItems} showSearch={showSearch} variant={headerVariant} />
       {children}
       <Footer />
-      <script type="module" src="main.js" />
     </body>
   </html>
 );

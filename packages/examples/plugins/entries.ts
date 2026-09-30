@@ -1,167 +1,135 @@
-import { type BehaviourId, idAttribute, ids } from '../src/_ids.ts';
 import { assetsDirName, scriptEntryName, sharedStyleName, styleEntryName } from './projects.ts';
 
 /**
  * The entry files of a page: `style.css` and `main.js`.
  *
- * Every page references exactly one script, `main.js`, which pulls in its stylesheet and carries its behaviour – the
- * shape a Vite project expects and the shape the hand written examples have. The files are generated rather than
- * authored, because their content is mechanical: both of them carry what the page needs of the shared sources.
+ * A page is authored as one component – markup, Tailwind classes and behaviour, the latter in `<Script>` elements
+ * (`src/_partials/Script.tsx`) next to the markup they wire up. The build moves those scripts into one `main.js`, which
+ * imports the page's `style.css`, and links it at the end of the body: the shape a Vite project expects, and the shape
+ * the hand written examples have.
  *
- * Everything shared is **copied, not imported** – the stylesheet as much as the behaviour: an example is read, not
- * executed, so everything it takes to make the pattern work – its markup, its utilities, its styles and its dummy
- * JavaScript – has to be visible without following imports across the tree. The shared sources stay single-sourced in
- * `src/assets/`; they are simply no longer emitted, which is why a generated project has no `assets/` folder at all.
+ * The stylesheet needs no assembling: `src/assets/styles.css` is copied next to every page as it is, which is why there
+ * is no `getStyleEntry()` – see `scripts/build.ts`. It carries no relative path, so the copy works at any depth, and
+ * Tailwind's automatic source detection covers the pages from the root of the Vite project.
  *
- * The stylesheet is the only one that needs no assembling: `src/assets/styles.css` is copied next to every page as it
- * is, which is why there is no `getStyleEntry()` – see `scripts/build.ts`. It carries no relative path, so the copy
- * works at any depth, and Tailwind's automatic source detection covers the pages from the root of the Vite project.
- *
- * The dev server has none of these files on disk: it renders pages on the fly, so it rewrites the very tag the build
- * resolves through them – see `rewriteEntriesForDev()`.
+ * The dev server generates nothing: it serves the scripts where they stand, and links the shared stylesheet instead
+ * of the entry – see `linkStylesForDev()`.
  */
 
-/** The tag every page renders; the build resolves it through the generated entries, the dev server rewrites it. */
+/** The tag the build links every page's entry with. */
 export const scriptEntryTag = `<script type="module" src="${scriptEntryName}"></script>`;
 
-const scriptEntryTagRegex = new RegExp(`<script type="module" src="${scriptEntryName}"></script>`);
-const REGEX_HEAD = /<\/head>/;
-
-/**
- * Behaviour shared by every page showing a given element, single-sourced in `assets/` instead of being copied per
- * example. It is inlined into the entries that need it, so `assets/*.js` is a build input and never emitted.
- *
- * Which of them a page needs is derived from its markup rather than declared as a prop: the elements a script wires up
- * are the condition, so a page cannot forget its script or keep one it no longer needs. The ids come from
- * `src/_ids.ts`, which the markup uses as well – the rule below and the snippet it selects therefore cannot drift
- * apart when an element is renamed.
- */
-export const sharedScripts = [
-  { fileName: 'header.js', ids: [ids.navButton, ids.navDrilldown] },
-  { fileName: 'video.js', ids: [ids.pauseButton, ids.heroVideo] },
-] as const satisfies readonly { fileName: string; ids: readonly BehaviourId[] }[];
-
-/**
- * The shared scripts a rendered page needs, in a stable order.
- *
- * A snippet wires its ids **together**, so a page carrying one of them has to carry all of them: a pause control
- * without its video, or a menu button without the drilldown it opens, is an example that silently does nothing. That
- * is a build error rather than a missing script, because the page is what is wrong.
- */
-export const getSharedScripts = (html: string): string[] =>
-  sharedScripts
-    .filter(({ fileName, ids: scriptIds }) => {
-      const missing = scriptIds.filter((id) => !html.includes(idAttribute(id)));
-
-      if (missing.length > 0 && missing.length < scriptIds.length) {
-        throw new Error(
-          `[examples] a page renders part of the elements "${assetsDirName}/${fileName}" wires up – it is missing ${missing
-            .map((id) => `"${idAttribute(id)}"`)
-            .join(', ')}. The ids of a snippet belong together; they are single-sourced in src/_ids.ts`
-        );
-      }
-
-      return missing.length === 0;
-    })
-    .map(({ fileName }) => fileName);
-
-/** A shared snippet with its content, ready to be inlined into the entry of a page. */
-export type SharedBehaviour = {
-  /** File name inside `assets/`, kept as the section label so the single source stays findable. */
-  fileName: string;
-  content: string;
-};
-
-/** The warning every example script carries. Inlined snippets share one entry, so it is emitted once at its top. */
+/** The warning every example script carries, emitted once at the top of the behaviour. */
 export const exampleBanner = `// DO NOT USE IN PRODUCTION!
 // EXAMPLE CODE FOR DEMONSTRATION PURPOSE ONLY.`;
 
-const stripBanner = (code: string): string => code.replace(exampleBanner, '').trim();
-
-/** Top level declarations of a snippet – inlining merges the module scopes, so their names have to stay unique. */
-const getTopLevelDeclarations = (code: string): string[] =>
-  Array.from(code.matchAll(/^(?:const|let|var|function|class)\s+([\w$]+)/gm), ([, name]) => name);
-
-type Section = { label: string; code: string };
+/** An inline module script as `<Script>` renders it, with the indentation of its line and the line break after it. */
+const REGEX_INLINE_SCRIPT = /[ \t]*<script type="module">([\s\S]*?)<\/script>[ \t]*\n?/g;
+const REGEX_BODY_END = /^([ \t]*)<\/body>/m;
+const REGEX_HEAD_END = /<\/head>/;
+const REGEX_IMPORT = /^import\s[^;]+;$/gm;
 
 /**
- * Fails the build when two inlined snippets declare the same name.
+ * Removes the indentation the formatter gave a script, and the blank lines around it.
  *
- * Separate modules each had their own scope; one entry has a single one, so a clash would only surface as a
- * `SyntaxError` in the browser of whoever opens the example.
+ * `renderPage()` formats scripts with `embeddedLanguageFormatting: 'off'`, which keeps the code as it is written and
+ * only indents every line to the depth of the element – so taking the common indentation off again gives back exactly
+ * what was authored.
  */
-const assertUniqueDeclarations = (sections: Section[]): void => {
+export const dedent = (code: string): string => {
+  const lines = code
+    .replace(/^(?:[ \t]*\n)+/, '')
+    .trimEnd()
+    .split('\n');
+  const indent = Math.min(...lines.filter((line) => line.trim()).map((line) => line.search(/\S/)));
+
+  return lines.map((line) => (line.trim() ? line.slice(indent) : '')).join('\n');
+};
+
+/**
+ * Moves the inline scripts out of a rendered page and links the entry they end up in instead.
+ *
+ * The scripts are returned in document order, which is the order the browser runs modules in as well. The entry is
+ * linked as the last element of the body, where the layouts used to reference it.
+ */
+export const extractScripts = (html: string): { html: string; scripts: string[] } => {
+  const scripts: string[] = [];
+  const markup = html.replace(REGEX_INLINE_SCRIPT, (_match, code: string) => {
+    const script = dedent(code);
+    if (script) {
+      scripts.push(script);
+    }
+    return '';
+  });
+
+  if (!REGEX_BODY_END.test(markup)) {
+    throw new Error('[examples] a page has to render a closing </body> – is it using one of the layouts?');
+  }
+
+  return { html: markup.replace(REGEX_BODY_END, `$1  ${scriptEntryTag}\n$1</body>`), scripts };
+};
+
+/** Top level declarations of a script – one entry merges the module scopes, so their names have to stay unique. */
+const getTopLevelDeclarations = (code: string): string[] =>
+  Array.from(code.matchAll(/^(?:(?:async\s+)?function\*?|const|let|var|class)\s+([\w$]+)/gm), ([, name]) => name);
+
+/** The first line of a script, which is how a clash names it – every script opens with a comment saying what it is. */
+const labelOf = (code: string): string => code.split('\n')[0];
+
+/**
+ * Fails the build when two scripts of a page declare the same name.
+ *
+ * In dev each `<Script>` is a module of its own; the entry is a single one, so a clash would only surface as a
+ * `SyntaxError` in the browser of whoever opens the built example.
+ */
+const assertUniqueDeclarations = (scripts: string[]): void => {
   const seen = new Map<string, string>();
 
-  for (const { label, code } of sections) {
+  for (const code of scripts) {
     for (const name of getTopLevelDeclarations(code)) {
       const other = seen.get(name);
-      if (other) {
+      if (other !== undefined) {
         throw new Error(
-          `[examples] "${label}" and "${other}" both declare "${name}" at the top level – they are inlined into one ${scriptEntryName}, so the name has to be unique or wrapped in a block`
+          `[examples] two scripts of a page both declare "${name}" at the top level – they end up in one ${scriptEntryName}, so the name has to be unique or wrapped in a block:\n  ${other}\n  ${labelOf(code)}`
         );
       }
-      seen.set(name, label);
+      seen.set(name, labelOf(code));
     }
   }
 };
 
-type ScriptEntryOptions = {
-  /** Behaviour authored next to the page, inlined like the shared one so a page keeps exactly one script file. */
-  behaviour?: string;
-  /** Shared behaviour the page needs, resolved from `getSharedScripts()`. */
-  sharedBehaviour: SharedBehaviour[];
+/**
+ * Content of the generated `main.js` of a page: the stylesheet import, the imports of its scripts, then the scripts
+ * themselves in document order.
+ *
+ * The imports are hoisted so the entry reads like a hand written module; the order of evaluation is unaffected, since
+ * the browser evaluates the imports of a module before its body anyway.
+ */
+export const getScriptEntry = (scripts: string[]): string => {
+  const imports = new Set([`import './${styleEntryName}';`]);
+  const bodies = scripts
+    .map((code) =>
+      code
+        .replace(REGEX_IMPORT, (statement) => {
+          imports.add(statement);
+          return '';
+        })
+        .trim()
+    )
+    .filter(Boolean);
+
+  assertUniqueDeclarations(bodies);
+
+  return `${[[...imports].join('\n'), ...(bodies.length ? [exampleBanner, ...bodies] : [])].join('\n\n')}\n`;
 };
 
 /**
- * Content of the generated `main.js` of a page: the stylesheet import, then the behaviour of the example itself.
+ * Dev server counterpart of the generated entries: links the shared stylesheet, which the build copies next to every
+ * page and imports from its `main.js`.
  *
- * Each snippet keeps a section comment naming the file it is single-sourced from, so an example stays one file to
- * read while a fix still has one place to go.
+ * Nothing else differs, because the scripts stay where the page renders them and Vite serves inline module scripts
+ * itself, bare imports included – like the CDN rewrite in `partials.ts`, this is one of two differences between the
+ * page in dev and the emitted one.
  */
-export const getScriptEntry = ({ behaviour, sharedBehaviour }: ScriptEntryOptions): string => {
-  const sections: Section[] = [
-    ...sharedBehaviour.map(({ fileName, content }) => ({
-      label: `${assetsDirName}/${fileName}`,
-      code: stripBanner(content),
-    })),
-    ...(behaviour?.trim() ? [{ label: 'behaviour of this example', code: stripBanner(behaviour) }] : []),
-  ].filter(({ code }) => code !== '');
-
-  assertUniqueDeclarations(sections);
-
-  const body = sections.map(({ label, code }) => (sections.length > 1 ? `// --- ${label} ---\n\n${code}` : code));
-
-  return `${[`import './${styleEntryName}';`, ...(body.length ? [exampleBanner] : []), ...body].join('\n\n')}\n`;
-};
-
-type DevEntryOptions = {
-  /** Whether the page has behaviour authored next to it, which the dev server serves as it is. */
-  hasBehaviour: boolean;
-  /** Shared behaviour the page needs, as returned by `getSharedScripts()`. */
-  sharedScripts: string[];
-};
-
-/**
- * Dev server counterpart of the generated entries.
- *
- * Nothing is generated in dev: the shared snippets are served from the source tree as the separate modules they are
- * authored as, and the page's own behaviour is loaded only if it exists – where the build inlines all of them into one
- * `main.js`. Everything else about the markup is identical, so this is the one place where the two differ – like the
- * CDN rewrite in `partials.ts`.
- *
- * It has to run **before** `server.transformIndexHtml()`, not in a `transformIndexHtml()` hook: Vite's own HTML hook
- * runs ahead of the normal plugin hooks and warms up every `<script src>` it finds, so a page still carrying its
- * `main.js` makes it log "Failed to load url /main.js" – that file exists in the built projects only.
- * `plugins/jsx.ts` therefore applies this to the rendered markup directly.
- */
-export const rewriteEntriesForDev = (html: string, { hasBehaviour, sharedScripts: scripts }: DevEntryOptions): string =>
-  html
-    .replace(REGEX_HEAD, `<link rel="stylesheet" href="/${assetsDirName}/${sharedStyleName}" />$&`)
-    .replace(
-      scriptEntryTagRegex,
-      [
-        ...scripts.map((fileName) => `<script type="module" src="/${assetsDirName}/${fileName}"></script>`),
-        ...(hasBehaviour ? [scriptEntryTag] : []),
-      ].join('')
-    );
+export const linkStylesForDev = (html: string): string =>
+  html.replace(REGEX_HEAD_END, `<link rel="stylesheet" href="/${assetsDirName}/${sharedStyleName}" />$&`);

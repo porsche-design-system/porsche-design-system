@@ -3,7 +3,7 @@ import { ids } from '../../../../src/_ids.ts';
 import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/header/stacked` – the navigation drilldown (`src/assets/header.js`), inlined by the build.
+ * `src/patterns/header/stacked` – the navigation drilldown, wired up by the script of `MainNav`.
  */
 
 const url = getExampleUrl('patterns-header-stacked');
