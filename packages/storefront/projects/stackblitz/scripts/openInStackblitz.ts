@@ -1,3 +1,4 @@
+import type { ExampleProject } from '@porsche-design-system/examples';
 import type { Framework } from '@porsche-design-system/shared';
 // TODO: Move to shared
 import type { StorefrontColorScheme } from '@porsche-design-system/storefront/src/models/colorScheme';
@@ -69,14 +70,6 @@ export const openInStackblitz = (framework: Framework, markup: string, colorSche
       openFile: frameworkComponentMap[framework],
     }
   );
-};
-
-/** A generated example project, as `@porsche-design-system/examples` writes it into `stackblitz.json`. */
-export type ExampleProject = {
-  title: string;
-  description: string;
-  /** Path inside the project → content: `package.json`, `vite.config.ts`, `index.html`, `main.js`, `style.css`. */
-  files: Record<string, string>;
 };
 
 /**

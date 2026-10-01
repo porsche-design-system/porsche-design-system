@@ -2,7 +2,8 @@
 
 Standalone examples for Porsche Design System usage — whole page **templates** and single section **patterns**, both
 **typed components rendered to static HTML at build time**. The output is plain HTML — no hydration, no framework
-runtime. The storefront frames every page and opens it in StackBlitz.
+runtime. The storefront frames every page and opens it in StackBlitz, and the `pds-knowledge-*` skill of every wrapper
+ships its markup and script.
 
 There is no template syntax here at all. Pages are TypeScript, so conditions are `if`/ternaries, loops are `map()`, and
 partials are function components whose props the compiler checks.
@@ -23,6 +24,8 @@ npm run preview:examples     # http://localhost:3011/examples/<category>/<page>/
 # or from within this package
 npm start
 npm run build                # typechecks, renders the pages, builds them into ./dist-site and verifies the result
+npm run build:projects       # only the first half: typechecks and renders the pages into ./dist
+npm run build:site           # only the second half: builds ./dist into ./dist-site and verifies it
 npm run build:verify         # only the verification of ./dist-site
 npm run typecheck            # the source – from the root: npm run typecheck:examples
 npm run test:unit
@@ -47,11 +50,14 @@ the examples themselves (`npm run build:examples`) – `preview` serves, it does
 | **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`  | `src/patterns/…`  |
 
 There is no list of them: a page is found by its file name (`index.page.tsx`), and the dev server prints the URL of
-every page when it starts.
+every page when it starts. Next to its component, every page exports its `meta` – the `title` and `description` the
+storefront, StackBlitz and the knowledge skill present it with.
 
-The build writes two trees:
+The build writes three trees:
 
 ```text
+generated/examples.ts             # scripts/build.ts: the package export – every example, its meta and its files
+dist/examples.js / .d.ts          # rollup.config.mjs: the export bundled – `import { examples } from '…/examples'`
 dist/patterns/header/overlay/     # scripts/build.ts: the Vite project of one page – what StackBlitz opens
 ├── package.json / vite.config.ts # generated; the config injects the Porsche Design System partials
 ├── index.html                    # the rendered page, without partials, stylesheet link or loader script
@@ -60,12 +66,14 @@ dist/patterns/header/overlay/     # scripts/build.ts: the Vite project of one pa
 dist-site/                        # scripts/buildSite.ts: what the storefront serves from public/examples/
 ├── media/                        # public/examples/media/, copied once
 └── patterns/header/overlay/
-    ├── index.html                # the project above, built, with its script and stylesheet inline
-    └── stackblitz.json           # the files of the project above, verbatim
+    └── index.html                # the project above, built, with its script and stylesheet inline
 ```
 
 Opening `dist/**/index.html` directly shows unstyled markup, because the partials are only added when the project is
-built. The storefront copies `dist-site/` in its `prebuild` and puts its slug in front of the media paths.
+built. The storefront copies `dist-site/` in its `prebuild` and puts its slug in front of the media paths; everything
+else – the meta and the files of every example – it imports from the package export, typed with the types of
+[`lib/meta.ts`](lib/meta.ts). The knowledge skill reads `dist/` (`skill/skill.ts`), which is why the root build renders
+the projects before `build:skills` and builds the site after the wrappers.
 
 ## Links: examples never navigate
 
@@ -116,16 +124,19 @@ fails on any other root-absolute URL and on a missing file.
 
 ## Authoring a template
 
-A page default-exports a component that renders `TemplatePage`. The layout writes nothing but the document; the page
-composes its chrome from the same partials the patterns use:
+A page exports its `meta` and default-exports a component that renders `TemplatePage` with it. The layout writes nothing
+but the document; the page composes its chrome from the same partials the patterns use:
 
 ```tsx
+import type { ExampleMeta } from '../../../lib/meta.ts';
 import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
 import { Footer } from '../../_partials/footer/Footer.tsx';
 import { Header } from '../../_partials/header/Header.tsx';
 
+export const meta: ExampleMeta = { title: 'Landing page', description: '…' };
+
 const Page = () => (
-  <TemplatePage title="Landing page" description="…">
+  <TemplatePage meta={meta}>
     <Header currentPage="home" showSearch />
     <main id="main" class="flex flex-col gap-12">
       <h1>…</h1>
@@ -137,12 +148,11 @@ const Page = () => (
 export default Page;
 ```
 
-| Prop          | Purpose                                                                     |
-| ------------- | --------------------------------------------------------------------------- |
-| `title`       | Feeds `<title>`, suffixed with the site name.                               |
-| `description` | Meta description.                                                           |
-| `class`       | Optional; classes of `<html>` – the color scheme of an application shell.   |
-| `children`    | The whole page: its chrome and its own `<main id="main">`, or a `p-canvas`. |
+| Prop       | Purpose                                                                                   |
+| ---------- | ----------------------------------------------------------------------------------------- |
+| `meta`     | The `meta` of the page: `<title>` (suffixed with the site name) and the meta description. |
+| `class`    | Optional; classes of `<html>` – the color scheme of an application shell.                 |
+| `children` | The whole page: its chrome and its own `<main id="main">`, or a `p-canvas`.               |
 
 `Header` takes `currentPage` (matched against `item.id` to set `aria-current="page"`), and optionally `showSearch`,
 `variant` (`"overlay"` by default, or `"stacked"` – see the header patterns) and `navItems`, which defaults to the
@@ -157,7 +167,7 @@ brings along (`MainNav` opens its drilldown, `HeroVideo` pauses its video, `Feed
 
 ```tsx
 const Page = () => (
-  <PatternPage title="…" description="…">
+  <PatternPage meta={meta}>
     <main id="main">
       <p-button id="some-trigger">Open</p-button>
     </main>
@@ -202,7 +212,7 @@ on `<html>` through `class` — everything else is a slot of the component:
 import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
 
 const Page = () => (
-  <TemplatePage title="Admin panel" description="…" class="scheme-light-dark bg-surface">
+  <TemplatePage meta={meta} class="scheme-light-dark bg-surface">
     <p-canvas id="admin-canvas">…</p-canvas>
   </TemplatePage>
 );
@@ -248,7 +258,7 @@ import { PatternPage } from '../../_layouts/PatternPage.tsx';
 import { Header } from '../../_partials/header/Header.tsx';
 
 const Page = () => (
-  <PatternPage title="Header 1" description="…" beforeMain={<Header currentPage="home" showSearch />}>
+  <PatternPage meta={meta} beforeMain={<Header currentPage="home" showSearch />}>
     <main id="main">…</main>
   </PatternPage>
 );
@@ -256,13 +266,12 @@ const Page = () => (
 export default Page;
 ```
 
-| Prop          | Purpose                                                    |
-| ------------- | ---------------------------------------------------------- |
-| `title`       | Feeds `<title>`.                                           |
-| `description` | Meta description.                                          |
-| `beforeMain`  | The pattern, when it belongs above the content (a header). |
-| `afterMain`   | The pattern, when it belongs below the content (a footer). |
-| `children`    | The page content, including its own `<main id="main">`.    |
+| Prop         | Purpose                                                     |
+| ------------ | ----------------------------------------------------------- |
+| `meta`       | The `meta` of the page: `<title>` and the meta description. |
+| `beforeMain` | The pattern, when it belongs above the content (a header).  |
+| `afterMain`  | The pattern, when it belongs below the content (a footer).  |
+| `children`   | The page content, including its own `<main id="main">`.     |
 
 The layout adds nothing around the pattern and the content — the build links the page's `main.js`.
 
@@ -342,5 +351,5 @@ A page is found by its file name, but a few lists are still kept by hand. Beside
   the unit tests will not cover it. No test notices if it is missing.
 - Write one spec per suite – `tests/{e2e,a11y,vrt}/specs/<category>/<page>.<suite>.ts` (the page folder with `/` as `-`:
   `patterns/header-overlay.e2e.ts`). The `coverage.*` specs fail without them. Create the VRT baselines in Docker.
-- Show it in the storefront: a `page.mdx` with `<WebsiteViewer example="<category>/<page>" … />` and an entry in
+- Show it in the storefront: a `page.mdx` with `<ExampleViewer example="<category>/<page>" />` and an entry in
   `packages/storefront/src/sitemap.tsx`.

@@ -38,6 +38,7 @@
     "@stackblitz/sdk": "1.11.1"
   },
   "devDependencies": {
+    "@porsche-design-system/examples": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "rollup": "^4.63.2",

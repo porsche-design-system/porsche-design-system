@@ -2,19 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { build } from 'vite';
 import { inlineEntries } from '../lib/inline.ts';
-import { getStackblitzPayload } from '../lib/payload.ts';
-import { payloadName } from '../lib/projects.ts';
-import {
-  copyDir,
-  distDir,
-  listFiles,
-  listProjects,
-  mediaSourceDir,
-  packageDir,
-  siteDir,
-  siteMediaDir,
-  writeFile,
-} from '../lib/shared.ts';
+import { copyDir, distDir, listProjects, mediaSourceDir, packageDir, siteDir, siteMediaDir } from '../lib/shared.ts';
 
 /**
  * Builds every generated project into the page the storefront frames.
@@ -27,9 +15,11 @@ import {
  * dist-site/
  * ├── media/                        # public/examples/media/, copied once
  * └── patterns/header/overlay/
- *     ├── index.html                # CSS and JS inline; only the PDS CDN and the media stay external
- *     └── stackblitz.json           # the generated project of the page, verbatim
+ *     └── index.html                # CSS and JS inline; only the PDS CDN and the media stay external
  * ```
+ *
+ * The project itself – what StackBlitz opens and the storefront shows as code – is not part of it: the storefront
+ * imports it from the package export in `dist/`.
  *
  * The storefront copies this folder to `public/examples/`, so every path inside it is either free of the storefront
  * slug (`/examples/media/…`) or points at the CDN – one build is deployed under several slugs.
@@ -56,11 +46,6 @@ const buildSite = async (): Promise<void> => {
       // No two pages share an output folder – `build.ts` rejects nested pages – so there is nothing to empty.
       build: { outDir, emptyOutDir: false },
     });
-
-    const files = Object.fromEntries(
-      listFiles(projectDir).map((file) => [file, fs.readFileSync(path.join(projectDir, file), 'utf8')])
-    );
-    writeFile(path.join(outDir, payloadName), JSON.stringify(getStackblitzPayload(files), null, 2));
 
     console.log(`✓ ${location.category}/${location.pageDir}`);
   }

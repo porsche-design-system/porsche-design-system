@@ -1,5 +1,13 @@
+import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { FeedbackForm } from '../../../_partials/feedback/FeedbackForm.tsx';
+
+/** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
+export const meta: ExampleMeta = {
+  title: 'Feedback: Inline',
+  description:
+    'The rating sits directly in the page flow, typically at the end of the content, and stays visible at all times. Once feedback is submitted, it shows a confirmation and offers the option to start over and give new feedback.',
+};
 
 /**
  * Feedback pattern – the flow shown in the page it asks about.
@@ -9,10 +17,7 @@ import { FeedbackForm } from '../../../_partials/feedback/FeedbackForm.tsx';
  * `FeedbackForm`, which also offers to start over here.
  */
 const Page = () => (
-  <PatternPage
-    title="Feedback 1"
-    description="Rating scale and optional comment shown in the page, confirming in place once submitted."
-  >
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template gap-y-fluid-xl py-fluid-lg">
       <section class="col-wide grid gap-fluid-md">
         <p-heading tag="h1" size="xl">

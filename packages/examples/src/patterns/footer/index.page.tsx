@@ -1,5 +1,13 @@
+import type { ExampleMeta } from '../../../lib/meta.ts';
 import { PatternPage } from '../../_layouts/PatternPage.tsx';
 import { Footer } from '../../_partials/footer/Footer.tsx';
+
+/** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
+export const meta: ExampleMeta = {
+  title: 'Footer',
+  description:
+    'The footer serves as a universal navigation and information hub located at the bottom of every page. It provides essential links, copyright information, legal disclaimers, and contact details, ensuring users can easily access key information regardless of their location on the site.',
+};
 
 /**
  * Footer pattern – the page level footer, shown at the bottom of the content it belongs to.
@@ -9,11 +17,7 @@ import { Footer } from '../../_partials/footer/Footer.tsx';
  * header patterns – whose content below them is part of what they demonstrate – still have.
  */
 const Page = () => (
-  <PatternPage
-    title="Footer 1"
-    description="Footer with a logo, navigation and legal links, shown at the bottom of a page."
-    afterMain={<Footer />}
-  >
+  <PatternPage meta={meta} afterMain={<Footer />}>
     <main id="main" />
   </PatternPage>
 );

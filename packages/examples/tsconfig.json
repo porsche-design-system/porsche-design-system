@@ -19,6 +19,7 @@
   "include": [
     "lib/**/*.ts",
     "scripts/**/*.ts",
+    "skill/**/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
     "tests/**/*.ts",

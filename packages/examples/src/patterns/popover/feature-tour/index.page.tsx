@@ -1,4 +1,5 @@
 import type { JSX } from 'preact';
+import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { Brand } from '../../../_partials/header/Brand.tsx';
 import { HeaderBar } from '../../../_partials/header/HeaderBar.tsx';
@@ -109,6 +110,13 @@ const Coachmark = ({ step: { label, icon, hideLabel = 'true', heading, copy }, i
 
 const [firstStep, ...remainingSteps] = tourSteps;
 
+/** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
+export const meta: ExampleMeta = {
+  title: 'Popover: Feature tour',
+  description:
+    'On first visit, a sequence of popovers guides the user through the key areas of the interface one step at a time ("Step 2 of 4", Back / Next / Skip), each anchored to the element it describes. Only a single step is open at once.',
+};
+
 /**
  * Popover pattern – a sequence of coachmarks introducing the affordances of the header, one at a time.
  *
@@ -122,8 +130,7 @@ const [firstStep, ...remainingSteps] = tourSteps;
  */
 const Page = () => (
   <PatternPage
-    title="Popover 3"
-    description="A sequence of coachmarks walking through the affordances of the header, one step at a time."
+    meta={meta}
     beforeMain={
       <header class="grid-template border-b border-contrast-lower">
         <HeaderBar

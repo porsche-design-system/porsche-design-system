@@ -14,26 +14,30 @@ import {
   linkStylesForDev,
   scriptEntryTag,
 } from '../../../lib/entries.ts';
+import { getExportModule } from '../../../lib/exports.ts';
 import { getPackageJson, getViteConfig } from '../../../lib/generateProject.ts';
 import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../../lib/inline.ts';
 import {
   doctype,
   exampleNote,
+  findPages,
   normalizeClassAttributes,
+  type PageModule,
   pdsVersion,
   renderPage,
   resolvePagePath,
 } from '../../../lib/jsx.ts';
-import { getStackblitzPayload } from '../../../lib/payload.ts';
+import { assertExampleMeta } from '../../../lib/meta.ts';
 import {
   categories,
   examplesPath,
   getPageId,
+  getPagePath,
   mediaPath,
   resolvePageLocation,
   scriptEntryName,
 } from '../../../lib/projects.ts';
-import { readVersions } from '../../../lib/shared.ts';
+import { readVersions, srcDir } from '../../../lib/shared.ts';
 import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import { countOccurrences, examplePages } from '../helpers/index.ts';
@@ -227,23 +231,66 @@ describe('inline plugin', () => {
   });
 });
 
-describe('StackBlitz payload', () => {
-  const html =
-    '<html><head><title>Header 1 &amp; more | Dummy Patterns</title><meta\n  name="description"\n  content="A &quot;header&quot;."\n/></head></html>';
+describe('package export', () => {
+  const footer = {
+    path: 'patterns/footer',
+    title: 'Footer',
+    description: "A footer, 'quoted'.",
+    files: { 'index.html': '<html lang="en"></html>\n' },
+  };
+  const module = getExportModule({ 'patterns/footer': footer, 'templates/landing-page': { ...footer, path: 'x' } });
 
-  it('should carry the files of the project verbatim, named after the page', () => {
-    const files = { 'index.html': html, 'main.js': 'x' };
+  it('should re-export the types of lib/meta.ts, and type every example by its path', () => {
+    expect(module).toContain("export type { Example, ExampleMeta, ExampleProject } from '../lib/meta.ts';");
+    expect(module).toContain("export type ExamplePath =\n  | 'patterns/footer'\n  | 'templates/landing-page';");
+    expect(module).toContain('export const examples: { readonly [Path in ExamplePath]: Example<Path> } = {');
+  });
 
-    expect(getStackblitzPayload(files)).toEqual({
-      title: 'Header 1 & more | Dummy Patterns',
-      description: 'A "header".',
-      files,
+  it('should export the paths the pages and their media are served at', () => {
+    expect(module).toContain(`export const examplesPath = '${examplesPath}';`);
+    expect(module).toContain(`export const mediaPath = '${mediaPath}';`);
+  });
+
+  it('should carry every example verbatim', () => {
+    const literal = module.slice(module.indexOf('> } = ') + '> } = '.length, module.lastIndexOf(';'));
+
+    expect(JSON.parse(literal)['patterns/footer']).toEqual(footer);
+  });
+});
+
+describe('meta', () => {
+  it('should accept a title and a description, trimmed', () => {
+    expect(assertExampleMeta({ title: ' Footer ', description: ' A footer.\n' }, 'patterns/footer')).toEqual({
+      title: 'Footer',
+      description: 'A footer.',
     });
   });
 
-  it('should fail for a page without title or description', () => {
-    expect(() => getStackblitzPayload({ 'index.html': '<html></html>' })).toThrow('<title>');
-    expect(() => getStackblitzPayload({})).toThrow('<title>');
+  it.each([undefined, {}, { title: 'Footer' }, { description: 'A footer.' }, { title: ' ', description: 'A footer.' }])(
+    'should fail for the meta %o',
+    (meta) => {
+      expect(() => assertExampleMeta(meta, 'patterns/footer')).toThrow('"patterns/footer" needs to export `meta`');
+    }
+  );
+
+  it('should fail for markup, since the meta is plain text wherever it is shown', () => {
+    expect(() => assertExampleMeta({ title: 'Footer', description: 'A <b>footer</b>.' }, 'patterns/footer')).toThrow(
+      'plain text'
+    );
+  });
+
+  it('should be exported by every page, with a title of its own', async () => {
+    const pages = findPages(srcDir);
+    const metas = await Promise.all(
+      pages.map(async (location) => {
+        const page = getPagePath(location);
+        const pageModule = (await import(path.join(srcDir, page, 'index.page.tsx'))) as PageModule;
+        return assertExampleMeta(pageModule.meta, page);
+      })
+    );
+
+    expect(pages.length).toBeGreaterThan(0);
+    expect(new Set(metas.map(({ title }) => title)).size).toBe(metas.length);
   });
 });
 
@@ -434,7 +481,7 @@ describe('renderPage()', () => {
 
   it('should escape interpolated values', async () => {
     const html = await renderPage(() => (
-      <TemplatePage title={'<script>alert("x")</script> & more'} description="Escaping check">
+      <TemplatePage meta={{ title: '<script>alert("x")</script> & more', description: 'Escaping check' }}>
         <main id="main">
           <h1>Escaping</h1>
         </main>

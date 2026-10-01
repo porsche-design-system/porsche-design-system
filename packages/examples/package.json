@@ -5,10 +5,24 @@
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/examples.d.ts",
+      "default": "./dist/examples.js"
+    },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
+    }
+  },
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'vite'",
     "preview": "concurrently -k -s 'first' -n 'cdn,site' 'serve-cdn' 'tsx scripts/previewSite.ts'",
-    "build": "npm run typecheck && tsx scripts/build.ts && tsx scripts/buildSite.ts && npm run build:verify",
+    "build": "npm run build:projects && npm run build:site",
+    "build:projects": "tsx scripts/build.ts && npm run typecheck && npm run build:export",
+    "build:export": "rollup -c rollup.config.mjs",
+    "build:site": "tsx scripts/buildSite.ts && npm run build:verify",
     "build:verify": "tsx scripts/verify.ts",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
@@ -27,14 +41,16 @@
     "posttest:vrt": "npm run test:vrt:prepare-regression-snapshots",
     "test:vrt:prepare-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/results --mode prepare",
     "test:vrt:update-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/specs/__screenshots__ --mode update",
-    "clean:build": "rm -rf ./dist ./dist-site"
+    "clean:build": "rm -rf ./dist ./dist-site ./generated"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "1.61.0",
+    "@porsche-design-system/component-meta": "0.0.0",
     "@porsche-design-system/components": "4.8.0-rc.0",
     "@porsche-design-system/components-js": "4.8.0-rc.0",
     "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.5.1",
     "fast-glob": "^3.3.3",
@@ -42,6 +58,8 @@
     "preact": "^10.29.8",
     "preact-render-to-string": "^6.7.0",
     "prettier": "^3.9.6",
+    "rollup": "^4.63.2",
+    "rollup-plugin-dts": "^6.5.1",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.13",
     "typescript": "^6.0.3",

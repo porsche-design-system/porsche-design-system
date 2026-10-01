@@ -1,3 +1,4 @@
+import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { HeroVideo } from '../../../_partials/HeroVideo.tsx';
 import { Brand } from '../../../_partials/header/Brand.tsx';
@@ -129,6 +130,13 @@ const MarketAndProfile = () => (
   </>
 );
 
+/** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
+export const meta: ExampleMeta = {
+  title: 'Popover: Local market switch',
+  description:
+    "On entering the site, a popover anchored to the globe icon in the header suggests switching to the user's local market for correct content and pricing. It is shown on load and can be dismissed via an outside click or the Escape key.",
+};
+
 /**
  * Popover pattern – a message shown next to the affordance it belongs to, and a menu that changes container with the
  * viewport.
@@ -140,8 +148,7 @@ const MarketAndProfile = () => (
  */
 const Page = () => (
   <PatternPage
-    title="Popover 1"
-    description="Popover on load next to the header affordance it belongs to, becoming a sheet on narrow viewports."
+    meta={meta}
     beforeMain={
       // The fade keeps the contrast of the affordances over an arbitrary video – as in the `overlay` header, whose
       // bar, navigation and brand this pattern is built from.

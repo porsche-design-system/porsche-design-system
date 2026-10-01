@@ -253,7 +253,7 @@ describe('Footer', () => {
 describe('TemplatePage', () => {
   const renderTemplatePage = (props: Partial<Parameters<typeof TemplatePage>[0]> = {}) =>
     render(
-      <TemplatePage title="Template" description="Description" {...props}>
+      <TemplatePage meta={{ title: 'Template', description: 'Description' }} {...props}>
         <main id="main">
           <h1>Content</h1>
         </main>
@@ -289,7 +289,7 @@ describe('TemplatePage', () => {
 describe('PatternPage', () => {
   const renderPatternPage = (props: Partial<Parameters<typeof PatternPage>[0]> = {}) =>
     render(
-      <PatternPage title="Pattern" description="Description" {...props}>
+      <PatternPage meta={{ title: 'Pattern', description: 'Description' }} {...props}>
         <main id="main">
           <h1>Pattern</h1>
           <p>Notes</p>

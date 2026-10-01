@@ -1,15 +1,20 @@
+import type { ExampleMeta } from '../../../lib/meta.ts';
 import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
 import { Footer } from '../../_partials/footer/Footer.tsx';
 import { HeroVideo } from '../../_partials/HeroVideo.tsx';
 import { Header } from '../../_partials/header/Header.tsx';
 import { navItems } from '../../_partials/header/MainNav.tsx';
 
+/** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
+export const meta: ExampleMeta = {
+  title: 'Landing page',
+  description:
+    "The template is designed for campaigns that require a high-impact, conversion-focused experience. It's built to capture user attention and guide them toward a singular goal, whether that's signing up for a newsletter, exploring a new model, or registering for an event.",
+};
+
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
 const Page = () => (
-  <TemplatePage
-    title="Landing page"
-    description="Dummy landing page template using the shared layout and partial components."
-  >
+  <TemplatePage meta={meta}>
     <Header
       currentPage="home"
       showSearch

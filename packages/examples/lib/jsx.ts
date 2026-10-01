@@ -8,11 +8,15 @@ import { render } from 'preact-render-to-string';
 import prettier from 'prettier';
 import type { Plugin } from 'vite';
 import { linkStylesForDev } from './entries.ts';
+import type { ExampleMeta } from './meta.ts';
 import { categories, type PageLocation, resolvePageLocation } from './projects.ts';
 import { readVersions } from './shared.ts';
 
-/** Every page file default-exports a component that returns the complete `<html>` element. */
-export type PageModule = { default: FunctionComponent };
+/**
+ * Every page file default-exports a component that returns the complete `<html>` element, and exports its `meta` –
+ * the title and description the example is presented with.
+ */
+export type PageModule = { default: FunctionComponent; meta: ExampleMeta };
 
 /** Pages are the only `.tsx` files that are rendered; everything else is a layout, partial or helper. */
 export const pageSuffix = '.page.tsx';

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  // Emitting – which `allowImportingTsExtensions` rules out. The generated export imports nothing but types, for which
+  // the `.ts` extension is allowed regardless.
+  "compilerOptions": {
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "types": []
+  },
+  "include": ["generated/examples.ts"]
+}

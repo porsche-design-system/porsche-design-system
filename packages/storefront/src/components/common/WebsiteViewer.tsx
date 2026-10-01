@@ -4,28 +4,29 @@ import {
   PButtonPure,
   PLinkPure,
   PPopover,
-  PSpinner,
   PTabsBar,
-  PText,
   type TabsBarUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
-import { type ExampleProject, openExampleInStackblitz } from '@porsche-design-system/stackblitz';
+// Types only: the package exports every example, and a client component is handed the one it shows.
+import type { Example } from '@porsche-design-system/examples';
+import { openExampleInStackblitz } from '@porsche-design-system/stackblitz';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { CodeBlock, type CodeLanguage } from '@/components/common/CodeBlock';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
-import { type ExamplePath, getExamplePayloadUrl, getExampleUrl, withMediaOrigin } from '@/utils/examples';
-import { getBasePath } from '@/utils/getBasePath';
+import { withMediaOrigin } from '@/utils/exampleMediaOrigin';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 type ExampleProps = {
   /**
-   * A pattern or template of `@porsche-design-system/examples`, e.g. "patterns/header/overlay". Served by this
-   * deployment from `public/examples/`, and opened in StackBlitz as the project it was built from.
+   * A pattern or template of `@porsche-design-system/examples`, with its media below the slug of this deployment –
+   * rendered by `ExampleViewer`. Its title names the iframe, its files are shown as code and opened in StackBlitz.
    */
-  example: ExamplePath;
-  /** Accessible title for the iframe */
-  title: string;
+  example: Example;
+  /** The URL this deployment serves the built page at, from `public/examples/`. */
+  src: string;
+  /** Where this deployment serves the media of the examples, slug included. */
+  mediaPath: string;
 };
 
 type ExternalProps = {
@@ -51,110 +52,46 @@ const codeFiles: { file: string; name: string; language: CodeLanguage }[] = [
   { file: 'main.js', name: 'JS', language: 'js' },
 ];
 
-type ExamplePayloadState = { payload: ExampleProject | null; hasFailed: boolean };
-
-/**
- * Loads the StackBlitz payload of an example, which both the code view and StackBlitz are fed from – it holds the
- * project's files verbatim.
- *
- * Fetched when the viewer mounts, not on click: `sdk.openProject()` opens a new tab, which needs the user activation
- * of the click – an `await fetch()` in between lets that expire and the popup blocker step in, notably in Safari.
- * Without an example, as in the framework mode, nothing is fetched.
- */
-const useExamplePayload = (example: ExamplePath | null): ExamplePayloadState => {
-  const [state, setState] = useState<ExamplePayloadState>({ payload: null, hasFailed: false });
-
-  useEffect(() => {
-    if (!example) return;
-    let isCurrent = true;
-    setState({ payload: null, hasFailed: false });
-
-    fetch(getExamplePayloadUrl(example, getBasePath()))
-      .then((response) => (response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response.status}`))))
-      .then((payload: ExampleProject) => isCurrent && setState({ payload, hasFailed: false }))
-      .catch((error: Error) => {
-        console.error(`Could not load the StackBlitz project of "${example}": ${error.message}`);
-        if (isCurrent) setState({ payload: null, hasFailed: true });
-      });
-
-    return () => {
-      isCurrent = false;
-    };
-  }, [example]);
-
-  return state;
-};
-
-/** Opens an example in StackBlitz, busy until its payload is there. */
-const OpenExampleInStackblitz = ({ payload, hasFailed }: ExamplePayloadState) => {
-  const onOpen = () => {
-    if (payload) {
-      openExampleInStackblitz(withMediaOrigin(payload, window.location.origin, getBasePath()));
-    }
-  };
-
-  return (
-    <PButtonPure
-      type="button"
-      iconSource="assets/icon-stackblitz.svg"
-      loading={!payload && !hasFailed}
-      disabled={hasFailed}
-      onClick={onOpen}
-      aria={{ 'aria-description': 'Opens in a new tab' }}
-    >
-      Open in StackBlitz
-    </PButtonPure>
-  );
-};
+/** Opens an example in StackBlitz, with its media pointing at this deployment. */
+const OpenExampleInStackblitz = ({ example, mediaPath }: Pick<ExampleProps, 'example' | 'mediaPath'>) => (
+  <PButtonPure
+    type="button"
+    iconSource="assets/icon-stackblitz.svg"
+    onClick={() => openExampleInStackblitz(withMediaOrigin(example, window.location.origin, mediaPath))}
+    aria={{ 'aria-description': 'Opens in a new tab' }}
+  >
+    Open in StackBlitz
+  </PButtonPure>
+);
 
 /** Sizes the preview and the code alike, so switching between them does not move the page. */
 const VIEW_HEIGHT = 'h-150 max-h-[80vh]';
 
-/**
- * The code of an example in the file its tab selected, as long as the payload is loading or failed to load a
- * placeholder of the same size.
- */
+/** The code of an example in the file its tab selected. */
 const ExampleCode = ({
-  payload,
-  hasFailed,
+  example: { title, files },
   codeFile: { file, name, language },
-  title,
-}: ExamplePayloadState & { codeFile: (typeof codeFiles)[number]; title: string }) => {
-  if (!payload) {
-    return (
-      <div className={`${VIEW_HEIGHT} grid place-items-center rounded-3xl bg-surface`}>
-        {hasFailed ? (
-          <PText>The code could not be loaded.</PText>
-        ) : (
-          <PSpinner aria={{ 'aria-label': `Loading the code of ${title}` }} />
-        )}
-      </div>
-    );
-  }
-
-  return (
-    <CodeBlock language={language} label={`${name} of ${title}`} heightClassName={VIEW_HEIGHT}>
-      {payload.files[file] ?? ''}
-    </CodeBlock>
-  );
-};
+}: Pick<ExampleProps, 'example'> & { codeFile: (typeof codeFiles)[number] }) => (
+  <CodeBlock language={language} label={`${name} of ${title}`} heightClassName={VIEW_HEIGHT}>
+    {files[file] ?? ''}
+  </CodeBlock>
+);
 
 export const WebsiteViewer = (props: WebsiteViewerProps) => {
-  const { title } = props;
   const isExample = 'example' in props;
+  const title = isExample ? props.example.title : props.title;
   const viewUrl = isExample
-    ? getExampleUrl(props.example, getBasePath())
+    ? props.src
     : `${GITHUB_PAGES_BASE}/v${localPorscheDesignSystemMajorVersion}/${props.viewPath}`;
 
   const { trackRef, width, setWidth, isResizing, handleProps } = useResizeHandle({ minWidth: MIN_WIDTH });
-  const examplePayload = useExamplePayload(isExample ? props.example : null);
   // 0 is the preview, every other tab one of `codeFiles`.
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const codeFile = activeTabIndex > 0 ? codeFiles[activeTabIndex - 1] : null;
 
   // From the example rather than `useId()`, whose ids differ between the server render and the client here – the
   // `aria-labelledby` set on a tab change would then miss the ids the tabs were rendered with.
-  const id = isExample ? `example-${props.example.replaceAll('/', '-')}` : '';
+  const id = isExample ? `example-${props.example.path.replaceAll('/', '-')}` : '';
   const previewTabId = `${id}-preview-tab`;
   const previewPanelId = `${id}-preview`;
   const codeTabId = (name: string) => `${id}-${name}-tab`;
@@ -211,7 +148,7 @@ export const WebsiteViewer = (props: WebsiteViewerProps) => {
         )}
         <div className="flex flex-wrap gap-static-md items-center">
           {isExample ? (
-            <OpenExampleInStackblitz {...examplePayload} />
+            <OpenExampleInStackblitz example={props.example} mediaPath={props.mediaPath} />
           ) : (
             <PLinkPure icon="external">
               <Link
@@ -259,7 +196,7 @@ export const WebsiteViewer = (props: WebsiteViewerProps) => {
             hidden={!codeFile}
             className="min-w-0"
           >
-            {codeFile && <ExampleCode {...examplePayload} codeFile={codeFile} title={title} />}
+            {codeFile && <ExampleCode example={props.example} codeFile={codeFile} />}
           </div>
         </>
       ) : (
