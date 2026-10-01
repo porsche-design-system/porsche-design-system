@@ -8,6 +8,7 @@ import {
   getProperty,
   initConsoleObserver,
   reattachElement,
+  reattachElementToParent,
   setContentWithDesignSystem,
   setProperty,
   sleep,
@@ -132,6 +133,60 @@ test.describe('slotted content changes', () => {
 
     await expect(secondTabsItem).not.toHaveAttribute('hidden');
     await expect(firstTabsItem).toHaveAttribute('hidden');
+  });
+
+  test('should display p-tabs-item when new p-tabs-item is added after DOM reattach and button is clicked', async ({
+    page,
+  }) => {
+    await initTabs(page, { amount: 1, activeTabIndex: 0 });
+    await waitForStencilLifecycle(page);
+
+    // remove and re-attach to the same parent
+    const host = getHost(page);
+    await reattachElementToParent(host);
+    await waitForStencilLifecycle(page);
+
+    await page.evaluate(() => {
+      const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
+      const tab = document.createElement('p-tabs-item');
+      (tab as any).label = 'Tabs Item Added';
+      tab.innerText = 'Added Tabs Item Content';
+      tabs.append(tab);
+    });
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByRole('tab')).toHaveCount(2);
+
+    await page.getByRole('tab').nth(1).click();
+    await waitForStencilLifecycle(page);
+
+    const [firstTabsItem, secondTabsItem] = await getAllTabsItems(page);
+    await expect(secondTabsItem).not.toHaveAttribute('hidden');
+    await expect(firstTabsItem).toHaveAttribute('hidden');
+  });
+
+  test('should display p-tabs-item when p-tabs mounts without items and p-tabs-item is added afterwards', async ({
+    page,
+  }) => {
+    await initTabs(page, { amount: 0 });
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByRole('tab')).toHaveCount(0);
+
+    await page.evaluate(() => {
+      const tabs = document.querySelector('p-tabs');
+      if (!tabs) throw new Error('p-tabs not found');
+      const tab = document.createElement('p-tabs-item');
+      (tab as any).label = 'Tabs Item Added';
+      tab.innerText = 'Added Tabs Item Content';
+      tabs.append(tab);
+    });
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByRole('tab')).toHaveCount(1);
+    const [firstTabsItem] = await getAllTabsItems(page);
+    await expect(firstTabsItem).not.toHaveAttribute('hidden');
   });
 
   test('should display same active p-tabs-item when last p-tabs-item is removed', async ({ page }) => {
