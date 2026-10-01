@@ -1,20 +1,22 @@
 name: 'Figma Code Connect'
 
 # Generates the Code Connect templates from component-meta, publishes what changed and tells design what to change in
-# Figma, without gating a merge. Rationale, secrets and exit codes: docs/runbooks/figma-code-connect.md.
+# Figma, without gating a merge: Contribution calls it after the deploy on main, and it runs daily and on dispatch.
+# Rationale, secrets and exit codes: docs/runbooks/figma-code-connect.md.
 
 on:
-  push:
-    # issue/4745 is temporary: the end-to-end test against the copy library runs from the branch. Remove before merge.
-    branches: [main, issue/4745]
-    paths:
-      - 'packages/components/src/**' # a prop, slot or allowed value added or removed in code, wherever its constant lives
-      - 'packages/components/projects/figma-code-connect/**' # the generator, the rules, the baseline, the configs
-      - 'packages/assets/projects/icons/**' # the icon, flag and model-signature manifests are allowed values
-      - 'packages/assets/projects/flags/**'
-      - 'packages/assets/projects/model-signatures/**'
-      - 'scripts/build-slack-figma-payload.ts'
-      - '.github/workflows/figma-code-connect.yml'
+  workflow_call:
+    # named like the repository secrets, so `secrets.*` below reads the same under every trigger
+    secrets:
+      FIGMA_ACCESS_TOKEN:
+        description: 'Figma token that pulls the library and publishes the Code Connect records.'
+        required: true
+      SLACK_BOT_TOKEN:
+        description: 'Slack bot token shared by all notifications.'
+        required: true
+      SLACK_DESIGN_CHANNEL_ID:
+        description: 'Slack channel that gets the changes design must make in Figma.'
+        required: true
   schedule:
     - cron: '0 6 * * *' # daily run against the live library: reports design lines, publishes when a set or icon changed
   workflow_dispatch:
@@ -28,11 +30,6 @@ permissions:
   contents: read
   issues: write # the one issue
 
-# Never cancel a run in progress: publish uploads one label config after another, so a cancelled run mixes commits.
-concurrency:
-  group: figma-code-connect
-  cancel-in-progress: false
-
 env:
   ISSUE_TITLE: 'Figma Code Connect: action needed'
   # a record Figma refused, as scripts/figmaConnect.ts lists it
@@ -44,6 +41,11 @@ jobs:
     if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    # Never cancel a run in progress: publish uploads one label config after another, so a cancelled run mixes commits.
+    # On the job, not the workflow: GitHub documents concurrency for a called workflow at the job level.
+    concurrency:
+      group: figma-code-connect
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install
