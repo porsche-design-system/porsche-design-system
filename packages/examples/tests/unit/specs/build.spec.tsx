@@ -376,6 +376,22 @@ describe('renderPage()', () => {
     );
   });
 
+  it('should unescape ampersands in class attributes, since Tailwind scans the markup without decoding it', () => {
+    expect(
+      normalizeClassAttributes(
+        '<p class="[&amp;>*]:mb-0 [&amp;_p]:m-0" title="a &amp; b"></p><i class="[&amp;amp;]"></i>'
+      )
+    ).toBe('<p class="[&>*]:mb-0 [&_p]:m-0" title="a &amp; b"></p><i class="[&amp;amp;]"></i>');
+  });
+
+  it('should render arbitrary variants of the pages with a literal ampersand', async () => {
+    for (const [, Page] of examplePages) {
+      for (const [, value] of (await renderPage(Page)).matchAll(/\sclass="([^"]*)"/g)) {
+        expect(value).not.toContain('&amp;');
+      }
+    }
+  });
+
   it('should leave the content of scripts alone, since it is code rather than markup', () => {
     const html = '<script type="module">el.innerHTML = \'<b class="a  b">\';</script><p class=" x"></p>';
 
