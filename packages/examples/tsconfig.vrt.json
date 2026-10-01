@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["tests/vrt", "tests/helpers"]
+  "include": ["tests/vrt", "tests/helpers", "playwright.config.ts"]
 }

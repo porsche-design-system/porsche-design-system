@@ -1,5 +1,3 @@
-import { placeholderHref } from '../../_data.ts';
-
 /**
  * Page footer.
  *
@@ -89,32 +87,32 @@ export const Footer = () => {
           <ul class="grid gap-fluid-sm">
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Terms and Conditions</a>
+                <a href="#">Terms and Conditions</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Privacy Notice</a>
+                <a href="#">Privacy Notice</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>California Privacy</a>
+                <a href="#">California Privacy</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Imprint and Legal Notice</a>
+                <a href="#">Imprint and Legal Notice</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Accessibility Statement</a>
+                <a href="#">Accessibility Statement</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Open Source Software Notice</a>
+                <a href="#">Open Source Software Notice</a>
               </p-link-pure>
             </li>
           </ul>
@@ -126,27 +124,27 @@ export const Footer = () => {
           <ul class="grid gap-fluid-sm">
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Press</a>
+                <a href="#">Press</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Jobs and Careers</a>
+                <a href="#">Jobs and Careers</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Studio F. A. Porsche</a>
+                <a href="#">Studio F. A. Porsche</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Data Privacy</a>
+                <a href="#">Data Privacy</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Timepieces Warranty & Service</a>
+                <a href="#">Timepieces Warranty & Service</a>
               </p-link-pure>
             </li>
           </ul>
@@ -158,27 +156,27 @@ export const Footer = () => {
           <ul class="grid gap-fluid-sm">
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>My Orders</a>
+                <a href="#">My Orders</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Porsche Homepage</a>
+                <a href="#">Porsche Homepage</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Porsche Car Configurator</a>
+                <a href="#">Porsche Car Configurator</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Porsche New and Pre-Owned Vehicles</a>
+                <a href="#">Porsche New and Pre-Owned Vehicles</a>
               </p-link-pure>
             </li>
             <li>
               <p-link-pure icon="none">
-                <a href={placeholderHref}>Compare Porsche models</a>
+                <a href="#">Compare Porsche models</a>
               </p-link-pure>
             </li>
           </ul>
@@ -190,35 +188,35 @@ export const Footer = () => {
       >
         <div class="flex gap-fluid-md">
           <p-link-pure class="p-static-sm -m-static-sm" icon="logo-instagram" hide-label="true" size="md">
-            <a href={placeholderHref}>Instagram</a>
+            <a href="#">Instagram</a>
           </p-link-pure>
           <p-link-pure class="p-static-sm -m-static-sm" icon="logo-facebook" hide-label="true" size="md">
-            <a href={placeholderHref}>Facebook</a>
+            <a href="#">Facebook</a>
           </p-link-pure>
           <p-link-pure class="p-static-sm -m-static-sm" icon="logo-x" hide-label="true" size="md">
-            <a href={placeholderHref}>X</a>
+            <a href="#">X</a>
           </p-link-pure>
           <p-link-pure class="p-static-sm -m-static-sm" icon="logo-pinterest" hide-label="true" size="md">
-            <a href={placeholderHref}>Pinterest</a>
+            <a href="#">Pinterest</a>
           </p-link-pure>
           <p-link-pure class="p-static-sm -m-static-sm" icon="logo-youtube" hide-label="true" size="md">
-            <a href={placeholderHref}>YouTube</a>
+            <a href="#">YouTube</a>
           </p-link-pure>
         </div>
         <div class="flex gap-fluid-xs">
-          <a class="focus-visible:outline outline-focus outline-offset-2 rounded-sm" href={placeholderHref}>
+          <a class="focus-visible:outline outline-focus outline-offset-2 rounded-sm" href="#">
             <img
               src="https://images.ctfassets.net/1oyzmkwpf3d5/hskK1tzN0CS8cdGIttugu/883187acee1c66e7d4593141f3e659c3/Visa.svg"
               alt="visa logo"
             />
           </a>
-          <a class="focus-visible:outline outline-focus outline-offset-2 rounded-sm" href={placeholderHref}>
+          <a class="focus-visible:outline outline-focus outline-offset-2 rounded-sm" href="#">
             <img
               src="https://images.ctfassets.net/1oyzmkwpf3d5/34g5LXmVhTzseATJL7CLFj/501eba81ff4787357277faff4ea04f4d/Master__1_.svg"
               alt="master card logo"
             />
           </a>
-          <a class="focus-visible:outline outline-focus outline-offset-2 rounded-sm" href={placeholderHref}>
+          <a class="focus-visible:outline outline-focus outline-offset-2 rounded-sm" href="#">
             <img
               src="https://images.ctfassets.net/1oyzmkwpf3d5/4NeGQiGeYT5VZ3G591li1k/c12d0cc589f608a6db3d3e7d2aae0255/PayPal.svg"
               alt="paypal logo"
@@ -265,22 +263,22 @@ export const Footer = () => {
         <ul class="flex flex-wrap justify-center gap-fluid-md">
           <li>
             <p-link-pure icon="none" size="xs" underline={true}>
-              <a href={placeholderHref}>Legal notice</a>
+              <a href="#">Legal notice</a>
             </p-link-pure>
           </li>
           <li>
             <p-link-pure icon="none" size="xs" underline={true}>
-              <a href={placeholderHref}>Privacy notice</a>
+              <a href="#">Privacy notice</a>
             </p-link-pure>
           </li>
           <li>
             <p-link-pure icon="none" size="xs" underline={true}>
-              <a href={placeholderHref}>Accessibility Statement</a>
+              <a href="#">Accessibility Statement</a>
             </p-link-pure>
           </li>
           <li>
             <p-link-pure icon="none" size="xs" underline={true}>
-              <a href={placeholderHref}>Open Source Software Notice</a>
+              <a href="#">Open Source Software Notice</a>
             </p-link-pure>
           </li>
         </ul>

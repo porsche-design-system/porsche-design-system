@@ -6,8 +6,8 @@ type HeadProps = {
 /**
  * Everything inside `<head>` that is identical on every page.
  *
- * There is no stylesheet link: a page loads `main.js`, and that entry imports its `style.css` – the shape a Vite
- * project expects, so the generated projects bundle, hash and link the CSS themselves.
+ * There is no stylesheet link: the build links a generated `main.js`, and that entry imports its `style.css` – the
+ * shape a Vite project expects, so the generated projects bundle, hash and link the CSS themselves.
  *
  * The `robots` meta tag keeps the demos out of search results, which is what the examples repository shipped a
  * `robots.txt` for. A `robots.txt` cannot do that here: it is only ever read at the **origin root**, and the projects

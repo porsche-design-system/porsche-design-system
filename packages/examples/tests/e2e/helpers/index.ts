@@ -1,6 +1,7 @@
-import { type ConsoleMessage, expect, type Locator, type Page } from '@playwright/test';
-import { viewportWidthM } from '@porsche-design-system/shared/testing';
-import { stubExternalRequests, waitForComponentsReady } from '../../vrt/helpers/index.ts';
+import type { ConsoleMessage, Locator, Page } from '@playwright/test';
+import { stubExternalRequests, waitForComponentsReady } from '../../helpers/index.ts';
+
+export { getDevice, getExampleUrl, getSpecPath, waitForStablePosition } from '../../helpers/index.ts';
 
 /**
  * What an end-to-end test of an example needs, which is deliberately less than a screenshot needs.
@@ -14,16 +15,20 @@ import { stubExternalRequests, waitForComponentsReady } from '../../vrt/helpers/
  * wires up hangs off `p-*` elements.
  */
 
+/** Height of the viewport when a test sets the width itself, for the flows that resize the page. */
 export const defaultViewportHeight = 800;
 
-/** Opens an example page and waits until its components are usable. */
-export const setupExamplePage = async (
-  page: Page,
-  url: string,
-  viewportWidth: number = viewportWidthM
-): Promise<void> => {
+/**
+ * Opens an example page and waits until its components are usable.
+ *
+ * The page is laid out on the viewport of the device its project emulates – see `playwright.config.ts`. Only a flow
+ * about resizing passes a width of its own.
+ */
+export const setupExamplePage = async (page: Page, url: string, viewportWidth?: number): Promise<void> => {
   await stubExternalRequests(page);
-  await page.setViewportSize({ width: viewportWidth, height: defaultViewportHeight });
+  if (viewportWidth) {
+    await page.setViewportSize({ width: viewportWidth, height: defaultViewportHeight });
+  }
   await page.goto(url);
   await waitForComponentsReady(page);
 };
@@ -32,8 +37,8 @@ export const setupExamplePage = async (
  * Collects everything the page reports as broken: `console.error` and uncaught exceptions.
  *
  * This is the cheapest check there is for these examples and it covers their most likely failure. The behaviour of a
- * page is a plain script wired on ids, inlined by the build – so a renamed element, a snippet that ends up in a page
- * it was not written for, or a `main.js` that throws on load all fail silently in the browser. The page still
+ * page is a plain script wired on ids, moved into its `main.js` by the build – so a renamed element, a script that
+ * ends up in a page it was not written for, or a `main.js` that throws on load all fail silently in the browser. The page still
  * renders, the VRT still matches, and nothing works.
  *
  * Must be installed **before** the navigation, since most of it happens while the page loads.
@@ -52,10 +57,6 @@ export const collectPageErrors = (page: Page): string[] => {
 
   return errors;
 };
-
-/** Whether a page renders a given element at all – the flows are keyed off this, not off a list of page names. */
-export const hasElement = async (page: Page, selector: string): Promise<boolean> =>
-  (await page.locator(selector).count()) > 0;
 
 /**
  * The control a trigger renders inside its shadow root, which is what carries `aria-expanded`.
@@ -76,30 +77,3 @@ export const getTriggerControl = (page: Page, id: string): Locator => page.locat
  */
 export const isOpen = (locator: Locator): Promise<boolean> =>
   locator.evaluate((element: HTMLElement & { open?: boolean }) => element.open === true);
-
-/**
- * Waits until an element has stopped moving.
- *
- * A popover is positioned *after* it opens, and the `open` property flips before that has happened. Clicking in
- * between lands on whatever is still underneath — and for a coachmark anchored over the page that is an outside
- * click, which dismisses the very tour the test was about to walk. Playwright's own actionability cannot save this:
- * by the time it retries, the step is gone.
- *
- * `p-popover` emits only `dismiss`, so there is no "finished opening" event to await and the settled box is the
- * signal: two consecutive frames reporting the same position, with a real size.
- */
-export const waitForStablePosition = async (locator: Locator): Promise<void> => {
-  await expect
-    .poll(async () => {
-      const before = await locator.boundingBox();
-      await locator
-        .page()
-        .evaluate(
-          () => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
-        );
-      const after = await locator.boundingBox();
-
-      return !!before && !!after && before.x === after.x && before.y === after.y && after.width > 0;
-    })
-    .toBe(true);
-};
