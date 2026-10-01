@@ -349,8 +349,8 @@ merely widens a peer range can therefore drag an unrelated major into the tree, 
 that major.
 
 `karma-jasmine-html-reporter@2.3.0` widened its `jasmine-core` peer from `^4 || ^5 || ^6` to `^4 || ^5 || ^6 || ^7`. npm
-then resolved `jasmine-core` to `7.0.2` at the root, which breaks zone.js' jasmine patch and fails the Angular karma
-suite with:
+then resolved `jasmine-core` to `7.0.2` at the root, which broke the jasmine patch of zone.js, loaded by the Angular
+karma suite at the time, and failed the suite with:
 
 ```text
 TypeError: Cannot assign to read only property 'describe' of object '[object Object]'
@@ -359,7 +359,7 @@ TypeError: Cannot assign to read only property 'describe' of object '[object Obj
 `jasmine-core` is therefore declared explicitly as `~6.3.0` in
 [`packages/components-angular`](../packages/components-angular/package.json), matching `@types/jasmine` and the Angular
 starter template. **Do not remove it** — without it the major returns silently on the next update round. Bump it only
-together with `@types/jasmine` and after confirming zone.js supports that jasmine major.
+together with `@types/jasmine` and after confirming the Angular karma suite passes with that jasmine major.
 
 ## Held-back dependencies
 
@@ -386,10 +386,10 @@ places that must be kept in sync when adding a new entry:
 > dependency, but they remain **coupled** — see
 > [Updating jsdom and the popover polyfill](#updating-jsdom-and-the-popover-polyfill).
 
-> **Angular is no longer held back for versions.** `@angular/*`, `ng-packagr` and `zone.js` are now bumped by `syncpack`
-> like any other dependency (`npm run npm:update`). Only Angular's **framework migration schematics** need special
-> handling — see [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations). `typescript`
-> must still stay within Angular's `MAX_TS_VERSION`.
+> **Angular is no longer held back for versions.** `@angular/*` and `ng-packagr` are now bumped by `syncpack` like any
+> other dependency (`npm run npm:update`). Only Angular's **framework migration schematics** need special handling — see
+> [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations). `typescript` must still stay
+> within Angular's `MAX_TS_VERSION`.
 
 ### How to update them
 
@@ -397,9 +397,9 @@ places that must be kept in sync when adding a new entry:
 
 Angular splits into two concerns that are handled separately:
 
-- **Version ranges** (`@angular/*`, `ng-packagr`, `zone.js`) — owned by `syncpack`. Bump them via `npm run npm:update`
-  (pick the `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep
-  `typescript` within Angular's `MAX_TS_VERSION` (see
+- **Version ranges** (`@angular/*`, `ng-packagr`) — owned by `syncpack`. Bump them via `npm run npm:update` (pick the
+  `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep `typescript`
+  within Angular's `MAX_TS_VERSION` (see
   `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back
   for the round if a bump would exceed that ceiling.
 - **Framework migrations** (code transforms) — owned by the
@@ -416,7 +416,7 @@ Angular splits into two concerns that are handled separately:
 1. `cd packages/components-angular`
 2. `npm run ng:update` — lists available Angular updates/migrations (informational; no changes are written).
 3. Bump the versions with `syncpack`: from the repo root run `npm run npm:update`, select the `@angular/*` family (and
-   `ng-packagr` / `zone.js`), then `npm install`.
+   `ng-packagr`), then `npm install`.
 4. Apply the framework migrations only (the wrapper runs the schematics in the isolated install and copies the changed
    source back into this package, leaving `package.json` and the lockfile to syncpack):
    `npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>`.

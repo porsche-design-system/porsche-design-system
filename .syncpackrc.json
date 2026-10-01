@@ -54,7 +54,6 @@
       "dependencies": [
         "@angular/**",
         "ng-packagr",
-        "zone.js",
         "ag-grid-*",
         "ag-stack",
         "@ag-grid-community/**",
