@@ -2496,9 +2496,51 @@ test.describe('slots', () => {
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option selected removed').toBeUndefined();
     await expect(getButton(page)).toHaveText('c'); // Selection is kept for controlled async filtering to work
   });
+
+  test('should update when option is added to a select that mounted without options', async ({ page }) => {
+    await initSelect(page, { options: { values: [] } });
+    expect(await getSelectValue(page)).toBeUndefined();
+
+    await setValue(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    await addOption(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectValue(page), 'after option added').toBe('a');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('a');
+    await expect(getButton(page)).toHaveText('a');
+  });
+
+  test('should update when option is added to an optgroup that mounted empty', async ({ page }) => {
+    await initSelect(page, { options: { values: [[]], includeOptgroups: true } });
+    expect(await getSelectValue(page)).toBeUndefined();
+
+    await setValue(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    await addOptionToOptgroup(page, '0', 'a');
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectValue(page), 'after option added').toBe('a');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('a');
+    await expect(getButton(page)).toHaveText('a');
+  });
 });
 
 test.describe('lifecycle', () => {
+  test('should work without unnecessary round trips on init with optgroups', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+    const status = await getLifecycleStatus(page);
+
+    // guard against a vacuous pass: optgroups must actually be on the page
+    expect(status.componentDidLoad['p-optgroup'], 'componentDidLoad: p-optgroup').toBeGreaterThan(0);
+    expect(status.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
+
+    // optgroup dispatches internalOptgroupUpdate for the initial slot assignment; it must not cause a render round trip
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initSelect(page);
     const buttonElement = getButton(page);

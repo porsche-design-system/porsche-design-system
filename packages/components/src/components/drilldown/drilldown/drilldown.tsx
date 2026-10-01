@@ -18,7 +18,6 @@ import {
   attachComponentCss,
   getHTMLElementOfKind,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
   setScrollLock,
@@ -124,7 +123,6 @@ export class Drilldown {
       setScrollLock(true);
       this.setDialogVisibility(true);
     }
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineDrilldownItemElements);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -192,7 +190,7 @@ export class Drilldown {
             Dismiss drilldown
           </PrefixedTagNames.pButton>
           <div class="scroller">
-            <slot />
+            <slot onSlotchange={this.defineDrilldownItemElements} />
           </div>
         </div>
       </dialog>
