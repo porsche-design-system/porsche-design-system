@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { componentsReady, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -33,12 +33,12 @@ class SampleComponent {
 
 const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]+?-->/g, '');
 
-beforeEach(waitForAsync(() => {
-  TestBed.configureTestingModule({
+beforeEach(async () => {
+  await TestBed.configureTestingModule({
     imports: [PorscheDesignSystemModule],
     declarations: [EmptyComponent, SampleComponent],
   }).compileComponents();
-}));
+});
 
 it('should return 0 when nothing is rendered', async () => {
   // we need to create something to bootstrap the design system via PorscheDesignSystemModule, which is calling load()

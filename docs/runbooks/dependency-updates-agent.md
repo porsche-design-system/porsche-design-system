@@ -44,8 +44,8 @@ These are excluded from the `syncpack` flow — they are ignored by `syncpack` v
 by selecting them in `npm run npm:update`.** Handle them as noted:
 
 - `@porsche-design-system/**` — internal workspace packages, versioned by the release process. **Never touch here.**
-- `@angular/**`, `ng-packagr`, `zone.js` — **versions** go through syncpack (`npm run npm:update`) like everything else;
-  only Angular's framework **migrations** are applied separately in
+- `@angular/**`, `ng-packagr` — **versions** go through syncpack (`npm run npm:update`) like everything else; only
+  Angular's framework **migrations** are applied separately in
   [step 3](#3-apply-angular-framework-migrations-after-the-syncpack-version-bump).
 - `typescript` — may move only **within** Angular's `MAX_TS_VERSION` ceiling (see step 3); otherwise keep it held back
   this round.
@@ -93,7 +93,7 @@ via `min-release-age` in [`.npmrc`](../../.npmrc). A version withheld this week 
 
 Angular splits into two concerns:
 
-- **Versions** (`@angular/*`, `ng-packagr`, `zone.js`) are bumped by syncpack like everything else, in
+- **Versions** (`@angular/*`, `ng-packagr`) are bumped by syncpack like everything else, in
   [step 4](#4-apply-updates-with-syncpack). Select the `@angular/*` family together so they move in lockstep.
 - **Framework migrations** (code transforms) are applied here, by the
   [`ng-update.sh`](../../packages/components-angular/scripts/ng-update.sh) wrapper (`npm run ng:update`).
@@ -270,8 +270,8 @@ syncpack steps, just verify these files look correct (don't hand-edit versions s
 
 **If syncpack bumped Angular**, also align the Angular template
 (`packages/storefront/projects/stackblitz/src/angular/package.json`) to the new versions: `@angular/*`,
-`@angular/build`, `@angular/cli`, `@angular/compiler-cli`, `zone.js`, and `typescript` (respecting `MAX_TS_VERSION`).
-Otherwise leave them as-is.
+`@angular/build`, `@angular/cli`, `@angular/compiler-cli`, and `typescript` (respecting `MAX_TS_VERSION`). Otherwise
+leave them as-is.
 
 Verify the bundle still generates (this writes the git-ignored `generated/bundle.ts`; **do not commit** it):
 
