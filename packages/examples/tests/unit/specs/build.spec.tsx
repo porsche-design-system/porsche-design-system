@@ -384,6 +384,15 @@ describe('renderPage()', () => {
     );
   });
 
+  it('should recognize scripts the way the HTML parser does, regardless of case and whitespace in the end tag', () => {
+    const html =
+      '<SCRIPT>a = \'<b class="a  b">\';</SCRIPT ><script>b = \'<i class=" c">\';</script\n><p class=" x"></p>';
+
+    expect(normalizeClassAttributes(html)).toBe(
+      '<SCRIPT>a = \'<b class="a  b">\';</SCRIPT ><script>b = \'<i class=" c">\';</script\n><p class="x"></p>'
+    );
+  });
+
   it('should prepend the doctype, followed by the note on what the example is', async () => {
     expect((await renderPage(LandingPage)).startsWith(`${doctype}\n${exampleNote}\n<html lang="en">`)).toBe(true);
   });

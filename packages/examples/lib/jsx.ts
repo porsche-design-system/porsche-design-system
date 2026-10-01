@@ -57,7 +57,8 @@ export const exampleNote = `<!--
   - Adapt the :not(:defined) rule of the stylesheet as described there.
 -->`;
 
-const REGEX_SCRIPT_ELEMENT = /(<script\b[^>]*>[\s\S]*?<\/script>)/;
+// Matches the end tag the way the HTML parser does: in any case, and with whitespace or attributes before the `>`.
+const REGEX_SCRIPT_ELEMENT = /(<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>)/i;
 const REGEX_CLASS_ATTRIBUTE = /\sclass="([^"]*)"/g;
 
 /**
