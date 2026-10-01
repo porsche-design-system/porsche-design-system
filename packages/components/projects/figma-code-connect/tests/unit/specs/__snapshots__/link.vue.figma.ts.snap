@@ -1,0 +1,30 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=34628-29775
+// source=https://designsystem.porsche.com/v4/components/link/api
+// component=PLink
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { iconOf } from '../../../figma/helpers/iconOf';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const variant = read.oneOf('variant', ['primary', 'secondary']);
+const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), 'arrow-right') : undefined;
+const iconSource = read.text('iconSource');
+const href = read.text('href');
+const download = read.text('download');
+const rel = read.text('rel');
+const hideLabel = read.hideLabel();
+const compact = read.flag('compact');
+
+export default {
+  example: figma.code`<PLink${variant ? ` :variant="'${variant}'"` : ''}${icon ? ` :icon="'${icon}'"` : ''}${iconSource ? ` :iconSource="'${iconSource}'"` : ''}${href ? ` :href="'${href}'"` : ''}${download ? ` :download="'${download}'"` : ''}${rel ? ` :rel="'${rel}'"` : ''}${hideLabel ? ' :hideLabel="true"' : ''}${compact ? ' :compact="true"' : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PLink>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4/components/link/api',
+    "import { PLink } from '@porsche-design-system/components-vue';",
+  ],
+  id: 'p-link',
+  metadata: { nestable: true },
+};

@@ -1,0 +1,22 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=32620-8703
+// source=https://designsystem.porsche.com/v4/components/stepper-horizontal/api
+// component=PStepperHorizontal
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const size = read.oneOf('size', ['small', 'medium']);
+
+export default {
+  example: figma.code`<PStepperHorizontal${size ? ` :size="'${size}'"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PStepperHorizontal>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4/components/stepper-horizontal/api',
+    "import { PStepperHorizontal } from '@porsche-design-system/components-vue';",
+  ],
+  id: 'p-stepper-horizontal',
+  metadata: { nestable: true },
+};

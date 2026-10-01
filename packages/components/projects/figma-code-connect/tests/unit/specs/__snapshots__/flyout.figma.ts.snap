@@ -1,0 +1,25 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=25272-1118
+// source=https://designsystem.porsche.com/v4/components/flyout/api
+// component=p-flyout
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const open = read.flag('open');
+const position = read.oneOf('position', ['start', 'end']);
+const disableBackdropClick = read.flag('disableBackdropClick');
+const background = read.oneOf('background', ['canvas', 'surface']);
+const backdrop = read.oneOf('backdrop', ['blur', 'shading']);
+const footerBehavior = read.oneOf('footerBehavior', ['sticky', 'fixed']);
+const fullscreen = read.flag('fullscreen');
+
+export default {
+  example: figma.code`<p-flyout${open ? ' open="true"' : ''}${position ? ` position="${position}"` : ''}${disableBackdropClick ? ' disable-backdrop-click="true"' : ''}${background ? ` background="${background}"` : ''}${backdrop ? ` backdrop="${backdrop}"` : ''}${footerBehavior ? ` footer-behavior="${footerBehavior}"` : ''}${fullscreen ? ' fullscreen="true"' : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', '<!-- slot="header" -->') : ''}${read.has('slot-footer') ? slotted(instance.getSlot('slot-footer'), 'slot-footer', '<!-- slot="footer" -->') : ''}${read.has('slot-sub-footer') ? slotted(instance.getSlot('slot-sub-footer'), 'slot-sub-footer', '<!-- slot="sub-footer" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-flyout>`,
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/flyout/api -->'],
+  id: 'p-flyout',
+  metadata: { nestable: true },
+};

@@ -1,0 +1,23 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=52702-279
+// source=https://designsystem.porsche.com/v4/components/ai-tag/api
+// component=PAiTag
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const locale = read.oneOf('locale', ['ar-BH', 'ar-KW', 'ar-QA', 'ar-SA', 'az-AZ', 'bg-BG', 'bs-BA', 'cs-CZ', 'cs-SK', 'da-DK', 'de-AT', 'de-CH', 'de-DE', 'de-LI', 'de-LU', 'el-GR', 'en', 'en-AE', 'en-AE-x-abu-dhabi', 'en-AE-x-abudhabi', 'en-AE-x-dubai', 'en-AL', 'en-AU', 'en-BA', 'en-BG', 'en-BH', 'en-BN', 'en-CA', 'en-CH', 'en-CN', 'en-CW', 'en-CY', 'en-CZ', 'en-DK', 'en-EE', 'en-EG', 'en-FI', 'en-GB', 'en-GE', 'en-GH', 'en-GI', 'en-GR', 'en-HK', 'en-HR', 'en-HT', 'en-ID', 'en-IE', 'en-IL', 'en-IN', 'en-IS', 'en-JM', 'en-JO', 'en-KH', 'en-KR', 'en-KW', 'en-KZ', 'en-LB', 'en-LK', 'en-LT', 'en-LV', 'en-ME', 'en-MK', 'en-MN', 'en-MT', 'en-MU', 'en-MY', 'en-NC', 'en-NL', 'en-NO', 'en-NZ', 'en-OM', 'en-PF', 'en-PH', 'en-PL', 'en-PR', 'en-QA', 'en-RO', 'en-RS', 'en-SA', 'en-SE', 'en-SG', 'en-SI', 'en-SK', 'en-TH', 'en-TR', 'en-TT', 'en-TW', 'en-UA', 'en-US', 'en-VE', 'en-VN', 'en-XA', 'en-YE', 'en-ZA', 'es-AD', 'es-AR', 'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO', 'es-EC', 'es-ES', 'es-GT', 'es-HN', 'es-MX', 'es-PA', 'es-PE', 'es-PR', 'es-PY', 'es-SV', 'es-TT', 'es-UY', 'es-VE', 'et-EE', 'fi-FI', 'fr-BE', 'fr-CA', 'fr-CH', 'fr-DZ', 'fr-FR', 'fr-GP', 'fr-LI', 'fr-LU', 'fr-MA', 'fr-MC', 'fr-MQ', 'fr-MU', 'fr-NC', 'fr-PF', 'fr-RE', 'fr-TN', 'he-IL', 'hr-HR', 'hu-HU', 'hy-AM', 'is-IS', 'it-CH', 'it-IT', 'ja-JP', 'ka-GE', 'ko-KR', 'lt-LT', 'lv-LV', 'me-ME', 'mk-MK', 'mt-MT', 'nb-NO', 'nl-BE', 'nl-NL', 'no-NO', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-MD', 'ro-RO', 'ru-AZ', 'ru-BY', 'ru-CY', 'ru-EE', 'ru-KZ', 'ru-LT', 'ru-LV', 'ru-RU', 'ru-UK', 'ru-UZ', 'sk-SK', 'sl-SI', 'sr-ME', 'sr-RS', 'sv-SE', 'tr-TR', 'uk-UA', 'zh-CN', 'zh-HK', 'zh-TW']);
+const variant = read.oneOf('variant', ['abbreviation', 'generated', 'modified']);
+
+export default {
+  example: figma.code`<PAiTag${locale ? ` locale="${locale}"` : ''}${variant ? ` variant="${variant}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PAiTag>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4/components/ai-tag/api',
+    "import { PAiTag } from '@porsche-design-system/components-react';",
+  ],
+  id: 'p-ai-tag',
+  metadata: { nestable: true },
+};

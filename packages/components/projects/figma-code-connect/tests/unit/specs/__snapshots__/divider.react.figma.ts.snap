@@ -1,0 +1,23 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1002-5592
+// source=https://designsystem.porsche.com/v4/components/divider/api
+// component=PDivider
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const color = read.oneOf('color', ['contrast-lower', 'contrast-low', 'contrast-medium', 'contrast-high']);
+const direction = read.oneOf('direction', ['vertical', 'horizontal']);
+
+export default {
+  example: figma.code`<PDivider${color ? ` color="${color}"` : ''}${direction ? ` direction="${direction}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PDivider>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4/components/divider/api',
+    "import { PDivider } from '@porsche-design-system/components-react';",
+  ],
+  id: 'p-divider',
+  metadata: { nestable: true },
+};

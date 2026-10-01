@@ -1,0 +1,35 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=34317-74666
+// source=https://designsystem.porsche.com/v4/components/button-tile/api
+// component=PButtonTile
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { iconOf } from '../../../figma/helpers/iconOf';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const size = read.oneOf('size', ['medium', 'large', 'inherit']);
+const weight = read.oneOf('weight', ['regular', 'semi-bold']);
+const aspectRatio = read.oneOf('aspectRatio', ['1/1', '4/3', '3/4', '16/9', '9/16', 'auto']);
+const label = read.text('label');
+const description = read.text('description');
+const align = read.oneOf('align', ['top', 'bottom']);
+const gradient = read.flag('gradient');
+const compact = read.flag('compact');
+const type = read.oneOf('type', ['button', 'submit', 'reset']);
+const disabled = read.flag('disabled');
+const loading = read.flag('loading');
+const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), undefined) : undefined;
+const iconSource = read.text('iconSource');
+
+export default {
+  example: figma.code`<PButtonTile${size ? ` size="${size}"` : ''}${weight ? ` weight="${weight}"` : ''}${aspectRatio ? ` aspectRatio="${aspectRatio}"` : ''}${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${align ? ` align="${align}"` : ''}${gradient ? ' gradient={true}' : ''}${compact ? ' compact={true}' : ''}${type ? ` type="${type}"` : ''}${disabled ? ' disabled={true}' : ''}${loading ? ' loading={true}' : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` iconSource="${iconSource}"` : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', '{/* slot="header" */}') : ''}${read.has('slot-footer') ? slotted(instance.getSlot('slot-footer'), 'slot-footer', '{/* slot="footer" */}') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PButtonTile>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4/components/button-tile/api',
+    "import { PButtonTile } from '@porsche-design-system/components-react';",
+  ],
+  id: 'p-button-tile',
+  metadata: { nestable: true },
+};

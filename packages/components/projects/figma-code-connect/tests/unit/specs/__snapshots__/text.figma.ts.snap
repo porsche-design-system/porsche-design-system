@@ -1,0 +1,25 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=33582-44325
+// source=https://designsystem.porsche.com/v4/components/text/api
+// component=p-text
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const tag = read.oneOf('tag', ['p', 'span', 'div', 'address', 'blockquote', 'figcaption', 'cite', 'time', 'legend']);
+const size = read.oneOf('size', ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', 'inherit']);
+const weight = read.oneOf('weight', ['normal', 'semibold', 'bold']);
+const align = read.oneOf('align', ['start', 'center', 'end', 'inherit']);
+const color = read.oneOf('color', ['primary', 'contrast-higher', 'contrast-high', 'contrast-medium', 'success', 'warning', 'error', 'info', 'inherit']);
+const hyphens = read.oneOf('hyphens', ['none', 'manual', 'auto', 'inherit']);
+const ellipsis = read.flag('ellipsis');
+
+export default {
+  example: figma.code`<p-text${tag ? ` tag="${tag}"` : ''}${size ? ` size="${size}"` : ''}${weight ? ` weight="${weight}"` : ''}${align ? ` align="${align}"` : ''}${color ? ` color="${color}"` : ''}${hyphens ? ` hyphens="${hyphens}"` : ''}${ellipsis ? ' ellipsis="true"' : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-text>`,
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/text/api -->'],
+  id: 'p-text',
+  metadata: { nestable: true },
+};

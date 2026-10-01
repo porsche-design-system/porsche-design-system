@@ -1,0 +1,25 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=819-3146
+// source=https://designsystem.porsche.com/v4/components/popover/api
+// component=PPopover
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const open = read.flag('open');
+const direction = read.oneOf('direction', ['top', 'right', 'bottom', 'left']);
+const description = read.text('description');
+const compact = read.flag('compact');
+
+export default {
+  example: figma.code`<PPopover${open ? ' open={true}' : ''}${direction ? ` direction="${direction}"` : ''}${description ? ` description="${description}"` : ''}${compact ? ' compact={true}' : ''}>${read.has('slot-button') ? slotted(instance.getSlot('slot-button'), 'slot-button', '{/* slot="button" */}') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PPopover>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4/components/popover/api',
+    "import { PPopover } from '@porsche-design-system/components-react';",
+  ],
+  id: 'p-popover',
+  metadata: { nestable: true },
+};

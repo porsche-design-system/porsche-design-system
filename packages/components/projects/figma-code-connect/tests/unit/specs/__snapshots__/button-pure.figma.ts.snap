@@ -1,0 +1,34 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=33041-10759
+// source=https://designsystem.porsche.com/v4/components/button-pure/api
+// component=p-button-pure
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { iconOf } from '../../../figma/helpers/iconOf';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const type = read.oneOf('type', ['button', 'submit', 'reset']);
+const name = read.text('name');
+const value = read.text('value');
+const disabled = read.flag('disabled');
+const loading = read.flag('loading');
+const size = read.oneOf('size', ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', 'inherit']);
+const color = read.oneOf('color', ['primary', 'contrast-higher', 'contrast-high', 'contrast-medium', 'inherit']);
+const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), 'arrow-right') : undefined;
+const iconSource = read.text('iconSource');
+const underline = read.flag('underline');
+const active = read.flag('active');
+const hideLabel = read.hideLabel();
+const alignLabel = read.oneOf('alignLabel', ['start', 'end']);
+const stretch = read.flag('stretch');
+const form = read.text('form');
+
+export default {
+  example: figma.code`<p-button-pure${type ? ` type="${type}"` : ''}${name ? ` name="${name}"` : ''}${value ? ` value="${value}"` : ''}${disabled ? ' disabled="true"' : ''}${loading ? ' loading="true"' : ''}${size ? ` size="${size}"` : ''}${color ? ` color="${color}"` : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` icon-source="${iconSource}"` : ''}${underline ? ' underline="true"' : ''}${active ? ' active="true"' : ''}${hideLabel ? ' hide-label="true"' : ''}${alignLabel ? ` align-label="${alignLabel}"` : ''}${stretch ? ' stretch="true"' : ''}${form ? ` form="${form}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-button-pure>`,
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/button-pure/api -->'],
+  id: 'p-button-pure',
+  metadata: { nestable: true },
+};

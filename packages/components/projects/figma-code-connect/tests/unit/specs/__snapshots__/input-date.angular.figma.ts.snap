@@ -1,0 +1,38 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=47753-6077
+// source=https://designsystem.porsche.com/v4/components/input-date/api
+// component=p-input-date
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const label = read.text('label');
+const step = read.number('step');
+const description = read.text('description');
+const compact = read.flag('compact');
+const name = read.text('name');
+const value = read.text('value');
+const autoComplete = read.text('autoComplete');
+const readOnly = read.flag('readOnly');
+const form = read.text('form');
+const max = read.text('max');
+const min = read.text('min');
+const disabled = read.flag('disabled');
+const required = read.flag('required');
+const loading = read.flag('loading');
+const state = read.oneOf('state', ['none', 'error', 'success']);
+const message = read.text('message');
+const hideLabel = read.hideLabel();
+
+export default {
+  example: figma.code`<p-input-date${label ? ` [label]="'${label}'"` : ''}${step ? ` [step]="${step}"` : ''}${description ? ` [description]="'${description}'"` : ''}${compact ? ' [compact]="true"' : ''}${name ? ` [name]="'${name}'"` : ''}${value ? ` [value]="'${value}'"` : ''}${autoComplete ? ` [autoComplete]="'${autoComplete}'"` : ''}${readOnly ? ' [readOnly]="true"' : ''}${form ? ` [form]="'${form}'"` : ''}${max ? ` [max]="'${max}'"` : ''}${min ? ` [min]="'${min}'"` : ''}${disabled ? ' [disabled]="true"' : ''}${required ? ' [required]="true"' : ''}${loading ? ' [loading]="true"' : ''}${state ? ` [state]="'${state}'"` : ''}${message ? ` [message]="'${message}'"` : ''}${hideLabel ? ' [hideLabel]="true"' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', '<!-- slot="label" -->') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', '<!-- slot="label-after" -->') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', '<!-- slot="description" -->') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', '<!-- slot="message" -->') : ''}${read.has('slot-start') ? slotted(instance.getSlot('slot-start'), 'slot-start', '<!-- slot="start" -->') : ''}${read.has('slot-end') ? slotted(instance.getSlot('slot-end'), 'slot-end', '<!-- slot="end" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-input-date>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4/components/input-date/api',
+    "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
+  ],
+  id: 'p-input-date',
+  metadata: { nestable: true },
+};

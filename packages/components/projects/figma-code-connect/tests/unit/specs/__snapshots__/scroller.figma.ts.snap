@@ -1,0 +1,21 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=3465-24056
+// source=https://designsystem.porsche.com/v4/components/scroller/api
+// component=p-scroller
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const scrollbar = read.flag('scrollbar');
+const compact = read.flag('compact');
+const sticky = read.flag('sticky');
+
+export default {
+  example: figma.code`<p-scroller${scrollbar ? ' scrollbar="true"' : ''}${compact ? ' compact="true"' : ''}${sticky ? ' sticky="true"' : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-scroller>`,
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/scroller/api -->'],
+  id: 'p-scroller',
+  metadata: { nestable: true },
+};
