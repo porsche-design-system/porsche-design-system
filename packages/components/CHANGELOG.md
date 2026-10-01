@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.8.0-rc.1] - 2026-10-01
+
 ### Added
 
 - `Knowledge Skill`: patterns and templates – the header, footer, popover and feedback patterns, the landing page and
