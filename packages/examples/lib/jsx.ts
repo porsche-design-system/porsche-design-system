@@ -64,13 +64,20 @@ export const exampleNote = `<!--
 // Matches the end tag the way the HTML parser does: in any case, and with whitespace or attributes before the `>`.
 const REGEX_SCRIPT_ELEMENT = /(<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>)/i;
 const REGEX_CLASS_ATTRIBUTE = /\sclass="([^"]*)"/g;
+// An escaped ampersand that is safe to write literally: one not followed by what could read as a character reference.
+const REGEX_ESCAPED_AMPERSAND = /&amp;(?![a-z0-9#])/gi;
 
 /**
- * Trims and collapses the whitespace of every `class` attribute, and drops one left empty.
+ * Trims and collapses the whitespace of every `class` attribute, drops one left empty, and unescapes its ampersands.
  *
  * It is what lets a component write an optional class as a template literal – `` `p-static-xs ${scheme}` `` – without
- * a stray space in the markup when the class is not set; Prettier leaves attribute values as they are. The content of
- * `<script>` elements is not touched, since it is code rather than markup.
+ * a stray space in the markup when the class is not set; Prettier leaves attribute values as they are.
+ *
+ * The renderer escapes every `&` of an attribute, but Tailwind scans the raw `index.html` without decoding it, so an
+ * arbitrary variant such as `[&>*]:mb-static-sm` would be read as `[&amp;>*]:mb-static-sm` and never be generated.
+ * A literal `&` is valid HTML as long as it does not start a character reference, which the lookahead ensures.
+ *
+ * The content of `<script>` elements is not touched, since it is code rather than markup.
  */
 export const normalizeClassAttributes = (html: string): string =>
   html
@@ -80,7 +87,7 @@ export const normalizeClassAttributes = (html: string): string =>
       index % 2
         ? part
         : part.replace(REGEX_CLASS_ATTRIBUTE, (_match, value: string) => {
-            const normalized = value.trim().split(/\s+/).join(' ');
+            const normalized = value.trim().split(/\s+/).join(' ').replace(REGEX_ESCAPED_AMPERSAND, '&');
             return normalized ? ` class="${normalized}"` : '';
           })
     )
