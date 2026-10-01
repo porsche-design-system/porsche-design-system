@@ -1,14 +1,17 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { examplesSkill } from '@porsche-design-system/examples/skill';
 import {
   getPackageSkillRouteReferences,
+  renderExamplesNote,
+  renderExamplesSection,
   renderStylesheetsSection,
   renderStylingSection,
   renderTokensSection,
   writePackageSkillReferences,
 } from '@skills/knowledge/packageSkills';
-import { SkillTree } from '@skills/shared/skillTree';
+import { FRAMEWORKS, SkillTree } from '@skills/shared/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 const routeReferences = {
@@ -82,7 +85,7 @@ describe('package skill registry', () => {
     // Sub-components link to the component documenting them, resolved to the local component reference.
     expect(page).toContain('[`p-drilldown`](../../../components/p-drilldown/p-drilldown.md)');
     expect(page).not.toContain('p-drilldown-link`](');
-    expect(page).toContain('[examples.md](../../../examples.md#stylesheet)');
+    expect(page).toContain('[examples.md](../../../examples.md)');
     expect(page).toContain('```html\n<html lang="en">');
     expect(page).not.toMatch(/^\s*<head>/m);
     expect(page).not.toContain('Example of the Porsche Design System');
@@ -90,37 +93,36 @@ describe('package skill registry', () => {
     expect(page).not.toContain("import './style.css';");
   });
 
-  it('states below the title of every example file that it is vanilla, for js', () => {
-    writePackageSkillReferences(tree, routeReferences);
-
-    expect(read('references/examples.md')).toMatch(
-      /^# Patterns and templates\n\n> \*\*Vanilla HTML and JavaScript\.\*\*/
-    );
-    expect(read('references/examples/patterns/footer.md')).toMatch(
-      /^# Footer\n\n> \*\*Vanilla HTML and JavaScript\.\*\*/
-    );
-  });
-
-  it.each(['angular', 'react', 'vue'] as const)(
-    'states below the title of every example file that it has to be converted, for %s',
+  // SKILL.md is in context whenever these files are read: whatever it says, they must not say again.
+  it.each(FRAMEWORKS)(
+    'repeats neither the intro nor the framework note of SKILL.md in the %s example files',
     (framework) => {
       tree = new SkillTree(root, framework);
       tree.reset();
-      const pages = writePackageSkillReferences(tree, routeReferences).filter((file) =>
+      const files = writePackageSkillReferences(tree, routeReferences).filter((file) =>
         file.startsWith('references/examples')
       );
+      const section = renderExamplesSection(framework);
+      const note = renderExamplesNote(framework);
 
-      for (const page of pages) {
-        expect(read(page)).toMatch(/^# [^\n]+\n\n> \*\*Convert to (Angular|React|Vue) before use\.\*\*/);
-        expect(read(page)).toContain(`@porsche-design-system/components-${framework}`);
+      expect(section).toContain(note);
+      expect(section).toContain(examplesSkill.intro);
+      for (const file of files) {
+        expect(read(file), file).not.toContain(note);
+        expect(read(file), file).not.toContain(examplesSkill.intro);
       }
     }
   );
 
-  it('leaves the other package skills without a note', () => {
-    writePackageSkillReferences(tree, routeReferences);
+  it('states the conventions all examples share once, in the index', () => {
+    const files = writePackageSkillReferences(tree, routeReferences).filter((file) =>
+      file.startsWith('references/examples/')
+    );
 
-    expect(read('references/tokens.md')).not.toContain('Vanilla HTML and JavaScript');
+    expect(read('references/examples.md')).toContain('## Conventions');
+    for (const file of files) {
+      expect(read(file), file).not.toContain('Links point to `#`');
+    }
   });
 
   it('uses the js-peer SCSS pointer for framework wrappers', () => {

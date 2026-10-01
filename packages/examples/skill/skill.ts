@@ -17,16 +17,16 @@ import { srcDir } from '../lib/shared.ts';
  * `package.json` and `vite.config.ts` are left out, since the skill covers the setup of every framework on its own,
  * and the stylesheet, the same for every page, is shown once in the index.
  *
- * The content is framework-agnostic, like the examples: the knowledge skill adds the note on converting them to its
- * framework. Components link to their storefront route (`/components/button`), which the skill resolves to its
+ * The content is framework-agnostic, like the examples: the note on converting them to a framework is part of the
+ * section of SKILL.md the knowledge skill renders from `intro`, and is not repeated in the files read after it. Components link to their storefront route (`/components/button`), which the skill resolves to its
  * component reference.
  */
 
 const skillName = 'examples';
 
-const categoryLabels: Record<ProjectCategory, { heading: string; singular: string; summary: string }> = {
-  patterns: { heading: 'Patterns', singular: 'Pattern', summary: 'a single section of a page' },
-  templates: { heading: 'Templates', singular: 'Template', summary: 'a whole page, chrome included' },
+const categoryLabels: Record<ProjectCategory, { heading: string; singular: string }> = {
+  patterns: { heading: 'Patterns', singular: 'Pattern' },
+  templates: { heading: 'Templates', singular: 'Template' },
 };
 
 const getCategory = (pagePath: string): ProjectCategory => pagePath.split('/')[0] as ProjectCategory;
@@ -88,9 +88,13 @@ const getFile = ({ path: pagePath, files }: Example, file: string): string => {
   return content;
 };
 
+/**
+ * One example: what is specific to it and nothing else. What every example shares – the conventions of the markup and
+ * the script, the stylesheet – is in the index, and what they are and how to convert them is in SKILL.md, which is in
+ * context whenever a reference is read.
+ */
 const renderPage = (example: Example): string => {
   const { path: pagePath, title, description } = example;
-  const category = categoryLabels[getCategory(pagePath)];
   const markup = getMarkup(getFile(example, 'index.html'));
   const script = getScript(getFile(example, scriptEntryName));
 
@@ -99,15 +103,11 @@ const renderPage = (example: Example): string => {
     '',
     description,
     '',
-    `- **Type:** ${category.singular} – ${category.summary}.`,
+    `- **Type:** ${categoryLabels[getCategory(pagePath)].singular}`,
     `- **Components:** ${renderComponentLinks(getComponents(markup))}`,
-    `- **Stylesheet:** the one all examples share, see [${skillName}.md](${getIndexLink(pagePath)}#stylesheet).`,
+    `- **Conventions and stylesheet:** shared by all examples, see [${skillName}.md](${getIndexLink(pagePath)})`,
     '',
     '## Markup',
-    '',
-    'The document without its `<head>`. Links point to `#`, texts and media are placeholders. The components are ' +
-      'written as HTML takes them: object and breakpoint values of props are strings, e.g. ' +
-      '`hide-label="{ base: true, s: false }"`.',
     '',
     '```html',
     markup,
@@ -115,16 +115,7 @@ const renderPage = (example: Example): string => {
     '',
     '## Script',
     '',
-    ...(script
-      ? [
-          'The behaviour of the page, as a JavaScript module. It is demo code: it wires up the components by their ' +
-            'ids and fakes everything a real application would load or send.',
-          '',
-          '```js',
-          script,
-          '```',
-        ]
-      : ['The page has no behaviour of its own: the components cover all of it.']),
+    ...(script ? ['```js', script, '```'] : ['None – the components cover all of the behaviour.']),
     '',
   ].join('\n');
 };
@@ -154,28 +145,40 @@ const renderCatalog = (examples: Example[]): string[] =>
 const title = 'Patterns and templates';
 
 const intro =
-  'Patterns are single sections of a page – a header, a footer, a popover flow, a feedback form – shown in the ' +
-  'place they occupy on a real page; templates are whole pages. Both are written with web platform technologies: ' +
-  'HTML with the PDS web components, the PDS Tailwind CSS theme, and a plain JavaScript module for the behaviour.';
+  'Patterns and templates are curated use cases composed of PDS components, each with a defined layout, styling and ' +
+  'behaviour – the way the Porsche Design System puts its components together for a recurring task. Patterns ' +
+  'cover a single section of a page – a header, a footer, a popover flow, a feedback form – shown in the place it ' +
+  'occupies on a real page; templates cover a whole page. They are written in vanilla HTML and JavaScript with the ' +
+  'PDS web components and the PDS Tailwind CSS theme. Whatever the framework of a project, they are the reference ' +
+  'for how such a pattern is meant to be built – the components, their props, the layout, the styling and the ' +
+  'behaviour they show – and only their syntax has to be converted to the framework.';
 
+/** The catalog, and what every example shares. What they are is the intro, rendered into SKILL.md rather than here. */
 const renderIndex = (): string => {
   const stylesheet = fs.readFileSync(path.join(srcDir, styleEntryName), 'utf8').trim();
 
   return [
     `# ${title}`,
     '',
-    `${intro} Each reference holds the complete markup and script of one example.`,
-    '',
-    'Start from the example closest to the task instead of composing the UI from scratch, and keep what makes it ' +
-      'work: the components and their props, the Tailwind CSS utilities of the PDS theme, the landmarks, labels and ' +
-      'focus handling. Replace the placeholder content, links and media, and the demo logic of the script.',
+    'Every pattern and template with its reference, and what all of them share: the conventions of their references ' +
+      'and their stylesheet. Start from the example closest to the task; keep its landmarks, labels and focus ' +
+      'handling, and replace its placeholder content, links and media and the demo logic of its script.',
     '',
     ...renderCatalog(getExamples()),
+    '## Conventions',
+    '',
+    '- **Markup:** the document without its `<head>`. Links point to `#`, texts and media are placeholders.',
+    '- **Attributes:** the components are written as HTML takes them – object and breakpoint values of props are ' +
+      'strings, e.g. `hide-label="{ base: true, s: false }"`.',
+    '- **Script:** the behaviour of the page, as a JavaScript module. It is demo code: it wires up the components by ' +
+      'their ids and fakes everything a real application would load or send.',
+    '',
     '## Stylesheet',
     '',
-    'Every example imports the same stylesheet: the global styles of the components, Tailwind CSS and the PDS ' +
-      'Tailwind CSS theme, and a rule hiding the components until they are defined. Its comment describes how that ' +
-      'rule differs for server-side rendering and Angular.',
+    'Every example imports the same stylesheet: the [global styles](/stylesheets/introduction) the components ' +
+      'depend on, Tailwind CSS and the [PDS Tailwind CSS theme](/tailwindcss/introduction) whose utilities the ' +
+      'markup uses, and a rule hiding the components until they are defined. Its comment describes how that rule ' +
+      'differs for server-side rendering and Angular.',
     '',
     '```css',
     stylesheet,
@@ -188,9 +191,9 @@ export const examplesSkill: PackageSkill = {
   name: skillName,
   title,
   description:
-    'Ready-made page sections (patterns) and whole pages (templates), composed of PDS components and the PDS ' +
-    'Tailwind CSS theme – start from them when building a header, footer, popover flow, feedback form, landing ' +
-    'page or admin panel.',
+    'Curated use cases composed of PDS components with a defined layout and styling – page sections (patterns) ' +
+    'and whole pages (templates) to start from when building a header, footer, popover flow, feedback form, ' +
+    'landing page or admin panel.',
   intro,
   getContent: renderIndex,
   getReferences: (): PackageSkillReference[] =>

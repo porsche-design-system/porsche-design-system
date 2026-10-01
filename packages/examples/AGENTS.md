@@ -498,17 +498,21 @@ The patterns and templates ship in the `pds-knowledge-*` skill of every wrapper.
 exports `examplesSkill`, a `PackageSkill` like the ones of the style packages, registered in
 [`packages/storefront/projects/skills/src/knowledge/packageSkills.ts`](../storefront/projects/skills/src/knowledge/packageSkills.ts):
 
-- `getContent()` renders `references/examples.md` – the catalog of every page with its meta, and the shared stylesheet.
+- `intro` is rendered into the section of `SKILL.md`, with the note on converting the examples to its framework.
+- `getContent()` renders `references/examples.md` – the catalog of every page with its meta, and what all examples
+  share: the conventions of their references and the stylesheet.
 - `getReferences()` renders one file per page, `references/examples/<category>/<page>.md`: the meta, the components it
   is built from, the markup of `index.html` without its `<head>` and the note, and `main.js` without the stylesheet
   import. `package.json` and `vite.config.ts` are left out – the skill covers the setup per framework.
 
-It imports the source of the package export, `generated/examples.ts` – the files StackBlitz opens – so the skill shows
-what the storefront shows. The content is framework-agnostic; the skill generator puts the note on converting an example
-to its framework below every title. Components link to their storefront route (`/components/button`), sub-components by
-the component documenting them, and the generator resolves the route to the component reference. A change to a page
-changes the staged skill trees, so update the content snapshots of the skills project with it
-(`npm run test:unit:skills`).
+`SKILL.md` is in context whenever the other files are read, so none of them repeats it, and the references repeat
+nothing the index says – a test of the skills project holds that.
+
+`examplesSkill` imports the source of the package export, `generated/examples.ts` – the files StackBlitz opens – so the
+skill shows what the storefront shows. The content is framework-agnostic. Components link to their storefront route
+(`/components/button`), sub-components by the component documenting them, and the generator resolves the route to the
+component reference. A change to a page changes the staged skill trees, so update the content snapshots of the skills
+project with it (`npm run test:unit:skills`).
 
 ## Adding a template (a whole page)
 

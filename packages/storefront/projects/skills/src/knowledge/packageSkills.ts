@@ -23,8 +23,6 @@ type PackageSkillRegistration = {
   skill: PackageSkill;
   mount: '' | 'styles';
   rawReference?: (framework: Framework) => string;
-  /** Framework-specific note placed below the title of every file of the package skill. */
-  note?: (framework: Framework) => string;
 };
 
 const FRAMEWORK_NAMES: Record<Exclude<Framework, 'js'>, string> = { angular: 'Angular', react: 'React', vue: 'Vue' };
@@ -32,7 +30,8 @@ const FRAMEWORK_NAMES: Record<Exclude<Framework, 'js'>, string> = { angular: 'An
 /**
  * The examples are vanilla HTML and JavaScript, while every other part of a framework's skill is written in its
  * syntax. Only the need to convert them is stated: the conventions of the framework are known to the model, and its
- * PDS syntax is in the Components section of SKILL.md.
+ * PDS syntax is in the Components section of SKILL.md. Stated in SKILL.md only, which is in context whenever an
+ * example is read, so it is not repeated in the references.
  */
 export const renderExamplesNote = (framework: Framework): string =>
   framework === 'js'
@@ -43,13 +42,8 @@ export const renderExamplesNote = (framework: Framework): string =>
       `JavaScript with the PDS web components, not in ${FRAMEWORK_NAMES[framework]}. Never copy them verbatim: ` +
       `rebuild them with the components of \`@porsche-design-system/components-${framework}\` and the ` +
       `conventions of ${FRAMEWORK_NAMES[framework]} (see the framework syntax in SKILL.md), and move the behaviour ` +
-      `of the script into ${FRAMEWORK_NAMES[framework]} state and event handlers.`;
-
-/** Places a note directly below the `# title` of a markdown file. */
-const insertBelowTitle = (markdown: string, note: string): string => {
-  const [title, ...rest] = markdown.split('\n');
-  return title.startsWith('# ') ? [title, '', note, ...rest].join('\n') : `${note}\n\n${markdown}`;
-};
+      `of the script into ${FRAMEWORK_NAMES[framework]} state and event handlers. Keep the components, props, ` +
+      'layout and styling they show: that usage is how the pattern is meant to be built.';
 
 const STYLING_SKILLS: readonly PackageSkillRegistration[] = [
   { skill: tailwindcssSkill, mount: 'styles', rawReference: rawTailwindcssReference },
@@ -59,7 +53,7 @@ const STYLING_SKILLS: readonly PackageSkillRegistration[] = [
 ];
 const STYLESHEETS_SKILL: PackageSkillRegistration = { skill: stylesheetsSkill, mount: '' };
 const TOKENS_SKILL: PackageSkillRegistration = { skill: tokensSkill, mount: '' };
-const EXAMPLES_SKILL: PackageSkillRegistration = { skill: examplesSkill, mount: '', note: renderExamplesNote };
+const EXAMPLES_SKILL: PackageSkillRegistration = { skill: examplesSkill, mount: '' };
 const PACKAGE_SKILLS = [...STYLING_SKILLS, STYLESHEETS_SKILL, TOKENS_SKILL, EXAMPLES_SKILL];
 
 const referencePath = ({ skill, mount }: PackageSkillRegistration): string =>
@@ -80,15 +74,10 @@ const fullStylesheetSection = (rawReference: string): string =>
 
 export const writePackageSkillReferences = (tree: SkillTree, routeReferences: RouteReferences): string[] =>
   PACKAGE_SKILLS.flatMap((registration) => {
-    const note = registration.note?.(tree.framework);
     const write = (reference: string, content: string): string =>
       tree.writeReference(
         reference,
-        rewriteDocLinks(
-          note ? insertBelowTitle(content, note) : content,
-          path.posix.join('references', reference),
-          routeReferences
-        )
+        rewriteDocLinks(content, path.posix.join('references', reference), routeReferences)
       );
 
     const rawReference = registration.rawReference?.(tree.framework);
@@ -176,8 +165,9 @@ export const renderExamplesSection = (framework: Framework): string => {
 
   return [
     `${skill.intro} Before building a page or one of these sections, open [${reference.split('/').pop()}](${reference}) ` +
-      'for the catalog with descriptions and the stylesheet all examples share, then the reference of the closest ' +
+      'for the catalog with descriptions and what all examples share, then the reference of the closest ' +
       'example for its complete markup and script.',
+
     '',
     renderExamplesNote(framework),
     '',
