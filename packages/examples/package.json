@@ -30,8 +30,8 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "1.61.0",
-    "@porsche-design-system/components": "4.7.0",
-    "@porsche-design-system/components-js": "4.7.0",
+    "@porsche-design-system/components": "4.8.0-rc.0",
+    "@porsche-design-system/components-js": "4.8.0-rc.0",
     "@porsche-design-system/shared": "0.0.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.5.1",
