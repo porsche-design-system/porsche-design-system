@@ -1,15 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { examples, mediaPath } from '@porsche-design-system/examples';
 import { describe, expect, it } from 'vitest';
-import {
-  examplesMediaPath,
-  getExamplePayloadUrl,
-  getExampleUrl,
-  insertBasePath,
-  rewriteCdnUrlsForDev,
-  withMediaOrigin,
-} from './examples';
+import { withMediaOrigin } from './exampleMediaOrigin';
+import { getExample, getExampleMediaPath, getExampleUrl, insertBasePath, rewriteCdnUrlsForDev } from './examples';
 
 describe('insertBasePath()', () => {
-  const html = `<img src="${examplesMediaPath}718.webp" /><video poster="${examplesMediaPath}mood.webp"></video>`;
+  const html = `<img src="${mediaPath}718.webp" /><video poster="${mediaPath}mood.webp"></video>`;
 
   it('puts the slug in front of every media path', () => {
     expect(insertBasePath(html, 'v4')).toBe(
@@ -25,14 +22,6 @@ describe('insertBasePath()', () => {
   it('leaves the path alone without a basePath, where it is already right', () => {
     expect(insertBasePath(html, '')).toBe(html);
   });
-
-  it('rewrites the media paths inside a StackBlitz payload too', () => {
-    const payload = JSON.stringify({ files: { 'index.html': html } });
-
-    expect(JSON.parse(insertBasePath(payload, 'nightly')).files['index.html']).toContain(
-      'src="/nightly/examples/media/718.webp"'
-    );
-  });
 });
 
 describe('rewriteCdnUrlsForDev()', () => {
@@ -46,9 +35,6 @@ describe('rewriteCdnUrlsForDev()', () => {
 describe('getExampleUrl()', () => {
   it('addresses an example below the slug of this deployment', () => {
     expect(getExampleUrl('patterns/header/overlay', 'v4')).toBe('/v4/examples/patterns/header/overlay/index.html');
-    expect(getExamplePayloadUrl('templates/landing-page', 'pr-1234')).toBe(
-      '/pr-1234/examples/templates/landing-page/stackblitz.json'
-    );
   });
 
   it('addresses an example at the root without a basePath', () => {
@@ -56,9 +42,35 @@ describe('getExampleUrl()', () => {
   });
 });
 
+describe('getExampleMediaPath()', () => {
+  it('serves the media below the slug of this deployment', () => {
+    expect(getExampleMediaPath('v4')).toBe('/v4/examples/media/');
+    expect(getExampleMediaPath('')).toBe(mediaPath);
+  });
+});
+
+describe('getExample()', () => {
+  it('returns the example as the package exports it, its media below the slug', () => {
+    const example = getExample('templates/landing-page', 'v4');
+    const { files, ...meta } = examples['templates/landing-page'];
+
+    expect(example).toMatchObject(meta);
+    expect(Object.keys(example.files)).toEqual(Object.keys(files));
+    expect(files['index.html']).toContain(`"${mediaPath}`);
+    expect(example.files['index.html']).toContain('"/v4/examples/media/');
+    expect(example.files['index.html']).not.toContain(`"${mediaPath}`);
+  });
+
+  it('fails for a path that is not an example, as MDX does not type-check it', () => {
+    expect(() => getExample('patterns/unknown' as 'patterns/footer', '')).toThrow(
+      '"patterns/unknown" is not an example'
+    );
+  });
+});
+
 describe('withMediaOrigin()', () => {
-  const payload = {
-    title: 'Header 1 | Dummy Patterns',
+  const project = {
+    title: 'Header: Overlay',
     description: 'Description',
     files: {
       'index.html': '<img src="/v4/examples/media/718.webp" /><video poster="/v4/examples/media/mood.webp"></video>',
@@ -67,24 +79,39 @@ describe('withMediaOrigin()', () => {
   };
 
   it('puts the origin in front of every media path, because StackBlitz loads them cross-origin', () => {
-    expect(withMediaOrigin(payload, 'https://example.com', 'v4').files['index.html']).toBe(
+    expect(withMediaOrigin(project, 'https://example.com', '/v4/examples/media/').files['index.html']).toBe(
       '<img src="https://example.com/v4/examples/media/718.webp" /><video poster="https://example.com/v4/examples/media/mood.webp"></video>'
     );
   });
 
-  it('leaves every other file and the payload itself untouched', () => {
-    const result = withMediaOrigin(payload, 'https://example.com', 'v4');
+  it('leaves every other file and the project itself untouched', () => {
+    const result = withMediaOrigin(project, 'https://example.com', '/v4/examples/media/');
 
-    expect(result.files['main.js']).toBe(payload.files['main.js']);
-    expect(result.title).toBe(payload.title);
-    expect(payload.files['index.html']).toContain('src="/v4/examples/media/718.webp"');
+    expect(result.files['main.js']).toBe(project.files['main.js']);
+    expect(result.title).toBe(project.title);
+    expect(project.files['index.html']).toContain('src="/v4/examples/media/718.webp"');
+  });
+});
+
+describe('client components', () => {
+  const srcDir = path.resolve(import.meta.dirname, '..');
+  const clientFiles = (fs.readdirSync(srcDir, { recursive: true }) as string[])
+    .filter((file) => /\.tsx?$/.test(file) && !file.endsWith('.spec.ts'))
+    .map((file) => [file, fs.readFileSync(path.join(srcDir, file), 'utf8')] as const)
+    .filter(([, source]) => /^\s*['"]use client['"]/.test(source));
+
+  it('should be found', () => {
+    expect(clientFiles.map(([file]) => file)).toContain(path.join('components', 'common', 'WebsiteViewer.tsx'));
   });
 
-  it('works without a basePath', () => {
-    const local = { ...payload, files: { 'index.html': `<img src="${examplesMediaPath}718.webp" />` } };
-
-    expect(withMediaOrigin(local, 'http://localhost:3000', '').files['index.html']).toBe(
-      '<img src="http://localhost:3000/examples/media/718.webp" />'
+  // The package export holds every example – a value import would bundle all of them into the client.
+  it('should import no example data', () => {
+    const offenders = clientFiles.filter(([, source]) =>
+      Array.from(source.matchAll(/^import\s+(?!type\s)[^;]*?from\s+'([^']+)'/gm), ([, from]) => from).some(
+        (from) => from === '@porsche-design-system/examples' || from === '@/utils/examples'
+      )
     );
+
+    expect(offenders.map(([file]) => file)).toEqual([]);
   });
 });

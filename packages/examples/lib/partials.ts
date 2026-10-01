@@ -5,13 +5,10 @@ import {
   getLoaderScript,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
-import { patternComponents, templateComponents } from './projects.ts';
+import { appTitle, patternComponents, templateComponents } from './projects.ts';
 
 const REGEX_HEAD = /<\/head>/;
 const REGEX_BODY = /<\/body>/;
-
-/** Title shown by the meta tags partial, used by the dev server and by every generated project. */
-export const appTitle = 'Examples by Porsche Design System';
 
 /**
  * The Porsche Design System partials, injected by the dev server only.

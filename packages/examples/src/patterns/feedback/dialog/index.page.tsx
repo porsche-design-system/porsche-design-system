@@ -1,6 +1,14 @@
+import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { FeedbackForm } from '../../../_partials/feedback/FeedbackForm.tsx';
 import { Script } from '../../../_partials/Script.tsx';
+
+/** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
+export const meta: ExampleMeta = {
+  title: 'Feedback: Dialog',
+  description:
+    'A trigger button opens the same rating-and-comment flow inside a dialog, keeping the page uncluttered. It can be launched from any action on the page, which makes it ideal for task-focused or space-constrained contexts where feedback should stay available but out of the way.',
+};
 
 /**
  * Feedback pattern – the same flow, asked for rather than shown.
@@ -14,8 +22,7 @@ import { Script } from '../../../_partials/Script.tsx';
  */
 const Page = () => (
   <PatternPage
-    title="Feedback 2"
-    description="The same feedback flow in a modal, opened from a button and reset once it has closed."
+    meta={meta}
     afterMain={
       <p-modal id="feedback-modal" aria="{ 'aria-label': 'Feedback' }">
         <div class="grid gap-fluid-md">

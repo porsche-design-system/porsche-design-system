@@ -81,6 +81,14 @@ export const categories: Category[] = [
   { category: 'templates', components: templateComponents },
 ];
 
+/**
+ * Title shown by the meta tags partial, used by the dev server and by every generated project.
+ *
+ * Kept here rather than next to the partials, so `scripts/build.ts` runs without the built
+ * `@porsche-design-system/components-js` – it runs before `build:skills`, which reads its output.
+ */
+export const appTitle = 'Examples by Porsche Design System';
+
 /** Where the storefront serves the built pages, relative to its root: `/examples/patterns/header/overlay/`. */
 export const examplesPath = '/examples/';
 
@@ -89,9 +97,9 @@ export const examplesPath = '/examples/';
  * `src="/examples/media/718.webp"`.
  *
  * The storefront serves the examples from `public/examples/`, with the media once in `public/examples/media/`, so the
- * path is relative to the root of a storefront and free of its slug. The slug is added when the storefront copies the
- * built pages in, because one build is deployed under several slugs; StackBlitz additionally gets the origin in front,
- * because it loads the media cross-origin. The dev server of this package serves `public/` at its root, which is why
+ * path is relative to the root of a storefront and free of its slug. The slug is added by the storefront – when it
+ * copies the built pages in, and when it renders the files of an example – because one build is deployed under several
+ * slugs; StackBlitz additionally gets the origin in front, because it loads the media cross-origin. The dev server of this package serves `public/` at its root, which is why
  * the files live in `public/examples/media/` here as well – the same path works in both without a rewrite.
  *
  * `scripts/verify.ts` fails the build on any other root-absolute URL in a page, and on a file that does not exist.
@@ -100,9 +108,6 @@ export const mediaPath = `${examplesPath}media/`;
 
 /** Port `scripts/previewSite.ts` serves the built site on, next to the dev server of the source tree (3010). */
 export const previewPort = 3011;
-
-/** Name of the StackBlitz payload written next to every built page. */
-export const payloadName = 'stackblitz.json';
 
 /** Name of the generated script entry of a page, the only script its HTML references. */
 export const scriptEntryName = 'main.js';
@@ -143,3 +148,6 @@ export const resolvePageLocation = (relativePath: string): PageLocation | undefi
  * `'patterns-header-overlay'`. It names the generated package and prefixes the VRT snapshots of the page.
  */
 export const getPageId = ({ category, pageDir }: PageLocation): string => `${category}-${pageDir.replaceAll('/', '-')}`;
+
+/** Path of a page below the root of the examples: `{ category: 'patterns', pageDir: 'header/overlay' }` → `'patterns/header/overlay'`. */
+export const getPagePath = ({ category, pageDir }: PageLocation): string => `${category}/${pageDir}`;

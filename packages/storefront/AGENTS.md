@@ -20,6 +20,7 @@ accessible usage of PDS components and must comply with **WCAG 2.2 AA**.
 ```bash
 # Build the examples the storefront frames – once, and again after changing them.
 # `prebuild` copies packages/examples/dist-site into public/examples and fails without it.
+# Their pages render <ExampleViewer example="…" />, which imports each example from @porsche-design-system/examples.
 npm run build:examples
 
 # Start dev server
