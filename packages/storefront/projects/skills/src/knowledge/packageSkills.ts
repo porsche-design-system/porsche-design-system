@@ -42,8 +42,10 @@ export const renderExamplesNote = (framework: Framework): string =>
       `JavaScript with the PDS web components, not in ${FRAMEWORK_NAMES[framework]}. Never copy them verbatim: ` +
       `rebuild them with the components of \`@porsche-design-system/components-${framework}\` and the ` +
       `conventions of ${FRAMEWORK_NAMES[framework]} (see the framework syntax in SKILL.md), and move the behaviour ` +
-      `of the script into ${FRAMEWORK_NAMES[framework]} state and event handlers. Keep the components, props, ` +
-      'layout and styling they show: that usage is how the pattern is meant to be built.';
+      `of the script into ${FRAMEWORK_NAMES[framework]} state and event handlers. Import the stylesheet entries of ` +
+      `that package as well – \`@porsche-design-system/components-${framework}/index.css\` and ` +
+      `\`@porsche-design-system/components-${framework}/tailwindcss\` instead of the \`components-js\` ones. Keep ` +
+      'the components, props, layout and styling they show: that usage is how the pattern is meant to be built.';
 
 const STYLING_SKILLS: readonly PackageSkillRegistration[] = [
   { skill: tailwindcssSkill, mount: 'styles', rawReference: rawTailwindcssReference },

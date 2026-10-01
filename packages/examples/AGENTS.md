@@ -42,16 +42,18 @@ dist-site/                     # build:site – scripts/buildSite.ts, what the s
 and the files of its project, which the storefront shows as code and opens in StackBlitz – and the paths the pages and
 their media are served at (`examplesPath`, `mediaPath`). The types of an example – `ExampleMeta`, `ExampleProject`,
 `Example` – are defined once, in [`lib/meta.ts`](lib/meta.ts), which the generated source re-exports; it adds
-`ExamplePath`, the path of every example as a union. `build:projects` writes the source, typechecks the package with it
-and bundles it with its declarations into `dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so a consumer
+`ExamplePath`, the path of every example as a union. `build:projects` writes the source, typechecks what it built with
+it and bundles it with its declarations into `dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so a consumer
 compiles nothing of this package. The scripts and the knowledge skill import the source itself. The export holds every
 example, so import it on the server only.
 
 **The two steps run at different points of the root build.** `build:projects` needs the sources and the types of
 `@porsche-design-system/components` only, and runs before `build:skills`, which reads its output (see _Knowledge
 skill_). `build:site` builds the projects against `@porsche-design-system/components-js` and runs after the wrappers.
-Nothing `scripts/build.ts` imports may therefore need a built wrapper at runtime – which is why `appTitle` lives in
-`lib/projects.ts` rather than next to the partials.
+Nothing `scripts/build.ts` imports may therefore need a built wrapper – which is why `appTitle` lives in
+`lib/projects.ts` rather than next to the partials. The same holds for its typecheck: `build:projects` checks only what
+it builds ([`tsconfig.projects.json`](tsconfig.projects.json)), and `build:site` runs the full `typecheck`, whose
+partials, dev server and verification import `@porsche-design-system/components-js`.
 
 Consequences, and they are the point of the design:
 
@@ -500,8 +502,8 @@ exports `examplesSkill`, a `PackageSkill` like the ones of the style packages, r
 [`packages/storefront/projects/skills/src/knowledge/packageSkills.ts`](../storefront/projects/skills/src/knowledge/packageSkills.ts):
 
 - `intro` is rendered into the section of `SKILL.md`, with the note on converting the examples to its framework.
-- `getContent()` renders `references/examples.md` – the catalog of every page with its meta, and what all examples
-  share: the conventions of their references and the stylesheet.
+- `getContent()` renders `references/examples.md` – the catalog of every page with its meta and components, and what all
+  examples share: the conventions of their references and the stylesheet.
 - `getReferences()` renders one file per page, `references/examples/<category>/<page>.md`: the meta, the components it
   is built from, the markup of `index.html` without its `<head>` and the note, and `main.js` without the stylesheet
   import. `package.json` and `vite.config.ts` are left out – the skill covers the setup per framework.

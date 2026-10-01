@@ -31,7 +31,19 @@ const categoryLabels: Record<ProjectCategory, { heading: string; singular: strin
 
 const getCategory = (pagePath: string): ProjectCategory => pagePath.split('/')[0] as ProjectCategory;
 
-const escapeCell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ');
+/**
+ * Text as one cell of a markdown table: on a single line, with the backslash escaped before the pipe, so a backslash
+ * of the text cannot cancel the escape of a pipe following it. Split rather than matched with a regular expression,
+ * which runs in linear time whatever the text.
+ */
+export const escapeCell = (text: string): string =>
+  text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join(' ')
+    .replaceAll('\\', '\\\\')
+    .replaceAll('|', '\\|');
 
 /** The document without the note on porting it – the skill states that itself – and without its `<head>`. */
 export const getMarkup = (html: string): string => {
@@ -40,10 +52,24 @@ export const getMarkup = (html: string): string => {
     throw new Error('[examples] a generated index.html needs an <html> element');
   }
 
-  return html
-    .slice(start)
-    .replace(/[ \t]*<head>[\s\S]*?<\/head>\n?/, '')
-    .trim();
+  const document = html.slice(start);
+  const headStart = document.indexOf('<head>');
+  if (headStart === -1) {
+    return document.trim();
+  }
+  const headEnd = document.indexOf('</head>', headStart);
+  if (headEnd === -1) {
+    throw new Error('[examples] the <head> of a generated index.html is not closed');
+  }
+
+  // Located by index rather than by a regular expression, which runs in linear time whatever the document. The line
+  // of `<head>` goes with it when nothing but its indentation precedes it, and so does the line break after `</head>`.
+  const lineStart = document.lastIndexOf('\n', headStart) + 1;
+  const cutStart = document.slice(lineStart, headStart).trim() === '' ? lineStart : headStart;
+  const tagEnd = headEnd + '</head>'.length;
+  const cutEnd = document[tagEnd] === '\n' ? tagEnd + 1 : tagEnd;
+
+  return `${document.slice(0, cutStart)}${document.slice(cutEnd)}`.trim();
 };
 
 const REGEX_STYLE_IMPORT = new RegExp(`^import '\\./${styleEntryName.replace('.', '\\.')}';\\n?`, 'm');
@@ -132,11 +158,11 @@ const renderCatalog = (examples: Example[]): string[] =>
       : [
           `## ${heading}`,
           '',
-          `| ${singular} | Description | Reference |`,
-          '| --- | --- | --- |',
+          `| ${singular} | Description | Components | Reference |`,
+          '| --- | --- | --- | --- |',
           ...entries.map(
-            ({ path: pagePath, title, description }) =>
-              `| ${escapeCell(title)} | ${escapeCell(description)} | [${pagePath.split('/').pop()}.md](./${skillName}/${pagePath}.md) |`
+            (example) =>
+              `| ${escapeCell(example.title)} | ${escapeCell(example.description)} | ${renderComponentLinks(getComponents(getMarkup(getFile(example, 'index.html'))))} | [${example.path.split('/').pop()}.md](./${skillName}/${example.path}.md) |`
           ),
           '',
         ];

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { examplesSkill, getComponents, getMarkup, getScript } from '../../../skill/skill.ts';
+import { escapeCell, examplesSkill, getComponents, getMarkup, getScript } from '../../../skill/skill.ts';
 
 /**
  * The serializer of the knowledge skill: what it keeps of a generated project, and which component references an
@@ -38,6 +38,44 @@ describe('getMarkup()', () => {
 
   it('should fail for a document without an html element', () => {
     expect(() => getMarkup('<body></body>')).toThrow('<html>');
+  });
+
+  it('should drop a head sharing its line with other markup, and keep that markup', () => {
+    expect(getMarkup('<html lang="en"><head><title>x</title></head><body></body></html>')).toBe(
+      '<html lang="en"><body></body></html>'
+    );
+  });
+
+  it('should keep a document without a head, and fail for an unclosed one', () => {
+    expect(getMarkup('<html><body></body></html>')).toBe('<html><body></body></html>');
+    expect(() => getMarkup('<html><head><title>x</title><body></body></html>')).toThrow('is not closed');
+  });
+
+  // The inputs a backtracking regular expression would take polynomial time for.
+  it('should take linear time on long runs of indentation and repeated heads', () => {
+    const started = performance.now();
+    getMarkup(`<html>${'\t'.repeat(100_000)}<body></body></html>`);
+    getMarkup(`<html>${'<head>'.repeat(100_000)}</head></html>`);
+
+    expect(performance.now() - started).toBeLessThan(500);
+  });
+});
+
+describe('escapeCell()', () => {
+  it('should escape the pipe, and the backslash before it, so a backslash cannot cancel the escape', () => {
+    expect(escapeCell('a | b')).toBe('a \\| b');
+    expect(escapeCell('a \\| b')).toBe('a \\\\\\| b');
+  });
+
+  it('should keep a cell on a single line', () => {
+    expect(escapeCell(' first line \n  second line \n\n')).toBe('first line second line');
+  });
+
+  it('should take linear time on long runs of whitespace', () => {
+    const started = performance.now();
+    escapeCell(`${' '.repeat(100_000)}x`);
+
+    expect(performance.now() - started).toBeLessThan(500);
   });
 });
 
