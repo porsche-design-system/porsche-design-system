@@ -13,8 +13,7 @@ export enum EventType {
     <p-text>
       Navigate to Page B and back. The option values are bound as properties via <code>[value]</code>, so every option
       must still be rendered and the preselected one selected. The same applies to the drilldown items, whose
-      identifiers are bound via <code>[identifier]</code>, so the drilldown must open on "Special event". Load the app
-      with <code>?eventCoalescing</code> to also cover the preselection, which is only affected then.
+      identifiers are bound via <code>[identifier]</code>, so the drilldown must open on "Special event".
     </p-text>
     <div class="flex flex-col gap-fluid-md">
       <p-radio-group name="radio-group" label="Radio Group" [value]="eventType">
