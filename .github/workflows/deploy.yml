@@ -173,7 +173,7 @@ jobs:
         with:
           artifact: 'build-production'
       - name: 'Assume AWS role'
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ secrets.aws-storefront-preview-role-arn }}
           aws-region: eu-central-1
@@ -207,7 +207,7 @@ jobs:
         with:
           artifact: 'build-production'
       - name: 'Assume AWS role'
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
           aws-region: eu-central-1
