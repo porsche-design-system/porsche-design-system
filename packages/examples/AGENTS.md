@@ -297,7 +297,8 @@ reaches through interaction**.
 - **Write an optional class as a template literal** — ``class={`p-static-xs ${scheme}`}`` with `scheme = ''` as the
   default. `renderPage()` trims and collapses every `class` attribute (`normalizeClassAttributes()` in
   [`lib/jsx.ts`](lib/jsx.ts)), because Prettier leaves attribute values alone, so an unset class leaves no stray space
-  in the markup.
+  in the markup. It also unescapes the `&amp;` the renderer writes for every `&`, since Tailwind scans the markup
+  without decoding it and would miss an arbitrary variant such as `[&>*]:mb-static-sm` otherwise.
 - **Use plain HTML attribute names** — `class`, `for`, `charset`, `novalidate`. Preact accepts and types them, and the
   generated markup has to stay copy-pasteable HTML. `className`/`htmlFor` are a test failure, not a style preference.
 - **JSX collapses whitespace between elements.** Elements on separate lines produce no whitespace text node, so
