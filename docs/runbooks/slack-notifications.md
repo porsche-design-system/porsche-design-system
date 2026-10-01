@@ -3,12 +3,12 @@
 Four workflows post to Slack. All use `slackapi/slack-github-action` with `method: chat.postMessage` and one shared bot
 token, and all build their message as a Block Kit `markdown` block.
 
-| Notification        | Workflow                                         | Fires on                                           | Channel secret             |
-| ------------------- | ------------------------------------------------ | -------------------------------------------------- | -------------------------- |
-| Release             | `.github/workflows/release.yml`                  | a release the pipeline created                     | `SLACK_RELEASE_CHANNEL_ID` |
-| Release             | `.github/workflows/notify-release-published.yml` | run by hand, for a release CI did not announce     | `SLACK_RELEASE_CHANNEL_ID` |
-| Pipeline failure    | `.github/workflows/notify-pipeline-failure.yml`  | `Contribution` or `OSS Review Toolkit` failing     | `SLACK_FAILURE_CHANNEL_ID` |
-| Figma change needed | `.github/workflows/figma-code-connect.yml`       | a Figma property or option Code Connect cannot map | `SLACK_DESIGN_CHANNEL_ID`  |
+| Notification        | Workflow                                         | Fires on                                                             | Channel secret             |
+| ------------------- | ------------------------------------------------ | -------------------------------------------------------------------- | -------------------------- |
+| Release             | `.github/workflows/release.yml`                  | a release the pipeline created                                       | `SLACK_RELEASE_CHANNEL_ID` |
+| Release             | `.github/workflows/notify-release-published.yml` | run by hand, for a release CI did not announce                       | `SLACK_RELEASE_CHANNEL_ID` |
+| Pipeline failure    | `.github/workflows/notify-pipeline-failure.yml`  | `Contribution`, `OSS Review Toolkit` or `Figma Code Connect` failing | `SLACK_FAILURE_CHANNEL_ID` |
+| Figma change needed | `.github/workflows/figma-code-connect.yml`       | a Figma property or option Code Connect cannot map                   | `SLACK_DESIGN_CHANNEL_ID`  |
 
 ## Secrets
 
@@ -65,10 +65,11 @@ script still has to do, all found by testing rather than documented by Slack:
 
 ## Pipeline failure
 
-`notify-pipeline-failure.yml` watches the `Contribution` and `OSS Review Toolkit` workflows and posts when one fails on
-a monitored branch. It runs the default-branch copy of itself and checks the triggering run came from this repository,
-so a fork cannot reach the token. There is also a `workflow_dispatch` path taking a run ID, for rehearsing against a
-past failure.
+`notify-pipeline-failure.yml` watches the `Contribution`, `OSS Review Toolkit` and `Figma Code Connect` workflows and
+posts when one fails on a monitored branch. `Figma Code Connect` counts for its daily and dispatched runs; on a push to
+`main` it runs inside `Contribution`, so its failure is reported as that run's. It runs the default-branch copy of
+itself and checks the triggering run came from this repository, so a fork cannot reach the token. There is also a
+`workflow_dispatch` path taking a run ID, for rehearsing against a past failure.
 
 `scripts/build-slack-payload.ts` reads run metadata from the API rather than the event payload, so both paths execute
 identical code, and asks for one specific **attempt** — the API otherwise answers for the newest one, and a re-run

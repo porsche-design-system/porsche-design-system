@@ -25,10 +25,11 @@ Nothing here edits design: `figma connect publish` only attaches records to exis
 
 ## The workflow
 
-`.github/workflows/figma-code-connect.yml` runs on a push to `main` that touches component sources, the package, the
-icon, flag or model-signature manifests, the Slack builder or the workflow itself; daily at 06:00 UTC; and on dispatch,
-whose `force` input publishes regardless of the last publish. It is skipped unless the repository variable
-`FIGMA_CODE_CONNECT_ENABLED` is `true`, and it never gates a merge. The pull-request build reads nothing from Figma: the
+`.github/workflows/figma-code-connect.yml` runs as the last job of `Contribution` on a push to `main`, after the
+storefront and Algolia deploy; daily at 06:00 UTC; and on dispatch, whose `force` input publishes regardless of the last
+publish. It is skipped unless the repository variable `FIGMA_CODE_CONNECT_ENABLED` is `true`, and it never gates a merge
+or the release: no job needs it. A commit whose build, tests or deploy failed publishes nothing; the next green run
+catches up, because the hash compares with the last publish. The pull-request build reads nothing from Figma: the
 `Figma Code Connect` job in `.github/workflows/test.yml` runs the package's typecheck and unit tests.
 
 Each run:
@@ -45,7 +46,9 @@ Each run:
    section Slack did not get is sent by the next run that reads Figma.
 
 **The run is red only when a developer must act**: Figma could not be read, generation or its parse failed, or publish
-failed. Design lines never make it red.
+failed. Design lines never make it red. A red run reaches the engineering channel through the failure notifier
+([`slack-notifications.md`](./slack-notifications.md#pipeline-failure)). Re-run the failed job; a re-run publishes only
+while no newer commit has reached `main`, otherwise dispatch the workflow.
 
 | Issue section            | Cause                                                                                                                                       | What to do                                                                                                                                  |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -150,16 +153,16 @@ Records live per file key, so nothing published under another key touches the li
 8. **Every generated file is snapshotted, rendered from a frozen pull of the library**, so a template change shows in
    review. Rejected: a fixture derived from component-meta, whose node ids and icon swap defaults the published
    templates do not have.
-9. **Triggers: `push` with `paths`, `schedule` and `workflow_dispatch`.** Rejected: `workflow_run` on `Build`, a
-   reusable workflow with no run of its own.
+9. **Triggers: the last job of `Contribution` on a push to `main`, plus `schedule` and `workflow_dispatch`.** Rejected:
+   a job inside `.github/workflows/deploy.yml`, whose failure would skip the release; a standalone `push` trigger, which
+   published commits whose build or tests failed.
 10. **`@figma/code-connect` is pinned exactly**: `scripts/figmaConnect.ts` reads the CLI's log lines and the workflow
     hashes its parse output. Bump it per [`docs/dependencies.md`](../dependencies.md).
 
 ## Until the pull request is approved
 
-Pushes to `issue/4745` trigger the workflow, and every pull and publish goes to the test copy; production comes after
-the approval, never before. The `FIGMA_ACCESS_TOKEN` secret must be a rotated token: the tokens used during the research
-were pasted into chat sessions.
+Every pull and publish goes to the test copy; production comes after the approval, never before. The
+`FIGMA_ACCESS_TOKEN` secret must be a rotated token: the tokens used during the research were pasted into chat sessions.
 
 ### Open items for GitHub issues
 
@@ -192,5 +195,4 @@ In one pull request:
    button variant. Every component still publishes; each prop is left out of its snippet until design repeats the edit
    in production.
 3. Run `npm run figma:freeze` and `npm run test:unit -- -u`, so the snapshots render from production.
-4. Remove `issue/4745` from `push.branches` in `.github/workflows/figma-code-connect.yml`.
-5. Delete this section.
+4. Delete this section.
