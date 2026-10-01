@@ -1,6 +1,3 @@
-import { classes } from '../../_classes.ts';
-import { placeholderHref } from '../../_data.ts';
-
 type BrandProps = {
   /** Color scheme class of the bar, since the brand marks sit on it – see `Header`. */
   scheme?: string;
@@ -12,9 +9,9 @@ type BrandProps = {
  * Both are returned side by side rather than wrapped, so they share one column of `HeaderBar` – exactly one of them
  * is rendered at any viewport size.
  */
-export const Brand = ({ scheme }: BrandProps) => (
+export const Brand = ({ scheme = '' }: BrandProps) => (
   <>
-    <p-crest class={classes('sm:hidden', scheme)} href={placeholderHref} />
-    <p-wordmark class={classes('max-sm:hidden', scheme)} href={placeholderHref} />
+    <p-crest class={`sm:hidden ${scheme}`} href="#" />
+    <p-wordmark class={`max-sm:hidden ${scheme}`} href="#" />
   </>
 );

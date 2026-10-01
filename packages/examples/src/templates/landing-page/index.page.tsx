@@ -1,51 +1,34 @@
-import { navItems, placeholderHref } from '../../_data.ts';
-import { ids } from '../../_ids.ts';
-import { BasePage } from '../../_layouts/BasePage.tsx';
-import { media } from '../../_media.ts';
+import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
+import { Footer } from '../../_partials/footer/Footer.tsx';
+import { HeroVideo } from '../../_partials/HeroVideo.tsx';
+import { Header } from '../../_partials/header/Header.tsx';
+import { navItems } from '../../_partials/header/MainNav.tsx';
 
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
 const Page = () => (
-  <BasePage
+  <TemplatePage
     title="Landing page"
     description="Dummy landing page template using the shared layout and partial components."
-    currentPage="home"
-    showSearch
-    navItems={[...navItems, { id: 'landing-features', href: '#features', label: 'Jump to features' }]}
   >
+    <Header
+      currentPage="home"
+      showSearch
+      navItems={[...navItems, { id: 'landing-features', href: '#features', label: 'Jump to features' }]}
+    />
     <main id="main" class="grid-template gap-y-fluid-xl pb-fluid-2xl">
       <section
-        class="scheme-dark z-0 col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)] relative before:absolute before:inset-[50%_0_0_0] before:z-2 before:pointer-events-none before:bg-linear-to-t before:from-canvas before:to-transparent"
+        class="scheme-dark z-0 col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)] relative before:absolute before:inset-[50%_0_0_0] before:z-1 before:pointer-events-none before:bg-linear-to-t before:from-canvas before:to-transparent"
         aria-labelledby="heading-section-1"
       >
-        <video
-          id={ids.heroVideo}
-          class="z-1 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
-          poster={media('mood-porsche-gts.webp')}
-          loop
-          muted
-          autoplay={true}
-          playsinline={true}
-        >
-          <source src={media('mood-porsche-gts.mp4')} type="video/mp4" />
-          <source src={media('mood-porsche-gts.webm')} type="video/webm" />
-        </video>
-        <div class="z-2 col-extended row-span-full mb-fluid-lg">
-          <p-heading id="heading-section-1" class="pb-fluid-md" tag="h1" size="3xl">
-            <span class="text-md block">Template</span>
-            Landing Page
-          </p-heading>
-          <p-button variant="secondary">Some label</p-button>
-        </div>
-        <p-button
-          class="z-3 col-wide place-self-end row-span-full mb-fluid-lg"
-          variant="secondary"
-          compact="true"
-          hide-label="true"
-          icon="pause"
-          id={ids.pauseButton}
-        >
-          Pause Video
-        </p-button>
+        <HeroVideo>
+          <div class="z-1 col-extended row-span-full mb-fluid-lg">
+            <p-heading id="heading-section-1" class="pb-fluid-md" tag="h1" size="3xl">
+              <span class="text-md block">Template</span>
+              Landing Page
+            </p-heading>
+            <p-button variant="secondary">Some label</p-button>
+          </div>
+        </HeroVideo>
       </section>
 
       <section
@@ -64,7 +47,7 @@ const Page = () => (
             aspect-ratio="{base: '4/3', xs: '16/9', s: '3/4', m: '1/1'}"
           >
             <img
-              src={media('chrono-car.webp')}
+              src="/examples/media/chrono-car.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -78,7 +61,7 @@ const Page = () => (
             aspect-ratio="{base: '4/3', xs: '16/9', s: '3/4', m: '1/1'}"
           >
             <img
-              src={media('addon.webp')}
+              src="/examples/media/addon.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -103,7 +86,7 @@ const Page = () => (
             weight="regular"
           >
             <img
-              src={media('interieur-1.webp')}
+              src="/examples/media/interieur-1.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -117,7 +100,7 @@ const Page = () => (
             weight="regular"
           >
             <img
-              src={media('interieur-2.webp')}
+              src="/examples/media/interieur-2.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -131,7 +114,7 @@ const Page = () => (
             weight="regular"
           >
             <img
-              src={media('interieur-3.webp')}
+              src="/examples/media/interieur-3.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -145,7 +128,7 @@ const Page = () => (
             weight="regular"
           >
             <img
-              src={media('interieur-4.webp')}
+              src="/examples/media/interieur-4.webp"
               alt="Some alternative text for screen readers describing the media element"
             />
           </p-link-tile>
@@ -156,7 +139,7 @@ const Page = () => (
         <div class="col-span-full grid grid-cols-subgrid gap-y-fluid-lg">
           <img
             class="col-span-full md:col-start-1 md:col-end-7 md:row-start-1 w-full aspect-4/3 md:aspect-3/4 object-cover rounded-3xl"
-            src={media('cockpit.webp')}
+            src="/examples/media/cockpit.webp"
             alt="Some alternative text for screen readers describing the media element"
           />
           <div class="col-span-full md:col-start-8 md:col-end-13 md:row-start-1 flex flex-col justify-center items-start">
@@ -171,14 +154,14 @@ const Page = () => (
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr
             </p-text>
             <p-link class="mt-fluid-lg">
-              <a href={placeholderHref}>Some label</a>
+              <a href="#">Some label</a>
             </p-link>
           </div>
         </div>
         <div class="col-span-full grid grid-cols-subgrid gap-y-fluid-lg">
           <img
             class="col-span-full md:col-start-7 md:col-end-13 md:row-start-1 w-full aspect-4/3 md:aspect-3/4 object-cover rounded-3xl"
-            src={media('chrono.webp')}
+            src="/examples/media/chrono.webp"
             alt="Some alternative text for screen readers describing the media element"
           />
           <div class="col-span-full md:col-start-1 md:col-end-6 md:row-start-1 flex flex-col justify-center items-start">
@@ -193,13 +176,14 @@ const Page = () => (
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr
             </p-text>
             <p-link class="mt-fluid-lg">
-              <a href={placeholderHref}>Some label</a>
+              <a href="#">Some label</a>
             </p-link>
           </div>
         </div>
       </section>
     </main>
-  </BasePage>
+    <Footer />
+  </TemplatePage>
 );
 
 export default Page;

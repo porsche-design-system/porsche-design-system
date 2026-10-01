@@ -1,5 +1,6 @@
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { FeedbackForm } from '../../../_partials/feedback/FeedbackForm.tsx';
+import { Script } from '../../../_partials/Script.tsx';
 
 /**
  * Feedback pattern – the same flow, asked for rather than shown.
@@ -8,7 +9,7 @@ import { FeedbackForm } from '../../../_partials/feedback/FeedbackForm.tsx';
  * (`aria-haspopup="dialog"`) and the dialog carries its own label. The modal is the last element of the body, like
  * every dialog: it is opened from the content but is not part of it.
  *
- * `p-modal` is used in *controlled* mode – `main.js` owns `open`, so it can reset the flow after the closing
+ * `p-modal` is used in *controlled* mode – the script owns `open`, and `FeedbackForm` resets the flow once the closing
  * animation has finished instead of letting the content snap back while the dialog is still visible.
  */
 const Page = () => (
@@ -63,6 +64,29 @@ const Page = () => (
         </p-button>
       </section>
     </main>
+    <Script>{
+      /* language=JavaScript */ `
+      // Behaviour of the feedback dialog pattern: whether the modal is open. The flow inside it is the script of
+      // "FeedbackForm", which also cancels a pending submission and starts over when the modal closes.
+      //
+      // "p-modal" is used in *controlled* mode – "open" is set from here, which is what lets the flow wait for the
+      // closing animation before it resets, instead of snapping back while the dialog is still visible.
+
+      const trigger = document.getElementById('feedback-trigger');
+      const modal = document.getElementById('feedback-modal');
+      const closeButton = document.getElementById('feedback-close');
+
+      const closeModal = () => {
+        modal.open = false;
+      };
+
+      trigger.addEventListener('click', () => {
+        modal.open = true;
+      });
+      closeButton.addEventListener('click', closeModal);
+      modal.addEventListener('dismiss', closeModal);
+    `
+    }</Script>
   </PatternPage>
 );
 

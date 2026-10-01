@@ -6,7 +6,7 @@ import { FeedbackForm } from '../../../_partials/feedback/FeedbackForm.tsx';
  *
  * Nothing is disclosed: the question is part of the content, and the answer replaces it in place. The scale reveals
  * the optional comment and the submit button only once it has been used, so the page asks one thing at a time – see
- * `main.js`, which is inlined into the generated entry of this page.
+ * `FeedbackForm`, which also offers to start over here.
  */
 const Page = () => (
   <PatternPage
@@ -29,13 +29,7 @@ const Page = () => (
         class="col-extended justify-self-center w-full max-w-prose grid gap-fluid-md justify-items-center"
         aria-label="Feedback"
       >
-        <FeedbackForm
-          confirmationAction={
-            <p-button id="feedback-restart" type="button" variant="secondary" icon="refresh">
-              Give new feedback
-            </p-button>
-          }
-        />
+        <FeedbackForm restartable />
       </section>
     </main>
   </PatternPage>
