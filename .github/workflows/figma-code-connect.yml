@@ -48,14 +48,32 @@ jobs:
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v7
+
+      # A re-run of a commit that is no longer the branch tip skips every step below but the job summary: it would
+      # publish an older checkout over newer records and rewrite the issue and Slack from it.
+      - name: 'Re-run of an old commit?'
+        id: tip
+        shell: bash
+        env:
+          ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          tip=$([ "$ATTEMPT" -gt 1 ] && git ls-remote --quiet origin "refs/heads/$GITHUB_REF_NAME" | cut -f1 || true)
+          if [ -n "$tip" ] && [ "$tip" != "$GITHUB_SHA" ]; then
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::re-run of a commit that is no longer the tip of $GITHUB_REF_NAME; nothing to do, dispatch the workflow instead"
+          fi
+
       - uses: ./.github/actions/install
+        if: steps.tip.outputs.stale != 'true'
       # figma:generate imports @porsche-design-system/component-meta, whose dist/ is gitignored.
       - run: npm run build:core-dependencies
+        if: steps.tip.outputs.stale != 'true'
 
       # The design lines it prints go to the issue and Slack. Its exit code is kept, so the issue can tell an outage
       # from a repository mistake.
       - name: 'figma:generate'
         id: generate
+        if: steps.tip.outputs.stale != 'true'
         continue-on-error: true
         shell: bash
         run: |
@@ -116,8 +134,7 @@ jobs:
           name: code-connect-changes
           path: ${{ runner.temp }}/changes.diff
 
-      # Publish unless the last publish was clean with this hash. A re-run of a commit that is no longer the branch tip
-      # never publishes: it would upload an older checkout over newer records.
+      # Publish unless the last publish was clean with this hash.
       - name: 'Decide whether to publish'
         id: decide
         if: steps.hash.outcome == 'success'
@@ -125,15 +142,11 @@ jobs:
         env:
           HASH: ${{ steps.hash.outputs.hash }}
           FORCE: ${{ inputs.force }}
-          ATTEMPT: ${{ github.run_attempt }}
         run: |
           record=$(cat "$RUNNER_TEMP/published/record" 2>/dev/null || true)
           echo "last publish: ${record:-none}"
           publish=true
-          tip=$([ "$ATTEMPT" -gt 1 ] && git ls-remote --quiet origin "refs/heads/$GITHUB_REF_NAME" | cut -f1 || true)
-          if [ -n "$tip" ] && [ "$tip" != "$GITHUB_SHA" ]; then
-            publish=false; echo "::notice::re-run of a commit that is no longer the tip of $GITHUB_REF_NAME; not publishing, dispatch the workflow instead"
-          elif [ "$FORCE" = "true" ]; then
+          if [ "$FORCE" = "true" ]; then
             echo "::notice::force: publishing regardless of the last publish"
           elif [ "$record" = "$HASH clean" ]; then
             publish=false; echo "## nothing changed since the last publish, not publishing" >> "$GITHUB_STEP_SUMMARY"; echo "nothing changed since the last publish"
@@ -205,7 +218,14 @@ jobs:
           if [ -n "$existing" ]; then
             previous=$(gh issue view "$existing" --json body --jq .body | sed -n '/<!-- design-lines -->/,/<!-- \/design-lines -->/p')
           fi
-          fence() { echo '```'; cat "$1"; echo '```'; }
+          # GitHub rejects an issue body over 65,536 characters; a log keeps its last 20,000, the run has all of it
+          fence() {
+            local max=20000
+            echo '```'
+            if [ "$(wc -c < "$1")" -gt "$max" ]; then echo '… earlier lines cut, the full log is in the run'; fi
+            tail -c "$max" "$1"
+            echo '```'
+          }
           body="$RUNNER_TEMP/issue.md"; : > "$body"
           pending=false
 

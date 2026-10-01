@@ -34,11 +34,12 @@ catches up, because the hash compares with the last publish. The pull-request bu
 
 Each run:
 
-1. Runs `figma:generate`.
+1. Runs `figma:generate`, unless the run is a re-run of a commit that is no longer the branch tip: that run does
+   nothing.
 2. Hashes what publish would upload, the `figma connect parse` output of every label, and compares it with the record of
    the last publish, `<hash> clean|partial`, kept in the actions cache.
-3. Publishes when the hash differs, the record is `partial` or `force` is set, but never on a re-run of a commit that is
-   no longer the branch tip. Then records `clean`, or `partial` when publish failed or Figma refused a record.
+3. Publishes when the hash differs, the record is `partial` or `force` is set. Then records `clean`, or `partial` when
+   publish failed or Figma refused a record.
 4. Writes the logs and the records that differ from the last publish to the job summary; the artifacts
    `code-connect-changes` (the full diff) and `code-connect-generated` (everything generated) carry the rest.
 5. Opens, updates or closes the issue "Figma Code Connect: action needed", and sends its design section to the design
@@ -47,8 +48,9 @@ Each run:
 
 **The run is red only when a developer must act**: Figma could not be read, generation or its parse failed, or publish
 failed. Design lines never make it red. A red run reaches the engineering channel through the failure notifier
-([`slack-notifications.md`](./slack-notifications.md#pipeline-failure)). Re-run the failed job; a re-run publishes only
-while no newer commit has reached `main`, otherwise dispatch the workflow.
+([`slack-notifications.md`](./slack-notifications.md#pipeline-failure)). Re-run the failed job; once a newer commit has
+reached `main`, a re-run does nothing, so dispatch the workflow instead. The issue shows the last 20,000 characters of a
+log; the run has all of it.
 
 | Issue section            | Cause                                                                                                                                       | What to do                                                                                                                                  |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
