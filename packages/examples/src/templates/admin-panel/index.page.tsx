@@ -1,7 +1,6 @@
 import { Fragment } from 'preact';
-import { placeholderHref } from '../../_data.ts';
-import { CanvasPage } from '../../_layouts/CanvasPage.tsx';
-import { media } from '../../_media.ts';
+import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
+import { Script } from '../../_partials/Script.tsx';
 
 /**
  * Admin panel – a productive application page, built on `p-canvas` instead of the marketing chrome.
@@ -11,9 +10,8 @@ import { media } from '../../_media.ts';
  * landmark of its own, because doing so would nest it inside the one the canvas already provides.
  *
  * The repeated parts – the sidebar navigation, the rows of the table, the link lists – are data, so the entries
- * cannot drift apart and a change reaches all of them. Everything interactive is wired up by `main.js` on the ids
- * below, which stay literals: `src/_ids.ts` single-sources the ids of the *shared* snippets in `assets/`, and every id
- * registered there has to be owned by exactly one of them.
+ * cannot drift apart and a change reaches all of them. Everything interactive is wired up by the script at the end of
+ * the page on the ids below.
  *
  * - `admin-canvas` – the shell, whose two sidebars are used in controlled mode;
  * - `settings-button` / `search-button` – the two affordances of the banner, and what they open;
@@ -75,7 +73,7 @@ type Model = {
 const models: Model[] = [
   {
     name: '718 Cayman',
-    image: media('718.webp'),
+    image: '/examples/media/718.webp',
     interest: 'New Car',
     vin: '5GAKVCKD8EJ335750',
     purchaseIntention: '08/2021',
@@ -84,7 +82,7 @@ const models: Model[] = [
   },
   {
     name: '911 Carrera',
-    image: media('911.webp'),
+    image: '/examples/media/911.webp',
     interest: 'Used Car',
     vin: 'WP0ZZZ99ZTS392124',
     purchaseIntention: '09/2021',
@@ -122,12 +120,13 @@ const linkLists = [
 const legalLinks = ['Privacy Policy', 'Legal Notice', 'License', 'Accessibility Statement'];
 
 const Page = () => (
-  <CanvasPage
+  <TemplatePage
     title="Admin panel"
     description="Productive application page built on p-canvas, with a navigation sidebar, a settings sidebar and a list of models."
+    class="scheme-light-dark bg-surface"
   >
     <p-canvas id="admin-canvas">
-      <a href={placeholderHref} slot="title">
+      <a href="#" slot="title">
         Admin Panel
       </a>
 
@@ -217,7 +216,7 @@ const Page = () => (
                 <p-table-cell>{model.interest}</p-table-cell>
                 <p-table-cell>
                   <p-link-pure underline={true} icon="none">
-                    <a href={placeholderHref}>{model.vin}</a>
+                    <a href="#">{model.vin}</a>
                   </p-link-pure>
                 </p-table-cell>
                 <p-table-cell>{model.purchaseIntention}</p-table-cell>
@@ -255,7 +254,7 @@ const Page = () => (
                 {links.map((link) => (
                   <li key={link}>
                     <p-link-pure>
-                      <a href={placeholderHref}>{link}</a>
+                      <a href="#">{link}</a>
                     </p-link-pure>
                   </li>
                 ))}
@@ -266,7 +265,7 @@ const Page = () => (
       </div>
 
       <div slot="sidebar-start">
-        {/* The categories are accordions in controlled mode: `main.js` writes `open` back, so the sidebar keeps the
+        {/* The categories are accordions in controlled mode: the script writes `open` back, so the sidebar keeps the
             state a click asks for. The heading levels follow the outline of the sidebar, whose title the canvas
             renders as its own heading. */}
         <nav id="sidebar-nav" class="flex flex-col gap-static-sm" aria-label="Main">
@@ -282,7 +281,7 @@ const Page = () => (
                   </p-heading>
                   {category.links.map((link) => (
                     <p-link-pure key={link} class="w-full ps-static-sm" icon="none">
-                      <a href={placeholderHref}>{link}</a>
+                      <a href="#">{link}</a>
                     </p-link-pure>
                   ))}
                 </p-accordion>
@@ -298,7 +297,7 @@ const Page = () => (
               {legalLinks.map((link) => (
                 <li key={link}>
                   <p-link-pure icon="none" size="inherit" color="inherit" underline={true}>
-                    <a href={placeholderHref}>{link}</a>
+                    <a href="#">{link}</a>
                   </p-link-pure>
                 </li>
               ))}
@@ -324,16 +323,16 @@ const Page = () => (
         </div>
         <p-divider class="my-fluid-md" />
         <p-link-pure class="my-static-xs w-full" icon="user">
-          <a href={placeholderHref}>Account</a>
+          <a href="#">Account</a>
         </p-link-pure>
         <p-link-pure class="my-static-xs w-full" icon="configurate">
-          <a href={placeholderHref}>Settings</a>
+          <a href="#">Settings</a>
         </p-link-pure>
         <p-link-pure class="my-static-xs w-full" icon="chart">
-          <a href={placeholderHref}>Analytics</a>
+          <a href="#">Analytics</a>
         </p-link-pure>
         <p-link-pure class="my-static-xs w-full" icon="information">
-          <a href={placeholderHref}>Help</a>
+          <a href="#">Help</a>
         </p-link-pure>
         <p-divider class="my-fluid-md" />
         <p-select id="scheme-select" name="color-scheme" value="scheme-light-dark" label="Color Scheme" compact={true}>
@@ -364,7 +363,73 @@ const Page = () => (
         hide-label="true"
       />
     </p-modal>
-  </CanvasPage>
+    <Script>{
+      /* language=JavaScript */ `
+      // Behaviour of the admin panel: the two sidebars of the canvas, the categories of its navigation, the tabs above
+      // the list, the search dialog and the color scheme switch.
+      //
+      // Every one of them is used in *controlled* mode: the components report what the user asked for and this page
+      // writes the new state back. That is what lets the sidebar affordance mirror its sidebar onto "aria-expanded" and
+      // the search dialog be opened from a button that is not part of it. None of these events bubbles, so each element
+      // is wired up itself rather than through a listener on a container.
+
+      const canvas = document.getElementById('admin-canvas');
+      const searchButton = document.getElementById('search-button');
+      const searchDialog = document.getElementById('search-dialog');
+      const settingsButton = document.getElementById('settings-button');
+      const sidebarNav = document.getElementById('sidebar-nav');
+      const modelTabs = document.getElementById('model-tabs');
+      const schemeSelect = document.getElementById('scheme-select');
+
+      // Keeps the affordance and the sidebar it opens in sync. "hide-label" only hides the label visually, so the
+      // button keeps its accessible name and only the state has to be announced.
+      const setSettingsOpen = (isOpen) => {
+        canvas.sidebarEndOpen = isOpen;
+        settingsButton.aria = { 'aria-expanded': isOpen };
+      };
+
+      canvas.addEventListener('sidebarStartUpdate', (e) => {
+        canvas.sidebarStartOpen = e.detail.open;
+      });
+      canvas.addEventListener('sidebarEndDismiss', () => setSettingsOpen(false));
+      settingsButton.addEventListener('click', () => setSettingsOpen(!canvas.sidebarEndOpen));
+
+      // The navigation starts out beside the content where there is room for it, and collapsed below that, where the
+      // canvas turns it into a flyout on top of the page.
+      canvas.sidebarStartOpen = window.matchMedia('(min-width: 760px)').matches;
+
+      for (const accordion of sidebarNav.querySelectorAll('p-accordion')) {
+        accordion.addEventListener('update', (e) => {
+          accordion.open = e.detail.open;
+        });
+      }
+
+      modelTabs.addEventListener('update', (e) => {
+        modelTabs.activeTabIndex = e.detail.activeTabIndex;
+      });
+
+      searchButton.addEventListener('click', () => {
+        searchDialog.open = true;
+      });
+
+      // Escape, a click outside or the close button request a close in controlled mode – the component restores focus
+      // to the element the dialog was opened from itself, so only the state has to be written back.
+      searchDialog.addEventListener('dismiss', () => {
+        searchDialog.open = false;
+      });
+
+      // The color scheme is a class on the document element, so it reaches the sidebars as well – they are rendered on
+      // top of the page and would not be covered by a scheme set further down. The three class names appear nowhere in
+      // the markup, which is why they are listed here: Tailwind scans this page too and therefore emits all three.
+      const schemes = ['scheme-light', 'scheme-dark', 'scheme-light-dark'];
+
+      schemeSelect.addEventListener('change', (e) => {
+        document.documentElement.classList.remove(...schemes);
+        document.documentElement.classList.add(e.detail.value);
+      });
+    `
+    }</Script>
+  </TemplatePage>
 );
 
 export default Page;

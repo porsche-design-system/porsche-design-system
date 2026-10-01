@@ -185,6 +185,16 @@
       }
     },
     {
+      "includes": ["packages/examples/src/**/*.tsx"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "useValidAnchor": "off"
+          }
+        }
+      }
+    },
+    {
       "includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
       "linter": {
         "rules": {

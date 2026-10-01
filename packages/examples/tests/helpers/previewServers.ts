@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { previewPort } from '../../plugins/projects.ts';
+import { previewPort } from '../../lib/projects.ts';
 
 /**
  * The web server every Playwright suite of this package runs against.

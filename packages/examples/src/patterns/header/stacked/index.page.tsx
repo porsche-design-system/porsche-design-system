@@ -1,7 +1,6 @@
-import { navItems, placeholderHref } from '../../../_data.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { media } from '../../../_media.ts';
 import { Header } from '../../../_partials/header/Header.tsx';
+import { navItems } from '../../../_partials/header/MainNav.tsx';
 
 /** Header pattern – the `stacked` layout, sitting above the content with a note and a category row. */
 const Page = () => (
@@ -11,7 +10,7 @@ const Page = () => (
     beforeMain={
       <Header
         currentPage="features"
-        navItems={[...navItems, { id: 'stories', href: placeholderHref, label: 'Stories' }]}
+        navItems={[...navItems, { id: 'stories', href: '#', label: 'Stories' }]}
         showSearch
         variant="stacked"
       />
@@ -21,7 +20,7 @@ const Page = () => (
       <section class="scheme-dark col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)]">
         <img
           class="col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
-          src={media('trolley.webp')}
+          src="/examples/media/trolley.webp"
           alt=""
         />
         <div class="col-extended row-span-full mb-fluid-lg">

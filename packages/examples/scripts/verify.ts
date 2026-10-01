@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { getLoaderScript } from '@porsche-design-system/components-js/partials';
-import type { StackblitzPayload } from '../plugins/payload.ts';
-import { categories, payloadName } from '../plugins/projects.ts';
-import { mediaPath } from '../src/_media.ts';
-import { distDir, listFiles, listProjects, packageDir, siteDir, siteMediaDir } from './shared.ts';
+import { exampleNote } from '../lib/jsx.ts';
+import type { StackblitzPayload } from '../lib/payload.ts';
+import { categories, mediaPath, payloadName } from '../lib/projects.ts';
+import { distDir, listFiles, listProjects, packageDir, siteDir, siteMediaDir } from '../lib/shared.ts';
 
 /**
  * Asserts that `dist-site/` is what the storefront can serve and StackBlitz can open.
@@ -57,10 +57,11 @@ const verify = (): void => {
 
     const html = fs.readFileSync(path.join(pageDir, 'index.html'), 'utf8');
 
-    // What the generated config and the inline plugin are there for – without them the page stays invisible.
-    for (const expected of ['data-pds-loader-script', '<style>']) {
+    // What the generated config and the inline plugin are there for – without them the page stays invisible. And the
+    // note on what the example is, which has to survive Vite's build of the project.
+    for (const expected of ['data-pds-loader-script', '<style>', exampleNote]) {
       if (!html.includes(expected)) {
-        fail(`"${name}" is missing ${expected}`);
+        fail(`"${name}" is missing ${expected.split('\n')[0]}`);
       }
     }
     // Nothing on the way into the page – the build, the inline plugin – may touch the loader: it carries a CSP hash.
@@ -80,7 +81,7 @@ const verify = (): void => {
         usedMedia.add(fileName);
       } else if (!allowedExternal.test(url)) {
         fail(
-          `"${name}" references "${url}" – a page may only load its media through media(), or an absolute https URL`
+          `"${name}" references "${url}" – a page may only load its media below ${mediaPath}, or an absolute https URL`
         );
       }
     }
