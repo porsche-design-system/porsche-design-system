@@ -1,23 +1,42 @@
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
+import { createElement } from 'preact';
+import { render } from 'preact-render-to-string';
+import { compile } from 'tailwindcss';
 import { describe, expect, it } from 'vitest';
 import {
+  dedent,
   exampleBanner,
+  extractScripts,
+  formatScriptEntry,
   getScriptEntry,
-  getSharedScripts,
-  rewriteEntriesForDev,
+  linkStylesForDev,
   scriptEntryTag,
-} from '../../../plugins/entries.ts';
-import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../../plugins/inline.ts';
-import { doctype, renderPage, resolvePagePath } from '../../../plugins/jsx.ts';
-import { getStackblitzPayload } from '../../../plugins/payload.ts';
-import { categories, getPageId, resolvePageLocation, scriptEntryName } from '../../../plugins/projects.ts';
-import { getPackageJson, getViteConfig } from '../../../scripts/generateProject.ts';
-import { BasePage } from '../../../src/_layouts/BasePage.tsx';
-import { examplesPath, media, mediaPath } from '../../../src/_media.ts';
-import IndexPage from '../../../src/index.page.tsx';
+} from '../../../lib/entries.ts';
+import { getPackageJson, getViteConfig } from '../../../lib/generateProject.ts';
+import { escapeInlineScript, escapeInlineStyle, inlineBundle } from '../../../lib/inline.ts';
+import {
+  doctype,
+  exampleNote,
+  normalizeClassAttributes,
+  pdsVersion,
+  renderPage,
+  resolvePagePath,
+} from '../../../lib/jsx.ts';
+import { getStackblitzPayload } from '../../../lib/payload.ts';
+import {
+  categories,
+  examplesPath,
+  getPageId,
+  mediaPath,
+  resolvePageLocation,
+  scriptEntryName,
+} from '../../../lib/projects.ts';
+import { readVersions } from '../../../lib/shared.ts';
+import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
-import { countOccurrences, examplePages, overviewPages } from '../helpers/index.ts';
+import { countOccurrences, examplePages } from '../helpers/index.ts';
 
 /**
  * The build pipeline: how a URL maps to a page, how a page becomes a project, what that project and its StackBlitz
@@ -28,10 +47,6 @@ import { countOccurrences, examplePages, overviewPages } from '../helpers/index.
  */
 
 describe('resolvePagePath()', () => {
-  it('should map the root URL to the index page', () => {
-    expect(resolvePagePath('/')).toBe('index.page.tsx');
-  });
-
   it('should map a nested directory URL to its index page', () => {
     expect(resolvePagePath('/templates/landing-page/')).toBe('templates/landing-page/index.page.tsx');
   });
@@ -48,7 +63,7 @@ describe('resolvePagePath()', () => {
     expect(resolvePagePath('/landing%20page/')).toBe('landing page/index.page.tsx');
   });
 
-  it.each(['/assets/styles.css', '/patterns/header/overlay/main.js', '/@vite/client'])(
+  it.each(['/style.css', '/patterns/header/overlay/main.js', '/@vite/client'])(
     'should return undefined for the asset request "%s"',
     (url) => {
       expect(resolvePagePath(url)).toBeUndefined();
@@ -72,7 +87,7 @@ describe('projects', () => {
   });
 
   // A page at the root of a category would be a project containing every other page of it – the build rejects it.
-  it.each(['index.page.tsx', 'patterns/index.page.tsx', 'assets/styles.css'])(
+  it.each(['index.page.tsx', 'patterns/index.page.tsx', 'style.css'])(
     'should not locate "%s" as a page',
     (relativePath) => {
       expect(resolvePageLocation(relativePath)).toBeUndefined();
@@ -120,15 +135,23 @@ describe('generated project', () => {
   it('should never add the inline plugin to the project StackBlitz opens', () => {
     expect(getViteConfig(patterns)).not.toContain('inlineEntries');
   });
+
+  it('should pin the version of the components the note of every page names', () => {
+    const { dependencies } = JSON.parse(getPackageJson(location, readVersions()));
+
+    expect(pdsVersion).toMatch(/^\d+\.\d+\.\d+/);
+    expect(dependencies['@porsche-design-system/components-js']).toBe(pdsVersion);
+    expect(exampleNote).toContain(`@porsche-design-system/components-js ${pdsVersion}.`);
+  });
 });
 
 describe('media', () => {
-  it('should reference a file below the path the storefront serves the media from', () => {
-    expect(media('718.webp')).toBe('/examples/media/718.webp');
+  it('should serve the media below the path the storefront serves the examples from', () => {
+    expect(mediaPath).toBe('/examples/media/');
     expect(mediaPath.startsWith(examplesPath)).toBe(true);
   });
 
-  it.each(examplePages)('should reference the media of "%s" only through media()', async (_name, Page) => {
+  it.each(examplePages)('should reference no root-absolute URL in "%s" but its media', async (_name, Page) => {
     const html = await renderPage(Page);
     const rootAbsolute = Array.from(html.matchAll(/\s(?:src|href|poster|srcset)="(\/[^/"][^"]*)"/g), ([, url]) => url);
 
@@ -225,10 +248,7 @@ describe('StackBlitz payload', () => {
 });
 
 describe('entries', () => {
-  const sharedStyles = fs.readFileSync(
-    path.join(import.meta.dirname, '../../../src/assets/styles.css'),
-    'utf8'
-  ) as string;
+  const sharedStyles = fs.readFileSync(path.join(import.meta.dirname, '../../../src/style.css'), 'utf8') as string;
 
   it('should keep the shared stylesheet free of relative paths, because it is copied next to every page', () => {
     // It is written to `src/`, `src/footer/` and `src/header/overlay/` alike, so a path out of the folder would
@@ -240,115 +260,163 @@ describe('entries', () => {
   });
 
   it('should import the stylesheet from the generated script, so a page references one file only', () => {
-    expect(getScriptEntry({ sharedBehaviour: [] })).toBe("import './style.css';\n");
+    expect(getScriptEntry([])).toBe("import './style.css';\n");
   });
 
-  it('should inline the shared behaviour a page needs instead of importing it', () => {
-    const entry = getScriptEntry({
-      sharedBehaviour: [
-        { fileName: 'header.js', content: `${exampleBanner}\n\nconst navButton = null;\n` },
-        { fileName: 'video.js', content: `${exampleBanner}\n\nconst video = null;\n` },
-      ],
-    });
-
-    expect(entry).not.toContain('import ../');
-    expect(entry).toContain('const navButton = null;');
-    expect(entry).toContain('const video = null;');
-    // Named sections keep the single source findable, the banner is not repeated per snippet.
-    expect(entry).toContain('// --- assets/header.js ---');
-    expect(entry).toContain('// --- assets/video.js ---');
-    expect(countOccurrences(entry, exampleBanner)).toBe(1);
-  });
-
-  it('should inline the behaviour authored next to a page, after the shared one', () => {
-    const entry = getScriptEntry({
-      behaviour: 'console.warn("hi");\n',
-      sharedBehaviour: [{ fileName: 'header.js', content: 'const navButton = null;\n' }],
-    });
+  it('should write the scripts of a page into its entry in document order, under one banner', () => {
+    const entry = getScriptEntry(['// header\nconst navButton = null;', '// page\nconsole.warn("hi");']);
 
     expect(entry).toBe(
-      `import './style.css';\n\n${exampleBanner}\n\n// --- assets/header.js ---\n\nconst navButton = null;\n\n// --- behaviour of this example ---\n\nconsole.warn("hi");\n`
+      `import './style.css';\n\n${exampleBanner}\n\n// header\nconst navButton = null;\n\n// page\nconsole.warn("hi");\n`
     );
   });
 
-  it('should keep a single snippet unlabelled, so a one-behaviour example reads as one script', () => {
-    const entry = getScriptEntry({ behaviour: 'console.warn("hi");\n', sharedBehaviour: [] });
+  it('should hoist the imports of the scripts next to the stylesheet import, each of them once', () => {
+    const statement = "import { componentsReady } from '@porsche-design-system/components-js';";
+    const entry = getScriptEntry([`${statement}\n\ngo();`, `${statement}\ngoOn();`]);
 
-    expect(entry).toBe(`import './style.css';\n\n${exampleBanner}\n\nconsole.warn("hi");\n`);
+    expect(entry.startsWith(`import './style.css';\n${statement}\n\n${exampleBanner}\n\ngo();\n\ngoOn();`)).toBe(true);
+    expect(countOccurrences(entry, statement)).toBe(1);
   });
 
-  it('should fail when two inlined snippets declare the same name, which one module scope cannot hold', () => {
-    expect(() =>
-      getScriptEntry({
-        behaviour: 'const video = null;\n',
-        sharedBehaviour: [{ fileName: 'video.js', content: 'const video = null;\n' }],
-      })
-    ).toThrow(/both declare "video"/);
+  it('should fail when two scripts declare the same name, which one module scope cannot hold', () => {
+    expect(() => getScriptEntry(['// video\nconst video = null;', '// page\nconst video = null;'])).toThrow(
+      /both declare "video"[\s\S]*\/\/ video[\s\S]*\/\/ page/
+    );
   });
 
-  it.each([
-    ['<p-button-pure id="nav-button"><p-drilldown id="nav-drilldown">', ['header.js']],
-    ['<video id="hero-video"><p-button id="pause-button">', ['video.js']],
-    [
-      '<p-button-pure id="nav-button"><p-drilldown id="nav-drilldown"><video id="hero-video"><p-button id="pause-button">',
-      ['header.js', 'video.js'],
-    ],
-    ['<p>nothing to wire up</p>', []],
-  ])('should derive the shared behaviour of "%s" from the markup', (html, expected) => {
-    expect(getSharedScripts(html)).toEqual(expected);
+  it('should move the inline scripts out of the page and link the entry at the end of the body instead', () => {
+    const { html, scripts } = extractScripts(
+      [
+        '<html>',
+        '  <body>',
+        '    <nav>',
+        '      <script type="module">',
+        '        // first',
+        '        if (a) {',
+        '          go();',
+        '        }',
+        '      </script>',
+        '    </nav>',
+        '    <script type="module">',
+        '      second();',
+        '    </script>',
+        '  </body>',
+        '</html>',
+        '',
+      ].join('\n')
+    );
+
+    expect(scripts).toEqual(['// first\nif (a) {\n  go();\n}', 'second();']);
+    expect(html).toBe(`<html>\n  <body>\n    <nav>\n    </nav>\n    ${scriptEntryTag}\n  </body>\n</html>\n`);
   });
 
-  it.each([
-    ['<p-drilldown id="nav-drilldown">', 'id="nav-button"'],
-    ['<p-button id="pause-button">', 'id="hero-video"'],
-  ])('should fail on "%s", which wires up only half of what a snippet needs', (html, missing) => {
-    // A menu button without its drilldown, or a pause control without its video, is an example that silently does
-    // nothing – the contract of `_ids.ts` is that a page renders the ids of a snippet together.
-    expect(() => getSharedScripts(html)).toThrow(missing);
+  it('should fail on a page without a body, which has no place for its entry', () => {
+    expect(() => extractScripts('<p>no layout</p>')).toThrow('</body>');
   });
 
-  it('should link the shared stylesheet and drop the generated entry in dev, where neither exists', () => {
-    const html = rewriteEntriesForDev(`<head></head><body>${scriptEntryTag}</body>`, {
-      hasBehaviour: false,
-      sharedScripts: ['header.js'],
-    });
-
-    expect(html).toContain('<link rel="stylesheet" href="/assets/styles.css" />');
-    expect(html).toContain('<script type="module" src="/assets/header.js"></script>');
-    expect(html).not.toContain(scriptEntryTag);
+  it('should keep blank lines inside a script and drop the ones around it', () => {
+    expect(dedent('\n\n    a();\n\n      b();\n  \n')).toBe('a();\n\n  b();');
   });
 
-  it('should keep the page entry in dev when the page has behaviour of its own', () => {
-    const html = rewriteEntriesForDev(`<head></head><body>${scriptEntryTag}</body>`, {
-      hasBehaviour: true,
-      sharedScripts: [],
-    });
+  it.each(examplePages)('should give back the scripts of "%s" exactly as they are authored', async (_name, Page) => {
+    // `renderPage()` indents every script to the depth of its element, which `dedent()` undoes. Compared with the
+    // unformatted render, any other change of the formatter – quotes, wrapping, semicolons – would show up here.
+    const authored = Array.from(
+      render(createElement(Page, {})).matchAll(/<script type="module">([\s\S]*?)<\/script>/g),
+      ([, code]) => dedent(code)
+    );
+    const { html, scripts } = extractScripts(await renderPage(Page));
 
-    expect(html).toContain(scriptEntryTag);
+    expect(scripts).toEqual(authored);
+    expect(html).not.toContain('<script type="module">');
+    expect(countOccurrences(html, scriptEntryTag)).toBe(1);
+  });
+
+  it.each(examplePages)('should fit the scripts of "%s" into one entry', async (_name, Page) => {
+    const { scripts } = extractScripts(await renderPage(Page));
+
+    // The very calls `scripts/build.ts` makes: it throws when two scripts of a page declare the same top level name,
+    // since they end up in a single module scope – in dev each of them is a module of its own and would not tell. The
+    // formatter parses the entry, so a syntax error in a script fails here as well.
+    await expect(formatScriptEntry(getScriptEntry(scripts))).resolves.toEqual(expect.any(String));
+  });
+
+  it('should format the entry the way the repository formats its own code', async () => {
+    expect(await formatScriptEntry('import "./style.css"\nconst a = {b: "c"}\n')).toBe(
+      "import './style.css';\nconst a = { b: 'c' };\n"
+    );
+  });
+
+  it('should fail on a script that is not valid JavaScript', async () => {
+    await expect(formatScriptEntry('const = ;')).rejects.toThrow();
+  });
+
+  it('should link the shared stylesheet in dev, where no entry imports it', () => {
+    expect(linkStylesForDev('<head></head><body></body>')).toBe(
+      '<head><link rel="stylesheet" href="/style.css" /></head><body></body>'
+    );
   });
 
   // Regression: Vite's own HTML hook runs before the plugin hooks and warms up every `<script src>` it finds, so a
-  // page still referencing its generated entry makes the dev server log "Failed to load url /main.js". The rewrite
-  // therefore happens in the middleware of `jsxPages()`, before `server.transformIndexHtml()` sees the markup.
-  it.each([...examplePages, ...overviewPages])(
+  // page referencing the generated entry would make the dev server log "Failed to load url /main.js". Only the build
+  // links the entry.
+  it.each(examplePages)(
     'should leave no reference to the generated entry in the dev markup of "%s"',
     async (_name, Page) => {
-      const html = await renderPage(Page);
-
-      expect(rewriteEntriesForDev(html, { hasBehaviour: false, sharedScripts: getSharedScripts(html) })).not.toContain(
-        scriptEntryName
-      );
+      expect(linkStylesForDev(await renderPage(Page))).not.toContain(scriptEntryName);
     }
   );
 });
 
 describe('renderPage()', () => {
-  it('should prepend the doctype', async () => {
-    expect(await renderPage(IndexPage)).toMatch(new RegExp(`^${doctype}\\n<html lang="en">`));
+  it('should trim and collapse class attributes, so an unset class in a template literal leaves no space', () => {
+    expect(normalizeClassAttributes('<p class="a  b "></p><i class=" "></i><b class="c"></b>')).toBe(
+      '<p class="a b"></p><i></i><b class="c"></b>'
+    );
+  });
+
+  it('should leave the content of scripts alone, since it is code rather than markup', () => {
+    const html = '<script type="module">el.innerHTML = \'<b class="a  b">\';</script><p class=" x"></p>';
+
+    expect(normalizeClassAttributes(html)).toBe(
+      '<script type="module">el.innerHTML = \'<b class="a  b">\';</script><p class="x"></p>'
+    );
+  });
+
+  it('should prepend the doctype, followed by the note on what the example is', async () => {
+    expect((await renderPage(LandingPage)).startsWith(`${doctype}\n${exampleNote}\n<html lang="en">`)).toBe(true);
+  });
+
+  it('should keep the note a valid comment', () => {
+    expect(exampleNote).toMatch(/^<!--\n[\s\S]*\n-->$/);
+    // `--` is a parse error inside a comment, and `-->` or `--!>` would end it early.
+    expect(exampleNote.slice('<!--'.length, -'-->'.length)).not.toContain('--');
+  });
+
+  // Tailwind scans the `index.html` of every generated project, and with it the note. Every token of the note, in
+  // every shape Tailwind's extractor could cut it into, is compiled here – a word that reads like a utility (`static`,
+  // `block`, `hidden`, `table`, …) would change the stylesheet.
+  it('should keep the note free of anything Tailwind reads as a utility', async () => {
+    const require = createRequire(import.meta.url);
+    const compiler = await compile('@import "tailwindcss";', {
+      base: import.meta.dirname,
+      loadStylesheet: async (id, base) => {
+        const file = id.startsWith('.') ? path.resolve(base, id) : require.resolve(`${id}/index.css`);
+        return { path: file, base: path.dirname(file), content: fs.readFileSync(file, 'utf8') };
+      },
+    });
+    const candidates = exampleNote
+      .split(/\s+/)
+      .flatMap((token) => [token, ...token.split(/[^\w-]+/), ...token.split(/[^\w:/.()-]+/)])
+      .filter(Boolean);
+    const withoutNote = compiler.build([]);
+
+    expect(compiler.build([...new Set(candidates)])).toBe(withoutNote);
   });
 
   it('should format the output instead of emitting a single line', async () => {
-    const html = await renderPage(IndexPage);
+    const html = await renderPage(LandingPage);
 
     expect(html.split('\n').length).toBeGreaterThan(20);
     expect(html).toMatch(/\n {2}<head>\n {4}<meta charset="utf-8" \/>/);
@@ -357,11 +425,11 @@ describe('renderPage()', () => {
 
   it('should escape interpolated values', async () => {
     const html = await renderPage(() => (
-      <BasePage title={'<script>alert("x")</script> & more'} description="Escaping check" currentPage="home">
+      <TemplatePage title={'<script>alert("x")</script> & more'} description="Escaping check">
         <main id="main">
           <h1>Escaping</h1>
         </main>
-      </BasePage>
+      </TemplatePage>
     ));
 
     expect(html).not.toContain('<script>alert');
@@ -377,9 +445,9 @@ describe('renderPage()', () => {
     expect(html).toContain('class="');
   });
 
-  // The four layouts all funnel through `Head`, and this is what pins that down: a layout rendering its own `<head>`
+  // The layouts all funnel through `Head`, and this is what pins that down: a layout rendering its own `<head>`
   // would silently ship an indexable page, which nothing else here would catch.
-  it.each([...examplePages, ...overviewPages])('should mark "%s" as noindex', async (_name, Page) => {
+  it.each(examplePages)('should mark "%s" as noindex', async (_name, Page) => {
     expect(await renderPage(Page)).toContain('<meta name="robots" content="noindex"');
   });
 });

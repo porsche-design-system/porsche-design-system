@@ -17,7 +17,7 @@ export const appTitle = 'Examples by Porsche Design System';
  * The Porsche Design System partials, injected by the dev server only.
  *
  * The pages use web components, so without the loader script nothing upgrades – and `:not(:defined)` in
- * `assets/styles.css` would keep the whole page invisible. The **build** does not inject anything: its output is the
+ * `src/style.css` would keep the whole page invisible. The **build** does not inject anything: its output is the
  * source of two Vite projects, whose generated `vite.config.ts` injects the very same partials when they are built.
  *
  * The dev server serves both categories at once, so it preloads the union of their component chunks.

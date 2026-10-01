@@ -14,9 +14,9 @@
  * └── style.css                   # the shared Tailwind entry, copied
  * ```
  *
- * A project has no `public/` and no `assets/` folder: the media are served by the storefront (see `src/_media.ts`),
- * and the shared Tailwind entry and the shared behaviour are inlined into the entries of the pages that need them, so
- * an example is read in one place.
+ * A project has no `public/` and no `assets/` folder: the media are served by the storefront (see `mediaPath`),
+ * the shared Tailwind entry is copied next to every page and the behaviour is written in the page's components, so an
+ * example is read in one place.
  */
 
 /**
@@ -81,6 +81,23 @@ export const categories: Category[] = [
   { category: 'templates', components: templateComponents },
 ];
 
+/** Where the storefront serves the built pages, relative to its root: `/examples/patterns/header/overlay/`. */
+export const examplesPath = '/examples/';
+
+/**
+ * Where the images and videos of the examples are served from – and the path the pages write them with, as a literal:
+ * `src="/examples/media/718.webp"`.
+ *
+ * The storefront serves the examples from `public/examples/`, with the media once in `public/examples/media/`, so the
+ * path is relative to the root of a storefront and free of its slug. The slug is added when the storefront copies the
+ * built pages in, because one build is deployed under several slugs; StackBlitz additionally gets the origin in front,
+ * because it loads the media cross-origin. The dev server of this package serves `public/` at its root, which is why
+ * the files live in `public/examples/media/` here as well – the same path works in both without a rewrite.
+ *
+ * `scripts/verify.ts` fails the build on any other root-absolute URL in a page, and on a file that does not exist.
+ */
+export const mediaPath = `${examplesPath}media/`;
+
 /** Port `scripts/previewSite.ts` serves the built site on, next to the dev server of the source tree (3010). */
 export const previewPort = 3011;
 
@@ -90,14 +107,11 @@ export const payloadName = 'stackblitz.json';
 /** Name of the generated script entry of a page, the only script its HTML references. */
 export const scriptEntryName = 'main.js';
 
-/** Name of the generated style entry of a page, imported by the script entry. */
+/**
+ * Name of the style entry of a page, imported by the script entry – and of the shared Tailwind entry at the root of
+ * `src/`, which is copied under this very name and linked by the dev server.
+ */
 export const styleEntryName = 'style.css';
-
-/** The folder of the source tree holding what every page shares – build inputs only, never emitted. */
-export const assetsDirName = 'assets';
-
-/** The shared Tailwind entry inside that folder, inlined into every page's `style.css` and linked by the dev server. */
-export const sharedStyleName = 'styles.css';
 
 /** A page of one of the categories – and with that, one generated project. */
 export type PageLocation = {
@@ -110,8 +124,8 @@ export type PageLocation = {
  * Maps a source path to the page it renders.
  *
  * `patterns/header/overlay/index.page.tsx` → `{ category: 'patterns', pageDir: 'header/overlay' }`.
- * Returns `undefined` for anything that is not a page of a category: the root overview page is the dev server's entry
- * point and is never emitted, and a page at the root of a category is not supported – `scripts/build.ts` rejects it.
+ * Returns `undefined` for anything that is not a page of a category: a page outside the category folders belongs to
+ * no project, and a page at the root of a category is not supported – `scripts/build.ts` rejects it.
  */
 export const resolvePageLocation = (relativePath: string): PageLocation | undefined => {
   const [category, ...rest] = relativePath.split('/');

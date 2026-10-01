@@ -1,5 +1,5 @@
 import type { Page } from '@playwright/test';
-import { rewriteCdnUrlsForDev } from '../../plugins/partials.ts';
+import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
 
 /**
  * What a page needs before it is captured or scanned – shared by the VRT and the a11y suite, and in parts by e2e.
@@ -102,7 +102,7 @@ export const stubExternalRequests = async (page: Page): Promise<void> => {
  * The examples load the components through the **loader partial**, which deliberately ships no `componentsReady()` –
  * that helper belongs to the JS wrapper the other packages test against. What the page offers instead is what the
  * components themselves put into the DOM: a custom element is registered (`:defined`) and Stencil marks the upgraded
- * element with the `hydrated` class. Both have to hold, because `assets/styles.css` hides undefined elements and an
+ * element with the `hydrated` class. Both have to hold, because `src/style.css` hides undefined elements and an
  * element without that class has not rendered its shadow root yet.
  */
 export const waitForComponentsReady = async (page: Page): Promise<void> => {
@@ -121,8 +121,8 @@ export const waitForComponentsReady = async (page: Page): Promise<void> => {
 /**
  * Parks every video on its poster frame.
  *
- * `prefers-reduced-motion` already makes the hero video of an example stop itself (see `src/assets/video.js`), but it
- * may have played a few frames before the script ran, and which frame a paused video shows differs between the
+ * `prefers-reduced-motion` already makes the hero video of an example stop itself (see `src/_partials/HeroVideo.tsx`),
+ * but it may have played a few frames before the script ran, and which frame a paused video shows differs between the
  * engines. `load()` aborts the playback and restores the poster, which is the one frame a video renders identically
  * everywhere – so that is what the baseline records.
  */

@@ -3,11 +3,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
-import { categories, type PageLocation } from '../plugins/projects.ts';
-import { mediaPath } from '../src/_media.ts';
+import type { Versions } from './generateProject.ts';
+import { categories, mediaPath, type PageLocation } from './projects.ts';
 
 /**
- * Paths and file helpers shared by the scripts of this package.
+ * Paths and file helpers shared by the scripts of this package (`scripts/`).
  *
  * ```text
  * dist/        # scripts/build.ts     – one Vite project per page, the StackBlitz source
@@ -22,7 +22,7 @@ export const srcDir = path.join(packageDir, 'src');
 export const distDir = path.join(packageDir, 'dist');
 export const siteDir = path.join(packageDir, 'dist-site');
 
-/** The media of the examples, below `public/` at the very path the pages reference them by – see `src/_media.ts`. */
+/** The media of the examples, below `public/` at the very path the pages reference them by – see `mediaPath`. */
 export const mediaSourceDir = path.join(packageDir, 'public', mediaPath);
 
 /** Where `scripts/buildSite.ts` puts the media: once, next to the categories, as `public/examples/media/` does. */
@@ -31,6 +31,18 @@ export const siteMediaDir = path.join(siteDir, path.basename(mediaPath));
 export const writeFile = (filePath: string, content: string): void => {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, content.endsWith('\n') ? content : `${content}\n`);
+};
+
+/**
+ * Dependency versions of this package – the ones the generated projects pin and the note of every page names, read
+ * from one place so they cannot drift apart.
+ */
+export const readVersions = (): Versions => {
+  const { dependencies, devDependencies } = JSON.parse(
+    fs.readFileSync(path.join(packageDir, 'package.json'), 'utf8')
+  ) as { dependencies?: Versions; devDependencies?: Versions };
+
+  return { ...dependencies, ...devDependencies };
 };
 
 /**

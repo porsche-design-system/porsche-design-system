@@ -1,5 +1,5 @@
-import { appTitle } from '../plugins/partials.ts';
-import { type Category, getPageId, type PageLocation } from '../plugins/projects.ts';
+import { appTitle } from './partials.ts';
+import { type Category, getPageId, type PageLocation } from './projects.ts';
 
 /**
  * The files that turn a rendered page into a standalone Vite project – the one "Open in StackBlitz" hands over.

@@ -1,9 +1,6 @@
 import path from 'node:path';
-// fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
-import fastGlob from 'fast-glob';
-import { pageSuffix } from '../../plugins/jsx.ts';
-import { getPageId, type ProjectCategory, previewPort, resolvePageLocation } from '../../plugins/projects.ts';
-import { examplesPath } from '../../src/_media.ts';
+import { findPages } from '../../lib/jsx.ts';
+import { examplesPath, getPageId, type ProjectCategory, previewPort } from '../../lib/projects.ts';
 
 /**
  * The pages under test, derived from the source tree instead of from a list.
@@ -28,24 +25,11 @@ export type ExamplePage = {
 };
 
 export const getExamplePages = (): ExamplePage[] =>
-  fastGlob
-    .sync(`**/*${pageSuffix}`, { cwd: path.join(packageDir, 'src'), onlyFiles: true })
-    .sort()
-    .flatMap((relativePath) => {
-      const location = resolvePageLocation(relativePath);
-      // `src/index.page.tsx` is the overview of the source tree – it belongs to no category and is never emitted.
-      if (!location) {
-        return [];
-      }
-
-      return [
-        {
-          ...location,
-          id: getPageId(location),
-          url: `http://localhost:${previewPort}${examplesPath}${location.category}/${location.pageDir}/`,
-        },
-      ];
-    });
+  findPages(path.join(packageDir, 'src')).map((location) => ({
+    ...location,
+    id: getPageId(location),
+    url: `http://localhost:${previewPort}${examplesPath}${location.category}/${location.pageDir}/`,
+  }));
 
 /**
  * The URL of an example, failing loudly if the page it names is gone.

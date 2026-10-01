@@ -1,5 +1,4 @@
-import type { NavItem } from '../../../src/_data.ts';
-import IndexPage from '../../../src/index.page.tsx';
+import type { NavItem } from '../../../src/_partials/header/MainNav.tsx';
 import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page.tsx';
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';
 import FooterPatternPage from '../../../src/patterns/footer/index.page.tsx';
@@ -33,7 +32,7 @@ export const flattenNavItems = (items: NavItem[]): NavItem[] =>
 export const countFirstLevelHeadings = (html: string): number =>
   (html.match(/<h1[\s>]/g) ?? []).length + countOccurrences(html, 'tag="h1"');
 
-/** Templates are whole pages, whichever shell they use – `BasePage` or `CanvasPage`. */
+/** Templates are built on `TemplatePage`: whole pages, whichever chrome they compose – `Header` and `Footer` or `p-canvas`. */
 export const templatePages = [
   ['templates/landing-page', LandingPage],
   ['templates/admin-panel', AdminPanelPage],
@@ -52,6 +51,3 @@ export const patternPages = [
 ] as const;
 
 export const examplePages = [...templatePages, ...patternPages];
-
-/** The overview page of the source tree – the entry point of the dev server, never emitted. */
-export const overviewPages = [['index', IndexPage]] as const;
