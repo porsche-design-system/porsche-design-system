@@ -1,4 +1,4 @@
-// The pull figmaPull.ts reads over the REST API; figma:generate keeps it in memory, and nothing stores it.
+// The pull figmaPull.ts reads over REST; figma:generate keeps it in memory, figma:freeze writes the test fixture.
 
 export type Definition = { type: string; defaultValue?: unknown; variantOptions?: string[] };
 export type Component = { id: string; name: string; componentPropertyDefinitions: Record<string, Definition> };

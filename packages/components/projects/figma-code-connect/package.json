@@ -8,6 +8,7 @@
   "homepage": "https://designsystem.porsche.com",
   "description": "Figma Code Connect for the Porsche Design System: generates the templates from component-meta and publishes them",
   "scripts": {
+    "figma:freeze": "tsx scripts/figmaFreeze.ts",
     "figma:generate": "tsx scripts/figmaGenerate.ts",
     "figma:parse": "tsx scripts/figmaConnect.ts parse",
     "figma:preview": "tsx scripts/figmaConnect.ts preview",
