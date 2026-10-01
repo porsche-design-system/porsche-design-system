@@ -160,6 +160,32 @@ describe('generate: design lines', () => {
     );
   });
 
+  it('redraws a named slot drawn with another type than SLOT', () => {
+    // the template reads a named slot with getSlot(), so a TEXT slot-summary renders nothing
+    const lines = changes(run([set('accordion', { 'slot-summary#1:2': { type: 'TEXT' } })]), 'accordion');
+    expect(lines).toEqual(
+      expect.arrayContaining(['delete "slot-summary"', 'add a SLOT property named "slot-summary"'])
+    );
+  });
+
+  it('asks for the option a boolean drawn as a VARIANT lacks', () => {
+    const lines = changes(run([set('switch', { checked: { type: 'VARIANT', variantOptions: ['true'] } })]), 'switch');
+    expect(lines).toContain('add the option "false" to "checked"');
+  });
+
+  it('keeps a # inside a property name, so "label#2" is not the PDS prop label', () => {
+    // the REST key ends in #<node id>, except a VARIANT's
+    const options = { variantOptions: ['none', 'error', 'success'] };
+    const checkbox = set('checkbox', { 'label#2#1:2': { type: 'TEXT' }, 'state#old': { type: 'VARIANT', ...options } });
+    const lines = changes(run([checkbox]), 'checkbox');
+    expect(lines).toEqual(
+      expect.arrayContaining([
+        'add a TEXT property named "label"',
+        'add a VARIANT property named "state" with the options none, error, success',
+      ])
+    );
+  });
+
   it('deletes showLabel next to a drawn hideLabel, a deprecated prop and deprecated options', () => {
     const result = run([
       set('input-email', { showLabel: { type: 'BOOLEAN' }, hideLabel: booleanVariant }),

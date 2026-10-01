@@ -232,6 +232,10 @@ const coverage = (
       continue;
     }
     consumed.add(figma);
+    // a boolean VARIANT needs both options, or design cannot set one of the two states
+    if (mapping?.kind === 'boolean' && d.type === 'VARIANT')
+      for (const value of ['false', 'true'])
+        if (!(d.variantOptions ?? []).includes(value)) out.gaps.push(`${figma}=${value}`);
     if (mapping?.kind !== 'enum' || d.type !== 'VARIANT') continue;
     // each allowed value needs a variant option of the same name, compared as strings
     for (const value of p.allowedValues as unknown[]) {
@@ -252,7 +256,9 @@ const coverage = (
     if (s.isDeprecated) continue;
     const figma = figmaSlotName(slot);
     if (defs[figma]) {
-      consumed.add(figma);
+      // a named slot renders only as a SLOT, read with getSlot(); the default slot also as TEXT
+      if (slot === '' || defs[figma].type === 'SLOT') consumed.add(figma);
+      else fail({ figma, type: defs[figma].type, kind: 'wrongType' });
       continue;
     }
     // a Figma property with the slot's name covers the slot (most text slots are TEXT properties)
@@ -361,7 +367,8 @@ const changesOf = (
     else if (u.kind === 'wrongType' && !claimed.has(u.figma)) {
       // drawn again with the type the template reads
       deletes.push(change.delete(u.figma));
-      add(u.figma);
+      if (u.figma.startsWith('slot-')) adds.push(change.addProperty('SLOT', u.figma));
+      else add(u.figma);
     } else if (u.figma === 'showLabel' && defs.hideLabel && props.hideLabel) deletes.push(change.delete(u.figma));
     // design-only: no PDS name stands for it, or a rename takes its name
     else renames.push(change.rename(u.figma, `fig${pascalCase(u.figma)}`));

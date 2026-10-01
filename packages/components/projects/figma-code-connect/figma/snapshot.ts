@@ -8,8 +8,14 @@ export type Snapshot = {
   icons: Record<string, string>;
 };
 
-/** The property definitions keyed by bare name. The REST response adds `#<node id>` to each key. */
+/**
+ * The property definitions keyed by bare name. The REST response adds `#<node id>` to each key but a VARIANT's,
+ * and a name can itself contain `#`, so only the last one is cut, as the Code Connect CLI does.
+ */
 export const definitions = (component: Component): Record<string, Definition> =>
   Object.fromEntries(
-    Object.entries(component.componentPropertyDefinitions).map(([key, value]) => [key.replace(/#.*$/, ''), value])
+    Object.entries(component.componentPropertyDefinitions).map(([key, value]) => [
+      value.type === 'VARIANT' ? key : key.replace(/#[^#]*$/, ''),
+      value,
+    ])
   );
