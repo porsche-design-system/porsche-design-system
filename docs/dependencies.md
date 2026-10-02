@@ -149,7 +149,7 @@ Current overrides:
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
-- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.61.0`). `@axe-core/playwright`
+- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.63.0`). `@axe-core/playwright`
   declares a wide peer (`playwright-core >= 1.0.0`), so on a clean lockfile regeneration npm auto-installs the
   **latest** `playwright-core` at the root while the held-back `playwright` nests its own matching copy. The resulting
   two copies of the Playwright type definitions break `next build`'s type check in the storefront

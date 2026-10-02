@@ -115,7 +115,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.5",
-    "@playwright/test": "1.61.0",
+    "@playwright/test": "1.63.0",
     "@porsche-design-system/shared": "0.0.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.3.3",

@@ -67,7 +67,7 @@
     "@angular/cli": "^22.2.0",
     "@angular/compiler-cli": "^22.2.0",
     "@angular/language-service": "^22.2.0",
-    "@playwright/test": "1.61.0",
+    "@playwright/test": "1.63.0",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@tailwindcss/postcss": "^4.3.3",

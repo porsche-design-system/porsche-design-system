@@ -273,7 +273,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@biomejs/biome": "^2.5.14",
-    "@playwright/test": "1.61.0",
+    "@playwright/test": "1.63.0",
     "@porsche-design-system/prettier-config": "^1.0.1",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-json": "^6.1.0",
@@ -324,7 +324,7 @@
     "madge": {
       "typescript": "$typescript"
     },
-    "playwright-core": "1.61.0"
+    "playwright-core": "1.63.0"
   },
   "volta": {
     "node": "24.15.0",
