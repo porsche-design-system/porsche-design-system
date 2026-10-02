@@ -71,7 +71,7 @@
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.13",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   },
   "volta": {

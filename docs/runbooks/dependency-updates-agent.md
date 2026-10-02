@@ -76,6 +76,11 @@ description.
 npm install
 ```
 
+If this fails with `ETARGET … @porsche-design-system/components-*@<version> with a date before …` right after a release,
+the local wrapper `dist/*-wrapper` folders are stale (built from the previous release) and the new version is still
+inside the release-age cooldown on the registry. Delete the four `packages/components-*/dist/*-wrapper` folders (they
+are build output, as on a fresh CI checkout) and re-run `npm ci`; the next `npm run build` recreates them.
+
 ### 2. Check what is outdated
 
 ```bash
@@ -109,8 +114,10 @@ do). For a major upgrade with framework migrations, prefer handing off — see
 ```bash
 cd packages/components-angular
 npm run ng:update                                                     # list available updates/migrations (read-only)
-# after the syncpack bump + `npm install` (step 4/5), apply migrations only:
-npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>
+# after the syncpack bump + `npm install` (step 4/5), apply migrations only — one package per run,
+# `ng update` rejects multiple packages with `--migrate-only`:
+npm run ng:update -- @angular/core --migrate-only --from=<old> --to=<new>
+npm run ng:update -- @angular/cli --migrate-only --from=<old> --to=<new>
 cd ../..
 git diff packages/components-angular                                  # review migration changes
 ```

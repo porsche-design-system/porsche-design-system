@@ -146,11 +146,6 @@ explicitly via the `overrides` field in the root `package.json` instead of disab
 
 Current overrides:
 
-- `@angular/build > vitest` is pinned to our root `vitest` version (`$vitest`). `@angular/build` declares an optional
-  peer on `vitest@^4.0.8`, which blocks Vitest 5 with `ERESOLVE`. The override is safe because we never use Angular's
-  Vitest builder: `packages/components-angular` runs `vitest` directly via its own config, and `angular.json` only uses
-  the `@angular/build:{application,dev-server,extract-i18n,karma,ng-packagr}` builders. **Drop this override** once
-  `@angular/build` widens its peer range to include Vitest 5.
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
@@ -419,8 +414,9 @@ Angular splits into two concerns that are handled separately:
 3. Bump the versions with `syncpack`: from the repo root run `npm run npm:update`, select the `@angular/*` family (and
    `ng-packagr`), then `npm install`.
 4. Apply the framework migrations only (the wrapper runs the schematics in the isolated install and copies the changed
-   source back into this package, leaving `package.json` and the lockfile to syncpack):
-   `npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>`.
+   source back into this package, leaving `package.json` and the lockfile to syncpack). `ng update` accepts only a
+   single package with `--migrate-only`, so run it once per package:
+   `npm run ng:update -- @angular/core --migrate-only --from=<old> --to=<new>`, then the same for `@angular/cli`.
 5. Review the migration diff (`git diff packages/components-angular`) and run `npm install` again from the project root.
 
 ## Updating jsdom and the popover polyfill
