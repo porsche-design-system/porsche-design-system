@@ -1,3 +1,4 @@
+import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { Script } from '../../../_partials/Script.tsx';
 
@@ -17,6 +18,13 @@ const barItems: { label: string; count?: string }[] = [
   { label: 'Some Item 9' },
 ];
 
+/** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
+export const meta: ExampleMeta = {
+  title: 'Popover: Priority navigation',
+  description:
+    'When horizontal space is limited, navigation items that no longer fit are collapsed into a popover behind a "More" trigger, keeping the bar on a single line. Items move in and out of the popover as the available width changes.',
+};
+
 /**
  * Popover pattern – the entries that no longer fit are moved into a popover instead of wrapping or being cut off.
  *
@@ -25,10 +33,7 @@ const barItems: { label: string; count?: string }[] = [
  * duplicated and nothing is re-created, which is also why the markup below describes the widest state only.
  */
 const Page = () => (
-  <PatternPage
-    title="Popover 2"
-    description="Navigation entries that no longer fit collapse into a popover, keeping the bar on a single line."
-  >
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template">
       <section class="col-wide py-fluid-lg grid gap-fluid-md">
         <p-heading tag="h1" size="xl">

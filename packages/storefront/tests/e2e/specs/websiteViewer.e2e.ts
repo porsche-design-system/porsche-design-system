@@ -1,12 +1,13 @@
 import { type BrowserContext, expect, type Frame, type Page, type Request, test } from '@playwright/test';
+import { examples } from '@porsche-design-system/examples';
 
 /**
  * The patterns and templates the storefront frames from `public/examples/`, and opens in StackBlitz.
  *
- * Both halves come from the build of `@porsche-design-system/examples`: the self-contained page in the iframe and the
- * `stackblitz.json` next to it. What is asserted here is the part the storefront adds – that the page is served by
- * this deployment, same-origin, with its media resolved against the slug, and that the payload reaches StackBlitz with
- * those media made absolute.
+ * Both halves come from `@porsche-design-system/examples`: the self-contained page in the iframe, copied from its build,
+ * and the project of the example, imported from the package at build time. What is asserted here is the part the
+ * storefront adds – that the page is served by this deployment, same-origin, with its media resolved against the slug,
+ * and that the project reaches StackBlitz with those media made absolute.
  */
 
 /** Every storefront page framing examples, with the examples it frames. */
@@ -118,10 +119,7 @@ test('opens an example in StackBlitz as the project it was built from', async ({
     await route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>StackBlitz</title>' });
   });
 
-  // The button is busy until the viewer has fetched the payload on mount – see `OpenExampleInStackblitz`.
-  const payloadResponse = page.waitForResponse(/\/examples\/templates\/landing-page\/stackblitz\.json$/);
   await page.goto('/templates/landing-page/');
-  expect((await payloadResponse).status()).toBe(200);
 
   const button = page.getByRole('button', { name: 'Open in StackBlitz' });
 
@@ -134,7 +132,8 @@ test('opens an example in StackBlitz as the project it was built from', async ({
   const origin = new URL(page.url()).origin;
 
   expect(fields.get('project[template]')).toBe('node');
-  expect(fields.get('project[title]')).toMatch(/\| Dummy Patterns$/);
+  // Named like the example, from its meta – not like the dummy website the page is.
+  expect(fields.get('project[title]')).toBe('Landing page');
   for (const file of ['package.json', 'vite.config.ts', 'index.html', 'main.js', 'style.css']) {
     expect(fields.get(`project[files][${file}]`), file).toBeTruthy();
   }
@@ -146,9 +145,9 @@ test('opens an example in StackBlitz as the project it was built from', async ({
 });
 
 test('switches an example between its preview and its code, one file per tab', async ({ page }) => {
-  const payloadResponse = page.waitForResponse(/\/examples\/templates\/landing-page\/stackblitz\.json$/);
+  // Without a basePath, the files are shown exactly as the package exports them.
+  const { files } = examples['templates/landing-page'];
   await page.goto('/templates/landing-page/');
-  const { files } = (await (await payloadResponse).json()) as { files: Record<string, string> };
 
   // The tabs are slotted into the tablist of `p-tabs-bar`, so they are found below its host rather than the tablist.
   const tabsBar = page.locator('p-tabs-bar', { has: page.getByRole('tab', { name: 'Preview' }) });
@@ -156,7 +155,7 @@ test('switches an example between its preview and its code, one file per tab', a
   const iframe = page.locator('iframe[src*="/examples/"]');
   const code = page.getByRole('region', { name: /^(HTML|CSS|JS) of / });
 
-  await expect(page.getByRole('tablist', { name: 'Select the view of Template: Landing Page' })).toBeVisible();
+  await expect(page.getByRole('tablist', { name: 'Select the view of Landing page' })).toBeVisible();
   await expect(tabs).toHaveText(['Preview', 'HTML', 'CSS', 'JS']);
   await expect(tabs.first()).toHaveAttribute('aria-selected', 'true');
   await expect(page.getByRole('tabpanel', { name: 'Preview' })).toBeVisible();
@@ -178,7 +177,7 @@ test('switches an example between its preview and its code, one file per tab', a
     await expect(tabs.nth(index + 1)).toHaveAttribute('aria-selected', 'true');
     await expect(page.getByRole('tabpanel', { name })).toBeVisible();
     await expect(iframe).toBeHidden();
-    await expect(code).toHaveAccessibleName(`${name} of Template: Landing Page`);
+    await expect(code).toHaveAccessibleName(`${name} of Landing page`);
     // The highlighter splits the code into spans, the text stays the file's verbatim.
     expect(await code.textContent()).toBe(files[file]);
   }
@@ -237,40 +236,12 @@ test('keeps the toolbar of a resized example within its column when the window n
 test('explains the setup of the examples next to their tabs', async ({ page }) => {
   await page.goto('/templates/landing-page/');
 
-  const info = page.getByRole('button', { name: 'About the setup of Template: Landing Page' });
+  const info = page.getByRole('button', { name: 'About the setup of Landing page' });
   await expect(info).toHaveAttribute('aria-expanded', 'false');
 
   await info.click();
   await expect(info).toHaveAttribute('aria-expanded', 'true');
   await expect(page.getByText(/rely on Tailwind CSS, which requires a bundler such as Vite/)).toBeVisible();
-});
-
-test('tells while the code of an example loads, and when it failed to', async ({ page }) => {
-  // Held until the assertions on the loading state are done, then answered with a 404.
-  let answer = () => {};
-  const isAnswered = new Promise<void>((resolve) => {
-    answer = resolve;
-  });
-  await page.route(/\/examples\/templates\/landing-page\/stackblitz\.json$/, async (route) => {
-    await isAnswered;
-    await route.fulfill({ status: 404 });
-  });
-  await page.goto('/templates/landing-page/');
-
-  const stackblitz = page.getByRole('button', { name: 'Open in StackBlitz' });
-  const codePanel = page.getByRole('tabpanel', { name: 'HTML' });
-
-  await page.getByRole('tab', { name: 'HTML' }).click();
-  await expect(codePanel.getByRole('alert', { name: 'Loading the code of Template: Landing Page' })).toBeAttached();
-  await expect(stackblitz).toBeDisabled();
-
-  answer();
-  await expect(codePanel.getByText('The code could not be loaded.')).toBeVisible();
-  await expect(codePanel.getByRole('alert')).toHaveCount(0);
-  await expect(stackblitz).toBeDisabled();
-  // The preview does not depend on the payload.
-  await page.getByRole('tab', { name: 'Preview' }).click();
-  await expect(page.locator('iframe[src*="/examples/"]')).toBeVisible();
 });
 
 test('resets a resized preview to its full width, and offers that on the preview only', async ({ page }) => {
@@ -305,6 +276,10 @@ test('switches every example of a page on its own, at the height of its preview'
   const stacked = page.getByTitle('Header: Stacked');
   const previewHeight = (await overlay.boundingBox())?.height;
 
+  // Each example is introduced by its description, authored with the example in @porsche-design-system/examples.
+  await expect(page.getByText(/^The header lies on top of the content/)).toBeVisible();
+  await expect(page.getByText(/^The header sits above the content/)).toBeVisible();
+
   await page.getByRole('tab', { name: 'JS' }).first().click();
 
   await expect(overlay).toBeHidden();
@@ -322,11 +297,6 @@ test('frames the framework apps from the examples repository, without the exampl
   await page.route(/^https:\/\/porsche-design-system\.github\.io\//, (route) =>
     route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>Vue</title>' })
   );
-  const payloadRequests: string[] = [];
-  page.on('request', (request) => {
-    if (request.url().endsWith('/stackblitz.json')) payloadRequests.push(request.url());
-  });
-
   await page.goto('/developing/vue/demo/');
 
   const iframe = page.getByTitle('Vue: Demo application');
@@ -344,5 +314,4 @@ test('frames the framework apps from the examples repository, without the exampl
   await expect(page.getByRole('button', { name: /^About the setup of / })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Open in StackBlitz' })).toHaveCount(0);
   await expect(page.getByRole('slider')).toBeVisible();
-  expect(payloadRequests).toEqual([]);
 });

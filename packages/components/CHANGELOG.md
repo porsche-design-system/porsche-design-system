@@ -14,6 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.8.0-rc.1] - 2026-10-01
+
+### Added
+
+- `Knowledge Skill`: patterns and templates – the header, footer, popover and feedback patterns, the landing page and
+  the admin panel – with their description, the components they use, and their complete markup and script, together with
+  the note that they are vanilla HTML and JavaScript to be converted to your framework
+  ([#4761](https://github.com/porsche-design-system/porsche-design-system/pull/4761))
+
 ## [4.8.0-rc.0] - 2026-10-01
 
 ### Added

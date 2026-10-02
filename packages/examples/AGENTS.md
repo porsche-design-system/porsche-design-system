@@ -21,20 +21,39 @@ The package is `private: true` and is not published.
 
 ## Build output
 
-`npm run build` writes two git-ignored trees ([`lib/shared.ts`](lib/shared.ts)):
+`npm run build` writes three git-ignored trees ([`lib/shared.ts`](lib/shared.ts)), in two steps:
 
 ```text
-dist/<category>/<page>/        # scripts/build.ts – one standalone Vite project per page, what StackBlitz opens
-├── package.json               # generated, dependency versions taken from this package
-├── vite.config.ts             # generated: PDS partial injection with the component chunks of the category
-├── index.html                 # the rendered page, opening with the note on how to port it (exampleNote)
-└── main.js / style.css        # generated entry pair: the page's <Script>s, moved out of it, and the Tailwind entry
-dist-site/                     # scripts/buildSite.ts – what the storefront copies to public/examples/
+generated/examples.ts          # build:projects – scripts/build.ts: the package export, as source (lib/exports.ts)
+dist/                          # build:projects – scripts/build.ts, then rollup.config.mjs
+├── examples.js / .d.ts        # the package export, bundled – `import { examples } from '@porsche-design-system/examples'`
+└── <category>/<page>/         # one standalone Vite project per page, what StackBlitz opens
+    ├── package.json           # generated, dependency versions taken from this package
+    ├── vite.config.ts         # generated: PDS partial injection with the component chunks of the category
+    ├── index.html             # the rendered page, opening with the note on how to port it (exampleNote)
+    └── main.js / style.css    # generated entry pair: the page's <Script>s, moved out of it, and the Tailwind entry
+dist-site/                     # build:site – scripts/buildSite.ts, what the storefront copies to public/examples/
 ├── media/                     # public/examples/media/, once
 └── <category>/<page>/
-    ├── index.html             # the project above, built, script and stylesheet inlined (lib/inline.ts)
-    └── stackblitz.json        # the project above, verbatim (lib/payload.ts)
+    └── index.html             # the project above, built, script and stylesheet inlined (lib/inline.ts)
 ```
+
+**The package export.** `@porsche-design-system/examples` exports `examples` – every example by its path, with its meta
+and the files of its project, which the storefront shows as code and opens in StackBlitz – and the paths the pages and
+their media are served at (`examplesPath`, `mediaPath`). The types of an example – `ExampleMeta`, `ExampleProject`,
+`Example` – are defined once, in [`lib/meta.ts`](lib/meta.ts), which the generated source re-exports; it adds
+`ExamplePath`, the path of every example as a union. `build:projects` writes the source, typechecks what it built with
+it and bundles it with its declarations into `dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so a consumer
+compiles nothing of this package. The scripts and the knowledge skill import the source itself. The export holds every
+example, so import it on the server only.
+
+**The two steps run at different points of the root build.** `build:projects` needs the sources and the types of
+`@porsche-design-system/components` only, and runs before `build:skills`, which reads its output (see _Knowledge
+skill_). `build:site` builds the projects against `@porsche-design-system/components-js` and runs after the wrappers.
+Nothing `scripts/build.ts` imports may therefore need a built wrapper – which is why `appTitle` lives in
+`lib/projects.ts` rather than next to the partials. The same holds for its typecheck: `build:projects` checks only what
+it builds ([`tsconfig.projects.json`](tsconfig.projects.json)), and `build:site` runs the full `typecheck`, whose
+partials, dev server and verification import `@porsche-design-system/components-js`.
 
 Consequences, and they are the point of the design:
 
@@ -60,7 +79,8 @@ lib/                              # everything importable – by vite.config.ts,
 ├── projects.ts                   # the categories, their component chunks and the path arithmetic
 ├── entries.ts                    # extractScripts() + the generated main.js + the dev stylesheet link
 ├── inline.ts                     # Vite plugin inlining the bundled script and stylesheet – dist-site/ only
-├── payload.ts                    # the stackblitz.json of a page
+├── meta.ts                       # the types of an example – ExampleMeta (the `meta` export of a page), Example, …
+├── exports.ts                    # the package export: the source generated/examples.ts, bundled by rollup.config.mjs
 ├── generateProject.ts            # the generated vite.config.ts and package.json
 └── shared.ts                     # output paths, file helpers and readVersions() – the dependency versions of this package
 scripts/                          # the entry points `npm run …` starts with tsx – nothing imports them
@@ -68,12 +88,14 @@ scripts/                          # the entry points `npm run …` starts with t
 ├── buildSite.ts                  # builds every project into one self-contained page in dist-site/
 ├── verify.ts                     # asserts dist-site/ is what the storefront and StackBlitz need
 └── previewSite.ts                # serves dist-site/ below /examples/ against the local CDN
+skill/skill.ts                    # examplesSkill – the patterns and templates for the knowledge skill, read from dist/
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 playwright.config.ts              # every Playwright suite as projects of one config – <suite>-{desktop-chrome,mobile-safari}
 tests/unit/                       # vitest, no build and no browser
 ├── specs/build.spec.tsx          # the pipeline: routing, projects, StackBlitz, entries, inlining, renderPage()
 ├── specs/markup.spec.tsx         # the static composition: data, partials, layouts, pages
+├── specs/skill.spec.ts           # the knowledge skill serializer – reads dist/, so it needs build:projects
 └── helpers/index.ts              # the pages under test and the string helpers the specs share
 tests/helpers/                    # shared by the Playwright suites – a helper two suites use lives here
 ├── previewServers.ts             # the web server every suite runs against
@@ -136,6 +158,8 @@ The examples demonstrate chrome, they are not a website:
 ```bash
 npm run start:examples      # dev server on http://localhost:3010 – prints the URL of every page when it starts
 npm run build:examples      # writes ./dist (one project per page) and ./dist-site (one HTML file per page), gitignored
+npm run build:examples:projects  # ./dist only – what build:skills reads; needs no built wrapper
+npm run build:examples:site      # ./dist-site from ./dist, verified – needs the built components-js
 npm run test:unit:examples  # vitest
 npm run test:e2e:examples   # playwright – drives the behaviour of every page of the built site
 npm run test:a11y:examples  # playwright + axe-core – scans every page of the built site
@@ -471,34 +495,61 @@ approach, and it is paid on every review:
   `preview` serves build output – the same split as `start` vs. `start-app` in the wrapper packages and as `preview` in
   `packages/styles`. A change that makes `preview` serve sources again should rename it.
 
+## Knowledge skill
+
+The patterns and templates ship in the `pds-knowledge-*` skill of every wrapper. [`skill/skill.ts`](skill/skill.ts)
+exports `examplesSkill`, a `PackageSkill` like the ones of the style packages, registered in
+[`packages/storefront/projects/skills/src/knowledge/packageSkills.ts`](../storefront/projects/skills/src/knowledge/packageSkills.ts):
+
+- `intro` is rendered into the section of `SKILL.md`, with the note on converting the examples to its framework.
+- `getContent()` renders `references/examples.md` – the catalog of every page with its meta and components, and what all
+  examples share: the conventions of their references and the stylesheet.
+- `getReferences()` renders one file per page, `references/examples/<category>/<page>.md`: the meta, the components it
+  is built from, the markup of `index.html` without its `<head>` and the note, and `main.js` without the stylesheet
+  import. `package.json` and `vite.config.ts` are left out – the skill covers the setup per framework.
+
+`SKILL.md` is in context whenever the other files are read, so none of them repeats it, and the references repeat
+nothing the index says – a test of the skills project holds that.
+
+`examplesSkill` imports the source of the package export, `generated/examples.ts` – the files StackBlitz opens – so the
+skill shows what the storefront shows. The content is framework-agnostic. Components link to their storefront route
+(`/components/button`), sub-components by the component documenting them, and the generator resolves the route to the
+component reference. A change to a page changes the staged skill trees, so update the content snapshots of the skills
+project with it (`npm run test:unit:skills`).
+
 ## Adding a template (a whole page)
 
 1. Create `src/templates/<name>/index.page.tsx` – markup, classes and, in a `<Script>`, behaviour.
-2. Default-export a component that renders `<TemplatePage>` with `title` and `description`. The layout writes nothing
-   but the document: the page composes its chrome itself, like a pattern does – `<Header currentPage="…" />` (optionally
-   `showSearch`, `variant`, `navItems`, and for `stacked` also `notice` and `categoryItems`) and `<Footer />`, or a
-   `p-canvas` for an application page, which then puts its color scheme on `<html>` through `class`.
-3. Put the markup in `children`, including the page's own `<main id="main">` – except inside `p-canvas`, where the
+2. Export its `meta` – a `title` naming the example on its own and a plain-text `description` of what it shows and when
+   to use it – typed as `ExampleMeta` from [`lib/meta.ts`](lib/meta.ts). The storefront, StackBlitz and the knowledge
+   skill present the example by it; the build fails without it.
+3. Default-export a component that renders `<TemplatePage meta={meta}>`, which writes the meta into the `<head>`. The
+   layout writes nothing but the document: the page composes its chrome itself, like a pattern does –
+   `<Header currentPage="…" />` (optionally `showSearch`, `variant`, `navItems`, and for `stacked` also `notice` and
+   `categoryItems`) and `<Footer />`, or a `p-canvas` for an application page, which then puts its color scheme on
+   `<html>` through `class`.
+4. Put the markup in `children`, including the page's own `<main id="main">` – except inside `p-canvas`, where the
    component provides that landmark. Links go to `#`, unless they point at an id on the same page.
-4. Style with Tailwind utilities; touch `src/style.css` only for genuinely global defaults or theme values.
-5. Wire it up as described in _Wiring up a new page_. The dev server lists it on its next start – pages are found by
+5. Style with Tailwind utilities; touch `src/style.css` only for genuinely global defaults or theme values.
+6. Wire it up as described in _Wiring up a new page_. The dev server lists it on its next start – pages are found by
    file name, not registered.
-6. Run `npm run build` and confirm the page still builds and the CSS contains no stray utilities.
+7. Run `npm run build` and confirm the page still builds and the CSS contains no stray utilities.
 
 ## Adding a pattern (a single section)
 
 1. Create `src/patterns/<name>/index.page.tsx`.
-2. Default-export a component that renders `<PatternPage>` with `title`, `description`, and the section itself as
-   `beforeMain` (headers) or `afterMain` (footers). The page brings its own `<main id="main">` as `children`; the layout
-   adds nothing around it, and the build links the page's `main.js`.
-3. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
+2. Export its `meta`, as for a template.
+3. Default-export a component that renders `<PatternPage meta={meta}>` with the section itself as `beforeMain` (headers)
+   or `afterMain` (footers). The page brings its own `<main id="main">` as `children`; the layout adds nothing around
+   it, and the build links the page's `main.js`.
+4. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
-4. Wire it up as described in _Wiring up a new page_. The dev server lists it on its next start – pages are found by
+5. Wire it up as described in _Wiring up a new page_. The dev server lists it on its next start – pages are found by
    file name, not registered.
-5. If the pattern needs behaviour of its own, write it in a `<Script>` at the end of the page; the build moves it into
+6. If the pattern needs behaviour of its own, write it in a `<Script>` at the end of the page; the build moves it into
    the generated entry, which brings the stylesheet import and the banner. Behaviour a partial needs wherever it is
    rendered goes into a `<Script>` of that partial. Hook it on ids and query them with `getElementById()`.
-6. Run `npm run build`, then the unit and a11y tests; together they assert the accessibility baseline for every page,
+7. Run `npm run build`, then the unit and a11y tests; together they assert the accessibility baseline for every page,
    patterns included.
 
 ## Wiring up a new page
@@ -516,8 +567,11 @@ hand, and nothing fails when one of the first two is forgotten:
    `-`: `patterns/header-overlay.e2e.ts`), each starting from the checks the other specs of its suite share. The
    `coverage.*` specs fail until all three exist. Generate the VRT baselines in Docker –
    `./docker.sh npm run test:vrt:examples` writes the missing ones.
-4. **Storefront.** Add a `page.mdx` rendering `<WebsiteViewer example="<category>/<page>" … />` and an entry in
+4. **Storefront.** Add a `page.mdx` rendering `<ExampleViewer example="<category>/<page>" />` – it shows the description
+   and frames the page under its title, all imported from the package export – and an entry in
    [`packages/storefront/src/sitemap.tsx`](../storefront/src/sitemap.tsx).
+5. **Knowledge skill.** Nothing to register – the page is picked up from the package export. Update the content
+   snapshots of the skills project (see _Knowledge skill_).
 
 ## Accessibility baseline
 

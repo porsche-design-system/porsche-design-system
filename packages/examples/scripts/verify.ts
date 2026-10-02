@@ -1,19 +1,19 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { getLoaderScript } from '@porsche-design-system/components-js/partials';
+import { examples } from '../generated/examples.ts';
 import { exampleNote } from '../lib/jsx.ts';
-import type { StackblitzPayload } from '../lib/payload.ts';
-import { categories, mediaPath, payloadName } from '../lib/projects.ts';
+import { categories, getPagePath, mediaPath } from '../lib/projects.ts';
 import { distDir, listFiles, listProjects, packageDir, siteDir, siteMediaDir } from '../lib/shared.ts';
 
 /**
- * Asserts that `dist-site/` is what the storefront can serve and StackBlitz can open.
+ * Asserts that `dist-site/` is what the storefront can serve, and the package export what it can import.
  *
  * Every page has to be one self-contained HTML file: its script and its stylesheet inline, nothing local referenced
  * but the media, and those only through `mediaPath`, which is the one prefix the storefront rewrites to its slug. A
  * relative URL or a root-absolute one outside `mediaPath` would resolve against the storefront and silently break
- * once deployed, which is what this check is for. Next to it, the StackBlitz payload has to carry the generated
- * project of the page exactly – the project the page was built from.
+ * once deployed, which is what this check is for. Next to it, the package export has to hold every page, with the
+ * generated project of the page exactly – the project the page was built from, and the one StackBlitz opens.
  *
  * Run by `npm run build`, after `scripts/buildSite.ts`, so a page that breaks one of these rules fails the build.
  */
@@ -45,14 +45,19 @@ const verify = (): void => {
   const locations = listProjects();
   const usedMedia = new Set<string>();
 
+  const pagePaths = locations.map(getPagePath);
+  if (Object.keys(examples).sort().join() !== [...pagePaths].sort().join()) {
+    fail(`the package export has to hold ${pagePaths.join(', ')}, got: ${Object.keys(examples).join(', ')}`);
+  }
+
   for (const location of locations) {
     const name = `${location.category}/${location.pageDir}`;
     const pageDir = path.join(siteDir, location.category, location.pageDir);
     const projectDir = path.join(distDir, location.category, location.pageDir);
 
     const siteFiles = fs.existsSync(pageDir) ? listFiles(pageDir) : [];
-    if (siteFiles.join() !== ['index.html', payloadName].join()) {
-      fail(`"${name}" has to build to index.html and ${payloadName} only, got: ${siteFiles.join(', ') || 'nothing'}`);
+    if (siteFiles.join() !== 'index.html') {
+      fail(`"${name}" has to build to index.html only, got: ${siteFiles.join(', ') || 'nothing'}`);
     }
 
     const html = fs.readFileSync(path.join(pageDir, 'index.html'), 'utf8');
@@ -86,14 +91,14 @@ const verify = (): void => {
       }
     }
 
-    const payload = JSON.parse(fs.readFileSync(path.join(pageDir, payloadName), 'utf8')) as StackblitzPayload;
+    const { files = {} } = Object.values(examples).find((example) => example.path === name) ?? {};
     const projectFiles = listFiles(projectDir);
-    if (Object.keys(payload.files).sort().join() !== projectFiles.join()) {
-      fail(`the ${payloadName} of "${name}" does not carry the files of its project`);
+    if (Object.keys(files).sort().join() !== projectFiles.join()) {
+      fail(`the package export of "${name}" does not carry the files of its project`);
     }
     for (const file of projectFiles) {
-      if (payload.files[file] !== fs.readFileSync(path.join(projectDir, file), 'utf8')) {
-        fail(`the ${payloadName} of "${name}" carries a different "${file}" than its project`);
+      if (files[file] !== fs.readFileSync(path.join(projectDir, file), 'utf8')) {
+        fail(`the package export of "${name}" carries a different "${file}" than its project`);
       }
     }
   }

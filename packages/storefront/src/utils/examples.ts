@@ -1,35 +1,34 @@
-import type { ExampleProject } from '@porsche-design-system/stackblitz';
+import { type Example, type ExamplePath, examples, examplesPath, mediaPath } from '@porsche-design-system/examples';
 
 /**
  * The examples of `@porsche-design-system/examples`, as the storefront serves them.
  *
- * The examples package builds `dist-site/` once, free of any storefront slug, because one build is deployed under
- * several of them – `release.yml` rebuilds the storefront from one artifact for `/v4.8.0/` and for `/v4/`. The
- * storefront copies it to `public/examples/` in its `prebuild` (`scripts/copyExamples.ts`), inserting the slug of
- * exactly the build that is deployed under it, and `WebsiteViewer` frames the pages from there.
- */
-
-/** An example page: its category and its path below it, e.g. `patterns/header/overlay`. */
-export type ExamplePath = `${'patterns' | 'templates'}/${string}`;
-
-/**
- * Where the examples reference their media: storefront-root-relative and slug-free.
+ * Two halves come from the examples package. The built pages are copied from `dist-site/` to `public/examples/` in the
+ * `prebuild` (`scripts/copyExamples.ts`), and `WebsiteViewer` frames them from there. Every example – its meta and the
+ * files of its project, which the code view shows and StackBlitz opens – is imported from the package export by
+ * `ExampleViewer` instead, at build time.
  *
- * Owned by `packages/examples/lib/projects.ts`, repeated here because the storefront does not depend on that package.
- * `copyExamples.ts` fails when the copied pages stop containing it, so the two cannot drift apart silently.
+ * Both are free of any storefront slug, because one build is deployed under several of them – `release.yml` rebuilds
+ * the storefront from one artifact for `/v4.8.0/` and for `/v4/` – so the slug is inserted here, for exactly the build
+ * that is deployed under it.
+ *
+ * Server only: this module imports every example. A client component is handed the example it shows, and adds the
+ * origin with `withMediaOrigin()` from `exampleMediaOrigin.ts`.
  */
-export const examplesMediaPath = '/examples/media/';
 
 const withBasePath = (pathname: string, basePath: string): string => (basePath ? `/${basePath}${pathname}` : pathname);
+
+/** Where this deployment serves the media of the examples: `/examples/media/` → `/v4/examples/media/`. */
+export const getExampleMediaPath = (basePath: string): string => withBasePath(mediaPath, basePath);
 
 /**
  * Puts the storefront slug in front of every media path: `/examples/media/718.webp` → `/v4/examples/media/718.webp`.
  *
- * Applied to the pages the iframe frames and to the StackBlitz payloads alike, so both reference the media of the
+ * Applied to the pages the iframe frames and to the files of the examples alike, so both reference the media of the
  * deployment they are part of. Without a basePath, as in local development, the path is already right.
  */
 export const insertBasePath = (content: string, basePath: string): string =>
-  basePath ? content.replaceAll(examplesMediaPath, withBasePath(examplesMediaPath, basePath)) : content;
+  basePath ? content.replaceAll(mediaPath, getExampleMediaPath(basePath)) : content;
 
 /**
  * Points the Porsche Design System partials of a page at `serve-cdn`, mirroring what `layout.tsx` does for the
@@ -37,9 +36,6 @@ export const insertBasePath = (content: string, basePath: string): string =>
  */
 export const rewriteCdnUrlsForDev = (html: string): string =>
   html.replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001');
-
-const getExampleDir = (example: ExamplePath, basePath: string): string =>
-  withBasePath(`/examples/${example}/`, basePath);
 
 /**
  * The URL of an example in this deployment: `patterns/header/overlay` →
@@ -50,30 +46,24 @@ const getExampleDir = (example: ExamplePath, basePath: string): string =>
  * rather than relative to `<base href>`, so it means the same wherever it is used.
  */
 export const getExampleUrl = (example: ExamplePath, basePath: string): string =>
-  `${getExampleDir(example, basePath)}index.html`;
-
-/** The StackBlitz payload of an example, next to its page. */
-export const getExamplePayloadUrl = (example: ExamplePath, basePath: string): string =>
-  `${getExampleDir(example, basePath)}stackblitz.json`;
+  withBasePath(`${examplesPath}${example}/index.html`, basePath);
 
 /**
- * The payload as StackBlitz needs it: with the origin in front of every media path.
+ * An example as this deployment shows it: its media below the slug.
  *
- * The iframe is same-origin, so `/v4/examples/media/718.webp` is enough there. The WebContainer is not: it loads the
- * media cross-origin from this very deployment, which is why the origin is added here, at click time, rather than at
- * build time – one build serves local development, previews and production, and only the running page knows where
- * it is.
+ * Fails for a path that is not an example – MDX passes the path as a plain string, so the type alone does not catch a
+ * typo there.
  */
-export const withMediaOrigin = (payload: ExampleProject, origin: string, basePath: string): ExampleProject => {
-  const mediaPath = withBasePath(examplesMediaPath, basePath);
+export const getExample = <Path extends ExamplePath>(path: Path, basePath: string): Example<Path> => {
+  const example: Example<Path> | undefined = examples[path];
+  if (!example) {
+    throw new Error(`[storefront] "${path}" is not an example of @porsche-design-system/examples`);
+  }
 
   return {
-    ...payload,
+    ...example,
     files: Object.fromEntries(
-      Object.entries(payload.files).map(([file, content]) => [
-        file,
-        content.replaceAll(mediaPath, `${origin}${mediaPath}`),
-      ])
+      Object.entries(example.files).map(([file, content]) => [file, insertBasePath(content, basePath)])
     ),
   };
 };

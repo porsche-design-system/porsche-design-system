@@ -1,4 +1,5 @@
 import { Fragment } from 'preact';
+import type { ExampleMeta } from '../../../lib/meta.ts';
 import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
 import { Script } from '../../_partials/Script.tsx';
 
@@ -119,12 +120,15 @@ const linkLists = [
 /** The legal links of the sidebar footer. */
 const legalLinks = ['Privacy Policy', 'Legal Notice', 'License', 'Accessibility Statement'];
 
+/** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
+export const meta: ExampleMeta = {
+  title: 'Admin panel',
+  description:
+    "The template is designed for internal tools and management interfaces that require a clear, efficient, and data-driven layout. It's built to help administrators oversee and manage content, users, or system settings with ease — whether that's monitoring key metrics, managing user accounts, or configuring application settings.",
+};
+
 const Page = () => (
-  <TemplatePage
-    title="Admin panel"
-    description="Productive application page built on p-canvas, with a navigation sidebar, a settings sidebar and a list of models."
-    class="scheme-light-dark bg-surface"
-  >
+  <TemplatePage meta={meta} class="scheme-light-dark bg-surface">
     <p-canvas id="admin-canvas">
       <a href="#" slot="title">
         Admin Panel

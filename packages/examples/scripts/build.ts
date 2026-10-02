@@ -4,17 +4,20 @@ import path from 'node:path';
 import fastGlob from 'fast-glob';
 import prettier from 'prettier';
 import { extractScripts, formatScriptEntry, getScriptEntry } from '../lib/entries.ts';
+import { type Examples, exportFileName, getExportModule } from '../lib/exports.ts';
 import { getPackageJson, getViteConfig, type Versions } from '../lib/generateProject.ts';
 import { type PageModule, pageSuffix, renderPage } from '../lib/jsx.ts';
+import { assertExampleMeta, type Example } from '../lib/meta.ts';
 import {
   type Category,
   categories,
+  getPagePath,
   type PageLocation,
   resolvePageLocation,
   scriptEntryName,
   styleEntryName,
 } from '../lib/projects.ts';
-import { distDir, packageDir, readVersions, srcDir, writeFile } from '../lib/shared.ts';
+import { distDir, generatedDir, listFiles, packageDir, readVersions, srcDir, writeFile } from '../lib/shared.ts';
 
 /**
  * The shared Tailwind entry, copied next to every page as its `style.css`.
@@ -77,14 +80,14 @@ const assertPageFolder = (pageSourceDir: string, location: PageLocation): void =
 };
 
 /**
- * Builds the project of one page.
+ * Builds the project of one page and returns it as the package exports it: its meta and the files of its project.
  *
  * `src/patterns/header/overlay/index.page.tsx` becomes `dist/patterns/header/overlay/`, a Vite project with the page
  * as its `index.html`, the generated `main.js` – the `<Script>` elements of the page, moved out of it – and `style.css`
  * next to it, and its own `package.json` and `vite.config.ts`. It is self-contained – nothing is shared between two projects, because each one is handed to
  * StackBlitz on its own.
  */
-const buildPage = async (entry: Category, location: PageLocation, versions: Versions): Promise<void> => {
+const buildPage = async (entry: Category, location: PageLocation, versions: Versions): Promise<Example> => {
   const pageSourceDir = path.join(srcDir, location.category, location.pageDir);
   const projectDir = path.join(distDir, location.category, location.pageDir);
   const relativePath = `${location.category}/${location.pageDir}/index${pageSuffix}`;
@@ -92,6 +95,7 @@ const buildPage = async (entry: Category, location: PageLocation, versions: Vers
   assertPageFolder(pageSourceDir, location);
 
   const pageModule = (await import(path.join(pageSourceDir, `index${pageSuffix}`))) as PageModule;
+  const meta = assertExampleMeta(pageModule.meta, relativePath);
   const { html, scripts } = extractScripts(await renderPage(pageModule.default));
 
   writeFile(path.join(projectDir, 'index.html'), html);
@@ -104,29 +108,41 @@ const buildPage = async (entry: Category, location: PageLocation, versions: Vers
   writeFile(path.join(projectDir, 'package.json'), getPackageJson(location, versions));
 
   console.log(`✓ ${relativePath}`);
+
+  // Read back rather than kept from above, so the export carries the files byte for byte as they were written.
+  const files = Object.fromEntries(
+    listFiles(projectDir).map((file) => [file, fs.readFileSync(path.join(projectDir, file), 'utf8')])
+  );
+
+  return { path: getPagePath(location), ...meta, files };
 };
 
 /**
- * Renders every `*.page.tsx` file into a Vite project of its own.
+ * Renders every `*.page.tsx` file into a Vite project of its own, and writes the package export next to them – every
+ * example with its meta and the files of its project (see `lib/exports.ts`).
  *
  * The output is not a website: it is the source `scripts/buildSite.ts` builds, and the project "Open in StackBlitz"
  * hands over – each built by its own generated `vite.config.ts`, which is also what injects the Porsche Design System
- * partials.
+ * partials. The export is what the storefront imports and the knowledge skill reads (`skill/skill.ts`), which is why
+ * this step needs nothing but the sources: it runs before `build:skills`, the wrappers and `scripts/buildSite.ts`.
  */
 const build = async (): Promise<void> => {
   fs.rmSync(distDir, { recursive: true, force: true });
 
   const versions = readVersions();
-  let pageCount = 0;
+  const examples: Examples = {};
 
   for (const entry of categories) {
     for (const location of locatePages(entry)) {
-      await buildPage(entry, location, versions);
-      pageCount++;
+      const example = await buildPage(entry, location, versions);
+      examples[example.path] = example;
     }
   }
 
-  console.log(`\nBuilt ${pageCount} project(s) → ${path.relative(packageDir, distDir)}`);
+  // Bundled into `dist/` afterwards by `rollup.config.mjs`, once the package has been typechecked with it.
+  writeFile(path.join(generatedDir, exportFileName), getExportModule(examples));
+
+  console.log(`\nBuilt ${Object.keys(examples).length} project(s) → ${path.relative(packageDir, distDir)}`);
 };
 
 await build();

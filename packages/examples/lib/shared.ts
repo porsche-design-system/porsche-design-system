@@ -20,6 +20,8 @@ import { categories, mediaPath, type PageLocation } from './projects.ts';
 export const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const srcDir = path.join(packageDir, 'src');
 export const distDir = path.join(packageDir, 'dist');
+/** Generated sources: the package export, bundled into `dist/` by `rollup.config.mjs`. Git-ignored. */
+export const generatedDir = path.join(packageDir, 'generated');
 export const siteDir = path.join(packageDir, 'dist-site');
 
 /** The media of the examples, below `public/` at the very path the pages reference them by – see `mediaPath`. */

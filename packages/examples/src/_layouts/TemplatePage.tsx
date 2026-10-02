@@ -1,9 +1,10 @@
 import type { ComponentChildren } from 'preact';
+import type { ExampleMeta } from '../../lib/meta.ts';
 import { Head } from '../_partials/Head.tsx';
 
 export type TemplatePageProps = {
-  title: string;
-  description: string;
+  /** The `meta` the page exports – its title and description are the ones of the document as well. */
+  meta: ExampleMeta;
   /**
    * Classes of the `<html>` element. An application shell on `p-canvas` puts its color scheme here: the sidebars of a
    * canvas are rendered on top of the page, so a scheme set further down would not reach them.
@@ -26,10 +27,10 @@ export type TemplatePageProps = {
  * Like every other layout it references no script: the build moves the `<Script>` elements of the page into a generated
  * `main.js` and links that entry, which also imports the page's `style.css`.
  */
-export const TemplatePage = ({ title, description, class: className, children }: TemplatePageProps) => (
+export const TemplatePage = ({ meta, class: className, children }: TemplatePageProps) => (
   <html lang="en" class={className}>
     <head>
-      <Head title={title} description={description} />
+      <Head title={meta.title} description={meta.description} />
     </head>
     <body>{children}</body>
   </html>

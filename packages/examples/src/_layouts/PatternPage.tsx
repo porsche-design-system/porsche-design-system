@@ -1,9 +1,10 @@
 import type { ComponentChildren } from 'preact';
+import type { ExampleMeta } from '../../lib/meta.ts';
 import { Head } from '../_partials/Head.tsx';
 
 export type PatternPageProps = {
-  title: string;
-  description: string;
+  /** The `meta` the page exports – its title and description are the ones of the document as well. */
+  meta: ExampleMeta;
   /**
    * The pattern itself, when it belongs above the content – a header, for example, which then provides the page's
    * banner landmark.
@@ -26,10 +27,10 @@ export type PatternPageProps = {
  *
  * Like `TemplatePage` it references no script – the build links the generated `main.js`.
  */
-export const PatternPage = ({ title, description, beforeMain, afterMain, children }: PatternPageProps) => (
+export const PatternPage = ({ meta, beforeMain, afterMain, children }: PatternPageProps) => (
   <html lang="en">
     <head>
-      <Head title={title} description={description} />
+      <Head title={meta.title} description={meta.description} />
     </head>
     <body>
       {beforeMain}
