@@ -47,7 +47,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "4.8.0-rc.1",
+    "@porsche-design-system/components-vue": "4.8.0",
     "vue": "^3.5.42",
     "vue-router": "^5.3.1"
   },
