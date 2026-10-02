@@ -105,6 +105,32 @@ Implement a feature:
   `}
 />
 
+Build a page from a template and patterns:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Build a campaign page from the PDS Landing page template. Use the
+    Header: Overlay pattern with the Popover: Local market switch, place the Feedback: Inline
+    pattern at the end of the content and the Footer pattern at the bottom. Replace the
+    placeholder content, keep the components, layout and accessibility of the patterns, and
+    follow the existing framework and codebase conventions.
+  `}
+/>
+
+Build a page from a description:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Build an accessible campaign page for a new car model. It should
+    start with a full-screen hero and the main navigation, let visitors switch to their
+    country, highlight the model and lead them toward booking a test drive. Ask whether the
+    page was helpful at the end and close with site-wide links and legal information. Use the
+    appropriate PDS components and follow the existing framework and codebase conventions.
+  `}
+/>
+
 Review existing code:
 
 <FrameworkCodeBlock
