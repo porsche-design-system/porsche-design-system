@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=33100-10506
-// source=https://designsystem.porsche.com/v4/components/table/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-47
+// source=https://designsystem.porsche.com/v4.8.0/components/table/api/
 // component=p-table
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -17,7 +17,7 @@ const sticky = read.flag('sticky');
 export default {
   example: figma.code`<p-table${caption ? ` [caption]="'${caption}'"` : ''}${compact ? ' [compact]="true"' : ''}${layout ? ` [layout]="'${layout}'"` : ''}${sticky ? ' [sticky]="true"' : ''}>${read.has('slot-caption') ? slotted(instance.getSlot('slot-caption'), 'slot-caption', '<!-- slot="caption" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-table>`,
   imports: [
-    '// Docs: https://designsystem.porsche.com/v4/components/table/api',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/table/api/',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
   ],
   id: 'p-table',

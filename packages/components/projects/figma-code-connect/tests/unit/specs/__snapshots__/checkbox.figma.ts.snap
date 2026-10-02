@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=50-651
-// source=https://designsystem.porsche.com/v4/components/checkbox/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-8
+// source=https://designsystem.porsche.com/v4.8.0/components/checkbox/api/
 // component=p-checkbox
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -25,7 +25,7 @@ const compact = read.flag('compact');
 
 export default {
   example: figma.code`<p-checkbox${name ? ` name="${name}"` : ''}${required ? ' required="true"' : ''}${disabled ? ' disabled="true"' : ''}${indeterminate ? ' indeterminate="true"' : ''}${checked ? ' checked="true"' : ''}${form ? ` form="${form}"` : ''}${value ? ` value="${value}"` : ''}${label ? ` label="${label}"` : ''}${state ? ` state="${state}"` : ''}${message ? ` message="${message}"` : ''}${hideLabel ? ' hide-label="true"' : ''}${loading ? ' loading="true"' : ''}${compact ? ' compact="true"' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', '<!-- slot="label" -->') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', '<!-- slot="label-after" -->') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', '<!-- slot="message" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-checkbox>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/checkbox/api -->'],
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/checkbox/api/ -->'],
   id: 'p-checkbox',
   metadata: { nestable: true },
 };

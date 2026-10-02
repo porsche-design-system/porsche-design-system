@@ -81,6 +81,8 @@ export type Dependencies = {
   outputRoot: string;
   /** the library URL (figma/library.ts) the `// url=` lines and the icon manifest point at */
   fileUrl: string;
+  /** the PDS version the templates are generated from; `source` links its docs: `/v<version>/components/…` */
+  version: string;
 };
 
 export type Generated = {
@@ -598,7 +600,7 @@ export const generate = (
     ) {
       root = Array.isArray(parent) ? parent[0] : parent;
     }
-    return `https://designsystem.porsche.com/v4/components/${root.replace(/^p-/, '')}/api`;
+    return `https://designsystem.porsche.com/v${dependencies.version}/components/${root.replace(/^p-/, '')}/api/`;
   };
   const context: Context = {
     icons: snapshot.icons,

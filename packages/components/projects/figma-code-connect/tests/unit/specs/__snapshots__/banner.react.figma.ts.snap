@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=7670-54339
-// source=https://designsystem.porsche.com/v4/components/banner/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-3
+// source=https://designsystem.porsche.com/v4.8.0/components/banner/api/
 // component=PBanner
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -20,7 +20,7 @@ const dismissButton = !read.off('dismissButton');
 export default {
   example: figma.code`<PBanner${open ? ' open={true}' : ''}${heading ? ` heading="${heading}"` : ''}${headingTag ? ` headingTag="${headingTag}"` : ''}${description ? ` description="${description}"` : ''}${position ? ` position="${position}"` : ''}${state ? ` state="${state}"` : ''}${dismissButton ? '' : ' dismissButton={false}'}>${read.has('slot-heading') ? slotted(instance.getSlot('slot-heading'), 'slot-heading', '{/* slot="heading" */}') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PBanner>`,
   imports: [
-    '// Docs: https://designsystem.porsche.com/v4/components/banner/api',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/banner/api/',
     "import { PBanner } from '@porsche-design-system/components-react';",
   ],
   id: 'p-banner',

@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=32496-70159
-// source=https://designsystem.porsche.com/v4/components/toast/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-56
+// source=https://designsystem.porsche.com/v4.8.0/components/toast/api/
 // component=p-toast
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -11,7 +11,7 @@ const instance = figma.selectedInstance;
 
 export default {
   example: figma.code`<p-toast>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-toast>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/toast/api -->'],
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/toast/api/ -->'],
   id: 'p-toast',
   metadata: { nestable: true },
 };

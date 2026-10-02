@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=32801-24776
-// source=https://designsystem.porsche.com/v4/components/pin-code/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-35
+// source=https://designsystem.porsche.com/v4.8.0/components/pin-code/api/
 // component=PPinCode
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -27,7 +27,7 @@ const form = read.text('form');
 export default {
   example: figma.code`<PPinCode${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${name ? ` name="${name}"` : ''}${length ? ` length="${length}"` : ''}${hideLabel ? ' hideLabel={true}' : ''}${state ? ` state="${state}"` : ''}${disabled ? ' disabled={true}' : ''}${loading ? ' loading={true}' : ''}${required ? ' required={true}' : ''}${message ? ` message="${message}"` : ''}${type ? ` type="${type}"` : ''}${value ? ` value="${value}"` : ''}${compact ? ' compact={true}' : ''}${form ? ` form="${form}"` : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', '{/* slot="label" */}') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', '{/* slot="label-after" */}') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', '{/* slot="description" */}') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', '{/* slot="message" */}') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PPinCode>`,
   imports: [
-    '// Docs: https://designsystem.porsche.com/v4/components/pin-code/api',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/pin-code/api/',
     "import { PPinCode } from '@porsche-design-system/components-react';",
   ],
   id: 'p-pin-code',

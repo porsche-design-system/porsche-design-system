@@ -12,13 +12,19 @@ const set = (name: string, definitions: Record<string, Definition> = {}, id = '1
 });
 const run = (
   components: Component[],
-  options: { baseline?: Record<string, string[]>; icons?: Record<string, string>; tags?: string[] } = {}
+  options: {
+    baseline?: Record<string, string[]>;
+    icons?: Record<string, string>;
+    tags?: string[];
+    version?: string;
+  } = {}
 ) =>
   generate({ components, icons: options.icons ?? {} }, options.baseline ?? {}, {
     getComponentMeta,
     tags: options.tags ?? [],
     outputRoot: 'generated',
     fileUrl: 'https://www.figma.com/design/KEY/Library',
+    version: options.version ?? '0.0.0',
   });
 const template = (result: ReturnType<typeof run>, name: string, suffix = ''): string =>
   result.files[`generated/templates/${name}/${name}${suffix}.figma.ts`];
@@ -32,6 +38,18 @@ describe('generate: templates', () => {
     expect(button).toContain('const hideLabel = read.hideLabel();');
     expect(button).toContain("const iconSource = read.text('iconSource');");
     expect(button).toContain("read.isSlot('slot-default')");
+  });
+
+  it("links a template's source and docs import to the docs of the version it was generated from", () => {
+    const result = run([set('tag'), set('multi-select-option')], { version: '4.8.0' });
+    expect(template(result, 'tag')).toContain('// source=https://designsystem.porsche.com/v4.8.0/components/tag/api/');
+    expect(template(result, 'tag')).toContain(
+      "'<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/tag/api/ -->'"
+    );
+    // a child component is documented on its root parent's page
+    expect(template(result, 'multi-select-option')).toContain(
+      '// source=https://designsystem.porsche.com/v4.8.0/components/multi-select/api/'
+    );
   });
 
   it('renders the same templates whatever properties the Figma component has', () => {
@@ -101,11 +119,11 @@ describe('generate: design lines', () => {
       .map((line) => line.replace(/^design: .+? → p-[\w-]+: /, ''));
 
   it('asks design to add the property a PDS prop lacks, with the type the template reads', () => {
-    const { designLines } = run([set('checkbox', {}, '50:651'), set('tag', {}, '106:261')]);
+    const { designLines } = run([set('checkbox', {}, '1:2'), set('tag', {}, '1:3')]);
     expect(designLines).toContain(
-      'design: checkbox (50:651) → p-checkbox: add a VARIANT property named "state" with the options none, error, success'
+      'design: checkbox (1:2) → p-checkbox: add a VARIANT property named "state" with the options none, error, success'
     );
-    expect(designLines).toContain('design: tag (106:261) → p-tag: add a INSTANCE_SWAP property named "icon"');
+    expect(designLines).toContain('design: tag (1:3) → p-tag: add a INSTANCE_SWAP property named "icon"');
   });
 
   it('renames a property named like a PDS slot to its slot- name', () => {
@@ -198,16 +216,14 @@ describe('generate: design lines', () => {
   });
 
   it('marks a Figma property no PDS name stands for as design-only', () => {
-    expect(changes(run([set('button', { dense: booleanVariant }, '225:216')]), 'button')).toContain(
-      '"dense" → "figDense"'
-    );
+    expect(changes(run([set('button', { dense: booleanVariant }, '1:4')]), 'button')).toContain('"dense" → "figDense"');
   });
 
   it('deletes an option PDS does not allow, unless the baseline accepts it', () => {
     const button = set(
       'button',
       { variant: { type: 'VARIANT', variantOptions: ['primary', 'secondary', 'destructive', 'ghost'] } },
-      '225:216'
+      '1:4'
     );
     expect(changes(run([button]), 'button')).toContain('delete the option "ghost" from "variant"');
     expect(run([button], { baseline: { 'p-button': ['variant=ghost'] } }).designLines.join('\n')).not.toContain(

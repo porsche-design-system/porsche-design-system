@@ -6,7 +6,7 @@ import figma from 'figma';
 
 export default {
   example: figma.code`<p-icon name="${figma.batch.name}"></p-icon>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/icon/api -->'],
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/icon/api/ -->'],
   id: figma.batch.id,
   metadata: { nestable: true, props: { name: figma.batch.name } },
 };

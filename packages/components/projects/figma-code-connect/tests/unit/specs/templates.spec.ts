@@ -7,17 +7,34 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { describe, expect, it } from 'vitest';
 import { baselinePath, generate } from '../../../figma/generate';
+import { componentsPackagePath, pdsVersion } from '../../../figma/library';
 import type { Snapshot } from '../../../figma/snapshot';
 
-// Every generated file, rendered from the frozen pull (npm run figma:freeze) the way figma:generate renders it.
+// Every generated file, rendered from a pull built from component-meta with made-up node ids: no Figma data committed.
+// Templates read Figma properties when the snippet renders, so the sets need none.
 const packageRoot = resolve(__dirname, '../../..');
 const snapshotDir = resolve(__dirname, '__snapshots__');
-const frozen: Snapshot = JSON.parse(readFileSync(resolve(__dirname, '../fixtures/library.json'), 'utf8'));
-const { files } = generate(frozen, JSON.parse(readFileSync(resolve(packageRoot, baselinePath), 'utf8')), {
+const baseline: Record<string, string[]> = JSON.parse(readFileSync(resolve(packageRoot, baselinePath), 'utf8'));
+const tags = TAG_NAMES.filter((tag) => !(INTERNAL_TAG_NAMES as readonly string[]).includes(tag));
+const iconMeta = getComponentMeta('p-icon')?.propsMeta?.name?.allowedValues;
+// what design draws: no deprecated component, nothing the baseline accepts as missing
+const pull: Snapshot = {
+  components: tags
+    .filter((tag) => !getComponentMeta(tag)?.isDeprecated && !baseline[tag]?.includes('component-set'))
+    .map((tag, i) => ({ id: `1:${i + 1}`, name: tag.replace(/^p-/, ''), componentPropertyDefinitions: {} })),
+  icons: Object.fromEntries(
+    (Array.isArray(iconMeta) ? iconMeta.map(String) : [])
+      .filter((name) => !baseline['p-icon']?.includes(`name=${name}`))
+      .map((name, i) => [`2:${i + 1}`, name])
+  ),
+};
+const { files } = generate(pull, baseline, {
   getComponentMeta,
-  tags: TAG_NAMES.filter((tag) => !(INTERNAL_TAG_NAMES as readonly string[]).includes(tag)),
+  tags,
   outputRoot: 'generated',
   fileUrl: 'https://www.figma.com/design/KEY/Library',
+  // the version figma:generate reads, so the snapshots show the docs links that get published
+  version: pdsVersion(resolve(packageRoot, componentsPackagePath)),
 });
 const generated = Object.keys(files)
   .filter((file) => file !== baselinePath)

@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=35039-9223
-// source=https://designsystem.porsche.com/v4/components/carousel/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-7
+// source=https://designsystem.porsche.com/v4.8.0/components/carousel/api/
 // component=p-carousel
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -26,7 +26,7 @@ const trimSpace = read.flag('trimSpace');
 
 export default {
   example: figma.code`<p-carousel${heading ? ` heading="${heading}"` : ''}${headingSize ? ` heading-size="${headingSize}"` : ''}${description ? ` description="${description}"` : ''}${alignHeader ? ` align-header="${alignHeader}"` : ''}${alignControls ? ` align-controls="${alignControls}"` : ''}${rewind ? ' rewind="true"' : ''}${width ? ` width="${width}"` : ''}${slidesPerPage ? ` slides-per-page="${slidesPerPage}"` : ''}${pagination ? ' pagination="true"' : ''}${activeSlideIndex ? ` active-slide-index="${activeSlideIndex}"` : ''}${skipLinkTarget ? ` skip-link-target="${skipLinkTarget}"` : ''}${focusOnCenterSlide ? ' focus-on-center-slide="true"' : ''}${gradient ? ' gradient="true"' : ''}${trimSpace ? ' trim-space="true"' : ''}>${read.has('slot-heading') ? slotted(instance.getSlot('slot-heading'), 'slot-heading', '<!-- slot="heading" -->') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', '<!-- slot="description" -->') : ''}${read.has('slot-controls') ? slotted(instance.getSlot('slot-controls'), 'slot-controls', '<!-- slot="controls" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-carousel>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/carousel/api -->'],
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/carousel/api/ -->'],
   id: 'p-carousel',
   metadata: { nestable: true },
 };

@@ -9,9 +9,8 @@
 components. It generates one template per component and label from component-meta (`figma:generate`, which pulls the
 Figma library into memory and needs `FIGMA_ACCESS_TOKEN` in the environment) and publishes them (`figma:publish`). A
 template reads each prop and slot by its PDS name when the snippet renders, so a property the Figma component lacks is
-left out of the snippet and shows up once design adds it. Everything generated lands in `generated/`, which git ignores;
-nothing pulled from Figma is written anywhere but the test fixture `tests/unit/fixtures/library.json`
-(`npm run figma:freeze`). Run every command from this folder or with
+left out of the snippet and shows up once design adds it. Everything generated lands in `generated/`, which git ignores,
+and nothing pulled from Figma is written anywhere. Run every command from this folder or with
 `--workspace=@porsche-design-system/figma-code-connect`.
 
 ```
@@ -48,8 +47,7 @@ When you add or rename a prop, a slot, an allowed value or a component:
    the snippet), a PDS icon the library lacks as `name=<icon>` under `p-icon`, and a component with no set as
    `component-set`.
 5. Run `npm run test:unit -- -u` and commit what changed in `tests/unit/specs/__snapshots__/`: CI fails on a generated
-   file that differs from its snapshot, and the diff is the template change the next publish uploads. After the library
-   itself changes, run `npm run figma:freeze` first.
+   file that differs from its snapshot, and the diff is the template change the next publish uploads.
 
 Never add a line to silence a gap design is expected to fix, and never re-seed the file from the current gaps. The
 generator deletes an entry once Figma has the property or the prop is gone; delete one by hand only to ask design for

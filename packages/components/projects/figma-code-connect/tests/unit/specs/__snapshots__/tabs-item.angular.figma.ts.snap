@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=54-312
-// source=https://designsystem.porsche.com/v4/components/tabs/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-50
+// source=https://designsystem.porsche.com/v4.8.0/components/tabs/api/
 // component=p-tabs-item
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -14,7 +14,7 @@ const label = read.text('label');
 export default {
   example: figma.code`<p-tabs-item${label ? ` [label]="'${label}'"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-tabs-item>`,
   imports: [
-    '// Docs: https://designsystem.porsche.com/v4/components/tabs/api',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/tabs/api/',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
   ],
   id: 'p-tabs-item',

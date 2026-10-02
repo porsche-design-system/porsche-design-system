@@ -39,7 +39,8 @@ Each run:
 2. Hashes what publish would upload, the `figma connect parse` output of every label, and compares it with the record of
    the last publish, `<hash> clean|partial`, kept in the actions cache.
 3. Publishes when the hash differs, the record is `partial` or `force` is set. Then records `clean`, or `partial` when
-   publish failed or Figma refused a record.
+   publish failed or Figma refused a record. Every template links the docs of the PDS version it was generated from
+   (`designsystem.porsche.com/v4.8.0/…`), so the first run after a release republishes every record.
 4. Writes the logs and the records that differ from the last publish to the job summary; the artifacts
    `code-connect-changes` (the full diff) and `code-connect-generated` (everything generated) carry the rest.
 5. Opens, updates or closes the issue "Figma Code Connect: action needed", and sends its design section to the design
@@ -73,15 +74,14 @@ The issue closes on the first run with nothing pending.
   only to organization members, not guests. Figma recommends a Plan Access Token for CI, but its scope set is fixed and
   the docs do not list Code Connect write in it, so check that a publish works with one before storing it.
 - Locally the token goes in the package's git-ignored `.env`. The `figma connect` CLI loads that file itself;
-  `figma:generate` and `figma:freeze` read the token from the environment, and so do `figma:publish` and
-  `figma:publish:dry`, which start with `figma:generate -- --check`. Export it first: `set -a; . ./.env; set +a`.
+  `figma:generate` reads the token from the environment, and so do `figma:publish` and `figma:publish:dry`, which start
+  with `figma:generate -- --check`. Export it first: `set -a; . ./.env; set +a`.
 
 ## Commands
 
 | Command                     | Talks to Figma | What it does                                                                                                                                                                                                                         |
 | --------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `npm run figma:generate`    | Yes            | Pulls and writes `generated/`, prints the design lines and the baseline cleanups. Exit 2: Figma could not be read; exit 1: a repository mistake. `-- --check` compares instead of writing and also fails on a stale or leftover file |
-| `npm run figma:freeze`      | Yes            | Writes the pull to `tests/unit/fixtures/library.json`, which the template snapshots render from                                                                                                                                      |
 | `npm run figma:parse`       | No             | Prints, per label, the JSON Figma would receive                                                                                                                                                                                      |
 | `npm run figma:preview`     | Yes            | Figma renders every template at its default property values; exit 1 lists every template that did not render                                                                                                                         |
 | `npm run figma:publish:dry` | Yes            | Everything `figma:publish` does except the upload                                                                                                                                                                                    |
@@ -102,8 +102,8 @@ The pull is `GET /files/:key/component_sets`, `GET /files/:key/nodes` per 25 com
 - **A property in the library:** Dev Mode shows it once the library is published; nothing to do. A new or recreated
   component set or icon needs a record of its own, which the next run publishes: a push, the daily run or a dispatch.
 - **Records a designer edited in Figma's UI:** dispatch the workflow with `force`.
-- **The snapshots** render from the frozen pull, so a library change reaches them only after `npm run figma:freeze` and
-  `npm run test:unit -- -u`. Review the snapshot diff before committing it.
+- **The snapshots** render from a pull built from component-meta, so a library change never moves them; a code change
+  does, and so does a release (`docs/release.md`). Review the snapshot diff before committing it.
 
 ## Testing against another file
 
@@ -120,16 +120,16 @@ Records live per file key, so nothing published under another key touches the li
 
 ## Vocabulary
 
-| Term             | Meaning                                                                                                                                        |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pull             | The library's component sets, property definitions and icon node ids, read into memory for one run. Stored nowhere but the frozen test fixture |
-| Label            | A Dev Mode code tab: `Web Components`, `React`, `Angular`, `Vue`, one `figma*.config.json` each                                                |
-| Template         | A generated `*.figma.ts`, one per component and label. Never edited by hand, never committed                                                   |
-| Record           | What Figma stores after a publish, one per component node and label; Dev Mode and the MCP server show its output                               |
-| Design line      | A `design:` line from `figma:generate`: a rename `"old" → "new"`, an `add` or a `delete` only design can make in Figma                         |
-| Baseline         | `figma/coverage-baseline.json`: per PDS tag, the differences accepted as missing. It silences design lines and changes no template             |
-| Baseline cleanup | A baseline entry Figma made obsolete. Generation prunes and prints it for a developer to remove, and never fails on it                         |
-| Refused          | A record Figma would not take, in the dry run or after the upload. Its previous version stays live                                             |
+| Term             | Meaning                                                                                                                            |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Pull             | The library's component sets, property definitions and icon node ids, read into memory for one run. Stored nowhere                 |
+| Label            | A Dev Mode code tab: `Web Components`, `React`, `Angular`, `Vue`, one `figma*.config.json` each                                    |
+| Template         | A generated `*.figma.ts`, one per component and label. Never edited by hand, never committed                                       |
+| Record           | What Figma stores after a publish, one per component node and label; Dev Mode and the MCP server show its output                   |
+| Design line      | A `design:` line from `figma:generate`: a rename `"old" → "new"`, an `add` or a `delete` only design can make in Figma             |
+| Baseline         | `figma/coverage-baseline.json`: per PDS tag, the differences accepted as missing. It silences design lines and changes no template |
+| Baseline cleanup | A baseline entry Figma made obsolete. Generation prunes and prints it for a developer to remove, and never fails on it             |
+| Refused          | A record Figma would not take, in the dry run or after the upload. Its previous version stays live                                 |
 
 ## Decisions
 
@@ -152,9 +152,10 @@ Records live per file key, so nothing published under another key touches the li
 7. **Form props (`form`, `name`, `value`) stay optional, even where component-meta requires them** (Copilot's comment 3
    on #4747, declined). A `value` TEXT property has no text layer to feed, and Figma marks it "Not used within
    component".
-8. **Every generated file is snapshotted, rendered from a frozen pull of the library**, so a template change shows in
-   review. Rejected: a fixture derived from component-meta, whose node ids and icon swap defaults the published
-   templates do not have.
+8. **Every generated file is snapshotted, rendered from a pull built from component-meta with made-up node ids**, so a
+   template change shows in review without committing Figma data; the snapshots differ from the published files in node
+   ids and icon swap fallbacks. Rejected: a frozen pull of the library, which put its node ids and property definitions
+   in the public repository.
 9. **Triggers: the last job of `Contribution` on a push to `main`, plus `schedule` and `workflow_dispatch`.** Rejected:
    a job inside `.github/workflows/deploy.yml`, whose failure would skip the release; a standalone `push` trigger, which
    published commits whose build or tests failed.
@@ -196,5 +197,4 @@ In one pull request:
    renamed to `auto` on `select` and `multi-select`, `showLabel` removed from `input-email`, and the `destructive`
    button variant. Every component still publishes; each prop is left out of its snippet until design repeats the edit
    in production.
-3. Run `npm run figma:freeze` and `npm run test:unit -- -u`, so the snapshots render from production.
-4. Delete this section.
+3. Delete this section.

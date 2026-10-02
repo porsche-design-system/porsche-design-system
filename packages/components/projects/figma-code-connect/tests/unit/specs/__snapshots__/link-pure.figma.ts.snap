@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=90-48
-// source=https://designsystem.porsche.com/v4/components/link-pure/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-27
+// source=https://designsystem.porsche.com/v4.8.0/components/link-pure/api/
 // component=p-link-pure
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -14,7 +14,7 @@ const alignLabel = read.oneOf('alignLabel', ['start', 'end']);
 const stretch = read.flag('stretch');
 const size = read.oneOf('size', ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', 'inherit']);
 const color = read.oneOf('color', ['primary', 'contrast-higher', 'contrast-high', 'contrast-medium', 'inherit']);
-const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), 'arrow-right') : undefined;
+const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), undefined) : undefined;
 const iconSource = read.text('iconSource');
 const underline = read.flag('underline');
 const href = read.text('href');
@@ -25,7 +25,7 @@ const rel = read.text('rel');
 
 export default {
   example: figma.code`<p-link-pure${alignLabel ? ` align-label="${alignLabel}"` : ''}${stretch ? ' stretch="true"' : ''}${size ? ` size="${size}"` : ''}${color ? ` color="${color}"` : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` icon-source="${iconSource}"` : ''}${underline ? ' underline="true"' : ''}${href ? ` href="${href}"` : ''}${active ? ' active="true"' : ''}${hideLabel ? ' hide-label="true"' : ''}${download ? ` download="${download}"` : ''}${rel ? ` rel="${rel}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-link-pure>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/link-pure/api -->'],
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/link-pure/api/ -->'],
   id: 'p-link-pure',
   metadata: { nestable: true },
 };

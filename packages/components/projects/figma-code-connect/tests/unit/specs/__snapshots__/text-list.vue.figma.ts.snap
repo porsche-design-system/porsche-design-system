@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=33058-30896
-// source=https://designsystem.porsche.com/v4/components/text-list/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-54
+// source=https://designsystem.porsche.com/v4.8.0/components/text-list/api/
 // component=PTextList
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -14,7 +14,7 @@ const type = read.oneOf('type', ['unordered', 'numbered', 'alphabetically']);
 export default {
   example: figma.code`<PTextList${type ? ` :type="'${type}'"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PTextList>`,
   imports: [
-    '// Docs: https://designsystem.porsche.com/v4/components/text-list/api',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/text-list/api/',
     "import { PTextList } from '@porsche-design-system/components-vue';",
   ],
   id: 'p-text-list',

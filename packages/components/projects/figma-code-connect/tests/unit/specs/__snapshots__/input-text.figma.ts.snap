@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=46261-7395
-// source=https://designsystem.porsche.com/v4/components/input-text/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-22
+// source=https://designsystem.porsche.com/v4.8.0/components/input-text/api/
 // component=p-input-text
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -31,7 +31,7 @@ const counter = read.flag('counter');
 
 export default {
   example: figma.code`<p-input-text${label ? ` label="${label}"` : ''}${spellCheck ? ' spell-check="true"' : ''}${description ? ` description="${description}"` : ''}${compact ? ' compact="true"' : ''}${name ? ` name="${name}"` : ''}${value ? ` value="${value}"` : ''}${autoComplete ? ` auto-complete="${autoComplete}"` : ''}${readOnly ? ' read-only="true"' : ''}${form ? ` form="${form}"` : ''}${maxLength ? ` max-length="${maxLength}"` : ''}${minLength ? ` min-length="${minLength}"` : ''}${placeholder ? ` placeholder="${placeholder}"` : ''}${disabled ? ' disabled="true"' : ''}${required ? ' required="true"' : ''}${loading ? ' loading="true"' : ''}${state ? ` state="${state}"` : ''}${message ? ` message="${message}"` : ''}${hideLabel ? ' hide-label="true"' : ''}${counter ? ' counter="true"' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', '<!-- slot="label" -->') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', '<!-- slot="label-after" -->') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', '<!-- slot="description" -->') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', '<!-- slot="message" -->') : ''}${read.has('slot-start') ? slotted(instance.getSlot('slot-start'), 'slot-start', '<!-- slot="start" -->') : ''}${read.has('slot-end') ? slotted(instance.getSlot('slot-end'), 'slot-end', '<!-- slot="end" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-input-text>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/input-text/api -->'],
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/input-text/api/ -->'],
   id: 'p-input-text',
   metadata: { nestable: true },
 };

@@ -4,7 +4,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { sync as globbySync } from 'fast-glob';
 import { baselinePath, generate } from '../figma/generate';
-import { libraryUrl } from '../figma/library';
+import { libraryUrl, pdsVersion } from '../figma/library';
 import { printed } from '../figma/messages';
 import type { Snapshot } from '../figma/snapshot';
 import { pull } from './figmaPull';
@@ -28,6 +28,7 @@ const main = async (): Promise<void> => {
     tags: TAG_NAMES.filter((tag) => !(INTERNAL_TAG_NAMES as readonly string[]).includes(tag)),
     outputRoot: 'generated',
     fileUrl: process.env.FIGMA_PUBLISH_FILE_URL ?? libraryUrl(), // the env points a test run at a branch of the library
+    version: pdsVersion(),
   });
   let written = 0;
   let deleted = 0;

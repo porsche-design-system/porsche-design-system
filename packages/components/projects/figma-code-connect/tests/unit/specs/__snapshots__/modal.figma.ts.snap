@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=32235-4753
-// source=https://designsystem.porsche.com/v4/components/modal/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-30
+// source=https://designsystem.porsche.com/v4.8.0/components/modal/api/
 // component=p-modal
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -18,7 +18,7 @@ const fullscreen = read.flag('fullscreen');
 
 export default {
   example: figma.code`<p-modal${open ? ' open="true"' : ''}${dismissButton ? '' : ' dismiss-button="false"'}${disableBackdropClick ? ' disable-backdrop-click="true"' : ''}${backdrop ? ` backdrop="${backdrop}"` : ''}${background ? ` background="${background}"` : ''}${fullscreen ? ' fullscreen="true"' : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', '<!-- slot="header" -->') : ''}${read.has('slot-footer') ? slotted(instance.getSlot('slot-footer'), 'slot-footer', '<!-- slot="footer" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-modal>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/modal/api -->'],
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/modal/api/ -->'],
   id: 'p-modal',
   metadata: { nestable: true },
 };

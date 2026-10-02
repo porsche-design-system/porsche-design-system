@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=7855-53842
-// source=https://designsystem.porsche.com/v4/components/model-signature/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-31
+// source=https://designsystem.porsche.com/v4.8.0/components/model-signature/api/
 // component=PModelSignature
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -19,7 +19,7 @@ const color = read.oneOf('color', ['primary', 'contrast-low', 'contrast-medium',
 export default {
   example: figma.code`<PModelSignature${model ? ` model="${model}"` : ''}${safeZone ? '' : ' safeZone={false}'}${fetchPriority ? ` fetchPriority="${fetchPriority}"` : ''}${lazy ? ' lazy={true}' : ''}${size ? ` size="${size}"` : ''}${color ? ` color="${color}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PModelSignature>`,
   imports: [
-    '// Docs: https://designsystem.porsche.com/v4/components/model-signature/api',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/model-signature/api/',
     "import { PModelSignature } from '@porsche-design-system/components-react';",
   ],
   id: 'p-model-signature',

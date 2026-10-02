@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=32069-55211
-// source=https://designsystem.porsche.com/v4/components/segmented-control/api
+// url=https://www.figma.com/design/KEY/Library?node-id=1-40
+// source=https://designsystem.porsche.com/v4.8.0/components/segmented-control/api/
 // component=p-segmented-control
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -25,7 +25,7 @@ const noWrap = read.flag('noWrap');
 
 export default {
   example: figma.code`<p-segmented-control${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${value ? ` value="${value}"` : ''}${name ? ` name="${name}"` : ''}${compact ? ' compact="true"' : ''}${state ? ` state="${state}"` : ''}${required ? ' required="true"' : ''}${message ? ` message="${message}"` : ''}${hideLabel ? ' hide-label="true"' : ''}${columns ? ` columns="${columns}"` : ''}${form ? ` form="${form}"` : ''}${disabled ? ' disabled="true"' : ''}${noWrap ? ' no-wrap="true"' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', '<!-- slot="label" -->') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', '<!-- slot="label-after" -->') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', '<!-- slot="description" -->') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', '<!-- slot="message" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-segmented-control>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4/components/segmented-control/api -->'],
+  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/segmented-control/api/ -->'],
   id: 'p-segmented-control',
   metadata: { nestable: true },
 };

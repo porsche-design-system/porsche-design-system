@@ -15,3 +15,10 @@ export const libraryUrl = (config = configPath): string => {
 
 /** The file key inside a Figma URL. */
 export const fileKeyOf = (url: string): string => url.match(/figma\.com\/(?:design|file)\/([0-9a-zA-Z]+)/)?.[1] ?? '';
+
+// packages/components, whose version the release deploys the docs under
+export const componentsPackagePath = '../../package.json';
+
+/** The PDS version the templates link the docs of. */
+export const pdsVersion = (packageJson = componentsPackagePath): string =>
+  JSON.parse(readFileSync(packageJson, 'utf8')).version;

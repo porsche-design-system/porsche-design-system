@@ -69,7 +69,7 @@ describe('read', () => {
 
   it('reads no attribute value from an instance swap or a slot', async () => {
     const read = await readOf({
-      icon: { value: '5211:35878', type: 'INSTANCE_SWAP' },
+      icon: { value: '2:1', type: 'INSTANCE_SWAP' },
       'slot-default': { value: { guid: {} }, type: 'SLOT' },
     });
     expect(read.has('icon')).toBe(true);
