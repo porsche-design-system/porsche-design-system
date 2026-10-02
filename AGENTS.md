@@ -275,6 +275,8 @@ guidelines.
 
 - [`docs/runbooks/dependency-updates-agent.md`](docs/runbooks/dependency-updates-agent.md) — step-by-step runbook for AI
   cloud agents performing the recurring weekly npm dependency update.
+- [`docs/runbooks/figma-code-connect.md`](docs/runbooks/figma-code-connect.md) — pull, generate, preview and publish
+  the Figma Code Connect templates, the vocabulary, and the decisions behind the loop between code and design.
 
 ## Package-Specific Instructions
 

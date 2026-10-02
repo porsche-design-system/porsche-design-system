@@ -1,0 +1,2049 @@
+{
+  "templateFile": "./p-icon.angular.figma.batch.ts",
+  "components": [
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-1",
+      "component": "p-icon (360)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "360",
+      "id": "p-icon-360"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-2",
+      "component": "p-icon (4-wheel-drive)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "4-wheel-drive",
+      "id": "p-icon-4-wheel-drive"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-3",
+      "component": "p-icon (accessibility)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "accessibility",
+      "id": "p-icon-accessibility"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-4",
+      "component": "p-icon (active-cabin-ventilation)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "active-cabin-ventilation",
+      "id": "p-icon-active-cabin-ventilation"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-5",
+      "component": "p-icon (add)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "add",
+      "id": "p-icon-add"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-6",
+      "component": "p-icon (adjust)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "adjust",
+      "id": "p-icon-adjust"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-7",
+      "component": "p-icon (aggregation)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "aggregation",
+      "id": "p-icon-aggregation"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-8",
+      "component": "p-icon (ai-3d-object)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-3d-object",
+      "id": "p-icon-ai-3d-object"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-9",
+      "component": "p-icon (ai-code)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-code",
+      "id": "p-icon-ai-code"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-10",
+      "component": "p-icon (ai-edit)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-edit",
+      "id": "p-icon-ai-edit"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-11",
+      "component": "p-icon (ai-image)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-image",
+      "id": "p-icon-ai-image"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-12",
+      "component": "p-icon (ai-scale)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-scale",
+      "id": "p-icon-ai-scale"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-13",
+      "component": "p-icon (ai-sound)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-sound",
+      "id": "p-icon-ai-sound"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-14",
+      "component": "p-icon (ai-spark)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-spark",
+      "id": "p-icon-ai-spark"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-15",
+      "component": "p-icon (ai-spark-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-spark-filled",
+      "id": "p-icon-ai-spark-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-16",
+      "component": "p-icon (ai-text)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-text",
+      "id": "p-icon-ai-text"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-17",
+      "component": "p-icon (ai-video)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ai-video",
+      "id": "p-icon-ai-video"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-18",
+      "component": "p-icon (arrow-compact-down)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-compact-down",
+      "id": "p-icon-arrow-compact-down"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-19",
+      "component": "p-icon (arrow-compact-left)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-compact-left",
+      "id": "p-icon-arrow-compact-left"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-20",
+      "component": "p-icon (arrow-compact-right)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-compact-right",
+      "id": "p-icon-arrow-compact-right"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-21",
+      "component": "p-icon (arrow-compact-up)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-compact-up",
+      "id": "p-icon-arrow-compact-up"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-22",
+      "component": "p-icon (arrow-double-down)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-double-down",
+      "id": "p-icon-arrow-double-down"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-23",
+      "component": "p-icon (arrow-double-left)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-double-left",
+      "id": "p-icon-arrow-double-left"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-24",
+      "component": "p-icon (arrow-double-right)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-double-right",
+      "id": "p-icon-arrow-double-right"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-25",
+      "component": "p-icon (arrow-double-up)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-double-up",
+      "id": "p-icon-arrow-double-up"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-26",
+      "component": "p-icon (arrow-down)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-down",
+      "id": "p-icon-arrow-down"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-27",
+      "component": "p-icon (arrow-down-left)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-down-left",
+      "id": "p-icon-arrow-down-left"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-28",
+      "component": "p-icon (arrow-down-right)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-down-right",
+      "id": "p-icon-arrow-down-right"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-29",
+      "component": "p-icon (arrow-first)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-first",
+      "id": "p-icon-arrow-first"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-30",
+      "component": "p-icon (arrow-head-down)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-head-down",
+      "id": "p-icon-arrow-head-down"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-31",
+      "component": "p-icon (arrow-head-left)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-head-left",
+      "id": "p-icon-arrow-head-left"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-32",
+      "component": "p-icon (arrow-head-right)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-head-right",
+      "id": "p-icon-arrow-head-right"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-33",
+      "component": "p-icon (arrow-head-up)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-head-up",
+      "id": "p-icon-arrow-head-up"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-34",
+      "component": "p-icon (arrow-last)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-last",
+      "id": "p-icon-arrow-last"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-35",
+      "component": "p-icon (arrow-left)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-left",
+      "id": "p-icon-arrow-left"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-36",
+      "component": "p-icon (arrow-right)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-right",
+      "id": "p-icon-arrow-right"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-37",
+      "component": "p-icon (arrow-up)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-up",
+      "id": "p-icon-arrow-up"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-38",
+      "component": "p-icon (arrow-up-left)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-up-left",
+      "id": "p-icon-arrow-up-left"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-39",
+      "component": "p-icon (arrow-up-right)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrow-up-right",
+      "id": "p-icon-arrow-up-right"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-40",
+      "component": "p-icon (arrows)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "arrows",
+      "id": "p-icon-arrows"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-41",
+      "component": "p-icon (attachment)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "attachment",
+      "id": "p-icon-attachment"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-42",
+      "component": "p-icon (augmented-reality)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "augmented-reality",
+      "id": "p-icon-augmented-reality"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-43",
+      "component": "p-icon (battery-empty)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "battery-empty",
+      "id": "p-icon-battery-empty"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-44",
+      "component": "p-icon (battery-empty-co2)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "battery-empty-co2",
+      "id": "p-icon-battery-empty-co2"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-45",
+      "component": "p-icon (battery-empty-fuel)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "battery-empty-fuel",
+      "id": "p-icon-battery-empty-fuel"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-46",
+      "component": "p-icon (battery-full)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "battery-full",
+      "id": "p-icon-battery-full"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-47",
+      "component": "p-icon (battery-half)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "battery-half",
+      "id": "p-icon-battery-half"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-48",
+      "component": "p-icon (battery-one-quarter)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "battery-one-quarter",
+      "id": "p-icon-battery-one-quarter"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-49",
+      "component": "p-icon (battery-three-quarters)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "battery-three-quarters",
+      "id": "p-icon-battery-three-quarters"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-50",
+      "component": "p-icon (bell)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "bell",
+      "id": "p-icon-bell"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-51",
+      "component": "p-icon (bookmark)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "bookmark",
+      "id": "p-icon-bookmark"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-52",
+      "component": "p-icon (bookmark-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "bookmark-filled",
+      "id": "p-icon-bookmark-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-53",
+      "component": "p-icon (brain)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "brain",
+      "id": "p-icon-brain"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-54",
+      "component": "p-icon (broadcast)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "broadcast",
+      "id": "p-icon-broadcast"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-55",
+      "component": "p-icon (cabriolet)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "cabriolet",
+      "id": "p-icon-cabriolet"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-56",
+      "component": "p-icon (calculator)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "calculator",
+      "id": "p-icon-calculator"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-57",
+      "component": "p-icon (calendar)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "calendar",
+      "id": "p-icon-calendar"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-58",
+      "component": "p-icon (camera)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "camera",
+      "id": "p-icon-camera"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-59",
+      "component": "p-icon (car)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "car",
+      "id": "p-icon-car"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-60",
+      "component": "p-icon (car-battery)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "car-battery",
+      "id": "p-icon-car-battery"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-61",
+      "component": "p-icon (card)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "card",
+      "id": "p-icon-card"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-62",
+      "component": "p-icon (charging-active)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "charging-active",
+      "id": "p-icon-charging-active"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-63",
+      "component": "p-icon (charging-network)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "charging-network",
+      "id": "p-icon-charging-network"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-64",
+      "component": "p-icon (charging-state)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "charging-state",
+      "id": "p-icon-charging-state"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-65",
+      "component": "p-icon (charging-station)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "charging-station",
+      "id": "p-icon-charging-station"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-66",
+      "component": "p-icon (chart)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "chart",
+      "id": "p-icon-chart"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-67",
+      "component": "p-icon (chat)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "chat",
+      "id": "p-icon-chat"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-68",
+      "component": "p-icon (check)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "check",
+      "id": "p-icon-check"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-69",
+      "component": "p-icon (city)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "city",
+      "id": "p-icon-city"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-70",
+      "component": "p-icon (climate)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "climate",
+      "id": "p-icon-climate"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-71",
+      "component": "p-icon (climate-control)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "climate-control",
+      "id": "p-icon-climate-control"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-72",
+      "component": "p-icon (clock)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "clock",
+      "id": "p-icon-clock"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-73",
+      "component": "p-icon (close)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "close",
+      "id": "p-icon-close"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-74",
+      "component": "p-icon (closed-caption)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "closed-caption",
+      "id": "p-icon-closed-caption"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-75",
+      "component": "p-icon (cloud)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "cloud",
+      "id": "p-icon-cloud"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-76",
+      "component": "p-icon (co2-class)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "co2-class",
+      "id": "p-icon-co2-class"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-77",
+      "component": "p-icon (co2-emission)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "co2-emission",
+      "id": "p-icon-co2-emission"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-78",
+      "component": "p-icon (color-picker)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "color-picker",
+      "id": "p-icon-color-picker"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-79",
+      "component": "p-icon (compare)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "compare",
+      "id": "p-icon-compare"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-80",
+      "component": "p-icon (compass)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "compass",
+      "id": "p-icon-compass"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-81",
+      "component": "p-icon (configurate)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "configurate",
+      "id": "p-icon-configurate"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-82",
+      "component": "p-icon (connect-services)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "connect-services",
+      "id": "p-icon-connect-services"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-83",
+      "component": "p-icon (copy)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "copy",
+      "id": "p-icon-copy"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-84",
+      "component": "p-icon (country-road)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "country-road",
+      "id": "p-icon-country-road"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-85",
+      "component": "p-icon (coupe)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "coupe",
+      "id": "p-icon-coupe"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-86",
+      "component": "p-icon (cubic-capacity)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "cubic-capacity",
+      "id": "p-icon-cubic-capacity"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-87",
+      "component": "p-icon (cut)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "cut",
+      "id": "p-icon-cut"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-88",
+      "component": "p-icon (delete)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "delete",
+      "id": "p-icon-delete"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-89",
+      "component": "p-icon (disable)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "disable",
+      "id": "p-icon-disable"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-90",
+      "component": "p-icon (dislike)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "dislike",
+      "id": "p-icon-dislike"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-91",
+      "component": "p-icon (dislike-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "dislike-filled",
+      "id": "p-icon-dislike-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-92",
+      "component": "p-icon (document)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "document",
+      "id": "p-icon-document"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-93",
+      "component": "p-icon (door)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "door",
+      "id": "p-icon-door"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-94",
+      "component": "p-icon (download)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "download",
+      "id": "p-icon-download"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-95",
+      "component": "p-icon (drag)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "drag",
+      "id": "p-icon-drag"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-96",
+      "component": "p-icon (duration)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "duration",
+      "id": "p-icon-duration"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-97",
+      "component": "p-icon (ear)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "ear",
+      "id": "p-icon-ear"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-98",
+      "component": "p-icon (edit)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "edit",
+      "id": "p-icon-edit"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-99",
+      "component": "p-icon (email)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "email",
+      "id": "p-icon-email"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-100",
+      "component": "p-icon (error)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "error",
+      "id": "p-icon-error"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-101",
+      "component": "p-icon (error-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "error-filled",
+      "id": "p-icon-error-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-102",
+      "component": "p-icon (exclamation)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "exclamation",
+      "id": "p-icon-exclamation"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-103",
+      "component": "p-icon (exclamation-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "exclamation-filled",
+      "id": "p-icon-exclamation-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-104",
+      "component": "p-icon (external)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "external",
+      "id": "p-icon-external"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-105",
+      "component": "p-icon (fast-backward)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "fast-backward",
+      "id": "p-icon-fast-backward"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-106",
+      "component": "p-icon (fast-forward)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "fast-forward",
+      "id": "p-icon-fast-forward"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-107",
+      "component": "p-icon (file-csv)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "file-csv",
+      "id": "p-icon-file-csv"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-108",
+      "component": "p-icon (file-excel)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "file-excel",
+      "id": "p-icon-file-excel"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-109",
+      "component": "p-icon (filter)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "filter",
+      "id": "p-icon-filter"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-110",
+      "component": "p-icon (fingerprint)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "fingerprint",
+      "id": "p-icon-fingerprint"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-111",
+      "component": "p-icon (flag)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "flag",
+      "id": "p-icon-flag"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-112",
+      "component": "p-icon (flash)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "flash",
+      "id": "p-icon-flash"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-113",
+      "component": "p-icon (fuel-station)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "fuel-station",
+      "id": "p-icon-fuel-station"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-114",
+      "component": "p-icon (garage)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "garage",
+      "id": "p-icon-garage"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-115",
+      "component": "p-icon (genuine-parts)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "genuine-parts",
+      "id": "p-icon-genuine-parts"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-116",
+      "component": "p-icon (geo-localization)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "geo-localization",
+      "id": "p-icon-geo-localization"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-117",
+      "component": "p-icon (gift)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "gift",
+      "id": "p-icon-gift"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-118",
+      "component": "p-icon (globe)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "globe",
+      "id": "p-icon-globe"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-119",
+      "component": "p-icon (grid)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "grid",
+      "id": "p-icon-grid"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-120",
+      "component": "p-icon (grip)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "grip",
+      "id": "p-icon-grip"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-121",
+      "component": "p-icon (group)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "group",
+      "id": "p-icon-group"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-122",
+      "component": "p-icon (hand)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "hand",
+      "id": "p-icon-hand"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-123",
+      "component": "p-icon (heart)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "heart",
+      "id": "p-icon-heart"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-124",
+      "component": "p-icon (heart-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "heart-filled",
+      "id": "p-icon-heart-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-125",
+      "component": "p-icon (highway)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "highway",
+      "id": "p-icon-highway"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-126",
+      "component": "p-icon (highway-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "highway-filled",
+      "id": "p-icon-highway-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-127",
+      "component": "p-icon (history)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "history",
+      "id": "p-icon-history"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-128",
+      "component": "p-icon (home)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "home",
+      "id": "p-icon-home"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-129",
+      "component": "p-icon (horn)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "horn",
+      "id": "p-icon-horn"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-130",
+      "component": "p-icon (image)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "image",
+      "id": "p-icon-image"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-131",
+      "component": "p-icon (increase)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "increase",
+      "id": "p-icon-increase"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-132",
+      "component": "p-icon (information)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "information",
+      "id": "p-icon-information"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-133",
+      "component": "p-icon (information-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "information-filled",
+      "id": "p-icon-information-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-134",
+      "component": "p-icon (key)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "key",
+      "id": "p-icon-key"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-135",
+      "component": "p-icon (laptop)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "laptop",
+      "id": "p-icon-laptop"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-136",
+      "component": "p-icon (leaf)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "leaf",
+      "id": "p-icon-leaf"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-137",
+      "component": "p-icon (leather)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "leather",
+      "id": "p-icon-leather"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-138",
+      "component": "p-icon (light)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "light",
+      "id": "p-icon-light"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-139",
+      "component": "p-icon (like)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "like",
+      "id": "p-icon-like"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-140",
+      "component": "p-icon (like-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "like-filled",
+      "id": "p-icon-like-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-141",
+      "component": "p-icon (limousine)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "limousine",
+      "id": "p-icon-limousine"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-142",
+      "component": "p-icon (linked)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "linked",
+      "id": "p-icon-linked"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-143",
+      "component": "p-icon (list)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "list",
+      "id": "p-icon-list"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-144",
+      "component": "p-icon (locate)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "locate",
+      "id": "p-icon-locate"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-145",
+      "component": "p-icon (lock)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "lock",
+      "id": "p-icon-lock"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-146",
+      "component": "p-icon (lock-open)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "lock-open",
+      "id": "p-icon-lock-open"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-147",
+      "component": "p-icon (logo-apple-carplay)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-apple-carplay",
+      "id": "p-icon-logo-apple-carplay"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-148",
+      "component": "p-icon (logo-apple-music)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-apple-music",
+      "id": "p-icon-logo-apple-music"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-149",
+      "component": "p-icon (logo-apple-podcast)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-apple-podcast",
+      "id": "p-icon-logo-apple-podcast"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-150",
+      "component": "p-icon (logo-baidu)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-baidu",
+      "id": "p-icon-logo-baidu"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-151",
+      "component": "p-icon (logo-delicious)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-delicious",
+      "id": "p-icon-logo-delicious"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-152",
+      "component": "p-icon (logo-digg)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-digg",
+      "id": "p-icon-logo-digg"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-153",
+      "component": "p-icon (logo-facebook)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-facebook",
+      "id": "p-icon-logo-facebook"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-154",
+      "component": "p-icon (logo-foursquare)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-foursquare",
+      "id": "p-icon-logo-foursquare"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-155",
+      "component": "p-icon (logo-gmail)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-gmail",
+      "id": "p-icon-logo-gmail"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-156",
+      "component": "p-icon (logo-google)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-google",
+      "id": "p-icon-logo-google"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-157",
+      "component": "p-icon (logo-hatena)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-hatena",
+      "id": "p-icon-logo-hatena"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-158",
+      "component": "p-icon (logo-instagram)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-instagram",
+      "id": "p-icon-logo-instagram"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-159",
+      "component": "p-icon (logo-kaixin)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-kaixin",
+      "id": "p-icon-logo-kaixin"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-160",
+      "component": "p-icon (logo-kakaotalk)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-kakaotalk",
+      "id": "p-icon-logo-kakaotalk"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-161",
+      "component": "p-icon (logo-kununu)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-kununu",
+      "id": "p-icon-logo-kununu"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-162",
+      "component": "p-icon (logo-linkedin)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-linkedin",
+      "id": "p-icon-logo-linkedin"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-163",
+      "component": "p-icon (logo-naver)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-naver",
+      "id": "p-icon-logo-naver"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-164",
+      "component": "p-icon (logo-pinterest)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-pinterest",
+      "id": "p-icon-logo-pinterest"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-165",
+      "component": "p-icon (logo-qq)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-qq",
+      "id": "p-icon-logo-qq"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-166",
+      "component": "p-icon (logo-qq-share)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-qq-share",
+      "id": "p-icon-logo-qq-share"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-167",
+      "component": "p-icon (logo-reddit)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-reddit",
+      "id": "p-icon-logo-reddit"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-168",
+      "component": "p-icon (logo-skyrock)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-skyrock",
+      "id": "p-icon-logo-skyrock"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-169",
+      "component": "p-icon (logo-snapchat)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-snapchat",
+      "id": "p-icon-logo-snapchat"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-170",
+      "component": "p-icon (logo-sohu)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-sohu",
+      "id": "p-icon-logo-sohu"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-171",
+      "component": "p-icon (logo-spotify)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-spotify",
+      "id": "p-icon-logo-spotify"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-172",
+      "component": "p-icon (logo-tecent)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-tecent",
+      "id": "p-icon-logo-tecent"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-173",
+      "component": "p-icon (logo-telegram)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-telegram",
+      "id": "p-icon-logo-telegram"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-174",
+      "component": "p-icon (logo-tiktok)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-tiktok",
+      "id": "p-icon-logo-tiktok"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-175",
+      "component": "p-icon (logo-tumblr)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-tumblr",
+      "id": "p-icon-logo-tumblr"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-176",
+      "component": "p-icon (logo-twitter)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-twitter",
+      "id": "p-icon-logo-twitter"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-177",
+      "component": "p-icon (logo-viber)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-viber",
+      "id": "p-icon-logo-viber"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-178",
+      "component": "p-icon (logo-vk)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-vk",
+      "id": "p-icon-logo-vk"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-179",
+      "component": "p-icon (logo-wechat)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-wechat",
+      "id": "p-icon-logo-wechat"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-180",
+      "component": "p-icon (logo-weibo)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-weibo",
+      "id": "p-icon-logo-weibo"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-181",
+      "component": "p-icon (logo-whatsapp)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-whatsapp",
+      "id": "p-icon-logo-whatsapp"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-182",
+      "component": "p-icon (logo-x)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-x",
+      "id": "p-icon-logo-x"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-183",
+      "component": "p-icon (logo-xing)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-xing",
+      "id": "p-icon-logo-xing"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-184",
+      "component": "p-icon (logo-yahoo)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-yahoo",
+      "id": "p-icon-logo-yahoo"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-185",
+      "component": "p-icon (logo-youku)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-youku",
+      "id": "p-icon-logo-youku"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-186",
+      "component": "p-icon (logo-youtube)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logo-youtube",
+      "id": "p-icon-logo-youtube"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-187",
+      "component": "p-icon (logout)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "logout",
+      "id": "p-icon-logout"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-188",
+      "component": "p-icon (map)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "map",
+      "id": "p-icon-map"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-189",
+      "component": "p-icon (menu-dots-horizontal)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "menu-dots-horizontal",
+      "id": "p-icon-menu-dots-horizontal"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-190",
+      "component": "p-icon (menu-dots-vertical)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "menu-dots-vertical",
+      "id": "p-icon-menu-dots-vertical"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-191",
+      "component": "p-icon (menu-lines)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "menu-lines",
+      "id": "p-icon-menu-lines"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-192",
+      "component": "p-icon (microphone)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "microphone",
+      "id": "p-icon-microphone"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-193",
+      "component": "p-icon (minus)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "minus",
+      "id": "p-icon-minus"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-194",
+      "component": "p-icon (mobile)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "mobile",
+      "id": "p-icon-mobile"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-195",
+      "component": "p-icon (moon)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "moon",
+      "id": "p-icon-moon"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-196",
+      "component": "p-icon (new-chat)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "new-chat",
+      "id": "p-icon-new-chat"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-197",
+      "component": "p-icon (news)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "news",
+      "id": "p-icon-news"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-198",
+      "component": "p-icon (north-arrow)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "north-arrow",
+      "id": "p-icon-north-arrow"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-199",
+      "component": "p-icon (oil-can)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "oil-can",
+      "id": "p-icon-oil-can"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-200",
+      "component": "p-icon (online-search)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "online-search",
+      "id": "p-icon-online-search"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-201",
+      "component": "p-icon (parking-brake)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "parking-brake",
+      "id": "p-icon-parking-brake"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-202",
+      "component": "p-icon (parking-light)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "parking-light",
+      "id": "p-icon-parking-light"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-203",
+      "component": "p-icon (paste)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "paste",
+      "id": "p-icon-paste"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-204",
+      "component": "p-icon (pause)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "pause",
+      "id": "p-icon-pause"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-205",
+      "component": "p-icon (phone)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "phone",
+      "id": "p-icon-phone"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-206",
+      "component": "p-icon (pin)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "pin",
+      "id": "p-icon-pin"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-207",
+      "component": "p-icon (pin-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "pin-filled",
+      "id": "p-icon-pin-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-208",
+      "component": "p-icon (pivot)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "pivot",
+      "id": "p-icon-pivot"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-209",
+      "component": "p-icon (play)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "play",
+      "id": "p-icon-play"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-210",
+      "component": "p-icon (play-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "play-filled",
+      "id": "p-icon-play-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-211",
+      "component": "p-icon (plug)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "plug",
+      "id": "p-icon-plug"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-212",
+      "component": "p-icon (plus)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "plus",
+      "id": "p-icon-plus"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-213",
+      "component": "p-icon (preheating)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "preheating",
+      "id": "p-icon-preheating"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-214",
+      "component": "p-icon (price-tag)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "price-tag",
+      "id": "p-icon-price-tag"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-215",
+      "component": "p-icon (printer)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "printer",
+      "id": "p-icon-printer"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-216",
+      "component": "p-icon (purchase)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "purchase",
+      "id": "p-icon-purchase"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-217",
+      "component": "p-icon (push-pin)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "push-pin",
+      "id": "p-icon-push-pin"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-218",
+      "component": "p-icon (push-pin-off)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "push-pin-off",
+      "id": "p-icon-push-pin-off"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-219",
+      "component": "p-icon (qr)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "qr",
+      "id": "p-icon-qr"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-220",
+      "component": "p-icon (qr-off)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "qr-off",
+      "id": "p-icon-qr-off"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-221",
+      "component": "p-icon (question)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "question",
+      "id": "p-icon-question"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-222",
+      "component": "p-icon (question-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "question-filled",
+      "id": "p-icon-question-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-223",
+      "component": "p-icon (racing-flag)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "racing-flag",
+      "id": "p-icon-racing-flag"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-224",
+      "component": "p-icon (radar)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "radar",
+      "id": "p-icon-radar"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-225",
+      "component": "p-icon (radio)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "radio",
+      "id": "p-icon-radio"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-226",
+      "component": "p-icon (refresh)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "refresh",
+      "id": "p-icon-refresh"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-227",
+      "component": "p-icon (replay)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "replay",
+      "id": "p-icon-replay"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-228",
+      "component": "p-icon (reset)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "reset",
+      "id": "p-icon-reset"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-229",
+      "component": "p-icon (return)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "return",
+      "id": "p-icon-return"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-230",
+      "component": "p-icon (road)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "road",
+      "id": "p-icon-road"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-231",
+      "component": "p-icon (roof-closed)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "roof-closed",
+      "id": "p-icon-roof-closed"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-232",
+      "component": "p-icon (roof-open)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "roof-open",
+      "id": "p-icon-roof-open"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-233",
+      "component": "p-icon (route)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "route",
+      "id": "p-icon-route"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-234",
+      "component": "p-icon (rss)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "rss",
+      "id": "p-icon-rss"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-235",
+      "component": "p-icon (save)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "save",
+      "id": "p-icon-save"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-236",
+      "component": "p-icon (screen)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "screen",
+      "id": "p-icon-screen"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-237",
+      "component": "p-icon (search)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "search",
+      "id": "p-icon-search"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-238",
+      "component": "p-icon (seat)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "seat",
+      "id": "p-icon-seat"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-239",
+      "component": "p-icon (send)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "send",
+      "id": "p-icon-send"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-240",
+      "component": "p-icon (service-technician)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "service-technician",
+      "id": "p-icon-service-technician"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-241",
+      "component": "p-icon (share)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "share",
+      "id": "p-icon-share"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-242",
+      "component": "p-icon (shopping-bag)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "shopping-bag",
+      "id": "p-icon-shopping-bag"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-243",
+      "component": "p-icon (shopping-bag-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "shopping-bag-filled",
+      "id": "p-icon-shopping-bag-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-244",
+      "component": "p-icon (shopping-cart)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "shopping-cart",
+      "id": "p-icon-shopping-cart"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-245",
+      "component": "p-icon (shopping-cart-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "shopping-cart-filled",
+      "id": "p-icon-shopping-cart-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-246",
+      "component": "p-icon (shopping-cart-off)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "shopping-cart-off",
+      "id": "p-icon-shopping-cart-off"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-247",
+      "component": "p-icon (sidebar)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "sidebar",
+      "id": "p-icon-sidebar"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-248",
+      "component": "p-icon (sidelights)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "sidelights",
+      "id": "p-icon-sidelights"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-249",
+      "component": "p-icon (skip-backward)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "skip-backward",
+      "id": "p-icon-skip-backward"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-250",
+      "component": "p-icon (skip-forward)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "skip-forward",
+      "id": "p-icon-skip-forward"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-251",
+      "component": "p-icon (snowflake)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "snowflake",
+      "id": "p-icon-snowflake"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-252",
+      "component": "p-icon (sort)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "sort",
+      "id": "p-icon-sort"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-253",
+      "component": "p-icon (stack)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "stack",
+      "id": "p-icon-stack"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-254",
+      "component": "p-icon (star)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "star",
+      "id": "p-icon-star"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-255",
+      "component": "p-icon (star-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "star-filled",
+      "id": "p-icon-star-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-256",
+      "component": "p-icon (steering-wheel)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "steering-wheel",
+      "id": "p-icon-steering-wheel"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-257",
+      "component": "p-icon (stop)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "stop",
+      "id": "p-icon-stop"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-258",
+      "component": "p-icon (stopwatch)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "stopwatch",
+      "id": "p-icon-stopwatch"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-259",
+      "component": "p-icon (subtract)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "subtract",
+      "id": "p-icon-subtract"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-260",
+      "component": "p-icon (success)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "success",
+      "id": "p-icon-success"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-261",
+      "component": "p-icon (success-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "success-filled",
+      "id": "p-icon-success-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-262",
+      "component": "p-icon (sun)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "sun",
+      "id": "p-icon-sun"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-263",
+      "component": "p-icon (suv)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "suv",
+      "id": "p-icon-suv"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-264",
+      "component": "p-icon (switch)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "switch",
+      "id": "p-icon-switch"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-265",
+      "component": "p-icon (tablet)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "tablet",
+      "id": "p-icon-tablet"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-266",
+      "component": "p-icon (tachometer)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "tachometer",
+      "id": "p-icon-tachometer"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-267",
+      "component": "p-icon (theme)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "theme",
+      "id": "p-icon-theme"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-268",
+      "component": "p-icon (tire)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "tire",
+      "id": "p-icon-tire"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-269",
+      "component": "p-icon (trigger-finger)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "trigger-finger",
+      "id": "p-icon-trigger-finger"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-270",
+      "component": "p-icon (truck)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "truck",
+      "id": "p-icon-truck"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-271",
+      "component": "p-icon (turismo)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "turismo",
+      "id": "p-icon-turismo"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-272",
+      "component": "p-icon (unlinked)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "unlinked",
+      "id": "p-icon-unlinked"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-273",
+      "component": "p-icon (upload)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "upload",
+      "id": "p-icon-upload"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-274",
+      "component": "p-icon (user)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "user",
+      "id": "p-icon-user"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-275",
+      "component": "p-icon (user-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "user-filled",
+      "id": "p-icon-user-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-276",
+      "component": "p-icon (user-group)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "user-group",
+      "id": "p-icon-user-group"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-277",
+      "component": "p-icon (user-manual)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "user-manual",
+      "id": "p-icon-user-manual"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-278",
+      "component": "p-icon (video)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "video",
+      "id": "p-icon-video"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-279",
+      "component": "p-icon (view)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "view",
+      "id": "p-icon-view"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-280",
+      "component": "p-icon (view-off)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "view-off",
+      "id": "p-icon-view-off"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-281",
+      "component": "p-icon (volume-off)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "volume-off",
+      "id": "p-icon-volume-off"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-282",
+      "component": "p-icon (volume-up)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "volume-up",
+      "id": "p-icon-volume-up"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-283",
+      "component": "p-icon (warning)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "warning",
+      "id": "p-icon-warning"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-284",
+      "component": "p-icon (warning-filled)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "warning-filled",
+      "id": "p-icon-warning-filled"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-285",
+      "component": "p-icon (weather)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "weather",
+      "id": "p-icon-weather"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-286",
+      "component": "p-icon (weight)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "weight",
+      "id": "p-icon-weight"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-287",
+      "component": "p-icon (wifi)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "wifi",
+      "id": "p-icon-wifi"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-288",
+      "component": "p-icon (work)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "work",
+      "id": "p-icon-work"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-289",
+      "component": "p-icon (wrench)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "wrench",
+      "id": "p-icon-wrench"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-290",
+      "component": "p-icon (wrenches)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "wrenches",
+      "id": "p-icon-wrenches"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-291",
+      "component": "p-icon (zoom-in)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "zoom-in",
+      "id": "p-icon-zoom-in"
+    },
+    {
+      "url": "https://www.figma.com/design/KEY/Library?node-id=2-292",
+      "component": "p-icon (zoom-out)",
+      "source": "https://designsystem.porsche.com/v4.8.0/components/icon/api/",
+      "name": "zoom-out",
+      "id": "p-icon-zoom-out"
+    }
+  ]
+}

@@ -1,26 +1,28 @@
 # Slack notifications
 
-Three workflows post to Slack. All use `slackapi/slack-github-action` with `method: chat.postMessage` and one shared bot
+Four workflows post to Slack. All use `slackapi/slack-github-action` with `method: chat.postMessage` and one shared bot
 token, and all build their message as a Block Kit `markdown` block.
 
-| Notification     | Workflow                                         | Fires on                                       | Channel secret             |
-| ---------------- | ------------------------------------------------ | ---------------------------------------------- | -------------------------- |
-| Release          | `.github/workflows/release.yml`                  | a release the pipeline created                 | `SLACK_RELEASE_CHANNEL_ID` |
-| Release          | `.github/workflows/notify-release-published.yml` | run by hand, for a release CI did not announce | `SLACK_RELEASE_CHANNEL_ID` |
-| Pipeline failure | `.github/workflows/notify-pipeline-failure.yml`  | `Contribution` or `OSS Review Toolkit` failing | `SLACK_FAILURE_CHANNEL_ID` |
+| Notification        | Workflow                                         | Fires on                                                             | Channel secret             |
+| ------------------- | ------------------------------------------------ | -------------------------------------------------------------------- | -------------------------- |
+| Release             | `.github/workflows/release.yml`                  | a release the pipeline created                                       | `SLACK_RELEASE_CHANNEL_ID` |
+| Release             | `.github/workflows/notify-release-published.yml` | run by hand, for a release CI did not announce                       | `SLACK_RELEASE_CHANNEL_ID` |
+| Pipeline failure    | `.github/workflows/notify-pipeline-failure.yml`  | `Contribution`, `OSS Review Toolkit` or `Figma Code Connect` failing | `SLACK_FAILURE_CHANNEL_ID` |
+| Figma change needed | `.github/workflows/figma-code-connect.yml`       | a Figma property or option Code Connect cannot map                   | `SLACK_DESIGN_CHANNEL_ID`  |
 
 ## Secrets
 
-| Secret                     | What                                                      |
-| -------------------------- | --------------------------------------------------------- |
-| `SLACK_BOT_TOKEN`          | bot token with `chat:write`, shared by both notifications |
-| `SLACK_RELEASE_CHANNEL_ID` | destination for the release announcement                  |
-| `SLACK_FAILURE_CHANNEL_ID` | destination for the failure notification                  |
+| Secret                     | What                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------- |
+| `SLACK_BOT_TOKEN`          | bot token with `chat:write`, shared by all notifications                     |
+| `SLACK_RELEASE_CHANNEL_ID` | destination for the release announcement                                     |
+| `SLACK_FAILURE_CHANNEL_ID` | destination for the failure notification                                     |
+| `SLACK_DESIGN_CHANNEL_ID`  | destination for the message to design about Figma changes Code Connect needs |
 
 The app must be invited to each channel, otherwise Slack answers `not_in_channel`. Channels are secrets rather than
-literals so either can move without a pull request.
+literals so any can move without a pull request.
 
-A missing or revoked token fails the sending job rather than passing green, because both Send steps set `errors: true`
+A missing or revoked token fails the sending job rather than passing green, because every Send step sets `errors: true`
 against the action's default of `false`.
 
 ## Release announcement
@@ -63,10 +65,11 @@ script still has to do, all found by testing rather than documented by Slack:
 
 ## Pipeline failure
 
-`notify-pipeline-failure.yml` watches the `Contribution` and `OSS Review Toolkit` workflows and posts when one fails on
-a monitored branch. It runs the default-branch copy of itself and checks the triggering run came from this repository,
-so a fork cannot reach the token. There is also a `workflow_dispatch` path taking a run ID, for rehearsing against a
-past failure.
+`notify-pipeline-failure.yml` watches the `Contribution`, `OSS Review Toolkit` and `Figma Code Connect` workflows and
+posts when one fails on a monitored branch. `Figma Code Connect` counts for its daily and dispatched runs; on a push to
+`main` it runs inside `Contribution`, so its failure is reported as that run's. It runs the default-branch copy of
+itself and checks the triggering run came from this repository, so a fork cannot reach the token. There is also a
+`workflow_dispatch` path taking a run ID, for rehearsing against a past failure.
 
 `scripts/build-slack-payload.ts` reads run metadata from the API rather than the event payload, so both paths execute
 identical code, and asks for one specific **attempt** — the API otherwise answers for the newest one, and a re-run
@@ -76,16 +79,31 @@ Each failed job is one labelled link pointing at its own failing step. Because j
 landing in a markdown context, they are escaped: a step named `Run npm test -- --grep "*"` would otherwise garble the
 message reporting it. The list is capped at 40 entries, which is above any run this repository produces.
 
+## Figma change needed
+
+`.github/workflows/figma-code-connect.yml` builds its message with `scripts/build-slack-figma-payload.ts` from the
+generator's design lines (`figma:generate` on the library as pulled in that run): one line per change, grouped under the
+component it is for with a link to the component in Figma: a rename (`"summary" → "slot-summary"`, or `"new" → "figNew"`
+for a property that only matters in Figma), an add (`add a BOOLEAN property named "compact"`) or a delete
+(`delete "showLabel"`), and a closing line saying that Dev Mode shows the change once the library is published, a new
+component or icon with the next daily run. The line shapes it reads are declared once in
+`packages/components/projects/figma-code-connect/figma/messages.ts`, shared with the generator. Nothing about GitHub is
+in the message, because designers have no GitHub account; the run link and raw logs go to the job summary and the
+workflow's issue. The message is sent only when the design section of that issue differs from the last one Slack got: a
+message that failed to send goes out with the next run that reads Figma, and an open item repeats only when the issue
+could not be written after a send. The builder prints nothing when no line is for design, and the Send step is skipped.
+Details and the decisions behind it: the Decisions section of `docs/runbooks/figma-code-connect.md`.
+
 ## Why not a webhook
 
-Neither notification can use one. The `markdown` block returns HTTP 500 over an incoming webhook
+None of the notifications can use one. The `markdown` block returns HTTP 500 over an incoming webhook
 (`slackapi/slack-github-action#440`), and a Workflow Builder trigger accepts no blocks at all and renders its variables
-as plain text — `**bold**`, `[label](url)` and backticks all print literally there. Both messages were built that way
-originally and both lost their links to it.
+as plain text — `**bold**`, `[label](url)` and backticks all print literally there. The release and failure messages
+were built that way originally and both lost their links to it.
 
 ## Changing things
 
-Wording and layout live in the two scripts, so changing them is a pull request. Channels are secrets. Rotating the token
-is done in the Slack app under **OAuth & Permissions**, then updating `SLACK_BOT_TOKEN`.
+Wording and layout live in the three scripts, so changing them is a pull request. Channels are secrets. Rotating the
+token is done in the Slack app under **OAuth & Permissions**, then updating `SLACK_BOT_TOKEN`.
 
-There are no unit tests for either script. After changing one, send a real message and read it.
+There are no unit tests for any of them. After changing one, send a real message and read it.

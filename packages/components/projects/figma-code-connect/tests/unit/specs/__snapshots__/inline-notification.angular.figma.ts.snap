@@ -1,0 +1,30 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-14
+// source=https://designsystem.porsche.com/v4.8.0/components/inline-notification/api/
+// component=p-inline-notification
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { iconOf } from '../../../figma/helpers/iconOf';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const heading = read.text('heading');
+const headingTag = read.oneOf('headingTag', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
+const description = read.text('description');
+const state = read.oneOf('state', ['info', 'success', 'warning', 'error']);
+const dismissButton = !read.off('dismissButton');
+const actionLabel = read.text('actionLabel');
+const actionLoading = read.flag('actionLoading');
+const actionIcon = read.has('actionIcon') && (!read.has('figActionIcon') || read.flag('figActionIcon')) ? iconOf(instance.getInstanceSwap('actionIcon'), undefined) : undefined;
+
+export default {
+  example: figma.code`<p-inline-notification${heading ? ` [heading]="'${heading}'"` : ''}${headingTag ? ` [headingTag]="'${headingTag}'"` : ''}${description ? ` [description]="'${description}'"` : ''}${state ? ` [state]="'${state}'"` : ''}${dismissButton ? '' : ' [dismissButton]="false"'}${actionLabel ? ` [actionLabel]="'${actionLabel}'"` : ''}${actionLoading ? ' [actionLoading]="true"' : ''}${actionIcon ? ` [actionIcon]="'${actionIcon}'"` : ''}>${read.has('slot-heading') ? slotted(instance.getSlot('slot-heading'), 'slot-heading', '<!-- slot="heading" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-inline-notification>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/inline-notification/api/',
+    "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
+  ],
+  id: 'p-inline-notification',
+  metadata: { nestable: true },
+};

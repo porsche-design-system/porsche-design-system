@@ -1,0 +1,27 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-41
+// source=https://designsystem.porsche.com/v4.8.0/components/segmented-control/api/
+// component=PSegmentedControlItem
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { iconOf } from '../../../figma/helpers/iconOf';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const value = read.text('value');
+const disabled = read.flag('disabled');
+const label = read.text('label');
+const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), undefined) : undefined;
+const iconSource = read.text('iconSource');
+
+export default {
+  example: figma.code`<PSegmentedControlItem${value ? ` value="${value}"` : ''}${disabled ? ' disabled={true}' : ''}${label ? ` label="${label}"` : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` iconSource="${iconSource}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PSegmentedControlItem>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/segmented-control/api/',
+    "import { PSegmentedControlItem } from '@porsche-design-system/components-react';",
+  ],
+  id: 'p-segmented-control-item',
+  metadata: { nestable: true },
+};

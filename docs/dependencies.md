@@ -53,11 +53,11 @@ convention). The following root scripts help keep dependency versions consistent
 
 The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
 from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
-`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `playwright-core`, `@stencil/core`). The
-`npm:outdated` and `npm:update` scripts additionally pass `--dependencies '!@porsche-design-system/**'` so the
-unpublished internal workspace packages are not even looked up against the npm registry (which would otherwise emit
-`Failed to fetch` warnings). When you add a new held-back dependency, also add it to the `updateGroups` entry in
-`.syncpackrc.json` and to the ignore list in `.github/dependabot.yml`.
+`.syncpackrc.json`; that entry, not this page, is the list. The `npm:outdated` and `npm:update` scripts additionally
+pass `--dependencies '!@porsche-design-system/**'` so the unpublished internal workspace packages are not even looked up
+against the npm registry (which would otherwise emit `Failed to fetch` warnings). When you add a new held-back
+dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to the ignore list in
+`.github/dependabot.yml`.
 
 ### StackBlitz starter templates (npm workspace members)
 
@@ -72,8 +72,7 @@ Even though each starter pins the **published** `@porsche-design-system/componen
 carry that **same** release version, so npm satisfies the pin by symlinking to the local workspace. Off the monorepo (on
 StackBlitz), the identical pin resolves the published package from the registry instead. The pin stays in sync with the
 release version via the release process (see `docs/release.md`), and `@porsche-design-system/**` is shielded from
-automated bumps by the held-back `updateGroups` entry, alongside `@playwright/test`, `playwright-core` and
-`@stencil/core`.
+automated bumps by the held-back `updateGroups` entry in `.syncpackrc.json`, alongside the other patterns listed there.
 
 When you add or remove a workspace, update only the `workspaces` array in the root `package.json` — there is no separate
 syncpack `source` list to keep in sync anymore.
@@ -381,6 +380,9 @@ places that must be kept in sync when adding a new entry:
   definitions. Bump it **only together with** `@playwright/test`.
 - `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
+- `@figma/code-connect` – pinned because the publish wrapper
+  (`packages/components/projects/figma-code-connect/scripts/figmaConnect.ts`) parses the CLI's log lines and its
+  `preview --output json` result, which a new version can change without notice.
 
 ### How to update them
 
@@ -391,6 +393,10 @@ between the installed Playwright and the Docker image makes CI fail.
 
 **`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
 dependency; otherwise `patch-package` fails on `postinstall`.
+
+**`@figma/code-connect`** — bump it, then run `npm run figma:publish:dry` in
+`packages/components/projects/figma-code-connect` against the test library and check that it still lists every file per
+label and exits 0; see `docs/runbooks/figma-code-connect.md`.
 
 **`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
 

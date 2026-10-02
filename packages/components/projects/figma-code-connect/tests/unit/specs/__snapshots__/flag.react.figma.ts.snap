@@ -1,0 +1,23 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-11
+// source=https://designsystem.porsche.com/v4.8.0/components/flag/api/
+// component=PFlag
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const name = read.oneOf('name', ['ad', 'ae', 'al', 'am', 'ar', 'at', 'au', 'az', 'ba', 'bd', 'be', 'bg', 'bh', 'bn', 'bo', 'br', 'by', 'ca', 'ch', 'cl', 'cn', 'co', 'cr', 'cw', 'cy', 'cz', 'de', 'dk', 'do', 'dz', 'ec', 'ee', 'eg', 'es', 'fi', 'fr', 'gb', 'ge', 'gh', 'gi', 'gr', 'gt', 'hk', 'hn', 'hr', 'ht', 'hu', 'id', 'ie', 'il', 'in', 'is', 'it', 'jm', 'jo', 'jp', 'ke', 'kh', 'kr', 'kw', 'kz', 'lb', 'li', 'lk', 'lt', 'lu', 'lv', 'ma', 'mc', 'md', 'me', 'mk', 'mn', 'mo', 'mq', 'mt', 'mu', 'mx', 'my', 'ng', 'nl', 'no', 'nz', 'om', 'pa', 'pe', 'pf', 'ph', 'pk', 'pl', 'pr', 'pt', 'py', 'qa', 're', 'ro', 'rs', 'ru', 'sa', 'se', 'sg', 'si', 'sk', 'sv', 'th', 'tn', 'tr', 'tt', 'tw', 'ua', 'us', 'uy', 'uz', 've', 'vn', 'xx', 'za']);
+const size = read.oneOf('size', ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', 'inherit']);
+
+export default {
+  example: figma.code`<PFlag${name ? ` name="${name}"` : ''}${size ? ` size="${size}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PFlag>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/flag/api/',
+    "import { PFlag } from '@porsche-design-system/components-react';",
+  ],
+  id: 'p-flag',
+  metadata: { nestable: true },
+};

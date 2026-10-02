@@ -10,6 +10,7 @@ This package contains the **Porsche Design System Web Components** built with St
 ## Subpackages
 
 - [`projects/stylesheets`](projects/stylesheets/AGENTS.md) — `@porsche-design-system/stylesheets`, the single source of truth for the global styles (meta + generated `variables.css`, `color-scheme.css`, `normalize.css`, `font-face.css` and the combined `index.css`). Built as part of `build:components` and copied into the framework wrappers.
+- [`projects/figma-code-connect`](projects/figma-code-connect/AGENTS.md) — `@porsche-design-system/figma-code-connect`, generates the Dev Mode templates from component-meta into its ignored `generated/` folder and publishes them.
 
 ## File Structure (per component)
 
@@ -23,6 +24,12 @@ src/components/{name}/
 ├── {name}-utils.spec.ts # Spec files for Unit Testing utils
 └── {name}.props.md      # Props documentation (auto-generated)
 ```
+
+## Figma Code Connect
+
+A prop, slot, allowed value or component you add or rename has to reach the Figma library too, or the component's Dev
+Mode snippets leave it out. The rules and what to do are in
+[`projects/figma-code-connect/AGENTS.md`](projects/figma-code-connect/AGENTS.md).
 
 ## Commands
 

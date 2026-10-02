@@ -1,0 +1,42 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-55
+// source=https://designsystem.porsche.com/v4.8.0/components/textarea/api/
+// component=PTextarea
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const label = read.text('label');
+const description = read.text('description');
+const compact = read.flag('compact');
+const name = read.text('name');
+const value = read.text('value');
+const state = read.oneOf('state', ['none', 'error', 'success']);
+const message = read.text('message');
+const hideLabel = read.hideLabel();
+const counter = read.flag('counter');
+const placeholder = read.text('placeholder');
+const required = read.flag('required');
+const disabled = read.flag('disabled');
+const maxLength = read.number('maxLength');
+const minLength = read.number('minLength');
+const form = read.text('form');
+const rows = read.number('rows');
+const autoComplete = read.text('autoComplete');
+const spellCheck = read.flag('spellCheck');
+const wrap = read.oneOf('wrap', ['hard', 'soft', 'off']);
+const resize = read.oneOf('resize', ['none', 'both', 'horizontal', 'vertical', 'block', 'inline']);
+const readOnly = read.flag('readOnly');
+
+export default {
+  example: figma.code`<PTextarea${label ? ` label="${label}"` : ''}${description ? ` description="${description}"` : ''}${compact ? ' compact={true}' : ''}${name ? ` name="${name}"` : ''}${value ? ` value="${value}"` : ''}${state ? ` state="${state}"` : ''}${message ? ` message="${message}"` : ''}${hideLabel ? ' hideLabel={true}' : ''}${counter ? ' counter={true}' : ''}${placeholder ? ` placeholder="${placeholder}"` : ''}${required ? ' required={true}' : ''}${disabled ? ' disabled={true}' : ''}${maxLength ? ` maxLength={${maxLength}}` : ''}${minLength ? ` minLength={${minLength}}` : ''}${form ? ` form="${form}"` : ''}${rows ? ` rows={${rows}}` : ''}${autoComplete ? ` autoComplete="${autoComplete}"` : ''}${spellCheck ? ' spellCheck={true}' : ''}${wrap ? ` wrap="${wrap}"` : ''}${resize ? ` resize="${resize}"` : ''}${readOnly ? ' readOnly={true}' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', '{/* slot="label" */}') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', '{/* slot="label-after" */}') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', '{/* slot="description" */}') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', '{/* slot="message" */}') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PTextarea>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/textarea/api/',
+    "import { PTextarea } from '@porsche-design-system/components-react';",
+  ],
+  id: 'p-textarea',
+  metadata: { nestable: true },
+};

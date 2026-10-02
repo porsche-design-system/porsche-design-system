@@ -1,0 +1,27 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-31
+// source=https://designsystem.porsche.com/v4.8.0/components/model-signature/api/
+// component=PModelSignature
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const model = read.oneOf('model', ['718', '911', 'boxster', 'cayenne', 'cayman', 'gt3-rs', 'gt3', 'gts', 'macan', 'panamera', 'taycan', 'turbo-s', 'turbo']);
+const safeZone = !read.off('safeZone');
+const fetchPriority = read.oneOf('fetchPriority', ['low', 'high', 'auto']);
+const lazy = read.flag('lazy');
+const size = read.oneOf('size', ['small', 'inherit']);
+const color = read.oneOf('color', ['primary', 'contrast-low', 'contrast-medium', 'contrast-high', 'inherit']);
+
+export default {
+  example: figma.code`<PModelSignature${model ? ` :model="'${model}'"` : ''}${safeZone ? '' : ' :safeZone="false"'}${fetchPriority ? ` :fetchPriority="'${fetchPriority}'"` : ''}${lazy ? ' :lazy="true"' : ''}${size ? ` :size="'${size}'"` : ''}${color ? ` :color="'${color}'"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PModelSignature>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/model-signature/api/',
+    "import { PModelSignature } from '@porsche-design-system/components-vue';",
+  ],
+  id: 'p-model-signature',
+  metadata: { nestable: true },
+};

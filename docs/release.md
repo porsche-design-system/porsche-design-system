@@ -16,6 +16,9 @@ version can be released.
 3. Create a new branch e.g. `git checkout -b release/components-v4.0.0-rc.0`
 4. Make sure all relevant changes for the new release to be documented in `./packages/components/CHANGELOG.md`
 5. Run `npm run prepare-release ${TARGET_VERSION}` (e.g. `npm run prepare-release 4.0.0-rc.0`)
+6. Run `npm run build:core-dependencies`, then
+   `npm run test:unit --workspace=@porsche-design-system/figma-code-connect -- --run -u`: every Figma Code Connect
+   template links the docs of this version, so its snapshots change with it
 
 ### Publish
 
@@ -48,6 +51,9 @@ release can be published.
 2. Run `git pull origin {main- or v-branch}`
 3. Create a new branch e.g. `git checkout -b release/components-v4.0.0`
 4. Run `npm run prepare-release ${TARGET_VERSION}` (e.g. `npm run prepare-release 4.0.0`)
+5. Run `npm run build:core-dependencies`, then
+   `npm run test:unit --workspace=@porsche-design-system/figma-code-connect -- --run -u`: every Figma Code Connect
+   template links the docs of this version, so its snapshots change with it
 
 ### Publish
 

@@ -1,0 +1,34 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-37
+// source=https://designsystem.porsche.com/v4.8.0/components/radio-group/api/
+// component=PRadioGroup
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const label = read.text('label');
+const description = read.text('description');
+const compact = read.flag('compact');
+const direction = read.oneOf('direction', ['row', 'column']);
+const name = read.text('name');
+const value = read.text('value');
+const form = read.text('form');
+const disabled = read.flag('disabled');
+const required = read.flag('required');
+const loading = read.flag('loading');
+const state = read.oneOf('state', ['none', 'error', 'success']);
+const message = read.text('message');
+const hideLabel = read.hideLabel();
+
+export default {
+  example: figma.code`<PRadioGroup${label ? ` :label="'${label}'"` : ''}${description ? ` :description="'${description}'"` : ''}${compact ? ' :compact="true"' : ''}${direction ? ` :direction="'${direction}'"` : ''}${name ? ` :name="'${name}'"` : ''}${value ? ` :value="'${value}'"` : ''}${form ? ` :form="'${form}'"` : ''}${disabled ? ' :disabled="true"' : ''}${required ? ' :required="true"' : ''}${loading ? ' :loading="true"' : ''}${state ? ` :state="'${state}'"` : ''}${message ? ` :message="'${message}'"` : ''}${hideLabel ? ' :hideLabel="true"' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', '<!-- slot="label" -->') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', '<!-- slot="label-after" -->') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', '<!-- slot="description" -->') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', '<!-- slot="message" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PRadioGroup>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/radio-group/api/',
+    "import { PRadioGroup } from '@porsche-design-system/components-vue';",
+  ],
+  id: 'p-radio-group',
+  metadata: { nestable: true },
+};

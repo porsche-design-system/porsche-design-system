@@ -1,0 +1,27 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-1
+// source=https://designsystem.porsche.com/v4.8.0/components/accordion/api/
+// component=PAccordion
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const open = read.flag('open');
+const alignMarker = read.oneOf('alignMarker', ['start', 'end']);
+const background = read.oneOf('background', ['canvas', 'surface', 'frosted', 'none']);
+const compact = read.flag('compact');
+const indent = read.flag('indent');
+const sticky = read.flag('sticky');
+
+export default {
+  example: figma.code`<PAccordion${open ? ' :open="true"' : ''}${alignMarker ? ` :alignMarker="'${alignMarker}'"` : ''}${background ? ` :background="'${background}'"` : ''}${compact ? ' :compact="true"' : ''}${indent ? ' :indent="true"' : ''}${sticky ? ' :sticky="true"' : ''}>${read.has('slot-summary') ? slotted(instance.getSlot('slot-summary'), 'slot-summary', '<!-- slot="summary" -->') : ''}${read.has('slot-summary-before') ? slotted(instance.getSlot('slot-summary-before'), 'slot-summary-before', '<!-- slot="summary-before" -->') : ''}${read.has('slot-summary-after') ? slotted(instance.getSlot('slot-summary-after'), 'slot-summary-after', '<!-- slot="summary-after" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PAccordion>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/accordion/api/',
+    "import { PAccordion } from '@porsche-design-system/components-vue';",
+  ],
+  id: 'p-accordion',
+  metadata: { nestable: true },
+};

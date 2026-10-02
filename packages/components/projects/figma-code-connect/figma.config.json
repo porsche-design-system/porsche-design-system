@@ -1,0 +1,9 @@
+{
+  "codeConnect": {
+    "include": ["generated/templates/**/*.figma.ts", "generated/icons/p-icon.figma.batch.json"],
+    "exclude": ["**/*.react.figma.ts", "**/*.angular.figma.ts", "**/*.vue.figma.ts"],
+    "label": "Web Components",
+    "language": "html",
+    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/Npno3dQGabvzWLFcAjNDw7/Porsche-Web-Design-System--Code-Connect-Testing-"
+  }
+}

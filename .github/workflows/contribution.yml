@@ -175,3 +175,19 @@ jobs:
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
       slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
       slack-release-channel-id: ${{ secrets.SLACK_RELEASE_CHANNEL_ID }}
+  figma-code-connect:
+    name: 'Figma Code Connect'
+    # After the storefront and Algolia deploy, on main only. No job needs this one, so a failure here
+    # never holds back the release; it turns the run red for the failure notifier.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # issues: write for the workflow's "action needed" issue; a reusable workflow can only narrow this.
+    permissions:
+      contents: read
+      issues: write
+    uses: ./.github/workflows/figma-code-connect.yml
+    needs:
+      - deploy
+    secrets:
+      FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      SLACK_DESIGN_CHANNEL_ID: ${{ secrets.SLACK_DESIGN_CHANNEL_ID }}

@@ -1,0 +1,34 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-40
+// source=https://designsystem.porsche.com/v4.8.0/components/segmented-control/api/
+// component=PSegmentedControl
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const label = read.text('label');
+const description = read.text('description');
+const value = read.text('value');
+const name = read.text('name');
+const compact = read.flag('compact');
+const state = read.oneOf('state', ['none', 'error', 'success']);
+const required = read.flag('required');
+const message = read.text('message');
+const hideLabel = read.hideLabel();
+const columns = read.oneOf('columns', ['auto', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25']);
+const form = read.text('form');
+const disabled = read.flag('disabled');
+const noWrap = read.flag('noWrap');
+
+export default {
+  example: figma.code`<PSegmentedControl${label ? ` :label="'${label}'"` : ''}${description ? ` :description="'${description}'"` : ''}${value ? ` :value="'${value}'"` : ''}${name ? ` :name="'${name}'"` : ''}${compact ? ' :compact="true"' : ''}${state ? ` :state="'${state}'"` : ''}${required ? ' :required="true"' : ''}${message ? ` :message="'${message}'"` : ''}${hideLabel ? ' :hideLabel="true"' : ''}${columns ? ` :columns="'${columns}'"` : ''}${form ? ` :form="'${form}'"` : ''}${disabled ? ' :disabled="true"' : ''}${noWrap ? ' :noWrap="true"' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', '<!-- slot="label" -->') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', '<!-- slot="label-after" -->') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', '<!-- slot="description" -->') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', '<!-- slot="message" -->') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PSegmentedControl>`,
+  imports: [
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/segmented-control/api/',
+    "import { PSegmentedControl } from '@porsche-design-system/components-vue';",
+  ],
+  id: 'p-segmented-control',
+  metadata: { nestable: true },
+};
