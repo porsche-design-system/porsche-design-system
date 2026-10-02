@@ -9,6 +9,7 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { FrameworkSwitch } from '@/components/common/FrameworkSwitch';
 import { VersionSelect } from '@/components/common/VersionSelect';
 import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { type Routes, sitemap } from '@/sitemap';
@@ -63,7 +64,10 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
 
   return (
     <>
-      {pdsVersion.all.length > 1 && <VersionSelect pdsVersion={pdsVersion} />}
+      <div className="flex flex-col gap-static-sm">
+        {pdsVersion.all.length > 1 && <VersionSelect pdsVersion={pdsVersion} />}
+        <FrameworkSwitch />
+      </div>
       <nav aria-label="Main" className="mt-fluid-md flex flex-col gap-static-sm">
         {Object.entries(sitemap).map(([path, category]) => {
           const groupLabel = SECTION_GROUP_HEADERS[path];
