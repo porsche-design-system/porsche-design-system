@@ -374,7 +374,7 @@ places that must be kept in sync when adding a new entry:
   [Strict peer dependency resolution](#strict-peer-dependency-resolution)). `syncpack` scans `overrides` too, so without
   this entry every update round would offer to bump it independently and reintroduce duplicated Playwright type
   definitions. Bump it **only together with** `@playwright/test`.
-- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
+- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.45.1.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
 
 ### How to update them
