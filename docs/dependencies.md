@@ -397,7 +397,9 @@ Angular splits into two concerns that are handled separately:
   `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep `typescript`
   within Angular's `MAX_TS_VERSION` (see
   `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back
-  for the round if a bump would exceed that ceiling.
+  for the round if a bump would exceed that ceiling. `syncpack` never offers the deprecated `@angular/animations` and
+  `@angular/platform-browser-dynamic`, so align their ranges with the rest of the family by hand (in
+  `packages/components-angular` and the StackBlitz Angular starter).
 - **Framework migrations** (code transforms) — owned by the
   [`packages/components-angular/scripts/ng-update.sh`](../packages/components-angular/scripts/ng-update.sh) wrapper
   (`npm run ng:update`).
