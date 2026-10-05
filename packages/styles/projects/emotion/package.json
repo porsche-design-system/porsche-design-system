@@ -42,7 +42,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/madge": "^5.0.3",
-    "@types/node": "^26.6.2",
+    "@types/node": "^26.6.3",
     "jss": "^10.10.0",
     "jss-plugin-camel-case": "^10.10.0",
     "jss-plugin-global": "^10.10.0",

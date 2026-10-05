@@ -124,7 +124,7 @@
     "ag-grid-react": "36.2.0",
     "change-case": "^5.4.4",
     "concurrently": "^10.0.5",
-    "devtools-protocol": "^0.0.1704684",
+    "devtools-protocol": "^0.0.1704951",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
     "local-web-server": "^5.4.0",
