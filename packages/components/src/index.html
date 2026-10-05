@@ -68,6 +68,7 @@
         <p-switch data-name="tag-dismissible" data-section="common">Tag Dismissible</p-switch>
         <p-switch data-name="ai-tag" data-section="common">AI Tag</p-switch>
         <p-switch data-name="text-list" data-section="common">Text List</p-switch>
+        <p-switch data-name="tile" data-section="common">Tile</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Feedback</p-heading>
           <p-checkbox
@@ -761,6 +762,123 @@
             </p-text-list-item>
             <p-text-list-item>ABC</p-text-list-item>
           </p-text-list>
+        </div>
+        <div data-card="tile" style="grid-column: 1 / -1;">
+          <div class="grid grid-cols-3 gap-fluid-md">
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">Default slot only (centered)</p-text>
+              <p-tile>
+                <p-heading tag="h3" size="lg">Centered content</p-heading>
+                <p-text>The default slot is centered and covers the whole tile when no layout slot is used.</p-text>
+              </p-tile>
+            </div>
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">All layout slots (background="frosted")</p-text>
+              <p-tile background="frosted">
+                <p-tag slot="top">top</p-tag>
+                <p-icon slot="top" name="arrow-up-right" aria-hidden="true" style="margin-inline-start: auto"></p-icon>
+                <p-text slot="start">start</p-text>
+                <p-text>default</p-text>
+                <p-text slot="end">end</p-text>
+                <p-heading slot="bottom" tag="h3" size="md">bottom</p-heading>
+              </p-tile>
+            </div>
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">Transparent image above background color + anchor</p-text>
+              <p-tile aspect-ratio="3/4">
+                <img
+                  slot="background"
+                  src="/assets/icon-custom-kaixin.svg"
+                  alt=""
+                  style="object-fit: contain; box-sizing: border-box; padding: 25%"
+                >
+                <a slot="anchor" href="https://porsche.com" target="_blank">Cayenne, discover the model</a>
+                <p-tag slot="top">New</p-tag>
+                <p-icon slot="top" name="arrow-up-right" aria-hidden="true" style="margin-inline-start: auto"></p-icon>
+                <p-heading slot="bottom" tag="h3" size="md">Cayenne</p-heading>
+              </p-tile>
+            </div>
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">Media + gradient="block" + anchor + opted-in action</p-text>
+              <p-tile class="scheme-dark" gradient="block" aspect-ratio="3/4">
+                <img slot="background" src="/assets/lights.jpg" alt="">
+                <a slot="anchor" href="https://porsche.com" target="_blank" aria-labelledby="tile-heading-lights"></a>
+                <p-tag slot="top" variant="info-frosted">Gradient grows with the slot</p-tag>
+                <p-heading slot="bottom" id="tile-heading-lights" tag="h3" size="lg">Porsche Lights</p-heading>
+                <p-text slot="bottom">The whole tile is a link, the button opts in via pointer-events: auto.</p-text>
+                <p-button slot="bottom" class="pointer-events-auto" type="button" variant="secondary" compact="true"
+                  >Configure</p-button
+                >
+              </p-tile>
+            </div>
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">Responsive gradient + aspect-ratio (base: bottom, m: inline)</p-text>
+              <p-tile
+                class="scheme-dark"
+                gradient='{"base":"bottom","m":"inline"}'
+                aspect-ratio='{"base":"3/4","m":"4/3"}'
+              >
+                <img slot="background" src="/assets/interior.jpg" alt="">
+                <p-heading slot="start" tag="h3" size="md">start</p-heading>
+                <p-text slot="end">end</p-text>
+                <p-text slot="bottom">bottom</p-text>
+              </p-tile>
+            </div>
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">Free layout within the default slot (background="canvas")</p-text>
+              <p-tile background="canvas">
+                <div class="grid grid-cols-2 gap-static-sm self-stretch grow">
+                  <div class="grid place-items-center rounded-lg bg-surface prose-text-sm">A</div>
+                  <div class="grid place-items-center rounded-lg bg-surface prose-text-sm row-span-2">B</div>
+                  <div class="grid place-items-center rounded-lg bg-surface prose-text-sm">C</div>
+                </div>
+              </p-tile>
+            </div>
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">Alignment overrides (align-self + CSS variable)</p-text>
+              <p-tile style="--p-tile-bottom-justify: space-between">
+                <p-text style="align-self: flex-start">align-self: flex-start</p-text>
+                <p-text slot="bottom">start</p-text>
+                <p-text slot="bottom">--p-tile-bottom-justify</p-text>
+              </p-tile>
+            </div>
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">Nested tile with its own anchor (background="frosted")</p-text>
+              <p-tile class="scheme-dark" gradient="top">
+                <img slot="background" src="/assets/cabin.webp" alt="">
+                <a slot="anchor" href="#outer-tile">Outer tile</a>
+                <p-heading slot="top" tag="h3" size="md">Outer tile</p-heading>
+                <p-tile slot="bottom" background="frosted" aspect-ratio="auto" style="flex: 1">
+                  <a slot="anchor" href="#inner-tile">Inner tile</a>
+                  <p-text>Inner tile</p-text>
+                </p-tile>
+              </p-tile>
+            </div>
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">Grows beyond aspect-ratio="16/9" with content</p-text>
+              <p-tile aspect-ratio="16/9">
+                <p-heading slot="top" tag="h3" size="md">Lots of content</p-heading>
+                <p-text
+                  >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                  labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est. Lorem ipsum dolor sit amet,
+                  consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                  erat, sed diam voluptua.</p-text
+                >
+                <p-link slot="bottom" href="https://porsche.com" target="_blank" variant="secondary" compact="true"
+                  >Without anchor, links work as usual</p-link
+                >
+              </p-tile>
+            </div>
+            <div class="flex flex-col gap-static-sm">
+              <p-text size="xs">Missing opt-in (button is click-through)</p-text>
+              <p-tile aspect-ratio="auto">
+                <a slot="anchor" href="https://porsche.com" target="_blank">Porsche</a>
+                <p-heading tag="h3" size="md">Not opted in</p-heading>
+                <p-button type="button" variant="secondary" compact="true">Not clickable by pointer</p-button>
+              </p-tile>
+            </div>
+          </div>
         </div>
         <div data-card="inline-notification" style="grid-column: span 2;">
           <p-inline-notification
@@ -3284,7 +3402,7 @@
           card: 'bg-frosted backdrop-blur-frosted rounded-4xl p-fluid-md flex flex-col gap-fluid-sm',
         },
       };
-      document.querySelector('[slot="background"]').setAttribute('class', backgroundMap[background].app);
+      document.querySelector('p-canvas > [slot="background"]').setAttribute('class', backgroundMap[background].app);
       for (const el of document.querySelectorAll('[data-card]')) {
         el.setAttribute('class', backgroundMap[background].card);
       }
