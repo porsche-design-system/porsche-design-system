@@ -76,6 +76,11 @@ description.
 npm install
 ```
 
+If this fails with `ETARGET … @porsche-design-system/components-*@<version> with a date before …` right after a release,
+the local wrapper `dist/*-wrapper` folders are stale (built from the previous release) and the new version is still
+inside the release-age cooldown on the registry. Delete the four `packages/components-*/dist/*-wrapper` folders (they
+are build output, as on a fresh CI checkout) and re-run `npm ci`; the next `npm run build` recreates them.
+
 ### 2. Check what is outdated
 
 ```bash
@@ -93,7 +98,9 @@ via `min-release-age` in [`.npmrc`](../../.npmrc). A version withheld this week 
 Angular splits into two concerns:
 
 - **Versions** (`@angular/*`, `ng-packagr`) are bumped by syncpack like everything else, in
-  [step 4](#4-apply-updates-with-syncpack). Select the `@angular/*` family together so they move in lockstep.
+  [step 4](#4-apply-updates-with-syncpack). Select the `@angular/*` family together so they move in lockstep. `syncpack`
+  never offers the deprecated `@angular/animations` and `@angular/platform-browser-dynamic`; align their ranges with the
+  rest of the family by hand — the only exception to the hand-edit rule.
 - **Framework migrations** (code transforms) are applied here, by the
   [`ng-update.sh`](../../packages/components-angular/scripts/ng-update.sh) wrapper (`npm run ng:update`).
 
@@ -109,8 +116,10 @@ do). For a major upgrade with framework migrations, prefer handing off — see
 ```bash
 cd packages/components-angular
 npm run ng:update                                                     # list available updates/migrations (read-only)
-# after the syncpack bump + `npm install` (step 4/5), apply migrations only:
-npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>
+# after the syncpack bump + `npm install` (step 4/5), apply migrations only — one package per run,
+# `ng update` rejects multiple packages with `--migrate-only`:
+npm run ng:update -- @angular/core --migrate-only --from=<old> --to=<new>
+npm run ng:update -- @angular/cli --migrate-only --from=<old> --to=<new>
 cd ../..
 git diff packages/components-angular                                  # review migration changes
 ```

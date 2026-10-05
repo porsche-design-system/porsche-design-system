@@ -41,9 +41,9 @@
     "@porsche-design-system/examples": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
-    "rollup": "^4.63.2",
+    "rollup": "^4.63.5",
     "rollup-plugin-dts": "^6.5.1",
-    "tsx": "^4.23.13",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   },
   "volta": {

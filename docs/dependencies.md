@@ -146,15 +146,10 @@ explicitly via the `overrides` field in the root `package.json` instead of disab
 
 Current overrides:
 
-- `@angular/build > vitest` is pinned to our root `vitest` version (`$vitest`). `@angular/build` declares an optional
-  peer on `vitest@^4.0.8`, which blocks Vitest 5 with `ERESOLVE`. The override is safe because we never use Angular's
-  Vitest builder: `packages/components-angular` runs `vitest` directly via its own config, and `angular.json` only uses
-  the `@angular/build:{application,dev-server,extract-i18n,karma,ng-packagr}` builders. **Drop this override** once
-  `@angular/build` widens its peer range to include Vitest 5.
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
-- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.61.0`). `@axe-core/playwright`
+- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.63.0`). `@axe-core/playwright`
   declares a wide peer (`playwright-core >= 1.0.0`), so on a clean lockfile regeneration npm auto-installs the
   **latest** `playwright-core` at the root while the held-back `playwright` nests its own matching copy. The resulting
   two copies of the Playwright type definitions break `next build`'s type check in the storefront
@@ -379,7 +374,7 @@ places that must be kept in sync when adding a new entry:
   [Strict peer dependency resolution](#strict-peer-dependency-resolution)). `syncpack` scans `overrides` too, so without
   this entry every update round would offer to bump it independently and reintroduce duplicated Playwright type
   definitions. Bump it **only together with** `@playwright/test`.
-- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
+- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.45.1.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
 
 ### How to update them
@@ -402,7 +397,9 @@ Angular splits into two concerns that are handled separately:
   `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep `typescript`
   within Angular's `MAX_TS_VERSION` (see
   `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back
-  for the round if a bump would exceed that ceiling.
+  for the round if a bump would exceed that ceiling. `syncpack` never offers the deprecated `@angular/animations` and
+  `@angular/platform-browser-dynamic`, so align their ranges with the rest of the family by hand (in
+  `packages/components-angular` and the StackBlitz Angular starter).
 - **Framework migrations** (code transforms) — owned by the
   [`packages/components-angular/scripts/ng-update.sh`](../packages/components-angular/scripts/ng-update.sh) wrapper
   (`npm run ng:update`).
@@ -419,8 +416,9 @@ Angular splits into two concerns that are handled separately:
 3. Bump the versions with `syncpack`: from the repo root run `npm run npm:update`, select the `@angular/*` family (and
    `ng-packagr`), then `npm install`.
 4. Apply the framework migrations only (the wrapper runs the schematics in the isolated install and copies the changed
-   source back into this package, leaving `package.json` and the lockfile to syncpack):
-   `npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>`.
+   source back into this package, leaving `package.json` and the lockfile to syncpack). `ng update` accepts only a
+   single package with `--migrate-only`, so run it once per package:
+   `npm run ng:update -- @angular/core --migrate-only --from=<old> --to=<new>`, then the same for `@angular/cli`.
 5. Review the migration diff (`git diff packages/components-angular`) and run `npm install` again from the project root.
 
 ## Updating jsdom and the popover polyfill

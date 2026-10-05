@@ -9,6 +9,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #f08e8d);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #f3c08b);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #85c0e4);
+	--ag-auto-height-max-body-height: var(--ag-inherited-auto-height-max-body-height, none);
 	--ag-auto-height-min-body-height: var(--ag-inherited-auto-height-min-body-height, 150px);
 	--ag-background-color: var(--ag-inherited-background-color, light-dark(#fff,hsl(225 66.7% 1.2%)));
 	--ag-border-color: var(--ag-inherited-border-color, light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45)));
@@ -378,6 +379,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
 	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
+	--ag-inherited-auto-height-max-body-height: var(--ag-auto-height-max-body-height);
 	--ag-inherited-auto-height-min-body-height: var(--ag-auto-height-min-body-height);
 	--ag-inherited-background-color: var(--ag-background-color);
 	--ag-inherited-border-color: var(--ag-border-color);
@@ -859,6 +861,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "advancedFilterBuilderJoinPillColor": "#f08e8d",
     "advancedFilterBuilderOptionPillColor": "#f3c08b",
     "advancedFilterBuilderValuePillColor": "#85c0e4",
+    "autoHeightMaxBodyHeight": "none",
     "autoHeightMinBodyHeight": 150,
     "backgroundColor": "light-dark(#fff,hsl(225 66.7% 1.2%))",
     "borderColor": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))",

@@ -28,7 +28,7 @@ test('walks the steps one at a time and ends on skip', async ({ page }) => {
 
   const steps = page.locator('[data-tour-step]');
   const openStates = () =>
-    steps.evaluateAll<boolean[], HTMLElement & { open?: boolean }>((elements) =>
+    steps.evaluateAll((elements: (HTMLElement & { open?: boolean })[]) =>
       elements.map((element) => element.open === true)
     );
   // Scoped to the step under test rather than picked by `:visible`, so the control clicked is unambiguous.
@@ -55,8 +55,8 @@ test('offers the tour again after it ended', async ({ page }) => {
 
   const steps = page.locator('[data-tour-step]');
   const openCount = () =>
-    steps.evaluateAll<number, HTMLElement & { open?: boolean }>(
-      (elements) => elements.filter((element) => element.open === true).length
+    steps.evaluateAll(
+      (elements: (HTMLElement & { open?: boolean })[]) => elements.filter((element) => element.open === true).length
     );
 
   const skip = steps.first().locator('[data-tour="skip"]');
