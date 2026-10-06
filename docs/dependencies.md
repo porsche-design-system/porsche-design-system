@@ -25,8 +25,8 @@ across all workspaces.
    [Platform-specific native bindings in the lockfile](#platform-specific-native-bindings-in-the-lockfile).
 
 Some dependencies (Playwright, Stencil, internal packages) are intentionally excluded from this flow and updated
-manually — see [Held-back dependencies](#held-back-dependencies). Angular **versions** now go through this normal
-syncpack flow; only Angular's framework **migrations** are applied separately — see
+manually — see [Held-back dependencies](#held-back-dependencies). Angular **versions** go through this normal syncpack
+flow; only Angular's framework **migrations** are applied separately — see
 [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations).
 
 Releases younger than **7 days** are deliberately invisible to this flow — see
@@ -146,15 +146,10 @@ explicitly via the `overrides` field in the root `package.json` instead of disab
 
 Current overrides:
 
-- `@angular/build > vitest` is pinned to our root `vitest` version (`$vitest`). `@angular/build` declares an optional
-  peer on `vitest@^4.0.8`, which blocks Vitest 5 with `ERESOLVE`. The override is safe because we never use Angular's
-  Vitest builder: `packages/components-angular` runs `vitest` directly via its own config, and `angular.json` only uses
-  the `@angular/build:{application,dev-server,extract-i18n,karma,ng-packagr}` builders. **Drop this override** once
-  `@angular/build` widens its peer range to include Vitest 5.
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
-- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.61.0`). `@axe-core/playwright`
+- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.63.0`). `@axe-core/playwright`
   declares a wide peer (`playwright-core >= 1.0.0`), so on a clean lockfile regeneration npm auto-installs the
   **latest** `playwright-core` at the root while the held-back `playwright` nests its own matching copy. The resulting
   two copies of the Playwright type definitions break `next build`'s type check in the storefront
@@ -208,7 +203,7 @@ contract, and allow duplicate tool versions across workspaces. Keep them.
 
 - For a **genuinely fixable** advisory, add a pinned [`overrides`](#strict-peer-dependency-resolution) entry in the root
   `package.json` (same pattern as `madge > typescript`) and run `npm install`.
-- For an advisory in a **held-back** dependency (Angular, Stencil, Playwright — see
+- For an advisory in a **held-back** dependency (Stencil, Playwright — see
   [Held-back dependencies](#held-back-dependencies)), wait for the upstream-sanctioned upgrade path.
 - Never reach for `--legacy-peer-deps` or `--force`.
 - After adding/changing overrides, delete `package-lock.json` and `node_modules` and re-run `npm install`
@@ -224,17 +219,17 @@ advisory with **no fixed release**. It was replaced with the maintained drop-in 
 generators and `minifyHTML()` were made `async` accordingly. Output is byte-for-byte identical, so the generated
 `partials.tsx` is unchanged.
 
-### Accepted advisories (held-back build tooling)
+### Accepted advisories (dev-only build tooling)
 
-The remaining advisories all originate from **dev-only** build tooling we hold back, are not reachable from shipped
-package output, and several are Windows-dev-server-only:
+The remaining advisories all originate from **dev-only** build tooling, are not reachable from shipped package output,
+and several are Windows-dev-server-only:
 
 - `@angular/build`, `@angular/compiler-cli`, `@babel/core` (pulled by Angular) — Angular **versions** are bumped via
   syncpack, but only as upstream ships fixes; framework migrations are applied via the `ng:update` wrapper (see
   [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations)).
-- `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` (held back) and the React Router dev server
-  (`@react-router/dev` → `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These
-  clear once Angular and `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
+- `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` and the React Router dev server (`@react-router/dev` →
+  `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These clear once Angular and
+  `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
 
 ## Build tooling for `--dts` libraries
 
@@ -349,8 +344,8 @@ merely widens a peer range can therefore drag an unrelated major into the tree, 
 that major.
 
 `karma-jasmine-html-reporter@2.3.0` widened its `jasmine-core` peer from `^4 || ^5 || ^6` to `^4 || ^5 || ^6 || ^7`. npm
-then resolved `jasmine-core` to `7.0.2` at the root, which breaks zone.js' jasmine patch and fails the Angular karma
-suite with:
+then resolved `jasmine-core` to `7.0.2` at the root, which broke the jasmine patch of zone.js, loaded by the Angular
+karma suite at the time, and failed the suite with:
 
 ```text
 TypeError: Cannot assign to read only property 'describe' of object '[object Object]'
@@ -359,7 +354,7 @@ TypeError: Cannot assign to read only property 'describe' of object '[object Obj
 `jasmine-core` is therefore declared explicitly as `~6.3.0` in
 [`packages/components-angular`](../packages/components-angular/package.json), matching `@types/jasmine` and the Angular
 starter template. **Do not remove it** — without it the major returns silently on the next update round. Bump it only
-together with `@types/jasmine` and after confirming zone.js supports that jasmine major.
+together with `@types/jasmine` and after confirming the Angular karma suite passes with that jasmine major.
 
 ## Held-back dependencies
 
@@ -379,29 +374,32 @@ places that must be kept in sync when adding a new entry:
   [Strict peer dependency resolution](#strict-peer-dependency-resolution)). `syncpack` scans `overrides` too, so without
   this entry every update round would offer to bump it independently and reintroduce duplicated Playwright type
   definitions. Bump it **only together with** `@playwright/test`.
-- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
+- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.45.1.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
-
-> **`jsdom` and `@oddbird/popover-polyfill` are no longer held back.** They are bumped by `syncpack` like any other
-> dependency, but they remain **coupled** — see
-> [Updating jsdom and the popover polyfill](#updating-jsdom-and-the-popover-polyfill).
-
-> **Angular is no longer held back for versions.** `@angular/*`, `ng-packagr` and `zone.js` are now bumped by `syncpack`
-> like any other dependency (`npm run npm:update`). Only Angular's **framework migration schematics** need special
-> handling — see [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations). `typescript`
-> must still stay within Angular's `MAX_TS_VERSION`.
 
 ### How to update them
 
-### Updating Angular (versions vs. migrations)
+**`@playwright/test`** — bump the exact pin deliberately, then update the Docker image tag
+(`mcr.microsoft.com/playwright:vX.Y.Z-jammy`) in `docker-compose.yml` (×2) and `.github/workflows/contribution.yml` (×4)
+to match, and regenerate/verify the committed VRT snapshots so browser binaries and screenshots stay in sync. A mismatch
+between the installed Playwright and the Docker image makes CI fail.
+
+**`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
+dependency; otherwise `patch-package` fails on `postinstall`.
+
+**`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
+
+## Updating Angular (versions vs. migrations)
 
 Angular splits into two concerns that are handled separately:
 
-- **Version ranges** (`@angular/*`, `ng-packagr`, `zone.js`) — owned by `syncpack`. Bump them via `npm run npm:update`
-  (pick the `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep
-  `typescript` within Angular's `MAX_TS_VERSION` (see
+- **Version ranges** (`@angular/*`, `ng-packagr`) — owned by `syncpack`. Bump them via `npm run npm:update` (pick the
+  `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep `typescript`
+  within Angular's `MAX_TS_VERSION` (see
   `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back
-  for the round if a bump would exceed that ceiling.
+  for the round if a bump would exceed that ceiling. `syncpack` never offers the deprecated `@angular/animations` and
+  `@angular/platform-browser-dynamic`, so align their ranges with the rest of the family by hand (in
+  `packages/components-angular` and the StackBlitz Angular starter).
 - **Framework migrations** (code transforms) — owned by the
   [`packages/components-angular/scripts/ng-update.sh`](../packages/components-angular/scripts/ng-update.sh) wrapper
   (`npm run ng:update`).
@@ -416,26 +414,17 @@ Angular splits into two concerns that are handled separately:
 1. `cd packages/components-angular`
 2. `npm run ng:update` — lists available Angular updates/migrations (informational; no changes are written).
 3. Bump the versions with `syncpack`: from the repo root run `npm run npm:update`, select the `@angular/*` family (and
-   `ng-packagr` / `zone.js`), then `npm install`.
+   `ng-packagr`), then `npm install`.
 4. Apply the framework migrations only (the wrapper runs the schematics in the isolated install and copies the changed
-   source back into this package, leaving `package.json` and the lockfile to syncpack):
-   `npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>`.
+   source back into this package, leaving `package.json` and the lockfile to syncpack). `ng update` accepts only a
+   single package with `--migrate-only`, so run it once per package:
+   `npm run ng:update -- @angular/core --migrate-only --from=<old> --to=<new>`, then the same for `@angular/cli`.
 5. Review the migration diff (`git diff packages/components-angular`) and run `npm install` again from the project root.
 
-**`@playwright/test`** — bump the exact pin deliberately, then update the Docker image tag
-(`mcr.microsoft.com/playwright:vX.Y.Z-jammy`) in `docker-compose.yml` (×2) and `.github/workflows/contribution.yml` (×4)
-to match, and regenerate/verify the committed VRT snapshots so browser binaries and screenshots stay in sync. A mismatch
-between the installed Playwright and the Docker image makes CI fail.
+## Updating jsdom and the popover polyfill
 
-**`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
-dependency; otherwise `patch-package` fails on `postinstall`.
-
-**`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
-
-### Updating jsdom and the popover polyfill
-
-`jsdom` and `@oddbird/popover-polyfill` are not held back, but they must be bumped **together** and verified with a
-rebuild. Three properties are easy to break:
+`jsdom` and `@oddbird/popover-polyfill` must be bumped **together** and verified with a rebuild. Three properties are
+easy to break:
 
 1. **They are coupled.** Since `v0.7` the popover polyfill calls `CSS.escape` while applying its styles, and jsdom only
    exposes a `CSS` namespace from `v30` onwards. Bumping the polyfill alone on an older jsdom makes every

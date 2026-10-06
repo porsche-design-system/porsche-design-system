@@ -10,14 +10,16 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   hasDescription,
   hasMessage,
   hasPropValueChanged,
+  parseAndGetAriaAttributes,
   setAriaIDREF,
   syncFormState,
   validateProps,
@@ -29,6 +31,7 @@ import { getComponentCss } from './textarea-styles';
 import {
   TEXTAREA_RESIZE,
   TEXTAREA_WRAPS,
+  type TextareaAriaAttribute,
   type TextareaBlurEventDetail,
   type TextareaChangeEventDetail,
   type TextareaInputEventDetail,
@@ -59,6 +62,7 @@ const propTypes: PropTypes<typeof Textarea> = {
   resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<TextareaAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -139,6 +143,9 @@ export class Textarea {
 
   /** Makes the textarea read-only so users cannot modify the value, while still including it in form submissions. */
   @Prop() public readOnly?: boolean = false;
+
+  /** Sets additional ARIA attributes on the native textarea to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<TextareaAriaAttribute>;
 
   /** Emitted when the textarea loses focus after its value was changed, equivalent to the native `change` event. */
   @Event({ bubbles: true }) public change: EventEmitter<TextareaChangeEventDetail>;
@@ -225,6 +232,7 @@ export class Textarea {
         />
         <div class="wrapper">
           <textarea
+            {...parseAndGetAriaAttributes(this.aria)}
             aria-describedby={setAriaIDREF(textareaMessageId, textareaDescriptionId)}
             aria-invalid={this.state === 'error' ? 'true' : null}
             id={id}

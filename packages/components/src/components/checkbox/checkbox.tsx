@@ -10,16 +10,18 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getPrefixedTagNames,
   hasLabel,
   hasMessage,
   hasPropValueChanged,
   isDisabledOrLoading,
+  parseAndGetAriaAttributes,
   setAriaIDREF,
   syncFormState,
   validateProps,
@@ -28,7 +30,12 @@ import { Label } from '../common/label/label';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './checkbox-styles';
-import type { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from './checkbox-utils';
+import type {
+  CheckboxAriaAttribute,
+  CheckboxBlurEventDetail,
+  CheckboxChangeEventDetail,
+  CheckboxState,
+} from './checkbox-utils';
 
 const propTypes: PropTypes<typeof Checkbox> = {
   label: AllowedTypes.string,
@@ -44,6 +51,7 @@ const propTypes: PropTypes<typeof Checkbox> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   loading: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<CheckboxAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
@@ -101,6 +109,9 @@ export class Checkbox {
 
   /** Reduces the checkbox size and spacing for a more compact layout. */
   @Prop() public compact?: boolean = false;
+
+  /** Sets additional ARIA attributes on the native checkbox to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<CheckboxAriaAttribute>;
 
   /** Emitted when the user changes the checked state of the checkbox. */
   @Event({ bubbles: true }) public change: EventEmitter<CheckboxChangeEventDetail>;
@@ -210,6 +221,7 @@ export class Checkbox {
             <input
               type="checkbox"
               id={id}
+              {...parseAndGetAriaAttributes(this.aria)}
               aria-describedby={setAriaIDREF(this.loading && loadingId, selectMessageId)}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-disabled={this.loading || this.disabled ? 'true' : null}

@@ -3,6 +3,7 @@
 import {
   type KeyboardEvent as ReactKeyboardEvent,
   type PointerEvent as ReactPointerEvent,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -24,7 +25,10 @@ type UseResizeHandleOptions = {
 type UseResizeHandle = {
   /** Ref for the track element that constrains the maximum width. */
   trackRef: React.RefObject<HTMLDivElement | null>;
-  /** Current preview width in pixels, or `null` when full width. */
+  /**
+   * Current preview width in pixels as rendered, or `null` when full width. A track narrower than the chosen width
+   * caps it; the chosen width returns once the track grows again.
+   */
   width: number | null;
   /** Sets the preview width (use `null` to reset to full width). */
   setWidth: (width: number | null) => void;
@@ -61,10 +65,33 @@ export const useResizeHandle = ({
   const trackRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState<number | null>(null); // null = full width
   const [isResizing, setIsResizing] = useState(false);
+  // The track width as last observed while visible. Updating it re-renders on every resize of the track, e.g. with the
+  // window, so the width and the ARIA values follow it.
+  const [observedTrackWidth, setObservedTrackWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+    const observer = new ResizeObserver(() => {
+      // A hidden track measures 0, which is no width to cap the preview at.
+      if (track.clientWidth > 0) {
+        setObservedTrackWidth(track.clientWidth);
+      }
+    });
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, []);
 
   const getMaxWidth = (): number | null => {
     const track = trackRef.current;
-    return track ? track.clientWidth - maxWidthOffset : null;
+    if (!track) {
+      return null;
+    }
+    // While hidden, e.g. behind another tab, the track measures 0 – the width it was last shown at still applies.
+    const trackWidth = track.clientWidth > 0 ? track.clientWidth : observedTrackWidth;
+    return trackWidth === null ? null : trackWidth - maxWidthOffset;
   };
 
   // Rounds to whole pixels so the stored width, the announced ARIA value and the rendered CSS width stay identical
@@ -117,8 +144,8 @@ export const useResizeHandle = ({
     if (maxWidth === null) {
       return;
     }
-    // When full width, start from the current rendered width so the first key press feels natural.
-    const current = width ?? maxWidth;
+    // Start from the rendered width – the full one, or a chosen one the track caps – so the first key press shows.
+    const current = width === null ? maxWidth : Math.min(width, maxWidth);
     let next: number | null | undefined;
 
     // In RTL the handle sits on the left and the preview grows leftwards, so mirror the horizontal arrow keys
@@ -155,13 +182,14 @@ export const useResizeHandle = ({
   };
 
   const maxWidth = getMaxWidth() ?? undefined;
+  const renderedWidth = width !== null && maxWidth !== undefined ? Math.min(width, maxWidth) : width;
   // `role="slider"` requires a valid `aria-valuenow`. Before the track ref is attached (first render) both
   // `width` and `maxWidth` are unknown, so fall back to `minWidth` — which is always defined — to guarantee a number.
-  const valueNow = width ?? maxWidth ?? minWidth;
+  const valueNow = renderedWidth ?? maxWidth ?? minWidth;
 
   return {
     trackRef,
-    width,
+    width: renderedWidth,
     setWidth,
     isResizing,
     handleProps: {

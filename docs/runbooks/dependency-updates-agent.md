@@ -44,8 +44,8 @@ These are excluded from the `syncpack` flow — they are ignored by `syncpack` v
 by selecting them in `npm run npm:update`.** Handle them as noted:
 
 - `@porsche-design-system/**` — internal workspace packages, versioned by the release process. **Never touch here.**
-- `@angular/**`, `ng-packagr`, `zone.js` — **versions** go through syncpack (`npm run npm:update`) like everything else;
-  only Angular's framework **migrations** are applied separately in
+- `@angular/**`, `ng-packagr` — **versions** go through syncpack (`npm run npm:update`) like everything else; only
+  Angular's framework **migrations** are applied separately in
   [step 3](#3-apply-angular-framework-migrations-after-the-syncpack-version-bump).
 - `typescript` — may move only **within** Angular's `MAX_TS_VERSION` ceiling (see step 3); otherwise keep it held back
   this round.
@@ -76,6 +76,11 @@ description.
 npm install
 ```
 
+If this fails with `ETARGET … @porsche-design-system/components-*@<version> with a date before …` right after a release,
+the local wrapper `dist/*-wrapper` folders are stale (built from the previous release) and the new version is still
+inside the release-age cooldown on the registry. Delete the four `packages/components-*/dist/*-wrapper` folders (they
+are build output, as on a fresh CI checkout) and re-run `npm ci`; the next `npm run build` recreates them.
+
 ### 2. Check what is outdated
 
 ```bash
@@ -92,8 +97,10 @@ via `min-release-age` in [`.npmrc`](../../.npmrc). A version withheld this week 
 
 Angular splits into two concerns:
 
-- **Versions** (`@angular/*`, `ng-packagr`, `zone.js`) are bumped by syncpack like everything else, in
-  [step 4](#4-apply-updates-with-syncpack). Select the `@angular/*` family together so they move in lockstep.
+- **Versions** (`@angular/*`, `ng-packagr`) are bumped by syncpack like everything else, in
+  [step 4](#4-apply-updates-with-syncpack). Select the `@angular/*` family together so they move in lockstep. `syncpack`
+  never offers the deprecated `@angular/animations` and `@angular/platform-browser-dynamic`; align their ranges with the
+  rest of the family by hand — the only exception to the hand-edit rule.
 - **Framework migrations** (code transforms) are applied here, by the
   [`ng-update.sh`](../../packages/components-angular/scripts/ng-update.sh) wrapper (`npm run ng:update`).
 
@@ -109,8 +116,10 @@ do). For a major upgrade with framework migrations, prefer handing off — see
 ```bash
 cd packages/components-angular
 npm run ng:update                                                     # list available updates/migrations (read-only)
-# after the syncpack bump + `npm install` (step 4/5), apply migrations only:
-npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>
+# after the syncpack bump + `npm install` (step 4/5), apply migrations only — one package per run,
+# `ng update` rejects multiple packages with `--migrate-only`:
+npm run ng:update -- @angular/core --migrate-only --from=<old> --to=<new>
+npm run ng:update -- @angular/cli --migrate-only --from=<old> --to=<new>
 cd ../..
 git diff packages/components-angular                                  # review migration changes
 ```
@@ -269,8 +278,8 @@ syncpack steps, just verify these files look correct (don't hand-edit versions s
 
 **If syncpack bumped Angular**, also align the Angular template
 (`packages/storefront/projects/stackblitz/src/angular/package.json`) to the new versions: `@angular/*`,
-`@angular/build`, `@angular/cli`, `@angular/compiler-cli`, `zone.js`, and `typescript` (respecting `MAX_TS_VERSION`).
-Otherwise leave them as-is.
+`@angular/build`, `@angular/cli`, `@angular/compiler-cli`, and `typescript` (respecting `MAX_TS_VERSION`). Otherwise
+leave them as-is.
 
 Verify the bundle still generates (this writes the git-ignored `generated/bundle.ts`; **do not commit** it):
 

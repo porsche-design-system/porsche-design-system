@@ -41,9 +41,9 @@
     "@rollup/plugin-typescript": "^12.3.0",
     "change-case": "^5.4.4",
     "jss": "^10.10.0",
-    "rollup": "^4.63.2",
+    "rollup": "^4.63.5",
     "rollup-plugin-dts": "^6.5.1",
-    "tsx": "^4.23.13",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   },
   "volta": {

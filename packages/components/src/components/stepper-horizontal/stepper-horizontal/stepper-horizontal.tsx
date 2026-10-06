@@ -13,11 +13,11 @@ import { getClickedItem } from '../../../utils/dom/getClickedItem';
 import { getComponentCss } from './stepper-horizontal-styles';
 import {
   getIndexOfStepWithStateCurrent,
+  logErrorIfMultipleCurrentStates,
   STEPPER_HORIZONTAL_SIZES,
   type StepperHorizontalSize,
   type StepperHorizontalUpdateEventDetail,
   scrollStepperHorizontalItemIntoView,
-  throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
@@ -42,12 +42,10 @@ export class StepperHorizontal {
 
   private scroller: HTMLElement;
   private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
-  private slot: HTMLSlotElement;
   private resizeObserver: ResizeObserver;
 
   public disconnectedCallback(): void {
     this.resizeObserver?.disconnect();
-    this.slot?.removeEventListener('slotchange', this.onSlotChange);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -56,6 +54,7 @@ export class StepperHorizontal {
 
   public componentWillLoad(): void {
     this.defineStepperHorizontalItems();
+    this.validateStepperHorizontalItems();
   }
 
   public componentDidLoad(): void {
@@ -67,8 +66,6 @@ export class StepperHorizontal {
       false
     );
 
-    // it would be better to use `<slot onslotchange={() => {}} />` in jsx but that doesn't work reliable or triggers initially when component is rendered via js framework
-    this.slot.addEventListener('slotchange', this.onSlotChange);
     this.resizeObserver = new ResizeObserver(() => {
       // scroll into view in case the current step is not centered after resize
       scrollStepperHorizontalItemIntoView(
@@ -93,10 +90,7 @@ export class StepperHorizontal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
-
-    throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
-    throwIfChildCountIsExceeded(this.host, 9);
-    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+    logErrorIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -108,7 +102,7 @@ export class StepperHorizontal {
           onClick={this.onClickScroller}
           ref={(el: HTMLElement) => (this.scroller = el)}
         >
-          <slot ref={(el: HTMLSlotElement) => (this.slot = el)} />
+          <slot onSlotchange={this.onSlotChange} />
         </PrefixedTagNames.pScroller>
       </Host>
     );
@@ -116,6 +110,11 @@ export class StepperHorizontal {
 
   private defineStepperHorizontalItems = (): void => {
     this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
+  };
+
+  private validateStepperHorizontalItems = (): void => {
+    throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
+    throwIfChildCountIsExceeded(this.host, 9);
   };
 
   private onClickScroller = (e: MouseEvent): void => {
@@ -131,12 +130,17 @@ export class StepperHorizontal {
   };
 
   private onSlotChange = (): void => {
+    const prevItems = this.stepperHorizontalItems;
     this.defineStepperHorizontalItems();
-    // scroll the current step into view after slot change in case the current step has changed or is not centered anymore
-    scrollStepperHorizontalItemIntoView(
-      getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
-      this.scroller,
-      this.stepperHorizontalItems
-    );
+    // slotchange also fires for the initial slot assignment, so only scroll when the slotted steps actually changed
+    if (hasPropValueChanged(this.stepperHorizontalItems, prevItems)) {
+      // scroll the current step into view after slot change in case the current step has changed or is not centered anymore
+      scrollStepperHorizontalItemIntoView(
+        getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
+        this.scroller,
+        this.stepperHorizontalItems
+      );
+    }
+    this.validateStepperHorizontalItems();
   };
 }

@@ -318,6 +318,58 @@ test.describe('keyboard behavior', () => {
       await expect(options.nth(1)).toBeFocused();
     });
 
+    test('should skip loading option and focus 1st available element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a', loading: true }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should skip option disabled after load and focus 1st available element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await setProperty(options.nth(0), 'disabled', true);
+      await waitForStencilLifecycle(page);
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should focus option enabled after load on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [
+            { value: 'a', disabled: true },
+            { value: 'b', disabled: true },
+          ],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await setProperty(options.nth(1), 'disabled', false);
+      await waitForStencilLifecycle(page);
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
     test('should skip disabled and loading options when pressing ArrowUp/ArrowDown', async ({ page }) => {
       await initRadioGroup(page, {
         props: { value: 'a', name: 'options', label: 'Some Label' },
@@ -864,5 +916,50 @@ test.describe('form', () => {
 
     await waitForStencilLifecycle(page);
     expect(getConsoleErrorsAmount()).toBe(0);
+  });
+});
+
+test.describe('option value set after initial render', () => {
+  // Frameworks like Angular can connect an option before its `value` binding is applied (#4743)
+  test('should render option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" label="Some label"><p-radio-group-option label="Some Label A"></p-radio-group-option></p-radio-group>`
+    );
+    const option = getFirstOptionHost(page);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option.locator('input')).toHaveValue('a');
+  });
+
+  test('should select option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" label="Some label" value="a"><p-radio-group-option label="Some Label A"></p-radio-group-option></p-radio-group>`
+    );
+    const option = getFirstOptionHost(page);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('input')).toBeChecked();
+  });
+
+  test('should select option when its value changes to match the radio group value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" label="Some label" value="a"><p-radio-group-option label="Some Label A" value="b"></p-radio-group-option></p-radio-group>`
+    );
+    const option = getFirstOptionHost(page);
+    await expect(option.locator('input')).not.toBeChecked();
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('input')).toBeChecked();
   });
 });

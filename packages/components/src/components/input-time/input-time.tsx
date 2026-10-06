@@ -1,8 +1,9 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -14,6 +15,7 @@ import {
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-time-styles';
 import type {
+  InputTimeAriaAttribute,
   InputTimeBlurEventDetail,
   InputTimeChangeEventDetail,
   InputTimeInputEventDetail,
@@ -38,6 +40,7 @@ const propTypes: PropTypes<typeof InputTime> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<InputTimeAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -108,6 +111,9 @@ export class InputTime {
 
   /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  /** Sets additional ARIA attributes on the native input to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<InputTimeAriaAttribute>;
 
   /** Emitted when the input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTimeChangeEventDetail>;
@@ -218,6 +224,7 @@ export class InputTime {
         step={this.step}
         loading={this.loading}
         initialLoading={this.initialLoading}
+        aria={this.aria}
         {...(hasShowPickerSupport() && {
           end: (
             <PrefixedTagNames.pButtonPure

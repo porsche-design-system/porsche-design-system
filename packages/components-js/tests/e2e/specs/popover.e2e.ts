@@ -341,13 +341,14 @@ test.describe('mouse behavior', () => {
       const strongEl = page.locator('strong');
       await strongEl.click({ clickCount: 2 });
 
-      // Some browsers (e.g. Firefox) include surrounding whitespace in the double-click selection, so compare trimmed.
+      // Firefox (since v155) extends the double-click selection to the text of the preceding slotted button and
+      // includes surrounding whitespace, so only assert that the selection ends with the double-clicked word.
       const selection = await page.evaluate(() => {
         const selection = window.getSelection();
         if (!selection) throw new Error('no selection');
         return selection.toString();
       });
-      expect(selection.trim()).toBe('strong');
+      expect(selection.trim()).toMatch(/(^|\s)strong$/);
     });
   });
 });

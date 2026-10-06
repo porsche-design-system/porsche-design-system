@@ -55,10 +55,10 @@ const componentSourceUrl =
 
 const renderCoverageSection = (): string =>
   [
-    'This skill currently covers components, global stylesheets and theming, tokens, styling integrations, and the ' +
-      'deprecated API index. It does ' +
+    'This skill currently covers components, global stylesheets and theming, tokens, styling integrations, patterns ' +
+      'and templates, and the deprecated API index. It does ' +
       'not yet include complete getting-started, setup, and installation guidance; the v3-to-v4 migration guide; ' +
-      'the changelog; partials; patterns and templates; the AG Grid theme; or the Storefront\u2019s Must Know and Help sections. ' +
+      'the changelog; partials; the AG Grid theme; or the Storefront\u2019s Must Know and Help sections.',
       'Page-level WCAG 2.2 AA and EN 301 549 composition is not in this skill. If the APM skill `accessible-frontend` is installed, load it.',
     '',
     `Before using documentation outside this skill or the installed package, match it to the installed PDS version. ` +
@@ -67,7 +67,7 @@ const renderCoverageSection = (): string =>
       '`/v4/` always serve the latest v4 release and may describe APIs or setup introduced after the installed version. ' +
       'Use them only as a fallback and verify relevant details against the installed package.',
     '',
-    'For runnable patterns and templates, consult the ' +
+    'For runnable starter apps per framework, consult the ' +
       '[Porsche Design System examples repository](https://github.com/porsche-design-system/examples), selecting a ' +
       'release tag or commit that matches the installed package instead of assuming its default branch is compatible. ' +
       'For release-specific changes, read `../../CHANGELOG.md`.',
@@ -126,6 +126,7 @@ export type SkillMdSections = {
   stylesheets: string;
   tokens: string;
   styling: string;
+  examples: string;
   deprecations: string;
 };
 
@@ -162,6 +163,10 @@ export const buildSkillMd = (framework: Framework, sections: SkillMdSections): s
     '## Styling',
     '',
     sections.styling,
+    '',
+    '## Patterns and templates',
+    '',
+    sections.examples,
     '',
     '## Deprecations',
     '',

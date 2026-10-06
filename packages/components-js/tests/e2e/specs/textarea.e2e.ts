@@ -200,6 +200,23 @@ test.describe('counter', () => {
   });
 });
 
+test.describe('aria', () => {
+  test('should forward `aria` prop to the native textarea', async ({ page }) => {
+    await initTextarea(page, {
+      props: {
+        name: 'comment',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const textarea = getTextarea(page);
+    await expect(textarea).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(textarea).toHaveAttribute('aria-description', 'Accessible description');
+  });
+});
+
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';

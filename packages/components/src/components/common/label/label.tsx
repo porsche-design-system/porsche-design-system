@@ -17,6 +17,7 @@ type LabelProps = {
    * Clicks on the `label-after` slot are also stopped so they do not trigger host handlers (e.g. radio selection).
    */
   stopClickPropagation?: boolean;
+  onClick?: (event: MouseEvent) => void;
 };
 
 export const Label: FunctionalComponent<LabelProps> = ({
@@ -29,11 +30,13 @@ export const Label: FunctionalComponent<LabelProps> = ({
   isLoading,
   isDisabled,
   stopClickPropagation,
+  onClick,
 }) => {
   const handleLabelClick = (e: MouseEvent) => {
     if (stopClickPropagation) {
       e.stopPropagation();
     }
+    onClick?.(e);
   };
 
   const handleLabelAfterClick = (e: MouseEvent) => {

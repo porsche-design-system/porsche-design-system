@@ -1,6 +1,11 @@
 import type { ComponentRosterEntry } from '@skills/knowledge/components/reference';
 import { renderComponentsSection } from '@skills/knowledge/components/section';
-import { renderStylesheetsSection, renderStylingSection, renderTokensSection } from '@skills/knowledge/packageSkills';
+import {
+  renderExamplesSection,
+  renderStylesheetsSection,
+  renderStylingSection,
+  renderTokensSection,
+} from '@skills/knowledge/packageSkills';
 import {
   ACTIVATION_DESCRIPTION,
   renderDeprecationsSection,
@@ -17,6 +22,7 @@ const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntr
     stylesheets: renderStylesheetsSection(framework),
     tokens: renderTokensSection(),
     styling: renderStylingSection(),
+    examples: renderExamplesSection(framework),
     deprecations: renderDeprecationsSection(),
   });
 
@@ -42,7 +48,7 @@ describe('buildSkillMd', () => {
     const markdown = buildSkillMd('react', [{ tag: 'p-button', summary: 'x' }]);
 
     expect(markdown).toMatch(
-      /## Coverage and fallbacks[\s\S]*## Components[\s\S]*## Server-side rendering \(SSR\)[\s\S]*## Stylesheets[\s\S]*## Tokens[\s\S]*## Styling[\s\S]*## Deprecations/
+      /## Coverage and fallbacks[\s\S]*## Components[\s\S]*## Server-side rendering \(SSR\)[\s\S]*## Stylesheets[\s\S]*## Tokens[\s\S]*## Styling[\s\S]*## Patterns and templates[\s\S]*## Deprecations/
     );
     expect(markdown).not.toMatch(/## (Getting started|Reference map|Core rules|Partials|Upgrades & migration)/);
   });
@@ -64,6 +70,23 @@ describe('buildSkillMd', () => {
     expect(markdown).toContain(
       'Page-level WCAG 2.2 AA and EN 301 549 composition is not in this skill. If the APM skill `accessible-frontend` is installed, load it.'
     );
+  });
+
+  it('states that the examples need converting, except for js', () => {
+    expect(buildSkillMd('react')).toContain('**Convert to React before use.**');
+    expect(buildSkillMd('angular')).toContain('`@porsche-design-system/components-angular`');
+    expect(buildSkillMd('vue')).toContain('into Vue state and event handlers');
+    expect(buildSkillMd('js')).not.toContain('Convert to');
+    expect(buildSkillMd('js')).toContain('**Vanilla HTML and JavaScript.**');
+  });
+
+  it('links the patterns and templates from SKILL.md', () => {
+    const markdown = buildSkillMd('react');
+
+    expect(markdown).toContain('[examples.md](references/examples.md)');
+    expect(markdown).toMatch(/- \*\*Patterns:\*\* \[[^\]]+\]\(references\/examples\/patterns\/[^)]+\.md\)/);
+    expect(markdown).toMatch(/- \*\*Templates:\*\* \[[^\]]+\]\(references\/examples\/templates\/[^)]+\.md\)/);
+    expect(markdown).not.toContain('partials; patterns and templates;');
   });
 
   it('renders SSR guidance only for React', () => {

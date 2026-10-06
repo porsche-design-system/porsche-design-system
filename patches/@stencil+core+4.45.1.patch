@@ -1,0 +1,60 @@
+diff --git a/node_modules/@stencil/core/compiler/stencil.js b/node_modules/@stencil/core/compiler/stencil.js
+index 4562415..80835ed 100644
+--- a/node_modules/@stencil/core/compiler/stencil.js
++++ b/node_modules/@stencil/core/compiler/stencil.js
+@@ -252072,7 +252072,7 @@ function createLazyAttachInternalsBinding(cmp) {
+                     import_typescript4.default.factory.createIdentifier(HOST_REF_ARG),
+                     import_typescript4.default.factory.createIdentifier("$hostElement$")
+                   ),
+-                  import_typescript4.default.factory.createIdentifier("attachInternals")
++                  import_typescript4.default.factory.createIdentifier("attachInternals?.")
+                 ),
+                 void 0,
+                 []
+diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
+index b79941e..3ed6480 100644
+--- a/node_modules/@stencil/core/internal/client/index.js
++++ b/node_modules/@stencil/core/internal/client/index.js
+@@ -397,6 +397,13 @@ function createShadowRoot(cmpMeta) {
+       opts.slotAssignment = "manual";
+     }
+   }
++
++  //========= PDS PATCH START
++  // Temporary workaround while we wait for Stencil to natively support cloning.
++  // https://github.com/stenciljs/core/issues/6833
++  opts.clonable = true;
++  //========= PDS PATCH END
++
+   const shadowRoot = this.attachShadow(opts);
+   if (globalStyleSheet === void 0) globalStyleSheet = (_a = createStyleSheetIfNeededAndSupported(globalStyles)) != null ? _a : null;
+   if (globalStyleSheet) {
+@@ -3319,6 +3326,14 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
+   if (BUILD21.isDev) {
+     hostRef.$flags$ |= 2048 /* devOnRender */;
+   }
++
++  //========= PDS PATCH START
++  if (elm.hasDSR) {
++    elm.shadowRoot.innerHTML = '';
++    delete elm.hasDSR;
++  }
++  //========= PDS PATCH END
++
+   if (BUILD21.hydrateServerSide) {
+     await callRender(hostRef, instance, elm, isInitialLoad);
+   } else {
+@@ -4334,6 +4349,13 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
+           registerHost(self, cmpMeta);
+           if (BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
+             if (supportsShadow) {
++
++              //========= PDS PATCH START
++              if (self.shadowRoot) {
++                self.hasDSR = true;
++              }
++              //========= PDS PATCH END
++
+               if (!self.shadowRoot) {
+                 createShadowRoot.call(self, cmpMeta);
+               } else {

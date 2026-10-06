@@ -7,10 +7,10 @@
 - text: ","
 - emphasis: emphasized
 - text: and italic text.
-- textbox "1-4"
-- textbox "2-4"
-- textbox "3-4"
-- textbox "4-4"
+- textbox "1 of 4"
+- textbox "2 of 4"
+- textbox "3 of 4"
+- textbox "4 of 4"
 - status:
   - text: Slotted success message. And some slotted and deeply nested bold,
   - strong: strong

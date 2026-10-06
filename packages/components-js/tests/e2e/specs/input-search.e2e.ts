@@ -144,6 +144,8 @@ test.describe('aria', () => {
           'aria-expanded': true,
           'aria-haspopup': 'dialog',
           'aria-controls': 'combobox-suggestions',
+          'aria-label': 'Search vehicles',
+          'aria-description': 'Search the vehicle catalog',
         },
       },
     });
@@ -152,6 +154,8 @@ test.describe('aria', () => {
     await expect(inputSearch).toHaveAttribute('aria-expanded', 'true');
     await expect(inputSearch).toHaveAttribute('aria-haspopup', 'dialog');
     await expect(inputSearch).toHaveAttribute('aria-controls', 'combobox-suggestions');
+    await expect(inputSearch).toHaveAttribute('aria-label', 'Search vehicles');
+    await expect(inputSearch).toHaveAttribute('aria-description', 'Search the vehicle catalog');
   });
 });
 

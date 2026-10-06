@@ -70,13 +70,11 @@ const getSelectedOptionIndex = async (page: Page): Promise<number> =>
     .locator('p-select p-select-option')
     .evaluateAll((options) => (options as unknown as SelectOption[]).findIndex((option) => option.selected));
 const getHighlightedOptionIndex = async (page: Page): Promise<number> =>
-  await page
-    .locator('p-select p-select-option')
-    .evaluateAll((options) => {
-      const opts = options as unknown as SelectOption[];
-      const highlighted = opts.find((option) => option.highlighted);
-      return highlighted ? opts.filter((option) => !option.hidden).indexOf(highlighted) : -1;
-    });
+  await page.locator('p-select p-select-option').evaluateAll((options) => {
+    const opts = options as unknown as SelectOption[];
+    const highlighted = opts.find((option) => option.highlighted);
+    return highlighted ? opts.filter((option) => !option.hidden).indexOf(highlighted) : -1;
+  });
 
 const getLabel = (page: Page) => page.locator('p-select label');
 
@@ -343,6 +341,23 @@ test('should render', async ({ page }) => {
   await waitForStencilLifecycle(page);
 
   expect(await getDropdownDisplay(page)).toBe('flex');
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the combobox', async ({ page }) => {
+    await initSelect(page, {
+      props: {
+        name: 'options',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const button = getButton(page);
+    await expect(button).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(button).toHaveAttribute('aria-description', 'Accessible description');
+  });
 });
 
 test.describe('Blur Event', () => {
@@ -2481,9 +2496,51 @@ test.describe('slots', () => {
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option selected removed').toBeUndefined();
     await expect(getButton(page)).toHaveText('c'); // Selection is kept for controlled async filtering to work
   });
+
+  test('should update when option is added to a select that mounted without options', async ({ page }) => {
+    await initSelect(page, { options: { values: [] } });
+    expect(await getSelectValue(page)).toBeUndefined();
+
+    await setValue(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    await addOption(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectValue(page), 'after option added').toBe('a');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('a');
+    await expect(getButton(page)).toHaveText('a');
+  });
+
+  test('should update when option is added to an optgroup that mounted empty', async ({ page }) => {
+    await initSelect(page, { options: { values: [[]], includeOptgroups: true } });
+    expect(await getSelectValue(page)).toBeUndefined();
+
+    await setValue(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    await addOptionToOptgroup(page, '0', 'a');
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectValue(page), 'after option added').toBe('a');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('a');
+    await expect(getButton(page)).toHaveText('a');
+  });
 });
 
 test.describe('lifecycle', () => {
+  test('should work without unnecessary round trips on init with optgroups', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+    const status = await getLifecycleStatus(page);
+
+    // guard against a vacuous pass: optgroups must actually be on the page
+    expect(status.componentDidLoad['p-optgroup'], 'componentDidLoad: p-optgroup').toBeGreaterThan(0);
+    expect(status.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
+
+    // optgroup dispatches internalOptgroupUpdate for the initial slot assignment; it must not cause a render round trip
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initSelect(page);
     const buttonElement = getButton(page);
@@ -3047,5 +3104,54 @@ test.describe('form', () => {
 
     await waitForStencilLifecycle(page);
     expect(getConsoleErrorsAmount()).toBe(0);
+  });
+});
+
+test.describe('option value set after initial render', () => {
+  // Frameworks like Angular can connect an option before its `value` binding is applied (#4743)
+  test('should select option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-select name="options" label="Some label" value="a"><p-select-option>Option A</p-select-option></p-select>`
+    );
+    const option = getSelectOption(page, 1);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('.option--selected')).toBeAttached();
+    await expect(getButton(page)).toHaveText('Option A');
+  });
+
+  test('should keep the selection of a removed option when the value of another option changes', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-select name="options" label="Some label" value="c"><p-select-option value="a">Option A</p-select-option><p-select-option value="c">Option C</p-select-option></p-select>`
+    );
+    await getSelectOption(page, 2).evaluate((el) => el.remove());
+    await waitForStencilLifecycle(page);
+    await expect(getButton(page)).toHaveText('Option C');
+
+    await setProperty(getSelectOption(page, 1), 'value', 'b');
+    await waitForStencilLifecycle(page);
+
+    await expect(getButton(page)).toHaveText('Option C'); // Selection is kept for controlled async filtering to work
+  });
+
+  test('should select option when its value changes to match the select value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-select name="options" label="Some label" value="a"><p-select-option value="b">Option A</p-select-option></p-select>`
+    );
+    const option = getSelectOption(page, 1);
+    await expect(option).not.toHaveJSProperty('selected', true);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('.option--selected')).toBeAttached();
+    await expect(getButton(page)).toHaveText('Option A');
   });
 });

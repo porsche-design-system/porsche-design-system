@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "4.7.0",
+  "version": "4.8.0",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -56,7 +56,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0",
     "@splidejs/splide": "^4.1.4",
-    "@stencil/core": "4.43.3"
+    "@stencil/core": "4.45.1"
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^6.0.3",
@@ -71,7 +71,7 @@
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.13",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   },
   "volta": {

@@ -14,11 +14,99 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.8.0] - 2026-10-02
+
+## [4.8.0-rc.1] - 2026-10-01
+
+### Added
+
+- `Knowledge Skill`: patterns and templates – the header, footer, popover and feedback patterns, the landing page and
+  the admin panel – with their description, the components they use, and their complete markup and script, together with
+  the note that they are vanilla HTML and JavaScript to be converted to your framework
+  ([#4761](https://github.com/porsche-design-system/porsche-design-system/pull/4761))
+
+## [4.8.0-rc.0] - 2026-10-01
+
+### Added
+
+- `Pin Code`: Support for `ArrowLeft`/`ArrowRight` keyboard navigation.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+- `Ai Tag`: Arabic, Japanese and Korean translations, plus region-specific Chinese translations for `zh-CN`,
+  `zh-HK` and `zh-TW`, replacing the English fallback.
+  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
+- `Checkbox`, `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Multi Select`, `Select`, `Switch`, `Textarea`: `aria` prop to
+  provide additional context for screen readers (`aria-label`, `aria-description`)
+  ([#4740](https://github.com/porsche-design-system/porsche-design-system/pull/4740))
+
+### Changed
+
+- `Link`, `Link Pure`, `Link Tile Product`: no error is logged anymore when neither `href` nor a slotted anchor is
+  provided. `Link` and `Link Pure` then render their label as plain text, and `Link Tile Product` renders a
+  non-interactive tile. `Link` and `Link Pure` only log an error when `href` is combined with a slotted anchor (also a
+  nested one), which renders nested links.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+
 ### Fixed
 
 - `Select`, `Multi Select`, `Radio Group`: unmatched values triggered misleading console warnings, including empty
   strings and values whose options had not loaded yet. Option matching remains strict by type and value.
   ([#4710](https://github.com/porsche-design-system/porsche-design-system/pull/4710))
+- `Pin Code`: Focus management on label click and digit overwrite behavior of focused cell.
+  ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
+- `Ai Tag`: the `generated` variant displayed Czech text instead of Slovak for Slovak locales.
+  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
+- `Tabs`, `Tabs Bar`, `Stepper Horizontal`: components permanently stopped reacting to slotted content changes after
+  being moved in the DOM (disconnected and reconnected)
+  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
+- `Select`, `Multi Select`: an option added inside an `Optgroup` was not marked as selected when it matched the
+  currently set value
+  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
+- `Stepper Horizontal`: the page scrolled vertically at initial render in Firefox and Safari when the stepper was
+  below the fold and the current step required a horizontal scroll
+  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
+- `Radio Group Option`, `Multi Select Option`, `Segmented Control Item`: stayed empty when `value` was set only after
+  the component had rendered, e.g. by an Angular property binding after navigating back to a route. A missing `value` no
+  longer throws an error; it is still required by the types.
+  ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
+- `Radio Group`, `Select`, `Multi Select`, `Segmented Control`: an option or item was not selected when it received a
+  `value` matching the parent's `value` only after the parent had rendered.
+  ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
+- `Drilldown` (🧪Experimental): the active level was not shown and an error was logged when a `Drilldown Item` received
+  the `identifier` matching `activeIdentifier` only after the `Drilldown` had rendered. Without `activeIdentifier`, an
+  item without `identifier` was wrongly shown as active.
+  ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
+- `Drilldown` (🧪Experimental): setting `activeIdentifier` to a nested `Drilldown Item` while no item was active mixed
+  the root level into the active level on desktop, and an `activeIdentifier` matching no `Drilldown Item` showed an
+  empty level instead of the root level.
+  ([#4744](https://github.com/porsche-design-system/porsche-design-system/pull/4744))
+- `Stepper Horizontal`: stopped updating for good after its items were invalid for a moment, e.g. more than one item
+  with `state="current"` while the current step was changed in two steps, or more than 9 items. The error is still
+  logged while the items are invalid.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Stepper Horizontal Item`: stopped updating for good after it was `current` and `disabled` at the same time. The error
+  is still logged while the combination is set.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Link`, `Link Pure`, `Link Tile Product`: an invalid usage error was logged when `href` was set only after the
+  component had rendered, e.g. by an Angular property binding, and for `Link` and `Link Pure` also when `href` was
+  combined with an element as label, e.g. a `<span>`.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Table`: a missing caption warning was logged when `caption` was set only after the component had rendered. The
+  warning has been removed. ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Drilldown` (🧪Experimental): on mobile viewports, an uncaught `TypeError` was thrown and the level matching
+  `activeIdentifier` could be missing when `activeIdentifier` was set right before the `Drilldown` had rendered for the
+  first time, e.g. by an Angular property binding after navigating back to a route.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Link`, `Link Pure`: no invalid usage error was logged when an empty `href` was combined with a slotted `<a>`, which
+  renders nested links. ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Carousel`: a `TypeError` was logged when `activeSlideIndex` was set before the `Carousel` had finished loading, e.g.
+  by an Angular property binding after navigating back to a route.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Pin Code`: a `value` set after the `Pin Code` had loaded, e.g. by an Angular property binding, was displayed but not
+  submitted with the form. ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
+- `Radio Group`: the `Radio Group` couldn't be reached with the Tab key when the first option was loading and no option
+  was selected, or when `disabled` or `loading` of an option changed after the `Radio Group` had loaded.
+  ([#4751](https://github.com/porsche-design-system/porsche-design-system/pull/4751))
 
 ## [4.7.0] - 2026-09-09
 
@@ -87,7 +175,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   slide left an empty slot and a surplus pagination bullet behind.
   ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 - `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
-  carousel was initialised with. ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+  carousel was initialised with.
+  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 
 ## [4.6.0] - 2026-08-20
 

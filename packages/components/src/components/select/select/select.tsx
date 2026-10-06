@@ -13,12 +13,13 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   debounce,
   FILTER_STATUS_ANNOUNCE_TIMEOUT,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getComboboxAriaAttributes,
   getFilterStatusMessage,
@@ -28,7 +29,6 @@ import {
   getNextOptionToHighlight,
   getPrefixedTagNames,
   getSelectActionFromKeyboardEvent,
-  getShadowRootHTMLElement,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -38,6 +38,7 @@ import {
   isElementOfKind,
   isUsableOption,
   optionListUpdatePosition,
+  parseAndGetAriaAttributes,
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
   setHighlightedSelectOption,
@@ -54,6 +55,7 @@ import { messageId, StateMessage } from '../../common/state-message/state-messag
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './select-styles';
 import {
+  type SelectAriaAttribute,
   type SelectChangeEventDetail,
   type SelectDropdownDirection,
   type SelectOptgroup,
@@ -78,6 +80,7 @@ const propTypes: PropTypes<typeof Select> = {
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   filter: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<SelectAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -154,6 +157,9 @@ export class Select {
   /** Associates the select with a form element by its ID when it is not a direct descendant of that form. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
+  /** Sets additional ARIA attributes on the combobox to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<SelectAriaAttribute>;
+
   /** Emitted when the select component loses focus, useful for triggering validation on blur. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
@@ -203,7 +209,19 @@ export class Select {
   @Listen('internalOptgroupUpdate')
   public optgroupUpdateHandler(e: Event): void {
     e.stopPropagation();
-    this.updateOptions();
+    this.onSlotchange();
+  }
+
+  @Listen('internalSelectOptionValueChange')
+  public optionValueChangeHandler(e: Event): void {
+    e.stopPropagation();
+    if (this.selectOptions.length > 0) {
+      const selectedOption = selectOptionByValue(this.selectOptions, this.value);
+      // Keep the selection of a removed option like onSlotchange does, so controlled async filtering keeps working
+      if (selectedOption !== null || this.selectOptions.includes(this.selectedOption)) {
+        this.selectedOption = selectedOption;
+      }
+    }
   }
 
   @Watch('value')
@@ -277,7 +295,6 @@ export class Select {
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot:not([name])').addEventListener('slotchange', this.onSlotchange);
     if (this.hasFilter) {
       // Does not work if filterSlot is added dynamically after component load, but should be fine
       this.inputSearchElement = this.filterSlot
@@ -349,14 +366,8 @@ export class Select {
           id={buttonId}
           // only needed for Safari to recognize focus state on click
           tabIndex={0}
-          {...getComboboxAriaAttributes(
-            this.isOpen,
-            this.required,
-            hasLabel(this.host, this.label) && labelId,
-            selectMessageId,
-            selectDescriptionId,
-            listboxId
-          )}
+          {...parseAndGetAriaAttributes(this.aria)}
+          {...getComboboxAriaAttributes(this.isOpen, this.required, selectMessageId, selectDescriptionId, listboxId)}
           aria-autocomplete="none"
           disabled={this.disabled}
           onClick={this.onComboClick}
@@ -416,7 +427,7 @@ export class Select {
           >
             {this.filter && !this.hasFilterResults && <NoResultsOption />}
             <slot name="options-status" />
-            <slot />
+            <slot onSlotchange={this.onSlotchange} />
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} host={this.host} />

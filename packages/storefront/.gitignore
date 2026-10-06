@@ -34,6 +34,7 @@ npm-debug.log*
 next-env.d.ts
 
 # generated
+/public/examples/
 src/lib/partialResults.ts
 src/app/news/changelog/page.mdx
 src/app/license/license.mdx

@@ -12,6 +12,7 @@ import {
   initConsoleObserver,
   initPageErrorObserver,
   reattachElement,
+  reattachElementToParent,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -37,10 +38,11 @@ type InitOptions = {
   amount?: number;
   currentStep?: number;
   isWrapped?: boolean;
+  beforeMarkup?: string;
 };
 
 const initStepperHorizontal = (page: Page, opts?: InitOptions) => {
-  const { amount = 3, currentStep = 0, isWrapped } = opts || {};
+  const { amount = 3, currentStep = 0, isWrapped, beforeMarkup = '' } = opts || {};
 
   const getState = (index: number) =>
     index === currentStep ? 'current' : index < currentStep ? 'complete' : undefined;
@@ -58,7 +60,10 @@ const initStepperHorizontal = (page: Page, opts?: InitOptions) => {
   ${steps}
  </p-stepper-horizontal>`;
 
-  return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
+  return setContentWithDesignSystem(
+    page,
+    `${beforeMarkup}${isWrapped ? `<div style="width: 300px">${content}</div>` : content}`
+  );
 };
 
 const getHost = (page: Page) => page.locator('p-stepper-horizontal');
@@ -84,7 +89,7 @@ test.describe('validation', () => {
   });
 
   skipInBrowsers(['webkit'], () => {
-    test('should throw error if a second current state is defined', async ({ page }) => {
+    test('should log error if a second current state is defined', async ({ page }) => {
       initConsoleObserver(page);
 
       await initStepperHorizontal(page);
@@ -115,6 +120,79 @@ test.describe('validation', () => {
       expect(getPageThrownErrorsAmount()).toBe(0);
       expect(getConsoleErrorsAmount()).toBe(0);
     });
+  });
+});
+
+test.describe('invalid state set after initial render', () => {
+  // Stencil stops updating a component whose render() throws, so validation errors must not be thrown in render (#4748)
+  test('should keep updating the item after it was current and disabled', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-stepper-horizontal>
+  <p-stepper-horizontal-item state="current" disabled>Step 1</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 2</p-stepper-horizontal-item>
+</p-stepper-horizontal>`
+    );
+    const [item1] = await getStepItems(page);
+    await expect(item1.locator('button')).toHaveAttribute('aria-disabled', 'true');
+
+    await setProperty(item1, 'disabled', false);
+    await waitForStencilLifecycle(page);
+
+    await expect(item1.locator('button')).not.toHaveAttribute('aria-disabled');
+    await expect(item1.locator('button')).toHaveAttribute('aria-current', 'step');
+  });
+
+  test('should keep updating when the current step is changed in two steps', async ({ page }) => {
+    await initStepperHorizontal(page, { amount: 9, currentStep: 0, isWrapped: true });
+    const [item1, item2, , , , , , , item9] = await getStepItems(page);
+
+    // two items are current for a moment
+    await setProperty(item2, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await setProperty(item1, 'state', 'complete');
+    await waitForStencilLifecycle(page);
+    const didUpdateCount = (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'] ?? 0;
+
+    await setProperty(item2, 'state', 'complete');
+    await setProperty(item9, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
+      .toBeGreaterThan(didUpdateCount);
+    await expect(getScrollArea(page)).not.toHaveJSProperty('scrollLeft', 0);
+  });
+
+  test('should keep updating after more than 9 items were slotted for a moment', async ({ page }) => {
+    await initStepperHorizontal(page, { amount: 9, currentStep: 0, isWrapped: true });
+    const host = getHost(page);
+    const [item1, item2, , , , , , , item9] = await getStepItems(page);
+
+    await host.evaluate((host: HTMLElement) => {
+      host.appendChild(document.createElement('p-stepper-horizontal-item'));
+    });
+    await waitForStencilLifecycle(page);
+    // re-renders the stepper while it has 10 items
+    await setProperty(item1, 'state', 'complete');
+    await setProperty(item2, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await host.evaluate((host: HTMLElement) => {
+      host.lastElementChild?.remove();
+    });
+    await waitForStencilLifecycle(page);
+    const didUpdateCount = (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'] ?? 0;
+
+    await setProperty(item2, 'state', 'complete');
+    await setProperty(item9, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
+      .toBeGreaterThan(didUpdateCount);
+    await expect(getScrollArea(page)).not.toHaveJSProperty('scrollLeft', 0);
   });
 });
 
@@ -230,6 +308,81 @@ test.describe('scrolling', () => {
 
     // item6 should be scrolled into view
     expect(await isElementVisibleInScrollArea(page, item6)).toBe(true);
+  });
+
+  test('should scroll to correct position if item added after DOM reattach is set to current', async ({ page }) => {
+    await initStepperHorizontal(page, { amount: 5, currentStep: 0, isWrapped: true });
+    const host = getHost(page);
+
+    // remove and re-attach to the same parent to keep the scroll area intact
+    await reattachElementToParent(host);
+    await waitForStencilLifecycle(page);
+
+    await host.evaluate((host) => {
+      const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item');
+      newStepperHorizontalItem.innerText = 'Step 6';
+      host.appendChild(newStepperHorizontalItem);
+    });
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    const [item1, , , , , item6] = await getStepItems(page);
+
+    await setProperty(item1, 'state', 'complete');
+    await setProperty(item6, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    // item6 should be scrolled into view
+    expect(await isElementVisibleInScrollArea(page, item6)).toBe(true);
+  });
+
+  test('should scroll to correct position if steps are added to a stepper that mounted without steps', async ({
+    page,
+  }) => {
+    await initStepperHorizontal(page, { amount: 0, isWrapped: true });
+    const host = getHost(page);
+
+    expect(await getStepItems(page)).toHaveLength(0);
+
+    await host.evaluate((host) => {
+      for (let i = 0; i < 6; i++) {
+        const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item');
+        newStepperHorizontalItem.innerText = `Step ${i + 1}`;
+        host.appendChild(newStepperHorizontalItem);
+      }
+    });
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    const [item1, , , , , item6] = await getStepItems(page);
+
+    await setProperty(item1, 'state', 'complete');
+    await setProperty(item6, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await sleep(CSS_ANIMATION_DURATION);
+
+    // item6 is scrolled into view only if the appended steps were registered
+    expect(await isElementVisibleInScrollArea(page, item6)).toBe(true);
+  });
+
+  test('should not scroll the page on initial render when stepper is below the fold', async ({ page }) => {
+    // place the stepper far below the fold so any vertical bubbling from scrollIntoView
+    // would visibly scroll the document. currentStep on the last step forces an initial
+    // horizontal scroll to bring it into view.
+    await initStepperHorizontal(page, {
+      amount: 9,
+      currentStep: 8,
+      isWrapped: true,
+      beforeMarkup: '<div style="height: 200vh"></div>',
+    });
+    await sleep(CSS_ANIMATION_DURATION);
+
+    const items = await getStepItems(page);
+    // current step is visible horizontally within the scroll area
+    await expect.poll(() => isElementVisibleInScrollArea(page, items[8])).toBe(true);
+    // page must not have scrolled vertically
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   });
 });
 

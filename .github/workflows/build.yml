@@ -64,11 +64,13 @@ jobs:
       - run: npm run build:stylesheets
       - run: npm run build:component-meta
       - run: npm run build:components
+      - run: npm run build:examples:projects
       - run: npm run build:skills
       - run: npm run build:components-js
       - run: npm run build:components-angular
       - run: npm run build:components-react
       - run: npm run build:components-vue
+      - run: npm run build:examples:site
       - run: npm run build:storefront
       - uses: actions/upload-artifact@v7
         with:
@@ -78,6 +80,9 @@ jobs:
             ./packages/storefront/dist/
             ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
+            ./packages/examples/dist/
+            ./packages/examples/generated/
+            ./packages/examples/dist-site/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/
@@ -153,11 +158,13 @@ jobs:
       - run: npm run build:stylesheets-prod
       - run: npm run build:component-meta
       - run: npm run build:components-prod
+      - run: npm run build:examples:projects
       - run: npm run build:skills
       - run: npm run build:components-js-prod
       - run: npm run build:components-angular
       - run: npm run build:components-react
       - run: npm run build:components-vue
+      - run: npm run build:examples:site
       - run: NEXT_PUBLIC_BASE_PATH="${{ inputs.storefront-slug }}" npm run build:storefront
       - uses: actions/upload-artifact@v7
         with:
@@ -167,6 +174,9 @@ jobs:
             ./packages/storefront/dist/
             ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
+            ./packages/examples/dist/
+            ./packages/examples/generated/
+            ./packages/examples/dist-site/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/

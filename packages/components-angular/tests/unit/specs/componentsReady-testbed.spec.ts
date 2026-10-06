@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { componentsReady } from '@porsche-design-system/components-angular';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
@@ -38,7 +38,21 @@ class SampleComponent {
   }
 }
 
-const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]+?-->/g, '');
+// Parses the markup into an inert template and drops its comment nodes instead of stripping `<!-- … -->` via regex,
+// which can't reliably remove nested or overlapping comment sequences
+const replaceHtmlComments = (input: string): string => {
+  const template = document.createElement('template');
+  template.innerHTML = input;
+  const walker = document.createTreeWalker(template.content, NodeFilter.SHOW_COMMENT);
+  const comments: Comment[] = [];
+  while (walker.nextNode()) {
+    comments.push(walker.currentNode as Comment);
+  }
+  for (const comment of comments) {
+    comment.remove();
+  }
+  return template.innerHTML;
+};
 
 beforeAll(() => {
   (window as any).PDS_SKIP_FETCH = true;
