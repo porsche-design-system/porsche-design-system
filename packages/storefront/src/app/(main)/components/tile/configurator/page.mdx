@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { tileMeta } from '@/app/(main)/components/tile/tile.meta';
+
+export const metadata = {
+  title: 'Tile - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Tile component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Tile <ComponentStatus tagName="p-tile"></ComponentStatus>
+
+<tileMeta.introduction />
+
+<Configurator
+  tagName="p-tile"
+  story={tileMeta.configurator.story}
+  slotStories={tileMeta.configurator.slotStories}
+/>

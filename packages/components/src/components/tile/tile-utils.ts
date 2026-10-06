@@ -7,10 +7,10 @@ export type TileGradient = (typeof TILE_GRADIENTS)[number];
 export const TILE_EDGES = ['top', 'start', 'end', 'bottom'] as const;
 export type TileEdge = (typeof TILE_EDGES)[number];
 
-export const anchorSlot = 'anchor';
-export const backgroundSlot = 'background';
+export const tileAnchorSlot = 'anchor';
+export const tileBackgroundSlot = 'background';
 
-export type TileSlotState = Record<TileEdge | typeof anchorSlot | typeof backgroundSlot, boolean>;
+export type TileSlotState = Record<TileEdge | typeof tileAnchorSlot | typeof tileBackgroundSlot, boolean>;
 
 export const isGradientActiveForEdge = (gradient: TileGradient, edge: TileEdge): boolean => {
   switch (gradient) {

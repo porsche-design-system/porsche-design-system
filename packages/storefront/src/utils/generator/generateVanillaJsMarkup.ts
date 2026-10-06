@@ -115,6 +115,9 @@ export const generateVanillaJSControlledScript = (
   return { selector, eventHandler };
 };
 
+const getAttributeName = (key: string): string =>
+  key === 'className' ? 'class' : key === 'tabIndex' ? 'tabindex' : key.startsWith('aria-') ? key : kebabCase(key);
+
 export const generateVanillaJsProperties = (
   tag: HTMLTagOrComponent,
   properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
@@ -127,7 +130,7 @@ export const generateVanillaJsProperties = (
       // Some props need to be treated differently for vanilla-js e.g. boolean props without value (loop: true => loop) only for non pds tags
       if (!tag.startsWith('p-') && specialProps[key]) return specialProps[key](value);
       if (typeof value === 'string') {
-        const attributeName = key === 'className' ? 'class' : key.startsWith('aria-') ? key : kebabCase(key);
+        const attributeName = getAttributeName(key);
         return ` ${attributeName}="${value}"`;
       }
       if (key === 'style')
@@ -142,7 +145,7 @@ export const generateVanillaJsProperties = (
           .join(', ');
         return ` ${key}="{${formattedObject}}"`;
       }
-      return ` ${kebabCase(key)}="${JSON.stringify(value)}"`;
+      return ` ${getAttributeName(key)}="${JSON.stringify(value)}"`;
     })
     .join('');
 };

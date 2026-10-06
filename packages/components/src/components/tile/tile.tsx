@@ -13,16 +13,24 @@ import {
 } from '../../utils';
 import { getComponentCss, getSlottedBackgroundPictureStyles } from './tile-styles';
 import {
-  anchorSlot,
-  backgroundSlot,
   TILE_BACKGROUNDS,
   TILE_EDGES,
   TILE_GRADIENTS,
   type TileBackground,
   type TileGradient,
   type TileSlotState,
+  tileAnchorSlot,
+  tileBackgroundSlot,
 } from './tile-utils';
 
+// TODO: before leaving the draft state
+//  - unit tests: tile.spec.ts, tile-styles.spec.ts, tile-utils.spec.ts
+//  - e2e: packages/components-js/tests/e2e/specs/tile.e2e.ts
+//  - a11y: axe-core and a11y tree specs in packages/components-js/tests/a11y/specs
+//  - vrt: incl. high contrast mode and 200% text zoom
+//  - jsdom-polyfill: packages/components-js/projects/jsdom-polyfill/tests
+//  - changelog entry in packages/components/CHANGELOG.md
+//  - storefront: usage, examples and accessibility pages (see TODOs in packages/storefront/src/app/(main)/components/tile)
 const propTypes: PropTypes<typeof Tile> = {
   background: AllowedTypes.oneOf<TileBackground>(TILE_BACKGROUNDS),
   gradient: AllowedTypes.breakpoint<TileGradient>(TILE_GRADIENTS),
@@ -96,9 +104,9 @@ export class Tile {
     return (
       <div class="root">
         {/* has to precede the background to scale it on hover via sibling selector */}
-        <slot name={anchorSlot} onSlotchange={this.updateSlotState} />
+        <slot name={tileAnchorSlot} onSlotchange={this.updateSlotState} />
         <div class="background">
-          <slot name={backgroundSlot} onSlotchange={this.onBackgroundSlotChange} />
+          <slot name={tileBackgroundSlot} onSlotchange={this.onBackgroundSlotChange} />
         </div>
         {TILE_EDGES.filter((edge) => this.slotState[edge]).map((edge) => (
           <span key={edge} class={`gradient gradient-${edge}`} />

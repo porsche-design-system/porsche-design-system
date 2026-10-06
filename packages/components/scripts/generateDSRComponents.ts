@@ -683,6 +683,20 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/type LinkTileProductAspectRatio,/, '')
           .replace(/type LinkTileProductLikeEventDetail,/, '')
           .replace(/type LinkTileProductTarget,/, '');
+      } else if (tagName === 'p-tile') {
+        // `slotState` is a `@State` populated via `hasNamedSlot()` on the client, so derive it from the slotted children
+        newFileContent = newFileContent
+          .replace(
+            /const { children, namedSlotChildren, otherChildren } =.*/,
+            `$&
+    const slotState = Object.fromEntries(
+      [...TILE_EDGES, tileAnchorSlot, tileBackgroundSlot].map((name) => [
+        name,
+        namedSlotChildren.some(({ props: { slot } }) => slot === name),
+      ])
+    ) as TileSlotState;`
+          )
+          .replace(/this\.props\.slotState/g, 'slotState');
       } else if (tagName === 'p-textarea') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')

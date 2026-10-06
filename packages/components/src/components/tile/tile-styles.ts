@@ -25,14 +25,14 @@ import {
 import { buildResponsiveBooleanStyles, buildResponsiveStyles, getCss, type TileAspectRatio } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import {
-  anchorSlot,
-  backgroundSlot,
   isGradientActiveForEdge,
   TILE_EDGES,
   type TileBackground,
   type TileEdge,
   type TileGradient,
   type TileSlotState,
+  tileAnchorSlot,
+  tileBackgroundSlot,
 } from './tile-utils';
 
 /**
@@ -174,7 +174,7 @@ const radius = ref(cssVarRadius, ref(radius3Xl));
 
 export const getSlottedBackgroundPictureStyles = (tagName: string): Styles => ({
   '@global': {
-    [`${tagName} > picture[slot="${backgroundSlot}"] img`]: {
+    [`${tagName} > picture[slot="${tileBackgroundSlot}"] img`]: {
       ...addImportantToEachRule({
         display: 'block',
         width: '100%',
@@ -219,13 +219,13 @@ export const getComponentCss = (
             slotState[edge] ? getAreaLayoutStyles(edge) : { display: 'none' },
           ])
         ),
-        [`&[name="${backgroundSlot}"]`]: {
+        [`&[name="${tileBackgroundSlot}"]`]: {
           display: 'block',
           position: 'absolute',
           inset: 0,
           transition: getTransition('transform', 'moderate'),
         },
-        [`&[name="${anchorSlot}"]`]: hasAnchor
+        [`&[name="${tileAnchorSlot}"]`]: hasAnchor
           ? {
               display: 'block',
               position: 'absolute',
@@ -235,12 +235,12 @@ export const getComponentCss = (
           : { display: 'none' },
         ...(hasAnchor && {
           // content becomes click-through to reach the anchor, interactive elements opt in via `pointer-events: auto`
-          [`&:not([name="${anchorSlot}"])`]: {
+          [`&:not([name="${tileAnchorSlot}"])`]: {
             pointerEvents: 'none',
           },
         }),
       },
-      [`::slotted([slot="${backgroundSlot}"])`]: {
+      [`::slotted([slot="${tileBackgroundSlot}"])`]: {
         ...addImportantToEachRule({
           position: 'absolute',
           inset: 0,
@@ -251,7 +251,7 @@ export const getComponentCss = (
         objectFit: 'cover', // can be overridden, e.g. `contain` for transparent images on the background color
       },
       '::slotted': addImportantToEachRule({
-        [`&([slot="${anchorSlot}"])`]: {
+        [`&([slot="${tileAnchorSlot}"])`]: {
           position: 'absolute',
           inset: 0,
           borderRadius: radius,
@@ -263,7 +263,7 @@ export const getComponentCss = (
             boxShadow: 'inset 0 0 0 2px LinkText',
           }),
         },
-        [`&([slot="${anchorSlot}"]:focus-visible)`]: getFocusBaseStyles(),
+        [`&([slot="${tileAnchorSlot}"]:focus-visible)`]: getFocusBaseStyles(),
       }),
     },
     root: {
@@ -305,7 +305,7 @@ export const getComponentCss = (
       pointerEvents: 'none',
       ...(hasAnchor &&
         hoverMediaQuery({
-          [`slot[name="${anchorSlot}"]:hover ~ & slot`]: {
+          [`slot[name="${tileAnchorSlot}"]:hover ~ & slot`]: {
             transform: 'scale3d(1.05,1.05,1.05)',
           },
         })),
