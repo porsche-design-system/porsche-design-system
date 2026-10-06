@@ -116,6 +116,7 @@ export const tileSlotStories: SlotStories<'p-tile'> = {
 };
 
 export const tileStory: Story<'p-tile'> = {
+  previewMaxWidth: '560px',
   state: {
     slots: {
       default: tileSlotStories.default.text,

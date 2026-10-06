@@ -1,0 +1,7 @@
+A model selection lets users pick a model range as entry point, e.g. to browse the available vehicles of the Porsche
+Finder. The Tile shows the model signature, the model name and a side view of the car in the default slot, while the
+`anchor` slot makes the whole Tile clickable. With `aspect-ratio="auto"` the Tile adapts its height to the content.
+
+On hover, the Tile is lifted by a shadow, e.g. via `has-[[slot=anchor]:hover]:shadow-sm` combined with `rounded-3xl`, so
+the shadow follows the default border radius of the Tile. Since all content is click-through, hovering anywhere on the
+Tile hovers the anchor.

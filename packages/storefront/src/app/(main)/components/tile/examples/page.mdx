@@ -10,12 +10,57 @@ export const metadata = {
 
 # Tile <ComponentStatus tagName="p-tile"></ComponentStatus>
 
-{/* TODO: add further examples to `tileMeta.examples` */}
+The examples are structured by use case. The Tile has no built-in hover effect, so each use case shows how to tailor it
+to its content with a few custom styles. Since the slotted `anchor` covers the whole Tile and all other content is
+click-through, hovering the anchor equals hovering the Tile, while independent interactive elements (which opt in via
+`pointer-events: auto`) don't trigger it. Wrap transitions in `motion-safe:` to respect the user's preference for
+reduced motion. Hover effects are a visual enhancement only, keyboard users get the focus indicator of the anchor.
 
-<TableOfContents headings={[tileMeta.examples.hoverEffect.name]} />
+{/* TODO: add further use cases to `tileMeta.examples` */}
 
-## {tileMeta.examples.hoverEffect.name}
+<TableOfContents
+  headings={[
+    tileMeta.examples.modelSelection.name,
+    tileMeta.examples.modelNavigation.name,
+    tileMeta.examples.vehicleListing.name,
+    tileMeta.examples.category.name,
+    tileMeta.examples.product.name,
+    tileMeta.examples.teaser.name,
+  ]}
+/>
 
-<tileMeta.examples.hoverEffect.description />
+## {tileMeta.examples.modelSelection.name}
 
-<ComponentStory story={tileMeta.examples.hoverEffect.story} />
+<tileMeta.examples.modelSelection.description />
+
+<ComponentStory story={tileMeta.examples.modelSelection.story} />
+
+## {tileMeta.examples.modelNavigation.name}
+
+<tileMeta.examples.modelNavigation.description />
+
+<ComponentStory story={tileMeta.examples.modelNavigation.story} backgroundColor="surface" />
+
+## {tileMeta.examples.vehicleListing.name}
+
+<tileMeta.examples.vehicleListing.description />
+
+<ComponentStory story={tileMeta.examples.vehicleListing.story} />
+
+## {tileMeta.examples.category.name}
+
+<tileMeta.examples.category.description />
+
+<ComponentStory story={tileMeta.examples.category.story} />
+
+## {tileMeta.examples.product.name}
+
+<tileMeta.examples.product.description />
+
+<ComponentStory story={tileMeta.examples.product.story} />
+
+## {tileMeta.examples.teaser.name}
+
+<tileMeta.examples.teaser.description />
+
+<ComponentStory story={tileMeta.examples.teaser.story} />

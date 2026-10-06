@@ -66,7 +66,11 @@ export const Configurator = <T extends HTMLTagOrComponent>({
 
   return (
     <>
-      <Playground frameworkMarkup={exampleMarkup} onOpenInStackblitz={() => onOpenInStackblitz()}>
+      <Playground
+        frameworkMarkup={exampleMarkup}
+        onOpenInStackblitz={() => onOpenInStackblitz()}
+        previewMaxWidth={activeStory.previewMaxWidth}
+      >
         {exampleElement}
       </Playground>
       <ConfiguratorControls

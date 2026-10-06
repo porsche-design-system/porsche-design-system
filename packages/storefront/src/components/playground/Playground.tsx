@@ -15,6 +15,7 @@ type PlaygroundProps = {
   backgroundColor?: BackgroundColor;
   fixedBackgroundColor?: string;
   showCodeBlock?: boolean;
+  previewMaxWidth?: string;
 };
 
 const frameworkLanguageMap = {
@@ -31,6 +32,7 @@ export const Playground = ({
   backgroundColor = 'base',
   fixedBackgroundColor,
   showCodeBlock = true,
+  previewMaxWidth,
   children,
 }: PropsWithChildren<PlaygroundProps>) => {
   const { framework } = useStorefrontFramework();
@@ -39,7 +41,15 @@ export const Playground = ({
     <div className="playground my-fluid-md border-thin border-contrast-lower rounded-3xl">
       <div
         className={`demo p-static-lg border-b-thin border-contrast-lower bg-${backgroundColor} rounded-t-3xl`}
-        style={{ ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }) }}
+        style={{
+          ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }),
+          // limits the preview width while the demo area itself keeps spanning the full width
+          ...(previewMaxWidth && {
+            display: 'grid',
+            gridTemplateColumns: `minmax(0, ${previewMaxWidth})`,
+            justifyContent: 'center',
+          }),
+        }}
       >
         {children}
       </div>

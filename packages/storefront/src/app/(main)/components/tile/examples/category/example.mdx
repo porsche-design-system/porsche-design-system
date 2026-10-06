@@ -1,0 +1,13 @@
+A category tile links to a category of a shop, e.g. of the Porsche Shop. The product image is placed in the `background`
+slot. Since it is shot on a white background, `mix-blend-multiply` blends it into the background color of the Tile.
+`object-contain object-bottom` together with a top padding keeps the product below the heading. The heading and an
+icon-only link are placed in the `top` slot and centered and pushed apart via `--p-tile-top-align: center` and
+`--p-tile-top-justify: space-between`.
+
+The `anchor` slot makes the whole Tile clickable and provides the accessible link to the category. The visible arrow
+link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` and `tabindex="-1"`)
+but opts in via `pointer-events-auto` to show its own hover state.
+
+On hover of the `anchor` or the duplicated link (marked by the `primary-link` class), the image zooms in via
+`group-has-[[slot=anchor]:hover,.primary-link:hover]:scale-105`. The `motion-safe:` variant respects the reduced motion
+preference of the user.

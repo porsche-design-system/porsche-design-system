@@ -1,0 +1,15 @@
+A vehicle listing presents a single vehicle in a search result, e.g. of the Porsche Finder. The image is placed in the
+`start` slot and bleeds to the edges of the Tile: the padding is set explicitly via `--p-tile-px` and `--p-tile-py`, so
+the image can use the same values as negative margins, and `rounded-s-3xl` matches the corner radius of the Tile. The
+vehicle details are placed in the default slot, which is stretched via `--p-tile-main-align: stretch` so the content
+aligns to the start and dividers span the full width. With `aspect-ratio="auto"` the Tile adapts its height to the
+content.
+
+The `anchor` slot makes the whole Tile clickable and provides the accessible link to the details page. The visible "Show
+details" link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` and
+`tabindex="-1"`). The "Save" button is an independent action and stays accessible. Both opt in via `pointer-events-auto`
+to show their own hover state.
+
+On hover of the `anchor` or the duplicated link (marked by the `primary-link` class), the Tile is lifted by a shadow via
+`has-[[slot=anchor]:hover,.primary-link:hover]:shadow-sm` combined with `rounded-3xl`. Hovering the "Save" button does
+not trigger it, since it is an independent action with its own hover state.

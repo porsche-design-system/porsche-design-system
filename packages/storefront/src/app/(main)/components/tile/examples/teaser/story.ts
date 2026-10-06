@@ -26,7 +26,7 @@ const primaryLink: ElementConfig<HTMLTagOrComponent> = {
   children: [label],
 };
 
-export const tileStoryHoverEffect: Story<'p-tile'> = {
+export const tileStoryTeaser: Story<'p-tile'> = {
   generator: () => [
     {
       tag: 'div',
@@ -43,7 +43,7 @@ export const tileStoryHoverEffect: Story<'p-tile'> = {
                 src: 'assets/lights.jpg',
                 alt: '',
                 className:
-                  'motion-safe:transition-transform duration-moderate ease-in-out group-has-[[slot=anchor]:hover,.primary-link:hover]:scale-105',
+                  'motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,.primary-link:hover]:scale-105',
               },
             },
             anchor,
@@ -55,7 +55,7 @@ export const tileStoryHoverEffect: Story<'p-tile'> = {
           properties: {
             className: 'has-[[slot=anchor]:hover,.primary-link:hover]:[--p-tile-bg:var(--color-contrast-lower)]',
           },
-          children: [anchor, { tag: 'p-text', properties: { size: 'large' }, children: ['Some content'] }, primaryLink],
+          children: [anchor, { tag: 'p-text', properties: { size: 'lg' }, children: ['Some content'] }, primaryLink],
         },
       ],
     },
