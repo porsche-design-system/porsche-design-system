@@ -1,0 +1,16 @@
+The Tile has no built-in hover effect, so it can be tailored to its content with a few custom styles. Since the slotted
+`anchor` covers the whole tile and all other content is click-through, hovering the anchor equals hovering the tile,
+while independent interactive elements (which opt in via `pointer-events: auto`) don't trigger it.
+
+- **Zoom:** Scale the slotted background media, e.g. via `group-has-[[slot=anchor]:hover,.primary-link:hover]:scale-105`
+  with `group` on the Tile. The background is clipped to the border radius of the Tile.
+- **Background color:** Override the `--p-tile-bg` CSS variable, e.g. via
+  `has-[[slot=anchor]:hover,.primary-link:hover]:[--p-tile-bg:var(--color-contrast-lower)]`.
+
+A visible link duplicating the anchor can receive pointer events via `pointer-events-auto` to show its own hover state.
+Include it in the hover selector (here via the marker class `primary-link`), so the effect of the Tile stays active
+while the link is hovered. It stays hidden from assistive technology and keyboard (`aria-hidden="true"` and
+`tabindex="-1"`).
+
+Wrap transitions in `motion-safe:` to respect the user's preference for reduced motion. Hover effects are a visual
+enhancement only, keyboard users get the focus indicator of the anchor.

@@ -17,9 +17,7 @@ import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
-  getTransition,
   hostHiddenStyles,
-  hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { buildResponsiveBooleanStyles, buildResponsiveStyles, getCss, type TileAspectRatio } from '../../utils';
@@ -223,7 +221,6 @@ export const getComponentCss = (
           display: 'block',
           position: 'absolute',
           inset: 0,
-          transition: getTransition('transform', 'moderate'),
         },
         [`&[name="${tileAnchorSlot}"]`]: hasAnchor
           ? {
@@ -300,15 +297,9 @@ export const getComponentCss = (
       position: 'absolute',
       inset: 0,
       zIndex: 0,
-      overflow: 'hidden', // clips slotted media to the border-radius and while scaling on hover
+      overflow: 'hidden', // clips slotted media to the border-radius, also when it is scaled by custom styles
       borderRadius: 'inherit',
       pointerEvents: 'none',
-      ...(hasAnchor &&
-        hoverMediaQuery({
-          [`slot[name="${tileAnchorSlot}"]:hover ~ & slot`]: {
-            transform: 'scale3d(1.05,1.05,1.05)',
-          },
-        })),
     },
     gradient: {
       zIndex: 1,

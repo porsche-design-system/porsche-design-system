@@ -1,4 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { tileMeta } from '@/app/(main)/components/tile/tile.meta';
 
 export const metadata = {
   title: 'Tile - Porsche Design System',
@@ -7,6 +10,12 @@ export const metadata = {
 
 # Tile <ComponentStatus tagName="p-tile"></ComponentStatus>
 
-{/* TODO: add examples to `tileMeta.examples` and render them here via `ComponentStory` with a `TableOfContents` */}
+{/* TODO: add further examples to `tileMeta.examples` */}
 
-Examples are not yet available due to the component's experimental state.
+<TableOfContents headings={[tileMeta.examples.hoverEffect.name]} />
+
+## {tileMeta.examples.hoverEffect.name}
+
+<tileMeta.examples.hoverEffect.description />
+
+<ComponentStory story={tileMeta.examples.hoverEffect.story} />

@@ -103,7 +103,6 @@ export class Tile {
 
     return (
       <div class="root">
-        {/* has to precede the background to scale it on hover via sibling selector */}
         <slot name={tileAnchorSlot} onSlotchange={this.updateSlotState} />
         <div class="background">
           <slot name={tileBackgroundSlot} onSlotchange={this.onBackgroundSlotChange} />

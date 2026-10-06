@@ -119,6 +119,7 @@ export const tileStory: Story<'p-tile'> = {
   state: {
     slots: {
       default: tileSlotStories.default.text,
+      anchor: tileSlotStories.anchor.link,
     },
   },
   generator: (state = {}) => [

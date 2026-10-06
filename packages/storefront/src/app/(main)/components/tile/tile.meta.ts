@@ -3,6 +3,8 @@ import AccessibilityOverview from '@/app/(main)/components/tile/accessibility/ov
 import AccessibilityTests from '@/app/(main)/components/tile/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/tile/configurator/introduction.mdx';
 import { tileSlotStories, tileStory } from '@/app/(main)/components/tile/configurator/story';
+import HoverEffectDescription from '@/app/(main)/components/tile/examples/hover-effect/example.mdx';
+import { tileStoryHoverEffect } from '@/app/(main)/components/tile/examples/hover-effect/story';
 import Usage from '@/app/(main)/components/tile/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 
@@ -12,7 +14,14 @@ export const tileMeta = {
     story: tileStory,
     slotStories: tileSlotStories,
   },
-  examples: {},
+  examples: {
+    hoverEffect: {
+      kind: 'story',
+      name: 'Hover effect',
+      description: HoverEffectDescription,
+      story: tileStoryHoverEffect,
+    },
+  },
   usage: Usage,
   accessibility: {
     overview: AccessibilityOverview,
