@@ -114,6 +114,18 @@ for (const component of components) {
         await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hcm-${scheme}.png`);
       });
+
+      test(`hcm ${scheme} hover state`, async ({ page }) => {
+        test.skip(['select', 'multi-select'].includes(component), 'This component is flaky in HC mode');
+
+        await setupScenario(page, `/${component}`, viewportWidthM, {
+          forcePseudoState: 'hover',
+          forcedColorsEnabled: true,
+          prefersColorScheme: scheme,
+        });
+        await revertAutoFocus(page, component);
+        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hcm-hover-${scheme}.png`);
+      });
     }
 
     test(`font-size 200%`, async ({ page }) => {
