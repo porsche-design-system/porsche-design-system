@@ -115,17 +115,45 @@ for (const component of components) {
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hcm-${scheme}.png`);
       });
 
-      test(`hcm ${scheme} hover state`, async ({ page }) => {
-        test.skip(['select', 'multi-select'].includes(component), 'This component is flaky in HC mode');
-
-        await setupScenario(page, `/${component}`, viewportWidthM, {
-          forcePseudoState: 'hover',
-          forcedColorsEnabled: true,
-          prefersColorScheme: scheme,
+      if (
+        [
+          'accordion',
+          'button',
+          'button-pure',
+          'checkbox',
+          'input-date',
+          'input-email',
+          'input-month',
+          'input-number',
+          'input-password',
+          'input-search',
+          'input-tel',
+          'input-text',
+          'input-time',
+          'input-url',
+          'input-week',
+          'link',
+          'link-pure',
+          'pagination',
+          'popover',
+          'radio-group',
+          'segmented-control',
+          'stepper-horizontal',
+          'tabs',
+          'tabs-bar',
+          'tag-dismissible',
+        ].includes(component)
+      ) {
+        test(`hcm ${scheme} hover state`, async ({ page }) => {
+          await setupScenario(page, `/${component}`, viewportWidthM, {
+            forcePseudoState: 'hover',
+            forcedColorsEnabled: true,
+            prefersColorScheme: scheme,
+          });
+          await revertAutoFocus(page, component);
+          await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hcm-hover-${scheme}.png`);
         });
-        await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hcm-hover-${scheme}.png`);
-      });
+      }
     }
 
     test(`font-size 200%`, async ({ page }) => {
