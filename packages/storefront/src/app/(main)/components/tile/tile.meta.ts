@@ -5,6 +5,8 @@ import IntroductionDescription from '@/app/(main)/components/tile/configurator/i
 import { tileSlotStories, tileStory } from '@/app/(main)/components/tile/configurator/story';
 import CategoryDescription from '@/app/(main)/components/tile/examples/category/example.mdx';
 import { tileStoryCategory } from '@/app/(main)/components/tile/examples/category/story';
+import ImageCategoryDescription from '@/app/(main)/components/tile/examples/image-category/example.mdx';
+import { tileStoryImageCategory } from '@/app/(main)/components/tile/examples/image-category/story';
 import ModelNavigationDescription from '@/app/(main)/components/tile/examples/model-navigation/example.mdx';
 import { tileStoryModelNavigation } from '@/app/(main)/components/tile/examples/model-navigation/story';
 import ModelSelectionDescription from '@/app/(main)/components/tile/examples/model-selection/example.mdx';
@@ -48,6 +50,12 @@ export const tileMeta = {
       name: 'Category',
       description: CategoryDescription,
       story: tileStoryCategory,
+    },
+    imageCategory: {
+      kind: 'story',
+      name: 'Image Category',
+      description: ImageCategoryDescription,
+      story: tileStoryImageCategory,
     },
     product: {
       kind: 'story',
