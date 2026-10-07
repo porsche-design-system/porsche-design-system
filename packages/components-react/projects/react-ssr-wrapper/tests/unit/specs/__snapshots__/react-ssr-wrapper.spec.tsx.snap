@@ -5505,6 +5505,12 @@ exports[`should render dsr component for PDrilldown 1`] = `
     }
 }
 
+@media(forced-colors:active) {
+    .scroller {
+      background: Canvas;
+    }
+}
+
     </style>
     <dialog
       inert=""
@@ -6117,6 +6123,12 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 @media(max-width:759px) {
     .drawer {
       display: none;
+    }
+}
+
+@media(forced-colors:active) {
+    .scroller {
+      background: Canvas;
     }
 }
 
