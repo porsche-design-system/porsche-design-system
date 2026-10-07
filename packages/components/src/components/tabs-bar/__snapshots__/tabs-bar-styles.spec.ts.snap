@@ -44,6 +44,10 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -74,7 +78,6 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
 }
 @media(forced-colors:active) {
   .scroller {
-    forced-color-adjust: none;
     outline: 1px solid CanvasText;
   }
   .bar {
@@ -128,6 +131,10 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -160,7 +167,6 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 }
 @media(forced-colors:active) {
   .scroller {
-    forced-color-adjust: none;
     outline: 1px solid CanvasText;
   }
   .bar {
@@ -214,6 +220,10 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -246,7 +256,6 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 }
 @media(forced-colors:active) {
   .scroller {
-    forced-color-adjust: none;
     outline: 1px solid CanvasText;
   }
   .bar {
@@ -300,6 +309,10 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -332,7 +345,6 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 }
 @media(forced-colors:active) {
   .scroller {
-    forced-color-adjust: none;
     outline: 1px solid CanvasText;
   }
   .bar {
@@ -385,6 +397,10 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   ::slotted(button) {
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
@@ -462,6 +478,10 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   ::slotted(button) {
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a:nth-child(3)), ::slotted(button:nth-child(3)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
@@ -642,6 +662,10 @@ exports[`getComponentCss() > should return correct css for background: none, siz
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -719,6 +743,10 @@ exports[`getComponentCss() > should return correct css for background: surface, 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -749,7 +777,6 @@ exports[`getComponentCss() > should return correct css for background: surface, 
 }
 @media(forced-colors:active) {
   .scroller {
-    forced-color-adjust: none;
     outline: 1px solid CanvasText;
   }
   .bar {

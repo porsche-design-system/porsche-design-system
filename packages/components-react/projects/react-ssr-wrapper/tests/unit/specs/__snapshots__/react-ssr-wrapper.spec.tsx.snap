@@ -247,7 +247,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -305,7 +304,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -533,7 +532,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -690,7 +689,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -852,7 +851,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -955,7 +953,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -1058,7 +1055,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -1161,7 +1157,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -1264,7 +1259,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -1367,7 +1361,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -2325,6 +2318,10 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
+  ::slotted(a:nth-child(2)), ::slotted(button:nth-child(2)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -2597,6 +2594,10 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   ::slotted(button) {
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
@@ -3469,13 +3470,14 @@ exports[`should render dsr component for PButton 1`] = `
 @media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
     box-shadow: inset 0 0 0 2px LinkText;
+    background: Canvas !important;
+    color: LinkText !important;
   }
   .root:is(button) {
     box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
+    background: ButtonFace !important;
+    color: ButtonText !important;
   }
   .root:focus-visible {
     outline-color: Highlight;
@@ -3487,12 +3489,6 @@ exports[`should render dsr component for PButton 1`] = `
     color: var(--p-button-fg,var(--p-color-canvas));
     background-color: var(--p-button-bg,var(--p-color-contrast-high));
   }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
 }
 
     </style>
@@ -3652,7 +3648,7 @@ img:dir(rtl) {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -3889,13 +3885,14 @@ p {
 @media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
     box-shadow: inset 0 0 0 2px LinkText;
+    background: Canvas !important;
+    color: LinkText !important;
   }
   .root:is(button) {
     box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
+    background: ButtonFace !important;
+    color: ButtonText !important;
   }
   .root:focus-visible {
     outline-color: Highlight;
@@ -3907,12 +3904,6 @@ p {
     color: var(--p-button-fg,var(--p-color-primary));
     background-color: var(--p-button-bg,var(--p-color-frosted));
   }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
 }
 
             </style>
@@ -4343,16 +4334,21 @@ h2 {
 @media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
     box-shadow: inset 0 0 0 2px LinkText;
+    background: Canvas !important;
+    color: LinkText !important;
   }
   .root:is(button) {
     box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
+    background: ButtonFace !important;
+    color: ButtonText !important;
   }
   .root:focus-visible {
     outline-color: Highlight;
+  }
+  .icon {
+    forced-color-adjust: preserve-parent-color;
+    --_p-icon-a: currentColor;
   }
 }
 
@@ -4361,12 +4357,6 @@ h2 {
     color: var(--p-button-fg,var(--p-color-primary));
     background-color: var(--p-button-bg,var(--p-color-frosted));
   }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
 }
 
               </style>
@@ -4412,7 +4402,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -4685,16 +4675,21 @@ svg {
 @media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
     box-shadow: inset 0 0 0 2px LinkText;
+    background: Canvas !important;
+    color: LinkText !important;
   }
   .root:is(button) {
     box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
+    background: ButtonFace !important;
+    color: ButtonText !important;
   }
   .root:focus-visible {
     outline-color: Highlight;
+  }
+  .icon {
+    forced-color-adjust: preserve-parent-color;
+    --_p-icon-a: currentColor;
   }
 }
 
@@ -4703,12 +4698,6 @@ svg {
     color: var(--p-button-fg,var(--p-color-primary));
     background-color: var(--p-button-bg,var(--p-color-frosted));
   }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
 }
 
               </style>
@@ -4754,7 +4743,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -5658,7 +5647,7 @@ img:dir(rtl) {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -5764,16 +5753,21 @@ img:dir(rtl) {
 @media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
     box-shadow: inset 0 0 0 2px LinkText;
+    background: Canvas !important;
+    color: LinkText !important;
   }
   .root:is(button) {
     box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
+    background: ButtonFace !important;
+    color: ButtonText !important;
   }
   .root:focus-visible {
     outline-color: Highlight;
+  }
+  .icon {
+    forced-color-adjust: preserve-parent-color;
+    --_p-icon-a: currentColor;
   }
 }
 
@@ -5782,12 +5776,6 @@ img:dir(rtl) {
     color: var(--p-button-fg,var(--p-color-primary));
     background-color: var(--p-button-bg,var(--p-color-frosted));
   }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
 }
 
             </style>
@@ -5832,7 +5820,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -5938,16 +5926,21 @@ img {
 @media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
     box-shadow: inset 0 0 0 2px LinkText;
+    background: Canvas !important;
+    color: LinkText !important;
   }
   .root:is(button) {
     box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
+    background: ButtonFace !important;
+    color: ButtonText !important;
   }
   .root:focus-visible {
     outline-color: Highlight;
+  }
+  .icon {
+    forced-color-adjust: preserve-parent-color;
+    --_p-icon-a: currentColor;
   }
 }
 
@@ -5956,12 +5949,6 @@ img {
     color: var(--p-button-fg,var(--p-color-primary));
     background-color: var(--p-button-bg,var(--p-color-frosted));
   }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
 }
 
             </style>
@@ -6006,7 +5993,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -6270,7 +6257,7 @@ img:dir(rtl) {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -6448,7 +6435,7 @@ img:dir(rtl) {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -6920,7 +6907,7 @@ img:dir(rtl) {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -9176,13 +9163,14 @@ exports[`should render dsr component for PLink 1`] = `
 @media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
     box-shadow: inset 0 0 0 2px LinkText;
+    background: Canvas !important;
+    color: LinkText !important;
   }
   .root:is(button) {
     box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
+    background: ButtonFace !important;
+    color: ButtonText !important;
   }
 }
 
@@ -9191,12 +9179,6 @@ exports[`should render dsr component for PLink 1`] = `
     color: var(--p-link-fg,var(--p-color-canvas));
     background-color: var(--p-link-bg,var(--p-color-contrast-high));
   }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
 }
 
     </style>
@@ -9352,7 +9334,7 @@ img:dir(rtl) {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -9589,13 +9571,14 @@ p {
 @media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
     box-shadow: inset 0 0 0 2px LinkText;
+    background: Canvas !important;
+    color: LinkText !important;
   }
   .root:is(button) {
     box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
+    background: ButtonFace !important;
+    color: ButtonText !important;
   }
 }
 
@@ -9604,12 +9587,6 @@ p {
     color: var(--p-link-fg,var(--p-color-primary));
     background-color: var(--p-link-bg,var(--p-color-frosted));
   }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
 }
 
             </style>
@@ -9893,7 +9870,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -10433,7 +10410,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -10491,7 +10467,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -10719,7 +10695,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -10876,7 +10852,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -11043,7 +11019,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -11278,7 +11253,7 @@ img:dir(rtl) {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -11353,7 +11328,7 @@ img:dir(rtl) {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -12601,7 +12576,6 @@ exports[`should render dsr component for PSelect 1`] = `
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -12660,7 +12634,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 
@@ -12765,7 +12739,6 @@ exports[`should render dsr component for PSelectOption 1`] = `
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -14010,6 +13983,10 @@ exports[`should render dsr component for PTabs 1`] = `
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -14677,7 +14654,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 

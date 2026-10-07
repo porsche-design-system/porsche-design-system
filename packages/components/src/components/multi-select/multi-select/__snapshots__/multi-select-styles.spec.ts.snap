@@ -237,7 +237,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -483,7 +482,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -728,7 +726,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -973,7 +970,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -1213,7 +1209,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -1456,7 +1451,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -1699,7 +1693,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -1942,7 +1935,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -2186,7 +2178,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -2429,7 +2420,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -2671,7 +2661,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -2914,7 +2903,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -3164,7 +3152,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -3409,7 +3396,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -3654,7 +3640,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -3899,7 +3884,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -4144,7 +4128,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -4388,7 +4371,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -4633,7 +4615,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -4878,7 +4859,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -5118,7 +5098,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -5361,7 +5340,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -5605,7 +5583,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -5849,7 +5826,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -6092,7 +6068,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
@@ -6334,7 +6309,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       color: GrayText;
     }
     .no-results--highlighted {
-      forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
