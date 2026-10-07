@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Button`, `Link`, `Multi Select`, `Segmented Control`, `Select`, `Tabs`, `Tabs Bar`: colors could lose contrast in high contrast mode, including hover, highlighted and selected states.
+  ([#4775](https://github.com/porsche-design-system/porsche-design-system/pull/4775))
+
 ## [4.8.0] - 2026-10-02
 
 ## [4.8.0-rc.1] - 2026-10-01
