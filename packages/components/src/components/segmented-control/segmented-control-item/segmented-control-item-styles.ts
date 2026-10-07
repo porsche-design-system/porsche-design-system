@@ -127,6 +127,10 @@ export const getComponentCss = (
         ...(hasSlottedContent && {
           marginInlineEnd: ICON_MARGIN,
         }),
+        ...forcedColorsMediaQuery({
+          forcedColorAdjust: 'preserve-parent-color',
+          '--_p-icon-a': 'currentColor',
+        }),
       },
     }),
   });
