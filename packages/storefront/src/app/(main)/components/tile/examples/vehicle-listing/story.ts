@@ -14,7 +14,7 @@ export const tileStoryVehicleListing: Story<'p-tile'> = {
       properties: {
         className:
           "@container motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:shadow-sm",
-        aspectRatio: '2/1',
+        aspectRatio: '16/9',
         background: 'canvas',
       },
       children: [

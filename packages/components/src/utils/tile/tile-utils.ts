@@ -1,4 +1,4 @@
-export const TILE_ASPECT_RATIOS = ['1/1', '2/1', '4/3', '3/4', '16/9', '9/16', 'auto'] as const;
+export const TILE_ASPECT_RATIOS = ['1/1', '4/3', '3/4', '16/9', '9/16', 'auto'] as const;
 export type TileAspectRatio = (typeof TILE_ASPECT_RATIOS)[number];
 
 export const TILE_SIZES = ['medium', 'large', 'inherit'] as const;

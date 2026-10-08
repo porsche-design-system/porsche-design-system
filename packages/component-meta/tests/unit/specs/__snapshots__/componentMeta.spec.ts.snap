@@ -1770,7 +1770,6 @@ exports[`should match snapshot 1`] = `
       "aspectRatio": {
         "allowedValues": [
           "1/1",
-          "2/1",
           "4/3",
           "3/4",
           "16/9",
@@ -7483,7 +7482,6 @@ exports[`should match snapshot 1`] = `
       "aspectRatio": {
         "allowedValues": [
           "1/1",
-          "2/1",
           "4/3",
           "3/4",
           "16/9",
@@ -11268,7 +11266,6 @@ exports[`should match snapshot 1`] = `
       "aspectRatio": {
         "allowedValues": [
           "1/1",
-          "2/1",
           "4/3",
           "3/4",
           "16/9",

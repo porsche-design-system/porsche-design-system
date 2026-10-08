@@ -26,8 +26,8 @@
   },
   {
     "chunkShortName": "button-tile",
-    "size": 9611,
-    "gzipSize": 3942
+    "size": 9534,
+    "gzipSize": 3922
   },
   {
     "chunkShortName": "canvas",
@@ -161,8 +161,8 @@
   },
   {
     "chunkShortName": "link-tile",
-    "size": 9325,
-    "gzipSize": 3863
+    "size": 9248,
+    "gzipSize": 3837
   },
   {
     "chunkShortName": "link-tile-product",
