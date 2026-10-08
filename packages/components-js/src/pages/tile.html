@@ -66,7 +66,7 @@
 <div class="playground" title="should render background media with gradient and anchor">
   <div class="tile-grid">
     <p-tile gradient="bottom" class="a11ytree-snapshot-test">
-      <img slot="background" src="http://localhost:3002/lights.jpg" alt="" width="1366" height="2048" />
+      <img slot="background" src="http://localhost:3002/lights.jpg" alt="Some alt text" width="1366" height="2048" />
       <a slot="anchor" href="#">Some anchor label</a>
       <p-heading slot="bottom" tag="h3" size="md">Some heading</p-heading>
       <p-button slot="bottom" type="button" compact="true" style="margin-inline-start: auto; pointer-events: auto"
@@ -74,7 +74,7 @@
       >
     </p-tile>
     <p-tile gradient="all">
-      <img slot="background" src="http://localhost:3002/lights.jpg" alt="" width="1366" height="2048" />
+      <img slot="background" src="http://localhost:3002/lights.jpg" alt="Some alt text" width="1366" height="2048" />
       <p-text slot="top">top</p-text>
       <p-text slot="start">start</p-text>
       <p-text slot="end">end</p-text>
@@ -89,16 +89,10 @@
       <img
         slot="top"
         src="http://localhost:3002/lights.jpg"
-        alt=""
+        alt="Some alt text"
         width="1366"
         height="2048"
-        style="
-          flex: 1;
-          height: 160px;
-          object-fit: cover;
-          margin-block-start: calc(var(--ref-p-tile-py) * -1);
-          margin-inline: calc(var(--ref-p-tile-px) * -1);
-        "
+        style="flex: 1; height: 160px; object-fit: cover; margin-block-start: calc(var(--ref-p-tile-py) * -1); margin-inline: calc(var(--ref-p-tile-px) * -1);"
       />
       <p-heading tag="h3" size="md">Some heading</p-heading>
       <p-text>Some text</p-text>
@@ -107,17 +101,10 @@
       <img
         slot="start"
         src="http://localhost:3002/lights.jpg"
-        alt=""
+        alt="Some alt text"
         width="1366"
         height="2048"
-        style="
-          width: 120px;
-          flex: 1;
-          min-height: 0;
-          object-fit: cover;
-          margin-block: calc(var(--ref-p-tile-py) * -1);
-          margin-inline-start: calc(var(--ref-p-tile-px) * -1);
-        "
+        style="width: 120px; flex: 1; min-height: 0; object-fit: cover; margin-block: calc(var(--ref-p-tile-py) * -1); margin-inline-start: calc(var(--ref-p-tile-px) * -1);"
       />
       <p-heading tag="h3" size="md">Some heading</p-heading>
       <p-text>Some text (compact)</p-text>
