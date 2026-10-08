@@ -801,7 +801,7 @@
             <!-- the tile is the query container: image and text are stacked and placed side by side from `@2xl`,
                  the buttons are stacked and placed side by side from `@sm` -->
             <p-tile
-              class="@container motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:shadow-sm"
+              class="@container motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:shadow-sm"
               aspect-ratio="16/9"
               background="canvas"
             >
@@ -827,9 +827,9 @@
                   <p-divider></p-divider>
                   <p-text size="md">€159,900</p-text>
                   <div class="flex flex-col @sm:flex-row @sm:flex-wrap gap-static-md">
-                    <!-- visual duplicate of `<a slot="anchor">`, hidden from assistive technology and keyboard to avoid a redundant link;
+                    <!-- visual duplicate of `<a slot="anchor">`, hidden from assistive technology and keyboard (via its slotted anchor) to avoid a redundant link;
                          `pointer-events-auto` opts out of the click-through tile content, so it shows its own hover state and triggers the shadow -->
-                    <p-link class="pointer-events-auto" href="#" aria-hidden="true" tabindex="-1">Show details</p-link>
+                    <p-link class="pointer-events-auto" aria-hidden="true"><a href="#" tabindex="-1">Show details</a></p-link>
                     <!-- independent action, so it stays accessible; `pointer-events-auto` makes it clickable instead of passing clicks through to the anchor -->
                     <p-button class="pointer-events-auto" type="button" variant="secondary" icon="bookmark"
                       >Save</p-button
@@ -843,22 +843,20 @@
           <p-tile class="[--p-tile-gap-y:var(--spacing-fluid-lg)] group" aspect-ratio="3/4">
             <a slot="anchor" href="#">Vehicle Accessories</a>
             <p-heading slot="top" tag="h3" size="md" weight="semibold">Vehicle Accessories</p-heading>
-            <!-- visual duplicate of `<a slot="anchor">`, hidden from assistive technology and keyboard to avoid a redundant link;
+            <!-- visual duplicate of `<a slot="anchor">`, hidden from assistive technology and keyboard (via its slotted anchor) to avoid a redundant link;
                  `pointer-events-auto` opts out of the click-through tile content, so it shows its own hover state and triggers the zoom -->
             <p-link
               slot="top"
               class="ms-auto pointer-events-auto"
-              href="#"
               variant="secondary"
               icon="arrow-right"
               hide-label="true"
               compact="true"
               aria-hidden="true"
-              tabindex="-1"
-              >Vehicle Accessories</p-link
+            ><a href="#" tabindex="-1">Vehicle Accessories</a></p-link
             >
             <img
-              class="grow basis-0 min-h-0 self-stretch max-w-none -mb-(--ref-p-tile-py) -mx-(--ref-p-tile-px) object-cover object-top motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:scale-105"
+              class="grow basis-0 min-h-0 self-stretch max-w-none -mb-(--ref-p-tile-py) -mx-(--ref-p-tile-px) object-cover object-top motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105"
               src="/assets/products/roof-box-on-a-car.webp"
               alt="Porsche vehicle with roof box"
             >
@@ -867,25 +865,23 @@
           <p-tile class="scheme-dark group" aspect-ratio="1/1" gradient="bottom">
             <img
               slot="background"
-              class="motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:scale-105"
+              class="motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105"
               src="/assets/porsche-992-carrera-s.jpg"
               alt="Porsche 992 Carrera S"
             >
             <a slot="anchor" href="#">911</a>
             <p-heading slot="bottom" tag="h3" size="md" weight="semibold">911</p-heading>
-            <!-- visual duplicate of `<a slot="anchor">`, hidden from assistive technology and keyboard to avoid a redundant link;
+            <!-- visual duplicate of `<a slot="anchor">`, hidden from assistive technology and keyboard (via its slotted anchor) to avoid a redundant link;
                  `pointer-events-auto` opts out of the click-through tile content, so it shows its own hover state and triggers the zoom -->
             <p-link
               slot="bottom"
               class="ms-auto pointer-events-auto"
-              href="#"
               variant="secondary"
               icon="arrow-right"
               hide-label="true"
               compact="true"
               aria-hidden="true"
-              tabindex="-1"
-              >911</p-link
+            ><a href="#" tabindex="-1">911</a></p-link
             >
           </p-tile>
 

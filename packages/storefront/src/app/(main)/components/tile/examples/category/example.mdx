@@ -8,11 +8,11 @@ CSS variables `--ref-p-tile-px` and `--ref-p-tile-py`, while `self-stretch` and 
 The Tile clips the image to its corner radius.
 
 The `anchor` slot makes the whole Tile clickable and provides the accessible link to the category. The visible arrow
-link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` and `tabindex="-1"`)
-but opts in via `pointer-events-auto` to show its own hover state.
+link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` on the link and
+`tabindex="-1"` on its slotted anchor) but opts in via `pointer-events-auto` to show its own hover state.
 
 On hover of the `anchor` or the duplicated link, the image zooms in via
-`group-has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:scale-105`. The `motion-safe:` variant respects the reduced
+`group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105`. The `motion-safe:` variant respects the reduced
 motion preference of the user.
 
 The Tailwind CSS counterpart splits the tile into an outer element, which is the positioning context of the stretched

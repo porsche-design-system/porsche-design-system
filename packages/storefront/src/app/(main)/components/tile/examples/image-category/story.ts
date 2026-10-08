@@ -7,14 +7,17 @@ import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/genera
 const label = '911';
 
 const linkProperties = {
-  href: '#',
   variant: 'secondary',
   icon: 'arrow-right',
   hideLabel: true,
   compact: true,
   'aria-hidden': 'true',
-  tabIndex: -1,
 } as const;
+
+// slotted anchor, so the hidden link contains no focusable element
+const linkChildren: ElementConfig<HTMLTagOrComponent>[] = [
+  { tag: 'a', properties: { href: '#', tabIndex: -1 }, children: [label] },
+];
 
 const imageProperties = {
   src: 'assets/porsche-992-carrera-s.jpg',
@@ -34,7 +37,7 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
       properties: {
         slot: 'background',
         className:
-          "motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:scale-105",
+          'motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105',
         ...imageProperties,
       },
     },
@@ -50,7 +53,7 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
       // triggers the zoom
       tag: 'p-link',
       properties: { slot: 'bottom', className: 'ms-auto pointer-events-auto', ...linkProperties },
-      children: [label],
+      children: linkChildren,
     },
   ],
 };
@@ -70,7 +73,7 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
           tag: 'img',
           properties: {
             className:
-              "size-full object-cover motion-safe:transition-transform duration-md ease-in-out group-has-[a:hover,p-link[tabindex='-1']:hover]:scale-105",
+              'size-full object-cover motion-safe:transition-transform duration-md ease-in-out group-has-[a:hover]:scale-105',
             ...imageProperties,
           },
         },
@@ -93,7 +96,7 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
           // link; `relative z-2` places it above the stretched link, so it shows its own hover state
           tag: 'p-link',
           properties: { className: 'relative z-2 ms-auto', ...linkProperties },
-          children: [label],
+          children: linkChildren,
         },
       ],
     },

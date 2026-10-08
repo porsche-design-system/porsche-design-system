@@ -9,12 +9,12 @@ padding. The Tile clips the image to its corner radius. Stacked, the image defin
 by side, it is positioned absolutely, so it fills the height of the details without increasing the height of the Tile.
 
 The `anchor` slot makes the whole Tile clickable and provides the accessible link to the details page. The visible "Show
-details" link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` and
-`tabindex="-1"`). The "Save" button is an independent action and stays accessible. Both opt in via `pointer-events-auto`
-to show their own hover state.
+details" link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` on the link
+and `tabindex="-1"` on its slotted anchor). The "Save" button is an independent action and stays accessible. Both opt in
+via `pointer-events-auto` to show their own hover state.
 
 On hover of the `anchor` or the duplicated link, the Tile is lifted by a shadow via
-`has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:shadow-sm`. Hovering the "Save" button does not trigger it, since
+`has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:shadow-sm`. Hovering the "Save" button does not trigger it, since
 it is an independent action with its own hover state.
 
 The Tailwind CSS counterpart builds the same layout without `p-tile`. The outer element is the query container, the

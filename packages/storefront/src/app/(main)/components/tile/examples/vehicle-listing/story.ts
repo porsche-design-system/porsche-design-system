@@ -40,7 +40,7 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
     className:
-      "@container motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:shadow-sm",
+      '@container motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:shadow-sm',
     aspectRatio: '16/9',
     background: 'canvas',
   },
@@ -70,8 +70,8 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
                 // redundant link; `pointer-events-auto` opts out of the click-through tile content, so it shows its
                 // own hover state and triggers the shadow
                 tag: 'p-link',
-                properties: { className: 'pointer-events-auto', href: '#', 'aria-hidden': 'true', tabIndex: -1 },
-                children: ['Show details'],
+                properties: { className: 'pointer-events-auto', 'aria-hidden': 'true' },
+                children: [{ tag: 'a', properties: { href: '#', tabIndex: -1 }, children: ['Show details'] }],
               },
               {
                 // independent action, so it stays accessible; `pointer-events-auto` makes it clickable instead of
@@ -99,7 +99,7 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'article',
   properties: {
     className:
-      "@container relative isolate grid aspect-video rounded-3xl bg-canvas text-primary motion-safe:transition-shadow duration-sm ease-in-out has-[a:hover,p-link[tabindex='-1']:hover]:shadow-sm",
+      '@container relative isolate grid aspect-video rounded-3xl bg-canvas text-primary motion-safe:transition-shadow duration-sm ease-in-out has-[a:hover]:shadow-sm',
   },
   children: [
     {
@@ -136,8 +136,8 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
                 // visual duplicate of the stretched link, hidden from assistive technology and keyboard to avoid a
                 // redundant link; `relative z-2` places it above the stretched link, so it shows its own hover state
                 tag: 'p-link',
-                properties: { className: 'relative z-2', href: '#', 'aria-hidden': 'true', tabIndex: -1 },
-                children: ['Show details'],
+                properties: { className: 'relative z-2', 'aria-hidden': 'true' },
+                children: [{ tag: 'a', properties: { href: '#', tabIndex: -1 }, children: ['Show details'] }],
               },
               {
                 // independent action, so it stays accessible; `relative z-2` places it above the stretched link, so it is
