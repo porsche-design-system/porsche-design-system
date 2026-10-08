@@ -764,121 +764,170 @@
           </p-text-list>
         </div>
         <div data-card="tile" style="grid-column: 1 / -1;">
-          <div class="grid grid-cols-3 gap-fluid-md">
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">Default slot only (centered)</p-text>
-              <p-tile>
-                <p-heading tag="h3" size="lg">Centered content</p-heading>
-                <p-text>The default slot is centered and covers the whole tile when no layout slot is used.</p-text>
-              </p-tile>
-            </div>
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">All layout slots (background="frosted")</p-text>
-              <p-tile background="frosted">
-                <p-tag slot="top">top</p-tag>
-                <p-icon slot="top" name="arrow-up-right" aria-hidden="true" style="margin-inline-start: auto"></p-icon>
-                <p-text slot="start">start</p-text>
-                <p-text>default</p-text>
-                <p-text slot="end">end</p-text>
-                <p-heading slot="bottom" tag="h3" size="md">bottom</p-heading>
-              </p-tile>
-            </div>
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">Transparent image above background color + anchor</p-text>
-              <p-tile aspect-ratio="3/4">
-                <img
-                  slot="background"
-                  src="/assets/icon-custom-kaixin.svg"
-                  alt=""
-                  style="object-fit: contain; box-sizing: border-box; padding: 25%"
-                >
-                <a slot="anchor" href="https://porsche.com" target="_blank">Cayenne, discover the model</a>
-                <p-tag slot="top">New</p-tag>
-                <p-icon slot="top" name="arrow-up-right" aria-hidden="true" style="margin-inline-start: auto"></p-icon>
-                <p-heading slot="bottom" tag="h3" size="md">Cayenne</p-heading>
-              </p-tile>
-            </div>
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">Media + gradient="block" + anchor + opted-in action</p-text>
-              <p-tile class="scheme-dark" gradient="block" aspect-ratio="3/4">
-                <img slot="background" src="/assets/lights.jpg" alt="">
-                <a slot="anchor" href="https://porsche.com" target="_blank" aria-labelledby="tile-heading-lights"></a>
-                <p-tag slot="top" variant="info-frosted">Gradient grows with the slot</p-tag>
-                <p-heading slot="bottom" id="tile-heading-lights" tag="h3" size="lg">Porsche Lights</p-heading>
-                <p-text slot="bottom">The whole tile is a link, the button opts in via pointer-events: auto.</p-text>
-                <p-button slot="bottom" class="pointer-events-auto" type="button" variant="secondary" compact="true"
-                  >Configure</p-button
-                >
-              </p-tile>
-            </div>
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">Responsive gradient + aspect-ratio (base: bottom, m: inline)</p-text>
-              <p-tile
-                class="scheme-dark"
-                gradient='{"base":"bottom","m":"inline"}'
-                aspect-ratio='{"base":"3/4","m":"4/3"}'
-              >
-                <img slot="background" src="/assets/interior.jpg" alt="">
-                <p-heading slot="start" tag="h3" size="md">start</p-heading>
-                <p-text slot="end">end</p-text>
-                <p-text slot="bottom">bottom</p-text>
-              </p-tile>
-            </div>
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">Free layout within the default slot (background="canvas")</p-text>
-              <p-tile background="canvas">
-                <div class="grid grid-cols-2 gap-static-sm self-stretch grow">
-                  <div class="grid place-items-center rounded-lg bg-surface prose-text-sm">A</div>
-                  <div class="grid place-items-center rounded-lg bg-surface prose-text-sm row-span-2">B</div>
-                  <div class="grid place-items-center rounded-lg bg-surface prose-text-sm">C</div>
-                </div>
-              </p-tile>
-            </div>
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">Alignment overrides (align-self + CSS variable)</p-text>
-              <p-tile style="--p-tile-bottom-justify: space-between">
-                <p-text style="align-self: flex-start">align-self: flex-start</p-text>
-                <p-text slot="bottom">start</p-text>
-                <p-text slot="bottom">--p-tile-bottom-justify</p-text>
-              </p-tile>
-            </div>
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">Nested tile with its own anchor (background="frosted")</p-text>
-              <p-tile class="scheme-dark" gradient="top">
-                <img slot="background" src="/assets/cabin.webp" alt="">
-                <a slot="anchor" href="#outer-tile">Outer tile</a>
-                <p-heading slot="top" tag="h3" size="md">Outer tile</p-heading>
-                <p-tile slot="bottom" background="frosted" aspect-ratio="auto" style="flex: 1">
-                  <a slot="anchor" href="#inner-tile">Inner tile</a>
-                  <p-text>Inner tile</p-text>
-                </p-tile>
-              </p-tile>
-            </div>
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">Grows beyond aspect-ratio="16/9" with content</p-text>
-              <p-tile aspect-ratio="16/9">
-                <p-heading slot="top" tag="h3" size="md">Lots of content</p-heading>
-                <p-text
-                  >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est. Lorem ipsum dolor sit amet,
-                  consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                  erat, sed diam voluptua.</p-text
-                >
-                <p-link slot="bottom" href="https://porsche.com" target="_blank" variant="secondary" compact="true"
-                  >Without anchor, links work as usual</p-link
-                >
-              </p-tile>
-            </div>
-            <div class="flex flex-col gap-static-sm">
-              <p-text size="xs">Missing opt-in (button is click-through)</p-text>
-              <p-tile aspect-ratio="auto">
-                <a slot="anchor" href="https://porsche.com" target="_blank">Porsche</a>
-                <p-heading tag="h3" size="md">Not opted in</p-heading>
-                <p-button type="button" variant="secondary" compact="true">Not clickable by pointer</p-button>
-              </p-tile>
-            </div>
+          <div class="p-static-md rounded-lg bg-surface">
+            <p-tile
+              class="[--p-tile-gap-y:0] motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover]:shadow-sm"
+              aspect-ratio="auto"
+              background="canvas"
+            >
+              <a slot="anchor" href="#">Porsche 911</a>
+              <p-model-signature model="911"></p-model-signature>
+              <p-text>Porsche 911</p-text>
+              <img class="mt-static-sm" src="/assets/model-series/911.webp" alt="Porsche 911" width="640" height="228">
+            </p-tile>
           </div>
+
+          <div class="p-static-md rounded-lg bg-surface">
+            <p-tile
+              class="group motion-safe:transition-colors duration-sm ease-in-out has-[[slot=anchor]:hover]:bg-canvas"
+              aspect-ratio="16/9"
+              background="none"
+              compact="true"
+            >
+              <a slot="anchor" href="#">718</a>
+              <p-heading slot="top" tag="h3" size="md">718</p-heading>
+              <img
+                class="pe-static-md motion-safe:transition-transform duration-sm ease-in-out group-has-[[slot=anchor]:hover]:translate-x-static-md"
+                src="/assets/model-series/718.webp"
+                alt="Porsche 718"
+                width="640"
+                height="228"
+              >
+              <p-tag slot="bottom">Petrol</p-tag>
+            </p-tile>
+          </div>
+
+          <div class="p-static-md rounded-lg bg-surface">
+            <!-- the tile is the query container: image and text are stacked and placed side by side from `@2xl`,
+                 the buttons are stacked and placed side by side from `@sm` -->
+            <p-tile
+              class="@container motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:shadow-sm"
+              aspect-ratio="2/1"
+              background="canvas"
+            >
+              <a slot="anchor" href="#">Show details of the Porsche 718 Boxster</a>
+              <div class="grow self-stretch grid @2xl:grid-cols-2 gap-fluid-md">
+                <!-- negative margins equal to the read-only tile padding let the image bleed to the edges of the tile,
+                     the tile clips it to its corner radius -->
+                <div class="relative -mt-(--ref-p-tile-py) -mx-(--ref-p-tile-px) @2xl:-my-(--ref-p-tile-py) @2xl:me-0">
+                  <!-- stacked, the image defines its height by its aspect ratio, side by side it fills the height of the text -->
+                  <img
+                    class="block w-full h-full object-cover @max-2xl:aspect-video @2xl:absolute @2xl:inset-0"
+                    src="/assets/porsche-718-gts.jpg"
+                    alt="Porsche 718 GTS"
+                  >
+                </div>
+                <div class="flex flex-col gap-fluid-sm">
+                  <p-heading tag="h3" size="lg">Porsche 718 Boxster (982)</p-heading>
+                  <p-text>Porsche Approved Pre-owned</p-text>
+                  <p-divider></p-divider>
+                  <p-text>White · Black</p-text>
+                  <p-text>Petrol · 58,540 km · 04/2017 · 2 previous owners · Accident-free</p-text>
+                  <p-text>220 kW / 300 PS · Rear-wheel drive · Manual</p-text>
+                  <p-divider></p-divider>
+                  <p-text size="md">€159,900</p-text>
+                  <div class="flex flex-col @sm:flex-row @sm:flex-wrap gap-static-md">
+                    <!-- visual duplicate of `<a slot="anchor">`, hidden from assistive technology and keyboard to avoid a redundant link;
+                         `pointer-events-auto` opts out of the click-through tile content, so it shows its own hover state and triggers the shadow -->
+                    <p-link class="pointer-events-auto" href="#" aria-hidden="true" tabindex="-1">Show details</p-link>
+                    <!-- independent action, so it stays accessible; `pointer-events-auto` makes it clickable instead of passing clicks through to the anchor -->
+                    <p-button class="pointer-events-auto" type="button" variant="secondary" icon="bookmark"
+                      >Save</p-button
+                    >
+                  </div>
+                </div>
+              </div>
+            </p-tile>
+          </div>
+
+          <p-tile class="[--p-tile-gap-y:var(--spacing-fluid-lg)] group" aspect-ratio="3/4">
+            <a slot="anchor" href="#">Vehicle Accessories</a>
+            <p-heading slot="top" tag="h3" size="md" weight="semibold">Vehicle Accessories</p-heading>
+            <!-- visual duplicate of `<a slot="anchor">`, hidden from assistive technology and keyboard to avoid a redundant link;
+                 `pointer-events-auto` opts out of the click-through tile content, so it shows its own hover state and triggers the zoom -->
+            <p-link
+              slot="top"
+              class="ms-auto pointer-events-auto"
+              href="#"
+              variant="secondary"
+              icon="arrow-right"
+              hide-label="true"
+              compact="true"
+              aria-hidden="true"
+              tabindex="-1"
+              >Vehicle Accessories</p-link
+            >
+            <img
+              class="grow basis-0 min-h-0 self-stretch max-w-none -mb-(--ref-p-tile-py) -mx-(--ref-p-tile-px) object-cover object-top motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:scale-105"
+              src="/assets/products/roof-box-on-a-car.webp"
+              alt="Porsche vehicle with roof box"
+            >
+          </p-tile>
+
+          <p-tile class="scheme-dark group" aspect-ratio="1/1" gradient="bottom">
+            <img
+              slot="background"
+              class="motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:scale-105"
+              src="/assets/porsche-992-carrera-s.jpg"
+              alt="Porsche 992 Carrera S"
+            >
+            <a slot="anchor" href="#">911</a>
+            <p-heading slot="bottom" tag="h3" size="md" weight="semibold">911</p-heading>
+            <!-- visual duplicate of `<a slot="anchor">`, hidden from assistive technology and keyboard to avoid a redundant link;
+                 `pointer-events-auto` opts out of the click-through tile content, so it shows its own hover state and triggers the zoom -->
+            <p-link
+              slot="bottom"
+              class="ms-auto pointer-events-auto"
+              href="#"
+              variant="secondary"
+              icon="arrow-right"
+              hide-label="true"
+              compact="true"
+              aria-hidden="true"
+              tabindex="-1"
+              >911</p-link
+            >
+          </p-tile>
+
+          <p-tile class="group" aspect-ratio="3/4">
+            <a slot="anchor" href="#">Weekender – Porsche Design Travel Collection</a>
+            <p-tag slot="top" variant="secondary">New</p-tag>
+            <p-button-pure
+              slot="top"
+              class="ms-auto pointer-events-auto p-static-xs -m-static-xs"
+              icon="heart"
+              hide-label="true"
+              >Add to wishlist</p-button-pure
+            >
+            <img
+              class="grow basis-0 min-h-0 w-full object-contain motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover]:scale-105"
+              src="/assets/weekender.webp"
+              alt=""
+              width="960"
+              height="1080"
+            >
+            <div slot="bottom" class="grow flex flex-col items-center gap-static-xs">
+              <div class="flex gap-static-2xs pointer-events-auto" role="radiogroup" aria-label="Color">
+                <input
+                  class="bg-[#4b4b4d] appearance-none size-6 p-static-xs bg-clip-content rounded-full border border-transparent cursor-pointer motion-safe:transition-colors duration-sm ease-in-out hover:not-checked:border-contrast-medium checked:border-primary focus-visible:outline outline-focus outline-offset-2"
+                  type="radio"
+                  name="tile-product-color"
+                  value="grey"
+                  aria-label="Grey"
+                  checked
+                >
+                <input
+                  class="bg-[#9a6a44] appearance-none size-6 p-static-xs bg-clip-content rounded-full border border-transparent cursor-pointer motion-safe:transition-colors duration-sm ease-in-out hover:not-checked:border-contrast-medium checked:border-primary focus-visible:outline outline-focus outline-offset-2"
+                  type="radio"
+                  name="tile-product-color"
+                  value="cognac"
+                  aria-label="Cognac"
+                >
+              </div>
+              <p-text class="line-clamp-2" align="center">Weekender – Porsche Design Travel Collection</p-text>
+              <p-text color="contrast-medium" align="center">1.100,00 €</p-text>
+            </div>
+          </p-tile>
         </div>
         <div data-card="inline-notification" style="grid-column: span 2;">
           <p-inline-notification

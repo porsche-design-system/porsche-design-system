@@ -13,7 +13,7 @@ export const tileStoryImageCategory: Story<'p-tile'> = {
       properties: {
         aspectRatio: '1/1',
         gradient: 'bottom',
-        className: 'scheme-dark group [--p-tile-bottom-align:center] [--p-tile-bottom-justify:space-between]',
+        className: 'scheme-dark group',
       },
       children: [
         {
@@ -42,7 +42,7 @@ export const tileStoryImageCategory: Story<'p-tile'> = {
             icon: 'arrow-right',
             hideLabel: true,
             compact: true,
-            className: 'primary-link pointer-events-auto',
+            className: 'primary-link ms-auto pointer-events-auto',
             'aria-hidden': 'true',
             tabIndex: -1,
           },

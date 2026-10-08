@@ -1,4 +1,4 @@
-export const TILE_BACKGROUNDS = ['surface', 'canvas', 'frosted'] as const;
+export const TILE_BACKGROUNDS = ['surface', 'canvas', 'frosted', 'none'] as const;
 export type TileBackground = (typeof TILE_BACKGROUNDS)[number];
 
 export const TILE_GRADIENTS = ['none', 'top', 'bottom', 'start', 'end', 'block', 'inline', 'all'] as const;

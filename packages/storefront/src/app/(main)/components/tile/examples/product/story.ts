@@ -25,15 +25,23 @@ export const tileStoryProduct: Story<'p-tile'> = {
       tag: 'p-tile',
       properties: {
         aspectRatio: '3/4',
-        className:
-          'group [--p-tile-top-align:center] [--p-tile-top-justify:space-between] [--p-tile-main-align:stretch] [--p-tile-bottom-justify:center]',
+        className: 'group',
       },
       children: [
         { tag: 'a', properties: { slot: 'anchor', href }, children: [label] },
-        { tag: 'p-tag', properties: { slot: 'top', variant: 'secondary' }, children: ['New'] },
+        {
+          tag: 'p-tag',
+          properties: { slot: 'top', variant: 'secondary' },
+          children: ['New'],
+        },
         {
           tag: 'p-button-pure',
-          properties: { slot: 'top', icon: 'heart', hideLabel: true, className: 'pointer-events-auto' },
+          properties: {
+            slot: 'top',
+            icon: 'heart',
+            hideLabel: true,
+            className: 'ms-auto pointer-events-auto',
+          },
           children: ['Add to wishlist'],
         },
         {
@@ -49,7 +57,7 @@ export const tileStoryProduct: Story<'p-tile'> = {
         },
         {
           tag: 'div',
-          properties: { slot: 'bottom', className: 'flex flex-col items-center gap-static-xs text-center' },
+          properties: { slot: 'bottom', className: 'mx-auto flex flex-col items-center gap-static-xs text-center' },
           children: [
             {
               tag: 'div',

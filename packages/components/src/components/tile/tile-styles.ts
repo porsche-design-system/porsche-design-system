@@ -61,30 +61,34 @@ const cssVarBackground = '--p-tile-bg';
  * @css-variable {"name": "--p-tile-gradient-fade", "description": "Distance the gradient extends beyond its slot towards the center of the tile.", "defaultValue": "spacing-fluid-lg"}
  */
 const cssVarGradientFade = '--p-tile-gradient-fade';
-/**
- * @css-variable {"name": "--p-tile-{top|bottom|start|end|main}-align", "description": "Overrides `align-items` (cross axis) of the slot.", "defaultValue": "depends on slot"}
- * @css-variable {"name": "--p-tile-{top|bottom|start|end|main}-justify", "description": "Overrides `justify-content` (main axis) of the slot.", "defaultValue": "depends on slot"}
- */
-const getCssVarAlign = (area: TileArea): string => `--p-tile-${area}-align`;
-const getCssVarJustify = (area: TileArea): string => `--p-tile-${area}-justify`;
 
-// internal resolved values, needed to extend gradients through the padding to the edges of the tile
-const cssVarResolvedPaddingInline = '--_p-tile-px';
-const cssVarResolvedPaddingBlock = '--_p-tile-py';
+// resolved values are set on an element inside the shadow DOM, so they are inherited by slotted content but can't be
+// overridden from outside, which makes them read-only
+/**
+ * @css-variable {"name": "--ref-p-tile-px", "description": "Exposes the internally used padding-inline of the Tile as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Tile."}
+ */
+const cssVarResolvedPaddingInline = '--ref-p-tile-px';
+/**
+ * @css-variable {"name": "--ref-p-tile-py", "description": "Exposes the internally used padding-block of the Tile as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top or bottom of the Tile."}
+ */
+const cssVarResolvedPaddingBlock = '--ref-p-tile-py';
 const cssVarResolvedGapInline = '--_p-tile-gap-x';
 const cssVarResolvedGapBlock = '--_p-tile-gap-y';
 
 type TileArea = TileEdge | 'main';
 
 const backgroundMap: Record<TileBackground, string> = {
+  none: 'transparent',
   surface: ref(colorSurface),
   canvas: ref(colorCanvas),
   frosted: ref(colorFrosted),
 };
 
+// rows of top and bottom are sized by their content, so centering only aligns the items to each other (e.g. a heading
+// next to an icon-only button), while the slot itself stays at the edge of the tile
 const areaLayoutMap: Record<TileArea, { flexDirection: 'row' | 'column'; align: string; justify: string }> = {
-  top: { flexDirection: 'row', align: 'flex-start', justify: 'flex-start' },
-  bottom: { flexDirection: 'row', align: 'flex-end', justify: 'flex-start' },
+  top: { flexDirection: 'row', align: 'center', justify: 'flex-start' },
+  bottom: { flexDirection: 'row', align: 'center', justify: 'flex-start' },
   start: { flexDirection: 'column', align: 'flex-start', justify: 'center' },
   end: { flexDirection: 'column', align: 'flex-end', justify: 'center' },
   main: { flexDirection: 'column', align: 'center', justify: 'center' },
@@ -96,8 +100,8 @@ const getAreaLayoutStyles = (area: TileArea): JssStyle => {
     display: 'flex',
     flexDirection,
     ...(flexDirection === 'row' && { flexWrap: 'wrap' }),
-    alignItems: ref(getCssVarAlign(area), align),
-    justifyContent: ref(getCssVarJustify(area), justify),
+    alignItems: align,
+    justifyContent: justify,
     gap: `${ref(cssVarResolvedGapBlock)} ${ref(cssVarResolvedGapInline)}`,
     minWidth: 0,
     gridArea: area,
@@ -197,6 +201,7 @@ export const getComponentCss = (
       ':host': {
         display: 'flex',
         alignItems: 'stretch',
+        borderRadius: radius,
         // Safari workaround to scale the tile properly
         '@supports (-webkit-hyphens: auto)': {
           alignItems: 'baseline',
@@ -264,24 +269,20 @@ export const getComponentCss = (
       }),
     },
     root: {
-      position: 'relative', // containing block of background and anchor
-      isolation: 'isolate',
+      position: 'relative', // containing block of the anchor
+      isolation: 'isolate', // stacking context in which background, gradient, anchor and content are layered
       display: 'grid',
-      ...getGridTemplateStyles(slotState),
       width: '100%', // necessary in case tile content overflows in grid or flex context
       // Safari workaround to scale the tile properly
       '@supports (-webkit-hyphens: auto)': {
         height: '100%',
       },
-      boxSizing: 'border-box',
       ...buildResponsiveBooleanStyles(compact, (isCompact: boolean) => ({
         [cssVarResolvedPaddingInline]: ref(cssVarPaddingInline, ref(isCompact ? spacingFluidSm : spacingFluidMd)),
         [cssVarResolvedPaddingBlock]: ref(cssVarPaddingBlock, ref(isCompact ? spacingFluidSm : spacingFluidMd)),
         [cssVarResolvedGapInline]: ref(cssVarGapInline, ref(isCompact ? spacingFluidXs : spacingFluidSm)),
         [cssVarResolvedGapBlock]: ref(cssVarGapBlock, ref(isCompact ? spacingFluidXs : spacingFluidSm)),
       })),
-      padding: `${ref(cssVarResolvedPaddingBlock)} ${ref(cssVarResolvedPaddingInline)}`,
-      gap: `${ref(cssVarResolvedGapBlock)} ${ref(cssVarResolvedGapInline)}`,
       borderRadius: radius,
       color: ref(colorPrimary),
       backgroundColor: ref(cssVarBackground, backgroundMap[background]),
@@ -293,12 +294,22 @@ export const getComponentCss = (
         aspectRatio: aspectRatioValue,
       })),
     },
+    content: {
+      position: 'relative', // containing block of the background, without creating a stacking context
+      display: 'grid',
+      ...getGridTemplateStyles(slotState),
+      boxSizing: 'border-box',
+      padding: `${ref(cssVarResolvedPaddingBlock)} ${ref(cssVarResolvedPaddingInline)}`,
+      gap: `${ref(cssVarResolvedGapBlock)} ${ref(cssVarResolvedGapInline)}`,
+      // clips content bleeding to the edges (e.g. media) to the border-radius, `clip` instead of `hidden` to not create a
+      // scroll container, the anchor is placed outside, so its focus ring isn't clipped
+      overflow: 'clip',
+      borderRadius: 'inherit',
+    },
     background: {
       position: 'absolute',
       inset: 0,
       zIndex: 0,
-      overflow: 'hidden', // clips slotted media to the border-radius, also when it is scaled by custom styles
-      borderRadius: 'inherit',
       pointerEvents: 'none',
     },
     gradient: {

@@ -14,7 +14,7 @@ export const tileStoryVehicleListing: Story<'p-tile'> = {
       properties: {
         aspectRatio: 'auto',
         className:
-          'rounded-3xl [--p-tile-px:var(--spacing-fluid-md)] [--p-tile-py:var(--spacing-fluid-md)] [--p-tile-main-align:stretch] [--p-tile-start-align:stretch] motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover,.primary-link:hover]:shadow-sm',
+          'rounded-3xl *:self-stretch motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover,.primary-link:hover]:shadow-sm',
       },
       children: [
         { tag: 'a', properties: { slot: 'anchor', href }, children: ['Show details of the Porsche 718 Boxster'] },
@@ -24,8 +24,8 @@ export const tileStoryVehicleListing: Story<'p-tile'> = {
             slot: 'start',
             src: 'assets/porsche-718-gts.jpg',
             alt: '',
-            // negative margins equal to the tile padding let the image bleed to the edges of the tile
-            className: 'flex-1 min-h-0 -ms-(--p-tile-px) -my-(--p-tile-py) object-cover rounded-s-3xl',
+            // negative margins equal to the read-only tile padding let the image bleed to the edges of the tile
+            className: 'flex-1 min-h-0 -ms-(--ref-p-tile-px) -my-(--ref-p-tile-py) object-cover',
           },
         },
         { tag: 'p-heading', properties: { tag: 'h3', size: 'lg' }, children: ['Porsche 718 Boxster (982)'] },

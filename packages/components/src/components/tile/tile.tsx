@@ -40,8 +40,8 @@ const propTypes: PropTypes<typeof Tile> = {
 
 /**
  * @slot {"name": "", "description": "Main content area, centered by default. When no other layout slot is used, it covers the whole tile and can be used for a fully custom layout." }
- * @slot {"name": "top", "description": "Content aligned to the top of the tile, laid out as a row." }
- * @slot {"name": "bottom", "description": "Content aligned to the bottom of the tile, laid out as a row." }
+ * @slot {"name": "top", "description": "Content aligned to the top of the tile, laid out as a row with vertically centered items." }
+ * @slot {"name": "bottom", "description": "Content aligned to the bottom of the tile, laid out as a row with vertically centered items." }
  * @slot {"name": "start", "description": "Content aligned to the inline start of the tile, laid out as a column." }
  * @slot {"name": "end", "description": "Content aligned to the inline end of the tile, laid out as a column." }
  * @slot {"name": "background", "description": "Media (e.g. img, picture, video) or custom content rendered cover-fit above the background color." }
@@ -104,17 +104,19 @@ export class Tile {
     return (
       <div class="root">
         <slot name={tileAnchorSlot} onSlotchange={this.updateSlotState} />
-        <div class="background">
-          <slot name={tileBackgroundSlot} onSlotchange={this.onBackgroundSlotChange} />
+        <div class="content">
+          <div class="background">
+            <slot name={tileBackgroundSlot} onSlotchange={this.onBackgroundSlotChange} />
+          </div>
+          {TILE_EDGES.filter((edge) => this.slotState[edge]).map((edge) => (
+            <span key={edge} class={`gradient gradient-${edge}`} />
+          ))}
+          <slot name="top" onSlotchange={this.updateSlotState} />
+          <slot name="start" onSlotchange={this.updateSlotState} />
+          <slot />
+          <slot name="end" onSlotchange={this.updateSlotState} />
+          <slot name="bottom" onSlotchange={this.updateSlotState} />
         </div>
-        {TILE_EDGES.filter((edge) => this.slotState[edge]).map((edge) => (
-          <span key={edge} class={`gradient gradient-${edge}`} />
-        ))}
-        <slot name="top" onSlotchange={this.updateSlotState} />
-        <slot name="start" onSlotchange={this.updateSlotState} />
-        <slot />
-        <slot name="end" onSlotchange={this.updateSlotState} />
-        <slot name="bottom" onSlotchange={this.updateSlotState} />
       </div>
     );
   }

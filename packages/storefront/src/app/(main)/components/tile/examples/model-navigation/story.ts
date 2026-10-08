@@ -11,7 +11,7 @@ export const tileStoryModelNavigation: Story<'p-tile'> = {
         aspectRatio: 'auto',
         compact: true,
         className:
-          'group rounded-2xl bg-transparent motion-safe:transition-colors duration-sm ease-in-out has-[[slot=anchor]:hover]:bg-canvas [--p-tile-radius:var(--radius-2xl)] [--p-tile-main-align:flex-start] [--p-tile-bg:transparent]',
+          'group rounded-2xl bg-transparent motion-safe:transition-colors duration-sm ease-in-out has-[[slot=anchor]:hover]:bg-canvas [--p-tile-radius:var(--radius-2xl)] [--p-tile-bg:transparent]',
       },
       children: [
         {
@@ -28,7 +28,7 @@ export const tileStoryModelNavigation: Story<'p-tile'> = {
             width: 271,
             height: 96,
             className:
-              'w-[calc(100%-12px)] h-auto motion-safe:transition-transform duration-sm ease-in-out group-has-[[slot=anchor]:hover]:translate-x-[12px]',
+              'self-start w-[calc(100%-12px)] h-auto motion-safe:transition-transform duration-sm ease-in-out group-has-[[slot=anchor]:hover]:translate-x-[12px]',
           },
         },
         {

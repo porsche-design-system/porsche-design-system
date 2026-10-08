@@ -1,8 +1,8 @@
 An image category tile links to a category with a mood image, e.g. a model range on porsche.com. The image covers the
-whole `background` slot. The heading and an icon-only link are placed in the `bottom` slot and centered and pushed apart
-via `--p-tile-bottom-align: center` and `--p-tile-bottom-justify: space-between`. `gradient="bottom"` ensures the
-legibility of the heading on the image. The `scheme-dark` class renders a dark gradient with light content independent
-of the color scheme of the page, which suits most mood images.
+whole `background` slot. The heading and an icon-only link are placed in the `bottom` slot, which centers them
+vertically, and pushed apart via `ms-auto` on the link. `gradient="bottom"` ensures the legibility of the heading on the
+image. The `scheme-dark` class renders a dark gradient with light content independent of the color scheme of the page,
+which suits most mood images.
 
 The `anchor` slot makes the whole Tile clickable and provides the accessible link to the category. The visible arrow
 link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` and `tabindex="-1"`)

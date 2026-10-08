@@ -12,7 +12,7 @@ export const tileStoryCategory: Story<'p-tile'> = {
       tag: 'p-tile',
       properties: {
         aspectRatio: '3/4',
-        className: 'group [--p-tile-top-align:center] [--p-tile-top-justify:space-between]',
+        className: 'group',
       },
       children: [
         {
@@ -26,7 +26,11 @@ export const tileStoryCategory: Story<'p-tile'> = {
           },
         },
         { tag: 'a', properties: { slot: 'anchor', href }, children: [label] },
-        { tag: 'p-heading', properties: { slot: 'top', tag: 'h3', size: 'md', weight: 'semibold' }, children: [label] },
+        {
+          tag: 'p-heading',
+          properties: { slot: 'top', tag: 'h3', size: 'md', weight: 'semibold' },
+          children: [label],
+        },
         {
           // duplicates the anchor, so it is hidden from assistive technology and keyboard
           tag: 'p-link',
@@ -37,7 +41,7 @@ export const tileStoryCategory: Story<'p-tile'> = {
             icon: 'arrow-right',
             hideLabel: true,
             compact: true,
-            className: 'primary-link pointer-events-auto',
+            className: 'primary-link ms-auto pointer-events-auto',
             'aria-hidden': 'true',
             tabIndex: -1,
           },

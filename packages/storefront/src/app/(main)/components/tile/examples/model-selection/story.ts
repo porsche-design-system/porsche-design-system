@@ -12,14 +12,24 @@ export const tileStoryModelSelection: Story<'p-tile'> = {
       tag: 'p-tile',
       properties: {
         aspectRatio: 'auto',
+        background: 'canvas',
         className:
-          'rounded-3xl motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover]:shadow-sm',
+          '[--p-tile-gap-y:0] motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover]:shadow-sm',
       },
       children: [
         { tag: 'a', properties: { slot: 'anchor', href }, children: [name] },
         { tag: 'p-model-signature', properties: { model: '911' } },
-        { tag: 'p-text', properties: { size: 'md' }, children: [name] },
-        { tag: 'img', properties: { src: 'assets/911.png', alt: '', width: 271, height: 96 } },
+        { tag: 'p-text', children: [name] },
+        {
+          tag: 'img',
+          properties: {
+            className: 'mt-static-sm',
+            src: 'assets/model-series/911.webp',
+            alt: 'Porsche 911',
+            width: 776,
+            height: 276,
+          },
+        },
       ],
     },
   ],
