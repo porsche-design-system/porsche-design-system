@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Storefront Docs`: Refactor A11Y AI Context pages to use the new `web-accessibility-codegen` and `web-accessibility-audit` apm packages.
+  ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
+
 ## [4.8.0] - 2026-10-02
 
 ## [4.8.0-rc.1] - 2026-10-01
@@ -130,8 +135,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   symlink-capable clones and in CI and can be committed. Re-run the command to migrate links created by an earlier
   version. Windows keeps using directory junctions, which cannot be relative
   ([#4645](https://github.com/porsche-design-system/porsche-design-system/pull/4645))
-- `Storefront Docs`: Refactor A11Y AI Context pages to use the new `web-accessibility-codegen` and `web-accessibility-audit` apm packages.
-  ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
 
 ### Fixed
 
