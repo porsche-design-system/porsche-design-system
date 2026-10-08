@@ -1,0 +1,126 @@
+<style>
+  .tile-grid {
+    display: grid;
+    max-width: 60rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .tile-grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  img {
+    opacity: 0.5;
+  }
+</style>
+
+<div class="playground" title="should render default slot only">
+  <div class="tile-grid">
+    <p-tile class="a11ytree-snapshot-test">
+      <p-heading tag="h3" size="lg">Some heading</p-heading>
+      <p-text>Some text</p-text>
+    </p-tile>
+  </div>
+</div>
+
+<div class="playground" title="should render all layout slots">
+  <div class="tile-grid">
+    <p-tile>
+      <p-tag slot="top">top</p-tag>
+      <p-text slot="top" style="margin-inline-start: auto">top</p-text>
+      <p-text slot="start">start</p-text>
+      <p-text>default</p-text>
+      <p-text slot="end">end</p-text>
+      <p-heading slot="bottom" tag="h3" size="md">bottom</p-heading>
+    </p-tile>
+    <p-tile compact="true">
+      <p-tag slot="top">top</p-tag>
+      <p-text slot="top" style="margin-inline-start: auto">top</p-text>
+      <p-text slot="start">start</p-text>
+      <p-text>default (compact)</p-text>
+      <p-text slot="end">end</p-text>
+      <p-heading slot="bottom" tag="h3" size="md">bottom</p-heading>
+    </p-tile>
+  </div>
+</div>
+
+<div class="playground" title="should render background colors">
+  <div class="tile-grid tile-grid-4">
+    <p-tile background="surface" aspect-ratio="1/1"><p-text>surface</p-text></p-tile>
+    <p-tile background="canvas" aspect-ratio="1/1"><p-text>canvas</p-text></p-tile>
+    <p-tile background="frosted" aspect-ratio="1/1"><p-text>frosted</p-text></p-tile>
+    <p-tile background="none" aspect-ratio="1/1"><p-text>none</p-text></p-tile>
+  </div>
+</div>
+
+<div class="playground" title="should render aspect ratios">
+  <div class="tile-grid tile-grid-4">
+    <p-tile aspect-ratio="1/1"><p-text>1/1</p-text></p-tile>
+    <p-tile aspect-ratio="4/3"><p-text>4/3</p-text></p-tile>
+    <p-tile aspect-ratio="3/4"><p-text>3/4</p-text></p-tile>
+    <p-tile aspect-ratio="16/9"><p-text>16/9</p-text></p-tile>
+  </div>
+</div>
+
+<div class="playground" title="should render background media with gradient and anchor">
+  <div class="tile-grid">
+    <p-tile gradient="bottom" class="a11ytree-snapshot-test">
+      <img slot="background" src="http://localhost:3002/lights.jpg" alt="" width="1366" height="2048" />
+      <a slot="anchor" href="#">Some anchor label</a>
+      <p-heading slot="bottom" tag="h3" size="md">Some heading</p-heading>
+      <p-button slot="bottom" type="button" compact="true" style="margin-inline-start: auto; pointer-events: auto"
+        >Some action</p-button
+      >
+    </p-tile>
+    <p-tile gradient="all">
+      <img slot="background" src="http://localhost:3002/lights.jpg" alt="" width="1366" height="2048" />
+      <p-text slot="top">top</p-text>
+      <p-text slot="start">start</p-text>
+      <p-text slot="end">end</p-text>
+      <p-text slot="bottom">bottom</p-text>
+    </p-tile>
+  </div>
+</div>
+
+<div class="playground" title="should clip media bleeding to the edges via read-only padding variables">
+  <div class="tile-grid">
+    <p-tile aspect-ratio="auto">
+      <img
+        slot="top"
+        src="http://localhost:3002/lights.jpg"
+        alt=""
+        width="1366"
+        height="2048"
+        style="
+          flex: 1;
+          height: 160px;
+          object-fit: cover;
+          margin-block-start: calc(var(--ref-p-tile-py) * -1);
+          margin-inline: calc(var(--ref-p-tile-px) * -1);
+        "
+      />
+      <p-heading tag="h3" size="md">Some heading</p-heading>
+      <p-text>Some text</p-text>
+    </p-tile>
+    <p-tile aspect-ratio="auto" compact="true">
+      <img
+        slot="start"
+        src="http://localhost:3002/lights.jpg"
+        alt=""
+        width="1366"
+        height="2048"
+        style="
+          width: 120px;
+          flex: 1;
+          min-height: 0;
+          object-fit: cover;
+          margin-block: calc(var(--ref-p-tile-py) * -1);
+          margin-inline-start: calc(var(--ref-p-tile-px) * -1);
+        "
+      />
+      <p-heading tag="h3" size="md">Some heading</p-heading>
+      <p-text>Some text (compact)</p-text>
+    </p-tile>
+  </div>
+</div>

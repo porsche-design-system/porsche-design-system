@@ -1,0 +1,5 @@
+- link "Some anchor label":
+  - /url: "#"
+- heading "Some heading" [level=3]
+- button "Some action"
+- status

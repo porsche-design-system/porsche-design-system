@@ -211,6 +211,7 @@ import { TagDismissiblePage } from './generated/TagDismissible';
 import { TextPage } from './generated/Text';
 import { TextareaPage } from './generated/Textarea';
 import { TextListPage } from './generated/TextList';
+import { TilePage } from './generated/Tile';
 import { ToastPage } from './generated/Toast';
 import { ToastBasicPage } from './generated/ToastBasic';
 import { ToastMultilinePage } from './generated/ToastMultiline';
@@ -1228,6 +1229,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Textarea',
     path: '/textarea',
     element: <TextareaPage />,
+  },
+  {
+    name: 'Tile',
+    path: '/tile',
+    element: <TilePage />,
   },
   {
     name: 'Toast',
