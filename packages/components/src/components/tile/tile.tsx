@@ -19,8 +19,6 @@ import {
   type TileBackground,
   type TileGradient,
   type TileSlotState,
-  tileAnchorSlot,
-  tileBackgroundSlot,
 } from './tile-utils';
 
 // TODO: before leaving the draft state
@@ -103,10 +101,10 @@ export class Tile {
 
     return (
       <div class="root">
-        <slot name={tileAnchorSlot} onSlotchange={this.updateSlotState} />
+        <slot name="anchor" onSlotchange={this.updateSlotState} />
         <div class="content">
           <div class="background">
-            <slot name={tileBackgroundSlot} onSlotchange={this.onBackgroundSlotChange} />
+            <slot name="background" onSlotchange={this.onBackgroundSlotChange} />
           </div>
           {TILE_EDGES.filter((edge) => this.slotState[edge]).map((edge) => (
             <span key={edge} class={`gradient gradient-${edge}`} />

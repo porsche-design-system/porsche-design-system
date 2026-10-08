@@ -690,7 +690,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
     const slotState = Object.fromEntries(
-      [...TILE_EDGES, tileAnchorSlot, tileBackgroundSlot].map((name) => [
+      [...TILE_EDGES, 'anchor', 'background'].map((name) => [
         name,
         namedSlotChildren.some(({ props: { slot } }) => slot === name),
       ])

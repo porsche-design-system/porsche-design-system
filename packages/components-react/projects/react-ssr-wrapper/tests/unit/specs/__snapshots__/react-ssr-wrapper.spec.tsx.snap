@@ -14962,6 +14962,174 @@ textarea:focus {
 </p-textarea>
 `;
 
+exports[`should render dsr component for PTile 1`] = `
+<p-tile
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootclonable="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--p-tile-radius,var(--p-radius-3xl));
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--_p-tile-gap-y) var(--_p-tile-gap-x);
+  min-width: 0;
+  grid-area: main;
+  z-index: 3;
+  text-align: center;
+}
+slot[name="top"] {
+  display: none;
+}
+slot[name="start"] {
+  display: none;
+}
+slot[name="end"] {
+  display: none;
+}
+slot[name="bottom"] {
+  display: none;
+}
+slot[name="background"] {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+slot[name="anchor"] {
+  display: none;
+}
+::slotted([slot="background"]) {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+::slotted([slot="anchor"]) {
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: var(--p-tile-radius,var(--p-radius-3xl)) !important;
+  pointer-events: auto !important;
+  font-size: 0 !important;
+  color: transparent !important;
+}
+::slotted([slot="anchor"]:focus-visible) {
+  outline: 2px solid var(--p-color-focus) !important;
+  outline-offset: 2px !important;
+}
+@media(forced-colors:active) {
+  ::slotted([slot="anchor"]:focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted([slot="anchor"]) {
+    forced-color-adjust: none !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
+.root {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 100%;
+  --ref-p-tile-px: var(--p-tile-px,var(--p-spacing-fluid-md));
+  --ref-p-tile-py: var(--p-tile-py,var(--p-spacing-fluid-md));
+  --_p-tile-gap-x: var(--p-tile-gap-x,var(--p-spacing-fluid-sm));
+  --_p-tile-gap-y: var(--p-tile-gap-y,var(--p-spacing-fluid-sm));
+  border-radius: var(--p-tile-radius,var(--p-radius-3xl));
+  color: var(--p-color-primary);
+  background-color: var(--p-tile-bg,var(--p-color-surface));
+  aspect-ratio: 4/3;
+}
+.content {
+  position: relative;
+  display: grid;
+  grid-template-areas: "main";
+  grid-template-columns: minmax(0,1fr);
+  grid-template-rows: 1fr;
+  box-sizing: border-box;
+  padding: var(--ref-p-tile-py) var(--ref-p-tile-px);
+  gap: var(--_p-tile-gap-y) var(--_p-tile-gap-x);
+  overflow: clip;
+  border-radius: inherit;
+}
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.gradient {
+  z-index: 1;
+  display: none;
+  pointer-events: none;
+}
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <slot
+        name="anchor"
+      />
+      <div
+        class="content"
+      >
+        <div
+          class="background"
+        >
+          <slot
+            name="background"
+          />
+        </div>
+        <slot
+          name="top"
+        />
+        <slot
+          name="start"
+        />
+        <slot />
+        <slot
+          name="end"
+        />
+        <slot
+          name="bottom"
+        />
+      </div>
+    </div>
+  </template>
+  Some child
+</p-tile>
+`;
+
 exports[`should render dsr component for PToast 1`] = `
 <p-toast
   data-ssr=""
