@@ -11,3 +11,7 @@ but opts in via `pointer-events-auto` to show its own hover state.
 On hover of the `anchor` or the duplicated link, the image zooms in via
 `group-has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:scale-105`. The Tile clips the image to its corner radius.
 The `motion-safe:` variant respects the reduced motion preference of the user.
+
+The Tailwind CSS counterpart places the image in an absolutely positioned background element behind the content
+(`absolute inset-0 -z-1`), which clips the zooming image to the radius. The gradient is applied to the bottom row via
+`bg-fade-to-t`, its top padding `pt-fluid-lg` extends it above the heading.

@@ -16,3 +16,10 @@ to show their own hover state.
 On hover of the `anchor` or the duplicated link, the Tile is lifted by a shadow via
 `has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:shadow-sm`. Hovering the "Save" button does not trigger it, since
 it is an independent action with its own hover state.
+
+The Tailwind CSS counterpart builds the same layout without `p-tile`. The outer element is the query container, the
+positioning context and carries the radius, while the inner element lays out the content, defines the padding and clips
+the image to the radius via `overflow-clip rounded-[inherit]`. Since the padding is set via `p-fluid-md`, the image uses
+the same value as negative margins. Instead of the `anchor` slot, the link of the heading is stretched over the whole
+tile via `after:absolute after:inset-0`, which also renders the focus ring around the tile. The buttons are placed above
+the stretched link via `relative z-2` instead of opting in via `pointer-events-auto`.

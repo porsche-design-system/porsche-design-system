@@ -14,3 +14,9 @@ but opts in via `pointer-events-auto` to show its own hover state.
 On hover of the `anchor` or the duplicated link, the image zooms in via
 `group-has-[[slot=anchor]:hover,p-link[tabindex='-1']:hover]:scale-105`. The `motion-safe:` variant respects the reduced
 motion preference of the user.
+
+The Tailwind CSS counterpart splits the tile into an outer element, which is the positioning context of the stretched
+link and carries the radius, and an inner element, which lays out the content and clips the image to the radius via
+`overflow-clip rounded-[inherit]`. Since the padding is set via `p-fluid-md`, the image uses the same value as negative
+margins (`-mb-fluid-md -mx-fluid-md`). `min-w-0` on the inner element prevents the natural width of the image from
+widening the tile.

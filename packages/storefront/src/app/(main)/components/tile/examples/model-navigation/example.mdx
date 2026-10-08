@@ -7,3 +7,6 @@ content is visible. On hover of the `anchor`, the Tile reveals its background vi
 while the vehicle moves slightly to the end via `group-has-[[slot=anchor]:hover]:translate-x-static-md`. The
 `pe-static-md` padding reserves the space for this movement. The `motion-safe:` variant respects the reduced motion
 preference of the user.
+
+The Tailwind CSS counterpart mirrors the `top`, default and `bottom` slots via `grid grid-rows-[auto_1fr_auto]`, the
+compact padding and gap via `p-fluid-sm gap-fluid-xs` and stretches the model name as link over the tile.

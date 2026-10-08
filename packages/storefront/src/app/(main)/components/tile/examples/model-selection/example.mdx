@@ -6,3 +6,6 @@ Finder. The Tile shows the model signature, the model name and a side view of th
 On hover of the `anchor`, the Tile is lifted by a shadow via `has-[[slot=anchor]:hover]:shadow-sm`, which follows the
 border radius of the Tile. Since all content is click-through, hovering anywhere on the Tile hovers the anchor. The
 `motion-safe:` variant respects the reduced motion preference of the user.
+
+The Tailwind CSS counterpart lays out the content via `flex flex-col items-center p-fluid-md`, so no gap has to be
+removed, and stretches the model name as link over the tile.

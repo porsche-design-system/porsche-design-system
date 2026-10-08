@@ -16,6 +16,11 @@ click-through, hovering the anchor equals hovering the Tile, while independent i
 `pointer-events: auto`) don't trigger it. Wrap transitions in `motion-safe:` to respect the user's preference for
 reduced motion. Hover effects are a visual enhancement only, keyboard users get the focus indicator of the anchor.
 
+For comparison, each example shows the Tile next to a counterpart built with Tailwind CSS only. Instead of the `anchor`
+slot, it stretches a link over the whole tile via `after:absolute after:inset-0 after:z-1`, which also renders the focus
+indicator around the tile, and places independent interactive elements above it via `relative z-2`. Since the link
+belongs to the visible text, it gets its accessible name from it.
+
 {/* TODO: add further use cases to `tileMeta.examples` */}
 
 <TableOfContents
