@@ -1770,6 +1770,7 @@ exports[`should match snapshot 1`] = `
       "aspectRatio": {
         "allowedValues": [
           "1/1",
+          "2/1",
           "4/3",
           "3/4",
           "16/9",
@@ -7482,6 +7483,7 @@ exports[`should match snapshot 1`] = `
       "aspectRatio": {
         "allowedValues": [
           "1/1",
+          "2/1",
           "4/3",
           "3/4",
           "16/9",
@@ -11211,6 +11213,129 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-tile": {
+    "cssVariablesMeta": {
+      "--p-tile-bg": {
+        "defaultValue": "depends on \`background\` prop",
+        "description": "Background color of the tile, overrides the \`background\` prop.",
+      },
+      "--p-tile-gap-x": {
+        "defaultValue": "spacing-fluid-sm (spacing-fluid-xs when compact)",
+        "description": "Horizontal gap between the slots and between the elements within a slot.",
+      },
+      "--p-tile-gap-y": {
+        "defaultValue": "spacing-fluid-sm (spacing-fluid-xs when compact)",
+        "description": "Vertical gap between the slots and between the elements within a slot.",
+      },
+      "--p-tile-gradient-fade": {
+        "defaultValue": "spacing-fluid-lg",
+        "description": "Distance the gradient extends beyond its slot towards the center of the tile.",
+      },
+      "--p-tile-px": {
+        "defaultValue": "spacing-fluid-md (spacing-fluid-sm when compact)",
+        "description": "Horizontal padding of the tile.",
+      },
+      "--p-tile-py": {
+        "defaultValue": "spacing-fluid-md (spacing-fluid-sm when compact)",
+        "description": "Vertical padding of the tile.",
+      },
+      "--p-tile-radius": {
+        "defaultValue": "radius-3xl",
+        "description": "Corner radius of the tile.",
+      },
+      "--ref-p-tile-px": {
+        "description": "Exposes the internally used padding-inline of the Tile as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Tile.",
+      },
+      "--ref-p-tile-py": {
+        "description": "Exposes the internally used padding-block of the Tile as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top or bottom of the Tile.",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isExperimental": true,
+    "isInternal": false,
+    "propsMeta": {
+      "aspectRatio": {
+        "allowedValues": [
+          "1/1",
+          "2/1",
+          "4/3",
+          "3/4",
+          "16/9",
+          "9/16",
+          "auto",
+        ],
+        "defaultValue": "4/3",
+        "description": "Sets the preferred width-to-height ratio of the tile. The tile grows beyond it when required by its content.",
+        "isBreakpointCustomizable": true,
+        "type": "TileAspectRatio",
+      },
+      "background": {
+        "allowedValues": [
+          "surface",
+          "canvas",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "surface",
+        "description": "Sets the background color of the tile. Slotted background content is rendered above it.",
+        "type": "TileBackground",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Reduces padding and gap of the tile.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "gradient": {
+        "allowedValues": [
+          "none",
+          "top",
+          "bottom",
+          "start",
+          "end",
+          "block",
+          "inline",
+          "all",
+        ],
+        "defaultValue": "none",
+        "description": "Shows a gradient behind the given layout slots to improve legibility on media. It grows and shrinks with the size of the slot.",
+        "isBreakpointCustomizable": true,
+        "type": "TileGradient",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Main content area, centered by default. When no other layout slot is used, it covers the whole tile and can be used for a fully custom layout.",
+      },
+      "anchor": {
+        "description": "Anchor stretched over the whole tile to make it clickable. Its label is visually hidden but accessible. While slotted, all other content is click-through, interactive elements have to opt in via \`pointer-events: auto\`.",
+      },
+      "background": {
+        "description": "Media (e.g. img, picture, video) or custom content rendered cover-fit above the background color.",
+      },
+      "bottom": {
+        "description": "Content aligned to the bottom of the tile, laid out as a row with vertically centered items.",
+      },
+      "end": {
+        "description": "Content aligned to the inline end of the tile, laid out as a column.",
+      },
+      "start": {
+        "description": "Content aligned to the inline start of the tile, laid out as a column.",
+      },
+      "top": {
+        "description": "Content aligned to the top of the tile, laid out as a row with vertically centered items.",
       },
     },
     "styling": "jss",
