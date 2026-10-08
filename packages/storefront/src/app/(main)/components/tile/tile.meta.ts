@@ -13,8 +13,6 @@ import ModelSelectionDescription from '@/app/(main)/components/tile/examples/mod
 import { tileStoryModelSelection } from '@/app/(main)/components/tile/examples/model-selection/story';
 import ProductDescription from '@/app/(main)/components/tile/examples/product/example.mdx';
 import { tileStoryProduct } from '@/app/(main)/components/tile/examples/product/story';
-import TeaserDescription from '@/app/(main)/components/tile/examples/teaser/example.mdx';
-import { tileStoryTeaser } from '@/app/(main)/components/tile/examples/teaser/story';
 import VehicleListingDescription from '@/app/(main)/components/tile/examples/vehicle-listing/example.mdx';
 import { tileStoryVehicleListing } from '@/app/(main)/components/tile/examples/vehicle-listing/story';
 import Usage from '@/app/(main)/components/tile/usage/page.mdx';
@@ -62,12 +60,6 @@ export const tileMeta = {
       name: 'Product',
       description: ProductDescription,
       story: tileStoryProduct,
-    },
-    teaser: {
-      kind: 'story',
-      name: 'Teaser',
-      description: TeaserDescription,
-      story: tileStoryTeaser,
     },
   },
   usage: Usage,

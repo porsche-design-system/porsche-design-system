@@ -1,11 +1,9 @@
 A model navigation tile links to the vehicles of a model, e.g. within the navigation of the Porsche Finder. The model
 name is placed in the `top` slot, the side view of the vehicle in the default slot and the fuel type in the `bottom`
-slot. The `anchor` slot makes the whole Tile clickable and provides the accessible link to the model.
+slot. `compact` reduces padding and gap, and the `anchor` slot makes the whole Tile clickable.
 
-At rest, the Tile is transparent via `[--p-tile-bg:transparent]` and blends into the surface it is placed on, so only
-its content is visible. To reveal the Tile with a transition on hover of the `anchor`, the background is applied to the
-host element instead via `rounded-2xl bg-transparent motion-safe:transition-colors has-[[slot=anchor]:hover]:bg-canvas`.
-The `rounded-2xl` class matches the radius set via `[--p-tile-radius:var(--radius-2xl)]`. At the same time, the vehicle
-moves slightly to the end via `group-has-[[slot=anchor]:hover]:translate-x-[12px]` and the fuel type changes its
-background via `group-has-[[slot=anchor]:hover]:bg-frosted`. The `motion-safe:` variant respects the reduced motion
+At rest, the Tile is transparent via `background="none"` and blends into the surface it is placed on, so only its
+content is visible. On hover of the `anchor`, the Tile reveals its background via `has-[[slot=anchor]:hover]:bg-canvas`,
+while the vehicle moves slightly to the end via `group-has-[[slot=anchor]:hover]:translate-x-static-md`. The
+`pe-static-md` padding reserves the space for this movement. The `motion-safe:` variant respects the reduced motion
 preference of the user.
