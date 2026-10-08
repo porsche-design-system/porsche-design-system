@@ -145,12 +145,18 @@ export const getLinkButtonStyles = (
       ...forcedColorsMediaQuery({
         forcedColorAdjust: 'none',
         boxShadow: 'inset 0 0 0 2px LinkText',
-        background: 'Canvas !important', // Overwrites brand hover colors
-        color: 'LinkText !important', // Overwrites brand hover colors
+        ...addImportantToEachRule({
+          // Overwrites brand hover colors
+          background: 'Canvas',
+          color: 'LinkText',
+        }),
         '&:is(button)': {
           boxShadow: 'inset 0 0 0 2px ButtonBorder',
-          background: 'ButtonFace !important', // Overwrites brand hover colors
-          color: 'ButtonText !important', // Overwrites brand hover colors
+          ...addImportantToEachRule({
+            // Overwrites brand hover colors
+            background: 'ButtonFace',
+            color: 'ButtonText',
+          }),
         },
       }),
       ...(!hasSlottedAnchor && {
