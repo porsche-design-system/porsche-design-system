@@ -5,6 +5,8 @@ import type { BreakpointCustomizable, IconName } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { buildIconUrl, type IconColor, type IconSize } from './icon-utils';
 
+export const cssVariableInternalIconHcm = '--_p-icon-a';
+
 /**
  * @css-variable {"name": "--p-icon-size", "description": "Defines the width and height of the icon. Overrides the `size` property when set.", "defaultValue": ""}
  */
@@ -78,7 +80,7 @@ export const getComponentCss = (
         mask,
         background: ref(cssVarColor, colorMap[color]),
         ...forcedColorsMediaQuery({
-          background: 'CanvasText',
+          background: ref(cssVariableInternalIconHcm, 'CanvasText'),
         }),
         ...(isFlippableIcon(name, source) && {
           '&:dir(rtl)': {

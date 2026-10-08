@@ -53,7 +53,13 @@ export const getComponentCss = (
   const hasActiveTab = activeTabIndex !== undefined;
   const nthActiveTab = hasActiveTab ? activeTabIndex + 1 : 0; // :nth-child is 1-based
 
-  const radiusButton = hasBackground ? (isCompact ? ref(radiusMd) : ref(radiusLg)) : isCompact ? ref(radiusLg) : ref(radiusXl);
+  const radiusButton = hasBackground
+    ? isCompact
+      ? ref(radiusMd)
+      : ref(radiusLg)
+    : isCompact
+      ? ref(radiusLg)
+      : ref(radiusXl);
 
   return getCss({
     '@global': {
@@ -108,6 +114,10 @@ export const getComponentCss = (
               backgroundImage: `linear-gradient(${ref(colorFrostedStrong)}, ${ref(colorFrostedStrong)})`,
               backgroundSize: '100% 100%',
               transition: `background-size 0s linear ${ref(durationMd)}`,
+              ...forcedColorsMediaQuery({
+                backgroundColor: 'Highlight',
+                color: 'HighlightText',
+              }),
             },
           }),
           ...forcedColorsMediaQuery({
@@ -135,7 +145,6 @@ export const getComponentCss = (
         padding: isCompact ? `calc(3 * ${ref(spacingStatic2Xs)})` : ref(spacingStaticXs),
         borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl), // radius for rail
         ...forcedColorsMediaQuery({
-          forcedColorAdjust: 'none',
           outline: '1px solid CanvasText',
         }),
       }),
