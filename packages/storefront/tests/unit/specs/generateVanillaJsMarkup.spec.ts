@@ -4,7 +4,12 @@ import {
   generateVanillaJsMarkup,
   generateVanillaJsProperties,
 } from '../../../src/utils/generator/generateVanillaJsMarkup';
-import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
+import {
+  buttonTestConfig,
+  carouselTestConfig,
+  flyoutTestConfig,
+  sharedStateTestConfig,
+} from '../data/generator.testdata';
 
 describe('generateVanillaJsMarkup()', () => {
   it('should generate correct Vanilla JS markup for button', () => {
@@ -17,6 +22,10 @@ describe('generateVanillaJsMarkup()', () => {
   });
   it('should generate correct Vanilla JS markup for carousel', () => {
     const output = generateVanillaJsMarkup(carouselTestConfig);
+    expect(output).toMatchSnapshot();
+  });
+  it('should generate Vanilla JS markup only once for elements sharing their state', () => {
+    const output = generateVanillaJsMarkup(sharedStateTestConfig);
     expect(output).toMatchSnapshot();
   });
 });

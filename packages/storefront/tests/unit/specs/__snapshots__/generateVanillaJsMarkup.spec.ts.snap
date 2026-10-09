@@ -1,5 +1,30 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`generateVanillaJsMarkup() > should generate Vanilla JS markup only once for elements sharing their state 1`] = `
+{
+  "eventHandlers": "  pAccordions.forEach((element) => element.addEventListener('update', (e) => pAccordions.forEach((el) => (el.open = e.detail.open))));",
+  "markup": "<div>
+  <p-accordion>
+    <span slot="summary">
+      Some summary
+    </span>
+    <p-text>
+      Some details
+    </p-text>
+  </p-accordion>
+  <p-accordion>
+    <span slot="summary">
+      Some summary
+    </span>
+    <p-text>
+      Some details
+    </p-text>
+  </p-accordion>
+</div>",
+  "states": "  const pAccordions = document.querySelectorAll("p-accordion");",
+}
+`;
+
 exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup for button 1`] = `
 {
   "eventHandlers": "  pButton.addEventListener('click', () => (pBanner.open = true));

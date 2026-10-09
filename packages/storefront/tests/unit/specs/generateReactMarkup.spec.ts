@@ -4,7 +4,12 @@ import {
   generateReactMarkup,
   generateReactProperties,
 } from '../../../src/utils/generator/generateReactMarkup';
-import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
+import {
+  buttonTestConfig,
+  carouselTestConfig,
+  flyoutTestConfig,
+  sharedStateTestConfig,
+} from '../data/generator.testdata';
 
 describe('generateReactMarkup()', () => {
   it('should generate correct React markup for button', () => {
@@ -17,6 +22,10 @@ describe('generateReactMarkup()', () => {
   });
   it('should generate correct React markup for carousel', () => {
     const output = generateReactMarkup(carouselTestConfig, {});
+    expect(output).toMatchSnapshot();
+  });
+  it('should generate React markup only once for elements sharing their state', () => {
+    const output = generateReactMarkup(sharedStateTestConfig, { properties: { open: false } });
     expect(output).toMatchSnapshot();
   });
 });
