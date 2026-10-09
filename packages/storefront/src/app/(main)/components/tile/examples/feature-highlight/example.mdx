@@ -1,0 +1,15 @@
+A feature highlight presents a feature of a vehicle with a mood image and reveals further details on demand, e.g. within
+a model page of porsche.com. The image covers the whole `background` slot. Heading and accordion are wrapped in a single
+element in the `bottom` slot. `gradient="bottom"` ensures the legibility of the heading on the image, and the
+`scheme-dark` class renders a dark gradient with light content independent of the color scheme of the page.
+
+The details are shown in a `p-accordion`, whose summary acts as trigger. `align-marker="start"` places the marker in
+front of the summary and `compact` reduces its spacing. `self-stretch` lets the expanded details span the full width of
+the Tile. When expanded, the Tile grows beyond its aspect ratio, and the gradient grows with the `bottom` slot. The
+accordion is controlled via its `open` property and the `update` event. In this example, both accordions share the same
+state, so they open and close together. The Tile has no `anchor`, so the accordion is clickable without opting in via
+`pointer-events-auto`.
+
+The Tailwind CSS counterpart places the image absolutely behind the content (`absolute inset-0 -z-1`) and clips it to
+the radius via `overflow-clip`. The gradient is applied to the bottom row via `bg-fade-to-t`, its top padding
+`pt-fluid-lg` extends it above the heading.

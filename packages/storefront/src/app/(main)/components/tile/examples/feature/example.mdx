@@ -1,0 +1,14 @@
+A feature tile explains a single feature of a vehicle, e.g. within a model page of porsche.com. It is not interactive,
+so it has no `anchor`. With `aspect-ratio="auto"` the Tile adapts its height to the content, and
+`[--p-tile-gap-y:var(--spacing-fluid-md)]` increases the space between image and text.
+
+The image is placed in the default slot and bleeds to the top and side edges via negative margins based on the read-only
+CSS variables `--ref-p-tile-px` and `--ref-p-tile-py`, while `self-stretch` and `max-w-none` let it span the full width.
+`aspect-video object-cover` defines its height. The Tile clips the image to its corner radius.
+
+Heading, text and footnote are wrapped in a single element in the `bottom` slot, which spans the full width via `grow`.
+The footnote reference is marked up as `<sup>`, the footnote itself uses `size="xs"` and `color="contrast-medium"`.
+
+The Tailwind CSS counterpart stacks image and text via `flex flex-col gap-fluid-md p-fluid-md`. Since there is no
+stretched link, the tile itself clips the image to the radius via `overflow-clip`, and the image uses the padding as
+negative margins (`-mt-fluid-md -mx-fluid-md`).
