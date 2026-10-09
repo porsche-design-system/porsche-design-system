@@ -1,0 +1,25 @@
+A vehicle listing presents a single vehicle in a search result, e.g. of the Porsche Finder. Image and vehicle details
+are wrapped in a grid within the default slot, which fills the Tile via `grow self-stretch`. The Tile is the query
+container (`@container`), so the layout adapts to the available space of the Tile instead of the viewport: image and
+details are stacked and placed side by side from `@2xl`, the buttons are stacked and placed side by side from `@sm`.
+
+The image bleeds to the edges of the Tile: the read-only CSS variables `--ref-p-tile-px` and `--ref-p-tile-py` expose
+the padding of the Tile, so the image container can use them as negative margins while the Tile keeps its default
+padding. The Tile clips the image to its corner radius. Stacked, the image defines its height via `aspect-video`. Side
+by side, it is positioned absolutely, so it fills the height of the details without increasing the height of the Tile.
+
+The `anchor` slot makes the whole Tile clickable and provides the accessible link to the details page. The visible "Show
+details" link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` on the link
+and `tabindex="-1"` on its slotted anchor). The "Save" button is an independent action and stays accessible. Both opt in
+via `pointer-events-auto` to show their own hover state.
+
+On hover of the `anchor` or the duplicated link, the Tile is lifted by a shadow via
+`has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:shadow-sm`. Hovering the "Save" button does not trigger it, since
+it is an independent action with its own hover state.
+
+The Tailwind CSS counterpart builds the same layout without `p-tile`. The outer element is the query container, the
+positioning context and carries the radius, while the inner element lays out the content, defines the padding and clips
+the image to the radius via `overflow-clip rounded-[inherit]`. Since the padding is set via `p-fluid-md`, the image uses
+the same value as negative margins. Instead of the `anchor` slot, the link of the heading is stretched over the whole
+tile via `after:absolute after:inset-0`, which also renders the focus ring around the tile. The buttons are placed above
+the stretched link via `relative z-2` instead of opting in via `pointer-events-auto`.

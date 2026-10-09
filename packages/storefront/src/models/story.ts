@@ -15,6 +15,11 @@ export type Story<Tag extends HTMLTagOrComponent> = {
    * Their control in the "Properties" configurator is rendered but disabled so the user cannot change them.
    */
   disabledProps?: string[];
+  /**
+   * Limits the width of the rendered preview (any CSS length, e.g. `560px`) without being part of the generated markup.
+   * Useful for components stretching to the full width of their container (e.g. `p-tile`).
+   */
+  previewMaxWidth?: string;
   generator: (state?: StoryState<Tag>) => (string | ElementConfig<HTMLTagOrComponent> | undefined)[];
 };
 

@@ -1,0 +1,25 @@
+A model teaser introduces a model range with its starting price and links to discover and configure it, e.g. on the
+homepage of porsche.com. All content is placed in the default slot, which stacks and centers it.
+
+The model signature is placed behind the side view of the vehicle by stacking both in the same grid cell via
+`[grid-area:1/1]`, while `mt-[6%]` lets the vehicle overlap the lower part of the signature. The mask of the signature
+paints it above non-positioned content, so `z-1` places the vehicle in front of it. `grid-cols-1` prevents the natural
+width of the image from widening the grid. `[--p-model-signature-width:75%]` scales the signature and
+`[--p-model-signature-color:var(--color-canvas)]` renders it in the canvas color, which stands out subtly from the
+surface of the Tile in both color schemes. `safe-zone="false"` removes the spacing around it.
+
+The `anchor` slot makes the whole Tile clickable and provides the accessible link to discover the model. The visible
+"Discover 911" link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` on the
+link and `tabindex="-1"` on its slotted anchor). The "Configure" link is an independent action and stays accessible, its
+accessible name is extended via `aria-label` to identify the model, while it still contains the visible label. Both opt
+in via `pointer-events-auto` to show their own hover state.
+
+On hover of the `anchor` or the duplicated link, the vehicle zooms in via
+`group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105`. Hovering the "Configure" link does not trigger
+it, since it is an independent action with its own hover state. The `motion-safe:` variant respects the reduced motion
+preference of the user.
+
+The Tailwind CSS counterpart lays out the content via `flex flex-col justify-center items-center gap-fluid-sm` and
+stretches the heading as link over the tile. The links are placed above it via `relative z-2`. `group-has-[a:hover]`
+only matches the stretched link and the slotted anchor of the duplicated link, since the "Configure" link renders its
+anchor in its shadow DOM.

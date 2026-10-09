@@ -65,6 +65,8 @@ import { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-di
 import { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextListType } from "./components/text-list/text-list/text-list-utils";
 import { TextareaAriaAttribute, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+import { TileBackground, TileGradient } from "./components/tile/tile-utils";
+import { TileAspectRatio } from "./utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
@@ -128,6 +130,8 @@ export { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-di
 export { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextListType } from "./components/text-list/text-list/text-list-utils";
 export { TextareaAriaAttribute, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+export { TileBackground, TileGradient } from "./components/tile/tile-utils";
+export { TileAspectRatio } from "./utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
 export { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
@@ -3162,6 +3166,31 @@ export namespace Components {
          */
         "wrap"?: TextareaWrap;
     }
+    /**
+     * @experimental 
+     */
+    interface PTile {
+        /**
+          * Sets the preferred width-to-height ratio of the tile. The tile grows beyond it when required by its content.
+          * @default '4/3'
+         */
+        "aspectRatio"?: BreakpointCustomizable<TileAspectRatio>;
+        /**
+          * Sets the background color of the tile. Slotted background content is rendered above it.
+          * @default 'surface'
+         */
+        "background"?: TileBackground;
+        /**
+          * Reduces padding and gap of the tile.
+          * @default false
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Shows a gradient behind the given layout slots to improve legibility on media. It grows and shrinks with the size of the slot.
+          * @default 'none'
+         */
+        "gradient"?: BreakpointCustomizable<TileGradient>;
+    }
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
     }
@@ -4267,6 +4296,15 @@ declare global {
         prototype: HTMLPTextareaElement;
         new (): HTMLPTextareaElement;
     };
+    /**
+     * @experimental 
+     */
+    interface HTMLPTileElement extends Components.PTile, HTMLStencilElement {
+    }
+    var HTMLPTileElement: {
+        prototype: HTMLPTileElement;
+        new (): HTMLPTileElement;
+    };
     interface HTMLPToastElement extends Components.PToast, HTMLStencilElement {
     }
     var HTMLPToastElement: {
@@ -4369,6 +4407,7 @@ declare global {
         "p-text-list": HTMLPTextListElement;
         "p-text-list-item": HTMLPTextListItemElement;
         "p-textarea": HTMLPTextareaElement;
+        "p-tile": HTMLPTileElement;
         "p-toast": HTMLPToastElement;
         "p-toast-item": HTMLPToastItemElement;
         "p-wordmark": HTMLPWordmarkElement;
@@ -7709,6 +7748,31 @@ declare namespace LocalJSX {
          */
         "wrap"?: TextareaWrap;
     }
+    /**
+     * @experimental 
+     */
+    interface PTile {
+        /**
+          * Sets the preferred width-to-height ratio of the tile. The tile grows beyond it when required by its content.
+          * @default '4/3'
+         */
+        "aspectRatio"?: BreakpointCustomizable<TileAspectRatio>;
+        /**
+          * Sets the background color of the tile. Slotted background content is rendered above it.
+          * @default 'surface'
+         */
+        "background"?: TileBackground;
+        /**
+          * Reduces padding and gap of the tile.
+          * @default false
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Shows a gradient behind the given layout slots to improve legibility on media. It grows and shrinks with the size of the slot.
+          * @default 'none'
+         */
+        "gradient"?: BreakpointCustomizable<TileGradient>;
+    }
     interface PToast {
     }
     interface PToastItem {
@@ -8481,6 +8545,12 @@ declare namespace LocalJSX {
         "readOnly": boolean;
         "aria": SelectedAriaAttributes<TextareaAriaAttribute>;
     }
+    interface PTileAttributes {
+        "background": TileBackground;
+        "gradient": BreakpointCustomizable<TileGradient>;
+        "aspectRatio": BreakpointCustomizable<TileAspectRatio>;
+        "compact": string;
+    }
     interface PToastItemAttributes {
         "text": string;
         "state": ToastState;
@@ -8565,6 +8635,7 @@ declare namespace LocalJSX {
         "p-text-list": Omit<PTextList, keyof PTextListAttributes> & { [K in keyof PTextList & keyof PTextListAttributes]?: PTextList[K] } & { [K in keyof PTextList & keyof PTextListAttributes as `attr:${K}`]?: PTextListAttributes[K] } & { [K in keyof PTextList & keyof PTextListAttributes as `prop:${K}`]?: PTextList[K] };
         "p-text-list-item": PTextListItem;
         "p-textarea": Omit<PTextarea, keyof PTextareaAttributes> & { [K in keyof PTextarea & keyof PTextareaAttributes]?: PTextarea[K] } & { [K in keyof PTextarea & keyof PTextareaAttributes as `attr:${K}`]?: PTextareaAttributes[K] } & { [K in keyof PTextarea & keyof PTextareaAttributes as `prop:${K}`]?: PTextarea[K] };
+        "p-tile": Omit<PTile, keyof PTileAttributes> & { [K in keyof PTile & keyof PTileAttributes]?: PTile[K] } & { [K in keyof PTile & keyof PTileAttributes as `attr:${K}`]?: PTileAttributes[K] } & { [K in keyof PTile & keyof PTileAttributes as `prop:${K}`]?: PTile[K] };
         "p-toast": PToast;
         "p-toast-item": Omit<PToastItem, keyof PToastItemAttributes> & { [K in keyof PToastItem & keyof PToastItemAttributes]?: PToastItem[K] } & { [K in keyof PToastItem & keyof PToastItemAttributes as `attr:${K}`]?: PToastItemAttributes[K] } & { [K in keyof PToastItem & keyof PToastItemAttributes as `prop:${K}`]?: PToastItem[K] };
         "p-wordmark": Omit<PWordmark, keyof PWordmarkAttributes> & { [K in keyof PWordmark & keyof PWordmarkAttributes]?: PWordmark[K] } & { [K in keyof PWordmark & keyof PWordmarkAttributes as `attr:${K}`]?: PWordmarkAttributes[K] } & { [K in keyof PWordmark & keyof PWordmarkAttributes as `prop:${K}`]?: PWordmark[K] };
@@ -8712,6 +8783,10 @@ declare module "@stencil/core" {
             "p-text-list": LocalJSX.IntrinsicElements["p-text-list"] & JSXBase.HTMLAttributes<HTMLPTextListElement>;
             "p-text-list-item": LocalJSX.IntrinsicElements["p-text-list-item"] & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea": LocalJSX.IntrinsicElements["p-textarea"] & JSXBase.HTMLAttributes<HTMLPTextareaElement>;
+            /**
+             * @experimental 
+             */
+            "p-tile": LocalJSX.IntrinsicElements["p-tile"] & JSXBase.HTMLAttributes<HTMLPTileElement>;
             "p-toast": LocalJSX.IntrinsicElements["p-toast"] & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.IntrinsicElements["p-toast-item"] & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
             "p-wordmark": LocalJSX.IntrinsicElements["p-wordmark"] & JSXBase.HTMLAttributes<HTMLPWordmarkElement>;

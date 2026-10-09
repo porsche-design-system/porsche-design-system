@@ -31,13 +31,12 @@ export const generateReactMarkup = (
 ): FrameworkConfiguratorMarkup['react'] => {
   const results = configs.map((config) => createReactMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
-  const states = results
-    .flatMap(({ states }) => states)
-    .filter((state) => state)
-    .join('\n');
-  const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
+  // elements sharing their state (e.g. two accordions bound to the same `open` state) produce identical states, event
+  // handlers and types, which are only needed once
+  const states = [...new Set(results.flatMap(({ states }) => states).filter((state) => state))].join('\n');
+  const eventHandlers = [...new Set(results.flatMap(({ eventHandlers }) => eventHandlers))].join('\n');
   const pdsComponents = new Set(results.flatMap(({ pdsComponents }) => pdsComponents));
-  const types = results.flatMap(({ types }) => types);
+  const types = [...new Set(results.flatMap(({ types }) => types))];
   const allImports = [...pdsComponents].sort();
   if (types.length > 0) {
     allImports.push(...types.map((t) => `type ${t}`));

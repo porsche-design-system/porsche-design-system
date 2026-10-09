@@ -54,6 +54,7 @@ import { tagDismissibleMeta } from '@/app/(main)/components/tag-dismissible/tag-
 import { textMeta } from '@/app/(main)/components/text/text.meta';
 import { textListMeta } from '@/app/(main)/components/text-list/text-list.meta';
 import { textareaMeta } from '@/app/(main)/components/textarea/textarea.meta';
+import { tileMeta } from '@/app/(main)/components/tile/tile.meta';
 import { toastMeta } from '@/app/(main)/components/toast/toast.meta';
 import { wordmarkMeta } from '@/app/(main)/components/wordmark/wordmark.meta';
 import type { ComponentDocsMeta } from '@/models/meta';
@@ -119,6 +120,7 @@ export const componentDocsMeta = {
   'p-text': textMeta,
   'p-text-list': textListMeta,
   'p-textarea': textareaMeta,
+  'p-tile': tileMeta,
   'p-toast': toastMeta,
   'p-wordmark': wordmarkMeta,
 } satisfies Partial<{ [Tag in HTMLTagOrComponent]: ComponentDocsMeta<Tag> }>;

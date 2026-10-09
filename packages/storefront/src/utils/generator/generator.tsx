@@ -143,6 +143,8 @@ import {
   type PTextListItemProps,
   type PTextListProps,
   type PTextProps,
+  PTile,
+  type PTileProps,
   PToast,
   type PToastProps,
   PWordmark,
@@ -319,6 +321,7 @@ export type PropTypeMapping = {
   'p-text-list': PTextListProps;
   'p-text-list-item': PTextListItemProps;
   'p-textarea': PTextareaProps;
+  'p-tile': PTileProps;
   'p-toast': PToastProps;
   'p-wordmark': PWordmarkProps;
 };
@@ -396,6 +399,7 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-text-list': PTextList,
   'p-text-list-item': PTextListItem,
   'p-textarea': PTextarea,
+  'p-tile': PTile,
   'p-toast': PToast,
   'p-wordmark': PWordmark,
 };
@@ -416,13 +420,29 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
 export const createElements = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
   updateState: React.Dispatch<React.SetStateAction<StoryState<HTMLTagOrComponent>>>
-): ReactNode => {
-  return configs.map((config, index) => createElement(config, index, updateState));
+): ReactNode[] => {
+  const keys = getElementKeys(configs);
+  return configs.map((config, index) => createElement(config, keys[index], updateState));
+};
+
+/**
+ * Keys siblings by tag, slot and occurrence instead of index, so toggling a slot does not make React reuse an
+ * element of another slot, which would e.g. set `slot` to `"undefined"` on a custom element.
+ */
+const getElementKeys = (configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[]): string[] => {
+  const occurrences = new Map<string, number>();
+  return configs.map((config, index) => {
+    if (!config || typeof config === 'string') return `${index}`;
+    const id = `${config.tag}[${(config.properties as { slot?: string } | undefined)?.slot ?? ''}]`;
+    const occurrence = occurrences.get(id) ?? 0;
+    occurrences.set(id, occurrence + 1);
+    return `${id}-${occurrence}`;
+  });
 };
 
 export const createElement = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
-  key: number,
+  key: React.Key,
   updateState: React.Dispatch<React.SetStateAction<StoryState<HTMLTagOrComponent>>>
 ): ReactNode => {
   if (!config) return null;
@@ -464,6 +484,6 @@ export const createElement = (
   return React.createElement(
     ReactComponent,
     { key, ...propsWithEvents },
-    ...(children || []).map((child, index) => createElement(child, index, updateState))
+    ...createElements(children || [], updateState)
   );
 };

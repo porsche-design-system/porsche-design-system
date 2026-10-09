@@ -117,3 +117,24 @@ export const carouselTestConfig: [ElementConfig<'p-carousel'>, ElementConfig<'st
     ],
   },
 ];
+
+const sharedAccordion: ElementConfig<'p-accordion'> = {
+  tag: 'p-accordion',
+  properties: { open: false },
+  events: {
+    onUpdate: {
+      target: 'p-accordion',
+      prop: 'open',
+      eventValueKey: 'open',
+      eventType: 'AccordionUpdateEventDetail',
+    },
+  },
+  children: [
+    { tag: 'span', properties: { slot: 'summary' }, children: ['Some summary'] },
+    { tag: 'p-text', children: ['Some details'] },
+  ],
+};
+
+export const sharedStateTestConfig: [ElementConfig<'div'>] = [
+  { tag: 'div', children: [sharedAccordion, sharedAccordion] },
+];

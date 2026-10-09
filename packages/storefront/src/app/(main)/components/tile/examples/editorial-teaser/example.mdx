@@ -1,0 +1,21 @@
+An editorial teaser links to a story, e.g. within the magazine of porsche.com. The Tile has no padding, background or
+corner radius (`[--p-tile-px:0] [--p-tile-py:0] [--p-tile-radius:0]` and `background="none"`), so only the image is
+visible as a rounded area, while the Tile provides the clickable area and its focus indicator. Without padding, the
+corner radius of the Tile would clip the text at its corners, so the image gets its own radius via
+`overflow-clip rounded-3xl` on its container, which also clips the zooming image.
+
+Image and text are wrapped in a grid within the default slot, which fills the Tile via `grow self-stretch`. The Tile is
+the query container (`@container`), so image and text are stacked and placed side by side from `@2xl`.
+
+The `anchor` slot makes the whole Tile clickable and provides the accessible link to the story. The visible "Read more"
+link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` on the link and
+`tabindex="-1"` on its slotted anchor) but opts in via `pointer-events-auto` to show its own hover state. Its label is
+part of the accessible name of the `anchor`.
+
+On hover of the `anchor` or the duplicated link, the image zooms in via
+`group-has-[[slot=anchor]:hover,p-link-pure[aria-hidden]:hover]:scale-105`. The `motion-safe:` variant respects the
+reduced motion preference of the user.
+
+The Tailwind CSS counterpart splits the teaser into an outer element, which is the query container and the positioning
+context of the stretched link, and an inner element, which lays out the content. It stretches the heading as link over
+the teaser without corner radius.

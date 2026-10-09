@@ -804,6 +804,10 @@ const generatedRoutes = {
     "path": "/textarea",
     "name": "Textarea"
   },
+  "tile": {
+    "path": "/tile",
+    "name": "Tile"
+  },
   "toast": {
     "path": "/toast",
     "name": "Toast"

@@ -1,5 +1,33 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`generateAngularMarkup() > should generate Angular markup only once for elements sharing their state 1`] = `
+{
+  "eventHandlers": "  onUpdate(e: CustomEvent<AccordionUpdateEventDetail>) {
+    this.open = e.detail.open;
+  }",
+  "imports": "type AccordionUpdateEventDetail",
+  "markup": "      <div>
+        <p-accordion [open]="open" (update)="onUpdate($event)">
+          <span slot="summary">
+            Some summary
+          </span>
+          <p-text>
+            Some details
+          </p-text>
+        </p-accordion>
+        <p-accordion [open]="open" (update)="onUpdate($event)">
+          <span slot="summary">
+            Some summary
+          </span>
+          <p-text>
+            Some details
+          </p-text>
+        </p-accordion>
+      </div>",
+  "states": "  open = false;",
+}
+`;
+
 exports[`generateAngularMarkup() > should generate correct Angular markup for button 1`] = `
 {
   "eventHandlers": "  onClick() {
