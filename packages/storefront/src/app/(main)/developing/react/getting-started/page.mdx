@@ -206,3 +206,16 @@ export default function Home() {
   );
 }
 ```
+
+### Step 7 (recommended)
+
+Link the Porsche Design System [Agent Skills](/skills/introduction/installation/) into your project, so AI coding agents
+such as GitHub Copilot, Claude Code or Codex work with the documentation of the installed version. They ship with the
+Porsche Design System package.
+
+```bash
+npx pds-skill --package @porsche-design-system/components-react --location .agents/skills
+```
+
+Use `.claude/skills` or `.github/skills` as location instead if your agent reads its skills from there. Agents then find
+the knowledge skill at `.agents/skills/pds-knowledge-react/SKILL.md`.

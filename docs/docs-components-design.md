@@ -49,9 +49,28 @@ end, it is one consumer of a shared core among others.
 
   A link to a route that does not exist fails the build. This replaces the semantic `LINKTREE` from `FOLLOW_UP.md`.
 
-- **Skill references mirror the routes** (`references/developing/react/getting-started.md`). A framework's skill
-  contains the independent pages, its variants of the switchable ones and its own guides (React: React, Next.js, React
-  Router). The current per-component references stay until the component pages are migrated.
+- **Content lives once, in fragments; each output has its own layout.** Pages are already composed of fragments: a
+  component's `*.meta.ts` holds its introduction, accessibility overview, tests and examples as MDX, and the Storefront
+  arranges them into tabs. An output may arrange the same fragments differently when that serves its readers, because
+  composed MDX renders like any other part of a page. Layouts never hold content of their own.
+  - **Pages mirror the routes by default:** `references/developing/react/getting-started.md` in a skill,
+    `developing/react/getting-started.md` on the web. A framework's skill contains the independent pages, its variants
+    of the switchable ones and its own guides (React: React, Next.js, React Router).
+  - **Components are one reference each in the skill** (`references/components/p-button/p-button.md`, with
+    `accessibility.md` and the example files next to it), as today. An agent needs usage, API, accessibility and
+    examples together, and one read instead of five saves tool calls; at about 11 KB (`p-button`) to 15 KB (`p-select`)
+    the size is fine. The Storefront keeps its tabs, which serve navigation and live demos. The web Markdown may offer
+    the same combined file (`components/button.md`, with its framework variants) next to the per-tab files; this is
+    decided in the component step.
+  - **The same applies to the styling solutions:** one reference each in the skill (`references/styles/tailwindcss.md`),
+    several pages on the Storefront.
+  - **Layouts iterate, they do not enumerate.** A component's meta lists its fragments, and every layout walks that
+    list, so a fragment added for the Storefront cannot be forgotten in the skill.
+  - **Links map routes to references.** `skillLinks` takes a route-to-reference mapping that defaults to
+    `references/<route>.md`. All tabs of a component map to its combined reference plus the section's anchor
+    (`/components/button/api/` → `components/p-button/p-button.md#api`), and a styling solution's pages to its one
+    reference. This replaces the special case in `rewriteDocLinks` and the package route references, and the link check
+    stays unchanged because the tab routes remain pages of the manifest.
 - **`SKILL.md` and `llms.txt` share the manifest but not their shape.** `llms.txt` lists every page. `SKILL.md` is
   loaded whenever the skill is used, so it keeps its hand-written instructions (version safety, framework syntax) and
   links sections, not every page. Its "Coverage and fallbacks" shrinks to "everything else: the exact-version `.md`".
@@ -65,24 +84,37 @@ pages; every later step widens what it covers. Pages not migrated yet keep the c
 
 1. **The whole system for getting started (this pull request):**
    - the registry, the Markdown runtime and renderer, and the framework model;
+   - one set of MDX options (`@porsche-design-system/docs-components/mdx-options`) for Next and the Markdown hook;
    - the page manifest, link resolution per destination on the mdast tree, and a build error for links to unknown
      routes;
-   - all getting-started pages migrated, each ending with the handoff to `npx pds-skill` and `pds-knowledge-{fw}`;
+   - all getting-started pages migrated, each ending with a recommended step that links the Agent Skills with
+     `npx pds-skill`;
    - Storefront Markdown and `llms.txt` (#4142);
    - the skill generator renders them into `references/<route>.md`, links them from `SKILL.md` through the manifest and
      falls back to exact-version Markdown; setup leaves "Coverage and fallbacks";
    - verified end to end: a getting-started `.md` URL pasted into a fresh agent session produces a working project.
-2. **Framework-aware components:** `FrameworkContext` in `docs-components`, filled by the Storefront's framework
+2. **Authoring feedback:** a way to see a page's Markdown while writing it (a dev route or watch script, "View as
+   Markdown"), and size budgets for `SKILL.md` and the references in CI. Small, and it pays off in every later step.
+3. **Framework-aware components:** `FrameworkContext` in `docs-components`, filled by the Storefront's framework
    provider (the base for the global framework switch), and the first framework-aware components
    (`FrameworkNotification`, `FrameworkCodeBlock`, `FrameworkPackage`, …).
-3. **Migrate the areas** one per pull request: Must Know, partials, patterns and templates, styles, tokens, … Each
-   registers the components it needs.
-4. **Data components:** move the meta-to-Markdown generators of the skill into the core and register `ComponentApi`,
+4. **Migrate the areas** one per pull request: Must Know, partials, patterns and templates, styles, tokens, … Each
+   registers the components it needs. Styles keep one skill reference per styling solution, through a layout and the
+   route-to-reference mapping.
+5. **Data components:** move the meta-to-Markdown generators of the skill into the core and register `ComponentApi`,
    `TokensTable`, `StylesTable` and the like. Aligns #4520.
-5. **Component pages:** migrate them last, switch the skill's component references to the route layout, and delete the
-   old pipeline (`renderMdxToMarkdown`, `rewriteDocLinks`, `skill-mdx-loader.cjs`'s parse path). Every page is strict
-   from then on.
-6. **Discovery:** `<link rel="alternate" type="text/markdown">`, "Copy as Markdown" and `llms-full.txt` per framework.
+6. **Component pages:** migrate them last. The skill keeps one reference per component, rendered from the component's
+   fragments by a skill layout that iterates over the fragments its meta lists, and `skillLinks` maps every tab route to
+   that reference. Decide whether the web Markdown offers the combined file too. Then delete the old pipeline
+   (`renderMdxToMarkdown`, `rewriteDocLinks`, `skill-mdx-loader.cjs`'s parse path). Every page is strict from then on.
+7. **Discovery:** `Accept: text/markdown` served with `<route>.md` by a CloudFront Function,
+   `<link rel="alternate" type="text/markdown">`, "Copy as Markdown", a root `/llms.txt` for the current major and
+   `llms-full.txt` per framework.
+8. **Agent evals:** tasks an agent has to solve with the Markdown or the skill alone ("set up PDS from this URL", "build
+   this form"), run on changes to the core and the registry. The end-to-end check of step 1 is their first case.
+
+**Separate track:** search across the documentation for agents, as an MCP or search endpoint over the same Markdown
+(#4108). It complements the static files rather than replacing them.
 
 ## Architecture and approach
 
@@ -143,7 +175,7 @@ Markdown implementation documents the exact output, with an `@example` where the
 | `renderer/jsx-runtime`                 | `jsx`, `jsxs`, `jsxDEV` and `Fragment`. Builds a lazy element tree, like React elements, and calls nothing.                                                                                                                                                                                                                               |
 | `render(tree, context)`                | Walks the tree. HTML elements (what MDX compiles Markdown syntax to) become hast. A registered component's renderer gets its props and the context and returns mdast. Nested MDX content renders recursively. Anything else throws. `hast-util-to-mdast` turns the result into one mdast tree, which `mdast-util-to-markdown` serializes. |
 | `register` (Node hook)                 | Compiles `.mdx` imports with `@mdx-js/mdx`, the Markdown JSX runtime and the same remark plugins as the Storefront (`remark-gfm`), and marks each `MDXContent` so composed MDX is recognized. Compiles in development mode, so every element carries its line in the MDX file for error messages.                                         |
-| `renderMdxFileToMarkdown`              | Imports a page and renders it for a context. Shared by the skill generator and the Storefront `.md` build.                                                                                                                                                                                                                                |
+| `collectPages`, `pageToMarkdown`       | Collect the page manifest, then write a page for a destination with `webLinks` or `skillLinks`. Shared by the skill generator and the Storefront `.md` build.                                                                                                                                                                             |
 
 ### Strictness
 
@@ -187,18 +219,19 @@ renderer:
 
 ```ts
 type MarkdownContext = {
-  framework: 'js' | 'angular' | 'react' | 'vue';
-  destination: 'skill' | 'web';
-  resolveLink: (href: string) => string;
+  framework: 'vanilla-js' | 'angular' | 'react' | 'vue';
+  renderChildren: (children: unknown) => RootContent[];
 };
 ```
 
-- `framework` selects framework-specific content and code.
-- `destination` only changes where links and example files point: relative `references/…` paths in a skill, absolute
-  Storefront URLs in a web `.md`. The content is the same for both, because both are read by agents. That's why there is
-  one `MarkdownOnly`, not a `SkillOnly` and a `WebOnly`.
-- `resolveLink` turns the Storefront's root-relative links (`/stylesheets/introduction/`) into the destination's form.
-  It is the hook for the shared link tree from `FOLLOW_UP.md`.
+Rendering depends only on the framework. Where the Markdown is read changes only where its links point, so rendering
+keeps the Storefront's routes in every link, and `pageToMarkdown` resolves them for a destination afterwards, once every
+page is known (see [Target architecture](#target-architecture)). The content is the same for the Storefront and the
+skill, because both are read by agents. That's why there is one `MarkdownOnly`, not a `SkillOnly` and a `WebOnly`.
+
+The page manifest is a list of `Page`s, collected once per build by `collectPages`: route, source file, `metadata`,
+kind, frameworks and the rendered mdast tree per framework. `createSite` adds every route of the app, so links can be
+checked against pages that have no Markdown yet.
 
 ## Frameworks
 
@@ -256,7 +289,8 @@ every framework instead.
 
 - **Unit:** the runtime and `render` (HTML elements, fragments, composed MDX, unregistered components and elements
   throw), and each Markdown renderer.
-- **Snapshots:** every migrated page rendered for each framework and destination.
+- **Snapshots:** every migrated page in the skill's tree snapshots; the link resolution for both destinations in the
+  fixtures of `docs-components`.
 - **Parity:** the React and Markdown entry points export the same names.
 - **Storefront:** the existing e2e and VRT tests for migrated pages must not change, which shows the React output is the
   same.
@@ -266,39 +300,63 @@ every framework instead.
 See [Plan](#plan). Migration goes one area at a time. A migrated page imports components only from the registry and is
 rendered by the new pipeline; pages that are not migrated yet keep the current pipelines until their step.
 
-## First slice
+## This pull request
 
-The smallest version that shows the approach end to end:
+The whole system, for the getting-started pages only:
 
-- `packages/docs-components` with the runtime, `render`, the Node hook and five components, one folder each:
-  `TableOfContents`, `Notification`, `DependencyList`, `StorefrontOnly` and `MarkdownOnly`. `TableOfContents` and
-  `Notification` moved from the Storefront, which now re-exports them from their old paths.
-- `developing/react/getting-started` migrated: it imports only from the registry, and `DependencyList` replaces the row
-  of `PTag`s.
-- `build:markdown` runs as the Storefront's `postbuild` and writes each migrated page into the export next to its HTML
-  (`dist/developing/react/getting-started.md`), with the [framework model](#frameworks): `renderMdxPage` renders a page
-  for every framework and reports it as specific, independent or switchable, and the script writes the variants, the
-  index of a switchable page and `llms.txt`. Links get the deployment's base path (`/pr-4777/…`, `/v4.8.0/…`). Only the
-  pages listed in `scripts/buildMarkdown.ts` are rendered; `next dev` does not serve them. The skill is not wired yet.
-- The React guide declares `export const framework = 'react'`. Next generates its page type checks only for files
-  TypeScript can import, so the extra export in an MDX page is safe.
+- `packages/docs-components` with the runtime, `render`, the Node hook, the page manifest and link resolution, and five
+  components, one folder each: `TableOfContents`, `Notification`, `DependencyList`, `StorefrontOnly` and `MarkdownOnly`.
+  `TableOfContents` and `Notification` moved from the Storefront, which re-exports them from their old paths.
+- All seven getting-started pages migrated. Each imports only from the registry, declares its framework (Astro and
+  Vanilla JS: `vanilla-js`; Next.js and React Router: `react`), lists its dependencies with `DependencyList` and ends
+  with a recommended step that links the Agent Skills with `npx pds-skill` and names the `pds-knowledge-{fw}` skill. The
+  step reads the same on the Storefront, in its Markdown and in the skill, so no Markdown-only component is needed.
+- `src/utils/markdownPages.ts` in the Storefront decides which pages are written as Markdown, for both builds.
+- `build:markdown` runs as the Storefront's `postbuild` and writes each page into the export next to its HTML
+  (`dist/developing/react/getting-started.md`) and `llms.txt`. Links point to the Markdown of the same deployment
+  (`/pr-4777/…`, `/v4.8.0/…`) or to the HTML of pages without Markdown. `next dev` does not serve them.
+- `build:skills` renders the same pages into `references/developing/<framework>/getting-started.md` of the skills they
+  apply to (React: React, Next.js, React Router; js: Vanilla JS, Astro), lists them in a `## Getting started` section of
+  `SKILL.md`, and links pages outside the skill to the exact-version Storefront. The SSR section links the local Next.js
+  and React Router guides, and setup leaves "Coverage and fallbacks".
 
 What it showed:
 
-- **Expressions and imports resolve.** The dependency list with `@porsche-design-system/components-react@4` is in the
-  Markdown. The current skill pipeline drops it, and the version comes from `package.json` through the `@/` alias, as in
-  the Storefront.
-- **Unregistered components fail with their position.** Rendering the unmigrated React Router page stops at its `PTag`
-  with `page.mdx:22:3`. `PTag` is a `forwardRef` with an anonymous render function, so there is no name to report. The
-  line from the development runtime is more useful anyway.
-- **Re-exports are a migration bridge.** An unmigrated page that imports `@/components/common/TableOfContents` gets the
-  registry's implementation in both targets, because the old path re-exports it. A page only fails on components that
-  are not registered yet.
-- **The React output is unchanged:** the Storefront serves the migrated page with the same four tags and table of
-  contents.
+- **Expressions and imports resolve.** The dependency lists, with the version from `package.json` through the `@/`
+  alias, are in the Markdown. The previous skill pipeline dropped them.
+- **Unregistered components fail with their position,** e.g. `page.mdx:22:3` for a `PTag`, which as a `forwardRef` with
+  an anonymous render function has no name to report.
+- **Links are checked.** Every link in the seven guides targets an existing route; a fixture shows the build error for
+  one that does not.
+- **The React output is unchanged:** the Storefront serves every guide with the same tags and table of contents.
+- **Both loaders coexist.** With the hook and the `markdown` condition added, the skill build's output for the component
+  docs, still parsed by `skill-mdx-loader.cjs`, stays byte for byte the same.
 - **Parity is enforced by the typechecker:** `src/parity.ts` fails when a component exists for only one target or when
   the two implementations take different props.
 - **Cost is low:** see the build-time risk above.
+- **Known gap:** a link to a page the skill covers through a package reference (e.g. `/tailwindcss/introduction/` →
+  `references/styles/tailwindcss.md`) still points to the Storefront. It resolves locally once that area is migrated.
+
+## Known gaps
+
+Compared with the alternatives (docs frameworks with an AI export such as Fumadocs or Mintlify, edge conversion such as
+Cloudflare's Markdown for Agents, Markdown- or data-first sources, MCP retrieval services and hand-written skills), this
+approach is the only one that combines strictness, framework variants and version-exact skills from one source. It still
+falls short in these places:
+
+| Gap                                                                                                                                                        | Addressed in                                                                                   |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| ~~Next and the Markdown hook configured MDX separately, so a plugin added to one would change only that output.~~                                          | step 1 (fixed)                                                                                 |
+| No `Accept: text/markdown` and no alternate link; agents find the Markdown only through `llms.txt` or a guessed URL.                                       | step 7                                                                                         |
+| No search across the documentation; with every page migrated, agents browse `llms.txt`.                                                                    | separate track                                                                                 |
+| A pipeline of our own to maintain: JSX runtime, Node module hooks (not yet stable in Node), `tsx`, and two loaders until the component pages are migrated. | step 6 removes the old loader; keep the core small and tested, consider `module.registerHooks` |
+| No Markdown preview while writing; errors appear at build time only.                                                                                       | step 2                                                                                         |
+| Tests check structure, not whether an agent succeeds with the result.                                                                                      | step 8                                                                                         |
+| No size budgets, so `SKILL.md` and references can grow unnoticed.                                                                                          | step 2                                                                                         |
+| Every component MDX uses needs a Markdown renderer (about 55); the Markdown is only as good as each of them.                                               | steps 3 to 6                                                                                   |
+| Heading anchors differ: the Storefront derives IDs with `kebabCase`, Markdown readers with their own slugs.                                                | step 4, by deriving the Storefront's IDs the same way                                          |
+| Docs owned by other packages (the Tailwind CSS docs, #4520) would make `styles` depend on the registry, whose React side needs the wrapper.                | step 5                                                                                         |
+| Next.js folds into React, so Next-specific content disappears from `.react.md`.                                                                            | a variant where a page needs it                                                                |
 
 ## Open questions
 

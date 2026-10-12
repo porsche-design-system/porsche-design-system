@@ -4,7 +4,7 @@ import { MDX_CONTENT } from '../src/renderer/define';
 import { Fragment, jsx } from '../src/renderer/jsx-runtime';
 import { renderToMarkdown } from '../src/renderer/render';
 
-const options = { framework: 'react', destination: 'web' } as const;
+const options = { framework: 'react' } as const;
 
 describe('renderToMarkdown', () => {
   it('converts the HTML elements MDX emits for Markdown syntax', () => {
@@ -28,14 +28,6 @@ describe('renderToMarkdown', () => {
     });
 
     expect(renderToMarkdown(tree, options)).toBe('> **Note**\n>\n> See [Partials](/partials/).\n');
-  });
-
-  it('resolves links for the destination', () => {
-    const tree = jsx('p', { children: jsx('a', { href: '/partials/', children: 'Partials' }) });
-
-    expect(
-      renderToMarkdown(tree, { ...options, resolveLink: (href) => `https://designsystem.porsche.com/v4${href}` })
-    ).toBe('[Partials](https://designsystem.porsche.com/v4/partials/)\n');
   });
 
   it('renders a dependency list', () => {

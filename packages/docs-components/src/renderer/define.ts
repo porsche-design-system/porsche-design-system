@@ -10,17 +10,16 @@ type MissingFramework = Exclude<Framework, (typeof FRAMEWORKS)[number]>;
 // Fails the typecheck when `shared` adds a framework that is not rendered.
 export const allFrameworksRendered: [MissingFramework] extends [never] ? true : false = true;
 
-/** Where the Markdown is read. Changes only where links and files point, never the content. */
-export type Destination = 'skill' | 'web';
-
+/**
+ * Rendering depends only on the framework. Where the Markdown is read (the Storefront or a skill) changes only where
+ * its links point, so links keep their Storefront routes here and are resolved per destination afterwards
+ * (`pageToMarkdown`).
+ */
 export type MarkdownOptions = {
   framework: Framework;
-  destination: Destination;
-  /** Turns the Storefront's root-relative links into the destination's form. Defaults to leaving them as they are. */
-  resolveLink?: (href: string) => string;
 };
 
-export type MarkdownContext = Required<MarkdownOptions> & {
+export type MarkdownContext = MarkdownOptions & {
   /** Renders MDX children (prose, elements, nested components) to mdast block content. */
   renderChildren: (children: unknown) => RootContent[];
 };

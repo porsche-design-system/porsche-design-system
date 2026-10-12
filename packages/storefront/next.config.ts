@@ -1,4 +1,5 @@
 import createMDX from '@next/mdx';
+import { remarkPlugins } from '@porsche-design-system/docs-components/mdx-options';
 import type { NextConfig } from 'next';
 import { getBasePath } from '@/utils/getBasePath';
 
@@ -29,10 +30,10 @@ const nextConfig: NextConfig = {
   },
 };
 
+// Shared with the Markdown build of `@porsche-design-system/docs-components`, so both outputs parse a page the same way.
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: ['remark-gfm'],
+    remarkPlugins,
   },
 });
 

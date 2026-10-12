@@ -15,7 +15,8 @@
     "./markdown/jsx-runtime": "./src/renderer/jsx-runtime.ts",
     "./markdown/jsx-dev-runtime": "./src/renderer/jsx-dev-runtime.ts",
     "./register": "./src/renderer/register.mjs",
-    "./utils": "./src/utils.ts"
+    "./utils": "./src/utils.ts",
+    "./mdx-options": "./src/mdx-options.mjs"
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",

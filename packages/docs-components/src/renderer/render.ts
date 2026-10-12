@@ -57,7 +57,7 @@ const TO_MARKDOWN_OPTIONS: Options = {
   strong: '*',
 };
 
-const toProperties = (tagName: string, props: Record<string, unknown>, context: MarkdownContext): Properties => {
+const toProperties = (props: Record<string, unknown>): Properties => {
   const properties: Properties = {};
   for (const [key, value] of Object.entries(props)) {
     if (key === 'children' || value === undefined || value === null) {
@@ -65,8 +65,6 @@ const toProperties = (tagName: string, props: Record<string, unknown>, context: 
     }
     if (key === 'className' && typeof value === 'string') {
       properties.className = value.split(/\s+/);
-    } else if (key === 'href' && tagName === 'a' && typeof value === 'string') {
-      properties.href = context.resolveLink(value);
     } else if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
       properties[key] = value;
     }
@@ -112,7 +110,7 @@ const toHast = (node: unknown, context: MarkdownContext): ElementContent[] => {
       {
         type: 'element',
         tagName: type,
-        properties: toProperties(type, props, context),
+        properties: toProperties(props),
         children: toHast(props.children, context),
       },
     ];
@@ -140,11 +138,9 @@ const hastToMdast = (children: ElementContent[]): RootContent[] =>
     ) as Root
   ).children;
 
-const createContext = ({ framework, destination, resolveLink = (href) => href }: MarkdownOptions): MarkdownContext => {
+const createContext = ({ framework }: MarkdownOptions): MarkdownContext => {
   const context: MarkdownContext = {
     framework,
-    destination,
-    resolveLink,
     renderChildren: (children) => hastToMdast(toHast(children, context)),
   };
   return context;
@@ -155,5 +151,7 @@ export const renderToMdast = (element: unknown, options: MarkdownOptions): Root 
   children: createContext(options).renderChildren(element),
 });
 
+export const serializeMarkdown = (tree: Root): string => `${toMarkdown(tree, TO_MARKDOWN_OPTIONS).trim()}\n`;
+
 export const renderToMarkdown = (element: unknown, options: MarkdownOptions): string =>
-  `${toMarkdown(renderToMdast(element, options), TO_MARKDOWN_OPTIONS).trim()}\n`;
+  serializeMarkdown(renderToMdast(element, options));
