@@ -1,4 +1,4 @@
-import { renderMdxFileToMarkdown } from '../../src/markdown';
+import { renderMdxFileToMarkdown } from '../../src/renderer';
 
 const [file] = process.argv.slice(2);
 

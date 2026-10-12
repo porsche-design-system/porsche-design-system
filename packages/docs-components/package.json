@@ -8,13 +8,13 @@
   "type": "module",
   "exports": {
     ".": {
-      "markdown": "./src/markdown/components.ts",
-      "default": "./src/react/index.ts"
+      "markdown": "./src/markdown.ts",
+      "default": "./src/react.ts"
     },
-    "./markdown": "./src/markdown/index.ts",
-    "./markdown/jsx-runtime": "./src/markdown/jsx-runtime.ts",
-    "./markdown/jsx-dev-runtime": "./src/markdown/jsx-dev-runtime.ts",
-    "./register": "./src/markdown/register.mjs",
+    "./markdown": "./src/renderer/index.ts",
+    "./markdown/jsx-runtime": "./src/renderer/jsx-runtime.ts",
+    "./markdown/jsx-dev-runtime": "./src/renderer/jsx-dev-runtime.ts",
+    "./register": "./src/renderer/register.mjs",
     "./utils": "./src/utils.ts"
   },
   "scripts": {

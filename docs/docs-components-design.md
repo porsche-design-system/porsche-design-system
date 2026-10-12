@@ -63,15 +63,35 @@ page.mdx ── import ──▶│ @porsche-design-system/docs-components     �
 
 ## Components
 
-| Piece                   | Responsibility                                                                                                                                                                                                                                                                                                                            |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `src/props.ts`          | One props type per component, shared by both implementations.                                                                                                                                                                                                                                                                             |
-| `src/react/*`           | The React implementations, used by the Storefront through the `default` condition.                                                                                                                                                                                                                                                        |
-| `src/markdown/*`        | The Markdown implementations, created with `defineMarkdownComponent(name, renderer)`, which tags them as registered.                                                                                                                                                                                                                      |
-| `markdown/jsx-runtime`  | `jsx`, `jsxs`, `jsxDEV` and `Fragment`. Builds a lazy element tree, like React elements, and calls nothing.                                                                                                                                                                                                                               |
-| `render(tree, context)` | Walks the tree. HTML elements (what MDX compiles Markdown syntax to) become hast. A registered component's renderer gets its props and the context and returns mdast. Nested MDX content renders recursively. Anything else throws. `hast-util-to-mdast` turns the result into one mdast tree, which `mdast-util-to-markdown` serializes. |
-| `register` (Node hook)  | Compiles `.mdx` imports with `@mdx-js/mdx`, the Markdown JSX runtime and the same remark plugins as the Storefront (`remark-gfm`), and marks each `MDXContent` so composed MDX is recognized. Compiles in development mode, so every element carries its line in the MDX file for error messages.                                         |
-| `renderMdxToMarkdown`   | Imports a page and renders it for a context. Shared by the skill generator and the Storefront `.md` build.                                                                                                                                                                                                                                |
+One folder per component, with both implementations side by side:
+
+```
+src/
+├── components/
+│   └── Notification/
+│       ├── Notification.tsx           React implementation, NotificationProps and JSDoc for authors
+│       └── Notification.markdown.ts   Markdown implementation and JSDoc with an example of its output
+├── react.ts       every *.tsx            (`default` condition)
+├── markdown.ts    every *.markdown.ts    (`markdown` condition)
+├── parity.ts      compares the two entry points
+└── renderer/      the engine: JSX runtime, render, Node hook
+```
+
+The two implementations have to be separate files. If one file held both, the Markdown build would load the React
+implementation and its imports too. The Markdown file imports the props with `import type`, which TypeScript erases.
+
+Hovering a component in MDX shows the JSDoc of the React implementation, because TypeScript resolves the `default`
+condition. That JSDoc says what the component is for and, in one sentence, what it becomes in Markdown. The JSDoc of the
+Markdown implementation documents the exact output, with an `@example` where there is output.
+
+| Piece                                  | Responsibility                                                                                                                                                                                                                                                                                                                            |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `components/<Name>/<Name>.tsx`         | The React implementation, used by the Storefront through the `default` condition, and its props type.                                                                                                                                                                                                                                     |
+| `components/<Name>/<Name>.markdown.ts` | The Markdown implementation, created with `defineMarkdownComponent(name, renderer)`, which tags it as registered.                                                                                                                                                                                                                         |
+| `renderer/jsx-runtime`                 | `jsx`, `jsxs`, `jsxDEV` and `Fragment`. Builds a lazy element tree, like React elements, and calls nothing.                                                                                                                                                                                                                               |
+| `render(tree, context)`                | Walks the tree. HTML elements (what MDX compiles Markdown syntax to) become hast. A registered component's renderer gets its props and the context and returns mdast. Nested MDX content renders recursively. Anything else throws. `hast-util-to-mdast` turns the result into one mdast tree, which `mdast-util-to-markdown` serializes. |
+| `register` (Node hook)                 | Compiles `.mdx` imports with `@mdx-js/mdx`, the Markdown JSX runtime and the same remark plugins as the Storefront (`remark-gfm`), and marks each `MDXContent` so composed MDX is recognized. Compiles in development mode, so every element carries its line in the MDX file for error messages.                                         |
+| `renderMdxFileToMarkdown`              | Imports a page and renders it for a context. Shared by the skill generator and the Storefront `.md` build.                                                                                                                                                                                                                                |
 
 ### Strictness
 
@@ -171,9 +191,9 @@ pipeline is deleted once the component pages are migrated.
 
 The smallest version that shows the approach end to end:
 
-- `packages/docs-components` with the runtime, `render`, the Node hook and five components: `TableOfContents`,
-  `Notification`, `DependencyList`, `StorefrontOnly` and `MarkdownOnly`. `TableOfContents` and `Notification` moved from
-  the Storefront, which now re-exports them from their old paths.
+- `packages/docs-components` with the runtime, `render`, the Node hook and five components, one folder each:
+  `TableOfContents`, `Notification`, `DependencyList`, `StorefrontOnly` and `MarkdownOnly`. `TableOfContents` and
+  `Notification` moved from the Storefront, which now re-exports them from their old paths.
 - `developing/react/getting-started` migrated: it imports only from the registry, and `DependencyList` replaces the row
   of `PTag`s.
 - `npm run render:markdown -- '<page.mdx>'` in the Storefront prints a page's Markdown. Wiring it into the skill and the

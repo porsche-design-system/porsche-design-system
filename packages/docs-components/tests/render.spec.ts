@@ -1,14 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import {
-  DependencyList,
-  MarkdownOnly,
-  Notification,
-  StorefrontOnly,
-  TableOfContents,
-} from '../src/markdown/components';
-import { MDX_CONTENT } from '../src/markdown/define';
-import { Fragment, jsx } from '../src/markdown/jsx-runtime';
-import { renderToMarkdown } from '../src/markdown/render';
+import { DependencyList, MarkdownOnly, Notification, StorefrontOnly, TableOfContents } from '../src/markdown';
+import { MDX_CONTENT } from '../src/renderer/define';
+import { Fragment, jsx } from '../src/renderer/jsx-runtime';
+import { renderToMarkdown } from '../src/renderer/render';
 
 const options = { framework: 'react', destination: 'web' } as const;
 

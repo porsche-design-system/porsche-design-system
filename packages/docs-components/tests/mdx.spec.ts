@@ -14,7 +14,7 @@ const renderFixture = (fixture: string) =>
       '--import',
       'tsx',
       '--import',
-      './src/markdown/register.mjs',
+      './src/renderer/register.mjs',
       'tests/fixtures/render.ts',
       `tests/fixtures/${fixture}`,
     ],

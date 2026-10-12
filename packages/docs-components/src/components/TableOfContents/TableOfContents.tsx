@@ -1,8 +1,15 @@
 import { PHeading, PLinkPure } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
-import type { TableOfContentsProps } from '../props';
-import { getChangelogAnchorId } from '../utils';
+import { getChangelogAnchorId } from '../../utils';
 
+export type TableOfContentsProps = {
+  headings: string[];
+};
+
+/**
+ * Links to the given `##` headings of the page. Not part of the Markdown output, where the headings themselves are
+ * the structure.
+ */
 export const TableOfContents = ({ headings }: TableOfContentsProps) => {
   if (headings.length === 0) {
     return null;

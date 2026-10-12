@@ -1,4 +1,4 @@
-import type * as MarkdownEntry from './markdown/components';
+import type * as MarkdownEntry from './markdown';
 import type * as ReactEntry from './react';
 
 /**
