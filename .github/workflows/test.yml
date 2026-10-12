@@ -7,6 +7,10 @@ on:
         description: 'Docker image to be used in workflow.'
         required: true
         type: string
+    secrets:
+      FIGMA_ACCESS_TOKEN:
+        description: 'Figma token for the Figma Code Connect dry run; empty on pull requests from forks and Dependabot.'
+        required: false
 
 permissions:
   contents: read
@@ -83,6 +87,15 @@ jobs:
     container:
       image: ${{ inputs.image }}
       options: --user 1001
+    # issues: read for the issue the dry run compares its lines with; contribution.yml grants it to this workflow
+    permissions:
+      contents: read
+      issues: read
+    env:
+      # Everything but the upload, on internal pull requests that are not bot-authored, gated like the deploy job in
+      # contribution.yml; only main publishes (figma-code-connect.yml). Rationale: docs/runbooks/figma-code-connect.md.
+      FIGMA_DRY_RUN: ${{ github.event_name == 'pull_request' && vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.user.login != 'dependabot[bot]' && github.event.pull_request.user.login != 'copilot-swe-agent[bot]' && github.event.pull_request.user.login != 'Copilot' }}
+      ISSUE_TITLE: 'Figma Code Connect: action needed'
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install
@@ -92,6 +105,88 @@ jobs:
           artifact: 'build-production'
       - run: npm run typecheck --workspace=@porsche-design-system/figma-code-connect
       - run: npm run test:unit --workspace=@porsche-design-system/figma-code-connect
+
+      # Exit 2 is a Figma outage, no fault of this pull request: a warning, and nothing is checked against Figma.
+      - name: 'figma:generate'
+        id: generate
+        if: env.FIGMA_DRY_RUN == 'true'
+        shell: bash
+        run: |
+          set +e
+          npm run figma:generate --workspace=@porsche-design-system/figma-code-connect 2>&1 | tee "$RUNNER_TEMP/generate.log"
+          code=${PIPESTATUS[0]}
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" = 2 ]; then
+            echo "::warning title=Figma Code Connect::Figma could not be read, so this pull request was not checked against it"
+            exit 0
+          fi
+          exit "$code"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # Figma's preview and node validation of every record, as figma:publish runs them, without the upload.
+      - name: 'figma:publish:dry'
+        id: dry
+        if: steps.generate.outputs.code == '0'
+        shell: bash
+        run: npm run figma:publish:dry --workspace=@porsche-design-system/figma-code-connect 2>&1 | tee "$RUNNER_TEMP/publish-dry.log"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # Only what this pull request changes: its lines minus those open on main, which the issue main's run keeps.
+      - name: 'Job summary'
+        if: always() && steps.generate.outcome != 'skipped'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GENERATE_CODE: ${{ steps.generate.outputs.code }}
+          DRY_OUTCOME: ${{ steps.dry.outcome }}
+        run: |
+          out="$GITHUB_STEP_SUMMARY"; tmp="$RUNNER_TEMP"
+          echo "## Figma Code Connect dry run" >> "$out"
+          if [ "$GENERATE_CODE" = 2 ]; then echo "Figma could not be read; nothing was checked. See \`figma:generate\`." >> "$out"; exit 0; fi
+          if [ "$GENERATE_CODE" != 0 ]; then echo "\`figma:generate\` failed, nothing was checked against Figma: see its log." >> "$out"; exit 0; fi
+          { grep -E '^pulled ' "$tmp/generate.log" || true; } >> "$out"
+
+          # the open issue's URL on the first line, its body after; nothing when no issue is open
+          issue=$(node --input-type=module -e '
+            const { GITHUB_API_URL, GITHUB_REPOSITORY, GH_TOKEN, ISSUE_TITLE } = process.env;
+            const url = `${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/issues?state=open&creator=github-actions%5Bbot%5D&per_page=100`;
+            const response = await fetch(url, { headers: { authorization: `Bearer ${GH_TOKEN}` } });
+            if (!response.ok) throw new Error(`GET issues → ${response.status}`);
+            const found = (await response.json()).find((i) => i.title === ISSUE_TITLE && !i.pull_request);
+            if (found) process.stdout.write(`${found.html_url}\n${found.body ?? ""}`);
+          ') || { echo "::warning title=Figma Code Connect::the issue could not be read, so the summary lists every line"; issue="unread"; }
+          lines() { { grep -E "^$1: " || true; } | LC_ALL=C sort -u; }
+          lines design < "$tmp/generate.log" > "$tmp/pr-design"
+          lines baseline < "$tmp/generate.log" > "$tmp/pr-baseline"
+          printf '%s\n' "$issue" | sed -n '/<!-- design-lines/,/<!-- \/design-lines -->/p' | lines design > "$tmp/main-design"
+          printf '%s\n' "$issue" | lines baseline > "$tmp/main-baseline"
+          section() {
+            [ -s "$2" ] || return 0
+            { echo "### $1 ($(wc -l < "$2" | tr -d ' '))"; echo '```'; cat "$2"; echo '```'; } >> "$out"
+          }
+          if [ "$issue" = unread ]; then
+            section 'Design lines' "$tmp/pr-design"
+            section 'Baseline cleanups' "$tmp/pr-baseline"
+          else
+            for kind in design baseline; do
+              [ "$kind" = design ] && name='Design lines' || name='Baseline cleanups'
+              comm -23 "$tmp/pr-$kind" "$tmp/main-$kind" > "$tmp/new-$kind"
+              comm -13 "$tmp/pr-$kind" "$tmp/main-$kind" > "$tmp/resolved-$kind"
+              section "$name new in this pull request" "$tmp/new-$kind"
+              section "$name this pull request resolves" "$tmp/resolved-$kind"
+            done
+            if [ -n "$issue" ]; then
+              echo "Lines already open on main stay in $(printf '%s\n' "$issue" | head -1)." >> "$out"
+            else
+              echo "Nothing is open on main." >> "$out"
+            fi
+          fi
+
+          echo "### Preview and node validation" >> "$out"
+          { echo '```'; grep -E '^(dry run|✖|  - )' "$tmp/publish-dry.log" 2> /dev/null || true; echo '```'; } >> "$out"
+          [ "$DRY_OUTCOME" = success ] || echo "\`figma:publish:dry\` failed: see its log." >> "$out"
   components-unit:
     name: 'Components Unit'
     runs-on: ubuntu-latest

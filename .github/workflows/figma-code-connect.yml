@@ -1,7 +1,8 @@
 name: 'Figma Code Connect'
 
 # Generates the Code Connect templates from component-meta, publishes what changed and tells design what to change in
-# Figma, without gating a merge: Contribution calls it after the deploy on main, and it runs daily and on dispatch.
+# Figma, without gating a merge: Contribution calls it after the deploy on main, and it runs daily and on dispatch, on
+# main only. Pull requests run everything but the upload in test.yml.
 # Rationale, secrets and exit codes: docs/runbooks/figma-code-connect.md.
 
 on:
@@ -38,7 +39,9 @@ env:
 jobs:
   sync:
     name: 'Pull Figma, generate, publish, notify design'
-    if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true'
+    # main only: a dispatch on another branch would publish its templates over main's records, and its publish record
+    # would stay in that branch's cache, so main's next run would see nothing to publish.
+    if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     # Never cancel a run in progress: publish uploads one label config after another, so a cancelled run mixes commits.

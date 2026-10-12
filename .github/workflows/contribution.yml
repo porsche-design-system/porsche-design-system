@@ -81,6 +81,15 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.63.0-jammy
     needs:
       - build
+    # issues: read for test.yml's Figma Code Connect job, which compares with the workflow's issue; test.yml narrows
+    # every other job to contents: read, and a reusable workflow can only narrow the caller's scope.
+    permissions:
+      contents: read
+      issues: read
+    # Only the Figma token, for the Figma Code Connect dry run. GitHub passes it empty to pull requests from forks
+    # and Dependabot; test.yml skips the dry run for those and for bot-authored pull requests, as deploy does.
+    secrets:
+      FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
   deploy:
     name: 'Deploy'
     # Secrets are NOT available on pull_request events from forks (read-only token), and we must
