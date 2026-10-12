@@ -31,16 +31,17 @@ Code Connect workflow sends each such gap to design on Slack. Background:
 
 When you add or rename a prop, a slot, an allowed value or a component:
 
-1. Run `npm run figma:generate` (needs `FIGMA_ACCESS_TOKEN` in the environment) and read the lines starting with
-   `design:`. Without a token, they reach you after the merge, in the workflow's issue "Figma Code Connect: action
-   needed".
+1. Read the lines starting with `design:` in your pull request's `Figma Code Connect` job summary, which lists those
+   your change adds or resolves. A pull request from a fork or a bot gets no dry run; its lines reach you after the
+   merge, in the workflow's issue "Figma Code Connect: action needed". With `FIGMA_ACCESS_TOKEN` in the environment,
+   `npm run figma:generate` prints them locally, together with every line already open.
 2. If the prop changes what the component looks like, leave the line alone. Design adds the property after the merge.
    The same goes for a new component (`design: p-foo: add a component set named "foo"`): design adds the set.
 3. If Figma will never carry it, ask the user before accepting it. Typical cases are native HTML attributes (`href`,
    `target`, `autoComplete`, `maxLength`), behaviour (`open`, `disableBackdropClick`), i18n objects (`intl`), and a
    component drawn inside its parent's set or not drawable at all (table parts, items, `p-icon`). Once agreed, add the
-   printed name to the component's array in `figma/coverage-baseline.json`, creating the tag's key if needed, run
-   `npm run figma:generate` so the file is sorted, and name the added line in the PR description.
+   printed name to the component's array in `figma/coverage-baseline.json`, creating the tag's key if needed, keep the
+   keys and each array sorted, and name the added line in the PR description.
 4. Names are the Figma property the gap needs: a prop by its own name (`iconSource`), a slot as `slot-<name>`
    (`slot-footer`), the default slot as `slot-default`, an allowed value Figma has no option for as `prop=value`
    (`variant=destructive`), a Figma option PDS does not allow as `prop=value` too (`type=mixed`; the option stays out of

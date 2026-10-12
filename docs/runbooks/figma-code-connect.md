@@ -27,10 +27,17 @@ Nothing here edits design: `figma connect publish` only attaches records to exis
 
 `.github/workflows/figma-code-connect.yml` runs as the last job of `Contribution` on a push to `main`, after the
 storefront and Algolia deploy; daily at 06:00 UTC; and on dispatch, whose `force` input publishes regardless of the last
-publish. It is skipped unless the repository variable `FIGMA_CODE_CONNECT_ENABLED` is `true`, and it never gates a merge
-or the release: no job needs it. A commit whose build, tests or deploy failed publishes nothing; the next green run
-catches up, because the hash compares with the last publish. The pull-request build reads nothing from Figma: the
-`Figma Code Connect` job in `.github/workflows/test.yml` runs the package's typecheck and unit tests.
+publish. It runs on `main` only, whatever the trigger, and is skipped unless the repository variable
+`FIGMA_CODE_CONNECT_ENABLED` is `true`; it never gates a merge or the release: no job needs it. A commit whose build,
+tests or deploy failed publishes nothing; the next green run catches up, because the hash compares with the last
+publish.
+
+A pull request runs everything but the upload. The `Figma Code Connect` job in `.github/workflows/test.yml` runs the
+package's typecheck and unit tests, then, on an internal pull request that is not bot-authored, `figma:generate` and
+`figma:publish:dry` with the same token. Its job summary lists the design lines and baseline cleanups the pull request
+adds or resolves, compared with the issue below; the lines already open on `main` stay there. It is red when generation
+fails or a template does not render, and only warns when Figma cannot be read. Pull requests from forks and bots get no
+dry run; their lines arrive after the merge.
 
 Each run:
 
@@ -56,7 +63,7 @@ log; the run has all of it.
 | Issue section            | Cause                                                                                                                                       | What to do                                                                                                                                  |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | Figma could not be read  | `figma:generate` exited 2: a token, network or API error                                                                                    | Fix the token or re-run. The design section is carried forward, so Slack does not repeat it                                                 |
-| Generation failed        | `figma:generate` exited 1, a repository mistake such as two properties feeding one template variable, or the CLI could not parse a template | Reproduce with `npm run figma:generate` and fix it in a pull request. Nothing was published                                                 |
+| Generation failed        | `figma:generate` exited 1, a repository mistake such as two properties feeding one template variable, or the CLI could not parse a template | Fix it in a pull request, whose `Figma Code Connect` job reproduces it. Nothing was published                                               |
 | Records Figma refused    | A node that is gone or is no component set, or a generator bug                                                                              | Fix the node or the generator. The record keeps its previous version, and the next run retries                                              |
 | Baseline cleanup         | A baseline entry is no longer a gap                                                                                                         | Remove it from `figma/coverage-baseline.json` in the next pull request that touches the component                                           |
 | Design must change Figma | The design lines, sent to Slack                                                                                                             | Nothing, unless Figma will never carry it: see the package's [`AGENTS.md`](../../packages/components/projects/figma-code-connect/AGENTS.md) |
@@ -73,9 +80,10 @@ The issue closes on the first run with nothing pending.
   content: Read**, **Library content: Read** and **Code Connect: Write**; the token dialog shows the Code Connect scope
   only to organization members, not guests. Figma recommends a Plan Access Token for CI, but its scope set is fixed and
   the docs do not list Code Connect write in it, so check that a publish works with one before storing it.
-- Locally the token goes in the package's git-ignored `.env`. The `figma connect` CLI loads that file itself;
-  `figma:generate` reads the token from the environment, and so do `figma:publish` and `figma:publish:dry`, which start
-  with `figma:generate -- --check`. Export it first: `set -a; . ./.env; set +a`.
+- A local token is optional: pull requests run the dry run and `main` publishes; only `figma:unpublish` and testing
+  against another file need one. Locally the token goes in the package's git-ignored `.env`. The `figma connect` CLI
+  loads that file itself; `figma:generate` reads the token from the environment, and so do `figma:publish` and
+  `figma:publish:dry`, which start with `figma:generate -- --check`. Export it first: `set -a; . ./.env; set +a`.
 
 ## Commands
 
@@ -138,9 +146,12 @@ Records live per file key, so nothing published under another key touches the li
 2. **Templates read the Figma properties when the snippet renders.** Rejected: direct `getBoolean`/`getEnum` reads,
    which print `[object Object]` and show "Property not found" in Dev Mode for a property the component lacks;
    generating the reads from the pull, which needed a publish for every Figma change.
-3. **Nothing pulled is stored, nothing generated is committed, and the pull-request build reads nothing from Figma.**
-   Rejected: committing the pull or the templates, which turned every Figma change into a developer pull request; a pull
-   in the pull-request build, which forks and Dependabot cannot run.
+3. **Nothing pulled is stored and nothing generated is committed; a pull request runs everything but the upload, and
+   only `main` publishes.** The pull-request run needs the token, so it is gated like the deploy: internal pull requests
+   that are not bot-authored. Forks and bots get no dry run and see their lines after the merge. Rejected: committing
+   the pull or the templates, which turned every Figma change into a developer pull request; a local token per
+   developer, which needs a Figma seat each and leaves the check to whoever has one; `pull_request_target`, which would
+   run a fork's code with the token.
 4. **Publish only when the hash of the parse output changed or the last publish was partial; the record lives in the
    actions cache.** Rejected: publishing on every run, which re-uploads every record and overwrites UI records daily;
    hashing the template files, which misses a helper edit and a CLI upgrade; a repository variable, which `GITHUB_TOKEN`
@@ -156,9 +167,11 @@ Records live per file key, so nothing published under another key touches the li
    template change shows in review without committing Figma data; the snapshots differ from the published files in node
    ids and icon swap fallbacks. Rejected: a frozen pull of the library, which put its node ids and property definitions
    in the public repository.
-9. **Triggers: the last job of `Contribution` on a push to `main`, plus `schedule` and `workflow_dispatch`.** Rejected:
-   a job inside `.github/workflows/deploy.yml`, whose failure would skip the release; a standalone `push` trigger, which
-   published commits whose build or tests failed.
+9. **Triggers: the last job of `Contribution` on a push to `main`, plus `schedule` and `workflow_dispatch`, all on
+   `main` only.** Rejected: a job inside `.github/workflows/deploy.yml`, whose failure would skip the release; a
+   standalone `push` trigger, which published commits whose build or tests failed; a dispatch on any branch, which would
+   publish that branch's templates over `main`'s records and keep its publish record in that branch's cache, so `main`'s
+   next run would see nothing to publish.
 10. **`@figma/code-connect` is pinned exactly**: `scripts/figmaConnect.ts` reads the CLI's log lines and the workflow
     hashes its parse output. Bump it per [`docs/dependencies.md`](../dependencies.md).
 
@@ -192,9 +205,8 @@ They become GitHub issues on an explicit go, the repository being public; until 
 In one pull request:
 
 1. Point `interactiveSetupFigmaFileUrl` in `figma.config.json` at the production library.
-2. Run `npm run figma:generate` and read the design lines. Production lacks what design changed only on the test copy;
-   on 2026-09-29 that was 37 design lines on 19 components: 27 property renames, the `dropdownDirection` option `none`
-   renamed to `auto` on `select` and `multi-select`, `showLabel` removed from `input-email`, and the `destructive`
-   button variant. Every component still publishes; each prop is left out of its snippet until design repeats the edit
-   in production.
+2. Read the design lines in this pull request's `Figma Code Connect` job, which now pulls production. Design repeats the
+   test copy's edits in production before the switch, so there should be none; on 2026-10-12 production still lacked
+   them: 31 design lines on 18 components. Every component publishes either way; a prop is left out of its snippet until
+   design repeats the edit.
 3. Delete this section.

@@ -389,9 +389,9 @@ between the installed Playwright and the Docker image makes CI fail.
 **`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
 dependency; otherwise `patch-package` fails on `postinstall`.
 
-**`@figma/code-connect`** — bump it, then run `npm run figma:publish:dry` in
-`packages/components/projects/figma-code-connect` against the test library and check that it still lists every file per
-label and exits 0; see `docs/runbooks/figma-code-connect.md`.
+**`@figma/code-connect`** — bump it in a pull request, whose `Figma Code Connect` job runs `npm run figma:publish:dry`
+against the library: check that it still lists every file per label and passes; see
+`docs/runbooks/figma-code-connect.md`.
 
 **`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
 
