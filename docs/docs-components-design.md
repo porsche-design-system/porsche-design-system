@@ -16,21 +16,73 @@ This design replaces the silent, lossy path with a **registry of dual-target com
 has a React and a Markdown implementation. Both targets run the same MDX, and anything that is not registered fails the
 build.
 
+## Target architecture
+
+The goal is **one source of truth** for everything PDS documents, rendered into every output: the Storefront's HTML, the
+Storefront's Markdown for agents and the `pds-knowledge-{fw}` skills. Today the skill generator has its own pipeline
+(`renderMdxToMarkdown`, `rewriteDocLinks`, hand-written sections in `SKILL.md`) and drifts from the Storefront. At the
+end, it is one consumer of a shared core among others.
+
+```
+ Sources (written once)                Core (packages/docs-components)                 Outputs
+ ───────────────────────               ───────────────────────────────                 ───────────────────────────
+ MDX pages (Storefront routes,    ┌─▶  registry: React + Markdown per component  ─▶   Storefront HTML (Next, React)
+ later package-owned docs)        │
+ structured meta (componentMeta,  ├─▶  1. collect  → page manifest                     Web Markdown (dist/)
+ tokens, Tailwind CSS, examples,  │    2. render   → mdast per page × framework   ─▶    <route>.md, <route>.<fw>.md,
+ deprecations)                    │    3. resolve  → links per destination              llms.txt
+                                  │    4. check    → every link targets a page    ─▶   Skill per framework
+                                  └─▶  data components delegate to meta renderers       references/<route>.md,
+                                                                                         SKILL.md (instructions + index)
+```
+
+- **Page manifest:** collected once from the MDX: route, title, description, section, kind (specific, independent,
+  switchable) and frameworks. `llms.txt`, the index in `SKILL.md`, link resolution and link checking all read it.
+- **Routes identify pages.** Authors keep writing Storefront routes (`/partials/introduction/`). Each destination
+  resolves them after all pages are known, on the mdast tree instead of with a regex:
+
+  | Destination | `/partials/introduction/` becomes                                                                                                                                                        |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Storefront  | unchanged; Next adds the deployment's base path                                                                                                                                          |
+  | Web `.md`   | `/<base>/partials/introduction.md`; for a switchable target the variant of the framework being rendered, from an independent page its index; the HTML page if the target has no Markdown |
+  | Skill       | a relative path (`../partials/introduction.md`) if the page is in the skill, otherwise the exact-version Markdown (`https://designsystem.porsche.com/v4.8.0/partials/introduction.md`)   |
+
+  A link to a route that does not exist fails the build. This replaces the semantic `LINKTREE` from `FOLLOW_UP.md`.
+
+- **Skill references mirror the routes** (`references/developing/react/getting-started.md`). A framework's skill
+  contains the independent pages, its variants of the switchable ones and its own guides (React: React, Next.js, React
+  Router). The current per-component references stay until the component pages are migrated.
+- **`SKILL.md` and `llms.txt` share the manifest but not their shape.** `llms.txt` lists every page. `SKILL.md` is
+  loaded whenever the skill is used, so it keeps its hand-written instructions (version safety, framework syntax) and
+  links sections, not every page. Its "Coverage and fallbacks" shrinks to "everything else: the exact-version `.md`".
+- **Data components** (`ComponentApi`, `TokensTable`, …) delegate to the existing meta-to-Markdown generators, moved
+  into the core, so each table has one Markdown implementation.
+
 ## Plan
 
-1. **MDX component registry and strict renderer** (this design).
-2. **Normalize the getting-started MDX:** replace dynamic content with registered components, and end each guide with
-   the handoff to `npx pds-skill` and `pds-knowledge-{fw}`.
-3. **Setup in the knowledge skill:** generate `references/getting-started/*.md` per framework (React: Vite, Next.js,
-   React Router; js: Vanilla JS, Astro), link it from `SKILL.md`, and remove setup from its "Coverage and fallbacks"
-   section.
-4. **Storefront Markdown and `llms.txt`** (#4142).
-5. **End-to-end check:** paste a getting-started `.md` URL into a fresh agent session and confirm that it produces a
-   working project.
-6. **Migrate the remaining pages** one area at a time, following `packages/storefront/projects/skills/FOLLOW_UP.md`, and
-   align #4520 with the same registry.
+Each step is one reviewable pull request. Pages not migrated yet keep the current pipelines until their step.
 
-Steps 3 and 4 are independent once step 2 is done.
+1. **First slice (this pull request):** the registry, the Markdown runtime and renderer, the framework model, the React
+   getting-started page and `build:markdown` with `llms.txt`. See [First slice](#first-slice).
+2. **Manifest and links:** collect the page manifest, resolve links per destination on the mdast tree, fail on links to
+   unknown routes. Web `.md` links point to Markdown.
+3. **Getting started:** migrate all getting-started pages and end each with the handoff to `npx pds-skill` and
+   `pds-knowledge-{fw}`. Verify end to end: a getting-started `.md` URL pasted into a fresh agent session produces a
+   working project.
+4. **Skill on the core:** the skill generator renders the migrated pages with `destination: 'skill'` into
+   `references/<route>.md`, links them from `SKILL.md` through the manifest, and falls back to exact-version Markdown.
+   Removes setup from "Coverage and fallbacks".
+5. **Framework-aware components:** `FrameworkContext` in `docs-components`, filled by the Storefront's framework
+   provider (the base for the global framework switch), and the first framework-aware components
+   (`FrameworkNotification`, `FrameworkCodeBlock`, `FrameworkPackage`, …).
+6. **Migrate the areas** one per pull request: Must Know, partials, patterns and templates, styles, tokens, … Each
+   registers the components it needs.
+7. **Data components:** move the meta-to-Markdown generators of the skill into the core and register `ComponentApi`,
+   `TokensTable`, `StylesTable` and the like. Aligns #4520.
+8. **Component pages:** migrate them last, switch the skill's component references to the route layout, and delete the
+   old pipeline (`renderMdxToMarkdown`, `rewriteDocLinks`, `skill-mdx-loader.cjs`'s parse path). Every page is strict
+   from then on.
+9. **Discovery:** `<link rel="alternate" type="text/markdown">`, "Copy as Markdown" and `llms-full.txt` per framework.
 
 ## Architecture and approach
 
@@ -159,22 +211,24 @@ every framework instead.
 - **Same contract in both targets:** framework-aware components (`FrameworkNotification`, `FrameworkCodeBlock`,
   `FrameworkPackage`, `FrameworkSkill`, …) read the current framework. In React it comes from a `FrameworkContext` owned
   by `docs-components`, which the Storefront's provider fills from localStorage. In Markdown it comes from
-  `context.framework`. The MDX does not change.
+  `context.framework`. The MDX does not change. Not built yet: no framework-aware component is registered so far.
 - **Three kinds of pages:**
 
-  | Kind                                                | Detected by                                   | Files                                                           | Listed in                |
-  | --------------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------- | ------------------------ |
-  | Independent (patterns, must-know)                   | renders identically for every framework       | `page.md`                                                       | every `llms-<fw>.txt`    |
-  | Switchable (components, skills)                     | renders differently                           | `page.<fw>.md` per framework, and `page.md` as an index of them | its variant in each list |
-  | Specific to one framework (`developing/react/*`, …) | `export const framework = 'react'` in the MDX | `page.md`                                                       | only `llms-react.txt`    |
+  | Kind                                                | Detected by                                   | Files                                                           | `llms.txt` entry                                   |
+  | --------------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------- |
+  | Independent (patterns, must-know)                   | renders identically for every framework       | `page.md`                                                       | a link to `page.md`                                |
+  | Switchable (components, skills)                     | renders differently                           | `page.<fw>.md` per framework, and `page.md` as an index of them | a link to `page.md`, followed by the four variants |
+  | Specific to one framework (`developing/react/*`, …) | `export const framework = 'react'` in the MDX | `page.md`                                                       | a link to `page.md`; the title names the framework |
 
   Each page is rendered for every framework (about 1.6 ms per extra render) and the results are compared, so only
   framework-specific pages declare anything. The plain `page.md` of a switchable page is an index of its variants, so an
   agent that guesses the URL from the HTML page never gets code for the wrong framework.
 
-- **Per-framework lists:** `llms-<fw>.txt` lists the independent pages, that framework's variants and its guides
-  (`llms-react.txt` includes Next.js and React Router). `llms.txt` introduces the Porsche Design System and links the
-  four lists.
+- **One `llms.txt`:** every page is listed once, grouped by section, as the llmstxt.org format expects. A switchable
+  page's entry links its index and then its four variants on the same line, so an agent reaches the right variant
+  without the detour through the index. Lists per framework would repeat every page up to four times and are not part of
+  the convention, so agents would not look for them. A split per framework pays off only for a future `llms-full.txt`
+  with the full content (#4771).
 - **Discovery:** each HTML page links every Markdown variant with `<link rel="alternate" type="text/markdown">`. A later
   "Copy as Markdown" button picks the variant of the selected framework.
 
@@ -209,13 +263,8 @@ every framework instead.
 
 ## Rollout
 
-Migration goes one area at a time. A migrated page imports components only from the registry and is rendered by the new
-pipeline. Pages that are not migrated yet keep the current pipeline (`renderMdxToMarkdown` in the skill generator). That
-pipeline is deleted once the component pages are migrated.
-
-1. **First slice (this pull request):** see [First slice](#first-slice).
-2. All getting-started pages (plan step 2), then wire them into the skill (step 3) and the Storefront `.md` (step 4).
-3. The remaining areas, ending with the component pages, which retires the old pipeline.
+See [Plan](#plan). Migration goes one area at a time. A migrated page imports components only from the registry and is
+rendered by the new pipeline; pages that are not migrated yet keep the current pipelines until their step.
 
 ## First slice
 
@@ -227,9 +276,13 @@ The smallest version that shows the approach end to end:
 - `developing/react/getting-started` migrated: it imports only from the registry, and `DependencyList` replaces the row
   of `PTag`s.
 - `build:markdown` runs as the Storefront's `postbuild` and writes each migrated page into the export next to its HTML
-  (`dist/developing/react/getting-started.md`), plus an `llms.txt` that lists them. Links get the deployment's base path
-  (`/pr-4777/…`, `/v4.8.0/…`). Only the pages listed in `scripts/buildMarkdown.ts` are rendered, with their framework;
-  `next dev` does not serve them. This is the minimal start of plan step 4; the skill (step 3) is not wired yet.
+  (`dist/developing/react/getting-started.md`), with the [framework model](#frameworks): `renderMdxPage` renders a page
+  for every framework and reports it as specific, independent or switchable, and the script writes the variants, the
+  index of a switchable page and `llms.txt`. Links get the deployment's base path (`/pr-4777/…`, `/v4.8.0/…`). Only the
+  pages listed in `scripts/buildMarkdown.ts` are rendered; `next dev` does not serve them. The skill (plan step 4) is
+  not wired yet.
+- The React guide declares `export const framework = 'react'`. Next generates its page type checks only for files
+  TypeScript can import, so the extra export in an MDX page is safe.
 
 What it showed:
 

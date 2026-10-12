@@ -1,6 +1,14 @@
+import type { Framework } from '@porsche-design-system/shared';
 import type { RootContent } from 'mdast';
 
-export type Framework = 'js' | 'angular' | 'react' | 'vue';
+export type { Framework };
+
+/** Every framework a page is rendered for, in the order the Storefront offers them. */
+export const FRAMEWORKS = ['vanilla-js', 'angular', 'react', 'vue'] as const satisfies readonly Framework[];
+
+type MissingFramework = Exclude<Framework, (typeof FRAMEWORKS)[number]>;
+// Fails the typecheck when `shared` adds a framework that is not rendered.
+export const allFrameworksRendered: [MissingFramework] extends [never] ? true : false = true;
 
 /** Where the Markdown is read. Changes only where links and files point, never the content. */
 export type Destination = 'skill' | 'web';

@@ -1,5 +1,5 @@
-import { renderMdxFileToMarkdown } from '../../src/renderer';
+import { renderMdxPage } from '../../src/renderer';
 
 const [file] = process.argv.slice(2);
 
-process.stdout.write(await renderMdxFileToMarkdown(file, { framework: 'react', destination: 'web' }));
+process.stdout.write(JSON.stringify(await renderMdxPage(file, { destination: 'web' })));
