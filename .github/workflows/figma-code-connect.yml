@@ -216,7 +216,8 @@ jobs:
           PUBLISH_OUTCOME: ${{ steps.publish.outcome }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          existing=$(gh issue list --state open --search "\"$ISSUE_TITLE\" in:title" --json number --jq '.[0].number // empty')
+          # only the workflow's own issue: in a public repository anyone can open one with this title
+          existing=$(gh issue list --state open --app github-actions --search "\"$ISSUE_TITLE\" in:title" --json number,title --jq 'map(select(.title == env.ISSUE_TITLE)) | .[0].number // empty')
           previous=""
           if [ -n "$existing" ]; then
             previous=$(gh issue view "$existing" --json body --jq .body | sed -n '/<!-- design-lines -->/,/<!-- \/design-lines -->/p')
