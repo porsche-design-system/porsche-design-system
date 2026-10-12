@@ -41,10 +41,10 @@
     "@porsche-design-system/tokens": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "change-case": "^5.4.4",
-    "rollup": "^4.63.2",
-    "tsx": "^4.23.13",
+    "rollup": "^4.63.5",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.0"
+    "vitest": "^5.0.2"
   },
   "volta": {
     "extends": "../../../../package.json"

@@ -32,6 +32,16 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
     )
   ) {
     await page.mouse.click(0, 0); // click top left corner of the page to remove focus
+    // p-select and p-multi-select focus their filter input two animation frames after opening, so let pending frames
+    // run in every document first, otherwise the focus can be applied after it was removed below
+    for (const frame of page.frames()) {
+      await frame.evaluate(
+        () =>
+          new Promise<void>((resolve) =>
+            requestAnimationFrame(() => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
+          )
+      );
+    }
     // Some components like p-select and p-multi-select set focus after opening which we need to remove for every iframe
     await page.evaluate(
       () =>

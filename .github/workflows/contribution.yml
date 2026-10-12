@@ -70,7 +70,7 @@ jobs:
     name: 'Build'
     uses: ./.github/workflows/build.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.61.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
       storefront-slug: ${{ needs.context.outputs.storefront-slug }}
     needs:
       - context
@@ -78,7 +78,7 @@ jobs:
     name: 'Test'
     uses: ./.github/workflows/test.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.61.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
     needs:
       - build
   deploy:
@@ -109,7 +109,7 @@ jobs:
       id-token: write
     uses: ./.github/workflows/deploy.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.61.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
       storefront-slug: ${{ needs.context.outputs.storefront-slug }}
       storefront-algolia: ${{ needs.context.outputs.storefront-algolia }}
     needs:
@@ -157,7 +157,7 @@ jobs:
       id-token: write
     uses: ./.github/workflows/release.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.61.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
     needs:
       - deploy
       - build

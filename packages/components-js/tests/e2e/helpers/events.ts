@@ -58,5 +58,8 @@ export const getEventSummary = (
 };
 
 export const waitForImproveButtonHandlingForCustomElement = async (page: Page): Promise<void> => {
-  await page.waitForFunction(() => !document.querySelector('form button'));
+  // `improveButtonHandlingForCustomElement` appends, clicks and removes its fake button inside a `setTimeout(…, 1)`
+  // scheduled on click, so polling for the fake button resolves before it was even appended. A timer scheduled
+  // afterwards with a later deadline only fires once that one has run.
+  await page.evaluate(() => new Promise<void>((resolve) => window.setTimeout(resolve, 10)));
 };
