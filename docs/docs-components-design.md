@@ -148,6 +148,36 @@ type MarkdownContext = {
 - `resolveLink` turns the Storefront's root-relative links (`/stylesheets/introduction/`) into the destination's form.
   It is the hook for the shared link tree from `FOLLOW_UP.md`.
 
+## Frameworks
+
+The Storefront's selected framework is client state (a context saved to localStorage, default `vanilla-js`), and a
+global framework switch will extend it. Markdown is built ahead of time and cannot know a reader's choice, so it renders
+every framework instead.
+
+- **One vocabulary:** `shared`'s `Framework` (`vanilla-js`, `angular`, `react`, `vue`). The skill's `js` stays only the
+  suffix of package and skill names (`frameworkSuffixMap`); `next` is a tab variant that resolves to `react`.
+- **Same contract in both targets:** framework-aware components (`FrameworkNotification`, `FrameworkCodeBlock`,
+  `FrameworkPackage`, `FrameworkSkill`, …) read the current framework. In React it comes from a `FrameworkContext` owned
+  by `docs-components`, which the Storefront's provider fills from localStorage. In Markdown it comes from
+  `context.framework`. The MDX does not change.
+- **Three kinds of pages:**
+
+  | Kind                                                | Detected by                                   | Files                                                           | Listed in                |
+  | --------------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------- | ------------------------ |
+  | Independent (patterns, must-know)                   | renders identically for every framework       | `page.md`                                                       | every `llms-<fw>.txt`    |
+  | Switchable (components, skills)                     | renders differently                           | `page.<fw>.md` per framework, and `page.md` as an index of them | its variant in each list |
+  | Specific to one framework (`developing/react/*`, …) | `export const framework = 'react'` in the MDX | `page.md`                                                       | only `llms-react.txt`    |
+
+  Each page is rendered for every framework (about 1.6 ms per extra render) and the results are compared, so only
+  framework-specific pages declare anything. The plain `page.md` of a switchable page is an index of its variants, so an
+  agent that guesses the URL from the HTML page never gets code for the wrong framework.
+
+- **Per-framework lists:** `llms-<fw>.txt` lists the independent pages, that framework's variants and its guides
+  (`llms-react.txt` includes Next.js and React Router). `llms.txt` introduces the Porsche Design System and links the
+  four lists.
+- **Discovery:** each HTML page links every Markdown variant with `<link rel="alternate" type="text/markdown">`. A later
+  "Copy as Markdown" button picks the variant of the selected framework.
+
 ## Trade-offs and alternatives
 
 | Decision             | Chosen                                  | Alternatives                                                                                                                                                                                                                                                                             |
@@ -196,8 +226,10 @@ The smallest version that shows the approach end to end:
   `Notification` moved from the Storefront, which now re-exports them from their old paths.
 - `developing/react/getting-started` migrated: it imports only from the registry, and `DependencyList` replaces the row
   of `PTag`s.
-- `npm run render:markdown -- '<page.mdx>'` in the Storefront prints a page's Markdown. Wiring it into the skill and the
-  Storefront build are plan steps 3 and 4.
+- `build:markdown` runs as the Storefront's `postbuild` and writes each migrated page into the export next to its HTML
+  (`dist/developing/react/getting-started.md`), plus an `llms.txt` that lists them. Links get the deployment's base path
+  (`/pr-4777/…`, `/v4.8.0/…`). Only the pages listed in `scripts/buildMarkdown.ts` are rendered, with their framework;
+  `next dev` does not serve them. This is the minimal start of plan step 4; the skill (step 3) is not wired yet.
 
 What it showed:
 
