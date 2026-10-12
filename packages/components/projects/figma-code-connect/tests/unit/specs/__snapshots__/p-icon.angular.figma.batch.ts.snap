@@ -5,7 +5,7 @@
 import figma from 'figma';
 
 export default {
-  example: figma.code`<p-icon [name]="'${figma.batch.name}'"></p-icon>`,
+  example: figma.code`<p-icon name="${figma.batch.name}"></p-icon>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4.8.0/components/icon/api/',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",

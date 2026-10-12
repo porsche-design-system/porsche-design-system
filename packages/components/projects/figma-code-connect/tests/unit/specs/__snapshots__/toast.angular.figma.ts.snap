@@ -4,13 +4,14 @@
 // component=p-toast
 // Auto generated - do not edit by hand.
 import figma from 'figma';
+import { escapeText } from '../../../figma/helpers/escape';
 import { read } from '../../../figma/helpers/read';
 import { slotted } from '../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
 export default {
-  example: figma.code`<p-toast>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-toast>`,
+  example: figma.code`<p-toast>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-toast>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4.8.0/components/toast/api/',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",

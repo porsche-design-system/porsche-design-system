@@ -4,6 +4,7 @@
 // component=p-ai-tag
 // Auto generated - do not edit by hand.
 import figma from 'figma';
+import { escapeText } from '../../../figma/helpers/escape';
 import { read } from '../../../figma/helpers/read';
 import { slotted } from '../../../figma/helpers/slotted';
 
@@ -13,7 +14,7 @@ const locale = read.oneOf('locale', ['ar-BH', 'ar-KW', 'ar-QA', 'ar-SA', 'az-AZ'
 const variant = read.oneOf('variant', ['abbreviation', 'generated', 'modified']);
 
 export default {
-  example: figma.code`<p-ai-tag${locale ? ` [locale]="'${locale}'"` : ''}${variant ? ` [variant]="'${variant}'"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-ai-tag>`,
+  example: figma.code`<p-ai-tag${locale ? ` locale="${locale}"` : ''}${variant ? ` variant="${variant}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-ai-tag>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4.8.0/components/ai-tag/api/',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",

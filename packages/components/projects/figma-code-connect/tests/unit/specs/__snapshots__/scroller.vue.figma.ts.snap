@@ -4,6 +4,7 @@
 // component=PScroller
 // Auto generated - do not edit by hand.
 import figma from 'figma';
+import { escapeText } from '../../../figma/helpers/escape';
 import { read } from '../../../figma/helpers/read';
 import { slotted } from '../../../figma/helpers/slotted';
 
@@ -14,7 +15,7 @@ const compact = read.flag('compact');
 const sticky = read.flag('sticky');
 
 export default {
-  example: figma.code`<PScroller${scrollbar ? ' :scrollbar="true"' : ''}${compact ? ' :compact="true"' : ''}${sticky ? ' :sticky="true"' : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</PScroller>`,
+  example: figma.code`<PScroller${scrollbar ? ' :scrollbar="true"' : ''}${compact ? ' :compact="true"' : ''}${sticky ? ' :sticky="true"' : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PScroller>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4.8.0/components/scroller/api/',
     "import { PScroller } from '@porsche-design-system/components-vue';",

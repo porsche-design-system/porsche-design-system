@@ -5,7 +5,7 @@
 import figma from 'figma';
 
 export default {
-  example: figma.code`<PIcon :name="'${figma.batch.name}'"></PIcon>`,
+  example: figma.code`<PIcon name="${figma.batch.name}"></PIcon>`,
   imports: [
     '// Docs: https://designsystem.porsche.com/v4.8.0/components/icon/api/',
     "import { PIcon } from '@porsche-design-system/components-vue';",

@@ -48,7 +48,7 @@ export const labels: Label[] = [
     suffix: '.angular',
     label: 'Angular',
     tagName: (t) => t,
-    attr: (n, v) => `[${camelCase(n)}]=${quoted(v === true ? 'true' : `'${v}'`)}`,
+    attr: (n, v) => (v === true ? `[${camelCase(n)}]="true"` : `${camelCase(n)}=${quoted(v)}`),
     expr: (n, v) => `[${camelCase(n)}]=${quoted(v)}`,
     imports: (_, docs) => [
       `// Docs: ${docs}`,
@@ -60,7 +60,7 @@ export const labels: Label[] = [
     suffix: '.vue',
     label: 'Vue',
     tagName: (t) => pascalCase(t),
-    attr: (n, v) => `:${camelCase(n)}=${quoted(v === true ? 'true' : `'${v}'`)}`,
+    attr: (n, v) => (v === true ? `:${camelCase(n)}="true"` : `${camelCase(n)}=${quoted(v)}`),
     expr: (n, v) => `:${camelCase(n)}=${quoted(v)}`,
     imports: (t, docs) => [
       `// Docs: ${docs}`,
@@ -428,7 +428,7 @@ const fragment = (
     case 'string':
       return {
         read: `const ${variable} = read.text('${mapping.prop}');`,
-        attr: ifSet(label.attr(mapping.prop, value)),
+        attr: ifSet(label.attr(mapping.prop, `\${escapeAttribute(${variable})}`)),
       };
     case 'number':
       return {
@@ -453,7 +453,7 @@ const fragment = (
 const slotContent = (figma: string, label: Label): string => {
   const slot = pdsSlotName(figma);
   return slot === ''
-    ? `\${read.isSlot('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}') : (read.text('${figma}') ?? '')}`
+    ? `\${read.isSlot('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}') : escapeText(read.text('${figma}') ?? '')}`
     : `\${read.has('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}', '${label.comment(`slot="${slot}"`)}') : ''}`;
 };
 
@@ -504,6 +504,7 @@ const render = (
     `// Auto generated - do not edit by hand.`,
     `import figma from 'figma';`,
     // the CLI bundles relative imports into the record at publish time
+    `import { ${mappings.some((m) => m.kind === 'string') ? 'escapeAttribute, ' : ''}escapeText } from '${helpers}/escape';`,
     ...(mappings.some((m) => m.kind === 'icon') ? [`import { iconOf } from '${helpers}/iconOf';`] : []),
     `import { read } from '${helpers}/read';`,
     `import { slotted } from '${helpers}/slotted';`,

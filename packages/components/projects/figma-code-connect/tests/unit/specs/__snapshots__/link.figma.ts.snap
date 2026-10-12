@@ -4,6 +4,7 @@
 // component=p-link
 // Auto generated - do not edit by hand.
 import figma from 'figma';
+import { escapeAttribute, escapeText } from '../../../figma/helpers/escape';
 import { iconOf } from '../../../figma/helpers/iconOf';
 import { read } from '../../../figma/helpers/read';
 import { slotted } from '../../../figma/helpers/slotted';
@@ -20,7 +21,7 @@ const hideLabel = read.hideLabel();
 const compact = read.flag('compact');
 
 export default {
-  example: figma.code`<p-link${variant ? ` variant="${variant}"` : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` icon-source="${iconSource}"` : ''}${href ? ` href="${href}"` : ''}${download ? ` download="${download}"` : ''}${rel ? ` rel="${rel}"` : ''}${hideLabel ? ' hide-label="true"' : ''}${compact ? ' compact="true"' : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : (read.text('slot-default') ?? '')}</p-link>`,
+  example: figma.code`<p-link${variant ? ` variant="${variant}"` : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` icon-source="${escapeAttribute(iconSource)}"` : ''}${href ? ` href="${escapeAttribute(href)}"` : ''}${download ? ` download="${escapeAttribute(download)}"` : ''}${rel ? ` rel="${escapeAttribute(rel)}"` : ''}${hideLabel ? ' hide-label="true"' : ''}${compact ? ' compact="true"' : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-link>`,
   imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/link/api/ -->'],
   id: 'p-link',
   metadata: { nestable: true },

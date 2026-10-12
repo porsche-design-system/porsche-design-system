@@ -1,5 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
 import figma from 'figma';
+import { escapeText } from './escape';
 
 // Bundled into every record with a slot at publish; `figma.selectedInstance` is the instance whose template runs.
 const instance = figma.selectedInstance;
@@ -13,7 +14,7 @@ export const slotted = (slot: ReturnType<typeof instance.getSlot>, name: string,
     ...(slot?.connectedInstances.map((c) => c.executeTemplate().example) ?? []),
     ...instance
       .findLayers((n) => n.type === 'TEXT' && n.__containingSlotName__ === name)
-      .flatMap((n) => (n.type === 'TEXT' ? [figma.code`${n.textContent}`] : [])),
+      .flatMap((n) => (n.type === 'TEXT' ? [figma.code`${escapeText(n.textContent)}`] : [])),
   ];
   return content.length ? figma.code`${marker}${content}` : '';
 };
