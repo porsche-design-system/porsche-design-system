@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MDX to Markdown > runs imports, expressions and composed MDX 1`] = `
+"# Fixture
+
+## Setup
+
+Based on:
+
+- \`react@19\`
+- \`@porsche-design-system/components-react@4\`
+
+> **Note**
+>
+> The current major version is **4**.
+
+### Composed
+
+This paragraph comes from a second MDX file.
+"
+`;
