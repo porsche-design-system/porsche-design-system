@@ -299,8 +299,11 @@ reaches through interaction**.
 - **Captured on both devices** of the config, `vrt-desktop-chrome` and `vrt-mobile-safari`. The config fixes the
   baseline suffix to the bare engine name, because `prepare-vrt-snapshots` derives the regression artifacts from exactly
   that suffix and project names have to be unique across the suites. Dark scheme, both High Contrast Mode schemes, 200%
-  font size and `rtl` are captured on desktop only – font scaling and forced colors go through CDP. The overflow of the
-  priority navigation only exists on mobile: on desktop every entry fits into the bar.
+  font size and `rtl` are captured on desktop only – forced colors go through CDP, and the font size is a preference of
+  a chromium profile (`launchPageWithFontSize200()`), because chromium drops a CDP font size during a full page capture,
+  leaving 100% text in a 200% layout. The profile needs the full chromium, whose text antialiasing varies between runs,
+  so the 200% capture tolerates 200 differing pixels. The overflow of the priority navigation only exists on mobile: on
+  desktop every entry fits into the bar.
 - **Pages are globbed to find the specs, not to generate them.** [`tests/helpers/pages.ts`](tests/helpers/pages.ts)
   resolves every `index.page.tsx` to its URL on the preview server; a spec looks its page up by id with
   `getExampleUrl()`, which fails if the page is gone, and the coverage spec fails if a page has no spec.

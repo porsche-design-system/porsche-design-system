@@ -73,7 +73,7 @@ export default defineConfig({
     ...projectsOf('a11y', playwrightConfigA11y),
     /**
      * Visual regression. Dark scheme, both High Contrast Mode schemes, 200% font size and rtl are captured on desktop
-     * only: scaling the font size and forcing colors go through CDP.
+     * only: the font size is a preference of a chromium profile, and forcing colors goes through CDP.
      */
     ...projectsOf('vrt', playwrightConfigVRT),
   ],
