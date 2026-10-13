@@ -52,14 +52,16 @@ runs:
       env:
         SLACK_CHANNEL_ID: ${{ inputs.slack-channel-id }}
 
-    # SPIKE, revert before merge: prints what design would get instead of posting to the design channel
     - name: 'Send'
       id: send
       if: always() && steps.slack.outputs.send == 'true'
-      shell: bash
-      run: |
-        echo "SPIKE would send:"
-        cat "$RUNNER_TEMP/new-design-lines.txt"
+      # `errors: true` — the action's default is false and a rejected request would pass green.
+      uses: slackapi/slack-github-action@v4.0.0
+      with:
+        method: chat.postMessage
+        token: ${{ inputs.slack-bot-token }}
+        payload-file-path: ${{ runner.temp }}/slack-payload.json
+        errors: true
 
     # After Slack, and only when it did not fail: a failed send keeps the old lines, so the next run sends again.
     - name: 'Remember the design lines'

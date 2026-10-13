@@ -6,10 +6,6 @@ name: 'Figma Code Connect'
 # Rationale, secrets and exit codes: docs/figma-code-connect.md.
 
 on:
-  # SPIKE, revert before merge: a push to this branch runs sync against the test copy
-  push:
-    branches:
-      - issue/4745
   workflow_call:
     # named like the repository secrets, so `secrets.*` below reads the same under every trigger
     secrets:
@@ -99,8 +95,7 @@ jobs:
     name: 'Pull Figma, generate, publish, notify design'
     # main only: a dispatch on another branch would publish its templates over main's records, and its publish record
     # would stay in that branch's cache, so main's next run would see nothing to publish.
-    # SPIKE, revert before merge: also a push to issue/4745
-    if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && (github.ref == 'refs/heads/main' || (github.event_name == 'push' && github.ref == 'refs/heads/issue/4745'))
+    if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     # Never cancel a run in progress: publish uploads one label config after another, so a cancelled run mixes commits.

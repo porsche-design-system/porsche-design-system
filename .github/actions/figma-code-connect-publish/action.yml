@@ -88,8 +88,7 @@ runs:
       if: steps.decide.outputs.publish == 'true'
       continue-on-error: true
       shell: bash
-      # SPIKE, revert before merge: the dry run, so nothing is uploaded while the record still round-trips the cache
-      run: npm run figma:publish:dry --workspace=@porsche-design-system/figma-code-connect 2>&1 | tee "$RUNNER_TEMP/publish.log"
+      run: npm run figma:publish --workspace=@porsche-design-system/figma-code-connect 2>&1 | tee "$RUNNER_TEMP/publish.log"
       env:
         FIGMA_ACCESS_TOKEN: ${{ inputs.figma-access-token }}
 
