@@ -65,6 +65,7 @@ export const templateComponents = [
   'divider',
   'input-search',
   'link-tile',
+  'model-signature',
   'table',
 ] as const;
 
