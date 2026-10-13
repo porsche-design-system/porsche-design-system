@@ -683,6 +683,7 @@ exports[`should call validateProps() with correct parameters via render for p-po
   "compact": "boolean",
   "description": "string",
   "direction": "oneOf",
+  "hideArrow": "boolean",
   "open": "boolean",
 }
 `;
