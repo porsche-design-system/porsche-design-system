@@ -1,10 +1,21 @@
 import type { ComponentChildren } from 'preact';
 import { Script } from './Script.tsx';
 
+type HeroVideoSource = { src: string; type: string };
+
 type HeroVideoProps = {
   /** What lies on the video, placed by the page – give it `z-1`, between the video and its pause control. */
   children: ComponentChildren;
+  /** The still shown until the video plays, and instead of it when the operating system asks for reduced motion. */
+  poster?: string;
+  /** The encodings of the video, in the order the browser tries them. */
+  sources?: HeroVideoSource[];
 };
+
+export const heroVideoSources: HeroVideoSource[] = [
+  { src: '/examples/media/mood-porsche-gts.mp4', type: 'video/mp4' },
+  { src: '/examples/media/mood-porsche-gts.webm', type: 'video/webm' },
+];
 
 /**
  * An autoplaying hero video, the content lying on it, and the control pausing it – with the script operating the two.
@@ -15,19 +26,24 @@ type HeroVideoProps = {
  * It renders grid items, not a wrapper: the section of the page is the grid (`grid-cols-subgrid`), and the video, the
  * content and the control all span its rows, stacked by `z-0`, `z-1` and `z-2`.
  */
-export const HeroVideo = ({ children }: HeroVideoProps) => (
+export const HeroVideo = ({
+  children,
+  poster = '/examples/media/mood-porsche-gts.webp',
+  sources = heroVideoSources,
+}: HeroVideoProps) => (
   <>
     <video
       id="hero-video"
       class="z-0 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
-      poster="/examples/media/mood-porsche-gts.webp"
+      poster={poster}
       loop
       muted
       autoplay
       playsinline
     >
-      <source src="/examples/media/mood-porsche-gts.mp4" type="video/mp4" />
-      <source src="/examples/media/mood-porsche-gts.webm" type="video/webm" />
+      {sources.map(({ src, type }) => (
+        <source key={src} src={src} type={type} />
+      ))}
     </video>
     {children}
     <p-button
