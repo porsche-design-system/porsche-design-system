@@ -1,5 +1,6 @@
 import { type ComponentMeta, componentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
+import { capitalCase } from 'change-case';
 
 /**
  * The Storefront's tree of categories, pages and tabs, as plain data: the navigation, the tabs and the search index
@@ -28,19 +29,16 @@ export type Routes = {
   [path: string]: Route;
 };
 
-/** The tabs not every component has. Every other tab exists for every component. */
-const COMPONENT_TAB_EXCEPTIONS: Record<'withoutExamples' | 'withGuideline', TagName[]> = {
-  withoutExamples: ['p-canvas', 'p-pagination', 'p-sheet', 'p-switch', 'p-tag-dismissible', 'p-text-list', 'p-toast'],
-  withGuideline: ['p-icon'],
-};
-
-/** `p-link-tile` → `Link Tile` */
-const transformComponentName = (name: string): string =>
-  name
-    .replace(/^p-/, '')
-    .split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+/** Components without an Examples tab. Every other tab exists for every component. */
+const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
+  'p-canvas',
+  'p-pagination',
+  'p-sheet',
+  'p-switch',
+  'p-tag-dismissible',
+  'p-text-list',
+  'p-toast',
+];
 
 const componentTabs = (tagName: TagName, component: string): Routes => {
   const tab = (key: string, name: string): Routes => ({
@@ -48,9 +46,8 @@ const componentTabs = (tagName: TagName, component: string): Routes => {
   });
   return {
     ...tab('configurator', 'Configurator'),
-    ...(!COMPONENT_TAB_EXCEPTIONS.withoutExamples.includes(tagName) && tab('examples', 'Examples')),
+    ...(!COMPONENTS_WITHOUT_EXAMPLES.includes(tagName) && tab('examples', 'Examples')),
     ...tab('usage', 'Usage'),
-    ...(COMPONENT_TAB_EXCEPTIONS.withGuideline.includes(tagName) && tab('guideline', 'Guideline')),
     ...tab('accessibility', 'Accessibility'),
     ...tab('api', 'API'),
   };
@@ -64,7 +61,7 @@ const getComponents = (): Routes =>
       const tagName = key as TagName;
       const component = key.replace(/^p-/, '');
       acc[component] = {
-        name: transformComponentName(key),
+        name: capitalCase(component), // link-tile → Link Tile
         flags: { isDeprecated, isExperimental },
         path: `/components/${component}`,
         type: 'PAGE',
