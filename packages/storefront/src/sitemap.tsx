@@ -637,6 +637,11 @@ export const sitemap: Routes = {
         path: '/templates/admin-panel',
         type: 'PAGE',
       },
+      'personalized-mailing': {
+        name: 'Personalized Mailing',
+        path: '/templates/personalized-mailing',
+        type: 'PAGE',
+      },
     },
   },
   tokens: {
