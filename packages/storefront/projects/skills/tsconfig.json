@@ -19,6 +19,14 @@
       "@skills/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*.ts", "scripts/**/*.ts", "../../src/types/*.d.ts"],
+  // The Storefront's sitemap is the tree the skill's references follow. tsx only compiles a file's JSX with this config
+  // when the file is included, so the sitemap and the JSX it imports are listed here.
+  "include": [
+    "src/**/*.ts",
+    "scripts/**/*.ts",
+    "../../src/types/*.d.ts",
+    "../../src/sitemap.tsx",
+    "../../src/utils/getFlags.tsx"
+  ],
   "exclude": ["node_modules", "generated"]
 }

@@ -36,6 +36,7 @@ const getComponents = (): Routes => {
     const component = key.replace('p-', ''); // Removes the "p-" prefix => link-tile
     acc[component] = {
       name: linkName,
+      title: transformComponentName(key),
       path: `/components/${component}`,
       type: 'PAGE',
       subPaths: {
@@ -89,6 +90,15 @@ const transformComponentName = (name: string): string => {
 
 export type Route = {
   name: string | ReactNode;
+  /** Plain-text name, where `name` is not a string. Titles the page in its Markdown, `llms.txt` and the skills. */
+  title?: string;
+  /** What a category is for, for its section in `llms.txt` and in the skills' `SKILL.md`. */
+  description?: string;
+  /**
+   * Written as Markdown next to its HTML and into the skills. Set once the page is migrated to
+   * `@porsche-design-system/docs-components` (`docs/docs-components-design.md`).
+   */
+  markdown?: boolean;
   path: string;
   type: 'CATEGORY' | 'PAGE' | 'TAB';
   subPaths?: Routes;
@@ -162,6 +172,8 @@ export const sitemap: Routes = {
   },
   developing: {
     name: 'Developing',
+    description:
+      'Set up the Porsche Design System in a new or existing project, or check an existing setup, with the guide for its framework and build tool.',
     path: '/developing',
     type: 'CATEGORY',
     subPaths: {
@@ -179,6 +191,7 @@ export const sitemap: Routes = {
             name: 'Getting Started',
             path: '/developing/angular/getting-started',
             type: 'TAB',
+            markdown: true,
           },
           demo: {
             name: 'Demo',
@@ -216,6 +229,7 @@ export const sitemap: Routes = {
             name: 'Getting Started',
             path: '/developing/astro/getting-started',
             type: 'TAB',
+            markdown: true,
           },
           demo: {
             name: 'Demo',
@@ -238,6 +252,7 @@ export const sitemap: Routes = {
             name: 'Getting Started',
             path: '/developing/next-js/getting-started',
             type: 'TAB',
+            markdown: true,
           },
           form: {
             name: 'Form',
@@ -275,6 +290,7 @@ export const sitemap: Routes = {
             name: 'Getting Started',
             path: '/developing/react/getting-started',
             type: 'TAB',
+            markdown: true,
           },
           demo: {
             name: 'Demo',
@@ -312,6 +328,7 @@ export const sitemap: Routes = {
             name: 'Getting Started',
             path: '/developing/react-router/getting-started',
             type: 'TAB',
+            markdown: true,
           },
           demo: {
             name: 'Demo',
@@ -349,6 +366,7 @@ export const sitemap: Routes = {
             name: 'Getting Started',
             path: '/developing/vanilla-js/getting-started',
             type: 'TAB',
+            markdown: true,
           },
           demo: {
             name: 'Demo',
@@ -381,6 +399,7 @@ export const sitemap: Routes = {
             name: 'Getting Started',
             path: '/developing/vue/getting-started',
             type: 'TAB',
+            markdown: true,
           },
           demo: {
             name: 'Demo',

@@ -1,19 +1,20 @@
 import {
+  type OutputFile,
+  outputFiles,
+  outputFileToMarkdown,
   type Page,
-  pageToMarkdown,
+  pageTitle,
   type Site,
   type Framework as StorefrontFramework,
-  skillLinks,
-  skillReference,
 } from '@porsche-design-system/docs-components/markdown';
 import { escapeCell, markdownTable } from '../shared/markdown';
 import type { Framework, SkillTree } from '../shared/skillTree';
-import { localPorscheDesignSystemVersion } from '../shared/version';
+import { skillLinks, skillMap } from './skillMap';
 
 /**
- * Storefront pages rendered by `@porsche-design-system/docs-components`, the same Markdown the Storefront serves next
- * to its HTML. Each lands at its route below `references/`, so a link between two of them works in both. A skill
- * contains the pages of its own framework and those that apply to every framework.
+ * Writes the Storefront pages rendered by `@porsche-design-system/docs-components`, the same Markdown the Storefront
+ * serves next to its HTML, into a skill, and indexes them in `SKILL.md`. Where they land and how the index is worded is
+ * the skill map's (`skillMap.ts`).
  */
 
 const STOREFRONT_FRAMEWORK: Record<Framework, StorefrontFramework> = {
@@ -23,39 +24,44 @@ const STOREFRONT_FRAMEWORK: Record<Framework, StorefrontFramework> = {
   vue: 'vue',
 };
 
-const STOREFRONT_SUFFIX = ' - Porsche Design System';
-
-const titleOf = (page: Page): string => (page.metadata.title ?? page.route).replace(STOREFRONT_SUFFIX, '');
-
-/** Writes the framework's pages to `references/<route>.md` and returns them, in route order. */
-export const writePageReferences = (tree: SkillTree, pages: readonly Page[], site: Site): Page[] => {
+/** Writes the skill's references and returns them, in sitemap order. */
+export const writePageReferences = (tree: SkillTree, pages: readonly Page[], site: Site): OutputFile[] => {
   const framework = STOREFRONT_FRAMEWORK[tree.framework];
-  const resolve = skillLinks({ framework, version: localPorscheDesignSystemVersion });
-  const included = pages.filter((page) => page.frameworks.includes(framework));
+  const resolve = skillLinks(framework);
+  const files = outputFiles(pages, skillMap(framework), framework);
 
-  for (const page of included) {
-    const variant = page.kind === 'independent' ? undefined : framework;
-    tree.write(skillReference(page.route), pageToMarkdown(page, variant, site, resolve));
+  for (const file of files) {
+    tree.write(file.file, outputFileToMarkdown(file, framework, site, resolve));
   }
-  return included;
+  return files;
 };
 
-const GETTING_STARTED = /^developing\/[^/]+\/getting-started$/;
+/** One `SKILL.md` section per category, worded by the skill map, with a row per reference and the sections it holds. */
+export const renderPageSections = (framework: Framework, files: readonly OutputFile[]): string => {
+  const map = skillMap(STOREFRONT_FRAMEWORK[framework]);
+  const categories = new Map<string, { description?: string; files: OutputFile[] }>();
+  for (const file of files) {
+    const { title, description } = map.category(file.pages[0].page);
+    const category = categories.get(title) ?? { description, files: [] };
+    category.files.push(file);
+    categories.set(title, category);
+  }
 
-/** The `## Getting started` section: one row per setup guide of the framework. */
-export const renderGettingStartedSection = (pages: readonly Page[]): string => {
-  const guides = pages.filter(({ route }) => GETTING_STARTED.test(route));
-  return [
-    'Set up the Porsche Design System in a new or existing project, or check an existing setup, with the guide for ' +
-      'its framework and build tool. Each guide lists the dependency versions it is based on.',
-    '',
-    markdownTable(
-      ['Guide', 'Summary', 'Reference'],
-      guides.map((page) => [
-        escapeCell(titleOf(page)),
-        escapeCell(page.metadata.description ?? ''),
-        `[${page.route.split('/').slice(1).join('/')}.md](${skillReference(page.route)})`,
-      ])
-    ),
-  ].join('\n');
+  return [...categories]
+    .map(([title, category]) =>
+      [
+        `## ${title}`,
+        '',
+        ...(category.description ? [category.description, ''] : []),
+        markdownTable(
+          ['Page', 'Sections', 'Reference'],
+          category.files.map((file) => [
+            escapeCell(file.title ?? pageTitle(file.pages[0].page)),
+            escapeCell(file.pages.map(({ page, section }) => section ?? pageTitle(page)).join(', ')),
+            `[${file.file.split('/').pop()}](${file.file})`,
+          ])
+        ),
+      ].join('\n')
+    )
+    .join('\n\n');
 };

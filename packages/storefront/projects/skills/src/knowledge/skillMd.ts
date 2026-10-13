@@ -1,10 +1,10 @@
-import { skillReference } from '@porsche-design-system/docs-components/markdown';
 import { getSkillName } from '../registry';
 import { renderFrontmatter } from '../shared/frontmatter';
 import type { Framework } from '../shared/skillTree';
 import { localPorscheDesignSystemVersion } from '../shared/version';
 import { rawMetaReference } from './components/section';
 import { rawScssReference, rawTailwindcssReference } from './packageSkills';
+import { referenceFile } from './skillMap';
 
 export const skillName = (framework: Framework): string => getSkillName('knowledge', framework);
 
@@ -98,8 +98,8 @@ const renderReactSsrSection = (): string =>
       'branch.',
     '',
     'Framework setup differs. Follow the ' +
-      `[Next.js integration guide](${skillReference('developing/next-js/getting-started')}) or the ` +
-      `[React Router integration guide](${skillReference('developing/react-router/getting-started')}). ` +
+      `[Next.js integration guide](${referenceFile('developing/next-js')}#getting-started) or the ` +
+      `[React Router integration guide](${referenceFile('developing/react-router')}#getting-started). ` +
       'Remix users should follow the React Router guidance because Remix v2 was upstreamed into React Router.',
   ].join('\n');
 
@@ -122,7 +122,8 @@ export const renderDeprecationsSection = (): string =>
   ].join('\n');
 
 export type SkillMdSections = {
-  gettingStarted: string;
+  /** The Storefront pages in this skill, one `##` section per sitemap category; empty when there are none. */
+  pages: string;
   components: string;
   stylesheets: string;
   tokens: string;
@@ -148,10 +149,7 @@ export const buildSkillMd = (framework: Framework, sections: SkillMdSections): s
     '',
     renderCoverageSection(),
     '',
-    '## Getting started',
-    '',
-    sections.gettingStarted,
-    '',
+    ...(sections.pages ? [sections.pages, ''] : []),
     '## Components',
     '',
     sections.components,

@@ -11,8 +11,23 @@ import { serializeMarkdown } from './render';
  * target: whether it has Markdown, and whether that differs per framework.
  */
 
-/** A page of the Storefront: its route without slashes (`developing/react/getting-started`) and its source file. */
-export type PageSource = { route: string; file: string };
+/** A route of the Storefront without slashes (`developing/react/getting-started`) and the file it is rendered from. */
+export type RouteSource = { route: string; file: string };
+
+/**
+ * Where a page sits in the Storefront's tree (`src/sitemap.tsx`), which every output derives its structure from.
+ * - `category`: the top-level section, e.g. Developing; an output map may word its section differently.
+ * - `reference`: the sitemap page. A skill writes one reference per sitemap page, with its tabs as sections.
+ * - `tab`: the tab's title within that page; none for a page without tabs.
+ */
+export type PagePlace = {
+  category: { route: string; title: string; description?: string };
+  reference: { route: string; title: string };
+  tab?: string;
+};
+
+/** A page written as Markdown: its route, its source file and its place in the tree. */
+export type PageSource = RouteSource & { place: PagePlace };
 
 /**
  * - `specific`: written for one framework, which it declares with `export const framework`.
@@ -50,7 +65,7 @@ const DYNAMIC_SEGMENT = /^\[.+\]$/;
  * Every page of a Next.js app directory. Route groups like `(main)` are not part of the route, so
  * `app/(main)/developing/react/getting-started/page.mdx` is `developing/react/getting-started`.
  */
-export const findPages = (appDir: string): PageSource[] =>
+export const findPages = (appDir: string): RouteSource[] =>
   fs
     .readdirSync(appDir, { recursive: true, withFileTypes: true })
     .filter((entry) => entry.isFile() && PAGE_FILE.test(entry.name))
@@ -114,13 +129,6 @@ export const collectPages = async (sources: readonly PageSource[]): Promise<Page
   return pages;
 };
 
-/**
- * The file a page's Markdown is written to: `<route>.md`, or `<route>.<framework>.md` for a variant of a switchable
- * page. Without a framework, a switchable page's `<route>.md` is the index of its variants.
- */
-export const markdownFile = (page: Page, framework?: Framework): string =>
-  page.kind === 'switchable' && framework ? `${page.route}.${framework}.md` : `${page.route}.md`;
-
 const ROOT_RELATIVE = /^\/(?!\/)/;
 
 const parseLink = (url: string): { route: string; hash: string } => {
@@ -142,18 +150,25 @@ const forEachLink = (node: Nodes, visit: (node: { url: string }) => void): void 
   }
 };
 
+/** A page's title: its sitemap page's, followed by the tab's, e.g. `React: Getting Started`. */
+export const pageTitle = ({ place }: Page): string =>
+  place.tab ? `${place.reference.title}: ${place.tab}` : place.reference.title;
+
+/** The anchor Markdown readers give a heading, as GitHub does: lower case, punctuation removed, each space a hyphen. */
+export const headingAnchor = (heading: string): string =>
+  heading
+    .toLowerCase()
+    .trim()
+    .replace(/[^\p{L}\p{N}\s-]/gu, '')
+    .replace(/\s/g, '-');
+
 /**
- * Serializes a page for one destination, resolving each Storefront route in its links. Fails for a link to a route
+ * A page's tree for one destination, with each Storefront route in its links resolved. Fails for a link to a route
  * that does not exist, so a renamed or removed page cannot leave broken links behind.
  *
  * @param framework the variant to write; none for the one file of an independent page.
  */
-export const pageToMarkdown = (
-  page: Page,
-  framework: Framework | undefined,
-  site: Site,
-  resolve: LinkResolver
-): string => {
+export const resolveLinks = (page: Page, framework: Framework | undefined, site: Site, resolve: LinkResolver): Root => {
   const tree = page.trees[framework ?? page.frameworks[0]];
   if (!tree) {
     throw new Error(`${page.file}: has no ${framework} variant.`);
@@ -176,42 +191,13 @@ export const pageToMarkdown = (
   if (unknown.length > 0) {
     throw new Error(`${page.file}: links to routes that do not exist: ${unknown.join(', ')}`);
   }
-  return serializeMarkdown(resolved);
+  return resolved;
 };
 
-const STOREFRONT_ORIGIN = 'https://designsystem.porsche.com';
-
-/**
- * Links for the Storefront's own Markdown: to the Markdown of the same deployment where the target has some (for a
- * switchable target, the variant of the framework being written), to its HTML page otherwise.
- *
- * @param basePath the deployment's path, e.g. `v4.8.0` or `pr-4777`; empty when served from the root.
- */
-export const webLinks =
-  (basePath: string): LinkResolver =>
-  ({ route, hash, page }, { framework }) => {
-    const prefix = basePath ? `/${basePath}` : '';
-    if (!page) {
-      return `${prefix}/${route ? `${route}/` : ''}${hash}`;
-    }
-    return `${prefix}/${markdownFile(page, framework)}${hash}`;
-  };
-
-/** Where a page is written in a skill: `references/<route>.md`. */
-export const skillReference = (route: string): string => `references/${route}.md`;
-
-/**
- * Links for a framework's skill: relative to the reference being written where the target is in the skill, otherwise
- * to the Markdown (or HTML page) of the Storefront for the exact version the skill was generated for.
- */
-export const skillLinks =
-  ({ framework, version }: { framework: Framework; version: string }): LinkResolver =>
-  ({ route, hash, page }, source) => {
-    if (page?.frameworks.includes(framework)) {
-      const from = path.posix.dirname(skillReference(source.page.route));
-      const relative = path.posix.relative(from, skillReference(route));
-      return `${relative.startsWith('.') ? relative : `./${relative}`}${hash}`;
-    }
-    const target = page ? markdownFile(page, framework) : `${route ? `${route}/` : ''}`;
-    return `${STOREFRONT_ORIGIN}/v${version}/${target}${hash}`;
-  };
+/** Serializes a page for one destination; see `resolveLinks`. */
+export const pageToMarkdown = (
+  page: Page,
+  framework: Framework | undefined,
+  site: Site,
+  resolve: LinkResolver
+): string => serializeMarkdown(resolveLinks(page, framework, site, resolve));

@@ -14,7 +14,7 @@ import {
   renderTokensSection,
   writePackageSkillReferences,
 } from './packageSkills';
-import { renderGettingStartedSection, writePageReferences } from './pages';
+import { renderPageSections, writePageReferences } from './pages';
 import { buildSkillMd, DEPRECATIONS_REFERENCE_FILE, renderDeprecationsSection } from './skillMd';
 
 const KNOWLEDGE_DIRECTORY_LAYOUT = ['references/components', 'references/examples', 'references/styles'] as const;
@@ -38,7 +38,7 @@ export const generateKnowledgeSkill: SkillGenerator<KnowledgeInputs> = (root, fr
   tree.write(
     'SKILL.md',
     buildSkillMd(framework, {
-      gettingStarted: renderGettingStartedSection(pageReferences),
+      pages: renderPageSections(framework, pageReferences),
       components: renderComponentsSection(framework, roster),
       stylesheets: renderStylesheetsSection(framework),
       tokens: renderTokensSection(),
