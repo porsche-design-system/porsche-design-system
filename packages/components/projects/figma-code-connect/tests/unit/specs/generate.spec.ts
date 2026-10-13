@@ -13,13 +13,13 @@ const set = (name: string, definitions: Record<string, Definition> = {}, id = '1
 const run = (
   components: Component[],
   options: {
-    baseline?: Record<string, string[]>;
+    acceptedGaps?: Record<string, string[]>;
     icons?: Record<string, string>;
     tags?: string[];
     version?: string;
   } = {}
 ) =>
-  generate({ components, icons: options.icons ?? {} }, options.baseline ?? {}, {
+  generate({ components, icons: options.icons ?? {} }, options.acceptedGaps ?? {}, {
     getComponentMeta,
     tags: options.tags ?? [],
     outputRoot: 'generated',
@@ -219,14 +219,14 @@ describe('generate: design lines', () => {
     expect(changes(run([set('button', { dense: booleanVariant }, '1:4')]), 'button')).toContain('"dense" → "figDense"');
   });
 
-  it('deletes an option PDS does not allow, unless the baseline accepts it', () => {
+  it('deletes an option PDS does not allow, unless it is an accepted gap', () => {
     const button = set(
       'button',
       { variant: { type: 'VARIANT', variantOptions: ['primary', 'secondary', 'destructive', 'ghost'] } },
       '1:4'
     );
     expect(changes(run([button]), 'button')).toContain('delete the option "ghost" from "variant"');
-    expect(run([button], { baseline: { 'p-button': ['variant=ghost'] } }).designLines.join('\n')).not.toContain(
+    expect(run([button], { acceptedGaps: { 'p-button': ['variant=ghost'] } }).designLines.join('\n')).not.toContain(
       'ghost'
     );
   });
@@ -237,19 +237,21 @@ describe('generate: design lines', () => {
     expect(lines).not.toContain('add a SLOT property named "slot-description"');
   });
 
-  it('lists a baseline entry Figma made obsolete as a cleanup', () => {
-    const { baselineCleanup } = run([set('button', { compact: booleanVariant })], {
-      baseline: { 'p-button': ['compact'] },
+  it('lists an accepted gap Figma made obsolete as a cleanup', () => {
+    const { acceptedGapCleanup } = run([set('button', { compact: booleanVariant })], {
+      acceptedGaps: { 'p-button': ['compact'] },
     });
-    expect(baselineCleanup).toEqual([
-      'baseline: p-button "compact" is no longer a gap — remove it from figma/coverage-baseline.json',
+    expect(acceptedGapCleanup).toEqual([
+      'accepted-gap: p-button "compact" is no longer a gap — remove it from figma/accepted-gaps.json',
     ]);
   });
 
-  it('asks for a PDS component with no component set, unless the baseline accepts it', () => {
+  it('asks for a PDS component with no component set, unless it is an accepted gap', () => {
     const line = 'design: p-sheet: add a component set named "sheet"';
     expect(run([], { tags: ['p-sheet'] }).designLines).toContain(line);
-    expect(run([], { tags: ['p-sheet'], baseline: { 'p-sheet': ['component-set'] } }).designLines).not.toContain(line);
+    expect(run([], { tags: ['p-sheet'], acceptedGaps: { 'p-sheet': ['component-set'] } }).designLines).not.toContain(
+      line
+    );
   });
 
   it('asks for a PDS icon with no Figma icon component', () => {

@@ -6,7 +6,7 @@ import { basename, dirname, join, resolve } from 'node:path';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { describe, expect, it } from 'vitest';
-import { baselinePath, generate } from '../../../figma/generate';
+import { acceptedGapsPath, generate } from '../../../figma/generate';
 import { componentsPackagePath, pdsVersion } from '../../../figma/library';
 import type { Snapshot } from '../../../figma/snapshot';
 
@@ -14,21 +14,21 @@ import type { Snapshot } from '../../../figma/snapshot';
 // Templates read Figma properties when the snippet renders, so the sets need none.
 const packageRoot = resolve(__dirname, '../../..');
 const snapshotDir = resolve(__dirname, '__snapshots__');
-const baseline: Record<string, string[]> = JSON.parse(readFileSync(resolve(packageRoot, baselinePath), 'utf8'));
+const acceptedGaps: Record<string, string[]> = JSON.parse(readFileSync(resolve(packageRoot, acceptedGapsPath), 'utf8'));
 const tags = TAG_NAMES.filter((tag) => !(INTERNAL_TAG_NAMES as readonly string[]).includes(tag));
 const iconMeta = getComponentMeta('p-icon')?.propsMeta?.name?.allowedValues;
-// what design draws: no deprecated component, nothing the baseline accepts as missing
+// what design draws: no deprecated component, nothing accepted as a gap
 const pull: Snapshot = {
   components: tags
-    .filter((tag) => !getComponentMeta(tag)?.isDeprecated && !baseline[tag]?.includes('component-set'))
+    .filter((tag) => !getComponentMeta(tag)?.isDeprecated && !acceptedGaps[tag]?.includes('component-set'))
     .map((tag, i) => ({ id: `1:${i + 1}`, name: tag.replace(/^p-/, ''), componentPropertyDefinitions: {} })),
   icons: Object.fromEntries(
     (Array.isArray(iconMeta) ? iconMeta.map(String) : [])
-      .filter((name) => !baseline['p-icon']?.includes(`name=${name}`))
+      .filter((name) => !acceptedGaps['p-icon']?.includes(`name=${name}`))
       .map((name, i) => [`2:${i + 1}`, name])
   ),
 };
-const { files } = generate(pull, baseline, {
+const { files } = generate(pull, acceptedGaps, {
   getComponentMeta,
   tags,
   outputRoot: 'generated',
@@ -37,7 +37,7 @@ const { files } = generate(pull, baseline, {
   version: pdsVersion(resolve(packageRoot, componentsPackagePath)),
 });
 const generated = Object.keys(files)
-  .filter((file) => file !== baselinePath)
+  .filter((file) => file !== acceptedGapsPath)
   .sort();
 const snapshotOf = (file: string): string => `${basename(file)}.snap`;
 const configs = readdirSync(packageRoot).filter((name) => /^figma.*\.config\.json$/.test(name));
