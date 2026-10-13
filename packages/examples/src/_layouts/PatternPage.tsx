@@ -30,7 +30,7 @@ export type PatternPageProps = {
 export const PatternPage = ({ meta, beforeMain, afterMain, children }: PatternPageProps) => (
   <html lang="en">
     <head>
-      <Head title={meta.title} description={meta.description} />
+      <Head title={meta.title} description={meta.description} siteName="Dummy Patterns" />
     </head>
     <body>
       {beforeMain}
