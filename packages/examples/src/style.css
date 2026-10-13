@@ -10,3 +10,32 @@
 :not(:defined) {
   visibility: hidden;
 }
+
+/* Motion of the personalized mailing template. Kept here as an exception until the examples get a home for page level
+ * keyframes – the page uses them through the generated animate utilities. */
+@theme {
+  --animate-fade-in-up: fade-in-up var(--transition-duration-lg) var(--ease-out) both;
+  --animate-sound-wave: sound-wave 0.85s var(--ease-in-out) infinite;
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      translate: 0 2rem;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes sound-wave {
+    0%,
+    100% {
+      scale: 1 0.5;
+    }
+    50% {
+      scale: 1 1;
+    }
+  }
+}
+
