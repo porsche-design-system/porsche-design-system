@@ -373,8 +373,12 @@ What it showed:
 - **Links are checked.** Every link in the seven guides targets an existing route; a fixture shows the build error for
   one that does not.
 - **The React output is unchanged:** the Storefront serves every guide with the same tags and table of contents.
-- **Both loaders coexist.** With the hook and the `markdown` condition added, the skill build's output for the component
-  docs, still parsed by `skill-mdx-loader.cjs`, stays byte for byte the same.
+- **The two pipelines need separate processes.** In one process, the renderer's MDX hook changed how Node loads CommonJS
+  modules imported with `import()` in CI: their `require` went through the ES module loader, past the stub
+  `skill-mdx-loader.cjs` puts in for the unbuilt wrappers, and would also have handed the component docs' `.mdx` to the
+  hook. `build:skills` therefore renders the migrated pages first (`collect-pages.ts`, with the hook and the `markdown`
+  condition) into `generated/pages.json`, and `build-skills.ts` runs with exactly the setup it had before. The component
+  docs' output stays byte for byte the same, and the split ends when the old pipeline is removed.
 - **Parity is enforced by the typechecker:** `src/parity.ts` fails when a component exists for only one target or when
   the two implementations take different props.
 - **Cost is low:** see the build-time risk above.

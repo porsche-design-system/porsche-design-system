@@ -3,6 +3,7 @@ import path from 'node:path';
 import type { StorefrontInputs } from '../src/generators';
 import { SKILL_IDS } from '../src/registry';
 import { FRAMEWORKS, SKILL_STAGING_DIR, stagedSkillDir } from '../src/shared/skillTree';
+import { type CollectedPages, PAGES_FILE } from './pages-file';
 
 /**
  * Builds every registered skill's tree for every framework into `SKILL_STAGING_DIR`, from where each
@@ -11,23 +12,20 @@ import { FRAMEWORKS, SKILL_STAGING_DIR, stagedSkillDir } from '../src/shared/ski
  * is started with (`node --import tsx --require ./scripts/skill-mdx-loader.cjs`), so the heavy
  * modules are imported dynamically inside `main`.
  *
- * Pages migrated to `@porsche-design-system/docs-components` are rendered by its renderer instead, which the
- * `markdown` export condition and its MDX hook (`--conditions=markdown --import …/register`) set up. The loader above
- * keeps parsing the component docs until they are migrated too.
+ * Pages migrated to `@porsche-design-system/docs-components` are rendered beforehand by `collect-pages.ts`, in a process
+ * set up for that renderer, and read here from `PAGES_FILE`. Keeping the two apart means the loader above keeps parsing
+ * the component docs, untouched by the renderer's MDX hook, until they are migrated too.
  */
 
 const REPO_ROOT = path.resolve(__dirname, '../../../../..');
 
 const main = async (): Promise<void> => {
-  const [{ componentDocsMeta }, { SKILL_GENERATORS }, { getStorefrontPages }, { collectPages, createSite }] =
-    await Promise.all([
-      import('../../../src/app/(main)/components/components.meta'),
-      import('../src/generators'),
-      import('../../../src/utils/markdownPages'),
-      import('@porsche-design-system/docs-components/markdown'),
-    ]);
-  const { routes, markdownPages } = getStorefrontPages();
-  const pages = await collectPages(markdownPages);
+  const [{ componentDocsMeta }, { SKILL_GENERATORS }, { createSite }] = await Promise.all([
+    import('../../../src/app/(main)/components/components.meta'),
+    import('../src/generators'),
+    import('@porsche-design-system/docs-components/markdown'),
+  ]);
+  const { routes, pages }: CollectedPages = JSON.parse(fs.readFileSync(PAGES_FILE, 'utf8'));
   const inputs: StorefrontInputs = {
     docsMeta: componentDocsMeta as unknown as StorefrontInputs['docsMeta'],
     pages,
