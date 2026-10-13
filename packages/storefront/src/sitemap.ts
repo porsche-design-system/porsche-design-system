@@ -1,8 +1,11 @@
-import { componentMeta } from '@porsche-design-system/component-meta';
+import { type ComponentMeta, componentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import type { ReactNode } from 'react';
-import React from 'react';
-import { getFlags } from '@/utils/getFlags';
+
+/**
+ * The Storefront's tree of categories, pages and tabs, as plain data: the navigation, the tabs and the search index
+ * render it, and it can be read without React. `tests/unit/specs/sitemap.spec.ts` checks it against the pages in
+ * `src/app`, in both directions.
+ */
 
 export const COMPONENT_ROUTES_META = Object.entries(componentMeta).filter(
   ([_, value]) => value.isChunked && !value.requiredParent
@@ -10,93 +13,65 @@ export const COMPONENT_ROUTES_META = Object.entries(componentMeta).filter(
 
 export const COMPONENT_ROUTES = COMPONENT_ROUTES_META.map(([key]) => ({ component: key.replace('p-', '') }));
 
-const getComponents = (): Routes => {
-  // TODO: Maybe we could automatically generate this depending what routes/folders exist?
-  const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
-    'p-canvas',
-    'p-pagination',
-    'p-switch',
-    'p-sheet',
-    'p-tag-dismissible',
-    'p-text-list',
-    'p-toast',
-  ];
-
-  return COMPONENT_ROUTES_META.sort(([, aMeta], [, bMeta]) => {
-    // Sort by isDeprecated
-    const aIsDeprecated = aMeta.isDeprecated ? 1 : 0;
-    const bIsDeprecated = bMeta.isDeprecated ? 1 : 0;
-    return aIsDeprecated - bIsDeprecated;
-  }).reduce((acc, [key, meta]) => {
-    const linkName = (
-      <>
-        {transformComponentName(key)} {getFlags(meta)}
-      </>
-    ); // Transforms p-link-tile => Link Tile & Adds flags 🚫, 🛠, 🧪
-    const component = key.replace('p-', ''); // Removes the "p-" prefix => link-tile
-    acc[component] = {
-      name: linkName,
-      path: `/components/${component}`,
-      type: 'PAGE',
-      subPaths: {
-        configurator: {
-          name: 'Configurator',
-          path: `/components/${component}/configurator`,
-          type: 'TAB',
-        },
-        ...(!COMPONENTS_WITHOUT_EXAMPLES.includes(key as TagName) && {
-          examples: {
-            name: 'Examples',
-            path: `/components/${component}/examples`,
-            type: 'TAB',
-          },
-        }),
-        usage: {
-          name: 'Usage',
-          path: `/components/${component}/usage`,
-          type: 'TAB',
-        },
-        ...(key === 'p-icon' && {
-          guideline: {
-            name: 'Guideline',
-            path: `/components/${component}/guideline`,
-            type: 'TAB',
-          },
-        }),
-        accessibility: {
-          name: 'Accessibility',
-          path: `/components/${component}/accessibility`,
-          type: 'TAB',
-        },
-        api: {
-          name: 'API',
-          path: `/components/${component}/api`,
-          type: 'TAB',
-        },
-      },
-    };
-    return acc;
-  }, {} as Routes);
-};
-
-const transformComponentName = (name: string): string => {
-  return name
-    .replace(/^p-/, '') // Remove the "p-" prefix
-    .split('-') // Split by hyphen
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-    .join(' '); // Join words with a space
-};
+/** The flags a component shows next to its name in the navigation: deprecated 🚫, experimental 🧪. */
+export type RouteFlags = Pick<ComponentMeta, 'isDeprecated' | 'isExperimental'>;
 
 export type Route = {
-  name: string | ReactNode;
+  name: string;
   path: string;
   type: 'CATEGORY' | 'PAGE' | 'TAB';
+  flags?: RouteFlags;
   subPaths?: Routes;
 };
 
 export type Routes = {
   [path: string]: Route;
 };
+
+/** The tabs not every component has. Every other tab exists for every component. */
+const COMPONENT_TAB_EXCEPTIONS: Record<'withoutExamples' | 'withGuideline', TagName[]> = {
+  withoutExamples: ['p-canvas', 'p-pagination', 'p-sheet', 'p-switch', 'p-tag-dismissible', 'p-text-list', 'p-toast'],
+  withGuideline: ['p-icon'],
+};
+
+/** `p-link-tile` → `Link Tile` */
+const transformComponentName = (name: string): string =>
+  name
+    .replace(/^p-/, '')
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+const componentTabs = (tagName: TagName, component: string): Routes => {
+  const tab = (key: string, name: string): Routes => ({
+    [key]: { name, path: `/components/${component}/${key}`, type: 'TAB' },
+  });
+  return {
+    ...tab('configurator', 'Configurator'),
+    ...(!COMPONENT_TAB_EXCEPTIONS.withoutExamples.includes(tagName) && tab('examples', 'Examples')),
+    ...tab('usage', 'Usage'),
+    ...(COMPONENT_TAB_EXCEPTIONS.withGuideline.includes(tagName) && tab('guideline', 'Guideline')),
+    ...tab('accessibility', 'Accessibility'),
+    ...tab('api', 'API'),
+  };
+};
+
+/** Every component with a page of its own, deprecated ones last. */
+const getComponents = (): Routes =>
+  [...COMPONENT_ROUTES_META]
+    .sort(([, a], [, b]) => Number(!!a.isDeprecated) - Number(!!b.isDeprecated))
+    .reduce<Routes>((acc, [key, { isDeprecated, isExperimental }]) => {
+      const tagName = key as TagName;
+      const component = key.replace(/^p-/, '');
+      acc[component] = {
+        name: transformComponentName(key),
+        flags: { isDeprecated, isExperimental },
+        path: `/components/${component}`,
+        type: 'PAGE',
+        subPaths: componentTabs(tagName, component),
+      };
+      return acc;
+    }, {});
 
 export const sitemap: Routes = {
   news: {

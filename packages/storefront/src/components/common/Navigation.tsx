@@ -12,6 +12,7 @@ import React, { useEffect, useState } from 'react';
 import { VersionSelect } from '@/components/common/VersionSelect';
 import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { type Routes, sitemap } from '@/sitemap';
+import { getFlags } from '@/utils/getFlags';
 import { getPathnameRoutes } from '@/utils/pathname';
 
 const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
@@ -82,7 +83,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                 onUpdate={handleAccordionUpdate(path)}
               >
                 <PHeading slot="summary" tag="h4" size="small" weight="semibold">
-                  {category.name as string}
+                  {category.name}
                 </PHeading>
                 {category.subPaths &&
                   Object.entries(category.subPaths).map(([_, page]) => {
@@ -98,6 +99,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                       >
                         <Link href={link} aria-current={pathname?.includes(`${page.path}/`) ? 'page' : undefined}>
                           {page.name}
+                          {page.flags && <> {getFlags(page.flags)}</>}
                         </Link>
                       </PLinkPure>
                     );

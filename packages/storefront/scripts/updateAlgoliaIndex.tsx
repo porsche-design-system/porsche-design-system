@@ -59,19 +59,6 @@ const extractContentAndSections = (
   return { content, sections };
 };
 
-const extractName = (node: React.ReactNode): string => {
-  if (typeof node === 'string' || typeof node === 'number') {
-    return node.toString();
-  }
-  if (Array.isArray(node)) {
-    return node.map(extractName).join(''); // Join array items into a single string
-  }
-  if (node && typeof node === 'object' && 'props' in node) {
-    return extractName((node.props as any).children); // Recursively process the children
-  }
-  return '';
-};
-
 const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
   const records: AlgoliaRecord[] = [];
 
@@ -83,11 +70,11 @@ const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
           const { content, sections } = extractContentAndSections(tab);
           records.push({
             objectID: tab.path,
-            name: extractName(tab.name),
+            name: tab.name,
             content: content,
-            category: extractName(category.name),
-            page: extractName(page.name),
-            tab: extractName(tab.name),
+            category: category.name,
+            page: page.name,
+            tab: tab.name,
             url: tab.path,
           });
           for (const section of sections) {
@@ -95,9 +82,9 @@ const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
               objectID: `${tab.path}#${section.id}`,
               name: section.name,
               content: section.content,
-              category: extractName(category.name),
-              page: extractName(page.name),
-              tab: extractName(tab.name),
+              category: category.name,
+              page: page.name,
+              tab: tab.name,
               section: section.name,
               url: `${tab.path}#${section.id}`,
             });
@@ -109,10 +96,10 @@ const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
         const { content, sections } = extractContentAndSections(page);
         records.push({
           objectID: page.path,
-          name: extractName(page.name),
+          name: page.name,
           content: content,
-          category: extractName(category.name),
-          page: extractName(page.name),
+          category: category.name,
+          page: page.name,
           url: page.path,
         });
         for (const section of sections) {
@@ -120,8 +107,8 @@ const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
             objectID: `${page.path}#${section.id}`,
             name: section.name,
             content: section.content,
-            category: extractName(category.name),
-            page: extractName(page.name),
+            category: category.name,
+            page: page.name,
             section: section.name,
             url: `${page.path}#${section.id}`,
           });
