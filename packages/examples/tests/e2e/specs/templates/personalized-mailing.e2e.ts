@@ -89,6 +89,8 @@ test('opens a review in the video modal and unloads it on close', async ({ page 
   await page.locator('#pm-voices [data-video-id="cYvm2S3pNp8"]').click();
   await expect.poll(() => isOpen(modal)).toBe(true);
   await expect(iframe).toHaveAttribute('src', /youtube-nocookie\.com\/embed\/cYvm2S3pNp8/);
+  // `open` is set before the modal has taken the focus – a key pressed in between still goes to the card behind it.
+  await expect.poll(() => page.evaluate(() => document.activeElement?.id)).toBe('pm-video-modal');
 
   // Closing is requested by the component and written back by the page – and only removing the source stops a
   // cross-origin player for good.
