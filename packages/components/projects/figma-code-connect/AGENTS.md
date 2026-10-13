@@ -14,7 +14,7 @@ and nothing pulled from Figma is written anywhere. Run every command from this f
 `--workspace=@porsche-design-system/figma-code-connect`.
 
 ```
-figma/                  # the rules and the render (generate.ts), the messages, the baseline, the helpers
+figma/                  # the rules and the render (generate.ts), the messages, the accepted gaps, the helpers
 scripts/                # figmaPull.ts (the pull, in memory), figmaGenerate.ts, figmaConnect.ts (the CLI wrapper)
 tests/unit/             # the reader, the generator, a snapshot of every generated file: `npm run test:unit`
 figma*.config.json      # one Code Connect config per label; figma.config.json also names the library
@@ -24,24 +24,26 @@ generated/              # templates/, icons/ — ignored by git
 ## Figma Code Connect coverage
 
 `npm run figma:generate` reports every PDS prop, slot and allowed value the Figma component has no property or option
-for, and every PDS component with no Figma component set at all, unless `figma/coverage-baseline.json` lists it. A pull
+for, and every PDS component with no Figma component set at all, unless `figma/accepted-gaps.json` lists it. A pull
 request never fails on it, and nothing is held back for it: every component publishes, and after the merge the Figma
 Code Connect workflow sends each such gap to design on Slack. Background:
-[`docs/runbooks/figma-code-connect.md`](../../../../docs/runbooks/figma-code-connect.md).
+[`docs/figma-code-connect.md`](../../../../docs/figma-code-connect.md).
 
 When you add or rename a prop, a slot, an allowed value or a component:
 
-1. Read the lines starting with `design:` in your pull request's `Figma Code Connect` job summary, which lists those
-   your change adds or resolves. A pull request from a fork or a bot gets no dry run; its lines reach you after the
-   merge, in the workflow's issue "Figma Code Connect: action needed". With `FIGMA_ACCESS_TOKEN` in the environment,
-   `npm run figma:generate` prints them locally, together with every line already open.
+1. Read the lines starting with `design:` in the `figma:generate` step log of your pull request's
+   `Figma Code Connect / Dry run` check, which runs after the deploy. It lists every open line, those already open on
+   `main` included, and each names its PDS tag: read those of the components you changed. A pull request from a fork or
+   a bot gets no dry run; its lines reach you after the merge, in the `figma:generate` log of the workflow's run on
+   `main` and of every later dry run. With `FIGMA_ACCESS_TOKEN` in the environment, `npm run figma:generate` prints the
+   same lines locally.
 2. If the prop changes what the component looks like, leave the line alone. Design adds the property after the merge.
    The same goes for a new component (`design: p-foo: add a component set named "foo"`): design adds the set.
 3. If Figma will never carry it, ask the user before accepting it. Typical cases are native HTML attributes (`href`,
    `target`, `autoComplete`, `maxLength`), behaviour (`open`, `disableBackdropClick`), i18n objects (`intl`), and a
    component drawn inside its parent's set or not drawable at all (table parts, items, `p-icon`). Once agreed, add the
-   printed name to the component's array in `figma/coverage-baseline.json`, creating the tag's key if needed, keep the
-   keys and each array sorted, and name the added line in the PR description.
+   printed name to the component's array in `figma/accepted-gaps.json`, creating the tag's key if needed, keep the keys
+   and each array sorted, and name the added line in the PR description.
 4. Names are the Figma property the gap needs: a prop by its own name (`iconSource`), a slot as `slot-<name>`
    (`slot-footer`), the default slot as `slot-default`, an allowed value Figma has no option for as `prop=value`
    (`variant=destructive`), a Figma option PDS does not allow as `prop=value` too (`type=mixed`; the option stays out of
@@ -52,4 +54,6 @@ When you add or rename a prop, a slot, an allowed value or a component:
 
 Never add a line to silence a gap design is expected to fix, and never re-seed the file from the current gaps. The
 generator deletes an entry once Figma has the property or the prop is gone; delete one by hand only to ask design for
-that property after all.
+that property after all. While the file still lists such an entry, the pull request's dry run is red: commit its
+artifact `accepted-gaps.json` in place of `figma/accepted-gaps.json`, or run `npm run figma:generate` and commit the
+file it rewrote.

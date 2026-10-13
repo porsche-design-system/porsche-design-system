@@ -390,8 +390,7 @@ between the installed Playwright and the Docker image makes CI fail.
 dependency; otherwise `patch-package` fails on `postinstall`.
 
 **`@figma/code-connect`** — bump it in a pull request, whose `Figma Code Connect` job runs `npm run figma:publish:dry`
-against the library: check that it still lists every file per label and passes; see
-`docs/runbooks/figma-code-connect.md`.
+against the library: check that it still lists every file per label and passes; see `docs/figma-code-connect.md`.
 
 **`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
 

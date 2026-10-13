@@ -135,8 +135,7 @@ Only stable releases are announced, and only when the run actually created a rel
 job whose release already existed, posts nothing. Prefer **Re-run failed jobs** to preserve the original successful
 release-creation output when recovering a documentation failure. If all jobs were rerun and the announcement was
 therefore skipped, use **Notify Release Published** after the documentation is ready. See
-[`docs/runbooks/slack-notifications.md`](runbooks/slack-notifications.md) for the message, the Slack side and how to
-change either.
+[`docs/slack-notifications.md`](slack-notifications.md) for the message, the Slack side and how to change either.
 
 ## GitHub Releases
 

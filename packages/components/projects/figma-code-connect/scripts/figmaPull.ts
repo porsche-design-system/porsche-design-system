@@ -3,7 +3,7 @@ import { fileKeyOf, libraryUrl } from '../figma/library';
 import type { Definition, Snapshot } from '../figma/snapshot';
 
 // Pulls the library's published component sets, their property definitions and icon names into memory, over the REST
-// API. Token scopes and requests: docs/runbooks/figma-code-connect.md.
+// API. Token scopes and requests: docs/figma-code-connect.md.
 const fileUrl = libraryUrl();
 const fileKey = fileKeyOf(fileUrl);
 
