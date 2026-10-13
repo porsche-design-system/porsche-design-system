@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { sync as globbySync } from 'fast-glob';
 
 // Runs `figma connect <command>` per Dev Mode label; `publish` uploads every record that renders and validates, after
-// `figma:generate --check`. Exit codes and rationale: docs/runbooks/figma-code-connect.md.
+// `figma:generate --check`. Exit codes and rationale: docs/figma-code-connect.md.
 const unrendered: string[] = [];
 const configs = ['figma.config.json', 'figma.react.config.json', 'figma.angular.config.json', 'figma.vue.config.json'];
 
@@ -137,8 +137,9 @@ if (command === 'publish') {
       console.error(
         `\n✖ ${unrendered.length} of them did not render in preview; a developer has to look at the template`
       );
-      process.exit(1);
     }
+    // red in a pull request, whose author fixes it there; on main the record stays and the next run retries it
+    if (dryRun) process.exit(1);
   }
   if (dryRun) console.log('\ndry run: nothing uploaded');
   else console.log(refused.length ? '\nall other records published' : '\nall records published');
