@@ -1,3 +1,4 @@
+import { componentMeta } from '@porsche-design-system/component-meta';
 import {
   type AccordionUpdateEventDetail,
   PAccordion,
@@ -99,7 +100,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                       >
                         <Link href={link} aria-current={pathname?.includes(`${page.path}/`) ? 'page' : undefined}>
                           {page.name}
-                          {page.flags && <> {getFlags(page.flags)}</>}
+                          {page.tagName && <> {getFlags(componentMeta[page.tagName])}</>}
                         </Link>
                       </PLinkPure>
                     );

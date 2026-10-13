@@ -1,4 +1,4 @@
-import { type ComponentMeta, componentMeta } from '@porsche-design-system/component-meta';
+import { componentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { capitalCase } from 'change-case';
 
@@ -14,14 +14,12 @@ export const COMPONENT_ROUTES_META = Object.entries(componentMeta).filter(
 
 export const COMPONENT_ROUTES = COMPONENT_ROUTES_META.map(([key]) => ({ component: key.replace('p-', '') }));
 
-/** The flags a component shows next to its name in the navigation: deprecated 🚫, experimental 🧪. */
-export type RouteFlags = Pick<ComponentMeta, 'isDeprecated' | 'isExperimental'>;
-
 export type Route = {
   name: string;
   path: string;
   type: 'CATEGORY' | 'PAGE' | 'TAB';
-  flags?: RouteFlags;
+  /** The component a page documents */
+  tagName?: TagName;
   subPaths?: Routes;
 };
 
@@ -57,12 +55,12 @@ const componentTabs = (tagName: TagName, component: string): Routes => {
 const getComponents = (): Routes =>
   [...COMPONENT_ROUTES_META]
     .sort(([, a], [, b]) => Number(!!a.isDeprecated) - Number(!!b.isDeprecated))
-    .reduce<Routes>((acc, [key, { isDeprecated, isExperimental }]) => {
+    .reduce<Routes>((acc, [key]) => {
       const tagName = key as TagName;
       const component = key.replace(/^p-/, '');
       acc[component] = {
         name: capitalCase(component), // link-tile → Link Tile
-        flags: { isDeprecated, isExperimental },
+        tagName,
         path: `/components/${component}`,
         type: 'PAGE',
         subPaths: componentTabs(tagName, component),
