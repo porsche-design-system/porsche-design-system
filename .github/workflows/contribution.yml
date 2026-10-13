@@ -3,7 +3,7 @@ name: 'Contribution'
 # Triggers:
 # - push: only on protected/release branches → full pipeline incl. release
 # - pull_request: every PR (incl. forks) → build + test always;
-#     - deploy/release are gated below to keep secrets out of fork PRs.
+#     - deploy/release and the Figma Code Connect dry run are gated below to keep secrets out of fork PRs.
 on:
   push:
     branches:
@@ -81,15 +81,6 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.63.0-jammy
     needs:
       - build
-    # issues: read for test.yml's Figma Code Connect job, which compares with the workflow's issue; test.yml narrows
-    # every other job to contents: read, and a reusable workflow can only narrow the caller's scope.
-    permissions:
-      contents: read
-      issues: read
-    # Only the Figma token, for the Figma Code Connect dry run. GitHub passes it empty to pull requests from forks
-    # and Dependabot; test.yml skips the dry run for those and for bot-authored pull requests, as deploy does.
-    secrets:
-      FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
   deploy:
     name: 'Deploy'
     # Secrets are NOT available on pull_request events from forks (read-only token), and we must
@@ -186,13 +177,10 @@ jobs:
       slack-release-channel-id: ${{ secrets.SLACK_RELEASE_CHANNEL_ID }}
   figma-code-connect:
     name: 'Figma Code Connect'
-    # After the storefront and Algolia deploy, on main only. No job needs this one, so a failure here
-    # never holds back the release; it turns the run red for the failure notifier.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    # issues: write for the workflow's "action needed" issue; a reusable workflow can only narrow this.
-    permissions:
-      contents: read
-      issues: write
+    # After the storefront and Algolia deploy: on main it publishes, on a pull request it runs the dry run. Deploy skips
+    # forks and bot-authored pull requests, so this job does too and the token reaches neither. No job needs this one,
+    # so a failure here holds back neither the release nor a preview; on main it turns the run red for the notifier.
+    if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     uses: ./.github/workflows/figma-code-connect.yml
     needs:
       - deploy

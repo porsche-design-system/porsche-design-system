@@ -1,0 +1,76 @@
+name: 'Notify Slack Figma Change'
+description: 'Sends the design channel each design line of `$RUNNER_TEMP/generate.log` it has not got yet, and keeps the open lines it has in the actions cache, so each line goes once.'
+
+inputs:
+  slack-bot-token:
+    description: 'Slack bot token with the `chat:write` scope.'
+    required: true
+  slack-channel-id:
+    description: 'Slack channel to post to. The app must be a member of it.'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    # The open design lines Slack has got, `design-lines.txt`: the key is this run's, so restore-keys finds the newest.
+    - name: 'Restore the design lines Slack got last'
+      continue-on-error: true
+      uses: actions/cache/restore@v5
+      with:
+        path: ${{ runner.temp }}/sent
+        key: figma-code-connect-design-lines-${{ github.run_id }}-${{ github.run_attempt }}
+        restore-keys: figma-code-connect-design-lines-
+
+    # Slack gets each design line once: only the lines it has not got. A line that is resolved and comes back is new
+    # again.
+    - name: 'Which design lines are new?'
+      id: lines
+      shell: bash
+      run: |
+        lines="$RUNNER_TEMP/design-lines.txt"; last="$RUNNER_TEMP/sent/design-lines.txt"; new="$RUNNER_TEMP/new-design-lines.txt"
+        [ -f "$last" ] || last=/dev/null
+        { grep -E '^design: ' "$RUNNER_TEMP/generate.log" || true; } | LC_ALL=C sort > "$lines"
+        LC_ALL=C comm -23 "$lines" "$last" > "$new"
+        if cmp -s "$lines" "$last"; then echo "the open design lines are those Slack got"; exit 0; fi
+        echo "changed=true" >> "$GITHUB_OUTPUT"
+        if [ -s "$new" ]; then echo "slack=true" >> "$GITHUB_OUTPUT"; fi
+
+    # Design gets its changes by component with Figma links, nothing about GitHub: designers have no GitHub account.
+    - name: 'Build Slack payload'
+      id: slack
+      if: always() && steps.lines.outputs.slack == 'true'
+      shell: bash
+      run: |
+        node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-figma-payload.ts \
+          "$RUNNER_TEMP/new-design-lines.txt" packages/components/projects/figma-code-connect/figma.config.json > "$RUNNER_TEMP/slack-payload.json"
+        if [ -s "$RUNNER_TEMP/slack-payload.json" ]; then
+          cat "$RUNNER_TEMP/slack-payload.json"
+          echo "send=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "::notice::no Figma-side action to report to design"
+        fi
+      env:
+        SLACK_CHANNEL_ID: ${{ inputs.slack-channel-id }}
+
+    - name: 'Send'
+      id: send
+      if: always() && steps.slack.outputs.send == 'true'
+      # `errors: true` — the action's default is false and a rejected request would pass green.
+      uses: slackapi/slack-github-action@v4.0.0
+      with:
+        method: chat.postMessage
+        token: ${{ inputs.slack-bot-token }}
+        payload-file-path: ${{ runner.temp }}/slack-payload.json
+        errors: true
+
+    # After Slack, and only when it did not fail: a failed send keeps the old lines, so the next run sends again.
+    - name: 'Remember the design lines'
+      id: remember
+      if: always() && steps.lines.outputs.changed == 'true' && steps.slack.outcome != 'failure' && steps.send.outcome != 'failure'
+      shell: bash
+      run: mkdir -p "$RUNNER_TEMP/sent" && cp "$RUNNER_TEMP/design-lines.txt" "$RUNNER_TEMP/sent/design-lines.txt"
+    - uses: actions/cache/save@v5
+      if: always() && steps.remember.outcome == 'success'
+      with:
+        path: ${{ runner.temp }}/sent
+        key: figma-code-connect-design-lines-${{ github.run_id }}-${{ github.run_attempt }}

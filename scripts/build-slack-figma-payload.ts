@@ -1,14 +1,14 @@
 // Prints the Slack payload that tells design what to change in Figma, or nothing when no line is for design.
-// Runs under bare `node` in .github/workflows/figma-code-connect.yml: no dependencies, only erasable TypeScript.
-// Rationale: docs/runbooks/figma-code-connect.md.
+// Runs under bare `node` in .github/actions/notify-slack-figma-change: no dependencies, only erasable TypeScript.
+// Rationale: docs/figma-code-connect.md.
 import { existsSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
 import { libraryUrl } from '../packages/components/projects/figma-code-connect/figma/library.ts';
 import { CHANGE, LIBRARY_CHANGE } from '../packages/components/projects/figma-code-connect/figma/messages.ts';
 
-const [logDir, configPath] = process.argv.slice(2);
-if (!logDir || !configPath) {
-  console.error('usage: node scripts/build-slack-figma-payload.ts <log dir> <figma.config.json>');
+// the design lines design has not got yet, one per line, as the workflow selects them
+const [linesPath, configPath] = process.argv.slice(2);
+if (!linesPath || !configPath) {
+  console.error('usage: node scripts/build-slack-figma-payload.ts <design lines file> <figma.config.json>');
   process.exit(1);
 }
 
@@ -19,8 +19,7 @@ if (!channel) {
 }
 
 const fileUrl = libraryUrl(configPath);
-const logPath = join(logDir, 'generate.log');
-const lines = existsSync(logPath) ? readFileSync(logPath, 'utf8').split('\n') : [];
+const lines = existsSync(linesPath) ? readFileSync(linesPath, 'utf8').split('\n') : [];
 
 /** Names are Figma data landing in markdown, so neutralise its control chars. */
 const escapeMarkdown = (value: string): string => value.replace(/[\r\n]+/g, ' ').replace(/([\\`*_[\]~])/g, '\\$1');
@@ -44,7 +43,7 @@ for (const line of lines) {
 }
 
 if (actions.size === 0) {
-  process.exit(0); // nothing for design; the workflow keeps the developer-facing issue and summary
+  process.exit(0); // nothing for design; developers read the run's log
 }
 
 const components = actions.size;
