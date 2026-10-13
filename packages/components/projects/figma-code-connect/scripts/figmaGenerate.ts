@@ -3,14 +3,14 @@ import { dirname } from 'node:path';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { sync as globbySync } from 'fast-glob';
-import { baselinePath, generate } from '../figma/generate';
+import { acceptedGapsPath, generate } from '../figma/generate';
 import { libraryUrl, pdsVersion } from '../figma/library';
 import { printed } from '../figma/messages';
 import type { Snapshot } from '../figma/snapshot';
 import { pull } from './figmaPull';
 
 // Writes what figma/generate.ts renders from a fresh pull into generated/, and deletes files whose component set is
-// gone; `--check` compares instead. Rationale: docs/runbooks/figma-code-connect.md.
+// gone; `--check` compares instead. Rationale: docs/figma-code-connect.md.
 const check = process.argv.includes('--check');
 
 const main = async (): Promise<void> => {
@@ -22,8 +22,8 @@ const main = async (): Promise<void> => {
     // the workflow tells this outage from a repository mistake by the exit code
     process.exit(2);
   }
-  const baseline: Record<string, string[]> = JSON.parse(readFileSync(baselinePath, 'utf8'));
-  const { files, errors, designLines, skipped, componentCount, baselineCleanup } = generate(snapshot, baseline, {
+  const acceptedGaps: Record<string, string[]> = JSON.parse(readFileSync(acceptedGapsPath, 'utf8'));
+  const { files, errors, designLines, skipped, componentCount, acceptedGapCleanup } = generate(snapshot, acceptedGaps, {
     getComponentMeta,
     tags: TAG_NAMES.filter((tag) => !(INTERNAL_TAG_NAMES as readonly string[]).includes(tag)),
     outputRoot: 'generated',
@@ -35,8 +35,8 @@ const main = async (): Promise<void> => {
 
   for (const [file, content] of Object.entries(files)) {
     if (check) {
-      // the baseline is neither compared nor written here: a pruned entry is a cleanup line, not a failure
-      if (file !== baselinePath && (!existsSync(file) || readFileSync(file, 'utf8') !== content))
+      // the accepted gaps are neither compared nor written here: a pruned entry is a cleanup line, not a failure
+      if (file !== acceptedGapsPath && (!existsSync(file) || readFileSync(file, 'utf8') !== content))
         errors.push(`${file} is stale — run "npm run figma:generate"`);
       continue;
     }
@@ -64,7 +64,7 @@ const main = async (): Promise<void> => {
     console.error(designLines.join('\n'));
     console.error(`${designLines.length} change(s) only design can make in Figma`);
   }
-  if (baselineCleanup.length) console.error(baselineCleanup.join('\n'));
+  if (acceptedGapCleanup.length) console.error(acceptedGapCleanup.join('\n'));
   if (errors.length) {
     console.error(errors.map(printed).join('\n'));
     process.exit(1);

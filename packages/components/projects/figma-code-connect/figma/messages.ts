@@ -29,6 +29,6 @@ export const CHANGE = /^design: (.+?) \((\d+:\d+)\) → p-[\w-]+: (.+)$/;
 /** Groups: PDS tag, change. */
 export const LIBRARY_CHANGE = /^design: (p-[\w-]+): (.+)$/;
 
-/** A baseline entry that is no longer a gap; the workflow greps the `baseline: ` prefix. */
-export const baselineCleanupLine = (tag: string, entry: string): string =>
-  `baseline: ${tag} "${entry}" is no longer a gap — remove it from figma/coverage-baseline.json`;
+/** An accepted gap that is no longer a gap; the workflow greps the `accepted-gap: ` prefix. */
+export const acceptedGapCleanupLine = (tag: string, entry: string): string =>
+  `accepted-gap: ${tag} "${entry}" is no longer a gap — remove it from figma/accepted-gaps.json`;

@@ -2,11 +2,11 @@ import { relative } from 'node:path';
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, kebabCase, pascalCase } from 'change-case';
-import { baselineCleanupLine, change, changeLine, libraryChangeLine } from './messages';
+import { acceptedGapCleanupLine, change, changeLine, libraryChangeLine } from './messages';
 import { type Component, type Definition, definitions, type Snapshot } from './snapshot';
 
-// Renders every generated file from one pull and the baseline, and reports where Figma differs from code.
-// Rationale: docs/runbooks/figma-code-connect.md.
+// Renders every generated file from one pull and the accepted gaps, and reports where Figma differs from code.
+// Rationale: docs/figma-code-connect.md.
 
 type Label = {
   suffix: string;
@@ -70,7 +70,7 @@ export const labels: Label[] = [
   },
 ];
 
-export const baselinePath = 'figma/coverage-baseline.json';
+export const acceptedGapsPath = 'figma/accepted-gaps.json';
 
 export type Dependencies = {
   /** `undefined` for a tag PDS does not have */
@@ -95,8 +95,8 @@ export type Generated = {
   /** component sets without a PDS component, `name (id)` */
   skipped: string[];
   componentCount: number;
-  /** baseline entries that are no longer gaps, for a developer to remove */
-  baselineCleanup: string[];
+  /** accepted gaps that are no longer gaps, for a developer to remove */
+  acceptedGapCleanup: string[];
 };
 
 // --- Rules: what a template reads, from component-meta alone, and where the Figma component differs ---
@@ -282,9 +282,9 @@ const coverage = (
   return out;
 };
 
-// --- Coverage: gaps per component, what design must add, and the baseline ---
+// --- Coverage: gaps per component, what design must add, and the accepted gaps ---
 
-/** Baseline entry for a PDS component with no Figma component set (drawn inside a parent set, or not drawable). */
+/** Accepted gap for a PDS component with no Figma component set (drawn inside a parent set, or not drawable). */
 const componentSetGap = 'component-set';
 
 /** PDS tags with no Figma component set; deprecated tags do not count. */
@@ -309,8 +309,8 @@ const expectedProperty = (
   return { type: 'VARIANT', options };
 };
 
-/** `fresh`: gaps the baseline does not list. `accepted`: entries still gaps, so the baseline only shrinks. */
-const applyBaseline = (gaps: string[], accepted: string[]): { fresh: string[]; accepted: string[] } => ({
+/** `fresh`: gaps not accepted. `accepted`: entries still gaps, so the accepted gaps only shrink. */
+const applyAcceptedGaps = (gaps: string[], accepted: string[]): { fresh: string[]; accepted: string[] } => ({
   fresh: gaps.filter((gap) => !accepted.includes(gap)),
   accepted: accepted.filter((gap) => gaps.includes(gap)),
 });
@@ -570,8 +570,8 @@ const iconBatch = (
   };
 };
 
-/** The baseline as biome writes it, since it is committed: sorted, a list on one line when it fits. */
-const baselineJson = (accepted: Record<string, string[]>): string => {
+/** The accepted gaps as biome writes them, since they are committed: sorted, a list on one line when it fits. */
+const acceptedGapsJson = (accepted: Record<string, string[]>): string => {
   const tags = Object.keys(accepted).sort();
   const entries = tags.map((tag, i) => {
     const names = [...accepted[tag]].sort().map((name) => JSON.stringify(name));
@@ -584,10 +584,10 @@ const baselineJson = (accepted: Record<string, string[]>): string => {
   return entries.length ? `{\n${entries.join('\n')}\n}\n` : '{}\n';
 };
 
-/** Renders one pull with one baseline into every generated file. Pure: same inputs, same files. */
+/** Renders one pull with one set of accepted gaps into every generated file. Pure: same inputs, same files. */
 export const generate = (
   snapshot: Snapshot,
-  baseline: Record<string, string[]>,
+  acceptedGaps: Record<string, string[]>,
   dependencies: Dependencies
 ): Generated => {
   const publishFileUrl = dependencies.fileUrl.replace(/[?#].*$/, '').replace(/\/$/, '');
@@ -621,12 +621,12 @@ export const generate = (
   }
 
   const accepted: Record<string, string[]> = {};
-  // every PDS icon name needs a Figma icon component, unless the baseline accepts `name=<icon>`
+  // every PDS icon name needs a Figma icon component, unless `name=<icon>` is an accepted gap
   const nameMeta = dependencies.getComponentMeta('p-icon')?.propsMeta?.name;
   const codeIcons = Array.isArray(nameMeta?.allowedValues) ? nameMeta.allowedValues.map(String) : [];
-  const iconCoverage = applyBaseline(
+  const iconCoverage = applyAcceptedGaps(
     codeIcons.filter((name) => !iconNames.has(name)).map((name) => `name=${name}`),
-    baseline['p-icon'] ?? []
+    acceptedGaps['p-icon'] ?? []
   );
   if (iconCoverage.accepted.length) accepted['p-icon'] = iconCoverage.accepted;
   designLines.push(
@@ -644,8 +644,8 @@ export const generate = (
     }
     withSet.add(tag);
     const { unplaceable, gaps } = coverage(component, meta, codeIcons);
-    const entries = baseline[tag] ?? [];
-    const gapCoverage = applyBaseline(gaps, entries);
+    const entries = acceptedGaps[tag] ?? [];
+    const gapCoverage = applyAcceptedGaps(gaps, entries);
     // a Figma option PDS does not allow is accepted by a `prop=value` entry too; it renders no attribute either way
     const extras: string[] = [];
     const open = unplaceable.flatMap((u) => {
@@ -679,22 +679,23 @@ export const generate = (
     }
   }
 
-  // a PDS component with no Figma component set is a design line unless the baseline accepts `component-set`
+  // a PDS component with no Figma component set is a design line unless `component-set` is an accepted gap
   const isDeprecated = (t: string): boolean => !!dependencies.getComponentMeta(t as TagName)?.isDeprecated;
   for (const tag of missingComponentSets(dependencies.tags, withSet, isDeprecated)) {
-    if ((baseline[tag] ?? []).includes(componentSetGap)) accepted[tag] = [...(accepted[tag] ?? []), componentSetGap];
+    if ((acceptedGaps[tag] ?? []).includes(componentSetGap))
+      accepted[tag] = [...(accepted[tag] ?? []), componentSetGap];
     else designLines.push(libraryChangeLine(tag, change.addComponentSet(tag.replace(/^p-/, ''))));
   }
 
-  files[baselinePath] = baselineJson(accepted);
+  files[acceptedGapsPath] = acceptedGapsJson(accepted);
   // an entry design made obsolete is a cleanup for a developer, never a failure
-  const baselineCleanup = Object.keys(baseline)
+  const acceptedGapCleanup = Object.keys(acceptedGaps)
     .sort()
     .flatMap((tag) =>
-      [...baseline[tag]]
+      [...acceptedGaps[tag]]
         .sort()
         .filter((entry) => !(accepted[tag] ?? []).includes(entry))
-        .map((entry) => baselineCleanupLine(tag, entry))
+        .map((entry) => acceptedGapCleanupLine(tag, entry))
     );
-  return { files, errors: context.errors, designLines, skipped, componentCount, baselineCleanup };
+  return { files, errors: context.errors, designLines, skipped, componentCount, acceptedGapCleanup };
 };
