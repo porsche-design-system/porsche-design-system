@@ -25,7 +25,7 @@
     "fast-glob": "^3.3.3"
   },
   "devDependencies": {
-    "@figma/code-connect": "2.0.0",
+    "@figma/code-connect": "^2.0.1",
     "@types/node": "^26.6.3",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",
