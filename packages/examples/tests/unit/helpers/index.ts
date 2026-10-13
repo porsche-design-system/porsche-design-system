@@ -9,6 +9,7 @@ import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-ma
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
+import PersonalizedMailingPage from '../../../src/templates/personalized-mailing/index.page.tsx';
 
 /** What the unit specs share: the pages under test, and the few string helpers the markup assertions need. */
 
@@ -36,6 +37,7 @@ export const countFirstLevelHeadings = (html: string): number =>
 export const templatePages = [
   ['templates/landing-page', LandingPage],
   ['templates/admin-panel', AdminPanelPage],
+  ['templates/personalized-mailing', PersonalizedMailingPage],
 ] as const;
 
 /** Patterns are built on `PatternPage`: they show a single section in the place it occupies on a real page. */

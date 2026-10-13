@@ -76,10 +76,13 @@ describe('source files', () => {
 });
 
 describe('Head', () => {
-  const html = render(<Head title="Contact page" description="A description." />);
+  const html = render(<Head title="Contact page" description="A description." siteName="Dummy Patterns" />);
 
-  it('should suffix the document title', () => {
+  it('should suffix the document title with the site name', () => {
     expect(html).toContain('<title>Contact page | Dummy Patterns</title>');
+    expect(render(<Head title="Contact page" description="A description." siteName="Dummy Templates" />)).toContain(
+      '<title>Contact page | Dummy Templates</title>'
+    );
   });
 
   it('should render the description meta tag', () => {

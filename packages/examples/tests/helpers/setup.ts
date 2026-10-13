@@ -269,6 +269,13 @@ export const setupExamplePage = async (
 
   await waitForComponentsReady(page);
   await waitForFonts(page);
+  // A lazily loaded image below the fold only starts loading once it is scrolled near, so it would never complete –
+  // while a full page capture shows it. Switching it to eager is what scrolling through the page would do.
+  await page.evaluate(() => {
+    for (const image of document.querySelectorAll<HTMLImageElement>('img[loading="lazy"]')) {
+      image.loading = 'eager';
+    }
+  });
   await page.waitForFunction(() => Array.from(document.images).every((image) => image.complete));
   await freezeVideos(page);
   await blurActiveElement(page);
