@@ -11,7 +11,7 @@
     }
   },
   "scripts": {
-    "build:skills": "node --import tsx --require ./scripts/skill-mdx-loader.cjs scripts/build-skills.ts",
+    "build:skills": "node --conditions=markdown --import tsx --import @porsche-design-system/docs-components/register scripts/collect-pages.ts && node --import tsx --require ./scripts/skill-mdx-loader.cjs scripts/build-skills.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "lint": "biome lint",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@porsche-design-system/component-meta": "0.0.0",
     "@porsche-design-system/components-react": "4.8.0",
+    "@porsche-design-system/docs-components": "0.0.0",
     "@porsche-design-system/emotion": "0.0.0",
     "@porsche-design-system/examples": "0.0.0",
     "@porsche-design-system/scss": "0.0.0",

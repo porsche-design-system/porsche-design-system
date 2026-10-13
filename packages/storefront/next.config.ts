@@ -1,4 +1,5 @@
 import createMDX from '@next/mdx';
+import { remarkPlugins } from '@porsche-design-system/docs-components/mdx-options';
 import type { NextConfig } from 'next';
 import { getBasePath } from '@/utils/getBasePath';
 
@@ -12,8 +13,8 @@ const nextConfig: NextConfig = {
   //skipTrailingSlashRedirect: true,
   distDir: 'dist',
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // The skill registry is exported as raw TypeScript, so it has to be compiled by the storefront build.
-  transpilePackages: ['@porsche-design-system/skills'],
+  // These workspaces are exported as raw TypeScript, so they have to be compiled by the storefront build.
+  transpilePackages: ['@porsche-design-system/skills', '@porsche-design-system/docs-components'],
   images: {
     unoptimized: true,
   },
@@ -29,10 +30,10 @@ const nextConfig: NextConfig = {
   },
 };
 
+// Shared with the Markdown build of `@porsche-design-system/docs-components`, so both outputs parse a page the same way.
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: ['remark-gfm'],
+    remarkPlugins,
   },
 });
 

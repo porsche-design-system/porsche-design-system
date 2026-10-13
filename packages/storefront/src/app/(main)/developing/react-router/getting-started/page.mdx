@@ -1,12 +1,12 @@
-import { Notification } from '@/components/common/Notification';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { PTag } from '@porsche-design-system/components-react/ssr';
+import { DependencyList, TableOfContents } from '@porsche-design-system/docs-components';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'React Router: Getting started - Porsche Design System',
   description: 'Start developing in React Router with the Porsche Design System.',
 };
+
+export const framework = 'react';
 
 # React Router
 
@@ -17,16 +17,14 @@ export const metadata = {
 To build a [React Router](https://reactrouter.com/start/framework/installation) application using the Porsche Design
 System, follow these steps. This guide is based on the following dependencies:
 
-<div className="flex flex-wrap gap-static-sm my-fluid-sm">
-  {/* prettier-ignore */}
-  <PTag compact={true} variant="info">react-router@8</PTag>
-  {/* prettier-ignore */}
-  <PTag compact={true} variant="info">react@19</PTag>
-  {/* prettier-ignore */}
-  <PTag compact={true} variant="info">tailwindcss@4</PTag>
-  {/* prettier-ignore */}
-  <PTag compact={true} variant="info">@porsche-design-system/components-react@{localPorscheDesignSystemMajorVersion}</PTag>
-</div>
+<DependencyList
+  items={[
+    'react-router@8',
+    'react@19',
+    'tailwindcss@4',
+    `@porsche-design-system/components-react@${localPorscheDesignSystemMajorVersion}`,
+  ]}
+/>
 
 ```bash
 # Create a new application by executing:
@@ -249,3 +247,16 @@ export default function Home() {
   );
 }
 ```
+
+### Step 8 (recommended)
+
+Link the Porsche Design System [Agent Skills](/skills/introduction/installation/) into your project, so AI coding agents
+such as GitHub Copilot, Claude Code or Codex work with the documentation of the installed version. They ship with the
+Porsche Design System package.
+
+```bash
+npx pds-skill --package @porsche-design-system/components-react --location .agents/skills
+```
+
+Use `.claude/skills` or `.github/skills` as location instead if your agent reads its skills from there. Agents then find
+the knowledge skill at `.agents/skills/pds-knowledge-react/SKILL.md`.

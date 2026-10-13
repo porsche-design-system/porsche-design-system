@@ -1,0 +1,20 @@
+import { PInlineNotification } from '@porsche-design-system/components-react/ssr';
+import type { ReactNode } from 'react';
+
+export type NotificationProps = {
+  heading?: string;
+  headingTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  state?: 'warning' | 'error' | 'success' | 'info';
+  children?: ReactNode;
+};
+
+/**
+ * A highlighted note, rendered as a `p-inline-notification`. In Markdown it is a blockquote with the heading in bold.
+ */
+export const Notification = ({ heading = '', headingTag = 'h2', state = 'info', children }: NotificationProps) => {
+  return (
+    <PInlineNotification heading={heading} headingTag={headingTag} state={state} dismissButton={false}>
+      {children}
+    </PInlineNotification>
+  );
+};

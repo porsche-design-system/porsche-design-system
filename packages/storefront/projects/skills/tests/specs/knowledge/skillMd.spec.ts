@@ -16,8 +16,11 @@ import { FRAMEWORKS, type Framework } from '@skills/shared/skillTree';
 import { localPorscheDesignSystemVersion } from '@skills/shared/version';
 import { describe, expect, it } from 'vitest';
 
+const PAGE_SECTIONS = '## Developing\n\n<pages>';
+
 const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntry[] = []): string =>
   renderSkillMd(framework, {
+    pages: PAGE_SECTIONS,
     components: renderComponentsSection(framework, roster),
     stylesheets: renderStylesheetsSection(framework),
     tokens: renderTokensSection(),
@@ -48,9 +51,9 @@ describe('buildSkillMd', () => {
     const markdown = buildSkillMd('react', [{ tag: 'p-button', summary: 'x' }]);
 
     expect(markdown).toMatch(
-      /## Coverage and fallbacks[\s\S]*## Components[\s\S]*## Server-side rendering \(SSR\)[\s\S]*## Stylesheets[\s\S]*## Tokens[\s\S]*## Styling[\s\S]*## Patterns and templates[\s\S]*## Deprecations/
+      /## Coverage and fallbacks[\s\S]*## Developing\n\n<pages>[\s\S]*## Components[\s\S]*## Server-side rendering \(SSR\)[\s\S]*## Stylesheets[\s\S]*## Tokens[\s\S]*## Styling[\s\S]*## Patterns and templates[\s\S]*## Deprecations/
     );
-    expect(markdown).not.toMatch(/## (Getting started|Reference map|Core rules|Partials|Upgrades & migration)/);
+    expect(markdown).not.toMatch(/## (Reference map|Core rules|Partials|Upgrades & migration)/);
   });
 
   it.each(FRAMEWORKS)('renders version-safe coverage fallbacks for %s', (framework) => {
@@ -88,14 +91,13 @@ describe('buildSkillMd', () => {
 
   it('renders SSR guidance only for React', () => {
     const markdown = buildSkillMd('react');
-    const storefrontUrl = `https://designsystem.porsche.com/v${localPorscheDesignSystemVersion}/`;
 
     expect(markdown).toContain('Next.js, Remix, or React Router with SSR enabled');
     expect(markdown).toContain(
       "import { PButton, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';"
     );
-    expect(markdown).toContain(`${storefrontUrl}developing/next-js/getting-started/`);
-    expect(markdown).toContain(`${storefrontUrl}developing/react-router/getting-started/`);
+    expect(markdown).toContain('(references/developing/next-js.md#getting-started)');
+    expect(markdown).toContain('(references/developing/react-router.md#getting-started)');
 
     for (const framework of FRAMEWORKS.filter((fw) => fw !== 'react')) {
       expect(buildSkillMd(framework)).not.toContain('## Server-side rendering (SSR)');
