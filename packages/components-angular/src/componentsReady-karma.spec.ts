@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { componentsReady, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -31,14 +31,28 @@ class SampleComponent {
   }
 }
 
-const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]+?-->/g, '');
+// Parses the markup into an inert template and drops its comment nodes instead of stripping `<!-- … -->` via regex,
+// which can't reliably remove nested or overlapping comment sequences
+const replaceHtmlComments = (input: string): string => {
+  const template = document.createElement('template');
+  template.innerHTML = input;
+  const walker = document.createTreeWalker(template.content, NodeFilter.SHOW_COMMENT);
+  const comments: Comment[] = [];
+  while (walker.nextNode()) {
+    comments.push(walker.currentNode as Comment);
+  }
+  for (const comment of comments) {
+    comment.remove();
+  }
+  return template.innerHTML;
+};
 
-beforeEach(waitForAsync(() => {
-  TestBed.configureTestingModule({
+beforeEach(async () => {
+  await TestBed.configureTestingModule({
     imports: [PorscheDesignSystemModule],
     declarations: [EmptyComponent, SampleComponent],
   }).compileComponents();
-}));
+});
 
 it('should return 0 when nothing is rendered', async () => {
   // we need to create something to bootstrap the design system via PorscheDesignSystemModule, which is calling load()

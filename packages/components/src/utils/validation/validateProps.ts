@@ -57,7 +57,7 @@ export const printErrorMessage = ({
   instance,
 }: ValidationError & { componentName: string; instance: any }): void => {
   consoleError(
-    `Invalid property '${propName}' with value '${internalValidateProps.formatObjectOutput(
+    `Invalid property '${propName}' with value '${formatObjectOutput(
       propValue
     )}' supplied to ${componentName}, expected one of: ${propType}.`,
     instance.host
@@ -73,7 +73,7 @@ export const validateValueOfType = (
   propValue: any,
   propType: string
 ): ValidationError | undefined => {
-  if (internalValidateProps.isValueNotOfType(propValue, propType)) {
+  if (isValueNotOfType(propValue, propType)) {
     return { propName, propValue, propType };
   }
   return undefined;
@@ -85,8 +85,7 @@ export const getBreakpointCustomizableStructure = <T>(
   return breakpointCustomizableTemplate.replace(
     /value/g,
     allowedValues !== 'boolean' && allowedValues !== 'number'
-      ? (internalValidateProps
-          .formatArrayOutput(allowedValues)
+      ? (formatArrayOutput(allowedValues)
           .replace(/\[/g, '(') // starting inline type literal array
           .replace(/]/g, ')[]') // ending inline type literal array
           .replace(/,/g, ' |') as any) // replace commas with a pipe
@@ -95,29 +94,26 @@ export const getBreakpointCustomizableStructure = <T>(
 };
 
 export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {
-  return internalValidateProps
-    .formatObjectOutput(
-      allowedAriaAttributes.reduce(
-        (prev, key) => ({
-          ...prev,
-          [key as any]: 'value',
-        }),
-        {}
-      )
+  return formatObjectOutput(
+    allowedAriaAttributes.reduce(
+      (prev, key) => ({
+        ...prev,
+        [key as any]: 'value',
+      }),
+      {}
     )
+  )
     .replace(/":/g, '"?:') // add optional modifier on keys before colon
     .replace(/"/g, "'"); // replace double quotes with single quotes
 };
 
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
-  return internalValidateProps
-    .formatObjectOutput(
-      Object.keys(shapeStructure).reduce(
-        (prev, key) => ({ ...prev, [key]: shapeStructure[key as keyof { [key in keyof T]: ValidatorFunction }].name }),
-        {}
-      )
+  return formatObjectOutput(
+    Object.keys(shapeStructure).reduce(
+      (prev, key) => ({ ...prev, [key]: shapeStructure[key as keyof { [key in keyof T]: ValidatorFunction }].name }),
+      {}
     )
-    .replace(/"/g, ''); // remove double quotes
+  ).replace(/"/g, ''); // remove double quotes
 };
 
 export const isBreakpointCustomizableValueInvalid = <T>(
@@ -125,7 +121,7 @@ export const isBreakpointCustomizableValueInvalid = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): boolean => {
   return allowedValues === 'boolean' || allowedValues === 'number'
-    ? internalValidateProps.isValueNotOfType(value, allowedValues)
+    ? isValueNotOfType(value, allowedValues)
     : !allowedValues.includes(value as T);
 };
 
@@ -143,12 +139,12 @@ export const AllowedTypes: {
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
-  string: (...args) => internalValidateProps.validateValueOfType(...args, 'string'),
-  number: (...args) => internalValidateProps.validateValueOfType(...args, 'number'),
-  boolean: (...args) => internalValidateProps.validateValueOfType(...args, 'boolean'),
+  string: (...args) => validateValueOfType(...args, 'string'),
+  number: (...args) => validateValueOfType(...args, 'number'),
+  boolean: (...args) => validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>
     function array(propName, propValue) {
-      return internalValidateProps.isValidArray(propName, propValue, allowedType);
+      return isValidArray(propName, propValue, allowedType);
     },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
     // @ts-expect-error: Not all code paths return a value
@@ -159,7 +155,7 @@ export const AllowedTypes: {
           return {
             propName,
             propValue,
-            propType: internalValidateProps.formatArrayOutput(allowedValuesOrValidatorFunctions),
+            propType: formatArrayOutput(allowedValuesOrValidatorFunctions),
           };
         }
       } else if (
@@ -191,13 +187,11 @@ export const AllowedTypes: {
           // TODO: check for base key
           Object.keys(value).some((key) => !breakpoints.includes(key as Breakpoint)) ||
           // check actual values of keys, e.g. true, false, 'small' or 5
-          Object.values(value).some((val) =>
-            internalValidateProps.isBreakpointCustomizableValueInvalid(val, allowedValues)
-          )
+          Object.values(value).some((val) => isBreakpointCustomizableValueInvalid(val, allowedValues))
         ) {
           isInvalid = true;
         }
-      } else if (internalValidateProps.isBreakpointCustomizableValueInvalid(value, allowedValues)) {
+      } else if (isBreakpointCustomizableValueInvalid(value, allowedValues)) {
         // single flat value like true, false, 'small' or 5, not breakpoint customizable object
         isInvalid = true;
       }
@@ -205,8 +199,8 @@ export const AllowedTypes: {
       if (isInvalid) {
         return {
           propName,
-          propValue: internalValidateProps.formatObjectOutput(value),
-          propType: internalValidateProps.getBreakpointCustomizableStructure(allowedValues),
+          propValue: formatObjectOutput(value),
+          propType: getBreakpointCustomizableStructure(allowedValues),
         };
       }
     },
@@ -220,8 +214,8 @@ export const AllowedTypes: {
       ) {
         return {
           propName,
-          propValue: internalValidateProps.formatObjectOutput(ariaAttributes),
-          propType: internalValidateProps.getAriaStructure(allowedAriaAttributes),
+          propValue: formatObjectOutput(ariaAttributes),
+          propType: getAriaStructure(allowedAriaAttributes),
         };
       }
     },
@@ -243,7 +237,7 @@ export const AllowedTypes: {
           return {
             propName,
             propValue, // TODO: convert to string?
-            propType: internalValidateProps.getShapeStructure(shapeStructure),
+            propType: getShapeStructure(shapeStructure),
           };
         }
       }
@@ -267,7 +261,7 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
   for (const error of Object.entries(propTypes)
     .map(([propKey, validatorFunc]: [string, ValidatorFunction]) => validatorFunc(propKey, instance[propKey]))
     .filter((x) => x)) {
-    internalValidateProps.printErrorMessage({
+    printErrorMessage({
       ...error,
       componentName: getTagNameWithoutPrefix(instance.host as HTMLElement),
       instance,
@@ -305,21 +299,6 @@ export const isValidArray = (propName: string, arr: any, validator: ValidatorFun
   return undefined;
 };
 
-export const internalValidateProps = {
-  isValueNotOfType,
-  formatArrayOutput,
-  formatObjectOutput,
-  printErrorMessage,
-  validateValueOfType,
-  isValidArray,
-  isBreakpointCustomizableValueInvalid,
-  getBreakpointCustomizableStructure,
-  getAriaStructure,
-  getShapeStructure,
-};
-
-const breakpointCustomizableTemplate = `value, ${internalValidateProps
-  .formatObjectOutput(
-    breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
-  )
-  .replace(/"/g, '')}`;
+const breakpointCustomizableTemplate = `value, ${formatObjectOutput(
+  breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
+).replace(/"/g, '')}`;

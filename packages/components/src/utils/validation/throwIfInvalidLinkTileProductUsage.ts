@@ -1,41 +1,19 @@
+import { anchorSlot } from '../../components/link-tile-product/link-tile-product-utils';
+import { getNamedSlot } from '../getNamedSlot';
 import { throwException } from '../log/logger';
 import { getTagNameWithoutPrefix } from '../tag-name';
-import { getOnlyChildOfKindHTMLElementOrThrow } from './getOnlyChildOfKindHTMLElementOrThrow';
-import { getNamedSlot } from '../getNamedSlot';
-import { anchorSlot } from '../../components/link-tile-product/link-tile-product-utils';
 
+// With href set, the anchor slot isn't rendered, so only a slotted anchor used without href needs to be accessible.
+// A missing href and slotted anchor isn't reported, since the tile then isn't clickable, which is visible anyway,
+// and href might still be set after the initial load, e.g. by a framework.
 export const throwIfInvalidLinkTileProductUsage = (host: HTMLElement, hrefValue: string): void => {
-  let invalidA11y = false;
+  const anchor = getNamedSlot(host, anchorSlot);
 
-  if (!hrefValue) {
-    if (!getNamedSlot(host, anchorSlot)) {
-      throwMissingHrefAndSlottedLinkException(host);
-    }
-    try {
-      const linkElement = getOnlyChildOfKindHTMLElementOrThrow(host, 'a');
-      if (!linkElement.textContent.trim() && !linkElement.getAttribute('aria-label')) {
-        invalidA11y = true;
-      }
-    } catch {
-      throwMissingHrefAndSlottedLinkException(host);
-    }
-  }
-
-  if (invalidA11y) {
-    throwMissingSlottedLinkA11yException(host);
+  if (!hrefValue && anchor?.tagName === 'A' && !anchor.textContent.trim() && !anchor.getAttribute('aria-label')) {
+    throwException(
+      `usage of ${getTagNameWithoutPrefix(
+        host
+      )} is not valid. Anchor tag must have slotted text content or an aria-label attribute for accessibility.`
+    );
   }
 };
-
-const throwMissingHrefAndSlottedLinkException = (host: HTMLElement): void =>
-  throwException(
-    `usage of ${getTagNameWithoutPrefix(
-      host
-    )} is not valid. Please provide a href property or a single and direct <a> child element in the anchor slot.`
-  );
-
-const throwMissingSlottedLinkA11yException = (host: HTMLElement): void =>
-  throwException(
-    `usage of ${getTagNameWithoutPrefix(
-      host
-    )} is not valid. Anchor tag must have slotted text content or an aria-label attribute for accessibility.`
-  );

@@ -146,14 +146,6 @@ describe('isLastPage()', () => {
 });
 
 describe('slidePrev()', () => {
-  it('should call isFirstPage() with correct parameter', () => {
-    const spy = vi.spyOn(carouselUtils.internalCarousel, 'isFirstPage');
-    const splide = { index: 1, go: (_: string | number) => {} } as Splide;
-    carouselUtils.slidePrev(splide, 5);
-
-    expect(spy).toHaveBeenCalledWith(splide);
-  });
-
   it.each<[number, number, string | number]>([
     [5, 5, 3],
     [4, 5, '<'],
@@ -176,14 +168,6 @@ describe('slidePrev()', () => {
 });
 
 describe('slideNext()', () => {
-  it('should call isLastPage() with correct parameter', () => {
-    const spy = vi.spyOn(carouselUtils.internalCarousel, 'isLastPage');
-    const splide = { index: 1, go: (_: string | number) => {} } as Splide;
-    carouselUtils.slideNext(splide, 5);
-
-    expect(spy).toHaveBeenCalledWith(splide, 5);
-  });
-
   it.each<[number, number, string | number]>([
     [0, 5, '>'],
     [1, 5, '>'],
@@ -203,10 +187,10 @@ describe('slideNext()', () => {
   );
 });
 
-const getSplide = (): Splide =>
+const getSplide = (index = 1, length = 3): Splide =>
   ({
-    index: 1,
-    length: 3,
+    index,
+    length,
     options: {
       i18n: {
         next: 'custom next',
@@ -228,66 +212,40 @@ describe('updatePrevNextButtons()', () => {
     return [btnPrev, btnNext];
   };
 
-  it('should call isFirstPage() with correct parameter', () => {
-    const spy = vi.spyOn(carouselUtils.internalCarousel, 'isFirstPage');
-    const splide = getSplide();
+  // splide.options.perPage is 1, so getAmountOfPages(length, 1) === length
+  it.each<[number, number, string, string]>([
+    [1, 3, 'custom prev', 'custom next'], // neither first nor last page
+    [0, 3, 'custom last', 'custom next'], // first page
+    [2, 3, 'custom prev', 'custom first'], // last page
+    [0, 1, 'custom last', 'custom first'], // first and last page at once
+  ])(
+    'should for splide.index: %s and splide.length: %s set aria-label of btnPrev: %s and btnNext: %s',
+    (index, length, prevLabel, nextLabel) => {
+      const [btnPrev, btnNext] = getButtons();
 
-    carouselUtils.updatePrevNextButtons(...getButtons(), splide);
-    expect(spy).toHaveBeenCalledWith(splide);
-  });
+      carouselUtils.updatePrevNextButtons(btnPrev, btnNext, getSplide(index, length));
 
-  it('should call isLastPage() with correct parameters', () => {
-    const spy = vi.spyOn(carouselUtils.internalCarousel, 'isLastPage');
-    vi.spyOn(carouselUtils.internalCarousel, 'getAmountOfPages').mockReturnValue(5);
-    const splide = getSplide();
-    carouselUtils.updatePrevNextButtons(...getButtons(), splide);
-    expect(spy).toHaveBeenCalledWith(splide, 5);
-  });
+      expect(btnPrev.aria).toEqual({ 'aria-label': prevLabel });
+      expect(btnNext.aria).toEqual({ 'aria-label': nextLabel });
+    }
+  );
 
-  it('should call getAmountOfPages() with correct parameters', () => {
-    const spy = vi.spyOn(carouselUtils.internalCarousel, 'getAmountOfPages');
-    const splide = getSplide();
-    carouselUtils.updatePrevNextButtons(...getButtons(), splide);
-    expect(spy).toHaveBeenCalledWith(3, 1);
-  });
+  it.each<[number, number, boolean, boolean]>([
+    [1, 3, false, false],
+    [0, 3, true, false],
+    [2, 3, false, true],
+    [0, 1, true, true],
+  ])(
+    'should for splide.index: %s and splide.length: %s set disabled of btnPrev: %s and btnNext: %s',
+    (index, length, prevDisabled, nextDisabled) => {
+      const [btnPrev, btnNext] = getButtons();
 
-  it('should correctly set aria property on btnNext and btnPrev parameter', () => {
-    const isFirstPageSpy = vi.spyOn(carouselUtils.internalCarousel, 'isFirstPage');
-    const isLastPageSpy = vi.spyOn(carouselUtils.internalCarousel, 'isLastPage');
-    const [btnPrev, btnNext] = getButtons();
-    const splide = getSplide();
+      carouselUtils.updatePrevNextButtons(btnPrev, btnNext, getSplide(index, length));
 
-    isFirstPageSpy.mockReturnValue(false);
-    isLastPageSpy.mockReturnValue(false);
-    carouselUtils.updatePrevNextButtons(btnPrev, btnNext, splide);
-    expect(btnPrev.aria).toEqual({ 'aria-label': 'custom prev' });
-    expect(btnNext.aria).toEqual({ 'aria-label': 'custom next' });
-
-    isFirstPageSpy.mockReturnValue(true);
-    isLastPageSpy.mockReturnValue(true);
-    carouselUtils.updatePrevNextButtons(btnPrev, btnNext, splide);
-    expect(btnPrev.aria).toEqual({ 'aria-label': 'custom last' });
-    expect(btnNext.aria).toEqual({ 'aria-label': 'custom first' });
-  });
-
-  it('should correctly set disabled property on btnNext and btnPrev parameter', () => {
-    const isFirstPageSpy = vi.spyOn(carouselUtils.internalCarousel, 'isFirstPage');
-    const isLastPageSpy = vi.spyOn(carouselUtils.internalCarousel, 'isLastPage');
-    const [btnPrev, btnNext] = getButtons();
-    const splide = getSplide();
-
-    isFirstPageSpy.mockReturnValue(false);
-    isLastPageSpy.mockReturnValue(false);
-    carouselUtils.updatePrevNextButtons(btnPrev, btnNext, splide);
-    expect(btnPrev.disabled).toEqual(false);
-    expect(btnNext.disabled).toEqual(false);
-
-    isFirstPageSpy.mockReturnValue(true);
-    isLastPageSpy.mockReturnValue(true);
-    carouselUtils.updatePrevNextButtons(btnPrev, btnNext, splide);
-    expect(btnPrev.disabled).toEqual(true);
-    expect(btnNext.disabled).toEqual(true);
-  });
+      expect(btnPrev.disabled).toBe(prevDisabled);
+      expect(btnNext.disabled).toBe(nextDisabled);
+    }
+  );
 });
 
 const bulletMarkup = '<span class="bullet"></span>';

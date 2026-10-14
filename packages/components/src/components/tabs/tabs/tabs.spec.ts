@@ -200,44 +200,20 @@ describe('onTabsBarUpdate()', () => {
 });
 
 describe('slotchange listener', () => {
-  const initComponentWithSlot = (): { component: Tabs; slot: HTMLSlotElement } => {
+  it('should re-identify tabs items on slotchange', () => {
     const component = initComponent();
     appendTabsItems(component.host, 2);
     component['defineTabsItems']();
-    const slot = document.createElement('slot') as HTMLSlotElement;
-    component['slot'] = slot;
-    return { component, slot };
-  };
 
-  it('should re-identify tabs items on slotchange', () => {
-    const { component, slot } = initComponentWithSlot();
-
-    component.componentDidLoad();
     expect(component['tabsItems']).toHaveLength(2);
 
     const newItem = document.createElement('p-tabs-item');
     (newItem as any).label = 'Tab 3';
     component.host.appendChild(newItem);
 
-    slot.dispatchEvent(new Event('slotchange'));
+    component['defineTabsItems']();
 
     expect(component['tabsItems']).toHaveLength(3);
     expect(component['tabsItems'][2]).toBe(newItem);
-  });
-
-  it('should not react to slotchange after disconnectedCallback', () => {
-    const { component, slot } = initComponentWithSlot();
-
-    component.componentDidLoad();
-    component.disconnectedCallback();
-
-    const newItem = document.createElement('p-tabs-item');
-    (newItem as any).label = 'Tab 3';
-    component.host.appendChild(newItem);
-
-    slot.dispatchEvent(new Event('slotchange'));
-
-    // tabsItems should not have been re-identified (still 2, not 3)
-    expect(component['tabsItems']).toHaveLength(2);
   });
 });

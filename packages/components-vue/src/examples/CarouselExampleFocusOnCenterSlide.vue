@@ -44,6 +44,7 @@ const onCarouselUpdate = (event: CustomEvent<CarouselUpdateEventDetail>) => {
     align-items: center;
     justify-content: center;
     background: #00b0f4;
+    color: #000;
     transition: background 0.3s ease;
     height: 150px;
   }

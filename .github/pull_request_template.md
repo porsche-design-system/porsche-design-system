@@ -10,3 +10,9 @@
 <!-- Link the issue this PR resolves so it closes automatically on merge. Replace <issue-number>, or remove this section if there is no related issue. -->
 
 Closes #<issue-number>
+
+### Preview
+
+<!-- Internal pull requests deploy the storefront once the "Storefront (/pr-<number>)" job has run. Replace <pr-number> and link the pages that show the change, or remove this section for pull requests from forks. -->
+
+https://designsystem.porsche.com/pr-<pr-number>/

@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { screen } from '@porsche-design-system/components-js/testing';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -8,6 +9,7 @@ it('should have initialized shadow dom', async () => {
   expect(await componentsReady()).toBe(4);
 
   const el = document.body.firstElementChild;
+  assertDefined(el);
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -19,21 +21,28 @@ it('should have working events', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
-  el.addEventListener('update', (e: CustomEvent) => {
-    debugEl.querySelector('span').innerHTML = e.detail.activeStepIndex;
-    debugEl.querySelector('span:last-child').innerHTML = `${
-      parseInt(debugEl.querySelector('span:last-child').innerHTML) + 1
-    }`;
+  assertDefined(el);
+  const debugEl = document.querySelector('#debug');
+  assertDefined(debugEl);
+
+  el.addEventListener('update', (e) => {
+    const span = debugEl.querySelector('span');
+    assertDefined(span);
+    const lastSpan = debugEl.querySelector('span:last-child');
+    assertDefined(lastSpan);
+    span.innerHTML = (e as CustomEvent).detail.activeStepIndex;
+    lastSpan.innerHTML = `${parseInt(lastSpan.innerHTML) + 1}`;
   });
 
-  const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Current Value: <span>2</span>; Event Counter: <span>0</span>;');
 
   const step1 = document.querySelector('p-stepper-horizontal-item');
+  assertDefined(step1);
   await userEvent.click(step1);
   expect(debugEl.innerHTML).toBe('Current Value: <span>0</span>; Event Counter: <span>1</span>;');
 
   const step2 = document.querySelector('p-stepper-horizontal-item:nth-child(2)');
+  assertDefined(step2);
   await userEvent.click(step2);
   expect(debugEl.innerHTML).toBe('Current Value: <span>1</span>; Event Counter: <span>2</span>;');
 });
@@ -45,6 +54,10 @@ it('should expose its step buttons to shadow queries', async () => {
   expect(screen.queryAllByRole('button')).toHaveLength(0);
   // each button sits in the shadow root of its own light DOM item, so compare the whole list
   expect(screen.getAllByShadowRole('button')).toEqual(
-    [...document.querySelectorAll('p-stepper-horizontal-item')].map((item) => item.shadowRoot.querySelector('button'))
+    [...document.querySelectorAll('p-stepper-horizontal-item')].map((item) => {
+      const shadowRoot = item.shadowRoot;
+      assertDefined(shadowRoot);
+      return shadowRoot.querySelector('button');
+    })
   );
 });

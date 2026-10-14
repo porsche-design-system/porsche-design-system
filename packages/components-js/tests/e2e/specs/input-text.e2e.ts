@@ -114,6 +114,7 @@ test.describe('value', () => {
     // Add input event listener that always sets value to 'b'
     await page.evaluate(() => {
       const hostElement = document.querySelector('p-input-text');
+      if (!hostElement) throw new Error('p-input-text not found');
       hostElement.addEventListener('input', () => {
         hostElement.value = 'b';
       });
@@ -131,6 +132,23 @@ test.describe('value', () => {
     // Value is overwritten in the input event listener
     await expect(host).toHaveJSProperty('value', 'b');
     await expect(inputText).toHaveValue('b');
+  });
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the native input', async ({ page }) => {
+    await initInputText(page, {
+      props: {
+        name: 'field',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const input = getInputText(page);
+    await expect(input).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(input).toHaveAttribute('aria-description', 'Accessible description');
   });
 });
 

@@ -1,12 +1,15 @@
 import { vi } from 'vitest';
+import * as loggerUtils from '../../../utils/log/logger';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
-import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 import {
   getStepperHorizontalIconName,
   isItemClickable,
   isStateCompleteOrWarning,
-  throwIfCurrentAndDisabled,
+  logErrorIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
+
+const createItem = (state: StepperHorizontalItemState, disabled: boolean): HTMLElement =>
+  Object.assign(document.createElement('p-stepper-horizontal-item'), { state, disabled });
 
 describe('isStateCompleteOrWarning()', () => {
   it('should return true if state is complete or warning', () => {
@@ -30,26 +33,28 @@ describe('getStepperHorizontalIconName()', () => {
   });
 });
 
-describe('throwIfCurrentAndDisabled()', () => {
-  it('should throw error if state is current and disabled true', () => {
-    const host = { state: 'current', disabled: true };
-    expect(() => throwIfCurrentAndDisabled(host as HTMLPStepperHorizontalItemElement)).toThrow();
+describe('logErrorIfCurrentAndDisabled()', () => {
+  it('should log error and not throw if state is current and disabled true', () => {
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
+    const host = createItem('current', true);
+
+    expect(() => logErrorIfCurrentAndDisabled(host)).not.toThrow();
+    expect(spy).toHaveBeenCalledWith(
+      "using state='current' and disabled='true' for p-stepper-horizontal-item is not allowed.",
+      host
+    );
   });
 
-  it('should not throw error when state is not current and disabled', () => {
-    const host1 = { state: 'warning', disabled: true };
-    const host2 = { state: 'complete', disabled: true };
-
-    expect(() => throwIfCurrentAndDisabled(host1 as HTMLPStepperHorizontalItemElement)).not.toThrow();
-    expect(() => throwIfCurrentAndDisabled(host2 as HTMLPStepperHorizontalItemElement)).not.toThrow();
-  });
-
-  it('should not throw error when state is not current and not disabled', () => {
-    const host1 = { state: 'warning', disabled: false };
-    const host2 = { state: 'complete', disabled: false };
-
-    expect(() => throwIfCurrentAndDisabled(host1 as HTMLPStepperHorizontalItemElement)).not.toThrow();
-    expect(() => throwIfCurrentAndDisabled(host2 as HTMLPStepperHorizontalItemElement)).not.toThrow();
+  it.each<[state: StepperHorizontalItemState, disabled: boolean]>([
+    ['warning', true],
+    ['complete', true],
+    ['warning', false],
+    ['complete', false],
+    ['current', false],
+  ])('should not log error for state %s and disabled %s', (state, disabled) => {
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
+    logErrorIfCurrentAndDisabled(createItem(state, disabled));
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -57,19 +62,12 @@ describe('isItemClickable()', () => {
   it.each<[state: StepperHorizontalItemState, disabled: boolean, expected: boolean]>([
     ['complete', true, false],
     ['warning', true, false],
-    ['complete', true, false],
+    ['current', true, false],
     [undefined, false, false],
     ['complete', false, true],
     ['warning', false, true],
-    ['complete', false, true],
+    ['current', false, false],
   ])('should for state %s and disabled %s return %s', (state, disabled, expected) => {
     expect(isItemClickable(state, disabled)).toBe(expected);
-  });
-
-  it('should call isStateCompleteOrWarning()', () => {
-    const spy = vi.spyOn(stepperHorizontalItemUtils.internalStepper, 'isStateCompleteOrWarning');
-    isItemClickable('current', false);
-
-    expect(spy).toHaveBeenCalledWith('current');
   });
 });

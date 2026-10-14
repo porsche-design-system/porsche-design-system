@@ -29,7 +29,8 @@
     "build:icons": "tsx scripts/build.ts",
     "build:lib": "rollup -c",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
@@ -38,13 +39,13 @@
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
-    "prettier": "^3.9.6",
-    "rollup": "^4.62.4",
+    "prettier": "^3.9.9",
+    "rollup": "^4.63.5",
     "rollup-plugin-dts": "^6.5.1",
-    "svgo": "^4.0.2",
-    "tsx": "^4.23.7",
+    "svgo": "^4.1.0",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.2"
   },
   "volta": {
     "extends": "../../../../package.json"

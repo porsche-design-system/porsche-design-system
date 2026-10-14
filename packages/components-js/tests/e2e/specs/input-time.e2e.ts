@@ -113,6 +113,7 @@ test.describe('value', () => {
     // Add input event listener that always sets value to '13:30'
     await page.evaluate(() => {
       const hostElement = document.querySelector('p-input-time');
+      if (!hostElement) throw new Error('p-input-time not found');
       hostElement.addEventListener('input', () => {
         hostElement.value = '13:30';
       });
@@ -130,6 +131,23 @@ test.describe('value', () => {
     // Value is overwritten in the input event listener
     await expect(host).toHaveJSProperty('value', '13:30');
     await expect(inputTime).toHaveValue('13:30');
+  });
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the native input', async ({ page }) => {
+    await initInputTime(page, {
+      props: {
+        name: 'field',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const input = getInputTime(page);
+    await expect(input).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(input).toHaveAttribute('aria-description', 'Accessible description');
   });
 });
 

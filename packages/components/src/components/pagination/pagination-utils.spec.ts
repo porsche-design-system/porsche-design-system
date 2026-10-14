@@ -1,13 +1,13 @@
 import {
   createPaginationItems,
-  getTotalPages,
-  getCurrentActivePage,
   createRange,
+  getCurrentActivePage,
+  getTotalPages,
   ItemType,
   type PaginationItem,
 } from './pagination-utils';
 
-const paginationModelItemToSymbolPart = (item: PaginationItem, index: number): string => {
+const paginationModelItemToSymbolPart = (item: PaginationItem, index: number): string | undefined => {
   switch (item.type) {
     case ItemType.PREVIOUS:
       return '<';
@@ -16,6 +16,7 @@ const paginationModelItemToSymbolPart = (item: PaginationItem, index: number): s
     case ItemType.ELLIPSIS:
       return index === 2 ? '<...' : '...>';
   }
+  return undefined;
 };
 
 const formatPaginationItemsToASCII = (items: PaginationItem[]): string[] => {

@@ -1,5 +1,5 @@
 import { vi } from 'vitest';
-import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
+import * as loggerUtils from '../../../utils/log/logger';
 import { Select } from './select';
 import * as selectUtils from './select-utils';
 
@@ -32,24 +32,101 @@ describe('componentWillLoad', () => {
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.componentWillLoad();
-    expect(updateSelectOptionsSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], component['value']);
+    expect(updateSelectOptionsSpy).toHaveBeenCalledWith(component['selectOptions'], component['value']);
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
 
-describe('componentDidLoad', () => {
-  it('should call getShadowRootHTMLElement() with correct parameters and add event listener)', () => {
+describe('asynchronous options', () => {
+  it.each([false, true])('should reconcile options silently with an initial partial list=%p', (hasInitialOptions) => {
     const component = initComponent();
-    component.value = 'test';
-    const slot = document.createElement('slot');
-    const slotSpy = vi.spyOn(slot, 'addEventListener');
-    const getShadowRootHTMLElementSpy = vi
-      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
-      .mockReturnValueOnce(slot);
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    const emit = vi.fn();
+    component.change = { emit };
+    component.value = 42;
+    const otherOption = Object.assign(document.createElement('p-select-option'), { value: 7, selected: false });
+    if (hasInitialOptions) {
+      component.host.append(otherOption);
+    }
 
-    component.componentDidLoad();
-    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot:not([name])');
-    expect(slotSpy).toHaveBeenCalledTimes(1);
+    component.componentWillLoad();
+    expect(component['selectedOption']).toBeNull();
+    component.host.append(otherOption);
+    component['onSlotchange']();
+    component.onValueChange();
+    expect(otherOption.selected).toBe(false);
+    expect(component['selectedOption']).toBeNull();
+    expect(component.value).toBe(42);
+
+    const matchingOption = Object.assign(document.createElement('p-select-option'), { value: 42, selected: false });
+    component.host.append(matchingOption);
+    component['onSlotchange']();
+    expect(matchingOption.selected).toBe(true);
+    expect(component['selectedOption']).toBe(matchingOption);
+
+    matchingOption.remove();
+    component['onSlotchange']();
+    expect(component['selectedOption']).toBe(matchingOption);
+    expect(component.value).toBe(42);
+    expect(emit).not.toHaveBeenCalled();
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('optionValueChangeHandler', () => {
+  it('should select an option that receives the matching value after the initial matching', () => {
+    const component = initComponent();
+    const emit = vi.fn();
+    component.change = { emit };
+    component.value = 'a';
+    const option = Object.assign(document.createElement('p-select-option'), { value: 'b', selected: false });
+    component.host.append(option);
+
+    component.componentWillLoad();
+    expect(component['selectedOption']).toBeNull();
+
+    option.value = 'a';
+    const event = new Event('internalSelectOptionValueChange', { bubbles: true });
+    const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
+    component.optionValueChangeHandler(event);
+
+    expect(stopPropagationSpy).toHaveBeenCalled();
+    expect(option.selected).toBe(true);
+    expect(component['selectedOption']).toBe(option);
+    expect(component.value).toBe('a');
+    expect(emit).not.toHaveBeenCalled();
+  });
+
+  it('should keep the selection of a removed option when the value of another option changes', () => {
+    const component = initComponent();
+    component.value = 'c';
+    const optionA = Object.assign(document.createElement('p-select-option'), { value: 'a', selected: false });
+    const optionC = Object.assign(document.createElement('p-select-option'), { value: 'c', selected: false });
+    component.host.append(optionA, optionC);
+    component.componentWillLoad();
+    optionC.remove();
+    component['onSlotchange']();
+    expect(component['selectedOption']).toBe(optionC);
+
+    optionA.value = 'b';
+    component.optionValueChangeHandler(new Event('internalSelectOptionValueChange'));
+
+    expect(component['selectedOption']).toBe(optionC);
+  });
+
+  it('should deselect an option when its value changes away from the select value', () => {
+    const component = initComponent();
+    component.value = 'a';
+    const optionA = Object.assign(document.createElement('p-select-option'), { value: 'a', selected: false });
+    component.host.append(optionA);
+    component.componentWillLoad();
+    expect(component['selectedOption']).toBe(optionA);
+
+    optionA.value = 'b';
+    component.optionValueChangeHandler(new Event('internalSelectOptionValueChange'));
+
+    expect(component['selectedOption']).toBeNull();
+    expect(optionA.selected).toBe(false);
   });
 });
 
@@ -145,7 +222,7 @@ describe('componentWillLoad value coercion', () => {
 
     expect(setFormValueSpy).toHaveBeenCalledWith('42');
     // strict-typed matching: pass raw value, not stringified
-    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], 42);
+    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component['selectOptions'], 42);
     // public value retains its original (number) type
     expect(component.value).toBe(42);
   });
@@ -160,7 +237,7 @@ describe('componentWillLoad value coercion', () => {
 
     expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
     // strict-typed matching: null is a distinct value, only matches options with value === null
-    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], null);
+    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component['selectOptions'], null);
   });
 
   it('should preserve the original (non-normalized) value as defaultValue', () => {

@@ -1,16 +1,3 @@
-import { consoleWarn, getTagNameWithoutPrefix, hasNamedSlot } from '../../../utils';
-
-export const warnIfCaptionIsMissing = (host: HTMLElement, caption: string): void => {
-  if (!caption && !hasNamedSlot(host, 'caption')) {
-    consoleWarn(
-      `caption has to be set via property or named slot for component ${getTagNameWithoutPrefix(
-        host
-      )} in order to ensure accessibility.`,
-      host
-    );
-  }
-};
-
 export type Direction = 'asc' | 'desc';
 
 export const TABLE_LAYOUTS = ['auto', 'fixed'] as const;

@@ -1,13 +1,7 @@
-<button
-  aria-checked="false"
-  id="x"
-  type="button"
-  role="switch"
-  aria-labelledby="label"
->
+<button aria-checked="false" id="x" type="button" role="switch">
   <span class="toggle"> </span>
 </button>
-<label id="label" for="x">
+<label for="x">
   <slot> </slot>
 </label>
 <span id="loading" class="loading" role="status"> </span>

@@ -10,6 +10,17 @@
 
 ### ARIA enhancements
 
+#### External **ARIA** provided by the `aria` property:
+
+Use the `aria` property to pass supported attributes to the **native control inside the shadow DOM**. Prefer a visible
+slotted label for the accessible name. Use `aria-label` when the label is hidden or missing, and `aria-description` for
+extra context that should not replace the name. Do not use `aria-label` to replace a different visible label (WCAG 2.5.3).
+
+| ARIA               | Usage                                                                                                                  |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `aria-label`       | Defines an accessible name when the visible label is insufficient or hidden; prefer a visible `label` for most cases. |
+| `aria-description` | Provides additional context for assistive technologies without replacing the accessible name.                          |
+
 #### Internal **ARIA** that is managed by the component:
 
 | ARIA                     | Usage                                                                                     |
@@ -27,6 +38,8 @@ controls and its on/off meaning.
 
 ### Common do's and don'ts
 
+- **Do** pass extra labelling through the `aria` prop (`aria-label`, `aria-description`).
 - **Do** provide a clear slotted label that describes what the switch controls.
 - **Do** use `hide-label` only when the label text remains in the slot for screen readers.
 - **Don't** use an icon or visual state alone without descriptive label text.
+- **Don't** add native `aria-*` attributes directly on the component host.

@@ -1,0 +1,12 @@
+@import "@porsche-design-system/components-js";
+@import "tailwindcss";
+@import "@porsche-design-system/components-js/tailwindcss";
+
+/* Hide custom elements (e.g. `p-button`) until they are defined to prevent a flash of unstyled content. The bare
+ * selector works here because these pages are vanilla JS; other setups need a variant. The React SSR wrappers of
+ * Next.js and React Router mark their server rendered elements with a `data-ssr` attribute, which has to be excluded
+ * (`:not(:defined,[data-ssr])`), and Angular has to list the PDS tags explicitly (`:is(p-button, …):not(:defined)`)
+ * because its own elements like `app-root` never get defined and would stay invisible. */
+:not(:defined) {
+  visibility: hidden;
+}

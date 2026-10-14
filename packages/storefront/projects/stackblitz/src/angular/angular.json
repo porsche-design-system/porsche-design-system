@@ -14,11 +14,8 @@
           "builder": "@angular/build:application",
           "options": {
             "outputPath": "dist/angular",
-            "index": "src/index.html",
+            "index": ".generated/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -73,10 +70,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {

@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import type { IconName, TabsUpdateEvent } from '../../../src/public-api';
+import type { IconName, TabsUpdateEventDetail } from '../../../src/public-api';
 import {
   componentsReady,
   PorscheDesignSystemProvider,
@@ -30,7 +30,7 @@ it('should expose skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
 
 it('should expose types from root', () => {
   const icon: IconName = '360';
-  const event: TabsUpdateEvent = { activeTabIndex: 1 };
+  const event: TabsUpdateEventDetail = { activeTabIndex: 1 };
   expect(icon).toBe('360');
   expect(event).toEqual({ activeTabIndex: 1 });
 });

@@ -94,7 +94,6 @@ describe('updateSegmentedControlItemHandler', () => {
 
     component.change = { emit: vi.fn() };
     component.disabled = false;
-    // @ts-expect-error
     const updateValueSpy = vi.spyOn(component, 'updateValue');
 
     component.updateSegmentedControlItemHandler(mockEvent);
@@ -105,7 +104,6 @@ describe('updateSegmentedControlItemHandler', () => {
   it('should not call updateValue when disabled', () => {
     const component = initComponent();
     component.disabled = true;
-    // @ts-expect-error
     const updateValueSpy = vi.spyOn(component, 'updateValue');
 
     component.updateSegmentedControlItemHandler(mockEvent);

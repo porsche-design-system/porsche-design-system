@@ -1,3 +1,4 @@
+import type { ExampleProject } from '@porsche-design-system/examples';
 import type { Framework } from '@porsche-design-system/shared';
 // TODO: Move to shared
 import type { StorefrontColorScheme } from '@porsche-design-system/storefront/src/models/colorScheme';
@@ -69,4 +70,15 @@ export const openInStackblitz = (framework: Framework, markup: string, colorSche
       openFile: frameworkComponentMap[framework],
     }
   );
+};
+
+/**
+ * Opens a pattern or template of the storefront in StackBlitz, as the Vite project it was built from.
+ *
+ * Unlike `openInStackblitz()`, nothing is assembled here: the project is complete as the examples build emitted it,
+ * and the storefront has already pointed its media at the deployment they are served from. `template: 'node'` runs it
+ * in a WebContainer, which installs the released `@porsche-design-system/components-js` from npm.
+ */
+export const openExampleInStackblitz = ({ title, description, files }: ExampleProject) => {
+  sdk.openProject({ files, template: 'node', title, description }, { openFile: 'index.html' });
 };

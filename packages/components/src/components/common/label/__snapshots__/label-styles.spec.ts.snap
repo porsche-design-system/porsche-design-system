@@ -164,7 +164,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: 0 } 1`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;
@@ -209,7 +209,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: 0 } 2`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;

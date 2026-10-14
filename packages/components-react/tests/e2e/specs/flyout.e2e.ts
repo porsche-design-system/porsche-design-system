@@ -1,4 +1,4 @@
-import { Page, expect, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import {
   addEventListener,
   getEventSummary,
@@ -56,7 +56,6 @@ test.describe('form', () => {
     await goto(page, 'flyout-example-form');
     await waitForComponentsReady(page);
 
-    const name = 'some-form';
     const newValue = 'some text';
 
     await openFlyout(page);

@@ -1,6 +1,5 @@
 import { expect, Locator, test } from '@playwright/test';
-import type { Components } from '@porsche-design-system/components/src/components';
-import { RadioGroupOption } from '@porsche-design-system/components/src/components/radio-group/radio-group/radio-group-utils';
+import type { Components } from '@porsche-design-system/components';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -25,15 +24,19 @@ const getRadioGroupValue = async (page: Page): Promise<string | number> => await
 const getRadioGroupOption = (page: Page, n: number) =>
   page.locator(`p-radio-group p-radio-group-option:nth-child(${n})`);
 const getRadioGroupOptions = (page: Page) => page.locator('p-radio-group p-radio-group-option');
+
+// The option's internal props (RadioGroupOptionInternalHTMLProps) are not part of the package's public types.
+type RadioGroupOption = HTMLPRadioGroupOptionElement & { selected?: boolean };
+
 const getSelectedRadioGroupOptionProperty = async <K extends keyof RadioGroupOption>(
   page: Page,
   property: K
-): Promise<RadioGroupOption[K]> =>
+): Promise<RadioGroupOption[K] | undefined> =>
   await page
     .locator('p-radio-group p-radio-group-option')
     .evaluateAll(
       (options, property) =>
-        ((options.find((option: RadioGroupOption) => option.selected) as RadioGroupOption)?.[
+        ((options as unknown as RadioGroupOption[]).find((option) => option.selected)?.[
           property
         ] as RadioGroupOption[K]) ?? undefined,
       property
@@ -114,7 +117,7 @@ const initRadioGroup = (page: Page, opt?: InitOptions): Promise<void> => {
     !Array.isArray(options) ? getOption(options) : options.map((option) => getOption(option));
 
   const radioGroupOptions = values
-    .map((x, idx) => {
+    .map((x, _idx) => {
       const options = getOptions(x);
       return Array.isArray(options) ? options.map((node) => node).join('') : options;
     })
@@ -218,7 +221,6 @@ test.describe('Blur Event', () => {
     const host = getHost(page);
     await addEventListener(host, 'blur');
     const options = getRadioGroupOptions(page);
-    const button = page.locator('#test-button');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
@@ -311,6 +313,58 @@ test.describe('keyboard behavior', () => {
 
       const options = getRadioGroupOptions(page);
 
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should skip loading option and focus 1st available element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a', loading: true }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should skip option disabled after load and focus 1st available element on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await setProperty(options.nth(0), 'disabled', true);
+      await waitForStencilLifecycle(page);
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should focus option enabled after load on tab', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [
+            { value: 'a', disabled: true },
+            { value: 'b', disabled: true },
+          ],
+        },
+      });
+
+      const options = getRadioGroupOptions(page);
+
+      await setProperty(options.nth(1), 'disabled', false);
+      await waitForStencilLifecycle(page);
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
       await expect(options.nth(1)).toBeFocused();
@@ -741,7 +795,6 @@ test.describe('form', () => {
       },
     });
     const form = getForm(page);
-    const text = page.locator('p-text');
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
@@ -863,5 +916,50 @@ test.describe('form', () => {
 
     await waitForStencilLifecycle(page);
     expect(getConsoleErrorsAmount()).toBe(0);
+  });
+});
+
+test.describe('option value set after initial render', () => {
+  // Frameworks like Angular can connect an option before its `value` binding is applied (#4743)
+  test('should render option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" label="Some label"><p-radio-group-option label="Some Label A"></p-radio-group-option></p-radio-group>`
+    );
+    const option = getFirstOptionHost(page);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option.locator('input')).toHaveValue('a');
+  });
+
+  test('should select option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" label="Some label" value="a"><p-radio-group-option label="Some Label A"></p-radio-group-option></p-radio-group>`
+    );
+    const option = getFirstOptionHost(page);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('input')).toBeChecked();
+  });
+
+  test('should select option when its value changes to match the radio group value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" label="Some label" value="a"><p-radio-group-option label="Some Label A" value="b"></p-radio-group-option></p-radio-group>`
+    );
+    const option = getFirstOptionHost(page);
+    await expect(option.locator('input')).not.toBeChecked();
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('input')).toBeChecked();
   });
 });

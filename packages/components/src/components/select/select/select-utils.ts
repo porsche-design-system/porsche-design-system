@@ -1,9 +1,11 @@
 import { forceUpdate } from '@stencil/core';
-import { consoleWarn, getTagNameWithoutPrefix, type SelectComponentsDropdownDirection } from '../../../utils';
+import type { FormFieldAriaAttribute } from '../../../types';
+import type { SelectComponentsDropdownDirection } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 
 export type SelectState = FormState;
+export type SelectAriaAttribute = FormFieldAriaAttribute;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
 export type SelectOptgroup = HTMLPOptgroupElement;
@@ -25,17 +27,11 @@ export const resetSelectedOption = (options: SelectOption[]): void => {
   }
 };
 
-export const internalSelect = {
-  resetSelectedOption,
-};
-
 export const selectOptionByValue = (
-  host: HTMLElement,
   options: SelectOption[],
-  value: string | number | null | undefined,
-  preventWarning = false
+  value: string | number | null | undefined
 ): SelectOption | null => {
-  internalSelect.resetSelectedOption(options);
+  resetSelectedOption(options);
   // Strict equality matching: a host value of `null`, `undefined`, a `string` or a `number`
   // only matches an option whose `value` is strictly equal (same type and value). No
   // cross-type coercion (e.g. number `5` does NOT match string `"5"`), and `null` and
@@ -48,18 +44,11 @@ export const selectOptionByValue = (
     return optionToSelect;
   }
 
-  if (value !== undefined && value !== null && !preventWarning) {
-    consoleWarn(
-      `The provided value: ${value} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
-      host
-    );
-  }
-
   return null;
 };
 
 export const setSelectedOption = (options: SelectOption[], selectedOption: SelectOption): void => {
-  internalSelect.resetSelectedOption(options);
+  resetSelectedOption(options);
   selectedOption.selected = true;
   forceUpdate(selectedOption);
 };

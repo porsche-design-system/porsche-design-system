@@ -9,7 +9,6 @@ import {
   getEventSummary,
   getHTMLAttributes,
   getLifecycleStatus,
-  getProperty,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,

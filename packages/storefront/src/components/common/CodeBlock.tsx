@@ -27,11 +27,13 @@ type CodeBlockProps = {
   /** Accessible name of the focusable, scrollable code region. */
   label?: string;
   className?: string;
+  /** Tailwind classes sizing the scrollable code. */
+  heightClassName?: string;
   children: string;
 };
 
 /** Renders code as a scrollable, syntax highlighted box. */
-export const CodeBlock = ({ language, label, className, children }: CodeBlockProps) => {
+export const CodeBlock = ({ language, label, className, heightClassName = 'max-h-96', children }: CodeBlockProps) => {
   const highlightLanguage = language ? languageMap[language as CodeLanguage] || 'javascript' : 'plaintext';
 
   return (
@@ -47,7 +49,7 @@ export const CodeBlock = ({ language, label, className, children }: CodeBlockPro
         tabIndex: 0,
         ...(label && { role: 'region', 'aria-label': label }),
         // Passing `codeTagProps` replaces the language class the highlighter adds by default.
-        className: `language-${highlightLanguage} max-h-96 overflow-auto rounded-3xl focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-2`,
+        className: `language-${highlightLanguage} ${heightClassName} overflow-auto rounded-3xl focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-2`,
       }}
     >
       {children}

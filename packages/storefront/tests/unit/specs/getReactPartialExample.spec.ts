@@ -25,6 +25,6 @@ it('should return correct partial markup for getVanillaJsPartialExample', () => 
       ],
     },
   ];
-  const partialExample = getReactPartialExample('getInitialStyles', 'head', partialCalls);
+  const partialExample = getReactPartialExample('getFontLinks', 'head', partialCalls);
   expect(partialExample).toMatchSnapshot();
 });

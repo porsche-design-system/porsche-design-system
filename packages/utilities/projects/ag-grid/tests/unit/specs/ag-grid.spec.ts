@@ -1,4 +1,4 @@
-import { Part } from 'ag-grid-community';
+import type { Part } from 'ag-grid-community';
 import { _asThemeImpl } from 'ag-stack';
 import { describe, expect, it } from 'vitest';
 import { pdsTheme } from '../../../src';

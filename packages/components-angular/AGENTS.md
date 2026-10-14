@@ -77,7 +77,7 @@ Tests use Vitest for wrapper logic and Karma/Jasmine for Angular integration. Wh
 ## Angular Version Compatibility
 
 - Check `MAX_TS_VERSION` in `node_modules/@angular/compiler-cli/src/typescript_support.js` before upgrading TypeScript
-- Angular **versions** (`@angular/*`, `ng-packagr`, `zone.js`) are bumped by syncpack like any other dependency
+- Angular **versions** (`@angular/*`, `ng-packagr`) are bumped by syncpack like any other dependency
   (`npm run npm:update`). Only Angular's framework **migrations** are applied via `npm run ng:update -- @angular/core
   @angular/cli --migrate-only --from=<old> --to=<new>` — a wrapper around `ng update` that works around this monorepo's
   hoisted `node_modules` and unpublished private workspace deps (see

@@ -10,10 +10,11 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   hasPropValueChanged,
   implicitSubmit,
@@ -23,6 +24,7 @@ import {
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-text-styles';
 import type {
+  InputTextAriaAttribute,
   InputTextBlurEventDetail,
   InputTextChangeEventDetail,
   InputTextInputEventDetail,
@@ -49,6 +51,7 @@ const propTypes: PropTypes<typeof InputText> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<InputTextAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -125,6 +128,9 @@ export class InputText {
 
   /** Shows a live character counter below the field indicating how many characters have been entered relative to `maxLength`. */
   @Prop() public counter?: boolean = false;
+
+  /** Sets additional ARIA attributes on the native input to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<InputTextAriaAttribute>;
 
   /** Emitted when the input loses focus after its value was changed. The component value and native event target value are strings after user input. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTextChangeEventDetail>;
@@ -235,6 +241,7 @@ export class InputText {
         spellCheck={this.spellCheck}
         loading={this.loading}
         initialLoading={this.initialLoading}
+        aria={this.aria}
         // Intentionally not defined as prop in the interface since it's a global HTML attribute/prop and will cause typescript issues when optional
         {...(this.host.inputMode !== '' && { inputMode: this.host.inputMode })}
         {...(this.counter && {

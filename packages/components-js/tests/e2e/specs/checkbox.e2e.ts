@@ -1,10 +1,10 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { CheckboxState } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementTagName,
   getConsoleErrorsAmount,
-  getElementStyle,
   getEventSummary,
   getFormDataValue,
   getLifecycleStatus,
@@ -20,13 +20,10 @@ import {
 const getHost = (page: Page) => page.locator('p-checkbox');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInput = (page: Page) => page.locator('p-checkbox input[type="checkbox"]');
-const getWrapper = (page: Page) => page.locator('p-checkbox .wrapper');
 const getInputWrapper = (page: Page) => page.locator('p-checkbox .input-wrapper');
 const getLabel = (page: Page) => page.locator('p-checkbox label');
 const getMessage = (page: Page) => page.locator('p-checkbox .message');
 const getForm = (page: Page) => page.locator('form');
-const getOuterLabel = (page: Page) => page.locator('label');
-const getOuterLabelChild = (page: Page) => page.locator('label > :first-child');
 
 const setChecked = async (locator: Locator, value: boolean) => {
   await setProperty(locator, 'checked', value);
@@ -34,6 +31,7 @@ const setChecked = async (locator: Locator, value: boolean) => {
 
 async function performBoundaryClicks(host: Locator, page: Page) {
   const coords = await host.boundingBox();
+  assertDefined(coords);
 
   await page.mouse.click(coords.x + 1, coords.y + 1); // Top left corner
   await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // Bottom left corner
@@ -429,6 +427,20 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the native checkbox', async ({ page }) => {
+    await initCheckbox(page);
+    await setProperty(getHost(page), 'aria', {
+      'aria-label': 'Accept terms',
+      'aria-description': 'Required to continue',
+    });
+    await waitForStencilLifecycle(page);
+    const input = getInput(page);
+    await expect(input).toHaveAttribute('aria-label', 'Accept terms');
+    await expect(input).toHaveAttribute('aria-description', 'Required to continue');
   });
 });
 

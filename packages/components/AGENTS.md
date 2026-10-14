@@ -128,6 +128,7 @@ When behavior/markup changes, add or update tests consistent with this repo.
 - **Props**: Use feature-based naming, not action-based (e.g., `compact` not `enableCompact`)
 - **Boolean props**: Default to `false`, use positive naming (e.g., `disabled` not `notEnabled`)
 - **Styles**: Import from `../../styles/common-styles.ts` for focus, transitions, etc.
+- **Slot changes**: React to slot assignment changes with a JSX `onSlotchange` handler on the specific `<slot>` element (never `addEventListener`/`removeEventListener` in lifecycle hooks). Handlers are idempotent re-syncs that re-derive state from the currently slotted children; the platform fires `slotchange` for initially present children, so gate observable side effects (e.g. scrolling) on an actual state diff, never on call count.
 
 ## Common Imports
 

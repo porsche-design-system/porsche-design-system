@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  // What `build:projects` writes and runs – the pages, the build script, the export and the skill reading it. It runs
+  // before the wrappers are built, so nothing here may need `@porsche-design-system/components-js`; the dev server, the
+  // site build and its verification do, and `typecheck` checks them in `build:site`.
+  "include": ["scripts/build.ts", "skill", "src", "generated"]
+}

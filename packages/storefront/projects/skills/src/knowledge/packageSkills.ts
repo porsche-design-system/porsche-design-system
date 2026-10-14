@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { emotionSkill } from '@porsche-design-system/emotion/skill';
+import { examplesSkill } from '@porsche-design-system/examples/skill';
 import { scssSkill } from '@porsche-design-system/scss/skill';
 import type { PackageSkill } from '@porsche-design-system/shared';
 import { stylesheetsSkill } from '@porsche-design-system/stylesheets/skill';
@@ -24,6 +25,28 @@ type PackageSkillRegistration = {
   rawReference?: (framework: Framework) => string;
 };
 
+const FRAMEWORK_NAMES: Record<Exclude<Framework, 'js'>, string> = { angular: 'Angular', react: 'React', vue: 'Vue' };
+
+/**
+ * The examples are vanilla HTML and JavaScript, while every other part of a framework's skill is written in its
+ * syntax. Only the need to convert them is stated: the conventions of the framework are known to the model, and its
+ * PDS syntax is in the Components section of SKILL.md. Stated in SKILL.md only, which is in context whenever an
+ * example is read, so it is not repeated in the references.
+ */
+export const renderExamplesNote = (framework: Framework): string =>
+  framework === 'js'
+    ? '> **Vanilla HTML and JavaScript.** The examples use the PDS web components the way ' +
+      '`@porsche-design-system/components-js` does, so their markup and script fit a vanilla JavaScript project as ' +
+      'they are.'
+    : `> **Convert to ${FRAMEWORK_NAMES[framework]} before use.** The examples are written in vanilla HTML and ` +
+      `JavaScript with the PDS web components, not in ${FRAMEWORK_NAMES[framework]}. Never copy them verbatim: ` +
+      `rebuild them with the components of \`@porsche-design-system/components-${framework}\` and the ` +
+      `conventions of ${FRAMEWORK_NAMES[framework]} (see the framework syntax in SKILL.md), and move the behaviour ` +
+      `of the script into ${FRAMEWORK_NAMES[framework]} state and event handlers. Import the stylesheet entries of ` +
+      `that package as well – \`@porsche-design-system/components-${framework}/index.css\` and ` +
+      `\`@porsche-design-system/components-${framework}/tailwindcss\` instead of the \`components-js\` ones. Keep ` +
+      'the components, props, layout and styling they show: that usage is how the pattern is meant to be built.';
+
 const STYLING_SKILLS: readonly PackageSkillRegistration[] = [
   { skill: tailwindcssSkill, mount: 'styles', rawReference: rawTailwindcssReference },
   { skill: scssSkill, mount: 'styles', rawReference: rawScssReference },
@@ -32,13 +55,18 @@ const STYLING_SKILLS: readonly PackageSkillRegistration[] = [
 ];
 const STYLESHEETS_SKILL: PackageSkillRegistration = { skill: stylesheetsSkill, mount: '' };
 const TOKENS_SKILL: PackageSkillRegistration = { skill: tokensSkill, mount: '' };
-const PACKAGE_SKILLS = [...STYLING_SKILLS, STYLESHEETS_SKILL, TOKENS_SKILL];
+const EXAMPLES_SKILL: PackageSkillRegistration = { skill: examplesSkill, mount: '' };
+const PACKAGE_SKILLS = [...STYLING_SKILLS, STYLESHEETS_SKILL, TOKENS_SKILL, EXAMPLES_SKILL];
 
 const referencePath = ({ skill, mount }: PackageSkillRegistration): string =>
   path.posix.join(mount, `${skill.name}.md`);
 
 const resolvedPath = (registration: PackageSkillRegistration): string =>
   path.posix.join('references', referencePath(registration));
+
+/** A further file of a package skill: in a folder named after the skill, next to the skill's own file. */
+const subReferencePath = ({ skill, mount }: PackageSkillRegistration, name: string): string =>
+  path.posix.join(mount, skill.name, `${name}.md`);
 
 export const getPackageSkillRouteReferences = (): RouteReferences =>
   Object.fromEntries(PACKAGE_SKILLS.map((registration) => [registration.skill.name, resolvedPath(registration)]));
@@ -47,12 +75,23 @@ const fullStylesheetSection = (rawReference: string): string =>
   `## Full stylesheet\n\nThe tables above are the index, with each token's value. For the complete generated stylesheet — resets, deprecated aliases and everything not tabulated here — read \`${rawReference}\` in the installed package.\n`;
 
 export const writePackageSkillReferences = (tree: SkillTree, routeReferences: RouteReferences): string[] =>
-  PACKAGE_SKILLS.map((registration) => {
-    const reference = referencePath(registration);
+  PACKAGE_SKILLS.flatMap((registration) => {
+    const write = (reference: string, content: string): string =>
+      tree.writeReference(
+        reference,
+        rewriteDocLinks(content, path.posix.join('references', reference), routeReferences)
+      );
+
     const rawReference = registration.rawReference?.(tree.framework);
     const packageContent = registration.skill.getContent();
     const content = rawReference ? `${packageContent}\n${fullStylesheetSection(rawReference)}` : packageContent;
-    return tree.writeReference(reference, rewriteDocLinks(content, resolvedPath(registration), routeReferences));
+
+    return [
+      write(referencePath(registration), content),
+      ...(registration.skill.getReferences?.() ?? []).map(({ name, getContent }) =>
+        write(subReferencePath(registration, name), getContent())
+      ),
+    ];
   });
 
 /** Framework APIs commonly mistaken as accepting the removed `theme` option. */
@@ -114,3 +153,27 @@ export const renderStylingSection = (): string => {
 
 export const renderTokensSection = (): string =>
   `${tokensSkill.intro} Open [tokens.md](${resolvedPath(TOKENS_SKILL)}) when using tokens directly in custom UI.`;
+
+/** Introduces the patterns and templates, states that they need converting, and links every one of them. */
+export const renderExamplesSection = (framework: Framework): string => {
+  const { skill } = EXAMPLES_SKILL;
+  const reference = resolvedPath(EXAMPLES_SKILL);
+  const references = skill.getReferences?.() ?? [];
+  const links = (category: string): string =>
+    references
+      .filter(({ name }) => name.startsWith(`${category}/`))
+      .map(({ name, title }) => `[${title}](${path.posix.join('references', subReferencePath(EXAMPLES_SKILL, name))})`)
+      .join(', ');
+
+  return [
+    `${skill.intro} Before building a page or one of these sections, open [${reference.split('/').pop()}](${reference}) ` +
+      'for the catalog with descriptions and what all examples share, then the reference of the closest ' +
+      'example for its complete markup and script.',
+
+    '',
+    renderExamplesNote(framework),
+    '',
+    `- **Patterns:** ${links('patterns')}`,
+    `- **Templates:** ${links('templates')}`,
+  ].join('\n');
+};
