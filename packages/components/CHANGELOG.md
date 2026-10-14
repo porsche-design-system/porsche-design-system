@@ -14,6 +14,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Knowledge Skill`: the guideline for creating custom icons in the `p-icon` reference
+  ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+
+### Fixed
+
+- `Knowledge Skill`: links to Storefront pages the skill doesn't include led to an error page instead of the
+  documentation; they now open the Storefront of the skill's version
+  ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+
 ## [4.8.0] - 2026-10-02
 
 ## [4.8.0-rc.1] - 2026-10-01
