@@ -21,7 +21,10 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
   ],
   ['/templates/admin-panel/', ['templates/admin-panel']],
   ['/templates/landing-page/', ['templates/landing-page']],
-  ['/templates/personalized-mailing/', ['templates/personalized-mailing']],
+  [
+    '/templates/personalized-mailing/',
+    ['templates/personalized-mailing/video', 'templates/personalized-mailing/no-video'],
+  ],
 ];
 
 /**

@@ -5,12 +5,16 @@ import { SimpleFooter } from '../../_partials/footer/Footer.tsx';
 import { HeroVideo } from '../../_partials/HeroVideo.tsx';
 import { Script } from '../../_partials/Script.tsx';
 
-/** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
-export const meta: ExampleMeta = {
-  title: 'Personalized mailing',
-  description:
-    'A personal follow-up page for a configured vehicle, linked from a mailing. It greets the customer by name, recaps the configuration, recommends further options and hands over to a personal sales advisor.',
-};
+/** What both variants of the template are, for the description in the `meta` of each page. */
+export const description =
+  'A personal follow-up page for a configured vehicle, linked from a mailing. It recaps the configuration, recommends further options and hands over to a personal sales advisor.';
+
+/**
+ * How the page opens: `video` on a full bleed video of the configured vehicle, which insets into a card while it
+ * scrolls away; `no-video` on a giant title the configured vehicle is pulled up into, for a lighter page or when no
+ * footage is available. Everything below the opening is the same.
+ */
+export type PersonalizedMailingVariant = 'video' | 'no-video';
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Shared class lists
@@ -179,6 +183,10 @@ const services: Service[] = [
 type GhostTitleProps = {
   id: string;
   lines: string[];
+  /** The heading level – the title of a section, or of the page where it opens the page. */
+  level?: 'h1' | 'h2';
+  /** Placement within the grid of its section. */
+  class?: string;
   /** The font size – a ghost title fills the width, so it scales with the viewport. */
   size?: string;
 };
@@ -187,135 +195,211 @@ type GhostTitleProps = {
  * Giant section title fading from contrast-medium to transparent, which the content of its section overlaps. The fade
  * is a gradient behind transparent text – High Contrast Mode drops the gradient, so it gets a solid text colour there.
  */
-const GhostTitle = ({ id, lines, size = 'text-[clamp(3rem,12.5vw,18.75rem)]' }: GhostTitleProps) => (
-  <h2
+const GhostTitle = ({
+  id,
+  lines,
+  level: Heading = 'h2',
+  class: className = '',
+  size = 'text-[clamp(3rem,12.5vw,18.75rem)]',
+}: GhostTitleProps) => (
+  <Heading
     id={id}
-    class={`col-full justify-self-center text-center whitespace-nowrap font-normal leading-[1.05] bg-linear-to-b from-contrast-medium to-transparent bg-clip-text text-transparent forced-colors:bg-none forced-colors:text-[CanvasText] pointer-events-none ${size}`}
+    class={`col-full justify-self-center text-center whitespace-nowrap font-normal leading-[1.05] bg-linear-to-b from-contrast-medium to-transparent bg-clip-text text-transparent forced-colors:bg-none forced-colors:text-[CanvasText] pointer-events-none ${size} ${className}`}
   >
     {lines.map((line) => (
       <span key={line} class="block">
         {line}
       </span>
     ))}
-  </h2>
+  </Heading>
+);
+
+/** Scrolls the page on by most of a viewport – the hint at the bottom of either hero, faded out by the page script. */
+const ScrollNext = () => (
+  <p-button-pure
+    id="pm-scroll-next"
+    class="fixed inset-x-0 bottom-fluid-md z-20 mx-auto w-fit"
+    type="button"
+    icon="arrow-down"
+    hide-label="true"
+    size="md"
+  >
+    Scroll down
+  </p-button-pure>
+);
+
+/**
+ * Video hero: the full bleed video insets into a rounded card while the hero scrolls away. The page script writes the
+ * inset and the radius as custom properties of the frame, everything else is a utility.
+ *
+ * It is at least as tall as the viewport, and taller when its content needs it – at a large text size. Its two rows
+ * keep the content below the wordmark: the wordmark sizes the first, the content sits at the end of the second, and the
+ * video spans both.
+ */
+const VideoHero = () => (
+  <section
+    id="pm-hero"
+    class="group/hero col-full grid grid-cols-subgrid grid-rows-[auto_1fr] min-h-svh bg-surface"
+    aria-labelledby="pm-hero-heading"
+  >
+    <div
+      class={`col-full row-span-full self-end h-2/5 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color) delay-350 ${mountFade}`}
+      aria-hidden="true"
+    />
+
+    {/* The video fills the frame but must not size it – its own height, 9/16 of its width, would stretch the hero
+        in landscape. With no height of its own, its minimum height fills the frame once the rows are sized. */}
+    <div
+      id="pm-hero-frame"
+      class={`col-full row-span-full grid grid-cols-subgrid grid-rows-subgrid overflow-hidden [clip-path:inset(var(--pm-hero-inset,0)_round_var(--pm-hero-radius,0))] [&>video]:h-0 delay-350 ${mountFade}`}
+    >
+      <HeroVideo
+        label="A 911 Targa in Carmine Red on a country road at sunset"
+        poster="/examples/media/pm-hero.webp"
+        sources={[
+          { src: '/examples/media/pm-hero.webm', type: 'video/webm' },
+          { src: '/examples/media/pm-hero.mp4', type: 'video/mp4' },
+        ]}
+      >
+        <div
+          class="z-1 col-full row-span-full bg-linear-to-b from-black/35 via-transparent via-30% to-black/40 pointer-events-none"
+          aria-hidden="true"
+        />
+        <div
+          class={`z-1 col-extended row-start-2 self-end flex flex-col items-center gap-fluid-sm pb-[calc(var(--spacing-fluid-xl)+var(--spacing-static-2xl))] text-center delay-600 ${mountFade}`}
+        >
+          <p-heading id="pm-hero-heading" tag="h1" size="2xl" align="center">
+            Mr. Niessner, your 911 Targa.
+          </p-heading>
+          <p-text class="max-w-[60ch]" size="md" color="contrast-medium" align="center">
+            Configured together with your Porsche Centre – tailored to your style, in Carmine Red. Your personal road
+            movie, Mr. Niessner.
+          </p-text>
+        </div>
+      </HeroVideo>
+    </div>
+
+    <div
+      class={`z-2 col-full row-start-1 self-start justify-self-center pt-fluid-lg pb-fluid-md pointer-events-none ${mountFade}`}
+    >
+      <p-wordmark aria="{ 'aria-label': 'Porsche' }" />
+    </div>
+
+    <ScrollNext />
+  </section>
+);
+
+/**
+ * Title hero: a giant title on a fade into the configured colour, which the configured vehicle at the start of the
+ * chapter below is pulled up into. It is as tall as its content, so the chapter follows right below the title.
+ */
+const TitleHero = () => (
+  <section
+    id="pm-hero"
+    class="group/hero relative col-full grid grid-cols-subgrid bg-surface"
+    aria-labelledby="pm-hero-heading"
+  >
+    <div
+      class="absolute inset-0 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color)"
+      aria-hidden="true"
+    />
+    <div class={`z-1 col-full justify-self-center pt-fluid-lg pointer-events-none ${mountFade}`}>
+      <p-wordmark aria="{ 'aria-label': 'Porsche' }" />
+    </div>
+    <GhostTitle id="pm-hero-heading" level="h1" lines={['A choice', 'with character.']} class="z-1 mt-fluid-xl" />
+    <ScrollNext />
+  </section>
+);
+
+/** The lead of the chapter, the arrival of the configured vehicle. */
+const Lead = ({ style }: { style?: string }) => (
+  <p-text class={`max-w-[70ch] ${reveal}`} data-reveal style={style} size="lg" align="center">
+    Your 911 Targa in Carmine Red has arrived with us – a combination that shows attitude. Now the best part begins: the
+    way to your Porsche. Take the next step and talk to your personal advisor.
+  </p-text>
+);
+
+type ChapterCarProps = {
+  /** Shows the model signature behind the car. */
+  signature: boolean;
+  /** Placement within the chapter. */
+  class?: string;
+  style?: string;
+};
+
+/** The configured vehicle, the centrepiece of the chapter, revealed on scroll like the rest of it. */
+const ChapterCar = ({ signature, class: className = '', style }: ChapterCarProps) => (
+  <div class={`relative w-full ${reveal} ${className}`} data-reveal style={style}>
+    {signature && (
+      <div class="absolute left-1/2 top-2/5 w-4/5 max-w-[900px] -translate-1/2 pointer-events-none" aria-hidden="true">
+        {/* With `size="inherit"` the signature has no width of its own, so it takes the one of the wrapper. */}
+        <p-model-signature class="w-full" model="911" color="contrast-low" size="inherit" />
+      </div>
+    )}
+    <img
+      class="relative z-1 w-full"
+      src="/examples/media/pm-chapter-car.webp"
+      width="1600"
+      height="900"
+      alt="Your 911 Targa in Carmine Red, front view"
+    />
+  </div>
 );
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Page
 // ---------------------------------------------------------------------------------------------------------------------
 
+type PersonalizedMailingProps = {
+  /** The `meta` the page exports. */
+  meta: ExampleMeta;
+  variant: PersonalizedMailingVariant;
+};
+
 /**
- * Personalized mailing – the landing page a customer reaches from a mailing about their configured vehicle.
+ * Personalized mailing – the landing page a customer reaches from a mailing about their configured vehicle. Its two
+ * pages render it in either variant.
  *
  * The configured exterior colour is a single custom property on the main landmark: every brand coloured surface derives
  * from it, so the page can be generated for another colour by changing one value.
  */
-const Page = () => (
+export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps) => (
   <TemplatePage meta={meta} class="scheme-dark bg-canvas">
     <main id="main" class="grid-template gap-y-0" style={`--pm-config-color: ${configColor}`}>
-      {/* Hero: the full bleed video insets into a rounded card while the hero scrolls away. The page script writes
-          the inset and the radius as custom properties of the frame, everything else is a utility.
-          It is at least as tall as the viewport, and taller when its content needs it – at a large text size. Its
-          two rows keep the content below the wordmark: the wordmark sizes the first, the content sits at the end of
-          the second, and the video spans both. */}
-      <section
-        id="pm-hero"
-        class="group/hero col-full grid grid-cols-subgrid grid-rows-[auto_1fr] min-h-svh bg-surface"
-        aria-labelledby="pm-hero-heading"
-      >
-        <div
-          class={`col-full row-span-full self-end h-2/5 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color) delay-350 ${mountFade}`}
-          aria-hidden="true"
-        />
-
-        {/* The video fills the frame but must not size it – its own height, 9/16 of its width, would stretch the hero
-            in landscape. With no height of its own, its minimum height fills the frame once the rows are sized. */}
-        <div
-          id="pm-hero-frame"
-          class={`col-full row-span-full grid grid-cols-subgrid grid-rows-subgrid overflow-hidden [clip-path:inset(var(--pm-hero-inset,0)_round_var(--pm-hero-radius,0))] [&>video]:h-0 delay-350 ${mountFade}`}
-        >
-          <HeroVideo
-            label="A 911 Targa in Carmine Red on a country road at sunset"
-            poster="/examples/media/pm-hero.webp"
-            sources={[
-              { src: '/examples/media/pm-hero.webm', type: 'video/webm' },
-              { src: '/examples/media/pm-hero.mp4', type: 'video/mp4' },
-            ]}
-          >
-            <div
-              class="z-1 col-full row-span-full bg-linear-to-b from-black/35 via-transparent via-30% to-black/40 pointer-events-none"
-              aria-hidden="true"
-            />
-            <div
-              class={`z-1 col-extended row-start-2 self-end flex flex-col items-center gap-fluid-sm pb-[calc(var(--spacing-fluid-xl)+var(--spacing-static-2xl))] text-center delay-600 ${mountFade}`}
-            >
-              <p-heading id="pm-hero-heading" tag="h1" size="2xl" align="center">
-                Mr. Niessner, your 911 Targa.
-              </p-heading>
-              <p-text class="max-w-[60ch]" size="md" color="contrast-medium" align="center">
-                Configured together with your Porsche Centre – tailored to your style, in Carmine Red. Your personal
-                road movie, Mr. Niessner.
-              </p-text>
-            </div>
-          </HeroVideo>
-        </div>
-
-        <div
-          class={`z-2 col-full row-start-1 self-start justify-self-center pt-fluid-lg pb-fluid-md pointer-events-none ${mountFade}`}
-        >
-          <p-wordmark aria="{ 'aria-label': 'Porsche' }" />
-        </div>
-
-        <p-button-pure
-          id="pm-scroll-next"
-          class="fixed inset-x-0 bottom-fluid-md z-20 mx-auto w-fit"
-          type="button"
-          icon="arrow-down"
-          hide-label="true"
-          size="md"
-        >
-          Scroll down
-        </p-button-pure>
-      </section>
+      {variant === 'video' ? <VideoHero /> : <TitleHero />}
 
       {/* A new chapter: lead, configured car, engine sound and key figures on the configured colour. Its curved lower edge
-          overlaps the highlights below, which is why it is lifted above them. */}
+          overlaps the highlights below, which is why it is lifted above them. Without the video it opens on the car,
+          pulled up into the title of the hero, and leaves out the chapter heading the title takes the place of. */}
       <section
         class="relative z-1 col-full grid grid-cols-subgrid gap-y-fluid-lg py-fluid-2xl rounded-b-4xl bg-(--pm-config-color)"
-        aria-labelledby="pm-chapter-heading"
+        {...(variant === 'video' ? { 'aria-labelledby': 'pm-chapter-heading' } : { 'aria-label': 'Your 911 Targa' })}
       >
         <div class="col-narrow flex flex-col items-center gap-fluid-lg text-center">
-          <p-text class={`max-w-[70ch] ${reveal}`} data-reveal size="lg" align="center">
-            Your 911 Targa in Carmine Red has arrived with us – a combination that shows attitude. Now the best part
-            begins: the way to your Porsche. Take the next step and talk to your personal advisor.
-          </p-text>
-
-          <div class={`relative w-full ${reveal}`} data-reveal style={delay(1)}>
-            <div
-              class="absolute left-1/2 top-2/5 w-4/5 max-w-[900px] -translate-1/2 pointer-events-none"
-              aria-hidden="true"
-            >
-              {/* With `size="inherit"` the signature has no width of its own, so it takes the one of the wrapper. */}
-              <p-model-signature class="w-full" model="911" color="contrast-low" size="inherit" />
-            </div>
-            <img
-              class="relative z-1 w-full"
-              src="/examples/media/pm-chapter-car.webp"
-              width="1600"
-              height="900"
-              alt="Your 911 Targa in Carmine Red, front view"
-            />
-          </div>
-
-          <div class={`flex flex-col items-center gap-fluid-sm max-w-[70ch] ${reveal}`} data-reveal style={delay(2)}>
-            <p-heading id="pm-chapter-heading" tag="h2" size="xl" align="center">
-              A new chapter
-            </p-heading>
-            <p-text size="md" color="primary" align="center">
-              Since 1963 the 911 has moved people – across generations. Your Targa continues this chapter. Some cars are
-              admired. Yours will be remembered.
-            </p-text>
-          </div>
+          {variant === 'video' ? (
+            <>
+              <Lead />
+              <ChapterCar signature={true} style={delay(1)} />
+              <div
+                class={`flex flex-col items-center gap-fluid-sm max-w-[70ch] ${reveal}`}
+                data-reveal
+                style={delay(2)}
+              >
+                <p-heading id="pm-chapter-heading" tag="h2" size="xl" align="center">
+                  A new chapter
+                </p-heading>
+                <p-text size="md" color="primary" align="center">
+                  Since 1963 the 911 has moved people – across generations. Your Targa continues this chapter. Some cars
+                  are admired. Yours will be remembered.
+                </p-text>
+              </div>
+            </>
+          ) : (
+            <>
+              <ChapterCar signature={false} class="-mt-[clamp(7.5rem,22vw,20rem)]" />
+              <Lead style={delay(1)} />
+            </>
+          )}
 
           {/* Engine sound: while it plays, the label crossfades into the waveform and the pill widens. The label stays in
               the flow and sizes the pill at rest; playing, the pill grows by a fixed amount past it – whatever the
@@ -735,24 +819,28 @@ const Page = () => (
 
     <Script>{
       /* language=JavaScript */ `
-      // Behaviour of the hero: fades it in, insets the video frame while it scrolls away and fades the scroll hint.
+      // Behaviour of the hero: fades it in${variant === 'video' ? ', insets the video frame while it scrolls away' : ''} and fades the scroll hint.
 
-      const hero = document.getElementById('pm-hero');
-      const heroFrame = document.getElementById('pm-hero-frame');
+      const hero = document.getElementById('pm-hero');${variant === 'video' ? "\n      const heroFrame = document.getElementById('pm-hero-frame');" : ''}
       const scrollNext = document.getElementById('pm-scroll-next');
       const heroReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const clamp01 = (value) => Math.min(1, Math.max(0, value));
-      const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2);
+      const clamp01 = (value) => Math.min(1, Math.max(0, value));${
+        variant === 'video' ? '\n      const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2);' : ''
+      }
 
       let heroFrameRequest = 0;
 
       const updateHero = () => {
-        const progress = clamp01(-hero.getBoundingClientRect().top / (window.innerHeight * 0.85));
+        const progress = clamp01(-hero.getBoundingClientRect().top / (window.innerHeight * 0.85));${
+          variant === 'video'
+            ? `
         const eased = heroReducedMotion ? 0 : easeInOut(progress);
 
         heroFrame.style.setProperty('--pm-hero-inset', eased * 6 + 'vh ' + eased * 6 + 'vw');
-        heroFrame.style.setProperty('--pm-hero-radius', eased * 1.5 + 'rem');
+        heroFrame.style.setProperty('--pm-hero-radius', eased * 1.5 + 'rem');`
+            : ''
+        }
 
         const hintOpacity = clamp01(1 - progress * 2.5);
         scrollNext.style.opacity = String(hintOpacity);
@@ -939,5 +1027,3 @@ const Page = () => (
     }</Script>
   </TemplatePage>
 );
-
-export default Page;

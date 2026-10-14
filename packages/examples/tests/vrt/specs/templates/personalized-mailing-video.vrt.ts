@@ -3,14 +3,15 @@ import { getDevice, getExampleUrl, setupExamplePage, waitForStablePosition } fro
 import { testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
- * `src/templates/personalized-mailing` – the whole page, and the video modal its reviews open.
+ * `src/templates/personalized-mailing/video` – the whole page, and the video modal its reviews open. The modal is the
+ * same in the `no-video` variant, so it is captured here only.
  *
  * The page is captured with reduced motion, which is what makes it deterministic: every reveal is shown, the key
  * figures carry their final values, the share cards are fanned out and the hero is not inset. The modal covers the
  * viewport, so it is captured at viewport size; the external player inside it is stubbed by the setup.
  */
 
-const id = 'templates-personalized-mailing';
+const id = 'templates-personalized-mailing-video';
 const url = getExampleUrl(id);
 
 testInitialStates(id);

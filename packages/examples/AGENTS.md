@@ -120,6 +120,9 @@ src/
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
 ├── templates/
 │   ├── landing-page/             # index.page.tsx
+│   ├── personalized-mailing/     # PersonalizedMailing.tsx: the page, rendered by its two variants –
+│   │   ├── video/                # opening on a full-bleed video
+│   │   └── no-video/             # opening on a giant title the vehicle is pulled up into
 │   └── admin-panel/              # index.page.tsx – application shell on `p-canvas`
 ├── patterns/
 │   ├── header/overlay/           # Header in its `overlay` variant
