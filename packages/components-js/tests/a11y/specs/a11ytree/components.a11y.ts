@@ -17,7 +17,7 @@ for (const component of advancedPagesToTest) {
     test('should match a11y tree', async ({ page }) => {
       await setupScenario(page, `/${component}`, viewportWidthM);
 
-      let selector = component;
+      let selector: string | undefined = component;
 
       // maps pages which aren't equal with component names
       if (!componentsValid.includes(component)) {

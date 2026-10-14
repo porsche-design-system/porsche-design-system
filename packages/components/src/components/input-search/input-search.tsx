@@ -130,7 +130,7 @@ export class InputSearch {
   /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`). */
+  /** Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`). */
   @Prop() public aria?: SelectedAriaAttributes<InputSearchAriaAttribute>;
 
   /** Emitted when the input loses focus after its value was changed. */

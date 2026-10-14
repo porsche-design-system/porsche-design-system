@@ -25,6 +25,6 @@ it('should return correct partial markup for getVanillaJsPartialExample', () => 
       ],
     },
   ];
-  const partialExample = getVuePartialExample('getInitialStyles', 'head', partialCalls);
+  const partialExample = getVuePartialExample('getFontLinks', 'head', partialCalls);
   expect(partialExample).toMatchSnapshot();
 });

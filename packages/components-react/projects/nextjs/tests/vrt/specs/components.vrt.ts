@@ -38,7 +38,9 @@ for (const component of components) {
         // Remove selects in iframes
         await page.evaluate(() => {
           document.querySelectorAll('iframe').forEach((iframe) => {
-            iframe.contentDocument
+            const contentDocument = iframe.contentDocument;
+            if (!contentDocument) throw new Error('iframe has no content document');
+            contentDocument
               .querySelectorAll('select[name="route"], select[name="theme"]')
               .forEach((select) => select.remove());
           });

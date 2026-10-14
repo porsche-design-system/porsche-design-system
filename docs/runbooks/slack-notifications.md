@@ -28,9 +28,21 @@ against the action's default of `false`.
 Two workflows announce a release. Both delegate to `.github/actions/notify-slack-release`, so there is one code path and
 the message cannot drift.
 
-**The pipeline path** covers every normal release. On a push to `main` or `v4`, `release.yml` creates the release and
-the `notify-release` job announces it. It only fires when a release consumers can see was really created, so a
-pre-release, a draft, and a re-run of a job whose release already existed all post nothing.
+**The pipeline path** covers every normal release. On a release push to `main` or a matching version branch,
+`release.yml` creates the release. The `notify-release` job waits for the pinned storefront, major-alias promotion
+(including CloudFront invalidation), and their separate Algolia jobs before announcing it. It only fires when a release
+consumers can see was really created, so a pre-release, a draft, and a re-run of a job whose release already existed all
+post nothing.
+
+A successful major job can intentionally leave a newer release in place. For example, releasing `4.7.1` after `4.10.0`
+still announces `4.7.1`, even though `/v4/` remains on `4.10.0`.
+
+An Algolia failure blocks the announcement but does not undo the successful upload. **Re-run failed jobs** retries
+indexing independently. A full rerun also retries pinned indexing even if its upload is skipped as already published.
+
+Use **Re-run failed jobs** after a documentation deployment failure so the original release-creation output remains
+available to the announcement job. If **Re-run all jobs** was used instead, the release already exists and the automatic
+announcement is suppressed; use the manual path below once the documentation is ready.
 
 **The manual path** is `notify-release-published.yml`, run from the Actions tab with a tag. It exists for a release the
 pipeline did not announce — one created by hand, one recovered after CI missed it, or a draft somebody published.

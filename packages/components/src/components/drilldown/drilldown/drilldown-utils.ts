@@ -29,16 +29,8 @@ export const traverseTreeAndUpdateState = (
 ) => {
   if (isElementOfKind(activeItem, 'p-drilldown-item')) {
     activeItem[prop] = value;
-    internalDrilldown.traverseTreeAndUpdateState(
-      activeItem.parentElement as HTMLPDrilldownItemElement,
-      'cascade',
-      value
-    );
+    traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'cascade', value);
   }
-};
-
-export const internalDrilldown = {
-  traverseTreeAndUpdateState,
 };
 
 /**
@@ -50,7 +42,7 @@ export const internalDrilldown = {
  */
 export const updateDrilldownItemState = (activeItem: HTMLPDrilldownItemElement, value: boolean): void => {
   activeItem.secondary = value;
-  internalDrilldown.traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'primary', value);
+  traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'primary', value);
 };
 
 export const validateActiveIdentifier = <T extends Class<any>>(
@@ -60,7 +52,8 @@ export const validateActiveIdentifier = <T extends Class<any>>(
 ): void => {
   if (activeIdentifier !== undefined) {
     const matchingItems = items.filter((item) => item.identifier === activeIdentifier);
-    if (matchingItems.length === 0) {
+    // an item without identifier can still get it assigned later, e.g. by a framework binding
+    if (matchingItems.length === 0 && items.every((item) => item.identifier !== undefined)) {
       logInvalidIdentifierError(instance, activeIdentifier);
     } else if (matchingItems.length > 1) {
       logMultipleIdentifierError(instance, activeIdentifier, matchingItems);

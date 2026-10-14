@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { expect, it } from 'vitest';
-import { CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../../../cdn.config';
 
 const readFile = (file: string) => {
   const themePath = path.resolve(__dirname, `../../../lib/${file}`);
@@ -28,14 +27,12 @@ it('should contain all parts in index css', () => {
   expect(indexCss).toContain(fontFaceCss);
   expect(indexCss).toContain(normalizeCss);
   expect(indexCss).toContain(variablesCss);
-  expect(indexCss).toContain(CDN_BASE_URL_COM);
-  expect(indexCss).not.toContain(CDN_BASE_URL_CN);
+  expect(indexCss).toContain("url('./fonts/");
 });
 
 it('should contain all parts in index cn css', () => {
   expect(indexCnCss).toContain(fontFaceCnCss);
   expect(indexCnCss).toContain(normalizeCss);
   expect(indexCnCss).toContain(variablesCss);
-  expect(indexCnCss).toContain(CDN_BASE_URL_CN);
-  expect(indexCnCss).not.toContain(CDN_BASE_URL_COM);
+  expect(indexCnCss).toContain("url('../fonts/");
 });

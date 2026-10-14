@@ -10,10 +10,11 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -24,6 +25,7 @@ import {
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-password-styles';
 import type {
+  InputPasswordAriaAttribute,
   InputPasswordBlurEventDetail,
   InputPasswordChangeEventDetail,
   InputPasswordInputEventDetail,
@@ -49,6 +51,7 @@ const propTypes: PropTypes<typeof InputPassword> = {
   toggle: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<InputPasswordAriaAttribute>(FORM_FIELD_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -122,6 +125,9 @@ export class InputPassword {
 
   /** Shows a toggle button that switches the password between masked and plain text visibility. */
   @Prop() public toggle?: boolean = false;
+
+  /** Sets additional ARIA attributes on the native input to improve accessibility for screen readers. */
+  @Prop() public aria?: SelectedAriaAttributes<InputPasswordAriaAttribute>;
 
   /** Emitted when the password input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputPasswordChangeEventDetail>;
@@ -235,6 +241,7 @@ export class InputPassword {
         message={this.message}
         loading={this.loading}
         initialLoading={this.initialLoading}
+        aria={this.aria}
         end={
           this.toggle && (
             <PrefixedTagNames.pButtonPure

@@ -1,5 +1,5 @@
 import { expect, type Page, test } from '@playwright/test';
-import { addEventListener, getEventSummary, setProperty, sleep } from '../../../../components-js/tests/e2e/helpers';
+import { addEventListener, getEventSummary, setProperty } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-multi-select');

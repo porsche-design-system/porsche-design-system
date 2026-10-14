@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "4.7.0",
+  "version": "4.8.0",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -42,9 +42,10 @@
     "build-prod": "PDS_IS_STAGING=0 npm run build",
     "pretypecheck": "npm run prebuild:generateConstructorMap",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
     "pretest:unit": "npm run prebuild:generateConstructorMap",
-    "test:unit": "vitest -c tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest -c tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www && rm -rf ./src/styles-entry.ts && rm -rf ./src/utils-entry.ts"
   },
   "dependencies": {
@@ -55,14 +56,14 @@
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0",
     "@splidejs/splide": "^4.1.4",
-    "@stencil/core": "4.43.3"
+    "@stencil/core": "4.45.1"
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^6.0.3",
     "@tailwindcss/cli": "^4.3.3",
-    "@types/react": "^19.2.18",
+    "@types/react": "^19.3.0",
     "change-case": "^5.4.4",
-    "concurrently": "^10.0.4",
+    "concurrently": "^10.0.5",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^9.5.1",
     "fast-glob": "^3.3.3",
@@ -70,7 +71,7 @@
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   },
   "volta": {

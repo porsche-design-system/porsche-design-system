@@ -506,7 +506,7 @@ describe('syncDismissListeners', () => {
 
 describe('pointer interaction tracking', () => {
   it('should flag on pointerdown and unflag on pointerup', () => {
-    component['onPointerDown']({ composedPath: () => [] } as unknown as PointerEvent);
+    component['onPointerDown']({ composedPath: (): EventTarget[] => [] } as unknown as PointerEvent);
     expect(component['isPointerInteraction']).toBe(true);
     component['onPointerUp']();
     expect(component['isPointerInteraction']).toBe(false);

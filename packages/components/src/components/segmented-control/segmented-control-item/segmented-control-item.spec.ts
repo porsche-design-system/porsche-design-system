@@ -1,19 +1,28 @@
+import * as stencilCore from '@stencil/core';
 import { vi } from 'vitest';
-import * as throwIfPropIsUndefinedUtils from '../../../utils/validation/throwIfPropIsUndefined';
 import { SegmentedControlItem } from './segmented-control-item';
 
 describe('render', () => {
-  it('should call throwIfPropIsUndefined() with correct parameters', () => {
-    const spy = vi.spyOn(throwIfPropIsUndefinedUtils, 'throwIfPropIsUndefined');
-
+  it('should not throw when value is undefined', () => {
     const component = new SegmentedControlItem();
     component.host = document.createElement('p-segmented-control-item') as any;
+    component.host.attachShadow({ mode: 'open' });
 
-    try {
-      component.render();
-    } catch {}
+    expect(() => component.render()).not.toThrow();
+  });
 
-    expect(spy).toHaveBeenCalledWith(component.host, 'value', component.value);
+  describe('onValueChange', () => {
+    it('should call forceUpdate() on parent', () => {
+      const spy = vi.spyOn(stencilCore, 'forceUpdate');
+      const parent = document.createElement('p-segmented-control');
+      const component = new SegmentedControlItem();
+      component.host = document.createElement('p-segmented-control-item') as any;
+      parent.appendChild(component.host);
+
+      component.onValueChange();
+
+      expect(spy).toHaveBeenCalledWith(parent);
+    });
   });
 
   describe('onClick', () => {

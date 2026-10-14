@@ -20,7 +20,7 @@ describe('prop typings', () => {
   // Read once - all components share the single bundled .d.ts
   const bundledTypes = fs.readFileSync(bundledTypesPath, 'utf8');
 
-  test.each(tagNames)('should declare and re-export props type for %s in bundled d.ts', (tagName) => {
+  test.each(tagNames)('should declare and export props type for %s in bundled d.ts', (tagName) => {
     const propsTypeName = toPropsTypeName(tagName);
 
     // Type declaration (e.g. `type PButtonProps = { ... }`)
@@ -28,9 +28,10 @@ describe('prop typings', () => {
       new RegExp(`\\btype\\s+${propsTypeName}\\b`)
     );
 
-    // Public re-export (e.g. `export type { ..., PButtonProps, ... }`)
-    expect(bundledTypes, `Expected ${propsTypeName} to be re-exported from bundled d.ts`).toMatch(
-      new RegExp(`export\\s+type\\s*\\{[\\s\\S]*\\b${propsTypeName}\\b[\\s\\S]*\\}`)
+    // Public export, either inline (e.g. `export type PButtonProps = { ... }`) or as re-export
+    // (e.g. `export type { ..., PButtonProps, ... }`), depending on how ng-packagr bundles the d.ts
+    expect(bundledTypes, `Expected ${propsTypeName} to be exported from bundled d.ts`).toMatch(
+      new RegExp(`export\\s+type\\s+${propsTypeName}\\b|export\\s+type\\s*\\{[^}]*\\b${propsTypeName}\\b[^}]*\\}`)
     );
   });
 });

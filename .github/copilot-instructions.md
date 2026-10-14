@@ -32,6 +32,7 @@ packages/
 ├── components-react/  # React wrapper + Next.js/React Router integrations
 ├── components-vue/    # Vue wrapper
 ├── storefront/        # Next.js documentation site
+├── examples/          # Standalone example pages (TSX, rendered to plain HTML at build time)
 ├── tokens/            # Design tokens (colors, spacing, typography)
 ├── styles/            # Shared styles, Tailwind plugin
 ├── assets/            # Icons, fonts, marque, crest
@@ -119,13 +120,19 @@ npm run lint
 npm run format
 
 # Typecheck (no compilation)
-npm run typecheck             # Everything a fresh clone can check. Runs in CI and at the start of `build`.
-npm run typecheck:all         # Every package, in build order. Needs a built tree, so it is local only.
-npm run typecheck:{package}   # One package only, e.g. typecheck:tokens
+npm run typecheck                  # Everything a fresh clone can check. Runs in CI and at the start of `build`.
+npm run typecheck:all              # Every package, in build order. Needs a built tree, so it is local only.
+npm run typecheck:all:tests        # Every test scope, by package. Needs a built tree, so it is local only.
+npm run typecheck:{package}        # One package only, e.g. typecheck:tokens
+npm run typecheck:{package}:tests  # Test code of one package and its projects, e.g. typecheck:styles:tests
+npm run typecheck:tests            # Test code of one workspace, with --workspace={name}. Runs first in its test script.
 ```
 
-Root holds two chains, and both are composed from the per-package `typecheck:{package}` entries, with nested
-projects called by `--workspace` inside `typecheck:all`.
+Root holds three chains, and all three are composed from per-package entries. `typecheck` and `typecheck:all` use the
+the `typecheck:{package}` entries, with nested projects called by `--workspace` inside `typecheck:all`.
+`typecheck:all:tests` uses the `typecheck:{package}:tests` entries, and each of those calls its own test scopes,
+`typecheck:tests` and `typecheck:tests:{e2e,vrt,a11y,smoke}`, by workspace. Each test scope is also the first
+command of the test script that runs those files.
 `typecheck` covers only the packages whose sources exist in a fresh clone, because the CI Typecheck job
 runs on a fresh checkout. `typecheck:all` covers every package in the order `build` uses, and it needs a
 built tree, so nothing automated calls it.
@@ -147,7 +154,8 @@ The monorepo has **strict build dependencies**. Always build in this order:
 2. `components` (Stencil core)
 3. `components-js`
 4. `components-angular`, `components-react`, `components-vue` (can be parallel)
-5. `storefront`
+5. `examples` (the storefront copies its `dist-site/` into `public/examples/`)
+6. `storefront`
 
 Use `npm run build` to handle this automatically, or `npm run build:core-dependencies` + individual package builds.
 
@@ -196,14 +204,16 @@ packages/components/src/components/{name}/
 
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds in the codebase
 2. **Angular updates**: Versions are bumped by syncpack like any other dependency; only Angular's framework migrations
-   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never `ng update`
-   directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check TypeScript compatibility.
+   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never
+   `ng update` directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check
+   TypeScript compatibility.
 
 ## Common Pitfalls
 
 - **Don't** skip `npm run build` before running tests
 - **Don't** modify `package-lock.json` manually; run `npm install` to regenerate
-- **Don't** patch a missing native binding in a CI step; regenerate the lockfile cleanly and verify it with `npm run npm:verify-lock`
+- **Don't** patch a missing native binding in a CI step; regenerate the lockfile cleanly and verify it with
+  `npm run npm:verify-lock`
 - **Don't** patch a missing native binding in a CI step; regenerate the lockfile cleanly and verify it with
   `npm run npm:verify-lock` (see `docs/dependencies.md` → _Platform-specific native bindings in the lockfile_)
 - **Don't** remove focus outlines without providing accessible alternatives
@@ -223,6 +233,17 @@ an entry.
 When performing a code review, always apply the `.github/skills/code-review-changelog` skill to check whether the
 changelog was updated correctly for the changes in the pull request — including when the pull request does not touch
 `packages/components/CHANGELOG.md` at all.
+
+## Pull Requests
+
+- Structure the body after `.github/pull_request_template.md` and keep all its sections, even when writing the body
+  yourself or passing `--body`/`--body-file` to `gh pr create`.
+- Internal pull requests deploy the storefront to `https://designsystem.porsche.com/pr-<number>/` (see
+  `docs/release.md`). The number only exists once the pull request is created, so after `gh pr create` run
+  `gh pr edit <number> --body-file …` to fill in the **Preview** section. Link the pages that show the change, e.g.
+  `https://designsystem.porsche.com/pr-4744/components/drilldown/configurator/` (component pages have `configurator`,
+  `examples`, `usage`, `api` and `accessibility`).
+- Pull requests from forks are not deployed; remove the **Preview** section there.
 
 ## Accessibility (Critical)
 

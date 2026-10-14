@@ -198,8 +198,25 @@ export const AI_TAG_LOCALES: AiTagLocale[] = [
 
 export const normalizeAiTagLocale = (locale: string): string => locale.replace(/-/g, '_');
 
-/** First language subtag; maps Norwegian Bokmål `nb` → `no` (translation key). */
+/**
+ * Translation key for a locale.
+ * Usually the first language subtag. Special cases:
+ * - Norwegian Bokmål `nb` → `no`
+ * - Chinese `zh-CN` / `zh-HK` / `zh-TW` → `zhCN` / `zhHK` / `zhTW` (distinct legal copy)
+ */
+const ZH_REGION_TRANSLATION_KEYS = {
+  CN: 'zhCN',
+  HK: 'zhHK',
+  TW: 'zhTW',
+} as const;
+
 export const getAiTagLanguage = (locale: string): string => {
-  const language = normalizeAiTagLocale(locale).split('_')[0] ?? '';
-  return language === 'nb' ? 'no' : language;
+  const [language, region] = normalizeAiTagLocale(locale).split('_');
+  if (language === 'nb') {
+    return 'no';
+  }
+  if (language === 'zh' && region && region in ZH_REGION_TRANSLATION_KEYS) {
+    return ZH_REGION_TRANSLATION_KEYS[region as keyof typeof ZH_REGION_TRANSLATION_KEYS];
+  }
+  return language ?? '';
 };

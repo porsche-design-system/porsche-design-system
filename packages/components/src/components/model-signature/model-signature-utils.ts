@@ -20,5 +20,5 @@ export const MODEL_SIGNATURE_COLORS = [
 export type ModelSignatureColor = (typeof MODEL_SIGNATURE_COLORS)[number];
 
 export const getSvgUrl = (model: ModelSignatureModel): string => {
-  return `${getCDNBaseURL()}/model-signatures/${MODEL_SIGNATURES_MANIFEST[model].src}`;
+  return `${getCDNBaseURL()}/porsche-design-system/model-signatures/${MODEL_SIGNATURES_MANIFEST[model].src}`;
 };

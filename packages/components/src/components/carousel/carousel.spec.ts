@@ -653,6 +653,12 @@ describe('active slide control', () => {
     expect(component['splide'].go).toHaveBeenCalledWith(3);
   });
 
+  it('should not throw when activeSlideIndex changes before splide is initialized', () => {
+    const component = new Carousel();
+
+    expect(() => component.activeSlideHandler(3)).not.toThrow();
+  });
+
   it('should not re-render when only activeSlideIndex changes', () => {
     const component = new Carousel();
 

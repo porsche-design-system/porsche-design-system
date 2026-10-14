@@ -1,7 +1,7 @@
 import * as componentsJs from '@porsche-design-system/components-js';
 import { flushPromises } from '@vue/test-utils';
 import { describe, expect, test, vi } from 'vitest';
-import { App, createApp } from 'vue';
+import { type App, createApp } from 'vue';
 import {
   createPorscheDesignSystem,
   porscheDesignSystemSymbol,

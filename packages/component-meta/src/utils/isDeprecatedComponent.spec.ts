@@ -37,6 +37,20 @@ describe('isDeprecatedComponent', () => {
     ]);
   });
 
+  it('should not truncate a deprecation message that mentions "@Component"', () => {
+    const fileContent = `/**
+     * @deprecated since v3.0.0, use @Component with shadow: false instead.
+     */
+    @Component({
+      tag: 'p-content-wrapper',
+      shadow: true,
+    })`;
+
+    const result = isDeprecatedComponent(fileContent);
+
+    expect(result).toEqual([true, 'since v3.0.0, use @Component with shadow: false instead.']);
+  });
+
   it('should return false and an empty string if no deprecation message is present', () => {
     const fileContent = `/**
      * This is a normal component without deprecation.

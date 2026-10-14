@@ -1,9 +1,10 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import type { AlgoliaRecord } from '@/components/search/Search';
 import { algoliasearch } from 'algoliasearch';
 import * as cheerio from 'cheerio';
+import type { AlgoliaRecord } from '@/components/search/Search';
 import { type Route, type Routes, sitemap } from '../src/sitemap';
+import { replaceAlgoliaIndex } from './replaceAlgoliaIndex';
 
 const extractContentAndSections = (
   route: Route
@@ -52,7 +53,7 @@ const extractContentAndSections = (
       }
     });
   } catch (error) {
-    console.error(`Error reading file at ${filePath}:`, error);
+    throw new Error(`Error reading file at ${filePath}`, { cause: error });
   }
 
   return { content, sections };
@@ -155,37 +156,21 @@ const attributeForDistinct: keyof AlgoliaRecord = 'page';
 
 const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(section)', 'desc(content)'];
 export const ALGOLIA_INDEX_NAME = process.env.P_CURRENT_BRANCH?.replace('/', '_') || 'localhost';
-const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
-  const client = algoliasearch(process.env.ALGOLIA_APP_ID as string, process.env.ALGOLIA_API_KEY as string);
-  // const index = client.index.initIndex(ALGOLIA_INDEX_NAME);
-  client
-    .setSettings({
-      indexName: ALGOLIA_INDEX_NAME,
-      indexSettings: {
-        searchableAttributes,
-        distinct: true,
-        attributeForDistinct,
-        hitsPerPage: 20,
-        customRanking,
-      },
-    })
-    .then(() => {
-      console.log('Algolia - Successfully set settings.');
-    })
-    .catch((error) => {
-      console.log('Algolia - Saving settings failed:', error);
-    });
-  client
-    .saveObjects({ indexName: ALGOLIA_INDEX_NAME, objects: records })
-    .then(() => {
-      console.log('Algolia - Successfully updated index:', ALGOLIA_INDEX_NAME);
-    })
-    .catch((error) => {
-      console.log('Algolia - Saving objects failed:', error);
-    });
+const uploadAndOverrideRecords = async (records: AlgoliaRecord[]) => {
+  const { ALGOLIA_APP_ID, ALGOLIA_API_KEY } = process.env;
+  if (!ALGOLIA_APP_ID || !ALGOLIA_API_KEY) throw new Error('Algolia credentials are required');
+  const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
+  await replaceAlgoliaIndex(client, ALGOLIA_INDEX_NAME, records, {
+    searchableAttributes,
+    distinct: true,
+    attributeForDistinct,
+    hitsPerPage: 20,
+    customRanking,
+  });
+  process.stdout.write(`Algolia - Successfully updated index: ${ALGOLIA_INDEX_NAME}\n`);
 };
 
-const updateAlgoliaIndex = () => {
+const updateAlgoliaIndex = async () => {
   // Filter changelog since it's too big, the sections of the changelog page will still be included in the index
   const records = generateAlgoliaRecords(sitemap).filter((record) => record.objectID !== '/news/changelog');
 
@@ -194,7 +179,10 @@ const updateAlgoliaIndex = () => {
   //   encoding: 'utf8',
   // });
 
-  uploadAndOverrideRecords(records);
+  await uploadAndOverrideRecords(records);
 };
 
-updateAlgoliaIndex();
+updateAlgoliaIndex().catch((error: unknown) => {
+  console.error(error);
+  process.exitCode = 1;
+});

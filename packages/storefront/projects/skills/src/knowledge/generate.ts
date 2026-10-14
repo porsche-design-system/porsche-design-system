@@ -7,6 +7,7 @@ import { collectDeprecations } from './deprecations/collect';
 import { renderDeprecationsReference } from './deprecations/reference';
 import {
   getPackageSkillRouteReferences,
+  renderExamplesSection,
   renderStylesheetsSection,
   renderStylingSection,
   renderTokensSection,
@@ -14,7 +15,7 @@ import {
 } from './packageSkills';
 import { buildSkillMd, DEPRECATIONS_REFERENCE_FILE, renderDeprecationsSection } from './skillMd';
 
-const KNOWLEDGE_DIRECTORY_LAYOUT = ['references/components', 'references/styles'] as const;
+const KNOWLEDGE_DIRECTORY_LAYOUT = ['references/components', 'references/examples', 'references/styles'] as const;
 
 type KnowledgeInputs = { docsMeta: ComponentDocsMetaMap };
 
@@ -38,6 +39,7 @@ export const generateKnowledgeSkill: SkillGenerator<KnowledgeInputs> = (root, fr
       stylesheets: renderStylesheetsSection(framework),
       tokens: renderTokensSection(),
       styling: renderStylingSection(),
+      examples: renderExamplesSection(framework),
       deprecations: renderDeprecationsSection(),
     })
   );

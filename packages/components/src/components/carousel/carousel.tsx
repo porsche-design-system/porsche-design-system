@@ -192,7 +192,8 @@ export class Carousel {
 
   @Watch('activeSlideIndex')
   public activeSlideHandler(newValue: number): void {
-    this.splide.go(newValue); // change event is emitted via splide.on('move')
+    // splide is created in componentDidLoad, which applies the current activeSlideIndex itself
+    this.splide?.go(newValue); // change event is emitted via splide.on('move')
   }
 
   @Watch('slidesPerPage')

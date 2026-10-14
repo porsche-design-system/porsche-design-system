@@ -169,4 +169,4 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-ai-tag': '<p-ai-tag></p-ai-tag>',
 };
 
-export const getMarkup = (tagName: TagName): string => tagNameMarkup[tagName];
+export const getMarkup = (tagName: TagNameRelevant): string => tagNameMarkup[tagName];

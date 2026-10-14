@@ -2,7 +2,7 @@ import { camelCase, kebabCase, pascalCase } from 'change-case';
 
 export const transformObjectValues = (markup: string): string =>
   // remove quotes from object values but add double brackets and camelCase
-  markup.replace(/\s(\S+)="({.*?})"/g, (_, $key, $value) => ` ${camelCase($key)}={${$value}}`);
+  markup.replace(/\s([^\s="]+)="({[^"\n]*})"/g, (_, $key, $value) => ` ${camelCase($key)}={${$value}}`);
 
 export const transformStandardAttributes = (markup: string): string =>
   // transform all standard attributes to camel case
@@ -26,10 +26,10 @@ export const transformBooleanDigitAndUndefinedValues = (markup: string): string 
 export const transformCustomElementTagName = (markup: string): string =>
   markup.replace(/<(\/?)(p-[\w-]+)/g, (_, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
 
-export const transformInputs = (markup: string): string => markup.replace(/(<input(?:.[^/]*?))>/g, '$1 />');
+export const transformInputs = (markup: string): string => markup.replace(/(<input[^<>/]*)>/g, '$1 />');
 
 export const transformToSelfClosingTags = (markup: string): string =>
-  markup.replace(/(<([A-Za-z-]+)[^>]*?)>\s*<\/\2>/g, '$1 />');
+  markup.replace(/(<([A-Za-z-]+)(?:\s[^<>]*)?)>\s*<\/\2>/g, '$1 />');
 
 export const transformStyleAttribute = (markup: string): string =>
   markup.replace(/\sstyle="([\s\S]*?)"/g, (_, $style: string) => {

@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { kebabCase } from 'change-case';
 import type { TagName } from '@porsche-design-system/shared';
+import { npmDistPath } from '../projects/components-wrapper/environment';
 
 type Manifest = {
   [key in TagName | 'core']?: string;
@@ -37,15 +38,7 @@ const createManifest = (indexJsFile: string): Manifest => {
 };
 
 const generateChunksManifest = (): void => {
-  let manifest: Manifest = {}; // fallback
-
-  const packageName = '@porsche-design-system/components-js';
-  try {
-    const indexJsFile = require.resolve(packageName);
-    manifest = createManifest(indexJsFile);
-  } catch (e) {
-    throw new Error(`"${packageName}" can't be resolved, so manifest will be empty`);
-  }
+  const manifest = createManifest(path.resolve(npmDistPath, 'cjs/index.cjs'));
 
   const chunkNames = Object.keys(manifest).filter((chunkName) => chunkName !== 'core');
   const content = `export const COMPONENT_CHUNKS_MANIFEST = ${JSON.stringify(manifest)};

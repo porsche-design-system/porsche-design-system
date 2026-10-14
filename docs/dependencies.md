@@ -25,9 +25,13 @@ across all workspaces.
    [Platform-specific native bindings in the lockfile](#platform-specific-native-bindings-in-the-lockfile).
 
 Some dependencies (Playwright, Stencil, internal packages) are intentionally excluded from this flow and updated
-manually — see [Held-back dependencies](#held-back-dependencies). Angular **versions** now go through this normal
-syncpack flow; only Angular's framework **migrations** are applied separately — see
+manually — see [Held-back dependencies](#held-back-dependencies). Angular **versions** go through this normal syncpack
+flow; only Angular's framework **migrations** are applied separately — see
 [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations).
+
+Releases younger than **7 days** are deliberately invisible to this flow — see
+[Release-age cooldown](#release-age-cooldown-supply-chain-protection). A version that does not show up in
+`npm run npm:outdated` today will show up next week.
 
 ### Syncpack helper scripts
 
@@ -83,6 +87,55 @@ PRs while still allowing **security** PRs (grouped via `applies-to: security-upd
 the held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
 Dependabot on a monthly schedule.
 
+## Release-age cooldown (supply-chain protection)
+
+The npm worm campaigns of autumn 2025 ("Shai-Hulud" and its successors) all followed the same pattern: a stolen
+maintainer token, a malicious version pushed to the registry, and every `npm install` in the next few hours pulled it
+in. Such versions are typically unpublished or remediated by the registry/maintainer **within one to three days**.
+Simply not installing brand-new releases removes most of that exposure without any extra tooling, scanner or service.
+
+We therefore enforce a **7-day cooldown** on every path through which a new version can enter this repository:
+
+| Path                                | Setting                                                                            | Unit               |
+| ----------------------------------- | ---------------------------------------------------------------------------------- | ------------------ |
+| Manual `npm install` / `npm update` | [`.npmrc`](../.npmrc) → `min-release-age=7`                                        | days               |
+| Dependabot PRs                      | [`.github/dependabot.yml`](../.github/dependabot.yml) → `cooldown.default-days: 7` | days               |
+| `syncpack` (`npm run npm:update`)   | [`.syncpackrc.json`](../.syncpackrc.json) → `minimumReleaseAge: 10080`             | minutes (= 7 days) |
+
+All three must be set: **Dependabot and syncpack do not read `.npmrc`**, and `.npmrc` does not influence how the other
+two pick a target version. Mind the differing units.
+
+Why seven days and not one: one day is inside the typical one-to-three-day takedown window, so it would still catch a
+fresh compromise. At our weekly update rhythm a seven-day delay costs nothing — the release we skip today is the release
+we take next week.
+
+### What is _not_ affected
+
+- **`npm ci`** resolves exclusively from `package-lock.json` and never consults registry metadata for version selection,
+  so CI, Docker and container builds are completely unchanged. (Verified: `npm ci --dry-run` produces an identical tree
+  with and without the flag.)
+- **Internal `@porsche-design-system/*` packages** resolve to the local workspaces (including the StackBlitz starters'
+  published pins, see [StackBlitz starter templates](#stackblitz-starter-templates-npm-workspace-members)), so a fresh
+  release is never blocked by the cooldown.
+- **Security updates.** Dependabot's `cooldown` deliberately applies to _version_ updates only, never to security
+  updates — a fix for a known advisory must not be delayed. Since npm version updates are disabled anyway (see
+  [Dependabot](#dependabot-security-only-for-npm)), the npm `cooldown` entry is a safety net that takes effect the
+  moment version updates are re-enabled; the `github-actions` entry is where it is active today.
+
+### Requirements and escape hatch
+
+`min-release-age` requires **npm >= 11.10.0** (we pin npm via the root `package.json` `volta` field; older npm versions
+just ignore the unknown key with a warning). It is mutually exclusive with `--before`.
+
+When you genuinely need a release that is younger than the cooldown — a hotfix for an advisory, or a package whose very
+first version was published a few days ago — override it per invocation instead of editing `.npmrc`:
+
+```bash
+npm install some-package --min-release-age=0
+```
+
+Note this down in the PR description, so the exception is a conscious, reviewable decision.
+
 ## Strict peer dependency resolution
 
 `npm install` runs with **strict** peer dependency resolution (npm 7+ default). We intentionally do **not** use
@@ -96,7 +149,7 @@ Current overrides:
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
-- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.61.0`). `@axe-core/playwright`
+- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.63.0`). `@axe-core/playwright`
   declares a wide peer (`playwright-core >= 1.0.0`), so on a clean lockfile regeneration npm auto-installs the
   **latest** `playwright-core` at the root while the held-back `playwright` nests its own matching copy. The resulting
   two copies of the Playwright type definitions break `next build`'s type check in the storefront
@@ -150,7 +203,7 @@ contract, and allow duplicate tool versions across workspaces. Keep them.
 
 - For a **genuinely fixable** advisory, add a pinned [`overrides`](#strict-peer-dependency-resolution) entry in the root
   `package.json` (same pattern as `madge > typescript`) and run `npm install`.
-- For an advisory in a **held-back** dependency (Angular, Stencil, Playwright — see
+- For an advisory in a **held-back** dependency (Stencil, Playwright — see
   [Held-back dependencies](#held-back-dependencies)), wait for the upstream-sanctioned upgrade path.
 - Never reach for `--legacy-peer-deps` or `--force`.
 - After adding/changing overrides, delete `package-lock.json` and `node_modules` and re-run `npm install`
@@ -166,17 +219,17 @@ advisory with **no fixed release**. It was replaced with the maintained drop-in 
 generators and `minifyHTML()` were made `async` accordingly. Output is byte-for-byte identical, so the generated
 `partials.tsx` is unchanged.
 
-### Accepted advisories (held-back build tooling)
+### Accepted advisories (dev-only build tooling)
 
-The remaining advisories all originate from **dev-only** build tooling we hold back, are not reachable from shipped
-package output, and several are Windows-dev-server-only:
+The remaining advisories all originate from **dev-only** build tooling, are not reachable from shipped package output,
+and several are Windows-dev-server-only:
 
 - `@angular/build`, `@angular/compiler-cli`, `@babel/core` (pulled by Angular) — Angular **versions** are bumped via
   syncpack, but only as upstream ships fixes; framework migrations are applied via the `ng:update` wrapper (see
   [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations)).
-- `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` (held back) and the React Router dev server
-  (`@react-router/dev` → `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These
-  clear once Angular and `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
+- `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` and the React Router dev server (`@react-router/dev` →
+  `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These clear once Angular and
+  `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
 
 ## Build tooling for `--dts` libraries
 
@@ -218,9 +271,16 @@ _optional_ dependency, so the build only fails much later, e.g.
 - **Always** regenerate the lockfile from scratch instead — a clean resolve records the full set again:
 
   ```bash
-  rm -rf package-lock.json node_modules && npm install
+  rm -f package-lock.json && npm run npm:remove && npm install
   npm run npm:verify-lock
   ```
+
+  Removing only the **root** `node_modules` is **not** enough. npm reconciles against the `node_modules` directories of
+  every workspace too, so a leftover `packages/*/node_modules` keeps the pruned bindings pruned and
+  `npm run npm:verify-lock` still fails. `npm run npm:remove` deletes **all** of them, which is what makes the resolve
+  truly clean. This was observed with `@rolldown/binding-*` (pulled in via `@angular/build`), where
+  `rm -rf package-lock.json node_modules && npm install` still reported an incomplete lockfile and the full clean fixed
+  it without any `optionalDependencies` workaround.
 
 - `npm run npm:verify-lock` ([`scripts/verify-lockfile.ts`](../scripts/verify-lockfile.ts)) fails when a package's
   platform bindings are only **partially** present, or when a binding is recorded without `resolved`/`integrity`. It
@@ -254,6 +314,48 @@ machine npm still installs only the matching binary; the rest are recorded but s
 > stale range still resolves, but it may install SWC binaries/types from a different minor than `next`. Always bump the
 > eight entries in **both** workspaces to the same range as `next`.
 
+## Nested project workspaces never get a `node_modules` directory
+
+npm never reifies into `packages/*/projects/**/node_modules` in this monorepo — only the root and the top-level
+`packages/*` workspaces ever receive one. When npm's hoisting picks such a nested path for a dependency, it still writes
+a complete entry into `package-lock.json`, but the package is **never installed**. `npm install` and `npm ci` both exit
+successfully and report no problem; the dependency only surfaces as `UNMET DEPENDENCY` in `npm ls` and as a
+module-not-found error during a build.
+
+This bit `@vitejs/plugin-react`, which is declared by the StackBlitz React starter
+([`src/react/package.json`](../packages/storefront/projects/stackblitz/src/react/package.json)). An unrelated shift in
+the tree moved it from `packages/storefront/node_modules` down to
+`packages/storefront/projects/stackblitz/node_modules`, and `npm run build` then failed the starter's `vite.config.ts`
+typecheck with `Cannot find module '@vitejs/plugin-react'`.
+
+**Fix**: declare the dependency in the enclosing **top-level** workspace as well — here
+[`packages/storefront`](../packages/storefront/package.json), which is the workspace whose build runs that typecheck.
+That pulls the placement back up into a directory npm actually creates. Do **not** remove such a declaration because it
+looks redundant; verify with `npm ls <package>` after a clean install first.
+
+```bash
+npm ls @vitejs/plugin-react   # must not print "UNMET DEPENDENCY"
+```
+
+## Watch for peer ranges that widen into a new major
+
+npm auto-installs missing peer dependencies and picks the **highest** version satisfying the range. A dependency that
+merely widens a peer range can therefore drag an unrelated major into the tree, even when `syncpack` was told to skip
+that major.
+
+`karma-jasmine-html-reporter@2.3.0` widened its `jasmine-core` peer from `^4 || ^5 || ^6` to `^4 || ^5 || ^6 || ^7`. npm
+then resolved `jasmine-core` to `7.0.2` at the root, which broke the jasmine patch of zone.js, loaded by the Angular
+karma suite at the time, and failed the suite with:
+
+```text
+TypeError: Cannot assign to read only property 'describe' of object '[object Object]'
+```
+
+`jasmine-core` is therefore declared explicitly as `~6.3.0` in
+[`packages/components-angular`](../packages/components-angular/package.json), matching `@types/jasmine` and the Angular
+starter template. **Do not remove it** — without it the major returns silently on the next update round. Bump it only
+together with `@types/jasmine` and after confirming the Angular karma suite passes with that jasmine major.
+
 ## Held-back dependencies
 
 These dependencies are intentionally excluded from the automated `syncpack` / `npm run npm:update` flow. They are also
@@ -272,29 +374,32 @@ places that must be kept in sync when adding a new entry:
   [Strict peer dependency resolution](#strict-peer-dependency-resolution)). `syncpack` scans `overrides` too, so without
   this entry every update round would offer to bump it independently and reintroduce duplicated Playwright type
   definitions. Bump it **only together with** `@playwright/test`.
-- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
+- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.45.1.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
-
-> **`jsdom` and `@oddbird/popover-polyfill` are no longer held back.** They are bumped by `syncpack` like any other
-> dependency, but they remain **coupled** — see
-> [Updating jsdom and the popover polyfill](#updating-jsdom-and-the-popover-polyfill).
-
-> **Angular is no longer held back for versions.** `@angular/*`, `ng-packagr` and `zone.js` are now bumped by `syncpack`
-> like any other dependency (`npm run npm:update`). Only Angular's **framework migration schematics** need special
-> handling — see [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations). `typescript`
-> must still stay within Angular's `MAX_TS_VERSION`.
 
 ### How to update them
 
-### Updating Angular (versions vs. migrations)
+**`@playwright/test`** — bump the exact pin deliberately, then update the Docker image tag
+(`mcr.microsoft.com/playwright:vX.Y.Z-jammy`) in `docker-compose.yml` (×2) and `.github/workflows/contribution.yml` (×4)
+to match, and regenerate/verify the committed VRT snapshots so browser binaries and screenshots stay in sync. A mismatch
+between the installed Playwright and the Docker image makes CI fail.
+
+**`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
+dependency; otherwise `patch-package` fails on `postinstall`.
+
+**`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
+
+## Updating Angular (versions vs. migrations)
 
 Angular splits into two concerns that are handled separately:
 
-- **Version ranges** (`@angular/*`, `ng-packagr`, `zone.js`) — owned by `syncpack`. Bump them via `npm run npm:update`
-  (pick the `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep
-  `typescript` within Angular's `MAX_TS_VERSION` (see
+- **Version ranges** (`@angular/*`, `ng-packagr`) — owned by `syncpack`. Bump them via `npm run npm:update` (pick the
+  `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep `typescript`
+  within Angular's `MAX_TS_VERSION` (see
   `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back
-  for the round if a bump would exceed that ceiling.
+  for the round if a bump would exceed that ceiling. `syncpack` never offers the deprecated `@angular/animations` and
+  `@angular/platform-browser-dynamic`, so align their ranges with the rest of the family by hand (in
+  `packages/components-angular` and the StackBlitz Angular starter).
 - **Framework migrations** (code transforms) — owned by the
   [`packages/components-angular/scripts/ng-update.sh`](../packages/components-angular/scripts/ng-update.sh) wrapper
   (`npm run ng:update`).
@@ -309,26 +414,17 @@ Angular splits into two concerns that are handled separately:
 1. `cd packages/components-angular`
 2. `npm run ng:update` — lists available Angular updates/migrations (informational; no changes are written).
 3. Bump the versions with `syncpack`: from the repo root run `npm run npm:update`, select the `@angular/*` family (and
-   `ng-packagr` / `zone.js`), then `npm install`.
+   `ng-packagr`), then `npm install`.
 4. Apply the framework migrations only (the wrapper runs the schematics in the isolated install and copies the changed
-   source back into this package, leaving `package.json` and the lockfile to syncpack):
-   `npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>`.
+   source back into this package, leaving `package.json` and the lockfile to syncpack). `ng update` accepts only a
+   single package with `--migrate-only`, so run it once per package:
+   `npm run ng:update -- @angular/core --migrate-only --from=<old> --to=<new>`, then the same for `@angular/cli`.
 5. Review the migration diff (`git diff packages/components-angular`) and run `npm install` again from the project root.
 
-**`@playwright/test`** — bump the exact pin deliberately, then update the Docker image tag
-(`mcr.microsoft.com/playwright:vX.Y.Z-jammy`) in `docker-compose.yml` (×2) and `.github/workflows/contribution.yml` (×4)
-to match, and regenerate/verify the committed VRT snapshots so browser binaries and screenshots stay in sync. A mismatch
-between the installed Playwright and the Docker image makes CI fail.
+## Updating jsdom and the popover polyfill
 
-**`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
-dependency; otherwise `patch-package` fails on `postinstall`.
-
-**`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
-
-### Updating jsdom and the popover polyfill
-
-`jsdom` and `@oddbird/popover-polyfill` are not held back, but they must be bumped **together** and verified with a
-rebuild. Three properties are easy to break:
+`jsdom` and `@oddbird/popover-polyfill` must be bumped **together** and verified with a rebuild. Three properties are
+easy to break:
 
 1. **They are coupled.** Since `v0.7` the popover polyfill calls `CSS.escape` while applying its styles, and jsdom only
    exposes a `CSS` namespace from `v30` onwards. Bumping the polyfill alone on an older jsdom makes every

@@ -1,4 +1,3 @@
-import type { Page } from '@playwright/test';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 

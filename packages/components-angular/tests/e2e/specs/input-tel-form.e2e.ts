@@ -3,7 +3,7 @@ import { expect, Page, test } from '@playwright/test';
 const getHost = (page: Page) => page.locator('p-input-tel');
 const getInput = (page: Page) => page.locator('p-input-tel input');
 
-const setValue = async (page) => {
+const setValue = async (page: Page) => {
   const host = getHost(page);
   const input = getInput(page);
 

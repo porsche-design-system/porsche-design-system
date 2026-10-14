@@ -11,7 +11,6 @@ export * from './throwIfElementIsNotOfKind';
 export * from './throwIfInvalidLinkTileProductUsage';
 export * from './throwIfInvalidLinkUsage';
 export * from './throwIfParentIsNotOfKind';
-export * from './throwIfPropIsUndefined';
 export * from './throwIfRootNodeIsNotOneOfKind';
 export { AllowedTypes, validateProps } from './validateProps';
 export * from './validateVersions';

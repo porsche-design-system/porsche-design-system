@@ -17,7 +17,7 @@ type InitOptions = {
   isWrapped?: boolean;
   otherMarkup?: string;
   tag?: 'a' | 'button' | 'span';
-  scrollToPosition?: Components.PScroller['scrollToPosition'];
+  scrollToPosition?: Exclude<Components.PScroller['scrollToPosition'], string>;
   hasScrollbar?: boolean;
 };
 
@@ -57,6 +57,7 @@ const clickElement = async (page: Page, el: Locator) => {
 const addNewButton = async (page: Page) => {
   await page.evaluate(() => {
     const scroller = document.querySelector('p-scroller');
+    if (!scroller) throw new Error('p-scroller not found');
     const element = document.createElement('button');
     element.innerText = 'Added Element Text';
     scroller.append(element);

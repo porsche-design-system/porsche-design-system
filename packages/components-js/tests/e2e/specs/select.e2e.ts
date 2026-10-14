@@ -1,6 +1,6 @@
 import { expect, Locator, test } from '@playwright/test';
-import type { Components } from '@porsche-design-system/components/src/components';
-import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
+import type { Components } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -35,15 +35,19 @@ const getFilterInput = (page: Page) => page.locator('p-select p-input-search inp
 const getSelectOption = (page: Page, n: number) => page.locator(`p-select p-select-option:nth-child(${n})`);
 const getSelectOptions = (page: Page) => page.locator('p-select p-select-option');
 const getSelectOptgroups = (page: Page) => page.locator('p-select p-optgroup');
+
+// The option's internal props (SelectOptionInternalHTMLProps) are not part of the package's public types.
+type SelectOption = HTMLPSelectOptionElement & { selected?: boolean; highlighted?: boolean };
+
 const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(
   page: Page,
   property: K
-): Promise<SelectOption[K]> =>
+): Promise<SelectOption[K] | undefined> =>
   await page
     .locator('p-select p-select-option')
     .evaluateAll(
       (options, property) =>
-        ((options.find((option: SelectOption) => option.selected) as SelectOption)?.[property] as SelectOption[K]) ??
+        ((options as unknown as SelectOption[]).find((option) => option.selected)?.[property] as SelectOption[K]) ??
         undefined,
       property
     );
@@ -56,7 +60,7 @@ const getHighlightedSelectOptionProperty = async <K extends keyof SelectOption>(
     .locator('p-select p-select-option')
     .evaluateAll(
       (options, property) =>
-        ((options.find((option: SelectOption) => option.highlighted) as SelectOption)?.[property] as SelectOption[K]) ??
+        ((options as unknown as SelectOption[]).find((option) => option.highlighted)?.[property] as SelectOption[K]) ??
         undefined,
       property
     );
@@ -64,19 +68,19 @@ const getHighlightedSelectOptionProperty = async <K extends keyof SelectOption>(
 const getSelectedOptionIndex = async (page: Page): Promise<number> =>
   await page
     .locator('p-select p-select-option')
-    .evaluateAll((options: SelectOption[]) => options.indexOf(options.find((option: SelectOption) => option.selected)));
+    .evaluateAll((options) => (options as unknown as SelectOption[]).findIndex((option) => option.selected));
 const getHighlightedOptionIndex = async (page: Page): Promise<number> =>
-  await page
-    .locator('p-select p-select-option')
-    .evaluateAll((options: SelectOption[]) =>
-      options.filter((option) => !option.hidden).indexOf(options.find((option: SelectOption) => option.highlighted))
-    );
+  await page.locator('p-select p-select-option').evaluateAll((options) => {
+    const opts = options as unknown as SelectOption[];
+    const highlighted = opts.find((option) => option.highlighted);
+    return highlighted ? opts.filter((option) => !option.hidden).indexOf(highlighted) : -1;
+  });
 
 const getLabel = (page: Page) => page.locator('p-select label');
 
 const getForm = (page: Page) => page.locator('form');
 
-const setValue = async (page: Page, value: string) => {
+const setValue = async (page: Page, value: string | undefined) => {
   const host: Locator = getHost(page);
   await host.evaluate((el, value) => {
     (el as HTMLPSelectElement).value = value;
@@ -337,6 +341,23 @@ test('should render', async ({ page }) => {
   await waitForStencilLifecycle(page);
 
   expect(await getDropdownDisplay(page)).toBe('flex');
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the combobox', async ({ page }) => {
+    await initSelect(page, {
+      props: {
+        name: 'options',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const button = getButton(page);
+    await expect(button).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(button).toHaveAttribute('aria-description', 'Accessible description');
+  });
 });
 
 test.describe('Blur Event', () => {
@@ -726,7 +747,7 @@ test.describe('focus', () => {
 test.describe('keyboard behavior', () => {
   skipInBrowsers(['webkit']);
   test.describe('closed combobox', () => {
-    let buttonElement;
+    let buttonElement: Locator;
     test.beforeEach(async ({ page }) => {
       await initSelect(page);
       buttonElement = getButton(page);
@@ -815,8 +836,8 @@ test.describe('keyboard behavior', () => {
   });
 
   test.describe('within listbox', () => {
-    let buttonElement;
-    let buttonAfter;
+    let buttonElement: Locator;
+    let buttonAfter: Locator;
     test.beforeEach(async ({ page }) => {
       await initSelect(page, {
         options: { values: testValues.map((x) => ({ value: x })), markupAfter: '<p-button>Button</p-button>' },
@@ -1040,7 +1061,7 @@ test.describe('keyboard behavior', () => {
       await buttonElement.press('n');
       await waitForStencilLifecycle(page);
 
-      const valueIndex = testValues.indexOf(testValues.find((val) => val.startsWith('Ben')));
+      const valueIndex = testValues.findIndex((val) => val.startsWith('Ben'));
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[valueIndex]);
 
@@ -2464,7 +2485,9 @@ test.describe('slots', () => {
 
     const host: Locator = getHost(page);
     await host.evaluate((el) => {
-      (el as HTMLPSelectElement).lastElementChild.remove();
+      const lastElementChild = (el as HTMLPSelectElement).lastElementChild;
+      if (!lastElementChild) throw new Error('no last element child');
+      lastElementChild.remove();
     });
 
     await waitForStencilLifecycle(page);
@@ -2473,9 +2496,51 @@ test.describe('slots', () => {
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option selected removed').toBeUndefined();
     await expect(getButton(page)).toHaveText('c'); // Selection is kept for controlled async filtering to work
   });
+
+  test('should update when option is added to a select that mounted without options', async ({ page }) => {
+    await initSelect(page, { options: { values: [] } });
+    expect(await getSelectValue(page)).toBeUndefined();
+
+    await setValue(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    await addOption(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectValue(page), 'after option added').toBe('a');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('a');
+    await expect(getButton(page)).toHaveText('a');
+  });
+
+  test('should update when option is added to an optgroup that mounted empty', async ({ page }) => {
+    await initSelect(page, { options: { values: [[]], includeOptgroups: true } });
+    expect(await getSelectValue(page)).toBeUndefined();
+
+    await setValue(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    await addOptionToOptgroup(page, '0', 'a');
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectValue(page), 'after option added').toBe('a');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('a');
+    await expect(getButton(page)).toHaveText('a');
+  });
 });
 
 test.describe('lifecycle', () => {
+  test('should work without unnecessary round trips on init with optgroups', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+    const status = await getLifecycleStatus(page);
+
+    // guard against a vacuous pass: optgroups must actually be on the page
+    expect(status.componentDidLoad['p-optgroup'], 'componentDidLoad: p-optgroup').toBeGreaterThan(0);
+    expect(status.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
+
+    // optgroup dispatches internalOptgroupUpdate for the initial slot assignment; it must not cause a render round trip
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initSelect(page);
     const buttonElement = getButton(page);
@@ -2628,6 +2693,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
+      assertDefined(item);
       expect(disabled).toEqual(!!item.disabled);
 
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
@@ -2640,6 +2706,7 @@ test.describe('optgroups', () => {
     for (const child of children) {
       const value = await getProperty<string>(child, 'value');
       const item = group.find((item) => item.value === value);
+      assertDefined(item);
       // The option's own disabled state should be preserved
       expect(await getProperty<boolean>(child, 'disabled')).toEqual(!!item.disabled);
       // The parent's disabled state should be propagated
@@ -2653,6 +2720,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
+      assertDefined(item);
       expect(disabled).toEqual(!!item.disabled);
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
@@ -3036,5 +3104,54 @@ test.describe('form', () => {
 
     await waitForStencilLifecycle(page);
     expect(getConsoleErrorsAmount()).toBe(0);
+  });
+});
+
+test.describe('option value set after initial render', () => {
+  // Frameworks like Angular can connect an option before its `value` binding is applied (#4743)
+  test('should select option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-select name="options" label="Some label" value="a"><p-select-option>Option A</p-select-option></p-select>`
+    );
+    const option = getSelectOption(page, 1);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('.option--selected')).toBeAttached();
+    await expect(getButton(page)).toHaveText('Option A');
+  });
+
+  test('should keep the selection of a removed option when the value of another option changes', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-select name="options" label="Some label" value="c"><p-select-option value="a">Option A</p-select-option><p-select-option value="c">Option C</p-select-option></p-select>`
+    );
+    await getSelectOption(page, 2).evaluate((el) => el.remove());
+    await waitForStencilLifecycle(page);
+    await expect(getButton(page)).toHaveText('Option C');
+
+    await setProperty(getSelectOption(page, 1), 'value', 'b');
+    await waitForStencilLifecycle(page);
+
+    await expect(getButton(page)).toHaveText('Option C'); // Selection is kept for controlled async filtering to work
+  });
+
+  test('should select option when its value changes to match the select value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-select name="options" label="Some label" value="a"><p-select-option value="b">Option A</p-select-option></p-select>`
+    );
+    const option = getSelectOption(page, 1);
+    await expect(option).not.toHaveJSProperty('selected', true);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('.option--selected')).toBeAttached();
+    await expect(getButton(page)).toHaveText('Option A');
   });
 });

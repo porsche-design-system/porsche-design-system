@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { screen } from '@porsche-design-system/components-js/testing';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
@@ -7,6 +8,7 @@ it('should have initialized shadow dom', async () => {
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;
+  assertDefined(el);
   expect(el.shadowRoot).not.toBeNull();
   expect(el.className).toBe('hydrated');
 });
@@ -18,6 +20,7 @@ it('should expose its group to shadow queries', async () => {
   expect(screen.queryAllByRole('group')).toHaveLength(0);
   expect(screen.getAllByShadowRole('group')).toHaveLength(1);
 
-  const { shadowRoot } = document.querySelector('p-fieldset');
+  const shadowRoot = document.querySelector('p-fieldset')?.shadowRoot;
+  assertDefined(shadowRoot);
   expect(screen.getByShadowRole('group')).toBe(shadowRoot.querySelector('fieldset'));
 });

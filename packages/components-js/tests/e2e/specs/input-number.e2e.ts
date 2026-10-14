@@ -114,6 +114,7 @@ test.describe('value', () => {
     // Add input event listener that always sets value to '1'
     await page.evaluate(() => {
       const hostElement = document.querySelector('p-input-number');
+      if (!hostElement) throw new Error('p-input-number not found');
       hostElement.addEventListener('input', () => {
         hostElement.value = '1';
       });
@@ -131,6 +132,23 @@ test.describe('value', () => {
     // Value is overwritten in the input event listener
     await expect(host).toHaveJSProperty('value', '1');
     await expect(inputNumber).toHaveValue('1');
+  });
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the native input', async ({ page }) => {
+    await initInputNumber(page, {
+      props: {
+        name: 'field',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const input = getInputNumber(page);
+    await expect(input).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(input).toHaveAttribute('aria-description', 'Accessible description');
   });
 });
 

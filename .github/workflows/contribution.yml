@@ -35,7 +35,8 @@ jobs:
     #   - pull_request → "pr-<number>"  (avoids "<n>/merge" with embedded slash
     #                                    that github.ref_name would yield)
     #   - push to main → "nightly"
-    #   - push to other branches (v*) → branch name
+    #   - push to version branches → "<branch>-preview"
+    # Stable major slugs belong exclusively to release.yml.
     runs-on: ubuntu-latest
     outputs:
       storefront-slug: ${{ steps.resolve.outputs.storefront-slug }}
@@ -49,7 +50,7 @@ jobs:
           elif [[ "${{ github.ref_name }}" == "main" ]]; then
             storefront_slug="nightly"
           else
-            storefront_slug="${{ github.ref_name }}"
+            storefront_slug="${{ github.ref_name }}-preview"
           fi
           echo "storefront-slug=${storefront_slug}" >> "$GITHUB_OUTPUT"
           echo "Resolved storefront deploy target: ${storefront_slug}"
@@ -69,7 +70,7 @@ jobs:
     name: 'Build'
     uses: ./.github/workflows/build.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.61.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
       storefront-slug: ${{ needs.context.outputs.storefront-slug }}
     needs:
       - context
@@ -77,7 +78,7 @@ jobs:
     name: 'Test'
     uses: ./.github/workflows/test.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.61.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
     needs:
       - build
   deploy:
@@ -108,7 +109,7 @@ jobs:
       id-token: write
     uses: ./.github/workflows/deploy.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.61.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
       storefront-slug: ${{ needs.context.outputs.storefront-slug }}
       storefront-algolia: ${{ needs.context.outputs.storefront-algolia }}
     needs:
@@ -129,7 +130,7 @@ jobs:
       #                                     read/write/delete confined to `pr-*`
       #   AWS_STOREFRONT_RELEASE_ROLE_ARN   iam.Role `storefront-release-deployer`
       #                                     trusts `repo:<this repo>:environment:storefront`
-      #                                     writes `nightly/*` and `v*`; deletes `nightly/*` only
+      #                                     writes `nightly/*` and `v*`; deletes moving slugs only
       #   AWS_STOREFRONT_BUCKET             origin bucket behind the CloudFront distribution
       #   AWS_STOREFRONT_DISTRIBUTION_ID    distribution to invalidate after a deploy
       #
@@ -146,7 +147,7 @@ jobs:
     # Only on direct pushes to release branches — never on pull_request events.
     if: >-
       github.event_name == 'push' &&
-      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/v4')
+      (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/v'))
     # Reusable workflows inherit the caller's GITHUB_TOKEN scopes; per-job permissions
     # in `release.yml` can only narrow, not widen. Grant the maximum scope needed here:
     #   - contents: write → create GitHub releases + tags
@@ -156,7 +157,7 @@ jobs:
       id-token: write
     uses: ./.github/workflows/release.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.61.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
     needs:
       - deploy
       - build

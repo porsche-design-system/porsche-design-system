@@ -7,6 +7,8 @@ import {
   transformVueAttributesWithDigitValue,
   transformVueAttributesWithNotDigitValue,
   transformVueAttributesWithObjectValues,
+  transformVueInputs,
+  transformVueToSelfClosingTags,
   unbindVueNativeAttributes,
 } from '../../../src/utils/convertToVue';
 
@@ -113,6 +115,44 @@ describe('unbindNativeAttributes()', () => {
     expect(unbindVueNativeAttributes(`<div :style="'background: yellow'"></div>`)).toBe(
       '<div style="background: yellow"></div>'
     );
+  });
+});
+
+describe('transformVueInputs()', () => {
+  it('should add closing dash to input', () => {
+    expect(transformVueInputs('<p-some-tag>\n  <input type="checkbox">\n</p-some-tag>')).toBe(
+      '<p-some-tag>\n  <input type="checkbox" />\n</p-some-tag>'
+    );
+  });
+
+  it('should not add another closing dash to an already self-closing input', () => {
+    const input = '<input type="checkbox" />';
+    expect(transformVueInputs(input)).toBe(input);
+  });
+});
+
+describe('transformVueToSelfClosingTags()', () => {
+  it('should transform tags without children to self-closing', () => {
+    expect(transformVueToSelfClosingTags('<button type="button"></button>')).toBe('<button type="button" />');
+  });
+
+  it('should transform multiline tags without children to self-closing', () => {
+    expect(
+      transformVueToSelfClosingTags(`<p-some-tag>
+</p-some-tag>`)
+    ).toBe('<p-some-tag />');
+  });
+
+  it('should not transform single line tags to self-closing', () => {
+    const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
+    expect(transformVueToSelfClosingTags(input)).toBe(input);
+  });
+
+  it('should not match across tag boundaries when slotted content looks like an attribute', () => {
+    const input = `<p-select>
+  <p-select-option value="none">style="hyphens: none;"</p-select-option>
+</p-select>`;
+    expect(transformVueToSelfClosingTags(input)).toBe(input);
   });
 });
 

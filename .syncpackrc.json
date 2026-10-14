@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/syncpack/schema.json",
+  "minimumReleaseAge": 10080,
   "sortFirst": [
     "name",
     "version",
@@ -53,7 +54,6 @@
       "dependencies": [
         "@angular/**",
         "ng-packagr",
-        "zone.js",
         "ag-grid-*",
         "ag-stack",
         "@ag-grid-community/**",

@@ -32,5 +32,5 @@ export const FLAG_SIZES = [
 export type FlagSize = (typeof FLAG_SIZES)[number];
 
 export const buildFlagUrl = (flagName: FlagName): string => {
-  return `${getCDNBaseURL()}/flags/${FLAGS_MANIFEST[flagName] || FLAGS_MANIFEST.xx}`;
+  return `${getCDNBaseURL()}/porsche-design-system/flags/${FLAGS_MANIFEST[flagName] || FLAGS_MANIFEST.xx}`;
 };

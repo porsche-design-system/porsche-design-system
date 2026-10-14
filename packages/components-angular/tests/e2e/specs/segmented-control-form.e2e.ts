@@ -3,7 +3,7 @@ import { expect, Page, test } from '@playwright/test';
 const getHost = (page: Page) => page.locator('p-segmented-control');
 const getOptions = (page: Page) => page.locator('p-segmented-control-item');
 
-const setValue = async (page) => {
+const setValue = async (page: Page) => {
   const host = getHost(page);
   const options = getOptions(page);
   await options.nth(0).click();

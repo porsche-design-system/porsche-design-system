@@ -4,7 +4,7 @@ export const transformEventsToAngularSyntax = (markup: string): string =>
   markup.replace(/\son([a-z]+?)="(.*?)"/g, ' ($1)="$2"');
 
 export const transformAngularAttributesWithObjectValues = (markup: string): string =>
-  markup.replace(/\s([a-z-]+)="{(.*?)}"/g, (_, $key, $value) => ` [${camelCase($key)}]="{${$value}}"`);
+  markup.replace(/\s([a-z-]+)="{([^"\n]*)}"/g, (_, $key, $value) => ` [${camelCase($key)}]="{${$value}}"`);
 
 export const transformAngularAttributesWithNotDigitValue = (markup: string): string =>
   markup.replace(/\s([a-z-]+)="([^-\d].*?)"/g, (_, $key, $value) =>
@@ -28,7 +28,7 @@ export const cleanAngularBooleanAndUndefinedValues = (markup: string): string =>
 
 export const unbindAngularNativeAttributes = (markup: string): string =>
   // remove brackets from "id", "class", "style, "slot" and "title" attributes
-  markup.replace(/\s\[(id|class|style|slot|title)\]="'(.*?)'"/g, ' $1="$2"');
+  markup.replace(/\s\[(id|class|style|slot|title)\]="'([^"\n]*)'"/g, ' $1="$2"');
 
 export const convertToAngular = (markup: string): string =>
   [

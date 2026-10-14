@@ -22,7 +22,8 @@
 #
 # Usage:
 #   npm run ng:update                                  # list available updates/migrations (read-only)
-#   npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>
+#   npm run ng:update -- @angular/core --migrate-only --from=<old> --to=<new>   # one package per run;
+#   npm run ng:update -- @angular/cli --migrate-only --from=<old> --to=<new>    # `ng update` rejects more
 #
 set -euo pipefail
 

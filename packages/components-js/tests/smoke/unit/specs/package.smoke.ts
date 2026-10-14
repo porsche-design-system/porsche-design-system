@@ -180,7 +180,7 @@ describe('package.json files', () => {
         (prob: Problem) =>
           !(
             prob.kind === 'FalseCJS' ||
-            prob.resolutionKind === 'node10' ||
+            ('resolutionKind' in prob && prob.resolutionKind === 'node10') ||
             ('entrypoint' in prob &&
               (prob.entrypoint === './ag-grid' ||
                 prob.entrypoint === '.' ||

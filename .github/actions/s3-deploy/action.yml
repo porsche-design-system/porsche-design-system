@@ -20,11 +20,11 @@ inputs:
     description: 'CloudFront distribution to invalidate.'
     required: true
   delete:
-    description: 'Whether to remove objects that are absent from the source. Only ever "true" where the assumed role is allowed to delete: `pr-*` for previews, `nightly/*` for the nightly build. Published `v*` slugs are append-only.'
+    description: 'Remove objects absent from the source. Only for moving slugs: PR previews, nightly, version-branch previews and stable major aliases. Never for pinned versions.'
     required: false
     default: 'false'
-  algolia:
-    description: 'Whether to update the Algolia search index or not.'
+  wait-for-invalidation:
+    description: 'Wait until CloudFront has finished invalidating the deployed slug.'
     required: false
     default: 'false'
 
@@ -170,27 +170,20 @@ runs:
         BUCKET: ${{ inputs.bucket }}
         DELETE: ${{ inputs.delete }}
 
-    # A wildcard counts as a single invalidation path, and the first 1,000 per month are free, so
-    # one per deploy is well inside the free allowance.
+    # Invalidate both the bare slug's redirect and its content.
     - name: 'Invalidate'
       run: |
         set -euo pipefail
-        aws cloudfront create-invalidation \
+        invalidation_id=$(aws cloudfront create-invalidation \
           --distribution-id "$DISTRIBUTION_ID" \
-          --paths "/${SLUG}/*" \
-          --query 'Invalidation.Id' --output text
+          --paths "/${SLUG}" "/${SLUG}/*" \
+          --query 'Invalidation.Id' --output text)
+        if [[ "$WAIT" == 'true' ]]; then
+          aws cloudfront wait invalidation-completed \
+            --distribution-id "$DISTRIBUTION_ID" --id "$invalidation_id"
+        fi
       shell: bash
       env:
         SLUG: ${{ inputs.slug }}
         DISTRIBUTION_ID: ${{ inputs.distribution-id }}
-
-    # Host-agnostic: the index is named after the slug and its records hold relative paths, so
-    # nothing here has to change when the site moves to its final hostname.
-    - name: 'Algolia'
-      if: inputs.algolia == 'true'
-      run: |
-        result=$(P_CURRENT_BRANCH="${SLUG}" npm run updateAlgolia)
-        echo $result | sed "s/.*updateAlgoliaIndex\\.ts' //g"
-      shell: bash
-      env:
-        SLUG: ${{ inputs.slug }}
+        WAIT: ${{ inputs.wait-for-invalidation }}

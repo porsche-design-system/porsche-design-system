@@ -1,5 +1,6 @@
 import { expect, type Locator, test } from '@playwright/test';
-import type { Components } from '@porsche-design-system/components/src/components';
+import type { Components } from '@porsche-design-system/components';
+import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -160,6 +161,23 @@ test('should render', async ({ page }) => {
   await waitForStencilLifecycle(page);
 
   expect(await getDropdownDisplay(page)).toBe('flex');
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the combobox', async ({ page }) => {
+    await initMultiSelect(page, {
+      props: {
+        name: 'name',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const button = getButton(page);
+    await expect(button).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(button).toHaveAttribute('aria-description', 'Accessible description');
+  });
 });
 
 test.describe('Blur Event', () => {
@@ -2080,6 +2098,38 @@ test.describe('slots', () => {
     await expect(host).toHaveJSProperty('value', ['c']);
     await expect(buttonElement.locator('span').first()).toHaveText('Option C'); // Selection is kept for controlled async filtering to work
   });
+
+  test('should update when option matching the value is added to an optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { values: [[]], includeOptgroups: true } });
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+
+    await setValue(page, ['d']);
+
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('');
+
+    await addOptionToOptgroup(page, '0', 'd', 'Option D');
+
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option D');
+  });
+
+  test('should update when option is added to a multi-select that mounted without options', async ({ page }) => {
+    await initMultiSelect(page, { options: { values: [] } });
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+
+    await setValue(page, ['d']);
+
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('');
+
+    await addOption(page, 'd', 'Option D');
+
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option D');
+  });
 });
 
 test.describe('lifecycle', () => {
@@ -2213,6 +2263,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
+      assertDefined(item);
       expect(disabled).toEqual(!!item.disabled);
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
@@ -2224,6 +2275,7 @@ test.describe('optgroups', () => {
     for (const child of children) {
       const value = await getProperty<string>(child, 'value');
       const item = group.find((item) => item.value === value);
+      assertDefined(item);
       // The option's own disabled state should be preserved
       expect(await getProperty<boolean>(child, 'disabled')).toEqual(!!item.disabled);
       // The parent's disabled state should be propagated
@@ -2237,6 +2289,7 @@ test.describe('optgroups', () => {
       const value = await getProperty<string>(child, 'value');
       const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
+      assertDefined(item);
       expect(disabled).toEqual(!!item.disabled);
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
@@ -2656,5 +2709,72 @@ test.describe('form', () => {
 
     await waitForStencilLifecycle(page);
     expect(getConsoleErrorsAmount()).toBe(0);
+  });
+});
+
+test.describe('option value set after initial render', () => {
+  // Frameworks like Angular can connect an option before its `value` binding is applied (#4743)
+  test('should render option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-multi-select name="options" label="Some label"><p-multi-select-option>Option A</p-multi-select-option></p-multi-select>`
+    );
+    const option = getMultiSelectOption(page, 1);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option.locator('.checkbox')).toBeAttached();
+  });
+
+  test('should select option when its value is set after it was initially rendered without value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-multi-select name="options" label="Some label"><p-multi-select-option>Option A</p-multi-select-option></p-multi-select>`
+    );
+    const option = getMultiSelectOption(page, 1);
+    await setProperty(getHost(page), 'value', ['a']);
+    await waitForStencilLifecycle(page);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('.option--selected')).toBeAttached();
+  });
+
+  test('should keep the selection of a removed option when the value of another option changes', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-multi-select name="options" label="Some label"><p-multi-select-option value="a">Option A</p-multi-select-option><p-multi-select-option value="c">Option C</p-multi-select-option></p-multi-select>`
+    );
+    await setProperty(getHost(page), 'value', ['c']);
+    await waitForStencilLifecycle(page);
+    await getMultiSelectOption(page, 2).evaluate((el) => el.remove());
+    await waitForStencilLifecycle(page);
+    const selection = getButton(page).locator('span').first();
+    await expect(selection).toHaveText('Option C');
+
+    await setProperty(getMultiSelectOption(page, 1), 'value', 'b');
+    await waitForStencilLifecycle(page);
+
+    await expect(selection).toHaveText('Option C'); // Selection is kept for controlled async filtering to work
+  });
+
+  test('should select option when its value changes to match the multi select value', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-multi-select name="options" label="Some label"><p-multi-select-option value="b">Option A</p-multi-select-option></p-multi-select>`
+    );
+    const option = getMultiSelectOption(page, 1);
+    await setProperty(getHost(page), 'value', ['a']);
+    await waitForStencilLifecycle(page);
+    await expect(option).not.toHaveJSProperty('selected', true);
+
+    await setProperty(option, 'value', 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(option).toHaveJSProperty('selected', true);
+    await expect(option.locator('.option--selected')).toBeAttached();
   });
 });

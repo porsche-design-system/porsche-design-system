@@ -116,6 +116,7 @@ test.describe('value', () => {
     // Add input event listener that always sets value to 'b'
     await page.evaluate(() => {
       const hostElement = document.querySelector('p-textarea');
+      if (!hostElement) throw new Error('p-textarea not found');
       hostElement.addEventListener('input', () => {
         hostElement.value = 'b';
       });
@@ -196,6 +197,23 @@ test.describe('counter', () => {
     await waitForStencilLifecycle(page);
     await sleep(800); // Aria text is debounced 800ms
     await expect(counterAria).toHaveText('You have 155 out of 160 characters left');
+  });
+});
+
+test.describe('aria', () => {
+  test('should forward `aria` prop to the native textarea', async ({ page }) => {
+    await initTextarea(page, {
+      props: {
+        name: 'comment',
+        aria: {
+          'aria-label': 'Accessible name',
+          'aria-description': 'Accessible description',
+        },
+      },
+    });
+    const textarea = getTextarea(page);
+    await expect(textarea).toHaveAttribute('aria-label', 'Accessible name');
+    await expect(textarea).toHaveAttribute('aria-description', 'Accessible description');
   });
 });
 

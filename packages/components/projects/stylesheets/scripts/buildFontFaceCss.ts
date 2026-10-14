@@ -5,8 +5,8 @@ import { getMinifiedPorscheNextFontFaceCss } from '@porsche-design-system/font-f
 export const buildFontFaceCss = () => {
   const isDev = process.env.NODE_ENV === 'development';
 
-  const stylesCom = getMinifiedPorscheNextFontFaceCss({ cdn: isDev ? 'localhost' : 'com' });
-  const stylesCn = getMinifiedPorscheNextFontFaceCss({ cdn: isDev ? 'localhost' : 'cn' });
+  const stylesCom = getMinifiedPorscheNextFontFaceCss(isDev ? { cdn: 'localhost' } : '.');
+  const stylesCn = getMinifiedPorscheNextFontFaceCss(isDev ? { cdn: 'localhost' } : '..');
 
   // Resolved from this file so the output cannot follow the caller's working directory.
   const targetPath = path.resolve(__dirname, '..', 'lib');
@@ -15,6 +15,9 @@ export const buildFontFaceCss = () => {
 
   fs.mkdirSync(targetPath, { recursive: true });
   fs.mkdirSync(targetPathCn, { recursive: true });
+  fs.cpSync(path.resolve(__dirname, '../../../../assets/projects/fonts/dist/fonts'), path.join(targetPath, 'fonts'), {
+    recursive: true,
+  });
   fs.writeFileSync(path.join(targetPath, targetFile), stylesCom);
   fs.writeFileSync(path.join(targetPathCn, targetFile), stylesCn);
 

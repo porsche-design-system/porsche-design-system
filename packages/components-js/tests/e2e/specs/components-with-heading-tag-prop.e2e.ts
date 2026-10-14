@@ -26,7 +26,7 @@ for (const tagName of tagNamesWithHeadingTagProp) {
       expect(await getHeadingTagName(page)).toBe('H3');
     });
 
-    if (tagName !== 'p-accordion' && tagName !== 'p-link-tile-model-signature') {
+    if (tagName !== 'p-accordion') {
       test('should not render multiple heading tags when slotted heading is set', async ({ page }) => {
         const markup = buildDefaultComponentMarkup(tagName).replace(/>/, ' ><h3 slot="heading">Some heading</h3>');
         await setContentWithDesignSystem(page, markup);

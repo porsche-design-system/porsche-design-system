@@ -1,6 +1,5 @@
 import { forceUpdate } from '@stencil/core';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
-import { consoleWarn } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { RadioGroupOptionInternalHTMLProps } from '../radio-group-option/radio-group-option-utils';
 export type RadioGroupState = FormState;
@@ -31,8 +30,6 @@ export const updateRadioGroupOptions = (
   if (optionToSelect) {
     optionToSelect.selected = true;
     forceUpdate(optionToSelect);
-  } else {
-    consoleWarn('The provided value is not included in the options of the radio group:', String(value));
   }
 };
 
@@ -68,7 +65,8 @@ export function getCheckedOptionIndex(options: RadioGroupOption[]): number {
 }
 
 export function getFirstEnabledOptionIndex(options: RadioGroupOption[]): number {
-  return options.findIndex((opt) => !opt.disabled);
+  // a loading option renders a disabled input, so it can't be focused either
+  return options.findIndex((opt) => !opt.disabled && !opt.loading);
 }
 
 /**

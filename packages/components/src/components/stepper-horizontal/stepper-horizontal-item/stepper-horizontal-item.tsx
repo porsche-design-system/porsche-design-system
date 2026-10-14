@@ -13,9 +13,9 @@ import {
   getStepperHorizontalIconName,
   isItemClickable,
   isStateCompleteOrWarning,
+  logErrorIfCurrentAndDisabled,
   STEPPER_ITEM_STATES,
   type StepperHorizontalItemState,
-  throwIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
 
 const propTypes: PropTypes<typeof StepperHorizontalItem> = {
@@ -57,7 +57,7 @@ export class StepperHorizontalItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    throwIfCurrentAndDisabled(this.host);
+    logErrorIfCurrentAndDisabled(this.host);
     attachComponentCss(this.host, getComponentCss, this.state, this.disabled);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
