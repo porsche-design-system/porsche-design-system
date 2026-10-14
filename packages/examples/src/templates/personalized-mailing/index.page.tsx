@@ -66,6 +66,12 @@ const waveBars = Array.from({ length: 30 }, (_, index) => ({
  */
 const waveWidth = (waveBars.length * 2 - 1) * 0.75;
 
+/**
+ * Below this width the contact bar drops the photo of the advisor, so his name still fits on one line – in `rem`, so it
+ * follows the text size: a phone reaches it at 200%, never at 100%.
+ */
+const compactBar = '@max-[15rem]';
+
 type Highlight = { label: string; value: string; src: string; alt: string; layout: string };
 
 const highlights: Highlight[] = [
@@ -471,9 +477,12 @@ const Page = () => (
           rewind={true}
           aria="{ 'aria-label': 'Recommended options' }"
         >
+          {/* A tile grows past its aspect ratio when its text needs the room – at a large text size. Each fills its
+              slide, so all of them take the height of the tallest. */}
           {options.map(({ description, teaser, src }) => (
             <p-link-tile
               key={src}
+              class="h-full"
               href="#"
               label="To the configurator"
               description={description}
@@ -605,8 +614,9 @@ const Page = () => (
               aspect-ratio="{ base: '1/1', m: '3/4' }"
               gradient={true}
             >
-              {/* The photos are bright at the top, so the tag takes the light scheme to stay readable on them. */}
-              <p-tag slot="header" class="scheme-light" variant="secondary" compact={true}>
+              {/* The photos are bright at the top, so the tag takes the light scheme to stay readable on them. A tag does
+                  not wrap by default – it is told to here, so a long one fits a narrow tile at a large text size. */}
+              <p-tag slot="header" class="scheme-light whitespace-normal" variant="secondary" compact={true}>
                 {tag}
               </p-tag>
               <img src={src} alt="" loading="lazy" />
@@ -662,34 +672,43 @@ const Page = () => (
     <Footer />
 
     {/* Contact bar: slides in once the hero has scrolled away and steps aside while the contact section or the footer
-        is on screen. Inert while it is out of view, so its links are no tab stops. */}
+        is on screen. Inert while it is out of view, so its links are no tab stops. The narrower it gets, the less it
+        shows: first the role of the advisor goes, then – at a large text size on a small screen – his photo. Both are
+        container queries in `rem`, so they follow the text size. */}
     <aside
       id="pm-contact-bar"
       class="fixed inset-x-0 bottom-0 z-50 flex justify-center px-fluid-md pb-fluid-md translate-y-[130%] opacity-0 pointer-events-none motion-safe:transition motion-safe:duration-lg motion-safe:ease-in-out data-shown:translate-y-0 data-shown:opacity-100 data-shown:pointer-events-auto"
       aria-label="Your sales advisor"
       inert
     >
-      <div class="flex max-w-full items-center gap-static-sm rounded-full bg-frosted backdrop-blur-frosted py-static-sm ps-static-sm pe-static-md shadow-high">
-        <img
-          class="size-12 shrink-0 rounded-full object-cover object-[50%_28%]"
-          src="/examples/media/pm-advisor.webp"
-          alt=""
-        />
-        <div class="flex flex-col">
-          <p-text size="sm" weight="semibold">
-            Scott Lee
-          </p-text>
-          <p-text class="max-sm:hidden" size="xs" color="contrast-medium">
-            Sales advisor · Porsche Centre Stuttgart
-          </p-text>
-        </div>
-        <div class="ms-static-md flex items-center gap-static-xs">
-          <p-link href="#" variant="secondary" icon="phone" hide-label="true" compact="true">
-            Call Scott Lee
-          </p-link>
-          <p-link href="#" variant="secondary" icon="email" hide-label="true" compact="true">
-            Email Scott Lee
-          </p-link>
+      {/* The query container is a wrapper, not the bar: on the sliding, fixed bar it made clicks in WebKit flaky. */}
+      <div class="@container flex w-full justify-center">
+        {/* The end padding matches the space above and below the round links, so they sit concentric in the rounded end:
+            the photo sets the height while it is shown, the links once it is dropped. */}
+        <div
+          class={`flex max-w-full items-center gap-static-sm rounded-full bg-frosted backdrop-blur-frosted py-static-sm ps-static-sm pe-static-md shadow-high ${compactBar}:pe-static-sm`}
+        >
+          <img
+            class={`size-12 shrink-0 rounded-full object-cover object-[50%_28%] ${compactBar}:hidden`}
+            src="/examples/media/pm-advisor.webp"
+            alt=""
+          />
+          <div class={`flex min-w-0 flex-col ${compactBar}:ps-static-sm`}>
+            <p-text size="sm" weight="semibold">
+              Scott Lee
+            </p-text>
+            <p-text class="@max-xl:hidden" size="xs" color="contrast-medium">
+              Sales advisor · Porsche Centre Stuttgart
+            </p-text>
+          </div>
+          <div class={`ms-static-md flex shrink-0 items-center gap-static-xs ${compactBar}:ms-0`}>
+            <p-link href="#" variant="secondary" icon="phone" hide-label="true" compact="true">
+              Call Scott Lee
+            </p-link>
+            <p-link href="#" variant="secondary" icon="email" hide-label="true" compact="true">
+              Email Scott Lee
+            </p-link>
+          </div>
         </div>
       </div>
     </aside>
