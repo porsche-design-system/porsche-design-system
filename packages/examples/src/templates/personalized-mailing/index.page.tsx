@@ -26,9 +26,9 @@ const reveal = 'motion-safe:opacity-0 motion-safe:data-revealed:animate-fade-in-
 /** Staggers a reveal by multiples of the small duration token. */
 const delay = (step: number) => (step ? `animation-delay: calc(var(--transition-duration-sm) * ${step})` : undefined);
 
-/** Fades an element of the hero in once the page script marks the hero as mounted. */
+/** Fades an element of the hero in once the page script marks the hero as mounted. Without motion it is simply shown. */
 const mountFade =
-  'opacity-0 motion-safe:transition-opacity motion-safe:duration-lg motion-safe:ease-in-out group-data-mounted/hero:opacity-100';
+  'motion-safe:opacity-0 motion-safe:transition-opacity motion-safe:duration-lg motion-safe:ease-in-out group-data-mounted/hero:opacity-100';
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Data – lives here, next to the markup rendering it
