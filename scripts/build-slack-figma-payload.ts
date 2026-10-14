@@ -59,7 +59,7 @@ const message = [
   ]),
   '',
   ...(designOnly ? ['A fig… name marks a property that only matters in Figma.'] : []),
-  'Publish the library and Dev Mode shows the change; a new component or icon follows with the next daily run.',
+  'Publish the library and Dev Mode shows the change; a new component or icon follows with the next PDS release.',
 ].join('\n');
 
 console.log(

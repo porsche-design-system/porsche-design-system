@@ -138,11 +138,11 @@ if (command === 'publish') {
         `\n✖ ${unrendered.length} of them did not render in preview; a developer has to look at the template`
       );
     }
-    // red in a pull request, whose author fixes it there; on main the record stays and the next run retries it
-    if (dryRun) process.exit(1);
+    // red wherever something was refused: a pull request's author fixes it there, and after a release no run retries it
+    process.exit(1);
   }
   if (dryRun) console.log('\ndry run: nothing uploaded');
-  else console.log(refused.length ? '\nall other records published' : '\nall records published');
+  else console.log('\nall records published');
 } else {
   for (const config of configs) {
     if (command === 'preview') {

@@ -67,10 +67,11 @@ script still has to do, all found by testing rather than documented by Slack:
 
 `notify-pipeline-failure.yml` watches the `Contribution`, `OSS Review Toolkit` and `Figma Code Connect` workflows and
 posts when one fails on a monitored branch. `Figma Code Connect` counts for its daily and dispatched runs; on a push to
-`main` it runs inside `Contribution`, so its failure is reported as that run's. It runs the default-branch copy of
-itself and checks the triggering run came from this repository, so a fork cannot reach the token. There is also a
-`workflow_dispatch` path taking a run ID, for rehearsing against a past failure. The workflow keeps the trigger and that
-check; resolving the run, building the message and sending it are `.github/actions/notify-slack-pipeline-failure`.
+`main` and after a release it runs inside `Contribution`, so its failure is reported as that run's. It runs the
+default-branch copy of itself and checks the triggering run came from this repository, so a fork cannot reach the token.
+There is also a `workflow_dispatch` path taking a run ID, for rehearsing against a past failure. The workflow keeps the
+trigger and that check; resolving the run, building the message and sending it are
+`.github/actions/notify-slack-pipeline-failure`.
 
 `scripts/build-slack-payload.ts` reads run metadata from the API rather than the event payload, so both paths execute
 identical code, and asks for one specific **attempt** — the API otherwise answers for the newest one, and a re-run
@@ -88,7 +89,7 @@ library as pulled in that run) that Slack has not got yet: one line per change, 
 with a link to the component in Figma: a rename (`"summary" → "slot-summary"`, or `"new" → "figNew"` for a property that
 only matters in Figma), an add (`add a BOOLEAN property named "compact"`) or a delete (`delete "showLabel"`), and a
 closing line saying that Dev Mode shows the change once the library is published, a new component or icon with the next
-daily run. The line shapes it reads are declared once in
+PDS release. The line shapes it reads are declared once in
 `packages/components/projects/figma-code-connect/figma/messages.ts`, shared with the generator. Nothing about GitHub is
 in the message, because designers have no GitHub account; the raw logs stay in the workflow run. The actions cache keeps
 the open lines Slack has got, so each line goes to design once, and again only when it is resolved and later comes back;

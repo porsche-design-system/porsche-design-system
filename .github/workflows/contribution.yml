@@ -175,11 +175,13 @@ jobs:
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
       slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
       slack-release-channel-id: ${{ secrets.SLACK_RELEASE_CHANNEL_ID }}
+      figma-access-token: ${{ secrets.FIGMA_ACCESS_TOKEN }}
   figma-code-connect:
     name: 'Figma Code Connect'
-    # After the storefront and Algolia deploy: on main it publishes, on a pull request it runs the dry run. Deploy skips
-    # forks and bot-authored pull requests, so this job does too and the token reaches neither. No job needs this one,
-    # so a failure here holds back neither the release nor a preview; on main it turns the run red for the notifier.
+    # After the storefront and Algolia deploy: on main it sends design the new design lines, on a pull request it runs
+    # the dry run; release.yml publishes. Deploy skips forks and bot-authored pull requests, so this job does too and the
+    # token reaches neither. No job needs this one, so a failure here holds back neither the release nor a preview; on
+    # main it turns the run red for the notifier.
     if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     uses: ./.github/workflows/figma-code-connect.yml
     needs:

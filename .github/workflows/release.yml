@@ -38,6 +38,9 @@ on:
       slack-release-channel-id:
         description: 'Slack channel the release announcement is posted to. A secret rather than a literal so the channel can be changed without a pull request.'
         required: false
+      figma-access-token:
+        description: 'Figma token that publishes the Code Connect records. Not required: a missing secret must not stop a release, it fails the Figma Code Connect job instead.'
+        required: false
 
 # Default to the least privilege; jobs that need more declare it explicitly.
 permissions:
@@ -275,6 +278,21 @@ jobs:
           tag: v${{ needs.check-publication-status.outputs.components-version }}
           slack-bot-token: ${{ secrets.slack-bot-token }}
           slack-channel-id: ${{ secrets.slack-release-channel-id }}
+  figma-code-connect:
+    name: 'Figma Code Connect'
+    needs:
+      - github-release
+      - storefront-exact-version
+    if: >-
+      !cancelled()
+      && github.ref == 'refs/heads/main'
+      && needs.github-release.outputs.created == 'true'
+      && (needs.storefront-exact-version.result == 'success' || needs.storefront-exact-version.result == 'skipped')
+    uses: ./.github/workflows/figma-code-connect.yml
+    with:
+      publish: true
+    secrets:
+      FIGMA_ACCESS_TOKEN: ${{ secrets.figma-access-token }}
   storefront-exact-version:
     name: 'Storefront (/v<major>.<minor>.<patch>)'
     needs: check-publication-status
