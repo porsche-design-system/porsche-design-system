@@ -61,25 +61,28 @@ const waveBars = Array.from({ length: 30 }, (_, index) => ({
  */
 const waveWidth = (waveBars.length * 2 - 1) * 0.75;
 
-type Highlight = { label: string; value: string; src: string; layout: string };
+type Highlight = { label: string; value: string; src: string; alt: string; layout: string };
 
 const highlights: Highlight[] = [
   {
     label: 'Exterior colour',
     value: 'Carmine Red',
     src: '/examples/media/pm-mosaic-1.webp',
+    alt: 'Front of your 911 Targa in Carmine Red, parked in front of a white brick wall',
     layout: 'aspect-3/4 md:row-span-2',
   },
   {
     label: 'Interior colour and material',
     value: 'Leather interior in Carmine Red',
     src: '/examples/media/pm-mosaic-2.webp',
+    alt: 'Cockpit of your 911 Targa with steering wheel, dashboard and doors in Carmine Red leather',
     layout: 'aspect-3/2 md:aspect-auto',
   },
   {
     label: 'Exterior',
     value: 'Sports exhaust system with tailpipes in black',
     src: '/examples/media/pm-mosaic-3.webp',
+    alt: 'Rear of your 911 Targa in Carmine Red with its Targa bar and two black tailpipes',
     layout: 'aspect-3/2 md:aspect-auto',
   },
 ];
@@ -169,11 +172,14 @@ type GhostTitleProps = {
   size?: string;
 };
 
-/** Giant section title fading from contrast-medium to transparent, which the content of its section overlaps. */
+/**
+ * Giant section title fading from contrast-medium to transparent, which the content of its section overlaps. The fade
+ * is a gradient behind transparent text – High Contrast Mode drops the gradient, so it gets a solid text colour there.
+ */
 const GhostTitle = ({ id, lines, size = 'text-[clamp(3rem,12.5vw,18.75rem)]' }: GhostTitleProps) => (
   <h2
     id={id}
-    class={`col-full justify-self-center text-center whitespace-nowrap font-normal leading-[1.05] bg-linear-to-b from-contrast-medium to-transparent bg-clip-text text-transparent pointer-events-none ${size}`}
+    class={`col-full justify-self-center text-center whitespace-nowrap font-normal leading-[1.05] bg-linear-to-b from-contrast-medium to-transparent bg-clip-text text-transparent forced-colors:bg-none forced-colors:text-[CanvasText] pointer-events-none ${size}`}
   >
     {lines.map((line) => (
       <span key={line} class="block">
@@ -213,6 +219,7 @@ const Page = () => (
           class={`col-full row-start-1 grid grid-cols-subgrid overflow-hidden [clip-path:inset(var(--pm-hero-inset,0)_round_var(--pm-hero-radius,0))] delay-350 ${mountFade}`}
         >
           <HeroVideo
+            label="A 911 Targa in Carmine Red on a country road at sunset"
             poster="/examples/media/pm-hero.webp"
             sources={[
               { src: '/examples/media/pm-hero.webm', type: 'video/webm' },
@@ -323,7 +330,7 @@ const Page = () => (
                 {waveBars.map(({ height, delay: wait }, index) => (
                   <span
                     key={index}
-                    class="w-0.75 shrink-0 rounded-full bg-primary scale-y-50 motion-safe:group-data-playing/sound:animate-sound-wave"
+                    class="w-0.75 shrink-0 rounded-full bg-primary forced-colors:forced-color-adjust-none forced-colors:bg-[CanvasText] scale-y-50 motion-safe:group-data-playing/sound:animate-sound-wave"
                     style={`height: ${height}px; animation-delay: ${wait}s`}
                   />
                 ))}
@@ -333,7 +340,9 @@ const Page = () => (
             <audio id="pm-sound-audio" src="/examples/media/pm-engine-sound.mp3" preload="none" />
           </div>
 
-          <div
+          {/* Each figure is a term and its value. The value is shown above its term, and counts up from zero – so the
+              visible number is hidden from assistive technology, which reads the final value instead. */}
+          <dl
             id="pm-kpis"
             class={`grid w-full grid-cols-1 gap-fluid-lg sm:grid-cols-2 lg:grid-cols-3 ${reveal}`}
             data-reveal
@@ -342,29 +351,36 @@ const Page = () => (
             {kpis.map(({ label, values }) => (
               <div
                 key={label}
-                class="flex flex-col items-center gap-static-xs text-center sm:last:col-span-2 lg:last:col-span-1"
+                class="flex flex-col-reverse items-center gap-static-xs text-center sm:last:col-span-2 lg:last:col-span-1"
               >
-                <div class="flex items-baseline gap-static-xs">
-                  {values.map(({ to, decimals = 0, unit }, index) => (
-                    <Fragment key={unit}>
-                      {index > 0 && <p-text size="3xl">/</p-text>}
-                      <p-text size="3xl">
-                        <span data-countup={to} data-decimals={decimals}>
-                          {to.toFixed(decimals)}
-                        </span>
-                      </p-text>
-                      <p-text size="sm" weight="semibold">
-                        {unit}
-                      </p-text>
-                    </Fragment>
-                  ))}
-                </div>
-                <p-text size="sm" color="primary" align="center">
-                  {label}
-                </p-text>
+                <dt>
+                  <p-text tag="span" size="sm" color="primary" align="center">
+                    {label}
+                  </p-text>
+                </dt>
+                <dd>
+                  <span class="sr-only">
+                    {values.map(({ to, decimals = 0, unit }) => `${to.toFixed(decimals)} ${unit}`).join(' / ')}
+                  </span>
+                  <span class="flex items-baseline gap-static-xs" aria-hidden="true">
+                    {values.map(({ to, decimals = 0, unit }, index) => (
+                      <Fragment key={unit}>
+                        {index > 0 && <p-text size="3xl">/</p-text>}
+                        <p-text size="3xl">
+                          <span data-countup={to} data-decimals={decimals}>
+                            {to.toFixed(decimals)}
+                          </span>
+                        </p-text>
+                        <p-text size="sm" weight="semibold">
+                          {unit}
+                        </p-text>
+                      </Fragment>
+                    ))}
+                  </span>
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
@@ -383,14 +399,14 @@ const Page = () => (
         </div>
 
         <div class="col-extended grid grid-cols-1 gap-fluid-md md:grid-cols-2 md:grid-rows-2">
-          {highlights.map(({ label, value, src, layout }, index) => (
+          {highlights.map(({ label, value, src, alt, layout }, index) => (
             <div
               key={src}
               class={`relative isolate flex flex-col justify-end overflow-hidden rounded-3xl ${layout} ${reveal}`}
               data-reveal
               style={delay(index + 1)}
             >
-              <img class="absolute inset-0 -z-1 size-full object-cover" src={src} alt="" loading="lazy" />
+              <img class="absolute inset-0 -z-1 size-full object-cover" src={src} alt={alt} loading="lazy" />
               <div class="flex flex-col gap-static-xs p-fluid-md">
                 <p-text size="sm" color="contrast-high">
                   {label}
@@ -476,7 +492,9 @@ const Page = () => (
                   type="button"
                   icon="play-filled"
                   hide-label="true"
+                  aria="{ 'aria-haspopup': 'dialog' }"
                   data-video-id={videoId}
+                  data-video-title={title}
                 >
                   Play video: {title}
                 </p-button>
@@ -516,9 +534,16 @@ const Page = () => (
             A 911 is a feeling – and anticipation grows when it is shared. Show your loved ones what you are looking
             forward to.
           </p-text>
-          <p-button class={reveal} data-reveal style={delay(1)} type="button" icon="download">
+          <p-link
+            class={reveal}
+            data-reveal
+            style={delay(1)}
+            href="/examples/media/pm-share-card.webp"
+            download="911-targa-share-card.webp"
+            icon="download"
+          >
             Save
-          </p-button>
+          </p-link>
         </div>
       </section>
 
@@ -550,7 +575,8 @@ const Page = () => (
               aspect-ratio="{ base: '1/1', m: '3/4' }"
               gradient={true}
             >
-              <p-tag slot="header" variant="secondary" compact={true}>
+              {/* The photos are bright at the top, so the tag takes the light scheme to stay readable on them. */}
+              <p-tag slot="header" class="scheme-light" variant="secondary" compact={true}>
                 {tag}
               </p-tag>
               <img src={src} alt="" loading="lazy" />
@@ -806,7 +832,8 @@ const Page = () => (
 
     <Script>{
       /* language=JavaScript */ `
-      // Behaviour of the reviews: a play button opens its clip in the modal, closing the modal unloads the player.
+      // Behaviour of the reviews: a play button opens its clip in the modal, closing the modal unloads the player. The
+      // player and the modal are named after the selected review, so it is identified once the focus moves into them.
 
       const videoModal = document.getElementById('pm-video-modal');
       const videoFrame = document.getElementById('pm-video-iframe');
@@ -814,6 +841,8 @@ const Page = () => (
       for (const button of document.getElementById('pm-voices').querySelectorAll('[data-video-id]')) {
         button.addEventListener('click', () => {
           videoFrame.src = 'https://www.youtube-nocookie.com/embed/' + button.dataset.videoId + '?autoplay=1&rel=0';
+          videoFrame.title = button.dataset.videoTitle;
+          videoModal.aria = { 'aria-label': button.dataset.videoTitle };
           videoModal.open = true;
         });
       }

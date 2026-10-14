@@ -356,17 +356,28 @@ describe.each(examplePages)('%s page', (_name, Page) => {
     expect(await renderPage(Page)).not.toMatch(/\son[a-z]+="/);
   });
 
-  it('should link nowhere but to "#" or to an id on the same page', async () => {
+  it('should link nowhere but to "#", to an id on the same page or to a download of its own media', async () => {
     // The examples demonstrate chrome, they are not a website: a link that points somewhere would break in the
     // storefront and in StackBlitz alike. This replaces Biome's `a11y/useValidAnchor`, which is off for the examples
-    // because it rejects the placeholder `href="#"` – and covers the `p-link*` elements, which the rule never saw.
+    // because it rejects the placeholder `href="#"` – and covers the `p-link*` elements, which the rule never saw. A
+    // download is a link to a file, so it may point at the media the examples ship, where the pages find their images.
     const { html } = extractScripts(await renderPage(Page));
     const ids = new Set(Array.from(html.matchAll(/\sid="([^"]+)"/g), ([, id]) => id));
-    const targets = Array.from(html.matchAll(/\s(?:href|action)="([^"]*)"/g), ([, target]) => target);
-
-    expect(targets.filter((target) => target !== '#' && !(target.startsWith('#') && ids.has(target.slice(1))))).toEqual(
-      []
+    // Tags are matched attribute by attribute, so a `>` inside a quoted value – a Tailwind variant – does not end one.
+    const tags = Array.from(html.matchAll(/<[a-z][\w-]*(?:\s+[^\s=>]+(?:="[^"]*")?)*\s*\/?>/g), ([tag]) => tag);
+    const targets = tags.flatMap((tag) =>
+      Array.from(tag.matchAll(/\s(?:href|action)="([^"]*)"/g), ([, target]) => ({
+        target,
+        download: /\sdownload="[^"]+"/.test(tag),
+      }))
     );
+
+    expect(
+      targets
+        .filter(({ download, target }) => !(download && target.startsWith('/examples/media/')))
+        .map(({ target }) => target)
+        .filter((target) => target !== '#' && !(target.startsWith('#') && ids.has(target.slice(1))))
+    ).toEqual([]);
     // An anchor without an href is not a link at all – not focusable, not announced as one.
     expect(html.match(/<a\b(?![^>]*\shref=)[^>]*>/g) ?? []).toEqual([]);
   });
