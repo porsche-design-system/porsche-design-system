@@ -29,9 +29,12 @@ const reveal = 'motion-safe:opacity-0 motion-safe:data-revealed:animate-fade-in-
 /** Staggers a reveal by multiples of the small duration token. */
 const delay = (step: number) => (step ? `animation-delay: calc(var(--transition-duration-sm) * ${step})` : undefined);
 
-/** Fades an element of the hero in once the page script marks the hero as mounted. Without motion it is simply shown. */
+/**
+ * Fades an element of the hero in as the page is first rendered: `starting:` (`@starting-style`) is the opacity it
+ * transitions from, so no script has to mark the page as mounted. Without motion it is simply shown.
+ */
 const mountFade =
-  'motion-safe:opacity-0 motion-safe:transition-opacity motion-safe:duration-lg motion-safe:ease-in-out group-data-mounted/hero:opacity-100';
+  'motion-safe:transition-opacity motion-safe:duration-lg motion-safe:ease-in-out motion-safe:starting:opacity-0';
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Data – lives here, next to the markup rendering it
@@ -242,7 +245,7 @@ const ScrollNext = () => (
 const VideoHero = () => (
   <section
     id="pm-hero"
-    class="group/hero col-full grid grid-cols-subgrid grid-rows-[auto_1fr] min-h-svh bg-surface"
+    class="col-full grid grid-cols-subgrid grid-rows-[auto_1fr] min-h-svh bg-surface"
     aria-labelledby="pm-hero-heading"
   >
     <div
@@ -297,11 +300,7 @@ const VideoHero = () => (
  * chapter below is pulled up into. It is as tall as its content, so the chapter follows right below the title.
  */
 const TitleHero = () => (
-  <section
-    id="pm-hero"
-    class="group/hero relative col-full grid grid-cols-subgrid bg-surface"
-    aria-labelledby="pm-hero-heading"
-  >
+  <section id="pm-hero" class="relative col-full grid grid-cols-subgrid bg-surface" aria-labelledby="pm-hero-heading">
     <div
       class="absolute inset-0 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color)"
       aria-hidden="true"
@@ -821,7 +820,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
 
     <Script>{
       /* language=JavaScript */ `
-      // Behaviour of the hero: fades it in${variant === 'video' ? ', insets the video frame while it scrolls away' : ''} and fades the scroll hint.
+      // Behaviour of the hero: ${variant === 'video' ? 'insets the video frame while it scrolls away and ' : ''}fades the scroll hint.
 
       const hero = document.getElementById('pm-hero');${variant === 'video' ? "\n      const heroFrame = document.getElementById('pm-hero-frame');" : ''}
       const scrollNext = document.getElementById('pm-scroll-next');
@@ -860,9 +859,6 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
       });
 
       updateHero();
-      requestAnimationFrame(() => {
-        hero.dataset.mounted = '';
-      });
     `
     }</Script>
 
