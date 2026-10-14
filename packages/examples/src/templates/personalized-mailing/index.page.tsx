@@ -275,7 +275,7 @@ const Page = () => (
       {/* A new chapter: lead, configured car, engine sound and key figures on the configured colour. Its curved lower edge
           overlaps the highlights below, which is why it is lifted above them. */}
       <section
-        class="relative z-1 col-full grid grid-cols-subgrid py-fluid-2xl rounded-b-4xl bg-(--pm-config-color)"
+        class="relative z-1 col-full grid grid-cols-subgrid gap-y-fluid-lg py-fluid-2xl rounded-b-4xl bg-(--pm-config-color)"
         aria-labelledby="pm-chapter-heading"
       >
         <div class="col-narrow flex flex-col items-center gap-fluid-lg text-center">
@@ -351,52 +351,53 @@ const Page = () => (
             {/* biome-ignore lint/a11y/useMediaCaption: engine sound sample without spoken content */}
             <audio id="pm-sound-audio" src="/examples/media/pm-engine-sound.mp3" preload="none" />
           </div>
-
-          {/* Each figure is a term and its value. The value is shown above its term, and counts up from zero – so the
-              visible number is hidden from assistive technology, which reads the final value instead.
-              The figures take the width of their content and wrap once they no longer fit side by side – in the
-              narrow column, with a fluid font size and at any text size. A value with several units wraps between
-              them as a last resort. While a number counts up, the final one, invisible, keeps its width. */}
-          <dl
-            id="pm-kpis"
-            class={`flex w-full flex-wrap justify-center gap-fluid-lg ${reveal}`}
-            data-reveal
-            style={delay(3)}
-          >
-            {kpis.map(({ label, values }) => (
-              <div key={label} class="flex max-w-full flex-col-reverse items-center gap-static-xs text-center">
-                <dt>
-                  <p-text tag="span" size="sm" color="primary" align="center">
-                    {label}
-                  </p-text>
-                </dt>
-                <dd>
-                  <span class="sr-only">
-                    {values.map(({ to, decimals = 0, unit }) => `${to.toFixed(decimals)} ${unit}`).join(' / ')}
-                  </span>
-                  <span class="flex flex-wrap items-baseline justify-center gap-x-static-xs" aria-hidden="true">
-                    {values.map(({ to, decimals = 0, unit }, index) => (
-                      <span key={unit} class="flex items-baseline gap-static-xs">
-                        <p-text size="3xl">
-                          <span class="grid justify-items-end">
-                            <span class="invisible col-start-1 row-start-1">{to.toFixed(decimals)}</span>
-                            <span class="col-start-1 row-start-1" data-countup={to} data-decimals={decimals}>
-                              {to.toFixed(decimals)}
-                            </span>
-                          </span>
-                        </p-text>
-                        <p-text size="sm" weight="semibold">
-                          {unit}
-                        </p-text>
-                        {index < values.length - 1 && <p-text size="3xl">/</p-text>}
-                      </span>
-                    ))}
-                  </span>
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
+
+        {/* Each figure is a term and its value. The value is shown above its term, and counts up from zero – so the
+            visible number is hidden from assistive technology, which reads the final value instead.
+            The figures take the width of their content and wrap once they no longer fit side by side – with a fluid
+            font size and at any text size. They get a wider column than the text above, so all three fit in a row
+            on desktop widths. A value with several units wraps between them as a last resort. While a number counts
+            up, the final one, invisible, keeps its width. */}
+        <dl
+          id="pm-kpis"
+          class={`col-basic flex flex-wrap justify-center gap-fluid-lg ${reveal}`}
+          data-reveal
+          style={delay(3)}
+        >
+          {kpis.map(({ label, values }) => (
+            <div key={label} class="flex max-w-full flex-col-reverse items-center gap-static-xs text-center">
+              <dt>
+                <p-text tag="span" size="sm" color="primary" align="center">
+                  {label}
+                </p-text>
+              </dt>
+              <dd>
+                <span class="sr-only">
+                  {values.map(({ to, decimals = 0, unit }) => `${to.toFixed(decimals)} ${unit}`).join(' / ')}
+                </span>
+                <span class="flex flex-wrap items-baseline justify-center gap-x-static-xs" aria-hidden="true">
+                  {values.map(({ to, decimals = 0, unit }, index) => (
+                    <span key={unit} class="flex items-baseline gap-static-xs">
+                      <p-text size="3xl">
+                        <span class="grid justify-items-end">
+                          <span class="invisible col-start-1 row-start-1">{to.toFixed(decimals)}</span>
+                          <span class="col-start-1 row-start-1" data-countup={to} data-decimals={decimals}>
+                            {to.toFixed(decimals)}
+                          </span>
+                        </span>
+                      </p-text>
+                      <p-text size="sm" weight="semibold">
+                        {unit}
+                      </p-text>
+                      {index < values.length - 1 && <p-text size="3xl">/</p-text>}
+                    </span>
+                  ))}
+                </span>
+              </dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       {/* Highlights: carries the configured colour onward and sits behind the curved lower edge of the chapter. */}
