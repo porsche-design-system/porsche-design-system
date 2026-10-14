@@ -33,19 +33,19 @@ require your attention.
 - Redesigned footer of dialog elements
 - All headings use regular as font-weight
 - Design Tokens are exposed as CSS variables, and all component styles are built directly upon them
-  - [CSS Variables](/stylesheets/css-variables/introduction/)
+  - [CSS Variables](/stylesheets/css-variables/introduction)
 - Theming now works by adding a `scheme-light`, `scheme-dark` or `scheme-light-dark` CSS class to any HTML element
-  - [Vanilla JS](/developing/vanilla-js/advanced/#global-theme)
-  - [Angular](/developing/angular/advanced/#global-theme)
-  - [React](/developing/react/advanced/#global-theme)
-  - [Vue](/developing/vue/advanced/#global-theme)
-  - [Next.js](/developing/next-js/advanced/#global-theme)
-  - [React Router](/developing/react-router/advanced/#global-theme)
+  - [Vanilla JS](/developing/vanilla-js/advanced#global-theme)
+  - [Angular](/developing/angular/advanced#global-theme)
+  - [React](/developing/react/advanced#global-theme)
+  - [Vue](/developing/vue/advanced#global-theme)
+  - [Next.js](/developing/next-js/advanced#global-theme)
+  - [React Router](/developing/react-router/advanced#global-theme)
 - Aligned styling solutions with the new design language and color palette.
-  - [Tailwind CSS](/tailwindcss/introduction/)
-  - [SCSS](/scss/introduction/)
-  - [Emotion](/emotion/introduction/)
-  - [Vanilla Extract](/vanilla-extract/introduction/)
+  - [Tailwind CSS](/tailwindcss/introduction)
+  - [SCSS](/scss/introduction)
+  - [Emotion](/emotion/introduction)
+  - [Vanilla Extract](/vanilla-extract/introduction)
 
 ## 🛠️ Setup Changes
 
@@ -62,7 +62,7 @@ These styles provide the architectural foundation for the system, specifically:
 - **Font-Face Styles:** Defines the Porsche Next font family, including all weights and styles.
 
 Without these global styles, components will not have access to their required color variables and will fail to render
-correctly. See [Styles](/stylesheets/introduction/) for more information.
+correctly. See [Styles](/stylesheets/introduction) for more information.
 
 ```diff
 /* src/global-style.css */
@@ -88,12 +88,12 @@ these JavaScript partials have been removed, you must now implement this logic m
 To ensure components are hidden until the design system is fully initialized, add the following to your **main CSS
 file**:
 
-- [Vanilla JS](/developing/vanilla-js/getting-started/#integration)
-- [Angular](/developing/angular/getting-started/#integration)
-- [React](/developing/react/getting-started/#integration)
-- [Vue](/developing/vue/getting-started/#integration)
-- [Next.js](/developing/next-js/getting-started/#integration)
-- [React Router](/developing/react-router/getting-started/#integration)
+- [Vanilla JS](/developing/vanilla-js/getting-started#integration)
+- [Angular](/developing/angular/getting-started#integration)
+- [React](/developing/react/getting-started#integration)
+- [Vue](/developing/vue/getting-started#integration)
+- [Next.js](/developing/next-js/getting-started#integration)
+- [React Router](/developing/react-router/getting-started#integration)
 
 ```diff
 /* src/global-style.css */
@@ -125,8 +125,8 @@ proprietary switching logic, resulting in a more performant and standardized arc
 
 All colors and styles are now driven by the CSS
 [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property. To ensure
-broad compatibility, our **mandatory global styles** (detailed in the [Setup Changes](#setup-changes) section) include
-utility classes that provide a polyfill for browsers lacking native support for the
+broad compatibility, our **mandatory global styles** (detailed in the [Setup Changes](#%EF%B8%8F-setup-changes) section)
+include utility classes that provide a polyfill for browsers lacking native support for the
 [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/types/color_light-dark) function (see
 [browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
 
@@ -299,7 +299,7 @@ const nextConfig: NextConfig = {
 ### Partials
 
 - Removed `getInitialStyles()`, `getFontFaceStyles()` and `getFontFaceStylesheet()` partials. These styles are now
-  included in the mandatory global styles, see [Setup Changes](#setup-changes) for more information.
+  included in the mandatory global styles, see [Setup Changes](#%EF%B8%8F-setup-changes) for more information.
 
 ```diff
 - import { getInitialStyles, getFontFaceStyles, getFontFaceStylesheet } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
@@ -804,7 +804,7 @@ components.
 ```
 
 - Removed deprecated prop `width`, instead the component is aligned with the
-  **[Porsche Grid](/tailwindcss/grid/examples/)** "extended" by default.
+  **[Porsche Grid](/tailwindcss/grid/examples)** "extended" by default.
 
 ```diff
 - <p-banner width="fluid"></p-banner>
@@ -851,7 +851,7 @@ components.
 ### Carousel:
 
 - Removed deprecated prop `wrap-content`. The component is always aligned with the
-  **[Porsche Grid](/tailwindcss/grid/examples/)** now, adjustable by prop `width`.
+  **[Porsche Grid](/tailwindcss/grid/examples)** now, adjustable by prop `width`.
 
 ```diff
 - <p-carousel wrap-content="true"></p-carousel>
@@ -1422,7 +1422,7 @@ components.
 
 ### Content Wrapper:
 
-- Removed deprecated component `p-content-wrapper`, use [Porsche Grid Style](/tailwindcss/grid/examples/) instead,
+- Removed deprecated component `p-content-wrapper`, use [Porsche Grid Style](/tailwindcss/grid/examples) instead,
   Tailwind CSS is recommended.
 
 ```diff

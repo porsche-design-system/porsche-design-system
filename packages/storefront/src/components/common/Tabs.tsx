@@ -4,6 +4,8 @@ import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/
 import Link from 'next/link';
 import { redirect, usePathname } from 'next/navigation';
 import { useMemo, useState } from 'react';
+import { getLandingRoute } from '@/links';
+import type { Route } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
 
 export default function Tabs() {
@@ -17,14 +19,9 @@ export default function Tabs() {
     if (pathname) {
       const { category, page, tab } = getPathnameRoutes(pathname);
 
-      // If the path doesn't contain a page redirect to first subpath of category
-      if (!page && category?.subPaths) {
-        redirect(`${Object.values(category.subPaths)[0].path}`);
-      }
-
-      // If the path doesn't contain a tab redirect to first tab of the page
-      if (!tab && page?.subPaths) {
-        redirect(`${Object.values(page.subPaths)[0].path}`);
+      // A category or a page with tabs has no content of its own
+      if ((!page && category?.subPaths) || (!tab && page?.subPaths)) {
+        redirect(getLandingRoute((page ?? category) as Route).path);
       }
 
       if (tab && page?.subPaths) {

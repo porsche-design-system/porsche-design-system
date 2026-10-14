@@ -5,7 +5,7 @@ import { capitalCase } from 'change-case';
 /**
  * The Storefront's tree of categories, pages and tabs, as plain data: the navigation, the tabs and the search index
  * render it, and it can be read without React. `tests/unit/specs/sitemap.spec.ts` checks it against the pages in
- * `src/app`, in both directions.
+ * `src/app`, in both directions. `src/links.ts` derives the routes links can target from it.
  */
 
 export const COMPONENT_ROUTES_META = Object.entries(componentMeta).filter(
@@ -77,7 +77,7 @@ const getComponents = (): Routes =>
       return acc;
     }, {});
 
-export const sitemap: Routes = {
+const sitemapRoutes = {
   news: {
     name: 'News',
     path: '/news',
@@ -1953,7 +1953,12 @@ export const sitemap: Routes = {
       },
     },
   },
-};
+} as const satisfies Routes;
+
+export const sitemap: Routes = sitemapRoutes;
+
+/** The hand-written part of the sitemap with its literal paths, for `DocsRoute` in `src/links.ts`. */
+export type SitemapTree = typeof sitemapRoutes;
 
 const getTrail = (routes: Routes, path: string): Route[] | undefined => {
   for (const route of Object.values(routes)) {

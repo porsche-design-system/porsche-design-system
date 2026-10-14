@@ -1,7 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { getPageTitle, type Route, type Routes, sitemap } from '@/sitemap';
+import { ROUTES_WITHOUT_SITEMAP_ENTRY } from '@/links';
+import { getPageTitle, type Routes, sitemap } from '@/sitemap';
+import { getRoutes } from '../helpers/links';
 
 /**
  * The sitemap is written by hand while the routes come from the pages in `src/app`, so this checks the two against each
@@ -37,16 +39,11 @@ const getMetadata = (source: string): { title?: string; description?: string } |
   return { title: field('title'), description: field('description') };
 };
 
-const flatten = (routes: Routes | undefined): Route[] =>
-  Object.values(routes ?? {}).flatMap((route) => [route, ...flatten(route.subPaths)]);
-
-const routes = flatten(sitemap);
+const routes = getRoutes();
 
 /** Pages that are deliberately not part of the navigation. */
-const PAGES_WITHOUT_SITEMAP_ENTRY = [
-  '/',
-  '/accessibility-statement',
-  '/license',
+const PAGES_WITHOUT_SITEMAP_ENTRY: string[] = [
+  ...ROUTES_WITHOUT_SITEMAP_ENTRY,
   '/-/hljs',
   '/-/mdx',
   // Redirects every component page (`/components/button`) to its first tab.

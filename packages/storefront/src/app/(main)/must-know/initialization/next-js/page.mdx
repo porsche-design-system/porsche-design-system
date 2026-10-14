@@ -76,7 +76,7 @@ By default, the network traffic looks something like this.
 
 ### Preloading font files
 
-By applying the [getFontLinks()](/partials/font-links/) partial we can preload the font assets. As a default, both
+By applying the [getFontLinks()](/partials/font-links) partial we can preload the font assets. As a default, both
 `regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
 ![Loading Behavior Next.js 03](assets/loading-behavior-nextjs-04.jpg)
@@ -87,7 +87,7 @@ which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
 
 ### Preloading component chunks
 
-The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links/)
+The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links)
 partial. Without any configuration it simply preloads the **core chunk**.
 
 ![Loading Behavior Next.js 04](assets/loading-behavior-nextjs-05.jpg)
@@ -114,7 +114,7 @@ fonts) that are located **above the fold** which means visible on page load with
 
 ### Early initialization
 
-This is where it may be interesting to apply the [getLoaderScript()](/partials/loader-script/) partial.
+This is where it may be interesting to apply the [getLoaderScript()](/partials/loader-script) partial.
 
 ![Loading Behavior Next.js 05](assets/loading-behavior-nextjs-07.jpg)
 

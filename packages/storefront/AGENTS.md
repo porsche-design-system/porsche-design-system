@@ -101,6 +101,29 @@ sitemap, most specific first, and the root layout appends ` - Porsche Design Sys
 `src/sitemap.ts` returns `Button: Usage - Components` for a tab and `Blur - Tokens` for a page.
 `tests/unit/specs/sitemap.spec.ts` fails when a page's title differs.
 
+### Links and anchors
+
+Links are written in one form and resolved for each output: `next/link` adds the base path and the trailing slash in the
+Storefront, and the skills generator turns the same routes into references or Storefront URLs.
+
+| Link to       | Write                                                    | Notes                                                                                            |
+| ------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| A page        | `[Button](/components/button/usage)`                     | A route of the sitemap, without a trailing slash. In TSX, use `DocsLink`, typed with `DocsHref`. |
+| A section     | `[Do](/components/button/usage#do)` or `[Setup](#setup)` | The anchor of an `##` heading on that page, from `getHeadingAnchorId()` (GitHub-style slugs).    |
+| A file        | `[AGENTS.md](assets/downloads/AGENTS.md)`                | Relative, from `public/`; the `<base>` of the root layout adds the base path.                    |
+| Anything else | `[MDN](https://developer.mozilla.org)`                   | With its scheme.                                                                                 |
+
+- Use Markdown links, or `Link` from `next/link` in JSX. Elements that render their own `<a>` (`PLink`, `PLinkPure`,
+  `PLinkTile`, `<a>`) skip the base path, so give them a relative path with a trailing slash:
+  `components/introduction/`.
+- `DocsLink` also takes an anchor on the current page (`#do`) and adds the current path to it: a bare `#do` resolves
+  against the `<base>` of the root layout, which leads to the home page.
+- `DocsRoute` in `src/links.ts` is the type of every route; a link to a page that doesn't exist fails the typecheck in
+  TSX. A category or a page with tabs leads to its first entry (`getLandingRoute()`), and its `page.tsx` redirects
+  there.
+- MDX isn't typechecked, so `tests/unit/specs/links.spec.ts` checks every link in it: routes, trailing slashes, anchors,
+  files, tables of contents, unique heading anchors and redirects.
+
 ## File Structure
 
 ```

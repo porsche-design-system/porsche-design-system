@@ -10,7 +10,9 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { DocsLink } from '@/components/common/DocsLink';
 import { VersionSelect } from '@/components/common/VersionSelect';
+import { getLandingRoute } from '@/links';
 import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { type Routes, sitemap } from '@/sitemap';
 import { getFlags } from '@/utils/getFlags';
@@ -89,7 +91,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                 {category.subPaths &&
                   Object.entries(category.subPaths).map(([_, page]) => {
                     // If page has subPaths (tabs) link to first tab
-                    const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
+                    const link = getLandingRoute(page).path;
                     return (
                       <PLinkPure
                         key={link}
@@ -139,12 +141,12 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
             </li>
             <li>
               <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
-                <Link href="/license">License</Link>
+                <DocsLink href="/license">License</DocsLink>
               </PLinkPure>
             </li>
             <li>
               <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
-                <Link href="/accessibility-statement">Accessibility Statement</Link>
+                <DocsLink href="/accessibility-statement">Accessibility Statement</DocsLink>
               </PLinkPure>
             </li>
           </ul>
