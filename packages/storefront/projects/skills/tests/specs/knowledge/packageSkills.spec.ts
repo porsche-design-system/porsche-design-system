@@ -86,7 +86,7 @@ describe('package skill registry', () => {
     expect(page).toContain('[`p-drilldown`](../../../components/p-drilldown/p-drilldown.md)');
     expect(page).not.toContain('p-drilldown-link`](');
     expect(page).toContain('[examples.md](../../../examples.md)');
-    expect(page).toContain('```html\n<html lang="en">');
+    expect(page).toContain('```html\n<html lang="en"');
     expect(page).not.toMatch(/^\s*<head>/m);
     expect(page).not.toContain('Example of the Porsche Design System');
     expect(page).toContain('```js\n// DO NOT USE IN PRODUCTION!');

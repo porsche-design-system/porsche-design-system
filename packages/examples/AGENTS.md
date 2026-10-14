@@ -115,6 +115,7 @@ src/
 │   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
+│   ├── footer/                   # Footer (`extended`) and SimpleFooter, sharing the legal information they close with
 │   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask, with its behaviour
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
 ├── templates/
@@ -123,7 +124,8 @@ src/
 ├── patterns/
 │   ├── header/overlay/           # Header in its `overlay` variant
 │   ├── header/stacked/           # Header in its `stacked` variant
-│   ├── footer/                   # Footer below the content
+│   ├── footer/extended/          # Footer of a site: delivery country, navigation, social media, legal information
+│   ├── footer/simple/            # SimpleFooter: the legal information only, for a page that stands on its own
 │   ├── popover/                  # index.page.tsx each – the behaviour is per example
 │   │   ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
 │   │   ├── priority-navigation/  # entries that no longer fit collapse into a popover
@@ -258,7 +260,7 @@ schemes – in its initial state and in every state the page reaches through int
 - **Nothing is scoped or disabled in the fixture.** The component suites of `packages/components-js` switch off the
   rules that expect a page-level `main` and an `h1`, because they render one component in isolation. An example _is_ a
   whole page, so those rules are exactly the ones worth running. A rule that genuinely does not apply is disabled **per
-  page** with a reason – today only `page-has-heading-one`, for the footer pattern, which is a section and not a page.
+  page** with a reason – today only `page-has-heading-one`, for the footer patterns, which are a section and not a page.
 - Like the VRT it runs against the **built** site, sharing the web servers in
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts). WebKit is scanned as well as chromium: axe reads
   the styles and names the engine computes, and an iPhone only ever runs WebKit.
@@ -349,7 +351,9 @@ reaches through interaction**.
   replacing them. There is no shared data module.
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
   chrome is what the pattern demonstrates. Pass the section as `beforeMain` (headers) or `afterMain` (footers) so its
-  landmark sits where it does on a real page.
+  landmark sits where it does on a real page. It also sets `scheme-light-dark bg-canvas` on `<html>`, so a pattern
+  follows the color scheme of the operating system – without a scheme the PDS components render light, and the dark
+  captures and scans would show the light pattern; without a background axe measures contrast against white.
 - **A page built on `p-canvas` adds no landmark of its own.** The component renders the banner, the `main` landmark and
   the two `aside` landmarks in its shadow root, so a `<main id="main">` in the default slot would nest one landmark
   inside another. The page therefore renders the component straight into
@@ -529,8 +533,8 @@ project with it (`npm run test:unit:skills`).
 3. Default-export a component that renders `<TemplatePage meta={meta}>`, which writes the meta into the `<head>`. The
    layout writes nothing but the document: the page composes its chrome itself, like a pattern does –
    `<Header currentPage="…" />` (optionally `showSearch`, `variant`, `navItems`, and for `stacked` also `notice` and
-   `categoryItems`) and `<Footer />`, or a `p-canvas` for an application page, which then puts its color scheme on
-   `<html>` through `class`.
+   `categoryItems`) and `<Footer />` – or `<SimpleFooter />` for a page that stands on its own – or a `p-canvas` for an
+   application page, which then puts its color scheme on `<html>` through `class`.
 4. Put the markup in `children`, including the page's own `<main id="main">` – except inside `p-canvas`, where the
    component provides that landmark. Links go to `#`, unless they point at an id on the same page.
 5. Style with Tailwind utilities; touch `src/style.css` only for genuinely global defaults or theme values.
@@ -587,7 +591,7 @@ all of them from the component and therefore renders none itself. These demos ar
 correct by example — keep the baseline when adding examples. The unit tests and the a11y suite assert it for every page.
 
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
-heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is
+heading, because the content below the header is part of what they show. The footer patterns have none: their `main` is
 empty and carries no spacing, so the footer is seen on its own instead of below a placeholder heading. The shared test
 therefore asserts _at most_ one first level heading per example, and the per-pattern suites pin down which of the two a
 page is — do not "fix" a missing heading by adding one back to a pattern that deliberately shows nothing above its

@@ -13,7 +13,7 @@ import { examples } from '@porsche-design-system/examples';
 /** Every storefront page framing examples, with the examples it frames. */
 const pagesWithExamples: [path: string, examples: string[]][] = [
   ['/patterns/header/', ['patterns/header/overlay', 'patterns/header/stacked']],
-  ['/patterns/footer/', ['patterns/footer']],
+  ['/patterns/footer/', ['patterns/footer/extended', 'patterns/footer/simple']],
   ['/patterns/feedback/', ['patterns/feedback/inline', 'patterns/feedback/dialog']],
   [
     '/patterns/popover/',

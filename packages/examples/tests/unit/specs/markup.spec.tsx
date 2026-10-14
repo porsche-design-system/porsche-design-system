@@ -7,7 +7,7 @@ import { normalizeClassAttributes, renderPage } from '../../../lib/jsx.ts';
 import { scriptEntryName } from '../../../lib/projects.ts';
 import { PatternPage } from '../../../src/_layouts/PatternPage.tsx';
 import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
-import { Footer } from '../../../src/_partials/footer/Footer.tsx';
+import { Footer, SimpleFooter } from '../../../src/_partials/footer/Footer.tsx';
 import { Head } from '../../../src/_partials/Head.tsx';
 import { categoryItems } from '../../../src/_partials/header/CategoryTabs.tsx';
 import { Header } from '../../../src/_partials/header/Header.tsx';
@@ -15,7 +15,8 @@ import { navItems } from '../../../src/_partials/header/MainNav.tsx';
 import { noticeText } from '../../../src/_partials/header/NoticeBar.tsx';
 import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page.tsx';
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';
-import FooterPatternPage from '../../../src/patterns/footer/index.page.tsx';
+import FooterExtendedPage from '../../../src/patterns/footer/extended/index.page.tsx';
+import FooterSimplePage from '../../../src/patterns/footer/simple/index.page.tsx';
 import HeaderOverlayPage from '../../../src/patterns/header/overlay/index.page.tsx';
 import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.tsx';
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
@@ -253,6 +254,31 @@ describe('Footer', () => {
   });
 });
 
+describe('SimpleFooter', () => {
+  const html = render(<SimpleFooter />);
+
+  it('should close with the same legal information as the extended footer', () => {
+    const extended = render(<Footer />);
+    const legal = html.slice(html.indexOf('<article'), html.lastIndexOf('</footer>'));
+
+    expect(legal).toContain('aria-label="Consumption and emission information"');
+    expect(legal).toContain('<p-wordmark>');
+    expect(extended).toContain(legal);
+  });
+
+  it('should leave out the site navigation, which would lead away from the page it closes', () => {
+    expect(html).not.toContain('<nav');
+    expect(html).not.toContain('<p-select');
+    expect(html).not.toContain('aria-label="Social media and payment service providers"');
+  });
+
+  it('should link nowhere', () => {
+    for (const [, url] of html.matchAll(/href="([^"]*)"/g)) {
+      expect(url).toBe('#');
+    }
+  });
+});
+
 describe('TemplatePage', () => {
   const renderTemplatePage = (props: Partial<Parameters<typeof TemplatePage>[0]> = {}) =>
     render(
@@ -318,6 +344,10 @@ describe('PatternPage', () => {
     expect(html).toContain('<main id="main">');
   });
 
+  it('should follow the color scheme of the operating system, which the dark captures and scans emulate', () => {
+    expect(renderPatternPage()).toContain('<html lang="en" class="scheme-light-dark bg-canvas">');
+  });
+
   it('should render the page content, and nothing the layout adds around it', () => {
     const html = renderPatternPage();
 
@@ -341,8 +371,8 @@ describe.each(examplePages)('%s page', (_name, Page) => {
   it('should render at most one first level heading', async () => {
     const html = await renderPage(Page);
 
-    // axe's `page-has-heading-one` asks for at least one, on every page but the footer pattern, which shows nothing
-    // but its own section. Together with this, every other page has exactly one.
+    // axe's `page-has-heading-one` asks for at least one, on every page but the footer patterns, which show nothing
+    // but their own section. Together with this, every other page has exactly one.
     expect(countFirstLevelHeadings(html)).toBeLessThanOrEqual(1);
   });
 
@@ -502,17 +532,21 @@ describe('header patterns', () => {
   });
 });
 
-describe('footer pattern', () => {
-  it('should show the footer below the content, without a header', async () => {
-    const html = await renderPage(FooterPatternPage);
+describe.each([
+  ['extended', FooterExtendedPage, 'aria-label="Footer"'],
+  ['simple', FooterSimplePage, 'aria-label="Consumption and emission information"'],
+] as const)('footer pattern %s', (_layout, Page, landmark) => {
+  it('should show its footer below the content, without a header', async () => {
+    const html = await renderPage(Page);
 
     expect(countOccurrences(html, '<footer')).toBe(1);
+    expect(html).toContain(landmark);
     expect(html).not.toContain('<header');
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
   });
 
   it('should keep the main landmark empty, so the footer is shown without a heading above it', async () => {
-    const html = await renderPage(FooterPatternPage);
+    const html = await renderPage(Page);
 
     expect(html).toContain('<main id="main"></main>');
     expect(countFirstLevelHeadings(html)).toBe(0);
