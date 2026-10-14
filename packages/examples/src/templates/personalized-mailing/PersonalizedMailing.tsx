@@ -807,7 +807,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
         margins, so it is given the padded width explicitly. */}
     <p-modal
       id="pm-video-modal"
-      class="[--p-modal-width:min(960px,calc(100%-2rem))] [--p-modal-spacing-top:clamp(16px,6vh,80px)] [--p-modal-spacing-bottom:clamp(16px,6vh,80px)]"
+      class="[--p-modal-width:min(960px,calc(100%-2rem))]"
       aria="{ 'aria-label': 'Play video' }"
     >
       <iframe
