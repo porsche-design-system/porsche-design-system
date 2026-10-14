@@ -1,4 +1,3 @@
-import { Fragment } from 'preact';
 import type { ExampleMeta } from '../../../lib/meta.ts';
 import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
 import { FeedbackForm } from '../../_partials/feedback/FeedbackForm.tsx';
@@ -209,20 +208,25 @@ const Page = () => (
   <TemplatePage meta={meta} class="scheme-dark bg-canvas">
     <main id="main" class="grid-template gap-y-0" style={`--pm-config-color: ${configColor}`}>
       {/* Hero: the full bleed video insets into a rounded card while the hero scrolls away. The page script writes
-          the inset and the radius as custom properties of the frame, everything else is a utility. */}
+          the inset and the radius as custom properties of the frame, everything else is a utility.
+          It is at least as tall as the viewport, and taller when its content needs it – at a large text size. Its
+          two rows keep the content below the wordmark: the wordmark sizes the first, the content sits at the end of
+          the second, and the video spans both. */}
       <section
         id="pm-hero"
-        class="group/hero col-full grid grid-cols-subgrid grid-rows-[100svh] bg-surface"
+        class="group/hero col-full grid grid-cols-subgrid grid-rows-[auto_1fr] min-h-svh bg-surface"
         aria-labelledby="pm-hero-heading"
       >
         <div
-          class={`col-full row-start-1 self-end h-2/5 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color) delay-350 ${mountFade}`}
+          class={`col-full row-span-full self-end h-2/5 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color) delay-350 ${mountFade}`}
           aria-hidden="true"
         />
 
+        {/* The video fills the frame but must not size it – its own height, 9/16 of its width, would stretch the hero
+            in landscape. With no height of its own, its minimum height fills the frame once the rows are sized. */}
         <div
           id="pm-hero-frame"
-          class={`col-full row-start-1 grid grid-cols-subgrid overflow-hidden [clip-path:inset(var(--pm-hero-inset,0)_round_var(--pm-hero-radius,0))] delay-350 ${mountFade}`}
+          class={`col-full row-span-full grid grid-cols-subgrid grid-rows-subgrid overflow-hidden [clip-path:inset(var(--pm-hero-inset,0)_round_var(--pm-hero-radius,0))] [&>video]:h-0 delay-350 ${mountFade}`}
         >
           <HeroVideo
             label="A 911 Targa in Carmine Red on a country road at sunset"
@@ -237,7 +241,7 @@ const Page = () => (
               aria-hidden="true"
             />
             <div
-              class={`z-1 col-extended row-span-full self-end flex flex-col items-center gap-fluid-sm pb-[calc(var(--spacing-fluid-xl)+var(--spacing-static-2xl))] text-center delay-600 ${mountFade}`}
+              class={`z-1 col-extended row-start-2 self-end flex flex-col items-center gap-fluid-sm pb-[calc(var(--spacing-fluid-xl)+var(--spacing-static-2xl))] text-center delay-600 ${mountFade}`}
             >
               <p-heading id="pm-hero-heading" tag="h1" size="2xl" align="center">
                 Mr. Niessner, your 911 Targa.
@@ -251,7 +255,7 @@ const Page = () => (
         </div>
 
         <div
-          class={`z-2 col-full row-start-1 self-start justify-self-center pt-fluid-lg pointer-events-none ${mountFade}`}
+          class={`z-2 col-full row-start-1 self-start justify-self-center pt-fluid-lg pb-fluid-md pointer-events-none ${mountFade}`}
         >
           <p-wordmark aria="{ 'aria-label': 'Porsche' }" />
         </div>
@@ -310,33 +314,35 @@ const Page = () => (
           {/* Engine sound: while it plays, the label crossfades into the waveform and the pill widens. The label stays in
               the flow and sizes the pill at rest; playing, the pill grows by a fixed amount past it – whatever the
               length, font or size of the label – and the waveform on top spreads across it. Without `calc-size()` the
-              pill takes the width of the waveform instead, and never less than its label. */}
+              pill takes the width of the waveform instead. It never grows past its column, though: at a large text
+              size the label is cut with an ellipsis, and the bars of the waveform get thinner. */}
           <div
             id="pm-sound"
-            class={`group/sound flex items-center gap-static-md rounded-full bg-frosted backdrop-blur-frosted py-static-xs ps-static-xs pe-static-md ${reveal}`}
+            class={`group/sound flex max-w-full items-center gap-static-md rounded-full bg-frosted backdrop-blur-frosted py-static-xs ps-static-xs pe-static-md ${reveal}`}
             data-reveal
             style={delay(2)}
           >
-            <p-button id="pm-sound-toggle" type="button" icon="play-filled" hide-label="true">
+            <p-button id="pm-sound-toggle" class="shrink-0" type="button" icon="play-filled" hide-label="true">
               Play engine sound
             </p-button>
             <div
-              class={`relative flex h-7 items-center overflow-hidden [interpolate-size:allow-keywords] motion-safe:transition-[width] motion-safe:duration-lg motion-safe:ease-in-out group-data-playing/sound:w-${waveWidth} group-data-playing/sound:min-w-max supports-[width:calc-size(auto,size)]:group-data-playing/sound:w-[calc-size(auto,size_+_2.5rem)]`}
+              class={`relative flex h-7 min-w-0 items-center overflow-hidden [interpolate-size:allow-keywords] motion-safe:transition-[width] motion-safe:duration-lg motion-safe:ease-in-out group-data-playing/sound:w-${waveWidth} supports-[width:calc-size(auto,size)]:group-data-playing/sound:w-[calc-size(auto,size_+_2.5rem)]`}
             >
               <p-text
-                class="whitespace-nowrap motion-safe:transition-opacity motion-safe:duration-md motion-safe:ease-in-out group-data-playing/sound:opacity-0"
+                class="min-w-0 motion-safe:transition-opacity motion-safe:duration-md motion-safe:ease-in-out group-data-playing/sound:opacity-0"
                 size="sm"
+                ellipsis={true}
               >
                 Sports exhaust system
               </p-text>
               <div
-                class="absolute inset-0 flex items-center justify-between opacity-0 motion-safe:transition-opacity motion-safe:duration-md motion-safe:ease-in-out group-data-playing/sound:opacity-100"
+                class="absolute inset-0 flex items-center justify-between gap-px opacity-0 motion-safe:transition-opacity motion-safe:duration-md motion-safe:ease-in-out group-data-playing/sound:opacity-100"
                 aria-hidden="true"
               >
                 {waveBars.map(({ height, delay: wait }, index) => (
                   <span
                     key={index}
-                    class="w-0.75 shrink-0 rounded-full bg-primary forced-colors:forced-color-adjust-none forced-colors:bg-[CanvasText] scale-y-50 motion-safe:group-data-playing/sound:animate-sound-wave"
+                    class="w-0.75 min-w-px rounded-full bg-primary forced-colors:forced-color-adjust-none forced-colors:bg-[CanvasText] scale-y-50 motion-safe:group-data-playing/sound:animate-sound-wave"
                     style={`height: ${height}px; animation-delay: ${wait}s`}
                   />
                 ))}
@@ -347,18 +353,18 @@ const Page = () => (
           </div>
 
           {/* Each figure is a term and its value. The value is shown above its term, and counts up from zero – so the
-              visible number is hidden from assistive technology, which reads the final value instead. */}
+              visible number is hidden from assistive technology, which reads the final value instead.
+              The figures take the width of their content and wrap once they no longer fit side by side – in the
+              narrow column, with a fluid font size and at any text size. A value with several units wraps between
+              them as a last resort. While a number counts up, the final one, invisible, keeps its width. */}
           <dl
             id="pm-kpis"
-            class={`grid w-full grid-cols-1 gap-fluid-lg sm:grid-cols-2 lg:grid-cols-3 ${reveal}`}
+            class={`flex w-full flex-wrap justify-center gap-fluid-lg ${reveal}`}
             data-reveal
             style={delay(3)}
           >
             {kpis.map(({ label, values }) => (
-              <div
-                key={label}
-                class="flex flex-col-reverse items-center gap-static-xs text-center sm:last:col-span-2 lg:last:col-span-1"
-              >
+              <div key={label} class="flex max-w-full flex-col-reverse items-center gap-static-xs text-center">
                 <dt>
                   <p-text tag="span" size="sm" color="primary" align="center">
                     {label}
@@ -368,19 +374,22 @@ const Page = () => (
                   <span class="sr-only">
                     {values.map(({ to, decimals = 0, unit }) => `${to.toFixed(decimals)} ${unit}`).join(' / ')}
                   </span>
-                  <span class="flex items-baseline gap-static-xs" aria-hidden="true">
+                  <span class="flex flex-wrap items-baseline justify-center gap-x-static-xs" aria-hidden="true">
                     {values.map(({ to, decimals = 0, unit }, index) => (
-                      <Fragment key={unit}>
-                        {index > 0 && <p-text size="3xl">/</p-text>}
+                      <span key={unit} class="flex items-baseline gap-static-xs">
                         <p-text size="3xl">
-                          <span data-countup={to} data-decimals={decimals}>
-                            {to.toFixed(decimals)}
+                          <span class="grid justify-items-end">
+                            <span class="invisible col-start-1 row-start-1">{to.toFixed(decimals)}</span>
+                            <span class="col-start-1 row-start-1" data-countup={to} data-decimals={decimals}>
+                              {to.toFixed(decimals)}
+                            </span>
                           </span>
                         </p-text>
                         <p-text size="sm" weight="semibold">
                           {unit}
                         </p-text>
-                      </Fragment>
+                        {index < values.length - 1 && <p-text size="3xl">/</p-text>}
+                      </span>
                     ))}
                   </span>
                 </dd>
@@ -478,38 +487,42 @@ const Page = () => (
       >
         <GhostTitle id="pm-voices-heading" lines={['Expert opinions', '& reviews.']} size="text-5xl" />
 
+        {/* A review sets its clip beside its quote while there is room for both. The room depends on the text size, so the
+            card queries its own width in `rem` – at a larger text size the clip moves above the quote sooner. */}
         <ul class="z-1 col-extended -mt-[3vw] grid gap-fluid-md md:grid-cols-2">
           {reviews.map(({ videoId, title, quote, source }, index) => (
             <li
               key={videoId}
-              class={`flex items-center gap-fluid-md rounded-lg bg-frosted p-fluid-sm backdrop-blur-frosted ${reveal}`}
+              class={`@container grid rounded-lg bg-frosted p-fluid-sm backdrop-blur-frosted ${reveal}`}
               data-reveal
               style={delay(index)}
             >
-              <div class="relative isolate aspect-video shrink-0 basis-[clamp(7.5rem,38%,21.25rem)] overflow-hidden rounded-md">
-                <img
-                  class="absolute inset-0 size-full object-cover"
-                  src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                  alt=""
-                  loading="lazy"
-                />
-                <p-button
-                  class="absolute top-1/2 left-1/2 -translate-1/2"
-                  type="button"
-                  icon="play-filled"
-                  hide-label="true"
-                  aria="{ 'aria-haspopup': 'dialog' }"
-                  data-video-id={videoId}
-                  data-video-title={title}
-                >
-                  Play video: {title}
-                </p-button>
-              </div>
-              <div class="flex flex-col gap-static-xs">
-                <p-text size="md">“{quote}”</p-text>
-                <p-text size="sm" color="contrast-medium">
-                  {source}
-                </p-text>
+              <div class="flex items-center gap-fluid-md @max-2xs:flex-col @max-2xs:items-stretch">
+                <div class="relative isolate aspect-video shrink-0 basis-[clamp(7.5rem,38%,21.25rem)] overflow-hidden rounded-md @max-2xs:basis-auto">
+                  <img
+                    class="absolute inset-0 size-full object-cover"
+                    src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                    alt=""
+                    loading="lazy"
+                  />
+                  <p-button
+                    class="absolute top-1/2 left-1/2 -translate-1/2"
+                    type="button"
+                    icon="play-filled"
+                    hide-label="true"
+                    aria="{ 'aria-haspopup': 'dialog' }"
+                    data-video-id={videoId}
+                    data-video-title={title}
+                  >
+                    Play video: {title}
+                  </p-button>
+                </div>
+                <div class="flex flex-col gap-static-xs">
+                  <p-text size="md">“{quote}”</p-text>
+                  <p-text size="sm" color="contrast-medium">
+                    {source}
+                  </p-text>
+                </div>
               </div>
             </li>
           ))}
