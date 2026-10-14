@@ -96,6 +96,11 @@ button:focus-visible {
 | **Code examples** | Must be accessible by default (correct labels, focus, keyboard behavior) |
 | **Headings**      | Maintain logical heading order (no skipped levels)                       |
 
+Every page that renders content exports `metadata` with a `title` and a `description`. The title is derived from the
+sitemap, most specific first, and the root layout appends ` - Porsche Design System`: `getPageTitle()` in
+`src/sitemap.ts` returns `Button: Usage - Components` for a tab and `Blur - Tokens` for a page.
+`tests/unit/specs/sitemap.spec.ts` fails when a page's title differs.
+
 ## File Structure
 
 ```

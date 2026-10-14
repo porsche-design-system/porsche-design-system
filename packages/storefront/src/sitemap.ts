@@ -38,6 +38,15 @@ const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
   'p-toast',
 ];
 
+const ACRONYMS = ['ai', 'url'];
+
+/** `link-tile` → `Link Tile`, `input-url` → `Input URL` */
+const getComponentName = (component: string): string =>
+  component
+    .split('-')
+    .map((word) => (ACRONYMS.includes(word) ? word.toUpperCase() : capitalCase(word)))
+    .join(' ');
+
 const componentTabs = (tagName: TagName, component: string): Routes => {
   const tab = (key: string, name: string): Routes => ({
     [key]: { name, path: `/components/${component}/${key}`, type: 'TAB' },
@@ -59,7 +68,7 @@ const getComponents = (): Routes =>
       const tagName = key as TagName;
       const component = key.replace(/^p-/, '');
       acc[component] = {
-        name: capitalCase(component), // link-tile → Link Tile
+        name: getComponentName(component),
         tagName,
         path: `/components/${component}`,
         type: 'PAGE',
@@ -559,17 +568,17 @@ export const sitemap: Routes = {
           guidelines: {
             name: 'Guidelines',
             path: '/patterns/forms/guidelines',
-            type: 'PAGE',
+            type: 'TAB',
           },
           resources: {
             name: 'Resources',
             path: '/patterns/forms/resources',
-            type: 'PAGE',
+            type: 'TAB',
           },
           legal: {
             name: 'Legal',
             path: '/patterns/forms/legal',
-            type: 'PAGE',
+            type: 'TAB',
           },
         },
       },
@@ -581,12 +590,12 @@ export const sitemap: Routes = {
           introduction: {
             name: 'Introduction',
             path: '/patterns/notifications/introduction',
-            type: 'PAGE',
+            type: 'TAB',
           },
           'decision-tree': {
             name: 'Decision Tree',
             path: '/patterns/notifications/decision-tree',
-            type: 'PAGE',
+            type: 'TAB',
           },
         },
       },
@@ -1790,37 +1799,37 @@ export const sitemap: Routes = {
           introduction: {
             name: 'Introduction',
             path: '/must-know/initialization/introduction',
-            type: 'PAGE',
+            type: 'TAB',
           },
           'vanilla-js': {
             name: 'Vanilla JS',
             path: '/must-know/initialization/vanilla-js',
-            type: 'PAGE',
+            type: 'TAB',
           },
           angular: {
             name: 'Angular',
             path: '/must-know/initialization/angular',
-            type: 'PAGE',
+            type: 'TAB',
           },
           react: {
             name: 'React',
             path: '/must-know/initialization/react',
-            type: 'PAGE',
+            type: 'TAB',
           },
           vue: {
             name: 'Vue',
             path: '/must-know/initialization/vue',
-            type: 'PAGE',
+            type: 'TAB',
           },
           'next-js': {
             name: 'Next JS',
             path: '/must-know/initialization/next-js',
-            type: 'PAGE',
+            type: 'TAB',
           },
           remix: {
             name: 'Remix',
             path: '/must-know/initialization/remix',
-            type: 'PAGE',
+            type: 'TAB',
           },
         },
       },
@@ -1842,12 +1851,12 @@ export const sitemap: Routes = {
           cdn: {
             name: 'CDN',
             path: '/must-know/performance/cdn',
-            type: 'PAGE',
+            type: 'TAB',
           },
           'loading-behaviour': {
             name: 'Loading Behaviour',
             path: '/must-know/performance/loading-behaviour',
-            type: 'PAGE',
+            type: 'TAB',
           },
         },
       },
@@ -1859,22 +1868,22 @@ export const sitemap: Routes = {
           introduction: {
             name: 'Introduction',
             path: '/must-know/accessibility/introduction',
-            type: 'PAGE',
+            type: 'TAB',
           },
           'dos-and-donts': {
             name: "Do's and Don'ts",
             path: '/must-know/accessibility/dos-and-donts',
-            type: 'PAGE',
+            type: 'TAB',
           },
           'ai-agent-setup': {
             name: 'Setting AI Agent Context',
             path: '/must-know/accessibility/ai-agent-setup',
-            type: 'PAGE',
+            type: 'TAB',
           },
           statement: {
             name: 'Statement',
             path: '/must-know/accessibility/statement',
-            type: 'PAGE',
+            type: 'TAB',
           },
         },
       },
@@ -1886,12 +1895,12 @@ export const sitemap: Routes = {
           vulnerabilities: {
             name: 'Vulnerabilities',
             path: '/must-know/security/vulnerabilities',
-            type: 'PAGE',
+            type: 'TAB',
           },
           'content-security-policy': {
             name: 'Content Security Policy',
             path: '/must-know/security/content-security-policy',
-            type: 'PAGE',
+            type: 'TAB',
           },
         },
       },
@@ -1944,4 +1953,32 @@ export const sitemap: Routes = {
       },
     },
   },
+};
+
+const getTrail = (routes: Routes, path: string): Route[] | undefined => {
+  for (const route of Object.values(routes)) {
+    if (route.path === path) {
+      return [route];
+    }
+    const trail = route.subPaths && getTrail(route.subPaths, path);
+    if (trail) {
+      return [route, ...trail];
+    }
+  }
+  return undefined;
+};
+
+/**
+ * The title of a page in the sitemap, most specific first: `Button: Usage - Components` for a tab, `Blur - Tokens` for
+ * a page. The root layout appends ` - Porsche Design System`. Every page's `metadata.title` must match it, which
+ * `tests/unit/specs/sitemap.spec.ts` checks.
+ */
+export const getPageTitle = (path: string): string | undefined => {
+  const trail = getTrail(sitemap, path);
+  if (!trail) {
+    return undefined;
+  }
+  const [route, ...ancestors] = [...trail].reverse();
+  const head = route.type === 'TAB' ? `${ancestors.shift()?.name}: ${route.name}` : route.name;
+  return [head, ...ancestors.map(({ name }) => name)].join(' - ');
 };
