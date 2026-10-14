@@ -1,5 +1,74 @@
+/** The legal information on consumption and emissions every footer closes with, above its imprint. */
+const ConsumptionInformation = () => (
+  <article class="col-extended grid gap-fluid-md mt-fluid-md" aria-label="Consumption and emission information">
+    <p-text size="2xs" color="contrast-medium">
+      The consumption and emission values stated were determined in accordance with the legally prescribed measurement
+      procedures. Since September 1, 2017, certain new vehicles have been type-approved in accordance with the Worldwide
+      Harmonized Vehicles Test Procedure (WLTP), a more realistic test procedure for measuring fuel/electricity
+      consumption and CO₂ emissions. Since September 1, 2018, the WLTP has replaced the New European Driving Cycle
+      (NEDC). Due to the more realistic testing conditions, the fuel/electricity consumption and CO₂ emission values
+      measured according to the WLTP are, in many cases, higher than those measured according to the NEDC. As a result,
+      vehicle taxation may change accordingly starting September 1, 2018. Further information on the differences between
+      WLTP and NEDC can be found at www.porsche.com/wltp.
+    </p-text>
+    <p-text size="2xs" color="contrast-medium">
+      Currently, regardless of the applied type-approval procedure, it remains mandatory to communicate NEDC values. The
+      additional disclosure of WLTP values may be done on a voluntary basis until their mandatory use. In the case of
+      new vehicles type-approved according to WLTP, NEDC values are derived from WLTP values and stated during the
+      transitional period. Where NEDC values are stated as ranges, they do not refer to a specific individual vehicle
+      and are not part of the offer. They serve solely for comparison purposes between different vehicle types. Optional
+      equipment and accessories (attachments, tire formats, etc.) can alter relevant vehicle parameters such as weight,
+      rolling resistance, and aerodynamics, and can influence fuel/electricity consumption, CO₂ emissions, and
+      performance values of a vehicle in addition to weather and traffic conditions and individual driving behavior.
+      Further information on the official fuel/electricity consumption and official specific CO₂ emissions of new
+      passenger cars can be found in the "Guide on fuel consumption, CO₂ emissions and electricity consumption of new
+      passenger cars," available free of charge at all sales outlets and from DAT.
+    </p-text>
+    <p-text size="2xs" color="contrast-medium">
+      Neither the number of active users of this Porsche Connect Store nor the number of active users of the App Center
+      available in the connected vehicle (Macan electric) upon activation of the Connect services exceeds the threshold
+      of 45 million active users in the European Union as defined by the Digital Services Act (DSA). Important
+      information regarding fully electric Porsche models can be found here.
+    </p-text>
+  </article>
+);
+
+/** The end of every footer: the wordmark, the copyright and the legal links. */
+const Imprint = () => (
+  <div class="col-extended grid gap-fluid-md justify-items-center mt-fluid-md">
+    <p-wordmark></p-wordmark>
+    <p-text size="2xs" color="contrast-medium" align="center">
+      © 2026 Porsche Sales and Marketplace, Inc.
+    </p-text>
+    {/* Centred as text too, not only as items – a link that wraps would otherwise align its lines to the start. */}
+    <ul class="flex flex-wrap justify-center gap-fluid-md text-center">
+      <li>
+        <p-link-pure icon="none" size="xs" underline={true}>
+          <a href="#">Legal notice</a>
+        </p-link-pure>
+      </li>
+      <li>
+        <p-link-pure icon="none" size="xs" underline={true}>
+          <a href="#">Privacy notice</a>
+        </p-link-pure>
+      </li>
+      <li>
+        <p-link-pure icon="none" size="xs" underline={true}>
+          <a href="#">Accessibility Statement</a>
+        </p-link-pure>
+      </li>
+      <li>
+        <p-link-pure icon="none" size="xs" underline={true}>
+          <a href="#">Open Source Software Notice</a>
+        </p-link-pure>
+      </li>
+    </ul>
+  </div>
+);
+
 /**
- * Page footer.
+ * Page footer, `extended`: the delivery country, the site navigation in columns, social media and payment providers,
+ * and the legal information every footer closes with.
  *
  * Its links are hard coded rather than driven by data: a footer demonstrates a full column layout with real looking
  * labels, and every one of them is a placeholder anyway.
@@ -224,66 +293,19 @@ export const Footer = () => {
           </a>
         </div>
       </article>
-      <article class="col-extended grid gap-fluid-md mt-fluid-md" aria-label="Consumption and emission information">
-        <p-text size="2xs" color="contrast-medium">
-          The consumption and emission values stated were determined in accordance with the legally prescribed
-          measurement procedures. Since September 1, 2017, certain new vehicles have been type-approved in accordance
-          with the Worldwide Harmonized Vehicles Test Procedure (WLTP), a more realistic test procedure for measuring
-          fuel/electricity consumption and CO₂ emissions. Since September 1, 2018, the WLTP has replaced the New
-          European Driving Cycle (NEDC). Due to the more realistic testing conditions, the fuel/electricity consumption
-          and CO₂ emission values measured according to the WLTP are, in many cases, higher than those measured
-          according to the NEDC. As a result, vehicle taxation may change accordingly starting September 1, 2018.
-          Further information on the differences between WLTP and NEDC can be found at www.porsche.com/wltp.
-        </p-text>
-        <p-text size="2xs" color="contrast-medium">
-          Currently, regardless of the applied type-approval procedure, it remains mandatory to communicate NEDC values.
-          The additional disclosure of WLTP values may be done on a voluntary basis until their mandatory use. In the
-          case of new vehicles type-approved according to WLTP, NEDC values are derived from WLTP values and stated
-          during the transitional period. Where NEDC values are stated as ranges, they do not refer to a specific
-          individual vehicle and are not part of the offer. They serve solely for comparison purposes between different
-          vehicle types. Optional equipment and accessories (attachments, tire formats, etc.) can alter relevant vehicle
-          parameters such as weight, rolling resistance, and aerodynamics, and can influence fuel/electricity
-          consumption, CO₂ emissions, and performance values of a vehicle in addition to weather and traffic conditions
-          and individual driving behavior. Further information on the official fuel/electricity consumption and official
-          specific CO₂ emissions of new passenger cars can be found in the "Guide on fuel consumption, CO₂ emissions and
-          electricity consumption of new passenger cars," available free of charge at all sales outlets and from DAT.
-        </p-text>
-        <p-text size="2xs" color="contrast-medium">
-          Neither the number of active users of this Porsche Connect Store nor the number of active users of the App
-          Center available in the connected vehicle (Macan electric) upon activation of the Connect services exceeds the
-          threshold of 45 million active users in the European Union as defined by the Digital Services Act (DSA).
-          Important information regarding fully electric Porsche models can be found here.
-        </p-text>
-      </article>
-      <div class="col-extended grid gap-fluid-md justify-items-center mt-fluid-md">
-        <p-wordmark></p-wordmark>
-        <p-text size="2xs" color="contrast-medium" align="center">
-          © 2026 Porsche Sales and Marketplace, Inc.
-        </p-text>
-        {/* Centred as text too, not only as items – a link that wraps would otherwise align its lines to the start. */}
-        <ul class="flex flex-wrap justify-center gap-fluid-md text-center">
-          <li>
-            <p-link-pure icon="none" size="xs" underline={true}>
-              <a href="#">Legal notice</a>
-            </p-link-pure>
-          </li>
-          <li>
-            <p-link-pure icon="none" size="xs" underline={true}>
-              <a href="#">Privacy notice</a>
-            </p-link-pure>
-          </li>
-          <li>
-            <p-link-pure icon="none" size="xs" underline={true}>
-              <a href="#">Accessibility Statement</a>
-            </p-link-pure>
-          </li>
-          <li>
-            <p-link-pure icon="none" size="xs" underline={true}>
-              <a href="#">Open Source Software Notice</a>
-            </p-link-pure>
-          </li>
-        </ul>
-      </div>
+      <ConsumptionInformation />
+      <Imprint />
     </footer>
   );
 };
+
+/**
+ * Page footer, `simple`: nothing but the legal information every footer closes with – for a page that is a destination
+ * of its own, like a landing page linked from a mailing, where the site navigation would lead away from it.
+ */
+export const SimpleFooter = () => (
+  <footer class="grid-template py-fluid-lg bg-canvas">
+    <ConsumptionInformation />
+    <Imprint />
+  </footer>
+);

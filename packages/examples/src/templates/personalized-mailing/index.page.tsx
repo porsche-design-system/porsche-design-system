@@ -1,7 +1,7 @@
 import type { ExampleMeta } from '../../../lib/meta.ts';
 import { TemplatePage } from '../../_layouts/TemplatePage.tsx';
 import { FeedbackForm } from '../../_partials/feedback/FeedbackForm.tsx';
-import { Footer } from '../../_partials/footer/Footer.tsx';
+import { SimpleFooter } from '../../_partials/footer/Footer.tsx';
 import { HeroVideo } from '../../_partials/HeroVideo.tsx';
 import { Script } from '../../_partials/Script.tsx';
 
@@ -669,7 +669,8 @@ const Page = () => (
       </section>
     </main>
 
-    <Footer />
+    {/* The page is a destination of its own, so its footer carries the legal information only, no site navigation. */}
+    <SimpleFooter />
 
     {/* Contact bar: slides in once the hero has scrolled away and steps aside while the contact section or the footer
         is on screen. Inert while it is out of view, so its links are no tab stops. The narrower it gets, the less it
