@@ -12,6 +12,12 @@ type HeroVideoProps = {
   poster?: string;
   /** The encodings of the video, in the order the browser tries them. */
   sources?: HeroVideoSource[];
+  /**
+   * Lets the content on the video size the rows of the grid, and the video only fill them. Without it the video
+   * contributes its own height – 9/16 of its width – which stretches a hero sized by its content, in landscape above
+   * all. With it, the video takes no height of its own, and its minimum height fills the rows once they are sized.
+   */
+  sizedByContent?: boolean;
 };
 
 export const heroVideoSources: HeroVideoSource[] = [
@@ -33,11 +39,12 @@ export const HeroVideo = ({
   label,
   poster = '/examples/media/mood-porsche-gts.webp',
   sources = heroVideoSources,
+  sizedByContent = false,
 }: HeroVideoProps) => (
   <>
     <video
       id="hero-video"
-      class="z-0 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
+      class={`z-0 col-span-full row-span-full min-w-full w-full min-h-full ${sizedByContent ? 'h-0' : 'h-full'} object-cover object-center`}
       poster={poster}
       aria-label={label}
       loop

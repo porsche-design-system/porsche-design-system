@@ -253,13 +253,12 @@ const VideoHero = () => (
       aria-hidden="true"
     />
 
-    {/* The video fills the frame but must not size it – its own height, 9/16 of its width, would stretch the hero
-        in landscape. With no height of its own, its minimum height fills the frame once the rows are sized. */}
     <div
       id="pm-hero-frame"
-      class={`col-full row-span-full grid grid-cols-subgrid grid-rows-subgrid overflow-hidden [clip-path:inset(var(--pm-hero-inset,0)_round_var(--pm-hero-radius,0))] [&>video]:h-0 delay-(--transition-duration-md) ${mountFade}`}
+      class={`col-full row-span-full grid grid-cols-subgrid grid-rows-subgrid overflow-hidden [clip-path:inset(var(--pm-hero-inset,0)_round_var(--pm-hero-radius,0))] delay-(--transition-duration-md) ${mountFade}`}
     >
       <HeroVideo
+        sizedByContent
         label="A 911 Targa in Carmine Red on a country road at sunset"
         poster="/examples/media/pm-hero.webp"
         sources={[
