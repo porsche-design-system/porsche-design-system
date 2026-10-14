@@ -51,9 +51,10 @@ const PAGES_WITHOUT_SITEMAP_ENTRY: string[] = [
 ];
 
 describe('sitemap', () => {
-  it('has a page for every route, except pages with tabs, which link to their first tab', () => {
+  it('has a page for every route, which redirects for categories and pages with tabs', () => {
     const withoutPage = routes
-      .filter((route) => !(route.type === 'PAGE' && route.subPaths))
+      // `/components/[component]` redirects every component page to its first tab
+      .filter((route) => !(route.tagName && route.subPaths))
       .map((route) => route.path)
       .filter((routePath) => !pagePaths.includes(routePath));
 
