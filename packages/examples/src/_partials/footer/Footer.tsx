@@ -186,7 +186,7 @@ export const Footer = () => {
         class="col-extended grid sm:grid-cols-[auto_minmax(0,1fr)] items-center gap-x-fluid-lg gap-y-static-lg"
         aria-label="Social media and payment service providers"
       >
-        <div class="flex gap-fluid-md">
+        <div class="flex flex-wrap gap-fluid-md">
           <p-link-pure class="p-static-sm -m-static-sm" icon="logo-instagram" hide-label="true" size="md">
             <a href="#">Instagram</a>
           </p-link-pure>
@@ -257,10 +257,11 @@ export const Footer = () => {
       </article>
       <div class="col-extended grid gap-fluid-md justify-items-center mt-fluid-md">
         <p-wordmark></p-wordmark>
-        <p-text size="2xs" color="contrast-medium">
+        <p-text size="2xs" color="contrast-medium" align="center">
           © 2026 Porsche Sales and Marketplace, Inc.
         </p-text>
-        <ul class="flex flex-wrap justify-center gap-fluid-md">
+        {/* Centred as text too, not only as items – a link that wraps would otherwise align its lines to the start. */}
+        <ul class="flex flex-wrap justify-center gap-fluid-md text-center">
           <li>
             <p-link-pure icon="none" size="xs" underline={true}>
               <a href="#">Legal notice</a>
