@@ -802,22 +802,22 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
     </aside>
 
     {/* Video modal: the clip is loaded when it opens and unloaded when it closes, which stops its playback. The player
-        has no width of its own, so the modal is given one – otherwise it would shrink to its minimum. */}
+        has no width of its own, so the modal is given one – otherwise it would shrink to its minimum. The player
+        reaches past the padding of the modal to its edges, and as a replaced element it takes no width from its
+        margins, so it is given the padded width explicitly. */}
     <p-modal
       id="pm-video-modal"
       class="[--p-modal-width:min(960px,calc(100%-2rem))] [--p-modal-spacing-top:clamp(16px,6vh,80px)] [--p-modal-spacing-bottom:clamp(16px,6vh,80px)]"
       aria="{ 'aria-label': 'Play video' }"
     >
-      <div class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb) aspect-video overflow-hidden bg-canvas">
-        <iframe
-          id="pm-video-iframe"
-          class="size-full border-0"
-          title="Video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
-      </div>
+      <iframe
+        id="pm-video-iframe"
+        class="block -mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb) w-[calc(100%+2*var(--ref-p-modal-px))] aspect-video border-0 bg-canvas"
+        title="Video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      />
     </p-modal>
 
     <Script>{
