@@ -34,6 +34,12 @@ const mountFade =
 // Data – lives here, next to the markup rendering it
 // ---------------------------------------------------------------------------------------------------------------------
 
+/**
+ * The exterior colour of the configured vehicle (Carmine Red). It differs per customer, so it is data rather than a
+ * token – the page sets it once as `--pm-config-color`, and every brand coloured surface derives from it.
+ */
+const configColor = '#c4001a';
+
 type Kpi = { label: string; values: { to: number; decimals?: number; unit: string }[] };
 
 const kpis: Kpi[] = [
@@ -201,7 +207,7 @@ const GhostTitle = ({ id, lines, size = 'text-[clamp(3rem,12.5vw,18.75rem)]' }: 
  */
 const Page = () => (
   <TemplatePage meta={meta} class="scheme-dark bg-canvas">
-    <main id="main" class="grid-template gap-y-0" style="--pm-config-color: #c4001a">
+    <main id="main" class="grid-template gap-y-0" style={`--pm-config-color: ${configColor}`}>
       {/* Hero: the full bleed video insets into a rounded card while the hero scrolls away. The page script writes
           the inset and the radius as custom properties of the frame, everything else is a utility. */}
       <section
