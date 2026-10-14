@@ -6,6 +6,8 @@ type HeroVideoSource = { src: string; type: string };
 type HeroVideoProps = {
   /** What lies on the video, placed by the page – give it `z-1`, between the video and its pause control. */
   children: ComponentChildren;
+  /** A short description of the video, its accessible name. */
+  label?: string;
   /** The still shown until the video plays, and instead of it when the operating system asks for reduced motion. */
   poster?: string;
   /** The encodings of the video, in the order the browser tries them. */
@@ -28,6 +30,7 @@ export const heroVideoSources: HeroVideoSource[] = [
  */
 export const HeroVideo = ({
   children,
+  label,
   poster = '/examples/media/mood-porsche-gts.webp',
   sources = heroVideoSources,
 }: HeroVideoProps) => (
@@ -36,6 +39,7 @@ export const HeroVideo = ({
       id="hero-video"
       class="z-0 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
       poster={poster}
+      aria-label={label}
       loop
       muted
       autoplay
