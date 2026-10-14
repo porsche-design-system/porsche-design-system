@@ -3,7 +3,16 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { getHeadingAnchorId, getLandingRoute } from '@/links';
 import { getRoutes, isDocsRoute, parseHref } from '../helpers/links';
-import { type DocsPage, getDocsPages, getLinks, getMdxFiles, type MdxLink, publicDir } from '../helpers/mdxDocs';
+import {
+  type DocsPage,
+  getDocsPages,
+  getImportSources,
+  getLinks,
+  getMdxFiles,
+  type MdxLink,
+  publicDir,
+  toRelativePath,
+} from '../helpers/mdxDocs';
 
 /**
  * Checks every link written in the Storefront's MDX, pages and fragments alike, before anything is built: routes
@@ -49,12 +58,21 @@ describe('links in MDX', () => {
     expect(withTrailingSlash).toEqual([]);
   });
 
-  it('link to a route through next/link, which adds the base path', () => {
-    const bypassingNextLink = routeLinks
-      .filter(({ link }) => link.element !== 'markdown' && link.element !== 'Link')
-      .map(({ link }) => `${describeLink(link)} (${link.element})`);
+  it('link to a route or an anchor as a Markdown link or with DocsLink, which add the base path and the current page', () => {
+    const bypassingDocsLink = links
+      .filter((link) => ['route', 'anchor'].includes(parseHref(link.href).kind))
+      .filter((link) => link.element !== 'markdown' && link.element !== 'DocsLink')
+      .map((link) => `${describeLink(link)} (${link.element})`);
 
-    expect(bypassingNextLink).toEqual([]);
+    expect(bypassingDocsLink).toEqual([]);
+  });
+
+  it('use DocsLink instead of next/link', () => {
+    const importingNextLink = getMdxFiles()
+      .filter((file) => getImportSources(file).includes('next/link'))
+      .map(toRelativePath);
+
+    expect(importingNextLink).toEqual([]);
   });
 
   it('link to an anchor that exists on the page it points to', () => {

@@ -1,9 +1,10 @@
 'use client';
 
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
-import Link from 'next/link';
 import { redirect, usePathname } from 'next/navigation';
 import { useMemo, useState } from 'react';
+import { DocsLink } from '@/components/common/DocsLink';
+import type { DocsHref } from '@/links';
 import { getLandingRoute } from '@/links';
 import type { Route } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
@@ -39,9 +40,9 @@ export default function Tabs() {
     <nav aria-label="Content navigation" id="content-navigation">
       <PTabsBar activeTabIndex={tabIndex} background="surface" onUpdate={onUpdate}>
         {Object.entries(tabs).map(([_, route]) => (
-          <Link key={route.path} href={route.path as string}>
+          <DocsLink key={route.path} href={route.path as DocsHref}>
             {route.name}
-          </Link>
+          </DocsLink>
         ))}
       </PTabsBar>
     </nav>

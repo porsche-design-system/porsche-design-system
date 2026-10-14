@@ -184,6 +184,23 @@
       }
     },
     {
+      "includes": ["packages/storefront/**/*.{ts,tsx}", "!packages/storefront/src/components/common/DocsLink.tsx"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "next/link": "Use DocsLink from '@/components/common/DocsLink', which types routes and keeps anchors on the page."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "includes": ["packages/examples/src/**/*.tsx"],
       "linter": {
         "rules": {

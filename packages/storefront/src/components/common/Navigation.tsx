@@ -7,11 +7,11 @@ import {
   PLinkPure,
   PText,
 } from '@porsche-design-system/components-react/ssr';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { DocsLink } from '@/components/common/DocsLink';
 import { VersionSelect } from '@/components/common/VersionSelect';
+import type { DocsHref } from '@/links';
 import { getLandingRoute } from '@/links';
 import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { type Routes, sitemap } from '@/sitemap';
@@ -100,10 +100,13 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                         onClick={() => onNavigate()}
                         className={'w-full ps-static-sm'}
                       >
-                        <Link href={link} aria-current={pathname?.includes(`${page.path}/`) ? 'page' : undefined}>
+                        <DocsLink
+                          href={link as DocsHref}
+                          aria-current={pathname?.includes(`${page.path}/`) ? 'page' : undefined}
+                        >
                           {page.name}
                           {page.tagName && <> {getFlags(componentMeta[page.tagName])}</>}
-                        </Link>
+                        </DocsLink>
                       </PLinkPure>
                     );
                   })}
@@ -131,12 +134,12 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
           <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>
               <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
-                <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
+                <DocsLink href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</DocsLink>
               </PLinkPure>
             </li>
             <li>
               <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
-                <Link href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</Link>
+                <DocsLink href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</DocsLink>
               </PLinkPure>
             </li>
             <li>

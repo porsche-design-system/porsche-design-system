@@ -113,9 +113,10 @@ Storefront, and the skills generator turns the same routes into references or St
 | A file        | `[AGENTS.md](assets/downloads/AGENTS.md)`                | Relative, from `public/`; the `<base>` of the root layout adds the base path.                    |
 | Anything else | `[MDN](https://developer.mozilla.org)`                   | With its scheme.                                                                                 |
 
-- Use Markdown links, or `Link` from `next/link` in JSX. Elements that render their own `<a>` (`PLink`, `PLinkPure`,
-  `PLinkTile`, `<a>`) skip the base path, so give them a relative path with a trailing slash:
-  `components/introduction/`.
+- Use Markdown links in MDX, and `DocsLink` in JSX and TSX, for internal and external links alike. `next/link` is off
+  limits: Biome rejects importing it in TSX, and the link test in MDX. Elements that render their own `<a>` (`PLink`,
+  `PLinkPure`, `PLinkTile`, `<a>`) skip the base path; for a route, wrap a `DocsLink` in them, or give them a relative
+  path with a trailing slash where they can't take one: `components/introduction/`.
 - `DocsLink` also takes an anchor on the current page (`#do`) and adds the current path to it: a bare `#do` resolves
   against the `<base>` of the root layout, which leads to the home page.
 - `DocsRoute` in `src/links.ts` is the type of every route; a link to a page that doesn't exist fails the typecheck in

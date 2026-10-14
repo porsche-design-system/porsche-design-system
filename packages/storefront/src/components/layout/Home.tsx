@@ -10,7 +10,6 @@ import {
   PText,
 } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useCallback, useState } from 'react';
 import { DocsLink } from '@/components/common/DocsLink';
 import { StickyBenefitsSection } from '@/components/layout/StickyBenefitsSection';
@@ -100,7 +99,9 @@ export const Home = () => {
             We provide publicly available npm packages for modern frameworks, all powered by Web Components with
             TypeScript and SSR support. Share your feedback, feature requests, and ideas on our public{' '}
             <PLinkPure color="contrast-medium" underline={true} icon="none">
-              <Link href="https://github.com/porsche-design-system/porsche-design-system/issues">issue board</Link>
+              <DocsLink href="https://github.com/porsche-design-system/porsche-design-system/issues">
+                issue board
+              </DocsLink>
             </PLinkPure>
             !
           </PText>

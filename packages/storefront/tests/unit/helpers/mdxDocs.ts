@@ -233,6 +233,16 @@ const visit = (node: Nodes, callback: (node: Nodes) => void): void => {
   }
 };
 
+/** The modules an MDX file imports: `next/link`, `@/components/common/DocsLink`, … */
+export const getImportSources = (file: string): string[] =>
+  parseMdx(file).tree.children.flatMap((node) =>
+    node.type === 'mdxjsEsm'
+      ? (node.data?.estree?.body ?? []).flatMap((statement) =>
+          statement.type === 'ImportDeclaration' ? [String(statement.source.value)] : []
+        )
+      : []
+  );
+
 /** The links written in an MDX file: Markdown links and `href` attributes with a string value. */
 export const getLinks = (file: string): MdxLink[] => {
   const links: MdxLink[] = [];
