@@ -154,8 +154,11 @@ const reviews: Review[] = [
 /** The three share cards: where each one fans out to, and when. */
 const fanCards = [
   { position: 'z-1 group-data-in-view/fan:-translate-x-[92%] group-data-in-view/fan:-rotate-13' },
-  { position: 'z-1 delay-90 group-data-in-view/fan:-translate-x-[8%] group-data-in-view/fan:rotate-13' },
-  { position: 'z-2 delay-180' },
+  {
+    position:
+      'z-1 delay-(--transition-duration-sm) group-data-in-view/fan:-translate-x-[8%] group-data-in-view/fan:rotate-13',
+  },
+  { position: 'z-2 delay-[calc(var(--transition-duration-sm)*2)]' },
 ];
 
 type Service = { tag: string; label: string; description: string; src: string };
@@ -243,7 +246,7 @@ const VideoHero = () => (
     aria-labelledby="pm-hero-heading"
   >
     <div
-      class={`col-full row-span-full self-end h-2/5 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color) delay-350 ${mountFade}`}
+      class={`col-full row-span-full self-end h-2/5 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color) delay-(--transition-duration-md) ${mountFade}`}
       aria-hidden="true"
     />
 
@@ -251,7 +254,7 @@ const VideoHero = () => (
         in landscape. With no height of its own, its minimum height fills the frame once the rows are sized. */}
     <div
       id="pm-hero-frame"
-      class={`col-full row-span-full grid grid-cols-subgrid grid-rows-subgrid overflow-hidden [clip-path:inset(var(--pm-hero-inset,0)_round_var(--pm-hero-radius,0))] [&>video]:h-0 delay-350 ${mountFade}`}
+      class={`col-full row-span-full grid grid-cols-subgrid grid-rows-subgrid overflow-hidden [clip-path:inset(var(--pm-hero-inset,0)_round_var(--pm-hero-radius,0))] [&>video]:h-0 delay-(--transition-duration-md) ${mountFade}`}
     >
       <HeroVideo
         label="A 911 Targa in Carmine Red on a country road at sunset"
@@ -266,12 +269,12 @@ const VideoHero = () => (
           aria-hidden="true"
         />
         <div
-          class={`z-1 col-extended row-start-2 self-end flex flex-col items-center gap-fluid-sm pb-[calc(var(--spacing-fluid-xl)+var(--spacing-static-2xl))] text-center delay-600 ${mountFade}`}
+          class={`z-1 col-extended row-start-2 self-end flex flex-col items-center gap-fluid-sm pb-[calc(var(--spacing-fluid-xl)+var(--spacing-static-2xl))] text-center delay-(--transition-duration-lg) ${mountFade}`}
         >
           <p-heading id="pm-hero-heading" tag="h1" size="2xl" align="center">
             Mr. Niessner, your 911 Targa.
           </p-heading>
-          <p-text class="max-w-[60ch]" size="md" color="contrast-medium" align="center">
+          <p-text class="max-w-prose" size="md" color="contrast-medium" align="center">
             Configured together with your Porsche Centre – tailored to your style, in Carmine Red. Your personal road
             movie, Mr. Niessner.
           </p-text>
@@ -313,7 +316,7 @@ const TitleHero = () => (
 
 /** The lead of the chapter, the arrival of the configured vehicle. */
 const Lead = ({ style }: { style?: string }) => (
-  <p-text class={`max-w-[70ch] ${reveal}`} data-reveal style={style} size="lg" align="center">
+  <p-text class={`max-w-prose ${reveal}`} data-reveal style={style} size="lg" align="center">
     Your 911 Targa in Carmine Red has arrived with us – a combination that shows attitude. Now the best part begins: the
     way to your Porsche. Take the next step and talk to your personal advisor.
   </p-text>
@@ -380,11 +383,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
             <>
               <Lead />
               <ChapterCar signature={true} style={delay(1)} />
-              <div
-                class={`flex flex-col items-center gap-fluid-sm max-w-[70ch] ${reveal}`}
-                data-reveal
-                style={delay(2)}
-              >
+              <div class={`flex flex-col items-center gap-fluid-sm max-w-prose ${reveal}`} data-reveal style={delay(2)}>
                 <p-heading id="pm-chapter-heading" tag="h2" size="xl" align="center">
                   A new chapter
                 </p-heading>
@@ -499,7 +498,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
           <p-heading id="pm-mosaic-heading" tag="h2" size="xl" align="center">
             What makes your 911 Targa.
           </p-heading>
-          <p-text class="max-w-[70ch]" size="md" color="contrast-high" align="center">
+          <p-text class="max-w-prose" size="md" color="contrast-high" align="center">
             The equipment you chose – a combination that exists in this form only once.
           </p-text>
         </div>
@@ -546,7 +545,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
         <GhostTitle id="pm-crosssell-heading" lines={['Extend', 'your dream.']} />
 
         <div class={`z-1 col-extended -mt-[6vw] ${reveal}`} data-reveal>
-          <p-text class="max-w-md" size="lg" color="contrast-high">
+          <p-text class="max-w-prose" size="lg" color="contrast-high">
             Options other drivers particularly value on the 911 Targa.
           </p-text>
         </div>
@@ -644,7 +643,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
           {fanCards.map(({ position }) => (
             <img
               key={position}
-              class={`absolute left-1/2 top-1/2 w-[clamp(12rem,20vw,18rem)] rounded-lg shadow-high -translate-1/2 scale-90 opacity-0 motion-safe:transition motion-safe:duration-lg motion-safe:ease-in-out group-data-in-view/fan:scale-100 group-data-in-view/fan:opacity-100 ${position}`}
+              class={`absolute left-1/2 top-1/2 w-[clamp(12rem,20vw,18rem)] rounded-lg shadow-lg -translate-1/2 scale-90 opacity-0 motion-safe:transition motion-safe:duration-lg motion-safe:ease-in-out group-data-in-view/fan:scale-100 group-data-in-view/fan:opacity-100 ${position}`}
               src="/examples/media/pm-share-card.webp"
               alt=""
               loading="lazy"
@@ -653,7 +652,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
         </div>
 
         <div class="col-basic flex flex-col items-center gap-fluid-lg">
-          <p-text class={`max-w-[70ch] ${reveal}`} data-reveal size="lg" color="contrast-high" align="center">
+          <p-text class={`max-w-prose ${reveal}`} data-reveal size="lg" color="contrast-high" align="center">
             A 911 is a feeling – and anticipation grows when it is shared. Show your loved ones what you are looking
             forward to.
           </p-text>
@@ -676,7 +675,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
       >
         <p-heading
           id="pm-services-heading"
-          class={`col-basic justify-self-center max-w-[42ch] ${reveal}`}
+          class={`col-basic justify-self-center max-w-prose ${reveal}`}
           data-reveal
           tag="h2"
           size="xl"
@@ -738,7 +737,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
               </p-link-pure>
             </div>
           </div>
-          <p-text class="max-w-[60ch]" size="md" color="contrast-medium" align="center">
+          <p-text class="max-w-prose" size="md" color="contrast-medium" align="center">
             From confirmation to key handover, your personal advisor accompanies you – directly, uncomplicated and with
             an open ear for every question about your 911 Targa.
           </p-text>
@@ -774,7 +773,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
         {/* The end padding matches the space above and below the round links, so they sit concentric in the rounded end:
             the photo sets the height while it is shown, the links once it is dropped. */}
         <div
-          class={`flex max-w-full items-center gap-static-sm rounded-full bg-frosted backdrop-blur-frosted py-static-sm ps-static-sm pe-static-md shadow-high opacity-0 motion-safe:transition-opacity motion-safe:duration-lg motion-safe:ease-in-out group-data-shown/bar:opacity-100 ${compactBar}:pe-static-sm`}
+          class={`flex max-w-full items-center gap-static-sm rounded-full bg-frosted backdrop-blur-frosted py-static-sm ps-static-sm pe-static-md shadow-lg opacity-0 motion-safe:transition-opacity motion-safe:duration-lg motion-safe:ease-in-out group-data-shown/bar:opacity-100 ${compactBar}:pe-static-sm`}
         >
           <img
             class={`size-12 shrink-0 rounded-full object-cover object-[50%_28%] ${compactBar}:hidden`}
