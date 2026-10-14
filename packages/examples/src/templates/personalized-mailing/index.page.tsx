@@ -414,15 +414,25 @@ const Page = () => (
         </div>
 
         <div class="col-extended grid grid-cols-1 gap-fluid-md md:grid-cols-2 md:grid-rows-2">
+          {/* A highlight keeps its aspect ratio, and grows past it when its text needs the room – at a large text size.
+              That automatic minimum height only holds while the tile does not clip its content, so it is the photo,
+              not the tile, that rounds its corners. */}
           {highlights.map(({ label, value, src, alt, layout }, index) => (
             <div
               key={src}
-              class={`relative isolate flex flex-col justify-end overflow-hidden rounded-3xl ${layout} ${reveal}`}
+              class={`relative isolate flex flex-col justify-end rounded-3xl ${layout} ${reveal}`}
               data-reveal
               style={delay(index + 1)}
             >
-              <img class="absolute inset-0 -z-1 size-full object-cover" src={src} alt={alt} loading="lazy" />
-              <div class="flex flex-col gap-static-xs p-fluid-md">
+              <img
+                class="absolute inset-0 -z-1 size-full rounded-[inherit] object-cover"
+                src={src}
+                alt={alt}
+                loading="lazy"
+              />
+              {/* The text lies on a fade like the `gradient` of a link tile, which reaches past the text by its top
+                  padding. Aligned to the end, the padding only takes room where the text sizes the tile. */}
+              <div class="flex flex-col gap-static-xs p-fluid-md pt-[calc(var(--spacing-fluid-md)+var(--spacing-fluid-lg))] rounded-b-[inherit] bg-fade-to-t">
                 <p-text size="sm" color="contrast-high">
                   {label}
                 </p-text>
