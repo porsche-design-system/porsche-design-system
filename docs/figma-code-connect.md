@@ -58,7 +58,7 @@ Each `design-lines` run:
    nothing.
 2. Sends the design channel on Slack the design lines it has not got yet; the actions cache keeps the open lines it has
    ([`slack-notifications.md`](./slack-notifications.md#figma-change-needed)). Each line goes once, and again only when
-   it is resolved and later comes back. Lines Slack did not get are sent by the next run that reads Figma.
+   it is resolved and later comes back. Lines Slack did not get are sent by the next `design-lines` run.
 
 **The run is red when it cannot do its job or Figma refused a record**: Figma could not be read, generation failed,
 publish failed as a whole, from a token, network or CLI error, or Figma refused a record. A template Figma cannot render
@@ -194,8 +194,13 @@ Records live per file key, so nothing published under another key touches the li
    failed; the `release` event, which a release created with `GITHUB_TOKEN`, as `release.yml` creates it, does not
    trigger; checking out the release commit, which let a re-run of an older release publish it over a newer one; a
    dispatch on any branch, which would run that branch's copy of the workflow.
-10. **`@figma/code-connect` is pinned exactly**: `scripts/figmaConnect.ts` reads the CLI's log lines. Bump it per
-    [`docs/dependencies.md`](./dependencies.md).
+10. **`@figma/code-connect` takes updates like any other dependency: the weekly update and Dependabot's security pull
+    requests.** `scripts/figmaConnect.ts` reads the CLI's log lines and its `preview --output json` result, so an update
+    that changes them shows in a pull request: the unit tests parse every generated file with the installed CLI on every
+    pull request, the update's own included, and the dry run checks preview and validation on the next pull request that
+    is not bot-authored. The cost: the update's own pull request gets no dry run, its author being a bot, and a change
+    to the lines that report a refused upload shows in no pull request, since only a release uploads; refused records
+    would then pass unseen. Rejected: holding it back from automated updates, which made every bump a deliberate chore.
 
 ## Until the pull request is approved
 

@@ -1,8 +1,8 @@
 name: 'Figma Code Connect'
 
 # Generates the Code Connect templates from component-meta, tells design what to change in Figma and publishes the
-# records of the latest release, without gating a merge or a release. On main, Contribution calls it after the deploy and
-# it runs daily, for the design lines; release.yml calls it after a release, and a dispatch republishes the latest
+# records of the latest release, without gating a merge or a release. On main, Contribution calls it after the deploy
+# and it runs daily, for the design lines; release.yml calls it after a release, and a dispatch republishes the latest
 # release. On a pull request Contribution calls it after the deploy too, for a dry run: everything but the upload.
 # Rationale, secrets and exit codes: docs/figma-code-connect.md.
 
@@ -92,7 +92,7 @@ jobs:
           path: packages/components/projects/figma-code-connect/figma/accepted-gaps.json
           archive: false
 
-  # A push to main and the daily run; main only, where the design lines are those of the next release.
+  # A push to main, through Contribution, and the daily run: what design has to change in Figma for main's code.
   design-lines:
     name: 'Pull Figma, generate, notify design'
     if: >-
@@ -119,7 +119,7 @@ jobs:
           tip=$([ "$ATTEMPT" -gt 1 ] && git ls-remote --quiet origin "refs/heads/$GITHUB_REF_NAME" | cut -f1 || true)
           if [ -n "$tip" ] && [ "$tip" != "$GITHUB_SHA" ]; then
             echo "stale=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::re-run of a commit that is no longer the tip of $GITHUB_REF_NAME; nothing to do, dispatch the workflow instead"
+            echo "::notice::re-run of a commit that is no longer the tip of $GITHUB_REF_NAME; nothing to do, the next push or the daily run sends the lines"
           fi
 
       - uses: ./.github/actions/install
@@ -144,8 +144,8 @@ jobs:
           slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
           slack-channel-id: ${{ secrets.SLACK_DESIGN_CHANNEL_ID }}
 
-  # After a release, once release.yml has its docs up, and on dispatch; main only, as the dispatch reads the workflow from
-  # there. Every publish uploads every record of the latest release, so Dev Mode shows what npm ships, never main's
+  # After a release, once release.yml has its docs up, and on dispatch; main only, as the dispatch reads the workflow
+  # from there. Every publish uploads every record of the latest release, so Dev Mode shows what npm ships, never main's
   # unreleased templates.
   publish:
     name: 'Publish the latest release'

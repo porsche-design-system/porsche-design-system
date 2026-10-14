@@ -57,7 +57,7 @@ describe('generated files', () => {
     expect(present.filter((name) => !expected.has(name))).toEqual([]);
   });
 
-  it('parses with the pinned Code Connect CLI, as the workflow does before it publishes', () => {
+  it('parses with the installed Code Connect CLI, as publish does', () => {
     // the CLI bundles a helper only from inside its project folder, so the files get a folder of their own
     const project = mkdtempSync(join(tmpdir(), 'figma-code-connect-'));
     try {

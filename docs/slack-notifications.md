@@ -93,10 +93,10 @@ PDS release. The line shapes it reads are declared once in
 `packages/components/projects/figma-code-connect/figma/messages.ts`, shared with the generator. Nothing about GitHub is
 in the message, because designers have no GitHub account; the raw logs stay in the workflow run. The actions cache keeps
 the open lines Slack has got, so each line goes to design once, and again only when it is resolved and later comes back;
-design is never reminded of a line it postponed. A message that failed to send goes out with the next run that reads
-Figma, and a line repeats only when the cache could not be saved after a send or lost its entry, unused for 7 days. The
-builder prints nothing when no line is for design, and the Send step is skipped. Details and the decisions behind it:
-the Decisions section of `docs/figma-code-connect.md`.
+design is never reminded of a line it postponed. A message that failed to send goes out with the next design-lines run,
+and a line repeats only when the cache could not be saved after a send or lost its entry, unused for 7 days. The builder
+prints nothing when no line is for design, and the Send step is skipped. Details and the decisions behind it: the
+Decisions section of `docs/figma-code-connect.md`.
 
 ## Why not a webhook
 

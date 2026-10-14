@@ -50,8 +50,7 @@
         "@porsche-design-system/**",
         "@playwright/test",
         "playwright-core",
-        "@stencil/core",
-        "@figma/code-connect"
+        "@stencil/core"
       ],
       "isIgnored": true
     },
