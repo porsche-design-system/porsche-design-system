@@ -759,10 +759,13 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
     {/* Contact bar: slides in once the hero has scrolled away and steps aside while the contact section or the footer
         is on screen. Inert while it is out of view, so its links are no tab stops. The narrower it gets, the less it
         shows: first the role of the advisor goes, then – at a large text size on a small screen – his photo. Both are
-        container queries in `rem`, so they follow the text size. */}
+        container queries in `rem`, so they follow the text size.
+        The bar slides, the pill fades: a `backdrop-filter` only blurs what lies behind it while no ancestor is
+        translucent, so the fade sits on the frosted pill itself – on the bar it would blur nothing until it is opaque,
+        like the `p-banner` splits its slide and fade. */}
     <aside
       id="pm-contact-bar"
-      class="fixed inset-x-0 bottom-0 z-50 flex justify-center px-fluid-md pb-fluid-md translate-y-[130%] opacity-0 pointer-events-none motion-safe:transition motion-safe:duration-lg motion-safe:ease-in-out data-shown:translate-y-0 data-shown:opacity-100 data-shown:pointer-events-auto"
+      class="group/bar fixed inset-x-0 bottom-0 z-50 flex justify-center px-fluid-md pb-fluid-md translate-y-[130%] pointer-events-none motion-safe:transition-[translate] motion-safe:duration-lg motion-safe:ease-in-out data-shown:translate-y-0 data-shown:pointer-events-auto"
       aria-label="Your sales advisor"
       inert
     >
@@ -771,7 +774,7 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
         {/* The end padding matches the space above and below the round links, so they sit concentric in the rounded end:
             the photo sets the height while it is shown, the links once it is dropped. */}
         <div
-          class={`flex max-w-full items-center gap-static-sm rounded-full bg-frosted backdrop-blur-frosted py-static-sm ps-static-sm pe-static-md shadow-high ${compactBar}:pe-static-sm`}
+          class={`flex max-w-full items-center gap-static-sm rounded-full bg-frosted backdrop-blur-frosted py-static-sm ps-static-sm pe-static-md shadow-high opacity-0 motion-safe:transition-opacity motion-safe:duration-lg motion-safe:ease-in-out group-data-shown/bar:opacity-100 ${compactBar}:pe-static-sm`}
         >
           <img
             class={`size-12 shrink-0 rounded-full object-cover object-[50%_28%] ${compactBar}:hidden`}
