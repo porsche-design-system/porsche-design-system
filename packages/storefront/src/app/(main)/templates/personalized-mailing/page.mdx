@@ -8,6 +8,21 @@ export const metadata = {
 
 # Personalized Mailing
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={['Video', 'No Video']} />
 
-<ExampleViewer example="templates/personalized-mailing" />
+A personal follow-up page for a configured vehicle, linked from a mailing. It recaps the configuration, recommends
+further options and hands over to a personal sales advisor. The two variants differ in how the page opens; everything
+below the opening is the same.
+
+## Video
+
+Opens on a full-bleed video of the vehicle, which insets into a rounded card while it scrolls away, and greets the
+customer by name.
+
+<ExampleViewer example="templates/personalized-mailing/video" />
+
+## No Video
+
+Opens on a giant title the configured vehicle is pulled up into – for a lighter page, or when no footage is available.
+
+<ExampleViewer example="templates/personalized-mailing/no-video" />

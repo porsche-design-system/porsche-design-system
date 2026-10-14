@@ -3,11 +3,11 @@ import { getExampleUrl, setupExamplePage, waitForComponentsReady } from '../../.
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
- * `src/templates/personalized-mailing` – the whole page, and the video modal its reviews open, which the initial scan
- * never reaches.
+ * `src/templates/personalized-mailing/video` – the whole page, and the video modal its reviews open, which the initial
+ * scan never reaches. The modal is the same in the `no-video` variant, so it is scanned here only.
  */
 
-const id = 'templates-personalized-mailing';
+const id = 'templates-personalized-mailing-video';
 const url = getExampleUrl(id);
 
 testInitialStates(id);

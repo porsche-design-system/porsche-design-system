@@ -2,12 +2,13 @@ import { expect, test } from '@playwright/test';
 import { collectPageErrors, getExampleUrl, isOpen, setupExamplePage } from '../../helpers/index.ts';
 
 /**
- * `src/templates/personalized-mailing` – the hero video (`HeroVideo`), wired up by the script of its partial, and the
- * behaviour of the page itself: the count-up of the key figures, the engine sound, the video modal of the reviews and
- * the contact bar that follows the scroll position.
+ * `src/templates/personalized-mailing/video` – the hero video (`HeroVideo`), wired up by the script of its partial,
+ * and the behaviour of the page itself: the count-up of the key figures, the engine sound, the video modal of the
+ * reviews and the contact bar that follows the scroll position. The `no-video` variant shares all but the hero, so its
+ * spec covers only what differs.
  */
 
-const url = getExampleUrl('templates-personalized-mailing');
+const url = getExampleUrl('templates-personalized-mailing-video');
 
 test('loads without reporting an error', async ({ page }) => {
   const errors = collectPageErrors(page);
