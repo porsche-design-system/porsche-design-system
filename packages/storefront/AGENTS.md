@@ -96,6 +96,34 @@ button:focus-visible {
 | **Code examples** | Must be accessible by default (correct labels, focus, keyboard behavior) |
 | **Headings**      | Maintain logical heading order (no skipped levels)                       |
 
+Every page that renders content exports `metadata` with a `title` and a `description`. The title names the page after
+its place in the sitemap, most specific first, and the root layout appends ` - Porsche Design System`:
+`Button: Usage - Components` for a tab and `Blur - Tokens` for a page. `tests/unit/specs/sitemap.spec.ts` fails when a
+page's title differs, and its error lists the expected one.
+
+### Links and anchors
+
+Links are written in one form and resolved for each output: `next/link` adds the base path and the trailing slash in the
+Storefront, and the skills generator turns the same routes into references or Storefront URLs.
+
+| Link to       | Write                                                    | Notes                                                                                            |
+| ------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| A page        | `[Button](/components/button/usage)`                     | A route of the sitemap, without a trailing slash. In TSX, use `DocsLink`, typed with `DocsHref`. |
+| A section     | `[Do](/components/button/usage#do)` or `[Setup](#setup)` | The anchor of an `##` heading on that page, from `getHeadingAnchorId()` (GitHub-style slugs).    |
+| A file        | `[AGENTS.md](assets/downloads/AGENTS.md)`                | Relative, from `public/`; the `<base>` of the root layout adds the base path.                    |
+| Anything else | `[MDN](https://developer.mozilla.org)`                   | With its scheme.                                                                                 |
+
+- Use Markdown links in MDX, and `DocsLink` in JSX and TSX, for internal and external links alike. `next/link` is off
+  limits: Biome rejects importing it in TSX, and the link test in MDX. Elements that render their own `<a>` (`PLink`,
+  `PLinkPure`, `PLinkTile`, `<a>`) skip the base path; for a route, wrap a `DocsLink` in them, or give them a relative
+  path with a trailing slash where they can't take one: `components/introduction/`.
+- `DocsLink` also takes an anchor on the current page (`#do`) and adds the current path to it: a bare `#do` resolves
+  against the `<base>` of the root layout, which leads to the home page.
+- `DocsRoute` in `src/sitemap.ts` is the type of every route; a link to a page that doesn't exist fails the typecheck in
+  TSX. A category or a page with tabs leads to its first entry (`getLandingPath()`), and its `page.tsx` redirects there.
+- MDX isn't typechecked, so `tests/unit/specs/links.spec.ts` checks every link in it: routes, trailing slashes, anchors,
+  files, tables of contents, unique heading anchors and redirects.
+
 ## File Structure
 
 ```

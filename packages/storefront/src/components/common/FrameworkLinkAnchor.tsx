@@ -2,13 +2,14 @@
 
 import { PLinkPure } from '@porsche-design-system/components-react/ssr';
 import type { Framework } from '@porsche-design-system/shared';
-import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { DocsLink } from '@/components/common/DocsLink';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
+import type { DocsHref } from '@/links';
 
 type FrameworkLinkAnchorProps = {
   /** Route per framework, pre-resolved on the server by `FrameworkLink`. */
-  hrefs: Record<Framework, string>;
+  hrefs: Record<Framework, DocsHref>;
   children: ReactNode;
 };
 
@@ -18,7 +19,7 @@ export const FrameworkLinkAnchor = ({ hrefs, children }: FrameworkLinkAnchorProp
 
   return (
     <PLinkPure icon="none" underline={true}>
-      <Link href={hrefs[framework]}>{children}</Link>
+      <DocsLink href={hrefs[framework]}>{children}</DocsLink>
     </PLinkPure>
   );
 };

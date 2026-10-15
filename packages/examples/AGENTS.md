@@ -569,7 +569,7 @@ hand, and nothing fails when one of the first two is forgotten:
    `./docker.sh npm run test:vrt:examples` writes the missing ones.
 4. **Storefront.** Add a `page.mdx` rendering `<ExampleViewer example="<category>/<page>" />` – it shows the description
    and frames the page under its title, all imported from the package export – and an entry in
-   [`packages/storefront/src/sitemap.tsx`](../storefront/src/sitemap.tsx).
+   [`packages/storefront/src/sitemap.ts`](../storefront/src/sitemap.ts).
 5. **Knowledge skill.** Nothing to register – the page is picked up from the package export. Update the content
    snapshots of the skills project (see _Knowledge skill_).
 

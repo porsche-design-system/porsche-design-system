@@ -187,7 +187,8 @@ const transformJsxElement = (node: MdxJsxElement, framework: Framework): RootCon
   if (NOTIFICATION_COMPONENTS.has(name)) {
     return toNotification(node, framework);
   }
-  if (name === 'Link') {
+  // The Storefront's only link component in MDX (`next/link` is rejected there)
+  if (name === 'DocsLink') {
     const link = toLink(node, framework);
     return node.type === 'mdxJsxFlowElement' ? [{ type: 'paragraph', children: [link] }] : [link];
   }

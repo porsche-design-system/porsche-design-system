@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 import { FrameworkLinkAnchor } from '@/components/common/FrameworkLinkAnchor';
+import type { DocsHref } from '@/links';
 import { type FrameworkRenderContext, resolveFrameworkValues } from '@/models/framework';
 
 type FrameworkLinkProps = {
   /** Builds the route for a framework, e.g. ``({ framework }) => `/developing/${framework}/getting-started` ``. */
-  href: (context: FrameworkRenderContext) => string;
+  href: (context: FrameworkRenderContext) => DocsHref;
   children: ReactNode;
 };
 
