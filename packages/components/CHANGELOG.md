@@ -20,7 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   browsers with an automatic dark mode (e.g. Chrome on Android, Samsung Internet) from recoloring pages that use the
   default light theme, which made icons practically invisible. The PDS light theme looks unchanged, and `.scheme-*`
   classes behave as before. To allow automatic darkening again, set `.scheme-light` on the `<html>` element.
-  ([#4768](https://github.com/porsche-design-system/porsche-design-system/issues/4768))
+  ([#4783](https://github.com/porsche-design-system/porsche-design-system/pull/4783))
 
 ## [4.8.0] - 2026-10-02
 
