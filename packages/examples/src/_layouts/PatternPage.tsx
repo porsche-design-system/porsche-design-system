@@ -25,12 +25,16 @@ export type PatternPageProps = {
  * a page that already has a header would be a banner nested in a banner. So this layout deliberately keeps the
  * surroundings to a minimum: the pattern and the page's own `<main>`, and nothing else.
  *
+ * It follows the color scheme of the operating system (`scheme-light-dark`): a pattern has no page of its own to pick
+ * one, and without any the PDS components would render light regardless of the preference. The canvas color makes the
+ * page background explicit, so it is the one contrast is measured against – not the white an unset one is taken for.
+ *
  * Like `TemplatePage` it references no script – the build links the generated `main.js`.
  */
 export const PatternPage = ({ meta, beforeMain, afterMain, children }: PatternPageProps) => (
-  <html lang="en">
+  <html lang="en" class="scheme-light-dark bg-canvas">
     <head>
-      <Head title={meta.title} description={meta.description} />
+      <Head title={meta.title} description={meta.description} siteName="Dummy Patterns" />
     </head>
     <body>
       {beforeMain}

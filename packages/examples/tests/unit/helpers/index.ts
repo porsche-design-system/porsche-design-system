@@ -1,7 +1,8 @@
 import type { NavItem } from '../../../src/_partials/header/MainNav.tsx';
 import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page.tsx';
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';
-import FooterPatternPage from '../../../src/patterns/footer/index.page.tsx';
+import FooterExtendedPage from '../../../src/patterns/footer/extended/index.page.tsx';
+import FooterSimplePage from '../../../src/patterns/footer/simple/index.page.tsx';
 import HeaderOverlayPage from '../../../src/patterns/header/overlay/index.page.tsx';
 import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.tsx';
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
@@ -9,6 +10,8 @@ import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-ma
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
+import PersonalizedMailingNoVideoPage from '../../../src/templates/personalized-mailing/no-video/index.page.tsx';
+import PersonalizedMailingVideoPage from '../../../src/templates/personalized-mailing/video/index.page.tsx';
 
 /** What the unit specs share: the pages under test, and the few string helpers the markup assertions need. */
 
@@ -36,13 +39,16 @@ export const countFirstLevelHeadings = (html: string): number =>
 export const templatePages = [
   ['templates/landing-page', LandingPage],
   ['templates/admin-panel', AdminPanelPage],
+  ['templates/personalized-mailing/video', PersonalizedMailingVideoPage],
+  ['templates/personalized-mailing/no-video', PersonalizedMailingNoVideoPage],
 ] as const;
 
 /** Patterns are built on `PatternPage`: they show a single section in the place it occupies on a real page. */
 export const patternPages = [
   ['patterns/header/overlay', HeaderOverlayPage],
   ['patterns/header/stacked', HeaderStackedPage],
-  ['patterns/footer', FooterPatternPage],
+  ['patterns/footer/extended', FooterExtendedPage],
+  ['patterns/footer/simple', FooterSimplePage],
   ['patterns/popover/local-market-switch', PopoverLocalMarketSwitchPage],
   ['patterns/popover/priority-navigation', PopoverPriorityNavigationPage],
   ['patterns/popover/feature-tour', PopoverFeatureTourPage],

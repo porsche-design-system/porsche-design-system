@@ -38,7 +38,7 @@ describe('getExampleUrl()', () => {
   });
 
   it('addresses an example at the root without a basePath', () => {
-    expect(getExampleUrl('patterns/footer', '')).toBe('/examples/patterns/footer/index.html');
+    expect(getExampleUrl('patterns/footer/simple', '')).toBe('/examples/patterns/footer/simple/index.html');
   });
 });
 
@@ -62,7 +62,7 @@ describe('getExample()', () => {
   });
 
   it('fails for a path that is not an example, as MDX does not type-check it', () => {
-    expect(() => getExample('patterns/unknown' as 'patterns/footer', '')).toThrow(
+    expect(() => getExample('patterns/unknown' as 'patterns/footer/simple', '')).toThrow(
       '"patterns/unknown" is not an example'
     );
   });
