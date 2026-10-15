@@ -1,89 +1,9 @@
-import type {
-  PAccordionProps,
-  PAiTagProps,
-  PBannerProps,
-  PButtonProps,
-  PButtonPureProps,
-  PButtonTileProps,
-  PCanvasProps,
-  PCarouselProps,
-  PCheckboxProps,
-  PCrestProps,
-  PDisplayProps,
-  PDividerProps,
-  PDrilldownItemProps,
-  PDrilldownLinkProps,
-  PDrilldownProps,
-  PFieldsetProps,
-  PFlagProps,
-  PFlyoutProps,
-  PHeadingProps,
-  PIconProps,
-  PInlineNotificationProps,
-  PInputDateProps,
-  PInputEmailProps,
-  PInputMonthProps,
-  PInputNumberProps,
-  PInputPasswordProps,
-  PInputSearchProps,
-  PInputTelProps,
-  PInputTextProps,
-  PInputTimeProps,
-  PInputUrlProps,
-  PInputWeekProps,
-  PLinkProps,
-  PLinkPureProps,
-  PLinkTileProductProps,
-  PLinkTileProps,
-  PModalProps,
-  PModelSignatureProps,
-  PMultiSelectOptionProps,
-  PMultiSelectProps,
-  POptgroupProps,
-  PPaginationProps,
-  PPinCodeProps,
-  PPopoverProps,
-  PRadioGroupOptionProps,
-  PRadioGroupProps,
-  PScrollerProps,
-  PSegmentedControlItemProps,
-  PSegmentedControlProps,
-  PSelectOptionProps,
-  PSelectProps,
-  PSheetProps,
-  PSpinnerProps,
-  PStepperHorizontalItemProps,
-  PStepperHorizontalProps,
-  PSwitchProps,
-  PTableBodyProps,
-  PTableCellProps,
-  PTableHeadCellProps,
-  PTableHeadProps,
-  PTableHeadRowProps,
-  PTableProps,
-  PTableRowProps,
-  PTabsBarProps,
-  PTabsItemProps,
-  PTabsProps,
-  PTagDismissibleProps,
-  PTagProps,
-  PTextareaProps,
-  PTextListItemProps,
-  PTextListProps,
-  PTextProps,
-  PToastProps,
-  PWordmarkProps,
-} from '@porsche-design-system/components-react/ssr';
-import type { TagName } from '@porsche-design-system/shared';
-import type { JSX } from 'react';
+import type * as Components from '@porsche-design-system/components-react/ssr';
+import type { InternalTagName, TagName } from '@porsche-design-system/shared';
+import type { ComponentPropsWithoutRef, JSX } from 'react';
 
-type SafePropTypeMapping = {
-  [K in Exclude<TagName, 'p-toast-item' | 'p-select-wrapper-dropdown'>]: K extends keyof PropTypeMapping
-    ? PropTypeMapping[K]
-    : never;
-};
-// PDS component tags without internal/child components (p-accordion, p-banner...)
-export type ConfiguratorTagNames = keyof SafePropTypeMapping;
+// PDS component tags, except the internal ones (p-accordion, p-banner...)
+export type ConfiguratorTagNames = Exclude<TagName, InternalTagName>;
 // HTML tags (a, img, div...) or PDS component tags (p-accordion, p-banner...)
 export type HTMLTagOrComponent = keyof JSX.IntrinsicElements | ConfiguratorTagNames;
 
@@ -121,7 +41,7 @@ export type ElementConfig<T extends HTMLTagOrComponent> = {
 export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent> = T extends keyof JSX.IntrinsicElements
   ? Partial<JSX.IntrinsicElements[T]>
   : T extends ConfiguratorTagNames
-    ? SafePropTypeMapping[T]
+    ? PropTypeMapping[T]
     : never;
 
 type EventProps<T> = Pick<T, Extract<keyof T, `on${string}`>>;
@@ -171,79 +91,12 @@ export type EventConfig = {
   toggleValue?: boolean;
 };
 
+/** `p-link-tile` → `PLinkTile`, the name of its component in `@porsche-design-system/components-react`. */
+type PascalCase<S extends string> = S extends `${infer Head}-${infer Tail}`
+  ? `${Capitalize<Head>}${PascalCase<Tail>}`
+  : Capitalize<S>;
+
+/** The props of every PDS component, read from its React component. */
 export type PropTypeMapping = {
-  'p-accordion': PAccordionProps;
-  'p-ai-tag': PAiTagProps;
-  'p-banner': PBannerProps;
-  'p-button': PButtonProps;
-  'p-button-pure': PButtonPureProps;
-  'p-button-tile': PButtonTileProps;
-  'p-canvas': PCanvasProps;
-  'p-carousel': PCarouselProps;
-  'p-checkbox': PCheckboxProps;
-  'p-crest': PCrestProps;
-  'p-display': PDisplayProps;
-  'p-divider': PDividerProps;
-  'p-fieldset': PFieldsetProps;
-  'p-flag': PFlagProps;
-  'p-flyout': PFlyoutProps;
-  'p-drilldown': PDrilldownProps;
-  'p-drilldown-item': PDrilldownItemProps;
-  'p-drilldown-link': PDrilldownLinkProps;
-  'p-heading': PHeadingProps;
-  'p-icon': PIconProps;
-  'p-inline-notification': PInlineNotificationProps;
-  'p-input-password': PInputPasswordProps;
-  'p-input-number': PInputNumberProps;
-  'p-input-date': PInputDateProps;
-  'p-input-month': PInputMonthProps;
-  'p-input-week': PInputWeekProps;
-  'p-input-time': PInputTimeProps;
-  'p-input-search': PInputSearchProps;
-  'p-input-text': PInputTextProps;
-  'p-input-email': PInputEmailProps;
-  'p-input-tel': PInputTelProps;
-  'p-input-url': PInputUrlProps;
-  'p-link': PLinkProps;
-  'p-link-pure': PLinkPureProps;
-  'p-link-tile': PLinkTileProps;
-  'p-link-tile-product': PLinkTileProductProps;
-  'p-modal': PModalProps;
-  'p-model-signature': PModelSignatureProps;
-  'p-multi-select': PMultiSelectProps;
-  'p-multi-select-option': PMultiSelectOptionProps;
-  'p-optgroup': POptgroupProps;
-  'p-pagination': PPaginationProps;
-  'p-pin-code': PPinCodeProps;
-  'p-popover': PPopoverProps;
-  'p-radio-group': PRadioGroupProps;
-  'p-radio-group-option': PRadioGroupOptionProps;
-  'p-scroller': PScrollerProps;
-  'p-segmented-control': PSegmentedControlProps;
-  'p-segmented-control-item': PSegmentedControlItemProps;
-  'p-select': PSelectProps;
-  'p-select-option': PSelectOptionProps;
-  'p-sheet': PSheetProps;
-  'p-spinner': PSpinnerProps;
-  'p-stepper-horizontal': PStepperHorizontalProps;
-  'p-stepper-horizontal-item': PStepperHorizontalItemProps;
-  'p-switch': PSwitchProps;
-  'p-table': PTableProps;
-  'p-table-body': PTableBodyProps;
-  'p-table-cell': PTableCellProps;
-  'p-table-head-cell': PTableHeadCellProps;
-  'p-table-row': PTableRowProps;
-  'p-table-head-row': PTableHeadRowProps;
-  'p-table-head': PTableHeadProps;
-  'p-tabs': PTabsProps;
-  'p-tabs-item': PTabsItemProps;
-  'p-tabs-bar': PTabsBarProps;
-  'p-tag': PTagProps;
-  'p-tag-dismissible': PTagDismissibleProps;
-  'p-text': PTextProps;
-  'p-text-list': PTextListProps;
-  'p-text-list-item': PTextListItemProps;
-  'p-textarea': PTextareaProps;
-  'p-toast': PToastProps;
-  'p-wordmark': PWordmarkProps;
+  [Tag in ConfiguratorTagNames]: Omit<ComponentPropsWithoutRef<(typeof Components)[PascalCase<Tag>]>, 'key'>;
 };
