@@ -76,11 +76,15 @@ describe('getCachedMinifiedCss()', () => {
     expect(getCachedMinifiedCss(getCss, 'car')).toBe(cssCom);
   });
 
-  it(`should not cache entries longer than ${MAX_ENTRY_LENGTH} characters`, () => {
-    const getCss = createGetCss();
-    const source = `data:image/svg+xml,${'x'.repeat(MAX_ENTRY_LENGTH)}`;
+  it(`should not cache entries whose key and css are longer than ${MAX_ENTRY_LENGTH} characters together`, () => {
+    // the key and the css each contain the source once, so each stays below the limit
+    const getCss = vi.fn((source: string) => `:host{mask:url(${source})}`);
+    const source = 'x'.repeat(MAX_ENTRY_LENGTH / 2);
 
-    expect(getCachedMinifiedCss(getCss, source)).not.toBe(getCachedMinifiedCss(getCss, source));
+    getCachedMinifiedCss(getCss, source);
+    getCachedMinifiedCss(getCss, source);
+
+    expect(getCss).toHaveBeenCalledTimes(2);
   });
 
   it(`should keep at most ${MAX_ENTRIES_PER_STYLE_FUNCTION} entries per style function and evict the least recently used one`, () => {

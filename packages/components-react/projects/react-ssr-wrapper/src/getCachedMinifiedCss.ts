@@ -10,7 +10,7 @@ export const MAX_ENTRIES_PER_STYLE_FUNCTION = 500;
 
 /**
  * Entries whose key and stylesheet together are longer are not cached, so a style function holds at most 10 million
- * characters. The largest stylesheet without free-form arguments (`p-canvas`) has 9,000 characters; longer ones come
+ * characters. The largest stylesheet without free-form arguments (`p-canvas`) has about 9,000 characters; longer ones come
  * from free-form strings such as an icon `source` with a data URL, which ends up in the key and twice in the stylesheet.
  */
 export const MAX_ENTRY_LENGTH = 20_000;
@@ -29,7 +29,7 @@ const toKeyValue = (_key: string, value: unknown): unknown =>
       : value;
 
 /**
- * Returns the minified result of `getComponentCss(...args)`, computed once per combination of arguments.
+ * Returns the minified result of `getComponentCss(...args)`, cached per combination of arguments.
  * Generating it with JSS on every server render took about a third of the CPU time of a React Router app, see
  * https://github.com/porsche-design-system/porsche-design-system/issues/4784.
  *
