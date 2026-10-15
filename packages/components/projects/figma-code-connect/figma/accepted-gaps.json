@@ -136,7 +136,6 @@
   "p-segmented-control": ["columns"],
   "p-segmented-control-item": ["disabled", "iconSource"],
   "p-select": ["slot-options-status", "slot-selected"],
-  "p-select-option": ["slot-default"],
   "p-sheet": ["component-set"],
   "p-spinner": ["color"],
   "p-stepper-horizontal": ["slot-default"],

@@ -243,7 +243,7 @@ In one pull request:
 
 1. Point `interactiveSetupFigmaFileUrl` in `figma.config.json` at the production library.
 2. Read the design lines in this pull request's `Figma Code Connect` job, which now pulls production. Design repeats the
-   test copy's edits in production before the switch, so there should be none; on 2026-10-12 production still lacked
-   them: 31 design lines on 18 components. Every component publishes either way; a prop is left out of its snippet until
-   design repeats the edit.
+   test copy's edits in production before the switch, so there should be none; on 2026-10-15 production still lacked
+   them: 32 design lines on 18 components, 1 of which, the `slot-default` of select-option, the test copy lacks too.
+   Every component publishes either way; a prop is left out of its snippet until design repeats the edit.
 3. Delete this section.
