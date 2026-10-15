@@ -1,13 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { createProcessor } from '@mdx-js/mdx';
 import type { Expression } from 'estree';
 import type { Nodes, Root } from 'mdast';
-import { fromMarkdown } from 'mdast-util-from-markdown';
-import { gfmFromMarkdown } from 'mdast-util-gfm';
-import { mdxFromMarkdown } from 'mdast-util-mdx';
-import { toString as mdastToString } from 'mdast-util-to-string';
-import { gfm } from 'micromark-extension-gfm';
-import { mdxjs } from 'micromark-extension-mdxjs';
+import remarkGfm from 'remark-gfm';
 import ts from 'typescript';
 import { getHeadingAnchorId } from '@/links';
 
@@ -73,6 +69,13 @@ const resolveModule = (specifier: string, fromFile: string): string | undefined 
 
 type Import = { file: string; name: string };
 
+/** The MDX compiler and the plugins Next uses for the pages (`next.config.ts`), so files parse as they are built. */
+const mdxProcessor = createProcessor({ remarkPlugins: [remarkGfm] });
+
+/** The text of a node, without its formatting: `Use \`theme\`` → `Use theme`. */
+const toText = (node: Nodes): string =>
+  'value' in node ? node.value : 'children' in node ? node.children.map(toText).join('') : '';
+
 const mdxCache = new Map<string, { tree: Root; imports: Map<string, Import> }>();
 
 const parseMdx = (file: string) => {
@@ -80,10 +83,7 @@ const parseMdx = (file: string) => {
   if (cached) {
     return cached;
   }
-  const tree = fromMarkdown(fs.readFileSync(file, 'utf8'), {
-    extensions: [mdxjs(), gfm()],
-    mdastExtensions: [mdxFromMarkdown(), gfmFromMarkdown()],
-  });
+  const tree = mdxProcessor.parse(fs.readFileSync(file, 'utf8')) as Root;
   const imports = new Map<string, Import>();
   for (const node of tree.children) {
     if (node.type !== 'mdxjsEsm') {
@@ -273,7 +273,7 @@ const getHeadingText = (node: Nodes & { type: 'heading' }, file: string): string
     ? evaluateString(expression, file)
     : node.children.some((c) => c.type === 'mdxTextExpression')
       ? undefined
-      : mdastToString(node);
+      : toText(node);
   if (text === undefined) {
     throw new Error(`Can't resolve the heading at ${toRelativePath(file)}:${lineOf(node)}`);
   }
