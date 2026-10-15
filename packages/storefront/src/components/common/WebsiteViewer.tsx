@@ -10,9 +10,9 @@ import {
 // Types only: the package exports every example, and a client component is handed the one it shows.
 import type { Example } from '@porsche-design-system/examples';
 import { openExampleInStackblitz } from '@porsche-design-system/stackblitz';
-import Link from 'next/link';
 import { useState } from 'react';
 import { CodeBlock, type CodeLanguage } from '@/components/common/CodeBlock';
+import { DocsLink } from '@/components/common/DocsLink';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
 import { withMediaOrigin } from '@/utils/exampleMediaOrigin';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
@@ -151,12 +151,12 @@ export const WebsiteViewer = (props: WebsiteViewerProps) => {
             <OpenExampleInStackblitz example={props.example} mediaPath={props.mediaPath} />
           ) : (
             <PLinkPure icon="external">
-              <Link
+              <DocsLink
                 href={`${GITHUB_TREE_BASE}/v${localPorscheDesignSystemMajorVersion}/${props.sourceCodePath}`}
                 target="_blank"
               >
                 Source Code
-              </Link>
+              </DocsLink>
             </PLinkPure>
           )}
           <PLinkPure icon="external">
