@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import type { StorefrontInputs } from '../src/generators';
 import { SKILL_IDS } from '../src/registry';
-import { FRAMEWORKS, SKILL_STAGING_DIR, stagedSkillDir } from '../src/shared/skillTree';
+import { SKILL_STAGING_DIR, stagedSkillDir } from '../src/shared/skillTree';
 
 /**
  * Builds every registered skill's tree for every framework into `SKILL_STAGING_DIR`, from where each

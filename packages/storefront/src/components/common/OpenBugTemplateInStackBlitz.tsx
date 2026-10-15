@@ -7,12 +7,11 @@ import {
   type SegmentedControlChangeEventDetail,
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
-import type { Framework } from '@porsche-design-system/shared';
+import { FRAMEWORKS, type Framework, frameworkNameMap } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import React, { useState } from 'react';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import type { StorefrontColorScheme } from '@/models/colorScheme';
-import { frameworkNameMap } from '@/models/framework';
 import { getAngularCode } from '@/utils/generator/generateAngularMarkup';
 import { getReactCode } from '@/utils/generator/generateReactMarkup';
 import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
@@ -52,13 +51,11 @@ export const OpenBugTemplateInStackBlitz = () => {
   return (
     <div className="flex flex-col gap-fluid-sm">
       <PSegmentedControl value={selectedFramework} onChange={onFrameworkChange} aria-label="Choose your Framework:">
-        {Object.entries(frameworkNameMap)
-          .filter(([framework]) => framework !== 'next')
-          .map(([framework, name]) => (
-            <PSegmentedControlItem key={framework} value={framework}>
-              {name}
-            </PSegmentedControlItem>
-          ))}
+        {FRAMEWORKS.map((framework) => (
+          <PSegmentedControlItem key={framework} value={framework}>
+            {frameworkNameMap[framework]}
+          </PSegmentedControlItem>
+        ))}
       </PSegmentedControl>
       <div className="flex gap-fluid-xs">
         <ThemeSelect className="w-[13rem]" value={selectedTheme} onThemeChange={onUpdateTheme} />

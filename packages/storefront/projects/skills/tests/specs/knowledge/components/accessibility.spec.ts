@@ -1,5 +1,5 @@
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import { renderA11yIntegrationExamples, resolvePayload } from '@skills/knowledge/components/accessibility';
-import { FRAMEWORKS } from '@skills/shared/skillTree';
 import { describe, expect, it } from 'vitest';
 import type { AccessibilityExample, ExampleMarkupSample } from '@/models/accessibilityMeta';
 
@@ -33,11 +33,11 @@ const codeSample: ExampleMarkupSample = {
 
 describe('renderA11yIntegrationExamples', () => {
   it('omits the section for an empty map', () => {
-    expect(renderA11yIntegrationExamples('p-checkbox', {}, 'js')).toBe('');
+    expect(renderA11yIntegrationExamples('p-checkbox', {}, 'vanilla-js')).toBe('');
   });
 
   it('renders the section, heading, and anti-pattern/recommended labels in order', () => {
-    const markdown = renderA11yIntegrationExamples('p-checkbox', { hiddenLabel }, 'js');
+    const markdown = renderA11yIntegrationExamples('p-checkbox', { hiddenLabel }, 'vanilla-js');
     const headingIndex = markdown.indexOf('## Integration examples');
     const nameIndex = markdown.indexOf('### Hidden label without accessible name');
     const antiIndex = markdown.indexOf('#### ❌ Anti-pattern');
@@ -50,7 +50,7 @@ describe('renderA11yIntegrationExamples', () => {
   });
 
   it.each([
-    ['js', 'html'],
+    ['vanilla-js', 'html'],
     ['angular', 'html'],
     ['react', 'tsx'],
     ['vue', 'html'],
@@ -67,7 +67,7 @@ describe('renderA11yIntegrationExamples', () => {
     };
     for (const framework of FRAMEWORKS) {
       const markup = resolvePayload(example.antiPattern, framework, 'p-checkbox', 'imperative', 'antiPattern');
-      expect(markup).toBe(codeSample.frameworkMarkup[framework === 'js' ? 'vanilla-js' : framework]);
+      expect(markup).toBe(codeSample.frameworkMarkup[framework]);
     }
   });
 
@@ -80,8 +80,8 @@ describe('renderA11yIntegrationExamples', () => {
       antiPattern: { kind: 'example', example: emptyExample },
       recommended: { kind: 'example', example: emptyExample },
     };
-    expect(() => resolvePayload(example.antiPattern, 'js', 'p-checkbox', 'empty', 'antiPattern')).toThrow(
-      /p-checkbox example "empty" antiPattern \(example, js\) produced empty markup/
+    expect(() => resolvePayload(example.antiPattern, 'vanilla-js', 'p-checkbox', 'empty', 'antiPattern')).toThrow(
+      /p-checkbox example "empty" antiPattern \(example, vanilla-js\) produced empty markup/
     );
   });
 
@@ -112,8 +112,8 @@ describe('renderA11yIntegrationExamples', () => {
         story: { generator: () => ['if (open) {\n  mount();\n}'] },
       },
     };
-    expect(() => resolvePayload(imperative.antiPattern, 'js', 'p-checkbox', 'imperative', 'antiPattern')).toThrow(
-      /contains an imperative multiline string/
-    );
+    expect(() =>
+      resolvePayload(imperative.antiPattern, 'vanilla-js', 'p-checkbox', 'imperative', 'antiPattern')
+    ).toThrow(/contains an imperative multiline string/);
   });
 });

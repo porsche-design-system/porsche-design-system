@@ -1,5 +1,14 @@
-import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
-import { getSkillName, type SkillFramework, type SkillId } from '@porsche-design-system/skills/registry';
+import {
+  FRAMEWORKS,
+  type Framework,
+  type FrameworkName,
+  type FrameworkSuffix,
+  frameworkNameMap,
+  frameworkSuffixMap,
+  getWrapperPackageName,
+  type WrapperPackageName,
+} from '@porsche-design-system/shared';
+import { getSkillName, type SkillId } from '@porsche-design-system/skills/registry';
 
 export type FrameworkConfiguratorMarkup = {
   [key in Framework]: {
@@ -11,41 +20,29 @@ export type FrameworkConfiguratorMarkup = {
   };
 };
 
-export type FrameworkWithNext = Framework | 'next';
+/** Next.js is offered as a tab variant of React where a page has Next.js specific content. */
+export const FRAMEWORKS_WITH_NEXT = [...FRAMEWORKS, 'next'] as const;
+export type FrameworkWithNext = (typeof FRAMEWORKS_WITH_NEXT)[number];
 
-/** Every supported framework, in the order code examples offer them. */
-export const frameworks = ['vanilla-js', 'angular', 'react', 'vue'] as const satisfies Framework[];
+export const isFrameworkWithNext = (value: unknown): value is FrameworkWithNext =>
+  FRAMEWORKS_WITH_NEXT.includes(value as FrameworkWithNext);
+
+export const frameworkWithNextNameMap = {
+  ...frameworkNameMap,
+  next: 'Next',
+} as const satisfies Record<FrameworkWithNext, string>;
 
 /** Next.js builds on the React package, so it shares everything that is framework- rather than tab-specific. */
 export const resolveFramework = (framework: FrameworkWithNext): Framework =>
   framework === 'next' ? 'react' : framework;
 
-/** Suffix the packages and skills of a framework are named after, e.g. `pds-knowledge-js` for Vanilla JS. */
-export const frameworkSuffixMap = {
-  'vanilla-js': 'js',
-  angular: 'angular',
-  react: 'react',
-  vue: 'vue',
-} as const satisfies Record<Framework, SkillFramework>;
-
-export const frameworkNameMap = {
-  'vanilla-js': 'Vanilla JS',
-  angular: 'Angular',
-  react: 'React',
-  vue: 'Vue',
-  next: 'Next',
-} as const satisfies Record<FrameworkWithNext, string>;
-
-export type FrameworkSuffix = (typeof frameworkSuffixMap)[Framework];
-export type FrameworkName = (typeof frameworkNameMap)[Framework];
-
 export type FrameworkRenderContext = {
   framework: Framework;
   frameworkName: FrameworkName;
   frameworkSuffix: FrameworkSuffix;
-  componentPackageName: `@porsche-design-system/components-${FrameworkSuffix}`;
+  componentPackageName: WrapperPackageName;
   componentPackageWindowsPath: `@porsche-design-system\\components-${FrameworkSuffix}`;
-  getSkillName: (skill: SkillId) => ReturnType<typeof getSkillName<SkillId, FrameworkSuffix>>;
+  getSkillName: (skill: SkillId) => ReturnType<typeof getSkillName<SkillId, Framework>>;
 };
 
 export const getFrameworkRenderContext = (framework: Framework): FrameworkRenderContext => {
@@ -55,15 +52,15 @@ export const getFrameworkRenderContext = (framework: Framework): FrameworkRender
     framework,
     frameworkName: frameworkNameMap[framework],
     frameworkSuffix,
-    componentPackageName: `@porsche-design-system/components-${frameworkSuffix}`,
+    componentPackageName: getWrapperPackageName(framework),
     componentPackageWindowsPath: `@porsche-design-system\\components-${frameworkSuffix}`,
-    getSkillName: (skill) => getSkillName(skill, frameworkSuffix),
+    getSkillName: (skill) => getSkillName(skill, framework),
   };
 };
 
 export const resolveFrameworkValues = <T>(resolve: (context: FrameworkRenderContext) => T): Record<Framework, T> =>
   Object.fromEntries(
-    frameworks.map((framework) => [framework, resolve(getFrameworkRenderContext(framework))])
+    FRAMEWORKS.map((framework) => [framework, resolve(getFrameworkRenderContext(framework))])
   ) as Record<Framework, T>;
 
 export const frameworkRenderContextMap = resolveFrameworkValues((context) => context);

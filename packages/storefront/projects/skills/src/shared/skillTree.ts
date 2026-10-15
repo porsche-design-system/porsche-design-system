@@ -1,24 +1,20 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { getSkillName, SKILL_FRAMEWORKS, type SkillFramework, type SkillId } from '../registry';
+import { FRAMEWORKS, type Framework, frameworkSuffixMap } from '@porsche-design-system/shared';
+import { getSkillName, type SkillId } from '../registry';
 import { resolveFrameworkPlaceholder } from './links';
-
-export const FRAMEWORKS = SKILL_FRAMEWORKS;
-export type Framework = SkillFramework;
-
-export const isFramework = (value: string): value is Framework => (FRAMEWORKS as readonly string[]).includes(value);
 
 export const SKILL_STAGING_DIR = 'packages/storefront/projects/skills/generated';
 
 export const stagedSkillDir = (skillId: SkillId, framework: Framework): string =>
-  `${SKILL_STAGING_DIR}/${framework}/skills/${getSkillName(skillId, framework)}`;
+  `${SKILL_STAGING_DIR}/${frameworkSuffixMap[framework]}/skills/${getSkillName(skillId, framework)}`;
 
 export const stagedSkillDirs = (skillId: SkillId): Record<Framework, string> =>
   Object.fromEntries(FRAMEWORKS.map((fw) => [fw, stagedSkillDir(skillId, fw)])) as Record<Framework, string>;
 
 /** Built wrapper roots used to validate references to sibling package artifacts. */
 export const WRAPPER_DIST_DIRS: Record<Framework, string> = {
-  js: 'packages/components-js/dist/components-wrapper',
+  'vanilla-js': 'packages/components-js/dist/components-wrapper',
   angular: 'packages/components-angular/dist/angular-wrapper',
   react: 'packages/components-react/dist/react-wrapper',
   vue: 'packages/components-vue/dist/vue-wrapper',

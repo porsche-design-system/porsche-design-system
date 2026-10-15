@@ -4,15 +4,15 @@ import { execFileSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import { tmpdir } from 'node:os';
 import * as path from 'node:path';
+import { FRAMEWORKS, type Framework, getWrapperPackageName } from '@porsche-design-system/shared';
 import { afterEach, describe, expect, it } from 'vitest';
-import { getWrapperPackageName, SKILL_FRAMEWORKS, type SkillFramework } from '../../../src/registry';
 
 const realBinPath = path.resolve(__dirname, '../../../bin/pds-skill.js');
 const DEST = '.claude/skills';
 const PACKAGE_NAMES = Object.fromEntries(
-  SKILL_FRAMEWORKS.map((framework) => [framework, getWrapperPackageName(framework)])
-) as Record<SkillFramework, string>;
-const DEFAULT_PACKAGE_NAME = PACKAGE_NAMES.js;
+  FRAMEWORKS.map((framework) => [framework, getWrapperPackageName(framework)])
+) as Record<Framework, string>;
+const DEFAULT_PACKAGE_NAME = PACKAGE_NAMES['vanilla-js'];
 const DEFAULT_SKILL_NAME = 'pds-knowledge-js';
 const isWindows = process.platform === 'win32';
 const canTestPosixPermissions = !isWindows && process.getuid?.() !== 0;

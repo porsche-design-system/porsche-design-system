@@ -43,6 +43,9 @@ npm run test:unit:shared
 - Generators read source files from sibling packages, so keep paths and naming conventions stable unless you intentionally update all consumers.
 - Prefer updating source data, models, and generator scripts rather than patching generated output.
 - Be conservative when changing framework conversion helpers because they feed example generation and docs tooling.
+- `src/models/framework.ts` is the one framework vocabulary of the repository: `Framework` keys (`vanilla-js`, …) are
+  used everywhere, and names, package suffixes (`js`) and wrapper package names are looked up there instead of being
+  mapped again in the Storefront or the skills.
 
 ## Testing Expectations
 

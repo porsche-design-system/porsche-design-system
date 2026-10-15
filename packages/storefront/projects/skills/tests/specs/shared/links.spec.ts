@@ -1,5 +1,5 @@
+import { FRAMEWORKS, getWrapperPackageName } from '@porsche-design-system/shared';
 import { resolveFrameworkPlaceholder, rewriteDocLinks } from '@skills/shared/links';
-import { FRAMEWORKS } from '@skills/shared/skillTree';
 import { localPorscheDesignSystemVersion } from '@skills/shared/version';
 import { describe, expect, it } from 'vitest';
 
@@ -98,5 +98,3 @@ describe('resolveFrameworkPlaceholder', () => {
     expect(resolveFrameworkPlaceholder(md, 'react')).toBe(md);
   });
 });
-
-import { getWrapperPackageName } from '@skills/registry';

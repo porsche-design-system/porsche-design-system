@@ -1,23 +1,14 @@
-import type { FrameworkMarkup } from '@porsche-design-system/shared';
+import type { Framework } from '@porsche-design-system/shared';
 import type { Root } from 'mdast';
 import type { AccessibilityExample, ExamplePayload } from '../../../../../src/models/accessibilityMeta';
 import { resolveExamplePayload } from '../../../../../src/utils/generator/resolveExamplePayload';
-import type { Framework } from '../../shared/skillTree';
 
 /**
  * Uses the storefront's example pipeline so accessibility snippets stay identical in skill output.
  */
 
-/** Maps the skill's `js` identifier to the markup model's `vanilla-js`. */
-const FRAMEWORK_MARKUP_KEY: Record<Framework, keyof FrameworkMarkup> = {
-  js: 'vanilla-js',
-  angular: 'angular',
-  react: 'react',
-  vue: 'vue',
-};
-
 const FENCE_LANGUAGE: Record<Framework, string> = {
-  js: 'html',
+  'vanilla-js': 'html',
   angular: 'html',
   react: 'tsx',
   vue: 'html',
@@ -39,7 +30,7 @@ export const resolvePayload = (
   key: string,
   side: 'antiPattern' | 'recommended'
 ): string => {
-  return resolveExamplePayload(payload, FRAMEWORK_MARKUP_KEY[framework], { tag, key, side, framework });
+  return resolveExamplePayload(payload, framework, { tag, key, side, framework });
 };
 
 export const renderA11yIntegrationExamples = (
