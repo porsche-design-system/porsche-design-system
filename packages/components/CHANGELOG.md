@@ -34,6 +34,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: links to Storefront pages the skill doesn't include led to an error page instead of the
   documentation; they now open the Storefront of the skill's version
   ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+- `Button`, `Drilldown`, `Link`, `Multi Select`, `Segmented Control`, `Select`, `Tabs`, `Tabs Bar`: colors could lose contrast in high contrast mode, including hover, highlighted and selected states.
+  ([#4775](https://github.com/porsche-design-system/porsche-design-system/pull/4775))
 
 ## [4.8.0] - 2026-10-02
 

@@ -144,12 +144,19 @@ export const getLinkButtonStyles = (
       })),
       ...forcedColorsMediaQuery({
         forcedColorAdjust: 'none',
-        background: 'Canvas',
-        color: 'LinkText',
         boxShadow: 'inset 0 0 0 2px LinkText',
+        ...addImportantToEachRule({
+          // Overwrites brand hover colors
+          background: 'Canvas',
+          color: 'LinkText',
+        }),
         '&:is(button)': {
           boxShadow: 'inset 0 0 0 2px ButtonBorder',
-          color: 'ButtonText',
+          ...addImportantToEachRule({
+            // Overwrites brand hover colors
+            background: 'ButtonFace',
+            color: 'ButtonText',
+          }),
         },
       }),
       ...(!hasSlottedAnchor && {
@@ -160,9 +167,6 @@ export const getLinkButtonStyles = (
           '&:hover': {
             color: textColorHover,
             backgroundColor: backgroundColorHover,
-            ...forcedColorsMediaQuery({
-              background: 'Canvas',
-            }),
           },
         })),
     },
@@ -175,6 +179,10 @@ export const getLinkButtonStyles = (
         ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
           marginInlineStart: hideLabelValue ? 0 : iconMarginInlineStart, // compensate white space of svg icon and optimize visual alignment
         })),
+        ...forcedColorsMediaQuery({
+          forcedColorAdjust: 'preserve-parent-color',
+          '--_p-icon-a': 'currentColor',
+        }),
       },
     }),
   };
