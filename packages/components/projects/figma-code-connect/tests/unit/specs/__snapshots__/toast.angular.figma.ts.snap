@@ -13,6 +13,7 @@ const instance = figma.selectedInstance;
 export default {
   example: figma.code`<p-toast>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-toast>`,
   imports: [
+    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/angular/getting-started/',
     '// Docs: https://designsystem.porsche.com/v4.8.0/components/toast/api/',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
   ],

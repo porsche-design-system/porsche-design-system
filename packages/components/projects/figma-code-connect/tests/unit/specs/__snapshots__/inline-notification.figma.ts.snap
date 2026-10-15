@@ -22,7 +22,10 @@ const actionIcon = read.has('actionIcon') && (!read.has('figActionIcon') || read
 
 export default {
   example: figma.code`<p-inline-notification${heading ? ` heading="${escapeAttribute(heading)}"` : ''}${headingTag ? ` heading-tag="${headingTag}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${state ? ` state="${state}"` : ''}${dismissButton ? '' : ' dismiss-button="false"'}${actionLabel ? ` action-label="${escapeAttribute(actionLabel)}"` : ''}${actionLoading ? ' action-loading="true"' : ''}${actionIcon ? ` action-icon="${actionIcon}"` : ''}>${read.has('slot-heading') ? slotted(instance.getSlot('slot-heading'), 'slot-heading', 'heading') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-inline-notification>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/inline-notification/api/ -->'],
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/inline-notification/api/',
+  ],
   id: 'p-inline-notification',
   metadata: { nestable: true },
 };

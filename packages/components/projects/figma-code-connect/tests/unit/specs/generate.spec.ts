@@ -43,9 +43,7 @@ describe('generate: templates', () => {
   it("links a template's source and docs import to the docs of the version it was generated from", () => {
     const result = run([set('tag'), set('multi-select-option')], { version: '4.8.0' });
     expect(template(result, 'tag')).toContain('// source=https://designsystem.porsche.com/v4.8.0/components/tag/api/');
-    expect(template(result, 'tag')).toContain(
-      "'<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/tag/api/ -->'"
-    );
+    expect(template(result, 'tag')).toContain("'// Docs: https://designsystem.porsche.com/v4.8.0/components/tag/api/'");
     // a child component is documented on its root parent's page
     expect(template(result, 'multi-select-option')).toContain(
       '// source=https://designsystem.porsche.com/v4.8.0/components/multi-select/api/'

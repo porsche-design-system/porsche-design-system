@@ -26,7 +26,10 @@ const rel = read.text('rel');
 
 export default {
   example: figma.code`<p-link-pure${alignLabel ? ` align-label="${alignLabel}"` : ''}${stretch ? ' stretch="true"' : ''}${size ? ` size="${size}"` : ''}${color ? ` color="${color}"` : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` icon-source="${escapeAttribute(iconSource)}"` : ''}${underline ? ' underline="true"' : ''}${href ? ` href="${escapeAttribute(href)}"` : ''}${active ? ' active="true"' : ''}${hideLabel ? ' hide-label="true"' : ''}${download ? ` download="${escapeAttribute(download)}"` : ''}${rel ? ` rel="${escapeAttribute(rel)}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-link-pure>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/link-pure/api/ -->'],
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/link-pure/api/',
+  ],
   id: 'p-link-pure',
   metadata: { nestable: true },
 };

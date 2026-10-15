@@ -17,7 +17,10 @@ const compact = read.flag('compact');
 
 export default {
   example: figma.code`<p-popover${open ? ' open="true"' : ''}${direction ? ` direction="${direction}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${compact ? ' compact="true"' : ''}>${read.has('slot-button') ? slotted(instance.getSlot('slot-button'), 'slot-button', 'button') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-popover>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/popover/api/ -->'],
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/popover/api/',
+  ],
   id: 'p-popover',
   metadata: { nestable: true },
 };

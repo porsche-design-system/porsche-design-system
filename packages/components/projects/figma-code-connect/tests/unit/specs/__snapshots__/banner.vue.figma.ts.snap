@@ -21,6 +21,7 @@ const dismissButton = !read.off('dismissButton');
 export default {
   example: figma.code`<PBanner${open ? ' :open="true"' : ''}${heading ? ` heading="${escapeAttribute(heading)}"` : ''}${headingTag ? ` headingTag="${headingTag}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${position ? ` position="${position}"` : ''}${state ? ` state="${state}"` : ''}${dismissButton ? '' : ' :dismissButton="false"'}>${read.has('slot-heading') ? slotted(instance.getSlot('slot-heading'), 'slot-heading', 'heading') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PBanner>`,
   imports: [
+    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vue/getting-started/',
     '// Docs: https://designsystem.porsche.com/v4.8.0/components/banner/api/',
     "import { PBanner } from '@porsche-design-system/components-vue';",
   ],

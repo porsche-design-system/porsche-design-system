@@ -15,11 +15,17 @@ type Label = {
   attr: (name: string, value: string | true) => string;
   /** A number or boolean attribute in the label's expression syntax: `activePage={…}`, `[dismissButton]="false"`. */
   expr: (name: string, value: string) => string;
-  imports: (tag: string, docs: string) => string[];
+  /** The framework's getting-started guide under `/developing/`: the setup a snippet leaves out. */
+  framework: string;
+  imports: (tag: string, docs: string, setup: string) => string[];
 };
 
 const quoted = (value: string): string => `"${value}"`;
-/** One config per Dev Mode label. `imports` reaches agents via `get_design_context`, so the docs URL rides there. */
+/**
+ * One config per Dev Mode label. `imports` reaches agents via `get_design_context`, so the docs URLs ride there. Dev Mode
+ * prints them inside `<script>` for an `html` label and keeps one copy of a line nested records repeat, so the setup
+ * line shows once per snippet.
+ */
 export const labels: Label[] = [
   {
     suffix: '',
@@ -27,7 +33,8 @@ export const labels: Label[] = [
     tagName: (t) => t,
     attr: (n, v) => `${kebabCase(n)}=${quoted(v === true ? 'true' : v)}`,
     expr: (n, v) => `${kebabCase(n)}=${quoted(v)}`,
-    imports: (_, docs) => [`<!-- Docs: ${docs} -->`],
+    framework: 'vanilla-js',
+    imports: (_, docs, setup) => [`// Setup: ${setup}`, `// Docs: ${docs}`],
   },
   {
     suffix: '.react',
@@ -35,7 +42,9 @@ export const labels: Label[] = [
     tagName: (t) => pascalCase(t),
     attr: (n, v) => (v === true ? `${camelCase(n)}={true}` : `${camelCase(n)}=${quoted(v)}`),
     expr: (n, v) => `${camelCase(n)}={${v}}`,
-    imports: (t, docs) => [
+    framework: 'react',
+    imports: (t, docs, setup) => [
+      `// Setup: ${setup}`,
       `// Docs: ${docs}`,
       `import { ${pascalCase(t)} } from '@porsche-design-system/components-react';`,
     ],
@@ -46,7 +55,9 @@ export const labels: Label[] = [
     tagName: (t) => t,
     attr: (n, v) => (v === true ? `[${camelCase(n)}]="true"` : `${camelCase(n)}=${quoted(v)}`),
     expr: (n, v) => `[${camelCase(n)}]=${quoted(v)}`,
-    imports: (_, docs) => [
+    framework: 'angular',
+    imports: (_, docs, setup) => [
+      `// Setup: ${setup}`,
       `// Docs: ${docs}`,
       `import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`,
     ],
@@ -57,7 +68,9 @@ export const labels: Label[] = [
     tagName: (t) => pascalCase(t),
     attr: (n, v) => (v === true ? `:${camelCase(n)}="true"` : `${camelCase(n)}=${quoted(v)}`),
     expr: (n, v) => `:${camelCase(n)}=${quoted(v)}`,
-    imports: (t, docs) => [
+    framework: 'vue',
+    imports: (t, docs, setup) => [
+      `// Setup: ${setup}`,
       `// Docs: ${docs}`,
       `import { ${pascalCase(t)} } from '@porsche-design-system/components-vue';`,
     ],
@@ -387,8 +400,8 @@ const typesReference = '/// <reference types="@figma/code-connect/figma-types-no
 /** A string literal as biome writes it. */
 const literal = (text: string): string => (text.includes("'") ? JSON.stringify(text) : `'${text}'`);
 /** A record's `imports` entry as biome writes it: one line when it fits biome's line width. */
-const importsEntry = (label: Label, tag: TagName, docs: string): string[] => {
-  const imports = label.imports(tag, docs).map(literal);
+const importsEntry = (label: Label, tag: TagName, docs: string, setup: string): string[] => {
+  const imports = label.imports(tag, docs, setup).map(literal);
   const line = `  imports: [${imports.join(', ')}],`;
   return line.length <= 120 ? [line] : ['  imports: [', ...imports.map((i) => `    ${i},`), '  ],'];
 };
@@ -456,6 +469,7 @@ type Context = {
   icons: Snapshot['icons'];
   nodeUrl: (id: string) => string;
   docsApiUrl: (tag: TagName) => string;
+  setupUrl: (label: Label) => string;
   errors: string[];
 };
 
@@ -508,7 +522,7 @@ const render = (
     ...(fragments.length ? [...fragments.map((f) => f.read), ''] : []),
     'export default {',
     `  example: figma.code\`<${tagName}${attributes}>${children}</${tagName}>\`,`,
-    ...importsEntry(label, tag, source),
+    ...importsEntry(label, tag, source, context.setupUrl(label)),
     `  id: '${tag}',`,
     '  metadata: { nestable: true },',
     '};',
@@ -551,7 +565,7 @@ const iconBatch = (
     'export default {',
     // biome-ignore lint/suspicious/noTemplateCurlyInString: the placeholder is the generated template's, read by Figma
     `  example: figma.code\`<${tag} ${label.attr('name', '${figma.batch.name}')}></${tag}>\`,`,
-    ...importsEntry(label, 'p-icon', context.docsApiUrl('p-icon')),
+    ...importsEntry(label, 'p-icon', context.docsApiUrl('p-icon'), context.setupUrl(label)),
     '  id: figma.batch.id,',
     '  metadata: { nestable: true, props: { name: figma.batch.name } },',
     '};',
@@ -601,6 +615,8 @@ export const generate = (
     icons: snapshot.icons,
     nodeUrl: (id) => `${publishFileUrl}?node-id=${id.replace(':', '-')}`,
     docsApiUrl,
+    setupUrl: (label) =>
+      `https://designsystem.porsche.com/v${dependencies.version}/developing/${label.framework}/getting-started/`,
     errors: [],
   };
   const files: Generated['files'] = {};

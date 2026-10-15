@@ -17,7 +17,10 @@ const showLastPage = !read.off('showLastPage');
 
 export default {
   example: figma.code`<p-pagination${totalItemsCount ? ` total-items-count="${totalItemsCount}"` : ''}${itemsPerPage ? ` items-per-page="${itemsPerPage}"` : ''}${activePage ? ` active-page="${activePage}"` : ''}${showLastPage ? '' : ' show-last-page="false"'}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-pagination>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/pagination/api/ -->'],
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/pagination/api/',
+  ],
   id: 'p-pagination',
   metadata: { nestable: true },
 };

@@ -22,7 +22,10 @@ const rel = read.text('rel');
 
 export default {
   example: figma.code`<p-link-tile-product${heading ? ` heading="${escapeAttribute(heading)}"` : ''}${price ? ` price="${escapeAttribute(price)}"` : ''}${priceOriginal ? ` price-original="${escapeAttribute(priceOriginal)}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${likeButton ? '' : ' like-button="false"'}${liked ? ' liked="true"' : ''}${href ? ` href="${escapeAttribute(href)}"` : ''}${aspectRatio ? ` aspect-ratio="${aspectRatio}"` : ''}${rel ? ` rel="${escapeAttribute(rel)}"` : ''}>${read.has('slot-anchor') ? slotted(instance.getSlot('slot-anchor'), 'slot-anchor', 'anchor') : ''}${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', 'header') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-link-tile-product>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/link-tile-product/api/ -->'],
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/link-tile-product/api/',
+  ],
   id: 'p-link-tile-product',
   metadata: { nestable: true },
 };

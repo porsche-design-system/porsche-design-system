@@ -20,7 +20,10 @@ const dismissButton = !read.off('dismissButton');
 
 export default {
   example: figma.code`<p-banner${open ? ' open="true"' : ''}${heading ? ` heading="${escapeAttribute(heading)}"` : ''}${headingTag ? ` heading-tag="${headingTag}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${position ? ` position="${position}"` : ''}${state ? ` state="${state}"` : ''}${dismissButton ? '' : ' dismiss-button="false"'}>${read.has('slot-heading') ? slotted(instance.getSlot('slot-heading'), 'slot-heading', 'heading') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-banner>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/banner/api/ -->'],
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/banner/api/',
+  ],
   id: 'p-banner',
   metadata: { nestable: true },
 };

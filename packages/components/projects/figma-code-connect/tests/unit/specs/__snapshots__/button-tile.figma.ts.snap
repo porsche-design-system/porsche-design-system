@@ -27,7 +27,10 @@ const iconSource = read.text('iconSource');
 
 export default {
   example: figma.code`<p-button-tile${size ? ` size="${size}"` : ''}${weight ? ` weight="${weight}"` : ''}${aspectRatio ? ` aspect-ratio="${aspectRatio}"` : ''}${label ? ` label="${escapeAttribute(label)}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${align ? ` align="${align}"` : ''}${gradient ? ' gradient="true"' : ''}${compact ? ' compact="true"' : ''}${type ? ` type="${type}"` : ''}${disabled ? ' disabled="true"' : ''}${loading ? ' loading="true"' : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` icon-source="${escapeAttribute(iconSource)}"` : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', 'header') : ''}${read.has('slot-footer') ? slotted(instance.getSlot('slot-footer'), 'slot-footer', 'footer') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-button-tile>`,
-  imports: ['<!-- Docs: https://designsystem.porsche.com/v4.8.0/components/button-tile/api/ -->'],
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v4.8.0/components/button-tile/api/',
+  ],
   id: 'p-button-tile',
   metadata: { nestable: true },
 };
