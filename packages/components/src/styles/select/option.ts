@@ -38,7 +38,6 @@ export const getOptionJssStyle = (
     '&--highlighted': {
       background: ref(colorFrosted),
       ...forcedColorsMediaQuery({
-        forcedColorAdjust: 'none',
         outline: '2px solid Highlight',
         outlineOffset: '-2px',
       }),
