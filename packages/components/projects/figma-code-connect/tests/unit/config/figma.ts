@@ -8,8 +8,12 @@ declare global {
   };
 }
 
-/** A section as Dev Mode shows it: nested sections flattened into the text around them. */
-const shown = (value: unknown): string => (Array.isArray(value) ? value.map(shown).join('') : String(value ?? ''));
+const isCode = (value: unknown): value is { type: 'CODE'; code: string } =>
+  typeof value === 'object' && value !== null && (value as { type?: unknown }).type === 'CODE';
+
+/** A section as Dev Mode shows it: nested sections flattened into the text around them, a CODE section as its code. */
+const shown = (value: unknown): string =>
+  Array.isArray(value) ? value.map(shown).join('') : isCode(value) ? value.code : String(value ?? '');
 
 export default {
   get selectedInstance() {

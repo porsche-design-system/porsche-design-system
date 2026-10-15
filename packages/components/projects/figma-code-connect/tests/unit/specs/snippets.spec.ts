@@ -46,6 +46,15 @@ const asText = 'a &lt; b &gt; c &#123;d&#125; &#64;if &amp;copy;';
 const kebab = (name: string): string => `p-${name}`;
 const pascal = (name: string): string => `P${name[0].toUpperCase()}${name.slice(1)}`;
 
+// a slot holding one connected instance, whose record renders `example` as one CODE section
+const holding = (slot: string, example: string): typeof globalThis.selectedInstance => ({
+  properties: { [slot]: { value: { guid: {} }, type: 'SLOT' } },
+  getSlot: () => ({
+    connectedInstances: [{ executeTemplate: () => ({ example: [{ type: 'CODE', code: example }] }) }],
+  }),
+  findLayers: () => [],
+});
+
 describe.each([
   { suffix: '', tag: kebab },
   { suffix: '.react', tag: pascal },
@@ -73,6 +82,20 @@ describe.each([
     };
     expect(await snippet('accordion', suffix, instance)).toBe(
       `<${tag('accordion')}><span slot="summary">${asText}</span></${tag('accordion')}>`
+    );
+  });
+
+  it('prints an instance in a named slot carrying the slot on its own tag', async () => {
+    const heading = `<${tag('heading')} size="sm">Summary</${tag('heading')}>`;
+    expect(await snippet('accordion', suffix, holding('slot-summary', heading))).toBe(
+      `<${tag('accordion')}><${tag('heading')} slot="summary" size="sm">Summary</${tag('heading')}></${tag('accordion')}>`
+    );
+  });
+
+  it('prints an instance in the default slot as it renders', async () => {
+    const text = `<${tag('text')} size="sm">Details</${tag('text')}>`;
+    expect(await snippet('accordion', suffix, holding('slot-default', text))).toBe(
+      `<${tag('accordion')}>${text}</${tag('accordion')}>`
     );
   });
 });
