@@ -274,11 +274,11 @@ const VideoHero = () => (
           class={`z-1 col-extended row-start-2 self-end flex flex-col items-center gap-fluid-sm pb-[calc(var(--spacing-fluid-xl)+var(--spacing-static-2xl))] text-center delay-(--transition-duration-lg) ${mountFade}`}
         >
           <p-heading id="pm-hero-heading" tag="h1" size="2xl" align="center">
-            Mr. Niessner, your 911 Targa.
+            Mr. Doe, your 911 Targa.
           </p-heading>
           <p-text class="max-w-prose" size="md" color="contrast-medium" align="center">
             Configured together with your Porsche Centre – tailored to your style, in Carmine Red. Your personal road
-            movie, Mr. Niessner.
+            movie, Mr. Doe.
           </p-text>
         </div>
       </HeroVideo>
@@ -296,10 +296,16 @@ const VideoHero = () => (
 
 /**
  * Title hero: a giant title on a fade into the configured colour, which the configured vehicle at the start of the
- * chapter below is pulled up into. It is as tall as its content, so the chapter follows right below the title.
+ * chapter below is pulled up into. It is as tall as its content, so the chapter follows right below the title. Like
+ * every section with a ghost title it clips the title horizontally, which does not wrap and can outgrow a narrow
+ * screen at a large text size.
  */
 const TitleHero = () => (
-  <section id="pm-hero" class="relative col-full grid grid-cols-subgrid bg-surface" aria-labelledby="pm-hero-heading">
+  <section
+    id="pm-hero"
+    class="relative col-full grid grid-cols-subgrid overflow-x-clip bg-surface"
+    aria-labelledby="pm-hero-heading"
+  >
     <div
       class="absolute inset-0 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color)"
       aria-hidden="true"
@@ -715,23 +721,24 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
           <img
             class="size-26 shrink-0 rounded-full object-cover object-[50%_28%]"
             src="/examples/media/pm-advisor.webp"
-            alt="Scott Lee"
+            alt="Alex Taylor"
           />
           <div class="flex flex-col items-center gap-static-sm">
             <p-heading id="pm-contact-heading" tag="h2" size="xl" align="center">
-              Mr. Niessner,
+              Mr. Doe,
               <br />
-              Scott Lee is here for you.
+              Alex Taylor is here for you.
             </p-heading>
             <p-text size="sm" color="contrast-medium" align="center">
-              Sales advisor · Porsche Centre Stuttgart
+              Sales advisor · Porsche Centre
             </p-text>
             <div class="flex flex-wrap items-center justify-center gap-static-md">
               <p-link-pure icon="phone" size="sm" underline={true}>
-                <a href="#">0711 99523991</a>
+                <a href="#">+49 123 4567890</a>
               </p-link-pure>
-              <p-link-pure icon="email" size="sm" underline={true}>
-                <a href="#">scott.lee@porsche-stuttgart.de</a>
+              {/* An address has no space to wrap at, so at a large text size on a small screen it may break anywhere. */}
+              <p-link-pure class="wrap-anywhere" icon="email" size="sm" underline={true}>
+                <a href="#">alex.taylor@example.com</a>
               </p-link-pure>
             </div>
           </div>
@@ -780,18 +787,18 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
           />
           <div class={`flex min-w-0 flex-col ${compactBar}:ps-static-sm`}>
             <p-text size="sm" weight="semibold">
-              Scott Lee
+              Alex Taylor
             </p-text>
             <p-text class="@max-xl:hidden" size="xs" color="contrast-medium">
-              Sales advisor · Porsche Centre Stuttgart
+              Sales advisor · Porsche Centre
             </p-text>
           </div>
           <div class={`ms-static-md flex shrink-0 items-center gap-static-xs ${compactBar}:ms-0`}>
             <p-link href="#" variant="secondary" icon="phone" hide-label="true" compact="true">
-              Call Scott Lee
+              Call Alex Taylor
             </p-link>
             <p-link href="#" variant="secondary" icon="email" hide-label="true" compact="true">
-              Email Scott Lee
+              Email Alex Taylor
             </p-link>
           </div>
         </div>
