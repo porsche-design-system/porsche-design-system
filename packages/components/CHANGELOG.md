@@ -14,6 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- **Global Styles**: the default `color-scheme` on `:root` is now `only light` instead of `light`. This prevents
+  browsers with an automatic dark mode (e.g. Chrome on Android, Samsung Internet) from recoloring pages that use the
+  default light theme, which made icons practically invisible. The PDS light theme looks unchanged, and `.scheme-*`
+  classes behave as before. To allow automatic darkening again, set `.scheme-light` on the `<html>` element.
+  ([#4783](https://github.com/porsche-design-system/porsche-design-system/pull/4783))
+
 ### Fixed
 
 - `Button`, `Drilldown`, `Link`, `Multi Select`, `Segmented Control`, `Select`, `Tabs`, `Tabs Bar`: colors could lose contrast in high contrast mode, including hover, highlighted and selected states.
