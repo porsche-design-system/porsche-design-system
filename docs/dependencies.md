@@ -53,11 +53,11 @@ convention). The following root scripts help keep dependency versions consistent
 
 The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
 from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
-`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `playwright-core`, `@stencil/core`). The
-`npm:outdated` and `npm:update` scripts additionally pass `--dependencies '!@porsche-design-system/**'` so the
-unpublished internal workspace packages are not even looked up against the npm registry (which would otherwise emit
-`Failed to fetch` warnings). When you add a new held-back dependency, also add it to the `updateGroups` entry in
-`.syncpackrc.json` and to the ignore list in `.github/dependabot.yml`.
+`.syncpackrc.json`; that entry, not this page, is the list. The `npm:outdated` and `npm:update` scripts additionally
+pass `--dependencies '!@porsche-design-system/**'` so the unpublished internal workspace packages are not even looked up
+against the npm registry (which would otherwise emit `Failed to fetch` warnings). When you add a new held-back
+dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to the ignore list in
+`.github/dependabot.yml`.
 
 ### StackBlitz starter templates (npm workspace members)
 
@@ -72,8 +72,7 @@ Even though each starter pins the **published** `@porsche-design-system/componen
 carry that **same** release version, so npm satisfies the pin by symlinking to the local workspace. Off the monorepo (on
 StackBlitz), the identical pin resolves the published package from the registry instead. The pin stays in sync with the
 release version via the release process (see `docs/release.md`), and `@porsche-design-system/**` is shielded from
-automated bumps by the held-back `updateGroups` entry, alongside `@playwright/test`, `playwright-core` and
-`@stencil/core`.
+automated bumps by the held-back `updateGroups` entry in `.syncpackrc.json`, alongside the other patterns listed there.
 
 When you add or remove a workspace, update only the `workspaces` array in the root `package.json` — there is no separate
 syncpack `source` list to keep in sync anymore.

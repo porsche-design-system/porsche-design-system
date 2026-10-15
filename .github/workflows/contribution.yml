@@ -3,7 +3,7 @@ name: 'Contribution'
 # Triggers:
 # - push: only on protected/release branches → full pipeline incl. release
 # - pull_request: every PR (incl. forks) → build + test always;
-#     - deploy/release are gated below to keep secrets out of fork PRs.
+#     - deploy/release and the Figma Code Connect dry run are gated below to keep secrets out of fork PRs.
 on:
   push:
     branches:
@@ -175,3 +175,16 @@ jobs:
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
       slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
       slack-release-channel-id: ${{ secrets.SLACK_RELEASE_CHANNEL_ID }}
+      figma-access-token: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+      slack-design-channel-id: ${{ secrets.SLACK_DESIGN_CHANNEL_ID }}
+  figma-code-connect:
+    name: 'Figma Code Connect'
+    # After the pull request's deploy, for the dry run; release.yml publishes and sends design the design lines, which
+    # the workflow's weekly run sends again. Deploy skips forks and bot-authored pull requests, so this job does too and
+    # the token reaches neither. No job needs this one, so a failure here holds back no preview.
+    if: github.event_name == 'pull_request'
+    uses: ./.github/workflows/figma-code-connect.yml
+    needs:
+      - deploy
+    secrets:
+      FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
