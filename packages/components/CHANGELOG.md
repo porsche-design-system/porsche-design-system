@@ -32,6 +32,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: links to Storefront pages the skill doesn't include led to an error page instead of the
   documentation; they now open the Storefront of the skill's version
   ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+- `Multi Select Option`: slotted content only took up the width of its own content, so it could not fill the option,
+  e.g. with `w-full`, and right-aligned elements were not aligned to the right edge
+  ([#4787](https://github.com/porsche-design-system/porsche-design-system/pull/4787))
 
 ## [4.8.0] - 2026-10-02
 
