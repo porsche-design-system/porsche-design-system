@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Knowledge Skill`: the guideline for creating custom icons in the `p-icon` reference
+  ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+
 ### Changed
 
 - **Global Styles**: the default `color-scheme` on `:root` is now `only light` instead of `light`. This prevents
@@ -23,6 +28,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4783](https://github.com/porsche-design-system/porsche-design-system/pull/4783))
 - `Storefront Docs`: Refactor A11Y AI Context pages to use the new `web-accessibility-codegen` and `web-accessibility-audit` apm packages.
   ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
+
+### Fixed
+
+- `Knowledge Skill`: links to Storefront pages the skill doesn't include led to an error page instead of the
+  documentation; they now open the Storefront of the skill's version
+  ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
 
 ## [4.8.0] - 2026-10-02
 

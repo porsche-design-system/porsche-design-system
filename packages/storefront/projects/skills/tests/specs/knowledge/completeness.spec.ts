@@ -38,7 +38,7 @@ type ComponentTag = keyof typeof componentMeta;
 const COMPONENT_TAGS = Object.keys(componentMeta) as ComponentTag[];
 
 /**
- * The components the storefront documents — the same filter `sitemap.tsx` uses for
+ * The components the storefront documents — the same filter `sitemap.ts` uses for
  * `COMPONENT_ROUTES_META` (chunked, top-level components; excludes child components
  * like `p-table-row` that have no standalone docs page). The generator keys component
  * references off this same set, so it is the authoritative coverage source.

@@ -11,11 +11,11 @@ import {
   PLinkPure,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointMd, breakpointSm } from '@porsche-design-system/tokens';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { DirectionSelect } from '@/components/common/DirectionSelect';
+import { DocsLink } from '@/components/common/DocsLink';
 import { Navigation } from '@/components/common/Navigation';
 import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
@@ -97,11 +97,11 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       onSidebarEndDismiss={onSidebarEndDismiss}
     >
       <PLinkPure slot="header-start" icon="arrow-down" className="sr-only focus-within:not-sr-only">
-        <Link href="#main-content">Skip to content</Link>
+        <DocsLink href="#main-content">Skip to content</DocsLink>
       </PLinkPure>
-      <Link slot="title" href="/">
+      <DocsLink slot="title" href="/">
         Porsche Design System
-      </Link>
+      </DocsLink>
 
       <PBanner open={isOutdatedVersionBannerOpen} onDismiss={() => setIsIsOutdatedVersionBannerOpen(false)}>
         <div slot="description" className="flex flex-col gap-fluid-xs">

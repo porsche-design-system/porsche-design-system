@@ -9,6 +9,7 @@ import {
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
+import { getHeadingAnchorId } from '@/links';
 import { getFlags } from '@/utils/getFlags';
 
 type ComponentMetaSlotsProps = {
@@ -18,7 +19,12 @@ type ComponentMetaSlotsProps = {
 export const ComponentMetaSlots = ({ slotsMeta }: ComponentMetaSlotsProps) => {
   return (
     <>
-      <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)" id="slots">
+      <PHeading
+        tag="h2"
+        size="x-large"
+        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)"
+        id={getHeadingAnchorId('Slots')}
+      >
         Slots
       </PHeading>
       <PTable caption="Props" className="mt-static-md">

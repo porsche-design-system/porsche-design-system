@@ -12,12 +12,12 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import React from 'react';
-
 import { CodeBlock } from '@/components/common/CodeBlock';
+import { DocsLink } from '@/components/common/DocsLink';
 import { H1, H2, H3, H4, H5, H6, P } from '@/components/common/MdxTypography';
+import type { DocsHref } from '@/links';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -50,9 +50,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     tbody: ({ children }) => <PTableBody>{children as React.ReactNode}</PTableBody>,
     td: ({ children }) => <PTableCell multiline={true}>{children as React.ReactNode}</PTableCell>,
     tr: ({ children }) => <PTableRow>{children as React.ReactNode}</PTableRow>,
-    a: ({ href, children }) => (
+    // MDX isn't typechecked: `tests/unit/specs/links.spec.ts` checks its links against the sitemap instead.
+    a: ({ href = '', children }) => (
       <PLinkPure icon="none" underline={true}>
-        <Link href={href as string}>{children as React.ReactNode}</Link>
+        <DocsLink href={href as DocsHref}>{children as React.ReactNode}</DocsLink>
       </PLinkPure>
     ),
     blockquote: ({ children }) => (
