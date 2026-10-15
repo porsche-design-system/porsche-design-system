@@ -3,6 +3,7 @@ import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';
 import FooterPatternPage from '../../../src/patterns/footer/index.page.tsx';
 import SearchPage from '../../../src/patterns/forms/search/index.page.tsx';
+import SearchLinksPage from '../../../src/patterns/forms/search-links/index.page.tsx';
 import HeaderOverlayPage from '../../../src/patterns/header/overlay/index.page.tsx';
 import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.tsx';
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
@@ -48,6 +49,7 @@ export const patternPages = [
   ['patterns/popover/priority-navigation', PopoverPriorityNavigationPage],
   ['patterns/popover/feature-tour', PopoverFeatureTourPage],
   ['patterns/forms/search', SearchPage],
+  ['patterns/forms/search-links', SearchLinksPage],
   ['patterns/feedback/inline', FeedbackInlinePage],
   ['patterns/feedback/dialog', FeedbackDialogPage],
 ] as const;
