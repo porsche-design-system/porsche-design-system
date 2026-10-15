@@ -8,7 +8,7 @@ token, and all build their message as a Block Kit `markdown` block.
 | Release             | `.github/workflows/release.yml`                  | a release the pipeline created                                       | `SLACK_RELEASE_CHANNEL_ID` |
 | Release             | `.github/workflows/notify-release-published.yml` | run by hand, for a release CI did not announce                       | `SLACK_RELEASE_CHANNEL_ID` |
 | Pipeline failure    | `.github/workflows/notify-pipeline-failure.yml`  | `Contribution`, `OSS Review Toolkit` or `Figma Code Connect` failing | `SLACK_FAILURE_CHANNEL_ID` |
-| Figma change needed | `.github/workflows/figma-code-connect.yml`       | a Figma property or option Code Connect cannot map                   | `SLACK_DESIGN_CHANNEL_ID`  |
+| Figma change needed | `.github/workflows/figma-code-connect.yml`       | a release, Mondays and by hand, while Figma lacks what it reads      | `SLACK_DESIGN_CHANNEL_ID`  |
 
 ## Secrets
 
@@ -66,12 +66,11 @@ script still has to do, all found by testing rather than documented by Slack:
 ## Pipeline failure
 
 `notify-pipeline-failure.yml` watches the `Contribution`, `OSS Review Toolkit` and `Figma Code Connect` workflows and
-posts when one fails on a monitored branch. `Figma Code Connect` counts for its daily and dispatched runs; on a push to
-`main` and after a release it runs inside `Contribution`, so its failure is reported as that run's. It runs the
-default-branch copy of itself and checks the triggering run came from this repository, so a fork cannot reach the token.
-There is also a `workflow_dispatch` path taking a run ID, for rehearsing against a past failure. The workflow keeps the
-trigger and that check; resolving the run, building the message and sending it are
-`.github/actions/notify-slack-pipeline-failure`.
+posts when one fails on a monitored branch. `Figma Code Connect` counts for its weekly and dispatched runs; after a
+release it runs inside `Contribution`, so its failure is reported as that run's. It runs the default-branch copy of
+itself and checks the triggering run came from this repository, so a fork cannot reach the token. There is also a
+`workflow_dispatch` path taking a run ID, for rehearsing against a past failure. The workflow keeps the trigger and that
+check; resolving the run, building the message and sending it are `.github/actions/notify-slack-pipeline-failure`.
 
 `scripts/build-slack-payload.ts` reads run metadata from the API rather than the event payload, so both paths execute
 identical code, and asks for one specific **attempt** — the API otherwise answers for the newest one, and a re-run
@@ -84,18 +83,17 @@ message reporting it. The list is capped at 40 entries, which is above any run t
 ## Figma change needed
 
 `.github/workflows/figma-code-connect.yml` sends it through `.github/actions/notify-slack-figma-change`, which builds
-the message with `scripts/build-slack-figma-payload.ts` from the generator's design lines (`figma:generate` on the
-library as pulled in that run) that Slack has not got yet: one line per change, grouped under the component it is for
-with a link to the component in Figma: a rename (`"summary" → "slot-summary"`, or `"new" → "figNew"` for a property that
-only matters in Figma), an add (`add a BOOLEAN property named "compact"`) or a delete (`delete "showLabel"`), and a
-closing line saying that Dev Mode shows the change once the library is published, a new component or icon with the next
-PDS release. The line shapes it reads are declared once in
-`packages/components/projects/figma-code-connect/figma/messages.ts`, shared with the generator. Nothing about GitHub is
-in the message, because designers have no GitHub account; the raw logs stay in the workflow run. The actions cache keeps
-the open lines Slack has got, so each line goes to design once, and again only when it is resolved and later comes back;
-design is never reminded of a line it postponed. A message that failed to send goes out with the next design-lines run,
-and a line repeats only when the cache could not be saved after a send or lost its entry, unused for 7 days. The builder
-prints nothing when no line is for design, and the Send step is skipped. Details and the decisions behind it: the
+the message with `scripts/build-slack-figma-payload.ts` from every open design line (`figma:generate` of the latest
+release, never `main`, on the library as pulled in that run, after each release, every Monday and on dispatch): one line
+per change, grouped under the component it is for with a link to the component in Figma: a rename
+(`"summary" → "slot-summary"`, or `"new" → "figNew"` for a property that only matters in Figma), an add
+(`add a BOOLEAN property named "compact"`) or a delete (`delete "showLabel"`), and a closing line saying that Dev Mode
+shows the change once the library is published, a new component or icon with the next PDS release. The line shapes it
+reads are declared once in `packages/components/projects/figma-code-connect/figma/messages.ts`, shared with the
+generator. Nothing about GitHub is in the message, because designers have no GitHub account; the raw logs stay in the
+workflow run. Nothing is remembered between runs: a line comes again with each release and every week until design makes
+the change, and a message that failed to send goes out when the job is re-run or with the next week's. The action skips
+the builder when the log holds no design line, and the Send step with it. Details and the decisions behind it: the
 Decisions section of `docs/figma-code-connect.md`.
 
 ## Why not a webhook

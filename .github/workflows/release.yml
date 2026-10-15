@@ -41,6 +41,9 @@ on:
       figma-access-token:
         description: 'Figma token that publishes the Code Connect records. Not required: a missing secret must not stop a release, it fails the Figma Code Connect job instead.'
         required: false
+      slack-design-channel-id:
+        description: 'Slack channel that gets the changes design must make in Figma for the release. Not required: a missing secret must not stop a release, it fails the Figma Code Connect job instead when there is a change to send.'
+        required: false
 
 # Default to the least privilege; jobs that need more declare it explicitly.
 permissions:
@@ -293,6 +296,8 @@ jobs:
       publish: true
     secrets:
       FIGMA_ACCESS_TOKEN: ${{ secrets.figma-access-token }}
+      SLACK_BOT_TOKEN: ${{ secrets.slack-bot-token }}
+      SLACK_DESIGN_CHANNEL_ID: ${{ secrets.slack-design-channel-id }}
   storefront-exact-version:
     name: 'Storefront (/v<major>.<minor>.<patch>)'
     needs: check-publication-status

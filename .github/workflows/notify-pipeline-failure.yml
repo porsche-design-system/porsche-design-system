@@ -12,7 +12,7 @@ on:
     workflows:
       - 'Contribution' # .github/workflows/contribution.yml
       - 'OSS Review Toolkit' # .github/workflows/ort.yml
-      # its daily and dispatched runs; when Contribution calls it, the run is Contribution's
+      # its weekly and dispatched runs; when Contribution calls it, the run is Contribution's
       - 'Figma Code Connect' # .github/workflows/figma-code-connect.yml
     types:
       - completed

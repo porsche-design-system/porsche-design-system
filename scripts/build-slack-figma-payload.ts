@@ -5,10 +5,10 @@ import { existsSync, readFileSync } from 'node:fs';
 import { libraryUrl } from '../packages/components/projects/figma-code-connect/figma/library.ts';
 import { CHANGE, LIBRARY_CHANGE } from '../packages/components/projects/figma-code-connect/figma/messages.ts';
 
-// the design lines design has not got yet, one per line, as the workflow selects them
+// figma:generate's log: its design lines are every open one, and the patterns below skip every other line
 const [linesPath, configPath] = process.argv.slice(2);
 if (!linesPath || !configPath) {
-  console.error('usage: node scripts/build-slack-figma-payload.ts <design lines file> <figma.config.json>');
+  console.error('usage: node scripts/build-slack-figma-payload.ts <figma:generate log> <figma.config.json>');
   process.exit(1);
 }
 

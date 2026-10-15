@@ -29,16 +29,19 @@ Nothing here edits design: `figma connect publish` only attaches records to exis
 `FIGMA_CODE_CONNECT_ENABLED` is `true`, and none gates a merge or the release: no job needs them. On `main`:
 
 - `publish` republishes every record of the latest release, the highest stable tag. `.github/workflows/release.yml`
-  calls it after a release it created on `main`, once the pinned docs every snippet links are up, and a dispatch runs it
-  by hand. Nothing publishes between releases, so Dev Mode never shows a prop npm does not ship yet.
-- `design-lines` runs as the last job of `Contribution` on a push to `main`, after the storefront and Algolia deploy,
-  and daily at 06:00 UTC. It runs `figma:generate` and `.github/actions/notify-slack-figma-change`, which sends the
-  design lines to Slack.
+  calls it after a release it created on `main`, once the pinned docs every snippet links are up, and a dispatch with
+  `publish` ticked runs it by hand. Nothing publishes between releases, so Dev Mode never shows a prop npm does not ship
+  yet.
+- `design-lines` runs `figma:generate` on the latest release and `.github/actions/notify-slack-figma-change`, which
+  sends the design lines to Slack. It runs next to `publish` when `release.yml` calls the workflow, every Monday at
+  06:00 UTC and on every dispatch, and never in a merge's run. **Design follows what npm ships, never `main`**: a rename
+  or delete design made for `main`'s code would drop the prop from every released record until the next release, and an
+  add would offer a property npm does not ship yet.
 
 A pull request runs everything but the upload: `Contribution` calls the same workflow after the pull request's deploy,
 and its `Dry run` job runs `figma:generate` and `figma:publish:dry` with the same token. The deploy skips forks and
-bot-authored pull requests, so they get no dry run and see their lines after the merge; a pull request whose build,
-tests or deploy failed gets none until they pass. The `figma:generate` step's log lists every design line and
+bot-authored pull requests, so they get no dry run and see their lines in a later pull request's; a pull request whose
+build, tests or deploy failed gets none until they pass. The `figma:generate` step's log lists every design line and
 accepted-gap cleanup, those already open on `main` included. The dry run is red when generation fails, a template does
 not render, Figma refuses a record or `figma/accepted-gaps.json` accepts a gap Figma has closed, and only warns when
 Figma cannot be read. For a closed gap it attaches the corrected file as the artifact `accepted-gaps.json`; no job needs
@@ -54,29 +57,31 @@ Each `publish` run:
 
 Each `design-lines` run:
 
-1. Runs `figma:generate`, unless the run is a re-run of a commit that is no longer the branch tip: that run does
-   nothing.
-2. Sends the design channel on Slack the design lines it has not got yet; the actions cache keeps the open lines it has
-   ([`slack-notifications.md`](./slack-notifications.md#figma-change-needed)). Each line goes once, and again only when
-   it is resolved and later comes back. Lines Slack did not get are sent by the next `design-lines` run.
+1. Checks out the latest release, as `publish` does, and runs `figma:generate`.
+2. Sends the design channel on Slack every open design line
+   ([`slack-notifications.md`](./slack-notifications.md#figma-change-needed)), and nothing when there is none. A line
+   comes again with each release and each week until design makes the change. A change a designer makes in Figma after a
+   release, such as renaming a property the released code reads, reaches design within the week, and is in every pull
+   request's dry-run log before that. An accepted gap Figma has closed sends nothing: the run never checks
+   `figma/accepted-gaps.json`, and the next pull request's dry run turns red for it.
 
 **The run is red when it cannot do its job or Figma refused a record**: Figma could not be read, generation failed,
 publish failed as a whole, from a token, network or CLI error, or Figma refused a record. A template Figma cannot render
 and a record it refuses keep their previous record while everything else goes up, and the run turns red at the end, as
 nothing retries them before the next release; every pull request's dry run is red until a developer fixes them. Design
 lines never make it red. A red run reaches the engineering channel through the failure notifier
-([`slack-notifications.md`](./slack-notifications.md#pipeline-failure)). Re-run the failed job: `publish` always
-publishes the latest release, and `design-lines` does nothing once a newer commit has reached `main`, where the next
-push or the daily run catches up. A dispatch republishes the latest release at any time.
+([`slack-notifications.md`](./slack-notifications.md#pipeline-failure)). Re-run the failed job: both jobs always read
+the latest release, and a re-run of `design-lines` sends the whole list again. A dispatch sends the design lines at any
+time and, with `publish` ticked, also republishes the latest release, as a release does.
 
-| Problem                  | Cause                                                                                                                                       | Where it shows                                                             | What to do                                                                                                                               |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Figma could not be read  | `figma:generate` exited 2: a token, network or API error                                                                                    | A red run. Slack gets nothing, and the lines it got stay its memory        | Fix the token or re-run                                                                                                                  |
-| Generation failed        | `figma:generate` exited 1, a repository mistake such as two properties feeding one template variable, or the CLI could not parse a template | A red run, and every pull request's dry run                                | Fix it in a pull request, whose `Figma Code Connect` job reproduces it. Nothing was published                                            |
-| Records Figma refused    | A template Figma could not render in preview, a node that is gone or is no component set, or a generator bug                                | A red run once everything else is up, and every pull request's dry run too | A Figma hiccup: re-run. Otherwise fix the template, the node or the generator; the record keeps its previous version                     |
-| Accepted-gap cleanup     | An accepted gap is no longer a gap                                                                                                          | Every pull request's dry run, which turns red, and every run's log         | Commit the dry run's artifact `accepted-gaps.json` in place of `figma/accepted-gaps.json`, or run `figma:generate` locally and commit    |
-| Design must change Figma | The design lines                                                                                                                            | The design channel on Slack, once per line, and the `figma:generate` log   | Nothing, unless Figma will never carry it: see the package's [`AGENTS.md`](../packages/components/projects/figma-code-connect/AGENTS.md) |
-| Publish failed           | `figma:publish` exited 1: an unreadable template, or a token, network or CLI error                                                          | A red run                                                                  | Read the log, then re-run or dispatch. Labels upload one after another, so the labels before the failure may be up                       |
+| Problem                  | Cause                                                                                                                                       | Where it shows                                                                       | What to do                                                                                                                               |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Figma could not be read  | `figma:generate` exited 2: a token, network or API error                                                                                    | A red run. Slack gets nothing                                                        | Fix the token or re-run                                                                                                                  |
+| Generation failed        | `figma:generate` exited 1, a repository mistake such as two properties feeding one template variable, or the CLI could not parse a template | A red run, and every pull request's dry run                                          | Fix it in a pull request, whose `Figma Code Connect` job reproduces it. Nothing was published                                            |
+| Records Figma refused    | A template Figma could not render in preview, a node that is gone or is no component set, or a generator bug                                | A red run once everything else is up, and every pull request's dry run too           | A Figma hiccup: re-run. Otherwise fix the template, the node or the generator; the record keeps its previous version                     |
+| Accepted-gap cleanup     | An accepted gap is no longer a gap                                                                                                          | Every pull request's dry run, which turns red, and every run's log                   | Commit the dry run's artifact `accepted-gaps.json` in place of `figma/accepted-gaps.json`, or run `figma:generate` locally and commit    |
+| Design must change Figma | The design lines                                                                                                                            | The design channel on Slack after each release and every Monday, and every run's log | Nothing, unless Figma will never carry it: see the package's [`AGENTS.md`](../packages/components/projects/figma-code-connect/AGENTS.md) |
+| Publish failed           | `figma:publish` exited 1: an unreadable template, or a token, network or CLI error                                                          | A red run                                                                            | Read the log, then re-run or dispatch. Labels upload one after another, so the labels before the failure may be up                       |
 
 ## Setup
 
@@ -113,10 +118,11 @@ The pull is `GET /files/:key/component_sets`, `GET /files/:key/nodes` per 25 com
 
 - **A prop, slot, allowed value or component in code:** follow the package's
   [`AGENTS.md`](../packages/components/projects/figma-code-connect/AGENTS.md). The next release publishes the changed
-  templates; whatever Figma lacks is left out of the snippet and reaches design as a design line after the merge.
+  templates; whatever Figma lacks is left out of the snippet and reaches design as a design line with that release.
 - **A property in the library:** Dev Mode shows it once the library is published; nothing to do. A new or recreated
-  component set or icon needs a record of its own, which the next release publishes, or a dispatch before it.
-- **Records a designer edited in Figma's UI:** dispatch the workflow.
+  component set or icon needs a record of its own, which the next release publishes, or a dispatch with `publish` before
+  it.
+- **Records a designer edited in Figma's UI:** dispatch the workflow with `publish`.
 - **The snapshots** render from a pull built from component-meta, so a library change never moves them; a code change
   does, and so does a release (`docs/release.md`). Review the snapshot diff before committing it.
 
@@ -155,17 +161,21 @@ Records live per file key, so nothing published under another key touches the li
    generating the reads from the pull, which needed a publish for every Figma change.
 3. **Nothing pulled is stored and nothing generated is committed; a pull request runs everything but the upload, and
    only a release publishes.** The pull-request run needs the token, so it runs after the deploy, which takes only
-   internal pull requests that are not bot-authored. Forks and bots get no dry run and see their lines after the merge.
-   Rejected: committing the pull or the templates, which turned every Figma change into a developer pull request; a
-   local token per developer, which needs a Figma seat each and leaves the check to whoever has one;
+   internal pull requests that are not bot-authored. Forks and bots get no dry run and see their lines in a later pull
+   request's. Rejected: committing the pull or the templates, which turned every Figma change into a developer pull
+   request; a local token per developer, which needs a Figma seat each and leaves the check to whoever has one;
    `pull_request_target`, which would run a fork's code with the token.
-4. **Publish every record of the latest release, after each release and on dispatch, and nothing between releases.** Dev
-   Mode then shows what npm ships, and every snippet links docs that exist. A release changes every record anyway, since
-   each links its version's docs, so nothing tracks what changed. The cost: a new component set or icon in the library,
-   and a record Figma refused, wait for the next release or a dispatch; the v4 releases of 2026 came 2 to 47 days apart.
-   Rejected: publishing every push to `main`, which put props npm does not ship yet into Dev Mode; publishing only what
-   changed since the last publish, by one hash of the parse output or by its lines per record, which kept a state in the
-   actions cache to save uploads a release repeats anyway; publishing daily, which overwrites UI records daily.
+4. **Publish every record of the latest release, after each release and on dispatch, and nothing between releases; the
+   design lines are the latest release's too, never `main`'s.** Dev Mode then shows what npm ships, every snippet links
+   docs that exist, and design follows npm. A release changes every record anyway, since each links its version's docs,
+   so nothing tracks what changed. The cost: a new component set or icon in the library, and a record Figma refused,
+   wait for the next release or a dispatch, and design hears of a change only once it ships, so a released prop stays
+   out of its snippet until design catches up; the v4 releases of 2026 came 2 to 47 days apart. Rejected: publishing
+   every push to `main`, which put props npm does not ship yet into Dev Mode; publishing only what changed since the
+   last publish, by one hash of the parse output or by its lines per record, which kept a state in the actions cache to
+   save uploads a release repeats anyway; publishing daily, which overwrites UI records daily; sending design the lines
+   of every push to `main`, which put design ahead of npm: a rename or delete made in Figma before the release dropped
+   the prop from every released record until that release.
 5. **A pull request is red for what its author can fix, a publish when it cannot do its job or Figma refused a record,
    and publish is per record.** A gap Figma has closed but `figma/accepted-gaps.json` still accepts turns a pull request
    red too: left in the file, it would accept that gap again, unseen. A refused record turns the publish red once
@@ -173,11 +183,19 @@ Records live per file key, so nothing published under another key touches the li
    message and a re-run. Rejected: gating publish on Figma matching code, which let one moved component block all 57; a
    green publish that lists refused records in its log, where nobody saw them and nothing retried them; closed gaps in
    the log only, where nobody saw them.
-6. **No issue, and Slack gets each design line once, when it appears; the actions cache keeps the open lines Slack
-   has.** Everything else stays in the run's logs, and what a developer must fix turns a pull request's dry run red.
-   Design is never reminded, so a postponed line lives on in the Slack channel only. Rejected: a message per run, which
-   repeated an open item daily; the whole open list whenever it changed, which reminded design of every postponed line;
-   one GitHub issue holding the design lines and every open problem, as clutter in the public repository's issues.
+6. **No issue, and Slack gets every open design line after each release and once a week, with nothing remembered between
+   runs.** Code is the source of truth, so every line is a change design makes, a change back included when a designer
+   altered what a release reads; code never follows Figma, apart from deleting an accepted gap Figma has closed. The
+   cost: a line comes again with each release and every Monday until design makes the change, and a designer's change to
+   what a release reads stays out of its snippets for up to 7 days before design hears of it. Everything else stays in
+   the run's logs, and what a developer must fix turns a pull request's dry run red. Rejected: the lines after each
+   release only, which left a designer's change to what a release reads unreported until the next release, and the v4
+   releases of 2026 came 2 to 47 days apart; a daily run, which sends an open line again every day; each line once, with
+   the lines Slack has got kept in the actions cache, which deletes an entry nobody reads for 7 days and so needed a
+   daily run to stay alive; the same memory as a 90-day artifact, machinery to spare design a repeat; sending only the
+   lines a release adds over the previous release, which never tells design about a change a designer made after a
+   release; one GitHub issue holding the design lines and every open problem, as clutter in the public repository's
+   issues.
 7. **Form props (`form`, `name`, `value`) stay optional, even where component-meta requires them** (Copilot's comment 3
    on #4747, declined). A `value` TEXT property has no text layer to feed, and Figma marks it "Not used within
    component".
@@ -185,15 +203,15 @@ Records live per file key, so nothing published under another key touches the li
    template change shows in review without committing Figma data; the snapshots differ from the published files in node
    ids and icon swap fallbacks. Rejected: a frozen pull of the library, which put its node ids and property definitions
    in the public repository.
-9. **Triggers: the publish from a job of `release.yml` after a release it created and from `workflow_dispatch`; the
-   design lines from the last job of `Contribution` on a push to `main` and from `schedule`; all on `main` only. On a
-   pull request the last job of `Contribution` runs the dry run. The publish checks out the highest stable tag, never
-   the commit that started it.** Rejected: the dry run inside `.github/workflows/test.yml`, whose failure skipped the
-   pull request's preview deploy, since the deploy needs every test job; a job inside `.github/workflows/deploy.yml`,
-   whose failure would skip the release; a standalone `push` trigger, which published commits whose build or tests
-   failed; the `release` event, which a release created with `GITHUB_TOKEN`, as `release.yml` creates it, does not
-   trigger; checking out the release commit, which let a re-run of an older release publish it over a newer one; a
-   dispatch on any branch, which would run that branch's copy of the workflow.
+9. **Triggers: the publish from a job of `release.yml` after a release it created and from a `workflow_dispatch` with
+   `publish`; the design lines from that same job, from a weekly `schedule` and from every `workflow_dispatch`; all on
+   `main` only, and both check out the highest stable tag, never the commit that started them. On a pull request the
+   last job of `Contribution` runs the dry run.** Rejected: the dry run inside `.github/workflows/test.yml`, whose
+   failure skipped the pull request's preview deploy, since the deploy needs every test job; a job inside
+   `.github/workflows/deploy.yml`, whose failure would skip the release; a standalone `push` trigger, which published
+   commits whose build or tests failed; the `release` event, which a release created with `GITHUB_TOKEN`, as
+   `release.yml` creates it, does not trigger; checking out the release commit, which let a re-run of an older release
+   publish it over a newer one; a dispatch on any branch, which would run that branch's copy of the workflow.
 10. **`@figma/code-connect` takes updates like any other dependency: the weekly update and Dependabot's security pull
     requests.** `scripts/figmaConnect.ts` reads the CLI's log lines and its `preview --output json` result, so an update
     that changes them shows in a pull request: the unit tests parse every generated file with the installed CLI on every
@@ -206,8 +224,10 @@ Records live per file key, so nothing published under another key touches the li
 
 Every pull and publish goes to the test copy; production comes after the approval, never before. The
 `FIGMA_ACCESS_TOKEN` secret must be a rotated token: the tokens used during the research were pasted into chat sessions.
-Nothing publishes before the first release that contains this package: a dispatch checks out the latest release, which
-until then lacks it, and fails.
+Nothing publishes before the first release that contains this package: a dispatch with `publish` checks out the latest
+release, which until then lacks it, and its `publish` job fails. The `design-lines` job of the weekly run and of a
+dispatch ends green with a notice instead, at the step `Code Connect in this release?`; delete that step once a release
+ships the package.
 
 ### Open items for GitHub issues
 
