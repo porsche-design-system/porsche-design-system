@@ -16,8 +16,6 @@ type Label = {
   /** A number or boolean attribute in the label's expression syntax: `activePage={…}`, `[dismissButton]="false"`. */
   expr: (name: string, value: string) => string;
   imports: (tag: string, docs: string) => string[];
-  /** A comment between children, naming the slot a child belongs to. */
-  comment: (text: string) => string;
 };
 
 const quoted = (value: string): string => `"${value}"`;
@@ -30,7 +28,6 @@ export const labels: Label[] = [
     attr: (n, v) => `${kebabCase(n)}=${quoted(v === true ? 'true' : v)}`,
     expr: (n, v) => `${kebabCase(n)}=${quoted(v)}`,
     imports: (_, docs) => [`<!-- Docs: ${docs} -->`],
-    comment: (text) => `<!-- ${text} -->`,
   },
   {
     suffix: '.react',
@@ -42,7 +39,6 @@ export const labels: Label[] = [
       `// Docs: ${docs}`,
       `import { ${pascalCase(t)} } from '@porsche-design-system/components-react';`,
     ],
-    comment: (text) => `{/* ${text} */}`,
   },
   {
     suffix: '.angular',
@@ -54,7 +50,6 @@ export const labels: Label[] = [
       `// Docs: ${docs}`,
       `import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';`,
     ],
-    comment: (text) => `<!-- ${text} -->`,
   },
   {
     suffix: '.vue',
@@ -66,7 +61,6 @@ export const labels: Label[] = [
       `// Docs: ${docs}`,
       `import { ${pascalCase(t)} } from '@porsche-design-system/components-vue';`,
     ],
-    comment: (text) => `<!-- ${text} -->`,
   },
 ];
 
@@ -450,11 +444,11 @@ const fragment = (
  * A slot's content through figma/helpers/slotted.ts: a slot interpolated directly renders a React `<SlotDefault />`.
  * The default slot falls back to text, because most simple components draw it as a TEXT property.
  */
-const slotContent = (figma: string, label: Label): string => {
+const slotContent = (figma: string): string => {
   const slot = pdsSlotName(figma);
   return slot === ''
     ? `\${read.isSlot('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}') : escapeText(read.text('${figma}') ?? '')}`
-    : `\${read.has('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}', '${label.comment(`slot="${slot}"`)}') : ''}`;
+    : `\${read.has('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}', '${slot}') : ''}`;
 };
 
 /** What every render of one pull shares. */
@@ -493,7 +487,7 @@ const render = (
   const children = mappings
     .flatMap((m) => (m.kind === 'slot' ? [m.figma] : []))
     .sort((a, b) => Number(pdsSlotName(a) === '') - Number(pdsSlotName(b) === ''))
-    .map((figma) => slotContent(figma, label))
+    .map((figma) => slotContent(figma))
     .join('');
   const tagName = label.tagName(tag);
   return [

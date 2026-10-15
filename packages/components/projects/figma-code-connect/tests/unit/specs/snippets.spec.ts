@@ -47,11 +47,11 @@ const kebab = (name: string): string => `p-${name}`;
 const pascal = (name: string): string => `P${name[0].toUpperCase()}${name.slice(1)}`;
 
 describe.each([
-  { suffix: '', tag: kebab, marker: '<!-- slot="summary" -->' },
-  { suffix: '.react', tag: pascal, marker: '{/* slot="summary" */}' },
-  { suffix: '.angular', tag: kebab, marker: '<!-- slot="summary" -->' },
-  { suffix: '.vue', tag: pascal, marker: '<!-- slot="summary" -->' },
-])('snippet$suffix', ({ suffix, tag, marker }) => {
+  { suffix: '', tag: kebab },
+  { suffix: '.react', tag: pascal },
+  { suffix: '.angular', tag: kebab },
+  { suffix: '.vue', tag: pascal },
+])('snippet$suffix', ({ suffix, tag }) => {
   it("prints a designer's text in an attribute as that text", async () => {
     const properties = { label: { value: label, type: 'TEXT' } };
     expect(await snippet('checkbox', suffix, { properties })).toBe(
@@ -64,7 +64,7 @@ describe.each([
     expect(await snippet('button', suffix, { properties })).toBe(`<${tag('button')}>${asText}</${tag('button')}>`);
   });
 
-  it('prints a text layer in a named slot as that text', async () => {
+  it('prints a text layer in a named slot in a span carrying the slot', async () => {
     const instance = {
       properties: { 'slot-summary': { value: { guid: {} }, type: 'SLOT' } },
       getSlot: () => ({ connectedInstances: [] }),
@@ -72,7 +72,7 @@ describe.each([
         [{ type: 'TEXT', textContent: text, __containingSlotName__: 'slot-summary' }].filter(selector),
     };
     expect(await snippet('accordion', suffix, instance)).toBe(
-      `<${tag('accordion')}>${marker}${asText}</${tag('accordion')}>`
+      `<${tag('accordion')}><span slot="summary">${asText}</span></${tag('accordion')}>`
     );
   });
 });
