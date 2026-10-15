@@ -296,10 +296,16 @@ const VideoHero = () => (
 
 /**
  * Title hero: a giant title on a fade into the configured colour, which the configured vehicle at the start of the
- * chapter below is pulled up into. It is as tall as its content, so the chapter follows right below the title.
+ * chapter below is pulled up into. It is as tall as its content, so the chapter follows right below the title. Like
+ * every section with a ghost title it clips the title horizontally, which does not wrap and can outgrow a narrow
+ * screen at a large text size.
  */
 const TitleHero = () => (
-  <section id="pm-hero" class="relative col-full grid grid-cols-subgrid bg-surface" aria-labelledby="pm-hero-heading">
+  <section
+    id="pm-hero"
+    class="relative col-full grid grid-cols-subgrid overflow-x-clip bg-surface"
+    aria-labelledby="pm-hero-heading"
+  >
     <div
       class="absolute inset-0 bg-linear-to-b from-transparent via-(--pm-config-color) via-45% to-(--pm-config-color)"
       aria-hidden="true"
@@ -730,7 +736,8 @@ export const PersonalizedMailing = ({ meta, variant }: PersonalizedMailingProps)
               <p-link-pure icon="phone" size="sm" underline={true}>
                 <a href="#">+49 123 4567890</a>
               </p-link-pure>
-              <p-link-pure icon="email" size="sm" underline={true}>
+              {/* An address has no space to wrap at, so at a large text size on a small screen it may break anywhere. */}
+              <p-link-pure class="wrap-anywhere" icon="email" size="sm" underline={true}>
                 <a href="#">alex.taylor@example.com</a>
               </p-link-pure>
             </div>
