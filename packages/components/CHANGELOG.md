@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Knowledge Skill`: the guideline for creating custom icons in the `p-icon` reference
   ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+- `Popover`: `hide-arrow` prop to drop the arrow and the extra offset it adds.
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 
 ### Changed
 

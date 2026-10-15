@@ -353,17 +353,15 @@ describe.each(examplePages)('%s page', (_name, Page) => {
     expect(await renderPage(Page)).not.toMatch(/\son[a-z]+="/);
   });
 
-  it('should link nowhere but to "#" or to an id on the same page', async () => {
+  it('should link nowhere but to a fragment on the same page', async () => {
     // The examples demonstrate chrome, they are not a website: a link that points somewhere would break in the
-    // storefront and in StackBlitz alike. This replaces Biome's `a11y/useValidAnchor`, which is off for the examples
-    // because it rejects the placeholder `href="#"` – and covers the `p-link*` elements, which the rule never saw.
+    // storefront and in StackBlitz alike. A fragment stays on the page whether or not an element carries that id.
+    // This replaces Biome's `a11y/useValidAnchor`, which is off for the examples because it rejects the placeholder
+    // `href="#"` – and covers the `p-link*` elements, which the rule never saw.
     const { html } = extractScripts(await renderPage(Page));
-    const ids = new Set(Array.from(html.matchAll(/\sid="([^"]+)"/g), ([, id]) => id));
     const targets = Array.from(html.matchAll(/\s(?:href|action)="([^"]*)"/g), ([, target]) => target);
 
-    expect(targets.filter((target) => target !== '#' && !(target.startsWith('#') && ids.has(target.slice(1))))).toEqual(
-      []
-    );
+    expect(targets.filter((target) => !target.startsWith('#'))).toEqual([]);
     // An anchor without an href is not a link at all – not focusable, not announced as one.
     expect(html.match(/<a\b(?![^>]*\shref=)[^>]*>/g) ?? []).toEqual([]);
   });

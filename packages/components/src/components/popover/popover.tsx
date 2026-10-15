@@ -29,9 +29,9 @@ import {
 import { getComponentCss } from './popover-styles';
 import {
   getPopoverBorderRadius,
+  getPopoverPanelOffset,
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_ARROW_BASE,
-  POPOVER_ARROW_GAP,
   POPOVER_ARROW_THICKNESS,
   POPOVER_DEFAULT_BUTTON_WIDTH_THRESHOLD,
   POPOVER_DIRECTIONS,
@@ -46,6 +46,7 @@ const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
   compact: AllowedTypes.boolean,
+  hideArrow: AllowedTypes.boolean,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
 };
 
@@ -82,6 +83,9 @@ export class Popover {
 
   /** Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces. */
   @Prop() public compact?: boolean;
+
+  /** Hides the arrow that points at the trigger. The panel keeps a small gap and is not offset by the arrow thickness. */
+  @Prop() public hideArrow?: boolean = false;
 
   /** Sets ARIA attributes on the popover panel to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
@@ -255,7 +259,7 @@ export class Popover {
             during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
             `inert` avoids that and mirrors the pattern used by `p-modal` / `p-sheet` / `p-drilldown`. */}
         <div id={id} popover="manual" inert={!this.effectiveOpen} ref={(el) => (this.refPopover = el)}>
-          <div class="arrow" ref={(el) => (this.refArrow = el)} />
+          {!this.hideArrow && <div class="arrow" ref={(el) => (this.refArrow = el)} />}
           {this.description ? <p>{this.description}</p> : <slot />}
         </div>
       </Host>
@@ -303,7 +307,11 @@ export class Popover {
   };
 
   private positionPopover = async (): Promise<void> => {
-    const { x, y, placement, middlewareData } = await computePosition(this.triggerElement, this.refPopover, {
+    const triggerElement = this.triggerElement;
+    if (!triggerElement || !this.refPopover) {
+      return;
+    }
+    const { x, y, placement, middlewareData } = await computePosition(triggerElement, this.refPopover, {
       placement: this.direction,
       // Use the `fixed` strategy because the panel is promoted to the `#top-layer` via `showPopover()`. Safari does
       // not resolve a top-layer element's `offsetParent` synchronously after `showPopover()`, so the default
@@ -311,7 +319,7 @@ export class Popover {
       // until a resize re-triggers `autoUpdate`. `fixed` positions relative to the viewport and avoids this.
       strategy: 'fixed',
       middleware: [
-        offset(POPOVER_ARROW_THICKNESS + POPOVER_ARROW_GAP),
+        offset(getPopoverPanelOffset(this.hideArrow)),
         shift({
           padding: POPOVER_SAFE_ZONE,
           limiter: limitShift({
@@ -325,7 +333,9 @@ export class Popover {
           padding: POPOVER_SAFE_ZONE,
           fallbackAxisSideDirection: 'end',
         }),
-        arrow({ element: this.refArrow, padding: getPopoverBorderRadius(this.refPopover) }),
+        ...(!this.hideArrow && this.refArrow
+          ? [arrow({ element: this.refArrow, padding: getPopoverBorderRadius(this.refPopover) })]
+          : []),
       ],
     });
 
@@ -336,6 +346,10 @@ export class Popover {
       left: `${x}px`,
       top: `${y}px`,
     });
+
+    if (this.hideArrow || !this.refArrow || !middlewareData.arrow) {
+      return;
+    }
 
     const { x: xArrow, y: yArrow } = middlewareData.arrow;
 

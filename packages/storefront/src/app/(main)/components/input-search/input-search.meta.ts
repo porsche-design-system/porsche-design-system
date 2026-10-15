@@ -9,7 +9,6 @@ import AccessibilityTests from '@/app/(main)/components/input-search/accessibili
 import IntroductionDescription from '@/app/(main)/components/input-search/configurator/introduction.mdx';
 import { inputSearchSlotStories, inputSearchStory } from '@/app/(main)/components/input-search/configurator/story';
 import AriaComboboxDescription from '@/app/(main)/components/input-search/examples/aria-combobox/example.mdx';
-import { inputSearchStoryAriaComboboxSketch } from '@/app/(main)/components/input-search/examples/aria-combobox/story';
 import FormDescription from '@/app/(main)/components/input-search/examples/form/example.mdx';
 import SlotsDescription from '@/app/(main)/components/input-search/examples/slots/example.mdx';
 import { inputSearchStorySlots } from '@/app/(main)/components/input-search/examples/slots/story';
@@ -36,10 +35,9 @@ export const inputSearchMeta = {
       story: inputSearchStorySlots,
     },
     ariaCombobox: {
-      kind: 'story',
+      kind: 'description',
       name: 'Used as a Combobox',
       description: AriaComboboxDescription,
-      story: inputSearchStoryAriaComboboxSketch,
     },
   },
   usage: Usage,
