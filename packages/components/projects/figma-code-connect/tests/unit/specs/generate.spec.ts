@@ -50,6 +50,17 @@ describe('generate: templates', () => {
     );
   });
 
+  it.each([
+    { suffix: '', setup: 'vanilla-js/getting-started/' },
+    { suffix: '.react', setup: 'react/getting-started/' },
+    { suffix: '.angular', setup: 'angular/getting-started/' },
+    { suffix: '.vue', setup: 'vue/getting-started/' },
+  ])("opens a template's imports with the setup guide of its framework and version: $suffix", ({ suffix, setup }) => {
+    expect(template(run([set('tag')], { version: '4.8.0' }), 'tag', suffix)).toContain(
+      `imports: [\n    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/${setup}',\n`
+    );
+  });
+
   it('renders the same templates whatever properties the Figma component has', () => {
     const bare = run([set('switch')]);
     const drawn = run([
