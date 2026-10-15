@@ -8,19 +8,23 @@ export const metadata = {
 
 # Color Scheme
 
-<TableOfContents headings={['Setup', 'Lightning CSS Bug']} />
+<TableOfContents headings={['Browser Automatic Dark Mode', 'Setup', 'Lightning CSS Bug']} />
 
 The Porsche Design System components rely on **CSS color variables** using the CSS
 [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function.
 Depending on the browser support you are targeting, it might be necessary to include a polyfill for `light-dark()`,
 which is provided in the `color-scheme.css` stylesheet.
 
-By default, color tokens use the light color scheme. To enable the dark color scheme or automatic switching based on
-system settings, add one of the following CSS classes to the `<html>` element or any ancestor element:
+By default, the global styles set `:root { color-scheme: only light; }`, so color tokens use the light color scheme and
+browsers with an automatic dark mode can't recolor the page (see
+[Browser Automatic Dark Mode](#browser-automatic-dark-mode)). To enable the dark color scheme or automatic switching
+based on system settings, add one of the following CSS classes to the `<html>` element or any ancestor element:
 
-- `.scheme-light` — enforces the light color scheme
-- `.scheme-dark` — enforces the dark color scheme
 - `.scheme-light-dark` — automatically switches based on the user's system preference
+- `.scheme-only-light` — enforces the light color scheme and prevents the browser from recoloring it
+- `.scheme-only-dark` — enforces the dark color scheme and prevents the browser from recoloring it
+- `.scheme-light` — uses the light color scheme, but allows the browser to recolor it (prefer `.scheme-only-light`)
+- `.scheme-dark` — uses the dark color scheme
 
 The selected scheme applies to all child elements.
 
@@ -28,9 +32,20 @@ If [browser support](https://caniuse.com/mdn-css_types_color_light-dark) is alre
 skip the polyfill and use the native `color-scheme` property and `light-dark()` function directly to control
 [CSS Variables](/stylesheets/css-variables):
 
-- `html { color-scheme: light; }` — enforces the light color scheme
-- `html { color-scheme: dark; }` — enforces the dark color scheme
+- `html { color-scheme: only light; }` — enforces the light color scheme
+- `html { color-scheme: only dark; }` — enforces the dark color scheme
 - `html { color-scheme: light dark; }` — automatically switches based on the user's system preference
+
+## Browser Automatic Dark Mode
+
+Some Chromium-based browsers and WebViews (e.g. Chrome on Android with "Auto Dark Mode for Web Contents", Samsung
+Internet in dark mode or Android WebViews with algorithmic darkening) darken pages that don't declare dark mode support.
+They recolor backgrounds and text algorithmically, but not reliably images such as icons, which can lead to insufficient
+contrast. The keyword `only` in `color-scheme: only light` prevents this, while `color-scheme: light` (or
+`.scheme-light`) does not. Pages using `.scheme-light-dark`, `.scheme-dark` or `.scheme-only-dark` are not affected
+either, since they declare dark mode support.
+
+Learn more in the [Theme](/must-know/theme#browser-automatic-dark-mode) section.
 
 ## Setup
 

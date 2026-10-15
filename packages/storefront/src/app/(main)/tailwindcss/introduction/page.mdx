@@ -69,9 +69,15 @@ do not yet support `light-dark()` (see [browser support](https://caniuse.com/mdn
 
 Apply these classes to the document or any container to control the theme context:
 
-- `.scheme-light` — Forces light mode.
-- `.scheme-dark` — Forces dark mode.
-- `.scheme-light-dark` — Dynamically follows system/OS settings.
+- `.scheme-light-dark` — Dynamically follows system/OS settings. Recommended to support dark mode.
+- `.scheme-only-light` — Forces light mode and prevents the browser from recoloring it.
+- `.scheme-only-dark` — Forces dark mode and prevents the browser from recoloring it.
+- `.scheme-light` — Uses light mode, but allows the browser's automatic dark mode to recolor it. Prefer
+  `.scheme-only-light`.
+- `.scheme-dark` — Uses dark mode.
+
+Without any class, the [Global Styles](/stylesheets/introduction) apply `color-scheme: only light`. Learn more in the
+[Theme](/must-know/theme#browser-automatic-dark-mode) section.
 
 ### Usage
 

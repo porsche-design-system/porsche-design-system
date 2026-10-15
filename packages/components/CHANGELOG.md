@@ -19,6 +19,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: the guideline for creating custom icons in the `p-icon` reference
   ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
 
+### Changed
+
+- **Global Styles**: the default `color-scheme` on `:root` is now `only light` instead of `light`. This prevents
+  browsers with an automatic dark mode (e.g. Chrome on Android, Samsung Internet) from recoloring pages that use the
+  default light theme, which made icons practically invisible. The PDS light theme looks unchanged, and `.scheme-*`
+  classes behave as before. To allow automatic darkening again, set `.scheme-light` on the `<html>` element.
+  ([#4783](https://github.com/porsche-design-system/porsche-design-system/pull/4783))
+
 ### Fixed
 
 - `Knowledge Skill`: links to Storefront pages the skill doesn't include led to an error page instead of the
