@@ -99,6 +99,17 @@ After the component is developed, it runs through a consecutive **testing** and 
 - **Keyboard Navigation** tests ensure that the component is **usable** with keyboard navigation.
 - **Screen Reader** tests ensure that the component is **usable** with screen readers.
 
+When generating or modifying UI with GitHub Copilot, Claude Code, or Cursor, install the
+[web-accessibility-codegen package](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-codegen)
+so agents apply **WCAG 2.2 AA** and **EN 301 549** from the start. See the
+[**AI Agent Context**](/must-know/accessibility/ai-agent-context/) guide for APM-based installation.
+
+For your own product applications, you can run **AI-assisted accessibility audits** with GitHub Copilot, Claude Code, or
+Cursor via the
+[web-accessibility-audit package](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-audit).
+See the [**Web Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/) guide for APM-based
+installation, prerequisites, and example prompts.
+
 If you find any **accessibility issue**, please feel free to [**report it**](/help/bug-report).
 
 ## Web Components & accessibility
@@ -115,6 +126,10 @@ improve these existing limitations.
 
 For practical integration guidance when using PDS components, see the
 [Accessibility Do's and Don'ts](/must-know/accessibility/dos-and-donts) guide.
+
+For AI coding assistants, install generation context via
+[AI Agent Context](/must-know/accessibility/ai-agent-context/) and run product audits via
+[AI Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/).
 
 For more information on this topic and guidance on how to reduce the risk of violating country-specific laws, we highly
 recommend the following accessibility guidelines for your products:

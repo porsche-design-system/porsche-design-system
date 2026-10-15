@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   default light theme, which made icons practically invisible. The PDS light theme looks unchanged, and `.scheme-*`
   classes behave as before. To allow automatic darkening again, set `.scheme-light` on the `<html>` element.
   ([#4783](https://github.com/porsche-design-system/porsche-design-system/pull/4783))
+- `Storefront Docs`: Refactor A11Y AI Context pages to use the new `web-accessibility-codegen` and `web-accessibility-audit` apm packages.
+  ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
 
 ### Fixed
 
