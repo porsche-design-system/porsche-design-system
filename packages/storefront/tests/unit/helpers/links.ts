@@ -1,9 +1,20 @@
-import { type DocsRoute, ROUTES_WITHOUT_SITEMAP_ENTRY } from '@/links';
-import { type Route, type Routes, sitemap } from '@/sitemap';
+import { type Category, type DocsRoute, getPath, ROUTES_WITHOUT_SITEMAP_ENTRY, sitemap } from '@/sitemap';
 
-/** Every route in the sitemap, depth first. */
-export const getRoutes = (routes: Routes = sitemap): Route[] =>
-  Object.values(routes).flatMap((route) => [route, ...getRoutes(route.subPaths ?? {})]);
+export type SitemapRoute = {
+  path: string;
+  /** The component a page documents */
+  tagName?: string;
+};
+
+/** Every route of the sitemap, in order: each category, then its pages, each followed by its tabs. */
+export const getRoutes = (): SitemapRoute[] =>
+  Object.entries(sitemap as Record<string, Category>).flatMap(([categoryKey, category]) => [
+    { path: getPath(categoryKey) },
+    ...Object.entries(category.pages).flatMap(([pageKey, page]) => [
+      { path: getPath(categoryKey, pageKey), tagName: page.tagName },
+      ...Object.keys(page.tabs ?? {}).map((tabKey) => ({ path: getPath(categoryKey, pageKey, tabKey) })),
+    ]),
+  ]);
 
 const docsRoutes: ReadonlySet<string> = new Set([
   ...getRoutes().map(({ path }) => path),

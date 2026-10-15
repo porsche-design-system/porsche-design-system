@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { ROUTES_WITHOUT_SITEMAP_ENTRY } from '@/links';
-import { getPageTitle, type Routes, sitemap } from '@/sitemap';
+import { ROUTES_WITHOUT_SITEMAP_ENTRY } from '@/sitemap';
 import { getRoutes } from '../helpers/links';
+import { getPageTitle } from '../helpers/pageTitle';
 
 /**
  * The sitemap is written by hand while the routes come from the pages in `src/app`, so this checks the two against each
@@ -54,7 +54,7 @@ describe('sitemap', () => {
   it('has a page for every route, which redirects for categories and pages with tabs', () => {
     const withoutPage = routes
       // `/components/[component]` redirects every component page to its first tab
-      .filter((route) => !(route.tagName && route.subPaths))
+      .filter((route) => !route.tagName)
       .map((route) => route.path)
       .filter((routePath) => !pagePaths.includes(routePath));
 
@@ -68,20 +68,6 @@ describe('sitemap', () => {
     );
 
     expect(withoutRoute).toEqual([]);
-  });
-
-  it('has categories, pages and tabs at the first, second and third level', () => {
-    const misplaced = (routes: Routes, level = 0): string[] =>
-      Object.values(routes).flatMap((route) => [
-        ...(route.type === (['CATEGORY', 'PAGE', 'TAB'] as const)[level] ? [] : [route.path]),
-        ...misplaced(route.subPaths ?? {}, level + 1),
-      ]);
-
-    expect(misplaced(sitemap)).toEqual([]);
-  });
-
-  it('has plain-text names only', () => {
-    expect(routes.filter((route) => typeof route.name !== 'string')).toEqual([]);
   });
 });
 

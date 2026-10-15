@@ -96,10 +96,10 @@ button:focus-visible {
 | **Code examples** | Must be accessible by default (correct labels, focus, keyboard behavior) |
 | **Headings**      | Maintain logical heading order (no skipped levels)                       |
 
-Every page that renders content exports `metadata` with a `title` and a `description`. The title is derived from the
-sitemap, most specific first, and the root layout appends ` - Porsche Design System`: `getPageTitle()` in
-`src/sitemap.ts` returns `Button: Usage - Components` for a tab and `Blur - Tokens` for a page.
-`tests/unit/specs/sitemap.spec.ts` fails when a page's title differs.
+Every page that renders content exports `metadata` with a `title` and a `description`. The title names the page after
+its place in the sitemap, most specific first, and the root layout appends ` - Porsche Design System`:
+`Button: Usage - Components` for a tab and `Blur - Tokens` for a page. `tests/unit/specs/sitemap.spec.ts` fails when a
+page's title differs, and its error lists the expected one.
 
 ### Links and anchors
 
@@ -119,9 +119,8 @@ Storefront, and the skills generator turns the same routes into references or St
   path with a trailing slash where they can't take one: `components/introduction/`.
 - `DocsLink` also takes an anchor on the current page (`#do`) and adds the current path to it: a bare `#do` resolves
   against the `<base>` of the root layout, which leads to the home page.
-- `DocsRoute` in `src/links.ts` is the type of every route; a link to a page that doesn't exist fails the typecheck in
-  TSX. A category or a page with tabs leads to its first entry (`getLandingRoute()`), and its `page.tsx` redirects
-  there.
+- `DocsRoute` in `src/sitemap.ts` is the type of every route; a link to a page that doesn't exist fails the typecheck in
+  TSX. A category or a page with tabs leads to its first entry (`getLandingPath()`), and its `page.tsx` redirects there.
 - MDX isn't typechecked, so `tests/unit/specs/links.spec.ts` checks every link in it: routes, trailing slashes, anchors,
   files, tables of contents, unique heading anchors and redirects.
 

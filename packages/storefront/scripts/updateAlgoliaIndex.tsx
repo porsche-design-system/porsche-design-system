@@ -3,13 +3,13 @@ import * as path from 'node:path';
 import { algoliasearch } from 'algoliasearch';
 import * as cheerio from 'cheerio';
 import type { AlgoliaRecord } from '@/components/search/Search';
-import { type Route, type Routes, sitemap } from '../src/sitemap';
+import { type Category, getPath, sitemap } from '../src/sitemap';
 import { replaceAlgoliaIndex } from './replaceAlgoliaIndex';
 
 const extractContentAndSections = (
-  route: Route
+  routePath: string
 ): { content: string; sections: { name: string; id: string; content: string }[] } => {
-  const filePath = path.join('dist', route.path, 'index.html');
+  const filePath = path.join('dist', routePath, 'index.html');
 
   let content = '';
   const sections: { name: string; id: string; content: string }[] = [];
@@ -59,58 +59,60 @@ const extractContentAndSections = (
   return { content, sections };
 };
 
-const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
+const generateAlgoliaRecords = (categories: Record<string, Category>): AlgoliaRecord[] => {
   const records: AlgoliaRecord[] = [];
 
-  for (const category of Object.values(sitemap)) {
-    for (const page of Object.values(category.subPaths ?? {})) {
+  for (const [categoryKey, category] of Object.entries(categories)) {
+    for (const [pageKey, page] of Object.entries(category.pages)) {
       // Page with tabs
-      if (page.subPaths) {
-        for (const tab of Object.values(page.subPaths)) {
-          const { content, sections } = extractContentAndSections(tab);
+      if (page.tabs) {
+        for (const [tabKey, tab] of Object.entries(page.tabs)) {
+          const tabPath = getPath(categoryKey, pageKey, tabKey);
+          const { content, sections } = extractContentAndSections(tabPath);
           records.push({
-            objectID: tab.path,
+            objectID: tabPath,
             name: tab.name,
             content: content,
             category: category.name,
             page: page.name,
             tab: tab.name,
-            url: tab.path,
+            url: tabPath,
           });
           for (const section of sections) {
             records.push({
-              objectID: `${tab.path}#${section.id}`,
+              objectID: `${tabPath}#${section.id}`,
               name: section.name,
               content: section.content,
               category: category.name,
               page: page.name,
               tab: tab.name,
               section: section.name,
-              url: `${tab.path}#${section.id}`,
+              url: `${tabPath}#${section.id}`,
             });
           }
         }
       }
       // Page without tabs
       else {
-        const { content, sections } = extractContentAndSections(page);
+        const pagePath = getPath(categoryKey, pageKey);
+        const { content, sections } = extractContentAndSections(pagePath);
         records.push({
-          objectID: page.path,
+          objectID: pagePath,
           name: page.name,
           content: content,
           category: category.name,
           page: page.name,
-          url: page.path,
+          url: pagePath,
         });
         for (const section of sections) {
           records.push({
-            objectID: `${page.path}#${section.id}`,
+            objectID: `${pagePath}#${section.id}`,
             name: section.name,
             content: section.content,
             category: category.name,
             page: page.name,
             section: section.name,
-            url: `${page.path}#${section.id}`,
+            url: `${pagePath}#${section.id}`,
           });
         }
       }

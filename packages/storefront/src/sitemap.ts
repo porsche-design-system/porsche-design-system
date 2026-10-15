@@ -1,30 +1,27 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import type { TagName } from '@porsche-design-system/shared';
+import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
 import { capitalCase } from 'change-case';
 
 /**
- * The Storefront's tree of categories, pages and tabs, as plain data: the navigation, the tabs and the search index
- * render it, and it can be read without React. `tests/unit/specs/sitemap.spec.ts` checks it against the pages in
- * `src/app`, in both directions. `src/links.ts` derives the routes links can target from it.
+ * The Storefront's categories, their pages and the pages' tabs, as plain data: the navigation, the tabs and the search
+ * index render it, and it can be read without React. `tests/unit/specs/sitemap.spec.ts` checks it against the pages in
+ * `src/app`, in both directions.
+ *
+ * The keys are the segments of the paths: `sitemap.news.pages.changelog` is `/news/changelog` (see `getPath`).
  */
 
-export const COMPONENT_ROUTES_META = Object.entries(componentMeta).filter(
-  ([_, value]) => value.isChunked && !value.requiredParent
-);
+export type Tab = { name: string };
 
-export const COMPONENT_ROUTES = COMPONENT_ROUTES_META.map(([key]) => ({ component: key.replace('p-', '') }));
-
-export type Route = {
+export type Page = {
   name: string;
-  path: string;
-  type: 'CATEGORY' | 'PAGE' | 'TAB';
-  /** The component a page documents */
+  /** The component the page documents */
   tagName?: TagName;
-  subPaths?: Routes;
+  tabs?: Record<string, Tab>;
 };
 
-export type Routes = {
-  [path: string]: Route;
+export type Category = {
+  name: string;
+  pages: Record<string, Page>;
 };
 
 /** Components without an Examples tab. Every other tab exists for every component. */
@@ -38,6 +35,15 @@ const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
   'p-toast',
 ];
 
+/** The tabs of every component page, in order. */
+const COMPONENT_TABS = {
+  configurator: 'Configurator',
+  examples: 'Examples',
+  usage: 'Usage',
+  accessibility: 'Accessibility',
+  api: 'API',
+} as const;
+
 const ACRONYMS = ['ai', 'url'];
 
 /** `link-tile` → `Link Tile`, `input-url` → `Input URL` */
@@ -47,1943 +53,734 @@ const getComponentName = (component: string): string =>
     .map((word) => (ACRONYMS.includes(word) ? word.toUpperCase() : capitalCase(word)))
     .join(' ');
 
-const componentTabs = (tagName: TagName, component: string): Routes => {
-  const tab = (key: string, name: string): Routes => ({
-    [key]: { name, path: `/components/${component}/${key}`, type: 'TAB' },
-  });
-  return {
-    ...tab('configurator', 'Configurator'),
-    ...(!COMPONENTS_WITHOUT_EXAMPLES.includes(tagName) && tab('examples', 'Examples')),
-    ...tab('usage', 'Usage'),
-    ...tab('accessibility', 'Accessibility'),
-    ...tab('api', 'API'),
-  };
-};
+type Slug<T> = T extends `p-${infer S}` ? S : never;
 
-/** Every component with a page of its own, deprecated ones last. */
-const getComponents = (): Routes =>
-  [...COMPONENT_ROUTES_META]
-    .sort(([, a], [, b]) => Number(!!a.isDeprecated) - Number(!!b.isDeprecated))
-    .reduce<Routes>((acc, [key]) => {
-      const tagName = key as TagName;
-      const component = key.replace(/^p-/, '');
-      acc[component] = {
-        name: getComponentName(component),
-        tagName,
-        path: `/components/${component}`,
-        type: 'PAGE',
-        subPaths: componentTabs(tagName, component),
-      };
-      return acc;
-    }, {});
+/**
+ * Every component with a page of its own, deprecated ones last. Children like `p-optgroup` are documented on their
+ * parent's page. Typed with every chunked component and every tab, so `DocsRoute` knows their routes.
+ */
+const getComponentPages = () =>
+  Object.fromEntries(
+    Object.entries(componentMeta)
+      .filter(([, meta]) => meta.isChunked && !meta.requiredParent)
+      .sort(([, a], [, b]) => Number(!!a.isDeprecated) - Number(!!b.isDeprecated))
+      .map(([key]) => {
+        const tagName = key as TagName;
+        const component = key.replace(/^p-/, '');
+        const tabs = Object.fromEntries(
+          Object.entries(COMPONENT_TABS)
+            .filter(([tab]) => tab !== 'examples' || !COMPONENTS_WITHOUT_EXAMPLES.includes(tagName))
+            .map(([tab, name]) => [tab, { name }])
+        );
+        return [component, { name: getComponentName(component), tagName, tabs }];
+      })
+  ) as Record<
+    Slug<TagNameWithChunk>,
+    { name: string; tagName: TagName; tabs: Partial<Record<keyof typeof COMPONENT_TABS, Tab>> }
+  >;
 
-const sitemapRoutes = {
+export const sitemap = {
   news: {
     name: 'News',
-    path: '/news',
-    type: 'CATEGORY',
-    subPaths: {
+    pages: {
       'migration-guide': {
         name: 'Migration Guide',
-        path: '/news/migration-guide',
-        type: 'PAGE',
-        subPaths: {
-          'porsche-design-system': {
-            name: 'Porsche Design System',
-            path: '/news/migration-guide/porsche-design-system',
-            type: 'TAB',
-          },
-          tailwindcss: {
-            name: 'Tailwind CSS',
-            path: '/news/migration-guide/tailwindcss',
-            type: 'TAB',
-          },
-          scss: {
-            name: 'SCSS',
-            path: '/news/migration-guide/scss',
-            type: 'TAB',
-          },
-          emotion: {
-            name: 'Emotion',
-            path: '/news/migration-guide/emotion',
-            type: 'TAB',
-          },
-          'vanilla-extract': {
-            name: 'Vanilla Extract',
-            path: '/news/migration-guide/vanilla-extract',
-            type: 'TAB',
-          },
+        tabs: {
+          'porsche-design-system': { name: 'Porsche Design System' },
+          tailwindcss: { name: 'Tailwind CSS' },
+          scss: { name: 'SCSS' },
+          emotion: { name: 'Emotion' },
+          'vanilla-extract': { name: 'Vanilla Extract' },
         },
       },
-      changelog: {
-        name: 'Changelog',
-        path: '/news/changelog',
-        type: 'PAGE',
-      },
-      roadmap: {
-        name: 'Roadmap',
-        path: '/news/roadmap',
-        type: 'PAGE',
-      },
+      changelog: { name: 'Changelog' },
+      roadmap: { name: 'Roadmap' },
     },
   },
   designing: {
     name: 'Designing',
-    path: '/designing',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/designing/introduction',
-        type: 'PAGE',
-      },
+    pages: {
+      introduction: { name: 'Introduction' },
     },
   },
   developing: {
     name: 'Developing',
-    path: '/developing',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/developing/introduction',
-        type: 'PAGE',
-      },
+    pages: {
+      introduction: { name: 'Introduction' },
       angular: {
         name: 'Angular',
-        path: '/developing/angular',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/angular/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/angular/demo',
-            type: 'TAB',
-          },
-          form: {
-            name: 'Form',
-            path: '/developing/angular/form',
-            type: 'TAB',
-          },
-          testing: {
-            name: 'Testing',
-            path: '/developing/angular/testing',
-            type: 'TAB',
-          },
-          advanced: {
-            name: 'Advanced',
-            path: '/developing/angular/advanced',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/angular/faq',
-            type: 'TAB',
-          },
+        tabs: {
+          'getting-started': { name: 'Getting Started' },
+          demo: { name: 'Demo' },
+          form: { name: 'Form' },
+          testing: { name: 'Testing' },
+          advanced: { name: 'Advanced' },
+          faq: { name: 'FAQ' },
         },
       },
       astro: {
         name: 'Astro',
-        path: '/developing/astro',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/astro/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/astro/demo',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/astro/faq',
-            type: 'TAB',
-          },
+        tabs: {
+          'getting-started': { name: 'Getting Started' },
+          demo: { name: 'Demo' },
+          faq: { name: 'FAQ' },
         },
       },
       'next-js': {
         name: 'Next.js',
-        path: '/developing/next-js',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/next-js/getting-started',
-            type: 'TAB',
-          },
-          form: {
-            name: 'Form',
-            path: '/developing/next-js/form',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/next-js/demo',
-            type: 'TAB',
-          },
-          testing: {
-            name: 'Testing',
-            path: '/developing/next-js/testing',
-            type: 'TAB',
-          },
-          advanced: {
-            name: 'Advanced',
-            path: '/developing/next-js/advanced',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/next-js/faq',
-            type: 'TAB',
-          },
+        tabs: {
+          'getting-started': { name: 'Getting Started' },
+          form: { name: 'Form' },
+          demo: { name: 'Demo' },
+          testing: { name: 'Testing' },
+          advanced: { name: 'Advanced' },
+          faq: { name: 'FAQ' },
         },
       },
       react: {
         name: 'React',
-        path: '/developing/react',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/react/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/react/demo',
-            type: 'TAB',
-          },
-          form: {
-            name: 'Form',
-            path: '/developing/react/form',
-            type: 'TAB',
-          },
-          testing: {
-            name: 'Testing',
-            path: '/developing/react/testing',
-            type: 'TAB',
-          },
-          advanced: {
-            name: 'Advanced',
-            path: '/developing/react/advanced',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/react/faq',
-            type: 'TAB',
-          },
+        tabs: {
+          'getting-started': { name: 'Getting Started' },
+          demo: { name: 'Demo' },
+          form: { name: 'Form' },
+          testing: { name: 'Testing' },
+          advanced: { name: 'Advanced' },
+          faq: { name: 'FAQ' },
         },
       },
       'react-router': {
         name: 'React Router',
-        path: '/developing/react-router',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/react-router/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/react-router/demo',
-            type: 'TAB',
-          },
-          form: {
-            name: 'Form',
-            path: '/developing/react-router/form',
-            type: 'TAB',
-          },
-          advanced: {
-            name: 'Advanced',
-            path: '/developing/react-router/advanced',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/react-router/faq',
-            type: 'TAB',
-          },
+        tabs: {
+          'getting-started': { name: 'Getting Started' },
+          demo: { name: 'Demo' },
+          form: { name: 'Form' },
+          advanced: { name: 'Advanced' },
+          faq: { name: 'FAQ' },
         },
       },
-      remix: {
-        name: 'Remix',
-        path: '/developing/remix',
-        type: 'PAGE',
-      },
+      remix: { name: 'Remix' },
       'vanilla-js': {
         name: 'Vanilla JS',
-        path: '/developing/vanilla-js',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/vanilla-js/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/vanilla-js/demo',
-            type: 'TAB',
-          },
-          form: {
-            name: 'Form',
-            path: '/developing/vanilla-js/form',
-            type: 'TAB',
-          },
-          advanced: {
-            name: 'Advanced',
-            path: '/developing/vanilla-js/advanced',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/vanilla-js/faq',
-            type: 'TAB',
-          },
+        tabs: {
+          'getting-started': { name: 'Getting Started' },
+          demo: { name: 'Demo' },
+          form: { name: 'Form' },
+          advanced: { name: 'Advanced' },
+          faq: { name: 'FAQ' },
         },
       },
       vue: {
         name: 'Vue',
-        path: '/developing/vue',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/vue/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/vue/demo',
-            type: 'TAB',
-          },
-          form: {
-            name: 'Form',
-            path: '/developing/vue/form',
-            type: 'TAB',
-          },
-          testing: {
-            name: 'Testing',
-            path: '/developing/vue/testing',
-            type: 'TAB',
-          },
-          advanced: {
-            name: 'Advanced',
-            path: '/developing/vue/advanced',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/vue/faq',
-            type: 'TAB',
-          },
+        tabs: {
+          'getting-started': { name: 'Getting Started' },
+          demo: { name: 'Demo' },
+          form: { name: 'Form' },
+          testing: { name: 'Testing' },
+          advanced: { name: 'Advanced' },
+          faq: { name: 'FAQ' },
         },
       },
-      'components-ready': {
-        name: 'Components Ready',
-        path: '/developing/components-ready',
-        type: 'PAGE',
-      },
+      'components-ready': { name: 'Components Ready' },
     },
   },
   skills: {
     name: 'Skills',
-    path: '/skills',
-    type: 'CATEGORY',
-    subPaths: {
+    pages: {
       introduction: {
         name: 'Introduction',
-        path: '/skills/introduction',
-        type: 'PAGE',
-        subPaths: {
-          general: {
-            name: 'General',
-            path: '/skills/introduction/general',
-            type: 'TAB',
-          },
-          installation: {
-            name: 'Installation',
-            path: '/skills/introduction/installation',
-            type: 'TAB',
-          },
+        tabs: {
+          general: { name: 'General' },
+          installation: { name: 'Installation' },
         },
       },
-      knowledge: {
-        name: 'Knowledge',
-        path: '/skills/knowledge',
-        type: 'PAGE',
-      },
-      'audit-deprecations': {
-        name: 'Audit Deprecations',
-        path: '/skills/audit-deprecations',
-        type: 'PAGE',
-      },
+      knowledge: { name: 'Knowledge' },
+      'audit-deprecations': { name: 'Audit Deprecations' },
     },
   },
   components: {
     name: 'Components',
-    path: '/components',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/components/introduction',
-        type: 'PAGE',
-      },
-      ...getComponents(),
-    }, // Assuming this is dynamically fetched or implemented elsewhere.
+    pages: {
+      introduction: { name: 'Introduction' },
+      ...getComponentPages(),
+    },
   },
   stylesheets: {
     name: 'Stylesheets',
-    path: '/stylesheets',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/stylesheets/introduction',
-        type: 'PAGE',
-      },
+    pages: {
+      introduction: { name: 'Introduction' },
       'css-variables': {
         name: 'CSS Variables',
-        path: '/stylesheets/css-variables',
-        type: 'PAGE',
-        subPaths: {
-          introduction: {
-            name: 'Introduction',
-            path: '/stylesheets/css-variables/introduction',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/stylesheets/css-variables/api',
-            type: 'TAB',
-          },
+        tabs: {
+          introduction: { name: 'Introduction' },
+          api: { name: 'API' },
         },
       },
       'color-scheme': {
         name: 'Color Scheme',
-        path: '/stylesheets/color-scheme',
-        type: 'PAGE',
-        subPaths: {
-          introduction: {
-            name: 'Introduction',
-            path: '/stylesheets/color-scheme/introduction',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/stylesheets/color-scheme/api',
-            type: 'TAB',
-          },
+        tabs: {
+          introduction: { name: 'Introduction' },
+          api: { name: 'API' },
         },
       },
-      'font-face': {
-        name: 'Font Face',
-        path: '/stylesheets/font-face',
-        type: 'PAGE',
-      },
-      normalize: {
-        name: 'Normalize',
-        path: '/stylesheets/normalize',
-        type: 'PAGE',
-      },
+      'font-face': { name: 'Font Face' },
+      normalize: { name: 'Normalize' },
     },
   },
   partials: {
     name: 'Partials',
-    path: '/partials',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/partials/introduction',
-        type: 'PAGE',
-      },
-      'component-chunk-links': {
-        name: 'Component Chunk Links',
-        path: '/partials/component-chunk-links',
-        type: 'PAGE',
-      },
-      'font-links': {
-        name: 'Font Links',
-        path: '/partials/font-links',
-        type: 'PAGE',
-      },
-      'icon-links': {
-        name: 'Icon Links',
-        path: '/partials/icon-links',
-        type: 'PAGE',
-      },
-      'loader-script': {
-        name: 'Loader Script',
-        path: '/partials/loader-script',
-        type: 'PAGE',
-      },
-      'meta-tags-and-icon-links': {
-        name: 'Meta Tags And Icon Links',
-        path: '/partials/meta-tags-and-icon-links',
-        type: 'PAGE',
-      },
+    pages: {
+      introduction: { name: 'Introduction' },
+      'component-chunk-links': { name: 'Component Chunk Links' },
+      'font-links': { name: 'Font Links' },
+      'icon-links': { name: 'Icon Links' },
+      'loader-script': { name: 'Loader Script' },
+      'meta-tags-and-icon-links': { name: 'Meta Tags And Icon Links' },
     },
   },
   patterns: {
     name: 'Patterns',
-    path: '/patterns',
-    type: 'CATEGORY',
-    subPaths: {
-      header: {
-        name: 'Header',
-        path: '/patterns/header',
-        type: 'PAGE',
-      },
-      footer: {
-        name: 'Footer',
-        path: '/patterns/footer',
-        type: 'PAGE',
-      },
-      popover: {
-        name: 'Popover',
-        path: '/patterns/popover',
-        type: 'PAGE',
-      },
-      feedback: {
-        name: 'Feedback',
-        path: '/patterns/feedback',
-        type: 'PAGE',
-      },
+    pages: {
+      header: { name: 'Header' },
+      footer: { name: 'Footer' },
+      popover: { name: 'Popover' },
+      feedback: { name: 'Feedback' },
       forms: {
         name: 'Forms',
-        path: '/patterns/forms',
-        type: 'PAGE',
-        subPaths: {
-          guidelines: {
-            name: 'Guidelines',
-            path: '/patterns/forms/guidelines',
-            type: 'TAB',
-          },
-          resources: {
-            name: 'Resources',
-            path: '/patterns/forms/resources',
-            type: 'TAB',
-          },
-          legal: {
-            name: 'Legal',
-            path: '/patterns/forms/legal',
-            type: 'TAB',
-          },
+        tabs: {
+          guidelines: { name: 'Guidelines' },
+          resources: { name: 'Resources' },
+          legal: { name: 'Legal' },
         },
       },
       notifications: {
         name: 'Notifications',
-        path: '/patterns/notifications',
-        type: 'PAGE',
-        subPaths: {
-          introduction: {
-            name: 'Introduction',
-            path: '/patterns/notifications/introduction',
-            type: 'TAB',
-          },
-          'decision-tree': {
-            name: 'Decision Tree',
-            path: '/patterns/notifications/decision-tree',
-            type: 'TAB',
-          },
+        tabs: {
+          introduction: { name: 'Introduction' },
+          'decision-tree': { name: 'Decision Tree' },
         },
       },
     },
   },
   templates: {
     name: 'Templates',
-    path: '/templates',
-    type: 'CATEGORY',
-    subPaths: {
-      'landing-page': {
-        name: 'Landing Page',
-        path: '/templates/landing-page',
-        type: 'PAGE',
-      },
-      'admin-panel': {
-        name: 'Admin Panel',
-        path: '/templates/admin-panel',
-        type: 'PAGE',
-      },
+    pages: {
+      'landing-page': { name: 'Landing Page' },
+      'admin-panel': { name: 'Admin Panel' },
     },
   },
   tokens: {
     name: 'Tokens',
-    path: '/tokens',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/tokens/introduction',
-        type: 'PAGE',
-      },
-      blur: {
-        name: 'Blur',
-        path: '/tokens/blur',
-        type: 'PAGE',
-      },
-      border: {
-        name: 'Border',
-        path: '/tokens/border',
-        type: 'PAGE',
-      },
-      breakpoint: {
-        name: 'Breakpoint',
-        path: '/tokens/breakpoint',
-        type: 'PAGE',
-      },
-      color: {
-        name: 'Color',
-        path: '/tokens/color',
-        type: 'PAGE',
-      },
-      font: {
-        name: 'Font',
-        path: '/tokens/font',
-        type: 'PAGE',
-      },
-      gradient: {
-        name: 'Gradient',
-        path: '/tokens/gradient',
-        type: 'PAGE',
-      },
-      motion: {
-        name: 'Motion',
-        path: '/tokens/motion',
-        type: 'PAGE',
-      },
-      shadow: {
-        name: 'Shadow',
-        path: '/tokens/shadow',
-        type: 'PAGE',
-      },
-      spacing: {
-        name: 'Spacing',
-        path: '/tokens/spacing',
-        type: 'PAGE',
-      },
+    pages: {
+      introduction: { name: 'Introduction' },
+      blur: { name: 'Blur' },
+      border: { name: 'Border' },
+      breakpoint: { name: 'Breakpoint' },
+      color: { name: 'Color' },
+      font: { name: 'Font' },
+      gradient: { name: 'Gradient' },
+      motion: { name: 'Motion' },
+      shadow: { name: 'Shadow' },
+      spacing: { name: 'Spacing' },
     },
   },
   tailwindcss: {
     name: 'Tailwind CSS',
-    path: '/tailwindcss',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/tailwindcss/introduction',
-        type: 'PAGE',
-      },
+    pages: {
+      introduction: { name: 'Introduction' },
       blur: {
         name: 'Blur',
-        path: '/tailwindcss/blur',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/blur/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/blur/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/blur/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       border: {
         name: 'Border',
-        path: '/tailwindcss/border',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/border/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/border/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/border/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       color: {
         name: 'Color',
-        path: '/tailwindcss/color',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/color/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/color/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/color/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       focus: {
         name: 'Focus',
-        path: '/tailwindcss/focus',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/focus/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/focus/usage',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
         },
       },
       gradient: {
         name: 'Gradient',
-        path: '/tailwindcss/gradient',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/gradient/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/gradient/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/gradient/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       grid: {
         name: 'Grid',
-        path: '/tailwindcss/grid',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/grid/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/grid/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/grid/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       'media-query': {
         name: 'Media Query',
-        path: '/tailwindcss/media-query',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/media-query/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/media-query/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/media-query/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       motion: {
         name: 'Motion',
-        path: '/tailwindcss/motion',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/motion/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/motion/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/motion/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       shadow: {
         name: 'Shadow',
-        path: '/tailwindcss/shadow',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/shadow/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/shadow/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/shadow/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       skeleton: {
         name: 'Skeleton',
-        path: '/tailwindcss/skeleton',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/skeleton/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/skeleton/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/skeleton/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       spacing: {
         name: 'Spacing',
-        path: '/tailwindcss/spacing',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/spacing/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/spacing/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/spacing/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       typography: {
         name: 'Typography',
-        path: '/tailwindcss/typography',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwindcss/typography/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwindcss/typography/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwindcss/typography/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
     },
   },
   scss: {
     name: 'SCSS',
-    path: '/scss',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/scss/introduction',
-        type: 'PAGE',
-      },
+    pages: {
+      introduction: { name: 'Introduction' },
       blur: {
         name: 'Blur',
-        path: '/scss/blur',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/blur/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/blur/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/blur/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       border: {
         name: 'Border',
-        path: '/scss/border',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/border/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/border/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/border/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       color: {
         name: 'Color',
-        path: '/scss/color',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/color/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/color/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/color/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       focus: {
         name: 'Focus',
-        path: '/scss/focus',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/focus/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/focus/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/focus/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       gradient: {
         name: 'Gradient',
-        path: '/scss/gradient',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/gradient/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/gradient/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/gradient/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       grid: {
         name: 'Grid',
-        path: '/scss/grid',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/grid/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/grid/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/grid/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       'media-query': {
         name: 'Media Query',
-        path: '/scss/media-query',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/media-query/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/media-query/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/media-query/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       motion: {
         name: 'Motion',
-        path: '/scss/motion',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/motion/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/motion/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/motion/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       shadow: {
         name: 'Shadow',
-        path: '/scss/shadow',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/shadow/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/shadow/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/shadow/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       skeleton: {
         name: 'Skeleton',
-        path: '/scss/skeleton',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/skeleton/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/skeleton/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/skeleton/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       spacing: {
         name: 'Spacing',
-        path: '/scss/spacing',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/spacing/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/spacing/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/spacing/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       typography: {
         name: 'Typography',
-        path: '/scss/typography',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/scss/typography/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/scss/typography/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/scss/typography/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
     },
   },
   emotion: {
     name: 'Emotion',
-    path: '/emotion',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/emotion/introduction',
-        type: 'PAGE',
-      },
+    pages: {
+      introduction: { name: 'Introduction' },
       blur: {
         name: 'Blur',
-        path: '/emotion/blur',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/blur/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/blur/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/blur/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       border: {
         name: 'Border',
-        path: '/emotion/border',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/border/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/border/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/border/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       color: {
         name: 'Color',
-        path: '/emotion/color',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/color/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/color/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/color/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       focus: {
         name: 'Focus',
-        path: '/emotion/focus',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/focus/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/focus/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/focus/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       gradient: {
         name: 'Gradient',
-        path: '/emotion/gradient',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/gradient/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/gradient/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/gradient/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       grid: {
         name: 'Grid',
-        path: '/emotion/grid',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/grid/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/grid/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/grid/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       'media-query': {
         name: 'Media Query',
-        path: '/emotion/media-query',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/media-query/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/media-query/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/media-query/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       motion: {
         name: 'Motion',
-        path: '/emotion/motion',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/motion/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/motion/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/motion/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       shadow: {
         name: 'Shadow',
-        path: '/emotion/shadow',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/shadow/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/shadow/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/shadow/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       skeleton: {
         name: 'Skeleton',
-        path: '/emotion/skeleton',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/skeleton/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/skeleton/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/skeleton/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       spacing: {
         name: 'Spacing',
-        path: '/emotion/spacing',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/spacing/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/spacing/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/spacing/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       typography: {
         name: 'Typography',
-        path: '/emotion/typography',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/emotion/typography/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/emotion/typography/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/emotion/typography/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
     },
   },
   'vanilla-extract': {
     name: 'Vanilla Extract',
-    path: '/vanilla-extract',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/vanilla-extract/introduction',
-        type: 'PAGE',
-      },
+    pages: {
+      introduction: { name: 'Introduction' },
       blur: {
         name: 'Blur',
-        path: '/vanilla-extract/blur',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/blur/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/blur/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/blur/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       border: {
         name: 'Border',
-        path: '/vanilla-extract/border',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/border/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/border/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/border/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       color: {
         name: 'Color',
-        path: '/vanilla-extract/color',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/color/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/color/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/color/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       focus: {
         name: 'Focus',
-        path: '/vanilla-extract/focus',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/focus/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/focus/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/focus/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       gradient: {
         name: 'Gradient',
-        path: '/vanilla-extract/gradient',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/gradient/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/gradient/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/gradient/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       grid: {
         name: 'Grid',
-        path: '/vanilla-extract/grid',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/grid/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/grid/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/grid/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       'media-query': {
         name: 'Media Query',
-        path: '/vanilla-extract/media-query',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/media-query/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/media-query/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/media-query/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       motion: {
         name: 'Motion',
-        path: '/vanilla-extract/motion',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/motion/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/motion/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/motion/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       shadow: {
         name: 'Shadow',
-        path: '/vanilla-extract/shadow',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/shadow/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/shadow/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/shadow/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       skeleton: {
         name: 'Skeleton',
-        path: '/vanilla-extract/skeleton',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/skeleton/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/skeleton/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/skeleton/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       spacing: {
         name: 'Spacing',
-        path: '/vanilla-extract/spacing',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/spacing/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/spacing/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/spacing/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
       typography: {
         name: 'Typography',
-        path: '/vanilla-extract/typography',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/vanilla-extract/typography/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/vanilla-extract/typography/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/vanilla-extract/typography/api',
-            type: 'TAB',
-          },
+        tabs: {
+          examples: { name: 'Examples' },
+          usage: { name: 'Usage' },
+          api: { name: 'API' },
         },
       },
     },
   },
   'ag-grid': {
     name: 'AG Grid',
-    path: '/ag-grid',
-    type: 'CATEGORY',
-    subPaths: {
-      theme: {
-        name: 'Theme',
-        path: '/ag-grid/theme',
-        type: 'PAGE',
-      },
+    pages: {
+      theme: { name: 'Theme' },
     },
   },
   'must-know': {
     name: 'Must Know',
-    path: '/must-know',
-    type: 'CATEGORY',
-    subPaths: {
+    pages: {
       initialization: {
         name: 'Initialization',
-        path: '/must-know/initialization',
-        type: 'PAGE',
-        subPaths: {
-          introduction: {
-            name: 'Introduction',
-            path: '/must-know/initialization/introduction',
-            type: 'TAB',
-          },
-          'vanilla-js': {
-            name: 'Vanilla JS',
-            path: '/must-know/initialization/vanilla-js',
-            type: 'TAB',
-          },
-          angular: {
-            name: 'Angular',
-            path: '/must-know/initialization/angular',
-            type: 'TAB',
-          },
-          react: {
-            name: 'React',
-            path: '/must-know/initialization/react',
-            type: 'TAB',
-          },
-          vue: {
-            name: 'Vue',
-            path: '/must-know/initialization/vue',
-            type: 'TAB',
-          },
-          'next-js': {
-            name: 'Next JS',
-            path: '/must-know/initialization/next-js',
-            type: 'TAB',
-          },
-          remix: {
-            name: 'Remix',
-            path: '/must-know/initialization/remix',
-            type: 'TAB',
-          },
+        tabs: {
+          introduction: { name: 'Introduction' },
+          'vanilla-js': { name: 'Vanilla JS' },
+          angular: { name: 'Angular' },
+          react: { name: 'React' },
+          vue: { name: 'Vue' },
+          'next-js': { name: 'Next JS' },
+          remix: { name: 'Remix' },
         },
       },
-      theme: {
-        name: 'Theme',
-        path: '/must-know/theme',
-        type: 'PAGE',
-      },
-      typography: {
-        name: 'Typography',
-        path: '/must-know/typography',
-        type: 'PAGE',
-      },
+      theme: { name: 'Theme' },
+      typography: { name: 'Typography' },
       performance: {
         name: 'Performance',
-        path: '/must-know/performance',
-        type: 'PAGE',
-        subPaths: {
-          cdn: {
-            name: 'CDN',
-            path: '/must-know/performance/cdn',
-            type: 'TAB',
-          },
-          'loading-behaviour': {
-            name: 'Loading Behaviour',
-            path: '/must-know/performance/loading-behaviour',
-            type: 'TAB',
-          },
+        tabs: {
+          cdn: { name: 'CDN' },
+          'loading-behaviour': { name: 'Loading Behaviour' },
         },
       },
       accessibility: {
         name: 'Accessibility',
-        path: '/must-know/accessibility',
-        type: 'PAGE',
-        subPaths: {
-          introduction: {
-            name: 'Introduction',
-            path: '/must-know/accessibility/introduction',
-            type: 'TAB',
-          },
-          'dos-and-donts': {
-            name: "Do's and Don'ts",
-            path: '/must-know/accessibility/dos-and-donts',
-            type: 'TAB',
-          },
-          'ai-agent-setup': {
-            name: 'Setting AI Agent Context',
-            path: '/must-know/accessibility/ai-agent-setup',
-            type: 'TAB',
-          },
-          statement: {
-            name: 'Statement',
-            path: '/must-know/accessibility/statement',
-            type: 'TAB',
-          },
+        tabs: {
+          introduction: { name: 'Introduction' },
+          'dos-and-donts': { name: "Do's and Don'ts" },
+          'ai-agent-setup': { name: 'Setting AI Agent Context' },
+          statement: { name: 'Statement' },
         },
       },
       security: {
         name: 'Security',
-        path: '/must-know/security',
-        type: 'PAGE',
-        subPaths: {
-          vulnerabilities: {
-            name: 'Vulnerabilities',
-            path: '/must-know/security/vulnerabilities',
-            type: 'TAB',
-          },
-          'content-security-policy': {
-            name: 'Content Security Policy',
-            path: '/must-know/security/content-security-policy',
-            type: 'TAB',
-          },
+        tabs: {
+          vulnerabilities: { name: 'Vulnerabilities' },
+          'content-security-policy': { name: 'Content Security Policy' },
         },
       },
-      'browser-compatibility': {
-        name: 'Browser Compatibility',
-        path: '/must-know/browser-compatibility',
-        type: 'PAGE',
-      },
-      versioning: {
-        name: 'Versioning',
-        path: '/must-know/versioning',
-        type: 'PAGE',
-      },
-      'definition-of-done': {
-        name: 'Definition of Done',
-        path: '/must-know/definition-of-done',
-        type: 'PAGE',
-      },
+      'browser-compatibility': { name: 'Browser Compatibility' },
+      versioning: { name: 'Versioning' },
+      'definition-of-done': { name: 'Definition of Done' },
     },
   },
   help: {
     name: 'Help',
-    path: '/help',
-    type: 'CATEGORY',
-    subPaths: {
-      support: {
-        name: 'Support',
-        path: '/help/support',
-        type: 'PAGE',
-      },
-      faq: {
-        name: 'FAQ',
-        path: '/help/faq',
-        type: 'PAGE',
-      },
-      'feature-request': {
-        name: 'Feature Request',
-        path: '/help/feature-request',
-        type: 'PAGE',
-      },
-      'bug-report': {
-        name: 'Bug Report',
-        path: '/help/bug-report',
-        type: 'PAGE',
-      },
-      contribution: {
-        name: 'Contribution',
-        path: '/help/contribution',
-        type: 'PAGE',
-      },
+    pages: {
+      support: { name: 'Support' },
+      faq: { name: 'FAQ' },
+      'feature-request': { name: 'Feature Request' },
+      'bug-report': { name: 'Bug Report' },
+      contribution: { name: 'Contribution' },
     },
   },
-} as const satisfies Routes;
+} satisfies Record<string, Category>;
 
-export const sitemap: Routes = sitemapRoutes;
-
-/** The hand-written part of the sitemap with its literal paths, for `DocsRoute` in `src/links.ts`. */
-export type SitemapTree = typeof sitemapRoutes;
-
-const getTrail = (routes: Routes, path: string): Route[] | undefined => {
-  for (const route of Object.values(routes)) {
-    if (route.path === path) {
-      return [route];
-    }
-    const trail = route.subPaths && getTrail(route.subPaths, path);
-    if (trail) {
-      return [route, ...trail];
-    }
-  }
-  return undefined;
-};
+/** `getPath('news', 'changelog')` → `/news/changelog` */
+export const getPath = (category: string, page?: string, tab?: string): string =>
+  `/${[category, page, tab].filter(Boolean).join('/')}`;
 
 /**
- * The title of a page in the sitemap, most specific first: `Button: Usage - Components` for a tab, `Blur - Tokens` for
- * a page. The root layout appends ` - Porsche Design System`. Every page's `metadata.title` must match it, which
- * `tests/unit/specs/sitemap.spec.ts` checks.
+ * Where a category or a page leads: its first page and that page's first tab. `/news` and `/news/migration-guide` lead
+ * to `/news/migration-guide/porsche-design-system`.
  */
-export const getPageTitle = (path: string): string | undefined => {
-  const trail = getTrail(sitemap, path);
-  if (!trail) {
-    return undefined;
-  }
-  const [route, ...ancestors] = [...trail].reverse();
-  const head = route.type === 'TAB' ? `${ancestors.shift()?.name}: ${route.name}` : route.name;
-  return [head, ...ancestors.map(({ name }) => name)].join(' - ');
+export const getLandingPath = (category: string, page?: string): string => {
+  const { pages } = (sitemap as Record<string, Category>)[category];
+  const pageKey = page ?? Object.keys(pages)[0];
+  return getPath(category, pageKey, Object.keys(pages[pageKey].tabs ?? {})[0]);
 };
+
+/** Pages that are deliberately not part of the navigation but can be linked. */
+export const ROUTES_WITHOUT_SITEMAP_ENTRY = ['/', '/accessibility-statement', '/license'] as const;
+
+type Sitemap = typeof sitemap;
+
+type PageRoute<C extends keyof Sitemap, P extends keyof Sitemap[C]['pages'] & string> =
+  | `/${C}/${P}`
+  | (Sitemap[C]['pages'][P] extends { tabs: infer T } ? `/${C}/${P}/${keyof T & string}` : never);
+
+type CategoryRoute<C extends keyof Sitemap & string> =
+  | `/${C}`
+  | { [P in keyof Sitemap[C]['pages'] & string]: PageRoute<C, P> }[keyof Sitemap[C]['pages'] & string];
+
+/** A route of the Storefront, without a trailing slash: `/components/button/usage`. */
+export type DocsRoute =
+  | { [C in keyof Sitemap & string]: CategoryRoute<C> }[keyof Sitemap & string]
+  | (typeof ROUTES_WITHOUT_SITEMAP_ENTRY)[number];

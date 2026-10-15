@@ -12,13 +12,12 @@ import React, { useEffect, useState } from 'react';
 import { DocsLink } from '@/components/common/DocsLink';
 import { VersionSelect } from '@/components/common/VersionSelect';
 import type { DocsHref } from '@/links';
-import { getLandingRoute } from '@/links';
 import type { PDSVersionGroup } from '@/models/pdsVersion';
-import { type Routes, sitemap } from '@/sitemap';
+import { getLandingPath, getPath, type Page, sitemap } from '@/sitemap';
 import { getFlags } from '@/utils/getFlags';
 import { getPathnameRoutes } from '@/utils/pathname';
 
-const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
+const initialAccordionState = Object.keys(sitemap).reduce<Record<string, boolean>>((acc, section) => {
   acc[section] = false;
   return acc;
 }, {});
@@ -43,7 +42,7 @@ type NavigationProps = {
 
 export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
   const pathname = usePathname();
-  const [openSections, setOpenSections] = useState<{ [key: keyof typeof sitemap]: boolean }>(initialAccordionState);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>(initialAccordionState);
 
   const handleAccordionUpdate = (section: string) => (e: CustomEvent<AccordionUpdateEventDetail>) => {
     setOpenSections((prevState) => ({
@@ -88,28 +87,24 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                 <PHeading slot="summary" tag="h4" size="small" weight="semibold">
                   {category.name}
                 </PHeading>
-                {category.subPaths &&
-                  Object.entries(category.subPaths).map(([_, page]) => {
-                    // If page has subPaths (tabs) link to first tab
-                    const link = getLandingRoute(page).path;
-                    return (
-                      <PLinkPure
-                        key={link}
-                        icon="none"
-                        active={pathname?.includes(`${page.path}/`)}
-                        onClick={() => onNavigate()}
-                        className={'w-full ps-static-sm'}
-                      >
-                        <DocsLink
-                          href={link as DocsHref}
-                          aria-current={pathname?.includes(`${page.path}/`) ? 'page' : undefined}
-                        >
-                          {page.name}
-                          {page.tagName && <> {getFlags(componentMeta[page.tagName])}</>}
-                        </DocsLink>
-                      </PLinkPure>
-                    );
-                  })}
+                {Object.entries(category.pages).map(([pageKey, page]: [string, Page]) => {
+                  const link = getLandingPath(path, pageKey);
+                  const isCurrent = pathname?.includes(`${getPath(path, pageKey)}/`);
+                  return (
+                    <PLinkPure
+                      key={link}
+                      icon="none"
+                      active={isCurrent}
+                      onClick={() => onNavigate()}
+                      className={'w-full ps-static-sm'}
+                    >
+                      <DocsLink href={link as DocsHref} aria-current={isCurrent ? 'page' : undefined}>
+                        {page.name}
+                        {page.tagName && <> {getFlags(componentMeta[page.tagName])}</>}
+                      </DocsLink>
+                    </PLinkPure>
+                  );
+                })}
               </PAccordion>
             </React.Fragment>
           );

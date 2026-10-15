@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { getHeadingAnchorId, getLandingRoute } from '@/links';
-import { getRoutes, isDocsRoute, parseHref } from '../helpers/links';
+import { getHeadingAnchorId } from '@/links';
+import { getLandingPath } from '@/sitemap';
+import { isDocsRoute, parseHref } from '../helpers/links';
 import {
   type DocsPage,
   getDocsPages,
@@ -131,12 +132,11 @@ describe('pages', () => {
   });
 
   it('redirect where the navigation leads, the first entry of their route in the sitemap', () => {
-    const routes = new Map(getRoutes().map((route) => [route.path, route]));
     const broken = pages
       .filter((page) => page.redirect !== undefined)
       .filter((page) => {
-        const route = routes.get(page.route);
-        return !route || page.redirect !== getLandingRoute(route).path;
+        const [category, pageKey] = page.route.slice(1).split('/');
+        return page.redirect !== getLandingPath(category, pageKey);
       })
       .map((page) => `${page.file} → ${page.redirect}`);
 
