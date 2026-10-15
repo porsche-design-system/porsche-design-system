@@ -34,6 +34,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
 - `Button`, `Drilldown`, `Link`, `Multi Select`, `Segmented Control`, `Select`, `Tabs`, `Tabs Bar`: colors could lose contrast in high contrast mode, including hover, highlighted and selected states.
   ([#4775](https://github.com/porsche-design-system/porsche-design-system/pull/4775))
+- `Multi Select Option`: slotted content only took up the width of its own content, so it could not fill the option,
+  e.g. with `w-full`, and right-aligned elements were not aligned to the right edge
+  ([#4787](https://github.com/porsche-design-system/porsche-design-system/pull/4787))
 
 ## [4.8.0] - 2026-10-02
 
