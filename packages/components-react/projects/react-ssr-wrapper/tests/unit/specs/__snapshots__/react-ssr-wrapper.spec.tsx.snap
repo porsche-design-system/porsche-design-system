@@ -794,6 +794,8 @@ img {
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -896,6 +898,8 @@ slot {
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -998,6 +1002,8 @@ slot {
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -1100,6 +1106,8 @@ slot {
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -1202,6 +1210,8 @@ slot {
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -1304,6 +1314,8 @@ slot {
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -10974,6 +10986,8 @@ exports[`should render dsr component for PMultiSelectOption 1`] = `
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {

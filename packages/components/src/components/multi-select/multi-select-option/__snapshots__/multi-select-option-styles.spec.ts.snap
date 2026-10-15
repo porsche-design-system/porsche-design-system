@@ -12,6 +12,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: false and
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -94,6 +96,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: false and
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -187,6 +191,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
@@ -281,6 +287,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {

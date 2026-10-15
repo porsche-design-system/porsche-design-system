@@ -6,6 +6,12 @@
 
 <p-multi-select name="options" label="Selected Slot">
   <span slot="selected" style="height: 100%; display: flex; align-items: center">Some custom selection</span>
+  <p-multi-select-option value="d">
+    <div style="display: flex; align-items: center; gap: 8px; width: 100%">
+      <p-text>Some option D with full width</p-text>
+      <p-tag compact="true" style="margin-inline-start: auto">Right aligned</p-tag>
+    </div>
+  </p-multi-select-option>
   <p-multi-select-option value="a">
     <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" style="height: 25px; width: auto" />
     <div style="display: flex; flex-direction: column;">
