@@ -3,19 +3,30 @@ import { minifyCss } from './minifyCss';
 type GetComponentCss = (...args: any[]) => string;
 
 /**
- * Upper bound of cached stylesheets per style function. It holds every built-in icon (307) in one color and size,
+ * Upper bound of cached stylesheets per style function. It holds every built-in icon (307) in one color, size and CDN,
  * while a free-form argument like the `source` URL of `p-icon` cannot grow the cache beyond it.
- * The largest minified stylesheet (`p-canvas`) has 9 kB, so a style function never holds more than 5 MB, and only
- * those with free-form arguments (icon names and URLs, page numbers) can get close to the bound.
  */
 export const MAX_ENTRIES_PER_STYLE_FUNCTION = 500;
 
-// Map iteration follows insertion order, so re-inserting a key on every access keeps the least recently used one first.
-const cachesByStyleFunction = new Map<GetComponentCss, Map<string, string>>();
+/**
+ * Entries whose key and stylesheet together are longer are not cached, so a style function holds at most 10 million
+ * characters. The largest stylesheet without free-form arguments (`p-canvas`) has 9,000 characters; longer ones come
+ * from free-form strings such as an icon `source` with a data URL, which ends up in the key and twice in the stylesheet.
+ */
+export const MAX_ENTRY_LENGTH = 20_000;
 
-// `JSON.stringify()` omits `undefined` properties and turns `undefined` array items into `null`, but a default
-// parameter applies to `undefined` and not to `null`, and the keys of a breakpoint object are iterated.
-const keepUndefined = (_key: string, value: unknown): unknown => (value === undefined ? '\0undefined' : value);
+// The inner maps are LRU caches: iteration follows insertion order, and every access re-inserts its key.
+const cachesByStyleFunction = new WeakMap<GetComponentCss, Map<string, string>>();
+
+// `JSON.stringify()` drops `undefined` and turns `NaN` and `±Infinity` into `null`, although style functions treat
+// them differently, e.g. default parameters apply to `undefined` only. Prefixing every string keeps the strings these
+// values become distinct from the strings passed as arguments.
+const toKeyValue = (_key: string, value: unknown): unknown =>
+  typeof value === 'string'
+    ? `s${value}`
+    : value === undefined || (typeof value === 'number' && !Number.isFinite(value))
+      ? String(value)
+      : value;
 
 /**
  * Returns the minified result of `getComponentCss(...args)`, computed once per combination of arguments.
@@ -34,16 +45,19 @@ export const getCachedMinifiedCss = <T extends GetComponentCss>(getComponentCss:
   }
 
   const cdnBaseUrl = (globalThis as { PORSCHE_DESIGN_SYSTEM_CDN_URL?: string }).PORSCHE_DESIGN_SYSTEM_CDN_URL;
-  const key = JSON.stringify([cdnBaseUrl, ...args], keepUndefined);
+  const key = JSON.stringify([cdnBaseUrl, ...args], toKeyValue);
 
   let css = cache.get(key);
-  if (css === undefined) {
+  if (css !== undefined) {
+    cache.delete(key); // re-inserted below to become the most recently used entry
+  } else {
     css = minifyCss(getComponentCss(...args));
+    if (key.length + css.length > MAX_ENTRY_LENGTH) {
+      return css;
+    }
     if (cache.size >= MAX_ENTRIES_PER_STYLE_FUNCTION) {
       cache.delete(cache.keys().next().value);
     }
-  } else {
-    cache.delete(key); // re-inserted below to become the most recently used entry
   }
   cache.set(key, css);
 

@@ -26,8 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   default light theme, which made icons practically invisible. The PDS light theme looks unchanged, and `.scheme-*`
   classes behave as before. To allow automatic darkening again, set `.scheme-light` on the `<html>` element.
   ([#4783](https://github.com/porsche-design-system/porsche-design-system/pull/4783))
-- **React SSR**: components from `@porsche-design-system/components-react/ssr` generate their styles once per
-  combination of props instead of on every server render, which reduces the server's CPU time per render. The rendered
+- **React SSR**: components from `@porsche-design-system/components-react/ssr` cache their styles per combination of
+  props instead of generating them on every server render, which reduces the server's CPU time per render. The rendered
   markup is unchanged. ([#7](https://github.com/kroofy/porsche-design-system/pull/7))
 
 ### Fixed

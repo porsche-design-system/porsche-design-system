@@ -1,5 +1,9 @@
 import { vi } from 'vitest';
-import { getCachedMinifiedCss, MAX_ENTRIES_PER_STYLE_FUNCTION } from '../../../src/getCachedMinifiedCss';
+import {
+  getCachedMinifiedCss,
+  MAX_ENTRIES_PER_STYLE_FUNCTION,
+  MAX_ENTRY_LENGTH,
+} from '../../../src/getCachedMinifiedCss';
 
 declare global {
   var PORSCHE_DESIGN_SYSTEM_CDN_URL: string | undefined;
@@ -33,11 +37,9 @@ describe('getCachedMinifiedCss()', () => {
 
   it.each<{ description: string; args1: unknown[]; args2: unknown[] }>([
     { description: 'undefined and null', args1: [undefined], args2: [null] },
-    {
-      description: 'undefined and null between arguments',
-      args1: ['sm', undefined, 'primary'],
-      args2: ['sm', null, 'primary'],
-    },
+    { description: 'NaN and null', args1: [NaN], args2: [null] },
+    { description: 'Infinity and -Infinity', args1: [Infinity], args2: [-Infinity] },
+    { description: 'undefined and the string "undefined"', args1: [undefined], args2: ['undefined'] },
     {
       description: 'a breakpoint with undefined and a missing one',
       args1: [{ base: true, m: undefined }],
@@ -72,6 +74,13 @@ describe('getCachedMinifiedCss()', () => {
     expect(cssCn).not.toBe(cssCom);
     globalThis.PORSCHE_DESIGN_SYSTEM_CDN_URL = 'https://cdn.ui.porsche.com';
     expect(getCachedMinifiedCss(getCss, 'car')).toBe(cssCom);
+  });
+
+  it(`should not cache entries longer than ${MAX_ENTRY_LENGTH} characters`, () => {
+    const getCss = createGetCss();
+    const source = `data:image/svg+xml,${'x'.repeat(MAX_ENTRY_LENGTH)}`;
+
+    expect(getCachedMinifiedCss(getCss, source)).not.toBe(getCachedMinifiedCss(getCss, source));
   });
 
   it(`should keep at most ${MAX_ENTRIES_PER_STYLE_FUNCTION} entries per style function and evict the least recently used one`, () => {
