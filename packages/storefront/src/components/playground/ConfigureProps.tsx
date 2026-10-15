@@ -12,10 +12,10 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import { FLAGS_ISO_3166, type FlagName } from '@porsche-design-system/flags';
 import type { TagName } from '@porsche-design-system/shared';
+import type { ConfiguratorTagNames, ElementConfig, HTMLTagOrComponent } from '@porsche-design-system/story-generator';
 import { capitalCase } from 'change-case';
 import type React from 'react';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
-import type { ConfiguratorTagNames, ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 import { getFlags } from '@/utils/getFlags';
 
 type ConfigurePropsProps<T extends ConfiguratorTagNames> = {

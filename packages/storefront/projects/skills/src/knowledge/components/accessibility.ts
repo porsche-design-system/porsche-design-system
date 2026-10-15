@@ -1,7 +1,10 @@
 import type { Framework } from '@porsche-design-system/shared';
+import {
+  type AccessibilityExample,
+  type ExamplePayload,
+  resolveExamplePayload,
+} from '@porsche-design-system/story-generator';
 import type { Root } from 'mdast';
-import type { AccessibilityExample, ExamplePayload } from '../../../../../src/models/accessibilityMeta';
-import { resolveExamplePayload } from '../../../../../src/utils/generator/resolveExamplePayload';
 
 /**
  * Uses the storefront's example pipeline so accessibility snippets stay identical in skill output.

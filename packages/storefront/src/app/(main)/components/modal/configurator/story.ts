@@ -1,6 +1,6 @@
 'use client';
 
-import type { SlotStories, Story } from '@/models/story';
+import type { SlotStories, Story } from '@porsche-design-system/story-generator';
 
 export const modalSlotStories: SlotStories<'p-modal'> = {
   header: {

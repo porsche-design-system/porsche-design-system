@@ -1,7 +1,6 @@
 'use client';
 
-import type { SlotStories, Story } from '@/models/story';
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+import type { ElementConfig, HTMLTagOrComponent, SlotStories, Story } from '@porsche-design-system/story-generator';
 
 export const radioGroupSlotStories: SlotStories<'p-radio-group'> = {
   'label-after': {

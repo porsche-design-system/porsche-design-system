@@ -1,6 +1,6 @@
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
+import { wrapCode } from '@porsche-design-system/story-generator';
 import type { StorefrontColorScheme } from '@/models/colorScheme';
-import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { splitVanillaJsCode } from '@/utils/splitVanillaJsCode';
 
 export const createStackblitzMarkupFromSample = (
@@ -13,9 +13,10 @@ export const createStackblitzMarkupFromSample = (
   // Since vanilla-js code samples only consist of the markup and a script tag without the wrapping html page, we need to split it up and build everything together
   if (storefrontFramework === 'vanilla-js') {
     const { markup, script, scriptAttributes } = splitVanillaJsCode(stackblitzMarkup);
-    stackblitzMarkup = getVanillaJsCode(
-      { markup: markup, eventHandlers: script },
-      { isFullConfig: true, theme: storefrontTheme, scriptAttributes }
+    stackblitzMarkup = wrapCode(
+      'vanilla-js',
+      { markup, script, scriptAttributes },
+      { colorScheme: storefrontTheme, output: 'project' }
     );
   }
 

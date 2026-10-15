@@ -9,13 +9,10 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import { FRAMEWORKS, type Framework, frameworkNameMap } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import { wrapCode } from '@porsche-design-system/story-generator';
 import React, { useState } from 'react';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import type { StorefrontColorScheme } from '@/models/colorScheme';
-import { getAngularCode } from '@/utils/generator/generateAngularMarkup';
-import { getReactCode } from '@/utils/generator/generateReactMarkup';
-import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
-import { getVueCode } from '@/utils/generator/generateVueMarkup';
 
 export const OpenBugTemplateInStackBlitz = () => {
   const [selectedFramework, setSelectedFramework] = useState<Framework>('vanilla-js');
@@ -30,22 +27,12 @@ export const OpenBugTemplateInStackBlitz = () => {
   };
 
   const onOpenInStackblitz = () => {
-    const markup = '<p-text>Place your reproduction code here</p-text>';
-    const frameworkMarkup: Record<Framework, string> = {
-      'vanilla-js': getVanillaJsCode(
-        {
-          markup: `<p-text theme="${selectedTheme}">Place your reproduction code here</p-text>`,
-        },
-        {
-          isFullConfig: true,
-          theme: selectedTheme,
-        }
-      ),
-      react: getReactCode({ markup }),
-      angular: getAngularCode({ markup }),
-      vue: getVueCode({ markup }),
-    };
-    openInStackblitz(selectedFramework, frameworkMarkup[selectedFramework], selectedTheme);
+    const markup =
+      selectedFramework === 'vanilla-js'
+        ? `<p-text theme="${selectedTheme}">Place your reproduction code here</p-text>`
+        : '<p-text>Place your reproduction code here</p-text>';
+    const code = wrapCode(selectedFramework, { markup }, { colorScheme: selectedTheme, output: 'project' });
+    openInStackblitz(selectedFramework, code, selectedTheme);
   };
 
   return (

@@ -10,16 +10,6 @@ import {
 } from '@porsche-design-system/shared';
 import { getSkillName, type SkillId } from '@porsche-design-system/skills/registry';
 
-export type FrameworkConfiguratorMarkup = {
-  [key in Framework]: {
-    imports?: string;
-    states?: string | undefined; // Can be useState, ref or const
-    eventHandlers?: string | undefined; // Can be functions or eventListeners
-    markup: string | undefined; // The actual markup
-    style?: string | undefined; // The style tag (needs to be separate for vue)
-  };
-};
-
 /** Next.js is offered as a tab variant of React where a page has Next.js specific content. */
 export const FRAMEWORKS_WITH_NEXT = [...FRAMEWORKS, 'next'] as const;
 export type FrameworkWithNext = (typeof FRAMEWORKS_WITH_NEXT)[number];

@@ -1,7 +1,7 @@
 import { FRAMEWORKS } from '@porsche-design-system/shared';
+import type { AccessibilityExample, ExampleMarkupSample } from '@porsche-design-system/story-generator';
 import { renderA11yIntegrationExamples, resolvePayload } from '@skills/knowledge/components/accessibility';
 import { describe, expect, it } from 'vitest';
-import type { AccessibilityExample, ExampleMarkupSample } from '@/models/accessibilityMeta';
 
 const hiddenLabel: AccessibilityExample = {
   name: 'Hidden label without accessible name',

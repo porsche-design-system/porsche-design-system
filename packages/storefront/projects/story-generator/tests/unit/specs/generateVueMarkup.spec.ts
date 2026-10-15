@@ -1,9 +1,5 @@
 import type { CSSProperties } from 'react';
-import {
-  generateVueControlledScript,
-  generateVueMarkup,
-  generateVueProperties,
-} from '../../../src/utils/generator/generateVueMarkup';
+import { generateVueControlledScript, generateVueMarkup, generateVueProperties } from '../../../src/generateVueMarkup';
 import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateVueMarkup()', () => {

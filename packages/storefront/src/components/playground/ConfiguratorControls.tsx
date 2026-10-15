@@ -2,22 +2,24 @@
 
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-react/ssr';
-import type React from 'react';
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { ConfigureBehavior, type ConfiguratorMode } from '@/components/playground/ConfigureBehavior';
-import { ConfigureColorScheme } from '@/components/playground/ConfigureColorScheme';
-import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
-import { ConfigureProps } from '@/components/playground/ConfigureProps';
-import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
-import { isDefaultValue } from '@/components/playground/configuratorUtils';
-import type { SlotStories, Story, StoryState } from '@/models/story';
 import type {
   ConfiguratorTagNames,
   ElementConfig,
   HTMLTagOrComponent,
   PropTypeMapping,
-} from '@/utils/generator/generator';
+  SlotStories,
+  Story,
+  StoryState,
+} from '@porsche-design-system/story-generator';
+import type React from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { type ConfiguratorMode, ConfigureBehavior } from '@/components/playground/ConfigureBehavior';
+import { ConfigureColorScheme } from '@/components/playground/ConfigureColorScheme';
+import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
+import { ConfigureProps } from '@/components/playground/ConfigureProps';
+import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
+import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { isAllowedValue } from '@/utils/isAllowedValue';
 
 type ConfiguratorControlsProps<T extends ConfiguratorTagNames> = {
