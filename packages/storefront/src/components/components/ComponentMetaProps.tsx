@@ -12,6 +12,7 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import { kebabCase } from 'change-case';
 import type React from 'react';
+import { getHeadingAnchorId } from '@/links';
 import { formatDescription, formatPropDefaultValue, formatPropType } from '@/utils/formatting';
 import { getFlags } from '@/utils/getFlags';
 
@@ -37,7 +38,12 @@ export const ComponentMetaProps = ({ propsMeta }: ComponentMetaPropsProps) => {
 
   return (
     <>
-      <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)" id="properties">
+      <PHeading
+        tag="h2"
+        size="x-large"
+        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)"
+        id={getHeadingAnchorId('Properties')}
+      >
         Properties
       </PHeading>
       {hasBreakpointCustomizable && <code>{breakpointCustomizableType}</code>}

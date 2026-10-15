@@ -1,14 +1,23 @@
 import path from 'node:path';
 import type { Framework } from './skillTree';
+import { localPorscheDesignSystemVersion } from './version';
 
 /**
- * Rewrites storefront-absolute links to local skill references, falling back to the live docs when
- * no local equivalent exists.
+ * Rewrites storefront-absolute links to local skill references, falling back to the live docs of the skill's exact
+ * version when no local equivalent exists.
  */
 
-const STOREFRONT_ORIGIN = 'https://designsystem.porsche.com';
+/** Every release keeps its own Storefront; the unversioned paths of the domain don't exist. */
+const STOREFRONT_URL = `https://designsystem.porsche.com/v${localPorscheDesignSystemVersion}`;
 
 export type RouteReferences = Readonly<Record<string, string>>;
+
+/**
+ * `/patterns/forms#legal` → `https://designsystem.porsche.com/v4.8.0/patterns/forms/#legal`. MDX writes routes without
+ * a trailing slash; the deployed Storefront serves every page at its path with one and redirects to it otherwise.
+ */
+const storefrontUrl = (href: string): string =>
+  `${STOREFRONT_URL}${href.replace(/^([^?#]*?)\/?(?=[?#]|$)/, (_match, path: string) => `${path}/`)}`;
 
 const relativeLink = (fromDir: string, target: string): string => {
   const relative = path.posix.relative(fromDir, target);
@@ -66,7 +75,7 @@ export const rewriteDocLinks = (
       }
       return line.replace(LINK_PATTERN, (_whole, href: string) => {
         const target = localTarget(href, routeReferences);
-        return `](${target ? relativeLink(fromDir, target) : `${STOREFRONT_ORIGIN}${href}`})`;
+        return `](${target ? relativeLink(fromDir, target) : storefrontUrl(href)})`;
       });
     })
     .join('\n');

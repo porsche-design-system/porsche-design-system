@@ -2,7 +2,7 @@ import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
-  title: 'Initialization: Remix - Porsche Design System',
+  title: 'Initialization: Remix - Must Know',
   description: 'Learn how to initialize and set up the Porsche Design System in your Remix app.',
 };
 
@@ -12,7 +12,7 @@ export const metadata = {
 
 ## Setup
 
-The most basic [integration](/developing/remix/getting-started#integration) of
+The most basic [integration](/developing/react-router/getting-started#integration) of
 `@porsche-design-system/components-react/ssr` looks like this.
 
 ```tsx
@@ -76,7 +76,7 @@ By default, the network traffic looks something like this.
 
 ### Preloading font files
 
-By applying the [getFontLinks()](/partials/font-links/) partial we can preload the font assets. As a default, both
+By applying the [getFontLinks()](/partials/font-links) partial we can preload the font assets. As a default, both
 `regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
 ![Loading Behavior Remix 03](assets/loading-behavior-remix-04.jpg)
@@ -87,7 +87,7 @@ which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
 
 ### Preloading component chunks
 
-The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links/)
+The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links)
 partial. Without any configuration it simply preloads the **core chunk**.
 
 ![Loading Behavior Remix 04](assets/loading-behavior-remix-05.jpg)
@@ -114,7 +114,7 @@ fonts) that are located **above the fold** which means visible on page load with
 
 ### Early initialization
 
-This is where it may be interesting to apply the [getLoaderScript()](/partials/loader-script/) partial.
+This is where it may be interesting to apply the [getLoaderScript()](/partials/loader-script) partial.
 
 ![Loading Behavior Remix 05](assets/loading-behavior-remix-07.jpg)
 
