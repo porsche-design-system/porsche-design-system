@@ -9,15 +9,6 @@ exports[`component examples generator > emits files and a reference table for p-
 | Multiple open panels | Multiple open panels | [./examples/MultipleOpen.ts](./examples/MultipleOpen.ts) |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (js) > table 1`] = `
-"## Examples
-
-| Example | When to use | File |
-| --- | --- | --- |
-| Default | Minimal default configuration. | [./examples/Default.html](./examples/Default.html) |
-| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.html](./examples/MultipleOpen.html) |"
-`;
-
 exports[`component examples generator > emits files and a reference table for p-accordion (react) > table 1`] = `
 "## Examples
 
@@ -25,6 +16,15 @@ exports[`component examples generator > emits files and a reference table for p-
 | --- | --- | --- |
 | Default | Minimal default configuration. | [./examples/Default.tsx](./examples/Default.tsx) |
 | Multiple open panels | Multiple open panels | [./examples/MultipleOpen.tsx](./examples/MultipleOpen.tsx) |"
+`;
+
+exports[`component examples generator > emits files and a reference table for p-accordion (vanilla-js) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.html](./examples/Default.html) |
+| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.html](./examples/MultipleOpen.html) |"
 `;
 
 exports[`component examples generator > emits files and a reference table for p-accordion (vue) > table 1`] = `
@@ -47,17 +47,6 @@ exports[`component examples generator > emits files and a reference table for p-
 | Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (js) > table 1`] = `
-"## Examples
-
-| Example | When to use | File |
-| --- | --- | --- |
-| Default | Minimal default configuration. | [./examples/Default.html](./examples/Default.html) |
-| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.html](./examples/Loading.html) |
-| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.html](./examples/SubmitForm.html) |
-| Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
-`;
-
 exports[`component examples generator > emits files and a reference table for p-button (react) > table 1`] = `
 "## Examples
 
@@ -66,6 +55,17 @@ exports[`component examples generator > emits files and a reference table for p-
 | Default | Minimal default configuration. | [./examples/Default.tsx](./examples/Default.tsx) |
 | Loading | Use a loading state while an async action is in progress. | [./examples/Loading.tsx](./examples/Loading.tsx) |
 | Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.tsx](./examples/SubmitForm.tsx) |
+| Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
+`;
+
+exports[`component examples generator > emits files and a reference table for p-button (vanilla-js) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.html](./examples/Default.html) |
+| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.html](./examples/Loading.html) |
+| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.html](./examples/SubmitForm.html) |
 | Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
 `;
 

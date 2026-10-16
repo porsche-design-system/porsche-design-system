@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const decorativeIconWithRedundantLabelA11yExample = {
   name: 'Decorative icon with redundant label',

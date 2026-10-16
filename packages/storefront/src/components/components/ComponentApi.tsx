@@ -20,7 +20,7 @@ export const ComponentApi = ({
       {showTableOfContents && (
         <TableOfContents
           headings={[
-            ...(propsMeta ? ['Props'] : []),
+            ...(propsMeta ? ['Properties'] : []),
             ...(eventsMeta ? ['Events'] : []),
             ...(slotsMeta ? ['Slots'] : []),
             ...(cssVariablesMeta ? ['CSS Variables'] : []),

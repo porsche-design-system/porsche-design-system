@@ -1,16 +1,13 @@
 'use client';
 
-import type { Framework } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
-import React, { type ReactNode, useEffect, useMemo, useState } from 'react';
+import { getStoryMarkup, type HTMLTagOrComponent, type Story } from '@porsche-design-system/story-generator';
+import { StoryPreview } from '@porsche-design-system/story-generator/react';
+import React, { useMemo, useState } from 'react';
 import { Playground } from '@/components/playground/Playground';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackblitzMarkupFromStory';
 import type { BackgroundColor } from '@/models/backgroundColor';
-import type { Story } from '@/models/story';
-import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
-import { createElements, type HTMLTagOrComponent } from '@/utils/generator/generator';
 
 type ComponentExampleProps = {
   story: Story<HTMLTagOrComponent>;
@@ -23,25 +20,20 @@ export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }:
   const { framework } = useStorefrontFramework();
   // State needs to be updated for controlled components
   const [exampleState, setExampleState] = useState(story.state ?? {});
-  const [exampleElement, setExampleElement] = useState<ReactNode>(
-    createElements(story.generator(story.state), setExampleState)
+
+  // The code shows the story's initial state, so it doesn't follow the preview's state
+  const exampleMarkup = useMemo(
+    () => getStoryMarkup(story, { colorScheme: storefrontColorScheme }),
+    [story, storefrontColorScheme]
   );
 
-  // Markup won't change so it can be generated once
-  const exampleMarkup = useMemo(() => {
-    const state = story.state ?? {};
-    const generatedStory = story.generator(state);
-    return createFrameworkMarkup(generatedStory, state, storefrontColorScheme);
-  }, [story, storefrontColorScheme]);
-
-  useEffect(() => {
-    const generatedStory = story.generator(exampleState);
-    setExampleElement(createElements(generatedStory, setExampleState));
-  }, [exampleState]);
-
   const onOpenInStackblitz = () => {
-    const markup = createStackblitzMarkupFromStory(story, exampleState, framework, storefrontColorScheme);
-    openInStackblitz(framework, markup, storefrontColorScheme);
+    const markup = getStoryMarkup(story, {
+      state: exampleState,
+      colorScheme: storefrontColorScheme,
+      output: 'project',
+    });
+    openInStackblitz(framework, markup[framework], storefrontColorScheme);
   };
 
   return (
@@ -52,7 +44,7 @@ export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }:
       showCodeBlock={showCodeBlock}
       previewMaxWidth={story.previewMaxWidth}
     >
-      {exampleElement}
+      <StoryPreview story={story} state={exampleState} onStateChange={setExampleState} />
     </Playground>
   );
 };

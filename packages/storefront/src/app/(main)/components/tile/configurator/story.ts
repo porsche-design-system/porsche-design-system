@@ -1,6 +1,6 @@
 'use client';
 
-import type { SlotStories, Story, StoryState } from '@/models/story';
+import type { SlotStories, Story, StoryState } from '@porsche-design-system/story-generator';
 
 const anchorHref = 'https://porsche.com';
 const anchorLabel = 'Some label';

@@ -1,7 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
-  title: 'Vanilla JS: Advanced - Porsche Design System',
+  title: 'Vanilla JS: Advanced - Developing',
   description: 'Explore advanced Porsche Design System techniques in Vanilla JS.',
 };
 
@@ -17,9 +17,10 @@ included in our mandatory [Global Styles](/stylesheets/introduction). These styl
 selecting the active theme and a polyfill to ensure compatibility with browsers that do not yet support `light-dark()`
 (see [browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
 
-By default, color tokens use the light theme. To enable the dark theme or automatic theme switching based on system
-settings, add the `.scheme-light`, `.scheme-dark` or `.scheme-light-dark` CSS class to the `<html>` element or any HTML
-element. This applies the selected theme to all child elements.
+By default, color tokens use the light theme with `color-scheme: only light`, which prevents browsers with an automatic
+dark mode from recoloring your application. To enable automatic theme switching based on system settings, add the
+`.scheme-light-dark` CSS class to the `<html>` element or any HTML element. This applies the selected theme to all child
+elements. For pages or sections that support one theme only, use `.scheme-only-light` or `.scheme-only-dark`.
 
 Learn more in the [Theme](/must-know/theme) section.
 

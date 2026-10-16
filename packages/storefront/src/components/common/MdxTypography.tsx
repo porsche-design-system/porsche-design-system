@@ -1,7 +1,7 @@
 import { PHeading, PLinkPure, PText } from '@porsche-design-system/components-react/ssr';
-import Link from 'next/link';
 import type { PropsWithChildren } from 'react';
-import { getChangelogAnchorId } from '@/utils/extractChangelogVersion';
+import { DocsLink } from '@/components/common/DocsLink';
+import { getHeadingAnchorId } from '@/links';
 
 /**
  * The typography MDX maps its markdown headings and paragraphs to, kept out of `mdx-components.tsx`
@@ -16,7 +16,7 @@ export const H1 = ({ children }: PropsWithChildren) => (
 );
 
 export const H2 = ({ children }: PropsWithChildren) => {
-  const id = getChangelogAnchorId(children as string);
+  const id = getHeadingAnchorId(children as string);
 
   return (
     <PHeading
@@ -33,7 +33,7 @@ export const H2 = ({ children }: PropsWithChildren) => {
         icon="none"
         size="inherit"
       >
-        <Link href={`#${id}`}>#</Link>
+        <DocsLink href={`#${id}`}>#</DocsLink>
       </PLinkPure>
     </PHeading>
   );

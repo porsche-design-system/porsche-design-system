@@ -31,7 +31,7 @@ const prepareChangelog = (): void => {
 
   const content = `import { TableOfContents } from "@/components/common/TableOfContents";
 export const metadata = {
-  title: 'Changelog - Porsche Design System',
+  title: 'Changelog - News',
   description: 'Stay up to date with the latest changes to the Porsche Design System.',
 }\n\n${replacedContent}`;
 

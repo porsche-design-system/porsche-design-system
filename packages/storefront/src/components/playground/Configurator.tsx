@@ -1,17 +1,21 @@
 'use client';
 
-import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
-import React, { type ReactNode, useEffect, useState } from 'react';
+import {
+  type ConfiguratorTagNames,
+  getStoryMarkup,
+  type HTMLTagOrComponent,
+  type SlotStories,
+  type Story,
+  type StoryState,
+} from '@porsche-design-system/story-generator';
+import { StoryPreview } from '@porsche-design-system/story-generator/react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ConfiguratorControls } from '@/components/playground/ConfiguratorControls';
 import type { ConfiguratorMode } from '@/components/playground/ConfigureBehavior';
 import { Playground } from '@/components/playground/Playground';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackblitzMarkupFromStory';
-import type { SlotStories, Story, StoryState } from '@/models/story';
-import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
-import { type ConfiguratorTagNames, createElements, type HTMLTagOrComponent } from '@/utils/generator/generator';
 
 type ConfiguratorTestProps<T extends HTMLTagOrComponent> = {
   tagName: T;
@@ -41,11 +45,9 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   const activeSlotStories = mode === 'controlled' && controlledStory ? controlledSlotStories : slotStories;
 
   const [exampleState, setExampleState] = useState<StoryState<HTMLTagOrComponent>>(activeStory.state ?? {});
-  const [exampleElement, setExampleElement] = useState<ReactNode>(
-    createElements(activeStory.generator(activeStory.state), setExampleState)
-  );
-  const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>(
-    createFrameworkMarkup(activeStory.generator(activeStory.state), activeStory.state, storefrontColorScheme)
+  const exampleMarkup = useMemo(
+    () => getStoryMarkup(activeStory, { state: exampleState, colorScheme: storefrontColorScheme }),
+    [activeStory, exampleState, storefrontColorScheme]
   );
 
   // Reset the configured state to the active story's defaults whenever the mode changes.
@@ -53,15 +55,13 @@ export const Configurator = <T extends HTMLTagOrComponent>({
     setExampleState(activeStory.state ?? {});
   }, [mode]);
 
-  useEffect(() => {
-    const generatedStory = activeStory.generator(exampleState);
-    setExampleElement(createElements(generatedStory, setExampleState));
-    setExampleMarkup(createFrameworkMarkup(generatedStory, exampleState, storefrontColorScheme));
-  }, [exampleState, storefrontColorScheme, activeStory]);
-
   const onOpenInStackblitz = () => {
-    const markup = createStackblitzMarkupFromStory(activeStory, exampleState, framework, storefrontColorScheme);
-    openInStackblitz(framework, markup, storefrontColorScheme);
+    const markup = getStoryMarkup(activeStory, {
+      state: exampleState,
+      colorScheme: storefrontColorScheme,
+      output: 'project',
+    });
+    openInStackblitz(framework, markup[framework], storefrontColorScheme);
   };
 
   return (
@@ -71,7 +71,7 @@ export const Configurator = <T extends HTMLTagOrComponent>({
         onOpenInStackblitz={() => onOpenInStackblitz()}
         previewMaxWidth={activeStory.previewMaxWidth}
       >
-        {exampleElement}
+        <StoryPreview story={activeStory} state={exampleState} onStateChange={setExampleState} />
       </Playground>
       <ConfiguratorControls
         tagName={tagName as ConfiguratorTagNames}

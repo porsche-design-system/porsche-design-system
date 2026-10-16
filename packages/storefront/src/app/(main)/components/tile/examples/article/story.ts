@@ -1,11 +1,10 @@
 'use client';
 
+import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-system/story-generator';
 import {
   createComparison,
   stretchedLinkWithoutRadiusClassName,
 } from '@/app/(main)/components/tile/examples/comparison';
-import type { Story } from '@/models/story';
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 
 const label = 'The 718 Boxster GTS: an homage to coastal roads';
 

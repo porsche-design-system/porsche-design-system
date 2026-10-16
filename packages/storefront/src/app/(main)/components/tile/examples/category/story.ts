@@ -1,8 +1,7 @@
 'use client';
 
+import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-system/story-generator';
 import { createComparison, stretchedLinkClassName } from '@/app/(main)/components/tile/examples/comparison';
-import type { Story } from '@/models/story';
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 
 const label = 'Vehicle Accessories';
 

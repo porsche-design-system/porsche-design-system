@@ -1,11 +1,8 @@
-import type { CodeSample, FrameworkMarkup } from '@porsche-design-system/shared';
+import type { CodeSample, ColorScheme, Framework } from '@porsche-design-system/shared';
+import { getStoryMarkup, type HTMLTagOrComponent, type Story } from '@porsche-design-system/story-generator';
 import type { Root } from 'mdast';
-import type { StorefrontColorScheme } from '../../../../../src/models/colorScheme';
-import type { Story } from '../../../../../src/models/story';
-import { createFrameworkMarkup } from '../../../../../src/utils/generator/createFrameworkMarkup';
-import type { HTMLTagOrComponent } from '../../../../../src/utils/generator/generator';
 import { escapeCell, leadSentence, markdownTable } from '../../shared/markdown';
-import type { Framework, SkillTree } from '../../shared/skillTree';
+import type { SkillTree } from '../../shared/skillTree';
 import { tryRenderMdxToMarkdown } from '../mdx/renderMdxToMarkdown';
 
 /**
@@ -13,18 +10,10 @@ import { tryRenderMdxToMarkdown } from '../mdx/renderMdxToMarkdown';
  * hand-authored examples share the same framework-specific pipeline.
  */
 
-export const DEFAULT_EXAMPLE_THEME: StorefrontColorScheme = 'scheme-light';
-
-/** Maps the skill's `js` identifier to the markup model's `vanilla-js`. */
-const FRAMEWORK_MARKUP_KEY: Record<Framework, keyof FrameworkMarkup> = {
-  js: 'vanilla-js',
-  angular: 'angular',
-  react: 'react',
-  vue: 'vue',
-};
+export const DEFAULT_EXAMPLE_THEME: ColorScheme = 'scheme-light';
 
 export const EXAMPLE_EXTENSION: Record<Framework, string> = {
-  js: 'html',
+  'vanilla-js': 'html',
   angular: 'ts',
   react: 'tsx',
   vue: 'vue',
@@ -45,9 +34,7 @@ const whenToUse = (description: Root | undefined, fallback: string, framework: F
 };
 
 const storyMarkup = (story: Story<HTMLTagOrComponent>, framework: Framework): string =>
-  createFrameworkMarkup(story.generator(story.state), story.state, DEFAULT_EXAMPLE_THEME)[
-    FRAMEWORK_MARKUP_KEY[framework]
-  ] ?? '';
+  getStoryMarkup(story, { colorScheme: DEFAULT_EXAMPLE_THEME })[framework];
 
 type PlannedExample = { name: string; whenToUse: string; fileBase: string; markup: string };
 
@@ -64,7 +51,7 @@ const planExample = (key: string, example: SkillExampleMeta, framework: Framewor
       return {
         ...base,
         whenToUse: whenToUse(example.description, example.name, framework),
-        markup: example.example.frameworkMarkup[FRAMEWORK_MARKUP_KEY[framework]] ?? '',
+        markup: example.example.frameworkMarkup[framework] ?? '',
       };
     case 'description':
       return { ...base, whenToUse: whenToUse(example.description, example.name, framework), markup: '' };
@@ -111,7 +98,7 @@ export const writeComponentExamples = (tree: SkillTree, tag: string, source: Com
 
   const { example: baseExample } = source.configurator;
   const baseMarkup = baseExample
-    ? (baseExample.frameworkMarkup[FRAMEWORK_MARKUP_KEY[framework]] ?? '')
+    ? (baseExample.frameworkMarkup[framework] ?? '')
     : storyMarkup(source.configurator.story, framework);
   if (baseMarkup.trim()) {
     emit({

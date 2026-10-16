@@ -1,4 +1,4 @@
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+import type { ElementConfig, HTMLTagOrComponent } from '@porsche-design-system/story-generator';
 
 /**
  * Stretches a link over its nearest positioned ancestor (the tile) via `::after`, which also renders the focus ring

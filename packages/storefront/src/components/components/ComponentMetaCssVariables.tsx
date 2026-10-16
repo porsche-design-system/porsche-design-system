@@ -9,6 +9,7 @@ import {
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
+import { getHeadingAnchorId } from '@/links';
 import { getFlags } from '@/utils/getFlags';
 
 type ComponentMetaCssVariablesProps = {
@@ -22,7 +23,7 @@ export const ComponentMetaCssVariables = ({ cssVariablesMeta }: ComponentMetaCss
         tag="h2"
         size="x-large"
         className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)"
-        id="css-variables"
+        id={getHeadingAnchorId('CSS Variables')}
       >
         CSS Variables
       </PHeading>

@@ -1,9 +1,14 @@
 import type { SlotMeta } from '@porsche-design-system/component-meta';
 import { PHeading, PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
+import type {
+  HTMLTagOrComponent,
+  SlotState,
+  SlotStories,
+  Story,
+  StoryState,
+} from '@porsche-design-system/story-generator';
 import { capitalCase } from 'change-case';
 import React from 'react';
-import type { SlotState, SlotStories, Story, StoryState } from '@/models/story';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
 type ConfigureSlotsProps<Tag extends HTMLTagOrComponent> = {
   tagName: Tag;

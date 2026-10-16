@@ -1,8 +1,7 @@
 'use client';
 
+import type { ElementConfig, HTMLTagOrComponent, Story, StoryState } from '@porsche-design-system/story-generator';
 import { createComparison } from '@/app/(main)/components/tile/examples/comparison';
-import type { Story, StoryState } from '@/models/story';
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 
 type Children = (string | ElementConfig<HTMLTagOrComponent>)[];
 

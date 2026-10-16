@@ -9,6 +9,7 @@ import {
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
+import { getHeadingAnchorId } from '@/links';
 import { formatDescription, formatEventType } from '@/utils/formatting';
 import { getFlags } from '@/utils/getFlags';
 
@@ -20,7 +21,12 @@ export const ComponentMetaEvents = ({ eventsMeta }: ComponentMetaEventsProps) =>
   const sortedEventsMeta = Object.entries(eventsMeta ?? {}).sort(([keyA], [keyB]) => keyA.localeCompare(keyB));
   return (
     <>
-      <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)" id="events">
+      <PHeading
+        tag="h2"
+        size="x-large"
+        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)"
+        id={getHeadingAnchorId('Events')}
+      >
         Events
       </PHeading>
       <PTable caption="Props" className="mt-static-md">

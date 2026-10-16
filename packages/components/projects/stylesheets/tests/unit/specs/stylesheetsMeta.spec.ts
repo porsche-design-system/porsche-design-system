@@ -1,3 +1,4 @@
+import { COLOR_SCHEMES } from '@porsche-design-system/shared';
 import { expect, it } from 'vitest';
 import { globalStylesMeta } from '../../../src/css';
 import { flattenColorVariables, flattenCssVariables, renderCss, renderCssNode } from '../../../src/helpers';
@@ -45,6 +46,10 @@ it('every generated stylesheet entry should expose file, description and meta', 
 it('should expose granular metas independently of globalStylesMeta', () => {
   expect(cssVariableTokens).toBeTruthy();
   expect(colorScheme.length).toBeGreaterThan(0);
+});
+
+it.each(COLOR_SCHEMES)('should offer a utility class for the shared color scheme %s', (scheme) => {
+  expect(colorScheme.map(({ selector }) => selector)).toContain(`.${scheme}`);
 });
 
 it('every css variable leaf should have property, description and value', () => {
