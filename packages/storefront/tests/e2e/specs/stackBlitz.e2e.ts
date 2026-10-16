@@ -21,7 +21,7 @@ for (const framework of FRAMEWORKS) {
       'true'
     );
 
-    const stackBlitzButton = page.getByText('Open in Stackblitz');
+    const stackBlitzButton = page.getByText('Open in StackBlitz');
     const stackBlitzPagePromise = page.waitForEvent('popup');
 
     await stackBlitzButton.click();

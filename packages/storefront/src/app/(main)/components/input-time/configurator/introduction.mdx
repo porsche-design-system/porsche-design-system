@@ -1,4 +1,4 @@
-import { FrameworkNotification } from '@/components/mdx/FrameworkNotification/FrameworkNotification';
+import { Notification } from '@/components/mdx/Notification/Notification';
 
 The `p-input-time` component provides a versatile, user‑friendly interface for entering time values. It supports direct
 keyboard input, including arrow-key adjustments for precise changes. It has a start and end slot in order to support
@@ -11,9 +11,9 @@ whenever possible. When used without a label, it's mandatory to provide a descri
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
 
-<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
+<Notification frameworks={['react']} heading="Input Event Handling">
   React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
   standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
   keystroke, use `onInput` instead.
-</FrameworkNotification>
+</Notification>
 

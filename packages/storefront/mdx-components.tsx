@@ -1,6 +1,5 @@
 import {
   PDivider,
-  PLinkPure,
   PTable,
   PTableBody,
   PTableCell,
@@ -14,8 +13,8 @@ import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 
 import React from 'react';
-import { DocsLink } from '@/components/common/DocsLink';
 import { CodeBlock } from '@/components/mdx/shared/CodeBlock';
+import { InlineLink } from '@/components/mdx/shared/InlineLink';
 import { H1, H2, H3, H4, H5, H6, P } from '@/components/mdx/shared/MdxTypography';
 import type { DocsHref } from '@/links';
 
@@ -51,11 +50,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     td: ({ children }) => <PTableCell multiline={true}>{children as React.ReactNode}</PTableCell>,
     tr: ({ children }) => <PTableRow>{children as React.ReactNode}</PTableRow>,
     // MDX isn't typechecked: `tests/unit/specs/links.spec.ts` checks its links against the sitemap instead.
-    a: ({ href = '', children }) => (
-      <PLinkPure icon="none" underline={true}>
-        <DocsLink href={href as DocsHref}>{children as React.ReactNode}</DocsLink>
-      </PLinkPure>
-    ),
+    a: ({ href = '', children }) => <InlineLink href={href as DocsHref}>{children as React.ReactNode}</InlineLink>,
     blockquote: ({ children }) => (
       <blockquote className="my-fluid-sm ps-static-md border-s-4 border-solid border-contrast-low">
         {children as React.ReactNode}

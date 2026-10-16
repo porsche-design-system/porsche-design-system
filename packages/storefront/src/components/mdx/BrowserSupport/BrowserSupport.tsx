@@ -10,7 +10,7 @@ import {
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
 
-type Status = { version: string; support: 'full' | 'partial'; message: 'string' };
+type Status = { version: string; support: 'full' | 'partial'; message: string };
 
 type BrowserSupportProps = {
   support: {

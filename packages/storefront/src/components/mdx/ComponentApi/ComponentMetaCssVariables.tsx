@@ -1,58 +1,42 @@
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import {
-  PHeading,
-  PTable,
-  PTableBody,
-  PTableCell,
-  PTableHead,
-  PTableHeadCell,
-  PTableRow,
-} from '@porsche-design-system/components-react/ssr';
-import React from 'react';
-import { getHeadingAnchorId } from '@/links';
+import type { ComponentMeta, CssVariableMeta } from '@porsche-design-system/component-meta';
 import { getFlags } from '@/utils/getFlags';
+import { H2 } from '../shared/MdxTypography';
+import { MetaTable } from '../shared/MetaTable';
 
 type ComponentMetaCssVariablesProps = {
-  cssVariablesMeta: ComponentMeta['cssVariablesMeta'];
+  cssVariablesMeta: NonNullable<ComponentMeta['cssVariablesMeta']>;
 };
 
-export const ComponentMetaCssVariables = ({ cssVariablesMeta }: ComponentMetaCssVariablesProps) => {
-  return (
-    <>
-      <PHeading
-        tag="h2"
-        size="x-large"
-        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)"
-        id={getHeadingAnchorId('CSS Variables')}
-      >
-        CSS Variables
-      </PHeading>
-      <PTable caption="Props" className="mt-static-md">
-        <PTableHead>
-          <PTableRow>
-            <PTableHeadCell>CSS Variable</PTableHeadCell>
-            <PTableHeadCell>Description</PTableHeadCell>
-            <PTableHeadCell>defaultValue</PTableHeadCell>
-          </PTableRow>
-        </PTableHead>
-        <PTableBody>
-          {Object.entries(cssVariablesMeta ?? {}).map(([cssVariableName, cssVariablesMeta]) => (
-            <PTableRow key={cssVariableName}>
-              <PTableCell className="align-top">
-                <code>
-                  {cssVariableName} {getFlags(cssVariablesMeta)}
-                </code>
-              </PTableCell>
-              <PTableCell className="align-top min-w-40" multiline={true}>
-                {cssVariablesMeta.description}
-              </PTableCell>
-              <PTableCell className="align-top">
-                <code>{cssVariablesMeta.defaultValue}</code>
-              </PTableCell>
-            </PTableRow>
-          ))}
-        </PTableBody>
-      </PTable>
-    </>
-  );
-};
+export const ComponentMetaCssVariables = ({ cssVariablesMeta }: ComponentMetaCssVariablesProps) => (
+  <>
+    <H2>CSS Variables</H2>
+    <MetaTable<[string, CssVariableMeta]>
+      caption="CSS Variables"
+      className="mt-static-md"
+      items={Object.entries(cssVariablesMeta)}
+      getKey={([cssVariableName]) => cssVariableName}
+      columns={[
+        {
+          label: 'CSS Variable',
+          className: 'align-top',
+          cell: ([cssVariableName, cssVariableMeta]) => (
+            <code>
+              {cssVariableName} {getFlags(cssVariableMeta)}
+            </code>
+          ),
+        },
+        {
+          label: 'Description',
+          className: 'align-top min-w-40',
+          multiline: true,
+          cell: ([, cssVariableMeta]) => cssVariableMeta.description,
+        },
+        {
+          label: 'defaultValue',
+          className: 'align-top',
+          cell: ([, cssVariableMeta]) => <code>{cssVariableMeta.defaultValue}</code>,
+        },
+      ]}
+    />
+  </>
+);

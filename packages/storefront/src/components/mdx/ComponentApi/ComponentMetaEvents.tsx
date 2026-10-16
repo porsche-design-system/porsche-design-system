@@ -1,60 +1,44 @@
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import {
-  PHeading,
-  PTable,
-  PTableBody,
-  PTableCell,
-  PTableHead,
-  PTableHeadCell,
-  PTableRow,
-} from '@porsche-design-system/components-react/ssr';
-import React from 'react';
-import { getHeadingAnchorId } from '@/links';
+import type { ComponentMeta, EventMeta } from '@porsche-design-system/component-meta';
 import { getFlags } from '@/utils/getFlags';
+import { H2 } from '../shared/MdxTypography';
+import { MetaTable } from '../shared/MetaTable';
 import { formatDescription, formatEventType } from './formatting';
 
 type ComponentMetaEventsProps = {
-  eventsMeta: ComponentMeta['eventsMeta'];
+  eventsMeta: NonNullable<ComponentMeta['eventsMeta']>;
 };
 
-export const ComponentMetaEvents = ({ eventsMeta }: ComponentMetaEventsProps) => {
-  const sortedEventsMeta = Object.entries(eventsMeta ?? {}).sort(([keyA], [keyB]) => keyA.localeCompare(keyB));
-  return (
-    <>
-      <PHeading
-        tag="h2"
-        size="x-large"
-        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)"
-        id={getHeadingAnchorId('Events')}
-      >
-        Events
-      </PHeading>
-      <PTable caption="Props" className="mt-static-md">
-        <PTableHead>
-          <PTableRow>
-            <PTableHeadCell>Event</PTableHeadCell>
-            <PTableHeadCell>Description</PTableHeadCell>
-            <PTableHeadCell>Type</PTableHeadCell>
-          </PTableRow>
-        </PTableHead>
-        <PTableBody>
-          {sortedEventsMeta.map(([eventName, eventMeta]) => (
-            <PTableRow key={eventName}>
-              <PTableCell className="align-top">
-                <code>
-                  {eventName} {getFlags(eventMeta)}
-                </code>
-              </PTableCell>
-              <PTableCell className="min-w-40 align-top" multiline={true}>
-                <span dangerouslySetInnerHTML={{ __html: formatDescription(eventMeta) }} />
-              </PTableCell>
-              <PTableCell className="min-w-40 align-top" multiline={true}>
-                <span dangerouslySetInnerHTML={{ __html: formatEventType(eventMeta) }} />
-              </PTableCell>
-            </PTableRow>
-          ))}
-        </PTableBody>
-      </PTable>
-    </>
-  );
-};
+export const ComponentMetaEvents = ({ eventsMeta }: ComponentMetaEventsProps) => (
+  <>
+    <H2>Events</H2>
+    <MetaTable<[string, EventMeta]>
+      caption="Events"
+      className="mt-static-md"
+      items={Object.entries(eventsMeta).sort(([keyA], [keyB]) => keyA.localeCompare(keyB))}
+      getKey={([eventName]) => eventName}
+      columns={[
+        {
+          label: 'Event',
+          className: 'align-top',
+          cell: ([eventName, eventMeta]) => (
+            <code>
+              {eventName} {getFlags(eventMeta)}
+            </code>
+          ),
+        },
+        {
+          label: 'Description',
+          className: 'min-w-40 align-top',
+          multiline: true,
+          cell: ([, eventMeta]) => <span dangerouslySetInnerHTML={{ __html: formatDescription(eventMeta) }} />,
+        },
+        {
+          label: 'Type',
+          className: 'min-w-40 align-top',
+          multiline: true,
+          cell: ([, eventMeta]) => <span dangerouslySetInnerHTML={{ __html: formatEventType(eventMeta) }} />,
+        },
+      ]}
+    />
+  </>
+);

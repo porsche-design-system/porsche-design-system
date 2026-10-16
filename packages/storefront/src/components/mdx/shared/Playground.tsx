@@ -1,12 +1,10 @@
 'use client';
 
 import { PButton } from '@porsche-design-system/components-react/ssr';
-import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
+import type { FrameworkMarkup } from '@porsche-design-system/shared';
 import type { PropsWithChildren } from 'react';
-import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import type { BackgroundColor } from '@/models/backgroundColor';
-import { FrameworkTabs } from '../FrameworkTabs/FrameworkTabs';
-import { CodeBlock, type CodeLanguage } from './CodeBlock';
+import { FrameworkCodePreview } from './FrameworkCodePreview';
 
 type PlaygroundProps = {
   frameworkMarkup: FrameworkMarkup;
@@ -17,13 +15,7 @@ type PlaygroundProps = {
   showCodeBlock?: boolean;
 };
 
-const frameworkLanguageMap = {
-  'vanilla-js': 'javascript',
-  angular: 'typescript',
-  react: 'typescript',
-  vue: 'typescript',
-} as const satisfies Record<Framework, CodeLanguage>;
-
+/** A live demo above its code, shared by `Configurator`, `ComponentStory` and `ComponentExample`. */
 export const Playground = ({
   frameworkMarkup,
   onOpenInStackblitz,
@@ -32,40 +24,33 @@ export const Playground = ({
   fixedBackgroundColor,
   showCodeBlock = true,
   children,
-}: PropsWithChildren<PlaygroundProps>) => {
-  const { framework } = useStorefrontFramework();
-
-  return (
-    <div className="playground my-fluid-md border-thin border-contrast-lower rounded-3xl">
-      <div
-        className={`demo p-static-lg border-b-thin border-contrast-lower bg-${backgroundColor} rounded-t-3xl`}
-        style={{ ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }) }}
-      >
-        {children}
-      </div>
-      {showCodeBlock && (
-        <>
-          <div className="m-static-md flex gap-fluid-sm justify-between flex-col md:flex-row">
-            <FrameworkTabs label="Select the JavaScript framework for code preview" />
-            {!disableOpenInStackblitz && (
-              <PButton
-                className="w-fit"
-                type="button"
-                iconSource="assets/icon-stackblitz.svg"
-                variant="secondary"
-                compact={true}
-                onClick={onOpenInStackblitz}
-                aria={{ 'aria-description': 'Opens in a new tab' }}
-              >
-                Open in Stackblitz
-              </PButton>
-            )}
-          </div>
-          <CodeBlock className="markup" language={frameworkLanguageMap[framework]}>
-            {frameworkMarkup[framework] ?? ''}
-          </CodeBlock>
-        </>
-      )}
+}: PropsWithChildren<PlaygroundProps>) => (
+  <div className="playground my-fluid-md border-thin border-contrast-lower rounded-3xl">
+    <div
+      className={`demo p-static-lg border-b-thin border-contrast-lower bg-${backgroundColor} rounded-t-3xl`}
+      style={{ ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }) }}
+    >
+      {children}
     </div>
-  );
-};
+    {showCodeBlock && (
+      <FrameworkCodePreview
+        frameworkMarkup={frameworkMarkup}
+        actions={
+          !disableOpenInStackblitz && (
+            <PButton
+              className="w-fit"
+              type="button"
+              iconSource="assets/icon-stackblitz.svg"
+              variant="secondary"
+              compact={true}
+              onClick={onOpenInStackblitz}
+              aria={{ 'aria-description': 'Opens in a new tab' }}
+            >
+              Open in StackBlitz
+            </PButton>
+          )
+        }
+      />
+    )}
+  </div>
+);

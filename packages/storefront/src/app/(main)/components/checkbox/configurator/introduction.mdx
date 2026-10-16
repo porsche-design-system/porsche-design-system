@@ -3,7 +3,7 @@ import { Notification } from '@/components/mdx/Notification/Notification';
 The `p-checkbox` component wraps the native HTML input type `checkbox` form element. Checking one box doesn't uncheck
 other Checkboxes. By default, Checkboxes are not selected.
 
-<Notification heading="Firefox Form Restore Bug" heading-tag="h2" state="warning">
+<Notification heading="Firefox Form Restore Bug" headingTag="h2" state="warning">
   Firefox has a known bug where it incorrectly restores form state for form-associated custom elements with shadow DOM
   on page reload. Checkbox values may appear inside unrelated <code>input-text</code> fields in the same form under
   certain conditions. To work around this, add the native HTML attribute <code>autocomplete="off"</code> to all checkbox

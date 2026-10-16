@@ -1,17 +1,18 @@
 import { type FrameworkRenderContext, resolveFrameworkValues } from '@/models/framework';
 import { normalizeCodeBlock } from '@/utils/normalizeCodeBlock';
-import type { CodeLanguage } from '../shared/CodeBlock';
-import { FrameworkCodeBlockRenderer } from './FrameworkCodeBlockRenderer';
+import { CodeBlock, type CodeLanguage } from '../shared/CodeBlock';
+import { FrameworkContent } from '../shared/FrameworkContent';
 
 type FrameworkCodeBlockProps = {
   language: CodeLanguage;
   render: (context: FrameworkRenderContext) => string;
 };
 
-/** Resolves framework-dependent code on the server so only highlighted strings cross to the client. */
+/** Code that follows the selected framework, highlighted on the server for every framework. */
 export const FrameworkCodeBlock = ({ language, render }: FrameworkCodeBlockProps) => (
-  <FrameworkCodeBlockRenderer
-    language={language}
-    codeByFramework={resolveFrameworkValues((context) => normalizeCodeBlock(render(context)))}
+  <FrameworkContent
+    content={resolveFrameworkValues((context) => (
+      <CodeBlock language={language}>{normalizeCodeBlock(render(context))}</CodeBlock>
+    ))}
   />
 );

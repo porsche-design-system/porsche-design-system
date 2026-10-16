@@ -1,32 +1,15 @@
-'use client';
-
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import {
-  PHeading,
-  PTable,
-  PTableBody,
-  PTableCell,
-  PTableHead,
-  PTableHeadCell,
-  PTableRow,
-} from '@porsche-design-system/components-react/ssr';
+import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import { kebabCase } from 'change-case';
-import type React from 'react';
-import { getHeadingAnchorId } from '@/links';
 import { getFlags } from '@/utils/getFlags';
+import { H2 } from '../shared/MdxTypography';
+import { MetaTable } from '../shared/MetaTable';
 import { formatDescription, formatPropDefaultValue, formatPropType } from './formatting';
 
 type ComponentMetaPropsProps = {
-  propsMeta: ComponentMeta['propsMeta'];
+  propsMeta: NonNullable<ComponentMeta['propsMeta']>;
 };
 
-export const ComponentMetaProps = ({ propsMeta }: ComponentMetaPropsProps) => {
-  const sortedPropsMeta = Object.entries(propsMeta ?? {}).sort(([keyA], [keyB]) => keyA.localeCompare(keyB));
-  const hasBreakpointCustomizable = Object.values(propsMeta ?? {}).some(
-    (propMeta) => propMeta.isBreakpointCustomizable
-  );
-
-  const breakpointCustomizableType = `type BreakpointCustomizable<T> = {
+const breakpointCustomizableType = `type BreakpointCustomizable<T> = {
   base: T;
   xs?: T;
   s?: T;
@@ -36,49 +19,44 @@ export const ComponentMetaProps = ({ propsMeta }: ComponentMetaPropsProps) => {
   xxl?: T;
 };`;
 
+export const ComponentMetaProps = ({ propsMeta }: ComponentMetaPropsProps) => {
+  const sortedPropsMeta = Object.entries(propsMeta).sort(([keyA], [keyB]) => keyA.localeCompare(keyB));
+  const hasBreakpointCustomizable = Object.values(propsMeta).some((propMeta) => propMeta.isBreakpointCustomizable);
+
   return (
     <>
-      <PHeading
-        tag="h2"
-        size="x-large"
-        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)"
-        id={getHeadingAnchorId('Properties')}
-      >
-        Properties
-      </PHeading>
+      <H2>Properties</H2>
       {hasBreakpointCustomizable && <code>{breakpointCustomizableType}</code>}
-      <PTable caption="Props" className="mt-static-md">
-        <PTableHead>
-          <PTableRow>
-            <PTableHeadCell>Property</PTableHeadCell>
-            <PTableHeadCell>Attribute</PTableHeadCell>
-            <PTableHeadCell>Description</PTableHeadCell>
-            <PTableHeadCell>Type</PTableHeadCell>
-            <PTableHeadCell>Default</PTableHeadCell>
-          </PTableRow>
-        </PTableHead>
-        <PTableBody>
-          {sortedPropsMeta.map(([propName, propMeta]) => (
-            <PTableRow key={propName}>
-              <PTableCell className="align-top">
-                <code>
-                  {propName} {getFlags(propMeta)}
-                </code>
-              </PTableCell>
-              <PTableCell className="align-top">
-                <code>{kebabCase(propName)}</code>
-              </PTableCell>
-              <PTableCell multiline={true} className="min-w-40 align-top">
-                <span dangerouslySetInnerHTML={{ __html: formatDescription(propMeta) }} />
-              </PTableCell>
-              <PTableCell className="align-top">
-                <span dangerouslySetInnerHTML={{ __html: formatPropType(propMeta) }} />
-              </PTableCell>
-              <PTableCell className="align-top">{formatPropDefaultValue(propMeta)}</PTableCell>
-            </PTableRow>
-          ))}
-        </PTableBody>
-      </PTable>
+      <MetaTable<[string, PropMeta]>
+        caption="Properties"
+        className="mt-static-md"
+        items={sortedPropsMeta}
+        getKey={([propName]) => propName}
+        columns={[
+          {
+            label: 'Property',
+            className: 'align-top',
+            cell: ([propName, propMeta]) => (
+              <code>
+                {propName} {getFlags(propMeta)}
+              </code>
+            ),
+          },
+          { label: 'Attribute', className: 'align-top', cell: ([propName]) => <code>{kebabCase(propName)}</code> },
+          {
+            label: 'Description',
+            className: 'min-w-40 align-top',
+            multiline: true,
+            cell: ([, propMeta]) => <span dangerouslySetInnerHTML={{ __html: formatDescription(propMeta) }} />,
+          },
+          {
+            label: 'Type',
+            className: 'align-top',
+            cell: ([, propMeta]) => <span dangerouslySetInnerHTML={{ __html: formatPropType(propMeta) }} />,
+          },
+          { label: 'Default', className: 'align-top', cell: ([, propMeta]) => formatPropDefaultValue(propMeta) },
+        ]}
+      />
     </>
   );
 };

@@ -20,14 +20,23 @@ import { getFlags } from '@/utils/getFlags';
 const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 
 export const ComponentMetaOverview = () => {
-  const [checked, setChecked] = useState(false);
+  const [showAllValues, setShowAllValues] = useState(false);
+  // The props toggled individually, which show the opposite of what the switch sets for all.
+  const [toggledProps, setToggledProps] = useState<ReadonlySet<string>>(new Set());
+
   const handleSwitchUpdate = (e: CustomEvent<SwitchUpdateEventDetail>) => {
-    setChecked(e.detail.checked);
-    const divs: HTMLDivElement[] = Array.from(document.querySelectorAll('.toggleable'));
-    for (const div of divs) {
-      div.classList[checked ? 'add' : 'remove']('hidden');
-    }
+    setShowAllValues(e.detail.checked);
+    setToggledProps(new Set());
   };
+
+  const toggleProp = (id: string) =>
+    setToggledProps((previous) => {
+      const next = new Set(previous);
+      if (!next.delete(id)) {
+        next.add(id);
+      }
+      return next;
+    });
 
   const getProps = (tagName: TagName, filterProps?: keyof PropMeta) => {
     return Object.entries(componentMeta[tagName as TagName].propsMeta ?? {}).filter(([_, value]) =>
@@ -119,21 +128,26 @@ export const ComponentMetaOverview = () => {
         <PTableCell className="align-top">{columnName}</PTableCell>
         {tagNames.map((tagName) => (
           <PTableCell key={tagName} className="align-top">
-            {getProps(tagName, filterProps).map(([propName, propMeta]) => (
-              <Fragment key={propName}>
-                <code className="inline-block my-static-xs">
-                  {/* biome-ignore lint/a11y/noStaticElementInteractions: ok */}
-                  <span
-                    className="hover:text-contrast-medium cursor-pointer"
-                    onClick={(e) => (e.currentTarget.nextElementSibling as HTMLElement).classList.toggle('hidden')}
-                  >
-                    {propName} {getFlags(propMeta)}
-                  </span>
-                  <div className="toggleable hidden">{formatAllowedValues(propMeta)}</div>
-                </code>
-                <br />
-              </Fragment>
-            ))}
+            {getProps(tagName, filterProps).map(([propName, propMeta]) => {
+              const id = `${columnName}-${tagName}-${propName}`;
+              const isExpanded = showAllValues !== toggledProps.has(id);
+              return (
+                <Fragment key={propName}>
+                  <code className="inline-block my-static-xs">
+                    <button
+                      type="button"
+                      className="cursor-pointer text-start hover:text-contrast-medium rounded-sm focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-2"
+                      aria-expanded={isExpanded}
+                      onClick={() => toggleProp(id)}
+                    >
+                      {propName} {getFlags(propMeta)}
+                    </button>
+                    {isExpanded && <div>{formatAllowedValues(propMeta)}</div>}
+                  </code>
+                  <br />
+                </Fragment>
+              );
+            })}
           </PTableCell>
         ))}
       </PTableRow>
@@ -168,7 +182,7 @@ export const ComponentMetaOverview = () => {
           <br />🚫 = deprecated
           <br />🧪 = experimental
         </div>
-        <PSwitch onUpdate={handleSwitchUpdate} checked={checked}>
+        <PSwitch onUpdate={handleSwitchUpdate} checked={showAllValues}>
           Show all prop values
         </PSwitch>
       </div>

@@ -49,9 +49,9 @@ export const OpenBugTemplateInStackBlitz = () => {
       <PButton
         className="w-fit mt-fluid-sm"
         type="button"
-        icon-source="stackBlitzIcon"
+        iconSource="assets/icon-stackblitz.svg"
         onClick={() => onOpenInStackblitz()}
-        aria={{ 'aria-description': 'Opens in new tab' }}
+        aria={{ 'aria-description': 'Opens in a new tab' }}
       >
         Open template in StackBlitz
       </PButton>

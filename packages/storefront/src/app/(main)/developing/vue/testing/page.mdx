@@ -26,7 +26,7 @@ To apply the polyfill, simply import it in your `setupTest.{js|ts}` file.
 **Note:** If your test includes Porsche Design System components, make sure to wrap the component you want to test with
 a `PorscheDesignSystemProvider` in order to avoid exceptions.
 
-<Notification heading="Attention" heading-tag="h2" state="warning">
+<Notification heading="Attention" headingTag="h2" state="warning">
   Certain modern browser APIs are not supported in the jsdom environment. See [Unsupported
   APIs](/developing/vue/testing#unsupported-apis) for more information.
 </Notification>
@@ -146,7 +146,7 @@ it('should work for PButton', async () => {
 Also exported: `screen` (every query above, bound to `document`), `within`, `deepQuerySelector`, `deepQuerySelectorAll`,
 `getAllElementsAndShadowRoots`, `debug`, `logShadowDOM`, `prettyShadowDOM`, `logRoles`, `configure` and `getConfig`.
 
-<Notification heading="Requires a DOM" heading-tag="h2" state="warning">
+<Notification heading="Requires a DOM" headingTag="h2" state="warning">
   These queries need a DOM to search. Importing the `testing` sub-package where no DOM is available throws an error.
 </Notification>
 

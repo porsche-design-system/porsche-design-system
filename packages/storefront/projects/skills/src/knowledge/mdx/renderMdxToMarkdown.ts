@@ -24,8 +24,6 @@ import { gfm } from 'micromark-extension-gfm';
 import { mdxjs } from 'micromark-extension-mdxjs';
 import { escapeCell, markdownTable } from '../../shared/markdown';
 
-const NOTIFICATION_COMPONENTS = new Set(['Notification', 'FrameworkNotification']);
-
 type MdxJsxElement = MdxJsxFlowElement | MdxJsxTextElement;
 
 const isJsxElement = (node: RootContent): node is MdxJsxElement =>
@@ -46,11 +44,14 @@ const stringAttribute = (node: MdxJsxElement, name: string): string | undefined 
 };
 
 /**
- * Reads literal framework names without evaluating the MDX expression. Invalid input matches no
- * framework.
+ * Reads the literal framework names of a `Notification`'s `frameworks` without evaluating the MDX
+ * expression. Without the attribute it shows for every framework; invalid input matches no framework.
  */
-const showForFrameworks = (node: MdxJsxElement): Framework[] => {
-  const expression = attribute(node, 'showForFrameworks')?.value;
+const notificationFrameworks = (node: MdxJsxElement): Framework[] | undefined => {
+  const expression = attribute(node, 'frameworks')?.value;
+  if (expression === undefined) {
+    return undefined;
+  }
   const raw = typeof expression === 'object' && expression ? expression.value : '';
   return [...raw.matchAll(/'([^']+)'|"([^"]+)"/g)].map((match) => (match[1] ?? match[2]) as Framework);
 };
@@ -65,7 +66,8 @@ const toLink = (node: MdxJsxElement, framework: Framework): Link => ({
  * Converts notifications to blockquotes and drops framework-gated content from other variants.
  */
 const toNotification = (node: MdxJsxElement, framework: Framework): RootContent[] => {
-  if (node.name === 'FrameworkNotification' && !showForFrameworks(node).includes(framework)) {
+  const frameworks = notificationFrameworks(node);
+  if (frameworks && !frameworks.includes(framework)) {
     return [];
   }
 
@@ -175,7 +177,7 @@ const transformJsxElement = (node: MdxJsxElement, framework: Framework): RootCon
   if (name === null) {
     return transformChildren(node, framework);
   }
-  if (NOTIFICATION_COMPONENTS.has(name)) {
+  if (name === 'Notification') {
     return toNotification(node, framework);
   }
   // The Storefront's only link component in MDX (`next/link` is rejected there)
@@ -356,7 +358,7 @@ const render = (tree: Root, framework: Framework): string => {
  * Renders storefront MDX structurally without executing components. Throws when no meaningful prose
  * remains; callers with a designed fallback use {@link tryRenderMdxToMarkdown}.
  *
- * @param framework the tree being generated; gates `FrameworkNotification` to the matching content.
+ * @param framework the tree being generated; gates a `Notification` with `frameworks` to the matching content.
  * @param label optional source identifier (e.g. `p-button › usage`) used to give a failure an
  *   actionable message.
  */

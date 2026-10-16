@@ -1,64 +1,55 @@
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import {
-  PHeading,
-  PTable,
-  PTableBody,
-  PTableCell,
-  PTableHead,
-  PTableHeadCell,
-  PTableRow,
-} from '@porsche-design-system/components-react/ssr';
-import React from 'react';
-import { getHeadingAnchorId } from '@/links';
+import type { ComponentMeta, SlotMeta } from '@porsche-design-system/component-meta';
+import { Fragment } from 'react';
 import { getFlags } from '@/utils/getFlags';
+import { H2 } from '../shared/MdxTypography';
+import { MetaTable } from '../shared/MetaTable';
 
 type ComponentMetaSlotsProps = {
-  slotsMeta: ComponentMeta['slotsMeta'];
+  slotsMeta: NonNullable<ComponentMeta['slotsMeta']>;
 };
 
-export const ComponentMetaSlots = ({ slotsMeta }: ComponentMetaSlotsProps) => {
-  return (
-    <>
-      <PHeading
-        tag="h2"
-        size="x-large"
-        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)"
-        id={getHeadingAnchorId('Slots')}
-      >
-        Slots
-      </PHeading>
-      <PTable caption="Props" className="mt-static-md">
-        <PTableHead>
-          <PTableRow>
-            <PTableHeadCell>Slot</PTableHeadCell>
-            <PTableHeadCell>Description</PTableHeadCell>
-            <PTableHeadCell>isRequired</PTableHeadCell>
-            <PTableHeadCell>altProp</PTableHeadCell>
-            <PTableHeadCell>allowedTagNames</PTableHeadCell>
-          </PTableRow>
-        </PTableHead>
-        <PTableBody>
-          {Object.entries(slotsMeta ?? {}).map(([slotName, slotsMeta]) => (
-            <PTableRow key={slotName}>
-              <PTableCell className="align-top">
-                <code>
-                  {slotName === '' ? '<slot>' : `<slot name="${slotName}">`} {getFlags(slotsMeta)}
-                </code>
-              </PTableCell>
-              <PTableCell className="align-top min-w-40" multiline={true}>
-                {slotsMeta.description}
-              </PTableCell>
-              <PTableCell className="align-top">{slotsMeta.isRequired ? '✅' : ''}</PTableCell>
-              <PTableCell className="align-top">{slotsMeta.hasAltProp ? <code>{slotName}</code> : ''}</PTableCell>
-              <PTableCell className="align-top">
-                {slotsMeta.allowedTagNames?.map((tagName) => (
-                  <code>{tagName}</code>
-                ))}
-              </PTableCell>
-            </PTableRow>
-          ))}
-        </PTableBody>
-      </PTable>
-    </>
-  );
-};
+export const ComponentMetaSlots = ({ slotsMeta }: ComponentMetaSlotsProps) => (
+  <>
+    <H2>Slots</H2>
+    <MetaTable<[string, SlotMeta]>
+      caption="Slots"
+      className="mt-static-md"
+      items={Object.entries(slotsMeta)}
+      getKey={([slotName]) => slotName}
+      columns={[
+        {
+          label: 'Slot',
+          className: 'align-top',
+          cell: ([slotName, slotMeta]) => (
+            <code>
+              {slotName === '' ? '<slot>' : `<slot name="${slotName}">`} {getFlags(slotMeta)}
+            </code>
+          ),
+        },
+        {
+          label: 'Description',
+          className: 'align-top min-w-40',
+          multiline: true,
+          cell: ([, slotMeta]) => slotMeta.description,
+        },
+        { label: 'isRequired', className: 'align-top', cell: ([, slotMeta]) => (slotMeta.isRequired ? '✅' : '') },
+        {
+          label: 'altProp',
+          className: 'align-top',
+          cell: ([slotName, slotMeta]) => (slotMeta.hasAltProp ? <code>{slotName}</code> : ''),
+        },
+        {
+          label: 'allowedTagNames',
+          className: 'align-top',
+          cell: ([, slotMeta]) =>
+            slotMeta.allowedTagNames?.map((tagName, i) => (
+              <Fragment key={tagName}>
+                {i > 0 && ' '}
+                <code>{tagName}</code>
+              </Fragment>
+            )),
+        },
+      ]}
+    />
+  </>
+);

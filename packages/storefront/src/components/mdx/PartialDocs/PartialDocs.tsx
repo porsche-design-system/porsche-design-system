@@ -7,8 +7,8 @@ import { getReactPartialExample } from '@/utils/partials/getReactPartialExample'
 import { getVanillaJsPartialExample } from '@/utils/partials/getVanillaJsPartialExample';
 import { getVuePartialExample } from '@/utils/partials/getVuePartialExample';
 import { CodeBlock } from '../shared/CodeBlock';
+import { FrameworkCodePreview } from '../shared/FrameworkCodePreview';
 import { H3, P } from '../shared/MdxTypography';
-import { PartialExample } from './PartialExample';
 
 type PartialDocsProps = {
   name: Partials;
@@ -40,7 +40,7 @@ export const PartialDocs = ({ name, location, partialCalls }: PartialDocsProps) 
 
   return (
     <>
-      <PartialExample frameworkMarkup={frameworkMarkup} />
+      <FrameworkCodePreview frameworkMarkup={frameworkMarkup} next={true} />
       <H3>Output</H3>
       <P>The result of this partial looks like this:</P>
       <CodeBlock className="markup select-none" language="html" label={`${name} partial output`}>
