@@ -56,12 +56,6 @@ const notificationFrameworks = (node: MdxJsxElement): Framework[] | undefined =>
   return [...raw.matchAll(/'([^']+)'|"([^"]+)"/g)].map((match) => (match[1] ?? match[2]) as Framework);
 };
 
-const toLink = (node: MdxJsxElement, framework: Framework): Link => ({
-  type: 'link',
-  url: stringAttribute(node, 'href') ?? '',
-  children: transformChildren(node, framework) as Link['children'],
-});
-
 /**
  * Converts notifications to blockquotes and drops framework-gated content from other variants.
  */
@@ -179,11 +173,6 @@ const transformJsxElement = (node: MdxJsxElement, framework: Framework): RootCon
   }
   if (name === 'Notification') {
     return toNotification(node, framework);
-  }
-  // The Storefront's only link component in MDX (`next/link` is rejected there)
-  if (name === 'DocsLink') {
-    const link = toLink(node, framework);
-    return node.type === 'mdxJsxFlowElement' ? [{ type: 'paragraph', children: [link] }] : [link];
   }
   if (isCustomElement(name)) {
     return [];

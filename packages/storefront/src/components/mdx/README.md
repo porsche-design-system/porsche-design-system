@@ -15,8 +15,8 @@ next to its React one, see
 - Inside this folder, imports are relative. An `@/…` import is a dependency on the Storefront, which the registry has to
   take along or replace. The tables below name them, and `STOREFRONT_DEPENDENCIES` in the spec lists the allowed ones.
 - `tests/unit/specs/mdxComponents.spec.ts` checks the imports, the folders, this inventory and the Storefront
-  dependencies. `DocsLink` is the one exception until **Normalize MDX pages** (#4780) turns its uses into Markdown
-  links.
+  dependencies. `tests/unit/specs/mdxPages.spec.ts` checks the pages: no unused imports, no PDS components, Markdown
+  instead of HTML, tables of contents and notification heading levels.
 
 ## Inventory
 
@@ -47,6 +47,8 @@ The Markdown column is the output planned in the design. _Proposed_ marks compon
 | `ContentTabs`    | Alternative variants of the same step, e.g. installation methods.                | Every tab in order, each under its own heading.                                  | –                                             |
 | `PromptBox`      | A prompt for an AI agent, with a copy button.                                    | The prompt as a code block.                                                      | –                                             |
 | `Code`           | Inline code that doesn't wrap, or a value that isn't selectable.                 | _Proposed:_ inline code.                                                         | –                                             |
+| `DependencyList` | The dependencies a guide is based on, e.g. `react@19`.                           | A list of `name@version`.                                                        | –                                             |
+| `DownloadList`   | Files in `public/` to download.                                                  | _Proposed:_ a list of links to the files.                                        | –                                             |
 
 ### `framework/` Content that follows the selected framework
 

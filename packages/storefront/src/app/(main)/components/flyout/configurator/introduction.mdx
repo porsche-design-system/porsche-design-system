@@ -1,5 +1,4 @@
 import { Notification } from '@/components/mdx/content/Notification';
-import { DocsLink } from '@/components/common/DocsLink';
 
 The `p-flyout` is a overlay from the left or right side of the screen. It is commonly used as a temporary workspace that
 allows users to complete tasks without navigating to a new page or as a mobile navigation.
@@ -8,14 +7,11 @@ It is a controlled component. This grants flexible control over the flyout's beh
 open after user interaction like submission of a form.
 
 <Notification heading="Scroll-lock" headingTag="h2" state="warning">
-  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.
+  This component sets `overflow: hidden` on the body when opened in order to prevent background scrolling.
   <br />
   This doesn't work completely reliable under iOS but is the most stable solution.
   <br />
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution.{' '}
-  <b>
-    <DocsLink href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">
-      Current implementation
-    </DocsLink>
-  </b>
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. See the [current
+  implementation of the scroll
+  lock](https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts).
 </Notification>

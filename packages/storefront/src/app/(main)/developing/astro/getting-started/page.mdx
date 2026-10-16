@@ -1,7 +1,6 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { PTag } from '@porsche-design-system/components-react/ssr';
-import { Notification } from '@/components/mdx/content/Notification';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
+import { DependencyList } from '@/components/mdx/content/DependencyList';
 
 export const metadata = {
   title: 'Astro: Getting Started - Developing',
@@ -17,16 +16,14 @@ export const metadata = {
 To build an [Astro](https://astro.build) application using the Porsche Design System, follow these steps. This guide is
 based on the following dependencies:
 
-<div className="flex flex-wrap gap-static-sm my-fluid-sm">
-  {/* prettier-ignore */}
-  <PTag compact={true} variant="info">astro@7</PTag>
-  {/* prettier-ignore */}
-  <PTag compact={true} variant="info">vue@3</PTag>
-  {/* prettier-ignore */}
-  <PTag compact={true} variant="info">tailwindcss@4</PTag>
-  {/* prettier-ignore */}
-  <PTag compact={true} variant="info">@porsche-design-system/components-js@{localPorscheDesignSystemMajorVersion}</PTag>
-</div>
+<DependencyList
+  items={[
+    'astro@7',
+    'vue@3',
+    'tailwindcss@4',
+    `@porsche-design-system/components-js@${localPorscheDesignSystemMajorVersion}`,
+  ]}
+/>
 
 ```bash
 # Create a new application by executing:

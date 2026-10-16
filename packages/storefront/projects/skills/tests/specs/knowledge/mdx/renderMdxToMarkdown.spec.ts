@@ -35,13 +35,6 @@ Shared prose.
     expect(render(source)).toContain("| `'html' \\| 'jsx'` |");
   });
 
-  it('renders DocsLink as a Markdown link, inline and as a block', () => {
-    expect(render('Otherwise, <DocsLink href="/components/wordmark">p-wordmark</DocsLink> has to be used.')).toBe(
-      'Otherwise, [p-wordmark](/components/wordmark) has to be used.'
-    );
-    expect(render('<DocsLink href="/patterns/forms">Forms</DocsLink>')).toBe('[Forms](/patterns/forms)');
-  });
-
   it('throws when prose renders to nothing meaningful', () => {
     expect(() =>
       renderMdxToMarkdown(

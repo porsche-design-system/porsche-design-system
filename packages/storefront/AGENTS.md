@@ -134,7 +134,9 @@ and its dependencies on the Storefront. It is the migration list for the dual-ta
 
 - A new component gets a folder in its topic with a module of the same name, an `index.ts` and a row in the inventory.
   `tests/unit/specs/mdxComponents.spec.ts` checks them, and that a new Storefront dependency is added on purpose.
-- Prefer an existing component over raw PDS components in MDX, e.g. `Notification` over `PInlineNotification`.
+- Write Markdown wherever it can express something: links, inline code, bold. Use an MDX component instead of a PDS
+  component or raw HTML, e.g. `DependencyList` instead of a row of `PTag`s. `tests/unit/specs/mdxPages.spec.ts`
+  checks this, unused imports, tables of contents (from two `##` sections) and notification heading levels.
 - Framework-aware content (`FrameworkCodeBlock`, `FrameworkLink`, `FrameworkName`, `Notification` with
   `frameworks`) is resolved for every framework on the server; `framework/FrameworkContent` renders the selected one.
 

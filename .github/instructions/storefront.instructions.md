@@ -76,8 +76,9 @@ button:focus-visible {
 | **Code examples** | Must be accessible by default (correct labels, focus, keyboard behavior). |
 | **Headings** | Maintain logical heading order (no skipped levels). |
 
-MDX imports components only from `packages/storefront/src/components/mdx/<topic>/<Name>`, one folder per component. The
-folder's `README.md` is the inventory; add a row there for a new component (see `packages/storefront/AGENTS.md` → _MDX components_).
+MDX imports components only from `packages/storefront/src/components/mdx/<topic>/<Name>`, one folder per component, and
+writes Markdown instead of PDS components or raw HTML. The folder's `README.md` is the inventory; add a row there for a
+new component (see `packages/storefront/AGENTS.md` → _MDX components_).
 
 ## Generating configurator and example stories
 

@@ -31,9 +31,6 @@ const STOREFRONT_DEPENDENCIES = [
   '@/utils/splitVanillaJsCode',
 ];
 
-/** Imported by MDX until "Normalize MDX pages" (#4780) turns its uses into Markdown links. */
-const ALLOWED_MDX_IMPORTS = ['@/components/common/DocsLink'];
-
 const readDir = (...segments: string[]) =>
   fs.readdirSync(path.join(mdxComponentsDir, ...segments), { withFileTypes: true });
 
@@ -91,8 +88,7 @@ const storefrontImports = fs
 describe('MDX components', () => {
   it('are imported by MDX from their folder: @/components/mdx/<topic>/<Name>', () => {
     const invalidImports = componentImports.filter(
-      ({ source }) =>
-        !ALLOWED_MDX_IMPORTS.includes(source) && !componentFolders.includes(source.replace('@/components/mdx/', ''))
+      ({ source }) => !componentFolders.includes(source.replace('@/components/mdx/', ''))
     );
 
     expect(
