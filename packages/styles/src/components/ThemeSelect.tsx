@@ -1,21 +1,15 @@
+import { type ColorScheme, colorSchemeNameMap } from '@porsche-design-system/shared';
 import type { ChangeEvent, SelectHTMLAttributes } from 'react';
-import type { LightDarkTheme } from '../providers/ThemeProvider.tsx';
 
 type ThemeSelectProps = {
-  value: LightDarkTheme;
+  value: ColorScheme;
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 } & SelectHTMLAttributes<HTMLSelectElement>;
 
-export const themeMap: Record<LightDarkTheme, string> = {
-  light: 'Light',
-  dark: 'Dark',
-  'light-dark': 'Light Dark',
-};
-
-export const ThemeSelect = ({ value = 'light', onChange, ...rest }: ThemeSelectProps) => {
+export const ThemeSelect = ({ value = 'scheme-light', onChange, ...rest }: ThemeSelectProps) => {
   return (
     <select name="theme" value={value} onChange={onChange} {...rest}>
-      {Object.entries(themeMap).map(([theme, name]) => (
+      {Object.entries(colorSchemeNameMap).map(([theme, name]) => (
         <option key={theme} value={theme}>
           {name}
         </option>

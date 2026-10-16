@@ -1,12 +1,11 @@
-import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
+import type { ColorScheme, Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import { wrapCode } from '@porsche-design-system/story-generator';
-import type { StorefrontColorScheme } from '@/models/colorScheme';
 import { splitVanillaJsCode } from '@/utils/splitVanillaJsCode';
 
 export const createStackblitzMarkupFromSample = (
   frameworkMarkup: FrameworkMarkup,
   storefrontFramework: Framework,
-  storefrontTheme: StorefrontColorScheme
+  storefrontTheme: ColorScheme
 ): string => {
   let stackblitzMarkup = frameworkMarkup[storefrontFramework] ?? '';
 

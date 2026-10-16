@@ -8,7 +8,6 @@ export type {
   ExampleMarkupSample,
   ExamplePayload,
 } from './accessibility';
-export * from './colorScheme';
 export type {
   ConfiguratorTagNames,
   ElementConfig,

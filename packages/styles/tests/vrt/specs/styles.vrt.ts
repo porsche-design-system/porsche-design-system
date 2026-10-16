@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { COLOR_SCHEMES, type ColorScheme } from '@porsche-design-system/shared';
 import {
   viewportWidthL,
   viewportWidthM,
@@ -8,10 +9,7 @@ import {
   viewportWidthXXL,
   viewportWidthXXS,
 } from '@porsche-design-system/shared/testing';
-import { themeMap } from '../../../src/components/ThemeSelect';
 import { styleSolutions, styles } from '../../../src/routes';
-
-const themes = Object.keys(themeMap) as (keyof typeof themeMap)[];
 
 const stylesToExclude: (typeof styles)[number][] = ['motion', 'focus-visible'];
 
@@ -32,41 +30,44 @@ const getViewportsForStyle = (style: (typeof styles)[number]): number[] => {
   return styleViewportMap[style] ?? [viewportWidthM];
 };
 
-const getThemesForStyle = (style: string): typeof themes => {
+const getColorSchemesForStyle = (style: string): readonly ColorScheme[] => {
   if (style === 'media-query') {
-    return ['light'];
+    return ['scheme-light'];
   }
-  return themes;
+  return COLOR_SCHEMES;
 };
 
+// The name a color scheme is captured under, e.g. `light-dark` for `scheme-light-dark`
+const getThemeName = (colorScheme: ColorScheme): string => colorScheme.replace('scheme-', '');
+
 // For light-dark theme, we need to test both color scheme preferences
-const getColorSchemeVariants = (theme: string): ('light' | 'dark')[] => {
-  return theme === 'light-dark' ? ['light', 'dark'] : [theme as 'light' | 'dark'];
+const getColorSchemeVariants = (colorScheme: ColorScheme): ('light' | 'dark')[] => {
+  return colorScheme === 'scheme-light-dark' ? ['light', 'dark'] : [colorScheme === 'scheme-dark' ? 'dark' : 'light'];
 };
 
 const stylesToTest = styles.filter((style) => !stylesToExclude.includes(style));
 
 for (const style of stylesToTest) {
   test.describe(`Style: ${style}`, () => {
-    for (const theme of getThemesForStyle(style)) {
-      test.describe(`Theme: ${theme}`, () => {
+    for (const theme of getColorSchemesForStyle(style)) {
+      test.describe(`Theme: ${getThemeName(theme)}`, () => {
         for (const styleSolution of styleSolutions) {
           for (const viewportWidth of getViewportsForStyle(style)) {
             for (const colorScheme of getColorSchemeVariants(theme)) {
               const testName =
-                theme === 'light-dark'
+                theme === 'scheme-light-dark'
                   ? `${styleSolution} should have no visual regression for viewport ${viewportWidth} with prefers-color-scheme: ${colorScheme}`
                   : `${styleSolution} should have no visual regression for viewport ${viewportWidth}`;
 
               // Compare light-dark snapshots against the corresponding light/dark snapshots
               const snapshotName =
-                theme === 'light-dark'
+                theme === 'scheme-light-dark'
                   ? `${style}-${viewportWidth}-theme-${colorScheme}.png`
-                  : `${style}-${viewportWidth}-theme-${theme}.png`;
+                  : `${style}-${viewportWidth}-theme-${getThemeName(theme)}.png`;
 
               test(testName, async ({ page }) => {
                 // Emulate color scheme before navigation for light-dark theme
-                if (theme === 'light-dark') {
+                if (theme === 'scheme-light-dark') {
                   await page.emulateMedia({ colorScheme });
                 }
 
@@ -75,7 +76,7 @@ for (const style of stylesToTest) {
                 const themeSelect = page.locator('select[name="theme"]');
                 await themeSelect.selectOption(theme);
                 await page.waitForFunction(
-                  (expectedTheme) => document.documentElement.classList.contains(`scheme-${expectedTheme}`),
+                  (expectedTheme) => document.documentElement.classList.contains(expectedTheme),
                   theme
                 );
 

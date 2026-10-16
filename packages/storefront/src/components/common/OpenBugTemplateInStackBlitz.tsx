@@ -7,23 +7,22 @@ import {
   type SegmentedControlChangeEventDetail,
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
-import { FRAMEWORKS, type Framework, frameworkNameMap } from '@porsche-design-system/shared';
+import { type ColorScheme, FRAMEWORKS, type Framework, frameworkNameMap } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import { wrapCode } from '@porsche-design-system/story-generator';
 import React, { useState } from 'react';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
-import type { StorefrontColorScheme } from '@/models/colorScheme';
 
 export const OpenBugTemplateInStackBlitz = () => {
   const [selectedFramework, setSelectedFramework] = useState<Framework>('vanilla-js');
-  const [selectedTheme, setSelectedTheme] = useState<StorefrontColorScheme>('scheme-light');
+  const [selectedTheme, setSelectedTheme] = useState<ColorScheme>('scheme-light');
 
   const onFrameworkChange = (e: CustomEvent<SegmentedControlChangeEventDetail>) => {
     setSelectedFramework(e.detail.value as Framework);
   };
 
   const onUpdateTheme = (e: CustomEvent<SelectChangeEventDetail>) => {
-    setSelectedTheme(e.detail.value as StorefrontColorScheme);
+    setSelectedTheme(e.detail.value as ColorScheme);
   };
 
   const onOpenInStackblitz = () => {

@@ -1,10 +1,5 @@
-import type { CodeSample, Framework } from '@porsche-design-system/shared';
-import {
-  type ColorScheme,
-  getStoryMarkup,
-  type HTMLTagOrComponent,
-  type Story,
-} from '@porsche-design-system/story-generator';
+import type { CodeSample, ColorScheme, Framework } from '@porsche-design-system/shared';
+import { getStoryMarkup, type HTMLTagOrComponent, type Story } from '@porsche-design-system/story-generator';
 import type { Root } from 'mdast';
 import { escapeCell, leadSentence, markdownTable } from '../../shared/markdown';
 import type { SkillTree } from '../../shared/skillTree';

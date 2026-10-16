@@ -46,6 +46,9 @@ npm run test:unit:shared
 - `src/models/framework.ts` is the one framework vocabulary of the repository: `Framework` keys (`vanilla-js`, …) are
   used everywhere, and names, package suffixes (`js`) and wrapper package names are looked up there instead of being
   mapped again in the Storefront or the skills.
+- `src/models/colorScheme.ts` holds the color schemes pages and examples switch between, as their PDS classes
+  (`scheme-light`, `scheme-dark`, `scheme-light-dark`), with their display names. The Storefront, the story
+  generator, StackBlitz, the skills and the preview apps of the wrappers and `styles` use it instead of listing them.
 
 ## Testing Expectations
 

@@ -3,13 +3,14 @@ import { onMounted, provide, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import '@porsche-design-system/shared/css/styles.css';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
-import { type Theme, themeInjectionKey } from './main';
+import { COLOR_SCHEMES, type ColorScheme } from '@porsche-design-system/shared';
+import { themeInjectionKey } from './main';
 import { routes } from './router';
 
 const router = useRouter();
 const route = ref<string>('');
-const theme = ref<Theme>('scheme-light-dark');
-const themes: Theme[] = ['scheme-light', 'scheme-dark', 'scheme-light-dark'];
+const theme = ref<ColorScheme>('scheme-light-dark');
+const themes = COLOR_SCHEMES;
 const isWithinIFrame: boolean = window.location !== window.parent.location;
 
 provide(themeInjectionKey, theme);

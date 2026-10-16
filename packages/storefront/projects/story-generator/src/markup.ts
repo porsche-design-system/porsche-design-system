@@ -1,5 +1,4 @@
-import type { Framework } from '@porsche-design-system/shared';
-import type { ColorScheme } from './colorScheme';
+import type { ColorScheme, Framework } from '@porsche-design-system/shared';
 import { createSnippetMarkup } from './createSnippetMarkup';
 import type { HTMLTagOrComponent } from './element';
 import { generateAngularMarkup, getAngularCode } from './generateAngularMarkup';
