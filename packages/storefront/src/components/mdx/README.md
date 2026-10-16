@@ -49,6 +49,7 @@ The Markdown column is the output planned in the design. _Proposed_ marks compon
 | `Code`           | Inline code that doesn't wrap, or a value that isn't selectable.                 | _Proposed:_ inline code.                                                         | –                                             |
 | `DependencyList` | The dependencies a guide is based on, e.g. `react@19`.                           | A list of `name@version`.                                                        | –                                             |
 | `DownloadList`   | Files in `public/` to download.                                                  | _Proposed:_ a list of links to the files.                                        | –                                             |
+| `Flag`           | A decorative flag in front of a heading, e.g. the script of a pangram.           | Nothing; the text names what it stands for.                                      | –                                             |
 
 ### `framework/` Content that follows the selected framework
 
@@ -107,9 +108,9 @@ The tables render their entries through `MetaTable.tsx` and their descriptions t
 
 Candidates for plain Markdown before they get a Markdown implementation of their own.
 
-| Component                     | Purpose                                                    | Markdown                         | Storefront dependencies |
-| ----------------------------- | ---------------------------------------------------------- | -------------------------------- | ----------------------- |
-| `BrowserSupport`              | The browser versions a component needs.                    | A table.                         | –                       |
-| `SkillFacts`                  | What a skill may do, on every skill page.                  | _Proposed:_ a table.             | –                       |
-| `Pangram`                     | A pangram in a script, in three font weights, with a flag. | _Proposed:_ the pangram as text. | –                       |
-| `OpenBugTemplateInStackBlitz` | Opens a bug report template in StackBlitz.                 | A link.                          | `ThemeSelect`           |
+| Component                     | Purpose                                       | Markdown                         | Storefront dependencies |
+| ----------------------------- | --------------------------------------------- | -------------------------------- | ----------------------- |
+| `BrowserSupport`              | The browser versions a component needs.       | A table.                         | –                       |
+| `SkillFacts`                  | What a skill may do, on every skill page.     | _Proposed:_ a table.             | –                       |
+| `Pangram`                     | A pangram in a script, in three font weights. | _Proposed:_ the pangram as text. | –                       |
+| `OpenBugTemplateInStackBlitz` | Opens a bug report template in StackBlitz.    | A link.                          | `ThemeSelect`           |

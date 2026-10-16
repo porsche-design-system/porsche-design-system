@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 import { Pangram } from '@/components/mdx/widgets/Pangram';
 import { Notification } from '@/components/mdx/content/Notification';
+import { Flag } from '@/components/mdx/content/Flag';
 
 export const metadata = {
   title: 'Typography - Must Know',
@@ -83,31 +84,31 @@ express legitimate cases like a Japanese pull-quote inside an English document. 
   height, x-height, vertical metrics).
 </Notification>
 
-### Latin
+### <Flag name="gb" /> Latin
 
 > **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
 
 <Pangram lang="en" />
 
-### Vietnamese
+### <Flag name="vn" /> Vietnamese
 
 > **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
 
 <Pangram lang="vi" />
 
-### Greek & Coptic
+### <Flag name="gr" /> Greek & Coptic
 
 > **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
 
 <Pangram lang="el" />
 
-### Cyrillic
+### <Flag name="ru" /> Cyrillic
 
 > **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
 
 <Pangram lang="ru" />
 
-### Arabic
+### <Flag name="sa" /> Arabic
 
 > **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
 
@@ -115,31 +116,31 @@ express legitimate cases like a Japanese pull-quote inside an English document. 
 
 ## System fallback
 
-### Simplified Chinese
+### <Flag name="cn" /> Simplified Chinese
 
 > **macOS/iOS:** `PingFang SC`, **Windows:** `Microsoft YaHei`, **Linux/Android/ChromeOS:** `Noto Sans SC`
 
 <Pangram lang="zh-Hans" />
 
-### Traditional Chinese
+### <Flag name="tw" /> Traditional Chinese
 
 > **macOS/iOS:** `PingFang TC`, **Windows:** `Microsoft JhengHei`, **Linux/Android/ChromeOS:** `Noto Sans TC`
 
 <Pangram lang="zh-Hant" />
 
-### Japanese
+### <Flag name="jp" /> Japanese
 
 > **macOS/iOS:** `Hiragino Sans`, **Windows:** `Yu Gothic`, **Linux/Android/ChromeOS:** `Noto Sans JP`
 
 <Pangram lang="ja" />
 
-### Korean
+### <Flag name="kr" /> Korean
 
 > **macOS/iOS:** `Apple SD Gothic Neo`, **Windows:** `Malgun Gothic`, **Linux/Android/ChromeOS:** `Noto Sans KR`
 
 <Pangram lang="ko" />
 
-### Thai
+### <Flag name="th" /> Thai
 
 > **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next (DB Heavent)`
 
