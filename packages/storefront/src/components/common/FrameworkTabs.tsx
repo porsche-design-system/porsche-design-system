@@ -1,8 +1,9 @@
 'use client';
 
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { type FrameworkWithNext, frameworkNameMap, frameworks } from '@/models/framework';
+import { FRAMEWORKS_WITH_NEXT, type FrameworkWithNext, frameworkWithNextNameMap } from '@/models/framework';
 
 type FrameworkTabsProps = {
   // Additionally offer a Next tab, for content that has a Next.js specific variant.
@@ -20,7 +21,7 @@ type FrameworkTabsProps = {
  */
 export const FrameworkTabs = ({ next, label, className }: FrameworkTabsProps) => {
   const { storefrontFramework, framework, setStorefrontFramework } = useStorefrontFramework();
-  const options: readonly FrameworkWithNext[] = next ? [...frameworks, 'next'] : frameworks;
+  const options: readonly FrameworkWithNext[] = next ? FRAMEWORKS_WITH_NEXT : FRAMEWORKS;
   // Next stays selected only while a page offers it, otherwise the framework it maps to takes over.
   const selectedFramework = options.includes(storefrontFramework) ? storefrontFramework : framework;
 
@@ -35,7 +36,7 @@ export const FrameworkTabs = ({ next, label, className }: FrameworkTabsProps) =>
     >
       {options.map((option) => (
         <button key={option} type="button">
-          {frameworkNameMap[option]}
+          {frameworkWithNextNameMap[option]}
         </button>
       ))}
     </PTabsBar>

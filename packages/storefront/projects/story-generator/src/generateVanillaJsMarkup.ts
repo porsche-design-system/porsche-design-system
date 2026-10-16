@@ -1,13 +1,8 @@
+import type { ColorScheme } from '@porsche-design-system/shared';
 import { camelCase, kebabCase } from 'change-case';
 import type { CSSProperties } from 'react';
-import type { StorefrontColorScheme } from '@/models/colorScheme';
-import type { FrameworkConfiguratorMarkup } from '@/models/framework';
-import type {
-  ElementConfig,
-  EventConfig,
-  HTMLElementOrComponentProps,
-  HTMLTagOrComponent,
-} from '@/utils/generator/generator';
+import type { FrameworkConfiguratorMarkup } from './configuratorMarkup';
+import type { ElementConfig, EventConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } from './element';
 
 export const getVanillaJsCode = (
   { markup, states, eventHandlers }: FrameworkConfiguratorMarkup['vanilla-js'],
@@ -15,7 +10,7 @@ export const getVanillaJsCode = (
     isFullConfig,
     theme,
     scriptAttributes = '',
-  }: { isFullConfig: boolean; theme: StorefrontColorScheme; scriptAttributes?: string } = {
+  }: { isFullConfig: boolean; theme: ColorScheme; scriptAttributes?: string } = {
     isFullConfig: false,
     theme: 'scheme-light',
   }

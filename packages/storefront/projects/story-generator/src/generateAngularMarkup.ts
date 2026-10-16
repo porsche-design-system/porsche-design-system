@@ -1,13 +1,8 @@
-import type { FrameworkConfiguratorMarkup } from '@/models/framework';
-import type { StoryState } from '@/models/story';
-import { isSelfClosingTag, specialProps } from '@/utils/generator/generateVanillaJsMarkup';
-import type {
-  ElementConfig,
-  EventConfig,
-  HTMLElementOrComponentProps,
-  HTMLTagOrComponent,
-} from '@/utils/generator/generator';
 import { camelCase } from 'change-case';
+import type { FrameworkConfiguratorMarkup } from './configuratorMarkup';
+import type { ElementConfig, EventConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } from './element';
+import { isSelfClosingTag, specialProps } from './generateVanillaJsMarkup';
+import type { StoryState } from './story';
 
 export const getAngularCode = ({
   imports,

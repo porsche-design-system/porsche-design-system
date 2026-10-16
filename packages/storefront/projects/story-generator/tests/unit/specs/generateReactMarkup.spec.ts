@@ -3,7 +3,7 @@ import {
   generateReactControlledScript,
   generateReactMarkup,
   generateReactProperties,
-} from '../../../src/utils/generator/generateReactMarkup';
+} from '../../../src/generateReactMarkup';
 import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateReactMarkup()', () => {

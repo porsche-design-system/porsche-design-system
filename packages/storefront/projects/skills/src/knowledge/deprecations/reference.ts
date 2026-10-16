@@ -1,5 +1,5 @@
+import type { Framework } from '@porsche-design-system/shared';
 import { escapeCell, markdownTable } from '../../shared/markdown';
-import type { Framework } from '../../shared/skillTree';
 import { localPorscheDesignSystemVersion } from '../../shared/version';
 import { type DeprecationEntry, type DeprecationSource, USAGE_KINDS, type UsageKind } from './types';
 
@@ -63,7 +63,7 @@ const COMPONENT_GUIDANCE: Record<Framework, Record<ComponentUsageKind, string>> 
     event: 'Inspect Vue listeners corresponding to the named PDS event.',
     slot: 'Inspect `slot` attributes and default content rendered into the owning PDS component.',
   },
-  js: {
+  'vanilla-js': {
     component: 'Inspect PDS custom-element tags and calls that create the named element.',
     prop: 'Inspect attributes, property assignments and `setAttribute` calls on anchored PDS elements and wrappers.',
     propValue:

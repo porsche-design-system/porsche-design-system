@@ -1,9 +1,9 @@
 import type { FrameworkMarkup } from '@porsche-design-system/shared';
-import type { A11yNode, ExamplePayload } from '@/models/accessibilityMeta';
-import type { StoryState } from '@/models/story';
-import { createSnippetMarkup } from '@/utils/generator/createSnippetMarkup';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
-import { renderExampleComments } from '@/utils/generator/renderExampleComments';
+import type { A11yNode, ExamplePayload } from './accessibility';
+import { createSnippetMarkup } from './createSnippetMarkup';
+import type { HTMLTagOrComponent } from './element';
+import { renderExampleComments } from './renderExampleComments';
+import type { StoryState } from './story';
 
 type PayloadContext = {
   tag: string;

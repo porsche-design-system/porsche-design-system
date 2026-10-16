@@ -1,9 +1,8 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { CodeSample } from '@porsche-design-system/shared';
+import type { HTMLTagOrComponent, SlotStories, Story } from '@porsche-design-system/story-generator';
 import type { ComponentType } from 'react';
 import type { ComponentAccessibilityMeta } from '@/models/accessibilityMeta';
-import type { SlotStories, Story } from '@/models/story';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
 /**
  * Meta describing a single example on a component's `examples` page.

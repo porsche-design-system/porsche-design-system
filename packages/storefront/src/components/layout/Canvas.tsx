@@ -10,6 +10,7 @@ import {
   PLink,
   PLinkPure,
 } from '@porsche-design-system/components-react/ssr';
+import type { ColorScheme } from '@porsche-design-system/shared';
 import { breakpointMd, breakpointSm } from '@porsche-design-system/tokens';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
@@ -25,7 +26,6 @@ import { useFocusMainContentOnRouteChange } from '@/hooks/useFocusMainContentOnR
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontVersion } from '@/hooks/useStorefrontVersion';
 import { useTextZoom } from '@/hooks/useTextZoom';
-import type { StorefrontColorScheme } from '@/models/colorScheme';
 import type { StorefrontDirection } from '@/models/dir';
 import type { StorefrontTextZoom } from '@/models/textZoom';
 
@@ -167,7 +167,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
           </PHeading>
           <ThemeSelect
             value={storefrontColorScheme}
-            onThemeChange={(e): void => setStorefrontColorScheme(e.detail.value as StorefrontColorScheme)}
+            onThemeChange={(e): void => setStorefrontColorScheme(e.detail.value as ColorScheme)}
             compact={true}
           />
           <DirectionSelect

@@ -1,6 +1,6 @@
+import { type Framework, frameworkSuffixMap } from '@porsche-design-system/shared';
 import { getSkillName } from '../registry';
 import { renderFrontmatter } from '../shared/frontmatter';
-import type { Framework } from '../shared/skillTree';
 import { localPorscheDesignSystemVersion } from '../shared/version';
 import { rawMetaReference } from './components/section';
 import { rawScssReference, rawTailwindcssReference } from './packageSkills';
@@ -27,7 +27,7 @@ export const ACTIVATION_DESCRIPTION =
  */
 const renderIntro = (framework: Framework): string => {
   const peerNote =
-    framework === 'js'
+    framework === 'vanilla-js'
       ? ''
       : " The wrapper's own `meta` and `scss` are re-export shims of the same-version `@porsche-design-system/components-js` peer, so those two point at the peer directly.";
   return [
@@ -138,7 +138,7 @@ export const buildSkillMd = (framework: Framework, sections: SkillMdSections): s
   return [
     frontmatter,
     '',
-    `# Porsche Design System (\`${framework}\`)`,
+    `# Porsche Design System (\`${frameworkSuffixMap[framework]}\`)`,
     '',
     renderIntro(framework),
     '',

@@ -1,4 +1,4 @@
-import type { Framework as StorefrontFramework } from '@porsche-design-system/shared';
+import type { Framework } from '@porsche-design-system/shared';
 import type {
   Blockquote,
   Heading,
@@ -23,15 +23,6 @@ import { toString as mdastToString } from 'mdast-util-to-string';
 import { gfm } from 'micromark-extension-gfm';
 import { mdxjs } from 'micromark-extension-mdxjs';
 import { escapeCell, markdownTable } from '../../shared/markdown';
-import type { Framework } from '../../shared/skillTree';
-
-/** Maps the skill's `js` identifier to the storefront's `vanilla-js`. */
-const STOREFRONT_FRAMEWORK: Record<Framework, StorefrontFramework> = {
-  js: 'vanilla-js',
-  angular: 'angular',
-  react: 'react',
-  vue: 'vue',
-};
 
 const NOTIFICATION_COMPONENTS = new Set(['Notification', 'FrameworkNotification']);
 
@@ -58,10 +49,10 @@ const stringAttribute = (node: MdxJsxElement, name: string): string | undefined 
  * Reads literal framework names without evaluating the MDX expression. Invalid input matches no
  * framework.
  */
-const showForFrameworks = (node: MdxJsxElement): StorefrontFramework[] => {
+const showForFrameworks = (node: MdxJsxElement): Framework[] => {
   const expression = attribute(node, 'showForFrameworks')?.value;
   const raw = typeof expression === 'object' && expression ? expression.value : '';
-  return [...raw.matchAll(/'([^']+)'|"([^"]+)"/g)].map((match) => (match[1] ?? match[2]) as StorefrontFramework);
+  return [...raw.matchAll(/'([^']+)'|"([^"]+)"/g)].map((match) => (match[1] ?? match[2]) as Framework);
 };
 
 const toLink = (node: MdxJsxElement, framework: Framework): Link => ({
@@ -74,7 +65,7 @@ const toLink = (node: MdxJsxElement, framework: Framework): Link => ({
  * Converts notifications to blockquotes and drops framework-gated content from other variants.
  */
 const toNotification = (node: MdxJsxElement, framework: Framework): RootContent[] => {
-  if (node.name === 'FrameworkNotification' && !showForFrameworks(node).includes(STOREFRONT_FRAMEWORK[framework])) {
+  if (node.name === 'FrameworkNotification' && !showForFrameworks(node).includes(framework)) {
     return [];
   }
 
@@ -369,7 +360,7 @@ const render = (tree: Root, framework: Framework): string => {
  * @param label optional source identifier (e.g. `p-button › usage`) used to give a failure an
  *   actionable message.
  */
-export const renderMdxToMarkdown = (tree: Root, framework: Framework = 'js', label?: string): string => {
+export const renderMdxToMarkdown = (tree: Root, framework: Framework = 'vanilla-js', label?: string): string => {
   const markdown = render(tree, framework);
   if (isMeaningless(markdown)) {
     throw new Error(`MDX rendered to nothing meaningful${label ? ` for ${label}` : ''} — review the source prose.`);
@@ -380,7 +371,7 @@ export const renderMdxToMarkdown = (tree: Root, framework: Framework = 'js', lab
 /**
  * Non-throwing variant for optional prose; returns `null` when no meaningful content remains.
  */
-export const tryRenderMdxToMarkdown = (tree: Root, framework: Framework = 'js'): string | null => {
+export const tryRenderMdxToMarkdown = (tree: Root, framework: Framework = 'vanilla-js'): string | null => {
   const markdown = render(tree, framework);
   return isMeaningless(markdown) ? null : markdown;
 };

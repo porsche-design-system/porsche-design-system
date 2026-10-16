@@ -1,32 +1,31 @@
-import { camelCase, pascalCase } from 'change-case';
-import type { FrameworkConfiguratorMarkup } from '@/models/framework';
-import type { StoryState } from '@/models/story';
-import { isSelfClosingTag } from '@/utils/generator/generateVanillaJsMarkup';
-import type {
-  ElementConfig,
-  EventConfig,
-  HTMLElementOrComponentProps,
-  HTMLTagOrComponent,
-} from '@/utils/generator/generator';
+import { pascalCase } from 'change-case';
+import type { FrameworkConfiguratorMarkup } from './configuratorMarkup';
+import type { ElementConfig, EventConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } from './element';
+import { isSelfClosingTag } from './generateVanillaJsMarkup';
+import type { StoryState } from './story';
 
-export const getVueCode = ({ imports, states, eventHandlers, markup, style }: FrameworkConfiguratorMarkup['vue']) =>
-  `<script setup lang="ts">\n${imports ? imports : ''}\n${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
+export const getReactCode = ({
+  imports,
+  states,
+  eventHandlers,
+  markup,
+}: FrameworkConfiguratorMarkup['react']) => `import React from 'react';${imports ? imports : ''}
 
-<template>
+export const Example = () => {${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}
+  return (
+    <>
 ${markup}
-</template>${style ? `\n${style}` : ''}`;
+    </>
+  )
+}`;
 
-export const generateVueMarkup = (
+export const generateReactMarkup = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
   initialState: StoryState<HTMLTagOrComponent>,
-  indentLevel = 1
-): FrameworkConfiguratorMarkup['vue'] => {
-  const results = configs.map((config) => createVueMarkup(config, initialState, indentLevel));
+  indentLevel = 3
+): FrameworkConfiguratorMarkup['react'] => {
+  const results = configs.map((config) => createReactMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
-  const style = results
-    .filter(({ style }) => style !== '')
-    .map(({ style }) => style)
-    .join('\n\n');
   const states = results
     .flatMap(({ states }) => states)
     .filter((state) => state)
@@ -39,45 +38,25 @@ export const generateVueMarkup = (
     allImports.push(...types.map((t) => `type ${t}`));
   }
 
-  const imports = `${states.length > 0 ? "  import { ref } from 'vue';\n" : ''}${
-    allImports.length > 0 ? `  import { ${allImports.join(', ')} } from '@porsche-design-system/components-vue';` : ''
+  const imports = `${states.length > 0 ? "\nimport { useState } from 'react';" : ''}${
+    allImports.length > 0 ? `\nimport { ${allImports.join(', ')} } from '@porsche-design-system/components-react';` : ''
   }`;
 
-  return { imports, states, eventHandlers, markup, style };
+  return { imports, states, eventHandlers, markup };
 };
 
-// TODO: style tags need to be moved out of <template>
-const createVueMarkup = (
+const createReactMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 0
-): {
-  markup: string;
-  states: string[];
-  eventHandlers: string[];
-  pdsComponents: string[];
-  types: string[];
-  style: string;
-} => {
-  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [], types: [], style: '' };
+): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[]; types: string[] } => {
+  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [], types: [] };
   const indent = '  '.repeat(indentLevel);
 
   if (typeof config === 'string')
-    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [], types: [], style: '' };
+    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [], types: [] };
 
   const { tag, properties = {}, events = {}, children = [] } = config;
-
-  if (tag === 'style') {
-    return {
-      markup: '',
-      states: [],
-      eventHandlers: [],
-      pdsComponents: [],
-      types: [],
-      style: `<style>${indent}${children}</style>`,
-    };
-  }
-
   const isPDSComponent = tag.startsWith('p-');
 
   let transformedTag: string = tag;
@@ -88,14 +67,12 @@ const createVueMarkup = (
   }
 
   const eventEntries: [string, EventConfig][] = Object.entries(events);
-  const propertiesString = generateVueProperties(properties, eventEntries);
+  const propertiesString = generateReactProperties(properties, eventEntries);
 
   const eventListenersString =
-    eventEntries.length > 0
-      ? ` ${eventEntries.map(([eventName]) => `@${camelCase(eventName.replace('on', ''))}="${eventName}"`).join(' ')}`
-      : '';
+    eventEntries.length > 0 ? ` ${eventEntries.map(([eventName]) => `${eventName}={${eventName}}`).join(' ')}` : '';
 
-  const childrenResults = children.map((child) => createVueMarkup(child, initialState, indentLevel + 1));
+  const childrenResults = children.map((child) => createReactMarkup(child, initialState, indentLevel + 1));
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
   const childStates = childrenResults.flatMap(({ states }) => states);
   const childEventHandlers = childrenResults.flatMap(({ eventHandlers }) => eventHandlers);
@@ -104,31 +81,40 @@ const createVueMarkup = (
 
   const markup =
     children.length > 0
-      ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}>\n${childMarkup}\n${'  '.repeat(indentLevel)}</${transformedTag}>`
+      ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}>\n${tag === 'style' ? `{\`${childMarkup}\`}` : childMarkup}\n${'  '.repeat(indentLevel)}</${transformedTag}>`
       : isSelfClosingTag(tag)
         ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString} />`
         : `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}></${transformedTag}>`;
 
-  const scripts = eventEntries.length > 0 ? generateVueControlledScript(tag, eventEntries, initialState) : null;
+  const scripts = eventEntries.length > 0 ? generateReactControlledScript(tag, eventEntries, initialState) : null;
   const states = scripts ? [scripts.states, ...childStates] : childStates;
   const eventHandlers = scripts ? [scripts.eventHandler, ...childEventHandlers] : childEventHandlers;
   const types = scripts ? [...scripts.types, ...childTypes] : childTypes;
 
-  return { markup, states, eventHandlers, pdsComponents: [...pdsComponents, ...childPDSComponents], types, style: '' };
+  return {
+    markup,
+    states,
+    eventHandlers,
+    types,
+    pdsComponents: [...pdsComponents, ...childPDSComponents],
+  };
 };
 
-type VueScripts = { states: string; eventHandler: string; types: string[] };
+type ReactScripts = { states: string; eventHandler: string; types: string[] };
 
-export const generateVueControlledScript = (
+export const generateReactControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
   initialState: StoryState<HTMLTagOrComponent>
-): VueScripts => {
+): ReactScripts => {
   const types: string[] = [];
   const states = eventEntries
     // Only create state if the current element's tagName is the same as the element the state is applied to e.g. don't create state for p-button onClick open flyout
     .filter(([_, { target }]) => tagName === target)
-    .map(([_, { prop }]) => `  const ${prop} = ref(${JSON.stringify((initialState?.properties as any)?.[prop])});`)
+    .map(
+      ([_, { prop }]) =>
+        `  const [${prop}, set${pascalCase(prop)}] = useState(${JSON.stringify((initialState?.properties as any)?.[prop])});`
+    )
     .join('\n');
 
   const eventHandler = eventEntries
@@ -136,11 +122,11 @@ export const generateVueControlledScript = (
       if (eventValueKey) {
         eventType && types.push(eventType);
         return `  const ${eventName} = (e: CustomEvent<${eventType}>) => {
-    ${prop}.value = ${negateValue ? '!' : ''}e.detail.${eventValueKey};
+    set${pascalCase(prop)}(${negateValue ? '!' : ''}e.detail.${eventValueKey});
   }`;
       }
       return `  const ${eventName} = () => {
-    ${prop}.value = ${toggleValue ? `!${prop}.value` : `${negateValue ? '!' : ''}${value}`};
+    set${pascalCase(prop)}(${toggleValue ? '(prev) => !prev' : `${negateValue ? '!' : ''}${value}`});
   }`;
     })
     .join('\n');
@@ -148,24 +134,23 @@ export const generateVueControlledScript = (
   return { states, eventHandler, types };
 };
 
-// TODO: Same replacements like in vanilla-js?
-export const generateVueProperties = (
+export const generateReactProperties = (
   properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
   eventEntries: [string, EventConfig][]
 ) => {
   return Object.entries(properties)
     .map(([key, value]) => {
       if (eventEntries.some(([_, { prop }]) => prop === key)) {
-        return ` :${key}="${key}"`;
+        return ` ${key}={${key}}`;
       }
-      if (typeof value === 'string') return ` ${key === 'className' ? 'class' : key}="${value}"`;
+      if (typeof value === 'string') return ` ${key}="${value}"`;
       if (typeof value === 'object') {
         const formattedObject = Object.entries(value ?? {})
           .map(([k, v]) => `'${k}': '${v}'`)
           .join(', ');
-        return ` :${key}="{${formattedObject}}"`;
+        return ` ${key}={{${formattedObject}}}`;
       }
-      return ` :${key}="${JSON.stringify(value)}"`;
+      return ` ${key}={${JSON.stringify(value)}}`;
     })
     .join('');
 };

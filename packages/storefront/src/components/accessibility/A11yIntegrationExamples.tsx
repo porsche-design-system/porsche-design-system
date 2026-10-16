@@ -1,8 +1,11 @@
 import type { Framework } from '@porsche-design-system/shared';
+import {
+  type AccessibilityExample,
+  type ExamplePayload,
+  resolveExamplePayload,
+} from '@porsche-design-system/story-generator';
 import { H2 } from '@/components/common/MdxTypography';
-import type { AccessibilityExample, ExamplePayload } from '@/models/accessibilityMeta';
 import { resolveFrameworkValues } from '@/models/framework';
-import { resolveExamplePayload } from '@/utils/generator/resolveExamplePayload';
 import { A11yIntegrationExamplesClient, type ResolvedAccessibilityExample } from './A11yIntegrationExamplesClient';
 
 const resolveFrameworkMarkup = (

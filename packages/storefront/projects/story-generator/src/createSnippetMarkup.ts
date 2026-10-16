@@ -1,14 +1,14 @@
 import type { FrameworkMarkup } from '@porsche-design-system/shared';
-import type { StoryState } from '@/models/story';
-import { generateAngularMarkup } from '@/utils/generator/generateAngularMarkup';
-import { generateReactMarkup } from '@/utils/generator/generateReactMarkup';
-import { generateVanillaJsMarkup } from '@/utils/generator/generateVanillaJsMarkup';
-import { generateVueMarkup } from '@/utils/generator/generateVueMarkup';
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+import type { ElementConfig, HTMLTagOrComponent } from './element';
+import { generateAngularMarkup } from './generateAngularMarkup';
+import { generateReactMarkup } from './generateReactMarkup';
+import { generateVanillaJsMarkup } from './generateVanillaJsMarkup';
+import { generateVueMarkup } from './generateVueMarkup';
+import type { StoryState } from './story';
 
 /**
  * Generates bare markup for all supported frameworks — the same element configs as
- * `createFrameworkMarkup`, but without the runnable-file scaffolding (HTML document, React/Angular
+ * `getStoryMarkup` with `output: 'example'`, but without the runnable-file scaffolding (HTML document, React/Angular
  * component shell, Vue SFC blocks) that the `get*Code` helpers add.
  *
  * Used for accessibility anti-pattern/recommended pairs, where the two sides must be diffable at a

@@ -4,6 +4,7 @@
     "paths": {
       "@porsche-design-system/shared": ["./src/index.ts"],
       "@porsche-design-system/shared/deprecation": ["./src/deprecation/index.ts"],
+      "@porsche-design-system/shared/models": ["./src/models/index.ts"],
       "@porsche-design-system/shared/testing": ["./src/testing/index.ts"],
       "@porsche-design-system/tokens": ["../tokens/src/index.ts"],
       "@porsche-design-system/emotion": ["../styles/projects/emotion/src/index.ts"],
