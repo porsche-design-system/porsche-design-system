@@ -26,12 +26,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   default light theme, which made icons practically invisible. The PDS light theme looks unchanged, and `.scheme-*`
   classes behave as before. To allow automatic darkening again, set `.scheme-light` on the `<html>` element.
   ([#4783](https://github.com/porsche-design-system/porsche-design-system/pull/4783))
+- **React SSR**: components from `@porsche-design-system/components-react/ssr` cache their styles per combination of
+  props instead of generating them on every server render, which reduces the server's CPU time per render. The rendered
+  markup is unchanged. ([#4788](https://github.com/porsche-design-system/porsche-design-system/pull/4788))
 
 ### Fixed
 
 - `Knowledge Skill`: links to Storefront pages the skill doesn't include led to an error page instead of the
   documentation; they now open the Storefront of the skill's version
   ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+- `Button`, `Drilldown`, `Link`, `Multi Select`, `Segmented Control`, `Select`, `Tabs`, `Tabs Bar`: colors could lose contrast in high contrast mode, including hover, highlighted and selected states.
+  ([#4775](https://github.com/porsche-design-system/porsche-design-system/pull/4775))
+- `Multi Select Option`: slotted content only took up the width of its own content, so it could not fill the option,
+  e.g. with `w-full`, and right-aligned elements were not aligned to the right edge
+  ([#4787](https://github.com/porsche-design-system/porsche-design-system/pull/4787))
 
 ## [4.8.0] - 2026-10-02
 

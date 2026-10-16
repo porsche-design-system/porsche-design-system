@@ -168,6 +168,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
       z-index: 2;
     }
 }
+
+@media(forced-colors:active) {
+    .scroller {
+      background: Canvas;
+    }
+}
 "
 `;
 
@@ -336,6 +342,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
 }
+
+@media(forced-colors:active) {
+    .scroller {
+      background: Canvas;
+    }
+}
 "
 `;
 
@@ -487,6 +499,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     }
     .dismiss-desktop {
       display: none;
+    }
+}
+
+@media(forced-colors:active) {
+    .scroller {
+      background: Canvas;
     }
 }
 "
@@ -671,6 +689,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
 }
+
+@media(forced-colors:active) {
+    .scroller {
+      background: Canvas;
+    }
+}
 "
 `;
 
@@ -840,6 +864,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       height: fit-content;
       place-self: center;
       z-index: 2;
+    }
+}
+
+@media(forced-colors:active) {
+    .scroller {
+      background: Canvas;
     }
 }
 "
@@ -1013,6 +1043,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       z-index: 2;
     }
 }
+
+@media(forced-colors:active) {
+    .scroller {
+      background: Canvas;
+    }
+}
 "
 `;
 
@@ -1182,6 +1218,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       height: fit-content;
       place-self: center;
       z-index: 2;
+    }
+}
+
+@media(forced-colors:active) {
+    .scroller {
+      background: Canvas;
     }
 }
 "
