@@ -1,0 +1,19 @@
+A product tile links to the detail page of a product, e.g. within a product list of the Porsche Shop. A tag and an
+icon-only button to add the product to the wishlist are placed in the `top` slot, which centers them vertically, and
+pushed apart via `ms-auto` on the button. `p-static-xs -m-static-xs` enlarges the target size of the button without
+changing its position. The product image is placed in the default slot and fills the available space via
+`grow basis-0 min-h-0 w-full object-contain`. The available colors, the product name and the price are wrapped in a
+single element in the `bottom` slot, which spans the full width via `grow` and stacks them centered.
+
+The `anchor` slot makes the whole Tile clickable and provides the accessible link to the product. The wishlist button
+and the color swatches are independent actions, so they opt in via `pointer-events-auto` and don't trigger the hover
+effect of the Tile. The color swatches are native radio buttons within a `radiogroup`, so they are selectable by mouse
+and keyboard without any JavaScript. They are styled via `appearance-none` and the `checked:`, `hover:` and
+`focus-visible:` variants. A transparent border and padding together with `bg-clip-content` provide a target size of
+24px while showing a 14px swatch.
+
+On hover of the `anchor`, the image zooms in via `group-has-[[slot=anchor]:hover]:scale-105`. The `motion-safe:` variant
+respects the reduced motion preference of the user.
+
+The Tailwind CSS counterpart lays out the rows via `flex flex-col gap-fluid-sm p-fluid-md` and stretches the product
+name as link over the tile. The wishlist button and the color swatches are placed above it via `relative z-2`.

@@ -1,0 +1,12 @@
+A model navigation tile links to the vehicles of a model, e.g. within the navigation of the Porsche Finder. The model
+name is placed in the `top` slot, the side view of the vehicle in the default slot and the fuel type in the `bottom`
+slot. `compact` reduces padding and gap, and the `anchor` slot makes the whole Tile clickable.
+
+At rest, the Tile is transparent via `background="none"` and blends into the surface it is placed on, so only its
+content is visible. On hover of the `anchor`, the Tile reveals its background via `has-[[slot=anchor]:hover]:bg-canvas`,
+while the vehicle moves slightly to the end via `group-has-[[slot=anchor]:hover]:translate-x-static-md`. The
+`pe-static-md` padding reserves the space for this movement. The `motion-safe:` variant respects the reduced motion
+preference of the user.
+
+The Tailwind CSS counterpart mirrors the `top`, default and `bottom` slots via `grid grid-rows-[auto_1fr_auto]`, the
+compact padding and gap via `p-fluid-sm gap-fluid-xs` and stretches the model name as link over the tile.

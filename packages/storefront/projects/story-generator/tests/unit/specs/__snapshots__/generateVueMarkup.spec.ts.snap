@@ -1,5 +1,35 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`generateVueMarkup() > should generate Vue markup only once for elements sharing their state 1`] = `
+{
+  "eventHandlers": "  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
+    open.value = e.detail.open;
+  }",
+  "imports": "  import { ref } from 'vue';
+  import { PAccordion, PText, type AccordionUpdateEventDetail } from '@porsche-design-system/components-vue';",
+  "markup": "  <div>
+    <PAccordion :open="open" @update="onUpdate">
+      <span slot="summary">
+        Some summary
+      </span>
+      <PText>
+        Some details
+      </PText>
+    </PAccordion>
+    <PAccordion :open="open" @update="onUpdate">
+      <span slot="summary">
+        Some summary
+      </span>
+      <PText>
+        Some details
+      </PText>
+    </PAccordion>
+  </div>",
+  "states": "  const open = ref(false);",
+  "style": "",
+}
+`;
+
 exports[`generateVueMarkup() > should generate correct Vue markup for button 1`] = `
 {
   "eventHandlers": "  const onClick = () => {

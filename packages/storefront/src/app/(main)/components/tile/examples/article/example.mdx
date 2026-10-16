@@ -1,0 +1,18 @@
+An article tile links to a news article, e.g. within the newsroom of porsche.com. The Tile has no padding, background or
+corner radius (`[--p-tile-px:0] [--p-tile-py:0] [--p-tile-radius:0]` and `background="none"`), so only the image is
+visible as a rounded area, while the Tile provides the clickable area and its focus indicator. Without padding, the
+corner radius of the Tile would clip the text at its corners, so the image gets its own radius via
+`overflow-clip rounded-3xl` on its container, which also clips the zooming image.
+
+The image is placed in the default slot and spans the full width via `self-stretch`. The category, the publication date,
+the share button, the heading and the teaser text are wrapped in a single element in the `bottom` slot, which spans the
+full width via `grow`. The publication date is marked up as `<time datetime="…">`. `p-static-xs -m-static-xs` enlarges
+the target size of the share button without changing its position.
+
+The `anchor` slot makes the whole Tile clickable and provides the accessible link to the article. The share button is an
+independent action, so it opts in via `pointer-events-auto` and doesn't trigger the hover effect of the Tile. On hover
+of the `anchor`, the image zooms in via `group-has-[[slot=anchor]:hover]:scale-105`. The `motion-safe:` variant respects
+the reduced motion preference of the user.
+
+The Tailwind CSS counterpart stacks image and text via `flex flex-col gap-fluid-sm` and stretches the heading as link
+over the tile without corner radius. The share button is placed above it via `relative z-2`.

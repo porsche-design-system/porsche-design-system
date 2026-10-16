@@ -1,0 +1,24 @@
+A call to action tile promotes a service with a mood image and a link to it, e.g. Porsche Connect on porsche.com. The
+image covers the whole `background` slot. Heading, text and link are placed in the `start` slot, which stacks them and
+centers them vertically. Its column takes up to half of the Tile, so the text wraps at the center of the Tile.
+`gradient="start"` ensures the legibility of the text on the image, and the `scheme-dark` class renders a dark gradient
+with light content independent of the color scheme of the page. `mt-fluid-sm` increases the space above the link. When
+the text needs more space than the aspect ratio provides, e.g. on small viewports, the Tile grows beyond it.
+
+The `anchor` slot makes the whole Tile clickable and provides the accessible link to discover Porsche Connect. The
+visible "Discover Porsche Connect" link duplicates it, so it is hidden from assistive technology and keyboard
+(`aria-hidden="true"` on the link and `tabindex="-1"` on its slotted anchor). It opts in via `pointer-events-auto` to
+show its own hover state.
+
+On hover of the `anchor` or the duplicated link, the image zooms in via
+`group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105`. The `motion-safe:` variant respects the reduced
+motion preference of the user.
+
+The Tailwind CSS counterpart mirrors the `start` and default slots via `grid grid-cols-[fit-content(50%)_1fr]` and
+stretches the heading as link over the tile, while the link is placed above it via `relative z-2`. The tile is the
+positioning context of the stretched link and can't clip its content without clipping the focus indicator, so the image
+is placed in a background layer via `absolute inset-0 -z-1`, which clips the zooming image to the radius via
+`overflow-clip rounded-[inherit]`. The gradient is applied to the start column via `bg-fade-to-r`, mirrored via
+`rtl:bg-fade-to-l` for right-to-left languages, and follows the radius via `rounded-s-[inherit]`. Negative margins let
+it bleed to the edges and fade out beyond the column, the padding compensates them, so the text keeps the width of the
+column.

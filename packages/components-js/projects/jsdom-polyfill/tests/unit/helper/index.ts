@@ -164,6 +164,10 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <p-text-list-item>Some text</p-text-list-item>
   </p-text-list>`,
   'p-textarea': `<p-textarea name="some-name" label="Some label"></p-textarea>`,
+  'p-tile': `<p-tile>
+    <a slot="anchor" href="#">Some label</a>
+    <p-text>Some text</p-text>
+  </p-tile>`,
   'p-toast': '<p-toast></p-toast>',
   'p-wordmark': '<p-wordmark></p-wordmark>',
   'p-ai-tag': '<p-ai-tag></p-ai-tag>',

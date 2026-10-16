@@ -937,6 +937,15 @@ exports[`should call validateProps() with correct parameters via render for p-te
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-tile > propTypes with ValidatorFunctions 1`] = `
+{
+  "aspectRatio": "breakpoint",
+  "background": "oneOf",
+  "compact": "breakpoint",
+  "gradient": "breakpoint",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-wordmark > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",

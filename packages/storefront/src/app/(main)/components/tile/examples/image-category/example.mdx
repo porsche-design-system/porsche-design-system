@@ -1,0 +1,17 @@
+An image category tile links to a category with a mood image, e.g. a model range on porsche.com. The image covers the
+whole `background` slot. The heading and an icon-only link are placed in the `bottom` slot, which centers them
+vertically, and pushed apart via `ms-auto` on the link. `gradient="bottom"` ensures the legibility of the heading on the
+image. The `scheme-dark` class renders a dark gradient with light content independent of the color scheme of the page,
+which suits most mood images.
+
+The `anchor` slot makes the whole Tile clickable and provides the accessible link to the category. The visible arrow
+link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` on the link and
+`tabindex="-1"` on its slotted anchor) but opts in via `pointer-events-auto` to show its own hover state.
+
+On hover of the `anchor` or the duplicated link, the image zooms in via
+`group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105`. The Tile clips the image to its corner radius.
+The `motion-safe:` variant respects the reduced motion preference of the user.
+
+The Tailwind CSS counterpart places the image in an absolutely positioned background element behind the content
+(`absolute inset-0 -z-1`), which clips the zooming image to the radius. The gradient is applied to the bottom row via
+`bg-fade-to-t`, its top padding `pt-fluid-lg` extends it above the heading.
