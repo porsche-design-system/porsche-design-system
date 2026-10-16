@@ -101,7 +101,9 @@ describe('client components', () => {
     .filter(([, source]) => /^\s*['"]use client['"]/.test(source));
 
   it('should be found', () => {
-    expect(clientFiles.map(([file]) => file)).toContain(path.join('components', 'common', 'WebsiteViewer.tsx'));
+    expect(clientFiles.map(([file]) => file)).toContain(
+      path.join('components', 'mdx', 'WebsiteViewer', 'WebsiteViewer.tsx')
+    );
   });
 
   // The package export holds every example – a value import would bundle all of them into the client.

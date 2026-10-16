@@ -14,9 +14,9 @@ import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 
 import React from 'react';
-import { CodeBlock } from '@/components/common/CodeBlock';
 import { DocsLink } from '@/components/common/DocsLink';
-import { H1, H2, H3, H4, H5, H6, P } from '@/components/common/MdxTypography';
+import { CodeBlock } from '@/components/mdx/shared/CodeBlock';
+import { H1, H2, H3, H4, H5, H6, P } from '@/components/mdx/shared/MdxTypography';
 import type { DocsHref } from '@/links';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

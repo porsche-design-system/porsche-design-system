@@ -101,7 +101,7 @@ configurator and examples pages backed by a colocated `{component}.stories.ts` f
 
 ```mdx
 import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
-import { Configurator } from '@/components/playground/Configurator';
+import { Configurator } from '@/components/mdx/Configurator/Configurator';
 
 <Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
 ```
@@ -117,9 +117,9 @@ import { Configurator } from '@/components/playground/Configurator';
 - Keep each example accessible by default, including keyboard support, visible focus, and proper accessible names.
 
 ```mdx
-import { ComponentStory } from '@/components/playground/ComponentStory';
+import { ComponentStory } from '@/components/mdx/ComponentStory/ComponentStory';
 import { componentStoryAdvanced } from '@/app/components/component/component.stories';
-import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentExample } from '@/components/mdx/ComponentExample/ComponentExample';
 import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
 ```
 

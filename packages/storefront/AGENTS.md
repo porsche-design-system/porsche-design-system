@@ -166,7 +166,7 @@ Use the configurator page when the component should expose a playground UI.
 
 ```mdx
 import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
-import { Configurator } from '@/components/playground/Configurator';
+import { Configurator } from '@/components/mdx/Configurator/Configurator';
 
 <Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
 ```
@@ -184,9 +184,9 @@ Use the examples page to showcase curated use cases:
 - `ComponentExample`: required for advanced examples that need custom logic or framework-specific source files.
 
 ```mdx
-import { ComponentStory } from '@/components/playground/ComponentStory';
+import { ComponentStory } from '@/components/mdx/ComponentStory/ComponentStory';
 import { componentStoryAdvanced } from '@/app/components/component/component.stories';
-import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentExample } from '@/components/mdx/ComponentExample/ComponentExample';
 import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
 ```
 

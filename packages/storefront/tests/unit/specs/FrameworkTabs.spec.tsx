@@ -1,7 +1,7 @@
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { FrameworkTabs } from '@/components/common/FrameworkTabs';
+import { FrameworkTabs } from '@/components/mdx/FrameworkTabs/FrameworkTabs';
 import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 

@@ -282,7 +282,7 @@ Output (vanilla-js):
 
 ```mdxjs
 import { flyoutSlotStories, flyoutStory } from "@/app/components/flyout/flyout.stories";
-import { Configurator } from "@/components/playground/Configurator";
+import { Configurator } from "@/components/mdx/Configurator/Configurator";
 <Configurator tagName="p-flyout" story={flyoutStory} slotStories={flyoutSlotStories} />
 ```
 

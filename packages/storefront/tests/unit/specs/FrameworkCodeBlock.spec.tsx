@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
+import { FrameworkCodeBlock } from '@/components/mdx/FrameworkCodeBlock/FrameworkCodeBlock';
 import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 

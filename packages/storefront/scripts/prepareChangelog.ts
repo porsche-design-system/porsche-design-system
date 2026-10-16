@@ -29,7 +29,7 @@ const prepareChangelog = (): void => {
       `\n<TableOfContents headings={${JSON.stringify(extractVersions(srcContent))}}></TableOfContents>\n$&`
     );
 
-  const content = `import { TableOfContents } from "@/components/common/TableOfContents";
+  const content = `import { TableOfContents } from "@/components/mdx/TableOfContents/TableOfContents";
 export const metadata = {
   title: 'Changelog - News',
   description: 'Stay up to date with the latest changes to the Porsche Design System.',
