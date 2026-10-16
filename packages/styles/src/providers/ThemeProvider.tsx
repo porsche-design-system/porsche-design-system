@@ -1,4 +1,4 @@
-import { COLOR_SCHEMES, type ColorScheme } from '@porsche-design-system/shared';
+import { COLOR_SCHEMES, type ColorScheme } from '@porsche-design-system/shared/models';
 import { createContext, type PropsWithChildren, useEffect, useState } from 'react';
 
 interface ThemeContextProps {

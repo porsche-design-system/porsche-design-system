@@ -49,6 +49,9 @@ npm run test:unit:shared
 - `src/models/colorScheme.ts` holds the color schemes pages and examples switch between, as their PDS classes
   (`scheme-light`, `scheme-dark`, `scheme-light-dark`), with their display names. The Storefront, the story
   generator, StackBlitz, the skills and the preview apps of the wrappers and `styles` use it instead of listing them.
+- Code that is typechecked before the build (root `typecheck`, see `docs/typecheck.md`) imports these from
+  `@porsche-design-system/shared/models`, not from the barrel: the barrel re-exports generated modules (`src/lib/`)
+  that don't exist in a fresh clone.
 
 ## Testing Expectations
 

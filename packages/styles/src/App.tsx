@@ -1,6 +1,6 @@
 import { ThemeProvider as EmotionThemeProvider, Global } from '@emotion/react';
 import { colorSchemeStyles } from '@porsche-design-system/emotion';
-import type { ColorScheme } from '@porsche-design-system/shared';
+import type { ColorScheme } from '@porsche-design-system/shared/models';
 import { Outlet } from 'react-router';
 import { emotionTheme } from './app/emotion/emotionTheme.ts';
 import { vanillaExtractTheme } from './app/vanilla-extract/theme.css';

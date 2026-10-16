@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { COLOR_SCHEMES, type ColorScheme } from '@porsche-design-system/shared';
+import { COLOR_SCHEMES, type ColorScheme } from '@porsche-design-system/shared/models';
 import {
   viewportWidthL,
   viewportWidthM,

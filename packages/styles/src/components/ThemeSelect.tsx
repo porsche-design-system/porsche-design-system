@@ -1,4 +1,4 @@
-import { type ColorScheme, colorSchemeNameMap } from '@porsche-design-system/shared';
+import { type ColorScheme, colorSchemeNameMap } from '@porsche-design-system/shared/models';
 import type { ChangeEvent, SelectHTMLAttributes } from 'react';
 
 type ThemeSelectProps = {
