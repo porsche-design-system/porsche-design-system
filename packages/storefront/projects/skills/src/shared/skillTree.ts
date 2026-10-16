@@ -6,8 +6,12 @@ import { resolveFrameworkPlaceholder } from './links';
 
 export const SKILL_STAGING_DIR = 'packages/storefront/projects/skills/generated';
 
+/** The staged tree of one framework, named by its suffix (`js`, not `vanilla-js`) like the skills in it. */
+export const stagedFrameworkDir = (framework: Framework): string =>
+  `${SKILL_STAGING_DIR}/${frameworkSuffixMap[framework]}`;
+
 export const stagedSkillDir = (skillId: SkillId, framework: Framework): string =>
-  `${SKILL_STAGING_DIR}/${frameworkSuffixMap[framework]}/skills/${getSkillName(skillId, framework)}`;
+  `${stagedFrameworkDir(framework)}/skills/${getSkillName(skillId, framework)}`;
 
 export const stagedSkillDirs = (skillId: SkillId): Record<Framework, string> =>
   Object.fromEntries(FRAMEWORKS.map((fw) => [fw, stagedSkillDir(skillId, fw)])) as Record<Framework, string>;

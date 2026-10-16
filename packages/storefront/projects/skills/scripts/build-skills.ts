@@ -3,7 +3,7 @@ import path from 'node:path';
 import { FRAMEWORKS } from '@porsche-design-system/shared';
 import type { StorefrontInputs } from '../src/generators';
 import { SKILL_IDS } from '../src/registry';
-import { SKILL_STAGING_DIR, stagedSkillDir } from '../src/shared/skillTree';
+import { stagedFrameworkDir, stagedSkillDir } from '../src/shared/skillTree';
 
 /**
  * Builds every registered skill's tree for every framework into `SKILL_STAGING_DIR`, from where each
@@ -23,7 +23,7 @@ const main = async (): Promise<void> => {
   const inputs: StorefrontInputs = { docsMeta: componentDocsMeta as unknown as StorefrontInputs['docsMeta'] };
 
   for (const framework of FRAMEWORKS) {
-    fs.rmSync(path.resolve(REPO_ROOT, SKILL_STAGING_DIR, framework), { recursive: true, force: true });
+    fs.rmSync(path.resolve(REPO_ROOT, stagedFrameworkDir(framework)), { recursive: true, force: true });
 
     for (const skillId of SKILL_IDS) {
       const relativeRoot = stagedSkillDir(skillId, framework);
