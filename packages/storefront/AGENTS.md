@@ -126,16 +126,17 @@ Storefront, and the skills generator turns the same routes into references or St
 
 ### MDX components
 
-Every component MDX imports lives in its own folder in `src/components/mdx/`, and MDX imports it from its file:
-`import { Notification } from '@/components/mdx/Notification/Notification';`. The folder's
+Every component MDX imports lives in `src/components/mdx/`, in a topic folder by how pages use it (`structure`,
+`content`, `framework`, `playground`, `examples`, `reference`, `widgets`), one folder per component. MDX imports
+it from that folder: `import { Notification } from '@/components/mdx/content/Notification';`. The
 [`README.md`](src/components/mdx/README.md) is the inventory: what each component is for, its planned Markdown output
 and its dependencies on the Storefront. It is the migration list for the dual-target registry (#4142).
 
-- A new component gets a folder with a module of the same name, and a row in the inventory;
-  `tests/unit/specs/mdxComponents.spec.ts` checks both and that MDX imports nothing else from `src/components/`.
+- A new component gets a folder in its topic with a module of the same name, an `index.ts` and a row in the inventory.
+  `tests/unit/specs/mdxComponents.spec.ts` checks them, and that a new Storefront dependency is added on purpose.
 - Prefer an existing component over raw PDS components in MDX, e.g. `Notification` over `PInlineNotification`.
-- Framework-aware content (`FrameworkCodeBlock`, `FrameworkLink`, `StorefrontFramework`, `Notification` with
-  `frameworks`) is resolved for every framework on the server; `shared/FrameworkContent` renders the selected one.
+- Framework-aware content (`FrameworkCodeBlock`, `FrameworkLink`, `FrameworkName`, `Notification` with
+  `frameworks`) is resolved for every framework on the server; `framework/FrameworkContent` renders the selected one.
 
 ## File Structure
 
@@ -146,7 +147,7 @@ src/
 │   ├── must-know/          # Guidelines (accessibility, etc.)
 │   └── ...
 ├── components/             # React components for the site
-│   ├── mdx/                # Components MDX imports, one folder each, with an inventory
+│   ├── mdx/                # Components MDX imports, by topic, one folder each, with an inventory
 │   └── common/             # Storefront chrome: navigation, tabs, selects, DocsLink
 ├── lib/                    # Utilities and helpers
 └── styles/                 # Global styles
@@ -181,7 +182,7 @@ Use the configurator page when the component should expose a playground UI.
 
 ```mdx
 import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
-import { Configurator } from '@/components/mdx/Configurator/Configurator';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 
 <Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
 ```
@@ -199,9 +200,9 @@ Use the examples page to showcase curated use cases:
 - `ComponentExample`: required for advanced examples that need custom logic or framework-specific source files.
 
 ```mdx
-import { ComponentStory } from '@/components/mdx/ComponentStory/ComponentStory';
+import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
 import { componentStoryAdvanced } from '@/app/components/component/component.stories';
-import { ComponentExample } from '@/components/mdx/ComponentExample/ComponentExample';
+import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
 import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
 ```
 

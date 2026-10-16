@@ -102,7 +102,7 @@ describe('client components', () => {
 
   it('should be found', () => {
     expect(clientFiles.map(([file]) => file)).toContain(
-      path.join('components', 'mdx', 'WebsiteViewer', 'WebsiteViewer.tsx')
+      path.join('components', 'mdx', 'examples', 'WebsiteViewer', 'WebsiteViewer.tsx')
     );
   });
 

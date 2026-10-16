@@ -2,14 +2,10 @@ import { PorscheDesignSystemProvider } from '@porsche-design-system/components-r
 import { fireEvent, render, screen } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { FrameworkCodeBlock } from '@/components/mdx/FrameworkCodeBlock/FrameworkCodeBlock';
-import { FrameworkLink } from '@/components/mdx/FrameworkLink/FrameworkLink';
-import { Notification } from '@/components/mdx/Notification/Notification';
-import {
-  FrameworkPackage,
-  FrameworkSkill,
-  StorefrontFramework,
-} from '@/components/mdx/StorefrontFramework/StorefrontFramework';
+import { Notification } from '@/components/mdx/content/Notification';
+import { FrameworkCodeBlock } from '@/components/mdx/framework/FrameworkCodeBlock';
+import { FrameworkLink } from '@/components/mdx/framework/FrameworkLink';
+import { FrameworkName, FrameworkPackage, FrameworkSkill } from '@/components/mdx/framework/FrameworkName';
 import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 
@@ -61,10 +57,10 @@ describe('framework-aware MDX components', () => {
     expect(getCode()).toHaveTextContent(/^npm install @porsche-design-system\/components-react$/);
   });
 
-  it('StorefrontFramework, FrameworkPackage and FrameworkSkill render the values of the selected framework', () => {
+  it('FrameworkName, FrameworkPackage and FrameworkSkill render the values of the selected framework', () => {
     renderWithFrameworkSwitch(
       <p data-testid="values">
-        <StorefrontFramework />|<StorefrontFramework format="name" />|<FrameworkPackage />|<FrameworkSkill />|
+        <FrameworkName />|<FrameworkName format="name" />|<FrameworkPackage />|<FrameworkSkill />|
         <FrameworkSkill skill="audit-deprecations" />
       </p>
     );

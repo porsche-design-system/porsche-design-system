@@ -4,28 +4,72 @@ import { describe, expect, it } from 'vitest';
 import { getImportSources, getMdxFiles, toRelativePath } from '../helpers/mdxDocs';
 
 const mdxComponentsDir = path.resolve(__dirname, '../../../src/components/mdx');
-const SHARED = 'shared';
+/** What Markdown syntax renders to, through `mdx-components.tsx`; MDX doesn't import it. */
+const ELEMENTS = 'elements';
+
+/**
+ * The Storefront modules the MDX components may depend on. The registry (#4142) has to take each one along or replace
+ * it, so a new dependency is a deliberate choice; an entry ending in `/` allows a folder.
+ */
+const STOREFRONT_DEPENDENCIES = [
+  '@/components/common/DocsLink',
+  '@/components/common/ThemeSelect',
+  '@/hooks/useResizeHandle',
+  '@/hooks/useStorefrontColorScheme',
+  '@/hooks/useStorefrontFramework',
+  '@/lib/stackblitz/createStackblitzMarkupFromSample',
+  '@/links',
+  '@/models/framework',
+  '@/models/partials',
+  '@/utils/examples',
+  '@/utils/exampleMediaOrigin',
+  '@/utils/getBasePath',
+  '@/utils/getFlags',
+  '@/utils/normalizeCodeBlock',
+  '@/utils/partials/',
+  '@/utils/porscheDesignSystemVersion',
+  '@/utils/splitVanillaJsCode',
+];
 
 /** Imported by MDX until "Normalize MDX pages" (#4780) turns its uses into Markdown links. */
-const ALLOWED_STOREFRONT_IMPORTS = ['@/components/common/DocsLink'];
+const ALLOWED_MDX_IMPORTS = ['@/components/common/DocsLink'];
 
-const componentFolders = fs
-  .readdirSync(mdxComponentsDir, { withFileTypes: true })
-  .filter((entry) => entry.isDirectory() && entry.name !== SHARED)
+const readDir = (...segments: string[]) =>
+  fs.readdirSync(path.join(mdxComponentsDir, ...segments), { withFileTypes: true });
+
+const topics = readDir()
+  .filter((entry) => entry.isDirectory() && entry.name !== ELEMENTS)
   .map(({ name }) => name)
   .sort();
 
-const sharedModules = fs
-  .readdirSync(path.join(mdxComponentsDir, SHARED))
-  .map((file) => path.parse(file).name)
+/** `content/Notification`, … */
+const componentFolders = topics
+  .flatMap((topic) =>
+    readDir(topic)
+      .filter((entry) => entry.isDirectory())
+      .map(({ name }) => `${topic}/${name}`)
+  )
   .sort();
 
-/** The first column of the inventory tables in the README: `Notification`, … – split at the `### Shared` section. */
+/** The modules next to the component folders of a topic, or in `elements/`: `framework/FrameworkContent.tsx`, … */
+const getHelpers = (folder: string) =>
+  readDir(folder)
+    .filter((entry) => entry.isFile() && /\.tsx?$/.test(entry.name))
+    .map(({ name }) => `${folder}/${name}`);
+
+const helpers = [ELEMENTS, ...topics].flatMap(getHelpers).sort();
+
+/** The first column of the tables of each `### topic/` section of the README: `Notification`, `FrameworkContent.tsx`. */
 const getInventory = () => {
   const readme = fs.readFileSync(path.join(mdxComponentsDir, 'README.md'), 'utf8');
-  const [components, shared] = readme.split('## Inventory')[1].split('### Shared');
-  const firstColumn = (markdown: string) => [...markdown.matchAll(/^\| `(\w+)`/gm)].map(([, name]) => name).sort();
-  return { components: firstColumn(components), shared: firstColumn(shared) };
+  return readme
+    .split(/^### /m)
+    .slice(1)
+    .flatMap((section) => {
+      const folder = /^`(\w+)\/`/.exec(section)?.[1];
+      return folder ? [...section.matchAll(/^\| `([\w.]+)`/gm)].map(([, name]) => `${folder}/${name}`) : [];
+    })
+    .sort();
 };
 
 const componentImports = getMdxFiles().flatMap((file) =>
@@ -34,37 +78,62 @@ const componentImports = getMdxFiles().flatMap((file) =>
     .map((source) => ({ file: toRelativePath(file), source }))
 );
 
+const storefrontImports = fs
+  .readdirSync(mdxComponentsDir, { recursive: true, encoding: 'utf8' })
+  .filter((file) => /\.tsx?$/.test(file))
+  .flatMap((file) =>
+    Array.from(
+      fs.readFileSync(path.join(mdxComponentsDir, file), 'utf8').matchAll(/from '(@\/[^']+)'/g),
+      ([, source]) => ({ file, source })
+    )
+  );
+
 describe('MDX components', () => {
-  it('are imported by MDX from their own file in src/components/mdx', () => {
-    const invalidImports = componentImports.filter(({ source }) => {
-      const folder = /^@\/components\/mdx\/(\w+)\/\1$/.exec(source)?.[1];
-      return !ALLOWED_STOREFRONT_IMPORTS.includes(source) && !(folder && componentFolders.includes(folder));
-    });
+  it('are imported by MDX from their folder: @/components/mdx/<topic>/<Name>', () => {
+    const invalidImports = componentImports.filter(
+      ({ source }) =>
+        !ALLOWED_MDX_IMPORTS.includes(source) && !componentFolders.includes(source.replace('@/components/mdx/', ''))
+    );
 
     expect(
       invalidImports.map(({ file, source }) => `${file}: ${source}`),
-      'Import MDX components from `@/components/mdx/<Name>/<Name>`; `shared/` is not for MDX.'
+      'MDX imports components only from their folder, not their modules, the helpers or elements/.'
     ).toEqual([]);
   });
 
-  it('each have a folder with a module of the same name', () => {
+  it('each have a folder with a module of the same name and an index', () => {
     expect(
-      componentFolders.filter(
-        (folder) => !['tsx', 'ts'].some((ext) => fs.existsSync(path.join(mdxComponentsDir, folder, `${folder}.${ext}`)))
-      )
+      componentFolders.filter((folder) => {
+        const name = path.basename(folder);
+        return (
+          !fs.existsSync(path.join(mdxComponentsDir, folder, 'index.ts')) ||
+          !['tsx', 'ts'].some((ext) => fs.existsSync(path.join(mdxComponentsDir, folder, `${name}.${ext}`)))
+        );
+      })
     ).toEqual([]);
   });
 
   it('are all used by MDX', () => {
-    const usedFolders = new Set(componentImports.map(({ source }) => source.split('/')[3]));
+    const usedFolders = new Set(componentImports.map(({ source }) => source.replace('@/components/mdx/', '')));
 
     expect(componentFolders.filter((folder) => !usedFolders.has(folder))).toEqual([]);
   });
 
-  it('are all listed in the inventory of the README', () => {
-    const inventory = getInventory();
+  it('and their helpers are all listed in the inventory of the README, under their topic', () => {
+    expect(getInventory()).toEqual([...componentFolders, ...helpers].sort());
+  });
 
-    expect(inventory.components).toEqual(componentFolders);
-    expect(inventory.shared).toEqual(sharedModules);
+  it('depend only on the Storefront modules listed here', () => {
+    const undeclared = storefrontImports.filter(
+      ({ source }) =>
+        !STOREFRONT_DEPENDENCIES.some((dependency) =>
+          dependency.endsWith('/') ? source.startsWith(dependency) : source === dependency
+        )
+    );
+
+    expect(
+      undeclared.map(({ file, source }) => `${file}: ${source}`),
+      'Import other MDX components relatively; add a new Storefront dependency to STOREFRONT_DEPENDENCIES on purpose.'
+    ).toEqual([]);
   });
 });
