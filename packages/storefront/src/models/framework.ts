@@ -52,5 +52,3 @@ export const resolveFrameworkValues = <T>(resolve: (context: FrameworkRenderCont
   Object.fromEntries(
     FRAMEWORKS.map((framework) => [framework, resolve(getFrameworkRenderContext(framework))])
   ) as Record<Framework, T>;
-
-export const frameworkRenderContextMap = resolveFrameworkValues((context) => context);

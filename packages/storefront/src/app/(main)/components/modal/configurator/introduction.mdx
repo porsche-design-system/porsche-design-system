@@ -1,5 +1,4 @@
-import { Notification } from '@/components/common/Notification';
-import { DocsLink } from '@/components/common/DocsLink';
+import { Notification } from '@/components/mdx/content/Notification';
 
 The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying
 page are blocked. It is only used as highly disruptive modal notification to present important information until
@@ -9,17 +8,14 @@ thoughtfully and sparingly.
 It is a controlled component. This grants flexible control over the modal's behavior especially whether it should stay
 open after user interaction like submission of a form.
 
-<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
-  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.
+<Notification heading="Scroll-lock" headingTag="h2" state="warning">
+  This component sets `overflow: hidden` on the body when opened in order to prevent background scrolling.
   <br />
   This doesn't work completely reliable under iOS but is the most stable solution.
   <br />
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution.{' '}
-  <b>
-    <DocsLink href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">
-      Current implementation
-    </DocsLink>
-  </b>
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. See the [current
+  implementation of the scroll
+  lock](https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts).
 </Notification>
 
 Following **web standards**, the component uses the native `<dialog />` element internally which ensures proper focus
@@ -33,4 +29,3 @@ key you need to register an event listener for the `dismiss` event which is emit
 
 The size of `p-modal` adjusts itself to the content with a predefined **min/max width** which aligns to the
 **[Porsche Grid](/tailwindcss/grid/examples)**.
-

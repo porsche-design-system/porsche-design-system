@@ -243,7 +243,10 @@ export const getImportSources = (file: string): string[] =>
       : []
   );
 
-/** The links written in an MDX file: Markdown links and `href` attributes with a string value. */
+/**
+ * The links written in an MDX file: Markdown links, `href` attributes with a string value, and `href` properties with a
+ * string value in attribute expressions, e.g. `<DownloadList items={[{ href: 'assets/…', label: '…' }]} />`.
+ */
 export const getLinks = (file: string): MdxLink[] => {
   const links: MdxLink[] = [];
   visit(parseMdx(file).tree, (node) => {
@@ -259,6 +262,11 @@ export const getLinks = (file: string): MdxLink[] => {
             href: attribute.value,
             element: node.name ?? '',
           });
+        }
+        if (attribute.type === 'mdxJsxAttribute' && typeof attribute.value === 'object' && attribute.value) {
+          for (const [, href] of attribute.value.value.matchAll(/\bhref:\s*['"]([^'"]+)['"]/g)) {
+            links.push({ file: toRelativePath(file), line: lineOf(node), href, element: node.name ?? '' });
+          }
         }
       }
     }
@@ -353,3 +361,83 @@ export const getDocsPages = (): DocsPage[] => findFiles((name) => /^page\.(mdx|t
 
 /** Every MDX file in `src/app`, pages and the fragments they render alike. */
 export const getMdxFiles = (): string[] => findFiles((name) => name.endsWith('.mdx'));
+
+const identifiersOf = (code: string): string[] => Array.from(code.matchAll(/[A-Za-z_$][\w$]*/g), ([name]) => name);
+
+/** The names an MDX file imports but never uses, e.g. a `Notification` left over from an earlier version. */
+export const getUnusedImports = (file: string): string[] => {
+  const imported: string[] = [];
+  const used = new Set<string>();
+  visit(parseMdx(file).tree, (node) => {
+    if (node.type === 'mdxjsEsm') {
+      for (const statement of node.data?.estree?.body ?? []) {
+        if (statement.type === 'ImportDeclaration') {
+          imported.push(...statement.specifiers.map(({ local }) => local.name));
+        }
+      }
+      // Exports such as `export const metadata = …` may use an import, so their code counts as usage.
+      const exports = node.value.split('\n').filter((line) => !line.startsWith('import '));
+      for (const name of identifiersOf(exports.join('\n'))) {
+        used.add(name);
+      }
+    }
+    if (node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') {
+      used.add((node.name ?? '').split('.')[0]);
+      for (const attribute of node.attributes) {
+        const value = attribute.type === 'mdxJsxExpressionAttribute' ? attribute.value : attribute.value;
+        if (value && typeof value === 'object') {
+          for (const name of identifiersOf(value.value)) {
+            used.add(name);
+          }
+        }
+      }
+    }
+    if (node.type === 'mdxFlowExpression' || node.type === 'mdxTextExpression') {
+      for (const name of identifiersOf(node.value)) {
+        used.add(name);
+      }
+    }
+  });
+  return imported.filter((name) => !used.has(name));
+};
+
+/** The HTML elements written as JSX in an MDX file, e.g. `<br />`, with their line. */
+export const getHtmlElements = (file: string): (Location & { element: string })[] => {
+  const elements: (Location & { element: string })[] = [];
+  visit(parseMdx(file).tree, (node) => {
+    if ((node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') && node.name) {
+      if (/^[a-z][a-z0-9]*$/.test(node.name)) {
+        elements.push({ file: toRelativePath(file), line: lineOf(node), element: node.name });
+      }
+    }
+  });
+  return elements;
+};
+
+/**
+ * The notifications whose heading skips a level after the heading before them in the same file. A fragment rendered
+ * below an `##` heading, `example.mdx`, starts at that level; every other file starts below the `#` of its page.
+ */
+export const getSkippedNotificationHeadings = (file: string): (Location & { heading: string })[] => {
+  const skipped: (Location & { heading: string })[] = [];
+  let level = path.basename(file) === 'example.mdx' ? 2 : 1;
+  visit(parseMdx(file).tree, (node) => {
+    if (node.type === 'heading') {
+      level = node.depth;
+    }
+    if ((node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') && node.name === 'Notification') {
+      const attributes = node.attributes.filter((attribute) => attribute.type === 'mdxJsxAttribute');
+      const headingTag = attributes.find(({ name }) => name === 'headingTag')?.value;
+      const hasHeading = attributes.some(({ name }) => name === 'heading');
+      const notificationLevel = Number(String(headingTag ?? 'h2').slice(1));
+      if (hasHeading && notificationLevel > level + 1) {
+        skipped.push({
+          file: toRelativePath(file),
+          line: lineOf(node),
+          heading: `h${notificationLevel} after h${level}`,
+        });
+      }
+    }
+  });
+  return skipped;
+};
