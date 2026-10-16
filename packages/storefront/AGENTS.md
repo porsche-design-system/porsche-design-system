@@ -124,6 +124,19 @@ Storefront, and the skills generator turns the same routes into references or St
 - MDX isn't typechecked, so `tests/unit/specs/links.spec.ts` checks every link in it: routes, trailing slashes, anchors,
   files, tables of contents, unique heading anchors and redirects.
 
+### MDX components
+
+Every component MDX imports lives in its own folder in `src/components/mdx/`, and MDX imports it from its file:
+`import { Notification } from '@/components/mdx/Notification/Notification';`. The folder's
+[`README.md`](src/components/mdx/README.md) is the inventory: what each component is for, its planned Markdown output
+and its dependencies on the Storefront. It is the migration list for the dual-target registry (#4142).
+
+- A new component gets a folder with a module of the same name, and a row in the inventory;
+  `tests/unit/specs/mdxComponents.spec.ts` checks both and that MDX imports nothing else from `src/components/`.
+- Prefer an existing component over raw PDS components in MDX, e.g. `Notification` over `PInlineNotification`.
+- Framework-aware content (`FrameworkCodeBlock`, `FrameworkLink`, `StorefrontFramework`, `Notification` with
+  `frameworks`) is resolved for every framework on the server; `shared/FrameworkContent` renders the selected one.
+
 ## File Structure
 
 ```
@@ -133,6 +146,8 @@ src/
 │   ├── must-know/          # Guidelines (accessibility, etc.)
 │   └── ...
 ├── components/             # React components for the site
+│   ├── mdx/                # Components MDX imports, one folder each, with an inventory
+│   └── common/             # Storefront chrome: navigation, tabs, selects, DocsLink
 ├── lib/                    # Utilities and helpers
 └── styles/                 # Global styles
 projects/
