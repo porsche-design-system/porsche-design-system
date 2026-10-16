@@ -51,12 +51,6 @@ export const tileMeta = {
       description: ModelNavigationDescription,
       story: tileStoryModelNavigation,
     },
-    vehicleListing: {
-      kind: 'story',
-      name: 'Vehicle Listing',
-      description: VehicleListingDescription,
-      story: tileStoryVehicleListing,
-    },
     category: {
       kind: 'story',
       name: 'Category',
@@ -74,18 +68,6 @@ export const tileMeta = {
       name: 'Product',
       description: ProductDescription,
       story: tileStoryProduct,
-    },
-    editorialTeaser: {
-      kind: 'story',
-      name: 'Editorial Teaser',
-      description: EditorialTeaserDescription,
-      story: tileStoryEditorialTeaser,
-    },
-    article: {
-      kind: 'story',
-      name: 'Article',
-      description: ArticleDescription,
-      story: tileStoryArticle,
     },
     feature: {
       kind: 'story',
@@ -116,6 +98,24 @@ export const tileMeta = {
       name: 'Product Teaser',
       description: ProductTeaserDescription,
       story: tileStoryProductTeaser,
+    },
+    vehicleListing: {
+      kind: 'story',
+      name: 'Vehicle Listing',
+      description: VehicleListingDescription,
+      story: tileStoryVehicleListing,
+    },
+    editorialTeaser: {
+      kind: 'story',
+      name: 'Editorial Teaser',
+      description: EditorialTeaserDescription,
+      story: tileStoryEditorialTeaser,
+    },
+    article: {
+      kind: 'story',
+      name: 'Article',
+      description: ArticleDescription,
+      story: tileStoryArticle,
     },
   },
   usage: Usage,

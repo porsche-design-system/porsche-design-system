@@ -25,98 +25,95 @@ name from it.
 
 {/* TODO: add further use cases to `tileMeta.examples` */}
 
-<TableOfContents
-  headings={[
-    tileMeta.examples.modelSelection.name,
-    tileMeta.examples.modelNavigation.name,
-    tileMeta.examples.vehicleListing.name,
-    tileMeta.examples.category.name,
-    tileMeta.examples.imageCategory.name,
-    tileMeta.examples.product.name,
-    tileMeta.examples.editorialTeaser.name,
-    tileMeta.examples.article.name,
-    tileMeta.examples.feature.name,
-    tileMeta.examples.featureHighlight.name,
-    tileMeta.examples.callToAction.name,
-    tileMeta.examples.modelTeaser.name,
-    tileMeta.examples.productTeaser.name,
-  ]}
-/>
+<TableOfContents headings={['Slot-based Layouts', 'Custom Layouts (Pattern Candidates)']} />
 
-## {tileMeta.examples.modelSelection.name}
+## Slot-based Layouts
+
+These use cases are built with the slots of the Tile: the content is placed in the `top`, `start`, default, `end` and
+`bottom` slots, the `background` slot holds a mood image and properties like `aspect-ratio`, `compact` and `gradient`
+adapt the Tile to its content. Custom styles are limited to the content itself, e.g. spacing, hover effects or an image
+bleeding to the edges of the Tile.
+
+### {tileMeta.examples.modelSelection.name}
 
 <tileMeta.examples.modelSelection.description />
 
 <ComponentStory story={tileMeta.examples.modelSelection.story} backgroundColor="surface" />
 
-## {tileMeta.examples.modelNavigation.name}
+### {tileMeta.examples.modelNavigation.name}
 
 <tileMeta.examples.modelNavigation.description />
 
 <ComponentStory story={tileMeta.examples.modelNavigation.story} backgroundColor="surface" />
 
-## {tileMeta.examples.vehicleListing.name}
-
-<tileMeta.examples.vehicleListing.description />
-
-<ComponentStory story={tileMeta.examples.vehicleListing.story} backgroundColor="surface" />
-
-## {tileMeta.examples.category.name}
+### {tileMeta.examples.category.name}
 
 <tileMeta.examples.category.description />
 
 <ComponentStory story={tileMeta.examples.category.story} />
 
-## {tileMeta.examples.imageCategory.name}
+### {tileMeta.examples.imageCategory.name}
 
 <tileMeta.examples.imageCategory.description />
 
 <ComponentStory story={tileMeta.examples.imageCategory.story} />
 
-## {tileMeta.examples.product.name}
+### {tileMeta.examples.product.name}
 
 <tileMeta.examples.product.description />
 
 <ComponentStory story={tileMeta.examples.product.story} />
 
-## {tileMeta.examples.editorialTeaser.name}
-
-<tileMeta.examples.editorialTeaser.description />
-
-<ComponentStory story={tileMeta.examples.editorialTeaser.story} />
-
-## {tileMeta.examples.article.name}
-
-<tileMeta.examples.article.description />
-
-<ComponentStory story={tileMeta.examples.article.story} />
-
-## {tileMeta.examples.feature.name}
+### {tileMeta.examples.feature.name}
 
 <tileMeta.examples.feature.description />
 
 <ComponentStory story={tileMeta.examples.feature.story} />
 
-## {tileMeta.examples.featureHighlight.name}
+### {tileMeta.examples.featureHighlight.name}
 
 <tileMeta.examples.featureHighlight.description />
 
 <ComponentStory story={tileMeta.examples.featureHighlight.story} />
 
-## {tileMeta.examples.callToAction.name}
+### {tileMeta.examples.callToAction.name}
 
 <tileMeta.examples.callToAction.description />
 
 <ComponentStory story={tileMeta.examples.callToAction.story} />
 
-## {tileMeta.examples.modelTeaser.name}
+### {tileMeta.examples.modelTeaser.name}
 
 <tileMeta.examples.modelTeaser.description />
 
 <ComponentStory story={tileMeta.examples.modelTeaser.story} />
 
-## {tileMeta.examples.productTeaser.name}
+### {tileMeta.examples.productTeaser.name}
 
 <tileMeta.examples.productTeaser.description />
 
 <ComponentStory story={tileMeta.examples.productTeaser.story} />
+
+## Custom Layouts (Pattern Candidates)
+
+These use cases bypass the layout of the Tile: they stretch the default slot to define their own grid, or remove the
+padding, background and corner radius of the Tile, so it only provides the clickable area and its focus indicator. Since
+most of the layout is custom code, they are candidates for a pattern rather than use cases of the Tile.
+
+### {tileMeta.examples.vehicleListing.name}
+
+<tileMeta.examples.vehicleListing.description />
+
+<ComponentStory story={tileMeta.examples.vehicleListing.story} backgroundColor="surface" />
+
+### {tileMeta.examples.editorialTeaser.name}
+
+<tileMeta.examples.editorialTeaser.description />
+
+<ComponentStory story={tileMeta.examples.editorialTeaser.story} />
+
+### {tileMeta.examples.article.name}
+
+<tileMeta.examples.article.description />
+
+<ComponentStory story={tileMeta.examples.article.story} />
