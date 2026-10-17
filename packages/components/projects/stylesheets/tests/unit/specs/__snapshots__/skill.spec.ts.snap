@@ -35,6 +35,9 @@ PDS ships four global stylesheets. The single package CSS import bundles all fou
   provider or on any component.
 - **\`normalize.css\`** — the recommended reset / normalize rules and base typography (font family and line height) for
   \`html\` and \`body\`.
+- **\`initial.css\`** _(not part of \`index.css\`)_ — hides the components until they are defined, which prevents a flash of
+  unstyled content, and takes closed overlays out of the layout until then. Its selectors only match the component tags,
+  so unregistered custom elements of other libraries (e.g. \`next-route-announcer\` of Next.js) stay visible.
 
 Reach for the global CSS variables directly for a pure-CSS approach — to align components in your page layout or to
 build custom components — when you prefer not to use one of the dedicated styling solutions
@@ -70,6 +73,15 @@ without them:
 @import '@porsche-design-system/components-{js|angular|react|vue}/font-face.css';
 @import '@porsche-design-system/components-{js|angular|react|vue}/normalize.css';
 @import '@porsche-design-system/components-{js|angular|react|vue}/color-scheme.css';
+\`\`\`
+
+To prevent a flash of unstyled content until the components are defined, import the initial
+styles in addition. They are not part of \`index.css\`. Prefer them over a hand-written
+\`:not(:defined)\` rule, which also hides unregistered custom elements of other libraries, e.g. the
+route announcer of Next.js:
+
+\`\`\`css
+@import '@porsche-design-system/components-{js|angular|react|vue}/initial.css';
 \`\`\`
 
 ### CSS variables
@@ -163,7 +175,7 @@ sufficient for your project, you can skip the polyfill and use the native \`colo
 
 ## Contents
 
-- [Stylesheets](#stylesheets) — variables.css, color-scheme.css, normalize.css
+- [Stylesheets](#stylesheets) — variables.css, color-scheme.css, normalize.css, initial.css
 - [CSS variables](#css-variables) — Color (Background / Foreground / Semantic / A11y), Font (Family / Weight / Line height / Size), Spacing (Fluid / Static), Border (Radius), Blur, Shadow, Motion (Duration / Ease)
 - [Color-scheme classes](#color-scheme-classes) — Color scheme
 
@@ -174,6 +186,7 @@ sufficient for your project, you can skip the polyfill and use the native \`colo
 | \`variables.css\` | Exposes the design system **CSS variables** (custom properties) on \`:root\`, including theme-aware colors resolved via \`light-dark()\` and \`:lang()\` font overrides. Sets the default \`color-scheme: only light\`, which prevents browsers with an automatic dark mode from recoloring the page. |
 | \`color-scheme.css\` | Provides the \`.scheme-*\` utility classes controlling the CSS \`color-scheme\` property, plus the \`@supports\` \`light-dark()\` polyfill. |
 | \`normalize.css\` | Recommended **normalize** styles including CSS reset rules and base typography (font family and line height) for \`html\` and \`body\`. |
+| \`initial.css\` | Optional **initial styles** for the time before the components are defined: hides every \`p-*\` element (\`visibility: hidden\`) to prevent a flash of unstyled content, and takes closed overlays (\`p-drilldown\`, \`p-flyout\`, \`p-modal\`, \`p-sheet\`) out of the layout (\`display: none\`). Scoped to the PDS tags, so unregistered elements of other libraries (e.g. \`next-route-announcer\` of Next.js) stay visible, and elements server-side rendered with \`data-ssr\` are excluded. Not part of \`index.css\`. |
 
 ## CSS variables
 

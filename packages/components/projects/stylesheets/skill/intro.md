@@ -31,6 +31,9 @@ PDS ships four global stylesheets. The single package CSS import bundles all fou
   provider or on any component.
 - **`normalize.css`** — the recommended reset / normalize rules and base typography (font family and line height) for
   `html` and `body`.
+- **`initial.css`** _(not part of `index.css`)_ — hides the components until they are defined, which prevents a flash of
+  unstyled content, and takes closed overlays out of the layout until then. Its selectors only match the component tags,
+  so unregistered custom elements of other libraries (e.g. `next-route-announcer` of Next.js) stay visible.
 
 Reach for the global CSS variables directly for a pure-CSS approach — to align components in your page layout or to
 build custom components — when you prefer not to use one of the dedicated styling solutions

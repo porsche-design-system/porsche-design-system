@@ -299,9 +299,10 @@ Rules:
 Tailwind CSS v4, configured CSS-first in [`src/style.css`](src/style.css). That entry is **copied** next to every page
 as its `style.css`, which the page's generated `main.js` pulls in, so the project's own Vite build compiles, hashes and
 links it — in dev, `@tailwindcss/vite` compiles the source file directly, which is the only place it exists as a file.
-It deliberately contains nothing but the three imports and the `:not(:defined)` rule: no `@source`, no `source(none)`
-and no relative path of any kind, because the same bytes have to work at every depth. Tailwind's automatic source
-detection is rooted at the Vite project, so it scans the pages and nothing above them.
+It deliberately contains nothing but its four imports, the initial styles that keep the components out of sight until
+they are defined among them: no `@source`, no `source(none)` and no relative path of any kind, because the same bytes
+have to work at every depth. Tailwind's automatic source detection is rooted at the Vite project, so it scans the pages
+and nothing above them.
 
 > **Watch out:** Tailwind's scanner reads the whole file, comments included. A doc comment mentioning
 > `{% block content %}` makes Tailwind emit an unused `.block` utility. Prefer prose that does not read like a class
@@ -320,9 +321,9 @@ too, so keep utility-like words out of it; a unit test fails otherwise.
 That HTML is deliberately bare: no partials, no stylesheet link, no loader script. The build moves its scripts into the
 page's `main.js`, links that entry, copies the `style.css` next to it ([`lib/entries.ts`](lib/entries.ts)) and writes
 the project around it ([`lib/generateProject.ts`](lib/generateProject.ts)), whose `vite.config.ts` injects the Porsche
-Design System partials — without the loader the `p-*` elements never upgrade, and `:not(:defined)` in the stylesheet
-keeps them invisible. The dev server has neither the entries nor a project: it keeps the scripts inline, which Vite
-serves as modules itself, links the shared stylesheet of the source tree and injects the partials from
+Design System partials — without the loader the `p-*` elements never upgrade, and the initial styles imported by the
+stylesheet keep them invisible. The dev server has neither the entries nor a project: it keeps the scripts inline, which
+Vite serves as modules itself, links the shared stylesheet of the source tree and injects the partials from
 [`lib/partials.ts`](lib/partials.ts). Those, plus the CDN origin, are the only differences between dev and the emitted
 pages.
 

@@ -75,6 +75,11 @@ by Stencil once the component is fully rendered:
 p-button:not(.hydrated) { visibility: hidden; }
 ```
 
+The [initial styles](/stylesheets/initial) apply the `:defined` approach to every component of the Porsche Design System
+at once. Scope such rules to the component tags as in the examples above: a bare `:not(:defined)` also matches custom
+elements that are never registered, e.g. `next-route-announcer` of Next.js, and hides its live region from screen
+readers.
+
 The **core chunk** detects the newly added tag and knows from its checklist that this component was not used and loaded
 before. So it loads the **component chunk**, e.g. `porsche-design-system.button.d471231621db4170e79a.js`.
 

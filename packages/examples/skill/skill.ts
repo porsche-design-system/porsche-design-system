@@ -202,9 +202,9 @@ const renderIndex = (): string => {
     '## Stylesheet',
     '',
     'Every example imports the same stylesheet: the [global styles](/stylesheets/introduction) the components ' +
-      'depend on, Tailwind CSS and the [PDS Tailwind CSS theme](/tailwindcss/introduction) whose utilities the ' +
-      'markup uses, and a rule hiding the components until they are defined. Its comment describes how that rule ' +
-      'differs for server-side rendering and Angular.',
+      'depend on, the [initial styles](/stylesheets/initial) hiding the components until they are defined, ' +
+      'Tailwind CSS and the [PDS Tailwind CSS theme](/tailwindcss/introduction) whose utilities the markup uses. ' +
+      'In a framework, import them from the package of that framework instead.',
     '',
     '```css',
     stylesheet,

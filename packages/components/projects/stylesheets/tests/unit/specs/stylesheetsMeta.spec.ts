@@ -31,7 +31,7 @@ it('kindOf should classify a css variable as a token and a color-scheme class as
 });
 
 it('should contain all expected generated stylesheets', () => {
-  expect(Object.keys(globalStylesMeta)).toEqual(['cssVariables', 'colorScheme', 'normalize']);
+  expect(Object.keys(globalStylesMeta)).toEqual(['cssVariables', 'colorScheme', 'normalize', 'initial']);
 });
 
 it('every generated stylesheet entry should expose file, description and meta', () => {

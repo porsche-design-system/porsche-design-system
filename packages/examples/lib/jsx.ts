@@ -51,14 +51,13 @@ export const exampleNote = `<!--
   changes to the components and the theme.
 
   To use it in a JavaScript framework, e.g. Next.js, Vue or Angular, adapt it to that framework:
-  - Import the components and the Tailwind CSS theme from the package of your framework instead:
+  - Import the components, the initial styles and the Tailwind CSS theme from the package of your framework instead:
     @porsche-design-system/components-angular, @porsche-design-system/components-react or
-    @porsche-design-system/components-vue, each with its /tailwindcss entry.
+    @porsche-design-system/components-vue, each with its /initial.css and /tailwindcss entries.
   - Load the components through the provider or the module of that package instead of the loader script. The other
     partials vite.config.ts injects are available from its /partials entry.
   - Pass the attributes as properties: hide-label="true" becomes hideLabel, and a JSON string becomes an object.
   - Move the behaviour of the page script into the state and the event handlers of your components.
-  - Adapt the :not(:defined) rule of the stylesheet as described there.
 -->`;
 
 // Matches the end tag the way the HTML parser does: in any case, and with whitespace or attributes before the `>`.

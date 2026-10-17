@@ -5,10 +5,11 @@ import {
   fontPorscheNextZhHant,
 } from '@porsche-design-system/tokens';
 import { flattenColorVariables, flattenCssVariables } from '../helpers';
+import { INITIAL_CLOSED_OVERLAY_TAG_NAMES, initialCss } from '../initial';
 import { normalizeCss } from '../normalize';
 import { cssVariableTokens } from '../theme';
-import { colorScheme, colorSchemePolyfillCssRule } from '../utilities/color-scheme';
 import type { CssNode, GlobalStylesMeta } from '../types';
+import { colorScheme, colorSchemePolyfillCssRule } from '../utilities/color-scheme';
 
 // Composition layer: resolves the documented catalog plus the CSS-only plumbing (the `:root`
 // wrapper, the `:lang()` font overrides, the `light-dark()` polyfill, the raw normalize reset)
@@ -53,7 +54,10 @@ const variablesCss: CssNode[] = [
 ];
 
 // The fully resolved CSS for `color-scheme.css`.
-const colorSchemeCss: CssNode[] = [...colorScheme, colorSchemePolyfillCssRule(flattenColorVariables(cssVariableTokens))];
+const colorSchemeCss: CssNode[] = [
+  ...colorScheme,
+  colorSchemePolyfillCssRule(flattenColorVariables(cssVariableTokens)),
+];
 
 // The complete, per-stylesheet composition describing every generated global stylesheet. Each
 // entry carries its published `file` name, a markdown-enabled `description` and the fully resolved
@@ -78,5 +82,10 @@ export const globalStylesMeta = {
     description:
       'Recommended **normalize** styles including CSS reset rules and base typography (font family and line height) for `html` and `body`.',
     meta: normalizeCss,
+  },
+  initial: {
+    file: 'initial.css',
+    description: `Optional **initial styles** for the time before the components are defined: hides every \`p-*\` element (\`visibility: hidden\`) to prevent a flash of unstyled content, and takes closed overlays (${INITIAL_CLOSED_OVERLAY_TAG_NAMES.map((tagName) => `\`${tagName}\``).join(', ')}) out of the layout (\`display: none\`). Scoped to the PDS tags, so unregistered elements of other libraries (e.g. \`next-route-announcer\` of Next.js) stay visible, and elements server-side rendered with \`data-ssr\` are excluded. Not part of \`index.css\`.`,
+    meta: initialCss,
   },
 } satisfies GlobalStylesMeta;

@@ -13,7 +13,7 @@ const REGEX_BODY = /<\/body>/;
 /**
  * The Porsche Design System partials, injected by the dev server only.
  *
- * The pages use web components, so without the loader script nothing upgrades – and `:not(:defined)` in
+ * The pages use web components, so without the loader script nothing upgrades – and the initial styles imported in
  * `src/style.css` would keep the whole page invisible. The **build** does not inject anything: its output is the
  * source of two Vite projects, whose generated `vite.config.ts` injects the very same partials when they are built.
  *

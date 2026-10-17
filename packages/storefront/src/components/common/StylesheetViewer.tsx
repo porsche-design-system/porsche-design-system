@@ -4,7 +4,7 @@ import * as prettier from 'prettier';
 import { CodeBlock } from '@/components/common/CodeBlock';
 
 type StylesheetViewerProps = {
-  file: 'color-scheme.css' | 'font-face.css' | 'normalize.css' | 'variables.css';
+  file: 'color-scheme.css' | 'font-face.css' | 'initial.css' | 'normalize.css' | 'variables.css';
 };
 
 // TODO: it would be better to resolve the path from npm package entrypoint

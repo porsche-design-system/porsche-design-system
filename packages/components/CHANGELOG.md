@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Knowledge Skill`: the guideline for creating custom icons in the `p-icon` reference
   ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+- **Global Styles**: `initial.css`, which hides the components until they are defined to prevent a flash of unstyled
+  content, and takes closed `Drilldown`, `Flyout`, `Modal` and `Sheet` out of the layout until then. Unlike a bare
+  `:not(:defined)` rule, it leaves custom elements of other libraries visible, e.g. the route announcer of Next.js, and
+  it excludes components rendered with `@porsche-design-system/components-react/ssr`. Import it with
+  `@import '@porsche-design-system/components-{js|angular|react|vue}/initial.css';`
+  ([#<pr-number>](https://github.com/porsche-design-system/porsche-design-system/pull/<pr-number>))
 
 ### Changed
 
