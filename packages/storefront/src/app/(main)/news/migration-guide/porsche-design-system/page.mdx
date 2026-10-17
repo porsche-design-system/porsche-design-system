@@ -83,10 +83,11 @@ correctly. See [Styles](/stylesheets/introduction) for more information.
 ### Manual FOUC Prevention
 
 In previous versions, **FOUC (Flash of Unstyled Content)** was handled automatically via `getInitialStyles()`. Because
-these JavaScript partials have been removed, you must now implement this logic manually within your global stylesheet.
+these JavaScript partials have been removed, it is now handled by a stylesheet you import yourself.
 
-To ensure components are hidden until the design system is fully initialized, add the following to your **main CSS
-file**:
+To ensure components are hidden until the design system is fully initialized, import the
+[initial styles](/stylesheets/initial) in your **main CSS file**. They work for every framework, with and without server
+side rendering:
 
 - [Vanilla JS](/developing/vanilla-js/getting-started#integration)
 - [Angular](/developing/angular/getting-started#integration)
@@ -98,21 +99,14 @@ file**:
 ```diff
 /* src/global-style.css */
 
-/* Vanilla Js, React, Vue */
-+ :not(:defined) {
-+   visibility: hidden;
-+ }
-
-/* Angular (Uses custom elements which are never defined like app-root, so we need to manually list the components) */
-+ :is(p-accordion, p-banner, p-button, prefixed-p-button,...):not(:defined) {
-+   visibility: hidden;
-+ }
-
-/* Next.js, React Router */
-+ :not(:defined,[data-ssr]) {
-+   visibility: hidden;
-+ }
+/* Replace {js|angular|react|vue} with your framework, e.g. components-react */
+@import '@porsche-design-system/components-{js|angular|react|vue}';
++ @import '@porsche-design-system/components-{js|angular|react|vue}/initial.css';
 ```
+
+If you write the rule yourself, scope it to the component tags, e.g. `:is(p-accordion, p-banner, p-button, …)`. A bare
+`:not(:defined)` also matches custom elements that are never defined, like `app-root` of Angular or
+`next-route-announcer` of Next.js, which hides the application or the live region announcing client-side navigation.
 
 ## ⭐ Introducing Color Scheme
 

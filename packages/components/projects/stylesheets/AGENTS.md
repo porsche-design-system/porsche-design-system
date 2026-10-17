@@ -17,16 +17,16 @@ lived in two separate packages (a meta package and a CSS build package):
    tree-shakeable name consts + `ref` (what runtime consumers like the components package need); it is built into
    `dist/` by `rollup.config.mjs`, while the `./meta` catalog is built into `meta/` by `rollup.config.meta.mjs`.
 2. **CSS build** — `scripts/` generates the published stylesheets (`variables.css`, `color-scheme.css`, `normalize.css`,
-   `font-face.css` and the combined `index.css`) from the meta into `lib/`. These CSS files are exported via subpath
-   exports (e.g. `@porsche-design-system/stylesheets/index.css`) and copied into the framework wrappers.
+   `initial.css`, `font-face.css` and the combined `index.css`) from the meta into `lib/`. These CSS files are exported
+   via subpath exports (e.g. `@porsche-design-system/stylesheets/index.css`) and copied into the framework wrappers.
 3. **Skill (docs generation)** — `skill/skill.ts` is a pure serializer over the meta for the docs/LLM skill, mirroring
    the `scss` / `tailwindcss` skill layout. The storefront skill generator imports it directly; this package does not
    emit a separate skill artifact and the serializer is snapshot-tested here.
 
 The package itself is `"private": true`. Only `lib/*.css` reaches npm consumers, via the wrapper subpaths `./index.css`,
-`./variables.css`, `./normalize.css`, `./font-face.css`, `./color-scheme.css` and `./cn/*`. Neither `dist/` (the name
-consts and `ref`, a build-time input for `packages/components`) nor `meta/` is copied into a wrapper, so
-`stylesheetsMeta` and `stylesheetsDeprecations` are internal. Confirm in the built wrapper `dist/` folders, which are
+`./variables.css`, `./normalize.css`, `./initial.css`, `./font-face.css`, `./color-scheme.css` and `./cn/*`. Neither
+`dist/` (the name consts and `ref`, a build-time input for `packages/components`) nor `meta/` is copied into a wrapper,
+so `stylesheetsMeta` and `stylesheetsDeprecations` are internal. Confirm in the built wrapper `dist/` folders, which are
 the npm packages themselves: `ls packages/components-js/dist/components-wrapper/stylesheets` shows CSS only. See
 [`docs/public-api.md`](../../../../docs/public-api.md).
 
@@ -43,7 +43,8 @@ src/
 ├── utilities/
 │   └── color-scheme.ts             #   `.scheme-*` utility leaves (`colorScheme`) + `colorSchemePolyfillCssRule`
 ├── normalize.ts                    # Raw normalize.css CssNode block (no documented leaves; not in the catalog)
-├── css/index.ts                    # Composition layer: resolves catalog + plumbing into per-file `globalStylesMeta` (variables/color-scheme/normalize)
+├── initial.ts                      # Raw initial.css CssNode block: FOUC rules scoped to the public TAG_NAMES of `shared`, plus the closed overlays (not in the catalog, not part of index.css)
+├── css/index.ts                    # Composition layer: resolves catalog + plumbing into per-file `globalStylesMeta` (variables/color-scheme/normalize/initial)
 ├── ref.ts                          # Hand-written `ref(name, fallback?)` helper wrapping a name into `var(...)`
 ├── generated/                      # GITIGNORED build artifact (regenerated from cssVariableTokens)
 │   └── cssVariables/               #   one tree-shakeable const per variable, e.g. color/background/colorCanvas.ts
@@ -96,11 +97,12 @@ The meta is not only descriptive data; it also gives away exactly how it becomes
 `CssDeclaration`s (they carry `property` + `value`, enriched with `description`/`type` and, for colors,
 `valueLight`/`valueDark`), so they can be emitted into CSS directly. The **composition layer** (`src/css/index.ts`)
 resolves the catalog plus the CSS-only plumbing (the `:root` wrapper, `:lang()` font overrides, the `light-dark()`
-polyfill, the raw normalize reset) into `globalStylesMeta`, a single object keyed by stylesheet (`cssVariables`,
-`colorScheme`, `normalize`) where each entry carries its published `file` name, a markdown-enabled `description` and the
-resolved `meta` (`CssNode` tree). The `buildStylesheetsCss.ts` script only iterates `globalStylesMeta`, calls
-`renderCss(entry.meta)` and writes the result to `entry.file` through Prettier — it contains no CSS structure of its
-own. `font-face.css` is intentionally **not** modeled here; it is a raw stylesheet built from the font-face package.
+polyfill, the raw normalize reset, the initial FOUC rules) into `globalStylesMeta`, a single object keyed by stylesheet
+(`cssVariables`, `colorScheme`, `normalize`, `initial`) where each entry carries its published `file` name, a
+markdown-enabled `description` and the resolved `meta` (`CssNode` tree). The `buildStylesheetsCss.ts` script only
+iterates `globalStylesMeta`, calls `renderCss(entry.meta)` and writes the result to `entry.file` through Prettier — it
+contains no CSS structure of its own. `font-face.css` is intentionally **not** modeled here; it is a raw stylesheet
+built from the font-face package.
 
 For docs and the LLM skill (`skill/skill.ts`), the documented catalog `stylesheetsMeta` is the partitionable surface:
 walk it and use `kindOf` to split CSS-variable **tokens** from `.scheme-*` **utilities**. Single entries (e.g.

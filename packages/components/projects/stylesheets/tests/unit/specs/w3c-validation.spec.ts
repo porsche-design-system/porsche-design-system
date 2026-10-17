@@ -12,6 +12,7 @@ const libDir = path.resolve(__dirname, '../../../lib');
 const cssFiles = [
   'index.css',
   'normalize.css',
+  'initial.css',
   'variables.css',
   'color-scheme.css',
   'font-face.css',

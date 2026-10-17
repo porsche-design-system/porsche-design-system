@@ -1,0 +1,62 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { StylesheetViewer } from '@/components/common/StylesheetViewer';
+
+export const metadata = {
+  title: 'Initial - Stylesheets',
+  description: 'Learn how to hide the components until they are defined to prevent a flash of unstyled content.',
+};
+
+# Initial
+
+<TableOfContents headings={['Setup', 'Scoped to the components', 'Server side rendering', 'Limitations']} />
+
+The components are loaded from the CDN. Until a component is defined, its tag is an unknown element and the browser
+renders its Light DOM as plain content, which causes a flash of unstyled content (FOUC). The **initial styles** cover
+this time:
+
+- Every component is hidden with `visibility: hidden` until it is
+  [`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined).
+- Overlays that are closed by default (`p-drilldown`, `p-flyout`, `p-modal`, `p-sheet`) are taken out of the layout with
+  `display: none`. `visibility: hidden` keeps the space of an element, so the content of a closed modal would push the
+  rest of the page down until the component is defined.
+
+## Setup
+
+The initial styles are **not** part of the main package CSS file. Import them in addition:
+
+```css
+/* Replace {js|angular|react|vue} with your framework, e.g. components-react */
+@import '@porsche-design-system/components-{js|angular|react|vue}';
+@import '@porsche-design-system/components-{js|angular|react|vue}/initial.css';
+```
+
+Below is the content of the stylesheet file for reference only. **Don't copy this into your project** — use the import
+statement above instead, so new components are covered when you update:
+
+<StylesheetViewer file="initial.css" />
+
+## Scoped to the components
+
+The selectors list the tags of the Porsche Design System instead of using a bare `:not(:defined)`. A bare
+`:not(:defined)` matches every custom element that is not registered, and some libraries put such elements into the page
+on purpose:
+
+- Next.js renders `next-route-announcer`, whose `aria-live` region announces client-side navigation to screen readers.
+  Hidden by `visibility: hidden`, the region is removed from the accessibility tree and navigation is no longer
+  announced.
+- Angular renders its own elements, e.g. `app-root`, which are never defined either, so the whole application would stay
+  invisible.
+
+## Server side rendering
+
+Components rendered on the server by `@porsche-design-system/components-react/ssr` carry a `data-ssr` attribute and are
+already rendered by their Declarative Shadow DOM. The initial styles exclude them (`:not(:defined, [data-ssr])`), so the
+same file works with and without server side rendering.
+
+## Limitations
+
+- Components loaded with a custom [prefix](/developing/vanilla-js/advanced#prefixing), e.g. `my-prefix-p-button`, are
+  not covered. Write the rules for your prefixed tags yourself.
+- The space of a component is not reserved before it is defined. Components whose height changes once they are defined,
+  e.g. `p-button`, can still shift the layout.
+- `p-popover` is not taken out of the layout, because its trigger stays in the flow once it is defined.

@@ -26,6 +26,15 @@ without them:
 @import '@porsche-design-system/components-{js|angular|react|vue}/color-scheme.css';
 ```
 
+To prevent a flash of unstyled content until the components are defined, import the initial
+styles in addition. They are not part of `index.css`. Prefer them over a hand-written
+`:not(:defined)` rule, which also hides unregistered custom elements of other libraries, e.g. the
+route announcer of Next.js:
+
+```css
+@import '@porsche-design-system/components-{js|angular|react|vue}/initial.css';
+```
+
 ### CSS variables
 
 Consume the exposed custom properties with `var(…)` in your own styles. Color variables resolve to

@@ -437,7 +437,7 @@ reaches through interaction**.
 - **The PDS partials are injected by the dev server and by the generated projects**, never by `scripts/build.ts`. The
   dev server uses [`lib/partials.ts`](lib/partials.ts); each generated `vite.config.ts` carries its own copy, written by
   [`lib/generateProject.ts`](lib/generateProject.ts), with the component chunks of that category. Without the loader
-  script the `p-*` elements never upgrade and `:not(:defined)` keeps them invisible.
+  script the `p-*` elements never upgrade and the initial styles keep them invisible.
 
 ## Scope discipline (important)
 

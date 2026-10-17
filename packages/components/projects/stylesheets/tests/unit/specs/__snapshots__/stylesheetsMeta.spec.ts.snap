@@ -256,6 +256,18 @@ text-size-adjust: none;
 }"
 `;
 
+exports[`renderCss should serialize the resolution of every generated stylesheet to a snapshot 4`] = `
+"/* Hides the components until they are defined, which prevents a flash of unstyled content (FOUC) */
+:is(p-accordion, p-ai-tag, p-banner, p-button, p-button-pure, p-button-tile, p-canvas, p-carousel, p-checkbox, p-crest, p-display, p-divider, p-drilldown, p-drilldown-item, p-drilldown-link, p-fieldset, p-flag, p-flyout, p-heading, p-icon, p-inline-notification, p-input-date, p-input-email, p-input-month, p-input-number, p-input-password, p-input-search, p-input-tel, p-input-text, p-input-time, p-input-url, p-input-week, p-link, p-link-pure, p-link-tile, p-link-tile-product, p-modal, p-model-signature, p-multi-select, p-multi-select-option, p-optgroup, p-pagination, p-pin-code, p-popover, p-radio-group, p-radio-group-option, p-scroller, p-segmented-control, p-segmented-control-item, p-select, p-select-option, p-sheet, p-spinner, p-stepper-horizontal, p-stepper-horizontal-item, p-switch, p-table, p-table-body, p-table-cell, p-table-head, p-table-head-cell, p-table-head-row, p-table-row, p-tabs, p-tabs-bar, p-tabs-item, p-tag, p-tag-dismissible, p-text, p-text-list, p-text-list-item, p-textarea, p-toast, p-wordmark):not(:defined, [data-ssr]) {
+visibility: hidden;
+}
+
+/* Takes closed overlays out of the layout until they are defined */
+:is(p-drilldown, p-flyout, p-modal, p-sheet):not(:defined, [data-ssr]) {
+display: none;
+}"
+`;
+
 exports[`should match snapshot 1`] = `
 {
   "blur": {

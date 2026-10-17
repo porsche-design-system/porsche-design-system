@@ -122,19 +122,17 @@ export default defineConfig({
 });
 ```
 
-To prevent FOUC, hide elements until they are either registered
-([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
-Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
-pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined)`). See
+To prevent a flash of unstyled content (FOUC), import the [initial styles](/stylesheets/initial) as well. They hide the
+components until they are registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) and take closed overlays,
+e.g. `p-modal`, out of the layout until then. Their selectors only match Porsche Design System tags, so custom elements
+of other libraries that are never registered, e.g. `next-route-announcer` of Next.js, stay visible. See
 [Initialization](/must-know/initialization/vanilla-js#preparation) for more details.
 
 ```diff
 /* src/styles/global.css */
 @import '@porsche-design-system/components-js';
-
-+ :not(:defined) {
-+   visibility: hidden;
-+ }
++ @import '@porsche-design-system/components-js/initial.css';
 ```
 
 ### Step 4 (recommended)

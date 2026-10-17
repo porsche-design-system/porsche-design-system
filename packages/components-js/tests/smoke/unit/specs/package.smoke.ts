@@ -71,6 +71,8 @@ const packageJsonExports = {
   './color-scheme': './stylesheets/color-scheme.css',
   './font-face.css': './stylesheets/font-face.css',
   './font-face': './stylesheets/font-face.css',
+  './initial.css': './stylesheets/initial.css',
+  './initial': './stylesheets/initial.css',
   './normalize.css': './stylesheets/normalize.css',
   './normalize': './stylesheets/normalize.css',
   './variables.css': './stylesheets/variables.css',
@@ -193,6 +195,7 @@ describe('package.json files', () => {
                 prob.entrypoint.includes('tailwindcss') ||
                 prob.entrypoint.includes('color-scheme') ||
                 prob.entrypoint.includes('font-face') ||
+                prob.entrypoint.includes('initial') ||
                 prob.entrypoint.includes('normalize') ||
                 prob.entrypoint.includes('variables') ||
                 prob.entrypoint.includes('cn') ||

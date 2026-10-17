@@ -36,6 +36,15 @@ const groupsToCheck = [
     ],
   },
   {
+    name: '/initial',
+    paths: [
+      '@porsche-design-system/components-angular/initial.css',
+      '@porsche-design-system/components-angular/initial',
+      '@porsche-design-system/components-js/initial.css',
+      '@porsche-design-system/components-js/initial',
+    ],
+  },
+  {
     name: '/normalize',
     paths: [
       '@porsche-design-system/components-angular/normalize.css',

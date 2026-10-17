@@ -27,6 +27,10 @@ const groupsToCheck = [
     paths: ['@porsche-design-system/components-js/font-face.css', '@porsche-design-system/components-js/font-face'],
   },
   {
+    name: '/initial',
+    paths: ['@porsche-design-system/components-js/initial.css', '@porsche-design-system/components-js/initial'],
+  },
+  {
     name: '/normalize',
     paths: ['@porsche-design-system/components-js/normalize.css', '@porsche-design-system/components-js/normalize'],
   },

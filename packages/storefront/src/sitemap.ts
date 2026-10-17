@@ -224,6 +224,7 @@ export const sitemap = {
       },
       'font-face': { name: 'Font Face' },
       normalize: { name: 'Normalize' },
+      initial: { name: 'Initial' },
     },
   },
   partials: {
