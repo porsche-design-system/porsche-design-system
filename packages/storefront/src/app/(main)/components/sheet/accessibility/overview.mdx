@@ -10,7 +10,7 @@ behavior. As a result, accessibility features may vary across different browsers
 | `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behavior). |
 | `ESC`                      | Closes the dialog.                                                                                              |
 | `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                       |
-| opening the dialog         | The dialog receives the focus, or the first slotted element with an `autofocus` attribute.                      |
+| opening the dialog         | The first focusable slotted element with an `autofocus` attribute receives the focus, otherwise the dialog.     |
 
 ### ARIA enhancements
 

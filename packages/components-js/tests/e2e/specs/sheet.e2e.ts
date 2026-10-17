@@ -266,6 +266,18 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       expect(await getActiveElementTagNameInShadowRoot(page.locator('#input-autofocus'))).toBe('INPUT');
     });
 
+    test('should skip slotted element with autofocus attribute that cannot be focused', async ({ page }) => {
+      await initBasicSheet(page, {
+        isOpen: false,
+        content: `<p-input-text id="input-disabled" label="Some label" name="some-disabled-name" autofocus disabled></p-input-text><p-input-text id="input-autofocus" label="Some label" name="some-name" autofocus></p-input-text>`,
+        aria: "{'aria-label': 'Some Heading'}",
+      });
+      await openSheet(page);
+
+      expect(await getActiveElementId(page)).toBe('input-autofocus');
+      expect(await getActiveElementTagNameInShadowRoot(page.locator('#input-autofocus'))).toBe('INPUT');
+    });
+
     test('should focus dismiss button after open when there is a focusable content element', async ({ page }) => {
       await initBasicSheet(page, {
         isOpen: false,

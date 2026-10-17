@@ -19,13 +19,27 @@ export const showDialog = (dialog: HTMLDialogElement, scrollArea: HTMLElement): 
   dialog.focus(); // set focus programmatically to dialog element to prevent transition bug in Safari
   // Suppressing the native initial focus above also drops its support of `autofocus`. Restore it for the slotted content,
   // so a consumer can move the focus into the dialog when it opens without waiting for the transition to end.
-  getAutofocusElement(dialog)?.focus();
+  focusAutofocusElement(dialog);
 };
 
-// The first element of the slotted content (Light DOM of the host) that carries the `autofocus` attribute, if any.
-export const getAutofocusElement = (dialog: HTMLDialogElement): HTMLElement | null => {
+// Follows the autofocus delegate of the HTML dialog focusing steps for the slotted content (Light DOM of the host): the
+// candidates are tried in tree order and the first one that can take the focus gets it. A candidate that can't – e.g.
+// disabled, not slotted or inside a closed nested overlay – is skipped. A shadow host with `delegatesFocus`, like the
+// form components, passes the focus on to its inner control, as its focusable area would in a native `<dialog>`.
+// Without a focusable candidate the focus stays on the dialog.
+export const focusAutofocusElement = (dialog: HTMLDialogElement): void => {
   const root = dialog.getRootNode();
-  return root instanceof ShadowRoot ? root.host.querySelector<HTMLElement>('[autofocus]') : null;
+  if (!(root instanceof ShadowRoot)) {
+    return;
+  }
+  // Focus inside a shadow root is retargeted to its host, so the tree of the host tells whether a candidate got it.
+  const hostRoot = root.host.getRootNode() as Document | ShadowRoot;
+  for (const candidate of Array.from(root.host.querySelectorAll<HTMLElement>('[autofocus]'))) {
+    candidate.focus();
+    if (hostRoot.activeElement === candidate) {
+      return;
+    }
+  }
 };
 
 // Callers map this to the `escape` dismiss reason, which only holds because we never set `closedby`. With
