@@ -42,7 +42,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4787](https://github.com/porsche-design-system/porsche-design-system/pull/4787))
 - `Flyout`, `Modal`, `Sheet`: a slotted element with the `autofocus` attribute didn't receive the focus when the dialog
   opened; the dialog itself was focused instead, and moving the focus by script only worked after `motionVisibleEnd`
-  ([#<pr-number>](https://github.com/porsche-design-system/porsche-design-system/pull/<pr-number>))
+  ([#4794](https://github.com/porsche-design-system/porsche-design-system/pull/4794))
 
 ## [4.8.0] - 2026-10-02
 
