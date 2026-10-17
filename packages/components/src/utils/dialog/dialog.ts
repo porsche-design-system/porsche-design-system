@@ -17,6 +17,15 @@ export const showDialog = (dialog: HTMLDialogElement, scrollArea: HTMLElement): 
   dialog.showModal(); // shows modal on `#top-layer`
   dialog.inert = false; // Re-enable focus on dialog element
   dialog.focus(); // set focus programmatically to dialog element to prevent transition bug in Safari
+  // Suppressing the native initial focus above also drops its support of `autofocus`. Restore it for the slotted content,
+  // so a consumer can move the focus into the dialog when it opens without waiting for the transition to end.
+  getAutofocusElement(dialog)?.focus();
+};
+
+// The first element of the slotted content (Light DOM of the host) that carries the `autofocus` attribute, if any.
+export const getAutofocusElement = (dialog: HTMLDialogElement): HTMLElement | null => {
+  const root = dialog.getRootNode();
+  return root instanceof ShadowRoot ? root.host.querySelector<HTMLElement>('[autofocus]') : null;
 };
 
 // Callers map this to the `escape` dismiss reason, which only holds because we never set `closedby`. With

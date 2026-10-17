@@ -281,6 +281,18 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       expect(await getActiveElementTagName(page)).toBe('P-BUTTON'); // slotted content button
     });
 
+    test('should focus slotted element with autofocus attribute after open', async ({ page }) => {
+      await initBasicModal(page, {
+        isOpen: false,
+        content: `<p-button>Some focusable button in content</p-button><p-input-text id="input-autofocus" label="Some label" name="some-name" autofocus></p-input-text>`,
+        aria: "{'aria-label': 'Some Heading'}",
+      });
+      await openModal(page);
+
+      expect(await getActiveElementId(page)).toBe('input-autofocus');
+      expect(await getActiveElementTagNameInShadowRoot(page.locator('#input-autofocus'))).toBe('INPUT');
+    });
+
     test('should not allow focusing element behind of modal when pressing Tab', async ({ page }) => {
       await initBasicModal(page, { isOpen: false, content: '<p-text>Some text content</p-text>' });
       await addButtonsBeforeAndAfterModal(page);

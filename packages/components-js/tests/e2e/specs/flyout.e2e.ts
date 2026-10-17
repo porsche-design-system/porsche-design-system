@@ -318,6 +318,20 @@ test.describe('focus behavior', () => {
     await expectDialogAndThenDismissButtonToBeFocused(page);
   });
 
+  test('should focus slotted element with autofocus attribute after open', async ({ page }) => {
+    await initBasicFlyout(
+      page,
+      { open: false },
+      {
+        content: `<p-button>Some focusable button in content</p-button><p-input-text id="input-autofocus" label="Some label" name="some-name" autofocus></p-input-text>`,
+      }
+    );
+    await openFlyout(page);
+
+    expect(await getActiveElementId(page)).toBe('input-autofocus');
+    expect(await getActiveElementTagNameInShadowRoot(page.locator('#input-autofocus'))).toBe('INPUT');
+  });
+
   test('should focus dismiss button after open when there are other focusable elements', async ({ page }) => {
     await initAdvancedFlyout(page);
     await openFlyout(page);

@@ -1,6 +1,13 @@
 import type { EventEmitter } from '@stencil/core';
 import { vi } from 'vitest';
-import { onCancelDialog, onClickDialog, isDialogBackdropTarget, onTransitionEnd, showDialog } from './dialog';
+import {
+  getAutofocusElement,
+  isDialogBackdropTarget,
+  onCancelDialog,
+  onClickDialog,
+  onTransitionEnd,
+  showDialog,
+} from './dialog';
 
 const createMockDialog = (open: boolean): HTMLDialogElement => {
   const dialog = document.createElement('dialog');
@@ -35,6 +42,68 @@ describe('showDialog()', () => {
     expect(dialog.showModal).toHaveBeenCalledTimes(1);
     expect(dialog.focus).toHaveBeenCalledTimes(1);
     expect(dialog.inert).toBe(false);
+  });
+
+  it('should focus the slotted element with an autofocus attribute after the dialog', () => {
+    const host = document.createElement('div');
+    const dialog = createMockDialog(false);
+    host.attachShadow({ mode: 'open' }).append(dialog);
+    const input = document.createElement('input');
+    input.setAttribute('autofocus', '');
+    input.focus = vi.fn();
+    host.append(document.createElement('p'), input);
+
+    showDialog(dialog, createScrollArea());
+
+    expect(dialog.focus).toHaveBeenCalledTimes(1);
+    expect(input.focus).toHaveBeenCalledTimes(1);
+    expect(vi.mocked(dialog.focus).mock.invocationCallOrder[0]).toBeLessThan(
+      vi.mocked(input.focus).mock.invocationCallOrder[0]
+    );
+  });
+
+  it('should only focus the dialog without a slotted autofocus element', () => {
+    const host = document.createElement('div');
+    const dialog = createMockDialog(false);
+    host.attachShadow({ mode: 'open' }).append(dialog);
+    host.append(document.createElement('input'));
+
+    showDialog(dialog, createScrollArea());
+
+    expect(dialog.focus).toHaveBeenCalledTimes(1);
+    expect(document.activeElement).toBe(document.body);
+  });
+});
+
+describe('getAutofocusElement()', () => {
+  it('should return the first element with an autofocus attribute of the host', () => {
+    const host = document.createElement('div');
+    const dialog = document.createElement('dialog');
+    host.attachShadow({ mode: 'open' }).append(dialog);
+    const first = document.createElement('button');
+    first.setAttribute('autofocus', '');
+    const second = document.createElement('button');
+    second.setAttribute('autofocus', '');
+    const wrapper = document.createElement('div');
+    wrapper.append(first);
+    host.append(wrapper, second);
+
+    expect(getAutofocusElement(dialog)).toBe(first);
+  });
+
+  it('should ignore elements with an autofocus attribute in the shadow root', () => {
+    const host = document.createElement('div');
+    const dialog = document.createElement('dialog');
+    const dismissButton = document.createElement('button');
+    dismissButton.setAttribute('autofocus', '');
+    dialog.append(dismissButton);
+    host.attachShadow({ mode: 'open' }).append(dialog);
+
+    expect(getAutofocusElement(dialog)).toBeNull();
+  });
+
+  it('should return null when the dialog is not rendered in a shadow root', () => {
+    expect(getAutofocusElement(document.createElement('dialog'))).toBeNull();
   });
 });
 

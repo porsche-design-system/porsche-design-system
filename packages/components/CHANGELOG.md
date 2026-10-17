@@ -40,6 +40,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Multi Select Option`: slotted content only took up the width of its own content, so it could not fill the option,
   e.g. with `w-full`, and right-aligned elements were not aligned to the right edge
   ([#4787](https://github.com/porsche-design-system/porsche-design-system/pull/4787))
+- `Flyout`, `Modal`, `Sheet`: a slotted element with the `autofocus` attribute didn't receive the focus when the dialog
+  opened; the dialog itself was focused instead, and moving the focus by script only worked after `motionVisibleEnd`
+  ([#<pr-number>](https://github.com/porsche-design-system/porsche-design-system/pull/<pr-number>))
 
 ## [4.8.0] - 2026-10-02
 

@@ -10,6 +10,7 @@ behavior. As a result, accessibility features may vary across different browsers
 | `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behavior). |
 | `ESC`                      | Closes the dialog.                                                                                              |
 | `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                       |
+| opening the dialog         | The dialog receives the focus, or the first slotted element with an `autofocus` attribute.                      |
 
 ### ARIA enhancements
 
@@ -36,5 +37,8 @@ header slot or `aria` property.
 - **Do** use a semantic trigger (usually a button) with a meaningful accessible name.
 - **Do** set `aria-haspopup` through the trigger component `aria` prop when opening the sheet.
 - **Do** ensure a meaningful title/label is available via the header slot or `aria` property.
+- **Do** set the `autofocus` attribute on the slotted element that should receive the focus when the sheet opens, e.g.
+  the first input of a form. Calling `focus()` right after setting `open` doesn't work reliably: the sheet moves the
+  focus to its dialog once it has rendered.
 - **Don't** add raw host-level ARIA attributes as a workaround.
 - **Don't** use unclear trigger copy like "Open" when the sheet purpose is not obvious.

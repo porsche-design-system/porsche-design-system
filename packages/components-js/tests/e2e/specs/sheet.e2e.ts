@@ -254,6 +254,18 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await expectDialogAndThenDismissButtonToBeFocused(page);
     });
 
+    test('should focus slotted element with autofocus attribute after open', async ({ page }) => {
+      await initBasicSheet(page, {
+        isOpen: false,
+        content: `<p-button>Some focusable button in content</p-button><p-input-text id="input-autofocus" label="Some label" name="some-name" autofocus></p-input-text>`,
+        aria: "{'aria-label': 'Some Heading'}",
+      });
+      await openSheet(page);
+
+      expect(await getActiveElementId(page)).toBe('input-autofocus');
+      expect(await getActiveElementTagNameInShadowRoot(page.locator('#input-autofocus'))).toBe('INPUT');
+    });
+
     test('should focus dismiss button after open when there is a focusable content element', async ({ page }) => {
       await initBasicSheet(page, {
         isOpen: false,
