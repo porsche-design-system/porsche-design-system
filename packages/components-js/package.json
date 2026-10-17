@@ -12,7 +12,7 @@
     "build-app": "npm run build-app:components && npm run build-app:shared && npm run build-app:stylesheets && npm run build-app:componentsAngularReact && vite build",
     "build-app:components": "cp ./dist/components-wrapper/cjs/index.cjs ./public/index.js",
     "build-app:shared": "cp ../shared/dist/esm/data/table-data-sorting.js ./public/assets/table-data-sorting.js && cp ../shared/dist/esm/data/table-data-basic.js ./public/assets/table-data-basic.js && cp ../shared/dist/esm/data/table-data-advanced.js ./public/assets/table-data-advanced.js && cp ../shared/dist/esm/data/table-data-vrt.js ./public/assets/table-data-vrt.js && cp ../shared/dist/css/styles.css ./public/assets/styles.css",
-    "build-app:stylesheets": "cp -r ../components/projects/stylesheets/lib/index.css ./public/assets/index.css",
+    "build-app:stylesheets": "cp -r ../components/projects/stylesheets/lib/index.css ./public/assets/index.css && cp ../components/projects/stylesheets/lib/initial.css ./public/assets/initial.css",
     "build-app:componentsAngularReact": "npm run generateVRTPages",
     "build:components-manager-cli": "npm run build --workspace=@porsche-design-system/components-manager-cli",
     "build:components-manager-core": "npm run build --workspace=@porsche-design-system/components-manager-core",
