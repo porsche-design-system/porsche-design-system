@@ -346,6 +346,61 @@ test.describe('focus behavior', () => {
     expect(await getActiveElementTagNameInShadowRoot(page.locator('#input-autofocus'))).toBe('INPUT');
   });
 
+  test('should not focus element with autofocus attribute that is not assigned to a slot', async ({ page }) => {
+    await initBasicFlyout(
+      page,
+      { open: false },
+      {
+        content: `<p-input-text id="input-unassigned" slot="unknown" label="Some label" name="some-unassigned-name" autofocus></p-input-text><p-input-text id="input-autofocus" label="Some label" name="some-name" autofocus></p-input-text>`,
+      }
+    );
+    await openFlyout(page);
+
+    expect(await getActiveElementId(page)).toBe('input-autofocus');
+    expect(await getActiveElementTagNameInShadowRoot(page.locator('#input-autofocus'))).toBe('INPUT');
+  });
+
+  test('should not focus hidden element with autofocus attribute', async ({ page }) => {
+    await initBasicFlyout(
+      page,
+      { open: false },
+      {
+        content: `<div hidden><p-input-text id="input-hidden" label="Some label" name="some-hidden-name" autofocus></p-input-text></div><p-input-text id="input-autofocus" label="Some label" name="some-name" autofocus></p-input-text>`,
+      }
+    );
+    await openFlyout(page);
+
+    expect(await getActiveElementId(page)).toBe('input-autofocus');
+    expect(await getActiveElementTagNameInShadowRoot(page.locator('#input-autofocus'))).toBe('INPUT');
+  });
+
+  test('should not focus element with autofocus attribute inside a closed nested overlay', async ({ page }) => {
+    await initBasicFlyout(
+      page,
+      { open: false },
+      {
+        content: `<p-modal aria="{'aria-label': 'Nested modal'}"><p-input-text id="input-nested" label="Some label" name="some-nested-name" autofocus></p-input-text></p-modal><p-input-text id="input-autofocus" label="Some label" name="some-name" autofocus></p-input-text>`,
+      }
+    );
+    await openFlyout(page);
+
+    expect(await getActiveElementId(page)).toBe('input-autofocus');
+    expect(await getActiveElementTagNameInShadowRoot(page.locator('#input-autofocus'))).toBe('INPUT');
+  });
+
+  test('should focus dialog when no element with autofocus attribute can be focused', async ({ page }) => {
+    await initBasicFlyout(
+      page,
+      { open: false },
+      {
+        content: `<p-input-text id="input-unassigned" slot="unknown" label="Some label" name="some-unassigned-name" autofocus></p-input-text><div hidden><p-input-text id="input-hidden" label="Some label" name="some-hidden-name" autofocus></p-input-text></div><p-modal aria="{'aria-label': 'Nested modal'}"><p-input-text id="input-nested" label="Some label" name="some-nested-name" autofocus></p-input-text></p-modal>`,
+      }
+    );
+    await openFlyout(page);
+
+    await expectDialogAndThenDismissButtonToBeFocused(page);
+  });
+
   test('should focus dismiss button after open when there are other focusable elements', async ({ page }) => {
     await initAdvancedFlyout(page);
     await openFlyout(page);
