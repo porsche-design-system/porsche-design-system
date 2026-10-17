@@ -23,7 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `:not(:defined)` rule, it leaves custom elements of other libraries visible, e.g. the route announcer of Next.js, and
   it excludes components rendered with `@porsche-design-system/components-react/ssr`. Import it with
   `@import '@porsche-design-system/components-{js|angular|react|vue}/initial.css';`
-  ([#<pr-number>](https://github.com/porsche-design-system/porsche-design-system/pull/<pr-number>))
+  ([#4792](https://github.com/porsche-design-system/porsche-design-system/pull/4792))
 
 ### Changed
 
