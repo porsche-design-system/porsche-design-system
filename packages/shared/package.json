@@ -1,14 +1,109 @@
 {
-  "name": "shared",
+  "name": "@porsche-design-system/shared",
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "deprecation": [
+        "./dist/deprecation/index.d.ts"
+      ],
+      "models": [
+        "./dist/models/index.d.ts"
+      ],
+      "testing": [
+        "./dist/testing/index.d.ts"
+      ],
+      "testing/normalize-css-namespace": [
+        "./dist/testing/normalizeCssNamespace.d.ts"
+      ],
+      "testing/assert-defined": [
+        "./dist/testing/assertDefined.d.ts"
+      ],
+      "examples": [
+        "./dist/examples/index.ts"
+      ],
+      "examples/*": [
+        "./dist/examples/*.tsx"
+      ]
+    }
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./deprecation": {
+      "import": {
+        "types": "./dist/deprecation/index.d.ts",
+        "default": "./dist/deprecation/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/deprecation/index.d.ts",
+        "default": "./dist/deprecation/cjs/index.cjs"
+      }
+    },
+    "./models": {
+      "import": {
+        "types": "./dist/models/index.d.ts",
+        "default": "./dist/models/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/models/index.d.ts",
+        "default": "./dist/models/cjs/index.cjs"
+      }
+    },
+    "./testing": {
+      "import": {
+        "types": "./dist/testing/index.d.ts",
+        "default": "./dist/testing/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/testing/index.d.ts",
+        "default": "./dist/testing/cjs/index.cjs"
+      }
+    },
+    "./testing/normalize-css-namespace": {
+      "import": {
+        "types": "./dist/testing/normalizeCssNamespace.d.ts",
+        "default": "./dist/testing/normalize-css-namespace/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/testing/normalizeCssNamespace.d.ts",
+        "default": "./dist/testing/normalize-css-namespace/cjs/index.cjs"
+      }
+    },
+    "./testing/assert-defined": {
+      "import": {
+        "types": "./dist/testing/assertDefined.d.ts",
+        "default": "./dist/testing/assert-defined/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/testing/assertDefined.d.ts",
+        "default": "./dist/testing/assert-defined/cjs/index.cjs"
+      }
+    },
+    "./css/styles.css": "./dist/css/styles.css",
+    "./css/styles": "./dist/css/styles.css",
+    "./examples": "./dist/examples/index.ts",
+    "./examples/*": "./dist/examples/*.tsx",
+    "./tsconfig.base.json": "./tsconfig.base.json",
+    "./tsconfig.paths.json": "./tsconfig.paths.json",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "serve-dummyassets": "./bin/serve-dummyassets.js",
     "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
@@ -44,7 +139,6 @@
     "rollup": "^4.63.5",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-generate-package-json": "^3.2.0",
     "rollup-plugin-modify": "^3.0.0",
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",

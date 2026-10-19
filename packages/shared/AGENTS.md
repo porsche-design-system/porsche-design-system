@@ -37,6 +37,24 @@ npm run test:unit:shared
 - Build scripts also generate framework code examples consumed elsewhere in the repo.
 - Do not hand-edit generated files in `src/lib/`, generated examples, or `dist/`.
 
+## Package and entry points
+
+`packages/shared` is the workspace `@porsche-design-system/shared`. Its `exports` map points into `dist/`, so consumers
+get the built code, and `npm install` links the package before anything is built. It is private and never published.
+
+- Deep entries (`./deprecation`, `./models`, `./testing`, `./testing/normalize-css-namespace`,
+  `./testing/assert-defined`) are bundled on their own, so code can use them without loading the barrel and its
+  generated modules or Playwright helpers.
+- `./examples` and `./examples/*` point at the TSX sources copied to `dist/examples/`, unbundled because of the
+  `'use client'` directives Next needs; a deep import lets a page load one example without the whole barrel.
+- `./tsconfig.base.json` and `./tsconfig.paths.json` are the shared compiler base and the source mappings for the
+  pre-build typecheck (see `docs/typecheck.md`). Configs extend them as
+  `@porsche-design-system/shared/tsconfig.base.json`.
+- A new entry point needs an entry in `exports`, a bundle in `rollup.config.js` and, if it is checked before the build,
+  a mapping in `tsconfig.paths.json`.
+- The bins (`serve-dummyassets`, `prepare-vrt-snapshots`) are built into `bin/`. The root `preinstall:shared` creates
+  empty placeholders so `npm install` can link them before the first build.
+
 ## Implementation Notes
 
 - Changes here can affect components, wrappers, styles, storefront tooling, and tests across the monorepo.
