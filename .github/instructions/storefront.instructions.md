@@ -76,6 +76,10 @@ button:focus-visible {
 | **Code examples** | Must be accessible by default (correct labels, focus, keyboard behavior). |
 | **Headings** | Maintain logical heading order (no skipped levels). |
 
+MDX imports components only from `packages/storefront/src/components/mdx/<topic>/<Name>`, one folder per component, and
+writes Markdown instead of PDS components or raw HTML. The folder's `README.md` is the inventory; add a row there for a
+new component (see `packages/storefront/AGENTS.md` → _MDX components_).
+
 ## Generating configurator and example stories
 
 When you create or extend component docs inside `packages/storefront/src/app/components/{component}/`, keep the
@@ -101,7 +105,7 @@ configurator and examples pages backed by a colocated `{component}.stories.ts` f
 
 ```mdx
 import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
-import { Configurator } from '@/components/playground/Configurator';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 
 <Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
 ```
@@ -117,9 +121,9 @@ import { Configurator } from '@/components/playground/Configurator';
 - Keep each example accessible by default, including keyboard support, visible focus, and proper accessible names.
 
 ```mdx
-import { ComponentStory } from '@/components/playground/ComponentStory';
+import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
 import { componentStoryAdvanced } from '@/app/components/component/component.stories';
-import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
 import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
 ```
 

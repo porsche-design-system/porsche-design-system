@@ -1,5 +1,5 @@
-import { PLinkPure } from '@porsche-design-system/components-react/ssr';
-import { TableOfContents } from '@/components/common/TableOfContents';
+import { DownloadList } from '@/components/mdx/content/DownloadList';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 import License from './license.mdx';
 
 export const metadata = {
@@ -22,25 +22,17 @@ reserves the right to change and update this licensing agreement at any time.
 ## General Notices
 
 Further information regarding license terms and – where required by license – source codes are available at
-{/* prettier-ignore */}
-
-<PLinkPure icon="none" target="_blank" href="https://porsche.com/softwareinfo">
-  {'www.porsche.com/softwareinfo'}
-</PLinkPure>
-free of charge. Some licenses, however, require the provision of physical copies of source or object code. In this case,
-you may obtain a copy of the source codes by contacting us at
-{/* prettier-ignore */}
-<PLinkPure icon="none" target="_blank" href="https://porsche.com/softwareinfo">{'www.porsche.com/softwareinfo'}</PLinkPure>
-. Furthermore, please contact us at the foregoing URL in case you need assistance regarding the exercise of rights
-guaranteed by an Open Source License. A nominal fee (i.e., the cost of physically performing the distribution) will be
-charged for these services.
+[www.porsche.com/softwareinfo](https://porsche.com/softwareinfo) free of charge. Some licenses, however, require the
+provision of physical copies of source or object code. In this case, you may obtain a copy of the source codes by
+contacting us at [www.porsche.com/softwareinfo](https://porsche.com/softwareinfo). Furthermore, please contact us at the
+foregoing URL in case you need assistance regarding the exercise of rights guaranteed by an Open Source License. A
+nominal fee (i.e., the cost of physically performing the distribution) will be charged for these services.
 
 **Note:** your copy of this product may not contain code covered by one or more of the licenses listed here, depending
 on the exact product and version you choose.
 
 ## Open Source Software Notice
 
-This software may or may not contain the following specific Open Source Software: {/* prettier-ignore */}
+This software may or may not contain the following specific Open Source Software:
 
-{/* prettier-ignore */}
-<PLinkPure icon="download" href="assets/compulsory-statement.txt" download="compulsory-statement.txt">Download Compulsory Statement</PLinkPure>
+<DownloadList items={[{ href: 'assets/compulsory-statement.txt', label: 'Compulsory Statement' }]} />
