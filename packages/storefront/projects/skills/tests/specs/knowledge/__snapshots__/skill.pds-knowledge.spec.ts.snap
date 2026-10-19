@@ -13418,9 +13418,7 @@ exports[`pds-knowledge skill tree content > matches the staged angular content s
 [
   "# p-popover",
   "",
-  "The \`p-popover\` component displays additional contextual content in an overlay and should be used when users need optional details without leaving their current context. It is triggered by a button and renders its own info button by default",
-  "",
-  ", or you can provide a custom trigger via the \`button\` slot.",
+  "The \`p-popover\` component displays additional contextual content in an overlay and should be used when users need optional details without leaving their current context. It is triggered by a button and renders its own info button by default, or you can provide a custom trigger via the \`button\` slot.",
   "",
   "By default, the Popover works **uncontrolled**: it manages its own visibility and toggles open or closed when its info button (or a slotted trigger) is clicked. It is dismissed on outside click, on \`Escape\`, or when keyboard focus leaves the Popover.",
   "",
@@ -39286,9 +39284,7 @@ exports[`pds-knowledge skill tree content > matches the staged js content snapsh
 [
   "# p-popover",
   "",
-  "The \`p-popover\` component displays additional contextual content in an overlay and should be used when users need optional details without leaving their current context. It is triggered by a button and renders its own info button by default",
-  "",
-  ", or you can provide a custom trigger via the \`button\` slot.",
+  "The \`p-popover\` component displays additional contextual content in an overlay and should be used when users need optional details without leaving their current context. It is triggered by a button and renders its own info button by default, or you can provide a custom trigger via the \`button\` slot.",
   "",
   "By default, the Popover works **uncontrolled**: it manages its own visibility and toggles open or closed when its info button (or a slotted trigger) is clicked. It is dismissed on outside click, on \`Escape\`, or when keyboard focus leaves the Popover.",
   "",
@@ -65409,9 +65405,7 @@ exports[`pds-knowledge skill tree content > matches the staged react content sna
 [
   "# p-popover",
   "",
-  "The \`p-popover\` component displays additional contextual content in an overlay and should be used when users need optional details without leaving their current context. It is triggered by a button and renders its own info button by default",
-  "",
-  ", or you can provide a custom trigger via the \`button\` slot.",
+  "The \`p-popover\` component displays additional contextual content in an overlay and should be used when users need optional details without leaving their current context. It is triggered by a button and renders its own info button by default, or you can provide a custom trigger via the \`button\` slot.",
   "",
   "By default, the Popover works **uncontrolled**: it manages its own visibility and toggles open or closed when its info button (or a slotted trigger) is clicked. It is dismissed on outside click, on \`Escape\`, or when keyboard focus leaves the Popover.",
   "",
@@ -90897,9 +90891,7 @@ exports[`pds-knowledge skill tree content > matches the staged vue content snaps
 [
   "# p-popover",
   "",
-  "The \`p-popover\` component displays additional contextual content in an overlay and should be used when users need optional details without leaving their current context. It is triggered by a button and renders its own info button by default",
-  "",
-  ", or you can provide a custom trigger via the \`button\` slot.",
+  "The \`p-popover\` component displays additional contextual content in an overlay and should be used when users need optional details without leaving their current context. It is triggered by a button and renders its own info button by default, or you can provide a custom trigger via the \`button\` slot.",
   "",
   "By default, the Popover works **uncontrolled**: it manages its own visibility and toggles open or closed when its info button (or a slotted trigger) is clicked. It is dismissed on outside click, on \`Escape\`, or when keyboard focus leaves the Popover.",
   "",
