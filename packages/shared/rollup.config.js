@@ -3,12 +3,8 @@ import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
 import shebang from 'rollup-plugin-preserve-shebang';
 import pkg from './package.json';
-
-// required rather than imported: rollup would bundle the CommonJS module as ESM and find no exports
-const { getDistPackageJson } = require('./scripts/distPackageJson.cjs');
 
 const input = 'src/index.ts';
 const external = [
@@ -32,7 +28,6 @@ export default [
       format: 'cjs',
       preserveModules: true,
       interop: 'auto', // needed for generateScss.ts of utilities package to work with default exports of jss dependencies
-      plugins: [generatePackageJson({ baseContents: getDistPackageJson })],
     },
     plugins: [
       copy({

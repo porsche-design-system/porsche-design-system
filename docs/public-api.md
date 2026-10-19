@@ -17,7 +17,8 @@ keep working. It is the single source of truth for "is this public?" for both hu
 
 Almost every workspace package looks published: it has a scoped name (`@porsche-design-system/scss`), an `exports` map,
 `files`, `types`, and `.d.ts` output. None of that makes it public. All of them carry `"private": true` and are only
-ever resolved through npm workspaces. `packages/shared` is not even scoped — its `name` is literally `shared`.
+ever resolved through npm workspaces. `@porsche-design-system/shared` (`packages/shared`) is one of them, despite its
+scoped name.
 
 The published packages are assembled by copying **selected build output** of those workspace packages into a wrapper
 `dist/`. What is not copied does not exist for a consumer.

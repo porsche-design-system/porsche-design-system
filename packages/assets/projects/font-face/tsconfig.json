@@ -1,5 +1,5 @@
 {
-  "extends": "shared/tsconfig.base.json",
+  "extends": "@porsche-design-system/shared/tsconfig.base.json",
   "compilerOptions": {
     "ignoreDeprecations": "6.0"
   },
