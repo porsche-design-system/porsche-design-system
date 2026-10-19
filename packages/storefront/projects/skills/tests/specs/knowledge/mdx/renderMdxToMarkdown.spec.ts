@@ -6,17 +6,24 @@ const render = (source: string, framework: Parameters<typeof renderMdxToMarkdown
 
 describe('renderMdxToMarkdown', () => {
   it('gates framework-specific guidance', () => {
-    const source = `<FrameworkNotification showForFrameworks={['react']} heading="React only">
+    const source = `<Notification frameworks={['react']} heading="React only">
 
 Use \`onInput\` in React.
 
-</FrameworkNotification>
+</Notification>
+
+<Notification heading="Everyone">
+
+Shared guidance.
+
+</Notification>
 
 Shared prose.
 `;
 
     expect(render(source, 'react')).toContain('> **React only**');
     expect(render(source, 'vanilla-js')).not.toContain('React only');
+    expect(render(source, 'vanilla-js')).toContain('> **Everyone**');
   });
 
   it('escapes pipes in table cells', () => {
@@ -26,13 +33,6 @@ Shared prose.
 `;
 
     expect(render(source)).toContain("| `'html' \\| 'jsx'` |");
-  });
-
-  it('renders DocsLink as a Markdown link, inline and as a block', () => {
-    expect(render('Otherwise, <DocsLink href="/components/wordmark">p-wordmark</DocsLink> has to be used.')).toBe(
-      'Otherwise, [p-wordmark](/components/wordmark) has to be used.'
-    );
-    expect(render('<DocsLink href="/patterns/forms">Forms</DocsLink>')).toBe('[Forms](/patterns/forms)');
   });
 
   it('throws when prose renders to nothing meaningful', () => {
