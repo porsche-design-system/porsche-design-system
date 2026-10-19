@@ -1,3 +1,4 @@
+import { FRAMEWORKS, type Framework } from '@porsche-design-system/shared';
 import type { ComponentRosterEntry } from '@skills/knowledge/components/reference';
 import { renderComponentsSection } from '@skills/knowledge/components/section';
 import {
@@ -12,7 +13,6 @@ import {
   buildSkillMd as renderSkillMd,
   skillName,
 } from '@skills/knowledge/skillMd';
-import { FRAMEWORKS, type Framework } from '@skills/shared/skillTree';
 import { localPorscheDesignSystemVersion } from '@skills/shared/version';
 import { describe, expect, it } from 'vitest';
 
@@ -76,8 +76,8 @@ describe('buildSkillMd', () => {
     expect(buildSkillMd('react')).toContain('**Convert to React before use.**');
     expect(buildSkillMd('angular')).toContain('`@porsche-design-system/components-angular`');
     expect(buildSkillMd('vue')).toContain('into Vue state and event handlers');
-    expect(buildSkillMd('js')).not.toContain('Convert to');
-    expect(buildSkillMd('js')).toContain('**Vanilla HTML and JavaScript.**');
+    expect(buildSkillMd('vanilla-js')).not.toContain('Convert to');
+    expect(buildSkillMd('vanilla-js')).toContain('**Vanilla HTML and JavaScript.**');
   });
 
   it('links the patterns and templates from SKILL.md', () => {

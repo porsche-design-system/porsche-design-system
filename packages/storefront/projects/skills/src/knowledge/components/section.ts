@@ -1,12 +1,12 @@
+import type { Framework } from '@porsche-design-system/shared';
 import { escapeCell, markdownTable } from '../../shared/markdown';
-import type { Framework } from '../../shared/skillTree';
 import type { ComponentRosterEntry } from './reference';
 
 /**
  * Framework wrappers expose component metadata through the JS peer.
  */
 export const rawMetaReference = (framework: Framework): string =>
-  framework === 'js' ? '../../meta' : '@porsche-design-system/components-js/meta';
+  framework === 'vanilla-js' ? '../../meta' : '@porsche-design-system/components-js/meta';
 
 /**
  * Maps framework syntax to the custom-element names used by shared component references.
@@ -34,7 +34,7 @@ const FRAMEWORK_SYNTAX: Record<Framework, string> = {
     '- Listen to events with `(event)` — the `dismiss` event is `(dismiss)="onDismiss()"`.',
     '- Place a child into a named slot with the `slot="..."` attribute.',
   ].join('\n'),
-  js: [
+  'vanilla-js': [
     '**Framework syntax:**',
     '- Use the **custom-element tags** directly in HTML: `<p-button>`, `<p-input-text>`.',
     '- Set props as attributes (`variant="secondary"`) or as DOM properties for non-string values.',

@@ -61,6 +61,18 @@ export default [
                   default: './deprecation/cjs/index.cjs',
                 },
               },
+              // deep import so that code typechecked before the build (e.g. the styles preview app) can use the
+              // vocabularies without the barrel, whose generated modules don't exist in a fresh clone
+              './models': {
+                import: {
+                  types: './models/index.d.ts',
+                  default: './models/esm/index.mjs',
+                },
+                require: {
+                  types: './models/index.d.ts',
+                  default: './models/cjs/index.cjs',
+                },
+              },
               './testing': {
                 import: {
                   types: './testing/index.d.ts',
@@ -159,6 +171,22 @@ export default [
       },
     ],
     plugins: [typescript({ noEmitOnError: true, rootDir: 'src/deprecation' })],
+  },
+  {
+    // standalone bundle for the `./models` deep import, see the exports map above
+    input: 'src/models/index.ts',
+    external,
+    output: [
+      {
+        file: 'dist/models/esm/index.mjs',
+        format: 'esm',
+      },
+      {
+        file: 'dist/models/cjs/index.cjs',
+        format: 'cjs',
+      },
+    ],
+    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/models' })],
   },
   {
     input: 'src/testing/index.ts',

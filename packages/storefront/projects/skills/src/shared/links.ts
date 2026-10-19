@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { Framework } from './skillTree';
+import { type Framework, frameworkSuffixMap } from '@porsche-design-system/shared';
 import { localPorscheDesignSystemVersion } from './version';
 
 /**
@@ -46,7 +46,7 @@ const FRAMEWORK_PLACEHOLDER = '{js|angular|react|vue}';
 const PLACEHOLDER_INSTRUCTION = /^.*Replace \{js\|angular\|react\|vue\} with your framework[^\n]*\n?/gm;
 
 export const resolveFrameworkPlaceholder = (markdown: string, framework: Framework): string =>
-  markdown.replace(PLACEHOLDER_INSTRUCTION, '').replaceAll(FRAMEWORK_PLACEHOLDER, framework);
+  markdown.replace(PLACEHOLDER_INSTRUCTION, '').replaceAll(FRAMEWORK_PLACEHOLDER, frameworkSuffixMap[framework]);
 
 const LINK_PATTERN = /\]\((\/[^)\s]*)\)/g;
 

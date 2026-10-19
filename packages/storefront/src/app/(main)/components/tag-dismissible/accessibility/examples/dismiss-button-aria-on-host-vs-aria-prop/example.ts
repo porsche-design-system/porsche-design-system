@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const dismissButtonAriaOnHostVsAriaPropA11yExample = {
   name: 'Dismiss button ARIA on host vs aria prop',

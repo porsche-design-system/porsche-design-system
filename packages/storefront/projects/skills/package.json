@@ -26,6 +26,7 @@
     "@porsche-design-system/scss": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/stylesheets": "0.0.0",
+    "@porsche-design-system/story-generator": "0.0.0",
     "@porsche-design-system/tailwindcss": "0.0.0",
     "@porsche-design-system/tokens-meta": "0.0.0",
     "@porsche-design-system/vanilla-extract": "0.0.0",
