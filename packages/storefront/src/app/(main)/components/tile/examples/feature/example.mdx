@@ -2,9 +2,9 @@ A feature tile explains a single feature of a vehicle, e.g. within a model page 
 so it has no `anchor`. With `aspect-ratio="auto"` the Tile adapts its height to the content, and
 `[--p-tile-gap-y:var(--spacing-fluid-md)]` increases the space between image and text.
 
-The image is placed in the default slot and bleeds to the top and side edges via negative margins based on the read-only
-CSS variables `--ref-p-tile-px` and `--ref-p-tile-py`, while `self-stretch` and `max-w-none` let it span the full width.
-`aspect-video object-cover` defines its height. The Tile clips the image to its corner radius.
+The image is placed in the default slot. `bleed` lets the default slot reach the top and side edges of the Tile, since
+only the `bottom` slot is occupied, and lets the image span its full width cover-fit. With `aspect-ratio="auto"`,
+`aspect-video` defines the height of the image. The Tile clips the image to its corner radius.
 
 Heading, text and footnote are wrapped in a single element in the `bottom` slot, which spans the full width via `grow`.
 The footnote reference is marked up as `<sup>`, the footnote itself uses `size="xs"` and `color="contrast-medium"`.

@@ -15,3 +15,7 @@ The `motion-safe:` variant respects the reduced motion preference of the user.
 The Tailwind CSS counterpart places the image in an absolutely positioned background element behind the content
 (`absolute inset-0 -z-1`), which clips the zooming image to the radius. The gradient is applied to the bottom row via
 `bg-fade-to-t`, its top padding `pt-fluid-lg` extends it above the heading.
+
+The third variant omits the `anchor` slot and sets `cover` on the arrow link instead, which stretches its clickable area
+over the Tile. The link is the only one, so it needs neither `aria-hidden` nor `tabindex="-1"`, and its label is its
+accessible name. Since hovering the Tile hovers the link, the image zooms in via `group-has-[p-link:hover]:scale-105`.

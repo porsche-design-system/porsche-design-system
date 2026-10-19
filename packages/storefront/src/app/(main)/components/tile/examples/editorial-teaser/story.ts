@@ -106,6 +106,39 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
   ],
 };
 
+const coverTile: ElementConfig<HTMLTagOrComponent> = {
+  tag: 'p-tile',
+  properties: {
+    className: '@container group [--p-tile-px:0] [--p-tile-py:0] [--p-tile-radius:0]',
+    aspectRatio: 'auto',
+    background: 'none',
+  },
+  children: [
+    {
+      tag: 'div',
+      properties: { className: 'grow self-stretch grid @2xl:grid-cols-2 gap-fluid-md text-start' },
+      children: createLayout(createImage('group-has-[p-link:hover]:scale-105'), [
+        { tag: 'p-heading', properties: { tag: 'h3', size: 'lg', weight: 'semibold' }, children: [label] },
+        description,
+        {
+          // covers the tile instead of the `anchor` slot, so the visible link is the only one and needs no duplicate;
+          // `p-link-pure` doesn't support `cover`, so a compact `p-link` is used; the accessible name of its anchor
+          // contains the visible label and identifies the story
+          tag: 'p-link',
+          properties: { variant: 'secondary', compact: true, cover: true },
+          children: [
+            {
+              tag: 'a',
+              properties: { href: '#', 'aria-label': 'Read more about masterpieces' },
+              children: ['Read more'],
+            },
+          ],
+        },
+      ]),
+    },
+  ],
+};
+
 export const tileStoryEditorialTeaser: Story<'p-tile'> = {
-  generator: () => [createComparison(tile, tailwindTile, { stacked: true })],
+  generator: () => [createComparison(tile, tailwindTile, { stacked: true, coverTile })],
 };

@@ -2,10 +2,9 @@ A category tile links to a category of a shop, e.g. vehicle accessories of the P
 icon-only link are placed in the `top` slot, which centers them vertically, and pushed apart via `ms-auto` on the link.
 `[--p-tile-gap-y:var(--spacing-fluid-lg)]` increases the space between the heading and the image.
 
-The cut-out product image is placed in the default slot and fills the remaining space via `grow basis-0 min-h-0` without
-increasing the height of the Tile. It bleeds to the bottom and side edges via negative margins based on the read-only
-CSS variables `--ref-p-tile-px` and `--ref-p-tile-py`, while `self-stretch` and `max-w-none` let it span the full width.
-The Tile clips the image to its corner radius.
+The cut-out product image is placed in the default slot. `bleed` lets the default slot reach the bottom and side edges
+of the Tile, since only the `top` slot is occupied, and lets the image fill it cover-fit without increasing the height
+of the Tile. `object-top` keeps the upper part of the image visible. The Tile clips the image to its corner radius.
 
 The `anchor` slot makes the whole Tile clickable and provides the accessible link to the category. The visible arrow
 link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` on the link and
@@ -20,3 +19,7 @@ link and carries the radius, and an inner element, which lays out the content an
 `overflow-clip rounded-[inherit]`. Since the padding is set via `p-fluid-md`, the image uses the same value as negative
 margins (`-mb-fluid-md -mx-fluid-md`). `min-w-0` on the inner element prevents the natural width of the image from
 widening the tile.
+
+The third variant omits the `anchor` slot and sets `cover` on the arrow link instead, which stretches its clickable area
+over the Tile. The link is the only one, so it needs neither `aria-hidden` nor `tabindex="-1"`, and its label is its
+accessible name. Since hovering the Tile hovers the link, the image zooms in via `group-has-[p-link:hover]:scale-105`.

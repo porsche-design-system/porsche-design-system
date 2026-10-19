@@ -13,14 +13,15 @@ export const stretchedLinkClassName =
 export const stretchedLinkWithoutRadiusClassName = stretchedLinkClassName.replace(' after:rounded-3xl', '');
 
 /**
- * Renders the `p-tile` example and its Tailwind CSS only counterpart side by side, or stacked for wide tiles.
+ * Renders the `p-tile` example and its Tailwind CSS only counterpart side by side, or stacked for wide tiles. The
+ * optional `p-tile` with a covering `p-link` follows in the next row.
  */
 export const createComparison = (
   tile: ElementConfig<HTMLTagOrComponent>,
   tailwindTile: ElementConfig<HTMLTagOrComponent>,
-  { stacked = false }: { stacked?: boolean } = {}
+  { stacked = false, coverTile }: { stacked?: boolean; coverTile?: ElementConfig<HTMLTagOrComponent> } = {}
 ): ElementConfig<HTMLTagOrComponent> => ({
   tag: 'div',
   properties: { className: stacked ? 'grid grid-cols-1 gap-static-md' : 'grid grid-cols-2 gap-static-md' },
-  children: [tile, tailwindTile],
+  children: [tile, tailwindTile, ...(coverTile ? [coverTile] : [])],
 });

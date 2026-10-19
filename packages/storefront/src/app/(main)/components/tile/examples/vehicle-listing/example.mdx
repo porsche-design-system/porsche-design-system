@@ -23,3 +23,9 @@ the image to the radius via `overflow-clip rounded-[inherit]`. Since the padding
 the same value as negative margins. Instead of the `anchor` slot, the link of the heading is stretched over the whole
 tile via `after:absolute after:inset-0`, which also renders the focus ring around the tile. The buttons are placed above
 the stretched link via `relative z-2` instead of opting in via `pointer-events-auto`.
+
+The third variant omits the `anchor` slot and sets `cover` on the "Show details" link instead, which stretches its
+clickable area over the Tile. The link is the only one, so it needs neither `aria-hidden` nor `tabindex="-1"`. Its
+slotted anchor gets the accessible name "Show details of the Porsche 718 Boxster", which contains the visible label and
+identifies the vehicle. The "Save" button is placed above the covering link via `relative z-2`, so it stays clickable.
+Since hovering the Tile hovers the link, the Tile is lifted via `has-[p-link:hover]:shadow-sm`.

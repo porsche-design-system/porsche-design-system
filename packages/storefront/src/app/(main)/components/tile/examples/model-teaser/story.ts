@@ -12,10 +12,12 @@ const createContent = ({
   imageClassName,
   heading: headingElement,
   actionClassName,
+  cover = false,
 }: {
   imageClassName: string;
   heading: ElementConfig<HTMLTagOrComponent>;
   actionClassName: string;
+  cover?: boolean;
 }): Children => [
   {
     // signature and vehicle are stacked in the same grid cell, the margin lets the vehicle overlap the signature; the
@@ -54,16 +56,29 @@ const createContent = ({
     tag: 'div',
     properties: { className: 'flex flex-wrap justify-center items-center gap-static-md mt-fluid-sm' },
     children: [
-      {
-        // visual duplicate of the main link, hidden from assistive technology and keyboard to avoid a redundant link
-        tag: 'p-link',
-        properties: { className: actionClassName, variant: 'secondary', 'aria-hidden': 'true' },
-        children: [{ tag: 'a', properties: { href: '#', tabIndex: -1 }, children: [label] }],
-      },
+      cover
+        ? {
+            // covers the tile instead of the `anchor` slot, so the visible link is the only one and needs no duplicate;
+            // it shows its own hover state whenever the tile is hovered
+            tag: 'p-link',
+            properties: { variant: 'primary', cover },
+            children: [{ tag: 'a', properties: { href: '#' }, children: [label] }],
+          }
+        : {
+            // visual duplicate of the main link, hidden from assistive technology and keyboard to avoid a redundant link
+            tag: 'p-link',
+            properties: { className: actionClassName, variant: 'primary', 'aria-hidden': 'true' },
+            children: [{ tag: 'a', properties: { href: '#', tabIndex: -1 }, children: [label] }],
+          },
       {
         // independent action; the accessible name contains the visible label and identifies the model
-        tag: 'p-link-pure',
-        properties: { className: actionClassName, href: '#', aria: { 'aria-label': 'Configure 911' } },
+        tag: 'p-link',
+        properties: {
+          className: actionClassName,
+          variant: 'secondary',
+          href: '#',
+          aria: { 'aria-label': 'Configure 911' },
+        },
         children: ['Configure'],
       },
     ],
@@ -106,6 +121,24 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
   }),
 };
 
+const coverTile: ElementConfig<HTMLTagOrComponent> = {
+  tag: 'p-tile',
+  properties: { className: 'group', aspectRatio: '4/3' },
+  children: createContent({
+    // only matches the slotted anchor of the covering link, since the "Configure" link renders its anchor in its shadow
+    // DOM
+    imageClassName: 'group-has-[a:hover]:scale-105',
+    heading: {
+      tag: 'p-heading',
+      properties: { tag: 'h3', size: 'sm', align: 'center' },
+      children: [heading],
+    },
+    // `relative z-2` places the independent "Configure" link above the covering link, so it is clickable
+    actionClassName: 'relative z-2',
+    cover: true,
+  }),
+};
+
 export const tileStoryModelTeaser: Story<'p-tile'> = {
-  generator: () => [createComparison(tile, tailwindTile)],
+  generator: () => [createComparison(tile, tailwindTile, { coverTile })],
 };

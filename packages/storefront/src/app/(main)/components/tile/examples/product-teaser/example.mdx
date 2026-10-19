@@ -21,3 +21,7 @@ link and carries the radius, and an inner element, which clips the image to the 
 `overflow-clip rounded-[inherit]`. It mirrors the `start`, default and `end` slots via
 `grid-cols-[fit-content(50%)_minmax(0,1fr)_fit-content(50%)]`, while `grid-rows-[minmax(0,1fr)]` keeps the image from
 increasing the height of the tile. The image is wrapped in a flex column like in the `start` slot.
+
+The third variant omits the `anchor` slot and sets `cover` on the arrow link instead, which stretches its clickable area
+over the Tile. The link is the only one, so it needs neither `aria-hidden` nor `tabindex="-1"`, and its label is its
+accessible name. Since hovering the Tile hovers the link, the image zooms in via `group-has-[p-link:hover]:scale-105`.

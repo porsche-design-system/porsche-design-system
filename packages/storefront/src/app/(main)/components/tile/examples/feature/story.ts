@@ -34,16 +34,13 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
   properties: {
     className: '[--p-tile-gap-y:var(--spacing-fluid-md)]',
     aspectRatio: 'auto',
+    bleed: true,
   },
   children: [
     {
-      // negative margins equal to the read-only tile padding let the image bleed to the edges of the tile, the tile
-      // clips it to its corner radius
+      // `bleed` lets the image reach the top and side edges of the tile, the tile clips it to its corner radius
       tag: 'img',
-      properties: {
-        className: 'self-stretch max-w-none -mt-(--ref-p-tile-py) -mx-(--ref-p-tile-px) aspect-video object-cover',
-        ...imageProperties,
-      },
+      properties: { className: 'aspect-video', ...imageProperties },
     },
     {
       tag: 'div',

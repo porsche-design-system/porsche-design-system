@@ -153,6 +153,58 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
   ],
 };
 
+const coverTile: ElementConfig<HTMLTagOrComponent> = {
+  tag: 'p-tile',
+  properties: {
+    className: '@container motion-safe:transition-shadow duration-sm ease-in-out has-[p-link:hover]:shadow-sm',
+    aspectRatio: '16/9',
+    background: 'canvas',
+  },
+  children: [
+    {
+      tag: 'div',
+      properties: { className: 'grow self-stretch grid @2xl:grid-cols-2 gap-fluid-md' },
+      children: [
+        {
+          tag: 'div',
+          properties: {
+            className: 'relative -mt-(--ref-p-tile-py) -mx-(--ref-p-tile-px) @2xl:-my-(--ref-p-tile-py) @2xl:me-0',
+          },
+          children: [image],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'flex flex-col gap-fluid-sm' },
+          children: createDetails(
+            { tag: 'p-heading', properties: { tag: 'h3', size: 'lg' }, children: ['Porsche 718 Boxster (982)'] },
+            [
+              {
+                // covers the tile instead of the `anchor` slot, so the visible link is the only one and needs no
+                // duplicate; the accessible name of its anchor contains the visible label and identifies the vehicle
+                tag: 'p-link',
+                properties: { cover: true },
+                children: [
+                  {
+                    tag: 'a',
+                    properties: { href: '#', 'aria-label': 'Show details of the Porsche 718 Boxster' },
+                    children: ['Show details'],
+                  },
+                ],
+              },
+              {
+                // independent action, `relative z-2` places it above the covering link, so it is clickable
+                tag: 'p-button',
+                properties: { className: 'relative z-2', type: 'button', variant: 'secondary', icon: 'bookmark' },
+                children: ['Save'],
+              },
+            ]
+          ),
+        },
+      ],
+    },
+  ],
+};
+
 export const tileStoryVehicleListing: Story<'p-tile'> = {
-  generator: () => [createComparison(tile, tailwindTile)],
+  generator: () => [createComparison(tile, tailwindTile, { coverTile })],
 };

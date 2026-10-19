@@ -5,13 +5,14 @@ import { createComparison, stretchedLinkClassName } from '@/app/(main)/component
 
 const label = 'Vehicle Accessories';
 
-const linkProperties = {
+const coverLinkProperties = {
   variant: 'secondary',
   icon: 'arrow-right',
   hideLabel: true,
   compact: true,
-  'aria-hidden': 'true',
 } as const;
+
+const linkProperties = { ...coverLinkProperties, 'aria-hidden': 'true' } as const;
 
 // slotted anchor, so the hidden link contains no focusable element
 const linkChildren: ElementConfig<HTMLTagOrComponent>[] = [
@@ -28,6 +29,7 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
   properties: {
     className: '[--p-tile-gap-y:var(--spacing-fluid-lg)] group',
     aspectRatio: '3/4',
+    bleed: true,
   },
   children: [
     { tag: 'a', properties: { slot: 'anchor', href: '#' }, children: [label] },
@@ -48,7 +50,7 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
       tag: 'img',
       properties: {
         className:
-          'grow basis-0 min-h-0 self-stretch max-w-none -mb-(--ref-p-tile-py) -mx-(--ref-p-tile-px) object-cover object-top motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105',
+          'object-top motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105',
         ...imageProperties,
       },
     },
@@ -97,7 +99,38 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
   ],
 };
 
+const coverTile: ElementConfig<HTMLTagOrComponent> = {
+  tag: 'p-tile',
+  properties: {
+    className: '[--p-tile-gap-y:var(--spacing-fluid-lg)] group',
+    aspectRatio: '3/4',
+    bleed: true,
+  },
+  children: [
+    {
+      tag: 'p-heading',
+      properties: { slot: 'top', tag: 'h3', size: 'md', weight: 'semibold' },
+      children: [label],
+    },
+    {
+      // covers the tile instead of the `anchor` slot, so the visible link is the only one and needs no duplicate; it
+      // shows its own hover state whenever the tile is hovered
+      tag: 'p-link',
+      properties: { slot: 'top', className: 'ms-auto', cover: true, ...coverLinkProperties },
+      children: [{ tag: 'a', properties: { href: '#' }, children: [label] }],
+    },
+    {
+      tag: 'img',
+      properties: {
+        className:
+          'object-top motion-safe:transition-transform duration-md ease-in-out group-has-[p-link:hover]:scale-105',
+        ...imageProperties,
+      },
+    },
+  ],
+};
+
 export const tileStoryCategory: Story<'p-tile'> = {
   previewMaxWidth: '816px',
-  generator: () => [createComparison(tile, tailwindTile)],
+  generator: () => [createComparison(tile, tailwindTile, { coverTile })],
 };

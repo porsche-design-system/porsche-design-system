@@ -5,12 +5,13 @@ import { createComparison, stretchedLinkClassName } from '@/app/(main)/component
 
 const label = 'Weekender';
 
-const linkProperties = {
+const coverLinkProperties = {
   variant: 'secondary',
   icon: 'arrow-up-right',
   hideLabel: true,
-  'aria-hidden': 'true',
 } as const;
+
+const linkProperties = { ...coverLinkProperties, 'aria-hidden': 'true' } as const;
 
 // slotted anchor, so the hidden link contains no focusable element
 const linkChildren: ElementConfig<HTMLTagOrComponent>[] = [
@@ -112,6 +113,32 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
   ],
 };
 
+const coverTile: ElementConfig<HTMLTagOrComponent> = {
+  tag: 'p-tile',
+  properties: {
+    className: 'scheme-dark group [--p-tile-bg:#341f2e]',
+    aspectRatio: '16/9',
+  },
+  children: [
+    createImage('grow basis-0 min-h-0 group-has-[p-link:hover]:scale-105', 'start'),
+    {
+      tag: 'div',
+      properties: { className: 'self-stretch flex flex-col gap-static-sm text-start' },
+      children: [
+        { tag: 'p-heading', properties: { tag: 'h3', size: 'lg', hyphens: 'auto' }, children: [label] },
+        description,
+      ],
+    },
+    {
+      // covers the tile instead of the `anchor` slot, so the visible link is the only one and needs no duplicate; it
+      // shows its own hover state whenever the tile is hovered
+      tag: 'p-link',
+      properties: { slot: 'end', className: 'mb-auto', cover: true, ...coverLinkProperties },
+      children: [{ tag: 'a', properties: { href: '#' }, children: [label] }],
+    },
+  ],
+};
+
 export const tileStoryProductTeaser: Story<'p-tile'> = {
-  generator: () => [createComparison(tile, tailwindTile)],
+  generator: () => [createComparison(tile, tailwindTile, { coverTile })],
 };

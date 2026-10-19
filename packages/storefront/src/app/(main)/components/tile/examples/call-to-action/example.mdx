@@ -22,3 +22,7 @@ is placed in a background layer via `absolute inset-0 -z-1`, which clips the zoo
 `rtl:bg-fade-to-l` for right-to-left languages, and follows the radius via `rounded-s-[inherit]`. Negative margins let
 it bleed to the edges and fade out beyond the column, the padding compensates them, so the text keeps the width of the
 column.
+
+The third variant omits the `anchor` slot and sets `cover` on the "Discover Porsche Connect" link instead, which
+stretches its clickable area over the Tile. The link is the only one, so it needs neither `aria-hidden` nor
+`tabindex="-1"`. Since hovering the Tile hovers the link, the image zooms in via `group-has-[p-link:hover]:scale-105`.

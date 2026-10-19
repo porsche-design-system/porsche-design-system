@@ -16,7 +16,7 @@ const imageMotionClassName =
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className: 'group motion-safe:transition-colors duration-sm ease-in-out has-[[slot=anchor]:hover]:bg-canvas',
+    className: 'group has-[[slot=anchor]:hover]:[--p-tile-bg:var(--color-canvas)]',
     aspectRatio: '16/9',
     background: 'none',
     compact: true,

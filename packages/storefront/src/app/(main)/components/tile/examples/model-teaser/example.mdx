@@ -23,3 +23,9 @@ The Tailwind CSS counterpart lays out the content via `flex flex-col justify-cen
 stretches the heading as link over the tile. The links are placed above it via `relative z-2`. `group-has-[a:hover]`
 only matches the stretched link and the slotted anchor of the duplicated link, since the "Configure" link renders its
 anchor in its shadow DOM.
+
+The third variant omits the `anchor` slot and sets `cover` on the "Discover 911" link instead, which stretches its
+clickable area over the Tile. The link is the only one, so it needs neither `aria-hidden` nor `tabindex="-1"`. The
+"Configure" link is placed above the covering link via `relative z-2`, so it stays clickable. Since hovering the Tile
+hovers the link, the vehicle zooms in via `group-has-[a:hover]:scale-105`, which only matches the slotted anchor of the
+covering link, since the "Configure" link renders its anchor in its shadow DOM.

@@ -18,11 +18,13 @@ const imageClassName = 'motion-safe:transition-transform duration-md ease-in-out
 const createContent = ({
   slot,
   heading: headingChildren,
-  linkClassName,
+  linkClassName = '',
+  cover = false,
 }: {
   slot?: 'start';
   heading: Children;
-  linkClassName: string;
+  linkClassName?: string;
+  cover?: boolean;
 }): Children => {
   // `slot` is only set within the tile
   const slotProperties = slot ? { slot } : {};
@@ -35,18 +37,26 @@ const createContent = ({
         'Porsche Connect enhances the driving experience with a wide range of music and video streaming services, the integrated Voice Pilot and remote services via the My Porsche app.',
       ],
     },
-    {
-      // visual duplicate of the link covering the tile, hidden from assistive technology and keyboard to avoid a
-      // redundant link; the slotted anchor ensures the hidden link contains no focusable element
-      tag: 'p-link',
-      properties: {
-        ...slotProperties,
-        className: `mt-fluid-sm ${linkClassName}`,
-        variant: 'secondary',
-        'aria-hidden': 'true',
-      },
-      children: [{ tag: 'a', properties: { href: '#', tabIndex: -1 }, children: [label] }],
-    },
+    cover
+      ? {
+          // covers the tile instead of the `anchor` slot, so the visible link is the only one and needs no duplicate;
+          // it shows its own hover state whenever the tile is hovered
+          tag: 'p-link',
+          properties: { ...slotProperties, className: 'mt-fluid-sm', variant: 'secondary', cover },
+          children: [{ tag: 'a', properties: { href: '#' }, children: [label] }],
+        }
+      : {
+          // visual duplicate of the link covering the tile, hidden from assistive technology and keyboard to avoid a
+          // redundant link; the slotted anchor ensures the hidden link contains no focusable element
+          tag: 'p-link',
+          properties: {
+            ...slotProperties,
+            className: `mt-fluid-sm ${linkClassName}`,
+            variant: 'secondary',
+            'aria-hidden': 'true',
+          },
+          children: [{ tag: 'a', properties: { href: '#', tabIndex: -1 }, children: [label] }],
+        },
   ];
 };
 
@@ -117,6 +127,26 @@ const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
   ],
 };
 
+const coverTile: ElementConfig<HTMLTagOrComponent> = {
+  tag: 'p-tile',
+  properties: {
+    className: 'scheme-dark group',
+    aspectRatio: '16/9',
+    gradient: 'start',
+  },
+  children: [
+    {
+      tag: 'img',
+      properties: {
+        slot: 'background',
+        className: `${imageClassName} group-has-[p-link:hover]:scale-105`,
+        ...imageProperties,
+      },
+    },
+    ...createContent({ slot: 'start', heading: [heading], cover: true }),
+  ],
+};
+
 export const tileStoryCallToAction: Story<'p-tile'> = {
-  generator: () => [createComparison(tile, tailwindTile, { stacked: true })],
+  generator: () => [createComparison(tile, tailwindTile, { stacked: true, coverTile })],
 };

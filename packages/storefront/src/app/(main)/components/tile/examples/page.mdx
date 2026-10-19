@@ -23,6 +23,11 @@ only. Instead of the `anchor` slot, it stretches a link over the whole tile via
 interactive elements above it via `relative z-2`. Since the link belongs to the visible text, it gets its accessible
 name from it.
 
+Use cases with a visible link show a third variant, which omits the `anchor` slot and sets `cover` on the visible
+`p-link` instead. It stretches the clickable area of the link over the Tile, which also renders the focus indicator
+around the Tile, so the link doesn't have to be duplicated and hidden from assistive technology. Independent interactive
+elements are placed above it via `relative z-2`.
+
 {/* TODO: add further use cases to `tileMeta.examples` */}
 
 <TableOfContents headings={['Slot-based Layouts', 'Custom Layouts (Pattern Candidates)']} />
@@ -30,9 +35,8 @@ name from it.
 ## Slot-based Layouts
 
 These use cases are built with the slots of the Tile: the content is placed in the `top`, `start`, default, `end` and
-`bottom` slots, the `background` slot holds a mood image and properties like `aspect-ratio`, `compact` and `gradient`
-adapt the Tile to its content. Custom styles are limited to the content itself, e.g. spacing, hover effects or an image
-bleeding to the edges of the Tile.
+`bottom` slots, the `background` slot holds a mood image and properties like `aspect-ratio`, `compact`, `gradient` and
+`bleed` adapt the Tile to its content. Custom styles are limited to the content itself, e.g. spacing or hover effects.
 
 ### {tileMeta.examples.modelSelection.name}
 
