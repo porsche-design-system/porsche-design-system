@@ -10,7 +10,9 @@ accessible usage of PDS components and must comply with **WCAG 2.2 AA**.
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with App Router
+- **Framework**: Next.js 16 with App Router. Its APIs and conventions may differ from what you know: read the guide in
+  `node_modules/next/dist/docs/` (hoisted to the repository root) before changing Next-specific code.
+  `agentRules: false` in `next.config.ts` keeps `next dev` from writing its own rules block into this file.
 - **Components**: `@porsche-design-system/components-react/ssr`
 - **Styling**: Tailwind CSS
 - **Content**: MDX for documentation pages
@@ -28,6 +30,10 @@ npm run start:storefront
 
 # Build storefront
 npm run build:storefront
+
+# Typecheck the Storefront and its projects (skills, stackblitz, story-generator), and their tests
+npm run typecheck:storefront
+npm run typecheck:storefront:tests
 
 # Run unit tests
 npm run test:unit:storefront
