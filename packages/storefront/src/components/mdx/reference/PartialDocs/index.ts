@@ -1,0 +1,1 @@
+export { PartialDocs } from './PartialDocs';

@@ -1,0 +1,1 @@
+export { ScssVariablesTable } from './ScssVariablesTable';

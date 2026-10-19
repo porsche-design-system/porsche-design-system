@@ -1,11 +1,11 @@
-import { ContentCallout } from '@/components/common/ContentCallout';
-import { ContentTab, ContentTabs } from '@/components/common/ContentTabs';
-import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
-import { FrameworkTabs } from '@/components/common/FrameworkTabs';
-import { FrameworkLink } from '@/components/common/FrameworkLink';
-import { PromptBox } from '@/components/common/PromptBox';
-import { FrameworkSkill, StorefrontFramework } from '@/components/common/StorefrontFramework';
-import { TableOfContents } from '@/components/common/TableOfContents';
+import { ContentCallout } from '@/components/mdx/content/ContentCallout';
+import { ContentTab, ContentTabs } from '@/components/mdx/content/ContentTabs';
+import { FrameworkCodeBlock } from '@/components/mdx/framework/FrameworkCodeBlock';
+import { FrameworkTabs } from '@/components/mdx/framework/FrameworkTabs';
+import { FrameworkLink } from '@/components/mdx/framework/FrameworkLink';
+import { PromptBox } from '@/components/mdx/content/PromptBox';
+import { FrameworkSkill, FrameworkName } from '@/components/mdx/framework/FrameworkName';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 
 export const metadata = {
   title: 'Introduction: Installation - Skills',
@@ -34,7 +34,7 @@ commands below.
 Install the package for your framework:
 
 <FrameworkLink href={({ framework }) => `/developing/${framework}/getting-started`}>
-  <StorefrontFramework format="name" /> Getting Started guide
+  <FrameworkName format="name" /> Getting Started guide
 </FrameworkLink>
 
 ## 2. Link the Skill

@@ -1,4 +1,4 @@
-import { Notification } from '@/components/common/Notification';
+import { Notification } from '@/components/mdx/content/Notification';
 
 The `p-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your needs.
 
@@ -11,14 +11,12 @@ state and including its value in form submissions through the
 [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
 smaller forms or simple submissions.
 
-<Notification heading="Attention" heading-tag="h2" state="warning">
-  <code>p-select</code> does not use a native select internally. As a result, it lacks access to native{' '}
-  <code>ValidityState</code>
-  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
-  validation behavior and error display will need to be implemented separately if required.
+<Notification heading="Attention" headingTag="h2" state="warning">
+  `p-select` does not use a native select internally. As a result, it lacks access to native `ValidityState` properties
+  and `validationMessage`, and it cannot display the native validation popover. This means validation behavior and error
+  display will need to be implemented separately if required.
 </Notification>
 
 For more details on form integration, refer to the `Form` section in the
 [developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
 example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
-
