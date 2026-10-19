@@ -1,6 +1,11 @@
 import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthM, viewportWidths, viewportWidthXL } from '@porsche-design-system/shared/testing';
-import { viewportWidthL } from 'shared/src/testing/playwright.vrt';
+import {
+  schemes,
+  viewportWidthL,
+  viewportWidthM,
+  viewportWidths,
+  viewportWidthXL,
+} from '@porsche-design-system/shared/testing';
 import { closeSidebars, resetAnimations, waitForImagesToBeLoaded } from '../helpers/helpers';
 
 test.describe('markdown', async () => {

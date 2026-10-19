@@ -51,9 +51,9 @@ Only **four** packages are published to npm:
 ```
 
 Every other workspace package is `"private": true`, including all of `packages/styles/projects/*`,
-`@porsche-design-system/tokens-meta`, `@porsche-design-system/stylesheets` and `shared` — regardless of having a scoped
-name, an `exports` map, `files` and `.d.ts` output. The published packages are assembled by copying **selected build
-output** into a wrapper `dist/`; what is not copied does not exist for a consumer.
+`@porsche-design-system/tokens-meta`, `@porsche-design-system/stylesheets` and `@porsche-design-system/shared` —
+regardless of having a scoped name, an `exports` map, `files` and `.d.ts` output. The published packages are assembled
+by copying **selected build output** into a wrapper `dist/`; what is not copied does not exist for a consumer.
 
 **The most reliable and easiest way to tell what is published is to read the built wrapper `dist/` folders.** Each one
 _is_ the npm package — the tarball root, `package.json` included:
