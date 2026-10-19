@@ -17,10 +17,17 @@ import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
+  getTransition,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { buildResponsiveBooleanStyles, buildResponsiveStyles, getCss, type TileAspectRatio } from '../../utils';
+import {
+  buildResponsiveBooleanStyles,
+  buildResponsiveStyles,
+  getCss,
+  isTruthyForAnyBreakpoint,
+  type TileAspectRatio,
+} from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import {
   isGradientActiveForEdge,
@@ -54,7 +61,7 @@ const cssVarGapBlock = '--p-tile-gap-y';
  */
 const cssVarRadius = '--p-tile-radius';
 /**
- * @css-variable {"name": "--p-tile-bg", "description": "Background color of the tile, overrides the `background` prop.", "defaultValue": "depends on `background` prop"}
+ * @css-variable {"name": "--p-tile-bg", "description": "Background color of the tile, overrides the `background` prop. Changes are animated, e.g. to reveal the background on hover.", "defaultValue": "depends on `background` prop"}
  */
 const cssVarBackground = '--p-tile-bg';
 /**
@@ -72,6 +79,10 @@ const cssVarResolvedPaddingInline = '--ref-p-tile-px';
  * @css-variable {"name": "--ref-p-tile-py", "description": "Exposes the internally used padding-block of the Tile as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top or bottom of the Tile."}
  */
 const cssVarResolvedPaddingBlock = '--ref-p-tile-py';
+/**
+ * @css-variable {"name": "--ref-p-tile-radius", "description": "Exposes the internally used corner radius of the Tile as read only CSS variable. A slotted `p-link` with `cover` uses it to render its focus ring around the Tile."}
+ */
+const cssVarResolvedRadius = '--ref-p-tile-radius';
 const cssVarResolvedGapInline = '--_p-tile-gap-x';
 const cssVarResolvedGapBlock = '--_p-tile-gap-y';
 
@@ -94,7 +105,7 @@ const areaLayoutMap: Record<TileArea, { flexDirection: 'row' | 'column'; align: 
   main: { flexDirection: 'column', align: 'center', justify: 'center' },
 };
 
-const getAreaLayoutStyles = (area: TileArea): JssStyle => {
+const getAreaLayoutStyles = (area: TileArea, hasAnchor: boolean): JssStyle => {
   const { flexDirection, align, justify } = areaLayoutMap[area];
   return {
     display: 'flex',
@@ -105,7 +116,9 @@ const getAreaLayoutStyles = (area: TileArea): JssStyle => {
     gap: `${ref(cssVarResolvedGapBlock)} ${ref(cssVarResolvedGapInline)}`,
     minWidth: 0,
     gridArea: area,
-    zIndex: 3, // above anchor overlay
+    // above the anchor overlay; without anchor, the slots don't create stacking contexts, so a slotted `p-link` with
+    // `cover` can be placed above all content of the tile
+    ...(hasAnchor && { zIndex: 3 }),
   };
 };
 
@@ -174,6 +187,18 @@ const getGridTemplateStyles = ({ top, bottom, start, end }: TileSlotState): JssS
 
 const radius = ref(cssVarRadius, ref(radius3Xl));
 
+// negative margins equal to the padding let the default slot reach the edges that aren't occupied by another layout slot
+const getBleedStyles = (isBleed: boolean, { top, bottom, start, end }: TileSlotState): JssStyle => {
+  const marginBlock = negate(ref(cssVarResolvedPaddingBlock));
+  const marginInline = negate(ref(cssVarResolvedPaddingInline));
+  return {
+    marginBlockStart: isBleed && !top ? marginBlock : 0,
+    marginBlockEnd: isBleed && !bottom ? marginBlock : 0,
+    marginInlineStart: isBleed && !start ? marginInline : 0,
+    marginInlineEnd: isBleed && !end ? marginInline : 0,
+  };
+};
+
 export const getSlottedBackgroundPictureStyles = (tagName: string): Styles => ({
   '@global': {
     [`${tagName} > picture[slot="${tileBackgroundSlot}"] img`]: {
@@ -192,9 +217,11 @@ export const getComponentCss = (
   gradient: BreakpointCustomizable<TileGradient>,
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
   compact: BreakpointCustomizable<boolean>,
+  bleed: BreakpointCustomizable<boolean>,
   slotState: TileSlotState
 ): string => {
   const { anchor: hasAnchor } = slotState;
+  const hasBleed = isTruthyForAnyBreakpoint(bleed);
 
   return getCss({
     '@global': {
@@ -213,13 +240,15 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       slot: {
         '&:not([name])': {
-          ...getAreaLayoutStyles('main'),
+          ...getAreaLayoutStyles('main', hasAnchor),
           textAlign: 'center',
+          ...(hasBleed &&
+            buildResponsiveBooleanStyles(bleed, (isBleed: boolean) => getBleedStyles(isBleed, slotState))),
         },
         ...Object.fromEntries(
           TILE_EDGES.map((edge) => [
             `&[name="${edge}"]`,
-            slotState[edge] ? getAreaLayoutStyles(edge) : { display: 'none' },
+            slotState[edge] ? getAreaLayoutStyles(edge, hasAnchor) : { display: 'none' },
           ])
         ),
         [`&[name="${tileBackgroundSlot}"]`]: {
@@ -242,6 +271,26 @@ export const getComponentCss = (
           },
         }),
       },
+      ...(hasBleed &&
+        Object.fromEntries(
+          // media fills the default slot; with a fixed aspect ratio it doesn't increase the height of the tile, with
+          // `auto` it defines the height by its own aspect ratio
+          ['img', 'video'].map((tag) => [
+            `::slotted(${tag}:not([slot]))`,
+            {
+              display: 'block',
+              alignSelf: 'stretch',
+              width: '100%',
+              maxWidth: 'none',
+              objectFit: 'cover',
+              ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) =>
+                aspectRatioValue === 'auto'
+                  ? { flexGrow: 0, flexBasis: 'auto', minHeight: 'auto' }
+                  : { flexGrow: 1, flexBasis: 0, minHeight: 0 }
+              ),
+            },
+          ])
+        )),
       [`::slotted([slot="${tileBackgroundSlot}"])`]: {
         ...addImportantToEachRule({
           position: 'absolute',
@@ -269,7 +318,7 @@ export const getComponentCss = (
       }),
     },
     root: {
-      position: 'relative', // containing block of the anchor
+      position: 'relative', // containing block of the anchor, the background and a slotted `p-link` with `cover`
       isolation: 'isolate', // stacking context in which background, gradient, anchor and content are layered
       display: 'grid',
       width: '100%', // necessary in case tile content overflows in grid or flex context
@@ -283,9 +332,14 @@ export const getComponentCss = (
         [cssVarResolvedGapInline]: ref(cssVarGapInline, ref(isCompact ? spacingFluidXs : spacingFluidSm)),
         [cssVarResolvedGapBlock]: ref(cssVarGapBlock, ref(isCompact ? spacingFluidXs : spacingFluidSm)),
       })),
+      [cssVarResolvedRadius]: radius,
       borderRadius: radius,
       color: ref(colorPrimary),
       backgroundColor: ref(cssVarBackground, backgroundMap[background]),
+      // animates a changed `--p-tile-bg`, e.g. on hover, unless the user prefers reduced motion
+      '@media (prefers-reduced-motion: no-preference)': {
+        transition: getTransition('background-color'),
+      },
       ...(background === 'frosted' && {
         WebkitBackdropFilter: ref(blurFrosted),
         backdropFilter: ref(blurFrosted),
@@ -295,7 +349,8 @@ export const getComponentCss = (
       })),
     },
     content: {
-      position: 'relative', // containing block of the background, without creating a stacking context
+      // not positioned, so a slotted `p-link` with `cover` is positioned relative to the root and its focus ring isn't
+      // clipped
       display: 'grid',
       ...getGridTemplateStyles(slotState),
       boxSizing: 'border-box',
@@ -309,11 +364,14 @@ export const getComponentCss = (
     background: {
       position: 'absolute',
       inset: 0,
-      zIndex: 0,
+      zIndex: -2, // below the content, which doesn't need to create stacking contexts
       pointerEvents: 'none',
+      // positioned relative to the root, so it isn't clipped by the content
+      overflow: 'clip',
+      borderRadius: 'inherit',
     },
     gradient: {
-      zIndex: 1,
+      zIndex: -1, // above the background, below the content
       display: 'none',
       pointerEvents: 'none',
     },

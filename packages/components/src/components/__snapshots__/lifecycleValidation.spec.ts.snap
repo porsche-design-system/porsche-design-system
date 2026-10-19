@@ -530,6 +530,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
 {
   "aria": "aria",
   "compact": "breakpoint",
+  "cover": "boolean",
   "download": "string",
   "hideLabel": "breakpoint",
   "href": "string",
@@ -941,6 +942,7 @@ exports[`should call validateProps() with correct parameters via render for p-ti
 {
   "aspectRatio": "breakpoint",
   "background": "oneOf",
+  "bleed": "breakpoint",
   "compact": "breakpoint",
   "gradient": "breakpoint",
 }

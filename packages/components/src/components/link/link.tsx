@@ -31,6 +31,7 @@ const propTypes: PropTypes<typeof Link> = {
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   compact: AllowedTypes.breakpoint('boolean'),
+  cover: AllowedTypes.boolean,
   aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
@@ -71,6 +72,9 @@ export class Link {
   /** Reduces the link's padding and height for denser layouts. Supports responsive breakpoint values. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
+  /** Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a `p-tile`, which also renders the focus ring around it. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via `position: relative; z-index: 2`. */
+  @Prop() public cover?: boolean = false;
+
   /** Sets ARIA attributes on the link element to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
@@ -96,11 +100,28 @@ export class Link {
       this.variant,
       this.hideLabel,
       !this.href,
-      this.compact
+      this.compact,
+      this.cover
     );
 
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+
+    const icon = hasVisibleIcon(this.icon, this.iconSource) && (
+      <PrefixedTagNames.pIcon
+        class="icon"
+        size="inherit"
+        name={this.iconSource ? undefined : this.icon}
+        source={this.iconSource}
+        color="inherit"
+        aria-hidden="true"
+      />
+    );
+    const label = (
+      <span class="label">
+        <slot />
+      </span>
+    );
 
     return (
       <TagType
@@ -113,19 +134,16 @@ export class Link {
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        {hasVisibleIcon(this.icon, this.iconSource) && (
-          <PrefixedTagNames.pIcon
-            class="icon"
-            size="inherit"
-            name={this.iconSource ? undefined : this.icon}
-            source={this.iconSource}
-            color="inherit"
-            aria-hidden="true"
-          />
+        {this.cover && <span class="backdrop" />}
+        {this.cover ? (
+          <span class="content">
+            {icon}
+            {label}
+          </span>
+        ) : (
+          icon
         )}
-        <span class="label">
-          <slot />
-        </span>
+        {!this.cover && label}
       </TagType>
     );
   }

@@ -18,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Knowledge Skill`: the guideline for creating custom icons in the `p-icon` reference
   ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+- `Link`: prop `cover` stretches the clickable area of the link over its nearest positioned ancestor, e.g. a card, so
+  the whole area navigates without a second, hidden link
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
 
 ### Changed
 

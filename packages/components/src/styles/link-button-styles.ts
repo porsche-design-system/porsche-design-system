@@ -16,7 +16,7 @@ import {
   ref,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
-import type { Styles } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 import type { ButtonVariant } from '../components/button/button-utils';
 import type { LinkVariant } from '../components/link/link-utils';
 import type { BreakpointCustomizable, LinkButtonIconName } from '../types';
@@ -32,6 +32,26 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
+
+/**
+ * Lets the anchor cover its nearest positioned ancestor. Its radius follows a surrounding `p-tile`.
+ */
+export const getCoverStyles = (): JssStyle => ({
+  content: '""',
+  position: 'absolute',
+  inset: 0,
+  zIndex: 1,
+  borderRadius: ref('--ref-p-tile-radius', '0'),
+});
+
+/**
+ * Same as `getHiddenTextJssStyle()`, but without positioning, since the label would otherwise be the containing block
+ * of the covering area of a slotted anchor.
+ */
+const getCoverHiddenTextJssStyle = (isHidden: boolean): JssStyle =>
+  isHidden
+    ? { ...getHiddenTextJssStyle(true), position: 'static', clip: 'auto', color: 'transparent' }
+    : getHiddenTextJssStyle(false, { color: 'inherit' });
 
 type Colors = {
   textColor: string;
@@ -85,7 +105,8 @@ export const getLinkButtonStyles = (
   cssVarPaddingInline: string,
   cssVarPaddingBlock: string,
   cssVarGap: string,
-  cssVarRadius: string
+  cssVarRadius: string,
+  isCover = false
 ): Styles => {
   const { textColor, textColorHover, backgroundColor, backgroundColorHover } = getVariantColors(
     variant,
@@ -99,6 +120,11 @@ export const getLinkButtonStyles = (
   const paddingInline = `calc(33.6px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 16px)`;
   const gap = `calc(11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px)`;
   const iconMarginInlineStart = `calc(-1 * (11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px))`;
+
+  const spacingStyles: JssStyle = buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
+    padding: `${ref(cssVarPaddingBlock, paddingBlock)} ${ref(cssVarPaddingInline, hideLabelValue ? paddingBlock : paddingInline)}`,
+    gap: ref(cssVarGap, hideLabelValue ? 0 : gap),
+  }));
 
   return {
     '@global': {
@@ -124,24 +150,29 @@ export const getLinkButtonStyles = (
     },
     root: {
       all: 'unset',
-      display: 'flex',
-      justifyContent: 'center',
+      display: isCover ? 'grid' : 'flex',
+      ...(!isCover && { justifyContent: 'center' }),
       width: '100%', // Allows for setting a width on the host
       minWidth: 'min-content', // Do not shrink beyond icon size + padding + border + label
       boxSizing: 'border-box',
-      WebkitBackdropFilter: ref(blurFrosted),
-      backdropFilter: ref(blurFrosted),
+      ...(!isCover && {
+        WebkitBackdropFilter: ref(blurFrosted),
+        backdropFilter: ref(blurFrosted),
+      }),
       font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       borderRadius: 'inherit',
-      transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
-      backgroundColor,
+      // creates new stacking context (for slotted anchor + focus), omitted when covering, since it would be the
+      // containing block of the covering area
+      ...(!isCover && {
+        transform: 'translate3d(0,0,0)',
+        backgroundColor,
+      }),
       color: textColor,
       cursor: 'pointer',
-      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-      ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
-        padding: `${ref(cssVarPaddingBlock, paddingBlock)} ${ref(cssVarPaddingInline, hideLabelValue ? paddingBlock : paddingInline)}`,
-        gap: ref(cssVarGap, hideLabelValue ? 0 : gap),
-      })),
+      transition: isCover
+        ? getTransition('color')
+        : `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
+      ...(!isCover && spacingStyles),
       ...forcedColorsMediaQuery({
         forcedColorAdjust: 'none',
         boxShadow: 'inset 0 0 0 2px LinkText',
@@ -159,18 +190,56 @@ export const getLinkButtonStyles = (
           }),
         },
       }),
-      ...(!hasSlottedAnchor && {
-        '&:focus-visible': getFocusBaseStyles(),
-      }),
+      ...(!hasSlottedAnchor &&
+        (isCover
+          ? {
+              // the anchor covers its nearest positioned ancestor, which also renders the focus ring around it
+              '&::before': getCoverStyles(),
+              '&:focus-visible': { outline: 'none' },
+              '&:focus-visible::before': getFocusBaseStyles(),
+            }
+          : {
+              '&:focus-visible': getFocusBaseStyles(),
+            })),
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover': {
             color: textColorHover,
-            backgroundColor: backgroundColorHover,
+            ...(!isCover && { backgroundColor: backgroundColorHover }),
           },
+          ...(isCover && {
+            '&:hover .backdrop': {
+              backgroundColor: backgroundColorHover,
+            },
+          }),
         })),
     },
-    label: buildResponsiveBooleanStyles(hideLabel, getHiddenTextJssStyle),
+    ...(isCover && {
+      // without `transform` and `backdrop-filter` on the root, it is no containing block of the covering area, so
+      // background and content are stacked in the same grid cell instead of being positioned
+      backdrop: {
+        gridArea: '1/1',
+        borderRadius: 'inherit',
+        WebkitBackdropFilter: ref(blurFrosted),
+        backdropFilter: ref(blurFrosted),
+        backgroundColor,
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
+        ...forcedColorsMediaQuery({
+          boxShadow: 'inset 0 0 0 2px LinkText',
+          ...addImportantToEachRule({
+            background: 'Canvas',
+          }),
+        }),
+      },
+      content: {
+        gridArea: '1/1',
+        zIndex: 1, // above the backdrop, since `backdrop-filter` creates a stacking context
+        display: 'flex',
+        justifyContent: 'center',
+        ...spacingStyles,
+      },
+    }),
+    label: buildResponsiveBooleanStyles(hideLabel, isCover ? getCoverHiddenTextJssStyle : getHiddenTextJssStyle),
     ...(hasIcon && {
       icon: {
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit

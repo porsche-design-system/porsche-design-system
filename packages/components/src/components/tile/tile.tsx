@@ -34,10 +34,11 @@ const propTypes: PropTypes<typeof Tile> = {
   gradient: AllowedTypes.breakpoint<TileGradient>(TILE_GRADIENTS),
   aspectRatio: AllowedTypes.breakpoint<TileAspectRatio>(TILE_ASPECT_RATIOS),
   compact: AllowedTypes.breakpoint('boolean'),
+  bleed: AllowedTypes.breakpoint('boolean'),
 };
 
 /**
- * @slot {"name": "", "description": "Main content area, centered by default. When no other layout slot is used, it covers the whole tile and can be used for a fully custom layout." }
+ * @slot {"name": "", "description": "Main content area, centered by default. When no other layout slot is used, it covers the whole tile and can be used for a fully custom layout. With `bleed`, it reaches the edges of the tile that aren't occupied by another layout slot." }
  * @slot {"name": "top", "description": "Content aligned to the top of the tile, laid out as a row with vertically centered items." }
  * @slot {"name": "bottom", "description": "Content aligned to the bottom of the tile, laid out as a row with vertically centered items." }
  * @slot {"name": "start", "description": "Content aligned to the inline start of the tile, laid out as a column." }
@@ -65,6 +66,9 @@ export class Tile {
 
   /** Reduces padding and gap of the tile. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
+
+  /** Lets the default slot reach the edges of the tile that aren't occupied by another layout slot, e.g. for an image below the `top` slot. Slotted `img` and `video` elements fill the default slot cover-fit. */
+  @Prop() public bleed?: BreakpointCustomizable<boolean> = false;
 
   @State() private slotState: TileSlotState = {
     top: false,
@@ -96,6 +100,7 @@ export class Tile {
       this.gradient,
       this.aspectRatio,
       this.compact,
+      this.bleed,
       this.slotState
     );
 

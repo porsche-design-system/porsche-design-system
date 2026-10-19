@@ -1957,6 +1957,11 @@ export namespace Components {
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
+          * Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a `p-tile`, which also renders the focus ring around it. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via `position: relative; z-index: 2`.
+          * @default false
+         */
+        "cover"?: boolean;
+        /**
           * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
@@ -3180,6 +3185,11 @@ export namespace Components {
           * @default 'surface'
          */
         "background"?: TileBackground;
+        /**
+          * Lets the default slot reach the edges of the tile that aren't occupied by another layout slot, e.g. for an image below the `top` slot. Slotted `img` and `video` elements fill the default slot cover-fit.
+          * @default false
+         */
+        "bleed"?: BreakpointCustomizable<boolean>;
         /**
           * Reduces padding and gap of the tile.
           * @default false
@@ -6423,6 +6433,11 @@ declare namespace LocalJSX {
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
+          * Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a `p-tile`, which also renders the focus ring around it. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via `position: relative; z-index: 2`.
+          * @default false
+         */
+        "cover"?: boolean;
+        /**
           * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
@@ -7763,6 +7778,11 @@ declare namespace LocalJSX {
          */
         "background"?: TileBackground;
         /**
+          * Lets the default slot reach the edges of the tile that aren't occupied by another layout slot, e.g. for an image below the `top` slot. Slotted `img` and `video` elements fill the default slot cover-fit.
+          * @default false
+         */
+        "bleed"?: BreakpointCustomizable<boolean>;
+        /**
           * Reduces padding and gap of the tile.
           * @default false
          */
@@ -8251,6 +8271,7 @@ declare namespace LocalJSX {
         "rel": string;
         "hideLabel": string;
         "compact": string;
+        "cover": boolean;
         "aria": SelectedAriaAttributes<LinkAriaAttribute>;
     }
     interface PLinkPureAttributes {
@@ -8550,6 +8571,7 @@ declare namespace LocalJSX {
         "gradient": BreakpointCustomizable<TileGradient>;
         "aspectRatio": BreakpointCustomizable<TileAspectRatio>;
         "compact": string;
+        "bleed": string;
     }
     interface PToastItemAttributes {
         "text": string;
