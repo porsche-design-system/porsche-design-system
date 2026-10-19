@@ -1,5 +1,5 @@
-import { Notification } from "@/components/mdx/content/Notification";
-import { TableOfContents } from "@/components/mdx/structure/TableOfContents";
+import { Notification } from '@/components/mdx/content/Notification';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 
 export const metadata = {
   title: 'Accessibility: AI Agent Context - Porsche Design System',
@@ -35,12 +35,13 @@ To audit generated UI, see [**AI Accessibility Audit**](/must-know/accessibility
 ## Install
 
 Install [APM](https://microsoft.github.io/apm/quickstart/) if needed:
+
 - macOS: `brew install apm`
 - Linux / macOS without Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`
 - Windows: `irm https://aka.ms/apm-windows | iex`)
 
-Then from the product repository root install the **package** and pass `--target` for the agent harnesses that should receive the
-files. Comma-separate several values to target different harnesses.
+Then from the product repository root install the **package** and pass `--target` for the agent harnesses that should
+receive the files. Comma-separate several values to target different harnesses.
 
 This package deploys to `copilot`, `cursor`, `claude`, `gemini`, `codex`, `windsurf`, and `agent-skills`. A repo with no
 harness markers and no `targets:` list in `apm.yml` will fail `apm install` until you set `--target`.
