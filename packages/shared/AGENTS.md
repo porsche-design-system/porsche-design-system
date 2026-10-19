@@ -52,8 +52,9 @@ get the built code, and `npm install` links the package before anything is built
   `@porsche-design-system/shared/tsconfig.base.json`.
 - A new entry point needs an entry in `exports`, a bundle in `rollup.config.js` and, if it is checked before the build,
   a mapping in `tsconfig.paths.json`.
-- The bins (`serve-dummyassets`, `prepare-vrt-snapshots`) are built into `bin/`. The root `preinstall:shared` creates
-  empty placeholders so `npm install` can link them before the first build.
+- The bins (`serve-dummyassets`, `prepare-vrt-snapshots`) are built into `bin/`. They are not declared in `bin`, so
+  `npm install` doesn't need them before the first build; the root `postinstall:bin-links` and the CI restore action
+  link them into `node_modules/.bin`.
 
 ## Implementation Notes
 
