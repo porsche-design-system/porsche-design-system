@@ -104,10 +104,6 @@
     "./tsconfig.paths.json": "./tsconfig.paths.json",
     "./package.json": "./package.json"
   },
-  "bin": {
-    "serve-dummyassets": "./bin/serve-dummyassets.js",
-    "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
-  },
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
     "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run build:generateCodeExamples && npm run typecheck && npm run build:bundle",
