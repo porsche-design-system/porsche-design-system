@@ -1,6 +1,6 @@
 import type { FrameworkMarkup } from '@porsche-design-system/shared';
-import type { A11yComment, A11yNode } from '@/models/accessibilityMeta';
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+import type { A11yComment, A11yNode } from './accessibility';
+import type { ElementConfig, HTMLTagOrComponent } from './element';
 
 const renderComment: Record<keyof FrameworkMarkup, (comment: string) => string> = {
   'vanilla-js': (comment) => `<!-- ${comment} -->`,

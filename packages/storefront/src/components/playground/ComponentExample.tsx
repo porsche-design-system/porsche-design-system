@@ -2,13 +2,13 @@
 
 import type { CodeSample, Framework } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import { wrapCode } from '@porsche-design-system/story-generator';
 import { useMemo } from 'react';
 import { Playground } from '@/components/playground/Playground';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { createStackblitzMarkupFromSample } from '@/lib/stackblitz/createStackblitzMarkupFromSample';
 import type { BackgroundColor } from '@/models/backgroundColor';
-import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { splitVanillaJsCode } from '@/utils/splitVanillaJsCode';
 
 type ComponentSampleProps = {
@@ -37,9 +37,10 @@ export const ComponentExample = ({
       const { markup, script, scriptAttributes } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js']);
       return {
         ...codeSample.frameworkMarkup,
-        'vanilla-js': getVanillaJsCode(
-          { markup, eventHandlers: script },
-          { isFullConfig: false, theme: storefrontColorScheme, scriptAttributes }
+        'vanilla-js': wrapCode(
+          'vanilla-js',
+          { markup, script, scriptAttributes },
+          { colorScheme: storefrontColorScheme }
         ),
       };
     }

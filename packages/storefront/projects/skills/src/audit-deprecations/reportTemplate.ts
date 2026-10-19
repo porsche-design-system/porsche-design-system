@@ -1,6 +1,6 @@
+import { type Framework, frameworkSuffixMap } from '@porsche-design-system/shared';
 import { EFFORTS } from '../knowledge/deprecations/types';
 import { skillName as knowledgeSkillName } from '../knowledge/skillMd';
-import type { Framework } from '../shared/skillTree';
 
 /**
  * Fixed Markdown report structure. Placeholders use JSON paths so every rendered value remains
@@ -16,10 +16,10 @@ const SNIPPET_FENCE = '```';
 
 const renderTemplate = (framework: Framework): string =>
   [
-    `# Porsche Design System deprecation audit (${framework}) — <audit.runId>`,
+    `# Porsche Design System deprecation audit (${frameworkSuffixMap[framework]}) — <audit.runId>`,
     '',
     '- **PDS version audited:** `<audit.pdsVersion>`',
-    `- **Framework:** \`${framework}\``,
+    `- **Framework:** \`${frameworkSuffixMap[framework]}\``,
     '- **Project root:** `<project.root>`',
     '- **Packages:** `<project.pdsPackages[].name>@<project.pdsPackages[].version>` — one per entry, comma-separated',
     '- **Generated at:** <audit.generatedAt>',

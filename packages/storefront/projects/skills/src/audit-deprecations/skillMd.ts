@@ -1,9 +1,9 @@
+import { type Framework, frameworkSuffixMap, getWrapperPackageName } from '@porsche-design-system/shared';
 import { USAGE_KINDS } from '../knowledge/deprecations/types';
 import { DEPRECATIONS_REFERENCE, skillName as knowledgeSkillName } from '../knowledge/skillMd';
-import { getSkillName, getWrapperPackageName } from '../registry';
+import { getSkillName } from '../registry';
 import { renderFrontmatter } from '../shared/frontmatter';
 import { markdownTable } from '../shared/markdown';
-import type { Framework } from '../shared/skillTree';
 import { localPorscheDesignSystemVersion } from '../shared/version';
 import { baselineEffort, DETECTIONS, VALUE_RESOLUTIONS } from './grading';
 import { REPORT_SCHEMA_FILE, REPORT_SCHEMA_VERSION } from './reportSchema';
@@ -22,7 +22,7 @@ const RUN_DIRECTORY = '.pds/audits/<runId>/';
  * and must remain a single YAML-safe line.
  */
 const DESCRIPTION = (framework: Framework): string =>
-  `Audit an existing ${framework === 'js' ? 'Vanilla JS' : framework} project for deprecated Porsche Design System ` +
+  `Audit an existing ${framework === 'vanilla-js' ? 'Vanilla JS' : framework} project for deprecated Porsche Design System ` +
   '(PDS) API usage — components, props, prop values, events, slots, CSS variables, tokens and styling-package ' +
   'aliases. Produces a JSON report and a Markdown report rendered from it, every finding carrying quoted evidence, a ' +
   'concrete fix and a derived confidence. Read-only apart from its two report files.';
@@ -44,7 +44,7 @@ const COMPATIBILITY = (framework: Framework): string =>
  * packages because they also depend on `components-js`.
  */
 const renderSelfCheck = (framework: Framework): string => {
-  if (framework === 'js') {
+  if (framework === 'vanilla-js') {
     return [
       'Before anything else, confirm this is a Vanilla JS PDS project:',
       '',
@@ -105,7 +105,7 @@ const renderIndex = (framework: Framework): string =>
   ].join('\n');
 
 const FILE_SCOPE: Record<Framework, { globs: string; note: string }> = {
-  js: {
+  'vanilla-js': {
     globs:
       '`**/*.html`, `**/*.js`, `**/*.mjs`, `**/*.cjs`, `**/*.ts`, `**/*.astro`, `**/*.svelte`, `**/*.vue`, ' +
       '`**/*.css`, `**/*.scss`, `**/*.sass`',
@@ -193,7 +193,7 @@ const renderScope = (framework: Framework): string => {
 
 /** Framework-specific roots from which component usage can be traced. */
 const COMPONENT_ROOT: Record<Framework, string> = {
-  js: 'Components are custom elements, so a `p-` tag is itself the root — there is no import to follow.',
+  'vanilla-js': 'Components are custom elements, so a `p-` tag is itself the root — there is no import to follow.',
   angular: 'Components are custom elements in templates, so a `p-` tag is itself the root.',
   react:
     'An import from `@porsche-design-system/components-react` or its `/ssr` entry point. Resolve `as` aliases — the ' +
@@ -205,7 +205,7 @@ const PROP_FORWARDING: Record<Framework, string> = {
   react: '`{...props}` or an explicit JSX pass-through',
   vue: '`v-bind="$attrs"` or explicit prop bindings',
   angular: 'a declared input rebound in the template',
-  js: 'an explicit property or attribute pass-through to the custom element',
+  'vanilla-js': 'an explicit property or attribute pass-through to the custom element',
 };
 
 const FALLBACK_CASES: Record<Framework, string> = {
@@ -213,7 +213,8 @@ const FALLBACK_CASES: Record<Framework, string> = {
   vue: 'dynamic `createElement`, markup built in template strings, re-exports you cannot resolve',
   angular:
     "a tag name assembled at runtime (`'p-' + kind`), an attribute name held in a variable, re-exports you cannot resolve",
-  js: "a tag name assembled at runtime (`'p-' + kind`), an attribute name held in a variable, re-exports you cannot resolve",
+  'vanilla-js':
+    "a tag name assembled at runtime (`'p-' + kind`), an attribute name held in a variable, re-exports you cannot resolve",
 };
 
 /**
@@ -272,7 +273,7 @@ const RESPONSIVE_SPELLINGS: Record<Framework, [spelling: string, gloss: string][
     ["size=\"{'base': 'small', 'l': 'medium'}\"", 'string attribute holding single-quoted pseudo-JSON'],
     ["[size]=\"{ base: 'small', l: 'medium' }\"", 'property binding'],
   ],
-  js: [
+  'vanilla-js': [
     ["size=\"{'base': 'small', 'l': 'medium'}\"", 'string attribute holding single-quoted pseudo-JSON'],
     ["el.size = { base: 'small', l: 'medium' }", 'property assigned on the element'],
   ],
@@ -395,7 +396,7 @@ const STRING_TAG_FROM_TAG_ROOT =
 const STRING_TAG_DETECTION: Record<Framework, string> = {
   react: STRING_TAG_FROM_IMPORTED_ROOT,
   vue: STRING_TAG_FROM_IMPORTED_ROOT,
-  js: STRING_TAG_FROM_TAG_ROOT,
+  'vanilla-js': STRING_TAG_FROM_TAG_ROOT,
   angular: STRING_TAG_FROM_TAG_ROOT,
 };
 
@@ -623,7 +624,7 @@ export const buildAuditDeprecationsSkillMd = (framework: Framework): string =>
       disableModelInvocation: DISABLE_MODEL_INVOCATION,
     }),
     '',
-    `# Porsche Design System deprecation audit (\`${framework}\`)`,
+    `# Porsche Design System deprecation audit (\`${frameworkSuffixMap[framework]}\`)`,
     '',
     "A static, read-only audit of an existing project's use of deprecated Porsche Design System APIs, producing a " +
       'machine-readable JSON report and a Markdown report rendered from it.',

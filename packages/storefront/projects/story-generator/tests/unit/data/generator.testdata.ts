@@ -1,5 +1,5 @@
-import type { Story } from '@/models/story';
-import type { ElementConfig } from '@/utils/generator/generator';
+import type { ElementConfig } from '../../../src/element';
+import type { Story } from '../../../src/story';
 
 export const buttonTestConfig: [ElementConfig<'p-button'>, ElementConfig<'p-banner'>] = [
   {

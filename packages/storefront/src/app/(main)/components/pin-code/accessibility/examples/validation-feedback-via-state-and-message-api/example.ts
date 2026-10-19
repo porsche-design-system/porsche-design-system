@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const validationFeedbackViaStateAndMessageApiA11yExample = {
   name: 'Validation feedback via state and message API',

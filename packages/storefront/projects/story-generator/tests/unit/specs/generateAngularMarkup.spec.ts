@@ -3,7 +3,7 @@ import {
   generateAngularControlledScript,
   generateAngularMarkup,
   generateAngularProperties,
-} from '../../../src/utils/generator/generateAngularMarkup';
+} from '../../../src/generateAngularMarkup';
 import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateAngularMarkup()', () => {

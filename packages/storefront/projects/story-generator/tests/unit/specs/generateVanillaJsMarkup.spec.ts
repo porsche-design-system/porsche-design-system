@@ -3,7 +3,7 @@ import {
   generateVanillaJSControlledScript,
   generateVanillaJsMarkup,
   generateVanillaJsProperties,
-} from '../../../src/utils/generator/generateVanillaJsMarkup';
+} from '../../../src/generateVanillaJsMarkup';
 import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateVanillaJsMarkup()', () => {

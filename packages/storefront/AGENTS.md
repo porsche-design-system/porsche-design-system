@@ -135,6 +135,10 @@ src/
 ├── components/             # React components for the site
 ├── lib/                    # Utilities and helpers
 └── styles/                 # Global styles
+projects/
+├── skills/                 # Agent skills generator (@porsche-design-system/skills)
+├── stackblitz/             # StackBlitz projects (@porsche-design-system/stackblitz)
+└── story-generator/        # Story types and per-framework markup generation (@porsche-design-system/story-generator)
 ```
 
 ## Generating Configurator and Example Stories
@@ -146,7 +150,10 @@ and examples pages driven by a colocated `{component}.stories.ts` file whenever 
 
 - Create or extend `src/app/components/{component}/{component}.stories.ts`.
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
-- Export `Story<'p-component'>` objects for configurator-ready examples.
+- Export `Story<'p-component'>` objects for configurator-ready examples. `Story`, `SlotStories`, `ElementConfig` and the
+  accessibility example types come from `@porsche-design-system/story-generator`, which also generates a story's markup
+  for every framework (`getStoryMarkup`, `wrapCode`) for the Storefront and the skills, and renders it live with
+  `<StoryPreview>` from `@porsche-design-system/story-generator/react`.
 - Export `SlotStories<'p-component'>` when slot content must be selectable in the configurator.
 - Put additional story variants for the examples page in the same story file using clear names such as
   `{component}Story`, `{component}StoryGrid`, or `{component}StoryCustomStyling`.
@@ -282,7 +289,7 @@ export const checkboxMeta = {
 Define the complete pair in `accessibility/examples/hidden-label-without-accessible-name/example.ts`:
 
 ```ts
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const hiddenLabelWithoutAccessibleNameA11yExample = {
   name: 'Hidden label without accessible name',

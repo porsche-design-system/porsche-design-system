@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const vagueTabLabelsWithoutContextA11yExample = {
   name: 'Vague tab labels without context',
