@@ -28,16 +28,6 @@ const dealers = [
 /** URL-safe form of a city name, used for the dealer link's fragment. */
 const slugOf = (dealer: string): string => dealer.toLowerCase().replaceAll(' ', '-');
 
-/**
- * Same measurements as a `p-select` option at the default scale: 8px block padding, 12px inline padding, 8px between
- * rows and 8px around the list. Highlight, hover and press use the frosted background and primary text of an option.
- *
- * The classes sit on the `li`, not the anchor. `p-link-pure` resets a slotted anchor with `all: unset`, which would
- * discard them, and the anchor itself renders inside the component's shadow tree where the page stylesheet never reaches.
- */
-const resultLabelClass =
-  'rounded-sm px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm transition-colors';
-
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
   title: 'Search: Dealer links',
@@ -66,7 +56,11 @@ const Page = () => (
         <p-text>
           Type a city. The arrow keys move through the matches, and Enter opens the highlighted dealer page.
         </p-text>
-        <p-popover id="dealer-search-popover" class="[--p-popover-px:0] [--p-popover-py:0]" hide-arrow={true}>
+        <p-popover
+          id="dealer-search-popover"
+          hide-arrow={true}
+          class="[--p-popover-px:var(--spacing-static-sm)] [--p-popover-py:var(--spacing-static-sm)]"
+        >
           <p-input-search
             id="dealer-search"
             name="dealer"
@@ -78,18 +72,19 @@ const Page = () => (
             indicator={true}
             slot="button"
           />
-          <div id="dealer-search-dialog" role="dialog" aria-label="Dealer suggestions" class="p-static-sm">
-            <p
-              id="dealer-search-empty"
-              class="m-0 min-h-[var(--leading-normal)] px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm text-start text-sm text-contrast-medium"
-              hidden
-            >
+          <div id="dealer-search-dialog" role="dialog" aria-label="Dealer suggestions">
+            <p id="dealer-search-empty" class="m-0 text-start text-sm text-contrast-medium" hidden>
               No results found
             </p>
             <ul id="dealer-search-results" class="m-0 grid list-none gap-static-sm p-0">
               {dealers.map((dealer) => (
-                <li class={resultLabelClass}>
-                  <p-link-pure icon="arrow-right" align-label="start" stretch={true} color="inherit">
+                <li>
+                  <p-link-pure
+                    icon="arrow-right"
+                    align-label="start"
+                    stretch={true}
+                    class="w-auto px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm"
+                  >
                     <a href={`#dealer-${slugOf(dealer)}`}>{dealer}</a>
                   </p-link-pure>
                 </li>
@@ -121,14 +116,6 @@ const Page = () => (
             throw new Error('Dealer link search markup is incomplete');
           }
 
-          const activeClasses = [
-            'bg-frosted',
-            'text-primary',
-            'forced-colors:outline',
-            'forced-colors:outline-2',
-            'forced-colors:-outline-offset-2',
-            'forced-colors:outline-[Highlight]',
-          ];
           let activeIndex = -1;
           let dismissed = false;
 
@@ -154,17 +141,14 @@ const Page = () => (
 
           const visibleLinks = () => links().filter((link) => !link.closest('li').hidden);
 
-          // The highlight classes go on the li. The anchor is slotted into p-link-pure, so it renders in that
-          // component's shadow tree and the page stylesheet cannot reach it.
           const setActive = (index) => {
             const items = visibleLinks();
             activeIndex = index;
             const active = index >= 0 ? items[index] : null;
-            for (const item of list.querySelectorAll('li')) {
-              item.classList.remove(...activeClasses);
+            for (const link of links()) {
+              link.closest('p-link-pure').active = link === active;
             }
             if (active) {
-              active.closest('li').classList.add(...activeClasses);
               active.scrollIntoView({ block: 'nearest' });
             }
             bindField(active);

@@ -67,7 +67,7 @@ test('filters dealer links and follows the highlighted one', async ({ page, brow
   }
 
   await page.keyboard.press('ArrowDown');
-  await expect(stuttgart.locator('xpath=ancestor::li[1]')).toHaveClass(/bg-frosted/);
+  await expect(stuttgart.locator('xpath=ancestor::p-link-pure[1]')).toHaveJSProperty('active', true);
   await expect
     .poll(() => field(page).evaluate((input) => input.ariaActiveDescendantElement?.textContent?.trim()))
     .toBe('Stuttgart');
@@ -140,7 +140,7 @@ test('reopens the list with ArrowDown and highlights the first match', async ({ 
 
   await page.keyboard.press('ArrowDown');
   expect(await isOpen(popover(page))).toBe(true);
-  await expect(hamburg.locator('xpath=ancestor::li[1]')).toHaveClass(/bg-frosted/);
+  await expect(hamburg.locator('xpath=ancestor::p-link-pure[1]')).toHaveJSProperty('active', true);
 });
 
 test('announces when nothing matches', async ({ page }) => {

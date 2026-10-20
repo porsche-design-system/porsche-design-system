@@ -60,7 +60,11 @@ const Page = () => (
         <p-text>
           Type a city. The arrow keys move through the matches, and Enter writes the highlighted choice into the field.
         </p-text>
-        <p-popover id="dealer-search-popover" class="[--p-popover-px:0] [--p-popover-py:0]" hide-arrow={true}>
+        <p-popover
+          id="dealer-search-popover"
+          class="[--p-popover-px:var(--spacing-static-sm)] [--p-popover-py:var(--spacing-static-sm)]"
+          hide-arrow={true}
+        >
           <form id="dealer-search-form" slot="button" class="w-full" aria-label="Find a dealer" autocomplete="off">
             <p-input-search
               id="dealer-search"
@@ -80,32 +84,29 @@ const Page = () => (
                 icon="arrow-right"
                 hide-label={true}
                 compact={true}
-                class="p-[var(--ref-p-input-slotted-padding)] m-[var(--ref-p-input-slotted-margin)]"
               >
                 Search
               </p-button>
             </p-input-search>
           </form>
-          <div class="p-static-sm">
-            <p
-              id="dealer-search-empty"
-              class="m-0 min-h-[var(--leading-normal)] px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm text-start text-sm text-contrast-medium"
-              hidden
-            >
-              No results found
-            </p>
-            <div id="dealer-search-results" role="listbox" aria-label="City" class="grid gap-static-sm">
-              {dealers.map((dealer) => (
-                <div
-                  id={`dealer-search-result-${dealer.toLowerCase().replaceAll(' ', '-')}`}
-                  role="option"
-                  aria-selected="false"
-                  class={resultLabelClass}
-                >
-                  {dealer}
-                </div>
-              ))}
-            </div>
+          <p
+            id="dealer-search-empty"
+            class="m-0 min-h-[var(--leading-normal)] px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm text-start text-sm text-contrast-medium"
+            hidden
+          >
+            No results found
+          </p>
+          <div id="dealer-search-results" role="listbox" aria-label="City" class="grid gap-static-sm">
+            {dealers.map((dealer) => (
+              <div
+                id={`dealer-search-result-${dealer.toLowerCase().replaceAll(' ', '-')}`}
+                role="option"
+                aria-selected="false"
+                class={resultLabelClass}
+              >
+                {dealer}
+              </div>
+            ))}
           </div>
         </p-popover>
         <p id="dealer-search-status" class="sr-only" role="status" />
