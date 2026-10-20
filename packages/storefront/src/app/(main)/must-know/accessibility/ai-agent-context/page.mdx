@@ -2,7 +2,7 @@ import { Notification } from '@/components/mdx/content/Notification';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 
 export const metadata = {
-  title: 'Accessibility: AI Agent Context - Porsche Design System',
+  title: 'Accessibility: Setting AI Agent Context - Must Know',
   description:
     'Install generic accessibility generation guardrails that complement separately installed Porsche Design System knowledge skills.',
 };
@@ -17,12 +17,12 @@ After install, generate UI as usual: an always-on instruction loads the `accessi
 behavior changes.
 
 This package does **not** install Porsche Design System knowledge skills. Expose the version-matched PDS skill
-separately via the [PDS Agent Skills documentation](/skills/introduction/general/). Use that skill for PDS component
+separately via the [PDS Agent Skills documentation](/skills/introduction/general). Use that skill for PDS component
 APIs; use `accessible-frontend` for generic page and application accessibility.
 
-To audit generated UI, see [**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/).
+To audit generated UI, see [**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit).
 
-<Notification heading="Prerequisite" headingTag="h3" state="warning">
+<Notification heading="Prerequisite" state="warning">
   {/*<!-- prettier-ignore --> */}
   | Requirement | Details |
   | ---------------- | ----------------------------------------------------------------------------------------------- |
@@ -77,7 +77,7 @@ adaptability, and dynamic announcements. The skill then loads only what the edit
 
 **Generate UI with PDS:** use the separately installed `pds-knowledge-*` skill for component APIs; this package covers
 the surrounding page. If no PDS skill is available, it stays generic and does not guess PDS APIs. Setup:
-[PDS skill installation](/skills/introduction/installation/).
+[PDS skill installation](/skills/introduction/installation).
 
 Deploy paths and compile notes for Gemini/Codex live in the
 [package README](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-codegen). Do not
@@ -86,7 +86,7 @@ overwrite an existing project `AGENTS.md` with a stub.
 ## Limitations
 
 This package targets standards while UI is generated; it does not certify accessibility or replace PDS component
-do/don'ts. After generation, run an [**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/) and
+do/don'ts. After generation, run an [**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit) and
 complete keyboard and assistive-technology checks. Source review alone is not enough.
 
 **Standard:** [WCAG 2.2 Level AA](https://w3.org/WAI/standards-guidelines/wcag). Porsche guidance:
