@@ -8,7 +8,7 @@ import {
   type TabsBarUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 // Types only: the package exports every example, and a client component is handed the one it shows.
-import type { Example } from '@porsche-design-system/examples';
+import type { Example } from '@porsche-design-system/examples-pages';
 import { openExampleInStackblitz } from '@porsche-design-system/stackblitz';
 import { useState } from 'react';
 import { DocsLink } from '@/components/common/DocsLink';
@@ -19,7 +19,7 @@ import { CodeBlock, type CodeLanguage } from '../../elements/CodeBlock';
 
 type ExampleProps = {
   /**
-   * A pattern or template of `@porsche-design-system/examples`, with its media below the slug of this deployment –
+   * A pattern or template of `@porsche-design-system/examples-pages`, with its media below the slug of this deployment –
    * rendered by `ExampleViewer`. Its title names the iframe, its files are shown as code and opened in StackBlitz.
    */
   example: Example;

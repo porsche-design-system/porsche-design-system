@@ -1,4 +1,4 @@
-import type { ExampleProject } from '@porsche-design-system/examples';
+import type { ExampleProject } from '@porsche-design-system/examples-pages';
 import type { ColorScheme, Framework } from '@porsche-design-system/shared';
 import sdk, { type ProjectFiles } from '@stackblitz/sdk';
 import { angularBundle, reactBundle, vanillaJsBundle, vueBundle } from '../generated/bundle';

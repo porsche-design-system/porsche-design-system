@@ -33,8 +33,8 @@ packages/
 ├── components-vue/    # Vue wrapper
 ├── storefront/        # Next.js documentation site
 │   └── projects/      # Agent skills generator, StackBlitz projects
-├── examples/          # Standalone example pages (TSX, rendered to plain HTML at build time)
-│   └── projects/      # Framework examples, story generator
+├── examples/          # Every example, one project per kind
+│   └── projects/      # Pages (patterns, templates), framework examples, story generator
 ├── tokens/            # Design tokens (colors, spacing, typography)
 ├── styles/            # Shared styles, Tailwind plugin
 ├── assets/            # Icons, fonts, marque, crest

@@ -1,7 +1,13 @@
-import { type Example, type ExamplePath, examples, examplesPath, mediaPath } from '@porsche-design-system/examples';
+import {
+  type Example,
+  type ExamplePath,
+  examples,
+  examplesPath,
+  mediaPath,
+} from '@porsche-design-system/examples-pages';
 
 /**
- * The examples of `@porsche-design-system/examples`, as the storefront serves them.
+ * The examples of `@porsche-design-system/examples-pages`, as the storefront serves them.
  *
  * Two halves come from the examples package. The built pages are copied from `dist-site/` to `public/examples/` in the
  * `prebuild` (`scripts/copyExamples.ts`), and `WebsiteViewer` frames them from there. Every example – its meta and the
@@ -57,7 +63,7 @@ export const getExampleUrl = (example: ExamplePath, basePath: string): string =>
 export const getExample = <Path extends ExamplePath>(path: Path, basePath: string): Example<Path> => {
   const example: Example<Path> | undefined = examples[path];
   if (!example) {
-    throw new Error(`[storefront] "${path}" is not an example of @porsche-design-system/examples`);
+    throw new Error(`[storefront] "${path}" is not an example of @porsche-design-system/examples-pages`);
   }
 
   return {

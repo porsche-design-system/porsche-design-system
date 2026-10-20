@@ -2,8 +2,8 @@ import type { Example } from './meta.ts';
 import { examplesPath, mediaPath } from './projects.ts';
 
 /**
- * The package export, `@porsche-design-system/examples`: every example with its meta and the files of its generated
- * project, and the paths the built pages and their media are served at.
+ * The package export, `@porsche-design-system/examples-pages`: every example with its meta and the files of its
+ * generated project, and the paths the built pages and their media are served at.
  *
  * ```text
  * generated/examples.ts   # scripts/build.ts – the source, imported as it is by the scripts and the knowledge skill

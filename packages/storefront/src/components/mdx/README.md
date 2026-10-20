@@ -76,11 +76,11 @@ Each component resolves its content for every framework on the server and render
 
 ### `examples/` Framed pages and accessibility code pairs
 
-| Component                 | Purpose                                                                           | Markdown                                                                              | Storefront dependencies                                                                  |
-| ------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ExampleViewer`           | A pattern or template of `@porsche-design-system/examples`, with its description. | The description, then a link to each source file and the live page.                   | `getExample`, `getBasePath`                                                              |
-| `WebsiteViewer`           | Frames a page, resizable, with its code and links to its source.                  | Links to the GitHub source and the live demo.                                         | `DocsLink`, `useResizeHandle`, `withMediaOrigin`, `localPorscheDesignSystemMajorVersion` |
-| `A11yIntegrationExamples` | Pairs of an accessibility anti-pattern and its fix, per framework.                | _Proposed:_ the skill's existing generator (`knowledge/components/accessibility.ts`). | `useStorefrontFramework`, `resolveFrameworkValues`                                       |
+| Component                 | Purpose                                                                                 | Markdown                                                                              | Storefront dependencies                                                                  |
+| ------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ExampleViewer`           | A pattern or template of `@porsche-design-system/examples-pages`, with its description. | The description, then a link to each source file and the live page.                   | `getExample`, `getBasePath`                                                              |
+| `WebsiteViewer`           | Frames a page, resizable, with its code and links to its source.                        | Links to the GitHub source and the live demo.                                         | `DocsLink`, `useResizeHandle`, `withMediaOrigin`, `localPorscheDesignSystemMajorVersion` |
+| `A11yIntegrationExamples` | Pairs of an accessibility anti-pattern and its fix, per framework.                      | _Proposed:_ the skill's existing generator (`knowledge/components/accessibility.ts`). | `useStorefrontFramework`, `resolveFrameworkValues`                                       |
 
 ### `reference/` Generated from meta packages and published files
 

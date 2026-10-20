@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { emotionSkill } from '@porsche-design-system/emotion/skill';
-import { examplesSkill } from '@porsche-design-system/examples/skill';
+import { examplesSkill } from '@porsche-design-system/examples-pages/skill';
 import { scssSkill } from '@porsche-design-system/scss/skill';
 import {
   type Framework,

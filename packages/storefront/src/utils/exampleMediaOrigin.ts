@@ -1,4 +1,4 @@
-import type { ExampleProject } from '@porsche-design-system/examples';
+import type { ExampleProject } from '@porsche-design-system/examples-pages';
 
 /**
  * The project of an example as StackBlitz needs it: with the origin in front of every media path.

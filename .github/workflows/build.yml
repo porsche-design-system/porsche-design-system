@@ -80,10 +80,10 @@ jobs:
             ./packages/storefront/dist/
             ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
-            ./packages/examples/dist/
-            ./packages/examples/generated/
             ./packages/examples/projects/framework/generated/
-            ./packages/examples/dist-site/
+            ./packages/examples/projects/pages/dist/
+            ./packages/examples/projects/pages/generated/
+            ./packages/examples/projects/pages/dist-site/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/
@@ -175,10 +175,10 @@ jobs:
             ./packages/storefront/dist/
             ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
-            ./packages/examples/dist/
-            ./packages/examples/generated/
             ./packages/examples/projects/framework/generated/
-            ./packages/examples/dist-site/
+            ./packages/examples/projects/pages/dist/
+            ./packages/examples/projects/pages/generated/
+            ./packages/examples/projects/pages/dist-site/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/

@@ -21,8 +21,8 @@ accessible usage of PDS components and must comply with **WCAG 2.2 AA**.
 
 ```bash
 # Build the examples the storefront frames – once, and again after changing them.
-# `prebuild` copies packages/examples/dist-site into public/examples and fails without it.
-# Their pages render <ExampleViewer example="…" />, which imports each example from @porsche-design-system/examples.
+# `prebuild` copies packages/examples/projects/pages/dist-site into public/examples and fails without it.
+# Their pages render <ExampleViewer example="…" />, which imports each example from @porsche-design-system/examples-pages.
 npm run build:examples
 
 # Start dev server
@@ -216,7 +216,7 @@ import { componentExampleCustomLogic } from '@porsche-design-system/examples-fra
 
 - Put story-backed examples in `{component}.stories.ts` and render them with `ComponentStory`.
 - Use `ComponentExample` only after adding the example's `meta.ts` to `packages/examples/projects/framework/src/<id>/`
-  and generating the project (see [its section](../examples/AGENTS.md#framework-examples)).
+  and generating the project (see its [`AGENTS.md`](../examples/projects/framework/AGENTS.md)).
 - Preserve `metadata` and `ComponentStatus` imports on the page.
 - Add `TableOfContents` when the page contains multiple example sections.
 - Keep example copy and generated markup accessible by default: meaningful headings, visible focus, keyboard support,

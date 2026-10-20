@@ -1,10 +1,10 @@
 import { type BrowserContext, expect, type Frame, type Page, type Request, test } from '@playwright/test';
-import { examples } from '@porsche-design-system/examples';
+import { examples } from '@porsche-design-system/examples-pages';
 
 /**
  * The patterns and templates the storefront frames from `public/examples/`, and opens in StackBlitz.
  *
- * Both halves come from `@porsche-design-system/examples`: the self-contained page in the iframe, copied from its build,
+ * Both halves come from `@porsche-design-system/examples-pages`: the self-contained page in the iframe, copied from its build,
  * and the project of the example, imported from the package at build time. What is asserted here is the part the
  * storefront adds – that the page is served by this deployment, same-origin, with its media resolved against the slug,
  * and that the project reaches StackBlitz with those media made absolute.
@@ -276,7 +276,7 @@ test('switches every example of a page on its own, at the height of its preview'
   const stacked = page.getByTitle('Header: Stacked');
   const previewHeight = (await overlay.boundingBox())?.height;
 
-  // Each example is introduced by its description, authored with the example in @porsche-design-system/examples.
+  // Each example is introduced by its description, authored with the example in @porsche-design-system/examples-pages.
   await expect(page.getByText(/^The header lies on top of the content/)).toBeVisible();
   await expect(page.getByText(/^The header sits above the content/)).toBeVisible();
 
