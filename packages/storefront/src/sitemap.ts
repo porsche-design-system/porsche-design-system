@@ -725,7 +725,7 @@ export const sitemap = {
         tabs: {
           introduction: { name: 'Introduction' },
           'dos-and-donts': { name: "Do's and Don'ts" },
-          'ai-agent-context': { name: 'Setting AI Agent Context' },
+          'ai-agent-context': { name: 'AI Agent Context' },
           'ai-accessibility-audit': { name: 'AI Accessibility Audit' },
           statement: { name: 'Statement' },
         },
