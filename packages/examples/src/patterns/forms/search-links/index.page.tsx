@@ -73,7 +73,11 @@ const Page = () => (
             slot="button"
           />
           <div id="dealer-search-dialog" role="dialog" aria-label="Dealer suggestions">
-            <p id="dealer-search-empty" class="m-0 text-start text-sm text-contrast-medium" hidden>
+            <p
+              id="dealer-search-empty"
+              class="m-0 min-h-[var(--leading-normal)] px-[12px] py-static-sm text-start text-sm text-contrast-medium"
+              hidden
+            >
               No results found
             </p>
             <ul id="dealer-search-results" class="m-0 grid list-none gap-static-sm p-0">
@@ -83,7 +87,7 @@ const Page = () => (
                     icon="arrow-right"
                     align-label="start"
                     stretch={true}
-                    class="w-auto px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm"
+                    class="w-auto px-[12px] py-static-sm"
                   >
                     <a href={`#dealer-${slugOf(dealer)}`}>{dealer}</a>
                   </p-link-pure>

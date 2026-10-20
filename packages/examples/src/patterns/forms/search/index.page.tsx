@@ -30,7 +30,7 @@ const dealers = [
  * rows and 8px around the list. Highlight, hover and press use the frosted background and primary text of an option.
  */
 const resultLabelClass =
-  'flex w-full min-h-[var(--leading-normal)] cursor-pointer gap-static-sm rounded-sm px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm text-start text-sm font-normal leading-normal break-words text-contrast-high transition-colors hover:bg-frosted hover:text-primary active:bg-frosted active:text-primary';
+  'flex w-full min-h-[var(--leading-normal)] cursor-pointer gap-static-sm rounded-sm px-[12px] py-static-sm text-start text-sm font-normal leading-normal break-words text-contrast-high transition-colors hover:bg-frosted hover:text-primary active:bg-frosted active:text-primary';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -91,7 +91,7 @@ const Page = () => (
           </form>
           <p
             id="dealer-search-empty"
-            class="m-0 min-h-[var(--leading-normal)] px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm text-start text-sm text-contrast-medium"
+            class="m-0 min-h-[var(--leading-normal)] px-[12px] py-static-sm text-start text-sm text-contrast-medium"
             hidden
           >
             No results found
