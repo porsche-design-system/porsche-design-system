@@ -71,10 +71,20 @@ jobs:
         env:
           FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
 
-      # Figma's preview and node validation of every record, as figma:publish runs them, without the upload.
+      # Figma's preview and node validation of every record, as figma:publish runs them, without the upload. Exit 2 is a
+      # Figma outage here too, in the second pull, a preview or the validation: a warning.
       - name: 'figma:publish:dry'
         if: steps.generate.outputs.code == '0'
-        run: npm run figma:publish:dry --workspace=@porsche-design-system/figma-code-connect
+        shell: bash
+        run: |
+          set +e
+          npm run figma:publish:dry --workspace=@porsche-design-system/figma-code-connect
+          code=$?
+          if [ "$code" = 2 ]; then
+            echo "::warning title=Figma Code Connect::Figma could not be reached, so not every record of this pull request was checked against it"
+            exit 0
+          fi
+          exit "$code"
         env:
           FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
 
