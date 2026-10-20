@@ -14,8 +14,8 @@ and nothing pulled from Figma is written anywhere. Run every command from this f
 `--workspace=@porsche-design-system/figma-code-connect`.
 
 ```
-figma/                  # the rules and the render (generate.ts), the messages, the accepted gaps, the helpers
-scripts/                # figmaPull.ts (the pull, in memory), figmaGenerate.ts, figmaConnect.ts (the CLI wrapper)
+figma/                  # the rules and the render (generate.ts), the history (history.ts), the messages, the accepted gaps, the helpers
+scripts/                # figmaPull.ts (the pull and the history, in memory), figmaGenerate.ts, figmaConnect.ts (the CLI wrapper)
 tests/unit/             # the reader, the generator, a snapshot of every generated file: `npm run test:unit`
 figma*.config.json      # one Code Connect config per label; figma.config.json also names the library
 generated/              # templates/, icons/ — ignored by git
@@ -37,8 +37,7 @@ When you add or rename a prop, a slot, an allowed value or a component:
    a bot gets no dry run; its lines reach you after the merge, in the `figma:generate` log of every later dry run. With
    `FIGMA_ACCESS_TOKEN` in the environment, `npm run figma:generate` prints the same lines locally.
 2. If the prop changes what the component looks like, leave the line alone. Design adds the property after the release
-   that ships it. The same goes for a new component (`design: p-foo: add a component set named "foo"`): design adds the
-   set.
+   that ships it. The same goes for a new component (`design: p-foo: Add a component set "foo"`): design adds the set.
 3. If Figma will never carry it, ask the user before accepting it. Typical cases are native HTML attributes (`href`,
    `target`, `autoComplete`, `maxLength`), behaviour (`open`, `disableBackdropClick`), i18n objects (`intl`), and a
    component drawn inside its parent's set or not drawable at all (table parts, items, `p-icon`). Once agreed, add the

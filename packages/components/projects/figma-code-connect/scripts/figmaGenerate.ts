@@ -3,33 +3,52 @@ import { dirname } from 'node:path';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { sync as globbySync } from 'fast-glob';
-import { acceptedGapsPath, generate } from '../figma/generate';
+import { acceptedGapsPath, type Dependencies, generate } from '../figma/generate';
 import { libraryUrl, pdsVersion } from '../figma/library';
 import { printed } from '../figma/messages';
 import type { Snapshot } from '../figma/snapshot';
-import { pull } from './figmaPull';
+import { pull, pullHistory } from './figmaPull';
 
 // Writes what figma/generate.ts renders from a fresh pull into generated/, and deletes files whose component set is
 // gone; `--check` compares instead. Rationale: docs/figma-code-connect.md.
 const check = process.argv.includes('--check');
+// history only rewords design lines; `--check` and the publish job print lines no one reads
+const withHistory = !check && !process.argv.includes('--no-history');
+const reason = (error: unknown): string => (error instanceof Error ? error.message : String(error));
 
 const main = async (): Promise<void> => {
   let snapshot: Snapshot;
   try {
     snapshot = await pull();
   } catch (error) {
-    console.error(printed(`Figma could not be read: ${error instanceof Error ? error.message : String(error)}`));
+    console.error(printed(`Figma could not be read: ${reason(error)}`));
     // the workflow tells this outage from a repository mistake by the exit code
     process.exit(2);
   }
   const acceptedGaps: Record<string, string[]> = JSON.parse(readFileSync(acceptedGapsPath, 'utf8'));
-  const { files, errors, designLines, skipped, componentCount, acceptedGapCleanup } = generate(snapshot, acceptedGaps, {
+  const dependencies: Dependencies = {
     getComponentMeta,
     tags: TAG_NAMES.filter((tag) => !(INTERNAL_TAG_NAMES as readonly string[]).includes(tag)),
     outputRoot: 'generated',
     fileUrl: process.env.FIGMA_PUBLISH_FILE_URL ?? libraryUrl(), // the env points a test run at a branch of the library
     version: pdsVersion(),
-  });
+  };
+  let generated = generate(snapshot, acceptedGaps, dependencies);
+  // a property no rule places: history improves its line, and generating never needs it
+  if (withHistory && generated.unresolved.length) {
+    try {
+      const { resolved, steps } = await pullHistory(generated.unresolved);
+      console.log(
+        `read ${steps} earlier version(s) of ${generated.unresolved.length} component set(s) with a property no rule places`
+      );
+      generated = generate({ ...snapshot, history: resolved }, acceptedGaps, dependencies);
+    } catch (error) {
+      console.log(
+        `the library's history could not be read, so such properties are reported without it: ${reason(error)}`
+      );
+    }
+  }
+  const { files, errors, designLines, skipped, componentCount, acceptedGapCleanup } = generated;
   let written = 0;
   let deleted = 0;
 

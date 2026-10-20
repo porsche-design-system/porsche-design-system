@@ -12,7 +12,10 @@ the test copy until the pull request is approved, then the production library.
    ids of its published icon components into memory, walks component-meta and writes four templates per component, one
    per label, plus the icon batches into `generated/`, which git ignores. It prints a design line for every change only
    design can make in Figma and an accepted-gap cleanup for every accepted gap Figma made obsolete. The rules that pair
-   a PDS prop or slot with the Figma property of the same name are in `figma/generate.ts`.
+   a PDS prop or slot with the Figma property of the same name are in `figma/generate.ts`. For a property no rule places
+   it reads the library's earlier versions (`figma/history.ts`): a key keeps its `#<id>` through a rename, and a
+   VARIANT, which has none, is matched by its options, so the line says `Rename "compacta" back to "compact"` instead of
+   asking for an add and reporting an unknown property.
 2. **Render.** A template reads each PDS prop and slot by name from `figma.selectedInstance.properties` when the snippet
    renders (`figma/helpers/read.ts`). **A property the Figma component lacks is left out of the snippet**, so every
    component publishes, and a property design adds or renames shows up once the library is published, with no new
@@ -89,9 +92,10 @@ time and, with `publish` ticked, also republishes the latest release, as a relea
   `SLACK_BOT_TOKEN` and `SLACK_DESIGN_CHANNEL_ID` ([`slack-notifications.md`](./slack-notifications.md#secrets)), set by
   a repository admin.
 - The Figma token is a personal access token of an Organization member with a Dev or Full seat, with the scopes **File
-  content: Read**, **Library content: Read** and **Code Connect: Write**; the token dialog shows the Code Connect scope
-  only to organization members, not guests. Figma recommends a Plan Access Token for CI, but its scope set is fixed and
-  the docs do not list Code Connect write in it, so check that a publish works with one before storing it.
+  content: Read**, **Library content: Read**, **File versions: Read** (`file_versions:read`, for the history; without it
+  history is a notice, never a failure) and **Code Connect: Write**; the token dialog shows the Code Connect scope only
+  to organization members, not guests. Figma recommends a Plan Access Token for CI, but its scope set is fixed and the
+  docs do not list Code Connect write in it, so check that a publish works with one before storing it.
 - A local token is optional: pull requests run the dry run and a release publishes; only `figma:unpublish` and testing
   against another file need one. Locally the token goes in the package's git-ignored `.env`. The `figma connect` CLI
   loads that file itself; `figma:generate` reads the token from the environment, and so do `figma:publish` and
@@ -111,7 +115,14 @@ time and, with `publish` ticked, also republishes the latest release, as a relea
 
 The pull is `GET /files/:key/component_sets`, `GET /files/:key/nodes` per 25 component sets,
 `GET /files/:key/components` and, when an INSTANCE_SWAP default is an unpublished component, one more
-`GET /files/:key/nodes`. To render one component across its property combinations:
+`GET /files/:key/nodes`. A property no rule places adds `GET /files/:key/versions` once and
+`GET /files/:key/nodes?version=…` per version read and 25 sets with such a property, at most 40 versions and 90 days
+back and one every 3 s: the oldest reachable version first, which settles a key whose id carried a PDS name there and
+drops a property that already carries its name there, then newest first until each remaining property has appeared. Only
+history waits out a rate limit, once and for up to a minute; a longer one, a second one or history that cannot be read
+is a notice, and the lines come without it. `-- --check` and `-- --no-history` read no history: a check follows the run
+that printed the lines, and the publish job passes `--no-history` because the design-lines job sends them. To render one
+component across its property combinations:
 `npx figma connect preview <file> --config <label config> --unique --output json`.
 
 ## When something changes
@@ -147,7 +158,7 @@ Records live per file key, so nothing published under another key touches the li
 | Label                | A Dev Mode code tab: `Web Components`, `React`, `Angular`, `Vue`, one `figma*.config.json` each                                |
 | Template             | A generated `*.figma.ts`, one per component and label. Never edited by hand, never committed                                   |
 | Record               | What Figma stores after a publish, one per component node and label; Dev Mode and the MCP server show its output               |
-| Design line          | A `design:` line from `figma:generate`: a rename `"old" → "new"`, an `add` or a `delete` only design can make in Figma         |
+| Design line          | A `design:` line from `figma:generate`: an instruction only design can carry out in Figma, naming the property and its type    |
 | Accepted gap         | `figma/accepted-gaps.json`: per PDS tag, the differences accepted as missing. It silences design lines and changes no template |
 | Accepted-gap cleanup | An accepted gap Figma made obsolete. Generation prunes and prints it; a pull request's dry run is red until it is removed      |
 | Refused              | A record Figma would not render or take, in the dry run or after the upload. Its previous version stays live                   |
@@ -219,6 +230,22 @@ Records live per file key, so nothing published under another key touches the li
     is not bot-authored. The cost: the update's own pull request gets no dry run, its author being a bot, and a change
     to the lines that report a refused upload shows in no pull request, since only a release uploads; refused records
     would then pass unseen. Rejected: holding it back from automated updates, which made every bump a deliberate chore.
+11. **A property no rule places is placed by the library's history, read on every run that prints lines someone reads
+    and stored nowhere; what history cannot place is reported as unknown, with a question when it is the only such
+    property of its type and exactly one PDS prop of that type is missing.** A BOOLEAN, TEXT, INSTANCE_SWAP or SLOT key
+    keeps its `#<id>` through a rename, and a VARIANT, which has none, is paired by its options with the PDS name that
+    vanished in the step it appeared; two moving in one step are listed together, unpaired, with what to do about any
+    left over. History's answers are applied before any question is asked. The lines are imperative, in Figma's own
+    vocabulary (boolean, text, variant, instance swap, slot), and name the type and options of every add. The cost: the
+    version list and one request per version read and 25 such sets, so up to 41 requests and about 2 minutes at the Tier
+    1 limit for up to 25 sets, on every run with such a property, until design renames it to `fig…` or deletes it; a
+    rename older than 40 versions or 90 days stays unplaced; the token needs `file_versions:read`. Rejected: pairing by
+    type on the current pull alone, which renames a design-only property into whatever PDS prop of its type is missing
+    and makes the snippet read the wrong property, silently; asking whichever such property Figma lists first, which
+    made the question depend on key order; a committed id-to-name map, decision 3's rejected pull in a smaller coat; the
+    `LIBRARY_PUBLISH` webhook, which carries component keys and names only; the version label and description, typed by
+    designers; a fixed reference version such as the newest before the latest release, whose answer changes at each
+    release; naming who renamed and when, which the instruction does not need.
 
 ## Until the pull request is approved
 

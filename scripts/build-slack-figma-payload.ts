@@ -49,7 +49,6 @@ if (actions.size === 0) {
 const components = actions.size;
 const changes = [...actions.values()].reduce((sum, { lines }) => sum + lines.length, 0);
 const headline = `Code Connect: ${changes} change${changes === 1 ? '' : 's'} on ${components} component${components === 1 ? '' : 's'}`;
-const designOnly = [...actions.values()].some(({ lines }) => lines.some((text) => text.includes('→ "fig')));
 const message = [
   `:figma: ${headline}`,
   '',
@@ -58,7 +57,6 @@ const message = [
     ...lines.map((text) => `- ${escapeMarkdown(text)}`),
   ]),
   '',
-  ...(designOnly ? ['A fig… name marks a property that only matters in Figma.'] : []),
   'Publish the library and Dev Mode shows the change; a new component or icon follows with the next PDS release.',
 ].join('\n');
 

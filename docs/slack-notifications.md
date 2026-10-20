@@ -86,15 +86,17 @@ message reporting it. The list is capped at 40 entries, which is above any run t
 the message with `scripts/build-slack-figma-payload.ts` from every open design line (`figma:generate` of the latest
 release, never `main`, on the library as pulled in that run, after each release, every Monday and on dispatch): one line
 per change, grouped under the component it is for with a link to the component in Figma: a rename
-(`"summary" → "slot-summary"`, or `"new" → "figNew"` for a property that only matters in Figma), an add
-(`add a BOOLEAN property named "compact"`) or a delete (`delete "showLabel"`), and a closing line saying that Dev Mode
-shows the change once the library is published, a new component or icon with the next PDS release. The line shapes it
-reads are declared once in `packages/components/projects/figma-code-connect/figma/messages.ts`, shared with the
-generator. Nothing about GitHub is in the message, because designers have no GitHub account; the raw logs stay in the
-workflow run. Nothing is remembered between runs: a line comes again with each release and every week until design makes
-the change, and a message that failed to send goes out when the job is re-run or with the next week's. The action skips
-the builder when the log holds no design line, and the Send step with it. Details and the decisions behind it: the
-Decisions section of `docs/figma-code-connect.md`.
+(`Rename "compacta" back to "compact"`), an add with the type and options (`Add a boolean property "compact"`), a delete
+with its reason (`Delete "showLabel": "hideLabel" replaces it`) or, for a property no PDS name stands for, what to do
+with it (`"dense" is not a PDS property: rename it to "figDense" if it is only for Figma, or delete it`), and a closing
+line saying that Dev Mode shows the change once the library is published, a new component or icon with the next PDS
+release. The line shapes it reads are declared once in
+`packages/components/projects/figma-code-connect/figma/messages.ts`, shared with the generator. Nothing about GitHub is
+in the message, because designers have no GitHub account; the raw logs stay in the workflow run. Nothing is remembered
+between runs: a line comes again with each release and every week until design makes the change, and a message that
+failed to send goes out when the job is re-run or with the next week's. The action skips the builder when the log holds
+no design line, and the Send step with it. Details and the decisions behind it: the Decisions section of
+`docs/figma-code-connect.md`.
 
 ## Why not a webhook
 

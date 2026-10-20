@@ -181,8 +181,9 @@ jobs:
       # figma:generate imports @porsche-design-system/component-meta, whose dist/ is gitignored.
       - run: npm run build:core-dependencies
 
+      # The design-lines job sends the lines, so publish skips the history that only rewords them.
       - name: 'figma:generate'
-        run: npm run figma:generate --workspace=@porsche-design-system/figma-code-connect
+        run: npm run figma:generate --workspace=@porsche-design-system/figma-code-connect -- --no-history
         env:
           FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
 

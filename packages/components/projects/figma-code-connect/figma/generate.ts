@@ -2,8 +2,15 @@ import { relative } from 'node:path';
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, kebabCase, pascalCase } from 'change-case';
-import { acceptedGapCleanupLine, change, changeLine, libraryChangeLine } from './messages';
-import { type Component, type Definition, definitions, type Snapshot } from './snapshot';
+import { acceptedGapCleanupLine, because, change, changeLine, libraryChangeLine } from './messages';
+import {
+  type Component,
+  type Definition,
+  definitions,
+  type Resolution,
+  type Snapshot,
+  type Unresolved,
+} from './snapshot';
 
 // Renders every generated file from one pull and the accepted gaps, and reports where Figma differs from code.
 // Rationale: docs/figma-code-connect.md.
@@ -99,6 +106,8 @@ export type Generated = {
   errors: string[];
   /** changes only design can make in Figma, as design lines (figma/messages.ts); never a failure */
   designLines: string[];
+  /** the sets with a property no rule and no history places; the script reads history for them and generates again */
+  unresolved: Unresolved[];
   /** component sets without a PDS component, `name (id)` */
   skipped: string[];
   componentCount: number;
@@ -301,7 +310,7 @@ const missingComponentSets = (
   isDeprecated: (tag: string) => boolean
 ): string[] => tags.filter((tag) => !present.has(tag) && !isDeprecated(tag));
 
-type ExpectedProperty = { type: 'BOOLEAN' | 'TEXT' | 'VARIANT' | 'INSTANCE_SWAP'; options?: string[] };
+type ExpectedProperty = { type: 'BOOLEAN' | 'TEXT' | 'VARIANT' | 'INSTANCE_SWAP' | 'SLOT'; options?: string[] };
 
 /** The Figma property design must add for a PDS prop: what `mappingOf` reads it as. */
 const expectedProperty = (
@@ -328,24 +337,28 @@ const changesOf = (
   defs: Record<string, Definition>,
   unplaceable: Unplaceable[],
   gaps: string[],
-  iconNames: readonly string[]
-): string[] => {
+  iconNames: readonly string[],
+  history: Record<string, Resolution> = {}
+): { changes: string[]; unknown: string[]; candidates: string[] } => {
   const props = meta.propsMeta ?? {};
   const slots = meta.slotsMeta ?? {};
   const open = new Set(gaps);
   const renames: string[] = [];
   const deletes: string[] = [];
   const adds: string[] = [];
-  // the names renames give to Figma properties
-  const claimed = new Set<string>();
+  // the name a rename gives a Figma property → the property it renames
+  const claimed = new Map<string, string>();
   const rename = (from: string, to: string): void => {
     open.delete(to);
-    claimed.add(to);
+    claimed.set(to, from);
     renames.push(change.rename(from, to));
   };
+  // the Figma property a PDS prop or slot is read as
+  const expected = (name: string): ExpectedProperty =>
+    name.startsWith('slot-') ? { type: 'SLOT' } : expectedProperty(props[name] ?? {}, iconNames);
   const add = (name: string): void => {
-    const expected = expectedProperty(props[name] ?? {}, iconNames);
-    adds.push(change.addProperty(expected.type, name, expected.options));
+    const { type, options } = expected(name);
+    adds.push(change.addProperty(type, name, options));
   };
   // a missing slot that shares its name with a missing PDS prop is asked for once, as the prop
   const askedAsProp = (gap: string): boolean => gap.startsWith('slot-') && open.has(gap.slice('slot-'.length));
@@ -365,32 +378,69 @@ const changesOf = (
     rest.splice(rest.indexOf(looseSlots[0]), 1);
   }
 
+  // the names a property no rule places could have carried: the PDS props and slots still open after the renames
+  const candidates = [...open].filter((gap) => !gap.includes('='));
+  const unplaced: Unplaceable[] = [];
+  const groups = new Set<string>();
+  const figName = (u: Unplaceable): string => `fig${pascalCase(u.figma)}`;
   for (const u of rest) {
+    const fig = figName(u);
     if (u.kind === 'unknownOptions' || u.kind === 'deprecatedOptions') {
       const missing = [...open].filter((gap) => gap.startsWith(`${u.figma}=`));
       if (u.kind === 'unknownOptions' && u.values.length === 1 && missing.length === 1) {
         open.delete(missing[0]);
         renames.push(change.renameOption(u.figma, u.values[0], missing[0].slice(u.figma.length + 1)));
-      } else deletes.push(...u.values.map((value) => change.deleteOption(u.figma, value)));
-    } else if (u.kind === 'deprecated') deletes.push(change.delete(u.figma));
-    else if (u.kind === 'wrongType' && !claimed.has(u.figma)) {
-      // drawn again with the type the template reads
-      deletes.push(change.delete(u.figma));
-      if (u.figma.startsWith('slot-')) adds.push(change.addProperty('SLOT', u.figma));
-      else add(u.figma);
-    } else if (u.figma === 'showLabel' && defs.hideLabel && props.hideLabel) deletes.push(change.delete(u.figma));
-    // design-only: no PDS name stands for it, or a rename takes its name
-    else renames.push(change.rename(u.figma, `fig${pascalCase(u.figma)}`));
+      } else {
+        const reason = u.kind === 'unknownOptions' ? because.notAllowed : because.deprecated;
+        deletes.push(...u.values.map((value) => change.deleteOption(u.figma, value, reason)));
+      }
+    } else if (u.kind === 'deprecated') deletes.push(change.delete(u.figma, because.deprecated));
+    else if (u.kind === 'wrongType') {
+      const by = claimed.get(u.figma);
+      if (by) renames.push(change.displaced(u.figma, fig, by));
+      else {
+        // drawn again with the type the template reads, hideLabel's for a showLabel standing for it
+        const pds = u.figma === 'showLabel' && showLabelStandsForHideLabel(defs, props) ? 'hideLabel' : u.figma;
+        const { type, options } = expected(pds);
+        deletes.push(change.redraw(u.figma, type, options ?? [], u.type));
+      }
+    } else if (u.figma === 'showLabel' && defs.hideLabel && props.hideLabel)
+      deletes.push(change.delete(u.figma, because.hideLabel));
+    else {
+      // no PDS name stands for it: history says whether it carried one
+      const said = history[u.figma];
+      if (said?.kind === 'renamed') {
+        open.delete(said.from);
+        renames.push(change.renameBack(u.figma, said.from));
+      } else if (said?.kind === 'ambiguous') {
+        // one line for the group, deleting every name it accounts for
+        if (!groups.has(said.appeared.join())) {
+          groups.add(said.appeared.join());
+          for (const name of said.vanished) open.delete(name);
+          renames.push(change.replaced(said.appeared, said.vanished));
+        }
+      } else if (said?.kind === 'created') renames.push(change.unknown(u.figma, fig));
+      else unplaced.push(u);
+    }
+  }
+  // the Figma type of a property, a false/true VARIANT read as a boolean
+  const typeOf = (u: Unplaceable): string => (isBooleanVariant(defs[u.figma]) ? 'BOOLEAN' : u.type);
+  // asked once history has taken its names, when one property and one PDS name Figma lacks share a type
+  for (const u of unplaced) {
+    const sameType = candidates.filter((name) => open.has(name) && expected(name).type === typeOf(u));
+    if (sameType.length === 1 && unplaced.filter((other) => typeOf(other) === typeOf(u)).length === 1) {
+      const { type, options } = expected(sameType[0]);
+      open.delete(sameType[0]);
+      renames.push(change.maybeRenamed(u.figma, sameType[0], figName(u), type, options));
+    } else renames.push(change.unknown(u.figma, figName(u)));
   }
 
   for (const gap of open) {
     const [property, value] = gap.split('=');
     if (value !== undefined) adds.push(change.addOption(property, value));
-    else if (gap.startsWith('slot-')) {
-      if (!askedAsProp(gap)) adds.push(change.addProperty('SLOT', gap));
-    } else add(gap);
+    else if (!askedAsProp(gap)) add(gap);
   }
-  return [...renames, ...deletes, ...adds];
+  return { changes: [...renames, ...deletes, ...adds], unknown: unplaced.map((u) => u.figma), candidates };
 };
 
 // --- Render ---
@@ -621,6 +671,7 @@ export const generate = (
   };
   const files: Generated['files'] = {};
   const designLines: string[] = [];
+  const unresolved: Unresolved[] = [];
   const skipped: string[] = [];
   let componentCount = 0;
 
@@ -668,11 +719,22 @@ export const generate = (
       });
       return values.length ? [{ ...u, values }] : [];
     });
-    designLines.push(
-      ...changesOf(meta, definitions(component), open, gapCoverage.fresh, codeIcons).map((text) =>
-        changeLine(component.name, component.id, tag, text)
-      )
+    const placed = changesOf(
+      meta,
+      definitions(component),
+      open,
+      gapCoverage.fresh,
+      codeIcons,
+      snapshot.history?.[component.id]
     );
+    designLines.push(...placed.changes.map((text) => changeLine(component.name, component.id, tag, text)));
+    if (placed.unknown.length)
+      unresolved.push({
+        id: component.id,
+        definitions: component.componentPropertyDefinitions,
+        unknown: placed.unknown,
+        candidates: placed.candidates,
+      });
     if (gapCoverage.accepted.length || extras.length) accepted[tag] = [...gapCoverage.accepted, ...extras];
     componentCount++;
     const folder = `${dependencies.outputRoot}/templates/${name}`;
@@ -707,5 +769,5 @@ export const generate = (
         .filter((entry) => !(accepted[tag] ?? []).includes(entry))
         .map((entry) => acceptedGapCleanupLine(tag, entry))
     );
-  return { files, errors: context.errors, designLines, skipped, componentCount, acceptedGapCleanup };
+  return { files, errors: context.errors, designLines, unresolved, skipped, componentCount, acceptedGapCleanup };
 };
