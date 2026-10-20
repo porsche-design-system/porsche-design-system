@@ -53,7 +53,9 @@ skill_). `build:site` builds the projects against `@porsche-design-system/compon
 Nothing `scripts/build.ts` imports may therefore need a built wrapper – which is why `appTitle` lives in
 `lib/projects.ts` rather than next to the partials. The same holds for its typecheck: `build:projects` checks only what
 it builds ([`tsconfig.projects.json`](tsconfig.projects.json)), and `build:site` runs the full `typecheck`, whose
-partials, dev server and verification import `@porsche-design-system/components-js`.
+partials, dev server and verification import `@porsche-design-system/components-js`, and which fans out to the projects
+below [`projects/`](#projects), such as `story-generator` and its `/react` subpath, which imports
+`@porsche-design-system/components-react`.
 
 Consequences, and they are the point of the design:
 
@@ -89,6 +91,8 @@ scripts/                          # the entry points `npm run …` starts with t
 ├── verify.ts                     # asserts dist-site/ is what the storefront and StackBlitz need
 └── previewSite.ts                # serves dist-site/ below /examples/ against the local CDN
 skill/skill.ts                    # examplesSkill – the patterns and templates for the knowledge skill, read from dist/
+projects/                         # a workspace per kind of example – see _Projects_
+└── story-generator/              # @porsche-design-system/story-generator: story types, markup per framework, StoryPreview
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 playwright.config.ts              # every Playwright suite as projects of one config – <suite>-{desktop-chrome,mobile-safari}
@@ -140,6 +144,22 @@ build rejects any other file in the folder. Media belong into `public/examples/m
 written as it is: `src="/examples/media/718.webp"` – `mediaPath` in [`lib/projects.ts`](lib/projects.ts) is the
 pipeline's copy, and `scripts/verify.ts` fails the build on any other root-absolute URL or a missing file.
 
+## Projects
+
+`packages/examples` becomes the one home of every PDS example (#4789). The kinds of example besides the pages, and the
+tooling they share, get a project each below `projects/`: an npm workspace with its own dependencies, typecheck and
+tests.
+
+| Project                                                 | Package                                  | What it holds                                                                                                                                                  |
+| ------------------------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`projects/story-generator`](projects/story-generator/) | `@porsche-design-system/story-generator` | The story types, the markup of a story for every framework (`getStoryMarkup`, `wrapCode`) and its live React rendering (`StoryPreview`, the `/react` subpath). |
+
+A project exports its TypeScript source, not a build. The Storefront compiles it (`transpilePackages` in
+[`next.config.ts`](../storefront/next.config.ts)), so `next dev` hot-reloads a change to it like one to its own files.
+The package's `typecheck` fans out to every project, and the root's `typecheck:examples:tests` calls their test scopes;
+a project has no root entry of its own besides its `test:unit:*` script (see
+[`docs/typecheck.md`](../../docs/typecheck.md)).
+
 ## Links: examples never navigate
 
 The examples demonstrate chrome, they are not a website:
@@ -161,6 +181,7 @@ npm run build:examples      # writes ./dist (one project per page) and ./dist-si
 npm run build:examples:projects  # ./dist only – what build:skills reads; needs no built wrapper
 npm run build:examples:site      # ./dist-site from ./dist, verified – needs the built components-js
 npm run test:unit:examples  # vitest
+npm run test:unit:story-generator  # vitest of projects/story-generator
 npm run test:e2e:examples   # playwright – drives the behaviour of every page of the built site
 npm run test:a11y:examples  # playwright + axe-core – scans every page of the built site
 npm run test:vrt:examples   # playwright – screenshots every page of the built site (:chrome / :safari for one device)
@@ -170,7 +191,7 @@ npm run preview:examples    # http://localhost:3011/examples/<category>/<page>/
 
 # from within this package
 npm run build:verify        # verifies ./dist-site: one self-contained page each, media only below /examples/media/
-npm run typecheck           # source (from the root: typecheck:examples); typecheck:tests[:e2e|:a11y|:vrt] check the test scopes
+npm run typecheck           # source and projects (from the root: typecheck:examples); typecheck:self skips the projects; typecheck:tests[:e2e|:a11y|:vrt] check the test scopes
 npx playwright test --project='e2e-*'   # any suite directly – projects: <suite>-desktop-chrome, <suite>-mobile-safari
 ```
 
@@ -456,9 +477,10 @@ approach, and it is paid on every review:
 - Pages, layout and partials are ordinary TSX, so they lint **and** format with Biome. The one carve-out in
   [`biome.json`](../../biome.json) is `a11y/useValidAnchor` for `packages/examples/src/**/*.tsx`, because the
   placeholder links are the demonstration – see _Links: examples never navigate_ for the test replacing it.
-- `npm run typecheck` checks pages, partials, `lib/`, scripts and `vite.config.ts`; `build` runs it first. The root
-  `typecheck` – the one CI runs – does not include the examples; `typecheck:all` and `typecheck:examples` do. Each test
-  scope has its own `typecheck:tests[:scope]`, run first by its test script.
+- `npm run typecheck` checks pages, partials, `lib/`, scripts and `vite.config.ts` (`typecheck:self`), then every
+  project below `projects/`; `build` runs it first. The root `typecheck` – the one CI runs – does not include the
+  examples; `typecheck:all` and `typecheck:examples` do. Each test scope has its own `typecheck:tests[:scope]`, run
+  first by its test script; `typecheck:examples:tests` at the root calls those of the projects too.
 - The JSX transform is configured **once**, in [`tsconfig.json`](tsconfig.json) (`jsx: "react-jsx"`,
   `jsxImportSource: "preact"`). Vite and Vitest pick it up from there; do not duplicate it in the configs.
 - Vitest needs its own config because `vite.config.ts` sets `root: 'src'`, which would make Vitest look for tests there.

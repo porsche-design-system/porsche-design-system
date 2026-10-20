@@ -31,7 +31,7 @@ npm run start:storefront
 # Build storefront
 npm run build:storefront
 
-# Typecheck the Storefront and its projects (skills, stackblitz, story-generator), and their tests
+# Typecheck the Storefront and its projects (skills, stackblitz), and their tests
 npm run typecheck:storefront
 npm run typecheck:storefront:tests
 
@@ -161,8 +161,7 @@ src/
 └── styles/                 # Global styles
 projects/
 ├── skills/                 # Agent skills generator (@porsche-design-system/skills)
-├── stackblitz/             # StackBlitz projects (@porsche-design-system/stackblitz)
-└── story-generator/        # Story types and per-framework markup generation (@porsche-design-system/story-generator)
+└── stackblitz/             # StackBlitz projects (@porsche-design-system/stackblitz)
 ```
 
 ## Generating Configurator and Example Stories
@@ -175,7 +174,8 @@ and examples pages driven by a colocated `{component}.stories.ts` file whenever 
 - Create or extend `src/app/components/{component}/{component}.stories.ts`.
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
 - Export `Story<'p-component'>` objects for configurator-ready examples. `Story`, `SlotStories`, `ElementConfig` and the
-  accessibility example types come from `@porsche-design-system/story-generator`, which also generates a story's markup
+  accessibility example types come from `@porsche-design-system/story-generator` (in
+  [`packages/examples/projects`](../examples/projects/story-generator)), which also generates a story's markup
   for every framework (`getStoryMarkup`, `wrapCode`) for the Storefront and the skills, and renders it live with
   `<StoryPreview>` from `@porsche-design-system/story-generator/react`.
 - Export `SlotStories<'p-component'>` when slot content must be selectable in the configurator.

@@ -32,8 +32,9 @@ packages/
 ├── components-react/  # React wrapper + Next.js/React Router integrations
 ├── components-vue/    # Vue wrapper
 ├── storefront/        # Next.js documentation site
-│   └── projects/      # Agent skills generator, StackBlitz projects, story generator
+│   └── projects/      # Agent skills generator, StackBlitz projects
 ├── examples/          # Standalone example pages (TSX, rendered to plain HTML at build time)
+│   └── projects/      # Story generator
 ├── tokens/            # Design tokens (colors, spacing, typography)
 ├── styles/            # Shared styles, Tailwind plugin
 ├── assets/            # Icons, fonts, marque, crest

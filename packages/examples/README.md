@@ -27,7 +27,7 @@ npm run build                # typechecks, renders the pages, builds them into .
 npm run build:projects       # only the first half: typechecks and renders the pages into ./dist
 npm run build:site           # only the second half: builds ./dist into ./dist-site and verifies it
 npm run build:verify         # only the verification of ./dist-site
-npm run typecheck            # the source – from the root: npm run typecheck:examples
+npm run typecheck            # the source and the projects – from the root: npm run typecheck:examples
 npm run test:unit
 ```
 
