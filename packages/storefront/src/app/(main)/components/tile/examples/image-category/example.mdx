@@ -4,18 +4,8 @@ vertically, and pushed apart via `ms-auto` on the link. `gradient="bottom"` ensu
 image. The `scheme-dark` class renders a dark gradient with light content independent of the color scheme of the page,
 which suits most mood images.
 
-The `anchor` slot makes the whole Tile clickable and provides the accessible link to the category. The visible arrow
-link duplicates it, so it is hidden from assistive technology and keyboard (`aria-hidden="true"` on the link and
-`tabindex="-1"` on its slotted anchor) but opts in via `pointer-events-auto` to show its own hover state.
-
-On hover of the `anchor` or the duplicated link, the image zooms in via
-`group-has-[[slot=anchor]:hover,p-link[aria-hidden]:hover]:scale-105`. The Tile clips the image to its corner radius.
-The `motion-safe:` variant respects the reduced motion preference of the user.
-
-The Tailwind CSS counterpart places the image in an absolutely positioned background element behind the content
-(`absolute inset-0 -z-1`), which clips the zooming image to the radius. The gradient is applied to the bottom row via
-`bg-fade-to-t`, its top padding `pt-fluid-lg` extends it above the heading.
-
-The third variant omits the `anchor` slot and sets `cover` on the arrow link instead, which stretches its clickable area
-over the Tile. The link is the only one, so it needs neither `aria-hidden` nor `tabindex="-1"`, and its label is its
-accessible name. Since hovering the Tile hovers the link, the image zooms in via `group-has-[p-link:hover]:scale-105`.
+`cover` on the arrow link stretches its clickable area over the Tile, so the whole Tile links to the category, and
+renders the focus indicator around the Tile. The label of the link is its accessible name. Since hovering the Tile
+hovers the link, the link shows its own hover state, and the image zooms in via
+`has-[p-link:hover]:[--p-tile-media-scale:1.05]` on the Tile. The Tile scales the content of the `background` slot,
+animates the zoom and omits it if the user prefers reduced motion and clips the image to its corner radius.

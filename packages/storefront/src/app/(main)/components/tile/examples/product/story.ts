@@ -1,7 +1,6 @@
 'use client';
 
 import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-system/story-generator';
-import { createComparison, stretchedLinkClassName } from '@/app/(main)/components/tile/examples/comparison';
 
 const label = 'Weekender – Porsche Design Travel Collection';
 
@@ -37,7 +36,7 @@ const price: ElementConfig<HTMLTagOrComponent> = {
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className: 'group',
+    className: 'has-[[slot=anchor]:hover]:[--p-tile-media-scale:1.05]',
     aspectRatio: '3/4',
   },
   children: [
@@ -56,8 +55,7 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
     {
       tag: 'img',
       properties: {
-        className:
-          'grow basis-0 min-h-0 w-full object-contain motion-safe:transition-transform duration-md ease-in-out group-has-[[slot=anchor]:hover]:scale-105',
+        className: 'grow basis-0 min-h-0 w-full object-contain',
         src: 'assets/weekender.webp',
         alt: '',
         width: 960,
@@ -76,59 +74,7 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
   ],
 };
 
-const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
-  tag: 'article',
-  properties: {
-    className:
-      'group relative isolate flex flex-col gap-fluid-sm p-fluid-md aspect-[3/4] rounded-3xl bg-surface text-primary',
-  },
-  children: [
-    {
-      tag: 'div',
-      properties: { className: 'flex items-center gap-fluid-sm' },
-      children: [
-        { tag: 'p-tag', properties: { variant: 'secondary' }, children: ['New'] },
-        {
-          // independent action, `relative z-2` places it above the stretched link, so it is clickable
-          tag: 'p-button-pure',
-          properties: {
-            className: 'relative z-2 ms-auto p-static-xs -m-static-xs',
-            icon: 'heart',
-            hideLabel: true,
-          },
-          children: ['Add to wishlist'],
-        },
-      ],
-    },
-    {
-      tag: 'img',
-      properties: {
-        className:
-          'grow basis-0 min-h-0 w-full object-contain motion-safe:transition-transform duration-md ease-in-out group-has-[a:hover]:scale-105',
-        src: 'assets/weekender.webp',
-        alt: '',
-        width: 960,
-        height: 1080,
-      },
-    },
-    {
-      tag: 'div',
-      properties: { className: 'flex flex-col items-center gap-static-xs' },
-      children: [
-        // independent action, `relative z-2` places the color swatches above the stretched link, so they are selectable
-        createColors('tile-product-color-tailwind', 'relative z-2'),
-        {
-          tag: 'p-text',
-          properties: { className: 'line-clamp-2', align: 'center' },
-          children: [{ tag: 'a', properties: { className: stretchedLinkClassName, href: '#' }, children: [label] }],
-        },
-        price,
-      ],
-    },
-  ],
-};
-
 export const tileStoryProduct: Story<'p-tile'> = {
-  previewMaxWidth: '816px',
-  generator: () => [createComparison(tile, tailwindTile)],
+  previewMaxWidth: '400px',
+  generator: () => [tile],
 };

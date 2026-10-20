@@ -10,23 +10,17 @@ export const metadata = {
 
 # Tile <ComponentStatus tagName="p-tile"></ComponentStatus>
 
-The examples are structured by use case. The Tile has no built-in hover effect, so each clickable use case shows how to
-tailor it to its content with a few custom styles. Since the slotted `anchor` covers the whole Tile and all other
-content is click-through, hovering the anchor equals hovering the Tile, while independent interactive elements (which
-opt in via `pointer-events: auto`) don't trigger it. Wrap transitions in `motion-safe:` to respect the user's preference
-for reduced motion. Hover effects are a visual enhancement only, keyboard users get the focus indicator of the anchor.
-Use cases with multiple independent actions or none at all don't use the `anchor` slot.
+The examples are structured by use case. Clickable use cases with a visible link set `cover` on it, which stretches the
+clickable area of the `p-link` over the Tile and renders the focus indicator around the Tile. Use cases without a
+visible link use the `anchor` slot instead, which covers the whole Tile with a visually hidden link and makes all other
+content click-through. Independent interactive elements are placed above a covering link via `relative z-2`, or opt in
+via `pointer-events: auto` when the `anchor` slot is used. Use cases with multiple independent actions or none at all
+use neither.
 
-For comparison, each example shows the Tile next to or, for wide tiles, above a counterpart built with Tailwind CSS
-only. Instead of the `anchor` slot, it stretches a link over the whole tile via
-`after:absolute after:inset-0 after:z-1`, which also renders the focus indicator around the tile, and places independent
-interactive elements above it via `relative z-2`. Since the link belongs to the visible text, it gets its accessible
-name from it.
-
-Use cases with a visible link show a third variant, which omits the `anchor` slot and sets `cover` on the visible
-`p-link` instead. It stretches the clickable area of the link over the Tile, which also renders the focus indicator
-around the Tile, so the link doesn't have to be duplicated and hidden from assistive technology. Independent interactive
-elements are placed above it via `relative z-2`.
+The Tile has no built-in hover effect, so each clickable use case shows how to tailor it to its content. The Tile
+animates changes of `--p-tile-bg`, `--p-tile-media-scale` and `--p-tile-media-offset` and omits the movement of the
+media if the user prefers reduced motion. Other effects are wrapped in `motion-safe:` to respect this preference. Hover
+effects are a visual enhancement only, keyboard users get the focus indicator of the link.
 
 {/* TODO: add further use cases to `tileMeta.examples` */}
 
@@ -103,6 +97,11 @@ These use cases are built with the slots of the Tile: the content is placed in t
 These use cases bypass the layout of the Tile: they stretch the default slot to define their own grid, or remove the
 padding, background and corner radius of the Tile, so it only provides the clickable area and its focus indicator. Since
 most of the layout is custom code, they are candidates for a pattern rather than use cases of the Tile.
+
+For comparison, each of these examples shows the Tile with the `anchor` slot, a counterpart built with Tailwind CSS only
+and, for use cases with a visible link, the Tile with a covering `p-link`. The Tailwind CSS counterpart stretches a link
+over the whole tile via `after:absolute after:inset-0 after:z-1`, which also renders the focus indicator around the
+tile, and places independent interactive elements above it via `relative z-2`.
 
 ### {tileMeta.examples.vehicleListing.name}
 

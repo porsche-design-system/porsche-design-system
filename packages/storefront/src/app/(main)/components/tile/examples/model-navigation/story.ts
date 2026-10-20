@@ -1,22 +1,12 @@
 'use client';
 
 import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-system/story-generator';
-import { createComparison, stretchedLinkClassName } from '@/app/(main)/components/tile/examples/comparison';
-
-const imageProperties = {
-  src: 'assets/model-series/718.webp',
-  alt: 'Porsche 718',
-  width: 640,
-  height: 228,
-};
-
-const imageMotionClassName =
-  'pe-static-md motion-safe:transition-transform duration-sm ease-in-out group-has-[a:hover]:translate-x-static-md';
 
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className: 'group has-[[slot=anchor]:hover]:[--p-tile-bg:var(--color-canvas)]',
+    className:
+      'has-[[slot=anchor]:hover]:[--p-tile-bg:var(--color-canvas)] has-[[slot=anchor]:hover]:[--p-tile-media-offset:var(--spacing-static-md)]',
     aspectRatio: '16/9',
     background: 'none',
     compact: true,
@@ -27,34 +17,19 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
     {
       tag: 'img',
       properties: {
-        className:
-          'pe-static-md motion-safe:transition-transform duration-sm ease-in-out group-has-[[slot=anchor]:hover]:translate-x-static-md',
-        ...imageProperties,
+        // reserves the space the tile moves the image into on hover
+        className: 'pe-static-md',
+        src: 'assets/model-series/718.webp',
+        alt: 'Porsche 718',
+        width: 640,
+        height: 228,
       },
     },
     { tag: 'p-tag', properties: { slot: 'bottom' }, children: ['Petrol'] },
   ],
 };
 
-const tailwindTile: ElementConfig<HTMLTagOrComponent> = {
-  // the rows mirror the `top`, default and `bottom` slots, padding and gap match `compact`
-  tag: 'article',
-  properties: {
-    className:
-      'group relative isolate grid grid-rows-[auto_1fr_auto] gap-fluid-xs p-fluid-sm aspect-video rounded-3xl text-primary motion-safe:transition-colors duration-sm ease-in-out has-[a:hover]:bg-canvas',
-  },
-  children: [
-    {
-      tag: 'p-heading',
-      properties: { tag: 'h3', size: 'md' },
-      children: [{ tag: 'a', properties: { className: stretchedLinkClassName, href: '#' }, children: ['718'] }],
-    },
-    { tag: 'img', properties: { className: `place-self-center ${imageMotionClassName}`, ...imageProperties } },
-    { tag: 'p-tag', properties: { className: 'justify-self-start' }, children: ['Petrol'] },
-  ],
-};
-
 export const tileStoryModelNavigation: Story<'p-tile'> = {
-  previewMaxWidth: '1136px',
-  generator: () => [createComparison(tile, tailwindTile)],
+  previewMaxWidth: '560px',
+  generator: () => [tile],
 };

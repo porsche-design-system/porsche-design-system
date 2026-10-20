@@ -12,8 +12,5 @@ and keyboard without any JavaScript. They are styled via `appearance-none` and t
 `focus-visible:` variants. A transparent border and padding together with `bg-clip-content` provide a target size of
 24px while showing a 14px swatch.
 
-On hover of the `anchor`, the image zooms in via `group-has-[[slot=anchor]:hover]:scale-105`. The `motion-safe:` variant
-respects the reduced motion preference of the user.
-
-The Tailwind CSS counterpart lays out the rows via `flex flex-col gap-fluid-sm p-fluid-md` and stretches the product
-name as link over the tile. The wishlist button and the color swatches are placed above it via `relative z-2`.
+On hover of the `anchor`, the image zooms in via `has-[[slot=anchor]:hover]:[--p-tile-media-scale:1.05]` on the Tile.
+The Tile animates the zoom and omits it if the user prefers reduced motion.
