@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Knowledge Skill`: two form search patterns – search results (combobox with a listbox of choices) and search links
+  (combobox with a dialog of links) – composed from `p-input-search` and `p-popover`
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+
 ## [4.9.0-rc.0] - 2026-10-20
 
 ### Added
