@@ -68,6 +68,16 @@ const cssVarBackground = '--p-tile-bg';
  * @css-variable {"name": "--p-tile-gradient-fade", "description": "Distance the gradient extends beyond its slot towards the center of the tile.", "defaultValue": "spacing-fluid-lg"}
  */
 const cssVarGradientFade = '--p-tile-gradient-fade';
+/**
+ * @css-variable {"name": "--p-tile-media-scale", "description": "Scales the content of the `background` slot and `img` and `video` elements slotted directly into a layout slot, e.g. `1.05` to zoom in on hover. Changes are animated and omitted if the user prefers reduced motion. The media is clipped to the tile.", "defaultValue": "1"}
+ */
+const cssVarMediaScale = '--p-tile-media-scale';
+/**
+ * @css-variable {"name": "--p-tile-media-offset", "description": "Moves the same media as `--p-tile-media-scale` towards the inline end, which follows the writing direction, e.g. `var(--spacing-static-md)` to nudge it on hover. Space for the movement has to be reserved, e.g. via padding. Changes are animated and omitted if the user prefers reduced motion.", "defaultValue": "0px"}
+ */
+const cssVarMediaOffset = '--p-tile-media-offset';
+// 1 or -1 depending on the writing direction, inherited by slotted content
+const cssVarDirection = '--_p-tile-dir';
 
 // resolved values are set on an element inside the shadow DOM, so they are inherited by slotted content but can't be
 // overridden from outside, which makes them read-only
@@ -187,6 +197,16 @@ const getGridTemplateStyles = ({ top, bottom, start, end }: TileSlotState): JssS
 
 const radius = ref(cssVarRadius, ref(radius3Xl));
 
+// `scale` and `translate` instead of `transform`, so they can be combined with each other and with other transforms;
+// applied only without reduced motion preference, since they are a visual enhancement only
+const mediaMotionStyles: JssStyle = {
+  '@media (prefers-reduced-motion: no-preference)': {
+    scale: ref(cssVarMediaScale, '1'),
+    translate: `calc(${ref(cssVarMediaOffset, '0px')} * ${ref(cssVarDirection)}) 0`,
+    transition: `${getTransition('scale', 'moderate')}, ${getTransition('translate', 'moderate')}`,
+  },
+};
+
 // negative margins equal to the padding let the default slot reach the edges that aren't occupied by another layout slot
 const getBleedStyles = (isBleed: boolean, { top, bottom, start, end }: TileSlotState): JssStyle => {
   const marginBlock = negate(ref(cssVarResolvedPaddingBlock));
@@ -255,6 +275,8 @@ export const getComponentCss = (
           display: 'block',
           position: 'absolute',
           inset: 0,
+          // the slot is scaled instead of the background, which clips it to the tile
+          ...mediaMotionStyles,
         },
         [`&[name="${tileAnchorSlot}"]`]: hasAnchor
           ? {
@@ -291,6 +313,9 @@ export const getComponentCss = (
             },
           ])
         )),
+      ...Object.fromEntries(
+        ['img', 'video'].map((tag) => [`::slotted(${tag}:not([slot="${tileBackgroundSlot}"]))`, mediaMotionStyles])
+      ),
       [`::slotted([slot="${tileBackgroundSlot}"])`]: {
         ...addImportantToEachRule({
           position: 'absolute',
@@ -333,6 +358,10 @@ export const getComponentCss = (
         [cssVarResolvedGapBlock]: ref(cssVarGapBlock, ref(isCompact ? spacingFluidXs : spacingFluidSm)),
       })),
       [cssVarResolvedRadius]: radius,
+      [cssVarDirection]: 1,
+      '&:dir(rtl)': {
+        [cssVarDirection]: -1,
+      },
       borderRadius: radius,
       color: ref(colorPrimary),
       backgroundColor: ref(cssVarBackground, backgroundMap[background]),
