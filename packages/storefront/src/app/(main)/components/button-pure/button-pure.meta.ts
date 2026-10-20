@@ -1,16 +1,16 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/button-pure/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { iconOnlyButtonWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/button-pure/accessibility/icon-only-button-without-accessible-name/example';
+import { vagueButtonLabelWithoutContextA11yExample } from '@porsche-design-system/examples-accessibility/components/button-pure/accessibility/vague-button-label-without-context/example';
 import { buttonPureExampleForm, buttonPureExampleFormAttribute } from '@porsche-design-system/examples-framework';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/button-pure/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
-import { iconOnlyButtonWithoutAccessibleNameA11yExample } from '@/app/(main)/components/button-pure/accessibility/examples/icon-only-button-without-accessible-name/example';
-import { vagueButtonLabelWithoutContextA11yExample } from '@/app/(main)/components/button-pure/accessibility/examples/vague-button-label-without-context/example';
+import FormDescription from '@porsche-design-system/examples-framework/components/button-pure/form/example.mdx';
+import FormAttributeDescription from '@porsche-design-system/examples-framework/components/button-pure/form-attribute/example.mdx';
+import CustomClickableAreaDescription from '@porsche-design-system/examples-stories/components/button-pure/custom-clickable-area/example.mdx';
+import { buttonPureStoryCustomPadding } from '@porsche-design-system/examples-stories/components/button-pure/custom-clickable-area/story';
+import { buttonPureStory } from '@porsche-design-system/examples-stories/components/button-pure/default/story';
 import AccessibilityOverview from '@/app/(main)/components/button-pure/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/button-pure/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/button-pure/configurator/introduction.mdx';
-import { buttonPureStory } from '@/app/(main)/components/button-pure/configurator/story';
-import CustomClickableAreaDescription from '@/app/(main)/components/button-pure/examples/custom-clickable-area/example.mdx';
-import { buttonPureStoryCustomPadding } from '@/app/(main)/components/button-pure/examples/custom-clickable-area/story';
-import FormDescription from '@/app/(main)/components/button-pure/examples/form/example.mdx';
-import FormAttributeDescription from '@/app/(main)/components/button-pure/examples/form-attribute/example.mdx';
 import Usage from '@/app/(main)/components/button-pure/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

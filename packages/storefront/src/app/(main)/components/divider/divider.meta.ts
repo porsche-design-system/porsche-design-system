@@ -1,13 +1,13 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { dividerAsTheOnlySectionSeparatorA11yExample } from '@/app/(main)/components/divider/accessibility/examples/divider-as-the-only-section-separator/example';
+import { dividerAsTheOnlySectionSeparatorA11yExample } from '@porsche-design-system/examples-accessibility/components/divider/accessibility/divider-as-the-only-section-separator/example';
+import { dividerStory } from '@porsche-design-system/examples-stories/components/divider/default/story';
+import ResponsiveDescription from '@porsche-design-system/examples-stories/components/divider/responsive/example.mdx';
+import { dividerStoryResponsive } from '@porsche-design-system/examples-stories/components/divider/responsive/story';
+import VerticalDescription from '@porsche-design-system/examples-stories/components/divider/vertical/example.mdx';
+import { dividerStoryVertical } from '@porsche-design-system/examples-stories/components/divider/vertical/story';
 import AccessibilityOverview from '@/app/(main)/components/divider/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/divider/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/divider/configurator/introduction.mdx';
-import { dividerStory } from '@/app/(main)/components/divider/configurator/story';
-import ResponsiveDescription from '@/app/(main)/components/divider/examples/responsive/example.mdx';
-import { dividerStoryResponsive } from '@/app/(main)/components/divider/examples/responsive/story';
-import VerticalDescription from '@/app/(main)/components/divider/examples/vertical/example.mdx';
-import { dividerStoryVertical } from '@/app/(main)/components/divider/examples/vertical/story';
 import Usage from '@/app/(main)/components/divider/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

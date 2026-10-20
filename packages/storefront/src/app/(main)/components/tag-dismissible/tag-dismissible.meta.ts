@@ -1,10 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { dismissButtonAriaOnHostVsAriaPropA11yExample } from '@/app/(main)/components/tag-dismissible/accessibility/examples/dismiss-button-aria-on-host-vs-aria-prop/example';
-import { tagWithoutDescriptiveLabelA11yExample } from '@/app/(main)/components/tag-dismissible/accessibility/examples/tag-without-descriptive-label/example';
+import { dismissButtonAriaOnHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/tag-dismissible/accessibility/dismiss-button-aria-on-host-vs-aria-prop/example';
+import { tagWithoutDescriptiveLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/tag-dismissible/accessibility/tag-without-descriptive-label/example';
+import { tagDismissibleStory } from '@porsche-design-system/examples-stories/components/tag-dismissible/default/story';
 import AccessibilityOverview from '@/app/(main)/components/tag-dismissible/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/tag-dismissible/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/tag-dismissible/configurator/introduction.mdx';
-import { tagDismissibleStory } from '@/app/(main)/components/tag-dismissible/configurator/story';
 import Usage from '@/app/(main)/components/tag-dismissible/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

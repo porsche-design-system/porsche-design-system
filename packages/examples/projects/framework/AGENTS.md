@@ -9,9 +9,10 @@ An example that needs logic a story cannot express is written by hand, once per 
 wrapper (`components-js/src/examples`, `components-angular/src/app/examples`, `components-react/src/examples`,
 `components-vue/src/examples`), which compiles it and runs its e2e tests. This project turns them into examples:
 
-- **One `meta.ts` per example,** in the folder of its id: `src/components/select/set-value/meta.ts`. It lists the
-  `components` the example shows and its `source`, the kebab-case base name of its files (`'select-example-dynamic'` →
-  `select-example-dynamic.html`, `select-example-dynamic.component.ts`, `SelectExampleDynamic.tsx`,
+- **One `meta.ts` per example,** in the folder of its id: `src/components/select/set-value/meta.ts`, with its
+  description next to it, `example.mdx` (`@porsche-design-system/examples-framework/<id>/example.mdx`). The meta lists
+  the `components` the example shows and its `source`, the kebab-case base name of its files (`'select-example-dynamic'`
+  → `select-example-dynamic.html`, `select-example-dynamic.component.ts`, `SelectExampleDynamic.tsx`,
   `SelectExampleDynamic.vue`), or the four file names where they deviate from that (AG Grid).
 - **`npm run build`** (in `build:examples:projects`) reads the sources and generates two entry points into `generated/`,
   gitignored:

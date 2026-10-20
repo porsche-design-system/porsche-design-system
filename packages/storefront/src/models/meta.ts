@@ -48,20 +48,19 @@ export type ExampleMeta<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> =
 export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
   // MDX document introducing the component's purpose and primary use cases.
   introduction: ComponentType;
-  // Story (and optional slot stories) powering the interactive configurator playground.
-  configurator: {
-    story: Story<Tag>;
-    // Optional framework example that replaces the story as the component's primary
-    // example. Set when the storefront page renders a framework example instead of the interactive
-    // configurator (e.g. imperative components like p-toast); the skill emits it as the
-    // "Default" example in place of the bare story markup.
-    example?: FrameworkExample<FrameworkExampleId>;
-    slotStories?: SlotStories<Tag>;
-    // Optional controlled-mode variant for dual-mode components (e.g. p-popover). When present, the
-    // configurator renders a "Behavior" segmented control to switch between uncontrolled and controlled.
-    controlledStory?: Story<Tag>;
-    controlledSlotStories?: SlotStories<Tag>;
-  };
+  // The component's default example: the story (and optional slot stories) powering the interactive configurator
+  // playground, or a framework example the page renders instead of the configurator (e.g. imperative components like
+  // p-toast), which the skill emits as the "Default" example.
+  configurator:
+    | {
+        story: Story<Tag>;
+        slotStories?: SlotStories<Tag>;
+        // Optional controlled-mode variant for dual-mode components (e.g. p-popover). When present, the
+        // configurator renders a "Behavior" segmented control to switch between uncontrolled and controlled.
+        controlledStory?: Story<Tag>;
+        controlledSlotStories?: SlotStories<Tag>;
+      }
+    | { example: FrameworkExample<FrameworkExampleId> };
   // Curated examples shown on the examples page — either generated stories or hand-written framework examples.
   examples: Record<string, ExampleMeta<Tag>>;
   // Guidance on when and how to use the component, including Dos and Don'ts.

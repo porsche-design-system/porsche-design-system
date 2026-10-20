@@ -16,7 +16,9 @@ const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // These packages export raw TypeScript, so the storefront build compiles them (and `next dev` reloads them on change).
   transpilePackages: [
+    '@porsche-design-system/examples-accessibility',
     '@porsche-design-system/examples-framework',
+    '@porsche-design-system/examples-stories',
     '@porsche-design-system/skills',
     '@porsche-design-system/story-generator',
   ],

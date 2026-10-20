@@ -1,10 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { linkTileProductStory } from '@porsche-design-system/examples-stories/components/link-tile-product/default/story';
+import FrameworkRoutingDescription from '@porsche-design-system/examples-stories/components/link-tile-product/framework-routing/example.mdx';
+import { linkTileProductStoryFrameworkRouting } from '@porsche-design-system/examples-stories/components/link-tile-product/framework-routing/story';
 import AccessibilityOverview from '@/app/(main)/components/link-tile-product/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/link-tile-product/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/link-tile-product/configurator/introduction.mdx';
-import { linkTileProductStory } from '@/app/(main)/components/link-tile-product/configurator/story';
-import FrameworkRoutingDescription from '@/app/(main)/components/link-tile-product/examples/framework-routing/example.mdx';
-import { linkTileProductStoryFrameworkRouting } from '@/app/(main)/components/link-tile-product/examples/framework-routing/story';
 import Usage from '@/app/(main)/components/link-tile-product/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

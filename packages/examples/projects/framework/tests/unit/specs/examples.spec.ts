@@ -45,12 +45,17 @@ describe('src/**/meta.ts', () => {
     expect(new Set(reactFiles).size).toBe(reactFiles.length);
   });
 
-  it('holds nothing but the meta files', () => {
+  it('holds nothing but the meta files and the descriptions next to them', () => {
+    const files = fs
+      .globSync('**/*', { cwd: srcDir, withFileTypes: true })
+      .filter((entry) => entry.isFile())
+      .map((entry) => path.relative(srcDir, path.join(entry.parentPath, entry.name)));
+    const exampleDirs = new Set(metaFiles.map((file) => path.dirname(file)));
+
     expect(
-      fs
-        .globSync('**/*', { cwd: srcDir, withFileTypes: true })
-        .filter((entry) => entry.isFile())
-        .map(({ name }) => name)
-    ).toEqual(metaFiles.map(() => 'meta.ts'));
+      files.filter(
+        (file) => !['meta.ts', 'example.mdx'].includes(path.basename(file)) || !exampleDirs.has(path.dirname(file))
+      )
+    ).toEqual([]);
   });
 });

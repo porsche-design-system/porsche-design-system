@@ -1,14 +1,14 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/wordmark/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
-import { linkedWordmarkWithoutAccessibleNameA11yExample } from '@/app/(main)/components/wordmark/accessibility/examples/linked-wordmark-without-accessible-name/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/wordmark/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { linkedWordmarkWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/wordmark/accessibility/linked-wordmark-without-accessible-name/example';
+import CustomClickableAreaDescription from '@porsche-design-system/examples-stories/components/wordmark/custom-clickable-area/example.mdx';
+import { wordmarkStoryCustomPadding } from '@porsche-design-system/examples-stories/components/wordmark/custom-clickable-area/story';
+import { wordmarkStory } from '@porsche-design-system/examples-stories/components/wordmark/default/story';
+import SizeDescription from '@porsche-design-system/examples-stories/components/wordmark/size/example.mdx';
+import { wordmarkStorySizeInherit } from '@porsche-design-system/examples-stories/components/wordmark/size/story';
 import AccessibilityOverview from '@/app/(main)/components/wordmark/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/wordmark/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/wordmark/configurator/introduction.mdx';
-import { wordmarkStory } from '@/app/(main)/components/wordmark/configurator/story';
-import CustomClickableAreaDescription from '@/app/(main)/components/wordmark/examples/custom-clickable-area/example.mdx';
-import { wordmarkStoryCustomPadding } from '@/app/(main)/components/wordmark/examples/custom-clickable-area/story';
-import SizeDescription from '@/app/(main)/components/wordmark/examples/size/example.mdx';
-import { wordmarkStorySizeInherit } from '@/app/(main)/components/wordmark/examples/size/story';
 import Usage from '@/app/(main)/components/wordmark/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

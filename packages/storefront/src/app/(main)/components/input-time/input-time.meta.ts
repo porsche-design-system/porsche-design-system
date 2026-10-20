@@ -1,16 +1,19 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/input-time/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/input-time/accessibility/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/input-time/accessibility/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/input-time/accessibility/validation-feedback-via-state-and-message-api/example';
 import { inputTimeExampleForm } from '@porsche-design-system/examples-framework';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-time/accessibility/examples/hidden-label-without-accessible-name/example';
-import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-time/accessibility/examples/placeholder-used-as-the-only-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-time/accessibility/examples/validation-feedback-via-state-and-message-api/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/input-time/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import FormDescription from '@porsche-design-system/examples-framework/components/input-time/form/example.mdx';
+import {
+  inputTimeSlotStories,
+  inputTimeStory,
+} from '@porsche-design-system/examples-stories/components/input-time/default/story';
+import SlotsDescription from '@porsche-design-system/examples-stories/components/input-time/slots/example.mdx';
+import { inputTimeStorySlots } from '@porsche-design-system/examples-stories/components/input-time/slots/story';
 import AccessibilityOverview from '@/app/(main)/components/input-time/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/input-time/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-time/configurator/introduction.mdx';
-import { inputTimeSlotStories, inputTimeStory } from '@/app/(main)/components/input-time/configurator/story';
-import FormDescription from '@/app/(main)/components/input-time/examples/form/example.mdx';
-import SlotsDescription from '@/app/(main)/components/input-time/examples/slots/example.mdx';
-import { inputTimeStorySlots } from '@/app/(main)/components/input-time/examples/slots/story';
 import Usage from '@/app/(main)/components/input-time/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

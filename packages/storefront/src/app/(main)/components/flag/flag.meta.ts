@@ -1,16 +1,16 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { decorativeFlagWithRedundantLabelA11yExample } from '@/app/(main)/components/flag/accessibility/examples/decorative-flag-with-redundant-label/example';
-import { informativeFlagWithoutAccessibleNameA11yExample } from '@/app/(main)/components/flag/accessibility/examples/informative-flag-without-accessible-name/example';
+import { decorativeFlagWithRedundantLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/flag/accessibility/decorative-flag-with-redundant-label/example';
+import { informativeFlagWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/flag/accessibility/informative-flag-without-accessible-name/example';
+import { flagStory } from '@porsche-design-system/examples-stories/components/flag/default/story';
+import ResponsiveSizeDescription from '@porsche-design-system/examples-stories/components/flag/responsive-size/example.mdx';
+import { flagStoryResponsiveSize } from '@porsche-design-system/examples-stories/components/flag/responsive-size/story';
+import SizeDescription from '@porsche-design-system/examples-stories/components/flag/size/example.mdx';
+import { flagStorySize } from '@porsche-design-system/examples-stories/components/flag/size/story';
+import SizeCssVarDescription from '@porsche-design-system/examples-stories/components/flag/size-css-var/example.mdx';
+import { flagStorySizeCSSVar } from '@porsche-design-system/examples-stories/components/flag/size-css-var/story';
 import AccessibilityOverview from '@/app/(main)/components/flag/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/flag/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/flag/configurator/introduction.mdx';
-import { flagStory } from '@/app/(main)/components/flag/configurator/story';
-import ResponsiveSizeDescription from '@/app/(main)/components/flag/examples/responsive-size/example.mdx';
-import { flagStoryResponsiveSize } from '@/app/(main)/components/flag/examples/responsive-size/story';
-import SizeDescription from '@/app/(main)/components/flag/examples/size/example.mdx';
-import { flagStorySize } from '@/app/(main)/components/flag/examples/size/story';
-import SizeCssVarDescription from '@/app/(main)/components/flag/examples/size-css-var/example.mdx';
-import { flagStorySizeCSSVar } from '@/app/(main)/components/flag/examples/size-css-var/story';
 import Usage from '@/app/(main)/components/flag/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

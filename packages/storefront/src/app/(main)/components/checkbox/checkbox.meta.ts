@@ -1,19 +1,22 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/checkbox/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/checkbox/accessibility/hidden-label-without-accessible-name/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/checkbox/accessibility/validation-feedback-via-state-and-message-api/example';
 import { checkboxExampleForm } from '@porsche-design-system/examples-framework';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/checkbox/accessibility/examples/hidden-label-without-accessible-name/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/checkbox/accessibility/examples/validation-feedback-via-state-and-message-api/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/checkbox/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import FormDescription from '@porsche-design-system/examples-framework/components/checkbox/form/example.mdx';
+import {
+  checkboxSlotStories,
+  checkboxStory,
+} from '@porsche-design-system/examples-stories/components/checkbox/default/story';
+import IndeterminateDescription from '@porsche-design-system/examples-stories/components/checkbox/indeterminate/example.mdx';
+import { checkboxStoryIndeterminate } from '@porsche-design-system/examples-stories/components/checkbox/indeterminate/story';
+import SlotsDescription from '@porsche-design-system/examples-stories/components/checkbox/slots/example.mdx';
+import { checkboxStorySlots } from '@porsche-design-system/examples-stories/components/checkbox/slots/story';
+import WrappedLabelDescription from '@porsche-design-system/examples-stories/components/checkbox/wrapped-label/example.mdx';
+import { checkboxStoryWrappedLabel } from '@porsche-design-system/examples-stories/components/checkbox/wrapped-label/story';
 import AccessibilityOverview from '@/app/(main)/components/checkbox/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/checkbox/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/checkbox/configurator/introduction.mdx';
-import { checkboxSlotStories, checkboxStory } from '@/app/(main)/components/checkbox/configurator/story';
-import FormDescription from '@/app/(main)/components/checkbox/examples/form/example.mdx';
-import IndeterminateDescription from '@/app/(main)/components/checkbox/examples/indeterminate/example.mdx';
-import { checkboxStoryIndeterminate } from '@/app/(main)/components/checkbox/examples/indeterminate/story';
-import SlotsDescription from '@/app/(main)/components/checkbox/examples/slots/example.mdx';
-import { checkboxStorySlots } from '@/app/(main)/components/checkbox/examples/slots/story';
-import WrappedLabelDescription from '@/app/(main)/components/checkbox/examples/wrapped-label/example.mdx';
-import { checkboxStoryWrappedLabel } from '@/app/(main)/components/checkbox/examples/wrapped-label/story';
 import Usage from '@/app/(main)/components/checkbox/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

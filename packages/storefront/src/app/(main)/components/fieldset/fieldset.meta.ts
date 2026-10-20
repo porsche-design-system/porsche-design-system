@@ -1,16 +1,19 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { errorStateWithoutRecoveryGuidanceA11yExample } from '@/app/(main)/components/fieldset/accessibility/examples/error-state-without-recovery-guidance/example';
-import { unlabeledFieldGroupA11yExample } from '@/app/(main)/components/fieldset/accessibility/examples/unlabeled-field-group/example';
+import { errorStateWithoutRecoveryGuidanceA11yExample } from '@porsche-design-system/examples-accessibility/components/fieldset/accessibility/error-state-without-recovery-guidance/example';
+import { unlabeledFieldGroupA11yExample } from '@porsche-design-system/examples-accessibility/components/fieldset/accessibility/unlabeled-field-group/example';
+import {
+  fieldsetSlotStories,
+  fieldsetStory,
+} from '@porsche-design-system/examples-stories/components/fieldset/default/story';
+import RequiredDescription from '@porsche-design-system/examples-stories/components/fieldset/required/example.mdx';
+import { fieldsetStoryRequired } from '@porsche-design-system/examples-stories/components/fieldset/required/story';
+import SlottedLabelDescription from '@porsche-design-system/examples-stories/components/fieldset/slotted-label/example.mdx';
+import { fieldsetStorySlottedLabel } from '@porsche-design-system/examples-stories/components/fieldset/slotted-label/story';
+import SlottedMessageDescription from '@porsche-design-system/examples-stories/components/fieldset/slotted-message/example.mdx';
+import { fieldsetStorySlottedMessage } from '@porsche-design-system/examples-stories/components/fieldset/slotted-message/story';
 import AccessibilityOverview from '@/app/(main)/components/fieldset/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/fieldset/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/fieldset/configurator/introduction.mdx';
-import { fieldsetSlotStories, fieldsetStory } from '@/app/(main)/components/fieldset/configurator/story';
-import RequiredDescription from '@/app/(main)/components/fieldset/examples/required/example.mdx';
-import { fieldsetStoryRequired } from '@/app/(main)/components/fieldset/examples/required/story';
-import SlottedLabelDescription from '@/app/(main)/components/fieldset/examples/slotted-label/example.mdx';
-import { fieldsetStorySlottedLabel } from '@/app/(main)/components/fieldset/examples/slotted-label/story';
-import SlottedMessageDescription from '@/app/(main)/components/fieldset/examples/slotted-message/example.mdx';
-import { fieldsetStorySlottedMessage } from '@/app/(main)/components/fieldset/examples/slotted-message/story';
 import Usage from '@/app/(main)/components/fieldset/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

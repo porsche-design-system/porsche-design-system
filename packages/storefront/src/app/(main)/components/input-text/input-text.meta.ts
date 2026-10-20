@@ -1,17 +1,20 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/input-text/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/input-text/accessibility/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/input-text/accessibility/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/input-text/accessibility/validation-feedback-via-state-and-message-api/example';
 import { inputTextExampleControlled, inputTextExampleForm } from '@porsche-design-system/examples-framework';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-text/accessibility/examples/hidden-label-without-accessible-name/example';
-import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-text/accessibility/examples/placeholder-used-as-the-only-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-text/accessibility/examples/validation-feedback-via-state-and-message-api/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/input-text/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import ControlledDescription from '@porsche-design-system/examples-framework/components/input-text/controlled/example.mdx';
+import FormDescription from '@porsche-design-system/examples-framework/components/input-text/form/example.mdx';
+import {
+  inputTextSlotStories,
+  inputTextStory,
+} from '@porsche-design-system/examples-stories/components/input-text/default/story';
+import SlotsDescription from '@porsche-design-system/examples-stories/components/input-text/slots/example.mdx';
+import { inputTextStorySlots } from '@porsche-design-system/examples-stories/components/input-text/slots/story';
 import AccessibilityOverview from '@/app/(main)/components/input-text/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/input-text/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-text/configurator/introduction.mdx';
-import { inputTextSlotStories, inputTextStory } from '@/app/(main)/components/input-text/configurator/story';
-import ControlledDescription from '@/app/(main)/components/input-text/examples/controlled/example.mdx';
-import FormDescription from '@/app/(main)/components/input-text/examples/form/example.mdx';
-import SlotsDescription from '@/app/(main)/components/input-text/examples/slots/example.mdx';
-import { inputTextStorySlots } from '@/app/(main)/components/input-text/examples/slots/story';
 import Usage from '@/app/(main)/components/input-text/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

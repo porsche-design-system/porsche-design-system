@@ -17,7 +17,8 @@
     "./previews/*": {
       "types": "./generated/previews/*.tsx",
       "default": "./generated/previews/*.tsx"
-    }
+    },
+    "./*.mdx": "./src/*.mdx"
   },
   "scripts": {
     "build": "npm run clean:build && tsx scripts/build.ts && npm run typecheck:data",

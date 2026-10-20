@@ -1,18 +1,21 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/input-search/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/input-search/accessibility/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/input-search/accessibility/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/input-search/accessibility/validation-feedback-via-state-and-message-api/example';
 import { inputSearchExampleForm } from '@porsche-design-system/examples-framework';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/hidden-label-without-accessible-name/example';
-import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/placeholder-used-as-the-only-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import FormDescription from '@porsche-design-system/examples-framework/components/input-search/form/example.mdx';
+import AriaComboboxDescription from '@porsche-design-system/examples-stories/components/input-search/aria-combobox/example.mdx';
+import { inputSearchStoryAriaComboboxSketch } from '@porsche-design-system/examples-stories/components/input-search/aria-combobox/story';
+import {
+  inputSearchSlotStories,
+  inputSearchStory,
+} from '@porsche-design-system/examples-stories/components/input-search/default/story';
+import SlotsDescription from '@porsche-design-system/examples-stories/components/input-search/slots/example.mdx';
+import { inputSearchStorySlots } from '@porsche-design-system/examples-stories/components/input-search/slots/story';
 import AccessibilityOverview from '@/app/(main)/components/input-search/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/input-search/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-search/configurator/introduction.mdx';
-import { inputSearchSlotStories, inputSearchStory } from '@/app/(main)/components/input-search/configurator/story';
-import AriaComboboxDescription from '@/app/(main)/components/input-search/examples/aria-combobox/example.mdx';
-import { inputSearchStoryAriaComboboxSketch } from '@/app/(main)/components/input-search/examples/aria-combobox/story';
-import FormDescription from '@/app/(main)/components/input-search/examples/form/example.mdx';
-import SlotsDescription from '@/app/(main)/components/input-search/examples/slots/example.mdx';
-import { inputSearchStorySlots } from '@/app/(main)/components/input-search/examples/slots/story';
 import Usage from '@/app/(main)/components/input-search/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

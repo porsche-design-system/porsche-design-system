@@ -2,6 +2,9 @@
 @import 'tailwindcss';
 @import '@porsche-design-system/components-react/tailwindcss';
 @source "../../../examples/projects/framework/generated/previews/*.tsx";
+@source "../../../examples/projects/framework/src";
+@source "../../../examples/projects/accessibility/src";
+@source "../../../examples/projects/stories/src";
 
 @theme {
   --porsche-canvas-grid: [full-start] minmax(0,1fr) [wide-start] minmax(0,1fr) [extended-start] repeat(10,minmax(0,1fr)) [extended-end] minmax(0,1fr) [wide-end] minmax(0,1fr) [full-end];

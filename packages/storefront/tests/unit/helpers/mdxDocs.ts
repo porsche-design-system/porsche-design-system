@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import { createProcessor } from '@mdx-js/mdx';
 import type { Expression } from 'estree';
@@ -17,6 +18,8 @@ import { getHeadingAnchorId } from '@/links';
 const srcDir = path.resolve(__dirname, '../../../src');
 export const appDir = path.join(srcDir, 'app');
 export const publicDir = path.resolve(__dirname, '../../../public');
+/** The projects of `packages/examples`, whose example descriptions the Storefront renders. */
+const examplesProjectsDir = path.resolve(__dirname, '../../../../examples/projects');
 
 /** Components that render an `##` heading of their own. */
 const COMPONENT_HEADINGS: Record<string, string[]> = {
@@ -54,7 +57,18 @@ const toRoute = (file: string): string =>
     .filter((segment) => segment && !/^\(.*\)$/.test(segment))
     .join('/')}`;
 
+const resolvePackage = (specifier: string, fromFile: string): string | undefined => {
+  try {
+    return createRequire(fromFile).resolve(specifier);
+  } catch {
+    return undefined;
+  }
+};
+
 const resolveModule = (specifier: string, fromFile: string): string | undefined => {
+  if (specifier.startsWith('@porsche-design-system/examples-')) {
+    return resolvePackage(specifier, fromFile);
+  }
   const base = specifier.startsWith('@/')
     ? path.join(srcDir, specifier.slice(2))
     : specifier.startsWith('.')
@@ -349,9 +363,9 @@ const toPage = (file: string): DocsPage => {
   return page;
 };
 
-const findFiles = (predicate: (name: string) => boolean): string[] =>
+const findFiles = (predicate: (name: string) => boolean, dir = appDir): string[] =>
   fs
-    .readdirSync(appDir, { recursive: true, withFileTypes: true })
+    .readdirSync(dir, { recursive: true, withFileTypes: true })
     .filter((entry) => entry.isFile() && predicate(entry.name))
     .map((entry) => path.join(entry.parentPath, entry.name))
     .sort();
@@ -359,8 +373,18 @@ const findFiles = (predicate: (name: string) => boolean): string[] =>
 /** Every page in `src/app`, with what it renders. */
 export const getDocsPages = (): DocsPage[] => findFiles((name) => /^page\.(mdx|tsx)$/.test(name)).map(toPage);
 
-/** Every MDX file in `src/app`, pages and the fragments they render alike. */
-export const getMdxFiles = (): string[] => findFiles((name) => name.endsWith('.mdx'));
+/**
+ * Every MDX file the Storefront renders: in `src/app`, pages and the fragments they render alike, and the descriptions
+ * of the examples in `packages/examples/projects/*\/src`.
+ */
+export const getMdxFiles = (): string[] => [
+  ...findFiles((name) => name.endsWith('.mdx')),
+  ...fs
+    .readdirSync(examplesProjectsDir)
+    .map((project) => path.join(examplesProjectsDir, project, 'src'))
+    .filter((dir) => fs.existsSync(dir))
+    .flatMap((dir) => findFiles((name) => name.endsWith('.mdx'), dir)),
+];
 
 const identifiersOf = (code: string): string[] => Array.from(code.matchAll(/[A-Za-z_$][\w$]*/g), ([name]) => name);
 

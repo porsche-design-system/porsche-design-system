@@ -1,4 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ambiguousOptionLabelsWithoutFieldContextA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/ambiguous-option-labels-without-field-context/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { errorStateWithoutRecoveryGuidanceA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/error-state-without-recovery-guidance/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/hidden-label-without-accessible-name/example';
+import { promptOptionUsedInsteadOfALabelA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/prompt-option-used-instead-of-a-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/validation-feedback-via-state-and-message-api/example';
 import {
   selectExampleAsyncFilter,
   selectExampleDynamic,
@@ -6,27 +12,24 @@ import {
   selectExampleRequired,
   selectExampleSelectedSlot,
 } from '@porsche-design-system/examples-framework';
-import { ambiguousOptionLabelsWithoutFieldContextA11yExample } from '@/app/(main)/components/select/accessibility/examples/ambiguous-option-labels-without-field-context/example';
-import { errorStateWithoutRecoveryGuidanceA11yExample } from '@/app/(main)/components/select/accessibility/examples/error-state-without-recovery-guidance/example';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/select/accessibility/examples/hidden-label-without-accessible-name/example';
-import { promptOptionUsedInsteadOfALabelA11yExample } from '@/app/(main)/components/select/accessibility/examples/prompt-option-used-instead-of-a-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/select/accessibility/examples/validation-feedback-via-state-and-message-api/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/select/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import AsyncFilterDescription from '@porsche-design-system/examples-framework/components/select/async-filter/example.mdx';
+import FormDescription from '@porsche-design-system/examples-framework/components/select/form/example.mdx';
+import RequiredDescription from '@porsche-design-system/examples-framework/components/select/required/example.mdx';
+import SelectedSlotDescription from '@porsche-design-system/examples-framework/components/select/selected-slot/example.mdx';
+import SetValueDescription from '@porsche-design-system/examples-framework/components/select/set-value/example.mdx';
+import {
+  selectSlotStories,
+  selectStory,
+} from '@porsche-design-system/examples-stories/components/select/default/story';
+import OptgroupsDescription from '@porsche-design-system/examples-stories/components/select/optgroups/example.mdx';
+import { selectStoryOptgroups } from '@porsche-design-system/examples-stories/components/select/optgroups/story';
+import SlotsDescription from '@porsche-design-system/examples-stories/components/select/slots/example.mdx';
+import { selectStorySlots } from '@porsche-design-system/examples-stories/components/select/slots/story';
+import SlottedImagesDescription from '@porsche-design-system/examples-stories/components/select/slotted-images/example.mdx';
+import { selectStorySlottedImages } from '@porsche-design-system/examples-stories/components/select/slotted-images/story';
 import AccessibilityOverview from '@/app/(main)/components/select/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/select/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/select/configurator/introduction.mdx';
-import { selectSlotStories, selectStory } from '@/app/(main)/components/select/configurator/story';
-import AsyncFilterDescription from '@/app/(main)/components/select/examples/async-filter/example.mdx';
-import FormDescription from '@/app/(main)/components/select/examples/form/example.mdx';
-import OptgroupsDescription from '@/app/(main)/components/select/examples/optgroups/example.mdx';
-import { selectStoryOptgroups } from '@/app/(main)/components/select/examples/optgroups/story';
-import RequiredDescription from '@/app/(main)/components/select/examples/required/example.mdx';
-import SelectedSlotDescription from '@/app/(main)/components/select/examples/selected-slot/example.mdx';
-import SetValueDescription from '@/app/(main)/components/select/examples/set-value/example.mdx';
-import SlotsDescription from '@/app/(main)/components/select/examples/slots/example.mdx';
-import { selectStorySlots } from '@/app/(main)/components/select/examples/slots/story';
-import SlottedImagesDescription from '@/app/(main)/components/select/examples/slotted-images/example.mdx';
-import { selectStorySlottedImages } from '@/app/(main)/components/select/examples/slotted-images/story';
 import Usage from '@/app/(main)/components/select/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

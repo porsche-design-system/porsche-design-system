@@ -1,16 +1,19 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/pin-code/accessibility/hidden-label-without-accessible-name/example';
+import { missingFieldLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/pin-code/accessibility/missing-field-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/pin-code/accessibility/validation-feedback-via-state-and-message-api/example';
 import { pinCodeExampleForm } from '@porsche-design-system/examples-framework';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/pin-code/accessibility/examples/hidden-label-without-accessible-name/example';
-import { missingFieldLabelA11yExample } from '@/app/(main)/components/pin-code/accessibility/examples/missing-field-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/pin-code/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import FormDescription from '@porsche-design-system/examples-framework/components/pin-code/form/example.mdx';
+import CopyPasteDescription from '@porsche-design-system/examples-stories/components/pin-code/copy-paste/example.mdx';
+import {
+  pinCodeSlotStories,
+  pinCodeStory,
+} from '@porsche-design-system/examples-stories/components/pin-code/default/story';
+import SlotsDescription from '@porsche-design-system/examples-stories/components/pin-code/slots/example.mdx';
+import { pinCodeStorySlots } from '@porsche-design-system/examples-stories/components/pin-code/slots/story';
 import AccessibilityOverview from '@/app/(main)/components/pin-code/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/pin-code/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/pin-code/configurator/introduction.mdx';
-import { pinCodeSlotStories, pinCodeStory } from '@/app/(main)/components/pin-code/configurator/story';
-import CopyPasteDescription from '@/app/(main)/components/pin-code/examples/copy-paste/example.mdx';
-import FormDescription from '@/app/(main)/components/pin-code/examples/form/example.mdx';
-import SlotsDescription from '@/app/(main)/components/pin-code/examples/slots/example.mdx';
-import { pinCodeStorySlots } from '@/app/(main)/components/pin-code/examples/slots/story';
 import Usage from '@/app/(main)/components/pin-code/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

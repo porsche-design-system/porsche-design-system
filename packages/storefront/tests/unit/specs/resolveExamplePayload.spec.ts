@@ -1,7 +1,7 @@
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/checkbox/accessibility/hidden-label-without-accessible-name/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/modal/accessibility/aria-on-component-host-vs-aria-prop/example';
 import type { FrameworkMarkup } from '@porsche-design-system/shared';
 import { type ExampleMarkupSample, resolveExamplePayload } from '@porsche-design-system/story-generator';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/checkbox/accessibility/examples/hidden-label-without-accessible-name/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/modal/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 
 const context = {
   tag: 'p-checkbox',
@@ -11,19 +11,17 @@ const context = {
 };
 
 describe('resolveExamplePayload()', () => {
-  it.each([
-    'vanilla-js',
-    'angular',
-    'react',
-    'vue',
-  ] as const)('generates non-empty %s markup from a story', (framework) => {
-    expect(
-      resolveExamplePayload(hiddenLabelWithoutAccessibleNameA11yExample.antiPattern, framework, {
-        ...context,
-        framework,
-      })
-    ).not.toBe('');
-  });
+  it.each(['vanilla-js', 'angular', 'react', 'vue'] as const)(
+    'generates non-empty %s markup from a story',
+    (framework) => {
+      expect(
+        resolveExamplePayload(hiddenLabelWithoutAccessibleNameA11yExample.antiPattern, framework, {
+          ...context,
+          framework,
+        })
+      ).not.toBe('');
+    }
+  );
 
   it('emits bare snippet markup without runnable-file scaffolding', () => {
     const markup = resolveExamplePayload(
@@ -44,19 +42,22 @@ describe('resolveExamplePayload()', () => {
     ['angular', 'aria-haspopup="dialog"', `[aria]="{'aria-haspopup': 'dialog'}"`],
     ['vue', 'aria-haspopup="dialog"', `:aria="{'aria-haspopup': 'dialog'}"`],
     ['react', 'aria-haspopup="dialog"', `aria={{'aria-haspopup': 'dialog'}}`],
-  ] as const)('keeps host-level aria on the anti-pattern and the aria prop on the recommendation in %s', (framework, expectedAntiPattern, expectedRecommended) => {
-    const hostAriaContext = { ...context, tag: 'p-modal', key: 'ariaOnComponentHostVsAriaProp', framework };
+  ] as const)(
+    'keeps host-level aria on the anti-pattern and the aria prop on the recommendation in %s',
+    (framework, expectedAntiPattern, expectedRecommended) => {
+      const hostAriaContext = { ...context, tag: 'p-modal', key: 'ariaOnComponentHostVsAriaProp', framework };
 
-    expect(
-      resolveExamplePayload(ariaOnComponentHostVsAriaPropA11yExample.antiPattern, framework, hostAriaContext)
-    ).toContain(expectedAntiPattern);
-    expect(
-      resolveExamplePayload(ariaOnComponentHostVsAriaPropA11yExample.recommended, framework, {
-        ...hostAriaContext,
-        side: 'recommended',
-      })
-    ).toContain(expectedRecommended);
-  });
+      expect(
+        resolveExamplePayload(ariaOnComponentHostVsAriaPropA11yExample.antiPattern, framework, hostAriaContext)
+      ).toContain(expectedAntiPattern);
+      expect(
+        resolveExamplePayload(ariaOnComponentHostVsAriaPropA11yExample.recommended, framework, {
+          ...hostAriaContext,
+          side: 'recommended',
+        })
+      ).toContain(expectedRecommended);
+    }
+  );
 
   it.each([
     ['vanilla-js', '<!-- slides -->'],

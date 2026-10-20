@@ -1,16 +1,16 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { notificationMountedOnlyWhenNeededA11yExample } from '@porsche-design-system/examples-accessibility/components/inline-notification/accessibility/notification-mounted-only-when-needed/example';
+import { warningWithoutDescriptiveHeadingA11yExample } from '@porsche-design-system/examples-accessibility/components/inline-notification/accessibility/warning-without-descriptive-heading/example';
 import {
   inlineNotificationExampleActionButton,
   inlineNotificationExampleEvents,
 } from '@porsche-design-system/examples-framework';
-import { notificationMountedOnlyWhenNeededA11yExample } from '@/app/(main)/components/inline-notification/accessibility/examples/notification-mounted-only-when-needed/example';
-import { warningWithoutDescriptiveHeadingA11yExample } from '@/app/(main)/components/inline-notification/accessibility/examples/warning-without-descriptive-heading/example';
+import ActionButtonDescription from '@porsche-design-system/examples-framework/components/inline-notification/action-button/example.mdx';
+import EventHandlingDescription from '@porsche-design-system/examples-framework/components/inline-notification/event-handling/example.mdx';
+import { inlineNotificationStory } from '@porsche-design-system/examples-stories/components/inline-notification/default/story';
 import AccessibilityOverview from '@/app/(main)/components/inline-notification/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/inline-notification/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/inline-notification/configurator/introduction.mdx';
-import { inlineNotificationStory } from '@/app/(main)/components/inline-notification/configurator/story';
-import ActionButtonDescription from '@/app/(main)/components/inline-notification/examples/action-button/example.mdx';
-import EventHandlingDescription from '@/app/(main)/components/inline-notification/examples/event-handling/example.mdx';
 import Usage from '@/app/(main)/components/inline-notification/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

@@ -1,20 +1,23 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/link-tile/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { vagueLinkLabelWithoutContextA11yExample } from '@porsche-design-system/examples-accessibility/components/link-tile/accessibility/vague-link-label-without-context/example';
 import { linkTileExampleHyphens } from '@porsche-design-system/examples-framework';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/link-tile/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
-import { vagueLinkLabelWithoutContextA11yExample } from '@/app/(main)/components/link-tile/accessibility/examples/vague-link-label-without-context/example';
+import HyphensDescription from '@porsche-design-system/examples-framework/components/link-tile/hyphens/example.mdx';
+import ColorSchemeDescription from '@porsche-design-system/examples-stories/components/link-tile/color-scheme/example.mdx';
+import { linkTileStoryColorScheme } from '@porsche-design-system/examples-stories/components/link-tile/color-scheme/story';
+import {
+  linkTileSlotStory,
+  linkTileStory,
+} from '@porsche-design-system/examples-stories/components/link-tile/default/story';
+import FooterSlotDescription from '@porsche-design-system/examples-stories/components/link-tile/footer-slot/example.mdx';
+import { linkTileStoryFooterSlot } from '@porsche-design-system/examples-stories/components/link-tile/footer-slot/story';
+import UiBehaviourDescription from '@porsche-design-system/examples-stories/components/link-tile/ui-behaviour/example.mdx';
+import { linkTileStoryLayout } from '@porsche-design-system/examples-stories/components/link-tile/ui-behaviour/story';
+import WithVideoDescription from '@porsche-design-system/examples-stories/components/link-tile/with-video/example.mdx';
+import { linkTileStoryVideo } from '@porsche-design-system/examples-stories/components/link-tile/with-video/story';
 import AccessibilityOverview from '@/app/(main)/components/link-tile/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/link-tile/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/link-tile/configurator/introduction.mdx';
-import { linkTileSlotStory, linkTileStory } from '@/app/(main)/components/link-tile/configurator/story';
-import ColorSchemeDescription from '@/app/(main)/components/link-tile/examples/color-scheme/example.mdx';
-import { linkTileStoryColorScheme } from '@/app/(main)/components/link-tile/examples/color-scheme/story';
-import FooterSlotDescription from '@/app/(main)/components/link-tile/examples/footer-slot/example.mdx';
-import { linkTileStoryFooterSlot } from '@/app/(main)/components/link-tile/examples/footer-slot/story';
-import HyphensDescription from '@/app/(main)/components/link-tile/examples/hyphens/example.mdx';
-import UiBehaviourDescription from '@/app/(main)/components/link-tile/examples/ui-behaviour/example.mdx';
-import { linkTileStoryLayout } from '@/app/(main)/components/link-tile/examples/ui-behaviour/story';
-import WithVideoDescription from '@/app/(main)/components/link-tile/examples/with-video/example.mdx';
-import { linkTileStoryVideo } from '@/app/(main)/components/link-tile/examples/with-video/story';
 import Usage from '@/app/(main)/components/link-tile/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

@@ -1,23 +1,23 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/carousel/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { carouselWithoutSkipPathForKeyboardUsersA11yExample } from '@porsche-design-system/examples-accessibility/components/carousel/accessibility/carousel-without-skip-path-for-keyboard-users/example';
+import { vagueCarouselLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/carousel/accessibility/vague-carousel-label/example';
 import {
   carouselExampleDynamicSlides,
   carouselExampleFocusOnCenterSlide,
   carouselExampleJumpToSlide,
 } from '@porsche-design-system/examples-framework';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/carousel/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
-import { carouselWithoutSkipPathForKeyboardUsersA11yExample } from '@/app/(main)/components/carousel/accessibility/examples/carousel-without-skip-path-for-keyboard-users/example';
-import { vagueCarouselLabelA11yExample } from '@/app/(main)/components/carousel/accessibility/examples/vague-carousel-label/example';
+import DynamicSlidesDescription from '@porsche-design-system/examples-framework/components/carousel/dynamic-slides/example.mdx';
+import FocusOnCenterSlideDescription from '@porsche-design-system/examples-framework/components/carousel/focus-on-center-slide/example.mdx';
+import JumpToSlideDescription from '@porsche-design-system/examples-framework/components/carousel/jump-to-slide/example.mdx';
+import { carouselStory } from '@porsche-design-system/examples-stories/components/carousel/default/story';
+import FlexibleWidthsDescription from '@porsche-design-system/examples-stories/components/carousel/flexible-widths/example.mdx';
+import { carouselStoryFlexibleWidths } from '@porsche-design-system/examples-stories/components/carousel/flexible-widths/story';
+import IntlDescription from '@porsche-design-system/examples-stories/components/carousel/intl/example.mdx';
+import { carouselStoryIntl } from '@porsche-design-system/examples-stories/components/carousel/intl/story';
 import AccessibilityOverview from '@/app/(main)/components/carousel/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/carousel/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/carousel/configurator/introduction.mdx';
-import { carouselStory } from '@/app/(main)/components/carousel/configurator/story';
-import DynamicSlidesDescription from '@/app/(main)/components/carousel/examples/dynamic-slides/example.mdx';
-import FlexibleWidthsDescription from '@/app/(main)/components/carousel/examples/flexible-widths/example.mdx';
-import { carouselStoryFlexibleWidths } from '@/app/(main)/components/carousel/examples/flexible-widths/story';
-import FocusOnCenterSlideDescription from '@/app/(main)/components/carousel/examples/focus-on-center-slide/example.mdx';
-import IntlDescription from '@/app/(main)/components/carousel/examples/intl/example.mdx';
-import { carouselStoryIntl } from '@/app/(main)/components/carousel/examples/intl/story';
-import JumpToSlideDescription from '@/app/(main)/components/carousel/examples/jump-to-slide/example.mdx';
 import Usage from '@/app/(main)/components/carousel/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

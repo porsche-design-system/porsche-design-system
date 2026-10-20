@@ -1,16 +1,16 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { routeNavigationWithoutLandmarkLabelA11yExample } from '@/app/(main)/components/tabs-bar/accessibility/examples/route-navigation-without-landmark-label/example';
-import { tabbedInterfaceWithoutTablistLabelA11yExample } from '@/app/(main)/components/tabs-bar/accessibility/examples/tabbed-interface-without-tablist-label/example';
+import { routeNavigationWithoutLandmarkLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/tabs-bar/accessibility/route-navigation-without-landmark-label/example';
+import { tabbedInterfaceWithoutTablistLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/tabs-bar/accessibility/tabbed-interface-without-tablist-label/example';
+import { tabsBarStory } from '@porsche-design-system/examples-stories/components/tabs-bar/default/story';
+import GradientDescription from '@porsche-design-system/examples-stories/components/tabs-bar/gradient/example.mdx';
+import { tabsBarStoryGradient } from '@porsche-design-system/examples-stories/components/tabs-bar/gradient/story';
+import LabellingDescription from '@porsche-design-system/examples-stories/components/tabs-bar/labelling/example.mdx';
+import { tabsBarStoryLabelling } from '@porsche-design-system/examples-stories/components/tabs-bar/labelling/story';
+import LinksDescription from '@porsche-design-system/examples-stories/components/tabs-bar/links/example.mdx';
+import { tabsBarStoryLinks } from '@porsche-design-system/examples-stories/components/tabs-bar/links/story';
 import AccessibilityOverview from '@/app/(main)/components/tabs-bar/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/tabs-bar/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/tabs-bar/configurator/introduction.mdx';
-import { tabsBarStory } from '@/app/(main)/components/tabs-bar/configurator/story';
-import GradientDescription from '@/app/(main)/components/tabs-bar/examples/gradient/example.mdx';
-import { tabsBarStoryGradient } from '@/app/(main)/components/tabs-bar/examples/gradient/story';
-import LabellingDescription from '@/app/(main)/components/tabs-bar/examples/labelling/example.mdx';
-import { tabsBarStoryLabelling } from '@/app/(main)/components/tabs-bar/examples/labelling/story';
-import LinksDescription from '@/app/(main)/components/tabs-bar/examples/links/example.mdx';
-import { tabsBarStoryLinks } from '@/app/(main)/components/tabs-bar/examples/links/story';
 import Usage from '@/app/(main)/components/tabs-bar/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

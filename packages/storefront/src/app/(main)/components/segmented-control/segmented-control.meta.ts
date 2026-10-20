@@ -1,20 +1,20 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/segmented-control/accessibility/hidden-label-without-accessible-name/example';
+import { missingGroupLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/segmented-control/accessibility/missing-group-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/segmented-control/accessibility/validation-feedback-via-state-and-message-api/example';
 import { segmentedControlExampleForm } from '@porsche-design-system/examples-framework';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/segmented-control/accessibility/examples/hidden-label-without-accessible-name/example';
-import { missingGroupLabelA11yExample } from '@/app/(main)/components/segmented-control/accessibility/examples/missing-group-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/segmented-control/accessibility/examples/validation-feedback-via-state-and-message-api/example';
-import AccessibilityOverview from '@/app/(main)/components/segmented-control/accessibility/overview.mdx';
-import AccessibilityTests from '@/app/(main)/components/segmented-control/accessibility/tests.mdx';
-import IntroductionDescription from '@/app/(main)/components/segmented-control/configurator/introduction.mdx';
+import FormDescription from '@porsche-design-system/examples-framework/components/segmented-control/form/example.mdx';
 import {
   segmentedControlSlotStories,
   segmentedControlStory,
-} from '@/app/(main)/components/segmented-control/configurator/story';
-import FormDescription from '@/app/(main)/components/segmented-control/examples/form/example.mdx';
-import SlotsDescription from '@/app/(main)/components/segmented-control/examples/slots/example.mdx';
-import { segmentedControlStorySlots } from '@/app/(main)/components/segmented-control/examples/slots/story';
-import WithLabelsDescription from '@/app/(main)/components/segmented-control/examples/with-labels/example.mdx';
-import { segmentedControlStoryLabel } from '@/app/(main)/components/segmented-control/examples/with-labels/story';
+} from '@porsche-design-system/examples-stories/components/segmented-control/default/story';
+import SlotsDescription from '@porsche-design-system/examples-stories/components/segmented-control/slots/example.mdx';
+import { segmentedControlStorySlots } from '@porsche-design-system/examples-stories/components/segmented-control/slots/story';
+import WithLabelsDescription from '@porsche-design-system/examples-stories/components/segmented-control/with-labels/example.mdx';
+import { segmentedControlStoryLabel } from '@porsche-design-system/examples-stories/components/segmented-control/with-labels/story';
+import AccessibilityOverview from '@/app/(main)/components/segmented-control/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/segmented-control/accessibility/tests.mdx';
+import IntroductionDescription from '@/app/(main)/components/segmented-control/configurator/introduction.mdx';
 import Usage from '@/app/(main)/components/segmented-control/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

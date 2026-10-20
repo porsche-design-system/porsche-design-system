@@ -1,16 +1,19 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/input-month/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/input-month/accessibility/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/input-month/accessibility/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/input-month/accessibility/validation-feedback-via-state-and-message-api/example';
 import { inputMonthExampleForm } from '@porsche-design-system/examples-framework';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-month/accessibility/examples/hidden-label-without-accessible-name/example';
-import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-month/accessibility/examples/placeholder-used-as-the-only-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-month/accessibility/examples/validation-feedback-via-state-and-message-api/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/input-month/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import FormDescription from '@porsche-design-system/examples-framework/components/input-month/form/example.mdx';
+import {
+  inputMonthSlotStories,
+  inputMonthStory,
+} from '@porsche-design-system/examples-stories/components/input-month/default/story';
+import SlotsDescription from '@porsche-design-system/examples-stories/components/input-month/slots/example.mdx';
+import { inputMonthStorySlots } from '@porsche-design-system/examples-stories/components/input-month/slots/story';
 import AccessibilityOverview from '@/app/(main)/components/input-month/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/input-month/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-month/configurator/introduction.mdx';
-import { inputMonthSlotStories, inputMonthStory } from '@/app/(main)/components/input-month/configurator/story';
-import FormDescription from '@/app/(main)/components/input-month/examples/form/example.mdx';
-import SlotsDescription from '@/app/(main)/components/input-month/examples/slots/example.mdx';
-import { inputMonthStorySlots } from '@/app/(main)/components/input-month/examples/slots/story';
 import Usage from '@/app/(main)/components/input-month/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

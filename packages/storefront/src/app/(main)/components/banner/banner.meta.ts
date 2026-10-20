@@ -1,12 +1,12 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { bannerMountedOnlyWhenShownA11yExample } from '@/app/(main)/components/banner/accessibility/examples/banner-mounted-only-when-shown/example';
-import { errorFeedbackWithoutDescriptiveContentA11yExample } from '@/app/(main)/components/banner/accessibility/examples/error-feedback-without-descriptive-content/example';
+import { bannerMountedOnlyWhenShownA11yExample } from '@porsche-design-system/examples-accessibility/components/banner/accessibility/banner-mounted-only-when-shown/example';
+import { errorFeedbackWithoutDescriptiveContentA11yExample } from '@porsche-design-system/examples-accessibility/components/banner/accessibility/error-feedback-without-descriptive-content/example';
+import CustomizationDescription from '@porsche-design-system/examples-stories/components/banner/customization/example.mdx';
+import { bannerStoryCustomStyling } from '@porsche-design-system/examples-stories/components/banner/customization/story';
+import { bannerStory } from '@porsche-design-system/examples-stories/components/banner/default/story';
 import AccessibilityOverview from '@/app/(main)/components/banner/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/banner/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/banner/configurator/introduction.mdx';
-import { bannerStory } from '@/app/(main)/components/banner/configurator/story';
-import CustomizationDescription from '@/app/(main)/components/banner/examples/customization/example.mdx';
-import { bannerStoryCustomStyling } from '@/app/(main)/components/banner/examples/customization/story';
 import Usage from '@/app/(main)/components/banner/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

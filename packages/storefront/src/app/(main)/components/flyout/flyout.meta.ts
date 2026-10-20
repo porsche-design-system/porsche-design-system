@@ -1,17 +1,20 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnTriggerButtonHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/flyout/accessibility/aria-on-trigger-button-host-vs-aria-prop/example';
+import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@porsche-design-system/examples-accessibility/components/flyout/accessibility/dialog-label-on-component-host-vs-header-slot/example';
+import { flyoutTriggerWithoutPopupSemanticsA11yExample } from '@porsche-design-system/examples-accessibility/components/flyout/accessibility/flyout-trigger-without-popup-semantics/example';
 import { flyoutExampleForm } from '@porsche-design-system/examples-framework';
-import { ariaOnTriggerButtonHostVsAriaPropA11yExample } from '@/app/(main)/components/flyout/accessibility/examples/aria-on-trigger-button-host-vs-aria-prop/example';
-import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@/app/(main)/components/flyout/accessibility/examples/dialog-label-on-component-host-vs-header-slot/example';
-import { flyoutTriggerWithoutPopupSemanticsA11yExample } from '@/app/(main)/components/flyout/accessibility/examples/flyout-trigger-without-popup-semantics/example';
+import FormDescription from '@porsche-design-system/examples-framework/components/flyout/form/example.mdx';
+import CustomStylingDescription from '@porsche-design-system/examples-stories/components/flyout/custom-styling/example.mdx';
+import { flyoutStoryCustomStyling } from '@porsche-design-system/examples-stories/components/flyout/custom-styling/story';
+import {
+  flyoutSlotStories,
+  flyoutStory,
+} from '@porsche-design-system/examples-stories/components/flyout/default/story';
+import StickyTopDescription from '@porsche-design-system/examples-stories/components/flyout/sticky-top/example.mdx';
+import { flyoutStoryStickyTop } from '@porsche-design-system/examples-stories/components/flyout/sticky-top/story';
 import AccessibilityOverview from '@/app/(main)/components/flyout/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/flyout/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/flyout/configurator/introduction.mdx';
-import { flyoutSlotStories, flyoutStory } from '@/app/(main)/components/flyout/configurator/story';
-import CustomStylingDescription from '@/app/(main)/components/flyout/examples/custom-styling/example.mdx';
-import { flyoutStoryCustomStyling } from '@/app/(main)/components/flyout/examples/custom-styling/story';
-import FormDescription from '@/app/(main)/components/flyout/examples/form/example.mdx';
-import StickyTopDescription from '@/app/(main)/components/flyout/examples/sticky-top/example.mdx';
-import { flyoutStoryStickyTop } from '@/app/(main)/components/flyout/examples/sticky-top/story';
 import Usage from '@/app/(main)/components/flyout/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

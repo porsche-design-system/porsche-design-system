@@ -1,15 +1,15 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { headingTagUsedForStylingOnlyA11yExample } from '@/app/(main)/components/text/accessibility/examples/heading-tag-used-for-styling-only/example';
+import { headingTagUsedForStylingOnlyA11yExample } from '@porsche-design-system/examples-accessibility/components/text/accessibility/heading-tag-used-for-styling-only/example';
+import { textStory } from '@porsche-design-system/examples-stories/components/text/default/story';
+import ResponsiveDescription from '@porsche-design-system/examples-stories/components/text/responsive/example.mdx';
+import { textStorySizeResponsive } from '@porsche-design-system/examples-stories/components/text/responsive/story';
+import SemanticsDescription from '@porsche-design-system/examples-stories/components/text/semantics/example.mdx';
+import { textStorySemantics } from '@porsche-design-system/examples-stories/components/text/semantics/story';
+import SizeDescription from '@porsche-design-system/examples-stories/components/text/size/example.mdx';
+import { textStorySize } from '@porsche-design-system/examples-stories/components/text/size/story';
 import AccessibilityOverview from '@/app/(main)/components/text/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/text/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/text/configurator/introduction.mdx';
-import { textStory } from '@/app/(main)/components/text/configurator/story';
-import ResponsiveDescription from '@/app/(main)/components/text/examples/responsive/example.mdx';
-import { textStorySizeResponsive } from '@/app/(main)/components/text/examples/responsive/story';
-import SemanticsDescription from '@/app/(main)/components/text/examples/semantics/example.mdx';
-import { textStorySemantics } from '@/app/(main)/components/text/examples/semantics/story';
-import SizeDescription from '@/app/(main)/components/text/examples/size/example.mdx';
-import { textStorySize } from '@/app/(main)/components/text/examples/size/story';
 import Usage from '@/app/(main)/components/text/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

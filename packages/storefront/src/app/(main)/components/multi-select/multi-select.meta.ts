@@ -1,26 +1,29 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/multi-select/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/multi-select/accessibility/hidden-label-without-accessible-name/example';
+import { promptOptionUsedInsteadOfALabelA11yExample } from '@porsche-design-system/examples-accessibility/components/multi-select/accessibility/prompt-option-used-instead-of-a-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/multi-select/accessibility/validation-feedback-via-state-and-message-api/example';
 import {
   multiSelectExampleAsyncFilter,
   multiSelectExampleDynamic,
   multiSelectExampleForm,
   multiSelectExampleSelectedSlot,
 } from '@porsche-design-system/examples-framework';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/hidden-label-without-accessible-name/example';
-import { promptOptionUsedInsteadOfALabelA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/prompt-option-used-instead-of-a-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/validation-feedback-via-state-and-message-api/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import AsyncFilterDescription from '@porsche-design-system/examples-framework/components/multi-select/async-filter/example.mdx';
+import FormDescription from '@porsche-design-system/examples-framework/components/multi-select/form/example.mdx';
+import SelectedSlotDescription from '@porsche-design-system/examples-framework/components/multi-select/selected-slot/example.mdx';
+import SetValueDescription from '@porsche-design-system/examples-framework/components/multi-select/set-value/example.mdx';
+import {
+  multiSelectSlotStories,
+  multiSelectStory,
+} from '@porsche-design-system/examples-stories/components/multi-select/default/story';
+import OptgroupsDescription from '@porsche-design-system/examples-stories/components/multi-select/optgroups/example.mdx';
+import { multiSelectStoryOptgroup } from '@porsche-design-system/examples-stories/components/multi-select/optgroups/story';
+import SlotsDescription from '@porsche-design-system/examples-stories/components/multi-select/slots/example.mdx';
+import { multiSelectStorySlots } from '@porsche-design-system/examples-stories/components/multi-select/slots/story';
 import AccessibilityOverview from '@/app/(main)/components/multi-select/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/multi-select/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/multi-select/configurator/introduction.mdx';
-import { multiSelectSlotStories, multiSelectStory } from '@/app/(main)/components/multi-select/configurator/story';
-import AsyncFilterDescription from '@/app/(main)/components/multi-select/examples/async-filter/example.mdx';
-import FormDescription from '@/app/(main)/components/multi-select/examples/form/example.mdx';
-import OptgroupsDescription from '@/app/(main)/components/multi-select/examples/optgroups/example.mdx';
-import { multiSelectStoryOptgroup } from '@/app/(main)/components/multi-select/examples/optgroups/story';
-import SelectedSlotDescription from '@/app/(main)/components/multi-select/examples/selected-slot/example.mdx';
-import SetValueDescription from '@/app/(main)/components/multi-select/examples/set-value/example.mdx';
-import SlotsDescription from '@/app/(main)/components/multi-select/examples/slots/example.mdx';
-import { multiSelectStorySlots } from '@/app/(main)/components/multi-select/examples/slots/story';
 import Usage from '@/app/(main)/components/multi-select/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

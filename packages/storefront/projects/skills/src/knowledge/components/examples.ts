@@ -68,7 +68,7 @@ export type SkillExampleMeta =
   | { kind: 'description'; name: string; description: Root };
 
 export type ComponentExamplesSource = {
-  configurator: { story: Story<HTMLTagOrComponent>; example?: FrameworkExample };
+  configurator: { story: Story<HTMLTagOrComponent> } | { example: FrameworkExample };
   examples: Record<string, SkillExampleMeta>;
 };
 
@@ -97,10 +97,11 @@ export const writeComponentExamples = (tree: SkillTree, tag: string, source: Com
     rows.push([escapeCell(name), escapeCell(note), fileCell]);
   };
 
-  const { example: baseExample } = source.configurator;
-  const baseMarkup = baseExample
-    ? (baseExample.frameworkMarkup[framework] ?? '')
-    : storyMarkup(source.configurator.story, framework);
+  const { configurator } = source;
+  const baseMarkup =
+    'example' in configurator
+      ? (configurator.example.frameworkMarkup[framework] ?? '')
+      : storyMarkup(configurator.story, framework);
   if (baseMarkup.trim()) {
     emit({
       name: 'Default',

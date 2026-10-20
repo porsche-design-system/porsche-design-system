@@ -1,0 +1,32 @@
+{
+  "name": "@porsche-design-system/examples-stories",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "sideEffects": false,
+  "exports": {
+    "./*.mdx": "./src/*.mdx",
+    "./*": {
+      "types": "./src/*.ts",
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "biome lint"
+  },
+  "dependencies": {
+    "@porsche-design-system/assets": "5.0.2",
+    "@porsche-design-system/flags": "0.0.0",
+    "@porsche-design-system/story-generator": "0.0.0",
+    "change-case": "^5.4.4"
+  },
+  "devDependencies": {
+    "@porsche-design-system/components-react": "4.8.0",
+    "typescript": "^6.0.3"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

@@ -166,12 +166,17 @@ projects/
 
 ## Generating Configurator and Example Stories
 
-When adding or updating documentation pages for a component in `src/app/components/{component}/`, keep the configurator
-and examples pages driven by a colocated `{component}.stories.ts` file whenever possible.
+When adding or updating documentation pages for a component in `src/app/(main)/components/{component}/`, keep the
+configurator and examples pages driven by stories whenever possible. The stories live in `packages/examples`
+([`projects/stories`](../examples/projects/stories)), one folder per example, named by its id; the component's
+`{component}.meta.ts` imports them and its pages render them through the meta.
 
 ### Story file rules
 
-- Create or extend `src/app/components/{component}/{component}.stories.ts`.
+- The configurator's story is `packages/examples/projects/stories/src/components/{component}/default/story.ts`; an
+  example's story and its description are `story.ts` and `example.mdx` in
+  `packages/examples/projects/stories/src/components/{component}/{slug}/`. Import them in the meta from
+  `@porsche-design-system/examples-stories/components/{component}/{slug}/story` (and `…/example.mdx`).
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
 - Export `Story<'p-component'>` objects for configurator-ready examples. `Story`, `SlotStories`, `ElementConfig` and the
   accessibility example types come from `@porsche-design-system/story-generator` (in
@@ -179,8 +184,7 @@ and examples pages driven by a colocated `{component}.stories.ts` file whenever 
   for every framework (`getStoryMarkup`, `wrapCode`) for the Storefront and the skills, and renders it live with
   `<StoryPreview>` from `@porsche-design-system/story-generator/react`.
 - Export `SlotStories<'p-component'>` when slot content must be selectable in the configurator.
-- Put additional story variants for the examples page in the same story file using clear names such as
-  `{component}Story`, `{component}StoryGrid`, or `{component}StoryCustomStyling`.
+- Give every example a folder of its own; name its export like `{component}StoryCustomStyling`.
 - For controlled components, model interactivity with `events` in the returned `ElementConfig` instead of embedding
   ad-hoc JavaScript in MDX.
 
@@ -189,10 +193,10 @@ and examples pages driven by a colocated `{component}.stories.ts` file whenever 
 Use the configurator page when the component should expose a playground UI.
 
 ```mdx
-import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
 import { Configurator } from '@/components/mdx/playground/Configurator';
+import { componentMeta } from '@/app/(main)/components/component/component.meta';
 
-<Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
+<Configurator tagName="p-component" story={componentMeta.configurator.story} slotStories={componentMeta.configurator.slotStories} />
 ```
 
 - Keep `export const metadata = { ... }` in the page.
@@ -209,14 +213,16 @@ Use the examples page to showcase curated use cases:
 
 ```mdx
 import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { componentStoryAdvanced } from '@/app/components/component/component.stories';
 import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { componentExampleCustomLogic } from '@porsche-design-system/examples-framework';
+import { componentMeta } from '@/app/(main)/components/component/component.meta';
+
+<ComponentStory story={componentMeta.examples.advanced.story} />
+<ComponentExample codeSample={componentMeta.examples.customLogic.example} />
 ```
 
-- Put story-backed examples in `{component}.stories.ts` and render them with `ComponentStory`.
-- Use `ComponentExample` only after adding the example's `meta.ts` to `packages/examples/projects/framework/src/<id>/`
-  and generating the project (see its [`AGENTS.md`](../examples/projects/framework/AGENTS.md)).
+- Put story-backed examples in `packages/examples/projects/stories` and render them with `ComponentStory`.
+- Use `ComponentExample` only after adding the example's `meta.ts` (and its `example.mdx`) to
+  `packages/examples/projects/framework/src/<id>/` and generating the project (see its [`AGENTS.md`](../examples/projects/framework/AGENTS.md)).
 - Preserve `metadata` and `ComponentStatus` imports on the page.
 - Add `TableOfContents` when the page contains multiple example sections.
 - Keep example copy and generated markup accessible by default: meaningful headings, visible focus, keyboard support,
@@ -256,9 +262,9 @@ When adding or updating accessibility documentation in the storefront:
 | **Central vs component**       | Cross-cutting integration mistakes live on the [Do's and Don'ts](/must-know/accessibility/dos-and-donts) page. Each component Accessibility tab includes its own do/don't list and examples, even when content overlaps.                                                                                                                                                                                                      |
 | **Usage vs Accessibility**     | The Usage tab is for design/UX guidance. The Accessibility tab is for keyboard, ARIA, and technical integration.                                                                                                                                                                                                                                                                                                              |
 | **Code examples**              | Use vanilla-js web component markup (`<p-button>`, kebab-case attributes). Pass ARIA via `aria="{ 'aria-label': '...' }"`.                                                                                                                                                                                                                                                                                                    |
-| **Page structure**             | Keep conceptual guidance in `overview.mdx` under `## Development considerations`, including `### Common do's and don'ts` bullet rules. Anti-pattern/recommended pairs live in `accessibility/examples/`, not in MDX.                                                                                                                                                                                                          |
+| **Page structure**             | Keep conceptual guidance in `overview.mdx` under `## Development considerations`, including `### Common do's and don'ts` bullet rules. Anti-pattern/recommended pairs live in `packages/examples/projects/accessibility`, not in MDX.                                                                                                                                                                                                          |
 | **Do/don't examples**          | Pair each actionable do/don't with an `antiPattern`/`recommended` example pair. Include host-vs-`aria` prop examples for interactive components.                                                                                                                                                                                                                                                                              |
-| **Story-driven examples**      | Colocate each pair under `accessibility/examples/<kebab-case-name>/example.ts`. Export one `<metadataKey>A11yExample` object that `satisfies AccessibilityExample`. Host-level `aria-*` attributes belong in `properties` (e.g. `'aria-haspopup': 'dialog'`). Imperative examples must use a complete cross-framework `ExampleMarkupSample`. |
+| **Story-driven examples**      | Put each pair in `packages/examples/projects/accessibility/src/components/<component>/accessibility/<kebab-case-name>/example.ts`. Export one `<metadataKey>A11yExample` object that `satisfies AccessibilityExample`. Host-level `aria-*` attributes belong in `properties` (e.g. `'aria-haspopup': 'dialog'`). Imperative examples must use a complete cross-framework `ExampleMarkupSample`. |
 | **Snippet, not runnable file** | Accessibility pairs render as bare markup — no HTML document, component shell or SFC blocks — so the anti-pattern and the recommendation stay diffable at a glance. Keep the two sides structurally identical apart from the accessibility difference being taught. |
 | **Naming**                     | Directory is kebab-case, the metadata key is its lower-camelCase form, and the export is `<key>A11yExample`. Preserve word boundaries: `icon-only-…` → `iconOnlyButtonWithoutAccessibleName`, not `icononly-…`. The skill generator validates the key casing and fails the build on a mismatch.                                                                                                                               |
 | **Page composition**           | `page.mdx` renders `<meta.accessibility.overview />`, then `<A11yIntegrationExamples tag="p-…" examples={meta.accessibility.examples} />` (which owns the `## Integration examples` H2), then `<meta.accessibility.tests />`. Every H2 listed in `<TableOfContents>` must exist in `overview.mdx`/`tests.mdx` in the same order. Each pair renders one framework selector driving both of its snippets. |
@@ -292,10 +298,10 @@ Example in MDX:
 ```
 ````
 
-Register colocated integration examples in the component metadata:
+Register the integration examples in the component metadata:
 
 ```ts
-import { hiddenLabelWithoutAccessibleNameA11yExample } from './accessibility/examples/hidden-label-without-accessible-name/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/checkbox/accessibility/hidden-label-without-accessible-name/example';
 
 export const checkboxMeta = {
   // ...
@@ -310,7 +316,7 @@ export const checkboxMeta = {
 } satisfies ComponentDocsMeta<'p-checkbox'>;
 ```
 
-Define the complete pair in `accessibility/examples/hidden-label-without-accessible-name/example.ts`:
+Define the complete pair in `packages/examples/projects/accessibility/src/components/checkbox/accessibility/hidden-label-without-accessible-name/example.ts`:
 
 ```ts
 import type { AccessibilityExample } from '@porsche-design-system/story-generator';

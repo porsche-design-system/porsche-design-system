@@ -1,17 +1,15 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import ColorDescription from '@porsche-design-system/examples-stories/components/display/color/example.mdx';
+import { displayStoryColorInherit } from '@porsche-design-system/examples-stories/components/display/color/story';
+import { displayStory } from '@porsche-design-system/examples-stories/components/display/default/story';
+import SemanticsDescription from '@porsche-design-system/examples-stories/components/display/semantics/example.mdx';
+import { displayStorySemantics } from '@porsche-design-system/examples-stories/components/display/semantics/story';
+import SizeDescription from '@porsche-design-system/examples-stories/components/display/size/example.mdx';
+import { displayStorySizeInherit } from '@porsche-design-system/examples-stories/components/display/size/story';
+import { displayStorySizeResponsive } from '@porsche-design-system/examples-stories/components/display/size-responsive/story';
 import AccessibilityOverview from '@/app/(main)/components/display/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/display/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/display/configurator/introduction.mdx';
-import { displayStory } from '@/app/(main)/components/display/configurator/story';
-import ColorDescription from '@/app/(main)/components/display/examples/color/example.mdx';
-import { displayStoryColorInherit } from '@/app/(main)/components/display/examples/color/story';
-import SemanticsDescription from '@/app/(main)/components/display/examples/semantics/example.mdx';
-import { displayStorySemantics } from '@/app/(main)/components/display/examples/semantics/story';
-import SizeDescription from '@/app/(main)/components/display/examples/size/example.mdx';
-import {
-  displayStorySizeInherit,
-  displayStorySizeResponsive,
-} from '@/app/(main)/components/display/examples/size/story';
 import Usage from '@/app/(main)/components/display/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 

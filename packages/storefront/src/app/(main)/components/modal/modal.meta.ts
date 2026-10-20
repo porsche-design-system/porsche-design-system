@@ -1,17 +1,17 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/modal/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
-import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@/app/(main)/components/modal/accessibility/examples/dialog-label-on-component-host-vs-header-slot/example';
-import { modalTriggerWithoutPopupSemanticsOrContextA11yExample } from '@/app/(main)/components/modal/accessibility/examples/modal-trigger-without-popup-semantics-or-context/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/modal/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@porsche-design-system/examples-accessibility/components/modal/accessibility/dialog-label-on-component-host-vs-header-slot/example';
+import { modalTriggerWithoutPopupSemanticsOrContextA11yExample } from '@porsche-design-system/examples-accessibility/components/modal/accessibility/modal-trigger-without-popup-semantics-or-context/example';
+import AlertDialogDescription from '@porsche-design-system/examples-stories/components/modal/alert-dialog/example.mdx';
+import { modalStoryAlertDialog } from '@porsche-design-system/examples-stories/components/modal/alert-dialog/story';
+import CustomStylingDescription from '@porsche-design-system/examples-stories/components/modal/custom-styling/example.mdx';
+import { modalStoryCustomStyling } from '@porsche-design-system/examples-stories/components/modal/custom-styling/story';
+import { modalSlotStories, modalStory } from '@porsche-design-system/examples-stories/components/modal/default/story';
+import ScrollableDescription from '@porsche-design-system/examples-stories/components/modal/scrollable/example.mdx';
+import { modalStoryScrollable } from '@porsche-design-system/examples-stories/components/modal/scrollable/story';
 import AccessibilityOverview from '@/app/(main)/components/modal/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/modal/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/modal/configurator/introduction.mdx';
-import { modalSlotStories, modalStory } from '@/app/(main)/components/modal/configurator/story';
-import AlertDialogDescription from '@/app/(main)/components/modal/examples/alert-dialog/example.mdx';
-import { modalStoryAlertDialog } from '@/app/(main)/components/modal/examples/alert-dialog/story';
-import CustomStylingDescription from '@/app/(main)/components/modal/examples/custom-styling/example.mdx';
-import { modalStoryCustomStyling } from '@/app/(main)/components/modal/examples/custom-styling/story';
-import ScrollableDescription from '@/app/(main)/components/modal/examples/scrollable/example.mdx';
-import { modalStoryScrollable } from '@/app/(main)/components/modal/examples/scrollable/story';
 import Usage from '@/app/(main)/components/modal/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 
