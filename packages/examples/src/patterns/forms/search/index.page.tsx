@@ -30,7 +30,7 @@ const dealers = [
  * rows and 8px around the list. Highlight, hover and press use the frosted background and primary text of an option.
  */
 const resultLabelClass =
-  'block w-full min-h-[var(--leading-normal)] cursor-pointer rounded-sm px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm text-start text-sm font-normal leading-normal break-words text-contrast-high transition-colors hover:bg-frosted hover:text-primary active:bg-frosted active:text-primary';
+  'flex w-full min-h-[var(--leading-normal)] cursor-pointer gap-static-sm rounded-sm px-[calc(var(--spacing-static-sm)+var(--spacing-static-xs))] py-static-sm text-start text-sm font-normal leading-normal break-words text-contrast-high transition-colors hover:bg-frosted hover:text-primary active:bg-frosted active:text-primary';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -105,6 +105,7 @@ const Page = () => (
                 class={resultLabelClass}
               >
                 {dealer}
+                <p-icon name="check" color="primary" class="ms-auto shrink-0" hidden />
               </div>
             ))}
           </div>
@@ -137,6 +138,7 @@ const Page = () => (
             'forced-colors:outline-[Highlight]',
           ];
           let activeIndex = -1;
+          let selectedOption = null;
           let dismissed = false;
 
           // Workaround: p-input-search does not expose ariaControlsElements or ariaActiveDescendantElement on its
@@ -161,17 +163,28 @@ const Page = () => (
 
           const visibleOptions = () => options().filter((option) => !option.hidden);
 
+          const setSelected = (next) => {
+            selectedOption = next;
+            for (const option of options()) {
+              const isSelected = option === selectedOption;
+              option.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+              option.querySelector('p-icon').hidden = !isSelected;
+              option.classList.toggle('text-primary', isSelected || option.classList.contains('bg-frosted'));
+            }
+          };
+
           const setActive = (index) => {
             const items = visibleOptions();
             activeIndex = index;
             const active = index >= 0 ? items[index] : null;
             for (const option of options()) {
               option.classList.remove(...activeClasses);
-              option.setAttribute('aria-selected', 'false');
+              if (option === selectedOption) {
+                option.classList.add('text-primary');
+              }
             }
             if (active) {
               active.classList.add(...activeClasses);
-              active.setAttribute('aria-selected', 'true');
               active.scrollIntoView({ block: 'nearest' });
             }
             bindField(active);
@@ -192,6 +205,7 @@ const Page = () => (
           };
 
           const choose = (option) => {
+            setSelected(option);
             search.value = option.textContent.trim();
             dismissed = true;
             setOpen(false);
@@ -201,6 +215,9 @@ const Page = () => (
 
           const renderResults = () => {
             const query = queryOf();
+            if (selectedOption && selectedOption.textContent.trim().toLowerCase() !== query) {
+              setSelected(null);
+            }
             let visible = 0;
             for (const option of options()) {
               const match = query.length > 0 && option.textContent.toLowerCase().includes(query);

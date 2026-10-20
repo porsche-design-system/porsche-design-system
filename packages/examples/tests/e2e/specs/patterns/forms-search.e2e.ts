@@ -66,7 +66,8 @@ test('filters dealer choices and writes the highlighted one into the field', asy
 
   await page.keyboard.press('ArrowDown');
   await expect(stuttgart).toHaveClass(/bg-frosted/);
-  await expect(stuttgart).toHaveAttribute('aria-selected', 'true');
+  await expect(stuttgart).toHaveAttribute('aria-selected', 'false');
+  await expect(stuttgart.locator('p-icon')).toBeHidden();
   await expect
     .poll(() =>
       field(page).evaluate((input) => input.ariaActiveDescendantElement?.id === 'dealer-search-result-stuttgart')
@@ -80,6 +81,15 @@ test('filters dealer choices and writes the highlighted one into the field', asy
   expect(await isOpen(popover(page))).toBe(false);
   await expect(field(page)).toHaveAttribute('aria-expanded', 'false');
   await expect(field(page)).toHaveValue('Stuttgart');
+  await expect(stuttgart).toHaveAttribute('aria-selected', 'true');
+
+  await page.keyboard.press('ArrowDown');
+  expect(await isOpen(popover(page))).toBe(true);
+  await expect(stuttgart.locator('p-icon')).toBeVisible();
+
+  await field(page).fill('stu');
+  await expect(stuttgart).toHaveAttribute('aria-selected', 'false');
+  await expect(stuttgart.locator('p-icon')).toBeHidden();
 });
 
 test('closes on Escape without clearing the query and stays closed until the query changes', async ({ page }) => {
@@ -116,7 +126,7 @@ test('reopens the list with ArrowDown and highlights the first match', async ({ 
 
   await page.keyboard.press('ArrowDown');
   expect(await isOpen(popover(page))).toBe(true);
-  await expect(hamburg).toHaveAttribute('aria-selected', 'true');
+  await expect(hamburg).toHaveClass(/bg-frosted/);
 });
 
 test('submits the query with the Search button and the highlighted choice when there is one', async ({ page }) => {
