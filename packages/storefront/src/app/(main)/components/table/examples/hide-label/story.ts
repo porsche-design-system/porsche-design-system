@@ -1,6 +1,6 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { Story } from '@porsche-design-system/story-generator';
 
 export const tableStoryHideLabel: Story<'p-table'> = {
   state: { properties: { caption: 'Some caption' } },

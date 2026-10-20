@@ -1,4 +1,4 @@
-import type { AccessibilityExample, ExampleMarkupSample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample, ExampleMarkupSample } from '@porsche-design-system/story-generator';
 
 const mountedOnlyWhenShown: ExampleMarkupSample = {
   frameworkMarkup: {

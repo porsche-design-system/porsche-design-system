@@ -1,7 +1,7 @@
 'use client';
 
 import { FLAGS_ISO_3166, type FlagName } from '@porsche-design-system/flags';
-import type { Story } from '@/models/story';
+import type { Story } from '@porsche-design-system/story-generator';
 
 export const flagStory: Story<'p-flag'> = {
   generator: ({ properties } = {}) => [

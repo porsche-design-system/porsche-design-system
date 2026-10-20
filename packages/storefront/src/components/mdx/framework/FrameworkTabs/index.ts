@@ -1,0 +1,1 @@
+export { FrameworkTabs } from './FrameworkTabs';

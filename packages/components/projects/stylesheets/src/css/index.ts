@@ -23,7 +23,9 @@ const variablesCss: CssNode[] = [
   {
     selector: ':root',
     declarations: [
-      { property: 'color-scheme', value: 'light' },
+      // `only` prevents browsers with an automatic dark mode (e.g. Chrome on Android, Samsung Internet) from
+      // recoloring the page, which would leave non-recolored content such as icons with insufficient contrast.
+      { property: 'color-scheme', value: 'only light' },
       // Variable leaves are structurally `CssDeclaration`s, so they are emitted directly.
       ...flattenCssVariables(cssVariableTokens),
     ],
@@ -62,7 +64,7 @@ export const globalStylesMeta = {
   cssVariables: {
     file: 'variables.css',
     description:
-      'Exposes the design system **CSS variables** (custom properties) on `:root`, including theme-aware colors resolved via `light-dark()` and `:lang()` font overrides.',
+      'Exposes the design system **CSS variables** (custom properties) on `:root`, including theme-aware colors resolved via `light-dark()` and `:lang()` font overrides. Sets the default `color-scheme: only light`, which prevents browsers with an automatic dark mode from recoloring the page.',
     meta: variablesCss,
   },
   colorScheme: {

@@ -3,7 +3,6 @@ import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
 import shebang from 'rollup-plugin-preserve-shebang';
 import pkg from './package.json';
 
@@ -29,80 +28,6 @@ export default [
       format: 'cjs',
       preserveModules: true,
       interop: 'auto', // needed for generateScss.ts of utilities package to work with default exports of jss dependencies
-      plugins: [
-        generatePackageJson({
-          baseContents: (packageJson) => ({
-            ...packageJson,
-            name: '@porsche-design-system/shared',
-            sideEffects: false,
-            scripts: undefined,
-            devDependencies: {},
-            volta: undefined,
-            exports: {
-              '.': {
-                import: {
-                  types: './index.d.ts',
-                  default: './esm/index.js',
-                },
-                require: {
-                  types: './index.d.ts',
-                  default: './index.js',
-                },
-              },
-              // deep import so the metadata bundles of the styling packages can share the deprecation
-              // contract and its wording at runtime without dragging this package's barrel along
-              './deprecation': {
-                import: {
-                  types: './deprecation/index.d.ts',
-                  default: './deprecation/esm/index.mjs',
-                },
-                require: {
-                  types: './deprecation/index.d.ts',
-                  default: './deprecation/cjs/index.cjs',
-                },
-              },
-              './testing': {
-                import: {
-                  types: './testing/index.d.ts',
-                  default: './testing/esm/index.mjs',
-                },
-                require: {
-                  types: './testing/index.d.ts',
-                  default: './testing/cjs/index.cjs',
-                },
-              },
-              // deep import so that Vitest setups (and the bundled jsdom-polyfill) can normalize the `CSS`
-              // namespace without dragging the Playwright configs and W3C validator of the barrel along
-              './testing/normalize-css-namespace': {
-                import: {
-                  types: './testing/normalizeCssNamespace.d.ts',
-                  default: './testing/normalize-css-namespace/esm/index.mjs',
-                },
-                require: {
-                  types: './testing/normalizeCssNamespace.d.ts',
-                  default: './testing/normalize-css-namespace/cjs/index.cjs',
-                },
-              },
-              // deep import so that the Vitest specs can assert a value is defined without dragging the
-              // Playwright configs and W3C validator of the barrel along
-              './testing/assert-defined': {
-                import: {
-                  types: './testing/assertDefined.d.ts',
-                  default: './testing/assert-defined/esm/index.mjs',
-                },
-                require: {
-                  types: './testing/assertDefined.d.ts',
-                  default: './testing/assert-defined/cjs/index.cjs',
-                },
-              },
-              './css/styles.css': './css/styles.css',
-              './css/styles': './css/styles.css',
-              './examples': './examples/index.ts', // Examples is not bundled to avoid problems with next.js "use client" in mdx
-              './examples/*': './examples/*.tsx', // deep imports let a page pull one example without dragging the whole barrel into its chunk
-            },
-          }),
-        }),
-      ],
     },
     plugins: [
       copy({
@@ -159,6 +84,22 @@ export default [
       },
     ],
     plugins: [typescript({ noEmitOnError: true, rootDir: 'src/deprecation' })],
+  },
+  {
+    // standalone bundle for the `./models` deep import, see the exports map above
+    input: 'src/models/index.ts',
+    external,
+    output: [
+      {
+        file: 'dist/models/esm/index.mjs',
+        format: 'esm',
+      },
+      {
+        file: 'dist/models/cjs/index.cjs',
+        format: 'cjs',
+      },
+    ],
+    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/models' })],
   },
   {
     input: 'src/testing/index.ts',

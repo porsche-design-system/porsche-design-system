@@ -12,15 +12,15 @@ building Porsche web applications. Components are built with **Stencil** and wra
 
 | Layer              | Technology                                 |
 | ------------------ | ------------------------------------------ |
-| Package Manager    | npm 10+ (workspaces)                       |
+| Package Manager    | npm 11+ (workspaces)                       |
 | Node               | v24 (use Volta)                            |
 | Web Components     | Stencil 4.x                                |
 | Styling            | JSS (CSS-in-JS), Tailwind CSS              |
-| Frameworks         | Angular 21, React 19, Vue 3, Next.js 15    |
+| Frameworks         | Angular 22, React 19, Vue 3, Next.js 16    |
 | Build              | Rollup, Vite, Webpack                      |
 | Testing            | Vitest (unit), Playwright (e2e/vrt/a11y)   |
 | Linting/Formatting | Biome (JS/TS/JSON), Prettier (MD/MDX only) |
-| Types              | TypeScript 5.9                             |
+| Types              | TypeScript 6.x                             |
 
 ## Project Structure
 
@@ -32,6 +32,7 @@ packages/
 ├── components-react/   # React wrapper + Next.js/React Router integrations
 ├── components-vue/     # Vue wrapper
 ├── storefront/         # Next.js documentation site
+│   └── projects/       # Agent skills generator, StackBlitz projects, story generator
 ├── examples/           # Standalone example pages (TSX, rendered to plain HTML at build time)
 ├── tokens/             # Design tokens (colors, spacing, typography)
 ├── styles/             # Shared styles, Tailwind plugin
@@ -50,9 +51,9 @@ Only **four** packages are published to npm:
 ```
 
 Every other workspace package is `"private": true`, including all of `packages/styles/projects/*`,
-`@porsche-design-system/tokens-meta`, `@porsche-design-system/stylesheets` and `shared` — regardless of having a scoped
-name, an `exports` map, `files` and `.d.ts` output. The published packages are assembled by copying **selected build
-output** into a wrapper `dist/`; what is not copied does not exist for a consumer.
+`@porsche-design-system/tokens-meta`, `@porsche-design-system/stylesheets` and `@porsche-design-system/shared` —
+regardless of having a scoped name, an `exports` map, `files` and `.d.ts` output. The published packages are assembled
+by copying **selected build output** into a wrapper `dist/`; what is not copied does not exist for a consumer.
 
 **The most reliable and easiest way to tell what is published is to read the built wrapper `dist/` folders.** Each one
 _is_ the npm package — the tarball root, `package.json` included:

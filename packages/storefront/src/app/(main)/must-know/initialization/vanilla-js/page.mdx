@@ -1,9 +1,8 @@
-import { Notification } from '@/components/common/Notification';
-import { PButton } from '@porsche-design-system/components-react/ssr';
-import { TableOfContents } from '@/components/common/TableOfContents';
+import { Notification } from '@/components/mdx/content/Notification';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 
 export const metadata = {
-  title: 'Initialization: Vanilla JS - Porsche Design System',
+  title: 'Initialization: Vanilla JS - Must Know',
   description: 'Learn how to initialize and set up the Porsche Design System in your app with Vanilla JS.',
 };
 
@@ -115,8 +114,6 @@ Once this process is complete, the `hyrated` CSS class gets added to the compone
 
 Which makes the button appear like you are used to.
 
-<PButton>Hello</PButton>
-
 ## Change Lifecycle
 
 In case of an attribute or property change, the class instance goes through the following lifecycle methods in order.
@@ -178,7 +175,7 @@ A classic waterfall like loading behavior that
 
 ### Preloading font files
 
-By applying the [getFontLinks()](/partials/font-links/) partial we can preload the font assets. As a default, both
+By applying the [getFontLinks()](/partials/font-links) partial we can preload the font assets. As a default, both
 `regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
 ![Loading Behavior Vanilla JS 03](assets/loading-behavior-vanilla-js-03.jpg)
@@ -189,7 +186,7 @@ which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
 
 ### Preloading component chunks
 
-The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links/)
+The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links)
 partial. Without any configuration it simply preloads the **core chunk**.
 
 ![Loading Behavior Vanilla JS 04](assets/loading-behavior-vanilla-js-04.jpg)
@@ -217,14 +214,14 @@ fonts) that are located **above the fold** which means visible on page load with
 ### Early initialization
 
 There is one more improvement we can do, and that is to skip loading the `index.js` file of
-`@porsche-design-system/components-js`. That can be achieved by using the [getLoaderScript()](/partials/loader-script/)
+`@porsche-design-system/components-js`. That can be achieved by using the [getLoaderScript()](/partials/loader-script)
 partial which essentially produces a `script` with the code necessary to load the **core chunk** and it also takes care
 of calling `porscheDesignSystem.load()` so that the manual part from the initial setup is superfluous.
 
 ![Loading Behavior Vanilla JS 06](assets/loading-behavior-vanilla-js-06.jpg)
 
 Therefore, the total amount of data transferred is basically the same but without the additional request and the
-necessary http communication, like request and response headers. Also [componentsReady()](/developing/components-ready/)
+necessary http communication, like request and response headers. Also [componentsReady()](/developing/components-ready)
 isn't part of `getLoaderScript()`.
 
 <Notification heading="Hint" headingTag="h4" state="warning">

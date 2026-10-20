@@ -1,0 +1,87 @@
+import type { SlotMeta } from '@porsche-design-system/component-meta';
+import { PHeading, PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
+import type {
+  HTMLTagOrComponent,
+  SlotState,
+  SlotStories,
+  Story,
+  StoryState,
+} from '@porsche-design-system/story-generator';
+import { capitalCase } from 'change-case';
+import React from 'react';
+
+type ConfigureSlotsProps<Tag extends HTMLTagOrComponent> = {
+  tagName: Tag;
+  componentSlots: SlotMeta | undefined;
+  configuredSlots: StoryState<Tag>;
+  slotStories: SlotStories<Tag>;
+  requiredSlots?: string[];
+  onUpdateSlots: (slotName: string, selectedSlotStory: Story<Tag> | undefined) => void;
+};
+
+export const ConfigureSlots = <T extends HTMLTagOrComponent>({
+  tagName,
+  componentSlots,
+  configuredSlots,
+  slotStories,
+  requiredSlots,
+  onUpdateSlots,
+}: ConfigureSlotsProps<T>) => {
+  return (
+    <>
+      <PHeading slot="summary" tag="h2" size="small" weight="semibold">
+        Slots
+      </PHeading>
+      <div className="flex flex-col gap-fluid-sm">
+        {Object.entries(slotStories ?? {}).map(([slotName, slotExamples]) => {
+          return (
+            <div key={slotName} className="flex flex-col gap-fluid-sm">
+              <div className="flex gap-static-xs">
+                <PSwitch
+                  checked={!!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
+                  compact={true}
+                  onUpdate={(e) =>
+                    onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)
+                  }
+                  disabled={
+                    requiredSlots?.includes(slotName) ||
+                    (componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.isRequired
+                  }
+                >
+                  {capitalCase(slotName)}
+                </PSwitch>
+                <PPopover>
+                  {/* TODO: Fix typing */}
+                  {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
+                </PPopover>
+              </div>
+              {Object.keys(slotExamples).length > 1 && (
+                <PSelect
+                  className="[--p-select-background-color:bg-scrim]"
+                  name={slotName}
+                  value={configuredSlots?.slots?.[slotName]?.name}
+                  disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
+                  hideLabel={true}
+                  label="Select slot to be configured"
+                  compact={true}
+                  onChange={(e) =>
+                    onUpdateSlots(
+                      slotName,
+                      Object.values(slotExamples).find((slot) => slot.name === e.detail.value)
+                    )
+                  }
+                >
+                  {Object.values(slotExamples ?? {}).map((slot) => (
+                    <PSelectOption key={slot.name} value={slot.name}>
+                      {slot.name}
+                    </PSelectOption>
+                  ))}
+                </PSelect>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};

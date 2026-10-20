@@ -32,6 +32,7 @@ packages/
 ├── components-react/  # React wrapper + Next.js/React Router integrations
 ├── components-vue/    # Vue wrapper
 ├── storefront/        # Next.js documentation site
+│   └── projects/      # Agent skills generator, StackBlitz projects, story generator
 ├── examples/          # Standalone example pages (TSX, rendered to plain HTML at build time)
 ├── tokens/            # Design tokens (colors, spacing, typography)
 ├── styles/            # Shared styles, Tailwind plugin
@@ -45,9 +46,9 @@ packages/
 
 Only **four** packages are published to npm: `@porsche-design-system/components-{js|angular|react|vue}`. Every other
 workspace package is `"private": true` — including all of `packages/styles/projects/*`,
-`@porsche-design-system/tokens-meta`, `@porsche-design-system/stylesheets` and `shared` — regardless of having a scoped
-name, an `exports` map, `files` and `.d.ts` output. The published packages are assembled by copying **selected build
-output** into a wrapper `dist/`; what is not copied does not exist for a consumer.
+`@porsche-design-system/tokens-meta`, `@porsche-design-system/stylesheets` and `@porsche-design-system/shared` —
+regardless of having a scoped name, an `exports` map, `files` and `.d.ts` output. The published packages are assembled
+by copying **selected build output** into a wrapper `dist/`; what is not copied does not exist for a consumer.
 
 **The most reliable and easiest way to tell what is published is to read the built wrapper `dist/` folders.** Each one
 *is* the npm package — the tarball root, `package.json` included:

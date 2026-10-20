@@ -1,9 +1,9 @@
-import { ElementInternalsComponents } from '@/components/common/ElementInternalsComponents';
-import { Notification } from '@/components/common/Notification';
-import { TableOfContents } from '@/components/common/TableOfContents';
+import { ElementInternalsComponents } from '@/components/mdx/reference/ElementInternalsComponents';
+import { Notification } from '@/components/mdx/content/Notification';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 
 export const metadata = {
-  title: 'Angular: Testing - Porsche Design System',
+  title: 'Angular: Testing - Developing',
   description: 'Checkout how to test an Angular application build with Porsche Design System.',
 };
 
@@ -23,9 +23,9 @@ The polyfill requires **jsdom v30** or higher. On older versions it throws an ex
 
 To apply the polyfill, simply import it in your `setupTest.{js|ts}` file.
 
-<Notification heading="Attention" heading-tag="h2" state="warning">
+<Notification heading="Attention" headingTag="h2" state="warning">
   Certain modern browser APIs are not supported in the jsdom environment. See [Unsupported
-  APIs](/developing/react/testing#unsupported-ap-is) for more information.
+  APIs](/developing/react/testing#unsupported-apis) for more information.
 </Notification>
 
 ### Setup file
@@ -141,7 +141,7 @@ it('should work for p-button', async () => {
 Also exported: `screen` (every query above, bound to `document`), `within`, `deepQuerySelector`, `deepQuerySelectorAll`,
 `getAllElementsAndShadowRoots`, `debug`, `logShadowDOM`, `prettyShadowDOM`, `logRoles`, `configure` and `getConfig`.
 
-<Notification heading="Requires a DOM" heading-tag="h2" state="warning">
+<Notification heading="Requires a DOM" headingTag="h2" state="warning">
   These queries need a DOM to search. Importing the `testing` sub-package where no DOM is available throws an error.
 </Notification>
 

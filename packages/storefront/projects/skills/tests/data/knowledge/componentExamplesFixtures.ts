@@ -1,9 +1,8 @@
 import type { CodeSample } from '@porsche-design-system/shared';
+import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-system/story-generator';
 import type { ComponentExamplesSource } from '@skills/knowledge/components/examples';
 import { parseMdxToMdast } from '@skills/knowledge/mdx/renderMdxToMarkdown';
 import type { FC } from 'react';
-import type { Story } from '@/models/story';
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 
 /**
  * Representative component examples modelled on real storefront `.meta.ts` sources,
