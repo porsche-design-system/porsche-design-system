@@ -51,9 +51,10 @@ export const meta: ExampleMeta = {
  * The results are links, so the panel is a dialog rather than a listbox: choosing one navigates, which a listbox option
  * must not do. `hide-arrow` drops the arrow and the offset it would add, and the script matches the panel width to the
  * field. The script sets `role="combobox"`, `aria-autocomplete="list"`, `aria-haspopup="dialog"` and `aria-expanded`
- * through the `aria` prop. A string `aria-controls` cannot be resolved from inside the input's shadow tree, so the
- * script points `ariaControlsElements` at the dialog and `ariaActiveDescendantElement` at the highlighted link.
- * `p-input-search` already emits `input`, and `focusin` bubbles out of the inner field.
+ * through the `aria` prop. A string `aria-controls` cannot be resolved from inside the input's shadow tree, and
+ * `p-input-search` does not expose element-reference ARIA properties on its public API yet, so as a workaround the
+ * script reaches into `shadowRoot` to point `ariaControlsElements` at the dialog and `ariaActiveDescendantElement` at
+ * the highlighted link. `p-input-search` already emits `input`, and `focusin` bubbles out of the inner field.
  */
 const Page = () => (
   <PatternPage meta={meta}>
@@ -96,6 +97,11 @@ const Page = () => (
             </ul>
           </div>
         </p-popover>
+        {dealers.map((dealer) => (
+          <section id={`dealer-${slugOf(dealer)}`} class="hidden target:block">
+            <p-text>Porsche Center {dealer}</p-text>
+          </section>
+        ))}
         <p id="dealer-search-status" class="sr-only" role="status" />
       </div>
     </main>
@@ -126,10 +132,11 @@ const Page = () => (
           let activeIndex = -1;
           let dismissed = false;
 
-          // The inner input lives in the field's shadow tree, so an id in aria-controls or aria-activedescendant never
-          // resolves. The element references do, and the accessibility tree exposes them as controls and
-          // activedescendant. They are set again after aria is assigned, because that render replaces the attributes
-          // on the same input.
+          // Workaround: p-input-search does not expose ariaControlsElements or ariaActiveDescendantElement on its
+          // public API yet, and a string id in aria-controls or aria-activedescendant never resolves across the
+          // shadow boundary. Reaching into shadowRoot to set the element references on the inner input exposes
+          // both relationships in the accessibility tree. They are set again after aria is assigned, because that
+          // render replaces the attributes on the same input.
           const bindField = (active) => {
             const input = search.shadowRoot && search.shadowRoot.querySelector('input');
             if (!input) {
