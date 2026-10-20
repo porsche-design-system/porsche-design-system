@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
 // url=https://www.figma.com/design/KEY/Library?node-id=1-5
-// source=https://designsystem.porsche.com/v4.8.0/components/button-pure/api/
+// source=https://designsystem.porsche.com/v0.0.0/components/button-pure/api/
 // component=p-button-pure
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -30,8 +30,8 @@ const form = read.text('form');
 export default {
   example: figma.code`<p-button-pure${type ? ` type="${type}"` : ''}${name ? ` name="${escapeAttribute(name)}"` : ''}${value ? ` value="${escapeAttribute(value)}"` : ''}${disabled ? ' [disabled]="true"' : ''}${loading ? ' [loading]="true"' : ''}${size ? ` size="${size}"` : ''}${color ? ` color="${color}"` : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` iconSource="${escapeAttribute(iconSource)}"` : ''}${underline ? ' [underline]="true"' : ''}${active ? ' [active]="true"' : ''}${hideLabel ? ' [hideLabel]="true"' : ''}${alignLabel ? ` alignLabel="${alignLabel}"` : ''}${stretch ? ' [stretch]="true"' : ''}${form ? ` form="${escapeAttribute(form)}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-button-pure>`,
   imports: [
-    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/angular/getting-started/',
-    '// Docs: https://designsystem.porsche.com/v4.8.0/components/button-pure/api/',
+    '// Setup: https://designsystem.porsche.com/v0.0.0/developing/angular/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v0.0.0/components/button-pure/api/',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
   ],
   id: 'p-button-pure',

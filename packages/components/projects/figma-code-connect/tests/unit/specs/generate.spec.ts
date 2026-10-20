@@ -1,7 +1,10 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { describe, expect, it } from 'vitest';
 import { generate } from '../../../figma/generate';
+import { componentsPackagePath, pdsVersion } from '../../../figma/library';
 import type { Component, Definition, Snapshot } from '../../../figma/snapshot';
 
 // Real component-meta, hand-written Figma component sets and history: no pull involved.
@@ -59,6 +62,13 @@ describe('generate: templates', () => {
   ])("opens a template's imports with the setup guide of its framework and version: $suffix", ({ suffix, setup }) => {
     expect(template(run([set('tag')], { version: '4.8.0' }), 'tag', suffix)).toContain(
       `imports: [\n    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/${setup}',\n`
+    );
+  });
+
+  it('pdsVersion reads the version of packages/components', () => {
+    const packageJson = resolve(__dirname, '../../../../../package.json');
+    expect(pdsVersion(resolve(__dirname, '../../..', componentsPackagePath))).toBe(
+      JSON.parse(readFileSync(packageJson, 'utf8')).version
     );
   });
 

@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
 // url=https://www.figma.com/design/KEY/Library?node-id=1-27
-// source=https://designsystem.porsche.com/v4.8.0/components/link-pure/api/
+// source=https://designsystem.porsche.com/v0.0.0/components/link-pure/api/
 // component=p-link-pure
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -27,8 +27,8 @@ const rel = read.text('rel');
 export default {
   example: figma.code`<p-link-pure${alignLabel ? ` align-label="${alignLabel}"` : ''}${stretch ? ' stretch="true"' : ''}${size ? ` size="${size}"` : ''}${color ? ` color="${color}"` : ''}${icon ? ` icon="${icon}"` : ''}${iconSource ? ` icon-source="${escapeAttribute(iconSource)}"` : ''}${underline ? ' underline="true"' : ''}${href ? ` href="${escapeAttribute(href)}"` : ''}${active ? ' active="true"' : ''}${hideLabel ? ' hide-label="true"' : ''}${download ? ` download="${escapeAttribute(download)}"` : ''}${rel ? ` rel="${escapeAttribute(rel)}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-link-pure>`,
   imports: [
-    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vanilla-js/getting-started/',
-    '// Docs: https://designsystem.porsche.com/v4.8.0/components/link-pure/api/',
+    '// Setup: https://designsystem.porsche.com/v0.0.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v0.0.0/components/link-pure/api/',
   ],
   id: 'p-link-pure',
   metadata: { nestable: true },

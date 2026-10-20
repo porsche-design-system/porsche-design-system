@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
 // url=https://www.figma.com/design/KEY/Library?node-id=1-28
-// source=https://designsystem.porsche.com/v4.8.0/components/link-tile/api/
+// source=https://designsystem.porsche.com/v0.0.0/components/link-tile/api/
 // component=p-link-tile
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -25,8 +25,8 @@ const rel = read.text('rel');
 export default {
   example: figma.code`<p-link-tile${size ? ` size="${size}"` : ''}${weight ? ` weight="${weight}"` : ''}${aspectRatio ? ` aspectRatio="${aspectRatio}"` : ''}${label ? ` label="${escapeAttribute(label)}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${align ? ` align="${align}"` : ''}${gradient ? ' [gradient]="true"' : ''}${compact ? ' [compact]="true"' : ''}${href ? ` href="${escapeAttribute(href)}"` : ''}${download ? ` download="${escapeAttribute(download)}"` : ''}${rel ? ` rel="${escapeAttribute(rel)}"` : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', 'header') : ''}${read.has('slot-footer') ? slotted(instance.getSlot('slot-footer'), 'slot-footer', 'footer') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-link-tile>`,
   imports: [
-    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/angular/getting-started/',
-    '// Docs: https://designsystem.porsche.com/v4.8.0/components/link-tile/api/',
+    '// Setup: https://designsystem.porsche.com/v0.0.0/developing/angular/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v0.0.0/components/link-tile/api/',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
   ],
   id: 'p-link-tile',

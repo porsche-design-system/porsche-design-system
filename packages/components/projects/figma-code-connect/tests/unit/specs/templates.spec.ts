@@ -7,7 +7,6 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { describe, expect, it } from 'vitest';
 import { acceptedGapsPath, generate } from '../../../figma/generate';
-import { componentsPackagePath, pdsVersion } from '../../../figma/library';
 import type { Snapshot } from '../../../figma/snapshot';
 
 // Every generated file, rendered from a pull built from component-meta with made-up node ids: no Figma data committed.
@@ -33,8 +32,8 @@ const { files } = generate(pull, acceptedGaps, {
   tags,
   outputRoot: 'generated',
   fileUrl: 'https://www.figma.com/design/KEY/Library',
-  // the version figma:generate reads, so the snapshots show the docs links that get published
-  version: pdsVersion(resolve(packageRoot, componentsPackagePath)),
+  // a fixed version keeps the snapshots stable across releases; generate.spec.ts covers how the version reaches the links
+  version: '0.0.0',
 });
 const generated = Object.keys(files)
   .filter((file) => file !== acceptedGapsPath)

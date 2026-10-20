@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
 // url=https://www.figma.com/design/KEY/Library?node-id=1-18
-// source=https://designsystem.porsche.com/v4.8.0/components/input-number/api/
+// source=https://designsystem.porsche.com/v0.0.0/components/input-number/api/
 // component=p-input-number
 // Auto generated - do not edit by hand.
 import figma from 'figma';
@@ -33,8 +33,8 @@ const controls = read.flag('controls');
 export default {
   example: figma.code`<p-input-number${label ? ` label="${escapeAttribute(label)}"` : ''}${step ? ` step="${step}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${compact ? ' compact="true"' : ''}${name ? ` name="${escapeAttribute(name)}"` : ''}${value ? ` value="${escapeAttribute(value)}"` : ''}${autoComplete ? ` auto-complete="${escapeAttribute(autoComplete)}"` : ''}${readOnly ? ' read-only="true"' : ''}${form ? ` form="${escapeAttribute(form)}"` : ''}${max ? ` max="${max}"` : ''}${min ? ` min="${min}"` : ''}${placeholder ? ` placeholder="${escapeAttribute(placeholder)}"` : ''}${disabled ? ' disabled="true"' : ''}${required ? ' required="true"' : ''}${loading ? ' loading="true"' : ''}${state ? ` state="${state}"` : ''}${message ? ` message="${escapeAttribute(message)}"` : ''}${hideLabel ? ' hide-label="true"' : ''}${controls ? ' controls="true"' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', 'label') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', 'label-after') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', 'description') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', 'message') : ''}${read.has('slot-start') ? slotted(instance.getSlot('slot-start'), 'slot-start', 'start') : ''}${read.has('slot-end') ? slotted(instance.getSlot('slot-end'), 'slot-end', 'end') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-input-number>`,
   imports: [
-    '// Setup: https://designsystem.porsche.com/v4.8.0/developing/vanilla-js/getting-started/',
-    '// Docs: https://designsystem.porsche.com/v4.8.0/components/input-number/api/',
+    '// Setup: https://designsystem.porsche.com/v0.0.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v0.0.0/components/input-number/api/',
   ],
   id: 'p-input-number',
   metadata: { nestable: true },
