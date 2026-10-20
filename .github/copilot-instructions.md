@@ -34,7 +34,7 @@ packages/
 ├── storefront/        # Next.js documentation site
 │   └── projects/      # Agent skills generator, StackBlitz projects
 ├── examples/          # Standalone example pages (TSX, rendered to plain HTML at build time)
-│   └── projects/      # Story generator
+│   └── projects/      # Framework examples, story generator
 ├── tokens/            # Design tokens (colors, spacing, typography)
 ├── styles/            # Shared styles, Tailwind plugin
 ├── assets/            # Icons, fonts, marque, crest

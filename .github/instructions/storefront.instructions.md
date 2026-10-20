@@ -114,8 +114,8 @@ import { Configurator } from '@/components/mdx/playground/Configurator';
 
 - Use `ComponentStory` for examples that can be represented by a storefront `Story`.
 - Use `ComponentExample` only for advanced examples that require custom logic and cross-framework source files.
-- For `ComponentExample`, register the example in `packages/shared/scripts/generateCodeExamples.ts` so it becomes
-  importable from `@porsche-design-system/shared/examples`.
+- For `ComponentExample`, add the example's `meta.ts` to `packages/examples/projects/framework/src/<id>/` so it becomes
+  importable from `@porsche-design-system/examples-framework`.
 - Preserve `metadata` and `ComponentStatus` imports on the page.
 - Add `TableOfContents` when a page contains multiple example sections.
 - Keep each example accessible by default, including keyboard support, visible focus, and proper accessible names.
@@ -124,7 +124,7 @@ import { Configurator } from '@/components/mdx/playground/Configurator';
 import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
 import { componentStoryAdvanced } from '@/app/components/component/component.stories';
 import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
+import { componentExampleCustomLogic } from '@porsche-design-system/examples-framework';
 ```
 
 ## Testing expectations

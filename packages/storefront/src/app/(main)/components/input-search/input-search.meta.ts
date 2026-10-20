@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { inputSearchExampleForm } from '@porsche-design-system/shared/examples';
+import { inputSearchExampleForm } from '@porsche-design-system/examples-framework';
 import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/hidden-label-without-accessible-name/example';
 import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/placeholder-used-as-the-only-label/example';

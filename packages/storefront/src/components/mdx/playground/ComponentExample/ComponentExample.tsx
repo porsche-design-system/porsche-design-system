@@ -1,66 +1,31 @@
-'use client';
+import type { FrameworkExample, FrameworkExampleId } from '@porsche-design-system/examples-framework';
+import { frameworkExamplePreviews } from '@porsche-design-system/examples-framework/previews';
+import type { ComponentType } from 'react';
+import { ComponentExamplePlayground, type ComponentExamplePlaygroundProps } from './ComponentExamplePlayground';
 
-import type { CodeSample, Framework } from '@porsche-design-system/shared';
-import { openInStackblitz } from '@porsche-design-system/stackblitz';
-import { wrapCode } from '@porsche-design-system/story-generator';
-import { useMemo } from 'react';
-import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
-import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { createStackblitzMarkupFromSample } from '@/lib/stackblitz/createStackblitzMarkupFromSample';
-import { splitVanillaJsCode } from '@/utils/splitVanillaJsCode';
-import type { BackgroundColor } from '../Playground';
-import { Playground } from '../Playground';
-
-type ComponentSampleProps = {
-  codeSample: CodeSample;
+type ComponentExampleProps = Omit<ComponentExamplePlaygroundProps, 'children'> & {
+  codeSample: FrameworkExample<FrameworkExampleId>;
   disableDemo?: boolean;
-  disableOpenInStackblitz?: boolean;
-  backgroundColor?: BackgroundColor;
-  fixedBackgroundColor?: string;
+  /** The preview of a `standalone` example, which `frameworkExamplePreviews` leaves out. */
+  preview?: ComponentType;
 };
 
-export const ComponentExample = ({
-  codeSample,
-  disableDemo = false,
-  disableOpenInStackblitz = false,
-  backgroundColor,
-  fixedBackgroundColor,
-}: ComponentSampleProps) => {
-  const { storefrontColorScheme } = useStorefrontColorScheme();
-  const { framework } = useStorefrontFramework();
+const getPreview = (id: FrameworkExampleId): ComponentType | undefined =>
+  id in frameworkExamplePreviews ? frameworkExamplePreviews[id as keyof typeof frameworkExamplePreviews] : undefined;
 
-  const Component = codeSample.component;
-
-  // Vanilla Js Markup needs to be wrapped in containing html code
-  const frameworkMarkup = useMemo(() => {
-    if (codeSample.frameworkMarkup['vanilla-js']) {
-      const { markup, script, scriptAttributes } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js']);
-      return {
-        ...codeSample.frameworkMarkup,
-        'vanilla-js': wrapCode(
-          'vanilla-js',
-          { markup, script, scriptAttributes },
-          { colorScheme: storefrontColorScheme }
-        ),
-      };
-    }
-    return codeSample.frameworkMarkup;
-  }, [codeSample, storefrontColorScheme]);
-
-  const onOpenInStackblitz = () => {
-    const markup = createStackblitzMarkupFromSample(codeSample.frameworkMarkup, framework, storefrontColorScheme);
-    openInStackblitz(framework, markup, storefrontColorScheme);
-  };
+/**
+ * A framework example: its code for every framework and its live preview. A server component, because it looks the
+ * preview up by the example's id and hands the client a reference to its module.
+ */
+export const ComponentExample = ({ codeSample, disableDemo = false, preview, ...props }: ComponentExampleProps) => {
+  const Preview = preview ?? getPreview(codeSample.id);
+  if (!Preview && !disableDemo) {
+    throw new Error(`[storefront] "${codeSample.id}" is a standalone framework example; pass its preview`);
+  }
 
   return (
-    <Playground
-      frameworkMarkup={frameworkMarkup}
-      onOpenInStackblitz={() => !disableOpenInStackblitz && onOpenInStackblitz()}
-      disableOpenInStackblitz={disableOpenInStackblitz}
-      backgroundColor={backgroundColor}
-      fixedBackgroundColor={fixedBackgroundColor}
-    >
-      {!disableDemo && <Component />}
-    </Playground>
+    <ComponentExamplePlayground codeSample={codeSample} {...props}>
+      {!disableDemo && Preview && <Preview />}
+    </ComponentExamplePlayground>
   );
 };

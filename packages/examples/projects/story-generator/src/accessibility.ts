@@ -1,4 +1,4 @@
-import type { CodeSample } from '@porsche-design-system/shared';
+import type { FrameworkMarkup } from '@porsche-design-system/shared';
 import type { ElementConfig, HTMLTagOrComponent } from './element';
 import type { StoryState } from './story';
 
@@ -41,11 +41,10 @@ export type AccessibilityStory = {
 };
 
 /**
- * The markup-only subset of `CodeSample`. Accessibility examples render as static snippets and never
- * mount a live preview, so an authored payload owes only its per-framework markup — a full
- * `CodeSample` stays assignable.
+ * Code for every framework. Accessibility examples render as static snippets and never mount a live
+ * preview, so an authored payload owes only its per-framework markup.
  */
-export type ExampleMarkupSample = Pick<CodeSample, 'frameworkMarkup'>;
+export type ExampleMarkupSample = { frameworkMarkup: FrameworkMarkup };
 
 /**
  * Discriminated union of the two payload kinds for an accessibility example side (anti-pattern or

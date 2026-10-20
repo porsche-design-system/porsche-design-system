@@ -8,7 +8,7 @@ import pkg from './package.json';
 
 const input = 'src/index.ts';
 const external = [
-  ...Object.keys(pkg.dependencies),
+  ...Object.keys(pkg.dependencies ?? {}),
   // JSS packages are hoisted from workspace root; keep them external at runtime
   'jss',
   'jss-preset-default',
@@ -34,7 +34,6 @@ export default [
         targets: [
           { src: 'src/css/*', dest: 'dist/css' },
           { src: 'src/dummyassets/*', dest: 'dist/dummyassets' },
-          { src: 'src/examples/*', dest: 'dist/examples' },
         ],
       }),
       typescript({ noEmitOnError: true, declaration: true, declarationDir: 'dist', rootDir: 'src' }),

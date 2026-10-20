@@ -2,7 +2,7 @@ import { componentMeta } from '@porsche-design-system/component-meta';
 import {
   inlineNotificationExampleActionButton,
   inlineNotificationExampleEvents,
-} from '@porsche-design-system/shared/examples';
+} from '@porsche-design-system/examples-framework';
 import { notificationMountedOnlyWhenNeededA11yExample } from '@/app/(main)/components/inline-notification/accessibility/examples/notification-mounted-only-when-needed/example';
 import { warningWithoutDescriptiveHeadingA11yExample } from '@/app/(main)/components/inline-notification/accessibility/examples/warning-without-descriptive-heading/example';
 import AccessibilityOverview from '@/app/(main)/components/inline-notification/accessibility/overview.mdx';

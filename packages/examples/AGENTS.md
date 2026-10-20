@@ -92,6 +92,7 @@ scripts/                          # the entry points `npm run …` starts with t
 └── previewSite.ts                # serves dist-site/ below /examples/ against the local CDN
 skill/skill.ts                    # examplesSkill – the patterns and templates for the knowledge skill, read from dist/
 projects/                         # a workspace per kind of example – see _Projects_
+├── framework/                    # @porsche-design-system/examples-framework: hand-written examples from the wrapper apps
 └── story-generator/              # @porsche-design-system/story-generator: story types, markup per framework, StoryPreview
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
@@ -150,15 +151,51 @@ pipeline's copy, and `scripts/verify.ts` fails the build on any other root-absol
 tooling they share, get a project each below `projects/`: an npm workspace with its own dependencies, typecheck and
 tests.
 
-| Project                                                 | Package                                  | What it holds                                                                                                                                                  |
-| ------------------------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`projects/story-generator`](projects/story-generator/) | `@porsche-design-system/story-generator` | The story types, the markup of a story for every framework (`getStoryMarkup`, `wrapCode`) and its live React rendering (`StoryPreview`, the `/react` subpath). |
+| Project                                                 | Package                                     | What it holds                                                                                                                                                  |
+| ------------------------------------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`projects/framework`](projects/framework/)             | `@porsche-design-system/examples-framework` | The hand-written framework examples: the code of every framework as data, and their live React previews (`/previews`). See _Framework examples_.               |
+| [`projects/story-generator`](projects/story-generator/) | `@porsche-design-system/story-generator`    | The story types, the markup of a story for every framework (`getStoryMarkup`, `wrapCode`) and its live React rendering (`StoryPreview`, the `/react` subpath). |
 
 A project exports its TypeScript source, not a build. The Storefront compiles it (`transpilePackages` in
 [`next.config.ts`](../storefront/next.config.ts)), so `next dev` hot-reloads a change to it like one to its own files.
 The package's `typecheck` fans out to every project, and the root's `typecheck:examples:tests` calls their test scopes;
 a project has no root entry of its own besides its `test:unit:*` script (see
 [`docs/typecheck.md`](../../docs/typecheck.md)).
+
+**Every example has an id** that never changes once something references it: lowercase kebab-case segments joined by
+`/`, the folder of the example below its project's `src/`. It names neither the kind of the example nor a framework, so
+an example keeps its id when its format changes:
+
+| Example                                    | Id                                            | For instance                                                               |
+| ------------------------------------------ | --------------------------------------------- | -------------------------------------------------------------------------- |
+| An example of a component                  | `components/<tag without p->/<slug>`          | `components/select/async-filter`                                           |
+| The default example the configurator shows | `components/<component>/default`              | `components/toast/default`                                                 |
+| An accessibility example                   | `components/<component>/accessibility/<slug>` | `components/button/accessibility/icon-only-button-without-accessible-name` |
+| A pattern or a template                    | its path, as `ExamplePath` names it           | `patterns/header/overlay`                                                  |
+| An example of something else               | `<Storefront route>/<slug>`                   | `ag-grid/theme/compact`                                                    |
+
+### Framework examples
+
+An example that needs logic a story cannot express is written by hand, once per framework, in the example app of every
+wrapper (`components-js/src/examples`, `components-angular/src/app/examples`, `components-react/src/examples`,
+`components-vue/src/examples`), which compiles it and runs its e2e tests. [`projects/framework`](projects/framework/)
+turns them into examples:
+
+- **One `meta.ts` per example,** in the folder of its id: `src/components/select/set-value/meta.ts`. It lists the
+  `components` the example shows and its `source`, the kebab-case base name of its files (`'select-example-dynamic'` →
+  `select-example-dynamic.html`, `select-example-dynamic.component.ts`, `SelectExampleDynamic.tsx`,
+  `SelectExampleDynamic.vue`), or the four file names where they deviate from that (AG Grid).
+- **`npm run build`** (in `build:examples:projects`) reads the sources and generates two entry points into `generated/`,
+  gitignored:
+  - `@porsche-design-system/examples-framework`: the examples as data – id, components and the code of every framework,
+    as the code tabs, StackBlitz and the skills show it – by id (`frameworkExamples`) and by name
+    (`selectExampleDynamic`). It imports no wrapper, so the skills build loads it before the wrappers are built.
+  - `@porsche-design-system/examples-framework/previews`: the live React preview of every example by id
+    (`frameworkExamplePreviews`), a client component each, for the server components of the Storefront to render. Every
+    page whose server graph imports the map loads all of its previews, so an example with a large dependency is
+    `standalone` in its meta (AG Grid): it is left out of the map, and its page imports the preview by its own entry,
+    `…/previews/<Name>`. Typechecked only by the package's `typecheck`, after the wrappers.
+- A change to a source in a wrapper app or to a `meta.ts` needs that build again; `next dev` then reloads it.
 
 ## Links: examples never navigate
 

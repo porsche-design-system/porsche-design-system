@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { stepperHorizontalExample } from '@porsche-design-system/shared/examples';
+import { stepperHorizontalExample } from '@porsche-design-system/examples-framework';
 import { genericStepLabelsWithoutContextA11yExample } from '@/app/(main)/components/stepper-horizontal/accessibility/examples/generic-step-labels-without-context/example';
 import AccessibilityOverview from '@/app/(main)/components/stepper-horizontal/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/stepper-horizontal/accessibility/tests.mdx';

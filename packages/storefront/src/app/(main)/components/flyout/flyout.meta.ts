@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { flyoutExampleForm } from '@porsche-design-system/shared/examples';
+import { flyoutExampleForm } from '@porsche-design-system/examples-framework';
 import { ariaOnTriggerButtonHostVsAriaPropA11yExample } from '@/app/(main)/components/flyout/accessibility/examples/aria-on-trigger-button-host-vs-aria-prop/example';
 import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@/app/(main)/components/flyout/accessibility/examples/dialog-label-on-component-host-vs-header-slot/example';
 import { flyoutTriggerWithoutPopupSemanticsA11yExample } from '@/app/(main)/components/flyout/accessibility/examples/flyout-trigger-without-popup-semantics/example';

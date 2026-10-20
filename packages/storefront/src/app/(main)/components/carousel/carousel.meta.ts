@@ -3,7 +3,7 @@ import {
   carouselExampleDynamicSlides,
   carouselExampleFocusOnCenterSlide,
   carouselExampleJumpToSlide,
-} from '@porsche-design-system/shared/examples';
+} from '@porsche-design-system/examples-framework';
 import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/carousel/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 import { carouselWithoutSkipPathForKeyboardUsersA11yExample } from '@/app/(main)/components/carousel/accessibility/examples/carousel-without-skip-path-for-keyboard-users/example';
 import { vagueCarouselLabelA11yExample } from '@/app/(main)/components/carousel/accessibility/examples/vague-carousel-label/example';

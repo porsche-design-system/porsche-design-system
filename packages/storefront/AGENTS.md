@@ -211,12 +211,12 @@ Use the examples page to showcase curated use cases:
 import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
 import { componentStoryAdvanced } from '@/app/components/component/component.stories';
 import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
+import { componentExampleCustomLogic } from '@porsche-design-system/examples-framework';
 ```
 
 - Put story-backed examples in `{component}.stories.ts` and render them with `ComponentStory`.
-- Use `ComponentExample` only after registering the cross-framework example in
-  `packages/shared/scripts/generateCodeExamples.ts` and generating the shared export.
+- Use `ComponentExample` only after adding the example's `meta.ts` to `packages/examples/projects/framework/src/<id>/`
+  and generating the project (see [its section](../examples/AGENTS.md#framework-examples)).
 - Preserve `metadata` and `ComponentStatus` imports on the page.
 - Add `TableOfContents` when the page contains multiple example sections.
 - Keep example copy and generated markup accessible by default: meaningful headings, visible focus, keyboard support,

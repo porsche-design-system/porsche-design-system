@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { linkTileExampleHyphens } from '@porsche-design-system/shared/examples';
+import { linkTileExampleHyphens } from '@porsche-design-system/examples-framework';
 import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/link-tile/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 import { vagueLinkLabelWithoutContextA11yExample } from '@/app/(main)/components/link-tile/accessibility/examples/vague-link-label-without-context/example';
 import AccessibilityOverview from '@/app/(main)/components/link-tile/accessibility/overview.mdx';

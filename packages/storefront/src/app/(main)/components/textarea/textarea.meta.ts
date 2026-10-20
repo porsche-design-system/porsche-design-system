@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { textareaExampleForm } from '@porsche-design-system/shared/examples';
+import { textareaExampleForm } from '@porsche-design-system/examples-framework';
 import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/textarea/accessibility/examples/hidden-label-without-accessible-name/example';
 import { placeholderOnlyInstructionsForOpenTextInputA11yExample } from '@/app/(main)/components/textarea/accessibility/examples/placeholder-only-instructions-for-open-text-input/example';
 import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/textarea/accessibility/examples/validation-feedback-via-state-and-message-api/example';

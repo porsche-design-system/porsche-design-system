@@ -1,5 +1,5 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import type { CodeSample } from '@porsche-design-system/shared';
+import type { FrameworkExample, FrameworkExampleId } from '@porsche-design-system/examples-framework';
 import type { HTMLTagOrComponent, SlotStories, Story } from '@porsche-design-system/story-generator';
 import type { ComponentType } from 'react';
 import type { ComponentAccessibilityMeta } from '@/models/accessibilityMeta';
@@ -9,7 +9,7 @@ import type { ComponentAccessibilityMeta } from '@/models/accessibilityMeta';
  *
  * Discriminated by `kind`:
  *  - `kind: 'story'`       → rendered through the storefront `Story` generator pipeline.
- *  - `kind: 'example'`     → rendered from a manually authored cross-framework `CodeSample`.
+ *  - `kind: 'example'`     → rendered from a hand-written `FrameworkExample` of `examples-framework`.
  *  - `kind: 'description'` → description-only entry without a runnable story or code sample
  *                            (e.g. framework-specific guidance with inline code snippets in MDX).
  *
@@ -27,7 +27,7 @@ export type ExampleMeta<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> =
       kind: 'example';
       name: string;
       description?: ComponentType;
-      example: CodeSample;
+      example: FrameworkExample<FrameworkExampleId>;
     }
   | {
       kind: 'description';
@@ -51,18 +51,18 @@ export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
   // Story (and optional slot stories) powering the interactive configurator playground.
   configurator: {
     story: Story<Tag>;
-    // Optional hand-authored CodeSample that replaces the story as the component's primary
-    // example. Set when the storefront page renders a CodeSample instead of the interactive
+    // Optional framework example that replaces the story as the component's primary
+    // example. Set when the storefront page renders a framework example instead of the interactive
     // configurator (e.g. imperative components like p-toast); the skill emits it as the
     // "Default" example in place of the bare story markup.
-    example?: CodeSample;
+    example?: FrameworkExample<FrameworkExampleId>;
     slotStories?: SlotStories<Tag>;
     // Optional controlled-mode variant for dual-mode components (e.g. p-popover). When present, the
     // configurator renders a "Behavior" segmented control to switch between uncontrolled and controlled.
     controlledStory?: Story<Tag>;
     controlledSlotStories?: SlotStories<Tag>;
   };
-  // Curated examples shown on the examples page — either generated stories or hand-authored code samples.
+  // Curated examples shown on the examples page — either generated stories or hand-written framework examples.
   examples: Record<string, ExampleMeta<Tag>>;
   // Guidance on when and how to use the component, including Dos and Don'ts.
   usage: ComponentType;

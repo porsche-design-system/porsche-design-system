@@ -1,5 +1,5 @@
 {
   "extends": ["./tsconfig.json", "@porsche-design-system/shared/tsconfig.paths.json"],
   "include": ["src", "scripts"],
-  "exclude": ["**/*.spec.ts", "src/examples", "src/lib"]
+  "exclude": ["**/*.spec.ts", "src/lib"]
 }

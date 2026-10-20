@@ -325,15 +325,16 @@ development.
 
 2. **Register the Example**
 
-In `packages/shared/scripts/generateCodeExamples.ts`, add the example to the `codeExamples` array.  
-Run `npm run build:shared` to generate a file in `packages/shared/src/examples`. This file will export an object containing
-the React component along with the markup for all frameworks.
+Add a `meta.ts` in `packages/examples/projects/framework/src/<id>/`, the folder naming the example
+(`components/carousel/jump-to-slide`), with the components it shows and its `source` in the example apps. Run
+`npm run build --workspace=@porsche-design-system/examples-framework` to generate the code of every framework and the
+live preview.
 
 3. **Use in Storefront**
 
 Import the generated example and pass it to `ComponentExample`:
 
 ```mdxjs
-import { carouselExampleJumpToSlide } from "@porsche-design-system/shared/examples";
+import { carouselExampleJumpToSlide } from "@porsche-design-system/examples-framework";
 <ComponentExample codeSample={carouselExampleJumpToSlide} />
 ```

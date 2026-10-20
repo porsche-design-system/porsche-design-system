@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { tableExampleAdvanced, tableExampleSorting } from '@porsche-design-system/shared/examples';
+import { tableExampleAdvanced, tableExampleSorting } from '@porsche-design-system/examples-framework';
 import { columnWithHiddenLabelA11yExample } from '@/app/(main)/components/table/accessibility/examples/column-with-hidden-label/example';
 import { dataTableWithoutCaptionA11yExample } from '@/app/(main)/components/table/accessibility/examples/data-table-without-caption/example';
 import AccessibilityOverview from '@/app/(main)/components/table/accessibility/overview.mdx';

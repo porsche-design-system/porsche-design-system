@@ -1,7 +1,8 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { agGridCompactExampleCommunity } from '@porsche-design-system/shared/examples/AGGridCompactExampleCommunity';
-import { agGridExampleCommunity } from '@porsche-design-system/shared/examples/AGGridExampleCommunity';
+import { agGridCompactExampleCommunity, agGridExampleCommunity } from '@porsche-design-system/examples-framework';
+import AGGridCompactExampleCommunity from '@porsche-design-system/examples-framework/previews/AGGridCompactExampleCommunity';
+import AGGridExampleCommunity from '@porsche-design-system/examples-framework/previews/AGGridExampleCommunity';
 
 export const metadata = {
   title: 'Theme - AG Grid',
@@ -90,10 +91,10 @@ grid, such as the `<html>` or `<body>` tag.
 
 The default `pdsTheme` with regular spacing and icon sizes.
 
-<ComponentExample codeSample={agGridExampleCommunity} />
+<ComponentExample codeSample={agGridExampleCommunity} preview={AGGridExampleCommunity} />
 
 ## Compact Theme
 
 The `pdsThemeCompact` variant, with reduced spacing and smaller icons for information-rich grids.
 
-<ComponentExample codeSample={agGridCompactExampleCommunity} />
+<ComponentExample codeSample={agGridCompactExampleCommunity} preview={AGGridCompactExampleCommunity} />

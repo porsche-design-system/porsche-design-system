@@ -1,4 +1,5 @@
-import type { CodeSample, ColorScheme, Framework } from '@porsche-design-system/shared';
+import type { FrameworkExample } from '@porsche-design-system/examples-framework';
+import type { ColorScheme, Framework } from '@porsche-design-system/shared';
 import { getStoryMarkup, type HTMLTagOrComponent, type Story } from '@porsche-design-system/story-generator';
 import type { Root } from 'mdast';
 import { escapeCell, leadSentence, markdownTable } from '../../shared/markdown';
@@ -63,11 +64,11 @@ const planExample = (key: string, example: SkillExampleMeta, framework: Framewor
  */
 export type SkillExampleMeta =
   | { kind: 'story'; name: string; description?: Root; story: Story<HTMLTagOrComponent> }
-  | { kind: 'example'; name: string; description?: Root; example: CodeSample }
+  | { kind: 'example'; name: string; description?: Root; example: FrameworkExample }
   | { kind: 'description'; name: string; description: Root };
 
 export type ComponentExamplesSource = {
-  configurator: { story: Story<HTMLTagOrComponent>; example?: CodeSample };
+  configurator: { story: Story<HTMLTagOrComponent>; example?: FrameworkExample };
   examples: Record<string, SkillExampleMeta>;
 };
 

@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { buttonPureExampleForm, buttonPureExampleFormAttribute } from '@porsche-design-system/shared/examples';
+import { buttonPureExampleForm, buttonPureExampleFormAttribute } from '@porsche-design-system/examples-framework';
 import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/button-pure/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 import { iconOnlyButtonWithoutAccessibleNameA11yExample } from '@/app/(main)/components/button-pure/accessibility/examples/icon-only-button-without-accessible-name/example';
 import { vagueButtonLabelWithoutContextA11yExample } from '@/app/(main)/components/button-pure/accessibility/examples/vague-button-label-without-context/example';

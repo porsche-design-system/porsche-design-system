@@ -1,14 +1,13 @@
-import type { CodeSample } from '@porsche-design-system/shared';
+import type { FrameworkExample } from '@porsche-design-system/examples-framework';
 import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-system/story-generator';
 import type { ComponentExamplesSource } from '@skills/knowledge/components/examples';
 import { parseMdxToMdast } from '@skills/knowledge/mdx/renderMdxToMarkdown';
-import type { FC } from 'react';
 
 /**
  * Representative component examples modelled on real storefront `.meta.ts` sources,
  * exercising every `ExampleMeta` kind plus the configurator base story:
  *  - `p-button`: a base story (→ default example), a `story` example with a rendered
- *    `description`, a hand-authored `example` (`CodeSample`), and a `description`-only
+ *    `description`, a hand-written `example` (`FrameworkExample`), and a `description`-only
  *    entry (no file).
  *  - `p-accordion`: a base story plus a `story` example with no `description`, so the
  *    "when to use" cell falls back to the example name.
@@ -25,8 +24,9 @@ const buttonLoadingStory = story([
   { tag: 'p-button', properties: { loading: true }, children: ['Loading'] } as ElementConfig<HTMLTagOrComponent>,
 ]);
 
-const buttonCodeSample: CodeSample = {
-  component: (() => null) as FC,
+const buttonFrameworkExample: FrameworkExample = {
+  id: 'components/button/form',
+  components: ['p-button'],
   frameworkMarkup: {
     'vanilla-js': '<p-button type="submit">Submit form</p-button>',
     react: '<PButton type="submit">Submit form</PButton>',
@@ -66,7 +66,7 @@ export const componentExamplesMeta: Record<string, ComponentExamplesSource> = {
         kind: 'example',
         name: 'Submit form',
         description: parseMdxToMdast('Submit the surrounding form when the button is activated.'),
-        example: buttonCodeSample,
+        example: buttonFrameworkExample,
       },
       formGuidance: {
         kind: 'description',

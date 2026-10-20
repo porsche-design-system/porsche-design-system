@@ -5,7 +5,7 @@ import {
   selectExampleForm,
   selectExampleRequired,
   selectExampleSelectedSlot,
-} from '@porsche-design-system/shared/examples';
+} from '@porsche-design-system/examples-framework';
 import { ambiguousOptionLabelsWithoutFieldContextA11yExample } from '@/app/(main)/components/select/accessibility/examples/ambiguous-option-labels-without-field-context/example';
 import { errorStateWithoutRecoveryGuidanceA11yExample } from '@/app/(main)/components/select/accessibility/examples/error-state-without-recovery-guidance/example';
 import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/select/accessibility/examples/hidden-label-without-accessible-name/example';

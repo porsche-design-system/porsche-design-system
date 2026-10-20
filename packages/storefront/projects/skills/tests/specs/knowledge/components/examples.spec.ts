@@ -29,7 +29,7 @@ describe('component examples generator', () => {
     }
   }
 
-  it('emits hand-authored example markup verbatim from the CodeSample', () => {
+  it('emits hand-written example markup verbatim from the FrameworkExample', () => {
     const tree = new SkillTree(root, 'react');
     tree.reset();
     writeComponentExamples(tree, 'p-button', metaMap['p-button']);

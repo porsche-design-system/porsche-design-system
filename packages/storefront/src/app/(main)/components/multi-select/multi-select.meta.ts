@@ -4,7 +4,7 @@ import {
   multiSelectExampleDynamic,
   multiSelectExampleForm,
   multiSelectExampleSelectedSlot,
-} from '@porsche-design-system/shared/examples';
+} from '@porsche-design-system/examples-framework';
 import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/hidden-label-without-accessible-name/example';
 import { promptOptionUsedInsteadOfALabelA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/prompt-option-used-instead-of-a-label/example';
 import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/validation-feedback-via-state-and-message-api/example';

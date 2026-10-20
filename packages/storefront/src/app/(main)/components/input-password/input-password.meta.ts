@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { inputPasswordExampleForm } from '@porsche-design-system/shared/examples';
+import { inputPasswordExampleForm } from '@porsche-design-system/examples-framework';
 import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-password/accessibility/examples/hidden-label-without-accessible-name/example';
 import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-password/accessibility/examples/placeholder-used-as-the-only-label/example';
 import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-password/accessibility/examples/validation-feedback-via-state-and-message-api/example';
