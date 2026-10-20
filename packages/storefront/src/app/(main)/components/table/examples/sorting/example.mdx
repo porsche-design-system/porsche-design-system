@@ -1,4 +1,4 @@
-import { Notification } from '@/components/common/Notification';
+import { Notification } from '@/components/mdx/content/Notification';
 
 Sorting is controlled, so the initial row order must match the active column's `direction` and both must remain
 synchronized when handling the `update` event. Configure sortable columns by providing the `sort` property on each
@@ -15,8 +15,8 @@ type TableHeadCellSort = {
 Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits an `update` event that you should subscribe
 to.
 
-<Notification heading="Deprecation hint" heading-tag="h4" state="warning">
-  The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.
+<Notification heading="Deprecation hint" headingTag="h3" state="warning">
+  The `sortingChange` event has been deprecated and will be removed with the next major release.
   <br />
-  Please use the <code>update</code> event instead.
+  Please use the `update` event instead.
 </Notification>

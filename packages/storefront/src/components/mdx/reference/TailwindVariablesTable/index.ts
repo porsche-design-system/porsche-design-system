@@ -1,0 +1,1 @@
+export { TailwindVariablesTable } from './TailwindVariablesTable';

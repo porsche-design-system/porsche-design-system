@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const placeholderUsedAsTheOnlyLabelA11yExample = {
   name: 'Placeholder used as the only label',

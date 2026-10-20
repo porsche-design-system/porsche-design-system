@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const tabbedInterfaceWithoutTablistLabelA11yExample = {
   name: 'Tabbed interface without tablist label',

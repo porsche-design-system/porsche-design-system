@@ -2,8 +2,9 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import { getSkillName, SKILL_IDS } from '@skills/registry';
-import { FRAMEWORKS, stagedSkillDir, WRAPPER_DIST_DIRS } from '@skills/shared/skillTree';
+import { stagedSkillDir, WRAPPER_DIST_DIRS } from '@skills/shared/skillTree';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import {
   extractReferences,
@@ -31,7 +32,7 @@ import {
  * artifact is restored before storefront unit tests run, so `dist/<fw>-wrapper/skills/<skill-name>` is present.
  */
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../../../..');
-const JS_DIST_ROOT = path.join(REPO_ROOT, WRAPPER_DIST_DIRS.js);
+const JS_DIST_ROOT = path.join(REPO_ROOT, WRAPPER_DIST_DIRS['vanilla-js']);
 
 /**
  * The skill whose *raw* links this gate resolves. The raw-link expectations below (`../../meta`,
@@ -125,12 +126,12 @@ describe('skill reference links — raw links resolve against the built dist', (
   }
 
   it('js skill links its own ../../meta (real data), not the js-peer specifier', () => {
-    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skills', getSkillName(SKILL_ID, 'js')));
+    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skills', getSkillName(SKILL_ID, 'vanilla-js')));
     expect(targets).toContain('../../meta');
     expect(targets).not.toContain(JS_PEER_META_SPECIFIER);
   });
 
-  for (const framework of FRAMEWORKS.filter((fw) => fw !== 'js')) {
+  for (const framework of FRAMEWORKS.filter((fw) => fw !== 'vanilla-js')) {
     it(`${framework} skill links the js-peer /meta subpath, not its local ../../meta shim`, () => {
       const targets = rawTargets(
         path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', getSkillName(SKILL_ID, framework))
@@ -155,12 +156,12 @@ describe('skill reference links — raw links resolve against the built dist', (
   });
 
   it('js skill links its own ../../scss (real partials), not the js-peer scss specifier', () => {
-    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skills', getSkillName(SKILL_ID, 'js')));
+    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skills', getSkillName(SKILL_ID, 'vanilla-js')));
     expect(targets).toContain('../../scss');
     expect(targets).not.toContain(JS_PEER_SCSS_SPECIFIER);
   });
 
-  for (const framework of FRAMEWORKS.filter((fw) => fw !== 'js')) {
+  for (const framework of FRAMEWORKS.filter((fw) => fw !== 'vanilla-js')) {
     it(`${framework} skill links the js-peer /scss subpath, not its local ../../scss shim`, () => {
       const targets = rawTargets(
         path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', getSkillName(SKILL_ID, framework))

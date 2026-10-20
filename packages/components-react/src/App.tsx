@@ -1,14 +1,12 @@
+import { COLOR_SCHEMES, type ColorScheme } from '@porsche-design-system/shared';
 import { type JSX } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from './contexts/ThemeContext.tsx';
 import { routes } from './routes';
 
-export type Theme = 'scheme-light' | 'scheme-dark' | 'scheme-light-dark';
-
 export const App = (): JSX.Element => {
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
-  const themes: Theme[] = ['scheme-light', 'scheme-dark', 'scheme-light-dark'];
   const { pathname } = useLocation();
   const isWithinIFrame: boolean = window.location !== window.parent.location;
 
@@ -25,8 +23,8 @@ export const App = (): JSX.Element => {
             ))}
           </select>
 
-          <select name="theme" value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
-            {themes.map((item) => (
+          <select name="theme" value={theme} onChange={(e) => setTheme(e.target.value as ColorScheme)}>
+            {COLOR_SCHEMES.map((item) => (
               <option key={item} value={item} children={item} />
             ))}
           </select>

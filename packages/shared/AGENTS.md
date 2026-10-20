@@ -37,12 +37,40 @@ npm run test:unit:shared
 - Build scripts also generate framework code examples consumed elsewhere in the repo.
 - Do not hand-edit generated files in `src/lib/`, generated examples, or `dist/`.
 
+## Package and entry points
+
+`packages/shared` is the workspace `@porsche-design-system/shared`. Its `exports` map points into `dist/`, so consumers
+get the built code, and `npm install` links the package before anything is built. It is private and never published.
+
+- Deep entries (`./deprecation`, `./models`, `./testing`, `./testing/normalize-css-namespace`,
+  `./testing/assert-defined`) are bundled on their own, so code can use them without loading the barrel and its
+  generated modules or Playwright helpers.
+- `./examples` and `./examples/*` point at the TSX sources copied to `dist/examples/`, unbundled because of the
+  `'use client'` directives Next needs; a deep import lets a page load one example without the whole barrel.
+- `./tsconfig.base.json` and `./tsconfig.paths.json` are the shared compiler base and the source mappings for the
+  pre-build typecheck (see `docs/typecheck.md`). Configs extend them as
+  `@porsche-design-system/shared/tsconfig.base.json`.
+- A new entry point needs an entry in `exports`, a bundle in `rollup.config.js` and, if it is checked before the build,
+  a mapping in `tsconfig.paths.json`.
+- The bins (`serve-dummyassets`, `prepare-vrt-snapshots`) are built into `bin/`. They are not declared in `bin`, so
+  `npm install` doesn't need them before the first build; the root `postinstall:bin-links` and the CI restore action
+  link them into `node_modules/.bin`.
+
 ## Implementation Notes
 
 - Changes here can affect components, wrappers, styles, storefront tooling, and tests across the monorepo.
 - Generators read source files from sibling packages, so keep paths and naming conventions stable unless you intentionally update all consumers.
 - Prefer updating source data, models, and generator scripts rather than patching generated output.
 - Be conservative when changing framework conversion helpers because they feed example generation and docs tooling.
+- `src/models/framework.ts` is the one framework vocabulary of the repository: `Framework` keys (`vanilla-js`, …) are
+  used everywhere, and names, package suffixes (`js`) and wrapper package names are looked up there instead of being
+  mapped again in the Storefront or the skills.
+- `src/models/colorScheme.ts` holds the color schemes pages and examples switch between, as their PDS classes
+  (`scheme-light`, `scheme-dark`, `scheme-light-dark`), with their display names. The Storefront, the story
+  generator, StackBlitz, the skills and the preview apps of the wrappers and `styles` use it instead of listing them.
+- Code that is typechecked before the build (root `typecheck`, see `docs/typecheck.md`) imports these from
+  `@porsche-design-system/shared/models`, not from the barrel: the barrel re-exports generated modules (`src/lib/`)
+  that don't exist in a fresh clone.
 
 ## Testing Expectations
 
