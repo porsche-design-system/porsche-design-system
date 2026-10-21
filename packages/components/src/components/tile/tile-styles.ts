@@ -2,6 +2,7 @@ import {
   blurFrosted,
   colorCanvas,
   colorFrosted,
+  colorFrostedStrong,
   colorPrimary,
   colorSurface,
   radius3Xl,
@@ -10,6 +11,7 @@ import {
   spacingFluidMd,
   spacingFluidSm,
   spacingFluidXs,
+  spacingStaticMd,
 } from '@porsche-design-system/stylesheets';
 import { gradientStopsFadeDark } from '@porsche-design-system/tokens';
 import type { JssStyle, Styles } from 'jss';
@@ -19,6 +21,7 @@ import {
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
+  hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
@@ -30,14 +33,17 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import {
+  hasHoverEffectToken,
   isGradientActiveForEdge,
   TILE_EDGES,
   type TileBackground,
   type TileEdge,
   type TileGradient,
+  type TileHoverEffect,
   type TileSlotState,
   tileAnchorSlot,
   tileBackgroundSlot,
+  tileLinkHoverAttribute,
 } from './tile-utils';
 
 /**
@@ -69,11 +75,11 @@ const cssVarBackground = '--p-tile-bg';
  */
 const cssVarGradientFade = '--p-tile-gradient-fade';
 /**
- * @css-variable {"name": "--p-tile-media-scale", "description": "Scales the content of the `background` slot and `img` and `video` elements slotted directly into a layout slot, e.g. `1.05` to zoom in on hover. Changes are animated and omitted if the user prefers reduced motion. The media is clipped to the tile.", "defaultValue": "1"}
+ * @css-variable {"name": "--p-tile-media-scale", "description": "Scales the content of the `background` slot and `img` and `video` elements slotted directly into a layout slot, e.g. `1.05` to zoom in on hover. Set to `1.05` by the `hover-effect` value `zoom` while the link of the tile is hovered. Changes are animated and omitted if the user prefers reduced motion. The media is clipped to its own box, `clip-path: none` on the media lets it grow beyond, e.g. for cut-out images on the background of the tile. Nested media can use the inherited value, e.g. via `scale: var(--p-tile-media-scale)`, and handles transition and reduced motion itself.", "defaultValue": "1"}
  */
 const cssVarMediaScale = '--p-tile-media-scale';
 /**
- * @css-variable {"name": "--p-tile-media-offset", "description": "Moves the same media as `--p-tile-media-scale` towards the inline end, which follows the writing direction, e.g. `var(--spacing-static-md)` to nudge it on hover. Space for the movement has to be reserved, e.g. via padding. Changes are animated and omitted if the user prefers reduced motion.", "defaultValue": "0px"}
+ * @css-variable {"name": "--p-tile-media-offset", "description": "Moves the same media as `--p-tile-media-scale` towards the inline end, which follows the writing direction, e.g. `var(--spacing-static-md)` to nudge it on hover. Set to `spacing-static-md` by the `hover-effect` value `offset` while the link of the tile is hovered. Space for the movement has to be reserved, e.g. via padding. Changes are animated and omitted if the user prefers reduced motion.", "defaultValue": "0px"}
  */
 const cssVarMediaOffset = '--p-tile-media-offset';
 // 1 or -1 depending on the writing direction, inherited by slotted content
@@ -103,6 +109,14 @@ const backgroundMap: Record<TileBackground, string> = {
   surface: ref(colorSurface),
   canvas: ref(colorCanvas),
   frosted: ref(colorFrosted),
+};
+
+// background while the link of the tile is hovered with `hover-effect="highlight"`
+const highlightMap: Record<TileBackground, string> = {
+  none: ref(colorCanvas),
+  surface: ref(colorCanvas),
+  canvas: ref(colorSurface),
+  frosted: ref(colorFrostedStrong),
 };
 
 // rows of top and bottom are sized by their content, so centering only aligns the items to each other (e.g. a heading
@@ -202,8 +216,13 @@ const radius = ref(cssVarRadius, ref(radius3Xl));
 const mediaMotionStyles: JssStyle = {
   '@media (prefers-reduced-motion: no-preference)': {
     scale: ref(cssVarMediaScale, '1'),
+    // clips the media to its own box, so it only zooms within it instead of overlapping adjacent content; the clip path
+    // is scaled along with the media, so it is reduced by the inverse of the scale
+    clipPath: `inset(calc((1 - 1 / ${ref(cssVarMediaScale, '1')}) * 50%))`,
     translate: `calc(${ref(cssVarMediaOffset, '0px')} * ${ref(cssVarDirection)}) 0`,
-    transition: `${getTransition('scale', 'moderate')}, ${getTransition('translate', 'moderate')}`,
+    transition: ['scale', 'clip-path', 'translate']
+      .map((property) => getTransition(property as 'scale', 'moderate'))
+      .join(', '),
   },
 };
 
@@ -238,6 +257,7 @@ export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
   compact: BreakpointCustomizable<boolean>,
   bleed: BreakpointCustomizable<boolean>,
+  hoverEffect: TileHoverEffect,
   slotState: TileSlotState
 ): string => {
   const { anchor: hasAnchor } = slotState;
@@ -362,6 +382,14 @@ export const getComponentCss = (
       '&:dir(rtl)': {
         [cssVarDirection]: -1,
       },
+      ...(hoverEffect !== 'none' &&
+        hoverMediaQuery({
+          [`&[${tileLinkHoverAttribute}]`]: {
+            ...(hasHoverEffectToken(hoverEffect, 'zoom') && { [cssVarMediaScale]: 1.05 }),
+            ...(hasHoverEffectToken(hoverEffect, 'offset') && { [cssVarMediaOffset]: ref(spacingStaticMd) }),
+            ...(hasHoverEffectToken(hoverEffect, 'highlight') && { backgroundColor: highlightMap[background] }),
+          },
+        })),
       borderRadius: radius,
       color: ref(colorPrimary),
       backgroundColor: ref(cssVarBackground, backgroundMap[background]),

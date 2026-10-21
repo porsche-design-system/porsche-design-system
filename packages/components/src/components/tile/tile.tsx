@@ -13,12 +13,16 @@ import {
 } from '../../utils';
 import { getComponentCss, getSlottedBackgroundPictureStyles } from './tile-styles';
 import {
+  isTileLinkEvent,
   TILE_BACKGROUNDS,
   TILE_EDGES,
   TILE_GRADIENTS,
+  TILE_HOVER_EFFECTS,
   type TileBackground,
   type TileGradient,
+  type TileHoverEffect,
   type TileSlotState,
+  tileLinkHoverAttribute,
 } from './tile-utils';
 
 // TODO: before leaving the draft state
@@ -35,6 +39,7 @@ const propTypes: PropTypes<typeof Tile> = {
   aspectRatio: AllowedTypes.breakpoint<TileAspectRatio>(TILE_ASPECT_RATIOS),
   compact: AllowedTypes.breakpoint('boolean'),
   bleed: AllowedTypes.breakpoint('boolean'),
+  hoverEffect: AllowedTypes.oneOf<TileHoverEffect>(TILE_HOVER_EFFECTS),
 };
 
 /**
@@ -70,6 +75,9 @@ export class Tile {
   /** Lets the default slot reach the edges of the tile that aren't occupied by another layout slot, e.g. for an image below the `top` slot. Slotted `img` and `video` elements fill the default slot cover-fit. */
   @Prop() public bleed?: BreakpointCustomizable<boolean> = false;
 
+  /** Applies effects while the link of the tile is hovered, i.e. the `anchor` slot or a slotted `p-link` with `cover`, so independent interactive elements don't trigger them. `zoom` zooms in on and `offset` moves the media towards the inline end, which applies to the same media as `--p-tile-media-scale` and is omitted if the user prefers reduced motion. `highlight` changes the background from `none` and `surface` to `canvas`, from `canvas` to `surface` and from `frosted` to `frosted-strong`. Effects can be combined, separated by a space. */
+  @Prop() public hoverEffect?: TileHoverEffect = 'none';
+
   @State() private slotState: TileSlotState = {
     top: false,
     bottom: false,
@@ -101,11 +109,12 @@ export class Tile {
       this.aspectRatio,
       this.compact,
       this.bleed,
+      this.hoverEffect,
       this.slotState
     );
 
     return (
-      <div class="root">
+      <div class="root" onPointerOver={this.onPointerOver} onPointerLeave={this.onPointerLeave}>
         <slot name="anchor" onSlotchange={this.updateSlotState} />
         <div class="content">
           <div class="background">
@@ -131,6 +140,16 @@ export class Tile {
     if (names.some((name) => slotState[name] !== this.slotState[name])) {
       this.slotState = slotState;
     }
+  };
+
+  private onPointerOver = (e: PointerEvent): void => {
+    if (this.hoverEffect !== 'none') {
+      (e.currentTarget as HTMLElement).toggleAttribute(tileLinkHoverAttribute, isTileLinkEvent(this.host, e));
+    }
+  };
+
+  private onPointerLeave = (e: PointerEvent): void => {
+    (e.currentTarget as HTMLElement).removeAttribute(tileLinkHoverAttribute);
   };
 
   private onBackgroundSlotChange = (): void => {

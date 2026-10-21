@@ -65,7 +65,7 @@ import { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-di
 import { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextListType } from "./components/text-list/text-list/text-list-utils";
 import { TextareaAriaAttribute, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
-import { TileBackground, TileGradient } from "./components/tile/tile-utils";
+import { TileBackground, TileGradient, TileHoverEffect } from "./components/tile/tile-utils";
 import { TileAspectRatio } from "./utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
@@ -130,7 +130,7 @@ export { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-di
 export { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextListType } from "./components/text-list/text-list/text-list-utils";
 export { TextareaAriaAttribute, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
-export { TileBackground, TileGradient } from "./components/tile/tile-utils";
+export { TileBackground, TileGradient, TileHoverEffect } from "./components/tile/tile-utils";
 export { TileAspectRatio } from "./utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
@@ -3200,6 +3200,11 @@ export namespace Components {
           * @default 'none'
          */
         "gradient"?: BreakpointCustomizable<TileGradient>;
+        /**
+          * Applies effects while the link of the tile is hovered, i.e. the `anchor` slot or a slotted `p-link` with `cover`, so independent interactive elements don't trigger them. `zoom` zooms in on and `offset` moves the media towards the inline end, which applies to the same media as `--p-tile-media-scale` and is omitted if the user prefers reduced motion. `highlight` changes the background from `none` and `surface` to `canvas`, from `canvas` to `surface` and from `frosted` to `frosted-strong`. Effects can be combined, separated by a space.
+          * @default 'none'
+         */
+        "hoverEffect"?: TileHoverEffect;
     }
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
@@ -7792,6 +7797,11 @@ declare namespace LocalJSX {
           * @default 'none'
          */
         "gradient"?: BreakpointCustomizable<TileGradient>;
+        /**
+          * Applies effects while the link of the tile is hovered, i.e. the `anchor` slot or a slotted `p-link` with `cover`, so independent interactive elements don't trigger them. `zoom` zooms in on and `offset` moves the media towards the inline end, which applies to the same media as `--p-tile-media-scale` and is omitted if the user prefers reduced motion. `highlight` changes the background from `none` and `surface` to `canvas`, from `canvas` to `surface` and from `frosted` to `frosted-strong`. Effects can be combined, separated by a space.
+          * @default 'none'
+         */
+        "hoverEffect"?: TileHoverEffect;
     }
     interface PToast {
     }
@@ -8572,6 +8582,7 @@ declare namespace LocalJSX {
         "aspectRatio": BreakpointCustomizable<TileAspectRatio>;
         "compact": string;
         "bleed": string;
+        "hoverEffect": TileHoverEffect;
     }
     interface PToastItemAttributes {
         "text": string;

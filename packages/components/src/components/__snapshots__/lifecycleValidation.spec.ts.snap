@@ -945,6 +945,7 @@ exports[`should call validateProps() with correct parameters via render for p-ti
   "bleed": "breakpoint",
   "compact": "breakpoint",
   "gradient": "breakpoint",
+  "hoverEffect": "oneOf",
 }
 `;
 
