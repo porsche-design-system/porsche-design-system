@@ -6629,6 +6629,12 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
+      "cover": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a \`p-tile\`, which also renders the focus ring around it. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via \`position: relative; z-index: 2\`.",
+        "type": "boolean",
+      },
       "download": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -11219,7 +11225,7 @@ exports[`should match snapshot 1`] = `
     "cssVariablesMeta": {
       "--p-tile-bg": {
         "defaultValue": "depends on \`background\` prop",
-        "description": "Background color of the tile, overrides the \`background\` prop.",
+        "description": "Background color of the tile, overrides the \`background\` prop. Changes are animated, e.g. to reveal the background on hover.",
       },
       "--p-tile-gap-x": {
         "defaultValue": "spacing-fluid-sm (spacing-fluid-xs when compact)",
@@ -11232,6 +11238,14 @@ exports[`should match snapshot 1`] = `
       "--p-tile-gradient-fade": {
         "defaultValue": "spacing-fluid-lg",
         "description": "Distance the gradient extends beyond its slot towards the center of the tile.",
+      },
+      "--p-tile-media-offset": {
+        "defaultValue": "0px",
+        "description": "Moves the same media as \`--p-tile-media-scale\` towards the inline end, which follows the writing direction, e.g. \`var(--spacing-static-md)\` to nudge it on hover. Set to \`spacing-static-md\` by the \`hover-effect\` value \`offset\` while the tile is hovered. Space for the movement has to be reserved, e.g. via padding. Changes are animated and omitted if the user prefers reduced motion.",
+      },
+      "--p-tile-media-scale": {
+        "defaultValue": "1",
+        "description": "Scales the content of the \`background\` slot and \`img\` and \`video\` elements slotted directly into a layout slot, e.g. \`1.05\` to zoom in on hover. Set to \`1.05\` by the \`hover-effect\` value \`zoom\` while the tile is hovered. Changes are animated and omitted if the user prefers reduced motion. The media is clipped to its own box, \`clip-path: none\` on the media lets it grow beyond, e.g. for cut-out images on the background of the tile. Nested media can use the inherited value, e.g. via \`scale: var(--p-tile-media-scale)\`, and handles transition and reduced motion itself.",
       },
       "--p-tile-px": {
         "defaultValue": "spacing-fluid-md (spacing-fluid-sm when compact)",
@@ -11250,6 +11264,9 @@ exports[`should match snapshot 1`] = `
       },
       "--ref-p-tile-py": {
         "description": "Exposes the internally used padding-block of the Tile as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top or bottom of the Tile.",
+      },
+      "--ref-p-tile-radius": {
+        "description": "Exposes the internally used corner radius of the Tile as read only CSS variable. A slotted \`p-link\` with \`cover\` uses it to render its focus ring around the Tile.",
       },
     },
     "hasAriaProp": false,
@@ -11288,6 +11305,13 @@ exports[`should match snapshot 1`] = `
         "description": "Sets the background color of the tile. Slotted background content is rendered above it.",
         "type": "TileBackground",
       },
+      "bleed": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Lets the default slot reach the edges of the tile that aren't occupied by another layout slot, e.g. for an image below the \`top\` slot. Slotted \`img\` and \`video\` elements fill the default slot cover-fit.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -11311,10 +11335,25 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "TileGradient",
       },
+      "hoverEffect": {
+        "allowedValues": [
+          "none",
+          "zoom",
+          "offset",
+          "highlight",
+          "zoom offset",
+          "zoom highlight",
+          "offset highlight",
+          "zoom offset highlight",
+        ],
+        "defaultValue": "none",
+        "description": "Applies effects while the tile is hovered, intended for clickable tiles, i.e. with the \`anchor\` slot or a slotted \`p-link\` with \`cover\`. \`zoom\` zooms in on and \`offset\` moves the media towards the inline end, which applies to the same media as \`--p-tile-media-scale\` and is omitted if the user prefers reduced motion. \`highlight\` changes the background from \`none\` and \`surface\` to \`canvas\`, from \`canvas\` to \`surface\` and from \`frosted\` to \`frosted-strong\`. Effects can be combined, separated by a space.",
+        "type": "TileHoverEffect",
+      },
     },
     "slotsMeta": {
       "": {
-        "description": "Main content area, centered by default. When no other layout slot is used, it covers the whole tile and can be used for a fully custom layout.",
+        "description": "Main content area, centered by default. When no other layout slot is used, it covers the whole tile and can be used for a fully custom layout. With \`bleed\`, it reaches the edges of the tile that aren't occupied by another layout slot.",
       },
       "anchor": {
         "description": "Anchor stretched over the whole tile to make it clickable. Its label is visually hidden but accessible. While slotted, all other content is click-through, interactive elements have to opt in via \`pointer-events: auto\`.",
