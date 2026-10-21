@@ -569,7 +569,6 @@ img {
                     <style>
                       :host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -582,9 +581,8 @@ img {
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -3541,7 +3539,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
     <style>
       :host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -3554,9 +3551,8 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -5551,7 +5547,6 @@ exports[`should render dsr component for PDrilldown 1`] = `
             <style>
               :host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -5563,9 +5558,8 @@ exports[`should render dsr component for PDrilldown 1`] = `
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -6170,7 +6164,6 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
         <style>
           :host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -6182,9 +6175,8 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -6337,7 +6329,6 @@ img:dir(rtl) {
         <style>
           :host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -6349,9 +6340,8 @@ img:dir(rtl) {
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -9253,7 +9243,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
     <style>
       :host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -9286,9 +9275,8 @@ exports[`should render dsr component for PLinkPure 1`] = `
 
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-link-pure-px,0px);
-  padding-block: var(--p-link-pure-py,0px);
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -9798,7 +9786,6 @@ slot[name="header"] {
             <style>
               :host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -9811,9 +9798,8 @@ slot[name="header"] {
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -10784,7 +10770,6 @@ img {
                     <style>
                       :host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -10797,9 +10782,8 @@ img {
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;

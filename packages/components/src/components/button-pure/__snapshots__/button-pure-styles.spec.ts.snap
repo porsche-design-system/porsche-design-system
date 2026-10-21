@@ -3,7 +3,6 @@
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -16,9 +15,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -90,7 +88,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -103,9 +100,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -177,7 +173,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -190,9 +185,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -264,7 +258,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -277,9 +270,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: not-allowed;
@@ -343,7 +335,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -356,9 +347,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: not-allowed;
@@ -422,7 +412,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -435,9 +424,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: not-allowed;
@@ -504,7 +492,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -517,9 +504,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -591,7 +577,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -603,9 +588,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -680,7 +664,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -692,9 +675,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -769,7 +751,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 10`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -782,9 +763,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -856,7 +836,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 11`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -869,9 +848,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -943,7 +921,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 12`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -956,9 +933,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1110,7 +1086,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 13`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -1160,9 +1135,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1334,7 +1308,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 exports[`getComponentCss() > should return correct css for "none" 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1347,9 +1320,8 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: not-allowed;
@@ -1411,7 +1383,6 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
 exports[`getComponentCss() > should return correct css for "none" 2`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1424,9 +1395,8 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1490,7 +1460,6 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
 exports[`getComponentCss() > should return correct css for "none" 3`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1503,9 +1472,8 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1569,7 +1537,6 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
 exports[`getComponentCss() > should return correct css for "none" 4`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1582,9 +1549,8 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
 }
 .root {
   all: unset;
-  box-sizing: border-box;
-  padding-inline: var(--p-button-pure-px,0px);
-  padding-block: var(--p-button-pure-py,0px);
+  padding-inline: var(--p-button-pure-px,0);
+  padding-block: var(--p-button-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
