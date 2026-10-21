@@ -4,6 +4,6 @@
     "exclude": ["**/*.react.figma.ts", "**/*.angular.figma.ts", "**/*.vue.figma.ts"],
     "label": "Web Components",
     "language": "html",
-    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/Npno3dQGabvzWLFcAjNDw7/Porsche-Web-Design-System--Code-Connect-Testing-"
+    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/EkdP468u4ZVuIRwalKCscb/Porsche-Web-Design-System"
   }
 }
