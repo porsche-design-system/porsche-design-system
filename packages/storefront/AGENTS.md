@@ -10,7 +10,9 @@ accessible usage of PDS components and must comply with **WCAG 2.2 AA**.
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with App Router
+- **Framework**: Next.js 16 with App Router. Its APIs and conventions may differ from what you know: read the guide in
+  `node_modules/next/dist/docs/` (hoisted to the repository root) before changing Next-specific code.
+  `agentRules: false` in `next.config.ts` keeps `next dev` from writing its own rules block into this file.
 - **Components**: `@porsche-design-system/components-react/ssr`
 - **Styling**: Tailwind CSS
 - **Content**: MDX for documentation pages
@@ -28,6 +30,10 @@ npm run start:storefront
 
 # Build storefront
 npm run build:storefront
+
+# Typecheck the Storefront and its projects (skills, stackblitz, story-generator), and their tests
+npm run typecheck:storefront
+npm run typecheck:storefront:tests
 
 # Run unit tests
 npm run test:unit:storefront
@@ -124,6 +130,22 @@ Storefront, and the skills generator turns the same routes into references or St
 - MDX isn't typechecked, so `tests/unit/specs/links.spec.ts` checks every link in it: routes, trailing slashes, anchors,
   files, tables of contents, unique heading anchors and redirects.
 
+### MDX components
+
+Every component MDX imports lives in `src/components/mdx/`, in a topic folder by how pages use it (`structure`,
+`content`, `framework`, `playground`, `examples`, `reference`, `widgets`), one folder per component. MDX imports
+it from that folder: `import { Notification } from '@/components/mdx/content/Notification';`. The
+[`README.md`](src/components/mdx/README.md) is the inventory: what each component is for, its planned Markdown output
+and its dependencies on the Storefront. It is the migration list for the dual-target registry (#4142).
+
+- A new component gets a folder in its topic with a module of the same name, an `index.ts` and a row in the inventory.
+  `tests/unit/specs/mdxComponents.spec.ts` checks them, and that a new Storefront dependency is added on purpose.
+- Write Markdown wherever it can express something: links, inline code, bold. Use an MDX component instead of a PDS
+  component or raw HTML, e.g. `DependencyList` instead of a row of `PTag`s. `tests/unit/specs/mdxPages.spec.ts`
+  checks this, unused imports, tables of contents (from two `##` sections) and notification heading levels.
+- Framework-aware content (`FrameworkCodeBlock`, `FrameworkLink`, `FrameworkName`, `Notification` with
+  `frameworks`) is resolved for every framework on the server; `framework/FrameworkContent` renders the selected one.
+
 ## File Structure
 
 ```
@@ -133,6 +155,8 @@ src/
 │   ├── must-know/          # Guidelines (accessibility, etc.)
 │   └── ...
 ├── components/             # React components for the site
+│   ├── mdx/                # Components MDX imports, by topic, one folder each, with an inventory
+│   └── common/             # Storefront chrome: navigation, tabs, selects, DocsLink
 ├── lib/                    # Utilities and helpers
 └── styles/                 # Global styles
 projects/
@@ -166,7 +190,7 @@ Use the configurator page when the component should expose a playground UI.
 
 ```mdx
 import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
-import { Configurator } from '@/components/playground/Configurator';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 
 <Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
 ```
@@ -184,9 +208,9 @@ Use the examples page to showcase curated use cases:
 - `ComponentExample`: required for advanced examples that need custom logic or framework-specific source files.
 
 ```mdx
-import { ComponentStory } from '@/components/playground/ComponentStory';
+import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
 import { componentStoryAdvanced } from '@/app/components/component/component.stories';
-import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
 import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
 ```
 
