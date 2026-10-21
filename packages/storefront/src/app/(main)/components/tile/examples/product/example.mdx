@@ -6,12 +6,10 @@ changing its position. The product image is placed in the default slot and fills
 single element in the `bottom` slot, which spans the full width via `grow` and stacks them centered.
 
 The `anchor` slot makes the whole Tile clickable and provides the accessible link to the product. The wishlist button
-and the color swatches are independent actions, so they opt in via `pointer-events-auto` and don't trigger the hover
-effect of the Tile. The color swatches are native radio buttons within a `radiogroup`, so they are selectable by mouse
-and keyboard without any JavaScript. They are styled via `appearance-none` and the `checked:`, `hover:` and
-`focus-visible:` variants. A transparent border and padding together with `bg-clip-content` provide a target size of
-24px while showing a 14px swatch.
+and the color swatches are independent actions, so they opt in via `pointer-events-auto`. The color swatches are native
+radio buttons within a `radiogroup`, so they are selectable by mouse and keyboard without any JavaScript. They are
+styled via `appearance-none` and the `checked:`, `hover:` and `focus-visible:` variants. A transparent border and
+padding together with `bg-clip-content` provide a target size of 24px while showing a 14px swatch.
 
-On hover of the `anchor`, the image zooms in via `hover-effect="zoom"`. The wishlist button and the color swatches don't
-trigger it, since only hovering the link of the Tile does. The Tile animates the zoom and omits it if the user prefers
-reduced motion.
+On hover of the `anchor`, the image zooms in via `hover-effect="zoom"`. The Tile animates the zoom and omits it if the
+user prefers reduced motion.

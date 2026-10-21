@@ -14,7 +14,6 @@ covering link via `relative z-2` to stay clickable. Its accessible name is exten
 model, while it still contains the visible label.
 
 Since hovering the Tile hovers the "Discover 911" link, the link shows its own hover state, and `hover-effect="zoom"`
-zooms in on the vehicle. Hovering "Configure" doesn't trigger it, since it is an independent action. The vehicle is
-nested within the default slot, so the Tile can't scale it directly. Instead, the vehicle uses the inherited
-`--p-tile-media-scale` via `motion-safe:[scale:var(--p-tile-media-scale,1)]` and animates it via
-`motion-safe:transition-[scale]`, so it handles the reduced motion preference of the user itself.
+zooms in on the vehicle. The vehicle is nested within the default slot, so the Tile can't scale it directly. Instead,
+the vehicle uses the inherited `--p-tile-media-scale` via `motion-safe:[scale:var(--p-tile-media-scale,1)]` and animates
+it via `motion-safe:transition-[scale]`, so it handles the reduced motion preference of the user itself.

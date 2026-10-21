@@ -18,12 +18,12 @@ via `pointer-events: auto` when the `anchor` slot is used. Use cases with multip
 use neither.
 
 The Tile has no hover effect by default, so each clickable use case shows how to tailor it to its content.
-`hover-effect` applies effects while the link of the Tile is hovered, so independent interactive elements don't trigger
-them: `zoom` and `offset` zoom in on or move the media, `highlight` changes the background. They can be combined,
-separated by a space. For other triggers or values, set `--p-tile-media-scale`, `--p-tile-media-offset` or `--p-tile-bg`
-instead. The Tile animates these changes and omits the movement of the media if the user prefers reduced motion. Other
-effects are wrapped in `motion-safe:` to respect this preference. Hover effects are a visual enhancement only, keyboard
-users get the focus indicator of the link.
+`hover-effect` applies effects while the Tile is hovered and is intended for clickable Tiles: `zoom` and `offset` zoom
+in on or move the media, `highlight` changes the background. They can be combined, separated by a space. For other
+triggers or values, set `--p-tile-media-scale`, `--p-tile-media-offset` or `--p-tile-bg` instead. The Tile animates
+these changes and omits the movement of the media if the user prefers reduced motion. Other effects are wrapped in
+`motion-safe:` to respect this preference. Hover effects are a visual enhancement only, keyboard users get the focus
+indicator of the link.
 
 {/* TODO: add further use cases to `tileMeta.examples` */}
 
