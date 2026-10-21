@@ -106,6 +106,9 @@ If a release fails, use **Re-run failed jobs**. A failed major deployment can ru
 Release and the pinned storefront already exist. GitHub Release creation also tolerates npm publication having finished
 in a previous attempt.
 
+Indexing of `/nightly/` and `/v<major>-preview/` runs in its own `algolia` job in `contribution.yml`, outside `deploy`,
+so a failure there marks the run as failed but does not hold back `release`.
+
 Algolia failures can be retried independently with **Re-run failed jobs**, without rebuilding or uploading the
 storefront. Indexing restores the run's production build artifact; records use page text and relative routes rather than
 the build's base path. On **Re-run all jobs**, pinned indexing still runs when its already-published storefront skips

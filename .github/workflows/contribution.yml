@@ -111,7 +111,6 @@ jobs:
     with:
       image: mcr.microsoft.com/playwright:v1.63.0-jammy
       storefront-slug: ${{ needs.context.outputs.storefront-slug }}
-      storefront-algolia: ${{ needs.context.outputs.storefront-algolia }}
     needs:
       - context
       - test
@@ -140,8 +139,27 @@ jobs:
       aws-storefront-release-role-arn: ${{ secrets.AWS_STOREFRONT_RELEASE_ROLE_ARN }}
       aws-storefront-bucket: ${{ secrets.AWS_STOREFRONT_BUCKET }}
       aws-storefront-distribution-id: ${{ secrets.AWS_STOREFRONT_DISTRIBUTION_ID }}
-      algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
-      algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
+  algolia:
+    name: 'Algolia (/nightly or /v<major>-preview)'
+    # Deliberately not part of `deploy`: `release` waits for `deploy`, and search indexing of a
+    # development preview must never block publishing packages. A failure here still fails the run.
+    if: github.event_name == 'push' && needs.context.outputs.storefront-algolia == 'true'
+    runs-on: ubuntu-latest
+    needs:
+      - context
+      - deploy
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Index storefront'
+        run: npm run updateAlgolia
+        env:
+          P_CURRENT_BRANCH: ${{ needs.context.outputs.storefront-slug }}
+          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
   release:
     name: 'Release'
     # Only on direct pushes to release branches — never on pull_request events.
