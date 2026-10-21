@@ -1,7 +1,7 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/modal/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@porsche-design-system/examples-accessibility/components/modal/accessibility/dialog-label-on-component-host-vs-header-slot/example';
-import { modalTriggerWithoutPopupSemanticsOrContextA11yExample } from '@porsche-design-system/examples-accessibility/components/modal/accessibility/modal-trigger-without-popup-semantics-or-context/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/modal/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@porsche-design-system/examples-stories/components/modal/accessibility/dialog-label-on-component-host-vs-header-slot/example';
+import { modalTriggerWithoutPopupSemanticsOrContextA11yExample } from '@porsche-design-system/examples-stories/components/modal/accessibility/modal-trigger-without-popup-semantics-or-context/example';
 import AlertDialogDescription from '@porsche-design-system/examples-stories/components/modal/alert-dialog/example.mdx';
 import { modalStoryAlertDialog } from '@porsche-design-system/examples-stories/components/modal/alert-dialog/story';
 import CustomStylingDescription from '@porsche-design-system/examples-stories/components/modal/custom-styling/example.mdx';

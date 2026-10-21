@@ -1,10 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/button/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { iconOnlyButtonWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/button/accessibility/icon-only-button-without-accessible-name/example';
-import { vagueButtonLabelWithoutContextA11yExample } from '@porsche-design-system/examples-accessibility/components/button/accessibility/vague-button-label-without-context/example';
 import { buttonExampleForm, buttonExampleFormAttribute } from '@porsche-design-system/examples-framework';
 import FormDescription from '@porsche-design-system/examples-framework/components/button/form/example.mdx';
 import FormAttributeDescription from '@porsche-design-system/examples-framework/components/button/form-attribute/example.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/button/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { iconOnlyButtonWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/button/accessibility/icon-only-button-without-accessible-name/example';
+import { vagueButtonLabelWithoutContextA11yExample } from '@porsche-design-system/examples-stories/components/button/accessibility/vague-button-label-without-context/example';
 import AiDropShadowDescription from '@porsche-design-system/examples-stories/components/button/ai-drop-shadow/example.mdx';
 import { buttonStoryAiDropShadow } from '@porsche-design-system/examples-stories/components/button/ai-drop-shadow/story';
 import AiGradientGlowDescription from '@porsche-design-system/examples-stories/components/button/ai-gradient-glow/example.mdx';

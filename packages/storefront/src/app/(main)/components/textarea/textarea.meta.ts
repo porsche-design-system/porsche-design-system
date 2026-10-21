@@ -1,10 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/textarea/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/textarea/accessibility/hidden-label-without-accessible-name/example';
-import { placeholderOnlyInstructionsForOpenTextInputA11yExample } from '@porsche-design-system/examples-accessibility/components/textarea/accessibility/placeholder-only-instructions-for-open-text-input/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/textarea/accessibility/validation-feedback-via-state-and-message-api/example';
 import { textareaExampleForm } from '@porsche-design-system/examples-framework';
 import FormDescription from '@porsche-design-system/examples-framework/components/textarea/form/example.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/textarea/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/textarea/accessibility/hidden-label-without-accessible-name/example';
+import { placeholderOnlyInstructionsForOpenTextInputA11yExample } from '@porsche-design-system/examples-stories/components/textarea/accessibility/placeholder-only-instructions-for-open-text-input/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-stories/components/textarea/accessibility/validation-feedback-via-state-and-message-api/example';
 import {
   textareaSlotStories,
   textareaStory,

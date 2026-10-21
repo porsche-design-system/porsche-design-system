@@ -1,10 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/input-search/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/input-search/accessibility/hidden-label-without-accessible-name/example';
-import { placeholderUsedAsTheOnlyLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/input-search/accessibility/placeholder-used-as-the-only-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/input-search/accessibility/validation-feedback-via-state-and-message-api/example';
 import { inputSearchExampleForm } from '@porsche-design-system/examples-framework';
 import FormDescription from '@porsche-design-system/examples-framework/components/input-search/form/example.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/input-search/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/input-search/accessibility/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@porsche-design-system/examples-stories/components/input-search/accessibility/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-stories/components/input-search/accessibility/validation-feedback-via-state-and-message-api/example';
 import AriaComboboxDescription from '@porsche-design-system/examples-stories/components/input-search/aria-combobox/example.mdx';
 import { inputSearchStoryAriaComboboxSketch } from '@porsche-design-system/examples-stories/components/input-search/aria-combobox/story';
 import {

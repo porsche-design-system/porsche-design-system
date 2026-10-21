@@ -3,7 +3,6 @@
 @import '@porsche-design-system/components-react/tailwindcss';
 @source "../../../examples/projects/framework/generated/previews/*.tsx";
 @source "../../../examples/projects/framework/src";
-@source "../../../examples/projects/accessibility/src";
 @source "../../../examples/projects/stories/src";
 
 @theme {

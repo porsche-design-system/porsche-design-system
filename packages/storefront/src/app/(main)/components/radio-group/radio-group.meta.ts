@@ -1,9 +1,9 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/radio-group/accessibility/hidden-label-without-accessible-name/example';
-import { missingGroupLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/radio-group/accessibility/missing-group-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/radio-group/accessibility/validation-feedback-via-state-and-message-api/example';
 import { radioGroupExampleForm } from '@porsche-design-system/examples-framework';
 import FormDescription from '@porsche-design-system/examples-framework/components/radio-group/form/example.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/radio-group/accessibility/hidden-label-without-accessible-name/example';
+import { missingGroupLabelA11yExample } from '@porsche-design-system/examples-stories/components/radio-group/accessibility/missing-group-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-stories/components/radio-group/accessibility/validation-feedback-via-state-and-message-api/example';
 import {
   radioGroupSlotStories,
   radioGroupStory,

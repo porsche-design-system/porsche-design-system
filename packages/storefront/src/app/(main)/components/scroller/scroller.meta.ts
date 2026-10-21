@@ -1,7 +1,7 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/scroller/accessibility/aria-on-component-host-vs-aria-prop/example';
 import { scrollerExample } from '@porsche-design-system/examples-framework';
 import ScrollToPositionDescription from '@porsche-design-system/examples-framework/components/scroller/scroll-to-position/example.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/scroller/accessibility/aria-on-component-host-vs-aria-prop/example';
 import { scrollerStory } from '@porsche-design-system/examples-stories/components/scroller/default/story';
 import HeightDescription from '@porsche-design-system/examples-stories/components/scroller/height/example.mdx';
 import { scrollerStoryHeight } from '@porsche-design-system/examples-stories/components/scroller/height/story';

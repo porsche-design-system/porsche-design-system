@@ -37,7 +37,6 @@
     "packages/components/projects/stylesheets",
     "packages/tokens/projects/tokens-meta",
     "packages/utilities/projects/ag-grid",
-    "packages/examples/projects/accessibility",
     "packages/examples/projects/framework",
     "packages/examples/projects/pages",
     "packages/examples/projects/stories",

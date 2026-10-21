@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { statusConveyedByColorAndIconOnlyA11yExample } from '@porsche-design-system/examples-accessibility/components/tag/accessibility/status-conveyed-by-color-and-icon-only/example';
+import { statusConveyedByColorAndIconOnlyA11yExample } from '@porsche-design-system/examples-stories/components/tag/accessibility/status-conveyed-by-color-and-icon-only/example';
 import { tagStory } from '@porsche-design-system/examples-stories/components/tag/default/story';
 import MultilineDescription from '@porsche-design-system/examples-stories/components/tag/multiline/example.mdx';
 import { tagStoryMultiline } from '@porsche-design-system/examples-stories/components/tag/multiline/story';

@@ -1,7 +1,7 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnTriggerButtonHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/drilldown/accessibility/aria-on-trigger-button-host-vs-aria-prop/example';
-import { drilldownLabelOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/drilldown/accessibility/drilldown-label-on-component-host-vs-aria-prop/example';
-import { triggerWithoutPopupSemanticsOrContextA11yExample } from '@porsche-design-system/examples-accessibility/components/drilldown/accessibility/trigger-without-popup-semantics-or-context/example';
+import { ariaOnTriggerButtonHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/drilldown/accessibility/aria-on-trigger-button-host-vs-aria-prop/example';
+import { drilldownLabelOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/drilldown/accessibility/drilldown-label-on-component-host-vs-aria-prop/example';
+import { triggerWithoutPopupSemanticsOrContextA11yExample } from '@porsche-design-system/examples-stories/components/drilldown/accessibility/trigger-without-popup-semantics-or-context/example';
 import CustomContentDescription from '@porsche-design-system/examples-stories/components/drilldown/custom-content/example.mdx';
 import { drilldownStoryCustomContent } from '@porsche-design-system/examples-stories/components/drilldown/custom-content/story';
 import { drilldownStory } from '@porsche-design-system/examples-stories/components/drilldown/default/story';

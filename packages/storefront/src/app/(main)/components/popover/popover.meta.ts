@@ -1,7 +1,7 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/popover/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { customSlottedTriggerWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/popover/accessibility/custom-slotted-trigger-without-accessible-name/example';
-import { customSlottedTriggerWithoutAriaExpandedA11yExample } from '@porsche-design-system/examples-accessibility/components/popover/accessibility/custom-slotted-trigger-without-aria-expanded/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/popover/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { customSlottedTriggerWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/popover/accessibility/custom-slotted-trigger-without-accessible-name/example';
+import { customSlottedTriggerWithoutAriaExpandedA11yExample } from '@porsche-design-system/examples-stories/components/popover/accessibility/custom-slotted-trigger-without-aria-expanded/example';
 import {
   popoverControlledSlotStories,
   popoverControlledStory,

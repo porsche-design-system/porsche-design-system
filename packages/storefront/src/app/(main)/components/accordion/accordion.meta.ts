@@ -1,6 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { accordionSummaryWithoutSemanticHeadingA11yExample } from '@porsche-design-system/examples-accessibility/components/accordion/accessibility/accordion-summary-without-semantic-heading/example';
-import { skippedHeadingLevelA11yExample } from '@porsche-design-system/examples-accessibility/components/accordion/accessibility/skipped-heading-level/example';
+import { accordionSummaryWithoutSemanticHeadingA11yExample } from '@porsche-design-system/examples-stories/components/accordion/accessibility/accordion-summary-without-semantic-heading/example';
+import { skippedHeadingLevelA11yExample } from '@porsche-design-system/examples-stories/components/accordion/accessibility/skipped-heading-level/example';
 import {
   accordionSlotStories,
   accordionStory,

@@ -1,9 +1,9 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/checkbox/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/checkbox/accessibility/hidden-label-without-accessible-name/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/checkbox/accessibility/validation-feedback-via-state-and-message-api/example';
 import { checkboxExampleForm } from '@porsche-design-system/examples-framework';
 import FormDescription from '@porsche-design-system/examples-framework/components/checkbox/form/example.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/checkbox/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/checkbox/accessibility/hidden-label-without-accessible-name/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-stories/components/checkbox/accessibility/validation-feedback-via-state-and-message-api/example';
 import {
   checkboxSlotStories,
   checkboxStory,

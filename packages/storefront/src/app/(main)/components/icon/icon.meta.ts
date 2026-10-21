@@ -1,6 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { decorativeIconWithRedundantLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/icon/accessibility/decorative-icon-with-redundant-label/example';
-import { meaningfulIconWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/icon/accessibility/meaningful-icon-without-accessible-name/example';
+import { decorativeIconWithRedundantLabelA11yExample } from '@porsche-design-system/examples-stories/components/icon/accessibility/decorative-icon-with-redundant-label/example';
+import { meaningfulIconWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/icon/accessibility/meaningful-icon-without-accessible-name/example';
 import ColorDescription from '@porsche-design-system/examples-stories/components/icon/color/example.mdx';
 import { iconStoryColor } from '@porsche-design-system/examples-stories/components/icon/color/story';
 import ColorCssVarDescription from '@porsche-design-system/examples-stories/components/icon/color-css-var/example.mdx';

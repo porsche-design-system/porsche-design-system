@@ -1,12 +1,12 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { notificationMountedOnlyWhenNeededA11yExample } from '@porsche-design-system/examples-accessibility/components/inline-notification/accessibility/notification-mounted-only-when-needed/example';
-import { warningWithoutDescriptiveHeadingA11yExample } from '@porsche-design-system/examples-accessibility/components/inline-notification/accessibility/warning-without-descriptive-heading/example';
 import {
   inlineNotificationExampleActionButton,
   inlineNotificationExampleEvents,
 } from '@porsche-design-system/examples-framework';
 import ActionButtonDescription from '@porsche-design-system/examples-framework/components/inline-notification/action-button/example.mdx';
 import EventHandlingDescription from '@porsche-design-system/examples-framework/components/inline-notification/event-handling/example.mdx';
+import { notificationMountedOnlyWhenNeededA11yExample } from '@porsche-design-system/examples-stories/components/inline-notification/accessibility/notification-mounted-only-when-needed/example';
+import { warningWithoutDescriptiveHeadingA11yExample } from '@porsche-design-system/examples-stories/components/inline-notification/accessibility/warning-without-descriptive-heading/example';
 import { inlineNotificationStory } from '@porsche-design-system/examples-stories/components/inline-notification/default/story';
 import AccessibilityOverview from '@/app/(main)/components/inline-notification/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/inline-notification/accessibility/tests.mdx';

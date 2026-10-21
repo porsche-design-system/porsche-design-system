@@ -1,9 +1,9 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { columnWithHiddenLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/table/accessibility/column-with-hidden-label/example';
-import { dataTableWithoutCaptionA11yExample } from '@porsche-design-system/examples-accessibility/components/table/accessibility/data-table-without-caption/example';
 import { tableExampleAdvanced, tableExampleSorting } from '@porsche-design-system/examples-framework';
 import AdvancedDescription from '@porsche-design-system/examples-framework/components/table/advanced/example.mdx';
 import SortingDescription from '@porsche-design-system/examples-framework/components/table/sorting/example.mdx';
+import { columnWithHiddenLabelA11yExample } from '@porsche-design-system/examples-stories/components/table/accessibility/column-with-hidden-label/example';
+import { dataTableWithoutCaptionA11yExample } from '@porsche-design-system/examples-stories/components/table/accessibility/data-table-without-caption/example';
 import CaptionPropertyDescription from '@porsche-design-system/examples-stories/components/table/caption-property/example.mdx';
 import { tableStoryCaptionProperty } from '@porsche-design-system/examples-stories/components/table/caption-property/story';
 import CaptionSlotDescription from '@porsche-design-system/examples-stories/components/table/caption-slot/example.mdx';

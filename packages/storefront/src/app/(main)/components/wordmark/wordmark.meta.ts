@@ -1,6 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/wordmark/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { linkedWordmarkWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/wordmark/accessibility/linked-wordmark-without-accessible-name/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/wordmark/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { linkedWordmarkWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/wordmark/accessibility/linked-wordmark-without-accessible-name/example';
 import CustomClickableAreaDescription from '@porsche-design-system/examples-stories/components/wordmark/custom-clickable-area/example.mdx';
 import { wordmarkStoryCustomPadding } from '@porsche-design-system/examples-stories/components/wordmark/custom-clickable-area/story';
 import { wordmarkStory } from '@porsche-design-system/examples-stories/components/wordmark/default/story';

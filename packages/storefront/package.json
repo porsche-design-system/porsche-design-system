@@ -49,7 +49,6 @@
   "dependencies": {
     "@algolia/cache-in-memory": "^4.27.0",
     "@porsche-design-system/components-react": "4.8.0",
-    "@porsche-design-system/examples-accessibility": "0.0.0",
     "@porsche-design-system/examples-framework": "0.0.0",
     "@porsche-design-system/examples-pages": "0.0.0",
     "@porsche-design-system/examples-stories": "0.0.0",

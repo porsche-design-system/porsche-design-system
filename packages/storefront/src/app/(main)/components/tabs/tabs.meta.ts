@@ -1,6 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/tabs/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { vagueTabLabelsWithoutContextA11yExample } from '@porsche-design-system/examples-accessibility/components/tabs/accessibility/vague-tab-labels-without-context/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/tabs/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { vagueTabLabelsWithoutContextA11yExample } from '@porsche-design-system/examples-stories/components/tabs/accessibility/vague-tab-labels-without-context/example';
 import ActiveTabDescription from '@porsche-design-system/examples-stories/components/tabs/active-tab/example.mdx';
 import { tabsStoryActiveTabIndex } from '@porsche-design-system/examples-stories/components/tabs/active-tab/story';
 import { tabsStory } from '@porsche-design-system/examples-stories/components/tabs/default/story';

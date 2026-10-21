@@ -1,8 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/button-tile/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { vagueTileLabelWithoutContextA11yExample } from '@porsche-design-system/examples-accessibility/components/button-tile/accessibility/vague-tile-label-without-context/example';
 import { buttonTileExampleHyphens } from '@porsche-design-system/examples-framework';
 import HyphensDescription from '@porsche-design-system/examples-framework/components/button-tile/hyphens/example.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/button-tile/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { vagueTileLabelWithoutContextA11yExample } from '@porsche-design-system/examples-stories/components/button-tile/accessibility/vague-tile-label-without-context/example';
 import ColorSchemeDescription from '@porsche-design-system/examples-stories/components/button-tile/color-scheme/example.mdx';
 import { buttonTileStoryColorScheme } from '@porsche-design-system/examples-stories/components/button-tile/color-scheme/story';
 import {

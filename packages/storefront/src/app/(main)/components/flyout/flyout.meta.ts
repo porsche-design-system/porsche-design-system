@@ -1,9 +1,9 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnTriggerButtonHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/flyout/accessibility/aria-on-trigger-button-host-vs-aria-prop/example';
-import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@porsche-design-system/examples-accessibility/components/flyout/accessibility/dialog-label-on-component-host-vs-header-slot/example';
-import { flyoutTriggerWithoutPopupSemanticsA11yExample } from '@porsche-design-system/examples-accessibility/components/flyout/accessibility/flyout-trigger-without-popup-semantics/example';
 import { flyoutExampleForm } from '@porsche-design-system/examples-framework';
 import FormDescription from '@porsche-design-system/examples-framework/components/flyout/form/example.mdx';
+import { ariaOnTriggerButtonHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/flyout/accessibility/aria-on-trigger-button-host-vs-aria-prop/example';
+import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@porsche-design-system/examples-stories/components/flyout/accessibility/dialog-label-on-component-host-vs-header-slot/example';
+import { flyoutTriggerWithoutPopupSemanticsA11yExample } from '@porsche-design-system/examples-stories/components/flyout/accessibility/flyout-trigger-without-popup-semantics/example';
 import CustomStylingDescription from '@porsche-design-system/examples-stories/components/flyout/custom-styling/example.mdx';
 import { flyoutStoryCustomStyling } from '@porsche-design-system/examples-stories/components/flyout/custom-styling/story';
 import {

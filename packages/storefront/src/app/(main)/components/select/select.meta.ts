@@ -1,10 +1,4 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ambiguousOptionLabelsWithoutFieldContextA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/ambiguous-option-labels-without-field-context/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { errorStateWithoutRecoveryGuidanceA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/error-state-without-recovery-guidance/example';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/hidden-label-without-accessible-name/example';
-import { promptOptionUsedInsteadOfALabelA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/prompt-option-used-instead-of-a-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/select/accessibility/validation-feedback-via-state-and-message-api/example';
 import {
   selectExampleAsyncFilter,
   selectExampleDynamic,
@@ -17,6 +11,12 @@ import FormDescription from '@porsche-design-system/examples-framework/component
 import RequiredDescription from '@porsche-design-system/examples-framework/components/select/required/example.mdx';
 import SelectedSlotDescription from '@porsche-design-system/examples-framework/components/select/selected-slot/example.mdx';
 import SetValueDescription from '@porsche-design-system/examples-framework/components/select/set-value/example.mdx';
+import { ambiguousOptionLabelsWithoutFieldContextA11yExample } from '@porsche-design-system/examples-stories/components/select/accessibility/ambiguous-option-labels-without-field-context/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/select/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { errorStateWithoutRecoveryGuidanceA11yExample } from '@porsche-design-system/examples-stories/components/select/accessibility/error-state-without-recovery-guidance/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/select/accessibility/hidden-label-without-accessible-name/example';
+import { promptOptionUsedInsteadOfALabelA11yExample } from '@porsche-design-system/examples-stories/components/select/accessibility/prompt-option-used-instead-of-a-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-stories/components/select/accessibility/validation-feedback-via-state-and-message-api/example';
 import {
   selectSlotStories,
   selectStory,

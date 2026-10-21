@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/crest/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/crest/accessibility/aria-on-component-host-vs-aria-prop/example';
 import CustomClickableAreaDescription from '@porsche-design-system/examples-stories/components/crest/custom-clickable-area/example.mdx';
 import { crestStoryCustomPadding } from '@porsche-design-system/examples-stories/components/crest/custom-clickable-area/story';
 import { crestStory } from '@porsche-design-system/examples-stories/components/crest/default/story';

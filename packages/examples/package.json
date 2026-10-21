@@ -7,9 +7,8 @@
   "scripts": {
     "build": "npm run build:projects && npm run build:site",
     "build:projects": "npm run build --workspace=@porsche-design-system/examples-framework && npm run build:projects --workspace=@porsche-design-system/examples-pages",
-    "build:site": "npm run typecheck:accessibility && npm run typecheck:framework && npm run typecheck:stories && npm run typecheck:story-generator && npm run build:site --workspace=@porsche-design-system/examples-pages",
-    "typecheck": "npm run typecheck:accessibility && npm run typecheck:framework && npm run typecheck:pages && npm run typecheck:stories && npm run typecheck:story-generator",
-    "typecheck:accessibility": "npm run typecheck --workspace=@porsche-design-system/examples-accessibility",
+    "build:site": "npm run typecheck:framework && npm run typecheck:stories && npm run typecheck:story-generator && npm run build:site --workspace=@porsche-design-system/examples-pages",
+    "typecheck": "npm run typecheck:framework && npm run typecheck:pages && npm run typecheck:stories && npm run typecheck:story-generator",
     "typecheck:framework": "npm run typecheck --workspace=@porsche-design-system/examples-framework",
     "typecheck:pages": "npm run typecheck --workspace=@porsche-design-system/examples-pages",
     "typecheck:stories": "npm run typecheck --workspace=@porsche-design-system/examples-stories",

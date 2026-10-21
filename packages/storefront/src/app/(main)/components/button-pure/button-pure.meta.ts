@@ -1,10 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/button-pure/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { iconOnlyButtonWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/button-pure/accessibility/icon-only-button-without-accessible-name/example';
-import { vagueButtonLabelWithoutContextA11yExample } from '@porsche-design-system/examples-accessibility/components/button-pure/accessibility/vague-button-label-without-context/example';
 import { buttonPureExampleForm, buttonPureExampleFormAttribute } from '@porsche-design-system/examples-framework';
 import FormDescription from '@porsche-design-system/examples-framework/components/button-pure/form/example.mdx';
 import FormAttributeDescription from '@porsche-design-system/examples-framework/components/button-pure/form-attribute/example.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/button-pure/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { iconOnlyButtonWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/button-pure/accessibility/icon-only-button-without-accessible-name/example';
+import { vagueButtonLabelWithoutContextA11yExample } from '@porsche-design-system/examples-stories/components/button-pure/accessibility/vague-button-label-without-context/example';
 import CustomClickableAreaDescription from '@porsche-design-system/examples-stories/components/button-pure/custom-clickable-area/example.mdx';
 import { buttonPureStoryCustomPadding } from '@porsche-design-system/examples-stories/components/button-pure/custom-clickable-area/story';
 import { buttonPureStory } from '@porsche-design-system/examples-stories/components/button-pure/default/story';

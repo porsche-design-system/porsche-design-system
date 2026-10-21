@@ -1,7 +1,4 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/carousel/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { carouselWithoutSkipPathForKeyboardUsersA11yExample } from '@porsche-design-system/examples-accessibility/components/carousel/accessibility/carousel-without-skip-path-for-keyboard-users/example';
-import { vagueCarouselLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/carousel/accessibility/vague-carousel-label/example';
 import {
   carouselExampleDynamicSlides,
   carouselExampleFocusOnCenterSlide,
@@ -10,6 +7,9 @@ import {
 import DynamicSlidesDescription from '@porsche-design-system/examples-framework/components/carousel/dynamic-slides/example.mdx';
 import FocusOnCenterSlideDescription from '@porsche-design-system/examples-framework/components/carousel/focus-on-center-slide/example.mdx';
 import JumpToSlideDescription from '@porsche-design-system/examples-framework/components/carousel/jump-to-slide/example.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/carousel/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { carouselWithoutSkipPathForKeyboardUsersA11yExample } from '@porsche-design-system/examples-stories/components/carousel/accessibility/carousel-without-skip-path-for-keyboard-users/example';
+import { vagueCarouselLabelA11yExample } from '@porsche-design-system/examples-stories/components/carousel/accessibility/vague-carousel-label/example';
 import { carouselStory } from '@porsche-design-system/examples-stories/components/carousel/default/story';
 import FlexibleWidthsDescription from '@porsche-design-system/examples-stories/components/carousel/flexible-widths/example.mdx';
 import { carouselStoryFlexibleWidths } from '@porsche-design-system/examples-stories/components/carousel/flexible-widths/story';

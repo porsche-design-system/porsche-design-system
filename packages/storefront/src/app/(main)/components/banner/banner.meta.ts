@@ -1,6 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { bannerMountedOnlyWhenShownA11yExample } from '@porsche-design-system/examples-accessibility/components/banner/accessibility/banner-mounted-only-when-shown/example';
-import { errorFeedbackWithoutDescriptiveContentA11yExample } from '@porsche-design-system/examples-accessibility/components/banner/accessibility/error-feedback-without-descriptive-content/example';
+import { bannerMountedOnlyWhenShownA11yExample } from '@porsche-design-system/examples-stories/components/banner/accessibility/banner-mounted-only-when-shown/example';
+import { errorFeedbackWithoutDescriptiveContentA11yExample } from '@porsche-design-system/examples-stories/components/banner/accessibility/error-feedback-without-descriptive-content/example';
 import CustomizationDescription from '@porsche-design-system/examples-stories/components/banner/customization/example.mdx';
 import { bannerStoryCustomStyling } from '@porsche-design-system/examples-stories/components/banner/customization/story';
 import { bannerStory } from '@porsche-design-system/examples-stories/components/banner/default/story';

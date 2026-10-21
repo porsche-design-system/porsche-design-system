@@ -262,9 +262,9 @@ When adding or updating accessibility documentation in the storefront:
 | **Central vs component**       | Cross-cutting integration mistakes live on the [Do's and Don'ts](/must-know/accessibility/dos-and-donts) page. Each component Accessibility tab includes its own do/don't list and examples, even when content overlaps.                                                                                                                                                                                                      |
 | **Usage vs Accessibility**     | The Usage tab is for design/UX guidance. The Accessibility tab is for keyboard, ARIA, and technical integration.                                                                                                                                                                                                                                                                                                              |
 | **Code examples**              | Use vanilla-js web component markup (`<p-button>`, kebab-case attributes). Pass ARIA via `aria="{ 'aria-label': '...' }"`.                                                                                                                                                                                                                                                                                                    |
-| **Page structure**             | Keep conceptual guidance in `overview.mdx` under `## Development considerations`, including `### Common do's and don'ts` bullet rules. Anti-pattern/recommended pairs live in `packages/examples/projects/accessibility`, not in MDX.                                                                                                                                                                                                          |
+| **Page structure**             | Keep conceptual guidance in `overview.mdx` under `## Development considerations`, including `### Common do's and don'ts` bullet rules. Anti-pattern/recommended pairs live in `packages/examples/projects/stories`, next to the stories (`components/<component>/accessibility/<slug>`), not in MDX.                                                                                                                                                                                                          |
 | **Do/don't examples**          | Pair each actionable do/don't with an `antiPattern`/`recommended` example pair. Include host-vs-`aria` prop examples for interactive components.                                                                                                                                                                                                                                                                              |
-| **Story-driven examples**      | Put each pair in `packages/examples/projects/accessibility/src/components/<component>/accessibility/<kebab-case-name>/example.ts`. Export one `<metadataKey>A11yExample` object that `satisfies AccessibilityExample`. Host-level `aria-*` attributes belong in `properties` (e.g. `'aria-haspopup': 'dialog'`). Imperative examples must use a complete cross-framework `ExampleMarkupSample`. |
+| **Story-driven examples**      | Put each pair in `packages/examples/projects/stories/src/components/<component>/accessibility/<kebab-case-name>/example.ts`. Export one `<metadataKey>A11yExample` object that `satisfies AccessibilityExample`. Host-level `aria-*` attributes belong in `properties` (e.g. `'aria-haspopup': 'dialog'`). Imperative examples must use a complete cross-framework `ExampleMarkupSample`. |
 | **Snippet, not runnable file** | Accessibility pairs render as bare markup — no HTML document, component shell or SFC blocks — so the anti-pattern and the recommendation stay diffable at a glance. Keep the two sides structurally identical apart from the accessibility difference being taught. |
 | **Naming**                     | Directory is kebab-case, the metadata key is its lower-camelCase form, and the export is `<key>A11yExample`. Preserve word boundaries: `icon-only-…` → `iconOnlyButtonWithoutAccessibleName`, not `icononly-…`. The skill generator validates the key casing and fails the build on a mismatch.                                                                                                                               |
 | **Page composition**           | `page.mdx` renders `<meta.accessibility.overview />`, then `<A11yIntegrationExamples tag="p-…" examples={meta.accessibility.examples} />` (which owns the `## Integration examples` H2), then `<meta.accessibility.tests />`. Every H2 listed in `<TableOfContents>` must exist in `overview.mdx`/`tests.mdx` in the same order. Each pair renders one framework selector driving both of its snippets. |
@@ -301,7 +301,7 @@ Example in MDX:
 Register the integration examples in the component metadata:
 
 ```ts
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/checkbox/accessibility/hidden-label-without-accessible-name/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/checkbox/accessibility/hidden-label-without-accessible-name/example';
 
 export const checkboxMeta = {
   // ...
@@ -316,7 +316,7 @@ export const checkboxMeta = {
 } satisfies ComponentDocsMeta<'p-checkbox'>;
 ```
 
-Define the complete pair in `packages/examples/projects/accessibility/src/components/checkbox/accessibility/hidden-label-without-accessible-name/example.ts`:
+Define the complete pair in `packages/examples/projects/stories/src/components/checkbox/accessibility/hidden-label-without-accessible-name/example.ts`:
 
 ```ts
 import type { AccessibilityExample } from '@porsche-design-system/story-generator';

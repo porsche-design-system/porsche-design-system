@@ -1,6 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { decorativeFlagWithRedundantLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/flag/accessibility/decorative-flag-with-redundant-label/example';
-import { informativeFlagWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/flag/accessibility/informative-flag-without-accessible-name/example';
+import { decorativeFlagWithRedundantLabelA11yExample } from '@porsche-design-system/examples-stories/components/flag/accessibility/decorative-flag-with-redundant-label/example';
+import { informativeFlagWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/flag/accessibility/informative-flag-without-accessible-name/example';
 import { flagStory } from '@porsche-design-system/examples-stories/components/flag/default/story';
 import ResponsiveSizeDescription from '@porsche-design-system/examples-stories/components/flag/responsive-size/example.mdx';
 import { flagStoryResponsiveSize } from '@porsche-design-system/examples-stories/components/flag/responsive-size/story';

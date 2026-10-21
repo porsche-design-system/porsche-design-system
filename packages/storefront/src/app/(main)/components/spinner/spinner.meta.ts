@@ -1,6 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { spinnerMountedOnlyWhenLoadingStartsA11yExample } from '@porsche-design-system/examples-accessibility/components/spinner/accessibility/spinner-mounted-only-when-loading-starts/example';
-import { spinnerWithoutLoadingMessageA11yExample } from '@porsche-design-system/examples-accessibility/components/spinner/accessibility/spinner-without-loading-message/example';
+import { spinnerMountedOnlyWhenLoadingStartsA11yExample } from '@porsche-design-system/examples-stories/components/spinner/accessibility/spinner-mounted-only-when-loading-starts/example';
+import { spinnerWithoutLoadingMessageA11yExample } from '@porsche-design-system/examples-stories/components/spinner/accessibility/spinner-without-loading-message/example';
 import ColorDescription from '@porsche-design-system/examples-stories/components/spinner/color/example.mdx';
 import { spinnerStoryColor } from '@porsche-design-system/examples-stories/components/spinner/color/story';
 import ColorCssVarDescription from '@porsche-design-system/examples-stories/components/spinner/color-css-var/example.mdx';

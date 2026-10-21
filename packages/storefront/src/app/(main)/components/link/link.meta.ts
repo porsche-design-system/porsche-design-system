@@ -1,8 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/link/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { iconOnlyLinkWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/link/accessibility/icon-only-link-without-accessible-name/example';
-import { indicatingTheCurrentPageA11yExample } from '@porsche-design-system/examples-accessibility/components/link/accessibility/indicating-the-current-page/example';
-import { vagueLinkLabelWithoutContextA11yExample } from '@porsche-design-system/examples-accessibility/components/link/accessibility/vague-link-label-without-context/example';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/link/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { iconOnlyLinkWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/link/accessibility/icon-only-link-without-accessible-name/example';
+import { indicatingTheCurrentPageA11yExample } from '@porsche-design-system/examples-stories/components/link/accessibility/indicating-the-current-page/example';
+import { vagueLinkLabelWithoutContextA11yExample } from '@porsche-design-system/examples-stories/components/link/accessibility/vague-link-label-without-context/example';
 import { linkSlotStories, linkStory } from '@porsche-design-system/examples-stories/components/link/default/story';
 import FrameworkRoutingDescription from '@porsche-design-system/examples-stories/components/link/framework-routing/example.mdx';
 import { linkStoryFrameworkRouting } from '@porsche-design-system/examples-stories/components/link/framework-routing/story';

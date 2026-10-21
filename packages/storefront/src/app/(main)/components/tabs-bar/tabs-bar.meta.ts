@@ -1,6 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { routeNavigationWithoutLandmarkLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/tabs-bar/accessibility/route-navigation-without-landmark-label/example';
-import { tabbedInterfaceWithoutTablistLabelA11yExample } from '@porsche-design-system/examples-accessibility/components/tabs-bar/accessibility/tabbed-interface-without-tablist-label/example';
+import { routeNavigationWithoutLandmarkLabelA11yExample } from '@porsche-design-system/examples-stories/components/tabs-bar/accessibility/route-navigation-without-landmark-label/example';
+import { tabbedInterfaceWithoutTablistLabelA11yExample } from '@porsche-design-system/examples-stories/components/tabs-bar/accessibility/tabbed-interface-without-tablist-label/example';
 import { tabsBarStory } from '@porsche-design-system/examples-stories/components/tabs-bar/default/story';
 import GradientDescription from '@porsche-design-system/examples-stories/components/tabs-bar/gradient/example.mdx';
 import { tabsBarStoryGradient } from '@porsche-design-system/examples-stories/components/tabs-bar/gradient/story';

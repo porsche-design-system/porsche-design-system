@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { headingTagUsedForStylingOnlyA11yExample } from '@porsche-design-system/examples-accessibility/components/text/accessibility/heading-tag-used-for-styling-only/example';
+import { headingTagUsedForStylingOnlyA11yExample } from '@porsche-design-system/examples-stories/components/text/accessibility/heading-tag-used-for-styling-only/example';
 import { textStory } from '@porsche-design-system/examples-stories/components/text/default/story';
 import ResponsiveDescription from '@porsche-design-system/examples-stories/components/text/responsive/example.mdx';
 import { textStorySizeResponsive } from '@porsche-design-system/examples-stories/components/text/responsive/story';

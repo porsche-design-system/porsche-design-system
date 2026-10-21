@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { skippedHeadingLevelA11yExample } from '@porsche-design-system/examples-accessibility/components/heading/accessibility/skipped-heading-level/example';
+import { skippedHeadingLevelA11yExample } from '@porsche-design-system/examples-stories/components/heading/accessibility/skipped-heading-level/example';
 import ColorDescription from '@porsche-design-system/examples-stories/components/heading/color/example.mdx';
 import { headingStoryCustomColor } from '@porsche-design-system/examples-stories/components/heading/color/story';
 import { headingStory } from '@porsche-design-system/examples-stories/components/heading/default/story';

@@ -1,5 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { numberedListForNonSequentialItemsA11yExample } from '@porsche-design-system/examples-accessibility/components/text-list/accessibility/numbered-list-for-non-sequential-items/example';
+import { numberedListForNonSequentialItemsA11yExample } from '@porsche-design-system/examples-stories/components/text-list/accessibility/numbered-list-for-non-sequential-items/example';
 import { textListStory } from '@porsche-design-system/examples-stories/components/text-list/default/story';
 import AccessibilityOverview from '@/app/(main)/components/text-list/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/text-list/accessibility/tests.mdx';

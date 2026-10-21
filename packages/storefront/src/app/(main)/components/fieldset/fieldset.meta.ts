@@ -1,6 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { errorStateWithoutRecoveryGuidanceA11yExample } from '@porsche-design-system/examples-accessibility/components/fieldset/accessibility/error-state-without-recovery-guidance/example';
-import { unlabeledFieldGroupA11yExample } from '@porsche-design-system/examples-accessibility/components/fieldset/accessibility/unlabeled-field-group/example';
+import { errorStateWithoutRecoveryGuidanceA11yExample } from '@porsche-design-system/examples-stories/components/fieldset/accessibility/error-state-without-recovery-guidance/example';
+import { unlabeledFieldGroupA11yExample } from '@porsche-design-system/examples-stories/components/fieldset/accessibility/unlabeled-field-group/example';
 import {
   fieldsetSlotStories,
   fieldsetStory,

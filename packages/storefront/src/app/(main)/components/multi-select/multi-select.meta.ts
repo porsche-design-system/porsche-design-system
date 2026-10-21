@@ -1,8 +1,4 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-accessibility/components/multi-select/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-accessibility/components/multi-select/accessibility/hidden-label-without-accessible-name/example';
-import { promptOptionUsedInsteadOfALabelA11yExample } from '@porsche-design-system/examples-accessibility/components/multi-select/accessibility/prompt-option-used-instead-of-a-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-accessibility/components/multi-select/accessibility/validation-feedback-via-state-and-message-api/example';
 import {
   multiSelectExampleAsyncFilter,
   multiSelectExampleDynamic,
@@ -13,6 +9,10 @@ import AsyncFilterDescription from '@porsche-design-system/examples-framework/co
 import FormDescription from '@porsche-design-system/examples-framework/components/multi-select/form/example.mdx';
 import SelectedSlotDescription from '@porsche-design-system/examples-framework/components/multi-select/selected-slot/example.mdx';
 import SetValueDescription from '@porsche-design-system/examples-framework/components/multi-select/set-value/example.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/multi-select/accessibility/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/multi-select/accessibility/hidden-label-without-accessible-name/example';
+import { promptOptionUsedInsteadOfALabelA11yExample } from '@porsche-design-system/examples-stories/components/multi-select/accessibility/prompt-option-used-instead-of-a-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-stories/components/multi-select/accessibility/validation-feedback-via-state-and-message-api/example';
 import {
   multiSelectSlotStories,
   multiSelectStory,
