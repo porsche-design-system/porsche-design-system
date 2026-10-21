@@ -18,7 +18,7 @@ export type Unresolved = {
 };
 export type Snapshot = {
   components: Component[];
-  /** node id → name of each published component with a PDS icon name, plus the unpublished INSTANCE_SWAP defaults */
+  /** node id → name of each published component with a PDS icon name */
   icons: Record<string, string>;
   /** per component set id, what history says about each property no rule places, by bare name */
   history?: Record<string, Record<string, Resolution>>;

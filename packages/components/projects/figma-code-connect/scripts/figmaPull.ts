@@ -75,21 +75,6 @@ const pullOverRest = async (): Promise<Pick<Snapshot, 'components' | 'icons'>> =
     `/files/${fileKey}/components`
   );
   const names = Object.fromEntries(published.components.map((c) => [c.node_id, c.name]));
-  // an INSTANCE_SWAP default can be a component never published; the runtime hands templates its node id too
-  const unpublishedDefaults = [
-    ...new Set(
-      [...definitionsById.values()]
-        .flatMap((defs) => Object.values(defs))
-        .filter((d) => d.type === 'INSTANCE_SWAP' && typeof d.defaultValue === 'string' && !(d.defaultValue in names))
-        .map((d) => d.defaultValue as string)
-    ),
-  ];
-  for (const path of setNodesPaths(unpublishedDefaults)) {
-    const { nodes } = await get<{ nodes: Record<string, { document: { name: string } } | null> }>(path);
-    for (const [id, node] of Object.entries(nodes)) {
-      if (node) names[id] = node.document.name;
-    }
-  }
   // only icon components are looked up by name: the INSTANCE_SWAP fallbacks and the icon batch
   const icons = new Set<string>((getComponentMeta('p-icon').propsMeta?.name?.allowedValues ?? []) as string[]);
   return {

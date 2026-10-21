@@ -115,9 +115,8 @@ release does.
 | `npm run figma:unpublish`   | Yes            | Removes the records; Dev Mode falls back to generated markup                                                                                                                                                                                                                                                         |
 | `npm run test:unit`         | No             | The reader, the generator, the CLI's output against a stand-in for Figma's API and a snapshot of every generated file; `-- -u` updates the snapshots                                                                                                                                                                 |
 
-The pull is `GET /files/:key/component_sets`, `GET /files/:key/nodes` per 25 component sets,
-`GET /files/:key/components` and, when an INSTANCE_SWAP default is an unpublished component, one more
-`GET /files/:key/nodes` per 25 such defaults. A property no rule places adds `GET /files/:key/versions` once and
+The pull is `GET /files/:key/component_sets`, `GET /files/:key/nodes` per 25 component sets and
+`GET /files/:key/components`. A property no rule places adds `GET /files/:key/versions` once and
 `GET /files/:key/nodes?version=…` per version read and 25 sets with such a property, at most 40 versions and 90 days
 back and one every 3 s: the oldest reachable version first, which settles a key whose id carried a PDS name there and
 drops a property that already carries its name there, then newest first until each remaining property has appeared. Only
