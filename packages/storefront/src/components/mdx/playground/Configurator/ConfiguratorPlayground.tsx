@@ -1,6 +1,6 @@
 'use client';
 
-import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import { getFrameworkProject, openInStackblitz } from '@porsche-design-system/stackblitz';
 import {
   type ConfiguratorTagNames,
   getStoryMarkup,
@@ -61,7 +61,7 @@ export const ConfiguratorPlayground = <T extends HTMLTagOrComponent>({
       colorScheme: storefrontColorScheme,
       output: 'project',
     });
-    openInStackblitz(framework, markup[framework], storefrontColorScheme);
+    openInStackblitz(getFrameworkProject(framework, markup[framework], storefrontColorScheme));
   };
 
   return (

@@ -9,7 +9,7 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 // Types only: the package exports every example, and a client component is handed the one it shows.
 import type { PageExample } from '@porsche-design-system/examples';
-import { openExampleInStackblitz } from '@porsche-design-system/stackblitz';
+import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import { useState } from 'react';
 import { DocsLink } from '@/components/common/DocsLink';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
@@ -57,7 +57,10 @@ const OpenExampleInStackblitz = ({ example, mediaPath }: Pick<ExampleProps, 'exa
   <PButtonPure
     type="button"
     iconSource="assets/icon-stackblitz.svg"
-    onClick={() => openExampleInStackblitz(withMediaOrigin(example, window.location.origin, mediaPath))}
+    onClick={() => {
+      const { title, description, files } = withMediaOrigin(example, window.location.origin, mediaPath);
+      openInStackblitz({ title, description, files, openFile: 'index.html' });
+    }}
     aria={{ 'aria-description': 'Opens in a new tab' }}
   >
     Open in StackBlitz

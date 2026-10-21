@@ -1,7 +1,7 @@
 'use client';
 
 import type { Framework } from '@porsche-design-system/shared';
-import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import { getFrameworkProject, openInStackblitz } from '@porsche-design-system/stackblitz';
 import { wrapCode } from '@porsche-design-system/story-generator';
 import { type ReactNode, useMemo } from 'react';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
@@ -49,7 +49,7 @@ export const ComponentExamplePlayground = ({
 
   const onOpenInStackblitz = () => {
     const markup = createStackblitzMarkupFromSample(code, framework, storefrontColorScheme);
-    openInStackblitz(framework, markup, storefrontColorScheme);
+    openInStackblitz(getFrameworkProject(framework, markup, storefrontColorScheme));
   };
 
   return (
