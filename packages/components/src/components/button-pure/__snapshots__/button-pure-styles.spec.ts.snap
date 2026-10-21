@@ -15,6 +15,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -100,6 +101,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -185,6 +187,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -270,6 +273,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -347,6 +351,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -424,6 +429,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -504,6 +510,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -588,6 +595,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -675,6 +683,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -763,6 +772,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -848,6 +858,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -933,6 +944,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -1135,6 +1147,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -1320,6 +1333,7 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -1395,6 +1409,7 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -1472,6 +1487,7 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -1549,6 +1565,7 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;

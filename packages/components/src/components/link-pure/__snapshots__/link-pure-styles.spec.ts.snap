@@ -52,6 +52,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -227,6 +228,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -382,6 +384,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -457,6 +460,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -552,6 +556,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -620,6 +625,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -695,6 +701,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -770,6 +777,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -845,6 +853,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -920,6 +929,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -1015,6 +1025,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -1082,6 +1093,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -1159,6 +1171,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -1237,6 +1250,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -1304,6 +1318,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;

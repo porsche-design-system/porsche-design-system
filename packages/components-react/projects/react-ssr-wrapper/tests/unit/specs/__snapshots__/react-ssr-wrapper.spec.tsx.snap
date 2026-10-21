@@ -581,6 +581,7 @@ img {
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -3551,6 +3552,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -5558,6 +5560,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -6175,6 +6178,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -6340,6 +6344,7 @@ img:dir(rtl) {
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -9275,6 +9280,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
 
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-link-pure-px,0);
   padding-block: var(--p-link-pure-py,0);
   display: flex;
@@ -9798,6 +9804,7 @@ slot[name="header"] {
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
@@ -10782,6 +10789,7 @@ img {
 }
 .root {
   all: unset;
+  box-sizing: border-box;
   padding-inline: var(--p-button-pure-px,0);
   padding-block: var(--p-button-pure-py,0);
   display: flex;
