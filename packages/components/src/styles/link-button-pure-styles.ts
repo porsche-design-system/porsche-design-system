@@ -89,6 +89,7 @@ export const getLinkButtonPureStyles = (
     },
     root: {
       all: 'unset',
+      boxSizing: 'border-box',
       paddingInline: ref(cssVarPaddingInline, '0'),
       paddingBlock: ref(cssVarPaddingBlock, '0'),
       display: 'flex',
