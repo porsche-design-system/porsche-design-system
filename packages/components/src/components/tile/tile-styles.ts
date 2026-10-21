@@ -43,7 +43,6 @@ import {
   type TileSlotState,
   tileAnchorSlot,
   tileBackgroundSlot,
-  tileLinkHoverAttribute,
 } from './tile-utils';
 
 /**
@@ -75,11 +74,11 @@ const cssVarBackground = '--p-tile-bg';
  */
 const cssVarGradientFade = '--p-tile-gradient-fade';
 /**
- * @css-variable {"name": "--p-tile-media-scale", "description": "Scales the content of the `background` slot and `img` and `video` elements slotted directly into a layout slot, e.g. `1.05` to zoom in on hover. Set to `1.05` by the `hover-effect` value `zoom` while the link of the tile is hovered. Changes are animated and omitted if the user prefers reduced motion. The media is clipped to its own box, `clip-path: none` on the media lets it grow beyond, e.g. for cut-out images on the background of the tile. Nested media can use the inherited value, e.g. via `scale: var(--p-tile-media-scale)`, and handles transition and reduced motion itself.", "defaultValue": "1"}
+ * @css-variable {"name": "--p-tile-media-scale", "description": "Scales the content of the `background` slot and `img` and `video` elements slotted directly into a layout slot, e.g. `1.05` to zoom in on hover. Set to `1.05` by the `hover-effect` value `zoom` while the tile is hovered. Changes are animated and omitted if the user prefers reduced motion. The media is clipped to its own box, `clip-path: none` on the media lets it grow beyond, e.g. for cut-out images on the background of the tile. Nested media can use the inherited value, e.g. via `scale: var(--p-tile-media-scale)`, and handles transition and reduced motion itself.", "defaultValue": "1"}
  */
 const cssVarMediaScale = '--p-tile-media-scale';
 /**
- * @css-variable {"name": "--p-tile-media-offset", "description": "Moves the same media as `--p-tile-media-scale` towards the inline end, which follows the writing direction, e.g. `var(--spacing-static-md)` to nudge it on hover. Set to `spacing-static-md` by the `hover-effect` value `offset` while the link of the tile is hovered. Space for the movement has to be reserved, e.g. via padding. Changes are animated and omitted if the user prefers reduced motion.", "defaultValue": "0px"}
+ * @css-variable {"name": "--p-tile-media-offset", "description": "Moves the same media as `--p-tile-media-scale` towards the inline end, which follows the writing direction, e.g. `var(--spacing-static-md)` to nudge it on hover. Set to `spacing-static-md` by the `hover-effect` value `offset` while the tile is hovered. Space for the movement has to be reserved, e.g. via padding. Changes are animated and omitted if the user prefers reduced motion.", "defaultValue": "0px"}
  */
 const cssVarMediaOffset = '--p-tile-media-offset';
 // 1 or -1 depending on the writing direction, inherited by slotted content
@@ -111,7 +110,7 @@ const backgroundMap: Record<TileBackground, string> = {
   frosted: ref(colorFrosted),
 };
 
-// background while the link of the tile is hovered with `hover-effect="highlight"`
+// background while the tile is hovered with `hover-effect="highlight"`
 const highlightMap: Record<TileBackground, string> = {
   none: ref(colorCanvas),
   surface: ref(colorCanvas),
@@ -384,7 +383,7 @@ export const getComponentCss = (
       },
       ...(hoverEffect !== 'none' &&
         hoverMediaQuery({
-          [`&[${tileLinkHoverAttribute}]`]: {
+          ':host(:hover) &': {
             ...(hasHoverEffectToken(hoverEffect, 'zoom') && { [cssVarMediaScale]: 1.05 }),
             ...(hasHoverEffectToken(hoverEffect, 'offset') && { [cssVarMediaOffset]: ref(spacingStaticMd) }),
             ...(hasHoverEffectToken(hoverEffect, 'highlight') && { backgroundColor: highlightMap[background] }),

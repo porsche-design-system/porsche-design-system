@@ -3201,7 +3201,7 @@ export namespace Components {
          */
         "gradient"?: BreakpointCustomizable<TileGradient>;
         /**
-          * Applies effects while the link of the tile is hovered, i.e. the `anchor` slot or a slotted `p-link` with `cover`, so independent interactive elements don't trigger them. `zoom` zooms in on and `offset` moves the media towards the inline end, which applies to the same media as `--p-tile-media-scale` and is omitted if the user prefers reduced motion. `highlight` changes the background from `none` and `surface` to `canvas`, from `canvas` to `surface` and from `frosted` to `frosted-strong`. Effects can be combined, separated by a space.
+          * Applies effects while the tile is hovered, intended for clickable tiles, i.e. with the `anchor` slot or a slotted `p-link` with `cover`. `zoom` zooms in on and `offset` moves the media towards the inline end, which applies to the same media as `--p-tile-media-scale` and is omitted if the user prefers reduced motion. `highlight` changes the background from `none` and `surface` to `canvas`, from `canvas` to `surface` and from `frosted` to `frosted-strong`. Effects can be combined, separated by a space.
           * @default 'none'
          */
         "hoverEffect"?: TileHoverEffect;
@@ -7798,7 +7798,7 @@ declare namespace LocalJSX {
          */
         "gradient"?: BreakpointCustomizable<TileGradient>;
         /**
-          * Applies effects while the link of the tile is hovered, i.e. the `anchor` slot or a slotted `p-link` with `cover`, so independent interactive elements don't trigger them. `zoom` zooms in on and `offset` moves the media towards the inline end, which applies to the same media as `--p-tile-media-scale` and is omitted if the user prefers reduced motion. `highlight` changes the background from `none` and `surface` to `canvas`, from `canvas` to `surface` and from `frosted` to `frosted-strong`. Effects can be combined, separated by a space.
+          * Applies effects while the tile is hovered, intended for clickable tiles, i.e. with the `anchor` slot or a slotted `p-link` with `cover`. `zoom` zooms in on and `offset` moves the media towards the inline end, which applies to the same media as `--p-tile-media-scale` and is omitted if the user prefers reduced motion. `highlight` changes the background from `none` and `surface` to `canvas`, from `canvas` to `surface` and from `frosted` to `frosted-strong`. Effects can be combined, separated by a space.
           * @default 'none'
          */
         "hoverEffect"?: TileHoverEffect;
