@@ -1,5 +1,7 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { Example } from '@/components/mdx/examples/Example';
+import overlay from '@porsche-design-system/examples/patterns/header/overlay';
+import stacked from '@porsche-design-system/examples/patterns/header/stacked';
 
 export const metadata = {
   title: 'Header - Patterns',
@@ -16,10 +18,6 @@ structure, variations, and usage guidelines for the header component, ensuring a
 all digital touchpoints. Understanding and implementing the header correctly is crucial for establishing a clear and
 efficient user journey.
 
-## Overlay
+<Example example={overlay} heading="Overlay" />
 
-<ExampleViewer example="patterns/header/overlay" />
-
-## Stacked
-
-<ExampleViewer example="patterns/header/stacked" />
+<Example example={stacked} heading="Stacked" />

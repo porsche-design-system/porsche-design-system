@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { toastExample } from '@porsche-design-system/examples-framework';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 import { toastMeta } from '@/app/(main)/components/toast/toast.meta';
+import toastDefault from '@porsche-design-system/examples/components/toast/default';
 
 export const metadata = {
   title: 'Toast: Configurator - Components',
@@ -13,4 +13,4 @@ export const metadata = {
 
 <toastMeta.introduction />
 
-<ComponentExample codeSample={toastExample} />
+<Configurator example={toastDefault} />

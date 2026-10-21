@@ -1,18 +1,13 @@
-import {
-  type Example,
-  type ExamplePath,
-  examples,
-  examplesPath,
-  mediaPath,
-} from '@porsche-design-system/examples-pages';
+import { examples, type PageExample } from '@porsche-design-system/examples';
+import { mediaPath } from '@porsche-design-system/examples-pages';
 
 /**
- * The examples of `@porsche-design-system/examples-pages`, as the storefront serves them.
+ * The patterns and templates of the catalogue (`@porsche-design-system/examples`), as the storefront serves them.
  *
  * Two halves come from the examples package. The built pages are copied from `dist-site/` to `public/examples/` in the
  * `prebuild` (`scripts/copyExamples.ts`), and `WebsiteViewer` frames them from there. Every example – its meta and the
- * files of its project, which the code view shows and StackBlitz opens – is imported from the package export by
- * `ExampleViewer` instead, at build time.
+ * files of its project, which the code view shows and StackBlitz opens – is read from the catalogue by `Example`
+ * instead, at build time.
  *
  * Both are free of any storefront slug, because one build is deployed under several of them – `release.yml` rebuilds
  * the storefront from one artifact for `/v4.8.0/` and for `/v4/` – so the slug is inserted here, for exactly the build
@@ -44,26 +39,26 @@ export const rewriteCdnUrlsForDev = (html: string): string =>
   html.replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001');
 
 /**
- * The URL of an example in this deployment: `patterns/header/overlay` →
+ * The URL of an example in this deployment, its `url` below the slug: `/examples/patterns/header/overlay/index.html` →
  * `/v4/examples/patterns/header/overlay/index.html`.
  *
  * The file is named, not the folder: the examples are static files in `public/`, and `next dev` serves those by their
  * exact path only – `/examples/…/overlay/` answers 404 there, while the static hosts would resolve it. Root-absolute
  * rather than relative to `<base href>`, so it means the same wherever it is used.
  */
-export const getExampleUrl = (example: ExamplePath, basePath: string): string =>
-  withBasePath(`${examplesPath}${example}/index.html`, basePath);
+export const getExampleUrl = ({ url }: Pick<PageExample, 'url'>, basePath: string): string =>
+  withBasePath(url, basePath);
 
 /**
- * An example as this deployment shows it: its media below the slug.
+ * A pattern or template as this deployment shows it: its media below the slug.
  *
- * Fails for a path that is not an example – MDX passes the path as a plain string, so the type alone does not catch a
- * typo there.
+ * Fails for an id that is not a pattern or template – MDX passes the id as a plain string, so the type alone does not
+ * catch a typo there.
  */
-export const getExample = <Path extends ExamplePath>(path: Path, basePath: string): Example<Path> => {
-  const example: Example<Path> | undefined = examples[path];
-  if (!example) {
-    throw new Error(`[storefront] "${path}" is not an example of @porsche-design-system/examples-pages`);
+export const getExample = <Id extends PageExample['id']>(id: Id, basePath: string): PageExample<Id> => {
+  const example = (examples as unknown as Partial<Record<string, PageExample<Id>>>)[id];
+  if (example?.kind !== 'pattern' && example?.kind !== 'template') {
+    throw new Error(`[storefront] "${id}" is not an example of @porsche-design-system/examples-pages`);
   }
 
   return {

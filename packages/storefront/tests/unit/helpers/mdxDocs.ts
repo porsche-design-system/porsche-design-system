@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import { createProcessor } from '@mdx-js/mdx';
+import { examples } from '@porsche-design-system/examples';
 import type { Expression } from 'estree';
 import type { Nodes, Root } from 'mdast';
 import remarkGfm from 'remark-gfm';
@@ -81,7 +82,14 @@ const resolveModule = (specifier: string, fromFile: string): string | undefined 
     : undefined;
 };
 
-type Import = { file: string; name: string };
+/** What an MDX file imports by a name: an export of a module, or an example by its id. */
+type Import = { file: string; name: string } | { example: string };
+
+const EXAMPLE_MODULE = /^@porsche-design-system\/examples\/(.+)$/;
+
+/** The title of an example of the catalogue, as `<Example>` renders it. */
+const exampleTitle = (id: string): string | undefined =>
+  (examples as Partial<Record<string, { title: string }>>)[id]?.title;
 
 /** The MDX compiler and the plugins Next uses for the pages (`next.config.ts`), so files parse as they are built. */
 const mdxProcessor = createProcessor({ remarkPlugins: [remarkGfm] });
@@ -105,6 +113,13 @@ const parseMdx = (file: string) => {
     }
     for (const statement of node.data?.estree?.body ?? []) {
       if (statement.type !== 'ImportDeclaration') {
+        continue;
+      }
+      const example = String(statement.source.value).match(EXAMPLE_MODULE)?.[1];
+      if (example) {
+        for (const specifier of statement.specifiers) {
+          imports.set(specifier.local.name, { example });
+        }
         continue;
       }
       const target = resolveModule(String(statement.source.value), file);
@@ -206,7 +221,35 @@ function resolveExport(file: string, exportName: string, members: string[]): Val
 const resolveName = (name: string, file: string): Value | undefined => {
   const [root, ...members] = name.split('.');
   const imported = parseMdx(file).imports.get(root);
+  if (imported && 'example' in imported) {
+    const title = members.join('.') === 'title' ? exampleTitle(imported.example) : undefined;
+    return title === undefined ? undefined : { string: title };
+  }
   return imported && resolveExport(imported.file, imported.name, members);
+};
+
+type JsxAttribute = { type: string; name?: string; value?: unknown };
+
+/** The `##` heading an `<Example>` renders: its `heading`, else its example's title – none with a `level` or `heading={false}`. */
+const getExampleHeading = (node: Nodes & { attributes: unknown[] }, file: string): string | undefined => {
+  const attributes = node.attributes as JsxAttribute[];
+  const attribute = (name: string) => attributes.find((a) => a.type === 'mdxJsxAttribute' && a.name === name);
+  const heading = attribute('heading')?.value;
+  if (attribute('level') || (heading && typeof heading === 'object')) {
+    return undefined;
+  }
+  if (typeof heading === 'string') {
+    return heading;
+  }
+  const value = attribute('example')?.value;
+  const expression = value && typeof value === 'object' ? expressionOf(value as WithEstree) : undefined;
+  const name = expression && memberName(expression);
+  const resolved = name ? resolveName(`${name}.title`, file) : undefined;
+  const title = resolved && 'string' in resolved ? resolved.string : undefined;
+  if (title === undefined) {
+    throw new Error(`Can't resolve the example at ${toRelativePath(file)}:${lineOf(node)}`);
+  }
+  return title;
 };
 
 const memberName = (expression: Expression): string | undefined => {
@@ -333,6 +376,10 @@ const render = (file: string, page: DocsPage): void => {
     if ((node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') && node.name) {
       for (const heading of COMPONENT_HEADINGS[node.name] ?? []) {
         page.anchors.push(getHeadingAnchorId(heading));
+      }
+      const exampleHeading = node.name === 'Example' ? getExampleHeading(node, file) : undefined;
+      if (exampleHeading !== undefined) {
+        page.anchors.push(getHeadingAnchorId(exampleHeading));
       }
       if (node.name === 'TableOfContents') {
         for (const heading of getTableOfContents(node, file)) {

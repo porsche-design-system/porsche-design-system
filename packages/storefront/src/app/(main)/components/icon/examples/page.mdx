@@ -1,7 +1,13 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { iconMeta } from '@/app/(main)/components/icon/icon.meta';
+import overview from '@porsche-design-system/examples/components/icon/overview';
+import size from '@porsche-design-system/examples/components/icon/size';
+import sizeCssVar from '@porsche-design-system/examples/components/icon/size-css-var';
+import responsiveSize from '@porsche-design-system/examples/components/icon/responsive-size';
+import color from '@porsche-design-system/examples/components/icon/color';
+import colorCssVar from '@porsche-design-system/examples/components/icon/color-css-var';
+import custom from '@porsche-design-system/examples/components/icon/custom';
 
 export const metadata = {
   title: 'Icon: Examples - Components',
@@ -12,54 +18,26 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    iconMeta.examples.overview.name,
-    iconMeta.examples.size.name,
-    iconMeta.examples.sizeCssVar.name,
-    iconMeta.examples.responsiveSize.name,
-    iconMeta.examples.color.name,
-    iconMeta.examples.colorCssVar.name,
-    iconMeta.examples.custom.name,
+    overview.title,
+    size.title,
+    sizeCssVar.title,
+    responsiveSize.title,
+    color.title,
+    colorCssVar.title,
+    custom.title,
   ]}
 />
 
-## {iconMeta.examples.overview.name}
+<Example example={overview} />
 
-<iconMeta.examples.overview.description />
+<Example example={size} />
 
-<ComponentStory story={iconMeta.examples.overview.story} />
+<Example example={sizeCssVar} />
 
-## {iconMeta.examples.size.name}
+<Example example={responsiveSize} />
 
-<iconMeta.examples.size.description />
+<Example example={color} />
 
-<ComponentStory story={iconMeta.examples.size.story} />
+<Example example={colorCssVar} />
 
-## {iconMeta.examples.sizeCssVar.name}
-
-<iconMeta.examples.sizeCssVar.description />
-
-<ComponentStory story={iconMeta.examples.sizeCssVar.story} />
-
-## {iconMeta.examples.responsiveSize.name}
-
-<iconMeta.examples.responsiveSize.description />
-
-<ComponentStory story={iconMeta.examples.responsiveSize.story} />
-
-## {iconMeta.examples.color.name}
-
-<iconMeta.examples.color.description />
-
-<ComponentStory story={iconMeta.examples.color.story} />
-
-## {iconMeta.examples.colorCssVar.name}
-
-<iconMeta.examples.colorCssVar.description />
-
-<ComponentStory story={iconMeta.examples.colorCssVar.story} />
-
-## {iconMeta.examples.custom.name}
-
-<iconMeta.examples.custom.description />
-
-<ComponentStory story={iconMeta.examples.custom.story} />
+<Example example={custom} />

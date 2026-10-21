@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { examples, mediaPath } from '@porsche-design-system/examples-pages';
+import { examples } from '@porsche-design-system/examples';
+import { mediaPath } from '@porsche-design-system/examples-pages';
 import { describe, expect, it } from 'vitest';
 import { withMediaOrigin } from './exampleMediaOrigin';
 import { getExample, getExampleMediaPath, getExampleUrl, insertBasePath, rewriteCdnUrlsForDev } from './examples';
@@ -34,11 +35,13 @@ describe('rewriteCdnUrlsForDev()', () => {
 
 describe('getExampleUrl()', () => {
   it('addresses an example below the slug of this deployment', () => {
-    expect(getExampleUrl('patterns/header/overlay', 'v4')).toBe('/v4/examples/patterns/header/overlay/index.html');
+    expect(getExampleUrl(examples['patterns/header/overlay'], 'v4')).toBe(
+      '/v4/examples/patterns/header/overlay/index.html'
+    );
   });
 
   it('addresses an example at the root without a basePath', () => {
-    expect(getExampleUrl('patterns/footer', '')).toBe('/examples/patterns/footer/index.html');
+    expect(getExampleUrl(examples['patterns/footer'], '')).toBe('/examples/patterns/footer/index.html');
   });
 });
 
@@ -110,7 +113,10 @@ describe('client components', () => {
   it('should import no example data', () => {
     const offenders = clientFiles.filter(([, source]) =>
       Array.from(source.matchAll(/^import\s+(?!type\s)[^;]*?from\s+'([^']+)'/gm), ([, from]) => from).some(
-        (from) => from === '@porsche-design-system/examples-pages' || from === '@/utils/examples'
+        (from) =>
+          from === '@porsche-design-system/examples' ||
+          /^@porsche-design-system\/examples[-/]/.test(from) ||
+          from === '@/utils/examples'
       )
     );
 

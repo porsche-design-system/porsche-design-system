@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { carouselMeta } from '@/app/(main)/components/carousel/carousel.meta';
+import carouselDefault from '@porsche-design-system/examples/components/carousel/default';
 
 export const metadata = {
   title: 'Carousel: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <carouselMeta.introduction />
 
-<Configurator tagName="p-carousel" story={carouselMeta.configurator.story} />
+<Configurator example={carouselDefault} />

@@ -1,8 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { inputTimeMeta } from '@/app/(main)/components/input-time/input-time.meta';
+import form from '@porsche-design-system/examples/components/input-time/form';
+import slots from '@porsche-design-system/examples/components/input-time/slots';
 
 export const metadata = {
   title: 'Input Time: Examples - Components',
@@ -11,16 +11,8 @@ export const metadata = {
 
 # Input Time <ComponentStatus tagName="p-input-time"></ComponentStatus>
 
-<TableOfContents headings={[inputTimeMeta.examples.form.name, inputTimeMeta.examples.slots.name]} />
+<TableOfContents headings={[form.title, slots.title]} />
 
-## {inputTimeMeta.examples.form.name}
+<Example example={form} />
 
-<inputTimeMeta.examples.form.description />
-
-<ComponentExample codeSample={inputTimeMeta.examples.form.example} />
-
-## {inputTimeMeta.examples.slots.name}
-
-<inputTimeMeta.examples.slots.description />
-
-<ComponentStory story={inputTimeMeta.examples.slots.story} />
+<Example example={slots} />

@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { buttonTileMeta } from '@/app/(main)/components/button-tile/button-tile.meta';
+import buttonTileDefault from '@porsche-design-system/examples/components/button-tile/default';
 
 export const metadata = {
   title: 'Button Tile: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <buttonTileMeta.introduction />
 
-<Configurator
-  tagName="p-button-tile"
-  story={buttonTileMeta.configurator.story}
-  slotStories={buttonTileMeta.configurator.slotStories}
-/>
+<Configurator example={buttonTileDefault} />

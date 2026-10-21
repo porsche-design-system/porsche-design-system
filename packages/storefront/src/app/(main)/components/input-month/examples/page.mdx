@@ -1,8 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { inputMonthMeta } from '@/app/(main)/components/input-month/input-month.meta';
+import form from '@porsche-design-system/examples/components/input-month/form';
+import slots from '@porsche-design-system/examples/components/input-month/slots';
 
 export const metadata = {
   title: 'Input Month: Examples - Components',
@@ -11,16 +11,8 @@ export const metadata = {
 
 # Input Month <ComponentStatus tagName="p-input-month"></ComponentStatus>
 
-<TableOfContents headings={[inputMonthMeta.examples.form.name, inputMonthMeta.examples.slots.name]} />
+<TableOfContents headings={[form.title, slots.title]} />
 
-## {inputMonthMeta.examples.form.name}
+<Example example={form} />
 
-<inputMonthMeta.examples.form.description />
-
-<ComponentExample codeSample={inputMonthMeta.examples.form.example} />
-
-## {inputMonthMeta.examples.slots.name}
-
-<inputMonthMeta.examples.slots.description />
-
-<ComponentStory story={inputMonthMeta.examples.slots.story} />
+<Example example={slots} />

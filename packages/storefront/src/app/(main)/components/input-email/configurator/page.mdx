@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { inputEmailMeta } from '@/app/(main)/components/input-email/input-email.meta';
+import inputEmailDefault from '@porsche-design-system/examples/components/input-email/default';
 
 export const metadata = {
   title: 'Input Email: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <inputEmailMeta.introduction />
 
-<Configurator
-  tagName="p-input-email"
-  story={inputEmailMeta.configurator.story}
-  slotStories={inputEmailMeta.configurator.slotStories}
-/>
+<Configurator example={inputEmailDefault} />

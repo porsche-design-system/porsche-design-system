@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { modalMeta } from '@/app/(main)/components/modal/modal.meta';
+import modalDefault from '@porsche-design-system/examples/components/modal/default';
 
 export const metadata = {
   title: 'Modal: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <modalMeta.introduction />
 
-<Configurator
-  tagName="p-modal"
-  story={modalMeta.configurator.story}
-  slotStories={modalMeta.configurator.slotStories}
-/>
+<Configurator example={modalDefault} />

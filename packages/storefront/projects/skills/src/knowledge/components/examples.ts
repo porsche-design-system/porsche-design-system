@@ -1,6 +1,4 @@
-import type { FrameworkExample } from '@porsche-design-system/examples-framework';
-import type { ColorScheme, Framework } from '@porsche-design-system/shared';
-import { getStoryMarkup, type HTMLTagOrComponent, type Story } from '@porsche-design-system/story-generator';
+import type { Framework } from '@porsche-design-system/shared';
 import type { Root } from 'mdast';
 import { escapeCell, leadSentence, markdownTable } from '../../shared/markdown';
 import type { SkillTree } from '../../shared/skillTree';
@@ -8,10 +6,9 @@ import { tryRenderMdxToMarkdown } from '../mdx/renderMdxToMarkdown';
 
 /**
  * Emits example files and their reference-table rows in one pass so they cannot drift. Story and
- * hand-authored examples share the same framework-specific pipeline.
+ * hand-authored examples come from the catalogue of `@porsche-design-system/examples` alike, their code
+ * generated in the light color scheme.
  */
-
-export const DEFAULT_EXAMPLE_THEME: ColorScheme = 'scheme-light';
 
 export const EXAMPLE_EXTENSION: Record<Framework, string> = {
   'vanilla-js': 'html',
@@ -34,42 +31,26 @@ const whenToUse = (description: Root | undefined, fallback: string, framework: F
   return (markdown && leadSentence(markdown)) || fallback;
 };
 
-const storyMarkup = (story: Story<HTMLTagOrComponent>, framework: Framework): string =>
-  getStoryMarkup(story, { colorScheme: DEFAULT_EXAMPLE_THEME })[framework];
-
 type PlannedExample = { name: string; whenToUse: string; fileBase: string; markup: string };
 
-const planExample = (key: string, example: SkillExampleMeta, framework: Framework): PlannedExample => {
-  const base = { name: example.name, fileBase: toFileBase(key) };
-  switch (example.kind) {
-    case 'story':
-      return {
-        ...base,
-        whenToUse: whenToUse(example.description, example.name, framework),
-        markup: storyMarkup(example.story, framework),
-      };
-    case 'example':
-      return {
-        ...base,
-        whenToUse: whenToUse(example.description, example.name, framework),
-        markup: example.example.frameworkMarkup[framework] ?? '',
-      };
-    case 'description':
-      return { ...base, whenToUse: whenToUse(example.description, example.name, framework), markup: '' };
-  }
-};
+/** `components/button/ai-drop-shadow` → `AiDropShadow`: the file of an example is named by its slug. */
+const toExampleFileBase = (id: string): string => toFileBase(id.split('/').pop() ?? id);
+
+const planExample = ({ id, title, description, code }: SkillExample, framework: Framework): PlannedExample => ({
+  name: title,
+  fileBase: toExampleFileBase(id),
+  whenToUse: whenToUse(description, title, framework),
+  markup: code[framework] ?? '',
+});
 
 /**
- * Storefront example metadata after the skill loader converts MDX descriptions to mdast.
+ * A story or framework example of the catalogue as the skill writes it, its MDX description parsed.
  */
-export type SkillExampleMeta =
-  | { kind: 'story'; name: string; description?: Root; story: Story<HTMLTagOrComponent> }
-  | { kind: 'example'; name: string; description?: Root; example: FrameworkExample }
-  | { kind: 'description'; name: string; description: Root };
+export type SkillExample = { id: string; title: string; description?: Root; code: Record<Framework, string> };
 
 export type ComponentExamplesSource = {
-  configurator: { story: Story<HTMLTagOrComponent> } | { example: FrameworkExample };
-  examples: Record<string, SkillExampleMeta>;
+  configurator: SkillExample;
+  examples: SkillExample[];
 };
 
 /**
@@ -97,11 +78,7 @@ export const writeComponentExamples = (tree: SkillTree, tag: string, source: Com
     rows.push([escapeCell(name), escapeCell(note), fileCell]);
   };
 
-  const { configurator } = source;
-  const baseMarkup =
-    'example' in configurator
-      ? (configurator.example.frameworkMarkup[framework] ?? '')
-      : storyMarkup(configurator.story, framework);
+  const baseMarkup = source.configurator.code[framework] ?? '';
   if (baseMarkup.trim()) {
     emit({
       name: 'Default',
@@ -111,8 +88,8 @@ export const writeComponentExamples = (tree: SkillTree, tag: string, source: Com
     });
   }
 
-  for (const [key, example] of Object.entries(source.examples)) {
-    emit(planExample(key, example, framework));
+  for (const example of source.examples) {
+    emit(planExample(example, framework));
   }
 
   if (rows.length === 0) {

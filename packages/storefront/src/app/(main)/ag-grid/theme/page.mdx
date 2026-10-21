@@ -1,8 +1,7 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { agGridCompactExampleCommunity, agGridExampleCommunity } from '@porsche-design-system/examples-framework';
-import AGGridCompactExampleCommunity from '@porsche-design-system/examples-framework/previews/AGGridCompactExampleCommunity';
-import AGGridExampleCommunity from '@porsche-design-system/examples-framework/previews/AGGridExampleCommunity';
+import { Example } from '@/components/mdx/examples/Example';
+import themeDefault from '@porsche-design-system/examples/ag-grid/theme/default';
+import compact from '@porsche-design-system/examples/ag-grid/theme/compact';
 
 export const metadata = {
   title: 'Theme - AG Grid',
@@ -11,7 +10,7 @@ export const metadata = {
 
 # Theme
 
-<TableOfContents headings={['Usage', 'Default Theme', 'Compact Theme']} />
+<TableOfContents headings={['Usage', themeDefault.title, compact.title]} />
 
 We provide a custom theme for the [AG Grid library](https://ag-grid.com) for cases where a more sophisticated table is
 required beyond the capabilities of our [p-table](/components/table/examples) component. This theme is aligned with the
@@ -87,14 +86,6 @@ grid, such as the `<html>` or `<body>` tag.
 <body style="color-scheme: light;"></body>
 ```
 
-## Default Theme
+<Example example={themeDefault} />
 
-The default `pdsTheme` with regular spacing and icon sizes.
-
-<ComponentExample codeSample={agGridExampleCommunity} preview={AGGridExampleCommunity} />
-
-## Compact Theme
-
-The `pdsThemeCompact` variant, with reduced spacing and smaller icons for information-rich grids.
-
-<ComponentExample codeSample={agGridCompactExampleCommunity} preview={AGGridCompactExampleCommunity} />
+<Example example={compact} />

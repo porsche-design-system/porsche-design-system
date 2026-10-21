@@ -13,8 +13,8 @@
     "jsx": "react-jsx",
     "types": []
   },
-  // Everything, the stories, previews and descriptions included, which import the React wrapper's types: checked in
+  // Everything, the example modules included, whose stories and previews import the React wrapper's types: checked in
   // `build:site`, after the wrappers. tsconfig.catalogue.json checks the data before them.
-  "include": ["src"],
+  "include": ["src", "generated"],
   "exclude": ["node_modules"]
 }

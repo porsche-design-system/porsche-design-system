@@ -1,16 +1,4 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { inputUrlExampleForm } from '@porsche-design-system/examples-framework';
-import FormDescription from '@porsche-design-system/examples-framework/components/input-url/form/example.mdx';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/input-url/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/input-url/accessibility/hidden-label-without-accessible-name/example';
-import { placeholderUsedAsTheOnlyLabelA11yExample } from '@porsche-design-system/examples-stories/components/input-url/accessibility/placeholder-used-as-the-only-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-stories/components/input-url/accessibility/validation-feedback-via-state-and-message-api/example';
-import {
-  inputUrlSlotStories,
-  inputUrlStory,
-} from '@porsche-design-system/examples-stories/components/input-url/default/story';
-import SlotsDescription from '@porsche-design-system/examples-stories/components/input-url/slots/example.mdx';
-import { inputUrlStorySlots } from '@porsche-design-system/examples-stories/components/input-url/slots/story';
 import AccessibilityOverview from '@/app/(main)/components/input-url/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/input-url/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-url/configurator/introduction.mdx';
@@ -19,33 +7,17 @@ import type { ComponentDocsMeta } from '@/models/meta';
 
 export const inputUrlMeta = {
   introduction: IntroductionDescription,
-  configurator: {
-    story: inputUrlStory,
-    slotStories: inputUrlSlotStories,
-  },
-  examples: {
-    form: {
-      kind: 'example',
-      name: 'Form',
-      description: FormDescription,
-      example: inputUrlExampleForm,
-    },
-    slots: {
-      kind: 'story',
-      name: 'Slots',
-      description: SlotsDescription,
-      story: inputUrlStorySlots,
-    },
-  },
+  configurator: 'components/input-url/default',
+  examples: ['components/input-url/form', 'components/input-url/slots'],
   usage: Usage,
   accessibility: {
     overview: AccessibilityOverview,
-    examples: {
-      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
-      placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
-      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
-      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
-    },
+    examples: [
+      'components/input-url/accessibility/aria-on-component-host-vs-aria-prop',
+      'components/input-url/accessibility/placeholder-used-as-the-only-label',
+      'components/input-url/accessibility/hidden-label-without-accessible-name',
+      'components/input-url/accessibility/validation-feedback-via-state-and-message-api',
+    ],
     tests: AccessibilityTests,
   },
   api: componentMeta['p-input-url'],

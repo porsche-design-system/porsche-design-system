@@ -1,8 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { buttonPureMeta } from '@/app/(main)/components/button-pure/button-pure.meta';
+import customClickableArea from '@porsche-design-system/examples/components/button-pure/custom-clickable-area';
+import form from '@porsche-design-system/examples/components/button-pure/form';
+import formAttribute from '@porsche-design-system/examples/components/button-pure/form-attribute';
 
 export const metadata = {
   title: 'Button Pure: Examples - Components',
@@ -11,28 +12,10 @@ export const metadata = {
 
 # Button Pure <ComponentStatus tagName="p-button-pure"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    buttonPureMeta.examples.customClickableArea.name,
-    buttonPureMeta.examples.form.name,
-    buttonPureMeta.examples.formAttribute.name,
-  ]}
-/>
+<TableOfContents headings={[customClickableArea.title, form.title, formAttribute.title]} />
 
-## {buttonPureMeta.examples.customClickableArea.name}
+<Example example={customClickableArea} />
 
-<buttonPureMeta.examples.customClickableArea.description />
+<Example example={form} />
 
-<ComponentStory story={buttonPureMeta.examples.customClickableArea.story} />
-
-## {buttonPureMeta.examples.form.name}
-
-<buttonPureMeta.examples.form.description />
-
-<ComponentExample codeSample={buttonPureMeta.examples.form.example} />
-
-## {buttonPureMeta.examples.formAttribute.name}
-
-<buttonPureMeta.examples.formAttribute.description />
-
-<ComponentExample codeSample={buttonPureMeta.examples.formAttribute.example} />
+<Example example={formAttribute} />

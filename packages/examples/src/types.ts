@@ -38,6 +38,8 @@ export type FrameworkExample<Id extends FrameworkExampleId = FrameworkExampleId>
 /** A pattern or a template: a page of its own, shown in an iframe. */
 export type PageExample<Id extends ExamplePath = ExamplePath> = ExampleBase<Id> & {
   kind: 'pattern' | 'template';
+  /** Plain text, which every page has. */
+  description: string;
   /** The files of its Vite project, as StackBlitz opens it: path in the project → content. */
   files: Record<string, string>;
   /** Where its built page is served, relative to the root of a site and without its base path. */

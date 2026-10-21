@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { textMeta } from '@/app/(main)/components/text/text.meta';
+import textDefault from '@porsche-design-system/examples/components/text/default';
 
 export const metadata = {
   title: 'Text: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <textMeta.introduction />
 
-<Configurator tagName="p-text" story={textMeta.configurator.story} />
+<Configurator example={textDefault} />

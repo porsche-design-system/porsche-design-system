@@ -1,7 +1,11 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { modelSignatureMeta } from '@/app/(main)/components/model-signature/model-signature.meta';
+import safeZone from '@porsche-design-system/examples/components/model-signature/safe-zone';
+import maskBlendMode from '@porsche-design-system/examples/components/model-signature/mask-blend-mode';
+import maskImage from '@porsche-design-system/examples/components/model-signature/mask-image';
+import maskVideo from '@porsche-design-system/examples/components/model-signature/mask-video';
+import customStyling from '@porsche-design-system/examples/components/model-signature/custom-styling';
 
 export const metadata = {
   title: 'Model Signature: Examples - Components',
@@ -11,41 +15,15 @@ export const metadata = {
 # Model Signature <ComponentStatus tagName="p-model-signature"></ComponentStatus>
 
 <TableOfContents
-  headings={[
-    modelSignatureMeta.examples.safeZone.name,
-    modelSignatureMeta.examples.maskBlendMode.name,
-    modelSignatureMeta.examples.maskImage.name,
-    modelSignatureMeta.examples.maskVideo.name,
-    modelSignatureMeta.examples.customStyling.name,
-  ]}
+  headings={[safeZone.title, maskBlendMode.title, maskImage.title, maskVideo.title, customStyling.title]}
 />
 
-## {modelSignatureMeta.examples.safeZone.name}
+<Example example={safeZone} />
 
-<modelSignatureMeta.examples.safeZone.description />
+<Example example={maskBlendMode} />
 
-<ComponentStory story={modelSignatureMeta.examples.safeZone.story} />
+<Example example={maskImage} />
 
-## {modelSignatureMeta.examples.maskBlendMode.name}
+<Example example={maskVideo} />
 
-<modelSignatureMeta.examples.maskBlendMode.description />
-
-<ComponentStory story={modelSignatureMeta.examples.maskBlendMode.story} />
-
-## {modelSignatureMeta.examples.maskImage.name}
-
-<modelSignatureMeta.examples.maskImage.description />
-
-<ComponentStory story={modelSignatureMeta.examples.maskImage.story} />
-
-## {modelSignatureMeta.examples.maskVideo.name}
-
-<modelSignatureMeta.examples.maskVideo.description />
-
-<ComponentStory story={modelSignatureMeta.examples.maskVideo.story} />
-
-## {modelSignatureMeta.examples.customStyling.name}
-
-<modelSignatureMeta.examples.customStyling.description />
-
-<ComponentStory story={modelSignatureMeta.examples.customStyling.story} />
+<Example example={customStyling} />

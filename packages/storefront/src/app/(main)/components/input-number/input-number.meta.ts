@@ -1,16 +1,4 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { inputNumberExampleForm } from '@porsche-design-system/examples-framework';
-import FormDescription from '@porsche-design-system/examples-framework/components/input-number/form/example.mdx';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/input-number/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/input-number/accessibility/hidden-label-without-accessible-name/example';
-import { placeholderUsedAsTheOnlyLabelA11yExample } from '@porsche-design-system/examples-stories/components/input-number/accessibility/placeholder-used-as-the-only-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@porsche-design-system/examples-stories/components/input-number/accessibility/validation-feedback-via-state-and-message-api/example';
-import {
-  inputNumberSlotStories,
-  inputNumberStory,
-} from '@porsche-design-system/examples-stories/components/input-number/default/story';
-import SlotsDescription from '@porsche-design-system/examples-stories/components/input-number/slots/example.mdx';
-import { inputNumberStorySlots } from '@porsche-design-system/examples-stories/components/input-number/slots/story';
 import AccessibilityOverview from '@/app/(main)/components/input-number/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/input-number/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-number/configurator/introduction.mdx';
@@ -19,33 +7,17 @@ import type { ComponentDocsMeta } from '@/models/meta';
 
 export const inputNumberMeta = {
   introduction: IntroductionDescription,
-  configurator: {
-    story: inputNumberStory,
-    slotStories: inputNumberSlotStories,
-  },
-  examples: {
-    form: {
-      kind: 'example',
-      name: 'Form',
-      description: FormDescription,
-      example: inputNumberExampleForm,
-    },
-    slots: {
-      kind: 'story',
-      name: 'Slots',
-      description: SlotsDescription,
-      story: inputNumberStorySlots,
-    },
-  },
+  configurator: 'components/input-number/default',
+  examples: ['components/input-number/form', 'components/input-number/slots'],
   usage: Usage,
   accessibility: {
     overview: AccessibilityOverview,
-    examples: {
-      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
-      placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
-      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
-      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
-    },
+    examples: [
+      'components/input-number/accessibility/aria-on-component-host-vs-aria-prop',
+      'components/input-number/accessibility/placeholder-used-as-the-only-label',
+      'components/input-number/accessibility/hidden-label-without-accessible-name',
+      'components/input-number/accessibility/validation-feedback-via-state-and-message-api',
+    ],
     tests: AccessibilityTests,
   },
   api: componentMeta['p-input-number'],

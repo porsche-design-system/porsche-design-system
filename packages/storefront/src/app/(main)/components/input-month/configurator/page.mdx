@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { inputMonthMeta } from '@/app/(main)/components/input-month/input-month.meta';
+import inputMonthDefault from '@porsche-design-system/examples/components/input-month/default';
 
 export const metadata = {
   title: 'Input Month: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <inputMonthMeta.introduction />
 
-<Configurator
-  tagName="p-input-month"
-  story={inputMonthMeta.configurator.story}
-  slotStories={inputMonthMeta.configurator.slotStories}
-/>
+<Configurator example={inputMonthDefault} />

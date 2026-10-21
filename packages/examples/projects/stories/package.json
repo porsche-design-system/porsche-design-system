@@ -10,9 +10,9 @@
       "types": "./generated/index.ts",
       "default": "./generated/index.ts"
     },
-    "./runtime": {
-      "types": "./generated/runtime.ts",
-      "default": "./generated/runtime.ts"
+    "./examples/*": {
+      "types": "./generated/examples/*.ts",
+      "default": "./generated/examples/*.ts"
     },
     "./*.mdx": "./src/*.mdx",
     "./*": {

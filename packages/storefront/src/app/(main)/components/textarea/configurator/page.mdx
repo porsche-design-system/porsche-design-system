@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { textareaMeta } from '@/app/(main)/components/textarea/textarea.meta';
+import textareaDefault from '@porsche-design-system/examples/components/textarea/default';
 
 export const metadata = {
   title: 'Textarea: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <textareaMeta.introduction />
 
-<Configurator tagName="p-textarea" story={textareaMeta.configurator.story} slotStories={textareaMeta.configurator.slotStories} />
+<Configurator example={textareaDefault} />

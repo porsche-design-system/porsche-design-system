@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { inputNumberMeta } from '@/app/(main)/components/input-number/input-number.meta';
+import inputNumberDefault from '@porsche-design-system/examples/components/input-number/default';
 
 export const metadata = {
   title: 'Input Number: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <inputNumberMeta.introduction />
 
-<Configurator
-  tagName="p-input-number"
-  story={inputNumberMeta.configurator.story}
-  slotStories={inputNumberMeta.configurator.slotStories}
-/>
+<Configurator example={inputNumberDefault} />

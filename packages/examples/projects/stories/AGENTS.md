@@ -16,21 +16,23 @@ id below `src/`:
 
 A story's module starts with `'use client'`, because the Storefront hands the story, functions included, to its client
 components. That is why its title lives in a `meta.ts` of its own: the server reads it from the generated index, never
-from the story. The Storefront meta files import the stories and descriptions by path
-(`@porsche-design-system/examples-stories/components/select/slots/story`, `…/example.mdx`).
+from the story. A page imports an example through `@porsche-design-system/examples/<id>`; the component's meta lists its
+id.
 
 **`npm run build`** (in `build:examples:projects`) imports every example and generates two entry points into
 `generated/`, gitignored, in the shape every project of [`packages/examples`](../../AGENTS.md) exports. It fails on an
-id that breaks the scheme, a missing title, a module that exports more than its stories, or a file that belongs to no
-example.
+id that breaks the scheme, a missing title, an empty description, a module that exports more than its stories, or a file
+that belongs to no example.
 
 - `@porsche-design-system/examples-stories`: the examples as data – `id`, `kind`, `title`, `description` (MDX source),
   `components` and the `code` of every framework, from `getStoryMarkup` on the story's own state (`storyExamples`), and
   the snippets of both sides of every accessibility example (`accessibilityExamples`). It imports no story, so the
   skills build and the server read it before the wrappers are built.
-- `@porsche-design-system/examples-stories/runtime`: what renders every story example by id,
-  `{ story, slotStories?, controlledStory?, controlledSlotStories?, Description? }`. A default story's exports are told
-  apart by their value and by `Controlled` in their name (`popoverControlledSlotStories`).
+- `@porsche-design-system/examples-stories/examples/<id>`: every example as a module of its own – its data and, for a
+  story example, its stories (`{ story, slotStories?, controlledStory?, controlledSlotStories? }`) and its
+  `Description`. A default story's exports are told apart by their value and by `Controlled` in their name
+  (`popoverControlledSlotStories`). A page imports the examples it shows (through
+  `@porsche-design-system/examples/<id>`), and so loads their stories only.
 
 A change to a story, a `meta.ts` or a description needs that build again for the generated entry points; the Storefront
 pages that import the stories directly reload without it.

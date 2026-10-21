@@ -1,5 +1,8 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { Example } from '@/components/mdx/examples/Example';
+import localMarketSwitch from '@porsche-design-system/examples/patterns/popover/local-market-switch';
+import priorityNavigation from '@porsche-design-system/examples/patterns/popover/priority-navigation';
+import featureTour from '@porsche-design-system/examples/patterns/popover/feature-tour';
 
 export const metadata = {
   title: 'Popover - Patterns',
@@ -14,14 +17,8 @@ The popover displays contextual information or actions in a floating layer ancho
 surface secondary content on demand without navigating away from the current context, keeping the primary interface
 clean while remaining accessible.
 
-## Local market switch
+<Example example={localMarketSwitch} heading="Local market switch" />
 
-<ExampleViewer example="patterns/popover/local-market-switch" />
+<Example example={priorityNavigation} heading="Priority navigation" />
 
-## Priority navigation
-
-<ExampleViewer example="patterns/popover/priority-navigation" />
-
-## Feature tour
-
-<ExampleViewer example="patterns/popover/feature-tour" />
+<Example example={featureTour} heading="Feature tour" />

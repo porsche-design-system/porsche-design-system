@@ -1,15 +1,4 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { buttonExampleForm, buttonExampleFormAttribute } from '@porsche-design-system/examples-framework';
-import FormDescription from '@porsche-design-system/examples-framework/components/button/form/example.mdx';
-import FormAttributeDescription from '@porsche-design-system/examples-framework/components/button/form-attribute/example.mdx';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/button/accessibility/aria-on-component-host-vs-aria-prop/example';
-import { iconOnlyButtonWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/button/accessibility/icon-only-button-without-accessible-name/example';
-import { vagueButtonLabelWithoutContextA11yExample } from '@porsche-design-system/examples-stories/components/button/accessibility/vague-button-label-without-context/example';
-import AiDropShadowDescription from '@porsche-design-system/examples-stories/components/button/ai-drop-shadow/example.mdx';
-import { buttonStoryAiDropShadow } from '@porsche-design-system/examples-stories/components/button/ai-drop-shadow/story';
-import AiGradientGlowDescription from '@porsche-design-system/examples-stories/components/button/ai-gradient-glow/example.mdx';
-import { buttonStoryAiGradientGlow } from '@porsche-design-system/examples-stories/components/button/ai-gradient-glow/story';
-import { buttonStory } from '@porsche-design-system/examples-stories/components/button/default/story';
 import AccessibilityOverview from '@/app/(main)/components/button/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/button/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/button/configurator/introduction.mdx';
@@ -18,43 +7,21 @@ import type { ComponentDocsMeta } from '@/models/meta';
 
 export const buttonMeta = {
   introduction: IntroductionDescription,
-  configurator: {
-    story: buttonStory,
-  },
-  examples: {
-    form: {
-      kind: 'example',
-      name: 'Form',
-      description: FormDescription,
-      example: buttonExampleForm,
-    },
-    formAttribute: {
-      kind: 'example',
-      name: 'Form Attribute',
-      description: FormAttributeDescription,
-      example: buttonExampleFormAttribute,
-    },
-    aiDropShadow: {
-      kind: 'story',
-      name: 'Custom AI Styling: Drop Shadow',
-      description: AiDropShadowDescription,
-      story: buttonStoryAiDropShadow,
-    },
-    aiGradientGlow: {
-      kind: 'story',
-      name: 'Custom AI Styling: Gradient Glow',
-      description: AiGradientGlowDescription,
-      story: buttonStoryAiGradientGlow,
-    },
-  },
+  configurator: 'components/button/default',
+  examples: [
+    'components/button/form',
+    'components/button/form-attribute',
+    'components/button/ai-drop-shadow',
+    'components/button/ai-gradient-glow',
+  ],
   usage: Usage,
   accessibility: {
     overview: AccessibilityOverview,
-    examples: {
-      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
-      iconOnlyButtonWithoutAccessibleName: iconOnlyButtonWithoutAccessibleNameA11yExample,
-      vagueButtonLabelWithoutContext: vagueButtonLabelWithoutContextA11yExample,
-    },
+    examples: [
+      'components/button/accessibility/aria-on-component-host-vs-aria-prop',
+      'components/button/accessibility/icon-only-button-without-accessible-name',
+      'components/button/accessibility/vague-button-label-without-context',
+    ],
     tests: AccessibilityTests,
   },
   api: componentMeta['p-button'],

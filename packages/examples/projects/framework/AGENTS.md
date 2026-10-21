@@ -23,14 +23,14 @@ wrapper (`components-js/src/examples`, `components-angular/src/app/examples`, `c
     (`frameworkExamples`: `id`, `kind`, `title`, `description` as MDX source, `components`, `code`), which the catalogue
     of `@porsche-design-system/examples` merges. It imports no wrapper, so the skills build loads it before the wrappers
     are built.
-  - `@porsche-design-system/examples-framework/runtime`: what renders every example in the Storefront by id,
-    `{ Preview?, Description? }` – its live React preview, a client component, and its `example.mdx`. Every page whose
-    server graph imports it loads all of the previews, so an example with a large dependency is `standalone` in its meta
-    (AG Grid): it has no `Preview` there, and its page imports the preview by its own entry, `…/previews/<Name>`.
-  - `@porsche-design-system/examples-framework/previews`: the previews by id (`frameworkExamplePreviews`), which the
-    Storefront reads until it switches to the runtime (#4789, step 7), and every preview by its own entry.
+  - `@porsche-design-system/examples-framework/examples/<id>`: every example as a module of its own – its data, its live
+    React preview (`Preview`), a client component, and its `example.mdx` (`Description`). A page imports the examples it
+    shows (through `@porsche-design-system/examples/<id>`), and so loads their previews only.
+  - `@porsche-design-system/examples-framework/previews`: the previews by id (`frameworkExamplePreviews`), without the
+    `standalone` ones (AG Grid), which the Storefront read until it imported its examples by id (#4789, removed in step
+    7.4), and every preview by its own entry.
 
-  The runtime and the previews are typechecked only by the package's `typecheck`, after the wrappers.
+  The example modules and the previews are typechecked only by the package's `typecheck`, after the wrappers.
 
 - A change to a source in a wrapper app or to a `meta.ts` needs that build again; `next dev` then reloads it.
 

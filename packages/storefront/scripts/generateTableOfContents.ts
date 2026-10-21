@@ -17,10 +17,21 @@ type Heading = { type: 'string'; value: string } | { type: 'expression'; value: 
 
 const extractHeadings = (content: string): Heading[] => {
   const headings: Heading[] = [];
-  const headingRegex = /^## (.*)$/gm;
+  // `<Example example={…} />` renders the example's title as an `##` heading – or its `heading`, unless that is `false` or
+  // it has a `level` of its own.
+  const headingRegex = /^(?:## (.*)|<Example example=\{(\w+)\}([^>]*)\/>)$/gm;
   let match: RegExpExecArray | null;
 
   while ((match = headingRegex.exec(content)) !== null) {
+    if (match[2] !== undefined) {
+      const heading = match[3].match(/\bheading="([^"]*)"/);
+      if (!/\blevel=|\bheading=\{false\}/.test(match[3])) {
+        headings.push(
+          heading ? { type: 'string', value: heading[1] } : { type: 'expression', value: `${match[2]}.title` }
+        );
+      }
+      continue;
+    }
     const raw = match[1].trim();
     // Detect MDX expression headings like `## {someMeta.examples.foo.name}`
     const expressionMatch = raw.match(/^\{(.+)\}$/);

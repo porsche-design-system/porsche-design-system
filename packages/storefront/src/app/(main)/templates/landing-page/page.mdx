@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { Example } from '@/components/mdx/examples/Example';
+import landingPage from '@porsche-design-system/examples/templates/landing-page';
 
 export const metadata = {
   title: 'Landing Page - Templates',
@@ -10,4 +11,4 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<ExampleViewer example="templates/landing-page" />
+<Example example={landingPage} heading={false} />

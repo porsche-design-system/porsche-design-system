@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { inputTimeMeta } from '@/app/(main)/components/input-time/input-time.meta';
+import inputTimeDefault from '@porsche-design-system/examples/components/input-time/default';
 
 export const metadata = {
   title: 'Input Time: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <inputTimeMeta.introduction />
 
-<Configurator tagName="p-input-time" story={inputTimeMeta.configurator.story} slotStories={inputTimeMeta.configurator.slotStories} />
+<Configurator example={inputTimeDefault} />

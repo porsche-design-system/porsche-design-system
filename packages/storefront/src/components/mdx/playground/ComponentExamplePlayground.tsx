@@ -1,6 +1,6 @@
 'use client';
 
-import type { FrameworkExample, FrameworkExampleId } from '@porsche-design-system/examples-framework';
+import type { Framework } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import { wrapCode } from '@porsche-design-system/story-generator';
 import { type ReactNode, useMemo } from 'react';
@@ -8,11 +8,12 @@ import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { createStackblitzMarkupFromSample } from '@/lib/stackblitz/createStackblitzMarkupFromSample';
 import { splitVanillaJsCode } from '@/utils/splitVanillaJsCode';
-import type { BackgroundColor } from '../Playground';
-import { Playground } from '../Playground';
+import type { BackgroundColor } from './Playground';
+import { Playground } from './Playground';
 
 export type ComponentExamplePlaygroundProps = {
-  codeSample: FrameworkExample<FrameworkExampleId>;
+  /** The code of every framework, as the catalogue holds it. */
+  code: Record<Framework, string>;
   disableOpenInStackblitz?: boolean;
   backgroundColor?: BackgroundColor;
   fixedBackgroundColor?: string;
@@ -21,7 +22,7 @@ export type ComponentExamplePlaygroundProps = {
 };
 
 export const ComponentExamplePlayground = ({
-  codeSample,
+  code,
   disableOpenInStackblitz = false,
   backgroundColor,
   fixedBackgroundColor,
@@ -32,10 +33,10 @@ export const ComponentExamplePlayground = ({
 
   // Vanilla Js Markup needs to be wrapped in containing html code
   const frameworkMarkup = useMemo(() => {
-    if (codeSample.frameworkMarkup['vanilla-js']) {
-      const { markup, script, scriptAttributes } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js']);
+    if (code['vanilla-js']) {
+      const { markup, script, scriptAttributes } = splitVanillaJsCode(code['vanilla-js']);
       return {
-        ...codeSample.frameworkMarkup,
+        ...code,
         'vanilla-js': wrapCode(
           'vanilla-js',
           { markup, script, scriptAttributes },
@@ -43,11 +44,11 @@ export const ComponentExamplePlayground = ({
         ),
       };
     }
-    return codeSample.frameworkMarkup;
-  }, [codeSample, storefrontColorScheme]);
+    return code;
+  }, [code, storefrontColorScheme]);
 
   const onOpenInStackblitz = () => {
-    const markup = createStackblitzMarkupFromSample(codeSample.frameworkMarkup, framework, storefrontColorScheme);
+    const markup = createStackblitzMarkupFromSample(code, framework, storefrontColorScheme);
     openInStackblitz(framework, markup, storefrontColorScheme);
   };
 

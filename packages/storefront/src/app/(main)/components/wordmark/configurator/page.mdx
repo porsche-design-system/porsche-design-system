@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { wordmarkMeta } from '@/app/(main)/components/wordmark/wordmark.meta';
+import wordmarkDefault from '@porsche-design-system/examples/components/wordmark/default';
 
 export const metadata = {
   title: 'Wordmark: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <wordmarkMeta.introduction />
 
-<Configurator tagName="p-wordmark" story={wordmarkMeta.configurator.story} />
+<Configurator example={wordmarkDefault} />

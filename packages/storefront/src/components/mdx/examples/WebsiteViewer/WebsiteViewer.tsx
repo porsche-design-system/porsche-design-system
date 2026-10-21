@@ -8,7 +8,7 @@ import {
   type TabsBarUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 // Types only: the package exports every example, and a client component is handed the one it shows.
-import type { Example } from '@porsche-design-system/examples-pages';
+import type { PageExample } from '@porsche-design-system/examples';
 import { openExampleInStackblitz } from '@porsche-design-system/stackblitz';
 import { useState } from 'react';
 import { DocsLink } from '@/components/common/DocsLink';
@@ -22,7 +22,7 @@ type ExampleProps = {
    * A pattern or template of `@porsche-design-system/examples-pages`, with its media below the slug of this deployment –
    * rendered by `ExampleViewer`. Its title names the iframe, its files are shown as code and opened in StackBlitz.
    */
-  example: Example;
+  example: PageExample;
   /** The URL this deployment serves the built page at, from `public/examples/`. */
   src: string;
   /** Where this deployment serves the media of the examples, slug included. */
@@ -91,7 +91,7 @@ export const WebsiteViewer = (props: WebsiteViewerProps) => {
 
   // From the example rather than `useId()`, whose ids differ between the server render and the client here – the
   // `aria-labelledby` set on a tab change would then miss the ids the tabs were rendered with.
-  const id = isExample ? `example-${props.example.path.replaceAll('/', '-')}` : '';
+  const id = isExample ? `example-${props.example.id.replaceAll('/', '-')}` : '';
   const previewTabId = `${id}-preview-tab`;
   const previewPanelId = `${id}-preview`;
   const codeTabId = (name: string) => `${id}-${name}-tab`;

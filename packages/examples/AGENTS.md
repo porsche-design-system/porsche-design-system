@@ -13,7 +13,7 @@ scripts build and typecheck the projects in the order the root build needs.
 | Project                                                 | Package                                     | What it holds                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ------------------------------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`projects/pages`](projects/pages/)                     | `@porsche-design-system/examples-pages`     | The patterns and templates: pages written in TSX, rendered to static HTML, one Vite project each. See its [`AGENTS.md`](projects/pages/AGENTS.md).                                                                                                                                                                                                                                                                                                                      |
-| [`projects/framework`](projects/framework/)             | `@porsche-design-system/examples-framework` | The hand-written framework examples: the code of every framework as data, and their live React previews and descriptions (`/runtime`). See its [`AGENTS.md`](projects/framework/AGENTS.md).                                                                                                                                                                                                                                                                             |
+| [`projects/framework`](projects/framework/)             | `@porsche-design-system/examples-framework` | The hand-written framework examples: the code of every framework as data, and their live React previews and descriptions. See its [`AGENTS.md`](projects/framework/AGENTS.md).                                                                                                                                                                                                                                                                                          |
 | [`projects/stories`](projects/stories/)                 | `@porsche-design-system/examples-stories`   | The stories: every component's default story (`components/<component>/default/story.ts`), which the configurator starts from, the examples written as stories, each with its description (`story.ts`, `example.mdx`), and the accessibility examples, an anti-pattern and its recommendation each (`components/<component>/accessibility/<slug>/example.ts`). An example story's title is in a `meta.ts` next to it. See its [`AGENTS.md`](projects/stories/AGENTS.md). |
 | [`projects/story-generator`](projects/story-generator/) | `@porsche-design-system/story-generator`    | The story types, the markup of a story for every framework (`getStoryMarkup`, `wrapCode`) and its live React rendering (`StoryPreview`, the `/react` subpath).                                                                                                                                                                                                                                                                                                          |
 
@@ -35,15 +35,18 @@ formed, reserved segments respected.
 
 ## Interface
 
-`@porsche-design-system/examples` exposes every example in one shape, whatever its project. Every project generates its
-examples as data, and the stories and framework examples their runtime next to it, in the same shape for every kind:
+`@porsche-design-system/examples` exposes every example in one shape, whatever its project, in two ways:
 
-| Entry point               | What it holds                                                                                                                                       | Who loads it                                                         |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| The package (`.`)         | Its examples by id as data, each an `Example` of its kind: `storyExamples`, `accessibilityExamples`, `frameworkExamples`, `pageExamples`            | Anything – Node scripts, the server – before the wrappers are built  |
-| `/runtime` (not of pages) | What renders an example in the Storefront, by id: a story's stories, a framework example's `Preview`, and the `Description` (`example.mdx`) of both | The Storefront's server components; it needs the MDX loader and Next |
+| Entry point                            | What it holds                                                                                                                                                   | Who loads it                                                        |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `@porsche-design-system/examples`      | The catalogue: every example by id as data, an `Example` of its kind                                                                                            | Anything – Node scripts, the server – before the wrappers are built |
+| `@porsche-design-system/examples/<id>` | One example as a module: its data and what renders it – a story example's stories, a framework example's `Preview`, the `Description` (`example.mdx`) of either | A page that shows it; it needs the MDX loader and Next              |
 
-The root ([`src/`](src/)) only merges them. [`src/types.ts`](src/types.ts) defines what every project exports:
+Every project generates both in the same shape for every kind: its examples as data (`storyExamples`,
+`accessibilityExamples`, `frameworkExamples`, `pageExamples`) and one module per example (`generated/examples/<id>.ts`).
+The root only merges the data ([`src/`](src/)), and its `build:projects` re-exports every example's module by its id
+([`scripts/build.ts`](scripts/build.ts) into `generated/`). [`src/types.ts`](src/types.ts) defines what every project
+exports:
 
 - **`Example`**, a union by `kind` (`story`, `framework`, `accessibility`, `pattern`, `template`) over what every
   example has: `id`, `title` (its heading, in the Storefront and in the skills), `description` (MDX source; plain text
@@ -53,9 +56,11 @@ The root ([`src/`](src/)) only merges them. [`src/types.ts`](src/types.ts) defin
 - **`examples`**, the catalogue: every example by id. Data only, so it loads before the wrappers are built; large, so
   import it on the server. A project can't import these types, so it declares its own with the same fields; assigning
   its examples to `Examples` fails the typecheck when they drift apart.
-- **`exampleRuntime`** (`/runtime`): the runtime of every story and framework example by id, server only. The stories
-  and previews are `'use client'`, and every page whose server graph imports it loads all of them – a `standalone`
-  framework example has no `Preview` there, its page imports it by its own entry.
+- **An example's module** is what a page imports to show it:
+  `import form from '@porsche-design-system/examples/components/button/form'`, then `<Example example={form} />`. Its
+  stories and previews are `'use client'`, and a Next page loads every client module its server code can reach – also
+  through a dynamic `import()` – so one module per example, imported by the page, is what keeps a page to the examples
+  it shows.
 
 The catalogue takes a story's code from `getStoryMarkup` on its own state, in the light color scheme, as the skills do.
 A default story is titled `Default`; an example story's title comes from its `meta.ts`, a framework example's from its
@@ -66,12 +71,13 @@ own, a page's from its `meta` export and an accessibility example's from its `na
 The root build runs the two steps at different points, because the skills need the examples before the wrappers are
 built, and the previews need the wrappers:
 
-- **`build:examples:projects`**, before `build:skills`: generates the indexes of the framework examples and of the
-  stories, renders the pages into their projects and typechecks the catalogue. Nothing it runs or typechecks may need a
-  built wrapper.
+- **`build:examples:projects`**, before `build:skills`: generates the indexes and the example modules of the framework
+  examples and of the stories, renders the pages into their projects, makes every example importable by its id and
+  typechecks the catalogue. Nothing it runs or typechecks may need a built wrapper.
 - **`build:examples:site`**, after the wrappers: typechecks the framework previews, the stories (the accessibility
-  examples included), the story generator and the runtime of this package, which import the React wrapper's types, then
-  builds the pages' projects into the self-contained pages the Storefront copies (`projects/pages/dist-site/`).
+  examples included), the story generator and the example modules of this package, which import the React wrapper's
+  types, then builds the pages' projects into the self-contained pages the Storefront copies
+  (`projects/pages/dist-site/`).
 
 The stories, the framework examples and the story generator export their TypeScript and MDX source, and what their build
 generated (`generated/`), not a bundle: the Storefront compiles them (`transpilePackages` in

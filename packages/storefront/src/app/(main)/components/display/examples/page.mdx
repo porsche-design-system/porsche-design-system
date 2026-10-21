@@ -1,7 +1,10 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { displayMeta } from '@/app/(main)/components/display/display.meta';
+import size from '@porsche-design-system/examples/components/display/size';
+import sizeResponsive from '@porsche-design-system/examples/components/display/size-responsive';
+import semantics from '@porsche-design-system/examples/components/display/semantics';
+import color from '@porsche-design-system/examples/components/display/color';
 
 export const metadata = {
   title: 'Display: Examples - Components',
@@ -10,28 +13,12 @@ export const metadata = {
 
 # Display <ComponentStatus tagName="p-display"></ComponentStatus>
 
-<TableOfContents
-  headings={[displayMeta.examples.size.name, displayMeta.examples.semantics.name, displayMeta.examples.color.name]}
-/>
+<TableOfContents headings={[size.title, semantics.title, color.title]} />
 
-## {displayMeta.examples.size.name}
+<Example example={size} />
 
-<displayMeta.examples.size.description />
+<Example example={sizeResponsive} level={3} />
 
-<ComponentStory story={displayMeta.examples.size.story} />
+<Example example={semantics} />
 
-### {displayMeta.examples.sizeResponsive.name}
-
-<ComponentStory story={displayMeta.examples.sizeResponsive.story} />
-
-## {displayMeta.examples.semantics.name}
-
-<displayMeta.examples.semantics.description />
-
-<ComponentStory story={displayMeta.examples.semantics.story} />
-
-## {displayMeta.examples.color.name}
-
-<displayMeta.examples.color.description />
-
-<ComponentStory story={displayMeta.examples.color.story} />
+<Example example={color} />

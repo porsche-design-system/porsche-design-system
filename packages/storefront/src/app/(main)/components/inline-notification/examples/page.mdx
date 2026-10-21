@@ -1,7 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { inlineNotificationMeta } from '@/app/(main)/components/inline-notification/inline-notification.meta';
+import eventHandling from '@porsche-design-system/examples/components/inline-notification/event-handling';
+import actionButton from '@porsche-design-system/examples/components/inline-notification/action-button';
 
 export const metadata = {
   title: 'Inline Notification: Examples - Components',
@@ -10,18 +11,8 @@ export const metadata = {
 
 # Inline Notification <ComponentStatus tagName="p-inline-notification"></ComponentStatus>
 
-<TableOfContents
-  headings={[inlineNotificationMeta.examples.eventHandling.name, inlineNotificationMeta.examples.actionButton.name]}
-/>
+<TableOfContents headings={[eventHandling.title, actionButton.title]} />
 
-## {inlineNotificationMeta.examples.eventHandling.name}
+<Example example={eventHandling} />
 
-<inlineNotificationMeta.examples.eventHandling.description />
-
-<ComponentExample codeSample={inlineNotificationMeta.examples.eventHandling.example} />
-
-## {inlineNotificationMeta.examples.actionButton.name}
-
-<inlineNotificationMeta.examples.actionButton.description />
-
-<ComponentExample codeSample={inlineNotificationMeta.examples.actionButton.example} />
+<Example example={actionButton} />

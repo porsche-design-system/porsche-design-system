@@ -1,8 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { inputPasswordMeta } from '@/app/(main)/components/input-password/input-password.meta';
+import form from '@porsche-design-system/examples/components/input-password/form';
+import toggle from '@porsche-design-system/examples/components/input-password/toggle';
+import slots from '@porsche-design-system/examples/components/input-password/slots';
 
 export const metadata = {
   title: 'Input Password: Examples - Components',
@@ -11,28 +12,10 @@ export const metadata = {
 
 # Input Password <ComponentStatus tagName="p-input-password"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    inputPasswordMeta.examples.form.name,
-    inputPasswordMeta.examples.toggle.name,
-    inputPasswordMeta.examples.slots.name,
-  ]}
-/>
+<TableOfContents headings={[form.title, toggle.title, slots.title]} />
 
-## {inputPasswordMeta.examples.form.name}
+<Example example={form} />
 
-<inputPasswordMeta.examples.form.description />
+<Example example={toggle} />
 
-<ComponentExample codeSample={inputPasswordMeta.examples.form.example} />
-
-## {inputPasswordMeta.examples.toggle.name}
-
-<inputPasswordMeta.examples.toggle.description />
-
-<ComponentStory story={inputPasswordMeta.examples.toggle.story} />
-
-## {inputPasswordMeta.examples.slots.name}
-
-<inputPasswordMeta.examples.slots.description />
-
-<ComponentStory story={inputPasswordMeta.examples.slots.story} />
+<Example example={slots} />

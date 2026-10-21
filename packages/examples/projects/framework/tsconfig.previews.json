@@ -3,5 +3,5 @@
   "compilerOptions": {
     "types": []
   },
-  "include": ["generated/previews", "generated/runtime.ts", "lib/mdx.d.ts"]
+  "include": ["generated/previews", "generated/examples", "lib/mdx.d.ts"]
 }

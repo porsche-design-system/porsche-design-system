@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { displayMeta } from '@/app/(main)/components/display/display.meta';
+import displayDefault from '@porsche-design-system/examples/components/display/default';
 
 export const metadata = {
   title: 'Display: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <displayMeta.introduction />
 
-<Configurator tagName="p-display" story={displayMeta.configurator.story} />
+<Configurator example={displayDefault} />

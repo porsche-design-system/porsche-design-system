@@ -1,13 +1,8 @@
 import type { Framework } from '@porsche-design-system/shared';
-import {
-  type AccessibilityExample,
-  type ExamplePayload,
-  resolveExamplePayload,
-} from '@porsche-design-system/story-generator';
 import type { Root } from 'mdast';
 
 /**
- * Uses the storefront's example pipeline so accessibility snippets stay identical in skill output.
+ * Renders the accessibility examples of the catalogue, whose snippets the Storefront shows as well.
  */
 
 const FENCE_LANGUAGE: Record<Framework, string> = {
@@ -17,45 +12,31 @@ const FENCE_LANGUAGE: Record<Framework, string> = {
   vue: 'html',
 };
 
+/** An accessibility example of the catalogue: its title and the snippets of both sides. */
+export type SkillAccessibilityExample = {
+  title: string;
+  antiPattern: Record<Framework, string>;
+  recommended: Record<Framework, string>;
+};
+
 export type SkillAccessibilityMeta = {
   overview: Root;
-  examples: Record<string, AccessibilityExample>;
+  examples: SkillAccessibilityExample[];
   tests: Root;
 };
 
-/**
- * Resolves one side and throws with source context instead of shipping empty guidance.
- */
-export const resolvePayload = (
-  payload: ExamplePayload,
-  framework: Framework,
-  tag: string,
-  key: string,
-  side: 'antiPattern' | 'recommended'
-): string => {
-  return resolveExamplePayload(payload, framework, { tag, key, side, framework });
-};
-
-export const renderA11yIntegrationExamples = (
-  tag: string,
-  examples: Record<string, AccessibilityExample>,
-  framework: Framework
-): string => {
-  const entries = Object.entries(examples);
-  if (entries.length === 0) {
+export const renderA11yIntegrationExamples = (examples: SkillAccessibilityExample[], framework: Framework): string => {
+  if (examples.length === 0) {
     return '';
   }
 
   const fence = FENCE_LANGUAGE[framework];
   const blocks: string[] = ['## Integration examples'];
 
-  for (const [key, { name, antiPattern, recommended }] of entries) {
-    const antiMarkup = resolvePayload(antiPattern, framework, tag, key, 'antiPattern');
-    const recommendedMarkup = resolvePayload(recommended, framework, tag, key, 'recommended');
-
-    blocks.push(`### ${name}`);
-    blocks.push(`#### ❌ Anti-pattern\n\n\`\`\`${fence}\n${antiMarkup}\n\`\`\``);
-    blocks.push(`#### ✅ Recommended\n\n\`\`\`${fence}\n${recommendedMarkup}\n\`\`\``);
+  for (const { title, antiPattern, recommended } of examples) {
+    blocks.push(`### ${title}`);
+    blocks.push(`#### ❌ Anti-pattern\n\n\`\`\`${fence}\n${antiPattern[framework]}\n\`\`\``);
+    blocks.push(`#### ✅ Recommended\n\n\`\`\`${fence}\n${recommended[framework]}\n\`\`\``);
   }
 
   return blocks.join('\n\n');

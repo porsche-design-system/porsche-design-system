@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { switchMeta } from '@/app/(main)/components/switch/switch.meta';
+import switchDefault from '@porsche-design-system/examples/components/switch/default';
 
 export const metadata = {
   title: 'Switch: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <switchMeta.introduction />
 
-<Configurator tagName="p-switch" story={switchMeta.configurator.story} />
+<Configurator example={switchDefault} />

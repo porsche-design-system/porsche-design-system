@@ -10,25 +10,26 @@
       "types": "./src/index.ts",
       "default": "./src/index.ts"
     },
-    "./runtime": {
-      "types": "./src/runtime.ts",
-      "default": "./src/runtime.ts"
+    "./*": {
+      "types": "./generated/*.ts",
+      "default": "./generated/*.ts"
     }
   },
   "scripts": {
     "build": "npm run build:projects && npm run build:site",
-    "build:projects": "npm run build --workspace=@porsche-design-system/examples-framework && npm run build --workspace=@porsche-design-system/examples-stories && npm run build:projects --workspace=@porsche-design-system/examples-pages && npm run typecheck:catalogue",
+    "build:projects": "npm run build --workspace=@porsche-design-system/examples-framework && npm run build --workspace=@porsche-design-system/examples-stories && npm run build:projects --workspace=@porsche-design-system/examples-pages && tsx scripts/build.ts && npm run typecheck:catalogue",
     "build:site": "npm run typecheck:framework && npm run typecheck:stories && npm run typecheck:story-generator && npm run typecheck:self && npm run build:site --workspace=@porsche-design-system/examples-pages",
-    "typecheck": "npm run typecheck:framework && npm run typecheck:pages && npm run typecheck:stories && npm run typecheck:story-generator && npm run typecheck:self",
+    "typecheck": "npm run typecheck:framework && npm run typecheck:pages && npm run typecheck:stories && npm run typecheck:story-generator && npm run typecheck:self && npm run typecheck:scripts",
     "typecheck:self": "tsc --noEmit -p tsconfig.json",
     "typecheck:catalogue": "tsc --noEmit -p tsconfig.catalogue.json",
+    "typecheck:scripts": "tsc --noEmit -p tsconfig.scripts.json",
     "typecheck:framework": "npm run typecheck --workspace=@porsche-design-system/examples-framework",
     "typecheck:pages": "npm run typecheck --workspace=@porsche-design-system/examples-pages",
     "typecheck:stories": "npm run typecheck --workspace=@porsche-design-system/examples-stories",
     "typecheck:story-generator": "npm run typecheck --workspace=@porsche-design-system/story-generator",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test:unit": "npm run typecheck:tests && vitest run",
-    "clean:build": "npm run clean:build --workspace=@porsche-design-system/examples-framework && npm run clean:build --workspace=@porsche-design-system/examples-stories && npm run clean:build --workspace=@porsche-design-system/examples-pages"
+    "clean:build": "npm run clean:build --workspace=@porsche-design-system/examples-framework && npm run clean:build --workspace=@porsche-design-system/examples-stories && npm run clean:build --workspace=@porsche-design-system/examples-pages && rm -rf ./generated"
   },
   "dependencies": {
     "@porsche-design-system/examples-framework": "0.0.0",
@@ -37,7 +38,9 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "devDependencies": {
+    "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "vitest": "^5.0.2"
   },

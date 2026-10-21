@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { canvasExample } from '@porsche-design-system/examples-framework';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 import { canvasMeta } from '@/app/(main)/components/canvas/canvas.meta';
+import canvasDefault from '@porsche-design-system/examples/components/canvas/default';
 
 export const metadata = {
   title: 'Canvas: Configurator - Components',
@@ -13,4 +13,4 @@ export const metadata = {
 
 <canvasMeta.introduction />
 
-<ComponentExample codeSample={canvasExample} disableDemo={true} />
+<Configurator example={canvasDefault} disableDemo={true} />

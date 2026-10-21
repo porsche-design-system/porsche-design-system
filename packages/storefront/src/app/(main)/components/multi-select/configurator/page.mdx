@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { multiSelectMeta } from '@/app/(main)/components/multi-select/multi-select.meta';
+import multiSelectDefault from '@porsche-design-system/examples/components/multi-select/default';
 
 export const metadata = {
   title: 'Multi Select: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <multiSelectMeta.introduction />
 
-<Configurator tagName="p-multi-select" story={multiSelectMeta.configurator.story} slotStories={multiSelectMeta.configurator.slotStories} />
+<Configurator example={multiSelectDefault} />

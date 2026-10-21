@@ -1,8 +1,12 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { multiSelectMeta } from '@/app/(main)/components/multi-select/multi-select.meta';
+import form from '@porsche-design-system/examples/components/multi-select/form';
+import slots from '@porsche-design-system/examples/components/multi-select/slots';
+import setValue from '@porsche-design-system/examples/components/multi-select/set-value';
+import optgroups from '@porsche-design-system/examples/components/multi-select/optgroups';
+import asyncFilter from '@porsche-design-system/examples/components/multi-select/async-filter';
+import selectedSlot from '@porsche-design-system/examples/components/multi-select/selected-slot';
 
 export const metadata = {
   title: 'Multi Select: Examples - Components',
@@ -12,46 +16,17 @@ export const metadata = {
 # Multi Select <ComponentStatus tagName="p-multi-select"></ComponentStatus>
 
 <TableOfContents
-  headings={[
-    multiSelectMeta.examples.form.name,
-    multiSelectMeta.examples.slots.name,
-    multiSelectMeta.examples.setValue.name,
-    multiSelectMeta.examples.optgroups.name,
-    multiSelectMeta.examples.asyncFilter.name,
-    multiSelectMeta.examples.selectedSlot.name,
-  ]}
+  headings={[form.title, slots.title, setValue.title, optgroups.title, asyncFilter.title, selectedSlot.title]}
 />
 
-## {multiSelectMeta.examples.form.name}
+<Example example={form} />
 
-<multiSelectMeta.examples.form.description />
+<Example example={slots} />
 
-<ComponentExample codeSample={multiSelectMeta.examples.form.example} />
+<Example example={setValue} />
 
-## {multiSelectMeta.examples.slots.name}
+<Example example={optgroups} />
 
-<multiSelectMeta.examples.slots.description />
+<Example example={asyncFilter} />
 
-<ComponentStory story={multiSelectMeta.examples.slots.story} />
-
-## {multiSelectMeta.examples.setValue.name}
-
-<multiSelectMeta.examples.setValue.description />
-
-<ComponentExample codeSample={multiSelectMeta.examples.setValue.example} />
-
-## {multiSelectMeta.examples.optgroups.name}
-
-<ComponentStory story={multiSelectMeta.examples.optgroups.story} />
-
-## {multiSelectMeta.examples.asyncFilter.name}
-
-<multiSelectMeta.examples.asyncFilter.description />
-
-<ComponentExample codeSample={multiSelectMeta.examples.asyncFilter.example} />
-
-## {multiSelectMeta.examples.selectedSlot.name}
-
-<multiSelectMeta.examples.selectedSlot.description />
-
-<ComponentExample codeSample={multiSelectMeta.examples.selectedSlot.example} />
+<Example example={selectedSlot} />

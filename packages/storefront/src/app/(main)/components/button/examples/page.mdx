@@ -1,8 +1,10 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { buttonMeta } from '@/app/(main)/components/button/button.meta';
+import form from '@porsche-design-system/examples/components/button/form';
+import formAttribute from '@porsche-design-system/examples/components/button/form-attribute';
+import aiDropShadow from '@porsche-design-system/examples/components/button/ai-drop-shadow';
+import aiGradientGlow from '@porsche-design-system/examples/components/button/ai-gradient-glow';
 
 export const metadata = {
   title: 'Button: Examples - Components',
@@ -11,35 +13,12 @@ export const metadata = {
 
 # Button <ComponentStatus tagName="p-button"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    buttonMeta.examples.form.name,
-    buttonMeta.examples.formAttribute.name,
-    buttonMeta.examples.aiDropShadow.name,
-    buttonMeta.examples.aiGradientGlow.name,
-  ]}
-/>
+<TableOfContents headings={[form.title, formAttribute.title, aiDropShadow.title, aiGradientGlow.title]} />
 
-## {buttonMeta.examples.form.name}
+<Example example={form} />
 
-<buttonMeta.examples.form.description />
+<Example example={formAttribute} />
 
-<ComponentExample codeSample={buttonMeta.examples.form.example} />
+<Example example={aiDropShadow} />
 
-## {buttonMeta.examples.formAttribute.name}
-
-<buttonMeta.examples.formAttribute.description />
-
-<ComponentExample codeSample={buttonMeta.examples.formAttribute.example} />
-
-## {buttonMeta.examples.aiDropShadow.name}
-
-<buttonMeta.examples.aiDropShadow.description />
-
-<ComponentStory story={buttonMeta.examples.aiDropShadow.story} />
-
-## {buttonMeta.examples.aiGradientGlow.name}
-
-<buttonMeta.examples.aiGradientGlow.description />
-
-<ComponentStory story={buttonMeta.examples.aiGradientGlow.story} />
+<Example example={aiGradientGlow} />

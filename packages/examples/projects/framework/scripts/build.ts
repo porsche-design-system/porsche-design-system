@@ -12,7 +12,8 @@ import { exampleAppPaths, sourceFiles, toFrameworkMarkup, toPreview } from '../l
  * - `generated/index.ts`: the examples as data, their code strings for every framework. Imports no wrapper, so the
  *   skills build and anything else that reads the code can load it before the wrappers are built.
  * - `generated/previews/`: the live React preview of every example, a client component each, by id for the Storefront.
- * - `generated/runtime.ts`: what renders every example in the Storefront by id, its preview and its description.
+ * - `generated/examples/<id>.ts`: every example as a module of its own – its data, its live `Preview` and its
+ *   `Description`. A page imports the examples it shows, and so loads their previews only.
  */
 
 const projectDir = path.resolve(__dirname, '..');
@@ -49,7 +50,16 @@ const readSources = async (): Promise<Source[]> => {
 
 const readDescription = (id: string): string | undefined => {
   const file = path.join(srcDir, id, 'example.mdx');
-  return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : undefined;
+  if (!fs.existsSync(file)) {
+    return undefined;
+  }
+  const description = fs.readFileSync(file, 'utf8');
+  if (!description.trim()) {
+    throw new Error(
+      `[examples-framework] the example.mdx of "${id}" is empty; describe the example or remove the file`
+    );
+  }
+  return description;
 };
 
 const readSource = (framework: Framework, file: string): string =>
@@ -155,37 +165,28 @@ const generate = async (): Promise<void> => {
     ].join('\n')
   );
 
-  const descriptionName = (source: Source): string => `${previewName(source)}Description`;
-  const runtimeFields = (source: Source): string[] => [
-    ...(source.meta.standalone ? [] : [`Preview: ${previewName(source)}`]),
-    ...(readDescription(source.id) === undefined ? [] : [`Description: ${descriptionName(source)}`]),
-  ];
-
-  fs.writeFileSync(
-    path.join(generatedDir, 'runtime.ts'),
-    [
-      header,
-      "import type { FrameworkExampleId } from './index';",
-      ...shared.map((source) => `import ${previewName(source)} from './previews/${previewName(source)}';`),
-      ...sources
-        .filter(({ id }) => readDescription(id) !== undefined)
-        .map((source) => `import ${descriptionName(source)} from '../src/${source.id}/example.mdx';`),
-      '',
-      '/**',
-      ' * What renders every example in the Storefront, by id: its live preview, a client component, and its description,',
-      " * `example.mdx`, for the consumer's MDX loader to compile. Import this on the server only. Every page whose server",
-      ' * graph imports it loads all of the previews, which is why a `standalone` example has none here: its page imports',
-      ' * it by its own entry, `…/previews/<Name>`.',
-      ' */',
-      `export const frameworkExampleRuntime = {\n${sources
-        .map(
-          (source) =>
-            `  '${source.id}': ${runtimeFields(source).length ? `{ ${runtimeFields(source).join(', ')} }` : '{}'},`
-        )
-        .join('\n')}\n} satisfies { readonly [Id in FrameworkExampleId]: object };`,
-      '',
-    ].join('\n')
-  );
+  for (const source of sources) {
+    const up = '../'.repeat(source.id.split('/').length);
+    const hasDescription = readDescription(source.id) !== undefined;
+    const file = path.join(generatedDir, 'examples', `${source.id}.ts`);
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(
+      file,
+      [
+        header,
+        `import { frameworkExamples } from '${up}index';`,
+        `import Preview from '${up}previews/${previewName(source)}';`,
+        ...(hasDescription ? [`import Description from '${up}../src/${source.id}/example.mdx';`] : []),
+        '',
+        'export default {',
+        `  ...frameworkExamples['${source.id}'],`,
+        '  Preview,',
+        ...(hasDescription ? ['  Description,'] : []),
+        '};',
+        '',
+      ].join('\n')
+    );
+  }
 
   console.log(
     `[examples-framework] generated ${examples.length} examples into ${path.relative(projectDir, generatedDir)}/`

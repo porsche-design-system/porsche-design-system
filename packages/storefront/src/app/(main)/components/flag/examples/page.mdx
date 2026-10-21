@@ -1,7 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { flagMeta } from '@/app/(main)/components/flag/flag.meta';
+import size from '@porsche-design-system/examples/components/flag/size';
+import sizeCssVar from '@porsche-design-system/examples/components/flag/size-css-var';
+import responsiveSize from '@porsche-design-system/examples/components/flag/responsive-size';
 
 export const metadata = {
   title: 'Flag: Examples - Components',
@@ -10,24 +12,10 @@ export const metadata = {
 
 # Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
 
-<TableOfContents
-  headings={[flagMeta.examples.size.name, flagMeta.examples.sizeCssVar.name, flagMeta.examples.responsiveSize.name]}
-/>
+<TableOfContents headings={[size.title, sizeCssVar.title, responsiveSize.title]} />
 
-## {flagMeta.examples.size.name}
+<Example example={size} />
 
-<flagMeta.examples.size.description />
+<Example example={sizeCssVar} />
 
-<ComponentStory story={flagMeta.examples.size.story} />
-
-## {flagMeta.examples.sizeCssVar.name}
-
-<flagMeta.examples.sizeCssVar.description />
-
-<ComponentStory story={flagMeta.examples.sizeCssVar.story} />
-
-## {flagMeta.examples.responsiveSize.name}
-
-<flagMeta.examples.responsiveSize.description />
-
-<ComponentStory story={flagMeta.examples.responsiveSize.story} />
+<Example example={responsiveSize} />
