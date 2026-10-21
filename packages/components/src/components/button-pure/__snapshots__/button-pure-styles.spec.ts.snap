@@ -3,6 +3,7 @@
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -15,6 +16,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -29,10 +33,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -86,6 +90,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -98,6 +103,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -112,10 +120,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -169,6 +177,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -181,6 +190,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -195,10 +207,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -252,6 +264,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -264,6 +277,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: not-allowed;
@@ -278,10 +294,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -327,6 +343,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -339,6 +356,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: not-allowed;
@@ -353,10 +373,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -402,6 +422,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -414,6 +435,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: not-allowed;
@@ -428,10 +452,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -480,6 +504,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -492,6 +517,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -506,10 +534,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -563,6 +591,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -574,6 +603,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -588,10 +620,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -648,6 +680,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -659,6 +692,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -673,10 +709,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -733,6 +769,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 10`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -745,6 +782,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -759,10 +799,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-y,-2px);
+  left: var(--p-button-pure-hover-inset-y,-2px);
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -816,6 +856,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 11`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -828,6 +869,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -842,10 +886,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-y,-2px);
+  left: var(--p-button-pure-hover-inset-y,-2px);
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -899,6 +943,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 12`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -911,6 +956,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -925,10 +973,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-y,-2px);
+  left: var(--p-button-pure-hover-inset-y,-2px);
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -962,8 +1010,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
     gap: var(--p-spacing-static-xs);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-button-pure-hover-inset-x,-4px);
+    left: var(--p-button-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -978,8 +1026,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
     gap: 0;
   }
   .root::before {
-    right: -2px;
-    left: -2px;
+    right: var(--p-button-pure-hover-inset-y,-2px);
+    left: var(--p-button-pure-hover-inset-y,-2px);
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -994,8 +1042,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
     gap: var(--p-spacing-static-xs);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-button-pure-hover-inset-x,-4px);
+    left: var(--p-button-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -1010,8 +1058,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
     gap: 0;
   }
   .root::before {
-    right: -2px;
-    left: -2px;
+    right: var(--p-button-pure-hover-inset-y,-2px);
+    left: var(--p-button-pure-hover-inset-y,-2px);
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -1026,8 +1074,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
     gap: var(--p-spacing-static-xs);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-button-pure-hover-inset-x,-4px);
+    left: var(--p-button-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -1062,6 +1110,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 13`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -1111,6 +1160,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1125,10 +1177,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-y,-2px);
+  left: var(--p-button-pure-hover-inset-y,-2px);
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -1165,8 +1217,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
     font-size: var(--p-typescale-sm);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-button-pure-hover-inset-x,-4px);
+    left: var(--p-button-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -1185,8 +1237,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
     font-size: var(--p-typescale-md);
   }
   .root::before {
-    right: -2px;
-    left: -2px;
+    right: var(--p-button-pure-hover-inset-y,-2px);
+    left: var(--p-button-pure-hover-inset-y,-2px);
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -1205,8 +1257,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
     font-size: var(--p-typescale-lg);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-button-pure-hover-inset-x,-4px);
+    left: var(--p-button-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -1225,8 +1277,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
     font-size: var(--p-typescale-xl);
   }
   .root::before {
-    right: -2px;
-    left: -2px;
+    right: var(--p-button-pure-hover-inset-y,-2px);
+    left: var(--p-button-pure-hover-inset-y,-2px);
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -1245,8 +1297,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
     font-size: inherit;
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-button-pure-hover-inset-x,-4px);
+    left: var(--p-button-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -1282,6 +1334,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 exports[`getComponentCss() > should return correct css for "none" 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1294,6 +1347,9 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: not-allowed;
@@ -1308,10 +1364,10 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -1355,6 +1411,7 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
 exports[`getComponentCss() > should return correct css for "none" 2`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1367,6 +1424,9 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1381,10 +1441,10 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -1430,6 +1490,7 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
 exports[`getComponentCss() > should return correct css for "none" 3`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1442,6 +1503,9 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1456,10 +1520,10 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -1505,6 +1569,7 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
 exports[`getComponentCss() > should return correct css for "none" 4`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1517,6 +1582,9 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1531,10 +1599,10 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }

@@ -80,15 +80,13 @@ const Page = () => (
             >
               No results found
             </p>
-            <ul id="dealer-search-results" class="m-0 grid list-none gap-static-sm p-0">
+            <ul
+              id="dealer-search-results"
+              class="m-0 grid list-none gap-static-sm p-0 [--p-link-pure-px:12px] [--p-link-pure-py:var(--spacing-static-sm)] [--p-link-pure-hover-inset-x:0] [--p-link-pure-hover-inset-y:0]"
+            >
               {dealers.map((dealer) => (
                 <li>
-                  <p-link-pure
-                    icon="arrow-right"
-                    align-label="start"
-                    stretch={true}
-                    class="w-auto px-[12px] py-static-sm"
-                  >
+                  <p-link-pure icon="arrow-right" align-label="start" stretch={true}>
                     <a href={`#dealer-${slugOf(dealer)}`}>{dealer}</a>
                   </p-link-pure>
                 </li>

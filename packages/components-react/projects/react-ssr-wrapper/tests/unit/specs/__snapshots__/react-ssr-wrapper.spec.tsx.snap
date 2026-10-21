@@ -569,6 +569,7 @@ img {
                     <style>
                       :host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -581,6 +582,9 @@ img {
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -595,10 +599,10 @@ img {
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-y,-2px);
+  left: var(--p-button-pure-hover-inset-y,-2px);
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -3537,6 +3541,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
     <style>
       :host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -3549,6 +3554,9 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -3563,10 +3571,10 @@ exports[`should render dsr component for PButtonPure 1`] = `
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -5543,6 +5551,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
             <style>
               :host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -5554,6 +5563,9 @@ exports[`should render dsr component for PDrilldown 1`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -5568,10 +5580,10 @@ exports[`should render dsr component for PDrilldown 1`] = `
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-y,-2px);
+  left: var(--p-button-pure-hover-inset-y,-2px);
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -6158,6 +6170,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
         <style>
           :host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -6169,6 +6182,9 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -6183,10 +6199,10 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,-4px);
+  left: var(--p-button-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -6321,6 +6337,7 @@ img:dir(rtl) {
         <style>
           :host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -6332,6 +6349,9 @@ img:dir(rtl) {
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -6346,10 +6366,10 @@ img:dir(rtl) {
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-y,-2px);
+  left: var(--p-button-pure-hover-inset-y,-2px);
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -6383,8 +6403,8 @@ img:dir(rtl) {
     gap: var(--p-spacing-static-xs);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-button-pure-hover-inset-x,-4px);
+    left: var(--p-button-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -9233,6 +9253,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
     <style>
       :host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -9249,8 +9270,8 @@ exports[`should render dsr component for PLinkPure 1`] = `
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  inset-block: -2px !important;
-  inset-inline: -4px !important;
+  inset-block: var(--p-link-pure-hover-inset-y,-2px) !important;
+  inset-inline: var(--p-link-pure-hover-inset-x,-4px) !important;
   border-radius: var(--p-radius-lg) !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -9265,6 +9286,9 @@ exports[`should render dsr component for PLinkPure 1`] = `
 
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0px);
+  padding-block: var(--p-link-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -9279,10 +9303,10 @@ exports[`should render dsr component for PLinkPure 1`] = `
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -9774,6 +9798,7 @@ slot[name="header"] {
             <style>
               :host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -9786,6 +9811,9 @@ slot[name="header"] {
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -9800,10 +9828,10 @@ slot[name="header"] {
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-y,-2px);
+  left: var(--p-button-pure-hover-inset-y,-2px);
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -10756,6 +10784,7 @@ img {
                     <style>
                       :host {
   transform: translate3d(0,0,0) !important;
+  box-sizing: border-box;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -10768,6 +10797,9 @@ img {
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-button-pure-px,0px);
+  padding-block: var(--p-button-pure-py,0px);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -10782,10 +10814,10 @@ img {
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-button-pure-hover-inset-y,-2px);
+  bottom: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-y,-2px);
+  left: var(--p-button-pure-hover-inset-y,-2px);
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
