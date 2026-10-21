@@ -3,14 +3,10 @@ import AccessibilityOverview from '@/app/(main)/components/tile/accessibility/ov
 import AccessibilityTests from '@/app/(main)/components/tile/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/tile/configurator/introduction.mdx';
 import { tileSlotStories, tileStory } from '@/app/(main)/components/tile/configurator/story';
-import ArticleDescription from '@/app/(main)/components/tile/examples/article/example.mdx';
-import { tileStoryArticle } from '@/app/(main)/components/tile/examples/article/story';
 import CallToActionDescription from '@/app/(main)/components/tile/examples/call-to-action/example.mdx';
 import { tileStoryCallToAction } from '@/app/(main)/components/tile/examples/call-to-action/story';
 import CategoryDescription from '@/app/(main)/components/tile/examples/category/example.mdx';
 import { tileStoryCategory } from '@/app/(main)/components/tile/examples/category/story';
-import EditorialTeaserDescription from '@/app/(main)/components/tile/examples/editorial-teaser/example.mdx';
-import { tileStoryEditorialTeaser } from '@/app/(main)/components/tile/examples/editorial-teaser/story';
 import FeatureDescription from '@/app/(main)/components/tile/examples/feature/example.mdx';
 import { tileStoryFeature } from '@/app/(main)/components/tile/examples/feature/story';
 import FeatureHighlightDescription from '@/app/(main)/components/tile/examples/feature-highlight/example.mdx';
@@ -69,6 +65,12 @@ export const tileMeta = {
       description: ProductDescription,
       story: tileStoryProduct,
     },
+    vehicleListing: {
+      kind: 'story',
+      name: 'Vehicle Listing',
+      description: VehicleListingDescription,
+      story: tileStoryVehicleListing,
+    },
     feature: {
       kind: 'story',
       name: 'Feature',
@@ -98,24 +100,6 @@ export const tileMeta = {
       name: 'Product Teaser',
       description: ProductTeaserDescription,
       story: tileStoryProductTeaser,
-    },
-    vehicleListing: {
-      kind: 'story',
-      name: 'Vehicle Listing',
-      description: VehicleListingDescription,
-      story: tileStoryVehicleListing,
-    },
-    editorialTeaser: {
-      kind: 'story',
-      name: 'Editorial Teaser',
-      description: EditorialTeaserDescription,
-      story: tileStoryEditorialTeaser,
-    },
-    article: {
-      kind: 'story',
-      name: 'Article',
-      description: ArticleDescription,
-      story: tileStoryArticle,
     },
   },
   usage: Usage,

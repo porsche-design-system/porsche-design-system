@@ -13,8 +13,8 @@ renders the focus indicator around the Tile. The "Configure" link is an independ
 covering link via `relative z-2` to stay clickable. Its accessible name is extended via `aria-label` to identify the
 model, while it still contains the visible label.
 
-Since hovering the Tile hovers the "Discover 911" link, the link shows its own hover state, and the vehicle zooms in via
-`motion-safe:group-has-[a:hover]:scale-105`. The vehicle is nested within the default slot, so it is zoomed via its own
-classes instead of `--p-tile-media-scale`. `group-has-[a:hover]` only matches the slotted anchor of the covering link,
-since the "Configure" link renders its anchor in its shadow DOM, so hovering "Configure" doesn't zoom the vehicle. The
-`motion-safe:` variant omits the zoom and its transition if the user prefers reduced motion.
+Since hovering the Tile hovers the "Discover 911" link, the link shows its own hover state, and `hover-effect="zoom"`
+zooms in on the vehicle. Hovering "Configure" doesn't trigger it, since it is an independent action. The vehicle is
+nested within the default slot, so the Tile can't scale it directly. Instead, the vehicle uses the inherited
+`--p-tile-media-scale` via `motion-safe:[scale:var(--p-tile-media-scale,1)]` and animates it via
+`motion-safe:transition-[scale]`, so it handles the reduced motion preference of the user itself.

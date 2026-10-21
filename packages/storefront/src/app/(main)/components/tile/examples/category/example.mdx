@@ -8,6 +8,8 @@ of the Tile. `object-top` keeps the upper part of the image visible. The Tile cl
 
 `cover` on the arrow link stretches its clickable area over the Tile, so the whole Tile links to the category, and
 renders the focus indicator around the Tile. The label of the link is its accessible name. Since hovering the Tile
-hovers the link, the link shows its own hover state, and the image zooms in via
-`has-[p-link:hover]:[--p-tile-media-scale:1.05]` on the Tile. The Tile animates the zoom and omits it if the user
-prefers reduced motion.
+hovers the link, the link shows its own hover state, and the image zooms in via `hover-effect="zoom"`, which the Tile
+triggers while its link is hovered. The Tile animates the zoom and omits it if the user prefers reduced motion. By
+default, the Tile clips zooming media to its own box, so it doesn't overlap adjacent content. The cut-out image starts
+at the top of its box, which isn't visible on the background of the Tile, so `[clip-path:none]` lets it grow beyond its
+box instead of being clipped at an invisible edge.

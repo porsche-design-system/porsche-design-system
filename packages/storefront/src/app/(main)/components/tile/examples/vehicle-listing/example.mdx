@@ -1,0 +1,17 @@
+A vehicle listing presents a single vehicle in a search result, e.g. of the Porsche Finder, with the image above its
+details. With `aspect-ratio="auto"` the Tile adapts its height to the content.
+
+The image is placed in the default slot. `bleed` lets the default slot reach the top and side edges of the Tile, since
+only the `bottom` slot is occupied, and lets the image span its full width cover-fit. `aspect-video` defines its height.
+The Tile clips the image to its corner radius. The vehicle details are wrapped in a single element in the `bottom` slot,
+which spans the full width via `grow`. The Tile is the query container (`@container`), so the buttons are stacked and
+placed side by side from `@sm`, depending on the width of the Tile instead of the viewport.
+
+`cover` on the "Show details" link stretches its clickable area over the Tile, so the whole Tile links to the details
+page, and renders the focus indicator around the Tile. Its slotted anchor gets the accessible name "Show details of the
+Porsche 718 Boxster", which contains the visible label and identifies the vehicle. The "Save" button is an independent
+action, so it is placed above the covering link via `relative z-2` to stay clickable.
+
+Since hovering the Tile hovers the link, the link shows its own hover state, and the image zooms in via
+`hover-effect="zoom"`. Hovering "Save" doesn't trigger it. The Tile animates the zoom and omits it if the user prefers
+reduced motion.

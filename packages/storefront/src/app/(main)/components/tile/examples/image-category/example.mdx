@@ -6,6 +6,6 @@ which suits most mood images.
 
 `cover` on the arrow link stretches its clickable area over the Tile, so the whole Tile links to the category, and
 renders the focus indicator around the Tile. The label of the link is its accessible name. Since hovering the Tile
-hovers the link, the link shows its own hover state, and the image zooms in via
-`has-[p-link:hover]:[--p-tile-media-scale:1.05]` on the Tile. The Tile scales the content of the `background` slot,
-animates the zoom and omits it if the user prefers reduced motion and clips the image to its corner radius.
+hovers the link, the link shows its own hover state, and the image zooms in via `hover-effect="zoom"`, which the Tile
+triggers while its link is hovered. The Tile scales the content of the `background` slot, animates the zoom and omits it
+if the user prefers reduced motion and clips the image to its corner radius.

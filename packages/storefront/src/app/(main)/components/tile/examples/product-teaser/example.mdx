@@ -6,10 +6,11 @@ The image is placed in the `start` slot, whose column takes up to half of the Ti
 `grow basis-0 min-h-0` without increasing the height of the Tile, and `object-contain` centers it within the slot.
 Heading and text are wrapped in a single element in the default slot, which centers it vertically, while
 `self-stretch text-start` aligns the text to the start. `hyphens="auto"` lets the heading break when the Tile gets
-narrow. The arrow link is placed in the `end` slot, `mb-auto` aligns it to the top.
+narrow. The compact arrow link is placed in the `top` slot and pushed to the end via `ms-auto`. Unlike a column of its
+own in the `end` slot, it doesn't narrow the text, so heading and text keep enough width next to the image on small
+viewports.
 
 `cover` on the arrow link stretches its clickable area over the Tile, so the whole Tile links to the product, and
 renders the focus indicator around the Tile. The label of the link is its accessible name. Since hovering the Tile
-hovers the link, the link shows its own hover state, and the image zooms in via
-`has-[p-link:hover]:[--p-tile-media-scale:1.05]` on the Tile. The Tile animates the zoom and omits it if the user
-prefers reduced motion.
+hovers the link, the link shows its own hover state, and the image zooms in via `hover-effect="zoom"`, which the Tile
+triggers while its link is hovered. The Tile animates the zoom and omits it if the user prefers reduced motion.

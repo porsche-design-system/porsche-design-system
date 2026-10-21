@@ -7,7 +7,8 @@ const label = '911';
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className: 'scheme-dark has-[p-link:hover]:[--p-tile-media-scale:1.05]',
+    className: 'scheme-dark',
+    hoverEffect: 'zoom',
     aspectRatio: '1/1',
     gradient: 'bottom',
   },

@@ -5,9 +5,9 @@ import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-s
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className:
-      '[--p-tile-gap-y:0] motion-safe:transition-shadow duration-sm ease-in-out has-[[slot=anchor]:hover]:shadow-sm',
+    className: '[--p-tile-gap-y:0]',
     aspectRatio: 'auto',
+    hoverEffect: 'zoom',
     background: 'canvas',
   },
   children: [

@@ -5,8 +5,7 @@ import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-s
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className:
-      'has-[[slot=anchor]:hover]:[--p-tile-bg:var(--color-canvas)] has-[[slot=anchor]:hover]:[--p-tile-media-offset:var(--spacing-static-md)]',
+    hoverEffect: 'offset highlight',
     aspectRatio: '16/9',
     background: 'none',
     compact: true,

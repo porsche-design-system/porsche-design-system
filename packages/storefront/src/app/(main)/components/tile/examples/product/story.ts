@@ -36,7 +36,7 @@ const price: ElementConfig<HTMLTagOrComponent> = {
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className: 'has-[[slot=anchor]:hover]:[--p-tile-media-scale:1.05]',
+    hoverEffect: 'zoom',
     aspectRatio: '3/4',
   },
   children: [

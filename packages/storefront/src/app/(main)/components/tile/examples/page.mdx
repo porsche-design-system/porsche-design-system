@@ -17,106 +17,94 @@ content click-through. Independent interactive elements are placed above a cover
 via `pointer-events: auto` when the `anchor` slot is used. Use cases with multiple independent actions or none at all
 use neither.
 
-The Tile has no built-in hover effect, so each clickable use case shows how to tailor it to its content. The Tile
-animates changes of `--p-tile-bg`, `--p-tile-media-scale` and `--p-tile-media-offset` and omits the movement of the
-media if the user prefers reduced motion. Other effects are wrapped in `motion-safe:` to respect this preference. Hover
-effects are a visual enhancement only, keyboard users get the focus indicator of the link.
+The Tile has no hover effect by default, so each clickable use case shows how to tailor it to its content.
+`hover-effect` applies effects while the link of the Tile is hovered, so independent interactive elements don't trigger
+them: `zoom` and `offset` zoom in on or move the media, `highlight` changes the background. They can be combined,
+separated by a space. For other triggers or values, set `--p-tile-media-scale`, `--p-tile-media-offset` or `--p-tile-bg`
+instead. The Tile animates these changes and omits the movement of the media if the user prefers reduced motion. Other
+effects are wrapped in `motion-safe:` to respect this preference. Hover effects are a visual enhancement only, keyboard
+users get the focus indicator of the link.
 
 {/* TODO: add further use cases to `tileMeta.examples` */}
 
-<TableOfContents headings={['Slot-based Layouts', 'Custom Layouts (Pattern Candidates)']} />
+<TableOfContents
+  headings={[
+    tileMeta.examples.modelSelection.name,
+    tileMeta.examples.modelNavigation.name,
+    tileMeta.examples.category.name,
+    tileMeta.examples.imageCategory.name,
+    tileMeta.examples.product.name,
+    tileMeta.examples.vehicleListing.name,
+    tileMeta.examples.feature.name,
+    tileMeta.examples.featureHighlight.name,
+    tileMeta.examples.callToAction.name,
+    tileMeta.examples.modelTeaser.name,
+    tileMeta.examples.productTeaser.name,
+  ]}
+/>
 
-## Slot-based Layouts
-
-These use cases are built with the slots of the Tile: the content is placed in the `top`, `start`, default, `end` and
-`bottom` slots, the `background` slot holds a mood image and properties like `aspect-ratio`, `compact`, `gradient` and
-`bleed` adapt the Tile to its content. Custom styles are limited to the content itself, e.g. spacing or hover effects.
-
-### {tileMeta.examples.modelSelection.name}
+## {tileMeta.examples.modelSelection.name}
 
 <tileMeta.examples.modelSelection.description />
 
 <ComponentStory story={tileMeta.examples.modelSelection.story} backgroundColor="surface" />
 
-### {tileMeta.examples.modelNavigation.name}
+## {tileMeta.examples.modelNavigation.name}
 
 <tileMeta.examples.modelNavigation.description />
 
 <ComponentStory story={tileMeta.examples.modelNavigation.story} backgroundColor="surface" />
 
-### {tileMeta.examples.category.name}
+## {tileMeta.examples.category.name}
 
 <tileMeta.examples.category.description />
 
 <ComponentStory story={tileMeta.examples.category.story} />
 
-### {tileMeta.examples.imageCategory.name}
+## {tileMeta.examples.imageCategory.name}
 
 <tileMeta.examples.imageCategory.description />
 
 <ComponentStory story={tileMeta.examples.imageCategory.story} />
 
-### {tileMeta.examples.product.name}
+## {tileMeta.examples.product.name}
 
 <tileMeta.examples.product.description />
 
 <ComponentStory story={tileMeta.examples.product.story} />
 
-### {tileMeta.examples.feature.name}
-
-<tileMeta.examples.feature.description />
-
-<ComponentStory story={tileMeta.examples.feature.story} />
-
-### {tileMeta.examples.featureHighlight.name}
-
-<tileMeta.examples.featureHighlight.description />
-
-<ComponentStory story={tileMeta.examples.featureHighlight.story} />
-
-### {tileMeta.examples.callToAction.name}
-
-<tileMeta.examples.callToAction.description />
-
-<ComponentStory story={tileMeta.examples.callToAction.story} />
-
-### {tileMeta.examples.modelTeaser.name}
-
-<tileMeta.examples.modelTeaser.description />
-
-<ComponentStory story={tileMeta.examples.modelTeaser.story} />
-
-### {tileMeta.examples.productTeaser.name}
-
-<tileMeta.examples.productTeaser.description />
-
-<ComponentStory story={tileMeta.examples.productTeaser.story} />
-
-## Custom Layouts (Pattern Candidates)
-
-These use cases bypass the layout of the Tile: they stretch the default slot to define their own grid, or remove the
-padding, background and corner radius of the Tile, so it only provides the clickable area and its focus indicator. Since
-most of the layout is custom code, they are candidates for a pattern rather than use cases of the Tile.
-
-For comparison, each of these examples shows the Tile with the `anchor` slot, a counterpart built with Tailwind CSS only
-and, for use cases with a visible link, the Tile with a covering `p-link`. The Tailwind CSS counterpart stretches a link
-over the whole tile via `after:absolute after:inset-0 after:z-1`, which also renders the focus indicator around the
-tile, and places independent interactive elements above it via `relative z-2`.
-
-### {tileMeta.examples.vehicleListing.name}
+## {tileMeta.examples.vehicleListing.name}
 
 <tileMeta.examples.vehicleListing.description />
 
 <ComponentStory story={tileMeta.examples.vehicleListing.story} backgroundColor="surface" />
 
-### {tileMeta.examples.editorialTeaser.name}
+## {tileMeta.examples.feature.name}
 
-<tileMeta.examples.editorialTeaser.description />
+<tileMeta.examples.feature.description />
 
-<ComponentStory story={tileMeta.examples.editorialTeaser.story} />
+<ComponentStory story={tileMeta.examples.feature.story} />
 
-### {tileMeta.examples.article.name}
+## {tileMeta.examples.featureHighlight.name}
 
-<tileMeta.examples.article.description />
+<tileMeta.examples.featureHighlight.description />
 
-<ComponentStory story={tileMeta.examples.article.story} />
+<ComponentStory story={tileMeta.examples.featureHighlight.story} />
+
+## {tileMeta.examples.callToAction.name}
+
+<tileMeta.examples.callToAction.description />
+
+<ComponentStory story={tileMeta.examples.callToAction.story} />
+
+## {tileMeta.examples.modelTeaser.name}
+
+<tileMeta.examples.modelTeaser.description />
+
+<ComponentStory story={tileMeta.examples.modelTeaser.story} />
+
+## {tileMeta.examples.productTeaser.name}
+
+<tileMeta.examples.productTeaser.description />
+
+<ComponentStory story={tileMeta.examples.productTeaser.story} />

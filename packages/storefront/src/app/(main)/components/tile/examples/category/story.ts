@@ -7,7 +7,8 @@ const label = 'Vehicle Accessories';
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className: '[--p-tile-gap-y:var(--spacing-fluid-lg)] has-[p-link:hover]:[--p-tile-media-scale:1.05]',
+    className: '[--p-tile-gap-y:var(--spacing-fluid-lg)]',
+    hoverEffect: 'zoom',
     aspectRatio: '3/4',
     bleed: true,
   },
@@ -32,9 +33,11 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
       children: [{ tag: 'a', properties: { href: '#' }, children: [label] }],
     },
     {
+      // the cut-out image starts at the top of its box, `[clip-path:none]` lets it grow beyond the box on zoom instead of
+      // being clipped at an invisible edge
       tag: 'img',
       properties: {
-        className: 'object-top',
+        className: 'object-top [clip-path:none]',
         src: 'assets/products/roof-box-on-a-car.webp',
         alt: 'Porsche vehicle with roof box',
       },

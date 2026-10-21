@@ -7,7 +7,8 @@ const label = 'Weekender';
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className: 'scheme-dark [--p-tile-bg:#341f2e] has-[p-link:hover]:[--p-tile-media-scale:1.05]',
+    className: 'scheme-dark [--p-tile-bg:#341f2e]',
+    hoverEffect: 'zoom',
     aspectRatio: '16/9',
   },
   children: [
@@ -38,14 +39,16 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
     },
     {
       // covers the tile, so the whole tile is clickable; it shows its own hover state whenever the tile is hovered;
-      // `mb-auto` aligns it to the top of the `end` slot
+      // placed in the `top` slot instead of a column of its own, so heading and text get the full width next to the
+      // image on small viewports
       tag: 'p-link',
       properties: {
-        slot: 'end',
-        className: 'mb-auto',
+        slot: 'top',
+        className: 'ms-auto',
         variant: 'secondary',
         icon: 'arrow-up-right',
         hideLabel: true,
+        compact: true,
         cover: true,
       },
       children: [{ tag: 'a', properties: { href: '#' }, children: [label] }],

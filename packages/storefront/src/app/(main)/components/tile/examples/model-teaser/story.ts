@@ -4,7 +4,7 @@ import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-s
 
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
-  properties: { className: 'group', aspectRatio: '4/3' },
+  properties: { aspectRatio: '4/3', hoverEffect: 'zoom' },
   children: [
     {
       // signature and vehicle are stacked in the same grid cell, the margin lets the vehicle overlap the signature; the
@@ -22,13 +22,12 @@ const tile: ElementConfig<HTMLTagOrComponent> = {
           },
         },
         {
-          // nested, so it is zoomed via its own classes instead of `--p-tile-media-scale`; `group-has-[a:hover]` only
-          // matches the slotted anchor of the covering link, since the "Configure" link renders its anchor in its
-          // shadow DOM
+          // nested, so the tile can't scale it directly; it uses the inherited `--p-tile-media-scale` set by
+          // `hover-effect="zoom"` and handles transition and reduced motion itself
           tag: 'img',
           properties: {
             className:
-              '[grid-area:1/1] z-1 w-full mt-[6%] motion-safe:transition-transform duration-md ease-in-out motion-safe:group-has-[a:hover]:scale-105',
+              '[grid-area:1/1] z-1 w-full mt-[6%] motion-safe:[scale:var(--p-tile-media-scale,1)] motion-safe:transition-[scale] duration-md ease-in-out',
             src: 'assets/model-series/911.webp',
             alt: '',
             width: 776,

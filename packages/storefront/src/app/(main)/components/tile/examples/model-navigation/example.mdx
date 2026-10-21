@@ -3,8 +3,7 @@ name is placed in the `top` slot, the side view of the vehicle in the default sl
 slot. `compact` reduces padding and gap, and the `anchor` slot makes the whole Tile clickable.
 
 At rest, the Tile is transparent via `background="none"` and blends into the surface it is placed on, so only its
-content is visible. On hover of the `anchor`, the Tile reveals its background via
-`has-[[slot=anchor]:hover]:[--p-tile-bg:var(--color-canvas)]` and moves the vehicle slightly towards the end via
-`has-[[slot=anchor]:hover]:[--p-tile-media-offset:var(--spacing-static-md)]`, which follows the writing direction. The
-`pe-static-md` padding of the image reserves the space for this movement. The Tile animates both, and omits the movement
-if the user prefers reduced motion.
+content is visible. On hover of the `anchor`, `hover-effect="offset highlight"` moves the vehicle slightly towards the
+end, which follows the writing direction, and reveals the background of the Tile, since `highlight` changes `none` to
+`canvas`. The `pe-static-md` padding of the image reserves the space for the movement. The Tile animates both and omits
+the movement if the user prefers reduced motion.

@@ -5,7 +5,8 @@ import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-s
 const tile: ElementConfig<HTMLTagOrComponent> = {
   tag: 'p-tile',
   properties: {
-    className: 'scheme-dark has-[p-link:hover]:[--p-tile-media-scale:1.05]',
+    className: 'scheme-dark',
+    hoverEffect: 'zoom',
     aspectRatio: '16/9',
     gradient: 'start',
   },
