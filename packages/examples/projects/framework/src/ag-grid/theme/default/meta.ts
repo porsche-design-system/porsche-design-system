@@ -1,6 +1,7 @@
 import type { FrameworkExampleMeta } from '../../../../lib/meta';
 
 export const meta = {
+  title: 'Default Theme',
   components: [],
   source: {
     'vanilla-js': 'ag-grid-example-community.html',

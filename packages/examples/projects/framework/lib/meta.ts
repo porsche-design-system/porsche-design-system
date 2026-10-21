@@ -6,6 +6,8 @@ import type { Framework, TagName } from '@porsche-design-system/shared';
  * example.
  */
 export type FrameworkExampleMeta = {
+  /** The heading of the example, in the Storefront and in the skills. `Default` for a component's default example. */
+  title: string;
   /** The PDS components the example shows. Empty for an example about something else, such as the AG Grid theme. */
   components: TagName[];
   /**
@@ -29,4 +31,21 @@ export type FrameworkExample<Id extends string = string> = {
   components: TagName[];
   /** The code shown in the code tabs, opened in StackBlitz and written into the skills. */
   frameworkMarkup: Record<Framework, string>;
+};
+
+/**
+ * An example by id, as `frameworkExamples` holds it: in the shape every project of `packages/examples` exports and the
+ * catalogue of `@porsche-design-system/examples` merges. Apart from `FrameworkExample`, the code sample the Storefront
+ * hands to a client component, which therefore carries no texts.
+ */
+export type FrameworkExampleEntry<Id extends string = string> = {
+  id: Id;
+  kind: 'framework';
+  /** The heading of the example, in the Storefront and in the skills. */
+  title: string;
+  /** The MDX source of its `example.mdx`. */
+  description?: string;
+  components: TagName[];
+  /** The code shown in the code tabs, opened in StackBlitz and written into the skills. */
+  code: Record<Framework, string>;
 };

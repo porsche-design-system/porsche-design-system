@@ -333,6 +333,7 @@ jobs:
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:unit:examples
+      - run: npm run test:unit:examples-catalogue
       - run: npm run test:e2e:examples
       - name: 'E2E Results'
         if: failure()

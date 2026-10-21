@@ -39,14 +39,18 @@ dist-site/                     # build:site – scripts/buildSite.ts, what the s
     └── index.html             # the project above, built, script and stylesheet inlined (lib/inline.ts)
 ```
 
-**The package export.** `@porsche-design-system/examples-pages` exports `examples` – every example by its path, with its
-meta and the files of its project, which the storefront shows as code and opens in StackBlitz – and the paths the pages
-and their media are served at (`examplesPath`, `mediaPath`). The types of an example – `ExampleMeta`, `ExampleProject`,
-`Example` – are defined once, in [`lib/meta.ts`](lib/meta.ts), which the generated source re-exports; it adds
-`ExamplePath`, the path of every example as a union. `build:projects` writes the source, typechecks what it built with
-it and bundles it with its declarations into `dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so a consumer
-compiles nothing of this package. The scripts and the knowledge skill import the source itself. The export holds every
-example, so import it on the server only.
+**The package export.** `@porsche-design-system/examples-pages` exports `pageExamples` – every example by its path, its
+id, in the shape every project of [`packages/examples`](../../AGENTS.md) exports: `id`, `kind` (`pattern`, `template`),
+its meta, the `components` it is built from (`lib/components.ts`, as the knowledge skill lists them), the `files` of its
+project, which the storefront shows as code and opens in StackBlitz, and the `url` of its built page. `examples` is the
+same by path with the meta and files only, as the storefront, StackBlitz and the skill read it until they switch to the
+catalogue (#4789). Next to them are the paths the pages and their media are served at (`examplesPath`, `mediaPath`). The
+types of an example – `ExampleMeta`, `ExampleProject`, `Example`, `PageExample` – are defined once, in
+[`lib/meta.ts`](lib/meta.ts), which the generated source re-exports; it adds `ExamplePath`, the path of every example as
+a union. `build:projects` writes the source, typechecks what it built with it and bundles it with its declarations into
+`dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so a consumer compiles nothing of this package. The
+scripts and the knowledge skill import the source itself. The export holds every example, so import it on the server
+only.
 
 **The two steps run at different points of the root build.** `build:projects` needs the sources and the types of
 `@porsche-design-system/components` only, and runs before `build:skills`, which reads its output (see _Knowledge

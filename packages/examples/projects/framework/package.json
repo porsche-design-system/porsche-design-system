@@ -10,6 +10,10 @@
       "types": "./generated/index.ts",
       "default": "./generated/index.ts"
     },
+    "./runtime": {
+      "types": "./generated/runtime.ts",
+      "default": "./generated/runtime.ts"
+    },
     "./previews": {
       "types": "./generated/previews/index.ts",
       "default": "./generated/previews/index.ts"

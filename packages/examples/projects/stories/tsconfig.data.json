@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  // The data only, which `build:examples:projects` checks before the wrappers are built: the stories and the
+  // generator import the React wrapper's types (tsconfig.json, tsconfig.scripts.json).
+  "include": ["lib/meta.ts", "lib/ids.ts", "generated/index.ts"]
+}

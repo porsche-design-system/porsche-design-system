@@ -27,6 +27,10 @@ describe('src/**/meta.ts', () => {
     expect(assertExampleId(id)).toBe(id);
   });
 
+  it.each(examples)('$id has a title', ({ meta }) => {
+    expect(meta.title.trim()).not.toBe('');
+  });
+
   it.each(examples)('$id has a source in every example app', ({ meta }) => {
     const files = sourceFiles(meta.source);
     for (const framework of FRAMEWORKS) {

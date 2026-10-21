@@ -1,3 +1,5 @@
+import type { TagName } from '@porsche-design-system/shared';
+
 /**
  * The types of an example – defined here once, and exported by the package for the storefront, the StackBlitz helper
  * and the knowledge skill: the generated export re-exports them, and its bundled declarations (`dist/examples.d.ts`)
@@ -31,6 +33,25 @@ export type ExampleProject = ExampleMeta & {
 export type Example<Path extends string = string> = ExampleProject & {
   /** `'patterns/header/overlay'` – the folder of its page below `src/`, and of its built page below `/examples/`. */
   path: Path;
+};
+
+/**
+ * An example in the shape every project of `packages/examples` exports, which the catalogue of
+ * `@porsche-design-system/examples` merges: its id (its path), kind, meta, components and project.
+ */
+export type PageExample<Id extends string = string> = {
+  /** `'patterns/header/overlay'` – the folder of its page below `src/`, and of its built page below `/examples/`. */
+  id: Id;
+  kind: 'pattern' | 'template';
+  title: string;
+  /** Plain text – no markup, no links. */
+  description: string;
+  /** The components the page is built from, each by the component documenting it (`getComponents()`). */
+  components: TagName[];
+  /** Path inside the project → content, as StackBlitz opens it. */
+  files: Record<string, string>;
+  /** Where its built page is served, relative to the root of a site: `/examples/patterns/header/overlay/index.html`. */
+  url: string;
 };
 
 const isFilledString = (value: unknown): value is string => typeof value === 'string' && value.trim() !== '';

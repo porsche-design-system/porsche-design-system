@@ -6,6 +6,14 @@
   "scope": "@porsche-design-system",
   "sideEffects": false,
   "exports": {
+    ".": {
+      "types": "./generated/index.ts",
+      "default": "./generated/index.ts"
+    },
+    "./runtime": {
+      "types": "./generated/runtime.ts",
+      "default": "./generated/runtime.ts"
+    },
     "./*.mdx": "./src/*.mdx",
     "./*": {
       "types": "./src/*.ts",
@@ -13,7 +21,12 @@
     }
   },
   "scripts": {
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "npm run clean:build && tsx scripts/build.ts && npm run typecheck:data",
+    "clean:build": "rm -rf ./generated",
+    "typecheck": "npm run typecheck:data && npm run typecheck:self && npm run typecheck:scripts",
+    "typecheck:data": "tsc --noEmit -p tsconfig.data.json",
+    "typecheck:self": "tsc --noEmit -p tsconfig.json",
+    "typecheck:scripts": "tsc --noEmit -p tsconfig.scripts.json",
     "lint": "biome lint"
   },
   "dependencies": {
@@ -24,6 +37,10 @@
   },
   "devDependencies": {
     "@porsche-design-system/components-react": "4.8.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   },
   "volta": {

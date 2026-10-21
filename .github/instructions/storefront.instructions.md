@@ -89,7 +89,8 @@ configurator and examples pages backed by stories in `packages/examples/projects
 ### Story file rules
 
 - The configurator's story is `packages/examples/projects/stories/src/components/{component}/default/story.ts`; every
-  other example has a folder of its own next to it, `{slug}/story.ts` with its description `{slug}/example.mdx`.
+  other example has a folder of its own next to it, `{slug}/story.ts` with its description `{slug}/example.mdx` and its
+  title, the `name` of the example in the meta, in `{slug}/meta.ts` (`{ title }`).
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
 - Export `Story<'p-component'>` objects for all examples that can be rendered through the configurator system.
 - Export `SlotStories<'p-component'>` when configurable slot content is needed.

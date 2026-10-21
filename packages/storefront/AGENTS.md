@@ -176,7 +176,9 @@ configurator and examples pages driven by stories whenever possible. The stories
 - The configurator's story is `packages/examples/projects/stories/src/components/{component}/default/story.ts`; an
   example's story and its description are `story.ts` and `example.mdx` in
   `packages/examples/projects/stories/src/components/{component}/{slug}/`. Import them in the meta from
-  `@porsche-design-system/examples-stories/components/{component}/{slug}/story` (and `…/example.mdx`).
+  `@porsche-design-system/examples-stories/components/{component}/{slug}/story` (and `…/example.mdx`). Its title, the
+  `name` of the example in the meta, also goes into a `meta.ts` next to the story (`{ title }`), which the catalogue of
+  `@porsche-design-system/examples` reads.
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
 - Export `Story<'p-component'>` objects for configurator-ready examples. `Story`, `SlotStories`, `ElementConfig` and the
   accessibility example types come from `@porsche-design-system/story-generator` (in

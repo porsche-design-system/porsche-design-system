@@ -27,7 +27,7 @@ import {
   renderPage,
   resolvePagePath,
 } from '../../../lib/jsx.ts';
-import { assertExampleMeta } from '../../../lib/meta.ts';
+import { assertExampleMeta, type PageExample } from '../../../lib/meta.ts';
 import {
   categories,
   examplesPath,
@@ -232,18 +232,23 @@ describe('inline plugin', () => {
 });
 
 describe('package export', () => {
-  const footer = {
-    path: 'patterns/footer',
+  const footer: PageExample = {
+    id: 'patterns/footer',
+    kind: 'pattern',
     title: 'Footer',
     description: "A footer, 'quoted'.",
+    components: ['p-text'],
     files: { 'index.html': '<html lang="en"></html>\n' },
+    url: '/examples/patterns/footer/index.html',
   };
-  const module = getExportModule({ 'patterns/footer': footer, 'templates/landing-page': { ...footer, path: 'x' } });
+  const module = getExportModule({ 'patterns/footer': footer, 'templates/landing-page': { ...footer, id: 'x' } });
 
   it('should re-export the types of lib/meta.ts, and type every example by its path', () => {
-    expect(module).toContain("export type { Example, ExampleMeta, ExampleProject } from '../lib/meta.ts';");
+    expect(module).toContain(
+      "export type { Example, ExampleMeta, ExampleProject, PageExample } from '../lib/meta.ts';"
+    );
     expect(module).toContain("export type ExamplePath =\n  | 'patterns/footer'\n  | 'templates/landing-page';");
-    expect(module).toContain('export const examples: { readonly [Path in ExamplePath]: Example<Path> } = {');
+    expect(module).toContain('export const pageExamples: { readonly [Path in ExamplePath]: PageExample<Path> } = {');
   });
 
   it('should export the paths the pages and their media are served at', () => {
@@ -252,9 +257,17 @@ describe('package export', () => {
   });
 
   it('should carry every example verbatim', () => {
-    const literal = module.slice(module.indexOf('> } = ') + '> } = '.length, module.lastIndexOf(';'));
+    const start = module.indexOf('> } = ') + '> } = '.length;
+    const literal = module.slice(start, module.indexOf('\n};', start) + 2);
 
     expect(JSON.parse(literal)['patterns/footer']).toEqual(footer);
+  });
+
+  it('should derive the examples by path, with their meta and files only', () => {
+    expect(module).toContain(
+      'Object.values(pageExamples).map(({ id, title, description, files }) => [id, { path: id, title, description, files }])'
+    );
+    expect(module).toContain(') as { readonly [Path in ExamplePath]: Example<Path> };');
   });
 });
 

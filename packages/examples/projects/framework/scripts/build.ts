@@ -3,7 +3,7 @@ import path from 'node:path';
 import { FRAMEWORKS, type Framework } from '@porsche-design-system/shared';
 import { camelCase } from 'change-case';
 import { assertExampleId } from '../lib/ids';
-import type { FrameworkExample, FrameworkExampleMeta } from '../lib/meta';
+import type { FrameworkExample, FrameworkExampleEntry, FrameworkExampleMeta } from '../lib/meta';
 import { exampleAppPaths, sourceFiles, toFrameworkMarkup, toPreview } from '../lib/sources';
 
 /**
@@ -12,6 +12,7 @@ import { exampleAppPaths, sourceFiles, toFrameworkMarkup, toPreview } from '../l
  * - `generated/index.ts`: the examples as data, their code strings for every framework. Imports no wrapper, so the
  *   skills build and anything else that reads the code can load it before the wrappers are built.
  * - `generated/previews/`: the live React preview of every example, a client component each, by id for the Storefront.
+ * - `generated/runtime.ts`: what renders every example in the Storefront by id, its preview and its description.
  */
 
 const projectDir = path.resolve(__dirname, '..');
@@ -29,6 +30,9 @@ const readSources = async (): Promise<Source[]> => {
     metaFiles.map(async (metaFile) => {
       const id = assertExampleId(path.dirname(metaFile).split(path.sep).join('/'));
       const { meta } = (await import(path.join(srcDir, metaFile))) as { meta: FrameworkExampleMeta };
+      if (!meta.title?.trim()) {
+        throw new Error(`[examples-framework] the meta.ts of "${id}" needs a title`);
+      }
       const files = sourceFiles(meta.source);
       for (const framework of FRAMEWORKS) {
         const file = path.join(packagesDir, exampleAppPaths[framework], files[framework]);
@@ -41,6 +45,11 @@ const readSources = async (): Promise<Source[]> => {
       return { id, meta, files };
     })
   );
+};
+
+const readDescription = (id: string): string | undefined => {
+  const file = path.join(srcDir, id, 'example.mdx');
+  return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : undefined;
 };
 
 const readSource = (framework: Framework, file: string): string =>
@@ -81,9 +90,9 @@ const generate = async (): Promise<void> => {
     path.join(generatedDir, 'index.ts'),
     [
       header,
-      "import type { FrameworkExample } from '../lib/meta';",
+      "import type { FrameworkExample, FrameworkExampleEntry } from '../lib/meta';",
       '',
-      "export type { FrameworkExample, FrameworkExampleMeta } from '../lib/meta';",
+      "export type { FrameworkExample, FrameworkExampleEntry, FrameworkExampleMeta } from '../lib/meta';",
       '',
       `export type FrameworkExampleId =\n${examples.map(({ id }) => `  | '${id}'`).join('\n')};`,
       '',
@@ -91,8 +100,24 @@ const generate = async (): Promise<void> => {
         (example, index) =>
           `export const ${exportNames[index]}: FrameworkExample<'${example.id}'> = ${JSON.stringify(example, null, 2)};\n`
       ),
-      `export const frameworkExamples: { readonly [Id in FrameworkExampleId]: FrameworkExample<Id> } = {\n${examples
-        .map(({ id }, index) => `  '${id}': ${exportNames[index]},`)
+      '/**',
+      ' * Every example by id, in the shape every project of `packages/examples` exports and its catalogue merges: what',
+      ' * names it, its description (MDX source), the components it shows and its code. Data only.',
+      ' */',
+      `export const frameworkExamples: { readonly [Id in FrameworkExampleId]: FrameworkExampleEntry<Id> } = {\n${sources
+        .map(({ id, meta }, index) => {
+          const description = readDescription(id);
+          return [
+            `  '${id}': {`,
+            `    id: '${id}',`,
+            "    kind: 'framework',",
+            `    title: ${JSON.stringify(meta.title)},`,
+            ...(description === undefined ? [] : [`    description: ${JSON.stringify(description)},`]),
+            `    components: ${exportNames[index]}.components,`,
+            `    code: ${exportNames[index]}.frameworkMarkup,`,
+            '  },',
+          ].join('\n');
+        })
         .join('\n')}\n};`,
       '',
     ].join('\n')
@@ -118,13 +143,46 @@ const generate = async (): Promise<void> => {
       };`,
       '',
       '/**',
-      ' * The live preview of every framework example that is not `standalone`, a client component each. Import this on the',
-      ' * server only, to render a preview by id: a client module importing it would bundle every preview. Every page whose',
-      ' * server graph imports it loads all of them, which is why an example with a large dependency is `standalone`.',
+      ' * The live preview of every framework example that is not `standalone`, a client component each, for the Storefront',
+      ' * until it reads `runtime.ts` (#4789). Import this on the server only, to render a preview by id: a client module',
+      ' * importing it would bundle every preview. Every page whose server graph imports it loads all of them, which is',
+      ' * why an example with a large dependency is `standalone`.',
       ' */',
       `export const frameworkExamplePreviews: {\n  readonly [Id in Exclude<FrameworkExampleId, StandaloneFrameworkExampleId>]: ComponentType;\n} = {\n${shared
         .map((source) => `  '${source.id}': ${previewName(source)},`)
         .join('\n')}\n};`,
+      '',
+    ].join('\n')
+  );
+
+  const descriptionName = (source: Source): string => `${previewName(source)}Description`;
+  const runtimeFields = (source: Source): string[] => [
+    ...(source.meta.standalone ? [] : [`Preview: ${previewName(source)}`]),
+    ...(readDescription(source.id) === undefined ? [] : [`Description: ${descriptionName(source)}`]),
+  ];
+
+  fs.writeFileSync(
+    path.join(generatedDir, 'runtime.ts'),
+    [
+      header,
+      "import type { FrameworkExampleId } from './index';",
+      ...shared.map((source) => `import ${previewName(source)} from './previews/${previewName(source)}';`),
+      ...sources
+        .filter(({ id }) => readDescription(id) !== undefined)
+        .map((source) => `import ${descriptionName(source)} from '../src/${source.id}/example.mdx';`),
+      '',
+      '/**',
+      ' * What renders every example in the Storefront, by id: its live preview, a client component, and its description,',
+      " * `example.mdx`, for the consumer's MDX loader to compile. Import this on the server only. Every page whose server",
+      ' * graph imports it loads all of the previews, which is why a `standalone` example has none here: its page imports',
+      ' * it by its own entry, `…/previews/<Name>`.',
+      ' */',
+      `export const frameworkExampleRuntime = {\n${sources
+        .map(
+          (source) =>
+            `  '${source.id}': ${runtimeFields(source).length ? `{ ${runtimeFields(source).join(', ')} }` : '{}'},`
+        )
+        .join('\n')}\n} satisfies { readonly [Id in FrameworkExampleId]: object };`,
       '',
     ].join('\n')
   );

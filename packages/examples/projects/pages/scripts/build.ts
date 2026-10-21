@@ -3,16 +3,19 @@ import path from 'node:path';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
 import prettier from 'prettier';
+import { getComponents } from '../lib/components.ts';
 import { extractScripts, formatScriptEntry, getScriptEntry } from '../lib/entries.ts';
-import { type Examples, exportFileName, getExportModule } from '../lib/exports.ts';
+import { exportFileName, getExportModule, type PageExamples } from '../lib/exports.ts';
 import { getPackageJson, getViteConfig, type Versions } from '../lib/generateProject.ts';
 import { type PageModule, pageSuffix, renderPage } from '../lib/jsx.ts';
-import { assertExampleMeta, type Example } from '../lib/meta.ts';
+import { assertExampleMeta, type PageExample } from '../lib/meta.ts';
 import {
   type Category,
   categories,
+  examplesPath,
   getPagePath,
   type PageLocation,
+  type ProjectCategory,
   resolvePageLocation,
   scriptEntryName,
   styleEntryName,
@@ -79,6 +82,9 @@ const assertPageFolder = (pageSourceDir: string, location: PageLocation): void =
   }
 };
 
+/** The kind of example a category holds, as the catalogue of `@porsche-design-system/examples` names it. */
+const kinds: Record<ProjectCategory, PageExample['kind']> = { patterns: 'pattern', templates: 'template' };
+
 /**
  * Builds the project of one page and returns it as the package exports it: its meta and the files of its project.
  *
@@ -87,7 +93,7 @@ const assertPageFolder = (pageSourceDir: string, location: PageLocation): void =
  * next to it, and its own `package.json` and `vite.config.ts`. It is self-contained – nothing is shared between two projects, because each one is handed to
  * StackBlitz on its own.
  */
-const buildPage = async (entry: Category, location: PageLocation, versions: Versions): Promise<Example> => {
+const buildPage = async (entry: Category, location: PageLocation, versions: Versions): Promise<PageExample> => {
   const pageSourceDir = path.join(srcDir, location.category, location.pageDir);
   const projectDir = path.join(distDir, location.category, location.pageDir);
   const relativePath = `${location.category}/${location.pageDir}/index${pageSuffix}`;
@@ -114,7 +120,15 @@ const buildPage = async (entry: Category, location: PageLocation, versions: Vers
     listFiles(projectDir).map((file) => [file, fs.readFileSync(path.join(projectDir, file), 'utf8')])
   );
 
-  return { path: getPagePath(location), ...meta, files };
+  const id = getPagePath(location);
+  return {
+    id,
+    kind: kinds[location.category],
+    ...meta,
+    components: getComponents(html),
+    files,
+    url: `${examplesPath}${id}/index.html`,
+  };
 };
 
 /**
@@ -130,12 +144,12 @@ const build = async (): Promise<void> => {
   fs.rmSync(distDir, { recursive: true, force: true });
 
   const versions = readVersions();
-  const examples: Examples = {};
+  const examples: PageExamples = {};
 
   for (const entry of categories) {
     for (const location of locatePages(entry)) {
       const example = await buildPage(entry, location, versions);
-      examples[example.path] = example;
+      examples[example.id] = example;
     }
   }
 

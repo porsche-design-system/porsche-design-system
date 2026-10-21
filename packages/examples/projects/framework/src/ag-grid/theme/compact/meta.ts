@@ -1,6 +1,7 @@
 import type { FrameworkExampleMeta } from '../../../../lib/meta';
 
 export const meta = {
+  title: 'Compact Theme',
   components: [],
   source: {
     'vanilla-js': 'ag-grid-example-compact-community.html',
