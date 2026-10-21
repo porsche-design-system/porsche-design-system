@@ -112,4 +112,5 @@ export { default as TextareaExample } from './TextareaExample.vue';
 export { default as TextareaExampleControlled } from './TextareaExampleControlled.vue';
 export { default as TextareaExampleControlledModel } from './TextareaExampleControlledModel.vue';
 export { default as TextareaExampleForm } from './TextareaExampleForm.vue';
+export { default as TileExampleVideo } from './TileExampleVideo.vue';
 export { default as ToastExample } from './ToastExample.vue';

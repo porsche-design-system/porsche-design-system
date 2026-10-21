@@ -1,4 +1,5 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { tileExampleVideo } from '@porsche-design-system/shared/examples';
 import AccessibilityOverview from '@/app/(main)/components/tile/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/tile/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/tile/configurator/introduction.mdx';
@@ -25,6 +26,7 @@ import ProductTeaserDescription from '@/app/(main)/components/tile/examples/prod
 import { tileStoryProductTeaser } from '@/app/(main)/components/tile/examples/product-teaser/story';
 import VehicleListingDescription from '@/app/(main)/components/tile/examples/vehicle-listing/example.mdx';
 import { tileStoryVehicleListing } from '@/app/(main)/components/tile/examples/vehicle-listing/story';
+import VideoDescription from '@/app/(main)/components/tile/examples/video/example.mdx';
 import Usage from '@/app/(main)/components/tile/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 
@@ -58,6 +60,12 @@ export const tileMeta = {
       name: 'Image Category',
       description: ImageCategoryDescription,
       story: tileStoryImageCategory,
+    },
+    video: {
+      kind: 'example',
+      name: 'Video',
+      description: VideoDescription,
+      example: tileExampleVideo,
     },
     product: {
       kind: 'story',
