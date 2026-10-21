@@ -1,8 +1,8 @@
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { PartialDocs } from '@/components/partials/PartialDocs';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { PartialDocs } from '@/components/mdx/reference/PartialDocs';
 
 export const metadata = {
-  title: 'Partials: Loader Script - Porsche Design System',
+  title: 'Loader Script - Partials',
   description: 'Learn how to integrate the Porsche Design System loader script into your app.',
 };
 
@@ -25,10 +25,10 @@ An in-depth optimization guide can be found at
 
 ## Supported options
 
-| Option   | Description                                                                                                                                                                                                                                                           | Type                          | Default     |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------- |
-| `prefix` | Prefix will be added to the component names.                                                                                                                                                                                                                          | `string \| string[]`          | `undefined` |
-| `format` | Defines the output format of the partial. By default it returns a html string. For `jsx` it returns a jsx element. For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](/must-know/security/content-security-policy/). | `'html' \| 'jsx' \| 'sha256'` | `'html'`    |
+| Option   | Description                                                                                                                                                                                                                                                          | Type                          | Default     |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------- |
+| `prefix` | Prefix will be added to the component names.                                                                                                                                                                                                                         | `string \| string[]`          | `undefined` |
+| `format` | Defines the output format of the partial. By default it returns a html string. For `jsx` it returns a jsx element. For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](/must-know/security/content-security-policy). | `'html' \| 'jsx' \| 'sha256'` | `'html'`    |
 
 When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project
 included.

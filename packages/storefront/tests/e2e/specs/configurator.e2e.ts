@@ -1,27 +1,21 @@
 import { expect, type Page, test } from '@playwright/test';
-import { FRAMEWORK_TYPES, type Framework } from '@porsche-design-system/shared';
+import { FRAMEWORKS, type Framework, frameworkNameMap } from '@porsche-design-system/shared';
 import { camelCase, pascalCase } from 'change-case';
 
 const selectMarkupFramework = async (page: Page, framework: Framework) => {
-  const buttonFrameworkMap: Record<Framework, string> = {
-    'vanilla-js': 'Vanilla JS',
-    react: 'React',
-    angular: 'Angular',
-    vue: 'Vue',
-  };
   const playground = page.locator('.playground');
   const tabs = playground.locator('p-tabs-bar');
   await expect(playground.locator('p-tabs-bar.framework-select')).toBeVisible();
   // await tabs.evaluate(
-  //   (el, { buttonFrameworkMap, framework }) =>
-  //     ((el as any).activeTabIndex = Object.keys(buttonFrameworkMap).indexOf(framework)),
+  //   (el, { frameworkNameMap, framework }) =>
+  //     ((el as any).activeTabIndex = Object.keys(frameworkNameMap).indexOf(framework)),
   //   {
-  //     buttonFrameworkMap,
+  //     frameworkNameMap,
   //     framework,
   //   }
   // );
-  await playground.getByText(buttonFrameworkMap[framework]).click();
-  await expect(playground.getByRole('tab', { name: buttonFrameworkMap[framework] })).toHaveAttribute(
+  await playground.getByText(frameworkNameMap[framework]).click();
+  await expect(playground.getByRole('tab', { name: frameworkNameMap[framework] })).toHaveAttribute(
     'aria-selected',
     'true'
   );
@@ -280,7 +274,7 @@ test.describe('properties > input number', () => {
 
   // Pagination active-page is required and should not be clearable
   test.describe('> p-pagination', () => {
-    for (const framework of FRAMEWORK_TYPES) {
+    for (const framework of FRAMEWORKS) {
       test(`should reflect selection correctly for ${framework}`, async ({ page }) => {
         const componentTag = getTag(framework as Framework, 'p-pagination');
         await page.goto('/components/pagination/configurator');
@@ -319,7 +313,7 @@ test.describe('properties > input number', () => {
 
   // Textarea max-length is not required and should be clearable
   test.describe('> p-textarea', () => {
-    for (const framework of FRAMEWORK_TYPES) {
+    for (const framework of FRAMEWORKS) {
       test(`should reflect selection correctly for ${framework}`, async ({ page }) => {
         const componentTag = getTag(framework as Framework, 'p-textarea');
         await page.goto('/components/textarea/configurator');
@@ -365,7 +359,7 @@ test.describe('properties > input number', () => {
 
   // Tabs Bar active-tab-index is not required but since its controlled it should not be clearable
   test.describe('> p-tabs-bar', () => {
-    for (const framework of FRAMEWORK_TYPES) {
+    for (const framework of FRAMEWORKS) {
       test(`should reflect selection correctly for ${framework}`, async ({ page }) => {
         const componentTag = getTag(framework as Framework, 'p-tabs-bar');
         await page.goto('/components/tabs-bar/configurator');

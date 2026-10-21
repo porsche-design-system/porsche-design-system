@@ -1,10 +1,9 @@
+import type { ColorScheme } from '@porsche-design-system/shared';
 import { createContext, type JSX, type ReactNode, useContext, useState } from 'react';
 
-export type Theme = 'scheme-light' | 'scheme-dark' | 'scheme-light-dark';
-
 interface ThemeContextValue {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
+  theme: ColorScheme;
+  setTheme: (theme: ColorScheme) => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
@@ -22,7 +21,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
-  const [theme, setTheme] = useState<Theme>('scheme-light-dark');
+  const [theme, setTheme] = useState<ColorScheme>('scheme-light-dark');
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 };

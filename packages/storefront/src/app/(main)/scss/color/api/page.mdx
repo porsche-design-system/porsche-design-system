@@ -1,9 +1,9 @@
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ScssVariablesTable } from '@/components/common/ScssVariablesTable';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { ScssVariablesTable } from '@/components/mdx/reference/ScssVariablesTable';
 import { scssMeta } from '@porsche-design-system/scss';
 
 export const metadata = {
-  title: 'SCSS: Color - Porsche Design System',
+  title: 'Color: API - SCSS',
   description: 'Detailed API reference for the Color style.',
 };
 
@@ -11,20 +11,18 @@ export const metadata = {
 
 <TableOfContents headings={['Background', 'Foreground', 'Semantic', 'A11y']} />
 
-## SCSS Variables
-
-### Background
+## Background
 
 <ScssVariablesTable variables={scssMeta.color.background} showColorSwatch />
 
-### Foreground
+## Foreground
 
 <ScssVariablesTable variables={scssMeta.color.foreground} showColorSwatch />
 
-### Semantic
+## Semantic
 
 <ScssVariablesTable variables={scssMeta.color.semantic} showColorSwatch />
 
-### A11y
+## A11y
 
 <ScssVariablesTable variables={scssMeta.color.a11y} showColorSwatch />

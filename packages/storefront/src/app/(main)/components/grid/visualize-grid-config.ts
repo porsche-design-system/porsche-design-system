@@ -1,6 +1,6 @@
 'use client';
 
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+import type { ElementConfig, HTMLTagOrComponent } from '@porsche-design-system/story-generator';
 
 export const visualizeGridConfig: ElementConfig<HTMLTagOrComponent> = {
   tag: 'div',

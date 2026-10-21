@@ -1,5 +1,5 @@
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
 import {
   colorScssStoryBackgroundColor,
   colorScssStoryBorderColor,
@@ -7,7 +7,7 @@ import {
 } from '@/app/(main)/scss/color/examples/color.stories';
 
 export const metadata = {
-  title: 'SCSS: Color - Porsche Design System',
+  title: 'Color: Examples - SCSS',
   description: 'Learn about the SCSS styles of our design language and how to use them.',
 };
 
@@ -19,8 +19,8 @@ The Porsche Design System provides multiple SCSS Variables for color styles.
 
 The colors use the
 [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) CSS color
-function. To change the theme, use the utility classes `.scheme-light`, `.scheme-dark` or `.scheme-light-dark`. Learn
-more in the [Color Scheme](/scss/introduction#color-scheme) section.
+function. To change the theme, use the utility classes `.scheme-light-dark`, `.scheme-only-light` or
+`.scheme-only-dark`. Learn more in the [Color Scheme](/scss/introduction#color-scheme) section.
 
 Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;`
 

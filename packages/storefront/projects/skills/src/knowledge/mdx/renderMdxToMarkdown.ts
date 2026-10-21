@@ -1,4 +1,4 @@
-import type { Framework as StorefrontFramework } from '@porsche-design-system/shared';
+import type { Framework } from '@porsche-design-system/shared';
 import type {
   Blockquote,
   Heading,
@@ -23,17 +23,6 @@ import { toString as mdastToString } from 'mdast-util-to-string';
 import { gfm } from 'micromark-extension-gfm';
 import { mdxjs } from 'micromark-extension-mdxjs';
 import { escapeCell, markdownTable } from '../../shared/markdown';
-import type { Framework } from '../../shared/skillTree';
-
-/** Maps the skill's `js` identifier to the storefront's `vanilla-js`. */
-const STOREFRONT_FRAMEWORK: Record<Framework, StorefrontFramework> = {
-  js: 'vanilla-js',
-  angular: 'angular',
-  react: 'react',
-  vue: 'vue',
-};
-
-const NOTIFICATION_COMPONENTS = new Set(['Notification', 'FrameworkNotification']);
 
 type MdxJsxElement = MdxJsxFlowElement | MdxJsxTextElement;
 
@@ -55,26 +44,24 @@ const stringAttribute = (node: MdxJsxElement, name: string): string | undefined 
 };
 
 /**
- * Reads literal framework names without evaluating the MDX expression. Invalid input matches no
- * framework.
+ * Reads the literal framework names of a `Notification`'s `frameworks` without evaluating the MDX
+ * expression. Without the attribute it shows for every framework; invalid input matches no framework.
  */
-const showForFrameworks = (node: MdxJsxElement): StorefrontFramework[] => {
-  const expression = attribute(node, 'showForFrameworks')?.value;
+const notificationFrameworks = (node: MdxJsxElement): Framework[] | undefined => {
+  const expression = attribute(node, 'frameworks')?.value;
+  if (expression === undefined) {
+    return undefined;
+  }
   const raw = typeof expression === 'object' && expression ? expression.value : '';
-  return [...raw.matchAll(/'([^']+)'|"([^"]+)"/g)].map((match) => (match[1] ?? match[2]) as StorefrontFramework);
+  return [...raw.matchAll(/'([^']+)'|"([^"]+)"/g)].map((match) => (match[1] ?? match[2]) as Framework);
 };
-
-const toLink = (node: MdxJsxElement, framework: Framework): Link => ({
-  type: 'link',
-  url: stringAttribute(node, 'href') ?? '',
-  children: transformChildren(node, framework) as Link['children'],
-});
 
 /**
  * Converts notifications to blockquotes and drops framework-gated content from other variants.
  */
 const toNotification = (node: MdxJsxElement, framework: Framework): RootContent[] => {
-  if (node.name === 'FrameworkNotification' && !showForFrameworks(node).includes(STOREFRONT_FRAMEWORK[framework])) {
+  const frameworks = notificationFrameworks(node);
+  if (frameworks && !frameworks.includes(framework)) {
     return [];
   }
 
@@ -184,12 +171,8 @@ const transformJsxElement = (node: MdxJsxElement, framework: Framework): RootCon
   if (name === null) {
     return transformChildren(node, framework);
   }
-  if (NOTIFICATION_COMPONENTS.has(name)) {
+  if (name === 'Notification') {
     return toNotification(node, framework);
-  }
-  if (name === 'Link') {
-    const link = toLink(node, framework);
-    return node.type === 'mdxJsxFlowElement' ? [{ type: 'paragraph', children: [link] }] : [link];
   }
   if (isCustomElement(name)) {
     return [];
@@ -364,11 +347,11 @@ const render = (tree: Root, framework: Framework): string => {
  * Renders storefront MDX structurally without executing components. Throws when no meaningful prose
  * remains; callers with a designed fallback use {@link tryRenderMdxToMarkdown}.
  *
- * @param framework the tree being generated; gates `FrameworkNotification` to the matching content.
+ * @param framework the tree being generated; gates a `Notification` with `frameworks` to the matching content.
  * @param label optional source identifier (e.g. `p-button › usage`) used to give a failure an
  *   actionable message.
  */
-export const renderMdxToMarkdown = (tree: Root, framework: Framework = 'js', label?: string): string => {
+export const renderMdxToMarkdown = (tree: Root, framework: Framework = 'vanilla-js', label?: string): string => {
   const markdown = render(tree, framework);
   if (isMeaningless(markdown)) {
     throw new Error(`MDX rendered to nothing meaningful${label ? ` for ${label}` : ''} — review the source prose.`);
@@ -379,7 +362,7 @@ export const renderMdxToMarkdown = (tree: Root, framework: Framework = 'js', lab
 /**
  * Non-throwing variant for optional prose; returns `null` when no meaningful content remains.
  */
-export const tryRenderMdxToMarkdown = (tree: Root, framework: Framework = 'js'): string | null => {
+export const tryRenderMdxToMarkdown = (tree: Root, framework: Framework = 'vanilla-js'): string | null => {
   const markdown = render(tree, framework);
   return isMeaningless(markdown) ? null : markdown;
 };

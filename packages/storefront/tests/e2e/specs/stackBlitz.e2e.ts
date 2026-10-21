@@ -1,16 +1,7 @@
 import { expect, test } from '@playwright/test';
-import type { Framework } from '@porsche-design-system/shared';
+import { FRAMEWORKS, frameworkNameMap } from '@porsche-design-system/shared';
 
-const buttonFrameworkMap: Record<Framework, string> = {
-  'vanilla-js': 'Vanilla JS',
-  react: 'React',
-  angular: 'Angular',
-  vue: 'Vue',
-};
-
-const frameworks: Framework[] = ['vanilla-js', 'react', 'angular', 'vue'];
-
-for (const framework of frameworks) {
+for (const framework of FRAMEWORKS) {
   // TODO: Think about a way to enable this without making releases impossible
   test.skip(`should have working stackBlitz button for framework: ${framework}`, async ({ browser }) => {
     test.setTimeout(180000);
@@ -24,13 +15,13 @@ for (const framework of frameworks) {
 
     const playground = page.locator('.playground');
     await expect(playground.locator('p-tabs-bar.framework-select')).toBeVisible();
-    await playground.getByText(buttonFrameworkMap[framework]).click();
-    await expect(playground.getByRole('tab', { name: buttonFrameworkMap[framework] })).toHaveAttribute(
+    await playground.getByText(frameworkNameMap[framework]).click();
+    await expect(playground.getByRole('tab', { name: frameworkNameMap[framework] })).toHaveAttribute(
       'aria-selected',
       'true'
     );
 
-    const stackBlitzButton = page.getByText('Open in Stackblitz');
+    const stackBlitzButton = page.getByText('Open in StackBlitz');
     const stackBlitzPagePromise = page.waitForEvent('popup');
 
     await stackBlitzButton.click();
