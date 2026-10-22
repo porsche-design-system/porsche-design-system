@@ -34,14 +34,15 @@ import {
 } from './';
 
 /**
- * Lets the anchor cover its nearest positioned ancestor. Its radius follows a surrounding `p-tile`.
+ * Lets the anchor cover its nearest positioned ancestor. Its radius is set via the given CSS variable, e.g. to the one of
+ * the card it covers, and otherwise follows a surrounding `p-tile`.
  */
-export const getCoverStyles = (): JssStyle => ({
+export const getCoverStyles = (cssVarCoverRadius: string): JssStyle => ({
   content: '""',
   position: 'absolute',
   inset: 0,
   zIndex: 1,
-  borderRadius: ref('--ref-p-tile-radius', '0'),
+  borderRadius: ref(cssVarCoverRadius, ref('--ref-p-tile-radius', '0')),
 });
 
 /**
@@ -106,7 +107,8 @@ export const getLinkButtonStyles = (
   cssVarPaddingBlock: string,
   cssVarGap: string,
   cssVarRadius: string,
-  isCover = false
+  isCover = false,
+  cssVarCoverRadius = ''
 ): Styles => {
   const { textColor, textColorHover, backgroundColor, backgroundColorHover } = getVariantColors(
     variant,
@@ -194,7 +196,7 @@ export const getLinkButtonStyles = (
         (isCover
           ? {
               // the anchor covers its nearest positioned ancestor, which also renders the focus ring around it
-              '&::before': getCoverStyles(),
+              '&::before': getCoverStyles(cssVarCoverRadius),
               '&:focus-visible': { outline: 'none' },
               '&:focus-visible::before': getFocusBaseStyles(),
             }

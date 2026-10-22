@@ -6576,6 +6576,10 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "Overrides the background color of the link in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.",
       },
+      "--p-link-cover-radius": {
+        "defaultValue": "radius of a surrounding p-tile, otherwise 0",
+        "description": "Corner radius of the clickable area and its focus ring when \`cover\` is set, e.g. the radius of the card the link covers. Within a \`p-tile\`, it follows the radius of the Tile.",
+      },
       "--p-link-fg": {
         "defaultValue": "",
         "description": "Overrides the foreground color (label and icon) of the link in every state, including hover. You are responsible for ensuring sufficient contrast and brand compliance.",
@@ -6632,7 +6636,7 @@ exports[`should match snapshot 1`] = `
       "cover": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a \`p-tile\`, which also renders the focus ring around it. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via \`position: relative; z-index: 2\`.",
+        "description": "Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a \`p-tile\`, which also renders the focus ring around it. Its corners follow a surrounding \`p-tile\` or \`--p-link-cover-radius\`. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via \`position: relative; z-index: 2\`.",
         "type": "boolean",
       },
       "download": {

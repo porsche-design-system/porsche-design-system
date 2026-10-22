@@ -1957,7 +1957,7 @@ export namespace Components {
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a `p-tile`, which also renders the focus ring around it. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via `position: relative; z-index: 2`.
+          * Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a `p-tile`, which also renders the focus ring around it. Its corners follow a surrounding `p-tile` or `--p-link-cover-radius`. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via `position: relative; z-index: 2`.
           * @default false
          */
         "cover"?: boolean;
@@ -6438,7 +6438,7 @@ declare namespace LocalJSX {
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a `p-tile`, which also renders the focus ring around it. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via `position: relative; z-index: 2`.
+          * Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a `p-tile`, which also renders the focus ring around it. Its corners follow a surrounding `p-tile` or `--p-link-cover-radius`. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via `position: relative; z-index: 2`.
           * @default false
          */
         "cover"?: boolean;

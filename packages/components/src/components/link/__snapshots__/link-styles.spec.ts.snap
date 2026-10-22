@@ -568,7 +568,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   position: absolute !important;
   inset: 0 !important;
   z-index: 1 !important;
-  border-radius: var(--ref-p-tile-radius,0) !important;
+  border-radius: var(--p-link-cover-radius,var(--ref-p-tile-radius,0)) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -1238,7 +1238,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   position: absolute !important;
   inset: 0 !important;
   z-index: 1 !important;
-  border-radius: var(--ref-p-tile-radius,0) !important;
+  border-radius: var(--p-link-cover-radius,var(--ref-p-tile-radius,0)) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -1388,7 +1388,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   position: absolute;
   inset: 0;
   z-index: 1;
-  border-radius: var(--ref-p-tile-radius,0);
+  border-radius: var(--p-link-cover-radius,var(--ref-p-tile-radius,0));
 }
 .root:focus-visible {
   outline: none;
