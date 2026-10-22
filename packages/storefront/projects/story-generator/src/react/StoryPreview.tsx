@@ -2,7 +2,15 @@
 
 import * as components from '@porsche-design-system/components-react/ssr';
 import { pascalCase } from 'change-case';
-import { createElement, type Dispatch, type ElementType, type ReactNode, type SetStateAction, useState } from 'react';
+import {
+  createElement,
+  type Dispatch,
+  type ElementType,
+  type Key,
+  type ReactNode,
+  type SetStateAction,
+  useState,
+} from 'react';
 import type { ElementConfig, EventConfig, HTMLTagOrComponent } from '../element';
 import type { Story, StoryState } from '../story';
 
@@ -33,9 +41,31 @@ const createEventHandler =
     }));
   };
 
+type Configs = (string | ElementConfig<HTMLTagOrComponent> | undefined)[];
+
+/**
+ * Keys siblings by tag, slot and occurrence instead of index, so toggling a slot does not make React reuse an
+ * element of another slot, which would e.g. set `slot` to `"undefined"` on a custom element.
+ */
+const getElementKeys = (configs: Configs): string[] => {
+  const occurrences = new Map<string, number>();
+  return configs.map((config, index) => {
+    if (!config || typeof config === 'string') return `${index}`;
+    const id = `${config.tag}[${(config.properties as { slot?: string } | undefined)?.slot ?? ''}]`;
+    const occurrence = occurrences.get(id) ?? 0;
+    occurrences.set(id, occurrence + 1);
+    return `${id}-${occurrence}`;
+  });
+};
+
+const renderElements = (configs: Configs, setState: SetState): ReactNode[] => {
+  const keys = getElementKeys(configs);
+  return configs.map((config, index) => renderElement(config, keys[index], setState));
+};
+
 const renderElement = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
-  key: number,
+  key: Key,
   setState: SetState
 ): ReactNode => {
   if (!config) return null;
@@ -49,7 +79,7 @@ const renderElement = (
   return createElement(
     tag.startsWith('p-') ? getComponent(tag) : tag,
     { key, ...properties, ...eventHandlers },
-    ...children.map((child, index) => renderElement(child, index, setState))
+    ...renderElements(children, setState)
   );
 };
 
@@ -68,5 +98,5 @@ export const StoryPreview = ({ story, state, onStateChange }: StoryPreviewProps)
   const currentState = isControlled ? state : ownState;
   const setState: SetState = isControlled ? (onStateChange ?? (() => {})) : setOwnState;
 
-  return <>{story.generator(currentState).map((config, index) => renderElement(config, index, setState))}</>;
+  return <>{renderElements(story.generator(currentState), setState)}</>;
 };

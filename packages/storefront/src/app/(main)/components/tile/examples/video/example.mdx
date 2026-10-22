@@ -1,0 +1,17 @@
+A video tile links to a category with an autoplaying mood video, e.g. a model range on porsche.com. The video covers the
+whole `background` slot and is muted, looped and played inline. It is purely decorative, so it is hidden from assistive
+technologies via `aria-hidden="true"`, and the `poster` is shown until it plays. The heading, a pause button and an
+icon-only link are placed in the `bottom` slot, which centers them vertically, and `ms-auto` on the pause button pushes
+both controls to the end. `gradient="bottom"` ensures the legibility of the heading on the video, and the `scheme-dark`
+class renders a dark gradient with light content independent of the color scheme of the page.
+
+Moving content that starts automatically and lasts longer than five seconds has to be pausable (WCAG 2.2.2 Pause, Stop,
+Hide). The pause button is an independent action, so it is placed above the covering link via `relative z-2` to stay
+clickable. It hides its label, which is its accessible name, and swaps label and icon between "Pause video" and "Play
+video". Both follow the actual state of the video via its `play` and `pause` events instead of the last click, since the
+autoplay can be prevented: the Tile pauses an autoplaying video in the `background` slot if the user prefers reduced
+motion. A video is paused until it plays, so the button starts in its paused state.
+
+`cover` on the arrow link stretches its clickable area over the Tile, so the whole Tile links to the category, and
+renders the focus indicator around the Tile. Since hovering the Tile hovers the link, the link shows its own hover
+state, and the video zooms in via `hover-effect="zoom"`.

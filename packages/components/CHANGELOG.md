@@ -14,6 +14,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Link`: prop `cover` stretches the clickable area of the link over its nearest positioned ancestor, e.g. a card, so
+  the whole area navigates without a second, hidden link
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+- `Link`: CSS variable `--p-link-cover-radius` sets the corner radius of the clickable area and the focus ring of a link
+  with `cover`, e.g. to match a card built without `p-tile`
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+- `Knowledge Skill`: tile patterns – the use cases of the Tile (model selection and navigation, categories, video,
+  product, vehicle listing, features, call to action and teasers) built with HTML and Tailwind CSS, with their
+  description, the components they use and their complete markup and script
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+
 ## [4.10.0] - 2026-10-22
 
 ## [4.10.0-rc.0] - 2026-10-22

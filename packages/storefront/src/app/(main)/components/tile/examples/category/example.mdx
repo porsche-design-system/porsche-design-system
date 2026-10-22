@@ -1,0 +1,14 @@
+A category tile links to a category of a shop, e.g. vehicle accessories of the Porsche Shop. The heading and an
+icon-only link are placed in the `top` slot, which centers them vertically, and pushed apart via `ms-auto` on the link.
+`[--p-tile-gap-y:var(--spacing-fluid-lg)]` increases the space between the heading and the image.
+
+The cut-out product image is placed in the default slot. `bleed` lets the default slot reach the bottom and side edges
+of the Tile, since only the `top` slot is occupied, and lets the image fill it cover-fit without increasing the height
+of the Tile. `object-top` keeps the upper part of the image visible. The Tile clips the image to its corner radius.
+
+`cover` on the arrow link stretches its clickable area over the Tile, so the whole Tile links to the category, and
+renders the focus indicator around the Tile. The label of the link is its accessible name. Since hovering the Tile
+hovers the link, the link shows its own hover state, and the image zooms in via `hover-effect="zoom"`. The Tile animates
+the zoom and omits it if the user prefers reduced motion. By default, the Tile clips zooming media to its own box, so it
+doesn't overlap adjacent content. The cut-out image starts at the top of its box, which isn't visible on the background
+of the Tile, so `[clip-path:none]` lets it grow beyond its box instead of being clipped at an invisible edge.

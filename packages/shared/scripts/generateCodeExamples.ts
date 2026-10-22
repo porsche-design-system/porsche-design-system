@@ -682,6 +682,20 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-tile',
+    examples: [
+      {
+        name: 'TileExampleVideo',
+        paths: {
+          'vanilla-js': '/tile-example-video.html',
+          angular: '/tile-example-video.component.ts',
+          react: '/TileExampleVideo.tsx',
+          vue: '/TileExampleVideo.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-toast',
     examples: [
       {

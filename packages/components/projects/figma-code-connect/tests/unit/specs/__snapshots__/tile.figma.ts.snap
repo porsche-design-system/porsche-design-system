@@ -1,0 +1,28 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-56
+// source=https://designsystem.porsche.com/v0.0.0/components/tile/api/
+// component=p-tile
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { escapeText } from '../../../figma/helpers/escape';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const background = read.oneOf('background', ['surface', 'canvas', 'frosted', 'none']);
+const gradient = read.oneOf('gradient', ['none', 'top', 'bottom', 'start', 'end', 'block', 'inline', 'all']);
+const aspectRatio = read.oneOf('aspectRatio', ['1/1', '4/3', '3/4', '16/9', '9/16', 'auto']);
+const compact = read.flag('compact');
+const bleed = read.flag('bleed');
+const hoverEffect = read.oneOf('hoverEffect', ['none', 'zoom', 'offset', 'highlight', 'zoom offset', 'zoom highlight', 'offset highlight', 'zoom offset highlight']);
+
+export default {
+  example: figma.code`<p-tile${background ? ` background="${background}"` : ''}${gradient ? ` gradient="${gradient}"` : ''}${aspectRatio ? ` aspect-ratio="${aspectRatio}"` : ''}${compact ? ' compact="true"' : ''}${bleed ? ' bleed="true"' : ''}${hoverEffect ? ` hover-effect="${hoverEffect}"` : ''}>${read.has('slot-top') ? slotted(instance.getSlot('slot-top'), 'slot-top', 'top') : ''}${read.has('slot-bottom') ? slotted(instance.getSlot('slot-bottom'), 'slot-bottom', 'bottom') : ''}${read.has('slot-start') ? slotted(instance.getSlot('slot-start'), 'slot-start', 'start') : ''}${read.has('slot-end') ? slotted(instance.getSlot('slot-end'), 'slot-end', 'end') : ''}${read.has('slot-background') ? slotted(instance.getSlot('slot-background'), 'slot-background', 'background') : ''}${read.has('slot-anchor') ? slotted(instance.getSlot('slot-anchor'), 'slot-anchor', 'anchor') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-tile>`,
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v0.0.0/developing/vanilla-js/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v0.0.0/components/tile/api/',
+  ],
+  id: 'p-tile',
+  metadata: { nestable: true },
+};

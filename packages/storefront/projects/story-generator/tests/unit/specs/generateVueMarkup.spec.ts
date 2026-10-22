@@ -1,6 +1,11 @@
 import type { CSSProperties } from 'react';
 import { generateVueControlledScript, generateVueMarkup, generateVueProperties } from '../../../src/generateVueMarkup';
-import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
+import {
+  buttonTestConfig,
+  carouselTestConfig,
+  flyoutTestConfig,
+  sharedStateTestConfig,
+} from '../data/generator.testdata';
 
 describe('generateVueMarkup()', () => {
   it('should generate correct Vue markup for button', () => {
@@ -13,6 +18,10 @@ describe('generateVueMarkup()', () => {
   });
   it('should generate correct Vue markup for carousel', () => {
     const output = generateVueMarkup(carouselTestConfig, {});
+    expect(output).toMatchSnapshot();
+  });
+  it('should generate Vue markup only once for elements sharing their state', () => {
+    const output = generateVueMarkup(sharedStateTestConfig, { properties: { open: false } });
     expect(output).toMatchSnapshot();
   });
 });

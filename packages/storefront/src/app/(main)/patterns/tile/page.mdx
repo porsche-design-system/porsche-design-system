@@ -1,0 +1,92 @@
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+
+export const metadata = {
+  title: 'Tile - Patterns',
+  description: 'Learn how to build tiles for Porsche web applications with HTML and Tailwind CSS.',
+};
+
+# Tile
+
+<TableOfContents
+  headings={[
+    'Model Selection',
+    'Model Navigation',
+    'Category',
+    'Image Category',
+    'Video',
+    'Product',
+    'Vehicle Listing',
+    'Feature',
+    'Feature Highlight',
+    'Call to Action',
+    'Model Teaser',
+    'Product Teaser',
+  ]}
+/>
+
+A tile groups the content of a single item – a model, a category, a product or a feature – in a rounded area that is
+often clickable as a whole. These patterns show the use cases of the [Tile](/components/tile/examples) component built
+with plain HTML and Tailwind CSS instead, for layouts the component doesn't cover or setups without it. The content
+still uses the components of the Porsche Design System.
+
+The patterns share a few techniques. A clickable tile is the positioned ancestor (`relative`) of its link: either a
+`p-link` with `cover` stretches its clickable area over the tile and draws the focus ring around it, with the corners
+set via `[--p-link-cover-radius:var(--radius-3xl)]`, or an anchor of its own spans the tile via `absolute inset-0`, with
+its label as screen reader text. Independent actions are placed above the link via `relative z-2`. Hover effects are
+`group-hover:` variants of the tile, wrapped in `motion-safe:` to respect the reduced motion preference of the user.
+Media zooming on hover is clipped by a wrapper with `overflow-clip` rather than by a clickable tile itself, which would
+clip the focus ring of its link as well. Gradients such as `bg-fade-to-t` ensure the legibility of text on images.
+
+The page follows the color scheme of the user via `scheme-light-dark`, and so do most tiles: their photos fill their
+area and their cut-outs have a transparent background, so they work on a light and a dark surface alike. Only where the
+content asks for a fixed scheme, the tile sets it: `scheme-only-dark` for light content on a gradient, a background
+image or a brand color, and `scheme-only-light` for the category, whose dark vehicle would vanish on a dark surface.
+
+## Model Selection
+
+<ExampleViewer example="patterns/tile/model-selection" />
+
+## Model Navigation
+
+<ExampleViewer example="patterns/tile/model-navigation" />
+
+## Category
+
+<ExampleViewer example="patterns/tile/category" />
+
+## Image Category
+
+<ExampleViewer example="patterns/tile/image-category" />
+
+## Video
+
+<ExampleViewer example="patterns/tile/video" />
+
+## Product
+
+<ExampleViewer example="patterns/tile/product" />
+
+## Vehicle Listing
+
+<ExampleViewer example="patterns/tile/vehicle-listing" />
+
+## Feature
+
+<ExampleViewer example="patterns/tile/feature" />
+
+## Feature Highlight
+
+<ExampleViewer example="patterns/tile/feature-highlight" />
+
+## Call to Action
+
+<ExampleViewer example="patterns/tile/call-to-action" />
+
+## Model Teaser
+
+<ExampleViewer example="patterns/tile/model-teaser" />
+
+## Product Teaser
+
+<ExampleViewer example="patterns/tile/product-teaser" />

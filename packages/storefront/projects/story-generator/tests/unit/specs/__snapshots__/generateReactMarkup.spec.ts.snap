@@ -1,5 +1,35 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`generateReactMarkup() > should generate React markup only once for elements sharing their state 1`] = `
+{
+  "eventHandlers": "  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
+    setOpen(e.detail.open);
+  }",
+  "imports": "
+import { useState } from 'react';
+import { PAccordion, PText, type AccordionUpdateEventDetail } from '@porsche-design-system/components-react';",
+  "markup": "      <div>
+        <PAccordion open={open} onUpdate={onUpdate}>
+          <span slot="summary">
+            Some summary
+          </span>
+          <PText>
+            Some details
+          </PText>
+        </PAccordion>
+        <PAccordion open={open} onUpdate={onUpdate}>
+          <span slot="summary">
+            Some summary
+          </span>
+          <PText>
+            Some details
+          </PText>
+        </PAccordion>
+      </div>",
+  "states": "  const [open, setOpen] = useState(false);",
+}
+`;
+
 exports[`generateReactMarkup() > should generate correct React markup for button 1`] = `
 {
   "eventHandlers": "  const onClick = () => {

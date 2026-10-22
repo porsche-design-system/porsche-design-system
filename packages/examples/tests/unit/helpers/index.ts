@@ -7,6 +7,18 @@ import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.t
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
 import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-market-switch/index.page.tsx';
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
+import TileCallToActionPage from '../../../src/patterns/tile/call-to-action/index.page.tsx';
+import TileCategoryPage from '../../../src/patterns/tile/category/index.page.tsx';
+import TileFeaturePage from '../../../src/patterns/tile/feature/index.page.tsx';
+import TileFeatureHighlightPage from '../../../src/patterns/tile/feature-highlight/index.page.tsx';
+import TileImageCategoryPage from '../../../src/patterns/tile/image-category/index.page.tsx';
+import TileModelNavigationPage from '../../../src/patterns/tile/model-navigation/index.page.tsx';
+import TileModelSelectionPage from '../../../src/patterns/tile/model-selection/index.page.tsx';
+import TileModelTeaserPage from '../../../src/patterns/tile/model-teaser/index.page.tsx';
+import TileProductPage from '../../../src/patterns/tile/product/index.page.tsx';
+import TileProductTeaserPage from '../../../src/patterns/tile/product-teaser/index.page.tsx';
+import TileVehicleListingPage from '../../../src/patterns/tile/vehicle-listing/index.page.tsx';
+import TileVideoPage from '../../../src/patterns/tile/video/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 
@@ -48,6 +60,21 @@ export const patternPages = [
   ['patterns/popover/feature-tour', PopoverFeatureTourPage],
   ['patterns/feedback/inline', FeedbackInlinePage],
   ['patterns/feedback/dialog', FeedbackDialogPage],
+  ['patterns/tile/model-selection', TileModelSelectionPage],
+  ['patterns/tile/model-navigation', TileModelNavigationPage],
+  ['patterns/tile/category', TileCategoryPage],
+  ['patterns/tile/image-category', TileImageCategoryPage],
+  ['patterns/tile/video', TileVideoPage],
+  ['patterns/tile/product', TileProductPage],
+  ['patterns/tile/vehicle-listing', TileVehicleListingPage],
+  ['patterns/tile/feature', TileFeaturePage],
+  ['patterns/tile/feature-highlight', TileFeatureHighlightPage],
+  ['patterns/tile/call-to-action', TileCallToActionPage],
+  ['patterns/tile/model-teaser', TileModelTeaserPage],
+  ['patterns/tile/product-teaser', TileProductTeaserPage],
 ] as const;
+
+/** The tile patterns – one use case of a tile each, built with HTML and Tailwind CSS instead of `p-tile`. */
+export const tilePages = patternPages.filter(([path]) => path.startsWith('patterns/tile/'));
 
 export const examplePages = [...templatePages, ...patternPages];

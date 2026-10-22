@@ -561,6 +561,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.TextareaExampleFormPage />,
   },
   {
+    name: 'Tile Example Video',
+    path: '/tile-example-video',
+    element: <fromExamples.TileExampleVideoPage />,
+  },
+  {
     name: 'Toast Example',
     path: '/toast-example',
     element: <fromExamples.ToastExamplePage />,

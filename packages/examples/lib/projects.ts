@@ -24,20 +24,23 @@
  *
  * `drilldown` covers its item and link chunks, `select` covers its options and `segmented-control` its items; the
  * icons of the header come with `button-pure`. A `popover` and the `sheet` it turns into below `s` are separate
- * chunks, as is the `tag` used as a counter and the `modal` the feedback pattern asks in. Preloading is an
- * optimisation, so a missing entry costs a round trip, not correctness – but keep the list in sync with the `p-*`
- * elements the pages actually render.
+ * chunks, as is the `tag` used as a counter and the `modal` the feedback pattern asks in. The tile patterns add the
+ * `accordion`, `divider` and `model-signature` they are composed of. Preloading is an optimisation, so a missing entry
+ * costs a round trip, not correctness – but keep the list in sync with the `p-*` elements the pages actually render.
  */
 export const patternComponents = [
+  'accordion',
   'button',
   'button-pure',
   'crest',
+  'divider',
   'drilldown',
   'flag',
   'heading',
   'link',
   'link-pure',
   'modal',
+  'model-signature',
   'optgroup',
   'popover',
   'segmented-control',
@@ -58,11 +61,9 @@ export const patternComponents = [
  */
 export const templateComponents = [
   ...patternComponents,
-  'accordion',
   'canvas',
   'carousel',
   'checkbox',
-  'divider',
   'input-search',
   'link-tile',
   'table',

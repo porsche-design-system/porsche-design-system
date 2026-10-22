@@ -1,0 +1,44 @@
+<p-tile class="scheme-dark" gradient="bottom" hover-effect="zoom">
+  <video
+    slot="background"
+    src="http://localhost:3002/mood-porsche-gts.mp4"
+    poster="http://localhost:3002/mood-porsche-gts.webp"
+    autoplay
+    loop
+    muted
+    playsinline
+    aria-hidden="true"
+  ></video>
+  <p-heading slot="bottom" tag="h3" size="md" weight="semibold">GTS models</p-heading>
+  <p-button
+    slot="bottom"
+    class="ms-auto relative z-2"
+    type="button"
+    variant="secondary"
+    icon="play"
+    hide-label="true"
+    compact="true"
+  >
+    Play video
+  </p-button>
+  <p-link slot="bottom" variant="secondary" icon="arrow-right" hide-label="true" compact="true" cover="true">
+    <a href="#">GTS models</a>
+  </p-link>
+</p-tile>
+
+<script>
+  const video = document.querySelector('p-tile video');
+  const button = document.querySelector('p-tile p-button');
+
+  // follows the actual state of the video, since its autoplay can be prevented, e.g. by the tile if the user prefers
+  // reduced motion
+  const updateButton = () => {
+    button.icon = video.paused ? 'play' : 'pause';
+    button.textContent = video.paused ? 'Play video' : 'Pause video';
+  };
+
+  video.addEventListener('play', updateButton);
+  video.addEventListener('pause', updateButton);
+  button.addEventListener('click', () => (video.paused ? video.play() : video.pause()));
+  updateButton();
+</script>

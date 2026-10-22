@@ -672,6 +672,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.TextareaExampleReactiveFormComponent,
   },
   {
+    name: 'Tile Example Video',
+    path: 'tile-example-video',
+    component: fromExamples.TileExampleVideoComponent,
+  },
+  {
     name: 'Toast Example',
     path: 'toast-example',
     component: fromExamples.ToastExampleComponent,

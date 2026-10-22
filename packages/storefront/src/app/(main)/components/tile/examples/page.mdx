@@ -1,0 +1,118 @@
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
+import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
+import { tileMeta } from '@/app/(main)/components/tile/tile.meta';
+
+export const metadata = {
+  title: 'Tile: Examples - Components',
+  description: 'Discover detailed examples and insights of the Tile component.',
+};
+
+# Tile <ComponentStatus tagName="p-tile"></ComponentStatus>
+
+The examples are structured by use case. Clickable use cases with a visible link set `cover` on it, which stretches the
+clickable area of the `p-link` over the Tile and renders the focus indicator around the Tile. Use cases without a
+visible link use the `anchor` slot instead, which covers the whole Tile with a visually hidden link and makes all other
+content click-through. Independent interactive elements are placed above a covering link via `relative z-2`, or opt in
+via `pointer-events: auto` when the `anchor` slot is used. Use cases with multiple independent actions or none at all
+use neither.
+
+The Tile has no hover effect by default, so each clickable use case shows how to tailor it to its content.
+`hover-effect` applies effects while the Tile is hovered and is intended for clickable Tiles: `zoom` and `offset` zoom
+in on or move the media, `highlight` changes the background. They can be combined, separated by a space. For other
+triggers or values, set `--p-tile-media-scale`, `--p-tile-media-offset` or `--p-tile-bg` instead. The Tile animates
+these changes and omits the movement of the media if the user prefers reduced motion. Other effects are wrapped in
+`motion-safe:` to respect this preference. Hover effects are a visual enhancement only, keyboard users get the focus
+indicator of the link.
+
+{/* TODO: add further use cases to `tileMeta.examples` */}
+
+<TableOfContents
+  headings={[
+    tileMeta.examples.modelSelection.name,
+    tileMeta.examples.modelNavigation.name,
+    tileMeta.examples.category.name,
+    tileMeta.examples.imageCategory.name,
+    tileMeta.examples.video.name,
+    tileMeta.examples.product.name,
+    tileMeta.examples.vehicleListing.name,
+    tileMeta.examples.feature.name,
+    tileMeta.examples.featureHighlight.name,
+    tileMeta.examples.callToAction.name,
+    tileMeta.examples.modelTeaser.name,
+    tileMeta.examples.productTeaser.name,
+  ]}
+/>
+
+## {tileMeta.examples.modelSelection.name}
+
+<tileMeta.examples.modelSelection.description />
+
+<ComponentStory story={tileMeta.examples.modelSelection.story} backgroundColor="surface" />
+
+## {tileMeta.examples.modelNavigation.name}
+
+<tileMeta.examples.modelNavigation.description />
+
+<ComponentStory story={tileMeta.examples.modelNavigation.story} backgroundColor="surface" />
+
+## {tileMeta.examples.category.name}
+
+<tileMeta.examples.category.description />
+
+<ComponentStory story={tileMeta.examples.category.story} />
+
+## {tileMeta.examples.imageCategory.name}
+
+<tileMeta.examples.imageCategory.description />
+
+<ComponentStory story={tileMeta.examples.imageCategory.story} />
+
+## {tileMeta.examples.video.name}
+
+<tileMeta.examples.video.description />
+
+<ComponentExample codeSample={tileMeta.examples.video.example} previewMaxWidth="560px" />
+
+## {tileMeta.examples.product.name}
+
+<tileMeta.examples.product.description />
+
+<ComponentStory story={tileMeta.examples.product.story} />
+
+## {tileMeta.examples.vehicleListing.name}
+
+<tileMeta.examples.vehicleListing.description />
+
+<ComponentStory story={tileMeta.examples.vehicleListing.story} backgroundColor="surface" />
+
+## {tileMeta.examples.feature.name}
+
+<tileMeta.examples.feature.description />
+
+<ComponentStory story={tileMeta.examples.feature.story} />
+
+## {tileMeta.examples.featureHighlight.name}
+
+<tileMeta.examples.featureHighlight.description />
+
+<ComponentStory story={tileMeta.examples.featureHighlight.story} />
+
+## {tileMeta.examples.callToAction.name}
+
+<tileMeta.examples.callToAction.description />
+
+<ComponentStory story={tileMeta.examples.callToAction.story} />
+
+## {tileMeta.examples.modelTeaser.name}
+
+<tileMeta.examples.modelTeaser.description />
+
+<ComponentStory story={tileMeta.examples.modelTeaser.story} />
+
+## {tileMeta.examples.productTeaser.name}
+
+<tileMeta.examples.productTeaser.description />
+
+<ComponentStory story={tileMeta.examples.productTeaser.story} />

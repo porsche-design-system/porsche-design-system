@@ -30,6 +30,7 @@ import {
   flattenNavItems,
   getOpeningTag,
   patternPages,
+  tilePages,
 } from '../helpers/index.ts';
 
 /**
@@ -307,6 +308,11 @@ describe('PatternPage', () => {
     const html = renderPatternPage({ afterMain: <footer>Pattern</footer> });
 
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
+  });
+
+  it('should put the classes it is given on the document, and none otherwise', () => {
+    expect(renderPatternPage({ class: 'scheme-light-dark' })).toContain('<html lang="en" class="scheme-light-dark">');
+    expect(renderPatternPage()).toContain('<html lang="en">');
   });
 
   it('should leave the main landmark to the page', () => {
@@ -632,5 +638,60 @@ describe('feedback patterns', () => {
     expect(html).toContain('id="feedback-close"');
     // Like every dialog, it is the last element of the body rather than part of the content it belongs to.
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<p-modal'));
+  });
+});
+
+describe.each(tilePages)('%s tile pattern', (name, Page) => {
+  /** `cover` of `p-link`, a boolean attribute – the formatted markup puts it on a line of its own. */
+  const hasCoveringLink = (html: string): boolean => /<p-link[^>]*\scover[\s>]/.test(html);
+
+  it('should build the tile with HTML and Tailwind CSS instead of the component', async () => {
+    expect(await renderPage(Page)).not.toContain('<p-tile');
+  });
+
+  it('should show the tile on its own, below no first level heading', async () => {
+    const html = await renderPage(Page);
+
+    // The tile is content of a page rather than a page, so like the footer pattern it brings no heading of its own
+    // above it – a heading in the tile has the second level it has in a section of a real page.
+    expect(countFirstLevelHeadings(html)).toBe(0);
+    expect(html).not.toMatch(/<(p-heading tag="|)h[13-6][\s>"]/);
+  });
+
+  it('should give the focus ring of a covering link the corners of the tile', async () => {
+    const html = await renderPage(Page);
+
+    // Only a surrounding `p-tile` gives a covering `p-link` its corner radius; without the component, the tile sets
+    // `--p-link-cover-radius` – otherwise the ring is drawn with square corners around a rounded tile.
+    expect(html.includes('[--p-link-cover-radius:var(--radius-3xl)]')).toBe(hasCoveringLink(html));
+  });
+
+  it('should let the page follow the color scheme of the user and fix the one of the tile only where needed', async () => {
+    const html = await renderPage(Page);
+    const fixedSchemes = html.match(/\bscheme-only-(light|dark)\b/g) ?? [];
+    const tileClass = html.match(/class="([^"]*\bscheme-only-[^"]*)"/)?.[1] ?? '';
+    const isOnDarkBackground = /bg-fade-to-/.test(html) || /\bbg-\[#/.test(tileClass);
+
+    // Light content on a gradient, a background or a brand color needs the dark scheme, and the dark vehicle of the
+    // category would vanish on a dark surface – every other tile works in both schemes and follows the page.
+    expect(html).toContain('<html lang="en" class="scheme-light-dark">');
+    if (isOnDarkBackground) {
+      expect(fixedSchemes).toEqual(['scheme-only-dark']);
+    } else if (name === 'patterns/tile/category') {
+      expect(fixedSchemes).toEqual(['scheme-only-light']);
+    } else {
+      expect(fixedSchemes).toEqual([]);
+    }
+  });
+
+  it('should make the tile clickable through exactly one link, named by its text', async () => {
+    const html = await renderPage(Page);
+    const anchors =
+      html.match(/<a href="#" class="absolute inset-0 z-1[^"]*">\s*<span class="sr-only">[^<]+<\/span>/g) ?? [];
+    const isClickable = !['patterns/tile/feature', 'patterns/tile/feature-highlight'].includes(name);
+
+    // Either a `p-link` with `cover` stretches its clickable area over the tile, or an anchor of its own spans it, with
+    // visually hidden text as its accessible name – the feature tiles aren't clickable as a whole and have neither.
+    expect(Number(hasCoveringLink(html)) + anchors.length).toBe(Number(isClickable));
   });
 });

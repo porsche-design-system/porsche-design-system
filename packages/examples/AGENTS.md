@@ -124,6 +124,9 @@ src/
 │   ├── header/overlay/           # Header in its `overlay` variant
 │   ├── header/stacked/           # Header in its `stacked` variant
 │   ├── footer/                   # Footer below the content
+│   ├── tile/                     # index.page.tsx each – the use cases of `p-tile`, built without it
+│   │   ├── model-selection/      # … one folder per use case: anchor or covering `p-link`, hover via `group-hover:`
+│   │   └── …                     # category, video, product, …; page `scheme-light-dark`, tile fixed only if needed
 │   ├── popover/                  # index.page.tsx each – the behaviour is per example
 │   │   ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
 │   │   ├── priority-navigation/  # entries that no longer fit collapse into a popover
@@ -258,7 +261,8 @@ schemes – in its initial state and in every state the page reaches through int
 - **Nothing is scoped or disabled in the fixture.** The component suites of `packages/components-js` switch off the
   rules that expect a page-level `main` and an `h1`, because they render one component in isolation. An example _is_ a
   whole page, so those rules are exactly the ones worth running. A rule that genuinely does not apply is disabled **per
-  page** with a reason – today only `page-has-heading-one`, for the footer pattern, which is a section and not a page.
+  page** with a reason – today only `page-has-heading-one`, for the footer and the tile patterns, which show a section
+  or an element and not a page.
 - Like the VRT it runs against the **built** site, sharing the web servers in
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts). WebKit is scanned as well as chromium: axe reads
   the styles and names the engine computes, and an iPhone only ever runs WebKit.
@@ -540,8 +544,9 @@ project with it (`npm run test:unit:skills`).
 1. Create `src/patterns/<name>/index.page.tsx`.
 2. Export its `meta`, as for a template.
 3. Default-export a component that renders `<PatternPage meta={meta}>` with the section itself as `beforeMain` (headers)
-   or `afterMain` (footers). The page brings its own `<main id="main">` as `children`; the layout adds nothing around
-   it, and the build links the page's `main.js`.
+   or `afterMain` (footers). `class` puts classes on `<html>`, e.g. `scheme-light-dark` for a page following the color
+   scheme of the user, as the tile patterns do. The page brings its own `<main id="main">` as `children`; the layout
+   adds nothing around it, and the build links the page's `main.js`.
 4. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
 5. Wire it up as described in _Wiring up a new page_. The dev server lists it on its next start – pages are found by
@@ -578,14 +583,17 @@ hand, and nothing fails when one of the first two is forgotten:
 Every example ships a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item only and
 visible `:focus-visible` outlines on every interactive element no PDS component styles (the Tailwind
 `focus-visible:outline outline-focus` utilities). High Contrast Mode is left to the PDS components – there is no
-`forced-colors` block of our own – and captured in both schemes by the VRT. Templates additionally carry the `header`
-and `footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets
-all of them from the component and therefore renders none itself. These demos are documentation, so they have to be
-correct by example — keep the baseline when adding examples. The unit tests and the a11y suite assert it for every page.
+`forced-colors` block of our own, only a `forced-colors:` variant where a custom control would lose its state, like the
+color swatches of the tile product pattern – and captured in both schemes by the VRT. Templates additionally carry the
+`header` and `footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on
+`p-canvas` gets all of them from the component and therefore renders none itself. These demos are documentation, so they
+have to be correct by example — keep the baseline when adding examples. The unit tests and the a11y suite assert it for
+every page.
 
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
 heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is
-empty and carries no spacing, so the footer is seen on its own instead of below a placeholder heading. The shared test
-therefore asserts _at most_ one first level heading per example, and the per-pattern suites pin down which of the two a
-page is — do not "fix" a missing heading by adding one back to a pattern that deliberately shows nothing above its
-section.
+empty and carries no spacing, so the footer is seen on its own instead of below a placeholder heading. The tile patterns
+have none either: a tile is shown on its own, and its heading has the second level it has in a section of a real page.
+The shared test therefore asserts _at most_ one first level heading per example, and the per-pattern suites pin down
+which of the two a page is — do not "fix" a missing heading by adding one back to a pattern that deliberately shows
+nothing above its section.

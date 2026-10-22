@@ -530,6 +530,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
 {
   "aria": "aria",
   "compact": "breakpoint",
+  "cover": "boolean",
   "download": "string",
   "hideLabel": "breakpoint",
   "href": "string",
@@ -934,6 +935,17 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "state": "oneOf",
   "value": "oneOf",
   "wrap": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-tile > propTypes with ValidatorFunctions 1`] = `
+{
+  "aspectRatio": "breakpoint",
+  "background": "oneOf",
+  "bleed": "breakpoint",
+  "compact": "breakpoint",
+  "gradient": "breakpoint",
+  "hoverEffect": "oneOf",
 }
 `;
 

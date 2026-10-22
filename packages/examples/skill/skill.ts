@@ -173,11 +173,11 @@ const title = 'Patterns and templates';
 const intro =
   'Patterns and templates are curated use cases composed of PDS components, each with a defined layout, styling and ' +
   'behaviour – the way the Porsche Design System puts its components together for a recurring task. Patterns ' +
-  'cover a single section of a page – a header, a footer, a popover flow, a feedback form – shown in the place it ' +
-  'occupies on a real page; templates cover a whole page. They are written in vanilla HTML and JavaScript with the ' +
-  'PDS web components and the PDS Tailwind CSS theme. Whatever the framework of a project, they are the reference ' +
-  'for how such a pattern is meant to be built – the components, their props, the layout, the styling and the ' +
-  'behaviour they show – and only their syntax has to be converted to the framework.';
+  'cover a single section of a page – a header, a footer, a tile, a popover flow, a feedback form – shown in the ' +
+  'place it occupies on a real page; templates cover a whole page. They are written in vanilla HTML and JavaScript ' +
+  'with the PDS web components and the PDS Tailwind CSS theme. Whatever the framework of a project, they are the ' +
+  'reference for how such a pattern is meant to be built – the components, their props, the layout, the styling and ' +
+  'the behaviour they show – and only their syntax has to be converted to the framework.';
 
 /** The catalog, and what every example shares. What they are is the intro, rendered into SKILL.md rather than here. */
 const renderIndex = (): string => {
@@ -218,7 +218,7 @@ export const examplesSkill: PackageSkill = {
   title,
   description:
     'Curated use cases composed of PDS components with a defined layout and styling – page sections (patterns) ' +
-    'and whole pages (templates) to start from when building a header, footer, popover flow, feedback form, ' +
+    'and whole pages (templates) to start from when building a header, footer, tile, popover flow, feedback form, ' +
     'landing page or admin panel.',
   intro,
   getContent: renderIndex,

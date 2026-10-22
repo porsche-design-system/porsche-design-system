@@ -1,6 +1,6 @@
 import { radiusFull, radiusLg, radiusXl, ref } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, addImportantToRule, getFocusBaseStyles } from '../../styles';
-import { getLinkButtonStyles } from '../../styles/link-button-styles';
+import { getCoverStyles, getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { buildResponsiveBooleanStyles, getCss, mergeDeep } from '../../utils';
 import type { LinkVariant } from './link-utils';
@@ -37,13 +37,19 @@ const cssVarGap = '--p-link-gap';
  */
 const cssVarRadius = '--p-link-radius';
 
+/**
+ * @css-variable {"name": "--p-link-cover-radius", "description": "Corner radius of the clickable area and its focus ring when `cover` is set, e.g. the radius of the card the link covers. Within a `p-tile`, it follows the radius of the Tile.", "defaultValue": "radius of a surrounding p-tile, otherwise 0"}
+ */
+const cssVarCoverRadius = '--p-link-cover-radius';
+
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasSlottedAnchor: boolean,
-  isCompact: BreakpointCustomizable<boolean>
+  isCompact: BreakpointCustomizable<boolean>,
+  isCover = false
 ): string => {
   return getCss(
     mergeDeep(
@@ -61,7 +67,9 @@ export const getComponentCss = (
         cssVarPaddingInline,
         cssVarPaddingBlock,
         cssVarGap,
-        cssVarRadius
+        cssVarRadius,
+        isCover,
+        cssVarCoverRadius
       ),
       {
         label: {
@@ -74,21 +82,23 @@ export const getComponentCss = (
             '&(a)': {
               all: 'unset',
             },
-            '&(a)::before': {
-              content: '""',
-              position: 'fixed',
-              inset: 0,
-              ...mergeDeep(
-                buildResponsiveBooleanStyles(isCompact, (compactValue: boolean) => ({
-                  borderRadius: ref(cssVarRadius, compactValue ? ref(radiusLg) : ref(radiusXl)),
-                })),
-                buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
-                  ...(hideLabelValue && {
-                    borderRadius: ref(cssVarRadius, ref(radiusFull)),
-                  }),
-                }))
-              ),
-            },
+            '&(a)::before': isCover
+              ? getCoverStyles(cssVarCoverRadius)
+              : {
+                  content: '""',
+                  position: 'fixed',
+                  inset: 0,
+                  ...mergeDeep(
+                    buildResponsiveBooleanStyles(isCompact, (compactValue: boolean) => ({
+                      borderRadius: ref(cssVarRadius, compactValue ? ref(radiusLg) : ref(radiusXl)),
+                    })),
+                    buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
+                      ...(hideLabelValue && {
+                        borderRadius: ref(cssVarRadius, ref(radiusFull)),
+                      }),
+                    }))
+                  ),
+                },
             '&(a:focus-visible)::before': getFocusBaseStyles(),
           },
         }),
