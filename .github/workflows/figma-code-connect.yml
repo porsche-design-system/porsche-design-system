@@ -41,7 +41,7 @@ jobs:
   # pull requests, so the token reaches neither. Outside the publish's concurrency group, there, pending runs cancel
   # each other.
   dry-run:
-    name: 'Dry run'
+    name: 'Dry Run'
     if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -112,7 +112,7 @@ jobs:
   # reaches design within the week. Never for main: a line design acted on before the release would drop a renamed or
   # deleted prop from the released records until that release.
   design-lines:
-    name: 'Pull Figma, generate, notify design'
+    name: 'Design Lines'
     if: >-
       vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.ref == 'refs/heads/main'
       && (inputs.publish || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
@@ -153,7 +153,7 @@ jobs:
   # reads the workflow from there. Every publish uploads every record of the latest release, so Dev Mode shows what npm
   # ships, never main's unreleased templates.
   publish:
-    name: 'Publish the latest release'
+    name: 'Publish'
     if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.ref == 'refs/heads/main' && inputs.publish
     runs-on: ubuntu-latest
     timeout-minutes: 25

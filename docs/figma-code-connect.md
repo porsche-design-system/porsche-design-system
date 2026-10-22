@@ -43,7 +43,7 @@ them, whatever their result. On `main`:
   add would offer a property npm does not ship yet.
 
 A pull request runs everything but the upload: `Contribution` calls the same workflow after the pull request's deploy,
-and its `Dry run` job runs `figma:generate` and `figma:publish:dry` with the same token. The deploy skips forks and
+and its `Dry Run` job runs `figma:generate` and `figma:publish:dry` with the same token. The deploy skips forks and
 bot-authored pull requests, so they get no dry run and see their lines in a later pull request's; a pull request whose
 build, tests or deploy failed gets none until they pass. The `figma:generate` step's log lists every design line and
 accepted-gap cleanup, those already open on `main` included. The dry run is red when generation fails, a template does

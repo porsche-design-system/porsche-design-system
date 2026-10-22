@@ -32,10 +32,10 @@ before. Background: [`docs/figma-code-connect.md`](../../../../docs/figma-code-c
 When you add or rename a prop, a slot, an allowed value or a component:
 
 1. Read the lines starting with `design:` in the `figma:generate` step log of your pull request's
-   `Figma Code Connect / Dry run` check, which runs after the deploy. It lists every open line, those already open on
-   `main` included, and each names its PDS tag: read those of the components you changed. A pull request from a fork or
-   a bot gets no dry run; its lines reach you after the merge, in the `figma:generate` log of every later dry run. With
-   `FIGMA_ACCESS_TOKEN` in the environment, `npm run figma:generate` prints the same lines locally.
+   `Figma Code Connect (Pull Request) / Dry Run` check, which runs after the deploy. It lists every open line, those
+   already open on `main` included, and each names its PDS tag: read those of the components you changed. A pull request
+   from a fork or a bot gets no dry run; its lines reach you after the merge, in the `figma:generate` log of every later
+   dry run. With `FIGMA_ACCESS_TOKEN` in the environment, `npm run figma:generate` prints the same lines locally.
 2. If the prop changes what the component looks like, leave the line alone. Design adds the property after the release
    that ships it. The same goes for a new component (`design: p-foo: Add a component set "foo"`): design adds the set.
 3. If Figma will never carry it, ask the user before accepting it. Typical cases are native HTML attributes (`href`,
