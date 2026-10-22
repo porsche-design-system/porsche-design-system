@@ -31,10 +31,10 @@ Two workflows announce a release. Both delegate to `.github/actions/notify-slack
 the message cannot drift.
 
 **The pipeline path** covers every normal release. On a release push to `main` or a matching version branch,
-`release.yml` creates the release. The `notify-release` job waits for the pinned storefront, major-alias promotion
-(including CloudFront invalidation), and their separate Algolia jobs before announcing it. It only fires when a release
-consumers can see was really created, so a pre-release, a draft, and a re-run of a job whose release already existed all
-post nothing.
+`release.yml` creates the release. The `notify-release` job waits for the pinned storefront, the major-alias promotion
+(including CloudFront invalidation) and the Figma Code Connect publish before announcing it. A failed publish does not
+hold the announcement back, and the Algolia jobs are not waited for. It only fires when a release consumers can see was
+really created, so a pre-release, a draft, and a re-run of a job whose release already existed all post nothing.
 
 A successful major job can intentionally leave a newer release in place. For example, releasing `4.7.1` after `4.10.0`
 still announces `4.7.1`, even though `/v4/` remains on `4.10.0`.
