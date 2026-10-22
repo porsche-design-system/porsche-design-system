@@ -17,28 +17,13 @@ export type FrameworkExampleMeta = {
    * `SelectExampleDynamic.vue`. A source that deviates from them names its four files instead.
    */
   source: string | Record<Framework, string>;
-  /**
-   * Leaves the preview out of `frameworkExamplePreviews`, because every page whose server graph imports that map loads
-   * all of its previews. For a preview with a large dependency (AG Grid's ~1.1 MB): the page that shows it imports it
-   * by its own entry, `@porsche-design-system/examples-framework/previews/<Name>`.
-   */
-  standalone?: true;
-};
-
-/** An example as the package exports it: its id, the components it shows and its code for every framework. */
-export type FrameworkExample<Id extends string = string> = {
-  id: Id;
-  components: TagName[];
-  /** The code shown in the code tabs, opened in StackBlitz and written into the skills. */
-  frameworkMarkup: Record<Framework, string>;
 };
 
 /**
  * An example by id, as `frameworkExamples` holds it: in the shape every project of `packages/examples` exports and the
- * catalogue of `@porsche-design-system/examples` merges. Apart from `FrameworkExample`, the code sample the Storefront
- * hands to a client component, which therefore carries no texts.
+ * catalogue of `@porsche-design-system/examples` merges.
  */
-export type FrameworkExampleEntry<Id extends string = string> = {
+export type FrameworkExample<Id extends string = string> = {
   id: Id;
   kind: 'framework';
   /** The heading of the example, in the Storefront and in the skills. */

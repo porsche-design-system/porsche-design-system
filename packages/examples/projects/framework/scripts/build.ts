@@ -1,9 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { FRAMEWORKS, type Framework } from '@porsche-design-system/shared';
-import { camelCase } from 'change-case';
 import { assertExampleId } from '../lib/ids';
-import type { FrameworkExample, FrameworkExampleEntry, FrameworkExampleMeta } from '../lib/meta';
+import type { FrameworkExample, FrameworkExampleMeta } from '../lib/meta';
 import { exampleAppPaths, sourceFiles, toFrameworkMarkup, toPreview } from '../lib/sources';
 
 /**
@@ -11,7 +10,7 @@ import { exampleAppPaths, sourceFiles, toFrameworkMarkup, toPreview } from '../l
  *
  * - `generated/index.ts`: the examples as data, their code strings for every framework. Imports no wrapper, so the
  *   skills build and anything else that reads the code can load it before the wrappers are built.
- * - `generated/previews/`: the live React preview of every example, a client component each, by id for the Storefront.
+ * - `generated/previews/`: the live React preview of every example, a client component each, named by its React source.
  * - `generated/examples/<id>.ts`: every example as a module of its own – its data, its live `Preview` and its
  *   `Description`. A page imports the examples it shows, and so loads their previews only.
  */
@@ -65,16 +64,16 @@ const readDescription = (id: string): string | undefined => {
 const readSource = (framework: Framework, file: string): string =>
   fs.readFileSync(path.join(packagesDir, exampleAppPaths[framework], file), 'utf8');
 
-/** `SelectExampleDynamic.tsx` → `selectExampleDynamic`, the name of its export, as `shared/examples` named it. */
-const toExportName = ({ files }: Source): string => camelCase(path.basename(files.react, '.tsx'));
+/** `SelectExampleDynamic.tsx` → `SelectExampleDynamic`, the file of its preview below `generated/previews/`. */
+const previewName = ({ files }: Source): string => path.basename(files.react, '.tsx');
 
 const generate = async (): Promise<void> => {
   const sources = await readSources();
 
-  const exportNames = sources.map(toExportName);
-  const duplicate = exportNames.find((name, index) => exportNames.indexOf(name) !== index);
+  const previewNames = sources.map(previewName);
+  const duplicate = previewNames.find((name, index) => previewNames.indexOf(name) !== index);
   if (duplicate) {
-    throw new Error(`[examples-framework] two examples are exported as "${duplicate}"`);
+    throw new Error(`[examples-framework] two examples share the preview "${duplicate}"`);
   }
 
   fs.mkdirSync(previewsDir, { recursive: true });
@@ -86,10 +85,14 @@ const generate = async (): Promise<void> => {
 
     fs.writeFileSync(path.join(previewsDir, source.files.react), toPreview(sourcesByFramework.react));
 
+    const description = readDescription(source.id);
     return {
       id: source.id,
+      kind: 'framework',
+      title: source.meta.title,
+      ...(description === undefined ? {} : { description }),
       components: source.meta.components,
-      frameworkMarkup: toFrameworkMarkup(sourcesByFramework),
+      code: toFrameworkMarkup(sourcesByFramework),
     };
   });
 
@@ -100,74 +103,28 @@ const generate = async (): Promise<void> => {
     path.join(generatedDir, 'index.ts'),
     [
       header,
-      "import type { FrameworkExample, FrameworkExampleEntry } from '../lib/meta';",
+      "import type { FrameworkExample } from '../lib/meta';",
       '',
-      "export type { FrameworkExample, FrameworkExampleEntry, FrameworkExampleMeta } from '../lib/meta';",
+      "export type { FrameworkExample, FrameworkExampleMeta } from '../lib/meta';",
       '',
       `export type FrameworkExampleId =\n${examples.map(({ id }) => `  | '${id}'`).join('\n')};`,
       '',
-      ...examples.map(
-        (example, index) =>
-          `export const ${exportNames[index]}: FrameworkExample<'${example.id}'> = ${JSON.stringify(example, null, 2)};\n`
-      ),
       '/**',
       ' * Every example by id, in the shape every project of `packages/examples` exports and its catalogue merges: what',
       ' * names it, its description (MDX source), the components it shows and its code. Data only.',
       ' */',
-      `export const frameworkExamples: { readonly [Id in FrameworkExampleId]: FrameworkExampleEntry<Id> } = {\n${sources
-        .map(({ id, meta }, index) => {
-          const description = readDescription(id);
-          return [
-            `  '${id}': {`,
-            `    id: '${id}',`,
-            "    kind: 'framework',",
-            `    title: ${JSON.stringify(meta.title)},`,
-            ...(description === undefined ? [] : [`    description: ${JSON.stringify(description)},`]),
-            `    components: ${exportNames[index]}.components,`,
-            `    code: ${exportNames[index]}.frameworkMarkup,`,
-            '  },',
-          ].join('\n');
-        })
-        .join('\n')}\n};`,
+      `export const frameworkExamples: { readonly [Id in FrameworkExampleId]: FrameworkExample<Id> } = ${JSON.stringify(
+        Object.fromEntries(examples.map((example) => [example.id, example])),
+        null,
+        2
+      )};`,
       '',
     ].join('\n')
   );
 
-  const shared = sources.filter(({ meta }) => !meta.standalone);
-  const previewName = ({ files }: Source): string => path.basename(files.react, '.tsx');
-
-  fs.writeFileSync(
-    path.join(previewsDir, 'index.ts'),
-    [
-      header,
-      "import type { ComponentType } from 'react';",
-      "import type { FrameworkExampleId } from '../index';",
-      ...shared.map((source) => `import ${previewName(source)} from './${previewName(source)}';`),
-      '',
-      `/** The examples whose preview is not in \`frameworkExamplePreviews\`; import it by its own entry. */`,
-      `export type StandaloneFrameworkExampleId = ${
-        sources
-          .filter(({ meta }) => meta.standalone)
-          .map(({ id }) => `'${id}'`)
-          .join(' | ') || 'never'
-      };`,
-      '',
-      '/**',
-      ' * The live preview of every framework example that is not `standalone`, a client component each, for the Storefront',
-      ' * until it reads `runtime.ts` (#4789). Import this on the server only, to render a preview by id: a client module',
-      ' * importing it would bundle every preview. Every page whose server graph imports it loads all of them, which is',
-      ' * why an example with a large dependency is `standalone`.',
-      ' */',
-      `export const frameworkExamplePreviews: {\n  readonly [Id in Exclude<FrameworkExampleId, StandaloneFrameworkExampleId>]: ComponentType;\n} = {\n${shared
-        .map((source) => `  '${source.id}': ${previewName(source)},`)
-        .join('\n')}\n};`,
-      '',
-    ].join('\n')
-  );
-
-  for (const source of sources) {
+  for (const [index, source] of sources.entries()) {
     const up = '../'.repeat(source.id.split('/').length);
-    const hasDescription = readDescription(source.id) !== undefined;
+    const hasDescription = examples[index].description !== undefined;
     const file = path.join(generatedDir, 'examples', `${source.id}.ts`);
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(

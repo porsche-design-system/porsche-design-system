@@ -27,7 +27,7 @@ The package is `private: true` and is not published.
 ```text
 generated/examples.ts          # build:projects – scripts/build.ts: the package export, as source (lib/exports.ts)
 dist/                          # build:projects – scripts/build.ts, then rollup.config.mjs
-├── examples.js / .d.ts        # the package export, bundled – `import { examples } from '@porsche-design-system/examples-pages'`
+├── examples.js / .d.ts        # the package export, bundled – `import { pageExamples } from '@porsche-design-system/examples-pages'`
 └── <category>/<page>/         # one standalone Vite project per page, what StackBlitz opens
     ├── package.json           # generated, dependency versions taken from this package
     ├── vite.config.ts         # generated: PDS partial injection with the component chunks of the category
@@ -42,15 +42,13 @@ dist-site/                     # build:site – scripts/buildSite.ts, what the s
 **The package export.** `@porsche-design-system/examples-pages` exports `pageExamples` – every example by its path, its
 id, in the shape every project of [`packages/examples`](../../AGENTS.md) exports: `id`, `kind` (`pattern`, `template`),
 its meta, the `components` it is built from (`lib/components.ts`, as the knowledge skill lists them), the `files` of its
-project, which the storefront shows as code and opens in StackBlitz, and the `url` of its built page. `examples` is the
-same by path with the meta and files only, which nothing but `scripts/verify.ts` and a storefront e2e test reads any
-more; it goes in step 7.4 of #4789. Next to them are the paths the pages and their media are served at (`examplesPath`,
-`mediaPath`). The types of an example – `ExampleMeta`, `ExampleProject`, `Example`, `PageExample` – are defined once, in
-[`lib/meta.ts`](lib/meta.ts), which the generated source re-exports; it adds `ExamplePath`, the path of every example as
-a union. `build:projects` writes the source, typechecks what it built with it and bundles it with its declarations into
-`dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so a consumer compiles nothing of this package. The
-scripts and the knowledge skill import the source itself. The export holds every example, so import it on the server
-only.
+project, which the storefront shows as code and opens in StackBlitz, and the `url` of its built page. Next to it are the
+paths the pages and their media are served at (`examplesPath`, `mediaPath`). The types of an example – `ExampleMeta`,
+`PageExample` – are defined once, in [`lib/meta.ts`](lib/meta.ts), which the generated source re-exports; it adds
+`ExamplePath`, the path of every example as a union. `build:projects` writes the source, typechecks what it built with
+it and bundles it with its declarations into `dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so a consumer
+compiles nothing of this package. The scripts and the knowledge skill import the source itself. The export holds every
+example, so import it on the server only.
 
 **The two steps run at different points of the root build.** `build:projects` needs the sources and the types of
 `@porsche-design-system/components` only, and runs before `build:skills`, which reads its output (see _Knowledge
@@ -574,8 +572,9 @@ hand, and nothing fails when one of the first two is forgotten:
    `-`: `patterns/header-overlay.e2e.ts`), each starting from the checks the other specs of its suite share. The
    `coverage.*` specs fail until all three exist. Generate the VRT baselines in Docker –
    `./docker.sh npm run test:vrt:examples` writes the missing ones.
-4. **Storefront.** Add a `page.mdx` rendering `<ExampleViewer example="<category>/<page>" />` – it shows the description
-   and frames the page under its title, all imported from the package export – and an entry in
+4. **Storefront.** Add a `page.mdx` that imports the example by its id
+   (`import overlay from '@porsche-design-system/examples/patterns/header/overlay'`) and renders
+   `<Example example={overlay} />` – it shows the description and frames the page under its title – and an entry in
    [`packages/storefront/src/sitemap.ts`](../../../storefront/src/sitemap.ts).
 5. **Knowledge skill.** Nothing to register – the page is picked up from the package export. Update the content
    snapshots of the skills project (see _Knowledge skill_).

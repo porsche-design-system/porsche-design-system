@@ -21,14 +21,14 @@ type ExampleBase<Id extends ExampleId> = {
   components: TagName[];
 };
 
-/** An example written as a story; its live preview renders its stories (`/stories`). */
+/** An example written as a story; its module (`@porsche-design-system/examples/<id>`) holds the stories it renders. */
 export type StoryExample<Id extends StoryExampleId = StoryExampleId> = ExampleBase<Id> & {
   kind: 'story';
   /** The code of every framework, as the code tabs, StackBlitz and the skills show it. */
   code: Record<Framework, string>;
 };
 
-/** An example written by hand for every framework; its live preview is a React component (`/previews`). */
+/** An example written by hand for every framework; its module holds its live preview, a React component (`Preview`). */
 export type FrameworkExample<Id extends FrameworkExampleId = FrameworkExampleId> = ExampleBase<Id> & {
   kind: 'framework';
   /** The code of every framework, as the code tabs, StackBlitz and the skills show it. */

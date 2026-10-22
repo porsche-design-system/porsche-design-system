@@ -1,9 +1,8 @@
 import type { TagName } from '@porsche-design-system/shared';
 
 /**
- * The types of an example – defined here once, and exported by the package for the storefront, the StackBlitz helper
- * and the knowledge skill: the generated export re-exports them, and its bundled declarations (`dist/examples.d.ts`)
- * carry them.
+ * The types of an example – defined here once: the generated export re-exports them, and its bundled declarations
+ * (`dist/examples.d.ts`) carry them.
  */
 
 /**
@@ -19,23 +18,6 @@ export type ExampleMeta = {
 };
 
 /**
- * The generated Vite project of an example, as StackBlitz opens it: its meta, and its files verbatim.
- *
- * Media are not part of it – the SDK accepts text files only, and the pages reference their media by `mediaPath`,
- * which the storefront resolves against its own deployment before it hands the files over.
- */
-export type ExampleProject = ExampleMeta & {
-  /** Path inside the project → content: `package.json`, `vite.config.ts`, `index.html`, `main.js`, `style.css`. */
-  files: Record<string, string>;
-};
-
-/** An example as the package exports it: its project, and its path below the root of the examples. */
-export type Example<Path extends string = string> = ExampleProject & {
-  /** `'patterns/header/overlay'` – the folder of its page below `src/`, and of its built page below `/examples/`. */
-  path: Path;
-};
-
-/**
  * An example in the shape every project of `packages/examples` exports, which the catalogue of
  * `@porsche-design-system/examples` merges: its id (its path), kind, meta, components and project.
  */
@@ -48,7 +30,11 @@ export type PageExample<Id extends string = string> = {
   description: string;
   /** The components the page is built from, each by the component documenting it (`getComponents()`). */
   components: TagName[];
-  /** Path inside the project → content, as StackBlitz opens it. */
+  /**
+   * Path inside the project → content, as StackBlitz opens it: `package.json`, `vite.config.ts`, `index.html`,
+   * `main.js`, `style.css`. Media are not part of it – the SDK accepts text files only, and the pages reference their
+   * media by `mediaPath`, which the storefront resolves against its own deployment before it hands the files over.
+   */
   files: Record<string, string>;
   /** Where its built page is served, relative to the root of a site: `/examples/patterns/header/overlay/index.html`. */
   url: string;

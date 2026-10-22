@@ -14,14 +14,6 @@
       "types": "./generated/examples/*.ts",
       "default": "./generated/examples/*.ts"
     },
-    "./previews": {
-      "types": "./generated/previews/index.ts",
-      "default": "./generated/previews/index.ts"
-    },
-    "./previews/*": {
-      "types": "./generated/previews/*.tsx",
-      "default": "./generated/previews/*.tsx"
-    },
     "./*.mdx": "./src/*.mdx"
   },
   "scripts": {
@@ -40,6 +32,8 @@
   },
   "peerDependencies": {
     "@porsche-design-system/components-react": "4.8.0",
+    "ag-grid-community": "36.2.0",
+    "ag-grid-react": "36.2.0",
     "react": "^19.3.0"
   },
   "devDependencies": {

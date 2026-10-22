@@ -15,22 +15,21 @@ wrapper (`components-js/src/examples`, `components-angular/src/app/examples`, `c
   `source`, the kebab-case base name of its files (`'select-example-dynamic'` → `select-example-dynamic.html`,
   `select-example-dynamic.component.ts`, `SelectExampleDynamic.tsx`, `SelectExampleDynamic.vue`), or the four file names
   where they deviate from that (AG Grid).
-- **`npm run build`** (in `build:examples:projects`) reads the sources and generates three entry points into
-  `generated/`, gitignored:
-  - `@porsche-design-system/examples-framework`: the examples as data – id, components and the code of every framework,
-    as the code tabs, StackBlitz and the skills show it. By name (`selectExampleDynamic`), the code samples the
-    Storefront hands its client components, and by id in the shape every project of `packages/examples` exports
-    (`frameworkExamples`: `id`, `kind`, `title`, `description` as MDX source, `components`, `code`), which the catalogue
-    of `@porsche-design-system/examples` merges. It imports no wrapper, so the skills build loads it before the wrappers
+- **`npm run build`** (in `build:examples:projects`) reads the sources and generates two entry points into `generated/`,
+  gitignored:
+  - `@porsche-design-system/examples-framework`: the examples as data, by id, in the shape every project of
+    `packages/examples` exports (`frameworkExamples`: `id`, `kind`, `title`, `description` as MDX source, `components`,
+    and the `code` of every framework, as the code tabs, StackBlitz and the skills show it), which the catalogue of
+    `@porsche-design-system/examples` merges. It imports no wrapper, so the skills build loads it before the wrappers
     are built.
   - `@porsche-design-system/examples-framework/examples/<id>`: every example as a module of its own – its data, its live
     React preview (`Preview`), a client component, and its `example.mdx` (`Description`). A page imports the examples it
     shows (through `@porsche-design-system/examples/<id>`), and so loads their previews only.
-  - `@porsche-design-system/examples-framework/previews`: the previews by id (`frameworkExamplePreviews`), without the
-    `standalone` ones (AG Grid), which the Storefront read until it imported its examples by id (#4789, removed in step
-    7.4), and every preview by its own entry.
 
-  The example modules and the previews are typechecked only by the package's `typecheck`, after the wrappers.
+  The previews themselves (`generated/previews/`, named by their React source) are internal to the example modules. They
+  import `react`, the React wrapper and, for AG Grid, `ag-grid-react` and `ag-grid-community` – peer dependencies, as
+  the app that renders them has to provide exactly one of each. The example modules and the previews are typechecked
+  only by the package's `typecheck`, after the wrappers.
 
 - A change to a source in a wrapper app or to a `meta.ts` needs that build again; `next dev` then reloads it.
 

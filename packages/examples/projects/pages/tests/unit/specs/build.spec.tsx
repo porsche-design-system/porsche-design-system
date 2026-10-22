@@ -244,9 +244,7 @@ describe('package export', () => {
   const module = getExportModule({ 'patterns/footer': footer, 'templates/landing-page': { ...footer, id: 'x' } });
 
   it('should re-export the types of lib/meta.ts, and type every example by its path', () => {
-    expect(module).toContain(
-      "export type { Example, ExampleMeta, ExampleProject, PageExample } from '../lib/meta.ts';"
-    );
+    expect(module).toContain("export type { ExampleMeta, PageExample } from '../lib/meta.ts';");
     expect(module).toContain("export type ExamplePath =\n  | 'patterns/footer'\n  | 'templates/landing-page';");
     expect(module).toContain('export const pageExamples: { readonly [Path in ExamplePath]: PageExample<Path> } = {');
   });
@@ -261,13 +259,6 @@ describe('package export', () => {
     const literal = module.slice(start, module.indexOf('\n};', start) + 2);
 
     expect(JSON.parse(literal)['patterns/footer']).toEqual(footer);
-  });
-
-  it('should derive the examples by path, with their meta and files only', () => {
-    expect(module).toContain(
-      'Object.values(pageExamples).map(({ id, title, description, files }) => [id, { path: id, title, description, files }])'
-    );
-    expect(module).toContain(') as { readonly [Path in ExamplePath]: Example<Path> };');
   });
 });
 

@@ -9,5 +9,4 @@ export const meta = {
     react: 'AGGridCompactExampleCommunity.tsx',
     vue: 'AGGridCompactExampleCommunity.vue',
   },
-  standalone: true,
 } satisfies FrameworkExampleMeta;

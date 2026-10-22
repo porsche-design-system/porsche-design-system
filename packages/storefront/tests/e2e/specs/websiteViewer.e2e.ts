@@ -1,5 +1,5 @@
 import { type BrowserContext, expect, type Frame, type Page, type Request, test } from '@playwright/test';
-import { examples } from '@porsche-design-system/examples-pages';
+import { pageExamples } from '@porsche-design-system/examples-pages';
 
 /**
  * The patterns and templates the storefront frames from `public/examples/`, and opens in StackBlitz.
@@ -146,7 +146,7 @@ test('opens an example in StackBlitz as the project it was built from', async ({
 
 test('switches an example between its preview and its code, one file per tab', async ({ page }) => {
   // Without a basePath, the files are shown exactly as the package exports them.
-  const { files } = examples['templates/landing-page'];
+  const { files } = pageExamples['templates/landing-page'];
   await page.goto('/templates/landing-page/');
 
   // The tabs are slotted into the tablist of `p-tabs-bar`, so they are found below its host rather than the tablist.

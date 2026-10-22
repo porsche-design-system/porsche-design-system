@@ -57,7 +57,7 @@ The build writes three trees:
 
 ```text
 generated/examples.ts             # scripts/build.ts: the package export – every example, its meta and its files
-dist/examples.js / .d.ts          # rollup.config.mjs: the export bundled – `import { examples } from '…/examples'`
+dist/examples.js / .d.ts          # rollup.config.mjs: the export bundled – `import { pageExamples } from '…/examples-pages'`
 dist/patterns/header/overlay/     # scripts/build.ts: the Vite project of one page – what StackBlitz opens
 ├── package.json / vite.config.ts # generated; the config injects the Porsche Design System partials
 ├── index.html                    # the rendered page, without partials, stylesheet link or loader script
@@ -351,5 +351,6 @@ A page is found by its file name, but a few lists are still kept by hand. Beside
   the unit tests will not cover it. No test notices if it is missing.
 - Write one spec per suite – `tests/{e2e,a11y,vrt}/specs/<category>/<page>.<suite>.ts` (the page folder with `/` as `-`:
   `patterns/header-overlay.e2e.ts`). The `coverage.*` specs fail without them. Create the VRT baselines in Docker.
-- Show it in the storefront: a `page.mdx` with `<ExampleViewer example="<category>/<page>" />` and an entry in
+- Show it in the storefront: a `page.mdx` that imports it by its id from
+  `@porsche-design-system/examples/<category>/<page>` and renders it with `<Example example={…} />`, and an entry in
   `packages/storefront/src/sitemap.ts`.

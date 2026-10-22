@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { getLoaderScript } from '@porsche-design-system/components-js/partials';
-import { examples } from '../generated/examples.ts';
+import { pageExamples } from '../generated/examples.ts';
 import { exampleNote } from '../lib/jsx.ts';
 import { categories, getPagePath, mediaPath } from '../lib/projects.ts';
 import { distDir, listFiles, listProjects, packageDir, siteDir, siteMediaDir } from '../lib/shared.ts';
@@ -46,8 +46,8 @@ const verify = (): void => {
   const usedMedia = new Set<string>();
 
   const pagePaths = locations.map(getPagePath);
-  if (Object.keys(examples).sort().join() !== [...pagePaths].sort().join()) {
-    fail(`the package export has to hold ${pagePaths.join(', ')}, got: ${Object.keys(examples).join(', ')}`);
+  if (Object.keys(pageExamples).sort().join() !== [...pagePaths].sort().join()) {
+    fail(`the package export has to hold ${pagePaths.join(', ')}, got: ${Object.keys(pageExamples).join(', ')}`);
   }
 
   for (const location of locations) {
@@ -91,7 +91,7 @@ const verify = (): void => {
       }
     }
 
-    const { files = {} } = Object.values(examples).find((example) => example.path === name) ?? {};
+    const { files = {} } = Object.values(pageExamples).find((example) => example.id === name) ?? {};
     const projectFiles = listFiles(projectDir);
     if (Object.keys(files).sort().join() !== projectFiles.join()) {
       fail(`the package export of "${name}" does not carry the files of its project`);
