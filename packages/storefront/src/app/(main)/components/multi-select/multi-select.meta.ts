@@ -1,82 +1,30 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import {
-  multiSelectExampleAsyncFilter,
-  multiSelectExampleDynamic,
-  multiSelectExampleForm,
-  multiSelectExampleSelectedSlot,
-} from '@porsche-design-system/shared/examples';
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/hidden-label-without-accessible-name/example';
-import { promptOptionUsedInsteadOfALabelA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/prompt-option-used-instead-of-a-label/example';
-import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/validation-feedback-via-state-and-message-api/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/multi-select/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
 import AccessibilityOverview from '@/app/(main)/components/multi-select/accessibility/overview.mdx';
 import AccessibilityTests from '@/app/(main)/components/multi-select/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/multi-select/configurator/introduction.mdx';
-import { multiSelectSlotStories, multiSelectStory } from '@/app/(main)/components/multi-select/configurator/story';
-import AsyncFilterDescription from '@/app/(main)/components/multi-select/examples/async-filter/example.mdx';
-import FormDescription from '@/app/(main)/components/multi-select/examples/form/example.mdx';
-import OptgroupsDescription from '@/app/(main)/components/multi-select/examples/optgroups/example.mdx';
-import { multiSelectStoryOptgroup } from '@/app/(main)/components/multi-select/examples/optgroups/story';
-import SelectedSlotDescription from '@/app/(main)/components/multi-select/examples/selected-slot/example.mdx';
-import SetValueDescription from '@/app/(main)/components/multi-select/examples/set-value/example.mdx';
-import SlotsDescription from '@/app/(main)/components/multi-select/examples/slots/example.mdx';
-import { multiSelectStorySlots } from '@/app/(main)/components/multi-select/examples/slots/story';
 import Usage from '@/app/(main)/components/multi-select/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 
 export const multiSelectMeta = {
   introduction: IntroductionDescription,
-  configurator: {
-    story: multiSelectStory,
-    slotStories: multiSelectSlotStories,
-  },
-  examples: {
-    form: {
-      kind: 'example',
-      name: 'Form',
-      description: FormDescription,
-      example: multiSelectExampleForm,
-    },
-    slots: {
-      kind: 'story',
-      name: 'Slots',
-      description: SlotsDescription,
-      story: multiSelectStorySlots,
-    },
-    setValue: {
-      kind: 'example',
-      name: 'Set Value',
-      description: SetValueDescription,
-      example: multiSelectExampleDynamic,
-    },
-    optgroups: {
-      kind: 'story',
-      name: 'With optgroups',
-      description: OptgroupsDescription,
-      story: multiSelectStoryOptgroup,
-    },
-    asyncFilter: {
-      kind: 'example',
-      name: 'Custom asynchronous filtering',
-      description: AsyncFilterDescription,
-      example: multiSelectExampleAsyncFilter,
-    },
-    selectedSlot: {
-      kind: 'example',
-      name: 'Custom option rendering',
-      description: SelectedSlotDescription,
-      example: multiSelectExampleSelectedSlot,
-    },
-  },
+  configurator: 'components/multi-select/default',
+  examples: [
+    'components/multi-select/form',
+    'components/multi-select/slots',
+    'components/multi-select/set-value',
+    'components/multi-select/optgroups',
+    'components/multi-select/async-filter',
+    'components/multi-select/selected-slot',
+  ],
   usage: Usage,
   accessibility: {
     overview: AccessibilityOverview,
-    examples: {
-      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
-      promptOptionUsedInsteadOfALabel: promptOptionUsedInsteadOfALabelA11yExample,
-      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
-      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
-    },
+    examples: [
+      'components/multi-select/accessibility/aria-on-component-host-vs-aria-prop',
+      'components/multi-select/accessibility/prompt-option-used-instead-of-a-label',
+      'components/multi-select/accessibility/hidden-label-without-accessible-name',
+      'components/multi-select/accessibility/validation-feedback-via-state-and-message-api',
+    ],
     tests: AccessibilityTests,
   },
   api: componentMeta['p-multi-select'],

@@ -1,6 +1,6 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { linkTileProductMeta } from '@/app/(main)/components/link-tile-product/link-tile-product.meta';
+import frameworkRouting from '@porsche-design-system/examples/components/link-tile-product/framework-routing';
 
 export const metadata = {
   title: 'Link Tile Product: Examples - Components',
@@ -9,8 +9,4 @@ export const metadata = {
 
 # Link Tile Product <ComponentStatus tagName="p-link-tile-product"></ComponentStatus>
 
-## {linkTileProductMeta.examples.frameworkRouting.name}
-
-<linkTileProductMeta.examples.frameworkRouting.description />
-
-<ComponentStory story={linkTileProductMeta.examples.frameworkRouting.story} />
+<Example example={frameworkRouting} />

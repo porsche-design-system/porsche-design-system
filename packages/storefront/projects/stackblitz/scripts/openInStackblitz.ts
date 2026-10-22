@@ -1,4 +1,3 @@
-import type { ExampleProject } from '@porsche-design-system/examples';
 import type { ColorScheme, Framework } from '@porsche-design-system/shared';
 import sdk, { type ProjectFiles } from '@stackblitz/sdk';
 import { angularBundle, reactBundle, vanillaJsBundle, vueBundle } from '../generated/bundle';
@@ -17,66 +16,70 @@ const frameworkComponentMap: Record<Framework, string> = {
   react: 'src/Example.tsx',
 };
 
-export const openInStackblitz = (framework: Framework, markup: string, colorScheme: ColorScheme) => {
-  const getFrameworkFiles = (framework: Framework): ProjectFiles => {
-    switch (framework) {
-      case 'angular':
-        return {
-          ...frameworkBundleMap[framework],
-          'src/index.html': frameworkBundleMap[framework]['src/index.html'].replace(
-            '<html lang="en">',
-            `<html lang="en" class="${colorScheme}">`
-          ),
-          'src/main.ts': frameworkBundleMap[framework]['src/main.ts'],
-        };
-      case 'react':
-        return {
-          ...frameworkBundleMap[framework],
-          'index.html': frameworkBundleMap[framework]['index.html'].replace(
-            '<html lang="en">',
-            `<html lang="en" class="${colorScheme}">`
-          ),
-          'src/main.tsx': frameworkBundleMap[framework]['src/main.tsx'],
-        };
-      case 'vue':
-        return {
-          ...frameworkBundleMap[framework],
-          'index.html': frameworkBundleMap[framework]['index.html'].replace(
-            '<html lang="en">',
-            `<html lang="en" class="${colorScheme}">`
-          ),
-          'src/App.vue': frameworkBundleMap[framework]['src/App.vue'],
-        };
-      case 'vanilla-js':
-        return frameworkBundleMap[framework];
-      default:
-        return frameworkBundleMap[framework];
-    }
-  };
-
-  sdk.openProject(
-    {
-      files: {
-        ...getFrameworkFiles(framework),
-        [frameworkComponentMap[framework]]: markup,
-      },
-      template: 'node',
-      title: 'Porsche Design System sandbox',
-      description: 'Porsche Design System component example',
-    },
-    {
-      openFile: frameworkComponentMap[framework],
-    }
-  );
+/** A project as StackBlitz opens it: its files, its title and description, and the file it shows first. */
+export type StackblitzProject = {
+  files: ProjectFiles;
+  title: string;
+  description: string;
+  openFile: string;
 };
 
 /**
- * Opens a pattern or template of the storefront in StackBlitz, as the Vite project it was built from.
- *
- * Unlike `openInStackblitz()`, nothing is assembled here: the project is complete as the examples build emitted it,
- * and the storefront has already pointed its media at the deployment they are served from. `template: 'node'` runs it
- * in a WebContainer, which installs the released `@porsche-design-system/components-js` from npm.
+ * Opens a project in StackBlitz, in a WebContainer (`template: 'node'`), which installs the released
+ * `@porsche-design-system/components-js` from npm: a pattern's or template's project as the examples build emitted it,
+ * or a story's or framework example's code in the project of its framework (`getFrameworkProject()`).
  */
-export const openExampleInStackblitz = ({ title, description, files }: ExampleProject) => {
-  sdk.openProject({ files, template: 'node', title, description }, { openFile: 'index.html' });
+export const openInStackblitz = ({ files, title, description, openFile }: StackblitzProject): void => {
+  sdk.openProject({ files, template: 'node', title, description }, { openFile });
 };
+
+const getFrameworkFiles = (framework: Framework, colorScheme: ColorScheme): ProjectFiles => {
+  switch (framework) {
+    case 'angular':
+      return {
+        ...frameworkBundleMap[framework],
+        'src/index.html': frameworkBundleMap[framework]['src/index.html'].replace(
+          '<html lang="en">',
+          `<html lang="en" class="${colorScheme}">`
+        ),
+        'src/main.ts': frameworkBundleMap[framework]['src/main.ts'],
+      };
+    case 'react':
+      return {
+        ...frameworkBundleMap[framework],
+        'index.html': frameworkBundleMap[framework]['index.html'].replace(
+          '<html lang="en">',
+          `<html lang="en" class="${colorScheme}">`
+        ),
+        'src/main.tsx': frameworkBundleMap[framework]['src/main.tsx'],
+      };
+    case 'vue':
+      return {
+        ...frameworkBundleMap[framework],
+        'index.html': frameworkBundleMap[framework]['index.html'].replace(
+          '<html lang="en">',
+          `<html lang="en" class="${colorScheme}">`
+        ),
+        'src/App.vue': frameworkBundleMap[framework]['src/App.vue'],
+      };
+    case 'vanilla-js':
+      return frameworkBundleMap[framework];
+    default:
+      return frameworkBundleMap[framework];
+  }
+};
+
+/** The project of a story or framework example: the framework's sandbox, its code as the example's component. */
+export const getFrameworkProject = (
+  framework: Framework,
+  markup: string,
+  colorScheme: ColorScheme
+): StackblitzProject => ({
+  files: {
+    ...getFrameworkFiles(framework, colorScheme),
+    [frameworkComponentMap[framework]]: markup,
+  },
+  title: 'Porsche Design System sandbox',
+  description: 'Porsche Design System component example',
+  openFile: frameworkComponentMap[framework],
+});

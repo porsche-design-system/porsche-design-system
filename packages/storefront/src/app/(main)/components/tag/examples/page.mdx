@@ -1,7 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { tagMeta } from '@/app/(main)/components/tag/tag.meta';
+import slottedButton from '@porsche-design-system/examples/components/tag/slotted-button';
+import slottedLink from '@porsche-design-system/examples/components/tag/slotted-link';
+import multiline from '@porsche-design-system/examples/components/tag/multiline';
 
 export const metadata = {
   title: 'Tag: Examples - Components',
@@ -10,24 +12,10 @@ export const metadata = {
 
 # Tag <ComponentStatus tagName="p-tag"></ComponentStatus>
 
-<TableOfContents
-  headings={[tagMeta.examples.slottedButton.name, tagMeta.examples.slottedLink.name, tagMeta.examples.multiline.name]}
-/>
+<TableOfContents headings={[slottedButton.title, slottedLink.title, multiline.title]} />
 
-## {tagMeta.examples.slottedButton.name}
+<Example example={slottedButton} />
 
-<tagMeta.examples.slottedButton.description />
+<Example example={slottedLink} />
 
-<ComponentStory story={tagMeta.examples.slottedButton.story} />
-
-## {tagMeta.examples.slottedLink.name}
-
-<tagMeta.examples.slottedLink.description />
-
-<ComponentStory story={tagMeta.examples.slottedLink.story} />
-
-## {tagMeta.examples.multiline.name}
-
-<tagMeta.examples.multiline.description />
-
-<ComponentStory story={tagMeta.examples.multiline.story} />
+<Example example={multiline} />

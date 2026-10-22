@@ -280,36 +280,35 @@ Output (vanilla-js):
 
 ### Usage
 
+The configurator starts from the component's default example, `components/<component>/default`:
+
 ```mdxjs
-import { flyoutSlotStories, flyoutStory } from "@/app/components/flyout/flyout.stories";
+import flyoutDefault from "@porsche-design-system/examples/components/flyout/default";
 import { Configurator } from "@/components/mdx/playground/Configurator";
-<Configurator tagName="p-flyout" story={flyoutStory} slotStories={flyoutSlotStories} />
+<Configurator example={flyoutDefault} />
 ```
 
 ## Component Examples
 
-There are two ways to showcase component examples in the Storefront:
-
-- `ComponentStory`: For simple examples based on the Configurator, without custom JavaScript.
-- `ComponentExample`: For more advanced examples that require manual control or custom logic.
-
-### ComponentStory
-
-Use `ComponentStory` when the example can be built using the Configurator system—i.e. when you only need to display
-markup and optionally support simple controlled behavior via `EventConfig`.
-
-To use it, import a `story` (as described in the [Configurator](#configurator) section) and pass it to the
-`ComponentStory` component.
+Every example lives in [`packages/examples`](../examples/AGENTS.md), one folder per example, named by its id. A page
+imports the examples it shows by their id and renders each with `<Example>`, whatever its kind; the component's
+`{component}.meta.ts` lists their ids, in the order of the page, for the skill (`componentDocs.spec.ts` checks both
+agree).
 
 ```mdxjs
-import { carouselStoryFlexibleWidths } from "@/app/components/carousel/carousel.stories";
-<ComponentStory story={carouselStoryFlexibleWidths} />
+import jumpToSlide from "@porsche-design-system/examples/components/carousel/jump-to-slide";
+import { Example } from "@/components/mdx/examples/Example";
+<Example example={jumpToSlide} />
 ```
 
-### ComponentExample
+There are two kinds of component examples:
 
-Use the `ComponentExample` component when a more complex example is required—for instance, when custom JavaScript or
-advanced behavior is involved. In these cases, examples must be written manually for each supported framework.
+- **Stories**, for simple examples based on the Configurator, without custom JavaScript: markup and, optionally, simple
+  controlled behavior via `EventConfig`. See [`projects/stories`](../examples/projects/stories/AGENTS.md).
+- **Framework examples**, for more advanced examples that require manual control or custom logic, written by hand for
+  every framework.
+
+### Framework examples
 
 1. **Add Examples**
 
@@ -325,15 +324,11 @@ development.
 
 2. **Register the Example**
 
-In `packages/shared/scripts/generateCodeExamples.ts`, add the example to the `codeExamples` array.  
-Run `npm run build:shared` to generate a file in `packages/shared/src/examples`. This file will export an object containing
-the React component along with the markup for all frameworks.
+Add a `meta.ts` in `packages/examples/projects/framework/src/<id>/`, the folder naming the example
+(`components/carousel/jump-to-slide`), with its title, the components it shows and its `source` in the example apps. Run
+`npm run build:examples:projects` to generate the code of every framework and the live preview, and to make the example
+importable by its id.
 
 3. **Use in Storefront**
 
-Import the generated example and pass it to `ComponentExample`:
-
-```mdxjs
-import { carouselExampleJumpToSlide } from "@porsche-design-system/shared/examples";
-<ComponentExample codeSample={carouselExampleJumpToSlide} />
-```
+Import the example by its id, render it with `<Example>` as shown above, and add its id to the component's meta.

@@ -1,7 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { textMeta } from '@/app/(main)/components/text/text.meta';
+import size from '@porsche-design-system/examples/components/text/size';
+import sizeResponsive from '@porsche-design-system/examples/components/text/size-responsive';
+import semantics from '@porsche-design-system/examples/components/text/semantics';
 
 export const metadata = {
   title: 'Text: Examples - Components',
@@ -10,24 +12,10 @@ export const metadata = {
 
 # Text <ComponentStatus tagName="p-text"></ComponentStatus>
 
-<TableOfContents
-  headings={[textMeta.examples.size.name, textMeta.examples.sizeResponsive.name, textMeta.examples.semantics.name]}
-/>
+<TableOfContents headings={[size.title, sizeResponsive.title, semantics.title]} />
 
-## {textMeta.examples.size.name}
+<Example example={size} />
 
-<textMeta.examples.size.description />
+<Example example={sizeResponsive} />
 
-<ComponentStory story={textMeta.examples.size.story} />
-
-## {textMeta.examples.sizeResponsive.name}
-
-<textMeta.examples.sizeResponsive.description />
-
-<ComponentStory story={textMeta.examples.sizeResponsive.story} />
-
-## {textMeta.examples.semantics.name}
-
-<textMeta.examples.semantics.description />
-
-<ComponentStory story={textMeta.examples.semantics.story} />
+<Example example={semantics} />

@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { sheetMeta } from '@/app/(main)/components/sheet/sheet.meta';
+import sheetDefault from '@porsche-design-system/examples/components/sheet/default';
 
 export const metadata = {
   title: 'Sheet: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <sheetMeta.introduction />
 
-<Configurator
-  tagName="p-sheet"
-  story={sheetMeta.configurator.story}
-  slotStories={sheetMeta.configurator.slotStories}
-/>
+<Configurator example={sheetDefault} />

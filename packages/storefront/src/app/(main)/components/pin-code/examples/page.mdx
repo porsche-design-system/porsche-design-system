@@ -1,8 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { pinCodeMeta } from '@/app/(main)/components/pin-code/pin-code.meta';
+import form from '@porsche-design-system/examples/components/pin-code/form';
+import copyPaste from '@porsche-design-system/examples/components/pin-code/copy-paste';
+import slots from '@porsche-design-system/examples/components/pin-code/slots';
 
 export const metadata = {
   title: 'Pin Code: Examples - Components',
@@ -11,24 +12,10 @@ export const metadata = {
 
 # Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
 
-<TableOfContents
-  headings={[pinCodeMeta.examples.form.name, pinCodeMeta.examples.copyPaste.name, pinCodeMeta.examples.slots.name]}
-/>
+<TableOfContents headings={[form.title, copyPaste.title, slots.title]} />
 
-## {pinCodeMeta.examples.form.name}
+<Example example={form} />
 
-<pinCodeMeta.examples.form.description />
+<Example example={copyPaste} />
 
-<ComponentExample codeSample={pinCodeMeta.examples.form.example} />
-
-## {pinCodeMeta.examples.copyPaste.name}
-
-<pinCodeMeta.examples.copyPaste.description />
-
-<ComponentStory story={pinCodeMeta.examples.copyPaste.story} />
-
-## {pinCodeMeta.examples.slots.name}
-
-<pinCodeMeta.examples.slots.description />
-
-<ComponentStory story={pinCodeMeta.examples.slots.story} />
+<Example example={slots} />

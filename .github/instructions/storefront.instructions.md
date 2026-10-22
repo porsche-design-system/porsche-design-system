@@ -82,49 +82,54 @@ new component (see `packages/storefront/AGENTS.md` → _MDX components_).
 
 ## Generating configurator and example stories
 
-When you create or extend component docs inside `packages/storefront/src/app/components/{component}/`, keep the
-configurator and examples pages backed by a colocated `{component}.stories.ts` file.
+When you create or extend component docs inside `packages/storefront/src/app/(main)/components/{component}/`, keep the
+configurator and examples pages backed by stories in `packages/examples/projects/stories`, which the pages import by
+their id and the component's `{component}.meta.ts` lists.
 
 ### Story file rules
 
-- Create or update `packages/storefront/src/app/components/{component}/{component}.stories.ts`.
+- The configurator's story is `packages/examples/projects/stories/src/components/{component}/default/story.ts`; every
+  other example has a folder of its own next to it, `{slug}/story.ts` with its title in `{slug}/meta.ts` (`{ title }`)
+  and its description in `{slug}/example.mdx`. Its id is `components/{component}/{slug}`.
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
 - Export `Story<'p-component'>` objects for all examples that can be rendered through the configurator system.
 - Export `SlotStories<'p-component'>` when configurable slot content is needed.
-- Keep the base configurator export named like `{component}Story`; use additional named exports such as
-  `{component}StoryGrid` or `{component}StoryCustomStyling` for example-page variants.
+- Keep the base configurator export named like `{component}Story`; name an example's export like
+  `{component}StoryCustomStyling`.
 - For controlled components, define `events` inside the generated `ElementConfig` so the example stays interactive
   without inline custom scripts.
 
 ### Configurator pages
 
-- Import the story file into `configurator/page.mdx` and render it via `Configurator`.
+- Render the component's default example in `configurator/page.mdx` via `Configurator`, imported by its id.
 - Preserve `export const metadata = { ... }` and the page heading with `ComponentStatus`.
-- Pass `slotStories` only when the component has configurable slots.
-- Do not build playground configs inline in MDX; keep them in the colocated story file.
+- Do not build playground configs inline in MDX; keep them in the story file.
 
 ```mdx
-import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
 import { Configurator } from '@/components/mdx/playground/Configurator';
+import componentDefault from '@porsche-design-system/examples/components/component/default';
 
-<Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
+<Configurator example={componentDefault} />
 ```
 
 ### Examples pages
 
-- Use `ComponentStory` for examples that can be represented by a storefront `Story`.
-- Use `ComponentExample` only for advanced examples that require custom logic and cross-framework source files.
-- For `ComponentExample`, register the example in `packages/shared/scripts/generateCodeExamples.ts` so it becomes
-  importable from `@porsche-design-system/shared/examples`.
+- Import every example the page shows by its id from `@porsche-design-system/examples/<id>` and render it with
+  `<Example example={…} />`, which renders its title, description and preview. A page loads the stories and previews it
+  imports, and only those.
+- Prefer a story. Write a framework example only for custom logic, by adding its `meta.ts` to
+  `packages/examples/projects/framework/src/<id>/`.
+- List the ids in the meta's `examples`, in the order of the page, for the skill; `componentDocs.spec.ts` fails when
+  they differ.
 - Preserve `metadata` and `ComponentStatus` imports on the page.
-- Add `TableOfContents` when a page contains multiple example sections.
+- Add `TableOfContents` when a page contains multiple example sections; `prebuild` fills it from the examples.
 - Keep each example accessible by default, including keyboard support, visible focus, and proper accessible names.
 
 ```mdx
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { componentStoryAdvanced } from '@/app/components/component/component.stories';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
+import { Example } from '@/components/mdx/examples/Example';
+import customLogic from '@porsche-design-system/examples/components/component/custom-logic';
+
+<Example example={customLogic} />
 ```
 
 ## Testing expectations

@@ -1,8 +1,14 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { selectMeta } from '@/app/(main)/components/select/select.meta';
+import form from '@porsche-design-system/examples/components/select/form';
+import required from '@porsche-design-system/examples/components/select/required';
+import slottedImages from '@porsche-design-system/examples/components/select/slotted-images';
+import slots from '@porsche-design-system/examples/components/select/slots';
+import setValue from '@porsche-design-system/examples/components/select/set-value';
+import optgroups from '@porsche-design-system/examples/components/select/optgroups';
+import asyncFilter from '@porsche-design-system/examples/components/select/async-filter';
+import selectedSlot from '@porsche-design-system/examples/components/select/selected-slot';
 
 export const metadata = {
   title: 'Select: Examples - Components',
@@ -13,65 +19,35 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    selectMeta.examples.form.name,
-    selectMeta.examples.required.name,
-    selectMeta.examples.slottedImages.name,
-    selectMeta.examples.slots.name,
-    selectMeta.examples.setValue.name,
-    selectMeta.examples.optgroups.name,
-    selectMeta.examples.asyncFilter.name,
-    selectMeta.examples.selectedSlot.name,
+    form.title,
+    required.title,
+    slottedImages.title,
+    slots.title,
+    setValue.title,
+    optgroups.title,
+    asyncFilter.title,
+    selectedSlot.title,
   ]}
 />
 
-## {selectMeta.examples.form.name}
+<Example example={form} />
 
-<selectMeta.examples.form.description />
+<Example example={required} />
 
-<ComponentExample codeSample={selectMeta.examples.form.example} />
+<Example example={slottedImages} />
 
-## {selectMeta.examples.required.name}
-
-<selectMeta.examples.required.description />
-
-<ComponentExample codeSample={selectMeta.examples.required.example} />
-
-## {selectMeta.examples.slottedImages.name}
-
-<selectMeta.examples.slottedImages.description />
-
-<ComponentStory story={selectMeta.examples.slottedImages.story} />
-
-## {selectMeta.examples.slots.name}
-
-<selectMeta.examples.slots.description />
-
-<ComponentStory story={selectMeta.examples.slots.story} />
+<Example example={slots} />
 
 ---
 
-## {selectMeta.examples.setValue.name}
-
-<selectMeta.examples.setValue.description />
-
-<ComponentExample codeSample={selectMeta.examples.setValue.example} />
+<Example example={setValue} />
 
 ---
 
-## {selectMeta.examples.optgroups.name}
-
-<ComponentStory story={selectMeta.examples.optgroups.story} />
+<Example example={optgroups} />
 
 ---
 
-## {selectMeta.examples.asyncFilter.name}
+<Example example={asyncFilter} />
 
-<selectMeta.examples.asyncFilter.description />
-
-<ComponentExample codeSample={selectMeta.examples.asyncFilter.example} />
-
-## {selectMeta.examples.selectedSlot.name}
-
-<selectMeta.examples.selectedSlot.description />
-
-<ComponentExample codeSample={selectMeta.examples.selectedSlot.example} />
+<Example example={selectedSlot} />

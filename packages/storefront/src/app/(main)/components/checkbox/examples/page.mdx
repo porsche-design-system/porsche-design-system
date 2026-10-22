@@ -1,8 +1,10 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { checkboxMeta } from '@/app/(main)/components/checkbox/checkbox.meta';
+import form from '@porsche-design-system/examples/components/checkbox/form';
+import indeterminate from '@porsche-design-system/examples/components/checkbox/indeterminate';
+import slots from '@porsche-design-system/examples/components/checkbox/slots';
+import wrappedLabel from '@porsche-design-system/examples/components/checkbox/wrapped-label';
 
 export const metadata = {
   title: 'Checkbox: Examples - Components',
@@ -11,35 +13,12 @@ export const metadata = {
 
 # Checkbox <ComponentStatus tagName="p-checkbox"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    checkboxMeta.examples.form.name,
-    checkboxMeta.examples.indeterminate.name,
-    checkboxMeta.examples.slots.name,
-    checkboxMeta.examples.wrappedLabel.name,
-  ]}
-/>
+<TableOfContents headings={[form.title, indeterminate.title, slots.title, wrappedLabel.title]} />
 
-## {checkboxMeta.examples.form.name}
+<Example example={form} />
 
-<checkboxMeta.examples.form.description />
+<Example example={indeterminate} />
 
-<ComponentExample codeSample={checkboxMeta.examples.form.example} />
+<Example example={slots} />
 
-## {checkboxMeta.examples.indeterminate.name}
-
-<checkboxMeta.examples.indeterminate.description />
-
-<ComponentStory story={checkboxMeta.examples.indeterminate.story} />
-
-## {checkboxMeta.examples.slots.name}
-
-<checkboxMeta.examples.slots.description />
-
-<ComponentStory story={checkboxMeta.examples.slots.story} />
-
-## {checkboxMeta.examples.wrappedLabel.name}
-
-<checkboxMeta.examples.wrappedLabel.description />
-
-<ComponentStory story={checkboxMeta.examples.wrappedLabel.story} />
+<Example example={wrappedLabel} />

@@ -1,6 +1,6 @@
 'use client';
 
-import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import { getFrameworkProject, openInStackblitz } from '@porsche-design-system/stackblitz';
 import { getStoryMarkup, type HTMLTagOrComponent, type Story } from '@porsche-design-system/story-generator';
 import { StoryPreview } from '@porsche-design-system/story-generator/react';
 import React, { useMemo, useState } from 'react';
@@ -33,7 +33,7 @@ export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }:
       colorScheme: storefrontColorScheme,
       output: 'project',
     });
-    openInStackblitz(framework, markup[framework], storefrontColorScheme);
+    openInStackblitz(getFrameworkProject(framework, markup[framework], storefrontColorScheme));
   };
 
   return (

@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { iconMeta } from '@/app/(main)/components/icon/icon.meta';
+import iconDefault from '@porsche-design-system/examples/components/icon/default';
 
 export const metadata = {
   title: 'Icon: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <iconMeta.introduction />
 
-<Configurator tagName="p-icon" story={iconMeta.configurator.story} />
+<Configurator example={iconDefault} />

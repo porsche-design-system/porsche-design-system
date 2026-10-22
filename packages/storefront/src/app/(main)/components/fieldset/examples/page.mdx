@@ -1,7 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { fieldsetMeta } from '@/app/(main)/components/fieldset/fieldset.meta';
+import slottedLabel from '@porsche-design-system/examples/components/fieldset/slotted-label';
+import slottedMessage from '@porsche-design-system/examples/components/fieldset/slotted-message';
+import required from '@porsche-design-system/examples/components/fieldset/required';
 
 export const metadata = {
   title: 'Fieldset: Examples - Components',
@@ -10,24 +12,10 @@ export const metadata = {
 
 # Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    fieldsetMeta.examples.slottedLabel.name,
-    fieldsetMeta.examples.slottedMessage.name,
-    fieldsetMeta.examples.required.name,
-  ]}
-/>
+<TableOfContents headings={[slottedLabel.title, slottedMessage.title, required.title]} />
 
-## {fieldsetMeta.examples.slottedLabel.name}
+<Example example={slottedLabel} />
 
-<ComponentStory story={fieldsetMeta.examples.slottedLabel.story} />
+<Example example={slottedMessage} />
 
-## {fieldsetMeta.examples.slottedMessage.name}
-
-<ComponentStory story={fieldsetMeta.examples.slottedMessage.story} />
-
-## {fieldsetMeta.examples.required.name}
-
-<fieldsetMeta.examples.required.description />
-
-<ComponentStory story={fieldsetMeta.examples.required.story} />
+<Example example={required} />

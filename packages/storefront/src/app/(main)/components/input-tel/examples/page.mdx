@@ -1,8 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { inputTelMeta } from '@/app/(main)/components/input-tel/input-tel.meta';
+import form from '@porsche-design-system/examples/components/input-tel/form';
+import slots from '@porsche-design-system/examples/components/input-tel/slots';
 
 export const metadata = {
   title: 'Input Tel: Examples - Components',
@@ -11,16 +11,8 @@ export const metadata = {
 
 # Input Tel <ComponentStatus tagName="p-input-tel"></ComponentStatus>
 
-<TableOfContents headings={[inputTelMeta.examples.form.name, inputTelMeta.examples.slots.name]} />
+<TableOfContents headings={[form.title, slots.title]} />
 
-## {inputTelMeta.examples.form.name}
+<Example example={form} />
 
-<inputTelMeta.examples.form.description />
-
-<ComponentExample codeSample={inputTelMeta.examples.form.example} />
-
-## {inputTelMeta.examples.slots.name}
-
-<inputTelMeta.examples.slots.description />
-
-<ComponentStory story={inputTelMeta.examples.slots.story} />
+<Example example={slots} />

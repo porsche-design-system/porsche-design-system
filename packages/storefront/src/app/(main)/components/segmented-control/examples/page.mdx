@@ -1,8 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { segmentedControlMeta } from '@/app/(main)/components/segmented-control/segmented-control.meta';
+import form from '@porsche-design-system/examples/components/segmented-control/form';
+import withLabels from '@porsche-design-system/examples/components/segmented-control/with-labels';
+import slots from '@porsche-design-system/examples/components/segmented-control/slots';
 
 export const metadata = {
   title: 'Segmented Control: Examples - Components',
@@ -11,28 +12,10 @@ export const metadata = {
 
 # Segmented Control <ComponentStatus tagName="p-segmented-control"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    segmentedControlMeta.examples.form.name,
-    segmentedControlMeta.examples.withLabels.name,
-    segmentedControlMeta.examples.slots.name,
-  ]}
-/>
+<TableOfContents headings={[form.title, withLabels.title, slots.title]} />
 
-## {segmentedControlMeta.examples.form.name}
+<Example example={form} />
 
-<segmentedControlMeta.examples.form.description />
+<Example example={withLabels} />
 
-<ComponentExample codeSample={segmentedControlMeta.examples.form.example} />
-
-## {segmentedControlMeta.examples.withLabels.name}
-
-<segmentedControlMeta.examples.withLabels.description />
-
-<ComponentStory story={segmentedControlMeta.examples.withLabels.story} />
-
-## {segmentedControlMeta.examples.slots.name}
-
-<segmentedControlMeta.examples.slots.description />
-
-<ComponentStory story={segmentedControlMeta.examples.slots.story} />
+<Example example={slots} />

@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { pinCodeMeta } from '@/app/(main)/components/pin-code/pin-code.meta';
+import pinCodeDefault from '@porsche-design-system/examples/components/pin-code/default';
 
 export const metadata = {
   title: 'Pin Code: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <pinCodeMeta.introduction />
 
-<Configurator
-  tagName="p-pin-code"
-  story={pinCodeMeta.configurator.story}
-  slotStories={pinCodeMeta.configurator.slotStories}
-/>
+<Configurator example={pinCodeDefault} />

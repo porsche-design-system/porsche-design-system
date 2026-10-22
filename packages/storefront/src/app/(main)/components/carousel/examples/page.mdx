@@ -1,8 +1,11 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { carouselMeta } from '@/app/(main)/components/carousel/carousel.meta';
+import flexibleWidths from '@porsche-design-system/examples/components/carousel/flexible-widths';
+import jumpToSlide from '@porsche-design-system/examples/components/carousel/jump-to-slide';
+import dynamicSlides from '@porsche-design-system/examples/components/carousel/dynamic-slides';
+import focusOnCenterSlide from '@porsche-design-system/examples/components/carousel/focus-on-center-slide';
+import intl from '@porsche-design-system/examples/components/carousel/intl';
 
 export const metadata = {
   title: 'Carousel: Examples - Components',
@@ -12,41 +15,15 @@ export const metadata = {
 # Carousel <ComponentStatus tagName="p-carousel"></ComponentStatus>
 
 <TableOfContents
-  headings={[
-    carouselMeta.examples.flexibleWidths.name,
-    carouselMeta.examples.jumpToSlide.name,
-    carouselMeta.examples.dynamicSlides.name,
-    carouselMeta.examples.focusOnCenterSlide.name,
-    carouselMeta.examples.intl.name,
-  ]}
+  headings={[flexibleWidths.title, jumpToSlide.title, dynamicSlides.title, focusOnCenterSlide.title, intl.title]}
 />
 
-## {carouselMeta.examples.flexibleWidths.name}
+<Example example={flexibleWidths} />
 
-<carouselMeta.examples.flexibleWidths.description />
+<Example example={jumpToSlide} />
 
-<ComponentStory story={carouselMeta.examples.flexibleWidths.story} />
+<Example example={dynamicSlides} />
 
-## {carouselMeta.examples.jumpToSlide.name}
+<Example example={focusOnCenterSlide} />
 
-<carouselMeta.examples.jumpToSlide.description />
-
-<ComponentExample codeSample={carouselMeta.examples.jumpToSlide.example} />
-
-## {carouselMeta.examples.dynamicSlides.name}
-
-<carouselMeta.examples.dynamicSlides.description />
-
-<ComponentExample codeSample={carouselMeta.examples.dynamicSlides.example} />
-
-## {carouselMeta.examples.focusOnCenterSlide.name}
-
-<carouselMeta.examples.focusOnCenterSlide.description />
-
-<ComponentExample codeSample={carouselMeta.examples.focusOnCenterSlide.example} />
-
-## {carouselMeta.examples.intl.name}
-
-<carouselMeta.examples.intl.description />
-
-<ComponentStory story={carouselMeta.examples.intl.story} />
+<Example example={intl} />

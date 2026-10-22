@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { examplesSkill } from '@porsche-design-system/examples/skill';
+import { examplesSkill } from '@porsche-design-system/examples-pages/skill';
 import { FRAMEWORKS } from '@porsche-design-system/shared';
 import {
   getPackageSkillRouteReferences,

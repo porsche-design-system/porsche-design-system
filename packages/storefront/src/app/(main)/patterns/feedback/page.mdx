@@ -1,5 +1,7 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { Example } from '@/components/mdx/examples/Example';
+import inline from '@porsche-design-system/examples/patterns/feedback/inline';
+import dialog from '@porsche-design-system/examples/patterns/feedback/dialog';
 
 export const metadata = {
   title: 'Feedback - Patterns',
@@ -15,10 +17,6 @@ The feedback pattern lets users rate their satisfaction with a page on a five-po
 comment. It gathers quick quantitative and qualitative input with minimal effort, revealing the comment field and submit
 action only after a rating is chosen. Use it whenever you want to learn how users perceive a page or a specific task.
 
-## Inline
+<Example example={inline} heading="Inline" />
 
-<ExampleViewer example="patterns/feedback/inline" />
-
-## Dialog
-
-<ExampleViewer example="patterns/feedback/dialog" />
+<Example example={dialog} heading="Dialog" />

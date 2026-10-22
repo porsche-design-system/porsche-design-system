@@ -1,16 +1,16 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { mediaPath } from '@porsche-design-system/examples';
+import { mediaPath } from '@porsche-design-system/examples-pages';
 import { insertBasePath, rewriteCdnUrlsForDev } from '../src/utils/examples';
 import { getBasePath } from '../src/utils/getBasePath';
 
 /**
  * Copies the built examples into `public/examples/`, where `WebsiteViewer` frames them.
  *
- * The source is `packages/examples/dist-site/`: one self-contained `index.html` per example, and the media once in
- * `media/`. The meta and the project files of the examples are not copied – `ExampleViewer` imports them from the
- * package export. `public/examples/` is git-ignored and replaced as a whole on every run,
- * so a removed example does not linger.
+ * The source is `packages/examples/projects/pages/dist-site/`: one self-contained `index.html` per example, and the
+ * media once in `media/`. The meta and the project files of the examples are not copied – `Example` reads them from
+ * the catalogue of `@porsche-design-system/examples`. `public/examples/` is git-ignored and replaced as a whole on every
+ * run, so a removed example does not linger.
  *
  * Two rewrites happen on the way:
  * - the storefront slug is inserted into every media path of the pages;
@@ -19,7 +19,7 @@ import { getBasePath } from '../src/utils/getBasePath';
  *   `NEXT_PUBLIC_PDS_ENV=development`, as the test builds already do and `npm run dev` does for its `prebuild`.
  */
 
-const sourceDir = path.resolve(__dirname, '../../examples/dist-site');
+const sourceDir = path.resolve(__dirname, '../../examples/projects/pages/dist-site');
 const targetDir = path.resolve(__dirname, '../public/examples');
 
 const listFiles = (dir: string): string[] =>
@@ -55,7 +55,7 @@ const copyExamples = (): void => {
   // The examples own the media path; a page that no longer uses it would keep its media unprefixed and broken.
   if (mediaReferences === 0) {
     throw new Error(
-      `[storefront] no copied example references "${mediaPath}" – has the media path of packages/examples changed?`
+      `[storefront] no copied example references "${mediaPath}" – has the media path of packages/examples/projects/pages changed?`
     );
   }
 

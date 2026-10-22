@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "types": ["mdx"]
+  },
+  // What the package exports: the generated previews and example modules, which import the wrappers, and the data.
+  // Checked after the wrappers are built; tsconfig.data.json checks the data before them.
+  "include": ["src", "generated", "lib/meta.ts"],
+  "exclude": ["node_modules"]
+}

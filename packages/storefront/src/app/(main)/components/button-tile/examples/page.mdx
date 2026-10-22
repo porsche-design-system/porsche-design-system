@@ -1,8 +1,10 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { buttonTileMeta } from '@/app/(main)/components/button-tile/button-tile.meta';
+import uiBehaviour from '@porsche-design-system/examples/components/button-tile/ui-behaviour';
+import hyphens from '@porsche-design-system/examples/components/button-tile/hyphens';
+import footerSlot from '@porsche-design-system/examples/components/button-tile/footer-slot';
+import colorScheme from '@porsche-design-system/examples/components/button-tile/color-scheme';
 
 export const metadata = {
   title: 'Button Tile: Examples - Components',
@@ -11,35 +13,12 @@ export const metadata = {
 
 # Button Tile <ComponentStatus tagName="p-button-tile"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    buttonTileMeta.examples.uiBehaviour.name,
-    buttonTileMeta.examples.hyphens.name,
-    buttonTileMeta.examples.footerSlot.name,
-    buttonTileMeta.examples.colorScheme.name,
-  ]}
-/>
+<TableOfContents headings={[uiBehaviour.title, hyphens.title, footerSlot.title, colorScheme.title]} />
 
-## {buttonTileMeta.examples.uiBehaviour.name}
+<Example example={uiBehaviour} />
 
-<buttonTileMeta.examples.uiBehaviour.description />
+<Example example={hyphens} />
 
-<ComponentStory story={buttonTileMeta.examples.uiBehaviour.story} />
+<Example example={footerSlot} />
 
-## {buttonTileMeta.examples.hyphens.name}
-
-<buttonTileMeta.examples.hyphens.description />
-
-<ComponentExample codeSample={buttonTileMeta.examples.hyphens.example} />
-
-## {buttonTileMeta.examples.footerSlot.name}
-
-<buttonTileMeta.examples.footerSlot.description />
-
-<ComponentStory story={buttonTileMeta.examples.footerSlot.story} />
-
-## {buttonTileMeta.examples.colorScheme.name}
-
-<buttonTileMeta.examples.colorScheme.description />
-
-<ComponentStory story={buttonTileMeta.examples.colorScheme.story} />
+<Example example={colorScheme} />

@@ -1,7 +1,10 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
 import { linkPureMeta } from '@/app/(main)/components/link-pure/link-pure.meta';
+import icon from '@porsche-design-system/examples/components/link-pure/icon';
+import frameworkRouting from '@porsche-design-system/examples/components/link-pure/framework-routing';
+import customClickableArea from '@porsche-design-system/examples/components/link-pure/custom-clickable-area';
 
 export const metadata = {
   title: 'Link Pure: Examples - Components',
@@ -12,31 +15,19 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    linkPureMeta.examples.icon.name,
-    linkPureMeta.examples.frameworkRouting.name,
-    linkPureMeta.examples.frameworkRoutingActiveState.name,
-    linkPureMeta.examples.customClickableArea.name,
+    icon.title,
+    frameworkRouting.title,
+    linkPureMeta.notes.frameworkRoutingActiveState.name,
+    customClickableArea.title,
   ]}
 />
 
-## {linkPureMeta.examples.icon.name}
+<Example example={icon} />
 
-<linkPureMeta.examples.icon.description />
+<Example example={frameworkRouting} />
 
-<ComponentStory story={linkPureMeta.examples.icon.story} />
+## {linkPureMeta.notes.frameworkRoutingActiveState.name}
 
-## {linkPureMeta.examples.frameworkRouting.name}
+<linkPureMeta.notes.frameworkRoutingActiveState.description />
 
-<linkPureMeta.examples.frameworkRouting.description />
-
-<ComponentStory story={linkPureMeta.examples.frameworkRouting.story} />
-
-## {linkPureMeta.examples.frameworkRoutingActiveState.name}
-
-<linkPureMeta.examples.frameworkRoutingActiveState.description />
-
-## {linkPureMeta.examples.customClickableArea.name}
-
-<linkPureMeta.examples.customClickableArea.description />
-
-<ComponentStory story={linkPureMeta.examples.customClickableArea.story} />
+<Example example={customClickableArea} />

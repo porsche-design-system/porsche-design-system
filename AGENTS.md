@@ -32,12 +32,14 @@ packages/
 ├── components-react/   # React wrapper + Next.js/React Router integrations
 ├── components-vue/     # Vue wrapper
 ├── storefront/         # Next.js documentation site
-│   └── projects/       # Agent skills generator, StackBlitz projects, story generator
-├── examples/           # Standalone example pages (TSX, rendered to plain HTML at build time)
+│   └── projects/       # Agent skills generator, StackBlitz projects
+├── examples/           # Every example, one project per kind
+│   └── projects/       # Pages (patterns, templates), framework examples, stories
 ├── tokens/             # Design tokens (colors, spacing, typography)
 ├── styles/             # Shared styles, Tailwind plugin
 ├── assets/             # Icons, fonts, marque, crest
 ├── shared/             # Internal utilities shared across packages
+│   └── projects/       # Story generator (story types, markup per framework, StoryPreview)
 ├── component-meta/     # Component metadata generation
 └── utilities/          # AG Grid theme, utility functions
 ```
@@ -290,7 +292,13 @@ Each major package has its own `AGENTS.md` with detailed guidance:
 - [`packages/tokens/AGENTS.md`](packages/tokens/AGENTS.md) — Design tokens
 - [`packages/utilities/AGENTS.md`](packages/utilities/AGENTS.md) — Utility packages such as AG Grid theme
 - [`packages/storefront/AGENTS.md`](packages/storefront/AGENTS.md) — Next.js documentation site
-- [`packages/examples/AGENTS.md`](packages/examples/AGENTS.md) — Standalone example pages (TSX)
+- [`packages/examples/AGENTS.md`](packages/examples/AGENTS.md) — Every example: projects, ids and build order
+- [`packages/examples/projects/pages/AGENTS.md`](packages/examples/projects/pages/AGENTS.md) — Patterns and templates
+  (TSX, rendered to plain HTML)
+- [`packages/examples/projects/framework/AGENTS.md`](packages/examples/projects/framework/AGENTS.md) — Hand-written
+  framework examples
+- [`packages/examples/projects/stories/AGENTS.md`](packages/examples/projects/stories/AGENTS.md) — Stories and
+  accessibility examples
 - [`packages/components-react/AGENTS.md`](packages/components-react/AGENTS.md) — React wrapper
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper

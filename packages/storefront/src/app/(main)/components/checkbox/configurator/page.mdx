@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { checkboxMeta } from '@/app/(main)/components/checkbox/checkbox.meta';
+import checkboxDefault from '@porsche-design-system/examples/components/checkbox/default';
 
 export const metadata = {
   title: 'Checkbox: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <checkboxMeta.introduction />
 
-<Configurator
-  tagName="p-checkbox"
-  story={checkboxMeta.configurator.story}
-  slotStories={checkboxMeta.configurator.slotStories}
-/>
+<Configurator example={checkboxDefault} />

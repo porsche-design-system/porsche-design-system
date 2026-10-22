@@ -8,7 +8,7 @@ import {
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import { type ColorScheme, FRAMEWORKS, type Framework, frameworkNameMap } from '@porsche-design-system/shared';
-import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import { getFrameworkProject, openInStackblitz } from '@porsche-design-system/stackblitz';
 import { wrapCode } from '@porsche-design-system/story-generator';
 import React, { useState } from 'react';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
@@ -31,7 +31,7 @@ export const OpenBugTemplateInStackBlitz = () => {
         ? `<p-text theme="${selectedTheme}">Place your reproduction code here</p-text>`
         : '<p-text>Place your reproduction code here</p-text>';
     const code = wrapCode(selectedFramework, { markup }, { colorScheme: selectedTheme, output: 'project' });
-    openInStackblitz(selectedFramework, code, selectedTheme);
+    openInStackblitz(getFrameworkProject(selectedFramework, code, selectedTheme));
   };
 
   return (

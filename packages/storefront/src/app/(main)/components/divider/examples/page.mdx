@@ -1,7 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { dividerMeta } from '@/app/(main)/components/divider/divider.meta';
+import vertical from '@porsche-design-system/examples/components/divider/vertical';
+import responsive from '@porsche-design-system/examples/components/divider/responsive';
 
 export const metadata = {
   title: 'Divider: Examples - Components',
@@ -10,16 +11,8 @@ export const metadata = {
 
 # Divider <ComponentStatus tagName="p-divider"></ComponentStatus>
 
-<TableOfContents headings={[dividerMeta.examples.vertical.name, dividerMeta.examples.responsive.name]} />
+<TableOfContents headings={[vertical.title, responsive.title]} />
 
-## {dividerMeta.examples.vertical.name}
+<Example example={vertical} />
 
-<dividerMeta.examples.vertical.description />
-
-<ComponentStory story={dividerMeta.examples.vertical.story} />
-
-## {dividerMeta.examples.responsive.name}
-
-<dividerMeta.examples.responsive.description />
-
-<ComponentStory story={dividerMeta.examples.responsive.story} />
+<Example example={responsive} />

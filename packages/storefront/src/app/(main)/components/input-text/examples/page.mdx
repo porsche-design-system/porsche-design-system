@@ -1,8 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { inputTextMeta } from '@/app/(main)/components/input-text/input-text.meta';
+import form from '@porsche-design-system/examples/components/input-text/form';
+import controlled from '@porsche-design-system/examples/components/input-text/controlled';
+import slots from '@porsche-design-system/examples/components/input-text/slots';
 
 export const metadata = {
   title: 'Input Text: Examples - Components',
@@ -11,28 +12,10 @@ export const metadata = {
 
 # Input Text <ComponentStatus tagName="p-input-text"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    inputTextMeta.examples.form.name,
-    inputTextMeta.examples.controlled.name,
-    inputTextMeta.examples.slots.name,
-  ]}
-/>
+<TableOfContents headings={[form.title, controlled.title, slots.title]} />
 
-## {inputTextMeta.examples.form.name}
+<Example example={form} />
 
-<inputTextMeta.examples.form.description />
+<Example example={controlled} />
 
-<ComponentExample codeSample={inputTextMeta.examples.form.example} />
-
-## {inputTextMeta.examples.controlled.name}
-
-<inputTextMeta.examples.controlled.description />
-
-<ComponentExample codeSample={inputTextMeta.examples.controlled.example} />
-
-## {inputTextMeta.examples.slots.name}
-
-<inputTextMeta.examples.slots.description />
-
-<ComponentStory story={inputTextMeta.examples.slots.story} />
+<Example example={slots} />

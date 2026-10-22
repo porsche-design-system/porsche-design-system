@@ -1,8 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { radioGroupMeta } from '@/app/(main)/components/radio-group/radio-group.meta';
+import form from '@porsche-design-system/examples/components/radio-group/form';
+import slots from '@porsche-design-system/examples/components/radio-group/slots';
 
 export const metadata = {
   title: 'Radio Group: Examples - Components',
@@ -11,18 +11,10 @@ export const metadata = {
 
 # Radio Group <ComponentStatus tagName="p-radio-group"></ComponentStatus>
 
-<TableOfContents headings={[radioGroupMeta.examples.form.name, radioGroupMeta.examples.slots.name]} />
+<TableOfContents headings={[form.title, slots.title]} />
 
-## {radioGroupMeta.examples.form.name}
-
-<radioGroupMeta.examples.form.description />
-
-<ComponentExample codeSample={radioGroupMeta.examples.form.example} />
+<Example example={form} />
 
 ---
 
-## {radioGroupMeta.examples.slots.name}
-
-<radioGroupMeta.examples.slots.description />
-
-<ComponentStory story={radioGroupMeta.examples.slots.story} />
+<Example example={slots} />

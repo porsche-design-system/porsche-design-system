@@ -1,0 +1,55 @@
+{
+  "name": "@porsche-design-system/examples-framework",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./generated/index.ts",
+      "default": "./generated/index.ts"
+    },
+    "./examples/*": {
+      "types": "./generated/examples/*.ts",
+      "default": "./generated/examples/*.ts"
+    }
+  },
+  "scripts": {
+    "build": "npm run clean:build && tsx scripts/build.ts && npm run typecheck:data",
+    "clean:build": "rm -rf ./generated",
+    "typecheck": "npm run typecheck:data && npm run typecheck:self && npm run typecheck:scripts",
+    "typecheck:data": "tsc --noEmit -p tsconfig.data.json",
+    "typecheck:self": "tsc --noEmit -p tsconfig.json",
+    "typecheck:scripts": "tsc --noEmit -p tsconfig.scripts.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
+    "lint": "biome lint",
+    "test": "npm run test:unit",
+    "test:unit": "npm run typecheck:tests && vitest run"
+  },
+  "dependencies": {
+    "change-case": "^5.4.4"
+  },
+  "peerDependencies": {
+    "@porsche-design-system/components-react": "4.10.0",
+    "ag-grid-community": "36.2.0",
+    "ag-grid-react": "36.2.0",
+    "react": "^19.3.0"
+  },
+  "devDependencies": {
+    "@porsche-design-system/components-react": "4.10.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "@types/mdx": "^2.0.14",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "ag-grid-community": "36.2.0",
+    "ag-grid-react": "36.2.0",
+    "react": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.2"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

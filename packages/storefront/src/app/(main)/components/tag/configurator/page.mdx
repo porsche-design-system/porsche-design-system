@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { tagMeta } from '@/app/(main)/components/tag/tag.meta';
+import tagDefault from '@porsche-design-system/examples/components/tag/default';
 
 export const metadata = {
   title: 'Tag: Configurator - Components',
@@ -12,5 +13,5 @@ export const metadata = {
 
 <tagMeta.introduction />
 
-<Configurator tagName="p-tag" story={tagMeta.configurator.story} />
+<Configurator example={tagDefault} />
 

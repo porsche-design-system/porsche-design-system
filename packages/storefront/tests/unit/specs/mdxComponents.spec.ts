@@ -21,6 +21,7 @@ const STOREFRONT_DEPENDENCIES = [
   '@/links',
   '@/models/framework',
   '@/models/partials',
+  '@/utils/exampleHeading',
   '@/utils/examples',
   '@/utils/exampleMediaOrigin',
   '@/utils/getBasePath',

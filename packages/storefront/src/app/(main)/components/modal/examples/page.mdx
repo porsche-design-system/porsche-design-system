@@ -1,7 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { modalMeta } from '@/app/(main)/components/modal/modal.meta';
+import scrollable from '@porsche-design-system/examples/components/modal/scrollable';
+import alertDialog from '@porsche-design-system/examples/components/modal/alert-dialog';
+import customStyling from '@porsche-design-system/examples/components/modal/custom-styling';
 
 export const metadata = {
   title: 'Modal: Examples - Components',
@@ -10,28 +12,10 @@ export const metadata = {
 
 # Modal <ComponentStatus tagName="p-modal"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    modalMeta.examples.scrollable.name,
-    modalMeta.examples.alertDialog.name,
-    modalMeta.examples.customStyling.name,
-  ]}
-/>
+<TableOfContents headings={[scrollable.title, alertDialog.title, customStyling.title]} />
 
-## {modalMeta.examples.scrollable.name}
+<Example example={scrollable} />
 
-<modalMeta.examples.scrollable.description />
+<Example example={alertDialog} />
 
-<ComponentStory story={modalMeta.examples.scrollable.story} />
-
-## {modalMeta.examples.alertDialog.name}
-
-<modalMeta.examples.alertDialog.description />
-
-<ComponentStory story={modalMeta.examples.alertDialog.story} />
-
-## {modalMeta.examples.customStyling.name}
-
-<modalMeta.examples.customStyling.description />
-
-<ComponentStory story={modalMeta.examples.customStyling.story} />
+<Example example={customStyling} />

@@ -1,6 +1,6 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { drilldownMeta } from '@/app/(main)/components/drilldown/drilldown.meta';
+import customContent from '@porsche-design-system/examples/components/drilldown/custom-content';
 
 export const metadata = {
   title: 'Drilldown: Examples - Components',
@@ -9,9 +9,5 @@ export const metadata = {
 
 # Drilldown <ComponentStatus tagName="p-drilldown"></ComponentStatus>
 
-## {drilldownMeta.examples.customContent.name}
-
-<drilldownMeta.examples.customContent.description />
-
-<ComponentStory story={drilldownMeta.examples.customContent.story} />
+<Example example={customContent} />
 

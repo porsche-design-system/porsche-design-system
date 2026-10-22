@@ -1,7 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { crestMeta } from '@/app/(main)/components/crest/crest.meta';
+import link from '@porsche-design-system/examples/components/crest/link';
+import customClickableArea from '@porsche-design-system/examples/components/crest/custom-clickable-area';
 
 export const metadata = {
   title: 'Crest: Examples - Components',
@@ -10,16 +11,8 @@ export const metadata = {
 
 # Crest <ComponentStatus tagName="p-crest"></ComponentStatus>
 
-<TableOfContents headings={[crestMeta.examples.link.name, crestMeta.examples.customClickableArea.name]} />
+<TableOfContents headings={[link.title, customClickableArea.title]} />
 
-## {crestMeta.examples.link.name}
+<Example example={link} />
 
-<crestMeta.examples.link.description />
-
-<ComponentStory story={crestMeta.examples.link.story} />
-
-## {crestMeta.examples.customClickableArea.name}
-
-<crestMeta.examples.customClickableArea.description />
-
-<ComponentStory story={crestMeta.examples.customClickableArea.story} />
+<Example example={customClickableArea} />

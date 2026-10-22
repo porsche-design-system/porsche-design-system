@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  // The build and what it imports, run with tsx.
+  "include": ["lib", "scripts"]
+}

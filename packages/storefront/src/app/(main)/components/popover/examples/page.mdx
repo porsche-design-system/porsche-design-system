@@ -1,6 +1,6 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { popoverMeta } from '@/app/(main)/components/popover/popover.meta';
+import slottedButton from '@porsche-design-system/examples/components/popover/slotted-button';
 
 export const metadata = {
   title: 'Popover: Examples - Components',
@@ -9,8 +9,4 @@ export const metadata = {
 
 # Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
 
-## {popoverMeta.examples.slottedButton.name}
-
-<popoverMeta.examples.slottedButton.description />
-
-<ComponentStory story={popoverMeta.examples.slottedButton.story} />
+<Example example={slottedButton} />

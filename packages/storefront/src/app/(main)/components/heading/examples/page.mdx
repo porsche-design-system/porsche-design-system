@@ -1,7 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { headingMeta } from '@/app/(main)/components/heading/heading.meta';
+import semantics from '@porsche-design-system/examples/components/heading/semantics';
+import color from '@porsche-design-system/examples/components/heading/color';
 
 export const metadata = {
   title: 'Heading: Examples - Components',
@@ -10,16 +11,8 @@ export const metadata = {
 
 # Heading <ComponentStatus tagName="p-heading"></ComponentStatus>
 
-<TableOfContents headings={[headingMeta.examples.semantics.name, headingMeta.examples.color.name]} />
+<TableOfContents headings={[semantics.title, color.title]} />
 
-## {headingMeta.examples.semantics.name}
+<Example example={semantics} />
 
-<headingMeta.examples.semantics.description />
-
-<ComponentStory story={headingMeta.examples.semantics.story} />
-
-## {headingMeta.examples.color.name}
-
-<headingMeta.examples.color.description />
-
-<ComponentStory story={headingMeta.examples.color.story} />
+<Example example={color} />

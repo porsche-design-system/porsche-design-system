@@ -4,5 +4,5 @@
     "types": ["vitest/globals"]
   },
   "include": ["**/*.spec.ts"],
-  "exclude": ["./src", "./scripts"]
+  "exclude": ["./src", "./scripts", "./projects"]
 }

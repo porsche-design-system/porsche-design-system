@@ -1,8 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { inputWeekMeta } from '@/app/(main)/components/input-week/input-week.meta';
+import form from '@porsche-design-system/examples/components/input-week/form';
+import slots from '@porsche-design-system/examples/components/input-week/slots';
 
 export const metadata = {
   title: 'Input Week: Examples - Components',
@@ -11,16 +11,8 @@ export const metadata = {
 
 # Input Week <ComponentStatus tagName="p-input-week"></ComponentStatus>
 
-<TableOfContents headings={[inputWeekMeta.examples.form.name, inputWeekMeta.examples.slots.name]} />
+<TableOfContents headings={[form.title, slots.title]} />
 
-## {inputWeekMeta.examples.form.name}
+<Example example={form} />
 
-<inputWeekMeta.examples.form.description />
-
-<ComponentExample codeSample={inputWeekMeta.examples.form.example} />
-
-## {inputWeekMeta.examples.slots.name}
-
-<inputWeekMeta.examples.slots.description />
-
-<ComponentStory story={inputWeekMeta.examples.slots.story} />
+<Example example={slots} />

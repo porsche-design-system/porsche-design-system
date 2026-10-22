@@ -1,8 +1,8 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { scrollerMeta } from '@/app/(main)/components/scroller/scroller.meta';
+import height from '@porsche-design-system/examples/components/scroller/height';
+import scrollToPosition from '@porsche-design-system/examples/components/scroller/scroll-to-position';
 
 export const metadata = {
   title: 'Scroller: Examples - Components',
@@ -11,16 +11,8 @@ export const metadata = {
 
 # Scroller <ComponentStatus tagName="p-scroller"></ComponentStatus>
 
-<TableOfContents headings={[scrollerMeta.examples.height.name, scrollerMeta.examples.scrollToPosition.name]} />
+<TableOfContents headings={[height.title, scrollToPosition.title]} />
 
-## {scrollerMeta.examples.height.name}
+<Example example={height} />
 
-<scrollerMeta.examples.height.description />
-
-<ComponentStory story={scrollerMeta.examples.height.story} />
-
-## {scrollerMeta.examples.scrollToPosition.name}
-
-<scrollerMeta.examples.scrollToPosition.description />
-
-<ComponentExample codeSample={scrollerMeta.examples.scrollToPosition.example} />
+<Example example={scrollToPosition} />
