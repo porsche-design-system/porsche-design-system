@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   rendered inside a hidden container, e.g. a tab panel with `display: none`, and shown afterwards
   ([#4778](https://github.com/porsche-design-system/porsche-design-system/pull/4778))
 
+## [4.9.0] - 2026-10-21
+
 ## [4.9.0-rc.0] - 2026-10-20
 
 ### Added
