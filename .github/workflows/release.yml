@@ -258,6 +258,8 @@ jobs:
       - github-release
       - storefront-exact-version
       - storefront-major-version
+      # Waited for, never required: the announcement follows the Code Connect publish, whatever its result.
+      - figma-code-connect
     # A pre-release, an already-released tag and a draft all report false, and a failed
     # `github-release` leaves this empty.
     # A successful major job may intentionally leave a newer release in place.
