@@ -347,8 +347,9 @@ jobs:
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: npm run test:unit:examples:pages
       - run: npm run test:unit:examples:examples
+      - run: npm run test:unit:examples:framework
+      - run: npm run test:unit:examples:pages
       - run: npm run test:e2e:examples
       - name: 'E2E Results'
         if: failure()
@@ -437,18 +438,6 @@ jobs:
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:unit:story-generator
-  examples-framework:
-    name: 'Examples Framework'
-    runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
-    steps:
-      - uses: actions/checkout@v7
-      - uses: ./.github/actions/install
-      - name: 'Restore'
-        uses: ./.github/actions/restore
-      - run: npm run test:unit:examples:framework
   storefront-unit:
     name: 'Storefront Unit'
     runs-on: ubuntu-latest
