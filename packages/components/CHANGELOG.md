@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- Figma Code Connect: Figma Dev Mode and the Figma MCP server show PDS code (Web Components, React, Angular, Vue) for
+  the components and icons of the Porsche Web Design System library, published with every release
+  ([#4747](https://github.com/porsche-design-system/porsche-design-system/pull/4747))
+
 ## [4.9.0] - 2026-10-21
 
 ## [4.9.0-rc.0] - 2026-10-20
