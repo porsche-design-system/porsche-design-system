@@ -33,6 +33,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **React SSR**: components from `@porsche-design-system/components-react/ssr` cache their styles per combination of
   props instead of generating them on every server render, which reduces the server's CPU time per render. The rendered
   markup is unchanged. ([#4788](https://github.com/porsche-design-system/porsche-design-system/pull/4788))
+- `Storefront Docs`: Refactor A11Y AI Context pages to use the new `web-accessibility-codegen` and `web-accessibility-audit` apm packages.
+  ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
 
 ### Fixed
 
