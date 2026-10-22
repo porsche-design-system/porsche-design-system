@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { escapeCell, examplesSkill, getComponents, getMarkup, getScript } from '../../../skill/skill.ts';
+import { getComponents } from '../../../lib/components.ts';
+import { escapeCell, examplesSkill, getMarkup, getScript } from '../../../skill/skill.ts';
 
 /**
  * The serializer of the knowledge skill: what it keeps of a generated project, and which component references an

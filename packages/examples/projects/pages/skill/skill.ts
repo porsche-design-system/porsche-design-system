@@ -1,21 +1,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { PackageSkill, PackageSkillReference } from '@porsche-design-system/shared';
-import { examples } from '../generated/examples.ts';
-import { getComponents } from '../lib/components.ts';
-import type { Example } from '../lib/meta.ts';
-import { type ProjectCategory, scriptEntryName, styleEntryName } from '../lib/projects.ts';
+import { pageExamples } from '../generated/examples.ts';
+import type { PageExample } from '../lib/meta.ts';
+import { scriptEntryName, styleEntryName } from '../lib/projects.ts';
 import { srcDir } from '../lib/shared.ts';
-
-export { getComponents };
 
 /**
  * Markdown serializer of the patterns and templates for the knowledge skill.
  *
- * It imports the source of the package export, `generated/examples.ts` – the very files StackBlitz opens and the
- * storefront shows – so `scripts/build.ts` has to run first; the root build runs it before `build:skills`. Of every
- * project it keeps what an agent needs to rebuild the example: the markup without its `<head>`, and the script without
- * the stylesheet import.
+ * It reads `pageExamples` from the source of the package export, `generated/examples.ts` – the very files StackBlitz
+ * opens and the storefront shows, and the components each page is built from – so `scripts/build.ts` has to run first;
+ * the root build runs it before `build:skills`. Of every project it keeps what an agent needs to rebuild the example:
+ * the markup without its `<head>`, and the script without the stylesheet import.
  * `package.json` and `vite.config.ts` are left out, since the skill covers the setup of every framework on its own,
  * and the stylesheet, the same for every page, is shown once in the index.
  *
@@ -26,12 +23,10 @@ export { getComponents };
 
 const skillName = 'examples';
 
-const categoryLabels: Record<ProjectCategory, { heading: string; singular: string }> = {
-  patterns: { heading: 'Patterns', singular: 'Pattern' },
-  templates: { heading: 'Templates', singular: 'Template' },
+const kindLabels: Record<PageExample['kind'], { heading: string; singular: string }> = {
+  pattern: { heading: 'Patterns', singular: 'Pattern' },
+  template: { heading: 'Templates', singular: 'Template' },
 };
-
-const getCategory = (pagePath: string): ProjectCategory => pagePath.split('/')[0] as ProjectCategory;
 
 /**
  * Text as one cell of a markdown table: on a single line, with the backslash escaped before the pipe, so a backslash
@@ -83,12 +78,12 @@ const renderComponentLinks = (components: string[]): string =>
   components.map((tag) => `[\`${tag}\`](/components/${tag.replace(/^p-/, '')})`).join(', ');
 
 /** Link from a reference back to the index, which lies as many folders up as the reference name has segments. */
-const getIndexLink = (pagePath: string): string => `${'../'.repeat(pagePath.split('/').length)}${skillName}.md`;
+const getIndexLink = (id: string): string => `${'../'.repeat(id.split('/').length)}${skillName}.md`;
 
-const getFile = ({ path: pagePath, files }: Example, file: string): string => {
+const getFile = ({ id, files }: PageExample, file: string): string => {
   const content = files[file];
   if (content === undefined) {
-    throw new Error(`[examples] the project of "${pagePath}" has no ${file}`);
+    throw new Error(`[examples] the project of "${id}" has no ${file}`);
   }
   return content;
 };
@@ -98,8 +93,8 @@ const getFile = ({ path: pagePath, files }: Example, file: string): string => {
  * the script, the stylesheet – is in the index, and what they are and how to convert them is in SKILL.md, which is in
  * context whenever a reference is read.
  */
-const renderPage = (example: Example): string => {
-  const { path: pagePath, title, description } = example;
+const renderPage = (example: PageExample): string => {
+  const { id, kind, title, description, components } = example;
   const markup = getMarkup(getFile(example, 'index.html'));
   const script = getScript(getFile(example, scriptEntryName));
 
@@ -108,9 +103,9 @@ const renderPage = (example: Example): string => {
     '',
     description,
     '',
-    `- **Type:** ${categoryLabels[getCategory(pagePath)].singular}`,
-    `- **Components:** ${renderComponentLinks(getComponents(markup))}`,
-    `- **Conventions and stylesheet:** shared by all examples, see [${skillName}.md](${getIndexLink(pagePath)})`,
+    `- **Type:** ${kindLabels[kind].singular}`,
+    `- **Components:** ${renderComponentLinks(components)}`,
+    `- **Conventions and stylesheet:** shared by all examples, see [${skillName}.md](${getIndexLink(id)})`,
     '',
     '## Markup',
     '',
@@ -125,12 +120,12 @@ const renderPage = (example: Example): string => {
   ].join('\n');
 };
 
-const getExamples = (): Example[] => Object.values(examples);
+const getExamples = (): PageExample[] => Object.values(pageExamples);
 
-const renderCatalog = (examples: Example[]): string[] =>
-  (Object.keys(categoryLabels) as ProjectCategory[]).flatMap((category) => {
-    const entries = examples.filter(({ path: pagePath }) => getCategory(pagePath) === category);
-    const { heading, singular } = categoryLabels[category];
+const renderCatalog = (examples: PageExample[]): string[] =>
+  (Object.keys(kindLabels) as PageExample['kind'][]).flatMap((kind) => {
+    const entries = examples.filter((example) => example.kind === kind);
+    const { heading, singular } = kindLabels[kind];
 
     return entries.length === 0
       ? []
@@ -141,7 +136,7 @@ const renderCatalog = (examples: Example[]): string[] =>
           '| --- | --- | --- | --- |',
           ...entries.map(
             (example) =>
-              `| ${escapeCell(example.title)} | ${escapeCell(example.description)} | ${renderComponentLinks(getComponents(getMarkup(getFile(example, 'index.html'))))} | [${example.path.split('/').pop()}.md](./${skillName}/${example.path}.md) |`
+              `| ${escapeCell(example.title)} | ${escapeCell(example.description)} | ${renderComponentLinks(example.components)} | [${example.id.split('/').pop()}.md](./${skillName}/${example.id}.md) |`
           ),
           '',
         ];
@@ -203,7 +198,7 @@ export const examplesSkill: PackageSkill = {
   getContent: renderIndex,
   getReferences: (): PackageSkillReference[] =>
     getExamples().map((example) => ({
-      name: example.path,
+      name: example.id,
       title: example.title,
       description: example.description,
       getContent: () => renderPage(example),

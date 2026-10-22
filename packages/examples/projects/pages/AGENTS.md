@@ -43,9 +43,9 @@ dist-site/                     # build:site – scripts/buildSite.ts, what the s
 id, in the shape every project of [`packages/examples`](../../AGENTS.md) exports: `id`, `kind` (`pattern`, `template`),
 its meta, the `components` it is built from (`lib/components.ts`, as the knowledge skill lists them), the `files` of its
 project, which the storefront shows as code and opens in StackBlitz, and the `url` of its built page. `examples` is the
-same by path with the meta and files only, as the storefront, StackBlitz and the skill read it until they switch to the
-catalogue (#4789). Next to them are the paths the pages and their media are served at (`examplesPath`, `mediaPath`). The
-types of an example – `ExampleMeta`, `ExampleProject`, `Example`, `PageExample` – are defined once, in
+same by path with the meta and files only, which nothing but `scripts/verify.ts` and a storefront e2e test reads any
+more; it goes in step 7.4 of #4789. Next to them are the paths the pages and their media are served at (`examplesPath`,
+`mediaPath`). The types of an example – `ExampleMeta`, `ExampleProject`, `Example`, `PageExample` – are defined once, in
 [`lib/meta.ts`](lib/meta.ts), which the generated source re-exports; it adds `ExamplePath`, the path of every example as
 a union. `build:projects` writes the source, typechecks what it built with it and bundles it with its declarations into
 `dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so a consumer compiles nothing of this package. The
@@ -518,11 +518,11 @@ exports `examplesSkill`, a `PackageSkill` like the ones of the style packages, r
 `SKILL.md` is in context whenever the other files are read, so none of them repeats it, and the references repeat
 nothing the index says – a test of the skills project holds that.
 
-`examplesSkill` imports the source of the package export, `generated/examples.ts` – the files StackBlitz opens – so the
-skill shows what the storefront shows. The content is framework-agnostic. Components link to their storefront route
-(`/components/button`), sub-components by the component documenting them, and the generator resolves the route to the
-component reference. A change to a page changes the staged skill trees, so update the content snapshots of the skills
-project with it (`npm run test:unit:skills`).
+`examplesSkill` reads `pageExamples` from the source of the package export, `generated/examples.ts` – the files
+StackBlitz opens and the components each page is built from – so the skill shows what the storefront shows. The content
+is framework-agnostic. Components link to their storefront route (`/components/button`), sub-components by the component
+documenting them, and the generator resolves the route to the component reference. A change to a page changes the staged
+skill trees, so update the content snapshots of the skills project with it (`npm run test:unit:skills`).
 
 ## Adding a template (a whole page)
 
