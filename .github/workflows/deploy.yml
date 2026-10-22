@@ -11,10 +11,6 @@ on:
         description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4-preview"). Used as the key prefix in the origin bucket; must match the storefront basePath baked in at build time.'
         required: true
         type: string
-      storefront-algolia:
-        description: 'Whether to (re)index the storefront on Algolia. Resolved once in the caller (contribution.yml → context job); should be "true" only for production-ish refs (main + version branches), never PRs.'
-        required: true
-        type: string
     secrets:
       linode-aws-access-key-id:
         description: 'AWS Access Key ID for Linode / Akamai CDN.'
@@ -33,12 +29,6 @@ on:
         required: true
       aws-storefront-distribution-id:
         description: 'Storefront CloudFront distribution to invalidate.'
-        required: true
-      algolia-app-id:
-        description: 'Algolia App ID (Storefront).'
-        required: true
-      algolia-api-key:
-        description: 'Algolia API Key (Storefront).'
         required: true
 
 # Least privilege: the Akamai jobs deploy via the Linode AWS secrets, and the storefront jobs via a
@@ -225,20 +215,3 @@ jobs:
           # `--delete`; the release role cannot delete under `v4.7.0/` either, so a buggy pipeline
           # still cannot unpublish a release.
           delete: 'true'
-  storefront-nightly-and-preview-algolia:
-    name: 'Algolia (/nightly or /v<major>-preview)'
-    needs: storefront-nightly-and-preview
-    if: github.event_name == 'push' && inputs.storefront-algolia == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - uses: ./.github/actions/install
-      - uses: ./.github/actions/restore
-        with:
-          artifact: 'build-production'
-      - name: 'Index storefront'
-        run: npm run updateAlgolia
-        env:
-          P_CURRENT_BRANCH: ${{ inputs.storefront-slug }}
-          ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
-          ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
