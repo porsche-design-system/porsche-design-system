@@ -14,6 +14,23 @@ import { examples } from '@porsche-design-system/examples';
 const pagesWithExamples: [path: string, examples: string[]][] = [
   ['/patterns/header/', ['patterns/header/overlay', 'patterns/header/stacked']],
   ['/patterns/footer/', ['patterns/footer']],
+  [
+    '/patterns/tile/',
+    [
+      'patterns/tile/model-selection',
+      'patterns/tile/model-navigation',
+      'patterns/tile/category',
+      'patterns/tile/image-category',
+      'patterns/tile/video',
+      'patterns/tile/product',
+      'patterns/tile/vehicle-listing',
+      'patterns/tile/feature',
+      'patterns/tile/feature-highlight',
+      'patterns/tile/call-to-action',
+      'patterns/tile/model-teaser',
+      'patterns/tile/product-teaser',
+    ],
+  ],
   ['/patterns/feedback/', ['patterns/feedback/inline', 'patterns/feedback/dialog']],
   [
     '/patterns/popover/',
