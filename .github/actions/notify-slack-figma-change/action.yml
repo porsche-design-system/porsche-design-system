@@ -1,0 +1,40 @@
+name: 'Notify Slack Figma Change'
+description: 'Sends the design channel every design line of `$RUNNER_TEMP/generate.log`, by component; nothing when there is none.'
+
+inputs:
+  slack-bot-token:
+    description: 'Slack bot token with the `chat:write` scope.'
+    required: true
+  slack-channel-id:
+    description: 'Slack channel to post to. The app must be a member of it.'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    # Design gets its changes by component with Figma links, nothing about GitHub: designers have no GitHub account.
+    - name: 'Build Slack payload'
+      id: slack
+      shell: bash
+      run: |
+        if ! grep -q '^design: ' "$RUNNER_TEMP/generate.log"; then echo "no design line, nothing to send"; exit 0; fi
+        node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-figma-payload.ts \
+          "$RUNNER_TEMP/generate.log" packages/components/projects/figma-code-connect/figma.config.json > "$RUNNER_TEMP/slack-payload.json"
+        if [ -s "$RUNNER_TEMP/slack-payload.json" ]; then
+          cat "$RUNNER_TEMP/slack-payload.json"
+          echo "send=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "::notice::no Figma-side action to report to design"
+        fi
+      env:
+        SLACK_CHANNEL_ID: ${{ inputs.slack-channel-id }}
+
+    - name: 'Send'
+      if: steps.slack.outputs.send == 'true'
+      # `errors: true` — the action's default is false and a rejected request would pass green.
+      uses: slackapi/slack-github-action@v4.0.0
+      with:
+        method: chat.postMessage
+        token: ${{ inputs.slack-bot-token }}
+        payload-file-path: ${{ runner.temp }}/slack-payload.json
+        errors: true

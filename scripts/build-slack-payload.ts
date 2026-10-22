@@ -1,6 +1,6 @@
 /**
  * Builds the `chat.postMessage` payload announcing a failed CI run.
- * Used by .github/workflows/notify-pipeline-failure.yml.
+ * Used by .github/actions/notify-slack-pipeline-failure.
  *
  * SLACK_CHANNEL_ID=C0... node scripts/build-slack-payload.ts <run.json> <jobs.json> <pulls.json>
  *
