@@ -31,13 +31,13 @@
     "change-case": "^5.4.4"
   },
   "peerDependencies": {
-    "@porsche-design-system/components-react": "4.8.0",
+    "@porsche-design-system/components-react": "4.9.0",
     "ag-grid-community": "36.2.0",
     "ag-grid-react": "36.2.0",
     "react": "^19.3.0"
   },
   "devDependencies": {
-    "@porsche-design-system/components-react": "4.8.0",
+    "@porsche-design-system/components-react": "4.9.0",
     "@porsche-design-system/shared": "0.0.0",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
