@@ -16,6 +16,8 @@
     }
   },
   "scripts": {
+    "start": "npm run start --workspace=@porsche-design-system/examples-pages",
+    "preview": "npm run preview --workspace=@porsche-design-system/examples-pages",
     "build": "npm run build:projects && npm run build:site",
     "build:projects": "npm run build --workspace=@porsche-design-system/examples-framework && npm run build --workspace=@porsche-design-system/examples-stories && npm run build:projects --workspace=@porsche-design-system/examples-pages && tsx scripts/build.ts && npm run typecheck:catalogue",
     "build:site": "npm run typecheck:framework && npm run typecheck:stories && npm run typecheck:self && npm run build:site --workspace=@porsche-design-system/examples-pages",
@@ -27,7 +29,16 @@
     "typecheck:pages": "npm run typecheck --workspace=@porsche-design-system/examples-pages",
     "typecheck:stories": "npm run typecheck --workspace=@porsche-design-system/examples-stories",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
-    "test:unit": "npm run typecheck:tests && vitest run",
+    "test": "npm run test:unit && npm run test:e2e && npm run test:a11y && npm run test:vrt",
+    "test:unit": "npm run test:unit:examples && npm run test:unit:framework && npm run test:unit:pages",
+    "test:unit:examples": "npm run typecheck:tests && vitest run",
+    "test:unit:framework": "npm run test:unit --workspace=@porsche-design-system/examples-framework",
+    "test:unit:pages": "npm run test:unit --workspace=@porsche-design-system/examples-pages",
+    "test:e2e": "npm run test:e2e --workspace=@porsche-design-system/examples-pages",
+    "test:a11y": "npm run test:a11y --workspace=@porsche-design-system/examples-pages",
+    "test:vrt": "npm run test:vrt --workspace=@porsche-design-system/examples-pages",
+    "test:vrt:chrome": "npm run test:vrt:chrome --workspace=@porsche-design-system/examples-pages",
+    "test:vrt:safari": "npm run test:vrt:safari --workspace=@porsche-design-system/examples-pages",
     "clean:build": "npm run clean:build --workspace=@porsche-design-system/examples-framework && npm run clean:build --workspace=@porsche-design-system/examples-stories && npm run clean:build --workspace=@porsche-design-system/examples-pages && rm -rf ./generated"
   },
   "dependencies": {

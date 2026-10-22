@@ -34,9 +34,9 @@ typecheck and tests. This package's own typecheck and unit tests leave them out.
   `packages/examples`, the Storefront (its configurator and its own stories) and the skills' tests use it. It exports
   its source, which the Storefront compiles (`transpilePackages`).
 
-The story generator's `/react` subpath imports the React wrapper, so its typecheck runs in the Storefront's build, after
-the wrappers (`npm run typecheck:story-generator --workspace=@porsche-design-system/storefront`); its tests run with
-`npm run test:unit:story-generator`, their typecheck with `npm run typecheck:shared:tests`.
+The story generator's `/react` subpath imports the React wrapper, so its typecheck runs after the wrappers: in the
+Storefront's build, and in `typecheck:all` (`npm run typecheck --workspace=@porsche-design-system/story-generator`). Its
+tests run with `npm run test:unit:story-generator`, their typecheck with `npm run typecheck:shared:tests`.
 
 ## Commands
 

@@ -100,8 +100,10 @@ npm run typecheck:examples:tests  # the test scopes of every project
 npm run clean:examples:build
 
 npm run start:examples            # the pages' dev server – see projects/pages/AGENTS.md for their tests
-npm run test:unit:examples-catalogue  # the ids of all projects
-npm run test:unit:examples-framework
+npm run test:unit:examples        # the unit tests of this package and of every project
+npm run test:unit:examples:examples   # this package's: the ids of all projects
+npm run test:unit:examples:framework
+npm run test:unit:examples:pages
 ```
 
 A project has no root `typecheck` entry of its own: `typecheck:examples` fans out to every project, and
