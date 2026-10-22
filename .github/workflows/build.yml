@@ -80,6 +80,7 @@ jobs:
             ./packages/storefront/dist/
             ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
+            ./packages/examples/generated/
             ./packages/examples/projects/framework/generated/
             ./packages/examples/projects/stories/generated/
             ./packages/examples/projects/pages/dist/
@@ -176,6 +177,7 @@ jobs:
             ./packages/storefront/dist/
             ./packages/storefront/projects/skills/generated/
             ./packages/storefront/projects/stackblitz/dist/
+            ./packages/examples/generated/
             ./packages/examples/projects/framework/generated/
             ./packages/examples/projects/stories/generated/
             ./packages/examples/projects/pages/dist/
