@@ -38,6 +38,7 @@
   "devDependencies": {
     "@porsche-design-system/components-react": "4.10.0",
     "@porsche-design-system/shared": "0.0.0",
+    "@types/mdx": "^2.0.14",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
     "tsx": "^4.23.15",

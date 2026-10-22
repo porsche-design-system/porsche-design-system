@@ -11,7 +11,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "types": []
+    "types": ["mdx"]
   },
   // Everything, the example modules included, whose stories and previews import the React wrapper's types: checked in
   // `build:site`, after the wrappers. tsconfig.catalogue.json checks the data before them.

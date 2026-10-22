@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": []
+    "types": ["mdx"]
   },
-  "include": ["generated/previews", "generated/examples", "lib/mdx.d.ts"]
+  "include": ["generated/previews", "generated/examples"]
 }

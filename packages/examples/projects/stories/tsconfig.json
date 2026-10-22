@@ -11,7 +11,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "types": []
+    "types": ["mdx"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "lib", "generated"],
   "exclude": ["node_modules"]
