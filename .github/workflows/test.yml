@@ -77,6 +77,21 @@ jobs:
         with:
           artifact: 'build-production'
       - run: npm run test:unit:stylesheets
+  figma-code-connect:
+    name: 'Figma Code Connect'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - run: npm run typecheck --workspace=@porsche-design-system/figma-code-connect
+      - run: npm run test:unit --workspace=@porsche-design-system/figma-code-connect
   components-unit:
     name: 'Components Unit'
     runs-on: ubuntu-latest
