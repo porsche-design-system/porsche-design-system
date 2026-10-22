@@ -25,27 +25,34 @@ an example keeps its id when its format changes:
 | An example of a component                  | `components/<tag without p->/<slug>`          | `components/select/async-filter`                                           |
 | The default example the configurator shows | `components/<component>/default`              | `components/toast/default`                                                 |
 | An accessibility example                   | `components/<component>/accessibility/<slug>` | `components/button/accessibility/icon-only-button-without-accessible-name` |
-| A pattern or a template                    | its path, as `ExamplePath` names it           | `patterns/header/overlay`                                                  |
+| A pattern or a template                    | its path, as `PageExampleId` names it         | `patterns/header/overlay`                                                  |
 | An example of something else               | `<Storefront route>/<slug>`                   | `ag-grid/theme/compact`                                                    |
 
-`default` is only ever the last segment, and `accessibility` only appears in the ids of the accessibility examples.
-[`tests/unit/specs/ids.spec.ts`](tests/unit/specs/ids.spec.ts) checks the ids of all projects together: unique, well
-formed, reserved segments respected.
+`default` is only ever the last segment, of a story or framework example, and `accessibility` only appears in the ids of
+the accessibility examples. The rules are [`lib/ids.ts`](lib/ids.ts): the builds of the stories and the framework
+examples fail on an id that breaks them, and [`tests/unit/specs/ids.spec.ts`](tests/unit/specs/ids.spec.ts) checks the
+ids of all projects together, unique included.
+
+[`lib/`](lib/) holds what the builds of the projects share – the id rules, reading a description, rejecting a file that
+belongs to no example, writing an example's module – and is tested by this package (`tests/unit/specs/lib/`). The
+projects import it by its path; it is not part of the package's exports.
 
 ## Interface
 
-`@porsche-design-system/examples` exposes every example in one shape, whatever its project, in two ways:
+`@porsche-design-system/examples` exposes every example in one shape, whatever its project, in three entry points:
 
-| Entry point                            | What it holds                                                                                                                                                   | Who loads it                                                        |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `@porsche-design-system/examples`      | The catalogue: every example by id as data, an `Example` of its kind                                                                                            | Anything – Node scripts, the server – before the wrappers are built |
-| `@porsche-design-system/examples/<id>` | One example as a module: its data and what renders it – a story example's stories, a framework example's `Preview`, the `Description` (`example.mdx`) of either | A page that shows it; it needs the MDX loader and Next              |
+| Entry point                              | What it holds                                                                                                                                                   | Who loads it                                                        |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `@porsche-design-system/examples`        | The catalogue: every example by id as data, an `Example` of its kind                                                                                            | Anything – Node scripts, the server – before the wrappers are built |
+| `@porsche-design-system/examples/<id>`   | One example as a module: its data and what renders it – a story example's stories, a framework example's `Preview`, the `Description` (`example.mdx`) of either | A page that shows it; it needs the MDX loader and Next              |
+| `@porsche-design-system/examples/module` | Types only: `ExampleModule`, the module of an example by its kind (`StoryExampleModule`, …), and `ExampleModuleOf<Id>`                                          | What renders an example, e.g. the Storefront's `<Example>`          |
 
 Every project generates both in the same shape for every kind: its examples as data (`storyExamples`,
 `accessibilityExamples`, `frameworkExamples`, `pageExamples`) and one module per example (`generated/examples/<id>.ts`).
 The root only merges the data ([`src/`](src/)), and its `build:projects` re-exports every example's module by its id
-([`scripts/build.ts`](scripts/build.ts) into `generated/`). [`src/types.ts`](src/types.ts) defines what every project
-exports:
+([`scripts/build.ts`](scripts/build.ts) into `generated/`), each one checked against the type of its id
+([`src/module.ts`](src/module.ts)) by the typecheck of `build:site`, after the wrappers. [`src/types.ts`](src/types.ts)
+defines what every project exports:
 
 - **`Example`**, a union by `kind` (`story`, `framework`, `accessibility`, `pattern`, `template`) over what every
   example has: `id`, `title` (its heading, in the Storefront and in the skills), `description` (MDX source; plain text
@@ -80,8 +87,9 @@ built, and the previews need the wrappers:
 The stories and the framework examples export their TypeScript and MDX source, and what their build generated
 (`generated/`), not a bundle: the Storefront compiles them (`transpilePackages` in
 [`next.config.ts`](../storefront/next.config.ts), and `@source` in its `globals.css` for their Tailwind classes), so
-`next dev` reloads a change to them like one to its own files. This package exports its source too. The pages export a
-bundle, `dist/examples.js`, which `build:examples:projects` writes.
+`next dev` reloads a change to them like one to its own files. This package exports its source too. The pages export
+their data as a bundle, `dist/examples.js`, and the module of every example as generated source
+(`generated/examples/<id>.ts`, which the Storefront compiles as well); `build:examples:projects` writes both.
 
 **Descriptions are MDX** (`example.mdx`), next to the example they describe, and the Storefront compiles them like its
 own pages. They import nothing from the Storefront; the one component they use, `Notification`, comes from the
@@ -101,9 +109,10 @@ npm run clean:examples:build
 
 npm run start:examples            # the pages' dev server – see projects/pages/AGENTS.md for their tests
 npm run test:unit:examples        # the unit tests of this package and of every project
-npm run test:unit:examples:examples   # this package's: the ids of all projects
+npm run test:unit:examples:examples   # this package's: lib/ and the ids of all projects
 npm run test:unit:examples:framework
 npm run test:unit:examples:pages
+npm run test:unit:examples:stories
 ```
 
 A project has no root `typecheck` entry of its own: `typecheck:examples` fans out to every project, and

@@ -10,6 +10,10 @@
       "types": "./src/index.ts",
       "default": "./src/index.ts"
     },
+    "./module": {
+      "types": "./src/module.ts",
+      "default": "./src/module.ts"
+    },
     "./*": {
       "types": "./generated/*.ts",
       "default": "./generated/*.ts"
@@ -21,6 +25,7 @@
     "build": "npm run build:projects && npm run build:site",
     "build:projects": "npm run build --workspace=@porsche-design-system/examples-framework && npm run build --workspace=@porsche-design-system/examples-stories && npm run build:projects --workspace=@porsche-design-system/examples-pages && tsx scripts/build.ts && npm run typecheck:catalogue",
     "build:site": "npm run typecheck:framework && npm run typecheck:stories && npm run typecheck:self && npm run build:site --workspace=@porsche-design-system/examples-pages",
+    "lint": "biome lint",
     "typecheck": "npm run typecheck:framework && npm run typecheck:pages && npm run typecheck:stories && npm run typecheck:self && npm run typecheck:scripts",
     "typecheck:self": "tsc --noEmit -p tsconfig.json",
     "typecheck:catalogue": "tsc --noEmit -p tsconfig.catalogue.json",
@@ -30,10 +35,11 @@
     "typecheck:stories": "npm run typecheck --workspace=@porsche-design-system/examples-stories",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit && npm run test:e2e && npm run test:a11y && npm run test:vrt",
-    "test:unit": "npm run test:unit:examples && npm run test:unit:framework && npm run test:unit:pages",
+    "test:unit": "npm run test:unit:examples && npm run test:unit:framework && npm run test:unit:pages && npm run test:unit:stories",
     "test:unit:examples": "npm run typecheck:tests && vitest run",
     "test:unit:framework": "npm run test:unit --workspace=@porsche-design-system/examples-framework",
     "test:unit:pages": "npm run test:unit --workspace=@porsche-design-system/examples-pages",
+    "test:unit:stories": "npm run test:unit --workspace=@porsche-design-system/examples-stories",
     "test:e2e": "npm run test:e2e --workspace=@porsche-design-system/examples-pages",
     "test:a11y": "npm run test:a11y --workspace=@porsche-design-system/examples-pages",
     "test:vrt": "npm run test:vrt --workspace=@porsche-design-system/examples-pages",
@@ -48,6 +54,7 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "devDependencies": {
+    "@porsche-design-system/story-generator": "0.0.0",
     "@types/mdx": "^2.0.14",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",

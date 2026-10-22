@@ -1,3 +1,4 @@
+import { generatedHeader, toGeneratedDir } from '../../../lib/build.ts';
 import type { PageExample } from './meta.ts';
 import { examplesPath, mediaPath } from './projects.ts';
 
@@ -13,8 +14,8 @@ import { examplesPath, mediaPath } from './projects.ts';
  *
  * It is generated because the files are build output – rendered, formatted and split into a project by this package –
  * and the paths of the examples are only known once the pages are found. Its types are those of `lib/meta.ts`,
- * re-exported, so they are defined there and nowhere else; the generated part is `ExamplePath`, the path of every
- * example as a union. The generated source imports nothing but types, so it bundles without the `.ts` import
+ * re-exported, so they are defined there and nowhere else; the generated part is `PageExampleId`, the id – the path –
+ * of every example as a union. The generated source imports nothing but types, so it bundles without the `.ts` import
  * extensions the rest of the package uses.
  */
 
@@ -33,8 +34,8 @@ export const getExportModule = (examples: PageExamples): string =>
     '',
     "export type { ExampleMeta, PageExample } from '../lib/meta.ts';",
     '',
-    '/** The path of every example below the root of the examples. */',
-    `export type ExamplePath =\n${Object.keys(examples)
+    '/** The id of every example: its path below the root of the examples. */',
+    `export type PageExampleId =\n${Object.keys(examples)
       .map((path) => `  | ${literal(path)}`)
       .join('\n')};`,
     '',
@@ -51,6 +52,20 @@ export const getExportModule = (examples: PageExamples): string =>
     ' *',
     ' * The whole set is large – import it on the server only, and hand a client the example it shows.',
     ' */',
-    `export const pageExamples: { readonly [Path in ExamplePath]: PageExample<Path> } = ${JSON.stringify(examples, null, 2)};`,
+    `export const pageExamples: { readonly [Id in PageExampleId]: PageExample<Id> } = ${JSON.stringify(examples, null, 2)};`,
     '',
   ].join('\n');
+
+/**
+ * The module of one example, `generated/examples/<id>.ts`, which `@porsche-design-system/examples-pages/examples/<id>`
+ * resolves to: the example as data, with the files of its project and nothing of the other examples – what a
+ * Storefront page imports through `@porsche-design-system/examples/<id>`.
+ */
+export const getExampleModule = (example: PageExample): string[] => [
+  generatedHeader('src/'),
+  `import type { PageExample } from '${toGeneratedDir(example.id)}../lib/meta.ts';`,
+  '',
+  `const example: PageExample<'${example.id}'> = ${JSON.stringify(example, null, 2)};`,
+  '',
+  'export default example;',
+];

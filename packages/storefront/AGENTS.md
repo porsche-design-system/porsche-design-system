@@ -170,7 +170,8 @@ When adding or updating documentation pages for a component in `src/app/(main)/c
 configurator and examples pages driven by stories whenever possible. The stories live in `packages/examples`
 ([`projects/stories`](../examples/projects/stories)), one folder per example, named by its id. A page imports the
 examples it shows by their id (`@porsche-design-system/examples/<id>`) and renders them with `<Example>`; the
-component's `{component}.meta.ts` lists their ids, in the order of the page, for the skill.
+component's `{component}.meta.ts` lists their ids, in the order of the page, for the skill. `componentDocs.spec.ts`
+fails when the meta and the configurator or examples page differ.
 
 ### Story file rules
 

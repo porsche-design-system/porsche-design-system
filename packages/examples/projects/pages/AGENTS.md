@@ -45,10 +45,15 @@ its meta, the `components` it is built from (`lib/components.ts`, as the knowled
 project, which the storefront shows as code and opens in StackBlitz, and the `url` of its built page. Next to it are the
 paths the pages and their media are served at (`examplesPath`, `mediaPath`). The types of an example – `ExampleMeta`,
 `PageExample` – are defined once, in [`lib/meta.ts`](lib/meta.ts), which the generated source re-exports; it adds
-`ExamplePath`, the path of every example as a union. `build:projects` writes the source, typechecks what it built with
-it and bundles it with its declarations into `dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so a consumer
-compiles nothing of this package. The scripts and the knowledge skill import the source itself. The export holds every
-example, so import it on the server only.
+`PageExampleId`, the id – the path – of every example as a union. `build:projects` writes the source, typechecks what it
+built with it and bundles it with its declarations into `dist/` ([`rollup.config.mjs`](rollup.config.mjs), ESM only), so
+a consumer compiles nothing of this package. The scripts and the knowledge skill import the source itself. The export
+holds every example, so import it on the server only.
+
+`build:projects` also writes the module of every example, `generated/examples/<id>.ts`
+(`@porsche-design-system/examples-pages/examples/<id>`): the example alone, as data, typed by its id. It is what
+`@porsche-design-system/examples/<id>` re-exports, as the stories and the framework examples generate theirs, so a
+Storefront page loads the project of the example it shows and no other.
 
 **The two steps run at different points of the root build.** `build:projects` needs the sources and the types of
 `@porsche-design-system/components` only, and runs before `build:skills`, which reads its output (see _Knowledge

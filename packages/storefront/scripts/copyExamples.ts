@@ -8,9 +8,9 @@ import { getBasePath } from '../src/utils/getBasePath';
  * Copies the built examples into `public/examples/`, where `WebsiteViewer` frames them.
  *
  * The source is `packages/examples/projects/pages/dist-site/`: one self-contained `index.html` per example, and the
- * media once in `media/`. The meta and the project files of the examples are not copied – `ExampleViewer` imports them
- * from the package export. `public/examples/` is git-ignored and replaced as a whole on every run,
- * so a removed example does not linger.
+ * media once in `media/`. The meta and the project files of the examples are not copied – `Example` reads them from
+ * the catalogue of `@porsche-design-system/examples`. `public/examples/` is git-ignored and replaced as a whole on every
+ * run, so a removed example does not linger.
  *
  * Two rewrites happen on the way:
  * - the storefront slug is inserted into every media path of the pages;

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { FRAMEWORKS } from '@porsche-design-system/shared';
-import { assertExampleId } from '../../../lib/ids';
+import { assertExampleId } from '../../../../../lib/ids';
 import type { FrameworkExampleMeta } from '../../../lib/meta';
 import { exampleAppPaths, sourceFiles } from '../../../lib/sources';
 
@@ -24,7 +24,7 @@ describe('src/**/meta.ts', () => {
   });
 
   it.each(examples.map(({ id }) => id))('%s is a valid id', (id) => {
-    expect(assertExampleId(id)).toBe(id);
+    expect(assertExampleId(id, 'framework', 'examples-framework')).toBe(id);
   });
 
   it.each(examples)('$id has a title', ({ meta }) => {

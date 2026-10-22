@@ -1,5 +1,4 @@
 import fs from 'node:fs';
-import { createRequire } from 'node:module';
 import path from 'node:path';
 import { createProcessor } from '@mdx-js/mdx';
 import { examples } from '@porsche-design-system/examples';
@@ -8,6 +7,7 @@ import type { Nodes, Root } from 'mdast';
 import remarkGfm from 'remark-gfm';
 import ts from 'typescript';
 import { getHeadingAnchorId } from '@/links';
+import { getExampleHeading, type MdxJsxAttribute, readExampleProps } from '@/utils/exampleHeading';
 
 /**
  * Reads the Storefront's MDX the way it is rendered, without executing it: which fragments a page renders (imported
@@ -58,18 +58,7 @@ const toRoute = (file: string): string =>
     .filter((segment) => segment && !/^\(.*\)$/.test(segment))
     .join('/')}`;
 
-const resolvePackage = (specifier: string, fromFile: string): string | undefined => {
-  try {
-    return createRequire(fromFile).resolve(specifier);
-  } catch {
-    return undefined;
-  }
-};
-
 const resolveModule = (specifier: string, fromFile: string): string | undefined => {
-  if (specifier.startsWith('@porsche-design-system/examples-')) {
-    return resolvePackage(specifier, fromFile);
-  }
   const base = specifier.startsWith('@/')
     ? path.join(srcDir, specifier.slice(2))
     : specifier.startsWith('.')
@@ -178,12 +167,8 @@ const resolveIdentifier = (source: ts.SourceFile, file: string, identifier: stri
   return undefined;
 };
 
-/** Follows `exportName.a.b` through the object literals of a TypeScript module. */
-function resolveExport(file: string, exportName: string, members: string[]): Value | undefined {
-  if (file.endsWith('.mdx')) {
-    return exportName === 'default' && members.length === 0 ? { file } : undefined;
-  }
-  const source = parseTs(file);
+/** The expression `exportName.a.b` stands for in a TypeScript module, followed through its object literals. */
+const findExport = (source: ts.SourceFile, exportName: string, members: string[]): ts.Expression | undefined => {
   let node: ts.Expression | undefined;
   for (const statement of source.statements) {
     if (ts.isVariableStatement(statement)) {
@@ -207,7 +192,16 @@ function resolveExport(file: string, exportName: string, members: string[]): Val
           ? property.name
           : undefined;
   }
-  const value = node && unwrap(node);
+  return node && unwrap(node);
+};
+
+/** Follows `exportName.a.b` through the object literals of a TypeScript module. */
+function resolveExport(file: string, exportName: string, members: string[]): Value | undefined {
+  if (file.endsWith('.mdx')) {
+    return exportName === 'default' && members.length === 0 ? { file } : undefined;
+  }
+  const source = parseTs(file);
+  const value = findExport(source, exportName, members);
   if (!value) {
     return undefined;
   }
@@ -228,28 +222,19 @@ const resolveName = (name: string, file: string): Value | undefined => {
   return imported && resolveExport(imported.file, imported.name, members);
 };
 
-type JsxAttribute = { type: string; name?: string; value?: unknown };
-
-/** The `##` heading an `<Example>` renders: its `heading`, else its example's title – none with a `level` or `heading={false}`. */
-const getExampleHeading = (node: Nodes & { attributes: unknown[] }, file: string): string | undefined => {
-  const attributes = node.attributes as JsxAttribute[];
-  const attribute = (name: string) => attributes.find((a) => a.type === 'mdxJsxAttribute' && a.name === name);
-  const heading = attribute('heading')?.value;
-  if (attribute('level') || (heading && typeof heading === 'object')) {
+/** The `##` heading an `<Example>` renders (see `exampleHeading.ts`): its `heading`, else its example's title. */
+const getExampleTocHeading = (node: Nodes & { attributes: unknown[] }, file: string): string | undefined => {
+  const { example, ...props } = readExampleProps(node.attributes as MdxJsxAttribute[]);
+  const heading = getExampleHeading(props, undefined);
+  if (heading?.level !== 2) {
     return undefined;
   }
-  if (typeof heading === 'string') {
-    return heading;
-  }
-  const value = attribute('example')?.value;
-  const expression = value && typeof value === 'object' ? expressionOf(value as WithEstree) : undefined;
-  const name = expression && memberName(expression);
-  const resolved = name ? resolveName(`${name}.title`, file) : undefined;
-  const title = resolved && 'string' in resolved ? resolved.string : undefined;
-  if (title === undefined) {
+  const resolved = heading.text === undefined && example ? resolveName(`${example}.title`, file) : undefined;
+  const text = heading.text ?? (resolved && 'string' in resolved ? resolved.string : undefined);
+  if (text === undefined) {
     throw new Error(`Can't resolve the example at ${toRelativePath(file)}:${lineOf(node)}`);
   }
-  return title;
+  return text;
 };
 
 const memberName = (expression: Expression): string | undefined => {
@@ -288,6 +273,39 @@ const visit = (node: Nodes, callback: (node: Nodes) => void): void => {
       visit(child, callback);
     }
   }
+};
+
+/**
+ * The string literals `exportName.a.b` holds in a TypeScript module, a single one or an array of them:
+ * `buttonMeta.examples` → `['components/button/form', …]`.
+ */
+export const getStringsOf = (file: string, exportName: string, members: string[]): string[] => {
+  const value = findExport(parseTs(file), exportName, members);
+  const elements = value && ts.isArrayLiteralExpression(value) ? [...value.elements] : value ? [value] : [];
+  return elements.map((element) => {
+    if (!ts.isStringLiteralLike(element)) {
+      throw new Error(`${toRelativePath(file)}: ${[exportName, ...members].join('.')} holds more than string literals`);
+    }
+    return element.text;
+  });
+};
+
+/** The ids of the examples an MDX file renders with `component` (`Example`, `Configurator`), in their order. */
+export const getRenderedExampleIds = (file: string, component: string): string[] => {
+  const { tree, imports } = parseMdx(file);
+  const ids: string[] = [];
+  visit(tree, (node) => {
+    if ((node.type !== 'mdxJsxFlowElement' && node.type !== 'mdxJsxTextElement') || node.name !== component) {
+      return;
+    }
+    const { example } = readExampleProps(node.attributes as MdxJsxAttribute[]);
+    const imported = example ? imports.get(example) : undefined;
+    if (!imported || !('example' in imported)) {
+      throw new Error(`Can't resolve the example at ${toRelativePath(file)}:${lineOf(node)}`);
+    }
+    ids.push(imported.example);
+  });
+  return ids;
 };
 
 /** The modules an MDX file imports: `next/link`, `@/components/common/DocsLink`, … */
@@ -377,7 +395,7 @@ const render = (file: string, page: DocsPage): void => {
       for (const heading of COMPONENT_HEADINGS[node.name] ?? []) {
         page.anchors.push(getHeadingAnchorId(heading));
       }
-      const exampleHeading = node.name === 'Example' ? getExampleHeading(node, file) : undefined;
+      const exampleHeading = node.name === 'Example' ? getExampleTocHeading(node, file) : undefined;
       if (exampleHeading !== undefined) {
         page.anchors.push(getHeadingAnchorId(exampleHeading));
       }

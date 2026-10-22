@@ -8,9 +8,28 @@ import {
   resolveExamplePayload,
   type Story,
 } from '@porsche-design-system/story-generator';
-import { camelCase, pascalCase } from 'change-case';
-import { assertExampleId, componentOf } from '../lib/ids';
+import { camelCase } from 'change-case';
+import {
+  assertExampleFolders,
+  generatedHeader,
+  readDescription,
+  toExampleId,
+  toIdUnion,
+  writeExampleModule,
+} from '../../../lib/build';
+import { assertExampleId, componentOf } from '../../../lib/ids';
 import type { AccessibilityExample, StoryExample, StoryExampleMeta } from '../lib/meta';
+import {
+  COLOR_SCHEME,
+  DEFAULT_TITLE,
+  isAccessibilityExample,
+  isDefaultExample,
+  PROJECT,
+  readStoryExports,
+  type StoryExports,
+  toAccessibilityModule,
+  toStoryModule,
+} from '../lib/stories';
 
 /**
  * Generates the index of the stories and the accessibility examples, one per folder below `src/`:
@@ -28,94 +47,35 @@ const projectDir = path.resolve(__dirname, '..');
 const srcDir = path.join(projectDir, 'src');
 const generatedDir = path.join(projectDir, 'generated');
 
-const DEFAULT_TITLE = 'Default';
-/** The color scheme of the code, as the skills show it. */
-const COLOR_SCHEME = 'scheme-light';
-
-const STORY_FIELDS = ['story', 'slotStories', 'controlledStory', 'controlledSlotStories'] as const;
-type StoryField = (typeof STORY_FIELDS)[number];
-
 type StorySource = {
   id: string;
   title: string;
   description?: string;
-  /** The field of the example's stories → the name the story module exports it by. */
-  exports: Partial<Record<StoryField, string>>;
+  exports: StoryExports;
   story: Story<HTMLTagOrComponent>;
 };
 
 type AccessibilitySource = { id: string; example: AccessibilityExampleSource };
 
-const toId = (file: string): string => path.dirname(file).split(path.sep).join('/');
-
-const isStory = (value: unknown): value is Story<HTMLTagOrComponent> =>
-  typeof (value as Story<HTMLTagOrComponent> | undefined)?.generator === 'function';
-
-const isAccessibilityExample = (value: unknown): value is AccessibilityExampleSource =>
-  !!value && typeof value === 'object' && 'antiPattern' in value && 'recommended' in value;
-
 const componentsOf = (id: string): TagName[] => {
   const component = componentOf(id);
   if (!component || !(TAG_NAMES as readonly string[]).includes(component)) {
-    throw new Error(`[examples-stories] "${id}" names no component: ${component ?? 'not below components/'}`);
+    throw new Error(`[${PROJECT}] "${id}" names no component: ${component ?? 'not below components/'}`);
   }
   return [component as TagName];
-};
-
-const readDescription = (id: string): string | undefined => {
-  const file = path.join(srcDir, id, 'example.mdx');
-  if (!fs.existsSync(file)) {
-    return undefined;
-  }
-  const description = fs.readFileSync(file, 'utf8');
-  if (!description.trim()) {
-    throw new Error(`[examples-stories] the example.mdx of "${id}" is empty; describe the example or remove the file`);
-  }
-  return description;
 };
 
 const readTitle = async (id: string): Promise<string> => {
   const file = path.join(srcDir, id, 'meta.ts');
   if (!fs.existsSync(file)) {
-    throw new Error(`[examples-stories] "${id}" has no meta.ts with its title`);
+    throw new Error(`[${PROJECT}] "${id}" has no meta.ts with its title`);
   }
   const { meta } = (await import(file)) as { meta?: Partial<StoryExampleMeta> };
   const title = meta?.title?.trim();
   if (!title) {
-    throw new Error(`[examples-stories] the meta.ts of "${id}" needs a title`);
+    throw new Error(`[${PROJECT}] the meta.ts of "${id}" needs a title`);
   }
   return title;
-};
-
-/**
- * The field of every export of a story module. A default story's module may export slot stories and a controlled
- * variant of both next to its story, told apart by their value and by `Controlled` in their name
- * (`popoverControlledSlotStories`); an example's exports its story only.
- */
-const readStoryExports = (id: string, module: Record<string, unknown>): Partial<Record<StoryField, string>> => {
-  const names = Object.keys(module);
-  if (id.endsWith('/default')) {
-    const exports: Partial<Record<StoryField, string>> = {};
-    for (const name of names) {
-      const controlled = name.includes('Controlled');
-      const field: StoryField = isStory(module[name])
-        ? controlled
-          ? 'controlledStory'
-          : 'story'
-        : controlled
-          ? 'controlledSlotStories'
-          : 'slotStories';
-      if (exports[field]) {
-        throw new Error(`[examples-stories] "${id}" exports two of its ${field}: ${exports[field]}, ${name}`);
-      }
-      exports[field] = name;
-    }
-    return exports;
-  }
-  if (names.length !== 1) {
-    throw new Error(`[examples-stories] "${id}" has to export exactly one story, not ${names.join(', ') || 'none'}`);
-  }
-  return { story: names[0] };
 };
 
 const readStories = async (): Promise<StorySource[]> =>
@@ -124,25 +84,19 @@ const readStories = async (): Promise<StorySource[]> =>
       .globSync('**/story.ts', { cwd: srcDir })
       .sort()
       .map(async (file) => {
-        const id = assertExampleId(toId(file), 'story');
+        const id = assertExampleId(toExampleId(file), 'story', PROJECT);
         const module = (await import(path.join(srcDir, file))) as Record<string, unknown>;
         const exports = readStoryExports(id, module);
-        const story = exports.story && module[exports.story];
-        if (!isStory(story)) {
-          throw new Error(`[examples-stories] "${id}" exports no story`);
-        }
-        const isDefault = id.endsWith('/default');
+        const isDefault = isDefaultExample(id);
         if (isDefault && fs.existsSync(path.join(srcDir, id, 'meta.ts'))) {
-          throw new Error(
-            `[examples-stories] "${id}" is a default story, titled "${DEFAULT_TITLE}"; remove its meta.ts`
-          );
+          throw new Error(`[${PROJECT}] "${id}" is a default story, titled "${DEFAULT_TITLE}"; remove its meta.ts`);
         }
         return {
           id,
           title: isDefault ? DEFAULT_TITLE : await readTitle(id),
-          description: readDescription(id),
+          description: readDescription(srcDir, id, PROJECT),
           exports,
-          story,
+          story: module[exports.story as string] as Story<HTMLTagOrComponent>,
         };
       })
   );
@@ -153,31 +107,15 @@ const readAccessibilityExamples = async (): Promise<AccessibilitySource[]> =>
       .globSync('**/example.ts', { cwd: srcDir })
       .sort()
       .map(async (file) => {
-        const id = assertExampleId(toId(file), 'accessibility');
+        const id = assertExampleId(toExampleId(file), 'accessibility', PROJECT);
         const entries = Object.entries((await import(path.join(srcDir, file))) as Record<string, unknown>);
         const [[, example] = []] = entries;
         if (entries.length !== 1 || !isAccessibilityExample(example)) {
-          throw new Error(`[examples-stories] "${id}" has to export exactly one accessibility example`);
+          throw new Error(`[${PROJECT}] "${id}" has to export exactly one accessibility example`);
         }
         return { id, example };
       })
   );
-
-/** Fails for a file that belongs to no example: every folder holds one example and nothing else. */
-const assertFolders = (stories: StorySource[], accessibilityExamples: AccessibilitySource[]): void => {
-  const allowed: Record<string, string[]> = Object.fromEntries([
-    ...stories.map(({ id }) => [id, ['story.ts', 'meta.ts', 'example.mdx']]),
-    ...accessibilityExamples.map(({ id }) => [id, ['example.ts']]),
-  ]);
-  const stray = fs
-    .globSync('**/*', { cwd: srcDir, withFileTypes: true })
-    .filter((entry) => entry.isFile())
-    .map((entry) => path.relative(srcDir, path.join(entry.parentPath, entry.name)))
-    .filter((file) => !allowed[toId(file)]?.includes(path.basename(file)));
-  if (stray.length) {
-    throw new Error(`[examples-stories] files outside of an example:\n${stray.join('\n')}`);
-  }
-};
 
 const toStoryExample = ({ id, title, description, story }: StorySource): StoryExample => ({
   id,
@@ -212,50 +150,18 @@ const toAccessibilityExample = ({ id, example }: AccessibilitySource): Accessibi
   };
 };
 
-const header = '// Generated by scripts/build.ts from src/ – do not edit.';
-
-/** The module of one example below `generated/examples/`, relative to it: `../../../../src/<id>/story`. */
-const fromExampleModule = (id: string, file: string): string =>
-  `${'../'.repeat(id.split('/').length)}../src/${id}/${file}`;
-const fromExampleModuleToIndex = (id: string): string => `${'../'.repeat(id.split('/').length)}index`;
-
-/** One example as a module: its data and what renders it – its stories and its description. */
-const toStoryModule = ({ id, exports, description }: StorySource): string =>
-  [
-    header,
-    `import { storyExamples } from '${fromExampleModuleToIndex(id)}';`,
-    `import { ${Object.values(exports).sort().join(', ')} } from '${fromExampleModule(id, 'story')}';`,
-    ...(description === undefined ? [] : [`import Description from '${fromExampleModule(id, 'example.mdx')}';`]),
-    '',
-    'export default {',
-    `  ...storyExamples['${id}'],`,
-    ...STORY_FIELDS.filter((field) => exports[field]).map((field) => `  ${field}: ${exports[field]},`),
-    ...(description === undefined ? [] : ['  Description,']),
-    '};',
-    '',
-  ].join('\n');
-
-/** One accessibility example as a module: its data. */
-const toAccessibilityModule = ({ id }: AccessibilitySource): string =>
-  [
-    header,
-    `import { accessibilityExamples } from '${fromExampleModuleToIndex(id)}';`,
-    '',
-    `export default accessibilityExamples['${id}'];`,
-    '',
-  ].join('\n');
-
-const writeExampleModule = (id: string, source: string): void => {
-  const file = path.join(generatedDir, 'examples', `${id}.ts`);
-  fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, source);
-};
-
-const union = (ids: string[]): string => ids.map((id) => `  | '${id}'`).join('\n') || '  never';
+const header = generatedHeader('src/');
 
 const generate = async (): Promise<void> => {
   const [stories, accessibilityExamples] = await Promise.all([readStories(), readAccessibilityExamples()]);
-  assertFolders(stories, accessibilityExamples);
+  assertExampleFolders(
+    srcDir,
+    Object.fromEntries([
+      ...stories.map(({ id }) => [id, ['story.ts', 'meta.ts', 'example.mdx']]),
+      ...accessibilityExamples.map(({ id }) => [id, ['example.ts']]),
+    ]),
+    PROJECT
+  );
 
   const storyIds = stories.map(({ id }) => id);
   const accessibilityIds = accessibilityExamples.map(({ id }) => id);
@@ -270,9 +176,9 @@ const generate = async (): Promise<void> => {
       '',
       "export type { AccessibilityExample, StoryExample, StoryExampleMeta } from '../lib/meta';",
       '',
-      `export type StoryExampleId =\n${union(storyIds)};`,
+      `export type StoryExampleId =\n${toIdUnion(storyIds)};`,
       '',
-      `export type AccessibilityExampleId =\n${union(accessibilityIds)};`,
+      `export type AccessibilityExampleId =\n${toIdUnion(accessibilityIds)};`,
       '',
       '/** Every story example by id: what names it, its description and its code. Data only. */',
       `export const storyExamples: { readonly [Id in StoryExampleId]: StoryExample<Id> } = ${JSON.stringify(
@@ -291,15 +197,15 @@ const generate = async (): Promise<void> => {
     ].join('\n')
   );
 
-  for (const source of stories) {
-    writeExampleModule(source.id, toStoryModule(source));
+  for (const { id, exports, description } of stories) {
+    writeExampleModule(generatedDir, id, toStoryModule(id, exports, description !== undefined));
   }
-  for (const source of accessibilityExamples) {
-    writeExampleModule(source.id, toAccessibilityModule(source));
+  for (const { id } of accessibilityExamples) {
+    writeExampleModule(generatedDir, id, toAccessibilityModule(id));
   }
 
   console.log(
-    `[examples-stories] generated ${stories.length} stories and ${accessibilityExamples.length} accessibility examples into ${path.relative(projectDir, generatedDir)}/`
+    `[${PROJECT}] generated ${stories.length} stories and ${accessibilityExamples.length} accessibility examples into ${path.relative(projectDir, generatedDir)}/`
   );
 };
 

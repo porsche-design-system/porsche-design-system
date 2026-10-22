@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
   transpilePackages: [
     '@porsche-design-system/examples',
     '@porsche-design-system/examples-framework',
+    '@porsche-design-system/examples-pages',
     '@porsche-design-system/examples-stories',
     '@porsche-design-system/skills',
     '@porsche-design-system/story-generator',

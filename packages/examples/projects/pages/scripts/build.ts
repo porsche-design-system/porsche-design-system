@@ -3,9 +3,10 @@ import path from 'node:path';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
 import prettier from 'prettier';
+import { writeExampleModule } from '../../../lib/build.ts';
 import { getComponents } from '../lib/components.ts';
 import { extractScripts, formatScriptEntry, getScriptEntry } from '../lib/entries.ts';
-import { exportFileName, getExportModule, type PageExamples } from '../lib/exports.ts';
+import { exportFileName, getExampleModule, getExportModule, type PageExamples } from '../lib/exports.ts';
 import { getPackageJson, getViteConfig, type Versions } from '../lib/generateProject.ts';
 import { type PageModule, pageSuffix, renderPage } from '../lib/jsx.ts';
 import { assertExampleMeta, type PageExample } from '../lib/meta.ts';
@@ -155,6 +156,10 @@ const build = async (): Promise<void> => {
 
   // Bundled into `dist/` afterwards by `rollup.config.mjs`, once the package has been typechecked with it.
   writeFile(path.join(generatedDir, exportFileName), getExportModule(examples));
+  fs.rmSync(path.join(generatedDir, 'examples'), { recursive: true, force: true });
+  for (const example of Object.values(examples)) {
+    writeExampleModule(generatedDir, example.id, getExampleModule(example));
+  }
 
   console.log(`\nBuilt ${Object.keys(examples).length} project(s) → ${path.relative(packageDir, distDir)}`);
 };

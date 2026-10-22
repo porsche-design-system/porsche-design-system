@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Knowledge Skill`: the `p-link-pure` reference listed the example of a framework router with active state without its
+  code; it now shows the Angular, React and Vue snippets
+  ([#4800](https://github.com/porsche-design-system/porsche-design-system/pull/4800))
+
 ## [4.10.0] - 2026-10-22
 
 ## [4.10.0-rc.0] - 2026-10-22

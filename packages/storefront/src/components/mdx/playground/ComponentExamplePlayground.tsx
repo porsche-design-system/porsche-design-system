@@ -17,7 +17,7 @@ export type ComponentExamplePlaygroundProps = {
   disableOpenInStackblitz?: boolean;
   backgroundColor?: BackgroundColor;
   fixedBackgroundColor?: string;
-  /** The live preview, rendered by the server component `ComponentExample`. */
+  /** The live preview, rendered by the server component `Example` or `Configurator`. */
   children?: ReactNode;
 };
 

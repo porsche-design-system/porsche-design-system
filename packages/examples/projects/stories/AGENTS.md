@@ -34,12 +34,22 @@ that belongs to no example.
   (`popoverControlledSlotStories`). A page imports the examples it shows (through
   `@porsche-design-system/examples/<id>`), and so loads their stories only.
 
-A change to a story, a `meta.ts` or a description needs that build again for the generated entry points; the Storefront
-pages that import the stories directly reload without it.
+How a story module becomes an example – which export is which story, and the module generated for it – is in
+[`lib/stories.ts`](lib/stories.ts); the id rules and the rest the builds share are in [`../../lib`](../../lib/).
+
+A change to a story or a description reloads in `next dev`, because the example's module imports them; the data (the
+titles, the code and the descriptions as the skills read them) and a new or removed example need that build again.
+
+**Tests** (`tests/unit/specs/`) run without a build: `stories.spec.ts` covers `lib/stories.ts`, `examples.spec.ts` reads
+`src/` as the build does – one example per folder, valid ids below their component, a default story per component, a
+title for every example story, no empty description, and both sides of every accessibility example resolved for every
+framework.
 
 ## Commands
 
 ```bash
-npm run build      # generates generated/ from src/, then typechecks the data
-npm run typecheck  # the data, then the stories and the generator – which import the wrappers' types, so build those first
+npm run build      # generates generated/ from src/, then typechecks the data (tsconfig.data.json)
+npm run typecheck  # the data, then the stories and the modules (tsconfig.json) and the build (tsconfig.scripts.json) –
+                   # which import the wrappers' types, so build those first
+npm run test:unit  # lib/stories.ts and the sources, without a build
 ```

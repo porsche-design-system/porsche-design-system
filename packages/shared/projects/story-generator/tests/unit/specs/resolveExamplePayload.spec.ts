@@ -1,7 +1,9 @@
-import { hiddenLabelWithoutAccessibleNameA11yExample } from '@porsche-design-system/examples-stories/components/checkbox/accessibility/hidden-label-without-accessible-name/example';
-import { ariaOnComponentHostVsAriaPropA11yExample } from '@porsche-design-system/examples-stories/components/modal/accessibility/aria-on-component-host-vs-aria-prop/example';
 import type { FrameworkMarkup } from '@porsche-design-system/shared';
-import { type ExampleMarkupSample, resolveExamplePayload } from '@porsche-design-system/story-generator';
+import { type ExampleMarkupSample, resolveExamplePayload } from '../../../src';
+import {
+  ariaOnComponentHostVsAriaPropA11yExample,
+  hiddenLabelWithoutAccessibleNameA11yExample,
+} from '../data/accessibility.testdata';
 
 const context = {
   tag: 'p-checkbox',

@@ -10,11 +10,11 @@ wrapper (`components-js/src/examples`, `components-angular/src/app/examples`, `c
 `components-vue/src/examples`), which compiles it and runs its e2e tests. This project turns them into examples:
 
 - **One `meta.ts` per example,** in the folder of its id: `src/components/select/set-value/meta.ts`, with its
-  description next to it, `example.mdx` (`@porsche-design-system/examples-framework/<id>/example.mdx`). The meta holds
-  the example's `title` (its heading, `Default` for a component's default example), the `components` it shows and its
-  `source`, the kebab-case base name of its files (`'select-example-dynamic'` → `select-example-dynamic.html`,
-  `select-example-dynamic.component.ts`, `SelectExampleDynamic.tsx`, `SelectExampleDynamic.vue`), or the four file names
-  where they deviate from that (AG Grid).
+  description next to it, `example.mdx`, which the example's module imports. The meta holds the example's `title` (its
+  heading, `Default` for a component's default example), the `components` it shows and its `source`, the kebab-case base
+  name of its files (`'select-example-dynamic'` → `select-example-dynamic.html`, `select-example-dynamic.component.ts`,
+  `SelectExampleDynamic.tsx`, `SelectExampleDynamic.vue`), or the four file names where they deviate from that (AG
+  Grid).
 - **`npm run build`** (in `build:examples:projects`) reads the sources and generates two entry points into `generated/`,
   gitignored:
   - `@porsche-design-system/examples-framework`: the examples as data, by id, in the shape every project of
@@ -32,11 +32,14 @@ wrapper (`components-js/src/examples`, `components-angular/src/app/examples`, `c
   only by the package's `typecheck`, after the wrappers.
 
 - A change to a source in a wrapper app or to a `meta.ts` needs that build again; `next dev` then reloads it.
+- The build fails on an id that breaks the rules of [`../../lib/ids.ts`](../../lib/ids.ts), an empty description or a
+  file below `src/` that belongs to no example; what it shares with the stories' build is in [`../../lib`](../../lib/).
 
 ## Commands
 
 ```bash
-npm run build      # generates generated/ from src/**/meta.ts and the example apps, then typechecks the data
-npm run typecheck  # the data, then the previews – which import the wrappers, so build those first
-npm run test:unit  # ids, sources and the transformations, without a build
+npm run build      # generates generated/ from src/**/meta.ts and the example apps, then typechecks the data (tsconfig.data.json)
+npm run typecheck  # the data, then the previews and modules (tsconfig.json) – which import the wrappers, so build those
+                   # first – and the build (tsconfig.scripts.json)
+npm run test:unit  # the sources and the transformations, without a build
 ```

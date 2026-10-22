@@ -119,7 +119,8 @@ import componentDefault from '@porsche-design-system/examples/components/compone
   imports, and only those.
 - Prefer a story. Write a framework example only for custom logic, by adding its `meta.ts` to
   `packages/examples/projects/framework/src/<id>/`.
-- List the ids in the meta's `examples`, in the order of the page, for the skill.
+- List the ids in the meta's `examples`, in the order of the page, for the skill; `componentDocs.spec.ts` fails when
+  they differ.
 - Preserve `metadata` and `ComponentStatus` imports on the page.
 - Add `TableOfContents` when a page contains multiple example sections; `prebuild` fills it from the examples.
 - Keep each example accessible by default, including keyboard support, visible focus, and proper accessible names.

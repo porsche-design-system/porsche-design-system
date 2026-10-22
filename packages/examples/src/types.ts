@@ -1,5 +1,5 @@
 import type { FrameworkExampleId } from '@porsche-design-system/examples-framework';
-import type { ExamplePath } from '@porsche-design-system/examples-pages';
+import type { PageExampleId } from '@porsche-design-system/examples-pages';
 import type { AccessibilityExampleId, StoryExampleId } from '@porsche-design-system/examples-stories';
 import type { Framework, TagName } from '@porsche-design-system/shared';
 
@@ -8,7 +8,7 @@ import type { Framework, TagName } from '@porsche-design-system/shared';
  * (see `packages/examples/AGENTS.md`). It names neither the kind nor a framework, so an example keeps its id when its
  * format changes.
  */
-export type ExampleId = StoryExampleId | FrameworkExampleId | AccessibilityExampleId | ExamplePath;
+export type ExampleId = StoryExampleId | FrameworkExampleId | AccessibilityExampleId | PageExampleId;
 
 /** What every example has, whatever its kind. */
 type ExampleBase<Id extends ExampleId> = {
@@ -36,7 +36,7 @@ export type FrameworkExample<Id extends FrameworkExampleId = FrameworkExampleId>
 };
 
 /** A pattern or a template: a page of its own, shown in an iframe. */
-export type PageExample<Id extends ExamplePath = ExamplePath> = ExampleBase<Id> & {
+export type PageExample<Id extends PageExampleId = PageExampleId> = ExampleBase<Id> & {
   kind: 'pattern' | 'template';
   /** Plain text, which every page has. */
   description: string;
@@ -64,7 +64,7 @@ export type ExampleOf<Id extends ExampleId> = Id extends StoryExampleId
     ? FrameworkExample<Id>
     : Id extends AccessibilityExampleId
       ? AccessibilityExample<Id>
-      : Id extends ExamplePath
+      : Id extends PageExampleId
         ? PageExample<Id>
         : never;
 

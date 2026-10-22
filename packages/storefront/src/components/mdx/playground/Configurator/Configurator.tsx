@@ -1,11 +1,11 @@
+import type { FrameworkExampleModule, StoryExampleModule } from '@porsche-design-system/examples/module';
 import type { HTMLTagOrComponent } from '@porsche-design-system/story-generator';
-import type { ExampleModule } from '../../examples/Example/Example';
 import { ComponentExamplePlayground } from '../ComponentExamplePlayground';
 import { ConfiguratorPlayground } from './ConfiguratorPlayground';
 
 type ConfiguratorProps = {
   /** The component's default example: `import buttonDefault from '@porsche-design-system/examples/components/button/default'`. */
-  example: ExampleModule;
+  example: StoryExampleModule | FrameworkExampleModule;
   /** Shows a framework example's code without its preview. */
   disableDemo?: boolean;
 };
@@ -16,26 +16,24 @@ type ConfiguratorProps = {
  * server component, which hands the client the stories of this one example.
  */
 export const Configurator = ({ example, disableDemo }: ConfiguratorProps) => {
-  const { story, slotStories, controlledStory, controlledSlotStories, Preview } = example;
-
-  if (example.kind === 'framework') {
-    return (
-      <ComponentExamplePlayground code={example.code}>
-        {!disableDemo && Preview && <Preview />}
-      </ComponentExamplePlayground>
-    );
+  switch (example.kind) {
+    case 'story': {
+      const { story, slotStories, controlledStory, controlledSlotStories } = example;
+      return (
+        <ConfiguratorPlayground
+          tagName={example.components[0] as HTMLTagOrComponent}
+          story={story}
+          slotStories={slotStories}
+          controlledStory={controlledStory}
+          controlledSlotStories={controlledSlotStories}
+        />
+      );
+    }
+    case 'framework': {
+      const { Preview } = example;
+      return <ComponentExamplePlayground code={example.code}>{!disableDemo && <Preview />}</ComponentExamplePlayground>;
+    }
+    default:
+      throw new Error(`[storefront] "${(example as { id: string }).id}" is no default story or framework example`);
   }
-  if (example.kind !== 'story' || !story) {
-    throw new Error(`[storefront] "${example.id}" is no default story or framework example`);
-  }
-
-  return (
-    <ConfiguratorPlayground
-      tagName={`p-${example.id.split('/')[1]}` as HTMLTagOrComponent}
-      story={story}
-      slotStories={slotStories}
-      controlledStory={controlledStory}
-      controlledSlotStories={controlledSlotStories}
-    />
-  );
 };

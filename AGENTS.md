@@ -297,6 +297,8 @@ Each major package has its own `AGENTS.md` with detailed guidance:
   (TSX, rendered to plain HTML)
 - [`packages/examples/projects/framework/AGENTS.md`](packages/examples/projects/framework/AGENTS.md) — Hand-written
   framework examples
+- [`packages/examples/projects/stories/AGENTS.md`](packages/examples/projects/stories/AGENTS.md) — Stories and
+  accessibility examples
 - [`packages/components-react/AGENTS.md`](packages/components-react/AGENTS.md) — React wrapper
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper

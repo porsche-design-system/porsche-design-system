@@ -52,7 +52,6 @@
     "@porsche-design-system/components-react": "4.10.0",
     "@porsche-design-system/examples": "0.0.0",
     "@porsche-design-system/examples-pages": "0.0.0",
-    "@porsche-design-system/examples-stories": "0.0.0",
     "ag-grid-community": "36.2.0",
     "ag-grid-react": "36.2.0",
     "algoliasearch": "^5.59.0",

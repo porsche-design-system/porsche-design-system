@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "strict": true,
@@ -13,6 +13,8 @@
     "jsx": "react-jsx",
     "types": ["mdx"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "lib", "generated"],
+  // What the package exports: the stories, which import the React wrapper's types, and the generated modules. Checked
+  // after the wrappers are built; tsconfig.data.json checks the data before them.
+  "include": ["src", "generated", "lib/meta.ts"],
   "exclude": ["node_modules"]
 }

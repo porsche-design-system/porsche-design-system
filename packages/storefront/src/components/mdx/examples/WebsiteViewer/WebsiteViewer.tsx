@@ -19,8 +19,8 @@ import { CodeBlock, type CodeLanguage } from '../../elements/CodeBlock';
 
 type ExampleProps = {
   /**
-   * A pattern or template of `@porsche-design-system/examples-pages`, with its media below the slug of this deployment –
-   * rendered by `ExampleViewer`. Its title names the iframe, its files are shown as code and opened in StackBlitz.
+   * A pattern or template of `@porsche-design-system/examples`, with its media below the slug of this deployment –
+   * rendered by `Example`. Its title names the iframe, its files are shown as code and opened in StackBlitz.
    */
   example: PageExample;
   /** The URL this deployment serves the built page at, from `public/examples/`. */

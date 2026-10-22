@@ -292,7 +292,8 @@ import { Configurator } from "@/components/mdx/playground/Configurator";
 
 Every example lives in [`packages/examples`](../examples/AGENTS.md), one folder per example, named by its id. A page
 imports the examples it shows by their id and renders each with `<Example>`, whatever its kind; the component's
-`{component}.meta.ts` lists their ids, in the order of the page, for the skill.
+`{component}.meta.ts` lists their ids, in the order of the page, for the skill (`componentDocs.spec.ts` checks both
+agree).
 
 ```mdxjs
 import jumpToSlide from "@porsche-design-system/examples/components/carousel/jump-to-slide";

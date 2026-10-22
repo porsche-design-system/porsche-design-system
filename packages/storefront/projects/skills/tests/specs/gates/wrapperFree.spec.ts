@@ -6,8 +6,8 @@ import { WRAPPER_REQUESTS_PREFIX } from '../../helpers/recordWrapperRequests';
 
 /**
  * `build:skills` runs before the framework wrappers are built, so nothing it loads may request one. It reads the
- * component docs meta and the generators under the runtime of `build:skills`, in a process of its own, and fails on
- * any request for `@porsche-design-system/components-{js,angular,react,vue}`.
+ * component docs meta, the catalogue of the examples and the generators under the runtime of `build:skills`, in a
+ * process of its own, and fails on any request for `@porsche-design-system/components-{js,angular,react,vue}`.
  */
 const SKILLS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 
@@ -35,10 +35,16 @@ const getWrapperRequests = (code: string): string[] => {
 };
 
 describe('build:skills', () => {
-  it('loads the component docs meta and the generators without requesting a framework wrapper', () => {
+  it('loads the component docs meta, the examples and the generators without requesting a framework wrapper', () => {
     expect(
       getWrapperRequests(
-        "Promise.all([import('../../src/app/(main)/components/components.meta'), import('./src/generators')])"
+        [
+          'Promise.all([',
+          "import('../../src/app/(main)/components/components.meta'),",
+          "import('./src/knowledge/components/catalogue'),",
+          "import('./src/generators'),",
+          '])',
+        ].join('')
       )
     ).toEqual([]);
   }, 120_000);
@@ -57,9 +63,7 @@ describe('build:skills', () => {
   ])(
     'would notice a wrapper requested by %s',
     (_, specifier, code) => {
-      expect(getWrapperRequests(code)).toContainEqual(
-        expect.stringMatching(new RegExp(`^${specifier} ← .*eval`))
-      );
+      expect(getWrapperRequests(code)).toContainEqual(expect.stringMatching(new RegExp(`^${specifier} ← .*eval`)));
     },
     60_000
   );

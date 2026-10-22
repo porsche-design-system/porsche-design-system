@@ -1,4 +1,4 @@
-import { examples, type PageExample } from '@porsche-design-system/examples';
+import type { PageExample } from '@porsche-design-system/examples';
 import { mediaPath } from '@porsche-design-system/examples-pages';
 
 /**
@@ -6,15 +6,16 @@ import { mediaPath } from '@porsche-design-system/examples-pages';
  *
  * Two halves come from the examples package. The built pages are copied from `dist-site/` to `public/examples/` in the
  * `prebuild` (`scripts/copyExamples.ts`), and `WebsiteViewer` frames them from there. Every example – its meta and the
- * files of its project, which the code view shows and StackBlitz opens – is read from the catalogue by `Example`
- * instead, at build time.
+ * files of its project, which the code view shows and StackBlitz opens – is imported by the page that shows it
+ * (`@porsche-design-system/examples/<id>`) and rendered by `Example` instead, at build time.
  *
  * Both are free of any storefront slug, because one build is deployed under several of them – `release.yml` rebuilds
  * the storefront from one artifact for `/v4.8.0/` and for `/v4/` – so the slug is inserted here, for exactly the build
  * that is deployed under it.
  *
- * Server only: this module imports every example. A client component is handed the example it shows, and adds the
- * origin with `withMediaOrigin()` from `exampleMediaOrigin.ts`.
+ * Server only: `mediaPath` comes from the entry of `@porsche-design-system/examples-pages`, which holds every example. A
+ * client component is handed the example it shows, and adds the origin with `withMediaOrigin()` from
+ * `exampleMediaOrigin.ts`.
  */
 
 const withBasePath = (pathname: string, basePath: string): string => (basePath ? `/${basePath}${pathname}` : pathname);
@@ -49,18 +50,8 @@ export const rewriteCdnUrlsForDev = (html: string): string =>
 export const getExampleUrl = ({ url }: Pick<PageExample, 'url'>, basePath: string): string =>
   withBasePath(url, basePath);
 
-/**
- * A pattern or template as this deployment shows it: its media below the slug.
- *
- * Fails for an id that is not a pattern or template – MDX passes the id as a plain string, so the type alone does not
- * catch a typo there.
- */
-export const getExample = <Id extends PageExample['id']>(id: Id, basePath: string): PageExample<Id> => {
-  const example = (examples as unknown as Partial<Record<string, PageExample<Id>>>)[id];
-  if (example?.kind !== 'pattern' && example?.kind !== 'template') {
-    throw new Error(`[storefront] "${id}" is not an example of @porsche-design-system/examples-pages`);
-  }
-
+/** A pattern or template as this deployment shows it: the media of its files below the slug. */
+export const toDeployedExample = <Example extends PageExample>(example: Example, basePath: string): Example => {
   return {
     ...example,
     files: Object.fromEntries(

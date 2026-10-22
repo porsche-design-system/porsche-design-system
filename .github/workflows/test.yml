@@ -350,6 +350,7 @@ jobs:
       - run: npm run test:unit:examples:examples
       - run: npm run test:unit:examples:framework
       - run: npm run test:unit:examples:pages
+      - run: npm run test:unit:examples:stories
       - run: npm run test:e2e:examples
       - name: 'E2E Results'
         if: failure()

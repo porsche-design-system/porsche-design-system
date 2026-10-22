@@ -4,7 +4,13 @@ import { examples } from '@porsche-design-system/examples';
 import { mediaPath } from '@porsche-design-system/examples-pages';
 import { describe, expect, it } from 'vitest';
 import { withMediaOrigin } from './exampleMediaOrigin';
-import { getExample, getExampleMediaPath, getExampleUrl, insertBasePath, rewriteCdnUrlsForDev } from './examples';
+import {
+  getExampleMediaPath,
+  getExampleUrl,
+  insertBasePath,
+  rewriteCdnUrlsForDev,
+  toDeployedExample,
+} from './examples';
 
 describe('insertBasePath()', () => {
   const html = `<img src="${mediaPath}718.webp" /><video poster="${mediaPath}mood.webp"></video>`;
@@ -52,22 +58,16 @@ describe('getExampleMediaPath()', () => {
   });
 });
 
-describe('getExample()', () => {
+describe('toDeployedExample()', () => {
   it('returns the example as the package exports it, its media below the slug', () => {
-    const example = getExample('templates/landing-page', 'v4');
     const { files, ...meta } = examples['templates/landing-page'];
+    const example = toDeployedExample(examples['templates/landing-page'], 'v4');
 
     expect(example).toMatchObject(meta);
     expect(Object.keys(example.files)).toEqual(Object.keys(files));
     expect(files['index.html']).toContain(`"${mediaPath}`);
     expect(example.files['index.html']).toContain('"/v4/examples/media/');
     expect(example.files['index.html']).not.toContain(`"${mediaPath}`);
-  });
-
-  it('fails for a path that is not an example, as MDX does not type-check it', () => {
-    expect(() => getExample('patterns/unknown' as 'patterns/footer', '')).toThrow(
-      '"patterns/unknown" is not an example'
-    );
   });
 });
 
