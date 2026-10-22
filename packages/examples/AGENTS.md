@@ -5,17 +5,16 @@
 
 ## Overview
 
-`packages/examples` is the one home of every PDS example (#4789). Each kind of example, and the tooling they share, is a
-project of its own below `projects/`: an npm workspace with its own dependencies, build, typecheck and tests. The
-package itself, `@porsche-design-system/examples`, is the one interface to all of them (see _Interface_), and its
-scripts build and typecheck the projects in the order the root build needs.
+`packages/examples` is the one home of every PDS example (#4789). Each kind of example is a project of its own below
+`projects/`: an npm workspace with its own dependencies, build, typecheck and tests. The package itself,
+`@porsche-design-system/examples`, is the one interface to all of them (see _Interface_), and its scripts build and
+typecheck the projects in the order the root build needs.
 
-| Project                                                 | Package                                     | What it holds                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`projects/pages`](projects/pages/)                     | `@porsche-design-system/examples-pages`     | The patterns and templates: pages written in TSX, rendered to static HTML, one Vite project each. See its [`AGENTS.md`](projects/pages/AGENTS.md).                                                                                                                                                                                                                                                                                                                      |
-| [`projects/framework`](projects/framework/)             | `@porsche-design-system/examples-framework` | The hand-written framework examples: the code of every framework as data, and their live React previews and descriptions. See its [`AGENTS.md`](projects/framework/AGENTS.md).                                                                                                                                                                                                                                                                                          |
-| [`projects/stories`](projects/stories/)                 | `@porsche-design-system/examples-stories`   | The stories: every component's default story (`components/<component>/default/story.ts`), which the configurator starts from, the examples written as stories, each with its description (`story.ts`, `example.mdx`), and the accessibility examples, an anti-pattern and its recommendation each (`components/<component>/accessibility/<slug>/example.ts`). An example story's title is in a `meta.ts` next to it. See its [`AGENTS.md`](projects/stories/AGENTS.md). |
-| [`projects/story-generator`](projects/story-generator/) | `@porsche-design-system/story-generator`    | The story types, the markup of a story for every framework (`getStoryMarkup`, `wrapCode`) and its live React rendering (`StoryPreview`, the `/react` subpath).                                                                                                                                                                                                                                                                                                          |
+| Project                                     | Package                                     | What it holds                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`projects/pages`](projects/pages/)         | `@porsche-design-system/examples-pages`     | The patterns and templates: pages written in TSX, rendered to static HTML, one Vite project each. See its [`AGENTS.md`](projects/pages/AGENTS.md).                                                                                                                                                                                                                                                                                                                      |
+| [`projects/framework`](projects/framework/) | `@porsche-design-system/examples-framework` | The hand-written framework examples: the code of every framework as data, and their live React previews and descriptions. See its [`AGENTS.md`](projects/framework/AGENTS.md).                                                                                                                                                                                                                                                                                          |
+| [`projects/stories`](projects/stories/)     | `@porsche-design-system/examples-stories`   | The stories: every component's default story (`components/<component>/default/story.ts`), which the configurator starts from, the examples written as stories, each with its description (`story.ts`, `example.mdx`), and the accessibility examples, an anti-pattern and its recommendation each (`components/<component>/accessibility/<slug>/example.ts`). An example story's title is in a `meta.ts` next to it. See its [`AGENTS.md`](projects/stories/AGENTS.md). |
 
 **Every example has an id** that never changes once something references it: lowercase kebab-case segments joined by
 `/`, the folder of the example below its project's `src/`. It names neither the kind of the example nor a framework, so
@@ -75,12 +74,11 @@ built, and the previews need the wrappers:
   examples and of the stories, renders the pages into their projects, makes every example importable by its id and
   typechecks the catalogue. Nothing it runs or typechecks may need a built wrapper.
 - **`build:examples:site`**, after the wrappers: typechecks the framework previews, the stories (the accessibility
-  examples included), the story generator and the example modules of this package, which import the React wrapper's
-  types, then builds the pages' projects into the self-contained pages the Storefront copies
-  (`projects/pages/dist-site/`).
+  examples included) and the example modules of this package, which import the React wrapper's types, then builds the
+  pages' projects into the self-contained pages the Storefront copies (`projects/pages/dist-site/`).
 
-The stories, the framework examples and the story generator export their TypeScript and MDX source, and what their build
-generated (`generated/`), not a bundle: the Storefront compiles them (`transpilePackages` in
+The stories and the framework examples export their TypeScript and MDX source, and what their build generated
+(`generated/`), not a bundle: the Storefront compiles them (`transpilePackages` in
 [`next.config.ts`](../storefront/next.config.ts), and `@source` in its `globals.css` for their Tailwind classes), so
 `next dev` reloads a change to them like one to its own files. This package exports its source too. The pages export a
 bundle, `dist/examples.js`, which `build:examples:projects` writes.
@@ -104,7 +102,6 @@ npm run clean:examples:build
 npm run start:examples            # the pages' dev server – see projects/pages/AGENTS.md for their tests
 npm run test:unit:examples-catalogue  # the ids of all projects
 npm run test:unit:examples-framework
-npm run test:unit:story-generator
 ```
 
 A project has no root `typecheck` entry of its own: `typecheck:examples` fans out to every project, and

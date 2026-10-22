@@ -34,11 +34,12 @@ packages/
 ├── storefront/         # Next.js documentation site
 │   └── projects/       # Agent skills generator, StackBlitz projects
 ├── examples/           # Every example, one project per kind
-│   └── projects/       # Pages (patterns, templates), framework examples, story generator
+│   └── projects/       # Pages (patterns, templates), framework examples, stories
 ├── tokens/             # Design tokens (colors, spacing, typography)
 ├── styles/             # Shared styles, Tailwind plugin
 ├── assets/             # Icons, fonts, marque, crest
 ├── shared/             # Internal utilities shared across packages
+│   └── projects/       # Story generator (story types, markup per framework, StoryPreview)
 ├── component-meta/     # Component metadata generation
 └── utilities/          # AG Grid theme, utility functions
 ```

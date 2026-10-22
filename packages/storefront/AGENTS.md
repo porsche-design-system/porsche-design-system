@@ -181,8 +181,8 @@ component's `{component}.meta.ts` lists their ids, in the order of the page, for
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
 - Export `Story<'p-component'>` objects for configurator-ready examples. `Story`, `SlotStories`, `ElementConfig` and the
   accessibility example types come from `@porsche-design-system/story-generator` (in
-  [`packages/examples/projects`](../examples/projects/story-generator)), which also generates a story's markup
-  for every framework (`getStoryMarkup`, `wrapCode`) for the Storefront and the skills, and renders it live with
+  [`packages/shared/projects/story-generator`](../shared/projects/story-generator)), which also generates a story's
+  markup for every framework (`getStoryMarkup`, `wrapCode`) for the Storefront and the skills, and renders it live with
   `<StoryPreview>` from `@porsche-design-system/story-generator/react`.
 - Export `SlotStories<'p-component'>` when slot content must be selectable in the configurator.
 - Give every example a folder of its own; name its export like `{component}StoryCustomStyling`.

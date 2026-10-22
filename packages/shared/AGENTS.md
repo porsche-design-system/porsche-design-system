@@ -18,8 +18,25 @@ packages/shared/
 ├── src/styles/            # Shared style helpers
 ├── src/testing/           # Playwright helper exports
 ├── src/utils/             # Framework conversion and misc helpers
-└── tests/                 # Unit tests
+├── tests/                 # Unit tests
+└── projects/              # Shared packages of their own, each an npm workspace
+    └── story-generator/   # @porsche-design-system/story-generator
 ```
+
+## Projects
+
+`projects/` holds packages that are shared across the repo but are workspaces of their own, with their own dependencies,
+typecheck and tests. This package's own typecheck and unit tests leave them out.
+
+- [`projects/story-generator`](projects/story-generator/), `@porsche-design-system/story-generator`: the story types,
+  the markup of a story for every framework (`getStoryMarkup`, `wrapCode`), the payloads of the accessibility examples
+  (`resolveExamplePayload`) and a story's live React rendering (`StoryPreview`, the `/react` subpath). The stories of
+  `packages/examples`, the Storefront (its configurator and its own stories) and the skills' tests use it. It exports
+  its source, which the Storefront compiles (`transpilePackages`).
+
+The story generator's `/react` subpath imports the React wrapper, so its typecheck runs in the Storefront's build, after
+the wrappers (`npm run typecheck:story-generator --workspace=@porsche-design-system/storefront`); its tests run with
+`npm run test:unit:story-generator`, their typecheck with `npm run typecheck:shared:tests`.
 
 ## Commands
 
@@ -29,6 +46,7 @@ npm run build:shared
 
 # Run unit tests
 npm run test:unit:shared
+npm run test:unit:story-generator
 ```
 
 ## Generated Files
