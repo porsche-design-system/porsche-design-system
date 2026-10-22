@@ -130,25 +130,13 @@ jobs:
       - uses: actions/checkout@v7
         with:
           ref: ${{ steps.release.outputs.tag }}
-      # Delete this step and its `if:`s once a release ships this package: from then on every latest release has it.
-      - name: 'Code Connect in this release?'
-        id: package
-        shell: bash
-        env:
-          TAG: ${{ steps.release.outputs.tag }}
-        run: |
-          if [ -d packages/components/projects/figma-code-connect ]; then echo "present=true" >> "$GITHUB_OUTPUT"
-          else echo "::notice::$TAG has no Code Connect yet, so there is nothing to compare"; fi
       - uses: ./.github/actions/install
-        if: steps.package.outputs.present == 'true'
       # figma:generate imports @porsche-design-system/component-meta, whose dist/ is gitignored.
       - run: npm run build:core-dependencies
-        if: steps.package.outputs.present == 'true'
 
       # The design lines it prints go to Slack.
       - name: 'figma:generate'
         id: generate
-        if: steps.package.outputs.present == 'true'
         shell: bash
         run: npm run figma:generate --workspace=@porsche-design-system/figma-code-connect 2>&1 | tee "$RUNNER_TEMP/generate.log"
         env:
