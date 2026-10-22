@@ -166,6 +166,7 @@ import { PopoverCompactPage } from './generated/PopoverCompact';
 import { PopoverCssVariablesPage } from './generated/PopoverCssVariables';
 import { PopoverEdgeCasePage } from './generated/PopoverEdgeCase';
 import { PopoverFlexParentPage } from './generated/PopoverFlexParent';
+import { PopoverHideArrowPage } from './generated/PopoverHideArrow';
 import { PopoverLeftPage } from './generated/PopoverLeft';
 import { PopoverRightPage } from './generated/PopoverRight';
 import { PopoverScrolledPage } from './generated/PopoverScrolled';
@@ -1003,6 +1004,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Popover Flex Parent',
     path: '/popover-flex-parent',
     element: <PopoverFlexParentPage />,
+  },
+  {
+    name: 'Popover Hide Arrow',
+    path: '/popover-hide-arrow',
+    element: <PopoverHideArrowPage />,
   },
   {
     name: 'Popover Left',

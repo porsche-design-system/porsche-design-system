@@ -1261,6 +1261,24 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-pure": {
+    "cssVariablesMeta": {
+      "--p-button-pure-hover-inset-x": {
+        "defaultValue": "-4px",
+        "description": "Horizontal inset of the hover, active and focus indicator.",
+      },
+      "--p-button-pure-hover-inset-y": {
+        "defaultValue": "-2px",
+        "description": "Vertical inset of the hover, active and focus indicator.",
+      },
+      "--p-button-pure-px": {
+        "defaultValue": "0px",
+        "description": "Horizontal padding of the button. Enlarges the clickable and focusable area.",
+      },
+      "--p-button-pure-py": {
+        "defaultValue": "0px",
+        "description": "Vertical padding of the button. Enlarges the clickable and focusable area.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -6992,6 +7010,24 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-pure": {
+    "cssVariablesMeta": {
+      "--p-link-pure-hover-inset-x": {
+        "defaultValue": "-4px",
+        "description": "Horizontal inset of the hover, active and focus indicator.",
+      },
+      "--p-link-pure-hover-inset-y": {
+        "defaultValue": "-2px",
+        "description": "Vertical inset of the hover, active and focus indicator.",
+      },
+      "--p-link-pure-px": {
+        "defaultValue": "0px",
+        "description": "Horizontal padding of the link. Enlarges the clickable and focusable area.",
+      },
+      "--p-link-pure-py": {
+        "defaultValue": "0px",
+        "description": "Vertical padding of the link. Enlarges the clickable and focusable area.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8518,6 +8554,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "bottom",
         "description": "Sets the preferred direction for the popover to open relative to its trigger button. Falls back to the direction with the most available viewport space.",
         "type": "PopoverDirection",
+      },
+      "hideArrow": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Hides the arrow that points at the trigger. The panel keeps a small gap and is not offset by the arrow thickness.",
+        "type": "boolean",
       },
       "open": {
         "allowedValues": "boolean",

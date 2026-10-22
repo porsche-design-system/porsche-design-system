@@ -1,5 +1,17 @@
 import { vi } from 'vitest';
-import { getPopoverBorderRadius } from './popover-utils';
+import {
+  getPopoverBorderRadius,
+  getPopoverPanelOffset,
+  POPOVER_ARROW_GAP,
+  POPOVER_ARROW_THICKNESS,
+} from './popover-utils';
+
+describe('getPopoverPanelOffset()', () => {
+  it('should include the arrow thickness unless the arrow is hidden', () => {
+    expect(getPopoverPanelOffset(false)).toBe(POPOVER_ARROW_THICKNESS + POPOVER_ARROW_GAP);
+    expect(getPopoverPanelOffset(true)).toBe(POPOVER_ARROW_GAP);
+  });
+});
 
 describe('getPopoverBorderRadius()', () => {
   const popover = document.createElement('div');
@@ -25,5 +37,3 @@ describe('getPopoverBorderRadius()', () => {
     expect(getPopoverBorderRadius(popover)).toBe(12);
   });
 });
-
-

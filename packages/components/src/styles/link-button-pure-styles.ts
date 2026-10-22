@@ -1,3 +1,16 @@
+import {
+  blurFrosted,
+  colorFrosted,
+  colorFrostedStrong,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusFull,
+  radiusLg,
+  ref,
+  spacingStaticXs,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 import type { JssStyle, Styles } from 'jss';
 import type { ButtonPureColor, ButtonPureSize } from '../components/button-pure/button-pure-utils';
 import type { LinkPureColor, LinkPureSize } from '../components/link-pure/link-pure-utils';
@@ -18,19 +31,6 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
-import {
-  blurFrosted,
-  colorFrosted,
-  colorFrostedStrong,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  radiusFull,
-  radiusLg,
-  ref,
-  spacingStaticXs,
-  typescaleSm,
-} from '@porsche-design-system/stylesheets';
 import { colorMap, sizeMap } from './maps';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -62,9 +62,15 @@ export const getLinkButtonPureStyles = (
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean,
-  hasSlottedAnchor: boolean
+  hasSlottedAnchor: boolean,
+  cssVarPaddingInline: string,
+  cssVarPaddingBlock: string,
+  cssVarHoverInsetInline: string,
+  cssVarHoverInsetBlock: string
 ): Styles => {
   const hasIcon = hasVisibleIcon(icon, iconSource);
+  const hoverInsetBlock = ref(cssVarHoverInsetBlock, offsetVertical);
+  const hoverInsetInline = ref(cssVarHoverInsetInline, offsetHorizontal);
 
   return {
     '@global': {
@@ -83,6 +89,9 @@ export const getLinkButtonPureStyles = (
     },
     root: {
       all: 'unset',
+      boxSizing: 'border-box',
+      paddingInline: ref(cssVarPaddingInline, '0'),
+      paddingBlock: ref(cssVarPaddingBlock, '0'),
       display: 'flex',
       width: '100%',
       cursor: 'pointer',
@@ -110,11 +119,11 @@ export const getLinkButtonPureStyles = (
       '&::before': {
         content: '""',
         position: 'absolute', // mobile Safari -> prevent lagging active state
-        top: offsetVertical,
-        bottom: offsetVertical,
+        top: hoverInsetBlock,
+        bottom: hoverInsetBlock,
         ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
-          right: hideLabelValue ? offsetVertical : offsetHorizontal,
-          left: hideLabelValue ? offsetVertical : offsetHorizontal,
+          right: hideLabelValue ? hoverInsetBlock : hoverInsetInline,
+          left: hideLabelValue ? hoverInsetBlock : hoverInsetInline,
           borderRadius: hideLabelValue ? ref(radiusFull) : ref(radiusLg),
         })),
         transition: getTransition('background-color'),

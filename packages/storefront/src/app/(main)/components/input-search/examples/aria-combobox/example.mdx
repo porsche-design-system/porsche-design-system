@@ -1,8 +1,13 @@
-You can pass an `aria` property to expose extra semantics on the **native input** (see
-[accessibility](/components/input-search/accessibility)). The story below is intentionally incomplete: it sets common
-combobox-related `aria` values and shows a **non-interactive** listbox-shaped panel (Tailwind only) for visual context.
-If you use `aria-controls` to reference a light-DOM listbox from the native input inside Shadow DOM, be aware that
-assistive technologies may not reliably honor that cross-shadow relationship. This issue is known and will be resolved
-if browsers add support for it. A real implementation still needs your logic, keyboard handling, and relationship
-attributes that work for your setup per the [ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
+A search field with a result list composed with [`p-popover`](/components/popover/configurator) is provided as different patterns:
+
+### The combobox pattern
+
+The [dealer results](/patterns/forms/resources#dealer-results) pattern shows this as an example integration. Typing filters the choices,
+the arrow keys move a highlight, and Enter or the search button writes the highlighted choice into the field.
+
+### The links pattern
+
+The [dealer links](/patterns/forms/resources#dealer-links) pattern uses the same field when a match is a page of its
+own. The results stay real links inside a dialog, the arrow keys move a highlight, and Enter or a click opens the
+highlighted page. 
 

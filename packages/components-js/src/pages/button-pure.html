@@ -1,3 +1,12 @@
+<style>
+.custom-padding-hover-inset {
+  --p-button-pure-px: 48px;
+  --p-button-pure-py: 32px;
+  --p-button-pure-hover-inset-x: -16px;
+  --p-button-pure-hover-inset-y: -12px;
+}
+</style>
+
 <div class="playground auto-layout-inline" title="should render button with label">
   <p-button-pure class="a11ytree-snapshot-test">Label default</p-button-pure>
   <p-button-pure disabled="true" class="a11ytree-snapshot-test">Label disabled</p-button-pure>
@@ -142,4 +151,10 @@
     style="font-size: 48px"
     >Label icon none size responsive
   </p-button-pure>
+</div>
+
+<div class="playground auto-layout-inline" title="should render with custom padding and hover inset">
+  <p-button-pure class="custom-padding-hover-inset">Some label</p-button-pure>
+  <p-button-pure class="custom-padding-hover-inset" active="true">Some label</p-button-pure>
+  <p-button-pure class="custom-padding-hover-inset" hide-label="true" active="true">Some label</p-button-pure>
 </div>
