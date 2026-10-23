@@ -1,5 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
-import type { PropOptions } from '@stencil/core';
+// Not '@stencil/core', because inlining its types for the published typings would also inline its global jest matchers
+import type { PropOptions } from '@stencil/core/internal/stencil-public-runtime';
 
 export type PropMeta = {
   description?: string;

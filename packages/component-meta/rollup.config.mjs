@@ -1,5 +1,6 @@
 // @ts-check
 import typescript from '@rollup/plugin-typescript';
+import { dts } from 'rollup-plugin-dts';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const input = 'src/index.ts';
@@ -38,7 +39,7 @@ export default [
       preserveModulesRoot: 'src',
     },
     plugins: [
-      typescript({ noEmitOnError: true, declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
+      typescript({ noEmitOnError: true }),
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
@@ -63,8 +64,18 @@ export default [
       preserveModules: true,
       preserveModulesRoot: 'src',
     },
-    plugins: [
-      typescript({ noEmitOnError: true, declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
-    ],
+    plugins: [typescript({ noEmitOnError: true })],
+  },
+  {
+    input,
+    output: { file: `${outputDir}/esm/index.d.ts`, format: 'esm' },
+    // The typings ship in the published packages, where neither the private shared package nor stencil is installed,
+    // so the types used from them are inlined.
+    plugins: [dts({ includeExternal: ['@porsche-design-system/shared', '@stencil/core'] })],
+  },
+  {
+    input: utilsInput,
+    output: { file: `${outputDir}/esm/utils/index.d.ts`, format: 'esm' },
+    plugins: [dts()],
   },
 ];
