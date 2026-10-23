@@ -69,9 +69,9 @@ export default [
   {
     input,
     output: { file: `${outputDir}/esm/index.d.ts`, format: 'esm' },
-    // The typings ship in the published packages, where neither the private shared package nor stencil is installed,
-    // so the types used from them are inlined.
-    plugins: [dts({ includeExternal: ['@porsche-design-system/shared', '@stencil/core'] })],
+    // The typings ship in the published packages, where the private shared package isn't installed, so the types used
+    // from it are inlined.
+    plugins: [dts({ includeExternal: ['@porsche-design-system/shared'] })],
   },
   {
     input: utilsInput,
