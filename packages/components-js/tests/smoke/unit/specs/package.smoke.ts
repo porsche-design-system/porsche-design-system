@@ -1,11 +1,18 @@
 import { createRequire } from 'node:module';
-import { type Analysis, checkPackage, createPackageFromTarballData, type Problem } from '@arethetypeswrong/core';
-import { execSync } from 'child_process';
+import {
+  type Analysis,
+  checkPackage,
+  createPackageFromTarballData,
+  type Problem,
+  type ProblemKind,
+  type ResolutionKind,
+} from '@arethetypeswrong/core';
 import { sync as globbySync } from 'fast-glob';
 import * as fs from 'fs';
 import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 import componentsJsPackageJson from '../../../../dist/components-wrapper/package.json';
+import { getPublishedFiles, withPackedTarball } from '../helpers/npm-pack';
 
 const nodeRequire = createRequire(import.meta.url);
 
@@ -82,24 +89,40 @@ const packageJsonExports = {
   './cn/font-face': './stylesheets/cn/font-face.css',
 };
 
-describe('package content', () => {
-  const componentsJsFilePath = nodeRequire.resolve('@porsche-design-system/components-js');
-  const componentsJsPackageDir = path.resolve(componentsJsFilePath, '../..');
-  const filePaths = globbySync(`${componentsJsPackageDir}/**/*.{js,mjs,cjs}`);
+const packageNames = [
+  '@porsche-design-system/components-js',
+  '@porsche-design-system/components-angular',
+  '@porsche-design-system/components-react',
+  '@porsche-design-system/components-vue',
+] as const;
+type PackageName = (typeof packageNames)[number];
 
-  for (const filePath of filePaths) {
-    test(`should not contain "CDN_BASE_URL_DYNAMIC" placeholder or "localhost" in bundled production js file "${filePath}"`, async () => {
-      const fileContent = fs.readFileSync(path.resolve(componentsJsPackageDir, filePath), 'utf8');
-      expect(fileContent).not.toContain('CDN_BASE_URL_DYNAMIC');
-      expect(fileContent).not.toContain('localhost');
-    });
-  }
+// The root directory of the built package, e.g. `packages/components-js/dist/components-wrapper`.
+const getPackageDir = (packageName: PackageName): string =>
+  path
+    .resolve(nodeRequire.resolve(packageName), '../package.json')
+    .replace(/(wrapper\/).+\/(package\.json)/, '$1$2') // get rid of nested folders if there are any
+    .replace(/\/package\.json$/, '');
+
+const readPackageJson = (packageName: PackageName) =>
+  JSON.parse(fs.readFileSync(path.resolve(getPackageDir(packageName), 'package.json'), 'utf8'));
+
+describe('package content', () => {
+  test('should not contain "CDN_BASE_URL_DYNAMIC" placeholder or "localhost" in any published js file', () => {
+    const packageDir = getPackageDir('@porsche-design-system/components-js');
+    const filesWithDevValues = getPublishedFiles(packageDir)
+      .filter((filePath) => /\.(c|m)?js$/.test(filePath))
+      .filter((filePath) => {
+        const fileContent = fs.readFileSync(path.resolve(packageDir, filePath), 'utf8');
+        return fileContent.includes('CDN_BASE_URL_DYNAMIC') || fileContent.includes('localhost');
+      });
+
+    expect(filesWithDevValues).toEqual([]);
+  });
 });
 
 describe('stylesheets folder content', () => {
-  const componentsJsFilePath = nodeRequire.resolve('@porsche-design-system/components-js');
-  const componentsJsPackageDir = path.resolve(componentsJsFilePath, '../..');
-  const stylesheetsDir = path.resolve(componentsJsPackageDir, 'stylesheets');
+  const stylesheetsDir = path.resolve(getPackageDir('@porsche-design-system/components-js'), 'stylesheets');
   const stylesheetsFiles = globbySync(`${stylesheetsDir}/**/*`);
 
   test('should only expose .css files and no internal meta (js/cjs/mjs/d.ts) or package.json', () => {
@@ -109,19 +132,9 @@ describe('stylesheets folder content', () => {
 });
 
 describe('package.json files', () => {
-  const packageNames = [
-    '@porsche-design-system/components-js',
-    '@porsche-design-system/components-angular',
-    '@porsche-design-system/components-react',
-    '@porsche-design-system/components-vue',
-  ] as const;
-
   for (const packageName of packageNames) {
-    test(`should have correct entrypoints for "${packageName}"`, { timeout: 30000 }, async () => {
-      const pathName = path
-        .resolve(nodeRequire.resolve(packageName), '../package.json')
-        .replace(/(wrapper\/).+\/(package\.json)/, '$1$2'); // get rid of nested folders if there are any
-      const pkgJson = JSON.parse(fs.readFileSync(pathName, 'utf8'));
+    test(`should have correct version and entrypoints for "${packageName}"`, () => {
+      const pkgJson = readPackageJson(packageName);
 
       // adjust and ignore stuff that is ssr related
       delete pkgJson.exports['./ssr'];
@@ -157,56 +170,119 @@ describe('package.json files', () => {
           ...packageJsonExports,
         });
       }
+    });
+  }
+});
 
-      // create temporary local package tgz package
-      // inspired by https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/9c6db02a531a797d2ce7b197bca94f82a50064e7/packages/cli/src/index.ts#L152-L155
-      // packed by path like `.github/scripts/release-npm.sh` publishes, because running `npm pack` inside the package
-      // directory applies the repository's `.gitignore` and leaves out nested `dist` folders
-      const packageDir = path.dirname(pathName);
-      const tarBall = path.resolve(
-        packageDir,
-        execSync(`npm pack ${packageDir} --pack-destination ${packageDir}`, { encoding: 'utf8', stdio: 'pipe' }).trim()
+/**
+ * arethetypeswrong (https://arethetypeswrong.github.io) checks every entrypoint of the `exports` map with the four
+ * module resolution modes of TypeScript (`node10`, `node16-cjs`, `node16-esm` and `bundler`). Per entrypoint and mode it
+ * reports when nothing resolves, when only JavaScript but no types resolve, and when the types describe a different
+ * module format (ESM or CommonJS) than the JavaScript they belong to.
+ *
+ * It does not type check the declaration files and skips imports of other packages, that is covered by
+ * `typings.smoke.ts` and `package-imports.smoke.ts`.
+ */
+describe('arethetypeswrong', () => {
+  type ExpectedProblem = {
+    kind: ProblemKind;
+    /** Applies to every entrypoint when omitted */
+    entrypoint?: string;
+    /** Applies to every module resolution mode when omitted */
+    resolutionKind?: ResolutionKind;
+    /** Applies to every package when omitted */
+    packageName?: PackageName;
+    /** Why this problem is accepted */
+    reason: string;
+  };
+
+  // Every problem listed here must still be reported, so the list can't keep problems that are fixed already.
+  const expectedProblems: ExpectedProblem[] = [
+    {
+      kind: 'FalseCJS',
+      reason:
+        'The packages have no `"type": "module"`, so TypeScript reads the `.d.ts` files as CommonJS, also for the ESM ' +
+        'build (`.mjs`). Fixing it needs separate `.d.mts` typings per condition, which is a change of its own. ' +
+        'https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseCJS.md',
+    },
+    {
+      kind: 'NoResolution',
+      entrypoint: './styles',
+      resolutionKind: 'node10',
+      reason:
+        '`node10` ignores the `exports` map and looks for a `styles` folder, which does not exist. The entrypoint is ' +
+        'an alias of `./emotion`, which `node10` can resolve.',
+    },
+    {
+      kind: 'NoResolution',
+      entrypoint: './styles/vanilla-extract',
+      resolutionKind: 'node10',
+      reason:
+        '`node10` ignores the `exports` map and looks for a `styles/vanilla-extract` folder, which does not exist. ' +
+        'The entrypoint is an alias of `./vanilla-extract`, which `node10` can resolve.',
+    },
+    {
+      kind: 'CJSResolvesToESM',
+      entrypoint: '.',
+      resolutionKind: 'node16-cjs',
+      packageName: '@porsche-design-system/components-angular',
+      reason: 'Angular libraries are ESM only, `require()` is not supported.',
+    },
+  ];
+
+  const isExpectedProblem = (problem: Problem, expected: ExpectedProblem): boolean =>
+    problem.kind === expected.kind &&
+    (expected.entrypoint === undefined || ('entrypoint' in problem && problem.entrypoint === expected.entrypoint)) &&
+    (expected.resolutionKind === undefined ||
+      ('resolutionKind' in problem && problem.resolutionKind === expected.resolutionKind));
+
+  // Entrypoints that only point to stylesheets, e.g. `./index.css` or `./scss`. arethetypeswrong tries to resolve them
+  // as JavaScript modules and reports `NoResolution` for every mode, which is irrelevant for them.
+  const getStylesheetEntrypoints = (exports: Record<string, unknown>): string[] => {
+    const isStylesheet = (target: unknown): boolean => typeof target === 'string' && /\.s?css$/.test(target);
+    return Object.entries(exports)
+      .filter(([, target]) =>
+        typeof target === 'object' && target !== null ? Object.values(target).every(isStylesheet) : isStylesheet(target)
+      )
+      .map(([entrypoint]) => entrypoint);
+  };
+
+  // A short, readable description, because the problem objects contain long resolution traces.
+  const formatProblem = (problem: Problem): string =>
+    [
+      problem.kind,
+      'entrypoint' in problem && `entrypoint "${problem.entrypoint}"`,
+      'resolutionKind' in problem && `resolution "${problem.resolutionKind}"`,
+      'typesFileName' in problem && `types "${problem.typesFileName}"`,
+      'fileName' in problem && `file "${problem.fileName}"`,
+      'moduleSpecifier' in problem && `import "${problem.moduleSpecifier}"`,
+    ]
+      .filter(Boolean)
+      .join(', ');
+
+  for (const packageName of packageNames) {
+    test(`should only report expected problems for "${packageName}"`, { timeout: 60000 }, async () => {
+      const result = (await withPackedTarball(getPackageDir(packageName), async (tarball) =>
+        checkPackage(await createPackageFromTarballData(tarball))
+      )) as Analysis;
+
+      const stylesheetEntrypoints = getStylesheetEntrypoints(readPackageJson(packageName).exports);
+      const problems = result.problems.filter(
+        (problem) => !('entrypoint' in problem && stylesheetEntrypoints.includes(problem.entrypoint))
+      );
+      const expectedProblemsOfPackage = expectedProblems.filter(
+        (expected) => expected.packageName === undefined || expected.packageName === packageName
       );
 
-      const file = fs.readFileSync(tarBall);
-      const data = new Uint8Array(file);
-      const result = (await checkPackage(await createPackageFromTarballData(data), {})) as Analysis;
-
-      // delete temporary package again
-      fs.rmSync(tarBall);
-
-      // ignore FalseCJS issues for certain entrypoints where both
-      // esm and cjs build need their own typings
-      // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseCJS.md
-      const relevantProblems = result.problems.filter(
-        (prob: Problem) =>
-          !(
-            prob.kind === 'FalseCJS' ||
-            ('resolutionKind' in prob && prob.resolutionKind === 'node10') ||
-            ('entrypoint' in prob &&
-              (prob.entrypoint === './ag-grid' ||
-                prob.entrypoint === '.' ||
-                prob.entrypoint === './scss' ||
-                prob.entrypoint === './emotion' ||
-                prob.entrypoint === './vanilla-extract' ||
-                prob.entrypoint === './ssr' ||
-                prob.entrypoint === './styles' ||
-                prob.entrypoint === './styles/vanilla-extract' ||
-                prob.entrypoint.includes('tailwindcss') ||
-                prob.entrypoint.includes('color-scheme') ||
-                prob.entrypoint.includes('font-face') ||
-                prob.entrypoint.includes('normalize') ||
-                prob.entrypoint.includes('variables') ||
-                prob.entrypoint.includes('cn') ||
-                prob.entrypoint.includes('index')))
-          )
+      const unexpectedProblems = problems.filter(
+        (problem) => !expectedProblemsOfPackage.some((expected) => isExpectedProblem(problem, expected))
       );
+      expect(unexpectedProblems.map(formatProblem)).toEqual([]);
 
-      if (relevantProblems.length) {
-        console.error(relevantProblems);
-      }
-
-      expect(relevantProblems).toHaveLength(0);
+      const expectedProblemsNoLongerReported = expectedProblemsOfPackage.filter(
+        (expected) => !problems.some((problem) => isExpectedProblem(problem, expected))
+      );
+      expect(expectedProblemsNoLongerReported).toEqual([]);
     });
   }
 });

@@ -1,9 +1,9 @@
-import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import { builtinModules } from 'node:module';
 import * as path from 'node:path';
 import * as ts from 'typescript';
 import { describe, expect, test } from 'vitest';
+import { getPublishedFiles } from '../helpers/npm-pack';
 
 const rootDir = path.resolve(__dirname, '../../../../../..');
 
@@ -19,19 +19,6 @@ const optionalImports: { file: RegExp; specifier: string }[] = [
   // The jsx format of the partials is only used in React projects, the import is wrapped in a try/catch.
   { file: /^partials\/(cjs|esm)\/index\.(cjs|mjs)$/, specifier: 'react/jsx-runtime' },
 ];
-
-// Packed exactly like `.github/scripts/release-npm.sh` publishes. Running `npm pack` inside the package directory
-// instead applies the repository's `.gitignore` and leaves out nested `dist` folders.
-const getPublishedFiles = (packageDir: string): string[] => {
-  const [{ files }] = JSON.parse(
-    execSync(`npm pack ${packageDir} --dry-run --json --ignore-scripts`, {
-      cwd: rootDir,
-      encoding: 'utf8',
-      stdio: 'pipe',
-    })
-  ) as { files: { path: string }[] }[];
-  return files.map(({ path }) => path);
-};
 
 const getPackageName = (specifier: string): string =>
   specifier
@@ -65,7 +52,7 @@ const getImportProblems = (packageDir: string): string[] => {
     ...Object.keys(pkgJson.dependencies ?? {}),
     ...Object.keys(pkgJson.peerDependencies ?? {}),
   ]);
-  const publishedFiles = new Set(getPublishedFiles(packageDir));
+  const publishedFiles = new Set(getPublishedFiles(absolutePackageDir));
 
   return (
     [...publishedFiles]
