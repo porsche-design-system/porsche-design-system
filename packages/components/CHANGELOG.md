@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **Meta**: type checking failed with `Cannot find module '@porsche-design-system/shared'` and
   `Cannot find module '@stencil/core'` in projects with `skipLibCheck` disabled
   ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- **Angular**: `@angular/forms` was missing from the peer dependencies, although the form components import it
+  ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
 
 ## [4.10.1] - 2026-10-23
 
