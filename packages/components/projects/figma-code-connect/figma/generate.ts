@@ -709,7 +709,8 @@ export const generate = (
 
   const withSet = new Set<string>();
   for (const component of snapshot.components) {
-    const name = component.name.replace(/^fig-/, '').toLowerCase();
+    // `fig-` marks what only Figma needs, so a `fig-` set never pairs (`fig-tabs-item` is the Tabs Bar's tab)
+    const name = component.name.toLowerCase();
     const tag = `p-${name}` as TagName;
     const meta = dependencies.getComponentMeta(tag);
     if (!meta) {
