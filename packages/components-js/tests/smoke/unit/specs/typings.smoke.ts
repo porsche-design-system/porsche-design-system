@@ -1,38 +1,30 @@
-import * as fs from 'node:fs';
-import { createRequire } from 'node:module';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as ts from 'typescript';
 import { describe, expect, test } from 'vitest';
+import { createConsumerResolution, getPackageDir, readPackageJson } from '../helpers/packages';
 
-const nodeRequire = createRequire(import.meta.url);
-const pkgJsonPath = nodeRequire.resolve('@porsche-design-system/components-js/package.json');
-const pkgDir = fs.realpathSync(path.dirname(pkgJsonPath));
-const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
+const pkgDir = getPackageDir('@porsche-design-system/components-js');
+const pkgJson = readPackageJson('@porsche-design-system/components-js');
+const consumerResolution = createConsumerResolution(pkgJson);
 
-// Only what a consumer gets installed alongside the package. The monorepo's node_modules would resolve far more,
-// e.g. private workspace packages, which would hide missing dependencies.
-const consumerResolvablePackages = new Set<string>([
-  pkgJson.name,
-  ...Object.keys(pkgJson.dependencies ?? {}),
-  ...Object.keys(pkgJson.peerDependencies ?? {}),
-]);
+// Files outside the package, e.g. of react or typescript itself, resolve as usual.
+const getPackageFilePath = (containingFile: string): string | undefined =>
+  containingFile.startsWith(`${pkgDir}${path.sep}`)
+    ? path.relative(pkgDir, containingFile).split(path.sep).join('/')
+    : undefined;
 
-const getPackageName = (specifier: string): string =>
-  specifier
-    .split('/')
-    .slice(0, specifier.startsWith('@') ? 2 : 1)
-    .join('/');
+const isResolvableForConsumers = (specifier: string, containingFile: string): boolean => {
+  const filePath = getPackageFilePath(containingFile);
+  return (
+    filePath === undefined || specifier.startsWith('.') || consumerResolution.isModuleResolvable(specifier, filePath)
+  );
+};
 
-const isResolvableForConsumers = (specifier: string, containingFile: string): boolean =>
-  !containingFile.startsWith(`${pkgDir}${path.sep}`) ||
-  specifier.startsWith('.') ||
-  consumerResolvablePackages.has(getPackageName(specifier));
-
-// `/// <reference types="x" />` resolves either the package `x` or `@types/x`.
-const isTypeReferenceResolvableForConsumers = (name: string, containingFile: string): boolean =>
-  isResolvableForConsumers(name, containingFile) ||
-  consumerResolvablePackages.has(`@types/${getPackageName(name).replace(/^@/, '').replace('/', '__')}`);
+const isTypeReferenceResolvableForConsumers = (name: string, containingFile: string): boolean => {
+  const filePath = getPackageFilePath(containingFile);
+  return filePath === undefined || consumerResolution.isTypeReferenceResolvable(name, filePath);
+};
 
 const compilerOptions: ts.CompilerOptions = {
   strict: true,

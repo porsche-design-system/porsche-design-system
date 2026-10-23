@@ -9,9 +9,13 @@ type NpmPackResult = { filename: string; files: { path: string }[] };
 // package directory instead applies the repository's `.gitignore` and leaves out every nested `dist` folder, so the
 // result would differ from what is published.
 // The arguments are passed without a shell, so paths with spaces or shell characters can't break the command.
+// Without a shell, Windows can't run `npm.cmd`, so npm's own script is run with node when it is known.
+const npmCliPath = process.env.npm_execpath;
+const [npmCommand, ...npmArgs] = npmCliPath?.endsWith('npm-cli.js') ? [process.execPath, npmCliPath] : ['npm'];
+
 const npmPack = (packageDir: string, args: string[]): NpmPackResult => {
   const [result] = JSON.parse(
-    execFileSync('npm', ['pack', packageDir, '--json', '--ignore-scripts', ...args], {
+    execFileSync(npmCommand, [...npmArgs, 'pack', packageDir, '--json', '--ignore-scripts', ...args], {
       encoding: 'utf8',
       stdio: 'pipe',
     })

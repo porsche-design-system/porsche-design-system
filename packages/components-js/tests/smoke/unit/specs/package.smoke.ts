@@ -1,4 +1,3 @@
-import { createRequire } from 'node:module';
 import {
   type Analysis,
   checkPackage,
@@ -13,8 +12,7 @@ import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 import componentsJsPackageJson from '../../../../dist/components-wrapper/package.json';
 import { getPublishedFiles, withPackedTarball } from '../helpers/npm-pack';
-
-const nodeRequire = createRequire(import.meta.url);
+import { getPackageDir, type PackageName, packageNames, readPackageJson } from '../helpers/packages';
 
 const packageJsonExports = {
   './ag-grid': {
@@ -88,24 +86,6 @@ const packageJsonExports = {
   './cn/font-face.css': './stylesheets/cn/font-face.css',
   './cn/font-face': './stylesheets/cn/font-face.css',
 };
-
-const packageNames = [
-  '@porsche-design-system/components-js',
-  '@porsche-design-system/components-angular',
-  '@porsche-design-system/components-react',
-  '@porsche-design-system/components-vue',
-] as const;
-type PackageName = (typeof packageNames)[number];
-
-// The root directory of the built package, e.g. `packages/components-js/dist/components-wrapper`.
-const getPackageDir = (packageName: PackageName): string =>
-  path
-    .resolve(nodeRequire.resolve(packageName), '../package.json')
-    .replace(/(wrapper\/).+\/(package\.json)/, '$1$2') // get rid of nested folders if there are any
-    .replace(/\/package\.json$/, '');
-
-const readPackageJson = (packageName: PackageName) =>
-  JSON.parse(fs.readFileSync(path.resolve(getPackageDir(packageName), 'package.json'), 'utf8'));
 
 describe('package content', () => {
   test('should not contain "CDN_BASE_URL_DYNAMIC" placeholder or "localhost" in any published js file', () => {

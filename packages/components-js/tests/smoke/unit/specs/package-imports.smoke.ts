@@ -4,27 +4,20 @@ import * as path from 'node:path';
 import * as ts from 'typescript';
 import { describe, expect, test } from 'vitest';
 import { getPublishedFiles } from '../helpers/npm-pack';
-
-const rootDir = path.resolve(__dirname, '../../../../../..');
-
-const packageDirs = [
-  'packages/components-js/dist/components-wrapper',
-  'packages/components-angular/dist/angular-wrapper',
-  'packages/components-react/dist/react-wrapper',
-  'packages/components-vue/dist/vue-wrapper',
-];
+import {
+  createConsumerResolution,
+  getPackageDir,
+  getPackageName,
+  type PackageName,
+  packageNames,
+  readPackageJson,
+} from '../helpers/packages';
 
 // Runtime imports that are deliberately not dependencies, because the code that uses them handles their absence.
 const optionalImports: { file: RegExp; specifier: string }[] = [
   // The jsx format of the partials is only used in React projects, the import is wrapped in a try/catch.
   { file: /^partials\/(cjs|esm)\/index\.(cjs|mjs)$/, specifier: 'react/jsx-runtime' },
 ];
-
-const getPackageName = (specifier: string): string =>
-  specifier
-    .split('/')
-    .slice(0, specifier.startsWith('@') ? 2 : 1)
-    .join('/');
 
 const isBuiltinModule = (specifier: string): boolean =>
   specifier.startsWith('node:') || builtinModules.includes(getPackageName(specifier));
@@ -44,15 +37,10 @@ const getRelativeCandidates = (filePath: string, specifier: string): string[] =>
   return [resolved, `${resolved}.js`, `${resolved}.json`, `${resolved}/index.js`];
 };
 
-const getImportProblems = (packageDir: string): string[] => {
-  const absolutePackageDir = path.resolve(rootDir, packageDir);
-  const pkgJson = JSON.parse(fs.readFileSync(path.resolve(absolutePackageDir, 'package.json'), 'utf8'));
-  const resolvablePackages = new Set<string>([
-    pkgJson.name,
-    ...Object.keys(pkgJson.dependencies ?? {}),
-    ...Object.keys(pkgJson.peerDependencies ?? {}),
-  ]);
-  const publishedFiles = new Set(getPublishedFiles(absolutePackageDir));
+const getImportProblems = (packageName: PackageName): string[] => {
+  const packageDir = getPackageDir(packageName);
+  const { isModuleResolvable, isTypeReferenceResolvable } = createConsumerResolution(readPackageJson(packageName));
+  const publishedFiles = new Set(getPublishedFiles(packageDir));
 
   return (
     [...publishedFiles]
@@ -60,7 +48,7 @@ const getImportProblems = (packageDir: string): string[] => {
       .filter((filePath) => /\.(c|m)?js$|\.d\.[mc]?ts$/.test(filePath) && !filePath.startsWith('skills/'))
       .flatMap((filePath) => {
         const { importedFiles, referencedFiles, typeReferenceDirectives } = ts.preProcessFile(
-          fs.readFileSync(path.resolve(absolutePackageDir, filePath), 'utf8'),
+          fs.readFileSync(path.resolve(packageDir, filePath), 'utf8'),
           true,
           true
         );
@@ -73,34 +61,32 @@ const getImportProblems = (packageDir: string): string[] => {
                 : `${filePath}: "${specifier}" is not published`;
             }
             return isBuiltinModule(specifier) ||
-              resolvablePackages.has(getPackageName(specifier)) ||
+              isModuleResolvable(specifier, filePath) ||
               optionalImports.some((x) => x.specifier === specifier && x.file.test(filePath))
               ? undefined
-              : `${filePath}: "${specifier}" is not a dependency or peer dependency`;
+              : `${filePath}: "${specifier}" is not a dependency, a required peer dependency or an optional peer dependency of its folder`;
           }),
           ...referencedFiles.map(({ fileName }) =>
             publishedFiles.has(path.posix.join(path.posix.dirname(filePath), fileName))
               ? undefined
               : `${filePath}: reference path "${fileName}" is not published`
           ),
-          ...typeReferenceDirectives.map(({ fileName }) => {
-            const packageName = getPackageName(fileName);
-            return resolvablePackages.has(packageName) ||
-              resolvablePackages.has(`@types/${packageName.replace(/^@/, '').replace('/', '__')}`)
+          ...typeReferenceDirectives.map(({ fileName }) =>
+            isTypeReferenceResolvable(fileName, filePath)
               ? undefined
-              : `${filePath}: reference types "${fileName}" is not a dependency or peer dependency`;
-          }),
+              : `${filePath}: reference types "${fileName}" is not a dependency, a required peer dependency or an optional peer dependency of its folder`
+          ),
         ].filter((problem) => problem !== undefined);
       })
   );
 };
 
 describe('package imports', () => {
-  for (const packageDir of packageDirs) {
-    test(`should only import published files, dependencies and peer dependencies in "${packageDir}"`, {
+  for (const packageName of packageNames) {
+    test(`should only import published files, dependencies and peer dependencies in "${packageName}"`, {
       timeout: 60000,
     }, () => {
-      expect(getImportProblems(packageDir)).toEqual([]);
+      expect(getImportProblems(packageName)).toEqual([]);
     });
   }
 });
