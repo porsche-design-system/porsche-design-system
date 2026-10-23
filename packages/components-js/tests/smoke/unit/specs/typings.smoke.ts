@@ -72,9 +72,6 @@ const typedEntrypoints = Object.entries<unknown>(pkgJson.exports)
   .filter(([, target]) => typeof target === 'object' && target !== null && 'types' in target)
   .map(([entrypoint]) => entrypoint);
 
-// TODO: remove once these typings no longer import packages that consumers don't have installed
-const knownFailingEntrypoints = ['./meta', './partials'];
-
 describe('typings', () => {
   test('should find typed entrypoints', () => {
     expect(typedEntrypoints).toContain('.');
@@ -82,9 +79,8 @@ describe('typings', () => {
 
   for (const entrypoint of typedEntrypoints) {
     const specifier = entrypoint === '.' ? pkgJson.name : `${pkgJson.name}/${entrypoint.slice(2)}`;
-    const testFn = knownFailingEntrypoints.includes(entrypoint) ? test.fails : test;
 
-    testFn(`should type check "${specifier}" without skipLibCheck`, { timeout: 30000 }, () => {
+    test(`should type check "${specifier}" without skipLibCheck`, { timeout: 30000 }, () => {
       expect(getTypeErrors(`export * as entrypoint from '${specifier}';`)).toEqual([]);
     });
   }

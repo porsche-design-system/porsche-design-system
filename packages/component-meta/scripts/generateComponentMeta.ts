@@ -81,7 +81,22 @@ const getEvaluablePropTypeString = (propTypes: string): string => {
 const generateComponentMeta = (): void => {
   // TODO: flag if top level / root component or even topLevelParentTagName
   const typesPath = path.resolve('./src/types/component-meta.d.ts');
-  const types = fs.readFileSync(typesPath, 'utf8');
+  // The typings ship in the published packages, where neither the private shared package nor stencil is installed,
+  // so the imported types are declared inline instead.
+  const typeImports = {
+    "import type { TagName } from '@porsche-design-system/shared';": `type TagName = ${TAG_NAMES.map((x) => `'${x}'`).join(' | ')};`,
+    "import type { PropOptions } from '@stencil/core';":
+      'type PropOptions = { attribute?: string | null; mutable?: boolean; reflect?: boolean };',
+  };
+  const types = Object.entries(typeImports).reduce(
+    (result, [typeImport, typeDeclaration]) => {
+      if (!result.includes(typeImport)) {
+        throw new Error(`Could not find "${typeImport}" in ${typesPath}`);
+      }
+      return result.replace(typeImport, typeDeclaration);
+    },
+    fs.readFileSync(typesPath, 'utf8')
+  );
 
   const componentSourceCode: Record<TagName, string> = componentFileNames.reduce(
     (result, filePath) => {
