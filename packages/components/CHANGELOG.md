@@ -14,6 +14,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.10.1] - 2026-10-23
+
+### Fixed
+
+- **TypeScript**: type checking failed with `Cannot find module '@porsche-design-system/components-manager-core'` in
+  projects with `skipLibCheck` disabled, since v4.7.0
+  ([#4808](https://github.com/porsche-design-system/porsche-design-system/pull/4808))
+
+## [4.10.0] - 2026-10-22
+
+## [4.10.0-rc.0] - 2026-10-22
+
 ### Added
 
 - Figma Code Connect: Figma Dev Mode and the Figma MCP server show PDS code (Web Components, React, Angular, Vue) for
