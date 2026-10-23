@@ -10,15 +10,16 @@ Figma library it reads and publishes to is the URL in `codeConnect.interactiveSe
 1. **Generate.** `npm run figma:generate` pulls the library's component sets, their property definitions and the node
    ids of its published icon components into memory, walks component-meta and writes four templates per component, one
    per label, plus the icon batches into `generated/`, which git ignores. It prints a design line for every change only
-   design can make in Figma and an accepted-gap cleanup for every accepted gap Figma made obsolete. The rules that pair
-   a PDS prop or slot with the Figma property of the same name are in `figma/generate.ts`. For a property no rule places
-   it reads the library's earlier versions (`figma/history.ts`): a key keeps its `#<id>` through a rename, and a
-   VARIANT, which has none, is matched by its options, so the line says `Rename "compacta" back to "compact"` instead of
-   asking for an add and reporting an unknown property.
+   design can make in Figma and an accepted-gap cleanup for every accepted gap Figma made obsolete. A component set
+   pairs with the PDS component whose tag is `p-` and the set's name, lowercased, so a `fig-` set, which only Figma
+   needs, never pairs. The rules that pair a PDS prop or slot with the Figma property of the same name are in
+   `figma/generate.ts`. For a property no rule places it reads the library's earlier versions (`figma/history.ts`): a
+   key keeps its `#<id>` through a rename, and a VARIANT, which has none, is matched by its options, so the line says
+   `Rename "compacta" back to "compact"` instead of asking for an add and reporting an unknown property.
 2. **Render.** A template reads each PDS prop and slot by name from `figma.selectedInstance.properties` when the snippet
    renders (`figma/helpers/read.ts`). **A property the Figma component lacks is left out of the snippet**, so every
    component publishes, and a property design adds or renames shows up once the library is published, with no new
-   publish.
+   publish. A required prop is the exception: it is written anyway (decision 12).
 3. **Publish.** `npm run figma:publish` runs `figma:generate -- --check`, then per label has Figma render every template
    (preview, once more for each that failed) and validate every record's node (dry run), and uploads what passed with
    `--force`, which overwrites a mapping a designer made in Figma's UI. A record Figma refuses, or could not be reached
@@ -255,3 +256,13 @@ Records live per file key, so nothing published under another key touches the li
     `LIBRARY_PUBLISH` webhook, which carries component keys and names only; the version label and description, typed by
     designers; a fixed reference version such as the newest before the latest release, whose answer changes at each
     release; naming who renamed and when, which the instruction does not need.
+12. **A required prop the Figma component lacks is written anyway: a required boolean (`open`) as on, and as off only
+    when Figma turns it off; a required text prop (`name`, `value`, `label`) with its own name as a placeholder,
+    `name="name"`, unless Figma has the text.** A frame always shows Banner, Flyout and Modal open, so Figma has no
+    `open` property; form props stay optional in Figma (decision 7), so design is never asked for `name` or `value`.
+    Without them a snippet does not compile in React, where the props are required: 22 components with a template had
+    such a prop. A required number prop is not covered: the only ones, Pagination's, Figma carries. Figma's preview
+    renders a template that writes a prop with no Figma property like any other. The cost: a placeholder looks like
+    data, and the developer has to replace it. Rejected: leaving them out like every other property Figma lacks, which
+    gave every variant of those 25 components a snippet that does not compile; asking design for `open`, `name` and
+    `value` properties, which a frame has nothing to show for.

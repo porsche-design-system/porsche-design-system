@@ -129,6 +129,25 @@ describe('generate: templates', () => {
     ]);
     expect(template(result, 'checkbox')).toContain("read.oneOf('state', ['none', 'error', 'success'])");
   });
+
+  it('pairs a set named like a PDS component behind fig- with no component', () => {
+    const result = run([set('fig-tabs-item')]);
+    expect(result.skipped).toEqual(['fig-tabs-item (1:1)']);
+    expect(template(result, 'tabs-item')).toBeUndefined();
+  });
+
+  it("names each icon record after the label's own tag", () => {
+    const result = run([], { icons: { '2:1': 'arrow-right' } });
+    const names = ['', '.react', '.angular', '.vue'].map(
+      (suffix) => JSON.parse(result.files[`generated/icons/p-icon${suffix}.figma.batch.json`]).components[0].component
+    );
+    expect(names).toEqual([
+      'p-icon (arrow-right)',
+      'PIcon (arrow-right)',
+      'p-icon (arrow-right)',
+      'PIcon (arrow-right)',
+    ]);
+  });
 });
 
 describe('generate: design lines', () => {

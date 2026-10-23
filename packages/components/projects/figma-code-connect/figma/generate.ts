@@ -130,8 +130,8 @@ const showLabelStandsForHideLabel = (
 /** How a template reads one PDS prop or slot when the snippet renders (figma/helpers/read.ts). */
 type PropertyMapping =
   | { kind: 'enum'; prop: string; values: string[] } // a VARIANT option PDS allows → variant="primary"
-  | { kind: 'boolean'; prop: string; defaultOn: boolean } // BOOLEAN or false/true VARIANT → disabled; hideLabel also as showLabel, inverted
-  | { kind: 'string'; prop: string } // TEXT → label="Some label"
+  | { kind: 'boolean'; prop: string; defaultOn: boolean; required: boolean } // BOOLEAN or false/true VARIANT → disabled; hideLabel also as showLabel, inverted
+  | { kind: 'string'; prop: string; required: boolean } // TEXT → label="Some label"
   | { kind: 'number'; prop: string } // TEXT → activePage={…}, only when the text is a number
   | { kind: 'icon'; prop: string } // INSTANCE_SWAP → icon="arrow-right", behind its fig<Prop> gate
   | { kind: 'slot'; figma: string }; // SLOT (or TEXT for the default slot) → the children of the PDS slot
@@ -168,13 +168,14 @@ const isIconProp = (values: readonly string[], iconNames: readonly string[]): bo
 
 /** How the template reads a PDS prop; `undefined` for one no attribute carries (an `intl` object). */
 const mappingOf = (prop: string, p: PropMeta, iconNames: readonly string[]): PropertyMapping | undefined => {
-  if (p.type === 'boolean') return { kind: 'boolean', prop, defaultOn: p.defaultValue === true };
+  if (p.type === 'boolean')
+    return { kind: 'boolean', prop, defaultOn: p.defaultValue === true, required: !!p.isRequired };
   if (p.allowedValues === 'number') return { kind: 'number', prop };
   if (Array.isArray(p.allowedValues) && !isFreeText(p.allowedValues)) {
     const values = allowedOf(p);
     return isIconProp(values, iconNames) ? { kind: 'icon', prop } : { kind: 'enum', prop, values };
   }
-  if (/string|number|Tag$/.test(p.type)) return { kind: 'string', prop };
+  if (/string|number|Tag$/.test(p.type)) return { kind: 'string', prop, required: !!p.isRequired };
   return undefined;
 };
 
@@ -467,6 +468,12 @@ const fragment = (
   const ifSet = (attr: string): string => `\${${variable} ? \` ${attr}\` : ''}`;
   switch (mapping.kind) {
     case 'boolean':
+      // a required prop (`open`) is written also when Figma has no property for it: on, unless Figma turns it off
+      if (mapping.required)
+        return {
+          read: `const ${variable} = !read.off('${mapping.prop}');`,
+          attr: `\${${variable} ? ' ${label.attr(mapping.prop, true)}' : ' ${label.expr(mapping.prop, 'false')}'}`,
+        };
       // written only away from its PDS default: a prop on by default (`dismissButton`) only when Figma turns it off
       if (mapping.defaultOn)
         return {
@@ -483,6 +490,12 @@ const fragment = (
         attr: ifSet(label.attr(mapping.prop, value)),
       };
     case 'string':
+      // a required prop (`name`) is written also when Figma has no property for it, its own name as a placeholder
+      if (mapping.required)
+        return {
+          read: `const ${variable} = read.text('${mapping.prop}') ?? ${literal(mapping.prop)};`,
+          attr: ` ${label.attr(mapping.prop, `\${escapeAttribute(${variable})}`)}`,
+        };
       return {
         read: `const ${variable} = read.text('${mapping.prop}');`,
         attr: ifSet(label.attr(mapping.prop, `\${escapeAttribute(${variable})}`)),
@@ -589,7 +602,6 @@ const iconEntries = (context: Context) => {
     .sort(([, a], [, b]) => a.localeCompare(b))
     .map(([id, name]) => ({
       url: context.nodeUrl(id),
-      component: `p-icon (${name})`,
       source,
       name,
       id: `p-icon-${name}`,
@@ -621,7 +633,16 @@ const iconBatch = (
     '};',
     '',
   ].join('\n');
-  const manifest = { templateFile: `./${base}.ts`, components };
+  const manifest = {
+    templateFile: `./${base}.ts`,
+    components: components.map(({ url, source, name, id }) => ({
+      url,
+      component: `${tag} (${name})`,
+      source,
+      name,
+      id,
+    })),
+  };
   return {
     [`${folder}/${base}.ts`]: template,
     [`${folder}/${base}.json`]: `${JSON.stringify(manifest, null, 2)}\n`,
@@ -696,7 +717,8 @@ export const generate = (
 
   const withSet = new Set<string>();
   for (const component of snapshot.components) {
-    const name = component.name.replace(/^fig-/, '').toLowerCase();
+    // `fig-` marks what only Figma needs, so a `fig-` set never pairs (`fig-tabs-item` is the Tabs Bar's tab)
+    const name = component.name.toLowerCase();
     const tag = `p-${name}` as TagName;
     const meta = dependencies.getComponentMeta(tag);
     if (!meta) {
