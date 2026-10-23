@@ -10,11 +10,12 @@ Figma library it reads and publishes to is the URL in `codeConnect.interactiveSe
 1. **Generate.** `npm run figma:generate` pulls the library's component sets, their property definitions and the node
    ids of its published icon components into memory, walks component-meta and writes four templates per component, one
    per label, plus the icon batches into `generated/`, which git ignores. It prints a design line for every change only
-   design can make in Figma and an accepted-gap cleanup for every accepted gap Figma made obsolete. The rules that pair
-   a PDS prop or slot with the Figma property of the same name are in `figma/generate.ts`. For a property no rule places
-   it reads the library's earlier versions (`figma/history.ts`): a key keeps its `#<id>` through a rename, and a
-   VARIANT, which has none, is matched by its options, so the line says `Rename "compacta" back to "compact"` instead of
-   asking for an add and reporting an unknown property.
+   design can make in Figma and an accepted-gap cleanup for every accepted gap Figma made obsolete. A component set
+   pairs with the PDS component whose tag is `p-` and the set's name, lowercased, so a `fig-` set, which only Figma
+   needs, never pairs. The rules that pair a PDS prop or slot with the Figma property of the same name are in
+   `figma/generate.ts`. For a property no rule places it reads the library's earlier versions (`figma/history.ts`): a
+   key keeps its `#<id>` through a rename, and a VARIANT, which has none, is matched by its options, so the line says
+   `Rename "compacta" back to "compact"` instead of asking for an add and reporting an unknown property.
 2. **Render.** A template reads each PDS prop and slot by name from `figma.selectedInstance.properties` when the snippet
    renders (`figma/helpers/read.ts`). **A property the Figma component lacks is left out of the snippet**, so every
    component publishes, and a property design adds or renames shows up once the library is published, with no new
