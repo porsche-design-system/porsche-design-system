@@ -160,10 +160,12 @@ describe('package.json files', () => {
 
       // create temporary local package tgz package
       // inspired by https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/9c6db02a531a797d2ce7b197bca94f82a50064e7/packages/cli/src/index.ts#L152-L155
+      // packed by path like `.github/scripts/release-npm.sh` publishes, because running `npm pack` inside the package
+      // directory applies the repository's `.gitignore` and leaves out nested `dist` folders
+      const packageDir = path.dirname(pathName);
       const tarBall = path.resolve(
-        pathName,
-        '..',
-        execSync('npm pack', { cwd: path.dirname(pathName), encoding: 'utf8', stdio: 'pipe' }).trim()
+        packageDir,
+        execSync(`npm pack ${packageDir} --pack-destination ${packageDir}`, { encoding: 'utf8', stdio: 'pipe' }).trim()
       );
 
       const file = fs.readFileSync(tarBall);
