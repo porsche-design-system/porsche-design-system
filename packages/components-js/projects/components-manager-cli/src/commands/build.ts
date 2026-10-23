@@ -1,15 +1,16 @@
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
 import {
+  type GlobalStyles,
   getConfig,
   getProjectPackageJson,
   getProjectRootPath,
-  type GlobalStyles,
   isGlobalStyleSrc,
 } from '../services/config';
-import { generateWebPackConfig } from '../services/webpack.config';
-import { runWebpack } from '../services/webpack';
+import { getModuleReferences } from '../services/definitions-file';
 import { copyFileByPattern, fileContentByPattern, filenameByPattern } from '../services/file-by-pattern';
+import { runWebpack } from '../services/webpack';
+import { generateWebPackConfig } from '../services/webpack.config';
 
 export const buildCommand = 'build';
 const DEFINITIONS_FILE_NAME = 'index.d.ts';
@@ -55,6 +56,7 @@ export const build = async () => {
     targetDirectory,
     additionalEntryFiles.map((x) => x.typingFilePath!).filter((x) => x)
   );
+  validateDefinitionFile(targetDirectory);
 
   for (const copyFile of copyFiles) {
     await copyFileByPattern(copyFile.pattern, copyFile.targetDirectory);
@@ -111,5 +113,17 @@ async function extendDefinitionFile(targetDirectory: string, definitionFiles: st
 
     const result = `${content}\n\n${definitionFiles.map((file) => fs.readFileSync(file).toString()).join('\n\n')}`;
     fs.writeFileSync(targetFilePath, result);
+  }
+}
+
+function validateDefinitionFile(targetDirectory: string) {
+  const targetFilePath = getDefinitionsFilePath(targetDirectory);
+  const moduleReferences = getModuleReferences(fs.readFileSync(targetFilePath, 'utf8'));
+
+  if (moduleReferences.length) {
+    console.error(
+      `${targetFilePath} is shipped standalone and must not reference other modules, found: ${moduleReferences.join(', ')}`
+    );
+    process.exit(1);
   }
 }
