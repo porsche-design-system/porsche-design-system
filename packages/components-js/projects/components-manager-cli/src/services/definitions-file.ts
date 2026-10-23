@@ -1,11 +1,10 @@
-const MODULE_REFERENCE_REGEX =
-  /\bfrom\s*['"]([^'"]+)['"]|\bimport\s*\(?\s*['"]([^'"]+)['"]|\/\/\/\s*<reference\s+(?:path|types)\s*=\s*['"]([^'"]+)['"]/g;
+import * as ts from 'typescript';
 
 /**
  * The definitions file is shipped as a single file, so every module it references would be missing for consumers.
+ * Uses the TypeScript scanner, so import-like text in comments and string literals is ignored.
  */
-export const getModuleReferences = (content: string): string[] =>
-  Array.from(
-    content.matchAll(MODULE_REFERENCE_REGEX),
-    ([, from, imported, reference]) => from || imported || reference
-  );
+export const getModuleReferences = (content: string): string[] => {
+  const { importedFiles, referencedFiles, typeReferenceDirectives } = ts.preProcessFile(content, true, true);
+  return [...importedFiles, ...referencedFiles, ...typeReferenceDirectives].map(({ fileName }) => fileName);
+};
