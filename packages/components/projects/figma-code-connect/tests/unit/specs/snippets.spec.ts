@@ -12,7 +12,7 @@ afterAll(() => rmSync(project, { recursive: true, force: true }));
 
 const { files } = generate(
   {
-    components: ['checkbox', 'button', 'accordion'].map((name, i) => ({
+    components: ['checkbox', 'button', 'accordion', 'banner', 'textarea'].map((name, i) => ({
       id: `1:${i + 1}`,
       name,
       componentPropertyDefinitions: {},
@@ -56,11 +56,33 @@ const holding = (slot: string, example: string): typeof globalThis.selectedInsta
 });
 
 describe.each([
-  { suffix: '', tag: kebab },
-  { suffix: '.react', tag: pascal },
-  { suffix: '.angular', tag: kebab },
-  { suffix: '.vue', tag: pascal },
-])('snippet$suffix', ({ suffix, tag }) => {
+  { suffix: '', tag: kebab, open: 'open="true"', closed: 'open="false"' },
+  { suffix: '.react', tag: pascal, open: 'open={true}', closed: 'open={false}' },
+  { suffix: '.angular', tag: kebab, open: '[open]="true"', closed: '[open]="false"' },
+  { suffix: '.vue', tag: pascal, open: ':open="true"', closed: ':open="false"' },
+])('snippet$suffix', ({ suffix, tag, open, closed }) => {
+  it('prints a required boolean prop as true when Figma has no property for it', async () => {
+    expect(await snippet('banner', suffix, { properties: {} })).toBe(`<${tag('banner')} ${open}></${tag('banner')}>`);
+  });
+
+  it('prints a required boolean prop as false when Figma turns it off', async () => {
+    const properties = { open: { value: false, type: 'BOOLEAN' } };
+    expect(await snippet('banner', suffix, { properties })).toBe(`<${tag('banner')} ${closed}></${tag('banner')}>`);
+  });
+
+  it('prints a required text prop with its own name as a placeholder when Figma has no property for it', async () => {
+    expect(await snippet('textarea', suffix, { properties: {} })).toBe(
+      `<${tag('textarea')} name="name"></${tag('textarea')}>`
+    );
+  });
+
+  it("prints a required text prop as the designer's text when Figma has a property for it", async () => {
+    const properties = { name: { value: 'comment', type: 'TEXT' } };
+    expect(await snippet('textarea', suffix, { properties })).toBe(
+      `<${tag('textarea')} name="comment"></${tag('textarea')}>`
+    );
+  });
+
   it("prints a designer's text in an attribute as that text", async () => {
     const properties = { label: { value: label, type: 'TEXT' } };
     expect(await snippet('checkbox', suffix, { properties })).toBe(

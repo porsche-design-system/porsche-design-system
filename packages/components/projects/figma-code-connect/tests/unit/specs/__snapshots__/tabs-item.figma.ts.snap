@@ -10,10 +10,10 @@ import { slotted } from '../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const label = read.text('label');
+const label = read.text('label') ?? 'label';
 
 export default {
-  example: figma.code`<p-tabs-item${label ? ` label="${escapeAttribute(label)}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-tabs-item>`,
+  example: figma.code`<p-tabs-item label="${escapeAttribute(label)}">${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-tabs-item>`,
   imports: [
     '// Setup: https://designsystem.porsche.com/v0.0.0/developing/vanilla-js/getting-started/',
     '// Docs: https://designsystem.porsche.com/v0.0.0/components/tabs/api/',

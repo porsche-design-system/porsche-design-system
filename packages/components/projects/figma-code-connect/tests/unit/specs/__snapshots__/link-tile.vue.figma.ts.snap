@@ -13,17 +13,17 @@ const instance = figma.selectedInstance;
 const size = read.oneOf('size', ['medium', 'large', 'inherit']);
 const weight = read.oneOf('weight', ['regular', 'semi-bold']);
 const aspectRatio = read.oneOf('aspectRatio', ['1/1', '4/3', '3/4', '16/9', '9/16', 'auto']);
-const label = read.text('label');
-const description = read.text('description');
+const label = read.text('label') ?? 'label';
+const description = read.text('description') ?? 'description';
 const align = read.oneOf('align', ['top', 'bottom']);
 const gradient = read.flag('gradient');
 const compact = read.flag('compact');
-const href = read.text('href');
+const href = read.text('href') ?? 'href';
 const download = read.text('download');
 const rel = read.text('rel');
 
 export default {
-  example: figma.code`<PLinkTile${size ? ` size="${size}"` : ''}${weight ? ` weight="${weight}"` : ''}${aspectRatio ? ` aspectRatio="${aspectRatio}"` : ''}${label ? ` label="${escapeAttribute(label)}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${align ? ` align="${align}"` : ''}${gradient ? ' :gradient="true"' : ''}${compact ? ' :compact="true"' : ''}${href ? ` href="${escapeAttribute(href)}"` : ''}${download ? ` download="${escapeAttribute(download)}"` : ''}${rel ? ` rel="${escapeAttribute(rel)}"` : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', 'header') : ''}${read.has('slot-footer') ? slotted(instance.getSlot('slot-footer'), 'slot-footer', 'footer') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PLinkTile>`,
+  example: figma.code`<PLinkTile${size ? ` size="${size}"` : ''}${weight ? ` weight="${weight}"` : ''}${aspectRatio ? ` aspectRatio="${aspectRatio}"` : ''} label="${escapeAttribute(label)}" description="${escapeAttribute(description)}"${align ? ` align="${align}"` : ''}${gradient ? ' :gradient="true"' : ''}${compact ? ' :compact="true"' : ''} href="${escapeAttribute(href)}"${download ? ` download="${escapeAttribute(download)}"` : ''}${rel ? ` rel="${escapeAttribute(rel)}"` : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', 'header') : ''}${read.has('slot-footer') ? slotted(instance.getSlot('slot-footer'), 'slot-footer', 'footer') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PLinkTile>`,
   imports: [
     '// Setup: https://designsystem.porsche.com/v0.0.0/developing/vue/getting-started/',
     '// Docs: https://designsystem.porsche.com/v0.0.0/components/link-tile/api/',
