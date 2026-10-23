@@ -129,6 +129,12 @@ describe('generate: templates', () => {
     ]);
     expect(template(result, 'checkbox')).toContain("read.oneOf('state', ['none', 'error', 'success'])");
   });
+
+  it('pairs a set named like a PDS component behind fig- with no component', () => {
+    const result = run([set('fig-tabs-item')]);
+    expect(result.skipped).toEqual(['fig-tabs-item (1:1)']);
+    expect(template(result, 'tabs-item')).toBeUndefined();
+  });
 });
 
 describe('generate: design lines', () => {
