@@ -32,6 +32,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   the components and icons of the Porsche Web Design System library, published with every release
   ([#4747](https://github.com/porsche-design-system/porsche-design-system/pull/4747))
 
+### Fixed
+
+- `Segmented Control`: items were stacked in one full-width column instead of the `columns="auto"` layout when it was
+  rendered inside a hidden container, e.g. a tab panel with `display: none`, and shown afterwards
+  ([#4778](https://github.com/porsche-design-system/porsche-design-system/pull/4778))
+
 ## [4.9.0] - 2026-10-21
 
 ## [4.9.0-rc.0] - 2026-10-20
