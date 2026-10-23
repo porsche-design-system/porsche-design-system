@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "next": "^16.3.6",
+    "next": "^16.4.2",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },
@@ -36,7 +36,7 @@
     "@types/react-dom": "^19.3.0",
     "ag-grid-enterprise": "36.2.0",
     "ag-grid-react": "36.2.0",
-    "concurrently": "^10.0.5",
+    "concurrently": "^10.0.6",
     "postcss": "^8",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.15",
