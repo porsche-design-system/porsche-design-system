@@ -14,6 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Partials**: type checking failed with `Cannot find module 'react'` in projects without React and with `skipLibCheck`
+  disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- **Meta**: type checking failed with `Cannot find module '@porsche-design-system/shared'` and
+  `Cannot find module '@stencil/core'` in projects with `skipLibCheck` disabled
+  ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+
 ## [4.10.1] - 2026-10-23
 
 ### Fixed
@@ -21,11 +29,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **TypeScript**: type checking failed with `Cannot find module '@porsche-design-system/components-manager-core'` in
   projects with `skipLibCheck` disabled, since v4.7.0
   ([#4808](https://github.com/porsche-design-system/porsche-design-system/pull/4808))
-- **Partials**: type checking failed with `Cannot find module 'react'` in projects without React and with
-  `skipLibCheck` disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
-- **Meta**: type checking failed with `Cannot find module '@porsche-design-system/shared'` and
-  `Cannot find module '@stencil/core'` in projects with `skipLibCheck` disabled
-  ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
 
 ## [4.10.0] - 2026-10-22
 
