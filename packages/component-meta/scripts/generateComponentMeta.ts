@@ -25,7 +25,11 @@ const sourceDirectory = path.resolve('../components/src/components');
 const componentFileNames = globbySync(`${sourceDirectory}/**/*.tsx`);
 const componentStylesFileNames = globbySync(`${sourceDirectory}/**/*-styles.ts`);
 
-const parsePropOptions = (propString?: string): PropOptions | undefined =>
+// Fails to compile when stencil adds a `@Prop()` option that the published `PropMeta` doesn't declare.
+type UndeclaredPropOptions = Exclude<keyof PropOptions, keyof NonNullable<PropMeta['propOptions']>>;
+type DeclaredPropOptions = [UndeclaredPropOptions] extends [never] ? PropOptions : { undeclared: UndeclaredPropOptions };
+
+const parsePropOptions = (propString?: string): DeclaredPropOptions | undefined =>
   propString ? (JSON.parse(propString.replace(/(\w+):/g, '"$1":').replace(/'/g, '"')) as PropOptions) : undefined;
 
 const getComponentFilePath = (tagName: TagName): string => {
