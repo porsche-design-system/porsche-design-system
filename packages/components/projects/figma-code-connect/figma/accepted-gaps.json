@@ -148,7 +148,7 @@
   "p-table-row": ["component-set"],
   "p-tabs": ["component-set"],
   "p-tabs-bar": ["activeTabIndex", "slot-default"],
-  "p-tabs-item": ["label"],
+  "p-tabs-item": ["component-set"],
   "p-tag": ["iconSource"],
   "p-text": ["align", "color", "ellipsis", "hyphens", "size=inherit", "tag", "weight"],
   "p-text-list": ["slot-default"],
