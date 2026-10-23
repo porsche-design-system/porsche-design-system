@@ -29,6 +29,11 @@ const isResolvableForConsumers = (specifier: string, containingFile: string): bo
   specifier.startsWith('.') ||
   consumerResolvablePackages.has(getPackageName(specifier));
 
+// `/// <reference types="x" />` resolves either the package `x` or `@types/x`.
+const isTypeReferenceResolvableForConsumers = (name: string, containingFile: string): boolean =>
+  isResolvableForConsumers(name, containingFile) ||
+  consumerResolvablePackages.has(`@types/${getPackageName(name).replace(/^@/, '').replace('/', '__')}`);
+
 const compilerOptions: ts.CompilerOptions = {
   strict: true,
   skipLibCheck: false,
@@ -52,6 +57,13 @@ const getTypeErrors = (fixtureContent: string): string[] => {
         ? ts.resolveModuleName(text, containingFile, options, host, undefined, redirectedReference)
         : { resolvedModule: undefined }
     );
+  host.resolveTypeReferenceDirectiveReferences = (references, containingFile, redirectedReference, options) =>
+    references.map((reference) => {
+      const name = typeof reference === 'string' ? reference : reference.fileName.toLowerCase();
+      return isTypeReferenceResolvableForConsumers(name, containingFile)
+        ? ts.resolveTypeReferenceDirective(name, containingFile, options, host, redirectedReference)
+        : { resolvedTypeReferenceDirective: undefined };
+    });
 
   const program = ts.createProgram({ rootNames: [fixturePath], options: compilerOptions, host });
 
