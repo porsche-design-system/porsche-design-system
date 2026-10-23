@@ -18,7 +18,7 @@ Figma library it reads and publishes to is the URL in `codeConnect.interactiveSe
 2. **Render.** A template reads each PDS prop and slot by name from `figma.selectedInstance.properties` when the snippet
    renders (`figma/helpers/read.ts`). **A property the Figma component lacks is left out of the snippet**, so every
    component publishes, and a property design adds or renames shows up once the library is published, with no new
-   publish.
+   publish. A required prop is the exception: it is written anyway (decision 12).
 3. **Publish.** `npm run figma:publish` runs `figma:generate -- --check`, then per label has Figma render every template
    (preview, once more for each that failed) and validate every record's node (dry run), and uploads what passed with
    `--force`, which overwrites a mapping a designer made in Figma's UI. A record Figma refuses, or could not be reached
@@ -255,3 +255,13 @@ Records live per file key, so nothing published under another key touches the li
     `LIBRARY_PUBLISH` webhook, which carries component keys and names only; the version label and description, typed by
     designers; a fixed reference version such as the newest before the latest release, whose answer changes at each
     release; naming who renamed and when, which the instruction does not need.
+12. **A required prop the Figma component lacks is written anyway: a required boolean (`open`) as on, and as off only
+    when Figma turns it off; a required text prop (`name`, `value`, `label`) with its own name as a placeholder,
+    `name="name"`, unless Figma has the text.** A frame always shows Banner, Flyout and Modal open, so Figma has no
+    `open` property; form props stay optional in Figma (decision 7), so design is never asked for `name` or `value`.
+    Without them a snippet does not compile in React, where the props are required: 22 components with a template had
+    such a prop. A required number prop is not covered: the only ones, Pagination's, Figma carries. Figma's preview
+    renders a template that writes a prop with no Figma property like any other. The cost: a placeholder looks like
+    data, and the developer has to replace it. Rejected: leaving them out like every other property Figma lacks, which
+    gave every variant of those 25 components a snippet that does not compile; asking design for `open`, `name` and
+    `value` properties, which a frame has nothing to show for.
