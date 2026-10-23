@@ -602,7 +602,6 @@ const iconEntries = (context: Context) => {
     .sort(([, a], [, b]) => a.localeCompare(b))
     .map(([id, name]) => ({
       url: context.nodeUrl(id),
-      component: `p-icon (${name})`,
       source,
       name,
       id: `p-icon-${name}`,
@@ -634,7 +633,16 @@ const iconBatch = (
     '};',
     '',
   ].join('\n');
-  const manifest = { templateFile: `./${base}.ts`, components };
+  const manifest = {
+    templateFile: `./${base}.ts`,
+    components: components.map(({ url, source, name, id }) => ({
+      url,
+      component: `${tag} (${name})`,
+      source,
+      name,
+      id,
+    })),
+  };
   return {
     [`${folder}/${base}.ts`]: template,
     [`${folder}/${base}.json`]: `${JSON.stringify(manifest, null, 2)}\n`,
