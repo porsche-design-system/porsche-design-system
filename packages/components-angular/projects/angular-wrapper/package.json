@@ -28,6 +28,7 @@
   "peerDependencies": {
     "@angular/common": ">=21.0.0 <23.0.0",
     "@angular/core": ">=21.0.0 <23.0.0",
+    "@angular/forms": ">=21.0.0 <23.0.0",
     "ag-grid-angular": ">= 36.0.0 <37.0.0",
     "ag-grid-enterprise": ">= 36.0.0 <37.0.0",
     "jsdom": ">=30.0.0",
