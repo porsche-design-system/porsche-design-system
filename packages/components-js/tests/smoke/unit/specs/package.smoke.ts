@@ -154,15 +154,8 @@ describe('package.json files', () => {
   }
 });
 
-/**
- * arethetypeswrong (https://arethetypeswrong.github.io) checks every entrypoint of the `exports` map with the four
- * module resolution modes of TypeScript (`node10`, `node16-cjs`, `node16-esm` and `bundler`). Per entrypoint and mode it
- * reports when nothing resolves, when only JavaScript but no types resolve, and when the types describe a different
- * module format (ESM or CommonJS) than the JavaScript they belong to.
- *
- * It does not type check the declaration files and skips imports of other packages, that is covered by
- * `typings.smoke.ts` and `package-imports.smoke.ts`.
- */
+// Checks that every entrypoint resolves to matching types in all module resolution modes, see
+// https://arethetypeswrong.github.io. Type checking and imports are covered by `typings` and `package-imports`.
 describe('arethetypeswrong', () => {
   type ExpectedProblem = {
     kind: ProblemKind;

@@ -27,12 +27,8 @@ const getRelativeCandidates = (filePath: string, specifier: string): string[] =>
   if (/\.d\.[mc]?ts$/.test(filePath)) {
     const withoutJsExtension = resolved.replace(/\.([mc]?)js$/, '');
     const declarationExtension = resolved.match(/\.([mc]?)js$/)?.[1] ?? '';
-    return [
-      resolved,
-      `${withoutJsExtension}.d.${declarationExtension}ts`,
-      `${resolved}.d.ts`,
-      `${resolved}/index.d.ts`,
-    ];
+    // Only declarations count, a `.js` file without one leaves the consumer without types.
+    return [`${withoutJsExtension}.d.${declarationExtension}ts`, `${resolved}.d.ts`, `${resolved}/index.d.ts`];
   }
   return [resolved, `${resolved}.js`, `${resolved}.json`, `${resolved}/index.js`];
 };

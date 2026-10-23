@@ -5,13 +5,13 @@ import * as path from 'node:path';
 
 type NpmPackResult = { filename: string; files: { path: string }[] };
 
-// Packs the package by path, exactly like `.github/scripts/release-npm.sh` publishes it. Running `npm pack` inside the
-// package directory instead applies the repository's `.gitignore` and leaves out every nested `dist` folder, so the
-// result would differ from what is published.
-// The arguments are passed without a shell, so paths with spaces or shell characters can't break the command.
-// Without a shell, Windows can't run `npm.cmd`, so npm's own script is run with node when it is known.
-const npmCliPath = process.env.npm_execpath;
-const [npmCommand, ...npmArgs] = npmCliPath?.endsWith('npm-cli.js') ? [process.execPath, npmCliPath] : ['npm'];
+// Packs by path like `.github/scripts/release-npm.sh`, because packing inside the package dir applies `.gitignore`.
+// Runs npm's script with node instead of a shell, since Windows can't spawn `npm.cmd` without one.
+const npmCliPath = [
+  process.env.npm_execpath,
+  path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js'),
+].find((candidate) => candidate?.endsWith('npm-cli.js') && fs.existsSync(candidate));
+const [npmCommand, ...npmArgs] = npmCliPath ? [process.execPath, npmCliPath] : ['npm'];
 
 const npmPack = (packageDir: string, args: string[]): NpmPackResult => {
   const [result] = JSON.parse(

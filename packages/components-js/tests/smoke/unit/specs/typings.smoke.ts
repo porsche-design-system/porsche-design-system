@@ -8,11 +8,14 @@ const pkgDir = getPackageDir('@porsche-design-system/components-js');
 const pkgJson = readPackageJson('@porsche-design-system/components-js');
 const consumerResolution = createConsumerResolution(pkgJson);
 
-// Files outside the package, e.g. of react or typescript itself, resolve as usual.
-const getPackageFilePath = (containingFile: string): string | undefined =>
-  containingFile.startsWith(`${pkgDir}${path.sep}`)
-    ? path.relative(pkgDir, containingFile).split(path.sep).join('/')
-    : undefined;
+// Files outside the package, e.g. of react or typescript itself, resolve as usual. TypeScript passes `/` separated paths
+// on every platform, so the path is normalized before comparing.
+const getPackageFilePath = (fileName: string): string | undefined => {
+  const relativePath = path.relative(pkgDir, path.resolve(fileName));
+  return relativePath.startsWith('..') || path.isAbsolute(relativePath)
+    ? undefined
+    : relativePath.split(path.sep).join('/');
+};
 
 const isResolvableForConsumers = (specifier: string, containingFile: string): boolean => {
   const filePath = getPackageFilePath(containingFile);
@@ -38,7 +41,10 @@ const compilerOptions: ts.CompilerOptions = {
 };
 
 const getTypeErrors = (fixtureContent: string): string[] => {
-  const fixturePath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '__typings-smoke-fixture__.ts');
+  const fixturePath = path
+    .resolve(path.dirname(fileURLToPath(import.meta.url)), '__typings-smoke-fixture__.ts')
+    .split(path.sep)
+    .join('/');
   const host = ts.createCompilerHost(compilerOptions, true);
   const { fileExists, readFile } = host;
   host.fileExists = (fileName) => fileName === fixturePath || fileExists(fileName);
@@ -61,7 +67,7 @@ const getTypeErrors = (fixtureContent: string): string[] => {
 
   return ts
     .getPreEmitDiagnostics(program)
-    .filter(({ file }) => !file || file.fileName === fixturePath || file.fileName.startsWith(`${pkgDir}${path.sep}`))
+    .filter(({ file }) => !file || file.fileName === fixturePath || getPackageFilePath(file.fileName) !== undefined)
     .map(({ file, start, code, messageText }) => {
       const message = ts.flattenDiagnosticMessageText(messageText, '\n');
       if (!file || start === undefined) {
