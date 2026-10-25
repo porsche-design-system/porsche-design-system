@@ -103,9 +103,9 @@ type GetMetaTagsAndIconLinksOptions = {
 };`;
 
   const func = `export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'js' }): Metadata;
-export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
+export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSXElement;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string;
-export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element | Metadata {
+export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSXElement | Metadata {
   const { appTitle, cdn, format, ogImage }: GetMetaTagsAndIconLinksOptions = {
     appTitle: '',
     cdn: 'auto',
