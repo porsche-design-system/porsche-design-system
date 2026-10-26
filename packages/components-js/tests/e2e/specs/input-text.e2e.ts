@@ -464,6 +464,71 @@ test.describe('form', () => {
       await waitForStencilLifecycle(page);
       expect((await getEventSummary(form, 'submit')).counter).toBe(0);
     });
+
+    test('should not implicit submit form on enter when there is no submit button and a p-input-password', async ({
+      page,
+    }) => {
+      await initInputText(page, {
+        isWithinForm: true,
+        markupAfter: `<p-input-password name="some-password" />`,
+      });
+
+      const inputText = getInputText(page).first();
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+
+      await inputText.click();
+      await expect(inputText).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    });
+
+    const cancellingListeners = [
+      { description: 'keydown is cancelled in capture phase', type: 'keydown', target: 'host', capture: true },
+      { description: 'keydown is cancelled in bubble phase', type: 'keydown', target: 'host', capture: false },
+      { description: 'keydown is cancelled on document', type: 'keydown', target: 'document', capture: false },
+      { description: 'keypress is cancelled in bubble phase', type: 'keypress', target: 'host', capture: false },
+    ] as const;
+
+    for (const { description, type, target, capture } of cancellingListeners) {
+      for (const markupAfter of ['', '<p-button type="submit">Submit</p-button>']) {
+        test(`should not implicit submit form on enter when ${description}${markupAfter ? ' and there is a p-button type submit' : ''}`, async ({
+          page,
+        }) => {
+          await initInputText(page, { isWithinForm: true, markupAfter });
+
+          const host = getHost(page);
+          const inputText = getInputText(page);
+          const form = getForm(page);
+
+          await addEventListener(form, 'submit');
+          await host.evaluate(
+            (el, { type, target, capture }) => {
+              (target === 'document' ? document : el).addEventListener(
+                type,
+                (e) => {
+                  if ((e as KeyboardEvent).key === 'Enter') {
+                    e.preventDefault();
+                  }
+                },
+                capture
+              );
+            },
+            { type, target, capture }
+          );
+
+          await inputText.click();
+          await expect(inputText).toBeFocused();
+
+          await page.keyboard.press('Enter');
+          await waitForStencilLifecycle(page);
+          expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+        });
+      }
+    }
   });
 
   test('should not set validity when disabled and throw no errors', async ({ page }) => {

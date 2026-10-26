@@ -215,7 +215,7 @@ export class InputTel {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
-        onKeyDown={this.onKeyDown}
+        onKeyPress={this.onKeyPress}
         name={this.name}
         form={this.form}
         type="tel"
@@ -240,7 +240,7 @@ export class InputTel {
     );
   }
 
-  private onKeyDown = (e: KeyboardEvent): void => {
+  private onKeyPress = (e: KeyboardEvent): void => {
     implicitSubmit(e, this.internals, this.host);
   };
 

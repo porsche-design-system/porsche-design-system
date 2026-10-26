@@ -112,12 +112,12 @@ describe('onInput', () => {
   });
 });
 
-describe('onKeyDown', () => {
+describe('onKeyPress', () => {
   it('should call implicitSubmit with correct parameters', () => {
     const component = initComponent();
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
+    const event = new KeyboardEvent('keypress', { key: 'Enter' });
     const implicitSubmitSpy = vi.spyOn(implicitSubmitUtils, 'implicitSubmit');
-    component['onKeyDown'](event);
+    component['onKeyPress'](event);
     expect(implicitSubmitSpy).toHaveBeenCalledWith(event, component['internals'], component.host);
   });
 });
@@ -173,7 +173,7 @@ describe('componentWillLoad', () => {
     expect(component['initialLoading']).toBe(false);
   });
 
-  it("should not mutate value when null is passed, but should preserve null as defaultValue", () => {
+  it('should not mutate value when null is passed, but should preserve null as defaultValue', () => {
     const component = initComponent();
     component.value = null;
     component.componentWillLoad();

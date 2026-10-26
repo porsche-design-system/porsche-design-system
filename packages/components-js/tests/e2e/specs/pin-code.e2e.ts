@@ -389,6 +389,30 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
+  for (const type of ['keydown', 'keypress'] as const) {
+    test(`should not submit on key Enter if ${type} is cancelled`, async ({ page }) => {
+      await initPinCode(page, { props: { name: 'name', value: '1234' }, options: { isWithinForm: true } });
+      const host = getHost(page);
+      const input = getCurrentInput(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      await host.evaluate((el, type) => {
+        el.addEventListener(type, (e) => {
+          if ((e as KeyboardEvent).key === 'Enter') {
+            e.preventDefault();
+          }
+        });
+      }, type);
+
+      await input.click();
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(0);
+    });
+  }
+
   test('should submit on key Enter if form does contain another input element and a input type=submit', async ({
     page,
   }) => {
@@ -1032,9 +1056,7 @@ test.describe('events', () => {
       expect(await getProperty<string>(host, 'value')).toStrictEqual('12  ');
     });
 
-    test('should overwrite last input when more digits are typed than the pin length', async ({
-      page,
-    }) => {
+    test('should overwrite last input when more digits are typed than the pin length', async ({ page }) => {
       await initPinCode(page);
       const host = getHost(page);
       const input1 = getInput(page, 1);

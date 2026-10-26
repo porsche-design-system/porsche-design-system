@@ -4,7 +4,7 @@ export { hasDescription } from './hasDescription';
 export { hasHeading } from './hasHeading';
 export { hasLabel } from './hasLabel';
 export { hasMessage } from './hasMessage';
-export { implicitSubmit } from './implicitSubmit';
+export { implicitSubmit, runDefaultActionUnlessPrevented } from './implicitSubmit';
 export { isParentFieldsetRequired } from './isParentFieldsetRequired';
 export { isRequired } from './isRequired';
 export { isVisibleFormState } from './isVisibleFormState';
