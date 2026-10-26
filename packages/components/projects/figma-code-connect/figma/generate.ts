@@ -490,10 +490,10 @@ const fragment = (
         attr: ifSet(label.attr(mapping.prop, value)),
       };
     case 'string':
-      // a required prop (`name`) is written also when Figma has no property for it, its own name as a placeholder
+      // a required prop (`name`) is written also when Figma has no property for it, empty for the consumer to fill
       if (mapping.required)
         return {
-          read: `const ${variable} = read.text('${mapping.prop}') ?? ${literal(mapping.prop)};`,
+          read: `const ${variable} = read.text('${mapping.prop}') ?? '';`,
           attr: ` ${label.attr(mapping.prop, `\${escapeAttribute(${variable})}`)}`,
         };
       return {
