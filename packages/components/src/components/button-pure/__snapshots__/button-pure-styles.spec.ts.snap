@@ -68,7 +68,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -156,7 +155,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -244,7 +242,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -332,7 +329,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -412,7 +408,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -495,7 +490,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -578,7 +572,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -668,7 +661,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -761,7 +753,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -852,7 +843,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -940,7 +930,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -1108,7 +1097,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -1333,7 +1321,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -1419,7 +1406,6 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -1491,7 +1477,6 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -1571,7 +1556,6 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -1681,7 +1665,6 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;

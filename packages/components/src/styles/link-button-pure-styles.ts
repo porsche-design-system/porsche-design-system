@@ -113,7 +113,6 @@ export const getLinkButtonPureStyles = (
       ...forcedColorsMediaQuery({
         forcedColorAdjust: 'none',
         color: 'LinkText',
-        backgroundColor: 'Canvas',
         '&:is(button)': {
           color: 'ButtonText',
         },

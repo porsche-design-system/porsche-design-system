@@ -634,7 +634,6 @@ img {
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -3607,7 +3606,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -5617,7 +5615,6 @@ exports[`should render dsr component for PDrilldown 1`] = `
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -6237,7 +6234,6 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -6421,7 +6417,6 @@ img:dir(rtl) {
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -9329,7 +9324,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -9869,7 +9863,6 @@ slot[name="header"] {
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -10856,7 +10849,6 @@ img {
   .root {
     forced-color-adjust: none;
     color: LinkText;
-    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
