@@ -10,7 +10,7 @@ import { slotted } from '../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const value = read.text('value') ?? 'value';
+const value = read.text('value') ?? '';
 const disabled = read.flag('disabled');
 
 export default {

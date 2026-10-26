@@ -10,8 +10,8 @@ import { slotted } from '../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const heading = read.text('heading') ?? 'heading';
-const price = read.text('price') ?? 'price';
+const heading = read.text('heading') ?? '';
+const price = read.text('price') ?? '';
 const priceOriginal = read.text('priceOriginal');
 const description = read.text('description');
 const likeButton = !read.off('likeButton');

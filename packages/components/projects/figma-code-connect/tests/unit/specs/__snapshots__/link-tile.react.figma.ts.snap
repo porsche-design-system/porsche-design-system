@@ -13,12 +13,12 @@ const instance = figma.selectedInstance;
 const size = read.oneOf('size', ['medium', 'large', 'inherit']);
 const weight = read.oneOf('weight', ['regular', 'semi-bold']);
 const aspectRatio = read.oneOf('aspectRatio', ['1/1', '4/3', '3/4', '16/9', '9/16', 'auto']);
-const label = read.text('label') ?? 'label';
-const description = read.text('description') ?? 'description';
+const label = read.text('label') ?? '';
+const description = read.text('description') ?? '';
 const align = read.oneOf('align', ['top', 'bottom']);
 const gradient = read.flag('gradient');
 const compact = read.flag('compact');
-const href = read.text('href') ?? 'href';
+const href = read.text('href') ?? '';
 const download = read.text('download');
 const rel = read.text('rel');
 

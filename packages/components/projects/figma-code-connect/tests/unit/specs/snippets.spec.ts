@@ -70,9 +70,9 @@ describe.each([
     expect(await snippet('banner', suffix, { properties })).toBe(`<${tag('banner')} ${closed}></${tag('banner')}>`);
   });
 
-  it('prints a required text prop with its own name as a placeholder when Figma has no property for it', async () => {
+  it('prints a required text prop empty when Figma has no property for it', async () => {
     expect(await snippet('textarea', suffix, { properties: {} })).toBe(
-      `<${tag('textarea')} name="name"></${tag('textarea')}>`
+      `<${tag('textarea')} name=""></${tag('textarea')}>`
     );
   });
 
