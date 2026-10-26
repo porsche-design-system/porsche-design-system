@@ -257,12 +257,16 @@ Records live per file key, so nothing published under another key touches the li
     designers; a fixed reference version such as the newest before the latest release, whose answer changes at each
     release; naming who renamed and when, which the instruction does not need.
 12. **A required prop the Figma component lacks is written anyway: a required boolean (`open`) as on, and as off only
-    when Figma turns it off; a required text prop (`name`, `value`, `label`) with its own name as a placeholder,
-    `name="name"`, unless Figma has the text.** A frame always shows Banner, Flyout and Modal open, so Figma has no
-    `open` property; form props stay optional in Figma (decision 7), so design is never asked for `name` or `value`.
-    Without them a snippet does not compile in React, where the props are required: 22 components with a template had
-    such a prop. A required number prop is not covered: the only ones, Pagination's, Figma carries. Figma's preview
-    renders a template that writes a prop with no Figma property like any other. The cost: a placeholder looks like
-    data, and the developer has to replace it. Rejected: leaving them out like every other property Figma lacks, which
-    gave every variant of those 25 components a snippet that does not compile; asking design for `open`, `name` and
-    `value` properties, which a frame has nothing to show for.
+    when Figma turns it off; a required text prop (`name`, `value`, `label`) empty, `name=""`, unless Figma has the
+    text.** A frame always shows Banner, Flyout and Modal open, so Figma has no `open` property; form props stay
+    optional in Figma (decision 7), so design is never asked for `name` or `value`. Without them a snippet does not
+    compile in React, where the props are required: 21 components with a template have such a text prop. An empty value
+    invents no data and tells the developer, or an agent reading the snippet, to supply it. A required number prop is
+    not covered: the only ones, Pagination's, Figma carries. Figma's preview renders a template that writes a prop with
+    no Figma property like any other. The cost: `""` passes `validateProps`, which checks only the type, so a snippet
+    pasted unchanged gives a field with an empty name and no warning. Rejected: leaving them out like every other
+    property Figma lacks, which gave every variant of those 24 components a snippet that does not compile; the prop's
+    own name, `name="name"`, which reads like a value someone chose; the bare prop, `name`, which JSX reads as
+    `name={true}` and React's types reject; a binding, `name={name}`, which names a variable the snippet does not define
+    and the Web Components label cannot express; a marker such as `name="TODO"`, a value that can ship unnoticed; asking
+    design for `open`, `name` and `value` properties, which a frame has nothing to show for.
