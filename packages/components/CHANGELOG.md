@@ -26,11 +26,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
   `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` submitted the form even when the
   `keydown` or `keypress` event was cancelled with `preventDefault()`, e.g. by a password manager
-  ([#PR_NUMBER](https://github.com/porsche-design-system/porsche-design-system/pull/PR_NUMBER))
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 - `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
   `Input Text`, `Input Time`, `Input Url`, `Input Week`: pressing `Enter` submitted a form without a submit button,
   although it contained another `Input Password`, `Input Month` or `Input Week`
-  ([#PR_NUMBER](https://github.com/porsche-design-system/porsche-design-system/pull/PR_NUMBER))
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 
 ## [4.10.1] - 2026-10-23
 
