@@ -129,8 +129,9 @@ promote itself.
 ### Communicate
 
 Nothing to do by hand. The `notify-release` job in `.github/workflows/release.yml` announces the release in the public
-Porsche Design System Slack channel after the GitHub Release and both documentation URLs are ready, built from the
-release notes themselves rather than from the changelog, so the two cannot disagree.
+Porsche Design System Slack channel after the GitHub Release and both documentation URLs are ready and the Figma Code
+Connect publish has finished, built from the release notes themselves rather than from the changelog, so the two cannot
+disagree.
 
 Only stable releases are announced, and only when the run actually created a release — a pre-release, or a re-run of a
 job whose release already existed, posts nothing. Prefer **Re-run failed jobs** to preserve the original successful
