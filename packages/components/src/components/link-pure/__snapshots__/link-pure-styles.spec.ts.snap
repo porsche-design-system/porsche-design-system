@@ -71,8 +71,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   position: absolute;
   top: var(--p-link-pure-hover-inset-y,-2px);
   bottom: var(--p-link-pure-hover-inset-y,-2px);
-  right: var(--p-link-pure-hover-inset-y,-2px);
-  left: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -119,8 +119,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     font-size: var(--p-typescale-md);
   }
   .root::before {
-    right: var(--p-link-pure-hover-inset-y,-2px);
-    left: var(--p-link-pure-hover-inset-y,-2px);
+    right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+    left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -159,8 +159,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     font-size: var(--p-typescale-xl);
   }
   .root::before {
-    right: var(--p-link-pure-hover-inset-y,-2px);
-    left: var(--p-link-pure-hover-inset-y,-2px);
+    right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+    left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -193,7 +193,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -247,8 +249,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   position: absolute;
   top: var(--p-link-pure-hover-inset-y,-2px);
   bottom: var(--p-link-pure-hover-inset-y,-2px);
-  right: var(--p-link-pure-hover-inset-y,-2px);
-  left: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -288,8 +290,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     gap: 0;
   }
   .root::before {
-    right: var(--p-link-pure-hover-inset-y,-2px);
-    left: var(--p-link-pure-hover-inset-y,-2px);
+    right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+    left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -320,8 +322,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     gap: 0;
   }
   .root::before {
-    right: var(--p-link-pure-hover-inset-y,-2px);
-    left: var(--p-link-pure-hover-inset-y,-2px);
+    right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+    left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -349,7 +351,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -425,7 +429,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -501,7 +507,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -593,7 +601,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -666,7 +676,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -742,7 +754,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -818,7 +832,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -872,8 +888,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   position: absolute;
   top: var(--p-link-pure-hover-inset-y,-2px);
   bottom: var(--p-link-pure-hover-inset-y,-2px);
-  right: var(--p-link-pure-hover-inset-y,-2px);
-  left: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -894,7 +910,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -948,8 +966,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   position: absolute;
   top: var(--p-link-pure-hover-inset-y,-2px);
   bottom: var(--p-link-pure-hover-inset-y,-2px);
-  right: var(--p-link-pure-hover-inset-y,-2px);
-  left: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -970,7 +988,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -1010,7 +1030,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   content: "" !important;
   position: fixed !important;
   inset-block: var(--p-link-pure-hover-inset-y,-2px) !important;
-  inset-inline: var(--p-link-pure-hover-inset-y,-2px) !important;
+  inset-inline: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px)) !important;
   border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -1044,8 +1064,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   position: absolute;
   top: var(--p-link-pure-hover-inset-y,-2px);
   bottom: var(--p-link-pure-hover-inset-y,-2px);
-  right: var(--p-link-pure-hover-inset-y,-2px);
-  left: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -1062,7 +1082,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -1137,13 +1159,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
   }
   .root:focus-visible::before {
     outline-color: Highlight;
+  }
+  .root::before {
+    box-shadow: inset 0 0 0 2px Highlight;
   }
 }
 
@@ -1215,13 +1242,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
   }
   .root:focus-visible::before {
     outline-color: Highlight;
+  }
+  .root::before {
+    box-shadow: inset 0 0 0 2px Highlight;
   }
 }
 
@@ -1283,7 +1315,9 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -1351,7 +1385,9 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;

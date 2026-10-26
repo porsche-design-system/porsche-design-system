@@ -68,7 +68,7 @@ export const getComponentCss = (
               insetBlock: ref(cssVarHoverInsetBlock, offsetVertical),
               ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
                 insetInline: hideLabelValue
-                  ? ref(cssVarHoverInsetBlock, offsetVertical)
+                  ? ref(cssVarHoverInsetInline, ref(cssVarHoverInsetBlock, offsetVertical))
                   : ref(cssVarHoverInsetInline, offsetHorizontal),
                 borderRadius: hideLabelValue ? ref(radiusFull) : ref(radiusLg),
               })),

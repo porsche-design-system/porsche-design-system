@@ -600,8 +600,8 @@ img {
   position: absolute;
   top: var(--p-button-pure-hover-inset-y,-2px);
   bottom: var(--p-button-pure-hover-inset-y,-2px);
-  right: var(--p-button-pure-hover-inset-y,-2px);
-  left: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
+  left: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -632,7 +632,9 @@ img {
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -3603,7 +3605,9 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -5579,8 +5583,8 @@ exports[`should render dsr component for PDrilldown 1`] = `
   position: absolute;
   top: var(--p-button-pure-hover-inset-y,-2px);
   bottom: var(--p-button-pure-hover-inset-y,-2px);
-  right: var(--p-button-pure-hover-inset-y,-2px);
-  left: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
+  left: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -5611,7 +5615,9 @@ exports[`should render dsr component for PDrilldown 1`] = `
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -6229,7 +6235,9 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -6363,8 +6371,8 @@ img:dir(rtl) {
   position: absolute;
   top: var(--p-button-pure-hover-inset-y,-2px);
   bottom: var(--p-button-pure-hover-inset-y,-2px);
-  right: var(--p-button-pure-hover-inset-y,-2px);
-  left: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
+  left: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -6411,7 +6419,9 @@ img:dir(rtl) {
 
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -9317,7 +9327,9 @@ exports[`should render dsr component for PLinkPure 1`] = `
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -9823,8 +9835,8 @@ slot[name="header"] {
   position: absolute;
   top: var(--p-button-pure-hover-inset-y,-2px);
   bottom: var(--p-button-pure-hover-inset-y,-2px);
-  right: var(--p-button-pure-hover-inset-y,-2px);
-  left: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
+  left: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -9855,7 +9867,9 @@ slot[name="header"] {
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;
@@ -10808,8 +10822,8 @@ img {
   position: absolute;
   top: var(--p-button-pure-hover-inset-y,-2px);
   bottom: var(--p-button-pure-hover-inset-y,-2px);
-  right: var(--p-button-pure-hover-inset-y,-2px);
-  left: var(--p-button-pure-hover-inset-y,-2px);
+  right: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
+  left: var(--p-button-pure-hover-inset-x,var(--p-button-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -10840,7 +10854,9 @@ img {
 }
 @media(forced-colors:active) {
   .root {
+    forced-color-adjust: none;
     color: LinkText;
+    background-color: Canvas;
   }
   .root:is(button) {
     color: ButtonText;

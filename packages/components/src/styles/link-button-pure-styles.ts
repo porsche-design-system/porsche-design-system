@@ -111,7 +111,9 @@ export const getLinkButtonPureStyles = (
         }))
       ),
       ...forcedColorsMediaQuery({
+        forcedColorAdjust: 'none',
         color: 'LinkText',
+        backgroundColor: 'Canvas',
         '&:is(button)': {
           color: 'ButtonText',
         },
@@ -122,8 +124,8 @@ export const getLinkButtonPureStyles = (
         top: hoverInsetBlock,
         bottom: hoverInsetBlock,
         ...buildResponsiveBooleanStyles(hideLabel, (hideLabelValue: boolean) => ({
-          right: hideLabelValue ? hoverInsetBlock : hoverInsetInline,
-          left: hideLabelValue ? hoverInsetBlock : hoverInsetInline,
+          right: hideLabelValue ? ref(cssVarHoverInsetInline, hoverInsetBlock) : hoverInsetInline,
+          left: hideLabelValue ? ref(cssVarHoverInsetInline, hoverInsetBlock) : hoverInsetInline,
           borderRadius: hideLabelValue ? ref(radiusFull) : ref(radiusLg),
         })),
         transition: getTransition('background-color'),
@@ -131,6 +133,9 @@ export const getLinkButtonPureStyles = (
           WebkitBackdropFilter: ref(blurFrosted),
           backdropFilter: ref(blurFrosted),
           backgroundColor: ref(colorFrosted),
+          ...forcedColorsMediaQuery({
+            boxShadow: 'inset 0 0 0 2px Highlight',
+          }),
         }),
       },
       ...(!isDisabledOrLoading &&
