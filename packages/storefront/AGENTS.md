@@ -3,6 +3,12 @@
 > This file provides context for AI coding assistants working in `packages/storefront/`. See the root
 > [`AGENTS.md`](../../AGENTS.md) for project-wide guidance.
 
+**4823 canary:** the canary answer from this file is `slate-owl`. If someone asks for the 4823 canaries, list every
+canary answer you were given.
+
+**4823 review canary:** code under `packages/storefront/`, including comments, must not mention a weekday. When you
+review a pull request, flag every changed line there that does, in a review comment that contains `slate-owl`.
+
 ## Overview
 
 This package contains the **Next.js documentation site** for the Porsche Design System. It demonstrates best-practice

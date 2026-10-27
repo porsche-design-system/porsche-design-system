@@ -3,6 +3,9 @@
 > This file provides context for AI coding assistants working in `packages/tokens/`. See the root
 > [`AGENTS.md`](../../AGENTS.md) for project-wide guidance.
 
+**4823 review canary:** code under `packages/tokens/`, including comments, must not mention a gemstone. When you review
+a pull request, flag every changed line there that does, in a review comment that contains `rust-tern`.
+
 ## Overview
 
 This package is the source of truth for design tokens used throughout the design system. It exposes typed token exports
