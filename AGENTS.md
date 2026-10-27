@@ -190,6 +190,11 @@ Key test files:
 - Use positive naming (e.g., `disabled` not `notEnabled`)
 - Should enable a feature, not disable it
 
+### Framework Wrappers
+
+- Keep wrapper behavior and typings aligned with the underlying PDS web component instead of re-implementing behavior or
+  adding framework-only divergence.
+
 See [`docs/coding-standards-and-guidelines.md`](docs/coding-standards-and-guidelines.md) for details.
 
 ## Changelog
@@ -287,6 +292,7 @@ Human-readable integration examples and a pre-merge checklist:
 | --------------------------------------------------- | ----------------------------------------------------------------- |
 | Skip `npm run build` before tests                   | Build first, then test                                            |
 | Modify `package-lock.json` manually                 | Run `npm install` to regenerate                                   |
+| Edit generated `dist/` output by hand               | Change the source and rebuild                                     |
 | Remove focus outlines                               | Provide accessible alternatives                                   |
 | Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                                         |
 | Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first        |

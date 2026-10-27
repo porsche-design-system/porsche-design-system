@@ -165,6 +165,9 @@ projects/
 └── story-generator/        # Story types and per-framework markup generation (@porsche-design-system/story-generator)
 ```
 
+Files in `public/assets/downloads/` are downloadable templates; keep them aligned with active repo guidance instead of
+treating them as source code behavior.
+
 ## Generating Configurator and Example Stories
 
 When adding or updating documentation pages for a component in `src/app/components/{component}/`, keep the configurator
