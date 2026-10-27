@@ -71,7 +71,6 @@ npm run test:vrt:styles
 
 - Treat `projects/*` as the source of truth for the style packages.
 - Treat root `src/` as the demo application and preview surface, not the library output.
-- Do not edit generated `dist/` output.
 - When possible, make changes in the relevant style target package rather than patching the demo only.
 - Keep naming and token usage aligned across style targets unless a package intentionally exposes a target-specific API.
 - Deprecation metadata uses one contract, from `@porsche-design-system/shared/deprecation`: the `Deprecation` marker

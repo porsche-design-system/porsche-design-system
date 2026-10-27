@@ -32,7 +32,7 @@ npm run test:unit:utilities
 
 ## Working Guidelines
 
-- Prefer changes in `projects/ag-grid/src/`; avoid editing generated `dist/` output.
+- Prefer changes in `projects/ag-grid/src/`.
 - Keep the AG Grid theme aligned with PDS tokens and styling primitives instead of hardcoding one-off values where shared tokens already exist.
 - Preserve support for light, dark, and inherited `color-scheme` behavior when adjusting theme values.
 - If changing build-time generation, update the corresponding tests and rebuild before finishing.

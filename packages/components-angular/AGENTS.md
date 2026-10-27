@@ -86,11 +86,5 @@ Tests use Vitest for wrapper logic and Karma/Jasmine for Angular integration. Wh
 
 ## Build Dependencies
 
-This package requires these to be built first:
-
-1. `shared`, `tokens`, `assets`, `styles`, `utilities`, `component-meta`
-2. `components`
-3. `components-js`
-
-Run `npm run build` from the root to build all dependencies in order.
+Follow the [build order](../../AGENTS.md#build-order-critical) in the root `AGENTS.md`.
 
