@@ -141,7 +141,7 @@ npm run typecheck:tests            # Test code of one workspace, with --workspac
 ```
 
 Root holds three chains, and all three are composed from per-package entries. `typecheck` and `typecheck:all` use the
-the `typecheck:{package}` entries, with nested projects called by `--workspace` inside `typecheck:all`.
+`typecheck:{package}` entries, with nested projects called by `--workspace` inside `typecheck:all`.
 `typecheck:all:tests` uses the `typecheck:{package}:tests` entries, and each of those calls its own test scopes,
 `typecheck:tests` and `typecheck:tests:{e2e,vrt,a11y,smoke}`, by workspace. Each test scope is also the first
 command of the test script that runs those files.
@@ -286,16 +286,15 @@ Human-readable integration examples and a pre-merge checklist:
 
 ## Common Pitfalls
 
-| ❌ Don't                                            | ✅ Do                                                             |
-| --------------------------------------------------- | ----------------------------------------------------------------- |
-| Skip `npm run build` before tests                   | Build first, then test                                            |
-| Modify `package-lock.json` manually                 | Run `npm install` to regenerate                                   |
-| Edit generated `dist/` output by hand               | Change the source and rebuild                                     |
-| Remove focus outlines                               | Provide accessible alternatives                                   |
-| Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                                         |
-| Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first        |
-| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly, then `npm run npm:verify-lock`   |
-| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly and run `npm run npm:verify-lock` |
+| ❌ Don't                                            | ✅ Do                                                           |
+| --------------------------------------------------- | --------------------------------------------------------------- |
+| Skip `npm run build` before tests                   | Build first, then test                                          |
+| Modify `package-lock.json` manually                 | Run `npm install` to regenerate                                 |
+| Edit generated `dist/` output by hand               | Change the source and rebuild                                   |
+| Remove focus outlines                               | Provide accessible alternatives                                 |
+| Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                                       |
+| Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first      |
+| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly, then `npm run npm:verify-lock` |
 
 ## Known Constraints
 
