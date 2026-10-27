@@ -96,14 +96,17 @@ breaking, and before writing a changelog entry for one.**
 
 The monorepo has **strict build dependencies**. Always build in this order:
 
-1. `shared` → `tokens` → `assets` → `styles` → `utilities` → `component-meta`
+1. `shared` → `tokens` → `assets` → `styles` → `utilities` → `stylesheets` → `component-meta`
+   (`npm run build:core-dependencies`)
 2. `components` (Stencil core)
-3. `components-js`
-4. `components-angular`, `components-react`, `components-vue` (can be parallel)
-5. `examples` (the storefront copies its `dist-site/` into `public/examples/`)
-6. `storefront`
+3. `examples:projects` → `skills`
+4. `components-js`
+5. `components-angular`, `components-react`, `components-vue` (can be parallel)
+6. `examples:site` (the storefront copies its `dist-site/` into `public/examples/`)
+7. `storefront`
 
-Use `npm run build` to handle this automatically.
+Use `npm run build` to handle this automatically. The `build` script in the root `package.json` declares this chain and
+[`.github/workflows/build.yml`](.github/workflows/build.yml) runs it step by step.
 
 ## Essential Commands
 
