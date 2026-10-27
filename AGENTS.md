@@ -319,6 +319,10 @@ Human-readable integration examples and a pre-merge checklist:
 Each major package has its own `AGENTS.md` with detailed guidance. Its rules add to this file:
 
 - [`packages/components/AGENTS.md`](packages/components/AGENTS.md) — Stencil web components
+  - [`packages/components/projects/stylesheets/AGENTS.md`](packages/components/projects/stylesheets/AGENTS.md) — Global
+    styles and the generated stylesheets
+  - [`packages/components/projects/figma-code-connect/AGENTS.md`](packages/components/projects/figma-code-connect/AGENTS.md)
+    — Figma Code Connect templates
 - [`packages/component-meta/AGENTS.md`](packages/component-meta/AGENTS.md) — Component metadata generation
 - [`packages/shared/AGENTS.md`](packages/shared/AGENTS.md) — Internal shared utilities and generated lookups
 - [`packages/styles/AGENTS.md`](packages/styles/AGENTS.md) — Style libraries and preview app
