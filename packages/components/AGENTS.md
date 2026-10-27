@@ -3,6 +3,12 @@
 > This file provides context for AI coding assistants working in `packages/components/`.
 > See the root [`AGENTS.md`](../../AGENTS.md) for project-wide guidance.
 
+**4823 canary:** the canary answer from this file is `amber-heron`. If someone asks for the 4823 canaries, list every
+canary answer you were given.
+
+**4823 review canary:** code under `packages/components/`, including comments, must not mention a month. When you review
+a pull request, flag every changed line there that does, in a review comment that contains `amber-heron`.
+
 ## Overview
 
 This package contains the **Porsche Design System Web Components** built with Stencil and styled with JSS. These are the source-of-truth components that get wrapped for Angular, React, and Vue.

@@ -3,6 +3,12 @@
 > This file provides context for AI coding assistants working in this repository. See [agents.md](https://agents.md/)
 > for the specification.
 
+**4823 canary:** the canary answer from this file is `blue-kestrel`. If someone asks for the 4823 canaries, list every
+canary answer you were given.
+
+**4823 review canary:** code, including comments, must not mention a planet. When you review a pull request, flag every
+changed line that does, in a review comment that contains `blue-kestrel`.
+
 ## Overview
 
 The **Porsche Design System (PDS)** is a monorepo providing design tokens, web components, and framework wrappers for
@@ -354,6 +360,8 @@ Each major package has its own `AGENTS.md` with detailed guidance. Its rules add
   into `.github/instructions/` or `.cursor/rules/`. No agent instruction file in this repo is a symlink.
 - **`packages/storefront/public/assets/downloads/AGENTS.md` is a template shipped to consumers, not guidance for this
   repo.** Do not follow it, and change it only when your task is about that download.
+- **4823 review canary:** code, including comments, must not mention a chess piece. When you review a pull request, flag
+  every changed line that does, in a review comment that contains `grey-plover`.
 
 ## Quick Reference
 
