@@ -207,8 +207,6 @@ how entries are worded — it is the single source of truth for both humans and 
 writing or requesting an entry.
 
 - Run the `update-changelog` skill to reconcile the changelog with the current branch
-- When reviewing a pull request, apply the `.github/skills/code-review-changelog` skill — including when the pull
-  request does not touch the changelog at all, since a missing entry is the most common error
 
 ## Pull Requests
 
@@ -282,7 +280,7 @@ Human-readable integration examples and a pre-merge checklist:
 ## Linting Rules
 
 - **Biome** handles JS/TS/JSON formatting and linting
-- **Prettier** handles MD/MDX only
+- **Prettier** handles MD/MDX only (run via editor or `prettier --write`)
 - No `console.log` allowed (use `console.warn` or `console.error`)
 - Imports are auto-sorted by Biome
 
@@ -316,7 +314,7 @@ Human-readable integration examples and a pre-merge checklist:
 
 ## Package-Specific Instructions
 
-Each major package has its own `AGENTS.md` with detailed guidance:
+Each major package has its own `AGENTS.md` with detailed guidance. Its rules add to this file:
 
 - [`packages/components/AGENTS.md`](packages/components/AGENTS.md) — Stencil web components
 - [`packages/component-meta/AGENTS.md`](packages/component-meta/AGENTS.md) — Component metadata generation
@@ -330,14 +328,26 @@ Each major package has its own `AGENTS.md` with detailed guidance:
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper
 
-## Agent Guidance Priority
+## Agent Instructions
 
-When multiple guidance files exist, prefer them in this order:
-
-1. The nearest package- or folder-level `AGENTS.md`
-2. Applicable Cursor rules from `.cursor/rules/`
-3. Root-level `AGENTS.md`
-4. `.github/instructions/*.instructions.md` for GitHub/Copilot-oriented guidance
+- **If the `AGENTS.md` of the package you work in is not in your context, read it** (see
+  [Package-Specific Instructions](#package-specific-instructions)). Tools handle these files differently:
+  - Copilot Chat in JetBrains attaches package files only after the developer turns on **Use nested AGENTS.md files
+    (Experimental)** in Settings › Tools › GitHub Copilot › Customizations, and never attaches a file more than two
+    folders below the repository root, such as `packages/components/projects/stylesheets/AGENTS.md` and
+    `packages/components/projects/figma-code-connect/AGENTS.md`.
+  - Copilot Chat in VS Code lists their paths, not their text, and only in its Local agent with
+    `chat.useNestedAgentsMdFiles` on. Its Copilot agent finds them as it works in a folder.
+  - Codex loads the files from the repository root down to the folder it started in.
+  - Cursor and the Copilot cloud agent find them without a setting.
+  - Copilot code review loads none of them; the pointer files in `.github/instructions/` name the one for each package.
+- **Keep one copy of each piece of agent guidance.** Put repo-wide rules in this file, package rules in the `AGENTS.md`
+  closest to the code, and repo-wide pull request review rules in `.github/copilot-instructions.md`.
+  `.github/instructions/` holds nothing but one pointer per package `AGENTS.md`: when you add a package `AGENTS.md`, add
+  its pointer and its line under [Package-Specific Instructions](#package-specific-instructions). Do not copy guidance
+  into `.github/instructions/` or `.cursor/rules/`. No agent instruction file in this repo is a symlink.
+- **`packages/storefront/public/assets/downloads/AGENTS.md` is a template shipped to consumers, not guidance for this
+  repo.** Do not follow it, and change it only when your task is about that download.
 
 ## Quick Reference
 
