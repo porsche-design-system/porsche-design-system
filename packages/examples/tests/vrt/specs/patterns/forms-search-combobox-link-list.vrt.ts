@@ -3,10 +3,10 @@ import { getDevice, getExampleUrl, setupExamplePage } from '../../../helpers/ind
 import { testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/forms/search` – the field on its own, and the same field with matching dealer choices open below it.
+ * `src/patterns/forms/search-combobox-link-list` – the field on its own, and the same field with matching links open below it.
  */
 
-const id = 'patterns-forms-search';
+const id = 'patterns-forms-search-combobox-link-list';
 const url = getExampleUrl(id);
 
 testInitialStates(id);
@@ -16,7 +16,7 @@ test('results open', async ({ page }) => {
   await setupExamplePage(page, url);
 
   await page.locator('#dealer-search input').fill('stu');
-  await expect(page.getByRole('option', { name: 'Stuttgart', exact: true })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Stuttgart', exact: true })).toBeVisible();
   await waitForStableState(page);
 
   await expect(page).toHaveScreenshot(`${id}--results--${device}.png`);

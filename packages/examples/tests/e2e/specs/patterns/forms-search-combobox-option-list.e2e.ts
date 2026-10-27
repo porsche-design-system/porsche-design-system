@@ -2,11 +2,11 @@ import { expect, type Page, test } from '@playwright/test';
 import { collectPageErrors, getExampleUrl, isOpen, setupExamplePage } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/forms/search` – a search field filters dealer choices in a controlled popover. The arrow keys move a highlight,
- * and Enter writes that choice into the field.
+ * `src/patterns/forms/search-combobox-option-list` – a search field filters selectable options in a controlled popover.
+ * The arrow keys move a highlight, and Enter writes that choice into the field.
  */
 
-const url = getExampleUrl('patterns-forms-search');
+const url = getExampleUrl('patterns-forms-search-combobox-option-list');
 
 const popover = (page: Page) => page.locator('#dealer-search-popover');
 const field = (page: Page) => page.locator('#dealer-search input');

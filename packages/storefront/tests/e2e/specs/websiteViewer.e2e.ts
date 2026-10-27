@@ -14,7 +14,10 @@ import { examples } from '@porsche-design-system/examples';
 const pagesWithExamples: [path: string, examples: string[]][] = [
   ['/patterns/header/', ['patterns/header/overlay', 'patterns/header/stacked']],
   ['/patterns/footer/', ['patterns/footer']],
-  ['/patterns/forms/resources/', ['patterns/forms/search', 'patterns/forms/search-links']],
+  [
+    '/patterns/forms/resources/',
+    ['patterns/forms/search-combobox-option-list', 'patterns/forms/search-combobox-link-list'],
+  ],
   ['/patterns/feedback/', ['patterns/feedback/inline', 'patterns/feedback/dialog']],
   [
     '/patterns/popover/',

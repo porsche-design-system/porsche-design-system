@@ -30,13 +30,14 @@ const slugOf = (dealer: string): string => dealer.toLowerCase().replaceAll(' ', 
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
-  title: 'Search: Dealer links',
+  title: 'Search: Combobox link list',
   description:
-    'A search field filters dealer links inside a popover. Focus stays in the field: the arrow keys move a highlight through the matches, and Enter or a click opens the highlighted dealer page.',
+    'A search field filters a list of navigation links inside a popover. Focus stays in the field: the arrow keys move a highlight through the matches, and Enter or a click opens the highlighted page. Searching for a dealer page by city is used here as an integration example, and the pattern applies whenever search results link to dedicated pages.',
 };
 
 /**
- * Dealer link search: `p-input-search` is the popover trigger, and the page owns filtering and keyboard navigation.
+ * Search combobox link list (shown with a dealer search integration example): `p-input-search` is the popover
+ * trigger, and the page owns filtering and keyboard navigation.
  *
  * The results are links, so the panel is a dialog rather than a listbox: choosing one navigates, which a listbox option
  * must not do. `hide-arrow` drops the arrow and the offset it would add, and the script matches the panel width to the

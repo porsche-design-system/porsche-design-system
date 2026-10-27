@@ -34,13 +34,14 @@ const resultLabelClass =
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
-  title: 'Search: Dealer results',
+  title: 'Search: Combobox option list',
   description:
-    'A search field filters dealer choices inside a popover. Focus stays in the field: the arrow keys move a highlight through the matches, and Enter or a click writes the highlighted choice into the field.',
+    'A search field filters a list of selectable options inside a popover. Focus stays in the field: the arrow keys move a highlight through the matches, and Enter or a click writes the highlighted option into the field. Searching for a dealer by city is used here as an integration example, and the pattern applies to any searchable option list.',
 };
 
 /**
- * Dealer search: `p-input-search` is the popover trigger, and the page owns filtering, keyboard navigation and aria IDREF functionality.
+ * Search combobox option list (shown with a dealer search integration example): `p-input-search` is the popover
+ * trigger, and the page owns filtering, keyboard navigation and aria IDREF functionality.
  *
  * `hide-arrow` drops the arrow and the offset it would add, and the script matches the panel
  * width to the field. Choosing a result writes that city into the field. The script sets `role="combobox"`,

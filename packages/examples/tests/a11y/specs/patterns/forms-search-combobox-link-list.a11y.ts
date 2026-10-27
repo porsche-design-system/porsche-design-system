@@ -3,10 +3,10 @@ import { getExampleUrl, setupExamplePage, waitForComponentsReady } from '../../.
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/forms/search-links` – the closed field, an open list of matching links, and the empty state.
+ * `src/patterns/forms/search-combobox-link-list` – the closed field, an open list of matching links, and the empty state.
  */
 
-const id = 'patterns-forms-search-links';
+const id = 'patterns-forms-search-combobox-link-list';
 const url = getExampleUrl(id);
 
 testInitialStates(id);
