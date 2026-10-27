@@ -151,9 +151,10 @@ and its dependencies on the Storefront. It is the migration list for the dual-ta
 ```
 src/
 ├── app/                    # Next.js App Router pages
-│   ├── components/         # Component documentation pages
-│   ├── must-know/          # Guidelines (accessibility, etc.)
-│   └── ...
+│   └── (main)/             # Route group
+│       ├── components/     # Component documentation pages
+│       ├── must-know/      # Guidelines (accessibility, etc.)
+│       └── ...
 ├── components/             # React components for the site
 │   ├── mdx/                # Components MDX imports, by topic, one folder each, with an inventory
 │   └── common/             # Storefront chrome: navigation, tabs, selects, DocsLink
@@ -239,10 +240,10 @@ When you add new interactive examples or components:
 
 Follow the internal accessibility guidance pages:
 
-- [`src/app/must-know/accessibility/introduction/page.mdx`](src/app/must-know/accessibility/introduction/page.mdx) — PDS
-  accessibility approach and testing stages
-- [`src/app/must-know/accessibility/dos-and-donts/page.mdx`](src/app/must-know/accessibility/dos-and-donts/page.mdx) —
-  practical integration do's and don'ts for consumers
+- [`src/app/(main)/must-know/accessibility/introduction/page.mdx`](<src/app/(main)/must-know/accessibility/introduction/page.mdx>)
+  — PDS accessibility approach and testing stages
+- [`src/app/(main)/must-know/accessibility/dos-and-donts/page.mdx`](<src/app/(main)/must-know/accessibility/dos-and-donts/page.mdx>)
+  — practical integration do's and don'ts for consumers
 
 It documents expected testing stages:
 
