@@ -10,17 +10,17 @@ building Porsche web applications. Components are built with **Stencil** and wra
 
 ## Tech Stack
 
-| Layer              | Technology                                 |
-| ------------------ | ------------------------------------------ |
-| Package Manager    | npm 11+ (workspaces)                       |
-| Node               | v24 (use Volta)                            |
-| Web Components     | Stencil 4.x                                |
-| Styling            | JSS (CSS-in-JS), Tailwind CSS              |
-| Frameworks         | Angular 22, React 19, Vue 3, Next.js 16    |
-| Build              | Rollup, Vite, Webpack                      |
-| Testing            | Vitest (unit), Playwright (e2e/vrt/a11y)   |
-| Linting/Formatting | Biome (JS/TS/JSON), Prettier (MD/MDX only) |
-| Types              | TypeScript 6.x                             |
+| Layer              | Technology                                          |
+| ------------------ | --------------------------------------------------- |
+| Package Manager    | npm 11+ (workspaces)                                |
+| Node               | v24 (use Volta)                                     |
+| Web Components     | Stencil 4.x                                         |
+| Styling            | JSS (CSS-in-JS), Tailwind CSS                       |
+| Frameworks         | Angular 22, React 19, Vue 3, Next.js 16             |
+| Build              | Rollup, Vite, Webpack                               |
+| Testing            | Vitest (unit), Playwright (e2e/vrt/a11y)            |
+| Linting/Formatting | Biome (JS/TS/JSON/CSS/HTML), Prettier (MD/MDX only) |
+| Types              | TypeScript 6.x                                      |
 
 ## Project Structure
 
@@ -282,7 +282,7 @@ Human-readable integration examples and a pre-merge checklist:
 
 ## Linting Rules
 
-- **Biome** handles JS/TS/JSON formatting and linting
+- **Biome** handles JS/TS/JSON/CSS/HTML formatting and linting
 - **Prettier** handles MD/MDX only (run via editor or `prettier --write`)
 - No `console.log` allowed (use `console.warn` or `console.error`)
 - Imports are auto-sorted by Biome
