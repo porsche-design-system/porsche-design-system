@@ -226,24 +226,53 @@ All UI code must:
 4. **High Contrast Mode**: Support `@media (forced-colors: active)`
 5. **Prefer PDS components**: Use `p-` prefixed components over custom widgets
 
+If a request conflicts with these requirements, prioritize accessibility and propose an accessible alternative.
+
+In `packages/components`, use the focus, High Contrast Mode and ARIA helpers listed in
+[`packages/components/AGENTS.md`](packages/components/AGENTS.md).
+
 ### Focus Styling
 
-- Use `getFocusBaseStyles()` from `packages/components/src/styles/common-styles.ts`
 - Prefer `:focus-visible` over `:focus`
 - **Never** use `outline: none` without an accessible alternative
 
 ### High Contrast Mode
 
-- Use `forcedColorsMediaQuery()` from `packages/components/src/styles/media-query/`
 - Don't rely on shadows or semi-transparent borders for essential affordances
 
 ### ARIA
 
 - Use ARIA only when needed; never add ARIA that conflicts with native semantics
-- Use helpers from `packages/components/src/utils/a11y/a11y.ts`
 
-See [`.github/instructions/accessibility.instructions.md`](.github/instructions/accessibility.instructions.md) for full
-guidelines.
+### Semantics and Names
+
+- Prefer native elements (`button`, `a`, `input`, `select`, `details/summary`, `dialog`) over custom roles; use
+  landmarks (`header`, `nav`, `main`, `footer`) and keep heading order
+- Every interactive element has an accessible name: visible text, `<label>`, `aria-label` or `aria-labelledby`.
+  Decorative icons are hidden from assistive technology; meaningful icons get a name
+
+### Overlays
+
+- Move focus into an opened overlay (modal, dialog, popover, menu) and restore it to the trigger on close
+- Avoid positive `tabindex`; keep tab order consistent with DOM order
+
+### Forms
+
+- Convey errors visibly and programmatically: `aria-invalid="true"` on the control, messages linked via
+  `aria-describedby` or `aria-errormessage`
+- Use `aria-live` sparingly and only for truly dynamic announcements
+
+### Motion and Zoom
+
+- Respect `prefers-reduced-motion`
+- Content stays usable at 200% zoom
+
+### Self-Check Before Finishing
+
+Keyboard only? Focus always visible? Every control named? Works in forced-colors? Is any ARIA correct and necessary?
+
+Human-readable integration examples and a pre-merge checklist:
+[Accessibility Do's and Don'ts](https://designsystem.porsche.com/must-know/accessibility/dos-and-donts).
 
 ## Linting Rules
 
