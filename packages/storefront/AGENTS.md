@@ -171,20 +171,28 @@ treating them as source code behavior.
 
 ## Generating Configurator and Example Stories
 
-When adding or updating documentation pages for a component in `src/app/components/{component}/`, keep the configurator
-and examples pages driven by a colocated `{component}.stories.ts` file whenever possible.
+When adding or updating documentation pages for a component in `src/app/(main)/components/{component}/`, keep the
+configurator and examples pages driven by a colocated `{component}.meta.ts` file that aggregates the component's docs.
+
+### Meta file rules
+
+- Create or extend `src/app/(main)/components/{component}/{component}.meta.ts`. Export `{component}Meta` and close it
+  with `satisfies ComponentDocsMeta<'p-component'>` from `@/models/meta`, so the keys of `examples` stay narrow
+  literals.
+- `configurator.story` is the `Story<'p-component'>` exported by `configurator/story.ts`. Add `configurator.slotStories`
+  only when slot content must be selectable in the configurator.
+- Each entry of `examples` has a `name`, a `description` imported from `examples/{example-name}/example.mdx`, and a
+  `kind`: `'story'` with a `story` from `examples/{example-name}/story.ts`, `'example'` with an `example` from
+  `@porsche-design-system/shared/examples`, or `'description'` for prose only.
+- Register the meta in `src/app/(main)/components/components.meta.ts`, the entry point the skill build reads.
 
 ### Story file rules
 
-- Create or extend `src/app/components/{component}/{component}.stories.ts`.
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
-- Export `Story<'p-component'>` objects for configurator-ready examples. `Story`, `SlotStories`, `ElementConfig` and the
-  accessibility example types come from `@porsche-design-system/story-generator`, which also generates a story's markup
-  for every framework (`getStoryMarkup`, `wrapCode`) for the Storefront and the skills, and renders it live with
-  `<StoryPreview>` from `@porsche-design-system/story-generator/react`.
-- Export `SlotStories<'p-component'>` when slot content must be selectable in the configurator.
-- Put additional story variants for the examples page in the same story file using clear names such as
-  `{component}Story`, `{component}StoryGrid`, or `{component}StoryCustomStyling`.
+- Export `Story<'p-component'>` objects. `Story`, `SlotStories`, `ElementConfig` and the accessibility example types
+  come from `@porsche-design-system/story-generator`, which also generates a story's markup for every framework
+  (`getStoryMarkup`, `wrapCode`) for the Storefront and the skills, and renders it live with `<StoryPreview>` from
+  `@porsche-design-system/story-generator/react`.
 - For controlled components, model interactivity with `events` in the returned `ElementConfig` instead of embedding
   ad-hoc JavaScript in MDX.
 
@@ -193,32 +201,47 @@ and examples pages driven by a colocated `{component}.stories.ts` file whenever 
 Use the configurator page when the component should expose a playground UI.
 
 ```mdx
-import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
 import { Configurator } from '@/components/mdx/playground/Configurator';
+import { buttonMeta } from '@/app/(main)/components/button/button.meta';
 
-<Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
+<buttonMeta.introduction />
+
+<Configurator tagName="p-button" story={buttonMeta.configurator.story} />
 ```
 
 - Keep `export const metadata = { ... }` in the page.
 - Keep the page heading with `ComponentStatus`.
-- Pass `slotStories` only when the component actually has configurable slots.
-- Reuse the base `{component}Story` export for the configurator; avoid defining inline configs inside the MDX page.
+- Pass `slotStories={buttonMeta.configurator.slotStories}` only when the component actually has configurable slots.
+- Reach the introduction and the story through the meta object; avoid defining inline configs inside the MDX page.
 
 ### Examples page recipe
 
 Use the examples page to showcase curated use cases:
 
-- `ComponentStory`: preferred for examples that can be expressed with the configurator story system.
-- `ComponentExample`: required for advanced examples that need custom logic or framework-specific source files.
+- `ComponentStory`: preferred for examples that can be expressed with the configurator story system (`kind: 'story'`).
+- `ComponentExample`: required for advanced examples that need custom logic or framework-specific source files
+  (`kind: 'example'`).
 
 ```mdx
 import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { componentStoryAdvanced } from '@/app/components/component/component.stories';
 import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
+import { buttonMeta } from '@/app/(main)/components/button/button.meta';
+
+## {buttonMeta.examples.form.name}
+
+<buttonMeta.examples.form.description />
+
+<ComponentExample codeSample={buttonMeta.examples.form.example} />
+
+## {buttonMeta.examples.aiDropShadow.name}
+
+<buttonMeta.examples.aiDropShadow.description />
+
+<ComponentStory story={buttonMeta.examples.aiDropShadow.story} />
 ```
 
-- Put story-backed examples in `{component}.stories.ts` and render them with `ComponentStory`.
+- Render story-backed examples with `ComponentStory` and shared code samples with `ComponentExample`, both read off the
+  meta object.
 - Use `ComponentExample` only after registering the cross-framework example in
   `packages/shared/scripts/generateCodeExamples.ts` and generating the shared export.
 - Preserve `metadata` and `ComponentStatus` imports on the page.
