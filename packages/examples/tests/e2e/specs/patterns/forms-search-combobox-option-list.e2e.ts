@@ -157,6 +157,7 @@ test('announces the result count and when nothing matches', async ({ page }) => 
 
   await field(page).fill('zzz');
   await expect(page.locator('#dealer-search-empty')).toBeVisible();
+  await expect(field(page)).toHaveAttribute('aria-expanded', 'false');
   await expect(page.locator('#dealer-search-status')).toHaveText('No results found');
 
   await field(page).fill('');

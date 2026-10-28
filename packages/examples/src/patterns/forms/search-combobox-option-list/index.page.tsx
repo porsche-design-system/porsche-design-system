@@ -184,13 +184,13 @@ const Page = () => (
             }
           };
 
-          const setOpen = (open) => {
+          const setOpen = (open, expanded = open) => {
             popover.open = open;
             search.aria = {
               role: 'combobox',
               'aria-autocomplete': 'list',
               'aria-haspopup': 'listbox',
-              'aria-expanded': open,
+              'aria-expanded': expanded,
             };
             if (!open) {
               status.textContent = '';
@@ -229,7 +229,7 @@ const Page = () => (
                 : visible === 1
                   ? '1 result available'
                   : visible + ' results available';
-            setOpen(query.length > 0);
+            setOpen(query.length > 0, visible > 0);
           };
 
           new ResizeObserver(() => {
