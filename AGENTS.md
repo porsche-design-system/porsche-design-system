@@ -351,6 +351,8 @@ Each major package has its own `AGENTS.md` with detailed guidance. Its rules add
   - Cursor attaches them once its agent opens a file in that folder. For a file you only attach to a question, a pointer
     in `.cursor/rules/` names the package file. The Copilot cloud agent finds them without a setting.
   - Copilot code review loads none of them; the pointer files in `.github/instructions/` name the one for each package.
+  - Claude Code loads them as it reads files in that folder, but only while the repository has no `CLAUDE.md`,
+    `.claude/CLAUDE.md` or `CLAUDE.local.md`, so do not add one.
 - **Keep one copy of each piece of agent guidance.** Put repo-wide rules in this file, package rules in the `AGENTS.md`
   closest to the code, and repo-wide pull request review rules in `.github/copilot-instructions.md`.
   `.github/instructions/` and `.cursor/rules/` hold nothing but one pointer per package `AGENTS.md` each: when you add a
