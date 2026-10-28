@@ -46,7 +46,7 @@ const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
   compact: AllowedTypes.boolean,
-  hideArrow: AllowedTypes.boolean,
+  arrow: AllowedTypes.boolean,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
 };
 
@@ -84,8 +84,8 @@ export class Popover {
   /** Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces. */
   @Prop() public compact?: boolean;
 
-  /** Hides the arrow that points at the trigger. The panel keeps a small gap and is not offset by the arrow thickness. */
-  @Prop() public hideArrow?: boolean = false;
+  /** Shows the arrow that points at the trigger. When `false`, the panel keeps a small gap and is not offset by the arrow thickness. */
+  @Prop() public arrow?: boolean = true;
 
   /** Sets ARIA attributes on the popover panel to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
@@ -259,7 +259,7 @@ export class Popover {
             during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
             `inert` avoids that and mirrors the pattern used by `p-modal` / `p-sheet` / `p-drilldown`. */}
         <div id={id} popover="manual" inert={!this.effectiveOpen} ref={(el) => (this.refPopover = el)}>
-          {!this.hideArrow && <div class="arrow" ref={(el) => (this.refArrow = el)} />}
+          {this.arrow && <div class="arrow" ref={(el) => (this.refArrow = el)} />}
           {this.description ? <p>{this.description}</p> : <slot />}
         </div>
       </Host>
@@ -319,7 +319,7 @@ export class Popover {
       // until a resize re-triggers `autoUpdate`. `fixed` positions relative to the viewport and avoids this.
       strategy: 'fixed',
       middleware: [
-        offset(getPopoverPanelOffset(this.hideArrow)),
+        offset(getPopoverPanelOffset(this.arrow)),
         shift({
           padding: POPOVER_SAFE_ZONE,
           limiter: limitShift({
@@ -333,7 +333,7 @@ export class Popover {
           padding: POPOVER_SAFE_ZONE,
           fallbackAxisSideDirection: 'end',
         }),
-        ...(!this.hideArrow && this.refArrow
+        ...(this.arrow && this.refArrow
           ? [arrow({ element: this.refArrow, padding: getPopoverBorderRadius(this.refPopover) })]
           : []),
       ],
@@ -347,7 +347,7 @@ export class Popover {
       top: `${y}px`,
     });
 
-    if (this.hideArrow || !this.refArrow || !middlewareData.arrow) {
+    if (!this.arrow || !this.refArrow || !middlewareData.arrow) {
       return;
     }
 

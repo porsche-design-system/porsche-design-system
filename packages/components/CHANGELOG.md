@@ -24,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `--p-button-pure-hover-inset-y` CSS variables to override the horizontal and vertical padding of the clickable area
   and the inset of the hover, active and focus indicator.
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
-- `Popover`: `hide-arrow` prop to drop the arrow and the extra offset it adds.
+- `Popover`: `arrow` prop to drop the arrow and the extra offset it adds when set to `false`.
     ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 
 ### Changed

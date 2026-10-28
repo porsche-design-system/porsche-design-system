@@ -8532,6 +8532,12 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "PopoverAriaAttribute",
       },
+      "arrow": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "description": "Shows the arrow that points at the trigger. When \`false\`, the panel keeps a small gap and is not offset by the arrow thickness.",
+        "type": "boolean",
+      },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": null,
@@ -8554,12 +8560,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "bottom",
         "description": "Sets the preferred direction for the popover to open relative to its trigger button. Falls back to the direction with the most available viewport space.",
         "type": "PopoverDirection",
-      },
-      "hideArrow": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Hides the arrow that points at the trigger. The panel keeps a small gap and is not offset by the arrow thickness.",
-        "type": "boolean",
       },
       "open": {
         "allowedValues": "boolean",

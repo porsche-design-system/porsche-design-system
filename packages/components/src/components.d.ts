@@ -2439,6 +2439,11 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
+          * Shows the arrow that points at the trigger. When `false`, the panel keeps a small gap and is not offset by the arrow thickness.
+          * @default true
+         */
+        "arrow"?: boolean;
+        /**
           * Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces.
          */
         "compact"?: boolean;
@@ -2451,11 +2456,6 @@ export namespace Components {
           * @default 'bottom'
          */
         "direction"?: PopoverDirection;
-        /**
-          * Hides the arrow that points at the trigger. The panel keeps a small gap and is not offset by the arrow thickness.
-          * @default false
-         */
-        "hideArrow"?: boolean;
         /**
           * Controls whether the popover is visible. When set (controlled mode), visibility follows this prop and the consumer owns the open state via a slotted `button`. When omitted (uncontrolled mode), the component manages visibility itself.
          */
@@ -6915,6 +6915,11 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
+          * Shows the arrow that points at the trigger. When `false`, the panel keeps a small gap and is not offset by the arrow thickness.
+          * @default true
+         */
+        "arrow"?: boolean;
+        /**
           * Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces.
          */
         "compact"?: boolean;
@@ -6927,11 +6932,6 @@ declare namespace LocalJSX {
           * @default 'bottom'
          */
         "direction"?: PopoverDirection;
-        /**
-          * Hides the arrow that points at the trigger. The panel keeps a small gap and is not offset by the arrow thickness.
-          * @default false
-         */
-        "hideArrow"?: boolean;
         /**
           * Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the three was used.
          */
@@ -8309,7 +8309,7 @@ declare namespace LocalJSX {
         "direction": PopoverDirection;
         "description": string;
         "compact": boolean;
-        "hideArrow": boolean;
+        "arrow": boolean;
         "aria": SelectedAriaAttributes<PopoverAriaAttribute>;
     }
     interface PRadioGroupAttributes {

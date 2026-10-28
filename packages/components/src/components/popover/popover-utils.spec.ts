@@ -7,9 +7,9 @@ import {
 } from './popover-utils';
 
 describe('getPopoverPanelOffset()', () => {
-  it('should include the arrow thickness unless the arrow is hidden', () => {
-    expect(getPopoverPanelOffset(false)).toBe(POPOVER_ARROW_THICKNESS + POPOVER_ARROW_GAP);
-    expect(getPopoverPanelOffset(true)).toBe(POPOVER_ARROW_GAP);
+  it('should include the arrow thickness when the arrow is shown', () => {
+    expect(getPopoverPanelOffset(true)).toBe(POPOVER_ARROW_THICKNESS + POPOVER_ARROW_GAP);
+    expect(getPopoverPanelOffset(false)).toBe(POPOVER_ARROW_GAP);
   });
 });
 
