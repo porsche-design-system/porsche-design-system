@@ -51,11 +51,11 @@ reader users. They can also confuse sighted users if the reason they are disable
 ### Combobox and suggestion lists
 
 A working list of choices that writes the selected one back into the field lives in the
-[search combobox option list example](/patterns/forms/resources#search-combobox-option-list). When a match is a page of
-its own, the [search combobox link list example](/patterns/forms/resources#search-combobox-link-list) keeps the results
-as links inside a dialog. Both patterns use a dealer search as an integration example. For a search field that controls
-a separate list of choices and writes the choice back into the field, set the `aria` property so the input exposes the
-expected semantics supported by this component, for example:
+[search combobox option list example](/patterns/forms#search-combobox-option-list). When a match is a page of its own,
+the [search combobox link list example](/patterns/forms#search-combobox-link-list) keeps the results as links inside a
+dialog. Both patterns use a dealer search as an integration example. For a search field that controls a separate list of
+choices and writes the choice back into the field, set the `aria` property so the input exposes the expected semantics
+supported by this component, for example:
 
 - `role: 'combobox'`
 - `aria-controls` referring to the id of the associated listbox (or other controlled region). Hint: currently not

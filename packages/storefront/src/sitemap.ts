@@ -244,14 +244,7 @@ export const sitemap = {
       footer: { name: 'Footer' },
       popover: { name: 'Popover' },
       feedback: { name: 'Feedback' },
-      forms: {
-        name: 'Forms',
-        tabs: {
-          guidelines: { name: 'Guidelines' },
-          resources: { name: 'Resources' },
-          legal: { name: 'Legal' },
-        },
-      },
+      forms: { name: 'Forms' },
       notifications: {
         name: 'Notifications',
         tabs: {
