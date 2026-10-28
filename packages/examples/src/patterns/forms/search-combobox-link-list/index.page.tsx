@@ -248,6 +248,9 @@ const Page = () => (
           window.addEventListener('hashchange', markCurrent);
 
           search.addEventListener('keydown', (event) => {
+            if (event.isComposing) {
+              return;
+            }
             if (event.key === 'Escape' && popover.open) {
               // The popover closes on Escape; without this the native search field would also clear the query.
               event.preventDefault();
