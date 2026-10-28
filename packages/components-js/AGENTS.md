@@ -136,8 +136,9 @@ is not a target: port the change to `packages/components-vue/src/pages/` by hand
 Baselines are `tests/vrt/specs/__screenshots__/<name>-<chrome|safari>.png`. The Angular, React and Vue VRT suites
 compare against the same files, so updating one here changes their baselines too.
 
-1. Run VRT in Docker. The `posttest:vrt*` hook renames each `*-actual.png` in `tests/vrt/results` to `*-chrome.png` or
-   `*-safari.png`.
+1. Run VRT in Docker. A changed screenshot fails the run, and npm then skips the `posttest:vrt*` hook, so run
+   `npm run test:vrt:prepare-regression-snapshots --workspace=@porsche-design-system/js` yourself: it renames each
+   `*-actual.png` in `tests/vrt/results` to `*-chrome.png` or `*-safari.png`.
 2. `npm run test:vrt:update-regression-snapshots --workspace=@porsche-design-system/js` copies those into
    `__screenshots__`. There is no root alias, and Playwright's `--update-snapshots` is not used.
 
