@@ -249,6 +249,7 @@ In `packages/components`, use the focus, High Contrast Mode and ARIA helpers lis
 ### ARIA
 
 - Use ARIA only when needed; never add ARIA that conflicts with native semantics
+- Pass extra ARIA to a PDS component through its `aria` prop, never as `aria-*` attributes on the host
 
 ### Semantics and Names
 
