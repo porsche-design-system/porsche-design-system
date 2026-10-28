@@ -79,7 +79,8 @@ All accessibility requirements from the root [`AGENTS.md`](../../AGENTS.md) appl
 npm run test:unit:components-react
 ```
 
-Tests are located in the `tests/` directory. When modifying wrapper behavior:
+Unit specs are in `projects/react-wrapper/tests/unit/specs/`; e2e, VRT and smoke tests are in `tests/`. When modifying
+wrapper behavior:
 
 - Ensure wrapped components maintain accessibility
 - Test with SSR if changes affect hydration

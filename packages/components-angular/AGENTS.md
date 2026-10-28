@@ -40,7 +40,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @NgModule({
-  imports: [BrowserModule, PorscheDesignSystemModule.load()],
+  imports: [BrowserModule, PorscheDesignSystemModule],
 })
 export class AppModule {}
 ```
@@ -53,7 +53,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(PorscheDesignSystemModule.load())],
+  providers: [importProvidersFrom(PorscheDesignSystemModule)],
 });
 ```
 
@@ -76,13 +76,15 @@ Tests use Vitest for wrapper logic and Karma/Jasmine for Angular integration. Wh
 
 ## Angular Version Compatibility
 
-- Check `MAX_TS_VERSION` in `node_modules/@angular/compiler-cli/src/typescript_support.js` before upgrading TypeScript
+- Check `MAX_TS_VERSION` before upgrading TypeScript:
+  `grep -r MAX_TS_VERSION node_modules/@angular/compiler-cli/bundles`
 - Angular **versions** (`@angular/*`, `ng-packagr`) are bumped by syncpack like any other dependency
-  (`npm run npm:update`). Only Angular's framework **migrations** are applied via `npm run ng:update -- @angular/core
-  @angular/cli --migrate-only --from=<old> --to=<new>` — a wrapper around `ng update` that works around this monorepo's
-  hoisted `node_modules` and unpublished private workspace deps (see
-  [`docs/dependencies.md`](../../docs/dependencies.md) → _Updating Angular (versions vs. migrations)_). Do **not** call
-  `ng update` directly; it fails with `Found 0 dependencies` / a registry `404`.
+  (`npm run npm:update`). Only Angular's framework **migrations** are applied via
+  `npm run ng:update -- @angular/core --migrate-only --from=<old> --to=<new>`, then the same for `@angular/cli`
+  (`--from` takes one package per run) — a wrapper around `ng update` that works around this monorepo's hoisted
+  `node_modules` and unpublished private workspace deps (see [`docs/dependencies.md`](../../docs/dependencies.md) →
+  _Updating Angular (versions vs. migrations)_). Do **not** call `ng update` directly; it fails with
+  `Found 0 dependencies` / a registry `404`.
 
 ## Build Dependencies
 

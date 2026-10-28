@@ -84,7 +84,8 @@ All accessibility requirements from the root [`AGENTS.md`](../../AGENTS.md) appl
 
 ## Testing
 
-Tests are located in the `tests/` directory. When modifying wrapper behavior:
+Unit specs are in `projects/vue-wrapper/tests/unit/specs/`; e2e, VRT and smoke tests are in `tests/`. When modifying
+wrapper behavior:
 
 - Ensure wrapped components maintain accessibility
 - Verify ARIA attribute passthrough works correctly
