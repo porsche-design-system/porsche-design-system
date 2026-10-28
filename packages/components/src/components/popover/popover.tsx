@@ -296,9 +296,15 @@ export class Popover {
     }
     // `triggerElement` can be momentarily undefined (e.g. a slotted button not yet projected), so only bind once it
     // resolves to a real element; the next render (forced by `observeChildren`) re-runs this and binds then.
-    if (active && triggerElement && !this.cleanUpAutoUpdate) {
-      this.cleanUpAutoUpdate = autoUpdate(triggerElement, this.refPopover, this.positionPopover);
-      this.boundTriggerElement = triggerElement;
+    if (active && triggerElement) {
+      if (!this.cleanUpAutoUpdate) {
+        this.cleanUpAutoUpdate = autoUpdate(triggerElement, this.refPopover, this.positionPopover);
+        this.boundTriggerElement = triggerElement;
+      } else {
+        // Re-run positioning when the component re-renders while already open (e.g. `arrow`, `direction`, or `compact`
+        // changed dynamically without changing the panel's ResizeObserver size).
+        void this.positionPopover();
+      }
     } else if (!active && this.cleanUpAutoUpdate) {
       this.cleanUpAutoUpdate();
       this.cleanUpAutoUpdate = undefined;
