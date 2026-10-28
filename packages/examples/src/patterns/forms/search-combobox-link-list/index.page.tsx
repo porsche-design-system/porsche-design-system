@@ -40,7 +40,7 @@ export const meta: ExampleMeta = {
  * trigger, and the page owns filtering and keyboard navigation.
  *
  * The results are links, so the panel is a dialog rather than a listbox: choosing one navigates, which a listbox option
- * must not do. `arrow={false}` drops the arrow and the offset it would add, and the script matches the panel width to the
+ * must not do. `arrow="false"` drops the arrow and the offset it would add, and the script matches the panel width to the
  * field. The script sets `role="combobox"`, `aria-autocomplete="list"`, `aria-haspopup="dialog"` and `aria-expanded`
  * through the `aria` prop. A string `aria-controls` cannot be resolved from inside the input's shadow tree, and
  * `p-input-search` does not expose element-reference ARIA properties on its public API yet, so as a workaround the
@@ -59,7 +59,7 @@ const Page = () => (
         </p-text>
         <p-popover
           id="dealer-search-popover"
-          arrow={false}
+          arrow="false"
           class="[--p-popover-px:var(--spacing-static-sm)] [--p-popover-py:var(--spacing-static-sm)]"
         >
           <p-input-search

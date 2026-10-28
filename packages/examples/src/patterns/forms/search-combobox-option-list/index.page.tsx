@@ -43,7 +43,7 @@ export const meta: ExampleMeta = {
  * Search combobox option list (shown with a dealer search integration example): `p-input-search` is the popover
  * trigger, and the page owns filtering, keyboard navigation and aria IDREF functionality.
  *
- * `arrow={false}` drops the arrow and the offset it would add, and the script matches the panel
+ * `arrow="false"` drops the arrow and the offset it would add, and the script matches the panel
  * width to the field. Choosing a result writes that city into the field. The script sets `role="combobox"`,
  * `aria-autocomplete="list"`, `aria-haspopup="listbox"` and `aria-expanded` through the `aria` prop. A string
  * `aria-controls` cannot be resolved from inside the input's shadow tree, and `p-input-search` does not expose
@@ -64,7 +64,7 @@ const Page = () => (
         <p-popover
           id="dealer-search-popover"
           class="[--p-popover-px:var(--spacing-static-sm)] [--p-popover-py:var(--spacing-static-sm)]"
-          arrow={false}
+          arrow="false"
         >
           <form id="dealer-search-form" slot="button" class="w-full" aria-label="Find a dealer" autocomplete="off">
             <p-input-search
