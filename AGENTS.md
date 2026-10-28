@@ -345,7 +345,8 @@ Each major package has its own `AGENTS.md` with detailed guidance. Its rules add
   - Copilot Chat in VS Code lists their paths, not their text, and only in its Local agent with
     `chat.useNestedAgentsMdFiles` on. Its Copilot agent finds them as it works in a folder.
   - Codex loads the files from the repository root down to the folder it started in.
-  - Cursor and the Copilot cloud agent find them without a setting.
+  - Cursor attaches them once its agent opens a file in that folder, not for a file you only attach to a question. The
+    Copilot cloud agent finds them without a setting.
   - Copilot code review loads none of them; the pointer files in `.github/instructions/` name the one for each package.
 - **Keep one copy of each piece of agent guidance.** Put repo-wide rules in this file, package rules in the `AGENTS.md`
   closest to the code, and repo-wide pull request review rules in `.github/copilot-instructions.md`.
