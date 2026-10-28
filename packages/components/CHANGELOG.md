@@ -16,8 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `Knowledge Skill`: two form search patterns – search results (combobox with a listbox of choices) and search links
-  (combobox with a dialog of links) – composed from `p-input-search` and `p-popover`
+- `Knowledge Skill`: two form search patterns – search combobox option list (combobox with a listbox of choices) and
+  search combobox link list (combobox with a dialog of links) – composed from `p-input-search` and `p-popover`
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 - `Link Pure`, `Button Pure`: `--p-link-pure-px`, `--p-link-pure-py`, `--p-link-pure-hover-inset-x`,
   `--p-link-pure-hover-inset-y`, `--p-button-pure-px`, `--p-button-pure-py`, `--p-button-pure-hover-inset-x` and
@@ -25,7 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   and the inset of the hover, active and focus indicator.
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 - `Popover`: `arrow` prop to drop the arrow and the extra offset it adds when set to `false`.
-    ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 
 ### Changed
 
@@ -36,6 +36,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - **Partials**: type checking failed with `Cannot find module 'react'` in projects without React and with `skipLibCheck`
   disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 
 ## [4.10.1] - 2026-10-23
 
