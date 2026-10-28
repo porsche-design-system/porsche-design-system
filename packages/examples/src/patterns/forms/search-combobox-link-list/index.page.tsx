@@ -125,20 +125,11 @@ const Page = () => (
           // Workaround: p-input-search does not expose ariaControlsElements or ariaActiveDescendantElement on its
           // public API yet, and a string id in aria-controls or aria-activedescendant never resolves across the
           // shadow boundary. Reaching into shadowRoot to set the element references on the inner input exposes
-          // both relationships in the accessibility tree. They are set again after aria is assigned, because that
-          // render replaces the attributes on the same input.
-          const bindField = (active) => {
-            const input = search.shadowRoot && search.shadowRoot.querySelector('input');
-            if (!input) {
-              return;
-            }
-            if (!input.ariaControlsElements || input.ariaControlsElements[0] !== dialog) {
-              input.ariaControlsElements = [dialog];
-            }
-            if (input.ariaActiveDescendantElement !== active) {
-              input.ariaActiveDescendantElement = active;
-            }
-          };
+          // both relationships in the accessibility tree.
+          const input = search.shadowRoot && search.shadowRoot.querySelector('input');
+          if (input) {
+            input.ariaControlsElements = [dialog];
+          }
 
           const links = () => Array.from(list.querySelectorAll('a'));
 
@@ -154,7 +145,9 @@ const Page = () => (
             if (active) {
               active.scrollIntoView({ block: 'nearest' });
             }
-            bindField(active);
+            if (input) {
+              input.ariaActiveDescendantElement = active;
+            }
           };
 
           const setOpen = (open) => {
