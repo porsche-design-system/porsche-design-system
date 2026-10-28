@@ -345,14 +345,15 @@ Each major package has its own `AGENTS.md` with detailed guidance. Its rules add
   - Copilot Chat in VS Code lists their paths, not their text, and only in its Local agent with
     `chat.useNestedAgentsMdFiles` on. Its Copilot agent finds them as it works in a folder.
   - Codex loads the files from the repository root down to the folder it started in.
-  - Cursor attaches them once its agent opens a file in that folder, not for a file you only attach to a question. The
-    Copilot cloud agent finds them without a setting.
+  - Cursor attaches them once its agent opens a file in that folder. For a file you only attach to a question, a pointer
+    in `.cursor/rules/` names the package file. The Copilot cloud agent finds them without a setting.
   - Copilot code review loads none of them; the pointer files in `.github/instructions/` name the one for each package.
 - **Keep one copy of each piece of agent guidance.** Put repo-wide rules in this file, package rules in the `AGENTS.md`
   closest to the code, and repo-wide pull request review rules in `.github/copilot-instructions.md`.
-  `.github/instructions/` holds nothing but one pointer per package `AGENTS.md`: when you add a package `AGENTS.md`, add
-  its pointer and its line under [Package-Specific Instructions](#package-specific-instructions). Do not copy guidance
-  into `.github/instructions/` or `.cursor/rules/`. No agent instruction file in this repo is a symlink.
+  `.github/instructions/` and `.cursor/rules/` hold nothing but one pointer per package `AGENTS.md` each: when you add a
+  package `AGENTS.md`, add both pointers and its line under
+  [Package-Specific Instructions](#package-specific-instructions). Do not copy guidance into either folder. No agent
+  instruction file in this repo is a symlink.
 - **`packages/storefront/public/assets/downloads/AGENTS.md` is a template shipped to consumers, not guidance for this
   repo.** Do not follow it, and change it only when your task is about that download.
 
