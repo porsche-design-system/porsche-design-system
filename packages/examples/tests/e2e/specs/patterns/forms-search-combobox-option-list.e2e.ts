@@ -146,12 +146,18 @@ test('submits the query with the Search button and the highlighted choice when t
   await expect(input).toHaveValue('Berlin');
 });
 
-test('announces when nothing matches', async ({ page }) => {
+test('announces the result count and when nothing matches', async ({ page }) => {
   await setupExamplePage(page, url);
+
+  await field(page).fill('stu');
+  await expect(page.locator('#dealer-search-status')).toHaveText('2 results available');
+
+  await field(page).fill('bochum');
+  await expect(page.locator('#dealer-search-status')).toHaveText('1 result available');
 
   await field(page).fill('zzz');
   await expect(page.locator('#dealer-search-empty')).toBeVisible();
-  await expect(page.locator('#dealer-search-status')).toHaveText('No results');
+  await expect(page.locator('#dealer-search-status')).toHaveText('No results found');
 
   await field(page).fill('');
   await expect(page.locator('#dealer-search-status')).toHaveText('');

@@ -229,7 +229,13 @@ const Page = () => (
             }
             list.hidden = visible === 0;
             empty.hidden = !query || visible > 0;
-            status.textContent = query && visible === 0 ? 'No results' : '';
+            status.textContent = !query
+              ? ''
+              : visible === 0
+                ? 'No results found'
+                : visible === 1
+                  ? '1 result available'
+                  : visible + ' results available';
             setOpen(query.length > 0);
           };
 
