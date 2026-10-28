@@ -632,7 +632,6 @@ img {
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -3604,7 +3603,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -5613,7 +5611,6 @@ exports[`should render dsr component for PDrilldown 1`] = `
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -6232,7 +6229,6 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -6415,7 +6411,6 @@ img:dir(rtl) {
 
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -9322,7 +9317,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -9861,7 +9855,6 @@ slot[name="header"] {
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -10847,7 +10840,6 @@ img {
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {

@@ -66,7 +66,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -153,7 +152,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -240,7 +238,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -327,7 +324,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -406,7 +402,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -488,7 +483,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -498,7 +492,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
     outline-color: Highlight;
   }
   .root::before {
-    box-shadow: inset 0 0 0 2px Highlight;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
   }
 }
 "
@@ -570,7 +565,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -659,7 +653,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -669,7 +662,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
     outline-color: Highlight;
   }
   .root::before {
-    box-shadow: inset 0 0 0 2px Highlight;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
   }
 }
 
@@ -751,7 +745,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -761,7 +754,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
     outline-color: Highlight;
   }
   .root::before {
-    box-shadow: inset 0 0 0 2px Highlight;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
   }
 }
 
@@ -841,7 +835,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -928,7 +921,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -1095,7 +1087,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -1319,7 +1310,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -1404,7 +1394,6 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -1475,7 +1464,6 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -1554,7 +1542,6 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
 }
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {
@@ -1663,7 +1650,6 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
 
 @media(forced-colors:active) {
   .root {
-    forced-color-adjust: none;
     color: LinkText;
   }
   .root:is(button) {

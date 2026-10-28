@@ -111,7 +111,6 @@ export const getLinkButtonPureStyles = (
         }))
       ),
       ...forcedColorsMediaQuery({
-        forcedColorAdjust: 'none',
         color: 'LinkText',
         '&:is(button)': {
           color: 'ButtonText',
@@ -133,7 +132,8 @@ export const getLinkButtonPureStyles = (
           backdropFilter: ref(blurFrosted),
           backgroundColor: ref(colorFrosted),
           ...forcedColorsMediaQuery({
-            boxShadow: 'inset 0 0 0 2px Highlight',
+            outline: '2px solid Highlight',
+            outlineOffset: '-2px',
           }),
         }),
       },
