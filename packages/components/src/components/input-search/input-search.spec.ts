@@ -1,5 +1,5 @@
 import { vi } from 'vitest';
-import * as a11yUtils from '../../utils/a11y/a11y';
+import * as syncAriaElementsUtils from '../../utils/a11y/sync-aria-elements';
 import * as implicitSubmitUtils from '../../utils/form/implicitSubmit';
 import { InputSearch } from './input-search';
 
@@ -42,7 +42,7 @@ describe('aria', () => {
     const component = initComponent();
     const list = document.createElement('ul');
     const option = document.createElement('li');
-    const syncAriaElementsSpy = vi.spyOn(a11yUtils, 'syncAriaElements');
+    const syncAriaElementsSpy = vi.spyOn(syncAriaElementsUtils, 'syncAriaElements');
     component.aria = { 'aria-controls': [list], 'aria-activedescendant': option };
 
     component.componentDidRender();
