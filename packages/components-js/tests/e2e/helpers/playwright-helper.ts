@@ -307,6 +307,13 @@ export const enableBrowserLogging = (page: Page): void => {
 export const waitForInputTransition = (_page: Page): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, 250));
 
+export const waitForImproveButtonHandlingForCustomElement = async (page: Page): Promise<void> => {
+  // `improveButtonHandlingForCustomElement` appends, clicks and removes its fake button inside a `setTimeout(…, 1)`
+  // scheduled on click, so polling for the fake button resolves before it was even appended. A timer scheduled
+  // afterwards with a later deadline only fires once that one has run.
+  await page.evaluate(() => new Promise<void>((resolve) => window.setTimeout(resolve, 10)));
+};
+
 export const hasFocus = (element: Locator): Promise<boolean> => element.evaluate((el) => document.activeElement === el);
 
 const consoleMessages: ConsoleMessage[] = [];

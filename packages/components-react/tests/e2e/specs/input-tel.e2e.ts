@@ -3,9 +3,10 @@ import {
   addEventListener,
   getEventSummary,
   getFormDataValue,
+  goto,
   setProperty,
-} from '../../../../components-js/tests/e2e/helpers';
-import { goto, waitForComponentsReady } from '../helpers';
+  waitForComponentsReady,
+} from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-input-tel');
 const getForm = (page: Page) => page.locator('form');
