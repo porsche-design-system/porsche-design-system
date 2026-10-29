@@ -196,10 +196,15 @@ Records live per file key, so nothing published under another key touches the li
    everything else is up, because nothing retries it before the next release. A template whose preview fails is
    previewed once more, so a Figma preview hiccup costs a failure message and a re-run only when it repeats; a preview
    or validation that does not reach Figma, like a pull that cannot read it, warns in a pull request and turns a publish
-   red. Rejected: gating publish on Figma matching code, which let one moved component block all 57; a green publish
-   that lists refused records in its log, where nobody saw them and nothing retried them; closed gaps in the log only,
-   where nobody saw them; a number of preview failures below which the run stays green, which lets a broken template
-   through with the hiccups.
+   red. A snippet Figma rendered that fails only the CLI's own Prettier check (`syntaxCheckOnly`) publishes with a
+   warning: preview renders a nested record in another label, an Angular binding inside JSX for instance
+   ([figma/code-connect#418](https://github.com/figma/code-connect/issues/418), still open), while Dev Mode renders it
+   in the snippet's own label. The unit tests run the same check on every template's own snippet instead. Rejected:
+   gating publish on Figma matching code, which let one moved component block all 57; a green publish that lists refused
+   records in its log, where nobody saw them and nothing retried them; closed gaps in the log only, where nobody saw
+   them; a number of preview failures below which the run stays green, which lets a broken template through with the
+   hiccups; refusing such a snippet, which kept Canvas's React record out of Dev Mode on every publish; templates with
+   `metadata: { nestable: false }`, which show every nested component as a pill instead of its code.
 6. **No issue, and Slack gets every open design line after each release and once a week, with nothing remembered between
    runs.** Code is the source of truth, so every line is a change design makes, a change back included when a designer
    altered what a release reads; code never follows Figma, apart from deleting an accepted gap Figma has closed. The
