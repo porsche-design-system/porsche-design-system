@@ -183,7 +183,7 @@ describe('syncAriaElements()', () => {
     expect(activeSetter).not.toHaveBeenCalled();
   });
 
-  it('should clear element reflection when the values are null, omitted, undefined or switched to string IDREFs', () => {
+  it('should clear element reflection when the values are null, omitted or undefined, and not overwrite string IDREFs with null', () => {
     const el = document.createElement('input');
     const list = document.createElement('ul');
     syncAriaElements(el, { 'aria-controls': list, 'aria-activedescendant': list });
@@ -201,10 +201,16 @@ describe('syncAriaElements()', () => {
     expect(reflected(el).ariaControlsElements).toBeNull();
     expect(reflected(el).ariaActiveDescendantElement).toBeNull();
 
-    syncAriaElements(el, { 'aria-controls': list, 'aria-activedescendant': list });
+    // Setting ariaControlsElements/ariaActiveDescendantElement to null in a real browser removes the content attribute,
+    // so string IDREFs must not assign null to the element reflection properties.
+    const controlsSetter = vi.fn();
+    Object.defineProperty(el, 'ariaControlsElements', {
+      configurable: true,
+      get: () => [],
+      set: controlsSetter,
+    });
     syncAriaElements(el, { 'aria-controls': 'results', 'aria-activedescendant': 'opt' });
-    expect(reflected(el).ariaControlsElements).toBeNull();
-    expect(reflected(el).ariaActiveDescendantElement).toBeNull();
+    expect(controlsSetter).not.toHaveBeenCalled();
   });
 
   it('should leave element reflection untouched when aria was never set', () => {

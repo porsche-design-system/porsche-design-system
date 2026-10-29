@@ -56,40 +56,66 @@ type ElementAriaReflection = Element & {
 const haveSameElements = (a: readonly Element[] | null | undefined, b: readonly Element[] | null): boolean =>
   a === b || (!!a && !!b && a.length === b.length && a.every((el, i) => el === b[i]));
 
-const ariaManagedElements = new WeakSet<Element>();
+type ReflectedAriaState = {
+  controls?: boolean;
+  activeDescendant?: boolean;
+};
+
+const reflectedAriaElements = new WeakMap<Element, ReflectedAriaState>();
 
 /**
  * Applies WAI-ARIA element reflection for `aria-controls` and `aria-activedescendant` when the `aria` prop carries an
- * element (or a list of elements, or `null`) instead of a string IDREF. String IDREFs stay on the content attribute.
+ * element (or a list of elements, or `null`) instead of a string IDREF. String IDREFs stay on the content attribute
+ * (setting `ariaControlsElements = null` or `ariaActiveDescendantElement = null` in browsers removes the content
+ * attribute, and `setAttribute` already resets element reflection natively).
  */
 export const syncAriaElements = (el: Element | undefined, rawAttributes: AriaAttributes | string | undefined): void => {
   if (!el) {
     return;
   }
-  if (rawAttributes === undefined) {
-    if (!ariaManagedElements.has(el)) {
-      return;
-    }
-    ariaManagedElements.delete(el);
-  } else {
-    ariaManagedElements.add(el);
-  }
 
   const aria = rawAttributes ? parseJSONAttribute(rawAttributes) : undefined;
-  const reflected = el as ElementAriaReflection;
+  const state = reflectedAriaElements.get(el);
+  if (!aria && !state) {
+    return;
+  }
 
-  const nextControls =
-    aria && 'aria-controls' in aria && typeof aria['aria-controls'] !== 'string'
-      ? toControlsElements(aria['aria-controls'])
-      : null;
-  if (!haveSameElements(reflected.ariaControlsElements ?? null, nextControls)) {
-    reflected.ariaControlsElements = nextControls;
+  const reflected = el as ElementAriaReflection;
+  const nextState: ReflectedAriaState = { ...state };
+
+  const controls = aria?.['aria-controls'];
+  if (typeof controls === 'string') {
+    nextState.controls = false;
+  } else {
+    const nextControls = toControlsElements(controls);
+    if (nextControls) {
+      if (!haveSameElements(reflected.ariaControlsElements, nextControls)) {
+        reflected.ariaControlsElements = nextControls;
+      }
+      nextState.controls = true;
+    } else if (state?.controls || (aria && 'aria-controls' in aria)) {
+      reflected.ariaControlsElements = null;
+      nextState.controls = false;
+    }
   }
 
   const active = aria?.['aria-activedescendant'];
-  const nextActive = isElement(active) ? active : null;
-  if ((reflected.ariaActiveDescendantElement ?? null) !== nextActive) {
-    reflected.ariaActiveDescendantElement = nextActive;
+  if (typeof active === 'string') {
+    nextState.activeDescendant = false;
+  } else if (isElement(active)) {
+    if (reflected.ariaActiveDescendantElement !== active) {
+      reflected.ariaActiveDescendantElement = active;
+    }
+    nextState.activeDescendant = true;
+  } else if (state?.activeDescendant || (aria && 'aria-activedescendant' in aria)) {
+    reflected.ariaActiveDescendantElement = null;
+    nextState.activeDescendant = false;
+  }
+
+  if (nextState.controls || nextState.activeDescendant) {
+    reflectedAriaElements.set(el, nextState);
+  } else {
+    reflectedAriaElements.delete(el);
   }
 };
 

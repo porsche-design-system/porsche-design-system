@@ -56,7 +56,7 @@ describe('aria', () => {
     expect(input.ariaActiveDescendantElement).toBe(option);
   });
 
-  it('should clear element reflection when aria-controls and aria-activedescendant are null, undefined or switched to string IDREFs', () => {
+  it('should clear element reflection when aria-controls and aria-activedescendant are null or undefined', () => {
     const component = initComponent();
     const list = document.createElement('ul');
     component.aria = { 'aria-controls': list, 'aria-activedescendant': list };
@@ -76,15 +76,6 @@ describe('aria', () => {
     component.componentDidRender();
 
     component.aria = undefined;
-    component.componentDidRender();
-
-    expect(input.ariaControlsElements).toBeNull();
-    expect(input.ariaActiveDescendantElement).toBeNull();
-
-    component.aria = { 'aria-controls': list, 'aria-activedescendant': list };
-    component.componentDidRender();
-
-    component.aria = { 'aria-controls': 'results', 'aria-activedescendant': 'opt' };
     component.componentDidRender();
 
     expect(input.ariaControlsElements).toBeNull();
