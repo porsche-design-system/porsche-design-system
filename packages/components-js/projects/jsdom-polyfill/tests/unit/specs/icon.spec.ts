@@ -1,6 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { screen } from '@porsche-design-system/components-js/testing';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {

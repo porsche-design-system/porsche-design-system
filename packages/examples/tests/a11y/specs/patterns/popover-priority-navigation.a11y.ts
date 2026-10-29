@@ -1,4 +1,4 @@
-import { schemes } from '@porsche-design-system/shared/testing';
+import { schemes } from '@porsche-design-system/testing';
 import {
   getDevice,
   getExampleUrl,

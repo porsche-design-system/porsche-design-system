@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import { playwrightConfigE2E } from '@porsche-design-system/shared/testing';
+import { playwrightConfigE2E } from '@porsche-design-system/testing';
 
 export default defineConfig({
   ...playwrightConfigE2E,

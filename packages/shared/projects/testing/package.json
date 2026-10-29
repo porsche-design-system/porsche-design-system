@@ -1,0 +1,50 @@
+{
+  "name": "@porsche-design-system/testing",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./assert-defined": {
+      "types": "./src/assertDefined.ts",
+      "default": "./src/assertDefined.ts"
+    },
+    "./axe": {
+      "types": "./src/axe.ts",
+      "default": "./src/axe.ts"
+    },
+    "./normalize-css-namespace": {
+      "types": "./src/normalizeCssNamespace.ts",
+      "default": "./src/normalizeCssNamespace.ts"
+    },
+    "./playwright": {
+      "types": "./src/playwright/index.ts",
+      "default": "./src/playwright/index.ts"
+    }
+  },
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "1.63.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "@types/node": "^26.6.3",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.2"
+  },
+  "peerDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "1.63.0"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

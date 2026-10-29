@@ -3,7 +3,7 @@ import type {
   CarouselAriaAttribute,
   SelectedAriaAttributes,
 } from '@porsche-design-system/components/dist/types/bundle';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementId,

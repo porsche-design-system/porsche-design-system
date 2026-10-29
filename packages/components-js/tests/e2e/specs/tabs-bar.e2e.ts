@@ -1,6 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import type { BreakpointCustomizable, TabsBarSize } from '@porsche-design-system/components';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,

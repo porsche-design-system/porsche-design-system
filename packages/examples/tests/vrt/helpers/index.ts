@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
-import { schemes } from '@porsche-design-system/shared/testing';
+import { schemes } from '@porsche-design-system/testing';
 import {
   getDevice,
   getExampleUrl,

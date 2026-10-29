@@ -188,7 +188,7 @@ which is forced to 1 like everywhere else in the monorepo. A spec reads its devi
 [`tests/helpers/device.ts`](tests/helpers/device.ts), never from the project name; the page setups leave the viewport
 alone, so a page is laid out on its device. Only a flow about resizing – the priority navigation – sets a width itself.
 
-The settings are still those of the shared base configs in `@porsche-design-system/shared/testing`; only the options
+The settings are still those of the shared base configs in `@porsche-design-system/testing`; only the options
 Playwright allows per project – test directory and match, timeouts, snapshot path, screenshot comparison, output
 directory – are taken per suite. The project names end in the engine because `prepare-vrt-snapshots` recognises output
 folders by that suffix. The `test:*` scripts select their projects, so the suites stay separate steps in CI with

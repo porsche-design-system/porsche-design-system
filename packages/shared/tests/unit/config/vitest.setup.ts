@@ -2,6 +2,6 @@
 // `TypeError: 'escape' called on an object that is not a valid instance of CSS.`
 // This package is built before `@porsche-design-system/components-js`, so it cannot use its
 // `jsdom-polyfill` sub-package and normalizes the namespace itself.
-import { normalizeCssNamespace } from '../../../src/testing/normalizeCssNamespace';
+import { normalizeCssNamespace } from '@porsche-design-system/testing/normalize-css-namespace';
 
 normalizeCssNamespace();

@@ -1,11 +1,12 @@
-import { type Page, expect , test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import {
   addEventListener,
   getEventSummary,
   getFormDataValue,
+  goto,
   setProperty,
-} from '../../../../components-js/tests/e2e/helpers';
-import { goto, waitForComponentsReady } from '../helpers';
+  waitForComponentsReady,
+} from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-input-url');
 const getForm = (page: Page) => page.locator('form');

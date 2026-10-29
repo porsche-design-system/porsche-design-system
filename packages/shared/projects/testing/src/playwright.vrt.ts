@@ -1,4 +1,4 @@
-import { type Config } from '@playwright/test';
+import type { Config } from '@playwright/test';
 
 export const themes = ['light', 'dark'] as const;
 export const schemes = ['light', 'dark'] as const;

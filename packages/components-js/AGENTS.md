@@ -100,13 +100,14 @@ is not a target: port the change to `packages/components-vue/src/pages/` by hand
   `test:unit:components-js:<sub-project>` scripts. `tests/unit/specs/chunks.spec.ts` reads
   `tests/unit/results/stats-raw.json`, which only the webpack build writes.
 - The e2e, VRT and a11y configs in `tests/{e2e,vrt,a11y}/config/` spread the base configs from
-  `@porsche-design-system/shared/testing` and start `npm run start-app`, which serves the built `dist/demo-app` on
+  `@porsche-design-system/testing` and start `npm run start-app`, which serves the built `dist/demo-app` on
   port 8575. Run `npm run build-app` after editing a page, or the suites test the previous build.
 - Shards: e2e runs `test:e2e:{chrome,firefox,safari}:N/4`, VRT `test:vrt:chrome:N/6` and `test:vrt:safari:N/3` (no
   Firefox), a11y Chrome only and unsharded. The layout exists three times: here, in the root
   `test:{e2e,vrt}:components-js:*` scripts and in the `.github/workflows/test.yml` matrix. Change all three together.
-- `tests/{e2e,vrt,a11y,smoke}` each have their own `playwright-helper.ts`, and the copies differ; a fix to one does not
-  reach the others.
+- `tests/{e2e,vrt,smoke}` each keep a `playwright-helper.ts` for the helpers only components-js uses; the ones other
+  packages use too come from `@porsche-design-system/testing`. The smoke `setContentWithDesignSystem` is a different
+  function from the e2e one of the same name.
 - Smoke tests load the live CDN, so they run in `.github/workflows/deploy.yml` after the upload. The smoke e2e config
   sends a real Chrome user agent and `sec-ch-ua` because `cdn.ui.porsche.cn` answers `HeadlessChrome` with a 403 and no
   CORS headers. Keep the override.

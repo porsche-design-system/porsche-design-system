@@ -1,6 +1,6 @@
 // Must run before every other polyfill: `@oddbird/popover-polyfill` calls `CSS.escape` while applying its
 // styles, and the Stencil loader at the bottom of this file pulls in jss, which caches `CSS.escape` unbound.
-// See packages/shared/src/testing/normalizeCssNamespace.ts for why jsdom needs this and
+// See packages/shared/projects/testing/src/normalizeCssNamespace.ts for why jsdom needs this and
 // ./normalizeCssNamespace.js for why it is required through a local module.
 require('./normalizeCssNamespace').normalizeCssNamespace();
 

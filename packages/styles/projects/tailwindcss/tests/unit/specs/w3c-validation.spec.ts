@@ -5,7 +5,7 @@ import {
   type W3CValidationMessage,
   formatW3CMessages,
   validateCssWithW3C,
-} from '@porsche-design-system/shared/testing';
+} from '@porsche-design-system/testing';
 
 const distDir = path.resolve(__dirname, '../../../dist');
 

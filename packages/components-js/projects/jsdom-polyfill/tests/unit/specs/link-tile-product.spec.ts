@@ -1,5 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import { getMarkup } from '../helper';
 import userEvent from '@testing-library/user-event';
 import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';

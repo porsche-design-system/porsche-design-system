@@ -51,6 +51,7 @@
     "@porsche-design-system/components": "4.10.1",
     "@porsche-design-system/components-js": "4.10.1",
     "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/testing": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.6.3",

@@ -1,5 +1,4 @@
-import { AxeBuilder } from '@axe-core/playwright';
-import { test as base } from '@playwright/test';
+import { createAxeTest } from '@porsche-design-system/testing/axe';
 
 /**
  * A consistently configured `AxeBuilder` for the example pages.
@@ -13,18 +12,6 @@ import { test as base } from '@playwright/test';
  * `best-practice` is therefore part of the tag list, not just the WCAG tags. If a rule ever has to be switched off
  * for one page, disable it on that page with a comment saying why, rather than widening this fixture.
  */
-
-type AxeFixture = {
-  makeAxeBuilder: () => AxeBuilder;
-};
-
-export const test = base.extend<AxeFixture>({
-  makeAxeBuilder: async ({ page }, use) => {
-    const makeAxeBuilder = () =>
-      new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice']);
-
-    await use(makeAxeBuilder);
-  },
-});
+export const test = createAxeTest();
 
 export { expect } from '@playwright/test';
