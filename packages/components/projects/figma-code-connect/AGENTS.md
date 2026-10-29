@@ -56,4 +56,5 @@ generator deletes an entry once Figma has the property or the prop is gone; dele
 that property after all. While the file still lists such an entry, the pull request's dry run is red: commit its
 artifact `accepted-gaps.json` in place of `figma/accepted-gaps.json`, or run `npm run figma:generate` and commit the
 file it rewrote, then step 5: a deleted `component-set` entry adds that component's templates and a deleted `name=`
-entry changes the icon batches.
+entry changes the icon batches. Or wait: every Monday the `accepted-gaps` job on `main` hands the corrected file to the
+Copilot coding agent, whose pull request does the same.
