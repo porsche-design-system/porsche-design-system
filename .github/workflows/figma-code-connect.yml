@@ -24,6 +24,9 @@ on:
       SLACK_DESIGN_CHANNEL_ID:
         description: 'Slack channel that gets the changes design must make in Figma. Not needed to publish.'
         required: false
+      GH_COPILOT_AGENT_TOKEN:
+        description: 'User token that opens the accepted-gaps issue for Copilot. Not needed to publish.'
+        required: false
   schedule:
     - cron: '0 6 * * 1' # Mondays: the latest release against the library as it is now; design gets every open line
   workflow_dispatch:
@@ -106,6 +109,87 @@ jobs:
         with:
           path: packages/components/projects/figma-code-connect/figma/accepted-gaps.json
           archive: false
+
+  # Weekly and on a dispatch without `publish`, on main: when Figma has closed an accepted gap, hand the corrected file
+  # to the Copilot coding agent, which commits it with the snapshots and opens the pull request. GitHub signs its
+  # commits, which main requires; a commit made here with git would be unsigned. The agent has no Figma token, so the
+  # file goes in the issue. Never in a release's run, which does not carry the token.
+  accepted-gaps:
+    name: 'Accepted Gaps'
+    if: >-
+      vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.ref == 'refs/heads/main' && !inputs.publish
+      && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      # figma:generate imports @porsche-design-system/component-meta, whose dist/ is gitignored.
+      - run: npm run build:core-dependencies
+
+      # Exit 2 is a Figma outage: a warning, and the next run checks again.
+      - name: 'figma:generate'
+        id: generate
+        shell: bash
+        run: |
+          set +e
+          npm run figma:generate --workspace=@porsche-design-system/figma-code-connect
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" = 2 ]; then
+            echo "::warning title=Figma Code Connect::Figma could not be read, so the accepted gaps were not checked"
+            exit 0
+          fi
+          exit "$code"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      - name: 'Accepted gaps up to date?'
+        id: gaps
+        if: steps.generate.outputs.code == '0'
+        shell: bash
+        run: |
+          file=packages/components/projects/figma-code-connect/figma/accepted-gaps.json
+          if git diff --quiet -- "$file"; then echo "figma/accepted-gaps.json accepts no closed gap"; exit 0; fi
+          git diff -- "$file"
+          echo "stale=true" >> "$GITHUB_OUTPUT"
+
+      # One open issue at a time: while Copilot is on one, a later run adds nothing. The issue is created unassigned,
+      # its number patched into the body, then assigned: assigning `@copilot` is what starts the agent, and it needs a
+      # user token (weekly-dependency-agent.yml explains why GITHUB_TOKEN cannot).
+      - name: 'Open the task issue for the Copilot coding agent'
+        if: steps.gaps.outputs.stale == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GH_COPILOT_AGENT_TOKEN }}
+        run: |
+          label=figma-accepted-gaps
+          gh label create "$label" --description 'Accepted gaps Figma has closed' --color 'a2eeef' 2>/dev/null || true
+          if [ -n "$(gh issue list --label "$label" --state open --json number --jq '.[0].number')" ]; then
+            echo "an issue is already open"; exit 0
+          fi
+          file=packages/components/projects/figma-code-connect/figma/accepted-gaps.json
+          {
+            echo "Figma now carries properties that \`$file\` still accepts as gaps. Replace that file with the content below, byte for byte:"
+            echo
+            echo '```json'
+            cat "$file"
+            echo '```'
+            echo
+            echo 'Then, from the repository root, run `npm run build:core-dependencies`, then `npm run test:unit --workspace=@porsche-design-system/figma-code-connect -- --run -u`, and commit the file together with what changed under `packages/components/projects/figma-code-connect/tests/unit/specs/__snapshots__/`. Change nothing else.'
+            echo
+            echo 'Deliver one pull request against the default branch with `Closes #__ISSUE_NUMBER__` in its description.'
+          } > issue-body.md
+          ISSUE_URL=
+          ISSUE_URL="$(gh issue create --title 'chore(figma-code-connect): drop the gaps design closed' --label "$label" --body-file issue-body.md)"
+          if [ -z "$ISSUE_URL" ]; then
+            echo "::error::gh issue create returned an empty URL" >&2
+            exit 1
+          fi
+          number="${ISSUE_URL##*/}"
+          sed -i "s/__ISSUE_NUMBER__/${number}/g" issue-body.md
+          gh issue edit "$number" --body-file issue-body.md --add-assignee '@copilot'
+          echo "opened $ISSUE_URL"
 
   # After a release, weekly and on dispatch: every open line, what design has to change in Figma for the latest release,
   # so a line comes again each week until design makes the change, and a designer's change to what a release reads
