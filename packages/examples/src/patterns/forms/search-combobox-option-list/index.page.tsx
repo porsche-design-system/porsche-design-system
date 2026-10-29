@@ -275,7 +275,7 @@ const Page = () => (
           });
 
           search.addEventListener('keydown', (event) => {
-            if (event.isComposing) {
+            if (event.isComposing || event.target !== search) {
               return;
             }
             if (event.key === 'Escape' && popover.open) {
