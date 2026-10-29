@@ -1,0 +1,8 @@
+---
+description: Points to the AGENTS.md for files under packages/component-meta/
+globs: packages/component-meta/**
+alwaysApply: false
+---
+
+Files under `packages/component-meta/` follow @packages/component-meta/AGENTS.md. If it is not in your context, read it
+before you answer about or edit these files, and follow it.
