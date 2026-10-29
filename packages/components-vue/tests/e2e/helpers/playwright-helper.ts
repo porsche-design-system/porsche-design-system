@@ -1,13 +1,8 @@
 import type { ConsoleMessage, Page } from '@playwright/test';
-import { waitForComponentsReady } from './stencil';
+import { goto as gotoAndWait } from '@porsche-design-system/testing/playwright';
 
-export const goto = async (page: Page, url: string): Promise<void> => {
-  await page.goto(url);
-  await waitForComponentsReady(page);
-
-  // it looks like vue event binding is a bit unreliable and happens after onMounted
-  await new Promise((resolve) => setTimeout(resolve, 100));
-};
+// it looks like vue event binding is a bit unreliable and happens after onMounted
+export const goto = (page: Page, url: string): Promise<void> => gotoAndWait(page, url, { delayAfterReady: 100 });
 
 const consoleMessages: ConsoleMessage[] = [];
 

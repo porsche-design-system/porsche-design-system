@@ -1,10 +1,4 @@
 import { type ConsoleMessage, type Page } from '@playwright/test';
-import { waitForComponentsReady } from './stencil';
-
-export const goto = async (page: Page, url: string): Promise<void> => {
-  await page.goto(url);
-  await waitForComponentsReady(page);
-};
 
 const consoleMessages: ConsoleMessage[] = [];
 
