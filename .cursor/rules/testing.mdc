@@ -1,0 +1,8 @@
+---
+description: Points to the AGENTS.md for files under packages/shared/projects/testing/
+globs: packages/shared/projects/testing/**
+alwaysApply: false
+---
+
+Files under `packages/shared/projects/testing/` follow @packages/shared/projects/testing/AGENTS.md. If it is not in your
+context, read it before you answer about or edit these files, and follow it.
