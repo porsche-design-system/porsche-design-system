@@ -1,0 +1,199 @@
+name: 'Figma Code Connect'
+
+# Generates the Code Connect templates from component-meta, tells design what to change in Figma and publishes the
+# records of the latest release, without gating a merge or a release. release.yml calls it after a release, to publish
+# and send the design lines; the weekly run and a dispatch send them too, and a dispatch with `publish` also republishes;
+# all read the latest release, never main. On a pull request Contribution calls it after the deploy, for a dry run:
+# everything but the upload. Rationale, secrets and exit codes: docs/figma-code-connect.md.
+
+on:
+  workflow_call:
+    inputs:
+      publish:
+        description: 'Publish the latest release and send its design lines; release.yml sets it.'
+        type: boolean
+        default: false
+    # named like the repository secrets, so `secrets.*` below reads the same under every trigger
+    secrets:
+      FIGMA_ACCESS_TOKEN:
+        description: 'Figma token that pulls the library and publishes the Code Connect records.'
+        required: true
+      SLACK_BOT_TOKEN:
+        description: 'Slack bot token shared by all notifications. Not needed to publish.'
+        required: false
+      SLACK_DESIGN_CHANNEL_ID:
+        description: 'Slack channel that gets the changes design must make in Figma. Not needed to publish.'
+        required: false
+  schedule:
+    - cron: '0 6 * * 1' # Mondays: the latest release against the library as it is now; design gets every open line
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Also republish the latest release, as a release does.'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  # Pull requests only, which Contribution calls after their deploy. The deploy already skips forks and bot-authored
+  # pull requests, so the token reaches neither. Outside the publish's concurrency group, there, pending runs cancel
+  # each other.
+  dry-run:
+    name: 'Dry Run'
+    if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      # figma:generate imports @porsche-design-system/component-meta, built by this run's build stage.
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+
+      # Exit 2 is a Figma outage, no fault of this pull request: a warning, and nothing is checked against Figma.
+      - name: 'figma:generate'
+        id: generate
+        shell: bash
+        run: |
+          set +e
+          npm run figma:generate --workspace=@porsche-design-system/figma-code-connect
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" = 2 ]; then
+            echo "::warning title=Figma Code Connect::Figma could not be read, so this pull request was not checked against it"
+            exit 0
+          fi
+          exit "$code"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # Figma's preview and node validation of every record, as figma:publish runs them, without the upload. Exit 2 is a
+      # Figma outage here too, in the second pull, a preview or the validation: a warning.
+      - name: 'figma:publish:dry'
+        if: steps.generate.outputs.code == '0'
+        shell: bash
+        run: |
+          set +e
+          npm run figma:publish:dry --workspace=@porsche-design-system/figma-code-connect
+          code=$?
+          if [ "$code" = 2 ]; then
+            echo "::warning title=Figma Code Connect::Figma could not be reached, so not every record of this pull request was checked against it"
+            exit 0
+          fi
+          exit "$code"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # figma:generate rewrote figma/accepted-gaps.json without the gaps Figma has closed. A closed gap left in the file
+      # would accept that gap again, unseen, so it is red, and the rewritten file is the artifact to commit.
+      - name: 'Accepted gaps up to date?'
+        id: gaps
+        if: always() && steps.generate.outputs.code == '0'
+        shell: bash
+        run: |
+          file=packages/components/projects/figma-code-connect/figma/accepted-gaps.json
+          if git diff --quiet -- "$file"; then echo "figma/accepted-gaps.json accepts no closed gap"; exit 0; fi
+          git diff -- "$file"
+          echo "stale=true" >> "$GITHUB_OUTPUT"
+          echo "::error title=Figma Code Connect::figma/accepted-gaps.json accepts gaps Figma has closed: commit the artifact accepted-gaps.json in its place, or run npm run figma:generate"
+          exit 1
+      - uses: actions/upload-artifact@v7
+        if: always() && steps.gaps.outputs.stale == 'true'
+        with:
+          path: packages/components/projects/figma-code-connect/figma/accepted-gaps.json
+          archive: false
+
+  # After a release, weekly and on dispatch: every open line, what design has to change in Figma for the latest release,
+  # so a line comes again each week until design makes the change, and a designer's change to what a release reads
+  # reaches design within the week. Never for main: a line design acted on before the release would drop a renamed or
+  # deleted prop from the released records until that release.
+  design-lines:
+    name: 'Design Lines'
+    if: >-
+      vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.ref == 'refs/heads/main'
+      && (inputs.publish || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      # The highest stable tag, as publish reads it, so a re-run of an older release sends the newest one's lines.
+      - name: 'Latest release'
+        id: release
+        shell: bash
+        run: |
+          tag=$(git ls-remote --tags --refs "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" 'v*' | sed 's|.*refs/tags/||' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "design lines of $tag"
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.release.outputs.tag }}
+      - uses: ./.github/actions/install
+      # figma:generate imports @porsche-design-system/component-meta, whose dist/ is gitignored.
+      - run: npm run build:core-dependencies
+
+      # The design lines it prints go to Slack.
+      - name: 'figma:generate'
+        id: generate
+        shell: bash
+        run: npm run figma:generate --workspace=@porsche-design-system/figma-code-connect 2>&1 | tee "$RUNNER_TEMP/generate.log"
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      - name: 'Notify design'
+        if: steps.generate.outcome == 'success'
+        uses: ./.github/actions/notify-slack-figma-change
+        with:
+          slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ secrets.SLACK_DESIGN_CHANNEL_ID }}
+
+  # After a release, once release.yml has its docs up, and on a dispatch with `publish`; main only, as the dispatch
+  # reads the workflow from there. Every publish uploads every record of the latest release, so Dev Mode shows what npm
+  # ships, never main's unreleased templates.
+  publish:
+    name: 'Publish'
+    if: vars.FIGMA_CODE_CONNECT_ENABLED == 'true' && github.ref == 'refs/heads/main' && inputs.publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    # Never cancel a run in progress: publish uploads one label config after another, so a cancelled run mixes releases.
+    # On the job, not the workflow: GitHub documents concurrency for a called workflow at the job level.
+    concurrency:
+      group: figma-code-connect-publish
+      cancel-in-progress: false
+    steps:
+      # The highest stable tag, so a re-run of an older release publishes the newest one; a maintenance branch's tags
+      # sort below the current major's.
+      - name: 'Latest release'
+        id: release
+        shell: bash
+        run: |
+          tag=$(git ls-remote --tags --refs "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" 'v*' | sed 's|.*refs/tags/||' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "publishing $tag"
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.release.outputs.tag }}
+      - uses: ./.github/actions/install
+      # figma:generate imports @porsche-design-system/component-meta, whose dist/ is gitignored.
+      - run: npm run build:core-dependencies
+
+      # The design-lines job sends the lines, so publish skips the history that only rewords them.
+      - name: 'figma:generate'
+        run: npm run figma:generate --workspace=@porsche-design-system/figma-code-connect -- --no-history
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      # A record Figma refuses keeps its previous version and turns the step red once everything else is up.
+      - name: 'figma:publish'
+        run: npm run figma:publish --workspace=@porsche-design-system/figma-code-connect
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: code-connect-generated
+          path: packages/components/projects/figma-code-connect/generated
+          if-no-files-found: ignore

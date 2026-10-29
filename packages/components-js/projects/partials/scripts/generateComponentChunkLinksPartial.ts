@@ -13,9 +13,9 @@ type GetComponentChunkLinksOptions = {
 };`;
 
   const func = `export function getComponentChunkLinks(opts: GetComponentChunkLinksOptions & { format: 'js' }): PartialLink[];
-export function getComponentChunkLinks(opts: GetComponentChunkLinksOptions & { format: 'jsx' }): JSX.Element;
+export function getComponentChunkLinks(opts: GetComponentChunkLinksOptions & { format: 'jsx' }): JSXElement;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string;
-export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string | JSX.Element | PartialLink[] {
+export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string | JSXElement | PartialLink[] {
   const { components, cdn, format }: GetComponentChunkLinksOptions = {
     components: [],
     cdn: 'auto',

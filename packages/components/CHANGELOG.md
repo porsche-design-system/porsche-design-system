@@ -14,6 +14,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- **Angular**: `@angular/forms` is now a peer dependency, because the form components import it
+  ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+
+### Fixed
+
+- **Partials**: type checking failed with `Cannot find module 'react'` in projects without React and with `skipLibCheck`
+  disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+
+## [4.10.1] - 2026-10-23
+
+### Fixed
+
+- **TypeScript**: type checking failed with `Cannot find module '@porsche-design-system/components-manager-core'` in
+  projects with `skipLibCheck` disabled, since v4.7.0
+  ([#4808](https://github.com/porsche-design-system/porsche-design-system/pull/4808))
+
+## [4.10.0] - 2026-10-22
+
+## [4.10.0-rc.0] - 2026-10-22
+
+### Added
+
+- Figma Code Connect: Figma Dev Mode and the Figma MCP server show PDS code (Web Components, React, Angular, Vue) for
+  the components and icons of the Porsche Web Design System library, published with every release
+  ([#4747](https://github.com/porsche-design-system/porsche-design-system/pull/4747))
+
 ## [4.9.0] - 2026-10-21
 
 ## [4.9.0-rc.0] - 2026-10-20

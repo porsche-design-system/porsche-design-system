@@ -66,6 +66,10 @@ commit with the major base path (`/v4/`). Both URLs have their own Algolia index
 invalidation. Separate Algolia jobs index the pinned and major storefronts after deployment; the release announcement
 waits for both indexing outcomes.
 
+After the pinned storefront, the `figma-code-connect` job publishes the release's Code Connect records to Figma, whose
+snippets link that storefront ([`docs/figma-code-connect.md`](figma-code-connect.md)). No job needs it; if it fails, use
+**Re-run failed jobs** or dispatch **Figma Code Connect**.
+
 The major comes from the package version, not the branch. Only a stable release commit can update a major URL. Ordinary
 commits that retain an already-published package version, release candidates and older release reruns cannot replace it.
 Major promotions share a concurrency group across main and maintenance branches; after acquiring the lock they resolve
@@ -125,15 +129,15 @@ promote itself.
 ### Communicate
 
 Nothing to do by hand. The `notify-release` job in `.github/workflows/release.yml` announces the release in the public
-Porsche Design System Slack channel after the GitHub Release and both documentation URLs are ready, built from the
-release notes themselves rather than from the changelog, so the two cannot disagree.
+Porsche Design System Slack channel after the GitHub Release and both documentation URLs are ready and the Figma Code
+Connect publish has finished, built from the release notes themselves rather than from the changelog, so the two cannot
+disagree.
 
 Only stable releases are announced, and only when the run actually created a release — a pre-release, or a re-run of a
 job whose release already existed, posts nothing. Prefer **Re-run failed jobs** to preserve the original successful
 release-creation output when recovering a documentation failure. If all jobs were rerun and the announcement was
 therefore skipped, use **Notify Release Published** after the documentation is ready. See
-[`docs/runbooks/slack-notifications.md`](runbooks/slack-notifications.md) for the message, the Slack side and how to
-change either.
+[`docs/slack-notifications.md`](slack-notifications.md) for the message, the Slack side and how to change either.
 
 ## GitHub Releases
 

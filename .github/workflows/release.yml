@@ -38,6 +38,12 @@ on:
       slack-release-channel-id:
         description: 'Slack channel the release announcement is posted to. A secret rather than a literal so the channel can be changed without a pull request.'
         required: false
+      figma-access-token:
+        description: 'Figma token that publishes the Code Connect records. Not required: a missing secret must not stop a release, it fails the Figma Code Connect job instead.'
+        required: false
+      slack-design-channel-id:
+        description: 'Slack channel that gets the changes design must make in Figma for the release. Not required: a missing secret must not stop a release, it fails the Figma Code Connect job instead when there is a change to send.'
+        required: false
 
 # Default to the least privilege; jobs that need more declare it explicitly.
 permissions:
@@ -252,8 +258,8 @@ jobs:
       - github-release
       - storefront-exact-version
       - storefront-major-version
-      - storefront-exact-version-algolia
-      - storefront-major-version-algolia
+      # Waited for, never required: the announcement follows the Code Connect publish, whatever its result.
+      - figma-code-connect
     # A pre-release, an already-released tag and a draft all report false, and a failed
     # `github-release` leaves this empty.
     # A successful major job may intentionally leave a newer release in place.
@@ -262,8 +268,6 @@ jobs:
       && needs.github-release.outputs.created == 'true'
       && (needs.storefront-exact-version.result == 'success' || needs.storefront-exact-version.result == 'skipped')
       && needs.storefront-major-version.result == 'success'
-      && needs.storefront-exact-version-algolia.result == 'success'
-      && needs.storefront-major-version-algolia.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: read # read the release being announced
@@ -275,6 +279,23 @@ jobs:
           tag: v${{ needs.check-publication-status.outputs.components-version }}
           slack-bot-token: ${{ secrets.slack-bot-token }}
           slack-channel-id: ${{ secrets.slack-release-channel-id }}
+  figma-code-connect:
+    name: 'Figma Code Connect'
+    needs:
+      - github-release
+      - storefront-exact-version
+    if: >-
+      !cancelled()
+      && github.ref == 'refs/heads/main'
+      && needs.github-release.outputs.created == 'true'
+      && (needs.storefront-exact-version.result == 'success' || needs.storefront-exact-version.result == 'skipped')
+    uses: ./.github/workflows/figma-code-connect.yml
+    with:
+      publish: true
+    secrets:
+      FIGMA_ACCESS_TOKEN: ${{ secrets.figma-access-token }}
+      SLACK_BOT_TOKEN: ${{ secrets.slack-bot-token }}
+      SLACK_DESIGN_CHANNEL_ID: ${{ secrets.slack-design-channel-id }}
   storefront-exact-version:
     name: 'Storefront (/v<major>.<minor>.<patch>)'
     needs: check-publication-status

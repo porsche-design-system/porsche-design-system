@@ -46,10 +46,11 @@ packages/styles/
 └── tests/vrt/                 # Visual regression tests
 ```
 
-Each project follows a shared `meta/` (the documented catalog, single source of truth) + `scripts/` (build) layout. All
-four projects (`scss`, `tailwindcss`, `emotion`, `vanilla-extract`) ship a pure `skill/skill.ts` serializer that turns
-their meta into markdown for the docs/LLM skill. The storefront skill generator imports these serializers directly; the
-style package builds do not write separate skill artifacts. Each serializer is snapshot-tested in its own package. This
+Each project keeps its documented catalog in source (`emotionMeta/`, `vanillaExtractMeta/`, or `src/meta.ts` for scss
+and tailwindcss) and has a `scripts/` (build) folder; `meta/` is git-ignored build output, never edit it. All four
+projects (`scss`, `tailwindcss`, `emotion`, `vanilla-extract`) ship a pure `skill/skill.ts` serializer that turns their
+meta into markdown for the docs/LLM skill. The storefront skill generator imports these serializers directly; the style
+package builds do not write separate skill artifacts. Each serializer is snapshot-tested in its own package. This
 mirrors [`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). For `emotion` and
 `vanilla-extract` the JS `src/` stays the source of truth and the serializer reads the descriptive `*Meta` catalog
 (`emotionMeta`/`vanillaExtractMeta`); for `scss`/`tailwindcss` the meta itself is the source of truth.
@@ -71,7 +72,6 @@ npm run test:vrt:styles
 
 - Treat `projects/*` as the source of truth for the style packages.
 - Treat root `src/` as the demo application and preview surface, not the library output.
-- Do not edit generated `dist/` output.
 - When possible, make changes in the relevant style target package rather than patching the demo only.
 - Keep naming and token usage aligned across style targets unless a package intentionally exposes a target-specific API.
 - Deprecation metadata uses one contract, from `@porsche-design-system/shared/deprecation`: the `Deprecation` marker
