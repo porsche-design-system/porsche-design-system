@@ -1,4 +1,4 @@
-import type { ConsoleMessage, Locator, Page } from '@playwright/test';
+import type { ConsoleMessage, Page } from '@playwright/test';
 
 export const waitForComponentsReady = (page: Page): Promise<number> => {
   // componentsReady is exposed via index.tsx of React vrt app
@@ -32,8 +32,4 @@ export const getConsoleErrorsAmount = (): number => {
 };
 export const getConsoleWarningsAmount = (): number => {
   return consoleMessages.filter((x: ConsoleMessage): boolean => x.type() === 'warning').length;
-};
-
-export const getAttribute = (element: Locator, attribute: string): Promise<string | null> => {
-  return element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 };

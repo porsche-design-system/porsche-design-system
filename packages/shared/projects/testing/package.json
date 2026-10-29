@@ -16,6 +16,10 @@
     "./normalize-css-namespace": {
       "types": "./src/normalizeCssNamespace.ts",
       "default": "./src/normalizeCssNamespace.ts"
+    },
+    "./playwright": {
+      "types": "./src/playwright/index.ts",
+      "default": "./src/playwright/index.ts"
     }
   },
   "types": "./src/index.ts",
