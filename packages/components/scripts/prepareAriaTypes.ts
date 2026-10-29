@@ -1,5 +1,5 @@
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
 
 const prepareAriaTypes = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -14,7 +14,15 @@ const prepareAriaTypes = (): void => {
       '  /** All the WAI-ARIA 1.1 role attribute values from https://w3.org/TR/wai-aria-1.1/#role_definitions */\n  role?: AriaRole;\n}'
     )
     .replace(/ {8}/g, '  ')
-    .replace(/ {4}/g, '')};`;
+    .replace(/ {4}/g, '')
+    .replace(
+      '"aria-activedescendant"?: string | undefined;',
+      '"aria-activedescendant"?: string | Element | null | undefined;'
+    )
+    .replace(
+      '"aria-controls"?: string | undefined;',
+      '"aria-controls"?: string | Element | readonly Element[] | null | undefined;'
+    )};`;
   const ariaRoleTypes = `export ${ariaRoleRawTypes.replace(/ {8}/g, '  ').replace(/\n {2,}\| \(string & \{}\)/g, '')};`;
   const content = [
     '/* Auto Generated Below */\n/* eslint-disable @typescript-eslint/quotes */',

@@ -41,11 +41,10 @@ export const meta: ExampleMeta = {
  *
  * The results are links, so the panel is a dialog rather than a listbox: choosing one navigates, which a listbox option
  * must not do. `arrow="false"` drops the arrow and the offset it would add, and the script matches the panel width to the
- * field. The script sets `role="combobox"`, `aria-autocomplete="list"`, `aria-haspopup="dialog"` and `aria-expanded`
- * through the `aria` prop. A string `aria-controls` cannot be resolved from inside the input's shadow tree, and
- * `p-input-search` does not expose element-reference ARIA properties on its public API yet, so as a workaround the
- * script reaches into `shadowRoot` to point `ariaControlsElements` at the dialog and `ariaActiveDescendantElement` at
- * the highlighted link. `p-input-search` already emits `input`, and `focusin` bubbles out of the inner field.
+ * field. The script sets `role="combobox"`, `aria-autocomplete="list"`, `aria-haspopup="dialog"`, `aria-expanded`, and
+ * element references for `aria-controls` and `aria-activedescendant` through the `aria` prop. Element references cross
+ * the input's shadow boundary; a string id would not. `p-input-search` already emits `input`, and `focusin` bubbles out
+ * of the inner field.
  */
 const Page = () => (
   <PatternPage meta={meta}>
@@ -122,15 +121,6 @@ const Page = () => (
           let activeIndex = -1;
           let dismissed = false;
 
-          // Workaround: p-input-search does not expose ariaControlsElements or ariaActiveDescendantElement on its
-          // public API yet, and a string id in aria-controls or aria-activedescendant never resolves across the
-          // shadow boundary. Reaching into shadowRoot to set the element references on the inner input exposes
-          // both relationships in the accessibility tree.
-          const input = search.shadowRoot && search.shadowRoot.querySelector('input');
-          if (input) {
-            input.ariaControlsElements = [dialog];
-          }
-
           const links = () => Array.from(list.querySelectorAll('a'));
 
           const visibleLinks = () => links().filter((link) => !link.closest('li').hidden);
@@ -145,19 +135,18 @@ const Page = () => (
             if (active) {
               active.scrollIntoView({ block: 'nearest' });
             }
-            if (input) {
-              input.ariaActiveDescendantElement = active;
-            }
-          };
-
-          const setOpen = (open) => {
-            popover.open = open;
             search.aria = {
               role: 'combobox',
               'aria-autocomplete': 'list',
               'aria-haspopup': 'dialog',
-              'aria-expanded': open,
+              'aria-expanded': popover.open,
+              'aria-controls': dialog,
+              'aria-activedescendant': active,
             };
+          };
+
+          const setOpen = (open) => {
+            popover.open = open;
             if (!open) {
               status.textContent = '';
             }

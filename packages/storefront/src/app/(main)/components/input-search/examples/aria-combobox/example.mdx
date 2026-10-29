@@ -12,3 +12,8 @@ writes the highlighted option into the field.
 The [search combobox link list](/patterns/forms#search-combobox-link-list) pattern uses the same field when a match is a
 page of its own, also demonstrated with a dealer search integration example. The results stay real links inside a
 dialog, the arrow keys move a highlight, and Enter or a click opens the highlighted page.
+
+Both patterns pass the controlled region and the highlighted item as elements on the `aria` prop
+(`'aria-controls': listOrDialog`, `'aria-activedescendant': activeElement`). A string id would not resolve from inside
+the input's shadow tree; the element reference sets `ariaControlsElements` and `ariaActiveDescendantElement` on the
+native `<input>`.

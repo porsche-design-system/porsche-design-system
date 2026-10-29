@@ -14,9 +14,8 @@ const field = (page: Page) => page.locator('#dealer-search input');
 /**
  * Ids a combobox relationship in the browser accessibility tree.
  *
- * String `aria-controls` and `aria-activedescendant` cannot name elements from inside the field's shadow tree. The
- * page sets the element references instead, and this reads the relationship the tree actually exposes. CDP is
- * Chromium-only.
+ * The page passes element references for `aria-controls` and `aria-activedescendant` through the `aria` prop. This
+ * reads the relationship the tree actually exposes. CDP is Chromium-only.
  */
 const relationshipIds = async (page: Page, name: 'controls' | 'activedescendant'): Promise<string[]> => {
   const client = await page.context().newCDPSession(page);

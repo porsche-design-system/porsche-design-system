@@ -13,15 +13,16 @@
 Use the `aria` property to pass supported attributes to the **native `<input>` inside the shadow DOM**, for example when
 you implement a combobox-style pattern (search field + suggestion list).
 
-| ARIA                | Usage                                                                                                                 |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `role`              | Overrides the implicit role when needed (e.g. `combobox` for an autocomplete pattern alongside a separate listbox).   |
-| `aria-autocomplete` | Indicates whether and how the component predicts text (`none`, `inline`, `list`, `both`).                             |
-| `aria-controls`     | Identifies the element(s) whose contents or presence are controlled by the input (e.g. the suggestion list’s id).     |
-| `aria-expanded`     | Indicates whether the suggestion popup or related surface is expanded or collapsed.                                   |
-| `aria-haspopup`     | Indicates that activating the input triggers a popup (e.g. `listbox`, `dialog`).                                      |
-| `aria-label`        | Defines an accessible name when the visible label is insufficient or hidden; prefer a visible `label` for most cases. |
-| `aria-description`  | Provides additional context for assistive technologies without replacing the accessible name.                         |
+| ARIA                    | Usage                                                                                                                                                                                        |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `role`                  | Overrides the implicit role when needed (e.g. `combobox` for an autocomplete pattern alongside a separate listbox).                                                                          |
+| `aria-autocomplete`     | Indicates whether and how the component predicts text (`none`, `inline`, `list`, `both`).                                                                                                    |
+| `aria-activedescendant` | Identifies the currently highlighted suggestion. Pass the element itself when it lives outside the shadow tree.                                                                              |
+| `aria-controls`         | Identifies the element(s) whose contents or presence are controlled by the input (e.g. the suggestion list). Pass the element, or a list of elements, when it lives outside the shadow tree. |
+| `aria-expanded`         | Indicates whether the suggestion popup or related surface is expanded or collapsed.                                                                                                          |
+| `aria-haspopup`         | Indicates that activating the input triggers a popup (e.g. `listbox`, `dialog`).                                                                                                             |
+| `aria-label`            | Defines an accessible name when the visible label is insufficient or hidden; prefer a visible `label` for most cases.                                                                        |
+| `aria-description`      | Provides additional context for assistive technologies without replacing the accessible name.                                                                                                |
 
 You can pass a JSON object on the element (vanilla JS) or use your framework’s prop binding, for example
 `aria={{ role: 'combobox', 'aria-expanded': isOpen, 'aria-haspopup': 'listbox' }}`.
@@ -58,8 +59,12 @@ choices and writes the choice back into the field, set the `aria` property so th
 supported by this component, for example:
 
 - `role: 'combobox'`
-- `aria-controls` referring to the id of the associated listbox (or other controlled region). Hint: currently not
-  supported across shadow DOM boundaries
+- `aria-controls` referring to the controlled region. A string id does not resolve across the shadow boundary; pass the
+  element (or a list of elements) instead:
+  `aria={{ 'aria-controls': listElement, 'aria-activedescendant': activeElement }}`. That sets `ariaControlsElements`
+  and `ariaActiveDescendantElement` on the native `<input>`
+- `aria-activedescendant` referring to the highlighted suggestion, again as an element when that suggestion is outside
+  the shadow tree
 - `aria-expanded` reflecting open/closed state
 - `aria-haspopup` indicating the presence of a popup (e.g. `listbox`)
 - `aria-autocomplete` as required by your pattern
@@ -78,10 +83,12 @@ Associate the suggestion list and keyboard interaction in the host application a
 
 ## Limitations
 
-Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to
-define (IDREF) relationships between elements across different shadow DOMs or shadow DOM/light DOM combinations.
+A string id in `aria-controls` or `aria-activedescendant` cannot name an element across the shadow boundary. Pass the
+element instead (`aria={{ 'aria-controls': listElement, 'aria-activedescendant': activeElement }}`) and the component
+sets `ariaControlsElements` and `ariaActiveDescendantElement` on the native `<input>`. `aria-owns` is not forwarded.
 
-| ARIA                    | Support |
-| ----------------------- | ------- |
-| `aria-owns`             | 🚫      |
-| `aria-activedescendant` | 🚫      |
+| ARIA                    | Support                                                                                              |
+| ----------------------- | ---------------------------------------------------------------------------------------------------- |
+| `aria-owns`             | 🚫                                                                                                   |
+| `aria-controls`         | String id only inside the same tree. An element, or a list of elements, crosses the shadow boundary. |
+| `aria-activedescendant` | String id only inside the same tree. An element crosses the shadow boundary.                         |

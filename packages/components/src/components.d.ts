@@ -1391,7 +1391,7 @@ export namespace Components {
     }
     interface PInputSearch {
         /**
-          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`). `aria-controls` and `aria-activedescendant` also accept an element reference (or, for `aria-controls`, a list of elements) so the relationship crosses the shadow boundary.
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -5755,7 +5755,7 @@ declare namespace LocalJSX {
     }
     interface PInputSearch {
         /**
-          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`). `aria-controls` and `aria-activedescendant` also accept an element reference (or, for `aria-controls`, a list of elements) so the relationship crosses the shadow boundary.
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**

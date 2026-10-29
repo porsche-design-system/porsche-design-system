@@ -45,11 +45,9 @@ export const meta: ExampleMeta = {
  *
  * `arrow="false"` drops the arrow and the offset it would add, and the script matches the panel
  * width to the field. Choosing a result writes that city into the field. The script sets `role="combobox"`,
- * `aria-autocomplete="list"`, `aria-haspopup="listbox"` and `aria-expanded` through the `aria` prop. A string
- * `aria-controls` cannot be resolved from inside the input's shadow tree, and `p-input-search` does not expose
- * element-reference ARIA properties on its public API yet, so as a workaround the script reaches into `shadowRoot` to
- * point `ariaControlsElements` at the listbox and `ariaActiveDescendantElement` at the highlighted option.
- * `p-input-search` already emits `input`, and `focusin` bubbles out of the inner field.
+ * `aria-autocomplete="list"`, `aria-haspopup="listbox"`, `aria-expanded`, and element references for `aria-controls`
+ * and `aria-activedescendant` through the `aria` prop. Element references cross the input's shadow boundary; a string
+ * id would not. `p-input-search` already emits `input`, and `focusin` bubbles out of the inner field.
  */
 const Page = () => (
   <PatternPage meta={meta}>
@@ -141,15 +139,9 @@ const Page = () => (
           let activeIndex = -1;
           let selectedOption = null;
           let dismissed = false;
-
-          // Workaround: p-input-search does not expose ariaControlsElements or ariaActiveDescendantElement on its
-          // public API yet, and a string id in aria-controls or aria-activedescendant never resolves across the
-          // shadow boundary. Reaching into shadowRoot to set the element references on the inner input exposes
-          // both relationships in the accessibility tree.
-          const input = search.shadowRoot && search.shadowRoot.querySelector('input');
-          if (input) {
-            input.ariaControlsElements = [list];
-          }
+          // Tracked separately from popover.open: when a query has 0 matches the popover stays open for the empty
+          // message while the controlled listbox is hidden, so aria-expanded must be false.
+          let expanded = false;
 
           const options = () => Array.from(list.querySelectorAll('[role="option"]'));
 
@@ -179,19 +171,19 @@ const Page = () => (
               active.classList.add(...activeClasses);
               active.scrollIntoView({ block: 'nearest' });
             }
-            if (input) {
-              input.ariaActiveDescendantElement = active;
-            }
-          };
-
-          const setOpen = (open, expanded = open) => {
-            popover.open = open;
             search.aria = {
               role: 'combobox',
               'aria-autocomplete': 'list',
               'aria-haspopup': 'listbox',
               'aria-expanded': expanded,
+              'aria-controls': list,
+              'aria-activedescendant': active,
             };
+          };
+
+          const setOpen = (open, nextExpanded = open) => {
+            popover.open = open;
+            expanded = nextExpanded;
             if (!open) {
               status.textContent = '';
             }

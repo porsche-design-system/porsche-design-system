@@ -12,7 +12,7 @@ type DialogBaseProps = {
   onMouseDown?: (e: MouseEvent) => void;
   onTransitionEnd?: (e: TransitionEvent) => void;
   onDismiss?: () => void;
-  ariaAttributes?: AriaAttributes;
+  ariaAttributes?: Pick<AriaAttributes, 'aria-label' | 'aria-modal' | 'role'>;
   dismissable?: boolean;
   header?: JSX.Element;
   footer?: JSX.Element;

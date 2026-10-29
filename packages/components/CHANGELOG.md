@@ -26,6 +26,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 - `Popover`: `arrow` prop to drop the arrow and the extra offset it adds when set to `false`.
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Input Search`: `aria` accepts `aria-activedescendant`, and `aria-controls` and `aria-activedescendant` accept an
+  element (or, for `aria-controls`, a list of elements) so the relationship reaches the input across the shadow
+  boundary. ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 
 ### Changed
 
