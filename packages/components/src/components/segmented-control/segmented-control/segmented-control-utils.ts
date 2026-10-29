@@ -45,6 +45,8 @@ if (tempIcon) {
   tempIcon.style.marginRight = ICON_MARGIN;
 }
 
+const unmeasuredHosts = new WeakSet<HTMLElement>();
+
 export const getItemWidths = (host: HTMLElement, compact: boolean): { minWidth: number | string; maxWidth: number } => {
   tempDiv.innerHTML = '';
   host.shadowRoot.append(tempDiv);
@@ -76,8 +78,18 @@ export const getItemWidths = (host: HTMLElement, compact: boolean): { minWidth: 
 
   tempDiv.remove();
 
-  return { minWidth: dimension, maxWidth: Math.max(...widths) };
+  const maxWidth = Math.max(...widths);
+  // width is `NaN` while the host isn't rendered, e.g. within `display: none`
+  if (Number.isNaN(maxWidth)) {
+    unmeasuredHosts.add(host);
+  } else {
+    unmeasuredHosts.delete(host);
+  }
+
+  return { minWidth: dimension, maxWidth };
 };
+
+export const hasUnmeasuredItems = (host: HTMLElement): boolean => unmeasuredHosts.has(host);
 
 type Item = HTMLElement & SegmentedControlItem & SegmentedControlItemInternalHTMLProps;
 
