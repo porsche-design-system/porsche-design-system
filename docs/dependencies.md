@@ -394,11 +394,10 @@ Angular splits into two concerns that are handled separately:
 
 - **Version ranges** (`@angular/*`, `ng-packagr`) — owned by `syncpack`. Bump them via `npm run npm:update` (pick the
   `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep `typescript`
-  within Angular's `MAX_TS_VERSION` (see
-  `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back
-  for the round if a bump would exceed that ceiling. `syncpack` never offers the deprecated `@angular/animations` and
-  `@angular/platform-browser-dynamic`, so align their ranges with the rest of the family by hand (in
-  `packages/components-angular` and the StackBlitz Angular starter).
+  within Angular's `MAX_TS_VERSION` (`grep -r MAX_TS_VERSION node_modules/@angular/compiler-cli/bundles`); hold
+  `typescript` back for the round if a bump would exceed that ceiling. `syncpack` never offers the deprecated
+  `@angular/animations` and `@angular/platform-browser-dynamic`, so align their ranges with the rest of the family by
+  hand (in `packages/components-angular` and the StackBlitz Angular starter).
 - **Framework migrations** (code transforms) — owned by the
   [`packages/components-angular/scripts/ng-update.sh`](../packages/components-angular/scripts/ng-update.sh) wrapper
   (`npm run ng:update`).
@@ -471,5 +470,5 @@ changes, update all four places accordingly:
   versions instead of a cryptic `TypeError` from within the popover polyfill),
 - the optional `jsdom` peer dependency in `components-wrapper`, `angular-wrapper`, `react-wrapper` and `vue-wrapper`
   `package.json`,
-- the testing pages under `packages/storefront/src/app/(main)/developing/{react,next-js,angular}/testing`, and
+- the testing pages under `packages/storefront/src/app/(main)/developing/{react,next-js,angular,vue}/testing`, and
 - `packages/components/CHANGELOG.md`.

@@ -35,7 +35,7 @@ npm run test:unit:shared
 
 - `src/lib/` is generated during build.
 - Build scripts also generate framework code examples consumed elsewhere in the repo.
-- Do not hand-edit generated files in `src/lib/`, generated examples, or `dist/`.
+- Do not hand-edit generated files in `src/lib/` or generated examples.
 
 ## Package and entry points
 
