@@ -1,0 +1,27 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-47
+// source=https://designsystem.porsche.com/v0.0.0/components/sheet/api/
+// component=PSheet
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { escapeText } from '../../../figma/helpers/escape';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const open = !read.off('open');
+const dismissButton = !read.off('dismissButton');
+const disableBackdropClick = read.flag('disableBackdropClick');
+const background = read.oneOf('background', ['canvas', 'surface']);
+
+export default {
+  example: figma.code`<PSheet${open ? ' :open="true"' : ' :open="false"'}${dismissButton ? '' : ' :dismissButton="false"'}${disableBackdropClick ? ' :disableBackdropClick="true"' : ''}${background ? ` background="${background}"` : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', 'header') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PSheet>`,
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v0.0.0/developing/vue/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v0.0.0/components/sheet/api/',
+    "import { PSheet } from '@porsche-design-system/components-vue';",
+  ],
+  id: 'p-sheet',
+  metadata: { nestable: true },
+};

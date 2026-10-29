@@ -1,0 +1,26 @@
+/// <reference types="@figma/code-connect/figma-types-no-require" />
+// url=https://www.figma.com/design/KEY/Library?node-id=1-7
+// source=https://designsystem.porsche.com/v0.0.0/components/canvas/api/
+// component=PCanvas
+// Auto generated - do not edit by hand.
+import figma from 'figma';
+import { escapeText } from '../../../figma/helpers/escape';
+import { read } from '../../../figma/helpers/read';
+import { slotted } from '../../../figma/helpers/slotted';
+
+const instance = figma.selectedInstance;
+
+const sidebarStartOpen = read.flag('sidebarStartOpen');
+const sidebarEndOpen = read.flag('sidebarEndOpen');
+const background = read.oneOf('background', ['canvas', 'surface']);
+
+export default {
+  example: figma.code`<PCanvas${sidebarStartOpen ? ' sidebarStartOpen={true}' : ''}${sidebarEndOpen ? ' sidebarEndOpen={true}' : ''}${background ? ` background="${background}"` : ''}>${read.has('slot-title') ? slotted(instance.getSlot('slot-title'), 'slot-title', 'title') : ''}${read.has('slot-header-start') ? slotted(instance.getSlot('slot-header-start'), 'slot-header-start', 'header-start') : ''}${read.has('slot-header-end') ? slotted(instance.getSlot('slot-header-end'), 'slot-header-end', 'header-end') : ''}${read.has('slot-footer') ? slotted(instance.getSlot('slot-footer'), 'slot-footer', 'footer') : ''}${read.has('slot-sidebar-start') ? slotted(instance.getSlot('slot-sidebar-start'), 'slot-sidebar-start', 'sidebar-start') : ''}${read.has('slot-sidebar-end') ? slotted(instance.getSlot('slot-sidebar-end'), 'slot-sidebar-end', 'sidebar-end') : ''}${read.has('slot-sidebar-end-header') ? slotted(instance.getSlot('slot-sidebar-end-header'), 'slot-sidebar-end-header', 'sidebar-end-header') : ''}${read.has('slot-background') ? slotted(instance.getSlot('slot-background'), 'slot-background', 'background') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PCanvas>`,
+  imports: [
+    '// Setup: https://designsystem.porsche.com/v0.0.0/developing/react/getting-started/',
+    '// Docs: https://designsystem.porsche.com/v0.0.0/components/canvas/api/',
+    "import { PCanvas } from '@porsche-design-system/components-react';",
+  ],
+  id: 'p-canvas',
+  metadata: { nestable: true },
+};

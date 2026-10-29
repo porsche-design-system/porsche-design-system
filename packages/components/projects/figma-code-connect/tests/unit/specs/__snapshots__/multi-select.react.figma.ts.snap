@@ -1,5 +1,5 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=1-32
+// url=https://www.figma.com/design/KEY/Library?node-id=1-34
 // source=https://designsystem.porsche.com/v0.0.0/components/multi-select/api/
 // component=PMultiSelect
 // Auto generated - do not edit by hand.
@@ -12,7 +12,7 @@ const instance = figma.selectedInstance;
 
 const label = read.text('label');
 const description = read.text('description');
-const name = read.text('name');
+const name = read.text('name') ?? '';
 const value = read.text('value');
 const state = read.oneOf('state', ['none', 'error', 'success']);
 const message = read.text('message');
@@ -24,7 +24,7 @@ const compact = read.flag('compact');
 const form = read.text('form');
 
 export default {
-  example: figma.code`<PMultiSelect${label ? ` label="${escapeAttribute(label)}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''}${name ? ` name="${escapeAttribute(name)}"` : ''}${value ? ` value="${escapeAttribute(value)}"` : ''}${state ? ` state="${state}"` : ''}${message ? ` message="${escapeAttribute(message)}"` : ''}${hideLabel ? ' hideLabel={true}' : ''}${disabled ? ' disabled={true}' : ''}${required ? ' required={true}' : ''}${dropdownDirection ? ` dropdownDirection="${dropdownDirection}"` : ''}${compact ? ' compact={true}' : ''}${form ? ` form="${escapeAttribute(form)}"` : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', 'label') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', 'label-after') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', 'description') : ''}${read.has('slot-selected') ? slotted(instance.getSlot('slot-selected'), 'slot-selected', 'selected') : ''}${read.has('slot-options-status') ? slotted(instance.getSlot('slot-options-status'), 'slot-options-status', 'options-status') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', 'message') : ''}${read.has('slot-filter') ? slotted(instance.getSlot('slot-filter'), 'slot-filter', 'filter') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PMultiSelect>`,
+  example: figma.code`<PMultiSelect${label ? ` label="${escapeAttribute(label)}"` : ''}${description ? ` description="${escapeAttribute(description)}"` : ''} name="${escapeAttribute(name)}"${value ? ` value="${escapeAttribute(value)}"` : ''}${state ? ` state="${state}"` : ''}${message ? ` message="${escapeAttribute(message)}"` : ''}${hideLabel ? ' hideLabel={true}' : ''}${disabled ? ' disabled={true}' : ''}${required ? ' required={true}' : ''}${dropdownDirection ? ` dropdownDirection="${dropdownDirection}"` : ''}${compact ? ' compact={true}' : ''}${form ? ` form="${escapeAttribute(form)}"` : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', 'label') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', 'label-after') : ''}${read.has('slot-description') ? slotted(instance.getSlot('slot-description'), 'slot-description', 'description') : ''}${read.has('slot-selected') ? slotted(instance.getSlot('slot-selected'), 'slot-selected', 'selected') : ''}${read.has('slot-options-status') ? slotted(instance.getSlot('slot-options-status'), 'slot-options-status', 'options-status') : ''}${read.has('slot-message') ? slotted(instance.getSlot('slot-message'), 'slot-message', 'message') : ''}${read.has('slot-filter') ? slotted(instance.getSlot('slot-filter'), 'slot-filter', 'filter') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PMultiSelect>`,
   imports: [
     '// Setup: https://designsystem.porsche.com/v0.0.0/developing/react/getting-started/',
     '// Docs: https://designsystem.porsche.com/v0.0.0/components/multi-select/api/',

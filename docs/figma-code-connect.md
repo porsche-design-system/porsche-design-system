@@ -10,15 +10,16 @@ Figma library it reads and publishes to is the URL in `codeConnect.interactiveSe
 1. **Generate.** `npm run figma:generate` pulls the library's component sets, their property definitions and the node
    ids of its published icon components into memory, walks component-meta and writes four templates per component, one
    per label, plus the icon batches into `generated/`, which git ignores. It prints a design line for every change only
-   design can make in Figma and an accepted-gap cleanup for every accepted gap Figma made obsolete. The rules that pair
-   a PDS prop or slot with the Figma property of the same name are in `figma/generate.ts`. For a property no rule places
-   it reads the library's earlier versions (`figma/history.ts`): a key keeps its `#<id>` through a rename, and a
-   VARIANT, which has none, is matched by its options, so the line says `Rename "compacta" back to "compact"` instead of
-   asking for an add and reporting an unknown property.
+   design can make in Figma and an accepted-gap cleanup for every accepted gap Figma made obsolete. A component set
+   pairs with the PDS component whose tag is `p-` and the set's name, lowercased, so a `fig-` set, which only Figma
+   needs, never pairs. The rules that pair a PDS prop or slot with the Figma property of the same name are in
+   `figma/generate.ts`. For a property no rule places it reads the library's earlier versions (`figma/history.ts`): a
+   key keeps its `#<id>` through a rename, and a VARIANT, which has none, is matched by its options, so the line says
+   `Rename "compacta" back to "compact"` instead of asking for an add and reporting an unknown property.
 2. **Render.** A template reads each PDS prop and slot by name from `figma.selectedInstance.properties` when the snippet
    renders (`figma/helpers/read.ts`). **A property the Figma component lacks is left out of the snippet**, so every
    component publishes, and a property design adds or renames shows up once the library is published, with no new
-   publish.
+   publish. A required prop is the exception: it is written anyway (decision 12).
 3. **Publish.** `npm run figma:publish` runs `figma:generate -- --check`, then per label has Figma render every template
    (preview, once more for each that failed) and validate every record's node (dry run), and uploads what passed with
    `--force`, which overwrites a mapping a designer made in Figma's UI. A record Figma refuses, or could not be reached
@@ -195,10 +196,15 @@ Records live per file key, so nothing published under another key touches the li
    everything else is up, because nothing retries it before the next release. A template whose preview fails is
    previewed once more, so a Figma preview hiccup costs a failure message and a re-run only when it repeats; a preview
    or validation that does not reach Figma, like a pull that cannot read it, warns in a pull request and turns a publish
-   red. Rejected: gating publish on Figma matching code, which let one moved component block all 57; a green publish
-   that lists refused records in its log, where nobody saw them and nothing retried them; closed gaps in the log only,
-   where nobody saw them; a number of preview failures below which the run stays green, which lets a broken template
-   through with the hiccups.
+   red. A snippet Figma rendered that fails only the CLI's own Prettier check (`syntaxCheckOnly`) publishes with a
+   warning: preview renders a nested record in another label, an Angular binding inside JSX for instance
+   ([figma/code-connect#418](https://github.com/figma/code-connect/issues/418), still open), while Dev Mode renders it
+   in the snippet's own label. The unit tests run the same check on every template's own snippet instead. Rejected:
+   gating publish on Figma matching code, which let one moved component block all 57; a green publish that lists refused
+   records in its log, where nobody saw them and nothing retried them; closed gaps in the log only, where nobody saw
+   them; a number of preview failures below which the run stays green, which lets a broken template through with the
+   hiccups; refusing such a snippet, which kept Canvas's React record out of Dev Mode on every publish; templates with
+   `metadata: { nestable: false }`, which show every nested component as a pill instead of its code.
 6. **No issue, and Slack gets every open design line after each release and once a week, with nothing remembered between
    runs.** Code is the source of truth, so every line is a change design makes, a change back included when a designer
    altered what a release reads; code never follows Figma, apart from deleting an accepted gap Figma has closed. The
@@ -255,3 +261,17 @@ Records live per file key, so nothing published under another key touches the li
     `LIBRARY_PUBLISH` webhook, which carries component keys and names only; the version label and description, typed by
     designers; a fixed reference version such as the newest before the latest release, whose answer changes at each
     release; naming who renamed and when, which the instruction does not need.
+12. **A required prop the Figma component lacks is written anyway: a required boolean (`open`) as on, and as off only
+    when Figma turns it off; a required text prop (`name`, `value`, `label`) empty, `name=""`, unless Figma has the
+    text.** A frame always shows Banner, Flyout and Modal open, so Figma has no `open` property; form props stay
+    optional in Figma (decision 7), so design is never asked for `name` or `value`. Without them a snippet does not
+    compile in React, where the props are required: 21 components with a template have such a text prop. An empty value
+    invents no data and tells the developer, or an agent reading the snippet, to supply it. A required number prop is
+    not covered: the only ones, Pagination's, Figma carries. Figma's preview renders a template that writes a prop with
+    no Figma property like any other. The cost: `""` passes `validateProps`, which checks only the type, so a snippet
+    pasted unchanged gives a field with an empty name and no warning. Rejected: leaving them out like every other
+    property Figma lacks, which gave every variant of those 24 components a snippet that does not compile; the prop's
+    own name, `name="name"`, which reads like a value someone chose; the bare prop, `name`, which JSX reads as
+    `name={true}` and React's types reject; a binding, `name={name}`, which names a variable the snippet does not define
+    and the Web Components label cannot express; a marker such as `name="TODO"`, a value that can ship unnoticed; asking
+    design for `open`, `name` and `value` properties, which a frame has nothing to show for.
