@@ -10,17 +10,17 @@ building Porsche web applications. Components are built with **Stencil** and wra
 
 ## Tech Stack
 
-| Layer              | Technology                                 |
-| ------------------ | ------------------------------------------ |
-| Package Manager    | npm 11+ (workspaces)                       |
-| Node               | v24 (use Volta)                            |
-| Web Components     | Stencil 4.x                                |
-| Styling            | JSS (CSS-in-JS), Tailwind CSS              |
-| Frameworks         | Angular 22, React 19, Vue 3, Next.js 16    |
-| Build              | Rollup, Vite, Webpack                      |
-| Testing            | Vitest (unit), Playwright (e2e/vrt/a11y)   |
-| Linting/Formatting | Biome (JS/TS/JSON), Prettier (MD/MDX only) |
-| Types              | TypeScript 6.x                             |
+| Layer              | Technology                                          |
+| ------------------ | --------------------------------------------------- |
+| Package Manager    | npm 11+ (workspaces)                                |
+| Node               | v24 (use Volta)                                     |
+| Web Components     | Stencil 4.x                                         |
+| Styling            | JSS (CSS-in-JS), Tailwind CSS                       |
+| Frameworks         | Angular 22, React 19, Vue 3, Next.js 16             |
+| Build              | Rollup, Vite, Webpack                               |
+| Testing            | Vitest (unit), Playwright (e2e/vrt/a11y)            |
+| Linting/Formatting | Biome (JS/TS/JSON/CSS/HTML), Prettier (MD/MDX only) |
+| Types              | TypeScript 6.x                                      |
 
 ## Project Structure
 
@@ -49,11 +49,6 @@ Only **four** packages are published to npm:
 ```
 @porsche-design-system/components-{js|angular|react|vue}
 ```
-
-Every other workspace package is `"private": true`, including all of `packages/styles/projects/*`,
-`@porsche-design-system/tokens-meta`, `@porsche-design-system/stylesheets` and `@porsche-design-system/shared` —
-regardless of having a scoped name, an `exports` map, `files` and `.d.ts` output. The published packages are assembled
-by copying **selected build output** into a wrapper `dist/`; what is not copied does not exist for a consumer.
 
 **The most reliable and easiest way to tell what is published is to read the built wrapper `dist/` folders.** Each one
 _is_ the npm package — the tarball root, `package.json` included:
@@ -96,14 +91,17 @@ breaking, and before writing a changelog entry for one.**
 
 The monorepo has **strict build dependencies**. Always build in this order:
 
-1. `shared` → `tokens` → `assets` → `styles` → `utilities` → `component-meta`
+1. `shared` → `tokens` → `assets` → `styles` → `utilities` → `stylesheets` → `component-meta`
+   (`npm run build:core-dependencies`)
 2. `components` (Stencil core)
-3. `components-js`
-4. `components-angular`, `components-react`, `components-vue` (can be parallel)
-5. `examples` (the storefront copies its `dist-site/` into `public/examples/`)
-6. `storefront`
+3. `examples:projects` → `skills`
+4. `components-js`
+5. `components-angular`, `components-react`, `components-vue` (can be parallel)
+6. `examples:site` (the storefront copies its `dist-site/` into `public/examples/`)
+7. `storefront`
 
-Use `npm run build` to handle this automatically.
+Use `npm run build` to handle this automatically. The `build` script in the root `package.json` declares this chain and
+[`.github/workflows/build.yml`](.github/workflows/build.yml) runs it step by step.
 
 ## Essential Commands
 
@@ -141,7 +139,7 @@ npm run typecheck:tests            # Test code of one workspace, with --workspac
 ```
 
 Root holds three chains, and all three are composed from per-package entries. `typecheck` and `typecheck:all` use the
-the `typecheck:{package}` entries, with nested projects called by `--workspace` inside `typecheck:all`.
+`typecheck:{package}` entries, with nested projects called by `--workspace` inside `typecheck:all`.
 `typecheck:all:tests` uses the `typecheck:{package}:tests` entries, and each of those calls its own test scopes,
 `typecheck:tests` and `typecheck:tests:{e2e,vrt,a11y,smoke}`, by workspace. Each test scope is also the first
 command of the test script that runs those files.
@@ -190,6 +188,11 @@ Key test files:
 - Use positive naming (e.g., `disabled` not `notEnabled`)
 - Should enable a feature, not disable it
 
+### Framework Wrappers
+
+- Keep wrapper behavior and typings aligned with the underlying PDS web component instead of re-implementing behavior or
+  adding framework-only divergence.
+
 See [`docs/coding-standards-and-guidelines.md`](docs/coding-standards-and-guidelines.md) for details.
 
 ## Changelog
@@ -202,8 +205,6 @@ how entries are worded — it is the single source of truth for both humans and 
 writing or requesting an entry.
 
 - Run the `update-changelog` skill to reconcile the changelog with the current branch
-- When reviewing a pull request, apply the `.github/skills/code-review-changelog` skill — including when the pull
-  request does not touch the changelog at all, since a missing entry is the most common error
 
 ## Pull Requests
 
@@ -226,43 +227,73 @@ All UI code must:
 4. **High Contrast Mode**: Support `@media (forced-colors: active)`
 5. **Prefer PDS components**: Use `p-` prefixed components over custom widgets
 
+If a request conflicts with these requirements, prioritize accessibility and propose an accessible alternative.
+
+In `packages/components`, use the focus, High Contrast Mode and ARIA helpers listed in
+[`packages/components/AGENTS.md`](packages/components/AGENTS.md).
+
 ### Focus Styling
 
-- Use `getFocusBaseStyles()` from `packages/components/src/styles/common-styles.ts`
 - Prefer `:focus-visible` over `:focus`
 - **Never** use `outline: none` without an accessible alternative
 
 ### High Contrast Mode
 
-- Use `forcedColorsMediaQuery()` from `packages/components/src/styles/media-query/`
 - Don't rely on shadows or semi-transparent borders for essential affordances
 
 ### ARIA
 
 - Use ARIA only when needed; never add ARIA that conflicts with native semantics
-- Use helpers from `packages/components/src/utils/a11y/a11y.ts`
+- Pass extra ARIA to a PDS component through its `aria` prop, never as `aria-*` attributes on the host
 
-See [`.github/instructions/accessibility.instructions.md`](.github/instructions/accessibility.instructions.md) for full
-guidelines.
+### Semantics and Names
+
+- Prefer native elements (`button`, `a`, `input`, `select`, `details/summary`, `dialog`) over custom roles; use
+  landmarks (`header`, `nav`, `main`, `footer`) and keep heading order
+- Every interactive element has an accessible name: visible text, `<label>`, `aria-label` or `aria-labelledby`.
+  Decorative icons are hidden from assistive technology; meaningful icons get a name
+
+### Overlays
+
+- Move focus into an opened overlay (modal, dialog, popover, menu) and restore it to the trigger on close
+- Avoid positive `tabindex`; keep tab order consistent with DOM order
+
+### Forms
+
+- Convey errors visibly and programmatically: `aria-invalid="true"` on the control, messages linked via
+  `aria-describedby` or `aria-errormessage`
+- Use `aria-live` sparingly and only for truly dynamic announcements
+
+### Motion and Zoom
+
+- Respect `prefers-reduced-motion`
+- Content stays usable at 200% zoom
+
+### Self-Check Before Finishing
+
+Keyboard only? Focus always visible? Every control named? Works in forced-colors? Is any ARIA correct and necessary?
+
+Human-readable integration examples and a pre-merge checklist:
+[Accessibility Do's and Don'ts](https://designsystem.porsche.com/must-know/accessibility/dos-and-donts).
 
 ## Linting Rules
 
-- **Biome** handles JS/TS/JSON formatting and linting
-- **Prettier** handles MD/MDX only
+- **Biome** handles JS/TS/JSON/CSS/HTML formatting and linting
+- **Prettier** handles MD/MDX only (run via editor or `prettier --write`)
 - No `console.log` allowed (use `console.warn` or `console.error`)
 - Imports are auto-sorted by Biome
 
 ## Common Pitfalls
 
-| ❌ Don't                                            | ✅ Do                                                             |
-| --------------------------------------------------- | ----------------------------------------------------------------- |
-| Skip `npm run build` before tests                   | Build first, then test                                            |
-| Modify `package-lock.json` manually                 | Run `npm install` to regenerate                                   |
-| Remove focus outlines                               | Provide accessible alternatives                                   |
-| Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                                         |
-| Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first        |
-| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly, then `npm run npm:verify-lock`   |
-| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly and run `npm run npm:verify-lock` |
+| ❌ Don't                                            | ✅ Do                                                           |
+| --------------------------------------------------- | --------------------------------------------------------------- |
+| Skip `npm run build` before tests                   | Build first, then test                                          |
+| Modify `package-lock.json` manually                 | Run `npm install` to regenerate                                 |
+| Edit generated `dist/` output by hand               | Change the source and rebuild                                   |
+| Remove focus outlines                               | Provide accessible alternatives                                 |
+| Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                                       |
+| Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first      |
+| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly, then `npm run npm:verify-lock` |
 
 ## Known Constraints
 
@@ -281,13 +312,19 @@ guidelines.
 
 ## Package-Specific Instructions
 
-Each major package has its own `AGENTS.md` with detailed guidance:
+Each major package has its own `AGENTS.md` with detailed guidance. Its rules add to this file:
 
 - [`packages/components/AGENTS.md`](packages/components/AGENTS.md) — Stencil web components
+  - [`packages/components/projects/stylesheets/AGENTS.md`](packages/components/projects/stylesheets/AGENTS.md) — Global
+    styles and the generated stylesheets
+  - [`packages/components/projects/figma-code-connect/AGENTS.md`](packages/components/projects/figma-code-connect/AGENTS.md)
+    — Figma Code Connect templates
+- [`packages/components-js/AGENTS.md`](packages/components-js/AGENTS.md) — JS wrapper, partials and the test harness
 - [`packages/component-meta/AGENTS.md`](packages/component-meta/AGENTS.md) — Component metadata generation
 - [`packages/shared/AGENTS.md`](packages/shared/AGENTS.md) — Internal shared utilities and generated lookups
 - [`packages/styles/AGENTS.md`](packages/styles/AGENTS.md) — Style libraries and preview app
 - [`packages/tokens/AGENTS.md`](packages/tokens/AGENTS.md) — Design tokens
+- [`packages/assets/AGENTS.md`](packages/assets/AGENTS.md) — Icons, fonts, flags and the local CDN
 - [`packages/utilities/AGENTS.md`](packages/utilities/AGENTS.md) — Utility packages such as AG Grid theme
 - [`packages/storefront/AGENTS.md`](packages/storefront/AGENTS.md) — Next.js documentation site
 - [`packages/examples/AGENTS.md`](packages/examples/AGENTS.md) — Standalone example pages (TSX)
@@ -295,14 +332,30 @@ Each major package has its own `AGENTS.md` with detailed guidance:
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper
 
-## Agent Guidance Priority
+## Agent Instructions
 
-When multiple guidance files exist, prefer them in this order:
-
-1. The nearest package- or folder-level `AGENTS.md`
-2. Applicable Cursor rules from `.cursor/rules/`
-3. Root-level `AGENTS.md`
-4. `.github/instructions/*.instructions.md` for GitHub/Copilot-oriented guidance
+- **If the `AGENTS.md` of the package you work in is not in your context, read it** (see
+  [Package-Specific Instructions](#package-specific-instructions)). Tools handle these files differently:
+  - Copilot Chat in JetBrains attaches package files only after the developer turns on **Use nested AGENTS.md files
+    (Experimental)** in Settings › Tools › GitHub Copilot › Customizations, and never attaches a file more than two
+    folders below the repository root, such as `packages/components/projects/stylesheets/AGENTS.md` and
+    `packages/components/projects/figma-code-connect/AGENTS.md`.
+  - Copilot Chat in VS Code lists their paths, not their text, and only in its Local agent with
+    `chat.useNestedAgentsMdFiles` on. Its Copilot agent finds them as it works in a folder.
+  - Codex loads the files from the repository root down to the folder it started in.
+  - Cursor attaches them once its agent opens a file in that folder. For a file you only attach to a question, a pointer
+    in `.cursor/rules/` names the package file. The Copilot cloud agent finds them without a setting.
+  - Copilot code review loads none of them; the pointer files in `.github/instructions/` name the one for each package.
+  - Claude Code loads them as it reads files in that folder, but only while the repository has no `CLAUDE.md`,
+    `.claude/CLAUDE.md` or `CLAUDE.local.md`, so do not add one.
+- **Keep one copy of each piece of agent guidance.** Put repo-wide rules in this file, package rules in the `AGENTS.md`
+  closest to the code, and repo-wide pull request review rules in `.github/copilot-instructions.md`.
+  `.github/instructions/` and `.cursor/rules/` hold nothing but one pointer per package `AGENTS.md` each: when you add a
+  package `AGENTS.md`, add both pointers and its line under
+  [Package-Specific Instructions](#package-specific-instructions). Do not copy guidance into either folder. No agent
+  instruction file in this repo is a symlink.
+- **`packages/storefront/public/assets/downloads/AGENTS.md` is a template shipped to consumers, not guidance for this
+  repo.** Do not follow it, and change it only when your task is about that download.
 
 ## Quick Reference
 
