@@ -2,8 +2,18 @@
 // scripts/figmaConnect.ts. tests/unit/specs/cliOutput.spec.ts makes the installed CLI print each of them.
 
 // `preview --output json` marks a failed request with the kind `transport`, a template that does not render with none.
-export type PreviewResult = { filePath: string; success: boolean; error?: string; errorDetails?: { kind?: string } };
+export type PreviewResult = {
+  filePath: string;
+  success: boolean;
+  snippet?: string;
+  error?: string;
+  errorDetails?: { kind?: string };
+};
 export const unreachable = (result: PreviewResult): boolean => result.errorDetails?.kind === 'transport';
+// The CLI runs Prettier over a snippet Figma rendered. It also fails a nested record Figma renders in another label
+// (figma/code-connect#418), so this failure alone does not mean the template is broken.
+export const syntaxCheckOnly = (result: PreviewResult): boolean =>
+  result.snippet !== undefined && result.error === 'Snippet has syntax errors and may not be valid code';
 
 // Figma's refusals exist only as these CLI log lines: an upload with refused records still exits successfully.
 export const validationFailures = (log: string): string[] =>

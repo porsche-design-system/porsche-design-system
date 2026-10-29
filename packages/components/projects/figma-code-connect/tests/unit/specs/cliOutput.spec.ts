@@ -10,6 +10,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import {
   nodesUnreachable,
   type PreviewResult,
+  syntaxCheckOnly,
   unreachable,
   uploadFailures,
   validationFailures,
@@ -128,6 +129,19 @@ describe('the Code Connect CLI', () => {
     const broken = { meta: { results: [{ nodeId: '1:1', error: 'TypeError: boom' }] } };
     answer = ({ url: path }) => (path?.includes('/preview_snippets?') ? [200, broken] : undefined);
     const results: PreviewResult[] = JSON.parse((await connect(['preview', '--output', 'json'])).stdout);
-    expect(results.map((result) => [result.success, unreachable(result)])).toEqual([[false, false]]);
+    expect(results.map((result) => [result.success, unreachable(result), syntaxCheckOnly(result)])).toEqual([
+      [false, false, false],
+    ]);
+  }, 30_000);
+
+  it('marks a snippet Figma rendered that only its own syntax check fails', async () => {
+    // a nested record Figma renders in another label puts Angular bindings into JSX (figma/code-connect#418)
+    const snippet = '<PTag><p-x [y]="true"></p-x></PTag>';
+    const rendered = { meta: { results: [{ nodeId: '1:1', snippet, language: 'React' }] } };
+    answer = ({ url: path }) => (path?.includes('/preview_snippets?') ? [200, rendered] : undefined);
+    const results: PreviewResult[] = JSON.parse((await connect(['preview', '--output', 'json'])).stdout);
+    expect(results.map((result) => [result.success, unreachable(result), syntaxCheckOnly(result)])).toEqual([
+      [false, false, true],
+    ]);
   }, 30_000);
 });

@@ -78,4 +78,35 @@ describe('generated files', () => {
       rmSync(project, { recursive: true, force: true });
     }
   }, 120_000);
+
+  it("renders a snippet the CLI's syntax check accepts, from each template's own code", async () => {
+    // Publish no longer refuses a snippet that only fails this check (figma/code-connect#418), so it runs here.
+    // Empty slots keep nested records, which Figma renders in another label, out of it.
+    const prettier = createRequire(entry)('prettier');
+    const project = mkdtempSync(join(tmpdir(), 'figma-code-connect-syntax-'));
+    try {
+      cpSync(resolve(packageRoot, 'figma/helpers'), join(project, 'figma/helpers'), { recursive: true });
+      globalThis.selectedInstance = {
+        properties: {},
+        getSlot: () => ({ connectedInstances: [] }),
+        findLayers: () => [],
+      };
+      const rejected: string[] = [];
+      for (const file of generated.filter((name) => name.startsWith('generated/templates/'))) {
+        mkdirSync(dirname(join(project, file)), { recursive: true });
+        writeFileSync(join(project, file), files[file]);
+        const { example } = (await import(join(project, file))).default;
+        // the CLI parses a React snippet as TypeScript and the other labels as HTML
+        const parser = file.endsWith('.react.figma.ts') ? 'typescript' : 'html';
+        try {
+          await prettier.format(example, { parser });
+        } catch {
+          rejected.push(file);
+        }
+      }
+      expect(rejected).toEqual([]);
+    } finally {
+      rmSync(project, { recursive: true, force: true });
+    }
+  }, 120_000);
 });

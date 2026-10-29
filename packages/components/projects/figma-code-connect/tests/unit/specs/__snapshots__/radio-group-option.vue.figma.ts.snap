@@ -1,5 +1,5 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=1-38
+// url=https://www.figma.com/design/KEY/Library?node-id=1-41
 // source=https://designsystem.porsche.com/v0.0.0/components/radio-group/api/
 // component=PRadioGroupOption
 // Auto generated - do not edit by hand.
@@ -10,13 +10,13 @@ import { slotted } from '../../../figma/helpers/slotted';
 
 const instance = figma.selectedInstance;
 
-const value = read.text('value');
+const value = read.text('value') ?? '';
 const label = read.text('label');
 const disabled = read.flag('disabled');
 const loading = read.flag('loading');
 
 export default {
-  example: figma.code`<PRadioGroupOption${value ? ` value="${escapeAttribute(value)}"` : ''}${label ? ` label="${escapeAttribute(label)}"` : ''}${disabled ? ' :disabled="true"' : ''}${loading ? ' :loading="true"' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', 'label') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', 'label-after') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PRadioGroupOption>`,
+  example: figma.code`<PRadioGroupOption value="${escapeAttribute(value)}"${label ? ` label="${escapeAttribute(label)}"` : ''}${disabled ? ' :disabled="true"' : ''}${loading ? ' :loading="true"' : ''}>${read.has('slot-label') ? slotted(instance.getSlot('slot-label'), 'slot-label', 'label') : ''}${read.has('slot-label-after') ? slotted(instance.getSlot('slot-label-after'), 'slot-label-after', 'label-after') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PRadioGroupOption>`,
   imports: [
     '// Setup: https://designsystem.porsche.com/v0.0.0/developing/vue/getting-started/',
     '// Docs: https://designsystem.porsche.com/v0.0.0/components/radio-group/api/',
