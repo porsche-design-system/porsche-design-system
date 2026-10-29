@@ -55,4 +55,5 @@ Never add a line to silence a gap design is expected to fix, and never re-seed t
 generator deletes an entry once Figma has the property or the prop is gone; delete one by hand only to ask design for
 that property after all. While the file still lists such an entry, the pull request's dry run is red: commit its
 artifact `accepted-gaps.json` in place of `figma/accepted-gaps.json`, or run `npm run figma:generate` and commit the
-file it rewrote.
+file it rewrote, then step 5: a deleted `component-set` entry adds that component's templates and a deleted `name=`
+entry changes the icon batches.

@@ -99,7 +99,7 @@ jobs:
           if git diff --quiet -- "$file"; then echo "figma/accepted-gaps.json accepts no closed gap"; exit 0; fi
           git diff -- "$file"
           echo "stale=true" >> "$GITHUB_OUTPUT"
-          echo "::error title=Figma Code Connect::figma/accepted-gaps.json accepts gaps Figma has closed: commit the artifact accepted-gaps.json in its place, or run npm run figma:generate"
+          echo "::error title=Figma Code Connect::figma/accepted-gaps.json accepts gaps Figma has closed: commit the artifact accepted-gaps.json in its place, or run npm run figma:generate; then npm run test:unit -- -u in the package and commit the snapshots"
           exit 1
       - uses: actions/upload-artifact@v7
         if: always() && steps.gaps.outputs.stale == 'true'
