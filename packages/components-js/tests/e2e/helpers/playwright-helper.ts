@@ -1,7 +1,7 @@
 import { expect, type Locator } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import type { ConsoleMessage, Page } from 'playwright';
 import { waitForComponentsReady } from './stencil';
 

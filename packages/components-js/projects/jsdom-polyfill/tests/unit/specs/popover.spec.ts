@@ -1,6 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import { waitFor } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';

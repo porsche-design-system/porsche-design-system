@@ -55,6 +55,7 @@
     "@playwright/test": "1.63.0",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/testing": "0.0.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node18": "^18.2.7",

@@ -1,7 +1,7 @@
 import type { ConsoleMessage, Locator, Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import { waitForComponentsReady } from './stencil';
 
 // TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075

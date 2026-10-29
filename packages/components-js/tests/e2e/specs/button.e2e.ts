@@ -1,5 +1,5 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import {
   addEventListener,
   type ClickableTests,

@@ -17,15 +17,6 @@
       "models": [
         "./dist/models/index.d.ts"
       ],
-      "testing": [
-        "./projects/testing/src/index.ts"
-      ],
-      "testing/normalize-css-namespace": [
-        "./projects/testing/src/normalizeCssNamespace.ts"
-      ],
-      "testing/assert-defined": [
-        "./projects/testing/src/assertDefined.ts"
-      ],
       "examples": [
         "./dist/examples/index.ts"
       ],
@@ -65,18 +56,6 @@
         "types": "./dist/models/index.d.ts",
         "default": "./dist/models/cjs/index.cjs"
       }
-    },
-    "./testing": {
-      "types": "./projects/testing/src/index.ts",
-      "default": "./projects/testing/src/index.ts"
-    },
-    "./testing/normalize-css-namespace": {
-      "types": "./projects/testing/src/normalizeCssNamespace.ts",
-      "default": "./projects/testing/src/normalizeCssNamespace.ts"
-    },
-    "./testing/assert-defined": {
-      "types": "./projects/testing/src/assertDefined.ts",
-      "default": "./projects/testing/src/assertDefined.ts"
     },
     "./css/styles.css": "./dist/css/styles.css",
     "./css/styles": "./dist/css/styles.css",

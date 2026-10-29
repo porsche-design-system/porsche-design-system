@@ -1,5 +1,5 @@
 import type { Page } from '@playwright/test';
-import { schemes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/shared/testing';
+import { schemes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/testing';
 import { setupScenario } from '../../../vrt/helpers';
 import { componentsValid, expect, test } from '../../helpers';
 

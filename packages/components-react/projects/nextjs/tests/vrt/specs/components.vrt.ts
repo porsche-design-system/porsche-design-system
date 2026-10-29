@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { viewportWidthL, viewportWidthXS } from '@porsche-design-system/shared/testing';
+import { viewportWidthL, viewportWidthXS } from '@porsche-design-system/testing';
 import * as globby from 'fast-glob';
 import path from 'path';
 

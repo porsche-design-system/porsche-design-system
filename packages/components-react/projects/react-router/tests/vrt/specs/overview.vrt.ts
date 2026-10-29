@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { viewportWidthXXL } from '@porsche-design-system/shared/testing';
+import { viewportWidthXXL } from '@porsche-design-system/testing';
 
 test.describe('overview', async () => {
   test('components', async ({ page }) => {
