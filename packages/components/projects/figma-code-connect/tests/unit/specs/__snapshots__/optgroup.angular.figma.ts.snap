@@ -1,7 +1,7 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
-// url=https://www.figma.com/design/KEY/Library?node-id=1-50
-// source=https://designsystem.porsche.com/v0.0.0/components/tabs/api/
-// component=p-tabs-item
+// url=https://www.figma.com/design/KEY/Library?node-id=1-36
+// source=https://designsystem.porsche.com/v0.0.0/components/select/api/
+// component=p-optgroup
 // Auto generated - do not edit by hand.
 import figma from 'figma';
 import { escapeAttribute, escapeText } from '../../../figma/helpers/escape';
@@ -11,14 +11,15 @@ import { slotted } from '../../../figma/helpers/slotted';
 const instance = figma.selectedInstance;
 
 const label = read.text('label');
+const disabled = read.flag('disabled');
 
 export default {
-  example: figma.code`<p-tabs-item${label ? ` label="${escapeAttribute(label)}"` : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-tabs-item>`,
+  example: figma.code`<p-optgroup${label ? ` label="${escapeAttribute(label)}"` : ''}${disabled ? ' [disabled]="true"' : ''}>${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</p-optgroup>`,
   imports: [
     '// Setup: https://designsystem.porsche.com/v0.0.0/developing/angular/getting-started/',
-    '// Docs: https://designsystem.porsche.com/v0.0.0/components/tabs/api/',
+    '// Docs: https://designsystem.porsche.com/v0.0.0/components/select/api/',
     "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
   ],
-  id: 'p-tabs-item',
+  id: 'p-optgroup',
   metadata: { nestable: true },
 };
