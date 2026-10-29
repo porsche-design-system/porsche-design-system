@@ -121,6 +121,10 @@ jobs:
       && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    # One run at a time, so the second of two overlapping runs sees the issue the first opened.
+    concurrency:
+      group: figma-code-connect-accepted-gaps
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install
@@ -156,7 +160,8 @@ jobs:
 
       # One open issue at a time: while Copilot is on one, a later run adds nothing. The issue is created unassigned,
       # its number patched into the body, then assigned: assigning `@copilot` is what starts the agent, and it needs a
-      # user token (weekly-dependency-agent.yml explains why GITHUB_TOKEN cannot).
+      # user token (weekly-dependency-agent.yml explains why GITHUB_TOKEN cannot). An open issue nobody is assigned to
+      # is one whose assignment failed, so the run finishes it instead of opening another.
       - name: 'Open the task issue for the Copilot coding agent'
         if: steps.gaps.outputs.stale == 'true'
         shell: bash
@@ -165,8 +170,9 @@ jobs:
         run: |
           label=figma-accepted-gaps
           gh label create "$label" --description 'Accepted gaps Figma has closed' --color 'a2eeef' 2>/dev/null || true
-          if [ -n "$(gh issue list --label "$label" --state open --json number --jq '.[0].number')" ]; then
-            echo "an issue is already open"; exit 0
+          open_issue="$(gh issue list --label "$label" --state open --json number,assignees --jq '.[0]')"
+          if [ -n "$open_issue" ] && [ "$(jq '.assignees | length' <<< "$open_issue")" -gt 0 ]; then
+            echo "an issue is already open and assigned"; exit 0
           fi
           file=packages/components/projects/figma-code-connect/figma/accepted-gaps.json
           {
@@ -180,16 +186,21 @@ jobs:
             echo
             echo 'Deliver one pull request against the default branch with `Closes #__ISSUE_NUMBER__` in its description.'
           } > issue-body.md
-          ISSUE_URL=
-          ISSUE_URL="$(gh issue create --title 'chore(figma-code-connect): drop the gaps design closed' --label "$label" --body-file issue-body.md)"
-          if [ -z "$ISSUE_URL" ]; then
-            echo "::error::gh issue create returned an empty URL" >&2
-            exit 1
+          if [ -n "$open_issue" ]; then
+            number="$(jq -r '.number' <<< "$open_issue")"
+            echo "finishing issue #$number, left unassigned by an earlier run"
+          else
+            ISSUE_URL=
+            ISSUE_URL="$(gh issue create --title 'chore(figma-code-connect): drop the gaps design closed' --label "$label" --body-file issue-body.md)"
+            if [ -z "$ISSUE_URL" ]; then
+              echo "::error::gh issue create returned an empty URL" >&2
+              exit 1
+            fi
+            number="${ISSUE_URL##*/}"
+            echo "opened $ISSUE_URL"
           fi
-          number="${ISSUE_URL##*/}"
           sed -i "s/__ISSUE_NUMBER__/${number}/g" issue-body.md
           gh issue edit "$number" --body-file issue-body.md --add-assignee '@copilot'
-          echo "opened $ISSUE_URL"
 
   # After a release, weekly and on dispatch: every open line, what design has to change in Figma for the latest release,
   # so a line comes again each week until design makes the change, and a designer's change to what a release reads
