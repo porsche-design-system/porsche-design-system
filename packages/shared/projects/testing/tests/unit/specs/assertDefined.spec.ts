@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { assertDefined } from '../../../src/testing/assertDefined';
+import { assertDefined } from '../../../src/assertDefined';
 
 describe('assertDefined()', () => {
   it.each([null, undefined])('should throw for %s', (value) => {

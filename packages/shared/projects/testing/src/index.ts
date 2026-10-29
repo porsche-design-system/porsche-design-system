@@ -1,6 +1,8 @@
 // `normalizeCssNamespace` is deliberately not re-exported here: it is consumed by Vitest setups and by the
 // published jsdom-polyfill bundle, which must not pull in the Playwright configs and the W3C validator below.
-// Import it via `@porsche-design-system/shared/testing/normalize-css-namespace` instead.
+// Import it via `@porsche-design-system/testing/normalize-css-namespace` instead.
+// Named re-exports, not `export *`: Node runs this source as CommonJS, and an ESM importer (examples, react-router)
+// only sees the names Node detects statically, which excludes `export *`.
 export { playwrightConfigA11y } from './playwright.a11y';
 export { playwrightConfigE2E } from './playwright.e2e';
 export {
