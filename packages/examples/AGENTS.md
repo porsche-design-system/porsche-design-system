@@ -124,6 +124,9 @@ src/
 │   ├── header/overlay/           # Header in its `overlay` variant
 │   ├── header/stacked/           # Header in its `stacked` variant
 │   ├── footer/                   # Footer below the content
+│   ├── forms/                    # index.page.tsx each – combobox patterns built on `p-input-search` and `p-popover`
+│   │   ├── search-combobox-option-list/ # filters a listbox of options and writes the choice into the field
+│   │   └── search-combobox-link-list/   # filters a dialog of links and navigates to the chosen page
 │   ├── popover/                  # index.page.tsx each – the behaviour is per example
 │   │   ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
 │   │   ├── priority-navigation/  # entries that no longer fit collapse into a popover

@@ -1261,6 +1261,24 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-pure": {
+    "cssVariablesMeta": {
+      "--p-button-pure-hover-inset-x": {
+        "defaultValue": "-4px",
+        "description": "Horizontal inset of the hover, active and focus indicator.",
+      },
+      "--p-button-pure-hover-inset-y": {
+        "defaultValue": "-2px",
+        "description": "Vertical inset of the hover, active and focus indicator.",
+      },
+      "--p-button-pure-px": {
+        "defaultValue": "0px",
+        "description": "Horizontal padding of the button. Enlarges the clickable and focusable area.",
+      },
+      "--p-button-pure-py": {
+        "defaultValue": "0px",
+        "description": "Vertical padding of the button. Enlarges the clickable and focusable area.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -5377,6 +5395,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "aria": {
         "allowedValues": {
+          "aria-activedescendant": "string",
           "aria-autocomplete": "string",
           "aria-controls": "string",
           "aria-description": "string",
@@ -5386,7 +5405,7 @@ exports[`should match snapshot 1`] = `
           "role": "string",
         },
         "defaultValue": null,
-        "description": "Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. \`role="combobox"\`, \`aria-expanded\`) and extra labelling (\`aria-label\`, \`aria-description\`).",
+        "description": "Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. \`role="combobox"\`, \`aria-expanded\`) and extra labelling (\`aria-label\`, \`aria-description\`). \`aria-controls\` and \`aria-activedescendant\` also accept an element reference (or, for \`aria-controls\`, a list of elements) so the relationship crosses the shadow boundary.",
         "isAria": true,
         "type": "InputSearchAriaAttribute",
       },
@@ -6992,6 +7011,24 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-pure": {
+    "cssVariablesMeta": {
+      "--p-link-pure-hover-inset-x": {
+        "defaultValue": "-4px",
+        "description": "Horizontal inset of the hover, active and focus indicator.",
+      },
+      "--p-link-pure-hover-inset-y": {
+        "defaultValue": "-2px",
+        "description": "Vertical inset of the hover, active and focus indicator.",
+      },
+      "--p-link-pure-px": {
+        "defaultValue": "0px",
+        "description": "Horizontal padding of the link. Enlarges the clickable and focusable area.",
+      },
+      "--p-link-pure-py": {
+        "defaultValue": "0px",
+        "description": "Vertical padding of the link. Enlarges the clickable and focusable area.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8495,6 +8532,12 @@ exports[`should match snapshot 1`] = `
         "description": "Sets ARIA attributes on the popover panel to improve accessibility for screen readers.",
         "isAria": true,
         "type": "PopoverAriaAttribute",
+      },
+      "arrow": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "description": "Shows the arrow that points at the trigger. When \`false\`, the panel keeps a small gap and is not offset by the arrow thickness.",
+        "type": "boolean",
       },
       "compact": {
         "allowedValues": "boolean",

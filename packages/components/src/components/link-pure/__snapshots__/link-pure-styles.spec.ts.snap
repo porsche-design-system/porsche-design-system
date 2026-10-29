@@ -52,6 +52,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -66,10 +69,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -96,8 +99,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     font-size: var(--p-typescale-sm);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-link-pure-hover-inset-x,-4px);
+    left: var(--p-link-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -116,8 +119,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     font-size: var(--p-typescale-md);
   }
   .root::before {
-    right: -2px;
-    left: -2px;
+    right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+    left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -136,8 +139,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     font-size: var(--p-typescale-lg);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-link-pure-hover-inset-x,-4px);
+    left: var(--p-link-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -156,8 +159,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     font-size: var(--p-typescale-xl);
   }
   .root::before {
-    right: -2px;
-    left: -2px;
+    right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+    left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -176,8 +179,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     font-size: inherit;
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-link-pure-hover-inset-x,-4px);
+    left: var(--p-link-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -225,6 +228,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -239,10 +245,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -266,8 +272,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     gap: var(--p-spacing-static-xs);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-link-pure-hover-inset-x,-4px);
+    left: var(--p-link-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -282,8 +288,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     gap: 0;
   }
   .root::before {
-    right: -2px;
-    left: -2px;
+    right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+    left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -298,8 +304,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     gap: var(--p-spacing-static-xs);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-link-pure-hover-inset-x,-4px);
+    left: var(--p-link-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -314,8 +320,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     gap: 0;
   }
   .root::before {
-    right: -2px;
-    left: -2px;
+    right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+    left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
     border-radius: var(--p-radius-full);
   }
   .label {
@@ -330,8 +336,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
     gap: var(--p-spacing-static-xs);
   }
   .root::before {
-    right: -4px;
-    left: -4px;
+    right: var(--p-link-pure-hover-inset-x,-4px);
+    left: var(--p-link-pure-hover-inset-x,-4px);
     border-radius: var(--p-radius-lg);
   }
   .label {
@@ -378,6 +384,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -392,10 +401,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -451,6 +460,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -465,10 +477,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -528,8 +540,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  inset-block: -2px !important;
-  inset-inline: -4px !important;
+  inset-block: var(--p-link-pure-hover-inset-y,-2px) !important;
+  inset-inline: var(--p-link-pure-hover-inset-x,-4px) !important;
   border-radius: var(--p-radius-lg) !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -544,6 +556,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -558,10 +573,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -610,6 +625,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -624,10 +642,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -683,6 +701,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -697,10 +718,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -756,6 +777,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -770,10 +794,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -829,6 +853,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -843,10 +870,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -902,6 +929,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -916,10 +946,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -979,8 +1009,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  inset-block: -2px !important;
-  inset-inline: -2px !important;
+  inset-block: var(--p-link-pure-hover-inset-y,-2px) !important;
+  inset-inline: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px)) !important;
   border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -995,6 +1025,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1009,10 +1042,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
+  left: var(--p-link-pure-hover-inset-x,var(--p-link-pure-hover-inset-y,-2px));
   border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -1060,6 +1093,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1074,10 +1110,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -1108,6 +1144,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
   .root:focus-visible::before {
     outline-color: Highlight;
+  }
+  .root::before {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
   }
 }
 
@@ -1135,6 +1175,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1149,10 +1192,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -1183,6 +1226,10 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
   .root:focus-visible::before {
     outline-color: Highlight;
+  }
+  .root::before {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
   }
 }
 
@@ -1211,6 +1258,9 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1225,10 +1275,10 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -1276,6 +1326,9 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 }
 .root {
   all: unset;
+  box-sizing: border-box;
+  padding-inline: var(--p-link-pure-px,0);
+  padding-block: var(--p-link-pure-py,0);
   display: flex;
   width: 100%;
   cursor: pointer;
@@ -1290,10 +1343,10 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 .root::before {
   content: "";
   position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
+  top: var(--p-link-pure-hover-inset-y,-2px);
+  bottom: var(--p-link-pure-hover-inset-y,-2px);
+  right: var(--p-link-pure-hover-inset-x,-4px);
+  left: var(--p-link-pure-hover-inset-x,-4px);
   border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
