@@ -3,10 +3,11 @@ import type { JSX } from 'react';
 import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 import { minifyHTML } from './utils';
 
-const convertToJSX = (templates: string[]): JSX.Element[] => {
+const convertToJSX = (templates: string[], keyPrefix: string): JSX.Element[] => {
   return templates.map(
-    (template) =>
+    (template, index) =>
       template
+        .replace(/^<(\w+)/, `<$1 key="${keyPrefix}-${index}"`)
         .replace(/'\$cdnBaseUrl(.*?)'/g, '{`${cdnBaseUrl}$1`}')
         .replace('"$appTitle"', '{appTitle}')
         .replace('"$manifestUrl"', '{manifestUrl}') as unknown as JSX.Element
@@ -74,8 +75,8 @@ export const generateMetaTagsAndIconLinksPartial = async (): Promise<string> => 
   const minifiedOgImageMeta = JSON.stringify(await Promise.all(ogImageMeta.map((template) => minifyHTML(template))));
   const minifiedMetaIconsHTML = JSON.stringify(await Promise.all(metaIconLinks.map((template) => minifyHTML(template))));
 
-  const metaIconTemplatesJSX = convertToJSX(metaIconLinks);
-  const ogImageMetaJSX = convertToJSX(ogImageMeta);
+  const metaIconTemplatesJSX = convertToJSX(metaIconLinks, 'meta-icon');
+  const ogImageMetaJSX = convertToJSX(ogImageMeta, 'og-image');
 
   const types = `type Metadata = {
   themeColor: { media: string, color: string }[];
