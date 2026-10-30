@@ -108,6 +108,7 @@ it.each<TagName>(tagNamesPublicWithProps)(
           {}
         ))
     );
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const component = componentFactory(tagName);
 
     try {
@@ -119,6 +120,17 @@ it.each<TagName>(tagNamesPublicWithProps)(
     try {
       component.render();
     } catch {}
+
+    if (tagName === 'p-display') {
+      expect(warnSpy).toHaveBeenCalledWith(
+        '[Porsche Design System]',
+        'component p-display is deprecated and will be removed with next major release.',
+        'Please use p-heading component instead.',
+        component.host
+      );
+    } else {
+      expect(warnSpy).not.toHaveBeenCalled();
+    }
 
     // it would be possible to exclude a prop from propTypes via Omit<...>
     // to get confidence that isn't the case, we check against components meta which contains all props
@@ -174,6 +186,7 @@ it.each<TagName>(tagNamesWithJss)(
   'should call attachComponentCss() with correct parameters via render for %s',
   (tagName) => {
     const spy = vi.spyOn(jssUtils, 'attachComponentCss');
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const component = componentFactory(tagName);
 
     // some components require a parent and certain props in order to work
@@ -200,6 +213,16 @@ it.each<TagName>(tagNamesWithJss)(
     } catch {}
 
     expect(spy).toHaveBeenCalledTimes(1); // via render
+    if (tagName === 'p-display') {
+      expect(warnSpy).toHaveBeenCalledWith(
+        '[Porsche Design System]',
+        'component p-display is deprecated and will be removed with next major release.',
+        'Please use p-heading component instead.',
+        component.host
+      );
+    } else {
+      expect(warnSpy).not.toHaveBeenCalled();
+    }
   }
 );
 

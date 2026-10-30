@@ -62,10 +62,6 @@ describe('disconnectedCallback', () => {
 });
 
 describe('render', () => {
-  beforeEach(() => {
-    vi.spyOn(global.console, 'warn').mockImplementation(() => {});
-  });
-
   it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters when open="true"', () => {
     const warnIfAriaAndHeadingPropsAreUndefinedSpy = vi.spyOn(
       warnIfAriaAndHeadingPropsAreUndefined,

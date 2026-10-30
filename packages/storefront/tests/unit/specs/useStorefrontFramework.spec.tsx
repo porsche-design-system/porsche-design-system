@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
@@ -66,7 +66,7 @@ describe('StorefrontFrameworkProvider', () => {
       </StorefrontFrameworkProvider>
     );
 
-    screen.getByText('Set React').click();
+    fireEvent.click(screen.getByText('Set React'));
 
     expect(localStorage.setItem).toHaveBeenCalledWith('storefrontFramework', 'react');
     await waitFor(() => expect(screen.getByTestId('framework')).toHaveTextContent('react'));
@@ -79,7 +79,7 @@ describe('StorefrontFrameworkProvider', () => {
       </StorefrontFrameworkProvider>
     );
 
-    screen.getByText('Set Next').click();
+    fireEvent.click(screen.getByText('Set Next'));
 
     expect(localStorage.setItem).toHaveBeenCalledWith('storefrontFramework', 'next');
     await waitFor(() => expect(screen.getByTestId('framework')).toHaveTextContent('next'));

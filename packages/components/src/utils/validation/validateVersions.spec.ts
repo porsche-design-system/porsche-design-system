@@ -15,13 +15,14 @@ describe('validateVersions()', () => {
       '1.2.5': { ...sharedProps, prefixes: ['my-prefix'] },
     };
 
-    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
     validateVersions();
 
     await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT)); // Wait until version validation
 
     expect(consoleWarnSpy).toHaveBeenCalledWith(
+      '[Porsche Design System]',
       "Multiple different versions detected!\nWhile bootstrapping multiple versions is valid, it's highly recommended to upgrade all instances to the latest version in use for the best performance.\nRefer to the document.porscheDesignSystem object for detailed information on the current versions in use.\n",
       document.porscheDesignSystem
     );
