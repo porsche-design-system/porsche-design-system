@@ -23,6 +23,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - **Partials**: type checking failed with `Cannot find module 'react'` in projects without React and with `skipLibCheck`
   disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` submitted the form even when the
+  `keydown` or `keypress` event was cancelled with `preventDefault()`, e.g. by a password manager
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`: pressing `Enter` submitted a form without a submit button,
+  although it contained another `Input Password`, `Input Month` or `Input Week`
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 
 ## [4.10.1] - 2026-10-23
 

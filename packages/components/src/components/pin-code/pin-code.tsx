@@ -9,6 +9,7 @@ import {
   hasLabel,
   hasMessage,
   hasPropValueChanged,
+  runDefaultActionUnlessPrevented,
   setAriaIDREF,
   validateProps,
 } from '../../utils';
@@ -222,7 +223,14 @@ export class PinCode {
         />
         {/* dir overwrites default behavior in RTL mode, because pin codes are always numeric and should be treated in ltr direction. */}
         {/* biome-ignore lint/a11y/noStaticElementInteractions: ok */}
-        <div class="wrapper" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput} dir="ltr">
+        <div
+          class="wrapper"
+          onKeyDown={this.onKeyDown}
+          onKeyPress={this.onKeyPress}
+          onPaste={this.onPaste}
+          onInput={this.onInput}
+          dir="ltr"
+        >
           {Array.from(new Array(this.length), (_, index) => (
             <input
               key={index}
@@ -349,16 +357,23 @@ export class PinCode {
       }
       target.value = '';
       this.updateValue(getConcatenatedInputValues(this.inputElements));
-    } else if (key === 'Enter') {
-      if (this.internals?.form && isFormSubmittable(this.host, this.internals?.form)) {
-        this.internals?.form.requestSubmit();
-      }
     }
     // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
     // workaround for ^ in firefox key: 'Process'
     else if (key === 'Dead' || key === 'Process') {
       target.blur();
       requestAnimationFrame(() => target.focus());
+    }
+  };
+
+  private onKeyPress = (event: KeyboardEvent): void => {
+    if (event.key === 'Enter') {
+      runDefaultActionUnlessPrevented(event, () => {
+        const form = this.internals?.form;
+        if (form && isFormSubmittable(this.host, form)) {
+          form.requestSubmit();
+        }
+      });
     }
   };
 

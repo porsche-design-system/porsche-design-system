@@ -1,3 +1,4 @@
+import type { TagName } from '@porsche-design-system/shared';
 import { type Mock, vi } from 'vitest';
 import { implicitSubmit } from './implicitSubmit';
 
@@ -18,18 +19,30 @@ describe('implicitSubmit', () => {
     internals = { form } as any;
 
     host = document.createElement('p-input-text');
+
+    vi.useFakeTimers();
   });
 
-  it('does nothing if key is not Enter', () => {
-    const event = new KeyboardEvent('keydown', { key: 'a' });
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  const pressEnter = (init: KeyboardEventInit = {}): KeyboardEvent => {
+    const event = new KeyboardEvent('keypress', { key: 'Enter', cancelable: true, ...init });
     implicitSubmit(event, internals as any, host);
+    vi.runAllTimers();
+    return event;
+  };
+
+  it('does nothing if key is not Enter', () => {
+    pressEnter({ key: 'a' });
     expect(mockClick).not.toHaveBeenCalled();
     expect(mockRequestSubmit).not.toHaveBeenCalled();
   });
 
   it('does nothing if form is not present', () => {
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    implicitSubmit(event, { form: null } as any, host);
+    implicitSubmit(new KeyboardEvent('keypress', { key: 'Enter' }), { form: null } as any, host);
+    vi.runAllTimers();
     expect(mockClick).not.toHaveBeenCalled();
     expect(mockRequestSubmit).not.toHaveBeenCalled();
   });
@@ -42,8 +55,7 @@ describe('implicitSubmit', () => {
 
     form.appendChild(submitButton);
 
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    implicitSubmit(event, internals as any, host);
+    pressEnter();
 
     expect(mockClick).toHaveBeenCalled();
     expect(mockRequestSubmit).not.toHaveBeenCalled();
@@ -60,8 +72,7 @@ describe('implicitSubmit', () => {
       writable: false,
     });
 
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    implicitSubmit(event, internals as any, host);
+    pressEnter();
 
     expect(mockClick).toHaveBeenCalled();
     expect(mockRequestSubmit).not.toHaveBeenCalled();
@@ -78,8 +89,7 @@ describe('implicitSubmit', () => {
       writable: false,
     });
 
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    implicitSubmit(event, internals as any, host);
+    pressEnter();
 
     expect(mockRequestSubmit).toHaveBeenCalled();
   });
@@ -89,8 +99,7 @@ describe('implicitSubmit', () => {
     input.type = 'text'; // blocking type
     form.appendChild(input);
 
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    implicitSubmit(event, internals as any, host);
+    pressEnter();
 
     expect(mockRequestSubmit).not.toHaveBeenCalled();
   });
@@ -103,8 +112,7 @@ describe('implicitSubmit', () => {
       writable: false,
     });
 
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    implicitSubmit(event, internals as any, host);
+    pressEnter();
 
     expect(mockRequestSubmit).not.toHaveBeenCalled();
   });
@@ -117,9 +125,64 @@ describe('implicitSubmit', () => {
       writable: false,
     });
 
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    implicitSubmit(event, internals as any, host);
+    pressEnter();
 
     expect(mockRequestSubmit).toHaveBeenCalled();
   });
+
+  it('does not submit before the event has been dispatched to all listeners', () => {
+    const event = new KeyboardEvent('keypress', { key: 'Enter', cancelable: true });
+    implicitSubmit(event, internals as any, host);
+
+    expect(mockRequestSubmit).not.toHaveBeenCalled();
+    vi.runAllTimers();
+    expect(mockRequestSubmit).toHaveBeenCalled();
+  });
+
+  it('does not call requestSubmit if the event was cancelled before', () => {
+    const event = new KeyboardEvent('keypress', { key: 'Enter', cancelable: true });
+    event.preventDefault();
+    implicitSubmit(event, internals as any, host);
+    vi.runAllTimers();
+
+    expect(mockRequestSubmit).not.toHaveBeenCalled();
+  });
+
+  it('does not call requestSubmit if the event is cancelled by a later listener', () => {
+    const event = new KeyboardEvent('keypress', { key: 'Enter', cancelable: true });
+    implicitSubmit(event, internals as any, host);
+    event.preventDefault();
+    vi.runAllTimers();
+
+    expect(mockRequestSubmit).not.toHaveBeenCalled();
+  });
+
+  it('does not click the submit button if the event is cancelled by a later listener', () => {
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    vi.spyOn(submitButton, 'matches').mockReturnValue(true);
+    submitButton.click = mockClick;
+    form.appendChild(submitButton);
+
+    const event = new KeyboardEvent('keypress', { key: 'Enter', cancelable: true });
+    implicitSubmit(event, internals as any, host);
+    event.preventDefault();
+    vi.runAllTimers();
+
+    expect(mockClick).not.toHaveBeenCalled();
+  });
+
+  it.each<TagName>(['p-input-password', 'p-input-month', 'p-input-week'])(
+    'does not call requestSubmit if a blocking %s is present',
+    (tagName) => {
+      Object.defineProperty(form, 'elements', {
+        value: [document.createElement(tagName)],
+        writable: false,
+      });
+
+      pressEnter();
+
+      expect(mockRequestSubmit).not.toHaveBeenCalled();
+    }
+  );
 });
