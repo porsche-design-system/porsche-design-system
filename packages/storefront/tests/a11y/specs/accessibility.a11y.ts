@@ -2,7 +2,7 @@ import console from 'node:console'; // workaround for nicer logs
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { Locator, Page } from '@playwright/test';
-import { schemes } from '@porsche-design-system/shared/testing';
+import { schemes } from '@porsche-design-system/testing';
 import { getInternalUrls } from '../../e2e/helpers/sitemap';
 import { expect, test } from '../helpers/axe-helper';
 

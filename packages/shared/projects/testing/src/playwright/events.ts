@@ -1,4 +1,4 @@
-import type { Locator, Page } from '@playwright/test';
+import type { Locator } from '@playwright/test';
 
 type SerializedTarget = {
   nodeName: string;
@@ -55,11 +55,4 @@ export const getEventSummary = (
       targets: store[targetsKey] || [],
     };
   }, eventName);
-};
-
-export const waitForImproveButtonHandlingForCustomElement = async (page: Page): Promise<void> => {
-  // `improveButtonHandlingForCustomElement` appends, clicks and removes its fake button inside a `setTimeout(…, 1)`
-  // scheduled on click, so polling for the fake button resolves before it was even appended. A timer scheduled
-  // afterwards with a later deadline only fires once that one has run.
-  await page.evaluate(() => new Promise<void>((resolve) => window.setTimeout(resolve, 10)));
 };

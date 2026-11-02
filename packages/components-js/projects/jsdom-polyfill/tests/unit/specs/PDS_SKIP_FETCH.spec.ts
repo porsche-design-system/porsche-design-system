@@ -1,6 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import { vi } from 'vitest';
 
 let prevValue: boolean;
