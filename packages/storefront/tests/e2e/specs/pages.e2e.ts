@@ -6,16 +6,19 @@ const internalUrls = getInternalUrls();
 /** The patterns and templates `WebsiteViewer` frames: static files copied into `public/examples/`, not routes. */
 const isExampleUrl = (url: string): boolean => url.startsWith('/examples/');
 
-/** Console errors and warnings a page is expected to log, by url. Each entry says why. */
+/**
+ * Console errors and warnings a page is expected to log, by url. A pattern is tested against the message text
+ * followed by its source url, so a 404 can be expected for one file only. Each entry says why.
+ */
 const expectedConsole: Record<string, RegExp[]> = {
   // The page documents the deprecated p-display component.
   '/components/display/configurator/': [/component p-display is deprecated/],
   '/components/display/examples/': [/component p-display is deprecated/],
   // TODO Code example previews load images relative to the page. Remove once #4800 resolves them in toPreview.
-  '/components/button-tile/examples/': [/status of 404/],
-  '/components/link-tile/examples/': [/status of 404/],
-  '/components/multi-select/examples/': [/status of 404/],
-  '/components/table/examples/': [/status of 404/],
+  '/components/button-tile/examples/': [/status of 404 .*\/assets\/lights\.jpg$/],
+  '/components/link-tile/examples/': [/status of 404 .*\/assets\/lights\.jpg$/],
+  '/components/multi-select/examples/': [/status of 404 .*\/assets\/(718|911|cayenne|macan|panamera|taycan)\.png$/],
+  '/components/table/examples/': [/status of 404 .*\/assets\/(718|911|macan|panamera|taycan)\.png$/],
 };
 
 test('should have no exponential increase in internal urls', () => {
@@ -38,8 +41,8 @@ for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, 
 
     const consoleMessages = (await page.consoleMessages())
       .filter((message) => ['error', 'warning'].includes(message.type()))
-      .filter((message) => !expectedConsole[url]?.some((pattern) => pattern.test(message.text())))
-      .map((message) => ({ text: message.text(), url: message.location().url }));
+      .map((message) => ({ text: message.text(), url: message.location().url }))
+      .filter((message) => !expectedConsole[url]?.some((pattern) => pattern.test(`${message.text} ${message.url}`)));
     const pageErrors = (await page.pageErrors()).map((error) => error.stack || error.message);
     expect.soft(consoleMessages, 'console errors and warnings').toEqual([]);
     expect.soft(pageErrors, 'page errors').toEqual([]);
