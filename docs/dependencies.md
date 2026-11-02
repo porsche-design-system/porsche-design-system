@@ -151,8 +151,9 @@ Current overrides:
 - `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.63.0`). `@axe-core/playwright`
   declares a wide peer (`playwright-core >= 1.0.0`), so on a clean lockfile regeneration npm auto-installs the
   **latest** `playwright-core` at the root while the held-back `playwright` nests its own matching copy. The resulting
-  two copies of the Playwright type definitions break `next build`'s type check in the storefront
-  (`tests/a11y/helpers/axe-helper.ts`). Bump this pin together with [`@playwright/test`](#held-back-dependencies).
+  two copies of the Playwright type definitions break the type check of `new AxeBuilder({ page })` in
+  `packages/shared/projects/testing/src/axe.ts`, which `shared`'s `build` runs. Bump this pin together with
+  [`@playwright/test`](#held-back-dependencies).
 
 **Security overrides** force vulnerable transitive dependencies up to their first patched release (see
 [Remediation policy](#remediation-policy)). There are currently **none**: every previous entry (`@tootallnate/once`,
@@ -439,12 +440,12 @@ easy to break:
 
 3. **jsdom's `CSS` namespace is not browser-faithful.** Its operations brand-check `this`, so consumers that cache them
    unbound break — most notably `jss` (`var nativeEscape = typeof CSS !== 'undefined' && CSS.escape`). The single
-   `normalizeCssNamespace()` helper in `packages/shared/src/testing/normalizeCssNamespace.ts` rebinds them. Import it
-   via its dedicated deep export, never via the `testing` barrel (which would drag the Playwright configs and the W3C
-   validator along):
+   `normalizeCssNamespace()` helper in `packages/shared/projects/testing/src/normalizeCssNamespace.ts` rebinds them.
+   Import it via its dedicated deep export, never via the `testing` barrel (which would drag the Playwright configs and
+   the W3C validator along):
 
    ```ts
-   import { normalizeCssNamespace } from '@porsche-design-system/shared/testing/normalize-css-namespace';
+   import { normalizeCssNamespace } from '@porsche-design-system/testing/normalize-css-namespace';
    ```
 
    It is called from the Vitest setups of `shared`, `components` and `components-react/react-ssr-wrapper` (all built

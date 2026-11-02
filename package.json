@@ -11,6 +11,7 @@
   "description": "Porsche Design System Monorepo",
   "workspaces": [
     "packages/*",
+    "packages/shared/projects/testing",
     "packages/assets/projects/crest",
     "packages/assets/projects/flags",
     "packages/assets/projects/fonts",
@@ -110,7 +111,7 @@
     "typecheck:all:tests": "npm run typecheck:shared:tests && npm run typecheck:tokens:tests && npm run typecheck:assets:tests && npm run typecheck:styles:tests && npm run typecheck:utilities:tests && npm run typecheck:component-meta:tests && npm run typecheck:components:tests && npm run typecheck:components-js:tests && npm run typecheck:components-angular:tests && npm run typecheck:components-react:tests && npm run typecheck:components-vue:tests && npm run typecheck:examples:tests && npm run typecheck:storefront:tests",
     "typecheck:scripts": "tsc --noEmit -p tsconfig.json",
     "typecheck:shared": "npm run typecheck --workspace=@porsche-design-system/shared",
-    "typecheck:shared:tests": "npm run typecheck:tests --workspace=@porsche-design-system/shared",
+    "typecheck:shared:tests": "npm run typecheck:tests --workspace=@porsche-design-system/shared && npm run typecheck:tests --workspace=@porsche-design-system/testing",
     "typecheck:tokens": "npm run typecheck --workspace=@porsche-design-system/tokens",
     "typecheck:tokens:tests": "npm run typecheck:tests --workspace=@porsche-design-system/tokens && npm run typecheck:tests --workspace=@porsche-design-system/tokens-meta",
     "typecheck:assets": "npm run typecheck --workspace=@porsche-design-system/assets",

@@ -21,7 +21,7 @@
  * export so that neither a Vitest setup nor the published bundle drags the Playwright configs and the
  * W3C validator of the `testing` barrel along:
  *
- *   import { normalizeCssNamespace } from '@porsche-design-system/shared/testing/normalize-css-namespace';
+ *   import { normalizeCssNamespace } from '@porsche-design-system/testing/normalize-css-namespace';
  *
  * Call it from the Vitest setup of every package that renders JSS in a jsdom environment. Packages
  * downstream of `@porsche-design-system/components-js` get it for free by importing its

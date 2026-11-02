@@ -5,7 +5,7 @@ import {
   viewportWidthM,
   viewportWidths,
   viewportWidthXL,
-} from '@porsche-design-system/shared/testing';
+} from '@porsche-design-system/testing';
 import { closeSidebars, resetAnimations, waitForImagesToBeLoaded } from '../helpers/helpers';
 
 test.describe('markdown', async () => {

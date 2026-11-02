@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthXXL } from '@porsche-design-system/shared/testing';
+import { schemes, viewportWidthXXL } from '@porsche-design-system/testing';
 import { setupScenario } from '../helpers';
 
 // executed in Chrome only

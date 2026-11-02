@@ -1,6 +1,6 @@
 import { expect, Locator, type Page, test } from '@playwright/test';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
