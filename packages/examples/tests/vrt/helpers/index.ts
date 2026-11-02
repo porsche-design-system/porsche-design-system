@@ -1,13 +1,8 @@
 import type { Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { schemes } from '@porsche-design-system/testing';
-import {
-  getDevice,
-  getExampleUrl,
-  setupExamplePage,
-  waitForComponentsReady,
-  waitForStableLayout,
-} from '../../helpers/index.ts';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { getDevice, getExampleUrl, setupExamplePage, waitForStableLayout } from '../../helpers/index.ts';
 
 /**
  * The captures every example gets, whatever it demonstrates.
@@ -77,6 +72,6 @@ export const testInitialStates = (id: string, { skipFontSize200 }: InitialStates
  */
 export const waitForStableState = async (page: Page): Promise<void> => {
   await page.mouse.move(0, 0);
-  await waitForComponentsReady(page);
+  await waitForComponentsHydrated(page);
   await waitForStableLayout(page);
 };
