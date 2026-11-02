@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-// The unit tests for the helper itself live in `packages/shared/tests/unit/specs/normalizeCssNamespace.spec.ts`,
+// The unit tests for the helper itself live in `packages/shared/projects/testing/tests/unit/specs/normalizeCssNamespace.spec.ts`,
 // next to its single implementation. This spec only asserts that importing the polyfill normalizes the global
 // `CSS` namespace of the jsdom environment, which is what consumers (e.g. jss) rely on.
 describe('global CSS namespace', () => {

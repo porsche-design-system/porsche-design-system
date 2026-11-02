@@ -1,4 +1,4 @@
-import { type Config } from '@playwright/test';
+import type { Config } from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.

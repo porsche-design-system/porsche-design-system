@@ -1,10 +1,6 @@
-import { schemes } from '@porsche-design-system/shared/testing';
-import {
-  getExampleUrl,
-  setupExamplePage,
-  waitForComponentsReady,
-  waitForStablePosition,
-} from '../../../helpers/index.ts';
+import { schemes } from '@porsche-design-system/testing';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
@@ -30,7 +26,7 @@ for (const scheme of schemes) {
     const back = steps.nth(1).locator('[data-tour="back"]');
     await expect(back).toBeVisible();
     await waitForStablePosition(back);
-    await waitForComponentsReady(page);
+    await waitForComponentsHydrated(page);
 
     await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--step-2--${scheme}`);
   });

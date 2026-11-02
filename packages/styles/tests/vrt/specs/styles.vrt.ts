@@ -8,7 +8,7 @@ import {
   viewportWidthXS,
   viewportWidthXXL,
   viewportWidthXXS,
-} from '@porsche-design-system/shared/testing';
+} from '@porsche-design-system/testing';
 import { styleSolutions, styles } from '../../../src/routes';
 
 const stylesToExclude: (typeof styles)[number][] = ['motion', 'focus-visible'];

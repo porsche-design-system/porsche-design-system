@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { normalizeCssNamespace } from '../../../src/testing/normalizeCssNamespace';
+import { normalizeCssNamespace } from '../../../src/normalizeCssNamespace';
 
 /**
  * Rebuilds the shape jsdom >= 30 uses for the `CSS` namespace: the operations live on a prototype and
