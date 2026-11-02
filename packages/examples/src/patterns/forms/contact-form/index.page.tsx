@@ -37,7 +37,7 @@ const Page = () => (
               <p-segmented-control-item value="2026-10-23">23.10.2026</p-segmented-control-item>
             </p-segmented-control>
             <p-textarea name="message" label="Your message (optional)" placeholder="Some placeholder" />
-            <p-fieldset label-size="small">
+            <p-fieldset class="[--p-fieldset-label-mb:var(--spacing-static-xs)]" label-size="small">
               <p-text tag="span" slot="label">
                 Additional Services (optional)
               </p-text>
