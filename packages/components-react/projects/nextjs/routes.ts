@@ -624,6 +624,10 @@ const generatedRoutes = {
     "path": "/popover-flex-parent",
     "name": "PopoverFlexParent"
   },
+  "popoverHideArrow": {
+    "path": "/popover-hide-arrow",
+    "name": "PopoverHideArrow"
+  },
   "popoverLeft": {
     "path": "/popover-left",
     "name": "PopoverLeft"

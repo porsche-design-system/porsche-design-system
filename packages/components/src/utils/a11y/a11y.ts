@@ -27,8 +27,9 @@ export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string
     return Object.fromEntries(
       Object.entries(parseJSONAttribute(rawAttributes)).map(([key, val]) => [
         key,
-        // convert booleans to strings so that values are properly set and not just result in attributes without a value when true in jsx
-        typeof val === 'boolean' ? `${val}` : val,
+        // convert booleans to strings so that values are properly set and not just result in attributes without a value when true in jsx;
+        // convert Element / Element[] (or null) to null so Stencil does not stringify "[object HTMLElement]" as an attribute
+        typeof val === 'boolean' ? `${val}` : typeof val === 'object' ? null : val,
       ])
     );
   }

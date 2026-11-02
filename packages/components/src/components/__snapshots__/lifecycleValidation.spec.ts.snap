@@ -680,6 +680,7 @@ exports[`should call validateProps() with correct parameters via render for p-pi
 exports[`should call validateProps() with correct parameters via render for p-popover > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "arrow": "boolean",
   "compact": "boolean",
   "description": "string",
   "direction": "oneOf",

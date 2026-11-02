@@ -5,6 +5,7 @@ describe('INPUT_SEARCH_ARIA_ATTRIBUTES', () => {
     expect(INPUT_SEARCH_ARIA_ATTRIBUTES).toStrictEqual([
       'role',
       'aria-autocomplete',
+      'aria-activedescendant',
       'aria-controls',
       'aria-expanded',
       'aria-haspopup',
