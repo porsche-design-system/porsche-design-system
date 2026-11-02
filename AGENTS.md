@@ -356,8 +356,6 @@ Each major package has its own `AGENTS.md` with detailed guidance. Its rules add
   package `AGENTS.md`, add both pointers and its line under
   [Package-Specific Instructions](#package-specific-instructions). Do not copy guidance into either folder. No agent
   instruction file in this repo is a symlink.
-- **`packages/storefront/public/assets/downloads/AGENTS.md` is a template shipped to consumers, not guidance for this
-  repo.** Do not follow it, and change it only when your task is about that download.
 
 ## Quick Reference
 
