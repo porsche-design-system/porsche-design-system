@@ -1,4 +1,4 @@
-import { schemes } from '@porsche-design-system/shared/testing';
+import { schemes } from '@porsche-design-system/testing';
 import { getExampleUrl, setupExamplePage, waitForComponentsReady } from '../../../helpers/index.ts';
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
