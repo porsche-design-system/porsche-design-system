@@ -56,7 +56,7 @@ export const renderComponentsSection = (framework: Framework, roster: readonly C
     `The Porsche Design System ships ${roster.length} components. Open a component's reference for its ` +
       'props, slots, events, CSS variables and examples before using it. Each reference\'s "Examples" ' +
       'table links runnable, framework-specific example files under `references/components/<tag>/examples/`. ' +
-      'Before generating a component, also load sibling `accessibility.md` when that file exists.',
+      'Before generating a component, also load `references/components/<tag>/accessibility.md` when that file exists.',
     '',
     `\`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow ` +
       `\`component-meta\` (raw data at \`${rawMetaReference(framework)}\`).`,

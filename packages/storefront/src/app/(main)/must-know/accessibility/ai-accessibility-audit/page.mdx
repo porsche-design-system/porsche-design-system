@@ -23,7 +23,7 @@ For generation-time guardrails, see [**AI Agent Context**](/must-know/accessibil
   | ---------------- | ----------------------------------------------------------------------------------------------- |
   | **Editors** | [GitHub Copilot](https://docs.github.com/en/copilot) in VS Code, [Claude Code](https://docs.anthropic.com/en/docs/claude-code), or Cursor |
   | **Runtime** | [APM CLI](https://microsoft.github.io/apm/) (tested with [0.30.0](https://github.com/microsoft/apm/releases/tag/v0.30.0)), Node.js, Python 3, Playwright, and the project's installed `@axe-core/playwright` / `axe-core` (latest at install time) |
-  | **Access** | Read access to [porsche-design-system/skills](https://github.com/porsche-design-system/skills) |
+  | **Access** | Read access to the internal [porsche-design-system/skills](https://github.com/porsche-design-system/skills) repository (available to Porsche GitHub Enterprise members; reach out via [Support](/help/support) to request access) |
   | **Product** | A local checkout of the application, running locally during the audit |
 </Notification>
 
@@ -33,7 +33,7 @@ Install [APM](https://microsoft.github.io/apm/quickstart/) if needed:
 
 - macOS: `brew install apm`
 - Linux / macOS without Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`
-- Windows: `irm https://aka.ms/apm-windows | iex`)
+- Windows: `irm https://aka.ms/apm-windows | iex`
 
 Then from the product repository root install the **package** and pass `--target` for the agent harnesses that should
 receive the files. Comma-separate several values to target different harnesses.
@@ -53,8 +53,9 @@ Several harnesses (comma-separated):
 apm install porsche-design-system/skills/packages/web-accessibility-audit#web-accessibility-audit--v0.5.0 --target cursor,claude,copilot
 ```
 
-To move version, re-run `apm install` with the new package tag. To remove it, run `apm uninstall` and `apm install`
-again.
+To move version, re-run `apm install` with the new package tag. To remove it, pass the package from `apm.yml` or
+`apm deps list` to `apm uninstall` (e.g. `apm uninstall porsche-design-system/skills/packages/web-accessibility-audit`)
+and run `apm install` again.
 
 ## Run an audit
 
@@ -73,7 +74,9 @@ installed skills.
 
 The report lands in `.a11y/runs/<timestamp>/` (`ACCESSIBILITY-AUDIT.md` and script-generated `findings.json`). Score,
 grade, and finding identity come from a pinned rule catalog, so two runs of the same prompt should match on those fields
-when the page and scanners are unchanged. Details:
+when the page and scanners are unchanged. On request, `a11y-export` exports the findings as `ACCESSIBILITY-AUDIT-*.csv`
+(for Jira, Azure DevOps, or spreadsheets), `ACCESSIBILITY-AUDIT.sarif`, or a self-contained `ACCESSIBILITY-AUDIT.html`
+report. Details:
 [package README](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-audit).
 
 **Full audit:**

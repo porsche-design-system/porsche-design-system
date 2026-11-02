@@ -28,7 +28,7 @@ To audit generated UI, see [**AI Accessibility Audit**](/must-know/accessibility
   | ---------------- | ----------------------------------------------------------------------------------------------- |
   | **Agents** | [GitHub Copilot](https://docs.github.com/en/copilot), [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Cursor, Windsurf, Gemini, Codex, or a shared `agent-skills` consumer |
   | **Runtime** | [APM CLI](https://microsoft.github.io/apm/) (tested with [0.30.0](https://github.com/microsoft/apm/releases/tag/v0.30.0)) |
-  | **Access** | Read access to [porsche-design-system/skills](https://github.com/porsche-design-system/skills) |
+  | **Access** | Read access to the internal [porsche-design-system/skills](https://github.com/porsche-design-system/skills) repository (available to Porsche GitHub Enterprise members; reach out via [Support](/help/support) to request access) |
   | **Product** | A local checkout of the web application |
 </Notification>
 
@@ -38,7 +38,7 @@ Install [APM](https://microsoft.github.io/apm/quickstart/) if needed:
 
 - macOS: `brew install apm`
 - Linux / macOS without Homebrew: `curl -sSL https://aka.ms/apm-unix | sh`
-- Windows: `irm https://aka.ms/apm-windows | iex`)
+- Windows: `irm https://aka.ms/apm-windows | iex`
 
 Then from the product repository root install the **package** and pass `--target` for the agent harnesses that should
 receive the files. Comma-separate several values to target different harnesses.
@@ -58,8 +58,9 @@ Several harnesses (comma-separated):
 apm install porsche-design-system/skills/packages/web-accessibility-codegen#web-accessibility-codegen--v0.3.0 --target cursor,claude,copilot
 ```
 
-To move version, re-run `apm install` with the new package tag. To remove it, run `apm uninstall` and `apm install`
-again.
+To move version, re-run `apm install` with the new package tag. To remove it, pass the package from `apm.yml` or
+`apm deps list` to `apm uninstall` (e.g.
+`apm uninstall porsche-design-system/skills/packages/web-accessibility-codegen`) and run `apm install` again.
 
 ## How it works
 

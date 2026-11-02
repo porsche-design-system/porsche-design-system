@@ -115,7 +115,9 @@ describe('buildSkillMd', () => {
       '| `p-button` | The button component. | [p-button.md](references/components/p-button/p-button.md) |'
     );
     expect(markdown).toContain('2 components');
-    expect(markdown).toContain('Before generating a component, also load sibling `accessibility.md` when that file exists.');
+    expect(markdown).toContain(
+      'Before generating a component, also load `references/components/<tag>/accessibility.md` when that file exists.'
+    );
   });
 
   it('escapes pipe characters in roster summaries', () => {
