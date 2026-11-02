@@ -112,12 +112,12 @@ page's title differs, and its error lists the expected one.
 Links are written in one form and resolved for each output: `next/link` adds the base path and the trailing slash in the
 Storefront, and the skills generator turns the same routes into references or Storefront URLs.
 
-| Link to       | Write                                                    | Notes                                                                                            |
-| ------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| A page        | `[Button](/components/button/usage)`                     | A route of the sitemap, without a trailing slash. In TSX, use `DocsLink`, typed with `DocsHref`. |
-| A section     | `[Do](/components/button/usage#do)` or `[Setup](#setup)` | The anchor of an `##` heading on that page, from `getHeadingAnchorId()` (GitHub-style slugs).    |
-| A file        | `[AGENTS.md](assets/downloads/AGENTS.md)`                | Relative, from `public/`; the `<base>` of the root layout adds the base path.                    |
-| Anything else | `[MDN](https://developer.mozilla.org)`                   | With its scheme.                                                                                 |
+| Link to       | Write                                                     | Notes                                                                                            |
+| ------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| A page        | `[Button](/components/button/usage)`                      | A route of the sitemap, without a trailing slash. In TSX, use `DocsLink`, typed with `DocsHref`. |
+| A section     | `[Do](/components/button/usage#do)` or `[Setup](#setup)`  | The anchor of an `##` heading on that page, from `getHeadingAnchorId()` (GitHub-style slugs).    |
+| A file        | `[Compulsory Statement](assets/compulsory-statement.txt)` | Relative, from `public/`; the `<base>` of the root layout adds the base path.                    |
+| Anything else | `[MDN](https://developer.mozilla.org)`                    | With its scheme.                                                                                 |
 
 - Use Markdown links in MDX, and `DocsLink` in JSX and TSX, for internal and external links alike. `next/link` is off
   limits: Biome rejects importing it in TSX, and the link test in MDX. Elements that render their own `<a>` (`PLink`,
@@ -165,9 +165,6 @@ projects/
 ├── stackblitz/             # StackBlitz projects (@porsche-design-system/stackblitz)
 └── story-generator/        # Story types and per-framework markup generation (@porsche-design-system/story-generator)
 ```
-
-Files in `public/assets/downloads/` are downloadable templates; keep them aligned with active repo guidance instead of
-treating them as source code behavior.
 
 ## Generating Configurator and Example Stories
 
