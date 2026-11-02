@@ -51,6 +51,7 @@ type PdsProps<TagName extends PdsTagName> = Pick<
  */
 type AttributeValue<T> =
   | Extract<NonNullable<T>, string | number | boolean>
+  | (boolean extends NonNullable<T> ? 'true' | 'false' : never)
   | ([Exclude<NonNullable<T>, string | number | boolean>] extends [never] ? never : string);
 
 /** All props of one component as optional, kebab-cased, attribute-serializable values. */

@@ -14,6 +14,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Knowledge Skill`: two form search patterns – search combobox option list (combobox with a listbox of choices) and
+  search combobox link list (combobox with a dialog of links) – composed from `p-input-search` and `p-popover`
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Link Pure`, `Button Pure`: `--p-link-pure-px`, `--p-link-pure-py`, `--p-link-pure-hover-inset-x`,
+  `--p-link-pure-hover-inset-y`, `--p-button-pure-px`, `--p-button-pure-py`, `--p-button-pure-hover-inset-x` and
+  `--p-button-pure-hover-inset-y` CSS variables to override the horizontal and vertical padding of the clickable area
+  and the inset of the hover, active and focus indicator.
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Popover`: `arrow` prop to drop the arrow and the extra offset it adds when set to `false`.
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Input Search`: `aria` accepts `aria-activedescendant`, and `aria-controls` and `aria-activedescendant` accept an
+  element (or, for `aria-controls`, a list of elements) so the relationship reaches the input across the shadow
+  boundary. ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+
 ### Changed
 
 - **Angular**: `@angular/forms` is now a peer dependency, because the form components import it
@@ -23,6 +39,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - **Partials**: type checking failed with `Cannot find module 'react'` in projects without React and with `skipLibCheck`
   disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 
 ## [4.10.1] - 2026-10-23
 
