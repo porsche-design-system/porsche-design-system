@@ -50,7 +50,7 @@ const Page = () => (
           </div>
 
           <div class="grid gap-static-md">
-            <p-radio-group name="salutation" label="Salutation (Optional)" direction="row">
+            <p-radio-group name="salutation" label="Salutation (optional)" direction="row">
               <p-radio-group-option value="mrs" label="Mrs" />
               <p-radio-group-option value="mr" label="Mr" />
               <p-radio-group-option value="other" label="Other" />
@@ -76,7 +76,7 @@ const Page = () => (
               Send non-binding request
             </p-button>
             <p-text size="xs" color="contrast-medium">
-              Information on how we process your personal data can be found in our{' '}
+              Information on how we process your personal data can be found in our
               <p-link-pure icon="none" size="inherit" color="inherit" underline={true}>
                 <a href="#">privacy policy</a>
               </p-link-pure>

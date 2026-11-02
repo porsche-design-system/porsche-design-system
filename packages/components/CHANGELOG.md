@@ -29,6 +29,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Search`: `aria` accepts `aria-activedescendant`, and `aria-controls` and `aria-activedescendant` accept an
   element (or, for `aria-controls`, a list of elements) so the relationship reaches the input across the shadow
   boundary. ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Fieldset`: `--p-fieldset-label-mb` CSS variable to override the bottom margin of the label
+  ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
+- `Knowledge Skill`: contact form pattern – an inquiry form combining optional call preferences, a free-text message,
+  service checkboxes, personal details and legal consent
+  ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
 
 ### Changed
 
