@@ -237,7 +237,7 @@ const Page = () => (
           window.addEventListener('hashchange', markCurrent);
 
           search.addEventListener('keydown', (event) => {
-            if (event.isComposing) {
+            if (event.isComposing || event.keyCode === 229) {
               return;
             }
             if (event.key === 'Escape' && popover.open) {
