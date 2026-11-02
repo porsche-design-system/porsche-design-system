@@ -49,16 +49,14 @@ if (actions.size === 0) {
 const components = actions.size;
 const changes = [...actions.values()].reduce((sum, { lines }) => sum + lines.length, 0);
 const headline = `Code Connect: ${changes} change${changes === 1 ? '' : 's'} on ${components} component${components === 1 ? '' : 's'}`;
+// a blank line before each component, or markdown reads its heading as part of the previous component's last bullet
 const message = [
   `:figma: ${headline}`,
-  '',
-  ...[...actions].flatMap(([component, { url, lines }]) => [
-    `*[${escapeMarkdown(component)}](${url})*`,
-    ...lines.map((text) => `- ${escapeMarkdown(text)}`),
-  ]),
-  '',
+  ...[...actions].map(([component, { url, lines }]) =>
+    [`*[${escapeMarkdown(component)}](${url})*`, ...lines.map((text) => `- ${escapeMarkdown(text)}`)].join('\n')
+  ),
   'Publish the library and Dev Mode shows the change; a new component or icon follows with the next PDS release.',
-].join('\n');
+].join('\n\n');
 
 console.log(
   JSON.stringify(
