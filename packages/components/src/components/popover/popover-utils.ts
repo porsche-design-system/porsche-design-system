@@ -23,6 +23,10 @@ export const POPOVER_ARROW_THICKNESS = 12;
 // Gap (in px) between the arrow tip and the trigger, added on top of the arrow thickness for the Floating UI `offset`.
 export const POPOVER_ARROW_GAP = 6;
 
+/** Distance between the panel and the trigger. Without an arrow, only the gap remains. */
+export const getPopoverPanelOffset = (arrow: boolean): number =>
+  arrow ? POPOVER_ARROW_THICKNESS + POPOVER_ARROW_GAP : POPOVER_ARROW_GAP;
+
 // Width threshold (in px) used to tell the built-in info button apart from a larger custom slotted trigger. The default
 // info button renders at `--p-leading-normal` (`calc(6px + 2.125ex)`) ≈ 24px at `typescaleSm`; this cutoff sits a bit
 // above that to absorb rounding / font-metric / zoom variance while staying below typical custom triggers. When the

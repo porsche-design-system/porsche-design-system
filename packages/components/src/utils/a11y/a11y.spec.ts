@@ -101,6 +101,41 @@ describe('parseAndGetAriaAttributes()', () => {
   it.each<string>([undefined, ''])('should return undefined for %o', (rawAttributes) => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual(undefined);
   });
+
+  it('should keep string IDREFs and convert an element, an element list and null to null in the attribute map', () => {
+    const list = document.createElement('ul');
+    const option = document.createElement('li');
+
+    expect(
+      parseAndGetAriaAttributes({
+        'aria-controls': 'results',
+        'aria-activedescendant': 'opt',
+      })
+    ).toEqual({
+      'aria-controls': 'results',
+      'aria-activedescendant': 'opt',
+    });
+
+    expect(
+      parseAndGetAriaAttributes({
+        'aria-controls': list,
+        'aria-activedescendant': option,
+      })
+    ).toEqual({
+      'aria-controls': null,
+      'aria-activedescendant': null,
+    });
+
+    expect(
+      parseAndGetAriaAttributes({
+        'aria-controls': [list, option],
+        'aria-activedescendant': null,
+      })
+    ).toEqual({
+      'aria-controls': null,
+      'aria-activedescendant': null,
+    });
+  });
 });
 
 describe('setAriaIDREF()', () => {
