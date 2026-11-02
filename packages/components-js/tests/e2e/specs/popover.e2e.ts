@@ -15,6 +15,7 @@ import {
 
 const getHost = (page: Page) => page.locator('p-popover');
 const getPopover = (page: Page) => page.locator('p-popover [popover]');
+const getArrow = (page: Page) => page.locator('p-popover .arrow');
 const getButton = (page: Page) => page.locator('p-popover button');
 
 type InitOptions = {
@@ -738,6 +739,36 @@ test.describe('styling', () => {
       marginBottom: '0px',
       marginLeft: '0px',
     });
+  });
+
+  test('should hide the arrow and reduce the panel offset when arrow is false', async ({ page }) => {
+    await initPopover(page);
+    const host = getHost(page);
+    const button = getButton(page);
+    const popover = getPopover(page);
+    const arrow = getArrow(page);
+
+    await button.click();
+    await expect(popover).toBeVisible();
+    await expect(arrow).toHaveCount(1);
+
+    const buttonBoxWithArrow = await button.boundingBox();
+    const popoverBoxWithArrow = await popover.boundingBox();
+    assertDefined(buttonBoxWithArrow);
+    assertDefined(popoverBoxWithArrow);
+    const gapWithArrow = Math.round(popoverBoxWithArrow.y - (buttonBoxWithArrow.y + buttonBoxWithArrow.height));
+
+    await setProperty(host, 'arrow', false);
+    await waitForStencilLifecycle(page);
+    await expect(arrow).toHaveCount(0);
+
+    await expect
+      .poll(async () => {
+        const buttonBox = await button.boundingBox();
+        const popoverBox = await popover.boundingBox();
+        return buttonBox && popoverBox ? Math.round(popoverBox.y - (buttonBox.y + buttonBox.height)) : undefined;
+      })
+      .toBe(gapWithArrow - 12);
   });
 });
 

@@ -5,6 +5,26 @@ import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import type { ButtonPureColor, ButtonPureSize } from './button-pure-utils';
 
+/**
+ * @css-variable {"name": "--p-button-pure-px", "description": "Horizontal padding of the button. Enlarges the clickable and focusable area.", "defaultValue": "0px"}
+ */
+const cssVarPaddingInline = '--p-button-pure-px';
+
+/**
+ * @css-variable {"name": "--p-button-pure-py", "description": "Vertical padding of the button. Enlarges the clickable and focusable area.", "defaultValue": "0px"}
+ */
+const cssVarPaddingBlock = '--p-button-pure-py';
+
+/**
+ * @css-variable {"name": "--p-button-pure-hover-inset-x", "description": "Horizontal inset of the hover, active and focus indicator.", "defaultValue": "-4px"}
+ */
+const cssVarHoverInsetInline = '--p-button-pure-hover-inset-x';
+
+/**
+ * @css-variable {"name": "--p-button-pure-hover-inset-y", "description": "Vertical inset of the hover, active and focus indicator.", "defaultValue": "-2px"}
+ */
+const cssVarHoverInsetBlock = '--p-button-pure-hover-inset-y';
+
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,
@@ -34,7 +54,11 @@ export const getComponentCss = (
         hideLabel,
         alignLabel,
         underline,
-        false
+        false,
+        cssVarPaddingInline,
+        cssVarPaddingBlock,
+        cssVarHoverInsetInline,
+        cssVarHoverInsetBlock
       ),
       {
         root: {
