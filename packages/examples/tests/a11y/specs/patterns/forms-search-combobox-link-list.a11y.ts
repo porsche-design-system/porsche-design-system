@@ -1,5 +1,6 @@
-import { schemes } from '@porsche-design-system/shared/testing';
-import { getExampleUrl, setupExamplePage, waitForComponentsReady } from '../../../helpers/index.ts';
+import { schemes } from '@porsche-design-system/testing';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
@@ -20,7 +21,7 @@ for (const scheme of schemes) {
     await expect(stuttgart).toBeVisible();
     await page.keyboard.press('ArrowDown');
     await expect(stuttgart.locator('xpath=ancestor::p-link-pure[1]')).toHaveJSProperty('active', true);
-    await waitForComponentsReady(page);
+    await waitForComponentsHydrated(page);
 
     await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--results--${scheme}`);
   });
@@ -30,7 +31,7 @@ for (const scheme of schemes) {
 
     await page.locator('#dealer-search input').fill('zzz');
     await expect(page.locator('#dealer-search-empty')).toBeVisible();
-    await waitForComponentsReady(page);
+    await waitForComponentsHydrated(page);
 
     await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--empty--${scheme}`);
   });

@@ -1,11 +1,6 @@
-import { schemes } from '@porsche-design-system/shared/testing';
-import {
-  getDevice,
-  getExampleUrl,
-  setupExamplePage,
-  waitForComponentsReady,
-  waitForStablePosition,
-} from '../../../helpers/index.ts';
+import { schemes } from '@porsche-design-system/testing';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { getDevice, getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
@@ -27,7 +22,7 @@ for (const scheme of schemes) {
     await page.locator('#more-button').click();
     await expect(page.locator('#more-button button')).toHaveAttribute('aria-expanded', 'true');
     await waitForStablePosition(page.locator('#overflow-list'));
-    await waitForComponentsReady(page);
+    await waitForComponentsHydrated(page);
 
     await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--overflow-open--${scheme}`);
   });

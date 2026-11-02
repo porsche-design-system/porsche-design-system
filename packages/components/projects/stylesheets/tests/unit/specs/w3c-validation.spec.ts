@@ -4,7 +4,7 @@ import {
   formatW3CMessages,
   validateCssWithW3C,
   type W3CValidationMessage,
-} from '@porsche-design-system/shared/testing';
+} from '@porsche-design-system/testing';
 import { describe, expect, it } from 'vitest';
 
 const libDir = path.resolve(__dirname, '../../../lib');

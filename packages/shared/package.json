@@ -17,15 +17,6 @@
       "models": [
         "./dist/models/index.d.ts"
       ],
-      "testing": [
-        "./dist/testing/index.d.ts"
-      ],
-      "testing/normalize-css-namespace": [
-        "./dist/testing/normalizeCssNamespace.d.ts"
-      ],
-      "testing/assert-defined": [
-        "./dist/testing/assertDefined.d.ts"
-      ],
       "examples": [
         "./dist/examples/index.ts"
       ],
@@ -66,36 +57,6 @@
         "default": "./dist/models/cjs/index.cjs"
       }
     },
-    "./testing": {
-      "import": {
-        "types": "./dist/testing/index.d.ts",
-        "default": "./dist/testing/esm/index.mjs"
-      },
-      "require": {
-        "types": "./dist/testing/index.d.ts",
-        "default": "./dist/testing/cjs/index.cjs"
-      }
-    },
-    "./testing/normalize-css-namespace": {
-      "import": {
-        "types": "./dist/testing/normalizeCssNamespace.d.ts",
-        "default": "./dist/testing/normalize-css-namespace/esm/index.mjs"
-      },
-      "require": {
-        "types": "./dist/testing/normalizeCssNamespace.d.ts",
-        "default": "./dist/testing/normalize-css-namespace/cjs/index.cjs"
-      }
-    },
-    "./testing/assert-defined": {
-      "import": {
-        "types": "./dist/testing/assertDefined.d.ts",
-        "default": "./dist/testing/assert-defined/esm/index.mjs"
-      },
-      "require": {
-        "types": "./dist/testing/assertDefined.d.ts",
-        "default": "./dist/testing/assert-defined/cjs/index.cjs"
-      }
-    },
     "./css/styles.css": "./dist/css/styles.css",
     "./css/styles": "./dist/css/styles.css",
     "./examples": "./dist/examples/index.ts",
@@ -112,16 +73,17 @@
     "build:generateChunkNames": "tsx scripts/generateTagNamesWithChunk.ts",
     "build:generatePartialNames": "tsx scripts/generatePartialNames.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js && chmod +x bin/prepareVRTSnapshots.js",
-    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json && npm run typecheck --workspace=@porsche-design-system/testing",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts && npm run test:unit --workspace=@porsche-design-system/testing",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
     "react": "^19.3.0"
   },
   "devDependencies": {
+    "@porsche-design-system/testing": "0.0.0",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
