@@ -17,14 +17,16 @@ const acceptedGaps: Record<string, string[]> = JSON.parse(readFileSync(resolve(p
 const tags = TAG_NAMES.filter((tag) => !(INTERNAL_TAG_NAMES as readonly string[]).includes(tag));
 const iconMeta = getComponentMeta('p-icon')?.propsMeta?.name?.allowedValues;
 // what design draws: no deprecated component, nothing accepted as a gap
+// ids are numbered before filtering, so deleting an accepted gap adds its files without renumbering the rest
 const pull: Snapshot = {
   components: tags
-    .filter((tag) => !getComponentMeta(tag)?.isDeprecated && !acceptedGaps[tag]?.includes('component-set'))
-    .map((tag, i) => ({ id: `1:${i + 1}`, name: tag.replace(/^p-/, ''), componentPropertyDefinitions: {} })),
+    .map((tag, i) => ({ tag, id: `1:${i + 1}` }))
+    .filter(({ tag }) => !getComponentMeta(tag)?.isDeprecated && !acceptedGaps[tag]?.includes('component-set'))
+    .map(({ tag, id }) => ({ id, name: tag.replace(/^p-/, ''), componentPropertyDefinitions: {} })),
   icons: Object.fromEntries(
     (Array.isArray(iconMeta) ? iconMeta.map(String) : [])
-      .filter((name) => !acceptedGaps['p-icon']?.includes(`name=${name}`))
       .map((name, i) => [`2:${i + 1}`, name])
+      .filter(([, name]) => !acceptedGaps['p-icon']?.includes(`name=${name}`))
   ),
 };
 const { files } = generate(pull, acceptedGaps, {

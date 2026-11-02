@@ -1391,7 +1391,7 @@ export namespace Components {
     }
     interface PInputSearch {
         /**
-          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`). `aria-controls` and `aria-activedescendant` also accept an element reference (or, for `aria-controls`, a list of elements) so the relationship crosses the shadow boundary.
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -2438,6 +2438,11 @@ export namespace Components {
           * Sets ARIA attributes on the popover panel to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
+        /**
+          * Shows the arrow that points at the trigger. When `false`, the panel keeps a small gap and is not offset by the arrow thickness.
+          * @default true
+         */
+        "arrow"?: boolean;
         /**
           * Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces.
          */
@@ -5750,7 +5755,7 @@ declare namespace LocalJSX {
     }
     interface PInputSearch {
         /**
-          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`) and extra labelling (`aria-label`, `aria-description`). `aria-controls` and `aria-activedescendant` also accept an element reference (or, for `aria-controls`, a list of elements) so the relationship crosses the shadow boundary.
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -6909,6 +6914,11 @@ declare namespace LocalJSX {
           * Sets ARIA attributes on the popover panel to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
+        /**
+          * Shows the arrow that points at the trigger. When `false`, the panel keeps a small gap and is not offset by the arrow thickness.
+          * @default true
+         */
+        "arrow"?: boolean;
         /**
           * Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces.
          */
@@ -8299,6 +8309,7 @@ declare namespace LocalJSX {
         "direction": PopoverDirection;
         "description": string;
         "compact": boolean;
+        "arrow": boolean;
         "aria": SelectedAriaAttributes<PopoverAriaAttribute>;
     }
     interface PRadioGroupAttributes {
