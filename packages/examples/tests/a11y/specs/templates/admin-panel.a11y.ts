@@ -1,10 +1,6 @@
 import { schemes } from '@porsche-design-system/testing';
-import {
-  getExampleUrl,
-  setupExamplePage,
-  waitForComponentsReady,
-  waitForStablePosition,
-} from '../../../helpers/index.ts';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
@@ -29,7 +25,7 @@ for (const scheme of schemes) {
           .evaluate((element: HTMLElement & { sidebarEndOpen?: boolean }) => element.sidebarEndOpen === true)
       )
       .toBe(true);
-    await waitForComponentsReady(page);
+    await waitForComponentsHydrated(page);
 
     await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--settings-open--${scheme}`);
   });
@@ -41,7 +37,7 @@ for (const scheme of schemes) {
     await expect(page.locator('#search-dialog')).toBeVisible();
     // The panel of `p-modal` is the `dialog` in its shadow root – the host is `display: contents` and has no box.
     await waitForStablePosition(page.locator('#search-dialog dialog'));
-    await waitForComponentsReady(page);
+    await waitForComponentsHydrated(page);
 
     await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--search-open--${scheme}`);
   });

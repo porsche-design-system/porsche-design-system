@@ -1,4 +1,4 @@
-import type { Page } from '@playwright/test';
+import type { Frame, Page } from '@playwright/test';
 
 // The framework demo apps expose `componentsReady` on `window`; the components-js demo app only on its
 // `porscheDesignSystem` global.
@@ -24,6 +24,21 @@ export const waitForComponentsReady = async (
     (src) => (src === 'window' ? (window as any) : (window as any).porscheDesignSystem).componentsReady(),
     source
   );
+};
+
+// Pages that load the components through the loader partial have no `componentsReady()`, so this polls the DOM.
+// At least one `p-*` element is required, so a frame whose document has not loaded yet cannot pass.
+export const waitForComponentsHydrated = async (page: Page | Frame): Promise<void> => {
+  await page.waitForFunction(() => {
+    const pdsElements = Array.from(document.querySelectorAll('*')).filter((element) =>
+      element.tagName.startsWith('P-')
+    );
+    return (
+      pdsElements.length > 0 &&
+      document.querySelectorAll(':not(:defined)').length === 0 &&
+      pdsElements.every((element) => element.classList.contains('hydrated'))
+    );
+  });
 };
 
 type GotoOptions = {
