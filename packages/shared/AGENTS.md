@@ -5,18 +5,18 @@
 
 ## Overview
 
-This package contains internal shared data, models, testing helpers, style utilities, and generated lookup files used across the monorepo. It is an upstream dependency for many other packages.
+This package contains internal shared data, models, style utilities, and generated lookup files used across the monorepo. It is an upstream dependency for many other packages. The test helpers live in the nested workspace `@porsche-design-system/testing`, see [`projects/testing/AGENTS.md`](projects/testing/AGENTS.md).
 
 ## Structure
 
 ```text
 packages/shared/
+├── projects/testing/      # @porsche-design-system/testing, the test helpers
 ├── scripts/               # Generators for tag names, partials, and code examples
 ├── src/data/              # Shared data sets
 ├── src/lib/               # Generated lookup files
 ├── src/models/            # Shared types/models
 ├── src/styles/            # Shared style helpers
-├── src/testing/           # Playwright helper exports
 ├── src/utils/             # Framework conversion and misc helpers
 └── tests/                 # Unit tests
 ```
@@ -42,9 +42,8 @@ npm run test:unit:shared
 `packages/shared` is the workspace `@porsche-design-system/shared`. Its `exports` map points into `dist/`, so consumers
 get the built code, and `npm install` links the package before anything is built. It is private and never published.
 
-- Deep entries (`./deprecation`, `./models`, `./testing`, `./testing/normalize-css-namespace`,
-  `./testing/assert-defined`) are bundled on their own, so code can use them without loading the barrel and its
-  generated modules or Playwright helpers.
+- Deep entries (`./deprecation`, `./models`) are bundled on their own, so code can use them without loading the
+  barrel and its generated modules.
 - `./examples` and `./examples/*` point at the TSX sources copied to `dist/examples/`, unbundled because of the
   `'use client'` directives Next needs; a deep import lets a page load one example without the whole barrel.
 - `./tsconfig.base.json` and `./tsconfig.paths.json` are the shared compiler base and the source mappings for the

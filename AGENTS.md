@@ -322,6 +322,8 @@ Each major package has its own `AGENTS.md` with detailed guidance. Its rules add
 - [`packages/components-js/AGENTS.md`](packages/components-js/AGENTS.md) — JS wrapper, partials and the test harness
 - [`packages/component-meta/AGENTS.md`](packages/component-meta/AGENTS.md) — Component metadata generation
 - [`packages/shared/AGENTS.md`](packages/shared/AGENTS.md) — Internal shared utilities and generated lookups
+  - [`packages/shared/projects/testing/AGENTS.md`](packages/shared/projects/testing/AGENTS.md) — Test helpers that
+    more than one package uses
 - [`packages/styles/AGENTS.md`](packages/styles/AGENTS.md) — Style libraries and preview app
 - [`packages/tokens/AGENTS.md`](packages/tokens/AGENTS.md) — Design tokens
 - [`packages/assets/AGENTS.md`](packages/assets/AGENTS.md) — Icons, fonts, flags and the local CDN
@@ -338,8 +340,8 @@ Each major package has its own `AGENTS.md` with detailed guidance. Its rules add
   [Package-Specific Instructions](#package-specific-instructions)). Tools handle these files differently:
   - Copilot Chat in JetBrains attaches package files only after the developer turns on **Use nested AGENTS.md files
     (Experimental)** in Settings › Tools › GitHub Copilot › Customizations, and never attaches a file more than two
-    folders below the repository root, such as `packages/components/projects/stylesheets/AGENTS.md` and
-    `packages/components/projects/figma-code-connect/AGENTS.md`.
+    folders below the repository root, such as `packages/components/projects/stylesheets/AGENTS.md`,
+    `packages/components/projects/figma-code-connect/AGENTS.md` and `packages/shared/projects/testing/AGENTS.md`.
   - Copilot Chat in VS Code lists their paths, not their text, and only in its Local agent with
     `chat.useNestedAgentsMdFiles` on. Its Copilot agent finds them as it works in a folder.
   - Codex loads the files from the repository root down to the folder it started in.

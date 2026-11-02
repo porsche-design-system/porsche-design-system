@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import { playwrightConfigE2E } from '@porsche-design-system/shared/testing';
+import { playwrightConfigE2E } from '@porsche-design-system/testing';
 
 // NOTE: cdn.ui.porsche.cn (Tencent EdgeOne) has a bot-protection rule that
 // returns 403 (with no CORS headers) for requests where User-Agent or the
