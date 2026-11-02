@@ -111,6 +111,7 @@ src/
 ├── patterns/
 │   ├── feedback/{inline,dialog}/index.page.tsx
 │   ├── footer/index.page.tsx
+│   ├── forms/{search-combobox-option-list,search-combobox-link-list}/index.page.tsx
 │   ├── header/{overlay,stacked}/index.page.tsx
 │   └── popover/{local-market-switch,priority-navigation,feature-tour}/index.page.tsx
 └── style.css                 # Tailwind entry: theme, global element defaults – copied next to every page
