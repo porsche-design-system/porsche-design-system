@@ -14,4 +14,11 @@ describe('vitestConfig', () => {
       setupFiles: ['@porsche-design-system/testing/vitest-console-guard'],
     });
   });
+
+  it.each([{ value: 'a string value longer than the forty characters Vitest keeps by default' }])(
+    'should keep $value whole in a test title',
+    ({ value }) => {
+      expect(expect.getState().currentTestName).toContain(`should keep ${value} whole in a test title`);
+    }
+  );
 });
