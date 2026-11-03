@@ -39,8 +39,8 @@ tests/unit/                     # the specs of the helpers, the base config and 
 - **`.` must not load `vitest` at runtime either; runtime Vitest code goes under `./vitest`.** The Playwright configs
   import `.`, and `vitest/config` loads Vite.
 - **`./vitest` has no relative imports**, only bare specifiers such as `vitest/config`. Vite's config bundler
-  externalizes this package, so Node loads the file directly and cannot resolve extensionless relative imports. That
-  is why the guard is its own export, referenced by bare specifier in `setupFiles`. Vitest loads the guard, so it may
+  externalizes this package, so Node loads the file directly and cannot resolve extensionless relative imports. That is
+  why the guard is its own export, referenced by bare specifier in `setupFiles`. Vitest loads the guard, so it may
   import relatively.
 - **Every barrel names its re-exports; never write `export *`.** Node runs this source as CommonJS, and the ESM
   Playwright configs of `examples` and `react-router` only see the names Node detects statically.
