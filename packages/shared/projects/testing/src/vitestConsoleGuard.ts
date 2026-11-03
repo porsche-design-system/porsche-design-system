@@ -1,0 +1,65 @@
+import { setTimeout as setTimeoutPromise } from 'node:timers/promises';
+import { format } from 'node:util';
+import { afterAll, afterEach, beforeEach } from 'vitest';
+
+// Fails a test that logs through console.warn or console.error, or triggers a jsdom error, without declaring it.
+// Output outside a test fails the file. See this package's AGENTS.md for how to declare expected output.
+
+type JsdomGlobal = {
+  jsdom?: { virtualConsole: { on: (event: 'jsdomError', listener: (error: Error) => void) => void } };
+};
+
+const fileOutput: string[] = [];
+let output = fileOutput;
+
+const originalConsole = { warn: console.warn, error: console.error };
+console.warn = (...args: unknown[]) => {
+  output.push(`console.warn: ${format(...args)}`);
+};
+console.error = (...args: unknown[]) => {
+  output.push(`console.error: ${format(...args)}`);
+};
+// jsdom reports unimplemented APIs to its virtual console, not to console, so vi.spyOn cannot declare them.
+(globalThis as JsdomGlobal).jsdom?.virtualConsole.on('jsdomError', (error) => {
+  output.push(`jsdom: ${error.message}`);
+});
+
+const toError = (scope: string, entries: string[]): Error => {
+  const hasConsole = entries.some((entry) => entry.startsWith('console.'));
+  const hasJsdom = entries.some((entry) => entry.startsWith('jsdom: '));
+  return new Error(
+    [
+      `Undeclared output ${scope}.`,
+      ...entries.map((entry) => `  ${entry}`),
+      ...(hasConsole
+        ? [
+            "Expected console output is declared in the test that causes it, with vi.spyOn(console, 'warn' or 'error').mockImplementation(() => {}) plus an assertion on the spy.",
+          ]
+        : []),
+      ...(hasJsdom ? ['A jsdom error is declared by stubbing the API jsdom does not implement in the test.'] : []),
+    ].join('\n')
+  );
+};
+
+beforeEach(() => {
+  output = [];
+});
+
+// Registered before every spec hook, so it runs after the spec's own afterEach hooks.
+afterEach(() => {
+  const testOutput = output;
+  output = fileOutput;
+  if (testOutput.length) {
+    throw toError('during this test', testOutput);
+  }
+});
+
+afterAll(async () => {
+  // Lets a zero-delay timer from the last test fire first. vi.useFakeTimers does not patch node:timers.
+  await setTimeoutPromise(0);
+  console.warn = originalConsole.warn;
+  console.error = originalConsole.error;
+  if (fileOutput.length) {
+    throw toError('outside any test (at import time, in beforeAll or afterAll, or from a timer)', fileOutput);
+  }
+});
