@@ -3,9 +3,6 @@ import * as jssUtils from '../utils/jss';
 import { getCssObject } from './getCssObject';
 
 export const getComponentCssSpy = (): ReturnType<typeof vi.spyOn> => {
-  // silence deprecation warnings
-  vi.spyOn(console, 'warn').mockImplementation(() => null);
-
   // mock to get the result from getComponentCss() directly
   return vi
     .spyOn(jssUtils, 'attachComponentCss')
