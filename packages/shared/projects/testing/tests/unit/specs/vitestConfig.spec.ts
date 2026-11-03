@@ -7,7 +7,7 @@ describe('vitestConfig', () => {
     expect(vitestConfig.test).toEqual({
       globals: true,
       environment: 'jsdom',
-      taskTitleValueFormatTruncate: 0,
+      taskTitleValueFormatTruncate: Number.MAX_SAFE_INTEGER,
       clearMocks: true,
       restoreMocks: true,
       exclude: [...configDefaults.exclude, '**/dist/**'],

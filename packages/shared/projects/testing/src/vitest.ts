@@ -7,8 +7,9 @@ export const vitestConfig: ViteUserConfig = {
     globals: true,
     environment: 'jsdom',
     // Vitest 5 truncates interpolated values in `test.each` titles at 40 chars, which hides the
-    // values that distinguish cases and collapses distinct snapshot keys into one. 0 disables it.
-    taskTitleValueFormatTruncate: 0,
+    // values that distinguish cases and collapses distinct snapshot keys into one. 0 is no way out,
+    // because Vitest 5.0.2 then cuts the last character off every string a `$name` placeholder prints.
+    taskTitleValueFormatTruncate: Number.MAX_SAFE_INTEGER,
     // Vitest 5's default, stated so every mock setting is visible here.
     clearMocks: true,
     restoreMocks: true,
