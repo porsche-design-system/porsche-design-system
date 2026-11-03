@@ -72,7 +72,8 @@ The message names the method and the formatted text. Declare expected output in 
   spy cannot declare it.
 
 Output from a timer that fires after its test is blamed on the next test. The message names the text, so search for it.
-`console.log` is not guarded.
+Output outside a test is also printed, because Vitest runs no `afterAll` in a file whose tests are all skipped, so the
+guard cannot fail that file. `console.log` is not guarded.
 
 ## `normalizeCssNamespace` ships in a published bundle
 
