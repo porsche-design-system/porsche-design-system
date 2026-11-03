@@ -123,7 +123,7 @@
     "ag-grid-enterprise": "36.2.0",
     "ag-grid-react": "36.2.0",
     "change-case": "^5.4.4",
-    "concurrently": "^10.0.5",
+    "concurrently": "^10.0.6",
     "devtools-protocol": "^0.0.1704951",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
