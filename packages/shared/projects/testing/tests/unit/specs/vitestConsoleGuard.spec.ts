@@ -11,6 +11,7 @@ type FileResult = { name: string; status: string; message: string; assertionResu
 
 const fixtureDir = resolve(__dirname, '../fixtures/console-guard');
 let fileResults: FileResult[] = [];
+let printedOutput = '';
 
 const getFile = (fileName: string): FileResult => {
   const file = fileResults.find(({ name }) => name.endsWith(`/${fileName}`));
@@ -29,11 +30,21 @@ describe('vitest-console-guard', () => {
     const vitestBin = join(dirname(createRequire(import.meta.url).resolve('vitest/package.json')), 'vitest.mjs');
     const outputFile = join(mkdtempSync(join(tmpdir(), 'console-guard-')), 'report.json');
     const env = Object.fromEntries(Object.entries(process.env).filter(([key]) => !key.startsWith('VITEST')));
-    spawnSync(
+    // The default reporter prints console output. The JSON reporter writes the results file.
+    const { stdout, stderr } = spawnSync(
       process.execPath,
-      [vitestBin, 'run', '--config', 'vitest.fixture.config.ts', '--reporter=json', `--outputFile=${outputFile}`],
-      { cwd: fixtureDir, env }
+      [
+        vitestBin,
+        'run',
+        '--config',
+        'vitest.fixture.config.ts',
+        '--reporter=json',
+        '--reporter=default',
+        `--outputFile=${outputFile}`,
+      ],
+      { cwd: fixtureDir, env, encoding: 'utf8' }
     );
+    printedOutput = stdout + stderr;
     fileResults = JSON.parse(readFileSync(outputFile, 'utf8')).testResults;
   }, 60_000);
 
@@ -75,6 +86,10 @@ describe('vitest-console-guard', () => {
 
   it('reports late output at file level', () => {
     expect(getFile('file-level.fixture.ts').message).toContain('console.warn: late timer');
+  });
+
+  it('prints output outside any test, because a file of skipped tests never reports it', () => {
+    expect(printedOutput).toContain('all skipped import time');
   });
 
   it('waits for late output with real timers when a test leaves fake timers on', () => {
