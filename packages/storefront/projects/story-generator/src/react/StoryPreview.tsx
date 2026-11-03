@@ -33,9 +33,14 @@ const createEventHandler =
     }));
   };
 
+/** The properties stories set to an asset, so text typed into the configurator, e.g. a `value`, stays as typed. */
+const assetProperties = ['src', 'srcSet', 'poster', 'iconSource', 'source'];
+
 /** Stories reference `public/assets` relatively, which the browser would resolve against the page path instead of the site root. */
-const resolveAssetPath = (value: unknown, basePath: string): unknown =>
-  typeof value === 'string' && value.startsWith('assets/') ? `${basePath ? `/${basePath}` : ''}/${value}` : value;
+const resolveAssetPath = (name: string, value: unknown, basePath: string): unknown =>
+  assetProperties.includes(name) && typeof value === 'string' && value.startsWith('assets/')
+    ? `${basePath ? `/${basePath}` : ''}/${value}`
+    : value;
 
 const renderElement = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
@@ -48,7 +53,7 @@ const renderElement = (
 
   const { tag, properties = {}, events = {}, children = [] } = config;
   const resolvedProperties = Object.fromEntries(
-    Object.entries(properties).map(([name, value]) => [name, resolveAssetPath(value, basePath)])
+    Object.entries(properties).map(([name, value]) => [name, resolveAssetPath(name, value, basePath)])
   );
   const eventHandlers = Object.fromEntries(
     Object.entries(events).map(([eventName, eventConfig]) => [eventName, createEventHandler(eventConfig, setState)])
