@@ -34,6 +34,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - **Angular**: `@angular/forms` is now a peer dependency, because the form components import it
   ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- `Knowledge Skill`: instructs the agent to load `references/components/<tag>/accessibility.md` before generating a
+  component and to load the `accessible-frontend` APM skill for page-level WCAG 2.2 AA and EN 301 549 composition when
+  installed ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
 
 ### Fixed
 
