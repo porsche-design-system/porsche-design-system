@@ -57,4 +57,14 @@ describe('StoryPreview', () => {
       '<img src="/v4/assets/lights.jpg" srcSet="/v4/assets/lights@2x.jpg 2x"/>'
     );
   });
+
+  it('should keep asset-like values of other properties unchanged', () => {
+    const textStory: Story<HTMLTagOrComponent> = {
+      generator: () => [{ tag: 'span', properties: { title: 'assets/lights.jpg' } }],
+    };
+
+    expect(render(createElement(StoryPreview, { story: textStory, basePath: 'v4' }))).toContain(
+      '<span title="assets/lights.jpg"></span>'
+    );
+  });
 });
