@@ -3,10 +3,10 @@ import { getDevice, getExampleUrl, setupExamplePage } from '../../../helpers/ind
 import { testInitialStates, waitForStableState } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/forms/contact-form` – the contact inquiry form in its initial and validation error states.
+ * `src/patterns/forms/contact` – the contact inquiry form in its initial and validation error states.
  */
 
-const id = 'patterns-forms-contact-form';
+const id = 'patterns-forms-contact';
 const url = getExampleUrl(id);
 
 testInitialStates(id);

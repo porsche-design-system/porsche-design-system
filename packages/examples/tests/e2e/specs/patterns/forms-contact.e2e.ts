@@ -2,11 +2,11 @@ import { expect, test } from '@playwright/test';
 import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/forms/contact-form` – a contact inquiry form with optional call preferences, service checkboxes and
+ * `src/patterns/forms/contact` – a contact inquiry form with optional call preferences, service checkboxes and
  * required personal details.
  */
 
-const url = getExampleUrl('patterns-forms-contact-form');
+const url = getExampleUrl('patterns-forms-contact');
 
 test('loads without reporting an error', async ({ page }) => {
   const errors = collectPageErrors(page);

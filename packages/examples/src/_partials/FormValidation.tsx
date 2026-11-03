@@ -4,7 +4,8 @@ import { Script } from './Script.tsx';
  * Shared client-side constraint validation for form patterns.
  *
  * Hooks onto every `<form novalidate>` on the page, validates required and format constraints on submit, moves focus
- * to the first invalid control, and clears the error state of a control as soon as the user corrects its value.
+ * to the first invalid control, and clears the error state of a control as soon as the user corrects its value or
+ * resets the form.
  */
 export const FormValidation = () => (
   <Script>{
@@ -45,6 +46,13 @@ export const FormValidation = () => (
 
       form.addEventListener('change', onFieldUpdate);
       form.addEventListener('input', onFieldUpdate);
+
+      form.addEventListener('reset', () => {
+        for (const field of getFields()) {
+          field.state = 'none';
+          field.message = '';
+        }
+      });
 
       form.addEventListener('submit', (event) => {
         event.preventDefault();

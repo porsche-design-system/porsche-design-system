@@ -4,10 +4,10 @@ import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/forms/contact-form` – the contact inquiry form in its initial and validation error states.
+ * `src/patterns/forms/personal-details` – the personal details form in its initial and validation error states.
  */
 
-const id = 'patterns-forms-contact-form';
+const id = 'patterns-forms-personal-details';
 const url = getExampleUrl(id);
 
 testInitialStates(id);
@@ -16,7 +16,7 @@ for (const scheme of schemes) {
   test(`validation errors with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
     await setupExamplePage(page, url, { prefersColorScheme: scheme });
 
-    await page.getByRole('button', { name: 'Send non-binding request' }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
     await expect(page.locator('p-input-text[name="first-name"]')).toHaveJSProperty('state', 'error');
     await waitForComponentsHydrated(page);
 

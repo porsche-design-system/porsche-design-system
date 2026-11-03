@@ -18,7 +18,8 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
   [
     '/patterns/forms/',
     [
-      'patterns/forms/contact-form',
+      'patterns/forms/contact',
+      'patterns/forms/personal-details',
       'patterns/forms/search-combobox-option-list',
       'patterns/forms/search-combobox-link-list',
     ],

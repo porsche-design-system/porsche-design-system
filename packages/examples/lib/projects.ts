@@ -39,6 +39,7 @@ export const patternComponents = [
   'heading',
   'input-email',
   'input-search',
+  'input-tel',
   'input-text',
   'link',
   'link-pure',
