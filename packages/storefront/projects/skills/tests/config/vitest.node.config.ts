@@ -1,15 +1,16 @@
 import { resolve } from 'node:path';
-import { defineConfig } from 'vitest/config';
+import { vitestConfig } from '@porsche-design-system/testing/vitest';
+import { defineConfig, mergeConfig } from 'vitest/config';
 
-export default defineConfig({
-  test: {
-    root: resolve(__dirname, '../../'),
-    include: ['tests/specs/bin/**/*.spec.ts'],
-    globals: true,
-    testTimeout: 10000,
-    environment: 'node',
-    typecheck: {
-      tsconfig: './tsconfig.test.json',
+export default mergeConfig(
+  vitestConfig,
+  defineConfig({
+    test: {
+      root: resolve(__dirname, '../../'),
+      include: ['tests/specs/bin/**/*.spec.ts'],
+      testTimeout: 10000,
+      // These specs need no DOM, so they skip jsdom's setup cost.
+      environment: 'node',
     },
-  },
-});
+  })
+);

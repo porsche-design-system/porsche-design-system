@@ -165,6 +165,10 @@ does. That adds no duplicate work, because CI runs the individual `build:*` step
 | VRT       | `./docker.sh npm run test:vrt:components-js` | **Must use Docker** for consistent screenshots |
 | A11Y      | `npm run test:a11y:components-js`            | Axe-core + a11y tree snapshots                 |
 
+Every Vitest config merges `vitestConfig` from `@porsche-design-system/testing/vitest`, whose console guard fails
+undeclared `console.warn`, `console.error` and jsdom errors. See
+[`packages/shared/projects/testing/AGENTS.md`](packages/shared/projects/testing/AGENTS.md).
+
 Key test files:
 
 - Axe-core: [`packages/components-js/tests/a11y/specs/axe-core/`](packages/components-js/tests/a11y/specs/axe-core/)
