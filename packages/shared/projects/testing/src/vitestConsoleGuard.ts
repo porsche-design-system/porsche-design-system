@@ -13,11 +13,14 @@ const fileOutput: string[] = [];
 let output = fileOutput;
 
 const originalConsole = { warn: console.warn, error: console.error };
+// Output outside a test is also printed, because Vitest runs no afterAll in a file whose tests are all skipped.
 console.warn = (...args: unknown[]) => {
   output.push(`console.warn: ${format(...args)}`);
+  if (output === fileOutput) originalConsole.warn(...args);
 };
 console.error = (...args: unknown[]) => {
   output.push(`console.error: ${format(...args)}`);
+  if (output === fileOutput) originalConsole.error(...args);
 };
 // jsdom reports unimplemented APIs to its virtual console, not to console, so vi.spyOn cannot declare them.
 (globalThis as JsdomGlobal).jsdom?.virtualConsole.on('jsdomError', (error) => {
