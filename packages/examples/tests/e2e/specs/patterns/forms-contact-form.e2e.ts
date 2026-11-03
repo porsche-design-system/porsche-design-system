@@ -19,20 +19,41 @@ test('loads without reporting an error', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Send non-binding request' })).toBeVisible();
 });
 
-test('selects options and prevents navigation on submit', async ({ page }) => {
+test('validates required fields on submit and clears errors as the user corrects them', async ({ page }) => {
   await setupExamplePage(page, url);
 
-  const preferredDay = page.locator('p-segmented-control[name="preferred-day"]');
-  await expect(preferredDay).toHaveJSProperty('value', '2026-10-21');
-
-  await page.locator('p-segmented-control-item[value="2026-10-22"]').click();
-  await expect(preferredDay).toHaveJSProperty('value', '2026-10-22');
-
-  const salutation = page.locator('p-radio-group[name="salutation"]');
-  await page.locator('p-radio-group-option[value="mrs"]').click();
-  await expect(salutation).toHaveJSProperty('value', 'mrs');
+  const firstName = page.locator('p-input-text[name="first-name"]');
+  const lastName = page.locator('p-input-text[name="last-name"]');
+  const email = page.locator('p-input-email[name="email"]');
+  const terms = page.locator('p-checkbox[name="terms"]');
+  const submit = page.getByRole('button', { name: 'Send non-binding request' });
 
   const currentUrl = page.url();
-  await page.getByRole('button', { name: 'Send non-binding request' }).click();
+  await submit.click();
   expect(page.url()).toBe(currentUrl);
+
+  await expect(firstName).toHaveJSProperty('state', 'error');
+  await expect(firstName).toHaveJSProperty('message', 'Please enter your first name.');
+  await expect(lastName).toHaveJSProperty('state', 'error');
+  await expect(lastName).toHaveJSProperty('message', 'Please enter your last name.');
+  await expect(email).toHaveJSProperty('state', 'error');
+  await expect(email).toHaveJSProperty('message', 'Please enter a valid email address.');
+  await expect(terms).toHaveJSProperty('state', 'error');
+  await expect(terms).toHaveJSProperty('message', 'Please agree to the General Terms and Conditions.');
+  await expect(firstName.locator('input')).toBeFocused();
+
+  await firstName.locator('input').fill('Ferry');
+  await expect(firstName).toHaveJSProperty('state', 'none');
+  await expect(firstName).toHaveJSProperty('message', '');
+
+  await lastName.locator('input').fill('Porsche');
+  await expect(lastName).toHaveJSProperty('state', 'none');
+
+  await email.locator('input').fill('invalid-email');
+  await expect(email).toHaveJSProperty('state', 'error');
+  await email.locator('input').fill('ferry@porsche.de');
+  await expect(email).toHaveJSProperty('state', 'none');
+
+  await terms.locator('input').check();
+  await expect(terms).toHaveJSProperty('state', 'none');
 });

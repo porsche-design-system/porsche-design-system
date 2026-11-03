@@ -1,6 +1,6 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { Script } from '../../../_partials/Script.tsx';
+import { FormValidation } from '../../../_partials/FormValidation.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -30,16 +30,15 @@ const Page = () => (
               label="Preferred day for your call"
               value="2026-10-21"
               columns={3}
-              required={true}
             >
               <p-segmented-control-item value="2026-10-21">21.10.2026</p-segmented-control-item>
               <p-segmented-control-item value="2026-10-22">22.10.2026</p-segmented-control-item>
               <p-segmented-control-item value="2026-10-23">23.10.2026</p-segmented-control-item>
             </p-segmented-control>
-            <p-textarea name="message" label="Your message (optional)" placeholder="Some placeholder" />
+            <p-textarea name="message" label="Your message" placeholder="Some placeholder" />
             <p-fieldset class="[--p-fieldset-label-mb:var(--spacing-static-xs)]" label-size="small">
               <p-text tag="span" slot="label">
-                Additional Services (optional)
+                Additional Services
               </p-text>
               <div class="grid xs:grid-cols-3 gap-static-sm">
                 <p-checkbox name="services" value="finance-s" label="Finance S" />
@@ -50,17 +49,35 @@ const Page = () => (
           </div>
 
           <div class="grid gap-static-md">
-            <p-radio-group name="salutation" label="Salutation (optional)" direction="row">
+            <p-radio-group name="salutation" label="Salutation" direction="row">
               <p-radio-group-option value="mrs" label="Mrs" />
               <p-radio-group-option value="mr" label="Mr" />
               <p-radio-group-option value="other" label="Other" />
             </p-radio-group>
             <div class="grid xs:grid-cols-2 gap-static-md xs:gap-static-sm">
-              <p-input-text name="first-name" label="First name" auto-complete="given-name" required />
-              <p-input-text name="last-name" label="Last name" auto-complete="family-name" required />
+              <p-input-text
+                name="first-name"
+                label="First name"
+                auto-complete="given-name"
+                required
+                data-error="Please enter your first name."
+              />
+              <p-input-text
+                name="last-name"
+                label="Last name"
+                auto-complete="family-name"
+                required
+                data-error="Please enter your last name."
+              />
             </div>
-            <p-input-email name="email" label="Email" auto-complete="email" required />
-            <p-checkbox name="terms" required>
+            <p-input-email
+              name="email"
+              label="Email"
+              auto-complete="email"
+              required
+              data-error="Please enter a valid email address."
+            />
+            <p-checkbox name="terms" required data-error="Please agree to the General Terms and Conditions.">
               <span slot="label">
                 I have read and agree to the
                 <p-link-pure icon="none" underline={true}>
@@ -86,14 +103,7 @@ const Page = () => (
         </form>
       </div>
     </main>
-    <Script>
-      {`
-        // Prevents the demo form from navigating on submit.
-        document.getElementById('contact-form').addEventListener('submit', (event) => {
-          event.preventDefault();
-        });
-      `}
-    </Script>
+    <FormValidation />
   </PatternPage>
 );
 
