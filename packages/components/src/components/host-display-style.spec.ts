@@ -14,6 +14,7 @@ it.each<TagName>(tagNamesWithJss)(
   (tagName) => {
     // mock to get the result from getComponentCss() directly
     const spy = getComponentCssSpy();
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
     const component = componentFactory(tagName);
 
@@ -23,6 +24,16 @@ it.each<TagName>(tagNamesWithJss)(
 
     component.render();
     expect(spy).toHaveBeenCalledTimes(1);
+    if (tagName === 'p-display') {
+      expect(warnSpy).toHaveBeenCalledWith(
+        '[Porsche Design System]',
+        'component p-display is deprecated and will be removed with next major release.',
+        'Please use p-heading component instead.',
+        component.host
+      );
+    } else {
+      expect(warnSpy).not.toHaveBeenCalled();
+    }
 
     const cssObject = getComponentCssObject(spy) as { [key: string]: { display?: string } };
     if (cssObject[':host']?.display) {
