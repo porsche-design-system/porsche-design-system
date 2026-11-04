@@ -191,13 +191,9 @@ Records live per file key, so nothing published under another key touches the li
 5. **A pull request is red for what its author can fix, a publish when it cannot do its job or Figma refused a record,
    and publish is per record.** A closed gap still in `figma/accepted-gaps.json` turns a pull request red: left there,
    it would accept that gap again, unseen. A failed preview is retried once; a preview or pull that does not reach Figma
-   warns in a pull request and turns a publish red. A snippet that fails only the CLI's Prettier check
-   (`syntaxCheckOnly`) publishes with a warning
-   ([figma/code-connect#418](https://github.com/figma/code-connect/issues/418), still open); the unit tests run that
-   check on every snippet instead. Rejected: gating publish on Figma matching code, which let one moved component block
-   all 57; refused records or closed gaps in the log only, where nobody saw them; a tolerated number of preview
-   failures, which lets a broken template through; `metadata: { nestable: false }`, which shows every nested component
-   as a pill.
+   warns in a pull request and turns a publish red. Rejected: gating publish on Figma matching code, which let one moved
+   component block all 57; refused records or closed gaps in the log only, where nobody saw them; a tolerated number of
+   preview failures, which lets a broken template through.
 6. **No issue; Slack gets every open design line after each release and every Monday, with nothing remembered between
    runs.** Code is the source of truth, so every line is a change design makes; code follows Figma only by deleting a
    closed accepted gap. The cost: a line repeats until design acts, and a designer's change waits up to 7 days to be
