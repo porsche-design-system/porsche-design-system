@@ -44,6 +44,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
 - `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Textarea`: hidden caret after multiple clicks on label in Chromium browsers
+  ([#3891](https://github.com/porsche-design-system/porsche-design-system/issues/3891))
 
 ## [4.10.1] - 2026-10-23
 

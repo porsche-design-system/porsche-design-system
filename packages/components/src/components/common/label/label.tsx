@@ -32,6 +32,13 @@ export const Label: FunctionalComponent<LabelProps> = ({
   stopClickPropagation,
   onClick,
 }) => {
+  // Prevents Chromium from moving selection to the label on repeated clicks, which hides the input caret (#3891)
+  const handleLabelMouseDown = (e: MouseEvent) => {
+    if (htmlFor && !isLoading && !isDisabled) {
+      e.preventDefault();
+    }
+  };
+
   const handleLabelClick = (e: MouseEvent) => {
     if (stopClickPropagation) {
       e.stopPropagation();
@@ -54,6 +61,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
             id={labelId}
             aria-disabled={isLoading || isDisabled ? 'true' : null}
             htmlFor={htmlFor}
+            onMouseDown={handleLabelMouseDown}
             onClick={handleLabelClick}
           >
             <Fragment>

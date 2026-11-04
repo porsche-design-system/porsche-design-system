@@ -510,6 +510,22 @@ test.describe('focus state', () => {
     await expect(inputText).toBeFocused();
   });
 
+  test('should keep focus and caret when label is clicked multiple times', async ({ page }) => {
+    await initInputText(page, { props: { name: 'some-name', label: 'Some label' } });
+    const label = getLabel(page);
+    const inputText = getInputText(page);
+
+    await label.click();
+    await page.keyboard.type('hello');
+    await expect(inputText).toHaveValue('hello');
+
+    await label.click();
+    await expect(inputText).toBeFocused();
+
+    await page.keyboard.press('Backspace');
+    await expect(inputText).toHaveValue('hell');
+  });
+
   test('should focus input-text when host is focused', async ({ page }) => {
     await initInputText(page);
     const host = getHost(page);
