@@ -10,7 +10,7 @@ import {
 } from '../figma/cliOutput';
 
 // Runs `figma connect <command>` per Dev Mode label; `publish` uploads every record that renders and validates, after
-// `figma:generate --check`. Exit codes and rationale: docs/figma-code-connect.md.
+// `figma:generate --check`. See: docs/figma-code-connect.md.
 const unrendered: string[] = [];
 const unreached: string[] = [];
 const configs = ['figma.config.json', 'figma.react.config.json', 'figma.angular.config.json', 'figma.vue.config.json'];

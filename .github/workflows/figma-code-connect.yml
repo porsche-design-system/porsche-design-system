@@ -4,7 +4,7 @@ name: 'Figma Code Connect'
 # records of the latest release, without gating a merge or a release. release.yml calls it after a release, to publish
 # and send the design lines; the weekly run and a dispatch send them too, and a dispatch with `publish` also republishes;
 # all read the latest release, never main. On a pull request Contribution calls it after the deploy, for a dry run:
-# everything but the upload. Rationale, secrets and exit codes: docs/figma-code-connect.md.
+# everything but the upload. See: docs/figma-code-connect.md.
 
 on:
   workflow_call:

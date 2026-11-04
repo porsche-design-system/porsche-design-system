@@ -13,7 +13,7 @@ import {
 } from './snapshot';
 
 // Renders every generated file from one pull and the accepted gaps, and reports where Figma differs from code.
-// Rationale: docs/figma-code-connect.md.
+// See: docs/figma-code-connect.md.
 
 type Label = {
   suffix: string;
