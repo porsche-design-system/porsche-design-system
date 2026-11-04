@@ -14,14 +14,18 @@ let output = fileOutput;
 
 const originalConsole = { warn: console.warn, error: console.error };
 // Output outside a test is also printed, because Vitest runs no afterAll in a file whose tests are all skipped.
-console.warn = (...args: unknown[]) => {
-  output.push(`console.warn: ${format(...args)}`);
-  if (output === fileOutput) originalConsole.warn(...args);
+const guardConsole = {
+  warn: (...args: unknown[]) => {
+    output.push(`console.warn: ${format(...args)}`);
+    if (output === fileOutput) originalConsole.warn(...args);
+  },
+  error: (...args: unknown[]) => {
+    output.push(`console.error: ${format(...args)}`);
+    if (output === fileOutput) originalConsole.error(...args);
+  },
 };
-console.error = (...args: unknown[]) => {
-  output.push(`console.error: ${format(...args)}`);
-  if (output === fileOutput) originalConsole.error(...args);
-};
+console.warn = guardConsole.warn;
+console.error = guardConsole.error;
 // jsdom reports unimplemented APIs to its virtual console, not to console, so vi.spyOn cannot declare them.
 (globalThis as JsdomGlobal).jsdom?.virtualConsole.on('jsdomError', (error) => {
   output.push(`jsdom: ${error.message}`);
@@ -50,6 +54,9 @@ beforeEach(() => {
 
 // Registered before every spec hook, so it runs after the spec's own afterEach hooks.
 afterEach(() => {
+  // restoreMocks restores a test's spies only before the next test, so a muted spy would swallow afterAll output.
+  console.warn = guardConsole.warn;
+  console.error = guardConsole.error;
   const testOutput = output;
   output = fileOutput;
   if (testOutput.length) {
