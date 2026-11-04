@@ -6,7 +6,7 @@ screen readers, magnification, High Contrast Mode, or other assistive technologi
 ## Commitment
 
 Accessibility is a core quality requirement of the Porsche Design System. We design, develop, and test our components
-and documentation against **[WCAG 2.2 Level AA](https://www.w3.org/WAI/standards-guidelines/wcag/)**.
+and documentation against **[WCAG 2.2 Level AA](https://www.w3.org/TR/WCAG22/)**.
 
 That target guides our work. It is **not** a formal conformance claim for every consumer product built with PDS —
 product teams remain responsible for accessible integration of our components into their applications.
@@ -35,6 +35,14 @@ We prioritize:
 - Upstream browser, OS, or assistive-technology bugs we cannot fix in this repository (we document workarounds when
   known)
 
+## Supported environments
+
+We target evergreen browsers covered by our [Browserslist](./.browserslistrc) configuration (broadly: recent Chrome,
+Edge, Firefox, and Safari on desktop and mobile).
+
+Manual screen-reader spot checks focus on **VoiceOver** (macOS / iOS) and **NVDA** (Windows). Other assistive
+technologies may work, but are not part of our routine verification.
+
 ## How we test
 
 Components go through automated and manual accessibility checks before release:
@@ -46,6 +54,19 @@ Components go through automated and manual accessibility checks before release:
 | Manual    | Keyboard navigation and screen-reader spot checks (e.g. VoiceOver, NVDA) |
 
 Per-component results and guidance live on each component's **Accessibility** tab on the storefront.
+
+## Contributor expectations
+
+If you change UI, components, or documentation in this repository:
+
+- Do a **keyboard-only pass** on interactive changes (logical tab order, visible focus, no traps, expected keys).
+- Do not regress automated a11y coverage (`npm run test:a11y:components-js` and related package suites where
+  applicable).
+- Follow the storefront [Do's and Don'ts](https://designsystem.porsche.com/must-know/accessibility/dos-and-donts/) and
+  each component's **Accessibility** tab (e.g. pass ARIA via the `aria` prop, not as host `aria-*` attributes).
+- Keep semantics, accessible names, contrast, and High Contrast Mode support intact.
+
+Agent-oriented rules for this repo also live in [`AGENTS.md`](./AGENTS.md) (Accessibility section).
 
 ## Known limitations
 
@@ -66,17 +87,29 @@ barriers. See the storefront guidance linked below.
    duplicates.
 2. Open a [Bug Report](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose) (or follow the
    [Bug Report guide](https://designsystem.porsche.com/help/bug-report/) on the storefront).
-3. Mention that the issue is an **accessibility barrier** and include, where possible:
+3. Mention that the issue is an **accessibility barrier**, apply or ask for the `a11y` label, and include, where
+   possible:
    - The task you were trying to complete and what went wrong
    - Affected component(s), package(s), and version(s)
    - Operating system, browser, and assistive technology (with versions)
    - Steps to reproduce and a minimal reproduction (StackBlitz is preferred — see the bug report guide)
-   - Impact and any workaround you found
+   - Impact using the severity guide below, and any workaround you found
 
 You can report in **English or German**.
 
 Avoid posting personal, medical, account, or security-sensitive information in a public issue. Security vulnerabilities
 belong in [SECURITY.md](./SECURITY.md), not here.
+
+### Severity
+
+Use this to describe impact when reporting. Maintainers may adjust severity during triage.
+
+| Severity | Meaning                                                               |
+| -------- | --------------------------------------------------------------------- |
+| Critical | Blocks completing a core task with no reasonable workaround           |
+| High     | Significant difficulty; a workaround exists                           |
+| Medium   | Inconsistent or degraded experience that does not block the main task |
+| Low      | Minor issue with limited impact on usability                          |
 
 ### What to expect
 
