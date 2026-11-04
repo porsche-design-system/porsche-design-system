@@ -61,7 +61,8 @@ override of a base setting carries a comment saying why.
 `vitestConfig` adds `vitest-console-guard` as the first setup file, so it runs before a package's own. It fails:
 
 - a test that calls `console.warn` or `console.error`;
-- a file that logs at import time, in `beforeAll` or `afterAll`, or from a timer that fires after the file's last test;
+- a file that logs at import time, in `beforeAll` or `afterAll`, in a cleanup `beforeAll` returns, in a file fixture's
+  teardown, or from a timer that fires after the file's last test;
 - a test that triggers a jsdom error, such as `Not implemented: HTMLFormElement's requestSubmit() method`.
 
 The message names the method and the formatted text. Declare expected output in the test that causes it:
@@ -72,8 +73,8 @@ The message names the method and the formatted text. Declare expected output in 
   spy cannot declare it.
 
 Output from a timer that fires after its test is blamed on the next test. The message names the text, so search for it.
-Output outside a test is also printed, because Vitest runs no `afterAll` in a file whose tests are all skipped, so the
-guard cannot fail that file. `console.log` is not guarded.
+Output outside a test is also printed, because Vitest runs no hooks in a file whose tests are all skipped, so the guard
+cannot fail that file. `console.log` is not guarded.
 
 ## `normalizeCssNamespace` ships in a published bundle
 
