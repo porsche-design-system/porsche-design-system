@@ -95,6 +95,14 @@ describe('vitest-console-guard', () => {
     expect(getTest('muted-last-test.fixture.ts', 'declared').status).toBe('passed');
   });
 
+  it('fails output from a beforeAll cleanup and a file fixture teardown', () => {
+    const file = getFile('file-teardown.fixture.ts');
+    expect(file.status).toBe('failed');
+    expect(file.message).toContain('console.warn: before all cleanup');
+    expect(file.message).toContain('console.warn: file fixture teardown');
+    expect(getTest('file-teardown.fixture.ts', 'passes').status).toBe('passed');
+  });
+
   it('prints output outside any test, because a file of skipped tests never reports it', () => {
     expect(printedOutput).toContain('all skipped import time');
   });
