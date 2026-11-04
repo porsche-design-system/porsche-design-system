@@ -515,7 +515,7 @@ const fragment = (
 };
 
 /**
- * A slot's content through figma/helpers/slotted.ts: a slot interpolated directly renders a React `<SlotDefault />`.
+ * A slot's content through figma/helpers/slotted.ts: a slot interpolated directly renders a "cannot be rendered" comment.
  * The default slot falls back to text, because most simple components draw it as a TEXT property.
  */
 const slotContent = (figma: string): string => {
