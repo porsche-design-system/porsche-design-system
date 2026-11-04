@@ -1,7 +1,10 @@
-# Accessibility Policy
+# Accessibility
 
-Thank you for helping keep the **Porsche Design System** usable for everyone — including people who use keyboards,
-screen readers, magnification, High Contrast Mode, or other assistive technologies.
+Great design is design that everyone can use. Accessibility is built into the **Porsche Design System** so Porsche
+digital products feel inclusive by default — with keyboard support, screen-reader semantics, contrast, High Contrast
+Mode, and more handled at the component level.
+
+This document explains our commitment, how we test, what contributors should uphold, and how to report barriers.
 
 ## Commitment
 
