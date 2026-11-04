@@ -88,6 +88,13 @@ describe('vitest-console-guard', () => {
     expect(getFile('file-level.fixture.ts').message).toContain('console.warn: late timer');
   });
 
+  it('fails afterAll output when the last test muted the console', () => {
+    const file = getFile('muted-last-test.fixture.ts');
+    expect(file.status).toBe('failed');
+    expect(file.message).toContain('console.warn: after a muted last test');
+    expect(getTest('muted-last-test.fixture.ts', 'declared').status).toBe('passed');
+  });
+
   it('prints output outside any test, because a file of skipped tests never reports it', () => {
     expect(printedOutput).toContain('all skipped import time');
   });
