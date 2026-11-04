@@ -102,7 +102,9 @@ describe('the Code Connect CLI', () => {
   }, 30_000);
 
   it('exits 0 and names every record the upload refused', async () => {
-    const refused = { meta: { published_nodes: [], failed_nodes: [{ figmaNode: url, reason: 'Some reason' }] } };
+    // the CLI ignores a refused node whose label is not the one it published
+    const failed = [{ figmaNode: url, label: 'Web Components', reason: 'Some reason' }];
+    const refused = { meta: { published_nodes: [], failed_nodes: failed } };
     answer = ({ method, url: path }) =>
       method === 'POST' && path?.includes('/code_connect?') ? [200, refused] : undefined;
     const { status, log } = await connect(['publish', '--force', '--skip-validation']);

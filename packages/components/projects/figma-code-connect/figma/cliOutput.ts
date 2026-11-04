@@ -10,19 +10,24 @@ export const validationFailures = (log: string): string[] =>
   [...log.matchAll(/^Validation failed for .+? \((https:\/\/\S+)\): /gm)].map(([, url]) => url);
 
 export type UploadFailure = { component: string; url: string; reason: string };
+// Under each label's header the CLI indents a paragraph with a record's name and URL, then one with its reason.
 export const uploadFailures = (log: string): UploadFailure[] => {
   const failures: UploadFailure[] = [];
-  let inFailures = false;
-  for (const raw of log.split('\n')) {
-    // biome-ignore lint/suspicious/noControlCharactersInRegex: the CLI colours the component name and underlines the URL
-    const line = raw.replace(/\x1b\[[0-9;]*m/g, '');
-    if (/^Failed to upload to Figma, for .+:$/.test(line)) {
-      inFailures = true;
-      continue;
+  // biome-ignore lint/suspicious/noControlCharactersInRegex: the CLI colours the component name and underlines the URL
+  const plain = `${log.replace(/\x1b\[[0-9;]*m/g, '')}\n`;
+  for (const [, section] of plain.matchAll(/^Failed to upload to Figma, for .+:\n((?: {2}.*\n|\n)*)/gm)) {
+    for (const paragraph of section.split(/\n\s*\n/)) {
+      const lines = paragraph
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean);
+      const last = failures[failures.length - 1];
+      if (lines.length === 2 && /^https:\/\/\S+$/.test(lines[1])) {
+        failures.push({ component: lines[0], url: lines[1], reason: '' });
+      } else if (last && lines.length) {
+        last.reason = [last.reason, ...lines].filter(Boolean).join(' ');
+      }
     }
-    const record = line.match(/^-> (.+?) (https:\/\/\S+) \((.*)\)$/);
-    if (inFailures && record) failures.push({ component: record[1], url: record[2], reason: record[3] });
-    else if (line.trim() && !line.startsWith('->')) inFailures = false;
   }
   return failures;
 };
