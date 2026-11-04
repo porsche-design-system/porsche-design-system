@@ -112,6 +112,29 @@ describe('the Code Connect CLI', () => {
     expect(uploadFailures(log)).toEqual([{ component: 'p-tag', url, reason: 'Some reason' }]);
   }, 30_000);
 
+  it('names each of several refused records with its whole reason', () => {
+    const log = [
+      'Failed to upload to Figma, for Web Components:',
+      '',
+      '  p-tag',
+      `  ${url}`,
+      '',
+      '  Some reason',
+      '',
+      '  p-button',
+      `  ${fileUrl}?node-id=1-2`,
+      '',
+      '  First line',
+      '  second line',
+      '',
+      'Done',
+    ].join('\n');
+    expect(uploadFailures(log)).toEqual([
+      { component: 'p-tag', url, reason: 'Some reason' },
+      { component: 'p-button', url: `${fileUrl}?node-id=1-2`, reason: 'First line second line' },
+    ]);
+  });
+
   it('marks a preview request that failed, and previews that file again on its own', async () => {
     answer = ({ url: path }) =>
       path?.includes('/preview_snippets?') ? [500, { status: 500, message: 'Internal error' }] : undefined;
