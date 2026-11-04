@@ -376,6 +376,8 @@ places that must be kept in sync when adding a new entry:
   definitions. Bump it **only together with** `@playwright/test`.
 - `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.45.1.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
+- `@figma/code-connect` – pinned and upgraded by hand, so someone checks the Figma Code Connect templates with the new
+  version.
 
 ### How to update them
 
@@ -386,6 +388,10 @@ between the installed Playwright and the Docker image makes CI fail.
 
 **`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
 dependency; otherwise `patch-package` fails on `postinstall`.
+
+**`@figma/code-connect`** — bump the exact pin in `packages/components/projects/figma-code-connect/package.json`, then
+check the templates there: `npm run test:unit`, and `npm run figma:publish:dry` with `FIGMA_ACCESS_TOKEN` set (see
+[`figma-code-connect.md`](./figma-code-connect.md)).
 
 **`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
 
