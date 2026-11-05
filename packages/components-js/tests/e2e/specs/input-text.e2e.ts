@@ -526,6 +526,18 @@ test.describe('focus state', () => {
     await expect(inputText).toHaveValue('hell');
   });
 
+  test('should focus slotted link in label when clicked while input is focused', async ({ page }) => {
+    await initInputText(page, { props: { name: 'some-name' }, useSlottedLabel: true });
+    const inputText = getInputText(page);
+    const slottedLink = page.locator('p-input-text [slot="label"] a');
+
+    await inputText.focus();
+    await expect(inputText).toBeFocused();
+
+    await slottedLink.click();
+    await expect(slottedLink).toBeFocused();
+  });
+
   test('should focus input-text when host is focused', async ({ page }) => {
     await initInputText(page);
     const host = getHost(page);

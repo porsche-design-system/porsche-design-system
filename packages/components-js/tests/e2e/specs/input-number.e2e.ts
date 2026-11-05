@@ -585,6 +585,18 @@ test.describe('focus state', () => {
     await expect(inputNumber).toHaveValue('4');
   });
 
+  test('should focus slotted link in label when clicked while input is focused', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'some-name' }, useSlottedLabel: true });
+    const inputNumber = getInputNumber(page);
+    const slottedLink = page.locator('p-input-number [slot="label"] a');
+
+    await inputNumber.focus();
+    await expect(inputNumber).toBeFocused();
+
+    await slottedLink.click();
+    await expect(slottedLink).toBeFocused();
+  });
+
   test('should focus input-number when host is focused', async ({ page }) => {
     await initInputNumber(page);
     const host = getHost(page);
