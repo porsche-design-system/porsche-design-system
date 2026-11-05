@@ -31,7 +31,9 @@ export const FormValidation = () => (
     };
 
     for (const form of document.querySelectorAll('form[novalidate]')) {
-      const getFields = () => Array.from(form.querySelectorAll('[required], [data-error]'));
+      // Skip fields in a [hidden] ancestor so multi-step forms only validate the visible step.
+      const getFields = () =>
+        Array.from(form.querySelectorAll('[required], [data-error]')).filter((field) => !field.closest('[hidden]'));
 
       const onFieldUpdate = (event) => {
         const field = event.target;
@@ -58,10 +60,14 @@ export const FormValidation = () => (
         event.preventDefault();
         const invalidFields = getFields().filter((field) => !validateField(field));
         const firstInvalid = invalidFields[0];
-        (
-          firstInvalid?.querySelector('p-segmented-control-item:not([disabled]), p-checkbox:not([disabled])') ??
-          firstInvalid
-        )?.focus();
+        if (firstInvalid) {
+          (
+            firstInvalid.querySelector('p-segmented-control-item:not([disabled]), p-checkbox:not([disabled])') ??
+            firstInvalid
+          ).focus();
+          return;
+        }
+        form.dispatchEvent(new CustomEvent('formvalid', { bubbles: true }));
       });
     }
   `

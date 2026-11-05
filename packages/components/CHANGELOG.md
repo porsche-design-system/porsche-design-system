@@ -31,7 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   boundary. ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 - `Fieldset`: `--p-fieldset-label-mb` CSS variable to override the bottom margin of the label
   ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
-- `Knowledge Skill`: contact form and personal details form patterns
+- `Knowledge Skill`: contact form, personal details form and booking form patterns
   ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
 
 ### Changed

@@ -19,9 +19,7 @@ test('loads without reporting an error', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Dismiss Changes' })).toBeVisible();
 });
 
-test('validates required fields on submit, clears errors on input, and resets on Dismiss Changes', async ({
-  page,
-}) => {
+test('validates required fields on submit, clears errors on input, and resets on Dismiss Changes', async ({ page }) => {
   await setupExamplePage(page, url);
 
   const firstName = page.locator('p-input-text[name="first-name"]');

@@ -2,6 +2,7 @@ import type { NavItem } from '../../../src/_partials/header/MainNav.tsx';
 import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page.tsx';
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';
 import FooterPatternPage from '../../../src/patterns/footer/index.page.tsx';
+import BookingFormPage from '../../../src/patterns/forms/booking/index.page.tsx';
 import ContactFormPage from '../../../src/patterns/forms/contact/index.page.tsx';
 import PersonalDetailsFormPage from '../../../src/patterns/forms/personal-details/index.page.tsx';
 import SearchComboboxLinkListPage from '../../../src/patterns/forms/search-combobox-link-list/index.page.tsx';
@@ -50,6 +51,7 @@ export const patternPages = [
   ['patterns/popover/local-market-switch', PopoverLocalMarketSwitchPage],
   ['patterns/popover/priority-navigation', PopoverPriorityNavigationPage],
   ['patterns/popover/feature-tour', PopoverFeatureTourPage],
+  ['patterns/forms/booking', BookingFormPage],
   ['patterns/forms/contact', ContactFormPage],
   ['patterns/forms/personal-details', PersonalDetailsFormPage],
   ['patterns/forms/search-combobox-option-list', SearchComboboxOptionListPage],

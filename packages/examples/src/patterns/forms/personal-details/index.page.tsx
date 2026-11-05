@@ -24,8 +24,18 @@ const Page = () => (
           <p-fieldset label="Contact information">
             <div class="grid gap-static-md">
               <p-radio-group name="salutation" label="Salutation" direction="row">
-                <p-radio-group-option value="mrs" label="Mrs" />
-                <p-radio-group-option value="mr" label="Mr" />
+                <p-radio-group-option value="mrs">
+                  <span slot="label">
+                    <span aria-hidden="true">Mrs</span>
+                    <span class="sr-only">Missus</span>
+                  </span>
+                </p-radio-group-option>
+                <p-radio-group-option value="mr">
+                  <span slot="label">
+                    <span aria-hidden="true">Mr</span>
+                    <span class="sr-only">Mister</span>
+                  </span>
+                </p-radio-group-option>
                 <p-radio-group-option value="other" label="Other" />
               </p-radio-group>
               <div class="grid xs:grid-cols-2 gap-static-md xs:gap-static-sm items-start">

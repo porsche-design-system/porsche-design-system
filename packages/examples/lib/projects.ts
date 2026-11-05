@@ -29,6 +29,7 @@
  * elements the pages actually render.
  */
 export const patternComponents = [
+  'accordion',
   'button',
   'button-pure',
   'checkbox',
@@ -37,6 +38,7 @@ export const patternComponents = [
   'fieldset',
   'flag',
   'heading',
+  'input-date',
   'input-email',
   'input-search',
   'input-tel',
@@ -50,6 +52,7 @@ export const patternComponents = [
   'segmented-control',
   'select',
   'sheet',
+  'stepper-horizontal',
   'tabs-bar',
   'tag',
   'text',
@@ -65,7 +68,6 @@ export const patternComponents = [
  */
 export const templateComponents = [
   ...patternComponents,
-  'accordion',
   'canvas',
   'carousel',
   'divider',
