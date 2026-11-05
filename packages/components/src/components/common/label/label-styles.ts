@@ -66,7 +66,6 @@ export const getFunctionalComponentLabelStyles = (
       font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       color: ref(colorPrimary),
-      userSelect: 'none', // prevents Chromium from moving selection to the label on repeated clicks, which hides the input caret (#3891)
       ...(isDisabledOrLoading && {
         pointerEvents: 'none', // prevents label interaction when disabled or loading
       }),
@@ -77,6 +76,11 @@ export const getFunctionalComponentLabelStyles = (
       display: 'inline',
       '&:empty': {
         display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
+      },
+      // only on <label>, not description spans or non-clickable headings (e.g. radio-group / segmented-control use tag="div")
+      // prevents Chromium from moving selection to the label on repeated clicks, which hides the input caret (#3891)
+      '&:is(label)': {
+        userSelect: 'none',
       },
       // styling for the description
       '&:is(span)': {
