@@ -1,7 +1,7 @@
 # Accessibility
 
 Great design is design that everyone can use. Accessibility is built into the **Porsche Design System** so Porsche
-digital products feel inclusive by default — with keyboard support, screen-reader semantics, contrast, High Contrast
+digital products feel inclusive by default, with keyboard support, screen-reader semantics, contrast, High Contrast
 Mode, and more handled at the component level.
 
 This document explains our commitment, how we test, what contributors should uphold, and how to report barriers.
@@ -11,16 +11,16 @@ This document explains our commitment, how we test, what contributors should uph
 Accessibility is a core quality requirement of the Porsche Design System. We design, develop, and test our components
 and documentation against **[WCAG 2.2 Level AA](https://www.w3.org/TR/WCAG22/)**.
 
-That target guides our work. It is **not** a formal conformance claim for every consumer product built with PDS —
-product teams remain responsible for accessible integration of our components into their applications.
+That target guides our work. It is **not** a formal conformance claim for every consumer product built with PDS. Product
+teams remain responsible for accessible integration of our components into their applications.
 
 We prioritize:
 
-- **Keyboard access** — every interactive control is reachable and operable without a pointer, with a visible focus
+- **Keyboard access:** every interactive control is reachable and operable without a pointer, with a visible focus
   indicator and no keyboard traps
-- **Assistive technology support** — semantic markup, accessible names, and roles/states that work with screen readers
-- **Perception** — sufficient contrast, High Contrast Mode (`forced-colors`), and usability at 200% text zoom
-- **Honest documentation** — known limitations and integration pitfalls are documented rather than hidden
+- **Assistive technology support:** semantic markup, accessible names, and roles/states that work with screen readers
+- **Perception:** sufficient contrast, High Contrast Mode (`forced-colors`), and usability at 200% text zoom
+- **Honest documentation:** known limitations and integration pitfalls are documented rather than hidden
 
 ## Scope
 
@@ -33,18 +33,10 @@ We prioritize:
 
 ### Out of scope
 
-- Consumer applications that integrate PDS — report product-specific barriers to the product owner
+- Consumer applications that integrate PDS (report product-specific barriers to the product owner)
 - Unofficial forks, mirrors, or third-party demos (CodeSandbox, StackBlitz snapshots hosted by others)
 - Upstream browser, OS, or assistive-technology bugs we cannot fix in this repository (we document workarounds when
   known)
-
-## Supported environments
-
-We target evergreen browsers covered by our [Browserslist](./.browserslistrc) configuration (broadly: recent Chrome,
-Edge, Firefox, and Safari on desktop and mobile).
-
-Manual screen-reader spot checks focus on **VoiceOver** (macOS / iOS) and **NVDA** (Windows). Other assistive
-technologies may work, but are not part of our routine verification.
 
 ## How we test
 
@@ -78,7 +70,7 @@ boundary). We document these constraints and follow platform progress such as th
 [Accessibility Object Model](https://github.com/WICG/aom). Browser differences can also affect how accessibility
 features behave; component docs call these out where relevant.
 
-Using PDS does not automatically make an entire product accessible — incorrect integration (for example putting `aria-*`
+Using PDS does not automatically make an entire product accessible. Incorrect integration (for example putting `aria-*`
 on a component host instead of the `aria` prop, or missing accessible names on icon-only controls) can still introduce
 barriers. See the storefront guidance linked below.
 
@@ -95,7 +87,7 @@ barriers. See the storefront guidance linked below.
    - The task you were trying to complete and what went wrong
    - Affected component(s), package(s), and version(s)
    - Operating system, browser, and assistive technology (with versions)
-   - Steps to reproduce and a minimal reproduction (StackBlitz is preferred — see the bug report guide)
+   - Steps to reproduce and a minimal reproduction (StackBlitz is preferred; see the bug report guide)
    - Impact using the severity guide below, and any workaround you found
 
 You can report in **English or German**.
@@ -139,4 +131,4 @@ Suggestions that improve this document (rather than report a barrier) are welcom
 
 ---
 
-**Last updated:** 2026-11-04
+**Last updated:** 2026-11-05
