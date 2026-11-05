@@ -323,7 +323,7 @@ const Page = () => (
           gb: 'United Kingdom',
           us: 'United States',
         };
-        const salutations = { mr: 'Mr.', ms: 'Ms.', other: 'Other' };
+        const salutations = { mr: 'Mr.', mrs: 'Mrs.', other: 'Other' };
         let currentStep = 0;
 
         const field = (name) => form.querySelector('[name="' + name + '"]');
