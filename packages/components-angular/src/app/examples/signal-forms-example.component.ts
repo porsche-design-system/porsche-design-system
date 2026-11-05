@@ -52,7 +52,7 @@ type SignalFormsModel = {
         <p-radio-group-option label="Option A" value="a"></p-radio-group-option>
         <p-radio-group-option label="Option B" value="b"></p-radio-group-option>
       </p-radio-group>
-      <p-segmented-control [formField]="form.segmentedControl">
+      <p-segmented-control [formField]="form.segmentedControl" [label]="'Segmented Control'">
         <p-segmented-control-item value="a">Option A</p-segmented-control-item>
         <p-segmented-control-item value="b">Option B</p-segmented-control-item>
       </p-segmented-control>
