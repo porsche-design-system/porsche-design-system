@@ -47,9 +47,9 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@porsche-design-system/components-react": "4.10.1",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "react-router-dom": "^7.18.4"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
@@ -58,19 +58,19 @@
     "@porsche-design-system/testing": "0.0.0",
     "@tailwindcss/vite": "^4.3.3",
     "@testing-library/react": "^16.3.3",
-    "@testing-library/user-event": "^14.6.7",
+    "@testing-library/user-event": "^14.6.8",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.1.1",
+    "@vitejs/plugin-react": "^6.1.2",
     "ag-grid-community": "36.2.0",
     "ag-grid-enterprise": "36.2.0",
     "ag-grid-react": "36.2.0",
     "change-case": "^5.4.4",
-    "concurrently": "^10.0.5",
+    "concurrently": "^10.0.6",
     "fast-glob": "^3.3.3",
-    "local-web-server": "^5.4.0",
+    "local-web-server": "^5.4.2",
     "typescript": "^6.0.3",
-    "vite": "^8.3.1",
+    "vite": "^8.3.5",
     "vite-plugin-html": "^3.2.2"
   },
   "volta": {
