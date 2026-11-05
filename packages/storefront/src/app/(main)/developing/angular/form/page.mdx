@@ -23,6 +23,7 @@ All form components support:
     ([Reactive Forms](https://angular.dev/guide/forms/reactive-forms))
   - **Template-Driven Forms** using `[(ngModel)]`
     ([Template-Driven Forms](https://angular.dev/guide/forms/template-driven-forms))
+  - **Signal Forms** using `[formField]` ([Signal Forms](https://angular.dev/guide/forms/signals/overview))
 - **Manual State Management (Props + Events)** using `value`/`checked` properties and `change`/`input`/`blur` event
   listeners
 - **Native form submission** using form-associated custom elements
@@ -78,6 +79,24 @@ onSubmit(f: NgForm) {
   console.log(f.value);
 }
 ```
+
+### Signal Forms
+
+Bind a field of a signal form with `[formField]`. See the
+[Signal Forms](https://angular.dev/guide/forms/signals/overview) guide for more details.
+
+```angular20html
+<p-input-email [formField]="form.email" [label]="'Some Label'" />
+...
+model = signal({ email: '' });
+form = form(this.model, (path) => {
+  pattern(path.email, /^.+@porsche\.de$/);
+});
+```
+
+Validate a pattern with the Signal Forms `pattern()` rule. The `pattern` prop of `p-input-email`, `p-input-tel` and
+`p-input-url` takes the pattern as text, like the native `pattern` attribute, and ignores the list of regular
+expressions that Signal Forms passes to it.
 
 ## Manual State Management
 
