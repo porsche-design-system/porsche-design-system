@@ -20,20 +20,37 @@ export const validationFailures = (log: string): string[] =>
   [...log.matchAll(/^Validation failed for .+? \((https:\/\/\S+)\): /gm)].map(([, url]) => url);
 
 export type UploadFailure = { component: string; url: string; reason: string };
+// Each refused record follows a "Failed to upload to Figma, for <label>:" line as two indented blocks, separated by
+// blank lines: its component and URL, then its reason, which can span several lines.
 export const uploadFailures = (log: string): UploadFailure[] => {
   const failures: UploadFailure[] = [];
-  let inFailures = false;
+  let blocks: string[][] | undefined;
+  const flush = (): void => {
+    for (let i = 0; blocks && i + 1 < blocks.length; i += 2) {
+      const [component, url] = blocks[i];
+      if (component && url?.startsWith('https://')) failures.push({ component, url, reason: blocks[i + 1].join('\n') });
+    }
+    blocks = undefined;
+  };
   for (const raw of log.split('\n')) {
     // biome-ignore lint/suspicious/noControlCharactersInRegex: the CLI colours the component name and underlines the URL
     const line = raw.replace(/\x1b\[[0-9;]*m/g, '');
     if (/^Failed to upload to Figma, for .+:$/.test(line)) {
-      inFailures = true;
+      flush();
+      blocks = [];
       continue;
     }
-    const record = line.match(/^-> (.+?) (https:\/\/\S+) \((.*)\)$/);
-    if (inFailures && record) failures.push({ component: record[1], url: record[2], reason: record[3] });
-    else if (line.trim() && !line.startsWith('->')) inFailures = false;
+    if (!blocks) continue;
+    if (!line.trim()) {
+      if (blocks.at(-1)?.length) blocks.push([]);
+    } else if (line.startsWith('  ')) {
+      if (!blocks.length) blocks.push([]);
+      blocks.at(-1)?.push(line.trim());
+    } else {
+      flush();
+    }
   }
+  flush();
   return failures;
 };
 
