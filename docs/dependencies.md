@@ -221,15 +221,19 @@ generators and `minifyHTML()` were made `async` accordingly. Output is byte-for-
 
 ### Accepted advisories (dev-only build tooling)
 
-The remaining advisories all originate from **dev-only** build tooling, are not reachable from shipped package output,
-and several are Windows-dev-server-only:
+The remaining advisories all originate from **dev-only** tooling and are not reachable from shipped package output:
 
-- `@angular/build`, `@angular/compiler-cli`, `@babel/core` (pulled by Angular) — Angular **versions** are bumped via
-  syncpack, but only as upstream ships fixes; framework migrations are applied via the `ng:update` wrapper (see
-  [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations)).
-- `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` and the React Router dev server (`@react-router/dev` →
-  `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These clear once Angular and
-  `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
+- `zod@3` ([GHSA-mrhx-c7xc-m3w5](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5)) — pulled by `@figma/code-connect`,
+  which is built on the `zod@3` API. The fix exists only in `zod@4.6.6`, so an override would break the Figma CLI. It
+  clears once `@figma/code-connect` moves to `zod@4`.
+- `minimatch@9`/`@10` ([GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249)) and `glob@11`/`@13`
+  ([GHSA-3g3m-2fjr-6pw4](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4)) — pulled by `@figma/code-connect`,
+  `js-beautify` (via `@vue/test-utils`) and `madge`. The fixes exist only in the next majors (`minimatch@11`,
+  `glob@14`), which a per-major override cannot select without crossing a major (see
+  [Strict peer dependency resolution](#strict-peer-dependency-resolution)). Both need attacker-controlled glob patterns
+  or an `AbortSignal` traversal budget; our tooling only globs fixed patterns from the repository.
+- `deepmerge` ([GHSA-gcqx-w48m-w2h4](https://github.com/advisories/GHSA-gcqx-w48m-w2h4)) — pulled by
+  `@rollup/plugin-node-resolve`. No patched release exists.
 
 ## Build tooling for `--dts` libraries
 
