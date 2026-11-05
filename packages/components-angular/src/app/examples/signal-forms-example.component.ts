@@ -9,6 +9,7 @@ type SignalFormsModel = {
   inputEmail: string;
   inputEmailWithPattern: string;
   inputMonth: string;
+  // Typed as a number for the min and max rules. Typed values still arrive as text, see #4858.
   inputNumber: number | null;
   inputNumberText: string;
   inputPassword: string;
