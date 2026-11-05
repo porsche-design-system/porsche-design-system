@@ -355,10 +355,30 @@ karma suite at the time, and failed the suite with:
 TypeError: Cannot assign to read only property 'describe' of object '[object Object]'
 ```
 
-`jasmine-core` is therefore declared explicitly as `~6.3.0` in
+`jasmine-core` is therefore declared explicitly in
 [`packages/components-angular`](../packages/components-angular/package.json), matching `@types/jasmine` and the Angular
-starter template. **Do not remove it** — without it the major returns silently on the next update round. Bump it only
-together with `@types/jasmine` and after confirming the Angular karma suite passes with that jasmine major.
+starter template. It is on `~7.0.2` now, because the Angular app no longer loads zone.js (it bootstraps with
+`provideZonelessChangeDetection()`). **Do not remove it** — without it a widened peer range picks the jasmine major
+silently on the next update round. Bump it only together with `@types/jasmine` and after confirming the Angular karma
+suite passes with that jasmine major.
+
+## `preact` is declared in the root `package.json`
+
+The examples ([`packages/examples`](../packages/examples/package.json)) render their pages with
+`preact-render-to-string`, which must use the **same** `preact` instance as the pages. With two instances it renders
+nothing — no error, just an empty string.
+
+`react-instantsearch` in the storefront pulls in `instantsearch.js`, which still depends on `preact@^10`. Without the
+root declaration npm hoists that `preact@10` to the root, places `preact-render-to-string` there too, and nests the
+examples' `preact@11` below `packages/examples`. The renderer then resolves the other copy.
+
+`preact` is therefore declared in the root `package.json` as well, with the same range as in `packages/examples`. That
+keeps `preact@11` at the root, next to the renderer, and nests `instantsearch.js`'s own `preact@10` below it. **Do not
+remove it** while `instantsearch.js` depends on `preact@^10`. After an update, verify:
+
+```bash
+npm ls preact   # preact-render-to-string and @porsche-design-system/examples must share the root preact
+```
 
 ## Held-back dependencies
 

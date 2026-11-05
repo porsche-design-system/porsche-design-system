@@ -58,6 +58,10 @@ polyfill needs the `CSS` namespace that jsdom provides). `jsdom` must stay decla
 stops being hoisted and every Vitest `jsdom` suite breaks. See `docs/dependencies.md` → _Updating jsdom and the popover
 polyfill_.
 
+`preact` is declared in the **root** `package.json` as well as in `packages/examples`; keep the declaration, or
+`preact-render-to-string` resolves a second `preact` copy and the examples render empty pages. See
+`docs/dependencies.md` → _`preact` is declared in the root `package.json`_.
+
 If the only remaining outdated packages are the _never-touch_ ones above, **skip them** and note it in the PR
 description.
 

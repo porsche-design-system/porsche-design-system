@@ -299,6 +299,7 @@
     "madge": "^8.0.0",
     "patch-package": "^8.0.1",
     "postcss": "^8",
+    "preact": "^11.1.0",
     "prettier": "^3.9.10",
     "publint": "^0.3.25",
     "react-router": "^8.5.1",
