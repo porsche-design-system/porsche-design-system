@@ -400,6 +400,10 @@ places that must be kept in sync when adding a new entry:
   definitions. Bump it **only together with** `@playwright/test`.
 - `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.45.1.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
+- `@axe-core/playwright` – pinned to `~4.13.0` (and with it `axe-core`). `axe-core` 4.14 evaluates semi-transparent
+  colors and reports `contrast-medium` text on `surface` (4.38:1) on nearly every storefront page, plus a dark-scheme
+  finding in the `table` fixture of `components-js`. Fixing them needs a design decision, tracked in
+  [#4859](https://github.com/porsche-design-system/porsche-design-system/issues/4859).
 
 ### How to update them
 
@@ -410,6 +414,10 @@ between the installed Playwright and the Docker image makes CI fail.
 
 **`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
 dependency; otherwise `patch-package` fails on `postinstall`.
+
+**`@axe-core/playwright`** — bump it together with the fixes for the violations the new `axe-core` reports (see
+[#4859](https://github.com/porsche-design-system/porsche-design-system/issues/4859)), then remove it from both held-back
+lists.
 
 **`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
 

@@ -273,7 +273,7 @@
     "jss-preset-default": "^10.10.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.14.0",
+    "@axe-core/playwright": "~4.13.0",
     "@biomejs/biome": "^2.6.4",
     "@playwright/test": "1.63.0",
     "@porsche-design-system/prettier-config": "^1.0.1",

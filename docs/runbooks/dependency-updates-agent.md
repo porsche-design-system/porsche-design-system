@@ -52,6 +52,8 @@ by selecting them in `npm run npm:update`.** Handle them as noted:
 - `@playwright/test` — held back from the weekly run; update deliberately via
   [Updating Playwright](#updating-playwright-npm-pin-docker-image-vrt) (npm pin + Docker image + VRT).
 - `@stencil/core` — pinned because a `patch-package` patch targets the exact version. **Never touch here.**
+- `@axe-core/playwright` — pinned to `~4.13.0` until the color-contrast findings of `axe-core` 4.14 are fixed
+  ([#4859](https://github.com/porsche-design-system/porsche-design-system/issues/4859)). **Never touch here.**
 
 Not held back, but **bump them together** when they surface: `jsdom` and `@oddbird/popover-polyfill` are coupled (the
 polyfill needs the `CSS` namespace that jsdom provides). `jsdom` must stay declared in the **root** `package.json` or it
