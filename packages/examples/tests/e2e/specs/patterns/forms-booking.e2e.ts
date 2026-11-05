@@ -34,6 +34,9 @@ test('walks through all three steps, validates each, and supports back and edit'
 
   const currentUrl = page.url();
 
+  await expect(page.locator('#booking-stepper-personal-data > .sr-only')).toHaveCount(1);
+  await expect(page.locator('#booking-stepper-confirmation > .sr-only')).toHaveCount(1);
+
   await page.locator('p-segmented-control[name="time"]').evaluate((el: HTMLElement & { value?: string }) => {
     el.value = undefined;
   });
@@ -52,6 +55,8 @@ test('walks through all three steps, validates each, and supports back and edit'
   await expect(page.getByRole('heading', { level: 2, name: 'Your details' })).toBeVisible();
   // Focus lands on the `p-heading` host (tabindex=-1); the inner heading is not the focused node.
   await expect(page.locator('#booking-heading')).toBeFocused();
+  await expect(page.locator('#booking-stepper-personal-data > .sr-only')).toHaveCount(0);
+  await expect(page.locator('#booking-stepper-confirmation > .sr-only')).toHaveCount(1);
 
   await page.getByRole('button', { name: 'Continue' }).click();
   await expect(page.locator('p-input-text[name="first-name"]')).toHaveJSProperty('state', 'error');
