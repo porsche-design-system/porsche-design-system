@@ -31,6 +31,36 @@ test.describe('Angular Signal Forms integration', () => {
     });
   }
 
+  test('p-input-number receives the min and max rules of its field', async ({ page }) => {
+    const input = page.locator('#all-components p-input-number').first().locator('input');
+
+    await expect(input).toHaveAttribute('min', '1');
+    await expect(input).toHaveAttribute('max', '10');
+
+    await input.fill('11');
+
+    await expect.poll(() => isFormValid(page, 'all-components')).toBe(false);
+  });
+
+  test('p-input-number writes typed and cleared values to the model as text', async ({ page }) => {
+    const hosts = page.locator('#all-components p-input-number');
+    const numberField = hosts.nth(0).locator('input');
+    const textField = hosts.nth(1).locator('input');
+    const model = page.locator('[data-field="model"]');
+
+    await numberField.fill('5');
+    await textField.fill('7');
+
+    await expect(model).toContainText('"inputNumber": "5"');
+    await expect(model).toContainText('"inputNumberText": "7"');
+
+    await numberField.fill('');
+    await textField.fill('');
+
+    await expect(model).toContainText('"inputNumber": ""');
+    await expect(model).toContainText('"inputNumberText": ""');
+  });
+
   test('p-input-email keeps a [pattern] bound next to [formField]', async ({ page }) => {
     const host = page.locator('#pattern-binding p-input-email');
 

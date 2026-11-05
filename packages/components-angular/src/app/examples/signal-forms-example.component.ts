@@ -1,6 +1,6 @@
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { FormField, form } from '@angular/forms/signals';
+import { FormField, form, max, min } from '@angular/forms/signals';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 type SignalFormsModel = {
@@ -101,5 +101,8 @@ export class SignalFormsExampleComponent {
     textarea: '',
   });
 
-  form = form(this.model);
+  form = form(this.model, (path) => {
+    min(path.inputNumber, 1);
+    max(path.inputNumber, 10);
+  });
 }
