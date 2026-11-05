@@ -59,7 +59,7 @@ jobs:
       # No checkout: nothing from the repository is needed, and the head of a just-closed pull
       # request is exactly the code we would rather not run while holding AWS credentials.
       - name: 'Assume AWS role'
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           # `storefront-preview-deployer` may only touch `pr-*`, so a bug here cannot reach
           # `nightly` or a published version. Its OIDC trust condition is the bare
