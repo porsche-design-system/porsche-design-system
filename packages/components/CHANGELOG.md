@@ -29,10 +29,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Search`: `aria` accepts `aria-activedescendant`, and `aria-controls` and `aria-activedescendant` accept an
   element (or, for `aria-controls`, a list of elements) so the relationship reaches the input across the shadow
   boundary. ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
-- **Angular**: form components that support Reactive Forms also work with Angular Signal Forms through `[formField]`.
-  The `pattern` prop of `Input Email`, `Input Tel` and `Input Url` keeps taking the pattern as text and ignores the
-  regular expressions Signal Forms passes to it
-  ([#4856](https://github.com/porsche-design-system/porsche-design-system/pull/4856))
 
 ### Changed
 
@@ -48,6 +44,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
 - `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- **Angular**: binding Angular Signal Forms with `[formField]` failed to compile on `Input Email`, `Input Tel` and
+  `Input Url`, and on `Input Number` with a field holding text
+  ([#4856](https://github.com/porsche-design-system/porsche-design-system/pull/4856))
 
 ## [4.10.1] - 2026-10-23
 
