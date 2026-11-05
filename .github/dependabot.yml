@@ -53,6 +53,8 @@ updates:
       - dependency-name: "playwright-core"
       # Pinned: a patch-package patch targets this exact version (see docs/dependencies.md)
       - dependency-name: "@stencil/core"
+      # Pinned until the color-contrast findings of axe-core 4.14 are fixed, see #4859 (see docs/dependencies.md)
+      - dependency-name: "@axe-core/playwright"
       # Pinned and upgraded by hand, so the Figma Code Connect templates are checked by hand (see docs/dependencies.md)
       - dependency-name: "@figma/code-connect"
     groups:

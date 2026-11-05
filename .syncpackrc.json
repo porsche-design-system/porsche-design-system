@@ -51,6 +51,7 @@
         "@playwright/test",
         "playwright-core",
         "@stencil/core",
+        "@axe-core/playwright",
         "@figma/code-connect"
       ],
       "isIgnored": true
