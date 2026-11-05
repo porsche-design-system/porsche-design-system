@@ -39,10 +39,10 @@
     "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/testing": "0.0.0",
-    "@rollup/plugin-typescript": "^12.3.0",
+    "@rollup/plugin-typescript": "^12.3.1",
     "change-case": "^5.4.4",
     "jss": "^10.10.0",
-    "rollup": "^4.63.5",
+    "rollup": "^4.66.0",
     "rollup-plugin-dts": "^6.5.1",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3"

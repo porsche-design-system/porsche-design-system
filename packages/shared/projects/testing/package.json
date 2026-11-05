@@ -41,15 +41,15 @@
     "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.13.0",
+    "@axe-core/playwright": "~4.13.0",
     "@playwright/test": "1.63.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@types/node": "^26.6.3",
+    "@types/node": "^26.6.6",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.2"
+    "vitest": "^5.0.5"
   },
   "peerDependencies": {
-    "@axe-core/playwright": "^4.13.0",
+    "@axe-core/playwright": "~4.13.0",
     "@playwright/test": "1.63.0"
   },
   "volta": {

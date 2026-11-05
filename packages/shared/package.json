@@ -6,25 +6,6 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "deprecation": [
-        "./dist/deprecation/index.d.ts"
-      ],
-      "models": [
-        "./dist/models/index.d.ts"
-      ],
-      "examples": [
-        "./dist/examples/index.ts"
-      ],
-      "examples/*": [
-        "./dist/examples/*.tsx"
-      ]
-    }
-  },
   "sideEffects": false,
   "exports": {
     ".": {
@@ -65,6 +46,9 @@
     "./tsconfig.paths.json": "./tsconfig.paths.json",
     "./package.json": "./package.json"
   },
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
     "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run build:generateCodeExamples && npm run typecheck && npm run build:bundle",
@@ -80,7 +64,7 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
-    "react": "^19.3.0"
+    "react": "^19.3.1"
   },
   "devDependencies": {
     "@porsche-design-system/testing": "0.0.0",
@@ -88,13 +72,13 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.3",
-    "@rollup/plugin-typescript": "^12.3.0",
+    "@rollup/plugin-typescript": "^12.3.1",
     "@types/madge": "^5.0.3",
-    "@types/node": "^26.6.3",
+    "@types/node": "^26.6.6",
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
     "madge": "^8.0.0",
-    "rollup": "^4.63.5",
+    "rollup": "^4.66.0",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-modify": "^3.0.0",
@@ -103,9 +87,25 @@
     "spdy": "^4.0.2",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.2"
+    "vitest": "^5.0.5"
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "deprecation": [
+        "./dist/deprecation/index.d.ts"
+      ],
+      "models": [
+        "./dist/models/index.d.ts"
+      ],
+      "examples": [
+        "./dist/examples/index.ts"
+      ],
+      "examples/*": [
+        "./dist/examples/*.tsx"
+      ]
+    }
   }
 }
