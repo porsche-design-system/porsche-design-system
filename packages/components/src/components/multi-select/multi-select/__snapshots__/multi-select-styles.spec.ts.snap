@@ -196,6 +196,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -440,6 +441,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -684,6 +686,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -928,6 +931,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -1165,6 +1169,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -1408,6 +1413,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -1650,6 +1656,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -1892,6 +1899,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -2134,6 +2142,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -2376,6 +2385,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -2618,6 +2628,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -2859,6 +2870,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -3110,6 +3122,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -3355,6 +3368,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -3599,6 +3613,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -3843,6 +3858,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -4086,6 +4102,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -4330,6 +4347,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -4573,6 +4591,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -4817,6 +4836,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
+    user-select: none;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
@@ -5054,6 +5074,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -5297,6 +5318,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -5539,6 +5561,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -5782,6 +5805,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -6024,6 +6048,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -6266,6 +6291,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
+    user-select: none;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);

@@ -72,6 +72,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -303,6 +304,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -535,6 +537,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -647,6 +650,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -783,6 +787,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -918,6 +923,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -1029,6 +1035,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -1165,6 +1172,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -1276,6 +1284,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -1387,6 +1396,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -1522,6 +1532,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -1656,6 +1667,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -1766,6 +1778,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -1877,6 +1890,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -2008,6 +2022,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
+  user-select: none;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
@@ -2113,6 +2128,7 @@ textarea:focus {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
+  user-select: none;
   pointer-events: none;
   opacity: 0.4;
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);

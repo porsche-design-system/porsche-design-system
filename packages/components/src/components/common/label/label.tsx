@@ -1,7 +1,7 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
 import { hasDescription, hasLabel, isParentFieldsetRequired } from '../../../utils';
 import { Required } from '../required/required';
-import { descriptionId, isEventInInteractiveLabelContent, type LabelTag, labelId } from './label-utils';
+import { descriptionId, type LabelTag, labelId } from './label-utils';
 
 type LabelProps = {
   htmlFor?: string;
@@ -32,13 +32,6 @@ export const Label: FunctionalComponent<LabelProps> = ({
   stopClickPropagation,
   onClick,
 }) => {
-  // Prevents Chromium from moving selection to the label on repeated clicks, which hides the input caret (#3891)
-  const handleLabelMouseDown = (e: MouseEvent) => {
-    if (htmlFor && !isLoading && !isDisabled && !isEventInInteractiveLabelContent(e)) {
-      e.preventDefault();
-    }
-  };
-
   const handleLabelClick = (e: MouseEvent) => {
     if (stopClickPropagation) {
       e.stopPropagation();
@@ -61,7 +54,6 @@ export const Label: FunctionalComponent<LabelProps> = ({
             id={labelId}
             aria-disabled={isLoading || isDisabled ? 'true' : null}
             htmlFor={htmlFor}
-            onMouseDown={handleLabelMouseDown}
             onClick={handleLabelClick}
           >
             <Fragment>

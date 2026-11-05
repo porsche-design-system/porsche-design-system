@@ -66,6 +66,7 @@ export const getFunctionalComponentLabelStyles = (
       font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       color: ref(colorPrimary),
+      userSelect: 'none', // prevents Chromium from moving selection to the label on repeated clicks, which hides the input caret (#3891)
       ...(isDisabledOrLoading && {
         pointerEvents: 'none', // prevents label interaction when disabled or loading
       }),
