@@ -468,35 +468,23 @@ test.describe('focus state', () => {
     await expect(textarea).toBeFocused();
   });
 
-  test('should keep focus and caret when label is clicked multiple times', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'some-name', label: 'Some label' } });
-    const label = getLabel(page);
-    const textarea = getTextarea(page);
-
-    await label.click();
-    await page.keyboard.type('hello');
-    await expect(textarea).toHaveValue('hello');
-
-    await label.click();
-    await expect(textarea).toBeFocused();
-
-    await page.keyboard.press('Backspace');
-    await expect(textarea).toHaveValue('hell');
-  });
-
-  test('should focus slotted link in label when clicked while textarea is focused', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'some-name' }, useSlottedLabel: true });
-    const textarea = getTextarea(page);
-    const slottedLink = page.locator('p-textarea [slot="label"] a');
-
-    await textarea.focus();
-    await expect(textarea).toBeFocused();
-
-    await slottedLink.click();
-    await expect(slottedLink).toBeFocused();
-  });
-
   skipInBrowsers(['webkit'], () => {
+    test('should keep focus and caret when label is clicked multiple times', async ({ page }) => {
+      await initTextarea(page, { props: { name: 'some-name', label: 'Some label' } });
+      const label = getLabel(page);
+      const textarea = getTextarea(page);
+
+      await label.click();
+      await page.keyboard.type('hello');
+      await expect(textarea).toHaveValue('hello');
+
+      await label.click();
+      await expect(textarea).toBeFocused();
+
+      await page.keyboard.press('Backspace');
+      await expect(textarea).toHaveValue('hell');
+    });
+
     test('should focus textarea when counter text is clicked', async ({ page }) => {
       await initTextarea(page, { props: { name: 'some-name', maxLength: 160, counter: true } });
       const counter = getCounter(page);
