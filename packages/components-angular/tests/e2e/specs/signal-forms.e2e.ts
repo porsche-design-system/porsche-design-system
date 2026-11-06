@@ -19,7 +19,7 @@ test.describe('Angular Signal Forms integration', () => {
       const host = page.locator(`#all-components ${tag}`);
 
       await expect(host).toHaveJSProperty('value', initialValue);
-      expect(await host.locator('input').getAttribute('pattern')).toBeNull();
+      await expect(host.locator('input')).not.toHaveAttribute('pattern');
       await expect.poll(() => isFormValid(page, 'all-components')).toBe(true);
     });
 
@@ -65,7 +65,7 @@ test.describe('Angular Signal Forms integration', () => {
     const host = page.locator('#pattern-binding p-input-email');
 
     await expect(host).toHaveJSProperty('value', 'example@porsche.de');
-    expect(await host.locator('input').getAttribute('pattern')).toBe('.+@porsche[.]de');
+    await expect(host.locator('input')).toHaveAttribute('pattern', '.+@porsche[.]de');
 
     await host.locator('input').fill('example@mail.com');
 
