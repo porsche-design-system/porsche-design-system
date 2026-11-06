@@ -44,6 +44,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
 - `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- **Angular**: Signal Forms `[formField]` did not work on `Input Email`, `Input Tel` and `Input Url`, and on
+  `Input Number` with a field holding text
+  ([#4856](https://github.com/porsche-design-system/porsche-design-system/pull/4856))
 
 ## [4.10.1] - 2026-10-23
 
