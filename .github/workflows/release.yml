@@ -71,7 +71,7 @@ jobs:
       is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
       is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 2
       - uses: ./.github/actions/install
@@ -124,7 +124,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -151,7 +151,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -178,7 +178,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -205,7 +205,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -244,7 +244,7 @@ jobs:
       # The action exits 0 for the no-op cases too, so a green job does not mean a release exists.
       created: ${{ steps.create_release.outputs.created }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: 'Create GitHub Release'
         id: create_release
         uses: ./.github/actions/create-github-release
@@ -273,7 +273,7 @@ jobs:
       contents: read # read the release being announced
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/notify-slack-release
         with:
           tag: v${{ needs.check-publication-status.outputs.components-version }}
@@ -317,7 +317,7 @@ jobs:
     # `awscli` apt package is still v1. The standard runner image ships v2, and this job only builds
     # the storefront and uploads it — none of it needs a browser.
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -328,7 +328,7 @@ jobs:
       - name: 'Build Storefront'
         run: NEXT_PUBLIC_BASE_PATH="v${{ needs.check-publication-status.outputs.components-version }}" npm run build:storefront
       - name: 'Assume AWS role'
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
           role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
           aws-region: eu-central-1
@@ -362,7 +362,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       # Records use relative routes and page text, not the build's basePath.
       # This artifact is available even when pinned uploads are skipped on a full rerun.
@@ -397,7 +397,7 @@ jobs:
       group: storefront-major-${{ needs.check-publication-status.outputs.major-slug }}
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - uses: ./.github/actions/restore
         with:
@@ -414,7 +414,7 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.resolve.outputs.slug }}
       - name: 'Assume AWS role'
         if: steps.resolve.outputs.promote == 'true'
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
           role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
           aws-region: eu-central-1
@@ -445,7 +445,7 @@ jobs:
       group: storefront-major-${{ needs.check-publication-status.outputs.major-slug }}
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - uses: ./.github/actions/restore
         with:
