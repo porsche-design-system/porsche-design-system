@@ -43,7 +43,7 @@ jobs:
     name: 'Akamai CDN (Assets)'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
         with:
           node_modules: 'false'
@@ -133,7 +133,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -156,14 +156,14 @@ jobs:
       contents: read
       id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # No install needed for uploads. The bin files restore fixes come from the artifact.
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
       - name: 'Assume AWS role'
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
           role-to-assume: ${{ secrets.aws-storefront-preview-role-arn }}
           aws-region: eu-central-1
@@ -191,13 +191,13 @@ jobs:
       contents: read
       id-token: write # Mint the OIDC token that `configure-aws-credentials` exchanges for the role
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
       - name: 'Assume AWS role'
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
           role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
           aws-region: eu-central-1

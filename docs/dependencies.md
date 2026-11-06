@@ -86,6 +86,27 @@ PRs while still allowing **security** PRs (grouped via `applies-to: security-upd
 the held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
 Dependabot on a monthly schedule.
 
+### GitHub Actions (pinned to commit SHAs)
+
+Every external action in `.github/workflows/` and `.github/actions/` is pinned to a full commit SHA, with the release
+tag as a trailing comment:
+
+```yaml
+- uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+```
+
+A tag such as `@v7` can be moved to any commit by whoever controls the action's repository, as happened to
+`tj-actions/changed-files` in March 2025; a SHA cannot. Our workflows hold the npm publish token and AWS credentials, so
+an unpinned action is a direct path to both. Dependabot understands this format and bumps the SHA and the comment
+together. Local actions (`./.github/actions/*`) are part of this repository and need no pin.
+
+When you add an action, resolve the tag to its commit (for annotated tags, dereference the tag object) and respect the
+[release-age cooldown](#release-age-cooldown-supply-chain-protection):
+
+```bash
+gh api repos/<owner>/<repo>/git/ref/tags/<tag> --jq '.object'   # type "tag" → gh api repos/<owner>/<repo>/git/tags/<sha> --jq '.object.sha'
+```
+
 ## Release-age cooldown (supply-chain protection)
 
 The npm worm campaigns of autumn 2025 ("Shai-Hulud" and its successors) all followed the same pattern: a stolen
