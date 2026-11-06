@@ -6,6 +6,7 @@ import { StoryPreview } from '@porsche-design-system/story-generator/react';
 import React, { useMemo, useState } from 'react';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
+import { getBasePath } from '@/utils/getBasePath';
 import type { BackgroundColor } from '../Playground';
 import { Playground } from '../Playground';
 
@@ -43,7 +44,7 @@ export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }:
       onOpenInStackblitz={onOpenInStackblitz}
       showCodeBlock={showCodeBlock}
     >
-      <StoryPreview story={story} state={exampleState} onStateChange={setExampleState} />
+      <StoryPreview story={story} state={exampleState} onStateChange={setExampleState} basePath={getBasePath()} />
     </Playground>
   );
 };

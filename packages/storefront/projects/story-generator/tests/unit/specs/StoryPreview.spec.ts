@@ -44,4 +44,27 @@ describe('StoryPreview', () => {
 
     expect(markup).toContain('is open</div>');
   });
+
+  it('should resolve relative asset paths against the base path', () => {
+    const imageStory: Story<HTMLTagOrComponent> = {
+      generator: () => [{ tag: 'img', properties: { src: 'assets/lights.jpg', srcSet: 'assets/lights@2x.jpg 2x' } }],
+    };
+
+    expect(render(createElement(StoryPreview, { story: imageStory }))).toContain(
+      '<img src="/assets/lights.jpg" srcSet="/assets/lights@2x.jpg 2x"/>'
+    );
+    expect(render(createElement(StoryPreview, { story: imageStory, basePath: 'v4' }))).toContain(
+      '<img src="/v4/assets/lights.jpg" srcSet="/v4/assets/lights@2x.jpg 2x"/>'
+    );
+  });
+
+  it('should keep asset-like values of other properties unchanged', () => {
+    const textStory: Story<HTMLTagOrComponent> = {
+      generator: () => [{ tag: 'span', properties: { title: 'assets/lights.jpg' } }],
+    };
+
+    expect(render(createElement(StoryPreview, { story: textStory, basePath: 'v4' }))).toContain(
+      '<span title="assets/lights.jpg"></span>'
+    );
+  });
 });
