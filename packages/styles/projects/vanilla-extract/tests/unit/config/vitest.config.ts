@@ -1,19 +1,15 @@
 import { resolve } from 'node:path';
+import { vitestConfig } from '@porsche-design-system/testing/vitest';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
-import { defineConfig } from 'vitest/config';
+import { defineConfig, mergeConfig } from 'vitest/config';
 
-export default defineConfig({
-  test: {
-    root: resolve(__dirname, '../../..'),
-    include: ['**/src/**/*.spec.ts', '**/tests/unit/specs/**/*.spec.{ts,tsx}'],
-    globals: true,
-    // Vitest 5 truncates interpolated values in `test.each` titles at 40 chars, which hides the
-    // values that distinguish cases and collapses distinct snapshot keys into one. 0 disables it.
-    taskTitleValueFormatTruncate: 0,
-    environment: 'jsdom',
-    typecheck: {
-      tsconfig: './tsconfig.test.json',
+export default mergeConfig(
+  vitestConfig,
+  defineConfig({
+    test: {
+      root: resolve(__dirname, '../../..'),
+      include: ['**/src/**/*.spec.ts', '**/tests/unit/specs/**/*.spec.{ts,tsx}'],
     },
-  },
-  plugins: [vanillaExtractPlugin()],
-});
+    plugins: [vanillaExtractPlugin()],
+  })
+);

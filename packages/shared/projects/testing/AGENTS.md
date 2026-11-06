@@ -18,8 +18,10 @@ src/
 ├── assertDefined.ts            # `./assert-defined`
 ├── normalizeCssNamespace.ts    # `./normalize-css-namespace`
 ├── axe.ts                      # `./axe`: createAxeTest
-└── playwright/index.ts         # `./playwright`: the Playwright helpers more than one package uses
-tests/unit/                     # the specs of assertDefined and normalizeCssNamespace
+├── playwright/index.ts         # `./playwright`: the Playwright helpers more than one package uses
+├── vitest.ts                   # `./vitest`: vitestConfig, the base every Vitest config merges
+└── vitestConsoleGuard.ts       # `./vitest-console-guard`: the setup file vitestConfig adds
+tests/unit/                     # the specs of the helpers, the base config and the console guard
 ```
 
 ## What belongs here
@@ -34,12 +36,45 @@ tests/unit/                     # the specs of assertDefined and normalizeCssNam
 
 - **`.` must not load `@playwright/test` at runtime.** Vitest suites import it for `validateCssWithW3C`, and the files
   it re-exports import only Playwright types. Runtime Playwright code goes under `./playwright` or `./axe`.
+- **`.` must not load `vitest` at runtime either; runtime Vitest code goes under `./vitest`.** The Playwright configs
+  import `.`, and `vitest/config` loads Vite.
+- **`./vitest` has no relative imports**, only bare specifiers such as `vitest/config`. Vite's config bundler
+  externalizes this package, so Node loads the file directly and cannot resolve extensionless relative imports. That is
+  why the guard is its own export, referenced by bare specifier in `setupFiles`. Vitest loads the guard, so it may
+  import relatively.
 - **Every barrel names its re-exports; never write `export *`.** Node runs this source as CommonJS, and the ESM
   Playwright configs of `examples` and `react-router` only see the names Node detects statically.
 - Keep relative imports extensionless: the components-js test scopes do not allow `.ts` extensions.
 - `@playwright/test` and `@axe-core/playwright` are `peerDependencies` as well as `devDependencies`, never
   `dependencies`: a second copy of `@playwright/test` aborts every run.
 - A new subpath needs an entry in `exports` in `package.json`.
+
+## The Vitest base config
+
+A Vitest config is written as `mergeConfig(vitestConfig, defineConfig({ test: { … } }))` and keeps only its own
+settings. `mergeConfig` replaces a scalar, skips `null` and `undefined` (so neither unsets a base value) and
+concatenates arrays (so a package can add to `exclude` and `setupFiles` but never drop the base's entries). Every
+override of a base setting carries a comment saying why.
+
+## Console guard
+
+`vitestConfig` adds `vitest-console-guard` as the first setup file, so it runs before a package's own. It fails:
+
+- a test that calls `console.warn` or `console.error`;
+- a file that logs at import time, in `beforeAll` or `afterAll`, in a cleanup `beforeAll` returns, in a file fixture's
+  teardown, or from a timer that fires after the file's last test;
+- a test that triggers a jsdom error, such as `Not implemented: HTMLFormElement's requestSubmit() method`.
+
+The message names the method and the formatted text. Declare expected output in the test that causes it:
+
+- **console:** `vi.spyOn(console, 'warn').mockImplementation(() => {})` plus an assertion on the spy. A spy without
+  `mockImplementation` calls through and still fails.
+- **jsdom:** stub the API jsdom does not implement. jsdom reports to its virtual console, not to `console`, so a console
+  spy cannot declare it.
+
+Output from a timer that fires after its test is blamed on the next test. The message names the text, so search for it.
+Output outside a test is also printed, because Vitest runs no hooks in a file whose tests are all skipped, so the guard
+cannot fail that file. `console.log` is not guarded.
 
 ## `normalizeCssNamespace` ships in a published bundle
 

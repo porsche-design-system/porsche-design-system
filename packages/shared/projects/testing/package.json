@@ -24,6 +24,14 @@
     "./playwright": {
       "types": "./src/playwright/index.ts",
       "default": "./src/playwright/index.ts"
+    },
+    "./vitest": {
+      "types": "./src/vitest.ts",
+      "default": "./src/vitest.ts"
+    },
+    "./vitest-console-guard": {
+      "types": "./src/vitestConsoleGuard.ts",
+      "default": "./src/vitestConsoleGuard.ts"
     }
   },
   "types": "./src/index.ts",

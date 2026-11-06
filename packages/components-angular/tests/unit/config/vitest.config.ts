@@ -1,18 +1,17 @@
-import { defineConfig } from 'vitest/config';
+import { vitestConfig } from '@porsche-design-system/testing/vitest';
+import { defineConfig, mergeConfig } from 'vitest/config';
 
-export default defineConfig({
-  test: {
-    globals: false,
-    environment: 'jsdom',
-    setupFiles: ['tests/unit/config/vitest.setup.ts'],
-    include: ['tests/unit/specs/**/*.spec.ts'],
-    exclude: ['**/node_modules/**', '**/dist/**'],
-    coverage: {
-      provider: 'v8',
-      include: ['projects/angular-wrapper/src/**'],
-      exclude: ['**/node_modules/**', 'projects/angular-wrapper/src/lib/**'],
+export default mergeConfig(
+  vitestConfig,
+  defineConfig({
+    test: {
+      setupFiles: ['tests/unit/config/vitest.setup.ts'],
+      include: ['tests/unit/specs/**/*.spec.ts'],
+      coverage: {
+        provider: 'v8',
+        include: ['projects/angular-wrapper/src/**'],
+        exclude: ['**/node_modules/**', 'projects/angular-wrapper/src/lib/**'],
+      },
     },
-    clearMocks: true,
-    restoreMocks: true,
-  },
-});
+  })
+);
