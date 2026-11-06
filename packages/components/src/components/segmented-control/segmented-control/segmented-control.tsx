@@ -34,6 +34,7 @@ import type { SegmentedControlItem } from '../segmented-control-item/segmented-c
 import { getComponentCss } from './segmented-control-styles';
 import {
   getItemWidths,
+  hasUnmeasuredItems,
   SEGMENTED_CONTROL_COLUMNS,
   type SegmentedControlChangeEventDetail,
   type SegmentedControlColumns,
@@ -135,6 +136,8 @@ export class SegmentedControl {
   @AttachInternals() private internals: ElementInternals;
 
   private defaultValue: string | number | null | undefined;
+  private fieldset: HTMLFieldSetElement;
+  private resizeObserver: ResizeObserver;
 
   @Listen('internalSegmentedControlItemUpdate')
   public updateSegmentedControlItemHandler(e: Event & { target: HTMLElement & SegmentedControlItem }): void {
@@ -166,6 +169,8 @@ export class SegmentedControl {
     observeChildren(this.host, () => {
       forceUpdate(this.host);
     });
+    // observes again after a move within the dom, which disconnects the observer
+    this.observeUnmeasuredItems();
   }
 
   public componentWillLoad(): void {
@@ -176,12 +181,18 @@ export class SegmentedControl {
     this.setFormValue();
   }
 
+  public componentDidRender(): void {
+    this.observeUnmeasuredItems();
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public disconnectedCallback(): void {
     unobserveChildren(this.host);
+    this.resizeObserver?.disconnect();
+    this.resizeObserver = undefined;
   }
 
   public formResetCallback(): void {
@@ -222,6 +233,7 @@ export class SegmentedControl {
     return (
       <fieldset
         class="root"
+        ref={(el: HTMLFieldSetElement) => (this.fieldset = el)}
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
         aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
@@ -251,5 +263,32 @@ export class SegmentedControl {
     this.value = item.value; // causes rerender
     this.change.emit({ value: this.value });
     item.focus();
+  };
+
+  private observeUnmeasuredItems = (): void => {
+    // items can't be measured while hidden, e.g. within `display: none`, so they are measured once the fieldset gets a size
+    if (hasUnmeasuredItems(this.host) && !this.resizeObserver) {
+      this.resizeObserver = new ResizeObserver(([{ contentRect }]) => {
+        if (contentRect.width) {
+          // disconnected first, since the new stylesheet resizes the fieldset, which would raise a ResizeObserver loop error
+          this.resizeObserver.disconnect();
+          this.resizeObserver = undefined;
+          // same as in render(), but synchronous, so it is applied before this frame gets painted
+          const itemWidths = this.noWrap ? undefined : getItemWidths(this.host, this.compact);
+          attachComponentCss(
+            this.host,
+            getComponentCss,
+            itemWidths?.minWidth,
+            itemWidths?.maxWidth,
+            this.columns,
+            this.disabled,
+            this.hideLabel,
+            this.state,
+            this.noWrap
+          );
+        }
+      });
+      this.resizeObserver.observe(this.fieldset);
+    }
   };
 }

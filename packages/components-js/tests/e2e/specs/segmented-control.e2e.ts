@@ -151,6 +151,36 @@ test.describe('width calculation', () => {
 
     await expect.poll(() => getFirstItemOffsetWidth(page)).toBeLessThan(initialItemWidth);
   });
+
+  test('should calculate width on items in the first frame when shown after being rendered in a hidden container', async ({
+    page,
+  }) => {
+    const items = Array.from(Array(3))
+      .map((_, i) => `<p-segmented-control-item value="${i + 1}">Option ${i + 1}</p-segmented-control-item>`)
+      .join('');
+    await setContentWithDesignSystem(
+      page,
+      `<p-segmented-control id="visible">${items}</p-segmented-control>
+<div id="container" style="display: none"><p-segmented-control id="hidden">${items}</p-segmented-control></div>`
+    );
+    const expectedItemWidth = await getOffsetWidth(page.locator('#visible p-segmented-control-item').first());
+
+    const itemWidthInFirstFrame = await page.locator('#container').evaluate(
+      (container) =>
+        new Promise<number | undefined>((resolve) => {
+          requestAnimationFrame(() => {
+            container.style.display = 'block';
+            // a message posted within a frame's animation callbacks is handled after that frame is painted
+            const channel = new MessageChannel();
+            channel.port1.onmessage = () =>
+              resolve(container.querySelector<HTMLElement>('p-segmented-control-item')?.offsetWidth);
+            channel.port2.postMessage(null);
+          });
+        })
+    );
+
+    expect(itemWidthInFirstFrame).toBe(expectedItemWidth);
+  });
 });
 
 test.describe('change event', () => {
@@ -370,6 +400,22 @@ test.describe('lifecycle', () => {
     );
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+  });
+
+  test('should work without round trips while rendered in a hidden container', async ({ page }) => {
+    await initSegmentedControl(page, { amount: 3, markupBefore: '<div style="display: none">', markupAfter: '</div>' });
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          let frames = 10;
+          const tick = () => (--frames ? requestAnimationFrame(tick) : resolve());
+          requestAnimationFrame(tick);
+        })
+    );
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidUpdate['p-segmented-control'], 'componentDidUpdate: p-segmented-control').toBe(0);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 });
 
