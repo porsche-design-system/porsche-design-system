@@ -10,7 +10,7 @@ import type { Snapshot } from '../figma/snapshot';
 import { pull, pullHistory } from './figmaPull';
 
 // Writes what figma/generate.ts renders from a fresh pull into generated/, and deletes files whose component set is
-// gone; `--check` compares instead. Rationale: docs/figma-code-connect.md.
+// gone; `--check` compares instead. See: docs/figma-code-connect.md.
 const check = process.argv.includes('--check');
 // history only rewords design lines; `--check` and the publish job print lines no one reads
 const withHistory = !check && !process.argv.includes('--no-history');

@@ -13,7 +13,7 @@ import {
 } from './snapshot';
 
 // Renders every generated file from one pull and the accepted gaps, and reports where Figma differs from code.
-// Rationale: docs/figma-code-connect.md.
+// See: docs/figma-code-connect.md.
 
 type Label = {
   suffix: string;
@@ -457,12 +457,11 @@ const importsEntry = (label: Label, tag: TagName, docs: string, setup: string): 
   return line.length <= 120 ? [line] : ['  imports: [', ...imports.map((i) => `    ${i},`), '  ],'];
 };
 
-/** The code that reads one PDS prop, and its attribute; `swapDefault` names the icon an icon swap starts with. */
+/** The code that reads one PDS prop, and its attribute. */
 const fragment = (
   mapping: Exclude<PropertyMapping, { kind: 'slot' }>,
   variable: string,
-  label: Label,
-  swapDefault: string | undefined
+  label: Label
 ): { read: string; attr: string } => {
   const value = `\${${variable}}`;
   const ifSet = (attr: string): string => `\${${variable} ? \` ${attr}\` : ''}`;
@@ -507,9 +506,8 @@ const fragment = (
       };
     case 'icon': {
       const gate = `fig${pascalCase(mapping.prop)}`;
-      const fallback = swapDefault ? literal(swapDefault) : 'undefined';
       return {
-        read: `const ${variable} = read.has('${mapping.prop}') && (!read.has('${gate}') || read.flag('${gate}')) ? iconOf(instance.getInstanceSwap('${mapping.prop}'), ${fallback}) : undefined;`,
+        read: `const ${variable} = read.has('${mapping.prop}') && (!read.has('${gate}') || read.flag('${gate}')) ? iconOf(instance.getInstanceSwap('${mapping.prop}')) : undefined;`,
         attr: ifSet(label.attr(mapping.prop, value)),
       };
     }
@@ -517,7 +515,7 @@ const fragment = (
 };
 
 /**
- * A slot's content through figma/helpers/slotted.ts: a slot interpolated directly renders a React `<SlotDefault />`.
+ * A slot's content through figma/helpers/slotted.ts: a slot interpolated directly renders a "cannot be rendered" comment.
  * The default slot falls back to text, because most simple components draw it as a TEXT property.
  */
 const slotContent = (figma: string): string => {
@@ -545,7 +543,6 @@ const render = (
   context: Context
 ): string => {
   const source = context.docsApiUrl(tag);
-  const defs = definitions(component);
   // variables are named after the PDS prop or slot they read
   const variables = mappings.map((m) => [m, camelCase(m.kind === 'slot' ? m.figma : m.prop)] as const);
   const names = variables.map(([, v]) => v);
@@ -553,12 +550,7 @@ const render = (
     context.errors.push(
       `${tag}: two properties map to the same variable "${name}" — rename one of the PDS props or slots behind it`
     );
-  const fragments = variables.flatMap(([m, v]) => {
-    if (m.kind === 'slot') return [];
-    const swap = defs[m.prop];
-    const swapDefault = swap?.type === 'INSTANCE_SWAP' ? context.icons[String(swap.defaultValue)] : undefined;
-    return [fragment(m, v, label, swapDefault)];
-  });
+  const fragments = variables.flatMap(([m, v]) => (m.kind === 'slot' ? [] : [fragment(m, v, label)]));
   const attributes = fragments.map((f) => f.attr).join('');
   // named slots first, default content last
   const children = mappings

@@ -12,7 +12,7 @@ import { slotted } from '../../../figma/helpers/slotted';
 const instance = figma.selectedInstance;
 
 const variant = read.oneOf('variant', ['primary', 'secondary']);
-const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), undefined) : undefined;
+const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon')) : undefined;
 const iconSource = read.text('iconSource');
 const href = read.text('href');
 const download = read.text('download');

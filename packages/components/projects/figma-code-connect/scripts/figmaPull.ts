@@ -75,7 +75,7 @@ const pullOverRest = async (): Promise<Pick<Snapshot, 'components' | 'icons'>> =
     `/files/${fileKey}/components`
   );
   const names = Object.fromEntries(published.components.map((c) => [c.node_id, c.name]));
-  // only icon components are looked up by name: the INSTANCE_SWAP fallbacks and the icon batch
+  // only icon components are looked up by name, for the icon batch
   const icons = new Set<string>((getComponentMeta('p-icon').propsMeta?.name?.allowedValues ?? []) as string[]);
   return {
     components: sets.component_sets.map(({ node_id, name }) => ({

@@ -95,6 +95,20 @@ describe.each([
     expect(await snippet('button', suffix, { properties })).toBe(`<${tag('button')}>${asText}</${tag('button')}>`);
   });
 
+  it('prints the swapped icon by the name its record carries, and no icon without a record or a swap', async () => {
+    const properties = { icon: { value: '2:1', type: 'INSTANCE_SWAP' } };
+    const swapped = (swap: unknown) => snippet('button', suffix, { properties, getInstanceSwap: () => swap });
+    const withRecord = {
+      type: 'INSTANCE',
+      executeTemplate: () => ({ example: [], metadata: { props: { name: 'globe' } } }),
+    };
+    // an instance without a record renders as an INSTANCE section; preview returns no swap at all
+    const withoutRecord = { type: 'INSTANCE', executeTemplate: () => ({ example: [{ type: 'INSTANCE' }] }) };
+    expect(await swapped(withRecord)).toBe(`<${tag('button')} icon="globe"></${tag('button')}>`);
+    expect(await swapped(withoutRecord)).toBe(`<${tag('button')}></${tag('button')}>`);
+    expect(await swapped(undefined)).toBe(`<${tag('button')}></${tag('button')}>`);
+  });
+
   it('prints a text layer in a named slot in a span carrying the slot', async () => {
     const instance = {
       properties: { 'slot-summary': { value: { guid: {} }, type: 'SLOT' } },
