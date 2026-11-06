@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       # figma:generate imports @porsche-design-system/component-meta, built by this run's build stage.
       - name: 'Restore'
@@ -104,7 +104,7 @@ jobs:
           echo "stale=true" >> "$GITHUB_OUTPUT"
           echo "::error title=Figma Code Connect::figma/accepted-gaps.json accepts gaps Figma has closed: commit the artifact accepted-gaps.json in its place, or run npm run figma:generate; then npm run test:unit -- -u in the package and commit the snapshots"
           exit 1
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always() && steps.gaps.outputs.stale == 'true'
         with:
           path: packages/components/projects/figma-code-connect/figma/accepted-gaps.json
@@ -126,7 +126,7 @@ jobs:
       group: figma-code-connect-accepted-gaps
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       # figma:generate imports @porsche-design-system/component-meta, whose dist/ is gitignored.
       - run: npm run build:core-dependencies
@@ -222,7 +222,7 @@ jobs:
           tag=$(git ls-remote --tags --refs "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" 'v*' | sed 's|.*refs/tags/||' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
           echo "design lines of $tag"
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ steps.release.outputs.tag }}
       - uses: ./.github/actions/install
@@ -267,7 +267,7 @@ jobs:
           tag=$(git ls-remote --tags --refs "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" 'v*' | sed 's|.*refs/tags/||' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
           echo "publishing $tag"
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ steps.release.outputs.tag }}
       - uses: ./.github/actions/install
@@ -286,7 +286,7 @@ jobs:
         env:
           FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
 
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: code-connect-generated
