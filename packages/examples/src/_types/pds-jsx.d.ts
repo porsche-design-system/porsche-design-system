@@ -14,7 +14,7 @@
  * `hideLabel`) and restricted to values that survive HTML serialization.
  */
 import type {} from '@porsche-design-system/components';
-import type { JSX } from 'preact';
+import type { HTMLAttributes } from 'preact';
 
 /**
  * `hideLabel` → `hide-label`. Characters that are already lowercase (this includes digits) are kept as they are,
@@ -66,7 +66,7 @@ type PdsAttributes<TagName extends PdsTagName> = {
  * so the narrower PDS union is what gets checked.
  */
 type PdsIntrinsicElements = {
-  [TagName in PdsTagName]: Omit<JSX.HTMLAttributes<HTMLElement>, keyof PdsAttributes<TagName>> & PdsAttributes<TagName>;
+  [TagName in PdsTagName]: Omit<HTMLAttributes<HTMLElement>, keyof PdsAttributes<TagName>> & PdsAttributes<TagName>;
 };
 
 declare module 'preact' {
