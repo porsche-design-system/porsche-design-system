@@ -52,11 +52,18 @@ const PAGES_WITHOUT_SITEMAP_ENTRY: string[] = [
 
 describe('sitemap', () => {
   it('has a page for every route, which redirects for categories and pages with tabs', () => {
+    const routePaths = routes.map((route) => route.path);
     const withoutPage = routes
       // `/components/[component]` redirects every component page to its first tab
       .filter((route) => !route.tagName)
       .map((route) => route.path)
-      .filter((routePath) => !pagePaths.includes(routePath));
+      .filter((routePath) => !pagePaths.includes(routePath))
+      // A route with child routes redirects to the first one, so it needs a `page.tsx`.
+      .map((routePath) =>
+        routePaths.some((other) => other.startsWith(`${routePath}/`))
+          ? `add src/app/(main)${routePath}/page.tsx`
+          : `add src/app/(main)${routePath}/page.mdx`
+      );
 
     expect(withoutPage).toEqual([]);
   });
