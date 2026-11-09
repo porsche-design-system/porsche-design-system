@@ -64,7 +64,7 @@ const Page = () => (
           class="[--p-popover-px:var(--spacing-static-sm)] [--p-popover-py:var(--spacing-static-sm)]"
           arrow="false"
         >
-          <form id="dealer-search-form" slot="button" class="w-full" aria-label="Find a dealer" autocomplete="off">
+          <form id="dealer-search-form" slot="button" class="w-full" aria-label="Find a dealer">
             <p-input-search
               id="dealer-search"
               name="dealer"
@@ -72,6 +72,7 @@ const Page = () => (
               description="Type a city name to find a dealer nearby."
               hide-label={true}
               placeholder="e.g. Stuttgart"
+              auto-complete="off"
               clear={true}
               indicator={true}
             >

@@ -268,6 +268,7 @@ const Page = () => (
                   label="Promotion code"
                   description="Enter a code or voucher number."
                   hide-label={true}
+                  auto-complete="off"
                 >
                   <p-button id="booking-promo-apply" slot="end" type="button" variant="secondary" compact={true}>
                     Apply

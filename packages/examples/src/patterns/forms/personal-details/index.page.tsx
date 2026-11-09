@@ -103,7 +103,7 @@ const Page = () => (
                 <p-input-text
                   name="street"
                   label="Street"
-                  auto-complete="address-line1"
+                  auto-complete="billing address-line1"
                   required
                   data-error="Please enter your street."
                 />
@@ -114,19 +114,19 @@ const Page = () => (
                   data-error="Please enter your house number."
                 />
               </div>
-              <p-input-text name="address-line-2" label="Address line 2" auto-complete="address-line2" />
+              <p-input-text name="address-line-2" label="Address line 2" auto-complete="billing address-line2" />
               <div class="grid xs:grid-cols-[130px_minmax(0,1fr)] gap-static-md xs:gap-static-sm items-start">
                 <p-input-text
                   name="postal-code"
                   label="Postal code"
-                  auto-complete="postal-code"
+                  auto-complete="billing postal-code"
                   required
                   data-error="Please enter your postal code."
                 />
                 <p-input-text
                   name="city"
                   label="City"
-                  auto-complete="address-level2"
+                  auto-complete="billing address-level2"
                   required
                   data-error="Please enter your city."
                 />

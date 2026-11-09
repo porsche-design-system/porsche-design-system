@@ -68,6 +68,7 @@ const Page = () => (
             description="Type a city name to find a dealer nearby."
             hide-label={true}
             placeholder="e.g. Stuttgart"
+            auto-complete="off"
             clear={true}
             indicator={true}
             slot="button"
