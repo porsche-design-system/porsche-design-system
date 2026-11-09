@@ -86,6 +86,27 @@ PRs while still allowing **security** PRs (grouped via `applies-to: security-upd
 the held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
 Dependabot on a monthly schedule.
 
+### GitHub Actions (pinned to commit SHAs)
+
+Every external action in `.github/workflows/` and `.github/actions/` is pinned to a full commit SHA, with the release
+tag as a trailing comment:
+
+```yaml
+- uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+```
+
+A tag such as `@v7` can be moved to any commit by whoever controls the action's repository, as happened to
+`tj-actions/changed-files` in March 2025; a SHA cannot. Our workflows hold the npm publish token and AWS credentials, so
+an unpinned action is a direct path to both. Dependabot understands this format and bumps the SHA and the comment
+together. Local actions (`./.github/actions/*`) are part of this repository and need no pin.
+
+When you add an action, resolve the tag to its commit (for annotated tags, dereference the tag object) and respect the
+[release-age cooldown](#release-age-cooldown-supply-chain-protection):
+
+```bash
+gh api repos/<owner>/<repo>/git/ref/tags/<tag> --jq '.object'   # type "tag" → gh api repos/<owner>/<repo>/git/tags/<sha> --jq '.object.sha'
+```
+
 ## Release-age cooldown (supply-chain protection)
 
 The npm worm campaigns of autumn 2025 ("Shai-Hulud" and its successors) all followed the same pattern: a stolen
@@ -221,15 +242,19 @@ generators and `minifyHTML()` were made `async` accordingly. Output is byte-for-
 
 ### Accepted advisories (dev-only build tooling)
 
-The remaining advisories all originate from **dev-only** build tooling, are not reachable from shipped package output,
-and several are Windows-dev-server-only:
+The remaining advisories all originate from **dev-only** tooling and are not reachable from shipped package output:
 
-- `@angular/build`, `@angular/compiler-cli`, `@babel/core` (pulled by Angular) — Angular **versions** are bumped via
-  syncpack, but only as upstream ships fixes; framework migrations are applied via the `ng:update` wrapper (see
-  [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations)).
-- `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` and the React Router dev server (`@react-router/dev` →
-  `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These clear once Angular and
-  `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
+- `zod@3` ([GHSA-mrhx-c7xc-m3w5](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5)) — pulled by `@figma/code-connect`,
+  which is built on the `zod@3` API. The fix exists only in `zod@4.6.6`, so an override would break the Figma CLI. It
+  clears once `@figma/code-connect` moves to `zod@4`.
+- `minimatch@9`/`@10` ([GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249)) and `glob@11`/`@13`
+  ([GHSA-3g3m-2fjr-6pw4](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4)) — pulled by `@figma/code-connect`,
+  `js-beautify` (via `@vue/test-utils`) and `madge`. The fixes exist only in the next majors (`minimatch@11`,
+  `glob@14`), which a per-major override cannot select without crossing a major (see
+  [Strict peer dependency resolution](#strict-peer-dependency-resolution)). Both need attacker-controlled glob patterns
+  or an `AbortSignal` traversal budget; our tooling only globs fixed patterns from the repository.
+- `deepmerge` ([GHSA-gcqx-w48m-w2h4](https://github.com/advisories/GHSA-gcqx-w48m-w2h4)) — pulled by
+  `@rollup/plugin-node-resolve`. No patched release exists.
 
 ## Build tooling for `--dts` libraries
 
@@ -351,10 +376,30 @@ karma suite at the time, and failed the suite with:
 TypeError: Cannot assign to read only property 'describe' of object '[object Object]'
 ```
 
-`jasmine-core` is therefore declared explicitly as `~6.3.0` in
+`jasmine-core` is therefore declared explicitly in
 [`packages/components-angular`](../packages/components-angular/package.json), matching `@types/jasmine` and the Angular
-starter template. **Do not remove it** — without it the major returns silently on the next update round. Bump it only
-together with `@types/jasmine` and after confirming the Angular karma suite passes with that jasmine major.
+starter template. It is on `~7.0.2` now, because the Angular app no longer loads zone.js (it bootstraps with
+`provideZonelessChangeDetection()`). **Do not remove it** — without it a widened peer range picks the jasmine major
+silently on the next update round. Bump it only together with `@types/jasmine` and after confirming the Angular karma
+suite passes with that jasmine major.
+
+## `preact` is declared in the root `package.json`
+
+The examples ([`packages/examples`](../packages/examples/package.json)) render their pages with
+`preact-render-to-string`, which must use the **same** `preact` instance as the pages. With two instances it renders
+nothing — no error, just an empty string.
+
+`react-instantsearch` in the storefront pulls in `instantsearch.js`, which still depends on `preact@^10`. Without the
+root declaration npm hoists that `preact@10` to the root, places `preact-render-to-string` there too, and nests the
+examples' `preact@11` below `packages/examples`. The renderer then resolves the other copy.
+
+`preact` is therefore declared in the root `package.json` as well, with the same range as in `packages/examples`. That
+keeps `preact@11` at the root, next to the renderer, and nests `instantsearch.js`'s own `preact@10` below it. **Do not
+remove it** while `instantsearch.js` depends on `preact@^10`. After an update, verify:
+
+```bash
+npm ls preact   # preact-render-to-string and @porsche-design-system/examples must share the root preact
+```
 
 ## Held-back dependencies
 
@@ -376,6 +421,10 @@ places that must be kept in sync when adding a new entry:
   definitions. Bump it **only together with** `@playwright/test`.
 - `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.45.1.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
+- `@axe-core/playwright` – pinned to `~4.13.0` (and with it `axe-core`). `axe-core` 4.14 evaluates semi-transparent
+  colors and reports `contrast-medium` text on `surface` (4.38:1) on nearly every storefront page, plus a dark-scheme
+  finding in the `table` fixture of `components-js`. Fixing them needs a design decision, tracked in
+  [#4859](https://github.com/porsche-design-system/porsche-design-system/issues/4859).
 
 ### How to update them
 
@@ -386,6 +435,10 @@ between the installed Playwright and the Docker image makes CI fail.
 
 **`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
 dependency; otherwise `patch-package` fails on `postinstall`.
+
+**`@axe-core/playwright`** — bump it together with the fixes for the violations the new `axe-core` reports (see
+[#4859](https://github.com/porsche-design-system/porsche-design-system/issues/4859)), then remove it from both held-back
+lists.
 
 **`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
 
