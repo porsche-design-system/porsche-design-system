@@ -18,7 +18,10 @@ for (const component of components) {
 
         let index = 0;
 
-        expect(await page.locator('.a11ytree-snapshot-test').count()).toBeGreaterThan(0);
+        expect(
+          await page.locator('.a11ytree-snapshot-test').count(),
+          `add class="a11ytree-snapshot-test" to an element in src/pages/${pageName}.html`
+        ).toBeGreaterThan(0);
 
         for (const element of await page.locator('.a11ytree-snapshot-test').all()) {
           const isIframe = await element.evaluate((el) => el.children[0]?.tagName.toLowerCase() === 'iframe');
