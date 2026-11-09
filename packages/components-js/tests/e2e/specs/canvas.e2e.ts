@@ -29,9 +29,15 @@ test.describe('lifecycle', () => {
 
     await setProperty(host, 'sidebarStartOpen', true);
     await waitForStencilLifecycle(page);
+    // WebKit on Linux renders no frame for seconds once the header's backdrop-filter layers appear, so the update starts late.
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-canvas'], {
+        message: 'componentDidUpdate: p-canvas',
+        timeout: 10000,
+      })
+      .toBe(1);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-canvas'], 'componentDidUpdate: p-canvas').toBe(1);
     expect(status.componentDidUpdate['p-button'], 'componentDidUpdate: p-button').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
