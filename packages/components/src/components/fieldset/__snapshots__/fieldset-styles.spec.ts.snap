@@ -108,7 +108,7 @@ fieldset {
 }
 legend {
   all: unset;
-  margin-bottom: var(--p-spacing-static-md);
+  margin-bottom: var(--p-fieldset-label-mb,var(--p-spacing-static-md));
   color: var(--p-color-primary);
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
@@ -144,7 +144,7 @@ fieldset {
 }
 legend {
   all: unset;
-  margin-bottom: var(--p-spacing-static-md);
+  margin-bottom: var(--p-fieldset-label-mb,var(--p-spacing-static-md));
   color: var(--p-color-primary);
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
@@ -210,7 +210,7 @@ fieldset {
 }
 legend {
   all: unset;
-  margin-bottom: var(--p-spacing-static-md);
+  margin-bottom: var(--p-fieldset-label-mb,var(--p-spacing-static-md));
   color: var(--p-color-primary);
   font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
@@ -246,7 +246,7 @@ fieldset {
 }
 legend {
   all: unset;
-  margin-bottom: var(--p-spacing-static-md);
+  margin-bottom: var(--p-fieldset-label-mb,var(--p-spacing-static-md));
   color: var(--p-color-primary);
   font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }

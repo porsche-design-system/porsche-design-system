@@ -9,6 +9,7 @@ import { collectPageErrors, getExampleUrl, isOpen, setupExamplePage } from '../.
 const url = getExampleUrl('patterns-forms-search-combobox-option-list');
 
 const popover = (page: Page) => page.locator('#dealer-search-popover');
+const submitPopover = (page: Page) => page.locator('#dealer-search-popover-button');
 const field = (page: Page) => page.locator('#dealer-search input');
 
 /**
@@ -38,11 +39,17 @@ test('loads without reporting an error', async ({ page }) => {
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
   expect(errors).toEqual([]);
   expect(await isOpen(popover(page))).toBe(false);
+  expect(await isOpen(submitPopover(page))).toBe(false);
   await expect(field(page)).toHaveAttribute('role', 'combobox');
   await expect(field(page)).toHaveAttribute('aria-autocomplete', 'list');
   await expect(field(page)).toHaveAttribute('aria-haspopup', 'listbox');
   await expect(field(page)).toHaveAttribute('aria-expanded', 'false');
   await expect(page.getByRole('button', { name: 'Search' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Search' })).toHaveAttribute('aria-disabled', 'true');
+  await expect(page.getByRole('button', { name: 'Search' })).toHaveAttribute(
+    'aria-description',
+    'Select a city from the list to search first.'
+  );
   await expect
     .poll(() => field(page).evaluate((input) => input.ariaControlsElements?.[0]?.id === 'dealer-search-results'))
     .toBe(true);
@@ -128,21 +135,44 @@ test('reopens the list with ArrowDown and highlights the first match', async ({ 
   await expect(hamburg).toHaveClass(/bg-frosted/);
 });
 
-test('submits the query with the Search button and the highlighted choice when there is one', async ({ page }) => {
+test('shows a popover on focus and hover while the Search button is disabled, and enables it once a city is chosen', async ({
+  page,
+}) => {
   await setupExamplePage(page, url);
   const input = field(page);
+  const submitHost = page.locator('#dealer-search-submit');
   const submit = page.getByRole('button', { name: 'Search' });
 
-  await input.fill('ham');
-  await submit.click();
-  expect(await isOpen(popover(page))).toBe(false);
-  await expect(input).toHaveValue('ham');
+  await submitHost.focus();
+  expect(await isOpen(submitPopover(page))).toBe(true);
+
+  await input.focus();
+  expect(await isOpen(submitPopover(page))).toBe(false);
+
+  await submitHost.hover();
+  expect(await isOpen(submitPopover(page))).toBe(true);
 
   await input.fill('ber');
-  await page.keyboard.press('ArrowDown');
+  await page.getByRole('option', { name: 'Berlin', exact: true }).click();
+  expect(await isOpen(popover(page))).toBe(false);
+  expect(await isOpen(submitPopover(page))).toBe(false);
+  await expect(input).toHaveValue('Berlin');
+  await expect(submit).not.toHaveAttribute('aria-disabled');
+  await expect(submit).not.toHaveAttribute('aria-description');
+
+  await submitHost.focus();
+  expect(await isOpen(submitPopover(page))).toBe(false);
+
   await submit.click();
   expect(await isOpen(popover(page))).toBe(false);
   await expect(input).toHaveValue('Berlin');
+
+  await input.fill('ber');
+  await expect(submit).toHaveAttribute('aria-disabled', 'true');
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('Enter');
+  await expect(input).toHaveValue('Berlin');
+  await expect(submit).not.toHaveAttribute('aria-disabled');
 });
 
 test('announces the result count and when nothing matches', async ({ page }) => {
