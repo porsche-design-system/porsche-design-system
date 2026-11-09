@@ -20,9 +20,14 @@ const Page = () => (
   <PatternPage meta={meta}>
     <main id="main" class="grid-template gap-y-fluid-md py-fluid-lg">
       <div class="col-narrow lg:col-start-7 lg:col-end-13 grid gap-fluid-md">
-        <p-heading tag="h1" size="lg">
-          Contact
-        </p-heading>
+        <div class="grid gap-static-xs">
+          <p-heading tag="h1" size="lg">
+            Contact
+          </p-heading>
+          <p-text size="sm" color="contrast-medium">
+            * Required fields
+          </p-text>
+        </div>
         <form id="contact-form" class="grid gap-[40px]" novalidate>
           <div class="grid gap-static-md">
             <p-segmented-control
@@ -85,7 +90,8 @@ const Page = () => (
               label="Email"
               auto-complete="email"
               required
-              data-error="Please enter a valid email address."
+              data-error="Please enter your email address."
+              data-error-format="Please enter a valid email address."
             />
             <p-checkbox name="terms" required data-error="Please agree to the General Terms and Conditions.">
               <span slot="label">

@@ -19,7 +19,7 @@ test('loads without reporting an error', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Send non-binding request' })).toBeVisible();
 });
 
-test('validates required fields on submit and clears errors as the user corrects them', async ({ page }) => {
+test('validates required fields on blur and submit, and clears errors as the user corrects them', async ({ page }) => {
   await setupExamplePage(page, url);
 
   const firstName = page.locator('p-input-text[name="first-name"]');
@@ -27,6 +27,21 @@ test('validates required fields on submit and clears errors as the user corrects
   const email = page.locator('p-input-email[name="email"]');
   const terms = page.locator('p-checkbox[name="terms"]');
   const submit = page.getByRole('button', { name: 'Send non-binding request' });
+
+  await firstName.locator('input').focus();
+  await firstName.locator('input').blur();
+  await expect(firstName).toHaveJSProperty('state', 'none');
+
+  await firstName.locator('input').fill('Ferry');
+  await firstName.locator('input').fill('');
+  await firstName.locator('input').blur();
+  await expect(firstName).toHaveJSProperty('state', 'error');
+  await expect(firstName).toHaveJSProperty('message', 'Please enter your first name.');
+
+  await firstName.locator('input').fill('Ferry');
+  await expect(firstName).toHaveJSProperty('state', 'none');
+  await expect(firstName).toHaveJSProperty('message', '');
+  await firstName.locator('input').fill('');
 
   const currentUrl = page.url();
   await submit.click();
@@ -37,7 +52,7 @@ test('validates required fields on submit and clears errors as the user corrects
   await expect(lastName).toHaveJSProperty('state', 'error');
   await expect(lastName).toHaveJSProperty('message', 'Please enter your last name.');
   await expect(email).toHaveJSProperty('state', 'error');
-  await expect(email).toHaveJSProperty('message', 'Please enter a valid email address.');
+  await expect(email).toHaveJSProperty('message', 'Please enter your email address.');
   await expect(terms).toHaveJSProperty('state', 'error');
   await expect(terms).toHaveJSProperty('message', 'Please agree to the General Terms and Conditions.');
   await expect(firstName.locator('input')).toBeFocused();
@@ -51,6 +66,7 @@ test('validates required fields on submit and clears errors as the user corrects
 
   await email.locator('input').fill('invalid-email');
   await expect(email).toHaveJSProperty('state', 'error');
+  await expect(email).toHaveJSProperty('message', 'Please enter a valid email address.');
   await email.locator('input').fill('ferry@porsche.de');
   await expect(email).toHaveJSProperty('state', 'none');
 

@@ -56,9 +56,14 @@ const Page = () => (
   <PatternPage meta={meta}>
     <main id="main" class="grid-template gap-y-fluid-md py-fluid-lg">
       <div class="col-narrow lg:col-start-7 lg:col-end-13 grid gap-fluid-md">
-        <p-heading tag="h1" size="lg">
-          Booking
-        </p-heading>
+        <div class="grid gap-static-xs">
+          <p-heading tag="h1" size="lg">
+            Booking
+          </p-heading>
+          <p-text size="sm" color="contrast-medium">
+            * Required fields
+          </p-text>
+        </div>
 
         <p-stepper-horizontal id="booking-stepper" size="small">
           <p-stepper-horizontal-item id="booking-stepper-date-time" state="current">
@@ -97,8 +102,10 @@ const Page = () => (
                 label="Date"
                 hide-label={true}
                 value="2026-04-16"
+                min="2026-04-16"
                 required
                 data-error="Please choose a date for your test drive."
+                data-error-format="Please choose a date on or after 16.04.2026."
               />
               <p-segmented-control
                 name="time"
@@ -155,8 +162,10 @@ const Page = () => (
                 label="Date of Birth"
                 aria="{ 'aria-description': 'As shown on your ID card' }"
                 auto-complete="bday"
+                max="2008-12-31"
                 required
                 data-error="Please enter your date of birth."
+                data-error-format="Please enter a valid date of birth."
               />
               <div class="grid gap-static-sm px-static-lg py-static-md rounded-xl bg-frosted">
                 <p-checkbox name="driving-licence" label="I confirm that I hold a valid driving licence." />
@@ -195,7 +204,8 @@ const Page = () => (
                 label="Email"
                 auto-complete="email"
                 required
-                data-error="Please enter a valid email address."
+                data-error="Please enter your email address."
+                data-error-format="Please enter a valid email address."
               />
               <p-select name="country" label="Country" value="de">
                 <p-select-option value="de">Germany</p-select-option>
@@ -210,7 +220,7 @@ const Page = () => (
               <p-button class="w-full" type="submit">
                 Continue
               </p-button>
-              <p-button-pure id="booking-back-1" icon="none" type="button">
+              <p-button-pure id="booking-back-1" icon="none" type="button" data-novalidate>
                 Back
               </p-button-pure>
             </div>
@@ -296,7 +306,7 @@ const Page = () => (
               <p-button class="w-full" type="submit">
                 Confirm booking
               </p-button>
-              <p-button-pure id="booking-back-2" icon="none" type="button">
+              <p-button-pure id="booking-back-2" icon="none" type="button" data-novalidate>
                 Back
               </p-button-pure>
             </div>
