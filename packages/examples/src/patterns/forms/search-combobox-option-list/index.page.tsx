@@ -76,17 +76,27 @@ const Page = () => (
               clear={true}
               indicator={true}
             >
-              <p-button
+              <p-popover
+                id="dealer-search-popover-button"
                 slot="end"
-                type="submit"
-                variant="secondary"
-                form="dealer-search-form"
-                icon="arrow-right"
-                hide-label={true}
-                compact={true}
+                description="Select a city from the list to search first."
+                class="[--p-popover-w:fit-content]"
               >
-                Search
-              </p-button>
+                <p-button
+                  id="dealer-search-submit"
+                  slot="button"
+                  type="submit"
+                  variant="secondary"
+                  form="dealer-search-form"
+                  icon="arrow-right"
+                  hide-label={true}
+                  compact={true}
+                  disabled={true}
+                  aria="{ 'aria-description': 'Select a city from the list to search first.' }"
+                >
+                  Search
+                </p-button>
+              </p-popover>
             </p-input-search>
           </form>
           <p
@@ -120,12 +130,14 @@ const Page = () => (
           .then(() => document.getElementById('dealer-search').componentOnReady())
           .then(() => {
           const popover = document.getElementById('dealer-search-popover');
+          const submitPopover = document.getElementById('dealer-search-popover-button');
+          const submitButton = document.getElementById('dealer-search-submit');
           const form = document.getElementById('dealer-search-form');
           const search = document.getElementById('dealer-search');
           const list = document.getElementById('dealer-search-results');
           const empty = document.getElementById('dealer-search-empty');
           const status = document.getElementById('dealer-search-status');
-          if (!popover || !form || !search || !list || !empty || !status) {
+          if (!popover || !submitPopover || !submitButton || !form || !search || !list || !empty || !status) {
             throw new Error('Dealer search markup is incomplete');
           }
 
@@ -150,6 +162,14 @@ const Page = () => (
 
           const setSelected = (next) => {
             selectedOption = next;
+            const hasSelection = selectedOption !== null;
+            submitButton.disabled = !hasSelection;
+            submitButton.aria = hasSelection
+              ? {}
+              : { 'aria-description': 'Select a city from the list to search first.' };
+            if (hasSelection) {
+              submitPopover.open = false;
+            }
             for (const option of options()) {
               const isSelected = option === selectedOption;
               option.setAttribute('aria-selected', isSelected ? 'true' : 'false');
@@ -232,6 +252,42 @@ const Page = () => (
           }).observe(search);
 
           setOpen(false);
+          submitPopover.open = false;
+
+          let isSubmitHovered = false;
+          let isSubmitFocused = false;
+          const syncSubmitPopover = () => {
+            submitPopover.open = submitButton.disabled && (isSubmitHovered || isSubmitFocused);
+          };
+
+          for (const target of [submitPopover, submitButton]) {
+            target.addEventListener('mouseenter', () => {
+              isSubmitHovered = true;
+              syncSubmitPopover();
+            });
+
+            target.addEventListener('mouseleave', (event) => {
+              if (submitPopover.contains(event.relatedTarget)) {
+                return;
+              }
+              isSubmitHovered = false;
+              syncSubmitPopover();
+            });
+          }
+
+          submitButton.addEventListener('focusin', () => {
+            isSubmitFocused = true;
+            syncSubmitPopover();
+          });
+
+          submitButton.addEventListener('focusout', () => {
+            isSubmitFocused = false;
+            syncSubmitPopover();
+          });
+
+          submitPopover.addEventListener('dismiss', () => {
+            submitPopover.open = false;
+          });
 
           form.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -282,6 +338,14 @@ const Page = () => (
             if (event.key === 'Escape' && popover.open) {
               // The popover closes on Escape; without this the native search field would also clear the query.
               event.preventDefault();
+              return;
+            }
+            if (event.key === 'Enter') {
+              const items = visibleOptions();
+              if (popover.open && activeIndex >= 0 && items[activeIndex]) {
+                event.preventDefault();
+                choose(items[activeIndex]);
+              }
               return;
             }
             if (event.key === 'ArrowDown') {
