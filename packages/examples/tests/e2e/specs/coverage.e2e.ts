@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
+import { testCoverage } from '@porsche-design-system/testing';
 import { getExamplePages, getSpecPath } from '../../helpers/index.ts';
 
 /**
@@ -10,12 +11,13 @@ import { getExamplePages, getSpecPath } from '../../helpers/index.ts';
  * without one – and that example would then miss even the check that it loads without an error. This file notices.
  */
 
-const examplePages = getExamplePages();
+const specPaths = Object.fromEntries(
+  getExamplePages().map((examplePage) => [examplePage.id, getSpecPath(examplePage, 'e2e')] as const)
+);
 
-for (const examplePage of examplePages) {
-  const specPath = getSpecPath(examplePage, 'e2e');
-
-  test(`${examplePage.id} has a spec of its own in specs/${specPath}`, () => {
-    expect(existsSync(path.join(import.meta.dirname, specPath)), `add specs/${specPath}`).toBe(true);
-  });
-}
+testCoverage({
+  test,
+  items: Object.keys(specPaths),
+  getMissing: (id) =>
+    existsSync(path.join(import.meta.dirname, specPaths[id])) ? undefined : `specs/${specPaths[id]}`,
+});

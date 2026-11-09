@@ -1,7 +1,8 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
+import { testCoverage } from '@porsche-design-system/testing';
 import { getExamplePages, getSpecPath } from '../../helpers/index.ts';
-import { expect, test } from '../helpers/index.ts';
+import { test } from '../helpers/index.ts';
 
 /**
  * Every example has a spec of its own.
@@ -10,10 +11,13 @@ import { expect, test } from '../helpers/index.ts';
  * without one – and that example would then never be scanned. This file notices.
  */
 
-for (const examplePage of getExamplePages()) {
-  const specPath = getSpecPath(examplePage, 'a11y');
+const specPaths = Object.fromEntries(
+  getExamplePages().map((examplePage) => [examplePage.id, getSpecPath(examplePage, 'a11y')] as const)
+);
 
-  test(`${examplePage.id} has a spec of its own in specs/${specPath}`, () => {
-    expect(existsSync(path.join(import.meta.dirname, specPath)), `add specs/${specPath}`).toBe(true);
-  });
-}
+testCoverage({
+  test,
+  items: Object.keys(specPaths),
+  getMissing: (id) =>
+    existsSync(path.join(import.meta.dirname, specPaths[id])) ? undefined : `specs/${specPaths[id]}`,
+});
