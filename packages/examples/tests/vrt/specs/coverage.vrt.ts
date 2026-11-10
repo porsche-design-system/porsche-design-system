@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { testCoverage } from '@porsche-design-system/testing';
 import { getExamplePages, getSpecPath } from '../../helpers/index.ts';
 
@@ -17,6 +17,7 @@ const specPaths = Object.fromEntries(
 
 testCoverage({
   test,
+  expect,
   items: Object.keys(specPaths),
   getMissing: (id) =>
     existsSync(path.join(import.meta.dirname, specPaths[id])) ? undefined : `specs/${specPaths[id]}`,

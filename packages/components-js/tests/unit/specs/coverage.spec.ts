@@ -57,6 +57,7 @@ describe('overview matching', () => {
 describe('own e2e spec', () => {
   testCoverage({
     test,
+    expect,
     items: components,
     getMissing: (name) => {
       const file = `tests/e2e/specs/${name}.e2e.ts`;
@@ -69,6 +70,7 @@ describe('own e2e spec', () => {
 describe('VRT page', () => {
   testCoverage({
     test,
+    expect,
     items: components,
     getMissing: (name) => (getPages(name).length ? undefined : `src/pages/${name}.html`),
     allowlist: vrtPageAllowlist,
@@ -78,6 +80,7 @@ describe('VRT page', () => {
 describe('a11y-tree snapshot', () => {
   testCoverage({
     test,
+    expect,
     items: components.flatMap(getPages),
     getMissing: (page) => {
       const file = `tests/a11y/specs/a11ytree/__snapshots__/p-${page}-0.aria.yml`;
@@ -90,6 +93,7 @@ describe('a11y-tree snapshot', () => {
 describe('overview of components-js', () => {
   testCoverage({
     test,
+    expect,
     items: components,
     getMissing: (name) =>
       isOnOverview(overviewComponentsSource, `p-${name}`, name)
@@ -102,6 +106,7 @@ describe('overview of components-js', () => {
 describe('overview of Vue', () => {
   testCoverage({
     test,
+    expect,
     items: components,
     getMissing: (name) =>
       isOnOverview(overviewVueSource, `P${toPascalCase(name)}`, name)
