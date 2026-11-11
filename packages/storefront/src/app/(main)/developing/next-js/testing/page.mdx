@@ -350,13 +350,13 @@ The API must be mocked within the test setup. `p-tabs-bar` calls `animate` and `
 Example mock:
 
 ```ts
-Element.prototype.animate = vi.fn(
+Element.prototype.animate = jest.fn(
   () =>
     ({
       onfinish: null,
-      cancel: vi.fn(),
-      finish: vi.fn(),
+      cancel: jest.fn(),
+      finish: jest.fn(),
     }) as unknown as Animation
 );
-Element.prototype.getAnimations = vi.fn(() => []);
+Element.prototype.getAnimations = jest.fn(() => []);
 ```
