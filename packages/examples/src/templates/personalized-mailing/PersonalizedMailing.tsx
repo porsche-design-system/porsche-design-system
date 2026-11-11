@@ -200,6 +200,9 @@ type GhostTitleProps = {
 /**
  * Giant section title fading from contrast-medium to transparent, which the content of its section overlaps. The fade
  * is a gradient behind transparent text – High Contrast Mode drops the gradient, so it gets a solid text colour there.
+ *
+ * Each line fits the width at the default text size. Its minimum size is in `rem`, so at a large text size a line can
+ * outgrow a narrow screen – it wraps then, hyphenated where the browser knows how, rather than being cut off.
  */
 const GhostTitle = ({
   id,
@@ -210,7 +213,7 @@ const GhostTitle = ({
 }: GhostTitleProps) => (
   <Heading
     id={id}
-    class={`col-full justify-self-center text-center whitespace-nowrap font-normal leading-[1.05] bg-linear-to-b from-contrast-medium to-transparent bg-clip-text text-transparent forced-colors:bg-none forced-colors:text-[CanvasText] pointer-events-none ${size} ${className}`}
+    class={`col-full justify-self-center text-center hyphens-auto wrap-break-word font-normal leading-[1.05] bg-linear-to-b from-contrast-medium to-transparent bg-clip-text text-transparent forced-colors:bg-none forced-colors:text-[CanvasText] pointer-events-none ${size} ${className}`}
   >
     {lines.map((line) => (
       <span key={line} class="block">
@@ -297,8 +300,7 @@ const VideoHero = () => (
 /**
  * Title hero: a giant title on a fade into the configured colour, which the configured vehicle at the start of the
  * chapter below is pulled up into. It is as tall as its content, so the chapter follows right below the title. Like
- * every section with a ghost title it clips the title horizontally, which does not wrap and can outgrow a narrow
- * screen at a large text size.
+ * every section with a ghost title it clips horizontally.
  */
 const TitleHero = () => (
   <section
