@@ -37,6 +37,7 @@ export const patternComponents = [
   'drilldown',
   'flag',
   'heading',
+  'input-search',
   'link',
   'link-pure',
   'modal',

@@ -17,14 +17,16 @@ const acceptedGaps: Record<string, string[]> = JSON.parse(readFileSync(resolve(p
 const tags = TAG_NAMES.filter((tag) => !(INTERNAL_TAG_NAMES as readonly string[]).includes(tag));
 const iconMeta = getComponentMeta('p-icon')?.propsMeta?.name?.allowedValues;
 // what design draws: no deprecated component, nothing accepted as a gap
+// ids are numbered before filtering, so deleting an accepted gap adds its files without renumbering the rest
 const pull: Snapshot = {
   components: tags
-    .filter((tag) => !getComponentMeta(tag)?.isDeprecated && !acceptedGaps[tag]?.includes('component-set'))
-    .map((tag, i) => ({ id: `1:${i + 1}`, name: tag.replace(/^p-/, ''), componentPropertyDefinitions: {} })),
+    .map((tag, i) => ({ tag, id: `1:${i + 1}` }))
+    .filter(({ tag }) => !getComponentMeta(tag)?.isDeprecated && !acceptedGaps[tag]?.includes('component-set'))
+    .map(({ tag, id }) => ({ id, name: tag.replace(/^p-/, ''), componentPropertyDefinitions: {} })),
   icons: Object.fromEntries(
     (Array.isArray(iconMeta) ? iconMeta.map(String) : [])
-      .filter((name) => !acceptedGaps['p-icon']?.includes(`name=${name}`))
       .map((name, i) => [`2:${i + 1}`, name])
+      .filter(([, name]) => !acceptedGaps['p-icon']?.includes(`name=${name}`))
   ),
 };
 const { files } = generate(pull, acceptedGaps, {
@@ -74,6 +76,37 @@ describe('generated files', () => {
         );
         expect(status, `${config}\n${stderr}`).toBe(0);
       }
+    } finally {
+      rmSync(project, { recursive: true, force: true });
+    }
+  }, 120_000);
+
+  it("renders a snippet the CLI's syntax check accepts, from each template's own code", async () => {
+    // Publish no longer refuses a snippet that only fails this check (figma/code-connect#418), so it runs here.
+    // Empty slots keep nested records, which Figma renders in another label, out of it.
+    const prettier = createRequire(entry)('prettier');
+    const project = mkdtempSync(join(tmpdir(), 'figma-code-connect-syntax-'));
+    try {
+      cpSync(resolve(packageRoot, 'figma/helpers'), join(project, 'figma/helpers'), { recursive: true });
+      globalThis.selectedInstance = {
+        properties: {},
+        getSlot: () => ({ connectedInstances: [] }),
+        findLayers: () => [],
+      };
+      const rejected: string[] = [];
+      for (const file of generated.filter((name) => name.startsWith('generated/templates/'))) {
+        mkdirSync(dirname(join(project, file)), { recursive: true });
+        writeFileSync(join(project, file), files[file]);
+        const { example } = (await import(join(project, file))).default;
+        // the CLI parses a React snippet as TypeScript and the other labels as HTML
+        const parser = file.endsWith('.react.figma.ts') ? 'typescript' : 'html';
+        try {
+          await prettier.format(example, { parser });
+        } catch {
+          rejected.push(file);
+        }
+      }
+      expect(rejected).toEqual([]);
     } finally {
       rmSync(project, { recursive: true, force: true });
     }

@@ -6,7 +6,7 @@ import {
   viewportWidthM,
   viewportWidths,
   viewportWidthXXL,
-} from '@porsche-design-system/shared/testing';
+} from '@porsche-design-system/testing';
 import { closeSidebars, resetAnimations } from '../helpers/helpers';
 
 const urls = {

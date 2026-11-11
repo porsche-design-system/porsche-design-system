@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { viewportWidthXXL } from '@porsche-design-system/shared/testing';
+import { viewportWidthXXL } from '@porsche-design-system/testing';
 import { setupScenario } from '../helpers';
 
 const charsets = ['latin', 'greek-coptic', 'cyril', 'middle-east', 'thai', 'fallback'];

@@ -119,10 +119,6 @@ describe('disconnectedCallback', () => {
 });
 
 describe('render', () => {
-  beforeEach(() => {
-    vi.spyOn(global.console, 'warn').mockImplementation(() => {});
-  });
-
   it('should call hasNamedSlot() with correct parameters', () => {
     const hasNamedSlotSpy = vi.spyOn(domUtils, 'hasNamedSlot');
     const header = document.createElement('header');

@@ -127,6 +127,9 @@ src/
 │   ├── tile/                     # index.page.tsx each – the use cases of `p-tile`, built without it
 │   │   ├── model-selection/      # … one folder per use case: anchor or covering `p-link`, hover via `group-hover:`
 │   │   └── …                     # category, video, product, …; page `scheme-light-dark`, tile fixed only if needed
+│   ├── forms/                    # index.page.tsx each – combobox patterns built on `p-input-search` and `p-popover`
+│   │   ├── search-combobox-option-list/ # filters a listbox of options and writes the choice into the field
+│   │   └── search-combobox-link-list/   # filters a dialog of links and navigates to the chosen page
 │   ├── popover/                  # index.page.tsx each – the behaviour is per example
 │   │   ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
 │   │   ├── priority-navigation/  # entries that no longer fit collapse into a popover
@@ -191,7 +194,7 @@ which is forced to 1 like everywhere else in the monorepo. A spec reads its devi
 [`tests/helpers/device.ts`](tests/helpers/device.ts), never from the project name; the page setups leave the viewport
 alone, so a page is laid out on its device. Only a flow about resizing – the priority navigation – sets a width itself.
 
-The settings are still those of the shared base configs in `@porsche-design-system/shared/testing`; only the options
+The settings are still those of the shared base configs in `@porsche-design-system/testing`; only the options
 Playwright allows per project – test directory and match, timeouts, snapshot path, screenshot comparison, output
 directory – are taken per suite. The project names end in the engine because `prepare-vrt-snapshots` recognises output
 folders by that suffix. The `test:*` scripts select their projects, so the suites stay separate steps in CI with

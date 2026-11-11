@@ -7,12 +7,11 @@ const breakpointVariables = fs.readFileSync(path.resolve('dist/_breakpoint.scss'
 const mediaQueryMixin = fs
   .readFileSync(path.resolve('dist/_media-query.scss'), 'utf8')
   .replace(/@use\s+["'][^"']+["'];?\n?/g, '')
-  .replace(/breakpoint\./g, '')
-  .replace(/map\./g, 'map-');
+  .replace(/breakpoint\./g, '');
 const mixin = `${breakpointVariables} ${mediaQueryMixin}`;
 
 const getCss = (scenario: string): string => {
-  return sass.compileString(`${mixin} ${scenario}`).css;
+  return sass.compileString(`@use "sass:map"; ${mixin} ${scenario}`).css;
 };
 
 describe('pds-media-query-min()', () => {

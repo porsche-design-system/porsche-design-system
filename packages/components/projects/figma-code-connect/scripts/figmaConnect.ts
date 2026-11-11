@@ -4,6 +4,7 @@ import { sync as globbySync } from 'fast-glob';
 import {
   nodesUnreachable,
   type PreviewResult,
+  syntaxCheckOnly,
   unreachable,
   uploadFailures,
   validationFailures,
@@ -88,6 +89,14 @@ const publishValid = (config: string, args: string[], dryRun: boolean): string[]
   ];
   for (const result of failedOnce.length ? previewResults(config, failedOnce) : []) {
     if (!result.success) {
+      // TODO refuse this again once figma/code-connect#418 renders nested records in the previewed label
+      // Figma rendered it, so it publishes. The unit tests syntax-check the templates' own output instead.
+      if (syntaxCheckOnly(result)) {
+        console.warn(
+          `⚠ ${result.filePath}: ${result.error}. Figma rendered it, so it publishes (figma/code-connect#418)`
+        );
+        continue;
+      }
       console.error(`✖ ${result.filePath}: ${result.error}`);
       if (unreachable(result)) {
         unchecked.add(result.filePath);

@@ -1,5 +1,6 @@
+import type { JSX } from 'react';
 import { renderToString } from 'react-dom/server';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, expectTypeOf, it, vi } from 'vitest';
 import { COMPONENT_CHUNK_NAMES, type ComponentChunkName } from '../../../../components-wrapper/lib/chunksManifest';
 import { getComponentChunkLinks } from '../../../src';
 
@@ -62,6 +63,10 @@ describe('format: html', () => {
 });
 
 describe('format: jsx', () => {
+  it('should return a type that is assignable to JSX.Element of react', () => {
+    expectTypeOf(getComponentChunkLinks({ format: 'jsx' })).toExtend<JSX.Element>();
+  });
+
   const coreLinkCom = `<link rel="preload" href="${baseHrefCom}/porsche-design-system\\\.v${version}\\\.${hash}\\\.js" as="script" crossorigin=""/>`;
 
   it('should return core link', () => {

@@ -245,14 +245,7 @@ export const sitemap = {
       tile: { name: 'Tile' },
       popover: { name: 'Popover' },
       feedback: { name: 'Feedback' },
-      forms: {
-        name: 'Forms',
-        tabs: {
-          guidelines: { name: 'Guidelines' },
-          resources: { name: 'Resources' },
-          legal: { name: 'Legal' },
-        },
-      },
+      forms: { name: 'Forms' },
       notifications: {
         name: 'Notifications',
         tabs: {
@@ -726,7 +719,8 @@ export const sitemap = {
         tabs: {
           introduction: { name: 'Introduction' },
           'dos-and-donts': { name: "Do's and Don'ts" },
-          'ai-agent-setup': { name: 'Setting AI Agent Context' },
+          'ai-agent-context': { name: 'AI Agent Context' },
+          'ai-accessibility-audit': { name: 'AI Accessibility Audit' },
           statement: { name: 'Statement' },
         },
       },

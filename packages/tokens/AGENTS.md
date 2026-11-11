@@ -46,7 +46,6 @@ npm run test:unit:tokens
 ## Working Guidelines
 
 - Prefer simple, explicit token exports and keep barrel exports consistent.
-- Do not edit generated `dist/` output.
 - Preserve naming consistency across light, dark, and light-dark token variants.
 - Token changes have broad downstream impact on styles, components, wrappers, storefront, and utilities; keep changes
   intentional and minimal.

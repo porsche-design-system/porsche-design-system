@@ -183,6 +183,7 @@ import { PopoverCompactComponent } from './generated/popover-compact.component';
 import { PopoverCssVariablesComponent } from './generated/popover-css-variables.component';
 import { PopoverEdgeCaseComponent } from './generated/popover-edge-case.component';
 import { PopoverFlexParentComponent } from './generated/popover-flex-parent.component';
+import { PopoverHideArrowComponent } from './generated/popover-hide-arrow.component';
 import { PopoverLeftComponent } from './generated/popover-left.component';
 import { PopoverRightComponent } from './generated/popover-right.component';
 import { PopoverScrolledComponent } from './generated/popover-scrolled.component';
@@ -403,6 +404,7 @@ export const generatedPages = [
   PopoverCssVariablesComponent,
   PopoverEdgeCaseComponent,
   PopoverFlexParentComponent,
+  PopoverHideArrowComponent,
   PopoverLeftComponent,
   PopoverRightComponent,
   PopoverScrolledComponent,
@@ -1242,6 +1244,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Popover Flex Parent',
     path: 'popover-flex-parent',
     component: PopoverFlexParentComponent,
+  },
+  {
+    name: 'Popover Hide Arrow',
+    path: 'popover-hide-arrow',
+    component: PopoverHideArrowComponent,
   },
   {
     name: 'Popover Left',

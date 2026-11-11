@@ -1,5 +1,6 @@
 import { type BrowserContext, expect, type Frame, type Page, type Request, test } from '@playwright/test';
 import { examples } from '@porsche-design-system/examples';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
 
 /**
  * The patterns and templates the storefront frames from `public/examples/`, and opens in StackBlitz.
@@ -31,6 +32,7 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
       'patterns/tile/product-teaser',
     ],
   ],
+  ['/patterns/forms/', ['patterns/forms/search-combobox-option-list', 'patterns/forms/search-combobox-link-list']],
   ['/patterns/feedback/', ['patterns/feedback/inline', 'patterns/feedback/dialog']],
   [
     '/patterns/popover/',
@@ -56,18 +58,6 @@ const routeCdnToLocal = async (context: BrowserContext): Promise<void> => {
     await route.fulfill({ response: await route.fetch({ url }) });
   });
 };
-
-const waitForComponentsReady = (frame: Frame) =>
-  frame.waitForFunction(() => {
-    const pdsElements = Array.from(document.querySelectorAll('*')).filter((element) =>
-      element.tagName.startsWith('P-')
-    );
-    return (
-      pdsElements.length > 0 &&
-      document.querySelectorAll(':not(:defined)').length === 0 &&
-      pdsElements.every((element) => element.classList.contains('hydrated'))
-    );
-  });
 
 const getExampleFrames = async (page: Page): Promise<Frame[]> => {
   const iframes = page.locator('iframe[src*="/examples/"]');
@@ -106,7 +96,7 @@ for (const [path, examples] of pagesWithExamples) {
       for (const frame of await getExampleFrames(page)) {
         // Same-origin, which is what lets the page be framed without a second origin in the CSP.
         expect(new URL(frame.url()).origin).toBe(new URL(page.url()).origin);
-        await waitForComponentsReady(frame);
+        await waitForComponentsHydrated(frame);
         await expect(frame.locator('style')).not.toHaveCount(0);
       }
 

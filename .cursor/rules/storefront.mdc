@@ -1,0 +1,8 @@
+---
+description: Points to the AGENTS.md for files under packages/storefront/
+globs: packages/storefront/**
+alwaysApply: false
+---
+
+Files under `packages/storefront/` follow @packages/storefront/AGENTS.md. If it is not in your context, read it before
+you answer about or edit these files, and follow it.
