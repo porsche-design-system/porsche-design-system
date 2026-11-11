@@ -1,5 +1,6 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { Comment } from '../../../_partials/Comment.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -11,17 +12,18 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – a feature of a vehicle, built with HTML and Tailwind CSS.
  *
- * Nothing in the tile is interactive, so there is no focus ring to keep and the tile clips the image to its corners
- * itself, via `overflow-clip`. `aspect-video` defines the height of the image. The footnote reference is the
- * superscript character "¹" rather than a `<sup>` element, which the formatted markup would separate from the word by
- * a line break and therefore by a space. The footnote itself uses `size="xs"` and `color="contrast-medium"`.
+ * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  *
- * The page follows the color scheme of the user via `scheme-light-dark`, and so does the tile: its media are photos
- * filling their area or cut-outs on a transparent background, which work on a light and a dark surface alike.
+ * The footnote reference is the superscript character "¹" rather than a `<sup>` element, which the formatted markup
+ * would separate from the word by a line break and therefore by a space.
  */
 const Page = () => (
   <PatternPage meta={meta} class="scheme-light-dark">
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+      <Comment>
+        Nothing in the tile is interactive, so there is no focus indicator to keep and the tile clips the image to its
+        corners itself.
+      </Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] flex flex-col gap-fluid-sm overflow-clip rounded-3xl bg-surface">
         <img
           class="w-full aspect-video object-cover"

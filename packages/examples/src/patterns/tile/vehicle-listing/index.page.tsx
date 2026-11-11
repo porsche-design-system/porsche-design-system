@@ -1,5 +1,7 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { Comment } from '../../../_partials/Comment.tsx';
+import { tileComments } from '../../../_partials/tile/comments.ts';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -14,22 +16,23 @@ const Detail = ({ children }: { children: string }) => <p-text>{children}</p-tex
 /**
  * Tile pattern – a vehicle of a search result, built with HTML and Tailwind CSS.
  *
- * The image reaches the top and side edges of the tile. Its wrapper clips the zoom to the box of the image and to the
- * upper corners of the tile, so the image neither overlaps the details nor the corners, and `aspect-video` defines its
- * height. The tile is the query container (`@container`), so the actions are stacked and placed side by side from
- * `@sm`, depending on the width of the tile instead of the viewport.
- *
- * The anchor slotted into the covering `p-link` gets an accessible name that contains the visible label and identifies
- * the vehicle. The "Save" button is an independent action, so `relative z-2` places it above the covering link.
- *
- * The page follows the color scheme of the user via `scheme-light-dark`, and so does the tile: its media are photos
- * filling their area or cut-outs on a transparent background, which work on a light and a dark surface alike.
+ * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} class="scheme-light-dark">
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg bg-surface">
+      <Comment>{tileComments.coverTile}</Comment>
+      <Comment>
+        The actions are placed side by side once the tile is wide enough, depending on the width of the tile instead of
+        the viewport.
+      </Comment>
       <div class="col-basic justify-self-center w-full max-w-[400px] @container group relative isolate flex flex-col gap-fluid-sm rounded-3xl bg-canvas [--p-link-cover-radius:var(--radius-3xl)]">
+        <Comment>
+          Clips the zooming image to its own box and the upper corners, so it neither overlaps the details nor the
+          corners. The tile itself does not clip, since that would cut off the focus indicator of its link.
+        </Comment>
         <div class="overflow-clip rounded-t-[inherit]">
+          <Comment>{tileComments.zoom}</Comment>
           <img
             class="w-full aspect-video object-cover motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
             src="/examples/media/porsche-718-gts.jpg"
@@ -50,11 +53,14 @@ const Page = () => (
           <p-divider></p-divider>
           <p-text size="md">€159,900</p-text>
           <div class="flex flex-col @sm:flex-row @sm:flex-wrap gap-static-md">
+            <Comment>{tileComments.coverLink}</Comment>
+            <Comment>Its accessible name contains the label it shows and identifies the vehicle.</Comment>
             <p-link cover={true}>
               <a href="#" aria-label="Show details of the Porsche 718 Boxster">
                 Show details
               </a>
             </p-link>
+            <Comment>{tileComments.action}</Comment>
             <p-button class="relative z-2" type="button" variant="secondary" icon="bookmark">
               Save
             </p-button>

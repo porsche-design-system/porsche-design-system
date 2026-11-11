@@ -1,5 +1,7 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { Comment } from '../../../_partials/Comment.tsx';
+import { tileComments } from '../../../_partials/tile/comments.ts';
 
 const label = 'Weekender';
 
@@ -13,21 +15,15 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – a product with a branded background color, built with HTML and Tailwind CSS.
  *
- * The tile is a grid of two equal columns below a row for the link, which spans both, so heading and text keep half
- * of the width next to the image on small viewports. `bg-[#341f2e]` sets the brand color, and `scheme-only-dark` renders
- * light content on it, independent of the color scheme of the page.
- *
- * The image fills the height of its cell via `grow basis-0 min-h-0` within a column wrapper, which keeps it from
- * increasing the height of the tile, and `object-contain` centers it within the cell. `hyphens="auto"` lets the
- * heading break when the tile gets narrow.
- *
- * The page follows the color scheme of the user via `scheme-light-dark`, while `scheme-only-dark` keeps the tile dark,
- * since it lies on a dark gradient or background.
+ * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} class="scheme-light-dark">
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+      <Comment>{tileComments.coverTile}</Comment>
+      <Comment>Light content on the brand color, independent of the color scheme of the page.</Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate grid grid-cols-2 grid-rows-[auto_1fr] gap-fluid-sm aspect-video rounded-3xl bg-[#341f2e] p-fluid-md scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">
+        <Comment>{tileComments.coverLink}</Comment>
         <p-link
           class="col-span-2 justify-self-end"
           variant="secondary"
@@ -39,6 +35,8 @@ const Page = () => (
           <a href="#">{label}</a>
         </p-link>
         <div class="flex flex-col">
+          <Comment>{tileComments.fill}</Comment>
+          <Comment>{tileComments.zoom}</Comment>
           <img
             class="grow basis-0 min-h-0 w-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
             src="/examples/media/weekender.webp"

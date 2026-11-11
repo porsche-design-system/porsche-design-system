@@ -1,6 +1,8 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { Comment } from '../../../_partials/Comment.tsx';
 import { Script } from '../../../_partials/Script.tsx';
+import { tileComments } from '../../../_partials/tile/comments.ts';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -12,21 +14,18 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – a feature with details on demand, built with HTML and Tailwind CSS.
  *
- * The image lies behind the content via `-z-1` and covers the tile, rounded like it via `rounded-[inherit]`. The content
- * at the bottom carries the gradient, `bg-fade-to-t`, so the gradient grows with the expanded details, and
- * `scheme-only-dark` renders light content on it. `self-stretch` lets the expanded details span the full width of the tile.
- *
- * The aspect ratio is a preferred size only: content that needs more space makes the tile grow beyond it. That holds
- * for a grid, not for a row of flex items, and only as long as the tile doesn't clip its overflow – so the tile has no
- * `overflow-clip`, and the image and the gradient follow its corners themselves.
- *
- * The page follows the color scheme of the user via `scheme-light-dark`, while `scheme-only-dark` keeps the tile dark,
- * since it lies on a dark gradient or background.
+ * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} class="scheme-light-dark">
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+      <Comment>
+        The aspect ratio is a preferred size only: expanded details extend the tile beyond it, which clipping would
+        prevent. So the tile does not clip, and the image and the gradient follow its corners themselves.
+      </Comment>
+      <Comment>{tileComments.darkScheme}</Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark">
+        <Comment>Decorative, it lies behind the content and covers the tile.</Comment>
         <img
           class="absolute inset-0 -z-1 size-full object-cover rounded-[inherit]"
           src="/examples/media/lights.jpg"
@@ -34,6 +33,7 @@ const Page = () => (
           width="1366"
           height="2048"
         />
+        <Comment>{tileComments.gradient}</Comment>
         <div class="self-end flex flex-col items-start gap-static-md px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
           <p-heading tag="h2" size="lg">
             Light design.¹

@@ -5,6 +5,7 @@ import { createElement } from 'preact';
 import { render } from 'preact-render-to-string';
 import { compile } from 'tailwindcss';
 import { describe, expect, it } from 'vitest';
+import { assertCommentText, commentTag, renderComments, wrapComments } from '../../../lib/comment.ts';
 import {
   dedent,
   exampleBanner,
@@ -39,8 +40,30 @@ import {
 } from '../../../lib/projects.ts';
 import { readVersions, srcDir } from '../../../lib/shared.ts';
 import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
+import { Comment } from '../../../src/_partials/Comment.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import { countOccurrences, examplePages } from '../helpers/index.ts';
+
+/**
+ * The stylesheet Tailwind compiles for every token of a text, in every shape its extractor could cut the token into –
+ * a word that reads like a utility (`static`, `block`, `hidden`, `table`, …) would change it.
+ */
+const getUtilitiesOf = async (text: string): Promise<string> => {
+  const require = createRequire(import.meta.url);
+  const compiler = await compile('@import "tailwindcss";', {
+    base: import.meta.dirname,
+    loadStylesheet: async (id, base) => {
+      const file = id.startsWith('.') ? path.resolve(base, id) : require.resolve(`${id}/index.css`);
+      return { path: file, base: path.dirname(file), content: fs.readFileSync(file, 'utf8') };
+    },
+  });
+  const candidates = text
+    .split(/\s+/)
+    .flatMap((token) => [token, ...token.split(/[^\w-]+/), ...token.split(/[^\w:/.()-]+/)])
+    .filter(Boolean);
+
+  return compiler.build([...new Set(candidates)]);
+};
 
 /**
  * The build pipeline: how a URL maps to a page, how a page becomes a project, what that project and its StackBlitz
@@ -470,21 +493,59 @@ describe('renderPage()', () => {
   // every shape Tailwind's extractor could cut it into, is compiled here – a word that reads like a utility (`static`,
   // `block`, `hidden`, `table`, …) would change the stylesheet.
   it('should keep the note free of anything Tailwind reads as a utility', async () => {
-    const require = createRequire(import.meta.url);
-    const compiler = await compile('@import "tailwindcss";', {
-      base: import.meta.dirname,
-      loadStylesheet: async (id, base) => {
-        const file = id.startsWith('.') ? path.resolve(base, id) : require.resolve(`${id}/index.css`);
-        return { path: file, base: path.dirname(file), content: fs.readFileSync(file, 'utf8') };
-      },
-    });
-    const candidates = exampleNote
-      .split(/\s+/)
-      .flatMap((token) => [token, ...token.split(/[^\w-]+/), ...token.split(/[^\w:/.()-]+/)])
-      .filter(Boolean);
-    const withoutNote = compiler.build([]);
+    expect(await getUtilitiesOf(exampleNote)).toBe(await getUtilitiesOf(''));
+  });
 
-    expect(compiler.build([...new Set(candidates)])).toBe(withoutNote);
+  // The same holds for the comments of the `Comment` partial, which reach the `index.html` of the example as well.
+  it.each(examplePages)(
+    'should keep the comments of %s free of anything Tailwind reads as a utility',
+    async (_, Page) => {
+      const html = await renderPage(Page);
+      const comments = [...html.matchAll(/<!--([\s\S]*?)-->/g)]
+        .map(([, text]) => text)
+        .filter((text) => text !== exampleNote.slice(4, -3));
+
+      expect(await getUtilitiesOf(comments.join(' '))).toBe(await getUtilitiesOf(''));
+    }
+  );
+
+  it('should render the Comment partial as an HTML comment', async () => {
+    const html = await renderPage(() => (
+      <TemplatePage meta={{ title: 'Comment', description: 'Comment check' }}>
+        <main id="main">
+          <Comment>Why the heading is here.</Comment>
+          <h1>Comment</h1>
+        </main>
+      </TemplatePage>
+    ));
+
+    expect(html).toMatch(/\n {6}<!-- Why the heading is here\. -->\n {6}<h1>Comment<\/h1>/);
+    expect(html).not.toContain(commentTag);
+  });
+
+  it('should reject a comment text that is no valid comment or would change the markup', () => {
+    for (const text of ['', ' ', 'a -- b', 'a --> b', '-a', 'a-', 'a <b>', 'a & b']) {
+      expect(() => assertCommentText(text), text).toThrow();
+    }
+    expect(() => assertCommentText('A comment, with punctuation: e.g. 24 pixels – fine.')).not.toThrow();
+  });
+
+  it('should turn the elements of the Comment partial into HTML comments', () => {
+    expect(renderComments(`<div><${commentTag}> Some text </${commentTag}><p>a</p></div>`)).toBe(
+      '<div><!-- Some text --><p>a</p></div>'
+    );
+  });
+
+  it('should break a comment exceeding the line length into lines of its own, keeping its indentation', () => {
+    const text = Array.from({ length: 30 }, (_, index) => `word${index}`).join(' ');
+    const wrapped = wrapComments(`    <!-- ${text} -->\n    <!-- Short. -->`);
+    const lines = wrapped.split('\n');
+
+    expect(lines[0]).toBe('    <!--');
+    expect(lines.at(-1)).toBe('    <!-- Short. -->');
+    expect(lines.at(-2)).toBe('    -->');
+    expect(lines.slice(1, -2).every((line) => line.startsWith('      word') && line.length <= 120)).toBe(true);
+    expect(lines.slice(1, -2).join(' ').replace(/\s+/g, ' ').trim()).toBe(text);
   });
 
   it('should format the output instead of emitting a single line', async () => {

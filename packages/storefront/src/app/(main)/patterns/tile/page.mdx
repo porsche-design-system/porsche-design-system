@@ -27,23 +27,13 @@ export const metadata = {
 
 A tile groups the content of a single item – a model, a category, a product or a feature – in a rounded area that is
 often clickable as a whole. Tiles vary too much in layout, media and interaction to be covered by a single component, so
-these patterns show their common use cases built with plain HTML and Tailwind CSS. Start from the pattern closest to
-your use case and adapt it; the content still uses the components of the Porsche Design System. For a tile with a fixed
-layout, the [Link Tile](/components/link-tile/examples), [Link Tile Product](/components/link-tile-product/examples) and
-[Button Tile](/components/button-tile/examples) components are available as well.
+these patterns show their common use cases, built with HTML, Tailwind CSS and the components of the Porsche Design
+System. Start from the pattern closest to your use case and adapt it – the comments in its code explain why it is built
+the way it is.
 
-The patterns share a few techniques. A clickable tile is the positioned ancestor (`relative`) of its link: either a
-`p-link` with `cover` stretches its clickable area over the tile and draws the focus ring around it, with the corners
-set via `[--p-link-cover-radius:var(--radius-3xl)]`, or an anchor of its own spans the tile via `absolute inset-0`, with
-its label as screen reader text. Independent actions are placed above the link via `relative z-2`. Hover effects are
-`group-hover:` variants of the tile, wrapped in `motion-safe:` to respect the reduced motion preference of the user.
-Media zooming on hover is clipped by a wrapper with `overflow-clip` rather than by a clickable tile itself, which would
-clip the focus ring of its link as well. Gradients such as `bg-fade-to-t` ensure the legibility of text on images.
-
-The page follows the color scheme of the user via `scheme-light-dark`, and so do most tiles: their photos fill their
-area and their cut-outs have a transparent background, so they work on a light and a dark surface alike. Only where the
-content asks for a fixed scheme, the tile sets it: `scheme-only-dark` for light content on a gradient, a background
-image or a brand color, and `scheme-only-light` for the category, whose dark vehicle would vanish on a dark surface.
+For a tile with a fixed layout, the [Link Tile](/components/link-tile/examples),
+[Link Tile Product](/components/link-tile-product/examples) and [Button Tile](/components/button-tile/examples)
+components are available as well.
 
 ## Model Selection
 

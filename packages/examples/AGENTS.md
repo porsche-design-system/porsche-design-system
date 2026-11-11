@@ -75,6 +75,7 @@ Consequences, and they are the point of the design:
 ```text
 lib/                              # everything importable – by vite.config.ts, the scripts and the tests
 ├── jsx.ts                        # renderPage(), findPages(), page URL resolution + Vite plugin (dev server)
+├── comment.ts                    # the HTML comments of the Comment partial – rendered, checked and wrapped
 ├── partials.ts                   # PDS partials (loader, fonts, icons, chunks) – dev server and generated projects
 ├── projects.ts                   # the categories, their component chunks and the path arithmetic
 ├── entries.ts                    # extractScripts() + the generated main.js + the dev stylesheet link
@@ -112,7 +113,9 @@ src/
 │   └── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
 ├── _partials/                    # Head, Header, Footer – checked props
 │   ├── Script.tsx                # <script type="module"> with unescaped code – all behaviour goes through it
+│   ├── Comment.tsx               # an HTML comment in the markup – why the element after it is built that way
 │   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
+│   ├── tile/comments.ts          # the comments the tile patterns share, worded once
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask, with its behaviour
@@ -389,6 +392,17 @@ reaches through interaction**.
   dev. What differs between the pages rendering a partial is a prop instead, and what the partial has to react to it
   finds through a relation of its own markup: `FeedbackForm` offers to start over when it is `restartable`, and follows
   the modal it is rendered in through `form.closest('p-modal')` – so the dialog page only opens and closes its modal.
+- **Why a technique is used is a `<Comment>`, written where the markup is.** [`Comment`](src/_partials/Comment.tsx)
+  renders an HTML comment before the element it explains, so the reason reaches the `index.html` – the code view of the
+  storefront, StackBlitz and the knowledge skill – and is read where the markup is copied, while the storefront page
+  stays an introduction. Preact cannot render a comment, so the partial renders a placeholder element that
+  `renderComments()` of [`lib/comment.ts`](lib/comment.ts) turns into `<!-- … -->` before formatting, and
+  `wrapComments()` breaks a comment longer than the line length into lines of its own afterwards. Write why, not what –
+  the classes say what – and word a technique several patterns share once, like
+  [`tile/comments.ts`](src/_partials/tile/comments.ts): each pattern is copied on its own, so it repeats the comment. A
+  comment must not contain `--`, `<`, `>` or `&` (the partial throws), nor a word Tailwind reads as a utility – no class
+  names, and none of `grow`, `block`, `hidden`, `relative`, `visible`, `outline`, `ring`, … A unit test compiles the
+  comments of every page with Tailwind and fails on any utility they produce.
 - **Every page opens with `exampleNote`.** [`renderPage()`](lib/jsx.ts) writes it between the doctype and `<html>`, in
   dev and build alike: a comment saying the example is written with web platform technologies but relies on Tailwind CSS
   and with it on a bundler – the wording of the setup popover of the storefront's `WebsiteViewer` – and is built on

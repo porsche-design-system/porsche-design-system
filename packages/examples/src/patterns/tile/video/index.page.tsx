@@ -1,6 +1,8 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
+import { Comment } from '../../../_partials/Comment.tsx';
 import { Script } from '../../../_partials/Script.tsx';
+import { tileComments } from '../../../_partials/tile/comments.ts';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -12,19 +14,20 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – a category with a mood video, built with HTML and Tailwind CSS.
  *
- * Laid out like the image category: the video lies behind the content via `-z-1`, within a layer that clips the zoom
- * to the corners of the tile, and the heading row carries the gradient. The pause button is an independent action, so
- * `relative z-2` places it above the covering link. It hides its label, which is its accessible name, and follows the
- * actual state of the video – see the script.
- *
- * The page follows the color scheme of the user via `scheme-light-dark`, while `scheme-only-dark` keeps the tile dark,
- * since it lies on a dark gradient or background.
+ * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} class="scheme-light-dark">
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+      <Comment>{tileComments.coverTile}</Comment>
+      <Comment>{tileComments.darkScheme}</Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">
+        <Comment>{tileComments.clip}</Comment>
         <div class="absolute inset-0 -z-1 overflow-clip rounded-[inherit]">
+          <Comment>
+            Decorative, muted and looped. It does not start if the user prefers reduced motion, see the script.
+          </Comment>
+          <Comment>{tileComments.zoom}</Comment>
           {/* biome-ignore lint/a11y/noAriaHiddenOnFocusable: without `controls`, the video is not focusable – it is decorative */}
           <video
             id="tile-video"
@@ -40,10 +43,16 @@ const Page = () => (
             <source src="/examples/media/mood-porsche-gts.webm" type="video/webm" />
           </video>
         </div>
+        <Comment>{tileComments.gradient}</Comment>
         <div class="self-end flex flex-wrap items-center gap-fluid-sm px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
           <p-heading tag="h2" size="md" weight="semibold">
             GTS models
           </p-heading>
+          <Comment>
+            Moving content that starts on its own has to be pausable. The button follows the actual state of the video,
+            see the script.
+          </Comment>
+          <Comment>{tileComments.action}</Comment>
           <p-button
             id="tile-video-button"
             class="ms-auto relative z-2"
@@ -55,6 +64,7 @@ const Page = () => (
           >
             Play video
           </p-button>
+          <Comment>{tileComments.coverLink}</Comment>
           <p-link variant="secondary" icon="arrow-right" hide-label="true" compact="true" cover={true}>
             <a href="#">GTS models</a>
           </p-link>
