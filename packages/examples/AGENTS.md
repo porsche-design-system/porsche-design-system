@@ -361,12 +361,12 @@ reaches through interaction**.
   into – most use `scheme-light` or `scheme-dark` – so a `scheme-light-dark` in the code would be taken over by copy and
   paste and by the knowledge skill for no reason. An example therefore renders light on its own, and one built for the
   dark scheme as well declares `colorSchemes: ['light', 'dark']` in its `meta`: the `WebsiteViewer` of the storefront
-  then sets the scheme its visitor chose on the `<html>` of the example (same origin), and `setupExamplePage()` of
-  [`tests/helpers/setup.ts`](tests/helpers/setup.ts) does the same with `scheme-light-dark`, so the dark captures of the
-  VRT and the a11y scans show it. The skill names the schemes of every example. A section that needs a fixed scheme
-  whatever the application uses – light text on an image – sets `scheme-only-dark` or `scheme-only-light` itself. An
-  application shell on `p-canvas` is the exception: it is the application, so it puts its scheme on `<html>` – see
-  below.
+  then sets the scheme its visitor chose on the `<html>` of the example (same origin) and of the project it opens in
+  StackBlitz, and `setupExamplePage()` of [`tests/helpers/setup.ts`](tests/helpers/setup.ts) does the same with
+  `scheme-light-dark`, so the dark captures of the VRT and the a11y scans show it. The skill names the schemes of every
+  example. A section that needs a fixed scheme whatever the application uses – light text on an image – sets
+  `scheme-only-dark` or `scheme-only-light` itself. An application shell on `p-canvas` is the exception: it is the
+  application, so it puts its scheme on `<html>` – see below.
 - **A page built on `p-canvas` adds no landmark of its own.** The component renders the banner, the `main` landmark and
   the two `aside` landmarks in its shadow root, so a `<main id="main">` in the default slot would nest one landmark
   inside another. The page therefore renders the component straight into

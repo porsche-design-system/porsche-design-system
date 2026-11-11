@@ -15,6 +15,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { DocsLink } from '@/components/common/DocsLink';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
+import { followsStorefrontColorScheme, withColorScheme } from '@/utils/exampleColorScheme';
 import { withMediaOrigin } from '@/utils/exampleMediaOrigin';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 import { CodeBlock, type CodeLanguage } from '../../elements/CodeBlock';
@@ -54,17 +55,25 @@ const codeFiles: { file: string; name: string; language: CodeLanguage }[] = [
   { file: 'main.js', name: 'JS', language: 'js' },
 ];
 
-/** Opens an example in StackBlitz, with its media pointing at this deployment. */
-const OpenExampleInStackblitz = ({ example, mediaPath }: Pick<ExampleProps, 'example' | 'mediaPath'>) => (
-  <PButtonPure
-    type="button"
-    iconSource="assets/icon-stackblitz.svg"
-    onClick={() => openExampleInStackblitz(withMediaOrigin(example, window.location.origin, mediaPath))}
-    aria={{ 'aria-description': 'Opens in a new tab' }}
-  >
-    Open in StackBlitz
-  </PButtonPure>
-);
+/** Opens an example in StackBlitz, with its media pointing at this deployment and in the scheme of the storefront. */
+const OpenExampleInStackblitz = ({ example, mediaPath }: Pick<ExampleProps, 'example' | 'mediaPath'>) => {
+  const { storefrontColorScheme } = useStorefrontColorScheme();
+
+  return (
+    <PButtonPure
+      type="button"
+      iconSource="assets/icon-stackblitz.svg"
+      onClick={() =>
+        openExampleInStackblitz(
+          withColorScheme(withMediaOrigin(example, window.location.origin, mediaPath), storefrontColorScheme)
+        )
+      }
+      aria={{ 'aria-description': 'Opens in a new tab' }}
+    >
+      Open in StackBlitz
+    </PButtonPure>
+  );
+};
 
 /** Sizes the preview and the code alike, so switching between them does not move the page. */
 const VIEW_HEIGHT = 'h-150 max-h-[80vh]';
@@ -93,7 +102,7 @@ export const WebsiteViewer = (props: WebsiteViewerProps) => {
   // here – the iframe shares the origin of the storefront. Applied on load, and again whenever the scheme changes.
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { storefrontColorScheme } = useStorefrontColorScheme();
-  const hasDarkScheme = isExample && !!props.example.colorSchemes?.includes('dark');
+  const hasDarkScheme = isExample && followsStorefrontColorScheme(props.example);
   const applyColorScheme = useCallback(() => {
     const root = iframeRef.current?.contentDocument?.documentElement;
     if (!hasDarkScheme || !root) {
