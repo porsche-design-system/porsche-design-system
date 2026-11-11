@@ -271,6 +271,7 @@ export default Page;
 | ------------ | ----------------------------------------------------------- |
 | `meta`       | The `meta` of the page: `<title>` and the meta description. |
 | `background` | `canvas` (default) or `surface`, the color of `<body>`.     |
+| `centered`   | Centers shorter content vertically in the viewport (tiles). |
 | `beforeMain` | The pattern, when it belongs above the content (a header).  |
 | `afterMain`  | The pattern, when it belongs below the content (a footer).  |
 | `children`   | The page content, including its own `<main id="main">`.     |

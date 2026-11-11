@@ -11,6 +11,12 @@ export type PatternPageProps = {
    */
   background?: 'canvas' | 'surface';
   /**
+   * Centers the content vertically in the viewport while it is shorter – for a pattern that stands on its own, such as
+   * a tile. Taller content starts at the top and scrolls as usual. Set on `<body>`, since `grid-template` uses
+   * `box-sizing: content-box`, and a minimum height on a padded `<main>` would add its padding to the viewport height.
+   */
+  centered?: boolean;
+  /**
    * The pattern itself, when it belongs above the content – a header, for example, which then provides the page's
    * banner landmark.
    */
@@ -36,13 +42,24 @@ export type PatternPageProps = {
  *
  * Like `TemplatePage` it references no script – the build links the generated `main.js`.
  */
-export const PatternPage = ({ meta, background = 'canvas', beforeMain, afterMain, children }: PatternPageProps) => (
+export const PatternPage = ({
+  meta,
+  background = 'canvas',
+  centered = false,
+  beforeMain,
+  afterMain,
+  children,
+}: PatternPageProps) => (
   <html lang="en">
     <head>
       <Head title={meta.title} description={meta.description} />
     </head>
-    {/* Spelled out, so Tailwind finds both classes. */}
-    <body class={background === 'surface' ? 'bg-surface' : 'bg-canvas'}>
+    {/* Spelled out, so Tailwind finds every class. */}
+    <body
+      class={[background === 'surface' ? 'bg-surface' : 'bg-canvas', centered && 'grid content-center min-h-dvh']
+        .filter(Boolean)
+        .join(' ')}
+    >
       {beforeMain}
       {children}
       {afterMain}

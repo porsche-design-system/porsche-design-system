@@ -19,7 +19,7 @@ export const meta: ExampleMeta = {
  * would separate from the word by a line break and therefore by a space.
  */
 const Page = () => (
-  <PatternPage meta={meta}>
+  <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>
         Nothing in the tile is interactive, so there is no focus indicator to keep and the tile clips the image to its

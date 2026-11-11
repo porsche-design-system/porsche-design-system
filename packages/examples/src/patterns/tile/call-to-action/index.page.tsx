@@ -17,7 +17,7 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta}>
+  <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>{tileComments.darkScheme}</Comment>

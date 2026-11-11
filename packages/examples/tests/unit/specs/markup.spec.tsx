@@ -319,6 +319,10 @@ describe('PatternPage', () => {
     expect(renderPatternPage({ background: 'surface' })).toContain('<body class="bg-surface">');
   });
 
+  it('should center the content vertically in the viewport, when asked to', () => {
+    expect(renderPatternPage({ centered: true })).toContain('<body class="bg-canvas grid content-center min-h-dvh">');
+  });
+
   it('should leave the main landmark to the page', () => {
     const html = renderPatternPage();
 
