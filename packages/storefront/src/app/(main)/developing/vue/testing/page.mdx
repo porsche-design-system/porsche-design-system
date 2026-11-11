@@ -208,11 +208,12 @@ HTMLElement.prototype.attachInternals = vi.fn(
 );
 ```
 
-### animate API
+### Web Animations API
 
-Affected Components: `p-tabs-bar`, `p-tabs`, `p-drilldown`
+Affected Components: `p-tabs-bar`, `p-drilldown`
 
-The API must be mocked within the test setup.
+The API must be mocked within the test setup. `p-tabs-bar` calls `animate` and `getAnimations`, `p-drilldown` calls
+`animate` only.
 
 Example mock:
 
@@ -225,4 +226,5 @@ Element.prototype.animate = vi.fn(
       finish: vi.fn(),
     }) as unknown as Animation
 );
+Element.prototype.getAnimations = vi.fn(() => []);
 ```
