@@ -311,6 +311,10 @@ describe('PatternPage', () => {
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
   });
 
+  it('should give the page the canvas color of the color scheme as its background', () => {
+    expect(renderPatternPage()).toContain('<body class="bg-canvas">');
+  });
+
   it('should leave the main landmark to the page', () => {
     const html = renderPatternPage();
 

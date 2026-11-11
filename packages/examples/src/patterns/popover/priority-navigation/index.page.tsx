@@ -23,6 +23,7 @@ export const meta: ExampleMeta = {
   title: 'Popover: Priority navigation',
   description:
     'When horizontal space is limited, navigation items that no longer fit are collapsed into a popover behind a "More" trigger, keeping the bar on a single line. Items move in and out of the popover as the available width changes.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**
