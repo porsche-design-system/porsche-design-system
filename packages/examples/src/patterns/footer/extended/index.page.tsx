@@ -6,7 +6,7 @@ import { Footer } from '../../../_partials/footer/Footer.tsx';
 export const meta: ExampleMeta = {
   title: 'Footer: Extended',
   description:
-    'The footer serves as a universal navigation and information hub located at the bottom of every page. It provides essential links, copyright information, legal disclaimers, and contact details, ensuring users can easily access key information regardless of their location on the site.',
+    'The footer of a site. Besides the legal information – consumption and emission disclaimers, the wordmark, the copyright and the legal links – it offers the delivery country, the site navigation in columns, social media and payment service providers, so users can reach key information from wherever they are on the site.',
 };
 
 /**
