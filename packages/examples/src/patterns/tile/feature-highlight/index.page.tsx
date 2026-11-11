@@ -10,7 +10,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a feature with details on demand, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a feature with details on demand, built with HTML and Tailwind CSS.
  *
  * The image lies behind the content via `-z-1` and covers the tile, rounded like it via `rounded-[inherit]`. The content
  * at the bottom carries the gradient, `bg-fade-to-t`, so the gradient grows with the expanded details, and

@@ -78,7 +78,7 @@ export const patternPages = [
   ['patterns/tile/product-teaser', TileProductTeaserPage],
 ] as const;
 
-/** The tile patterns – one use case of a tile each, built with HTML and Tailwind CSS instead of `p-tile`. */
+/** The tile patterns – one use case of a tile each, built with HTML and Tailwind CSS. */
 export const tilePages = patternPages.filter(([path]) => path.startsWith('patterns/tile/'));
 
 export const examplePages = [...templatePages, ...patternPages];

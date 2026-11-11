@@ -9,7 +9,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a model range with its starting price, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a model range with its starting price, built with HTML and Tailwind CSS.
  *
  * Signature and vehicle are stacked in the same grid cell via `[grid-area:1/1]`, and `mt-[6%]` lets the vehicle
  * overlap the lower part of the signature. The mask of the signature paints it above content that isn't positioned,

@@ -9,7 +9,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a model range as entry point, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a model range as entry point, built with HTML and Tailwind CSS.
  *
  * The tile is the positioned ancestor of its link: the anchor spans it via `absolute inset-0`, carries the name of the
  * model as text for screen readers only (`sr-only`) and lies above the content via `z-1`, so hovering anywhere on the

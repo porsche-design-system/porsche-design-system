@@ -38,7 +38,7 @@ const cssVarGap = '--p-link-gap';
 const cssVarRadius = '--p-link-radius';
 
 /**
- * @css-variable {"name": "--p-link-cover-radius", "description": "Corner radius of the clickable area and its focus ring when `cover` is set, e.g. the radius of the card the link covers. Within a `p-tile`, it follows the radius of the Tile.", "defaultValue": "radius of a surrounding p-tile, otherwise 0"}
+ * @css-variable {"name": "--p-link-cover-radius", "description": "Corner radius of the clickable area and its focus ring when `cover` is set, e.g. the radius of the card the link covers.", "defaultValue": "0"}
  */
 const cssVarCoverRadius = '--p-link-cover-radius';
 

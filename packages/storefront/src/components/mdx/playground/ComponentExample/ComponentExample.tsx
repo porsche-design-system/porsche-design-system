@@ -17,7 +17,6 @@ type ComponentSampleProps = {
   disableOpenInStackblitz?: boolean;
   backgroundColor?: BackgroundColor;
   fixedBackgroundColor?: string;
-  previewMaxWidth?: string;
 };
 
 export const ComponentExample = ({
@@ -26,7 +25,6 @@ export const ComponentExample = ({
   disableOpenInStackblitz = false,
   backgroundColor,
   fixedBackgroundColor,
-  previewMaxWidth,
 }: ComponentSampleProps) => {
   const { storefrontColorScheme } = useStorefrontColorScheme();
   const { framework } = useStorefrontFramework();
@@ -61,7 +59,6 @@ export const ComponentExample = ({
       disableOpenInStackblitz={disableOpenInStackblitz}
       backgroundColor={backgroundColor}
       fixedBackgroundColor={fixedBackgroundColor}
-      previewMaxWidth={previewMaxWidth}
     >
       {!disableDemo && <Component />}
     </Playground>

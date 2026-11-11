@@ -229,7 +229,6 @@ import { TagDismissibleComponent } from './generated/tag-dismissible.component';
 import { TextComponent } from './generated/text.component';
 import { TextareaComponent } from './generated/textarea.component';
 import { TextListComponent } from './generated/text-list.component';
-import { TileComponent } from './generated/tile.component';
 import { ToastComponent } from './generated/toast.component';
 import { ToastBasicComponent } from './generated/toast-basic.component';
 import { ToastMultilineComponent } from './generated/toast-multiline.component';
@@ -450,7 +449,6 @@ export const generatedPages = [
   TextComponent,
   TextareaComponent,
   TextListComponent,
-  TileComponent,
   ToastComponent,
   ToastBasicComponent,
   ToastMultilineComponent,
@@ -1474,11 +1472,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Textarea',
     path: 'textarea',
     component: TextareaComponent,
-  },
-  {
-    name: 'Tile',
-    path: 'tile',
-    component: TileComponent,
   },
   {
     name: 'Toast',

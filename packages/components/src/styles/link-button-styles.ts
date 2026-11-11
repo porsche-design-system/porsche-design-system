@@ -35,14 +35,14 @@ import {
 
 /**
  * Lets the anchor cover its nearest positioned ancestor. Its radius is set via the given CSS variable, e.g. to the one of
- * the card it covers, and otherwise follows a surrounding `p-tile`.
+ * the card it covers.
  */
 export const getCoverStyles = (cssVarCoverRadius: string): JssStyle => ({
   content: '""',
   position: 'absolute',
   inset: 0,
   zIndex: 1,
-  borderRadius: ref(cssVarCoverRadius, ref('--ref-p-tile-radius', '0')),
+  borderRadius: ref(cssVarCoverRadius, '0'),
 });
 
 /**

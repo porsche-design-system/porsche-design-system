@@ -59,7 +59,6 @@ exports[`should match snapshot 1`] = `
   "p-text",
   "p-text-list",
   "p-textarea",
-  "p-tile",
   "p-toast",
   "p-wordmark",
 ]

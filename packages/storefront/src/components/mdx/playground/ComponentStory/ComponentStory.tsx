@@ -42,7 +42,6 @@ export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }:
       backgroundColor={backgroundColor}
       onOpenInStackblitz={onOpenInStackblitz}
       showCodeBlock={showCodeBlock}
-      previewMaxWidth={story.previewMaxWidth}
     >
       <StoryPreview story={story} state={exampleState} onStateChange={setExampleState} />
     </Playground>

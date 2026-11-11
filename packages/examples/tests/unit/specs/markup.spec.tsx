@@ -645,10 +645,6 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
   /** `cover` of `p-link`, a boolean attribute – the formatted markup puts it on a line of its own. */
   const hasCoveringLink = (html: string): boolean => /<p-link[^>]*\scover[\s>]/.test(html);
 
-  it('should build the tile with HTML and Tailwind CSS instead of the component', async () => {
-    expect(await renderPage(Page)).not.toContain('<p-tile');
-  });
-
   it('should show the tile on its own, below no first level heading', async () => {
     const html = await renderPage(Page);
 
@@ -661,8 +657,8 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
   it('should give the focus ring of a covering link the corners of the tile', async () => {
     const html = await renderPage(Page);
 
-    // Only a surrounding `p-tile` gives a covering `p-link` its corner radius; without the component, the tile sets
-    // `--p-link-cover-radius` – otherwise the ring is drawn with square corners around a rounded tile.
+    // A covering `p-link` takes the corners of its focus ring from `--p-link-cover-radius`, set by the tile – otherwise
+    // the ring is drawn with square corners around a rounded tile.
     expect(html.includes('[--p-link-cover-radius:var(--radius-3xl)]')).toBe(hasCoveringLink(html));
   });
 

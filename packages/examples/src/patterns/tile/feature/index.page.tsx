@@ -9,7 +9,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a feature of a vehicle, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a feature of a vehicle, built with HTML and Tailwind CSS.
  *
  * Nothing in the tile is interactive, so there is no focus ring to keep and the tile clips the image to its corners
  * itself, via `overflow-clip`. `aspect-video` defines the height of the image. The footnote reference is the

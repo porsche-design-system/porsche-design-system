@@ -9,7 +9,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a model of the navigation, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a model of the navigation, built with HTML and Tailwind CSS.
  *
  * The tile has no background until it is hovered: `hover:bg-canvas` reveals it, `motion-safe:transition-colors`
  * animates it. The vehicle follows the hover of the tile via `group-hover:`, by `translate-x-static-md`, mirrored for

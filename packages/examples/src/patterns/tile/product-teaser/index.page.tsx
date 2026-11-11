@@ -11,7 +11,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a product with a branded background color, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a product with a branded background color, built with HTML and Tailwind CSS.
  *
  * The tile is a grid of two equal columns below a row for the link, which spans both, so heading and text keep half
  * of the width next to the image on small viewports. `bg-[#341f2e]` sets the brand color, and `scheme-only-dark` renders

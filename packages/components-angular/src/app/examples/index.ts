@@ -115,7 +115,6 @@ import { TextareaExampleComponent } from './textarea-example.component';
 import { TextareaExampleControlledComponent } from './textarea-example-controlled.component';
 import { TextareaExampleFormComponent } from './textarea-example-form.component';
 import { TextareaExampleReactiveFormComponent } from './textarea-example-reactive-form.component';
-import { TileExampleVideoComponent } from './tile-example-video.component';
 import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
@@ -236,7 +235,6 @@ export const examples = [
   TextareaExampleControlledComponent,
   TextareaExampleFormComponent,
   TextareaExampleReactiveFormComponent,
-  TileExampleVideoComponent,
   ToastExampleComponent,
 ];
 
@@ -371,5 +369,4 @@ export * from './textarea-example.component';
 export * from './textarea-example-controlled.component';
 export * from './textarea-example-form.component';
 export * from './textarea-example-reactive-form.component';
-export * from './tile-example-video.component';
 export * from './toast-example.component';

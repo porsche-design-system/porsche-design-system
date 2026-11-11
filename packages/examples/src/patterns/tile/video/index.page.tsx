@@ -10,7 +10,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a category with a mood video, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a category with a mood video, built with HTML and Tailwind CSS.
  *
  * Laid out like the image category: the video lies behind the content via `-z-1`, within a layer that clips the zoom
  * to the corners of the tile, and the heading row carries the gradient. The pause button is an independent action, so

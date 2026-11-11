@@ -9,7 +9,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a shop category, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a shop category, built with HTML and Tailwind CSS.
  *
  * Two elements, because the clipping and the focus ring would otherwise exclude each other. The outer one is the
  * positioned ancestor `cover` of `p-link` stretches its clickable area over, and draws the focus ring of the link

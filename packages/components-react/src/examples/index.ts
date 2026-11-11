@@ -98,5 +98,4 @@ export * from './TabsBarExampleBasic';
 export * from './TextareaExample';
 export * from './TextareaExampleControlled';
 export * from './TextareaExampleForm';
-export * from './TileExampleVideo';
 export * from './ToastExample';

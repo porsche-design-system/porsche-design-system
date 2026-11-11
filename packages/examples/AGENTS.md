@@ -124,7 +124,7 @@ src/
 │   ├── header/overlay/           # Header in its `overlay` variant
 │   ├── header/stacked/           # Header in its `stacked` variant
 │   ├── footer/                   # Footer below the content
-│   ├── tile/                     # index.page.tsx each – the use cases of `p-tile`, built without it
+│   ├── tile/                     # index.page.tsx each – the use cases of a tile, built with HTML and Tailwind CSS
 │   │   ├── model-selection/      # … one folder per use case: anchor or covering `p-link`, hover via `group-hover:`
 │   │   └── …                     # category, video, product, …; page `scheme-light-dark`, tile fixed only if needed
 │   ├── forms/                    # index.page.tsx each – combobox patterns built on `p-input-search` and `p-popover`

@@ -12,7 +12,7 @@ export const meta: ExampleMeta = {
 const Detail = ({ children }: { children: string }) => <p-text>{children}</p-text>;
 
 /**
- * Tile pattern – a vehicle of a search result, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a vehicle of a search result, built with HTML and Tailwind CSS.
  *
  * The image reaches the top and side edges of the tile. Its wrapper clips the zoom to the box of the image and to the
  * upper corners of the tile, so the image neither overlaps the details nor the corners, and `aspect-video` defines its

@@ -9,7 +9,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a service promoted with a mood image, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a service promoted with a mood image, built with HTML and Tailwind CSS.
  *
  * The image lies behind the content via `-z-1`, within a layer that clips the zoom to the corners of the tile. The
  * tile itself doesn't clip, so the focus ring of the covering `p-link` is drawn around it. The column at the start

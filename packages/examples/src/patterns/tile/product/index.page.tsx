@@ -23,7 +23,7 @@ export const meta: ExampleMeta = {
 };
 
 /**
- * Tile pattern – a product of a list, built with HTML and Tailwind CSS instead of `p-tile`.
+ * Tile pattern – a product of a list, built with HTML and Tailwind CSS.
  *
  * The anchor spans the tile via `absolute inset-0` and lies above the content via `z-1`; the wishlist button and the
  * color swatches are placed above it via `relative z-2`, so they stay clickable. `p-static-xs -m-static-xs` enlarges
