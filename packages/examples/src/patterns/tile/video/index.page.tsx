@@ -19,7 +19,7 @@ export const meta: ExampleMeta = {
  */
 const Page = () => (
   <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>{tileComments.darkScheme}</Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">

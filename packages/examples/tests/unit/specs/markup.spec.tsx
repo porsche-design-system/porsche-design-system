@@ -315,6 +315,10 @@ describe('PatternPage', () => {
     expect(renderPatternPage()).toContain('<body class="bg-canvas">');
   });
 
+  it('should give the page the surface color of the color scheme as its background, when asked to', () => {
+    expect(renderPatternPage({ background: 'surface' })).toContain('<body class="bg-surface">');
+  });
+
   it('should leave the main landmark to the page', () => {
     const html = renderPatternPage();
 

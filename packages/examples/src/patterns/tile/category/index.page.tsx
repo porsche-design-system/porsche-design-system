@@ -18,7 +18,7 @@ export const meta: ExampleMeta = {
  */
 const Page = () => (
   <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>
         Kept in the light scheme, since the dark vehicle of the image would hardly stand out from a dark surface.

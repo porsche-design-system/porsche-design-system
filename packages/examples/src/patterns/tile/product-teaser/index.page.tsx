@@ -20,7 +20,7 @@ export const meta: ExampleMeta = {
  */
 const Page = () => (
   <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>Light content on the brand color, independent of the color scheme of the page.</Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate grid grid-cols-2 grid-rows-[auto_1fr] gap-fluid-sm aspect-video rounded-3xl bg-[#341f2e] p-fluid-md scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">

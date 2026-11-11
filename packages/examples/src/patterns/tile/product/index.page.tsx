@@ -32,7 +32,7 @@ export const meta: ExampleMeta = {
  */
 const Page = () => (
   <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.anchorTile}</Comment>
       <div class="col-basic justify-self-center w-full max-w-[400px] group relative isolate flex flex-col gap-fluid-sm aspect-3/4 rounded-3xl bg-surface p-fluid-md">
         <Comment>{tileComments.anchorLink}</Comment>

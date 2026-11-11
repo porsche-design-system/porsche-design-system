@@ -20,7 +20,7 @@ export const meta: ExampleMeta = {
  */
 const Page = () => (
   <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>
         Nothing in the tile is interactive, so there is no focus indicator to keep and the tile clips the image to its
         corners itself.

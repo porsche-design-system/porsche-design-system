@@ -17,8 +17,8 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg bg-surface">
+  <PatternPage meta={meta} background="surface">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.anchorTile}</Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate flex flex-col items-center text-center rounded-3xl bg-canvas p-fluid-md">
         <Comment>{tileComments.anchorLink}</Comment>

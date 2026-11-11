@@ -17,8 +17,8 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg bg-surface">
+  <PatternPage meta={meta} background="surface">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.anchorTile}</Comment>
       <Comment>
         Without a background of its own at rest, the tile blends into the surface it is placed on and reveals its

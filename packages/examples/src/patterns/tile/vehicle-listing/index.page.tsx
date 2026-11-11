@@ -20,8 +20,8 @@ const Detail = ({ children }: { children: string }) => <p-text>{children}</p-tex
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg bg-surface">
+  <PatternPage meta={meta} background="surface">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>
         The actions are placed side by side once the tile is wide enough, depending on the width of the tile instead of

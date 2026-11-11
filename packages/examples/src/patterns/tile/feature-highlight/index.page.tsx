@@ -19,7 +19,7 @@ export const meta: ExampleMeta = {
  */
 const Page = () => (
   <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>
         The aspect ratio is a preferred size only: expanded details extend the tile beyond it, which clipping would
         prevent. So the tile does not clip, and the image and the gradient follow its corners themselves.

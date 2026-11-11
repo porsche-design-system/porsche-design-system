@@ -18,7 +18,7 @@ export const meta: ExampleMeta = {
  */
 const Page = () => (
   <PatternPage meta={meta}>
-    <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
+    <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>{tileComments.darkScheme}</Comment>
       <Comment>Text that needs more space than the aspect ratio provides extends the tile beyond it.</Comment>
