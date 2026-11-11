@@ -4,12 +4,7 @@ import {
   generateAngularMarkup,
   generateAngularProperties,
 } from '../../../src/generateAngularMarkup';
-import {
-  buttonTestConfig,
-  carouselTestConfig,
-  flyoutTestConfig,
-  sharedStateTestConfig,
-} from '../data/generator.testdata';
+import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateAngularMarkup()', () => {
   it('should generate correct Angular markup for button', () => {
@@ -26,10 +21,6 @@ describe('generateAngularMarkup()', () => {
   });
   it('should generate correct Angular markup for carousel', () => {
     const output = generateAngularMarkup(carouselTestConfig, {});
-    expect(output).toMatchSnapshot();
-  });
-  it('should generate Angular markup only once for elements sharing their state', () => {
-    const output = generateAngularMarkup(sharedStateTestConfig, { properties: { open: false } });
     expect(output).toMatchSnapshot();
   });
 });

@@ -30,11 +30,15 @@ export const generateAngularMarkup = (
 ): FrameworkConfiguratorMarkup['angular'] => {
   const results = configs.map((config) => createAngularMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
-  // elements sharing their state (e.g. two accordions bound to the same `open` state) produce identical states, event
-  // handlers and types, which are only needed once
-  const states = [...new Set(results.flatMap(({ states }) => states).filter((state) => state))].join('\n');
-  const eventHandlers = [...new Set(results.flatMap(({ eventHandlers }) => eventHandlers))].join('\n');
-  const imports = [...new Set(results.flatMap(({ types }) => types))].map((t) => `type ${t}`).join(', ');
+  const states = results
+    .flatMap(({ states }) => states)
+    .filter((state) => state)
+    .join('\n');
+  const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
+  const imports = results
+    .flatMap(({ types }) => types)
+    .map((t) => `type ${t}`)
+    .join(', ');
 
   return { imports, states, eventHandlers, markup };
 };
