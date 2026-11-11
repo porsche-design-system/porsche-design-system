@@ -7,6 +7,7 @@ export const meta: ExampleMeta = {
   title: 'Footer',
   description:
     'The footer serves as a universal navigation and information hub located at the bottom of every page. It provides essential links, copyright information, legal disclaimers, and contact details, ensuring users can easily access key information regardless of their location on the site.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**

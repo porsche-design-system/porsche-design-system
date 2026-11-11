@@ -96,11 +96,11 @@ describe('withMediaOrigin()', () => {
 
 describe('withColorScheme()', () => {
   const tile = examples['patterns/tile/category'];
-  const footer = examples['patterns/footer'];
+  const landingPage = examples['templates/landing-page'];
 
   it('follows the scheme of the storefront only for an example built for the dark scheme as well', () => {
     expect(followsStorefrontColorScheme(tile)).toBe(true);
-    expect(followsStorefrontColorScheme(footer)).toBe(false);
+    expect(followsStorefrontColorScheme(landingPage)).toBe(false);
   });
 
   it('puts the scheme of the storefront on the <html> of such an example, and leaves the source without one', () => {
@@ -113,7 +113,7 @@ describe('withColorScheme()', () => {
   });
 
   it('leaves an example built for the light scheme only and every other file untouched', () => {
-    expect(withColorScheme(footer, 'scheme-dark')).toBe(footer);
+    expect(withColorScheme(landingPage, 'scheme-dark')).toBe(landingPage);
     expect(withColorScheme(tile, 'scheme-dark').files['main.js']).toBe(tile.files['main.js']);
   });
 });

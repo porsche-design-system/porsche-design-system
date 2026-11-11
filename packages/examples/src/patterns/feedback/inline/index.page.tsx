@@ -7,6 +7,7 @@ export const meta: ExampleMeta = {
   title: 'Feedback: Inline',
   description:
     'The rating sits directly in the page flow, typically at the end of the content, and stays visible at all times. Once feedback is submitted, it shows a confirmation and offers the option to start over and give new feedback.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**

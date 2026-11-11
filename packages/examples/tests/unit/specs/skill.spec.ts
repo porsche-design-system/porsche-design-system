@@ -136,7 +136,7 @@ describe('examplesSkill', () => {
   it('should name the color schemes an example is built for, and leave the scheme to the application', () => {
     const getReference = (name: string) => references.find((reference) => reference.name === name)?.getContent() ?? '';
 
-    expect(getReference('patterns/footer')).toContain('- **Color schemes:** light only\n');
+    expect(getReference('templates/landing-page')).toContain('- **Color schemes:** light only\n');
     expect(getReference('patterns/tile/category')).toContain('- **Color schemes:** light and dark – see Conventions\n');
     expect(examplesSkill.getContent()).toContain('- **Color scheme:** an example sets none on `<html>`');
   });
