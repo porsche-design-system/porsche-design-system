@@ -16,6 +16,7 @@ import { colorFrostedDark, colorFrostedSoftDark, colorPrimaryDark } from '@porsc
 import {
   addImportantToEachRule,
   cssVariableTransitionDuration,
+  forcedColorsMediaQuery,
   getAnimation,
   getTransition,
   hostHiddenStyles,
@@ -246,6 +247,9 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
         gridTemplateRows: 'subgrid',
         gridTemplateColumns: 'subgrid',
       },
+      ...forcedColorsMediaQuery({
+        background: 'Canvas',
+      }),
     },
     'dismiss-mobile': {
       [mediaQueryMobile]: {

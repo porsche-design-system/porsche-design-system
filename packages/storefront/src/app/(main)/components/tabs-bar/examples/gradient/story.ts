@@ -1,7 +1,6 @@
 'use client';
 
-import type { Story } from '@/models/story';
-import type { ElementConfig } from '@/utils/generator/generator';
+import type { ElementConfig, Story } from '@porsche-design-system/story-generator';
 
 export const tabsBarStoryGradient: Story<'p-tabs-bar'> = {
   state: {

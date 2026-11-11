@@ -1,5 +1,22 @@
-import { type ComponentsManagerData, loadComponentLibrary } from '@porsche-design-system/components-manager-core';
+import { loadComponentLibrary } from '@porsche-design-system/components-manager-core';
 import type { EntryConfig } from '../shared-definitions/entry-config';
+
+// The emitted declaration file ships standalone as the typings of the published package, so it must not import the
+// private components-manager-core package. TypeScript reports TS2717 when this shape drifts from the type
+// components-manager-core declares for the same `Document` property.
+type ComponentsManagerData = {
+  [version: `${number}.${number}.${number}${`-rc.${number}` | ''}`]: {
+    isInjected: boolean;
+    isReady: () => Promise<unknown>;
+    readyResolve: () => void;
+    prefixes: string[];
+    registerCustomElements: ((prefix: string) => void) | null;
+  };
+  cdn: {
+    url: string;
+    prefixes: string[]; // to not break older versions
+  };
+};
 
 declare global {
   interface Window {

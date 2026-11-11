@@ -2,8 +2,8 @@
 
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 import type { PIconProps } from '@porsche-design-system/components-react/ssr';
+import type { Story } from '@porsche-design-system/story-generator';
 import { capitalCase } from 'change-case';
-import type { Story } from '@/models/story';
 
 export const iconStoryOverview: Story<'p-icon'> = {
   generator: () =>

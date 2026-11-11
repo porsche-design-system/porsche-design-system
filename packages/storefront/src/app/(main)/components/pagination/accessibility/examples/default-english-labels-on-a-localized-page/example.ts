@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const defaultEnglishLabelsOnALocalizedPageA11yExample = {
   name: 'Default English labels on a localized page',

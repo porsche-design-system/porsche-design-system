@@ -1,6 +1,6 @@
+import type { Framework } from '@porsche-design-system/shared';
 import type { Root } from 'mdast';
 import { leadSentence, stripLeadingBlockquotes, stripLeadingH1 } from '../../shared/markdown';
-import type { Framework } from '../../shared/skillTree';
 import { renderMdxToMarkdown } from '../mdx/renderMdxToMarkdown';
 import { renderA11yIntegrationExamples, type SkillAccessibilityMeta } from './accessibility';
 
@@ -54,7 +54,7 @@ export const renderComponentProse = (
   tag: string,
   source: ComponentProseSource,
   statusBanner = '',
-  framework: Framework = 'js'
+  framework: Framework = 'vanilla-js'
 ): { markdown: string; summary: string; accessibilityMarkdown: string } => {
   const sections: string[] = statusBanner ? [`# ${tag}`, statusBanner] : [`# ${tag}`];
 

@@ -1,7 +1,6 @@
+import type { A11yElementConfig, HTMLTagOrComponent } from '@porsche-design-system/story-generator';
 import type { ComponentProseSource } from '@skills/knowledge/components/prose';
 import { parseMdxToMdast } from '@skills/knowledge/mdx/renderMdxToMarkdown';
-import type { A11yElementConfig } from '@/models/accessibilityMeta';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
 /**
  * Representative component prose modelled on real storefront `.meta.ts` sources: `introduction` is a

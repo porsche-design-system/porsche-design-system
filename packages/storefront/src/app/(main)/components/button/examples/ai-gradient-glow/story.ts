@@ -1,6 +1,6 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { Story } from '@porsche-design-system/story-generator';
 
 const style = `.custom-ai-orb {
   --p-button-bg: var(--p-color-canvas);

@@ -1,6 +1,6 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { Story } from '@porsche-design-system/story-generator';
 
 export const modelSignatureStoryMaskVideo: Story<'p-model-signature'> = {
   state: {

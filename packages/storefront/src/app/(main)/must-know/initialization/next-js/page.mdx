@@ -1,8 +1,8 @@
-import { Notification } from '@/components/common/Notification';
-import { TableOfContents } from '@/components/common/TableOfContents';
+import { Notification } from '@/components/mdx/content/Notification';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 
 export const metadata = {
-  title: 'Initialization: Next JS - Porsche Design System',
+  title: 'Initialization: Next JS - Must Know',
   description: 'Learn how to initialize and set up the Porsche Design System in your Next.js app.',
 };
 
@@ -30,8 +30,8 @@ In the example from above we didn't render any component, yet, so let's render a
 ### Server Side
 
 On the **server side** the components of the `@porsche-design-system/components-react/ssr` sub-package render static
-markup for something called <a href="https://web.dev/declarative-shadow-dom" target="_blank">Declarative Shadow DOM</a>
-which is converted into a real Shadow DOM by modern browsers without any JavaScript.
+markup for something called [Declarative Shadow DOM](https://web.dev/declarative-shadow-dom) which is converted into a
+real Shadow DOM by modern browsers without any JavaScript.
 
 To continue with the example, this is what the result that is returned by the server looks like.
 
@@ -76,7 +76,7 @@ By default, the network traffic looks something like this.
 
 ### Preloading font files
 
-By applying the [getFontLinks()](/partials/font-links/) partial we can preload the font assets. As a default, both
+By applying the [getFontLinks()](/partials/font-links) partial we can preload the font assets. As a default, both
 `regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
 ![Loading Behavior Next.js 03](assets/loading-behavior-nextjs-04.jpg)
@@ -87,7 +87,7 @@ which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
 
 ### Preloading component chunks
 
-The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links/)
+The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links)
 partial. Without any configuration it simply preloads the **core chunk**.
 
 ![Loading Behavior Next.js 04](assets/loading-behavior-nextjs-05.jpg)
@@ -104,7 +104,7 @@ getComponentChunkLinks({ components: ['button'] });
 
 Now, everything is preloaded in parallel while the Next.js app chunks takes the longest and are executed last.
 
-<Notification heading="Hint" heading-tag="h4" state="warning">
+<Notification heading="Hint" headingTag="h4" state="warning">
   Just preloading all component chunks on the page or even every chunk available should be avoided.
 
 Instead, the most performant but also more complicated approach would be to only preload the component chunks (and
@@ -114,7 +114,7 @@ fonts) that are located **above the fold** which means visible on page load with
 
 ### Early initialization
 
-This is where it may be interesting to apply the [getLoaderScript()](/partials/loader-script/) partial.
+This is where it may be interesting to apply the [getLoaderScript()](/partials/loader-script) partial.
 
 ![Loading Behavior Next.js 05](assets/loading-behavior-nextjs-07.jpg)
 

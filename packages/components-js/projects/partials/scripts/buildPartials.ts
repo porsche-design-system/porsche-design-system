@@ -8,8 +8,7 @@ import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
 import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
 
 const generateSharedCode = (): string => {
-  return `import type { JSX } from 'react';
-import type { Cdn, FormatWithCSP, FormatWithJS } from '../shared';
+  return `import type { Cdn, FormatWithCSP, FormatWithJS } from '../shared';
 import { throwIfRunInBrowser, getSha256Hash } from '../shared';
 
 const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL_COM}');
@@ -47,7 +46,10 @@ type PreloadOptions = {
 type PartialLink = {
   href: string;
   options?: PreloadOptions;
-}`;
+}
+
+// Structurally matches JSX.Element of React 18 and 19, so the typings don't require react to be installed
+type JSXElement = { type: any; props: any; key: string | null };`;
 };
 
 const generatePartials = async (): Promise<void> => {

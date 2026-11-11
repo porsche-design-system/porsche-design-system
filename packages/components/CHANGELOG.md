@@ -14,6 +14,86 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Knowledge Skill`: two form search patterns – search combobox option list (combobox with a listbox of choices) and
+  search combobox link list (combobox with a dialog of links) – composed from `p-input-search` and `p-popover`
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Link Pure`, `Button Pure`: `--p-link-pure-px`, `--p-link-pure-py`, `--p-link-pure-hover-inset-x`,
+  `--p-link-pure-hover-inset-y`, `--p-button-pure-px`, `--p-button-pure-py`, `--p-button-pure-hover-inset-x` and
+  `--p-button-pure-hover-inset-y` CSS variables to override the horizontal and vertical padding of the clickable area
+  and the inset of the hover, active and focus indicator.
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Popover`: `arrow` prop to drop the arrow and the extra offset it adds when set to `false`.
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Input Search`: `aria` accepts `aria-activedescendant`, and `aria-controls` and `aria-activedescendant` accept an
+  element (or, for `aria-controls`, a list of elements) so the relationship reaches the input across the shadow
+  boundary. ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+
+### Changed
+
+- **Angular**: `@angular/forms` is now a peer dependency, because the form components import it
+  ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- `Knowledge Skill`: instructs the agent to load `references/components/<tag>/accessibility.md` before generating a
+  component and to load the `accessible-frontend` APM skill for page-level WCAG 2.2 AA and EN 301 549 composition when
+  installed ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
+
+### Fixed
+
+- **Partials**: type checking failed with `Cannot find module 'react'` in projects without React and with `skipLibCheck`
+  disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+
+## [4.10.1] - 2026-10-23
+
+### Fixed
+
+- **TypeScript**: type checking failed with `Cannot find module '@porsche-design-system/components-manager-core'` in
+  projects with `skipLibCheck` disabled, since v4.7.0
+  ([#4808](https://github.com/porsche-design-system/porsche-design-system/pull/4808))
+
+## [4.10.0] - 2026-10-22
+
+## [4.10.0-rc.0] - 2026-10-22
+
+### Added
+
+- Figma Code Connect: Figma Dev Mode and the Figma MCP server show PDS code (Web Components, React, Angular, Vue) for
+  the components and icons of the Porsche Web Design System library, published with every release
+  ([#4747](https://github.com/porsche-design-system/porsche-design-system/pull/4747))
+
+## [4.9.0] - 2026-10-21
+
+## [4.9.0-rc.0] - 2026-10-20
+
+### Added
+
+- `Knowledge Skill`: the guideline for creating custom icons in the `p-icon` reference
+  ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+
+### Changed
+
+- **Global Styles**: the default `color-scheme` on `:root` is now `only light` instead of `light`. This prevents
+  browsers with an automatic dark mode (e.g. Chrome on Android, Samsung Internet) from recoloring pages that use the
+  default light theme, which made icons practically invisible. The PDS light theme looks unchanged, and `.scheme-*`
+  classes behave as before. To allow automatic darkening again, set `.scheme-light` on the `<html>` element.
+  ([#4783](https://github.com/porsche-design-system/porsche-design-system/pull/4783))
+- **React SSR**: components from `@porsche-design-system/components-react/ssr` cache their styles per combination of
+  props instead of generating them on every server render, which reduces the server's CPU time per render. The rendered
+  markup is unchanged. ([#4788](https://github.com/porsche-design-system/porsche-design-system/pull/4788))
+
+### Fixed
+
+- `Knowledge Skill`: links to Storefront pages the skill doesn't include led to an error page instead of the
+  documentation; they now open the Storefront of the skill's version
+  ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
+- `Button`, `Drilldown`, `Link`, `Multi Select`, `Segmented Control`, `Select`, `Tabs`, `Tabs Bar`: colors could lose contrast in high contrast mode, including hover, highlighted and selected states.
+  ([#4775](https://github.com/porsche-design-system/porsche-design-system/pull/4775))
+- `Multi Select Option`: slotted content only took up the width of its own content, so it could not fill the option,
+  e.g. with `w-full`, and right-aligned elements were not aligned to the right edge
+  ([#4787](https://github.com/porsche-design-system/porsche-design-system/pull/4787))
+
 ## [4.8.0] - 2026-10-02
 
 ## [4.8.0-rc.1] - 2026-10-01

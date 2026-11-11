@@ -1,7 +1,6 @@
 'use client';
 
-import type { Story } from '@/models/story';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
+import type { HTMLTagOrComponent, Story } from '@porsche-design-system/story-generator';
 
 export const tabsBarStoryLinks: Story<'p-tabs-bar'> = {
   generator: () => [

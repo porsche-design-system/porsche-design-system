@@ -1,6 +1,6 @@
 'use client';
 
-import type { SlotStories, Story } from '@/models/story';
+import type { SlotStories, Story } from '@porsche-design-system/story-generator';
 
 export const inputNumberSlotStories: SlotStories<'p-input-number'> = {
   start: {

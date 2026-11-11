@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { FRAMEWORKS, frameworkSuffixMap } from '@porsche-design-system/shared';
 import type { SkillId } from '@skills/registry';
-import { FRAMEWORKS, stagedSkillDir } from '@skills/shared/skillTree';
+import { stagedSkillDir } from '@skills/shared/skillTree';
 import { listSkillTreeFiles } from '@skills/shared/skillTreeFiles';
 import { localPorscheDesignSystemVersion } from '@skills/shared/version';
 import { describe, expect, it } from 'vitest';
@@ -36,7 +37,7 @@ const normalizeVersion = (content: string): string => content.split(localPorsche
 export const describeSkillTreeDrift = (skillId: SkillId): void => {
   describe(`pds-${skillId} skill tree content`, () => {
     for (const framework of FRAMEWORKS) {
-      it(`matches the staged ${framework} content snapshots`, () => {
+      it(`matches the staged ${frameworkSuffixMap[framework]} content snapshots`, () => {
         const relativeRoot = stagedSkillDir(skillId, framework);
         const root = path.join(REPO_ROOT, relativeRoot);
         expect(fs.existsSync(root), `${relativeRoot} is missing — run \`npm run build:skills\``).toBe(true);

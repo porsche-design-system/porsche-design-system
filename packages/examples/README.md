@@ -111,6 +111,7 @@ src/
 ├── patterns/
 │   ├── feedback/{inline,dialog}/index.page.tsx
 │   ├── footer/index.page.tsx
+│   ├── forms/{search-combobox-option-list,search-combobox-link-list}/index.page.tsx
 │   ├── header/{overlay,stacked}/index.page.tsx
 │   └── popover/{local-market-switch,priority-navigation,feature-tour}/index.page.tsx
 └── style.css                 # Tailwind entry: theme, global element defaults – copied next to every page
@@ -352,4 +353,4 @@ A page is found by its file name, but a few lists are still kept by hand. Beside
 - Write one spec per suite – `tests/{e2e,a11y,vrt}/specs/<category>/<page>.<suite>.ts` (the page folder with `/` as `-`:
   `patterns/header-overlay.e2e.ts`). The `coverage.*` specs fail without them. Create the VRT baselines in Docker.
 - Show it in the storefront: a `page.mdx` with `<ExampleViewer example="<category>/<page>" />` and an entry in
-  `packages/storefront/src/sitemap.tsx`.
+  `packages/storefront/src/sitemap.ts`.

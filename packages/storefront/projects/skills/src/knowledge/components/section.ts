@@ -1,12 +1,12 @@
+import type { Framework } from '@porsche-design-system/shared';
 import { escapeCell, markdownTable } from '../../shared/markdown';
-import type { Framework } from '../../shared/skillTree';
 import type { ComponentRosterEntry } from './reference';
 
 /**
  * Framework wrappers expose component metadata through the JS peer.
  */
 export const rawMetaReference = (framework: Framework): string =>
-  framework === 'js' ? '../../meta' : '@porsche-design-system/components-js/meta';
+  framework === 'vanilla-js' ? '../../meta' : '@porsche-design-system/components-js/meta';
 
 /**
  * Maps framework syntax to the custom-element names used by shared component references.
@@ -34,7 +34,7 @@ const FRAMEWORK_SYNTAX: Record<Framework, string> = {
     '- Listen to events with `(event)` — the `dismiss` event is `(dismiss)="onDismiss()"`.',
     '- Place a child into a named slot with the `slot="..."` attribute.',
   ].join('\n'),
-  js: [
+  'vanilla-js': [
     '**Framework syntax:**',
     '- Use the **custom-element tags** directly in HTML: `<p-button>`, `<p-input-text>`.',
     '- Set props as attributes (`variant="secondary"`) or as DOM properties for non-string values.',
@@ -55,7 +55,8 @@ export const renderComponentsSection = (framework: Framework, roster: readonly C
   return [
     `The Porsche Design System ships ${roster.length} components. Open a component's reference for its ` +
       'props, slots, events, CSS variables and examples before using it. Each reference\'s "Examples" ' +
-      'table links runnable, framework-specific example files under `references/components/<tag>/examples/`.',
+      'table links runnable, framework-specific example files under `references/components/<tag>/examples/`. ' +
+      'Before generating a component, also load `references/components/<tag>/accessibility.md` when that file exists.',
     '',
     `\`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow ` +
       `\`component-meta\` (raw data at \`${rawMetaReference(framework)}\`).`,

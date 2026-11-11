@@ -27,7 +27,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -60,7 +60,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -93,7 +93,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -126,7 +126,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -159,7 +159,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -192,7 +192,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -225,7 +225,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -258,7 +258,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -291,7 +291,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -324,7 +324,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -357,7 +357,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -390,7 +390,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -423,7 +423,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -456,7 +456,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -489,7 +489,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -522,7 +522,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -555,7 +555,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -588,7 +588,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -621,7 +621,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -654,7 +654,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -687,7 +687,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -720,7 +720,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -753,7 +753,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -786,7 +786,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -822,7 +822,7 @@ img:dir(rtl) {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "
@@ -855,7 +855,7 @@ img {
 }
 @media(forced-colors:active) {
   img {
-    background: CanvasText;
+    background: var(--_p-icon-a,CanvasText);
   }
 }
 "

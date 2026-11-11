@@ -1,0 +1,1 @@
+export { TailwindUtilitiesTable } from './TailwindUtilitiesTable';

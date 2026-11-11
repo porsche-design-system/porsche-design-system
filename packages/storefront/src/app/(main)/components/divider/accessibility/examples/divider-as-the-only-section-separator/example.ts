@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const dividerAsTheOnlySectionSeparatorA11yExample = {
   name: 'Divider as the only section separator',

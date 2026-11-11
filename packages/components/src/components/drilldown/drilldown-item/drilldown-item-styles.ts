@@ -12,6 +12,7 @@ import {
 } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getAnimation,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
@@ -214,6 +215,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           display: 'contents',
         }),
       },
+      ...forcedColorsMediaQuery({
+        background: 'Canvas',
+      }),
     },
     button: {
       ...((isPrimary || isCascade) && {

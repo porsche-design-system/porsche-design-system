@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const headingTagUsedForStylingOnlyA11yExample = {
   name: 'Heading tag used for styling only',

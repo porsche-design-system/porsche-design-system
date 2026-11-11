@@ -1,7 +1,7 @@
 'use client';
 
+import type { Story } from '@porsche-design-system/story-generator';
 import { modalSlotStories } from '@/app/(main)/components/modal/configurator/story';
-import type { Story } from '@/models/story';
 
 export const modalStoryScrollable: Story<'p-modal'> = {
   state: {

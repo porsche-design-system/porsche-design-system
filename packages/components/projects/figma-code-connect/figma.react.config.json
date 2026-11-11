@@ -1,0 +1,7 @@
+{
+  "codeConnect": {
+    "include": ["generated/templates/**/*.react.figma.ts", "generated/icons/p-icon.react.figma.batch.json"],
+    "label": "React",
+    "language": "jsx"
+  }
+}

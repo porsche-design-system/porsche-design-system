@@ -11,9 +11,11 @@ const nextConfig: NextConfig = {
   // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
   //skipTrailingSlashRedirect: true,
   distDir: 'dist',
+  // `next dev` would otherwise write its own rules block into the hand-maintained AGENTS.md whenever an agent runs it.
+  agentRules: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // The skill registry is exported as raw TypeScript, so it has to be compiled by the storefront build.
-  transpilePackages: ['@porsche-design-system/skills'],
+  transpilePackages: ['@porsche-design-system/skills', '@porsche-design-system/story-generator'],
   images: {
     unoptimized: true,
   },

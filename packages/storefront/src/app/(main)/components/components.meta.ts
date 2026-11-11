@@ -1,3 +1,4 @@
+import type { HTMLTagOrComponent } from '@porsche-design-system/story-generator';
 import { accordionMeta } from '@/app/(main)/components/accordion/accordion.meta';
 import { aiTagMeta } from '@/app/(main)/components/ai-tag/ai-tag.meta';
 import { bannerMeta } from '@/app/(main)/components/banner/banner.meta';
@@ -57,7 +58,6 @@ import { textareaMeta } from '@/app/(main)/components/textarea/textarea.meta';
 import { toastMeta } from '@/app/(main)/components/toast/toast.meta';
 import { wordmarkMeta } from '@/app/(main)/components/wordmark/wordmark.meta';
 import type { ComponentDocsMeta } from '@/models/meta';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
 /**
  * Aggregated documentation meta for all components.

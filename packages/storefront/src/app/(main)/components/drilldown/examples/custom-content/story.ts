@@ -1,7 +1,6 @@
 'use client';
 
-import type { Story } from '@/models/story';
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+import type { ElementConfig, HTMLTagOrComponent, Story } from '@porsche-design-system/story-generator';
 
 export const drilldownStoryCustomContent: Story<'p-drilldown'> = {
   state: {

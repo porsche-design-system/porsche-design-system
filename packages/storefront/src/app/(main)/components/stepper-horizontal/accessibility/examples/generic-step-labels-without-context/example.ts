@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const genericStepLabelsWithoutContextA11yExample = {
   name: 'Generic step labels without context',

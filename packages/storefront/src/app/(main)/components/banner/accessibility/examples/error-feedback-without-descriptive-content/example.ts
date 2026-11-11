@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const errorFeedbackWithoutDescriptiveContentA11yExample = {
   name: 'Error feedback without descriptive content',

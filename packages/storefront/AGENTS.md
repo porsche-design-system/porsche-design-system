@@ -10,7 +10,9 @@ accessible usage of PDS components and must comply with **WCAG 2.2 AA**.
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with App Router
+- **Framework**: Next.js 16 with App Router. Its APIs and conventions may differ from what you know: read the guide in
+  `node_modules/next/dist/docs/` (hoisted to the repository root) before changing Next-specific code.
+  `agentRules: false` in `next.config.ts` keeps `next dev` from writing its own rules block into this file.
 - **Components**: `@porsche-design-system/components-react/ssr`
 - **Styling**: Tailwind CSS
 - **Content**: MDX for documentation pages
@@ -28,6 +30,10 @@ npm run start:storefront
 
 # Build storefront
 npm run build:storefront
+
+# Typecheck the Storefront and its projects (skills, stackblitz, story-generator), and their tests
+npm run typecheck:storefront
+npm run typecheck:storefront:tests
 
 # Run unit tests
 npm run test:unit:storefront
@@ -96,32 +102,94 @@ button:focus-visible {
 | **Code examples** | Must be accessible by default (correct labels, focus, keyboard behavior) |
 | **Headings**      | Maintain logical heading order (no skipped levels)                       |
 
+Every page that renders content exports `metadata` with a `title` and a `description`. The title names the page after
+its place in the sitemap, most specific first, and the root layout appends ` - Porsche Design System`:
+`Button: Usage - Components` for a tab and `Blur - Tokens` for a page. `tests/unit/specs/sitemap.spec.ts` fails when a
+page's title differs, and its error lists the expected one.
+
+### Links and anchors
+
+Links are written in one form and resolved for each output: `next/link` adds the base path and the trailing slash in the
+Storefront, and the skills generator turns the same routes into references or Storefront URLs.
+
+| Link to       | Write                                                     | Notes                                                                                            |
+| ------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| A page        | `[Button](/components/button/usage)`                      | A route of the sitemap, without a trailing slash. In TSX, use `DocsLink`, typed with `DocsHref`. |
+| A section     | `[Do](/components/button/usage#do)` or `[Setup](#setup)`  | The anchor of an `##` heading on that page, from `getHeadingAnchorId()` (GitHub-style slugs).    |
+| A file        | `[Compulsory Statement](assets/compulsory-statement.txt)` | Relative, from `public/`; the `<base>` of the root layout adds the base path.                    |
+| Anything else | `[MDN](https://developer.mozilla.org)`                    | With its scheme.                                                                                 |
+
+- Use Markdown links in MDX, and `DocsLink` in JSX and TSX, for internal and external links alike. `next/link` is off
+  limits: Biome rejects importing it in TSX, and the link test in MDX. Elements that render their own `<a>` (`PLink`,
+  `PLinkPure`, `PLinkTile`, `<a>`) skip the base path; for a route, wrap a `DocsLink` in them, or give them a relative
+  path with a trailing slash where they can't take one: `components/introduction/`.
+- `DocsLink` also takes an anchor on the current page (`#do`) and adds the current path to it: a bare `#do` resolves
+  against the `<base>` of the root layout, which leads to the home page.
+- `DocsRoute` in `src/sitemap.ts` is the type of every route; a link to a page that doesn't exist fails the typecheck in
+  TSX. A category or a page with tabs leads to its first entry (`getLandingPath()`), and its `page.tsx` redirects there.
+- MDX isn't typechecked, so `tests/unit/specs/links.spec.ts` checks every link in it: routes, trailing slashes, anchors,
+  files, tables of contents, unique heading anchors and redirects.
+
+### MDX components
+
+Every component MDX imports lives in `src/components/mdx/`, in a topic folder by how pages use it (`structure`,
+`content`, `framework`, `playground`, `examples`, `reference`, `widgets`), one folder per component. MDX imports
+it from that folder: `import { Notification } from '@/components/mdx/content/Notification';`. The
+[`README.md`](src/components/mdx/README.md) is the inventory: what each component is for, its planned Markdown output
+and its dependencies on the Storefront. It is the migration list for the dual-target registry (#4142).
+
+- A new component gets a folder in its topic with a module of the same name, an `index.ts` and a row in the inventory.
+  `tests/unit/specs/mdxComponents.spec.ts` checks them, and that a new Storefront dependency is added on purpose.
+- Write Markdown wherever it can express something: links, inline code, bold. Use an MDX component instead of a PDS
+  component or raw HTML, e.g. `DependencyList` instead of a row of `PTag`s. `tests/unit/specs/mdxPages.spec.ts`
+  checks this, unused imports, tables of contents (from two `##` sections) and notification heading levels.
+- Framework-aware content (`FrameworkCodeBlock`, `FrameworkLink`, `FrameworkName`, `Notification` with
+  `frameworks`) is resolved for every framework on the server; `framework/FrameworkContent` renders the selected one.
+
 ## File Structure
 
 ```
 src/
 ├── app/                    # Next.js App Router pages
-│   ├── components/         # Component documentation pages
-│   ├── must-know/          # Guidelines (accessibility, etc.)
-│   └── ...
+│   └── (main)/             # Route group
+│       ├── components/     # Component documentation pages
+│       ├── must-know/      # Guidelines (accessibility, etc.)
+│       └── ...
 ├── components/             # React components for the site
+│   ├── mdx/                # Components MDX imports, by topic, one folder each, with an inventory
+│   └── common/             # Storefront chrome: navigation, tabs, selects, DocsLink
 ├── lib/                    # Utilities and helpers
 └── styles/                 # Global styles
+projects/
+├── skills/                 # Agent skills generator (@porsche-design-system/skills)
+├── stackblitz/             # StackBlitz projects (@porsche-design-system/stackblitz)
+└── story-generator/        # Story types and per-framework markup generation (@porsche-design-system/story-generator)
 ```
 
 ## Generating Configurator and Example Stories
 
-When adding or updating documentation pages for a component in `src/app/components/{component}/`, keep the configurator
-and examples pages driven by a colocated `{component}.stories.ts` file whenever possible.
+When adding or updating documentation pages for a component in `src/app/(main)/components/{component}/`, keep the
+configurator and examples pages driven by a colocated `{component}.meta.ts` file that aggregates the component's docs.
+
+### Meta file rules
+
+- Create or extend `src/app/(main)/components/{component}/{component}.meta.ts`. Export `{component}Meta` and close it
+  with `satisfies ComponentDocsMeta<'p-component'>` from `@/models/meta`, so the keys of `examples` stay narrow
+  literals.
+- `configurator.story` is the `Story<'p-component'>` exported by `configurator/story.ts`. Add `configurator.slotStories`
+  only when slot content must be selectable in the configurator.
+- Each entry of `examples` has a `name`, a `description` imported from `examples/{example-name}/example.mdx`, and a
+  `kind`: `'story'` with a `story` from `examples/{example-name}/story.ts`, `'example'` with an `example` from
+  `@porsche-design-system/shared/examples`, or `'description'` for prose only.
+- Register the meta in `src/app/(main)/components/components.meta.ts`, the entry point the skill build reads.
 
 ### Story file rules
 
-- Create or extend `src/app/components/{component}/{component}.stories.ts`.
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
-- Export `Story<'p-component'>` objects for configurator-ready examples.
-- Export `SlotStories<'p-component'>` when slot content must be selectable in the configurator.
-- Put additional story variants for the examples page in the same story file using clear names such as
-  `{component}Story`, `{component}StoryGrid`, or `{component}StoryCustomStyling`.
+- Export `Story<'p-component'>` objects. `Story`, `SlotStories`, `ElementConfig` and the accessibility example types
+  come from `@porsche-design-system/story-generator`, which also generates a story's markup for every framework
+  (`getStoryMarkup`, `wrapCode`) for the Storefront and the skills, and renders it live with `<StoryPreview>` from
+  `@porsche-design-system/story-generator/react`.
 - For controlled components, model interactivity with `events` in the returned `ElementConfig` instead of embedding
   ad-hoc JavaScript in MDX.
 
@@ -130,32 +198,47 @@ and examples pages driven by a colocated `{component}.stories.ts` file whenever 
 Use the configurator page when the component should expose a playground UI.
 
 ```mdx
-import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
-import { Configurator } from '@/components/playground/Configurator';
+import { Configurator } from '@/components/mdx/playground/Configurator';
+import { buttonMeta } from '@/app/(main)/components/button/button.meta';
 
-<Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
+<buttonMeta.introduction />
+
+<Configurator tagName="p-button" story={buttonMeta.configurator.story} />
 ```
 
 - Keep `export const metadata = { ... }` in the page.
 - Keep the page heading with `ComponentStatus`.
-- Pass `slotStories` only when the component actually has configurable slots.
-- Reuse the base `{component}Story` export for the configurator; avoid defining inline configs inside the MDX page.
+- Pass `slotStories={buttonMeta.configurator.slotStories}` only when the component actually has configurable slots.
+- Reach the introduction and the story through the meta object; avoid defining inline configs inside the MDX page.
 
 ### Examples page recipe
 
 Use the examples page to showcase curated use cases:
 
-- `ComponentStory`: preferred for examples that can be expressed with the configurator story system.
-- `ComponentExample`: required for advanced examples that need custom logic or framework-specific source files.
+- `ComponentStory`: preferred for examples that can be expressed with the configurator story system (`kind: 'story'`).
+- `ComponentExample`: required for advanced examples that need custom logic or framework-specific source files
+  (`kind: 'example'`).
 
 ```mdx
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { componentStoryAdvanced } from '@/app/components/component/component.stories';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
+import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
+import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
+import { buttonMeta } from '@/app/(main)/components/button/button.meta';
+
+## {buttonMeta.examples.form.name}
+
+<buttonMeta.examples.form.description />
+
+<ComponentExample codeSample={buttonMeta.examples.form.example} />
+
+## {buttonMeta.examples.aiDropShadow.name}
+
+<buttonMeta.examples.aiDropShadow.description />
+
+<ComponentStory story={buttonMeta.examples.aiDropShadow.story} />
 ```
 
-- Put story-backed examples in `{component}.stories.ts` and render them with `ComponentStory`.
+- Render story-backed examples with `ComponentStory` and shared code samples with `ComponentExample`, both read off the
+  meta object.
 - Use `ComponentExample` only after registering the cross-framework example in
   `packages/shared/scripts/generateCodeExamples.ts` and generating the shared export.
 - Preserve `metadata` and `ComponentStatus` imports on the page.
@@ -177,10 +260,10 @@ When you add new interactive examples or components:
 
 Follow the internal accessibility guidance pages:
 
-- [`src/app/must-know/accessibility/introduction/page.mdx`](src/app/must-know/accessibility/introduction/page.mdx) — PDS
-  accessibility approach and testing stages
-- [`src/app/must-know/accessibility/dos-and-donts/page.mdx`](src/app/must-know/accessibility/dos-and-donts/page.mdx) —
-  practical integration do's and don'ts for consumers
+- [`src/app/(main)/must-know/accessibility/introduction/page.mdx`](<src/app/(main)/must-know/accessibility/introduction/page.mdx>)
+  — PDS accessibility approach and testing stages
+- [`src/app/(main)/must-know/accessibility/dos-and-donts/page.mdx`](<src/app/(main)/must-know/accessibility/dos-and-donts/page.mdx>)
+  — practical integration do's and don'ts for consumers
 
 It documents expected testing stages:
 
@@ -254,7 +337,7 @@ export const checkboxMeta = {
 Define the complete pair in `accessibility/examples/hidden-label-without-accessible-name/example.ts`:
 
 ```ts
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const hiddenLabelWithoutAccessibleNameA11yExample = {
   name: 'Hidden label without accessible name',

@@ -2,6 +2,7 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { Page, PlaywrightWorkerArgs, TestInfo } from '@playwright/test';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
 import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
 
 /**
@@ -11,7 +12,7 @@ import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
  * to be pinned down is everything that can differ between two runs: the components have to be upgraded, the fonts
  * loaded, the hero video parked on a fixed frame and whatever the page focused on load released again.
  *
- * The e2e suite reuses only the hermetic part – `stubExternalRequests()` and `waitForComponentsReady()` – because it
+ * The e2e suite reuses only the hermetic part – `stubExternalRequests()` and `waitForComponentsHydrated()` – because it
  * tests the video and the focus this setup pins down.
  */
 
@@ -94,28 +95,6 @@ export const stubExternalRequests = async (page: Page): Promise<void> => {
     } else {
       await route.abort();
     }
-  });
-};
-
-/**
- * Waits until every Porsche Design System element of the page has upgraded.
- *
- * The examples load the components through the **loader partial**, which deliberately ships no `componentsReady()` –
- * that helper belongs to the JS wrapper the other packages test against. What the page offers instead is what the
- * components themselves put into the DOM: a custom element is registered (`:defined`) and Stencil marks the upgraded
- * element with the `hydrated` class. Both have to hold, because `src/style.css` hides undefined elements and an
- * element without that class has not rendered its shadow root yet.
- */
-export const waitForComponentsReady = async (page: Page): Promise<void> => {
-  await page.waitForFunction(() => {
-    const pdsElements = Array.from(document.querySelectorAll('*')).filter((element) =>
-      element.tagName.startsWith('P-')
-    );
-
-    return (
-      document.querySelectorAll(':not(:defined)').length === 0 &&
-      pdsElements.every((element) => element.classList.contains('hydrated'))
-    );
   });
 };
 
@@ -258,7 +237,7 @@ export const setupExamplePage = async (
 
   await page.goto(url);
 
-  await waitForComponentsReady(page);
+  await waitForComponentsHydrated(page);
   await waitForFonts(page);
   // A lazily loaded image below the fold only starts loading once it is scrolled near, so it would never complete –
   // while a full page capture shows it. Switching it to eager is what scrolling through the page would do.

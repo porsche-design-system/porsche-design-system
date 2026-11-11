@@ -8,11 +8,11 @@ import {
   type PSelectProps,
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
+import { type ColorScheme, colorSchemeNameMap } from '@porsche-design-system/shared';
 import React from 'react';
-import type { StorefrontColorScheme } from '@/models/colorScheme';
 
 type ThemeSelectProps = {
-  value: StorefrontColorScheme;
+  value: ColorScheme;
   onThemeChange: (event: CustomEvent<SelectChangeEventDetail>) => void;
 } & Partial<PSelectProps>;
 
@@ -24,12 +24,6 @@ export const ThemeSelect = ({
   hideLabel = false,
   ...rest
 }: ThemeSelectProps) => {
-  const themeMap: Record<StorefrontColorScheme, string> = {
-    'scheme-light': 'Light',
-    'scheme-dark': 'Dark',
-    'scheme-light-dark': 'Light Dark',
-  };
-
   return (
     <PSelect name={name} value={value} onChange={onThemeChange} hideLabel={hideLabel} {...rest}>
       <span slot="label">{label}</span>
@@ -46,7 +40,7 @@ export const ThemeSelect = ({
         CSS function. Set the theme via the CSS <code>color-scheme</code> property: <code>light</code> for light mode,{' '}
         <code>dark</code> for dark mode, or <code>light dark</code> to follow the user's system preference.
       </PPopover>
-      {Object.entries(themeMap).map(([theme, name]) => (
+      {Object.entries(colorSchemeNameMap).map(([theme, name]) => (
         <PSelectOption key={theme} value={theme}>
           {name}
         </PSelectOption>

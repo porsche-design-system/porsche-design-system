@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import { writeComponentExamples } from '@skills/knowledge/components/examples';
-import { FRAMEWORKS, SkillTree } from '@skills/shared/skillTree';
+import { SkillTree } from '@skills/shared/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { componentExamplesMeta as metaMap } from '../../../data/knowledge/componentExamplesFixtures';
 
@@ -38,7 +39,7 @@ describe('component examples generator', () => {
   });
 
   it('references description-only entries as prose without emitting a file', () => {
-    const tree = new SkillTree(root, 'js');
+    const tree = new SkillTree(root, 'vanilla-js');
     tree.reset();
     const table = writeComponentExamples(tree, 'p-button', metaMap['p-button']);
 

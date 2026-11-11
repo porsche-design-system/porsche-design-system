@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { examplesSkill } from '@porsche-design-system/examples/skill';
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import {
   getPackageSkillRouteReferences,
   renderExamplesNote,
@@ -11,7 +12,7 @@ import {
   renderTokensSection,
   writePackageSkillReferences,
 } from '@skills/knowledge/packageSkills';
-import { FRAMEWORKS, SkillTree } from '@skills/shared/skillTree';
+import { SkillTree } from '@skills/shared/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 const routeReferences = {
@@ -30,7 +31,7 @@ describe('package skill registry', () => {
 
   beforeEach(() => {
     root = fs.mkdtempSync(path.join(os.tmpdir(), 'package-skills-'));
-    tree = new SkillTree(root, 'js');
+    tree = new SkillTree(root, 'vanilla-js');
     tree.reset();
   });
 

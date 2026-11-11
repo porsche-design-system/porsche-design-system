@@ -2,14 +2,19 @@ import path from 'node:path';
 import { emotionSkill } from '@porsche-design-system/emotion/skill';
 import { examplesSkill } from '@porsche-design-system/examples/skill';
 import { scssSkill } from '@porsche-design-system/scss/skill';
-import type { PackageSkill } from '@porsche-design-system/shared';
+import {
+  type Framework,
+  frameworkNameMap,
+  getWrapperPackageName,
+  type PackageSkill,
+} from '@porsche-design-system/shared';
 import { stylesheetsSkill } from '@porsche-design-system/stylesheets/skill';
 import { tailwindcssSkill } from '@porsche-design-system/tailwindcss/skill';
 import { tokensSkill } from '@porsche-design-system/tokens-meta/skill';
 import { vanillaExtractSkill } from '@porsche-design-system/vanilla-extract/skill';
 import { type RouteReferences, rewriteDocLinks } from '../shared/links';
 import { escapeCell, markdownTable } from '../shared/markdown';
-import type { Framework, SkillTree } from '../shared/skillTree';
+import type { SkillTree } from '../shared/skillTree';
 
 /** Registers package-owned skill fragments and mounts them into each wrapper's skill tree. */
 
@@ -17,15 +22,13 @@ export const rawTailwindcssReference = (): string => '../../tailwindcss/index.cs
 
 /** Only the js wrapper ships the real SCSS partials; framework wrappers expose re-export shims. */
 export const rawScssReference = (framework: Framework): string =>
-  framework === 'js' ? '../../scss' : '@porsche-design-system/components-js/scss';
+  framework === 'vanilla-js' ? '../../scss' : '@porsche-design-system/components-js/scss';
 
 type PackageSkillRegistration = {
   skill: PackageSkill;
   mount: '' | 'styles';
   rawReference?: (framework: Framework) => string;
 };
-
-const FRAMEWORK_NAMES: Record<Exclude<Framework, 'js'>, string> = { angular: 'Angular', react: 'React', vue: 'Vue' };
 
 /**
  * The examples are vanilla HTML and JavaScript, while every other part of a framework's skill is written in its
@@ -34,17 +37,17 @@ const FRAMEWORK_NAMES: Record<Exclude<Framework, 'js'>, string> = { angular: 'An
  * example is read, so it is not repeated in the references.
  */
 export const renderExamplesNote = (framework: Framework): string =>
-  framework === 'js'
+  framework === 'vanilla-js'
     ? '> **Vanilla HTML and JavaScript.** The examples use the PDS web components the way ' +
       '`@porsche-design-system/components-js` does, so their markup and script fit a vanilla JavaScript project as ' +
       'they are.'
-    : `> **Convert to ${FRAMEWORK_NAMES[framework]} before use.** The examples are written in vanilla HTML and ` +
-      `JavaScript with the PDS web components, not in ${FRAMEWORK_NAMES[framework]}. Never copy them verbatim: ` +
-      `rebuild them with the components of \`@porsche-design-system/components-${framework}\` and the ` +
-      `conventions of ${FRAMEWORK_NAMES[framework]} (see the framework syntax in SKILL.md), and move the behaviour ` +
-      `of the script into ${FRAMEWORK_NAMES[framework]} state and event handlers. Import the stylesheet entries of ` +
-      `that package as well – \`@porsche-design-system/components-${framework}/index.css\` and ` +
-      `\`@porsche-design-system/components-${framework}/tailwindcss\` instead of the \`components-js\` ones. Keep ` +
+    : `> **Convert to ${frameworkNameMap[framework]} before use.** The examples are written in vanilla HTML and ` +
+      `JavaScript with the PDS web components, not in ${frameworkNameMap[framework]}. Never copy them verbatim: ` +
+      `rebuild them with the components of \`${getWrapperPackageName(framework)}\` and the ` +
+      `conventions of ${frameworkNameMap[framework]} (see the framework syntax in SKILL.md), and move the behaviour ` +
+      `of the script into ${frameworkNameMap[framework]} state and event handlers. Import the stylesheet entries of ` +
+      `that package as well – \`${getWrapperPackageName(framework)}/index.css\` and ` +
+      `\`${getWrapperPackageName(framework)}/tailwindcss\` instead of the \`components-js\` ones. Keep ` +
       'the components, props, layout and styling they show: that usage is how the pattern is meant to be built.';
 
 const STYLING_SKILLS: readonly PackageSkillRegistration[] = [
@@ -98,7 +101,7 @@ export const writePackageSkillReferences = (tree: SkillTree, routeReferences: Ro
 const THEME_INIT_TARGET: Record<Framework, string> = {
   react: '`PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`)',
   vue: '`PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`)',
-  js: 'the `load()` initializer (it takes only `prefix` and `cdn`)',
+  'vanilla-js': 'the `load()` initializer (it takes only `prefix` and `cdn`)',
   angular: '`PorscheDesignSystemModule.load()` (it takes only `prefix` and `cdn`)',
 };
 

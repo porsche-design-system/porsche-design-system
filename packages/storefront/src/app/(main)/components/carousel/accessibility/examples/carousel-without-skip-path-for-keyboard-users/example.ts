@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const carouselWithoutSkipPathForKeyboardUsersA11yExample = {
   name: 'Carousel without skip path for keyboard users',

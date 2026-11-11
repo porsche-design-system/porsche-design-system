@@ -1,11 +1,11 @@
-import { Notification } from '@/components/common/Notification';
+import { Notification } from '@/components/mdx/content/Notification';
 
 The `p-radio-group` component is a versatile custom form element that enables the selection of a single option.
 
-<Notification heading="Attention" heading-tag="h2" state="warning">
-  The <code>blur</code> event is emitted whenever the focused <code>p-radio-group-option</code> changes — not only when
-  the entire <code>p-radio-group</code> loses focus. This means that switching between options within the same group
-  will also trigger a <code>blur</code> event for the previously focused option.
+<Notification heading="Attention" headingTag="h2" state="warning">
+  The `blur` event is emitted whenever the focused `p-radio-group-option` changes — not only when the entire
+  `p-radio-group` loses focus. This means that switching between options within the same group will also trigger a
+  `blur` event for the previously focused option.
 </Notification>
 
 Options are slotted using the `p-radio-group-option` component. Each option needs an assigned `string` or `number`

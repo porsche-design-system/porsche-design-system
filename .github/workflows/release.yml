@@ -38,6 +38,12 @@ on:
       slack-release-channel-id:
         description: 'Slack channel the release announcement is posted to. A secret rather than a literal so the channel can be changed without a pull request.'
         required: false
+      figma-access-token:
+        description: 'Figma token that publishes the Code Connect records. Not required: a missing secret must not stop a release, it fails the Figma Code Connect job instead.'
+        required: false
+      slack-design-channel-id:
+        description: 'Slack channel that gets the changes design must make in Figma for the release. Not required: a missing secret must not stop a release, it fails the Figma Code Connect job instead when there is a change to send.'
+        required: false
 
 # Default to the least privilege; jobs that need more declare it explicitly.
 permissions:
@@ -65,7 +71,7 @@ jobs:
       is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
       is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 2
       - uses: ./.github/actions/install
@@ -118,7 +124,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -145,7 +151,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -172,7 +178,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -199,7 +205,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -238,7 +244,7 @@ jobs:
       # The action exits 0 for the no-op cases too, so a green job does not mean a release exists.
       created: ${{ steps.create_release.outputs.created }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: 'Create GitHub Release'
         id: create_release
         uses: ./.github/actions/create-github-release
@@ -252,8 +258,8 @@ jobs:
       - github-release
       - storefront-exact-version
       - storefront-major-version
-      - storefront-exact-version-algolia
-      - storefront-major-version-algolia
+      # Waited for, never required: the announcement follows the Code Connect publish, whatever its result.
+      - figma-code-connect
     # A pre-release, an already-released tag and a draft all report false, and a failed
     # `github-release` leaves this empty.
     # A successful major job may intentionally leave a newer release in place.
@@ -262,19 +268,34 @@ jobs:
       && needs.github-release.outputs.created == 'true'
       && (needs.storefront-exact-version.result == 'success' || needs.storefront-exact-version.result == 'skipped')
       && needs.storefront-major-version.result == 'success'
-      && needs.storefront-exact-version-algolia.result == 'success'
-      && needs.storefront-major-version-algolia.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: read # read the release being announced
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/notify-slack-release
         with:
           tag: v${{ needs.check-publication-status.outputs.components-version }}
           slack-bot-token: ${{ secrets.slack-bot-token }}
           slack-channel-id: ${{ secrets.slack-release-channel-id }}
+  figma-code-connect:
+    name: 'Figma Code Connect'
+    needs:
+      - github-release
+      - storefront-exact-version
+    if: >-
+      !cancelled()
+      && github.ref == 'refs/heads/main'
+      && needs.github-release.outputs.created == 'true'
+      && (needs.storefront-exact-version.result == 'success' || needs.storefront-exact-version.result == 'skipped')
+    uses: ./.github/workflows/figma-code-connect.yml
+    with:
+      publish: true
+    secrets:
+      FIGMA_ACCESS_TOKEN: ${{ secrets.figma-access-token }}
+      SLACK_BOT_TOKEN: ${{ secrets.slack-bot-token }}
+      SLACK_DESIGN_CHANNEL_ID: ${{ secrets.slack-design-channel-id }}
   storefront-exact-version:
     name: 'Storefront (/v<major>.<minor>.<patch>)'
     needs: check-publication-status
@@ -296,7 +317,7 @@ jobs:
     # `awscli` apt package is still v1. The standard runner image ships v2, and this job only builds
     # the storefront and uploads it — none of it needs a browser.
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -307,7 +328,7 @@ jobs:
       - name: 'Build Storefront'
         run: NEXT_PUBLIC_BASE_PATH="v${{ needs.check-publication-status.outputs.components-version }}" npm run build:storefront
       - name: 'Assume AWS role'
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
           role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
           aws-region: eu-central-1
@@ -341,7 +362,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       # Records use relative routes and page text, not the build's basePath.
       # This artifact is available even when pinned uploads are skipped on a full rerun.
@@ -376,7 +397,7 @@ jobs:
       group: storefront-major-${{ needs.check-publication-status.outputs.major-slug }}
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - uses: ./.github/actions/restore
         with:
@@ -393,7 +414,7 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.resolve.outputs.slug }}
       - name: 'Assume AWS role'
         if: steps.resolve.outputs.promote == 'true'
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
           role-to-assume: ${{ secrets.aws-storefront-release-role-arn }}
           aws-region: eu-central-1
@@ -424,7 +445,7 @@ jobs:
       group: storefront-major-${{ needs.check-publication-status.outputs.major-slug }}
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - uses: ./.github/actions/restore
         with:

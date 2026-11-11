@@ -1,0 +1,113 @@
+# Slack notifications
+
+Four workflows post to Slack. All use `slackapi/slack-github-action` with `method: chat.postMessage` and one shared bot
+token, and all build their message as a Block Kit `markdown` block.
+
+| Notification        | Workflow                                         | Fires on                                                             | Channel secret             |
+| ------------------- | ------------------------------------------------ | -------------------------------------------------------------------- | -------------------------- |
+| Release             | `.github/workflows/release.yml`                  | a release the pipeline created                                       | `SLACK_RELEASE_CHANNEL_ID` |
+| Release             | `.github/workflows/notify-release-published.yml` | run by hand, for a release CI did not announce                       | `SLACK_RELEASE_CHANNEL_ID` |
+| Pipeline failure    | `.github/workflows/notify-pipeline-failure.yml`  | `Contribution`, `OSS Review Toolkit` or `Figma Code Connect` failing | `SLACK_FAILURE_CHANNEL_ID` |
+| Figma change needed | `.github/workflows/figma-code-connect.yml`       | a release, Mondays and by hand, while Figma lacks what it reads      | `SLACK_DESIGN_CHANNEL_ID`  |
+
+## Secrets
+
+| Secret                     | What                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------- |
+| `SLACK_BOT_TOKEN`          | bot token with `chat:write`, shared by all notifications                     |
+| `SLACK_RELEASE_CHANNEL_ID` | destination for the release announcement                                     |
+| `SLACK_FAILURE_CHANNEL_ID` | destination for the failure notification                                     |
+| `SLACK_DESIGN_CHANNEL_ID`  | destination for the message to design about Figma changes Code Connect needs |
+
+The app must be invited to each channel, otherwise Slack answers `not_in_channel`. Channels are secrets rather than
+literals so any can move without a pull request.
+
+A missing or revoked token fails the sending job rather than passing green, because every Send step sets `errors: true`
+against the action's default of `false`.
+
+## Release announcement
+
+Two workflows announce a release. Both delegate to `.github/actions/notify-slack-release`, so there is one code path and
+the message cannot drift.
+
+**The pipeline path** covers every normal release. On a release push to `main` or a matching version branch,
+`release.yml` creates the release. The `notify-release` job waits for the pinned storefront, the major-alias promotion
+(including CloudFront invalidation) and the Figma Code Connect publish before announcing it. A failed publish does not
+hold the announcement back, and the Algolia jobs are not waited for. It only fires when a release consumers can see was
+really created, so a pre-release, a draft, and a re-run of a job whose release already existed all post nothing.
+
+A successful major job can intentionally leave a newer release in place. For example, releasing `4.7.1` after `4.10.0`
+still announces `4.7.1`, even though `/v4/` remains on `4.10.0`.
+
+An Algolia failure blocks the announcement but does not undo the successful upload. **Re-run failed jobs** retries
+indexing independently. A full rerun also retries pinned indexing even if its upload is skipped as already published.
+
+Use **Re-run failed jobs** after a documentation deployment failure so the original release-creation output remains
+available to the announcement job. If **Re-run all jobs** was used instead, the release already exists and the automatic
+announcement is suppressed; use the manual path below once the documentation is ready.
+
+**The manual path** is `notify-release-published.yml`, run from the Actions tab with a tag. It exists for a release the
+pipeline did not announce — one created by hand, one recovered after CI missed it, or a draft somebody published.
+
+Either way the release is read back from the GitHub API rather than the changelog, so the Slack message and the GitHub
+Release cannot disagree. `scripts/build-slack-release-payload.ts` builds an intro, the release notes and a link to the
+full notes.
+
+The notes go across **almost untouched**, because the `markdown` block renders standard markdown. Three things the
+script still has to do, all found by testing rather than documented by Slack:
+
+- **Join the hard-wrapped lines.** A single newline is a hard line break, so Prettier's `proseWrap: 'always'` would
+  otherwise show through as ragged 120-column breaks.
+- **De-indent fenced code blocks to column 0.** There they render with syntax highlighting; indented under a bullet, as
+  they are throughout the changelog, they come out as plain text.
+- **Stay under 12,000 characters**, Slack's cumulative limit across every `markdown` block in one message. Past that the
+  notes are cut on an entry boundary and a tail names the dropped sections. Only a major release has ever come close.
+
+## Pipeline failure
+
+`notify-pipeline-failure.yml` watches the `Contribution`, `OSS Review Toolkit` and `Figma Code Connect` workflows and
+posts when one fails on a monitored branch. `Figma Code Connect` counts for its weekly and dispatched runs; after a
+release it runs inside `Contribution`, so its failure is reported as that run's. It runs the default-branch copy of
+itself and checks the triggering run came from this repository, so a fork cannot reach the token. There is also a
+`workflow_dispatch` path taking a run ID, for rehearsing against a past failure. The workflow keeps the trigger and that
+check; resolving the run, building the message and sending it are `.github/actions/notify-slack-pipeline-failure`.
+
+`scripts/build-slack-payload.ts` reads run metadata from the API rather than the event payload, so both paths execute
+identical code, and asks for one specific **attempt** — the API otherwise answers for the newest one, and a re-run
+mid-flight once caused a passing run to be announced with "0 failed jobs".
+
+Each failed job is one labelled link pointing at its own failing step. Because job and step names are repository data
+landing in a markdown context, they are escaped: a step named `Run npm test -- --grep "*"` would otherwise garble the
+message reporting it. The list is capped at 40 entries, which is above any run this repository produces.
+
+## Figma change needed
+
+`.github/workflows/figma-code-connect.yml` sends it through `.github/actions/notify-slack-figma-change`, which builds
+the message with `scripts/build-slack-figma-payload.ts` from every open design line (`figma:generate` of the latest
+release, never `main`, on the library as pulled in that run, after each release, every Monday and on dispatch): one line
+per change, grouped under the component it is for with a link to the component in Figma: a rename
+(`Rename "compacta" back to "compact"`), an add with the type and options (`Add a boolean property "compact"`), a delete
+with its reason (`Delete "showLabel": "hideLabel" replaces it`) or, for a property no PDS name stands for, what to do
+with it (`"dense" is not a PDS property: rename it to "figDense" if it is only for Figma, or delete it`), and a closing
+line saying that Dev Mode shows the change once the library is published, a new component or icon with the next PDS
+release. The line shapes it reads are declared once in
+`packages/components/projects/figma-code-connect/figma/messages.ts`, shared with the generator. Nothing about GitHub is
+in the message, because designers have no GitHub account; the raw logs stay in the workflow run. Nothing is remembered
+between runs: a line comes again with each release and every week until design makes the change, and a message that
+failed to send goes out when the job is re-run or with the next week's. The action skips the builder when the log holds
+no design line, and the Send step with it. Details and the decisions behind it: the Decisions section of
+`docs/figma-code-connect.md`.
+
+## Why not a webhook
+
+None of the notifications can use one. The `markdown` block returns HTTP 500 over an incoming webhook
+(`slackapi/slack-github-action#440`), and a Workflow Builder trigger accepts no blocks at all and renders its variables
+as plain text — `**bold**`, `[label](url)` and backticks all print literally there. The release and failure messages
+were built that way originally and both lost their links to it.
+
+## Changing things
+
+Wording and layout live in the three scripts, so changing them is a pull request. Channels are secrets. Rotating the
+token is done in the Slack app under **OAuth & Permissions**, then updating `SLACK_BOT_TOKEN`.
+
+There are no unit tests for any of them. After changing one, send a real message and read it.

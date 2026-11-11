@@ -30,7 +30,8 @@ export const viewport: Viewport = {
 
 /* injects favicon, apple touch icons, android touch icons, etc. */
 export const metadata: Metadata = {
-  title,
+  // Pages name themselves after their place in the sitemap (`Button: Usage - Components`); `sitemap.spec.ts` checks it.
+  title: { default: title, template: `%s - ${title}` },
   description:
     'Find all the fundamental UXI guidelines and pattern-based web components to build brand driven, consistent and intuitive designs for digital Porsche products.',
   appleWebApp,

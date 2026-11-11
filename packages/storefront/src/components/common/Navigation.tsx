@@ -1,3 +1,4 @@
+import { componentMeta } from '@porsche-design-system/component-meta';
 import {
   type AccordionUpdateEventDetail,
   PAccordion,
@@ -6,15 +7,17 @@ import {
   PLinkPure,
   PText,
 } from '@porsche-design-system/components-react/ssr';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { DocsLink } from '@/components/common/DocsLink';
 import { VersionSelect } from '@/components/common/VersionSelect';
+import type { DocsHref } from '@/links';
 import type { PDSVersionGroup } from '@/models/pdsVersion';
-import { type Routes, sitemap } from '@/sitemap';
+import { getLandingPath, getPath, type Page, sitemap } from '@/sitemap';
+import { getFlags } from '@/utils/getFlags';
 import { getPathnameRoutes } from '@/utils/pathname';
 
-const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
+const initialAccordionState = Object.keys(sitemap).reduce<Record<string, boolean>>((acc, section) => {
   acc[section] = false;
   return acc;
 }, {});
@@ -39,7 +42,7 @@ type NavigationProps = {
 
 export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
   const pathname = usePathname();
-  const [openSections, setOpenSections] = useState<{ [key: keyof typeof sitemap]: boolean }>(initialAccordionState);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>(initialAccordionState);
 
   const handleAccordionUpdate = (section: string) => (e: CustomEvent<AccordionUpdateEventDetail>) => {
     setOpenSections((prevState) => ({
@@ -82,26 +85,26 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                 onUpdate={handleAccordionUpdate(path)}
               >
                 <PHeading slot="summary" tag="h4" size="small" weight="semibold">
-                  {category.name as string}
+                  {category.name}
                 </PHeading>
-                {category.subPaths &&
-                  Object.entries(category.subPaths).map(([_, page]) => {
-                    // If page has subPaths (tabs) link to first tab
-                    const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
-                    return (
-                      <PLinkPure
-                        key={link}
-                        icon="none"
-                        active={pathname?.includes(`${page.path}/`)}
-                        onClick={() => onNavigate()}
-                        className={'w-full ps-static-sm'}
-                      >
-                        <Link href={link} aria-current={pathname?.includes(`${page.path}/`) ? 'page' : undefined}>
-                          {page.name}
-                        </Link>
-                      </PLinkPure>
-                    );
-                  })}
+                {Object.entries(category.pages).map(([pageKey, page]: [string, Page]) => {
+                  const link = getLandingPath(path, pageKey);
+                  const isCurrent = pathname?.includes(`${getPath(path, pageKey)}/`);
+                  return (
+                    <PLinkPure
+                      key={link}
+                      icon="none"
+                      active={isCurrent}
+                      onClick={() => onNavigate()}
+                      className={'w-full ps-static-sm'}
+                    >
+                      <DocsLink href={link as DocsHref} aria-current={isCurrent ? 'page' : undefined}>
+                        {page.name}
+                        {page.tagName && <> {getFlags(componentMeta[page.tagName])}</>}
+                      </DocsLink>
+                    </PLinkPure>
+                  );
+                })}
               </PAccordion>
             </React.Fragment>
           );
@@ -126,22 +129,22 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
           <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>
               <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
-                <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
+                <DocsLink href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</DocsLink>
               </PLinkPure>
             </li>
             <li>
               <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
-                <Link href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</Link>
+                <DocsLink href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</DocsLink>
               </PLinkPure>
             </li>
             <li>
               <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
-                <Link href="/license">License</Link>
+                <DocsLink href="/license">License</DocsLink>
               </PLinkPure>
             </li>
             <li>
               <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
-                <Link href="/accessibility-statement">Accessibility Statement</Link>
+                <DocsLink href="/accessibility-statement">Accessibility Statement</DocsLink>
               </PLinkPure>
             </li>
           </ul>

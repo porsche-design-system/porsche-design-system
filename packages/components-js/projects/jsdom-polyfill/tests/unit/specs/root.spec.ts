@@ -41,14 +41,27 @@ it('should have one unit test per component', () => {
   expect(componentsWithMissingTests.length).toEqual(0);
 });
 
-it.each(Object.entries(tagNameMarkup))('should have no fetch call for %s', async (_, markup) => {
+it.each(Object.entries(tagNameMarkup))('should have no fetch call for %s', async (tagName, markup) => {
   const spy = vi.spyOn(global, 'fetch');
+  const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
   document.body.innerHTML = markup;
   expect(await componentsReady()).toBeGreaterThan(0);
 
   // wait for potential requests
   await new Promise((resolve) => setTimeout(resolve, 5));
+
+  if (tagName === 'p-display') {
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('[Porsche Design System'),
+      'component p-display is deprecated and will be removed with next major release.',
+      'Please use p-heading component instead.',
+      expect.any(HTMLElement)
+    );
+  } else {
+    expect(warnSpy).not.toHaveBeenCalled();
+  }
+  warnSpy.mockRestore();
 
   if (spy.mock.calls.length > 0) {
     console.log(spy.mock.calls.flat());

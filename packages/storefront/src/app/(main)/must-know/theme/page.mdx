@@ -1,13 +1,22 @@
-import { TableOfContents } from '@/components/common/TableOfContents';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { Notification } from '@/components/mdx/content/Notification';
 
 export const metadata = {
-  title: 'Theme - Porsche Design System',
+  title: 'Theme - Must Know',
   description: 'Learn how to use the theming of the Porsche Design System.',
 };
 
 # Theme
 
-<TableOfContents headings={['How it works', 'Scoping Themes', 'Fixed Light and Dark Sections']} />
+<TableOfContents
+  headings={[
+    'How it works',
+    'Browser Automatic Dark Mode',
+    'Scoping Themes',
+    'Fixed Light and Dark Sections',
+    'WebViews',
+  ]}
+/>
 
 ## How it works
 
@@ -24,11 +33,45 @@ included in our mandatory [Global Styles](/stylesheets/introduction). These styl
 selecting the active theme and a polyfill to ensure compatibility with browsers that do not yet support `light-dark()`
 (see [browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
 
+By default, the Global Styles set `color-scheme: only light` on `:root`. Your application uses the **Light** theme and
+is protected from being recolored by the browser (see [Browser Automatic Dark Mode](#browser-automatic-dark-mode)).
+
 Apply these classes to the `html` element or any container to define the theme context:
 
-- `.scheme-light` — Forces the **Light** theme.
-- `.scheme-dark` — Forces the **Dark** theme.
-- `.scheme-light-dark` — Automatically toggles based on **System/OS settings**.
+- `.scheme-light-dark` — Automatically toggles based on **System/OS settings**. This is the recommended way to support
+  dark mode.
+- `.scheme-only-light` — Forces the **Light** theme and prevents the browser from recoloring it.
+- `.scheme-only-dark` — Forces the **Dark** theme and prevents the browser from recoloring it.
+- `.scheme-light` — Uses the **Light** theme, but still allows the browser to recolor it. Prefer `.scheme-only-light`.
+- `.scheme-dark` — Uses the **Dark** theme.
+
+## Browser Automatic Dark Mode
+
+Some Chromium-based browsers and WebViews can darken websites automatically, e.g. Chrome on Android with "Auto Dark Mode
+for Web Contents", Samsung Internet in dark mode or Android WebViews with algorithmic darkening. This only affects pages
+that don't declare dark mode support. The browser then recolors backgrounds and text algorithmically, but images such as
+the icons of PDS components are **not** reliably recolored. Dark icons can end up on a dark background and become
+practically invisible, which is a functional and an accessibility issue.
+
+The CSS keyword `only` opts out of this behavior. This is why the Global Styles use `color-scheme: only light` as
+default. Safari doesn't support automatic dark mode, so it is not affected.
+
+| Color scheme                         | Rendering in a browser with automatic dark mode |
+| ------------------------------------ | ----------------------------------------------- |
+| Default (`color-scheme: only light`) | ✅ PDS Light theme                              |
+| `.scheme-only-light`                 | ✅ PDS Light theme                              |
+| `.scheme-light-dark`                 | ✅ PDS Light or Dark theme, based on the OS     |
+| `.scheme-only-dark`, `.scheme-dark`  | ✅ PDS Dark theme                               |
+| `.scheme-light`                      | ❌ Recolored by the browser                     |
+
+<Notification heading="Important" headingTag="h3" state="warning">
+  To force the light theme, use `.scheme-only-light` instead of `.scheme-light` or `color-scheme: light`. Without
+  `only`, the browser recolors the page or section. The same applies to custom styles, e.g. when overriding the
+  `color-scheme` of a component: use `color-scheme: only light` instead of `color-scheme: light`.
+</Notification>
+
+Note that a `<meta name="color-scheme">` tag has no effect, because the `color-scheme` set by the Global Styles on
+`:root` takes precedence. Use the `.scheme-*` classes instead.
 
 ## Scoping Themes
 
@@ -54,13 +97,13 @@ The `color-scheme` utility classes do more than just update PDS components—the
 your entire styling stack. When you apply a `.scheme-*` class, it automatically synchronizes the theme across all our
 supported styling tools:
 
-- **[Tailwind CSS](/tailwindcss/introduction/)**: Custom PDS color utilities (e.g., `text-primary`) automatically
-  resolve to the correct light or dark values.
-- **[SCSS](/scss/introduction/)**: The PDS mixins and variables hook into the theme context, ensuring your custom
+- **[Tailwind CSS](/tailwindcss/introduction)**: Custom PDS color utilities (e.g., `text-primary`) automatically resolve
+  to the correct light or dark values.
+- **[SCSS](/scss/introduction)**: The PDS mixins and variables hook into the theme context, ensuring your custom
   stylesheets remain brand-compliant.
-- **[Emotion](/emotion/introduction/)**: Design tokens consumed via Emotion are reactive to the `color-scheme` defined
-  on the parent container.
-- **[Vanilla Extract](/vanilla-extract/introduction/)**: Design tokens consumed via Vanilla Extract are reactive to the
+- **[Emotion](/emotion/introduction)**: Design tokens consumed via Emotion are reactive to the `color-scheme` defined on
+  the parent container.
+- **[Vanilla Extract](/vanilla-extract/introduction)**: Design tokens consumed via Vanilla Extract are reactive to the
   `color-scheme` defined on the parent container.
 
 **Key Takeaway:** By using these utility classes, you ensure that your custom UI and PDS components always share the
@@ -100,3 +143,14 @@ user's system preference.
   color: var(--p-color-primary);
 }
 ```
+
+## WebViews
+
+Native apps that render web content in a WebView should pass the app theme on to the web content. Otherwise, the web
+content may not match the app theme, or (on Android) the WebView may darken the web content automatically, depending on
+the app theme.
+
+- If the app supports light and dark mode, and the WebView reflects the app theme in `prefers-color-scheme`, use
+  `.scheme-light-dark`.
+- Otherwise, set `.scheme-only-light` or `.scheme-only-dark` on the `html` element of the web content, based on the
+  active app theme.

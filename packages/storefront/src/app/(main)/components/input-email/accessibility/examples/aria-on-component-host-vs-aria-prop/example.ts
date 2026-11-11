@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const ariaOnComponentHostVsAriaPropA11yExample = {
   name: 'ARIA on component host vs aria prop',

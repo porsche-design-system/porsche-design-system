@@ -1,6 +1,6 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { Story } from '@porsche-design-system/story-generator';
 
 const style = `.custom-ai-shadow {
   --p-button-bg: #fff;

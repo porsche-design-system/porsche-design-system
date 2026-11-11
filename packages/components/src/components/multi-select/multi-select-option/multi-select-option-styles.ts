@@ -26,6 +26,8 @@ export const getComponentCss = (isDisabled: boolean, selected: boolean): string 
       },
       slot: {
         display: 'block',
+        flex: 1,
+        minWidth: 0,
         paddingTop: labelPaddingTop,
       },
     },

@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const switchWithoutDescriptiveLabelA11yExample = {
   name: 'Switch without descriptive label',

@@ -15,9 +15,9 @@ type GetIconLinksOptions = {
   const link = await minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
 
   const func = `export function getIconLinks(opts: GetIconLinksOptions & { format: 'js' }): PartialLink[];
-export function getIconLinks(opts: GetIconLinksOptions & { format: 'jsx' }): JSX.Element;
+export function getIconLinks(opts: GetIconLinksOptions & { format: 'jsx' }): JSXElement;
 export function getIconLinks(opts?: GetIconLinksOptions): string;
-export function getIconLinks(opts?: GetIconLinksOptions): string | JSX.Element | PartialLink[] {
+export function getIconLinks(opts?: GetIconLinksOptions): string | JSXElement | PartialLink[] {
   const { icons, cdn, format }: GetIconLinksOptions = {
     icons: ['arrow-right'],
     cdn: 'auto',

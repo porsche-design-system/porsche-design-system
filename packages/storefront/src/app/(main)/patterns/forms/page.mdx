@@ -1,0 +1,25 @@
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+
+export const metadata = {
+  title: 'Forms - Patterns',
+  description: 'Discover code examples available for designing user-centric forms for Porsche web applications.',
+};
+
+# Forms
+
+<TableOfContents headings={['Search combobox option list', 'Search combobox link list']} />
+
+A search field can offer matches in a popover without becoming a select: focus stays in the field while the arrow keys
+move through the list. When choosing a match should populate the field, use an option list (`role="listbox"`); when each
+match is a page of its own, use a link list inside a dialog (`role="dialog"`) so choosing one navigates to that page.
+Both patterns use a dealer search by city as an integration example and can be adapted to any scenario that filters
+options or navigation links.
+
+## Search combobox option list
+
+<ExampleViewer example="patterns/forms/search-combobox-option-list" />
+
+## Search combobox link list
+
+<ExampleViewer example="patterns/forms/search-combobox-link-list" />

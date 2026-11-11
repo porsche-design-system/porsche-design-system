@@ -19,7 +19,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -34,7 +34,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -46,7 +46,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -59,7 +59,7 @@ jobs:
       - run: npm run test:vrt:styles
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-styles-vrt-chrome
           path: ./packages/styles/tests/vrt/results
@@ -70,13 +70,28 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
       - run: npm run test:unit:stylesheets
+  figma-code-connect:
+    name: 'Figma Code Connect'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - run: npm run typecheck --workspace=@porsche-design-system/figma-code-connect
+      - run: npm run test:unit --workspace=@porsche-design-system/figma-code-connect
   components-unit:
     name: 'Components Unit'
     runs-on: ubuntu-latest
@@ -84,7 +99,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -96,7 +111,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -109,7 +124,7 @@ jobs:
       - run: npm run test:unit:components-js:partials
       - name: 'Unit Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-components-js-unit
           path: ./packages/components-js/tests/unit/results
@@ -120,7 +135,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -137,7 +152,7 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -154,7 +169,7 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -171,7 +186,7 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -188,14 +203,14 @@ jobs:
         shardIndex: [ 1, 2, 3, 4, 5, 6 ]
         shardTotal: [ 6 ]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-components-js-vrt-chrome-${{ matrix.shardIndex }}
           path: ./packages/components-js/tests/vrt/results
@@ -211,14 +226,14 @@ jobs:
         shardIndex: [ 1, 2, 3 ]
         shardTotal: [ 3 ]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:vrt:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-components-js-vrt-playwright-safari-${{ matrix.shardIndex }}
           path: ./packages/components-js/tests/vrt/results
@@ -229,7 +244,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -239,7 +254,7 @@ jobs:
       - run: npm run test:vrt:components-angular
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: components-angular-vrt-regression
           path: ./packages/components-angular/tests/vrt/results
@@ -250,7 +265,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -259,7 +274,7 @@ jobs:
       - run: npm run test:vrt:components-react
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
@@ -270,14 +285,14 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:vrt:components-react/react-router
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-components-react-react-router-vrt
           path: ./packages/components-react/projects/react-router/tests/vrt/results
@@ -288,7 +303,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -297,7 +312,7 @@ jobs:
       - run: npm run test:unit:components-react:react-ssr-wrapper
       - name: 'VRT Regression components-react/nextjs'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-components-react-nextjs-vrt
           path: ./packages/components-react/projects/nextjs/tests/vrt/results
@@ -308,7 +323,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -317,7 +332,7 @@ jobs:
       - run: npm run test:vrt:components-vue
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-components-vue-vrt
           path: ./packages/components-vue/tests/vrt/results
@@ -328,7 +343,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -336,21 +351,21 @@ jobs:
       - run: npm run test:e2e:examples
       - name: 'E2E Results'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-examples-e2e
           path: ./packages/examples/tests/e2e/results
       - run: npm run test:a11y:examples
       - name: 'A11y Results'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-examples-a11y
           path: ./packages/examples/tests/a11y/results
       - run: npm run test:vrt:examples
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-examples-vrt
           path: ./packages/examples/tests/vrt/results
@@ -361,7 +376,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -373,7 +388,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -386,7 +401,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -398,17 +413,29 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:unit:skills
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: ${{ !cancelled() }}
         with:
           name: generated-skill-trees
           path: ./packages/storefront/projects/skills/generated/
           if-no-files-found: error
+  story-generator:
+    name: 'Story Generator'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - run: npm run test:unit:story-generator
   storefront-unit:
     name: 'Storefront Unit'
     runs-on: ubuntu-latest
@@ -416,7 +443,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -433,14 +460,14 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'E2E Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-storefront-e2e-${{ matrix.shardIndex }}
           path: ./packages/storefront/tests/e2e/results
@@ -451,14 +478,14 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:e2e:storefront:sitemap
       - name: 'E2E Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-storefront-e2e-sitemap
           path: ./packages/storefront/tests/e2e/results
@@ -474,14 +501,14 @@ jobs:
         shardIndex: [ 1, 2, 3, 4, 5, 6 ]
         shardTotal: [ 6 ]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'A11y Regression'
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-storefront-a11y-${{ matrix.shardIndex }}
           path: ./packages/storefront/tests/a11y/results
@@ -492,8 +519,8 @@ jobs:
 #      image: ${{ inputs.image }}
 #      options: --user 1001
 #    steps:
-#      - uses: actions/checkout@v7
-#      - uses: actions/setup-node@v6
+#      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+#      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
 #        with:
 #          node-version: '24'
 #          cache: 'npm'
@@ -503,7 +530,7 @@ jobs:
 #      - run: npm run test:vrt:storefront
 #      - name: 'VRT Regression'
 #        if: failure()
-#        uses: actions/upload-artifact@v7
+#        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
 #        with:
 #          name: regression-storefront-vrt
 #          path: ./packages/storefront/tests/vrt/results
@@ -514,7 +541,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore

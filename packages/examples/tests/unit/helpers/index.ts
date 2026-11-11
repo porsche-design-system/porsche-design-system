@@ -3,6 +3,8 @@ import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';
 import FooterExtendedPage from '../../../src/patterns/footer/extended/index.page.tsx';
 import FooterSimplePage from '../../../src/patterns/footer/simple/index.page.tsx';
+import SearchComboboxLinkListPage from '../../../src/patterns/forms/search-combobox-link-list/index.page.tsx';
+import SearchComboboxOptionListPage from '../../../src/patterns/forms/search-combobox-option-list/index.page.tsx';
 import HeaderOverlayPage from '../../../src/patterns/header/overlay/index.page.tsx';
 import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.tsx';
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
@@ -52,6 +54,8 @@ export const patternPages = [
   ['patterns/popover/local-market-switch', PopoverLocalMarketSwitchPage],
   ['patterns/popover/priority-navigation', PopoverPriorityNavigationPage],
   ['patterns/popover/feature-tour', PopoverFeatureTourPage],
+  ['patterns/forms/search-combobox-option-list', SearchComboboxOptionListPage],
+  ['patterns/forms/search-combobox-link-list', SearchComboboxLinkListPage],
   ['patterns/feedback/inline', FeedbackInlinePage],
   ['patterns/feedback/dialog', FeedbackDialogPage],
 ] as const;

@@ -1,4 +1,4 @@
 {
-  "extends": "shared/tsconfig.base.json",
+  "extends": "@porsche-design-system/shared/tsconfig.base.json",
   "include": ["./src"]
 }

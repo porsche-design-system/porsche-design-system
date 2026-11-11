@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const drilldownLabelOnComponentHostVsAriaPropA11yExample = {
   name: 'Drilldown label on component host vs aria prop',

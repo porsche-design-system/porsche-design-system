@@ -129,6 +129,9 @@ src/
 │   ├── header/stacked/           # Header in its `stacked` variant
 │   ├── footer/extended/          # Footer of a site: delivery country, navigation, social media, legal information
 │   ├── footer/simple/            # SimpleFooter: the legal information only, for a page that stands on its own
+│   ├── forms/                    # index.page.tsx each – combobox patterns built on `p-input-search` and `p-popover`
+│   │   ├── search-combobox-option-list/ # filters a listbox of options and writes the choice into the field
+│   │   └── search-combobox-link-list/   # filters a dialog of links and navigates to the chosen page
 │   ├── popover/                  # index.page.tsx each – the behaviour is per example
 │   │   ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
 │   │   ├── priority-navigation/  # entries that no longer fit collapse into a popover
@@ -193,7 +196,7 @@ which is forced to 1 like everywhere else in the monorepo. A spec reads its devi
 [`tests/helpers/device.ts`](tests/helpers/device.ts), never from the project name; the page setups leave the viewport
 alone, so a page is laid out on its device. Only a flow about resizing – the priority navigation – sets a width itself.
 
-The settings are still those of the shared base configs in `@porsche-design-system/shared/testing`; only the options
+The settings are still those of the shared base configs in `@porsche-design-system/testing`; only the options
 Playwright allows per project – test directory and match, timeouts, snapshot path, screenshot comparison, output
 directory – are taken per suite. The project names end in the engine because `prepare-vrt-snapshots` recognises output
 folders by that suffix. The `test:*` scripts select their projects, so the suites stay separate steps in CI with
@@ -579,7 +582,7 @@ hand, and nothing fails when one of the first two is forgotten:
    `./docker.sh npm run test:vrt:examples` writes the missing ones.
 4. **Storefront.** Add a `page.mdx` rendering `<ExampleViewer example="<category>/<page>" />` – it shows the description
    and frames the page under its title, all imported from the package export – and an entry in
-   [`packages/storefront/src/sitemap.tsx`](../storefront/src/sitemap.tsx).
+   [`packages/storefront/src/sitemap.ts`](../storefront/src/sitemap.ts).
 5. **Knowledge skill.** Nothing to register – the page is picked up from the package export. Update the content
    snapshots of the skills project (see _Knowledge skill_).
 

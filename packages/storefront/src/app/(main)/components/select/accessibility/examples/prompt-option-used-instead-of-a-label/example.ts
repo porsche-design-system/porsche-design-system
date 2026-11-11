@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const promptOptionUsedInsteadOfALabelA11yExample = {
   name: 'Prompt option used instead of a label',

@@ -19,9 +19,15 @@ property — no proprietary switching logic. The Tailwind `.scheme-*` utilities 
 with a polyfill for browsers without `light-dark()` support. Apply one of these classes to
 the document or any container; the selected context cascades to all child elements:
 
-- `.scheme-light` — forces light mode.
-- `.scheme-dark` — forces dark mode.
-- `.scheme-light-dark` — dynamically follows the system/OS setting.
+- `.scheme-light-dark` — dynamically follows the system/OS setting. Recommended to support dark mode.
+- `.scheme-only-light` — forces light mode and prevents the browser from recoloring it.
+- `.scheme-only-dark` — forces dark mode and prevents the browser from recoloring it.
+- `.scheme-light` — uses light mode, but allows the browser's automatic dark mode (e.g. Chrome on
+  Android, Samsung Internet) to recolor it, which can leave icons with insufficient contrast. Prefer
+  `.scheme-only-light`.
+- `.scheme-dark` — uses dark mode.
+
+Without any class, the PDS global styles apply `color-scheme: only light`.
 
 The same class themes **both** the PDS components and the custom UI you build with these utilities —
 one `light-dark()` palette drives both layers. There is no separate component theming API and no

@@ -1,18 +1,54 @@
 {
-  "name": "shared",
+  "name": "@porsche-design-system/shared",
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "index.d.ts",
-  "bin": {
-    "serve-dummyassets": "./bin/serve-dummyassets.js",
-    "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./deprecation": {
+      "import": {
+        "types": "./dist/deprecation/index.d.ts",
+        "default": "./dist/deprecation/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/deprecation/index.d.ts",
+        "default": "./dist/deprecation/cjs/index.cjs"
+      }
+    },
+    "./models": {
+      "import": {
+        "types": "./dist/models/index.d.ts",
+        "default": "./dist/models/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/models/index.d.ts",
+        "default": "./dist/models/cjs/index.cjs"
+      }
+    },
+    "./css/styles.css": "./dist/css/styles.css",
+    "./css/styles": "./dist/css/styles.css",
+    "./examples": "./dist/examples/index.ts",
+    "./examples/*": "./dist/examples/*.tsx",
+    "./tsconfig.base.json": "./tsconfig.base.json",
+    "./tsconfig.paths.json": "./tsconfig.paths.json",
+    "./package.json": "./package.json"
   },
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
     "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run build:generateCodeExamples && npm run typecheck && npm run build:bundle",
@@ -21,39 +57,55 @@
     "build:generateChunkNames": "tsx scripts/generateTagNamesWithChunk.ts",
     "build:generatePartialNames": "tsx scripts/generatePartialNames.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js && chmod +x bin/prepareVRTSnapshots.js",
-    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json && npm run typecheck --workspace=@porsche-design-system/testing",
     "typecheck:tests": "tsc --noEmit -p tsconfig.test.json",
     "test": "npm run test:unit",
-    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts && npm run test:unit --workspace=@porsche-design-system/testing",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
-    "react": "^19.3.0"
+    "react": "^19.3.1"
   },
   "devDependencies": {
+    "@porsche-design-system/testing": "0.0.0",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.3",
-    "@rollup/plugin-typescript": "^12.3.0",
+    "@rollup/plugin-typescript": "^12.3.1",
     "@types/madge": "^5.0.3",
-    "@types/node": "^26.6.3",
+    "@types/node": "^26.6.6",
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
     "madge": "^8.0.0",
-    "rollup": "^4.63.5",
+    "rollup": "^4.66.0",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-generate-package-json": "^3.2.0",
     "rollup-plugin-modify": "^3.0.0",
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "spdy": "^4.0.2",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.2"
+    "vitest": "^5.0.5"
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "deprecation": [
+        "./dist/deprecation/index.d.ts"
+      ],
+      "models": [
+        "./dist/models/index.d.ts"
+      ],
+      "examples": [
+        "./dist/examples/index.ts"
+      ],
+      "examples/*": [
+        "./dist/examples/*.tsx"
+      ]
+    }
   }
 }

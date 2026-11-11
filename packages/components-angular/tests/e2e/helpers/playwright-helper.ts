@@ -1,15 +1,4 @@
-import { type ConsoleMessage, type Locator, type Page } from '@playwright/test';
-import { waitForComponentsReady } from './stencil';
-
-export const getElementProp = (el: Locator, prop: string): Promise<string> =>
-  el.evaluate((el, prop: string) => (el as unknown as Record<string, string>)[prop], prop);
-
-export const getOuterHTML = (el: Locator): Promise<string> => el.evaluate((el) => el.outerHTML);
-
-export const goto = async (page: Page, url: string): Promise<void> => {
-  await page.goto(url);
-  await waitForComponentsReady(page);
-};
+import { type ConsoleMessage, type Page } from '@playwright/test';
 
 const consoleMessages: ConsoleMessage[] = [];
 

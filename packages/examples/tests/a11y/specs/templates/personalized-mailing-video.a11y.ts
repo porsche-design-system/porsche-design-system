@@ -1,5 +1,6 @@
-import { schemes } from '@porsche-design-system/shared/testing';
-import { getExampleUrl, setupExamplePage, waitForComponentsReady } from '../../../helpers/index.ts';
+import { schemes } from '@porsche-design-system/testing';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
@@ -18,7 +19,7 @@ for (const scheme of schemes) {
 
     await page.locator('#pm-voices [data-video-id]').first().click();
     await expect(page.locator('#pm-video-modal dialog')).toBeVisible();
-    await waitForComponentsReady(page);
+    await waitForComponentsHydrated(page);
 
     await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--video-modal-open--${scheme}`);
   });

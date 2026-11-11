@@ -1,14 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { FRAMEWORKS, getWrapperPackageName } from '@porsche-design-system/shared';
 import { baselineEffort, DETECTIONS, VALUE_RESOLUTIONS } from '@skills/audit-deprecations/grading';
 import { AUDIT_KIND } from '@skills/audit-deprecations/reportSchema';
 import { REPORT_TEMPLATE_FILE } from '@skills/audit-deprecations/reportTemplate';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
 import { USAGE_KINDS } from '@skills/knowledge/deprecations/types';
 import { DEPRECATIONS_REFERENCE } from '@skills/knowledge/skillMd';
-import { getSkillName, getWrapperPackageName } from '@skills/registry';
-import { FRAMEWORKS, stagedSkillDir } from '@skills/shared/skillTree';
+import { getSkillName } from '@skills/registry';
+import { stagedSkillDir } from '@skills/shared/skillTree';
 import { describe, expect, it } from 'vitest';
 
 /**
@@ -166,7 +167,7 @@ describe('audit-deprecations skill', () => {
       it('covers the meta-framework template extensions its components can live in', () => {
         // Custom elements and JSX both travel into template languages outside the primary list.
         const extras: Record<string, string[]> = {
-          js: ['`**/*.astro`', '`**/*.svelte`', '`**/*.vue`', '`**/*.sass`'],
+          'vanilla-js': ['`**/*.astro`', '`**/*.svelte`', '`**/*.vue`', '`**/*.sass`'],
           react: ['`**/*.mdx`', '`**/*.astro`', '`**/*.html`', '`**/*.mjs`', '`**/*.cjs`', '`**/*.sass`'],
           vue: ['`**/*.astro`', '`**/*.html`', '`**/*.tsx`', '`**/*.jsx`', '`**/*.sass`'],
           angular: ['`**/*.sass`', '`**/*.less`'],
@@ -344,7 +345,7 @@ describe('audit-deprecations skill', () => {
           react: '`{...props}` or an explicit JSX pass-through',
           vue: '`v-bind="$attrs"` or explicit prop bindings',
           angular: 'a declared input rebound in the template',
-          js: 'an explicit property or attribute pass-through to the custom element',
+          'vanilla-js': 'an explicit property or attribute pass-through to the custom element',
         };
         expect(skillMd).toContain('only if it forwards it');
         expect(skillMd).toContain(forwarding[framework]);
@@ -367,7 +368,7 @@ describe('audit-deprecations skill', () => {
         const skillMd = read(framework, 'SKILL.md');
         const anchoring = skillMd.match(/## 4\. Work outward from PDS([\s\S]*?)## 5\./u)?.[1];
         expect(anchoring).toBeDefined();
-        if (['js', 'angular'].includes(framework)) {
+        if (['vanilla-js', 'angular'].includes(framework)) {
           expect(anchoring).toContain("a tag name assembled at runtime (`'p-' + kind`)");
           expect(anchoring).not.toContain('dynamic `createElement`');
           expect(anchoring).not.toContain('markup built in template strings');
@@ -398,7 +399,7 @@ describe('audit-deprecations skill', () => {
           react: "size={{ base: 'small', l: 'medium' }}",
           vue: ":size=\"{ base: 'small', l: 'medium' }\"",
           angular: "[size]=\"{ base: 'small', l: 'medium' }\"",
-          js: "el.size = { base: 'small', l: 'medium' }",
+          'vanilla-js': "el.size = { base: 'small', l: 'medium' }",
         };
         expect(skillMd).toContain(bound[framework]);
         for (const [other, spelling] of Object.entries(bound)) {
@@ -697,7 +698,7 @@ describe('audit-deprecations skill', () => {
   });
 
   it('inverts the js self-check, since components-js is a dependency of every wrapper', () => {
-    const skillMd = read('js', 'SKILL.md');
+    const skillMd = read('vanilla-js', 'SKILL.md');
     for (const packageName of [
       getWrapperPackageName('react'),
       getWrapperPackageName('angular'),

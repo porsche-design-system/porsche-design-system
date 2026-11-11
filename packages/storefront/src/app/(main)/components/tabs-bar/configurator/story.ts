@@ -1,7 +1,6 @@
 'use client';
 
-import type { Story } from '@/models/story';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
+import type { HTMLTagOrComponent, Story } from '@porsche-design-system/story-generator';
 
 const tabsBarAria = {
   'aria-label': 'Some label for the tablist',

@@ -1,3 +1,4 @@
+import { FRAMEWORKS, type Framework } from '@porsche-design-system/shared';
 import type { ComponentRosterEntry } from '@skills/knowledge/components/reference';
 import { renderComponentsSection } from '@skills/knowledge/components/section';
 import {
@@ -12,7 +13,6 @@ import {
   buildSkillMd as renderSkillMd,
   skillName,
 } from '@skills/knowledge/skillMd';
-import { FRAMEWORKS, type Framework } from '@skills/shared/skillTree';
 import { localPorscheDesignSystemVersion } from '@skills/shared/version';
 import { describe, expect, it } from 'vitest';
 
@@ -67,14 +67,17 @@ describe('buildSkillMd', () => {
     expect(markdown).toContain('The underlying Stencil component implementation is not included in the npm package');
     expect(markdown).toContain('minified, content-hashed CDN artifacts as a debugging fallback');
     expect(markdown).toContain('read `../../CHANGELOG.md`');
+    expect(markdown).toContain(
+      'Page-level WCAG 2.2 AA and EN 301 549 composition is not in this skill. If the APM skill `accessible-frontend` is installed, load it.'
+    );
   });
 
   it('states that the examples need converting, except for js', () => {
     expect(buildSkillMd('react')).toContain('**Convert to React before use.**');
     expect(buildSkillMd('angular')).toContain('`@porsche-design-system/components-angular`');
     expect(buildSkillMd('vue')).toContain('into Vue state and event handlers');
-    expect(buildSkillMd('js')).not.toContain('Convert to');
-    expect(buildSkillMd('js')).toContain('**Vanilla HTML and JavaScript.**');
+    expect(buildSkillMd('vanilla-js')).not.toContain('Convert to');
+    expect(buildSkillMd('vanilla-js')).toContain('**Vanilla HTML and JavaScript.**');
   });
 
   it('links the patterns and templates from SKILL.md', () => {
@@ -112,6 +115,9 @@ describe('buildSkillMd', () => {
       '| `p-button` | The button component. | [p-button.md](references/components/p-button/p-button.md) |'
     );
     expect(markdown).toContain('2 components');
+    expect(markdown).toContain(
+      'Before generating a component, also load `references/components/<tag>/accessibility.md` when that file exists.'
+    );
   });
 
   it('escapes pipe characters in roster summaries', () => {

@@ -89,15 +89,26 @@ the correct value for the active color scheme automatically:
 
 Colors are driven by the native CSS [\`light-dark()\`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark)
 function via the CSS [\`color-scheme\`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme)
-property — no proprietary switching logic. By default, color tokens use the light color scheme. To
-enable the dark color scheme or automatic switching, add one of the \`.scheme-*\` classes to the
-\`<html>\` element or any ancestor; the selected scheme cascades to all child elements:
+property — no proprietary switching logic. By default, the global styles set
+\`:root { color-scheme: only light; }\`: color tokens use the light color scheme, and browsers with an
+automatic dark mode (e.g. Chrome on Android, Samsung Internet, Android WebViews) are prevented from
+recoloring the page. To enable the dark color scheme or automatic switching, add one of the
+\`.scheme-*\` classes to the \`<html>\` element or any ancestor; the selected scheme cascades to all
+child elements:
 
-- \`.scheme-light\` — enforces the light color scheme.
+- \`.scheme-light-dark\` — automatically switches based on the user's system preference. This is the
+  recommended way to support dark mode.
+- \`.scheme-only-light\` — forces the light color scheme and prevents the browser from overriding it.
+- \`.scheme-only-dark\` — forces the dark color scheme and prevents the browser from overriding it.
+- \`.scheme-light\` — uses the light color scheme, but still allows the browser's automatic dark mode
+  to recolor it. Prefer \`.scheme-only-light\`.
 - \`.scheme-dark\` — enforces the dark color scheme.
-- \`.scheme-light-dark\` — automatically switches based on the user's system preference.
-- \`.scheme-only-light\` — forces a light page island and prevents the browser from overriding it.
-- \`.scheme-only-dark\` — forces a dark page island and prevents the browser from overriding it.
+
+Browser automatic dark mode recolors the page algorithmically, but not reliably images such as icons,
+which can end up with insufficient contrast. Never use \`color-scheme: light\` (or \`.scheme-light\`) to force a
+light scheme; use \`.scheme-only-light\` instead. In apps that embed web content in a WebView, pass the
+app theme on to the web content (e.g. by setting \`.scheme-only-light\` or \`.scheme-only-dark\` on
+\`<html>\`).
 
 This one class themes **both** PDS components and your own custom markup — everything resolves colors
 through the same \`light-dark()\` palette, so there is no separate component-level theming API and no
@@ -147,7 +158,8 @@ PDS-owned variables such as \`--p-color-*\` to force a local scheme.**
 The \`color-scheme.css\` stylesheet additionally ships a polyfill for browsers without \`light-dark()\`
 support. If [browser support](https://caniuse.com/mdn-css_types_color_light-dark) is already
 sufficient for your project, you can skip the polyfill and use the native \`color-scheme\` property and
-\`light-dark()\` function directly (e.g. \`html { color-scheme: light dark; }\`).
+\`light-dark()\` function directly (e.g. \`html { color-scheme: light dark; }\` or
+\`html { color-scheme: only light; }\`).
 
 ## Contents
 
@@ -159,7 +171,7 @@ sufficient for your project, you can skip the polyfill and use the native \`colo
 
 | Stylesheet | Description |
 | --- | --- |
-| \`variables.css\` | Exposes the design system **CSS variables** (custom properties) on \`:root\`, including theme-aware colors resolved via \`light-dark()\` and \`:lang()\` font overrides. |
+| \`variables.css\` | Exposes the design system **CSS variables** (custom properties) on \`:root\`, including theme-aware colors resolved via \`light-dark()\` and \`:lang()\` font overrides. Sets the default \`color-scheme: only light\`, which prevents browsers with an automatic dark mode from recoloring the page. |
 | \`color-scheme.css\` | Provides the \`.scheme-*\` utility classes controlling the CSS \`color-scheme\` property, plus the \`@supports\` \`light-dark()\` polyfill. |
 | \`normalize.css\` | Recommended **normalize** styles including CSS reset rules and base typography (font family and line height) for \`html\` and \`body\`. |
 

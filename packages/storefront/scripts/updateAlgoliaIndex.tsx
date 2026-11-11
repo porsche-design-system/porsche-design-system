@@ -3,13 +3,13 @@ import * as path from 'node:path';
 import { algoliasearch } from 'algoliasearch';
 import * as cheerio from 'cheerio';
 import type { AlgoliaRecord } from '@/components/search/Search';
-import { type Route, type Routes, sitemap } from '../src/sitemap';
+import { type Category, getPath, sitemap } from '../src/sitemap';
 import { replaceAlgoliaIndex } from './replaceAlgoliaIndex';
 
 const extractContentAndSections = (
-  route: Route
+  routePath: string
 ): { content: string; sections: { name: string; id: string; content: string }[] } => {
-  const filePath = path.join('dist', route.path, 'index.html');
+  const filePath = path.join('dist', routePath, 'index.html');
 
   let content = '';
   const sections: { name: string; id: string; content: string }[] = [];
@@ -59,71 +59,60 @@ const extractContentAndSections = (
   return { content, sections };
 };
 
-const extractName = (node: React.ReactNode): string => {
-  if (typeof node === 'string' || typeof node === 'number') {
-    return node.toString();
-  }
-  if (Array.isArray(node)) {
-    return node.map(extractName).join(''); // Join array items into a single string
-  }
-  if (node && typeof node === 'object' && 'props' in node) {
-    return extractName((node.props as any).children); // Recursively process the children
-  }
-  return '';
-};
-
-const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
+const generateAlgoliaRecords = (categories: Record<string, Category>): AlgoliaRecord[] => {
   const records: AlgoliaRecord[] = [];
 
-  for (const category of Object.values(sitemap)) {
-    for (const page of Object.values(category.subPaths ?? {})) {
+  for (const [categoryKey, category] of Object.entries(categories)) {
+    for (const [pageKey, page] of Object.entries(category.pages)) {
       // Page with tabs
-      if (page.subPaths) {
-        for (const tab of Object.values(page.subPaths)) {
-          const { content, sections } = extractContentAndSections(tab);
+      if (page.tabs) {
+        for (const [tabKey, tab] of Object.entries(page.tabs)) {
+          const tabPath = getPath(categoryKey, pageKey, tabKey);
+          const { content, sections } = extractContentAndSections(tabPath);
           records.push({
-            objectID: tab.path,
-            name: extractName(tab.name),
+            objectID: tabPath,
+            name: tab.name,
             content: content,
-            category: extractName(category.name),
-            page: extractName(page.name),
-            tab: extractName(tab.name),
-            url: tab.path,
+            category: category.name,
+            page: page.name,
+            tab: tab.name,
+            url: tabPath,
           });
           for (const section of sections) {
             records.push({
-              objectID: `${tab.path}#${section.id}`,
+              objectID: `${tabPath}#${section.id}`,
               name: section.name,
               content: section.content,
-              category: extractName(category.name),
-              page: extractName(page.name),
-              tab: extractName(tab.name),
+              category: category.name,
+              page: page.name,
+              tab: tab.name,
               section: section.name,
-              url: `${tab.path}#${section.id}`,
+              url: `${tabPath}#${section.id}`,
             });
           }
         }
       }
       // Page without tabs
       else {
-        const { content, sections } = extractContentAndSections(page);
+        const pagePath = getPath(categoryKey, pageKey);
+        const { content, sections } = extractContentAndSections(pagePath);
         records.push({
-          objectID: page.path,
-          name: extractName(page.name),
+          objectID: pagePath,
+          name: page.name,
           content: content,
-          category: extractName(category.name),
-          page: extractName(page.name),
-          url: page.path,
+          category: category.name,
+          page: page.name,
+          url: pagePath,
         });
         for (const section of sections) {
           records.push({
-            objectID: `${page.path}#${section.id}`,
+            objectID: `${pagePath}#${section.id}`,
             name: section.name,
             content: section.content,
-            category: extractName(category.name),
-            page: extractName(page.name),
+            category: category.name,
+            page: page.name,
             section: section.name,
-            url: `${page.path}#${section.id}`,
+            url: `${pagePath}#${section.id}`,
           });
         }
       }

@@ -1,4 +1,4 @@
-import type { AccessibilityExample } from '@/models/accessibilityMeta';
+import type { AccessibilityExample } from '@porsche-design-system/story-generator';
 
 export const meaningfulIconWithoutAccessibleNameA11yExample = {
   name: 'Meaningful icon without accessible name',
