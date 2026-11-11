@@ -8,6 +8,7 @@ export const meta: ExampleMeta = {
   title: 'Tile: Model Navigation',
   description:
     'A model navigation tile links to the vehicles of a model, e.g. within the navigation of the Porsche Finder. At rest, the tile is transparent and blends into the surface it is placed on. On hover, it reveals its background and moves the vehicle slightly towards the end, which follows the writing direction, unless the user prefers reduced motion.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**
@@ -16,7 +17,7 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta} class="scheme-light-dark">
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg bg-surface">
       <Comment>{tileComments.anchorTile}</Comment>
       <Comment>

@@ -6,11 +6,6 @@ export type PatternPageProps = {
   /** The `meta` the page exports – its title and description are the ones of the document as well. */
   meta: ExampleMeta;
   /**
-   * Classes of the `<html>` element, e.g. the color scheme of the page, which reaches everything on it – a pattern can
-   * still fix the scheme of its own section, like a tile on a mood image.
-   */
-  class?: string;
-  /**
    * The pattern itself, when it belongs above the content – a header, for example, which then provides the page's
    * banner landmark.
    */
@@ -32,8 +27,8 @@ export type PatternPageProps = {
  *
  * Like `TemplatePage` it references no script – the build links the generated `main.js`.
  */
-export const PatternPage = ({ meta, class: className, beforeMain, afterMain, children }: PatternPageProps) => (
-  <html lang="en" class={className}>
+export const PatternPage = ({ meta, beforeMain, afterMain, children }: PatternPageProps) => (
+  <html lang="en">
     <head>
       <Head title={meta.title} description={meta.description} />
     </head>

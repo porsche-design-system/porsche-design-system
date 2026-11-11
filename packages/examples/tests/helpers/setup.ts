@@ -1,6 +1,9 @@
 import type { Page } from '@playwright/test';
 import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { examples } from '../../generated/examples.ts';
+import { type Example, hasDarkScheme } from '../../lib/meta.ts';
 import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
+import { examplesPath } from '../../lib/projects.ts';
 
 /**
  * What a page needs before it is captured or scanned – shared by the VRT and the a11y suite, and in parts by e2e.
@@ -195,6 +198,33 @@ export const waitForStableLayout = async (page: Page): Promise<void> => {
 };
 
 /**
+ * Applies the color scheme the way the storefront does: an example sets none on `<html>`, so one built for the dark
+ * scheme as well – `colorSchemes` of its meta – gets `scheme-light-dark` there, and follows `prefersColorScheme`. Any
+ * other example stays light, as it does in the storefront.
+ */
+const applyColorSchemeOfStorefront = async (page: Page, url: string): Promise<void> => {
+  const examplePath = new URL(url).pathname.slice(examplesPath.length).replace(/\/$/, '');
+  const example: Example | undefined = (examples as Record<string, Example>)[examplePath];
+  if (!example) {
+    throw new Error(`[examples] "${examplePath}" is not part of the package export – run build:projects`);
+  }
+  if (!hasDarkScheme(example)) {
+    return;
+  }
+
+  // An init script, like the direction below: the components read the scheme when they upgrade.
+  await page.addInitScript(() => {
+    const setScheme = () => document.documentElement.classList.add('scheme-light-dark');
+
+    if (document.documentElement) {
+      setScheme();
+    } else {
+      document.addEventListener('DOMContentLoaded', setScheme, { once: true });
+    }
+  });
+};
+
+/**
  * Opens an example page and brings it into the state a screenshot may be taken in.
  *
  * The page is laid out on the viewport of the device its project emulates – see `playwright.config.ts`.
@@ -230,6 +260,8 @@ export const setupExamplePage = async (
       },
     });
   }
+
+  await applyColorSchemeOfStorefront(page, url);
 
   if (rtl) {
     // An init script rather than an evaluation after the load: the components read the direction when they upgrade.

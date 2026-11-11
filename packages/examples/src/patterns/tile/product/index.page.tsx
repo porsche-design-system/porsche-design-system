@@ -22,6 +22,7 @@ export const meta: ExampleMeta = {
   title: 'Tile: Product',
   description:
     'A product tile links to the detail page of a product, e.g. within a product list of the Porsche Shop. It shows a tag and a button to add the product to the wishlist, the product image, the available colors, the name and the price. A link stretched over the tile, labelled with the product name for screen readers, makes it clickable as a whole, while the wishlist button and the color swatches stay independent actions above it. On hover, the image zooms in, unless the user prefers reduced motion.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**
@@ -30,7 +31,7 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta} class="scheme-light-dark">
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
       <Comment>{tileComments.anchorTile}</Comment>
       <div class="col-basic justify-self-center w-full max-w-[400px] group relative isolate flex flex-col gap-fluid-sm aspect-3/4 rounded-3xl bg-surface p-fluid-md">

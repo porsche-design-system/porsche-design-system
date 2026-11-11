@@ -8,6 +8,7 @@ export const meta: ExampleMeta = {
   title: 'Tile: Vehicle Listing',
   description:
     'A vehicle listing presents a single vehicle in a search result, e.g. of the Porsche Finder, with the image above its details. The tile adapts its height to the content. A link to the details stretches its clickable area over the tile, while the button to save the vehicle stays an independent action above it. The buttons are placed side by side as soon as the tile is wide enough, and on hover the image zooms in, unless the user prefers reduced motion.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /** A line of the vehicle details. */
@@ -19,7 +20,7 @@ const Detail = ({ children }: { children: string }) => <p-text>{children}</p-tex
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta} class="scheme-light-dark">
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg bg-surface">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>

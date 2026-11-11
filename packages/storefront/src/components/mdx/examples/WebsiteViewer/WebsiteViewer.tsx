@@ -9,10 +9,12 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 // Types only: the package exports every example, and a client component is handed the one it shows.
 import type { Example } from '@porsche-design-system/examples';
+import { COLOR_SCHEMES } from '@porsche-design-system/shared';
 import { openExampleInStackblitz } from '@porsche-design-system/stackblitz';
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { DocsLink } from '@/components/common/DocsLink';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
+import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { withMediaOrigin } from '@/utils/exampleMediaOrigin';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 import { CodeBlock, type CodeLanguage } from '../../elements/CodeBlock';
@@ -85,6 +87,23 @@ export const WebsiteViewer = (props: WebsiteViewerProps) => {
     : `${GITHUB_PAGES_BASE}/v${localPorscheDesignSystemMajorVersion}/${props.viewPath}`;
 
   const { trackRef, width, setWidth, isResizing, handleProps } = useResizeHandle({ minWidth: MIN_WIDTH });
+
+  // An example sets no color scheme on its `<html>`, since that is the decision of the application it is copied into,
+  // so its code shows none. One built for the dark scheme as well gets the scheme of the storefront instead, set from
+  // here – the iframe shares the origin of the storefront. Applied on load, and again whenever the scheme changes.
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const { storefrontColorScheme } = useStorefrontColorScheme();
+  const hasDarkScheme = isExample && !!props.example.colorSchemes?.includes('dark');
+  const applyColorScheme = useCallback(() => {
+    const root = iframeRef.current?.contentDocument?.documentElement;
+    if (!hasDarkScheme || !root) {
+      return;
+    }
+    root.classList.remove(...COLOR_SCHEMES);
+    root.classList.add(storefrontColorScheme);
+  }, [hasDarkScheme, storefrontColorScheme]);
+
+  useEffect(applyColorScheme, [applyColorScheme]);
   // 0 is the preview, every other tab one of `codeFiles`.
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const codeFile = activeTabIndex > 0 ? codeFiles[activeTabIndex - 1] : null;
@@ -108,6 +127,8 @@ export const WebsiteViewer = (props: WebsiteViewerProps) => {
           <span className="h-10 w-1.5 rounded-full bg-contrast-medium transition-colors group-hover:bg-contrast-high group-focus-visible:outline outline-focus outline-offset-2" />
         </div>
         <iframe
+          ref={iframeRef}
+          onLoad={applyColorScheme}
           // While resizing, disable the iframe's pointer events so it doesn't swallow the drag.
           className={`w-full h-full rounded-3xl shadow-high border border-[light-dark(transparent,var(--color-contrast-lower))] ${isResizing ? 'pointer-events-none' : 'pointer-events-auto'}`}
           title={title}

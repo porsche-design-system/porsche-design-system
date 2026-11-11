@@ -9,6 +9,7 @@ export const meta: ExampleMeta = {
   title: 'Tile: Video',
   description:
     'A video tile links to a category with an autoplaying mood video, e.g. a model range on porsche.com. The muted, looped video is decorative and covers the whole tile, a dark gradient at the bottom ensures the legibility of the heading. Moving content that starts on its own has to be pausable, so a pause button sits next to the link, which stretches its clickable area over the tile. The video does not start if the user prefers reduced motion.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**
@@ -17,7 +18,7 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta} class="scheme-light-dark">
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>{tileComments.darkScheme}</Comment>

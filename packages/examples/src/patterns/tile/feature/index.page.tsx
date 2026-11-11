@@ -7,6 +7,7 @@ export const meta: ExampleMeta = {
   title: 'Tile: Feature',
   description:
     'A feature tile explains a single feature of a vehicle, e.g. within a model page of porsche.com. The image reaches the top and side edges of the tile, followed by a heading, a text and a footnote. It is not interactive, and it adapts its height to the content.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**
@@ -18,7 +19,7 @@ export const meta: ExampleMeta = {
  * would separate from the word by a line break and therefore by a space.
  */
 const Page = () => (
-  <PatternPage meta={meta} class="scheme-light-dark">
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
       <Comment>
         Nothing in the tile is interactive, so there is no focus indicator to keep and the tile clips the image to its

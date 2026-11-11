@@ -8,6 +8,7 @@ export const meta: ExampleMeta = {
   title: 'Tile: Model Selection',
   description:
     'A model selection lets users pick a model range as entry point, e.g. to browse the available vehicles of the Porsche Finder. The tile shows the model signature, the model name and a side view of the vehicle, while a link stretched over the tile makes it clickable as a whole, with the model name as its label for screen readers. On hover, the vehicle zooms in, unless the user prefers reduced motion.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**
@@ -16,7 +17,7 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta} class="scheme-light-dark">
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg bg-surface">
       <Comment>{tileComments.anchorTile}</Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate flex flex-col items-center text-center rounded-3xl bg-canvas p-fluid-md">

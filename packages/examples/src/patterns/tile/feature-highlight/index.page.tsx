@@ -9,6 +9,7 @@ export const meta: ExampleMeta = {
   title: 'Tile: Feature Highlight',
   description:
     'A feature highlight presents a feature of a vehicle with a mood image and reveals further details on demand, e.g. within a model page of porsche.com. The image covers the whole tile, and a dark gradient at the bottom ensures the legibility of the heading and the accordion below it. When expanded, the tile grows beyond its aspect ratio, and the gradient grows with the details.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**
@@ -17,7 +18,7 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta} class="scheme-light-dark">
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
       <Comment>
         The aspect ratio is a preferred size only: expanded details extend the tile beyond it, which clipping would

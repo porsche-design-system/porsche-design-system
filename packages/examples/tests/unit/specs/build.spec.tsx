@@ -28,7 +28,7 @@ import {
   renderPage,
   resolvePagePath,
 } from '../../../lib/jsx.ts';
-import { assertExampleMeta } from '../../../lib/meta.ts';
+import { assertExampleMeta, hasDarkScheme } from '../../../lib/meta.ts';
 import {
   categories,
   examplesPath,
@@ -264,7 +264,9 @@ describe('package export', () => {
   const module = getExportModule({ 'patterns/footer': footer, 'templates/landing-page': { ...footer, path: 'x' } });
 
   it('should re-export the types of lib/meta.ts, and type every example by its path', () => {
-    expect(module).toContain("export type { Example, ExampleMeta, ExampleProject } from '../lib/meta.ts';");
+    expect(module).toContain(
+      "export type { Example, ExampleColorScheme, ExampleMeta, ExampleProject } from '../lib/meta.ts';"
+    );
     expect(module).toContain("export type ExamplePath =\n  | 'patterns/footer'\n  | 'templates/landing-page';");
     expect(module).toContain('export const examples: { readonly [Path in ExamplePath]: Example<Path> } = {');
   });
@@ -300,6 +302,27 @@ describe('meta', () => {
     expect(() => assertExampleMeta({ title: 'Footer', description: 'A <b>footer</b>.' }, 'patterns/footer')).toThrow(
       'plain text'
     );
+  });
+
+  it('should leave the color schemes out when the page does not declare them, and keep them in a stable order', () => {
+    expect(assertExampleMeta({ title: 'Footer', description: 'A footer.' }, 'patterns/footer')).not.toHaveProperty(
+      'colorSchemes'
+    );
+    expect(
+      assertExampleMeta({ title: 'Tile', description: 'A tile.', colorSchemes: ['dark', 'light'] }, 'patterns/tile')
+    ).toEqual({ title: 'Tile', description: 'A tile.', colorSchemes: ['light', 'dark'] });
+  });
+
+  it.each([[[]], [['light', 'light']], [['dim']], ['dark']])('should fail for the color schemes %o', (colorSchemes) => {
+    expect(() => assertExampleMeta({ title: 'Tile', description: 'A tile.', colorSchemes }, 'patterns/tile')).toThrow(
+      'the color schemes of "patterns/tile"'
+    );
+  });
+
+  it('should apply the dark scheme only to an example built for it', () => {
+    expect(hasDarkScheme({})).toBe(false);
+    expect(hasDarkScheme({ colorSchemes: ['light'] })).toBe(false);
+    expect(hasDarkScheme({ colorSchemes: ['light', 'dark'] })).toBe(true);
   });
 
   it('should be exported by every page, with a title of its own', async () => {

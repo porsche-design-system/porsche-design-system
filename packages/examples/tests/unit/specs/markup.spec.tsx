@@ -3,8 +3,9 @@ import path from 'node:path';
 import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
 import { extractScripts } from '../../../lib/entries.ts';
-import { normalizeClassAttributes, renderPage } from '../../../lib/jsx.ts';
+import { normalizeClassAttributes, type PageModule, renderPage } from '../../../lib/jsx.ts';
 import { scriptEntryName } from '../../../lib/projects.ts';
+import { srcDir } from '../../../lib/shared.ts';
 import { PatternPage } from '../../../src/_layouts/PatternPage.tsx';
 import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
 import { Footer } from '../../../src/_partials/footer/Footer.tsx';
@@ -308,11 +309,6 @@ describe('PatternPage', () => {
     const html = renderPatternPage({ afterMain: <footer>Pattern</footer> });
 
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
-  });
-
-  it('should put the classes it is given on the document, and none otherwise', () => {
-    expect(renderPatternPage({ class: 'scheme-light-dark' })).toContain('<html lang="en" class="scheme-light-dark">');
-    expect(renderPatternPage()).toContain('<html lang="en">');
   });
 
   it('should leave the main landmark to the page', () => {
@@ -662,15 +658,20 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
     expect(html.includes('[--p-link-cover-radius:var(--radius-3xl)]')).toBe(hasCoveringLink(html));
   });
 
-  it('should let the page follow the color scheme of the user and fix the one of the tile only where needed', async () => {
+  it('should leave the color scheme to the application and fix the one of the tile only where needed', async () => {
     const html = await renderPage(Page);
+    const { meta } = (await import(path.join(srcDir, name, 'index.page.tsx'))) as PageModule;
     const fixedSchemes = html.match(/\bscheme-only-(light|dark)\b/g) ?? [];
     const tileClass = html.match(/class="([^"]*\bscheme-only-[^"]*)"/)?.[1] ?? '';
     const isOnDarkBackground = /bg-fade-to-/.test(html) || /\bbg-\[#/.test(tileClass);
 
-    // Light content on a gradient, a background or a brand color needs the dark scheme, and the dark vehicle of the
+    // The scheme of the page is the decision of the application the tile is copied into, so the pattern sets none and
+    // declares both instead – the storefront applies the one its visitor chose. Light content on a gradient, a
+    // background or a brand color needs the dark scheme whatever the application uses, and the dark vehicle of the
     // category would vanish on a dark surface – every other tile works in both schemes and follows the page.
-    expect(html).toContain('<html lang="en" class="scheme-light-dark">');
+    expect(html).toContain('<html lang="en">');
+    expect(html).not.toMatch(/\bscheme-(light|dark|light-dark|normal)\b/);
+    expect(meta.colorSchemes).toEqual(['light', 'dark']);
     if (isOnDarkBackground) {
       expect(fixedSchemes).toEqual(['scheme-only-dark']);
     } else if (name === 'patterns/tile/category') {

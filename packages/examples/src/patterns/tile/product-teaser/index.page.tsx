@@ -10,6 +10,7 @@ export const meta: ExampleMeta = {
   title: 'Tile: Product Teaser',
   description:
     'A product teaser links to a product with a branded background color, e.g. within a product category of porsche.com. The product image takes up half of the tile, heading and text the other half, and a compact icon-only link sits at the top. The link stretches its clickable area over the tile, and on hover the image zooms in, unless the user prefers reduced motion. Make sure a custom background color provides sufficient contrast for the content.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**
@@ -18,7 +19,7 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta} class="scheme-light-dark">
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>Light content on the brand color, independent of the color scheme of the page.</Comment>

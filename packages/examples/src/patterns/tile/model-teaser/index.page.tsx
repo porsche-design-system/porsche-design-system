@@ -8,6 +8,7 @@ export const meta: ExampleMeta = {
   title: 'Tile: Model Teaser',
   description:
     'A model teaser introduces a model range with its starting price and links to discover and configure it, e.g. on the homepage of porsche.com. The side view of the vehicle overlaps the model signature behind it, followed by a heading, the price and the two links. The link to discover the model stretches its clickable area over the tile, while the link to configure it stays an independent action above it. On hover, the vehicle zooms in, unless the user prefers reduced motion.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**
@@ -16,7 +17,7 @@ export const meta: ExampleMeta = {
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
-  <PatternPage meta={meta} class="scheme-light-dark">
+  <PatternPage meta={meta}>
     <main id="main" class="grid-template content-center min-h-dvh py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate flex flex-col items-center justify-center gap-fluid-sm aspect-4/3 rounded-3xl bg-surface p-fluid-md text-center [--p-link-cover-radius:var(--radius-3xl)]">

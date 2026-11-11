@@ -129,7 +129,7 @@ src/
 │   ├── footer/                   # Footer below the content
 │   ├── tile/                     # index.page.tsx each – the use cases of a tile, built with HTML and Tailwind CSS
 │   │   ├── model-selection/      # … one folder per use case: anchor or covering `p-link`, hover via `group-hover:`
-│   │   └── …                     # category, video, product, …; page `scheme-light-dark`, tile fixed only if needed
+│   │   └── …                     # category, video, product, …; light and dark, tile fixes its scheme only if needed
 │   ├── forms/                    # index.page.tsx each – combobox patterns built on `p-input-search` and `p-popover`
 │   │   ├── search-combobox-option-list/ # filters a listbox of options and writes the choice into the field
 │   │   └── search-combobox-link-list/   # filters a dialog of links and navigates to the chosen page
@@ -357,6 +357,16 @@ reaches through interaction**.
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
   chrome is what the pattern demonstrates. Pass the section as `beforeMain` (headers) or `afterMain` (footers) so its
   landmark sits where it does on a real page.
+- **An example sets no color scheme on `<html>`.** The scheme is the decision of the application an example is copied
+  into – most use `scheme-light` or `scheme-dark` – so a `scheme-light-dark` in the code would be taken over by copy and
+  paste and by the knowledge skill for no reason. An example therefore renders light on its own, and one built for the
+  dark scheme as well declares `colorSchemes: ['light', 'dark']` in its `meta`: the `WebsiteViewer` of the storefront
+  then sets the scheme its visitor chose on the `<html>` of the example (same origin), and `setupExamplePage()` of
+  [`tests/helpers/setup.ts`](tests/helpers/setup.ts) does the same with `scheme-light-dark`, so the dark captures of the
+  VRT and the a11y scans show it. The skill names the schemes of every example. A section that needs a fixed scheme
+  whatever the application uses – light text on an image – sets `scheme-only-dark` or `scheme-only-light` itself. An
+  application shell on `p-canvas` is the exception: it is the application, so it puts its scheme on `<html>` – see
+  below.
 - **A page built on `p-canvas` adds no landmark of its own.** The component renders the banner, the `main` landmark and
   the two `aside` landmarks in its shadow root, so a `<main id="main">` in the default slot would nest one landmark
   inside another. The page therefore renders the component straight into
@@ -543,7 +553,8 @@ project with it (`npm run test:unit:skills`).
 1. Create `src/templates/<name>/index.page.tsx` – markup, classes and, in a `<Script>`, behaviour.
 2. Export its `meta` – a `title` naming the example on its own and a plain-text `description` of what it shows and when
    to use it – typed as `ExampleMeta` from [`lib/meta.ts`](lib/meta.ts). The storefront, StackBlitz and the knowledge
-   skill present the example by it; the build fails without it.
+   skill present the example by it; the build fails without it. Add `colorSchemes: ['light', 'dark']` once the page
+   works in the dark scheme as well – see _An example sets no color scheme_.
 3. Default-export a component that renders `<TemplatePage meta={meta}>`, which writes the meta into the `<head>`. The
    layout writes nothing but the document: the page composes its chrome itself, like a pattern does –
    `<Header currentPage="…" />` (optionally `showSearch`, `variant`, `navItems`, and for `stacked` also `notice` and
@@ -561,9 +572,8 @@ project with it (`npm run test:unit:skills`).
 1. Create `src/patterns/<name>/index.page.tsx`.
 2. Export its `meta`, as for a template.
 3. Default-export a component that renders `<PatternPage meta={meta}>` with the section itself as `beforeMain` (headers)
-   or `afterMain` (footers). `class` puts classes on `<html>`, e.g. `scheme-light-dark` for a page following the color
-   scheme of the user, as the tile patterns do. The page brings its own `<main id="main">` as `children`; the layout
-   adds nothing around it, and the build links the page's `main.js`.
+   or `afterMain` (footers). The page brings its own `<main id="main">` as `children`; the layout adds nothing around
+   it, and the build links the page's `main.js`.
 4. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
 5. Wire it up as described in _Wiring up a new page_. The dev server lists it on its next start – pages are found by
