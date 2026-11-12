@@ -112,9 +112,9 @@ test.describe('without initialized design system', () => {
     await page.route('**/*', async (route) => {
       if (route.request().url().endsWith('.js')) {
         await sleep(500);
-        await route.continue();
+        await route.fallback();
       } else {
-        await route.continue();
+        await route.fallback();
       }
     });
   };

@@ -23,7 +23,7 @@ test.beforeEach(async ({ page }) => {
       requestedImagePath = url;
     }
 
-    await route.continue();
+    await route.fallback();
   });
 });
 
