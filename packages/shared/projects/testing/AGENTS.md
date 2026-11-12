@@ -87,7 +87,9 @@ use: {
 ```
 
 - `externalRequests` (`{ stubs, allowedOrigins, images }`, default `{}`) configures rows 3 to 5. `false` switches
-  routing off. Only the smoke suite does that, so it runs with the guard on and no routing, against the live CDN.
+  routing off. Only the smoke suite does that, so it runs with the guard on and no routing, against the live CDN. A
+  `test.use({ externalRequests })` replaces the suite config's object and does not merge into it, so a spec that changes
+  routing spreads the parts of the suite's value it wants to keep.
 - `expectedConsole` (`RegExp[]`, default `[]`) lists what the test expects. A pattern is tested against the message text
   followed by a space and its source URL. Uncaught page errors can be declared too, and a pattern is then tested against
   the error message.
