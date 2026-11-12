@@ -25,10 +25,16 @@ const Page = () => (
         prevent. So the tile does not clip, and the image and the gradient follow its corners themselves.
       </Comment>
       <Comment>{tileComments.darkScheme}</Comment>
-      <div class="col-basic justify-self-center w-full max-w-[560px] relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark">
+      <div
+        id="feature-highlight-tile"
+        class="col-basic justify-self-center w-full max-w-[560px] group relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark"
+      >
         <Comment>Decorative, it lies behind the content and covers the tile.</Comment>
+        <Comment>
+          Dimmed while the details are expanded, so the attention rests on them rather than on the mood of the tile.
+        </Comment>
         <img
-          class="absolute inset-0 -z-1 size-full object-cover rounded-[inherit]"
+          class="absolute inset-0 -z-1 size-full object-cover rounded-[inherit] motion-safe:transition-[filter] duration-md ease-in-out group-data-[open]:brightness-50"
           src="/examples/media/lights.jpg"
           alt=""
           width="1366"
@@ -57,9 +63,12 @@ const Page = () => (
       // Behaviour of the feature highlight: the accordion is controlled, so the page writes back the state it asks for.
 
       const featureHighlightAccordion = document.getElementById('feature-highlight-accordion');
+      const featureHighlightTile = document.getElementById('feature-highlight-tile');
 
       featureHighlightAccordion.addEventListener('update', (e) => {
         featureHighlightAccordion.open = e.detail.open;
+        // The accordion keeps its state as a property rather than an attribute, so the tile carries one for the styles.
+        featureHighlightTile.toggleAttribute('data-open', e.detail.open);
       });
     `
     }</Script>
