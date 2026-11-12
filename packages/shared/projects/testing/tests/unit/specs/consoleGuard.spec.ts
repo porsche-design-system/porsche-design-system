@@ -38,6 +38,10 @@ describe('findUnexpectedConsole()', () => {
   it('any other info is ignored', () => {
     expect(findUnexpectedConsole([message('info', 'Download the React DevTools')], [])).toEqual([]);
   });
+
+  it('a global pattern matches every message', () => {
+    expect(findUnexpectedConsole([message('error', 'boom'), message('error', 'boom')], [/boom/g])).toEqual([]);
+  });
 });
 
 describe('formatUnexpectedConsole()', () => {
