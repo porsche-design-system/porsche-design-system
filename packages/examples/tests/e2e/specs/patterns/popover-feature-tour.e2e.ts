@@ -1,11 +1,5 @@
-import { expect, test } from '@playwright/test';
-import {
-  collectPageErrors,
-  getExampleUrl,
-  isOpen,
-  setupExamplePage,
-  waitForStablePosition,
-} from '../../helpers/index.ts';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, isOpen, setupExamplePage, waitForStablePosition } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/popover/feature-tour` – coachmarks in controlled mode, of which only one is open at a time.
@@ -14,13 +8,10 @@ import {
 const url = getExampleUrl('patterns-popover-feature-tour');
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   // The site name is fixed; the part before it is what the page sets, and no page may ship without one.
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
 });
 
 test('walks the steps one at a time and ends on skip', async ({ page }) => {

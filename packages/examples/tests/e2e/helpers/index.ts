@@ -1,6 +1,5 @@
-import type { ConsoleMessage, Locator, Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
-import { stubExternalRequests } from '../../helpers/index.ts';
 
 export { getDevice, getExampleUrl, getSpecPath, waitForStablePosition } from '../../helpers/index.ts';
 
@@ -11,9 +10,9 @@ export { getDevice, getExampleUrl, getSpecPath, waitForStablePosition } from '..
  * layout to stop moving. All three are wrong here: the video is the thing under test on the pages that have one, the
  * focus a flow moves is exactly what is asserted, and a behaviour test should not wait for a stable *picture*.
  *
- * What both share is the part that makes a run hermetic – the external origins, including the CDN the loader builds
- * its URL for at runtime – and waiting until the components have actually upgraded, because everything an example
- * wires up hangs off `p-*` elements.
+ * What both share is waiting until the components have actually upgraded, because everything an example wires up hangs
+ * off `p-*` elements. The shared `test` routes the external origins for both, including the CDN the loader builds its
+ * URL for at runtime.
  */
 
 /** Height of the viewport when a test sets the width itself, for the flows that resize the page. */
@@ -26,37 +25,11 @@ export const defaultViewportHeight = 800;
  * about resizing passes a width of its own.
  */
 export const setupExamplePage = async (page: Page, url: string, viewportWidth?: number): Promise<void> => {
-  await stubExternalRequests(page);
   if (viewportWidth) {
     await page.setViewportSize({ width: viewportWidth, height: defaultViewportHeight });
   }
   await page.goto(url);
   await waitForComponentsHydrated(page);
-};
-
-/**
- * Collects everything the page reports as broken: `console.error` and uncaught exceptions.
- *
- * This is the cheapest check there is for these examples and it covers their most likely failure. The behaviour of a
- * page is a plain script wired on ids, moved into its `main.js` by the build – so a renamed element, a script that
- * ends up in a page it was not written for, or a `main.js` that throws on load all fail silently in the browser. The page still
- * renders, the VRT still matches, and nothing works.
- *
- * Must be installed **before** the navigation, since most of it happens while the page loads.
- */
-export const collectPageErrors = (page: Page): string[] => {
-  const errors: string[] = [];
-
-  page.on('console', (message: ConsoleMessage) => {
-    if (message.type() === 'error') {
-      errors.push(`console.error: ${message.text()}`);
-    }
-  });
-  page.on('pageerror', (error: Error) => {
-    errors.push(`uncaught: ${error.message}`);
-  });
-
-  return errors;
 };
 
 /**

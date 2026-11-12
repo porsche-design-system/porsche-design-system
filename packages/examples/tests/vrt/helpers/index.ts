@@ -1,7 +1,6 @@
 import type { Page } from '@playwright/test';
-import { expect, test } from '@playwright/test';
 import { schemes } from '@porsche-design-system/testing';
-import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { expect, test, waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
 import { getDevice, getExampleUrl, setupExamplePage, waitForStableLayout } from '../../helpers/index.ts';
 
 /**
