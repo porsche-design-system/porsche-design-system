@@ -1,6 +1,6 @@
 import { viewportWidthM } from '@porsche-design-system/testing';
-import { setupScenario } from '../../../vrt/helpers';
-import { componentsValid, expect, harnessPageConsole, test, waitForComponentsHydratedInFrames } from '../../helpers';
+import { harnessPageConsole, setupScenario } from '../../../vrt/helpers';
+import { componentsValid, expect, test, waitForComponentsHydratedInFrames } from '../../helpers';
 
 const pagesToTest = componentsValid.filter((item) => {
   return !['flyout', 'optgroup', 'radio-group-option'].includes(item); // removes 'flyout', 'optgroup' and 'radio-group-option' as they are not available as a test-page

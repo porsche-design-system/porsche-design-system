@@ -1,6 +1,6 @@
 import { viewportWidthXXL } from '@porsche-design-system/testing';
-import { setupScenario } from '../../../vrt/helpers';
-import { expect, harnessPageConsole, test, waitForComponentsHydratedInFrames } from '../../helpers';
+import { harnessPageConsole, setupScenario } from '../../../vrt/helpers';
+import { expect, test, waitForComponentsHydratedInFrames } from '../../helpers';
 
 // executed in Chrome only
 test.describe('overview', async () => {

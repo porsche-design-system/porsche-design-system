@@ -5,7 +5,7 @@ import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/
 import { expect, test } from '@porsche-design-system/testing/playwright';
 import * as globby from 'fast-glob';
 import * as path from 'path';
-import { setupScenario } from '../helpers';
+import { harnessPageConsole, setupScenario } from '../helpers';
 
 const sourceDirectory = path.resolve('src/pages');
 const fileNames = globby.sync(`${sourceDirectory}/*.html`).map((filePath) => path.basename(filePath, '.html'));
@@ -75,6 +75,11 @@ test('should have certain amount of components', () => {
 for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
+    });
+
     for (const scheme of schemes) {
       test(`color-scheme ${scheme}`, async ({ page }) => {
         await setupScenario(page, `/${component}?scheme=${scheme}`, viewportWidthM);
