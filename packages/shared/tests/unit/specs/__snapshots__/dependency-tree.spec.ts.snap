@@ -22,6 +22,7 @@ exports[`should have no regression for dependency tree 1`] = `
     "utils/convertToAngular.js",
     "utils/convertToReact.js",
     "utils/convertToVue.js",
+    "utils/rewriteCdnUrlsForDev.js",
   ],
   "lib/partialNames.js": [],
   "lib/tagNames.js": [],
@@ -32,5 +33,6 @@ exports[`should have no regression for dependency tree 1`] = `
   "utils/convertToAngular.js": [],
   "utils/convertToReact.js": [],
   "utils/convertToVue.js": [],
+  "utils/rewriteCdnUrlsForDev.js": [],
 }
 `;
