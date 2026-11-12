@@ -22,6 +22,7 @@ import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.t
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
 import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-market-switch/index.page.tsx';
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
+import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import {
@@ -31,6 +32,7 @@ import {
   flattenNavItems,
   getOpeningTag,
   patternPages,
+  singleTilePages,
   tilePages,
 } from '../helpers/index.ts';
 
@@ -653,15 +655,6 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
   /** `cover` of `p-link`, a boolean attribute – the formatted markup puts it on a line of its own. */
   const hasCoveringLink = (html: string): boolean => /<p-link[^>]*\scover[\s>]/.test(html);
 
-  it('should show the tile on its own, below no first level heading', async () => {
-    const html = await renderPage(Page);
-
-    // The tile is content of a page rather than a page, so like the footer pattern it brings no heading of its own
-    // above it – a heading in the tile has the second level it has in a section of a real page.
-    expect(countFirstLevelHeadings(html)).toBe(0);
-    expect(html).not.toMatch(/<(p-heading tag="|)h[13-6][\s>"]/);
-  });
-
   it('should give the focus ring of a covering link the corners of the tile', async () => {
     const html = await renderPage(Page);
 
@@ -679,8 +672,8 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
 
     // The scheme of the page is the decision of the application the tile is copied into, so the pattern sets none and
     // declares both instead – the storefront applies the one its visitor chose. Light content on a gradient, a
-    // background or a brand color needs the dark scheme whatever the application uses, and the dark vehicle of the
-    // category would vanish on a dark surface – every other tile works in both schemes and follows the page.
+    // background or a brand color needs the dark scheme whatever the application uses, and the dark products of the
+    // category tiles would vanish on a dark surface – every other tile works in both schemes and follows the page.
     expect(html).toContain('<html lang="en">');
     expect(html).not.toMatch(/\bscheme-(light|dark|light-dark|normal)\b/);
     expect(meta.colorSchemes).toEqual(['light', 'dark']);
@@ -688,19 +681,72 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
       expect(fixedSchemes).toEqual(['scheme-only-dark']);
     } else if (name === 'patterns/tile/category') {
       expect(fixedSchemes).toEqual(['scheme-only-light']);
+    } else if (name === 'patterns/tile/category-grid') {
+      // The same tile, three times over, so the same reason applies to each of them.
+      expect(fixedSchemes).toEqual(['scheme-only-light', 'scheme-only-light', 'scheme-only-light']);
     } else {
       expect(fixedSchemes).toEqual([]);
     }
+  });
+});
+
+describe.each(singleTilePages)('%s single tile pattern', (name, Page) => {
+  /** `cover` of `p-link`, a boolean attribute – the formatted markup puts it on a line of its own. */
+  const hasCoveringLink = (html: string): boolean => /<p-link[^>]*\scover[\s>]/.test(html);
+
+  it('should show the tile on its own, below no first level heading', async () => {
+    const html = await renderPage(Page);
+
+    // The tile is content of a page rather than a page, so like the footer pattern it brings no heading of its own
+    // above it – a heading in the tile has the second level it has in a section of a real page.
+    expect(countFirstLevelHeadings(html)).toBe(0);
+    expect(html).not.toMatch(/<(p-heading tag="|)h[13-6][\s>"]/);
   });
 
   it('should make the tile clickable through exactly one link, named by its text', async () => {
     const html = await renderPage(Page);
     const anchors =
       html.match(/<a href="#" class="absolute inset-0 z-1[^"]*">\s*<span class="sr-only">[^<]+<\/span>/g) ?? [];
-    const isClickable = !['patterns/tile/feature', 'patterns/tile/feature-highlight'].includes(name);
+    const isClickable = ![
+      'patterns/tile/feature',
+      'patterns/tile/feature-highlight',
+      'patterns/tile/equipment',
+      'patterns/tile/equipment-stacked',
+    ].includes(name);
 
     // Either a `p-link` with `cover` stretches its clickable area over the tile, or an anchor of its own spans it, with
-    // visually hidden text as its accessible name – the feature tiles aren't clickable as a whole and have neither.
+    // visually hidden text as its accessible name – the feature tiles aren't clickable as a whole and have neither,
+    // and the equipment tile carries an action rather than opening a page.
     expect(Number(hasCoveringLink(html)) + anchors.length).toBe(Number(isClickable));
+  });
+});
+
+describe('patterns/tile/category-grid tile pattern', () => {
+  it('should head the tiles with one heading and rank them below it', async () => {
+    const html = await renderPage(TileCategoryGridPage);
+
+    // What the single tile patterns forbid is a heading above *the tile*, because a lone tile is content of a page
+    // rather than a page. Here the heading is what the arrangement is about, so it takes the second level a section
+    // of a real page would give it, and the tiles rank below it – still no first level heading, still no page.
+    expect(countFirstLevelHeadings(html)).toBe(0);
+    expect((html.match(/<p-heading[^>]*\stag="h2"/g) ?? []).length).toBe(1);
+    expect(countOccurrences(html, 'tag="h3"')).toBe(3);
+  });
+
+  it('should make every tile clickable through a covering link of its own', async () => {
+    const html = await renderPage(TileCategoryGridPage);
+
+    // One link per tile, each naming its own category – the rule the single tile patterns state once, counted per
+    // tile here.
+    expect((html.match(/<p-link[^>]*\scover[\s>]/g) ?? []).length).toBe(3);
+    expect(countOccurrences(html, '[--p-link-cover-radius:var(--radius-3xl)]')).toBe(3);
+  });
+
+  it('should group the tiles as a list', async () => {
+    const html = await renderPage(TileCategoryGridPage);
+
+    // How many categories there are is announced before the first of them is read. Matched up to any whitespace,
+    // since the formatter puts a long class attribute on a line of its own.
+    expect((html.match(/<li[\s>]/g) ?? []).length).toBe(3);
   });
 });

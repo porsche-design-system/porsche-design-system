@@ -11,6 +11,9 @@ import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-ma
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
 import TileCallToActionPage from '../../../src/patterns/tile/call-to-action/index.page.tsx';
 import TileCategoryPage from '../../../src/patterns/tile/category/index.page.tsx';
+import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index.page.tsx';
+import TileEquipmentPage from '../../../src/patterns/tile/equipment/index.page.tsx';
+import TileEquipmentStackedPage from '../../../src/patterns/tile/equipment-stacked/index.page.tsx';
 import TileFeaturePage from '../../../src/patterns/tile/feature/index.page.tsx';
 import TileFeatureHighlightPage from '../../../src/patterns/tile/feature-highlight/index.page.tsx';
 import TileImageCategoryPage from '../../../src/patterns/tile/image-category/index.page.tsx';
@@ -76,9 +79,20 @@ export const patternPages = [
   ['patterns/tile/call-to-action', TileCallToActionPage],
   ['patterns/tile/model-teaser', TileModelTeaserPage],
   ['patterns/tile/product-teaser', TileProductTeaserPage],
+  ['patterns/tile/category-grid', TileCategoryGridPage],
+  ['patterns/tile/equipment', TileEquipmentPage],
+  ['patterns/tile/equipment-stacked', TileEquipmentStackedPage],
 ] as const;
 
 /** The tile patterns – one use case of a tile each, built with HTML and Tailwind CSS. */
 export const tilePages = patternPages.filter(([path]) => path.startsWith('patterns/tile/'));
+
+/**
+ * The tile patterns that show a single tile, which most of them are.
+ *
+ * What the others add is an arrangement of several tiles, so the rules that count once per page – the heading above
+ * the tile, the one link that opens it – are counted per tile there instead and asserted on the page of their own.
+ */
+export const singleTilePages = tilePages.filter(([path]) => path !== 'patterns/tile/category-grid');
 
 export const examplePages = [...templatePages, ...patternPages];
