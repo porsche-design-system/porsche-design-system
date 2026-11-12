@@ -16,7 +16,7 @@ test.beforeEach(async ({ page }) => {
         body: JSON.stringify(ALGOLIA_RESPONSE_MOCK),
       });
     } else {
-      await route.continue();
+      await route.fallback();
     }
   });
 });
