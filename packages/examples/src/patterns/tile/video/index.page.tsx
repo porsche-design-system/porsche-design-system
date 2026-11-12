@@ -46,7 +46,7 @@ const Page = () => (
         </div>
         <Comment>{tileComments.gradient}</Comment>
         <div class="self-end flex flex-wrap items-center gap-fluid-sm px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
-          <p-heading tag="h2" size="md" weight="semibold">
+          <p-heading tag="h2" size="md" weight="regular">
             GTS models
           </p-heading>
           <Comment>
@@ -66,7 +66,7 @@ const Page = () => (
             Play video
           </p-button>
           <Comment>{tileComments.coverLink}</Comment>
-          <p-link variant="secondary" icon="arrow-right" hide-label="true" compact="true" cover={true}>
+          <p-link variant="secondary" icon="arrow-up-right" hide-label="true" compact="true" cover={true}>
             <a href="#">GTS models</a>
           </p-link>
         </div>

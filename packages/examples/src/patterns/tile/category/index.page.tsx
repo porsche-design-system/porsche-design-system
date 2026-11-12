@@ -27,14 +27,14 @@ const Page = () => (
         <Comment>{tileComments.clip}</Comment>
         <div class="flex flex-col gap-fluid-lg aspect-3/4 overflow-clip rounded-[inherit] bg-surface pt-fluid-md">
           <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
-            <p-heading tag="h2" size="md" weight="semibold">
+            <p-heading tag="h2" size="md" weight="regular">
               Vehicle Accessories
             </p-heading>
             <Comment>{tileComments.coverLink}</Comment>
             <p-link
               class="ms-auto"
               variant="secondary"
-              icon="arrow-right"
+              icon="arrow-up-right"
               hide-label="true"
               compact="true"
               cover={true}
@@ -43,14 +43,14 @@ const Page = () => (
             </p-link>
           </div>
           <Comment>{tileComments.fill}</Comment>
-          <Comment>Its upper part stays in view when the tile is too short for the whole image.</Comment>
+          <Comment>Set against the lower edge and reaching past it, so the product is cut there.</Comment>
           <Comment>{tileComments.zoom}</Comment>
           <img
-            class="grow basis-0 min-h-0 w-full object-cover object-top motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-            src="/examples/media/roof-box-on-a-car.webp"
-            alt="Porsche vehicle with roof box"
-            width="1080"
-            height="1082"
+            class="grow basis-0 min-h-0 w-full object-contain object-bottom translate-y-[8%] motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+            src="/examples/media/wall-charger.webp"
+            alt="A Porsche wall charger"
+            width="290"
+            height="581"
           />
         </div>
       </div>

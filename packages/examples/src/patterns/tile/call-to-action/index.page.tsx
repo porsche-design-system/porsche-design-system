@@ -34,15 +34,13 @@ const Page = () => (
             height="667"
           />
         </div>
-        <Comment>
-          Takes up to half of the tile and carries the gradient, mirrored for right to left, so it keeps the text
-          legible on the image.
-        </Comment>
-        <div class="max-w-1/2 flex flex-col items-start justify-center gap-fluid-sm ps-fluid-md pe-fluid-lg py-fluid-md rounded-s-[inherit] bg-fade-to-r rtl:bg-fade-to-l">
+        <Comment>{tileComments.gradient}</Comment>
+        <div class="self-end flex flex-col items-start gap-fluid-sm px-fluid-lg pt-fluid-lg pb-fluid-lg rounded-b-[inherit] bg-fade-to-t">
           <p-heading tag="h2" size="lg">
             Porsche Connect.
           </p-heading>
-          <p-text>
+          <Comment>The limit of 65 characters holds the lines at a readable length, however wide the tile is.</Comment>
+          <p-text class="max-w-[40ch]">
             Porsche Connect enhances the driving experience with a wide range of music and video streaming services, the
             integrated Voice Pilot and remote services via the My Porsche app.
           </p-text>
