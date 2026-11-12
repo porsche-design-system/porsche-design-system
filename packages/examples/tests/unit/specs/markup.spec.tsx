@@ -25,6 +25,8 @@ import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-ma
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
+import PersonalizedMailingNoVideoPage from '../../../src/templates/personalized-mailing/no-video/index.page.tsx';
+import PersonalizedMailingVideoPage from '../../../src/templates/personalized-mailing/video/index.page.tsx';
 import {
   countFirstLevelHeadings,
   countOccurrences,
@@ -506,6 +508,28 @@ describe('admin panel', () => {
     expect(html).toContain('Edit 718 Cayman');
     expect(html).toContain('Delete 911 Carrera');
     expect(countOccurrences(html, 'name="some-name"')).toBe(0);
+  });
+});
+
+describe.each([
+  ['video', PersonalizedMailingVideoPage],
+  ['no-video', PersonalizedMailingNoVideoPage],
+] as const)('personalized mailing %s', (variant, Page) => {
+  it('should keep its dark design without setting a color scheme on the document', async () => {
+    const html = await renderPage(Page);
+    const { meta } = (await import(
+      path.join(srcDir, 'templates/personalized-mailing', variant, 'index.page.tsx')
+    )) as PageModule;
+
+    // The scheme of the document is the decision of the application, so the template fixes the dark scheme on each
+    // element directly in its body instead – which leaves it dark whatever the application uses.
+    expect(html).toContain('<html lang="en">');
+    expect(html).not.toMatch(/\bscheme-(dark|light-dark|normal)\b/);
+    expect(html).toMatch(/<main id="main" class="scheme-only-dark bg-canvas /);
+    expect(html).toContain('<footer class="grid-template py-fluid-lg bg-canvas scheme-only-dark">');
+    expect(html).toMatch(/<aside\s+id="pm-contact-bar"\s+class="scheme-only-dark /);
+    expect(html).toMatch(/<p-modal\s+id="pm-video-modal"\s+class="scheme-only-dark /);
+    expect(meta.colorSchemes).toEqual(['light', 'dark']);
   });
 });
 

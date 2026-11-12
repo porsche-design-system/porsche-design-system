@@ -5,6 +5,7 @@ import { description, PersonalizedMailing } from '../PersonalizedMailing.tsx';
 export const meta: ExampleMeta = {
   title: 'Personalized mailing: No video',
   description: `${description} It opens on a giant title the configured vehicle is pulled up into – for a lighter page, or when no footage is available.`,
+  colorSchemes: ['light', 'dark'],
 };
 
 /** Personalized mailing – the `no-video` variant, opening on a giant title instead of a video. */
