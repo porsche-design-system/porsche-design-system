@@ -1,6 +1,6 @@
-import { type BrowserContext, expect, type Frame, type Page, type Request, test } from '@playwright/test';
+import type { Frame, Page, Request } from '@playwright/test';
 import { examples } from '@porsche-design-system/examples';
-import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { expect, test, waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
 
 /**
  * The patterns and templates the storefront frames from `public/examples/`, and opens in StackBlitz.
@@ -25,23 +25,6 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
   ['/templates/landing-page/', ['templates/landing-page']],
 ];
 
-/**
- * Serves the Porsche Design System CDN from `serve-cdn`.
- *
- * The copy step already points the literal URLs of a framed page at the local CDN, but the loader partial builds the
- * URL of the components at runtime (`"https://cdn.ui.porsche." + …`), so that one request still leaves for production –
- * where the chunks of an unreleased build do not exist.
- */
-const routeCdnToLocal = async (context: BrowserContext): Promise<void> => {
-  await context.route(/^https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system\//, async (route) => {
-    const url = route
-      .request()
-      .url()
-      .replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001');
-    await route.fulfill({ response: await route.fetch({ url }) });
-  });
-};
-
 const getExampleFrames = async (page: Page): Promise<Frame[]> => {
   const iframes = page.locator('iframe[src*="/examples/"]');
   await expect(iframes.first()).toBeAttached();
@@ -53,10 +36,6 @@ const getExampleFrames = async (page: Page): Promise<Frame[]> => {
   }
   return frames;
 };
-
-test.beforeEach(async ({ context }) => {
-  await routeCdnToLocal(context);
-});
 
 for (const [path, examples] of pagesWithExamples) {
   test.describe(path, () => {

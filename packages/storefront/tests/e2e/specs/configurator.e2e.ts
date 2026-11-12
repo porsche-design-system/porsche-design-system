@@ -1,5 +1,6 @@
-import { expect, type Page, test } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { FRAMEWORKS, type Framework, frameworkNameMap } from '@porsche-design-system/shared';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { camelCase, pascalCase } from 'change-case';
 
 const selectMarkupFramework = async (page: Page, framework: Framework) => {
