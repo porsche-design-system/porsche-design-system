@@ -18,8 +18,8 @@ test('loads without reporting an error', async ({ page }) => {
 
   await setupExamplePage(page, url);
 
-  // The site name is fixed; the part before it is what the page sets, and no page may ship without one.
-  await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
+  // Templates share one site name; the part before it is what the page sets, and no page may ship without one.
+  await expect(page).toHaveTitle(/^.+ \| Dummy Templates$/);
   expect(errors).toEqual([]);
 });
 
