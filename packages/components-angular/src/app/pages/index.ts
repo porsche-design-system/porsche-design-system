@@ -1,8 +1,8 @@
 import type { ExtendedRoute } from '../app-routing.module';
 import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.component';
 import { EventsComponent } from './events.component';
-import { OptionalPropertiesComponent } from './optional-properties.component';
 import { optionValueTimingBugComponents } from './option-value-timing-bug';
+import { OptionalPropertiesComponent } from './optional-properties.component';
 import { tabsBarNavigationComponents } from './tabs-bar-navigation';
 import { tabsBarNavigationBugComponents } from './tabs-bar-navigation-bug';
 import { UtilitiesComponent } from './utilities.component';
@@ -19,11 +19,6 @@ export const pages = [
 
 export * from './core-initializer-prefixed.component';
 export * from './events.component';
-export * from './optional-properties.component';
-export * from './utilities.component';
-export * from './tabs-bar-navigation';
-export * from './tabs-bar-navigation-bug';
-export * from './option-value-timing-bug';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
@@ -216,6 +211,8 @@ import { SheetGridComponent } from './generated/sheet-grid.component';
 import { SheetPrefixedComponent } from './generated/sheet-prefixed.component';
 import { SheetScrollableComponent } from './generated/sheet-scrollable.component';
 import { SheetScrolledComponent } from './generated/sheet-scrolled.component';
+import { SheetSwipeHandleComponent } from './generated/sheet-swipe-handle.component';
+import { SheetSwipeHandleNoDismissComponent } from './generated/sheet-swipe-handle-no-dismiss.component';
 import { SheetWithoutDismissButtonComponent } from './generated/sheet-without-dismiss-button.component';
 import { SheetWithoutHeadingComponent } from './generated/sheet-without-heading.component';
 import { SpinnerComponent } from './generated/spinner.component';
@@ -436,6 +433,8 @@ export const generatedPages = [
   SheetPrefixedComponent,
   SheetScrollableComponent,
   SheetScrolledComponent,
+  SheetSwipeHandleComponent,
+  SheetSwipeHandleNoDismissComponent,
   SheetWithoutDismissButtonComponent,
   SheetWithoutHeadingComponent,
   SpinnerComponent,
@@ -1407,6 +1406,16 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Sheet Scrolled',
     path: 'sheet-scrolled',
     component: SheetScrolledComponent,
+  },
+  {
+    name: 'Sheet Swipe Handle',
+    path: 'sheet-swipe-handle',
+    component: SheetSwipeHandleComponent,
+  },
+  {
+    name: 'Sheet Swipe Handle No Dismiss',
+    path: 'sheet-swipe-handle-no-dismiss',
+    component: SheetSwipeHandleNoDismissComponent,
   },
   {
     name: 'Sheet Without Dismiss Button',
