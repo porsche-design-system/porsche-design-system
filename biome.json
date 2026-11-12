@@ -96,7 +96,86 @@
       "!**/utilities/**/*",
       "!**/*.svg",
       "!packages/components/src/index.html",
-      "!packages/components/src/debug.html"
+      "!packages/components/src/debug.html",
+      "packages/assets/projects",
+      "packages/assets/projects/flags",
+      "packages/assets/projects/flags/tests",
+      "packages/assets/projects/flags/tests/unit",
+      "packages/assets/projects/flags/tests/unit/helpers",
+      "packages/assets/projects/icons",
+      "packages/assets/projects/icons/tests",
+      "packages/assets/projects/icons/tests/unit",
+      "packages/assets/projects/icons/tests/unit/helpers",
+      "packages/components-angular/tests",
+      "packages/components-angular/tests/e2e",
+      "packages/components-angular/tests/e2e/helpers",
+      "packages/components-angular/tests/e2e/specs",
+      "packages/components-angular/tests/smoke",
+      "packages/components-angular/tests/smoke/unit",
+      "packages/components-angular/tests/smoke/unit/specs",
+      "packages/components-angular/tests/vrt",
+      "packages/components-angular/tests/vrt/specs",
+      "packages/components-angular/tests/vrt/specs/components",
+      "packages/components-js/tests",
+      "packages/components-js/tests/a11y",
+      "packages/components-js/tests/a11y/helpers",
+      "packages/components-js/tests/a11y/specs",
+      "packages/components-js/tests/a11y/specs/a11ytree",
+      "packages/components-js/tests/a11y/specs/axe-core",
+      "packages/components-js/tests/e2e",
+      "packages/components-js/tests/e2e/helpers",
+      "packages/components-js/tests/e2e/specs",
+      "packages/components-js/tests/smoke",
+      "packages/components-js/tests/smoke/e2e",
+      "packages/components-js/tests/smoke/e2e/helpers",
+      "packages/components-js/tests/smoke/e2e/specs",
+      "packages/components-js/tests/smoke/unit",
+      "packages/components-js/tests/smoke/unit/helpers",
+      "packages/components-js/tests/smoke/unit/specs",
+      "packages/components-js/tests/vrt",
+      "packages/components-js/tests/vrt/helpers",
+      "packages/components-js/tests/vrt/specs",
+      "packages/components-react/projects",
+      "packages/components-react/projects/nextjs",
+      "packages/components-react/projects/nextjs/tests",
+      "packages/components-react/projects/nextjs/tests/e2e",
+      "packages/components-react/projects/nextjs/tests/e2e/helpers",
+      "packages/components-react/projects/nextjs/tests/e2e/specs",
+      "packages/components-react/projects/nextjs/tests/vrt",
+      "packages/components-react/projects/nextjs/tests/vrt/specs",
+      "packages/components-react/projects/react-router",
+      "packages/components-react/projects/react-router/tests",
+      "packages/components-react/projects/react-router/tests/vrt",
+      "packages/components-react/projects/react-router/tests/vrt/specs",
+      "packages/components-react/tests",
+      "packages/components-react/tests/e2e",
+      "packages/components-react/tests/e2e/helpers",
+      "packages/components-react/tests/e2e/specs",
+      "packages/components-react/tests/smoke",
+      "packages/components-react/tests/smoke/specs",
+      "packages/components-react/tests/vrt",
+      "packages/components-react/tests/vrt/specs",
+      "packages/components-react/tests/vrt/specs/components",
+      "packages/components-vue/projects",
+      "packages/components-vue/projects/vue-wrapper",
+      "packages/components-vue/projects/vue-wrapper/tests",
+      "packages/components-vue/projects/vue-wrapper/tests/smoke",
+      "packages/components-vue/projects/vue-wrapper/tests/smoke/specs",
+      "packages/components-vue/tests",
+      "packages/components-vue/tests/e2e",
+      "packages/components-vue/tests/e2e/helpers",
+      "packages/components-vue/tests/e2e/specs",
+      "packages/components-vue/tests/smoke",
+      "packages/components-vue/tests/smoke/unit",
+      "packages/components-vue/tests/smoke/unit/specs",
+      "packages/components-vue/tests/vrt",
+      "packages/components-vue/tests/vrt/specs",
+      "**/*.e2e.ts",
+      "**/*.a11y.ts",
+      "**/*.vrt.ts",
+      "**/*.smoke.ts",
+      "packages/**/tests/**/helpers/**/*.ts",
+      "!packages/shared/projects/testing/**"
     ]
   },
   "css": {
@@ -184,6 +263,47 @@
       }
     },
     {
+      "includes": [
+        "**/assets/**/*",
+        "**/components-angular/**/*",
+        "**/components-js/**/*",
+        "**/components-react/**/*",
+        "**/components-vue/**/*"
+      ],
+      "linter": {
+        "rules": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "includes": [
+        "**/*.e2e.ts",
+        "**/*.a11y.ts",
+        "**/*.vrt.ts",
+        "**/*.smoke.ts",
+        "packages/**/tests/**/helpers/**/*.ts",
+        "!packages/shared/projects/testing/**"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "@playwright/test": {
+                    "importNames": ["test"],
+                    "message": "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "includes": ["packages/storefront/**/*.{ts,tsx}", "!packages/storefront/src/components/common/DocsLink.tsx"],
       "linter": {
         "rules": {
@@ -192,7 +312,11 @@
               "level": "error",
               "options": {
                 "paths": {
-                  "next/link": "Use DocsLink from '@/components/common/DocsLink', which types routes and keeps anchors on the page."
+                  "next/link": "Use DocsLink from '@/components/common/DocsLink', which types routes and keeps anchors on the page.",
+                  "@playwright/test": {
+                    "importNames": ["test"],
+                    "message": "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard."
+                  }
                 }
               }
             }
