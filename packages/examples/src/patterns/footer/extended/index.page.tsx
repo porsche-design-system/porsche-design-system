@@ -6,7 +6,7 @@ import { Footer } from '../../../_partials/footer/Footer.tsx';
 export const meta: ExampleMeta = {
   title: 'Footer: Extended',
   description:
-    'The footer of a site. Besides the legal information – consumption and emission disclaimers, the wordmark, the copyright and the legal links – it offers the delivery country, the site navigation in columns, social media and payment service providers, so users can reach key information from wherever they are on the site.',
+    'The footer of a site. Besides the legal information – consumption and emission disclaimers, the wordmark, the copyright and the legal links – it offers the delivery country, the site navigation in columns, social media and payment service providers, so users can reach key information from wherever they are on the site. All texts and links are placeholders: the legal texts, the legal links and the pages they lead to, such as the imprint or the privacy policy, differ by market and have to be checked for each one.',
 };
 
 /**

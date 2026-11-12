@@ -6,7 +6,7 @@ import { SimpleFooter } from '../../../_partials/footer/Footer.tsx';
 export const meta: ExampleMeta = {
   title: 'Footer: Simple',
   description:
-    'A reduced footer with nothing but the legal information: consumption and emission disclaimers, the wordmark, the copyright and the legal links. It suits a page that stands on its own, such as a campaign or a personalized landing page, where the site navigation would lead away from it.',
+    'A reduced footer with nothing but the legal information: consumption and emission disclaimers, the wordmark, the copyright and the legal links. It suits a page that stands on its own, such as a campaign or a personalized landing page, where the site navigation would lead away from it. All texts and links are placeholders: the legal texts, the legal links and the pages they lead to, such as the imprint or the privacy policy, differ by market and have to be checked for each one.',
 };
 
 /**
