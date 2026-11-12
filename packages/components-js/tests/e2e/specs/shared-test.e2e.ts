@@ -29,6 +29,15 @@ test.describe('console guard', () => {
     test('passes on a declared message', async ({ page }) => {
       await page.evaluate(() => console.error('boom'));
     });
+
+    test('passes on a declared page error', async ({ page }) => {
+      await page.evaluate(() =>
+        setTimeout(() => {
+          throw new Error('boom');
+        })
+      );
+      await page.waitForTimeout(50);
+    });
   });
 
   test('sees a message logged on the last line of the test', async ({ page }) => {
