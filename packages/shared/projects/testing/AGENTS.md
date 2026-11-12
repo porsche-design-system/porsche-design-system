@@ -17,9 +17,14 @@ src/
 ├── index.ts                    # `.`: the Playwright base configs, viewport and theme constants, validateCssWithW3C
 ├── assertDefined.ts            # `./assert-defined`
 ├── normalizeCssNamespace.ts    # `./normalize-css-namespace`
-├── axe.ts                      # `./axe`: createAxeTest
-└── playwright/index.ts         # `./playwright`: the Playwright helpers more than one package uses
-tests/unit/                     # the specs of assertDefined and normalizeCssNamespace
+├── axe.ts                      # `./axe`: createAxeTest, built on the shared test
+└── playwright/
+    ├── index.ts                # `./playwright`: the shared test, expect and the helpers more than one package uses
+    ├── test.ts                 # test: Playwright's test plus the request routing and console guard fixtures
+    ├── externalRequests.ts     # resolveExternalRequest: the routing outcome of one request
+    ├── consoleGuard.ts         # which console messages and page errors fail a test
+    └── harnessPageConsole.ts   # messages the components-js harness pages log on purpose
+tests/unit/                     # the specs of assertDefined, normalizeCssNamespace, consoleGuard and externalRequests
 ```
 
 ## What belongs here
@@ -40,6 +45,79 @@ tests/unit/                     # the specs of assertDefined and normalizeCssNam
 - `@playwright/test` and `@axe-core/playwright` are `peerDependencies` as well as `devDependencies`, never
   `dependencies`: a second copy of `@playwright/test` aborts every run.
 - A new subpath needs an entry in `exports` in `package.json`.
+
+## The shared Playwright `test`
+
+Every Playwright spec and test helper imports `test` from `@porsche-design-system/testing/playwright`, never from
+`@playwright/test`. It adds two automatic fixtures, both attached to the test's browser context: request routing and the
+console guard. A `noRestrictedImports` rule in `biome.json` fails `npm run lint` on the wrong import, smoke suite
+included.
+
+**A new directory of Playwright specs or test helpers in a package that `biome.json` `linter.includes` excludes
+(`components-js`, `components-angular`, `components-react`, `components-vue`, `assets`) must be added to
+`linter.includes` with each of its parent directories, or Biome never enters it and the rule never runs there.**
+
+### Request routing
+
+Each request gets exactly one outcome, checked in this order (`resolveExternalRequest` in
+`src/playwright/externalRequests.ts`):
+
+| #   | Request goes to                                                                      | Outcome                                                                                        |
+| --- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| 1   | `localhost` or `127.0.0.1`                                                           | not intercepted                                                                                |
+| 2   | the PDS CDN, `cdn.ui.porsche.com` or `cdn.ui.porsche.cn`, `/porsche-design-system/…` | answered with the same path from `serve-cdn` on `http://localhost:3001`, aborted if that fails |
+| 3   | an origin in `externalRequests.stubs`                                                | answered with that fixed reply                                                                 |
+| 4   | an origin in `externalRequests.allowedOrigins`                                       | goes to the network                                                                            |
+| 5   | anything else                                                                        | an image gets a placeholder SVG (`images: 'abort'` aborts it), every other request is aborted  |
+
+The fixture never fails a test itself. An aborted request fails it through the console guard: Chromium logs
+`Failed to load resource: net::ERR_FAILED` as an error, WebKit logs `Web Inspector blocked <url> from loading` as
+`info`, which `abortedRequestPatterns` in `src/playwright/consoleGuard.ts` counts as a failure.
+
+### The two options
+
+Both are Playwright options, set in the suite config's `use` or with `test.use`:
+
+```ts
+// packages/components-js/tests/e2e/config/playwright.config.ts
+use: {
+  externalRequests: { allowedOrigins: ['https://nav.porsche.com'] },
+  expectedConsole: [/parser-blocking, cross site .* is invoked via document\.write/],
+},
+```
+
+- `externalRequests` (`{ stubs, allowedOrigins, images }`, default `{}`) configures rows 3 to 5. `false` switches
+  routing off. Only the smoke suite does that, so it runs with the guard on and no routing, against the live CDN.
+- `expectedConsole` (`RegExp[]`, default `[]`) lists what the test expects. A pattern is tested against the message text
+  followed by a space and its source URL. Uncaught page errors can be declared too, and a pattern is then tested against
+  the error message.
+
+### Declaring expected console messages
+
+- **Add to the suite's patterns, do not replace them.** A spec adds patterns with the function form. A plain
+  `test.use({ expectedConsole: [...] })` replaces the suite config's patterns.
+
+  ```ts
+  test.use({
+    expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, /pattern/]),
+  });
+  ```
+
+- **Declare a message where it is seen.** A message seen on one page goes on that page's test or describe. A message
+  seen on more than one page of a suite goes in the suite config. The exception is a suite with a per-URL record: the
+  storefront keeps its record for both suites in `packages/storefront/tests/helpers/expectedConsole.ts`.
+- `harnessPageConsole` maps each components-js harness page to the messages it logs on purpose. A spec that renders one
+  of those pages, in any wrapper's suite, takes the page's patterns from it instead of repeating them.
+- **Nothing checks that a declared pattern ever matched.** A dead entry stays silent, so remove a declaration when its
+  cause is fixed, as the `#4800` TODO entries in the storefront record must be.
+
+### What the fixtures do not cover
+
+- **A spec's own `page.route` or `context.route` wins over the fixture.** Inside a catch-all spec route, call
+  `route.fallback()` for the requests the spec does not answer itself, which hands them to the fixture.
+  `route.continue()` sends them straight to the network.
+- **`browser.newContext()` bypasses both fixtures.** They are attached to the test's `context`, so a context a spec
+  creates itself is neither routed nor guarded.
 
 ## `normalizeCssNamespace` ships in a published bundle
 
