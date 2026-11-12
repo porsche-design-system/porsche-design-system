@@ -1,7 +1,7 @@
-import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { viewportWidthL, viewportWidthXS } from '@porsche-design-system/testing';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import * as globby from 'fast-glob';
 import path from 'path';
 
@@ -25,12 +25,32 @@ const components = fileNames
     return !argv.length || argv.includes(name);
   });
 
+// these harness pages set prose as value of a date, time or number input
+const invalidInputValue = [
+  /^The specified value "(?:Without label and description|Responsive label and description|Lorem ipsum dolor sit amet, consetetur sadipscing elitr,)" /,
+];
+
+// messages a page logs with JavaScript disabled, by component
+const pageConsole: Record<string, RegExp[]> = {
+  'input-date': invalidInputValue,
+  'input-month': invalidInputValue,
+  'input-number': invalidInputValue,
+  'input-time': invalidInputValue,
+  'input-week': invalidInputValue,
+  // next/image rejects the relative src of the deliberately missing image
+  'link-tile-product': [/status of 400 \(Bad Request\) http:\/\/localhost:3000\/_next\/image\?url=nonexistent\.png&/],
+};
+
 test('should have certain amount of components', () => {
   expect(components.length).toBe(60);
 });
 
 for (const component of components) {
   test.describe(component, async () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, ...(pageConsole[component] ?? [])]),
+    });
+
     for (const viewportWidth of [viewportWidthXS, viewportWidthL]) {
       test(`viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(`/${component}`);
