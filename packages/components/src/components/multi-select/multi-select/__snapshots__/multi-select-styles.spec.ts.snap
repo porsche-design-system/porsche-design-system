@@ -202,6 +202,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -445,6 +448,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -690,6 +696,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -934,6 +943,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -1172,6 +1184,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -1416,6 +1431,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -1657,6 +1675,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -1900,6 +1921,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -2141,6 +2165,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -2384,6 +2411,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -2626,6 +2656,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -2866,6 +2899,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -3116,6 +3152,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -3361,6 +3400,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -3604,6 +3646,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -3849,6 +3894,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -4091,6 +4139,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -4336,6 +4387,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -4578,6 +4632,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -4823,6 +4880,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -5061,6 +5121,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -5305,6 +5368,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -5546,6 +5612,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -5790,6 +5859,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -6032,6 +6104,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -6273,6 +6348,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;

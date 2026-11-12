@@ -80,6 +80,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -215,6 +218,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -352,6 +358,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -486,6 +495,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -622,6 +634,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -756,6 +771,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -892,6 +910,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -1030,6 +1051,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -1164,6 +1188,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -1300,6 +1327,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -1433,6 +1463,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -1571,6 +1604,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -1701,6 +1737,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -1830,6 +1869,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -2085,6 +2127,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -2353,6 +2398,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
