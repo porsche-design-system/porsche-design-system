@@ -9669,9 +9669,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the user closes the sheet via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.",
+        "description": "Emitted when the user closes the sheet via the dismiss button, swipe handle, backdrop click, Escape key, or a downward swipe. The event detail identifies which was used.",
         "type": "SheetDismissEventDetail",
-        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' }",
+        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' | 'swipe' }",
       },
       "motionHiddenEnd": {
         "description": "Emitted after the sheet's close transition has fully completed and the panel is hidden.",
@@ -9730,6 +9730,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Controls whether the sheet panel slides in from the bottom and is visible to the user.",
         "isRequired": true,
+        "type": "boolean",
+      },
+      "swipeHandle": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Shows a swipe handle and lets a downward drag close the sheet when its content is scrolled to the top.",
         "type": "boolean",
       },
     },

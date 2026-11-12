@@ -1,8 +1,7 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { SelectedAriaAttributes, SheetAriaAttribute } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import {
-  type Options,
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -12,6 +11,7 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
+  type Options,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -688,5 +688,257 @@ test.describe('events', () => {
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
+  });
+});
+
+test.describe('swipe handle', () => {
+  const getSheetPanel = (page: Page) => page.locator('p-sheet .sheet');
+  const getSwipeHandle = (page: Page) => page.locator('p-sheet .swipe-handle');
+
+  const enableSwipeHandle = async (
+    page: Page,
+    dismissButton = true,
+    content = '<div style="height: 240px">Some Content</div>',
+    options?: Options
+  ) => {
+    await initBasicSheet(page, { content }, options);
+    const host = getHost(page);
+    await setProperty(host, 'swipeHandle', true);
+    await setProperty(host, 'dismissButton', dismissButton);
+    await waitForStencilLifecycle(page);
+    await addEventListener(host, 'dismiss');
+    return host;
+  };
+
+  test('should close when the swipe handle is clicked', async ({ page }) => {
+    const host = await enableSwipeHandle(page);
+    await getSwipeHandle(page).click();
+    await waitForStencilLifecycle(page);
+
+    const summary = await getEventSummary(host, 'dismiss');
+    expect(summary.counter).toBe(1);
+    expect(summary.details).toEqual([{ reason: 'dismiss-button' }]);
+  });
+
+  test('should keep the handle out of tab order while the dismiss button is shown and use it as the keyboard close control otherwise', async ({
+    page,
+  }) => {
+    const host = await enableSwipeHandle(page, false);
+    const handle = getSwipeHandle(page);
+    await expect(handle).not.toHaveAttribute('tabindex');
+
+    await handle.focus();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'dismiss')).details).toEqual([{ reason: 'dismiss-button' }]);
+
+    await setProperty(host, 'open', true);
+    await setProperty(host, 'dismissButton', true);
+    await waitForStencilLifecycle(page);
+    await expect(handle).toHaveAttribute('tabindex', '-1');
+  });
+
+  test('should close with Escape when the dismiss button is hidden and the swipe handle is shown', async ({ page }) => {
+    const host = await enableSwipeHandle(page, false);
+    await page.keyboard.press('Escape');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'dismiss')).details).toEqual([{ reason: 'escape' }]);
+  });
+
+  test('should dismiss with reason swipe when dragging the swipe handle with a mouse, but not when dragging the sheet content', async ({
+    page,
+  }) => {
+    const host = await enableSwipeHandle(page);
+
+    // Dragging on the sheet body with a mouse must NOT trigger swipe (keeps text selection intact)
+    const panelBox = await getSheetPanel(page).boundingBox();
+    if (!panelBox) {
+      throw new Error('sheet panel has no box');
+    }
+    await page.mouse.move(panelBox.x + panelBox.width / 2, panelBox.y + 120);
+    await page.mouse.down();
+    await page.mouse.move(panelBox.x + panelBox.width / 2, panelBox.y + 340, { steps: 5 });
+    await page.mouse.up();
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    // Dragging from the swipe handle with a mouse scrubs the backdrop and emits { reason: 'swipe' } (no extra 'dismiss-button' click)
+    const handleBox = await getSwipeHandle(page).boundingBox();
+    if (!handleBox) {
+      throw new Error('swipe handle has no box');
+    }
+    const hx = handleBox.x + handleBox.width / 2;
+    const hy = handleBox.y + handleBox.height / 2;
+    await page.mouse.move(hx, hy);
+    await page.mouse.down();
+    await page.mouse.move(hx, hy + 220, { steps: 5 });
+
+    const background = await page
+      .locator('p-sheet dialog')
+      .evaluate((dialog: HTMLElement) => dialog.style.backgroundColor);
+    expect(background).toContain('color-mix');
+
+    await page.mouse.up();
+    await waitForStencilLifecycle(page);
+
+    const summary = await getEventSummary(host, 'dismiss');
+    expect(summary.counter).toBe(1);
+    expect(summary.details).toEqual([{ reason: 'swipe' }]);
+  });
+
+  test('should snap back when a mouse drag on the swipe handle is too short', async ({ page }) => {
+    const host = await enableSwipeHandle(page);
+    const handleBox = await getSwipeHandle(page).boundingBox();
+    if (!handleBox) {
+      throw new Error('swipe handle has no box');
+    }
+    const hx = handleBox.x + handleBox.width / 2;
+    const hy = handleBox.y + handleBox.height / 2;
+    await page.mouse.move(hx, hy);
+    await page.mouse.down();
+    await page.mouse.move(hx, hy + 14, { steps: 4 });
+    await page.mouse.up();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+    await expect(page.locator('p-sheet dialog')).toHaveJSProperty('style.backgroundColor', '');
+    await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
+  });
+
+  skipInBrowsers(['firefox', 'webkit'], () => {
+    test.describe('touch swipe (CDP)', () => {
+      const dragSheet = async (page: Page, distance: number) => {
+        const box = await getSheetPanel(page).boundingBox();
+        if (!box) {
+          throw new Error('sheet panel has no box');
+        }
+        const x = box.x + box.width / 2;
+        const y = box.y + Math.min(48, box.height / 2);
+        const session = await page.context().newCDPSession(page);
+        await session.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y }] });
+        await session.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x, y: y + distance }] });
+        return {
+          session,
+          release: () => session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }),
+        };
+      };
+
+      test('should fade the backdrop while dragging, dismiss on a downward swipe, and still emit motionHiddenEnd', async ({
+        page,
+      }) => {
+        const host = await enableSwipeHandle(page, false, '<div style="height: 240px">Some Content</div>', {
+          injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>',
+        });
+        await addEventListener(host, 'motionHiddenEnd');
+        const drag = await dragSheet(page, 220);
+        const background = await page
+          .locator('p-sheet dialog')
+          .evaluate((dialog: HTMLElement) => dialog.style.backgroundColor);
+
+        expect(background).toContain('color-mix');
+        await drag.release();
+        await waitForStencilLifecycle(page);
+
+        expect((await getEventSummary(host, 'dismiss')).details).toEqual([{ reason: 'swipe' }]);
+
+        await dismissSheet(page);
+        await waitForSheetTransition();
+        expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
+      });
+
+      test('should snap the sheet and the backdrop back when the drag is too short', async ({ page }) => {
+        const host = await enableSwipeHandle(page);
+        const drag = await dragSheet(page, 12);
+        await drag.release();
+        await waitForStencilLifecycle(page);
+
+        expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+        await expect(page.locator('p-sheet dialog')).toHaveJSProperty('style.backgroundColor', '');
+        await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
+      });
+
+      test('should not dismiss while the content is scrolled or immediately after scrolling', async ({ page }) => {
+        const host = await enableSwipeHandle(page, true, '<div style="height: 200vh">Some Content</div>');
+        await page.locator('p-sheet .scroller').evaluate((scroller: HTMLElement) => {
+          scroller.scrollTop = 80;
+        });
+        const scrolled = await dragSheet(page, 220);
+        await scrolled.release();
+        expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+        await page.locator('p-sheet .scroller').evaluate((scroller: HTMLElement) => {
+          scroller.scrollTop = 0;
+          scroller.dispatchEvent(new Event('scroll'));
+        });
+        const locked = await dragSheet(page, 220);
+        await locked.release();
+        expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+      });
+
+      test('should not dismiss when swipeHandle is not set', async ({ page }) => {
+        await initBasicSheet(page, { content: '<div style="height: 240px">Some Content</div>' });
+        const host = getHost(page);
+        await addEventListener(host, 'dismiss');
+        const drag = await dragSheet(page, 220);
+        await drag.release();
+
+        expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+      });
+
+      test('should snap back when the dismiss event is ignored and reset after the next open', async ({ page }) => {
+        const host = await enableSwipeHandle(page);
+        const drag = await dragSheet(page, 220);
+        await drag.release();
+        await page.evaluate(
+          () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve(undefined))))
+        );
+
+        await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
+        await expect(page.locator('p-sheet dialog')).toHaveJSProperty('style.backgroundColor', '');
+
+        const closing = await dragSheet(page, 220);
+        await closing.release();
+        await setProperty(host, 'open', false);
+        await waitForStencilLifecycle(page);
+        await setProperty(host, 'open', true);
+        await waitForStencilLifecycle(page);
+
+        await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
+        await expect(page.locator('p-sheet dialog')).toHaveJSProperty('style.backgroundColor', '');
+      });
+
+      test('should not start a touch swipe from interactive controls inside the sheet, while still allowing touch drag on the swipe handle', async ({
+        page,
+      }) => {
+        const host = await enableSwipeHandle(
+          page,
+          true,
+          '<p-textarea label="Comment"></p-textarea><p-button type="button">Submit</p-button>'
+        );
+        const session = await page.context().newCDPSession(page);
+
+        const touchDragFrom = async (selector: string, distance: number) => {
+          const box = await page.locator(selector).boundingBox();
+          if (!box) {
+            throw new Error(`${selector} has no box`);
+          }
+          const x = box.x + box.width / 2;
+          const y = box.y + box.height / 2;
+          await session.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y }] });
+          await session.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x, y: y + distance }] });
+          await session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+        };
+
+        await touchDragFrom('p-textarea textarea', 220);
+        expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+        await touchDragFrom('p-button', 220);
+        expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+        await touchDragFrom('p-sheet .swipe-handle', 220);
+        await waitForStencilLifecycle(page);
+        expect((await getEventSummary(host, 'dismiss')).details).toEqual([{ reason: 'swipe' }]);
+      });
+    });
   });
 });

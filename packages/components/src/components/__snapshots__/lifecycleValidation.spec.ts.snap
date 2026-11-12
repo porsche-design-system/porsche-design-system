@@ -788,6 +788,7 @@ exports[`should call validateProps() with correct parameters via render for p-sh
   "disableBackdropClick": "boolean",
   "dismissButton": "boolean",
   "open": "boolean",
+  "swipeHandle": "boolean",
 }
 `;
 

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for open: false, background: canvas and dismissButton: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, background: canvas, dismissButton: false and swipeHandle: undefined 1`] = `
 ":host {
   display: contents;
   --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
@@ -100,7 +100,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, background: canvas and dismissButton: true 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, background: canvas, dismissButton: true and swipeHandle: undefined 1`] = `
 ":host {
   display: contents;
   --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
@@ -263,7 +263,373 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, background: canvas and dismissButton: true 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, background: canvas, dismissButton: false and swipeHandle: true 1`] = `
+":host {
+  display: contents;
+  --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
+  --ref-p-sheet-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-sheet-px: var(--p-spacing-fluid-lg) !important;
+  --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+slot[name=header] {
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  all: unset;
+  position: fixed;
+  inset: 0;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  user-select: text;
+  outline: 0;
+  width: 100dvw;
+  height: 100dvh;
+  visibility: inherit;
+  pointer-events: auto;
+  background: var(--p-color-backdrop);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
+}
+.sheet {
+  position: relative;
+  display: grid;
+  grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
+  gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
+  padding-top: var(--p-spacing-fluid-md);
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
+  align-content: flex-start;
+  transform: translate3d(0,0,0);
+  color: var(--p-color-primary);
+  background: var(--_p-dialog-a);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+  width: 100%;
+  align-self: flex-end;
+  margin-block-start: var(--p-spacing-fluid-lg);
+  border-top-left-radius: var(--p-radius-3xl);
+  border-top-right-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
+}
+.swipe-handle {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  margin-inline: auto;
+  width: 48px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  z-index: 5;
+  border-radius: var(--p-radius-sm);
+}
+.swipe-handle:active {
+  cursor: grabbing;
+}
+.swipe-handle::before {
+  content: "";
+  width: var(--p-spacing-static-lg);
+  height: var(--p-spacing-static-xs);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-contrast-medium);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+}
+.swipe-handle:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: -2px;
+}
+.swipe-handle span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .sheet {
+    border-top: 2px solid CanvasText;
+  }
+  .swipe-handle {
+    forced-color-adjust: none;
+  }
+  .swipe-handle::before {
+    background: ButtonText;
+    outline: 1px solid ButtonBorder;
+  }
+  .swipe-handle:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .swipe-handle:hover::before {
+    background: var(--p-color-primary);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for open: true, background: canvas, dismissButton: true and swipeHandle: true 1`] = `
+":host {
+  display: contents;
+  --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
+  --ref-p-sheet-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-sheet-px: var(--p-spacing-fluid-lg) !important;
+  --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+slot[name=header] {
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  all: unset;
+  position: fixed;
+  inset: 0;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  user-select: text;
+  outline: 0;
+  width: 100dvw;
+  height: 100dvh;
+  visibility: inherit;
+  pointer-events: auto;
+  background: var(--p-color-backdrop);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
+}
+.sheet {
+  position: relative;
+  display: grid;
+  grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
+  gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
+  padding-top: var(--p-spacing-fluid-md);
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
+  align-content: flex-start;
+  transform: translate3d(0,0,0);
+  color: var(--p-color-primary);
+  background: var(--_p-dialog-a);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+  width: 100%;
+  align-self: flex-end;
+  margin-block-start: var(--p-spacing-fluid-lg);
+  border-top-left-radius: var(--p-radius-3xl);
+  border-top-right-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
+}
+.dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  grid-area: 1/3;
+  z-index: 5;
+  position: sticky;
+  top: var(--p-spacing-fluid-sm);
+  margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
+  margin-inline-end: var(--p-spacing-fluid-sm);
+  place-self: flex-start flex-end;
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.swipe-handle {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  margin-inline: auto;
+  width: 48px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  z-index: 5;
+  border-radius: var(--p-radius-sm);
+}
+.swipe-handle:active {
+  cursor: grabbing;
+}
+.swipe-handle::before {
+  content: "";
+  width: var(--p-spacing-static-lg);
+  height: var(--p-spacing-static-xs);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-contrast-medium);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+}
+.swipe-handle:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: -2px;
+}
+.swipe-handle span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .sheet {
+    border-top: 2px solid CanvasText;
+  }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+  .swipe-handle {
+    forced-color-adjust: none;
+  }
+  .swipe-handle::before {
+    background: ButtonText;
+    outline: 1px solid ButtonBorder;
+  }
+  .swipe-handle:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-surface);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+  .swipe-handle:hover::before {
+    background: var(--p-color-primary);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for open: true, background: canvas, dismissButton: true and swipeHandle: undefined 1`] = `
 ":host {
   display: contents;
   --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
@@ -423,7 +789,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, background: surface and dismissButton: true 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, background: surface, dismissButton: true and swipeHandle: undefined 1`] = `
 ":host {
   display: contents;
   --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;

@@ -199,6 +199,8 @@ import { SheetGridPage } from './generated/SheetGrid';
 import { SheetPrefixedPage } from './generated/SheetPrefixed';
 import { SheetScrollablePage } from './generated/SheetScrollable';
 import { SheetScrolledPage } from './generated/SheetScrolled';
+import { SheetSwipeHandlePage } from './generated/SheetSwipeHandle';
+import { SheetSwipeHandleNoDismissPage } from './generated/SheetSwipeHandleNoDismiss';
 import { SheetWithoutDismissButtonPage } from './generated/SheetWithoutDismissButton';
 import { SheetWithoutHeadingPage } from './generated/SheetWithoutHeading';
 import { SpinnerPage } from './generated/Spinner';
@@ -1169,6 +1171,16 @@ export const generatedRoutes: RouteType[] = [
     name: 'Sheet Scrolled',
     path: '/sheet-scrolled',
     element: <SheetScrolledPage />,
+  },
+  {
+    name: 'Sheet Swipe Handle',
+    path: '/sheet-swipe-handle',
+    element: <SheetSwipeHandlePage />,
+  },
+  {
+    name: 'Sheet Swipe Handle No Dismiss',
+    path: '/sheet-swipe-handle-no-dismiss',
+    element: <SheetSwipeHandleNoDismissPage />,
   },
   {
     name: 'Sheet Without Dismiss Button',

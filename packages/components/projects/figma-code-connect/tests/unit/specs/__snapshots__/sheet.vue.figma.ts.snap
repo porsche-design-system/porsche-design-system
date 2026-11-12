@@ -14,9 +14,10 @@ const open = !read.off('open');
 const dismissButton = !read.off('dismissButton');
 const disableBackdropClick = read.flag('disableBackdropClick');
 const background = read.oneOf('background', ['canvas', 'surface']);
+const swipeHandle = read.flag('swipeHandle');
 
 export default {
-  example: figma.code`<PSheet${open ? ' :open="true"' : ' :open="false"'}${dismissButton ? '' : ' :dismissButton="false"'}${disableBackdropClick ? ' :disableBackdropClick="true"' : ''}${background ? ` background="${background}"` : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', 'header') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PSheet>`,
+  example: figma.code`<PSheet${open ? ' :open="true"' : ' :open="false"'}${dismissButton ? '' : ' :dismissButton="false"'}${disableBackdropClick ? ' :disableBackdropClick="true"' : ''}${background ? ` background="${background}"` : ''}${swipeHandle ? ' :swipeHandle="true"' : ''}>${read.has('slot-header') ? slotted(instance.getSlot('slot-header'), 'slot-header', 'header') : ''}${read.isSlot('slot-default') ? slotted(instance.getSlot('slot-default'), 'slot-default') : escapeText(read.text('slot-default') ?? '')}</PSheet>`,
   imports: [
     '// Setup: https://designsystem.porsche.com/v0.0.0/developing/vue/getting-started/',
     '// Docs: https://designsystem.porsche.com/v0.0.0/components/sheet/api/',

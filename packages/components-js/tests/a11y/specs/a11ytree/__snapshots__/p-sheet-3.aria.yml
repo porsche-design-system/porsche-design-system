@@ -1,0 +1,4 @@
+- dialog "Some Heading":
+  - button "Dismiss sheet"
+  - heading "Some Heading" [level=2]
+  - paragraph: Some Content

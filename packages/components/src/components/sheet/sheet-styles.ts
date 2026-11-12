@@ -1,5 +1,22 @@
-import { ref, spacingFluidLg } from '@porsche-design-system/stylesheets';
-import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
+import {
+  colorContrastMedium,
+  colorPrimary,
+  radiusFull,
+  radiusSm,
+  ref,
+  spacingFluidLg,
+  spacingStaticLg,
+  spacingStaticXs,
+} from '@porsche-design-system/stylesheets';
+import {
+  addImportantToEachRule,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
+  getHiddenTextJssStyle,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
 import { getCss } from '../../utils';
 import {
   dialogBorderRadius,
@@ -31,7 +48,12 @@ export const cssVarRefPaddingBottom = '--ref-p-sheet-pb';
  */
 export const cssVarRefPaddingInline = '--ref-p-sheet-px';
 
-export const getComponentCss = (isOpen: boolean, background: SheetBackground, hasDismissButton: boolean): string => {
+export const getComponentCss = (
+  isOpen: boolean,
+  background: SheetBackground,
+  hasDismissButton: boolean,
+  hasSwipeHandle = false
+): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -71,6 +93,48 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
     },
     ...(hasDismissButton && {
       dismiss: getDialogDismissButtonJssStyle(background),
+    }),
+    ...(hasSwipeHandle && {
+      'swipe-handle': {
+        all: 'unset',
+        boxSizing: 'border-box',
+        position: 'absolute',
+        top: 0,
+        insetInline: 0,
+        marginInline: 'auto',
+        width: '48px',
+        height: '24px',
+        display: 'grid',
+        placeItems: 'center',
+        cursor: 'grab',
+        '&:active': {
+          cursor: 'grabbing',
+        },
+        zIndex: 5,
+        borderRadius: ref(radiusSm),
+        '&::before': {
+          content: '""',
+          width: ref(spacingStaticLg),
+          height: ref(spacingStaticXs),
+          borderRadius: ref(radiusFull),
+          background: ref(colorContrastMedium),
+          transition: getTransition('background-color'),
+        },
+        ...hoverMediaQuery({
+          '&:hover::before': {
+            background: ref(colorPrimary),
+          },
+        }),
+        '&:focus-visible': getFocusBaseStyles(-2),
+        ...forcedColorsMediaQuery({
+          forcedColorAdjust: 'none',
+          '&::before': {
+            background: 'ButtonText',
+            outline: '1px solid ButtonBorder',
+          },
+        }),
+        '& span': getHiddenTextJssStyle(),
+      },
     }),
   });
 };

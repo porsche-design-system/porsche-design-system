@@ -5,11 +5,12 @@ behavior. As a result, accessibility features may vary across different browsers
 
 ### Keyboard
 
-| Key / state                | Function                                                                                                        |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behavior). |
-| `ESC`                      | Closes the dialog.                                                                                              |
-| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                       |
+| Key / state                | Function                                                                                                                                                                                                              |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behavior). When `swipe-handle` is set and the dismiss button is shown, the handle is removed from this sequence. |
+| `ESC`                      | Closes the dialog. This stays available when `swipe-handle` is set, including when the dismiss button is hidden.                                                                                                      |
+| `Enter`, `Space`           | Activates the focused dismiss button or, when the dismiss button is hidden, the swipe handle.                                                                                                                         |
+| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                                                                                                                             |
 
 ### ARIA enhancements
 
