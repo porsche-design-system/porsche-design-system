@@ -1,8 +1,9 @@
+import { rewriteCdnUrlsForDev } from '@porsche-design-system/shared/rewrite-cdn-urls';
 import tailwindcss from '@tailwindcss/vite';
 import { Features } from 'lightningcss';
 import { defineConfig } from 'vite';
 import { jsxPages } from './lib/jsx.ts';
-import { injectPartials, rewriteCdnUrlsForDev } from './lib/partials.ts';
+import { injectPartials } from './lib/partials.ts';
 
 /**
  * The dev server counterpart of `scripts/build.ts`.

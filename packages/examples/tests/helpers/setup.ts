@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
+import { rewriteCdnUrlsForDev } from '@porsche-design-system/shared/rewrite-cdn-urls';
 import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
-import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
 
 /**
  * What a page needs before it is captured or scanned – shared by the VRT and the a11y suite, and in parts by e2e.
