@@ -5,6 +5,7 @@ export { goto, waitForComponentsHydrated, waitForComponentsReady } from './compo
 export { abortedRequestPatterns } from './consoleGuard';
 export { addEventListener, getEventSummary } from './events';
 export type { ExternalRequestsOptions, StubReply } from './externalRequests';
+export { harnessPageConsole } from './harnessPageConsole';
 export { getLifecycleStatus, getLifecycleTrackingScript } from './lifecycle';
 export { getFormDataValue, getOuterHTML, getProperty, setProperty } from './locator';
 export { type TestOptions, test } from './test';

@@ -1,5 +1,6 @@
 import { viewportWidthXXL } from '@porsche-design-system/testing';
-import { harnessPageConsole, setupScenario } from '../../../vrt/helpers';
+import { harnessPageConsole } from '@porsche-design-system/testing/playwright';
+import { setupScenario } from '../../../vrt/helpers';
 import { expect, test, waitForComponentsHydratedInFrames } from '../../helpers';
 
 // executed in Chrome only

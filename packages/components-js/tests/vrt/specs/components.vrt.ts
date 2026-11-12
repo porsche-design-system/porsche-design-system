@@ -2,10 +2,10 @@ import { type Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/testing';
-import { expect, test } from '@porsche-design-system/testing/playwright';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import * as globby from 'fast-glob';
 import * as path from 'path';
-import { harnessPageConsole, setupScenario } from '../helpers';
+import { setupScenario } from '../helpers';
 
 const sourceDirectory = path.resolve('src/pages');
 const fileNames = globby.sync(`${sourceDirectory}/*.html`).map((filePath) => path.basename(filePath, '.html'));

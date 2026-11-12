@@ -1,4 +1,4 @@
-// messages a harness page under src/pages logs on purpose, by page name
+// messages a harness page under components-js src/pages logs on purpose, by page name
 export const harnessPageConsole: Record<string, RegExp[]> = {
   'button-pure': [
     /combination of properties icon='none' and loading='true' for component p-button-pure is not supported/,

@@ -1,6 +1,7 @@
 import type { Page } from '@playwright/test';
 import { schemes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/testing';
-import { harnessPageConsole, setupScenario } from '../../../vrt/helpers';
+import { harnessPageConsole } from '@porsche-design-system/testing/playwright';
+import { setupScenario } from '../../../vrt/helpers';
 import { componentsValid, expect, test, waitForComponentsHydratedInFrames } from '../../helpers';
 
 const components = componentsValid;

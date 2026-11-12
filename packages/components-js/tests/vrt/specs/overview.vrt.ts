@@ -1,6 +1,6 @@
 import { schemes, viewportWidthXXL } from '@porsche-design-system/testing';
-import { expect, test } from '@porsche-design-system/testing/playwright';
-import { harnessPageConsole, setupScenario } from '../helpers';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
+import { setupScenario } from '../helpers';
 
 // executed in Chrome only
 test.describe('overview', () => {
