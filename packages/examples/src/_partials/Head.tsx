@@ -1,6 +1,8 @@
 type HeadProps = {
   title: string;
   description: string;
+  /** Suffix of the document title – which collection of examples the page belongs to, set by its layout. */
+  siteName: 'Dummy Patterns' | 'Dummy Templates';
 };
 
 /**
@@ -15,12 +17,12 @@ type HeadProps = {
  * fetched by a crawler. The meta tag is honoured wherever a page is served, which also keeps it independent of where
  * the projects are eventually deployed.
  */
-export const Head = ({ title, description }: HeadProps) => (
+export const Head = ({ title, description, siteName }: HeadProps) => (
   <>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
-    <title>{title} | Dummy Patterns</title>
+    <title>{`${title} | ${siteName}`}</title>
     <meta name="description" content={description} />
   </>
 );
