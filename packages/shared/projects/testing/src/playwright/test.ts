@@ -1,5 +1,10 @@
 import { test as base } from '@playwright/test';
-import { type CollectedMessage, findUnexpectedConsole, formatUnexpectedConsole } from './consoleGuard';
+import {
+  type CollectedMessage,
+  findUnexpectedConsole,
+  findUnexpectedPageErrors,
+  formatUnexpectedConsole,
+} from './consoleGuard';
 import {
   type ExternalRequestsOptions,
   externalImageStub,
@@ -10,7 +15,7 @@ import {
 export type TestOptions = {
   /** `false` switches request routing off. Only the smoke suite does. Default `{}`. */
   externalRequests: ExternalRequestsOptions | false;
-  /** Console errors and warnings the test expects. Default `[]`. */
+  /** Console errors, warnings and page errors the test expects. Default `[]`. */
   expectedConsole: RegExp[];
 };
 
@@ -62,8 +67,9 @@ export const test = base.extend<TestOptions & { requestRouting: void; consoleGua
       await use();
 
       const unexpected = findUnexpectedConsole(messages, expectedConsole);
-      if (unexpected.length || pageErrors.length) {
-        throw new Error(formatUnexpectedConsole(unexpected, pageErrors));
+      const unexpectedPageErrors = findUnexpectedPageErrors(pageErrors, expectedConsole);
+      if (unexpected.length || unexpectedPageErrors.length) {
+        throw new Error(formatUnexpectedConsole(unexpected, unexpectedPageErrors));
       }
     },
     { auto: true },
