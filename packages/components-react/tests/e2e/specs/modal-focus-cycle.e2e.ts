@@ -1,4 +1,5 @@
-import { expect, type Locator, test } from '@playwright/test';
+import { type Locator } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { getProperty, goto } from '../helpers';
 
 test.use({

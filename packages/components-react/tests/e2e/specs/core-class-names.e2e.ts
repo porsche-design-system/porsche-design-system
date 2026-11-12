@@ -1,4 +1,5 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { goto } from '../helpers';
 
 const SOME_CLASS_1 = 'someClass1';
