@@ -1,5 +1,6 @@
 import { buildDefaultComponentMarkup, goto, waitForComponentsReady } from '../helpers';
-import { test, expect, type Locator } from '@playwright/test';
+import { type Locator } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { format } from 'prettier';
 
@@ -14,6 +15,12 @@ const expectShadowDomToMatchSnapshot = async (host: Locator, tagName: TagName): 
   expect(prettyHtml).not.toContain('[object Object]');
   expect(prettyHtml).toMatchSnapshot(`${tagName}.txt`);
 };
+
+// only p-display logs this, so it is declared once for the file
+test.use({
+  expectedConsole: async ({ expectedConsole }, use) =>
+    use([...expectedConsole, /component p-display is deprecated and will be removed with next major release/]),
+});
 
 for (const tagName of TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))) {
   test(`should have no basic DOM regression for ${tagName}`, async ({ page, browserName }) => {

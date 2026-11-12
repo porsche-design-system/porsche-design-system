@@ -1,8 +1,13 @@
 import { defineConfig, devices } from '@playwright/test';
 import { playwrightConfigVRT } from '@porsche-design-system/testing';
+import type { TestOptions } from '@porsche-design-system/testing/playwright';
 
-export default defineConfig({
+export default defineConfig<TestOptions>({
   ...playwrightConfigVRT,
+  use: {
+    ...playwrightConfigVRT.use,
+    externalRequests: { allowedOrigins: ['https://nav.porsche.com'] },
+  },
   projects: [
     {
       name: 'chrome',

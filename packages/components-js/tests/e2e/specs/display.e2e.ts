@@ -1,7 +1,12 @@
-import { expect, test } from '@playwright/test';
 import type { BreakpointCustomizable, DisplaySize, DisplayTag } from '@porsche-design-system/components';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
+
+test.use({
+  expectedConsole: async ({ expectedConsole }, use) =>
+    use([...expectedConsole, /component p-display is deprecated and will be removed with next major release/]),
+});
 
 const initDisplay = (
   page: Page,
@@ -73,7 +78,7 @@ test.describe('tag', () => {
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
-    await initDisplay(page, { size: 'xx-large' });
+    await initDisplay(page, { size: 'large' });
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-display'], 'componentDidLoad: p-display').toBe(1);

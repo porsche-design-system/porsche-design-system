@@ -1,6 +1,7 @@
-import { expect, Locator, type Page, test } from '@playwright/test';
+import { Locator, type Page } from '@playwright/test';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -44,8 +45,9 @@ const initBasicModal = (
   const {
     isOpen = true,
     content = 'Some Content',
-    aria,
     hasSlottedHeader,
+    // without an accessible name p-modal logs a warning
+    aria = hasSlottedHeader ? undefined : "{'aria-label': 'Some Heading'}",
     hasSlottedFooter,
     dismissButton = true,
     markupBefore,
@@ -70,7 +72,7 @@ const initBasicModal = (
 const initAdvancedModal = (page: Page): Promise<void> => {
   return setContentWithDesignSystem(
     page,
-    `<p-modal heading="Some Heading">
+    `<p-modal aria="{'aria-label': 'Some Heading'}">
   Some Content
   <p-button id="btn-content-1">Content Button 1</p-button>
   <p-button id="btn-content-2">Content Button 2</p-button>
@@ -730,8 +732,14 @@ test.describe('slotted header', () => {
 });
 
 test.describe('after dynamic slot change', () => {
+  test.use({
+    expectedConsole: async ({ expectedConsole }, use) =>
+      use([...expectedConsole, /aria prop or header slot has to be set for component p-modal/]),
+  });
+
   test('should show header when header slot is added dynamically', async ({ page }) => {
-    await initBasicModal(page);
+    // the modal has no accessible name until the header slot is added
+    await initBasicModal(page, { aria: '' });
     const host = getHost(page);
 
     const headerText = 'Some slotted header content';

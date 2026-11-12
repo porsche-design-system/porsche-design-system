@@ -1,5 +1,5 @@
 import type { Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { TagName } from '@porsche-design-system/shared';
 import { setContentWithDesignSystem, sleep } from '../helpers';
 

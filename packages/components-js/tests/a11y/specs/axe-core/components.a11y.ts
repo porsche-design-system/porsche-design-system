@@ -1,7 +1,7 @@
 import type { Page } from '@playwright/test';
 import { schemes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/testing';
 import { setupScenario } from '../../../vrt/helpers';
-import { componentsValid, expect, test } from '../../helpers';
+import { componentsValid, expect, harnessPageConsole, test, waitForComponentsHydratedInFrames } from '../../helpers';
 
 const components = componentsValid;
 
@@ -20,11 +20,17 @@ test('should have certain amount of components', () => {
 });
 
 for (const component of components.filter(
-  (component) => !['input-text'].includes(component) // TODO: fix "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds" for disabled `input-text` with counter
+  (component) =>
+    !['flyout', 'optgroup'].includes(component) && // no test page of that name, the demo app would stay empty
+    !['input-text'].includes(component) // TODO: fix "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds" for disabled `input-text` with counter
 )) {
   // executed in Chrome only
   test.describe(component, async () => {
     test.skip(({ browserName }) => browserName !== 'chromium');
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
+    });
 
     // Accessibility: AXE-Core tests basic
     // tests for light and dark color schemes on 2 different viewports
@@ -35,6 +41,7 @@ for (const component of components.filter(
           makeAxeBuilder,
         }, testInfo) => {
           await setupScenario(page, `/${component}?scheme=${scheme}`, viewportWidth);
+          await waitForComponentsHydratedInFrames(page);
           await revertAutoFocus(page, component);
 
           const accessibilityScanResults = await makeAxeBuilder().analyze();

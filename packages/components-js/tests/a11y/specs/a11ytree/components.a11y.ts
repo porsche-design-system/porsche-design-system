@@ -1,6 +1,6 @@
 import { viewportWidthM } from '@porsche-design-system/testing';
 import { setupScenario } from '../../../vrt/helpers';
-import { componentsValid, expect, test } from '../../helpers';
+import { componentsValid, expect, harnessPageConsole, test, waitForComponentsHydratedInFrames } from '../../helpers';
 
 const pagesToTest = componentsValid.filter((item) => {
   return !['flyout', 'optgroup', 'radio-group-option'].includes(item); // removes 'flyout', 'optgroup' and 'radio-group-option' as they are not available as a test-page
@@ -12,10 +12,15 @@ for (const component of advancedPagesToTest) {
   // executed in Chrome only
   test.describe(component, async () => {
     test.skip(({ browserName }) => browserName !== 'chromium');
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
+    });
 
     // A11Y Tree Snapshot Tests
     test('should match a11y tree', async ({ page }) => {
       await setupScenario(page, `/${component}`, viewportWidthM);
+      await waitForComponentsHydratedInFrames(page);
 
       let selector: string | undefined = component;
 

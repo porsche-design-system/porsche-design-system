@@ -1,10 +1,10 @@
-import { expect, test } from '@playwright/test';
 import {
   viewportWidth3XL,
   viewportWidth4XL,
   viewportWidthM,
   viewportWidthXXL,
 } from '@porsche-design-system/testing';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { setupScenario } from '../helpers';
 
 const component = 'carousel';

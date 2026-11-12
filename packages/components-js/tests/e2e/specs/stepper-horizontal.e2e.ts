@@ -1,16 +1,12 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,
-  getConsoleErrorsAmount,
   getEventSummary,
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
-  getPageThrownErrorsAmount,
-  initConsoleObserver,
-  initPageErrorObserver,
   reattachElement,
   reattachElementToParent,
   setContentWithDesignSystem,
@@ -72,10 +68,7 @@ const getScrollArea = (page: Page) => page.locator('p-stepper-horizontal p-scrol
 
 test.describe('validation', () => {
   test.fixme('should throw error if an item with current state is added while another exists', async ({ page }) => {
-    await initPageErrorObserver(page);
-
     await initStepperHorizontal(page);
-    expect(getPageThrownErrorsAmount()).toBe(0);
 
     const host = getHost(page);
     await host.evaluate((host: HTMLElement) => {
@@ -85,28 +78,36 @@ test.describe('validation', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(getPageThrownErrorsAmount()).toBe(1);
+    expect(await page.pageErrors()).toHaveLength(1);
   });
 
   skipInBrowsers(['webkit'], () => {
-    test('should log error if a second current state is defined', async ({ page }) => {
-      initConsoleObserver(page);
+    test.describe('with a second current state', () => {
+      test.use({
+        expectedConsole: async ({ expectedConsole }, use) =>
+          use([...expectedConsole, /only one child with current state is allowed in p-stepper-horizontal/]),
+      });
 
-      await initStepperHorizontal(page);
-      const [, item2] = await getStepItems(page);
+      test('should log error if a second current state is defined', async ({ page }) => {
+        await initStepperHorizontal(page);
+        const [, item2] = await getStepItems(page);
 
-      await setProperty(item2, 'state', 'current');
-      await waitForStencilLifecycle(page);
+        await setProperty(item2, 'state', 'current');
+        await waitForStencilLifecycle(page);
 
-      await expect.poll(() => getConsoleErrorsAmount()).toBe(1);
+        await expect
+          .poll(async () =>
+            (await page.consoleMessages())
+              .filter((message) => message.type() === 'error')
+              .map((message) => message.text())
+          )
+          .toEqual([expect.stringContaining('only one child with current state is allowed in p-stepper-horizontal')]);
+      });
     });
 
     test('should not throw error if an items state previous to the current one is set as current and the current one is set to undefined', async ({
       page,
     }) => {
-      initPageErrorObserver(page);
-      initConsoleObserver(page);
-
       await initStepperHorizontal(page, { currentStep: 3 });
       const host = getHost(page);
 
@@ -116,14 +117,21 @@ test.describe('validation', () => {
         stepperItemElements[2].state = undefined;
       });
       await waitForStencilLifecycle(page);
-
-      expect(getPageThrownErrorsAmount()).toBe(0);
-      expect(getConsoleErrorsAmount()).toBe(0);
     });
   });
 });
 
 test.describe('invalid state set after initial render', () => {
+  test.use({
+    expectedConsole: async ({ expectedConsole }, use) =>
+      use([
+        ...expectedConsole,
+        /using state='current' and disabled='true' for p-stepper-horizontal-item is not allowed/,
+        /only one child with current state is allowed in p-stepper-horizontal/,
+        /only 9 children are allowed in p-stepper-horizontal but got 10/,
+      ]),
+  });
+
   // Stencil stops updating a component whose render() throws, so validation errors must not be thrown in render (#4748)
   test('should keep updating the item after it was current and disabled', async ({ page }) => {
     await setContentWithDesignSystem(

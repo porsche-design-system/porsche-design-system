@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
 import { schemes, viewportWidthM } from '@porsche-design-system/testing';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { setupScenario } from '../helpers';
 
 const component = 'ag-grid';

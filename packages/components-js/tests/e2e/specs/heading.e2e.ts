@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
 import type { BreakpointCustomizable, HeadingSize, HeadingTag } from '@porsche-design-system/components';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
@@ -55,7 +55,7 @@ test.describe('tag', () => {
   });
 
   test('should render according to tag h6 when size is set', async ({ page }) => {
-    await initHeading(page, { size: 'large-title', tag: 'h6' });
+    await initHeading(page, { size: 'large', tag: 'h6' });
     expect(await getHeadingTagName(page)).toBe('H6');
   });
 
