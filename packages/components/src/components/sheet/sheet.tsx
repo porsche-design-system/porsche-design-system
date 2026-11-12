@@ -21,6 +21,7 @@ import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { DialogBase } from '../common/dialog-base/dialog-base';
 import { getComponentCss } from './sheet-styles';
 import {
+  createSheetSwipeController,
   SHEET_ARIA_ATTRIBUTES,
   SHEET_BACKGROUNDS,
   type SheetAriaAttribute,
@@ -28,6 +29,7 @@ import {
   type SheetDismissEventDetail,
   type SheetMotionHiddenEndEventDetail,
   type SheetMotionVisibleEndEventDetail,
+  type SheetSwipeController,
 } from './sheet-utils';
 
 const propTypes: PropTypes<typeof Sheet> = {
@@ -35,6 +37,7 @@ const propTypes: PropTypes<typeof Sheet> = {
   dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
   background: AllowedTypes.oneOf<SheetBackground>(SHEET_BACKGROUNDS),
+  swipeHandle: AllowedTypes.boolean,
   aria: AllowedTypes.aria<SheetAriaAttribute>(SHEET_ARIA_ATTRIBUTES),
 };
 
@@ -63,10 +66,13 @@ export class Sheet {
   /** Sets the background color of the sheet panel (`canvas` or `surface`). */
   @Prop() public background?: SheetBackground = 'canvas';
 
+  /** Shows a swipe handle and lets a downward drag close the sheet when its content is scrolled to the top. */
+  @Prop() public swipeHandle?: boolean = false;
+
   /** Sets ARIA attributes on the sheet dialog element for improved accessibility when the default `aria-label` is insufficient. */
   @Prop() public aria?: SelectedAriaAttributes<SheetAriaAttribute>;
 
-  /** Emitted when the user closes the sheet via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used. */
+  /** Emitted when the user closes the sheet via the dismiss button, swipe handle, backdrop click, Escape key, or a downward swipe. The event detail identifies which was used. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<SheetDismissEventDetail>;
 
   /** Emitted after the sheet's open transition has fully completed and the panel is visible. */
@@ -77,6 +83,8 @@ export class Sheet {
 
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
+  private sheet: HTMLDivElement;
+  private swipeHandleButton: HTMLButtonElement;
   private hasHeader: boolean;
   // Tracks whether the current pointer gesture started inside the panel (not on the backdrop). Lets `onClickDialog`
   // skip dismissal when a selection is dragged out of the panel and released on the backdrop.
@@ -86,6 +94,15 @@ export class Sheet {
     isShown: () => !!this.dialog?.open,
     show: () => showDialog(this.dialog, this.scroller),
     hide: () => this.dialog?.close(),
+  });
+  private swipeController: SheetSwipeController = createSheetSwipeController({
+    getDialog: () => this.dialog,
+    getScroller: () => this.scroller,
+    getSheet: () => this.sheet,
+    getSwipeHandle: () => this.swipeHandleButton,
+    isOpen: () => this.open,
+    hasSwipeHandle: () => !!this.swipeHandle,
+    onSwipeDismiss: () => this.dismissDialog('swipe'),
   });
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -97,6 +114,7 @@ export class Sheet {
   }
 
   public componentDidRender(): void {
+    this.swipeController.sync();
     if (this.open) {
       this.topLayer.requestShow();
     } else {
@@ -107,6 +125,7 @@ export class Sheet {
   public disconnectedCallback(): void {
     setScrollLock(false);
     this.topLayer.cancel();
+    this.swipeController.destroy();
   }
 
   public render(): JSX.Element {
@@ -118,7 +137,7 @@ export class Sheet {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
     }
 
-    attachComponentCss(this.host, getComponentCss, this.open, this.background, this.dismissButton);
+    attachComponentCss(this.host, getComponentCss, this.open, this.background, this.dismissButton, this.swipeHandle);
 
     return (
       <DialogBase
@@ -129,7 +148,21 @@ export class Sheet {
         inert={!this.open}
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
+        containerRef={(el) => (this.sheet = el)}
         dismissable={this.dismissButton ?? undefined}
+        swipeHandle={
+          this.swipeHandle ? (
+            <button
+              class="swipe-handle"
+              type="button"
+              ref={(el) => (this.swipeHandleButton = el)}
+              tabIndex={this.dismissButton ? -1 : undefined}
+              onClick={this.onDismissButtonClick}
+            >
+              <span>Dismiss sheet</span>
+            </button>
+          ) : undefined
+        }
         onCancel={this.onDialogCancel}
         onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
         onClick={this.onDialogBackdropClick}
@@ -151,7 +184,7 @@ export class Sheet {
   }
 
   private onDialogCancel = (e: Event): void =>
-    onCancelDialog(e, () => this.dismissDialog('escape'), !this.dismissButton);
+    onCancelDialog(e, () => this.dismissDialog('escape'), !this.dismissButton && !this.swipeHandle);
 
   private onDialogBackdropClick = (e: MouseEvent): void =>
     onClickDialog(e, () => this.dismissDialog('backdrop'), this.disableBackdropClick, this.isPointerDownInside);

@@ -52,12 +52,14 @@ describe('componentDidRender', () => {
 });
 
 describe('disconnectedCallback', () => {
-  it('should call setScrollLock() with correct parameters', () => {
+  it('should call setScrollLock() and clean up swipe controller', () => {
     const utilsSpy = vi.spyOn(setScrollLockUtils, 'setScrollLock');
+    const destroySpy = vi.spyOn(component['swipeController'], 'destroy');
     component.open = true;
-    component.disconnectedCallback(); // component gets removed from dom
+    component.disconnectedCallback();
 
     expect(utilsSpy).toHaveBeenCalledWith(false);
+    expect(destroySpy).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -117,6 +119,19 @@ describe('dismiss request', () => {
 
     expect(event.defaultPrevented).toBe(true);
     expect(emitMock).not.toHaveBeenCalled();
+  });
+
+  it('should emit dismiss with reason escape when swipeHandle is enabled and dismissButton is false', () => {
+    const emitMock = vi.fn();
+    component.dismiss = { emit: emitMock } as any;
+    component.dismissButton = false;
+    component.swipeHandle = true;
+    const event = new Event('cancel', { cancelable: true });
+
+    component['onDialogCancel'](event);
+
+    expect(event.defaultPrevented).toBe(true);
+    expect(emitMock).toHaveBeenCalledWith({ reason: 'escape' });
   });
 
   it('should emit dismiss with reason backdrop when the backdrop is clicked', () => {
@@ -206,5 +221,58 @@ describe('native dialog control', () => {
     vi.runAllTimers();
 
     expect(dialog.close).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('swipe gesture wiring', () => {
+  afterEach(() => {
+    component.disconnectedCallback();
+    vi.restoreAllMocks();
+  });
+
+  it('should wire DOM listeners in componentDidRender and emit dismiss({ reason: "swipe" }) on mouse drag', () => {
+    const emitMock = vi.fn();
+    component.dismiss = { emit: emitMock } as any;
+    const dialog = component['dialog'];
+    dialog.showModal = vi.fn(() => {
+      dialog.open = true;
+    });
+    dialog.close = vi.fn(() => {
+      dialog.open = false;
+    });
+    dialog.focus = vi.fn();
+
+    const scroller = document.createElement('div');
+    scroller.scrollTo = vi.fn();
+    const sheet = document.createElement('div');
+    sheet.getBoundingClientRect = () => ({ height: 400 }) as DOMRect;
+    const swipeHandle = document.createElement('button');
+    sheet.appendChild(swipeHandle);
+    scroller.appendChild(sheet);
+    dialog.appendChild(scroller);
+
+    component['scroller'] = scroller;
+    component['sheet'] = sheet;
+    component['swipeHandleButton'] = swipeHandle;
+    component.open = true;
+    component.swipeHandle = true;
+
+    let now = 1_000;
+    vi.spyOn(performance, 'now').mockImplementation(() => now);
+
+    component.componentDidRender();
+
+    swipeHandle.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, button: 0, clientX: 50, clientY: 100 }));
+    now += 100;
+    window.dispatchEvent(new MouseEvent('mousemove', { buttons: 1, clientX: 50, clientY: 220, cancelable: true }));
+    expect(sheet.style.transform).toBe('translate3d(0, 120px, 0)');
+
+    window.dispatchEvent(new MouseEvent('mouseup', { button: 0, clientX: 50, clientY: 220 }));
+    expect(emitMock).toHaveBeenCalledTimes(1);
+    expect(emitMock).toHaveBeenCalledWith({ reason: 'swipe' });
+
+    const syntheticClick = new MouseEvent('click', { bubbles: true, cancelable: true });
+    swipeHandle.dispatchEvent(syntheticClick);
+    expect(syntheticClick.defaultPrevented).toBe(true);
   });
 });

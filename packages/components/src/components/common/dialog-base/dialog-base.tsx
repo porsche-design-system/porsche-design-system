@@ -6,6 +6,7 @@ type DialogBaseProps = {
   inert: boolean;
   dialogRef?: (el: HTMLDialogElement) => void;
   scrollerRef?: (el: HTMLDivElement) => void;
+  containerRef?: (el: HTMLDivElement) => void;
   containerClass: 'flyout' | 'modal' | 'sheet';
   onCancel?: (e: Event) => void;
   onClick?: (e: MouseEvent) => void;
@@ -14,6 +15,7 @@ type DialogBaseProps = {
   onDismiss?: () => void;
   ariaAttributes?: Pick<AriaAttributes, 'aria-label' | 'aria-modal' | 'role'>;
   dismissable?: boolean;
+  swipeHandle?: JSX.Element;
   header?: JSX.Element;
   footer?: JSX.Element;
   subFooter?: JSX.Element;
@@ -24,6 +26,7 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
     inert,
     dialogRef,
     scrollerRef,
+    containerRef,
     containerClass,
     ariaAttributes,
     onCancel,
@@ -32,6 +35,7 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
     onTransitionEnd,
     onDismiss,
     dismissable = false,
+    swipeHandle,
     header,
     footer,
     subFooter,
@@ -52,7 +56,8 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
       {...(ariaAttributes ?? {})}
     >
       <div class="scroller" ref={scrollerRef}>
-        <div class={containerClass}>
+        <div class={containerClass} ref={containerRef}>
+          {swipeHandle}
           {dismissable && <FCDismissButton label={`Dismiss ${containerClass}`} onClick={onDismiss} />}
           {header}
           {children}

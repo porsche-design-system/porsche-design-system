@@ -302,6 +302,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           const removedProps = [
             'dialogRef',
             'scrollerRef',
+            'containerRef',
             'onCancel',
             'onClick',
             'onMouseDown',
@@ -466,8 +467,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/onTransitionEnd={[^}]*}\s*/, '')
           .replace(/\n\s*dialogRef,/, '')
           .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*containerRef,/, '')
           .replace(/\n\s*dialogRef=\{[^}]+}/, '')
-          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '')
+          .replace(/\n\s*containerRef=\{[^}]+}/, '');
       } else if (tagName === 'p-accordion') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasSummary)/g, '$1')

@@ -1,9 +1,8 @@
 import type { EventEmitter } from '@stencil/core';
 
-// Shared by `p-modal`, `p-flyout`, `p-sheet` and `p-drilldown` so their `dismiss` payloads cannot diverge. All four
-// render the same `DialogBase` and therefore have the same three dismissal paths. `p-popover` declares its own union
-// instead: it has no backdrop, it closes via its own trigger rather than a dedicated dismiss button, and it adds a
-// keyboard-only path when focus tabs out of the panel.
+// Shared by `p-modal`, `p-flyout` and `p-drilldown` so their `dismiss` payloads cannot diverge (and extended with
+// `'swipe'` by `p-sheet`). `p-popover` declares its own union instead: it has no backdrop, it closes via its own
+// trigger rather than a dedicated dismiss button, and it adds a keyboard-only path when focus tabs out of the panel.
 export type DialogDismissReason = 'dismiss-button' | 'backdrop' | 'escape';
 export type DialogDismissEventDetail = { reason: DialogDismissReason };
 
@@ -51,8 +50,9 @@ export const onTransitionEnd = (
   motionVisibleEndEvent: EventEmitter,
   motionHiddenEndEvent: EventEmitter
 ): void => {
-  // Use property which has the longest duration and prevent multiple ontransitionend events for each property
-  if (nativeEvent.propertyName === 'background-color') {
+  // Only react to the `<dialog>` element's own `background-color` transition (which has the longest duration) so
+  // bubbling transitions from descendants (e.g. `.swipe-handle::before` hover/reset) never emit duplicate motion events.
+  if (nativeEvent.target === nativeEvent.currentTarget && nativeEvent.propertyName === 'background-color') {
     isOpen ? motionVisibleEndEvent.emit(nativeEvent) : motionHiddenEndEvent.emit(nativeEvent);
   }
 };
