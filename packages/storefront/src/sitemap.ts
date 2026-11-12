@@ -260,6 +260,7 @@ export const sitemap = {
     pages: {
       'landing-page': { name: 'Landing Page' },
       'admin-panel': { name: 'Admin Panel' },
+      'personalized-mailing': { name: 'Personalized Mailing' },
     },
   },
   tokens: {
