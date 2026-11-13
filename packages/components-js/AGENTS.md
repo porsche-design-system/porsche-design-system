@@ -129,8 +129,10 @@ is not a target: port the change to `packages/components-vue/src/pages/` by hand
   deprecated components.
 - An element opts into an ARIA-tree snapshot with `class="a11ytree-snapshot-test"` in its page; the snapshots are the
   `.aria.yml` files in `tests/a11y/specs/a11ytree/__snapshots__/`.
-- `amountOfTestableComponents` in `tests/a11y/specs/axe-core/components.a11y.ts` is hard-coded, so adding or removing a
-  component fails it until you update the number.
+- `tests/helpers/coverage.ts` holds the component list, the page rule and the allowlists that both suites and
+  `tests/unit/specs/coverage.spec.ts` read. A new component fails that spec until it has its own e2e spec, a page, an
+  a11y-tree snapshot for each of its pages and an entry on both overview pages, or until an allowlist entry with its
+  reason covers the gap.
 
 ### VRT snapshots
 

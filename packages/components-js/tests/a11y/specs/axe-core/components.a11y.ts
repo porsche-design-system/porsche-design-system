@@ -1,9 +1,8 @@
 import type { Page } from '@playwright/test';
 import { schemes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/testing';
+import { axeAllowlist, components, getPages } from '../../../helpers/coverage';
 import { setupScenario } from '../../../vrt/helpers';
-import { componentsValid, expect, test } from '../../helpers';
-
-const components = componentsValid;
+import { expect, test } from '../../helpers';
 
 // VRT pages making use of iFrames can't reliably ensure which iframe is loaded last
 // and therefore can't be sure which autofocus gets triggered
@@ -13,40 +12,34 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
   }
 };
 
-const amountOfTestableComponents = 58;
+for (const component of components) {
+  for (const pageName of getPages(component).filter((pageName) => !axeAllowlist.includes(pageName))) {
+    // executed in Chrome only
+    test.describe(pageName, async () => {
+      test.skip(({ browserName }) => browserName !== 'chromium');
 
-test('should have certain amount of components', () => {
-  expect(components.length).toBe(amountOfTestableComponents);
-});
+      // Accessibility: AXE-Core tests basic
+      // tests for light and dark color schemes on 2 different viewports
+      [viewportWidthXXS, viewportWidthM].forEach((viewportWidth) => {
+        for (const scheme of schemes) {
+          test(`should have no accessibility regression for viewport ${viewportWidth} with color-scheme ${scheme}`, async ({
+            page,
+            makeAxeBuilder,
+          }, testInfo) => {
+            await setupScenario(page, `/${pageName}?scheme=${scheme}`, viewportWidth);
+            await revertAutoFocus(page, component);
 
-for (const component of components.filter(
-  (component) => !['input-text'].includes(component) // TODO: fix "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds" for disabled `input-text` with counter
-)) {
-  // executed in Chrome only
-  test.describe(component, async () => {
-    test.skip(({ browserName }) => browserName !== 'chromium');
+            const accessibilityScanResults = await makeAxeBuilder().analyze();
 
-    // Accessibility: AXE-Core tests basic
-    // tests for light and dark color schemes on 2 different viewports
-    [viewportWidthXXS, viewportWidthM].forEach((viewportWidth) => {
-      for (const scheme of schemes) {
-        test(`should have no accessibility regression for viewport ${viewportWidth} with color-scheme ${scheme}`, async ({
-          page,
-          makeAxeBuilder,
-        }, testInfo) => {
-          await setupScenario(page, `/${component}?scheme=${scheme}`, viewportWidth);
-          await revertAutoFocus(page, component);
+            await testInfo.attach(`a11y-scan-results-${pageName}-${viewportWidth}-scheme-${scheme}`, {
+              body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+              contentType: 'application/json',
+            });
 
-          const accessibilityScanResults = await makeAxeBuilder().analyze();
-
-          await testInfo.attach(`a11y-scan-results-${component}-${viewportWidth}-scheme-${scheme}`, {
-            body: JSON.stringify(accessibilityScanResults.violations, null, 2),
-            contentType: 'application/json',
+            expect(accessibilityScanResults.violations).toEqual([]);
           });
-
-          expect(accessibilityScanResults.violations).toEqual([]);
-        });
-      }
+        }
+      });
     });
-  });
+  }
 }
