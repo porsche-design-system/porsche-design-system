@@ -73,12 +73,14 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       .filter(({ isEvent }) => isEvent)
       .map((x) => ({ ...x, key: camelCase(x.key.substring(2)) }));
 
-    const inputs = inputProps.length ? `[${inputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
-    const outputs = outputProps.length ? `[${outputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
-
     const componentName = this.generateComponentName(component);
     const meta = getComponentMeta(component);
     const hasControlValueAccessor = this.hasControlValueAccessor(component);
+
+    const inputs = inputProps.length
+      ? `[${inputProps.map((prop) => this.generateInput(componentName, prop, hasControlValueAccessor)).join(', ')}]`
+      : '';
+    const outputs = outputProps.length ? `[${outputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
     const hasInputEvent = !!Object.keys(meta.eventsMeta ?? {}).find((e) => e === 'input');
 
     const componentOpts = [
@@ -181,5 +183,21 @@ export class ${componentName}${genericType} extends BaseComponent${controlValueA
   private hasControlValueAccessor(component: TagName): boolean {
     const meta = getComponentMeta(component);
     return meta.hasElementInternals && component !== 'p-button' && component !== 'p-button-pure';
+  }
+
+  // Angular Signal Forms writes field state into same-named inputs, `pattern` as `RegExp[]` and `min`/`max` as the field type.
+  private generateInput(
+    componentName: string,
+    { key, rawValueType }: ExtendedProp,
+    hasControlValueAccessor: boolean
+  ): string {
+    // A `RegExp[]` keeps the current value, so a `[pattern]` string survives Signal Forms writing its own patterns.
+    if (hasControlValueAccessor && key === 'pattern') {
+      return `{ name: '${key}', transform: function (this: ${componentName}, value: ${rawValueType} | readonly RegExp[] | undefined) { return Array.isArray(value) ? this.${key} : value; } }`;
+    }
+    if (hasControlValueAccessor && (key === 'min' || key === 'max') && rawValueType === 'number') {
+      return `{ name: '${key}', transform: (value: number | string | undefined) => value }`;
+    }
+    return `'${key}'`;
   }
 }

@@ -103,6 +103,7 @@ import { SelectExampleReactiveFormComponent } from './select-example-reactive-fo
 import { SelectExampleRequiredComponent } from './select-example-required.component';
 import { SelectExampleSelectedSlotComponent } from './select-example-selected-slot.component';
 import { SheetExampleComponent } from './sheet-example.component';
+import { SignalFormsExampleComponent } from './signal-forms-example.component';
 import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
 import { StepperHorizontalNavigationExampleSecondComponent } from './stepper-horizontal-navigation-example-second.component';
 import { StepperHorizontalNavigationExampleStartComponent } from './stepper-horizontal-navigation-example-start.component';
@@ -223,6 +224,7 @@ export const examples = [
   SelectExampleRequiredComponent,
   SelectExampleAsyncFilterComponent,
   SelectExampleSelectedSlotComponent,
+  SignalFormsExampleComponent,
   StepperHorizontalExampleComponent,
   StepperHorizontalNavigationExampleStartComponent,
   StepperHorizontalNavigationExampleSecondComponent,
@@ -357,6 +359,7 @@ export * from './select-example-reactive-form.component';
 export * from './select-example-required.component';
 export * from './select-example-selected-slot.component';
 export * from './sheet-example.component';
+export * from './signal-forms-example.component';
 export * from './stepper-horizontal-example.component';
 export * from './stepper-horizontal-navigation-example-second.component';
 export * from './stepper-horizontal-navigation-example-start.component';
