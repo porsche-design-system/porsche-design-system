@@ -67,6 +67,7 @@ export const templateComponents = [
   'checkbox',
   'input-search',
   'link-tile',
+  'model-signature',
   'table',
 ] as const;
 

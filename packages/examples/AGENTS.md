@@ -118,15 +118,20 @@ src/
 │   ├── tile/comments.ts          # the comments the tile patterns share, worded once
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
+│   ├── footer/                   # Footer (`extended`) and SimpleFooter, sharing the legal information they close with
 │   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask, with its behaviour
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
 ├── templates/
 │   ├── landing-page/             # index.page.tsx
+│   ├── personalized-mailing/     # PersonalizedMailing.tsx: the page, rendered by its two variants –
+│   │   ├── video/                # opening on a full-bleed video
+│   │   └── no-video/             # opening on a giant title the vehicle is pulled up into
 │   └── admin-panel/              # index.page.tsx – application shell on `p-canvas`
 ├── patterns/
 │   ├── header/overlay/           # Header in its `overlay` variant
 │   ├── header/stacked/           # Header in its `stacked` variant
-│   ├── footer/                   # Footer below the content
+│   ├── footer/extended/          # Footer of a site: delivery country, navigation, social media, legal information
+│   ├── footer/simple/            # SimpleFooter: the legal information only, for a page that stands on its own
 │   ├── tile/                     # index.page.tsx each – the use cases of a tile, built with HTML and Tailwind CSS
 │   │   ├── model-selection/      # … one folder per use case: anchor or covering `p-link`, hover via `group-hover:`
 │   │   └── …                     # category, video, product, …; light and dark, tile fixes its scheme only if needed
@@ -309,8 +314,11 @@ reaches through interaction**.
 - **Captured on both devices** of the config, `vrt-desktop-chrome` and `vrt-mobile-safari`. The config fixes the
   baseline suffix to the bare engine name, because `prepare-vrt-snapshots` derives the regression artifacts from exactly
   that suffix and project names have to be unique across the suites. Dark scheme, both High Contrast Mode schemes, 200%
-  font size and `rtl` are captured on desktop only – font scaling and forced colors go through CDP. The overflow of the
-  priority navigation only exists on mobile: on desktop every entry fits into the bar.
+  font size and `rtl` are captured on desktop only – forced colors go through CDP, and the font size is a preference of
+  a chromium profile (`launchPageWithFontSize200()`), because chromium drops a CDP font size during a full page capture,
+  leaving 100% text in a 200% layout. The profile needs the full chromium, whose text antialiasing varies between runs,
+  so the 200% capture tolerates 200 differing pixels. The overflow of the priority navigation only exists on mobile: on
+  desktop every entry fits into the bar.
 - **Pages are globbed to find the specs, not to generate them.** [`tests/helpers/pages.ts`](tests/helpers/pages.ts)
   resolves every `index.page.tsx` to its URL on the preview server; a spec looks its page up by id with
   `getExampleUrl()`, which fails if the page is gone, and the coverage spec fails if a page has no spec.
@@ -558,8 +566,8 @@ project with it (`npm run test:unit:skills`).
 3. Default-export a component that renders `<TemplatePage meta={meta}>`, which writes the meta into the `<head>`. The
    layout writes nothing but the document: the page composes its chrome itself, like a pattern does –
    `<Header currentPage="…" />` (optionally `showSearch`, `variant`, `navItems`, and for `stacked` also `notice` and
-   `categoryItems`) and `<Footer />`, or a `p-canvas` for an application page, which then puts its color scheme on
-   `<html>` through `class`.
+   `categoryItems`) and `<Footer />` – or `<SimpleFooter />` for a page that stands on its own – or a `p-canvas` for an
+   application page, which then puts its color scheme on `<html>` through `class`.
 4. Put the markup in `children`, including the page's own `<main id="main">` – except inside `p-canvas`, where the
    component provides that landmark. Links go to `#`, unless they point at an id on the same page.
 5. Style with Tailwind utilities; touch `src/style.css` only for genuinely global defaults or theme values.
@@ -618,7 +626,7 @@ have to be correct by example — keep the baseline when adding examples. The un
 every page.
 
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
-heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is
+heading, because the content below the header is part of what they show. The footer patterns have none: their `main` is
 empty and carries no spacing, so the footer is seen on its own instead of below a placeholder heading. The tile patterns
 have none either: a tile is shown on its own, and its heading has the second level it has in a section of a real page.
 The shared test therefore asserts _at most_ one first level heading per example, and the per-pattern suites pin down
