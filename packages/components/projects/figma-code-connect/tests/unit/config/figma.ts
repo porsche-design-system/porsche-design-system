@@ -2,11 +2,33 @@
 // Tests import a helper fresh after setting it, because the helpers read the selected instance when they load.
 declare global {
   var selectedInstance: {
-    properties: Record<string, unknown>;
+    properties: Record<string, { value: unknown; type: string }>;
     getSlot?: (name: string) => unknown;
+    getInstanceSwap?: (name: string) => unknown;
     findLayers?: (selector: (layer: unknown) => boolean) => unknown[];
   };
 }
+
+type Property = { value: unknown; type: string };
+const notFound = (name: string) => [{ type: 'ERROR', message: `Property not found: ${name}` }];
+/** `true`/`'true'` and `false`/`'false'` of any type as a boolean, any other value as `undefined`. */
+const toggle = ({ value }: Property): boolean | undefined =>
+  value === true || value === 'true' ? true : value === false || value === 'false' ? false : undefined;
+
+// The getters as Figma's preview ran them on 2026-11-04, a property the instance lacks included.
+const getters = (properties: Record<string, Property>) => ({
+  getBoolean: (name: string, mapping?: Record<string, unknown>) => {
+    if (!(name in properties)) return notFound(name);
+    const on = toggle(properties[name]);
+    return mapping ? (on === undefined ? undefined : mapping[String(on)]) : on === true;
+  },
+  getString: (name: string) => (name in properties ? properties[name].value : notFound(name)),
+  getEnum: (name: string, mapping: Record<string, unknown>) => {
+    if (!(name in properties)) return notFound(name);
+    const { value, type } = properties[name];
+    return type === 'VARIANT' || type === 'TEXT' ? mapping[String(value)] : undefined;
+  },
+});
 
 const isCode = (value: unknown): value is { type: 'CODE'; code: string } =>
   typeof value === 'object' && value !== null && (value as { type?: unknown }).type === 'CODE';
@@ -17,7 +39,7 @@ const shown = (value: unknown): string =>
 
 export default {
   get selectedInstance() {
-    return globalThis.selectedInstance;
+    return { ...getters(globalThis.selectedInstance.properties), ...globalThis.selectedInstance };
   },
   code: (strings: TemplateStringsArray, ...values: unknown[]): string =>
     strings.reduce((out, string, i) => out + string + (i < values.length ? shown(values[i]) : ''), ''),

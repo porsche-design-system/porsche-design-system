@@ -10,7 +10,6 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import {
   nodesUnreachable,
   type PreviewResult,
-  syntaxCheckOnly,
   unreachable,
   uploadFailures,
   validationFailures,
@@ -103,15 +102,38 @@ describe('the Code Connect CLI', () => {
   }, 30_000);
 
   it('exits 0 and names every record the upload refused', async () => {
-    const refused = {
-      meta: { published_nodes: [], failed_nodes: [{ figmaNode: url, label: 'Web Components', reason: 'Some reason' }] },
-    };
+    // the CLI ignores a refused node whose label is not the one it published
+    const failed = [{ figmaNode: url, label: 'Web Components', reason: 'Some reason' }];
+    const refused = { meta: { published_nodes: [], failed_nodes: failed } };
     answer = ({ method, url: path }) =>
       method === 'POST' && path?.includes('/code_connect?') ? [200, refused] : undefined;
     const { status, log } = await connect(['publish', '--force', '--skip-validation']);
     expect(status).toBe(0);
     expect(uploadFailures(log)).toEqual([{ component: 'p-tag', url, reason: 'Some reason' }]);
   }, 30_000);
+
+  it('names each of several refused records with its whole reason', () => {
+    const log = [
+      'Failed to upload to Figma, for Web Components:',
+      '',
+      '  p-tag',
+      `  ${url}`,
+      '',
+      '  Some reason',
+      '',
+      '  p-button',
+      `  ${fileUrl}?node-id=1-2`,
+      '',
+      '  First line',
+      '  second line',
+      '',
+      'Done',
+    ].join('\n');
+    expect(uploadFailures(log)).toEqual([
+      { component: 'p-tag', url, reason: 'Some reason' },
+      { component: 'p-button', url: `${fileUrl}?node-id=1-2`, reason: 'First line second line' },
+    ]);
+  });
 
   it('marks a preview request that failed, and previews that file again on its own', async () => {
     answer = ({ url: path }) =>
@@ -131,19 +153,6 @@ describe('the Code Connect CLI', () => {
     const broken = { meta: { results: [{ nodeId: '1:1', error: 'TypeError: boom' }] } };
     answer = ({ url: path }) => (path?.includes('/preview_snippets?') ? [200, broken] : undefined);
     const results: PreviewResult[] = JSON.parse((await connect(['preview', '--output', 'json'])).stdout);
-    expect(results.map((result) => [result.success, unreachable(result), syntaxCheckOnly(result)])).toEqual([
-      [false, false, false],
-    ]);
-  }, 30_000);
-
-  it('marks a snippet Figma rendered that only its own syntax check fails', async () => {
-    // a nested record Figma renders in another label puts Angular bindings into JSX (figma/code-connect#418)
-    const snippet = '<PTag><p-x [y]="true"></p-x></PTag>';
-    const rendered = { meta: { results: [{ nodeId: '1:1', snippet, language: 'React' }] } };
-    answer = ({ url: path }) => (path?.includes('/preview_snippets?') ? [200, rendered] : undefined);
-    const results: PreviewResult[] = JSON.parse((await connect(['preview', '--output', 'json'])).stdout);
-    expect(results.map((result) => [result.success, unreachable(result), syntaxCheckOnly(result)])).toEqual([
-      [false, false, true],
-    ]);
+    expect(results.map((result) => [result.success, unreachable(result)])).toEqual([[false, false]]);
   }, 30_000);
 });

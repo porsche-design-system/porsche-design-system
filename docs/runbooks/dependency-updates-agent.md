@@ -54,6 +54,8 @@ by selecting them in `npm run npm:update`.** Handle them as noted:
 - `@stencil/core` — pinned because a `patch-package` patch targets the exact version. **Never touch here.**
 - `@axe-core/playwright` — pinned to `~4.13.0` until the color-contrast findings of `axe-core` 4.14 are fixed
   ([#4859](https://github.com/porsche-design-system/porsche-design-system/issues/4859)). **Never touch here.**
+- `@figma/code-connect` — pinned and upgraded by hand, so someone checks the Figma Code Connect templates with the new
+  version. **Never touch here.**
 
 Not held back, but **bump them together** when they surface: `jsdom` and `@oddbird/popover-polyfill` are coupled (the
 polyfill needs the `CSS` namespace that jsdom provides). `jsdom` must stay declared in the **root** `package.json` or it
@@ -280,7 +282,7 @@ syncpack steps, just verify these files look correct (don't hand-edit versions s
 
 - `@porsche-design-system/components-*` — the **published** PDS version; bumped by the release process (see
   `docs/release.md` → _Deploy_), not here.
-- `@playwright/test`, `@stencil/core` — fully held back.
+- `@playwright/test`, `@stencil/core`, `@figma/code-connect` — fully held back.
 
 **If syncpack bumped Angular**, also align the Angular template
 (`packages/storefront/projects/stackblitz/src/angular/package.json`) to the new versions: `@angular/*`,

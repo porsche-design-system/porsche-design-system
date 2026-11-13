@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 // The runtime shape: every property is `{ value, type }`, keyed by its bare name.
-const readOf = async (properties: Record<string, unknown>) => {
+const readOf = async (properties: typeof globalThis.selectedInstance.properties) => {
   globalThis.selectedInstance = { properties };
   vi.resetModules();
   return (await import('../../../figma/helpers/read')).read;
@@ -41,6 +41,18 @@ describe('read', () => {
     expect(read.off('safeZone')).toBe(false);
   });
 
+  it('reads neither on nor off from a value other than true or false', async () => {
+    const read = await readOf({
+      variant: { value: 'primary', type: 'VARIANT' },
+      label: { value: 'Some label', type: 'TEXT' },
+      icon: { value: '2:1', type: 'INSTANCE_SWAP' },
+    });
+    for (const name of ['variant', 'label', 'icon']) {
+      expect(read.flag(name)).toBe(false);
+      expect(read.off(name)).toBe(false);
+    }
+  });
+
   it('reads text, but no empty text', async () => {
     const read = await readOf({ label: { value: 'Some label', type: 'TEXT' }, message: { value: '', type: 'TEXT' } });
     expect(read.text('label')).toBe('Some label');
@@ -51,8 +63,10 @@ describe('read', () => {
     const read = await readOf({
       variant: { value: 'ghost', type: 'VARIANT' },
       size: { value: 'small', type: 'VARIANT' },
+      headingTag: { value: 'h5', type: 'TEXT' },
     });
     expect(read.oneOf('size', ['small', 'medium'])).toBe('small');
+    expect(read.oneOf('headingTag', ['h5', 'h6'])).toBe('h5');
     expect(read.oneOf('variant', ['primary', 'secondary'])).toBeUndefined();
   });
 
@@ -89,12 +103,5 @@ describe('read', () => {
     expect((await readOf({ showLabel: { value: false, type: 'BOOLEAN' } })).hideLabel()).toBe(true);
     expect((await readOf({ showLabel: { value: true, type: 'BOOLEAN' } })).hideLabel()).toBe(false);
     expect((await readOf({})).hideLabel()).toBe(false);
-  });
-
-  it('reads the bare values Figma documents too', async () => {
-    const read = await readOf({ disabled: true, variant: 'primary', label: 'Some label' });
-    expect(read.flag('disabled')).toBe(true);
-    expect(read.oneOf('variant', ['primary'])).toBe('primary');
-    expect(read.text('label')).toBe('Some label');
   });
 });

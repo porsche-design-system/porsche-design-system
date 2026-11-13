@@ -16,10 +16,10 @@ Figma library it reads and publishes to is the URL in `codeConnect.interactiveSe
    `figma/generate.ts`. For a property no rule places it reads the library's earlier versions (`figma/history.ts`): a
    key keeps its `#<id>` through a rename, and a VARIANT, which has none, is matched by its options, so the line says
    `Rename "compacta" back to "compact"` instead of asking for an add and reporting an unknown property.
-2. **Render.** A template reads each PDS prop and slot by name from `figma.selectedInstance.properties` when the snippet
-   renders (`figma/helpers/read.ts`). **A property the Figma component lacks is left out of the snippet**, so every
-   component publishes, and a property design adds or renames shows up once the library is published, with no new
-   publish. A required prop is the exception: it is written anyway (decision 12).
+2. **Render.** A template reads each PDS prop and slot by name when the snippet renders, with Figma's getters
+   (`figma/helpers/read.ts`). **A property the Figma component lacks is left out of the snippet**, so every component
+   publishes, and a property design adds or renames shows up once the library is published, with no new publish. A
+   required prop is the exception: it is written anyway, so the snippet compiles in React.
 3. **Publish.** `npm run figma:publish` runs `figma:generate -- --check`, then per label has Figma render every template
    (preview, once more for each that failed) and validate every record's node (dry run), and uploads what passed with
    `--force`, which overwrites a mapping a designer made in Figma's UI. A record Figma refuses, or could not be reached
@@ -170,77 +170,3 @@ Records live per file key, so nothing published under another key touches the li
 | Accepted gap         | `figma/accepted-gaps.json`: per PDS tag, the differences accepted as missing. It silences design lines and changes no template |
 | Accepted-gap cleanup | An accepted gap Figma made obsolete. Generation prunes and prints it; a pull request's dry run is red until it is removed      |
 | Refused              | A record Figma would not render or take, in the dry run or after the upload. Its previous version stays live                   |
-
-## Decisions
-
-1. **Code names win.** Figma carries each PDS prop, slot and allowed value under its PDS name, so the rules pair them
-   with no mapping to maintain. Rejected: a hand-written mapping per component, which every rename has to update.
-2. **Templates read the Figma properties when the snippet renders.** Rejected: direct `getBoolean`/`getEnum` reads,
-   which show "Property not found" in Dev Mode for a property the component lacks; reads generated from the pull, which
-   needed a publish for every Figma change.
-3. **Nothing pulled is stored and nothing generated is committed; a pull request runs everything but the upload, and
-   only a release publishes.** The dry run needs the token, so it runs after the deploy, which skips forks and bot
-   authors. Rejected: committing the pull or the templates, which turned every Figma change into a developer pull
-   request; a local token per developer, which needs a Figma seat each; `pull_request_target`, which would run a fork's
-   code with the token.
-4. **Publish every record of the latest release, after each release and on dispatch, and nothing between releases; the
-   design lines are the latest release's too, never `main`'s.** Dev Mode then shows what npm ships and design follows
-   npm. The cost: a new component set, a new icon or a refused record waits for the next release or a dispatch.
-   Rejected: publishing every push to `main`, which put unshipped props into Dev Mode; publishing only what changed,
-   which kept state in the actions cache; publishing daily; design lines for `main`, which put design ahead of npm.
-5. **A pull request is red for what its author can fix, a publish when it cannot do its job or Figma refused a record,
-   and publish is per record.** A closed gap still in `figma/accepted-gaps.json` turns a pull request red: left there,
-   it would accept that gap again, unseen. A failed preview is retried once; a preview or pull that does not reach Figma
-   warns in a pull request and turns a publish red. A snippet that fails only the CLI's Prettier check
-   (`syntaxCheckOnly`) publishes with a warning
-   ([figma/code-connect#418](https://github.com/figma/code-connect/issues/418), still open); the unit tests run that
-   check on every snippet instead. Rejected: gating publish on Figma matching code, which let one moved component block
-   all 57; refused records or closed gaps in the log only, where nobody saw them; a tolerated number of preview
-   failures, which lets a broken template through; `metadata: { nestable: false }`, which shows every nested component
-   as a pill.
-6. **No issue; Slack gets every open design line after each release and every Monday, with nothing remembered between
-   runs.** Code is the source of truth, so every line is a change design makes; code follows Figma only by deleting a
-   closed accepted gap. The cost: a line repeats until design acts, and a designer's change waits up to 7 days to be
-   reported. Rejected: lines after a release only, which left a designer's later change unreported until the next
-   release; a daily run; remembering sent lines in the actions cache or an artifact, machinery to spare design a repeat;
-   one GitHub issue, clutter in the public repository.
-7. **Form props (`form`, `name`, `value`) stay optional, even where component-meta requires them** (Copilot's comment 3
-   on #4747, declined). A `value` TEXT property has no text layer to feed, and Figma marks it "Not used within
-   component".
-8. **Every generated file is snapshotted, rendered from a pull built from component-meta with made-up node ids and a
-   fixed version**, so a template change shows in review without committing Figma data and a release changes no
-   snapshot. Rejected: a frozen pull of the library, which put its node ids and property definitions in the public
-   repository; the release's version, which rewrote every snapshot at each release.
-9. **Triggers: the publish from `release.yml` after a release it created and from a `workflow_dispatch` with `publish`;
-   the design lines from the same, from a weekly `schedule` and from every dispatch; all on `main`, checking out the
-   highest stable tag. On a pull request the last job of `Contribution` runs the dry run.** Rejected: the dry run in
-   `test.yml`, whose failure skipped the preview deploy; a job in `deploy.yml`, whose failure would skip the release; a
-   `push` trigger, which published untested commits; the `release` event, which a release created with `GITHUB_TOKEN`
-   does not fire; checking out the release commit, which let a re-run of an older release publish over a newer one.
-10. **`@figma/code-connect` takes updates like any other dependency: the weekly update and Dependabot.**
-    `scripts/figmaConnect.ts` reads the CLI's log lines and its `preview --output json` result, so the unit tests parse
-    every generated file with the installed CLI against a local stand-in for Figma's API, and an update that changes the
-    output fails its own pull request. Rejected: holding it back, which made every bump a chore; testing against sample
-    output kept in the repository, which an update leaves as it is.
-11. **A property no rule places is placed by the library's history, read on every run that prints lines and stored
-    nowhere; what history cannot place is reported as unknown, with a question when exactly one PDS prop of its type is
-    missing.** A BOOLEAN, TEXT, INSTANCE_SWAP or SLOT key keeps its `#<id>` through a rename; a VARIANT is paired by its
-    options with the PDS name that vanished when it appeared. The cost: up to 41 requests and about 2 minutes on every
-    run with such a property; a rename older than 40 versions or 90 days stays unplaced; the token needs
-    `file_versions:read`. Rejected: pairing by type on the current pull, which renames a design-only property into the
-    wrong PDS prop silently; a committed id-to-name map, decision 3's rejected pull in a smaller coat; the
-    `LIBRARY_PUBLISH` webhook, which carries no property names; a fixed reference version, whose answer changes at each
-    release.
-12. **A required prop the Figma component lacks is written anyway: a required boolean (`open`) as on, and a required
-    text prop (`name`, `value`, `label`) as `""` unless Figma has the text.** Without them a snippet does not compile in
-    React, where the props are required; an empty value invents no data and tells the developer to supply it. The cost:
-    `""` passes `validateProps`, so a snippet pasted unchanged gives a field with an empty name. Rejected: leaving them
-    out, which gave every variant of those components a snippet that does not compile; `name="name"`, which reads like a
-    chosen value; bare `name`, which JSX reads as `name={true}`; `name={name}`, a variable the snippet does not define;
-    `name="TODO"`, which can ship unnoticed; asking design for properties a frame has nothing to show for.
-13. **A closed accepted gap is deleted by a weekly job on `main`, through an issue the Copilot coding agent turns into
-    the pull request; any pull request may still commit the dry run's artifact first.** The deletion had no owner and
-    landed on whichever pull request ran next. Weekly is enough: nothing publishes between releases. The agent commits
-    because `main` requires signed commits, which GitHub gives the agent's and not a job's; it has no Figma token, so
-    the file travels in the issue. Rejected: committing through GitHub's API, which needs write scopes on the token; a
-    pull request from the dry run, which runs with a read-only token; a daily run; a standing issue (decision 6).

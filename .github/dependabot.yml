@@ -55,6 +55,8 @@ updates:
       - dependency-name: "@stencil/core"
       # Pinned until the color-contrast findings of axe-core 4.14 are fixed, see #4859 (see docs/dependencies.md)
       - dependency-name: "@axe-core/playwright"
+      # Pinned and upgraded by hand, so the Figma Code Connect templates are checked by hand (see docs/dependencies.md)
+      - dependency-name: "@figma/code-connect"
     groups:
       # Version-update groups don't apply while version updates are disabled, so
       # group SECURITY updates instead (one PR per batch of advisories).

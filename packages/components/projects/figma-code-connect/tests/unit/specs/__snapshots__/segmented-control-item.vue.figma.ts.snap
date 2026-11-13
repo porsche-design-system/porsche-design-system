@@ -14,7 +14,7 @@ const instance = figma.selectedInstance;
 const value = read.text('value') ?? '';
 const disabled = read.flag('disabled');
 const label = read.text('label');
-const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), undefined) : undefined;
+const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon')) : undefined;
 const iconSource = read.text('iconSource');
 
 export default {

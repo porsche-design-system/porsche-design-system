@@ -425,6 +425,8 @@ places that must be kept in sync when adding a new entry:
   colors and reports `contrast-medium` text on `surface` (4.38:1) on nearly every storefront page, plus a dark-scheme
   finding in the `table` fixture of `components-js`. Fixing them needs a design decision, tracked in
   [#4859](https://github.com/porsche-design-system/porsche-design-system/issues/4859).
+- `@figma/code-connect` – pinned and upgraded by hand, so someone checks the Figma Code Connect templates with the new
+  version.
 
 ### How to update them
 
@@ -439,6 +441,10 @@ dependency; otherwise `patch-package` fails on `postinstall`.
 **`@axe-core/playwright`** — bump it together with the fixes for the violations the new `axe-core` reports (see
 [#4859](https://github.com/porsche-design-system/porsche-design-system/issues/4859)), then remove it from both held-back
 lists.
+
+**`@figma/code-connect`** — bump the exact pin in `packages/components/projects/figma-code-connect/package.json`, then
+check the templates there: `npm run test:unit`, and `npm run figma:publish:dry` with `FIGMA_ACCESS_TOKEN` set (see
+[`figma-code-connect.md`](./figma-code-connect.md)).
 
 **`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
 

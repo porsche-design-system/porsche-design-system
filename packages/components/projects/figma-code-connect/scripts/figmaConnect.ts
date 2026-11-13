@@ -4,14 +4,13 @@ import { sync as globbySync } from 'fast-glob';
 import {
   nodesUnreachable,
   type PreviewResult,
-  syntaxCheckOnly,
   unreachable,
   uploadFailures,
   validationFailures,
 } from '../figma/cliOutput';
 
 // Runs `figma connect <command>` per Dev Mode label; `publish` uploads every record that renders and validates, after
-// `figma:generate --check`. Exit codes and rationale: docs/figma-code-connect.md.
+// `figma:generate --check`. See: docs/figma-code-connect.md.
 const unrendered: string[] = [];
 const unreached: string[] = [];
 const configs = ['figma.config.json', 'figma.react.config.json', 'figma.angular.config.json', 'figma.vue.config.json'];
@@ -89,14 +88,6 @@ const publishValid = (config: string, args: string[], dryRun: boolean): string[]
   ];
   for (const result of failedOnce.length ? previewResults(config, failedOnce) : []) {
     if (!result.success) {
-      // TODO refuse this again once figma/code-connect#418 renders nested records in the previewed label
-      // Figma rendered it, so it publishes. The unit tests syntax-check the templates' own output instead.
-      if (syntaxCheckOnly(result)) {
-        console.warn(
-          `⚠ ${result.filePath}: ${result.error}. Figma rendered it, so it publishes (figma/code-connect#418)`
-        );
-        continue;
-      }
       console.error(`✖ ${result.filePath}: ${result.error}`);
       if (unreachable(result)) {
         unchecked.add(result.filePath);
