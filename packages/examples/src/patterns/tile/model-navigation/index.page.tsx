@@ -24,7 +24,7 @@ const Page = () => (
         Without a background of its own at rest, the tile blends into the surface it is placed on and reveals its
         background on hover.
       </Comment>
-      <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate flex flex-col gap-fluid-xs aspect-video rounded-3xl p-fluid-sm motion-safe:transition-colors duration-sm ease-in-out hover:bg-canvas">
+      <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate flex flex-col gap-fluid-xs aspect-video rounded-3xl p-fluid-md motion-safe:transition-colors duration-sm ease-in-out hover:bg-canvas">
         <Comment>{tileComments.anchorLink}</Comment>
         <a href="#" class="absolute inset-0 z-1 rounded-[inherit] focus-visible:outline outline-focus outline-offset-2">
           <span class="sr-only">718</span>

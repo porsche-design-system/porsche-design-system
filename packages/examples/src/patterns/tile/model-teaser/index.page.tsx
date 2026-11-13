@@ -20,32 +20,39 @@ const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
-      <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate flex flex-col items-center justify-center gap-fluid-sm aspect-4/3 rounded-3xl bg-surface p-fluid-md text-center [--p-link-cover-radius:var(--radius-3xl)]">
+      <div class="col-basic group relative isolate flex flex-col items-center justify-center gap-fluid-sm aspect-video rounded-3xl bg-surface p-fluid-lg text-center [--p-link-cover-radius:var(--radius-3xl)]">
         <Comment>
           Signature and vehicle share one cell, the vehicle overlapping the lower part of the signature and placed in
           front of it. The signature takes the canvas color, which stands out subtly from the surface of the tile.
         </Comment>
-        <div class="grid grid-cols-1 w-full">
+        <Comment>The cell reaches into the padding, so that the vehicle is wider than the text below it.</Comment>
+        <div class="grid grid-cols-1 w-[calc(100%+2*var(--spacing-fluid-md))] -mx-fluid-md">
           <p-model-signature
-            class="[grid-area:1/1] justify-self-center [--p-model-signature-width:75%] [--p-model-signature-color:var(--color-canvas)]"
+            class="[grid-area:1/1] justify-self-center [--p-model-signature-width:65%] [--p-model-signature-color:var(--color-canvas)]"
             model="911"
             safe-zone={false}
           ></p-model-signature>
           <Comment>{tileComments.zoom}</Comment>
+          <Comment>
+            Mirrored so that the vehicle faces the reading direction. The zoom has to name both axes, since a plain
+            scale would reset the mirrored one.
+          </Comment>
           <img
-            class="[grid-area:1/1] z-1 w-full mt-[6%] motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-            src="/examples/media/911-side-view.webp"
+            class="[grid-area:1/1] z-1 w-full mt-[6%] -scale-x-100 motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:-scale-x-105 motion-safe:group-hover:scale-y-105"
+            src="/examples/media/911-carrera-side-view.webp"
             alt=""
-            width="776"
-            height="276"
+            width="1087"
+            height="283"
           />
         </div>
-        <p-heading tag="h2" size="sm" align="center">
-          The iconic sports car with rear engine
-        </p-heading>
-        <p-text size="xs" color="contrast-medium" align="center">
-          From €123,456.00* or €1,234.00/month*
-        </p-text>
+        <div class="flex flex-col gap-static-xs">
+          <p-heading tag="h2" size="md" align="center">
+            The iconic sports car with rear engine
+          </p-heading>
+          <p-text size="xs" color="contrast-medium" align="center">
+            From €123,456.00* or €1,234.00/month*
+          </p-text>
+        </div>
         <div class="flex flex-wrap justify-center items-center gap-static-md mt-fluid-sm">
           <Comment>{tileComments.coverLink}</Comment>
           <p-link variant="primary" cover={true}>

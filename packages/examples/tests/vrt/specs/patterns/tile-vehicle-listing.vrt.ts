@@ -1,8 +1,8 @@
 import { testInitialStates } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/tile/vehicle-listing` – a vehicle of a search result, with a save button above its covering `p-link`. Static markup without behaviour of its own, so the initial state is all there
- * is to capture.
+ * `src/patterns/tile/vehicle-listing` – a vehicle of a search result, with a popover, a link to its technical data and
+ * two actions. The popover is captured by its own state below.
  */
 
 const id = 'patterns-tile-vehicle-listing';

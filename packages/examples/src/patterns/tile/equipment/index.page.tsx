@@ -22,20 +22,21 @@ const Page = () => (
         The radius of the panel plus the padding around it make the radius of the tile, so the two curves stay parallel.
       </Comment>
       <Comment>
-        The height comes from the text rather than from a ratio of the tile, so a description longer than the photograph
-        is tall makes the tile taller instead of running out of it.
+        The photograph sets the height of the tile, and a description longer than it makes the tile taller still rather
+        than running out of it.
       </Comment>
-      <div class="col-basic flex flex-col gap-static-sm rounded-3xl bg-surface p-static-sm sm:flex-row">
+      <div class="col-basic flex flex-col gap-static-sm rounded-3xl bg-surface p-static-sm sm:flex-row sm:gap-0">
         <Comment>The photograph is cropped to the panel, so it follows its corners.</Comment>
         <Comment>
-          Its ratio holds only while it is stacked, where nothing else gives it a height. Beside the text the row is as
-          tall as the text, and a ratio would make the panel compute its width from that height and push the text out of
-          the tile.
+          The ratio sits on the photograph rather than on the panel, so it gives the row its height while a longer
+          description can still make the panel taller. On the panel it would set the height once and leave empty space
+          under the photograph.
         </Comment>
-        <div class="aspect-[800/643] grow overflow-clip rounded-2xl sm:aspect-auto sm:min-w-0">
+        <Comment>Nothing separates the two panels but the padding of the text, as in the design.</Comment>
+        <div class="shrink-0 overflow-clip rounded-2xl sm:w-1/2 md:w-[67.6%]">
           <Comment>Decorative, since the heading beside it names the option.</Comment>
           <img
-            class="size-full object-cover"
+            class="aspect-[800/643] size-full object-cover"
             src="/examples/media/anniversary-leather-seat.webp"
             alt=""
             width="950"
@@ -44,11 +45,11 @@ const Page = () => (
         </div>
 
         <Comment>
-          The text stacks above the photograph on a phone, takes half the tile from the medium breakpoint and the share
-          of the design from the large one – at half the tile a share that small would leave a few words per line. Its
+          The text stacks above the photograph on a phone, halves the tile with it from the medium breakpoint and takes
+          the third of the design from the one above – at half the tile a third would leave a few words per line. Its
           action sits at the lower edge, however short the description is.
         </Comment>
-        <div class="flex shrink-0 flex-col justify-between gap-fluid-md p-fluid-md sm:w-1/2 lg:w-[32%]">
+        <div class="flex grow flex-col justify-between gap-fluid-md p-fluid-md">
           <div class="flex flex-col gap-static-md">
             <p-heading tag="h2" size="sm">
               Perforated Nappa Leather

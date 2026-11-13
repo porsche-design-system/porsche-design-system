@@ -657,10 +657,18 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
 
   it('should give the focus ring of a covering link the corners of the tile', async () => {
     const html = await renderPage(Page);
+    const declarations = [
+      ...html.matchAll(/class="([^"]*\[--p-link-cover-radius:var\(--radius-([a-z0-9]+)\)\][^"]*)"/g),
+    ];
 
     // A covering `p-link` takes the corners of its focus ring from `--p-link-cover-radius`, set by the tile – otherwise
-    // the ring is drawn with square corners around a rounded tile.
-    expect(html.includes('[--p-link-cover-radius:var(--radius-3xl)]')).toBe(hasCoveringLink(html));
+    // the ring is drawn with square corners around a rounded tile. Which radius that is belongs to the tile: the one
+    // holding smaller tiles rounds those less than itself, so the variable is asserted against the rounding beside it.
+    expect(declarations.length > 0).toBe(hasCoveringLink(html));
+
+    for (const [, classes, radius] of declarations) {
+      expect(classes).toMatch(new RegExp(`\\brounded-${radius}\\b`));
+    }
   });
 
   it('should leave the color scheme to the application and fix the one of the tile only where needed', async () => {
@@ -708,15 +716,15 @@ describe.each(singleTilePages)('%s single tile pattern', (name, Page) => {
     const anchors =
       html.match(/<a href="#" class="absolute inset-0 z-1[^"]*">\s*<span class="sr-only">[^<]+<\/span>/g) ?? [];
     const isClickable = ![
-      'patterns/tile/feature',
-      'patterns/tile/feature-highlight',
+      'patterns/tile/disclosure',
       'patterns/tile/equipment',
       'patterns/tile/equipment-stacked',
+      'patterns/tile/vehicle-listing',
     ].includes(name);
 
     // Either a `p-link` with `cover` stretches its clickable area over the tile, or an anchor of its own spans it, with
-    // visually hidden text as its accessible name – the feature tiles aren't clickable as a whole and have neither,
-    // and the equipment tile carries an action rather than opening a page.
+    // visually hidden text as its accessible name – the four tiles without either carry an action, reveal more of
+    // themselves, only describe, or hold so many controls that a covering link would lie over them.
     expect(Number(hasCoveringLink(html)) + anchors.length).toBe(Number(isClickable));
   });
 });

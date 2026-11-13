@@ -10,21 +10,20 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    'Model Selection',
-    'Model Navigation',
-    'Category',
     'Image Category',
     'Video',
-    'Product',
-    'Vehicle Listing',
-    'Feature',
-    'Feature Highlight',
     'Call to Action',
     'Model Teaser',
-    'Product Teaser',
-    'Category Grid',
+    'Category',
+    'Vehicle Listing',
+    'Model Navigation',
+    'Model Selection',
+    'Product',
     'Equipment',
+    'Disclosure',
     'Equipment Stacked',
+    'Category Grid',
+    'Support',
   ]}
 />
 
@@ -34,41 +33,21 @@ patterns show their common use cases, built with HTML, Tailwind CSS and the comp
 Start from the pattern closest to your use case and adapt it – the comments in its code explain why it is built the way
 it is.
 
-## Model Selection
-
-<ExampleViewer example="patterns/tile/model-selection" />
-
-## Model Navigation
-
-<ExampleViewer example="patterns/tile/model-navigation" />
-
-## Category
-
-<ExampleViewer example="patterns/tile/category" />
+They are ordered by what a reader can do with a tile rather than by what it shows. Where the photograph sits is visible
+in every example below; whether the whole tile is one link is not, and it is the decision that shapes the markup, the
+focus order and what a screen reader announces.
 
 ## Image Category
+
+The tiles in this first group each open one page, and a `p-link` with `cover` opens it: the link is part of the tile and
+its clickable area is stretched over the whole of it, which also draws the focus indicator around the tile. Use this
+form wherever the tile shows a link anyway.
 
 <ExampleViewer example="patterns/tile/image-category" />
 
 ## Video
 
 <ExampleViewer example="patterns/tile/video" />
-
-## Product
-
-<ExampleViewer example="patterns/tile/product" />
-
-## Vehicle Listing
-
-<ExampleViewer example="patterns/tile/vehicle-listing" />
-
-## Feature
-
-<ExampleViewer example="patterns/tile/feature" />
-
-## Feature Highlight
-
-<ExampleViewer example="patterns/tile/feature-highlight" />
 
 ## Call to Action
 
@@ -78,29 +57,64 @@ it is.
 
 <ExampleViewer example="patterns/tile/model-teaser" />
 
-## Product Teaser
+## Category
 
-<ExampleViewer example="patterns/tile/product-teaser" />
+<ExampleViewer example="patterns/tile/category" />
+
+## Vehicle Listing
+
+<ExampleViewer example="patterns/tile/vehicle-listing" />
+
+## Model Navigation
+
+The next three tiles open a page as well, but show no link. An anchor of their own spans the tile, and its text is for
+screen readers only – the heading names the subject in the design, the anchor names it for assistive technology. Use
+this form where a visible link would be one element too many.
+
+<ExampleViewer example="patterns/tile/model-navigation" />
+
+## Model Selection
+
+<ExampleViewer example="patterns/tile/model-selection" />
+
+## Product
+
+<ExampleViewer example="patterns/tile/product" />
+
+## Equipment
+
+The last three tiles open nothing, and what they offer instead differs. This one carries the single action of its
+subject, a button, because an equipment option is something to add rather than a page to visit. Its photograph takes two
+thirds of the tile and the description the rest, which is why the two stack on a phone.
+
+<ExampleViewer example="patterns/tile/equipment" />
+
+## Disclosure
+
+This one reveals more of itself on demand: its heading is the summary of an accordion that holds the details, and the
+photograph behind the text dims while they are open. Nothing leaves the tile, so nothing has to be a link.
+
+<ExampleViewer example="patterns/tile/disclosure" />
+
+## Equipment Stacked
+
+This one only describes. It is the equipment tile with its two panels stacked rather than beside one another, for a
+column too narrow for the two halves, and it carries no action.
+
+<ExampleViewer example="patterns/tile/equipment-stacked" />
 
 ## Category Grid
 
 The patterns above each show a single tile. This one shows three of them under a shared heading, with the first tile as
 tall as the other two together — a focus without making any of the three a different kind of tile. The tile itself is
-the category tile, unchanged.
+the category tile, unchanged, so what this pattern really shows is an arrangement.
 
 <ExampleViewer example="patterns/tile/category-grid" />
 
-## Equipment
+## Support
 
-Every tile above opens something. This one does not: it describes one equipment option of a vehicle and carries the one
-action the option has, a button. Its photograph takes one half of the tile and the description the other, which is why
-the two stack on a phone.
+This one holds three tiles rather than standing beside them: a mood image fills it, and in front of the image three
+small tiles each open one way to reach a person. They take a frosted background, which lets the photograph through. The
+tile holding them opens nothing itself – a link may not contain another.
 
-<ExampleViewer example="patterns/tile/equipment" />
-
-## Equipment Stacked
-
-The same tile with its two panels stacked rather than beside one another, for a column too narrow for the two halves. It
-carries no action, which makes the frame around both panels the only thing that tells it from the feature tile above.
-
-<ExampleViewer example="patterns/tile/equipment-stacked" />
+<ExampleViewer example="patterns/tile/support" />
