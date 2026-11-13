@@ -340,21 +340,23 @@ HTMLElement.prototype.attachInternals = jest.fn(
 );
 ```
 
-### animate API
+### Web Animations API
 
-Affected Components: `p-tabs-bar`, `p-tabs`, `p-drilldown`
+Affected Components: `p-tabs-bar`, `p-drilldown`
 
-The API must be mocked within the test setup.
+The API must be mocked within the test setup. `p-tabs-bar` calls `animate` and `getAnimations`, `p-drilldown` calls
+`animate` only.
 
 Example mock:
 
 ```ts
-Element.prototype.animate = vi.fn(
+Element.prototype.animate = jest.fn(
   () =>
     ({
       onfinish: null,
-      cancel: vi.fn(),
-      finish: vi.fn(),
+      cancel: jest.fn(),
+      finish: jest.fn(),
     }) as unknown as Animation
 );
+Element.prototype.getAnimations = jest.fn(() => []);
 ```

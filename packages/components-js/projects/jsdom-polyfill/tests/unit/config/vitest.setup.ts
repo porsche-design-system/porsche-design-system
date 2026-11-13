@@ -8,6 +8,7 @@ beforeAll(() => {
   Element.prototype.animate = vi.fn(
     () => ({ onfinish: null, cancel: vi.fn(), finish: vi.fn() }) as unknown as Animation
   );
+  Element.prototype.getAnimations = vi.fn(() => []);
 
   // Mock for the Dialog API
   // `showModal` and `close` set/unset the native `open` attribute so that `dialog.open` reflects
