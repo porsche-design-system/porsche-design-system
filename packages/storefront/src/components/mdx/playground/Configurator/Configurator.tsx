@@ -13,6 +13,7 @@ import { StoryPreview } from '@porsche-design-system/story-generator/react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
+import { getBasePath } from '@/utils/getBasePath';
 import { Playground } from '../Playground';
 import { ConfiguratorControls } from './ConfiguratorControls';
 import type { ConfiguratorMode } from './ConfigureBehavior';
@@ -67,7 +68,12 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   return (
     <>
       <Playground frameworkMarkup={exampleMarkup} onOpenInStackblitz={() => onOpenInStackblitz()}>
-        <StoryPreview story={activeStory} state={exampleState} onStateChange={setExampleState} />
+        <StoryPreview
+          story={activeStory}
+          state={exampleState}
+          onStateChange={setExampleState}
+          basePath={getBasePath()}
+        />
       </Playground>
       <ConfiguratorControls
         tagName={tagName as ConfiguratorTagNames}
