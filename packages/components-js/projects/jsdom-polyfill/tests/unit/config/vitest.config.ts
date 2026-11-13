@@ -1,15 +1,14 @@
 import { resolve } from 'node:path';
-import { defineConfig } from 'vitest/config';
+import { vitestConfig } from '@porsche-design-system/testing/vitest';
+import { defineConfig, mergeConfig } from 'vitest/config';
 
-export default defineConfig({
-  test: {
-    root: resolve(__dirname, '../../../'),
-    include: ['**/*.spec.ts'],
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './tests/unit/config/vitest.setup.ts',
-    typecheck: {
-      tsconfig: './tsconfig.test.json',
+export default mergeConfig(
+  vitestConfig,
+  defineConfig({
+    test: {
+      root: resolve(__dirname, '../../../'),
+      include: ['**/*.spec.ts'],
+      setupFiles: './tests/unit/config/vitest.setup.ts',
     },
-  },
-});
+  })
+);

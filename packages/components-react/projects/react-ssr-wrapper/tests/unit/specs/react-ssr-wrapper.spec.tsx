@@ -9,14 +9,16 @@ import * as fromComponents from '../../../src/lib/components';
 import * as minifyCssUtils from '../../../src/minifyCss';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
 
+beforeEach(() => {
+  // skip minifyCss for snapshots
+  vi.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
+});
+
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
   // @ts-expect-error: ok because of dynamic access
   const Component = fromComponents[componentName];
   const tagName = kebabCase(componentName) as TagName;
   const componentMeta = getComponentMeta(tagName);
-
-  // skip minifyCss for snapshots
-  vi.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
 
   // default children
   const { requiredChild, hasSlot, slotsMeta } =

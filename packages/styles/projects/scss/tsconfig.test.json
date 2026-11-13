@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "types": ["node", "vitest/globals"]
   },
   "include": ["tests/unit"]

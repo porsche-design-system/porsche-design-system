@@ -3,8 +3,7 @@
   "compilerOptions": {
     "strict": false, // 🙈 too many issues
     "verbatimModuleSyntax": false,
-    "moduleResolution": "node",
-    "ignoreDeprecations": "6.0"
+    "moduleResolution": "bundler"
   },
   "exclude": ["**/*.spec.ts"]
 }
