@@ -40,17 +40,22 @@ test('explains the price in a popover that the tile neither covers nor clips', a
   await setupExamplePage(page, url);
 
   const trigger = page.getByLabel('More information about the price');
-  const panel = page.getByText('The price includes VAT');
+  // The panel of the component, not its host: the host carries the slotted text and is visible either way.
+  const panel = page.locator('p-popover div[popover]');
   await expect(panel).toBeHidden();
 
   await trigger.click();
   await expect(panel).toBeVisible();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
   // The panel is placed in the top layer, so no ancestor of the trigger can cover or clip it – asserted by its own
-  // position, which reaches beyond the tile the trigger sits in.
+  // box, which reaches past an edge of the tile the trigger sits in. Which edge depends on the room beside it.
   const tile = await page.locator('main > div').boundingBox();
-  const box = await page.locator('p-popover div[popover]').boundingBox();
-  expect(box?.x).toBeLessThan(tile?.x as number);
+  const box = await panel.boundingBox();
+  const tileLeft = tile?.x as number;
+  const panelLeft = box?.x as number;
+
+  expect(panelLeft < tileLeft || panelLeft + (box?.width as number) > tileLeft + (tile?.width as number)).toBe(true);
 
   await page.keyboard.press('Escape');
   await expect(panel).toBeHidden();

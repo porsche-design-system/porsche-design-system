@@ -40,21 +40,27 @@ test('opens three pages from inside one tile that opens none', async ({ page }) 
   await expect(page.locator('#main li a')).toHaveCount(3);
 });
 
+/** The width from which the three tiles share a row – `lg` of this monorepo is 1300px, not the 1024px of Tailwind. */
+const rowWidth = 1300;
+
 test('stands the held tiles side by side, or one below the other', async ({ page }) => {
   await setupExamplePage(page, url);
 
+  // Asserted around the breakpoint rather than for the viewport of the project, which would only ever reach one of the
+  // two arrangements – both device profiles of this suite are narrower than it.
+  await page.setViewportSize({ width: rowWidth, height: 900 });
   const [first, second, third] = await getBoxes(page);
-  const isWide = (page.viewportSize()?.width ?? 0) >= 760;
 
-  if (isWide) {
-    expect(first.top).toBe(second.top);
-    expect(second.top).toBe(third.top);
-    expect(first.left).toBeLessThan(second.left);
-    expect(second.left).toBeLessThan(third.left);
-  } else {
-    expect(first.left).toBe(second.left);
-    expect(second.left).toBe(third.left);
-    expect(first.top).toBeLessThan(second.top);
-    expect(second.top).toBeLessThan(third.top);
-  }
+  expect(first.top).toBe(second.top);
+  expect(second.top).toBe(third.top);
+  expect(first.left).toBeLessThan(second.left);
+  expect(second.left).toBeLessThan(third.left);
+
+  await page.setViewportSize({ width: rowWidth - 1, height: 900 });
+  const [fourth, fifth, sixth] = await getBoxes(page);
+
+  expect(fourth.left).toBe(fifth.left);
+  expect(fifth.left).toBe(sixth.left);
+  expect(fourth.top).toBeLessThan(fifth.top);
+  expect(fifth.top).toBeLessThan(sixth.top);
 });
