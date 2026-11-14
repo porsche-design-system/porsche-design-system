@@ -10,7 +10,9 @@ export const metadata = {
 
 # Link <ComponentStatus tagName="p-link"></ComponentStatus>
 
-<TableOfContents headings={[linkMeta.examples.frameworkRouting.name, linkMeta.examples.icon.name]} />
+<TableOfContents
+  headings={[linkMeta.examples.frameworkRouting.name, linkMeta.examples.icon.name, linkMeta.examples.cover.name]}
+/>
 
 ## {linkMeta.examples.frameworkRouting.name}
 
@@ -23,3 +25,9 @@ export const metadata = {
 <linkMeta.examples.icon.description />
 
 <ComponentStory story={linkMeta.examples.icon.story} />
+
+## {linkMeta.examples.cover.name}
+
+<linkMeta.examples.cover.description />
+
+<ComponentStory story={linkMeta.examples.cover.story} />

@@ -16,6 +16,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Link`: prop `cover` stretches the clickable area of the link over its nearest positioned ancestor, e.g. a card, so
+  the whole area navigates without a second, hidden link
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+- `Link`: CSS variable `--p-link-cover-radius` sets the corner radius of the clickable area and the focus ring of a link
+  with `cover`, e.g. to match the corners of the card it covers
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+- `Knowledge Skill`: tile patterns – common use cases of a tile (model selection and navigation, categories, video,
+  product, vehicle listing, features, call to action and teasers) built with HTML and Tailwind CSS, with their
+  description, the components they use and their complete markup and script
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
 - `Knowledge Skill`: two form search patterns – search combobox option list (combobox with a listbox of choices) and
   search combobox link list (combobox with a dialog of links) – composed from `p-input-search` and `p-popover`
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
@@ -41,6 +51,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: instructs the agent to load `references/components/<tag>/accessibility.md` before generating a
   component and to load the `accessible-frontend` APM skill for page-level WCAG 2.2 AA and EN 301 549 composition when
   installed ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
+- `Knowledge Skill`: the references of the patterns and templates name the color schemes they are built for, and the
+  conventions state that an example leaves the color scheme of `<html>` to the application
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
 
 ### Fixed
 

@@ -3,8 +3,9 @@ import path from 'node:path';
 import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
 import { extractScripts } from '../../../lib/entries.ts';
-import { normalizeClassAttributes, renderPage } from '../../../lib/jsx.ts';
+import { normalizeClassAttributes, type PageModule, renderPage } from '../../../lib/jsx.ts';
 import { scriptEntryName } from '../../../lib/projects.ts';
+import { srcDir } from '../../../lib/shared.ts';
 import { PatternPage } from '../../../src/_layouts/PatternPage.tsx';
 import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
 import { Footer, SimpleFooter } from '../../../src/_partials/footer/Footer.tsx';
@@ -22,8 +23,11 @@ import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.t
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
 import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-market-switch/index.page.tsx';
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
+import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
+import PersonalizedMailingNoVideoPage from '../../../src/templates/personalized-mailing/no-video/index.page.tsx';
+import PersonalizedMailingVideoPage from '../../../src/templates/personalized-mailing/video/index.page.tsx';
 import {
   countFirstLevelHeadings,
   countOccurrences,
@@ -31,6 +35,8 @@ import {
   flattenNavItems,
   getOpeningTag,
   patternPages,
+  singleTilePages,
+  tilePages,
 } from '../helpers/index.ts';
 
 /**
@@ -338,14 +344,22 @@ describe('PatternPage', () => {
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
   });
 
+  it('should give the page the canvas color of the color scheme as its background', () => {
+    expect(renderPatternPage()).toContain('<body class="bg-canvas">');
+  });
+
+  it('should give the page the surface color of the color scheme as its background, when asked to', () => {
+    expect(renderPatternPage({ background: 'surface' })).toContain('<body class="bg-surface">');
+  });
+
+  it('should center the content vertically in the viewport, when asked to', () => {
+    expect(renderPatternPage({ centered: true })).toContain('<body class="bg-canvas grid content-center min-h-dvh">');
+  });
+
   it('should leave the main landmark to the page', () => {
     const html = renderPatternPage();
 
     expect(html).toContain('<main id="main">');
-  });
-
-  it('should follow the color scheme of the operating system, which the dark captures and scans emulate', () => {
-    expect(renderPatternPage()).toContain('<html lang="en" class="scheme-light-dark bg-canvas">');
   });
 
   it('should render the page content, and nothing the layout adds around it', () => {
@@ -496,6 +510,28 @@ describe('admin panel', () => {
     expect(html).toContain('Edit 718 Cayman');
     expect(html).toContain('Delete 911 Carrera');
     expect(countOccurrences(html, 'name="some-name"')).toBe(0);
+  });
+});
+
+describe.each([
+  ['video', PersonalizedMailingVideoPage],
+  ['no-video', PersonalizedMailingNoVideoPage],
+] as const)('personalized mailing %s', (variant, Page) => {
+  it('should keep its dark design without setting a color scheme on the document', async () => {
+    const html = await renderPage(Page);
+    const { meta } = (await import(
+      path.join(srcDir, 'templates/personalized-mailing', variant, 'index.page.tsx')
+    )) as PageModule;
+
+    // The scheme of the document is the decision of the application, so the template fixes the dark scheme on each
+    // element directly in its body instead – which leaves it dark whatever the application uses.
+    expect(html).toContain('<html lang="en">');
+    expect(html).not.toMatch(/\bscheme-(dark|light-dark|normal)\b/);
+    expect(html).toMatch(/<main id="main" class="scheme-only-dark bg-canvas /);
+    expect(html).toContain('<footer class="grid-template py-fluid-lg bg-canvas scheme-only-dark">');
+    expect(html).toMatch(/<aside\s+id="pm-contact-bar"\s+class="scheme-only-dark /);
+    expect(html).toMatch(/<p-modal\s+id="pm-video-modal"\s+class="scheme-only-dark /);
+    expect(meta.colorSchemes).toEqual(['light', 'dark']);
   });
 });
 
@@ -680,5 +716,113 @@ describe('feedback patterns', () => {
     expect(html).toContain('id="feedback-close"');
     // Like every dialog, it is the last element of the body rather than part of the content it belongs to.
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<p-modal'));
+  });
+});
+
+describe.each(tilePages)('%s tile pattern', (name, Page) => {
+  /** `cover` of `p-link`, a boolean attribute – the formatted markup puts it on a line of its own. */
+  const hasCoveringLink = (html: string): boolean => /<p-link[^>]*\scover[\s>]/.test(html);
+
+  it('should give the focus ring of a covering link the corners of the tile', async () => {
+    const html = await renderPage(Page);
+    const declarations = [
+      ...html.matchAll(/class="([^"]*\[--p-link-cover-radius:var\(--radius-([a-z0-9]+)\)\][^"]*)"/g),
+    ];
+
+    // A covering `p-link` takes the corners of its focus ring from `--p-link-cover-radius`, set by the tile – otherwise
+    // the ring is drawn with square corners around a rounded tile. Which radius that is belongs to the tile: the one
+    // holding smaller tiles rounds those less than itself, so the variable is asserted against the rounding beside it.
+    expect(declarations.length > 0).toBe(hasCoveringLink(html));
+
+    for (const [, classes, radius] of declarations) {
+      expect(classes).toMatch(new RegExp(`\\brounded-${radius}\\b`));
+    }
+  });
+
+  it('should leave the color scheme to the application and fix the one of the tile only where needed', async () => {
+    const html = await renderPage(Page);
+    const { meta } = (await import(path.join(srcDir, name, 'index.page.tsx'))) as PageModule;
+    const fixedSchemes = html.match(/\bscheme-only-(light|dark)\b/g) ?? [];
+    const tileClass = html.match(/class="([^"]*\bscheme-only-[^"]*)"/)?.[1] ?? '';
+    const isOnDarkBackground = /bg-fade-to-/.test(html) || /\bbg-\[#/.test(tileClass);
+
+    // The scheme of the page is the decision of the application the tile is copied into, so the pattern sets none and
+    // declares both instead – the storefront applies the one its visitor chose. Light content on a gradient, a
+    // background or a brand color needs the dark scheme whatever the application uses, and the dark products of the
+    // category tiles would vanish on a dark surface – every other tile works in both schemes and follows the page.
+    expect(html).toContain('<html lang="en">');
+    expect(html).not.toMatch(/\bscheme-(light|dark|light-dark|normal)\b/);
+    expect(meta.colorSchemes).toEqual(['light', 'dark']);
+    if (isOnDarkBackground) {
+      expect(fixedSchemes).toEqual(['scheme-only-dark']);
+    } else if (name === 'patterns/tile/category') {
+      expect(fixedSchemes).toEqual(['scheme-only-light']);
+    } else if (name === 'patterns/tile/category-grid') {
+      // The same tile, three times over, so the same reason applies to each of them.
+      expect(fixedSchemes).toEqual(['scheme-only-light', 'scheme-only-light', 'scheme-only-light']);
+    } else {
+      expect(fixedSchemes).toEqual([]);
+    }
+  });
+});
+
+describe.each(singleTilePages)('%s single tile pattern', (name, Page) => {
+  /** `cover` of `p-link`, a boolean attribute – the formatted markup puts it on a line of its own. */
+  const hasCoveringLink = (html: string): boolean => /<p-link[^>]*\scover[\s>]/.test(html);
+
+  it('should show the tile on its own, below no first level heading', async () => {
+    const html = await renderPage(Page);
+
+    // The tile is content of a page rather than a page, so like the footer pattern it brings no heading of its own
+    // above it – a heading in the tile has the second level it has in a section of a real page.
+    expect(countFirstLevelHeadings(html)).toBe(0);
+    expect(html).not.toMatch(/<(p-heading tag="|)h[13-6][\s>"]/);
+  });
+
+  it('should make the tile clickable through exactly one link, named by its text', async () => {
+    const html = await renderPage(Page);
+    const anchors =
+      html.match(/<a href="#" class="absolute inset-0 z-1[^"]*">\s*<span class="sr-only">[^<]+<\/span>/g) ?? [];
+    const isClickable = ![
+      'patterns/tile/disclosure',
+      'patterns/tile/equipment',
+      'patterns/tile/equipment-stacked',
+      'patterns/tile/vehicle-listing',
+    ].includes(name);
+
+    // Either a `p-link` with `cover` stretches its clickable area over the tile, or an anchor of its own spans it, with
+    // visually hidden text as its accessible name – the four tiles without either carry an action, reveal more of
+    // themselves, only describe, or hold so many controls that a covering link would lie over them.
+    expect(Number(hasCoveringLink(html)) + anchors.length).toBe(Number(isClickable));
+  });
+});
+
+describe('patterns/tile/category-grid tile pattern', () => {
+  it('should head the tiles with one heading and rank them below it', async () => {
+    const html = await renderPage(TileCategoryGridPage);
+
+    // What the single tile patterns forbid is a heading above *the tile*, because a lone tile is content of a page
+    // rather than a page. Here the heading is what the arrangement is about, so it takes the second level a section
+    // of a real page would give it, and the tiles rank below it – still no first level heading, still no page.
+    expect(countFirstLevelHeadings(html)).toBe(0);
+    expect((html.match(/<p-heading[^>]*\stag="h2"/g) ?? []).length).toBe(1);
+    expect(countOccurrences(html, 'tag="h3"')).toBe(3);
+  });
+
+  it('should make every tile clickable through a covering link of its own', async () => {
+    const html = await renderPage(TileCategoryGridPage);
+
+    // One link per tile, each naming its own category – the rule the single tile patterns state once, counted per
+    // tile here.
+    expect((html.match(/<p-link[^>]*\scover[\s>]/g) ?? []).length).toBe(3);
+    expect(countOccurrences(html, '[--p-link-cover-radius:var(--radius-3xl)]')).toBe(3);
+  });
+
+  it('should group the tiles as a list', async () => {
+    const html = await renderPage(TileCategoryGridPage);
+
+    // How many categories there are is announced before the first of them is read. Matched up to any whitespace,
+    // since the formatter puts a long class attribute on a line of its own.
+    expect((html.match(/<li[\s>]/g) ?? []).length).toBe(3);
   });
 });

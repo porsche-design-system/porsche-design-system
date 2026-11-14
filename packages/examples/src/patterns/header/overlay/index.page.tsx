@@ -8,6 +8,7 @@ export const meta: ExampleMeta = {
   title: 'Header: Overlay',
   description:
     'The header lies on top of the content, typically a full-bleed hero image or video, and is reduced to a single row with brand, navigation and meta actions. The menu opens a drilldown with the site navigation.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /** Header pattern – the `overlay` layout, lying on top of the hero it is shown with. */

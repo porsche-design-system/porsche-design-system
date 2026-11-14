@@ -15,6 +15,25 @@ import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwr
 const pagesWithExamples: [path: string, examples: string[]][] = [
   ['/patterns/header/', ['patterns/header/overlay', 'patterns/header/stacked']],
   ['/patterns/footer/', ['patterns/footer/extended', 'patterns/footer/simple']],
+  [
+    '/patterns/tile/',
+    [
+      'patterns/tile/image-category',
+      'patterns/tile/video',
+      'patterns/tile/call-to-action',
+      'patterns/tile/model-teaser',
+      'patterns/tile/category',
+      'patterns/tile/vehicle-listing',
+      'patterns/tile/model-navigation',
+      'patterns/tile/model-selection',
+      'patterns/tile/product',
+      'patterns/tile/equipment',
+      'patterns/tile/disclosure',
+      'patterns/tile/equipment-stacked',
+      'patterns/tile/category-grid',
+      'patterns/tile/support',
+    ],
+  ],
   ['/patterns/forms/', ['patterns/forms/search-combobox-option-list', 'patterns/forms/search-combobox-link-list']],
   ['/patterns/feedback/', ['patterns/feedback/inline', 'patterns/feedback/dialog']],
   [

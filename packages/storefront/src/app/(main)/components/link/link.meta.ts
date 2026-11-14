@@ -7,6 +7,8 @@ import AccessibilityOverview from '@/app/(main)/components/link/accessibility/ov
 import AccessibilityTests from '@/app/(main)/components/link/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/link/configurator/introduction.mdx';
 import { linkSlotStories, linkStory } from '@/app/(main)/components/link/configurator/story';
+import CoverDescription from '@/app/(main)/components/link/examples/cover/example.mdx';
+import { linkStoryCover } from '@/app/(main)/components/link/examples/cover/story';
 import FrameworkRoutingDescription from '@/app/(main)/components/link/examples/framework-routing/example.mdx';
 import { linkStoryFrameworkRouting } from '@/app/(main)/components/link/examples/framework-routing/story';
 import IconDescription from '@/app/(main)/components/link/examples/icon/example.mdx';
@@ -32,6 +34,12 @@ export const linkMeta = {
       name: 'Link with specific icon',
       description: IconDescription,
       story: linkStoryIcon,
+    },
+    cover: {
+      kind: 'story',
+      name: 'Cover a card',
+      description: CoverDescription,
+      story: linkStoryCover,
     },
   },
   usage: Usage,

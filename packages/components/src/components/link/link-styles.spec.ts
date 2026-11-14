@@ -23,8 +23,12 @@ describe('getComponentCss()', () => {
       true,
       { base: false, xs: true, s: false, m: true, l: false, xl: true },
     ],
+    // cover
+    ['arrow-right', '', 'primary', false, true, false, true],
+    ['arrow-right', '', 'secondary', false, false, false, true],
+    ['arrow-right', '', 'secondary', { base: true, s: false }, true, { base: true, s: false }, true],
   ])(
-    'should return correct css for icon: %s, iconSource: %s, variant: %s, hideLabel: %s, hasSlottedAnchor: %s and compact: %s',
+    'should return correct css for icon: %s, iconSource: %s, variant: %s, hideLabel: %s, hasSlottedAnchor: %s, compact: %s and cover: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }

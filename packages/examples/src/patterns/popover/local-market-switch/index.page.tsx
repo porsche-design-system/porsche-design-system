@@ -135,6 +135,7 @@ export const meta: ExampleMeta = {
   title: 'Popover: Local market switch',
   description:
     "On entering the site, a popover anchored to the globe icon in the header suggests switching to the user's local market for correct content and pricing. It is shown on load and can be dismissed via an outside click or the Escape key.",
+  colorSchemes: ['light', 'dark'],
 };
 
 /**

@@ -8,6 +8,7 @@ export const meta: ExampleMeta = {
   title: 'Feedback: Dialog',
   description:
     'A trigger button opens the same rating-and-comment flow inside a dialog, keeping the page uncluttered. It can be launched from any action on the page, which makes it ideal for task-focused or space-constrained contexts where feedback should stay available but out of the way.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**

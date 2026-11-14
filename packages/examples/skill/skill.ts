@@ -103,6 +103,10 @@ export const getComponents = (markup: string): string[] => {
 const renderComponentLinks = (components: string[]): string =>
   components.map((tag) => `[\`${tag}\`](/components/${tag.replace(/^p-/, '')})`).join(', ');
 
+/** The color schemes an example is built for, as the index explains them. */
+const renderColorSchemes = ({ colorSchemes = ['light'] }: Example): string =>
+  colorSchemes.length > 1 ? `${colorSchemes.join(' and ')} – see Conventions` : `${colorSchemes[0]} only`;
+
 /** Link from a reference back to the index, which lies as many folders up as the reference name has segments. */
 const getIndexLink = (pagePath: string): string => `${'../'.repeat(pagePath.split('/').length)}${skillName}.md`;
 
@@ -131,6 +135,7 @@ const renderPage = (example: Example): string => {
     '',
     `- **Type:** ${categoryLabels[getCategory(pagePath)].singular}`,
     `- **Components:** ${renderComponentLinks(getComponents(markup))}`,
+    `- **Color schemes:** ${renderColorSchemes(example)}`,
     `- **Conventions and stylesheet:** shared by all examples, see [${skillName}.md](${getIndexLink(pagePath)})`,
     '',
     '## Markup',
@@ -173,11 +178,11 @@ const title = 'Patterns and templates';
 const intro =
   'Patterns and templates are curated use cases composed of PDS components, each with a defined layout, styling and ' +
   'behaviour – the way the Porsche Design System puts its components together for a recurring task. Patterns ' +
-  'cover a single section of a page – a header, a footer, a popover flow, a feedback form – shown in the place it ' +
-  'occupies on a real page; templates cover a whole page. They are written in vanilla HTML and JavaScript with the ' +
-  'PDS web components and the PDS Tailwind CSS theme. Whatever the framework of a project, they are the reference ' +
-  'for how such a pattern is meant to be built – the components, their props, the layout, the styling and the ' +
-  'behaviour they show – and only their syntax has to be converted to the framework.';
+  'cover a single section of a page – a header, a footer, a tile, a popover flow, a feedback form – shown in the ' +
+  'place it occupies on a real page; templates cover a whole page. They are written in vanilla HTML and JavaScript ' +
+  'with the PDS web components and the PDS Tailwind CSS theme. Whatever the framework of a project, they are the ' +
+  'reference for how such a pattern is meant to be built – the components, their props, the layout, the styling and ' +
+  'the behaviour they show – and only their syntax has to be converted to the framework.';
 
 /** The catalog, and what every example shares. What they are is the intro, rendered into SKILL.md rather than here. */
 const renderIndex = (): string => {
@@ -198,6 +203,11 @@ const renderIndex = (): string => {
       'strings, e.g. `hide-label="{ base: true, s: false }"`.',
     '- **Script:** the behaviour of the page, as a JavaScript module. It is demo code: it wires up the components by ' +
       'their ids and fakes everything a real application would load or send.',
+    '- **Color scheme:** an example sets none on `<html>`, since the scheme is the decision of the application, e.g. ' +
+      '`scheme-light` or `scheme-dark` on its `<html>` – do not take one over from an example. Its reference names the ' +
+      'schemes it is built for; one built for light only needs adapting before it is used in the dark scheme. Where a ' +
+      'section needs a fixed scheme whatever the application uses, e.g. light text on an image, it sets ' +
+      '`scheme-only-dark` or `scheme-only-light` itself – keep those.',
     '',
     '## Stylesheet',
     '',
@@ -218,7 +228,7 @@ export const examplesSkill: PackageSkill = {
   title,
   description:
     'Curated use cases composed of PDS components with a defined layout and styling – page sections (patterns) ' +
-    'and whole pages (templates) to start from when building a header, footer, popover flow, feedback form, ' +
+    'and whole pages (templates) to start from when building a header, footer, tile, popover flow, feedback form, ' +
     'landing page or admin panel.',
   intro,
   getContent: renderIndex,

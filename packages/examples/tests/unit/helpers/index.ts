@@ -10,6 +10,20 @@ import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.t
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
 import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-market-switch/index.page.tsx';
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
+import TileCallToActionPage from '../../../src/patterns/tile/call-to-action/index.page.tsx';
+import TileCategoryPage from '../../../src/patterns/tile/category/index.page.tsx';
+import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index.page.tsx';
+import TileDisclosurePage from '../../../src/patterns/tile/disclosure/index.page.tsx';
+import TileEquipmentPage from '../../../src/patterns/tile/equipment/index.page.tsx';
+import TileEquipmentStackedPage from '../../../src/patterns/tile/equipment-stacked/index.page.tsx';
+import TileImageCategoryPage from '../../../src/patterns/tile/image-category/index.page.tsx';
+import TileModelNavigationPage from '../../../src/patterns/tile/model-navigation/index.page.tsx';
+import TileModelSelectionPage from '../../../src/patterns/tile/model-selection/index.page.tsx';
+import TileModelTeaserPage from '../../../src/patterns/tile/model-teaser/index.page.tsx';
+import TileProductPage from '../../../src/patterns/tile/product/index.page.tsx';
+import TileSupportPage from '../../../src/patterns/tile/support/index.page.tsx';
+import TileVehicleListingPage from '../../../src/patterns/tile/vehicle-listing/index.page.tsx';
+import TileVideoPage from '../../../src/patterns/tile/video/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import PersonalizedMailingNoVideoPage from '../../../src/templates/personalized-mailing/no-video/index.page.tsx';
@@ -58,6 +72,33 @@ export const patternPages = [
   ['patterns/forms/search-combobox-link-list', SearchComboboxLinkListPage],
   ['patterns/feedback/inline', FeedbackInlinePage],
   ['patterns/feedback/dialog', FeedbackDialogPage],
+  ['patterns/tile/model-selection', TileModelSelectionPage],
+  ['patterns/tile/model-navigation', TileModelNavigationPage],
+  ['patterns/tile/category', TileCategoryPage],
+  ['patterns/tile/image-category', TileImageCategoryPage],
+  ['patterns/tile/video', TileVideoPage],
+  ['patterns/tile/product', TileProductPage],
+  ['patterns/tile/vehicle-listing', TileVehicleListingPage],
+  ['patterns/tile/disclosure', TileDisclosurePage],
+  ['patterns/tile/call-to-action', TileCallToActionPage],
+  ['patterns/tile/model-teaser', TileModelTeaserPage],
+  ['patterns/tile/category-grid', TileCategoryGridPage],
+  ['patterns/tile/equipment', TileEquipmentPage],
+  ['patterns/tile/equipment-stacked', TileEquipmentStackedPage],
+  ['patterns/tile/support', TileSupportPage],
 ] as const;
+
+/** The tile patterns – one use case of a tile each, built with HTML and Tailwind CSS. */
+export const tilePages = patternPages.filter(([path]) => path.startsWith('patterns/tile/'));
+
+/**
+ * The tile patterns that show a single tile, which most of them are.
+ *
+ * What the others add is an arrangement of several tiles, so the rules that count once per page – the heading above
+ * the tile, the one link that opens it – are counted per tile there instead and asserted on the page of their own.
+ */
+export const singleTilePages = tilePages.filter(
+  ([path]) => !['patterns/tile/category-grid', 'patterns/tile/support'].includes(path)
+);
 
 export const examplePages = [...templatePages, ...patternPages];

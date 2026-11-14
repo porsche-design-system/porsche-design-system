@@ -75,6 +75,7 @@ Consequences, and they are the point of the design:
 ```text
 lib/                              # everything importable – by vite.config.ts, the scripts and the tests
 ├── jsx.ts                        # renderPage(), findPages(), page URL resolution + Vite plugin (dev server)
+├── comment.ts                    # the HTML comments of the Comment partial – rendered, checked and wrapped
 ├── partials.ts                   # PDS partials (loader, fonts, icons, chunks) – dev server and generated projects
 ├── projects.ts                   # the categories, their component chunks and the path arithmetic
 ├── entries.ts                    # extractScripts() + the generated main.js + the dev stylesheet link
@@ -112,7 +113,9 @@ src/
 │   └── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
 ├── _partials/                    # Head, Header, Footer – checked props
 │   ├── Script.tsx                # <script type="module"> with unescaped code – all behaviour goes through it
+│   ├── Comment.tsx               # an HTML comment in the markup – why the element after it is built that way
 │   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
+│   ├── tile/comments.ts          # the comments the tile patterns share, worded once
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   ├── footer/                   # Footer (`extended`) and SimpleFooter, sharing the legal information they close with
@@ -129,6 +132,9 @@ src/
 │   ├── header/stacked/           # Header in its `stacked` variant
 │   ├── footer/extended/          # Footer of a site: delivery country, navigation, social media, legal information
 │   ├── footer/simple/            # SimpleFooter: the legal information only, for a page that stands on its own
+│   ├── tile/                     # index.page.tsx each – the use cases of a tile, built with HTML and Tailwind CSS
+│   │   ├── model-selection/      # … one folder per use case: anchor or covering `p-link`, hover via `group-hover:`
+│   │   └── …                     # category, video, product, …; light and dark, tile fixes its scheme only if needed
 │   ├── forms/                    # index.page.tsx each – combobox patterns built on `p-input-search` and `p-popover`
 │   │   ├── search-combobox-option-list/ # filters a listbox of options and writes the choice into the field
 │   │   └── search-combobox-link-list/   # filters a dialog of links and navigates to the chosen page
@@ -266,7 +272,8 @@ schemes – in its initial state and in every state the page reaches through int
 - **Nothing is scoped or disabled in the fixture.** The component suites of `packages/components-js` switch off the
   rules that expect a page-level `main` and an `h1`, because they render one component in isolation. An example _is_ a
   whole page, so those rules are exactly the ones worth running. A rule that genuinely does not apply is disabled **per
-  page** with a reason – today only `page-has-heading-one`, for the footer patterns, which are a section and not a page.
+  page** with a reason – today only `page-has-heading-one`, for the footer and the tile patterns, which show a section
+  or an element and not a page.
 - Like the VRT it runs against the **built** site, sharing the web servers in
   [`tests/helpers/previewServers.ts`](tests/helpers/previewServers.ts). WebKit is scanned as well as chromium: axe reads
   the styles and names the engine computes, and an iPhone only ever runs WebKit.
@@ -357,9 +364,17 @@ reaches through interaction**.
   replacing them. There is no shared data module.
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
   chrome is what the pattern demonstrates. Pass the section as `beforeMain` (headers) or `afterMain` (footers) so its
-  landmark sits where it does on a real page. It also sets `scheme-light-dark bg-canvas` on `<html>`, so a pattern
-  follows the color scheme of the operating system – without a scheme the PDS components render light, and the dark
-  captures and scans would show the light pattern; without a background axe measures contrast against white.
+  landmark sits where it does on a real page.
+- **An example sets no color scheme on `<html>`.** The scheme is the decision of the application an example is copied
+  into – most use `scheme-light` or `scheme-dark` – so a `scheme-light-dark` in the code would be taken over by copy and
+  paste and by the knowledge skill for no reason. An example therefore renders light on its own, and one built for the
+  dark scheme as well declares `colorSchemes: ['light', 'dark']` in its `meta`: the `WebsiteViewer` of the storefront
+  then sets the scheme its visitor chose on the `<html>` of the example (same origin) and of the project it opens in
+  StackBlitz, and `setupExamplePage()` of [`tests/helpers/setup.ts`](tests/helpers/setup.ts) does the same with
+  `scheme-light-dark`, so the dark captures of the VRT and the a11y scans show it. The skill names the schemes of every
+  example. A section that needs a fixed scheme whatever the application uses – light text on an image – sets
+  `scheme-only-dark` or `scheme-only-light` itself. An application shell on `p-canvas` is the exception: it is the
+  application, so it puts its scheme on `<html>` – see below.
 - **A page built on `p-canvas` adds no landmark of its own.** The component renders the banner, the `main` landmark and
   the two `aside` landmarks in its shadow root, so a `<main id="main">` in the default slot would nest one landmark
   inside another. The page therefore renders the component straight into
@@ -395,6 +410,17 @@ reaches through interaction**.
   dev. What differs between the pages rendering a partial is a prop instead, and what the partial has to react to it
   finds through a relation of its own markup: `FeedbackForm` offers to start over when it is `restartable`, and follows
   the modal it is rendered in through `form.closest('p-modal')` – so the dialog page only opens and closes its modal.
+- **Why a technique is used is a `<Comment>`, written where the markup is.** [`Comment`](src/_partials/Comment.tsx)
+  renders an HTML comment before the element it explains, so the reason reaches the `index.html` – the code view of the
+  storefront, StackBlitz and the knowledge skill – and is read where the markup is copied, while the storefront page
+  stays an introduction. Preact cannot render a comment, so the partial renders a placeholder element that
+  `renderComments()` of [`lib/comment.ts`](lib/comment.ts) turns into `<!-- … -->` before formatting, and
+  `wrapComments()` breaks a comment longer than the line length into lines of its own afterwards. Write why, not what –
+  the classes say what – and word a technique several patterns share once, like
+  [`tile/comments.ts`](src/_partials/tile/comments.ts): each pattern is copied on its own, so it repeats the comment. A
+  comment must not contain `--`, `<`, `>` or `&` (the partial throws), nor a word Tailwind reads as a utility – no class
+  names, and none of `grow`, `block`, `hidden`, `relative`, `visible`, `outline`, `ring`, … A unit test compiles the
+  comments of every page with Tailwind and fails on any utility they produce.
 - **Every page opens with `exampleNote`.** [`renderPage()`](lib/jsx.ts) writes it between the doctype and `<html>`, in
   dev and build alike: a comment saying the example is written with web platform technologies but relies on Tailwind CSS
   and with it on a bundler – the wording of the setup popover of the storefront's `WebsiteViewer` – and is built on
@@ -535,7 +561,8 @@ project with it (`npm run test:unit:skills`).
 1. Create `src/templates/<name>/index.page.tsx` – markup, classes and, in a `<Script>`, behaviour.
 2. Export its `meta` – a `title` naming the example on its own and a plain-text `description` of what it shows and when
    to use it – typed as `ExampleMeta` from [`lib/meta.ts`](lib/meta.ts). The storefront, StackBlitz and the knowledge
-   skill present the example by it; the build fails without it.
+   skill present the example by it; the build fails without it. Add `colorSchemes: ['light', 'dark']` once the page
+   works in the dark scheme as well – see _An example sets no color scheme_.
 3. Default-export a component that renders `<TemplatePage meta={meta}>`, which writes the meta into the `<head>`. The
    layout writes nothing but the document: the page composes its chrome itself, like a pattern does –
    `<Header currentPage="…" />` (optionally `showSearch`, `variant`, `navItems`, and for `stacked` also `notice` and
@@ -591,14 +618,17 @@ hand, and nothing fails when one of the first two is forgotten:
 Every example ships a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item only and
 visible `:focus-visible` outlines on every interactive element no PDS component styles (the Tailwind
 `focus-visible:outline outline-focus` utilities). High Contrast Mode is left to the PDS components – there is no
-`forced-colors` block of our own – and captured in both schemes by the VRT. Templates additionally carry the `header`
-and `footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets
-all of them from the component and therefore renders none itself. These demos are documentation, so they have to be
-correct by example — keep the baseline when adding examples. The unit tests and the a11y suite assert it for every page.
+`forced-colors` block of our own, only a `forced-colors:` variant where a custom control would lose its state, like the
+color swatches of the tile product pattern – and captured in both schemes by the VRT. Templates additionally carry the
+`header` and `footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on
+`p-canvas` gets all of them from the component and therefore renders none itself. These demos are documentation, so they
+have to be correct by example — keep the baseline when adding examples. The unit tests and the a11y suite assert it for
+every page.
 
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
 heading, because the content below the header is part of what they show. The footer patterns have none: their `main` is
-empty and carries no spacing, so the footer is seen on its own instead of below a placeholder heading. The shared test
-therefore asserts _at most_ one first level heading per example, and the per-pattern suites pin down which of the two a
-page is — do not "fix" a missing heading by adding one back to a pattern that deliberately shows nothing above its
-section.
+empty and carries no spacing, so the footer is seen on its own instead of below a placeholder heading. The tile patterns
+have none either: a tile is shown on its own, and its heading has the second level it has in a section of a real page.
+The shared test therefore asserts _at most_ one first level heading per example, and the per-pattern suites pin down
+which of the two a page is — do not "fix" a missing heading by adding one back to a pattern that deliberately shows
+nothing above its section.

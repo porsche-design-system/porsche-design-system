@@ -133,6 +133,14 @@ describe('examplesSkill', () => {
     }
   });
 
+  it('should name the color schemes an example is built for, and leave the scheme to the application', () => {
+    const getReference = (name: string) => references.find((reference) => reference.name === name)?.getContent() ?? '';
+
+    expect(getReference('templates/landing-page')).toContain('- **Color schemes:** light only\n');
+    expect(getReference('patterns/tile/category')).toContain('- **Color schemes:** light and dark – see Conventions\n');
+    expect(examplesSkill.getContent()).toContain('- **Color scheme:** an example sets none on `<html>`');
+  });
+
   it.each(references.map(({ name, getContent }) => [name, getContent] as const))(
     'should render "%s" with its components linked to their storefront route and its markup',
     (_name, getContent) => {
@@ -140,6 +148,7 @@ describe('examplesSkill', () => {
 
       expect(content).toMatch(/^# .+\n\n.+\n/);
       expect(content).toMatch(/- \*\*Components:\*\* \[`p-[a-z-]+`\]\(\/components\/[a-z-]+\)/);
+      expect(content).toMatch(/- \*\*Color schemes:\*\* (light only|light and dark – see Conventions)\n/);
       expect(content).toContain('```html\n<html lang="en"');
       expect(content).not.toContain('Example of the Porsche Design System');
     }

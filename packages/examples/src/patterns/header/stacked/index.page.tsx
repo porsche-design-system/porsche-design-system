@@ -8,6 +8,7 @@ export const meta: ExampleMeta = {
   title: 'Header: Stacked',
   description:
     'The header sits above the content instead of lying on top of it: a note on top, the bar with brand, navigation and meta actions in the middle, and a row of category navigation below. The menu opens a drilldown with the site navigation.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /** Header pattern – the `stacked` layout, sitting above the content with a note and a category row. */
