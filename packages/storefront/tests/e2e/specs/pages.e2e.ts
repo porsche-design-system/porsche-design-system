@@ -15,6 +15,10 @@ const expectedConsole: Record<string, RegExp[]> = {
   // The page documents the deprecated p-display component.
   '/components/display/configurator/': [/component p-display is deprecated/],
   '/components/display/examples/': [/component p-display is deprecated/],
+  // The YouTube embed allows web-share for browsers with the Web Share API. The headless test browser has none.
+  '/examples/templates/personalized-mailing/no-video/index.html': [/Unrecognized feature: 'web-share'/],
+  '/examples/templates/personalized-mailing/video/index.html': [/Unrecognized feature: 'web-share'/],
+  '/templates/personalized-mailing/': [/Unrecognized feature: 'web-share'/],
   // TODO Code example previews load images relative to the page. Remove once #4800 resolves them in toPreview.
   '/components/button-tile/examples/': [/status of 404 .*\/assets\/lights\.jpg$/],
   '/components/link-tile/examples/': [/status of 404 .*\/assets\/lights\.jpg$/],
@@ -33,7 +37,8 @@ for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, 
     // match static files in public/assets directory, and the examples in public/examples
     if (url.match(/^\/assets\/.*\.\w{3,4}$/) || isExampleUrl(url)) {
       expect(response?.status()).toBe(200);
-      if (isExampleUrl(url)) {
+      // Only the example pages render PDS components. Their media, e.g. a .webp, has none to wait for.
+      if (isExampleUrl(url) && url.endsWith('.html')) {
         await waitForComponentsHydrated(page);
       }
     } else {
