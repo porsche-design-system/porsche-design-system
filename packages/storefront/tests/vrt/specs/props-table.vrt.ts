@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthXL } from '@porsche-design-system/shared/testing';
+import { schemes, viewportWidthXL } from '@porsche-design-system/testing';
 import { resetAnimations } from '../helpers/helpers';
 
 const urls = {

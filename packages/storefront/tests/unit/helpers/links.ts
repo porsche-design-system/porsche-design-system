@@ -30,7 +30,7 @@ export const isDocsRoute = (path: string): path is DocsRoute => docsRoutes.has(p
  * - `route`: a Storefront page, root-absolute and without a trailing slash: `/components/button/usage#do`. `next/link`
  *   adds the base path and the trailing slash.
  * - `anchor`: a heading on the same page: `#do`.
- * - `file`: a file in `public/`, relative: `assets/downloads/AGENTS.md`. The `<base>` of the root layout resolves it
+ * - `file`: a file in `public/`, relative: `assets/compulsory-statement.txt`. The `<base>` of the root layout resolves it
  *   against the deployment's base path, which a root-absolute `/assets/…` would miss.
  * - `external`: anything with a scheme: `https:`, `mailto:`.
  */

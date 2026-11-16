@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import type { Page } from 'playwright';
 import {
   addEventListener,

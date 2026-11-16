@@ -1,5 +1,6 @@
 import type { ConsoleMessage, Locator, Page } from '@playwright/test';
-import { stubExternalRequests, waitForComponentsReady } from '../../helpers/index.ts';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { stubExternalRequests } from '../../helpers/index.ts';
 
 export { getDevice, getExampleUrl, getSpecPath, waitForStablePosition } from '../../helpers/index.ts';
 
@@ -30,7 +31,7 @@ export const setupExamplePage = async (page: Page, url: string, viewportWidth?: 
     await page.setViewportSize({ width: viewportWidth, height: defaultViewportHeight });
   }
   await page.goto(url);
-  await waitForComponentsReady(page);
+  await waitForComponentsHydrated(page);
 };
 
 /**

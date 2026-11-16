@@ -144,6 +144,7 @@ test.describe('aria', () => {
           'aria-expanded': true,
           'aria-haspopup': 'dialog',
           'aria-controls': 'combobox-suggestions',
+          'aria-activedescendant': 'combobox-option-1',
           'aria-label': 'Search vehicles',
           'aria-description': 'Search the vehicle catalog',
         },
@@ -154,8 +155,90 @@ test.describe('aria', () => {
     await expect(inputSearch).toHaveAttribute('aria-expanded', 'true');
     await expect(inputSearch).toHaveAttribute('aria-haspopup', 'dialog');
     await expect(inputSearch).toHaveAttribute('aria-controls', 'combobox-suggestions');
+    await expect(inputSearch).toHaveAttribute('aria-activedescendant', 'combobox-option-1');
     await expect(inputSearch).toHaveAttribute('aria-label', 'Search vehicles');
     await expect(inputSearch).toHaveAttribute('aria-description', 'Search the vehicle catalog');
+  });
+
+  test('should reflect element references for aria-controls and aria-activedescendant without stringifying them', async ({
+    page,
+  }) => {
+    await initInputSearch(page, {
+      markupAfter: '<ul id="results"><li id="opt" role="option">One</li></ul>',
+    });
+
+    await page.evaluate(() => {
+      const search = document.querySelector('p-input-search') as
+        | (HTMLElement & {
+            aria: {
+              'aria-controls': Element | Element[] | null;
+              'aria-activedescendant': Element | null;
+            };
+          })
+        | null;
+      const list = document.getElementById('results');
+      const option = document.getElementById('opt');
+      if (!search || !list || !option) {
+        throw new Error('Search markup is incomplete');
+      }
+      search.aria = {
+        'aria-controls': [list],
+        'aria-activedescendant': option,
+      };
+    });
+    await waitForStencilLifecycle(page);
+
+    const reflected = await getInputSearch(page).evaluate((input) => {
+      const field = input as HTMLInputElement & {
+        ariaControlsElements: { id: string }[] | null;
+        ariaActiveDescendantElement: { id: string } | null;
+      };
+      return {
+        controlsId: field.ariaControlsElements?.[0]?.id ?? null,
+        controlsCount: field.ariaControlsElements?.length ?? 0,
+        activeId: field.ariaActiveDescendantElement?.id ?? null,
+        controlsAttr: field.getAttribute('aria-controls'),
+        activeAttr: field.getAttribute('aria-activedescendant'),
+      };
+    });
+
+    expect(reflected.controlsId).toBe('results');
+    expect(reflected.controlsCount).toBe(1);
+    expect(reflected.activeId).toBe('opt');
+    expect(reflected.controlsAttr ?? '').not.toContain('[object');
+    expect(reflected.activeAttr ?? '').not.toContain('[object');
+
+    await page.evaluate(() => {
+      const search = document.querySelector('p-input-search') as
+        | (HTMLElement & {
+            aria: {
+              'aria-controls': Element | Element[] | null;
+              'aria-activedescendant': Element | null;
+            };
+          })
+        | null;
+      if (!search) {
+        throw new Error('Search markup is incomplete');
+      }
+      search.aria = {
+        'aria-controls': null,
+        'aria-activedescendant': null,
+      };
+    });
+    await waitForStencilLifecycle(page);
+
+    const cleared = await getInputSearch(page).evaluate((input) => {
+      const field = input as HTMLInputElement & {
+        ariaControlsElements: Element[] | null;
+        ariaActiveDescendantElement: Element | null;
+      };
+      return {
+        controls: field.ariaControlsElements,
+        active: field.ariaActiveDescendantElement,
+      };
+    });
+    expect(cleared.controls).toBeNull();
+    expect(cleared.active).toBeNull();
   });
 });
 

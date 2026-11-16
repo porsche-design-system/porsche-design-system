@@ -32,7 +32,7 @@ runs:
     - name: 'Send'
       if: steps.slack.outputs.send == 'true'
       # `errors: true` — the action's default is false and a rejected request would pass green.
-      uses: slackapi/slack-github-action@v4.0.0
+      uses: slackapi/slack-github-action@dcb1066f776dd043e64d0e8ba94ca15cc7e1875d # v4.0.0
       with:
         method: chat.postMessage
         token: ${{ inputs.slack-bot-token }}

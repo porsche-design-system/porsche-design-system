@@ -102,55 +102,6 @@ export default [
     plugins: [typescript({ noEmitOnError: true, rootDir: 'src/models' })],
   },
   {
-    input: 'src/testing/index.ts',
-    external,
-    output: [
-      {
-        file: 'dist/testing/esm/index.mjs',
-        format: 'esm',
-      },
-      {
-        file: 'dist/testing/cjs/index.cjs',
-        format: 'cjs',
-      },
-    ],
-    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/testing' })],
-  },
-  {
-    // standalone bundle for the `./testing/normalize-css-namespace` deep import, see the exports map above
-    input: 'src/testing/normalizeCssNamespace.ts',
-    external,
-    output: [
-      {
-        file: 'dist/testing/normalize-css-namespace/esm/index.mjs',
-        format: 'esm',
-      },
-      {
-        file: 'dist/testing/normalize-css-namespace/cjs/index.cjs',
-        format: 'cjs',
-        exports: 'named',
-      },
-    ],
-    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/testing' })],
-  },
-  {
-    // standalone bundle for the `./testing/assert-defined` deep import, see the exports map above
-    input: 'src/testing/assertDefined.ts',
-    external,
-    output: [
-      {
-        file: 'dist/testing/assert-defined/esm/index.mjs',
-        format: 'esm',
-      },
-      {
-        file: 'dist/testing/assert-defined/cjs/index.cjs',
-        format: 'cjs',
-        exports: 'named',
-      },
-    ],
-    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/testing' })],
-  },
-  {
     input: 'src/serve-dummyassets.ts',
     output: {
       dir: 'bin',

@@ -84,7 +84,8 @@ All accessibility requirements from the root [`AGENTS.md`](../../AGENTS.md) appl
 
 ## Testing
 
-Tests are located in the `tests/` directory. When modifying wrapper behavior:
+Unit specs are in `projects/vue-wrapper/tests/unit/specs/`; e2e, VRT and smoke tests are in `tests/`. When modifying
+wrapper behavior:
 
 - Ensure wrapped components maintain accessibility
 - Verify ARIA attribute passthrough works correctly
@@ -92,11 +93,5 @@ Tests are located in the `tests/` directory. When modifying wrapper behavior:
 
 ## Build Dependencies
 
-This package requires these to be built first:
-
-1. `shared`, `tokens`, `assets`, `styles`, `utilities`, `component-meta`
-2. `components`
-3. `components-js`
-
-Run `npm run build` from the root to build all dependencies in order.
+Follow the [build order](../../AGENTS.md#build-order-critical) in the root `AGENTS.md`.
 

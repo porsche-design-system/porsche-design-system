@@ -1,23 +1,8 @@
-import { AxeBuilder } from '@axe-core/playwright';
-import { test as base } from '@playwright/test';
+import { createAxeTest } from '@porsche-design-system/testing/axe';
 
-type AxeFixture = {
-  makeAxeBuilder: () => AxeBuilder;
-};
-
-// Extend base test by providing "makeAxeBuilder"
-//
-// This new "test" can be used in multiple test files, and each of them will get
-// a consistently configured AxeBuilder instance.
-export const test = base.extend<AxeFixture>({
-  makeAxeBuilder: async ({ page }, use) => {
-    const makeAxeBuilder = () =>
-      new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'])
-        .exclude('iframe')
-        // rule is disabled due to unwanted refactorings in component presentation
-        .disableRules('landmark-unique');
-    await use(makeAxeBuilder);
-  },
+export const test = createAxeTest({
+  exclude: 'iframe',
+  // rule is disabled due to unwanted refactorings in component presentation
+  disableRules: ['landmark-unique'],
 });
 export { expect } from '@playwright/test';

@@ -1,0 +1,8 @@
+---
+description: Points to the AGENTS.md for files under packages/examples/
+globs: packages/examples/**
+alwaysApply: false
+---
+
+Files under `packages/examples/` follow @packages/examples/AGENTS.md. If it is not in your context, read it before you
+answer about or edit these files, and follow it.

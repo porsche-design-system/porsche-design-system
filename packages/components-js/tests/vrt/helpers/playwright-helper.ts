@@ -1,9 +1,9 @@
 import { type Page } from '@playwright/test';
+import { waitForComponentsReady as waitForComponentsReadyFrom } from '@porsche-design-system/testing/playwright';
 
-export const waitForComponentsReady = async (page: Page): Promise<number> => {
-  await page.waitForFunction(async () => (await (window as any).porscheDesignSystem.componentsReady()) > 0);
-  return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
-};
+// the demo app loads page markup asynchronously, so wait until at least one component is ready
+export const waitForComponentsReady = (page: Page): Promise<number> =>
+  waitForComponentsReadyFrom(page, { source: 'porscheDesignSystem', atLeastOne: true });
 
 export const waitForComponentsReadyWithinIFrames = async (page: Page): Promise<void> => {
   return page.evaluate(() => (window as any).porscheDesignSystem.waitForComponentsReadyWithinIFrames());

@@ -1,4 +1,4 @@
-import { viewportWidthM } from '@porsche-design-system/shared/testing';
+import { viewportWidthM } from '@porsche-design-system/testing';
 import { setupScenario } from '../../../vrt/helpers';
 import { componentsValid, expect, test } from '../../helpers';
 

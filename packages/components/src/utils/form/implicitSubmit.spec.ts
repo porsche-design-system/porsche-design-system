@@ -40,6 +40,20 @@ describe('implicitSubmit', () => {
     expect(mockRequestSubmit).not.toHaveBeenCalled();
   });
 
+  it('does nothing during IME composition (isComposing or keyCode 229)', () => {
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    vi.spyOn(submitButton, 'matches').mockReturnValue(true);
+    submitButton.click = mockClick;
+    form.appendChild(submitButton);
+
+    pressEnter({ isComposing: true });
+    pressEnter({ keyCode: 229 });
+
+    expect(mockClick).not.toHaveBeenCalled();
+    expect(mockRequestSubmit).not.toHaveBeenCalled();
+  });
+
   it('does nothing if form is not present', () => {
     implicitSubmit(new KeyboardEvent('keypress', { key: 'Enter' }), { form: null } as any, host);
     vi.runAllTimers();

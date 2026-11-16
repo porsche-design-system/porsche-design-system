@@ -1,8 +1,19 @@
-You can pass an `aria` property to expose extra semantics on the **native input** (see
-[accessibility](/components/input-search/accessibility)). The story below is intentionally incomplete: it sets common
-combobox-related `aria` values and shows a **non-interactive** listbox-shaped panel (Tailwind only) for visual context.
-If you use `aria-controls` to reference a light-DOM listbox from the native input inside Shadow DOM, be aware that
-assistive technologies may not reliably honor that cross-shadow relationship. This issue is known and will be resolved
-if browsers add support for it. A real implementation still needs your logic, keyboard handling, and relationship
-attributes that work for your setup per the [ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
+A search field with a result list composed with [`p-popover`](/components/popover/configurator) is provided as different
+patterns:
 
+### The combobox option list pattern
+
+The [search combobox option list](/patterns/forms#search-combobox-option-list) pattern shows this with a dealer search
+as an integration example. Typing filters the options, the arrow keys move a highlight, and Enter or the search button
+writes the highlighted option into the field.
+
+### The combobox link list pattern
+
+The [search combobox link list](/patterns/forms#search-combobox-link-list) pattern uses the same field when a match is a
+page of its own, also demonstrated with a dealer search integration example. The results stay real links inside a
+dialog, the arrow keys move a highlight, and Enter or a click opens the highlighted page.
+
+Both patterns pass the controlled region and the highlighted item as elements on the `aria` prop
+(`'aria-controls': listOrDialog`, `'aria-activedescendant': activeElement`). A string id would not resolve from inside
+the input's shadow tree; the element reference sets `ariaControlsElements` and `ariaActiveDescendantElement` on the
+native `<input>`.

@@ -7,9 +7,11 @@ button (or a slotted trigger) is clicked. It is dismissed on outside click, on `
 the Popover.
 
 Alternatively, the Popover can be used in a **controlled** mode by setting the `open` prop together with a slotted
-`button` (the default info button does not toggle in this mode). In this mode you own the open state: the Popover only
-emits the `dismiss` event when the user requests to close it (via `Escape`, an outside click or when keyboard focus
-leaves the Popover), and you decide whether to update `open` in response.
+`button` or another trigger element (the default info button does not toggle in this mode). In this mode you own the
+open state: the Popover only emits the `dismiss` event when the user requests to close it (via `Escape`, an outside
+click or when keyboard focus leaves the Popover), and you decide whether to update `open` in response.
 
 **Hint:** The `p-popover` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) and
 gets rendered on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container.
+Set `arrow={false}` to drop the arrow and the extra offset it adds, which keeps a wide trigger (such as an input search
+field) flush with the panel.

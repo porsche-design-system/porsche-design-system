@@ -1,7 +1,7 @@
 import { PLink } from '@porsche-design-system/components-react/ssr';
 
 type DownloadListProps = {
-  /** Files in `public/`, linked relatively, e.g. `assets/downloads/AGENTS.md`, with the label of their link. */
+  /** Files in `public/`, linked relatively, e.g. `assets/compulsory-statement.txt`, with the label of their link. */
   items: { href: string; label: string }[];
 };
 
