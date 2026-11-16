@@ -4,6 +4,11 @@ import type { TestOptions } from '@porsche-design-system/testing/playwright';
 
 export default defineConfig<TestOptions>({
   ...playwrightConfigE2E,
+  use: {
+    ...playwrightConfigE2E.use,
+    // vite.config.app.mts preloads three font files, a slow page warns about the ones it does not use
+    expectedConsole: [/was preloaded using link preload but not used within a few seconds/],
+  },
   projects: [
     {
       name: 'chrome',

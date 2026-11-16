@@ -6,8 +6,12 @@ export default defineConfig<TestOptions>({
   ...playwrightConfigE2E,
   use: {
     ...playwrightConfigE2E.use,
-    // setContentWithDesignSystem writes the demo app script with document.write
-    expectedConsole: [/parser-blocking, cross site .* is invoked via document\.write/],
+    expectedConsole: [
+      // setContentWithDesignSystem writes the demo app script with document.write
+      /parser-blocking, cross site .* is invoked via document\.write/,
+      // vite.config.js preloads every chunk, a slow page warns about the chunks it does not use
+      /was preloaded using link preload but not used within a few seconds/,
+    ],
   },
   projects: [
     {
