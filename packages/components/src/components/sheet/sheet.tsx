@@ -166,7 +166,10 @@ export class Sheet {
         onCancel={this.onDialogCancel}
         onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
         onClick={this.onDialogBackdropClick}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onTransitionEnd={(e) =>
+          !this.swipeController.consumeRecoveryTransition(e) &&
+          onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)
+        }
         onDismiss={this.dismissButton ? this.onDismissButtonClick : undefined}
         containerClass="sheet"
         header={this.hasHeader ? <slot name="header" /> : undefined}

@@ -404,4 +404,85 @@ describe('createSheetSwipeController', () => {
     expect(sheet.style.transform).toBe('');
     expect(dialog.style.backgroundColor).toBe('');
   });
+
+  it('should consume only the backdrop transition of a snap-back or veto, not one of an open or close', () => {
+    const backdropTransition = (target: EventTarget = dialog, propertyName = 'background-color'): TransitionEvent => {
+      const event = new Event('transitionend') as TransitionEvent;
+      Object.defineProperties(event, { target: { value: target }, propertyName: { value: propertyName } });
+      return event;
+    };
+    const drag = (distance: number): void => {
+      dispatchTouchOn(sheet, 'touchstart', 100);
+      advanceTime(200);
+      dispatchTouchOn(sheet, 'touchmove', 100 + distance);
+      dispatchTouchOn(sheet, 'touchend', 100 + distance);
+    };
+
+    expect(controller.consumeRecoveryTransition(backdropTransition())).toBe(false);
+
+    drag(20);
+    expect(controller.consumeRecoveryTransition(backdropTransition(sheet))).toBe(false);
+    expect(controller.consumeRecoveryTransition(backdropTransition(dialog, 'transform'))).toBe(false);
+    expect(controller.consumeRecoveryTransition(backdropTransition())).toBe(true);
+    expect(controller.consumeRecoveryTransition(backdropTransition())).toBe(false);
+
+    const frames: FrameRequestCallback[] = [];
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) => {
+      frames.push(cb);
+      return frames.length;
+    });
+    drag(260);
+    expect(onSwipeDismiss).toHaveBeenCalledTimes(1);
+    frames.at(-1)?.(0);
+    frames.at(-1)?.(0);
+    expect(controller.consumeRecoveryTransition(backdropTransition())).toBe(true);
+
+    // A recovery transition that never ends (e.g. interrupted) must not swallow the next close or open
+    drag(20);
+    openState = false;
+    controller.sync();
+    expect(controller.consumeRecoveryTransition(backdropTransition())).toBe(false);
+  });
+
+  it('should restore an open sheet when swipeHandle is disabled mid-drag or while a swipe dismiss is pending', () => {
+    dispatchPointer('pointerdown', 100);
+    advanceTime(50);
+    dispatchPointer('pointermove', 180);
+    expect(sheet.style.transform).toBe('translate3d(0, 80px, 0)');
+
+    swipeHandleEnabled = false;
+    controller.sync();
+    expect(sheet.style.transition).toBe('');
+    expect(sheet.style.transform).toBe('');
+    expect(dialog.style.transition).toBe('');
+    expect(dialog.style.backgroundColor).toBe('');
+
+    swipeHandleEnabled = true;
+    controller.sync();
+    dispatchTouchOn(sheet, 'touchstart', 100);
+    advanceTime(80);
+    dispatchTouchOn(sheet, 'touchmove', 260);
+    dispatchTouchOn(sheet, 'touchend', 260);
+    expect(onSwipeDismiss).toHaveBeenCalledTimes(1);
+    expect(sheet.style.transform).toBe('translate3d(0, 160px, 0)');
+
+    swipeHandleEnabled = false;
+    controller.sync();
+    expect(sheet.style.transform).toBe('');
+    expect(dialog.style.backgroundColor).toBe('');
+  });
+
+  it('should keep the glide-out styles when swipeHandle is disabled after a swipe dismiss closed the sheet', () => {
+    dispatchTouchOn(sheet, 'touchstart', 100);
+    advanceTime(80);
+    dispatchTouchOn(sheet, 'touchmove', 260);
+    dispatchTouchOn(sheet, 'touchend', 260);
+    openState = false;
+    controller.sync();
+    expect(sheet.style.transform).toBe('translate3d(0, 100%, 0)');
+
+    swipeHandleEnabled = false;
+    controller.sync();
+    expect(sheet.style.transform).toBe('translate3d(0, 100%, 0)');
+  });
 });

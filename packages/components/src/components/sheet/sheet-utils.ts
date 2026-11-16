@@ -142,6 +142,8 @@ export type SheetSwipeController = {
   sync: () => void;
   /** Detaches all DOM listeners, cancels frames, and clears inline styles on disconnect. */
   destroy: () => void;
+  /** True once for the backdrop transition that restores an open sheet after a snap-back or veto, not an open. */
+  consumeRecoveryTransition: (event: TransitionEvent) => boolean;
 };
 
 /**
@@ -172,6 +174,7 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
   let pendingSwipeDismiss = false;
   let vetoFrame = 0;
   let suppressHandleClick = false;
+  let isRecovering = false;
 
   const clearSwipeStyles = (): void => {
     const sheet = getSheet();
@@ -184,6 +187,12 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
       dialog.style.transition = '';
       dialog.style.backgroundColor = '';
     }
+  };
+
+  /** Restores the still-open sheet from its drag position, which transitions the backdrop back. */
+  const recoverSwipeStyles = (): void => {
+    isRecovering ||= !!getDialog()?.style.backgroundColor;
+    clearSwipeStyles();
   };
 
   const resetGesture = (): void => {
@@ -248,7 +257,7 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
       vetoFrame = requestAnimationFrame(() => {
         if (isOpen() && pendingSwipeDismiss) {
           pendingSwipeDismiss = false;
-          clearSwipeStyles();
+          recoverSwipeStyles();
         }
       });
     });
@@ -268,7 +277,7 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
       onSwipeDismiss();
       scheduleVetoCheck();
     } else if (wasDragging) {
-      clearSwipeStyles();
+      recoverSwipeStyles();
     }
   };
 
@@ -347,6 +356,12 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
     const sheet = getSheet();
     const handle = getSwipeHandle();
     if (!(isOpen() && hasSwipeHandle() && dialog && sheet && handle)) {
+      // Disabling the feature while open must not leave the sheet displaced. The glide-out styles of a closed sheet stay.
+      if (isOpen() && (isDragging || pendingSwipeDismiss)) {
+        cancelAnimationFrame(vetoFrame);
+        pendingSwipeDismiss = false;
+        recoverSwipeStyles();
+      }
       detachListeners();
       return;
     }
@@ -372,6 +387,9 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
 
   const sync = (): void => {
     const open = isOpen();
+    if (open !== wasOpen) {
+      isRecovering = false;
+    }
     if (open && !wasOpen) {
       pendingSwipeDismiss = false;
       clearSwipeStyles();
@@ -395,8 +413,17 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
     cancelAnimationFrame(vetoFrame);
     pendingSwipeDismiss = false;
     suppressHandleClick = false;
+    isRecovering = false;
     wasOpen = false;
   };
 
-  return { sync, destroy };
+  const consumeRecoveryTransition = (event: TransitionEvent): boolean => {
+    if (isRecovering && event.target === getDialog() && event.propertyName === 'background-color') {
+      isRecovering = false;
+      return true;
+    }
+    return false;
+  };
+
+  return { sync, destroy, consumeRecoveryTransition };
 };

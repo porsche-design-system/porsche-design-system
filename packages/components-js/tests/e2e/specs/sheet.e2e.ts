@@ -805,6 +805,37 @@ test.describe('swipe handle', () => {
     await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
   });
 
+  test('should not emit motionVisibleEnd again when the backdrop transitions back after a snap-back', async ({
+    page,
+  }) => {
+    const host = await enableSwipeHandle(page, true, undefined, {
+      injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>',
+    });
+    await waitForSheetTransition();
+    await addEventListener(host, 'motionVisibleEnd');
+    const handleBox = await getSwipeHandle(page).boundingBox();
+    if (!handleBox) {
+      throw new Error('swipe handle has no box');
+    }
+    const hx = handleBox.x + handleBox.width / 2;
+    const hy = handleBox.y + handleBox.height / 2;
+    await page.mouse.move(hx, hy);
+    await page.mouse.down();
+    await page.mouse.move(hx, hy + 16, { steps: 4 });
+    await page.mouse.up();
+    await waitForSheetTransition();
+
+    await expect(page.locator('p-sheet dialog')).toHaveJSProperty('style.backgroundColor', '');
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
+
+    await setProperty(host, 'open', false);
+    await waitForStencilLifecycle(page);
+    await setProperty(host, 'open', true);
+    await waitForStencilLifecycle(page);
+    await waitForSheetTransition();
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
+  });
+
   skipInBrowsers(['firefox', 'webkit'], () => {
     test.describe('touch swipe (CDP)', () => {
       const dragSheet = async (page: Page, distance: number) => {
