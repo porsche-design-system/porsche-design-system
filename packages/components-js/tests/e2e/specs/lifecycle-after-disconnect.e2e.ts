@@ -12,7 +12,7 @@ const tagNames: TagName[] = TAG_NAMES.filter((tagName) => !INTERNAL_TAG_NAMES.in
 for (const tagName of tagNames) {
   test.describe(tagName, () => {
     if (tagName === 'p-select-option') {
-      // TODO remove once #ISSUE is fixed
+      // TODO remove once #4868 is fixed
       test.use({
         expectedConsole: async ({ expectedConsole }, use) =>
           use([
