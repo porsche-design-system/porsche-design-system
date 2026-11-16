@@ -100,6 +100,10 @@ for (const component of components) {
     if (component === 'table') {
       test.use({ externalRequests: tableExternalRequests });
     }
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
+    });
     test.skip(({ browserName }) => browserName !== 'chromium');
 
     for (const viewportWidth of viewportWidths.filter((x) => x !== viewportWidthM)) {
