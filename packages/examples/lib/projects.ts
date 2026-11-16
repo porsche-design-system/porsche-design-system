@@ -72,6 +72,7 @@ export const templateComponents = [
   'carousel',
   'divider',
   'link-tile',
+  'model-signature',
   'table',
 ] as const;
 
