@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["node", "@playwright/test", "vitest/globals", "vitest/jsdom"],
+    "types": ["node", "@playwright/test", "vitest/jsdom"],
     "noImplicitAny": false,
     "noImplicitThis": false,
     "noImplicitReturns": false,

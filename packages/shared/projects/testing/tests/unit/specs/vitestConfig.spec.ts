@@ -5,7 +5,6 @@ import { configDefaults } from 'vitest/config';
 describe('vitestConfig', () => {
   it('should provide the shared defaults', () => {
     expect(vitestConfig.test).toEqual({
-      globals: true,
       environment: 'jsdom',
       taskTitleValueFormatTruncate: Number.MAX_SAFE_INTEGER,
       clearMocks: true,

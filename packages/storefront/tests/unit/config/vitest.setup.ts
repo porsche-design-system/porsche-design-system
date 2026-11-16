@@ -1,6 +1,11 @@
-import { beforeAll, vi } from 'vitest';
+import { cleanup } from '@testing-library/react';
+import { afterEach, beforeAll, vi } from 'vitest';
 import '@testing-library/jest-dom/vitest';
 import '@porsche-design-system/components-react/jsdom-polyfill';
+
+// Testing Library does both by itself only when Vitest globals are on.
+(globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
+afterEach(cleanup);
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
