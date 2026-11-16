@@ -612,6 +612,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.SelectExampleSelectedSlotComponent,
   },
   {
+    name: 'Signal Forms Example',
+    path: 'signal-forms-example',
+    component: fromExamples.SignalFormsExampleComponent,
+  },
+  {
     name: 'Stepper Horizontal Example',
     path: 'stepper-horizontal-example',
     component: fromExamples.StepperHorizontalExampleComponent,
