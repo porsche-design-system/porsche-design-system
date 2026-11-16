@@ -6,7 +6,14 @@ const cdnComUrl = 'https://cdn.ui.porsche.com/porsche-design-system/components/a
 describe('externalUrlPattern', () => {
   it('pattern ignores localhost', () => {
     expect(externalUrlPattern.test('http://localhost:3001/x')).toBe(false);
+    expect(externalUrlPattern.test('http://localhost/')).toBe(false);
     expect(externalUrlPattern.test('http://127.0.0.1:8080/')).toBe(false);
+  });
+
+  it('pattern matches a host that only starts like localhost', () => {
+    expect(externalUrlPattern.test('http://localhost.example.com/')).toBe(true);
+    expect(externalUrlPattern.test('http://127.0.0.1.nip.io/')).toBe(true);
+    expect(externalUrlPattern.test('http://localhost:secret@example.com/')).toBe(true);
   });
 });
 
