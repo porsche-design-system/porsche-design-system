@@ -3,6 +3,7 @@
 // Import it via `@porsche-design-system/testing/normalize-css-namespace` instead.
 // Named re-exports, not `export *`: Node runs this source as CommonJS, and an ESM importer (examples, react-router)
 // only sees the names Node detects statically, which excludes `export *`.
+export { testCoverage } from './coverage';
 export { playwrightConfigA11y } from './playwright.a11y';
 export { playwrightConfigE2E } from './playwright.e2e';
 export {

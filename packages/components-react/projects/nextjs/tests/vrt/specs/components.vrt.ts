@@ -25,10 +25,6 @@ const components = fileNames
     return !argv.length || argv.includes(name);
   });
 
-test('should have certain amount of components', () => {
-  expect(components.length).toBe(60);
-});
-
 for (const component of components) {
   test.describe(component, async () => {
     for (const viewportWidth of [viewportWidthXS, viewportWidthL]) {
