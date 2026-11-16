@@ -46,42 +46,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - **Partials**: type checking failed with `Cannot find module 'react'` in projects without React and with `skipLibCheck`
   disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
-- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
-  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` submitted the form even when the
-  `keydown` or `keypress` event was cancelled with `preventDefault()`, e.g. by a password manager
-  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
-- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
-  `Input Text`, `Input Time`, `Input Url`, `Input Week`: pressing `Enter` submitted a form without a submit button,
-  although it contained another `Input Password`, a `Pin Code`, or an `Input Month` or `Input Week` in a browser
-  without a month or week picker, e.g. Firefox and Safari
-  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 - `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
 - `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
-  `Input Text`, `Input Time`, `Input Url`, `Input Week`: pressing `Enter` to confirm a candidate of an input method,
-  e.g. for Japanese or Chinese, submitted the form
-  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
-- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
-  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` together with `Ctrl`, `Alt` or
-  `Cmd` submitted the form in Chrome and Safari, where a native input doesn't
-  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
-- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
-  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` didn't submit the form when a
-  listener on the page stopped the propagation of the `keydown` event before it reached the input, e.g. in the capture
-  phase ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
-- `Input Date`, `Input Month`, `Input Time`, `Input Week`: pressing `Enter` submitted a form without a submit button,
-  while native date, month, time and week inputs only click a submit button. `Input Month` and `Input Week` still
-  submit in browsers without a month or week picker, which render them as a text field
-  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
-- `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`, `Input Url`: pressing
-  `Enter` didn't submit a form without a submit button when the form also contained a date, time, month or week field,
-  e.g. an `Input Date`, while a native text input submits
-  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
-- `Pin Code`: pressing `Enter` in a form without a submit button didn't behave like a native input: another text field,
-  e.g. an `Input Text`, didn't prevent the submission, while a checkbox, radio button or date field did
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` didn't submit the form like a
+  native input. It submitted even when the `keydown` or `keypress` event was cancelled, e.g. by a password manager, or
+  when it confirmed a candidate of an input method, e.g. for Japanese, and in a form without a submit button it ignored
+  which other fields the form contained, e.g. it submitted next to an `Input Password` or from an `Input Date`
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 - `Pin Code`: pressing `Enter` submitted the form without clicking its submit button, so the button's `name` and `value`
-  were missing from the submitted data and a disabled submit button didn't prevent the submission
+  were missing and a disabled submit button didn't prevent the submission
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 
 ## [4.10.1] - 2026-10-23
