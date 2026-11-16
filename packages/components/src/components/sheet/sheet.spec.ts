@@ -230,7 +230,7 @@ describe('swipe gesture wiring', () => {
     vi.restoreAllMocks();
   });
 
-  it('should wire DOM listeners in componentDidRender and emit dismiss({ reason: "swipe" }) on mouse drag', () => {
+  it('should wire DOM listeners in componentDidRender and emit dismiss({ reason: "swipe" }) on a swipe handle drag', () => {
     const emitMock = vi.fn();
     component.dismiss = { emit: emitMock } as any;
     const dialog = component['dialog'];
@@ -262,16 +262,19 @@ describe('swipe gesture wiring', () => {
 
     component.componentDidRender();
 
-    swipeHandle.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, button: 0, clientX: 50, clientY: 100 }));
+    swipeHandle.setPointerCapture = vi.fn();
+    const pointer = { bubbles: true, cancelable: true, pointerId: 1, isPrimary: true, clientX: 50 };
+
+    swipeHandle.dispatchEvent(new PointerEvent('pointerdown', { ...pointer, button: 0, buttons: 1, clientY: 100 }));
     now += 100;
-    window.dispatchEvent(new MouseEvent('mousemove', { buttons: 1, clientX: 50, clientY: 220, cancelable: true }));
+    swipeHandle.dispatchEvent(new PointerEvent('pointermove', { ...pointer, buttons: 1, clientY: 220 }));
     expect(sheet.style.transform).toBe('translate3d(0, 120px, 0)');
 
-    window.dispatchEvent(new MouseEvent('mouseup', { button: 0, clientX: 50, clientY: 220 }));
+    swipeHandle.dispatchEvent(new PointerEvent('pointerup', { ...pointer, button: 0, clientY: 220 }));
     expect(emitMock).toHaveBeenCalledTimes(1);
     expect(emitMock).toHaveBeenCalledWith({ reason: 'swipe' });
 
-    const syntheticClick = new MouseEvent('click', { bubbles: true, cancelable: true });
+    const syntheticClick = new MouseEvent('click', { bubbles: true, cancelable: true, detail: 1 });
     swipeHandle.dispatchEvent(syntheticClick);
     expect(syntheticClick.defaultPrevented).toBe(true);
   });

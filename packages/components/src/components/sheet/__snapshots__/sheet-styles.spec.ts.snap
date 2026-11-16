@@ -364,6 +364,7 @@ dialog::backdrop {
   display: grid;
   place-items: center;
   cursor: grab;
+  touch-action: none;
   z-index: 5;
   border-radius: var(--p-radius-sm);
 }
@@ -372,8 +373,8 @@ dialog::backdrop {
 }
 .swipe-handle::before {
   content: "";
-  width: var(--p-spacing-static-lg);
-  height: var(--p-spacing-static-xs);
+  width: 36px;
+  height: 5px;
   border-radius: var(--p-radius-full);
   background: var(--p-color-contrast-medium);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -410,7 +411,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .swipe-handle:hover::before {
-    background: var(--p-color-primary);
+    background: var(--p-color-contrast-high);
   }
 }
 "
@@ -559,6 +560,7 @@ dialog::backdrop {
   display: grid;
   place-items: center;
   cursor: grab;
+  touch-action: none;
   z-index: 5;
   border-radius: var(--p-radius-sm);
 }
@@ -567,8 +569,8 @@ dialog::backdrop {
 }
 .swipe-handle::before {
   content: "";
-  width: var(--p-spacing-static-lg);
-  height: var(--p-spacing-static-xs);
+  width: 36px;
+  height: 5px;
   border-radius: var(--p-radius-full);
   background: var(--p-color-contrast-medium);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -623,7 +625,7 @@ dialog::backdrop {
 }
 
   .swipe-handle:hover::before {
-    background: var(--p-color-primary);
+    background: var(--p-color-contrast-high);
   }
 }
 "

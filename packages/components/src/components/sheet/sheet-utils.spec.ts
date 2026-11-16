@@ -99,19 +99,22 @@ describe('hasExcludedSwipeTarget', () => {
     }
   });
 
-  it('should allow a gesture starting on the swipe handle button itself', () => {
-    const swipeHandle = document.createElement('button');
-    const labelSpan = document.createElement('span');
-
-    expect(hasExcludedSwipeTarget([labelSpan, swipeHandle, ownDialog], ownDialog, swipeHandle)).toBe(false);
-  });
-
-  it('should allow a gesture on non-interactive content or an anchor without href', () => {
+  it('should allow a gesture on non-interactive content, an anchor without href or a non-editable region', () => {
     const content = document.createElement('p');
     const anchorWithoutHref = document.createElement('a');
+    const nonEditable = document.createElement('div');
+    nonEditable.setAttribute('contenteditable', 'false');
 
     expect(hasExcludedSwipeTarget([content, ownDialog], ownDialog)).toBe(false);
     expect(hasExcludedSwipeTarget([anchorWithoutHref, ownDialog], ownDialog)).toBe(false);
+    expect(hasExcludedSwipeTarget([nonEditable, ownDialog], ownDialog)).toBe(false);
+  });
+
+  it('should stop at the own dialog so ancestors outside the sheet are never checked', () => {
+    const content = document.createElement('p');
+    const outerButton = document.createElement('button');
+
+    expect(hasExcludedSwipeTarget([content, ownDialog, outerButton], ownDialog)).toBe(false);
   });
 });
 
@@ -184,12 +187,32 @@ describe('createSheetSwipeController', () => {
     return event;
   };
 
+  const dispatchPointer = (
+    type: 'pointerdown' | 'pointermove' | 'pointerup' | 'pointercancel',
+    clientY: number,
+    buttons = 1
+  ): PointerEvent => {
+    const event = new PointerEvent(type, {
+      bubbles: true,
+      cancelable: true,
+      pointerId: 7,
+      isPrimary: true,
+      button: 0,
+      buttons,
+      clientX: 20,
+      clientY,
+    });
+    swipeHandle.dispatchEvent(event);
+    return event;
+  };
+
   beforeEach(() => {
     dialog = document.createElement('dialog');
     scroller = document.createElement('div');
     sheet = document.createElement('div');
     sheet.getBoundingClientRect = () => ({ height: 400 }) as DOMRect;
     swipeHandle = document.createElement('button');
+    swipeHandle.setPointerCapture = vi.fn();
     sheet.appendChild(swipeHandle);
     scroller.appendChild(sheet);
     dialog.appendChild(scroller);
@@ -251,15 +274,16 @@ describe('createSheetSwipeController', () => {
   });
 
   it('should clear inline drag styles and cancel the gesture if the sheet closes mid-drag', () => {
-    swipeHandle.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, button: 0, clientX: 20, clientY: 100 }));
+    dispatchPointer('pointerdown', 100);
+    expect(swipeHandle.setPointerCapture).toHaveBeenCalledWith(7);
     advanceTime(50);
-    window.dispatchEvent(new MouseEvent('mousemove', { buttons: 1, clientX: 20, clientY: 160, cancelable: true }));
+    dispatchPointer('pointermove', 160);
 
     expect(sheet.style.transition).toBe('none');
     expect(dialog.style.transition).toBe('none');
     expect(dialog.style.backgroundColor).toContain('color-mix');
 
-    // Sheet closes externally (e.g. Escape) before mouseup
+    // Sheet closes externally (e.g. Escape) before pointerup
     openState = false;
     controller.sync();
 
@@ -268,8 +292,33 @@ describe('createSheetSwipeController', () => {
     expect(dialog.style.transition).toBe('');
     expect(dialog.style.backgroundColor).toBe('');
 
-    window.dispatchEvent(new MouseEvent('mouseup', { button: 0, clientX: 20, clientY: 280 }));
+    dispatchPointer('pointerup', 280, 0);
     expect(onSwipeDismiss).not.toHaveBeenCalled();
+  });
+
+  it('should swallow the click that ends a handle drag, but not a later tap or keyboard activation', () => {
+    const clickSpy = vi.fn();
+    swipeHandle.addEventListener('click', clickSpy);
+    const click = (detail: number): void => {
+      swipeHandle.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, detail }));
+    };
+
+    dispatchPointer('pointerdown', 100);
+    advanceTime(200);
+    dispatchPointer('pointermove', 130);
+    dispatchPointer('pointerup', 130, 0);
+    expect(onSwipeDismiss).not.toHaveBeenCalled();
+    expect(sheet.style.transform).toBe('');
+
+    click(0);
+    expect(clickSpy).toHaveBeenCalledTimes(1);
+    click(1);
+    expect(clickSpy).toHaveBeenCalledTimes(1);
+
+    dispatchPointer('pointerdown', 100);
+    dispatchPointer('pointerup', 100, 0);
+    click(1);
+    expect(clickSpy).toHaveBeenCalledTimes(2);
   });
 
   it('should not swallow subsequent button clicks after a short touch drag', () => {
@@ -303,7 +352,7 @@ describe('createSheetSwipeController', () => {
     expect(sheet.style.transform).toBe('');
   });
 
-  it('should snap back on touchcancel, window blur, scroll lock, and consumer veto', () => {
+  it('should snap back on touchcancel, pointercancel, a missed pointer release, scroll lock, and consumer veto', () => {
     // Scroll lock blocks immediate touch drag
     scroller.dispatchEvent(new Event('scroll'));
     advanceTime(40);
@@ -323,12 +372,20 @@ describe('createSheetSwipeController', () => {
     expect(onSwipeDismiss).not.toHaveBeenCalled();
     expect(sheet.style.transform).toBe('');
 
-    // Window blur during mouse drag snaps back
-    swipeHandle.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, button: 0, clientX: 20, clientY: 100 }));
+    // pointercancel during a handle drag snaps back
+    dispatchPointer('pointerdown', 100);
     advanceTime(50);
-    window.dispatchEvent(new MouseEvent('mousemove', { buttons: 1, clientX: 20, clientY: 180, cancelable: true }));
+    dispatchPointer('pointermove', 180);
     expect(sheet.style.transform).toBe('translate3d(0, 80px, 0)');
-    window.dispatchEvent(new Event('blur'));
+    dispatchPointer('pointercancel', 180, 0);
+    expect(sheet.style.transform).toBe('');
+
+    // A move without pressed buttons (release missed, e.g. after window blur) snaps back
+    dispatchPointer('pointerdown', 100);
+    advanceTime(50);
+    dispatchPointer('pointermove', 280);
+    dispatchPointer('pointermove', 280, 0);
+    expect(onSwipeDismiss).not.toHaveBeenCalled();
     expect(sheet.style.transform).toBe('');
 
     // Consumer veto (sheet stays open across 2 animation frames) snaps back

@@ -32,20 +32,35 @@ export const SWIPE_MAX_BACKDROP_SCRUB = 0.99;
 
 const isElement = (node: EventTarget): node is HTMLElement => node instanceof HTMLElement;
 
-const EXCLUDED_SWIPE_TAGS = new Set(['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'LABEL', 'SUMMARY', 'CANVAS', 'DIALOG']);
-const EXCLUDED_SWIPE_ROLES = new Set([
+const EXCLUDED_SWIPE_TARGET_SELECTOR = [
+  'input',
+  'textarea',
+  'select',
   'button',
-  'link',
-  'slider',
-  'spinbutton',
-  'textbox',
-  'combobox',
-  'listbox',
-  'menuitem',
-  'option',
-  'switch',
-  'tab',
-]);
+  'label',
+  'summary',
+  'canvas',
+  'dialog',
+  'a[href]',
+  'video[controls]',
+  'audio[controls]',
+  '[contenteditable]:not([contenteditable="false" i])',
+  '[draggable="true"]',
+  ':popover-open',
+  ...[
+    'button',
+    'link',
+    'slider',
+    'spinbutton',
+    'textbox',
+    'combobox',
+    'listbox',
+    'menuitem',
+    'option',
+    'switch',
+    'tab',
+  ].map((role) => `[role="${role}"]`),
+].join();
 
 const isVerticallyScrollable = (element: HTMLElement): boolean => {
   if (element.scrollHeight <= element.clientHeight) {
@@ -58,47 +73,26 @@ const isVerticallyScrollable = (element: HTMLElement): boolean => {
 /** True when the sheet scroller and every scrollable ancestor between the touch and it are at the top. */
 export const isScrolledToTop = (composedPath: EventTarget[], scroller: HTMLElement): boolean => {
   for (const node of composedPath) {
-    if (!isElement(node)) {
-      continue;
-    }
-    if (isVerticallyScrollable(node) && node.scrollTop > 0) {
-      return false;
-    }
     if (node === scroller) {
-      return scroller.scrollTop <= 0;
+      break;
+    }
+    if (isElement(node) && isVerticallyScrollable(node) && node.scrollTop > 0) {
+      return false;
     }
   }
   return scroller.scrollTop <= 0;
 };
 
-/** True when the gesture starts on an interactive control, editable region, canvas, open popover or nested dialog. */
-export const hasExcludedSwipeTarget = (
-  composedPath: EventTarget[],
-  ownDialog: HTMLDialogElement,
-  swipeHandle?: HTMLElement
-): boolean => {
+/**
+ * True when the touch starts on an interactive control, editable region, canvas, open popover or nested dialog.
+ * This includes the swipe handle button, which is dragged through Pointer Events instead.
+ */
+export const hasExcludedSwipeTarget = (composedPath: EventTarget[], ownDialog: HTMLDialogElement): boolean => {
   for (const node of composedPath) {
-    if (!(node instanceof Element)) {
-      continue;
-    }
-    if (node === ownDialog || node === swipeHandle) {
+    if (node === ownDialog) {
       return false;
     }
-    const tagName = node.tagName.toUpperCase();
-    const role = node.getAttribute('role');
-    const contentEditable = node.getAttribute('contenteditable');
-    const isEditable =
-      (node instanceof HTMLElement && node.isContentEditable) ||
-      (contentEditable !== null && contentEditable !== 'false' && contentEditable !== 'inherit');
-    if (
-      EXCLUDED_SWIPE_TAGS.has(tagName) ||
-      (tagName === 'A' && node.hasAttribute('href')) ||
-      ((tagName === 'VIDEO' || tagName === 'AUDIO') && node.hasAttribute('controls')) ||
-      (role !== null && EXCLUDED_SWIPE_ROLES.has(role)) ||
-      isEditable ||
-      node.matches(':popover-open') ||
-      node.getAttribute('draggable') === 'true'
-    ) {
+    if (node instanceof Element && node.matches(EXCLUDED_SWIPE_TARGET_SELECTOR)) {
       return true;
     }
   }
@@ -146,26 +140,25 @@ export type SheetSwipeControllerOptions = {
 export type SheetSwipeController = {
   /** Reconciles DOM listeners and open/close inline style transitions after render. */
   sync: () => void;
-  /** Detaches all DOM listeners, cancels timers/frames, and clears inline styles on disconnect. */
+  /** Detaches all DOM listeners, cancels frames, and clears inline styles on disconnect. */
   destroy: () => void;
 };
 
 /**
- * Manages downward swipe/drag dismissal (touch on non-interactive sheet surface + `.swipe-handle`, mouse on
- * `.swipe-handle`), backdrop `color-mix` scrubbing, snap-back, and consumer veto recovery for `p-sheet`.
+ * Manages downward swipe dismissal for `p-sheet`: Touch Events on the non-interactive sheet surface (so native scrolling
+ * and horizontal gestures keep working) and Pointer Events with pointer capture on `.swipe-handle` (mouse, pen and
+ * touch). Also scrubs the backdrop, snaps back and recovers from a consumer veto.
  */
 export const createSheetSwipeController = (options: SheetSwipeControllerOptions): SheetSwipeController => {
   const { getDialog, getScroller, getSheet, getSwipeHandle, isOpen, hasSwipeHandle, onSwipeDismiss } = options;
 
   let wasOpen = false;
-  let swipeListenersAttached = false;
-  let mouseListenersAttached = false;
-  let listenedDialog: HTMLDialogElement | undefined;
-  let listenedSheet: HTMLDivElement | undefined;
-  let listenedSwipeHandle: HTMLButtonElement | undefined;
+  let listeners:
+    | { dialog: HTMLDialogElement; sheet: HTMLDivElement; handle: HTMLButtonElement; abort: AbortController }
+    | undefined;
 
   let touchId: number | null = null;
-  let isMousePointerActive = false;
+  let pointerId: number | null = null;
   let startX = 0;
   let startY = 0;
   let lastY = 0;
@@ -178,13 +171,7 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
   let lastScrollTime = 0;
   let pendingSwipeDismiss = false;
   let vetoFrame = 0;
-  let suppressClick = false;
-  let suppressClickTimer = 0;
-
-  const clearSuppressClick = (): void => {
-    suppressClick = false;
-    window.clearTimeout(suppressClickTimer);
-  };
+  let suppressHandleClick = false;
 
   const clearSwipeStyles = (): void => {
     const sheet = getSheet();
@@ -201,42 +188,23 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
 
   const resetGesture = (): void => {
     touchId = null;
-    isMousePointerActive = false;
+    pointerId = null;
     axis = null;
     isDragging = false;
     velocityY = 0;
   };
 
-  const trackedTouch = (event: TouchEvent): Touch | undefined =>
-    Array.from(event.changedTouches).find((touch) => touch.identifier === touchId);
-
-  const scheduleVetoCheck = (): void => {
-    cancelAnimationFrame(vetoFrame);
-    let frames = 0;
-    const tick = (): void => {
-      frames += 1;
-      if (frames < 2) {
-        vetoFrame = requestAnimationFrame(tick);
-        return;
-      }
-      if (isOpen() && pendingSwipeDismiss) {
-        pendingSwipeDismiss = false;
-        clearSwipeStyles();
-      }
-    };
-    vetoFrame = requestAnimationFrame(tick);
-  };
+  const canBeginGesture = (): boolean =>
+    touchId === null && pointerId === null && performance.now() - lastScrollTime >= SWIPE_SCROLL_LOCK_MS;
 
   const beginGesture = (clientX: number, clientY: number): void => {
     startX = clientX;
     startY = clientY;
     lastY = clientY;
     lastTime = performance.now();
-    velocityY = 0;
-    axis = null;
-    isDragging = false;
     dragDy = 0;
     sheetHeight = getSheet()?.getBoundingClientRect().height ?? 0;
+    suppressHandleClick = false;
   };
 
   const applyDragFrame = (clientY: number, dy: number): void => {
@@ -246,9 +214,8 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
       return;
     }
     const now = performance.now();
-    const elapsed = now - lastTime;
-    if (elapsed > 0) {
-      velocityY = (clientY - lastY) / elapsed;
+    if (now > lastTime) {
+      velocityY = (clientY - lastY) / (now - lastTime);
     }
     lastY = clientY;
     lastTime = now;
@@ -259,267 +226,165 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
     dialog.style.backgroundColor = getSwipeBackdropBackgroundColor(dragDy, sheetHeight);
   };
 
-  const finishGesture = (cancelled: boolean, armClickSuppression: boolean): void => {
+  /** Locks the axis once, then follows the pointer while the gesture is downward and the content is scrolled to the top. */
+  const moveGesture = (event: TouchEvent | PointerEvent, clientX: number, clientY: number): void => {
+    const dy = clientY - startY;
+    if (!axis) {
+      axis = getSwipeAxis(clientX - startX, dy);
+      const scroller = getScroller();
+      isDragging =
+        axis === 'y' && dy > 0 && event.cancelable && !!scroller && isScrolledToTop(event.composedPath(), scroller);
+    }
+    if (isDragging) {
+      event.preventDefault();
+      applyDragFrame(clientY, dy);
+    }
+  };
+
+  const scheduleVetoCheck = (): void => {
+    cancelAnimationFrame(vetoFrame);
+    // Two frames give a controlled consumer time to set `open = false` before a veto is assumed.
+    vetoFrame = requestAnimationFrame(() => {
+      vetoFrame = requestAnimationFrame(() => {
+        if (isOpen() && pendingSwipeDismiss) {
+          pendingSwipeDismiss = false;
+          clearSwipeStyles();
+        }
+      });
+    });
+  };
+
+  const finishGesture = (cancelled: boolean): void => {
     const wasDragging = isDragging;
     const releaseVelocityY = performance.now() - lastTime > SWIPE_VELOCITY_DECAY_MS ? 0 : velocityY;
     const shouldDismiss =
       wasDragging && !cancelled && isOpen() && shouldDismissBySwipe(dragDy, releaseVelocityY, sheetHeight);
+    // A pointer drag on the handle ends with a click on it. Touch drags call `preventDefault()` and never produce one.
+    suppressHandleClick = wasDragging && pointerId !== null;
     resetGesture();
 
-    if (wasDragging && armClickSuppression) {
-      suppressClick = true;
-      window.clearTimeout(suppressClickTimer);
-      // A synthetic click after mouseup dispatches synchronously in the same task; clear on the next macrotask so later
-      // real clicks are never swallowed if mouseup occurred outside `.sheet`.
-      suppressClickTimer = window.setTimeout(() => {
-        suppressClick = false;
-      }, 0);
+    if (shouldDismiss) {
+      pendingSwipeDismiss = true;
+      onSwipeDismiss();
+      scheduleVetoCheck();
+    } else if (wasDragging) {
+      clearSwipeStyles();
     }
+  };
 
-    if (!shouldDismiss) {
-      if (wasDragging) {
-        clearSwipeStyles();
-      }
+  const trackedTouch = (event: TouchEvent): Touch | undefined =>
+    Array.from(event.changedTouches).find((touch) => touch.identifier === touchId);
+
+  const onTouchStart = (event: TouchEvent): void => {
+    const touch = event.changedTouches[0];
+    const dialog = getDialog();
+    if (touch && dialog && canBeginGesture() && !hasExcludedSwipeTarget(event.composedPath(), dialog)) {
+      touchId = touch.identifier;
+      beginGesture(touch.clientX, touch.clientY);
+    }
+  };
+
+  const onTouchMove = (event: TouchEvent): void => {
+    const touch = trackedTouch(event);
+    if (touch) {
+      moveGesture(event, touch.clientX, touch.clientY);
+    }
+  };
+
+  const onTouchEnd = (event: TouchEvent): void => {
+    if (trackedTouch(event)) {
+      finishGesture(event.type === 'touchcancel');
+    }
+  };
+
+  const onHandlePointerDown = (event: PointerEvent): void => {
+    if (event.button === 0 && event.isPrimary && canBeginGesture()) {
+      (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+      pointerId = event.pointerId;
+      beginGesture(event.clientX, event.clientY);
+    }
+  };
+
+  const onHandlePointerMove = (event: PointerEvent): void => {
+    if (event.pointerId !== pointerId) {
       return;
     }
-    pendingSwipeDismiss = true;
-    onSwipeDismiss();
-    scheduleVetoCheck();
+    // No button pressed means the release was missed, e.g. after the window lost focus mid-drag.
+    if (event.buttons === 0) {
+      finishGesture(true);
+    } else {
+      moveGesture(event, event.clientX, event.clientY);
+    }
+  };
+
+  const onHandlePointerEnd = (event: PointerEvent): void => {
+    if (event.pointerId === pointerId) {
+      finishGesture(event.type !== 'pointerup');
+    }
+  };
+
+  const onClickCapture = (event: MouseEvent): void => {
+    // `detail === 0` is a keyboard activation, which is never the tail of a drag.
+    if (suppressHandleClick && event.detail > 0 && getSwipeHandle()?.contains(event.target as Node)) {
+      suppressHandleClick = false;
+      event.preventDefault();
+      event.stopPropagation();
+    }
   };
 
   const onScroll = (): void => {
     lastScrollTime = performance.now();
   };
 
-  const onClickCapture = (event: MouseEvent): void => {
-    if (!suppressClick) {
-      return;
-    }
-    event.preventDefault();
-    event.stopPropagation();
-    clearSuppressClick();
-  };
-
-  const onTouchStart = (event: TouchEvent): void => {
-    clearSuppressClick();
-    const dialog = getDialog();
-    if (!isOpen() || !hasSwipeHandle() || !dialog || touchId !== null || isMousePointerActive) {
-      return;
-    }
-    const touch = event.changedTouches[0];
-    if (!touch || performance.now() - lastScrollTime < SWIPE_SCROLL_LOCK_MS) {
-      return;
-    }
-    if (hasExcludedSwipeTarget(event.composedPath(), dialog, getSwipeHandle())) {
-      return;
-    }
-    touchId = touch.identifier;
-    beginGesture(touch.clientX, touch.clientY);
-  };
-
-  const onTouchMove = (event: TouchEvent): void => {
-    const touch = trackedTouch(event);
-    const scroller = getScroller();
-    if (!touch || !isOpen() || !scroller) {
-      return;
-    }
-    const dx = touch.clientX - startX;
-    const dy = touch.clientY - startY;
-    if (!axis) {
-      axis = getSwipeAxis(dx, dy);
-      if (!axis) {
-        return;
-      }
-      const canDrag = axis === 'y' && dy > 0 && event.cancelable && isScrolledToTop(event.composedPath(), scroller);
-      if (!canDrag) {
-        axis = 'x';
-        return;
-      }
-      isDragging = true;
-    }
-    if (!isDragging) {
-      return;
-    }
-    if (event.cancelable) {
-      event.preventDefault();
-    }
-    applyDragFrame(touch.clientY, dy);
-  };
-
-  const onTouchEnd = (event: TouchEvent): void => {
-    if (!trackedTouch(event)) {
-      return;
-    }
-    // Touch drag calls `preventDefault()` on `touchmove`, so browsers do not synthesize a `click` on `touchend`.
-    finishGesture(event.type.includes('cancel'), false);
-  };
-
-  const onTouchCancel = (event: TouchEvent): void => {
-    if (!trackedTouch(event)) {
-      return;
-    }
-    finishGesture(true, false);
-  };
-
-  const detachMouseMoveListeners = (): void => {
-    if (!mouseListenersAttached) {
-      return;
-    }
-    window.removeEventListener('mousemove', onWindowMouseMove);
-    window.removeEventListener('mouseup', onWindowMouseUp);
-    window.removeEventListener('blur', onWindowBlur);
-    mouseListenersAttached = false;
-  };
-
-  const attachMouseMoveListeners = (): void => {
-    if (mouseListenersAttached) {
-      return;
-    }
-    window.addEventListener('mousemove', onWindowMouseMove);
-    window.addEventListener('mouseup', onWindowMouseUp);
-    window.addEventListener('blur', onWindowBlur);
-    mouseListenersAttached = true;
-  };
-
-  const onHandleMouseDown = (event: MouseEvent): void => {
-    clearSuppressClick();
-    if (
-      event.button !== 0 ||
-      !isOpen() ||
-      !hasSwipeHandle() ||
-      touchId !== null ||
-      isMousePointerActive ||
-      performance.now() - lastScrollTime < SWIPE_SCROLL_LOCK_MS
-    ) {
-      return;
-    }
-    isMousePointerActive = true;
-    beginGesture(event.clientX, event.clientY);
-    attachMouseMoveListeners();
-  };
-
-  function onWindowMouseMove(event: MouseEvent): void {
-    if (!isMousePointerActive) {
-      return;
-    }
-    if (!isOpen()) {
-      detachMouseMoveListeners();
-      finishGesture(true, false);
-      return;
-    }
-    if ((event.buttons & 1) === 0) {
-      detachMouseMoveListeners();
-      finishGesture(false, true);
-      return;
-    }
-    const dx = event.clientX - startX;
-    const dy = event.clientY - startY;
-    if (!axis) {
-      axis = getSwipeAxis(dx, dy);
-      if (!axis) {
-        return;
-      }
-      const canDrag = axis === 'y' && dy > 0 && (getScroller()?.scrollTop ?? 0) <= 0;
-      if (!canDrag) {
-        axis = 'x';
-        return;
-      }
-      isDragging = true;
-    }
-    if (!isDragging) {
-      return;
-    }
-    event.preventDefault();
-    applyDragFrame(event.clientY, dy);
-  }
-
-  function onWindowMouseUp(): void {
-    if (!isMousePointerActive) {
-      return;
-    }
-    detachMouseMoveListeners();
-    finishGesture(false, true);
-  }
-
-  function onWindowBlur(): void {
-    if (!isMousePointerActive) {
-      return;
-    }
-    detachMouseMoveListeners();
-    finishGesture(true, false);
-  }
-
   const detachListeners = (): void => {
-    if (!swipeListenersAttached) {
-      return;
-    }
-    listenedSheet?.removeEventListener('touchstart', onTouchStart);
-    listenedSheet?.removeEventListener('touchmove', onTouchMove);
-    listenedSheet?.removeEventListener('touchend', onTouchEnd);
-    listenedSheet?.removeEventListener('touchcancel', onTouchCancel);
-    listenedSheet?.removeEventListener('click', onClickCapture, true);
-    listenedSwipeHandle?.removeEventListener('mousedown', onHandleMouseDown);
-    listenedDialog?.removeEventListener('scroll', onScroll, true);
-    detachMouseMoveListeners();
-    swipeListenersAttached = false;
-    listenedDialog = undefined;
-    listenedSheet = undefined;
-    listenedSwipeHandle = undefined;
+    listeners?.abort.abort();
+    listeners = undefined;
     resetGesture();
   };
 
   const syncListeners = (): void => {
     const dialog = getDialog();
     const sheet = getSheet();
-    const swipeHandle = getSwipeHandle();
-    if (isOpen() && hasSwipeHandle() && dialog && sheet && swipeHandle) {
-      if (
-        swipeListenersAttached &&
-        listenedDialog === dialog &&
-        listenedSheet === sheet &&
-        listenedSwipeHandle === swipeHandle
-      ) {
-        return;
-      }
+    const handle = getSwipeHandle();
+    if (!(isOpen() && hasSwipeHandle() && dialog && sheet && handle)) {
       detachListeners();
-      sheet.addEventListener('touchstart', onTouchStart, { passive: true });
-      sheet.addEventListener('touchmove', onTouchMove, { passive: false });
-      sheet.addEventListener('touchend', onTouchEnd, { passive: true });
-      sheet.addEventListener('touchcancel', onTouchCancel, { passive: true });
-      sheet.addEventListener('click', onClickCapture, true);
-      swipeHandle.addEventListener('mousedown', onHandleMouseDown);
-      dialog.addEventListener('scroll', onScroll, { capture: true, passive: true });
-      listenedDialog = dialog;
-      listenedSheet = sheet;
-      listenedSwipeHandle = swipeHandle;
-      swipeListenersAttached = true;
+      return;
+    }
+    if (listeners?.dialog === dialog && listeners.sheet === sheet && listeners.handle === handle) {
       return;
     }
     detachListeners();
+    const abort = new AbortController();
+    const { signal } = abort;
+    sheet.addEventListener('touchstart', onTouchStart, { passive: true, signal });
+    sheet.addEventListener('touchmove', onTouchMove, { passive: false, signal });
+    sheet.addEventListener('touchend', onTouchEnd, { passive: true, signal });
+    sheet.addEventListener('touchcancel', onTouchEnd, { passive: true, signal });
+    sheet.addEventListener('click', onClickCapture, { capture: true, signal });
+    handle.addEventListener('pointerdown', onHandlePointerDown, { signal });
+    handle.addEventListener('pointermove', onHandlePointerMove, { signal });
+    handle.addEventListener('pointerup', onHandlePointerEnd, { signal });
+    handle.addEventListener('pointercancel', onHandlePointerEnd, { signal });
+    handle.addEventListener('lostpointercapture', onHandlePointerEnd, { signal });
+    dialog.addEventListener('scroll', onScroll, { capture: true, passive: true, signal });
+    listeners = { dialog, sheet, handle, abort };
   };
 
   const sync = (): void => {
     const open = isOpen();
-    if (open) {
-      if (!wasOpen) {
-        pendingSwipeDismiss = false;
-        clearSwipeStyles();
-      }
-    } else if (wasOpen) {
+    if (open && !wasOpen) {
+      pendingSwipeDismiss = false;
+      clearSwipeStyles();
+    } else if (!open && wasOpen) {
       cancelAnimationFrame(vetoFrame);
+      clearSwipeStyles();
+      // Swipe dismiss glides out from the drag position. Any other close (e.g. Escape mid-drag) runs the standard
+      // transition so `motionHiddenEnd` fires.
       const sheet = getSheet();
-      const dialog = getDialog();
-      if (pendingSwipeDismiss && sheet && dialog) {
-        dialog.style.transition = '';
-        dialog.style.backgroundColor = '';
-        sheet.style.transition = '';
+      if (pendingSwipeDismiss && sheet) {
         sheet.style.transform = 'translate3d(0, 100%, 0)';
-        pendingSwipeDismiss = false;
-      } else {
-        // Closed mid-drag (e.g. Escape or external prop update) without a swipe dismiss: clear inline drag styles so
-        // the standard close transition runs and `motionHiddenEnd` fires.
-        clearSwipeStyles();
       }
+      pendingSwipeDismiss = false;
     }
     wasOpen = open;
     syncListeners();
@@ -528,8 +393,8 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
   const destroy = (): void => {
     detachListeners();
     cancelAnimationFrame(vetoFrame);
-    clearSuppressClick();
     pendingSwipeDismiss = false;
+    suppressHandleClick = false;
     wasOpen = false;
   };
 

@@ -1,12 +1,10 @@
 import {
+  colorContrastHigh,
   colorContrastMedium,
-  colorPrimary,
   radiusFull,
   radiusSm,
   ref,
   spacingFluidLg,
-  spacingStaticLg,
-  spacingStaticXs,
 } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
@@ -107,6 +105,7 @@ export const getComponentCss = (
         display: 'grid',
         placeItems: 'center',
         cursor: 'grab',
+        touchAction: 'none', // hands touch drags on the handle to Pointer Events instead of native panning
         '&:active': {
           cursor: 'grabbing',
         },
@@ -114,15 +113,15 @@ export const getComponentCss = (
         borderRadius: ref(radiusSm),
         '&::before': {
           content: '""',
-          width: ref(spacingStaticLg),
-          height: ref(spacingStaticXs),
+          width: '36px',
+          height: '5px',
           borderRadius: ref(radiusFull),
           background: ref(colorContrastMedium),
           transition: getTransition('background-color'),
         },
         ...hoverMediaQuery({
           '&:hover::before': {
-            background: ref(colorPrimary),
+            background: ref(colorContrastHigh),
           },
         }),
         '&:focus-visible': getFocusBaseStyles(-2),
