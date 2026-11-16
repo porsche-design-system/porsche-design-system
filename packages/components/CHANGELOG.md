@@ -56,6 +56,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 - `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`: pressing `Enter` to confirm a candidate of an input method,
+  e.g. for Japanese or Chinese, submitted the form
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` together with `Ctrl`, `Alt` or
+  `Cmd` submitted the form in Chrome and Safari, where a native input doesn't
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 
 ## [4.10.1] - 2026-10-23
 

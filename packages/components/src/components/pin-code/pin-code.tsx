@@ -366,6 +366,7 @@ export class PinCode {
     }
   };
 
+  // Implicit submission is the default action of `keypress`, not `keydown`, see `implicitSubmit()`.
   private onKeyPress = (event: KeyboardEvent): void => {
     if (event.key === 'Enter') {
       runDefaultActionUnlessPrevented(event, () => {
