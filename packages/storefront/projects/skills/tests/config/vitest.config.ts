@@ -16,8 +16,6 @@ export default mergeConfig(
       include: ['tests/specs/**/*.spec.{tsx,ts}'],
       exclude: ['tests/specs/bin/**/*.spec.ts'],
       testTimeout: 10000,
-      // These specs need no DOM, so they skip jsdom's setup cost.
-      environment: 'node',
     },
   })
 );

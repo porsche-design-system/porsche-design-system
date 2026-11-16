@@ -7,8 +7,6 @@ export default mergeConfig(
     test: {
       include: ['**/tests/smoke/unit/specs/**/*.smoke.ts'],
       testTimeout: 10000,
-      // These specs need no DOM, so they skip jsdom's setup cost.
-      environment: 'node',
     },
   })
 );

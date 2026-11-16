@@ -4,7 +4,6 @@ import { configDefaults, type ViteUserConfig } from 'vitest/config';
 // imports, and the guard is a separate export that Vitest loads.
 export const vitestConfig: ViteUserConfig = {
   test: {
-    environment: 'jsdom',
     // Vitest 5 truncates interpolated values in `test.each` titles at 40 chars, which hides the
     // values that distinguish cases and collapses distinct snapshot keys into one. 0 is no way out,
     // because Vitest 5.0.2 then cuts the last character off every string a `$name` placeholder prints.

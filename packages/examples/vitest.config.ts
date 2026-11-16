@@ -9,8 +9,6 @@ export default mergeConfig(
   defineConfig({
     test: {
       include: ['tests/unit/**/*.spec.{ts,tsx}'],
-      // These specs need no DOM, so they skip jsdom's setup cost.
-      environment: 'node',
     },
   })
 );

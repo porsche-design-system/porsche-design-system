@@ -10,8 +10,6 @@ export default mergeConfig(
     test: {
       root: resolve(__dirname, '../../../'),
       include: ['tests/unit/specs/**/*.spec.ts'],
-      // These specs need no DOM, so they skip jsdom's setup cost.
-      environment: 'node',
     },
   })
 );

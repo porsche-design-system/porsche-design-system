@@ -11,6 +11,7 @@ export default mergeConfig(
       },
     },
     test: {
+      environment: 'jsdom',
       root: resolve(__dirname, '../../../'),
       include: ['**/**/*.spec.{tsx,ts}'],
       exclude: ['projects/**'],

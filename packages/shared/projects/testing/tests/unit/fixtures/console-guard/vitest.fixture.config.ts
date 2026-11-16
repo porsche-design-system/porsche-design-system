@@ -6,6 +6,7 @@ export default mergeConfig(
   vitestConfig,
   defineConfig({
     test: {
+      environment: 'jsdom',
       root: __dirname,
       include: ['*.fixture.ts'],
     },

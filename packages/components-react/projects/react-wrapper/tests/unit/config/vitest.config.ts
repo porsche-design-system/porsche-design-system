@@ -6,6 +6,7 @@ export default mergeConfig(
   vitestConfig,
   defineConfig({
     test: {
+      environment: 'jsdom',
       root: path.resolve(__dirname, '../../../'),
       setupFiles: ['tests/unit/config/vitest.setup.ts'],
       include: ['**/tests/unit/specs/**/*.spec.{tsx,ts}'],

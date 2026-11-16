@@ -6,8 +6,6 @@ export default mergeConfig(
   defineConfig({
     test: {
       include: ['**/tests/unit/specs/**/*.+(ts|tsx|js)'],
-      // Partials throw when they detect a browser, and jsdom looks like one.
-      environment: 'node',
     },
   })
 );

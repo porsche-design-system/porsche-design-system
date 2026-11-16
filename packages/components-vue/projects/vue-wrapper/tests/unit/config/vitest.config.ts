@@ -7,6 +7,7 @@ export default mergeConfig(
   vitestConfig,
   defineConfig({
     test: {
+      environment: 'jsdom',
       include: ['**/tests/unit/specs/**/*.spec.ts'],
       testTimeout: 10000,
     },
