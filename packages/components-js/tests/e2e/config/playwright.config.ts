@@ -6,7 +6,6 @@ export default defineConfig<TestOptions>({
   ...playwrightConfigE2E,
   use: {
     ...playwrightConfigE2E.use,
-    externalRequests: { allowedOrigins: ['https://nav.porsche.com'] },
     // setContentWithDesignSystem writes the demo app script with document.write
     expectedConsole: [/parser-blocking, cross site .* is invoked via document\.write/],
   },

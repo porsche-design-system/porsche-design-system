@@ -6,7 +6,6 @@ export default defineConfig<TestOptions>({
   ...playwrightConfigA11y,
   use: {
     ...playwrightConfigA11y.use,
-    externalRequests: { allowedOrigins: ['https://nav.porsche.com'] },
     // vite.config.js preloads every chunk, a slow page warns about the chunks it does not use
     expectedConsole: [/was preloaded using link preload but not used within a few seconds/],
   },
