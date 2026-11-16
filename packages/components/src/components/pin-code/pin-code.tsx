@@ -9,7 +9,7 @@ import {
   hasLabel,
   hasMessage,
   hasPropValueChanged,
-  runDefaultActionUnlessPrevented,
+  implicitSubmit,
   setAriaIDREF,
   validateProps,
 } from '../../utils';
@@ -25,7 +25,6 @@ import {
   getSanitisedValue,
   type HTMLInputElementEventTarget,
   isCurrentInput,
-  isFormSubmittable,
   isInputOnlyDigits,
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
@@ -368,13 +367,8 @@ export class PinCode {
 
   // Implicit submission is the default action of `keypress`, not `keydown`, see `implicitSubmit()`.
   private onKeyPress = (event: KeyboardEvent): void => {
-    if (event.key === 'Enter') {
-      runDefaultActionUnlessPrevented(event, () => {
-        const form = this.internals?.form;
-        if (form && isFormSubmittable(this.host, form)) {
-          form.requestSubmit();
-        }
-      });
+    if (this.internals) {
+      implicitSubmit(event, this.internals, this.host);
     }
   };
 

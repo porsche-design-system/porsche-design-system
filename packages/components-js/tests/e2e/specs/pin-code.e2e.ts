@@ -534,6 +534,79 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(0);
   });
 
+  for (const { markupAfter, expected, description } of [
+    {
+      markupAfter: '<p-input-text name="other" label="Other" />',
+      expected: 0,
+      description: 'not submit on key Enter if form does contain a p-input-text',
+    },
+    {
+      markupAfter: '<input type="checkbox" name="other" />',
+      expected: 1,
+      description: 'submit on key Enter if form does contain a checkbox',
+    },
+    {
+      markupAfter: '<input type="date" name="other" />',
+      expected: 1,
+      description: 'submit on key Enter if form does contain an input type=date',
+    },
+  ]) {
+    test(`should ${description} and no submit button`, async ({ page }) => {
+      await initPinCode(page, { props: { name: 'name', value: '1234' }, options: { isWithinForm: true, markupAfter } });
+      const input = getCurrentInput(page);
+      const form = getForm(page);
+      await addEventListener(form, 'submit');
+
+      await input.click();
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(expected);
+    });
+  }
+
+  test('should not submit on key Enter if the submit button is disabled', async ({ page }) => {
+    await initPinCode(page, {
+      props: { name: 'name', value: '1234' },
+      options: { isWithinForm: true, markupAfter: '<button type="submit" disabled>Some Button</button>' },
+    });
+    const input = getCurrentInput(page);
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(0);
+  });
+
+  test('should click the submit button on key Enter', async ({ page }) => {
+    await initPinCode(page, {
+      props: { name: 'name', value: '1234' },
+      options: {
+        isWithinForm: true,
+        markupAfter: '<button type="submit" name="action" value="verify">Some Button</button>',
+      },
+    });
+    const input = getCurrentInput(page);
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
+    await form.evaluate((el) =>
+      el.addEventListener('submit', (e) => {
+        (window as unknown as { submitter?: string }).submitter =
+          (e as SubmitEvent).submitter?.getAttribute('value') ?? '';
+      })
+    );
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(await page.evaluate(() => (window as unknown as { submitter?: string }).submitter)).toBe('verify');
+  });
+
   test('should not set validity when disabled and throw no errors', async ({ page }) => {
     initConsoleObserver(page);
     await initPinCode(page, {

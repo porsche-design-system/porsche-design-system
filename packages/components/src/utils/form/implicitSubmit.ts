@@ -17,6 +17,8 @@ const PDS_INPUT_TYPES: Partial<Record<TagName, string>> = {
   'p-input-month': 'month',
   'p-input-week': 'week',
   'p-input-time': 'time',
+  // a single text field, whatever its `type`
+  'p-pin-code': 'text',
 };
 
 const renderedInputTypes = new Map<string, string>();

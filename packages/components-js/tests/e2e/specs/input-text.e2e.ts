@@ -486,6 +486,27 @@ test.describe('form', () => {
       expect((await getEventSummary(form, 'submit')).counter).toBe(0);
     });
 
+    test('should not implicit submit form on enter when there is no submit button and a p-pin-code', async ({
+      page,
+    }) => {
+      await initInputText(page, {
+        isWithinForm: true,
+        markupAfter: `<p-pin-code name="some-pin" label="Some label" />`,
+      });
+
+      const inputText = getInputText(page).first();
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+
+      await inputText.click();
+      await expect(inputText).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    });
+
     for (const markupAfter of ['<input name="some-date" type="date" />', '<p-input-date name="some-date" />']) {
       test(`should implicit submit form on enter when there is no submit button and a ${markupAfter.startsWith('<p-') ? 'p-input-date' : 'native input type date'}`, async ({
         page,

@@ -252,6 +252,54 @@ describe('implicitSubmit', () => {
     expect(mockClick).toHaveBeenCalled();
   });
 
+  it('does not call requestSubmit if a p-pin-code is present, because it is a text field', () => {
+    Object.defineProperty(form, 'elements', {
+      value: [document.createElement('p-pin-code')],
+      writable: false,
+    });
+
+    pressEnter();
+
+    expect(mockRequestSubmit).not.toHaveBeenCalled();
+  });
+
+  it('calls requestSubmit if Enter is pressed in a p-pin-code that is the only text field', () => {
+    host = document.createElement('p-pin-code');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    form.appendChild(checkbox);
+
+    pressEnter();
+
+    expect(mockRequestSubmit).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not call requestSubmit if Enter is pressed in a p-pin-code next to a p-input-text', () => {
+    host = document.createElement('p-pin-code');
+    Object.defineProperty(form, 'elements', {
+      value: [document.createElement('p-input-text')],
+      writable: false,
+    });
+
+    pressEnter();
+
+    expect(mockRequestSubmit).not.toHaveBeenCalled();
+  });
+
+  it('does not click a disabled submit button and does not submit', () => {
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.disabled = true;
+    vi.spyOn(submitButton, 'matches').mockReturnValue(true);
+    submitButton.click = mockClick;
+    form.appendChild(submitButton);
+
+    pressEnter();
+
+    expect(mockClick).not.toHaveBeenCalled();
+    expect(mockRequestSubmit).not.toHaveBeenCalled();
+  });
+
   it('treats a p-input-month as a text field if the browser renders type month as text', async () => {
     vi.resetModules();
     const { implicitSubmit: implicitSubmitWithoutMonthSupport } = await import('./implicitSubmit');

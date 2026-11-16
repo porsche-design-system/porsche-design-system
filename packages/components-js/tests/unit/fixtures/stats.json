@@ -96,58 +96,58 @@
   },
   {
     "chunkShortName": "input-date",
-    "size": 15049,
-    "gzipSize": 5729
+    "size": 15077,
+    "gzipSize": 5718
   },
   {
     "chunkShortName": "input-email",
-    "size": 14866,
-    "gzipSize": 5605
+    "size": 14894,
+    "gzipSize": 5593
   },
   {
     "chunkShortName": "input-month",
-    "size": 15104,
-    "gzipSize": 5749
+    "size": 15132,
+    "gzipSize": 5737
   },
   {
     "chunkShortName": "input-number",
-    "size": 15505,
-    "gzipSize": 5819
+    "size": 15533,
+    "gzipSize": 5802
   },
   {
     "chunkShortName": "input-password",
-    "size": 15088,
-    "gzipSize": 5691
+    "size": 15116,
+    "gzipSize": 5675
   },
   {
     "chunkShortName": "input-search",
-    "size": 16248,
-    "gzipSize": 6096
+    "size": 16276,
+    "gzipSize": 6081
   },
   {
     "chunkShortName": "input-tel",
-    "size": 14796,
-    "gzipSize": 5592
+    "size": 14824,
+    "gzipSize": 5579
   },
   {
     "chunkShortName": "input-text",
-    "size": 15749,
-    "gzipSize": 5844
+    "size": 15777,
+    "gzipSize": 5833
   },
   {
     "chunkShortName": "input-time",
-    "size": 15048,
-    "gzipSize": 5734
+    "size": 15076,
+    "gzipSize": 5722
   },
   {
     "chunkShortName": "input-url",
-    "size": 14798,
-    "gzipSize": 5591
+    "size": 14826,
+    "gzipSize": 5578
   },
   {
     "chunkShortName": "input-week",
-    "size": 15100,
-    "gzipSize": 5745
+    "size": 15128,
+    "gzipSize": 5733
   },
   {
     "chunkShortName": "link",
@@ -201,8 +201,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 15439,
-    "gzipSize": 5904
+    "size": 16152,
+    "gzipSize": 6163
   },
   {
     "chunkShortName": "popover",

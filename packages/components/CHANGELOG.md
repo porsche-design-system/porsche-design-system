@@ -52,8 +52,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 - `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
   `Input Text`, `Input Time`, `Input Url`, `Input Week`: pressing `Enter` submitted a form without a submit button,
-  although it contained another `Input Password`, or an `Input Month` or `Input Week` in a browser without a month or
-  week picker, e.g. Firefox and Safari
+  although it contained another `Input Password`, a `Pin Code`, or an `Input Month` or `Input Week` in a browser
+  without a month or week picker, e.g. Firefox and Safari
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 - `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
@@ -76,6 +76,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`, `Input Url`: pressing
   `Enter` didn't submit a form without a submit button when the form also contained a date, time, month or week field,
   e.g. an `Input Date`, while a native text input submits
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Pin Code`: pressing `Enter` in a form without a submit button didn't behave like a native input: another text field,
+  e.g. an `Input Text`, didn't prevent the submission, while a checkbox, radio button or date field did
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Pin Code`: pressing `Enter` submitted the form without clicking its submit button, so the button's `name` and `value`
+  were missing from the submitted data and a disabled submit button didn't prevent the submission
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 
 ## [4.10.1] - 2026-10-23
