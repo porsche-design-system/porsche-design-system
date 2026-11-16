@@ -7,19 +7,19 @@
 
 `@porsche-design-system/testing` holds what used to be `shared`'s `src/testing` (the Playwright base configs with their
 viewport and theme constants, the W3C CSS validator, `assertDefined` and `normalizeCssNamespace`) and the test helpers
-that more than one package uses: the Playwright helpers that `src/playwright/index.ts` exports and the axe fixture. It
-is private, never published, and ships TypeScript source: there is no build and no `dist`. Playwright compiles it
-because Node resolves the workspace link to its real path outside `node_modules`, and Vitest compiles every `.ts` file
-whatever its path. Consumers declare it in `devDependencies` as `"@porsche-design-system/testing": "0.0.0"`.
+that more than one package uses: the Playwright helpers that `src/playwright/index.ts` exports, the axe fixture and
+`testCoverage`. It is private, never published, and ships TypeScript source: there is no build and no `dist`. Playwright
+compiles it because Node resolves the workspace link to its real path outside `node_modules`, and Vitest compiles every
+`.ts` file whatever its path. Consumers declare it in `devDependencies` as `"@porsche-design-system/testing": "0.0.0"`.
 
 ```text
 src/
-├── index.ts                    # `.`: the Playwright base configs, viewport and theme constants, validateCssWithW3C
+├── index.ts                    # `.`: the Playwright base configs, viewport and theme constants, validateCssWithW3C, testCoverage
 ├── assertDefined.ts            # `./assert-defined`
 ├── normalizeCssNamespace.ts    # `./normalize-css-namespace`
 ├── axe.ts                      # `./axe`: createAxeTest
 └── playwright/index.ts         # `./playwright`: the Playwright helpers more than one package uses
-tests/unit/                     # the specs of assertDefined and normalizeCssNamespace
+tests/unit/                     # the specs of assertDefined, normalizeCssNamespace and testCoverage
 ```
 
 ## What belongs here
@@ -32,8 +32,9 @@ tests/unit/                     # the specs of assertDefined and normalizeCssNam
 
 ## Rules for the exports
 
-- **`.` must not load `@playwright/test` at runtime.** Vitest suites import it for `validateCssWithW3C`, and the files
-  it re-exports import only Playwright types. Runtime Playwright code goes under `./playwright` or `./axe`.
+- **`.` must not load `@playwright/test` at runtime.** Vitest suites import it for `validateCssWithW3C` and
+  `testCoverage`, and the files it re-exports import only Playwright types. Runtime Playwright code goes under
+  `./playwright` or `./axe`.
 - **Every barrel names its re-exports; never write `export *`.** Node runs this source as CommonJS, and the ESM
   Playwright configs of `examples` and `react-router` only see the names Node detects statically.
 - Keep relative imports extensionless: the components-js test scopes do not allow `.ts` extensions.
