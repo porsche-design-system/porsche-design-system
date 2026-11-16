@@ -19,6 +19,11 @@ export const pages = [
 
 export * from './core-initializer-prefixed.component';
 export * from './events.component';
+export * from './optional-properties.component';
+export * from './utilities.component';
+export * from './tabs-bar-navigation';
+export * from './tabs-bar-navigation-bug';
+export * from './option-value-timing-bug';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
