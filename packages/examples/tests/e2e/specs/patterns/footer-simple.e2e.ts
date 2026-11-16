@@ -2,10 +2,11 @@ import { expect, test } from '@playwright/test';
 import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/footer` – static markup without behaviour of its own, so loading cleanly is all there is to assert.
+ * `src/patterns/footer/simple` – static markup without behaviour of its own, so loading cleanly is all there
+ * is to assert.
  */
 
-const url = getExampleUrl('patterns-footer');
+const url = getExampleUrl('patterns-footer-simple');
 
 test('loads without reporting an error', async ({ page }) => {
   const errors = collectPageErrors(page);

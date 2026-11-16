@@ -29,6 +29,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Search`: `aria` accepts `aria-activedescendant`, and `aria-controls` and `aria-activedescendant` accept an
   element (or, for `aria-controls`, a list of elements) so the relationship reaches the input across the shadow
   boundary. ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Knowledge Skill`: personalized mailing template – a personal follow-up page for a configured vehicle – in a video and
+  a no-video variant ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
+- `Knowledge Skill`: simple footer pattern with the legal information only, next to the extended footer
+  ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
 
 ### Changed
 

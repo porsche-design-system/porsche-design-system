@@ -30,7 +30,7 @@ export type TemplatePageProps = {
 export const TemplatePage = ({ meta, class: className, children }: TemplatePageProps) => (
   <html lang="en" class={className}>
     <head>
-      <Head title={meta.title} description={meta.description} />
+      <Head title={meta.title} description={meta.description} siteName="Dummy Templates" />
     </head>
     <body>{children}</body>
   </html>
