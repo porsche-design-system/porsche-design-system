@@ -70,9 +70,9 @@ Each request gets exactly one outcome, checked in this order (`resolveExternalRe
 | 4   | an origin in `externalRequests.allowedOrigins`                                       | goes to the network                                                                            |
 | 5   | anything else                                                                        | an image gets a placeholder SVG (`images: 'abort'` aborts it), every other request is aborted  |
 
-The fixture never fails a test itself. An aborted request fails it through the console guard: Chromium logs
-`Failed to load resource: net::ERR_FAILED` as an error, WebKit logs `Web Inspector blocked <url> from loading` as
-`info`, which `abortedRequestPatterns` in `src/playwright/consoleGuard.ts` counts as a failure.
+**An aborted request fails the test.** The fixture collects the URLs it aborts and throws `Aborted external requests`
+with that list when the test ends. It does not go through the console guard, because each browser logs an abort
+differently. A request the test needs gets an entry in `stubs` or `allowedOrigins`.
 
 ### The two options
 
@@ -81,10 +81,15 @@ Both are Playwright options, set in the suite config's `use` or with `test.use`:
 ```ts
 // packages/components-js/tests/e2e/config/playwright.config.ts
 use: {
-  externalRequests: { allowedOrigins: ['https://nav.porsche.com'] },
   expectedConsole: [/parser-blocking, cross site .* is invoked via document\.write/],
 },
+
+// packages/components-js/tests/vrt/specs/components.vrt.ts, inside the describe of the table page
+test.use({ externalRequests: { allowedOrigins: ['https://nav.porsche.com'] } });
 ```
+
+**Allow an origin on the tests that need it, not for the whole suite.** Every other test of the suite then still fails
+on a request to that origin.
 
 - `externalRequests` (`{ stubs, allowedOrigins, images }`, default `{}`) configures rows 3 to 5. `false` switches
   routing off. Only the smoke suite does that, so it runs with the guard on and no routing, against the live CDN. A
