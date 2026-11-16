@@ -64,7 +64,7 @@ Each request gets exactly one outcome, checked in this order (`resolveExternalRe
 
 | #   | Request goes to                                                                      | Outcome                                                                                        |
 | --- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| 1   | `localhost` or `127.0.0.1`                                                           | not intercepted                                                                                |
+| 1   | the host `localhost` or `127.0.0.1`, on any port                                     | not intercepted                                                                                |
 | 2   | the PDS CDN, `cdn.ui.porsche.com` or `cdn.ui.porsche.cn`, `/porsche-design-system/…` | answered with the same path from `serve-cdn` on `http://localhost:3001`, aborted if that fails |
 | 3   | an origin in `externalRequests.stubs`                                                | answered with that fixed reply                                                                 |
 | 4   | an origin in `externalRequests.allowedOrigins`                                       | goes to the network                                                                            |
@@ -81,7 +81,10 @@ Both are Playwright options, set in the suite config's `use` or with `test.use`:
 ```ts
 // packages/components-js/tests/e2e/config/playwright.config.ts
 use: {
-  expectedConsole: [/parser-blocking, cross site .* is invoked via document\.write/],
+  expectedConsole: [
+    /parser-blocking, cross site .* is invoked via document\.write/,
+    /was preloaded using link preload but not used within a few seconds/,
+  ],
 },
 
 // packages/components-js/tests/vrt/specs/components.vrt.ts, inside the describe of the table page
