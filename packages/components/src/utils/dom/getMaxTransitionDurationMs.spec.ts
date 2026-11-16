@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getMaxTransitionDurationMs } from './getMaxTransitionDurationMs';
 
 const mockComputedTransition = (transitionDuration: string, transitionDelay: string): void => {

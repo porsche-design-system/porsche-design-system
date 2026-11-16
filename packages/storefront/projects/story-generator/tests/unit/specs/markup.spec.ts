@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import type { HTMLTagOrComponent, Story } from '../../../src';
 import { getStoryMarkup, wrapCode } from '../../../src';
 

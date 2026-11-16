@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { sync as globbySync } from 'fast-glob';
+import { describe, it, expect, beforeAll } from 'vitest';
 
 describe('nextjs', () => {
   const buildDirectory = path.resolve(__dirname, '../../../../nextjs/.next');

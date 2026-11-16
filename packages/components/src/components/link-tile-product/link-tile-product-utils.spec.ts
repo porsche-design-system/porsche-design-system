@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { anchorSlot, headerSlot, TILE_PRODUCT_ASPECT_RATIOS } from './link-tile-product-utils';
 
 describe('TILE_PRODUCT_ASPECT_RATIOS', () => {

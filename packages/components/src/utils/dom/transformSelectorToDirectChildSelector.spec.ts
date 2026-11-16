@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { transformSelectorToDirectChildSelector } from './transformSelectorToDirectChildSelector';
 
 it('should prefix simple selector with :scope >', () => {

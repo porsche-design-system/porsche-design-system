@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { InputParser } from '../../../../components/scripts/wrapper-generator/InputParser';
 
 describe('InputParser', () => {

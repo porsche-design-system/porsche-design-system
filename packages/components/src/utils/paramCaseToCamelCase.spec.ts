@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { paramCaseToCamelCase } from './paramCaseToCamelCase';
 
 it.each([

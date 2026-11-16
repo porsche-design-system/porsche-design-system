@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import * as areAllChildrenOfKindUtils from '../dom/areAllChildrenOfKind';
 import { throwIfChildrenAreNotOfKind } from './throwIfChildrenAreNotOfKind';
 

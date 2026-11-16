@@ -1,4 +1,5 @@
 import * as partials from '@porsche-design-system/components-js/partials';
+import { expect, it } from 'vitest';
 
 it('should provide all partials', () => {
   expect(Object.keys(partials).filter((p) => p !== 'default').length).toBe(5);

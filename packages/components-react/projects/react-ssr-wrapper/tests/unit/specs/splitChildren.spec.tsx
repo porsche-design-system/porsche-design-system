@@ -1,6 +1,7 @@
 import type { ReactElement, ReactNode } from 'react';
 import { splitChildren } from '../../../src/splitChildren';
 import { createPortal } from 'react-dom';
+import { describe, it, expect } from 'vitest';
 
 const jsxDivWithSlot = (
   <div slot="heading">

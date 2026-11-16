@@ -1,4 +1,6 @@
 // import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
+
+import { describe, expect, it } from 'vitest';
 import { getComponentCss } from './drilldown-styles';
 
 describe('getComponentCss()', () => {
