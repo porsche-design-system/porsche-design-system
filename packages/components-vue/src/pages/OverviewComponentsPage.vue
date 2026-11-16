@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {
   PAccordion,
+  PAiTag,
   PButton,
   PButtonPure,
   PButtonTile,
@@ -381,6 +382,10 @@ import {
       <div class="playground" title="should render default checkbox">
         <PCheckbox label="Some label" />
       </div>
+
+      <div class="playground" title="should render default ai-tag">
+        <PAiTag />
+      </div>
     </div>
 
     <PorscheDesignSystemProvider prefix="my-prefix">
@@ -715,6 +720,10 @@ import {
 
         <div class="playground" title="should render default checkbox with custom prefix">
           <PCheckbox label="Some label" />
+        </div>
+
+        <div class="playground" title="should render default ai-tag with custom prefix">
+          <PAiTag />
         </div>
       </div>
     </PorscheDesignSystemProvider>
