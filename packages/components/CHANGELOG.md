@@ -33,6 +33,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   a no-video variant ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
 - `Knowledge Skill`: simple footer pattern with the legal information only, next to the extended footer
   ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
+- `Sheet`: 
+  - `swipe-handle` prop to show a handle at the top of the sheet that closes it by dragging it down.
+  - `dismiss` event detail `reason` can be `'swipe'` when the sheet was closed by a swipe or drag gesture
+    ([#4866](https://github.com/porsche-design-system/porsche-design-system/pull/4866))
 
 ### Changed
 
