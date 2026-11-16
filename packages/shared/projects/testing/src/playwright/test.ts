@@ -24,6 +24,7 @@ export const test = base.extend<TestOptions & { requestRouting: void; consoleGua
   expectedConsole: [[], { option: true }],
   requestRouting: [
     async ({ context, externalRequests }, use) => {
+      const abortedUrls: string[] = [];
       if (externalRequests !== false) {
         await context.route(externalUrlPattern, async (route) => {
           const request = route.request();
@@ -44,6 +45,7 @@ export const test = base.extend<TestOptions & { requestRouting: void; consoleGua
             case 'image':
               return route.fulfill({ contentType: 'image/svg+xml', body: externalImageStub });
             case 'abort':
+              abortedUrls.push(request.url());
               return route.abort();
           }
         });
@@ -52,6 +54,10 @@ export const test = base.extend<TestOptions & { requestRouting: void; consoleGua
       await use();
 
       await context.unrouteAll({ behavior: 'ignoreErrors' });
+      // The console guard cannot report an abort reliably, as each browser logs it differently.
+      if (abortedUrls.length) {
+        throw new Error(`Aborted external requests\n${abortedUrls.join('\n')}`);
+      }
     },
     { auto: true },
   ],

@@ -1,12 +1,6 @@
 export type CollectedMessage = { type: string; text: string; url: string };
 
-/** `info` messages a browser logs for a request the test aborted. Index 0 is WebKit. */
-export const abortedRequestPatterns: RegExp[] = [/^Web Inspector blocked .+ from loading$/];
-
-const isGuarded = ({ type, text }: CollectedMessage): boolean =>
-  type === 'error' ||
-  type === 'warning' ||
-  (type === 'info' && abortedRequestPatterns.some((pattern) => pattern.test(text)));
+const isGuarded = ({ type }: CollectedMessage): boolean => type === 'error' || type === 'warning';
 
 const matchesAny = (patterns: RegExp[], value: string): boolean =>
   patterns.some((pattern) => {
