@@ -172,7 +172,7 @@
   {
     "chunkShortName": "main",
     "size": 83593,
-    "gzipSize": 26111
+    "gzipSize": 26108
   },
   {
     "chunkShortName": "modal",
@@ -231,8 +231,8 @@
   },
   {
     "chunkShortName": "sheet",
-    "size": 18651,
-    "gzipSize": 7165
+    "size": 18919,
+    "gzipSize": 7264
   },
   {
     "chunkShortName": "spinner",
