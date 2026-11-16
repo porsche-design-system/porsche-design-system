@@ -15,7 +15,6 @@ import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwr
 const pagesWithExamples: [path: string, examples: string[]][] = [
   ['/patterns/header/', ['patterns/header/overlay', 'patterns/header/stacked']],
   ['/patterns/footer/', ['patterns/footer/extended', 'patterns/footer/simple']],
-  ['/patterns/forms/', ['patterns/forms/search-combobox-option-list', 'patterns/forms/search-combobox-link-list']],
   [
     '/patterns/forms/',
     [
