@@ -19,6 +19,7 @@ for (const tagName of tagNames) {
             ...expectedConsole,
             /Cannot read properties of null \(reading 'children'\)/,
             /null is not an object \(evaluating '.*\.pSelect\)\.children'\)/,
+            /can't access property "children", .* is null/,
           ]),
       });
     }
