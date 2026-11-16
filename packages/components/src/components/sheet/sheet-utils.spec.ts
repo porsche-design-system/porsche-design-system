@@ -190,7 +190,8 @@ describe('createSheetSwipeController', () => {
   const dispatchPointer = (
     type: 'pointerdown' | 'pointermove' | 'pointerup' | 'pointercancel',
     clientY: number,
-    buttons = 1
+    buttons = 1,
+    clientX = 20
   ): PointerEvent => {
     const event = new PointerEvent(type, {
       bubbles: true,
@@ -199,7 +200,7 @@ describe('createSheetSwipeController', () => {
       isPrimary: true,
       button: 0,
       buttons,
-      clientX: 20,
+      clientX,
       clientY,
     });
     swipeHandle.dispatchEvent(event);
@@ -319,6 +320,27 @@ describe('createSheetSwipeController', () => {
     dispatchPointer('pointerup', 100, 0);
     click(1);
     expect(clickSpy).toHaveBeenCalledTimes(2);
+
+    // Upward and horizontal drags never move the sheet, but must not close it through their trailing click either
+    dispatchPointer('pointerdown', 100);
+    dispatchPointer('pointermove', 60);
+    dispatchPointer('pointerup', 60, 0);
+    expect(sheet.style.transform).toBe('');
+    click(1);
+    expect(clickSpy).toHaveBeenCalledTimes(2);
+
+    dispatchPointer('pointerdown', 100);
+    dispatchPointer('pointermove', 100, 1, 80);
+    dispatchPointer('pointerup', 100, 0, 80);
+    click(1);
+    expect(clickSpy).toHaveBeenCalledTimes(2);
+
+    // Jitter below the 8px start threshold is still a tap
+    dispatchPointer('pointerdown', 100);
+    dispatchPointer('pointermove', 104);
+    dispatchPointer('pointerup', 104, 0);
+    click(1);
+    expect(clickSpy).toHaveBeenCalledTimes(3);
   });
 
   it('should not swallow subsequent button clicks after a short touch drag', () => {

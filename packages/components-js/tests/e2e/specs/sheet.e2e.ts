@@ -805,6 +805,29 @@ test.describe('swipe handle', () => {
     await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
   });
 
+  test('should not close when the swipe handle is dragged upwards or sideways with a mouse', async ({ page }) => {
+    const host = await enableSwipeHandle(page);
+    const handleBox = await getSwipeHandle(page).boundingBox();
+    if (!handleBox) {
+      throw new Error('swipe handle has no box');
+    }
+    const hx = handleBox.x + handleBox.width / 2;
+    const hy = handleBox.y + handleBox.height / 2;
+
+    for (const [dx, dy] of [
+      [0, -40],
+      [40, 0],
+    ]) {
+      await page.mouse.move(hx, hy);
+      await page.mouse.down();
+      await page.mouse.move(hx + dx, hy + dy, { steps: 4 });
+      await page.mouse.up();
+    }
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+  });
+
   test('should not emit motionVisibleEnd again when the backdrop transitions back after a snap-back', async ({
     page,
   }) => {

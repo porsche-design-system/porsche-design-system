@@ -268,8 +268,9 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
     const releaseVelocityY = performance.now() - lastTime > SWIPE_VELOCITY_DECAY_MS ? 0 : velocityY;
     const shouldDismiss =
       wasDragging && !cancelled && isOpen() && shouldDismissBySwipe(dragDy, releaseVelocityY, sheetHeight);
-    // A pointer drag on the handle ends with a click on it. Touch drags call `preventDefault()` and never produce one.
-    suppressHandleClick = wasDragging && pointerId !== null;
+    // A pointer drag on the handle ends with a click on it, in any direction. Touch drags call `preventDefault()` and
+    // never produce one.
+    suppressHandleClick = axis !== null && pointerId !== null;
     resetGesture();
 
     if (shouldDismiss) {
