@@ -125,6 +125,7 @@
       "packages/components-js/tests/e2e",
       "packages/components-js/tests/e2e/helpers",
       "packages/components-js/tests/e2e/specs",
+      "packages/components-js/tests/helpers",
       "packages/components-js/tests/smoke",
       "packages/components-js/tests/smoke/e2e",
       "packages/components-js/tests/smoke/e2e/helpers",

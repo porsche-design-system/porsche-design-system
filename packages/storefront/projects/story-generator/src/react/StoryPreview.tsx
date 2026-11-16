@@ -33,36 +33,25 @@ const createEventHandler =
     }));
   };
 
-/** The properties stories set to an asset, so text typed into the configurator, e.g. a `value`, stays as typed. */
-const assetProperties = ['src', 'srcSet', 'poster', 'iconSource', 'source'];
-
-/** Stories reference `public/assets` relatively, which the browser would resolve against the page path instead of the site root. */
-const resolveAssetPath = (name: string, value: unknown, basePath: string): unknown =>
-  assetProperties.includes(name) && typeof value === 'string' && value.startsWith('assets/')
-    ? `${basePath ? `/${basePath}` : ''}/${value}`
-    : value;
-
 const renderElement = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   key: number,
-  setState: SetState,
-  basePath: string
+  setState: SetState
 ): ReactNode => {
   if (!config) return null;
   if (typeof config === 'string') return config;
 
   const { tag, properties = {}, events = {}, children = [] } = config;
-  const resolvedProperties = Object.fromEntries(
-    Object.entries(properties).map(([name, value]) => [name, resolveAssetPath(name, value, basePath)])
-  );
+  // React SSR writes an image preload above <base href>, so a relative `assets/…` would resolve against the page URL.
+  const previewProperties = tag === 'img' ? { loading: 'lazy', ...properties } : properties;
   const eventHandlers = Object.fromEntries(
     Object.entries(events).map(([eventName, eventConfig]) => [eventName, createEventHandler(eventConfig, setState)])
   );
 
   return createElement(
     tag.startsWith('p-') ? getComponent(tag) : tag,
-    { key, ...resolvedProperties, ...eventHandlers },
-    ...children.map((child, index) => renderElement(child, index, setState, basePath))
+    { key, ...previewProperties, ...eventHandlers },
+    ...children.map((child, index) => renderElement(child, index, setState))
   );
 };
 
@@ -72,16 +61,14 @@ export type StoryPreviewProps = {
   state?: State;
   /** Receives the state changes the story's `events` make, e.g. `open: false` when a modal is dismissed. */
   onStateChange?: SetState;
-  /** The deployment's path prefix without slashes, e.g. `v4`, which `assets/…` paths are resolved against. */
-  basePath?: string;
 };
 
 /** Renders a story with the React components of the Porsche Design System. */
-export const StoryPreview = ({ story, state, onStateChange, basePath = '' }: StoryPreviewProps) => {
+export const StoryPreview = ({ story, state, onStateChange }: StoryPreviewProps) => {
   const [ownState, setOwnState] = useState<State>(story.state ?? {});
   const isControlled = state !== undefined;
   const currentState = isControlled ? state : ownState;
   const setState: SetState = isControlled ? (onStateChange ?? (() => {})) : setOwnState;
 
-  return <>{story.generator(currentState).map((config, index) => renderElement(config, index, setState, basePath))}</>;
+  return <>{story.generator(currentState).map((config, index) => renderElement(config, index, setState))}</>;
 };

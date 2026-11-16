@@ -1,7 +1,13 @@
 import type { Locator, Page } from '@playwright/test';
 import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
 
-export { getDevice, getExampleUrl, getSpecPath, waitForStablePosition } from '../../helpers/index.ts';
+export {
+  getDevice,
+  getExampleUrl,
+  getSpecPath,
+  waitForStablePosition,
+  youtubePlayerStub,
+} from '../../helpers/index.ts';
 
 /**
  * What an end-to-end test of an example needs, which is deliberately less than a screenshot needs.

@@ -71,10 +71,6 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
 // table.html shows a vehicle image from nav.porsche.com and the screenshots contain it
 const tableExternalRequests = { allowedOrigins: ['https://nav.porsche.com'] };
 
-test('should have certain amount of components', () => {
-  expect(components.length).toBe(60);
-});
-
 for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, () => {

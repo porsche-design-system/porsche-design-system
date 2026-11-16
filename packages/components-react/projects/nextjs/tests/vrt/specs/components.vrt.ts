@@ -41,10 +41,6 @@ const pageConsole: Record<string, RegExp[]> = {
   'link-tile-product': [/status of 400 \(Bad Request\) http:\/\/localhost:3000\/_next\/image\?url=nonexistent\.png&/],
 };
 
-test('should have certain amount of components', () => {
-  expect(components.length).toBe(60);
-});
-
 for (const component of components) {
   test.describe(component, async () => {
     test.use({

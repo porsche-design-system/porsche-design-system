@@ -24,7 +24,8 @@ for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, 
       // match static files in public/assets directory, and the examples in public/examples
       if (url.match(/^\/assets\/.*\.\w{3,4}$/) || isExampleUrl(url)) {
         expect(response?.status()).toBe(200);
-        if (isExampleUrl(url)) {
+        // Only the example pages render PDS components. Their media, e.g. a .webp, has none to wait for.
+        if (isExampleUrl(url) && url.endsWith('.html')) {
           await waitForComponentsHydrated(page);
         }
       } else {

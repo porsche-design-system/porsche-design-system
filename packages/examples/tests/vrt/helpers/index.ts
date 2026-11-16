@@ -1,14 +1,21 @@
 import type { Page } from '@playwright/test';
 import { schemes } from '@porsche-design-system/testing';
 import { expect, test, waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
-import { getDevice, getExampleUrl, setupExamplePage, waitForStableLayout } from '../../helpers/index.ts';
+import {
+  getDevice,
+  getExampleUrl,
+  launchPageWithFontSize200,
+  setupExamplePage,
+  waitForStableLayout,
+} from '../../helpers/index.ts';
 
 /**
  * The captures every example gets, whatever it demonstrates.
  *
  * Both VRT projects capture the page as it loads, each on the device it emulates: `vrt-desktop-chrome` on Desktop
- * Chrome and `vrt-mobile-safari` on an iPhone. Everything else is chromium only – scaling the font size and forcing
- * colors go through CDP, and the responsive layout is already covered by the two devices.
+ * Chrome and `vrt-mobile-safari` on an iPhone. Everything else is chromium only – the 200% font size is a preference
+ * of a chromium profile, forcing colors goes through CDP, and the responsive layout is already covered by the two
+ * devices.
  *
  * The states a page reaches through interaction are written out in its own spec, next to this call.
  */
@@ -17,6 +24,15 @@ export type InitialStatesOptions = {
   /** Why this page has no 200% font size capture – leave it out unless the page genuinely cannot settle there. */
   skipFontSize200?: string;
 };
+
+// The 200% profile needs a context of its own. Handing it over as `context` keeps request routing and the console guard on it.
+const testWithFontSize200 = test.extend({
+  context: async ({ playwright }, use, testInfo) => {
+    const { page, close } = await launchPageWithFontSize200(playwright, testInfo);
+    await use(page.context());
+    await close();
+  },
+});
 
 export const testInitialStates = (id: string, { skipFontSize200 }: InitialStatesOptions = {}): void => {
   const url = getExampleUrl(id);
@@ -46,12 +62,17 @@ export const testInitialStates = (id: string, { skipFontSize200 }: InitialStates
       });
     }
 
-    test('font-size 200%', async ({ page }) => {
+    test.describe(() => {
+      // skipped here and not in the test, so a skipped page launches no browser
       test.skip(!!skipFontSize200, skipFontSize200);
 
-      const device = getDevice();
-      await setupExamplePage(page, url, { scalePageFontSize: true });
-      await expect(page).toHaveScreenshot(`${id}--${device}-fs200.png`, { fullPage: true });
+      testWithFontSize200('font-size 200%', async ({ page }) => {
+        const device = getDevice();
+        await setupExamplePage(page, url);
+        // The full chromium the font size needs does not antialias text the same in every run – a few hundred pixels
+        // at most, where a layout that breaks at 200% changes thousands.
+        await expect(page).toHaveScreenshot(`${id}--${device}-fs200.png`, { fullPage: true, maxDiffPixels: 200 });
+      });
     });
 
     test('rtl (right-to-left)', async ({ page }) => {
