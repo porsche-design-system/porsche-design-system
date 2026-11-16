@@ -18,8 +18,8 @@ export type RequestOutcome =
   | { action: 'image' }
   | { action: 'abort' };
 
-/** The pattern the fixture routes on. `localhost` and `127.0.0.1` never match. */
-export const externalUrlPattern = /^https?:\/\/(?!localhost|127\.0\.0\.1)/;
+/** The pattern the fixture routes on. Only the hosts `localhost` and `127.0.0.1` never match. */
+export const externalUrlPattern = /^https?:\/\/(?!(?:localhost|127\.0\.0\.1)(?::\d+)?(?:\/|$))/;
 
 /** A fixed size placeholder for an image from an unknown origin, so a layout never depends on a third party. */
 export const externalImageStub = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="40" viewBox="0 0 64 40"><rect width="64" height="40" rx="4" fill="#C8CACB"/></svg>`;
