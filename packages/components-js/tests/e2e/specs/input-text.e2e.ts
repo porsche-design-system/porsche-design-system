@@ -486,6 +486,26 @@ test.describe('form', () => {
       expect((await getEventSummary(form, 'submit')).counter).toBe(0);
     });
 
+    for (const markupAfter of ['<input name="some-date" type="date" />', '<p-input-date name="some-date" />']) {
+      test(`should implicit submit form on enter when there is no submit button and a ${markupAfter.startsWith('<p-') ? 'p-input-date' : 'native input type date'}`, async ({
+        page,
+      }) => {
+        await initInputText(page, { isWithinForm: true, markupAfter });
+
+        const inputText = getInputText(page).first();
+        const form = getForm(page);
+
+        await addEventListener(form, 'submit');
+
+        await inputText.click();
+        await expect(inputText).toBeFocused();
+
+        await page.keyboard.press('Enter');
+        await waitForStencilLifecycle(page);
+        expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+      });
+    }
+
     const cancellingListeners = [
       { description: 'keydown is cancelled in capture phase', type: 'keydown', target: 'host', capture: true },
       { description: 'keydown is cancelled in bubble phase', type: 'keydown', target: 'host', capture: false },

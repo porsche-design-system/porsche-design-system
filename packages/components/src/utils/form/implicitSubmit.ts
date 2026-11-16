@@ -1,34 +1,41 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { isElementOfKind } from '../dom';
+import { getTagNameWithoutPrefix } from '../tag-name';
 import { runDefaultActionUnlessPrevented } from './runDefaultActionUnlessPrevented';
 
-const TYPES_THAT_BLOCK = new Set([
-  'text',
-  'search',
-  'url',
-  'tel',
-  'email',
-  'password',
-  'date',
-  'month',
-  'week',
-  'time',
-  'datetime-local',
-  'number',
-]);
-const PDS_INPUT_TAGS_THAT_BLOCK: TagName[] = [
-  'p-input-text',
-  'p-input-search',
-  'p-input-url',
-  'p-input-tel',
-  'p-input-email',
-  'p-input-password',
-  'p-input-date',
-  'p-input-month',
-  'p-input-week',
-  'p-input-time',
-  'p-input-number',
-];
+// Blink and WebKit: `HTMLInputElement::CanTriggerImplicitSubmission()`, which is `IsTextField()`.
+const TEXT_FIELD_TYPES = new Set(['text', 'search', 'url', 'tel', 'email', 'password', 'number']);
+const PDS_INPUT_TYPES: Partial<Record<TagName, string>> = {
+  'p-input-text': 'text',
+  'p-input-search': 'search',
+  'p-input-url': 'url',
+  'p-input-tel': 'tel',
+  'p-input-email': 'email',
+  'p-input-password': 'password',
+  'p-input-number': 'number',
+  'p-input-date': 'date',
+  'p-input-month': 'month',
+  'p-input-week': 'week',
+  'p-input-time': 'time',
+};
+
+const renderedInputTypes = new Map<string, string>();
+// The type the browser renders, e.g. `text` for `month` and `week` in Firefox and Safari, which have no picker for them.
+const getRenderedInputType = (type: string): string => {
+  let renderedType = renderedInputTypes.get(type);
+  if (!renderedType) {
+    const input = document.createElement('input');
+    input.setAttribute('type', type);
+    renderedType = input.type;
+    renderedInputTypes.set(type, renderedType);
+  }
+  return renderedType;
+};
+
+const isTextField = (element: HTMLElement): boolean => {
+  const type = element instanceof HTMLInputElement ? element.type : PDS_INPUT_TYPES[getTagNameWithoutPrefix(element)];
+  return !!type && TEXT_FIELD_TYPES.has(getRenderedInputType(type));
+};
 
 /**
  * Handles implicit form submission when the Enter key is pressed.
@@ -46,13 +53,15 @@ const PDS_INPUT_TAGS_THAT_BLOCK: TagName[] = [
  * submission depends on it. The decision is deferred until the event was dispatched to all listeners, see
  * `runDefaultActionUnlessPrevented()`.
  *
- * The function follows the HTML specification for implicit submission:
+ * The function follows the browsers' implementation of implicit submission (Blink and WebKit:
+ * `HTMLFormElement::SubmitImplicitly()`):
  * - If a form has a default submit control (`:default`), it is clicked.
- * - If no default submit button exists, submission may be blocked if certain input fields are present.
+ * - Otherwise the form is submitted only if Enter was pressed in a text field (text, search, url, tel, email, password,
+ *   number) and the form contains no other text field. Date, time, month and week fields neither submit nor block, unless
+ *   the browser renders them as text fields because it has no picker for them.
  *
- * Blocking rules:
- * - Native input types like text, email, number, date, etc., block implicit submission.
- * - Custom Porsche Design System input components listed in `PDS_INPUT_TAGS_THAT_BLOCK` also block submission.
+ * Browsers deviate from the HTML specification here, which lets the date and time types block submission as well.
+ * Gecko additionally submits from a date or time field if the form contains exactly one text field; that isn't emulated.
  *
  * @param {KeyboardEvent} e - The `keypress` event triggered on the input element.
  * @param {ElementInternals} internals - The element internals of the custom element, used to access the associated form.
@@ -65,6 +74,9 @@ const PDS_INPUT_TAGS_THAT_BLOCK: TagName[] = [
  * @see {@link https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/html/forms/input_type_view.cc Blink: InputTypeView::ShouldSubmitImplicitly()}
  * @see {@link https://github.com/WebKit/WebKit/blob/main/Source/WebCore/html/InputType.cpp WebKit: InputType::shouldSubmitImplicitly()}
  * @see {@link https://github.com/mozilla-firefox/firefox/blob/main/dom/html/HTMLInputElement.cpp Gecko: HTMLInputElement::PostHandleEvent()}
+ * @see {@link https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/html/forms/html_form_element.cc Blink: HTMLFormElement::SubmitImplicitly()}
+ * @see {@link https://github.com/WebKit/WebKit/blob/main/Source/WebCore/html/HTMLFormElement.cpp WebKit: HTMLFormElement::submitImplicitly()}
+ * @see {@link https://github.com/mozilla-firefox/firefox/blob/main/dom/html/HTMLFormElement.cpp Gecko: HTMLFormElement::ImplicitSubmissionIsDisabled()}
  */
 export const implicitSubmit = (e: KeyboardEvent, internals: ElementInternals, host: HTMLElement): void => {
   if (e.key === 'Enter') {
@@ -92,14 +104,8 @@ const submitImplicitly = (internals: ElementInternals, host: HTMLElement): void 
     }
   }
 
-  // If there is no submit button, check for blocking fields
-  const hasBlockingField = formElements.some(
-    (el) =>
-      (el instanceof HTMLInputElement && TYPES_THAT_BLOCK.has(el.type)) ||
-      (el instanceof HTMLElement && PDS_INPUT_TAGS_THAT_BLOCK.some((tag) => isElementOfKind(el, tag)))
-  );
-
-  if (!hasBlockingField) {
+  // Without a submit button, only a text field submits, and only if it is the form's only text field.
+  if (isTextField(host) && !formElements.some(isTextField)) {
     form.requestSubmit();
   }
 };

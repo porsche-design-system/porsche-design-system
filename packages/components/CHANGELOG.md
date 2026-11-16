@@ -52,7 +52,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 - `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
   `Input Text`, `Input Time`, `Input Url`, `Input Week`: pressing `Enter` submitted a form without a submit button,
-  although it contained another `Input Password`, `Input Month` or `Input Week`
+  although it contained another `Input Password`, or an `Input Month` or `Input Week` in a browser without a month or
+  week picker, e.g. Firefox and Safari
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 - `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
   ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
@@ -68,6 +69,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` didn't submit the form when a
   listener on the page stopped the propagation of the `keydown` event before it reached the input, e.g. in the capture
   phase ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Input Date`, `Input Month`, `Input Time`, `Input Week`: pressing `Enter` submitted a form without a submit button,
+  while native date, month, time and week inputs only click a submit button. `Input Month` and `Input Week` still
+  submit in browsers without a month or week picker, which render them as a text field
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`, `Input Url`: pressing
+  `Enter` didn't submit a form without a submit button when the form also contained a date, time, month or week field,
+  e.g. an `Input Date`, while a native text input submits
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 
 ## [4.10.1] - 2026-10-23
 
