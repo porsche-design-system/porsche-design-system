@@ -2,7 +2,7 @@ import { componentsReady } from '@porsche-design-system/components-js';
 import { screen } from '@porsche-design-system/components-js/testing';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import userEvent from '@testing-library/user-event';
-import { expect, it, vi } from 'vitest';
+import { expect, it } from 'vitest';
 import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
@@ -16,8 +16,6 @@ it('should have initialized shadow dom', async () => {
 });
 
 it('should have working events', async () => {
-  // TODO remove once #4844 is fixed
-  const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
   document.body.innerHTML =
     getMarkup('p-tabs-bar') + `<div id="debug">Active Tab: <span>2</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
@@ -55,11 +53,6 @@ it('should have working events', async () => {
   button3.addEventListener('click', () => ((el as any).activeTabIndex = 2));
   await userEvent.click(button3);
   expect(debugEl.innerHTML).toBe('Active Tab: <span>2</span>; Event Counter: <span>3</span>;');
-
-  expect(errorSpy).toHaveBeenCalled();
-  for (const call of errorSpy.mock.calls) {
-    expect(String(call[0])).toContain('bar.getAnimations is not a function');
-  }
 });
 
 it('should expose its tablist to shadow queries', async () => {
