@@ -64,6 +64,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` together with `Ctrl`, `Alt` or
   `Cmd` submitted the form in Chrome and Safari, where a native input doesn't
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` didn't submit the form when a
+  listener on the page stopped the propagation of the `keydown` event before it reached the input, e.g. in the capture
+  phase ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 
 ## [4.10.1] - 2026-10-23
 
