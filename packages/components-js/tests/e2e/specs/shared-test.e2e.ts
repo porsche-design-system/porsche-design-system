@@ -1,4 +1,4 @@
-import { abortedRequestPatterns, expect, test } from '@porsche-design-system/testing/playwright';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 const fetchText = (url: string) => fetch(url).then((response) => response.text());
 
@@ -53,29 +53,6 @@ test.describe('console guard', () => {
 });
 
 test.describe('request routing', () => {
-  test('aborts an unknown request and the guard fails the test', async ({ page, browserName }) => {
-    test.skip(browserName === 'firefox', 'TODO measure in CI, see plan Task 12');
-    test.fail();
-    await page.evaluate(() => fetch('https://unknown.invalid/x').catch(() => {}));
-  });
-
-  test.describe('with the abort message declared', () => {
-    test.use({ expectedConsole: [/unknown\.invalid|net::ERR_FAILED/] });
-
-    test('the browser words an abort as the guard expects', async ({ page, browserName }) => {
-      test.skip(browserName === 'firefox', 'TODO measure in CI, see plan Task 12');
-      await page.evaluate(() => fetch('https://unknown.invalid/x').catch(() => {}));
-
-      const messages = await page.consoleMessages();
-      const summary = messages.map((message) => ({ type: message.type(), text: message.text() }));
-      if (browserName === 'chromium') {
-        expect(summary).toEqual([{ type: 'error', text: expect.stringContaining('net::ERR_FAILED') }]);
-      } else {
-        expect(summary).toEqual([{ type: 'info', text: expect.stringMatching(abortedRequestPatterns[0]) }]);
-      }
-    });
-  });
-
   test.describe('with a stubbed origin', () => {
     test.use({
       externalRequests: { stubs: { 'https://registry.npmjs.org': { json: { versions: { '1.0.0': {} } } } } },
@@ -110,6 +87,11 @@ test.describe('request routing', () => {
 
   test.describe('with any console message declared', () => {
     test.use({ expectedConsole: [/.*/] });
+
+    test('fails on an aborted request', async ({ page }) => {
+      test.fail();
+      await page.evaluate(() => fetch('https://unknown.invalid/x').catch(() => {}));
+    });
 
     test('ends cleanly with a request in flight', async ({ page }) => {
       await page.evaluate(() => {

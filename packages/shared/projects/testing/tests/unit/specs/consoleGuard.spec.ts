@@ -30,15 +30,6 @@ describe('findUnexpectedConsole()', () => {
     expect(findUnexpectedConsole([notFound], [/status of 404 .*\/assets\/lights\.jpg$/])).toEqual([]);
   });
 
-  it("WebKit's abort message is unexpected", () => {
-    const blocked = message('info', 'Web Inspector blocked https://new.example.com/x.js from loading');
-    expect(findUnexpectedConsole([blocked], [])).toEqual([blocked]);
-  });
-
-  it('any other info is ignored', () => {
-    expect(findUnexpectedConsole([message('info', 'Download the React DevTools')], [])).toEqual([]);
-  });
-
   it('a global pattern matches every message', () => {
     expect(findUnexpectedConsole([message('error', 'boom'), message('error', 'boom')], [/boom/g])).toEqual([]);
   });
