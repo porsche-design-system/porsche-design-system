@@ -16,32 +16,35 @@ const expectShadowDomToMatchSnapshot = async (host: Locator, tagName: TagName): 
   expect(prettyHtml).toMatchSnapshot(`${tagName}.txt`);
 };
 
-// only p-display logs this, so it is declared once for the file
-test.use({
-  expectedConsole: async ({ expectedConsole }, use) =>
-    use([...expectedConsole, /component p-display is deprecated and will be removed with next major release/]),
-});
-
 for (const tagName of TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))) {
-  test(`should have no basic DOM regression for ${tagName}`, async ({ page, browserName }) => {
-    test.fixme(browserName === 'firefox' && tagName === 'p-carousel');
-    test.skip(
-      ['firefox', 'webkit'].includes(browserName) &&
-        ['p-input-date', 'p-input-month', 'p-input-week', 'p-input-time'].includes(tagName),
-      'Skipping due to differing native date/time picker rendering in Firefox and Safari'
-    );
+  test.describe(() => {
+    if (tagName === 'p-display') {
+      test.use({
+        expectedConsole: async ({ expectedConsole }, use) =>
+          use([...expectedConsole, /component p-display is deprecated and will be removed with next major release/]),
+      });
+    }
 
-    await goto(page, ''); // start page
+    test(`should have no basic DOM regression for ${tagName}`, async ({ page, browserName }) => {
+      test.fixme(browserName === 'firefox' && tagName === 'p-carousel');
+      test.skip(
+        ['firefox', 'webkit'].includes(browserName) &&
+          ['p-input-date', 'p-input-month', 'p-input-week', 'p-input-time'].includes(tagName),
+        'Skipping due to differing native date/time picker rendering in Firefox and Safari'
+      );
 
-    const markup = buildDefaultComponentMarkup(tagName);
-    await page.evaluate((markup: string) => {
-      const app = document.getElementById('app');
-      if (!app) throw new Error('#app not found');
-      app.innerHTML = markup;
-    }, markup);
-    await waitForComponentsReady(page);
+      await goto(page, ''); // start page
 
-    const host = page.locator(tagName);
-    await expectShadowDomToMatchSnapshot(host, tagName);
+      const markup = buildDefaultComponentMarkup(tagName);
+      await page.evaluate((markup: string) => {
+        const app = document.getElementById('app');
+        if (!app) throw new Error('#app not found');
+        app.innerHTML = markup;
+      }, markup);
+      await waitForComponentsReady(page);
+
+      const host = page.locator(tagName);
+      await expectShadowDomToMatchSnapshot(host, tagName);
+    });
   });
 }
