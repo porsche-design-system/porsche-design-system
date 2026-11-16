@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PAccordion, PButton, PButtonPure, PButtonTile, PCarousel, PCheckbox, PCrest, PDisplay, PDivider, PFieldset, PFlag, PHeading, PIcon, PInlineNotification, PInputDate, PInputEmail, PInputMonth, PInputNumber, PInputPassword, PInputSearch, PInputTel, PInputText, PInputTime, PInputUrl, PInputWeek, PLink, PLinkPure, PLinkTile, PLinkTileProduct, PModelSignature, PMultiSelect, PMultiSelectOption, PorscheDesignSystemProvider, PPagination, PPinCode, PPopover, PRadioGroup, PRadioGroupOption, PScroller, PSegmentedControl, PSegmentedControlItem, PSelect, PSelectOption, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextarea, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PAiTag, PButton, PButtonPure, PButtonTile, PCarousel, PCheckbox, PCrest, PDisplay, PDivider, PFieldset, PFlag, PHeading, PIcon, PInlineNotification, PInputDate, PInputEmail, PInputMonth, PInputNumber, PInputPassword, PInputSearch, PInputTel, PInputText, PInputTime, PInputUrl, PInputWeek, PLink, PLinkPure, PLinkTile, PLinkTileProduct, PModelSignature, PMultiSelect, PMultiSelectOption, PorscheDesignSystemProvider, PPagination, PPinCode, PPopover, PRadioGroup, PRadioGroupOption, PScroller, PSegmentedControl, PSegmentedControlItem, PSelect, PSelectOption, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextarea, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
 const OverviewComponentsPage = () => {
   const style = `
@@ -341,6 +341,10 @@ const OverviewComponentsPage = () => {
         <div className="playground" title="should render default checkbox">
           <PCheckbox label="Some label" />
         </div>
+
+        <div className="playground" title="should render default ai-tag">
+          <PAiTag />
+        </div>
       </div>
 
       <PorscheDesignSystemProvider prefix="my-prefix">
@@ -675,6 +679,10 @@ const OverviewComponentsPage = () => {
 
           <div className="playground" title="should render default checkbox with custom prefix">
             <PCheckbox label="Some label" />
+          </div>
+
+          <div className="playground" title="should render default ai-tag with custom prefix">
+            <PAiTag />
           </div>
         </div>
       </PorscheDesignSystemProvider>
