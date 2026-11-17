@@ -16,7 +16,11 @@ export const expectedConsoleByUrl: Record<string, RegExp[]> = {
   // The YouTube embed allows web-share for browsers with the Web Share API. The headless test browser has none.
   '/examples/templates/personalized-mailing/no-video/index.html': [/Unrecognized feature: 'web-share'/],
   '/examples/templates/personalized-mailing/video/index.html': [/Unrecognized feature: 'web-share'/],
-  '/templates/personalized-mailing/': [/Unrecognized feature: 'web-share'/],
+  '/templates/personalized-mailing/': [
+    /Unrecognized feature: 'web-share'/,
+    // The framed examples preload their component chunks. Chrome warns for each one unused a few seconds after load.
+    /was preloaded using link preload but not used within a few seconds/,
+  ],
   // TODO Code example previews load images relative to the page. Remove once #4800 resolves them in toPreview.
   '/components/button-tile/examples/': [/status of 404 .*\/assets\/lights\.jpg$/],
   '/components/link-tile/examples/': [/status of 404 .*\/assets\/lights\.jpg$/],
