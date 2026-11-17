@@ -88,12 +88,12 @@ use: {
   ],
 },
 
-// packages/components-js/tests/vrt/specs/components.vrt.ts, inside the describe of the table page
-test.use({ externalRequests: { allowedOrigins: ['https://nav.porsche.com'] } });
+// packages/examples/tests/vrt/specs/templates/personalized-mailing-video.vrt.ts, inside the describe of the video modal
+test.use({ externalRequests: youtubePlayerStub });
 ```
 
-**Allow an origin on the tests that need it, not for the whole suite.** Every other test of the suite then still fails
-on a request to that origin.
+**Stub or allow an origin on the tests that need it, not for the whole suite.** Every other test of the suite then still
+fails on a request to that origin.
 
 - `externalRequests` (`{ stubs, allowedOrigins, images }`, default `{}`) configures rows 3 to 5. `false` switches
   routing off. Only the smoke suite does that, so it runs with the guard on and no routing, against the live CDN. A
