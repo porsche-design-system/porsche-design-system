@@ -2,12 +2,7 @@ import { type Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/testing';
-import {
-  type ExternalRequestsOptions,
-  expect,
-  harnessPageConsole,
-  test,
-} from '@porsche-design-system/testing/playwright';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import * as globby from 'fast-glob';
 import * as path from 'path';
 import { setupScenario } from '../helpers';
@@ -73,15 +68,9 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
   }
 };
 
-// table.html shows a vehicle image from nav.porsche.com and the screenshots contain it
-const tableExternalRequests: ExternalRequestsOptions = { allowedOrigins: ['https://nav.porsche.com'] };
-
 for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, () => {
-    if (component === 'table') {
-      test.use({ externalRequests: tableExternalRequests });
-    }
     test.use({
       expectedConsole: async ({ expectedConsole }, use) =>
         use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
@@ -98,9 +87,6 @@ for (const component of components) {
 
   // executed in Chrome only
   test.describe(component, () => {
-    if (component === 'table') {
-      test.use({ externalRequests: tableExternalRequests });
-    }
     test.use({
       expectedConsole: async ({ expectedConsole }, use) =>
         use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
