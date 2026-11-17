@@ -1,6 +1,7 @@
 import type { Frame, Page, Request } from '@playwright/test';
 import { examples } from '@porsche-design-system/examples';
 import { expect, test, waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { expectedConsoleByUrl } from '../../helpers/expectedConsole';
 
 /**
  * The patterns and templates the storefront frames from `public/examples/`, and opens in StackBlitz.
@@ -43,6 +44,11 @@ const getExampleFrames = async (page: Page): Promise<Frame[]> => {
 
 for (const [path, examples] of pagesWithExamples) {
   test.describe(path, () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(expectedConsoleByUrl[path] ?? [])]),
+    });
+
     test('frames its examples from this deployment', async ({ page }) => {
       const mediaResponses: { url: string; status: number }[] = [];
       page.on('response', (response) => {
