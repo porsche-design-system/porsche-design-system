@@ -1,6 +1,7 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,

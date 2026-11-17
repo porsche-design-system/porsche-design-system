@@ -150,4 +150,6 @@ run for them. Do not add one.
 
 ## Linting
 
-Biome's `linter.includes` excludes this package, so `npm run lint` checks nothing here. Biome formatting still applies.
+Biome's `linter.includes` excludes this package, so `npm run lint` checks one thing here: Playwright specs and test
+helpers must import `test` from `@porsche-design-system/testing/playwright` (see
+[`packages/shared/projects/testing/AGENTS.md`](../shared/projects/testing/AGENTS.md)). Biome formatting still applies.

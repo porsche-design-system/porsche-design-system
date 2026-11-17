@@ -1,5 +1,5 @@
-import { expect, Page, test } from '@playwright/test';
-import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers';
+import { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 const getHost = (page: Page) => page.locator('p-checkbox');
 const getInput = (page: Page) => page.locator('p-checkbox input');
@@ -15,7 +15,6 @@ const setValue = async (page: Page) => {
 
 test.describe('Angular forms integration', () => {
   test.beforeEach(async ({ page }) => {
-    initConsoleObserver(page);
     await page.goto('/checkbox-example-reactive-form');
     const host = getHost(page);
 
@@ -26,7 +25,6 @@ test.describe('Angular forms integration', () => {
     await expect(page.locator('[data-field="valid"]')).toHaveText('false');
 
     await expect(host).toHaveJSProperty('checked', false);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 
   test('setting value manually updates form state correctly', async ({ page }) => {

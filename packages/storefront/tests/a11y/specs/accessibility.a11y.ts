@@ -4,6 +4,7 @@ import * as path from 'node:path';
 import type { Locator, Page } from '@playwright/test';
 import { schemes } from '@porsche-design-system/testing';
 import { getInternalUrls } from '../../e2e/helpers/sitemap';
+import { expectedConsoleByUrl } from '../../helpers/expectedConsole';
 import { expect, test } from '../helpers/axe-helper';
 
 // style overrides for css variables
@@ -75,65 +76,72 @@ test.describe('storefront pages', () => {
 
   schemes.forEach((scheme) => {
     for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
-      test(`should have no accessibility issues for scheme-${scheme} at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
-        page,
-        makeAxeBuilder,
-      }, testInfo) => {
-        await gotoUrl(page, url);
-
-        if (scheme === 'dark') {
-          const settingsButton = page
-            .locator('p-button[slot="header-end"]')
-            .filter({ hasText: 'Open settings sidebar' });
-          if (await settingsButton.isVisible()) {
-            await settingsButton.click();
-          }
-          const themeSelect = page.locator('p-select[name="theme"]').first();
-          await enableDarkMode(page, themeSelect);
-        }
-
-        await page.evaluate(() => (document as any).fonts?.ready); // fonts swapped
-        await page.locator('p-canvas').evaluate((canvas) => {
-          const sb = canvas.shadowRoot?.querySelector('.sidebar--start') as HTMLElement | null;
-          if (sb) sb.scrollTop = 0; // no link tucked under the sticky title
+      test.describe(url, () => {
+        test.use({
+          expectedConsole: async ({ expectedConsole }, use) =>
+            use([...expectedConsole, ...(expectedConsoleByUrl[url] ?? [])]),
         });
 
-        const scan = async (name: string): Promise<void> => {
-          const accessibilityScanResults = await makeAxeBuilder().analyze();
+        test(`should have no accessibility issues for scheme-${scheme} at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
+          page,
+          makeAxeBuilder,
+        }, testInfo) => {
+          await gotoUrl(page, url);
 
-          await testInfo.attach(`a11y-scan-results-${name}-${scheme}`, {
-            body: JSON.stringify(accessibilityScanResults.violations, null, 2),
-            contentType: 'application/json',
+          if (scheme === 'dark') {
+            const settingsButton = page
+              .locator('p-button[slot="header-end"]')
+              .filter({ hasText: 'Open settings sidebar' });
+            if (await settingsButton.isVisible()) {
+              await settingsButton.click();
+            }
+            const themeSelect = page.locator('p-select[name="theme"]').first();
+            await enableDarkMode(page, themeSelect);
+          }
+
+          await page.evaluate(() => (document as any).fonts?.ready); // fonts swapped
+          await page.locator('p-canvas').evaluate((canvas) => {
+            const sb = canvas.shadowRoot?.querySelector('.sidebar--start') as HTMLElement | null;
+            if (sb) sb.scrollTop = 0; // no link tucked under the sticky title
           });
 
-          console.log(accessibilityScanResults.violations);
+          const scan = async (name: string): Promise<void> => {
+            const accessibilityScanResults = await makeAxeBuilder().analyze();
 
-          // Filter out violations for p-scroller inside p-table.
-          // This is a known issue with p-scroller in chrome when there is a scroll area but the component does not add tabindex=0.
-          const filteredViolations = accessibilityScanResults.violations
-            .map((violation) => ({
-              ...violation,
-              nodes: violation.nodes.filter((node) =>
-                node.target.every((selector) => !selector.includes('p-scroller'))
-              ),
-            }))
-            .filter((violation) => violation.nodes.length > 0);
+            await testInfo.attach(`a11y-scan-results-${name}-${scheme}`, {
+              body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+              contentType: 'application/json',
+            });
 
-          expect(filteredViolations.length).toBe(0);
-        };
+            console.log(accessibilityScanResults.violations);
 
-        await scan('main');
+            // Filter out violations for p-scroller inside p-table.
+            // This is a known issue with p-scroller in chrome when there is a scroll area but the component does not add tabindex=0.
+            const filteredViolations = accessibilityScanResults.violations
+              .map((violation) => ({
+                ...violation,
+                nodes: violation.nodes.filter((node) =>
+                  node.target.every((selector) => !selector.includes('p-scroller'))
+                ),
+              }))
+              .filter((violation) => violation.nodes.length > 0);
 
-        // The examples of a `WebsiteViewer` show their preview first; their code is scanned in a second pass. The code
-        // tab is usable before the code has loaded, so the wait is for the code itself.
-        const codeTabs = await page.getByRole('tab', { name: 'HTML', exact: true }).all();
-        if (codeTabs.length > 0) {
-          for (const codeTab of codeTabs) {
-            await codeTab.click();
+            expect(filteredViolations.length).toBe(0);
+          };
+
+          await scan('main');
+
+          // The examples of a `WebsiteViewer` show their preview first; their code is scanned in a second pass. The code
+          // tab is usable before the code has loaded, so the wait is for the code itself.
+          const codeTabs = await page.getByRole('tab', { name: 'HTML', exact: true }).all();
+          if (codeTabs.length > 0) {
+            for (const codeTab of codeTabs) {
+              await codeTab.click();
+            }
+            await expect(page.getByRole('region', { name: /^HTML of / })).toHaveCount(codeTabs.length);
+            await scan('code');
           }
-          await expect(page.getByRole('region', { name: /^HTML of / })).toHaveCount(codeTabs.length);
-          await scan('code');
-        }
+        });
       });
     }
   });

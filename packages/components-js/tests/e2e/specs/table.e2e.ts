@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   addEventListener,
@@ -27,7 +27,7 @@ const initTable = (page: Page, opts?: InitOptions): Promise<void> => {
     ? `
 <script>
   document.querySelectorAll('p-table-head-cell').forEach((el, i) => {
-    el.sort = { id: i, active: i === 0, direction: 'asc'};
+    el.sort = { id: String(i), active: i === 0, direction: 'asc'};
   })
 </script>`
     : '';
@@ -57,6 +57,14 @@ ${script}`
 };
 
 test.describe('sorting', () => {
+  test.use({
+    expectedConsole: async ({ expectedConsole }, use) =>
+      use([
+        ...expectedConsole,
+        /Invalid property 'sort' with value '\{ some: "object" \}' supplied to p-table-head-cell/,
+      ]),
+  });
+
   test('should not render sorting button if invalid sort options are provided', async ({ page }) => {
     await initTable(page, { isSortable: true });
     const firstTableHeadCell = getFirstTableHeadCell(page);
@@ -123,7 +131,7 @@ test.describe('lifecycle', () => {
     const host = getHost(page);
     await host.evaluate((host) => {
       host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
-        (el as any).sort = { id: i, active: i === 0, direction: 'asc' };
+        (el as any).sort = { id: String(i), active: i === 0, direction: 'asc' };
       });
     });
     await waitForStencilLifecycle(page);

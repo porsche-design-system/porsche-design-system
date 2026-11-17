@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   getElementStyle,

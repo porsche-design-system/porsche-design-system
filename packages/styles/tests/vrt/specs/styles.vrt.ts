@@ -1,4 +1,3 @@
-import { expect, test } from '@playwright/test';
 import { COLOR_SCHEMES, type ColorScheme } from '@porsche-design-system/shared/models';
 import {
   viewportWidthL,
@@ -9,6 +8,7 @@ import {
   viewportWidthXXL,
   viewportWidthXXS,
 } from '@porsche-design-system/testing';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { styleSolutions, styles } from '../../../src/routes';
 
 const stylesToExclude: (typeof styles)[number][] = ['motion', 'focus-visible'];

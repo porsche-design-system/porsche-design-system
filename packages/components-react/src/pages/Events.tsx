@@ -398,7 +398,7 @@ export const EventsPage = () => {
       </div>
 
       <div className="playground light">
-        <PModal open={isModalOpen} onDismiss={onModalClose}>
+        <PModal open={isModalOpen} onDismiss={onModalClose} aria={{ 'aria-label': 'Modal' }}>
           Modal
         </PModal>
         <p>{modalDismissEventCounter}</p>
