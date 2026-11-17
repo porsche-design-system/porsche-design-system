@@ -114,11 +114,12 @@ on a request to that origin.
   });
   ```
 
-- **Declare a message where it is seen.** A message seen on one page goes on that page's test or describe. A message
-  seen on more than one page of a suite goes in the suite config. The exception is a suite with a per-URL record: the
-  storefront keeps its record for both suites in `packages/storefront/tests/helpers/expectedConsole.ts`.
-- `harnessPageConsole` maps each components-js harness page to the messages it logs on purpose. A spec that renders one
-  of those pages, in any wrapper's suite, takes the page's patterns from it instead of repeating them.
+- **Declare a message once.** A message that one test or one spec file expects goes on that test or describe. A message
+  that more than one file expects goes in a shared file: the suite config, or a shared map the specs can read. The
+  storefront keeps such a map by URL for both suites in `packages/storefront/tests/helpers/expectedConsole.ts`.
+- `harnessPageConsole` is the shared map of the component suites. It maps each components-js harness page to the
+  messages it logs on purpose. A spec that expects one of those messages, in any wrapper's suite, takes the patterns
+  from it instead of repeating them, whether it renders the page or not.
 - **Nothing checks that a declared pattern ever matched.** A dead entry stays silent, so remove a declaration when its
   cause is fixed, as the `#4800` TODO entries in the storefront record must be.
 
