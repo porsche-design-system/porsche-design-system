@@ -104,7 +104,8 @@
       "**/*.vrt.ts",
       "**/*.smoke.ts",
       "packages/**/tests/**/helpers/**/*.ts",
-      "!packages/shared/projects/testing/**"
+      "!packages/shared/projects/testing/**",
+      "**/*vitest*.config.*"
     ]
   },
   "css": {
@@ -252,6 +253,10 @@
           }
         }
       }
+    },
+    {
+      "includes": ["**/*vitest*.config.*"],
+      "plugins": ["./packages/shared/projects/testing/biome-plugins/use-shared-vitest-config.grit"]
     },
     {
       "includes": ["packages/examples/src/**/*.tsx"],
