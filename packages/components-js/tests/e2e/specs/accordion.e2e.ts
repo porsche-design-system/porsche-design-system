@@ -285,6 +285,43 @@ test.describe('focus', () => {
   });
 });
 
+test.describe('click on content of a scrolled accordion', () => {
+  const getScrollY = (page: Page): Promise<number> => page.evaluate(() => window.scrollY);
+
+  // content is taller than the viewport, so the summary is scrolled out of view once the end of the content is visible
+  const otherSlottedMarkup = `<div style="height: 200vh"></div>
+<p>Some static text</p>
+<button type="button">Some button</button>`;
+
+  test('should keep scroll position and not focus summary when static text is clicked', async ({ page }) => {
+    await initAccordion(page, { isOpen: true, otherSlottedMarkup });
+    const text = page.locator('p-accordion p');
+
+    await text.scrollIntoViewIfNeeded();
+    const scrollY = await getScrollY(page);
+    expect(scrollY).toBeGreaterThan(0);
+
+    await text.click();
+
+    expect(await getScrollY(page)).toBe(scrollY);
+    await expect(getSummary(page)).not.toBeFocused();
+  });
+
+  test('should keep scroll position and not focus summary when slotted button is clicked', async ({ page }) => {
+    await initAccordion(page, { isOpen: true, otherSlottedMarkup });
+    const button = page.locator('p-accordion button');
+
+    await button.scrollIntoViewIfNeeded();
+    const scrollY = await getScrollY(page);
+    expect(scrollY).toBeGreaterThan(0);
+
+    await button.click();
+
+    expect(await getScrollY(page)).toBe(scrollY);
+    await expect(getSummary(page)).not.toBeFocused();
+  });
+});
+
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initAccordion(page);
