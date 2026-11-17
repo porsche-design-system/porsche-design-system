@@ -27,6 +27,7 @@ src/
 ├── vitest.ts                   # `./vitest`: vitestConfig, the base every Vitest config merges
 └── vitestConsoleGuard.ts       # `./vitest-console-guard`: the setup file vitestConfig adds
 tests/unit/                     # the specs of assertDefined, normalizeCssNamespace, testCoverage, consoleGuard and externalRequests, the Vitest base config and its console guard
+biome-plugins/                  # the lint rules that require this package's Playwright test and vitestConfig
 ```
 
 ## What belongs here
@@ -62,6 +63,11 @@ settings. `mergeConfig` replaces a scalar, skips `null` and `undefined` (so neit
 concatenates arrays (so a package can add to `exclude` and `setupFiles` but never drop the base's entries). Every
 override of a base setting carries a comment saying why.
 
+The Biome plugin `biome-plugins/use-shared-vitest-config.grit` fails `npm run lint` on a `*vitest*.config.*` file whose
+default export is anything other than `mergeConfig(vitestConfig, …)`. `linter.includes` in `biome.json` ends with that
+glob, so it also reaches the configs of packages excluded from linting. It reads the code, not the meaning: a config
+that exports a `const`, wraps the call or renames the import fails too, so write it in the shape above.
+
 ## Console guard
 
 `vitestConfig` adds `vitest-console-guard` as the first setup file, so it runs before a package's own. It fails:
@@ -86,8 +92,9 @@ cannot fail that file. `console.log` is not guarded.
 
 Every Playwright spec and test helper imports `test` from `@porsche-design-system/testing/playwright`, never from
 `@playwright/test`. It adds two automatic fixtures, both attached to the test's browser context: request routing and the
-console guard. A `noRestrictedImports` rule in `biome.json` fails `npm run lint` on the wrong import, smoke suite
-included.
+console guard. The Biome plugin `biome-plugins/use-shared-playwright-test.grit` fails `npm run lint` on a named, default
+or namespace import of it from `@playwright/test`, on a re-export and on a `require`, smoke suite included. `biome.json`
+attaches it to the spec and helper globs and to every storefront file.
 
 **The rule reaches a new directory of Playwright specs or test helpers without an edit to `biome.json`.**
 `linter.includes` excludes five packages from linting (`assets`, `components-angular`, `components-js`,
