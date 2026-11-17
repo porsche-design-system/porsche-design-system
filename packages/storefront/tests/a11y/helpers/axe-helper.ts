@@ -5,4 +5,4 @@ export const test = createAxeTest({
   // rule is disabled due to unwanted refactorings in component presentation
   disableRules: ['landmark-unique'],
 });
-export { expect } from '@playwright/test';
+export { expect } from '@porsche-design-system/testing/playwright';

@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/templates/personalized-mailing/no-video` – what differs from the `video` variant: the page opens on a title
@@ -11,13 +11,10 @@ import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helper
 const url = getExampleUrl('templates-personalized-mailing-no-video');
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   // Templates share one site name; the part before it is what the page sets, and no page may ship without one.
   await expect(page).toHaveTitle(/^.+ \| Dummy Templates$/);
-  expect(errors).toEqual([]);
 });
 
 test('opens on its title instead of a video, with the vehicle pulled up into it', async ({ page }) => {

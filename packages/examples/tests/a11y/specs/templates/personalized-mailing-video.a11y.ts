@@ -1,6 +1,6 @@
 import { schemes } from '@porsche-design-system/testing';
 import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
-import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
+import { getExampleUrl, setupExamplePage, youtubePlayerStub } from '../../../helpers/index.ts';
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
@@ -13,14 +13,18 @@ const url = getExampleUrl(id);
 
 testInitialStates(id);
 
-for (const scheme of schemes) {
-  test(`video modal open with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
-    await setupExamplePage(page, url, { prefersColorScheme: scheme });
+test.describe(() => {
+  test.use({ externalRequests: youtubePlayerStub });
 
-    await page.locator('#pm-voices [data-video-id]').first().click();
-    await expect(page.locator('#pm-video-modal dialog')).toBeVisible();
-    await waitForComponentsHydrated(page);
+  for (const scheme of schemes) {
+    test(`video modal open with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+      await setupExamplePage(page, url, { prefersColorScheme: scheme });
 
-    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--video-modal-open--${scheme}`);
-  });
-}
+      await page.locator('#pm-voices [data-video-id]').first().click();
+      await expect(page.locator('#pm-video-modal dialog')).toBeVisible();
+      await waitForComponentsHydrated(page);
+
+      await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--video-modal-open--${scheme}`);
+    });
+  }
+});

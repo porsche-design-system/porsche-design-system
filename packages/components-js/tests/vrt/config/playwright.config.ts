@@ -1,8 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
 import { playwrightConfigVRT } from '@porsche-design-system/testing';
+import type { TestOptions } from '@porsche-design-system/testing/playwright';
 
-export default defineConfig({
+export default defineConfig<TestOptions>({
   ...playwrightConfigVRT,
+  use: {
+    ...playwrightConfigVRT.use,
+    // vite.config.js preloads every chunk, a slow page warns about the chunks it does not use
+    expectedConsole: [/was preloaded using link preload but not used within a few seconds/],
+  },
   projects: [
     {
       name: 'chrome',

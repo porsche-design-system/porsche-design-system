@@ -1,5 +1,5 @@
+import { test } from '@porsche-design-system/testing/playwright';
 import type { PlaywrightWorkerOptions } from 'playwright/types/test';
-import { test } from '@playwright/test';
 
 const insertSkipper = (browserNames: PlaywrightWorkerOptions['browserName'][]) =>
   test.skip(({ browserName }) => browserNames.includes(browserName));

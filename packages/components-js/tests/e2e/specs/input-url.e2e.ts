@@ -1,13 +1,12 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
-  getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -464,7 +463,6 @@ test.describe('form', () => {
   });
 
   test('should not set validity when disabled and throw no errors', async ({ page }) => {
-    initConsoleObserver(page);
     await initInputUrl(page, {
       isWithinForm: true,
       props: {
@@ -475,11 +473,9 @@ test.describe('form', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 
   test('should not set validity when readonly and throw no errors', async ({ page }) => {
-    initConsoleObserver(page);
     await initInputUrl(page, {
       isWithinForm: true,
       props: {
@@ -490,7 +486,6 @@ test.describe('form', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test } from '@porsche-design-system/testing/playwright';
 
 /** The devices every suite runs on – one project each, see `playwright.config.ts`. */
 export type Device = 'desktop' | 'mobile';
