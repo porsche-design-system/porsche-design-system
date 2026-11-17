@@ -23,7 +23,7 @@ describe('improveButtonHandlingForCustomElement()', () => {
     const getDisabled = vi.fn().mockReturnValue(false);
 
     const fakeButton = document.createElement('button');
-    const fakeButtonClickSpy = vi.spyOn(fakeButton, 'click');
+    const fakeButtonClickSpy = vi.spyOn(fakeButton, 'click').mockImplementation(() => {});
     vi.spyOn(document, 'createElement').mockReturnValueOnce(fakeButton);
 
     improveButtonHandlingForCustomElement(element, getType, getDisabled, getName, getValue);
@@ -61,7 +61,7 @@ describe('handleButtonEvent()', () => {
     const formAppendChildSpy = vi.spyOn(form, 'appendChild');
 
     const fakeButton = document.createElement('button');
-    const fakeButtonClickSpy = vi.spyOn(fakeButton, 'click');
+    const fakeButtonClickSpy = vi.spyOn(fakeButton, 'click').mockImplementation(() => {});
     const fakeButtonRemoveSpy = vi.spyOn(fakeButton, 'remove');
 
     vi.spyOn(document, 'createElement').mockReturnValueOnce(fakeButton);

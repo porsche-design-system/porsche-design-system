@@ -17,13 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Production Builds'
         run: npm run build-prod
       - name: "Login"
-        uses: docker/login-action@v4
+        uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
         with:
           registry: ${{ vars.OSO_AWS_ECR_REGISTRY }}
           username: ${{ secrets.OSO_AWS_ACCESS_KEY_ID }}
@@ -53,7 +53,7 @@ jobs:
             -f StaticHtml
         shell: bash
       - name: 'Upload'
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: ort-analysis
           path: ./ort

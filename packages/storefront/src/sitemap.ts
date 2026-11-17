@@ -244,14 +244,7 @@ export const sitemap = {
       footer: { name: 'Footer' },
       popover: { name: 'Popover' },
       feedback: { name: 'Feedback' },
-      forms: {
-        name: 'Forms',
-        tabs: {
-          guidelines: { name: 'Guidelines' },
-          resources: { name: 'Resources' },
-          legal: { name: 'Legal' },
-        },
-      },
+      forms: { name: 'Forms' },
       notifications: {
         name: 'Notifications',
         tabs: {
@@ -266,6 +259,7 @@ export const sitemap = {
     pages: {
       'landing-page': { name: 'Landing Page' },
       'admin-panel': { name: 'Admin Panel' },
+      'personalized-mailing': { name: 'Personalized Mailing' },
     },
   },
   tokens: {
@@ -725,7 +719,8 @@ export const sitemap = {
         tabs: {
           introduction: { name: 'Introduction' },
           'dos-and-donts': { name: "Do's and Don'ts" },
-          'ai-agent-setup': { name: 'Setting AI Agent Context' },
+          'ai-agent-context': { name: 'AI Agent Context' },
+          'ai-accessibility-audit': { name: 'AI Accessibility Audit' },
           statement: { name: 'Statement' },
         },
       },

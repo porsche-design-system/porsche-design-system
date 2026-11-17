@@ -30,6 +30,12 @@ export default [
       }),
       commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
       resolve(),
+      // `@porsche-design-system/testing` ships TypeScript source; compile only the module `src/normalizeCssNamespace.js` requires
+      typescript({
+        tsconfig: '../../../shared/projects/testing/tsconfig.json',
+        include: ['../../../shared/projects/testing/src/normalizeCssNamespace.ts'],
+        noEmitOnError: true,
+      }),
       /* Fixes flaky problem with https://github.com/GoogleChromeLabs/intersection-observer polyfill where window is not defined:
        * ReferenceError: window is not defined
        */

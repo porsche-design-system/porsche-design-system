@@ -35,6 +35,7 @@ export const patternComponents = [
   'drilldown',
   'flag',
   'heading',
+  'input-search',
   'link',
   'link-pure',
   'modal',
@@ -65,6 +66,7 @@ export const templateComponents = [
   'divider',
   'input-search',
   'link-tile',
+  'model-signature',
   'table',
 ] as const;
 

@@ -47,7 +47,7 @@ describe('getExampleUrl()', () => {
   });
 
   it('addresses an example at the root without a basePath', () => {
-    expect(getExampleUrl(examples['patterns/footer'], '')).toBe('/examples/patterns/footer/index.html');
+    expect(getExampleUrl(examples['patterns/footer/simple'], '')).toBe('/examples/patterns/footer/simple/index.html');
   });
 });
 

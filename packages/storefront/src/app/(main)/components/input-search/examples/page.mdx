@@ -1,9 +1,9 @@
 import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { inputSearchMeta } from '@/app/(main)/components/input-search/input-search.meta';
 import form from '@porsche-design-system/examples/components/input-search/form';
 import slots from '@porsche-design-system/examples/components/input-search/slots';
-import ariaCombobox from '@porsche-design-system/examples/components/input-search/aria-combobox';
 
 export const metadata = {
   title: 'Input Search: Examples - Components',
@@ -12,10 +12,12 @@ export const metadata = {
 
 # Input Search <ComponentStatus tagName="p-input-search"></ComponentStatus>
 
-<TableOfContents headings={[form.title, slots.title, ariaCombobox.title]} />
+<TableOfContents headings={[form.title, slots.title, inputSearchMeta.notes.ariaCombobox.name]} />
 
 <Example example={form} />
 
 <Example example={slots} />
 
-<Example example={ariaCombobox} />
+## {inputSearchMeta.notes.ariaCombobox.name}
+
+<inputSearchMeta.notes.ariaCombobox.description />

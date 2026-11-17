@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { StorefrontDirectionProvider } from '@/components/providers/StorefrontDirectionProvider';
@@ -63,7 +63,7 @@ describe('StorefrontDirectionProvider', () => {
       </StorefrontDirectionProvider>
     );
 
-    screen.getByText('Set RTL').click();
+    fireEvent.click(screen.getByText('Set RTL'));
 
     expect(localStorage.setItem).toHaveBeenCalledWith('storefrontDirection', 'rtl');
 

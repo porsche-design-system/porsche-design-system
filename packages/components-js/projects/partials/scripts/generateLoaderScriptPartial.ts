@@ -14,9 +14,9 @@ export const generateLoaderScriptPartial = (): string => {
   const tmpFilePath = path.resolve(packageDir, '../..', npmDistTmpSubPath, 'index.js');
   const fileContent = fs.readFileSync(tmpFilePath, 'utf8');
 
-  const func = `export function getLoaderScript(opts: GetLoaderScriptOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getLoaderScript(opts: GetLoaderScriptOptions & { format: 'jsx' }): JSXElement;
 export function getLoaderScript(opts?: GetLoaderScriptOptions): string;
-export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Element {
+export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSXElement {
   const { prefix, format }: GetLoaderScriptOptions = {
     prefix: undefined,
     format: 'html',

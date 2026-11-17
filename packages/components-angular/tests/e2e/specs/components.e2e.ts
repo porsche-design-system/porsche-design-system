@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
 import {
   getConsoleErrorsAmount,
-  getElementProp,
   getOuterHTML,
+  getProperty,
   goto,
   initConsoleObserver,
   waitForComponentsReady,
@@ -48,8 +48,8 @@ test.describe('with prefix', () => {
 
     const prefixedComponent = page.locator(prefixedSelector);
 
-    expect(await getElementProp(prefixedComponent, 'description')).toBe('Some Description');
-    expect(await getElementProp(prefixedComponent, 'label')).toBe('Some Label');
+    expect(await getProperty(prefixedComponent, 'description')).toBe('Some Description');
+    expect(await getProperty(prefixedComponent, 'label')).toBe('Some Label');
   });
 });
 

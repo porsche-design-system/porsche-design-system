@@ -34,14 +34,14 @@
     "change-case": "^5.4.4"
   },
   "devDependencies": {
-    "@porsche-design-system/components-react": "4.10.0",
+    "@porsche-design-system/components-react": "4.10.1",
     "@porsche-design-system/shared": "0.0.0",
     "@types/mdx": "^2.0.14",
-    "@types/node": "^26.6.3",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.2"
+    "vitest": "^5.0.5"
   },
   "volta": {
     "extends": "../../../../package.json"

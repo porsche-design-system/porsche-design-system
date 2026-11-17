@@ -112,12 +112,12 @@ page's title differs, and its error lists the expected one.
 Links are written in one form and resolved for each output: `next/link` adds the base path and the trailing slash in the
 Storefront, and the skills generator turns the same routes into references or Storefront URLs.
 
-| Link to       | Write                                                    | Notes                                                                                            |
-| ------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| A page        | `[Button](/components/button/usage)`                     | A route of the sitemap, without a trailing slash. In TSX, use `DocsLink`, typed with `DocsHref`. |
-| A section     | `[Do](/components/button/usage#do)` or `[Setup](#setup)` | The anchor of an `##` heading on that page, from `getHeadingAnchorId()` (GitHub-style slugs).    |
-| A file        | `[AGENTS.md](assets/downloads/AGENTS.md)`                | Relative, from `public/`; the `<base>` of the root layout adds the base path.                    |
-| Anything else | `[MDN](https://developer.mozilla.org)`                   | With its scheme.                                                                                 |
+| Link to       | Write                                                     | Notes                                                                                            |
+| ------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| A page        | `[Button](/components/button/usage)`                      | A route of the sitemap, without a trailing slash. In TSX, use `DocsLink`, typed with `DocsHref`. |
+| A section     | `[Do](/components/button/usage#do)` or `[Setup](#setup)`  | The anchor of an `##` heading on that page, from `getHeadingAnchorId()` (GitHub-style slugs).    |
+| A file        | `[Compulsory Statement](assets/compulsory-statement.txt)` | Relative, from `public/`; the `<base>` of the root layout adds the base path.                    |
+| Anything else | `[MDN](https://developer.mozilla.org)`                    | With its scheme.                                                                                 |
 
 - Use Markdown links in MDX, and `DocsLink` in JSX and TSX, for internal and external links alike. `next/link` is off
   limits: Biome rejects importing it in TSX, and the link test in MDX. Elements that render their own `<a>` (`PLink`,
@@ -151,9 +151,10 @@ and its dependencies on the Storefront. It is the migration list for the dual-ta
 ```
 src/
 ├── app/                    # Next.js App Router pages
-│   ├── components/         # Component documentation pages
-│   ├── must-know/          # Guidelines (accessibility, etc.)
-│   └── ...
+│   └── (main)/             # Route group
+│       ├── components/     # Component documentation pages
+│       ├── must-know/      # Guidelines (accessibility, etc.)
+│       └── ...
 ├── components/             # React components for the site
 │   ├── mdx/                # Components MDX imports, by topic, one folder each, with an inventory
 │   └── common/             # Storefront chrome: navigation, tabs, selects, DocsLink
@@ -250,10 +251,10 @@ When you add new interactive examples or components:
 
 Follow the internal accessibility guidance pages:
 
-- [`src/app/must-know/accessibility/introduction/page.mdx`](src/app/must-know/accessibility/introduction/page.mdx) — PDS
-  accessibility approach and testing stages
-- [`src/app/must-know/accessibility/dos-and-donts/page.mdx`](src/app/must-know/accessibility/dos-and-donts/page.mdx) —
-  practical integration do's and don'ts for consumers
+- [`src/app/(main)/must-know/accessibility/introduction/page.mdx`](<src/app/(main)/must-know/accessibility/introduction/page.mdx>)
+  — PDS accessibility approach and testing stages
+- [`src/app/(main)/must-know/accessibility/dos-and-donts/page.mdx`](<src/app/(main)/must-know/accessibility/dos-and-donts/page.mdx>)
+  — practical integration do's and don'ts for consumers
 
 It documents expected testing stages:
 

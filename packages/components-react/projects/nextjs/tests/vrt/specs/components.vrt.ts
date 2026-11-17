@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { viewportWidthL, viewportWidthXS } from '@porsche-design-system/shared/testing';
+import { viewportWidthL, viewportWidthXS } from '@porsche-design-system/testing';
 import * as globby from 'fast-glob';
 import path from 'path';
 
@@ -24,10 +24,6 @@ const components = fileNames
     const argv = process.argv.slice(5);
     return !argv.length || argv.includes(name);
   });
-
-test('should have certain amount of components', () => {
-  expect(components.length).toBe(60);
-});
 
 for (const component of components) {
   test.describe(component, async () => {

@@ -18,9 +18,9 @@ type GetFontLinksOptions = {
   const linkTemplate = await minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
   const func = `export function getFontLinks(opts: GetFontLinksOptions & { format: 'js' }): PartialLink[];
-export function getFontLinks(opts: GetFontLinksOptions & { format: 'jsx' }): JSX.Element;
+export function getFontLinks(opts: GetFontLinksOptions & { format: 'jsx' }): JSXElement;
 export function getFontLinks(opts?: GetFontLinksOptions): string;
-export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element | PartialLink[] {
+export function getFontLinks(opts?: GetFontLinksOptions): string | JSXElement | PartialLink[] {
   const { subset, weights, cdn, format }: GetFontLinksOptions = {
     subset: 'latin',
     weights: ['regular', 'semi-bold'],

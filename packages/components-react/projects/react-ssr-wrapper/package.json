@@ -17,7 +17,8 @@
     "clean:build": "rm -rf ../../dist/react-wrapper/ssr"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
+    "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/testing": "0.0.0"
   },
   "volta": {
     "extends": "../../../../package.json"

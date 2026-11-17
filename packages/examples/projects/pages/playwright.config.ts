@@ -1,12 +1,12 @@
 import { type Config, defineConfig, devices, type Project } from '@playwright/test';
-import { playwrightConfigA11y, playwrightConfigE2E, playwrightConfigVRT } from '@porsche-design-system/shared/testing';
+import { playwrightConfigA11y, playwrightConfigE2E, playwrightConfigVRT } from '@porsche-design-system/testing';
 import { exampleWebServer } from './tests/helpers/previewServers.ts';
 
 /**
  * Every Playwright suite of the examples, as projects of one config.
  *
  * A pilot for the monorepo: the other packages keep one config per suite in `tests/<suite>/config/`. The settings still
- * come from the shared base configs of `@porsche-design-system/shared/testing`, so a suite behaves exactly as it does
+ * come from the shared base configs of `@porsche-design-system/testing`, so a suite behaves exactly as it does
  * everywhere else – only the options Playwright allows per project are taken from them per suite, and the global ones
  * (parallelism, retries, workers, reporter) are identical in all three bases anyway.
  *
@@ -73,7 +73,7 @@ export default defineConfig({
     ...projectsOf('a11y', playwrightConfigA11y),
     /**
      * Visual regression. Dark scheme, both High Contrast Mode schemes, 200% font size and rtl are captured on desktop
-     * only: scaling the font size and forcing colors go through CDP.
+     * only: the font size is a preference of a chromium profile, and forcing colors goes through CDP.
      */
     ...projectsOf('vrt', playwrightConfigVRT),
   ],

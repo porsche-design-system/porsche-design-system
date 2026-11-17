@@ -14,11 +14,54 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Knowledge Skill`: two form search patterns – search combobox option list (combobox with a listbox of choices) and
+  search combobox link list (combobox with a dialog of links) – composed from `p-input-search` and `p-popover`
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Link Pure`, `Button Pure`: `--p-link-pure-px`, `--p-link-pure-py`, `--p-link-pure-hover-inset-x`,
+  `--p-link-pure-hover-inset-y`, `--p-button-pure-px`, `--p-button-pure-py`, `--p-button-pure-hover-inset-x` and
+  `--p-button-pure-hover-inset-y` CSS variables to override the horizontal and vertical padding of the clickable area
+  and the inset of the hover, active and focus indicator.
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Popover`: `arrow` prop to drop the arrow and the extra offset it adds when set to `false`.
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Input Search`: `aria` accepts `aria-activedescendant`, and `aria-controls` and `aria-activedescendant` accept an
+  element (or, for `aria-controls`, a list of elements) so the relationship reaches the input across the shadow
+  boundary. ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- `Knowledge Skill`: personalized mailing template – a personal follow-up page for a configured vehicle – in a video and
+  a no-video variant ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
+- `Knowledge Skill`: simple footer pattern with the legal information only, next to the extended footer
+  ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
+
+### Changed
+
+- **Angular**: `@angular/forms` is now a peer dependency, because the form components import it
+  ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- `Knowledge Skill`: instructs the agent to load `references/components/<tag>/accessibility.md` before generating a
+  component and to load the `accessible-frontend` APM skill for page-level WCAG 2.2 AA and EN 301 549 composition when
+  installed ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
+
 ### Fixed
 
+- **Partials**: type checking failed with `Cannot find module 'react'` in projects without React and with `skipLibCheck`
+  disabled ([#4809](https://github.com/porsche-design-system/porsche-design-system/pull/4809))
+- `Link Pure`, `Button Pure`: `active` state had no visible indicator in High Contrast Mode (`forced-colors: active`)
+  ([#4779](https://github.com/porsche-design-system/porsche-design-system/pull/4779))
+- **Angular**: Signal Forms `[formField]` did not work on `Input Email`, `Input Tel` and `Input Url`, and on
+  `Input Number` with a field holding text
+  ([#4856](https://github.com/porsche-design-system/porsche-design-system/pull/4856))
 - `Knowledge Skill`: the `p-link-pure` reference listed the example of a framework router with active state without its
-  code; it now shows the Angular, React and Vue snippets
-  ([#4800](https://github.com/porsche-design-system/porsche-design-system/pull/4800))
+  code, and the `p-input-search` reference cut its guidance on combobox use after the first sentence; both are now shown
+  in full ([#4800](https://github.com/porsche-design-system/porsche-design-system/pull/4800))
+
+## [4.10.1] - 2026-10-23
+
+### Fixed
+
+- **TypeScript**: type checking failed with `Cannot find module '@porsche-design-system/components-manager-core'` in
+  projects with `skipLibCheck` disabled, since v4.7.0
+  ([#4808](https://github.com/porsche-design-system/porsche-design-system/pull/4808))
 
 ## [4.10.0] - 2026-10-22
 

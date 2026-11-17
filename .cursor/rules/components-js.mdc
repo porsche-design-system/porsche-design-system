@@ -1,0 +1,8 @@
+---
+description: Points to the AGENTS.md for files under packages/components-js/
+globs: packages/components-js/**
+alwaysApply: false
+---
+
+Files under `packages/components-js/` follow @packages/components-js/AGENTS.md. If it is not in your context, read it
+before you answer about or edit these files, and follow it.

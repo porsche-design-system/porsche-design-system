@@ -5,7 +5,7 @@
 
 ## Overview
 
-This package contains internal shared data, models, testing helpers, style utilities, and generated lookup files used across the monorepo. It is an upstream dependency for many other packages.
+This package contains internal shared data, models, style utilities, and generated lookup files used across the monorepo. It is an upstream dependency for many other packages. The test helpers live in the nested workspace `@porsche-design-system/testing`, see [`projects/testing/AGENTS.md`](projects/testing/AGENTS.md).
 
 ## Structure
 
@@ -16,23 +16,26 @@ packages/shared/
 ├── src/lib/               # Generated lookup files
 ├── src/models/            # Shared types/models
 ├── src/styles/            # Shared style helpers
-├── src/testing/           # Playwright helper exports
 ├── src/utils/             # Framework conversion and misc helpers
 ├── tests/                 # Unit tests
 └── projects/              # Shared packages of their own, each an npm workspace
-    └── story-generator/   # @porsche-design-system/story-generator
+    ├── story-generator/   # @porsche-design-system/story-generator
+    └── testing/           # @porsche-design-system/testing, the test helpers
 ```
 
 ## Projects
 
 `projects/` holds packages that are shared across the repo but are workspaces of their own, with their own dependencies,
-typecheck and tests. This package's own typecheck and unit tests leave them out.
+typecheck and tests. This package's own typecheck and unit tests leave them out; its `typecheck` and `test:unit` scripts
+run those of `testing` after their own.
 
 - [`projects/story-generator`](projects/story-generator/), `@porsche-design-system/story-generator`: the story types,
   the markup of a story for every framework (`getStoryMarkup`, `wrapCode`), the payloads of the accessibility examples
   (`resolveExamplePayload`) and a story's live React rendering (`StoryPreview`, the `/react` subpath). The stories of
   `packages/examples`, the Storefront (its configurator and its own stories) and the skills' tests use it. It exports
   its source, which the Storefront compiles (`transpilePackages`).
+- [`projects/testing`](projects/testing/), `@porsche-design-system/testing`: the test helpers more than one package
+  uses, see [`projects/testing/AGENTS.md`](projects/testing/AGENTS.md).
 
 The story generator's `/react` subpath imports the React wrapper, so its typecheck runs after the wrappers: in the
 Storefront's build, and in `typecheck:all` (`npm run typecheck --workspace=@porsche-design-system/story-generator`). Its
@@ -60,9 +63,8 @@ npm run test:unit:story-generator
 `packages/shared` is the workspace `@porsche-design-system/shared`. Its `exports` map points into `dist/`, so consumers
 get the built code, and `npm install` links the package before anything is built. It is private and never published.
 
-- Deep entries (`./deprecation`, `./models`, `./testing`, `./testing/normalize-css-namespace`,
-  `./testing/assert-defined`) are bundled on their own, so code can use them without loading the barrel and its
-  generated modules or Playwright helpers.
+- Deep entries (`./deprecation`, `./models`) are bundled on their own, so code can use them without loading the
+  barrel and its generated modules.
 - `./tsconfig.base.json` and `./tsconfig.paths.json` are the shared compiler base and the source mappings for the
   pre-build typecheck (see `docs/typecheck.md`). Configs extend them as
   `@porsche-design-system/shared/tsconfig.base.json`.

@@ -35,15 +35,19 @@ const PDS_INPUT_TAGS_THAT_BLOCK: TagName[] = [
  * Blocking rules:
  * - Native input types like text, email, number, date, etc., block implicit submission.
  * - Custom Porsche Design System input components listed in `PDS_INPUT_TAGS_THAT_BLOCK` also block submission.
+ * - IME composition events (`e.isComposing` or `e.keyCode === 229` for Safari/WebKit, where `compositionend` fires
+ *   before the `keydown` that commits the composition) are ignored so confirming an IME candidate with Enter does not
+ *   submit the form.
  *
  * @param {KeyboardEvent} e - The keyboard event triggered on the input element.
  * @param {ElementInternals} internals - The element internals of the custom element, used to access the associated form.
  * @param {HTMLElement} host - The host element which calls this function.
  *
  * @see {@link https://www.w3.org/TR/2014/CR-html5-20140204/forms.html#implicit-submission Implicit Submission Spec}
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event#ignoring_keydown_during_ime_composition MDN: Ignoring keydown during IME composition}
  */
 export const implicitSubmit = (e: KeyboardEvent, internals: ElementInternals, host: HTMLElement) => {
-  if (e.key === 'Enter') {
+  if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) {
     const { form } = internals;
     if (!form) return;
     const formElements = Array.from(form.elements).filter((el) => el !== host) as HTMLElement[];

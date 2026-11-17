@@ -1,6 +1,6 @@
 import type { AxeBuilder } from '@axe-core/playwright';
 import type { TestInfo } from '@playwright/test';
-import { schemes } from '@porsche-design-system/shared/testing';
+import { schemes } from '@porsche-design-system/testing';
 import { getDevice, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 import { expect, test } from './axe-helper.ts';
 

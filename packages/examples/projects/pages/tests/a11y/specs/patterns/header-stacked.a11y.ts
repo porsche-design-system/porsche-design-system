@@ -1,5 +1,6 @@
-import { schemes } from '@porsche-design-system/shared/testing';
-import { getExampleUrl, setupExamplePage, waitForComponentsReady } from '../../../helpers/index.ts';
+import { schemes } from '@porsche-design-system/testing';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
 import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
 
 /**
@@ -18,7 +19,7 @@ for (const scheme of schemes) {
     await page.locator('#nav-button').click();
     // The host stays a zero-height anchor in the header; the overlay is the `dialog` in its shadow root.
     await expect(page.locator('#nav-drilldown dialog')).toBeVisible();
-    await waitForComponentsReady(page);
+    await waitForComponentsHydrated(page);
 
     await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--drilldown-open--${scheme}`);
   });

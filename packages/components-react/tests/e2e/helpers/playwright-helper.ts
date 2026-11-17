@@ -1,11 +1,12 @@
-import { type ConsoleMessage, type Locator, type Page } from '@playwright/test';
-import { waitForComponentsReady } from './stencil';
+import { type ConsoleMessage, type Page } from '@playwright/test';
+import { getLifecycleTrackingScript } from '@porsche-design-system/testing/playwright';
 
-export const getOuterHTML = (el: Locator): Promise<string> => el.evaluate((el) => el.outerHTML);
-
-export const goto = async (page: Page, url: string): Promise<void> => {
-  await page.goto(url);
-  await waitForComponentsReady(page);
+export const trackLifecycleStatus = async (page: Page): Promise<void> => {
+  await page.evaluate((text) => {
+    const script = document.createElement('script');
+    script.text = text;
+    document.body.appendChild(script);
+  }, getLifecycleTrackingScript());
 };
 
 const consoleMessages: ConsoleMessage[] = [];

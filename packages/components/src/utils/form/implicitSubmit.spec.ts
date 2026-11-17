@@ -27,6 +27,23 @@ describe('implicitSubmit', () => {
     expect(mockRequestSubmit).not.toHaveBeenCalled();
   });
 
+  it('does nothing during IME composition (isComposing or keyCode 229)', () => {
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    vi.spyOn(submitButton, 'matches').mockReturnValue(true);
+    submitButton.click = mockClick;
+    form.appendChild(submitButton);
+
+    const composingEvent = new KeyboardEvent('keydown', { key: 'Enter', isComposing: true });
+    implicitSubmit(composingEvent, internals as any, host);
+
+    const safariImeEvent = new KeyboardEvent('keydown', { key: 'Enter', keyCode: 229 });
+    implicitSubmit(safariImeEvent, internals as any, host);
+
+    expect(mockClick).not.toHaveBeenCalled();
+    expect(mockRequestSubmit).not.toHaveBeenCalled();
+  });
+
   it('does nothing if form is not present', () => {
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
     implicitSubmit(event, { form: null } as any, host);

@@ -1,4 +1,8 @@
-import type { Page } from '@playwright/test';
+import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import type { Page, PlaywrightWorkerArgs, TestInfo } from '@playwright/test';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
 import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
 
 /**
@@ -8,7 +12,7 @@ import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
  * to be pinned down is everything that can differ between two runs: the components have to be upgraded, the fonts
  * loaded, the hero video parked on a fixed frame and whatever the page focused on load released again.
  *
- * The e2e suite reuses only the hermetic part – `stubExternalRequests()` and `waitForComponentsReady()` – because it
+ * The e2e suite reuses only the hermetic part – `stubExternalRequests()` and `waitForComponentsHydrated()` – because it
  * tests the video and the focus this setup pins down.
  */
 
@@ -18,8 +22,6 @@ export type ExampleScenarioOptions = {
   /** Windows High Contrast Mode. */
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: ColorScheme;
-  /** 200% text zoom – goes through CDP and is therefore chromium only. */
-  scalePageFontSize?: boolean;
   /** Right-to-left reading direction. The examples never set `dir` themselves, so the test does. */
   rtl?: boolean;
 };
@@ -93,28 +95,6 @@ export const stubExternalRequests = async (page: Page): Promise<void> => {
     } else {
       await route.abort();
     }
-  });
-};
-
-/**
- * Waits until every Porsche Design System element of the page has upgraded.
- *
- * The examples load the components through the **loader partial**, which deliberately ships no `componentsReady()` –
- * that helper belongs to the JS wrapper the other packages test against. What the page offers instead is what the
- * components themselves put into the DOM: a custom element is registered (`:defined`) and Stencil marks the upgraded
- * element with the `hydrated` class. Both have to hold, because `src/style.css` hides undefined elements and an
- * element without that class has not rendered its shadow root yet.
- */
-export const waitForComponentsReady = async (page: Page): Promise<void> => {
-  await page.waitForFunction(() => {
-    const pdsElements = Array.from(document.querySelectorAll('*')).filter((element) =>
-      element.tagName.startsWith('P-')
-    );
-
-    return (
-      document.querySelectorAll(':not(:defined)').length === 0 &&
-      pdsElements.every((element) => element.classList.contains('hydrated'))
-    );
   });
 };
 
@@ -229,7 +209,7 @@ export const setupExamplePage = async (
   url: string,
   options: ExampleScenarioOptions = {}
 ): Promise<void> => {
-  const { forcedColorsEnabled, prefersColorScheme, scalePageFontSize, rtl } = options;
+  const { forcedColorsEnabled, prefersColorScheme, rtl } = options;
 
   await stubExternalRequests(page);
   await disableMotion(page);
@@ -241,16 +221,6 @@ export const setupExamplePage = async (
     colorScheme: prefersColorScheme ?? 'light',
     reducedMotion: 'reduce',
   });
-
-  if (scalePageFontSize) {
-    const cdpSession = await page.context().newCDPSession(page);
-    await cdpSession.send('Page.setFontSizes', {
-      fontSizes: {
-        standard: 32,
-        fixed: 48,
-      },
-    });
-  }
 
   if (rtl) {
     // An init script rather than an evaluation after the load: the components read the direction when they upgrade.
@@ -267,11 +237,59 @@ export const setupExamplePage = async (
 
   await page.goto(url);
 
-  await waitForComponentsReady(page);
+  await waitForComponentsHydrated(page);
   await waitForFonts(page);
+  // A lazily loaded image below the fold only starts loading once it is scrolled near, so it would never complete –
+  // while a full page capture shows it. Switching it to eager is what scrolling through the page would do.
+  await page.evaluate(() => {
+    for (const image of document.querySelectorAll<HTMLImageElement>('img[loading="lazy"]')) {
+      image.loading = 'eager';
+    }
+  });
   await page.waitForFunction(() => Array.from(document.images).every((image) => image.complete));
   await freezeVideos(page);
   await blurActiveElement(page);
   await remeasureComponents(page);
   await waitForStableLayout(page);
+};
+
+/**
+ * A page of a chromium whose default font size is 200% – 32px, and 48px for monospace: the browser setting a user
+ * changes for larger text, which scales everything in `rem` and `em`, media queries included.
+ *
+ * It is a preference of the browser profile rather than `Page.setFontSizes` over CDP: chromium restores the font sizes
+ * of its preferences whenever an emulation changes, and a capture beyond the viewport changes one – the text of a full
+ * page screenshot would be back at 100% in a layout still at 200%. A preference is what it restores, so it holds.
+ *
+ * The profile needs the full chromium in its new headless mode – the headless shell reads no preferences – and a
+ * persistent context of its own, configured like the context of the project. Close it with the returned function.
+ */
+export const launchPageWithFontSize200 = async (
+  playwright: PlaywrightWorkerArgs['playwright'],
+  testInfo: TestInfo
+): Promise<{ page: Page; close: () => Promise<void> }> => {
+  const userDataDir = await mkdtemp(join(tmpdir(), 'pds-examples-fs200-'));
+  await mkdir(join(userDataDir, 'Default'));
+  await writeFile(
+    join(userDataDir, 'Default', 'Preferences'),
+    JSON.stringify({ webkit: { webprefs: { default_font_size: 32, default_fixed_font_size: 48 } } })
+  );
+
+  const { viewport, deviceScaleFactor, userAgent, isMobile, hasTouch } = testInfo.project.use;
+  const context = await playwright.chromium.launchPersistentContext(userDataDir, {
+    channel: 'chromium',
+    viewport,
+    deviceScaleFactor,
+    userAgent,
+    isMobile,
+    hasTouch,
+  });
+
+  return {
+    page: context.pages()[0] ?? (await context.newPage()),
+    close: async () => {
+      await context.close();
+      await rm(userDataDir, { recursive: true, force: true });
+    },
+  };
 };

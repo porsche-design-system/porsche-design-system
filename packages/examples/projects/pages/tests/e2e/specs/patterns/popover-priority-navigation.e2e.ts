@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { viewportWidthM } from '@porsche-design-system/shared/testing';
+import { viewportWidthM } from '@porsche-design-system/testing';
 import { collectPageErrors, getExampleUrl, getTriggerControl, isOpen, setupExamplePage } from '../../helpers/index.ts';
 
 /**
