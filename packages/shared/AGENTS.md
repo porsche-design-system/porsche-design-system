@@ -17,7 +17,7 @@ packages/shared/
 ├── src/lib/               # Generated lookup files
 ├── src/models/            # Shared types/models
 ├── src/styles/            # Shared style helpers
-├── src/utils/             # Framework conversion and misc helpers
+├── src/utils/             # Framework conversion, rewriteCdnUrlsForDev and misc helpers
 └── tests/                 # Unit tests
 ```
 
@@ -42,8 +42,9 @@ npm run test:unit:shared
 `packages/shared` is the workspace `@porsche-design-system/shared`. Its `exports` map points into `dist/`, so consumers
 get the built code, and `npm install` links the package before anything is built. It is private and never published.
 
-- Deep entries (`./deprecation`, `./models`) are bundled on their own, so code can use them without loading the
-  barrel and its generated modules.
+- Deep entries (`./deprecation`, `./models`, `./rewrite-cdn-urls`) are bundled on their own, so code can use them
+  without loading the barrel and its generated modules. Native ESM loaders such as Vite's config loader cannot load
+  the barrel at all, so they use `./rewrite-cdn-urls`.
 - `./examples` and `./examples/*` point at the TSX sources copied to `dist/examples/`, unbundled because of the
   `'use client'` directives Next needs; a deep import lets a page load one example without the whole barrel.
 - `./tsconfig.base.json` and `./tsconfig.paths.json` are the shared compiler base and the source mappings for the

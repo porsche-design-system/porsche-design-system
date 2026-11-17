@@ -1,16 +1,15 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 import type { CheckboxState } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getActiveElementTagName,
-  getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
   getLifecycleStatus,
   getProperty,
   hasFocus,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -793,7 +792,6 @@ test.describe('form', () => {
   });
 
   test('should not set validity when disabled and throw no errors', async ({ page }) => {
-    initConsoleObserver(page);
     await initCheckbox(page, {
       isWithinForm: true,
       required: true,
@@ -801,7 +799,6 @@ test.describe('form', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

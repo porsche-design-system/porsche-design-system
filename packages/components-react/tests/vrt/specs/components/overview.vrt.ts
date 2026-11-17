@@ -1,7 +1,12 @@
-import { expect, test } from '@playwright/test';
 import { viewportWidthXXL } from '@porsche-design-system/testing';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 
 test.describe('overview', async () => {
+  test.use({
+    expectedConsole: async ({ expectedConsole }, use) =>
+      use([...expectedConsole, ...harnessPageConsole['overview-components']]),
+  });
+
   test('components', async ({ page }) => {
     await page.goto('/overview-components');
     await page.evaluate(() => (window as any).componentsReady());

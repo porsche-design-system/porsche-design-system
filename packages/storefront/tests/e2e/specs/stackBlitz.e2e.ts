@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
 import { FRAMEWORKS, frameworkNameMap } from '@porsche-design-system/shared';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 for (const framework of FRAMEWORKS) {
   // TODO: Think about a way to enable this without making releases impossible

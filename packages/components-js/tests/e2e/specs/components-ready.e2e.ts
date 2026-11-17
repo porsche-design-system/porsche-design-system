@@ -1,5 +1,5 @@
 import type { Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { TagName } from '@porsche-design-system/shared';
 import { setContentWithDesignSystem, sleep } from '../helpers';
 
@@ -112,9 +112,9 @@ test.describe('without initialized design system', () => {
     await page.route('**/*', async (route) => {
       if (route.request().url().endsWith('.js')) {
         await sleep(500);
-        await route.continue();
+        await route.fallback();
       } else {
-        await route.continue();
+        await route.fallback();
       }
     });
   };

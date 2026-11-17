@@ -1,18 +1,8 @@
-import { expect, test } from '@playwright/test';
+import { test } from '@porsche-design-system/testing/playwright';
 import * as fs from 'fs';
 import * as path from 'path';
-import {
-  getConsoleErrorMessages,
-  getConsoleErrorsAmount,
-  getConsoleWarningMessages,
-  getConsoleWarningsAmount,
-  goto,
-  initConsoleObserver,
-} from '../helpers';
+import { goto } from '../helpers';
 
-test.beforeEach(async ({ page }) => {
-  initConsoleObserver(page);
-});
 test.afterEach(async ({ page }) => await page.close());
 
 const filePath = path.resolve(require.resolve('@porsche-design-system/components-js'), '../../../../index.html');
@@ -37,21 +27,5 @@ for (const url of exampleUrls) {
     // AG Grid Enterprise logs a license error for every grid, so these pages can never be console clean
     test.skip(url.endsWith('-enterprise'));
     await goto(page, url);
-
-    if (getConsoleErrorsAmount() !== 0) {
-      console.log(getConsoleErrorMessages());
-    }
-    expect(getConsoleErrorsAmount()).toBe(0);
-
-    if (getConsoleWarningsAmount() !== 0) {
-      console.log(getConsoleWarningMessages());
-    }
-    expect(getConsoleWarningsAmount()).toBe(0);
-
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
-
-    await page.evaluate(() => console.warn('test warning'));
-    expect(getConsoleWarningsAmount()).toBe(1);
   });
 }

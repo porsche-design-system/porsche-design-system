@@ -14,4 +14,4 @@ import { createAxeTest } from '@porsche-design-system/testing/axe';
  */
 export const test = createAxeTest();
 
-export { expect } from '@playwright/test';
+export { expect } from '@porsche-design-system/testing/playwright';
