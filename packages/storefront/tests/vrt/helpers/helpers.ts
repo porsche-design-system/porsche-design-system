@@ -1,5 +1,5 @@
 import type { Page } from '@playwright/test';
-import { expect } from '@playwright/test';
+import { expect } from '@porsche-design-system/testing/playwright';
 
 export const closeSidebars = async (page: Page) => {
   const flyoutStart = page.locator('.flyout-start');

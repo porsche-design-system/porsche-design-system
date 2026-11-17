@@ -1,11 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { goto, getConsoleErrorsAmount, getConsoleWarningsAmount, initConsoleObserver } from '../helpers';
+import { test } from '@porsche-design-system/testing/playwright';
+import { goto } from '../helpers';
 import * as path from 'path';
 import * as fs from 'fs';
-
-test.beforeEach(async ({ page }) => {
-  initConsoleObserver(page);
-});
 
 const filePath = path.resolve('./src/app/app-routing.module.ts');
 
@@ -26,13 +22,5 @@ for (const exampleUrl of exampleUrls) {
     // AG Grid Enterprise logs a license error for every grid, so these pages can never be console clean
     test.skip(exampleUrl.endsWith('-enterprise'));
     await goto(page, exampleUrl);
-    expect(getConsoleErrorsAmount()).toBe(0);
-    expect(getConsoleWarningsAmount()).toBe(0);
-
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
-
-    await page.evaluate(() => console.warn('test warning'));
-    expect(getConsoleWarningsAmount()).toBe(1);
   });
 }

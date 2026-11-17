@@ -1,4 +1,5 @@
-import { type CDPSession, expect, test } from '@playwright/test';
+import { type CDPSession } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { setContentWithDesignSystem } from '../helpers';
 
 type RequestType = { url: string };
@@ -78,16 +79,6 @@ test.beforeEach(async ({ page }) => {
     if (url.includes('cdn.ui.porsche')) {
       const resp = await req.response();
       console.log(`[REQUEST FINISHED] ${url} - status: ${resp?.status() ?? 'no response'}`);
-    }
-  });
-
-  page.on('pageerror', (err) => {
-    console.error(`[PAGE ERROR] ${err.message}`);
-  });
-
-  page.on('console', (msg) => {
-    if (msg.type() === 'error' || msg.type() === 'warning') {
-      console.log(`[CONSOLE ${msg.type().toUpperCase()}] ${msg.text()}`);
     }
   });
 });

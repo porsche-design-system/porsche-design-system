@@ -169,6 +169,11 @@ Every Vitest config merges `vitestConfig` from `@porsche-design-system/testing/v
 undeclared `console.warn`, `console.error` and jsdom errors. See
 [`packages/shared/projects/testing/AGENTS.md`](packages/shared/projects/testing/AGENTS.md).
 
+**Every Playwright spec and test helper imports `test` from `@porsche-design-system/testing/playwright`, never from
+`@playwright/test`.** It adds request routing and the console guard, and `npm run lint` fails on the wrong import. See
+"The shared Playwright `test`" in
+[`packages/shared/projects/testing/AGENTS.md`](packages/shared/projects/testing/AGENTS.md).
+
 Key test files:
 
 - Axe-core: [`packages/components-js/tests/a11y/specs/axe-core/`](packages/components-js/tests/a11y/specs/axe-core/)

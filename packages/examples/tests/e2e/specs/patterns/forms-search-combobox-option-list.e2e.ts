@@ -1,5 +1,6 @@
-import { expect, type Page, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, isOpen, setupExamplePage } from '../../helpers/index.ts';
+import type { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, isOpen, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/forms/search-combobox-option-list` – a search field filters selectable options in a controlled popover.
@@ -31,12 +32,9 @@ const relationshipIds = async (page: Page, name: 'controls' | 'activedescendant'
 };
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
   expect(await isOpen(popover(page))).toBe(false);
   await expect(field(page)).toHaveAttribute('role', 'combobox');
   await expect(field(page)).toHaveAttribute('aria-autocomplete', 'list');

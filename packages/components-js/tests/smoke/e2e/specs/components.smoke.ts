@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
 import { getComponentChunkLinks } from '@porsche-design-system/components-js/partials';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { setContentWithDesignSystem } from '../helpers';
 
 test.describe('components', () => {

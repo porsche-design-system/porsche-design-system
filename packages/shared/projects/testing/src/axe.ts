@@ -1,5 +1,5 @@
 import { AxeBuilder } from '@axe-core/playwright';
-import { test as base } from '@playwright/test';
+import { test as base } from './playwright/test';
 
 type AxeTestOptions = {
   include?: string;

@@ -1,4 +1,5 @@
-import { expect, Page, test } from '@playwright/test';
+import { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { goto, waitForComponentsReady } from '../helpers';
 
 const getSelect = (page: Page) => page.locator('p-select button');
