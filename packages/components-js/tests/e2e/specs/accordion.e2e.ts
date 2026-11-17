@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import type { Page } from 'playwright';
 import {
   addEventListener,
+  expectToSkipFocusOnComponent,
   getEventSummary,
   getLifecycleStatus,
   hasFocus,
@@ -270,18 +271,37 @@ test.describe('focus', () => {
 
     expect(await hasFocus(body)).toBe(true);
   });
+});
 
+test.describe('programmatic focus', () => {
   test('should set programmatic focus', async ({ page }) => {
     await initAccordion(page);
     const host = getHost(page);
 
     await expect(getSummary(page)).not.toBeFocused();
 
-    await host.focus();
+    // called in the page, since Playwright's locator.focus() and locator.blur() run in an isolated world and bypass the component
+    await host.evaluate((el: HTMLElement) => el.focus());
     await expect(getSummary(page)).toBeFocused();
 
-    await host.blur();
+    await host.evaluate((el: HTMLElement) => el.blur());
     await expect(getSummary(page)).not.toBeFocused();
+  });
+
+  test('should be removed from tab order including its content by tabindex="-1" on host', async ({ page }) => {
+    await initAccordion(page, {
+      isOpen: true,
+      hasInput: true,
+      otherPreMarkup: '<input type="text" id="before" />',
+      otherPostMarkup: '<input type="text" id="after" />',
+    });
+    const host = getHost(page);
+    await host.evaluate((el) => el.setAttribute('tabindex', '-1'));
+
+    await expectToSkipFocusOnComponent(page, host, page.locator('#before'));
+
+    await host.evaluate((el: HTMLElement) => el.focus());
+    await expect(getSummary(page)).toBeFocused();
   });
 });
 
@@ -319,6 +339,27 @@ test.describe('click on content of a scrolled accordion', () => {
 
     expect(await getScrollY(page)).toBe(scrollY);
     await expect(getSummary(page)).not.toBeFocused();
+  });
+
+  test('should continue tab order from the clicked static text', async ({ page }) => {
+    await initAccordion(page, {
+      isOpen: true,
+      hasInput: true, // first focusable element of the content, far above the clicked text
+      otherSlottedMarkup: `<div style="height: 200vh"></div>
+<p>Some static text</p>
+<input type="text" id="last" />`,
+    });
+    const text = page.locator('p-accordion p');
+
+    await text.scrollIntoViewIfNeeded();
+    const scrollY = await getScrollY(page);
+    expect(scrollY).toBeGreaterThan(0);
+
+    await text.click();
+    await page.keyboard.press('Tab');
+
+    await expect(page.locator('#last')).toBeFocused();
+    expect(await getScrollY(page)).toBe(scrollY);
   });
 });
 
