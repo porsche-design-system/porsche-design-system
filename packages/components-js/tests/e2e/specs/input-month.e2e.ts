@@ -399,7 +399,7 @@ test.describe('form', () => {
       expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     });
 
-    test('should implicit submit form on enter when there is no submit button and no blocking elements', async ({
+    test('should implicit submit form on enter when there is no submit button only if the browser renders type month as a text field', async ({
       page,
     }) => {
       await initInputMonth(page, {
@@ -408,6 +408,12 @@ test.describe('form', () => {
 
       const inputMonth = getInputMonth(page);
       const form = getForm(page);
+      // like a native input: browsers without a month picker render it as a text field, which submits
+      const isRenderedAsTextField = await page.evaluate(() => {
+        const input = document.createElement('input');
+        input.setAttribute('type', 'month');
+        return input.type === 'text';
+      });
 
       await addEventListener(form, 'submit');
       expect((await getEventSummary(form, 'submit')).counter).toBe(0);
@@ -417,7 +423,7 @@ test.describe('form', () => {
 
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
-      expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+      expect((await getEventSummary(form, 'submit')).counter).toBe(isRenderedAsTextField ? 1 : 0);
     });
 
     test('should not implicit submit form on enter when there is no submit button and a native input type text', async ({
