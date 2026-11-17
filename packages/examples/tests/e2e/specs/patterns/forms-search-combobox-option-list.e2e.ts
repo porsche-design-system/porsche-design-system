@@ -77,7 +77,8 @@ test('filters dealer choices and writes the highlighted one into the field', asy
   }
 
   await page.keyboard.press('Enter');
-  expect(await isOpen(popover(page))).toBe(false);
+  // the form is submitted implicitly once the keypress has been dispatched to all listeners
+  await expect.poll(() => isOpen(popover(page))).toBe(false);
   await expect(field(page)).toHaveAttribute('aria-expanded', 'false');
   await expect(field(page)).toHaveValue('Stuttgart');
   await expect(stuttgart).toHaveAttribute('aria-selected', 'true');
