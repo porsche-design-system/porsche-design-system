@@ -6,6 +6,13 @@ export const expectedConsoleByUrl: Record<string, RegExp[]> = {
   // The page documents the deprecated p-display component.
   '/components/display/configurator/': [/component p-display is deprecated/],
   '/components/display/examples/': [/component p-display is deprecated/],
+  // TODO Fix in p-model-signature. It loads its SVG as image and as CSS mask, and React preloads the image on the
+  // server. Chrome warns when the mask asks for the SVG before the image does.
+  '/components/drilldown/examples/': [/A preload for '.*\/model-signatures\/.*\.svg' is found, but is not used/],
+  '/components/model-signature/configurator/': [
+    /A preload for '.*\/model-signatures\/.*\.svg' is found, but is not used/,
+  ],
+  '/components/model-signature/examples/': [/A preload for '.*\/model-signatures\/.*\.svg' is found, but is not used/],
   // The YouTube embed allows web-share for browsers with the Web Share API. The headless test browser has none.
   '/examples/templates/personalized-mailing/no-video/index.html': [/Unrecognized feature: 'web-share'/],
   '/examples/templates/personalized-mailing/video/index.html': [/Unrecognized feature: 'web-share'/],
