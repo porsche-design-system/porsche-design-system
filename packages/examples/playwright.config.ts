@@ -60,8 +60,12 @@ const projectsOf = (suite: Suite, base: Config): Project<TestOptions>[] =>
       ...base.use,
       ...descriptor,
       deviceScaleFactor: 1,
-      // Every page preloads the chunks of its whole category. The browser warns for each one still unused after load.
-      expectedConsole: [/was preloaded using link preload but not used within a few seconds/],
+      expectedConsole: [
+        // Every page preloads the chunks of its whole category. The browser warns for each one still unused after load.
+        /was preloaded using link preload but not used within a few seconds/,
+        // Both personalized mailing pages allow web-share on their video iframe. Chrome warns that it is unrecognized.
+        /Unrecognized feature: 'web-share'/,
+      ],
     },
     metadata: { device },
   }));
