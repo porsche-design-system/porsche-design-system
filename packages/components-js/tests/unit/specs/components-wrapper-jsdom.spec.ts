@@ -2,6 +2,8 @@
  * @vitest-environment jsdom
  */
 
+import { describe, expect, it } from 'vitest';
+
 describe('in jsdom environment', () => {
   it('should expose componentsReady() and load()', () => {
     const porscheDesignSystem = require('@porsche-design-system/components-js');

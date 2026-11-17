@@ -1,4 +1,5 @@
 import type Protocol from 'devtools-protocol';
+import { describe, expect, it } from 'vitest';
 import { findBackendNodeIds, resolveSelector } from '../../vrt/helpers';
 
 type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId' | 'attributes'>;

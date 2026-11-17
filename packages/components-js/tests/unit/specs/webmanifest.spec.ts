@@ -1,6 +1,7 @@
 import { META_ICONS_MANIFEST } from '@porsche-design-system/meta-icons';
 import * as fs from 'fs';
 import * as path from 'path';
+import { describe, expect, it } from 'vitest';
 
 // TODO: tests are in wrong package
 describe('webmanifest', () => {

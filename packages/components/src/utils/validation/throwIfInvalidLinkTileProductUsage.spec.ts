@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { anchorSlot } from '../../components/link-tile-product/link-tile-product-utils';
 import { throwIfInvalidLinkTileProductUsage } from './throwIfInvalidLinkTileProductUsage';
 

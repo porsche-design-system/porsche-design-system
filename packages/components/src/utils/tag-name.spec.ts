@@ -1,5 +1,5 @@
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import { vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix, PREFIXED_TAG_NAMES_CACHE } from './tag-name';
 
 describe('getTagName()', () => {

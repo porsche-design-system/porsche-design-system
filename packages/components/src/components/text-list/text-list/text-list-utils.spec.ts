@@ -1,5 +1,6 @@
 import type { TextListType } from './text-list-utils';
 import { isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
+import { describe, it, expect } from 'vitest';
 
 describe('isListTypeOrdered()', () => {
   it.each<[TextListType, boolean]>([

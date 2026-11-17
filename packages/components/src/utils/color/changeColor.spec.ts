@@ -1,4 +1,5 @@
 import { lighten, darken } from './changeColor';
+import { it, expect } from 'vitest';
 
 it.each([
   ['hsl(240 3% 26%/35%)', 'hsl(240 3% 41%/35%)'],

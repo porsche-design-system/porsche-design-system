@@ -3,6 +3,6 @@
   "include": ["**/*.spec.ts"],
   "exclude": [],
   "compilerOptions": {
-    "types": ["vitest/globals"]
+    "types": []
   }
 }

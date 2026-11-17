@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import { getHTMLElement } from './getHTMLElement';
 
 it('should call querySelector on element with selector parameter', () => {

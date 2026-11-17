@@ -11,7 +11,7 @@ import {
   componentsReady,
 } from '@porsche-design-system/components-react/ssr';
 import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
-import { vi } from 'vitest';
+import { vi, it, expect } from 'vitest';
 
 it('should have working SSR PLink component', async () => {
   const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation(() => {});

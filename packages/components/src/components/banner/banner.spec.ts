@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { forceUpdate } from '@stencil/core';
 import * as childrenObserverUtils from '../../utils/children-observer';
 import { Banner } from './banner';

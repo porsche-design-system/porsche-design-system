@@ -18,13 +18,16 @@ src/
 ├── assertDefined.ts            # `./assert-defined`
 ├── normalizeCssNamespace.ts    # `./normalize-css-namespace`
 ├── axe.ts                      # `./axe`: createAxeTest, built on the shared test
-└── playwright/
-    ├── index.ts                # `./playwright`: the shared test, expect and the helpers more than one package uses
-    ├── test.ts                 # test: Playwright's test plus the request routing and console guard fixtures
-    ├── externalRequests.ts     # resolveExternalRequest: the routing outcome of one request
-    ├── consoleGuard.ts         # which console messages and page errors fail a test
-    └── harnessPageConsole.ts   # messages the components-js harness pages log on purpose
-tests/unit/                     # the specs of assertDefined, normalizeCssNamespace, testCoverage, consoleGuard and externalRequests
+├── playwright/
+│   ├── index.ts                # `./playwright`: the shared test, expect and the helpers more than one package uses
+│   ├── test.ts                 # test: Playwright's test plus the request routing and console guard fixtures
+│   ├── externalRequests.ts     # resolveExternalRequest: the routing outcome of one request
+│   ├── consoleGuard.ts         # which console messages and page errors fail a test
+│   └── harnessPageConsole.ts   # messages the components-js harness pages log on purpose
+├── vitest.ts                   # `./vitest`: vitestConfig, the base every Vitest config merges
+└── vitestConsoleGuard.ts       # `./vitest-console-guard`: the setup file vitestConfig adds
+tests/unit/                     # the specs of assertDefined, normalizeCssNamespace, testCoverage, consoleGuard and externalRequests, the Vitest base config and its console guard
+biome-plugins/                  # the lint rules that require this package's Playwright test and vitestConfig
 ```
 
 ## What belongs here
@@ -40,6 +43,12 @@ tests/unit/                     # the specs of assertDefined, normalizeCssNamesp
 - **`.` must not load `@playwright/test` at runtime.** Vitest suites import it for `validateCssWithW3C` and
   `testCoverage`, and the files it re-exports import only Playwright types. Runtime Playwright code goes under
   `./playwright` or `./axe`.
+- **`.` must not load `vitest` at runtime either; runtime Vitest code goes under `./vitest`.** The Playwright configs
+  import `.`, and `vitest/config` loads Vite.
+- **`./vitest` has no relative imports**, only bare specifiers such as `vitest/config`. Vite's config bundler
+  externalizes this package, so Node loads the file directly and cannot resolve extensionless relative imports. That is
+  why the guard is its own export, referenced by bare specifier in `setupFiles`. Vitest loads the guard, so it may
+  import relatively.
 - **Every barrel names its re-exports; never write `export *`.** Node runs this source as CommonJS, and the ESM
   Playwright configs of `examples` and `react-router` only see the names Node detects statically.
 - Keep relative imports extensionless: the components-js test scopes do not allow `.ts` extensions.
@@ -47,12 +56,45 @@ tests/unit/                     # the specs of assertDefined, normalizeCssNamesp
   `dependencies`: a second copy of `@playwright/test` aborts every run.
 - A new subpath needs an entry in `exports` in `package.json`.
 
+## The Vitest base config
+
+A Vitest config is written as `mergeConfig(vitestConfig, defineConfig({ test: { … } }))` and keeps only its own
+settings. `mergeConfig` replaces a scalar, skips `null` and `undefined` (so neither unsets a base value) and
+concatenates arrays (so a package can add to `exclude` and `setupFiles` but never drop the base's entries). Every
+override of a base setting carries a comment saying why.
+
+The Biome plugin `biome-plugins/use-shared-vitest-config.grit` fails `npm run lint` on a `*vitest*.config.*` file whose
+default export is anything other than `mergeConfig(vitestConfig, …)`. `linter.includes` in `biome.json` ends with that
+glob, so it also reaches the configs of packages excluded from linting. It reads the code, not the meaning: a config
+that exports a `const`, wraps the call or renames the import fails too, so write it in the shape above.
+
+## Console guard
+
+`vitestConfig` adds `vitest-console-guard` as the first setup file, so it runs before a package's own. It fails:
+
+- a test that calls `console.warn` or `console.error`;
+- a file that logs at import time, in `beforeAll` or `afterAll`, in a cleanup `beforeAll` returns, in a file fixture's
+  teardown, or from a timer that fires after the file's last test;
+- a test that triggers a jsdom error, such as `Not implemented: HTMLFormElement's requestSubmit() method`.
+
+The message names the method and the formatted text. Declare expected output in the test that causes it:
+
+- **console:** `vi.spyOn(console, 'warn').mockImplementation(() => {})` plus an assertion on the spy. A spy without
+  `mockImplementation` calls through and still fails.
+- **jsdom:** stub the API jsdom does not implement. jsdom reports to its virtual console, not to `console`, so a console
+  spy cannot declare it.
+
+Output from a timer that fires after its test is blamed on the next test. The message names the text, so search for it.
+Output outside a test is also printed, because Vitest runs no hooks in a file whose tests are all skipped, so the guard
+cannot fail that file. `console.log` is not guarded.
+
 ## The shared Playwright `test`
 
 Every Playwright spec and test helper imports `test` from `@porsche-design-system/testing/playwright`, never from
 `@playwright/test`. It adds two automatic fixtures, both attached to the test's browser context: request routing and the
-console guard. A `noRestrictedImports` rule in `biome.json` fails `npm run lint` on the wrong import, smoke suite
-included.
+console guard. The Biome plugin `biome-plugins/use-shared-playwright-test.grit` fails `npm run lint` on a named, default
+or namespace import of it from `@playwright/test`, on a re-export and on a `require`, smoke suite included. `biome.json`
+attaches it to the spec and helper globs and to every storefront file.
 
 **The rule reaches a new directory of Playwright specs or test helpers without an edit to `biome.json`.**
 `linter.includes` excludes five packages from linting (`assets`, `components-angular`, `components-js`,

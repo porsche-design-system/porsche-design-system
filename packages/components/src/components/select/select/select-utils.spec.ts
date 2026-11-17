@@ -1,5 +1,5 @@
 import * as stencilUtils from '@stencil/core';
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as loggerUtils from '../../../utils/log/logger';
 import * as selectUtils from './select-utils';
 

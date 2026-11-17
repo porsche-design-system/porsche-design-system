@@ -1,5 +1,6 @@
 import { hasMessage } from './hasMessage';
 import type { FormState } from './form-state';
+import { it, expect } from 'vitest';
 
 const message = 'Some message';
 it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([

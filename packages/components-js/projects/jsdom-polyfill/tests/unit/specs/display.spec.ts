@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, it, vi } from 'vitest';
 import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {

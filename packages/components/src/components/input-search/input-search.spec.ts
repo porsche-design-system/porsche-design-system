@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as syncAriaElementsUtils from '../../utils/a11y/sync-aria-elements';
 import * as implicitSubmitUtils from '../../utils/form/implicitSubmit';
 import { InputSearch } from './input-search';

@@ -1,5 +1,5 @@
 import { tagNameMarkup } from '../helper';
-import { vi } from 'vitest';
+import { vi, it, expect } from 'vitest';
 import { componentsReady } from '@porsche-design-system/components-js';
 
 it.each(Object.entries(tagNameMarkup))('should work without console errors for %s', async (tagName, markup) => {

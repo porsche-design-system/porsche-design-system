@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { getDirectChildHTMLElementOfKind } from './getDirectChildHTMLElementOfKind';
 
 it('should return direct child elements of specific type', () => {
