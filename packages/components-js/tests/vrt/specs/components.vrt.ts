@@ -2,7 +2,12 @@ import { type Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/testing';
-import { ExternalRequestsOptions, expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
+import {
+  type ExternalRequestsOptions,
+  expect,
+  harnessPageConsole,
+  test,
+} from '@porsche-design-system/testing/playwright';
 import * as globby from 'fast-glob';
 import * as path from 'path';
 import { setupScenario } from '../helpers';
