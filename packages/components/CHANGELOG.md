@@ -55,6 +55,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **Angular**: Signal Forms `[formField]` did not work on `Input Email`, `Input Tel` and `Input Url`, and on
   `Input Number` with a field holding text
   ([#4856](https://github.com/porsche-design-system/porsche-design-system/pull/4856))
+- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Pin Code`: pressing `Enter` didn't submit the form like a
+  native input. It submitted even when the `keydown` or `keypress` event was cancelled, e.g. by a password manager, or
+  when it confirmed a candidate of an input method, e.g. for Japanese, and in a form without a submit button it ignored
+  which other fields the form contained, e.g. it submitted next to an `Input Password` or from an `Input Date`
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Pin Code`: pressing `Enter` submitted the form without clicking its submit button, so the button's `name` and `value`
+  were missing and a disabled submit button didn't prevent the submission
+  ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
 
 ## [4.10.1] - 2026-10-23
 
