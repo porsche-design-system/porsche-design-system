@@ -54,9 +54,11 @@ Every Playwright spec and test helper imports `test` from `@porsche-design-syste
 console guard. A `noRestrictedImports` rule in `biome.json` fails `npm run lint` on the wrong import, smoke suite
 included.
 
-**A new directory of Playwright specs or test helpers in a package that `biome.json` `linter.includes` excludes
-(`components-js`, `components-angular`, `components-react`, `components-vue`, `assets`) must be added to
-`linter.includes` with each of its parent directories, or Biome never enters it and the rule never runs there.**
+**The rule reaches a new directory of Playwright specs or test helpers without an edit to `biome.json`.**
+`linter.includes` excludes five packages from linting (`assets`, `components-angular`, `components-js`,
+`components-react`, `components-vue`), re-includes all their directories with one glob, and excludes every path with a
+dot in its last segment, so only the spec and helper files named after it are linted there. A directory with a dot in
+its name is not entered, and a sixth package excluded from linting has to be added to that glob.
 
 ### Request routing
 
