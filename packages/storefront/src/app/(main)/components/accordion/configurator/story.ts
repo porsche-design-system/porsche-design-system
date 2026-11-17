@@ -69,7 +69,7 @@ export const accordionSlotStories: SlotStories<'p-accordion'> = {
           properties: {
             slot: 'summary',
             tag: 'h2',
-            size: 'small',
+            size: 'sm',
             weight: 'semibold',
           },
           children: ['Some summary'],

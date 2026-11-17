@@ -83,7 +83,7 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
       <InstantSearch searchClient={searchClient} indexName={getAlgoliaIndexName()}>
         <div className="p-fluid-lg">
           <div className="flex flex-col gap-fluid-sm h-full">
-            <PHeading size="medium" tag="h2">
+            <PHeading size="md" tag="h2">
               Search
             </PHeading>
             <SearchInput ref={inputRef} />

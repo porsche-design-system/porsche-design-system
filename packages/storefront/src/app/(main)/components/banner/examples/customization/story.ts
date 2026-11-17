@@ -46,9 +46,6 @@ export const bannerStoryCustomStyling: Story<'p-banner'> = {
         },
         {
           tag: 'p-text',
-          properties: {
-            slot: 'description',
-          },
           children: [
             'Some description. You can also add inline ',
             {

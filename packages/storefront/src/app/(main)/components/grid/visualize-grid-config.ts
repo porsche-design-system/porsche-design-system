@@ -43,7 +43,13 @@ export const visualizeGridConfig: ElementConfig<HTMLTagOrComponent> = {
           properties: { className: 'wide-sidebar' },
           children: new Array(3).fill({
             tag: 'p-accordion',
-            properties: { heading: 'Some Heading', tag: 'h2' },
+            children: [
+              {
+                tag: 'p-heading',
+                properties: { slot: 'summary', tag: 'h2', size: 'sm', weight: 'semibold' },
+                children: ['Some Heading'],
+              },
+            ],
           }),
         },
         { tag: 'div', properties: { className: 'wide-content' }, children: ['Wide Content'] },
