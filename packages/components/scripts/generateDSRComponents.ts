@@ -51,7 +51,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
         .replace(/private(.*?)window.matchMedia(.*?);/g, '')
-        .replace(/\n  private (?!get).+(\n.+)*?(?<!\()\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/(\n  \/\/.*)*\n  private (?!get).+(\n.+)*?(?<!\()\{[\s\S]+?\n  };?\n/g, '') // private methods without getters, including line comments above them
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
@@ -67,6 +67,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onCancel={.*?}/g, '') // onCancel props
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
+        .replace(/\s+onKeyPress={.*?}/g, '') // onKeyPress props
         .replace(/\s+onPaste={.*?}/g, '') // onPaste props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
         .replace(/\s+onWheel={.*?}/g, '') // onWheel props
@@ -250,7 +251,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/spellcheck/, 'spellCheck')
             .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
-            .replace(/\b(onInput|onKeyDown|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
+            .replace(/\b(onInput|onKeyPress|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
             .replace(
               /}\) => \{/,
               `$&
