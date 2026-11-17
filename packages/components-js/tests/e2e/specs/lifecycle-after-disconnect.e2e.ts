@@ -1,4 +1,4 @@
-import { test } from '@porsche-design-system/testing/playwright';
+import { harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import { buildDefaultComponentMarkup, goto, sleep } from '../helpers';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
 
@@ -25,8 +25,7 @@ for (const tagName of tagNames) {
     }
     if (tagName === 'p-display') {
       test.use({
-        expectedConsole: async ({ expectedConsole }, use) =>
-          use([...expectedConsole, /component p-display is deprecated and will be removed with next major release/]),
+        expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, ...harnessPageConsole.display]),
       });
     }
 

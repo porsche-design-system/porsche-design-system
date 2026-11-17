@@ -1,7 +1,7 @@
 import { Locator, type Page } from '@playwright/test';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
-import { expect, test } from '@porsche-design-system/testing/playwright';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -733,8 +733,7 @@ test.describe('slotted header', () => {
 
 test.describe('after dynamic slot change', () => {
   test.use({
-    expectedConsole: async ({ expectedConsole }, use) =>
-      use([...expectedConsole, /aria prop or header slot has to be set for component p-modal/]),
+    expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, ...harnessPageConsole.modal]),
   });
 
   test('should show header when header slot is added dynamically', async ({ page }) => {

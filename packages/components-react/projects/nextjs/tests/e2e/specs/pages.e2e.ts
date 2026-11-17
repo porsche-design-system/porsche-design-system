@@ -4,19 +4,14 @@ import { goto } from '../helpers';
 
 const pageUrls = routes.map((item) => item.path);
 
-// these harness pages set prose as value of a date, time or number input
-const invalidInputValue = [
-  /^The specified value "(?:Without label and description|Responsive label and description|Lorem ipsum dolor sit amet, consetetur sadipscing elitr,)" /,
-];
-
 const pageConsole: Record<string, RegExp[]> = {
   '/button-pure': harnessPageConsole['button-pure'],
-  '/display': [/component p-display is deprecated and will be removed with next major release/],
-  '/input-date': invalidInputValue,
-  '/input-month': invalidInputValue,
-  '/input-number': invalidInputValue,
-  '/input-time': invalidInputValue,
-  '/input-week': invalidInputValue,
+  '/display': harnessPageConsole.display,
+  '/input-date': harnessPageConsole['input-date'],
+  '/input-month': harnessPageConsole['input-month'],
+  '/input-number': harnessPageConsole['input-number'],
+  '/input-time': harnessPageConsole['input-time'],
+  '/input-week': harnessPageConsole['input-week'],
   '/modal': harnessPageConsole.modal,
   '/modal-footer-scrolled': harnessPageConsole.modal,
   '/overview-components': harnessPageConsole['overview-components'],

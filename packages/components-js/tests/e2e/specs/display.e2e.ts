@@ -1,11 +1,10 @@
 import type { BreakpointCustomizable, DisplaySize, DisplayTag } from '@porsche-design-system/components';
-import { expect, test } from '@porsche-design-system/testing/playwright';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
 test.use({
-  expectedConsole: async ({ expectedConsole }, use) =>
-    use([...expectedConsole, /component p-display is deprecated and will be removed with next major release/]),
+  expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, ...harnessPageConsole.display]),
 });
 
 const initDisplay = (

@@ -1,6 +1,6 @@
 import { buildDefaultComponentMarkup, goto, waitForComponentsReady } from '../helpers';
 import { type Locator } from '@playwright/test';
-import { expect, test } from '@porsche-design-system/testing/playwright';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { format } from 'prettier';
 
@@ -20,8 +20,7 @@ for (const tagName of TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))) 
   test.describe(() => {
     if (tagName === 'p-display') {
       test.use({
-        expectedConsole: async ({ expectedConsole }, use) =>
-          use([...expectedConsole, /component p-display is deprecated and will be removed with next major release/]),
+        expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, ...harnessPageConsole.display]),
       });
     }
 

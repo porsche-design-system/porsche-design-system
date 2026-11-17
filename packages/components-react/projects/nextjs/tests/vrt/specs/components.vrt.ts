@@ -1,7 +1,7 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { viewportWidthL, viewportWidthXS } from '@porsche-design-system/testing';
-import { expect, test } from '@porsche-design-system/testing/playwright';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import * as globby from 'fast-glob';
 import path from 'path';
 
@@ -25,18 +25,13 @@ const components = fileNames
     return !argv.length || argv.includes(name);
   });
 
-// these harness pages set prose as value of a date, time or number input
-const invalidInputValue = [
-  /^The specified value "(?:Without label and description|Responsive label and description|Lorem ipsum dolor sit amet, consetetur sadipscing elitr,)" /,
-];
-
 // messages a page logs with JavaScript disabled, by component
 const pageConsole: Record<string, RegExp[]> = {
-  'input-date': invalidInputValue,
-  'input-month': invalidInputValue,
-  'input-number': invalidInputValue,
-  'input-time': invalidInputValue,
-  'input-week': invalidInputValue,
+  'input-date': harnessPageConsole['input-date'],
+  'input-month': harnessPageConsole['input-month'],
+  'input-number': harnessPageConsole['input-number'],
+  'input-time': harnessPageConsole['input-time'],
+  'input-week': harnessPageConsole['input-week'],
   // next/image rejects the relative src of the deliberately missing image
   'link-tile-product': [/status of 400 \(Bad Request\) http:\/\/localhost:3000\/_next\/image\?url=nonexistent\.png&/],
 };
