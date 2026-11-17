@@ -215,26 +215,11 @@
         "packages/**/tests/**/helpers/**/*.ts",
         "!packages/shared/projects/testing/**"
       ],
-      "linter": {
-        "rules": {
-          "style": {
-            "noRestrictedImports": {
-              "level": "error",
-              "options": {
-                "paths": {
-                  "@playwright/test": {
-                    "importNames": ["test"],
-                    "message": "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard."
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      "plugins": ["./packages/shared/projects/testing/biome-plugins/use-shared-playwright-test.grit"]
     },
     {
       "includes": ["packages/storefront/**/*.{ts,tsx}", "!packages/storefront/src/components/common/DocsLink.tsx"],
+      "plugins": ["./packages/shared/projects/testing/biome-plugins/use-shared-playwright-test.grit"],
       "linter": {
         "rules": {
           "style": {
@@ -242,11 +227,7 @@
               "level": "error",
               "options": {
                 "paths": {
-                  "next/link": "Use DocsLink from '@/components/common/DocsLink', which types routes and keeps anchors on the page.",
-                  "@playwright/test": {
-                    "importNames": ["test"],
-                    "message": "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard."
-                  }
+                  "next/link": "Use DocsLink from '@/components/common/DocsLink', which types routes and keeps anchors on the page."
                 }
               }
             }
