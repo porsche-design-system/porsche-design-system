@@ -6,7 +6,7 @@ export const aiTagStoryWithRadioButton: Story<'p-ai-tag'> = {
   generator: () => [
     {
       tag: 'p-heading',
-      properties: { size: 'small', tag: 'h3' },
+      properties: { size: 'sm', tag: 'h3' },
       children: ['Pick your favorite Fruits'],
     },
     {

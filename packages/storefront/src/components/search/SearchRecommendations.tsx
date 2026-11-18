@@ -25,7 +25,7 @@ export const SearchRecommendations = ({ onRecommendationClick }: SearchRecommend
 
   return (
     <div className="flex flex-col gap-fluid-xs">
-      <PHeading size="small" tag="h3">
+      <PHeading size="sm" tag="h3">
         Recommended links
       </PHeading>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -45,7 +45,7 @@ export const SearchRecommendations = ({ onRecommendationClick }: SearchRecommend
             {/*  className="transition-transform duration-300 ease-in-out"*/}
             {/*/>*/}
             {/*</div>*/}
-            <PText size="medium">{name}</PText>
+            <PText size="md">{name}</PText>
           </DocsLink>
         ))}
       </div>

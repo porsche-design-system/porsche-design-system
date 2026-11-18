@@ -13,7 +13,7 @@ export const aiTagStoryWithTable: Story<'p-ai-tag'> = {
           children: [
             {
               tag: 'p-heading',
-              properties: { slot: 'caption', size: 'large', tag: 'h3' },
+              properties: { slot: 'caption', size: 'lg', tag: 'h3' },
               children: ['Some slotted caption'],
             },
             {

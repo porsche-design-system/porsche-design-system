@@ -9,7 +9,7 @@ export const sheetSlotStories: SlotStories<'p-sheet'> = {
       generator: () => [
         {
           tag: 'p-heading',
-          properties: { slot: 'header', size: 'large', tag: 'h2' },
+          properties: { slot: 'header', size: 'lg', tag: 'h2' },
           children: ['Some Heading'],
         },
       ],

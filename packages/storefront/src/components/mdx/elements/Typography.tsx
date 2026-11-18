@@ -47,7 +47,7 @@ export const H2 = ({ children }: PropsWithChildren) => (
 );
 
 export const H3 = ({ children }: PropsWithChildren) => (
-  <PHeading tag="h3" size="large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
+  <PHeading tag="h3" size="lg" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
     {children}
   </PHeading>
 );
