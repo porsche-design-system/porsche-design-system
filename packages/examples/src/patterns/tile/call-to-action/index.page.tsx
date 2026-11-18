@@ -35,11 +35,11 @@ const Page = () => (
           />
         </div>
         <Comment>{tileComments.gradient}</Comment>
-        <div class="self-end flex flex-col items-start gap-fluid-sm px-fluid-lg pt-fluid-lg pb-fluid-lg rounded-b-[inherit] bg-fade-to-t">
+        <div class="self-end flex flex-col items-start gap-fluid-sm p-fluid-lg rounded-b-[inherit] bg-fade-to-t">
           <p-heading tag="h2" size="lg">
             Porsche Connect.
           </p-heading>
-          <Comment>The limit of 65 characters holds the lines at a readable length, however wide the tile is.</Comment>
+          <Comment>The character limit holds the lines at a readable length, however wide the tile is.</Comment>
           <p-text class="max-w-[40ch]">
             Porsche Connect enhances the driving experience with a wide range of music and video streaming services, the
             integrated Voice Pilot and remote services via the My Porsche app.
