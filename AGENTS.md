@@ -32,12 +32,14 @@ packages/
 ├── components-react/   # React wrapper + Next.js/React Router integrations
 ├── components-vue/     # Vue wrapper
 ├── storefront/         # Next.js documentation site
-│   └── projects/       # Agent skills generator, StackBlitz projects, story generator
-├── examples/           # Standalone example pages (TSX, rendered to plain HTML at build time)
+│   └── projects/       # Agent skills generator, StackBlitz projects
+├── examples/           # Every example, one project per kind
+│   └── projects/       # Pages (patterns, templates), framework examples, stories
 ├── tokens/             # Design tokens (colors, spacing, typography)
 ├── styles/             # Shared styles, Tailwind plugin
 ├── assets/             # Icons, fonts, marque, crest
 ├── shared/             # Internal utilities shared across packages
+│   └── projects/       # Story generator (story types, markup per framework, StoryPreview)
 ├── component-meta/     # Component metadata generation
 └── utilities/          # AG Grid theme, utility functions
 ```
@@ -211,6 +213,21 @@ writing or requesting an entry.
 
 - Run the `update-changelog` skill to reconcile the changelog with the current branch
 
+## Branches and Commits
+
+- Work on an issue happens in the branch `issue/<number>`, e.g. `issue/4867`.
+- A commit subject is `type(scope): description | <initials> | #<issue>`, e.g.
+  `docs(storefront): name Vitest on the Vue testing page | rk | #4844`.
+  - `type` is one of `feat`, `fix`, `docs`, `test`, `refactor`, `chore`, `ci`, `build`, `perf` or `revert`.
+  - `scope` usually is the package's folder name under `packages/`, comma-separated when the commit spans several
+    (`storefront,examples`). Leave it out for a repo-wide change.
+  - `<initials>` name the developer who answers for the commit, `sas / oh` for two developers. An agent working for a
+    developer uses that developer's initials: read them from the developer's earlier commits
+    (`git log --author="$(git config user.email)" --format=%s`) and ask when there are none. Never invent initials or
+    use some of your own; the `Co-authored-by` trailer marks the agent's part. An agent that runs without a developer,
+    such as the Copilot cloud agent, leaves `| <initials>` out.
+  - Leave `| #<issue>` out when the commit belongs to no issue.
+
 ## Pull Requests
 
 - Structure the body after [`.github/pull_request_template.md`](.github/pull_request_template.md) and keep all its
@@ -334,7 +351,13 @@ Each major package has its own `AGENTS.md` with detailed guidance. Its rules add
 - [`packages/assets/AGENTS.md`](packages/assets/AGENTS.md) — Icons, fonts, flags and the local CDN
 - [`packages/utilities/AGENTS.md`](packages/utilities/AGENTS.md) — Utility packages such as AG Grid theme
 - [`packages/storefront/AGENTS.md`](packages/storefront/AGENTS.md) — Next.js documentation site
-- [`packages/examples/AGENTS.md`](packages/examples/AGENTS.md) — Standalone example pages (TSX)
+- [`packages/examples/AGENTS.md`](packages/examples/AGENTS.md) — Every example: projects, ids and build order
+- [`packages/examples/projects/pages/AGENTS.md`](packages/examples/projects/pages/AGENTS.md) — Patterns and templates
+  (TSX, rendered to plain HTML)
+- [`packages/examples/projects/framework/AGENTS.md`](packages/examples/projects/framework/AGENTS.md) — Hand-written
+  framework examples
+- [`packages/examples/projects/stories/AGENTS.md`](packages/examples/projects/stories/AGENTS.md) — Stories and
+  accessibility examples
 - [`packages/components-react/AGENTS.md`](packages/components-react/AGENTS.md) — React wrapper
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper

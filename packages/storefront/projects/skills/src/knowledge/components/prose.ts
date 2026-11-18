@@ -64,7 +64,7 @@ export const renderComponentProse = (
   renderSection(source.usage, sections, `${tag} › usage`, framework, stripLeadingH1);
   renderSection(source.accessibility.overview, sections, `${tag} › accessibility`, framework, stripLeadingH1);
 
-  const integrationExamples = renderA11yIntegrationExamples(tag, source.accessibility.examples, framework);
+  const integrationExamples = renderA11yIntegrationExamples(source.accessibility.examples, framework);
   if (integrationExamples) {
     sections.push(
       '## Integration examples\n\nSee [accessibility integration examples](./accessibility.md) for paired anti-pattern and recommended implementations.'

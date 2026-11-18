@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { linkPureMeta } from '@/app/(main)/components/link-pure/link-pure.meta';
+import linkPureDefault from '@porsche-design-system/examples/components/link-pure/default';
 
 export const metadata = {
   title: 'Link Pure: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <linkPureMeta.introduction />
 
-<Configurator tagName="p-link-pure" story={linkPureMeta.configurator.story} />
+<Configurator example={linkPureDefault} />

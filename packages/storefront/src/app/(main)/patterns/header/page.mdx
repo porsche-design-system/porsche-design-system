@@ -1,5 +1,7 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { Example } from '@/components/mdx/examples/Example';
+import overlay from '@porsche-design-system/examples/patterns/header/overlay';
+import stacked from '@porsche-design-system/examples/patterns/header/stacked';
 
 export const metadata = {
   title: 'Header - Patterns',
@@ -18,8 +20,8 @@ efficient user journey.
 
 ## Overlay
 
-<ExampleViewer example="patterns/header/overlay" />
+<Example example={overlay} />
 
 ## Stacked
 
-<ExampleViewer example="patterns/header/stacked" />
+<Example example={stacked} />

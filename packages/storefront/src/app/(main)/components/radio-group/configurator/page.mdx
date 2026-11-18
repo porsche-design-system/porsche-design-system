@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { radioGroupMeta } from '@/app/(main)/components/radio-group/radio-group.meta';
+import radioGroupDefault from '@porsche-design-system/examples/components/radio-group/default';
 
 export const metadata = {
   title: 'Radio Group: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <radioGroupMeta.introduction />
 
-<Configurator tagName="p-radio-group" story={radioGroupMeta.configurator.story} slotStories={radioGroupMeta.configurator.slotStories} />
+<Configurator example={radioGroupDefault} />

@@ -1,5 +1,7 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { Example } from '@/components/mdx/examples/Example';
+import extended from '@porsche-design-system/examples/patterns/footer/extended';
+import simple from '@porsche-design-system/examples/patterns/footer/simple';
 
 export const metadata = {
   title: 'Footer - Patterns',
@@ -15,8 +17,8 @@ wordmark, the copyright and the legal links. How much it offers beyond that depe
 
 ## Extended
 
-<ExampleViewer example="patterns/footer/extended" />
+<Example example={extended} />
 
 ## Simple
 
-<ExampleViewer example="patterns/footer/simple" />
+<Example example={simple} />

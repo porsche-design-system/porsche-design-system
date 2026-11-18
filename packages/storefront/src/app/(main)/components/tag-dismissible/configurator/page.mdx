@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { tagDismissibleMeta } from '@/app/(main)/components/tag-dismissible/tag-dismissible.meta';
+import tagDismissibleDefault from '@porsche-design-system/examples/components/tag-dismissible/default';
 
 export const metadata = {
   title: 'Tag Dismissible: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <tagDismissibleMeta.introduction />
 
-<Configurator tagName="p-tag-dismissible" story={tagDismissibleMeta.configurator.story} />
+<Configurator example={tagDismissibleDefault} />
