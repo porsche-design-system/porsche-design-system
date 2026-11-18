@@ -25,6 +25,7 @@ const Page = () => (
       <div class="col-extended group relative isolate grid aspect-16/9 rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">
         <Comment>{tileComments.clip}</Comment>
         <div class="absolute inset-0 -z-1 overflow-clip rounded-[inherit]">
+          <Comment>{tileComments.moodImage}</Comment>
           <Comment>{tileComments.zoom}</Comment>
           <img
             class="size-full object-cover motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"

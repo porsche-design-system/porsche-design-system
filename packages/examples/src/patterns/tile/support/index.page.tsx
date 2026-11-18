@@ -30,7 +30,7 @@ const Page = () => (
       </Comment>
       <div class="col-extended relative isolate grid aspect-16/9 rounded-3xl scheme-only-dark">
         <div class="absolute inset-0 -z-1 overflow-clip rounded-[inherit]">
-          <Comment>Decorative, it sets the mood and carries no information the text does not give.</Comment>
+          <Comment>{tileComments.moodImage}</Comment>
           <img
             class="size-full object-cover"
             src="/examples/media/macan-with-owner.webp"
