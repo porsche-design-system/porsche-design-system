@@ -1738,7 +1738,6 @@
           <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Basic)</p-button>
           <p-sheet aria="{'aria-label': 'Some heading'}">
             <p-heading slot="header" size="large" tag="h2">Some heading</p-heading>
-            <p-text>Some content</p-text>
           </p-sheet>
 
           <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
@@ -1771,6 +1770,16 @@
               >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
               et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
             </p-text>
+          </p-sheet>
+
+          <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
+            >Open Sheet (with swipe handle)</p-button
+          >
+          <p-sheet aria="{'aria-label': 'Some heading'}" swipe-handle="true" dismiss-button="false">
+            <p-heading slot="header" size="large" tag="h2">Some heading</p-heading>
+            <p-text>Some content before</p-text>
+            <div style="height: 500px; background-color: deeppink"></div>
+            <p-text>Some content after</p-text>
           </p-sheet>
         </div>
         <div data-card="popover">

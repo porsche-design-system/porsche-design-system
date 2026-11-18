@@ -7,7 +7,9 @@ describe('getComponentCss()', () => {
     [true, 'surface', true],
     [false, 'canvas', true],
     [false, 'canvas', false],
-  ])('should return correct css for open: %s, background: %s and dismissButton: %s', (...args) => {
+    [true, 'canvas', true, true],
+    [true, 'canvas', false, true],
+  ])('should return correct css for open: %s, background: %s, dismissButton: %s and swipeHandle: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

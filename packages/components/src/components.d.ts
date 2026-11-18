@@ -2778,6 +2778,11 @@ export namespace Components {
           * @default false
          */
         "open": boolean;
+        /**
+          * Shows a swipe handle and lets a downward drag close the sheet when its content is scrolled to the top.
+          * @default false
+         */
+        "swipeHandle"?: boolean;
     }
     interface PSpinner {
         /**
@@ -7282,7 +7287,7 @@ declare namespace LocalJSX {
          */
         "dismissButton"?: boolean;
         /**
-          * Emitted when the user closes the sheet via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.
+          * Emitted when the user closes the sheet via the dismiss button, swipe handle, backdrop click, Escape key, or a downward swipe. The event detail identifies which was used.
          */
         "onDismiss"?: (event: PSheetCustomEvent<SheetDismissEventDetail>) => void;
         /**
@@ -7298,6 +7303,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "open"?: boolean;
+        /**
+          * Shows a swipe handle and lets a downward drag close the sheet when its content is scrolled to the top.
+          * @default false
+         */
+        "swipeHandle"?: boolean;
     }
     interface PSpinner {
         /**
@@ -8389,6 +8399,7 @@ declare namespace LocalJSX {
         "dismissButton": boolean;
         "disableBackdropClick": boolean;
         "background": SheetBackground;
+        "swipeHandle": boolean;
         "aria": SelectedAriaAttributes<SheetAriaAttribute>;
     }
     interface PSpinnerAttributes {

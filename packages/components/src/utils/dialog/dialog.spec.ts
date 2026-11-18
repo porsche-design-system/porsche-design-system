@@ -1,6 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { vi } from 'vitest';
-import { onCancelDialog, onClickDialog, isDialogBackdropTarget, onTransitionEnd, showDialog } from './dialog';
+import { isDialogBackdropTarget, onCancelDialog, onClickDialog, onTransitionEnd, showDialog } from './dialog';
 
 const createMockDialog = (open: boolean): HTMLDialogElement => {
   const dialog = document.createElement('dialog');
@@ -42,7 +42,12 @@ describe('onTransitionEnd()', () => {
   it('should emit motionVisibleEnd on background-color transitionend when open', () => {
     const motionVisibleEnd = createEventEmitterMock();
     const motionHiddenEnd = createEventEmitterMock();
-    const event = { propertyName: 'background-color' } as unknown as TransitionEvent;
+    const dialog = document.createElement('dialog');
+    const event = {
+      propertyName: 'background-color',
+      target: dialog,
+      currentTarget: dialog,
+    } as unknown as TransitionEvent;
 
     onTransitionEnd(event, true, motionVisibleEnd, motionHiddenEnd);
 
@@ -53,7 +58,12 @@ describe('onTransitionEnd()', () => {
   it('should emit motionHiddenEnd on background-color transitionend when closing', () => {
     const motionVisibleEnd = createEventEmitterMock();
     const motionHiddenEnd = createEventEmitterMock();
-    const event = { propertyName: 'background-color' } as unknown as TransitionEvent;
+    const dialog = document.createElement('dialog');
+    const event = {
+      propertyName: 'background-color',
+      target: dialog,
+      currentTarget: dialog,
+    } as unknown as TransitionEvent;
 
     onTransitionEnd(event, false, motionVisibleEnd, motionHiddenEnd);
 
@@ -61,12 +71,24 @@ describe('onTransitionEnd()', () => {
     expect(motionVisibleEnd.emit).not.toHaveBeenCalled();
   });
 
-  it('should ignore transitionend for other properties', () => {
+  it('should ignore transitionend for other properties or bubbling descendant transitions', () => {
     const motionVisibleEnd = createEventEmitterMock();
     const motionHiddenEnd = createEventEmitterMock();
-    const event = { propertyName: 'opacity' } as unknown as TransitionEvent;
+    const dialog = document.createElement('dialog');
+    const child = document.createElement('button');
 
-    onTransitionEnd(event, true, motionVisibleEnd, motionHiddenEnd);
+    onTransitionEnd(
+      { propertyName: 'opacity', target: dialog, currentTarget: dialog } as unknown as TransitionEvent,
+      true,
+      motionVisibleEnd,
+      motionHiddenEnd
+    );
+    onTransitionEnd(
+      { propertyName: 'background-color', target: child, currentTarget: dialog } as unknown as TransitionEvent,
+      false,
+      motionVisibleEnd,
+      motionHiddenEnd
+    );
 
     expect(motionVisibleEnd.emit).not.toHaveBeenCalled();
     expect(motionHiddenEnd.emit).not.toHaveBeenCalled();
