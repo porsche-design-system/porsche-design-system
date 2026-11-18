@@ -21,13 +21,13 @@ const Page = () => (
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.anchorTile}</Comment>
       <Comment>{tileComments.ownHeight}</Comment>
-      <div class="col-basic self-start justify-self-center w-full max-w-[560px] group relative isolate flex flex-col items-center justify-center aspect-16/9 rounded-3xl bg-canvas p-fluid-md text-center">
+      <div class="col-basic self-start justify-self-center w-full max-w-[560px] group relative isolate grid items-center aspect-16/9 rounded-3xl bg-canvas p-fluid-md">
         <Comment>
           Signature and vehicle share one cell, the vehicle overlapping the signature and placed in front of it. The
           signature takes the surface color, which stands out subtly from the canvas of the tile, and stays narrower
           than the vehicle, so only its upper part is read.
         </Comment>
-        <div class="grid grid-cols-1 w-full">
+        <div class="grid grid-cols-1">
           <Comment>{tileComments.signatureWidth}</Comment>
           <p-model-signature
             class="[grid-area:1/1] justify-self-center [--p-model-signature-width:65%] [--p-model-signature-color:var(--color-surface)]"
