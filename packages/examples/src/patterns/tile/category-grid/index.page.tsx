@@ -45,13 +45,9 @@ const Page = () => (
         One per row on a phone. From the medium breakpoint there are two of them side by side, and the first tile is as
         tall as the other two together.
       </Comment>
-      <Comment>
-        Each tile is kept in the light scheme, since the dark products of the images would hardly stand out from a dark
-        surface.
-      </Comment>
       <ul class="col-basic mt-fluid-xl grid grid-cols-1 gap-fluid-md sm:grid-cols-2">
         <Comment>{tileComments.coverTile}</Comment>
-        <li class="group relative isolate rounded-3xl scheme-only-light sm:row-span-2 [--p-link-cover-radius:var(--radius-3xl)]">
+        <li class="group relative isolate rounded-3xl sm:row-span-2 [--p-link-cover-radius:var(--radius-3xl)]">
           <Comment>{tileComments.clip}</Comment>
           <div class="grid grid-rows-[auto_minmax(0,1fr)] aspect-3/4 overflow-clip rounded-[inherit] bg-surface sm:aspect-auto sm:h-full">
             <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
@@ -88,7 +84,7 @@ const Page = () => (
         </li>
 
         <Comment>{tileComments.coverTile}</Comment>
-        <li class="group relative isolate rounded-3xl scheme-only-light [--p-link-cover-radius:var(--radius-3xl)]">
+        <li class="group relative isolate rounded-3xl [--p-link-cover-radius:var(--radius-3xl)]">
           <Comment>{tileComments.clip}</Comment>
           <div class="grid grid-rows-[auto_minmax(0,1fr)] aspect-3/2 overflow-clip rounded-[inherit] bg-surface">
             <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
@@ -125,7 +121,7 @@ const Page = () => (
         </li>
 
         <Comment>{tileComments.coverTile}</Comment>
-        <li class="group relative isolate rounded-3xl scheme-only-light [--p-link-cover-radius:var(--radius-3xl)]">
+        <li class="group relative isolate rounded-3xl [--p-link-cover-radius:var(--radius-3xl)]">
           <Comment>{tileComments.clip}</Comment>
           <div class="grid aspect-3/2 overflow-clip rounded-[inherit] bg-surface">
             <Comment>

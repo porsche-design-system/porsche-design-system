@@ -748,18 +748,13 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
 
     // The scheme of the page is the decision of the application the tile is copied into, so the pattern sets none and
     // declares both instead – the storefront applies the one its visitor chose. Light content on a gradient, a
-    // background or a brand color needs the dark scheme whatever the application uses, and the dark products of the
-    // category tiles would vanish on a dark surface – every other tile works in both schemes and follows the page.
+    // background or a brand color needs the dark scheme whatever the application uses – every other tile works in both
+    // schemes and follows the page.
     expect(html).toContain('<html lang="en">');
     expect(html).not.toMatch(/\bscheme-(light|dark|light-dark|normal)\b/);
     expect(meta.colorSchemes).toEqual(['light', 'dark']);
     if (isOnDarkBackground) {
       expect(fixedSchemes).toEqual(['scheme-only-dark']);
-    } else if (name === 'patterns/tile/category') {
-      expect(fixedSchemes).toEqual(['scheme-only-light']);
-    } else if (name === 'patterns/tile/category-grid') {
-      // The same tile, three times over, so the same reason applies to each of them.
-      expect(fixedSchemes).toEqual(['scheme-only-light', 'scheme-only-light', 'scheme-only-light']);
     } else {
       expect(fixedSchemes).toEqual([]);
     }

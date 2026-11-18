@@ -20,10 +20,7 @@ const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
-      <Comment>
-        Kept in the light scheme, since the dark vehicle of the image would hardly stand out from a dark surface.
-      </Comment>
-      <div class="col-basic justify-self-center w-full max-w-[400px] group relative isolate rounded-3xl scheme-only-light [--p-link-cover-radius:var(--radius-3xl)]">
+      <div class="col-basic justify-self-center w-full max-w-[400px] group relative isolate rounded-3xl [--p-link-cover-radius:var(--radius-3xl)]">
         <Comment>{tileComments.clip}</Comment>
         <div class="flex flex-col gap-fluid-lg aspect-3/4 overflow-clip rounded-[inherit] bg-surface pt-fluid-md">
           <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
