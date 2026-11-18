@@ -21,17 +21,21 @@ const Page = () => (
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>{tileComments.ownHeight}</Comment>
-      <div class="col-basic self-start group relative isolate flex flex-col items-center justify-center gap-fluid-md aspect-16/9 rounded-3xl bg-surface p-fluid-lg [--p-link-cover-radius:var(--radius-3xl)]">
+      <Comment>
+        What the tile holds follows the width of the tile rather than of the window, so it fits the column the tile is
+        placed in.
+      </Comment>
+      <div class="col-basic self-start @container group relative isolate flex flex-col items-center justify-center gap-fluid-md aspect-16/9 rounded-3xl bg-surface p-fluid-lg [--p-link-cover-radius:var(--radius-3xl)]">
         <Comment>
           Signature and vehicle share one cell, and the vehicle is placed in front of the signature. The image keeps
           free room above the roof, so the vehicle overlaps the lower part of the signature without being moved. The
           signature takes the canvas color, which stands out subtly from the surface of the tile.
         </Comment>
         <Comment>
-          Its width fills the room inside the padding on a phone, and from the small breakpoint on it is a share of the
-          tile, so the vehicle keeps its scale at every size.
+          Its width fills the room inside the padding of a narrow tile, and once the tile offers 20rem inside its
+          padding it is a share of the tile, so the vehicle keeps its scale at every size.
         </Comment>
-        <div class="grid grid-cols-1 w-full sm:w-4/5">
+        <div class="grid grid-cols-1 w-full @xs:w-4/5">
           <Comment>{tileComments.signatureWidth}</Comment>
           <p-model-signature
             class="[grid-area:1/1] justify-self-center [--p-model-signature-width:65%] [--p-model-signature-color:var(--color-canvas)]"
@@ -57,9 +61,10 @@ const Page = () => (
           </p-text>
         </div>
         <Comment>
-          One below the other and as wide as the tile on a phone, side by side from the small breakpoint on.
+          One below the other and as wide as the tile while it is narrow, side by side once the tile offers 20rem inside
+          its padding.
         </Comment>
-        <div class="flex flex-col w-full gap-static-md sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+        <div class="flex flex-col w-full gap-static-md @xs:w-auto @xs:flex-row @xs:flex-wrap @xs:justify-center">
           <Comment>{tileComments.coverLink}</Comment>
           <p-link variant="primary" cover={true}>
             <a href="#">Discover 911</a>
