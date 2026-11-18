@@ -1,17 +1,16 @@
-import { expect, type Locator, test } from '@playwright/test';
+import { type Locator } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   addEventListener,
-  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getFormDataValues,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -2660,10 +2659,9 @@ test.describe('form', () => {
 
   test('should disable select if within disabled fieldset', async ({ page }) => {
     const name = 'name';
-    const value = ['Hallo'];
     const host = getHost(page);
     await initMultiSelect(page, {
-      props: { name, value },
+      props: { name },
       options: {
         isWithinForm: true,
         markupBefore: `<fieldset disabled>`,
@@ -2695,7 +2693,6 @@ test.describe('form', () => {
   });
 
   test('should not set validity when disabled and throw no errors', async ({ page }) => {
-    initConsoleObserver(page);
     await initMultiSelect(page, {
       options: {
         isWithinForm: true,
@@ -2708,7 +2705,6 @@ test.describe('form', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

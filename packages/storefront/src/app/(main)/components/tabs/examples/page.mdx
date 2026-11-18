@@ -1,33 +1,27 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { tabsMeta } from '@/app/(main)/components/tabs/tabs.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import gradient from '@porsche-design-system/examples/components/tabs/gradient';
+import activeTab from '@porsche-design-system/examples/components/tabs/active-tab';
+import labelling from '@porsche-design-system/examples/components/tabs/labelling';
 
 export const metadata = {
-  title: 'Tabs - Porsche Design System',
+  title: 'Tabs: Examples - Components',
   description: 'Discover detailed examples and insights of the Tabs component.',
 };
 
 # Tabs <ComponentStatus tagName="p-tabs"></ComponentStatus>
 
-<TableOfContents
-  headings={[tabsMeta.examples.gradient.name, tabsMeta.examples.activeTab.name, tabsMeta.examples.labelling.name]}
-/>
+<TableOfContents headings={[gradient.title, activeTab.title, labelling.title]} />
 
-## {tabsMeta.examples.gradient.name}
+## {gradient.title}
 
-<tabsMeta.examples.gradient.description />
+<Example example={gradient} backgroundColor="surface" />
 
-<ComponentStory story={tabsMeta.examples.gradient.story} backgroundColor="surface" />
+## {activeTab.title}
 
-## {tabsMeta.examples.activeTab.name}
+<Example example={activeTab} />
 
-<tabsMeta.examples.activeTab.description />
+## {labelling.title}
 
-<ComponentStory story={tabsMeta.examples.activeTab.story} />
-
-## {tabsMeta.examples.labelling.name}
-
-<tabsMeta.examples.labelling.description />
-
-<ComponentStory story={tabsMeta.examples.labelling.story} />
+<Example example={labelling} />

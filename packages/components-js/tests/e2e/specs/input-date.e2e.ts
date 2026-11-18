@@ -1,13 +1,12 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
-  getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -399,7 +398,7 @@ test.describe('form', () => {
       expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     });
 
-    test('should implicit submit form on enter when there is no submit button and no blocking elements', async ({
+    test('should implicit submit form on enter when there is no submit button only if the browser renders type date as a text field', async ({
       page,
     }) => {
       await initInputDate(page, {
@@ -408,6 +407,12 @@ test.describe('form', () => {
 
       const inputDate = getInputDate(page);
       const form = getForm(page);
+      // like a native input: browsers without a date picker render it as a text field, which submits
+      const isRenderedAsTextField = await page.evaluate(() => {
+        const input = document.createElement('input');
+        input.setAttribute('type', 'date');
+        return input.type === 'text';
+      });
 
       await addEventListener(form, 'submit');
       expect((await getEventSummary(form, 'submit')).counter).toBe(0);
@@ -417,7 +422,7 @@ test.describe('form', () => {
 
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
-      expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+      expect((await getEventSummary(form, 'submit')).counter).toBe(isRenderedAsTextField ? 1 : 0);
     });
 
     test('should not implicit submit form on enter when there is no submit button and a native input type text', async ({
@@ -466,7 +471,6 @@ test.describe('form', () => {
   });
 
   test('should not set validity when disabled and throw no errors', async ({ page }) => {
-    initConsoleObserver(page);
     await initInputDate(page, {
       isWithinForm: true,
       props: {
@@ -477,11 +481,9 @@ test.describe('form', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 
   test('should not set validity when readonly and throw no errors', async ({ page }) => {
-    initConsoleObserver(page);
     await initInputDate(page, {
       isWithinForm: true,
       props: {
@@ -492,7 +494,6 @@ test.describe('form', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

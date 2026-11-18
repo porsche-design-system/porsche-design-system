@@ -103,7 +103,7 @@ const toHast = (node: unknown, context: MarkdownContext): ElementContent[] => {
     if (!ALLOWED_ELEMENTS.has(type)) {
       throw new Error(
         `HTML element <${type}> is not allowed in MDX${position(node)}. ` +
-          'Use a component of @porsche-design-system/docs-components instead.'
+          'Use a component with a Markdown implementation instead.'
       );
     }
     return [
@@ -125,8 +125,7 @@ const toHast = (node: unknown, context: MarkdownContext): ElementContent[] => {
   }
   throw new Error(
     `Unregistered component "${componentName(type)}" in MDX${position(node)}. ` +
-      'Import it from @porsche-design-system/docs-components, ' +
-      'which renders it to React and to Markdown.'
+      'Give it a Markdown implementation next to its React one, e.g. Notification/Notification.markdown.ts.'
   );
 };
 

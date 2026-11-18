@@ -1,0 +1,7 @@
+{
+  "codeConnect": {
+    "include": ["generated/templates/**/*.vue.figma.ts", "generated/icons/p-icon.vue.figma.batch.json"],
+    "label": "Vue",
+    "language": "html"
+  }
+}

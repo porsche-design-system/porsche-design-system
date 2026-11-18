@@ -1,4 +1,4 @@
-import { Notification } from '@/components/common/Notification';
+import { Notification } from '@/components/mdx/content/Notification';
 
 The `p-sheet` is a temporary overlay to focus the user's attention on one or multiple tasks while the underlying page is
 still visible but interactions with it are blocked. It should be used thoughtfully and sparingly.
@@ -6,17 +6,14 @@ still visible but interactions with it are blocked. It should be used thoughtful
 It is a controlled component. This grants flexible control over the sheet's behavior especially whether it should stay
 open after user interaction like submission of a form.
 
-<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
-  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.
+<Notification heading="Scroll-lock" headingTag="h2" state="warning">
+  This component sets `overflow: hidden` on the body when opened in order to prevent background scrolling.
   <br />
   This doesn't work completely reliable under iOS but is the most stable solution.
   <br />
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution.{' '}
-  <b>
-    <a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">
-      Current implementation
-    </a>
-  </b>
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. See the [current
+  implementation of the scroll
+  lock](https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts).
 </Notification>
 
 Following **web standards**, the component uses the native `<dialog />` element internally which ensures proper focus
@@ -27,4 +24,3 @@ won't have any effect).
 The most important property of `p-sheet` is its `open` property. When it's set to `true` the sheet will be visible. In
 order to get notified when the sheet gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
 key you need to register an event listener for the `dismiss` event which is emitted by `p-sheet`.
-

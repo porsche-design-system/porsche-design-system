@@ -1,7 +1,7 @@
-import { Notification } from '@/components/common/Notification';
+import { Notification } from '@/components/mdx/content/Notification';
 
-<Notification heading="Experimental Component" heading-tag="h2" state="warning">
-  The <code>p-drilldown</code> component is experimental and might be changed or removed in a future release.
+<Notification heading="Experimental Component" headingTag="h2" state="warning">
+  The `p-drilldown` component is experimental and might be changed or removed in a future release.
 </Notification>
 
 The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown menu that overlays
@@ -19,4 +19,3 @@ It's **obligatory** that each `p-drilldown-item` has a unique `identifier` and `
 
 Since it's a controlled component it's necessary to register an event listener for the `dismiss` and `update` event in
 order to get notified when `p-drilldown` needs to be closed or navigated to another hierarchy level.
-

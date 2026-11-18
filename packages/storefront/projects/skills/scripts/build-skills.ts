@@ -1,8 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import type { StorefrontInputs } from '../src/generators';
+import { resolveComponentDocs, type StorefrontComponentDocs } from '../src/knowledge/components/catalogue';
 import { SKILL_IDS } from '../src/registry';
-import { FRAMEWORKS, SKILL_STAGING_DIR, stagedSkillDir } from '../src/shared/skillTree';
+import { stagedFrameworkDir, stagedSkillDir } from '../src/shared/skillTree';
 import { type CollectedPages, PAGES_FILE } from './pages-file';
 
 /**
@@ -12,28 +14,33 @@ import { type CollectedPages, PAGES_FILE } from './pages-file';
  * is started with (`node --import tsx --require ./scripts/skill-mdx-loader.cjs`), so the heavy
  * modules are imported dynamically inside `main`.
  *
- * Pages migrated to `@porsche-design-system/docs-components` are rendered beforehand by `collect-pages.ts`, in a process
- * set up for that renderer, and read here from `PAGES_FILE`. Keeping the two apart means the loader above keeps parsing
- * the component docs, untouched by the renderer's MDX hook, until they are migrated too.
+ * Storefront pages with Markdown are rendered beforehand by `collect-pages.ts`, in a process set up for
+ * `@porsche-design-system/docs-components`, and read here from `PAGES_FILE`. Keeping the two apart means the loader
+ * above keeps parsing the component docs, untouched by the renderer's MDX hook, until they are migrated too.
  */
 
 const REPO_ROOT = path.resolve(__dirname, '../../../../..');
 
 const main = async (): Promise<void> => {
-  const [{ componentDocsMeta }, { SKILL_GENERATORS }, { createSite }] = await Promise.all([
+  const [{ componentDocsMeta }, { SKILL_GENERATORS }, { createSite }, { markdownMap }] = await Promise.all([
     import('../../../src/app/(main)/components/components.meta'),
     import('../src/generators'),
     import('@porsche-design-system/docs-components/markdown'),
+    import('../../../src/utils/markdownMap'),
   ]);
   const { routes, pages }: CollectedPages = JSON.parse(fs.readFileSync(PAGES_FILE, 'utf8'));
   const inputs: StorefrontInputs = {
-    docsMeta: componentDocsMeta as unknown as StorefrontInputs['docsMeta'],
-    pages,
-    site: createSite(routes, pages),
+    docsMeta: Object.fromEntries(
+      Object.entries(componentDocsMeta as unknown as Record<string, StorefrontComponentDocs>).map(([tag, docs]) => [
+        tag,
+        resolveComponentDocs(docs),
+      ])
+    ),
+    storefrontPages: { pages, site: createSite(routes, pages), markdownMap },
   };
 
   for (const framework of FRAMEWORKS) {
-    fs.rmSync(path.resolve(REPO_ROOT, SKILL_STAGING_DIR, framework), { recursive: true, force: true });
+    fs.rmSync(path.resolve(REPO_ROOT, stagedFrameworkDir(framework)), { recursive: true, force: true });
 
     for (const skillId of SKILL_IDS) {
       const relativeRoot = stagedSkillDir(skillId, framework);

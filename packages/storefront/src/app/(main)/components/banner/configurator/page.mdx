@@ -1,9 +1,10 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { Configurator } from '@/components/playground/Configurator';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 import { bannerMeta } from '@/app/(main)/components/banner/banner.meta';
+import bannerDefault from '@porsche-design-system/examples/components/banner/default';
 
 export const metadata = {
-  title: 'Banner - Porsche Design System',
+  title: 'Banner: Configurator - Components',
   description:
     "Learn how to use the Porsche Design System's Banner component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
 };
@@ -12,5 +13,5 @@ export const metadata = {
 
 <bannerMeta.introduction />
 
-<Configurator tagName="p-banner" story={bannerMeta.configurator.story} />
+<Configurator example={bannerDefault} />
 

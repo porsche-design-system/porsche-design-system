@@ -1,6 +1,6 @@
-import { type Page, expect, test } from '@playwright/test';
-import { addEventListener, getEventSummary, getFormDataValue } from '../../../../components-js/tests/e2e/helpers';
-import { goto, waitForComponentsReady } from '../helpers';
+import { type Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { addEventListener, getEventSummary, getFormDataValue, goto, waitForComponentsReady } from '../helpers';
 
 const getForm = (page: Page) => page.locator('form');
 const getTextarea = (page: Page) => page.locator('p-textarea textarea');

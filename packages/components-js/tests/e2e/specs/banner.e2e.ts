@@ -1,5 +1,6 @@
-import { expect, type Locator, Page, test } from '@playwright/test';
+import { type Locator, Page } from '@playwright/test';
 import type { BannerState } from '@porsche-design-system/components';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getCssClasses,

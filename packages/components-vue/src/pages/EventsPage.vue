@@ -286,7 +286,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
   </div>
 
   <div class="playground">
-    <PModal :open="isModalOpen" @dismiss="onModalDismiss">Modal</PModal>
+    <PModal :open="isModalOpen" @dismiss="onModalDismiss" :aria="{ 'aria-label': 'Modal' }">Modal</PModal>
     <p>{{ modalDismissEventCounter }}</p>
     <button @click="isModalOpen = true">Open Modal</button>
   </div>

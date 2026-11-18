@@ -1,8 +1,9 @@
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ExampleViewer } from '@/components/common/ExampleViewer';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { Example } from '@/components/mdx/examples/Example';
+import adminPanel from '@porsche-design-system/examples/templates/admin-panel';
 
 export const metadata = {
-  title: 'Templates: Admin Panel - Porsche Design System',
+  title: 'Admin Panel - Templates',
   description: 'Learn how to design a user-centric admin panel for Porsche web applications.',
 };
 
@@ -10,4 +11,4 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<ExampleViewer example="templates/admin-panel" />
+<Example example={adminPanel} />

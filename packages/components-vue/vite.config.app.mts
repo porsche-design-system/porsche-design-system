@@ -5,6 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import * as partials from '@porsche-design-system/components-vue/partials';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
+import tailwindcss from '@tailwindcss/vite';
 import { Features } from "lightningcss"
 
 // Config to build static demo-app
@@ -20,6 +21,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     vanillaExtractPlugin(),
+    tailwindcss(),
     createHtmlPlugin({
       inject: {
         data: {

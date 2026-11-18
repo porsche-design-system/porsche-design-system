@@ -1,13 +1,24 @@
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ExampleViewer } from '@/components/common/ExampleViewer';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { Example } from '@/components/mdx/examples/Example';
+import extended from '@porsche-design-system/examples/patterns/footer/extended';
+import simple from '@porsche-design-system/examples/patterns/footer/simple';
 
 export const metadata = {
-  title: 'Patterns: Footer - Porsche Design System',
+  title: 'Footer - Patterns',
   description: 'Learn how to design a user-centric footer for Porsche web applications.',
 };
 
 # Footer
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={['Extended', 'Simple']} />
 
-<ExampleViewer example="patterns/footer" />
+The footer closes every page with the legal information it has to carry: consumption and emission disclaimers, the
+wordmark, the copyright and the legal links. How much it offers beyond that depends on the page it belongs to.
+
+## Extended
+
+<Example example={extended} />
+
+## Simple
+
+<Example example={simple} />

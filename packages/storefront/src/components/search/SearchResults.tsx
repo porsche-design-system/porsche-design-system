@@ -1,9 +1,10 @@
 import { PHeading } from '@porsche-design-system/components-react/ssr';
 import type { Hit as AlgoliaHit } from 'instantsearch.js/es/types/results';
-import Link from 'next/link';
 import React from 'react';
 import { type UseHitsProps, useHits } from 'react-instantsearch';
+import { DocsLink } from '@/components/common/DocsLink';
 import type { AlgoliaRecord, AlgoliaResult } from '@/components/search/Search';
+import type { DocsHref } from '@/links';
 import { SearchRecommendations } from './SearchRecommendations';
 
 const transformItems = (items: AlgoliaRecord[]) => {
@@ -29,14 +30,14 @@ export const SearchResults = ({
     <div className="h-full flex flex-col gap-fluid-sm">
       {(items as unknown as AlgoliaResult[]).map(({ category, hits }) => (
         <div key={category}>
-          <PHeading size="small" tag="h3" className="mb-fluid-xs">
+          <PHeading size="sm" tag="h3" className="mb-fluid-xs">
             {category}
           </PHeading>
           <ol className="flex flex-col gap-fluid-sm">
             {hits.map((hit) => (
               <li className="hit" key={hit.url}>
-                <Link
-                  href={hit.url}
+                <DocsLink
+                  href={hit.url as DocsHref}
                   onClick={onResultClick}
                   className="block py-fluid-sm px-fluid-md bg-surface rounded-md"
                   aria-labelledby={`search-result-${hit.url}`}
@@ -45,7 +46,7 @@ export const SearchResults = ({
                     {hit.page} {hit.tab ? ` - ${hit.tab}` : ''}
                   </p>
                   <p className="text-sm text-contrast-high">{hit.url.includes('#') ? `# ${hit.name}` : hit.name}</p>
-                </Link>
+                </DocsLink>
               </li>
             ))}
           </ol>

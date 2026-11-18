@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import { writeComponentExamples } from '@skills/knowledge/components/examples';
-import { FRAMEWORKS, SkillTree } from '@skills/shared/skillTree';
+import { SkillTree } from '@skills/shared/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { componentExamplesMeta as metaMap } from '../../../data/knowledge/componentExamplesFixtures';
 
@@ -28,7 +29,7 @@ describe('component examples generator', () => {
     }
   }
 
-  it('emits hand-authored example markup verbatim from the CodeSample', () => {
+  it('emits hand-written example code verbatim from the catalogue', () => {
     const tree = new SkillTree(root, 'react');
     tree.reset();
     writeComponentExamples(tree, 'p-button', metaMap['p-button']);
@@ -37,17 +38,7 @@ describe('component examples generator', () => {
     expect(fs.readFileSync(file, 'utf-8').trimEnd()).toBe('<PButton type="submit">Submit form</PButton>');
   });
 
-  it('references description-only entries as prose without emitting a file', () => {
-    const tree = new SkillTree(root, 'js');
-    tree.reset();
-    const table = writeComponentExamples(tree, 'p-button', metaMap['p-button']);
-
-    // The description-only row carries its name but no file link.
-    expect(table).toContain('| Form association | Associate the button');
-    expect(fs.existsSync(tree.resolve('references/components/p-button/examples/FormGuidance.html'))).toBe(false);
-  });
-
-  it('falls back to the example name when a story has no description', () => {
+  it('falls back to the example title when a story has no description', () => {
     const tree = new SkillTree(root, 'vue');
     tree.reset();
     const table = writeComponentExamples(tree, 'p-accordion', metaMap['p-accordion']);

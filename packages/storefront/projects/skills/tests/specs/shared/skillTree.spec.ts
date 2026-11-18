@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { FRAMEWORKS, isFramework, SkillTree } from '@skills/shared/skillTree';
+import { SkillTree } from '@skills/shared/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 /**
@@ -23,7 +23,7 @@ describe('SkillTree', () => {
   });
 
   it('lays out the given directory layout on reset', () => {
-    const tree = new SkillTree(root, 'js', LAYOUT);
+    const tree = new SkillTree(root, 'vanilla-js', LAYOUT);
     tree.reset();
 
     for (const dir of LAYOUT) {
@@ -32,7 +32,7 @@ describe('SkillTree', () => {
   });
 
   it('creates only the root when no layout is given', () => {
-    const tree = new SkillTree(root, 'js');
+    const tree = new SkillTree(root, 'vanilla-js');
     tree.reset();
 
     expect(fs.existsSync(root)).toBe(true);
@@ -40,7 +40,7 @@ describe('SkillTree', () => {
   });
 
   it('discards a pre-existing tree on reset', () => {
-    const tree = new SkillTree(root, 'js', LAYOUT);
+    const tree = new SkillTree(root, 'vanilla-js', LAYOUT);
     tree.reset();
     tree.write('references/components/stale.md', 'stale');
 
@@ -50,7 +50,7 @@ describe('SkillTree', () => {
   });
 
   it('writes files creating parent dirs and a trailing newline', () => {
-    const tree = new SkillTree(root, 'js');
+    const tree = new SkillTree(root, 'vanilla-js');
     tree.reset();
 
     const relativePath = tree.write('references/components/p-button/examples/Default.tsx', 'export const x = 1;');
@@ -60,7 +60,7 @@ describe('SkillTree', () => {
   });
 
   it('does not double up trailing newlines', () => {
-    const tree = new SkillTree(root, 'js');
+    const tree = new SkillTree(root, 'vanilla-js');
     tree.reset();
     tree.write('a.md', 'already\n');
 
@@ -68,23 +68,12 @@ describe('SkillTree', () => {
   });
 
   it('writes references under references/ with POSIX separators', () => {
-    const tree = new SkillTree(root, 'js');
+    const tree = new SkillTree(root, 'vanilla-js');
     tree.reset();
 
     const relativePath = tree.writeReference('tokens.md', '# Tokens');
 
     expect(relativePath).toBe('references/tokens.md');
     expect(fs.existsSync(tree.resolve('references/tokens.md'))).toBe(true);
-  });
-});
-
-describe('isFramework', () => {
-  it.each(FRAMEWORKS)('accepts %s', (framework) => {
-    expect(isFramework(framework)).toBe(true);
-  });
-
-  it('rejects anything else', () => {
-    expect(isFramework('svelte')).toBe(false);
-    expect(isFramework('')).toBe(false);
   });
 });

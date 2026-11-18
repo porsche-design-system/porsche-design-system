@@ -1,7 +1,7 @@
-import type { Page, Site } from '@porsche-design-system/docs-components/markdown';
 import { generateAuditDeprecationsSkill } from './audit-deprecations/generate';
 import type { ComponentDocsMetaMap } from './knowledge/components/reference';
 import { generateKnowledgeSkill } from './knowledge/generate';
+import type { StorefrontPages } from './knowledge/pages';
 import type { SkillId } from './registry';
 import type { SkillGenerator } from './shared/generation';
 
@@ -20,10 +20,8 @@ import type { SkillGenerator } from './shared/generation';
 export type StorefrontInputs = {
   /** The storefront's `componentDocsMeta` — every documented component's MDX prose and examples. */
   docsMeta: ComponentDocsMetaMap;
-  /** The pages rendered by `@porsche-design-system/docs-components`, the same Markdown the Storefront serves. */
-  pages: readonly Page[];
-  /** Every Storefront route, so links between pages resolve and a link to a missing page fails the build. */
-  site: Site;
+  /** The Storefront pages rendered as Markdown (`scripts/collect-pages.ts`), with what their links resolve against. */
+  storefrontPages: StorefrontPages;
 };
 
 /**

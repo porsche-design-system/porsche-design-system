@@ -1,9 +1,9 @@
 import path from 'node:path';
+import { FRAMEWORKS } from '@porsche-design-system/shared/models';
 import {
   collectPages,
   createSite,
   defineOutputMap,
-  FRAMEWORKS,
   htmlLink,
   mapLinks,
   pageToMarkdown,

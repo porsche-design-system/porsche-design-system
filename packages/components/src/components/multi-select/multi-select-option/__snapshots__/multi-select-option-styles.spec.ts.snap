@@ -12,6 +12,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: false and
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -69,7 +71,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -95,6 +96,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: false and
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
@@ -158,7 +161,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -189,6 +191,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
@@ -254,7 +258,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -284,6 +287,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
 }
 slot {
   display: block;
+  flex: 1;
+  min-width: 0;
   padding-top: max(0px, calc((calc(var(--_p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
@@ -355,7 +360,6 @@ slot {
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }

@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { FRAMEWORKS, type Framework, isFramework } from '@porsche-design-system/shared/models';
+import { slug } from 'github-slugger';
 import type { Nodes, Root } from 'mdast';
-import { FRAMEWORKS, type Framework } from './define';
 import { importMdx, type PageMetadata, renderMdxModule } from './mdx';
 import { serializeMarkdown } from './render';
 
@@ -15,7 +16,7 @@ import { serializeMarkdown } from './render';
 export type RouteSource = { route: string; file: string };
 
 /**
- * Where a page sits in the Storefront's tree (`src/sitemap.tsx`), which every output derives its structure from.
+ * Where a page sits in the Storefront's tree (`src/sitemap.ts`), which every output derives its structure from.
  * - `category`: the top-level section, e.g. Developing; an output map may word its section differently.
  * - `reference`: the sitemap page. A skill writes one reference per sitemap page, with its tabs as sections.
  * - `tab`: the tab's title within that page; none for a page without tabs.
@@ -97,8 +98,6 @@ export const createSite = (routes: readonly string[], pages: readonly Page[]): S
   };
 };
 
-const isFramework = (value: unknown): value is Framework => FRAMEWORKS.includes(value as Framework);
-
 /**
  * Imports and renders each page for every framework it applies to. Rendering is cheap once a page is compiled, so
  * whether it depends on the framework is found by comparing the results, not declared.
@@ -154,13 +153,11 @@ const forEachLink = (node: Nodes, visit: (node: { url: string }) => void): void 
 export const pageTitle = ({ place }: Page): string =>
   place.tab ? `${place.reference.title}: ${place.tab}` : place.reference.title;
 
-/** The anchor Markdown readers give a heading, as GitHub does: lower case, punctuation removed, each space a hyphen. */
-export const headingAnchor = (heading: string): string =>
-  heading
-    .toLowerCase()
-    .trim()
-    .replace(/[^\p{L}\p{N}\s-]/gu, '')
-    .replace(/\s/g, '-');
+/**
+ * The anchor Markdown readers give a heading, as GitHub does: `Unsupported APIs` → `unsupported-apis`. The Storefront
+ * derives its heading IDs the same way (`getHeadingAnchorId`), so a section has one anchor in every output.
+ */
+export const headingAnchor = (heading: string): string => slug(heading);
 
 /**
  * A page's tree for one destination, with each Storefront route in its links resolved. Fails for a link to a route

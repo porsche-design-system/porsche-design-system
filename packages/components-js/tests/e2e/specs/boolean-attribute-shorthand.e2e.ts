@@ -1,14 +1,8 @@
-import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
-import {
-  buildDefaultComponentMarkup,
-  getConsoleErrorMessages,
-  getConsoleErrorsAmount,
-  initConsoleObserver,
-  setContentWithDesignSystem,
-} from '../helpers';
+import { buildDefaultComponentMarkup, setContentWithDesignSystem } from '../helpers';
 
 const toKebabCase = (str: string): string => str.replace(/[A-Z]/g, (char) => `-${char.toLowerCase()}`);
 
@@ -54,8 +48,6 @@ test.describe('boolean attribute shorthand', () => {
     const attributeName = toKebabCase(propName);
 
     test(`should treat "${attributeName}" on ${tagName} like "${attributeName}='true'"`, async ({ page }) => {
-      initConsoleObserver(page);
-
       await setContentWithDesignSystem(
         page,
         [
@@ -65,7 +57,6 @@ test.describe('boolean attribute shorthand', () => {
       );
 
       expect(await getComponentCss(page, 'shorthand')).toBe(await getComponentCss(page, 'explicit-true'));
-      expect(getConsoleErrorsAmount(), getConsoleErrorMessages()).toBe(0);
     });
   }
 

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { createSite, type Page } from '@porsche-design-system/docs-components/markdown';
+import { createSite, defineOutputMap, type Page } from '@porsche-design-system/docs-components/markdown';
 import { renderPageSections, writePageReferences } from '@skills/knowledge/pages';
 import { SkillTree } from '@skills/shared/skillTree';
 import { localPorscheDesignSystemVersion } from '@skills/shared/version';
@@ -33,6 +33,9 @@ const PAGES = [
   guide('vue', 'vue', 'Vue', '/partials/introduction/'),
 ];
 const SITE = createSite([...PAGES.map(({ route }) => route), 'partials/introduction'], PAGES);
+/** Like the Storefront's: each page's Markdown next to its HTML. */
+const MARKDOWN_MAP = defineOutputMap({ locate: (page) => ({ file: `${page.route}.md` }) });
+const STOREFRONT_PAGES = { pages: PAGES, site: SITE, markdownMap: MARKDOWN_MAP };
 
 let root: string;
 afterEach(() => fs.rmSync(root, { recursive: true, force: true }));
@@ -40,7 +43,7 @@ afterEach(() => fs.rmSync(root, { recursive: true, force: true }));
 describe('writePageReferences', () => {
   it('writes one reference per sitemap page of the framework, linking within the skill and to the exact version outside', () => {
     root = fs.mkdtempSync(path.join(os.tmpdir(), 'skill-pages-'));
-    const references = writePageReferences(new SkillTree(root, 'react'), PAGES, SITE);
+    const references = writePageReferences(new SkillTree(root, 'react'), STOREFRONT_PAGES);
     const read = (route: string) => fs.readFileSync(path.join(root, 'references', `${route}.md`), 'utf-8');
 
     expect(references.map(({ file }) => file)).toEqual([
@@ -59,7 +62,7 @@ describe('writePageReferences', () => {
 describe('renderPageSections', () => {
   it('renders a section per category, worded by the skill map, with a row per reference', () => {
     root = fs.mkdtempSync(path.join(os.tmpdir(), 'skill-pages-'));
-    const references = writePageReferences(new SkillTree(root, 'react'), PAGES, SITE);
+    const references = writePageReferences(new SkillTree(root, 'react'), STOREFRONT_PAGES);
 
     const [heading, , description, ...table] = renderPageSections('react', references).split('\n');
 

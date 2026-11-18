@@ -1,9 +1,10 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 import type {
   CarouselAriaAttribute,
   SelectedAriaAttributes,
 } from '@porsche-design-system/components/dist/types/bundle';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getActiveElementId,
@@ -465,7 +466,6 @@ test('should navigate to slide when pagination is clicked', async ({ page }) => 
 });
 
 test('should navigate to slide when infinite pagination is clicked', async ({ page }) => {
-  await initCarousel(page);
   await initCarousel(page, { amountOfSlides: 6 });
   const bullets = await getPaginationBullets(page);
   const slides = await getSlideElements(page);

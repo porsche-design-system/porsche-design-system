@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, type PropsWithChildren, useEffect, useState } from 'react';
-import { type FrameworkWithNext, frameworkNameMap } from '@/models/framework';
+import { type FrameworkWithNext, isFrameworkWithNext } from '@/models/framework';
 
 interface StorefrontFrameworkContextProps {
   storefrontFramework: FrameworkWithNext;
@@ -9,9 +9,6 @@ interface StorefrontFrameworkContextProps {
 }
 
 const storefrontFrameworkLocalStorageKey = 'storefrontFramework';
-
-const isFrameworkWithNext = (framework: string | null): framework is FrameworkWithNext =>
-  !!framework && framework in frameworkNameMap;
 
 export const StorefrontFrameworkContext = createContext<StorefrontFrameworkContextProps | undefined>(undefined);
 

@@ -2,8 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import { getPackageSkillRouteReferences } from '@skills/knowledge/packageSkills';
-import { FRAMEWORKS, stagedSkillDir } from '@skills/shared/skillTree';
+import { stagedSkillDir } from '@skills/shared/skillTree';
 import { listSkillTreeFiles } from '@skills/shared/skillTreeFiles';
 import { describe, expect, it } from 'vitest';
 
@@ -38,7 +39,7 @@ type ComponentTag = keyof typeof componentMeta;
 const COMPONENT_TAGS = Object.keys(componentMeta) as ComponentTag[];
 
 /**
- * The components the storefront documents — the same filter `sitemap.tsx` uses for
+ * The components the storefront documents — the same filter `sitemap.ts` uses for
  * `COMPONENT_ROUTES_META` (chunked, top-level components; excludes child components
  * like `p-table-row` that have no standalone docs page). The generator keys component
  * references off this same set, so it is the authoritative coverage source.

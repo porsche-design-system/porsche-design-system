@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { PLinkPure } from '@porsche-design-system/components-vue';
 import { pdsThemeCompact } from '@porsche-design-system/components-vue/ag-grid';
-import { dataAdvanced } from '@porsche-design-system/shared';
+import { type ColorScheme, dataAdvanced } from '@porsche-design-system/shared';
 import { AllEnterpriseModule } from 'ag-grid-enterprise';
 import { AgGridVue } from 'ag-grid-vue3';
 import { inject } from 'vue';
-import { type Theme, themeInjectionKey } from '../main';
+import { themeInjectionKey } from '../main';
 
 // registered per grid, since ModuleRegistry.registerModules() would apply the license check to every grid
 const modules = [AllEnterpriseModule];
 
-const theme = inject<Theme>(themeInjectionKey, 'scheme-light');
+const theme = inject<ColorScheme>(themeInjectionKey, 'scheme-light');
 
 const ImageUrlRendererer = {
   template: `

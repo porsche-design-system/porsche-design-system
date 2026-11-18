@@ -1,9 +1,10 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { Configurator } from '@/components/playground/Configurator';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 import { scrollerMeta } from '@/app/(main)/components/scroller/scroller.meta';
+import scrollerDefault from '@porsche-design-system/examples/components/scroller/default';
 
 export const metadata = {
-  title: 'Scroller - Porsche Design System',
+  title: 'Scroller: Configurator - Components',
   description:
     "Learn how to use the Porsche Design System's Scroller component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
 };
@@ -12,4 +13,4 @@ export const metadata = {
 
 <scrollerMeta.introduction />
 
-<Configurator tagName="p-scroller" story={scrollerMeta.configurator.story} />
+<Configurator example={scrollerDefault} />

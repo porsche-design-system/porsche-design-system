@@ -1,16 +1,14 @@
-import { COMPONENT_ROUTES } from '@/sitemap';
 import { redirect } from 'next/navigation';
+import { getLandingPath, sitemap } from '@/sitemap';
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ component: string }>;
-}) {
+/** The component pages redirect to their first tab, like every other page with tabs. */
+export default async function Page({ params }: { params: Promise<{ component: string }> }) {
   const { component } = await params;
-  redirect(`/components/${component}/configurator`);
+  redirect(getLandingPath('components', component));
 }
 
-// This function returns an array of possible "component" values that will be used to generate static pages
 export function generateStaticParams() {
-  return COMPONENT_ROUTES;
+  return Object.entries(sitemap.components.pages)
+    .filter(([, page]) => 'tagName' in page)
+    .map(([component]) => ({ component }));
 }

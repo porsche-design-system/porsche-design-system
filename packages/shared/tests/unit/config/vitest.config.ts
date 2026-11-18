@@ -1,10 +1,12 @@
 import { resolve } from 'node:path';
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
     root: resolve(__dirname, '../../../'),
     include: ['**/*.spec.ts'],
+    // The projects below `projects/` are workspaces of their own, with their own tests.
+    exclude: [...configDefaults.exclude, 'projects/**'],
     globals: true,
     // Vitest 5 truncates interpolated values in `test.each` titles at 40 chars, which hides the
     // values that distinguish cases and collapses distinct snapshot keys into one. 0 disables it.

@@ -1,12 +1,11 @@
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import type { Framework } from '@porsche-design-system/shared/models';
 import type { Root } from 'mdast';
-import type { Framework } from './define';
 import { jsx } from './jsx-runtime';
 import { renderToMdast } from './render';
 
-const USAGE =
-  'Run Node with `--conditions=markdown --import tsx --import @porsche-design-system/docs-components/register`.';
+const USAGE = 'Run Node with `--import tsx --import @porsche-design-system/docs-components/register`.';
 
 export type PageMetadata = { title?: string; description?: string };
 
@@ -18,8 +17,8 @@ export type MdxModule = {
 };
 
 /**
- * Imports an MDX file. The process needs the `markdown` export condition and the MDX hook, so that the file and every
- * component it imports resolve to their Markdown implementations.
+ * Imports an MDX file. The process needs the Node hook (`register.mjs`), so that the file compiles against the Markdown
+ * JSX runtime and every component it imports resolves to its Markdown implementation.
  */
 export const importMdx = async (file: string): Promise<MdxModule> => {
   try {

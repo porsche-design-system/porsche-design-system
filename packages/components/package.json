@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "4.8.0",
+  "version": "4.10.1",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -59,11 +59,12 @@
     "@stencil/core": "4.45.1"
   },
   "devDependencies": {
+    "@porsche-design-system/testing": "0.0.0",
     "@rollup/plugin-replace": "^6.0.3",
     "@tailwindcss/cli": "^4.3.3",
     "@types/react": "^19.3.0",
     "change-case": "^5.4.4",
-    "concurrently": "^10.0.5",
+    "concurrently": "^10.0.6",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^9.5.1",
     "fast-glob": "^3.3.3",

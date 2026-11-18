@@ -1,6 +1,6 @@
-import { expect, type Page, test } from '@playwright/test';
-import { addEventListener, getEventSummary, setProperty } from '../../../../components-js/tests/e2e/helpers';
-import { goto, waitForComponentsReady } from '../helpers';
+import { type Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { addEventListener, getEventSummary, goto, setProperty, waitForComponentsReady } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-multi-select');
 const getForm = (page: Page) => page.locator('form');

@@ -1,15 +1,22 @@
-import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthXXL } from '@porsche-design-system/shared/testing';
+import { schemes, viewportWidthXXL } from '@porsche-design-system/testing';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import { setupScenario } from '../helpers';
 
 // executed in Chrome only
 test.describe('overview', () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  test('components', async ({ page }) => {
-    await setupScenario(page, '/overview-components', viewportWidthXXL);
-    await page.mouse.click(0, 0);
-    await expect(page.locator('#app')).toHaveScreenshot(`overview-components-${viewportWidthXXL}.png`);
+  test.describe('components page', () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...harnessPageConsole['overview-components']]),
+    });
+
+    test('components', async ({ page }) => {
+      await setupScenario(page, '/overview-components', viewportWidthXXL);
+      await page.mouse.click(0, 0);
+      await expect(page.locator('#app')).toHaveScreenshot(`overview-components-${viewportWidthXXL}.png`);
+    });
   });
 
   test.describe('forms', () => {

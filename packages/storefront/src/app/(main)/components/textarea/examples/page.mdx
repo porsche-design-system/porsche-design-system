@@ -1,26 +1,22 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { textareaMeta } from '@/app/(main)/components/textarea/textarea.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import form from '@porsche-design-system/examples/components/textarea/form';
+import slots from '@porsche-design-system/examples/components/textarea/slots';
 
 export const metadata = {
-  title: 'Textarea - Porsche Design System',
+  title: 'Textarea: Examples - Components',
   description: 'Discover detailed examples and insights of the Textarea component.',
 };
 
 # Textarea <ComponentStatus tagName="p-textarea"></ComponentStatus>
 
-<TableOfContents headings={[textareaMeta.examples.form.name, textareaMeta.examples.slots.name]} />
+<TableOfContents headings={[form.title, slots.title]} />
 
-## {textareaMeta.examples.form.name}
+## {form.title}
 
-<textareaMeta.examples.form.description />
+<Example example={form} />
 
-<ComponentExample codeSample={textareaMeta.examples.form.example} />
+## {slots.title}
 
-## {textareaMeta.examples.slots.name}
-
-<textareaMeta.examples.slots.description />
-
-<ComponentStory story={textareaMeta.examples.slots.story} />
+<Example example={slots} />

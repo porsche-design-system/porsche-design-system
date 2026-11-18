@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+import { dts } from 'rollup-plugin-dts';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
@@ -47,7 +48,7 @@ export default [
     plugins: [
       preserveDirectives.default(),
       resolve(),
-      typescript({ ...typescriptOpts, declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
+      typescript(typescriptOpts),
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
@@ -59,5 +60,12 @@ export default [
       }),
     ],
     onwarn,
+  },
+  // Only the declarations reachable from the public api are shipped. The internal dsr components reference types of
+  // the private components package, which consumers don't have installed.
+  {
+    input,
+    output: { file: `${outputDir}/esm/public-api.d.ts`, format: 'esm' },
+    plugins: [dts({ tsconfig: 'tsconfig.json' })],
   },
 ];

@@ -1,25 +1,22 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { linkMeta } from '@/app/(main)/components/link/link.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import frameworkRouting from '@porsche-design-system/examples/components/link/framework-routing';
+import icon from '@porsche-design-system/examples/components/link/icon';
 
 export const metadata = {
-  title: 'Link - Porsche Design System',
+  title: 'Link: Examples - Components',
   description: 'Discover detailed examples and insights of the Link component.',
 };
 
 # Link <ComponentStatus tagName="p-link"></ComponentStatus>
 
-<TableOfContents headings={[linkMeta.examples.frameworkRouting.name, linkMeta.examples.icon.name]} />
+<TableOfContents headings={[frameworkRouting.title, icon.title]} />
 
-## {linkMeta.examples.frameworkRouting.name}
+## {frameworkRouting.title}
 
-<linkMeta.examples.frameworkRouting.description />
+<Example example={frameworkRouting} />
 
-<ComponentStory story={linkMeta.examples.frameworkRouting.story} />
+## {icon.title}
 
-## {linkMeta.examples.icon.name}
-
-<linkMeta.examples.icon.description />
-
-<ComponentStory story={linkMeta.examples.icon.story} />
+<Example example={icon} />

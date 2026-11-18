@@ -1,9 +1,9 @@
-import { ElementInternalsComponents } from '@/components/common/ElementInternalsComponents';
-import { Notification } from '@/components/common/Notification';
-import { TableOfContents } from '@/components/common/TableOfContents';
+import { ElementInternalsComponents } from '@/components/mdx/reference/ElementInternalsComponents';
+import { Notification } from '@/components/mdx/content/Notification';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 
 export const metadata = {
-  title: 'React: Testing - Porsche Design System',
+  title: 'React: Testing - Developing',
   description: 'Checkout how to test a React application build with Porsche Design System.',
 };
 
@@ -33,9 +33,9 @@ To apply the polyfill, simply import it in your `setupTest.{js|ts}` file.
 **Note:** If your test includes Porsche Design System components, make sure to wrap the component you want to test with
 a `PorscheDesignSystemProvider` in order to avoid exceptions.
 
-<Notification heading="Attention" heading-tag="h2" state="warning">
+<Notification heading="Attention" headingTag="h2" state="warning">
   Certain modern browser APIs are not supported in the jsdom environment. See [Unsupported
-  APIs](/developing/react/testing#unsupported-ap-is) for more information.
+  APIs](/developing/react/testing#unsupported-apis) for more information.
 </Notification>
 
 ### Setup file
@@ -261,7 +261,7 @@ it('should work for PButton', async () => {
 Also exported: `screen` (every query above, bound to `document`), `within`, `deepQuerySelector`, `deepQuerySelectorAll`,
 `getAllElementsAndShadowRoots`, `debug`, `logShadowDOM`, `prettyShadowDOM`, `logRoles`, `configure` and `getConfig`.
 
-<Notification heading="Requires a DOM" heading-tag="h3" state="warning">
+<Notification heading="Requires a DOM" headingTag="h3" state="warning">
   These queries need a DOM to search. Importing the `testing` sub-package where no DOM is available throws an error.
 </Notification>
 
@@ -284,12 +284,19 @@ document when it is omitted.
 import { getByTextShadowed } from '@porsche-design-system/components-react/testing';
 
 it('should work for PAccordion', async () => {
-  render(<PAccordion heading="Heading">Content</PAccordion>);
+  render(
+    <PAccordion>
+      <PHeading slot="summary" tag="h3" size="sm">
+        Heading
+      </PHeading>
+      Content
+    </PAccordion>
+  );
   await componentsReady();
 
   const el = getByTextShadowed('Heading');
   expect(el).toBeInTheDocument();
-  expect(el.tagName).toBe('BUTTON');
+  expect(el.tagName).toBe('P-HEADING');
 });
 ```
 
@@ -339,21 +346,23 @@ HTMLElement.prototype.attachInternals = jest.fn(
 );
 ```
 
-### animate API
+### Web Animations API
 
-Affected Components: `p-tabs-bar`, `p-tabs`, `p-drilldown`
+Affected Components: `p-tabs-bar`, `p-drilldown`
 
-The API must be mocked within the test setup.
+The API must be mocked within the test setup. `p-tabs-bar` calls `animate` and `getAnimations`, `p-drilldown` calls
+`animate` only.
 
 Example mock:
 
 ```ts
-Element.prototype.animate = vi.fn(
+Element.prototype.animate = jest.fn(
   () =>
     ({
       onfinish: null,
-      cancel: vi.fn(),
-      finish: vi.fn(),
+      cancel: jest.fn(),
+      finish: jest.fn(),
     }) as unknown as Animation
 );
+Element.prototype.getAnimations = jest.fn(() => []);
 ```

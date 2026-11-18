@@ -1,8 +1,11 @@
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ExampleViewer } from '@/components/common/ExampleViewer';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { Example } from '@/components/mdx/examples/Example';
+import localMarketSwitch from '@porsche-design-system/examples/patterns/popover/local-market-switch';
+import priorityNavigation from '@porsche-design-system/examples/patterns/popover/priority-navigation';
+import featureTour from '@porsche-design-system/examples/patterns/popover/feature-tour';
 
 export const metadata = {
-  title: 'Patterns: Popover - Porsche Design System',
+  title: 'Popover - Patterns',
   description: 'Learn how to use a popover to guide users to their local market directly from the header.',
 };
 
@@ -16,12 +19,12 @@ clean while remaining accessible.
 
 ## Local market switch
 
-<ExampleViewer example="patterns/popover/local-market-switch" />
+<Example example={localMarketSwitch} />
 
 ## Priority navigation
 
-<ExampleViewer example="patterns/popover/priority-navigation" />
+<Example example={priorityNavigation} />
 
 ## Feature tour
 
-<ExampleViewer example="patterns/popover/feature-tour" />
+<Example example={featureTour} />

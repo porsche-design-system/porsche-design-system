@@ -1,4 +1,4 @@
-import { DependencyList, Notification, TableOfContents } from '@porsche-design-system/docs-components';
+import { Note } from './components/mdx/content/Note';
 import { majorVersion } from './data';
 import Composed from './composed.mdx';
 
@@ -6,16 +6,8 @@ export const metadata = { title: 'Fixture' };
 
 # Fixture
 
-<TableOfContents headings={['Setup']} />
-
 ## Setup
 
-Based on:
-
-<DependencyList items={['react@19', `@porsche-design-system/components-react@${majorVersion}`]} />
-
-<Notification heading="Note">
-  The current major version is **{majorVersion}**.
-</Notification>
+<Note heading="Note">The current major version is **{majorVersion}**.</Note>
 
 <Composed />

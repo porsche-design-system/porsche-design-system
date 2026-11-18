@@ -1,16 +1,14 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { bannerMeta } from '@/app/(main)/components/banner/banner.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import customization from '@porsche-design-system/examples/components/banner/customization';
 
 export const metadata = {
-  title: 'Banner - Porsche Design System',
+  title: 'Banner: Examples - Components',
   description: 'Discover detailed examples and insights of the Banner component.',
 };
 
 # Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
 
-## {bannerMeta.examples.customization.name}
+## {customization.title}
 
-<bannerMeta.examples.customization.description />
-
-<ComponentStory story={bannerMeta.examples.customization.story} />
+<Example example={customization} />

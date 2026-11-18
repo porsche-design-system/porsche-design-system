@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 import * as jsPartials from '@porsche-design-system/components-js/partials';
 import * as reactPartials from '@porsche-design-system/components-react/partials';

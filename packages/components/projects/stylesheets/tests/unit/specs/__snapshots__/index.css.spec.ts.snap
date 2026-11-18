@@ -20,7 +20,7 @@ body {
   -webkit-text-size-adjust: none;
 }
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   --p-color-canvas: light-dark(#fff, hsl(225 66.7% 1.2%));
   --p-color-surface: light-dark(hsl(240 10% 95%), hsl(240 2% 10%));
   --p-color-frosted: light-dark(
@@ -374,7 +374,7 @@ body {
   -webkit-text-size-adjust: none;
 }
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   --p-color-canvas: light-dark(#fff, hsl(225 66.7% 1.2%));
   --p-color-surface: light-dark(hsl(240 10% 95%), hsl(240 2% 10%));
   --p-color-frosted: light-dark(

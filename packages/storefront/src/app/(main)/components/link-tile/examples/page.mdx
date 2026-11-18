@@ -1,50 +1,37 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { linkTileMeta } from '@/app/(main)/components/link-tile/link-tile.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import withVideo from '@porsche-design-system/examples/components/link-tile/with-video';
+import uiBehaviour from '@porsche-design-system/examples/components/link-tile/ui-behaviour';
+import hyphens from '@porsche-design-system/examples/components/link-tile/hyphens';
+import footerSlot from '@porsche-design-system/examples/components/link-tile/footer-slot';
+import colorScheme from '@porsche-design-system/examples/components/link-tile/color-scheme';
 
 export const metadata = {
-  title: 'Link Tile - Porsche Design System',
+  title: 'Link Tile: Examples - Components',
   description: 'Discover detailed examples and insights of the Link Tile component.',
 };
 
 # Link Tile <ComponentStatus tagName="p-link-tile"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    linkTileMeta.examples.withVideo.name,
-    linkTileMeta.examples.uiBehaviour.name,
-    linkTileMeta.examples.hyphens.name,
-    linkTileMeta.examples.footerSlot.name,
-    linkTileMeta.examples.colorScheme.name,
-  ]}
-/>
+<TableOfContents headings={[withVideo.title, uiBehaviour.title, hyphens.title, footerSlot.title, colorScheme.title]} />
 
-## {linkTileMeta.examples.withVideo.name}
+## {withVideo.title}
 
-<ComponentStory story={linkTileMeta.examples.withVideo.story} />
+<Example example={withVideo} />
 
-## {linkTileMeta.examples.uiBehaviour.name}
+## {uiBehaviour.title}
 
-<linkTileMeta.examples.uiBehaviour.description />
+<Example example={uiBehaviour} />
 
-<ComponentStory story={linkTileMeta.examples.uiBehaviour.story} />
+## {hyphens.title}
 
-## {linkTileMeta.examples.hyphens.name}
+<Example example={hyphens} />
 
-<linkTileMeta.examples.hyphens.description />
+## {footerSlot.title}
 
-<ComponentExample codeSample={linkTileMeta.examples.hyphens.example} />
+<Example example={footerSlot} />
 
-## {linkTileMeta.examples.footerSlot.name}
+## {colorScheme.title}
 
-<linkTileMeta.examples.footerSlot.description />
-
-<ComponentStory story={linkTileMeta.examples.footerSlot.story} />
-
-## {linkTileMeta.examples.colorScheme.name}
-
-<linkTileMeta.examples.colorScheme.description />
-
-<ComponentStory story={linkTileMeta.examples.colorScheme.story} />
+<Example example={colorScheme} />

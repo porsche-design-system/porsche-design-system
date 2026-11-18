@@ -1,23 +1,17 @@
-import { expect, test } from '@playwright/test';
-import {
-  getConsoleErrorsAmount,
-  getElementProp,
-  getOuterHTML,
-  goto,
-  initConsoleObserver,
-  waitForComponentsReady,
-} from '../helpers';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
+import { getOuterHTML, getProperty, goto, waitForComponentsReady } from '../helpers';
 
 const console = require('console');
 
-test('overview should work without errors', async ({ page }) => {
-  initConsoleObserver(page);
-  await goto(page, 'overview-components');
+test.describe('overview', () => {
+  test.use({
+    expectedConsole: async ({ expectedConsole }, use) =>
+      use([...expectedConsole, ...harnessPageConsole['overview-components']]),
+  });
 
-  expect(getConsoleErrorsAmount()).toBe(0);
-
-  await page.evaluate(() => console.error('test error'));
-  expect(getConsoleErrorsAmount()).toBe(1);
+  test('overview should work without errors', async ({ page }) => {
+    await goto(page, 'overview-components');
+  });
 });
 
 test.describe('without prefix', () => {
@@ -48,21 +42,14 @@ test.describe('with prefix', () => {
 
     const prefixedComponent = page.locator(prefixedSelector);
 
-    expect(await getElementProp(prefixedComponent, 'description')).toBe('Some Description');
-    expect(await getElementProp(prefixedComponent, 'label')).toBe('Some Label');
+    expect(await getProperty(prefixedComponent, 'description')).toBe('Some Description');
+    expect(await getProperty(prefixedComponent, 'label')).toBe('Some Label');
   });
 });
 
 test.describe('Stepper Horizontal states', () => {
   test('should have no console error if navigated between two pages', async ({ page }) => {
-    initConsoleObserver(page);
     await goto(page, 'stepper-horizontal-navigation-example-start-component');
-    expect(getConsoleErrorsAmount()).toBe(0);
-
     await goto(page, 'stepper-horizontal-navigation-example-second-component');
-    expect(getConsoleErrorsAmount()).toBe(0);
-
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
   });
 });

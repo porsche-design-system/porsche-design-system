@@ -1,45 +1,32 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { buttonTileMeta } from '@/app/(main)/components/button-tile/button-tile.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import uiBehaviour from '@porsche-design-system/examples/components/button-tile/ui-behaviour';
+import hyphens from '@porsche-design-system/examples/components/button-tile/hyphens';
+import footerSlot from '@porsche-design-system/examples/components/button-tile/footer-slot';
+import colorScheme from '@porsche-design-system/examples/components/button-tile/color-scheme';
 
 export const metadata = {
-  title: 'Button Tile - Porsche Design System',
+  title: 'Button Tile: Examples - Components',
   description: 'Discover detailed examples and insights of the Button Tile component.',
 };
 
 # Button Tile <ComponentStatus tagName="p-button-tile"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    buttonTileMeta.examples.uiBehaviour.name,
-    buttonTileMeta.examples.hyphens.name,
-    buttonTileMeta.examples.footerSlot.name,
-    buttonTileMeta.examples.colorScheme.name,
-  ]}
-/>
+<TableOfContents headings={[uiBehaviour.title, hyphens.title, footerSlot.title, colorScheme.title]} />
 
-## {buttonTileMeta.examples.uiBehaviour.name}
+## {uiBehaviour.title}
 
-<buttonTileMeta.examples.uiBehaviour.description />
+<Example example={uiBehaviour} />
 
-<ComponentStory story={buttonTileMeta.examples.uiBehaviour.story} />
+## {hyphens.title}
 
-## {buttonTileMeta.examples.hyphens.name}
+<Example example={hyphens} />
 
-<buttonTileMeta.examples.hyphens.description />
+## {footerSlot.title}
 
-<ComponentExample codeSample={buttonTileMeta.examples.hyphens.example} />
+<Example example={footerSlot} />
 
-## {buttonTileMeta.examples.footerSlot.name}
+## {colorScheme.title}
 
-<buttonTileMeta.examples.footerSlot.description />
-
-<ComponentStory story={buttonTileMeta.examples.footerSlot.story} />
-
-## {buttonTileMeta.examples.colorScheme.name}
-
-<buttonTileMeta.examples.colorScheme.description />
-
-<ComponentStory story={buttonTileMeta.examples.colorScheme.story} />
+<Example example={colorScheme} />

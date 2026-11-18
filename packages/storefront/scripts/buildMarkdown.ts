@@ -3,12 +3,11 @@ import path from 'node:path';
 import {
   collectPages,
   createSite,
-  FRAMEWORKS,
   type Page,
   pageTitle,
   pageToMarkdown,
 } from '@porsche-design-system/docs-components/markdown';
-import { frameworkNameMap } from '../src/models/framework';
+import { FRAMEWORKS, frameworkNameMap } from '@porsche-design-system/shared/models';
 import { getBasePath } from '../src/utils/getBasePath';
 import { markdownLinks, markdownMap } from '../src/utils/markdownMap';
 import { getStorefrontPages } from '../src/utils/markdownPages';

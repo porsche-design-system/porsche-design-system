@@ -1,6 +1,6 @@
 import { camelCase } from 'change-case';
-import * as fs from 'fs';
 import { sync as globbySync } from 'fast-glob';
+import * as fs from 'fs';
 import * as path from 'path';
 
 const INTERNAL_TAG_NAMES = ['p-toast-item'];
@@ -27,7 +27,8 @@ export type TagName = typeof TAG_NAMES[number];
 // TODO: replace with generic in TS4.1: https://stackoverflow.com/questions/57807009/typescript-generic-to-turn-underscore-object-to-camel-case
 export type TagNameCamelCase = ${tags.map((x) => `'${camelCase(x)}'`).join(' | ')};
 
-export const INTERNAL_TAG_NAMES: TagName[] = [${INTERNAL_TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
+export type InternalTagName = Extract<TagName, ${INTERNAL_TAG_NAMES.map((x) => `'${x}'`).join(' | ')}>;
+export const INTERNAL_TAG_NAMES: TagName[] = [${INTERNAL_TAG_NAMES.map((x) => `'${x}'`).join(', ')}] satisfies InternalTagName[];
 `;
 
   const targetDirectory = path.normalize('./src/lib');

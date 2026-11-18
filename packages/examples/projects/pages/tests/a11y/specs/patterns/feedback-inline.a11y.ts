@@ -1,0 +1,39 @@
+import { schemes } from '@porsche-design-system/testing';
+import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../../helpers/index.ts';
+import { expect, expectNoViolations, test, testInitialStates } from '../../helpers/index.ts';
+
+/**
+ * `src/patterns/feedback/inline` – the feedback question asked in place, the comment a rating reveals and the
+ * confirmation that replaces the question.
+ */
+
+const id = 'patterns-feedback-inline';
+const url = getExampleUrl(id);
+
+testInitialStates(id);
+
+for (const scheme of schemes) {
+  test(`rating chosen with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+    await setupExamplePage(page, url, { prefersColorScheme: scheme });
+
+    await page.locator('p-segmented-control-item[value="4"]').click();
+    await expect(page.locator('#feedback-comment')).toBeVisible();
+    await expect(page.locator('#feedback-submit')).toBeVisible();
+    await waitForComponentsHydrated(page);
+
+    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--rated--${scheme}`);
+  });
+
+  test(`confirmation with color-scheme ${scheme}`, async ({ page, makeAxeBuilder }, testInfo) => {
+    await setupExamplePage(page, url, { prefersColorScheme: scheme });
+
+    await page.locator('p-segmented-control-item[value="4"]').click();
+    await page.locator('#feedback-submit').click();
+    // The example delays the submission to simulate a round trip, so the confirmation is awaited.
+    await expect(page.locator('#feedback-thanks')).toBeVisible();
+    await waitForComponentsHydrated(page);
+
+    await expectNoViolations(makeAxeBuilder(), testInfo, `${id}--confirmation--${scheme}`);
+  });
+}

@@ -1,38 +1,27 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { inputTextMeta } from '@/app/(main)/components/input-text/input-text.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import form from '@porsche-design-system/examples/components/input-text/form';
+import controlled from '@porsche-design-system/examples/components/input-text/controlled';
+import slots from '@porsche-design-system/examples/components/input-text/slots';
 
 export const metadata = {
-  title: 'Input Text - Porsche Design System',
+  title: 'Input Text: Examples - Components',
   description: 'Discover detailed examples and insights of the Input Text component.',
 };
 
 # Input Text <ComponentStatus tagName="p-input-text"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    inputTextMeta.examples.form.name,
-    inputTextMeta.examples.controlled.name,
-    inputTextMeta.examples.slots.name,
-  ]}
-/>
+<TableOfContents headings={[form.title, controlled.title, slots.title]} />
 
-## {inputTextMeta.examples.form.name}
+## {form.title}
 
-<inputTextMeta.examples.form.description />
+<Example example={form} />
 
-<ComponentExample codeSample={inputTextMeta.examples.form.example} />
+## {controlled.title}
 
-## {inputTextMeta.examples.controlled.name}
+<Example example={controlled} />
 
-<inputTextMeta.examples.controlled.description />
+## {slots.title}
 
-<ComponentExample codeSample={inputTextMeta.examples.controlled.example} />
-
-## {inputTextMeta.examples.slots.name}
-
-<inputTextMeta.examples.slots.description />
-
-<ComponentStory story={inputTextMeta.examples.slots.story} />
+<Example example={slots} />

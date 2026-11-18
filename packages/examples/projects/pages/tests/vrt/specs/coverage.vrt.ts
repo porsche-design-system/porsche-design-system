@@ -1,0 +1,24 @@
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import { testCoverage } from '@porsche-design-system/testing';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExamplePages, getSpecPath } from '../../helpers/index.ts';
+
+/**
+ * Every example has a spec of its own.
+ *
+ * The specs are written per page rather than generated from the page list, so nothing would notice a new example
+ * without one – and that example would then have no baseline at all. This file notices.
+ */
+
+const specPaths = Object.fromEntries(
+  getExamplePages().map((examplePage) => [examplePage.id, getSpecPath(examplePage, 'vrt')] as const)
+);
+
+testCoverage({
+  test,
+  expect,
+  items: Object.keys(specPaths),
+  getMissing: (id) =>
+    existsSync(path.join(import.meta.dirname, specPaths[id])) ? undefined : `specs/${specPaths[id]}`,
+});

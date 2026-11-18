@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // `next dev` would otherwise create AGENTS.md and CLAUDE.md here whenever an agent runs it.
+  agentRules: false,
   experimental: {
     useLightningcss: true,
     lightningCssFeatures: {
@@ -11,10 +13,6 @@ const nextConfig = {
   images: {
     dangerouslyAllowLocalIP: true,
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'nav.porsche.com',
-      },
       {
         protocol: 'http',
         hostname: 'localhost',

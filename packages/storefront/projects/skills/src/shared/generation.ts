@@ -1,4 +1,4 @@
-import type { Framework } from './skillTree';
+import { type Framework } from '@porsche-design-system/shared';
 
 /**
  * Produces one framework's tree of one skill at `root`. The storefront inputs are a type parameter

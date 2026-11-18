@@ -52,7 +52,6 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -120,7 +119,6 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
     color: GrayText;
   }
   .option--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }

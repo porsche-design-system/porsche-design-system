@@ -1,8 +1,9 @@
-import { DependencyList, TableOfContents } from '@porsche-design-system/docs-components';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
+import { DependencyList } from '@/components/mdx/content/DependencyList';
 
 export const metadata = {
-  title: 'Angular: Getting started - Porsche Design System',
+  title: 'Angular: Getting Started - Developing',
   description: 'Start developing in Angular with the Porsche Design System.',
 };
 
@@ -71,9 +72,9 @@ export class App {
 
 ### Step 3
 
-Add the PDS [Stylesheet](/stylesheets/introduction/) to your main CSS file — this single import covers all required and
+Add the PDS [Stylesheet](/stylesheets/introduction) to your main CSS file — this single import covers all required and
 recommended global styles (for websites primarily targeting users in China, use the `/cn` import instead, see
-[China CDN](/must-know/performance/cdn/#china-cdn)).
+[China CDN](/must-know/performance/cdn#china-cdn)).
 
 ```diff
 /* src/styles.css */
@@ -85,7 +86,7 @@ To prevent FOUC, hide elements until they are either registered
 ([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
 Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
 pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined)`). See
-[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+[Initialization](/must-know/initialization/vanilla-js#preparation) for more details.
 
 ```diff
 /* src/styles.css */
@@ -215,7 +216,7 @@ Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with s
 
 ### Step 7 (recommended)
 
-Link the Porsche Design System [Agent Skills](/skills/introduction/installation/) into your project, so AI coding agents
+Link the Porsche Design System [Agent Skills](/skills/introduction/installation) into your project, so AI coding agents
 such as GitHub Copilot, Claude Code or Codex work with the documentation of the installed version. They ship with the
 Porsche Design System package.
 

@@ -1,9 +1,10 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { Configurator } from '@/components/playground/Configurator';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 import { inputNumberMeta } from '@/app/(main)/components/input-number/input-number.meta';
+import inputNumberDefault from '@porsche-design-system/examples/components/input-number/default';
 
 export const metadata = {
-  title: 'Input Number - Porsche Design System',
+  title: 'Input Number: Configurator - Components',
   description:
     "Learn how to use the Porsche Design System's Input Number component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
 };
@@ -12,8 +13,4 @@ export const metadata = {
 
 <inputNumberMeta.introduction />
 
-<Configurator
-  tagName="p-input-number"
-  story={inputNumberMeta.configurator.story}
-  slotStories={inputNumberMeta.configurator.slotStories}
-/>
+<Configurator example={inputNumberDefault} />

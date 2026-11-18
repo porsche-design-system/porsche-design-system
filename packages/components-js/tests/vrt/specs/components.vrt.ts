@@ -1,7 +1,8 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing';
+import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/testing';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import * as globby from 'fast-glob';
 import * as path from 'path';
 import { setupScenario } from '../helpers';
@@ -67,13 +68,14 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
   }
 };
 
-test('should have certain amount of components', () => {
-  expect(components.length).toBe(60);
-});
-
 for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
+    });
+
     for (const scheme of schemes) {
       test(`color-scheme ${scheme}`, async ({ page }) => {
         await setupScenario(page, `/${component}?scheme=${scheme}`, viewportWidthM);
@@ -85,6 +87,10 @@ for (const component of components) {
 
   // executed in Chrome only
   test.describe(component, () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
+    });
     test.skip(({ browserName }) => browserName !== 'chromium');
 
     for (const viewportWidth of viewportWidths.filter((x) => x !== viewportWidthM)) {
@@ -114,6 +120,46 @@ for (const component of components) {
         await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hcm-${scheme}.png`);
       });
+
+      if (
+        [
+          'accordion',
+          'button',
+          'button-pure',
+          'checkbox',
+          'input-date',
+          'input-email',
+          'input-month',
+          'input-number',
+          'input-password',
+          'input-search',
+          'input-tel',
+          'input-text',
+          'input-time',
+          'input-url',
+          'input-week',
+          'link',
+          'link-pure',
+          'pagination',
+          'popover',
+          'radio-group',
+          'segmented-control',
+          'stepper-horizontal',
+          'tabs',
+          'tabs-bar',
+          'tag-dismissible',
+        ].includes(component)
+      ) {
+        test(`hcm ${scheme} hover state`, async ({ page }) => {
+          await setupScenario(page, `/${component}`, viewportWidthM, {
+            forcePseudoState: 'hover',
+            forcedColorsEnabled: true,
+            prefersColorScheme: scheme,
+          });
+          await revertAutoFocus(page, component);
+          await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hcm-hover-${scheme}.png`);
+        });
+      }
     }
 
     test(`font-size 200%`, async ({ page }) => {

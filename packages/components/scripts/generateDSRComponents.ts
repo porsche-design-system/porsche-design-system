@@ -51,7 +51,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
         .replace(/private(.*?)window.matchMedia(.*?);/g, '')
-        .replace(/\n  private (?!get).+(\n.+)*?(?<!\()\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/(\n  \/\/.*)*\n  private (?!get).+(\n.+)*?(?<!\()\{[\s\S]+?\n  };?\n/g, '') // private methods without getters, including line comments above them
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
@@ -67,6 +67,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onCancel={.*?}/g, '') // onCancel props
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
+        .replace(/\s+onKeyPress={.*?}/g, '') // onKeyPress props
         .replace(/\s+onPaste={.*?}/g, '') // onPaste props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
         .replace(/\s+onWheel={.*?}/g, '') // onWheel props
@@ -107,7 +108,7 @@ const generateDSRComponents = (): void => {
           /^/g,
           `import { Component } from 'react';
 import type { JSX } from 'react';
-import { minifyCss } from '../../minifyCss';
+import { getCachedMinifiedCss } from '../../getCachedMinifiedCss';
 import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
         )
@@ -131,6 +132,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // inject DSR template
         const getComponentCssParams =
           /attachComponentCss\([\s\S]*?getComponentCss(?:, ?([\s\S]*?))?\);/.exec(fileContent)![1] || '';
+        const getCachedMinifiedCssArgs = [`get${componentName}Css`, getComponentCssParams.trim()]
+          .filter(Boolean)
+          .join(', ');
 
         const children = hasSlot
           ? `
@@ -142,7 +146,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           const delegatesFocusProp = isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
-    const style = minifyCss(get${componentName}Css(${getComponentCssParams}));
+    const style = getCachedMinifiedCss(${getCachedMinifiedCssArgs});
 
     return (
       <>
@@ -247,7 +251,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/spellcheck/, 'spellCheck')
             .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
-            .replace(/\b(onInput|onKeyDown|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
+            .replace(/\b(onInput|onKeyPress|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
             .replace(
               /}\) => \{/,
               `$&
@@ -536,10 +540,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // Note: `hasSlottedButton` is already a local `const` derived from `hasNamedSlot(...)` in the source render()
         // and the generic named-slot rewiring above converts it to a `namedSlotChildren.filter(...)` expression, so no
         // private-member reversal is needed here (doing so would produce invalid `const const hasSlottedButton = ...`).
-        newFileContent = newFileContent.replace(
-          /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
-        );
+        newFileContent = newFileContent
+          .replace(/getCachedMinifiedCss\(getPopoverCss\b/, 'getCachedMinifiedCss(getPopoverTriggerCss')
+          .concat(`
+// module-level, because getCachedMinifiedCss() caches per function reference
+const getPopoverTriggerCss = (...args: Parameters<typeof getPopoverCss>): string =>
+  getPopoverCss(...args).replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '$1\\n$2\\n$3\\n$4');
+`);
       } else if (tagName === 'p-tabs-bar') {
         newFileContent = newFileContent
           // get rid of left over
@@ -547,10 +554,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/(getSanitizedActiveTabIndex\(this\.props\.activeTabIndex, )(this\.props\.tabs)/, '$1children');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
-        newFileContent = newFileContent.replace(
-          /getToastCss\(\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
-        );
+        newFileContent = newFileContent
+          .replace(/getCachedMinifiedCss\(getToastCss\)/, 'getCachedMinifiedCss(getToastHostCss)')
+          .concat(`
+// module-level, because getCachedMinifiedCss() caches per function reference
+const getToastHostCss = (): string => getToastCss().replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '$1');
+`);
         // TODO: recover @media query for :host style if needed
       } else if (tagName === 'p-segmented-control') {
         // pass down value, backgroundColor and theme prop to p-segmented-control-item children

@@ -1,6 +1,6 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { Story } from '@porsche-design-system/story-generator';
 
 export const typographyScssStoryHeading: Story<'div'> = {
   generator: () => [

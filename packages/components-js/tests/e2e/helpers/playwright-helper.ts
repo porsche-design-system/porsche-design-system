@@ -1,9 +1,15 @@
-import { expect, type Locator } from '@playwright/test';
+import { type Locator } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
-import type { ConsoleMessage, Page } from 'playwright';
-import { waitForComponentsReady } from './stencil';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import {
+  expect,
+  getLifecycleTrackingScript,
+  getProperty,
+  goto as gotoAndWait,
+  waitForComponentsReady as waitForComponentsReadyFrom,
+} from '@porsche-design-system/testing/playwright';
+import type { Page } from 'playwright';
 
 // TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
 // import { kebabCase } from 'change-case';
@@ -24,7 +30,19 @@ export type Options = any & {
   withoutWaitForComponentsReady?: boolean;
 };
 
-export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
+// the demo app exposes componentsReady on its porscheDesignSystem global, not on window
+export const waitForComponentsReady = (page: Page): Promise<number> =>
+  waitForComponentsReadyFrom(page, { source: 'porscheDesignSystem' });
+
+export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
+  // NOTE: there is another 40ms timeout in checkComponentsUpdatedPromise()
+  // that makes this utility and therefore all tests using it kind of unreliable and feels like gambling
+  await new Promise((resolve) => setTimeout(resolve, 40)); // TODO: remove this once this utility works reliable
+  await page.evaluate((): Promise<number> => {
+    (window as any).checkComponentsUpdatedPromise(); // see setContentWithDesignSystem(), need to check if Promise can be resolved initially
+    return (window as any).componentsUpdatedPromise; // is resolved by checkComponentsUpdatedPromise() with some delay
+  });
+};
 
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
   const options: Options = {
@@ -55,6 +73,8 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <body>
         ${options.withoutLoadCall ? '' : '<script type="text/javascript">porscheDesignSystem.load();</script>'}
         <script>
+          // a block, so a second setContentWithDesignSystem in the same page can declare these again
+          {
           let updatingCount = 0;
           let timeout;
           window.componentsUpdatedPromise = undefined;
@@ -89,37 +109,8 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
             window.checkComponentsUpdatedPromise();
           });
 
-          // initial status
-          window['${LIFECYCLE_STATUS_KEY}'] = {
-            componentWillLoad: { all: 0 },
-            componentDidLoad: { all: 0 },
-            componentWillUpdate: { all: 0 },
-            componentDidUpdate: { all: 0 }
-          };
-
-          const hooks = ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'];
-          for (let hook of hooks) {
-            window.addEventListener(\`stencil_\${hook}\`, (e) => {
-              const eventName = e.type.replace('stencil_', '');
-              const tagName = e.composedPath()[0].tagName.toLowerCase();
-
-              if (window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName] === undefined) {
-                // to ensure the lifecycle hook is not undefined in our e2e test, we have to initialize it
-                for (const hook of hooks) {
-                  window['${LIFECYCLE_STATUS_KEY}'][hook][tagName] = 0;
-                }
-              }
-
-              window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName]++;
-              window['${LIFECYCLE_STATUS_KEY}'][eventName].all++;
-
-              // Debug helper
-              // console.log(JSON.stringify(window['${LIFECYCLE_STATUS_KEY}']));
-
-              ${lifeCycleLogger}
-            });
-          };
-
+${getLifecycleTrackingScript(lifeCycleLogger)}
+          }
         </script>
         ${content}
       </body>
@@ -150,21 +141,6 @@ export const removeAttribute = async (element: Locator, key: string): Promise<vo
     console.warn(`removeAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
   await element.evaluate((el, key) => el.removeAttribute(key), key);
-};
-
-export const getProperty = async <T>(element: Locator, prop: string): Promise<T> => {
-  return element.evaluate((el, prop: string) => (el as unknown as Record<string, T>)[prop], prop);
-};
-
-export const setProperty = async <T>(
-  element: Locator,
-  key: string,
-  value: string | boolean | number | T
-): Promise<void> => {
-  await element.evaluate((el, { key, value }) => ((el as unknown as Record<string, unknown>)[key] = value), {
-    key,
-    value,
-  });
 };
 
 export const getCssClasses = async (element: Locator): Promise<string> => {
@@ -321,53 +297,17 @@ export const enableBrowserLogging = (page: Page): void => {
 export const waitForInputTransition = (_page: Page): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, 250));
 
+export const waitForImproveButtonHandlingForCustomElement = async (page: Page): Promise<void> => {
+  // `improveButtonHandlingForCustomElement` appends, clicks and removes its fake button inside a `setTimeout(…, 1)`
+  // scheduled on click, so polling for the fake button resolves before it was even appended. A timer scheduled
+  // afterwards with a later deadline only fires once that one has run.
+  await page.evaluate(() => new Promise<void>((resolve) => window.setTimeout(resolve, 10)));
+};
+
 export const hasFocus = (element: Locator): Promise<boolean> => element.evaluate((el) => document.activeElement === el);
 
-const consoleMessages: ConsoleMessage[] = [];
-
-// Use to track console errors, excluding custom thrown errors
-export const initConsoleObserver = (page: Page): void => {
-  consoleMessages.length = 0; // reset
-  page.on('console', async (msg) => {
-    consoleMessages.push(msg);
-    if (msg.type() === 'error') {
-      console.error(msg.text());
-    }
-  });
-};
-
-const getConsoleErrors = () => consoleMessages.filter((x) => x.type() === 'error');
-export const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
-export const getConsoleErrorsAmount = () => getConsoleErrors().length;
-export const getConsoleErrorMessages = () =>
-  getConsoleErrors()
-    .map((msg) => '- ' + msg.text())
-    .join('\n');
-export const getConsoleWarningsAmount = () => getConsoleWarnings().length;
-export const getConsoleWarningMessages = () =>
-  getConsoleWarnings()
-    .map((msg) => '- ' + msg.text())
-    .join('\n');
-
-const thrownErrors: string[] = [];
-
-// Use to track custom thrown errors
-export const initPageErrorObserver = (page: Page): void => {
-  thrownErrors.length = 0; // reset
-
-  page.on('pageerror', function (error) {
-    thrownErrors.push(error.toString());
-  });
-};
-
-export const getPageThrownErrorsAmount = () => thrownErrors.length;
-
-const BASE_URL = 'http://localhost:8575';
-
-export const goto = async (page: Page, url: string) => {
-  await page.goto(`${BASE_URL}/${url}`);
-  await waitForComponentsReady(page);
-};
+export const goto = (page: Page, url: string): Promise<void> =>
+  gotoAndWait(page, url, { source: 'porscheDesignSystem' });
 
 // TODO: Replace with component provisioning function
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
@@ -512,11 +452,5 @@ export const hoverElementPosition = async (page: Page, el: Locator): Promise<voi
 export const getFormDataValues = async (form: Locator, name: string) => {
   return form.evaluate((el: HTMLFormElement, name: string) => {
     return new FormData(el).getAll(name);
-  }, name);
-};
-
-export const getFormDataValue = async (form: Locator, name: string) => {
-  return form.evaluate((el: HTMLFormElement, name: string) => {
-    return new FormData(el).get(name);
   }, name);
 };

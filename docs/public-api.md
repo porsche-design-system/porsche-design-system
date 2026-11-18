@@ -17,7 +17,8 @@ keep working. It is the single source of truth for "is this public?" for both hu
 
 Almost every workspace package looks published: it has a scoped name (`@porsche-design-system/scss`), an `exports` map,
 `files`, `types`, and `.d.ts` output. None of that makes it public. All of them carry `"private": true` and are only
-ever resolved through npm workspaces. `packages/shared` is not even scoped — its `name` is literally `shared`.
+ever resolved through npm workspaces. `@porsche-design-system/shared` (`packages/shared`) is one of them, despite its
+scoped name.
 
 The published packages are assembled by copying **selected build output** of those workspace packages into a wrapper
 `dist/`. What is not copied does not exist for a consumer.
@@ -89,21 +90,21 @@ false-positive breaking-change reports.
 This table is the reference version of what `ls packages/components-js/dist/components-wrapper` shows — every row is a
 folder in there. When in doubt, trust the folder.
 
-| Published subpath                                                                                      | Built from                                       | What ships                    |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------ | ----------------------------- |
-| `.`                                                                                                    | `packages/components` via the wrapper projects   | Components, types, JS         |
-| `./partials`                                                                                           | `packages/components-js/projects/partials`       | JS + types                    |
-| `./jsdom-polyfill`                                                                                     | `packages/components-js/projects/jsdom-polyfill` | JS + types                    |
-| `./testing`                                                                                            | wrapper `src/testing`                            | JS + types                    |
-| `./tokens`                                                                                             | `packages/tokens/dist`                           | JS + types                    |
-| `./emotion`, `./styles`                                                                                | `packages/styles/projects/emotion/dist`          | JS + types                    |
-| `./vanilla-extract`, `./styles/vanilla-extract`                                                        | `packages/styles/projects/vanilla-extract/dist`  | JS + types                    |
-| `./scss`                                                                                               | `packages/styles/projects/scss/dist`             | **`.scss` files only**        |
-| `./tailwindcss`                                                                                        | `packages/styles/projects/tailwindcss/dist`      | **`index.css` only**          |
-| `./meta`                                                                                               | `packages/component-meta/dist` (minus `utils`)   | JS + types                    |
-| `./ag-grid`                                                                                            | `packages/utilities/projects/ag-grid/dist`       | JS + types                    |
-| `./index.css`, `./variables.css`, `./normalize.css`, `./font-face.css`, `./color-scheme.css`, `./cn/*` | `packages/components/projects/stylesheets/lib`   | CSS only                      |
-| `skills/` + `bin/pds-skill`                                                                            | `packages/storefront/projects/skills/generated`  | Generated skill content + bin |
+| Published subpath                                                                                      | Built from                                                      | What ships                    |
+| ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ----------------------------- |
+| `.`                                                                                                    | `packages/components` via the wrapper projects                  | Components, types, JS         |
+| `./partials`                                                                                           | `packages/components-js/projects/partials`                      | JS + types                    |
+| `./jsdom-polyfill`                                                                                     | `packages/components-js/projects/jsdom-polyfill`                | JS + types                    |
+| `./testing`                                                                                            | `packages/components-js/projects/jsdom-polyfill/src/testing.ts` | JS + types                    |
+| `./tokens`                                                                                             | `packages/tokens/dist`                                          | JS + types                    |
+| `./emotion`, `./styles`                                                                                | `packages/styles/projects/emotion/dist`                         | JS + types                    |
+| `./vanilla-extract`, `./styles/vanilla-extract`                                                        | `packages/styles/projects/vanilla-extract/dist`                 | JS + types                    |
+| `./scss`                                                                                               | `packages/styles/projects/scss/dist`                            | **`.scss` files only**        |
+| `./tailwindcss`                                                                                        | `packages/styles/projects/tailwindcss/dist`                     | **`index.css` only**          |
+| `./meta`                                                                                               | `packages/component-meta/dist` (minus `utils`)                  | JS + types                    |
+| `./ag-grid`                                                                                            | `packages/utilities/projects/ag-grid/dist`                      | JS + types                    |
+| `./index.css`, `./variables.css`, `./normalize.css`, `./font-face.css`, `./color-scheme.css`, `./cn/*` | `packages/components/projects/stylesheets/lib`                  | CSS only                      |
+| `skills/` + `bin/pds-skill`                                                                            | `packages/storefront/projects/skills/generated`                 | Generated skill content + bin |
 
 The Angular, React and Vue wrappers re-export the same surface; their
 `src/{emotion,vanilla-extract,tokens,meta}/index.ts` barrels are one-line

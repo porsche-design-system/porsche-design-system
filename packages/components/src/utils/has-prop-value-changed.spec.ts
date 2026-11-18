@@ -23,6 +23,16 @@ describe('hasPropValueChanged()', () => {
       result: true,
     },
     {
+      val1: { 'aria-controls': ['a', 'b'] },
+      val2: { 'aria-controls': ['a', 'b'] },
+      result: false,
+    },
+    {
+      val1: { 'aria-controls': ['a', 'b'] },
+      val2: { 'aria-controls': ['a', 'c'] },
+      result: true,
+    },
+    {
       val1: [1, 2],
       val2: [1, 2],
       result: false,

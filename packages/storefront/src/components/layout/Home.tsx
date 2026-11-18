@@ -9,13 +9,13 @@ import {
   PLinkTile,
   PText,
 } from '@porsche-design-system/components-react/ssr';
-import { kebabCase } from 'change-case';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useCallback, useState } from 'react';
+import { DocsLink } from '@/components/common/DocsLink';
 import { StickyBenefitsSection } from '@/components/layout/StickyBenefitsSection';
 import { useParallax } from '@/hooks/useParallax';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
+import { getVersionAnchorId } from '@/links';
 import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 import AppearAnimation from './appearAnimation';
 
@@ -68,8 +68,8 @@ export const Home = () => {
             />
           </svg>
           <div className="[grid-area:1/1] [place-self:end_start] max-w-[22rem] relative p-fluid-md rounded-3xl flex justify-between items-center gap-static-md bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
-            <Link
-              href={`news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
+            <DocsLink
+              href={`/news/changelog#${getVersionAnchorId(localPorscheDesignSystemVersion)}`}
               className="absolute inset-0"
               tabIndex={-1}
               aria-hidden="true"
@@ -81,9 +81,9 @@ export const Home = () => {
               </span>
             </div>
             <PLink hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-              <Link href={`news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}>
+              <DocsLink href={`/news/changelog#${getVersionAnchorId(localPorscheDesignSystemVersion)}`}>
                 Release Note: Checkout the release {localPorscheDesignSystemVersion}
-              </Link>
+              </DocsLink>
             </PLink>
           </div>
         </div>
@@ -99,7 +99,9 @@ export const Home = () => {
             We provide publicly available npm packages for modern frameworks, all powered by Web Components with
             TypeScript and SSR support. Share your feedback, feature requests, and ideas on our public{' '}
             <PLinkPure color="contrast-medium" underline={true} icon="none">
-              <Link href="https://github.com/porsche-design-system/porsche-design-system/issues">issue board</Link>
+              <DocsLink href="https://github.com/porsche-design-system/porsche-design-system/issues">
+                issue board
+              </DocsLink>
             </PLinkPure>
             !
           </PText>
@@ -109,7 +111,7 @@ export const Home = () => {
         <div className="col-[wide] @md:col-[extended] grid @3xl:grid-cols-2 gap-fluid-md">
           <AppearAnimation animation="fade-in-up">
             <div className="relative p-fluid-md flex items-center gap-static-md rounded-3xl bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
-              <Link href="/designing/introduction/" className="absolute inset-0" tabIndex={-1} aria-hidden="true" />
+              <DocsLink href="/designing/introduction" className="absolute inset-0" tabIndex={-1} aria-hidden="true" />
               <Image
                 src={isDark ? 'assets/design_dark.webp' : 'assets/design_light.webp'}
                 alt=""
@@ -122,13 +124,13 @@ export const Home = () => {
                 Start Designing
               </PHeading>
               <PLink className="shrink-0" hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-                <Link href="/designing/introduction/">Start Designing</Link>
+                <DocsLink href="/designing/introduction">Start Designing</DocsLink>
               </PLink>
             </div>
           </AppearAnimation>
           <AppearAnimation animation="fade-in-up">
             <div className="relative p-fluid-md flex items-center gap-static-md rounded-3xl bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
-              <Link href="/developing/introduction/" className="absolute inset-0" tabIndex={-1} aria-hidden="true" />
+              <DocsLink href="/developing/introduction" className="absolute inset-0" tabIndex={-1} aria-hidden="true" />
               <Image
                 src={isDark ? 'assets/coding_dark.webp' : 'assets/coding_light.webp'}
                 alt=""
@@ -141,7 +143,7 @@ export const Home = () => {
                 Start Coding
               </PHeading>
               <PLink className="shrink-0" hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-                <Link href="/developing/introduction/">Start Coding</Link>
+                <DocsLink href="/developing/introduction">Start Coding</DocsLink>
               </PLink>
             </div>
           </AppearAnimation>
@@ -360,7 +362,7 @@ export const Home = () => {
             Porsche Design System. Ready to get involved? Start by exploring our contributing guidelines!
           </PText>
           <PLinkPure className="mt-fluid-md">
-            <Link href="/help/feature-request/">Create feature Request</Link>
+            <DocsLink href="/help/feature-request">Create feature Request</DocsLink>
           </PLinkPure>
         </AppearAnimation>
       </section>
@@ -411,7 +413,7 @@ export const Home = () => {
               </PHeading>
               <PText color="contrast-medium">
                 <PLinkPure icon="none" underline={true}>
-                  <Link href="/developing/introduction/">Get Started</Link>
+                  <DocsLink href="/developing/introduction">Get Started</DocsLink>
                 </PLinkPure>{' '}
                 by installing the Porsche Design System packages via npm and importing the components.
               </PText>
@@ -431,7 +433,7 @@ export const Home = () => {
               </PHeading>
               <PText color="contrast-medium">
                 <PLinkPure icon="none" underline={true}>
-                  <Link href="/components/introduction/">Components</Link>
+                  <DocsLink href="/components/introduction">Components</DocsLink>
                 </PLinkPure>{' '}
                 are designed to cover common use cases out of the box. You can customize them through their public
                 interface: <code>Properties</code>, <code>Slots</code>, and <code>CSS variables</code>. Don't override
@@ -449,19 +451,19 @@ export const Home = () => {
                 <br />
                 For fully custom components, we offer styling solutions for{' '}
                 <PLinkPure icon="none" underline={true}>
-                  <Link href="/tailwindcss/introduction/">Tailwind CSS</Link>
+                  <DocsLink href="/tailwindcss/introduction">Tailwind CSS</DocsLink>
                 </PLinkPure>{' '}
                 (recommended),{' '}
                 <PLinkPure icon="none" underline={true}>
-                  <Link href="/scss/introduction/">SCSS</Link>
+                  <DocsLink href="/scss/introduction">SCSS</DocsLink>
                 </PLinkPure>
                 ,{' '}
                 <PLinkPure icon="none" underline={true}>
-                  <Link href="/emotion/introduction/">Emotion</Link>
+                  <DocsLink href="/emotion/introduction">Emotion</DocsLink>
                 </PLinkPure>
                 , and{' '}
                 <PLinkPure icon="none" underline={true}>
-                  <Link href="/vanilla-extract/introduction/">Vanilla Extract</Link>
+                  <DocsLink href="/vanilla-extract/introduction">Vanilla Extract</DocsLink>
                 </PLinkPure>
                 .
               </PText>

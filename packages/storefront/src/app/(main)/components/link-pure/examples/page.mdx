@@ -1,10 +1,13 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 import { linkPureMeta } from '@/app/(main)/components/link-pure/link-pure.meta';
+import icon from '@porsche-design-system/examples/components/link-pure/icon';
+import frameworkRouting from '@porsche-design-system/examples/components/link-pure/framework-routing';
+import customClickableArea from '@porsche-design-system/examples/components/link-pure/custom-clickable-area';
 
 export const metadata = {
-  title: 'Link Pure - Porsche Design System',
+  title: 'Link Pure: Examples - Components',
   description: 'Discover detailed examples and insights of the Link Pure component.',
 };
 
@@ -12,31 +15,25 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    linkPureMeta.examples.icon.name,
-    linkPureMeta.examples.frameworkRouting.name,
-    linkPureMeta.examples.frameworkRoutingActiveState.name,
-    linkPureMeta.examples.customClickableArea.name,
+    icon.title,
+    frameworkRouting.title,
+    linkPureMeta.notes.frameworkRoutingActiveState.name,
+    customClickableArea.title,
   ]}
 />
 
-## {linkPureMeta.examples.icon.name}
+## {icon.title}
 
-<linkPureMeta.examples.icon.description />
+<Example example={icon} />
 
-<ComponentStory story={linkPureMeta.examples.icon.story} />
+## {frameworkRouting.title}
 
-## {linkPureMeta.examples.frameworkRouting.name}
+<Example example={frameworkRouting} />
 
-<linkPureMeta.examples.frameworkRouting.description />
+## {linkPureMeta.notes.frameworkRoutingActiveState.name}
 
-<ComponentStory story={linkPureMeta.examples.frameworkRouting.story} />
+<linkPureMeta.notes.frameworkRoutingActiveState.description />
 
-## {linkPureMeta.examples.frameworkRoutingActiveState.name}
+## {customClickableArea.title}
 
-<linkPureMeta.examples.frameworkRoutingActiveState.description />
-
-## {linkPureMeta.examples.customClickableArea.name}
-
-<linkPureMeta.examples.customClickableArea.description />
-
-<ComponentStory story={linkPureMeta.examples.customClickableArea.story} />
+<Example example={customClickableArea} />

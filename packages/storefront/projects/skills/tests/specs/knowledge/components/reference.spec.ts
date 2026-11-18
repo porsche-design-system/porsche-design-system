@@ -25,7 +25,7 @@ describe('writeComponentReferences', () => {
     Object.fromEntries(tags.map((tag) => [tag, { ...proseMap[tag], ...examplesMap[tag] }]));
 
   it('writes component references and returns a roster', () => {
-    const tree = new SkillTree(root, 'js');
+    const tree = new SkillTree(root, 'vanilla-js');
     tree.reset();
 
     const report = writeComponentReferences(tree, {
@@ -50,7 +50,7 @@ describe('writeComponentReferences', () => {
   });
 
   it('propagates a degraded-prose failure instead of writing the tree', () => {
-    const tree = new SkillTree(root, 'js');
+    const tree = new SkillTree(root, 'vanilla-js');
     tree.reset();
 
     expect(() =>
@@ -63,7 +63,7 @@ describe('writeComponentReferences', () => {
   });
 
   it('rejects a documented tag that component-meta does not know', () => {
-    const tree = new SkillTree(root, 'js');
+    const tree = new SkillTree(root, 'vanilla-js');
     tree.reset();
 
     expect(() =>

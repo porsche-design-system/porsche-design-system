@@ -1,9 +1,10 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { Configurator } from '@/components/playground/Configurator';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 import { wordmarkMeta } from '@/app/(main)/components/wordmark/wordmark.meta';
+import wordmarkDefault from '@porsche-design-system/examples/components/wordmark/default';
 
 export const metadata = {
-  title: 'Wordmark - Porsche Design System',
+  title: 'Wordmark: Configurator - Components',
   description:
     "Learn how to use the Porsche Design System's Wordmark component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
 };
@@ -12,4 +13,4 @@ export const metadata = {
 
 <wordmarkMeta.introduction />
 
-<Configurator tagName="p-wordmark" story={wordmarkMeta.configurator.story} />
+<Configurator example={wordmarkDefault} />

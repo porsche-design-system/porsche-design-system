@@ -1,10 +1,10 @@
 import {
   defineOutputMap,
-  type Framework,
   htmlLink,
   type LinkResolver,
   mapLinks,
 } from '@porsche-design-system/docs-components/markdown';
+import type { Framework } from '@porsche-design-system/shared/models';
 
 /**
  * The structure of the Storefront's Markdown, derived from the sitemap: each page next to its HTML

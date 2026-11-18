@@ -1,9 +1,10 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { Configurator } from '@/components/playground/Configurator';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { Configurator } from '@/components/mdx/playground/Configurator';
 import { linkPureMeta } from '@/app/(main)/components/link-pure/link-pure.meta';
+import linkPureDefault from '@porsche-design-system/examples/components/link-pure/default';
 
 export const metadata = {
-  title: 'Link Pure - Porsche Design System',
+  title: 'Link Pure: Configurator - Components',
   description:
     "Learn how to use the Porsche Design System's Link Pure component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
 };
@@ -12,4 +13,4 @@ export const metadata = {
 
 <linkPureMeta.introduction />
 
-<Configurator tagName="p-link-pure" story={linkPureMeta.configurator.story} />
+<Configurator example={linkPureDefault} />

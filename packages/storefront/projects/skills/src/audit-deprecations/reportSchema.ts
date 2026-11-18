@@ -1,6 +1,6 @@
+import { type Framework, frameworkSuffixMap } from '@porsche-design-system/shared';
 import { EFFORTS, USAGE_KINDS } from '../knowledge/deprecations/types';
 import { getSkillName } from '../registry';
-import type { Framework } from '../shared/skillTree';
 import { DETECTION_IDS, VALUE_RESOLUTION_IDS } from './grading';
 
 /**
@@ -43,7 +43,7 @@ export const buildReportSchema = (framework: Framework): string => {
   const schema = {
     $schema: 'https://json-schema.org/draft/2020-12/schema',
     $id: `https://designsystem.porsche.com/schemas/${skillName}/${REPORT_SCHEMA_VERSION}.json`,
-    title: `Porsche Design System deprecation audit report (${framework})`,
+    title: `Porsche Design System deprecation audit report (${frameworkSuffixMap[framework]})`,
     type: 'object',
     additionalProperties: false,
     required: ['schemaVersion', 'audit', 'project', 'scope', 'summary', 'coverage', 'findings', 'manualFollowUps'],
@@ -64,7 +64,7 @@ export const buildReportSchema = (framework: Framework): string => {
             const: AUDIT_KIND,
             description: 'What this report audits, for a consumer reading a run directory of several.',
           },
-          framework: { const: framework },
+          framework: { const: frameworkSuffixMap[framework] },
           pdsVersion: { type: 'string', description: 'The installed PDS version the audit was run against.' },
         },
       },

@@ -1,15 +1,14 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
-  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -389,6 +388,30 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
+  for (const type of ['keydown', 'keypress'] as const) {
+    test(`should not submit on key Enter if ${type} is cancelled`, async ({ page }) => {
+      await initPinCode(page, { props: { name: 'name', value: '1234' }, options: { isWithinForm: true } });
+      const host = getHost(page);
+      const input = getCurrentInput(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      await host.evaluate((el, type) => {
+        el.addEventListener(type, (e) => {
+          if ((e as KeyboardEvent).key === 'Enter') {
+            e.preventDefault();
+          }
+        });
+      }, type);
+
+      await input.click();
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(0);
+    });
+  }
+
   test('should submit on key Enter if form does contain another input element and a input type=submit', async ({
     page,
   }) => {
@@ -510,8 +533,80 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(0);
   });
 
+  for (const { markupAfter, expected, description } of [
+    {
+      markupAfter: '<p-input-text name="other" label="Other" />',
+      expected: 0,
+      description: 'not submit on key Enter if form does contain a p-input-text',
+    },
+    {
+      markupAfter: '<input type="checkbox" name="other" />',
+      expected: 1,
+      description: 'submit on key Enter if form does contain a checkbox',
+    },
+    {
+      markupAfter: '<input type="date" name="other" />',
+      expected: 1,
+      description: 'submit on key Enter if form does contain an input type=date',
+    },
+  ]) {
+    test(`should ${description} and no submit button`, async ({ page }) => {
+      await initPinCode(page, { props: { name: 'name', value: '1234' }, options: { isWithinForm: true, markupAfter } });
+      const input = getCurrentInput(page);
+      const form = getForm(page);
+      await addEventListener(form, 'submit');
+
+      await input.click();
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(expected);
+    });
+  }
+
+  test('should not submit on key Enter if the submit button is disabled', async ({ page }) => {
+    await initPinCode(page, {
+      props: { name: 'name', value: '1234' },
+      options: { isWithinForm: true, markupAfter: '<button type="submit" disabled>Some Button</button>' },
+    });
+    const input = getCurrentInput(page);
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(0);
+  });
+
+  test('should click the submit button on key Enter', async ({ page }) => {
+    await initPinCode(page, {
+      props: { name: 'name', value: '1234' },
+      options: {
+        isWithinForm: true,
+        markupAfter: '<button type="submit" name="action" value="verify">Some Button</button>',
+      },
+    });
+    const input = getCurrentInput(page);
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
+    await form.evaluate((el) =>
+      el.addEventListener('submit', (e) => {
+        (window as unknown as { submitter?: string }).submitter =
+          (e as SubmitEvent).submitter?.getAttribute('value') ?? '';
+      })
+    );
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(await page.evaluate(() => (window as unknown as { submitter?: string }).submitter)).toBe('verify');
+  });
+
   test('should not set validity when disabled and throw no errors', async ({ page }) => {
-    initConsoleObserver(page);
     await initPinCode(page, {
       options: {
         isWithinForm: true,
@@ -524,7 +619,6 @@ test.describe('form', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 
@@ -1032,9 +1126,7 @@ test.describe('events', () => {
       expect(await getProperty<string>(host, 'value')).toStrictEqual('12  ');
     });
 
-    test('should overwrite last input when more digits are typed than the pin length', async ({
-      page,
-    }) => {
+    test('should overwrite last input when more digits are typed than the pin length', async ({ page }) => {
       await initPinCode(page);
       const host = getHost(page);
       const input1 = getInput(page, 1);

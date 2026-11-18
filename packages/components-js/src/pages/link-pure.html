@@ -1,3 +1,12 @@
+<style>
+.custom-padding-hover-inset {
+  --p-link-pure-px: 48px;
+  --p-link-pure-py: 32px;
+  --p-link-pure-hover-inset-x: -16px;
+  --p-link-pure-hover-inset-y: -12px;
+}
+</style>
+
 <div class="playground auto-layout-inline" title="should render with label">
   <p-link-pure href="https://porsche.com" class="a11ytree-snapshot-test">Label default</p-link-pure>
   <p-link-pure><a href="https://porsche.com">Label slotted</a></p-link-pure>
@@ -199,4 +208,15 @@
     style="font-size: 48px"
     >Label icon none size responsive</p-link-pure
   >
+</div>
+
+<div class="playground auto-layout-inline" title="should render with custom padding and hover inset">
+  <p-link-pure class="custom-padding-hover-inset" href="https://porsche.com">Some label</p-link-pure>
+  <p-link-pure class="custom-padding-hover-inset" href="https://porsche.com" active="true">Some label</p-link-pure>
+  <p-link-pure class="custom-padding-hover-inset" active="true">
+    <a href="https://porsche.com">Some label</a>
+  </p-link-pure>
+  <p-link-pure class="custom-padding-hover-inset" href="https://porsche.com" hide-label="true" active="true">
+    Some label
+  </p-link-pure>
 </div>

@@ -1,12 +1,12 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { Story } from '@porsche-design-system/story-generator';
 
 export const statementStory: Story<'p-heading'> = {
   generator: () => [
     {
       tag: 'p-heading',
-      properties: { size: 'large' },
+      properties: { size: 'lg' },
       children: [{ tag: 'h1', children: ['Accessibility Statement'] }],
     },
     {
@@ -25,7 +25,7 @@ export const statementStory: Story<'p-heading'> = {
     {
       tag: 'p-heading',
       properties: {
-        size: 'medium',
+        size: 'md',
         className: 'mt-fluid-sm',
       },
       children: [
@@ -39,7 +39,7 @@ export const statementStory: Story<'p-heading'> = {
       tag: 'p-text',
       properties: {
         className: 'mt-fluid-md',
-        weight: 'semi-bold',
+        weight: 'semibold',
       },
       children: ['We take the following measures to ensure accessibility of this Website:'],
     },
@@ -74,7 +74,7 @@ export const statementStory: Story<'p-heading'> = {
     },
     {
       tag: 'p-heading',
-      properties: { size: 'medium', className: 'mt-fluid-md' },
+      properties: { size: 'md', className: 'mt-fluid-md' },
       children: [{ tag: 'h2', children: ['Conformance status'] }],
     },
     {
@@ -104,7 +104,7 @@ export const statementStory: Story<'p-heading'> = {
     },
     {
       tag: 'p-heading',
-      properties: { size: 'medium', className: 'mt-fluid-md' },
+      properties: { size: 'md', className: 'mt-fluid-md' },
       children: [{ tag: 'h2', children: ['Feedback'] }],
     },
     {

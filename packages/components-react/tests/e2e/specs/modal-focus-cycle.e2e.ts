@@ -1,6 +1,6 @@
-import { expect, type Locator, test } from '@playwright/test';
-import { getProperty } from '../../../../components-js/tests/a11y/helpers';
-import { goto } from '../helpers';
+import { type Locator } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getProperty, goto } from '../helpers';
 
 test.use({
   // to prevent horizontal scrollable table

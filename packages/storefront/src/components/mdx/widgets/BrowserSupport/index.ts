@@ -1,0 +1,1 @@
+export { BrowserSupport } from './BrowserSupport';

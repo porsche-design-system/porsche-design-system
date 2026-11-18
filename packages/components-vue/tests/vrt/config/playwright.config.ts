@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
-import { playwrightConfigVRT } from '@porsche-design-system/shared/testing';
+import { playwrightConfigVRT } from '@porsche-design-system/testing';
+import type { TestOptions } from '@porsche-design-system/testing/playwright';
 
-export default defineConfig({
+export default defineConfig<TestOptions>({
   ...playwrightConfigVRT,
   snapshotPathTemplate: '{testDir}/../../../../components-js/tests/vrt/specs/__screenshots__/{arg}-{projectName}{ext}',
   projects: [

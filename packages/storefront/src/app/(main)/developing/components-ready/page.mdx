@@ -1,8 +1,8 @@
-import { Notification } from '@/components/common/Notification';
-import { TableOfContents } from '@/components/common/TableOfContents';
+import { Notification } from '@/components/mdx/content/Notification';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 
 export const metadata = {
-  title: 'Components Ready - Porsche Design System',
+  title: 'Components Ready - Developing',
   description: 'Find out when Porsche Design Systems components are fully initialized with `componentsReady()`.',
 };
 
@@ -90,7 +90,7 @@ In this section you can find basic examples for the default test setups of each 
 
 Other Angular setups can be found further down.
 
-<Notification heading="Important note" heading-tag="h3" state="warning">
+<Notification heading="Important note" headingTag="h3" state="warning">
   All test environments that don't use a real browser typically run in **jsdom** which requires our `@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill` subpackage in order to have real working Porsche Design System components.
 
 Without it, you are just rendering "dead" component markup without any functionality.

@@ -1,11 +1,13 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getEventSummary,
   getFormDataValue,
+  goto,
   setProperty,
-} from '../../../../components-js/tests/e2e/helpers';
-import { goto, waitForComponentsReady } from '../helpers';
+  waitForComponentsReady,
+} from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-input-email');
 const getForm = (page: Page) => page.locator('form');

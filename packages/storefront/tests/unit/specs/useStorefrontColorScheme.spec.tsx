@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { StorefrontColorSchemeProvider } from '@/components/providers/StorefrontColorSchemeProvider';
@@ -73,7 +73,7 @@ describe('StorefrontColorSchemeProvider', () => {
       </StorefrontColorSchemeProvider>
     );
 
-    screen.getByText('Set Dark').click();
+    fireEvent.click(screen.getByText('Set Dark'));
 
     expect(localStorage.setItem).toHaveBeenCalledWith('storefrontColorScheme', 'scheme-dark');
 
@@ -92,7 +92,7 @@ describe('StorefrontColorSchemeProvider', () => {
       </StorefrontColorSchemeProvider>
     );
 
-    screen.getByText('Set Light').click();
+    fireEvent.click(screen.getByText('Set Light'));
 
     expect(localStorage.setItem).toHaveBeenCalledWith('storefrontColorScheme', 'scheme-light');
 
@@ -103,7 +103,7 @@ describe('StorefrontColorSchemeProvider', () => {
       expect(document.documentElement.classList.contains('scheme-light-dark')).toBe(false);
     });
 
-    screen.getByText('Set Light Dark').click();
+    fireEvent.click(screen.getByText('Set Light Dark'));
 
     expect(localStorage.setItem).toHaveBeenCalledWith('storefrontColorScheme', 'scheme-light-dark');
 

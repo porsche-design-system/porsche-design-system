@@ -5,7 +5,7 @@ type Booleanish = boolean | 'true' | 'false';
 
 export type AriaAttributes = {
   /** Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application. */
-  "aria-activedescendant"?: string | undefined;
+  "aria-activedescendant"?: string | Element | null | undefined;
   /** Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute. */
   "aria-atomic"?: Booleanish | undefined;
   /**
@@ -54,7 +54,7 @@ export type AriaAttributes = {
    * Identifies the element (or elements) whose contents or presence are controlled by the current element.
    * @see aria-owns.
    */
-  "aria-controls"?: string | undefined;
+  "aria-controls"?: string | Element | readonly Element[] | null | undefined;
   /** Indicates the element that represents the current item within a container or set of related elements. */
   "aria-current"?: boolean | "false" | "true" | "page" | "step" | "location" | "date" | "time" | undefined;
   /**

@@ -96,7 +96,15 @@
       "!**/utilities/**/*",
       "!**/*.svg",
       "!packages/components/src/index.html",
-      "!packages/components/src/debug.html"
+      "!packages/components/src/debug.html",
+      "packages/{assets,components-angular,components-js,components-react,components-vue}/**",
+      "!packages/{assets,components-angular,components-js,components-react,components-vue}/**/*.*",
+      "**/*.e2e.ts",
+      "**/*.a11y.ts",
+      "**/*.vrt.ts",
+      "**/*.smoke.ts",
+      "packages/**/tests/**/helpers/**/*.ts",
+      "!packages/shared/projects/testing/**"
     ]
   },
   "css": {
@@ -184,7 +192,69 @@
       }
     },
     {
-      "includes": ["packages/examples/src/**/*.tsx"],
+      "includes": [
+        "**/assets/**/*",
+        "**/components-angular/**/*",
+        "**/components-js/**/*",
+        "**/components-react/**/*",
+        "**/components-vue/**/*"
+      ],
+      "linter": {
+        "rules": {
+          "recommended": false
+        }
+      }
+    },
+    {
+      "includes": [
+        "**/*.e2e.ts",
+        "**/*.a11y.ts",
+        "**/*.vrt.ts",
+        "**/*.smoke.ts",
+        "packages/**/tests/**/helpers/**/*.ts",
+        "!packages/shared/projects/testing/**"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "@playwright/test": {
+                    "importNames": ["test"],
+                    "message": "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["packages/storefront/**/*.{ts,tsx}", "!packages/storefront/src/components/common/DocsLink.tsx"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "next/link": "Use DocsLink from '@/components/common/DocsLink', which types routes and keeps anchors on the page.",
+                  "@playwright/test": {
+                    "importNames": ["test"],
+                    "message": "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["packages/examples/projects/pages/src/**/*.tsx"],
       "linter": {
         "rules": {
           "a11y": {

@@ -12,9 +12,19 @@ const nextConfig: NextConfig = {
   // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
   //skipTrailingSlashRedirect: true,
   distDir: 'dist',
+  // `next dev` would otherwise write its own rules block into the hand-maintained AGENTS.md whenever an agent runs it.
+  agentRules: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // These workspaces are exported as raw TypeScript, so they have to be compiled by the storefront build.
-  transpilePackages: ['@porsche-design-system/skills', '@porsche-design-system/docs-components'],
+  // These packages export raw TypeScript, so the storefront build compiles them (and `next dev` reloads them on change).
+  transpilePackages: [
+    '@porsche-design-system/docs-components',
+    '@porsche-design-system/examples',
+    '@porsche-design-system/examples-framework',
+    '@porsche-design-system/examples-pages',
+    '@porsche-design-system/examples-stories',
+    '@porsche-design-system/skills',
+    '@porsche-design-system/story-generator',
+  ],
   images: {
     unoptimized: true,
   },

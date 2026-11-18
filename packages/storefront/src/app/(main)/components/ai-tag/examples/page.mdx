@@ -1,10 +1,16 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { aiTagMeta } from '@/app/(main)/components/ai-tag/ai-tag.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import withinCheckbox from '@porsche-design-system/examples/components/ai-tag/within-checkbox';
+import withinRadioGroup from '@porsche-design-system/examples/components/ai-tag/within-radio-group';
+import withinFormLabel from '@porsche-design-system/examples/components/ai-tag/within-form-label';
+import withinInputSearch from '@porsche-design-system/examples/components/ai-tag/within-input-search';
+import withinText from '@porsche-design-system/examples/components/ai-tag/within-text';
+import withinImage from '@porsche-design-system/examples/components/ai-tag/within-image';
+import withinTable from '@porsche-design-system/examples/components/ai-tag/within-table';
 
 export const metadata = {
-  title: 'AI Tag - Porsche Design System',
+  title: 'AI Tag: Examples - Components',
   description: 'Discover detailed examples and insights of the AI Tag component.',
 };
 
@@ -12,54 +18,40 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    aiTagMeta.examples.withinCheckbox.name,
-    aiTagMeta.examples.withinRadioGroup.name,
-    aiTagMeta.examples.withinFormLabel.name,
-    aiTagMeta.examples.withinInputSearch.name,
-    aiTagMeta.examples.withinText.name,
-    aiTagMeta.examples.withinImage.name,
-    aiTagMeta.examples.withinTable.name,
+    withinCheckbox.title,
+    withinRadioGroup.title,
+    withinFormLabel.title,
+    withinInputSearch.title,
+    withinText.title,
+    withinImage.title,
+    withinTable.title,
   ]}
 />
 
-## {aiTagMeta.examples.withinCheckbox.name}
+## {withinCheckbox.title}
 
-<aiTagMeta.examples.withinCheckbox.description />
+<Example example={withinCheckbox} />
 
-<ComponentStory story={aiTagMeta.examples.withinCheckbox.story} />
+## {withinRadioGroup.title}
 
-## {aiTagMeta.examples.withinRadioGroup.name}
+<Example example={withinRadioGroup} />
 
-<aiTagMeta.examples.withinRadioGroup.description />
+## {withinFormLabel.title}
 
-<ComponentStory story={aiTagMeta.examples.withinRadioGroup.story} />
+<Example example={withinFormLabel} />
 
-## {aiTagMeta.examples.withinFormLabel.name}
+## {withinInputSearch.title}
 
-<aiTagMeta.examples.withinFormLabel.description />
+<Example example={withinInputSearch} />
 
-<ComponentStory story={aiTagMeta.examples.withinFormLabel.story} />
+## {withinText.title}
 
-## {aiTagMeta.examples.withinInputSearch.name}
+<Example example={withinText} />
 
-<aiTagMeta.examples.withinInputSearch.description />
+## {withinImage.title}
 
-<ComponentStory story={aiTagMeta.examples.withinInputSearch.story} />
+<Example example={withinImage} />
 
-## {aiTagMeta.examples.withinText.name}
+## {withinTable.title}
 
-<aiTagMeta.examples.withinText.description />
-
-<ComponentStory story={aiTagMeta.examples.withinText.story} />
-
-## {aiTagMeta.examples.withinImage.name}
-
-<aiTagMeta.examples.withinImage.description />
-
-<ComponentStory story={aiTagMeta.examples.withinImage.story} />
-
-## {aiTagMeta.examples.withinTable.name}
-
-<aiTagMeta.examples.withinTable.description />
-
-<ComponentStory story={aiTagMeta.examples.withinTable.story} />
+<Example example={withinTable} />

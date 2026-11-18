@@ -1,7 +1,8 @@
 # Design: dual-target MDX components
 
-> **Status:** proposal. A first slice is implemented in `packages/storefront/projects/docs-components`. Tracked in
-> #4142, umbrella #4771.
+> **Status:** proposal. A first slice is implemented: the engine in `packages/storefront/projects/docs-components`, the
+> Markdown implementations next to the React ones in `packages/storefront/src/components/mdx`. Tracked in #4142,
+> umbrella #4771.
 
 ## Summary
 
@@ -13,9 +14,9 @@ an mdast tree without running it and serializes that tree to Markdown (`renderMd
 generator does not know is dropped silently, and every `{expression}` is dropped with it. For example, the
 getting-started pages lose their whole dependency list (`<PTag>…@{localPorscheDesignSystemMajorVersion}</PTag>`).
 
-This design replaces the silent, lossy path with a **registry of dual-target components**. Each component MDX may use
-has a React and a Markdown implementation. Both targets run the same MDX, and anything that is not registered fails the
-build.
+This design replaces the silent, lossy path with **dual-target components**. Each component MDX may use has a React and
+a Markdown implementation, side by side in its folder. Both targets run the same MDX, and anything without a Markdown
+implementation fails the build.
 
 ## Target architecture
 
@@ -27,7 +28,7 @@ end, it is one consumer of a shared core among others.
 ```
  Sources (written once)                Core (docs-components)                          Outputs
  ───────────────────────               ───────────────────────────────                 ───────────────────────────
- MDX pages (Storefront routes,    ┌─▶  registry: React + Markdown per component  ─▶   Storefront HTML (Next, React)
+ MDX pages (Storefront routes,    ┌─▶  components: React and Markdown each       ─▶   Storefront HTML (Next, React)
  later package-owned docs)        │
  structured meta (componentMeta,  ├─▶  1. collect  → page manifest                     Web Markdown (dist/)
  tokens, Tailwind CSS, examples,  │    2. render   → mdast per page × framework   ─▶    <route>.md, <route>.<fw>.md,
@@ -37,7 +38,7 @@ end, it is one consumer of a shared core among others.
                                                                                          SKILL.md (instructions + index)
 ```
 
-- **The sitemap is the one tree.** `src/sitemap.tsx` already models what every output needs, category → page → tab, with
+- **The sitemap is the one tree.** `src/sitemap.ts` already models what every output needs, category → page → tab, with
   names and paths. Every structure is derived from it instead of being defined again per output:
 
   | Output                   | Derived from the sitemap                                                                                                           |
@@ -48,10 +49,10 @@ end, it is one consumer of a shared core among others.
   | Skill references         | one reference per page, its tabs as sections in sitemap order: `references/developing/react.md`, `references/components/button.md` |
   | `SKILL.md` index         | categories become sections that link their references; the hand-written instructions stay                                          |
 
-  Nodes get a plain-text `title` next to `name`, which is a React element for components (flags such as 🧪). The file
-  system stays the source of the routes that exist, and a test keeps the sitemap and the files in line. This replaces
-  the regexes in `markdownPages.ts` and the skill, the section names `llms.txt` derives from URLs, and the special case
-  for components in `rewriteDocLinks`.
+  Its names are plain text (#4780); a category gets a `description` for its section in `llms.txt` and `SKILL.md`. The
+  file system stays the source of the routes that exist, and a test keeps the sitemap and the files in line. This
+  replaces the regexes in `markdownPages.ts` and the skill, the section names `llms.txt` derives from URLs, and the
+  special case for components in `rewriteDocLinks`.
 
 - **One output map per output.** The sitemap is the global tree, used by MDX links and the Storefront's navigation.
   Every other output derives its structure from it through an output map (`defineOutputMap` in `docs-components`):
@@ -116,7 +117,8 @@ Each step is one reviewable pull request. The first builds the whole system end 
 pages; every later step widens what it covers. Pages not migrated yet keep the current pipelines until their step.
 
 1. **The whole system for getting started (this pull request):**
-   - the registry, the Markdown runtime and renderer, and the framework model;
+   - the Markdown implementations of the components the guides use, the Markdown runtime and renderer, and the framework
+     model;
    - one set of MDX options (`@porsche-design-system/docs-components/mdx-options`) for Next and the Markdown hook;
    - the page manifest, link resolution per destination on the mdast tree, and a build error for links to unknown
      routes;
@@ -128,9 +130,10 @@ pages; every later step widens what it covers. Pages not migrated yet keep the c
    - verified end to end: a getting-started `.md` URL pasted into a fresh agent session produces a working project.
 2. **Authoring feedback:** a way to see a page's Markdown while writing it (a dev route or watch script, "View as
    Markdown"), and size budgets for `SKILL.md` and the references in CI. Small, and it pays off in every later step.
-3. **Framework-aware components:** `FrameworkContext` in `docs-components`, filled by the Storefront's framework
-   provider (the base for the global framework switch), and the first framework-aware components
-   (`FrameworkNotification`, `FrameworkCodeBlock`, `FrameworkPackage`, …).
+3. **Framework-aware components:** the Markdown implementations of the framework-aware components the Storefront
+   resolves for every framework on the server since #4780 (`FrameworkCodeBlock`, `FrameworkLink`, `FrameworkName`,
+   `FrameworkTabs`). Each renders the framework of its output, from the render context; `Notification` with `frameworks`
+   already does.
 4. **Migrate the areas** one per pull request: Must Know, partials, patterns and templates, styles, tokens, … Each
    registers the components it needs. Styles keep one skill reference per styling solution, through a layout and the
    route-to-reference mapping.
@@ -144,7 +147,8 @@ pages; every later step widens what it covers. Pages not migrated yet keep the c
    `<link rel="alternate" type="text/markdown">`, "Copy as Markdown", a root `/llms.txt` for the current major and
    `llms-full.txt` per framework.
 8. **Agent evals:** tasks an agent has to solve with the Markdown or the skill alone ("set up PDS from this URL", "build
-   this form"), run on changes to the core and the registry. The end-to-end check of step 1 is their first case.
+   this form"), run on changes to the core and the Markdown implementations. The end-to-end check of step 1 is their
+   first case.
 
 **Separate track:** search across the documentation for agents, as an MCP or search endpoint over the same Markdown
 (#4108). It complements the static files rather than replacing them.
@@ -155,24 +159,29 @@ pages; every later step widens what it covers. Pages not migrated yet keep the c
 Markdown JSX runtime in place of React's. Expressions, imported values (such as the PDS version) and composed MDX (such
 as `<buttonMeta.introduction />`) resolve exactly as they do in the Storefront, because they are the same code.
 
-**Explicit imports from one registry, resolved by export conditions.** MDX files keep importing their components, but
-only from `@porsche-design-system/docs-components`. The package's `exports` map has a `markdown` condition and a
-`default` one. Next resolves `default`, the React implementations. The Markdown build runs Node with
-`--conditions=markdown` and gets the Markdown implementations. Editor support and standard Node resolution stay intact.
+**Imports stay as they are, resolved per target.** MDX keeps importing each component from its folder,
+`@/components/mdx/<topic>/<Name>` (#4780). Next resolves the folder's `index.ts`, the React implementation. The Markdown
+build runs Node with a module hook that resolves the same folder to the Markdown implementation next to it,
+`<Name>.markdown.ts`. Editor support stays intact, and no MDX file changes its imports when its components gain
+Markdown.
 
-**A private workspace, inside the Storefront for now.** `packages/storefront/projects/docs-components` is the authoring
-contract for every MDX file. All docs live in the Storefront today, and its only other consumer is the skill generator
-next to it. Once other packages write docs, such as the Tailwind CSS `docs/*.mdx` (#4520), it moves to the top level of
-`packages/`; the package name stays, so no import changes. The registered React components move there from the
-Storefront. The React wrapper and Next are peer dependencies, which avoids a workspace cycle.
+_Changed (#4777):_ the first draft moved the components into `docs-components` and resolved them through a `markdown`
+export condition. By then the Storefront had given every MDX component a folder of its own, imported by about 400 files,
+and several depend on the Storefront (`DocsLink`, `getHeadingAnchorId`, the selected framework). Keeping them there
+leaves every import and dependency as it is.
+
+**An engine, inside the Storefront for now.** `packages/storefront/projects/docs-components` is a private workspace with
+the Markdown JSX runtime, the renderer, the Node hooks, the page manifest and the output maps. It holds no component and
+depends on neither React nor the wrapper. Once other packages write docs, such as the Tailwind CSS `docs/*.mdx` (#4520),
+it can move to the top level of `packages/`; the package name stays, so no import changes.
 
 **mdast as the Markdown output.** Markdown renderers return mdast nodes. A page is serialized once, with the options the
 skill already uses, so nesting and escaping are structural and the formatting is the same for every component.
 
 ```
-                      ┌──────────── default condition ─────────────┐
-page.mdx ── import ──▶│ @porsche-design-system/docs-components     │──▶ React ──▶ Storefront HTML
-                      └──────────── markdown condition ────────────┘
+                      ┌──────────── Next: Notification/index.ts ───────────────┐
+page.mdx ── import ──▶│ @/components/mdx/content/Notification                 │──▶ React ──▶ Storefront HTML
+                      └──── Node hook: Notification/Notification.markdown.ts ──┘
                                          │
                                          ▼
           @mdx-js/mdx + Markdown JSX runtime ──▶ element tree ──▶ render(context) ──▶ mdast ──▶ Markdown
@@ -182,70 +191,70 @@ page.mdx ── import ──▶│ @porsche-design-system/docs-components     �
 
 ## Components
 
-One folder per component, with both implementations side by side:
+One folder per component in the Storefront, with both implementations side by side:
 
 ```
-src/
-├── components/
-│   └── Notification/
-│       ├── Notification.tsx           React implementation, NotificationProps and JSDoc for authors
-│       └── Notification.markdown.ts   Markdown implementation and JSDoc with an example of its output
-├── react.ts       every *.tsx            (`default` condition)
-├── markdown.ts    every *.markdown.ts    (`markdown` condition)
-├── parity.ts      compares the two entry points
-└── renderer/      the engine: JSX runtime, render, Node hook
+packages/storefront/src/components/mdx/content/Notification/
+├── index.ts                   what MDX imports; exports the React implementation
+├── Notification.tsx           React implementation and JSDoc for authors
+└── Notification.markdown.ts   Markdown implementation and JSDoc with an example of its output
+
+packages/storefront/projects/docs-components/src/renderer/
+                               the engine: JSX runtime, render, Node hooks, page manifest, output maps
 ```
 
 The two implementations have to be separate files. If one file held both, the Markdown build would load the React
-implementation and its imports too. The Markdown file imports the props with `import type`, which TypeScript erases.
+implementation and its imports too. The Markdown file imports the React one with `import type`, which TypeScript erases,
+and is typed `MarkdownComponentOf<typeof ReactNotification>`, so the typecheck fails when their props drift apart.
 
-Hovering a component in MDX shows the JSDoc of the React implementation, because TypeScript resolves the `default`
-condition. That JSDoc says what the component is for and, in one sentence, what it becomes in Markdown. The JSDoc of the
-Markdown implementation documents the exact output, with an `@example` where there is output.
+Hovering a component in MDX shows the JSDoc of the React implementation, because TypeScript resolves the folder's
+`index.ts`. That JSDoc says what the component is for. The JSDoc of the Markdown implementation documents the exact
+output, with an `@example` where there is output.
 
-| Piece                                  | Responsibility                                                                                                                                                                                                                                                                                                                            |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `components/<Name>/<Name>.tsx`         | The React implementation, used by the Storefront through the `default` condition, and its props type.                                                                                                                                                                                                                                     |
-| `components/<Name>/<Name>.markdown.ts` | The Markdown implementation, created with `defineMarkdownComponent(name, renderer)`, which tags it as registered.                                                                                                                                                                                                                         |
-| `renderer/jsx-runtime`                 | `jsx`, `jsxs`, `jsxDEV` and `Fragment`. Builds a lazy element tree, like React elements, and calls nothing.                                                                                                                                                                                                                               |
-| `render(tree, context)`                | Walks the tree. HTML elements (what MDX compiles Markdown syntax to) become hast. A registered component's renderer gets its props and the context and returns mdast. Nested MDX content renders recursively. Anything else throws. `hast-util-to-mdast` turns the result into one mdast tree, which `mdast-util-to-markdown` serializes. |
-| `register` (Node hook)                 | Compiles `.mdx` imports with `@mdx-js/mdx`, the Markdown JSX runtime and the same remark plugins as the Storefront (`remark-gfm`), and marks each `MDXContent` so composed MDX is recognized. Compiles in development mode, so every element carries its line in the MDX file for error messages.                                         |
-| `collectPages`, output maps            | Collect the page manifest, then place, write and link pages per output through its map (`defineOutputMap`, `outputFiles`, `outputFileToMarkdown`, `mapLinks`). Shared by the skill generator and the Storefront `.md` build.                                                                                                              |
+| Piece                       | Responsibility                                                                                                                                                                                                                                                                                                                                                                                                             |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<Name>/<Name>.tsx`         | The React implementation, which the Storefront imports through the folder's `index.ts`.                                                                                                                                                                                                                                                                                                                                    |
+| `<Name>/<Name>.markdown.ts` | The Markdown implementation, created with `defineMarkdownComponent(name, renderer)`, which tags it as registered.                                                                                                                                                                                                                                                                                                          |
+| `renderer/jsx-runtime`      | `jsx`, `jsxs`, `jsxDEV` and `Fragment`. Builds a lazy element tree, like React elements, and calls nothing.                                                                                                                                                                                                                                                                                                                |
+| `render(tree, context)`     | Walks the tree. HTML elements (what MDX compiles Markdown syntax to) become hast. A registered component's renderer gets its props and the context and returns mdast. Nested MDX content renders recursively. Anything else throws. `hast-util-to-mdast` turns the result into one mdast tree, which `mdast-util-to-markdown` serializes.                                                                                  |
+| `register` (Node hooks)     | Resolves a component folder to its `<Name>.markdown.ts`, or, in `components/mdx/`, to a stub that fails as unregistered. Compiles `.mdx` imports with `@mdx-js/mdx`, the Markdown JSX runtime and the same remark plugins as the Storefront (`remark-gfm`), and marks each `MDXContent` so composed MDX is recognized. Compiles in development mode, so every element carries its line in the MDX file for error messages. |
+| `collectPages`, output maps | Collect the page manifest, then place, write and link pages per output through its map (`defineOutputMap`, `outputFiles`, `outputFileToMarkdown`, `mapLinks`). Shared by the skill generator and the Storefront `.md` build.                                                                                                                                                                                               |
 
 ### Strictness
 
 - **Components:** the Markdown runtime throws `Unregistered component "<name>"` for any function component that is
-  neither registered nor compiled MDX. A storefront-only React component imported by MDX therefore fails the build with
-  a message that names it.
+  neither registered nor compiled MDX. A folder in `components/mdx/` without a Markdown implementation resolves to a
+  stub of its name, so a page using it fails the build with a message that names it and its line, and neither the React
+  implementation nor the wrapper is loaded.
 - **HTML elements:** allowed are the elements MDX itself emits for Markdown syntax (headings, `p`, lists, `blockquote`,
   `pre`/`code`, `a`, `img`, `strong`/`em`/`del`, `br`, `hr`, tables) plus `div` and `span` as plain containers. Anything
   else, such as `input` or `button`, throws.
-- **Raw PDS components** (`PTag`, `PButton`, `PLink`, …) are not allowed in MDX. Each use gets a semantic registry
-  component, such as `DependencyList` instead of a row of `PTag`s.
-- **Pairing:** every React export has a Markdown export with the same name and props type. A type-level check and a unit
-  test enforce both.
+- **Raw PDS components** (`PTag`, `PButton`, `PLink`, …) are not allowed in MDX. Each use gets a semantic component,
+  such as `DependencyList` instead of a row of `PTag`s.
+- **Pairing:** a Markdown implementation is `<Name>.markdown.ts` in its component's folder, typed against the React one
+  (`MarkdownComponentOf`), and imports nothing at runtime but the engine. `mdxComponents.spec.ts` checks all three.
 
 ### Markdown output per component
 
-| Component                                                                           | Markdown                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TableOfContents`                                                                   | Nothing; the headings already provide the structure.                                                                                                                       |
-| `Notification`                                                                      | A blockquote with the heading in bold.                                                                                                                                     |
-| `FrameworkNotification`, `FrameworkTabs`, `FrameworkCodeBlock`                      | Only the content for the framework being rendered.                                                                                                                         |
-| `ContentTabs`                                                                       | Every tab in order, each under its own heading.                                                                                                                            |
-| `ComponentStatus`                                                                   | `**Status:** …` only when the component is not stable.                                                                                                                     |
-| `ComponentStory`, `ComponentExample`                                                | A fenced code block in the current framework, from `createFrameworkMarkup`.                                                                                                |
-| `Configurator`                                                                      | The default story as a code block, followed by a link to the API page.                                                                                                     |
-| `ExampleViewer`                                                                     | The description, then a link to each source file and the live page. The skill links its local `references/examples` copies, the web `.md` the files the deployment serves. |
-| `WebsiteViewer`                                                                     | Links to the GitHub source and the live demo.                                                                                                                              |
-| `BrowserSupport`                                                                    | A table.                                                                                                                                                                   |
-| `PromptBox`                                                                         | The prompt as a code block.                                                                                                                                                |
-| `StylesheetViewer`, `OpenBugTemplateInStackBlitz`                                   | A link.                                                                                                                                                                    |
-| `PartialDocs`, `ElementInternalsComponents`, `ComponentMetaOverview`, `License`     | A table or list generated from the same data.                                                                                                                              |
-| `ComponentApi`, `TokensTable`, `StylesTable`, `Scss*`, `Tailwind*`, `CssVariables*` | The skill's existing generators (`api.ts`, the package skill serializers), so each table has one Markdown implementation.                                                  |
-| `DependencyList`                                                                    | A list of `name@version`.                                                                                                                                                  |
-| `StorefrontOnly`                                                                    | Nothing. Its children render only in React.                                                                                                                                |
-| `MarkdownOnly`                                                                      | Its children. Renders nothing in React. For instructions aimed at agents.                                                                                                  |
+| Component                                                                           | Markdown                                                                                                                                                |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TableOfContents`                                                                   | Nothing; the headings already provide the structure.                                                                                                    |
+| `Notification`                                                                      | A blockquote with the heading in bold; with `frameworks`, only in their outputs.                                                                        |
+| `FrameworkTabs`, `FrameworkCodeBlock`, `FrameworkLink`, `FrameworkName`             | Only the content for the framework being rendered.                                                                                                      |
+| `ContentTabs`                                                                       | Every tab in order, each under its own heading.                                                                                                         |
+| `ComponentStatus`                                                                   | `**Status:** …` only when the component is not stable.                                                                                                  |
+| `ComponentStory`, `ComponentExamplePlayground`                                      | A fenced code block in the current framework, from the catalogue of `@porsche-design-system/examples`.                                                  |
+| `Configurator`                                                                      | The default story as a code block, followed by a link to the API page.                                                                                  |
+| `Example`                                                                           | By kind, from the catalogue: the description and code of a story or framework example; for a pattern or template, links to its files and the live page. |
+| `WebsiteViewer`                                                                     | Links to the GitHub source and the live demo.                                                                                                           |
+| `BrowserSupport`                                                                    | A table.                                                                                                                                                |
+| `PromptBox`                                                                         | The prompt as a code block.                                                                                                                             |
+| `StylesheetViewer`, `OpenBugTemplateInStackBlitz`                                   | A link.                                                                                                                                                 |
+| `PartialDocs`, `ElementInternalsComponents`, `ComponentMetaOverview`, `License`     | A table or list generated from the same data.                                                                                                           |
+| `ComponentApi`, `TokensTable`, `StylesTable`, `Scss*`, `Tailwind*`, `CssVariables*` | The skill's existing generators (`api.ts`, the package skill serializers), so each table has one Markdown implementation.                               |
+| `DependencyList`                                                                    | A list of `name@version`.                                                                                                                               |
+| `StorefrontOnly`                                                                    | Nothing. Its children render only in React.                                                                                                             |
+| `MarkdownOnly`                                                                      | Its children. Renders nothing in React. For instructions aimed at agents.                                                                               |
 
 ## Data and state
 
@@ -302,13 +311,13 @@ every framework instead.
 
 ## Trade-offs and alternatives
 
-| Decision             | Chosen                                                                          | Alternatives                                                                                                                                                                                                                                                                             |
-| -------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Markdown output      | Run the MDX with a Markdown JSX runtime                                         | **A:** parse without running and map literal props to Markdown, as today. Safe and needs no runtime, but can't resolve expressions, imports or composed MDX. **C:** React → HTML → Markdown with rehype-remark. One render path, but the conversion loses detail and is hard to control. |
-| Providing components | Explicit imports with export conditions                                         | **Provider only:** no imports in MDX, components passed through `mdx-components.tsx`. MDX's missing-reference error gives strictness for free, but there is no editor support and nothing documents where a component comes from.                                                        |
-| Location             | `storefront/projects/docs-components`, top-level once other packages write docs | **Next to the skill generator:** less to move, but package-owned MDX would depend on the Storefront. **A subpath of `shared`:** first in the build order, but `shared` would then contain React UI and depend on the wrapper.                                                            |
-| Renderer output      | mdast nodes                                                                     | **Markdown strings:** simplest to write, but nested components and escaping need care in every renderer.                                                                                                                                                                                 |
-| Target-specific text | `StorefrontOnly`, `MarkdownOnly`                                                | **`SkillOnly`, `WebOnly`:** a skill and a web `.md` are both read by agents, so splitting them is not worth a second dimension.                                                                                                                                                          |
+| Decision             | Chosen                                                                          | Alternatives                                                                                                                                                                                                                                                                                                                                                                                         |
+| -------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Markdown output      | Run the MDX with a Markdown JSX runtime                                         | **A:** parse without running and map literal props to Markdown, as today. Safe and needs no runtime, but can't resolve expressions, imports or composed MDX. **C:** React → HTML → Markdown with rehype-remark. One render path, but the conversion loses detail and is hard to control.                                                                                                             |
+| Providing components | Each component's folder, resolved per target by a Node hook                     | **A registry package with export conditions:** the first draft of #4777; every MDX import changes, and the components' Storefront dependencies have to move along. **Provider only:** no imports in MDX, components passed through `mdx-components.tsx`. MDX's missing-reference error gives strictness for free, but there is no editor support and nothing documents where a component comes from. |
+| Location             | `storefront/projects/docs-components`, top-level once other packages write docs | **Next to the skill generator:** less to move, but package-owned MDX would depend on the Storefront. **A subpath of `shared`:** first in the build order, but every consumer of `shared` would get the MDX and mdast dependencies.                                                                                                                                                                   |
+| Renderer output      | mdast nodes                                                                     | **Markdown strings:** simplest to write, but nested components and escaping need care in every renderer.                                                                                                                                                                                                                                                                                             |
+| Target-specific text | `StorefrontOnly`, `MarkdownOnly`, added with the first page that needs them     | **`SkillOnly`, `WebOnly`:** a skill and a web `.md` are both read by agents, so splitting them is not worth a second dimension.                                                                                                                                                                                                                                                                      |
 
 ## Risks and mitigations
 
@@ -317,39 +326,41 @@ every framework instead.
 | Every import of a page has to load in Node: the `@/` alias, `next/link`, stories that use wrapper components. | The Markdown build runs from the Storefront with `tsx`, which resolves its `tsconfig` paths. The wrapper stub from `skill-mdx-loader.cjs` stays until the stories are data only. Registered components never import Next in their Markdown implementation. |
 | Running 880 pages × 4 frameworks makes the build slower.                                                      | Measured in the slice: about 45 ms to compile and render a page the first time, about 1.6 ms per further render. The whole Storefront stays well under a minute.                                                                                           |
 | MDX compiles Markdown syntax to HTML elements, so the Markdown target converts hast back to mdast.            | The set of elements is small and known, and `hast-util-to-mdast` is the standard converter. Snapshot tests of real pages catch formatting changes.                                                                                                         |
-| Registered React components live outside the Storefront, so Tailwind CSS no longer sees their classes.        | `globals.css` adds `@source` for `projects/docs-components`.                                                                                                                                                                                               |
 | An unregistered component inside `StorefrontOnly` never reaches the Markdown runtime.                         | Intended: it's the escape hatch for content that only makes sense in a browser. Review keeps it rare.                                                                                                                                                      |
 
 ## Testing strategy
 
 - **Unit:** the runtime and `render` (HTML elements, fragments, composed MDX, unregistered components and elements
-  throw), and each Markdown renderer.
+  throw), the hooks (a folder without a Markdown implementation fails without loading its React one), and each Markdown
+  implementation (`markdownComponents.spec.ts`).
 - **Snapshots:** every migrated page in the skill's tree snapshots; the link resolution for both destinations in the
   fixtures of `docs-components`.
-- **Parity:** the React and Markdown entry points export the same names.
+- **Parity:** each Markdown implementation is typed against its React one; `mdxComponents.spec.ts` checks its name, its
+  type and that it imports nothing at runtime but the engine.
 - **Storefront:** the existing e2e and VRT tests for migrated pages must not change, which shows the React output is the
   same.
 
 ## Rollout
 
-See [Plan](#plan). Migration goes one area at a time. A migrated page imports components only from the registry and is
-rendered by the new pipeline; pages that are not migrated yet keep the current pipelines until their step.
+See [Plan](#plan). Migration goes one area at a time. A migrated page uses only components with a Markdown
+implementation, is flagged with `markdown: true` in the sitemap and is rendered by the new pipeline; pages that are not
+migrated yet keep the current pipelines until their step.
 
 ## This pull request
 
 The whole system, for the getting-started pages only:
 
-- `packages/storefront/projects/docs-components` with the runtime, `render`, the Node hook, the page manifest and link
-  resolution, and five components, one folder each: `TableOfContents`, `Notification`, `DependencyList`,
-  `StorefrontOnly` and `MarkdownOnly`. `TableOfContents` and `Notification` moved from the Storefront, which re-exports
-  them from their old paths.
-- All seven getting-started pages migrated. Each imports only from the registry, declares its framework (Astro and
-  Vanilla JS: `vanilla-js`; Next.js and React Router: `react`), lists its dependencies with `DependencyList` and ends
-  with a recommended step that links the Agent Skills with `npx pds-skill` and names the `pds-knowledge-{fw}` skill. The
-  step reads the same on the Storefront, in its Markdown and in the skill, so no Markdown-only component is needed.
-- **The sitemap is the tree.** The seven getting-started tabs carry `markdown: true` in `src/sitemap.tsx`, component
-  nodes a plain `title`, and the Developing category a `description`. `src/utils/markdownPages.ts` walks the sitemap and
-  gives each flagged page its place: category, sitemap page and tab. Both builds read it; no regex decides anything.
+- `packages/storefront/projects/docs-components`, the engine: the runtime, `render`, the Node hooks, the page manifest
+  and link resolution. No component, no React.
+- Markdown implementations for the three components the guides use, next to their React ones: `TableOfContents`,
+  `Notification` (with `frameworks`) and `DependencyList`.
+- All seven getting-started pages migrated. Each declares its framework (Astro and Vanilla JS: `vanilla-js`; Next.js and
+  React Router: `react`) and ends with a recommended step that links the Agent Skills with `npx pds-skill` and names the
+  `pds-knowledge-{fw}` skill. The step reads the same on the Storefront, in its Markdown and in the skill, so no
+  Markdown-only component is needed. Their imports and `DependencyList` came with #4780.
+- **The sitemap is the tree.** The seven getting-started tabs carry `markdown: true` in `src/sitemap.ts`, and the
+  Developing category a `description`. `src/utils/markdownPages.ts` walks the sitemap and gives each flagged page its
+  place: category, sitemap page and tab. Both builds read it; no regex decides anything.
 - **Output maps.** `markdownMap` and `skillMap(framework)` define the structure of the Storefront Markdown and the
   skills; `docs-components` provides `defineOutputMap`, `outputFiles`, `outputFileToMarkdown` and `mapLinks`.
 - `build:markdown` runs as the Storefront's `postbuild` and writes each page where `markdownMap` places it, next to its
@@ -361,8 +372,8 @@ The whole system, for the getting-started pages only:
   Vanilla JS, Astro). `SKILL.md` indexes them in a `## Frameworks` section, worded for agents by the map. A tab is
   linked by its section anchor (`next-js.md#getting-started`), a page outside the skill through `markdownMap` at the
   exact-version Storefront. The SSR section links the local Next.js and React Router guides, and setup leaves "Coverage
-  and fallbacks". The skills' `tsconfig.json` includes the sitemap, because `tsx` compiles a file's JSX with a config
-  only when the config includes it.
+  and fallbacks". The pages reach the generator through `StorefrontInputs`, with the Storefront's `markdownMap`, so the
+  skill's source still imports nothing from the Storefront.
 
 What it showed:
 
@@ -376,11 +387,11 @@ What it showed:
 - **The two pipelines need separate processes.** In one process, the renderer's MDX hook changed how Node loads CommonJS
   modules imported with `import()` in CI: their `require` went through the ES module loader, past the stub
   `skill-mdx-loader.cjs` puts in for the unbuilt wrappers, and would also have handed the component docs' `.mdx` to the
-  hook. `build:skills` therefore renders the migrated pages first (`collect-pages.ts`, with the hook and the `markdown`
-  condition) into `generated/pages.json`, and `build-skills.ts` runs with exactly the setup it had before. The component
-  docs' output stays byte for byte the same, and the split ends when the old pipeline is removed.
-- **Parity is enforced by the typechecker:** `src/parity.ts` fails when a component exists for only one target or when
-  the two implementations take different props.
+  hook. `build:skills` therefore renders the migrated pages first (`collect-pages.ts`, with the hooks) into
+  `generated/pages.json`, and `build-skills.ts` runs with exactly the setup it had before. The component docs' output
+  stays byte for byte the same, and the split ends when the old pipeline is removed.
+- **Parity is enforced by the typechecker:** `MarkdownComponentOf` fails when the two implementations of a component
+  take different props. A component without a Markdown implementation fails only where a Markdown page uses it.
 - **Cost is low:** see the build-time risk above.
 - **Known gap:** a link to a page the skill covers through a package reference (e.g. `/tailwindcss/introduction/` →
   `references/styles/tailwindcss.md`) still points to the Storefront. It resolves locally once that area is migrated.
@@ -435,11 +446,11 @@ with Markdown included).
 Recommended: each skill's entry is an MDX file that is not a Storefront route.
 
 - **Composition:** it imports Storefront fragments (`<FormsGuidelines />`) instead of copying them.
-- **The same rules:** registry components, the strict renderer and link resolution through the skill's map apply to the
-  instructions too.
+- **The same rules:** components with a Markdown implementation, the strict renderer and link resolution through the
+  skill's map apply to the instructions too.
 - **Reviewable:** today's `skillMd.ts` builds prose from TypeScript strings; MDX is plain text in a diff.
-- **Generated parts stay generated,** as Markdown-only registry components such as `<SkillIndex />` (the references of
-  the skill's definition) and later `<ComponentRoster />`. The frontmatter (`name`, `description`) comes from the
+- **Generated parts stay generated,** as Markdown-only components such as `<SkillIndex />` (the references of the
+  skill's definition) and later `<ComponentRoster />`. The frontmatter (`name`, `description`) comes from the
   definition, typed.
 
 ### Overview: a tree per output, committed as a snapshot
@@ -466,7 +477,7 @@ excluded.
 | Package                                                           | Content                                                                             | Published?        |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------- |
 | `storefront`                                                      | MDX pages, the sitemap, the Storefront Markdown's definition                        | no (website)      |
-| `storefront/projects/docs-components`                             | registry, renderer, the engine for maps, layouts and definitions                    | no                |
+| `storefront/projects/docs-components`                             | renderer, Node hooks, the engine for maps, layouts and definitions                  | no                |
 | `storefront/projects/skills` (later perhaps `packages/ai`, #4771) | every skill definition (knowledge and UX), their `SKILL.mdx`, the overview snapshot | builds the skills |
 | npm wrappers                                                      | the knowledge skills, exactly matching the installed version                        | yes, as today     |
 | AI package                                                        | UX skills, valid per major                                                          | yes, per #4771    |
@@ -501,13 +512,13 @@ falls short in these places:
 | Tests check structure, not whether an agent succeeds with the result.                                                                                      | step 8                                                                                         |
 | No size budgets, so `SKILL.md` and references can grow unnoticed.                                                                                          | step 2                                                                                         |
 | Every component MDX uses needs a Markdown renderer (about 55); the Markdown is only as good as each of them.                                               | steps 3 to 6                                                                                   |
-| Heading anchors differ: the Storefront derives IDs with `kebabCase`, Markdown readers with their own slugs.                                                | step 4, by deriving the Storefront's IDs the same way                                          |
-| Docs owned by other packages (the Tailwind CSS docs, #4520) would make `styles` depend on the registry, whose React side needs the wrapper.                | step 5                                                                                         |
+| ~~Heading anchors differ: the Storefront derives IDs with `kebabCase`, Markdown readers with their own slugs.~~                                            | #4780 (fixed: GitHub-style slugs in both)                                                      |
+| Docs owned by other packages (the Tailwind CSS docs, #4520) would make `styles` depend on the Storefront's components, whose React side needs the wrapper. | step 5                                                                                         |
 | Next.js folds into React, so Next-specific content disappears from `.react.md`.                                                                            | a variant where a page needs it                                                                |
 
 ## Open questions
 
 - Should the Markdown build compile pages in-process with `@mdx-js/mdx`'s `evaluate` instead of a Node hook? The hook
   keeps imports resolving like the Storefront, but it needs Node's module hooks.
-- Should the import check (MDX imports only from the registry and data modules) be a separate lint step? The runtime
+- Should the import check (MDX imports only component folders and data modules) be a separate lint step? The runtime
   error covers components already.

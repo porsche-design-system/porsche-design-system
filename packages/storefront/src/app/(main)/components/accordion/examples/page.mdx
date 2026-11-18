@@ -1,27 +1,22 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { accordionMeta } from '@/app/(main)/components/accordion/accordion.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import stickySummary from '@porsche-design-system/examples/components/accordion/sticky-summary';
+import interactiveElementsInSummary from '@porsche-design-system/examples/components/accordion/interactive-elements-in-summary';
 
 export const metadata = {
-  title: 'Accordion - Porsche Design System',
+  title: 'Accordion: Examples - Components',
   description: 'Discover detailed examples and insights of the Accordion component.',
 };
 
 # Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
 
-<TableOfContents
-  headings={[accordionMeta.examples.stickySummary.name, accordionMeta.examples.interactiveElementsInSummary.name]}
-/>
+<TableOfContents headings={[stickySummary.title, interactiveElementsInSummary.title]} />
 
-## {accordionMeta.examples.stickySummary.name}
+## {stickySummary.title}
 
-<accordionMeta.examples.stickySummary.description />
+<Example example={stickySummary} />
 
-<ComponentStory story={accordionMeta.examples.stickySummary.story} />
+## {interactiveElementsInSummary.title}
 
-## {accordionMeta.examples.interactiveElementsInSummary.name}
-
-<accordionMeta.examples.interactiveElementsInSummary.description />
-
-<ComponentStory story={accordionMeta.examples.interactiveElementsInSummary.story} />
+<Example example={interactiveElementsInSummary} />

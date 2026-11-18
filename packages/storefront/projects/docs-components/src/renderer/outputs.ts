@@ -1,6 +1,6 @@
 import path from 'node:path';
+import type { Framework } from '@porsche-design-system/shared/models';
 import type { Heading, Root, RootContent } from 'mdast';
-import type { Framework } from './define';
 import { headingAnchor, type LinkResolver, type Page, resolveLinks, type Site } from './pages';
 import { serializeMarkdown } from './render';
 

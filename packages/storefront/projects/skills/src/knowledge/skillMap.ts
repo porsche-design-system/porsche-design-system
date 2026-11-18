@@ -3,10 +3,10 @@ import {
   htmlLink,
   type LinkResolver,
   mapLinks,
+  type OutputMap,
   relativeHref,
-  type Framework as StorefrontFramework,
 } from '@porsche-design-system/docs-components/markdown';
-import { markdownMap } from '../../../../src/utils/markdownMap';
+import type { Framework } from '@porsche-design-system/shared';
 import { localPorscheDesignSystemVersion } from '../shared/version';
 
 /**
@@ -19,7 +19,7 @@ import { localPorscheDesignSystemVersion } from '../shared/version';
 /** Where a sitemap page is written in a skill: `references/developing/react.md`. */
 export const referenceFile = (route: string): string => `references/${route}.md`;
 
-export const skillMap = (framework: StorefrontFramework) =>
+export const skillMap = (framework: Framework) =>
   defineOutputMap({
     locate: ({ place, frameworks }) =>
       frameworks.includes(framework)
@@ -41,8 +41,10 @@ const STOREFRONT_ORIGIN = `https://designsystem.porsche.com/v${localPorscheDesig
 /**
  * Links within a framework's skill, relative to the reference being written. A page outside the skill links to the
  * Storefront for the exact version the skill was generated for: its Markdown where it has some, its HTML otherwise.
+ *
+ * @param markdownMap the structure of the Storefront's Markdown, which places the Markdown of a page outside the skill.
  */
-export const skillLinks = (framework: StorefrontFramework): LinkResolver =>
+export const skillLinks = (framework: Framework, markdownMap: OutputMap): LinkResolver =>
   mapLinks({
     map: skillMap(framework),
     framework,

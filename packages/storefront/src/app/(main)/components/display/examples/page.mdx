@@ -1,37 +1,32 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { displayMeta } from '@/app/(main)/components/display/display.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import size from '@porsche-design-system/examples/components/display/size';
+import sizeResponsive from '@porsche-design-system/examples/components/display/size-responsive';
+import semantics from '@porsche-design-system/examples/components/display/semantics';
+import color from '@porsche-design-system/examples/components/display/color';
 
 export const metadata = {
-  title: 'Display - Porsche Design System',
+  title: 'Display: Examples - Components',
   description: 'Discover detailed examples and insights of the Display component.',
 };
 
 # Display <ComponentStatus tagName="p-display"></ComponentStatus>
 
-<TableOfContents
-  headings={[displayMeta.examples.size.name, displayMeta.examples.semantics.name, displayMeta.examples.color.name]}
-/>
+<TableOfContents headings={[size.title, semantics.title, color.title]} />
 
-## {displayMeta.examples.size.name}
+## {size.title}
 
-<displayMeta.examples.size.description />
+<Example example={size} />
 
-<ComponentStory story={displayMeta.examples.size.story} />
+### {sizeResponsive.title}
 
-### {displayMeta.examples.sizeResponsive.name}
+<Example example={sizeResponsive} />
 
-<ComponentStory story={displayMeta.examples.sizeResponsive.story} />
+## {semantics.title}
 
-## {displayMeta.examples.semantics.name}
+<Example example={semantics} />
 
-<displayMeta.examples.semantics.description />
+## {color.title}
 
-<ComponentStory story={displayMeta.examples.semantics.story} />
-
-## {displayMeta.examples.color.name}
-
-<displayMeta.examples.color.description />
-
-<ComponentStory story={displayMeta.examples.color.story} />
+<Example example={color} />

@@ -1,12 +1,12 @@
-import { expect, Locator, test } from '@playwright/test';
+import { Locator } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
-import { assertDefined } from '@porsche-design-system/shared/testing/assert-defined';
+import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
-  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getFormDataValue,
@@ -14,7 +14,6 @@ import {
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -287,7 +286,7 @@ type InitOptions = {
   };
 };
 
-const initSelect = (page: Page, opt?: InitOptions, withImage?: boolean): Promise<void> => {
+const initSelect = async (page: Page, opt?: InitOptions, withImage?: boolean): Promise<void> => {
   const { props = { name: 'options' }, slots, options } = opt || {};
   const {
     values = [
@@ -327,6 +326,13 @@ const initSelect = (page: Page, opt?: InitOptions, withImage?: boolean): Promise
         ${message}
       </p-select>
       ${markupAfter}`;
+
+  if (withImage) {
+    // the option images only need a src, the files do not exist
+    await page.route('**/image-*.jpg', (route) =>
+      route.fulfill({ contentType: 'image/svg+xml', body: '<svg xmlns="http://www.w3.org/2000/svg"/>' })
+    );
+  }
 
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
@@ -3090,7 +3096,6 @@ test.describe('form', () => {
   });
 
   test('should not set validity when disabled and throw no errors', async ({ page }) => {
-    initConsoleObserver(page);
     await initSelect(page, {
       options: {
         isWithinForm: true,
@@ -3103,7 +3108,6 @@ test.describe('form', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

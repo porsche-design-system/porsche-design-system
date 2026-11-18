@@ -1,5 +1,6 @@
+import { FRAMEWORKS, getWrapperPackageName } from '@porsche-design-system/shared';
 import { resolveFrameworkPlaceholder, rewriteDocLinks } from '@skills/shared/links';
-import { FRAMEWORKS } from '@skills/shared/skillTree';
+import { localPorscheDesignSystemVersion } from '@skills/shared/version';
 import { describe, expect, it } from 'vitest';
 
 describe('rewriteDocLinks', () => {
@@ -39,12 +40,21 @@ describe('rewriteDocLinks', () => {
     );
   });
 
-  it('points pages with no local reference at the canonical docs URL, preserving the fragment', () => {
+  it('points pages with no local reference at the docs of the exact version, preserving the fragment', () => {
     expect(rewrite('[forms](/patterns/forms/resources/#a)', fromComponent)).toBe(
-      '[forms](https://designsystem.porsche.com/patterns/forms/resources/#a)'
+      `[forms](https://designsystem.porsche.com/v${localPorscheDesignSystemVersion}/patterns/forms/resources/#a)`
     );
     expect(rewrite('[init](/must-know/initialization/)', fromComponent)).toBe(
-      '[init](https://designsystem.porsche.com/must-know/initialization/)'
+      `[init](https://designsystem.porsche.com/v${localPorscheDesignSystemVersion}/must-know/initialization/)`
+    );
+  });
+
+  it('adds the trailing slash the deployed docs serve their pages with to routes written without one', () => {
+    expect(rewrite('[forms](/patterns/forms/resources#a)', fromComponent)).toBe(
+      `[forms](https://designsystem.porsche.com/v${localPorscheDesignSystemVersion}/patterns/forms/resources/#a)`
+    );
+    expect(rewrite('[init](/must-know/initialization)', fromComponent)).toBe(
+      `[init](https://designsystem.porsche.com/v${localPorscheDesignSystemVersion}/must-know/initialization/)`
     );
   });
 
@@ -88,4 +98,3 @@ describe('resolveFrameworkPlaceholder', () => {
     expect(resolveFrameworkPlaceholder(md, 'react')).toBe(md);
   });
 });
-import { getWrapperPackageName } from '@skills/registry';

@@ -1,10 +1,10 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/mdx/examples/A11yIntegrationExamples';
 import { inputNumberMeta } from '@/app/(main)/components/input-number/input-number.meta';
 
 export const metadata = {
-  title: 'Input Number: Accessibility - Porsche Design System',
+  title: 'Input Number: Accessibility - Components',
   description: 'Accessibility information and best practices for the Input Number component',
 };
 
@@ -16,6 +16,6 @@ export const metadata = {
 
 <inputNumberMeta.accessibility.overview />
 
-<A11yIntegrationExamples tag="p-input-number" examples={inputNumberMeta.accessibility.examples} />
+<A11yIntegrationExamples examples={inputNumberMeta.accessibility.examples} />
 
 <inputNumberMeta.accessibility.tests />

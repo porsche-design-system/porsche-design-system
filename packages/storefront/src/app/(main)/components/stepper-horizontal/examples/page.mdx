@@ -1,17 +1,15 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { stepperHorizontalMeta } from '@/app/(main)/components/stepper-horizontal/stepper-horizontal.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import frameworkImplementation from '@porsche-design-system/examples/components/stepper-horizontal/framework-implementation';
 
 export const metadata = {
-  title: 'Stepper Horizontal - Porsche Design System',
+  title: 'Stepper Horizontal: Examples - Components',
   description: 'Discover detailed examples and insights of the Stepper Horizontal component.',
 };
 
 # Stepper Horizontal <ComponentStatus tagName="p-stepper-horizontal"></ComponentStatus>
 
-## {stepperHorizontalMeta.examples.frameworkImplementation.name}
+## {frameworkImplementation.title}
 
-<stepperHorizontalMeta.examples.frameworkImplementation.description />
-
-<ComponentExample codeSample={stepperHorizontalMeta.examples.frameworkImplementation.example} />
+<Example example={frameworkImplementation} />
 

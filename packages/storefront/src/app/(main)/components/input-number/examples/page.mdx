@@ -1,26 +1,22 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { inputNumberMeta } from '@/app/(main)/components/input-number/input-number.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import form from '@porsche-design-system/examples/components/input-number/form';
+import slots from '@porsche-design-system/examples/components/input-number/slots';
 
 export const metadata = {
-  title: 'Input Number - Porsche Design System',
+  title: 'Input Number: Examples - Components',
   description: 'Discover detailed examples and insights of the Input Number component.',
 };
 
 # Input Number <ComponentStatus tagName="p-input-number"></ComponentStatus>
 
-<TableOfContents headings={[inputNumberMeta.examples.form.name, inputNumberMeta.examples.slots.name]} />
+<TableOfContents headings={[form.title, slots.title]} />
 
-## {inputNumberMeta.examples.form.name}
+## {form.title}
 
-<inputNumberMeta.examples.form.description />
+<Example example={form} />
 
-<ComponentExample codeSample={inputNumberMeta.examples.form.example} />
+## {slots.title}
 
-## {inputNumberMeta.examples.slots.name}
-
-<inputNumberMeta.examples.slots.description />
-
-<ComponentStory story={inputNumberMeta.examples.slots.story} />
+<Example example={slots} />

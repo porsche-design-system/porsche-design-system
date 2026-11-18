@@ -1,9 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { FRAMEWORKS } from '@porsche-design-system/shared';
 import { SKILL_IDS } from '@skills/registry';
 import { renderFrontmatter } from '@skills/shared/frontmatter';
-import { FRAMEWORKS, stagedSkillDir } from '@skills/shared/skillTree';
+import { stagedSkillDir } from '@skills/shared/skillTree';
 import { describe, expect, it } from 'vitest';
 
 /**

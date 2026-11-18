@@ -1,8 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": ["node", "vitest/globals"]
+    "types": ["node", "vitest/globals", "mdx"]
   },
-  "include": ["tests/**/*.ts", "src/**/*.ts", "scripts/**/*.ts", "../../src/types/*.d.ts"],
+  "include": ["tests/**/*.ts", "src/**/*.ts", "scripts/**/*.ts"],
   "exclude": ["node_modules", "generated"]
 }

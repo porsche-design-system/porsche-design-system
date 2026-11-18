@@ -1,9 +1,9 @@
-import type { Framework } from './define';
+import type { Framework } from '@porsche-design-system/shared/models';
 import { importMdx, renderMdxModule } from './mdx';
 import { serializeMarkdown } from './render';
 
-export type { Framework, MarkdownContext, MarkdownOptions, MarkdownRenderer } from './define';
-export { defineMarkdownComponent, FRAMEWORKS } from './define';
+export type { MarkdownComponentOf, MarkdownContext, MarkdownOptions, MarkdownRenderer } from './define';
+export { defineMarkdownComponent } from './define';
 export type { PageMetadata } from './mdx';
 export type { Location, OutputFile, OutputMap, OutputMapDefinition } from './outputs';
 export {

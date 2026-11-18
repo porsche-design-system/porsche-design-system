@@ -1,4 +1,5 @@
 import { vi } from 'vitest';
+import * as syncAriaElementsUtils from '../../utils/a11y/sync-aria-elements';
 import * as implicitSubmitUtils from '../../utils/form/implicitSubmit';
 import { InputSearch } from './input-search';
 
@@ -35,6 +36,66 @@ describe('aria', () => {
       role: 'combobox',
       'aria-expanded': true,
     });
+  });
+
+  it('should reflect element references onto the native input after render', () => {
+    const component = initComponent();
+    const list = document.createElement('ul');
+    const option = document.createElement('li');
+    const syncAriaElementsSpy = vi.spyOn(syncAriaElementsUtils, 'syncAriaElements');
+    component.aria = { 'aria-controls': [list], 'aria-activedescendant': option };
+
+    component.componentDidRender();
+
+    expect(syncAriaElementsSpy).toHaveBeenCalledWith(component['inputElement'], component.aria);
+    const input = component['inputElement'] as HTMLInputElement & {
+      ariaControlsElements: readonly Element[] | null;
+      ariaActiveDescendantElement: Element | null;
+    };
+    expect([...(input.ariaControlsElements ?? [])]).toEqual([list]);
+    expect(input.ariaActiveDescendantElement).toBe(option);
+  });
+
+  it('should clear element reflection when aria-controls and aria-activedescendant are null or undefined', () => {
+    const component = initComponent();
+    const list = document.createElement('ul');
+    component.aria = { 'aria-controls': list, 'aria-activedescendant': list };
+    component.componentDidRender();
+
+    component.aria = { 'aria-controls': null, 'aria-activedescendant': null };
+    component.componentDidRender();
+
+    const input = component['inputElement'] as HTMLInputElement & {
+      ariaControlsElements: readonly Element[] | null;
+      ariaActiveDescendantElement: Element | null;
+    };
+    expect(input.ariaControlsElements).toBeNull();
+    expect(input.ariaActiveDescendantElement).toBeNull();
+
+    component.aria = { 'aria-controls': list, 'aria-activedescendant': list };
+    component.componentDidRender();
+
+    component.aria = undefined;
+    component.componentDidRender();
+
+    expect(input.ariaControlsElements).toBeNull();
+    expect(input.ariaActiveDescendantElement).toBeNull();
+  });
+
+  it('should leave element reflection untouched when aria prop was never set', () => {
+    const component = initComponent();
+    const list = document.createElement('ul');
+    const input = component['inputElement'] as HTMLInputElement & {
+      ariaControlsElements: readonly Element[] | null;
+      ariaActiveDescendantElement: Element | null;
+    };
+    input.ariaControlsElements = [list];
+    input.ariaActiveDescendantElement = list;
+
+    component.componentDidRender();
+
+    expect([...(input.ariaControlsElements ?? [])]).toEqual([list]);
+    expect(input.ariaActiveDescendantElement).toBe(list);
   });
 });
 
@@ -123,12 +184,12 @@ describe('onInput', () => {
   });
 });
 
-describe('onKeyDown', () => {
+describe('onKeyPress', () => {
   it('should call implicitSubmit with correct parameters', () => {
     const component = initComponent();
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
+    const event = new KeyboardEvent('keypress', { key: 'Enter' });
     const implicitSubmitSpy = vi.spyOn(implicitSubmitUtils, 'implicitSubmit');
-    component['onKeyDown'](event);
+    component['onKeyPress'](event);
     expect(implicitSubmitSpy).toHaveBeenCalledWith(event, component['internals'], component.host);
   });
 });
@@ -184,7 +245,7 @@ describe('componentWillLoad', () => {
     expect(component['initialLoading']).toBe(false);
   });
 
-  it("should not mutate value when null is passed, but should preserve null as defaultValue", () => {
+  it('should not mutate value when null is passed, but should preserve null as defaultValue', () => {
     const component = initComponent();
     component.value = null;
     component.componentWillLoad();

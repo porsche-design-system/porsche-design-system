@@ -1,38 +1,27 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { segmentedControlMeta } from '@/app/(main)/components/segmented-control/segmented-control.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import form from '@porsche-design-system/examples/components/segmented-control/form';
+import withLabels from '@porsche-design-system/examples/components/segmented-control/with-labels';
+import slots from '@porsche-design-system/examples/components/segmented-control/slots';
 
 export const metadata = {
-  title: 'Segmented Control - Porsche Design System',
+  title: 'Segmented Control: Examples - Components',
   description: 'Discover detailed examples and insights of the Segmented Control component.',
 };
 
 # Segmented Control <ComponentStatus tagName="p-segmented-control"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    segmentedControlMeta.examples.form.name,
-    segmentedControlMeta.examples.withLabels.name,
-    segmentedControlMeta.examples.slots.name,
-  ]}
-/>
+<TableOfContents headings={[form.title, withLabels.title, slots.title]} />
 
-## {segmentedControlMeta.examples.form.name}
+## {form.title}
 
-<segmentedControlMeta.examples.form.description />
+<Example example={form} />
 
-<ComponentExample codeSample={segmentedControlMeta.examples.form.example} />
+## {withLabels.title}
 
-## {segmentedControlMeta.examples.withLabels.name}
+<Example example={withLabels} />
 
-<segmentedControlMeta.examples.withLabels.description />
+## {slots.title}
 
-<ComponentStory story={segmentedControlMeta.examples.withLabels.story} />
-
-## {segmentedControlMeta.examples.slots.name}
-
-<segmentedControlMeta.examples.slots.description />
-
-<ComponentStory story={segmentedControlMeta.examples.slots.story} />
+<Example example={slots} />

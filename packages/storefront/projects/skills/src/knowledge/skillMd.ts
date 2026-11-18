@@ -1,6 +1,6 @@
+import { type Framework, frameworkSuffixMap } from '@porsche-design-system/shared';
 import { getSkillName } from '../registry';
 import { renderFrontmatter } from '../shared/frontmatter';
-import type { Framework } from '../shared/skillTree';
 import { localPorscheDesignSystemVersion } from '../shared/version';
 import { rawMetaReference } from './components/section';
 import { rawScssReference, rawTailwindcssReference } from './packageSkills';
@@ -28,7 +28,7 @@ export const ACTIVATION_DESCRIPTION =
  */
 const renderIntro = (framework: Framework): string => {
   const peerNote =
-    framework === 'js'
+    framework === 'vanilla-js'
       ? ''
       : " The wrapper's own `meta` and `scss` are re-export shims of the same-version `@porsche-design-system/components-js` peer, so those two point at the peer directly.";
   return [
@@ -60,6 +60,7 @@ const renderCoverageSection = (): string =>
       'styling integrations, patterns and templates, and the deprecated API index. It does not yet include the ' +
       'v3-to-v4 migration guide; the changelog; partials; the AG Grid theme; or the Storefront\u2019s Must Know and ' +
       'Help sections.',
+    'Page-level WCAG 2.2 AA and EN 301 549 composition is not in this skill. If the APM skill `accessible-frontend` is installed, load it.',
     '',
     `Before using documentation outside this skill or the installed package, match it to the installed PDS version. ` +
       `This skill was generated for \`${localPorscheDesignSystemVersion}\`; prefer the ` +
@@ -141,7 +142,7 @@ export const buildSkillMd = (framework: Framework, sections: SkillMdSections): s
   return [
     frontmatter,
     '',
-    `# Porsche Design System (\`${framework}\`)`,
+    `# Porsche Design System (\`${frameworkSuffixMap[framework]}\`)`,
     '',
     renderIntro(framework),
     '',

@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { FRAMEWORKS, getWrapperPackageName } from '@porsche-design-system/shared';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
 import { type SourceCategory, USAGE_KINDS } from '@skills/knowledge/deprecations/types';
-import { getWrapperPackageName } from '@skills/registry';
-import { FRAMEWORKS, stagedSkillDir, WRAPPER_DIST_DIRS } from '@skills/shared/skillTree';
+import { stagedSkillDir, WRAPPER_DIST_DIRS } from '@skills/shared/skillTree';
 import { describe, expect, it } from 'vitest';
 
 /**
@@ -157,10 +157,15 @@ describe('deprecations reference rendering', () => {
         const rows = reference(framework)
           .split('\n')
           .filter((line) => line.startsWith('| `'))
-          .map((line) => line.trim().replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim()));
+          .map((line) =>
+            line
+              .trim()
+              .replace(/^\||\|$/g, '')
+              .split('|')
+              .map((cell) => cell.trim())
+          );
         const stranded = rows.filter(
-          ([, , replacement, note]) =>
-            replacement === '—' && /^Use `?[A-Za-z_$][\w$]*`? instead\.$/.test(note ?? '')
+          ([, , replacement, note]) => replacement === '—' && /^Use `?[A-Za-z_$][\w$]*`? instead\.$/.test(note ?? '')
         );
         expect(stranded.map(([ruleId, , , note]) => `${ruleId} ${note}`)).toStrictEqual([]);
       });
@@ -176,7 +181,7 @@ describe('deprecations reference rendering', () => {
         expect(reference('react')).toContain('named JSX prop');
         expect(reference('angular')).toContain('Angular property bindings');
         expect(reference('vue')).toContain('Vue bindings');
-        expect(reference('js')).toContain('`setAttribute`');
+        expect(reference('vanilla-js')).toContain('`setAttribute`');
       });
 
       it('states that empty categories were checked rather than skipped', () => {

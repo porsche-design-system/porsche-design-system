@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 test('should have table of contents', async ({ page }) => {
   await page.goto('/news/changelog/');
@@ -18,7 +18,7 @@ test('clicking table of contents link scrolls to the correct section', async ({ 
   const href = await firstLink.getAttribute('href');
   expect(href).not.toBeNull();
   // biome-ignore lint/style/noNonNullAssertion: ok
-  const sectionId = href!.replace(/^#/, '');
+  const sectionId = new URL(href!, page.url()).hash.slice(1);
 
   const headingAnchor = page.locator(`p-heading a[href="${href}"]`);
   const heading = page.locator(`p-heading[id="${sectionId}"]`);

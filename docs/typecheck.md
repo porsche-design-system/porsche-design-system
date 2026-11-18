@@ -60,10 +60,11 @@ Internal packages resolve to their `dist` through the workspace, which does not 
 `tsconfig.typecheck.json` and `tsconfig.scripts.json`, never a `tsconfig.json` that a build reads, so
 builds keep resolving from `dist`.
 
-`packages/shared/tsconfig.base.json` is the shared compiler base. Configs reference both files by the
-workspace name `shared`, which `npm install` links as `node_modules/shared`, so no build is needed and no
-config encodes its own depth to reach them. This relies on `shared` having no `exports` map. If one is
-added, it must expose both files.
+`packages/shared/tsconfig.base.json` is the shared compiler base. Configs reference both files through the
+package name, `@porsche-design-system/shared/tsconfig.base.json` and `@porsche-design-system/shared/tsconfig.paths.json`.
+`npm install` links the package to `packages/shared`, whose `exports` map lists both files, so no build is
+needed and no config encodes its own depth to reach them. Removing either entry from `exports` breaks every
+config that extends it.
 
 ## Root scripts
 
@@ -83,7 +84,7 @@ package has no root entry. Its parent's `typecheck` fans out to it when both are
 3. Decide the pass. If the package compiles in a fresh clone, chain it into root `typecheck`. If not, call
    the script from inside its `build`, after whatever generates its sources and before its bundle step.
 4. Add a `tsconfig.typecheck.json` only if the check needs a different scope from the config the bundler
-   reads. Extend `shared/tsconfig.paths.json` from it when the check runs before the build.
+   reads. Extend `@porsche-design-system/shared/tsconfig.paths.json` from it when the check runs before the build.
 5. Give scripts the package runs through `tsx` their own `tsconfig.scripts.json` with `noEmit`, chained into
    the package's `typecheck`. Never add them to a `tsconfig` that a bundler reads.
 6. Give unit specs a `tsconfig.test.json` and a `typecheck:tests` script, and each `tests/{e2e,vrt,a11y,smoke}`

@@ -1,4 +1,3 @@
-import { expect, test } from '@playwright/test';
 import {
   schemes,
   viewportWidth3XL,
@@ -6,7 +5,8 @@ import {
   viewportWidthM,
   viewportWidths,
   viewportWidthXXL,
-} from '@porsche-design-system/shared/testing';
+} from '@porsche-design-system/testing';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { closeSidebars, resetAnimations } from '../helpers/helpers';
 
 const urls = {

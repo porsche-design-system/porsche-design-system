@@ -1,4 +1,4 @@
-import { FrameworkNotification } from '@/components/common/FrameworkNotification';
+import { Notification } from '@/components/mdx/content/Notification';
 
 The `p-input-email` component provides a user-friendly, accessible interface for entering valid email addresses. It
 leverages native HTML5 email validation and ensures appropriate keyboard behavior on mobile devices. It includes `start`
@@ -12,9 +12,9 @@ screen readers.
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
 
-<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
+<Notification frameworks={['react']} heading="Input Event Handling">
   React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
   standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
   keystroke, use `onInput` instead.
-</FrameworkNotification>
+</Notification>
 

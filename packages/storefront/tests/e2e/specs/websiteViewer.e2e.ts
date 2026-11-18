@@ -1,10 +1,12 @@
-import { type BrowserContext, expect, type Frame, type Page, type Request, test } from '@playwright/test';
-import { examples } from '@porsche-design-system/examples';
+import type { Frame, Page, Request } from '@playwright/test';
+import { pageExamples } from '@porsche-design-system/examples-pages';
+import { expect, test, waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { expectedConsoleByUrl } from '../../helpers/expectedConsole';
 
 /**
  * The patterns and templates the storefront frames from `public/examples/`, and opens in StackBlitz.
  *
- * Both halves come from `@porsche-design-system/examples`: the self-contained page in the iframe, copied from its build,
+ * Both halves come from `@porsche-design-system/examples-pages`: the self-contained page in the iframe, copied from its build,
  * and the project of the example, imported from the package at build time. What is asserted here is the part the
  * storefront adds – that the page is served by this deployment, same-origin, with its media resolved against the slug,
  * and that the project reaches StackBlitz with those media made absolute.
@@ -13,7 +15,8 @@ import { examples } from '@porsche-design-system/examples';
 /** Every storefront page framing examples, with the examples it frames. */
 const pagesWithExamples: [path: string, examples: string[]][] = [
   ['/patterns/header/', ['patterns/header/overlay', 'patterns/header/stacked']],
-  ['/patterns/footer/', ['patterns/footer']],
+  ['/patterns/footer/', ['patterns/footer/extended', 'patterns/footer/simple']],
+  ['/patterns/forms/', ['patterns/forms/search-combobox-option-list', 'patterns/forms/search-combobox-link-list']],
   ['/patterns/feedback/', ['patterns/feedback/inline', 'patterns/feedback/dialog']],
   [
     '/patterns/popover/',
@@ -21,36 +24,11 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
   ],
   ['/templates/admin-panel/', ['templates/admin-panel']],
   ['/templates/landing-page/', ['templates/landing-page']],
+  [
+    '/templates/personalized-mailing/',
+    ['templates/personalized-mailing/video', 'templates/personalized-mailing/no-video'],
+  ],
 ];
-
-/**
- * Serves the Porsche Design System CDN from `serve-cdn`.
- *
- * The copy step already points the literal URLs of a framed page at the local CDN, but the loader partial builds the
- * URL of the components at runtime (`"https://cdn.ui.porsche." + …`), so that one request still leaves for production –
- * where the chunks of an unreleased build do not exist.
- */
-const routeCdnToLocal = async (context: BrowserContext): Promise<void> => {
-  await context.route(/^https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system\//, async (route) => {
-    const url = route
-      .request()
-      .url()
-      .replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001');
-    await route.fulfill({ response: await route.fetch({ url }) });
-  });
-};
-
-const waitForComponentsReady = (frame: Frame) =>
-  frame.waitForFunction(() => {
-    const pdsElements = Array.from(document.querySelectorAll('*')).filter((element) =>
-      element.tagName.startsWith('P-')
-    );
-    return (
-      pdsElements.length > 0 &&
-      document.querySelectorAll(':not(:defined)').length === 0 &&
-      pdsElements.every((element) => element.classList.contains('hydrated'))
-    );
-  });
 
 const getExampleFrames = async (page: Page): Promise<Frame[]> => {
   const iframes = page.locator('iframe[src*="/examples/"]');
@@ -64,12 +42,13 @@ const getExampleFrames = async (page: Page): Promise<Frame[]> => {
   return frames;
 };
 
-test.beforeEach(async ({ context }) => {
-  await routeCdnToLocal(context);
-});
-
 for (const [path, examples] of pagesWithExamples) {
   test.describe(path, () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(expectedConsoleByUrl[path] ?? [])]),
+    });
+
     test('frames its examples from this deployment', async ({ page }) => {
       const mediaResponses: { url: string; status: number }[] = [];
       page.on('response', (response) => {
@@ -89,7 +68,7 @@ for (const [path, examples] of pagesWithExamples) {
       for (const frame of await getExampleFrames(page)) {
         // Same-origin, which is what lets the page be framed without a second origin in the CSP.
         expect(new URL(frame.url()).origin).toBe(new URL(page.url()).origin);
-        await waitForComponentsReady(frame);
+        await waitForComponentsHydrated(frame);
         await expect(frame.locator('style')).not.toHaveCount(0);
       }
 
@@ -146,7 +125,7 @@ test('opens an example in StackBlitz as the project it was built from', async ({
 
 test('switches an example between its preview and its code, one file per tab', async ({ page }) => {
   // Without a basePath, the files are shown exactly as the package exports them.
-  const { files } = examples['templates/landing-page'];
+  const { files } = pageExamples['templates/landing-page'];
   await page.goto('/templates/landing-page/');
 
   // The tabs are slotted into the tablist of `p-tabs-bar`, so they are found below its host rather than the tablist.
@@ -276,7 +255,7 @@ test('switches every example of a page on its own, at the height of its preview'
   const stacked = page.getByTitle('Header: Stacked');
   const previewHeight = (await overlay.boundingBox())?.height;
 
-  // Each example is introduced by its description, authored with the example in @porsche-design-system/examples.
+  // Each example is introduced by its description, authored with the example in @porsche-design-system/examples-pages.
   await expect(page.getByText(/^The header lies on top of the content/)).toBeVisible();
   await expect(page.getByText(/^The header sits above the content/)).toBeVisible();
 

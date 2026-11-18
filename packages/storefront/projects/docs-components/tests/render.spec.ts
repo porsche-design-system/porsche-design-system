@@ -1,10 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { DependencyList, MarkdownOnly, Notification, StorefrontOnly, TableOfContents } from '../src/markdown';
-import { MDX_CONTENT } from '../src/renderer/define';
+import { defineMarkdownComponent, MDX_CONTENT } from '../src/renderer/define';
 import { Fragment, jsx } from '../src/renderer/jsx-runtime';
 import { renderToMarkdown } from '../src/renderer/render';
 
 const options = { framework: 'react' } as const;
+
+const Callout = defineMarkdownComponent<{ heading: string; children?: unknown }>(
+  'Callout',
+  ({ heading, children }, { renderChildren }) => [
+    { type: 'paragraph', children: [{ type: 'strong', children: [{ type: 'text', value: heading }] }] },
+    ...renderChildren(children),
+  ]
+);
+const Hidden = defineMarkdownComponent<object>('Hidden', () => []);
 
 describe('renderToMarkdown', () => {
   it('converts the HTML elements MDX emits for Markdown syntax', () => {
@@ -22,30 +30,18 @@ describe('renderToMarkdown', () => {
   });
 
   it('renders registered components and their nested children', () => {
-    const tree = jsx(Notification, {
+    const tree = jsx(Callout, {
       heading: 'Note',
       children: jsx('p', { children: ['See ', jsx('a', { href: '/partials/', children: 'Partials' }), '.'] }),
     });
 
-    expect(renderToMarkdown(tree, options)).toBe('> **Note**\n>\n> See [Partials](/partials/).\n');
+    expect(renderToMarkdown(tree, options)).toBe('**Note**\n\nSee [Partials](/partials/).\n');
   });
 
-  it('renders a dependency list', () => {
-    expect(renderToMarkdown(jsx(DependencyList, { items: ['vite@8', 'react@19'] }), options)).toBe(
-      '- `vite@8`\n- `react@19`\n'
-    );
-  });
+  it('renders nothing for a component whose Markdown is empty', () => {
+    const tree = jsx(Fragment, { children: [jsx(Hidden, {}), jsx('p', { children: 'Kept' })] });
 
-  it('drops the table of contents and storefront-only content, and keeps markdown-only content', () => {
-    const tree = jsx(Fragment, {
-      children: [
-        jsx(TableOfContents, { headings: ['Quick start'] }),
-        jsx(StorefrontOnly, { children: jsx('p', { children: 'For people' }) }),
-        jsx(MarkdownOnly, { children: jsx('p', { children: 'For agents' }) }),
-      ],
-    });
-
-    expect(renderToMarkdown(tree, options)).toBe('For agents\n');
+    expect(renderToMarkdown(tree, options)).toBe('Kept\n');
   });
 
   it('renders composed MDX content', () => {

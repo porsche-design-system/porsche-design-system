@@ -1,28 +1,24 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { radioGroupMeta } from '@/app/(main)/components/radio-group/radio-group.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import form from '@porsche-design-system/examples/components/radio-group/form';
+import slots from '@porsche-design-system/examples/components/radio-group/slots';
 
 export const metadata = {
-  title: 'Radio Group - Porsche Design System',
+  title: 'Radio Group: Examples - Components',
   description: 'Discover detailed examples and insights of the Radio Group component.',
 };
 
 # Radio Group <ComponentStatus tagName="p-radio-group"></ComponentStatus>
 
-<TableOfContents headings={[radioGroupMeta.examples.form.name, radioGroupMeta.examples.slots.name]} />
+<TableOfContents headings={[form.title, slots.title]} />
 
-## {radioGroupMeta.examples.form.name}
+## {form.title}
 
-<radioGroupMeta.examples.form.description />
-
-<ComponentExample codeSample={radioGroupMeta.examples.form.example} />
+<Example example={form} />
 
 ---
 
-## {radioGroupMeta.examples.slots.name}
+## {slots.title}
 
-<radioGroupMeta.examples.slots.description />
-
-<ComponentStory story={radioGroupMeta.examples.slots.story} />
+<Example example={slots} />

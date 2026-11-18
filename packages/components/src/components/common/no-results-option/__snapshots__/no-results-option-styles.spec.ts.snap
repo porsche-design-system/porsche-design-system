@@ -46,7 +46,6 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
     color: GrayText;
   }
   .no-results--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -100,7 +99,6 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
     color: GrayText;
   }
   .no-results--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -154,7 +152,6 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
     color: GrayText;
   }
   .no-results--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -208,7 +205,6 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
     color: GrayText;
   }
   .no-results--highlighted {
-    forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }

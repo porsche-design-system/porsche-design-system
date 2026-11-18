@@ -10,12 +10,13 @@ import {
   PLink,
   PLinkPure,
 } from '@porsche-design-system/components-react/ssr';
+import type { ColorScheme } from '@porsche-design-system/shared';
 import { breakpointMd, breakpointSm } from '@porsche-design-system/tokens';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { DirectionSelect } from '@/components/common/DirectionSelect';
+import { DocsLink } from '@/components/common/DocsLink';
 import { Navigation } from '@/components/common/Navigation';
 import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
@@ -25,7 +26,6 @@ import { useFocusMainContentOnRouteChange } from '@/hooks/useFocusMainContentOnR
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontVersion } from '@/hooks/useStorefrontVersion';
 import { useTextZoom } from '@/hooks/useTextZoom';
-import type { StorefrontColorScheme } from '@/models/colorScheme';
 import type { StorefrontDirection } from '@/models/dir';
 import type { StorefrontTextZoom } from '@/models/textZoom';
 
@@ -97,14 +97,14 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       onSidebarEndDismiss={onSidebarEndDismiss}
     >
       <PLinkPure slot="header-start" icon="arrow-down" className="sr-only focus-within:not-sr-only">
-        <Link href="#main-content">Skip to content</Link>
+        <DocsLink href="#main-content">Skip to content</DocsLink>
       </PLinkPure>
-      <Link slot="title" href="/">
+      <DocsLink slot="title" href="/">
         Porsche Design System
-      </Link>
+      </DocsLink>
 
       <PBanner open={isOutdatedVersionBannerOpen} onDismiss={() => setIsIsOutdatedVersionBannerOpen(false)}>
-        <div slot="description" className="flex flex-col gap-fluid-xs">
+        <div className="flex flex-col gap-fluid-xs">
           You are currently viewing an earlier release of the Porsche Design System.
           {/* A plain anchor, not `next/link`: the latest release is another deployment, and `next/link` would prefix the
               basePath of this one. A root-absolute href is resolved against the current origin, unaffected by
@@ -162,12 +162,12 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </div>
       <div slot="sidebar-end" className="flex flex-col gap-fluid-sm">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">
-          <PHeading size="small" tag="h2" weight="semibold">
+          <PHeading size="sm" tag="h2" weight="semibold">
             Global settings
           </PHeading>
           <ThemeSelect
             value={storefrontColorScheme}
-            onThemeChange={(e): void => setStorefrontColorScheme(e.detail.value as StorefrontColorScheme)}
+            onThemeChange={(e): void => setStorefrontColorScheme(e.detail.value as ColorScheme)}
             compact={true}
           />
           <DirectionSelect

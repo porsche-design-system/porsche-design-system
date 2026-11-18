@@ -1,14 +1,5 @@
-import type { Framework } from '@porsche-design-system/shared';
+import type { Framework } from '@porsche-design-system/shared/models';
 import type { RootContent } from 'mdast';
-
-export type { Framework };
-
-/** Every framework a page is rendered for, in the order the Storefront offers them. */
-export const FRAMEWORKS = ['vanilla-js', 'angular', 'react', 'vue'] as const satisfies readonly Framework[];
-
-type MissingFramework = Exclude<Framework, (typeof FRAMEWORKS)[number]>;
-// Fails the typecheck when `shared` adds a framework that is not rendered.
-export const allFrameworksRendered: [MissingFramework] extends [never] ? true : false = true;
 
 /**
  * Rendering depends only on the framework. Where the Markdown is read (the Storefront or a skill) changes only where
@@ -34,6 +25,21 @@ export const MDX_CONTENT = Symbol.for('@porsche-design-system/docs-components/md
 type Definition<P> = { name: string; render: MarkdownRenderer<P> };
 
 export type MarkdownComponent<P> = ((props: P) => null) & { [MARKDOWN_COMPONENT]: Definition<P> };
+
+/**
+ * The Markdown implementation of the React component `Component`, taking the same props. Typing a Markdown
+ * implementation with it fails the typecheck when the two drift apart:
+ *
+ * ```ts
+ * import type { Notification as ReactNotification } from './Notification';
+ *
+ * export const Notification: MarkdownComponentOf<typeof ReactNotification> = defineMarkdownComponent('Notification', …);
+ * ```
+ */
+// biome-ignore lint/suspicious/noExplicitAny: any props, so every React component fits
+export type MarkdownComponentOf<Component extends (props: any) => unknown> = MarkdownComponent<
+  Parameters<Component>[0]
+>;
 
 /**
  * Registers the Markdown implementation of a component. Only components created here (and compiled MDX) may appear in

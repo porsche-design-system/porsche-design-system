@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthM } from '@porsche-design-system/shared/testing';
+import { schemes, viewportWidthM } from '@porsche-design-system/testing';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { setupScenario } from '../helpers';
 
 const component = 'ag-grid';
@@ -16,11 +16,20 @@ test.describe(component, () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
   for (const { name, page: examplePage } of variants) {
-    for (const scheme of schemes) {
-      test(`should have no visual regression for ag-grid ${name} with color-scheme "${scheme}"`, async ({ page }) => {
-        await setupScenario(page, `/${examplePage}?scheme=${scheme}`, viewportWidthM);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${name}-${viewportWidthM}-${scheme}.png`);
-      });
-    }
+    test.describe(() => {
+      if (name.endsWith('enterprise')) {
+        // AG Grid Enterprise logs a license error for every grid, each line framed by asterisks
+        test.use({
+          expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, /^\*.*\* http/]),
+        });
+      }
+
+      for (const scheme of schemes) {
+        test(`should have no visual regression for ag-grid ${name} with color-scheme "${scheme}"`, async ({ page }) => {
+          await setupScenario(page, `/${examplePage}?scheme=${scheme}`, viewportWidthM);
+          await expect(page.locator('#app')).toHaveScreenshot(`${component}-${name}-${viewportWidthM}-${scheme}.png`);
+        });
+      }
+    });
   }
 });

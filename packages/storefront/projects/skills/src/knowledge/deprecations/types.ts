@@ -1,5 +1,5 @@
+import { type Framework, getWrapperPackageName } from '@porsche-design-system/shared';
 import { USAGE_KINDS, type UsageKind } from '@porsche-design-system/shared/deprecation';
-import { getWrapperPackageName, type SkillFramework } from '../../registry';
 
 /**
  * Shared deprecation-index vocabulary. Messages remain opaque source text; consumers must not derive
@@ -51,7 +51,7 @@ export const SOURCE_CATEGORIES = [
 ] as const;
 export type SourceCategory = (typeof SOURCE_CATEGORIES)[number];
 
-export const publicWrapperExport = (framework: SkillFramework, subpath = ''): string =>
+export const publicWrapperExport = (framework: Framework, subpath = ''): string =>
   `\`${getWrapperPackageName(framework)}${subpath}\``;
 
 export type DeprecationEntry = {
@@ -87,7 +87,7 @@ export type DeprecationEntry = {
 export type DeprecationSource = {
   category: SourceCategory;
   /** Human-readable origin, rendered into the index so a reader can verify the claim. */
-  origin: (framework: SkillFramework) => string;
+  origin: (framework: Framework) => string;
   entries: DeprecationEntry[];
   expectedEmpty?: true;
 };

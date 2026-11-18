@@ -6,29 +6,20 @@ import { describe, expect, it } from 'vitest';
 const packageRoot = path.resolve(import.meta.dirname, '..');
 
 /**
- * Renders a fixture the way the skill and Storefront builds do: in Node, with the hook and the `markdown` condition,
- * within a small site of fixture pages (see `fixtures/render.ts`).
+ * Renders a fixture the way the skill and Storefront builds do: in Node, with the hooks, within a small site of fixture
+ * pages (see `fixtures/render.ts`).
  */
 const renderFixture = async (fixture: string, destination: 'web' | 'skill' = 'web') => {
   const { stdout } = await promisify(execFile)(
     process.execPath,
-    [
-      '--conditions=markdown',
-      '--import',
-      'tsx',
-      '--import',
-      './src/renderer/register.mjs',
-      'tests/fixtures/render.ts',
-      fixture,
-      destination,
-    ],
+    ['--import', 'tsx', '--import', './src/renderer/register.mjs', 'tests/fixtures/render.ts', fixture, destination],
     { cwd: packageRoot }
   );
   return JSON.parse(stdout);
 };
 
 describe('MDX to Markdown', () => {
-  it('runs imports, expressions and composed MDX', async () => {
+  it('runs imports, expressions, components and composed MDX', async () => {
     const { kind, metadata, files } = await renderFixture('page');
 
     expect(kind).toBe('independent');
@@ -64,6 +55,12 @@ describe('MDX to Markdown', () => {
   it('fails the build for a component that is not registered', async () => {
     await expect(renderFixture('unregistered')).rejects.toThrow(
       /Unregistered component "LiveDemo" in MDX \(.*unregistered\.mdx:5:1\)/
+    );
+  });
+
+  it('fails the build for a component folder without a Markdown implementation, without loading its React one', async () => {
+    await expect(renderFixture('unported')).rejects.toThrow(
+      /Unregistered component "Unported" in MDX \(.*unported\.mdx:5:1\)/
     );
   });
 });

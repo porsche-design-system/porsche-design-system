@@ -1,25 +1,22 @@
-import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { wordmarkMeta } from '@/app/(main)/components/wordmark/wordmark.meta';
+import { Example } from '@/components/mdx/examples/Example';
+import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import size from '@porsche-design-system/examples/components/wordmark/size';
+import customClickableArea from '@porsche-design-system/examples/components/wordmark/custom-clickable-area';
 
 export const metadata = {
-  title: 'Wordmark - Porsche Design System',
+  title: 'Wordmark: Examples - Components',
   description: 'Discover detailed examples and insights of the Wordmark component.',
 };
 
 # Wordmark <ComponentStatus tagName="p-wordmark"></ComponentStatus>
 
-<TableOfContents headings={[wordmarkMeta.examples.size.name, wordmarkMeta.examples.customClickableArea.name]} />
+<TableOfContents headings={[size.title, customClickableArea.title]} />
 
-## {wordmarkMeta.examples.size.name}
+## {size.title}
 
-<wordmarkMeta.examples.size.description />
+<Example example={size} />
 
-<ComponentStory story={wordmarkMeta.examples.size.story} />
+## {customClickableArea.title}
 
-## {wordmarkMeta.examples.customClickableArea.name}
-
-<wordmarkMeta.examples.customClickableArea.description />
-
-<ComponentStory story={wordmarkMeta.examples.customClickableArea.story} />
+<Example example={customClickableArea} />

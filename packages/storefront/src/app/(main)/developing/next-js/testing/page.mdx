@@ -1,9 +1,9 @@
-import { ElementInternalsComponents } from '@/components/common/ElementInternalsComponents';
-import { Notification } from '@/components/common/Notification';
-import { TableOfContents } from '@/components/common/TableOfContents';
+import { ElementInternalsComponents } from '@/components/mdx/reference/ElementInternalsComponents';
+import { Notification } from '@/components/mdx/content/Notification';
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 
 export const metadata = {
-  title: 'Next.js: Testing - Porsche Design System',
+  title: 'Next.js: Testing - Developing',
   description: 'Checkout how to test a Next.js application build with Porsche Design System.',
 };
 
@@ -35,7 +35,7 @@ a `PorscheDesignSystemProvider` in order to avoid exceptions.
 
 <Notification heading="Attention" state="warning">
   Certain modern browser APIs are not supported in the jsdom environment. See [Unsupported
-  APIs](/developing/react/testing#unsupported-ap-is) for more information.
+  APIs](/developing/react/testing#unsupported-apis) for more information.
 </Notification>
 
 ### Setup file
@@ -340,21 +340,23 @@ HTMLElement.prototype.attachInternals = jest.fn(
 );
 ```
 
-### animate API
+### Web Animations API
 
-Affected Components: `p-tabs-bar`, `p-tabs`, `p-drilldown`
+Affected Components: `p-tabs-bar`, `p-drilldown`
 
-The API must be mocked within the test setup.
+The API must be mocked within the test setup. `p-tabs-bar` calls `animate` and `getAnimations`, `p-drilldown` calls
+`animate` only.
 
 Example mock:
 
 ```ts
-Element.prototype.animate = vi.fn(
+Element.prototype.animate = jest.fn(
   () =>
     ({
       onfinish: null,
-      cancel: vi.fn(),
-      finish: vi.fn(),
+      cancel: jest.fn(),
+      finish: jest.fn(),
     }) as unknown as Animation
 );
+Element.prototype.getAnimations = jest.fn(() => []);
 ```

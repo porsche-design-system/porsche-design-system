@@ -1,0 +1,7 @@
+{
+  "extends": "@porsche-design-system/shared/tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["figma", "scripts", "generated"]
+}
