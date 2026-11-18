@@ -49,7 +49,7 @@ const Page = () => (
           width="1000"
           height="313"
         />
-        <p-tag class="self-start">Petrol</p-tag>
+        <p-tag>Petrol</p-tag>
       </div>
     </main>
   </PatternPage>
