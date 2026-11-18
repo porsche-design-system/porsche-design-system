@@ -33,6 +33,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   a no-video variant ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
 - `Knowledge Skill`: simple footer pattern with the legal information only, next to the extended footer
   ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
+- `Fieldset`: `--p-fieldset-label-mb` CSS variable to override the bottom margin of the label
+  ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
+- `Knowledge Skill`: contact form, personal details form and booking form patterns
+  ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
 
 ### Changed
 
