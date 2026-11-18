@@ -7,7 +7,6 @@ import type { Nodes, Root } from 'mdast';
 import remarkGfm from 'remark-gfm';
 import ts from 'typescript';
 import { getHeadingAnchorId } from '@/links';
-import { getExampleHeading, type MdxJsxAttribute, readExampleProps } from '@/utils/exampleHeading';
 
 /**
  * Reads the Storefront's MDX the way it is rendered, without executing it: which fragments a page renders (imported
@@ -222,21 +221,6 @@ const resolveName = (name: string, file: string): Value | undefined => {
   return imported && resolveExport(imported.file, imported.name, members);
 };
 
-/** The `##` heading an `<Example>` renders (see `exampleHeading.ts`): its `heading`, else its example's title. */
-const getExampleTocHeading = (node: Nodes & { attributes: unknown[] }, file: string): string | undefined => {
-  const { example, ...props } = readExampleProps(node.attributes as MdxJsxAttribute[]);
-  const heading = getExampleHeading(props, undefined);
-  if (heading?.level !== 2) {
-    return undefined;
-  }
-  const resolved = heading.text === undefined && example ? resolveName(`${example}.title`, file) : undefined;
-  const text = heading.text ?? (resolved && 'string' in resolved ? resolved.string : undefined);
-  if (text === undefined) {
-    throw new Error(`Can't resolve the example at ${toRelativePath(file)}:${lineOf(node)}`);
-  }
-  return text;
-};
-
 const memberName = (expression: Expression): string | undefined => {
   if (expression.type === 'Identifier') {
     return expression.name;
@@ -290,6 +274,16 @@ export const getStringsOf = (file: string, exportName: string, members: string[]
   });
 };
 
+/** The name of the example a JSX element renders, `example={form}` → `form`. */
+const getExampleAttribute = (attributes: unknown[]): string | undefined => {
+  const attribute = (attributes as { type: string; name?: string; value?: unknown }[]).find(
+    ({ type, name }) => type === 'mdxJsxAttribute' && name === 'example'
+  );
+  const expression =
+    attribute?.value && typeof attribute.value === 'object' ? expressionOf(attribute.value as WithEstree) : undefined;
+  return expression?.type === 'Identifier' ? expression.name : undefined;
+};
+
 /** The ids of the examples an MDX file renders with `component` (`Example`, `Configurator`), in their order. */
 export const getRenderedExampleIds = (file: string, component: string): string[] => {
   const { tree, imports } = parseMdx(file);
@@ -298,7 +292,7 @@ export const getRenderedExampleIds = (file: string, component: string): string[]
     if ((node.type !== 'mdxJsxFlowElement' && node.type !== 'mdxJsxTextElement') || node.name !== component) {
       return;
     }
-    const { example } = readExampleProps(node.attributes as MdxJsxAttribute[]);
+    const example = getExampleAttribute(node.attributes);
     const imported = example ? imports.get(example) : undefined;
     if (!imported || !('example' in imported)) {
       throw new Error(`Can't resolve the example at ${toRelativePath(file)}:${lineOf(node)}`);
@@ -394,10 +388,6 @@ const render = (file: string, page: DocsPage): void => {
     if ((node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') && node.name) {
       for (const heading of COMPONENT_HEADINGS[node.name] ?? []) {
         page.anchors.push(getHeadingAnchorId(heading));
-      }
-      const exampleHeading = node.name === 'Example' ? getExampleTocHeading(node, file) : undefined;
-      if (exampleHeading !== undefined) {
-        page.anchors.push(getHeadingAnchorId(exampleHeading));
       }
       if (node.name === 'TableOfContents') {
         for (const heading of getTableOfContents(node, file)) {

@@ -219,15 +219,19 @@ import customLogic from '@porsche-design-system/examples/components/component/cu
 
 <TableOfContents headings={[advanced.title, customLogic.title]} />
 
+## {advanced.title}
+
 <Example example={advanced} />
+
+## {customLogic.title}
 
 <Example example={customLogic} />
 ```
 
-- `<Example>` renders the example's title as an `##` heading, its description and its preview with the code, whatever
-  its kind. `level={3}` makes it a sub-example of the one before, `heading="…"` names it apart from its title, and
-  `heading={false}` leaves the heading to the page (a page of one example). `prebuild` fills the `TableOfContents`
-  from them.
+- `<Example>` renders the example's description and its preview with the code, whatever its kind. The page writes its
+  heading, usually `## {example.title}`: `###` for a sub-example of the one before, a name of its own where the page
+  names it apart from its title, none where the page's heading names it (a page of one example). `prebuild` fills the
+  `TableOfContents` from the `##` headings.
 - Import every example the page shows on its own: a page loads the stories and previews it imports, and only those.
 - Prefer a story (`packages/examples/projects/stories`). Write a framework example only for custom logic, by adding its
   `meta.ts` (and its `example.mdx`) to `packages/examples/projects/framework/src/<id>/` and generating the project
