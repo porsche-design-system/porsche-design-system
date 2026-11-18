@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 test('should have table of contents', async ({ page }) => {
   await page.goto('/news/changelog/');

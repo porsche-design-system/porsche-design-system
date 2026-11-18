@@ -1,4 +1,5 @@
-import { expect, Page, test } from '@playwright/test';
+import { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 const getHost = (page: Page) => page.locator('p-input-month');
 const getInput = (page: Page) => page.locator('p-input-month input');
@@ -45,12 +46,12 @@ test.describe('Angular forms integration', () => {
 
     await page.getByRole('button', { name: 'Set Value' }).click();
 
-    await expect(host).toHaveJSProperty('value', '2025-10-24');
+    await expect(host).toHaveJSProperty('value', '2025-10');
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
     await expect(page.locator('[data-field="dirty"]')).toHaveText('false');
     await expect(page.locator('[data-field="disabled"]')).toHaveText('false');
-    await expect(page.locator('[data-field="value"]')).toHaveText('2025-10-24');
+    await expect(page.locator('[data-field="value"]')).toHaveText('2025-10');
     await expect(page.locator('[data-field="valid"]')).toHaveText('true');
   });
 

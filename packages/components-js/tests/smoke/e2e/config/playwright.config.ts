@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import { playwrightConfigE2E } from '@porsche-design-system/testing';
+import type { TestOptions } from '@porsche-design-system/testing/playwright';
 
 // NOTE: cdn.ui.porsche.cn (Tencent EdgeOne) has a bot-protection rule that
 // returns 403 (with no CORS headers) for requests where User-Agent or the
@@ -9,9 +10,13 @@ const realChromeUserAgent =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36';
 const realChromeSecChUa = '"Google Chrome";v="147", "Chromium";v="147", "Not.A/Brand";v="8"';
 
-export default defineConfig({
+export default defineConfig<TestOptions>({
   ...playwrightConfigE2E,
   testMatch: '**.smoke.ts',
+  use: {
+    ...playwrightConfigE2E.use,
+    externalRequests: false,
+  },
   projects: [
     {
       name: 'chrome',

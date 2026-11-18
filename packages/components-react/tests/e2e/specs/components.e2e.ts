@@ -1,29 +1,30 @@
-import { test, expect } from '@playwright/test';
-import { getConsoleErrorsAmount, getOuterHTML, goto, initConsoleObserver } from '../helpers';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
+import { getOuterHTML, goto } from '../helpers';
 import * as console from 'console';
 
-test('overview should work without errors', async ({ page }) => {
-  initConsoleObserver(page);
-  await goto(page, 'overview');
-
-  expect(getConsoleErrorsAmount()).toBe(0);
-
-  await page.evaluate(() => console.error('test error'));
-  expect(getConsoleErrorsAmount()).toBe(1);
-});
-
-test('should stringify object props correctly', async ({ page }) => {
-  await goto(page, 'overview-components');
-
-  const innerHTML = await page.evaluate(() => {
-    const app = document.querySelector('#app');
-    if (!app) throw new Error('#app not found');
-    return app.innerHTML;
+test.describe('overview', () => {
+  test.use({
+    expectedConsole: async ({ expectedConsole }, use) =>
+      use([...expectedConsole, ...harnessPageConsole['overview-components']]),
   });
 
-  expect(innerHTML).toContain('<p-heading');
-  expect(innerHTML).toContain('<my-prefix-p-heading');
-  expect(innerHTML).not.toContain('[object Object]');
+  test('overview should work without errors', async ({ page }) => {
+    await goto(page, 'overview-components');
+  });
+
+  test('should stringify object props correctly', async ({ page }) => {
+    await goto(page, 'overview-components');
+
+    const innerHTML = await page.evaluate(() => {
+      const app = document.querySelector('#app');
+      if (!app) throw new Error('#app not found');
+      return app.innerHTML;
+    });
+
+    expect(innerHTML).toContain('<p-heading');
+    expect(innerHTML).toContain('<my-prefix-p-heading');
+    expect(innerHTML).not.toContain('[object Object]');
+  });
 });
 
 test('should initialize component deterministically', async ({ page }) => {

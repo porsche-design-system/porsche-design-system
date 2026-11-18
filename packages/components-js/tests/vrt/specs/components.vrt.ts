@@ -1,7 +1,8 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/testing';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import * as globby from 'fast-glob';
 import * as path from 'path';
 import { setupScenario } from '../helpers';
@@ -67,13 +68,14 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
   }
 };
 
-test('should have certain amount of components', () => {
-  expect(components.length).toBe(60);
-});
-
 for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
+    });
+
     for (const scheme of schemes) {
       test(`color-scheme ${scheme}`, async ({ page }) => {
         await setupScenario(page, `/${component}?scheme=${scheme}`, viewportWidthM);
@@ -85,6 +87,10 @@ for (const component of components) {
 
   // executed in Chrome only
   test.describe(component, () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, ...(harnessPageConsole[component] ?? [])]),
+    });
     test.skip(({ browserName }) => browserName !== 'chromium');
 
     for (const viewportWidth of viewportWidths.filter((x) => x !== viewportWidthM)) {

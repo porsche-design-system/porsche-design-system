@@ -4,7 +4,7 @@ import { examples, mediaPath } from '@porsche-design-system/examples';
 import { describe, expect, it } from 'vitest';
 import { followsStorefrontColorScheme, withColorScheme } from './exampleColorScheme';
 import { withMediaOrigin } from './exampleMediaOrigin';
-import { getExample, getExampleMediaPath, getExampleUrl, insertBasePath, rewriteCdnUrlsForDev } from './examples';
+import { getExample, getExampleMediaPath, getExampleUrl, insertBasePath } from './examples';
 
 describe('insertBasePath()', () => {
   const html = `<img src="${mediaPath}718.webp" /><video poster="${mediaPath}mood.webp"></video>`;
@@ -22,14 +22,6 @@ describe('insertBasePath()', () => {
 
   it('leaves the path alone without a basePath, where it is already right', () => {
     expect(insertBasePath(html, '')).toBe(html);
-  });
-});
-
-describe('rewriteCdnUrlsForDev()', () => {
-  it('points the partials at serve-cdn', () => {
-    expect(
-      rewriteCdnUrlsForDev('<link rel=preload href=https://cdn.ui.porsche.com/porsche-design-system/components/x.js>')
-    ).toBe('<link rel=preload href=http://localhost:3001/components/x.js>');
   });
 });
 

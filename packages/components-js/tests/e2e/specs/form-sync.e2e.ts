@@ -1,11 +1,10 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
-  getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
   getHTMLAttributes,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -59,7 +58,6 @@ for (const { tag, value } of configs) {
     test('should submit form after dynamically setting `disabled` to true on an initially required, empty input', async ({
       page,
     }) => {
-      initConsoleObserver(page);
       const name = 'name';
       await initFormComponent(page, tag, { name, value: '', required: true });
       const form = getForm(page);
@@ -72,7 +70,6 @@ for (const { tag, value } of configs) {
 
       await getSubmitButton(page).click();
       expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-      expect(getConsoleErrorsAmount(), 'console errors').toBe(0);
     });
 
     test('should submit form when `disabled` is toggled to true and `required` to false in the same tick', async ({
@@ -81,7 +78,6 @@ for (const { tag, value } of configs) {
       // Regression test: previously, componentDidRender skipped setValidity when disabled,
       // leaving stale `valueMissing` on the ElementInternals and producing
       // "An invalid form control with name='…' is not focusable." on submit.
-      initConsoleObserver(page);
       const name = 'name';
       await initFormComponent(page, tag, { name, value: '', required: true });
       const form = getForm(page);
@@ -98,13 +94,11 @@ for (const { tag, value } of configs) {
 
       await getSubmitButton(page).click();
       expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-      expect(getConsoleErrorsAmount(), 'console errors').toBe(0);
     });
 
     test('should submit form after dynamically setting `readOnly` to true on an initially required, empty input', async ({
       page,
     }) => {
-      initConsoleObserver(page);
       const name = 'name';
       await initFormComponent(page, tag, { name, value: '', required: true });
       const form = getForm(page);
@@ -117,7 +111,6 @@ for (const { tag, value } of configs) {
 
       await getSubmitButton(page).click();
       expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-      expect(getConsoleErrorsAmount(), 'console errors').toBe(0);
     });
 
     test('should omit value from FormData when input is disabled (matching native behavior)', async ({ page }) => {

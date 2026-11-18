@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { TAG_NAMES, TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
@@ -9,6 +9,15 @@ import {
 } from '../helpers';
 
 skipInBrowsers(['webkit', 'firefox']);
+
+// p-drilldown-link has two required parents, so it is wrapped in an unknown element and stays focusable outside a drilldown
+test.use({
+  expectedConsole: async ({ expectedConsole }, use) =>
+    use([
+      ...expectedConsole,
+      /parent HTMLElement of p-drilldown-link should be of kind p-drilldown \| p-drilldown-item but got p-drilldown,p-drilldown-item/,
+    ]),
+});
 
 // p-select-wrapper excluded since does not work without slotted select
 // p-radio-group excluded since does not work without slotted p-radio-group-option and value prop

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { getLifecycleStatus, goto, trackLifecycleStatus, waitForComponentsReady } from '../helpers';
 
 test('should not cause new lifecycle when nothing on the component changes', async ({ page }) => {

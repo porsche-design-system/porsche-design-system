@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 // TODO: Think about a way to enable this without making releases impossible
 test.skip('should open stackblitz with correct theme and framework', async ({ page }) => {
