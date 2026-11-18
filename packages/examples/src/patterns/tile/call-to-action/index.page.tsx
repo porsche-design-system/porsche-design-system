@@ -28,10 +28,10 @@ const Page = () => (
           <Comment>{tileComments.zoom}</Comment>
           <img
             class="size-full object-cover motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-            src="/examples/media/dessert.jpg"
+            src="/examples/media/gipfeltreffen.webp"
             alt=""
-            width="1000"
-            height="667"
+            width="2000"
+            height="1125"
           />
         </div>
         <Comment>{tileComments.gradient}</Comment>
