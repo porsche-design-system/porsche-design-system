@@ -13,7 +13,7 @@ that the e2e, VRT and a11y suites load.
 ```text
 packages/components-js/
 ├── src/pages/          # hand-written test pages, the input of generateVRTPages
-├── src/examples/       # vanilla JS code samples for the storefront, read by generateCodeExamples
+├── src/examples/       # vanilla JS code samples for the storefront, read by packages/examples/projects/framework
 ├── scripts/            # wrapper build steps and generateVRTPages
 ├── projects/
 │   ├── components-manager-cli/   # `cm`, the build-time chunker

@@ -90,7 +90,7 @@ use: {
   ],
 },
 
-// packages/examples/tests/vrt/specs/templates/personalized-mailing-video.vrt.ts, inside the describe of the video modal
+// packages/examples/projects/pages/tests/vrt/specs/templates/personalized-mailing-video.vrt.ts, inside the describe of the video modal
 test.use({ externalRequests: youtubePlayerStub });
 ```
 
