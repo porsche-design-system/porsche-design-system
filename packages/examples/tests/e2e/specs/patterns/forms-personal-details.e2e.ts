@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/forms/personal-details` – a personal details and address form with validation and reset support.
@@ -8,12 +8,9 @@ import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helper
 const url = getExampleUrl('patterns-forms-personal-details');
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
   await expect(page.getByRole('heading', { level: 1, name: 'Personal details' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Continue' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Dismiss Changes' })).toBeVisible();

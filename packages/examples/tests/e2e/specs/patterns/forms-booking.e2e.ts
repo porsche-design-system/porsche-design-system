@@ -1,5 +1,6 @@
-import { expect, type Page, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
+import type { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/forms/booking` – a three-step test drive booking flow with stepper navigation and per-step validation.
@@ -18,12 +19,9 @@ const fillPersonalDetails = async (page: Page) => {
 };
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
   await expect(page.getByRole('heading', { level: 1, name: 'Booking' })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: 'Choose your date and time' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Continue' })).toBeVisible();
