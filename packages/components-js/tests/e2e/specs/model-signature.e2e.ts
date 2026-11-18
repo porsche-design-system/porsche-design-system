@@ -1,5 +1,6 @@
 import type { Page } from 'playwright';
-import { expect, type Locator, test } from '@playwright/test';
+import { type Locator } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 import { type ModelSignatureFetchPriority } from '@porsche-design-system/components';
 

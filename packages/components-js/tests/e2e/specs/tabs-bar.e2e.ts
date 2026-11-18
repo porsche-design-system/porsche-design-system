@@ -1,18 +1,17 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import type { BreakpointCustomizable, TabsBarSize } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,
   getAttribute,
-  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
   getOffsetWidth,
   getProperty,
   getScrollLeft,
-  initConsoleObserver,
   reattachElement,
   reattachElementToParent,
   setContentWithDesignSystem,
@@ -737,8 +736,6 @@ test.describe('events', () => {
 
 test.describe('errors', () => {
   test('should not cause TypeError within scrollActiveTabIntoView', async ({ page }) => {
-    initConsoleObserver(page);
-
     await setContentWithDesignSystem(page, ''); // empty page
     await page.evaluate(() => {
       const el = document.createElement('p-tabs-bar');
@@ -753,20 +750,10 @@ test.describe('errors', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
-
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
   });
 
   test('should not crash without children', async ({ page }) => {
-    initConsoleObserver(page);
-
     await setContentWithDesignSystem(page, `<p-tabs-bar active-tab-index="0"></p-tabs-bar>`);
-    expect(getConsoleErrorsAmount()).toBe(0);
-
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
   });
 });
 

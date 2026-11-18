@@ -2,8 +2,7 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { Page, PlaywrightWorkerArgs, TestInfo } from '@playwright/test';
-import { waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
-import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
+import { type ExternalRequestsOptions, waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
 
 /**
  * What a page needs before it is captured or scanned – shared by the VRT and the a11y suite, and in parts by e2e.
@@ -12,11 +11,16 @@ import { rewriteCdnUrlsForDev } from '../../lib/partials.ts';
  * to be pinned down is everything that can differ between two runs: the components have to be upgraded, the fonts
  * loaded, the hero video parked on a fixed frame and whatever the page focused on load released again.
  *
- * The e2e suite reuses only the hermetic part – `stubExternalRequests()` and `waitForComponentsHydrated()` – because it
- * tests the video and the focus this setup pins down.
+ * The e2e suite reuses only `waitForComponentsHydrated()`, because it tests the video and the focus this setup pins down.
+ * External requests are routed by the shared `test` of `@porsche-design-system/testing/playwright` in every suite.
  */
 
 export type ColorScheme = 'light' | 'dark';
+
+/** The reviews of the personalized mailing play in a YouTube embed no test looks into. An empty document answers. */
+export const youtubePlayerStub: ExternalRequestsOptions = {
+  stubs: { 'https://www.youtube-nocookie.com': { contentType: 'text/html', body: '' } },
+};
 
 export type ExampleScenarioOptions = {
   /** Windows High Contrast Mode. */
@@ -25,30 +29,6 @@ export type ExampleScenarioOptions = {
   /** Right-to-left reading direction. The examples never set `dir` themselves, so the test does. */
   rtl?: boolean;
 };
-
-/**
- * A placeholder for the images an example loads from a third party.
- *
- * The footer shows the logos of three payment providers, hosted on a content delivery network of Porsche. They are
- * the only requests of an example that leave the machine, and a VRT run must not depend on them: an offline or slow
- * network would change the layout instead of failing the request visibly. The stub keeps a fixed size, so what the
- * baseline records is the layout of the page, not the availability of a third party.
- */
-const externalImageStub = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="40" viewBox="0 0 64 40"><rect width="64" height="40" rx="4" fill="#C8CACB"/></svg>`;
-
-/**
- * The one external origin a test redirects instead of refusing: the Porsche Design System CDN.
- *
- * `previewSite.ts` rewrites the emitted HTML to the local CDN, but it can only reach the URLs that are **literal**
- * in the markup – the preloads, the fonts, the icons. The loader script builds its own URL at runtime by
- * concatenation (`"https://cdn.ui.porsche." + ("cn" === … ? "cn" : "com")`), so the production origin never appears
- * as a string and survives every rewrite. The page therefore fetches the components themselves from the production
- * CDN, which a test must not do: without a network the components never upgrade and the run times out, and with one
- * the suite silently measures a released version instead of the build under test.
- *
- * Routing it here closes both. The mapping is the same one the preview applies, so the test and the preview agree on
- * what the local CDN stands for.
- */
 
 /**
  * Switches the transitions and animations of the components off, like the other VRT suites of the monorepo do through
@@ -71,29 +51,6 @@ const disableMotion = async (page: Page): Promise<void> => {
       inject();
     } else {
       document.addEventListener('readystatechange', inject, { once: true });
-    }
-  });
-};
-
-/** Everything outside the preview server and the local CDN is answered by the test, not by the network. */
-export const stubExternalRequests = async (page: Page): Promise<void> => {
-  await page.route(/^https?:\/\/(?!localhost|127\.0\.0\.1)/, async (route) => {
-    const url = route.request().url();
-
-    // The one external origin that is redirected rather than refused – see the note above.
-    const localCdnUrl = rewriteCdnUrlsForDev(url);
-    if (localCdnUrl !== url) {
-      // Fetched and fulfilled rather than continued: `route.continue()` refuses to cross protocols (the CDN is
-      // https, `serve-cdn` is http). Fulfilling also keeps the response on the original origin as far as the page is
-      // concerned, so the `crossorigin` loader script is not a CORS request in the first place.
-      await route.fulfill({ response: await route.fetch({ url: localCdnUrl }) });
-      return;
-    }
-
-    if (route.request().resourceType() === 'image') {
-      await route.fulfill({ contentType: 'image/svg+xml', body: externalImageStub });
-    } else {
-      await route.abort();
     }
   });
 };
@@ -211,7 +168,6 @@ export const setupExamplePage = async (
 ): Promise<void> => {
   const { forcedColorsEnabled, prefersColorScheme, rtl } = options;
 
-  await stubExternalRequests(page);
   await disableMotion(page);
 
   // Reduced motion is not a variant, it is a precondition of every capture: it stops the autoplaying hero video and

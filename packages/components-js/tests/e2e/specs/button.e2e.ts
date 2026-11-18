@@ -1,5 +1,6 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   type ClickableTests,
@@ -220,7 +221,7 @@ test.describe('form', () => {
     const value = 'Value';
     await setContentWithDesignSystem(
       page,
-      `<form action="/packages/components-js/public">
+      `<form action="/">
       <p-button type="submit" name="${name}" value="${value}">Some label</p-button>
     </form>`
     );
@@ -242,7 +243,7 @@ test.describe('form', () => {
     const value = 'Value';
     await setContentWithDesignSystem(
       page,
-      `<form action="/packages/components-js/public" id="myForm"></form>
+      `<form action="/" id="myForm"></form>
     <p-button type="submit" name="${name}" value="${value}" form="myForm">Some label</p-button>`
     );
 
@@ -264,7 +265,7 @@ test.describe('form', () => {
     const newValue = 'NewValue';
     await setContentWithDesignSystem(
       page,
-      `<form action="/packages/components-js/public">
+      `<form action="/">
       <p-button type="submit" name="${name}" value="${value}">Some label</p-button>
       </form>`
     );

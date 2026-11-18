@@ -1,4 +1,5 @@
-import { expect, type Page, test } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { getDevice, getExampleUrl, setupExamplePage, waitForStablePosition } from '../../../helpers/index.ts';
 import { testInitialStates, waitForStableState } from '../../helpers/index.ts';
 

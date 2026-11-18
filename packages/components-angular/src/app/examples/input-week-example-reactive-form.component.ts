@@ -49,7 +49,7 @@ export class InputWeekExampleReactiveFormComponent {
   submittedValue: string | null = null;
 
   setValue(): void {
-    this.form.controls.myInputWeek.setValue('2025-10-24');
+    this.form.controls.myInputWeek.setValue('2025-W43');
   }
 
   resetValue(): void {

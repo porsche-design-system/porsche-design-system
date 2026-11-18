@@ -1,16 +1,15 @@
-import { expect, Locator, test } from '@playwright/test';
+import { Locator } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   addEventListener,
-  getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
   getFormDataValues,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -902,7 +901,6 @@ test.describe('form', () => {
   });
 
   test('should not set validity when disabled and throw no errors', async ({ page }) => {
-    initConsoleObserver(page);
     await initRadioGroup(page, {
       options: {
         isWithinForm: true,
@@ -915,7 +913,6 @@ test.describe('form', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

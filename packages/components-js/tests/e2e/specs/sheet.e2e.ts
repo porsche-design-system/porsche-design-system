@@ -1,4 +1,5 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { SelectedAriaAttributes, SheetAriaAttribute } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import {
@@ -43,8 +44,9 @@ const initBasicSheet = (
   const {
     isOpen = true,
     content = 'Some Content',
-    aria,
     hasSlottedHeader,
+    // without an accessible name p-sheet logs a warning
+    aria = hasSlottedHeader ? undefined : "{'aria-label': 'Some Heading'}",
     disableCloseButton,
     markupBefore,
     markupAfter,
@@ -314,7 +316,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
         page,
         `
       <button id="btn-open"></button>
-      <p-sheet id="sheet" heading="Some Heading">
+      <p-sheet id="sheet" aria="{'aria-label': 'Some Heading'}">
         Some Content
       </p-sheet>
       <script>
