@@ -1,11 +1,11 @@
 import { testInitialStates } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/tile/image-category` – a category with a mood image, clickable as a whole through a covering `p-link`. Static markup without behaviour of its own, so the initial state is all there
+ * `src/patterns/tile/image` – a category with a mood image, clickable as a whole through a covering `p-link`. Static markup without behaviour of its own, so the initial state is all there
  * is to scan.
  */
 
-testInitialStates('patterns-tile-image-category', {
+testInitialStates('patterns-tile-image', {
   // `page-has-heading-one` is a best-practice rule about *pages*, and this pattern is not one: like the footer pattern,
   // it demonstrates a single element in the place it occupies, and a heading above it would be content the pattern is
   // not about. The unit tests encode the same exception for every tile pattern.

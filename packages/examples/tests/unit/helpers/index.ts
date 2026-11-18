@@ -16,7 +16,7 @@ import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index
 import TileDisclosurePage from '../../../src/patterns/tile/disclosure/index.page.tsx';
 import TileEquipmentPage from '../../../src/patterns/tile/equipment/index.page.tsx';
 import TileEquipmentStackedPage from '../../../src/patterns/tile/equipment-stacked/index.page.tsx';
-import TileImageCategoryPage from '../../../src/patterns/tile/image-category/index.page.tsx';
+import TileImagePage from '../../../src/patterns/tile/image/index.page.tsx';
 import TileModelNavigationPage from '../../../src/patterns/tile/model-navigation/index.page.tsx';
 import TileModelSelectionPage from '../../../src/patterns/tile/model-selection/index.page.tsx';
 import TileModelTeaserPage from '../../../src/patterns/tile/model-teaser/index.page.tsx';
@@ -75,7 +75,7 @@ export const patternPages = [
   ['patterns/tile/model-selection', TileModelSelectionPage],
   ['patterns/tile/model-navigation', TileModelNavigationPage],
   ['patterns/tile/category', TileCategoryPage],
-  ['patterns/tile/image-category', TileImageCategoryPage],
+  ['patterns/tile/image', TileImagePage],
   ['patterns/tile/video', TileVideoPage],
   ['patterns/tile/product', TileProductPage],
   ['patterns/tile/vehicle-listing', TileVehicleListingPage],

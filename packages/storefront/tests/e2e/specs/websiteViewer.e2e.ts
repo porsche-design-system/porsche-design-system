@@ -19,7 +19,7 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
   [
     '/patterns/tile/',
     [
-      'patterns/tile/image-category',
+      'patterns/tile/image',
       'patterns/tile/video',
       'patterns/tile/call-to-action',
       'patterns/tile/model-teaser',
