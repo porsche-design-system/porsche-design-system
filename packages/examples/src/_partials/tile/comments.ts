@@ -16,6 +16,8 @@ export const tileComments = {
   darkScheme: 'Light content on a dark gradient or image, independent of the color scheme of the page.',
   moodImage: 'Decorative, it sets the mood and carries no information the text does not give.',
   fill: 'Takes the height left in the tile without increasing it.',
+  ownHeight:
+    'Aligned to the top of its row instead of stretched to it, so content needing more room than the aspect ratio provides extends the tile in Safari as well.',
   signatureWidth:
     'Signatures differ in width: 911 and 718 are the narrowest, Panamera is almost three times as wide. The share below suits the narrow ones, so for another model set it anew and check how far the vehicle overlaps the signature.',
 } as const;
