@@ -32,7 +32,7 @@ packages/
 ├── components-react/   # React wrapper + Next.js/React Router integrations
 ├── components-vue/     # Vue wrapper
 ├── storefront/         # Next.js documentation site
-│   └── projects/       # Agent skills generator, StackBlitz projects
+│   └── projects/       # MDX to Markdown, agent skills generator, StackBlitz projects
 ├── examples/           # Every example, one project per kind
 │   └── projects/       # Pages (patterns, templates), framework examples, stories
 ├── tokens/             # Design tokens (colors, spacing, typography)

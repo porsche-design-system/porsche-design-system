@@ -31,7 +31,7 @@ npm run start:storefront
 # Build storefront
 npm run build:storefront
 
-# Typecheck the Storefront and its projects (skills, stackblitz), and their tests
+# Typecheck the Storefront and its projects (docs-components, skills, stackblitz), and their tests
 npm run typecheck:storefront
 npm run typecheck:storefront:tests
 
@@ -136,7 +136,8 @@ Every component MDX imports lives in `src/components/mdx/`, in a topic folder by
 `content`, `framework`, `playground`, `examples`, `reference`, `widgets`), one folder per component. MDX imports
 it from that folder: `import { Notification } from '@/components/mdx/content/Notification';`. The
 [`README.md`](src/components/mdx/README.md) is the inventory: what each component is for, its planned Markdown output
-and its dependencies on the Storefront. It is the migration list for the dual-target registry (#4142).
+and its dependencies on the Storefront. It is the migration list for the Markdown of the Storefront and the skills
+(#4142), see [Markdown for agents](#markdown-for-agents).
 
 - A new component gets a folder in its topic with a module of the same name, an `index.ts` and a row in the inventory.
   `tests/unit/specs/mdxComponents.spec.ts` checks them, and that a new Storefront dependency is added on purpose.
@@ -145,6 +146,21 @@ and its dependencies on the Storefront. It is the migration list for the dual-ta
   checks this, unused imports, tables of contents (from two `##` sections) and notification heading levels.
 - Framework-aware content (`FrameworkCodeBlock`, `FrameworkLink`, `FrameworkName`, `Notification` with
   `frameworks`) is resolved for every framework on the server; `framework/FrameworkContent` renders the selected one.
+
+### Markdown for agents
+
+A page or tab flagged with `markdown: true` in `src/sitemap.ts` is also written as Markdown: next to its HTML with an
+entry in `llms.txt` (`npm run build:markdown`, the `postbuild` of the Storefront), and into the knowledge skills
+(`build:skills`). The design is in [`docs/docs-components-design.md`](../../docs/docs-components-design.md).
+
+- Every component the page uses needs a Markdown implementation, `<Name>.markdown.ts` in its folder (see the
+  [inventory](src/components/mdx/README.md)). The build fails for one without, naming it and its line.
+- A page written for one framework declares it, `export const framework = 'react';`, and reaches only that framework's
+  Markdown and skill. Other pages get one variant per framework where their Markdown differs.
+- Every root-relative link must target a route; the Markdown build fails for one that doesn't.
+- `projects/docs-components` is the engine: the Markdown JSX runtime, the Node hooks that compile MDX and resolve a
+  component folder to its Markdown implementation, the page manifest and the output maps. Its tests run with
+  `npm run test:unit:docs-components`.
 
 ## File Structure
 
@@ -161,6 +177,7 @@ src/
 ├── lib/                    # Utilities and helpers
 └── styles/                 # Global styles
 projects/
+├── docs-components/        # Renders MDX to Markdown (@porsche-design-system/docs-components)
 ├── skills/                 # Agent skills generator (@porsche-design-system/skills)
 └── stackblitz/             # StackBlitz projects (@porsche-design-system/stackblitz)
 ```

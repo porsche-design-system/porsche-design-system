@@ -10,17 +10,25 @@ import { capitalCase } from 'change-case';
  * The keys are the segments of the paths: `sitemap.news.pages.changelog` is `/news/changelog` (see `getPath`).
  */
 
-export type Tab = { name: string };
+/**
+ * `markdown`: written as Markdown next to its HTML and into the skills (`src/utils/markdownPages.ts`). Set once every
+ * component the page uses has a Markdown implementation (`docs/docs-components-design.md`).
+ */
+export type Tab = { name: string; markdown?: boolean };
 
 export type Page = {
   name: string;
   /** The component the page documents */
   tagName?: TagName;
   tabs?: Record<string, Tab>;
+  /** For a page without tabs, see `Tab`. */
+  markdown?: boolean;
 };
 
 export type Category = {
   name: string;
+  /** What the category is for, for its section in `llms.txt` and in the skills' `SKILL.md`. */
+  description?: string;
   pages: Record<string, Page>;
 };
 
@@ -105,12 +113,14 @@ export const sitemap = {
   },
   developing: {
     name: 'Developing',
+    description:
+      'Set up the Porsche Design System in a new or existing project, or check an existing setup, with the guide for its framework and build tool.',
     pages: {
       introduction: { name: 'Introduction' },
       angular: {
         name: 'Angular',
         tabs: {
-          'getting-started': { name: 'Getting Started' },
+          'getting-started': { name: 'Getting Started', markdown: true },
           demo: { name: 'Demo' },
           form: { name: 'Form' },
           testing: { name: 'Testing' },
@@ -121,7 +131,7 @@ export const sitemap = {
       astro: {
         name: 'Astro',
         tabs: {
-          'getting-started': { name: 'Getting Started' },
+          'getting-started': { name: 'Getting Started', markdown: true },
           demo: { name: 'Demo' },
           faq: { name: 'FAQ' },
         },
@@ -129,7 +139,7 @@ export const sitemap = {
       'next-js': {
         name: 'Next.js',
         tabs: {
-          'getting-started': { name: 'Getting Started' },
+          'getting-started': { name: 'Getting Started', markdown: true },
           form: { name: 'Form' },
           demo: { name: 'Demo' },
           testing: { name: 'Testing' },
@@ -140,7 +150,7 @@ export const sitemap = {
       react: {
         name: 'React',
         tabs: {
-          'getting-started': { name: 'Getting Started' },
+          'getting-started': { name: 'Getting Started', markdown: true },
           demo: { name: 'Demo' },
           form: { name: 'Form' },
           testing: { name: 'Testing' },
@@ -151,7 +161,7 @@ export const sitemap = {
       'react-router': {
         name: 'React Router',
         tabs: {
-          'getting-started': { name: 'Getting Started' },
+          'getting-started': { name: 'Getting Started', markdown: true },
           demo: { name: 'Demo' },
           form: { name: 'Form' },
           advanced: { name: 'Advanced' },
@@ -162,7 +172,7 @@ export const sitemap = {
       'vanilla-js': {
         name: 'Vanilla JS',
         tabs: {
-          'getting-started': { name: 'Getting Started' },
+          'getting-started': { name: 'Getting Started', markdown: true },
           demo: { name: 'Demo' },
           form: { name: 'Form' },
           advanced: { name: 'Advanced' },
@@ -172,7 +182,7 @@ export const sitemap = {
       vue: {
         name: 'Vue',
         tabs: {
-          'getting-started': { name: 'Getting Started' },
+          'getting-started': { name: 'Getting Started', markdown: true },
           demo: { name: 'Demo' },
           form: { name: 'Form' },
           testing: { name: 'Testing' },

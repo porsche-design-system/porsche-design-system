@@ -4,6 +4,7 @@ import { renderFrontmatter } from '../shared/frontmatter';
 import { localPorscheDesignSystemVersion } from '../shared/version';
 import { rawMetaReference } from './components/section';
 import { rawScssReference, rawTailwindcssReference } from './packageSkills';
+import { referenceFile } from './skillMap';
 
 export const skillName = (framework: Framework): string => getSkillName('knowledge', framework);
 
@@ -55,10 +56,10 @@ const componentSourceUrl =
 
 const renderCoverageSection = (): string =>
   [
-    'This skill currently covers components, global stylesheets and theming, tokens, styling integrations, patterns ' +
-      'and templates, and the deprecated API index. It does ' +
-      'not yet include complete getting-started, setup, and installation guidance; the v3-to-v4 migration guide; ' +
-      'the changelog; partials; the AG Grid theme; or the Storefront\u2019s Must Know and Help sections.',
+    'This skill currently covers getting started and setup, components, global stylesheets and theming, tokens, ' +
+      'styling integrations, patterns and templates, and the deprecated API index. It does not yet include the ' +
+      'v3-to-v4 migration guide; the changelog; partials; the AG Grid theme; or the Storefront\u2019s Must Know and ' +
+      'Help sections.',
     'Page-level WCAG 2.2 AA and EN 301 549 composition is not in this skill. If the APM skill `accessible-frontend` is installed, load it.',
     '',
     `Before using documentation outside this skill or the installed package, match it to the installed PDS version. ` +
@@ -98,8 +99,8 @@ const renderReactSsrSection = (): string =>
       'branch.',
     '',
     'Framework setup differs. Follow the ' +
-      `[Next.js integration guide](${storefrontUrl('developing/next-js/getting-started/')}) or the ` +
-      `[React Router integration guide](${storefrontUrl('developing/react-router/getting-started/')}). ` +
+      `[Next.js integration guide](${referenceFile('developing/next-js')}#getting-started) or the ` +
+      `[React Router integration guide](${referenceFile('developing/react-router')}#getting-started). ` +
       'Remix users should follow the React Router guidance because Remix v2 was upstreamed into React Router.',
   ].join('\n');
 
@@ -122,6 +123,8 @@ export const renderDeprecationsSection = (): string =>
   ].join('\n');
 
 export type SkillMdSections = {
+  /** The Storefront pages in this skill, one `##` section per sitemap category; empty when there are none. */
+  pages: string;
   components: string;
   stylesheets: string;
   tokens: string;
@@ -147,6 +150,7 @@ export const buildSkillMd = (framework: Framework, sections: SkillMdSections): s
     '',
     renderCoverageSection(),
     '',
+    ...(sections.pages ? [sections.pages, ''] : []),
     '## Components',
     '',
     sections.components,
