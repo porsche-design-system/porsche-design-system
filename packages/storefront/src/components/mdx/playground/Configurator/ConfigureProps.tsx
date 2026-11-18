@@ -259,7 +259,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
 
   return (
     <>
-      <PHeading slot="summary" tag="h2" size="small" weight="semibold">
+      <PHeading slot="summary" tag="h2" size="sm" weight="semibold">
         Properties
       </PHeading>
       {amountOfConfiguredProps > 0 && (

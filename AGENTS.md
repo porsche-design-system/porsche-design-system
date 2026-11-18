@@ -213,6 +213,21 @@ writing or requesting an entry.
 
 - Run the `update-changelog` skill to reconcile the changelog with the current branch
 
+## Branches and Commits
+
+- Work on an issue happens in the branch `issue/<number>`, e.g. `issue/4867`.
+- A commit subject is `type(scope): description | <initials> | #<issue>`, e.g.
+  `docs(storefront): name Vitest on the Vue testing page | rk | #4844`.
+  - `type` is one of `feat`, `fix`, `docs`, `test`, `refactor`, `chore`, `ci`, `build`, `perf` or `revert`.
+  - `scope` usually is the package's folder name under `packages/`, comma-separated when the commit spans several
+    (`storefront,examples`). Leave it out for a repo-wide change.
+  - `<initials>` name the developer who answers for the commit, `sas / oh` for two developers. An agent working for a
+    developer uses that developer's initials: read them from the developer's earlier commits
+    (`git log --author="$(git config user.email)" --format=%s`) and ask when there are none. Never invent initials or
+    use some of your own; the `Co-authored-by` trailer marks the agent's part. An agent that runs without a developer,
+    such as the Copilot cloud agent, leaves `| <initials>` out.
+  - Leave `| #<issue>` out when the commit belongs to no issue.
+
 ## Pull Requests
 
 - Structure the body after [`.github/pull_request_template.md`](.github/pull_request_template.md) and keep all its

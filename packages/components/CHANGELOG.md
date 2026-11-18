@@ -41,6 +41,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: instructs the agent to load `references/components/<tag>/accessibility.md` before generating a
   component and to load the `accessible-frontend` APM skill for page-level WCAG 2.2 AA and EN 301 549 composition when
   installed ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
+- `Accordion`: the shadow root no longer uses `delegatesFocus`. `focus()` and `blur()` on `p-accordion` still reach the
+  summary, except when called from an isolated context such as Playwright's `locator.focus()` – call them through
+  `locator.evaluate()` or on the summary there.
+  ([#4870](https://github.com/porsche-design-system/porsche-design-system/pull/4870))
 
 ### Fixed
 
@@ -60,6 +64,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Pin Code`: pressing `Enter` submitted the form without clicking its submit button, so the button's `name` and `value`
   were missing and a disabled submit button didn't prevent the submission
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Accordion`: a click on static text inside the content of an open accordion moved focus to the summary, which in
+  Chrome and Safari scrolled the page back to the top of the accordion. In Safari a click on a slotted `<button>` did
+  the same. ([#4870](https://github.com/porsche-design-system/porsche-design-system/pull/4870))
 - `Knowledge Skill`: the `p-link-pure` reference listed the example of a framework router with active state without its
   code, and the `p-input-search` reference cut its guidance on combobox use after the first sentence; both are now shown
   in full ([#4800](https://github.com/porsche-design-system/porsche-design-system/pull/4800))

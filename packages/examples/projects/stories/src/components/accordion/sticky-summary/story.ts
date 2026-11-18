@@ -30,7 +30,7 @@ export const accordionStoryStickySummary: Story<'p-accordion'> = {
           properties: {
             slot: 'summary',
             tag: 'h3',
-            size: 'small',
+            size: 'sm',
             weight: 'semibold',
           },
           children: ['Some summary'],

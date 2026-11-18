@@ -29,7 +29,7 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
 
   return (
     <>
-      <PHeading slot="summary" tag="h2" size="small" weight="semibold">
+      <PHeading slot="summary" tag="h2" size="sm" weight="semibold">
         CSS Variables
       </PHeading>
       {amountOfConfiguredCssVariables > 0 && (

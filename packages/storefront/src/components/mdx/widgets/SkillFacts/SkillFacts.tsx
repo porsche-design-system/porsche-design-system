@@ -55,7 +55,7 @@ export const SkillFacts = ({ caption, invocation, dependencies, reads, writes, e
         ))}
       </PTableBody>
     </PTable>
-    <PText size="small" color="contrast-medium" className="mt-static-sm max-w-(--max-width-prose)">
+    <PText size="sm" color="contrast-medium" className="mt-static-sm max-w-(--max-width-prose)">
       Invocation comes from the skill's frontmatter and is honored by your AI coding tool. The rest is guidance the
       skill gives an agent, not a permission your tool enforces.
     </PText>

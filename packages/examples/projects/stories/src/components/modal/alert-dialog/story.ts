@@ -39,7 +39,7 @@ export const modalStoryAlertDialog: Story<'p-modal'> = {
       children: [
         {
           tag: 'p-heading',
-          properties: { slot: 'header', size: 'large', tag: 'h2' },
+          properties: { slot: 'header', size: 'lg', tag: 'h2' },
           children: ['Some important Heading'],
         },
         {
