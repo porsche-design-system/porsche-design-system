@@ -353,5 +353,5 @@ A page is found by its file name, but a few lists are still kept by hand. Beside
 - Write one spec per suite – `tests/{e2e,a11y,vrt}/specs/<category>/<page>.<suite>.ts` (the page folder with `/` as `-`:
   `patterns/header-overlay.e2e.ts`). The `coverage.*` specs fail without them. Create the VRT baselines in Docker.
 - Show it in the storefront: a `page.mdx` that imports it by its id from
-  `@porsche-design-system/examples/<category>/<page>` and renders it with `<Example example={…} />`, and an entry in
-  `packages/storefront/src/sitemap.ts`.
+  `@porsche-design-system/examples/<category>/<page>` and renders it with `<Example example={…} />` below the heading
+  the page writes for it, and an entry in `packages/storefront/src/sitemap.ts`.

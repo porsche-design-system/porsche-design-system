@@ -301,13 +301,16 @@ import { Configurator } from "@/components/mdx/playground/Configurator";
 ## Component Examples
 
 Every example lives in [`packages/examples`](../examples/AGENTS.md), one folder per example, named by its id. A page
-imports the examples it shows by their id and renders each with `<Example>`, whatever its kind; the component's
-`{component}.meta.ts` lists their ids, in the order of the page, for the skill (`componentDocs.spec.ts` checks both
-agree).
+imports the examples it shows by their id and renders each with `<Example>` below its heading, whatever its kind; the
+component's `{component}.meta.ts` lists their ids, in the order of the page, for the skill (`componentDocs.spec.ts`
+checks both agree).
 
 ```mdxjs
 import jumpToSlide from "@porsche-design-system/examples/components/carousel/jump-to-slide";
 import { Example } from "@/components/mdx/examples/Example";
+
+## {jumpToSlide.title}
+
 <Example example={jumpToSlide} />
 ```
 
@@ -341,4 +344,5 @@ importable by its id.
 
 3. **Use in Storefront**
 
-Import the example by its id, render it with `<Example>` as shown above, and add its id to the component's meta.
+Import the example by its id, render it with `<Example>` below its heading as shown above, and add its id to the
+component's meta.

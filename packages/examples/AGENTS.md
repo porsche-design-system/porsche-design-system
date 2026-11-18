@@ -63,10 +63,10 @@ defines what every project exports:
   import it on the server. A project can't import these types, so it declares its own with the same fields; assigning
   its examples to `Examples` fails the typecheck when they drift apart.
 - **An example's module** is what a page imports to show it:
-  `import form from '@porsche-design-system/examples/components/button/form'`, then `<Example example={form} />`. Its
-  stories and previews are `'use client'`, and a Next page loads every client module its server code can reach – also
-  through a dynamic `import()` – so one module per example, imported by the page, is what keeps a page to the examples
-  it shows.
+  `import form from '@porsche-design-system/examples/components/button/form'`, then `## {form.title}` and
+  `<Example example={form} />`, which renders its description and preview. Its stories and previews are `'use client'`,
+  and a Next page loads every client module its server code can reach – also through a dynamic `import()` – so one
+  module per example, imported by the page, is what keeps a page to the examples it shows.
 
 The catalogue takes a story's code from `getStoryMarkup` on its own state, in the light color scheme, as the skills do.
 A default story is titled `Default`; an example story's title comes from its `meta.ts`, a framework example's from its

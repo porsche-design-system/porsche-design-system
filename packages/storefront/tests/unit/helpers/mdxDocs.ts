@@ -75,7 +75,7 @@ type Import = { file: string; name: string } | { example: string };
 
 const EXAMPLE_MODULE = /^@porsche-design-system\/examples\/(.+)$/;
 
-/** The title of an example of the catalogue, as `<Example>` renders it. */
+/** The title of an example of the catalogue, which a heading such as `## {form.title}` shows. */
 const exampleTitle = (id: string): string | undefined =>
   (examples as Partial<Record<string, { title: string }>>)[id]?.title;
 

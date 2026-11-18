@@ -590,9 +590,9 @@ hand, and nothing fails when one of the first two is forgotten:
    `coverage.*` specs fail until all three exist. Generate the VRT baselines in Docker –
    `./docker.sh npm run test:vrt:examples` writes the missing ones.
 4. **Storefront.** Add a `page.mdx` that imports the example by its id
-   (`import overlay from '@porsche-design-system/examples/patterns/header/overlay'`) and renders
-   `<Example example={overlay} />` – it shows the description and frames the page under its title – and an entry in
-   [`packages/storefront/src/sitemap.ts`](../../../storefront/src/sitemap.ts).
+   (`import overlay from '@porsche-design-system/examples/patterns/header/overlay'`) and renders it under a heading of
+   its own, `## Overlay` then `<Example example={overlay} />` – the component shows the description and frames the page
+   – and an entry in [`packages/storefront/src/sitemap.ts`](../../../storefront/src/sitemap.ts).
 5. **Knowledge skill.** Nothing to register – the page is picked up from the package export. Update the content
    snapshots of the skills project (see _Knowledge skill_).
 
