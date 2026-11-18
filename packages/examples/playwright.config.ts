@@ -1,5 +1,6 @@
 import { type Config, defineConfig, devices, type Project } from '@playwright/test';
 import { playwrightConfigA11y, playwrightConfigE2E, playwrightConfigVRT } from '@porsche-design-system/testing';
+import type { TestOptions } from '@porsche-design-system/testing/playwright';
 import { exampleWebServer } from './tests/helpers/previewServers.ts';
 
 /**
@@ -45,7 +46,7 @@ const devicesUnderTest = [
  * the regression artifacts from it. Project names have to be unique across the suites, so they cannot be the bare
  * engine name, and the VRT suffix is fixed per project instead of taken from `{projectName}`.
  */
-const projectsOf = (suite: Suite, base: Config): Project[] =>
+const projectsOf = (suite: Suite, base: Config): Project<TestOptions>[] =>
   devicesUnderTest.map(({ device, engine, descriptor }) => ({
     name: `${suite}-${device}-${engine}`,
     testDir: `./tests/${suite}/specs`,
@@ -55,11 +56,21 @@ const projectsOf = (suite: Suite, base: Config): Project[] =>
     snapshotPathTemplate:
       suite === 'vrt' ? `{testDir}/__screenshots__/{arg}-${engine}{ext}` : base.snapshotPathTemplate,
     outputDir: `./tests/${suite}/results`,
-    use: { ...base.use, ...descriptor, deviceScaleFactor: 1 },
+    use: {
+      ...base.use,
+      ...descriptor,
+      deviceScaleFactor: 1,
+      expectedConsole: [
+        // Every page preloads the chunks of its whole category. The browser warns for each one still unused after load.
+        /was preloaded using link preload but not used within a few seconds/,
+        // Both personalized mailing pages allow web-share on their video iframe. Chrome warns that it is unrecognized.
+        /Unrecognized feature: 'web-share'/,
+      ],
+    },
     metadata: { device },
   }));
 
-export default defineConfig({
+export default defineConfig<TestOptions>({
   fullyParallel: playwrightConfigE2E.fullyParallel,
   forbidOnly: playwrightConfigE2E.forbidOnly,
   retries: playwrightConfigE2E.retries,

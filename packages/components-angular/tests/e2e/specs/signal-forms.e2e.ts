@@ -1,4 +1,5 @@
-import { expect, type Page, test } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 const patternComponents = [
   { tag: 'p-input-email', modelKey: 'inputEmail', initialValue: 'example@mail.com', nextValue: 'other@mail.com' },

@@ -1,5 +1,6 @@
 import { buildDefaultComponentMarkup, goto, waitForComponentsReady } from '../helpers';
-import { test, expect, type Locator } from '@playwright/test';
+import { type Locator } from '@playwright/test';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { format } from 'prettier';
 
@@ -16,25 +17,33 @@ const expectShadowDomToMatchSnapshot = async (host: Locator, tagName: TagName): 
 };
 
 for (const tagName of TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))) {
-  test(`should have no basic DOM regression for ${tagName}`, async ({ page, browserName }) => {
-    test.fixme(browserName === 'firefox' && tagName === 'p-carousel');
-    test.skip(
-      ['firefox', 'webkit'].includes(browserName) &&
-        ['p-input-date', 'p-input-month', 'p-input-week', 'p-input-time'].includes(tagName),
-      'Skipping due to differing native date/time picker rendering in Firefox and Safari'
-    );
+  test.describe(() => {
+    if (tagName === 'p-display') {
+      test.use({
+        expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, ...harnessPageConsole.display]),
+      });
+    }
 
-    await goto(page, ''); // start page
+    test(`should have no basic DOM regression for ${tagName}`, async ({ page, browserName }) => {
+      test.fixme(browserName === 'firefox' && tagName === 'p-carousel');
+      test.skip(
+        ['firefox', 'webkit'].includes(browserName) &&
+          ['p-input-date', 'p-input-month', 'p-input-week', 'p-input-time'].includes(tagName),
+        'Skipping due to differing native date/time picker rendering in Firefox and Safari'
+      );
 
-    const markup = buildDefaultComponentMarkup(tagName);
-    await page.evaluate((markup: string) => {
-      const app = document.getElementById('app');
-      if (!app) throw new Error('#app not found');
-      app.innerHTML = markup;
-    }, markup);
-    await waitForComponentsReady(page);
+      await goto(page, ''); // start page
 
-    const host = page.locator(tagName);
-    await expectShadowDomToMatchSnapshot(host, tagName);
+      const markup = buildDefaultComponentMarkup(tagName);
+      await page.evaluate((markup: string) => {
+        const app = document.getElementById('app');
+        if (!app) throw new Error('#app not found');
+        app.innerHTML = markup;
+      }, markup);
+      await waitForComponentsReady(page);
+
+      const host = page.locator(tagName);
+      await expectShadowDomToMatchSnapshot(host, tagName);
+    });
   });
 }

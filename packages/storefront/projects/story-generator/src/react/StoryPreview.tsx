@@ -42,13 +42,15 @@ const renderElement = (
   if (typeof config === 'string') return config;
 
   const { tag, properties = {}, events = {}, children = [] } = config;
+  // React SSR writes an image preload above <base href>, so a relative `assets/…` would resolve against the page URL.
+  const previewProperties = tag === 'img' ? { loading: 'lazy', ...properties } : properties;
   const eventHandlers = Object.fromEntries(
     Object.entries(events).map(([eventName, eventConfig]) => [eventName, createEventHandler(eventConfig, setState)])
   );
 
   return createElement(
     tag.startsWith('p-') ? getComponent(tag) : tag,
-    { key, ...properties, ...eventHandlers },
+    { key, ...previewProperties, ...eventHandlers },
     ...children.map((child, index) => renderElement(child, index, setState))
   );
 };

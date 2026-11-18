@@ -104,7 +104,7 @@ import type {
     </div>
 
     <div class="playground light">
-      <p-modal [open]="isModalOpen" (dismiss)="onModalDismiss()">Modal</p-modal>
+      <p-modal [open]="isModalOpen" (dismiss)="onModalDismiss()" [aria]="{ 'aria-label': 'Modal' }">Modal</p-modal>
       <p>{{ modalDismissEventCounter }}</p>
       <button (click)="openModal()">Open Modal</button>
     </div>

@@ -31,13 +31,6 @@ export const insertBasePath = (content: string, basePath: string): string =>
   basePath ? content.replaceAll(mediaPath, getExampleMediaPath(basePath)) : content;
 
 /**
- * Points the Porsche Design System partials of a page at `serve-cdn`, mirroring what `layout.tsx` does for the
- * storefront itself in development – the locally built components are not on the production CDN.
- */
-export const rewriteCdnUrlsForDev = (html: string): string =>
-  html.replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001');
-
-/**
  * The URL of an example in this deployment: `patterns/header/overlay` →
  * `/v4/examples/patterns/header/overlay/index.html`.
  *

@@ -1,12 +1,11 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getAttribute,
-  getConsoleErrorsAmount,
   getEventSummary,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   reattachElement,
   reattachElementToParent,
   setContentWithDesignSystem,
@@ -341,13 +340,7 @@ test.describe('events', () => {
 });
 
 test('should not crash without children', async ({ page }) => {
-  initConsoleObserver(page);
-
   await setContentWithDesignSystem(page, `<p-tabs></p-tabs>`);
-  expect(getConsoleErrorsAmount()).toBe(0);
-
-  await page.evaluate(() => console.error('test error'));
-  expect(getConsoleErrorsAmount()).toBe(1);
 });
 
 test('should not inherit nested tabs to parent', async ({ page }) => {

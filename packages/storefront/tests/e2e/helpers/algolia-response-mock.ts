@@ -89,7 +89,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
           category: 'Components',
           page: 'Button Group',
           tab: 'Usage',
-          url: '/components/button-group/usage',
+          url: '/components/button-tile/usage',
           objectID: 'components-button-group-usage-0',
           _highlightResult: {
             name: {
@@ -127,7 +127,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
           category: 'Components',
           page: 'Radio Button',
           tab: 'Usage',
-          url: '/components/radio-button-wrapper/usage',
+          url: '/components/radio-group/usage',
           objectID: 'components-radio-button-usage-0',
           _highlightResult: {
             name: {
@@ -244,7 +244,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
           category: 'Components',
           page: 'Checkbox',
           tab: 'Usage',
-          url: '/components/checkbox-wrapper/usage#related-components',
+          url: '/components/checkbox/usage#related-components',
           objectID: 'components-checkbox-usage-5',
           _highlightResult: {
             name: {
@@ -320,7 +320,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
           category: 'Components',
           page: 'Select',
           tab: 'Usage',
-          url: '/components/select-wrapper/usage#related-components',
+          url: '/components/select/usage#related-components',
           objectID: 'components-select-usage-5',
           _highlightResult: {
             name: {
@@ -515,7 +515,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
           category: 'Patterns',
           page: 'Forms',
           tab: 'Guidelines',
-          url: '/patterns/forms/guidelines#related-components',
+          url: '/patterns/forms#related-components',
           objectID: 'patterns-forms-guidelines-6',
           _highlightResult: {
             name: {
@@ -592,7 +592,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
             "Let's have a look at following applications and assume that all of these applications have integrated a Porsche Design System Button:\n* [Porsche.com](https://porsche.com) created with Vanilla JS\n* [Porsche Finder](https://finder.porsche.com) created with React\n* [My Porsche](https://login.porsche.com/login) created with Angular\n\nWhen e.g. a user visits **Porsche.com** then the Porsche Design System Button gets loaded for the first time and will be automatically stored in browser cache.\nImagine the same user switches to the **Porsche Finder** or **My Porsche** application which uses the same button then it will instantly be available because it's already in browser cache.\nWhich means for the second and any further application less network requests and loading time.\n\nThis way performance and consistency can be dramatically increased across all digital Porsche products using the Porsche Design System.",
           category: 'Performance',
           page: 'Cdn',
-          url: '/performance/cdn#explanation',
+          url: '/must-know/performance/cdn#explanation',
           objectID: 'performance-cdn-1',
           _highlightResult: {
             name: {

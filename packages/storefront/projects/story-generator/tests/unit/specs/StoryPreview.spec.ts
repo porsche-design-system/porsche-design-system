@@ -44,4 +44,14 @@ describe('StoryPreview', () => {
 
     expect(markup).toContain('is open</div>');
   });
+
+  it('should render images without a preload that would bypass <base href>', () => {
+    const imageStory: Story<HTMLTagOrComponent> = {
+      generator: () => [{ tag: 'img', properties: { src: 'assets/lights.jpg', srcSet: 'assets/lights@2x.jpg 2x' } }],
+    };
+
+    expect(render(createElement(StoryPreview, { story: imageStory }))).toBe(
+      '<img loading="lazy" src="assets/lights.jpg" srcSet="assets/lights@2x.jpg 2x"/>'
+    );
+  });
 });

@@ -1,4 +1,5 @@
-import { test, expect, type CDPSession } from '@playwright/test';
+import { type CDPSession } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { getLifecycleStatus, goto, trackLifecycleStatus, waitForComponentsReady } from '../helpers';
 
 test('should not trigger updates on non-default props', async ({ page }) => {

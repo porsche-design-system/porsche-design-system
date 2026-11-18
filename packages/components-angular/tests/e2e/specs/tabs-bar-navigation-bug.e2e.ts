@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { goto } from '../helpers';
 
 test('should correctly set activeTabIndex on p-tabs-bar', async ({ page }) => {
