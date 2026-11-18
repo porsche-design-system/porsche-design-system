@@ -7,7 +7,7 @@ import { tileComments } from '../../../_partials/tile/comments.ts';
 export const meta: ExampleMeta = {
   title: 'Tile: Model Selection',
   description:
-    'A model selection lets users pick a model range as entry point, e.g. to browse the available vehicles of the Porsche Finder. The tile shows the model signature, the model name and a side view of the vehicle, while a link stretched over the tile makes it clickable as a whole, with the model name as its label for screen readers. On hover, the vehicle zooms in, unless the user prefers reduced motion.',
+    'A model selection lets users pick a model range as entry point, e.g. to browse the available vehicles of the Porsche Finder. The tile shows the model signature and a side view of the vehicle, while a link stretched over the tile makes it clickable as a whole, with the model name as its label for screen readers. On hover, the vehicle zooms in, unless the user prefers reduced motion.',
   colorSchemes: ['light', 'dark'],
 };
 
