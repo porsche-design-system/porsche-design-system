@@ -1,74 +1,47 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import type { CodeSample } from '@porsche-design-system/shared';
-import type { HTMLTagOrComponent, SlotStories, Story } from '@porsche-design-system/story-generator';
+import type { ExampleId } from '@porsche-design-system/examples';
+import type { HTMLTagOrComponent } from '@porsche-design-system/story-generator';
 import type { ComponentType } from 'react';
 import type { ComponentAccessibilityMeta } from '@/models/accessibilityMeta';
 
-/**
- * Meta describing a single example on a component's `examples` page.
- *
- * Discriminated by `kind`:
- *  - `kind: 'story'`       → rendered through the storefront `Story` generator pipeline.
- *  - `kind: 'example'`     → rendered from a manually authored cross-framework `CodeSample`.
- *  - `kind: 'description'` → description-only entry without a runnable story or code sample
- *                            (e.g. framework-specific guidance with inline code snippets in MDX).
- *
- * `Tag` defaults to `HTMLTagOrComponent` so that example entries on a component page
- * may render cross-component demos that don't share the page's primary tag.
- */
-export type ExampleMeta<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> =
-  | {
-      kind: 'story';
-      name: string;
-      description?: ComponentType;
-      story: Story<Tag>;
-    }
-  | {
-      kind: 'example';
-      name: string;
-      description?: ComponentType;
-      example: CodeSample;
-    }
-  | {
-      kind: 'description';
-      name: string;
-      description: ComponentType;
-    };
+/** `p-select` → `components/select`: where the examples of a component live, below `@porsche-design-system/examples`. */
+export type ComponentExamplesPath<Tag extends HTMLTagOrComponent> = Tag extends `p-${infer Name}`
+  ? `components/${Name}`
+  : never;
+
+/** The component's default example, which the configurator page shows. */
+export type DefaultExampleId<Tag extends HTMLTagOrComponent> = Extract<
+  ExampleId,
+  `${ComponentExamplesPath<Tag>}/default`
+>;
+
+/** An example of the component other than its default or an accessibility example. */
+export type ComponentExampleId<Tag extends HTMLTagOrComponent> = Exclude<
+  Extract<ExampleId, `${ComponentExamplesPath<Tag>}/${string}`>,
+  DefaultExampleId<Tag> | `${ComponentExamplesPath<Tag>}/accessibility/${string}`
+>;
 
 /**
- * Aggregated meta for a component documentation page.
+ * Aggregated meta for a component documentation page. The examples are referenced by their id in
+ * `@porsche-design-system/examples`, which holds their title, description, code and runtime; the meta only says which
+ * of them the component's pages and skill show, and in which order.
  *
- * `Tag` is the primary component tag and pins the configurator's typing. Example entries
- * use the broader `ExampleMeta` default so cross-component examples are still typable.
- *
- * Authors should declare the value with `satisfies ComponentDocsMeta<'p-xxx'>` to
- * preserve narrow literal keys in `examples` (enabling autocomplete and typo safety on
- * consumers like `accordionMeta.examples.stickySummary`).
+ * Authors should declare the value with `satisfies ComponentDocsMeta<'p-xxx'>`, which checks that every id belongs to
+ * the component.
  */
 export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
   // MDX document introducing the component's purpose and primary use cases.
   introduction: ComponentType;
-  // Story (and optional slot stories) powering the interactive configurator playground.
-  configurator: {
-    story: Story<Tag>;
-    // Optional hand-authored CodeSample that replaces the story as the component's primary
-    // example. Set when the storefront page renders a CodeSample instead of the interactive
-    // configurator (e.g. imperative components like p-toast); the skill emits it as the
-    // "Default" example in place of the bare story markup.
-    example?: CodeSample;
-    slotStories?: SlotStories<Tag>;
-    // Optional controlled-mode variant for dual-mode components (e.g. p-popover). When present, the
-    // configurator renders a "Behavior" segmented control to switch between uncontrolled and controlled.
-    controlledStory?: Story<Tag>;
-    controlledSlotStories?: SlotStories<Tag>;
-  };
-  // Curated examples shown on the examples page — either generated stories or hand-authored code samples.
-  examples: Record<string, ExampleMeta<Tag>>;
+  // The component's default example: a story the configurator starts from, or a framework example the configurator page
+  // renders instead (e.g. imperative components like p-toast). The skill emits it as the "Default" example.
+  configurator: DefaultExampleId<Tag>;
+  // The examples on the examples page and in the skill, in their order.
+  examples: ComponentExampleId<Tag>[];
   // Guidance on when and how to use the component, including Dos and Don'ts.
   usage: ComponentType;
-  // Accessibility considerations specific to this component: overview prose, keyed anti-pattern/
-  // recommended integration example pairs, and test-support prose.
-  accessibility: ComponentAccessibilityMeta;
+  // Accessibility considerations specific to this component: overview prose, anti-pattern/recommended integration
+  // example pairs by id, and test-support prose.
+  accessibility: ComponentAccessibilityMeta<Tag>;
   // Optional supplementary notes (e.g. migration hints, edge cases).
   notes?: Record<string, { name: string; description: ComponentType }>;
   // Full API reference: props, slots, events and CSS variables.

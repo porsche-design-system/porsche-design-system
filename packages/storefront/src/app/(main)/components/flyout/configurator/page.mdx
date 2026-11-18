@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { flyoutMeta } from '@/app/(main)/components/flyout/flyout.meta';
+import flyoutDefault from '@porsche-design-system/examples/components/flyout/default';
 
 export const metadata = {
   title: 'Flyout: Configurator - Components',
@@ -12,9 +13,5 @@ export const metadata = {
 
 <flyoutMeta.introduction />
 
-<Configurator
-  tagName="p-flyout"
-  story={flyoutMeta.configurator.story}
-  slotStories={flyoutMeta.configurator.slotStories}
-/>
+<Configurator example={flyoutDefault} />
 

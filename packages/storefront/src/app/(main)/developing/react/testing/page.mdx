@@ -284,12 +284,19 @@ document when it is omitted.
 import { getByTextShadowed } from '@porsche-design-system/components-react/testing';
 
 it('should work for PAccordion', async () => {
-  render(<PAccordion heading="Heading">Content</PAccordion>);
+  render(
+    <PAccordion>
+      <PHeading slot="summary" tag="h3" size="sm">
+        Heading
+      </PHeading>
+      Content
+    </PAccordion>
+  );
   await componentsReady();
 
   const el = getByTextShadowed('Heading');
   expect(el).toBeInTheDocument();
-  expect(el.tagName).toBe('BUTTON');
+  expect(el.tagName).toBe('P-HEADING');
 });
 ```
 

@@ -254,7 +254,7 @@
       }
     },
     {
-      "includes": ["packages/examples/src/**/*.tsx"],
+      "includes": ["packages/examples/projects/pages/src/**/*.tsx"],
       "linter": {
         "rules": {
           "a11y": {

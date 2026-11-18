@@ -1,4 +1,9 @@
-import type { A11yElementConfig, HTMLTagOrComponent } from '@porsche-design-system/story-generator';
+import { FRAMEWORKS, type Framework } from '@porsche-design-system/shared';
+import {
+  type A11yElementConfig,
+  type HTMLTagOrComponent,
+  resolveExamplePayload,
+} from '@porsche-design-system/story-generator';
 import type { ComponentProseSource } from '@skills/knowledge/components/prose';
 import { parseMdxToMdast } from '@skills/knowledge/mdx/renderMdxToMarkdown';
 
@@ -7,12 +12,21 @@ import { parseMdxToMdast } from '@skills/knowledge/mdx/renderMdxToMarkdown';
  * lead paragraph with no heading; `usage` still opens with a redundant `# <Component>` H1 that the
  * generator strips. Accessibility is modelled on the post-migration shape — `overview` (and `tests`)
  * are plain prose with no leading H1 (the storefront's thin `accessibility/page.mdx` keeps the H1),
- * and `examples` is the keyed anti-pattern/recommended map rendered inline by
+ * and `examples` lists the anti-pattern/recommended pairs, resolved as the catalogue does, rendered by
  * `renderA11yIntegrationExamples`. `p-degraded` has an introduction that renders to nothing
  * meaningful, exercising the fail-hard degraded-render error.
  */
 
 const story = (config: A11yElementConfig<HTMLTagOrComponent>[]) => ({ generator: () => config });
+
+/** The snippets of one side for every framework, as the catalogue resolves them. */
+const snippets = (value: ReturnType<typeof story>, key: string, side: string): Record<Framework, string> =>
+  Object.fromEntries(
+    FRAMEWORKS.map((framework) => [
+      framework,
+      resolveExamplePayload({ kind: 'story', story: value }, framework, { tag: 'fixture', key, side, framework }),
+    ])
+  ) as Record<Framework, string>;
 
 const RAW_FIXTURES: Record<
   string,
@@ -172,16 +186,11 @@ export const componentDocsMeta: Record<string, ComponentProseSource> = Object.fr
       usage: parseMdxToMdast(raw.usage),
       accessibility: {
         overview: parseMdxToMdast(raw.accessibility.overview),
-        examples: Object.fromEntries(
-          Object.entries(raw.accessibility.examples ?? {}).map(([key, example]) => [
-            key,
-            {
-              name: example.name,
-              antiPattern: { kind: 'story' as const, story: story(example.antiPattern) },
-              recommended: { kind: 'story' as const, story: story(example.recommended) },
-            },
-          ])
-        ),
+        examples: Object.entries(raw.accessibility.examples ?? {}).map(([key, example]) => ({
+          title: example.name,
+          antiPattern: snippets(story(example.antiPattern), key, 'antiPattern'),
+          recommended: snippets(story(example.recommended), key, 'recommended'),
+        })),
         tests: parseMdxToMdast(raw.accessibility.tests),
       },
       ...(raw.notes && {

@@ -1,7 +1,12 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
 import { spinnerMeta } from '@/app/(main)/components/spinner/spinner.meta';
+import size from '@porsche-design-system/examples/components/spinner/size';
+import sizeCssVar from '@porsche-design-system/examples/components/spinner/size-css-var';
+import responsiveSize from '@porsche-design-system/examples/components/spinner/responsive-size';
+import color from '@porsche-design-system/examples/components/spinner/color';
+import colorCssVar from '@porsche-design-system/examples/components/spinner/color-css-var';
 
 export const metadata = {
   title: 'Spinner: Examples - Components',
@@ -12,44 +17,34 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    spinnerMeta.examples.size.name,
-    spinnerMeta.examples.sizeCssVar.name,
-    spinnerMeta.examples.responsiveSize.name,
-    spinnerMeta.examples.color.name,
-    spinnerMeta.examples.colorCssVar.name,
+    size.title,
+    sizeCssVar.title,
+    responsiveSize.title,
+    color.title,
+    colorCssVar.title,
     spinnerMeta.notes.disableAnimation.name,
   ]}
 />
 
-## {spinnerMeta.examples.size.name}
+## {size.title}
 
-<spinnerMeta.examples.size.description />
+<Example example={size} />
 
-<ComponentStory story={spinnerMeta.examples.size.story} />
+## {sizeCssVar.title}
 
-## {spinnerMeta.examples.sizeCssVar.name}
+<Example example={sizeCssVar} />
 
-<spinnerMeta.examples.sizeCssVar.description />
+## {responsiveSize.title}
 
-<ComponentStory story={spinnerMeta.examples.sizeCssVar.story} />
+<Example example={responsiveSize} />
 
-## {spinnerMeta.examples.responsiveSize.name}
+## {color.title}
 
-<spinnerMeta.examples.responsiveSize.description />
+<Example example={color} />
 
-<ComponentStory story={spinnerMeta.examples.responsiveSize.story} />
+## {colorCssVar.title}
 
-## {spinnerMeta.examples.color.name}
-
-<spinnerMeta.examples.color.description />
-
-<ComponentStory story={spinnerMeta.examples.color.story} />
-
-## {spinnerMeta.examples.colorCssVar.name}
-
-<spinnerMeta.examples.colorCssVar.description />
-
-<ComponentStory story={spinnerMeta.examples.colorCssVar.story} />
+<Example example={colorCssVar} />
 
 ## {spinnerMeta.notes.disableAnimation.name}
 

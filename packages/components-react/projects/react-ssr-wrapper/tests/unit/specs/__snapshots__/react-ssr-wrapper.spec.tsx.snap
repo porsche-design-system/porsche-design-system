@@ -3001,7 +3001,6 @@ exports[`should render dsr component for PAccordion 1`] = `
   <template
     shadowroot="open"
     shadowrootclonable="true"
-    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>

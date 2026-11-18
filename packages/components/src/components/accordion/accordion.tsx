@@ -45,7 +45,9 @@ const propTypes: PropTypes<typeof Accordion> = {
  */
 @Component({
   tag: 'p-accordion',
-  shadow: { delegatesFocus: true },
+  // No `delegatesFocus`: it would also move focus to the summary, and scroll it into view, whenever a click lands on
+  // slotted content that takes no focus itself. Programmatic focus is forwarded in `connectedCallback()` instead.
+  shadow: true,
 })
 export class Accordion {
   @Element() public host!: HTMLElement;
@@ -88,11 +90,16 @@ export class Accordion {
   /** Emitted when the user toggles the accordion open or closed, with the new open state in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
+  private summary: HTMLElement;
   private hasSummary: boolean;
   private hasSummaryBefore: boolean;
   private hasSummaryAfter: boolean;
 
   public connectedCallback(): void {
+    this.host.focus = (options?: FocusOptions): void => this.summary?.focus(options);
+    // Firefox ignores `blur()` on a host that doesn't delegate focus
+    this.host.blur = (): void => this.summary?.blur();
+
     // Observe dynamic slot changes. As soon as CSS selector :has-slotted has better browser support, we can remove this
     // and use that selector in getComponentCss instead.
     observeChildren(
@@ -139,7 +146,7 @@ export class Accordion {
     return (
       <details {...(this.open ? { open: true } : {})}>
         {/** biome-ignore lint/a11y/noStaticElementInteractions: necessary to enable a controlled state */}
-        <summary onClick={this.onSummaryClick}>
+        <summary onClick={this.onSummaryClick} ref={(el: HTMLElement) => (this.summary = el)}>
           {this.hasSummary ? <slot name="summary" /> : <Heading>{this.heading || <slot name="heading" />}</Heading>}
         </summary>
         {this.hasSummaryBefore && <slot name="summary-before" />}
