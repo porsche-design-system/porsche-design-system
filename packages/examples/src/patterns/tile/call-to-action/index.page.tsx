@@ -35,21 +35,21 @@ const Page = () => (
           />
         </div>
         <Comment>{tileComments.gradient}</Comment>
-        <div class="self-end p-fluid-lg rounded-b-[inherit] bg-fade-to-t">
+        <div class="self-end grid justify-items-start gap-fluid-md p-fluid-lg rounded-b-[inherit] bg-fade-to-t">
           <Comment>
             The character limit holds the lines of heading and text at a readable length, however wide the tile is.
           </Comment>
-          <div class="max-w-[40ch]">
+          <div class="grid gap-fluid-sm max-w-[40ch]">
             <p-heading tag="h2" size="lg">
               Porsche Connect.
             </p-heading>
-            <p-text class="mt-fluid-sm">
+            <p-text>
               Porsche Connect enhances the driving experience with a wide range of music and video streaming services,
               the integrated Voice Pilot and remote services via the My Porsche app.
             </p-text>
           </div>
           <Comment>{tileComments.coverLink}</Comment>
-          <p-link class="mt-fluid-md" variant="secondary" cover={true}>
+          <p-link variant="secondary" cover={true}>
             <a href="#">Discover Porsche Connect</a>
           </p-link>
         </div>
