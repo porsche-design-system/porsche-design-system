@@ -160,7 +160,7 @@ export const flyoutSlotStories: SlotStories<'p-flyout'> = {
       generator: () => [
         {
           tag: 'p-heading',
-          properties: { slot: 'header', size: 'large', tag: 'h2' },
+          properties: { slot: 'header', size: 'lg', tag: 'h2' },
           children: ['Some Heading'],
         },
       ],
@@ -247,7 +247,7 @@ markup reflects the component's controlled behavior accurately.
 ```typescript
 export const accordionStory: Story<'p-accordion'> = {
   state: {
-    properties: { open: false, heading: 'Some Heading' },
+    properties: { open: false },
   },
   generator: ({ properties } = {}) => [
     {
@@ -261,7 +261,14 @@ export const accordionStory: Story<'p-accordion'> = {
           eventType: 'AccordionUpdateEventDetail',
         },
       },
-      children: ['Some content'],
+      children: [
+        {
+          tag: 'p-heading',
+          properties: { slot: 'summary', tag: 'h2', size: 'sm' },
+          children: ['Some Heading'],
+        },
+        'Some content',
+      ],
     },
   ],
 };
@@ -270,7 +277,10 @@ export const accordionStory: Story<'p-accordion'> = {
 Output (vanilla-js):
 
 ```html
-<p-accordion heading="Some Heading">Some content</p-accordion>
+<p-accordion>
+  <p-heading slot="summary" tag="h2" size="sm">Some Heading</p-heading>
+  Some content
+</p-accordion>
 
 <script>
   const accordion = document.querySelector('p-accordion');

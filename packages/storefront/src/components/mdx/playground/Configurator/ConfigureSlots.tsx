@@ -29,7 +29,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
 }: ConfigureSlotsProps<T>) => {
   return (
     <>
-      <PHeading slot="summary" tag="h2" size="small" weight="semibold">
+      <PHeading slot="summary" tag="h2" size="sm" weight="semibold">
         Slots
       </PHeading>
       <div className="flex flex-col gap-fluid-sm">

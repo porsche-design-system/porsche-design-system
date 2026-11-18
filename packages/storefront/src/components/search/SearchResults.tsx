@@ -30,7 +30,7 @@ export const SearchResults = ({
     <div className="h-full flex flex-col gap-fluid-sm">
       {(items as unknown as AlgoliaResult[]).map(({ category, hits }) => (
         <div key={category}>
-          <PHeading size="small" tag="h3" className="mb-fluid-xs">
+          <PHeading size="sm" tag="h3" className="mb-fluid-xs">
             {category}
           </PHeading>
           <ol className="flex flex-col gap-fluid-sm">
