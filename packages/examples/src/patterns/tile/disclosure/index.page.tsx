@@ -25,9 +25,10 @@ const Page = () => (
         prevent. So the tile does not clip, and the image and the gradient follow its corners themselves.
       </Comment>
       <Comment>{tileComments.darkScheme}</Comment>
+      <Comment>{tileComments.ownHeight}</Comment>
       <div
         id="disclosure-tile"
-        class="col-basic justify-self-center w-full max-w-[560px] group relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark"
+        class="col-basic self-start justify-self-center w-full max-w-[560px] group relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark"
       >
         <Comment>Decorative, it lies behind the content and covers the tile.</Comment>
         <Comment>

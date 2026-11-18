@@ -20,7 +20,8 @@ const Page = () => (
   <PatternPage meta={meta} background="surface" centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.anchorTile}</Comment>
-      <div class="col-basic justify-self-center w-full max-w-[560px] group relative isolate flex flex-col items-center justify-center aspect-16/9 rounded-3xl bg-canvas p-fluid-md text-center">
+      <Comment>{tileComments.ownHeight}</Comment>
+      <div class="col-basic self-start justify-self-center w-full max-w-[560px] group relative isolate flex flex-col items-center justify-center aspect-16/9 rounded-3xl bg-canvas p-fluid-md text-center">
         <Comment>
           Signature and vehicle share one cell, the vehicle overlapping the signature and placed in front of it. The
           signature takes the surface color, which stands out subtly from the canvas of the tile, and stays narrower

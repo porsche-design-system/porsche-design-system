@@ -34,7 +34,8 @@ const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.anchorTile}</Comment>
-      <div class="col-basic justify-self-center w-full max-w-[400px] group relative isolate flex flex-col gap-fluid-sm aspect-3/4 rounded-3xl bg-surface p-fluid-md">
+      <Comment>{tileComments.ownHeight}</Comment>
+      <div class="col-basic self-start justify-self-center w-full max-w-[400px] group relative isolate flex flex-col gap-fluid-sm aspect-3/4 rounded-3xl bg-surface p-fluid-md">
         <Comment>{tileComments.anchorLink}</Comment>
         <a href="#" class="absolute inset-0 z-1 rounded-[inherit] focus-visible:outline outline-focus outline-offset-2">
           <span class="sr-only">{label}</span>

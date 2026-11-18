@@ -723,6 +723,19 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
   /** `cover` of `p-link`, a boolean attribute – the formatted markup puts it on a line of its own. */
   const hasCoveringLink = (html: string): boolean => /<p-link[^>]*\scover[\s>]/.test(html);
 
+  it('should align a tile with an aspect ratio to the top of its row', async () => {
+    const html = await renderPage(Page);
+    const placedWithRatio = [...html.matchAll(/class="([^"]*\bcol-(?:basic|extended)\b[^"]*)"/g)]
+      .map(([, classes]) => classes)
+      .filter((classes) => /\baspect-/.test(classes));
+
+    // Safari keeps a grid item with an aspect ratio at its ratio once it fills its column, so content needing more
+    // room sticks out of the tile. The fixed width of some tiles hides that – until a consumer drops it.
+    for (const classes of placedWithRatio) {
+      expect(classes).toMatch(/\bself-start\b/);
+    }
+  });
+
   it('should give the focus ring of a covering link the corners of the tile', async () => {
     const html = await renderPage(Page);
     const declarations = [
