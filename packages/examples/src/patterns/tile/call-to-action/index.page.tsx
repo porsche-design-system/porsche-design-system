@@ -22,7 +22,7 @@ const Page = () => (
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>{tileComments.darkScheme}</Comment>
       <Comment>Text that needs more space than the aspect ratio provides extends the tile beyond it.</Comment>
-      <div class="col-extended group relative isolate grid aspect-video rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">
+      <div class="col-extended group relative isolate grid aspect-16/9 rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">
         <Comment>{tileComments.clip}</Comment>
         <div class="absolute inset-0 -z-1 overflow-clip rounded-[inherit]">
           <Comment>{tileComments.zoom}</Comment>

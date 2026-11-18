@@ -20,7 +20,7 @@ const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
-      <div class="col-basic group relative isolate flex flex-col items-center justify-center gap-fluid-md aspect-video rounded-3xl bg-surface p-fluid-lg text-center [--p-link-cover-radius:var(--radius-3xl)]">
+      <div class="col-basic group relative isolate flex flex-col items-center justify-center gap-fluid-md aspect-16/9 rounded-3xl bg-surface p-fluid-lg text-center [--p-link-cover-radius:var(--radius-3xl)]">
         <Comment>
           Signature and vehicle share one cell, and the vehicle is placed in front of the signature. The image keeps
           free room above the roof, so the vehicle overlaps the lower part of the signature without being moved. The

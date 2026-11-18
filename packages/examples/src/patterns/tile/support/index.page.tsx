@@ -28,7 +28,7 @@ const Page = () => (
         The tile does not clip, so the focus indicators of the links inside it stay whole. The image clips itself
         instead.
       </Comment>
-      <div class="col-extended relative isolate grid aspect-video rounded-3xl scheme-only-dark">
+      <div class="col-extended relative isolate grid aspect-16/9 rounded-3xl scheme-only-dark">
         <div class="absolute inset-0 -z-1 overflow-clip rounded-[inherit]">
           <Comment>Decorative, it sets the mood and carries no information the text does not give.</Comment>
           <img
