@@ -25,7 +25,7 @@ const Page = () => (
         background on hover.
       </Comment>
       <Comment>{tileComments.ownHeight}</Comment>
-      <div class="col-basic self-start justify-self-center w-full max-w-[560px] group relative isolate flex flex-col gap-fluid-xs aspect-16/9 rounded-3xl p-fluid-md motion-safe:transition-colors duration-sm ease-in-out hover:bg-canvas">
+      <div class="col-basic self-start justify-self-center w-full max-w-[560px] group relative isolate flex flex-col justify-between gap-fluid-xs aspect-16/9 rounded-3xl p-fluid-md motion-safe:transition-colors duration-sm ease-in-out hover:bg-canvas">
         <Comment>{tileComments.anchorLink}</Comment>
         <a href="#" class="absolute inset-0 z-1 rounded-[inherit] focus-visible:outline outline-focus outline-offset-2">
           <span class="sr-only">718</span>
@@ -33,13 +33,16 @@ const Page = () => (
         <p-heading tag="h2" size="md">
           718
         </p-heading>
-        <Comment>{tileComments.fill}</Comment>
+        <Comment>
+          Its width is a share of the tile, so the vehicle keeps its scale at every size, and the room beside it is the
+          space it moves into.
+        </Comment>
         <Comment>
           Moves towards the end while the tile is hovered, mirrored for right to left, unless the user prefers reduced
-          motion. Its padding gives it room at the sides, and its end padding is the space it moves into.
+          motion.
         </Comment>
         <img
-          class="grow basis-0 min-h-0 w-full object-contain px-fluid-lg motion-safe:transition-[translate] duration-md ease-in-out motion-safe:group-hover:translate-x-static-md motion-safe:rtl:group-hover:-translate-x-static-md"
+          class="self-center w-4/5 motion-safe:transition-[translate] duration-md ease-in-out motion-safe:group-hover:translate-x-static-md motion-safe:rtl:group-hover:-translate-x-static-md"
           src="/examples/media/718-gt4-rs-side-view.webp"
           alt="Porsche 718"
           width="1000"
