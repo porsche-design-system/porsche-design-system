@@ -1,7 +1,7 @@
-import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { viewportWidthL, viewportWidthXS } from '@porsche-design-system/testing';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import * as globby from 'fast-glob';
 import path from 'path';
 
@@ -25,8 +25,23 @@ const components = fileNames
     return !argv.length || argv.includes(name);
   });
 
+// messages a page logs with JavaScript disabled, by component
+const pageConsole: Record<string, RegExp[]> = {
+  'input-date': harnessPageConsole['input-date'],
+  'input-month': harnessPageConsole['input-month'],
+  'input-number': harnessPageConsole['input-number'],
+  'input-time': harnessPageConsole['input-time'],
+  'input-week': harnessPageConsole['input-week'],
+  // next/image rejects the relative src of the deliberately missing image
+  'link-tile-product': [/status of 400 \(Bad Request\) http:\/\/localhost:3000\/_next\/image\?url=nonexistent\.png&/],
+};
+
 for (const component of components) {
   test.describe(component, async () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, ...(pageConsole[component] ?? [])]),
+    });
+
     for (const viewportWidth of [viewportWidthXS, viewportWidthL]) {
       test(`viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(`/${component}`);

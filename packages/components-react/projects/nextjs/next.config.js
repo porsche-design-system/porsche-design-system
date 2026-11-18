@@ -14,10 +14,6 @@ const nextConfig = {
     dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'nav.porsche.com',
-      },
-      {
         protocol: 'http',
         hostname: 'localhost',
       },

@@ -1,5 +1,6 @@
-import { expect, type Page, test } from '@playwright/test';
-import { getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
+import { type Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { goto } from '../helpers';
 
 const getLabelWrapperWidth = async (page: Page, id: string): Promise<number> => {
   const boundingBox = await page.locator(`#${id} .label-wrapper`).boundingBox();
@@ -10,7 +11,6 @@ const getLabelWrapperWidth = async (page: Page, id: string): Promise<number> => 
 };
 
 test('should treat hide-label without value like :hide-label="true"', async ({ page }) => {
-  initConsoleObserver(page);
   await goto(page, 'boolean-attribute-shorthand-example');
 
   const shorthand = await getLabelWrapperWidth(page, 'shorthand');
@@ -21,5 +21,4 @@ test('should treat hide-label without value like :hide-label="true"', async ({ p
   expect(shorthand).toBe(explicitTrue);
   expect(shorthand).toBeLessThan(explicitFalse);
   expect(explicitFalse).toBe(omitted);
-  expect(getConsoleErrorsAmount()).toBe(0);
 });

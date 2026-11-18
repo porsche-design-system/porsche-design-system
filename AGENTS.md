@@ -165,6 +165,11 @@ does. That adds no duplicate work, because CI runs the individual `build:*` step
 | VRT       | `./docker.sh npm run test:vrt:components-js` | **Must use Docker** for consistent screenshots |
 | A11Y      | `npm run test:a11y:components-js`            | Axe-core + a11y tree snapshots                 |
 
+**Every Playwright spec and test helper imports `test` from `@porsche-design-system/testing/playwright`, never from
+`@playwright/test`.** It adds request routing and the console guard, and `npm run lint` fails on the wrong import. See
+"The shared Playwright `test`" in
+[`packages/shared/projects/testing/AGENTS.md`](packages/shared/projects/testing/AGENTS.md).
+
 Key test files:
 
 - Axe-core: [`packages/components-js/tests/a11y/specs/axe-core/`](packages/components-js/tests/a11y/specs/axe-core/)

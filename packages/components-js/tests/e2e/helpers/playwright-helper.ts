@@ -1,14 +1,15 @@
-import { expect, type Locator } from '@playwright/test';
+import { type Locator } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import {
+  expect,
   getLifecycleTrackingScript,
   getProperty,
   goto as gotoAndWait,
   waitForComponentsReady as waitForComponentsReadyFrom,
 } from '@porsche-design-system/testing/playwright';
-import type { ConsoleMessage, Page } from 'playwright';
+import type { Page } from 'playwright';
 
 // TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
 // import { kebabCase } from 'change-case';
@@ -72,6 +73,8 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <body>
         ${options.withoutLoadCall ? '' : '<script type="text/javascript">porscheDesignSystem.load();</script>'}
         <script>
+          // a block, so a second setContentWithDesignSystem in the same page can declare these again
+          {
           let updatingCount = 0;
           let timeout;
           window.componentsUpdatedPromise = undefined;
@@ -107,7 +110,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
           });
 
 ${getLifecycleTrackingScript(lifeCycleLogger)}
-
+          }
         </script>
         ${content}
       </body>
@@ -302,45 +305,6 @@ export const waitForImproveButtonHandlingForCustomElement = async (page: Page): 
 };
 
 export const hasFocus = (element: Locator): Promise<boolean> => element.evaluate((el) => document.activeElement === el);
-
-const consoleMessages: ConsoleMessage[] = [];
-
-// Use to track console errors, excluding custom thrown errors
-export const initConsoleObserver = (page: Page): void => {
-  consoleMessages.length = 0; // reset
-  page.on('console', async (msg) => {
-    consoleMessages.push(msg);
-    if (msg.type() === 'error') {
-      console.error(msg.text());
-    }
-  });
-};
-
-const getConsoleErrors = () => consoleMessages.filter((x) => x.type() === 'error');
-export const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
-export const getConsoleErrorsAmount = () => getConsoleErrors().length;
-export const getConsoleErrorMessages = () =>
-  getConsoleErrors()
-    .map((msg) => '- ' + msg.text())
-    .join('\n');
-export const getConsoleWarningsAmount = () => getConsoleWarnings().length;
-export const getConsoleWarningMessages = () =>
-  getConsoleWarnings()
-    .map((msg) => '- ' + msg.text())
-    .join('\n');
-
-const thrownErrors: string[] = [];
-
-// Use to track custom thrown errors
-export const initPageErrorObserver = (page: Page): void => {
-  thrownErrors.length = 0; // reset
-
-  page.on('pageerror', function (error) {
-    thrownErrors.push(error.toString());
-  });
-};
-
-export const getPageThrownErrorsAmount = () => thrownErrors.length;
 
 export const goto = (page: Page, url: string): Promise<void> =>
   gotoAndWait(page, url, { source: 'porscheDesignSystem' });

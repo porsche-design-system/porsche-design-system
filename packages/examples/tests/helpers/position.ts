@@ -1,4 +1,5 @@
-import { expect, type Locator } from '@playwright/test';
+import type { Locator } from '@playwright/test';
+import { expect } from '@porsche-design-system/testing/playwright';
 
 /**
  * Waits until an element has stopped moving.

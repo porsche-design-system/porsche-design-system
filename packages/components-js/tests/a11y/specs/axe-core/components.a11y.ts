@@ -1,8 +1,9 @@
 import type { Page } from '@playwright/test';
 import { schemes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/testing';
+import { harnessPageConsole } from '@porsche-design-system/testing/playwright';
 import { axeAllowlist, components, getPages } from '../../../helpers/coverage';
 import { setupScenario } from '../../../vrt/helpers';
-import { expect, test } from '../../helpers';
+import { expect, test, waitForComponentsHydratedInFrames } from '../../helpers';
 
 // VRT pages making use of iFrames can't reliably ensure which iframe is loaded last
 // and therefore can't be sure which autofocus gets triggered
@@ -17,6 +18,10 @@ for (const component of components) {
     // executed in Chrome only
     test.describe(pageName, async () => {
       test.skip(({ browserName }) => browserName !== 'chromium');
+      test.use({
+        expectedConsole: async ({ expectedConsole }, use) =>
+          use([...expectedConsole, ...(harnessPageConsole[pageName] ?? [])]),
+      });
 
       // Accessibility: AXE-Core tests basic
       // tests for light and dark color schemes on 2 different viewports
@@ -27,6 +32,7 @@ for (const component of components) {
             makeAxeBuilder,
           }, testInfo) => {
             await setupScenario(page, `/${pageName}?scheme=${scheme}`, viewportWidth);
+            await waitForComponentsHydratedInFrames(page);
             await revertAutoFocus(page, component);
 
             const accessibilityScanResults = await makeAxeBuilder().analyze();

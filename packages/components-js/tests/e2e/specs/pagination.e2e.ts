@@ -1,14 +1,6 @@
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
-import { expect, test } from '@playwright/test';
-import {
-  addEventListener,
-  getConsoleErrorsAmount,
-  getEventSummary,
-  getLifecycleStatus,
-  initConsoleObserver,
-  setContentWithDesignSystem,
-  sleep,
-} from '../helpers';
+import { addEventListener, getEventSummary, getLifecycleStatus, setContentWithDesignSystem, sleep } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-pagination');
 const getNav = (page: Page) => page.locator('p-pagination nav');
@@ -24,8 +16,6 @@ const initPagination = (page: Page, opts?: { activePage?: number }) => {
 };
 
 test('should have no errors if disconnected before fully loaded', async ({ page }) => {
-  initConsoleObserver(page);
-
   await setContentWithDesignSystem(page, ``);
   await page.evaluate(() => {
     const el = document.createElement('p-pagination');
@@ -35,11 +25,6 @@ test('should have no errors if disconnected before fully loaded', async ({ page 
   });
 
   await sleep(10);
-
-  expect(getConsoleErrorsAmount()).toBe(0);
-
-  await page.evaluate(() => console.error('test error'));
-  expect(getConsoleErrorsAmount()).toBe(1);
 });
 
 test.describe('events', () => {

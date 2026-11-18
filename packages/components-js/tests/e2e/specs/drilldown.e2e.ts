@@ -1,5 +1,6 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -8,13 +9,11 @@ import {
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
-  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -567,24 +566,31 @@ test.describe('second level', () => {
     });
   });
 
-  test('should close second level of active item when item is removed', async ({ page }) => {
-    await initBasicDrilldown(page, { open: true, activeIdentifier: 'item-3' });
-    const host = getHost(page);
-
-    await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
-    await expect(getDrilldownItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
-    await expect(getDrilldownItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
-
-    await host.evaluate((el) => {
-      const lastElementChild = el.lastElementChild;
-      if (!lastElementChild) throw new Error('no last element child');
-      el.removeChild(lastElementChild);
+  test.describe('with the active item removed', () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, /Invalid value 'item-3' supplied to p-drilldown for property 'activeIdentifier'/]),
     });
-    await waitForStencilLifecycle(page);
 
-    await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
-    await expect(getDrilldownItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
-    await expect(getDrilldownItem(page, 'item-3')).toHaveCount(0);
+    test('should close second level of active item when item is removed', async ({ page }) => {
+      await initBasicDrilldown(page, { open: true, activeIdentifier: 'item-3' });
+      const host = getHost(page);
+
+      await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
+
+      await host.evaluate((el) => {
+        const lastElementChild = el.lastElementChild;
+        if (!lastElementChild) throw new Error('no last element child');
+        el.removeChild(lastElementChild);
+      });
+      await waitForStencilLifecycle(page);
+
+      await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItem(page, 'item-3')).toHaveCount(0);
+    });
   });
 
   test('should show second level of item added to a drilldown that mounted without items', async ({ page }) => {
@@ -868,46 +874,53 @@ test.describe('item identifier set after initial render', () => {
     }
   });
 
-  test('should show the root level again when the identifier of the active item changes on mobile', async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
-    await setContentWithDesignSystem(
+  test.describe('with the identifier of the active item changed', () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, /Invalid value 'item-2' supplied to p-drilldown for property 'activeIdentifier'/]),
+    });
+
+    test('should show the root level again when the identifier of the active item changes on mobile', async ({
       page,
-      `<p-drilldown open active-identifier="item-2">
+    }) => {
+      await page.setViewportSize({ width: 375, height: 667 });
+      await setContentWithDesignSystem(
+        page,
+        `<p-drilldown open active-identifier="item-2">
   <p-drilldown-item identifier="item-1" label="Item 1"></p-drilldown-item>
   <p-drilldown-item identifier="item-2" label="Item 2"></p-drilldown-item>
 </p-drilldown>`
-    );
-    const [firstItem, secondItem] = await getItems(page).all();
-    const firstItemButton = firstItem.locator('.button');
-    await expect(firstItemButton).toBeHidden();
+      );
+      const [firstItem, secondItem] = await getItems(page).all();
+      const firstItemButton = firstItem.locator('.button');
+      await expect(firstItemButton).toBeHidden();
 
-    await setProperty(secondItem, 'identifier', 'item-x');
-    await waitForStencilLifecycle(page);
+      await setProperty(secondItem, 'identifier', 'item-x');
+      await waitForStencilLifecycle(page);
 
-    await expect(secondItem).toHaveJSProperty('secondary', false);
-    await expect(firstItemButton).toBeVisible();
-  });
+      await expect(secondItem).toHaveJSProperty('secondary', false);
+      await expect(firstItemButton).toBeVisible();
+    });
 
-  test('should hide the secondary drawer when the identifier of the active item changes on desktop', async ({
-    page,
-  }) => {
-    await setContentWithDesignSystem(
+    test('should hide the secondary drawer when the identifier of the active item changes on desktop', async ({
       page,
-      `<p-drilldown open active-identifier="item-2">
+    }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-drilldown open active-identifier="item-2">
   <p-drilldown-item identifier="item-1" label="Item 1"></p-drilldown-item>
   <p-drilldown-item identifier="item-2" label="Item 2"></p-drilldown-item>
 </p-drilldown>`
-    );
-    const drawer = page.locator('p-drilldown dialog > .drawer');
-    const getDrawerWidth = () => drawer.evaluate((el) => el.getBoundingClientRect().width);
-    const drawerWidthWithSecondary = await getDrawerWidth();
+      );
+      const drawer = page.locator('p-drilldown dialog > .drawer');
+      const getDrawerWidth = () => drawer.evaluate((el) => el.getBoundingClientRect().width);
+      const drawerWidthWithSecondary = await getDrawerWidth();
 
-    await setProperty(getItems(page).nth(1), 'identifier', 'item-x');
-    await waitForStencilLifecycle(page);
+      await setProperty(getItems(page).nth(1), 'identifier', 'item-x');
+      await waitForStencilLifecycle(page);
 
-    await expect.poll(getDrawerWidth).toBeLessThan(drawerWidthWithSecondary);
+      await expect.poll(getDrawerWidth).toBeLessThan(drawerWidthWithSecondary);
+    });
   });
 
   test('should keep the active level when active-identifier and the identifier of the matching item change together on mobile', async ({
@@ -941,7 +954,6 @@ test.describe('item identifier set after initial render', () => {
   test('should not log an error when the identifier of the matching item is set after initial render', async ({
     page,
   }) => {
-    initConsoleObserver(page);
     await setContentWithDesignSystem(
       page,
       `<p-drilldown open active-identifier="item-2">
@@ -952,23 +964,38 @@ test.describe('item identifier set after initial render', () => {
 
     await setProperty(getItems(page).nth(1), 'identifier', 'item-2');
     await waitForStencilLifecycle(page);
-
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 
-  test('should log an error when active-identifier matches no item after all identifiers are set', async ({ page }) => {
-    initConsoleObserver(page);
-    await setContentWithDesignSystem(
+  test.describe('with an active-identifier that matches no item', () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, /Invalid value 'item-3' supplied to p-drilldown for property 'activeIdentifier'/]),
+    });
+
+    test('should log an error when active-identifier matches no item after all identifiers are set', async ({
       page,
-      `<p-drilldown open active-identifier="item-3">
+    }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-drilldown open active-identifier="item-3">
   <p-drilldown-item identifier="item-1" label="Item 1"></p-drilldown-item>
   <p-drilldown-item label="Item 2"></p-drilldown-item>
 </p-drilldown>`
-    );
+      );
 
-    await setProperty(getItems(page).nth(1), 'identifier', 'item-2');
-    await waitForStencilLifecycle(page);
+      await setProperty(getItems(page).nth(1), 'identifier', 'item-2');
+      await waitForStencilLifecycle(page);
 
-    await expect.poll(() => getConsoleErrorsAmount()).toBe(1); // console events can arrive after the lifecycle in WebKit
+      // console events can arrive after the lifecycle in WebKit
+      await expect
+        .poll(async () =>
+          (await page.consoleMessages())
+            .filter((message) => message.type() === 'error')
+            .map((message) => message.text())
+        )
+        .toEqual([
+          expect.stringContaining("Invalid value 'item-3' supplied to p-drilldown for property 'activeIdentifier'"),
+        ]);
+    });
   });
 });

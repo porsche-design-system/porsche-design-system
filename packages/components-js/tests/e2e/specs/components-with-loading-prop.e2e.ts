@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   buildDefaultComponentMarkup,
