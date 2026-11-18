@@ -127,6 +127,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -426,6 +429,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -587,6 +593,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -756,6 +765,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -937,6 +949,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -1114,6 +1129,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -1278,6 +1296,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -1450,6 +1471,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -1634,6 +1658,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -1806,6 +1833,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -1967,6 +1997,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -2136,6 +2169,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -2317,6 +2353,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -2487,6 +2526,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -2645,6 +2687,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -2811,6 +2856,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -2989,6 +3037,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -3163,6 +3214,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -3325,6 +3379,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -3476,6 +3533,9 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -3626,6 +3686,9 @@ input:focus-visible {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -3795,6 +3858,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -3976,6 +4042,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -4140,6 +4209,9 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -4303,6 +4375,9 @@ input:focus-visible {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -4473,6 +4548,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -4631,6 +4709,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -4797,6 +4878,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -4974,6 +5058,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;

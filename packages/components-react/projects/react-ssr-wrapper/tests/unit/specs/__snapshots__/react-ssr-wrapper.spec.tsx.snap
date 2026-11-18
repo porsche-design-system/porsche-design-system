@@ -212,6 +212,9 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -414,6 +417,9 @@ input::-webkit-search-cancel-button {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -1497,6 +1503,9 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -1652,6 +1661,9 @@ slot:not([name]) {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -5109,6 +5121,9 @@ input:checked::before {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -7199,6 +7214,9 @@ input::-webkit-calendar-picker-indicator {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -7386,6 +7404,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -7568,6 +7589,9 @@ input::-webkit-calendar-picker-indicator {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -7757,6 +7781,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -7936,6 +7963,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -8119,6 +8149,9 @@ input::-webkit-search-cancel-button {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -8301,6 +8334,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -8479,6 +8515,9 @@ input {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -8661,6 +8700,9 @@ input::-webkit-calendar-picker-indicator {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -8849,6 +8891,9 @@ input {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -9031,6 +9076,9 @@ input::-webkit-calendar-picker-indicator {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -10419,6 +10467,9 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   .label:empty {
     display: none;
   }
+  .label:is(label) {
+    user-select: none;
+  }
   .label:is(span) {
     cursor: unset;
     font-size: var(--p-typescale-xs);
@@ -10621,6 +10672,9 @@ input::-webkit-search-cancel-button {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -11492,6 +11546,9 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -11809,6 +11866,9 @@ slot[name="label-after"]::slotted(*) {
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -11993,6 +12053,9 @@ input:checked::before {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -12255,6 +12318,9 @@ slot:not([name]) {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -12589,6 +12655,9 @@ exports[`should render dsr component for PSelect 1`] = `
   }
   .label:empty {
     display: none;
+  }
+  .label:is(label) {
+    user-select: none;
   }
   .label:is(span) {
     cursor: unset;
@@ -14932,6 +15001,9 @@ textarea:focus {
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
