@@ -1,5 +1,7 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { Example } from '@/components/mdx/examples/Example';
+import video from '@porsche-design-system/examples/templates/personalized-mailing/video';
+import noVideo from '@porsche-design-system/examples/templates/personalized-mailing/no-video';
 
 export const metadata = {
   title: 'Personalized Mailing - Templates',
@@ -16,8 +18,8 @@ well.
 
 ## Video
 
-<ExampleViewer example="templates/personalized-mailing/video" />
+<Example example={video} />
 
 ## No Video
 
-<ExampleViewer example="templates/personalized-mailing/no-video" />
+<Example example={noVideo} />

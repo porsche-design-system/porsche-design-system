@@ -1,8 +1,12 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { tableMeta } from '@/app/(main)/components/table/table.meta';
+import captionProperty from '@porsche-design-system/examples/components/table/caption-property';
+import captionSlot from '@porsche-design-system/examples/components/table/caption-slot';
+import layoutFixed from '@porsche-design-system/examples/components/table/layout-fixed';
+import sorting from '@porsche-design-system/examples/components/table/sorting';
+import hideLabel from '@porsche-design-system/examples/components/table/hide-label';
+import advanced from '@porsche-design-system/examples/components/table/advanced';
 
 export const metadata = {
   title: 'Table: Examples - Components',
@@ -13,47 +17,35 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    tableMeta.examples.captionProperty.name,
-    tableMeta.examples.captionSlot.name,
-    tableMeta.examples.layoutFixed.name,
-    tableMeta.examples.sorting.name,
-    tableMeta.examples.hideLabel.name,
-    tableMeta.examples.advanced.name,
+    captionProperty.title,
+    captionSlot.title,
+    layoutFixed.title,
+    sorting.title,
+    hideLabel.title,
+    advanced.title,
   ]}
 />
 
-## {tableMeta.examples.captionProperty.name}
+## {captionProperty.title}
 
-<tableMeta.examples.captionProperty.description />
+<Example example={captionProperty} />
 
-<ComponentStory story={tableMeta.examples.captionProperty.story} />
+## {captionSlot.title}
 
-## {tableMeta.examples.captionSlot.name}
+<Example example={captionSlot} />
 
-<tableMeta.examples.captionSlot.description />
+## {layoutFixed.title}
 
-<ComponentStory story={tableMeta.examples.captionSlot.story} />
+<Example example={layoutFixed} />
 
-## {tableMeta.examples.layoutFixed.name}
+## {sorting.title}
 
-<tableMeta.examples.layoutFixed.description />
+<Example example={sorting} />
 
-<ComponentStory story={tableMeta.examples.layoutFixed.story} />
+## {hideLabel.title}
 
-## {tableMeta.examples.sorting.name}
+<Example example={hideLabel} />
 
-<tableMeta.examples.sorting.description />
+## {advanced.title}
 
-<ComponentExample codeSample={tableMeta.examples.sorting.example} />
-
-## {tableMeta.examples.hideLabel.name}
-
-<tableMeta.examples.hideLabel.description />
-
-<ComponentStory story={tableMeta.examples.hideLabel.story} />
-
-## {tableMeta.examples.advanced.name}
-
-<tableMeta.examples.advanced.description />
-
-<ComponentExample codeSample={tableMeta.examples.advanced.example} />
+<Example example={advanced} />
