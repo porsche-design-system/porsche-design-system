@@ -34,13 +34,18 @@ const Page = () => (
           />
         </div>
         <Comment>{tileComments.coverLink}</Comment>
-        <div class="self-start flex justify-end px-fluid-md pt-fluid-md">
-          <p-link variant="secondary" icon="arrow-up-right" hide-label="true" compact="true" cover={true}>
-            <a href="#">911</a>
-          </p-link>
-        </div>
+        <p-link
+          class="self-start justify-self-end mt-fluid-md me-fluid-md"
+          variant="secondary"
+          icon="arrow-up-right"
+          hide-label="true"
+          compact="true"
+          cover={true}
+        >
+          <a href="#">911</a>
+        </p-link>
         <Comment>{tileComments.gradient}</Comment>
-        <div class="self-end flex flex-wrap items-center gap-fluid-sm px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
+        <div class="self-end px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
           <p-heading tag="h2" size="xl" weight="regular">
             911
           </p-heading>
