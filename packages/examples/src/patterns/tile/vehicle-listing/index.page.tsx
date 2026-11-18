@@ -7,7 +7,7 @@ import { tileComments } from '../../../_partials/tile/comments.ts';
 export const meta: ExampleMeta = {
   title: 'Tile: Vehicle Listing',
   description:
-    'A vehicle listing presents a single vehicle in a search result, e.g. of the Porsche Finder, with the vehicle cut out above its details. The tile adapts its height to the content. It carries several controls of its own – a popover explaining the price, a link to the technical data and the two actions, one below the other – so it is no link as a whole: a link covering the tile would lie over all of them. On hover the vehicle zooms in, unless the user prefers reduced motion.',
+    'A vehicle listing presents a single vehicle in a search result, e.g. of the Porsche Finder, with the vehicle cut out above its details. The tile adapts its height to the content. It carries several controls of its own – a popover explaining the price, a link to the technical data and the two actions, one below the other – so it is no link as a whole: a link covering the tile would lie over all of them.',
   colorSchemes: ['light', 'dark'],
 };
 
@@ -16,8 +16,12 @@ const Figure = ({ value, children }: { value: string; children: string }) => (
   // Reversed, so that the term still comes first in the markup. Packed to the end of that axis, which is the top, so
   // that the figures of a row align however long their terms are.
   <div class="flex flex-col-reverse justify-end gap-static-xs">
-    <dt class="text-xs text-contrast-medium">{children}</dt>
-    <dd class="m-0 text-md font-semibold">{value}</dd>
+    <p-text size="xs" color="contrast-medium">
+      {children}
+    </p-text>
+    <p-text size="md" weight="semibold">
+      {value}
+    </p-text>
   </div>
 );
 
@@ -33,15 +37,14 @@ const Page = () => (
         The tile is no link of its own. It carries four controls – the popover, the technical data and the two actions –
         and a link covering the tile would lie over all of them. The heading names the vehicle, the actions open it.
       </Comment>
-      <div class="col-basic justify-self-center w-full max-w-[400px] group flex flex-col gap-fluid-md rounded-3xl bg-canvas p-fluid-md">
+      <div class="col-basic justify-self-center w-full max-w-[400px] flex flex-col gap-fluid-md rounded-3xl bg-canvas p-fluid-md">
         <Comment>Cut out against the tile, so no box has to be clipped around it.</Comment>
-        <Comment>{tileComments.zoom}</Comment>
         <img
-          class="w-full motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-          src="/examples/media/718-side-view.webp"
+          class="w-full px-fluid-md"
+          src="/examples/media/718-gt4-rs-side-view.webp"
           alt=""
-          width="776"
-          height="276"
+          width="1000"
+          height="313"
         />
         <div class="flex flex-col gap-fluid-sm">
           <div class="flex flex-col gap-static-xs">
@@ -52,19 +55,13 @@ const Page = () => (
               The popover sits in the line it explains, so that it is reached right after the price rather than at the
               end of the tile.
             </Comment>
-            <p class="m-0 text-xs text-contrast-medium">
-              From €103,500.00 incl. VAT or e.g. €1,256.94 /{' '}
-              <span class="whitespace-nowrap">
-                month{' '}
-                <p-popover
-                  class="inline-block align-middle"
-                  aria="{ 'aria-label': 'More information about the price' }"
-                >
-                  The price includes VAT and country-specific equipment. The rate is an example and depends on the term,
-                  the deposit and the final instalment.
-                </p-popover>
-              </span>
-            </p>
+            <p-text color="contrast-medium">
+              From €103,500.00 incl. VAT or e.g. €1,256.94 / month{'\u00a0'}
+              <p-popover aria="{ 'aria-label': 'More information about the price' }">
+                The price includes VAT and country-specific equipment. The rate is an example and depends on the term,
+                the deposit and the final instalment.
+              </p-popover>
+            </p-text>
           </div>
 
           <Comment>
@@ -86,16 +83,12 @@ const Page = () => (
           </ul>
         </div>
 
-        <Comment>
-          A description list, so that each figure stays tied to the term it belongs to rather than being read as a loose
-          number.
-        </Comment>
-        <dl class="grid grid-cols-2 gap-fluid-md m-0">
+        <div class="grid grid-cols-2 gap-fluid-md">
           <Figure value="4.5 s">Acceleration 0 - 100 km/h with Launch Control</Figure>
           <Figure value="294 kW / 400 PS">Power up to (kW) / Power up to (PS)</Figure>
           <Figure value="293 km/h">Top speed</Figure>
           <Figure value="10.9 l/100 km">Fuel consumption combined (WLTP)</Figure>
-        </dl>
+        </div>
 
         <Comment>
           The three links each name the vehicle for screen readers, since a result list repeats these labels on every
@@ -111,12 +104,12 @@ const Page = () => (
               Technical data and standard equipment
             </a>
           </p-link-pure>
-          <p-link class="block" variant="primary">
+          <p-link variant="primary">
             <a href="#" aria-label="Discover the 718 Cayman GTS 4.0">
               Discover
             </a>
           </p-link>
-          <p-link class="block" variant="secondary">
+          <p-link variant="secondary">
             <a href="#" aria-label="Configure the 718 Cayman GTS 4.0">
               Configure
             </a>

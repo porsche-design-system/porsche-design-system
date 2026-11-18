@@ -27,19 +27,20 @@ const Page = () => (
           than the vehicle, so only its upper part is read.
         </Comment>
         <div class="grid grid-cols-1 w-full">
+          <Comment>{tileComments.signatureWidth}</Comment>
           <p-model-signature
-            class="[grid-area:1/1] justify-self-center [--p-model-signature-width:46%] [--p-model-signature-color:var(--color-surface)]"
+            class="[grid-area:1/1] justify-self-center [--p-model-signature-width:65%] [--p-model-signature-color:var(--color-surface)]"
             model="911"
             safe-zone={false}
           ></p-model-signature>
           <Comment>Decorative, since the tile already names the model.</Comment>
           <Comment>{tileComments.zoom}</Comment>
           <img
-            class="[grid-area:1/1] z-1 w-full mt-[2.5%] motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-            src="/examples/media/911-carrera-side-view.webp"
+            class="[grid-area:1/1] z-1 w-full px-fluid-lg motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+            src="/examples/media/911-gts-side-view.webp"
             alt=""
-            width="1087"
-            height="283"
+            width="1280"
+            height="459"
           />
         </div>
         <Comment>{tileComments.anchorLink}</Comment>

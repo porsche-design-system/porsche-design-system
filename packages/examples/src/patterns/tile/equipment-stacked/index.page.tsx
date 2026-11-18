@@ -24,13 +24,13 @@ const Page = () => (
       </Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] flex flex-col gap-static-sm rounded-3xl bg-surface p-static-sm">
         <Comment>The photograph is cropped to the panel, so it follows its corners.</Comment>
-        <div class="aspect-[848/382] overflow-clip rounded-2xl">
+        <div class="aspect-9/4 overflow-clip rounded-2xl">
           <img
             class="size-full object-cover"
             src="/examples/media/burmester-speaker.webp"
             alt="A Burmester speaker in the door panel of a Porsche"
             width="1696"
-            height="764"
+            height="754"
           />
         </div>
 

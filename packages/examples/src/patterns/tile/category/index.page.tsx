@@ -43,14 +43,14 @@ const Page = () => (
             </p-link>
           </div>
           <Comment>{tileComments.fill}</Comment>
-          <Comment>Set against the lower edge and reaching past it, so the product is cut there.</Comment>
+          <Comment>The image is cropped at the bottom, so the lower edge of the tile cuts the product.</Comment>
           <Comment>{tileComments.zoom}</Comment>
           <img
-            class="grow basis-0 min-h-0 w-full object-contain object-bottom translate-y-[8%] motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+            class="grow basis-0 min-h-0 w-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
             src="/examples/media/wall-charger.webp"
             alt="A Porsche wall charger"
-            width="290"
-            height="581"
+            width="595"
+            height="800"
           />
         </div>
       </div>

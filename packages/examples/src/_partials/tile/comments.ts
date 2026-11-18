@@ -15,4 +15,6 @@ export const tileComments = {
   gradient: 'Carries the gradient behind the text, so it grows with the text and keeps it legible on the image.',
   darkScheme: 'Light content on a dark gradient or image, independent of the color scheme of the page.',
   fill: 'Takes the height left in the tile without increasing it.',
+  signatureWidth:
+    'Signatures differ in width: 911 and 718 are the narrowest, Panamera is almost three times as wide. The share below suits the narrow ones, so for another model set it anew and check how far the vehicle overlaps the signature.',
 } as const;

@@ -62,11 +62,11 @@ const Page = () => (
             <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
             <Comment>{tileComments.zoom}</Comment>
             <img
-              class="[grid-area:1/1] place-self-center w-[53%] max-h-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+              class="[grid-area:1/1] place-self-center w-1/2 max-h-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
               src="/examples/media/chronograph.webp"
               alt="A Porsche Design chronograph"
-              width="812"
-              height="1295"
+              width="800"
+              height="1282"
             />
             <div class="[grid-area:1/1] self-start flex flex-wrap items-center gap-fluid-sm pt-fluid-md px-fluid-md">
               <p-heading tag="h3" size="md">
@@ -90,7 +90,7 @@ const Page = () => (
         <Comment>{tileComments.coverTile}</Comment>
         <li class="group relative isolate rounded-3xl scheme-only-light [--p-link-cover-radius:var(--radius-3xl)]">
           <Comment>{tileComments.clip}</Comment>
-          <div class="grid aspect-[748/477] overflow-clip rounded-[inherit] bg-surface">
+          <div class="grid aspect-3/2 overflow-clip rounded-[inherit] bg-surface">
             <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
             <Comment>
               In the same cell as the heading, so it is placed against the whole tile rather than against the room the
@@ -99,11 +99,11 @@ const Page = () => (
             <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
             <Comment>{tileComments.zoom}</Comment>
             <img
-              class="[grid-area:1/1] place-self-center w-[75%] max-h-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+              class="[grid-area:1/1] place-self-center w-3/4 max-h-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
               src="/examples/media/roof-box.webp"
               alt="A roof box"
-              width="845"
-              height="208"
+              width="1000"
+              height="255"
             />
             <div class="[grid-area:1/1] self-start flex flex-wrap items-center gap-fluid-sm pt-fluid-md px-fluid-md">
               <p-heading tag="h3" size="md">
@@ -127,18 +127,19 @@ const Page = () => (
         <Comment>{tileComments.coverTile}</Comment>
         <li class="group relative isolate rounded-3xl scheme-only-light [--p-link-cover-radius:var(--radius-3xl)]">
           <Comment>{tileComments.clip}</Comment>
-          <div class="grid aspect-[748/477] overflow-clip rounded-[inherit] bg-surface">
+          <div class="grid aspect-3/2 overflow-clip rounded-[inherit] bg-surface">
             <Comment>
-              In the same cell as the heading, set low and reaching past the lower edge, so the garment is cut there.
+              In the same cell as the heading and set against the lower edge, where the image is cropped, so the garment
+              is cut there.
             </Comment>
             <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
             <Comment>{tileComments.zoom}</Comment>
             <img
-              class="[grid-area:1/1] self-end justify-self-center w-[59%] translate-y-[6%] motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+              class="[grid-area:1/1] self-end justify-self-center w-2/3 motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
               src="/examples/media/jacket.webp"
               alt="A Porsche Motorsport jacket"
-              width="691"
-              height="579"
+              width="900"
+              height="629"
             />
             <div class="[grid-area:1/1] self-start flex flex-wrap items-center gap-fluid-sm pt-fluid-md px-fluid-md">
               <p-heading tag="h3" size="md">

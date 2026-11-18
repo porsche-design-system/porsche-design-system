@@ -35,14 +35,14 @@ const Page = () => (
         <Comment>{tileComments.fill}</Comment>
         <Comment>
           Moves towards the end while the tile is hovered, mirrored for right to left, unless the user prefers reduced
-          motion. Its end padding reserves the space it moves into.
+          motion. Its padding gives it room at the sides, and its end padding is the space it moves into.
         </Comment>
         <img
-          class="grow basis-0 min-h-0 w-full object-contain pe-static-md motion-safe:transition-[translate] duration-md ease-in-out motion-safe:group-hover:translate-x-static-md motion-safe:rtl:group-hover:-translate-x-static-md"
-          src="/examples/media/718-side-view.webp"
+          class="grow basis-0 min-h-0 w-full object-contain px-fluid-lg motion-safe:transition-[translate] duration-md ease-in-out motion-safe:group-hover:translate-x-static-md motion-safe:rtl:group-hover:-translate-x-static-md"
+          src="/examples/media/718-gt4-rs-side-view.webp"
           alt="Porsche 718"
-          width="776"
-          height="276"
+          width="1000"
+          height="313"
         />
         <p-tag class="self-start">Petrol</p-tag>
       </div>

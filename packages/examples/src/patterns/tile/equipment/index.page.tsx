@@ -33,14 +33,14 @@ const Page = () => (
           under the photograph.
         </Comment>
         <Comment>Nothing separates the two panels but the padding of the text, as in the design.</Comment>
-        <div class="shrink-0 overflow-clip rounded-2xl sm:w-1/2 md:w-[67.6%]">
+        <div class="shrink-0 overflow-clip rounded-2xl sm:w-1/2 md:w-2/3">
           <Comment>Decorative, since the heading beside it names the option.</Comment>
           <img
-            class="aspect-[800/643] size-full object-cover"
+            class="aspect-5/4 size-full object-cover"
             src="/examples/media/anniversary-leather-seat.webp"
             alt=""
-            width="950"
-            height="643"
+            width="800"
+            height="640"
           />
         </div>
 

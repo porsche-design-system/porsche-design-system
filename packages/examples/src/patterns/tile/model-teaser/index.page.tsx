@@ -20,29 +20,30 @@ const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
-      <div class="col-basic group relative isolate flex flex-col items-center justify-center gap-fluid-sm aspect-video rounded-3xl bg-surface p-fluid-lg text-center [--p-link-cover-radius:var(--radius-3xl)]">
+      <div class="col-basic group relative isolate flex flex-col items-center justify-center gap-fluid-md aspect-video rounded-3xl bg-surface p-fluid-lg text-center [--p-link-cover-radius:var(--radius-3xl)]">
         <Comment>
-          Signature and vehicle share one cell, the vehicle overlapping the lower part of the signature and placed in
-          front of it. The signature takes the canvas color, which stands out subtly from the surface of the tile.
+          Signature and vehicle share one cell, and the vehicle is placed in front of the signature. The image keeps
+          free room above the roof, so the vehicle overlaps the lower part of the signature without being moved. The
+          signature takes the canvas color, which stands out subtly from the surface of the tile.
         </Comment>
-        <Comment>The cell reaches into the padding, so that the vehicle is wider than the text below it.</Comment>
-        <div class="grid grid-cols-1 w-[calc(100%+2*var(--spacing-fluid-md))] -mx-fluid-md">
+        <Comment>
+          Its width fills the room inside the padding on a phone, and from the small breakpoint on it is a share of the
+          tile, so the vehicle keeps its scale at every size.
+        </Comment>
+        <div class="grid grid-cols-1 w-full sm:w-4/5">
+          <Comment>{tileComments.signatureWidth}</Comment>
           <p-model-signature
             class="[grid-area:1/1] justify-self-center [--p-model-signature-width:65%] [--p-model-signature-color:var(--color-canvas)]"
             model="911"
             safe-zone={false}
           ></p-model-signature>
           <Comment>{tileComments.zoom}</Comment>
-          <Comment>
-            Mirrored so that the vehicle faces the reading direction. The zoom has to name both axes, since a plain
-            scale would reset the mirrored one.
-          </Comment>
           <img
-            class="[grid-area:1/1] z-1 w-full mt-[6%] -scale-x-100 motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:-scale-x-105 motion-safe:group-hover:scale-y-105"
-            src="/examples/media/911-carrera-side-view.webp"
+            class="[grid-area:1/1] z-1 w-full motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+            src="/examples/media/911-gts-side-view.webp"
             alt=""
-            width="1087"
-            height="283"
+            width="1280"
+            height="459"
           />
         </div>
         <div class="flex flex-col gap-static-xs">
@@ -53,7 +54,10 @@ const Page = () => (
             From €123,456.00* or €1,234.00/month*
           </p-text>
         </div>
-        <div class="flex flex-wrap justify-center items-center gap-static-md mt-fluid-sm">
+        <Comment>
+          One below the other and as wide as the tile on a phone, side by side from the small breakpoint on.
+        </Comment>
+        <div class="flex flex-col w-full gap-static-md sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
           <Comment>{tileComments.coverLink}</Comment>
           <p-link variant="primary" cover={true}>
             <a href="#">Discover 911</a>

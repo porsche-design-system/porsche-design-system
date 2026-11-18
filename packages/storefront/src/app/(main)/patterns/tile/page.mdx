@@ -1,71 +1,87 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
 import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { H3Anchored } from '@/components/mdx/elements/Typography';
 
 export const metadata = {
   title: 'Tile - Patterns',
-  description: 'Learn how to build tiles for Porsche web applications with HTML and Tailwind CSS.',
+  description: 'Learn how to build tiles and content cards for Porsche web applications with HTML and Tailwind CSS.',
 };
 
 # Tile
 
 <TableOfContents
   headings={[
+    'Tiles',
     'Image Category',
     'Video',
     'Call to Action',
     'Model Teaser',
     'Category',
-    'Vehicle Listing',
+    'Category Grid',
     'Model Navigation',
     'Model Selection',
     'Product',
+    'Content Cards',
+    'Vehicle Listing',
     'Equipment',
     'Disclosure',
     'Equipment Stacked',
-    'Category Grid',
     'Support',
   ]}
 />
 
-A tile groups the content of a single item – a model, a category, a product or a feature – in an area that is often
-clickable as a whole. Tiles vary too much in layout, media and interaction to be covered by a single component, so these
-patterns show their common use cases, built with HTML, Tailwind CSS and the components of the Porsche Design System.
-Start from the pattern closest to your use case and adapt it – the comments in its code explain why it is built the way
-it is.
+Tiles and content cards group the content of a single item – a model, a category, a product or a feature – in an area of
+its own. They vary too much in layout, media and interaction to be covered by a single component, so these patterns show
+their common use cases, built with HTML, Tailwind CSS and the components of the Porsche Design System. Start from the
+pattern closest to your use case and adapt it – the comments in its code explain why it is built the way it is.
 
-They are ordered by what a reader can do with a tile rather than by what it shows. Where the photograph sits is visible
-in every example below; whether the whole tile is one link is not, and it is the decision that shapes the markup, the
-focus order and what a screen reader announces.
+The two groups below differ in how a reader reaches what they offer. Hovering anywhere on a tile reaches at least one
+link, so the whole tile is clickable. A content card presents its content in a container, and what a reader can do with
+it – open a page, press a button, read on – sits in its elements rather than in the surface as a whole. Within each
+group, the patterns are ordered by what a reader can do with them rather than by what they show. Where the photograph
+sits is visible in every example below; whether the whole area is one link is not, and it is the decision that shapes
+the markup, the focus order and what a screen reader announces.
 
-## Image Category
+## Tiles
 
-The tiles in this first group each open one page, and a `p-link` with `cover` opens it: the link is part of the tile and
-its clickable area is stretched over the whole of it, which also draws the focus indicator around the tile. Use this
-form wherever the tile shows a link anyway.
+Every tile below opens one page, and the whole of it is the clickable area. Two forms get it there.
+
+<H3Anchored>Image Category</H3Anchored>
+
+The first group shows a link, and a `p-link` with `cover` opens the page: the link is part of the tile and its clickable
+area is stretched over the whole of it, which also draws the focus indicator around the tile. Use this form wherever the
+tile shows a link anyway.
 
 <ExampleViewer example="patterns/tile/image-category" />
 
-## Video
+<H3Anchored>Video</H3Anchored>
 
 <ExampleViewer example="patterns/tile/video" />
 
-## Call to Action
+<H3Anchored>Call to Action</H3Anchored>
 
 <ExampleViewer example="patterns/tile/call-to-action" />
 
-## Model Teaser
+<H3Anchored>Model Teaser</H3Anchored>
 
 <ExampleViewer example="patterns/tile/model-teaser" />
 
-## Category
+<H3Anchored>Category</H3Anchored>
+
+The category tile reuses the cover-link form of Image Category above: the heading and the link sit at the top, and the
+cut-out product image fills the rest of the tile up to its edges.
 
 <ExampleViewer example="patterns/tile/category" />
 
-## Vehicle Listing
+<H3Anchored>Category Grid</H3Anchored>
 
-<ExampleViewer example="patterns/tile/vehicle-listing" />
+The patterns above each show a single tile. This one shows three of the category tile under a shared heading, with the
+first tile as tall as the other two together — a focus without making any of the three a different kind of tile. The
+tile itself is the category tile above, unchanged, so what this pattern really shows is an arrangement.
 
-## Model Navigation
+<ExampleViewer example="patterns/tile/category-grid" />
+
+<H3Anchored>Model Navigation</H3Anchored>
 
 The next three tiles open a page as well, but show no link. An anchor of their own spans the tile, and its text is for
 screen readers only – the heading names the subject in the design, the anchor names it for assistive technology. Use
@@ -73,48 +89,52 @@ this form where a visible link would be one element too many.
 
 <ExampleViewer example="patterns/tile/model-navigation" />
 
-## Model Selection
+<H3Anchored>Model Selection</H3Anchored>
 
 <ExampleViewer example="patterns/tile/model-selection" />
 
-## Product
+<H3Anchored>Product</H3Anchored>
 
 <ExampleViewer example="patterns/tile/product" />
 
-## Equipment
+## Content Cards
 
-The last three tiles open nothing, and what they offer instead differs. This one carries the single action of its
+A content card shows its content in a container, and what a reader can do with it sits in its elements rather than in
+the surface as a whole – no link spans a content card the way it spans a tile above.
+
+<H3Anchored>Vehicle Listing</H3Anchored>
+
+This card carries several controls of its own – a popover, a link to the technical data and two actions – so no link
+could span it, and it does not react to hover as a whole either. The heading names the vehicle, the actions open it.
+
+<ExampleViewer example="patterns/tile/vehicle-listing" />
+
+<H3Anchored>Equipment</H3Anchored>
+
+The next three cards open nothing, and what they offer instead differs. This one carries the single action of its
 subject, a button, because an equipment option is something to add rather than a page to visit. Its photograph takes two
-thirds of the tile and the description the rest, which is why the two stack on a phone.
+thirds of the card and the description the rest, which is why the two stack on a phone.
 
 <ExampleViewer example="patterns/tile/equipment" />
 
-## Disclosure
+<H3Anchored>Disclosure</H3Anchored>
 
 This one reveals more of itself on demand: its heading is the summary of an accordion that holds the details, and the
-photograph behind the text dims while they are open. Nothing leaves the tile, so nothing has to be a link.
+photograph behind the text dims while they are open. Nothing leaves the card, so nothing has to be a link.
 
 <ExampleViewer example="patterns/tile/disclosure" />
 
-## Equipment Stacked
+<H3Anchored>Equipment Stacked</H3Anchored>
 
-This one only describes. It is the equipment tile with its two panels stacked rather than beside one another, for a
+This one only describes. It is the equipment card with its two panels stacked rather than beside one another, for a
 column too narrow for the two halves, and it carries no action.
 
 <ExampleViewer example="patterns/tile/equipment-stacked" />
 
-## Category Grid
+<H3Anchored>Support</H3Anchored>
 
-The patterns above each show a single tile. This one shows three of them under a shared heading, with the first tile as
-tall as the other two together — a focus without making any of the three a different kind of tile. The tile itself is
-the category tile, unchanged, so what this pattern really shows is an arrangement.
-
-<ExampleViewer example="patterns/tile/category-grid" />
-
-## Support
-
-This one holds three tiles rather than standing beside them: a mood image fills it, and in front of the image three
-small tiles each open one way to reach a person. They take a frosted background, which lets the photograph through. The
-tile holding them opens nothing itself – a link may not contain another.
+This one holds three tiles instead of opening one itself: a mood image fills it, and in front of the image three small
+tiles each open one way to reach a person. They take a frosted background, which lets the photograph through. The card
+holding them opens nothing itself – a link may not contain another.
 
 <ExampleViewer example="patterns/tile/support" />
