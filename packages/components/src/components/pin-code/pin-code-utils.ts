@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix } from '../../utils';
+import { consoleWarn, getTagNameWithoutPrefix } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
@@ -65,20 +65,6 @@ export const getSanitisedValue = (host: HTMLElement, value: string, length: numb
 };
 
 export const removeWhiteSpaces = (value: string): string => value.replace(/\s/g, '');
-
-// This reproduces native behavior where the form is only submittable under certain circumstances
-export const isFormSubmittable = (host: HTMLElement, form: HTMLFormElement): boolean => {
-  const PrefixedTagNames = getPrefixedTagNames(host);
-
-  return !!(
-    form.querySelectorAll('input:not([type=submit]):not([type=hidden])').length === 0 || // other sibling form elements e.g. select, textarea do not prevent submission
-    Array.from(
-      form.querySelectorAll(
-        `${PrefixedTagNames.pButton},${PrefixedTagNames.pButtonPure},button[type=submit],input[type=submit]`
-      )
-    ).some((el) => (el as HTMLButtonElement).type === 'submit')
-  );
-};
 
 /**
  * Determines if the current input element corresponds to the first non-filled input

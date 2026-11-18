@@ -1,5 +1,6 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   CSS_ANIMATION_DURATION,
   getElementStyle,

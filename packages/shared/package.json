@@ -38,6 +38,16 @@
         "default": "./dist/models/cjs/index.cjs"
       }
     },
+    "./rewrite-cdn-urls": {
+      "import": {
+        "types": "./dist/utils/rewriteCdnUrlsForDev.d.ts",
+        "default": "./dist/rewrite-cdn-urls/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/utils/rewriteCdnUrlsForDev.d.ts",
+        "default": "./dist/rewrite-cdn-urls/cjs/index.cjs"
+      }
+    },
     "./css/styles.css": "./dist/css/styles.css",
     "./css/styles": "./dist/css/styles.css",
     "./tsconfig.base.json": "./tsconfig.base.json",

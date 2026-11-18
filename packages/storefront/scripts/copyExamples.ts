@@ -1,7 +1,8 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { mediaPath } from '@porsche-design-system/examples-pages';
-import { insertBasePath, rewriteCdnUrlsForDev } from '../src/utils/examples';
+import { rewriteCdnUrlsForDev } from '@porsche-design-system/shared/rewrite-cdn-urls';
+import { insertBasePath } from '../src/utils/examples';
 import { getBasePath } from '../src/utils/getBasePath';
 
 /**

@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
 import { viewportWidth3XL, viewportWidth4XL, viewportWidthXXL } from '@porsche-design-system/testing';
+import { expect, harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import { setupScenario } from '../helpers';
 
 const component = 'modal';
@@ -7,6 +7,9 @@ const component = 'modal';
 // executed in Chrome only
 test.describe(component, () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
+  test.use({
+    expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, ...harnessPageConsole[component]]),
+  });
 
   for (const viewportWidth of [viewportWidthXXL, viewportWidth3XL, viewportWidth4XL]) {
     test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {

@@ -23,4 +23,4 @@ export const test = createAxeTest({
     'skip-link',
   ],
 });
-export { expect } from '@playwright/test';
+export { expect } from '@porsche-design-system/testing/playwright';

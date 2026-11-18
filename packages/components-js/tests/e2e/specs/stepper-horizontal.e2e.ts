@@ -1,16 +1,12 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,
-  getConsoleErrorsAmount,
   getEventSummary,
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
-  getPageThrownErrorsAmount,
-  initConsoleObserver,
-  initPageErrorObserver,
   reattachElement,
   reattachElementToParent,
   setContentWithDesignSystem,
@@ -72,10 +68,7 @@ const getScrollArea = (page: Page) => page.locator('p-stepper-horizontal p-scrol
 
 test.describe('validation', () => {
   test.fixme('should throw error if an item with current state is added while another exists', async ({ page }) => {
-    await initPageErrorObserver(page);
-
     await initStepperHorizontal(page);
-    expect(getPageThrownErrorsAmount()).toBe(0);
 
     const host = getHost(page);
     await host.evaluate((host: HTMLElement) => {
@@ -85,28 +78,36 @@ test.describe('validation', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(getPageThrownErrorsAmount()).toBe(1);
+    expect(await page.pageErrors()).toHaveLength(1);
   });
 
   skipInBrowsers(['webkit'], () => {
-    test('should log error if a second current state is defined', async ({ page }) => {
-      initConsoleObserver(page);
+    test.describe('with a second current state', () => {
+      test.use({
+        expectedConsole: async ({ expectedConsole }, use) =>
+          use([...expectedConsole, /only one child with current state is allowed in p-stepper-horizontal/]),
+      });
 
-      await initStepperHorizontal(page);
-      const [, item2] = await getStepItems(page);
+      test('should log error if a second current state is defined', async ({ page }) => {
+        await initStepperHorizontal(page);
+        const [, item2] = await getStepItems(page);
 
-      await setProperty(item2, 'state', 'current');
-      await waitForStencilLifecycle(page);
+        await setProperty(item2, 'state', 'current');
+        await waitForStencilLifecycle(page);
 
-      await expect.poll(() => getConsoleErrorsAmount()).toBe(1);
+        await expect
+          .poll(async () =>
+            (await page.consoleMessages())
+              .filter((message) => message.type() === 'error')
+              .map((message) => message.text())
+          )
+          .toEqual([expect.stringContaining('only one child with current state is allowed in p-stepper-horizontal')]);
+      });
     });
 
     test('should not throw error if an items state previous to the current one is set as current and the current one is set to undefined', async ({
       page,
     }) => {
-      initPageErrorObserver(page);
-      initConsoleObserver(page);
-
       await initStepperHorizontal(page, { currentStep: 3 });
       const host = getHost(page);
 
@@ -116,83 +117,104 @@ test.describe('validation', () => {
         stepperItemElements[2].state = undefined;
       });
       await waitForStencilLifecycle(page);
-
-      expect(getPageThrownErrorsAmount()).toBe(0);
-      expect(getConsoleErrorsAmount()).toBe(0);
     });
   });
 });
 
 test.describe('invalid state set after initial render', () => {
   // Stencil stops updating a component whose render() throws, so validation errors must not be thrown in render (#4748)
-  test('should keep updating the item after it was current and disabled', async ({ page }) => {
-    await setContentWithDesignSystem(
-      page,
-      `<p-stepper-horizontal>
+  test.describe('with a current and disabled item', () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([
+          ...expectedConsole,
+          /using state='current' and disabled='true' for p-stepper-horizontal-item is not allowed/,
+        ]),
+    });
+
+    test('should keep updating the item after it was current and disabled', async ({ page }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-stepper-horizontal>
   <p-stepper-horizontal-item state="current" disabled>Step 1</p-stepper-horizontal-item>
   <p-stepper-horizontal-item>Step 2</p-stepper-horizontal-item>
 </p-stepper-horizontal>`
-    );
-    const [item1] = await getStepItems(page);
-    await expect(item1.locator('button')).toHaveAttribute('aria-disabled', 'true');
+      );
+      const [item1] = await getStepItems(page);
+      await expect(item1.locator('button')).toHaveAttribute('aria-disabled', 'true');
 
-    await setProperty(item1, 'disabled', false);
-    await waitForStencilLifecycle(page);
+      await setProperty(item1, 'disabled', false);
+      await waitForStencilLifecycle(page);
 
-    await expect(item1.locator('button')).not.toHaveAttribute('aria-disabled');
-    await expect(item1.locator('button')).toHaveAttribute('aria-current', 'step');
+      await expect(item1.locator('button')).not.toHaveAttribute('aria-disabled');
+      await expect(item1.locator('button')).toHaveAttribute('aria-current', 'step');
+    });
   });
 
-  test('should keep updating when the current step is changed in two steps', async ({ page }) => {
-    await initStepperHorizontal(page, { amount: 9, currentStep: 0, isWrapped: true });
-    const [item1, item2, , , , , , , item9] = await getStepItems(page);
+  test.describe('with two current items for a moment', () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, /only one child with current state is allowed in p-stepper-horizontal/]),
+    });
 
-    // two items are current for a moment
-    await setProperty(item2, 'state', 'current');
-    await waitForStencilLifecycle(page);
-    await setProperty(item1, 'state', 'complete');
-    await waitForStencilLifecycle(page);
-    const didUpdateCount = (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'] ?? 0;
+    test('should keep updating when the current step is changed in two steps', async ({ page }) => {
+      await initStepperHorizontal(page, { amount: 9, currentStep: 0, isWrapped: true });
+      const [item1, item2, , , , , , , item9] = await getStepItems(page);
 
-    await setProperty(item2, 'state', 'complete');
-    await setProperty(item9, 'state', 'current');
-    await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
+      // two items are current for a moment
+      await setProperty(item2, 'state', 'current');
+      await waitForStencilLifecycle(page);
+      await setProperty(item1, 'state', 'complete');
+      await waitForStencilLifecycle(page);
+      const didUpdateCount = (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'] ?? 0;
 
-    await expect
-      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
-      .toBeGreaterThan(didUpdateCount);
-    await expect(getScrollArea(page)).not.toHaveJSProperty('scrollLeft', 0);
+      await setProperty(item2, 'state', 'complete');
+      await setProperty(item9, 'state', 'current');
+      await waitForStencilLifecycle(page);
+      await sleep(CSS_ANIMATION_DURATION);
+
+      await expect
+        .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
+        .toBeGreaterThan(didUpdateCount);
+      await expect(getScrollArea(page)).not.toHaveJSProperty('scrollLeft', 0);
+    });
   });
 
-  test('should keep updating after more than 9 items were slotted for a moment', async ({ page }) => {
-    await initStepperHorizontal(page, { amount: 9, currentStep: 0, isWrapped: true });
-    const host = getHost(page);
-    const [item1, item2, , , , , , , item9] = await getStepItems(page);
-
-    await host.evaluate((host: HTMLElement) => {
-      host.appendChild(document.createElement('p-stepper-horizontal-item'));
+  test.describe('with 10 items for a moment', () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) =>
+        use([...expectedConsole, /only 9 children are allowed in p-stepper-horizontal but got 10/]),
     });
-    await waitForStencilLifecycle(page);
-    // re-renders the stepper while it has 10 items
-    await setProperty(item1, 'state', 'complete');
-    await setProperty(item2, 'state', 'current');
-    await waitForStencilLifecycle(page);
-    await host.evaluate((host: HTMLElement) => {
-      host.lastElementChild?.remove();
+
+    test('should keep updating after more than 9 items were slotted for a moment', async ({ page }) => {
+      await initStepperHorizontal(page, { amount: 9, currentStep: 0, isWrapped: true });
+      const host = getHost(page);
+      const [item1, item2, , , , , , , item9] = await getStepItems(page);
+
+      await host.evaluate((host: HTMLElement) => {
+        host.appendChild(document.createElement('p-stepper-horizontal-item'));
+      });
+      await waitForStencilLifecycle(page);
+      // re-renders the stepper while it has 10 items
+      await setProperty(item1, 'state', 'complete');
+      await setProperty(item2, 'state', 'current');
+      await waitForStencilLifecycle(page);
+      await host.evaluate((host: HTMLElement) => {
+        host.lastElementChild?.remove();
+      });
+      await waitForStencilLifecycle(page);
+      const didUpdateCount = (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'] ?? 0;
+
+      await setProperty(item2, 'state', 'complete');
+      await setProperty(item9, 'state', 'current');
+      await waitForStencilLifecycle(page);
+      await sleep(CSS_ANIMATION_DURATION);
+
+      await expect
+        .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
+        .toBeGreaterThan(didUpdateCount);
+      await expect(getScrollArea(page)).not.toHaveJSProperty('scrollLeft', 0);
     });
-    await waitForStencilLifecycle(page);
-    const didUpdateCount = (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'] ?? 0;
-
-    await setProperty(item2, 'state', 'complete');
-    await setProperty(item9, 'state', 'current');
-    await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
-
-    await expect
-      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
-      .toBeGreaterThan(didUpdateCount);
-    await expect(getScrollArea(page)).not.toHaveJSProperty('scrollLeft', 0);
   });
 });
 

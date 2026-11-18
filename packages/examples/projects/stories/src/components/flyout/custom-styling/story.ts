@@ -57,10 +57,10 @@ export const flyoutStoryCustomStyling: Story<'p-flyout'> = {
           ],
         },
         {
-          tag: 'p-display',
+          tag: 'p-heading',
           properties: {
             className: 'mt-fluid-md',
-            size: 'small',
+            size: '3xl',
             tag: 'h2',
           },
           children: ['Some heading'],

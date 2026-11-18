@@ -16,7 +16,7 @@ packages/shared/
 ├── src/lib/               # Generated lookup files
 ├── src/models/            # Shared types/models
 ├── src/styles/            # Shared style helpers
-├── src/utils/             # Framework conversion and misc helpers
+├── src/utils/             # Framework conversion, rewriteCdnUrlsForDev and misc helpers
 ├── tests/                 # Unit tests
 └── projects/              # Shared packages of their own, each an npm workspace
     ├── story-generator/   # @porsche-design-system/story-generator
@@ -63,8 +63,9 @@ npm run test:unit:story-generator
 `packages/shared` is the workspace `@porsche-design-system/shared`. Its `exports` map points into `dist/`, so consumers
 get the built code, and `npm install` links the package before anything is built. It is private and never published.
 
-- Deep entries (`./deprecation`, `./models`) are bundled on their own, so code can use them without loading the
-  barrel and its generated modules.
+- Deep entries (`./deprecation`, `./models`, `./rewrite-cdn-urls`) are bundled on their own, so code can use them
+  without loading the barrel and its generated modules. Native ESM loaders such as Vite's config loader cannot load
+  the barrel at all, so they use `./rewrite-cdn-urls`.
 - `./tsconfig.base.json` and `./tsconfig.paths.json` are the shared compiler base and the source mappings for the
   pre-build typecheck (see `docs/typecheck.md`). Configs extend them as
   `@porsche-design-system/shared/tsconfig.base.json`.

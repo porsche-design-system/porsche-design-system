@@ -1,5 +1,6 @@
+import type { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import { ALGOLIA_APP_ID } from '@/lib/algolia/client';
-import { type Page, expect, test } from '@playwright/test';
 import { ALGOLIA_RESPONSE_MOCK } from '../helpers/algolia-response-mock';
 
 test.beforeEach(async ({ page }) => {
@@ -15,7 +16,7 @@ test.beforeEach(async ({ page }) => {
         body: JSON.stringify(ALGOLIA_RESPONSE_MOCK),
       });
     } else {
-      await route.continue();
+      await route.fallback();
     }
   });
 });

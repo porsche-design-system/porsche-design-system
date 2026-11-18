@@ -1,16 +1,22 @@
 import { viewportWidthXXL } from '@porsche-design-system/testing';
+import { harnessPageConsole } from '@porsche-design-system/testing/playwright';
 import { setupScenario } from '../../../vrt/helpers';
-import { expect, test } from '../../helpers';
+import { expect, test, waitForComponentsHydratedInFrames } from '../../helpers';
 
 // executed in Chrome only
 test.describe('overview', async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
+  test.use({
+    expectedConsole: async ({ expectedConsole }, use) =>
+      use([...expectedConsole, ...harnessPageConsole['overview-components']]),
+  });
 
   test(`should have no accessibility regression for viewport ${viewportWidthXXL}`, async ({
     page,
     makeAxeBuilder,
   }, testInfo) => {
-    await setupScenario(page, '/overview', viewportWidthXXL);
+    await setupScenario(page, '/overview-components', viewportWidthXXL);
+    await waitForComponentsHydratedInFrames(page);
     await page.mouse.click(0, 0);
 
     const accessibilityScanResults = await makeAxeBuilder().analyze();

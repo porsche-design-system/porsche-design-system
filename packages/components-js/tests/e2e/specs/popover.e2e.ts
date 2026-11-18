@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test';
 import type { PopoverDirection } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   addEventListener,

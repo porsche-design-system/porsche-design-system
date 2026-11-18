@@ -1,4 +1,5 @@
-import { expect, Page, test } from '@playwright/test';
+import { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 
 const getHost = (page: Page) => page.locator('p-input-date');
 const getInput = (page: Page) => page.locator('p-input-date input');

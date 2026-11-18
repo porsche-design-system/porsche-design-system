@@ -1,26 +1,32 @@
-import { expect, test } from '@playwright/test';
+import { harnessPageConsole, test } from '@porsche-design-system/testing/playwright';
 import { routes } from '../../../routes';
-import { getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
-
-test.beforeEach(async ({ page }) => {
-  initConsoleObserver(page);
-});
+import { goto } from '../helpers';
 
 const pageUrls = routes.map((item) => item.path);
 
+const pageConsole: Record<string, RegExp[]> = {
+  '/button-pure': harnessPageConsole['button-pure'],
+  '/display': harnessPageConsole.display,
+  '/input-date': harnessPageConsole['input-date'],
+  '/input-month': harnessPageConsole['input-month'],
+  '/input-number': harnessPageConsole['input-number'],
+  '/input-time': harnessPageConsole['input-time'],
+  '/input-week': harnessPageConsole['input-week'],
+  '/modal': harnessPageConsole.modal,
+  '/modal-footer-scrolled': harnessPageConsole.modal,
+  '/overview-components': harnessPageConsole['overview-components'],
+};
+
 for (const pageUrl of pageUrls) {
-  test(`should work without error or warning for ${pageUrl}`, async ({ page }) => {
-    // TODO: Remove once SSR streaming issue is fixed
-    test.skip(pageUrl === '/streaming', 'Streaming issues not fixed yet');
-    await goto(page, pageUrl);
-    expect(getConsoleErrorsAmount()).toBe(0);
-    // tons of deprecation warnings, therefore disabled for now
-    // expect(getConsoleWarningsAmount()).toBe(0);
+  test.describe(pageUrl, () => {
+    test.use({
+      expectedConsole: async ({ expectedConsole }, use) => use([...expectedConsole, ...(pageConsole[pageUrl] ?? [])]),
+    });
 
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
-
-    // await page.evaluate(() => console.warn('test warning'));
-    // expect(getConsoleWarningsAmount()).toBe(1);
+    test(`should work without error or warning for ${pageUrl}`, async ({ page }) => {
+      // TODO: Remove once SSR streaming issue is fixed
+      test.skip(pageUrl === '/streaming', 'Streaming issues not fixed yet');
+      await goto(page, pageUrl);
+    });
   });
 }

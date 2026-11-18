@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test';
 import { viewportWidthM } from '@porsche-design-system/testing';
-import { collectPageErrors, getExampleUrl, getTriggerControl, isOpen, setupExamplePage } from '../../helpers/index.ts';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, getTriggerControl, isOpen, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/popover/priority-navigation` – a bar that moves the entries it cannot fit into a controlled popover.
@@ -9,13 +9,10 @@ import { collectPageErrors, getExampleUrl, getTriggerControl, isOpen, setupExamp
 const url = getExampleUrl('patterns-popover-priority-navigation');
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   // The site name is fixed; the part before it is what the page sets, and no page may ship without one.
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
 });
 
 test('moves entries into the popover as the bar narrows, and back out again', async ({ page }) => {
