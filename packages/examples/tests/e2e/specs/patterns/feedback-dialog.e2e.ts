@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/feedback/dialog` – the feedback question asked inside a `p-modal`.
@@ -11,13 +11,10 @@ import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helper
 const url = getExampleUrl('patterns-feedback-dialog');
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   // The site name is fixed; the part before it is what the page sets, and no page may ship without one.
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
 });
 
 test('reveals the comment on a rating, confirms, and moves focus', async ({ page }) => {

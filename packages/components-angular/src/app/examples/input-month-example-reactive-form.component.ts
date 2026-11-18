@@ -49,7 +49,7 @@ export class InputMonthExampleReactiveFormComponent {
   submittedValue: string | null = null;
 
   setValue(): void {
-    this.form.controls.myInputMonth.setValue('2025-10-24');
+    this.form.controls.myInputMonth.setValue('2025-10');
   }
 
   resetValue(): void {

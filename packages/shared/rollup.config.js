@@ -102,6 +102,22 @@ export default [
     plugins: [typescript({ noEmitOnError: true, rootDir: 'src/models' })],
   },
   {
+    // standalone bundle for the `./rewrite-cdn-urls` deep import, because native ESM cannot load the barrel's JSS imports
+    input: 'src/utils/rewriteCdnUrlsForDev.ts',
+    external,
+    output: [
+      {
+        file: 'dist/rewrite-cdn-urls/esm/index.mjs',
+        format: 'esm',
+      },
+      {
+        file: 'dist/rewrite-cdn-urls/cjs/index.cjs',
+        format: 'cjs',
+      },
+    ],
+    plugins: [typescript({ noEmitOnError: true, rootDir: 'src/utils' })],
+  },
+  {
     input: 'src/serve-dummyassets.ts',
     output: {
       dir: 'bin',

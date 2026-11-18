@@ -1,5 +1,6 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
-import { getConsoleErrorsAmount, goto, initConsoleObserver, waitForComponentsReady } from '../helpers';
+import { type Locator, type Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { goto, waitForComponentsReady } from '../helpers';
 
 const navigateTo = async (page: Page, route: 'page-a' | 'page-b'): Promise<void> => {
   await page.locator(`a[href$="/option-value-timing-bug/${route}"]`).click();
@@ -22,7 +23,6 @@ const optionTagNames = [
 // detection the parents have additionally matched their value already, which affects the preselection (#4743)
 test.describe('option value bound as property after navigating back to a route', () => {
   test.beforeEach(async ({ page }) => {
-    initConsoleObserver(page);
     await goto(page, 'option-value-timing-bug/page-a');
     await navigateTo(page, 'page-b');
     await navigateTo(page, 'page-a');
@@ -48,9 +48,5 @@ test.describe('option value bound as property after navigating back to a route',
 
     await expect(regularItem).toHaveJSProperty('secondary', false);
     await expect(specialItem).toHaveJSProperty('secondary', true);
-  });
-
-  test('should not log any errors', async () => {
-    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });

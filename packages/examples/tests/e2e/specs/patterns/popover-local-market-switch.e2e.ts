@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, getTriggerControl, setupExamplePage } from '../../helpers/index.ts';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, getTriggerControl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/popover/local-market-switch` – two popovers in controlled mode, plus the navigation drilldown
@@ -9,13 +9,10 @@ import { collectPageErrors, getExampleUrl, getTriggerControl, setupExamplePage }
 const url = getExampleUrl('patterns-popover-local-market-switch');
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   // The site name is fixed; the part before it is what the page sets, and no page may ship without one.
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
 });
 
 test('offers the market switch on load and keeps the two disclosures exclusive', async ({ page }) => {

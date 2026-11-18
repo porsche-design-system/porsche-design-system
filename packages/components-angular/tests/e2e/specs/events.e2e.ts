@@ -1,5 +1,6 @@
-import { expect, type Locator, test } from '@playwright/test';
-import { getConsoleErrorsAmount, goto, initConsoleObserver, waitForComponentsReady } from '../helpers';
+import { type Locator } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { goto, waitForComponentsReady } from '../helpers';
 
 const getCounterValue = async (el: Locator): Promise<string> => {
   return el.evaluate((element) => {
@@ -46,7 +47,6 @@ test.describe('tabs-bar', () => {
   });
 
   test('should not throw error when used with router', async ({ page }) => {
-    initConsoleObserver(page);
     await goto(page, 'tabs-bar'); // to load component chunk
 
     // navigate via select, otherwise we would have a reload
@@ -54,10 +54,6 @@ test.describe('tabs-bar', () => {
     await select.click();
     await page.keyboard.type('Events');
     await page.keyboard.press('Enter');
-    expect(getConsoleErrorsAmount()).toBe(0);
-
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
   });
 });
 

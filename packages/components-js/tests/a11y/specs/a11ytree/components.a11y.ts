@@ -1,7 +1,8 @@
 import { viewportWidthM } from '@porsche-design-system/testing';
+import { harnessPageConsole } from '@porsche-design-system/testing/playwright';
 import { a11yTreeSnapshotAllowlist, components, getPages } from '../../../helpers/coverage';
 import { setupScenario } from '../../../vrt/helpers';
-import { expect, test } from '../../helpers';
+import { expect, test, waitForComponentsHydratedInFrames } from '../../helpers';
 
 for (const component of components) {
   const getComponentTagName =
@@ -11,10 +12,15 @@ for (const component of components) {
     // executed in Chrome only
     test.describe(pageName, async () => {
       test.skip(({ browserName }) => browserName !== 'chromium');
+      test.use({
+        expectedConsole: async ({ expectedConsole }, use) =>
+          use([...expectedConsole, ...(harnessPageConsole[pageName] ?? [])]),
+      });
 
       // A11Y Tree Snapshot Tests
       test('should match a11y tree', async ({ page }) => {
         await setupScenario(page, `/${pageName}`, viewportWidthM);
+        await waitForComponentsHydratedInFrames(page);
 
         let index = 0;
 

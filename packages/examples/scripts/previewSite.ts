@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { rewriteCdnUrlsForDev } from '@porsche-design-system/shared/rewrite-cdn-urls';
 import fastGlob from 'fast-glob';
 import { type Plugin, preview } from 'vite';
-import { rewriteCdnUrlsForDev } from '../lib/partials.ts';
 import { categories, examplesPath, previewPort } from '../lib/projects.ts';
 import { packageDir, siteDir } from '../lib/shared.ts';
 

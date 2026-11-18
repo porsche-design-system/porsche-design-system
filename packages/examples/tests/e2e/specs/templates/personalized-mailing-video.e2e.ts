@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, isOpen, setupExamplePage } from '../../helpers/index.ts';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, isOpen, setupExamplePage, youtubePlayerStub } from '../../helpers/index.ts';
 
 /**
  * `src/templates/personalized-mailing/video` – the hero video (`HeroVideo`), wired up by the script of its partial,
@@ -11,13 +11,10 @@ import { collectPageErrors, getExampleUrl, isOpen, setupExamplePage } from '../.
 const url = getExampleUrl('templates-personalized-mailing-video');
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   // Templates share one site name; the part before it is what the page sets, and no page may ship without one.
   await expect(page).toHaveTitle(/^.+ \| Dummy Templates$/);
-  expect(errors).toEqual([]);
 });
 
 test('pauses and resumes the hero video from its control', async ({ page }) => {
@@ -93,28 +90,32 @@ test('plays and pauses the engine sound from its control', async ({ page }) => {
   await expect(player).not.toHaveAttribute('data-playing');
 });
 
-test('opens a review in the video modal and unloads it on close', async ({ page }) => {
-  await setupExamplePage(page, url);
+test.describe(() => {
+  test.use({ externalRequests: youtubePlayerStub });
 
-  const modal = page.locator('#pm-video-modal');
-  const iframe = page.locator('#pm-video-iframe');
+  test('opens a review in the video modal and unloads it on close', async ({ page }) => {
+    await setupExamplePage(page, url);
 
-  expect(await isOpen(modal)).toBe(false);
+    const modal = page.locator('#pm-video-modal');
+    const iframe = page.locator('#pm-video-iframe');
 
-  await page.locator('#pm-voices [data-video-id="cYvm2S3pNp8"]').click();
-  await expect.poll(() => isOpen(modal)).toBe(true);
-  await expect(iframe).toHaveAttribute('src', /youtube-nocookie\.com\/embed\/cYvm2S3pNp8/);
-  // The player and the modal are named after the review, so a screen reader identifies the clip that plays.
-  await expect(iframe).toHaveAttribute('title', '60 years of the Porsche 911 Targa');
-  await expect(modal.locator('dialog')).toHaveAttribute('aria-label', '60 years of the Porsche 911 Targa');
-  // `open` is set before the modal has taken the focus – a key pressed in between still goes to the card behind it.
-  await expect.poll(() => page.evaluate(() => document.activeElement?.id)).toBe('pm-video-modal');
+    expect(await isOpen(modal)).toBe(false);
 
-  // Closing is requested by the component and written back by the page – and only removing the source stops a
-  // cross-origin player for good.
-  await page.keyboard.press('Escape');
-  await expect.poll(() => isOpen(modal)).toBe(false);
-  await expect(iframe).not.toHaveAttribute('src');
+    await page.locator('#pm-voices [data-video-id="cYvm2S3pNp8"]').click();
+    await expect.poll(() => isOpen(modal)).toBe(true);
+    await expect(iframe).toHaveAttribute('src', /youtube-nocookie\.com\/embed\/cYvm2S3pNp8/);
+    // The player and the modal are named after the review, so a screen reader identifies the clip that plays.
+    await expect(iframe).toHaveAttribute('title', '60 years of the Porsche 911 Targa');
+    await expect(modal.locator('dialog')).toHaveAttribute('aria-label', '60 years of the Porsche 911 Targa');
+    // `open` is set before the modal has taken the focus – a key pressed in between still goes to the card behind it.
+    await expect.poll(() => page.evaluate(() => document.activeElement?.id)).toBe('pm-video-modal');
+
+    // Closing is requested by the component and written back by the page – and only removing the source stops a
+    // cross-origin player for good.
+    await page.keyboard.press('Escape');
+    await expect.poll(() => isOpen(modal)).toBe(false);
+    await expect(iframe).not.toHaveAttribute('src');
+  });
 });
 
 test('shows the contact bar below the hero and hides it again at the contact section and the footer', async ({
