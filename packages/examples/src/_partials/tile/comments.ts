@@ -15,6 +15,7 @@ export const tileComments = {
   gradient: 'Carries the gradient behind the text, so it grows with the text and keeps it legible on the image.',
   darkScheme: 'Light content on a dark gradient or image, independent of the color scheme of the page.',
   moodImage: 'Decorative, it sets the mood and carries no information the text does not give.',
+  modelImage: 'Decorative, since the tile already names the model.',
   fill: 'Takes the height left in the tile without increasing it.',
   ownHeight:
     'Aligned to the top of its row instead of stretched to it, so content needing more room than the aspect ratio provides extends the tile in Safari as well.',

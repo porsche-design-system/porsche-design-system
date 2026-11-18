@@ -38,6 +38,7 @@ const Page = () => (
             model="911"
             safe-zone={false}
           ></p-model-signature>
+          <Comment>{tileComments.modelImage}</Comment>
           <Comment>{tileComments.zoom}</Comment>
           <img
             class="[grid-area:1/1] z-1 w-full motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
