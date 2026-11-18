@@ -16,7 +16,9 @@ type PlaygroundProps = {
   showCodeBlock?: boolean;
 };
 
-/** A live demo above its code, shared by `Configurator`, `ComponentStory` and `ComponentExample`. */
+/**
+ * A live demo above its code, shared by `ConfiguratorPlayground`, `ComponentStory` and `ComponentExamplePlayground`.
+ */
 export const Playground = ({
   frameworkMarkup,
   onOpenInStackblitz,

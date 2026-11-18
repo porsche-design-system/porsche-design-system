@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { FRAMEWORKS } from '@porsche-design-system/shared';
 import type { StorefrontInputs } from '../src/generators';
+import { resolveComponentDocs, type StorefrontComponentDocs } from '../src/knowledge/components/catalogue';
 import { SKILL_IDS } from '../src/registry';
 import { stagedFrameworkDir, stagedSkillDir } from '../src/shared/skillTree';
 
@@ -20,7 +21,14 @@ const main = async (): Promise<void> => {
     import('../../../src/app/(main)/components/components.meta'),
     import('../src/generators'),
   ]);
-  const inputs: StorefrontInputs = { docsMeta: componentDocsMeta as unknown as StorefrontInputs['docsMeta'] };
+  const inputs: StorefrontInputs = {
+    docsMeta: Object.fromEntries(
+      Object.entries(componentDocsMeta as unknown as Record<string, StorefrontComponentDocs>).map(([tag, docs]) => [
+        tag,
+        resolveComponentDocs(docs),
+      ])
+    ),
+  };
 
   for (const framework of FRAMEWORKS) {
     fs.rmSync(path.resolve(REPO_ROOT, stagedFrameworkDir(framework)), { recursive: true, force: true });

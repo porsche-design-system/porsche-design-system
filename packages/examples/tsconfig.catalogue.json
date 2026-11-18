@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  // The catalogue only, data that `build:projects` checks before the wrappers are built.
+  "include": ["src/index.ts"]
+}

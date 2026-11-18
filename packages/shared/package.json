@@ -50,8 +50,6 @@
     },
     "./css/styles.css": "./dist/css/styles.css",
     "./css/styles": "./dist/css/styles.css",
-    "./examples": "./dist/examples/index.ts",
-    "./examples/*": "./dist/examples/*.tsx",
     "./tsconfig.base.json": "./tsconfig.base.json",
     "./tsconfig.paths.json": "./tsconfig.paths.json",
     "./package.json": "./package.json"
@@ -61,9 +59,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
-    "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run build:generateCodeExamples && npm run typecheck && npm run build:bundle",
+    "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run typecheck && npm run build:bundle",
     "build:generateTagNames": "tsx scripts/generateTagNames.ts",
-    "build:generateCodeExamples": "tsx scripts/generateCodeExamples.ts",
     "build:generateChunkNames": "tsx scripts/generateTagNamesWithChunk.ts",
     "build:generatePartialNames": "tsx scripts/generatePartialNames.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js && chmod +x bin/prepareVRTSnapshots.js",
@@ -72,9 +69,6 @@
     "test": "npm run test:unit",
     "test:unit": "npm run typecheck:tests && vitest --config tests/unit/config/vitest.config.ts && npm run test:unit --workspace=@porsche-design-system/testing",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
-  },
-  "dependencies": {
-    "react": "^19.3.1"
   },
   "devDependencies": {
     "@porsche-design-system/testing": "0.0.0",
@@ -109,12 +103,6 @@
       ],
       "models": [
         "./dist/models/index.d.ts"
-      ],
-      "examples": [
-        "./dist/examples/index.ts"
-      ],
-      "examples/*": [
-        "./dist/examples/*.tsx"
       ]
     }
   }

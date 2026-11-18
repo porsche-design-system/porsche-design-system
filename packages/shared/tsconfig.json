@@ -5,8 +5,8 @@
     "verbatimModuleSyntax": false,
     "moduleResolution": "node",
     "ignoreDeprecations": "6.0",
-    "types": ["node"],
+    "types": ["node"]
   },
   "include": ["./src", "./scripts"],
-  "exclude": ["**/*.spec.ts", "src/examples"] // generated, imports the framework wrappers built later; the gated bundler cannot resolve them
+  "exclude": ["**/*.spec.ts"]
 }

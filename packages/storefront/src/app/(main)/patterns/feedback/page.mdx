@@ -1,5 +1,7 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { Example } from '@/components/mdx/examples/Example';
+import inline from '@porsche-design-system/examples/patterns/feedback/inline';
+import dialog from '@porsche-design-system/examples/patterns/feedback/dialog';
 
 export const metadata = {
   title: 'Feedback - Patterns',
@@ -17,8 +19,8 @@ action only after a rating is chosen. Use it whenever you want to learn how user
 
 ## Inline
 
-<ExampleViewer example="patterns/feedback/inline" />
+<Example example={inline} />
 
 ## Dialog
 
-<ExampleViewer example="patterns/feedback/dialog" />
+<Example example={dialog} />

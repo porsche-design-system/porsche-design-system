@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { popoverMeta } from '@/app/(main)/components/popover/popover.meta';
+import popoverDefault from '@porsche-design-system/examples/components/popover/default';
 
 export const metadata = {
   title: 'Popover: Configurator - Components',
@@ -12,10 +13,4 @@ export const metadata = {
 
 <popoverMeta.introduction />
 
-<Configurator
-  tagName="p-popover"
-  story={popoverMeta.configurator.story}
-  slotStories={popoverMeta.configurator.slotStories}
-  controlledStory={popoverMeta.configurator.controlledStory}
-  controlledSlotStories={popoverMeta.configurator.controlledSlotStories}
-/>
+<Configurator example={popoverDefault} />

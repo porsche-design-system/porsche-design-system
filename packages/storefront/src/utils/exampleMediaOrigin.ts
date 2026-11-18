@@ -1,5 +1,3 @@
-import type { ExampleProject } from '@porsche-design-system/examples';
-
 /**
  * The project of an example as StackBlitz needs it: with the origin in front of every media path.
  *
@@ -11,7 +9,7 @@ import type { ExampleProject } from '@porsche-design-system/examples';
  * Kept apart from `examples.ts`, which imports every example, so a client component can use it: `mediaPath` is the one
  * of this deployment, slug included – see `getExampleMediaPath()`.
  */
-export const withMediaOrigin = <Project extends ExampleProject>(
+export const withMediaOrigin = <Project extends { files: Record<string, string> }>(
   project: Project,
   origin: string,
   mediaPath: string

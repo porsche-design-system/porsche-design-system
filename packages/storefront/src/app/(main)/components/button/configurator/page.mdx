@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { buttonMeta } from '@/app/(main)/components/button/button.meta';
+import buttonDefault from '@porsche-design-system/examples/components/button/default';
 
 export const metadata = {
   title: 'Button: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <buttonMeta.introduction />
 
-<Configurator tagName="p-button" story={buttonMeta.configurator.story} />
+<Configurator example={buttonDefault} />

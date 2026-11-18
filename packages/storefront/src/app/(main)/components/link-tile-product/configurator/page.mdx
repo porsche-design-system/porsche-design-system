@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { linkTileProductMeta } from '@/app/(main)/components/link-tile-product/link-tile-product.meta';
+import linkTileProductDefault from '@porsche-design-system/examples/components/link-tile-product/default';
 
 export const metadata = {
   title: 'Link Tile Product: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <linkTileProductMeta.introduction />
 
-<Configurator tagName="p-link-tile-product" story={linkTileProductMeta.configurator.story} />
+<Configurator example={linkTileProductDefault} />
