@@ -33,6 +33,7 @@ const Page = () => (
         <p-heading tag="h2" size="md">
           718
         </p-heading>
+        <Comment>{tileComments.modelImage}</Comment>
         <Comment>
           Its width is a share of the tile, so the vehicle keeps its scale at every size, and the room beside it is the
           space it moves into.
@@ -44,7 +45,7 @@ const Page = () => (
         <img
           class="self-center w-4/5 motion-safe:transition-[translate] duration-md ease-in-out motion-safe:group-hover:translate-x-static-md motion-safe:rtl:group-hover:-translate-x-static-md"
           src="/examples/media/718-gt4-rs-side-view.webp"
-          alt="Porsche 718"
+          alt=""
           width="1000"
           height="313"
         />
