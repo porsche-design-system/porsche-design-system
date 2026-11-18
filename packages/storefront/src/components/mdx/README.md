@@ -33,10 +33,11 @@ The Markdown column is the output planned in the design. _Proposed_ marks compon
 
 ### `structure/` Page structure
 
-| Component         | Purpose                                                           | Markdown                                                | Storefront dependencies          |
-| ----------------- | ----------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------- |
-| `TableOfContents` | Links to the `##` sections of a page.                             | Nothing; the headings provide the structure.            | `DocsLink`, `getHeadingAnchorId` |
-| `ComponentStatus` | Marks a deprecated or experimental component next to its heading. | `**Status:** …`, only when the component is not stable. | –                                |
+| Component           | Purpose                                                                           | Markdown                                                | Storefront dependencies          |
+| ------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------- |
+| `TableOfContents`   | Links to the `##` sections of a page, and to the `SubsectionHeading`s below them. | Nothing; the headings provide the structure.            | `DocsLink`, `getHeadingAnchorId` |
+| `SubsectionHeading` | A `###` heading with an anchor, for a table of contents to link to.               | `###`.                                                  | –                                |
+| `ComponentStatus`   | Marks a deprecated or experimental component next to its heading.                 | `**Status:** …`, only when the component is not stable. | –                                |
 
 ### `content/` Building blocks for prose
 

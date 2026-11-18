@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, isOpen, setupExamplePage } from '../../helpers/index.ts';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, isOpen, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/tile/disclosure` – a feature whose details an accordion reveals on demand.
@@ -8,13 +8,10 @@ import { collectPageErrors, getExampleUrl, isOpen, setupExamplePage } from '../.
 const url = getExampleUrl('patterns-tile-disclosure');
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   // The site name is fixed; the part before it is what the page sets, and no page may ship without one.
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
 });
 
 test('reveals and hides the details from the summary of the accordion', async ({ page }) => {

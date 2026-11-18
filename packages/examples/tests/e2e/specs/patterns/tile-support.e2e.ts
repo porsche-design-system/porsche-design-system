@@ -1,5 +1,6 @@
-import { expect, type Page, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
+import type { Page } from '@playwright/test';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/tile/support` – a tile holding three smaller ones, each opening one way to reach a person.
@@ -23,13 +24,10 @@ const getBoxes = (page: Page) =>
   );
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   // The site name is fixed; the part before it is what the page sets, and no page may ship without one.
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
 });
 
 test('opens three pages from inside one tile that opens none', async ({ page }) => {

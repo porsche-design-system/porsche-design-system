@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
+import { expect, test } from '@porsche-design-system/testing/playwright';
+import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
  * `src/patterns/tile/vehicle-listing` – a vehicle of a search result, with a popover, a link to its technical data and
@@ -9,13 +9,10 @@ import { collectPageErrors, getExampleUrl, setupExamplePage } from '../../helper
 const url = getExampleUrl('patterns-tile-vehicle-listing');
 
 test('loads without reporting an error', async ({ page }) => {
-  const errors = collectPageErrors(page);
-
   await setupExamplePage(page, url);
 
   // The site name is fixed; the part before it is what the page sets, and no page may ship without one.
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
-  expect(errors).toEqual([]);
 });
 
 test('reaches every control of the tile, none of them covered by another', async ({ page }) => {
