@@ -21,7 +21,7 @@ const Page = () => (
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>{tileComments.ownHeight}</Comment>
-      <div class="col-basic self-start group relative isolate flex flex-col items-center justify-center gap-fluid-md aspect-16/9 rounded-3xl bg-surface p-fluid-lg text-center [--p-link-cover-radius:var(--radius-3xl)]">
+      <div class="col-basic self-start group relative isolate flex flex-col items-center justify-center gap-fluid-md aspect-16/9 rounded-3xl bg-surface p-fluid-lg [--p-link-cover-radius:var(--radius-3xl)]">
         <Comment>
           Signature and vehicle share one cell, and the vehicle is placed in front of the signature. The image keeps
           free room above the roof, so the vehicle overlaps the lower part of the signature without being moved. The
@@ -47,7 +47,7 @@ const Page = () => (
             height="459"
           />
         </div>
-        <div class="flex flex-col gap-static-xs">
+        <div class="grid gap-static-xs">
           <p-heading tag="h2" size="md" align="center">
             The iconic sports car with rear engine
           </p-heading>
@@ -58,7 +58,7 @@ const Page = () => (
         <Comment>
           One below the other and as wide as the tile on a phone, side by side from the small breakpoint on.
         </Comment>
-        <div class="flex flex-col w-full gap-static-md sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+        <div class="flex flex-col w-full gap-static-md sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
           <Comment>{tileComments.coverLink}</Comment>
           <p-link variant="primary" cover={true}>
             <a href="#">Discover 911</a>
