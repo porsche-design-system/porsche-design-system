@@ -17,6 +17,7 @@ export const tileComments = {
   moodImage: 'Decorative, it sets the mood and carries no information the text does not give.',
   modelImage: 'Decorative, since the tile already names the model.',
   fill: 'Takes the height left in the tile without increasing it.',
+  mediaPadding: 'Its padding keeps the distance to the heading, and is the room the zooming image moves into.',
   ownHeight:
     'Aligned to the top of its row instead of stretched to it, so content needing more room than the aspect ratio provides extends the tile in Safari as well.',
   signatureWidth:

@@ -1,7 +1,8 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { Comment } from '../../../_partials/Comment.tsx';
-import { tileComments } from '../../../_partials/tile/comments.ts';
+import { CategoryTile } from '../../../_partials/tile/CategoryTile.tsx';
+import { TileImage } from '../../../_partials/tile/TileImage.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -19,40 +20,21 @@ export const meta: ExampleMeta = {
 const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
-      <Comment>{tileComments.coverTile}</Comment>
-      <Comment>{tileComments.ownHeight}</Comment>
-      <div class="col-basic self-start justify-self-center w-full max-w-[400px] group relative isolate flex flex-col aspect-3/4 rounded-3xl bg-surface pt-fluid-md [--p-link-cover-radius:var(--radius-3xl)]">
-        <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
-          <p-heading tag="h2" size="md">
-            Vehicle Accessories
-          </p-heading>
-          <Comment>{tileComments.coverLink}</Comment>
-          <p-link
-            class="ms-auto"
-            variant="secondary"
-            icon="arrow-up-right"
-            hide-label="true"
-            compact="true"
-            cover={true}
-          >
-            <a href="#">Vehicle Accessories</a>
-          </p-link>
-        </div>
-        <Comment>{tileComments.fill}</Comment>
-        <Comment>{tileComments.clip}</Comment>
-        <Comment>Its padding keeps the distance to the heading, and is the room the zooming image moves into.</Comment>
-        <div class="flex-1 min-h-0 overflow-clip rounded-b-[inherit] pt-fluid-lg">
-          <Comment>The image is cropped at the bottom, so the lower edge of the tile cuts the product.</Comment>
-          <Comment>{tileComments.zoom}</Comment>
-          <img
-            class="size-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-            src="/examples/media/wall-charger.webp"
-            alt="A Porsche wall charger"
-            width="595"
-            height="800"
-          />
-        </div>
-      </div>
+      <CategoryTile
+        class="col-basic justify-self-center w-full max-w-[400px]"
+        heading="Vehicle Accessories"
+        href="#"
+        mediaPadding="pt-fluid-lg"
+      >
+        <Comment>The image is cropped at the bottom, so the lower edge of the tile cuts the product.</Comment>
+        <TileImage
+          class="size-full object-contain"
+          src="/examples/media/wall-charger.webp"
+          alt="A Porsche wall charger"
+          width={595}
+          height={800}
+        />
+      </CategoryTile>
     </main>
   </PatternPage>
 );
