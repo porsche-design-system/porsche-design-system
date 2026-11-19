@@ -63,7 +63,7 @@ const Page = () => (
           width="960"
           height="1080"
         />
-        <div class="flex flex-col items-center gap-static-xs text-center">
+        <div class="grid justify-items-center gap-static-xs">
           <Comment>{tileComments.action}</Comment>
           <Comment>
             Native radio buttons, selectable by mouse and keyboard without any script. Each provides a target size of 24
