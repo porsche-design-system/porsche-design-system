@@ -1,6 +1,6 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { EquipmentStackedTile } from '../../../_partials/tile/EquipmentStackedTile.tsx';
+import { EquipmentTile } from '../../../_partials/tile/EquipmentTile.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -19,7 +19,8 @@ export const meta: ExampleMeta = {
 const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
-      <EquipmentStackedTile
+      <EquipmentTile
+        variant="stacked"
         class="col-basic justify-self-center w-full max-w-[560px]"
         heading="Burmester® High-End Surround Sound.¹"
         text="Twenty-one loudspeakers, each driven by its own amplifier channel, are placed and tuned to the acoustics of this interior. The result is a sound image that stays precise at every speed, from the first row to the last."
