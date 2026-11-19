@@ -559,6 +559,18 @@ describe('renderPage()', () => {
     );
   });
 
+  it('should give a reason once per page, where it first applies', () => {
+    const tile = `<${commentTag}>Why the tile is built this way.</${commentTag}><li></li>`;
+    const other = `<${commentTag}>Another reason.</${commentTag}><p></p>`;
+
+    // A page showing a partial more than once repeats its markup, not the reasons for it – and a later page starts
+    // anew, since every page is read on its own.
+    expect(renderComments(`<ul>${tile}${tile}${other}${tile}</ul>`)).toBe(
+      '<ul><!-- Why the tile is built this way. --><li></li><li></li><!-- Another reason. --><p></p><li></li></ul>'
+    );
+    expect(renderComments(tile)).toBe('<!-- Why the tile is built this way. --><li></li>');
+  });
+
   it('should break a comment exceeding the line length into lines of its own, keeping its indentation', () => {
     const text = Array.from({ length: 30 }, (_, index) => `word${index}`).join(' ');
     const wrapped = wrapComments(`    <!-- ${text} -->\n    <!-- Short. -->`);

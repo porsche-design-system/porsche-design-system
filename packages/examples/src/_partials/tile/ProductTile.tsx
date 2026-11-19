@@ -86,9 +86,9 @@ export const ProductTile = ({
       <Comment>{tileComments.fill}</Comment>
       <ZoomImage class="flex-1 min-h-0 object-contain" alt="" {...image} />
       <div class="grid justify-items-center gap-static-xs">
-        <Comment>{tileComments.action}</Comment>
         <Comment>
-          Native radio buttons, selectable by mouse and keyboard without any script. Each provides a target size of 24
+          Like the wishlist button, the colors stay actions of their own above the link spanning the tile. They are
+          native radio buttons, selectable by mouse and keyboard without any script. Each provides a target size of 24
           pixels around its swatch and a contour that keeps a dark color apart from a dark surface. High contrast mode
           replaces the colors, so the chosen swatch is filled with the system color of a selection.
         </Comment>

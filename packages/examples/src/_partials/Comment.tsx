@@ -13,6 +13,9 @@ type CommentProps = {
  * skill – so the reason for a technique is read where the markup is copied. Write why, not what: the classes say
  * what. Tailwind scans the `index.html`, comments included, so a comment must not contain a word that reads like a
  * utility, e.g. a class name – a unit test compiles every comment of every page to keep them free of them.
+ *
+ * A page gives a reason once: a comment whose text it has rendered before is left out, so a partial rendered several
+ * times explains itself where it first stands.
  */
 export const Comment = ({ children }: CommentProps) => {
   assertCommentText(children);

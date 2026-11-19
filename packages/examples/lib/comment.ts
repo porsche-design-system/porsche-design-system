@@ -23,9 +23,27 @@ export const assertCommentText = (text: string): void => {
   }
 };
 
-/** Turns every comment element rendered by `Comment` into an HTML comment. */
-export const renderComments = (html: string): string =>
-  html.replace(REGEX_COMMENT_ELEMENT, (_match, text: string) => `<!-- ${text.trim()} -->`);
+/**
+ * Turns every comment element rendered by `Comment` into an HTML comment – the first time its text occurs on the page.
+ *
+ * A page showing a partial more than once would otherwise repeat every reason with it, three tiles saying thrice why
+ * they are built the way they are. So a reason is given where it first applies, and the markup repeating it stands
+ * without: it is read in the code view of the page from top to bottom, where the first occurrence has explained it.
+ */
+export const renderComments = (html: string): string => {
+  const given = new Set<string>();
+
+  return html.replace(REGEX_COMMENT_ELEMENT, (_match, text: string) => {
+    const reason = text.trim().replace(/\s+/g, ' ');
+
+    if (given.has(reason)) {
+      return '';
+    }
+    given.add(reason);
+
+    return `<!-- ${text.trim()} -->`;
+  });
+};
 
 /** The `printWidth` of `renderPage()`, which Prettier does not apply to the text of a comment. */
 const maxLineLength = 120;

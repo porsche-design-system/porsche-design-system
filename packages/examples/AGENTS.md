@@ -421,10 +421,13 @@ reaches through interaction**.
   `renderComments()` of [`lib/comment.ts`](lib/comment.ts) turns into `<!-- … -->` before formatting, and
   `wrapComments()` breaks a comment longer than the line length into lines of its own afterwards. Write why, not what –
   the classes say what – and word a technique several patterns share once, like
-  [`tile/blocks/comments.ts`](src/_partials/tile/blocks/comments.ts): each pattern is copied on its own, so it repeats the comment. A
-  comment must not contain `--`, `<`, `>` or `&` (the partial throws), nor a word Tailwind reads as a utility – no class
-  names, and none of `grow`, `block`, `hidden`, `relative`, `visible`, `outline`, `ring`, … A unit test compiles the
-  comments of every page with Tailwind and fails on any utility they produce.
+  [`tile/blocks/comments.ts`](src/_partials/tile/blocks/comments.ts): each pattern is copied on its own, so it repeats
+  the comment. Within a page a reason is given once: `renderComments()` drops a comment whose text the page has given
+  before, so a partial rendered three times explains itself where it first stands and its markup repeats without – give
+  a second element its own words if it needs any. A comment must not contain `--`, `<`, `>` or `&` (the partial throws),
+  nor a word Tailwind reads as a utility – no class names, and none of `grow`, `block`, `hidden`, `relative`, `visible`,
+  `outline`, `ring`, … A unit test compiles the comments of every page with Tailwind and fails on any utility they
+  produce.
 - **Every page opens with `exampleNote`.** [`renderPage()`](lib/jsx.ts) writes it between the doctype and `<html>`, in
   dev and build alike: a comment saying the example is written with web platform technologies but relies on Tailwind CSS
   and with it on a bundler – the wording of the setup popover of the storefront's `WebsiteViewer` – and is built on
