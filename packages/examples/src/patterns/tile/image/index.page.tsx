@@ -6,7 +6,7 @@ import { ImageTile } from '../../../_partials/tile/ImageTile.tsx';
 export const meta: ExampleMeta = {
   title: 'Tile: Image',
   description:
-    'An image tile links to a category with a mood image, e.g. a model range on porsche.com. The image covers the whole tile, and a dark gradient at the bottom ensures the legibility of the heading next to an icon-only link. The link stretches its clickable area over the tile, and on hover the image zooms in, unless the user prefers reduced motion.',
+    'An image tile links to a category with a mood image, e.g. a model range on porsche.com. The image covers the whole tile, an icon-only link sits in its upper corner, and a dark gradient at the bottom ensures the legibility of the heading. The link stretches its clickable area over the tile, and on hover the image zooms in, unless the user prefers reduced motion.',
   colorSchemes: ['light', 'dark'],
 };
 
