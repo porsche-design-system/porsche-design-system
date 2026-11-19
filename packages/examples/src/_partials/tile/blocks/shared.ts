@@ -1,11 +1,15 @@
 import type { JSX } from 'preact';
 
-/** What every tile partial takes from the page it is rendered in. */
-export type TileProps = {
+/** Where a tile sits on the page it is rendered in, which every tile partial takes from that page. */
+export type TilePlacement = {
   /** The element of the tile – a list item where the page lists its tiles. */
   as?: 'div' | 'li';
   /** Where the tile sits in the layout of the page: its column, its alignment, its width limit, its span. */
   class?: string;
+};
+
+/** What a tile with an aspect ratio takes from its page – a tile sized by its content takes its placement only. */
+export type TileProps = TilePlacement & {
   /**
    * The aspect ratio utilities of the tile. They replace the ratio the tile is designed in rather than adding to it,
    * since two ratios on one element would leave the choice to the order of the stylesheet.
