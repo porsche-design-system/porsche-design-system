@@ -41,8 +41,8 @@ const Page = () => (
         />
 
         <Comment>{tileComments.gradient}</Comment>
-        <div class="self-end flex flex-col items-center gap-fluid-md px-fluid-lg pt-fluid-2xl pb-fluid-lg rounded-b-[inherit] bg-fade-to-t">
-          <div class="flex flex-col items-center gap-static-sm text-center">
+        <div class="self-end grid justify-items-center gap-fluid-md px-fluid-lg pt-fluid-2xl pb-fluid-lg rounded-b-[inherit] bg-fade-to-t">
+          <div class="grid justify-items-center gap-static-sm">
             <p-heading tag="h2" size="xl" align="center">
               Need further help?
             </p-heading>
@@ -83,7 +83,7 @@ const Page = () => (
                 >
                   <a href="#">Contact Porsche</a>
                 </p-link>
-                <div class="flex grow flex-col gap-static-xs">
+                <div class="grid grow gap-static-xs">
                   <p-heading tag="h3" size="sm">
                     Contact Porsche
                   </p-heading>
@@ -108,7 +108,7 @@ const Page = () => (
                 >
                   <a href="#">Find your Dealer</a>
                 </p-link>
-                <div class="flex grow flex-col gap-static-xs">
+                <div class="grid grow gap-static-xs">
                   <p-heading tag="h3" size="sm">
                     Find your Dealer
                   </p-heading>
@@ -133,7 +133,7 @@ const Page = () => (
                 >
                   <a href="#">Call Roadside Assistance</a>
                 </p-link>
-                <div class="flex grow flex-col gap-static-xs">
+                <div class="grid grow gap-static-xs">
                   <p-heading tag="h3" size="sm">
                     Call Roadside Assistance
                   </p-heading>

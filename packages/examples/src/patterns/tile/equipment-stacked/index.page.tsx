@@ -22,7 +22,7 @@ const Page = () => (
         The radius of the panel plus the padding around it make the radius of the tile, so the two curves stay parallel.
         Nothing in the tile is interactive, so no focus indicator has to stay outside the frame.
       </Comment>
-      <div class="col-basic justify-self-center w-full max-w-[560px] flex flex-col gap-static-sm rounded-3xl bg-surface p-static-sm">
+      <div class="col-basic justify-self-center w-full max-w-[560px] grid gap-static-sm rounded-3xl bg-surface p-static-sm">
         <Comment>The photograph is cropped to the panel, so it follows its corners.</Comment>
         <div class="aspect-9/4 overflow-clip rounded-2xl">
           <img
@@ -34,7 +34,7 @@ const Page = () => (
           />
         </div>
 
-        <div class="flex flex-col gap-static-md p-fluid-md">
+        <div class="grid gap-static-md p-fluid-md">
           <p-heading tag="h2" size="lg">
             Burmester® High-End Surround Sound.¹
           </p-heading>

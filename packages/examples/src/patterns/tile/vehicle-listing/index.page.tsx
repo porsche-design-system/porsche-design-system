@@ -37,7 +37,7 @@ const Page = () => (
         The tile is no link of its own. It carries four controls – the popover, the technical data and the two actions –
         and a link covering the tile would lie over all of them. The heading names the vehicle, the actions open it.
       </Comment>
-      <div class="col-basic justify-self-center w-full max-w-[400px] flex flex-col gap-fluid-md rounded-3xl bg-canvas p-fluid-md">
+      <div class="col-basic justify-self-center w-full max-w-[400px] grid gap-fluid-md rounded-3xl bg-canvas p-fluid-md">
         <Comment>{tileComments.modelImage}</Comment>
         <Comment>Cut out against the tile, so no box has to be clipped around it.</Comment>
         <img
@@ -47,8 +47,8 @@ const Page = () => (
           width="1000"
           height="313"
         />
-        <div class="flex flex-col gap-fluid-sm">
-          <div class="flex flex-col gap-static-xs">
+        <div class="grid gap-fluid-sm">
+          <div class="grid gap-static-xs">
             <p-heading tag="h2" size="lg">
               718 Cayman GTS 4.0
             </p-heading>
@@ -99,8 +99,8 @@ const Page = () => (
           One action below the other, whatever the width: they are of equal weight to the reader, and a row would make
           the first look like the lesser half of the second.
         </Comment>
-        <div class="flex flex-col gap-static-md">
-          <p-link-pure class="self-center" icon="none" underline={true}>
+        <div class="grid gap-static-md">
+          <p-link-pure class="justify-self-center" icon="none" underline={true}>
             <a href="#" aria-label="Technical data and standard equipment of the 718 Cayman GTS 4.0">
               Technical data and standard equipment
             </a>

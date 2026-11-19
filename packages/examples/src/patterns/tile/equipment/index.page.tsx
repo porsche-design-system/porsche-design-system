@@ -50,7 +50,7 @@ const Page = () => (
           action sits at the lower edge, however short the description is.
         </Comment>
         <div class="flex grow flex-col justify-between gap-fluid-md p-fluid-md">
-          <div class="flex flex-col gap-static-md">
+          <div class="grid gap-static-md">
             <p-heading tag="h2" size="sm">
               Perforated Nappa Leather
             </p-heading>
