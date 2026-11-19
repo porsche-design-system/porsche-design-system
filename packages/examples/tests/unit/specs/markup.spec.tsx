@@ -433,6 +433,32 @@ describe.each(examplePages)('%s page', (_name, Page) => {
     expect(ids.filter((id, index) => ids.indexOf(id) !== index)).toEqual([]);
   });
 
+  it('should name the radio buttons of every group apart from those of any other', async () => {
+    // Radio buttons are grouped by their name across the whole page, not by the element around them: two groups
+    // sharing a name are one to the browser, so choosing in one clears the other. A partial rendering a group takes
+    // its name from the page for that reason – `colorGroup` of `ProductTile` – and this fails once a page passes the
+    // same one twice.
+    const html = await renderPage(Page);
+    // Tags are matched attribute by attribute, so a `>` inside a quoted value – a Tailwind variant – does not end one.
+    const tags = Array.from(html.matchAll(/<[a-z][\w-]*(?:\s+[^\s=>]+(?:="[^"]*")?)*\s*\/?>/g), ([tag]) => tag);
+    const groupsByName = new Map<string, Set<number>>();
+    let group = 0;
+
+    for (const tag of tags) {
+      if (/\srole="radiogroup"/.test(tag)) {
+        group++;
+      }
+
+      const name = /\stype="radio"/.test(tag) ? tag.match(/\sname="([^"]*)"/)?.[1] : undefined;
+
+      if (name !== undefined) {
+        groupsByName.set(name, (groupsByName.get(name) ?? new Set<number>()).add(group));
+      }
+    }
+
+    expect([...groupsByName].filter(([, groups]) => groups.size > 1).map(([name]) => name)).toEqual([]);
+  });
+
   it('should leave referencing the entry to the build, which moves every script into it', async () => {
     const html = await renderPage(Page);
 
