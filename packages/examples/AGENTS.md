@@ -476,13 +476,16 @@ reaches through interaction**.
   - `as` renders the tile as a list item where the page lists its tiles.
   - `aspect` **replaces** the ratio the tile is designed in, which is its default and the one the VRT captures. It is a
     prop of its own because two ratio utilities on one element leave the choice to the order of the stylesheet. A tile
-    sized by its content – equipment, equipment stacked, vehicle listing – has no ratio and takes none.
+    sized by its content – the equipment and the vehicle listing tile – has no ratio and takes none.
 
   The partial owns everything else: its layout, the alignment to the top of its row that goes with a ratio, and the
   comments explaining both, so they reach the markup wherever the tile is rendered. Content is props, and a page passes
   nothing but props: where the instances differ in how something is fitted rather than in content, the tile takes the
   classes and the reasons for them – `fit` and `fitComments` of `CategoryTile`, because every product is fitted
-  differently. Do not add a prop that switches a part of a tile on or off: a tile built differently is another tile.
+  differently. Do not add a prop that switches a part of a tile on or off: a tile built differently is another tile. A
+  tile designed in two arrangements is one partial with a `variant`, which decides everything the arrangement entails –
+  `EquipmentTile` renders both equipment patterns, and its variants differ in classes rather than in markup, so the two
+  cannot drift apart.
 
   **A tile follows the width it is given, not the one of the window.** What changes with the room – the ratio of the
   call to action tile, the panels of the equipment tile, the row of the support tile – is a container query, so the tile
