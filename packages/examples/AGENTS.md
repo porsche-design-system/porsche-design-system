@@ -117,9 +117,9 @@ src/
 │   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
 │   ├── tile/                     # the tiles a page renders – every `*Tile.tsx` here, and nothing else
 │   │   ├── CategoryTile.tsx, …   # one partial per tile, placed by its page
-│   │   ├── comments.ts           # the comments the tile patterns share, worded once
 │   │   └── blocks/               # what the tiles are built from, never rendered by a page: Media, Gradient,
-│   │                             # Anchor, ZoomImage, ModelStage – and shared.ts with TileProps and the helpers
+│   │                             # Anchor, ZoomImage, CoverImage, ModelStage – comments.ts with the comments the
+│   │                             # tiles share, worded once, and shared.ts with TileProps and the helpers
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   ├── footer/                   # Footer (`extended`) and SimpleFooter, sharing the legal information they close with
@@ -136,7 +136,7 @@ src/
 │   ├── header/stacked/           # Header in its `stacked` variant
 │   ├── footer/extended/          # Footer of a site: delivery country, navigation, social media, legal information
 │   ├── footer/simple/            # SimpleFooter: the legal information only, for a page that stands on its own
-│   ├── tile/                     # index.page.tsx each – the use cases of a tile, most rendered by their partial
+│   ├── tile/                     # index.page.tsx each – the use cases of a tile, each rendered by its partial
 │   │   ├── model-selection/      # … one folder per use case: anchor or covering `p-link`, hover via `group-hover:`
 │   │   └── …                     # category, video, product, …; light and dark, tile fixes its scheme only if needed
 │   ├── forms/                    # index.page.tsx each – combobox patterns built on `p-input-search` and `p-popover`
@@ -421,7 +421,7 @@ reaches through interaction**.
   `renderComments()` of [`lib/comment.ts`](lib/comment.ts) turns into `<!-- … -->` before formatting, and
   `wrapComments()` breaks a comment longer than the line length into lines of its own afterwards. Write why, not what –
   the classes say what – and word a technique several patterns share once, like
-  [`tile/comments.ts`](src/_partials/tile/comments.ts): each pattern is copied on its own, so it repeats the comment. A
+  [`tile/blocks/comments.ts`](src/_partials/tile/blocks/comments.ts): each pattern is copied on its own, so it repeats the comment. A
   comment must not contain `--`, `<`, `>` or `&` (the partial throws), nor a word Tailwind reads as a utility – no class
   names, and none of `grow`, `block`, `hidden`, `relative`, `visible`, `outline`, `ring`, … A unit test compiles the
   comments of every page with Tailwind and fails on any utility they produce.
@@ -468,14 +468,15 @@ reaches through interaction**.
   (`_partials/header/`), driven by the `navItems` of `MainNav` and the `metaActionItems` of `MetaActions`. If two
   variants need the same block, extract the block; do not paste the markup a second time, or one variant silently drifts
   from the other.
-- **A tile is a partial, and its page only places it.** A tile shown more than once – in an arrangement such as
-  `category-grid`, or in a template – is rendered by its partial in `_partials/tile/` each time, never copied. Every
-  tile partial takes the `TileProps` of [`tile/blocks/shared.ts`](src/_partials/tile/blocks/shared.ts) besides its
-  content:
+- **A tile is a partial, and its page only places it.** Every tile pattern renders its tile through a partial in
+  `_partials/tile/`, and so does a page showing a tile more than once – an arrangement such as `category-grid`, or a
+  template – never a copy. Besides its content, a tile partial takes the placement of
+  [`tile/blocks/shared.ts`](src/_partials/tile/blocks/shared.ts) from its page:
   - `class` is the placement – column, alignment, width limit, span – and belongs to the page.
-  - `aspect` **replaces** the ratio the tile is designed in, which is its default and the one the VRT captures. It is a
-    prop of its own because two ratio utilities on one element leave the choice to the order of the stylesheet.
   - `as` renders the tile as a list item where the page lists its tiles.
+  - `aspect` **replaces** the ratio the tile is designed in, which is its default and the one the VRT captures. It is a
+    prop of its own because two ratio utilities on one element leave the choice to the order of the stylesheet. A tile
+    sized by its content – equipment, equipment stacked, vehicle listing – has no ratio and takes none.
 
   The partial owns everything else: its layout, the alignment to the top of its row that goes with a ratio, and the
   comments explaining both, so they reach the markup wherever the tile is rendered. Content is props, and a page passes
@@ -483,14 +484,18 @@ reaches through interaction**.
   classes and the reasons for them – `fit` and `fitComments` of `CategoryTile`, because every product is fitted
   differently. Do not add a prop that switches a part of a tile on or off: a tile built differently is another tile.
 
+  **A tile follows the width it is given, not the one of the window.** What changes with the room – the ratio of the
+  call to action tile, the panels of the equipment tile, the row of the support tile – is a container query, so the tile
+  fits a narrow column of a wide page. Where the tile itself is what changes, its placement goes to a wrapper that is
+  the container.
+
   **What a page may render lies directly in `_partials/tile/` and is named `*Tile`; what lies in `blocks/` is for the
-  tiles alone.** The blocks (`Media`, `Gradient`, `Anchor`, `ZoomImage`, `ModelStage`) are what several tiles share, and
-  a page composing them would build a tile of its own again – a unit test fails on a file outside the folder importing
-  one, and on a file directly in the folder that is not named like a tile. Two tiles cannot be repeated freely:
-  `VideoTile` looks its video up by id, so there is one per page, and `ProductTile` needs a `colorGroup` of its own per
-  product, which a unit test asserts. The tiles not reviewed yet – disclosure, equipment, equipment stacked, support and
-  vehicle listing – are still written out in their pages. Moving markup into a partial must not change it: compare
-  `dist/patterns/tile/**/index.html` before and after `npm run build:projects`.
+  tiles alone.** The blocks (`Media`, `Gradient`, `Anchor`, `ZoomImage`, `CoverImage`, `ModelStage`) are what several
+  tiles share, and a page composing them would build a tile of its own again – a unit test fails on a file outside the
+  folder importing one, and on a file directly in the folder that is not named like a tile. Two kinds of tile cannot be
+  repeated freely: `VideoTile` and `DisclosureTile` look their elements up by id, so there is one of each per page, and
+  `ProductTile` needs a `colorGroup` of its own per product, which a unit test asserts. Moving markup into a partial
+  must not change it: compare `dist/patterns/tile/**/index.html` before and after `npm run build:projects`.
 
 - **The navigation is rendered recursively.** A `NavItem` with `children` becomes a `p-drilldown-item` (plus a leading
   entry pointing at its own page, since a level is not a link), one without becomes a `p-drilldown-link`. Both are valid
