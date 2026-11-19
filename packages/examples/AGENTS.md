@@ -117,10 +117,9 @@ src/
 │   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
 │   ├── tile/                     # the tiles a page renders – every `*Tile.tsx` here, and nothing else
 │   │   ├── CategoryTile.tsx, …   # one partial per tile, placed by its page
-│   │   └── blocks/               # what the tiles are built from, never rendered by a page: Media, Gradient,
-│   │                             # GradientMedia, Anchor, ZoomImage, CoverImage, ModelStage – comments.ts with
-│   │                             # the comments the tiles share, worded once, and shared.ts with TileProps and
-│   │                             # the helpers
+│   │   └── blocks/               # what the tiles are built from, never rendered by a page: GradientMedia,
+│   │                             # Anchor, ZoomImage, ModelStage – comments.ts with the comments the tiles
+│   │                             # share, worded once, and shared.ts with TileProps and the helpers
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   ├── footer/                   # Footer (`extended`) and SimpleFooter, sharing the legal information they close with
@@ -495,14 +494,20 @@ reaches through interaction**.
   call to action tile, the panels of the equipment tile – is a container query, so the tile fits a narrow column of a
   wide page. Where the tile itself is what changes, its placement goes to a wrapper that is the container.
 
+  **Text on an image or a video lies on the gradient of `GradientMedia`.** The tile has two rows,
+  `grid-rows-[minmax(0,1fr)_auto]`, its text box sits in the lower one, and the block spans both and adopts them. Its
+  gradient is twice as high as the text box, so the text lies in the dark half and keeps at least 4.5:1 on a white
+  image, however long it is. A gradient as high as the text box plus a fixed padding, which is what `p-link-tile` does,
+  leaves the first lines where it is almost transparent. The block clips the media and the gradient, never the tile:
+  that would cut off the focus indicator of a covering link and keep content from extending the tile.
+
   **What a page may render lies directly in `_partials/tile/` and is named `*Tile`; what lies in `blocks/` is for the
-  tiles alone.** The blocks (`Media`, `Gradient`, `GradientMedia`, `Anchor`, `ZoomImage`, `CoverImage`, `ModelStage`)
-  are what several tiles share, and a page composing them would build a tile of its own again – a unit test fails on a
-  file outside the folder importing one, and on a file directly in the folder that is not named like a tile. Two kinds
-  of tile cannot be repeated freely: `VideoTile` and `DisclosureTile` look their elements up by id, so there is one of
-  each per page, and `ProductTile` needs a `colorGroup` of its own per product, which a unit test asserts. Moving markup
-  into a partial must not change it: compare `dist/patterns/tile/**/index.html` before and after
-  `npm run build:projects`.
+  tiles alone.** The blocks (`GradientMedia`, `Anchor`, `ZoomImage`, `ModelStage`) are what several tiles share, and a
+  page composing them would build a tile of its own again – a unit test fails on a file outside the folder importing
+  one, and on a file directly in the folder that is not named like a tile. Two kinds of tile cannot be repeated freely:
+  `VideoTile` and `DisclosureTile` look their elements up by id, so there is one of each per page, and `ProductTile`
+  needs a `colorGroup` of its own per product, which a unit test asserts. Moving markup into a partial must not change
+  it: compare `dist/patterns/tile/**/index.html` before and after `npm run build:projects`.
 
 - **The navigation is rendered recursively.** A `NavItem` with `children` becomes a `p-drilldown-item` (plus a leading
   entry pointing at its own page, since a level is not a link), one without becomes a `p-drilldown-link`. Both are valid

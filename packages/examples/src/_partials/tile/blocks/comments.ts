@@ -12,7 +12,6 @@ export const tileComments = {
   action: 'An independent action, placed above the link spanning the tile, so it stays clickable on its own.',
   zoom: 'Zooms in while the tile is hovered, unless the user prefers reduced motion.',
   clip: 'Clips the zooming media to the corners. The tile itself does not clip, since that would cut off the focus indicator of its link.',
-  gradient: 'Carries the gradient behind the text, so it grows with the text and keeps it legible on the image.',
   textRows: 'Two rows: the lower one is as high as the text, the upper one takes what is left of the tile.',
   mediaRows: 'Spans both rows of the tile and adopts them, so its gradient can follow the height of the text.',
   textGradient:
@@ -21,7 +20,6 @@ export const tileComments = {
   moodImage: 'Decorative, it sets the mood and carries no information the text does not give.',
   modelImage: 'Decorative, since the tile already names the model.',
   optionImage: 'Decorative, since the heading names the option.',
-  coverImage: 'Lies behind the content and covers the tile, following its corners itself.',
   fill: 'Takes the height left in the tile without increasing it.',
   mediaPadding: 'Its padding keeps the distance to the heading, and is the room the zooming image moves into.',
   ownHeight:
