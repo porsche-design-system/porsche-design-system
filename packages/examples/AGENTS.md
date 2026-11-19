@@ -491,9 +491,8 @@ reaches through interaction**.
   cannot drift apart.
 
   **A tile follows the width it is given, not the one of the window.** What changes with the room – the ratio of the
-  call to action tile, the panels of the equipment tile, the row of the support tile – is a container query, so the tile
-  fits a narrow column of a wide page. Where the tile itself is what changes, its placement goes to a wrapper that is
-  the container.
+  call to action tile, the panels of the equipment tile – is a container query, so the tile fits a narrow column of a
+  wide page. Where the tile itself is what changes, its placement goes to a wrapper that is the container.
 
   **What a page may render lies directly in `_partials/tile/` and is named `*Tile`; what lies in `blocks/` is for the
   tiles alone.** The blocks (`Media`, `Gradient`, `Anchor`, `ZoomImage`, `CoverImage`, `ModelStage`) are what several

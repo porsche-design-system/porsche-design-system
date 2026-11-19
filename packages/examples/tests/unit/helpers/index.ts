@@ -20,7 +20,6 @@ import TileModelNavigationPage from '../../../src/patterns/tile/model-navigation
 import TileModelSelectionPage from '../../../src/patterns/tile/model-selection/index.page.tsx';
 import TileModelTeaserPage from '../../../src/patterns/tile/model-teaser/index.page.tsx';
 import TileProductPage from '../../../src/patterns/tile/product/index.page.tsx';
-import TileSupportPage from '../../../src/patterns/tile/support/index.page.tsx';
 import TileVehicleListingPage from '../../../src/patterns/tile/vehicle-listing/index.page.tsx';
 import TileVideoPage from '../../../src/patterns/tile/video/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
@@ -83,18 +82,9 @@ export const patternPages = [
   ['patterns/tile/model-teaser', TileModelTeaserPage],
   ['patterns/tile/equipment', TileEquipmentPage],
   ['patterns/tile/equipment-stacked', TileEquipmentStackedPage],
-  ['patterns/tile/support', TileSupportPage],
 ] as const;
 
 /** The tile patterns – one use case of a tile each, built with HTML and Tailwind CSS. */
 export const tilePages = patternPages.filter(([path]) => path.startsWith('patterns/tile/'));
-
-/**
- * The tile patterns that show a single tile, which most of them are.
- *
- * What the others add is an arrangement of several tiles, so the rules that count once per page – the heading above
- * the tile, the one link that opens it – are counted per tile there instead and asserted on the page of their own.
- */
-export const singleTilePages = tilePages.filter(([path]) => !['patterns/tile/support'].includes(path));
 
 export const examplePages = [...templatePages, ...patternPages];

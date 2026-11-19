@@ -34,7 +34,6 @@ import {
   flattenNavItems,
   getOpeningTag,
   patternPages,
-  singleTilePages,
   tilePages,
 } from '../helpers/index.ts';
 
@@ -811,7 +810,7 @@ describe.each(tilePages)('%s tile pattern', (name, Page) => {
   });
 });
 
-describe.each(singleTilePages)('%s single tile pattern', (name, Page) => {
+describe.each(tilePages)('%s single tile pattern', (name, Page) => {
   /** `cover` of `p-link`, a boolean attribute – the formatted markup puts it on a line of its own. */
   const hasCoveringLink = (html: string): boolean => /<p-link[^>]*\scover[\s>]/.test(html);
 

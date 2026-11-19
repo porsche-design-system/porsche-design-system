@@ -31,7 +31,6 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
       'patterns/tile/equipment',
       'patterns/tile/equipment-stacked',
       'patterns/tile/disclosure',
-      'patterns/tile/support',
     ],
   ],
   ['/patterns/forms/', ['patterns/forms/search-combobox-option-list', 'patterns/forms/search-combobox-link-list']],
