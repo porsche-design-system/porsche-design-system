@@ -1,6 +1,6 @@
 import { Comment } from '../Comment.tsx';
+import { tileComments } from './blocks/comments.ts';
 import { joinClasses, type TileHeadingTag, type TileImageSource, type TilePlacement } from './blocks/shared.ts';
-import { tileComments } from './comments.ts';
 
 type EquipmentStackedTileProps = TilePlacement & {
   /** The option, which names the tile. */

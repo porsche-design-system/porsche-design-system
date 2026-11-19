@@ -1,6 +1,6 @@
 import type { JSX } from 'preact';
 import { Comment } from '../../Comment.tsx';
-import { tileComments } from '../comments.ts';
+import { tileComments } from './comments.ts';
 import { joinClasses, type TileImageSource } from './shared.ts';
 import { ZoomImage } from './ZoomImage.tsx';
 

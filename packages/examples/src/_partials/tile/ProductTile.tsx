@@ -1,8 +1,8 @@
 import { Comment } from '../Comment.tsx';
 import { Anchor } from './blocks/Anchor.tsx';
+import { tileComments } from './blocks/comments.ts';
 import { joinClasses, type TileImageSource, type TileProps } from './blocks/shared.ts';
 import { ZoomImage } from './blocks/ZoomImage.tsx';
-import { tileComments } from './comments.ts';
 
 type ProductColor = {
   /** The name of the color, its accessible name. */

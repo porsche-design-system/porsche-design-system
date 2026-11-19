@@ -1,9 +1,9 @@
 import { Fragment } from 'preact';
 import { Comment } from '../Comment.tsx';
 import { CoverImage } from './blocks/CoverImage.tsx';
+import { tileComments } from './blocks/comments.ts';
 import { Gradient } from './blocks/Gradient.tsx';
 import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
-import { tileComments } from './comments.ts';
 
 type SupportWay = {
   /** The way to reach a person, which names its tile and its link. */

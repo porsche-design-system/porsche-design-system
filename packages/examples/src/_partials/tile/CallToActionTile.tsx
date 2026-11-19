@@ -1,9 +1,9 @@
 import { Comment } from '../Comment.tsx';
+import { tileComments } from './blocks/comments.ts';
 import { Gradient } from './blocks/Gradient.tsx';
 import { Media } from './blocks/Media.tsx';
 import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
 import { ZoomImage } from './blocks/ZoomImage.tsx';
-import { tileComments } from './comments.ts';
 
 type CallToActionTileProps = TileProps & {
   heading: string;

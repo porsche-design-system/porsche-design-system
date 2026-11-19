@@ -1,6 +1,6 @@
 import type { ComponentChildren } from 'preact';
 import { Comment } from '../../Comment.tsx';
-import { tileComments } from '../comments.ts';
+import { tileComments } from './comments.ts';
 import { joinClasses } from './shared.ts';
 
 type GradientProps = {

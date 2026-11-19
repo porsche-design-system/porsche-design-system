@@ -1,8 +1,8 @@
 import { Comment } from '../Comment.tsx';
 import { Anchor } from './blocks/Anchor.tsx';
+import { tileComments } from './blocks/comments.ts';
 import { ModelStage, type TileModel } from './blocks/ModelStage.tsx';
 import { joinClasses, type TileImageSource, type TileProps } from './blocks/shared.ts';
-import { tileComments } from './comments.ts';
 
 type ModelSelectionTileProps = TileProps & {
   model: TileModel;

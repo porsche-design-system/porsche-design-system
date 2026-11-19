@@ -1,9 +1,9 @@
 import { Comment } from '../Comment.tsx';
 import { Script } from '../Script.tsx';
 import { CoverImage } from './blocks/CoverImage.tsx';
+import { tileComments } from './blocks/comments.ts';
 import { Gradient } from './blocks/Gradient.tsx';
 import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
-import { tileComments } from './comments.ts';
 
 type DisclosureTileProps = TileProps & {
   /** The subject of the tile, which is the summary of its accordion. */

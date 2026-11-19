@@ -1,7 +1,7 @@
 import { Comment } from '../Comment.tsx';
+import { tileComments } from './blocks/comments.ts';
 import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
 import { ZoomImage } from './blocks/ZoomImage.tsx';
-import { tileComments } from './comments.ts';
 
 type CategoryTileProps = TileProps & {
   /** The category, which names the tile and its link. */

@@ -1,7 +1,7 @@
 import { Comment } from '../Comment.tsx';
 import { Anchor } from './blocks/Anchor.tsx';
+import { tileComments } from './blocks/comments.ts';
 import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
-import { tileComments } from './comments.ts';
 
 type ModelNavigationTileProps = TileProps & {
   /** The model, which heads the tile and names its link. */

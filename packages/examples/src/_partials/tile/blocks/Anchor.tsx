@@ -1,5 +1,5 @@
 import { Comment } from '../../Comment.tsx';
-import { tileComments } from '../comments.ts';
+import { tileComments } from './comments.ts';
 
 type AnchorProps = {
   href: string;
