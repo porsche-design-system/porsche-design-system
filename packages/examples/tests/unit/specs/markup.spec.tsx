@@ -80,6 +80,18 @@ describe('source files', () => {
 
     expect(queried.filter((id) => !rendered.has(id))).toEqual([]);
   });
+
+  it('should keep the tile partials apart from the blocks they are built from', () => {
+    const tileDir = '_partials/tile/';
+    const tiles = sources.filter(([file]) => file.startsWith(tileDir) && !file.slice(tileDir.length).includes('/'));
+    const outside = sources.filter(([file]) => !file.startsWith(tileDir));
+
+    // What a page or a template renders is a tile, and a tile is what lies directly in the folder – so its name says
+    // so. What the tiles share lies in `blocks/` and is theirs alone: a page composing blocks would build a tile of its
+    // own again, which is the copy the partials replace.
+    expect(tiles.map(([file]) => file).filter((file) => !/\/[A-Z][A-Za-z]+Tile\.tsx$/.test(file))).toEqual([]);
+    expect(outside.filter(([, source]) => source.includes(`${tileDir}blocks/`)).map(([file]) => file)).toEqual([]);
+  });
 });
 
 describe('Head', () => {
