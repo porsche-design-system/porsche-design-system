@@ -72,9 +72,12 @@ export const ProductTile = ({
       <div class="flex flex-wrap items-center gap-fluid-sm">
         {tagLabel && <p-tag variant="secondary">{tagLabel}</p-tag>}
         <Comment>{tileComments.action}</Comment>
-        <Comment>Its padding and negative margin enlarge the target size without moving it.</Comment>
+        <Comment>
+          Its padding enlarges the target size, and makes it as tall as a tag, so it sits at the same height in a list
+          whether a product has a tag or not. The negative margin keeps the icon on the edge of the content.
+        </Comment>
         <p-button-pure
-          class="ms-auto relative z-2 p-static-xs -m-static-xs"
+          class="ms-auto relative z-2 p-static-xs -me-static-xs"
           type="button"
           icon="heart"
           hide-label="true"
