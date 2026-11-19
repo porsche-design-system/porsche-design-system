@@ -6,8 +6,8 @@ import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
  * `src/patterns/tile/equipment` – one equipment option of a vehicle, with a photograph beside its description.
  *
  * What is asserted here is the arrangement, which is the only thing the tile does on its own: the photograph stands
- * beside the text from the medium breakpoint and above it below. Its single action is a button, so unlike the other
- * tiles nothing spans the tile.
+ * beside the text once the tile is 32rem wide and above it while it is narrower. Its single action is a button, so
+ * unlike the other tiles nothing spans the tile.
  */
 
 const url = getExampleUrl('patterns-tile-equipment');
@@ -29,11 +29,16 @@ test('loads without reporting an error', async ({ page }) => {
   await expect(page).toHaveTitle(/^.+ \| Dummy Patterns$/);
 });
 
-test('puts the photograph beside the text, or above it on a narrow viewport', async ({ page }) => {
+/** The width of the tile from which the photograph stands beside the text – 32rem, a container query of the tile. */
+const rowWidth = 512;
+
+test('puts the photograph beside the text, or above it in a narrow tile', async ({ page }) => {
   await setupExamplePage(page, url);
 
   const [photograph, heading] = await getBoxes(page);
-  const isWide = (page.viewportSize()?.width ?? 0) >= 760;
+  // What decides is the width of the tile rather than the one of the viewport, so the tile is what is measured.
+  const tileWidth = (await page.locator('#main img').locator('xpath=../..').boundingBox())?.width ?? 0;
+  const isWide = tileWidth >= rowWidth;
 
   if (isWide) {
     // Side by side. The padding of the text panel moves the heading right in either arrangement, so what tells the

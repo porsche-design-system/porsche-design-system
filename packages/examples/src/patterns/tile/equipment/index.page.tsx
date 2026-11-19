@@ -20,53 +20,61 @@ const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>
-        The radius of the panel plus the padding around it make the radius of the tile, so the two curves stay parallel.
+        The tile takes its arrangement from the width of this wrapper rather than of the window, so it fits the column
+        it is placed in.
       </Comment>
-      <Comment>
-        The photograph sets the height of the tile, and a description longer than it makes the tile taller still rather
-        than running out of it.
-      </Comment>
-      <div class="col-basic flex flex-col gap-static-sm rounded-3xl bg-surface p-static-sm sm:flex-row sm:gap-0">
-        <Comment>The photograph is cropped to the panel, so it follows its corners.</Comment>
+      <div class="col-basic @container">
         <Comment>
-          The ratio sits on the photograph rather than on the panel, so it gives the row its height while a longer
-          description can still make the panel taller. On the panel it would set the height once and leave empty space
-          under the photograph.
+          The radius of the panel plus the padding around it make the radius of the tile, so the two curves stay
+          parallel.
         </Comment>
-        <Comment>Nothing separates the two panels but the padding of the text, as in the design.</Comment>
-        <div class="shrink-0 overflow-clip rounded-2xl sm:w-1/2 md:w-2/3">
-          <Comment>{tileComments.optionImage}</Comment>
-          <img
-            class="aspect-5/4 size-full object-cover"
-            src="/examples/media/anniversary-leather-seat.webp"
-            alt=""
-            width="800"
-            height="640"
-          />
-        </div>
-
         <Comment>
-          The text stacks above the photograph on a phone, halves the tile with it from the medium breakpoint and takes
-          the third of the design from the one above – at half the tile a third would leave a few words per line. Its
-          action sits at the lower edge, however short the description is.
+          The photograph sets the height of the tile, and a description longer than it makes the tile taller still
+          rather than running out of it.
         </Comment>
-        <div class="flex grow flex-col justify-between gap-fluid-md p-fluid-md">
-          <div class="grid gap-static-md">
-            <p-heading tag="h2" size="sm">
-              Perforated Nappa Leather
-            </p-heading>
-            <p-text color="contrast-medium">
-              The seats combine luxurious comfort with sporty precision. Designed for long-distance relaxation and
-              dynamic driving support, they feature ergonomic contours, premium materials, and meticulous craftsmanship.
-            </p-text>
-          </div>
+        <div class="flex flex-col gap-static-sm rounded-3xl bg-surface p-static-sm @lg:flex-row @lg:gap-0">
+          <Comment>The photograph is cropped to the panel, so it follows its corners.</Comment>
           <Comment>
-            The one action of the option, and the only interactive element of the tile – which is why nothing spans the
-            tile the way a covering link would.
+            The ratio sits on the photograph rather than on the panel, so it gives the row its height while a longer
+            description can still make the panel taller. On the panel it would set the height once and leave empty space
+            under the photograph.
           </Comment>
-          <p-button class="self-start" type="button" variant="secondary" compact={true}>
-            Available as Update
-          </p-button>
+          <Comment>Nothing separates the two panels but the padding of the text, as in the design.</Comment>
+          <div class="shrink-0 overflow-clip rounded-2xl @lg:w-1/2 @2xl:w-2/3">
+            <Comment>{tileComments.optionImage}</Comment>
+            <img
+              class="aspect-5/4 size-full object-cover"
+              src="/examples/media/anniversary-leather-seat.webp"
+              alt=""
+              width="800"
+              height="640"
+            />
+          </div>
+
+          <Comment>
+            The text follows the photograph in a narrow column. From a column of 32rem on it shares the tile with the
+            photograph in halves, and from one of 42rem on it takes the third of the design, which would leave a few
+            words per line before. Its action sits at the lower edge, however short the description is.
+          </Comment>
+          <div class="flex grow flex-col justify-between gap-fluid-md p-fluid-md">
+            <div class="grid gap-static-md">
+              <p-heading tag="h2" size="sm">
+                Perforated Nappa Leather
+              </p-heading>
+              <p-text color="contrast-medium">
+                The seats combine luxurious comfort with sporty precision. Designed for long-distance relaxation and
+                dynamic driving support, they feature ergonomic contours, premium materials, and meticulous
+                craftsmanship.
+              </p-text>
+            </div>
+            <Comment>
+              The one action of the option, and the only interactive element of the tile – which is why nothing spans
+              the tile the way a covering link would.
+            </Comment>
+            <p-button class="self-start" type="button" variant="secondary" compact={true}>
+              Available as Update
+            </p-button>
+          </div>
         </div>
       </div>
     </main>
