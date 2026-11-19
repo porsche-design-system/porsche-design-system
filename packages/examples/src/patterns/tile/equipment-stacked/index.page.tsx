@@ -1,6 +1,7 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { Comment } from '../../../_partials/Comment.tsx';
+import { tileComments } from '../../../_partials/tile/comments.ts';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -24,10 +25,11 @@ const Page = () => (
       </Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] grid gap-static-sm rounded-3xl bg-surface p-static-sm">
         <Comment>The photograph is the upper panel: cropped to its ratio, it rounds its corners itself.</Comment>
+        <Comment>{tileComments.optionImage}</Comment>
         <img
           class="aspect-9/4 w-full object-cover rounded-2xl"
           src="/examples/media/burmester-speaker.webp"
-          alt="A Burmester speaker in the door panel of a Porsche"
+          alt=""
           width="1696"
           height="754"
         />

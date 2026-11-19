@@ -1,6 +1,7 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { Comment } from '../../../_partials/Comment.tsx';
+import { tileComments } from '../../../_partials/tile/comments.ts';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -34,7 +35,7 @@ const Page = () => (
         </Comment>
         <Comment>Nothing separates the two panels but the padding of the text, as in the design.</Comment>
         <div class="shrink-0 overflow-clip rounded-2xl sm:w-1/2 md:w-2/3">
-          <Comment>Decorative, since the heading beside it names the option.</Comment>
+          <Comment>{tileComments.optionImage}</Comment>
           <img
             class="aspect-5/4 size-full object-cover"
             src="/examples/media/anniversary-leather-seat.webp"
