@@ -3,19 +3,18 @@ import { expect, test } from '@porsche-design-system/testing/playwright';
 import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/tile/equipment` – the equipment options of a vehicle, one in each variant of the tile.
+ * `src/patterns/tile/equipment` – one equipment option of a vehicle, with a photograph beside its description.
  *
- * What is asserted here is the arrangement, which is the only thing the tile does on its own. In the first tile the
- * photograph stands beside the text once the tile is 32rem wide and above it while it is narrower; in the stacked ones
- * it stays above the text however wide they are. The single action of the list is a button, so unlike the other tiles
- * nothing spans a tile.
+ * What is asserted here is the arrangement, which is the only thing the tile does on its own: the photograph stands
+ * beside the text once the tile is 32rem wide and above it while it is narrower. Its single action is a button, so
+ * unlike the other tiles nothing spans the tile.
  */
 
 const url = getExampleUrl('patterns-tile-equipment');
 
-/** Where the photograph and the heading of a tile sit, in the order they are read. */
-const getBoxes = (page: Page, tile: number) =>
-  page.locator(`#main li:nth-child(${tile}) :is(img, p-heading)`).evaluateAll((elements) =>
+/** Where the photograph and the text panel sit, in the order they are read. */
+const getBoxes = (page: Page) =>
+  page.locator('#main img, #main p-heading').evaluateAll((elements) =>
     elements.map((element) => {
       const box = element.getBoundingClientRect();
 
@@ -36,9 +35,9 @@ const rowWidth = 512;
 test('puts the photograph beside the text, or above it in a narrow tile', async ({ page }) => {
   await setupExamplePage(page, url);
 
-  const [photograph, heading] = await getBoxes(page, 1);
+  const [photograph, heading] = await getBoxes(page);
   // What decides is the width of the tile rather than the one of the viewport, so the tile is what is measured.
-  const tileWidth = (await page.locator('#main li').first().boundingBox())?.width ?? 0;
+  const tileWidth = (await page.locator('#main img').locator('xpath=../..').boundingBox())?.width ?? 0;
   const isWide = tileWidth >= rowWidth;
 
   if (isWide) {
@@ -53,26 +52,10 @@ test('puts the photograph beside the text, or above it in a narrow tile', async 
   }
 });
 
-test('keeps the photograph of a stacked tile above its text, however wide the tile is', async ({ page }) => {
-  await setupExamplePage(page, url);
-
-  // What tells the stacked variant from the first tile: its two panels never share a row. Asserted for a wide
-  // viewport too, where the tiles are wide enough for the first one to put its photograph beside its text.
-  for (const width of [page.viewportSize()?.width ?? 0, 1920]) {
-    await page.setViewportSize({ width, height: 900 });
-
-    for (const tile of [2, 3]) {
-      const [photograph, heading] = await getBoxes(page, tile);
-
-      expect(photograph.bottom).toBeLessThanOrEqual(heading.top);
-    }
-  }
-});
-
 test('offers the option through a single button, reachable by keyboard', async ({ page }) => {
   await setupExamplePage(page, url);
 
-  // No tile is a link, so the button of the first one is the only thing in the list that takes focus.
+  // The tile is not a link, so the button is the only thing in it that takes focus.
   const button = page.getByRole('button', { name: 'Available as Update' });
 
   await expect(button).toBeVisible();

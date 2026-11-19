@@ -23,9 +23,7 @@ import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.t
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
 import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-market-switch/index.page.tsx';
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
-import TileCategoryPage from '../../../src/patterns/tile/category/index.page.tsx';
-import TileEquipmentPage from '../../../src/patterns/tile/equipment/index.page.tsx';
-import TileProductPage from '../../../src/patterns/tile/product/index.page.tsx';
+import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import PersonalizedMailingNoVideoPage from '../../../src/templates/personalized-mailing/no-video/index.page.tsx';
@@ -831,67 +829,23 @@ describe.each(singleTilePages)('%s single tile pattern', (name, Page) => {
     const html = await renderPage(Page);
     const anchors =
       html.match(/<a href="#" class="absolute inset-0 z-1[^"]*">\s*<span class="sr-only">[^<]+<\/span>/g) ?? [];
-    const isClickable = !['patterns/tile/disclosure', 'patterns/tile/vehicle-listing'].includes(name);
+    const isClickable = ![
+      'patterns/tile/disclosure',
+      'patterns/tile/equipment',
+      'patterns/tile/equipment-stacked',
+      'patterns/tile/vehicle-listing',
+    ].includes(name);
 
     // Either a `p-link` with `cover` stretches its clickable area over the tile, or an anchor of its own spans it, with
-    // visually hidden text as its accessible name – the two tiles without either reveal more of themselves or hold so
-    // many controls that a covering link would lie over them.
+    // visually hidden text as its accessible name – the four tiles without either carry an action, reveal more of
+    // themselves, only describe, or hold so many controls that a covering link would lie over them.
     expect(Number(hasCoveringLink(html)) + anchors.length).toBe(Number(isClickable));
   });
 });
 
-describe('patterns/tile/product tile pattern', () => {
-  it('should list the products, each clickable through a link of its own named by the product', async () => {
-    const html = await renderPage(TileProductPage);
-    const names = Array.from(
-      // Matched up to any whitespace, since the formatter puts the attributes of a deeply nested anchor on lines of
-      // their own.
-      html.matchAll(/<a\s+href="#"\s+class="absolute inset-0 z-1[^"]*"\s*>\s*<span class="sr-only">([^<]+)<\/span>/g),
-      ([, name]) => name
-    );
-
-    // One link per tile, the rule the single tile patterns state once – and each names its own product, since a list
-    // of links with the same name could not be told apart.
-    expect((html.match(/<li[\s>]/g) ?? []).length).toBe(3);
-    expect(names).toHaveLength(3);
-    expect(new Set(names).size).toBe(3);
-    expect(countFirstLevelHeadings(html)).toBe(0);
-  });
-
-  it('should explain the tile once, with the first product', async () => {
-    const html = await renderPage(TileProductPage);
-
-    // The list repeats the markup of the tile, not the reasons for it.
-    expect(countOccurrences(html, 'Spans the tile above its content')).toBe(1);
-  });
-});
-
-describe('patterns/tile/equipment tile pattern', () => {
-  it('should list the options in both variants of the tile, none of them a link', async () => {
-    const html = await renderPage(TileEquipmentPage);
-
-    // The first tile carries the one action of the list, the stacked ones only describe – so nothing spans a tile the
-    // way a link spans a navigation tile, and the button is the only control.
-    expect((html.match(/<li[\s>]/g) ?? []).length).toBe(3);
-    expect(countOccurrences(html, '<p-button')).toBe(1);
-    expect(html).not.toMatch(/<a\s/);
-    expect(html).not.toMatch(/<p-link/);
-    expect(countFirstLevelHeadings(html)).toBe(0);
-  });
-
-  it('should render both variants from the same markup, apart from the wrapper the first one takes its width from', async () => {
-    const html = await renderPage(TileEquipmentPage);
-
-    // A variant is a set of classes rather than markup of its own, so the two cannot drift apart.
-    expect(countOccurrences(html, 'class="shrink-0 overflow-clip rounded-2xl')).toBe(3);
-    expect(countOccurrences(html, 'class="flex grow flex-col gap-fluid-md p-fluid-md"')).toBe(3);
-    expect(countOccurrences(html, '@lg:flex-row')).toBe(1);
-  });
-});
-
-describe('patterns/tile/category tile pattern', () => {
+describe('patterns/tile/category-grid tile pattern', () => {
   it('should head the tiles with one heading and rank them below it', async () => {
-    const html = await renderPage(TileCategoryPage);
+    const html = await renderPage(TileCategoryGridPage);
 
     // What the single tile patterns forbid is a heading above *the tile*, because a lone tile is content of a page
     // rather than a page. Here the heading is what the arrangement is about, so it takes the second level a section
@@ -902,7 +856,7 @@ describe('patterns/tile/category tile pattern', () => {
   });
 
   it('should make every tile clickable through a covering link of its own', async () => {
-    const html = await renderPage(TileCategoryPage);
+    const html = await renderPage(TileCategoryGridPage);
 
     // One link per tile, each naming its own category – the rule the single tile patterns state once, counted per
     // tile here.
@@ -911,7 +865,7 @@ describe('patterns/tile/category tile pattern', () => {
   });
 
   it('should group the tiles as a list', async () => {
-    const html = await renderPage(TileCategoryPage);
+    const html = await renderPage(TileCategoryGridPage);
 
     // How many categories there are is announced before the first of them is read. Matched up to any whitespace,
     // since the formatter puts a long class attribute on a line of its own.
