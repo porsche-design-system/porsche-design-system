@@ -472,9 +472,9 @@ reaches through interaction**.
   variants need the same block, extract the block; do not paste the markup a second time, or one variant silently drifts
   from the other.
 - **A tile is a partial, and its page only places it.** Every tile pattern renders its tile through a partial in
-  `_partials/tile/`, and so does a page showing a tile more than once – an arrangement such as `category-grid`, or a
-  template – never a copy. Besides its content, a tile partial takes the placement of
-  [`tile/blocks/shared.ts`](src/_partials/tile/blocks/shared.ts) from its page:
+  `_partials/tile/`, and so does a page showing a tile more than once, such as a template – never a copy. Besides its
+  content, a tile partial takes the placement of [`tile/blocks/shared.ts`](src/_partials/tile/blocks/shared.ts) from its
+  page:
   - `class` is the placement – column, alignment, width limit, span – and belongs to the page.
   - `as` renders the tile as a list item where the page lists its tiles.
   - `aspect` **replaces** the ratio the tile is designed in, which is its default and the one the VRT captures. It is a

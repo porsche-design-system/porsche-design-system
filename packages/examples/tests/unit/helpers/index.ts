@@ -12,7 +12,6 @@ import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-ma
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
 import TileCallToActionPage from '../../../src/patterns/tile/call-to-action/index.page.tsx';
 import TileCategoryPage from '../../../src/patterns/tile/category/index.page.tsx';
-import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index.page.tsx';
 import TileDisclosurePage from '../../../src/patterns/tile/disclosure/index.page.tsx';
 import TileEquipmentPage from '../../../src/patterns/tile/equipment/index.page.tsx';
 import TileEquipmentStackedPage from '../../../src/patterns/tile/equipment-stacked/index.page.tsx';
@@ -82,7 +81,6 @@ export const patternPages = [
   ['patterns/tile/disclosure', TileDisclosurePage],
   ['patterns/tile/call-to-action', TileCallToActionPage],
   ['patterns/tile/model-teaser', TileModelTeaserPage],
-  ['patterns/tile/category-grid', TileCategoryGridPage],
   ['patterns/tile/equipment', TileEquipmentPage],
   ['patterns/tile/equipment-stacked', TileEquipmentStackedPage],
   ['patterns/tile/support', TileSupportPage],
@@ -97,8 +95,6 @@ export const tilePages = patternPages.filter(([path]) => path.startsWith('patter
  * What the others add is an arrangement of several tiles, so the rules that count once per page – the heading above
  * the tile, the one link that opens it – are counted per tile there instead and asserted on the page of their own.
  */
-export const singleTilePages = tilePages.filter(
-  ([path]) => !['patterns/tile/category-grid', 'patterns/tile/support'].includes(path)
-);
+export const singleTilePages = tilePages.filter(([path]) => !['patterns/tile/support'].includes(path));
 
 export const examplePages = [...templatePages, ...patternPages];

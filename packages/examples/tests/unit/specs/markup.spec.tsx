@@ -23,7 +23,6 @@ import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.t
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
 import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-market-switch/index.page.tsx';
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
-import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import PersonalizedMailingNoVideoPage from '../../../src/templates/personalized-mailing/no-video/index.page.tsx';
@@ -840,35 +839,5 @@ describe.each(singleTilePages)('%s single tile pattern', (name, Page) => {
     // visually hidden text as its accessible name – the four tiles without either carry an action, reveal more of
     // themselves, only describe, or hold so many controls that a covering link would lie over them.
     expect(Number(hasCoveringLink(html)) + anchors.length).toBe(Number(isClickable));
-  });
-});
-
-describe('patterns/tile/category-grid tile pattern', () => {
-  it('should head the tiles with one heading and rank them below it', async () => {
-    const html = await renderPage(TileCategoryGridPage);
-
-    // What the single tile patterns forbid is a heading above *the tile*, because a lone tile is content of a page
-    // rather than a page. Here the heading is what the arrangement is about, so it takes the second level a section
-    // of a real page would give it, and the tiles rank below it – still no first level heading, still no page.
-    expect(countFirstLevelHeadings(html)).toBe(0);
-    expect((html.match(/<p-heading[^>]*\stag="h2"/g) ?? []).length).toBe(1);
-    expect(countOccurrences(html, 'tag="h3"')).toBe(3);
-  });
-
-  it('should make every tile clickable through a covering link of its own', async () => {
-    const html = await renderPage(TileCategoryGridPage);
-
-    // One link per tile, each naming its own category – the rule the single tile patterns state once, counted per
-    // tile here.
-    expect((html.match(/<p-link[^>]*\scover[\s>]/g) ?? []).length).toBe(3);
-    expect(countOccurrences(html, '[--p-link-cover-radius:var(--radius-3xl)]')).toBe(3);
-  });
-
-  it('should group the tiles as a list', async () => {
-    const html = await renderPage(TileCategoryGridPage);
-
-    // How many categories there are is announced before the first of them is read. Matched up to any whitespace,
-    // since the formatter puts a long class attribute on a line of its own.
-    expect((html.match(/<li[\s>]/g) ?? []).length).toBe(3);
   });
 });
