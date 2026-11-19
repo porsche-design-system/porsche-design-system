@@ -1,8 +1,7 @@
 import { Comment } from '../Comment.tsx';
 import { Script } from '../Script.tsx';
-import { CoverImage } from './blocks/CoverImage.tsx';
 import { tileComments } from './blocks/comments.ts';
-import { Gradient } from './blocks/Gradient.tsx';
+import { GradientMedia } from './blocks/GradientMedia.tsx';
 import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
 
 type DisclosureTileProps = TileProps & {
@@ -35,22 +34,33 @@ export const DisclosureTile = ({
   image,
 }: DisclosureTileProps) => (
   <>
-    <Comment>
-      The aspect ratio is a preferred size only: expanded details extend the tile beyond it, which clipping would
-      prevent. So the tile does not clip, and the image and the gradient follow its corners themselves.
-    </Comment>
+    <Comment>The aspect ratio is a preferred size only: expanded details extend the tile beyond it.</Comment>
     <Comment>{tileComments.darkScheme}</Comment>
     <Comment>{tileComments.ownHeight}</Comment>
+    <Comment>{tileComments.textRows}</Comment>
     <Root
       id="disclosure-tile"
-      class={joinClasses(placement, 'self-start group relative isolate grid', aspect, 'rounded-3xl scheme-only-dark')}
+      class={joinClasses(
+        placement,
+        'self-start group relative isolate grid grid-rows-[minmax(0,1fr)_auto]',
+        aspect,
+        'rounded-3xl scheme-only-dark'
+      )}
     >
-      <CoverImage
-        class="motion-safe:transition-[filter] duration-md ease-in-out group-data-[open]:brightness-50"
-        note="Dimmed while the details are expanded, so the attention rests on them rather than on the mood of the tile."
-        {...image}
-      />
-      <Gradient class="px-fluid-md pt-fluid-lg pb-fluid-md">
+      <GradientMedia clip="Clips the image and its gradient to the corners. The tile itself does not clip, since that would keep expanded details from extending it.">
+        <Comment>{tileComments.moodImage}</Comment>
+        <Comment>
+          Dimmed while the details are expanded, so the attention rests on them rather than on the mood of the tile.
+        </Comment>
+        <img
+          class="absolute inset-0 size-full object-cover motion-safe:transition-[filter] duration-md ease-in-out group-data-[open]:brightness-50"
+          src={image.src}
+          alt=""
+          width={image.width}
+          height={image.height}
+        />
+      </GradientMedia>
+      <div class="col-start-1 row-start-2 p-fluid-md">
         <Comment>
           The heading is the summary itself, so that the subject and the control over its details are one thing rather
           than two, and so that the accordion carries a semantic heading as it should.
@@ -68,7 +78,7 @@ export const DisclosureTile = ({
             )}
           </div>
         </p-accordion>
-      </Gradient>
+      </div>
     </Root>
     <Script>{
       /* language=JavaScript */ `

@@ -3,6 +3,12 @@ import { Comment } from '../../Comment.tsx';
 import { tileComments } from './comments.ts';
 import { joinClasses } from './shared.ts';
 
+type GradientMediaProps = {
+  /** Why the media is clipped by a wrapper rather than by the tile, where the tile has a reason of its own. */
+  clip?: string;
+  children: ComponentChildren;
+};
+
 /**
  * The image or video lying behind the text of a tile and covering it, clipped to the corners of the tile, with the
  * gradient that keeps the text legible.
@@ -11,9 +17,9 @@ import { joinClasses } from './shared.ts';
  * and adopts them, which is how the gradient knows the height of the text without containing it: it is twice as high,
  * so the text lies where the gradient is dark enough for any image. The media in it is positioned to cover it.
  */
-export const GradientMedia = ({ children }: { children: ComponentChildren }) => (
+export const GradientMedia = ({ clip = tileComments.clip, children }: GradientMediaProps) => (
   <>
-    <Comment>{tileComments.clip}</Comment>
+    <Comment>{clip}</Comment>
     <Comment>{tileComments.mediaRows}</Comment>
     <Comment>{tileComments.textGradient}</Comment>
     <div
