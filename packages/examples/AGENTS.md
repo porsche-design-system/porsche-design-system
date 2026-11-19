@@ -472,7 +472,7 @@ reaches through interaction**.
   variants need the same block, extract the block; do not paste the markup a second time, or one variant silently drifts
   from the other.
 - **A tile is a partial, and its page only places it.** Every tile pattern renders its tile through a partial in
-  `_partials/tile/`, and so does a page showing a tile more than once – an arrangement such as `category-grid`, or a
+  `_partials/tile/`, and so does a page showing a tile more than once – a list such as the product pattern, or a
   template – never a copy. Besides its content, a tile partial takes the placement of
   [`tile/blocks/shared.ts`](src/_partials/tile/blocks/shared.ts) from its page:
   - `class` is the placement – column, alignment, width limit, span – and belongs to the page.
@@ -487,8 +487,13 @@ reaches through interaction**.
   classes and the reasons for them – `fit` and `fitComments` of `CategoryTile`, because every product is fitted
   differently. Do not add a prop that switches a part of a tile on or off: a tile built differently is another tile. A
   tile designed in two arrangements is one partial with a `variant`, which decides everything the arrangement entails –
-  `EquipmentTile` renders both equipment patterns, and its variants differ in classes rather than in markup, so the two
-  cannot drift apart.
+  `EquipmentTile` renders both arrangements of the equipment pattern, and its variants differ in classes rather than in
+  markup, so the two cannot drift apart.
+
+  **A pattern shows its tile the way it occurs.** A tile that stands in a list – a product, a category, an equipment
+  option – is shown as that list, with content that differs from tile to tile, rather than on its own and capped at a
+  width: the cap is placement of the pattern page, yet it would reach the copied markup, and it hides what only a list
+  shows, such as a tile without a tag beside one with it. A tile that stands alone is shown alone.
 
   **A tile follows the width it is given, not the one of the window.** What changes with the room – the ratio of the
   call to action tile, the panels of the equipment tile, the row of the support tile – is a container query, so the tile
