@@ -40,8 +40,9 @@ const Page = () => (
       <div class="col-basic justify-self-center w-full max-w-[400px] grid gap-fluid-md rounded-3xl bg-canvas p-fluid-md">
         <Comment>{tileComments.modelImage}</Comment>
         <Comment>Cut out against the tile, so no box has to be clipped around it.</Comment>
+        <Comment>Its width is a share of the tile, so the vehicle keeps its scale at every size.</Comment>
         <img
-          class="w-full px-fluid-md"
+          class="justify-self-center w-4/5"
           src="/examples/media/718-gt4-rs-side-view.webp"
           alt=""
           width="1000"
