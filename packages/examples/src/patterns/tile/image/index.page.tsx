@@ -47,7 +47,7 @@ const Page = () => (
         </p-link>
         <Comment>{tileComments.gradient}</Comment>
         <div class="self-end px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
-          <p-heading tag="h2" size="xl" weight="regular">
+          <p-heading tag="h2" size="xl">
             911
           </p-heading>
         </div>

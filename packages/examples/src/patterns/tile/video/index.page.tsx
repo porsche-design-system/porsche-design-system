@@ -47,7 +47,7 @@ const Page = () => (
         </div>
         <Comment>{tileComments.gradient}</Comment>
         <div class="self-end flex flex-wrap items-center gap-fluid-sm px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
-          <p-heading tag="h2" size="md" weight="regular">
+          <p-heading tag="h2" size="md">
             GTS models
           </p-heading>
           <Comment>

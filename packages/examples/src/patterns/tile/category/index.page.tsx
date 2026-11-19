@@ -23,7 +23,7 @@ const Page = () => (
       <Comment>{tileComments.ownHeight}</Comment>
       <div class="col-basic self-start justify-self-center w-full max-w-[400px] group relative isolate flex flex-col aspect-3/4 rounded-3xl bg-surface pt-fluid-md [--p-link-cover-radius:var(--radius-3xl)]">
         <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
-          <p-heading tag="h2" size="md" weight="regular">
+          <p-heading tag="h2" size="md">
             Vehicle Accessories
           </p-heading>
           <Comment>{tileComments.coverLink}</Comment>
