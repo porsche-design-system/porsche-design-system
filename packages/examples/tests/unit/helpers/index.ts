@@ -98,7 +98,7 @@ export const tilePages = patternPages.filter(([path]) => path.startsWith('patter
  * the tile, the one link that opens it – are counted per tile there instead and asserted on the page of their own.
  */
 export const singleTilePages = tilePages.filter(
-  ([path]) => !['patterns/tile/category-grid', 'patterns/tile/support'].includes(path)
+  ([path]) => !['patterns/tile/category-grid', 'patterns/tile/product', 'patterns/tile/support'].includes(path)
 );
 
 export const examplePages = [...templatePages, ...patternPages];

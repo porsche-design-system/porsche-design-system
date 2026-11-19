@@ -24,6 +24,7 @@ import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/i
 import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-market-switch/index.page.tsx';
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
 import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index.page.tsx';
+import TileProductPage from '../../../src/patterns/tile/product/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import PersonalizedMailingNoVideoPage from '../../../src/templates/personalized-mailing/no-video/index.page.tsx';
@@ -840,6 +841,32 @@ describe.each(singleTilePages)('%s single tile pattern', (name, Page) => {
     // visually hidden text as its accessible name – the four tiles without either carry an action, reveal more of
     // themselves, only describe, or hold so many controls that a covering link would lie over them.
     expect(Number(hasCoveringLink(html)) + anchors.length).toBe(Number(isClickable));
+  });
+});
+
+describe('patterns/tile/product tile pattern', () => {
+  it('should list the products, each clickable through a link of its own named by the product', async () => {
+    const html = await renderPage(TileProductPage);
+    const names = Array.from(
+      // Matched up to any whitespace, since the formatter puts the attributes of a deeply nested anchor on lines of
+      // their own.
+      html.matchAll(/<a\s+href="#"\s+class="absolute inset-0 z-1[^"]*"\s*>\s*<span class="sr-only">([^<]+)<\/span>/g),
+      ([, name]) => name
+    );
+
+    // One link per tile, the rule the single tile patterns state once – and each names its own product, since a list
+    // of links with the same name could not be told apart.
+    expect((html.match(/<li[\s>]/g) ?? []).length).toBe(3);
+    expect(names).toHaveLength(3);
+    expect(new Set(names).size).toBe(3);
+    expect(countFirstLevelHeadings(html)).toBe(0);
+  });
+
+  it('should explain the tile once, with the first product', async () => {
+    const html = await renderPage(TileProductPage);
+
+    // The list repeats the markup of the tile, not the reasons for it.
+    expect(countOccurrences(html, 'Spans the tile above its content')).toBe(1);
   });
 });
 

@@ -2,7 +2,7 @@ import { expect, test } from '@porsche-design-system/testing/playwright';
 import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 /**
- * `src/patterns/tile/product` – a product of a list, with a wishlist button and color swatches above its covering link. Static markup without behaviour of its own, so loading cleanly is all there is to
+ * `src/patterns/tile/product` – the products of a list, each with a wishlist button and color swatches above its covering link. Static markup without behaviour of its own, so loading cleanly is all there is to
  * assert.
  */
 
