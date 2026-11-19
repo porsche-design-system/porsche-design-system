@@ -78,7 +78,7 @@ const Page = () => (
             {label}
           </p-text>
           <p-text color="contrast-medium" align="center">
-            1.100,00 €
+            €1,100.00
           </p-text>
         </div>
       </div>
