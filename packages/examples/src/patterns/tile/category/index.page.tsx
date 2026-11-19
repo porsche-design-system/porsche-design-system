@@ -15,7 +15,8 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – a shop category, built with HTML and Tailwind CSS.
  *
- * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
+ * The page places the tile and gives it its content and its image. Its markup comes from the partial, with the
+ * comments on why it is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} centered>

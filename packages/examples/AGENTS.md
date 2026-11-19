@@ -115,7 +115,10 @@ src/
 │   ├── Script.tsx                # <script type="module"> with unescaped code – all behaviour goes through it
 │   ├── Comment.tsx               # an HTML comment in the markup – why the element after it is built that way
 │   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
-│   ├── tile/comments.ts          # the comments the tile patterns share, worded once
+│   ├── tile/                     # one partial per tile (CategoryTile, ProductTile, …), placed by its page
+│   │   ├── tile.ts               # TileProps – `class`, `aspect`, `as` – and what the partials share in code
+│   │   ├── comments.ts           # the comments the tile patterns share, worded once
+│   │   └── Tile*.tsx, ModelStage # the blocks the tiles compose: TileMedia, TileGradient, TileAnchor, TileImage
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   ├── footer/                   # Footer (`extended`) and SimpleFooter, sharing the legal information they close with
@@ -132,7 +135,7 @@ src/
 │   ├── header/stacked/           # Header in its `stacked` variant
 │   ├── footer/extended/          # Footer of a site: delivery country, navigation, social media, legal information
 │   ├── footer/simple/            # SimpleFooter: the legal information only, for a page that stands on its own
-│   ├── tile/                     # index.page.tsx each – the use cases of a tile, built with HTML and Tailwind CSS
+│   ├── tile/                     # index.page.tsx each – the use cases of a tile, most rendered by their partial
 │   │   ├── model-selection/      # … one folder per use case: anchor or covering `p-link`, hover via `group-hover:`
 │   │   └── …                     # category, video, product, …; light and dark, tile fixes its scheme only if needed
 │   ├── forms/                    # index.page.tsx each – combobox patterns built on `p-input-search` and `p-popover`
@@ -464,6 +467,25 @@ reaches through interaction**.
   (`_partials/header/`), driven by the `navItems` of `MainNav` and the `metaActionItems` of `MetaActions`. If two
   variants need the same block, extract the block; do not paste the markup a second time, or one variant silently drifts
   from the other.
+- **A tile is a partial, and its page only places it.** A tile shown more than once – in an arrangement such as
+  `category-grid`, or in a template – is rendered by its partial in `_partials/tile/` each time, never copied. Every
+  tile partial takes the `TileProps` of [`tile/tile.ts`](src/_partials/tile/tile.ts) besides its content:
+  - `class` is the placement – column, alignment, width limit, span – and belongs to the page.
+  - `aspect` **replaces** the ratio the tile is designed in, which is its default and the one the VRT captures. It is a
+    prop of its own because two ratio utilities on one element leave the choice to the order of the stylesheet.
+  - `as` renders the tile as a list item where the page lists its tiles.
+
+  The partial owns everything else: its layout, the alignment to the top of its row that goes with a ratio, and the
+  comments explaining both, so they reach the markup wherever the tile is rendered. Content is props; where the
+  instances differ in markup rather than in content, the tile takes it as `children` – `CategoryTile` is given its
+  image, because every product is fitted differently. Do not add a prop that switches a part of a tile on or off: a tile
+  built differently is another tile. What several tiles share is a block of its own (`TileMedia`, `TileGradient`,
+  `TileAnchor`, `TileImage`, `ModelStage`). Two tiles cannot be repeated freely: `VideoTile` looks its video up by id,
+  so there is one per page, and `ProductTile` needs a `colorGroup` of its own per product, which a unit test asserts.
+  The tiles not reviewed yet – disclosure, equipment, equipment stacked, support and vehicle listing – are still written
+  out in their pages. Moving markup into a partial must not change it: compare `dist/patterns/tile/**/index.html` before
+  and after `npm run build:projects`.
+
 - **The navigation is rendered recursively.** A `NavItem` with `children` becomes a `p-drilldown-item` (plus a leading
   entry pointing at its own page, since a level is not a link), one without becomes a `p-drilldown-link`. Both are valid
   children of `p-drilldown` and of `p-drilldown-item`, which is what makes one component cover every depth.
