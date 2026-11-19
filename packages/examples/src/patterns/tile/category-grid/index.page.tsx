@@ -47,112 +47,117 @@ const Page = () => (
       </Comment>
       <ul class="col-basic mt-fluid-xl grid grid-cols-1 gap-fluid-md sm:grid-cols-2">
         <Comment>{tileComments.coverTile}</Comment>
-        <li class="group relative isolate rounded-3xl sm:row-span-2 [--p-link-cover-radius:var(--radius-3xl)]">
+        <Comment>{tileComments.ownHeight}</Comment>
+        <Comment>Beside the other two it has no ratio of its own and is stretched to their height instead.</Comment>
+        <li class="self-start group relative isolate flex flex-col aspect-3/4 rounded-3xl bg-surface pt-fluid-md sm:row-span-2 sm:self-stretch sm:aspect-auto [--p-link-cover-radius:var(--radius-3xl)]">
+          <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
+            <p-heading tag="h3" size="md">
+              Accessories
+            </p-heading>
+            <Comment>{tileComments.coverLink}</Comment>
+            <p-link
+              class="ms-auto"
+              variant="secondary"
+              icon="arrow-up-right"
+              hide-label="true"
+              compact="true"
+              cover={true}
+            >
+              <a href="#">Accessories</a>
+            </p-link>
+          </div>
+          <Comment>{tileComments.fill}</Comment>
           <Comment>{tileComments.clip}</Comment>
-          <div class="grid grid-rows-[auto_minmax(0,1fr)] aspect-3/4 overflow-clip rounded-[inherit] bg-surface sm:aspect-auto sm:h-full">
+          <div class="flex-1 min-h-0 overflow-clip rounded-b-[inherit]">
             <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
             <Comment>
-              In the row below the heading, so it is centered in the room the heading leaves rather than in the whole
-              tile. The row cannot outgrow the tile, so the image never stretches it.
+              Centered in the room the heading leaves rather than in the whole tile, and never taller than that room.
             </Comment>
             <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
             <Comment>{tileComments.zoom}</Comment>
             <img
-              class="[grid-area:2/1] place-self-center w-1/2 max-h-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+              class="mx-auto h-full w-1/2 object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
               src="/examples/media/chronograph.webp"
               alt="A Porsche Design chronograph"
               width="800"
               height="1282"
             />
-            <div class="[grid-area:1/1] flex flex-wrap items-center gap-fluid-sm pt-fluid-md px-fluid-md">
-              <p-heading tag="h3" size="md">
-                Accessories
-              </p-heading>
-              <Comment>{tileComments.coverLink}</Comment>
-              <p-link
-                class="ms-auto"
-                variant="secondary"
-                icon="arrow-up-right"
-                hide-label="true"
-                compact="true"
-                cover={true}
-              >
-                <a href="#">Accessories</a>
-              </p-link>
-            </div>
           </div>
         </li>
 
         <Comment>{tileComments.coverTile}</Comment>
-        <li class="group relative isolate rounded-3xl [--p-link-cover-radius:var(--radius-3xl)]">
+        <Comment>{tileComments.ownHeight}</Comment>
+        <li class="self-start group relative isolate flex flex-col aspect-3/2 rounded-3xl bg-surface pt-fluid-md [--p-link-cover-radius:var(--radius-3xl)]">
+          <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
+            <p-heading tag="h3" size="md">
+              Tequipment
+            </p-heading>
+            <Comment>{tileComments.coverLink}</Comment>
+            <p-link
+              class="ms-auto"
+              variant="secondary"
+              icon="arrow-up-right"
+              hide-label="true"
+              compact="true"
+              cover={true}
+            >
+              <a href="#">Tequipment</a>
+            </p-link>
+          </div>
+          <Comment>{tileComments.fill}</Comment>
           <Comment>{tileComments.clip}</Comment>
-          <div class="grid grid-rows-[auto_minmax(0,1fr)] aspect-3/2 overflow-clip rounded-[inherit] bg-surface">
+          <div class="flex-1 min-h-0 overflow-clip rounded-b-[inherit]">
             <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
             <Comment>
-              In the row below the heading, so it is centered in the room the heading leaves rather than in the whole
-              tile. The row cannot outgrow the tile, so the image never stretches it.
+              Centered in the room the heading leaves rather than in the whole tile, and never taller than that room.
             </Comment>
             <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
             <Comment>{tileComments.zoom}</Comment>
             <img
-              class="[grid-area:2/1] place-self-center w-3/4 max-h-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+              class="mx-auto h-full w-3/4 object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
               src="/examples/media/roof-box.webp"
               alt="A roof box"
               width="1000"
               height="255"
             />
-            <div class="[grid-area:1/1] flex flex-wrap items-center gap-fluid-sm pt-fluid-md px-fluid-md">
-              <p-heading tag="h3" size="md">
-                Tequipment
-              </p-heading>
-              <Comment>{tileComments.coverLink}</Comment>
-              <p-link
-                class="ms-auto"
-                variant="secondary"
-                icon="arrow-up-right"
-                hide-label="true"
-                compact="true"
-                cover={true}
-              >
-                <a href="#">Tequipment</a>
-              </p-link>
-            </div>
           </div>
         </li>
 
         <Comment>{tileComments.coverTile}</Comment>
-        <li class="group relative isolate rounded-3xl [--p-link-cover-radius:var(--radius-3xl)]">
+        <Comment>{tileComments.ownHeight}</Comment>
+        <li class="self-start group relative isolate flex flex-col aspect-3/2 rounded-3xl bg-surface pt-fluid-md [--p-link-cover-radius:var(--radius-3xl)]">
+          <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
+            <p-heading tag="h3" size="md">
+              Clothing
+            </p-heading>
+            <Comment>{tileComments.coverLink}</Comment>
+            <p-link
+              class="ms-auto"
+              variant="secondary"
+              icon="arrow-up-right"
+              hide-label="true"
+              compact="true"
+              cover={true}
+            >
+              <a href="#">Clothing</a>
+            </p-link>
+          </div>
+          <Comment>{tileComments.fill}</Comment>
           <Comment>{tileComments.clip}</Comment>
-          <div class="grid aspect-3/2 overflow-clip rounded-[inherit] bg-surface">
+          <div class="flex-1 min-h-0 overflow-clip rounded-b-[inherit]">
             <Comment>
-              In the same cell as the heading and set against the lower edge, where the image is cropped, so the garment
-              is cut there.
+              Set against the lower edge, where the image is cropped, so the garment is cut there. It is never taller
+              than the room the heading leaves.
             </Comment>
             <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
             <Comment>{tileComments.zoom}</Comment>
             <img
-              class="[grid-area:1/1] self-end justify-self-center w-2/3 motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+              class="mx-auto h-full w-2/3 object-contain object-bottom motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
               src="/examples/media/jacket.webp"
               alt="A Porsche Motorsport jacket"
               width="900"
               height="629"
             />
-            <div class="[grid-area:1/1] self-start flex flex-wrap items-center gap-fluid-sm pt-fluid-md px-fluid-md">
-              <p-heading tag="h3" size="md">
-                Clothing
-              </p-heading>
-              <Comment>{tileComments.coverLink}</Comment>
-              <p-link
-                class="ms-auto"
-                variant="secondary"
-                icon="arrow-up-right"
-                hide-label="true"
-                compact="true"
-                cover={true}
-              >
-                <a href="#">Clothing</a>
-              </p-link>
-            </div>
           </div>
         </li>
       </ul>
