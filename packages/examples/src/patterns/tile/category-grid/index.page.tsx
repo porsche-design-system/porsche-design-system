@@ -1,7 +1,8 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { Comment } from '../../../_partials/Comment.tsx';
-import { tileComments } from '../../../_partials/tile/comments.ts';
+import { CategoryTile } from '../../../_partials/tile/CategoryTile.tsx';
+import { TileImage } from '../../../_partials/tile/TileImage.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -14,9 +15,9 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – three categories under one heading, built with HTML and Tailwind CSS.
  *
- * The tile itself is the category tile of this collection, repeated. What this example adds is the arrangement
- * around it, which is why the tiles are written out rather than generated: the three differ in how their image is
- * fitted and in how much room they take, and each difference belongs where it applies.
+ * The tile itself is the category tile of this collection, rendered three times by its partial. What this example
+ * adds is the arrangement around it: the three differ in how their image is fitted and in how much room they take, and
+ * each difference is stated where the tile is rendered.
  *
  * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
  */
@@ -46,120 +47,58 @@ const Page = () => (
         tall as the other two together.
       </Comment>
       <ul class="col-basic mt-fluid-xl grid grid-cols-1 gap-fluid-md sm:grid-cols-2">
-        <Comment>{tileComments.coverTile}</Comment>
-        <Comment>{tileComments.ownHeight}</Comment>
         <Comment>Beside the other two it has no ratio of its own and is stretched to their height instead.</Comment>
-        <li class="self-start group relative isolate flex flex-col aspect-3/4 rounded-3xl bg-surface pt-fluid-md sm:row-span-2 sm:self-stretch sm:aspect-auto [--p-link-cover-radius:var(--radius-3xl)]">
-          <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
-            <p-heading tag="h3" size="md">
-              Accessories
-            </p-heading>
-            <Comment>{tileComments.coverLink}</Comment>
-            <p-link
-              class="ms-auto"
-              variant="secondary"
-              icon="arrow-up-right"
-              hide-label="true"
-              compact="true"
-              cover={true}
-            >
-              <a href="#">Accessories</a>
-            </p-link>
-          </div>
-          <Comment>{tileComments.fill}</Comment>
-          <Comment>{tileComments.clip}</Comment>
-          <div class="flex-1 min-h-0 overflow-clip rounded-b-[inherit]">
-            <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
-            <Comment>
-              Centered in the room the heading leaves rather than in the whole tile, and never taller than that room.
-            </Comment>
-            <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
-            <Comment>{tileComments.zoom}</Comment>
-            <img
-              class="mx-auto h-full w-1/2 object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-              src="/examples/media/chronograph.webp"
-              alt="A Porsche Design chronograph"
-              width="800"
-              height="1282"
-            />
-          </div>
-        </li>
+        <CategoryTile
+          as="li"
+          class="sm:row-span-2 sm:self-stretch"
+          aspect="aspect-3/4 sm:aspect-auto"
+          heading="Accessories"
+          tag="h3"
+          href="#"
+        >
+          <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
+          <Comment>
+            Centered in the room the heading leaves rather than in the whole tile, and never taller than that room.
+          </Comment>
+          <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
+          <TileImage
+            class="mx-auto h-full w-1/2 object-contain"
+            src="/examples/media/chronograph.webp"
+            alt="A Porsche Design chronograph"
+            width={800}
+            height={1282}
+          />
+        </CategoryTile>
 
-        <Comment>{tileComments.coverTile}</Comment>
-        <Comment>{tileComments.ownHeight}</Comment>
-        <li class="self-start group relative isolate flex flex-col aspect-3/2 rounded-3xl bg-surface pt-fluid-md [--p-link-cover-radius:var(--radius-3xl)]">
-          <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
-            <p-heading tag="h3" size="md">
-              Tequipment
-            </p-heading>
-            <Comment>{tileComments.coverLink}</Comment>
-            <p-link
-              class="ms-auto"
-              variant="secondary"
-              icon="arrow-up-right"
-              hide-label="true"
-              compact="true"
-              cover={true}
-            >
-              <a href="#">Tequipment</a>
-            </p-link>
-          </div>
-          <Comment>{tileComments.fill}</Comment>
-          <Comment>{tileComments.clip}</Comment>
-          <div class="flex-1 min-h-0 overflow-clip rounded-b-[inherit]">
-            <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
-            <Comment>
-              Centered in the room the heading leaves rather than in the whole tile, and never taller than that room.
-            </Comment>
-            <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
-            <Comment>{tileComments.zoom}</Comment>
-            <img
-              class="mx-auto h-full w-3/4 object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-              src="/examples/media/roof-box.webp"
-              alt="A roof box"
-              width="1000"
-              height="255"
-            />
-          </div>
-        </li>
+        <CategoryTile as="li" aspect="aspect-3/2" heading="Tequipment" tag="h3" href="#">
+          <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
+          <Comment>
+            Centered in the room the heading leaves rather than in the whole tile, and never taller than that room.
+          </Comment>
+          <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
+          <TileImage
+            class="mx-auto h-full w-3/4 object-contain"
+            src="/examples/media/roof-box.webp"
+            alt="A roof box"
+            width={1000}
+            height={255}
+          />
+        </CategoryTile>
 
-        <Comment>{tileComments.coverTile}</Comment>
-        <Comment>{tileComments.ownHeight}</Comment>
-        <li class="self-start group relative isolate flex flex-col aspect-3/2 rounded-3xl bg-surface pt-fluid-md [--p-link-cover-radius:var(--radius-3xl)]">
-          <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
-            <p-heading tag="h3" size="md">
-              Clothing
-            </p-heading>
-            <Comment>{tileComments.coverLink}</Comment>
-            <p-link
-              class="ms-auto"
-              variant="secondary"
-              icon="arrow-up-right"
-              hide-label="true"
-              compact="true"
-              cover={true}
-            >
-              <a href="#">Clothing</a>
-            </p-link>
-          </div>
-          <Comment>{tileComments.fill}</Comment>
-          <Comment>{tileComments.clip}</Comment>
-          <div class="flex-1 min-h-0 overflow-clip rounded-b-[inherit]">
-            <Comment>
-              Set against the lower edge, where the image is cropped, so the garment is cut there. It is never taller
-              than the room the heading leaves.
-            </Comment>
-            <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
-            <Comment>{tileComments.zoom}</Comment>
-            <img
-              class="mx-auto h-full w-2/3 object-contain object-bottom motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-              src="/examples/media/jacket.webp"
-              alt="A Porsche Motorsport jacket"
-              width="900"
-              height="629"
-            />
-          </div>
-        </li>
+        <CategoryTile as="li" aspect="aspect-3/2" heading="Clothing" tag="h3" href="#">
+          <Comment>
+            Set against the lower edge, where the image is cropped, so the garment is cut there. It is never taller than
+            the room the heading leaves.
+          </Comment>
+          <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
+          <TileImage
+            class="mx-auto h-full w-2/3 object-contain object-bottom"
+            src="/examples/media/jacket.webp"
+            alt="A Porsche Motorsport jacket"
+            width={900}
+            height={629}
+          />
+        </CategoryTile>
       </ul>
 
       <Comment>The way out of the arrangement, for a reader none of the three categories has caught.</Comment>
