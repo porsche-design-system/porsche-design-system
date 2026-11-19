@@ -52,13 +52,15 @@ const Page = () => (
             <p-heading slot="summary" tag="h2" size="lg">
               Light design.¹
             </p-heading>
-            <p-text>
-              Distinctive light signatures at the front and rear make the vehicle recognisable at first glance, even in
-              the dark.
-            </p-text>
-            <p-text class="mt-static-sm" size="2xs" color="contrast-medium">
-              ¹Optionally available.
-            </p-text>
+            <div class="grid gap-static-sm">
+              <p-text>
+                Distinctive light signatures at the front and rear make the vehicle recognisable at first glance, even
+                in the dark.
+              </p-text>
+              <p-text size="2xs" color="contrast-medium">
+                ¹Optionally available.
+              </p-text>
+            </div>
           </p-accordion>
         </div>
       </div>
