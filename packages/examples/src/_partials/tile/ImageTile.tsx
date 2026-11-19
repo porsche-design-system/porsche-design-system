@@ -1,7 +1,6 @@
 import { Comment } from '../Comment.tsx';
 import { tileComments } from './blocks/comments.ts';
-import { Gradient } from './blocks/Gradient.tsx';
-import { Media } from './blocks/Media.tsx';
+import { GradientMedia } from './blocks/GradientMedia.tsx';
 import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
 import { ZoomImage } from './blocks/ZoomImage.tsx';
 
@@ -27,20 +26,21 @@ export const ImageTile = ({
     <Comment>{tileComments.coverTile}</Comment>
     <Comment>{tileComments.darkScheme}</Comment>
     <Comment>{tileComments.ownHeight}</Comment>
+    <Comment>{tileComments.textRows}</Comment>
     <Root
       class={joinClasses(
         placement,
-        'self-start group relative isolate grid',
+        'self-start group relative isolate grid grid-rows-[minmax(0,1fr)_auto]',
         aspect,
         'rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]'
       )}
     >
-      <Media>
-        <ZoomImage class="size-full object-cover" {...image} />
-      </Media>
+      <GradientMedia>
+        <ZoomImage class="absolute inset-0 size-full object-cover" {...image} />
+      </GradientMedia>
       <Comment>{tileComments.coverLink}</Comment>
       <p-link
-        class="self-start justify-self-end mt-fluid-md me-fluid-md"
+        class="col-start-1 row-start-1 self-start justify-self-end mt-fluid-md me-fluid-md"
         variant="secondary"
         icon="arrow-up-right"
         hide-label="true"
@@ -49,11 +49,11 @@ export const ImageTile = ({
       >
         <a href={href}>{heading}</a>
       </p-link>
-      <Gradient class="px-fluid-md pt-fluid-lg pb-fluid-md">
+      <div class="col-start-1 row-start-2 p-fluid-md">
         <p-heading tag={tag} size="xl">
           {heading}
         </p-heading>
-      </Gradient>
+      </div>
     </Root>
   </>
 );
