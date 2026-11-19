@@ -1,7 +1,7 @@
 import { Comment } from '../Comment.tsx';
+import { ModelStage, type TileModel } from './blocks/ModelStage.tsx';
+import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
 import { tileComments } from './comments.ts';
-import { ModelStage, type TileModel } from './ModelStage.tsx';
-import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './tile.ts';
 
 type ModelTeaserTileProps = TileProps & {
   model: TileModel;

@@ -1,9 +1,9 @@
 import { Comment } from '../Comment.tsx';
 import { Script } from '../Script.tsx';
+import { Gradient } from './blocks/Gradient.tsx';
+import { Media } from './blocks/Media.tsx';
+import { joinClasses, type TileHeadingTag, type TileProps, tileZoom } from './blocks/shared.ts';
 import { tileComments } from './comments.ts';
-import { TileGradient } from './TileGradient.tsx';
-import { TileMedia } from './TileMedia.tsx';
-import { joinClasses, type TileHeadingTag, type TileProps, tileZoom } from './tile.ts';
 
 type VideoTileProps = TileProps & {
   /** What the tile leads to, which names the tile and its link. */
@@ -45,7 +45,7 @@ export const VideoTile = ({
         'rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]'
       )}
     >
-      <TileMedia>
+      <Media>
         <Comment>
           Decorative, muted and looped. It does not start if the user prefers reduced motion, see the script.
         </Comment>
@@ -65,8 +65,8 @@ export const VideoTile = ({
             <source key={src} src={src} type={type} />
           ))}
         </video>
-      </TileMedia>
-      <TileGradient class="flex flex-wrap items-center gap-fluid-sm px-fluid-md pt-fluid-lg pb-fluid-md">
+      </Media>
+      <Gradient class="flex flex-wrap items-center gap-fluid-sm px-fluid-md pt-fluid-lg pb-fluid-md">
         <p-heading tag={tag} size="md">
           {heading}
         </p-heading>
@@ -90,7 +90,7 @@ export const VideoTile = ({
         <p-link variant="secondary" icon="arrow-up-right" hide-label="true" compact="true" cover={true}>
           <a href={href}>{heading}</a>
         </p-link>
-      </TileGradient>
+      </Gradient>
     </Root>
     <Script>{
       /* language=JavaScript */ `

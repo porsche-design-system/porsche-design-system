@@ -1,7 +1,7 @@
 import { Comment } from '../Comment.tsx';
+import { Anchor } from './blocks/Anchor.tsx';
+import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
 import { tileComments } from './comments.ts';
-import { TileAnchor } from './TileAnchor.tsx';
-import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './tile.ts';
 
 type ModelNavigationTileProps = TileProps & {
   /** The model, which heads the tile and names its link. */
@@ -44,7 +44,7 @@ export const ModelNavigationTile = ({
         'rounded-3xl p-fluid-md motion-safe:transition-colors duration-sm ease-in-out hover:bg-canvas'
       )}
     >
-      <TileAnchor href={href} label={heading} />
+      <Anchor href={href} label={heading} />
       <p-heading tag={tag} size="md">
         {heading}
       </p-heading>

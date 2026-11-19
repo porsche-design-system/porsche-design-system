@@ -1,9 +1,9 @@
 import { Comment } from '../Comment.tsx';
+import { Gradient } from './blocks/Gradient.tsx';
+import { Media } from './blocks/Media.tsx';
+import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
+import { ZoomImage } from './blocks/ZoomImage.tsx';
 import { tileComments } from './comments.ts';
-import { TileGradient } from './TileGradient.tsx';
-import { TileImage } from './TileImage.tsx';
-import { TileMedia } from './TileMedia.tsx';
-import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './tile.ts';
 
 type ImageTileProps = TileProps & {
   /** What the tile leads to, which names the tile and its link. */
@@ -35,9 +35,9 @@ export const ImageTile = ({
         'rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]'
       )}
     >
-      <TileMedia>
-        <TileImage class="size-full object-cover" {...image} />
-      </TileMedia>
+      <Media>
+        <ZoomImage class="size-full object-cover" {...image} />
+      </Media>
       <Comment>{tileComments.coverLink}</Comment>
       <p-link
         class="self-start justify-self-end mt-fluid-md me-fluid-md"
@@ -49,11 +49,11 @@ export const ImageTile = ({
       >
         <a href={href}>{heading}</a>
       </p-link>
-      <TileGradient class="px-fluid-md pt-fluid-lg pb-fluid-md">
+      <Gradient class="px-fluid-md pt-fluid-lg pb-fluid-md">
         <p-heading tag={tag} size="xl">
           {heading}
         </p-heading>
-      </TileGradient>
+      </Gradient>
     </Root>
   </>
 );

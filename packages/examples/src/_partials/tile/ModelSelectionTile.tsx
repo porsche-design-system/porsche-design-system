@@ -1,8 +1,8 @@
 import { Comment } from '../Comment.tsx';
+import { Anchor } from './blocks/Anchor.tsx';
+import { ModelStage, type TileModel } from './blocks/ModelStage.tsx';
+import { joinClasses, type TileImageSource, type TileProps } from './blocks/shared.ts';
 import { tileComments } from './comments.ts';
-import { ModelStage, type TileModel } from './ModelStage.tsx';
-import { TileAnchor } from './TileAnchor.tsx';
-import { joinClasses, type TileImageSource, type TileProps } from './tile.ts';
 
 type ModelSelectionTileProps = TileProps & {
   model: TileModel;
@@ -53,7 +53,7 @@ export const ModelSelectionTile = ({
         signature={joinClasses(signatureWidth, '[--p-model-signature-color:var(--color-surface)]')}
         image={image}
       />
-      <TileAnchor
+      <Anchor
         href={href}
         label={label}
         note="It follows the vehicle, which shares its stacking order, so that the link stays on top."

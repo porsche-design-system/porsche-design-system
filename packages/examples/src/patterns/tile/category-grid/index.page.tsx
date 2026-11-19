@@ -2,7 +2,6 @@ import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { Comment } from '../../../_partials/Comment.tsx';
 import { CategoryTile } from '../../../_partials/tile/CategoryTile.tsx';
-import { TileImage } from '../../../_partials/tile/TileImage.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -11,6 +10,12 @@ export const meta: ExampleMeta = {
     'Three category tiles under one heading, with a link to the whole range below them. The first tile is as tall as the other two together, which gives the arrangement a focus without making any of the three a different kind of tile. Each tile is the category tile of this collection, unchanged: a heading, an icon-only link covering the tile, and the product image filling the rest.',
   colorSchemes: ['light', 'dark'],
 };
+
+/** Why the images of the tiles are fitted the way they are – comments the tiles render before their image. */
+const cutOut = 'A cut out product, so all of it stays in view and the surface of the tile surrounds it.';
+const centered =
+  'Centered in the room the heading leaves rather than in the whole tile, and never taller than that room.';
+const share = 'Its width is a share of the tile, so the product keeps its scale at every size.';
 
 /**
  * Tile pattern – three categories under one heading, built with HTML and Tailwind CSS.
@@ -55,50 +60,40 @@ const Page = () => (
           heading="Accessories"
           tag="h3"
           href="#"
-        >
-          <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
-          <Comment>
-            Centered in the room the heading leaves rather than in the whole tile, and never taller than that room.
-          </Comment>
-          <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
-          <TileImage
-            class="mx-auto h-full w-1/2 object-contain"
-            src="/examples/media/chronograph.webp"
-            alt="A Porsche Design chronograph"
-            width={800}
-            height={1282}
-          />
-        </CategoryTile>
+          image={{
+            src: '/examples/media/chronograph.webp',
+            alt: 'A Porsche Design chronograph',
+            width: 800,
+            height: 1282,
+          }}
+          fit="mx-auto h-full w-1/2 object-contain"
+          fitComments={[cutOut, centered, share]}
+        />
 
-        <CategoryTile as="li" aspect="aspect-3/2" heading="Tequipment" tag="h3" href="#">
-          <Comment>A cut out product, so all of it stays in view and the surface of the tile surrounds it.</Comment>
-          <Comment>
-            Centered in the room the heading leaves rather than in the whole tile, and never taller than that room.
-          </Comment>
-          <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
-          <TileImage
-            class="mx-auto h-full w-3/4 object-contain"
-            src="/examples/media/roof-box.webp"
-            alt="A roof box"
-            width={1000}
-            height={255}
-          />
-        </CategoryTile>
+        <CategoryTile
+          as="li"
+          aspect="aspect-3/2"
+          heading="Tequipment"
+          tag="h3"
+          href="#"
+          image={{ src: '/examples/media/roof-box.webp', alt: 'A roof box', width: 1000, height: 255 }}
+          fit="mx-auto h-full w-3/4 object-contain"
+          fitComments={[cutOut, centered, share]}
+        />
 
-        <CategoryTile as="li" aspect="aspect-3/2" heading="Clothing" tag="h3" href="#">
-          <Comment>
-            Set against the lower edge, where the image is cropped, so the garment is cut there. It is never taller than
-            the room the heading leaves.
-          </Comment>
-          <Comment>Its width is a share of the tile, so the product keeps its scale at every size.</Comment>
-          <TileImage
-            class="mx-auto h-full w-2/3 object-contain object-bottom"
-            src="/examples/media/jacket.webp"
-            alt="A Porsche Motorsport jacket"
-            width={900}
-            height={629}
-          />
-        </CategoryTile>
+        <CategoryTile
+          as="li"
+          aspect="aspect-3/2"
+          heading="Clothing"
+          tag="h3"
+          href="#"
+          image={{ src: '/examples/media/jacket.webp', alt: 'A Porsche Motorsport jacket', width: 900, height: 629 }}
+          fit="mx-auto h-full w-2/3 object-contain object-bottom"
+          fitComments={[
+            'Set against the lower edge, where the image is cropped, so the garment is cut there. It is never taller than the room the heading leaves.',
+            share,
+          ]}
+        />
       </ul>
 
       <Comment>The way out of the arrangement, for a reader none of the three categories has caught.</Comment>

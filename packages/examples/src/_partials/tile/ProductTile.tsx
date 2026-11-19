@@ -1,8 +1,8 @@
 import { Comment } from '../Comment.tsx';
+import { Anchor } from './blocks/Anchor.tsx';
+import { joinClasses, type TileImageSource, type TileProps } from './blocks/shared.ts';
+import { ZoomImage } from './blocks/ZoomImage.tsx';
 import { tileComments } from './comments.ts';
-import { TileAnchor } from './TileAnchor.tsx';
-import { TileImage } from './TileImage.tsx';
-import { joinClasses, type TileImageSource, type TileProps } from './tile.ts';
 
 type ProductColor = {
   /** The name of the color, its accessible name. */
@@ -68,7 +68,7 @@ export const ProductTile = ({
         'rounded-3xl bg-surface p-fluid-md'
       )}
     >
-      <TileAnchor href={href} label={name} />
+      <Anchor href={href} label={name} />
       <div class="flex flex-wrap items-center gap-fluid-sm">
         {tagLabel && <p-tag variant="secondary">{tagLabel}</p-tag>}
         <Comment>{tileComments.action}</Comment>
@@ -84,7 +84,7 @@ export const ProductTile = ({
       </div>
       <Comment>Decorative, since the link spanning the tile and the text below it already name the product.</Comment>
       <Comment>{tileComments.fill}</Comment>
-      <TileImage class="flex-1 min-h-0 object-contain" alt="" {...image} />
+      <ZoomImage class="flex-1 min-h-0 object-contain" alt="" {...image} />
       <div class="grid justify-items-center gap-static-xs">
         <Comment>{tileComments.action}</Comment>
         <Comment>

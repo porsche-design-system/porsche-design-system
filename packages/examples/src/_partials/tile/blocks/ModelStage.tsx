@@ -1,8 +1,8 @@
 import type { JSX } from 'preact';
-import { Comment } from '../Comment.tsx';
-import { tileComments } from './comments.ts';
-import { TileImage } from './TileImage.tsx';
-import { joinClasses, type TileImageSource } from './tile.ts';
+import { Comment } from '../../Comment.tsx';
+import { tileComments } from '../comments.ts';
+import { joinClasses, type TileImageSource } from './shared.ts';
+import { ZoomImage } from './ZoomImage.tsx';
 
 export type TileModel = NonNullable<JSX.IntrinsicElements['p-model-signature']['model']>;
 
@@ -26,6 +26,6 @@ export const ModelStage = ({ class: width, model, signature, image }: ModelStage
       safe-zone={false}
     ></p-model-signature>
     <Comment>{tileComments.modelImage}</Comment>
-    <TileImage class="[grid-area:1/1] z-1 w-full" alt="" {...image} />
+    <ZoomImage class="[grid-area:1/1] z-1 w-full" alt="" {...image} />
   </div>
 );

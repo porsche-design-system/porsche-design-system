@@ -1,9 +1,9 @@
 import { Comment } from '../Comment.tsx';
+import { Gradient } from './blocks/Gradient.tsx';
+import { Media } from './blocks/Media.tsx';
+import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
+import { ZoomImage } from './blocks/ZoomImage.tsx';
 import { tileComments } from './comments.ts';
-import { TileGradient } from './TileGradient.tsx';
-import { TileImage } from './TileImage.tsx';
-import { TileMedia } from './TileMedia.tsx';
-import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './tile.ts';
 
 type CallToActionTileProps = TileProps & {
   heading: string;
@@ -51,11 +51,11 @@ export const CallToActionTile = ({
           'rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]'
         )}
       >
-        <TileMedia>
+        <Media>
           <Comment>{tileComments.moodImage}</Comment>
-          <TileImage class="size-full object-cover" alt="" {...image} />
-        </TileMedia>
-        <TileGradient class="grid justify-items-start gap-fluid-md p-fluid-lg">
+          <ZoomImage class="size-full object-cover" alt="" {...image} />
+        </Media>
+        <Gradient class="grid justify-items-start gap-fluid-md p-fluid-lg">
           <Comment>
             The character limit holds the lines of heading and text at a readable length, however wide the tile is.
           </Comment>
@@ -69,7 +69,7 @@ export const CallToActionTile = ({
           <p-link variant="secondary" cover={true}>
             <a href={link.href}>{link.label}</a>
           </p-link>
-        </TileGradient>
+        </Gradient>
       </div>
     </Root>
   </>

@@ -1,7 +1,7 @@
-import { Comment } from '../Comment.tsx';
-import { tileComments } from './comments.ts';
+import { Comment } from '../../Comment.tsx';
+import { tileComments } from '../comments.ts';
 
-type TileAnchorProps = {
+type AnchorProps = {
   href: string;
   /** The accessible name of the link, and with it of the tile. */
   label: string;
@@ -10,7 +10,7 @@ type TileAnchorProps = {
 };
 
 /** The link spanning a tile that carries no `p-link` to cover it – the tile is its positioned ancestor. */
-export const TileAnchor = ({ href, label, note }: TileAnchorProps) => (
+export const Anchor = ({ href, label, note }: AnchorProps) => (
   <>
     <Comment>{tileComments.anchorLink}</Comment>
     {note && <Comment>{note}</Comment>}
