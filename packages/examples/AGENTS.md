@@ -115,10 +115,11 @@ src/
 │   ├── Script.tsx                # <script type="module"> with unescaped code – all behaviour goes through it
 │   ├── Comment.tsx               # an HTML comment in the markup – why the element after it is built that way
 │   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
-│   ├── tile/                     # one partial per tile (CategoryTile, ProductTile, …), placed by its page
-│   │   ├── tile.ts               # TileProps – `class`, `aspect`, `as` – and what the partials share in code
+│   ├── tile/                     # the tiles a page renders – every `*Tile.tsx` here, and nothing else
+│   │   ├── CategoryTile.tsx, …   # one partial per tile, placed by its page
 │   │   ├── comments.ts           # the comments the tile patterns share, worded once
-│   │   └── Tile*.tsx, ModelStage # the blocks the tiles compose: TileMedia, TileGradient, TileAnchor, TileImage
+│   │   └── blocks/               # what the tiles are built from, never rendered by a page: Media, Gradient,
+│   │                             # Anchor, ZoomImage, ModelStage – and shared.ts with TileProps and the helpers
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   ├── footer/                   # Footer (`extended`) and SimpleFooter, sharing the legal information they close with
@@ -469,22 +470,27 @@ reaches through interaction**.
   from the other.
 - **A tile is a partial, and its page only places it.** A tile shown more than once – in an arrangement such as
   `category-grid`, or in a template – is rendered by its partial in `_partials/tile/` each time, never copied. Every
-  tile partial takes the `TileProps` of [`tile/tile.ts`](src/_partials/tile/tile.ts) besides its content:
+  tile partial takes the `TileProps` of [`tile/blocks/shared.ts`](src/_partials/tile/blocks/shared.ts) besides its
+  content:
   - `class` is the placement – column, alignment, width limit, span – and belongs to the page.
   - `aspect` **replaces** the ratio the tile is designed in, which is its default and the one the VRT captures. It is a
     prop of its own because two ratio utilities on one element leave the choice to the order of the stylesheet.
   - `as` renders the tile as a list item where the page lists its tiles.
 
   The partial owns everything else: its layout, the alignment to the top of its row that goes with a ratio, and the
-  comments explaining both, so they reach the markup wherever the tile is rendered. Content is props; where the
-  instances differ in markup rather than in content, the tile takes it as `children` – `CategoryTile` is given its
-  image, because every product is fitted differently. Do not add a prop that switches a part of a tile on or off: a tile
-  built differently is another tile. What several tiles share is a block of its own (`TileMedia`, `TileGradient`,
-  `TileAnchor`, `TileImage`, `ModelStage`). Two tiles cannot be repeated freely: `VideoTile` looks its video up by id,
-  so there is one per page, and `ProductTile` needs a `colorGroup` of its own per product, which a unit test asserts.
-  The tiles not reviewed yet – disclosure, equipment, equipment stacked, support and vehicle listing – are still written
-  out in their pages. Moving markup into a partial must not change it: compare `dist/patterns/tile/**/index.html` before
-  and after `npm run build:projects`.
+  comments explaining both, so they reach the markup wherever the tile is rendered. Content is props, and a page passes
+  nothing but props: where the instances differ in how something is fitted rather than in content, the tile takes the
+  classes and the reasons for them – `fit` and `fitComments` of `CategoryTile`, because every product is fitted
+  differently. Do not add a prop that switches a part of a tile on or off: a tile built differently is another tile.
+
+  **What a page may render lies directly in `_partials/tile/` and is named `*Tile`; what lies in `blocks/` is for the
+  tiles alone.** The blocks (`Media`, `Gradient`, `Anchor`, `ZoomImage`, `ModelStage`) are what several tiles share, and
+  a page composing them would build a tile of its own again – a unit test fails on a file outside the folder importing
+  one, and on a file directly in the folder that is not named like a tile. Two tiles cannot be repeated freely:
+  `VideoTile` looks its video up by id, so there is one per page, and `ProductTile` needs a `colorGroup` of its own per
+  product, which a unit test asserts. The tiles not reviewed yet – disclosure, equipment, equipment stacked, support and
+  vehicle listing – are still written out in their pages. Moving markup into a partial must not change it: compare
+  `dist/patterns/tile/**/index.html` before and after `npm run build:projects`.
 
 - **The navigation is rendered recursively.** A `NavItem` with `children` becomes a `p-drilldown-item` (plus a leading
   entry pointing at its own page, since a level is not a link), one without becomes a `p-drilldown-link`. Both are valid
