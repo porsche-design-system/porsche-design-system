@@ -20,30 +20,32 @@ const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
       <Comment>{tileComments.coverTile}</Comment>
-      <div class="col-basic justify-self-center w-full max-w-[400px] group relative isolate rounded-3xl [--p-link-cover-radius:var(--radius-3xl)]">
+      <Comment>{tileComments.ownHeight}</Comment>
+      <div class="col-basic self-start justify-self-center w-full max-w-[400px] group relative isolate flex flex-col aspect-3/4 rounded-3xl bg-surface pt-fluid-md [--p-link-cover-radius:var(--radius-3xl)]">
+        <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
+          <p-heading tag="h2" size="md" weight="regular">
+            Vehicle Accessories
+          </p-heading>
+          <Comment>{tileComments.coverLink}</Comment>
+          <p-link
+            class="ms-auto"
+            variant="secondary"
+            icon="arrow-up-right"
+            hide-label="true"
+            compact="true"
+            cover={true}
+          >
+            <a href="#">Vehicle Accessories</a>
+          </p-link>
+        </div>
+        <Comment>{tileComments.fill}</Comment>
         <Comment>{tileComments.clip}</Comment>
-        <div class="flex flex-col gap-fluid-lg aspect-3/4 overflow-clip rounded-[inherit] bg-surface pt-fluid-md">
-          <div class="flex flex-wrap items-center gap-fluid-sm px-fluid-md">
-            <p-heading tag="h2" size="md" weight="regular">
-              Vehicle Accessories
-            </p-heading>
-            <Comment>{tileComments.coverLink}</Comment>
-            <p-link
-              class="ms-auto"
-              variant="secondary"
-              icon="arrow-up-right"
-              hide-label="true"
-              compact="true"
-              cover={true}
-            >
-              <a href="#">Vehicle Accessories</a>
-            </p-link>
-          </div>
-          <Comment>{tileComments.fill}</Comment>
+        <Comment>Its padding keeps the distance to the heading, and is the room the zooming image moves into.</Comment>
+        <div class="flex-1 min-h-0 overflow-clip rounded-b-[inherit] pt-fluid-lg">
           <Comment>The image is cropped at the bottom, so the lower edge of the tile cuts the product.</Comment>
           <Comment>{tileComments.zoom}</Comment>
           <img
-            class="flex-1 min-h-0 object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+            class="size-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
             src="/examples/media/wall-charger.webp"
             alt="A Porsche wall charger"
             width="595"
