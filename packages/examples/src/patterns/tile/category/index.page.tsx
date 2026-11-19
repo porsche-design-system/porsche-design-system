@@ -43,7 +43,7 @@ const Page = () => (
           <Comment>The image is cropped at the bottom, so the lower edge of the tile cuts the product.</Comment>
           <Comment>{tileComments.zoom}</Comment>
           <img
-            class="grow basis-0 min-h-0 w-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+            class="flex-1 min-h-0 object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
             src="/examples/media/wall-charger.webp"
             alt="A Porsche wall charger"
             width="595"
