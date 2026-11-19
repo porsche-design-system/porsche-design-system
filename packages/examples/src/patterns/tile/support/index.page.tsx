@@ -25,21 +25,20 @@ const Page = () => (
       </Comment>
       <Comment>{tileComments.darkScheme}</Comment>
       <Comment>
-        The tile does not clip, so the focus indicators of the links inside it stay whole. The image clips itself
-        instead.
+        The tile does not clip, so the focus indicators of the links inside it stay whole. The image and the gradient
+        follow its corners themselves.
       </Comment>
       <Comment>{tileComments.ownHeight}</Comment>
       <div class="col-extended self-start relative isolate grid aspect-16/9 rounded-3xl scheme-only-dark">
-        <div class="absolute inset-0 -z-1 overflow-clip rounded-[inherit]">
-          <Comment>{tileComments.moodImage}</Comment>
-          <img
-            class="size-full object-cover"
-            src="/examples/media/macan-with-owner.webp"
-            alt=""
-            width="1310"
-            height="737"
-          />
-        </div>
+        <Comment>{tileComments.moodImage}</Comment>
+        <Comment>{tileComments.coverImage}</Comment>
+        <img
+          class="absolute inset-0 -z-1 size-full object-cover rounded-[inherit]"
+          src="/examples/media/macan-with-owner.webp"
+          alt=""
+          width="1310"
+          height="737"
+        />
 
         <Comment>{tileComments.gradient}</Comment>
         <div class="self-end flex flex-col items-center gap-fluid-md px-fluid-lg pt-fluid-2xl pb-fluid-lg rounded-b-[inherit] bg-fade-to-t">

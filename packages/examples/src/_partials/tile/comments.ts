@@ -16,6 +16,7 @@ export const tileComments = {
   darkScheme: 'Light content on a dark gradient or image, independent of the color scheme of the page.',
   moodImage: 'Decorative, it sets the mood and carries no information the text does not give.',
   modelImage: 'Decorative, since the tile already names the model.',
+  coverImage: 'Lies behind the content and covers the tile, following its corners itself.',
   fill: 'Takes the height left in the tile without increasing it.',
   mediaPadding: 'Its padding keeps the distance to the heading, and is the room the zooming image moves into.',
   ownHeight:

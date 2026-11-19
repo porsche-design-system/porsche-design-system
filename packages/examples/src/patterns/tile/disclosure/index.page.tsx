@@ -31,7 +31,7 @@ const Page = () => (
         class="col-basic self-start justify-self-center w-full max-w-[560px] group relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark"
       >
         <Comment>{tileComments.moodImage}</Comment>
-        <Comment>Lies behind the content and covers the tile.</Comment>
+        <Comment>{tileComments.coverImage}</Comment>
         <Comment>
           Dimmed while the details are expanded, so the attention rests on them rather than on the mood of the tile.
         </Comment>
