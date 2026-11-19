@@ -1,8 +1,7 @@
 import { Comment } from '../Comment.tsx';
 import { Script } from '../Script.tsx';
 import { tileComments } from './blocks/comments.ts';
-import { Gradient } from './blocks/Gradient.tsx';
-import { Media } from './blocks/Media.tsx';
+import { GradientMedia } from './blocks/GradientMedia.tsx';
 import { joinClasses, type TileHeadingTag, type TileProps, tileZoom } from './blocks/shared.ts';
 
 type VideoTileProps = TileProps & {
@@ -37,15 +36,16 @@ export const VideoTile = ({
     <Comment>{tileComments.coverTile}</Comment>
     <Comment>{tileComments.darkScheme}</Comment>
     <Comment>{tileComments.ownHeight}</Comment>
+    <Comment>{tileComments.textRows}</Comment>
     <Root
       class={joinClasses(
         placement,
-        'self-start group relative isolate grid',
+        'self-start group relative isolate grid grid-rows-[minmax(0,1fr)_auto]',
         aspect,
         'rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]'
       )}
     >
-      <Media>
+      <GradientMedia>
         <Comment>
           Decorative, muted and looped. It does not start if the user prefers reduced motion, see the script.
         </Comment>
@@ -53,7 +53,7 @@ export const VideoTile = ({
         {/* biome-ignore lint/a11y/noAriaHiddenOnFocusable: without `controls`, the video is not focusable – it is decorative */}
         <video
           id="tile-video"
-          class={joinClasses('size-full object-cover', tileZoom)}
+          class={joinClasses('absolute inset-0 size-full object-cover', tileZoom)}
           poster={poster}
           aria-hidden="true"
           loop
@@ -65,8 +65,8 @@ export const VideoTile = ({
             <source key={src} src={src} type={type} />
           ))}
         </video>
-      </Media>
-      <Gradient class="flex flex-wrap items-center gap-fluid-sm px-fluid-md pt-fluid-lg pb-fluid-md">
+      </GradientMedia>
+      <div class="col-start-1 row-start-2 flex flex-wrap items-center gap-fluid-sm p-fluid-md">
         <p-heading tag={tag} size="md">
           {heading}
         </p-heading>
@@ -90,7 +90,7 @@ export const VideoTile = ({
         <p-link variant="secondary" icon="arrow-up-right" hide-label="true" compact="true" cover={true}>
           <a href={href}>{heading}</a>
         </p-link>
-      </Gradient>
+      </div>
     </Root>
     <Script>{
       /* language=JavaScript */ `
