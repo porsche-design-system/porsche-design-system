@@ -23,16 +23,14 @@ const Page = () => (
         Nothing in the tile is interactive, so no focus indicator has to stay outside the frame.
       </Comment>
       <div class="col-basic justify-self-center w-full max-w-[560px] grid gap-static-sm rounded-3xl bg-surface p-static-sm">
-        <Comment>The photograph is cropped to the panel, so it follows its corners.</Comment>
-        <div class="aspect-9/4 overflow-clip rounded-2xl">
-          <img
-            class="size-full object-cover"
-            src="/examples/media/burmester-speaker.webp"
-            alt="A Burmester speaker in the door panel of a Porsche"
-            width="1696"
-            height="754"
-          />
-        </div>
+        <Comment>The photograph is the upper panel: cropped to its ratio, it rounds its corners itself.</Comment>
+        <img
+          class="aspect-9/4 w-full object-cover rounded-2xl"
+          src="/examples/media/burmester-speaker.webp"
+          alt="A Burmester speaker in the door panel of a Porsche"
+          width="1696"
+          height="754"
+        />
 
         <div class="grid gap-static-md p-fluid-md">
           <p-heading tag="h2" size="lg">
