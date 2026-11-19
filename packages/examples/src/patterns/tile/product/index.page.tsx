@@ -56,7 +56,7 @@ const Page = () => (
         <Comment>{tileComments.fill}</Comment>
         <Comment>{tileComments.zoom}</Comment>
         <img
-          class="grow basis-0 min-h-0 w-full object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
+          class="flex-1 min-h-0 object-contain motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
           src="/examples/media/weekender.webp"
           alt=""
           width="960"
