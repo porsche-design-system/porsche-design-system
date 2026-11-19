@@ -68,7 +68,7 @@ const Page = () => (
           <Comment>
             A list, so that how many properties describe the vehicle is announced before the first of them is read.
           </Comment>
-          <ul class="flex flex-wrap gap-static-xs list-none m-0 p-0">
+          <ul class="flex flex-wrap gap-static-xs">
             <li>
               <p-tag variant="primary">2027</p-tag>
             </li>
