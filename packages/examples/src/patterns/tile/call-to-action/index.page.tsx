@@ -1,7 +1,6 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { Comment } from '../../../_partials/Comment.tsx';
-import { tileComments } from '../../../_partials/tile/comments.ts';
+import { CallToActionTile } from '../../../_partials/tile/CallToActionTile.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -14,56 +13,19 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – a service promoted with a mood image, built with HTML and Tailwind CSS.
  *
- * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
+ * The page places the tile and gives it its content. Its markup comes from the partial, with the comments on why it
+ * is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
-      <Comment>
-        The tile takes its shape from the width of this wrapper rather than of the window, so it fits the column it is
-        placed in.
-      </Comment>
-      <div class="col-extended @container">
-        <Comment>{tileComments.coverTile}</Comment>
-        <Comment>{tileComments.darkScheme}</Comment>
-        <Comment>
-          Upright in a narrow column, where the text needs the height, and wide from a column of 32rem on. Text that
-          needs more space than the aspect ratio provides extends the tile beyond it.
-        </Comment>
-        <div class="group relative isolate grid aspect-3/4 @lg:aspect-16/9 rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">
-          <Comment>{tileComments.clip}</Comment>
-          <div class="absolute inset-0 -z-1 overflow-clip rounded-[inherit]">
-            <Comment>{tileComments.moodImage}</Comment>
-            <Comment>{tileComments.zoom}</Comment>
-            <img
-              class="size-full object-cover motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-              src="/examples/media/gipfeltreffen.webp"
-              alt=""
-              width="2000"
-              height="1125"
-            />
-          </div>
-          <Comment>{tileComments.gradient}</Comment>
-          <div class="self-end grid justify-items-start gap-fluid-md p-fluid-lg rounded-b-[inherit] bg-fade-to-t">
-            <Comment>
-              The character limit holds the lines of heading and text at a readable length, however wide the tile is.
-            </Comment>
-            <div class="grid gap-fluid-sm max-w-[40ch]">
-              <p-heading tag="h2" size="lg">
-                Porsche Connect.
-              </p-heading>
-              <p-text>
-                Porsche Connect enhances the driving experience with a wide range of music and video streaming services,
-                the integrated Voice Pilot and remote services via the My Porsche app.
-              </p-text>
-            </div>
-            <Comment>{tileComments.coverLink}</Comment>
-            <p-link variant="secondary" cover={true}>
-              <a href="#">Discover Porsche Connect</a>
-            </p-link>
-          </div>
-        </div>
-      </div>
+      <CallToActionTile
+        class="col-extended"
+        heading="Porsche Connect."
+        text="Porsche Connect enhances the driving experience with a wide range of music and video streaming services, the integrated Voice Pilot and remote services via the My Porsche app."
+        link={{ label: 'Discover Porsche Connect', href: '#' }}
+        image={{ src: '/examples/media/gipfeltreffen.webp', width: 2000, height: 1125 }}
+      />
     </main>
   </PatternPage>
 );
