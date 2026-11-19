@@ -24,7 +24,6 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
       'patterns/tile/call-to-action',
       'patterns/tile/model-teaser',
       'patterns/tile/category',
-      'patterns/tile/category-grid',
       'patterns/tile/model-navigation',
       'patterns/tile/model-selection',
       'patterns/tile/product',

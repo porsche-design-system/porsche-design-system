@@ -19,7 +19,6 @@ export const tileComments = {
   optionImage: 'Decorative, since the heading names the option.',
   coverImage: 'Lies behind the content and covers the tile, following its corners itself.',
   fill: 'Takes the height left in the tile without increasing it.',
-  mediaPadding: 'Its padding keeps the distance to the heading, and is the room the zooming image moves into.',
   ownHeight:
     'Aligned to the top of its row instead of stretched to it, so content needing more room than the aspect ratio provides extends the tile in Safari as well.',
   signatureWidth:

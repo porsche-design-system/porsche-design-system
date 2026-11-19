@@ -14,8 +14,6 @@ type CategoryTileProps = TileProps & {
   fit?: string;
   /** Why the image is fitted that way, each a comment of its own before the image. */
   fitComments?: string[];
-  /** The distance between the heading and the image, as padding of the room the image is clipped to. */
-  mediaPadding?: string;
 };
 
 /**
@@ -33,7 +31,6 @@ export const CategoryTile = ({
   image,
   fit = 'size-full object-contain',
   fitComments = [],
-  mediaPadding,
 }: CategoryTileProps) => (
   <>
     <Comment>{tileComments.coverTile}</Comment>
@@ -57,8 +54,7 @@ export const CategoryTile = ({
       </div>
       <Comment>{tileComments.fill}</Comment>
       <Comment>{tileComments.clip}</Comment>
-      {mediaPadding && <Comment>{tileComments.mediaPadding}</Comment>}
-      <div class={joinClasses('flex-1 min-h-0 overflow-clip rounded-b-[inherit]', mediaPadding)}>
+      <div class="flex-1 min-h-0 overflow-clip rounded-b-[inherit]">
         {fitComments.map((comment) => (
           <Comment key={comment}>{comment}</Comment>
         ))}

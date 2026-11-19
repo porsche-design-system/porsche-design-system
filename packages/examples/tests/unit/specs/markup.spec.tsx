@@ -23,7 +23,7 @@ import HeaderStackedPage from '../../../src/patterns/header/stacked/index.page.t
 import PopoverFeatureTourPage from '../../../src/patterns/popover/feature-tour/index.page.tsx';
 import PopoverLocalMarketSwitchPage from '../../../src/patterns/popover/local-market-switch/index.page.tsx';
 import PopoverPriorityNavigationPage from '../../../src/patterns/popover/priority-navigation/index.page.tsx';
-import TileCategoryGridPage from '../../../src/patterns/tile/category-grid/index.page.tsx';
+import TileCategoryPage from '../../../src/patterns/tile/category/index.page.tsx';
 import TileProductPage from '../../../src/patterns/tile/product/index.page.tsx';
 import AdminPanelPage from '../../../src/templates/admin-panel/index.page.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
@@ -870,9 +870,9 @@ describe('patterns/tile/product tile pattern', () => {
   });
 });
 
-describe('patterns/tile/category-grid tile pattern', () => {
+describe('patterns/tile/category tile pattern', () => {
   it('should head the tiles with one heading and rank them below it', async () => {
-    const html = await renderPage(TileCategoryGridPage);
+    const html = await renderPage(TileCategoryPage);
 
     // What the single tile patterns forbid is a heading above *the tile*, because a lone tile is content of a page
     // rather than a page. Here the heading is what the arrangement is about, so it takes the second level a section
@@ -883,7 +883,7 @@ describe('patterns/tile/category-grid tile pattern', () => {
   });
 
   it('should make every tile clickable through a covering link of its own', async () => {
-    const html = await renderPage(TileCategoryGridPage);
+    const html = await renderPage(TileCategoryPage);
 
     // One link per tile, each naming its own category – the rule the single tile patterns state once, counted per
     // tile here.
@@ -892,7 +892,7 @@ describe('patterns/tile/category-grid tile pattern', () => {
   });
 
   it('should group the tiles as a list', async () => {
-    const html = await renderPage(TileCategoryGridPage);
+    const html = await renderPage(TileCategoryPage);
 
     // How many categories there are is announced before the first of them is read. Matched up to any whitespace,
     // since the formatter puts a long class attribute on a line of its own.
