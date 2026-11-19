@@ -1,7 +1,6 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { Comment } from '../../../_partials/Comment.tsx';
-import { tileComments } from '../../../_partials/tile/comments.ts';
+import { ImageTile } from '../../../_partials/tile/ImageTile.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -14,44 +13,23 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – a category with a mood image, built with HTML and Tailwind CSS.
  *
- * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
+ * The page places the tile and gives it its content. Its markup comes from the partial, with the comments on why it
+ * is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
-      <Comment>{tileComments.coverTile}</Comment>
-      <Comment>{tileComments.darkScheme}</Comment>
-      <Comment>{tileComments.ownHeight}</Comment>
-      <div class="col-basic self-start justify-self-center w-full max-w-[400px] group relative isolate grid aspect-square rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">
-        <Comment>{tileComments.clip}</Comment>
-        <div class="absolute inset-0 -z-1 overflow-clip rounded-[inherit]">
-          <Comment>{tileComments.zoom}</Comment>
-          <img
-            class="size-full object-cover motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-            src="/examples/media/porsche-992-carrera-s.jpg"
-            alt="Porsche 992 Carrera S"
-            width="1728"
-            height="664"
-          />
-        </div>
-        <Comment>{tileComments.coverLink}</Comment>
-        <p-link
-          class="self-start justify-self-end mt-fluid-md me-fluid-md"
-          variant="secondary"
-          icon="arrow-up-right"
-          hide-label="true"
-          compact="true"
-          cover={true}
-        >
-          <a href="#">911</a>
-        </p-link>
-        <Comment>{tileComments.gradient}</Comment>
-        <div class="self-end px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
-          <p-heading tag="h2" size="xl">
-            911
-          </p-heading>
-        </div>
-      </div>
+      <ImageTile
+        class="col-basic justify-self-center w-full max-w-[400px]"
+        heading="911"
+        href="#"
+        image={{
+          src: '/examples/media/porsche-992-carrera-s.jpg',
+          alt: 'Porsche 992 Carrera S',
+          width: 1728,
+          height: 664,
+        }}
+      />
     </main>
   </PatternPage>
 );

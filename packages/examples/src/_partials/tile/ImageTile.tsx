@@ -1,0 +1,59 @@
+import { Comment } from '../Comment.tsx';
+import { tileComments } from './comments.ts';
+import { TileGradient } from './TileGradient.tsx';
+import { TileImage } from './TileImage.tsx';
+import { TileMedia } from './TileMedia.tsx';
+import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './tile.ts';
+
+type ImageTileProps = TileProps & {
+  /** What the tile leads to, which names the tile and its link. */
+  heading: string;
+  tag?: TileHeadingTag;
+  href: string;
+  image: TileImageSource & { alt: string };
+};
+
+/** A category with a mood image: the image covers the tile, an icon-only link sits at the top, the heading at the bottom. */
+export const ImageTile = ({
+  as: Root = 'div',
+  class: placement,
+  aspect = 'aspect-square',
+  heading,
+  tag = 'h2',
+  href,
+  image,
+}: ImageTileProps) => (
+  <>
+    <Comment>{tileComments.coverTile}</Comment>
+    <Comment>{tileComments.darkScheme}</Comment>
+    <Comment>{tileComments.ownHeight}</Comment>
+    <Root
+      class={joinClasses(
+        placement,
+        'self-start group relative isolate grid',
+        aspect,
+        'rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]'
+      )}
+    >
+      <TileMedia>
+        <TileImage class="size-full object-cover" {...image} />
+      </TileMedia>
+      <Comment>{tileComments.coverLink}</Comment>
+      <p-link
+        class="self-start justify-self-end mt-fluid-md me-fluid-md"
+        variant="secondary"
+        icon="arrow-up-right"
+        hide-label="true"
+        compact="true"
+        cover={true}
+      >
+        <a href={href}>{heading}</a>
+      </p-link>
+      <TileGradient class="px-fluid-md pt-fluid-lg pb-fluid-md">
+        <p-heading tag={tag} size="xl">
+          {heading}
+        </p-heading>
+      </TileGradient>
+    </Root>
+  </>
+);
