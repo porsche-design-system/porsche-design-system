@@ -13,6 +13,10 @@ export const tileComments = {
   zoom: 'Zooms in while the tile is hovered, unless the user prefers reduced motion.',
   clip: 'Clips the zooming media to the corners. The tile itself does not clip, since that would cut off the focus indicator of its link.',
   gradient: 'Carries the gradient behind the text, so it grows with the text and keeps it legible on the image.',
+  textRows: 'Two rows: the lower one is as high as the text, the upper one takes what is left of the tile.',
+  mediaRows: 'Spans both rows of the tile and adopts them, so its gradient can follow the height of the text.',
+  textGradient:
+    'The gradient is its pseudo element, in the row of the text: twice as high as the text and cut off where the tile ends, so the text always lies in its dark half and stays legible on any image. The longer the text, the more of the image it dims.',
   darkScheme: 'Light content on a dark gradient or image, independent of the color scheme of the page.',
   moodImage: 'Decorative, it sets the mood and carries no information the text does not give.',
   modelImage: 'Decorative, since the tile already names the model.',

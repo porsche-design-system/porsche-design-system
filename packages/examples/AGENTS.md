@@ -118,8 +118,9 @@ src/
 │   ├── tile/                     # the tiles a page renders – every `*Tile.tsx` here, and nothing else
 │   │   ├── CategoryTile.tsx, …   # one partial per tile, placed by its page
 │   │   └── blocks/               # what the tiles are built from, never rendered by a page: Media, Gradient,
-│   │                             # Anchor, ZoomImage, CoverImage, ModelStage – comments.ts with the comments the
-│   │                             # tiles share, worded once, and shared.ts with TileProps and the helpers
+│   │                             # GradientMedia, Anchor, ZoomImage, CoverImage, ModelStage – comments.ts with
+│   │                             # the comments the tiles share, worded once, and shared.ts with TileProps and
+│   │                             # the helpers
 │   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │   │                             # MainNav (with the drilldown script), MetaActions, NoticeBar, CategoryTabs
 │   ├── footer/                   # Footer (`extended`) and SimpleFooter, sharing the legal information they close with
@@ -495,12 +496,13 @@ reaches through interaction**.
   wide page. Where the tile itself is what changes, its placement goes to a wrapper that is the container.
 
   **What a page may render lies directly in `_partials/tile/` and is named `*Tile`; what lies in `blocks/` is for the
-  tiles alone.** The blocks (`Media`, `Gradient`, `Anchor`, `ZoomImage`, `CoverImage`, `ModelStage`) are what several
-  tiles share, and a page composing them would build a tile of its own again – a unit test fails on a file outside the
-  folder importing one, and on a file directly in the folder that is not named like a tile. Two kinds of tile cannot be
-  repeated freely: `VideoTile` and `DisclosureTile` look their elements up by id, so there is one of each per page, and
-  `ProductTile` needs a `colorGroup` of its own per product, which a unit test asserts. Moving markup into a partial
-  must not change it: compare `dist/patterns/tile/**/index.html` before and after `npm run build:projects`.
+  tiles alone.** The blocks (`Media`, `Gradient`, `GradientMedia`, `Anchor`, `ZoomImage`, `CoverImage`, `ModelStage`)
+  are what several tiles share, and a page composing them would build a tile of its own again – a unit test fails on a
+  file outside the folder importing one, and on a file directly in the folder that is not named like a tile. Two kinds
+  of tile cannot be repeated freely: `VideoTile` and `DisclosureTile` look their elements up by id, so there is one of
+  each per page, and `ProductTile` needs a `colorGroup` of its own per product, which a unit test asserts. Moving markup
+  into a partial must not change it: compare `dist/patterns/tile/**/index.html` before and after
+  `npm run build:projects`.
 
 - **The navigation is rendered recursively.** A `NavItem` with `children` becomes a `p-drilldown-item` (plus a leading
   entry pointing at its own page, since a level is not a link), one without becomes a `p-drilldown-link`. Both are valid

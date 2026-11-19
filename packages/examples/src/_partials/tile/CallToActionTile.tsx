@@ -1,5 +1,6 @@
 import { Comment } from '../Comment.tsx';
 import { tileComments } from './blocks/comments.ts';
+import { GradientMedia } from './blocks/GradientMedia.tsx';
 import { joinClasses, type TileHeadingTag, type TileImageSource, type TileProps } from './blocks/shared.ts';
 import { ZoomImage } from './blocks/ZoomImage.tsx';
 
@@ -42,7 +43,7 @@ export const CallToActionTile = ({
           needs more space than the aspect ratio provides extends the tile beyond it.
         </Comment>
       )}
-      <Comment>Two rows: the lower one is as high as the text, the upper one takes what is left of the tile.</Comment>
+      <Comment>{tileComments.textRows}</Comment>
       <div
         class={joinClasses(
           'group relative isolate grid grid-rows-[minmax(0,1fr)_auto]',
@@ -50,24 +51,10 @@ export const CallToActionTile = ({
           'rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]'
         )}
       >
-        <Comment>{tileComments.clip}</Comment>
-        <Comment>
-          Spans both rows of the tile and adopts them, so its gradient can follow the height of the text.
-        </Comment>
-        <Comment>
-          The gradient is its pseudo element, in the row of the text: twice as high as the text and cut off where the
-          tile ends, so the text always lies in its dark half and stays legible on any image. The longer the text, the
-          more of the image it dims.
-        </Comment>
-        <div
-          class={joinClasses(
-            'relative -z-1 col-start-1 row-start-1 row-span-2 grid grid-rows-subgrid overflow-clip rounded-[inherit]',
-            'after:absolute after:row-start-2 after:inset-x-0 after:bottom-0 after:h-[200%] after:bg-fade-to-t'
-          )}
-        >
+        <GradientMedia>
           <Comment>{tileComments.moodImage}</Comment>
           <ZoomImage class="absolute inset-0 size-full object-cover" alt="" {...image} />
-        </div>
+        </GradientMedia>
         <div class="col-start-1 row-start-2 grid justify-items-start gap-fluid-md p-fluid-lg">
           <Comment>
             The character limit holds the lines of heading and text at a readable length, however wide the tile is.
