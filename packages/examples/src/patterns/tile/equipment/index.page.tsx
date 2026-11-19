@@ -1,7 +1,6 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { Comment } from '../../../_partials/Comment.tsx';
-import { tileComments } from '../../../_partials/tile/comments.ts';
+import { EquipmentTile } from '../../../_partials/tile/EquipmentTile.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -14,69 +13,19 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – an equipment option of a vehicle, built with HTML and Tailwind CSS.
  *
- * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
+ * The page places the tile and gives it its content. Its markup comes from the partial, with the comments on why it
+ * is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
-      <Comment>
-        The tile takes its arrangement from the width of this wrapper rather than of the window, so it fits the column
-        it is placed in.
-      </Comment>
-      <div class="col-basic @container">
-        <Comment>
-          The radius of the panel plus the padding around it make the radius of the tile, so the two curves stay
-          parallel.
-        </Comment>
-        <Comment>
-          The photograph sets the height of the tile, and a description longer than it makes the tile taller still
-          rather than running out of it.
-        </Comment>
-        <div class="flex flex-col gap-static-sm rounded-3xl bg-surface p-static-sm @lg:flex-row @lg:gap-0">
-          <Comment>The photograph is cropped to the panel, so it follows its corners.</Comment>
-          <Comment>
-            The ratio sits on the photograph rather than on the panel, so it gives the row its height while a longer
-            description can still make the panel taller. On the panel it would set the height once and leave empty space
-            under the photograph.
-          </Comment>
-          <Comment>Nothing separates the two panels but the padding of the text, as in the design.</Comment>
-          <div class="shrink-0 overflow-clip rounded-2xl @lg:w-1/2 @2xl:w-2/3">
-            <Comment>{tileComments.optionImage}</Comment>
-            <img
-              class="aspect-5/4 size-full object-cover"
-              src="/examples/media/anniversary-leather-seat.webp"
-              alt=""
-              width="800"
-              height="640"
-            />
-          </div>
-
-          <Comment>
-            The text follows the photograph in a narrow column. From a column of 32rem on it shares the tile with the
-            photograph in halves, and from one of 42rem on it takes the third of the design, which would leave a few
-            words per line before. Its action sits at the lower edge, however short the description is.
-          </Comment>
-          <div class="flex grow flex-col justify-between gap-fluid-md p-fluid-md">
-            <div class="grid gap-static-md">
-              <p-heading tag="h2" size="sm">
-                Perforated Nappa Leather
-              </p-heading>
-              <p-text color="contrast-medium">
-                The seats combine luxurious comfort with sporty precision. Designed for long-distance relaxation and
-                dynamic driving support, they feature ergonomic contours, premium materials, and meticulous
-                craftsmanship.
-              </p-text>
-            </div>
-            <Comment>
-              The one action of the option, and the only interactive element of the tile – which is why nothing spans
-              the tile the way a covering link would.
-            </Comment>
-            <p-button class="self-start" type="button" variant="secondary" compact={true}>
-              Available as Update
-            </p-button>
-          </div>
-        </div>
-      </div>
+      <EquipmentTile
+        class="col-basic"
+        heading="Perforated Nappa Leather"
+        text="The seats combine luxurious comfort with sporty precision. Designed for long-distance relaxation and dynamic driving support, they feature ergonomic contours, premium materials, and meticulous craftsmanship."
+        action="Available as Update"
+        image={{ src: '/examples/media/anniversary-leather-seat.webp', width: 800, height: 640 }}
+      />
     </main>
   </PatternPage>
 );
