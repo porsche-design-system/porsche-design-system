@@ -14,7 +14,6 @@ import TileCallToActionPage from '../../../src/patterns/tile/call-to-action/inde
 import TileCategoryPage from '../../../src/patterns/tile/category/index.page.tsx';
 import TileDisclosurePage from '../../../src/patterns/tile/disclosure/index.page.tsx';
 import TileEquipmentPage from '../../../src/patterns/tile/equipment/index.page.tsx';
-import TileEquipmentStackedPage from '../../../src/patterns/tile/equipment-stacked/index.page.tsx';
 import TileImagePage from '../../../src/patterns/tile/image/index.page.tsx';
 import TileModelNavigationPage from '../../../src/patterns/tile/model-navigation/index.page.tsx';
 import TileModelSelectionPage from '../../../src/patterns/tile/model-selection/index.page.tsx';
@@ -82,7 +81,6 @@ export const patternPages = [
   ['patterns/tile/call-to-action', TileCallToActionPage],
   ['patterns/tile/model-teaser', TileModelTeaserPage],
   ['patterns/tile/equipment', TileEquipmentPage],
-  ['patterns/tile/equipment-stacked', TileEquipmentStackedPage],
   ['patterns/tile/support', TileSupportPage],
 ] as const;
 
@@ -96,7 +94,10 @@ export const tilePages = patternPages.filter(([path]) => path.startsWith('patter
  * the tile, the one link that opens it – are counted per tile there instead and asserted on the page of their own.
  */
 export const singleTilePages = tilePages.filter(
-  ([path]) => !['patterns/tile/category', 'patterns/tile/product', 'patterns/tile/support'].includes(path)
+  ([path]) =>
+    !['patterns/tile/category', 'patterns/tile/equipment', 'patterns/tile/product', 'patterns/tile/support'].includes(
+      path
+    )
 );
 
 export const examplePages = [...templatePages, ...patternPages];

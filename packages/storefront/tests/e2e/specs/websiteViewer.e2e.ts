@@ -29,7 +29,6 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
       'patterns/tile/product',
       'patterns/tile/vehicle-listing',
       'patterns/tile/equipment',
-      'patterns/tile/equipment-stacked',
       'patterns/tile/disclosure',
       'patterns/tile/support',
     ],
