@@ -29,7 +29,7 @@ const Page = () => (
         follow its corners themselves.
       </Comment>
       <Comment>{tileComments.ownHeight}</Comment>
-      <div class="col-extended self-start relative isolate grid aspect-16/9 rounded-3xl scheme-only-dark">
+      <div class="col-extended self-start @container relative isolate grid aspect-16/9 rounded-3xl scheme-only-dark">
         <Comment>{tileComments.moodImage}</Comment>
         <Comment>{tileComments.coverImage}</Comment>
         <img
@@ -56,10 +56,11 @@ const Page = () => (
             be stepped through as a set.
           </Comment>
           <Comment>
-            One below the other until the large breakpoint, where three of them still leave each one room for a line of
-            text.
+            One below the other until the tile is 64rem wide, where three of them still leave each one room for a line
+            of text. What decides is the width of the tile rather than the one of the window, so it fits the column it
+            is placed in.
           </Comment>
-          <ul class="grid w-full grid-cols-1 gap-fluid-md lg:grid-cols-3">
+          <ul class="grid w-full grid-cols-1 gap-fluid-md @5xl:grid-cols-3">
             <Comment>{tileComments.coverTile}</Comment>
             <Comment>
               The frosted background lets the image through and blurs what lies behind it, which keeps the text legible

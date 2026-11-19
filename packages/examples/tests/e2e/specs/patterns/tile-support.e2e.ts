@@ -6,7 +6,7 @@ import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
  * `src/patterns/tile/support` – a tile holding three smaller ones, each opening one way to reach a person.
  *
  * What is asserted here is what the nesting has to get right: the outer tile is no link itself, the three inside it
- * are, and they stand side by side on a wide viewport and in a single column on a narrow one.
+ * are, and they stand side by side in a wide tile and in a single column in a narrow one.
  */
 
 const url = getExampleUrl('patterns-tile-support');
@@ -38,15 +38,19 @@ test('opens three pages from inside one tile that opens none', async ({ page }) 
   await expect(page.locator('#main li a')).toHaveCount(3);
 });
 
-/** The width from which the three tiles share a row – `lg` of this monorepo is 1300px, not the 1024px of Tailwind. */
-const rowWidth = 1300;
+/** The width of the tile from which the three it holds share a row – 64rem, a container query of the tile. */
+const rowWidth = 1024;
+
+const getTileWidth = async (page: Page) =>
+  (await page.locator('#main ul').locator('xpath=../..').boundingBox())?.width ?? 0;
 
 test('stands the held tiles side by side, or one below the other', async ({ page }) => {
   await setupExamplePage(page, url);
 
-  // Asserted around the breakpoint rather than for the viewport of the project, which would only ever reach one of the
-  // two arrangements – both device profiles of this suite are narrower than it.
-  await page.setViewportSize({ width: rowWidth, height: 900 });
+  // Asserted on either side of the width that decides rather than for the viewport of the project, which would only
+  // ever reach one of the two arrangements. What decides is the width of the tile, so it is measured at both.
+  await page.setViewportSize({ width: 1400, height: 900 });
+  expect(await getTileWidth(page)).toBeGreaterThanOrEqual(rowWidth);
   const [first, second, third] = await getBoxes(page);
 
   expect(first.top).toBe(second.top);
@@ -54,7 +58,8 @@ test('stands the held tiles side by side, or one below the other', async ({ page
   expect(first.left).toBeLessThan(second.left);
   expect(second.left).toBeLessThan(third.left);
 
-  await page.setViewportSize({ width: rowWidth - 1, height: 900 });
+  await page.setViewportSize({ width: 1200, height: 900 });
+  expect(await getTileWidth(page)).toBeLessThan(rowWidth);
   const [fourth, fifth, sixth] = await getBoxes(page);
 
   expect(fourth.left).toBe(fifth.left);
