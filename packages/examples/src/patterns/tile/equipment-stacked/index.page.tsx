@@ -1,7 +1,6 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { Comment } from '../../../_partials/Comment.tsx';
-import { tileComments } from '../../../_partials/tile/comments.ts';
+import { EquipmentStackedTile } from '../../../_partials/tile/EquipmentStackedTile.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -14,41 +13,19 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – an equipment option with its panels stacked, built with HTML and Tailwind CSS.
  *
- * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
+ * The page places the tile and gives it its content. Its markup comes from the partial, with the comments on why it
+ * is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
-      <Comment>
-        The radius of the panel plus the padding around it make the radius of the tile, so the two curves stay parallel.
-        Nothing in the tile is interactive, so no focus indicator has to stay outside the frame.
-      </Comment>
-      <div class="col-basic justify-self-center w-full max-w-[560px] grid gap-static-sm rounded-3xl bg-surface p-static-sm">
-        <Comment>The photograph is the upper panel: cropped to its ratio, it rounds its corners itself.</Comment>
-        <Comment>{tileComments.optionImage}</Comment>
-        <img
-          class="aspect-9/4 w-full object-cover rounded-2xl"
-          src="/examples/media/burmester-speaker.webp"
-          alt=""
-          width="1696"
-          height="754"
-        />
-
-        <div class="grid gap-static-md p-fluid-md">
-          <p-heading tag="h2" size="lg">
-            Burmester® High-End Surround Sound.¹
-          </p-heading>
-          <p-text size="sm" color="contrast-medium">
-            Twenty-one loudspeakers, each driven by its own amplifier channel, are placed and tuned to the acoustics of
-            this interior. The result is a sound image that stays precise at every speed, from the first row to the
-            last.
-          </p-text>
-          <Comment>The marker ties the note to the claim it qualifies, so it is read in context.</Comment>
-          <p-text class="mt-fluid-sm" size="2xs" color="contrast-medium">
-            ¹Optionally available at extra cost.
-          </p-text>
-        </div>
-      </div>
+      <EquipmentStackedTile
+        class="col-basic justify-self-center w-full max-w-[560px]"
+        heading="Burmester® High-End Surround Sound.¹"
+        text="Twenty-one loudspeakers, each driven by its own amplifier channel, are placed and tuned to the acoustics of this interior. The result is a sound image that stays precise at every speed, from the first row to the last."
+        note="¹Optionally available at extra cost."
+        image={{ src: '/examples/media/burmester-speaker.webp', width: 1696, height: 754 }}
+      />
     </main>
   </PatternPage>
 );
