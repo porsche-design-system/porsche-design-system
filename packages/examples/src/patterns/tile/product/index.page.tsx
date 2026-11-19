@@ -53,6 +53,7 @@ const Page = () => (
             Add to wishlist
           </p-button-pure>
         </div>
+        <Comment>Decorative, since the link spanning the tile and the text below it already name the product.</Comment>
         <Comment>{tileComments.fill}</Comment>
         <Comment>{tileComments.zoom}</Comment>
         <img

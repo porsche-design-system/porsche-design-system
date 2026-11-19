@@ -38,6 +38,7 @@ const Page = () => (
         and a link covering the tile would lie over all of them. The heading names the vehicle, the actions open it.
       </Comment>
       <div class="col-basic justify-self-center w-full max-w-[400px] flex flex-col gap-fluid-md rounded-3xl bg-canvas p-fluid-md">
+        <Comment>{tileComments.modelImage}</Comment>
         <Comment>Cut out against the tile, so no box has to be clipped around it.</Comment>
         <img
           class="w-full px-fluid-md"
