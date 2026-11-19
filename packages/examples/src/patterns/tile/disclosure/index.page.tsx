@@ -1,8 +1,6 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { Comment } from '../../../_partials/Comment.tsx';
-import { Script } from '../../../_partials/Script.tsx';
-import { tileComments } from '../../../_partials/tile/comments.ts';
+import { DisclosureTile } from '../../../_partials/tile/DisclosureTile.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -15,70 +13,20 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – a subject with details on demand, built with HTML and Tailwind CSS.
  *
- * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
+ * The page places the tile and gives it its content. Its markup comes from the partial, with the comments on why it
+ * is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
-      <Comment>
-        The aspect ratio is a preferred size only: expanded details extend the tile beyond it, which clipping would
-        prevent. So the tile does not clip, and the image and the gradient follow its corners themselves.
-      </Comment>
-      <Comment>{tileComments.darkScheme}</Comment>
-      <Comment>{tileComments.ownHeight}</Comment>
-      <div
-        id="disclosure-tile"
-        class="col-basic self-start justify-self-center w-full max-w-[560px] group relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark"
-      >
-        <Comment>{tileComments.moodImage}</Comment>
-        <Comment>{tileComments.coverImage}</Comment>
-        <Comment>
-          Dimmed while the details are expanded, so the attention rests on them rather than on the mood of the tile.
-        </Comment>
-        <img
-          class="absolute inset-0 -z-1 size-full object-cover rounded-[inherit] motion-safe:transition-[filter] duration-md ease-in-out group-data-[open]:brightness-50"
-          src="/examples/media/lights.jpg"
-          alt=""
-          width="1366"
-          height="2048"
-        />
-        <Comment>{tileComments.gradient}</Comment>
-        <div class="self-end px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
-          <Comment>
-            The heading is the summary itself, so that the subject and the control over its details are one thing rather
-            than two, and so that the accordion carries a semantic heading as it should.
-          </Comment>
-          <p-accordion id="disclosure-accordion" align-marker="start" compact={true}>
-            <p-heading slot="summary" tag="h2" size="lg">
-              Light design.¹
-            </p-heading>
-            <div class="grid gap-static-sm">
-              <p-text>
-                Distinctive light signatures at the front and rear make the vehicle recognisable at first glance, even
-                in the dark.
-              </p-text>
-              <p-text size="2xs" color="contrast-medium">
-                ¹Optionally available.
-              </p-text>
-            </div>
-          </p-accordion>
-        </div>
-      </div>
+      <DisclosureTile
+        class="col-basic justify-self-center w-full max-w-[560px]"
+        heading="Light design.¹"
+        text="Distinctive light signatures at the front and rear make the vehicle recognisable at first glance, even in the dark."
+        note="¹Optionally available."
+        image={{ src: '/examples/media/lights.jpg', width: 1366, height: 2048 }}
+      />
     </main>
-    <Script>{
-      /* language=JavaScript */ `
-      // Behaviour of the disclosure tile: the accordion is controlled, so the page writes back the state it asks for.
-
-      const disclosureAccordion = document.getElementById('disclosure-accordion');
-      const disclosureTile = document.getElementById('disclosure-tile');
-
-      disclosureAccordion.addEventListener('update', (e) => {
-        disclosureAccordion.open = e.detail.open;
-        // The accordion keeps its state as a property rather than an attribute, so the tile carries one for the styles.
-        disclosureTile.toggleAttribute('data-open', e.detail.open);
-      });
-    `
-    }</Script>
   </PatternPage>
 );
 
