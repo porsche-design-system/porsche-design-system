@@ -1,8 +1,6 @@
 import type { ExampleMeta } from '../../../../lib/meta.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
-import { Comment } from '../../../_partials/Comment.tsx';
-import { Script } from '../../../_partials/Script.tsx';
-import { tileComments } from '../../../_partials/tile/comments.ts';
+import { VideoTile } from '../../../_partials/tile/VideoTile.tsx';
 
 /** How the example is presented – by the storefront, in StackBlitz and in the knowledge skill. */
 export const meta: ExampleMeta = {
@@ -15,94 +13,23 @@ export const meta: ExampleMeta = {
 /**
  * Tile pattern – a category with a mood video, built with HTML and Tailwind CSS.
  *
- * The comments in the markup say why it is built the way it is, since they reach the code a consumer copies.
+ * The page places the tile and gives it its content. Its markup comes from the partial, with the comments on why it
+ * is built the way it is, since they reach the code a consumer copies.
  */
 const Page = () => (
   <PatternPage meta={meta} centered>
     <main id="main" class="grid-template py-fluid-lg">
-      <Comment>{tileComments.coverTile}</Comment>
-      <Comment>{tileComments.darkScheme}</Comment>
-      <Comment>{tileComments.ownHeight}</Comment>
-      <div class="col-basic self-start justify-self-center w-full max-w-[560px] group relative isolate grid aspect-4/3 rounded-3xl scheme-only-dark [--p-link-cover-radius:var(--radius-3xl)]">
-        <Comment>{tileComments.clip}</Comment>
-        <div class="absolute inset-0 -z-1 overflow-clip rounded-[inherit]">
-          <Comment>
-            Decorative, muted and looped. It does not start if the user prefers reduced motion, see the script.
-          </Comment>
-          <Comment>{tileComments.zoom}</Comment>
-          {/* biome-ignore lint/a11y/noAriaHiddenOnFocusable: without `controls`, the video is not focusable – it is decorative */}
-          <video
-            id="tile-video"
-            class="size-full object-cover motion-safe:transition-[scale] duration-md ease-in-out motion-safe:group-hover:scale-105"
-            poster="/examples/media/mood-porsche-gts.webp"
-            aria-hidden="true"
-            loop
-            muted
-            autoplay
-            playsinline
-          >
-            <source src="/examples/media/mood-porsche-gts.mp4" type="video/mp4" />
-            <source src="/examples/media/mood-porsche-gts.webm" type="video/webm" />
-          </video>
-        </div>
-        <Comment>{tileComments.gradient}</Comment>
-        <div class="self-end flex flex-wrap items-center gap-fluid-sm px-fluid-md pt-fluid-lg pb-fluid-md rounded-b-[inherit] bg-fade-to-t">
-          <p-heading tag="h2" size="md">
-            GTS models
-          </p-heading>
-          <Comment>
-            Moving content that starts on its own has to be pausable. The button follows the actual state of the video,
-            see the script.
-          </Comment>
-          <Comment>{tileComments.action}</Comment>
-          <p-button
-            id="tile-video-button"
-            class="ms-auto relative z-2"
-            type="button"
-            variant="secondary"
-            icon="play"
-            hide-label="true"
-            compact="true"
-          >
-            Play video
-          </p-button>
-          <Comment>{tileComments.coverLink}</Comment>
-          <p-link variant="secondary" icon="arrow-up-right" hide-label="true" compact="true" cover={true}>
-            <a href="#">GTS models</a>
-          </p-link>
-        </div>
-      </div>
+      <VideoTile
+        class="col-basic justify-self-center w-full max-w-[560px]"
+        heading="GTS models"
+        href="#"
+        poster="/examples/media/mood-porsche-gts.webp"
+        sources={[
+          { src: '/examples/media/mood-porsche-gts.mp4', type: 'video/mp4' },
+          { src: '/examples/media/mood-porsche-gts.webm', type: 'video/webm' },
+        ]}
+      />
     </main>
-    <Script>{
-      /* language=JavaScript */ `
-      // Behaviour of the video tile: a pause button that follows the actual state of the video.
-
-      const tileVideo = document.getElementById('tile-video');
-      const tileVideoButton = document.getElementById('tile-video-button');
-
-      // Derived from the media events rather than the last click, since the autoplay can be refused by the browser.
-      // A video is paused until it plays, so the button starts in its paused state.
-      const syncTileVideoButton = () => {
-        tileVideoButton.textContent = tileVideo.paused ? 'Play video' : 'Pause video';
-        tileVideoButton.icon = tileVideo.paused ? 'play' : 'pause';
-      };
-
-      tileVideo.addEventListener('play', syncTileVideoButton);
-      tileVideo.addEventListener('pause', syncTileVideoButton);
-
-      tileVideoButton.addEventListener('click', () => {
-        tileVideo[tileVideo.paused ? 'play' : 'pause']();
-      });
-
-      // An animation that starts on its own must not start at all when the user prefers reduced motion.
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        tileVideo.autoplay = false;
-        tileVideo.pause();
-      }
-
-      syncTileVideoButton();
-    `
-    }</Script>
   </PatternPage>
 );
 
