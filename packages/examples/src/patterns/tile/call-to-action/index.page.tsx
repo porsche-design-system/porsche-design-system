@@ -6,7 +6,7 @@ import { CallToActionTile } from '../../../_partials/tile/CallToActionTile.tsx';
 export const meta: ExampleMeta = {
   title: 'Tile: Call to Action',
   description:
-    'A call to action tile promotes a service with a mood image and a link to it, e.g. Porsche Connect on porsche.com. Heading, text and link are stacked at the start of the tile, on a dark gradient that ensures their legibility, and take up to half of its width. The link stretches its clickable area over the tile, and on hover the image zooms in, unless the user prefers reduced motion. When the text needs more space than the aspect ratio provides, the tile grows beyond it.',
+    'A call to action tile promotes a service with a mood image and a link to it, e.g. Porsche Connect on porsche.com. Heading and text are limited to a readable line length and stacked with the link at the start of the tile, on a dark gradient that follows the height of the text and ensures its legibility on any image. The link stretches its clickable area over the tile, and on hover the image zooms in, unless the user prefers reduced motion. When the text needs more space than the aspect ratio provides, the tile grows beyond it.',
   colorSchemes: ['light', 'dark'],
 };
 
