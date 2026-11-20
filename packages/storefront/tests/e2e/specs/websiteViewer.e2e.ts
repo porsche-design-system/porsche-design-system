@@ -16,6 +16,23 @@ import { expectedConsoleByUrl } from '../../helpers/expectedConsole';
 const pagesWithExamples: [path: string, examples: string[]][] = [
   ['/patterns/header/', ['patterns/header/overlay', 'patterns/header/stacked']],
   ['/patterns/footer/', ['patterns/footer/extended', 'patterns/footer/simple']],
+  [
+    '/patterns/tile/',
+    [
+      'patterns/tile/image',
+      'patterns/tile/video',
+      'patterns/tile/call-to-action',
+      'patterns/tile/model-teaser',
+      'patterns/tile/category',
+      'patterns/tile/model-navigation',
+      'patterns/tile/model-selection',
+      'patterns/tile/product',
+      'patterns/tile/equipment',
+      'patterns/tile/equipment-stacked',
+      'patterns/tile/disclosure',
+      'patterns/tile/vehicle-listing',
+    ],
+  ],
   ['/patterns/forms/', ['patterns/forms/search-combobox-option-list', 'patterns/forms/search-combobox-link-list']],
   ['/patterns/feedback/', ['patterns/feedback/inline', 'patterns/feedback/dialog']],
   [

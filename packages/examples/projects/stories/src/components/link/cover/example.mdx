@@ -1,0 +1,6 @@
+With `cover`, the clickable area of the link stretches over its nearest positioned ancestor, e.g. a card with
+`position: relative`, so the whole card navigates without a second, hidden link. The ancestor also shows the focus ring
+of the link; set `--p-link-cover-radius` to its corner radius so the ring follows its corners. Content within the card
+is covered by the link, so place independent interactive elements above it, e.g. via `position: relative; z-index: 2`.
+
+The [Tile patterns](/patterns/tile) show how to build clickable tiles with `cover` for common use cases.

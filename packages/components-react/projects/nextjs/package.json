@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "next": "^16.4.3",
+    "next": "^16.4.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
@@ -44,14 +44,14 @@
     "typescript": "^6.0.3"
   },
   "optionalDependencies": {
-    "@next/swc-darwin-arm64": "^16.4.3",
-    "@next/swc-darwin-x64": "^16.4.3",
-    "@next/swc-linux-arm64-gnu": "^16.4.3",
-    "@next/swc-linux-arm64-musl": "^16.4.3",
-    "@next/swc-linux-x64-gnu": "^16.4.3",
-    "@next/swc-linux-x64-musl": "^16.4.3",
-    "@next/swc-win32-arm64-msvc": "^16.4.3",
-    "@next/swc-win32-x64-msvc": "^16.4.3"
+    "@next/swc-darwin-arm64": "^16.4.6",
+    "@next/swc-darwin-x64": "^16.4.6",
+    "@next/swc-linux-arm64-gnu": "^16.4.6",
+    "@next/swc-linux-arm64-musl": "^16.4.6",
+    "@next/swc-linux-x64-gnu": "^16.4.6",
+    "@next/swc-linux-x64-musl": "^16.4.6",
+    "@next/swc-win32-arm64-msvc": "^16.4.6",
+    "@next/swc-win32-x64-msvc": "^16.4.6"
   },
   "volta": {
     "extends": "../../../../package.json"
