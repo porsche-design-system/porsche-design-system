@@ -41,7 +41,7 @@ export const CategoryTile = ({
     <Root
       class={joinClasses(
         placement,
-        'self-start group relative isolate flex flex-col',
+        'self-start @container group relative isolate flex flex-col',
         aspect,
         'rounded-3xl bg-surface pt-fluid-md [--p-link-cover-radius:var(--radius-3xl)]'
       )}
@@ -58,7 +58,7 @@ export const CategoryTile = ({
       <Comment>{tileComments.fill}</Comment>
       <Comment>{tileComments.clip}</Comment>
       {mediaPadding && <Comment>{tileComments.mediaPadding}</Comment>}
-      <div class={joinClasses('flex-1 min-h-0 overflow-clip rounded-b-[inherit]', mediaPadding)}>
+      <div class={joinClasses('flex-1 min-h-[80cqw] overflow-clip rounded-b-[inherit]', mediaPadding)}>
         {fitComments.map((comment) => (
           <Comment key={comment}>{comment}</Comment>
         ))}

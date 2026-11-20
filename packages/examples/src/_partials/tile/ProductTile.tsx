@@ -63,7 +63,7 @@ export const ProductTile = ({
     <Root
       class={joinClasses(
         placement,
-        'self-start group relative isolate flex flex-col gap-fluid-sm',
+        'self-start @container group relative isolate flex flex-col gap-fluid-sm',
         aspect,
         'rounded-3xl bg-surface p-fluid-md'
       )}
@@ -87,7 +87,7 @@ export const ProductTile = ({
       </div>
       <Comment>Decorative, since the link and the text below already name the product.</Comment>
       <Comment>{tileComments.fill}</Comment>
-      <ZoomImage class="flex-1 min-h-0 object-contain" alt="" {...image} />
+      <ZoomImage class="flex-1 min-h-[50cqw] object-contain" alt="" {...image} />
       <div class="grid justify-items-center gap-static-xs">
         <Comment>
           Native radio buttons above the link spanning the tile, so mouse and keyboard select a color without a script.
@@ -99,9 +99,7 @@ export const ProductTile = ({
             <Swatch key={color.label} {...color} group={colorGroup} checked={index === 0} />
           ))}
         </div>
-        <p-text class="line-clamp-2" align="center">
-          {name}
-        </p-text>
+        <p-text align="center">{name}</p-text>
         <p-text color="contrast-medium" align="center">
           {price}
         </p-text>
