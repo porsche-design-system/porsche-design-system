@@ -16,6 +16,7 @@ type CommentProps = {
  *
  * A page gives a reason once: a comment whose text it has rendered before is left out, so a partial rendered several
  * times explains itself where it first stands.
+ * Comments following one another become one comment listing their reasons.
  */
 export const Comment = ({ children }: CommentProps) => {
   assertCommentText(children);

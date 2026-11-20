@@ -571,6 +571,62 @@ describe('renderPage()', () => {
     expect(renderComments(tile)).toBe('<!-- Why the tile is built this way. --><li></li>');
   });
 
+  it('should render reasons following one another as one comment, leaving out those the page has given', () => {
+    const comment = (text: string) => `<${commentTag}>${text}</${commentTag}>`;
+
+    expect(renderComments(`${comment('One.')}${comment('Two.')}\n  ${comment('Three.')}<p></p>`)).toBe(
+      '<!-- One.\nTwo.\nThree. --><p></p>'
+    );
+    // What follows the last of them stays as it is, whitespace included.
+    expect(renderComments(`${comment('One.')}${comment('Two.')} <p></p>`)).toBe('<!-- One.\nTwo. --> <p></p>');
+    expect(
+      renderComments(`${comment('One.')}<p></p>${comment('One.')}${comment('Two.')}${comment('Two.')}<p></p>`)
+    ).toBe('<!-- One. --><p></p><!-- Two. --><p></p>');
+    expect(renderComments(`${comment('One.')}<p></p>${comment('One.')}${comment('One.')}<p></p>`)).toBe(
+      '<!-- One. --><p></p><p></p>'
+    );
+  });
+
+  it('should list the reasons of a comment holding several, each broken at the line length', () => {
+    const long = Array.from({ length: 30 }, (_, index) => `word${index}`).join(' ');
+    const lines = wrapComments(`    <!-- Short.\n${long}\nLast. -->\n    <p></p>`).split('\n');
+
+    expect(lines[0]).toBe('    <!--');
+    expect(lines[1]).toBe('      - Short.');
+    expect(lines[2].startsWith('      - word0 ')).toBe(true);
+    expect(lines.slice(3, -3).every((line) => line.startsWith('        word') && line.length <= 120)).toBe(true);
+    expect(lines.slice(2, -3).join(' ').replace(/\s+/g, ' ').trim()).toBe(`- ${long}`);
+    expect(lines.slice(-3)).toEqual(['      - Last.', '    -->', '    <p></p>']);
+  });
+
+  it('should leave a comment alone that it did not render on a line of its own', () => {
+    const html = '    <!-- One. --> <p>a</p>\n    <!-- Two. -->\n<!--\n  A note.\n-->';
+
+    expect(wrapComments(html)).toBe(html);
+  });
+
+  it('should render the Comment partials before an element as one comment', async () => {
+    const html = await renderPage(() => (
+      <TemplatePage meta={{ title: 'Comment', description: 'Comment check' }}>
+        <main id="main">
+          <Comment>Why the heading is here.</Comment>
+          <Comment>Why it is the first.</Comment>
+          <h1>Comment</h1>
+        </main>
+      </TemplatePage>
+    ));
+
+    expect(html).toContain(
+      [
+        '      <!--',
+        '        - Why the heading is here.',
+        '        - Why it is the first.',
+        '      -->',
+        '      <h1>',
+      ].join('\n')
+    );
+  });
+
   it('should break a comment exceeding the line length into lines of its own, keeping its indentation', () => {
     const text = Array.from({ length: 30 }, (_, index) => `word${index}`).join(' ');
     const wrapped = wrapComments(`    <!-- ${text} -->\n    <!-- Short. -->`);

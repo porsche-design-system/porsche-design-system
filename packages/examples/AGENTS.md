@@ -419,8 +419,9 @@ reaches through interaction**.
   storefront, StackBlitz and the knowledge skill – and is read where the markup is copied, while the storefront page
   stays an introduction. Preact cannot render a comment, so the partial renders a placeholder element that
   `renderComments()` of [`lib/comment.ts`](lib/comment.ts) turns into `<!-- … -->` before formatting, and
-  `wrapComments()` breaks a comment longer than the line length into lines of its own afterwards. Write why, not what –
-  the classes say what – and word a technique several patterns share once, like
+  `wrapComments()` breaks a comment longer than the line length into lines of its own afterwards. Comments following one
+  another become one comment listing their reasons, so a block adding a reason to those of its tile does not add a
+  comment. Write why, not what – the classes say what – and word a technique several patterns share once, like
   [`tile/blocks/comments.ts`](src/_partials/tile/blocks/comments.ts): each pattern is copied on its own, so it repeats
   the comment. Within a page a reason is given once: `renderComments()` drops a comment whose text the page has given
   before, so a partial rendered three times explains itself where it first stands and its markup repeats without – give
