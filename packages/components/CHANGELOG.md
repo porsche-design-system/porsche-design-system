@@ -83,6 +83,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: the `p-link-pure` reference listed the example of a framework router with active state without its
   code, and the `p-input-search` reference cut its guidance on combobox use after the first sentence; both are now shown
   in full ([#4800](https://github.com/porsche-design-system/porsche-design-system/pull/4800))
+- `Link`: a link with an empty `href` had no focus ring
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
 
 ## [4.10.1] - 2026-10-23
 

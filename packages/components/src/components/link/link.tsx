@@ -99,7 +99,7 @@ export class Link {
       this.iconSource,
       this.variant,
       this.hideLabel,
-      !this.href,
+      this.href === undefined,
       this.compact,
       this.cover
     );
