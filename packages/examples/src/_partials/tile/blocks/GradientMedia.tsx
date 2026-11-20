@@ -20,7 +20,6 @@ type GradientMediaProps = {
 export const GradientMedia = ({ clip = tileComments.clip, children }: GradientMediaProps) => (
   <>
     <Comment>{clip}</Comment>
-    <Comment>{tileComments.mediaRows}</Comment>
     <Comment>{tileComments.textGradient}</Comment>
     <div
       class={joinClasses(

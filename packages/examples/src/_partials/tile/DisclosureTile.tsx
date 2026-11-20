@@ -37,7 +37,6 @@ export const DisclosureTile = ({
     <Comment>The aspect ratio is a preferred size only: expanded details extend the tile beyond it.</Comment>
     <Comment>{tileComments.darkScheme}</Comment>
     <Comment>{tileComments.ownHeight}</Comment>
-    <Comment>{tileComments.textRows}</Comment>
     <Root
       id="disclosure-tile"
       class={joinClasses(

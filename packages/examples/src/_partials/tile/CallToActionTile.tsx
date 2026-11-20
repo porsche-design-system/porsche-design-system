@@ -43,7 +43,6 @@ export const CallToActionTile = ({
           needs more space than the aspect ratio provides extends the tile beyond it.
         </Comment>
       )}
-      <Comment>{tileComments.textRows}</Comment>
       <div
         class={joinClasses(
           'group relative isolate grid grid-rows-[minmax(0,1fr)_auto]',

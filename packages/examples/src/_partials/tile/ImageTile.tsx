@@ -26,7 +26,6 @@ export const ImageTile = ({
     <Comment>{tileComments.coverTile}</Comment>
     <Comment>{tileComments.darkScheme}</Comment>
     <Comment>{tileComments.ownHeight}</Comment>
-    <Comment>{tileComments.textRows}</Comment>
     <Root
       class={joinClasses(
         placement,
