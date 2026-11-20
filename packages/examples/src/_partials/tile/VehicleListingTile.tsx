@@ -9,12 +9,16 @@ const Figure = ({ value, term }: VehicleFigure) => (
   // Reversed, so that the term still comes first in the markup. Packed to the end of that axis, which is the top, so
   // that the figures of a row align however long their terms are.
   <div class="flex flex-col-reverse justify-end gap-static-xs">
-    <p-text size="xs" color="contrast-medium">
-      {term}
-    </p-text>
-    <p-text size="md" weight="semibold">
-      {value}
-    </p-text>
+    <dt>
+      <p-text tag="span" size="xs" color="contrast-medium">
+        {term}
+      </p-text>
+    </dt>
+    <dd>
+      <p-text tag="span" size="md" weight="semibold">
+        {value}
+      </p-text>
+    </dd>
   </div>
 );
 
@@ -93,11 +97,15 @@ export const VehicleListingTile = ({
           ))}
         </ul>
       </div>
-      <div class="grid grid-cols-2 gap-fluid-md">
+      <Comment>
+        A description list, so that every value is read with its term. The term comes first in the markup and is shown
+        below its value.
+      </Comment>
+      <dl class="grid grid-cols-2 gap-fluid-md">
         {figures.map((figure) => (
           <Figure key={figure.term} {...figure} />
         ))}
-      </div>
+      </dl>
       <Comment>
         The three links each name the vehicle for screen readers, since a result list repeats these labels on every
         tile.
