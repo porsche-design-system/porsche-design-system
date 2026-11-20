@@ -68,16 +68,11 @@ export const EquipmentTile = ({
     <>
       <Comment>
         {joinClasses(
-          'The radius of the panel plus the padding around it make the radius of the tile, so the two curves stay parallel.',
+          'Panel radius plus padding equals the radius of the tile, so the two curves stay parallel.',
           !action && 'Nothing in the tile is interactive, so no focus indicator has to stay outside the frame.'
         )}
       </Comment>
-      {isAdaptive && (
-        <Comment>
-          The photograph sets the height of the tile, and a description longer than it makes the tile taller still
-          rather than running out of it.
-        </Comment>
-      )}
+      {isAdaptive && <Comment>The photograph sets the height of the tile, a longer description extends it.</Comment>}
     </>
   );
 
@@ -87,9 +82,8 @@ export const EquipmentTile = ({
       {isAdaptive && (
         <>
           <Comment>
-            The ratio sits on the photograph rather than on the panel, so it gives the row its height while a longer
-            description can still make the panel taller. On the panel it would set the height once and leave empty space
-            under the photograph.
+            The ratio sits on the photograph rather than on the panel, where a longer description would leave empty
+            space under the photograph.
           </Comment>
           <Comment>Nothing separates the two panels but the padding of the text, as in the design.</Comment>
         </>
@@ -106,9 +100,8 @@ export const EquipmentTile = ({
       </div>
       {isAdaptive && (
         <Comment>
-          The text follows the photograph in a narrow column. From a column of 32rem on it shares the tile with the
-          photograph in halves, and from one of 42rem on it takes the third of the design, which would leave a few words
-          per line before.
+          Beside the photograph in halves from a column of 32rem on. The third of the design only from 42rem on, since
+          it would leave a few words per line before.
         </Comment>
       )}
       <div class="flex grow flex-col gap-fluid-md p-fluid-md">
@@ -122,7 +115,7 @@ export const EquipmentTile = ({
         </div>
         {note && (
           <>
-            <Comment>The marker ties the note to the claim it qualifies, so it is read in context.</Comment>
+            <Comment>The marker ties the note to the claim it qualifies.</Comment>
             <p-text size="2xs" color="contrast-medium">
               {note}
             </p-text>
@@ -130,10 +123,7 @@ export const EquipmentTile = ({
         )}
         {action && (
           <>
-            <Comment>
-              The one action of the option, and the only interactive element of the tile – which is why nothing spans
-              the tile the way a covering link would.
-            </Comment>
+            <Comment>The only interactive element of the tile, which is why no link covers the tile.</Comment>
             <Comment>Pushed to the lower edge of the panel, however short the description is.</Comment>
             <p-button class="self-start mt-auto" type="button" variant="secondary" compact={true}>
               {action}
@@ -147,10 +137,7 @@ export const EquipmentTile = ({
   // The container of the adaptive tile has to be an element around it: the tile itself is what changes its direction.
   return isAdaptive ? (
     <>
-      <Comment>
-        The tile takes its arrangement from the width of this wrapper rather than of the window, so it fits the column
-        it is placed in.
-      </Comment>
+      <Comment>{tileComments.container}</Comment>
       <Root class={joinClasses(placement, '@container')}>
         {frameComments}
         <div class={frameClass}>{panels}</div>

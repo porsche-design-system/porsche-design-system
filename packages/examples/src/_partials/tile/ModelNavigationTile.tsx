@@ -31,10 +31,7 @@ export const ModelNavigationTile = ({
 }: ModelNavigationTileProps) => (
   <>
     <Comment>{tileComments.anchorTile}</Comment>
-    <Comment>
-      Without a background of its own at rest, the tile blends into the surface it is placed on and reveals its
-      background on hover.
-    </Comment>
+    <Comment>No background at rest, so the tile blends into its surface until it is hovered.</Comment>
     <Comment>{tileComments.ownHeight}</Comment>
     <Root
       class={joinClasses(
@@ -49,13 +46,10 @@ export const ModelNavigationTile = ({
         {heading}
       </p-heading>
       <Comment>{tileComments.modelImage}</Comment>
+      <Comment>{tileComments.vehicleWidth}</Comment>
       <Comment>
-        Its width is a share of the tile, so the vehicle keeps its scale at every size, and the room beside it is the
-        space it moves into.
-      </Comment>
-      <Comment>
-        Moves towards the end while the tile is hovered, mirrored for right to left, unless the user prefers reduced
-        motion.
+        Moves into the room beside it while the tile is hovered, mirrored for right to left, unless the user prefers
+        reduced motion.
       </Comment>
       <img
         class="self-center w-4/5 motion-safe:transition-[translate] duration-md ease-in-out motion-safe:group-hover:translate-x-static-md motion-safe:rtl:group-hover:-translate-x-static-md"

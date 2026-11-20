@@ -46,11 +46,9 @@ export const DisclosureTile = ({
         'rounded-3xl scheme-only-dark'
       )}
     >
-      <GradientMedia clip="Clips the image and its gradient to the corners. The tile itself does not clip, since that would keep expanded details from extending it.">
+      <GradientMedia clip="Clips the image and its gradient, since a clipping tile could not be extended by its details.">
         <Comment>{tileComments.moodImage}</Comment>
-        <Comment>
-          Dimmed while the details are expanded, so the attention rests on them rather than on the mood of the tile.
-        </Comment>
+        <Comment>Dimmed while the details are expanded, so the attention rests on them.</Comment>
         <img
           class="absolute inset-0 size-full object-cover motion-safe:transition-[filter] duration-md ease-in-out group-data-[open]:brightness-50"
           src={image.src}
@@ -61,8 +59,8 @@ export const DisclosureTile = ({
       </GradientMedia>
       <div class="col-start-1 row-start-2 p-fluid-md">
         <Comment>
-          The heading is the summary itself, so that the subject and the control over its details are one thing rather
-          than two, and so that the accordion carries a semantic heading as it should.
+          The heading is the summary, so subject and control are one element and the accordion carries a semantic
+          heading.
         </Comment>
         <p-accordion id="disclosure-accordion" align-marker="start" compact={true}>
           <p-heading slot="summary" tag={tag} size="lg">

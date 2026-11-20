@@ -42,11 +42,10 @@ export const ModelSelectionTile = ({
       )}
     >
       <Comment>
-        Signature and vehicle share one cell, the vehicle overlapping the signature and placed in front of it. The
-        signature takes the surface color, which stands out subtly from the canvas of the tile, and stays narrower than
-        the vehicle, so only its upper part is read.
+        The vehicle covers the lower part of the signature, which takes the surface color to stand out subtly from the
+        canvas of the tile.
       </Comment>
-      <Comment>Its width is a share of the tile, so the vehicle keeps its scale at every size.</Comment>
+      <Comment>{tileComments.vehicleWidth}</Comment>
       <ModelStage
         class="w-4/5"
         model={model}

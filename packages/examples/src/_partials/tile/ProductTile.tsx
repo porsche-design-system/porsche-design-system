@@ -73,8 +73,8 @@ export const ProductTile = ({
         {tagLabel && <p-tag variant="secondary">{tagLabel}</p-tag>}
         <Comment>{tileComments.action}</Comment>
         <Comment>
-          Its padding enlarges the target size, and makes it as tall as a tag, so it sits at the same height in a list
-          whether a product has a tag or not. The negative margin keeps the icon on the edge of the content.
+          Its padding enlarges the target and makes it as tall as a tag, so it sits at the same height with or without
+          one. The negative margin keeps the icon on the edge of the content.
         </Comment>
         <p-button-pure
           class="ms-auto relative z-2 p-static-xs -me-static-xs"
@@ -85,15 +85,14 @@ export const ProductTile = ({
           Add to wishlist
         </p-button-pure>
       </div>
-      <Comment>Decorative, since the link spanning the tile and the text below it already name the product.</Comment>
+      <Comment>Decorative, since the link and the text below already name the product.</Comment>
       <Comment>{tileComments.fill}</Comment>
       <ZoomImage class="flex-1 min-h-0 object-contain" alt="" {...image} />
       <div class="grid justify-items-center gap-static-xs">
         <Comment>
-          Like the wishlist button, the colors stay actions of their own above the link spanning the tile. They are
-          native radio buttons, selectable by mouse and keyboard without any script. Each provides a target size of 24
-          pixels around its swatch and a contour that keeps a dark color apart from a dark surface. High contrast mode
-          replaces the colors, so the chosen swatch is filled with the system color of a selection.
+          Native radio buttons above the link spanning the tile, so mouse and keyboard select a color without a script.
+          Each has a target of 24 pixels and a contour that sets a dark color apart from a dark surface. In high
+          contrast mode, which replaces the colors, the chosen one takes the system color of a selection.
         </Comment>
         <div class="relative z-2 flex gap-static-2xs" role="radiogroup" aria-label="Color">
           {colors.map((color, index) => (

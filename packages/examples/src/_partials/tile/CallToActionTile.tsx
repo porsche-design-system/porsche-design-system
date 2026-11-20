@@ -30,17 +30,14 @@ export const CallToActionTile = ({
   image,
 }: CallToActionTileProps) => (
   <>
-    <Comment>
-      The tile takes its shape from the width of this wrapper rather than of the window, so it fits the column it is
-      placed in.
-    </Comment>
+    <Comment>{tileComments.container}</Comment>
     <Root class={joinClasses(placement, '@container')}>
       <Comment>{tileComments.coverTile}</Comment>
       <Comment>{tileComments.darkScheme}</Comment>
       {!aspect && (
         <Comment>
-          Upright in a narrow column, where the text needs the height, and wide from a column of 32rem on. Text that
-          needs more space than the aspect ratio provides extends the tile beyond it.
+          Upright in a narrow column, where the text needs the height. Longer text extends the tile beyond its aspect
+          ratio.
         </Comment>
       )}
       <div
@@ -55,9 +52,7 @@ export const CallToActionTile = ({
           <ZoomImage class="absolute inset-0 size-full object-cover" alt="" {...image} />
         </GradientMedia>
         <div class="col-start-1 row-start-2 grid justify-items-start gap-fluid-md p-fluid-lg">
-          <Comment>
-            The character limit holds the lines of heading and text at a readable length, however wide the tile is.
-          </Comment>
+          <Comment>Keeps the lines at a readable length, however wide the tile is.</Comment>
           <div class="grid gap-fluid-sm max-w-[40ch]">
             <p-heading tag={tag} size="lg">
               {heading}

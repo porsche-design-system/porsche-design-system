@@ -13,6 +13,8 @@ export const tileComments = {
   clip: 'Clips the zooming media to the corners, which the tile cannot do without cutting off the focus indicator of its link.',
   textGradient:
     'Adopts the two rows of the tile, the lower one as high as the text. Its gradient is twice as high as that row, so the text lies in the dark half and stays legible on any image.',
+  container: 'The tile follows the width of this wrapper rather than of the window, so it fits any column.',
+  vehicleWidth: 'Its width is a share of the tile, so the vehicle keeps its scale at every size.',
   darkScheme: 'Light text on dark media, whatever the color scheme of the page.',
   moodImage: 'Decorative: it sets the mood and adds nothing to the text.',
   modelImage: 'Decorative, since the tile already names the model.',

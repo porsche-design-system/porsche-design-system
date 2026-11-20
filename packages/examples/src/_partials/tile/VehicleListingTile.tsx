@@ -62,32 +62,26 @@ export const VehicleListingTile = ({
 }: VehicleListingTileProps) => (
   <>
     <Comment>
-      The tile is no link of its own. It carries four controls – the popover, the technical data and the two actions –
-      and a link covering the tile would lie over all of them. The heading names the vehicle, the actions open it.
+      No link covers the tile: it would lie over its four controls. The heading names the vehicle, the actions open it.
     </Comment>
     <Root class={joinClasses(placement, 'grid gap-fluid-md rounded-3xl bg-canvas p-fluid-md')}>
       <Comment>{tileComments.modelImage}</Comment>
       <Comment>Cut out against the tile, so no box has to be clipped around it.</Comment>
-      <Comment>Its width is a share of the tile, so the vehicle keeps its scale at every size.</Comment>
+      <Comment>{tileComments.vehicleWidth}</Comment>
       <img class="justify-self-center w-4/5" src={image.src} alt="" width={image.width} height={image.height} />
       <div class="grid gap-fluid-sm">
         <div class="grid gap-static-xs">
           <p-heading tag={tag} size="lg">
             {model}
           </p-heading>
-          <Comment>
-            The popover sits in the line it explains, so that it is reached right after the price rather than at the end
-            of the tile.
-          </Comment>
+          <Comment>The popover sits in the line it explains, so it is reached right after the price.</Comment>
           <p-text color="contrast-medium">
             {price}
             {'\u00a0'}
             <p-popover aria="{ 'aria-label': 'More information about the price' }">{priceInfo}</p-popover>
           </p-text>
         </div>
-        <Comment>
-          A list, so that how many properties describe the vehicle is announced before the first of them is read.
-        </Comment>
+        <Comment>A list, so the number of properties is announced before the first is read.</Comment>
         <ul class="flex flex-wrap gap-static-xs">
           <li>
             <p-tag variant="primary">{year}</p-tag>
@@ -109,8 +103,7 @@ export const VehicleListingTile = ({
         tile.
       </Comment>
       <Comment>
-        One action below the other, whatever the width: they are of equal weight to the reader, and a row would make the
-        first look like the lesser half of the second.
+        One below the other at any width: side by side, the first would look like the lesser half of the second.
       </Comment>
       <div class="grid gap-static-md">
         <p-link-pure class="justify-self-center" icon="none" underline={true}>

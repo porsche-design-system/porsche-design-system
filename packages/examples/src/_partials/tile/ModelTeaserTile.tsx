@@ -36,10 +36,7 @@ export const ModelTeaserTile = ({
   <>
     <Comment>{tileComments.coverTile}</Comment>
     <Comment>{tileComments.ownHeight}</Comment>
-    <Comment>
-      What the tile holds follows the width of the tile rather than of the window, so it fits the column the tile is
-      placed in.
-    </Comment>
+    <Comment>Its content follows the width of the tile rather than of the window, so it fits any column.</Comment>
     <Root
       class={joinClasses(
         placement,
@@ -49,13 +46,12 @@ export const ModelTeaserTile = ({
       )}
     >
       <Comment>
-        Signature and vehicle share one cell, and the vehicle is placed in front of the signature. The image keeps free
-        room above the roof, so the vehicle overlaps the lower part of the signature without being moved. The signature
-        takes the canvas color, which stands out subtly from the surface of the tile.
+        The vehicle covers the lower part of the signature without being moved, since its image keeps free room above
+        the roof. The signature takes the canvas color to stand out subtly from the surface of the tile.
       </Comment>
       <Comment>
-        Its width fills the room inside the padding of a narrow tile, and once the tile offers 20rem inside its padding
-        it is a share of the tile, so the vehicle keeps its scale at every size.
+        As wide as a narrow tile allows. From 20rem inside the padding on, a share of the tile, so the vehicle keeps its
+        scale.
       </Comment>
       <ModelStage
         class="w-full @xs:w-4/5"
@@ -71,10 +67,7 @@ export const ModelTeaserTile = ({
           {text}
         </p-text>
       </div>
-      <Comment>
-        One below the other and as wide as the tile while it is narrow, side by side once the tile offers 20rem inside
-        its padding.
-      </Comment>
+      <Comment>Stacked at full width in a narrow tile, where two buttons side by side would not fit.</Comment>
       <div class="flex flex-col w-full gap-static-md @xs:w-auto @xs:flex-row @xs:flex-wrap @xs:justify-center">
         <Comment>{tileComments.coverLink}</Comment>
         <p-link variant="primary" cover={true}>
