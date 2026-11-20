@@ -7,20 +7,18 @@ import { joinClasses, type TileHeadingTag, type TileImageSource, type TilePlacem
  * What the two arrangements of the tile differ in – spelled out, so Tailwind finds every class.
  *
  * `adaptive` puts the photograph beside the text once the tile is wide enough, `stacked` keeps it above the text
- * however wide the tile is, with a wider photograph and a smaller text.
+ * however wide the tile is, with a wider photograph.
  */
 const variants = {
   adaptive: {
     frame: '@lg:flex-row @lg:gap-0',
     photograph: '@lg:w-1/2 @2xl:w-2/3',
     ratio: 'aspect-5/4',
-    textSize: undefined,
   },
   stacked: {
     frame: undefined,
     photograph: undefined,
     ratio: 'aspect-9/4',
-    textSize: 'sm',
   },
 } as const;
 
@@ -59,7 +57,7 @@ export const EquipmentTile = ({
   image,
 }: EquipmentTileProps) => {
   const isAdaptive = variant === 'adaptive';
-  const { frame, photograph, ratio, textSize } = variants[variant];
+  const { frame, photograph, ratio } = variants[variant];
   const frameClass = joinClasses('flex flex-col gap-static-sm rounded-3xl bg-surface p-static-sm', frame);
 
   const frameComments = (
@@ -106,9 +104,7 @@ export const EquipmentTile = ({
           <p-heading tag={tag} size="lg">
             {heading}
           </p-heading>
-          <p-text size={textSize} color="contrast-medium">
-            {text}
-          </p-text>
+          <p-text color="contrast-medium">{text}</p-text>
         </div>
         {note && (
           <>
