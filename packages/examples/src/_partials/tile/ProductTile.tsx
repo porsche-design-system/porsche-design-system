@@ -16,7 +16,7 @@ type SwatchProps = ProductColor & { group: string; checked: boolean };
 /** A color of the product, as a native radio button – selectable by mouse and keyboard without any script. */
 const Swatch = ({ label, class: color, group, checked }: SwatchProps) => (
   <input
-    class={`${color} appearance-none size-6 p-static-xs bg-clip-content rounded-full border border-transparent cursor-pointer motion-safe:transition-colors duration-sm ease-in-out hover:not-checked:border-contrast-medium checked:border-primary forced-colors:checked:bg-[SelectedItem] outline-1 outline-contrast-low -outline-offset-5 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2`}
+    class={`${color} appearance-none size-6 p-static-xs bg-clip-content rounded-full border border-transparent cursor-pointer motion-safe:transition-colors duration-sm ease-in-out hover:not-checked:border-contrast-medium checked:border-primary outline-1 outline-contrast-low -outline-offset-5 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 forced-color-adjust-none forced-colors:outline-[CanvasText] forced-colors:hover:not-checked:border-[Highlight] forced-colors:checked:border-[CanvasText] forced-colors:focus-visible:outline-[Highlight]`}
     type="radio"
     name={group}
     value={label.toLowerCase()}
@@ -91,8 +91,9 @@ export const ProductTile = ({
       <div class="grid justify-items-center gap-static-xs">
         <Comment>
           Native radio buttons above the link spanning the tile, so mouse and keyboard select a color without a script.
-          Each has a target of 24 pixels and a contour that sets a dark color apart from a dark surface. In high
-          contrast mode, which replaces the colors, the chosen one takes the system color of a selection.
+          Each has a target of 24 pixels and a contour that sets a dark color apart from a dark surface. High contrast
+          mode would replace the colors, which are the content here, so the swatches keep theirs and take system colors
+          for contour, selection and focus.
         </Comment>
         <div class="relative z-2 flex gap-static-2xs" role="radiogroup" aria-label="Color">
           {colors.map((color, index) => (
