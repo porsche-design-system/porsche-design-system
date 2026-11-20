@@ -25,7 +25,12 @@ const Page = () => (
         heading="Burmester® High-End Surround Sound.¹"
         text="Twenty-one loudspeakers, each driven by its own amplifier channel, are placed and tuned to the acoustics of this interior. The result is a sound image that stays precise at every speed, from the first row to the last."
         note="¹Optionally available at extra cost."
-        image={{ src: '/examples/media/burmester-speaker.webp', width: 1696, height: 754 }}
+        image={{
+          src: '/examples/media/burmester-speaker.webp',
+          alt: 'Perforated metal cover of a Burmester loudspeaker in a door panel trimmed in brown leather',
+          width: 1696,
+          height: 754,
+        }}
       />
     </main>
   </PatternPage>

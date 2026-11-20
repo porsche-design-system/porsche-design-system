@@ -24,7 +24,12 @@ const Page = () => (
         heading="Perforated Nappa Leather"
         text="The seats combine luxurious comfort with sporty precision. Designed for long-distance relaxation and dynamic driving support, they feature ergonomic contours, premium materials, and meticulous craftsmanship."
         action="Available as Update"
-        image={{ src: '/examples/media/anniversary-leather-seat.webp', width: 800, height: 640 }}
+        image={{
+          src: '/examples/media/anniversary-leather-seat.webp',
+          alt: 'Backrest of a seat in cream leather with brown bolsters and an embossed Porsche lettering',
+          width: 800,
+          height: 640,
+        }}
       />
     </main>
   </PatternPage>

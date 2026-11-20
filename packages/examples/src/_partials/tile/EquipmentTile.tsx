@@ -35,8 +35,8 @@ type EquipmentTileProps = TilePlacement & {
   action?: string;
   /** What qualifies the heading or the text, e.g. the note a marker refers to. */
   note?: string;
-  /** A photograph of the option – decorative, since the heading names it. */
-  image: TileImageSource;
+  /** A photograph of the option. Its alternative text says what it shows of the option, beyond the name in the heading. */
+  image: TileImageSource & { alt: string };
 };
 
 /**
@@ -87,11 +87,10 @@ export const EquipmentTile = ({
         </>
       )}
       <div class={joinClasses('shrink-0 overflow-clip rounded-2xl', photograph)}>
-        <Comment>{tileComments.optionImage}</Comment>
         <img
           class={joinClasses(ratio, 'size-full object-cover')}
           src={image.src}
-          alt=""
+          alt={image.alt}
           width={image.width}
           height={image.height}
         />
