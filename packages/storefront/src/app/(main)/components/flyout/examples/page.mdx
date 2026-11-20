@@ -1,8 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
-import { flyoutMeta } from '@/app/(main)/components/flyout/flyout.meta';
+import stickyTop from '@porsche-design-system/examples/components/flyout/sticky-top';
+import form from '@porsche-design-system/examples/components/flyout/form';
+import customStyling from '@porsche-design-system/examples/components/flyout/custom-styling';
 
 export const metadata = {
   title: 'Flyout: Examples - Components',
@@ -11,24 +12,16 @@ export const metadata = {
 
 # Flyout <ComponentStatus tagName="p-flyout"></ComponentStatus>
 
-<TableOfContents
-  headings={[flyoutMeta.examples.stickyTop.name, flyoutMeta.examples.form.name, flyoutMeta.examples.customStyling.name]}
-/>
+<TableOfContents headings={[stickyTop.title, form.title, customStyling.title]} />
 
-## {flyoutMeta.examples.stickyTop.name}
+## {stickyTop.title}
 
-<flyoutMeta.examples.stickyTop.description />
+<Example example={stickyTop} />
 
-<ComponentStory story={flyoutMeta.examples.stickyTop.story} />
+## {form.title}
 
-## {flyoutMeta.examples.form.name}
+<Example example={form} />
 
-<flyoutMeta.examples.form.description />
+## {customStyling.title}
 
-<ComponentExample codeSample={flyoutMeta.examples.form.example} />
-
-## {flyoutMeta.examples.customStyling.name}
-
-<flyoutMeta.examples.customStyling.description />
-
-<ComponentStory story={flyoutMeta.examples.customStyling.story} />
+<Example example={customStyling} />

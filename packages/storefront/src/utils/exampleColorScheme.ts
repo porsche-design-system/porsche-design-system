@@ -1,4 +1,4 @@
-import type { ExampleProject } from '@porsche-design-system/examples';
+import type { PageExample } from '@porsche-design-system/examples';
 import type { ColorScheme } from '@porsche-design-system/shared';
 
 /**
@@ -8,7 +8,7 @@ import type { ColorScheme } from '@porsche-design-system/shared';
  * renders light on its own. Only one built for the dark scheme as well – `colorSchemes` of its meta – gets the scheme
  * of the storefront: in the preview, and in the project StackBlitz opens.
  */
-export const followsStorefrontColorScheme = ({ colorSchemes }: Pick<ExampleProject, 'colorSchemes'>): boolean =>
+export const followsStorefrontColorScheme = ({ colorSchemes }: Pick<PageExample, 'colorSchemes'>): boolean =>
   !!colorSchemes?.includes('dark');
 
 /**
@@ -16,7 +16,7 @@ export const followsStorefrontColorScheme = ({ colorSchemes }: Pick<ExampleProje
  * `<html>` of its `index.html`, so the project looks like the preview it was opened from. Left as it is for an example
  * built for the light scheme only. The code view and the knowledge skill keep the files without a scheme.
  */
-export const withColorScheme = <Project extends ExampleProject>(
+export const withColorScheme = <Project extends Pick<PageExample, 'colorSchemes' | 'files'>>(
   project: Project,
   colorScheme: ColorScheme
 ): Project => {

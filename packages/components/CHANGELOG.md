@@ -80,6 +80,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Accordion`: a click on static text inside the content of an open accordion moved focus to the summary, which in
   Chrome and Safari scrolled the page back to the top of the accordion. In Safari a click on a slotted `<button>` did
   the same. ([#4870](https://github.com/porsche-design-system/porsche-design-system/pull/4870))
+- `Knowledge Skill`: the `p-link-pure` reference listed the example of a framework router with active state without its
+  code, and the `p-input-search` reference cut its guidance on combobox use after the first sentence; both are now shown
+  in full ([#4800](https://github.com/porsche-design-system/porsche-design-system/pull/4800))
 
 ## [4.10.1] - 2026-10-23
 

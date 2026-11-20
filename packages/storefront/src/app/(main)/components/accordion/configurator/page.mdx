@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { accordionMeta } from '@/app/(main)/components/accordion/accordion.meta';
+import accordionDefault from '@porsche-design-system/examples/components/accordion/default';
 
 export const metadata = {
   title: 'Accordion: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <accordionMeta.introduction />
 
-<Configurator
-  tagName="p-accordion"
-  story={accordionMeta.configurator.story}
-  slotStories={accordionMeta.configurator.slotStories}
-/>
+<Configurator example={accordionDefault} />

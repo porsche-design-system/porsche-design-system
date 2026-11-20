@@ -1,6 +1,18 @@
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ExampleViewer } from '@/components/mdx/examples/ExampleViewer';
+import { Example } from '@/components/mdx/examples/Example';
 import { SubsectionHeading } from '@/components/mdx/structure/SubsectionHeading';
+import image from '@porsche-design-system/examples/patterns/tile/image';
+import video from '@porsche-design-system/examples/patterns/tile/video';
+import callToAction from '@porsche-design-system/examples/patterns/tile/call-to-action';
+import modelTeaser from '@porsche-design-system/examples/patterns/tile/model-teaser';
+import category from '@porsche-design-system/examples/patterns/tile/category';
+import modelNavigation from '@porsche-design-system/examples/patterns/tile/model-navigation';
+import modelSelection from '@porsche-design-system/examples/patterns/tile/model-selection';
+import product from '@porsche-design-system/examples/patterns/tile/product';
+import equipment from '@porsche-design-system/examples/patterns/tile/equipment';
+import equipmentStacked from '@porsche-design-system/examples/patterns/tile/equipment-stacked';
+import disclosure from '@porsche-design-system/examples/patterns/tile/disclosure';
+import vehicleListing from '@porsche-design-system/examples/patterns/tile/vehicle-listing';
 
 export const metadata = {
   title: 'Tile - Patterns',
@@ -35,26 +47,26 @@ The first group shows a link, and a `p-link` with `cover` opens the page: the li
 area is stretched over the whole of it, which also draws the focus indicator around the tile. Use this form wherever the
 tile shows a link anyway.
 
-<ExampleViewer example="patterns/tile/image" />
+<Example example={image} />
 
 <SubsectionHeading>Video</SubsectionHeading>
 
-<ExampleViewer example="patterns/tile/video" />
+<Example example={video} />
 
 <SubsectionHeading>Call to Action</SubsectionHeading>
 
-<ExampleViewer example="patterns/tile/call-to-action" />
+<Example example={callToAction} />
 
 <SubsectionHeading>Model Teaser</SubsectionHeading>
 
-<ExampleViewer example="patterns/tile/model-teaser" />
+<Example example={modelTeaser} />
 
 <SubsectionHeading>Category</SubsectionHeading>
 
 The category tile reuses the cover-link form of the Image tile above: the heading and the link sit at the top, and the
 cut-out product image fills the rest of the tile up to its edges.
 
-<ExampleViewer example="patterns/tile/category" />
+<Example example={category} />
 
 <SubsectionHeading>Model Navigation</SubsectionHeading>
 
@@ -62,15 +74,15 @@ The next three tiles open a page as well, but show no link. An anchor of their o
 screen readers only – the heading names the subject in the design, the anchor names it for assistive technology. Use
 this form where a visible link would be one element too many.
 
-<ExampleViewer example="patterns/tile/model-navigation" />
+<Example example={modelNavigation} />
 
 <SubsectionHeading>Model Selection</SubsectionHeading>
 
-<ExampleViewer example="patterns/tile/model-selection" />
+<Example example={modelSelection} />
 
 <SubsectionHeading>Product</SubsectionHeading>
 
-<ExampleViewer example="patterns/tile/product" />
+<Example example={product} />
 
 ## Content Tiles
 
@@ -84,21 +96,21 @@ subject, a button, because an equipment option is something to add rather than a
 thirds of a wide tile and the description the rest, which is why the two stack once the tile is narrow – whatever the
 width of the window.
 
-<ExampleViewer example="patterns/tile/equipment" />
+<Example example={equipment} />
 
 <SubsectionHeading>Equipment Stacked</SubsectionHeading>
 
 This one only describes. It is the equipment tile above with its two panels stacked rather than beside one another, for
 a column too narrow for the two halves, and it carries no action.
 
-<ExampleViewer example="patterns/tile/equipment-stacked" />
+<Example example={equipmentStacked} />
 
 <SubsectionHeading>Disclosure</SubsectionHeading>
 
 This one reveals more of itself on demand: its heading is the summary of an accordion that holds the details, and the
 photograph behind the text dims while they are open. Nothing leaves the tile, so nothing has to be a link.
 
-<ExampleViewer example="patterns/tile/disclosure" />
+<Example example={disclosure} />
 
 <SubsectionHeading>Vehicle Listing</SubsectionHeading>
 
@@ -106,4 +118,4 @@ The last tile opens pages again, but through its elements rather than as a whole
 – a popover, a link to the technical data and two actions – so no link could span it, and it does not react to hover as
 a whole either. The heading names the vehicle, the actions open it.
 
-<ExampleViewer example="patterns/tile/vehicle-listing" />
+<Example example={vehicleListing} />

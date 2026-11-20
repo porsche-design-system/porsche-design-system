@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { flagMeta } from '@/app/(main)/components/flag/flag.meta';
+import flagDefault from '@porsche-design-system/examples/components/flag/default';
 
 export const metadata = {
   title: 'Flag: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <flagMeta.introduction />
 
-<Configurator tagName="p-flag" story={flagMeta.configurator.story} />
+<Configurator example={flagDefault} />

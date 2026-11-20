@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { tabsMeta } from '@/app/(main)/components/tabs/tabs.meta';
+import tabsDefault from '@porsche-design-system/examples/components/tabs/default';
 
 export const metadata = {
   title: 'Tabs: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <tabsMeta.introduction />
 
-<Configurator tagName="p-tabs" story={tabsMeta.configurator.story} />
+<Configurator example={tabsDefault} />

@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { inputWeekMeta } from '@/app/(main)/components/input-week/input-week.meta';
+import inputWeekDefault from '@porsche-design-system/examples/components/input-week/default';
 
 export const metadata = {
   title: 'Input Week: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <inputWeekMeta.introduction />
 
-<Configurator tagName="p-input-week" story={inputWeekMeta.configurator.story} slotStories={inputWeekMeta.configurator.slotStories} />
+<Configurator example={inputWeekDefault} />

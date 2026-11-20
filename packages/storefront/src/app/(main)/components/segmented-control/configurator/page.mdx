@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { segmentedControlMeta } from '@/app/(main)/components/segmented-control/segmented-control.meta';
+import segmentedControlDefault from '@porsche-design-system/examples/components/segmented-control/default';
 
 export const metadata = {
   title: 'Segmented Control: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <segmentedControlMeta.introduction />
 
-<Configurator
-  tagName="p-segmented-control"
-  story={segmentedControlMeta.configurator.story}
-  slotStories={segmentedControlMeta.configurator.slotStories}
-/>
+<Configurator example={segmentedControlDefault} />
