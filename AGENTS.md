@@ -216,6 +216,8 @@ writing or requesting an entry.
 ## Branches and Commits
 
 - Work on an issue happens in the branch `issue/<number>`, e.g. `issue/4867`.
+- An agent working for a developer commits at its own discretion, without asking first: once a change is complete and
+  validated, one commit per concern.
 - A commit subject is `type(scope): description | <initials> | #<issue>`, e.g.
   `docs(storefront): name Vitest on the Vue testing page | rk | #4844`.
   - `type` is one of `feat`, `fix`, `docs`, `test`, `refactor`, `chore`, `ci`, `build`, `perf` or `revert`.
