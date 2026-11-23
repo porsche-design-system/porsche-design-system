@@ -19,6 +19,7 @@ const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputText = (page: Page) => page.locator('p-input-text input');
 const getInputTextWrapper = (page: Page) => page.locator('p-input-text .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-text label');
+const getSlottedLabelLink = (page: Page) => page.locator('p-input-text [slot="label"] a');
 const getForm = (page: Page) => page.locator('form');
 const getCounter = (page: Page) => page.locator('p-input-text .counter');
 const getLabelSrText = (page: Page) => page.locator('p-input-text label .sr-only');
@@ -611,6 +612,7 @@ test.describe('focus state', () => {
     await expect(inputText).toBeFocused();
   });
 
+  // WebKit selects the whole value when the label is clicked again, so Backspace clears it instead of one character
   skipInBrowsers(['webkit'], () => {
     test('should keep focus and caret when label is clicked multiple times', async ({ page }) => {
       await initInputText(page, { props: { name: 'some-name', label: 'Some label' } });
@@ -626,6 +628,22 @@ test.describe('focus state', () => {
 
       await page.keyboard.press('Backspace');
       await expect(inputText).toHaveValue('hell');
+    });
+  });
+
+  // WebKit does not focus a link when it is clicked
+  skipInBrowsers(['webkit'], () => {
+    test('should focus link slotted into label when it is clicked while input-text is focused', async ({ page }) => {
+      await initInputText(page, { props: { name: 'some-name' }, useSlottedLabel: true });
+      const inputText = getInputText(page);
+      const link = getSlottedLabelLink(page);
+
+      await inputText.click();
+      await expect(inputText).toBeFocused();
+
+      await link.click();
+      await expect(link).toBeFocused();
+      await expect(inputText).not.toBeFocused();
     });
   });
 

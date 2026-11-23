@@ -564,6 +564,7 @@ test.describe('focus state', () => {
     await expect(inputNumber).toBeFocused();
   });
 
+  // WebKit selects the whole value when the label is clicked again, so Backspace clears it instead of one character
   skipInBrowsers(['webkit'], () => {
     test('should keep focus and caret when label is clicked multiple times', async ({ page }) => {
       await initInputNumber(page, { props: { name: 'some-name', label: 'Some label' } });
