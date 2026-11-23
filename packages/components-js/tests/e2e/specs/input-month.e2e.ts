@@ -511,6 +511,27 @@ test.describe('focus state', () => {
     expect((await getEventSummary(inputMonth, 'focus')).counter).toBe(1);
   });
 
+  // Firefox and WebKit render a plain text field for type month, which ArrowUp does not change
+  skipInBrowsers(['firefox', 'webkit'], () => {
+    // unlike the text inputs, the segmented field was not affected by #3891, this keeps it that way
+    test('should keep focus and keyboard editing when label is clicked multiple times', async ({ page }) => {
+      await initInputMonth(page, { props: { name: 'some-name', label: 'Some label', value: '2026-05' } });
+      const label = getLabel(page);
+      const inputMonth = getInputMonth(page);
+
+      await label.click();
+      await page.keyboard.press('ArrowUp');
+      await expect(inputMonth).not.toHaveValue('2026-05');
+      const valueAfterFirstClick = await inputMonth.inputValue();
+
+      await label.click();
+      await expect(inputMonth).toBeFocused();
+
+      await page.keyboard.press('ArrowUp');
+      await expect(inputMonth).not.toHaveValue(valueAfterFirstClick);
+    });
+  });
+
   test('should focus input-month when host is focused', async ({ page }) => {
     await initInputMonth(page);
     const host = getHost(page);
