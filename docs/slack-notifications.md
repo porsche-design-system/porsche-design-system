@@ -95,8 +95,8 @@ The line shapes it reads are declared once in `packages/components/projects/figm
 shared with the generator. Nothing about GitHub is in the message, because designers have no GitHub account; the raw
 logs stay in the workflow run. Nothing is remembered between runs: a line comes again with each release and every week
 until design makes the change, and a message that failed to send goes out when the job is re-run or with the next
-week's. The action skips the builder when the log holds no design line, and the Send step with it. Details and the
-decisions behind it: the Decisions section of `docs/figma-code-connect.md`.
+week's. The action skips the builder when the log holds no design line, and the Send step with it. Details:
+`docs/figma-code-connect.md`.
 
 ## Why not a webhook
 
