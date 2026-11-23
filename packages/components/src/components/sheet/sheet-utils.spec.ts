@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { SHEET_ARIA_ATTRIBUTES, SHEET_BACKGROUNDS } from './sheet-utils';
 
 describe('SHEET_ARIA_ATTRIBUTES', () => {

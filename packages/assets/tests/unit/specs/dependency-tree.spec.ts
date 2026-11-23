@@ -1,6 +1,7 @@
 // @ts-ignore
 import madge from 'madge';
 import * as path from 'path';
+import { expect, it } from 'vitest';
 import { main, module } from '../../../dist/package.json';
 
 const packageDir = path.resolve(__dirname, '../../../dist');

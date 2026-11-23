@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { minifyCss } from '../../../src/minifyCss';
 
 it.each<{ input: string; result: string }>([

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { buildCrestImgSrc, buildCrestSrcSet } from './crest-utils';
 
 describe('buildCrestSrcSet()', () => {

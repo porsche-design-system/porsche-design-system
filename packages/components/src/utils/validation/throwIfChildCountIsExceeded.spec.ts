@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { throwIfChildCountIsExceeded } from './throwIfChildCountIsExceeded';
 
 it('should throw error if children count is exceeded', () => {

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import * as getDirectChildHTMLElementsUtils from '../dom/getDirectChildHTMLElements';
 import { getOnlyChildOfKindHTMLElementOrThrow } from './getOnlyChildOfKindHTMLElementOrThrow';
 

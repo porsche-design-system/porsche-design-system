@@ -1,4 +1,4 @@
-import { expect } from 'vitest';
+import { expect, it } from 'vitest';
 import { getVanillaJsPartialExample } from '@/utils/partials/getVanillaJsPartialExample';
 
 it('should return correct partial markup for getVanillaJsPartialExample', () => {

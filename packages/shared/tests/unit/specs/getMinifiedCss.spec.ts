@@ -1,5 +1,6 @@
 import type { Styles } from 'jss';
 import { getMinifiedCss, getCss } from '../../../src/styles/getMinifiedCss';
+import { describe, it, expect } from 'vitest';
 
 describe('getCss()', () => {
   it.each<Parameters<typeof getCss>>([

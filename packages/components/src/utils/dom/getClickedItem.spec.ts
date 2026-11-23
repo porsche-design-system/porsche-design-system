@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { getClickedItem } from './getClickedItem';
 
 const host = document.createElement('p-stepper-horizontal');

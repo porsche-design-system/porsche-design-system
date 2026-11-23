@@ -1,5 +1,6 @@
 import { getComponentCss, getKeyframesMobile, type KeyframesDirection } from './toast-styles';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
+import { describe, it, expect } from 'vitest';
 
 describe('getKeyframesMobile()', () => {
   it.each<[KeyframesDirection, string]>([

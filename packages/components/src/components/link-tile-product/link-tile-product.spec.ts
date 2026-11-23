@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as throwIfInvalidLinkTileProductUsageUtils from '../../utils/validation/throwIfInvalidLinkTileProductUsage';
 import { LinkTileProduct } from './link-tile-product';
 

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { DIVIDER_COLORS, DIVIDER_DIRECTIONS } from './divider-utils';
 
 describe('DIVIDER_COLORS', () => {

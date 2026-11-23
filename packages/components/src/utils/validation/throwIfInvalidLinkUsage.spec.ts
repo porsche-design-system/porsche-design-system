@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { throwIfInvalidLinkUsage } from './throwIfInvalidLinkUsage';
 
 const errorMessage = `[Error: [Porsche Design System] usage of div is not valid. Please provide either a href property or a slotted <a> element, but not both.]`;

@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { areAllChildrenOfKind } from './areAllChildrenOfKind';
 
 it('should return true if every child tag matches', () => {

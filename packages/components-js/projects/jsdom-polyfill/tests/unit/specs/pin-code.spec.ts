@@ -4,6 +4,7 @@ import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import { getMarkup } from '../helper';
 import userEvent from '@testing-library/user-event';
 import { getByLabelTextShadowed } from '../../../src/testing';
+import { it, expect } from 'vitest';
 
 it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-pin-code');

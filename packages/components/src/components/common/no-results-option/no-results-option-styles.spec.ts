@@ -1,3 +1,4 @@
+import { describe, it } from 'vitest';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 import { getCss } from '../../../utils';
 import { getFunctionalComponentNoResultsOptionStyles } from './no-results-option-styles';

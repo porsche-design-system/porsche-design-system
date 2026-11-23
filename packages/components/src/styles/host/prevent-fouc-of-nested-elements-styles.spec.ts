@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { preventFoucOfNestedElementsStyles } from './prevent-fouc-of-nested-elements-styles';
 
 it('should return correct jss styles', () => {

@@ -1,0 +1,11 @@
+// Fails a Vitest config whose default export is not mergeConfig(vitestConfig, ...), so every config gets the shared base.
+// Biome 2.6.4 does not match an `export default $x` snippet, so the pattern names the syntax node.
+language js
+
+JsExportDefaultExpressionClause(expression = $config) where {
+  $config <: not `mergeConfig(vitestConfig, $_)`,
+  register_diagnostic(
+    span = $config,
+    message = "Export mergeConfig(vitestConfig, defineConfig({ ... })) with vitestConfig from '@porsche-design-system/testing/vitest', which adds the console guard."
+  )
+}

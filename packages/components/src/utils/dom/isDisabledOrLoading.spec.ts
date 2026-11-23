@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { isDisabledOrLoading } from './isDisabledOrLoading';
 
 it.each<[boolean, boolean, boolean]>([
