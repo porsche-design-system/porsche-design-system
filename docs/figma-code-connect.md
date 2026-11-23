@@ -41,7 +41,8 @@ them, whatever their result. On `main`:
   sends the design lines to Slack. It runs next to `publish` when `release.yml` calls the workflow, every Monday at
   06:00 UTC and on every dispatch, and never in a merge's run. **Design follows what npm ships, never `main`**: a rename
   or delete design made for `main`'s code would drop the prop from every released record until the next release, and an
-  add would offer a property npm does not ship yet.
+  add would offer a property npm does not ship yet. **Only `figma/accepted-gaps.json` comes from `main`**: a gap
+  accepted after the release sends no line from the next run on, and accepting a gap only removes a line.
 - `accepted-gaps` runs `figma:generate` on `main` every Monday at 06:00 UTC and on a dispatch without `publish`. When
   Figma has closed a gap `figma/accepted-gaps.json` still accepts, it opens an issue carrying the corrected file and
   assigns the Copilot coding agent, which commits it with the snapshots and opens the pull request. One issue at a time;
@@ -66,7 +67,8 @@ Each `publish` run:
 
 Each `design-lines` run:
 
-1. Checks out the latest release, as `publish` does, and runs `figma:generate`.
+1. Checks out the latest release, as `publish` does, replaces `figma/accepted-gaps.json` with `main`'s, and runs
+   `figma:generate`.
 2. Sends the design channel on Slack every open design line
    ([`slack-notifications.md`](./slack-notifications.md#figma-change-needed)), and nothing when there is none. A line
    comes again with each release and each week until design makes the change. A change a designer makes in Figma after a
