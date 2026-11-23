@@ -134,4 +134,20 @@ describe.each([
       `<${tag('accordion')}>${text}</${tag('accordion')}>`
     );
   });
+
+  it('prints a text instance in a label slot as its text', async () => {
+    const textInstance = {
+      codeConnectId: () => 'p-text',
+      findLayers: (selector: (layer: unknown) => boolean) => [{ type: 'TEXT', textContent: text }].filter(selector),
+      executeTemplate: () => ({
+        example: [{ type: 'CODE', code: `<${tag('text')} color="primary">Label</${tag('text')}>` }],
+      }),
+    };
+    const instance = {
+      properties: { 'slot-default': { value: { guid: {} }, type: 'SLOT' } },
+      getSlot: () => ({ connectedInstances: [textInstance] }),
+      findLayers: () => [],
+    };
+    expect(await snippet('button', suffix, instance)).toBe(`<${tag('button')}>${asText}</${tag('button')}>`);
+  });
 });
