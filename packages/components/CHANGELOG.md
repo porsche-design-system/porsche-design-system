@@ -91,10 +91,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   in full ([#4800](https://github.com/porsche-design-system/porsche-design-system/pull/4800))
 - `Link`: a link with an empty `href` had no focus ring
   ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
-- `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
-  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Textarea`: the caret disappeared and keys such as `Backspace`
-  had no effect after the label was clicked more than once in Chromium browsers
-  ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
+- `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`, `Input Url`, `Textarea`:
+  the caret disappeared and keys such as `Backspace` had no effect after the label was clicked more than once in
+  Chromium browsers ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
 
 ## [4.10.1] - 2026-10-23
 
