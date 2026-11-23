@@ -514,14 +514,31 @@ const fragment = (
   }
 };
 
+// Their default slot holds only a label, so a slotted p-text prints as its text. Its own color would override the label's.
+const labelSlotTags: TagName[] = [
+  'p-button',
+  'p-button-pure',
+  'p-drilldown-link',
+  'p-link',
+  'p-link-pure',
+  'p-multi-select-option',
+  'p-segmented-control-item',
+  'p-select-option',
+  'p-stepper-horizontal-item',
+  'p-switch',
+  'p-tag',
+  'p-tag-dismissible',
+];
+
 /**
  * A slot's content through figma/helpers/slotted.ts: a slot interpolated directly renders a "cannot be rendered" comment.
  * The default slot falls back to text, because most simple components draw it as a TEXT property.
  */
-const slotContent = (figma: string): string => {
+const slotContent = (figma: string, tag: TagName): string => {
   const slot = pdsSlotName(figma);
+  const label = labelSlotTags.includes(tag) ? `, '', true` : '';
   return slot === ''
-    ? `\${read.isSlot('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}') : escapeText(read.text('${figma}') ?? '')}`
+    ? `\${read.isSlot('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}'${label}) : escapeText(read.text('${figma}') ?? '')}`
     : `\${read.has('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}', '${slot}') : ''}`;
 };
 
@@ -556,7 +573,7 @@ const render = (
   const children = mappings
     .flatMap((m) => (m.kind === 'slot' ? [m.figma] : []))
     .sort((a, b) => Number(pdsSlotName(a) === '') - Number(pdsSlotName(b) === ''))
-    .map((figma) => slotContent(figma))
+    .map((figma) => slotContent(figma, tag))
     .join('');
   const tagName = label.tagName(tag);
   return [
