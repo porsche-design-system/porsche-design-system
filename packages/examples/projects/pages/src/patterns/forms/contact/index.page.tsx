@@ -96,11 +96,11 @@ const Page = () => (
             />
             <p-checkbox name="terms" required data-error="Please agree to the General Terms and Conditions.">
               <span slot="label">
-                I have read and agree to the
+                I have read the
                 <p-link-pure icon="none" underline={true}>
                   <a href="#">General Terms and Conditions</a>
                 </p-link-pure>
-                .
+                and agree to them.
               </span>
             </p-checkbox>
           </div>
@@ -110,11 +110,11 @@ const Page = () => (
               Send non-binding request
             </p-button>
             <p-text size="xs" color="contrast-medium">
-              Information on how we process your personal data can be found in our
+              Our
               <p-link-pure icon="none" size="inherit" color="inherit" underline={true}>
                 <a href="#">privacy policy</a>
               </p-link-pure>
-              .
+              explains how we process your personal data.
             </p-text>
           </div>
         </form>

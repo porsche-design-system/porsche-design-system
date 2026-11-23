@@ -295,11 +295,11 @@ const Page = () => (
                   <a href="#">General Terms and Conditions</a>
                 </p-link-pure>
                 and consent to the processing of my personal data by the Porsche Group and its authorised business
-                partners, as described in the
+                partners to provide the services I requested, as the
                 <p-link-pure icon="none" underline={true}>
                   <a href="#">Porsche Privacy Policy</a>
                 </p-link-pure>
-                , to provide the services I requested.
+                describes.
               </span>
             </p-checkbox>
 
