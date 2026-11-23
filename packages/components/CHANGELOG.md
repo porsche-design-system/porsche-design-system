@@ -58,6 +58,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   summary, except when called from an isolated context such as Playwright's `locator.focus()` – call them through
   `locator.evaluate()` or on the summary there.
   ([#4870](https://github.com/porsche-design-system/porsche-design-system/pull/4870))
+- `Checkbox`, `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Multi Select`, `Pin Code`, `Radio Group`, `Select`,
+  `Textarea`: the text of the label, including content in the `label` slot, can no longer be selected in Chromium
+  browsers and Firefox. For `Radio Group` this applies to the labels of its options, not to the label of the group. The
+  description and the message stay selectable.
+  ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
 
 ### Fixed
 
@@ -86,7 +92,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Link`: a link with an empty `href` had no focus ring
   ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
 - `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
-  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Textarea`: hidden caret after multiple clicks on label in Chromium browsers
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Textarea`: the caret disappeared and keys such as `Backspace`
+  had no effect after the label was clicked more than once in Chromium browsers
   ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
 
 ## [4.10.1] - 2026-10-23
