@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { buildIconUrl, isUrl } from './icon-utils';
 
 const DEFAULT_ICON_URL = 'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg';

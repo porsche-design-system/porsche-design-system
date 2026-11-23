@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { describe, expect, it } from 'vitest';
 import {
   generateVanillaJSControlledScript,
   generateVanillaJsMarkup,

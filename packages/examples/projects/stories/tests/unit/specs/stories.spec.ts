@@ -1,4 +1,5 @@
 import type { Story } from '@porsche-design-system/story-generator';
+import { describe, expect, it } from 'vitest';
 import {
   isAccessibilityExample,
   isDefaultExample,

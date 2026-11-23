@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { LINK_PURE_COLORS, LINK_PURE_SIZES, LINK_PURE_SIZES_DEPRECATED } from './link-pure-utils';
 
 describe('LINK_PURE_SIZES_DEPRECATED', () => {

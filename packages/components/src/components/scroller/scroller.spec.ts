@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 import * as a11yUtils from '../../utils/a11y/a11y';
 import * as attachComponentCssUtils from '../../utils/jss';
 import * as jsonUtils from '../../utils/json';

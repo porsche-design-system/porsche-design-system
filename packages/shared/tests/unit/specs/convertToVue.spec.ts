@@ -1,4 +1,4 @@
-import { MockInstance } from 'vitest';
+import { afterEach, describe, expect, it, MockInstance, vi } from 'vitest';
 import * as vueUtils from '../../../src/utils/convertToVue';
 import {
   cleanVueBooleanAndUndefinedValues,

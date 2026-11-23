@@ -3,6 +3,7 @@ import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
+import { it, expect } from 'vitest';
 
 it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-segmented-control');

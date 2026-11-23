@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { escapeHashCharacter } from './escapeHashCharacter';
 
 it('should replace # character with %23', () => {

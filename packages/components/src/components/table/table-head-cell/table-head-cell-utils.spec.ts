@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import type { AriaAttributes } from '../../../types';
 import type { Direction, TableHeadCellSort } from '../table/table-utils';
 import * as tableUtils from './table-head-cell-utils';

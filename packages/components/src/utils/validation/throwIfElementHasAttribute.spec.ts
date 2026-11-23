@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { throwIfElementHasAttribute } from './throwIfElementHasAttribute';
 
 it('should throw error if attribute exists', () => {
