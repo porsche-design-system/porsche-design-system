@@ -3,6 +3,9 @@ import FeedbackDialogPage from '../../../src/patterns/feedback/dialog/index.page
 import FeedbackInlinePage from '../../../src/patterns/feedback/inline/index.page.tsx';
 import FooterExtendedPage from '../../../src/patterns/footer/extended/index.page.tsx';
 import FooterSimplePage from '../../../src/patterns/footer/simple/index.page.tsx';
+import BookingFormPage from '../../../src/patterns/forms/booking/index.page.tsx';
+import ContactFormPage from '../../../src/patterns/forms/contact/index.page.tsx';
+import PersonalDetailsFormPage from '../../../src/patterns/forms/personal-details/index.page.tsx';
 import SearchComboboxLinkListPage from '../../../src/patterns/forms/search-combobox-link-list/index.page.tsx';
 import SearchComboboxOptionListPage from '../../../src/patterns/forms/search-combobox-option-list/index.page.tsx';
 import HeaderOverlayPage from '../../../src/patterns/header/overlay/index.page.tsx';
@@ -66,6 +69,9 @@ export const patternPages = [
   ['patterns/popover/local-market-switch', PopoverLocalMarketSwitchPage],
   ['patterns/popover/priority-navigation', PopoverPriorityNavigationPage],
   ['patterns/popover/feature-tour', PopoverFeatureTourPage],
+  ['patterns/forms/booking', BookingFormPage],
+  ['patterns/forms/contact', ContactFormPage],
+  ['patterns/forms/personal-details', PersonalDetailsFormPage],
   ['patterns/forms/search-combobox-option-list', SearchComboboxOptionListPage],
   ['patterns/forms/search-combobox-link-list', SearchComboboxLinkListPage],
   ['patterns/feedback/inline', FeedbackInlinePage],

@@ -33,7 +33,16 @@ const pagesWithExamples: [path: string, examples: string[]][] = [
       'patterns/tile/vehicle-listing',
     ],
   ],
-  ['/patterns/forms/', ['patterns/forms/search-combobox-option-list', 'patterns/forms/search-combobox-link-list']],
+  [
+    '/patterns/forms/',
+    [
+      'patterns/forms/contact',
+      'patterns/forms/personal-details',
+      'patterns/forms/booking',
+      'patterns/forms/search-combobox-option-list',
+      'patterns/forms/search-combobox-link-list',
+    ],
+  ],
   ['/patterns/feedback/', ['patterns/feedback/inline', 'patterns/feedback/dialog']],
   [
     '/patterns/popover/',

@@ -43,6 +43,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   product, vehicle listing, features, call to action and teasers) built with HTML and Tailwind CSS, with their
   description, the components they use and their complete markup and script
   ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+- `Fieldset`: `--p-fieldset-label-mb` CSS variable to override the bottom margin of the label
+  ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
+- `Knowledge Skill`: contact form, personal details form and booking form patterns
+  ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
 
 ### Changed
 
