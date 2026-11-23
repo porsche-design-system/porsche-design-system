@@ -29,6 +29,11 @@ test('validates required fields on blur and submit, and clears errors as the use
   await firstName.locator('input').blur();
   await expect(firstName).toHaveJSProperty('state', 'none');
 
+  // An unchecked checkbox carries a value as well, and is still not validated before it was used.
+  await terms.locator('input').focus();
+  await terms.locator('input').blur();
+  await expect(terms).toHaveJSProperty('state', 'none');
+
   await firstName.locator('input').fill('Ferry');
   await firstName.locator('input').fill('');
   await firstName.locator('input').blur();

@@ -8,8 +8,9 @@ import { Script } from './Script.tsx';
  *   and custom error messages (`data-error` for missing values, `data-error-format` for invalid format/range).
  *   Controls with `data-novalidate` (e.g. Back or Reset buttons) bypass blur validation when clicked.
  * - **Validate on blur & submit ("punish late"):** Captures the PDS `blur` `CustomEvent` to validate a field once the
- *   user has interacted with it (`data-dirty`), already entered a value, or after the first submit attempt. Submit
- *   validates all visible fields (`:not([hidden])`), focuses the first invalid control, or emits `formvalid`.
+ *   user has interacted with it (`data-dirty`), already entered a value – for a checkbox, checked it – or after the
+ *   first submit attempt. Submit validates all visible fields (`:not([hidden])`), focuses the first invalid control,
+ *   or emits `formvalid`.
  * - **Clear on input ("reward early"):** While a field is in `state="error"`, `input` and `change` events re-validate
  *   on every keystroke and clear the error immediately once valid. `reset` clears all errors and dirty state.
  */
@@ -17,18 +18,23 @@ export const FormValidation = () => (
   <Script>{
     /* language=JavaScript */ `
     // Validates required and format constraints on PDS form controls.
+
+    // A checkbox is empty while it is unchecked: its value is set whether it is checked or not.
+    const isEmpty = (field) => {
+      const value = field.value;
+      return field.tagName === 'P-CHECKBOX'
+        ? !field.checked
+        : field.tagName === 'P-FIELDSET'
+          ? !Array.from(field.querySelectorAll('p-checkbox')).some((checkbox) => checkbox.checked)
+          : Array.isArray(value)
+            ? value.length === 0
+            : value === undefined || value === null || String(value).trim() === '';
+    };
+
     const validateField = (field) => {
       const innerControls = Array.from(field.shadowRoot?.querySelectorAll('input, textarea') ?? []);
       const nativeInvalid = innerControls.some((control) => !control.checkValidity());
-      const value = field.value;
-      const empty =
-        field.tagName === 'P-CHECKBOX'
-          ? !field.checked
-          : field.tagName === 'P-FIELDSET'
-            ? !Array.from(field.querySelectorAll('p-checkbox')).some((checkbox) => checkbox.checked)
-            : Array.isArray(value)
-              ? value.length === 0
-              : value === undefined || value === null || String(value).trim() === '';
+      const empty = isEmpty(field);
 
       const isInvalid = nativeInvalid || (field.required && empty);
       field.state = isInvalid ? 'error' : 'none';
@@ -53,7 +59,7 @@ export const FormValidation = () => (
         const field = event.target;
         if (field.closest?.('[hidden]')) return;
         const canValidateOnBlur =
-          field.dataset.dirty === 'true' || form.dataset.submitted === 'true' || String(field.value ?? '').trim() !== '';
+          field.dataset.dirty === 'true' || form.dataset.submitted === 'true' || !isEmpty(field);
 
         if (canValidateOnBlur && field.matches?.('[required], [data-error], [data-error-format]')) {
           validateField(field);
