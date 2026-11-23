@@ -21,6 +21,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -187,6 +190,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -232,6 +238,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -275,6 +284,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -320,6 +332,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -363,6 +378,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -405,6 +423,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -451,6 +472,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 .label:empty {
   display: none;
 }
+.label:is(label) {
+  user-select: none;
+}
 .label:is(span) {
   cursor: unset;
   font-size: var(--p-typescale-xs);
@@ -495,6 +519,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -541,6 +568,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
@@ -594,6 +624,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
 }
 .label:empty {
   display: none;
+}
+.label:is(label) {
+  user-select: none;
 }
 .label:is(span) {
   cursor: unset;
