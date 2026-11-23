@@ -1,9 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { examples, mediaPath } from '@porsche-design-system/examples';
+import { examples } from '@porsche-design-system/examples';
+import { mediaPath } from '@porsche-design-system/examples-pages';
 import { describe, expect, it } from 'vitest';
+import { followsStorefrontColorScheme, withColorScheme } from './exampleColorScheme';
 import { withMediaOrigin } from './exampleMediaOrigin';
-import { getExample, getExampleMediaPath, getExampleUrl, insertBasePath } from './examples';
+import { getExampleMediaPath, getExampleUrl, insertBasePath, toDeployedExample } from './examples';
 
 describe('insertBasePath()', () => {
   const html = `<img src="${mediaPath}718.webp" /><video poster="${mediaPath}mood.webp"></video>`;
@@ -26,11 +28,13 @@ describe('insertBasePath()', () => {
 
 describe('getExampleUrl()', () => {
   it('addresses an example below the slug of this deployment', () => {
-    expect(getExampleUrl('patterns/header/overlay', 'v4')).toBe('/v4/examples/patterns/header/overlay/index.html');
+    expect(getExampleUrl(examples['patterns/header/overlay'], 'v4')).toBe(
+      '/v4/examples/patterns/header/overlay/index.html'
+    );
   });
 
   it('addresses an example at the root without a basePath', () => {
-    expect(getExampleUrl('patterns/footer/simple', '')).toBe('/examples/patterns/footer/simple/index.html');
+    expect(getExampleUrl(examples['patterns/footer/simple'], '')).toBe('/examples/patterns/footer/simple/index.html');
   });
 });
 
@@ -41,22 +45,16 @@ describe('getExampleMediaPath()', () => {
   });
 });
 
-describe('getExample()', () => {
+describe('toDeployedExample()', () => {
   it('returns the example as the package exports it, its media below the slug', () => {
-    const example = getExample('templates/landing-page', 'v4');
     const { files, ...meta } = examples['templates/landing-page'];
+    const example = toDeployedExample(examples['templates/landing-page'], 'v4');
 
     expect(example).toMatchObject(meta);
     expect(Object.keys(example.files)).toEqual(Object.keys(files));
     expect(files['index.html']).toContain(`"${mediaPath}`);
     expect(example.files['index.html']).toContain('"/v4/examples/media/');
     expect(example.files['index.html']).not.toContain(`"${mediaPath}`);
-  });
-
-  it('fails for a path that is not an example, as MDX does not type-check it', () => {
-    expect(() => getExample('patterns/unknown' as 'patterns/footer/simple', '')).toThrow(
-      '"patterns/unknown" is not an example'
-    );
   });
 });
 
@@ -85,6 +83,30 @@ describe('withMediaOrigin()', () => {
   });
 });
 
+describe('withColorScheme()', () => {
+  const tile = examples['patterns/tile/category'];
+  const landingPage = examples['templates/landing-page'];
+
+  it('follows the scheme of the storefront only for an example built for the dark scheme as well', () => {
+    expect(followsStorefrontColorScheme(tile)).toBe(true);
+    expect(followsStorefrontColorScheme(landingPage)).toBe(false);
+  });
+
+  it('puts the scheme of the storefront on the <html> of such an example, and leaves the source without one', () => {
+    expect(tile.files['index.html']).toContain('<html lang="en">');
+    expect(withColorScheme(tile, 'scheme-dark').files['index.html']).toContain('<html lang="en" class="scheme-dark">');
+    expect(withColorScheme(tile, 'scheme-light-dark').files['index.html']).toContain(
+      '<html lang="en" class="scheme-light-dark">'
+    );
+    expect(tile.files['index.html']).not.toContain('class="scheme-dark"');
+  });
+
+  it('leaves an example built for the light scheme only and every other file untouched', () => {
+    expect(withColorScheme(landingPage, 'scheme-dark')).toBe(landingPage);
+    expect(withColorScheme(tile, 'scheme-dark').files['main.js']).toBe(tile.files['main.js']);
+  });
+});
+
 describe('client components', () => {
   const srcDir = path.resolve(import.meta.dirname, '..');
   const clientFiles = (fs.readdirSync(srcDir, { recursive: true }) as string[])
@@ -102,7 +124,10 @@ describe('client components', () => {
   it('should import no example data', () => {
     const offenders = clientFiles.filter(([, source]) =>
       Array.from(source.matchAll(/^import\s+(?!type\s)[^;]*?from\s+'([^']+)'/gm), ([, from]) => from).some(
-        (from) => from === '@porsche-design-system/examples' || from === '@/utils/examples'
+        (from) =>
+          from === '@porsche-design-system/examples' ||
+          /^@porsche-design-system\/examples[-/]/.test(from) ||
+          from === '@/utils/examples'
       )
     );
 

@@ -1,0 +1,283 @@
+import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import type { Page, PlaywrightWorkerArgs, TestInfo } from '@playwright/test';
+import { type ExternalRequestsOptions, waitForComponentsHydrated } from '@porsche-design-system/testing/playwright';
+import { pageExamples } from '../../generated/examples.ts';
+import { hasDarkScheme, type PageExample } from '../../lib/meta.ts';
+import { examplesPath } from '../../lib/projects.ts';
+
+/**
+ * What a page needs before it is captured or scanned – shared by the VRT and the a11y suite, and in parts by e2e.
+ *
+ * The examples are static pages served from the built site, so there is no application state to drive – what has
+ * to be pinned down is everything that can differ between two runs: the components have to be upgraded, the fonts
+ * loaded, the hero video parked on a fixed frame and whatever the page focused on load released again.
+ *
+ * The e2e suite reuses only `waitForComponentsHydrated()`, because it tests the video and the focus this setup pins down.
+ * External requests are routed by the shared `test` of `@porsche-design-system/testing/playwright` in every suite.
+ */
+
+export type ColorScheme = 'light' | 'dark';
+
+/** The reviews of the personalized mailing play in a YouTube embed no test looks into. An empty document answers. */
+export const youtubePlayerStub: ExternalRequestsOptions = {
+  stubs: { 'https://www.youtube-nocookie.com': { contentType: 'text/html', body: '' } },
+};
+
+export type ExampleScenarioOptions = {
+  /** Windows High Contrast Mode. */
+  forcedColorsEnabled?: boolean;
+  prefersColorScheme?: ColorScheme;
+  /** Right-to-left reading direction. The examples never set `dir` themselves, so the test does. */
+  rtl?: boolean;
+};
+
+/**
+ * Switches the transitions and animations of the components off, like the other VRT suites of the monorepo do through
+ * the `:root` block of `packages/shared/src/css/styles.css`.
+ *
+ * Reduced motion alone does not: the canvas of the admin panel opens its sidebar on load, and its
+ * `grid-template-columns` transition could still be running when a high contrast capture was taken, which left the
+ * application title in the sidebar header missing in some runs. Injected when the document has been parsed and before
+ * the deferred page script runs, so the sidebar opens without a transition in the first place.
+ */
+const disableMotion = async (page: Page): Promise<void> => {
+  await page.addInitScript(() => {
+    const inject = () => {
+      const style = document.createElement('style');
+      style.textContent = ':root{--p-transition-duration:0s;--p-animation-duration:0s}';
+      document.head.append(style);
+    };
+
+    if (document.head) {
+      inject();
+    } else {
+      document.addEventListener('readystatechange', inject, { once: true });
+    }
+  });
+};
+
+/**
+ * Parks every video on its poster frame.
+ *
+ * `prefers-reduced-motion` already makes the hero video of an example stop itself (see `src/_partials/HeroVideo.tsx`),
+ * but it may have played a few frames before the script ran, and which frame a paused video shows differs between the
+ * engines. `load()` aborts the playback and restores the poster, which is the one frame a video renders identically
+ * everywhere – so that is what the baseline records.
+ */
+const freezeVideos = async (page: Page): Promise<void> => {
+  await page.evaluate(() => {
+    for (const video of Array.from(document.querySelectorAll('video'))) {
+      video.removeAttribute('autoplay');
+      video.autoplay = false;
+      video.pause();
+      video.currentTime = 0;
+      video.load();
+    }
+  });
+
+  await page.waitForFunction(() => Array.from(document.querySelectorAll('video')).every((video) => video.paused));
+};
+
+/**
+ * Releases the focus a page took on load.
+ *
+ * Some patterns open a disclosure right away (the local market switch, the feature tour), and an overlay moves focus
+ * into itself – a focus ring is a state of its own and does not belong into the baseline of the initial state. The
+ * active element is followed through the shadow roots, because `document.activeElement` only ever names the host.
+ *
+ * Clicking the page instead would work as well, but it would close the very disclosure the pattern is about.
+ */
+const blurActiveElement = async (page: Page): Promise<void> => {
+  await page.evaluate(() => {
+    let element: Element | null = document.activeElement;
+
+    while (element && element !== document.body) {
+      const inner: Element | null = (element as HTMLElement).shadowRoot?.activeElement ?? null;
+      (element as HTMLElement).blur?.();
+      element = inner;
+    }
+  });
+};
+
+/**
+ * Waits for the fonts the examples are laid out in.
+ *
+ * `document.fonts.ready` only settles the loads that have already started, and the Porsche Design System fonts are
+ * brought in by a partial as a `<link rel="preload">`, which registers no font face. A page can therefore be "ready"
+ * while still being laid out in the fallback font – and a line that wraps in one metric and not in the other makes
+ * the page 34px taller in one run than in the next. Requesting the faces explicitly removes that race.
+ */
+const waitForFonts = async (page: Page): Promise<void> => {
+  await page.evaluate(async () => {
+    await Promise.all(['400 1rem "Porsche Next"', '600 1rem "Porsche Next"'].map((font) => document.fonts.load(font)));
+    await document.fonts.ready;
+  });
+};
+
+/**
+ * Makes every self-measuring component measure again, with the final fonts and font size in place.
+ *
+ * The tabs bar of the stacked header decides on its scroll affordances from the width of its content, and that
+ * decision is taken once, whenever its observers happen to run. At 200% font size the two possible outcomes differ by
+ * the height of the affordance – a page that is 34px taller in one run than in the next. Nudging the viewport by a
+ * pixel and back triggers every `ResizeObserver` after everything else has settled, so the run always ends in the
+ * state the final layout calls for.
+ */
+const remeasureComponents = async (page: Page): Promise<void> => {
+  const viewport = page.viewportSize();
+  if (!viewport) {
+    return;
+  }
+
+  await page.setViewportSize({ ...viewport, width: viewport.width - 1 });
+  await page.setViewportSize(viewport);
+};
+
+/**
+ * Waits until the page stops changing its own height.
+ *
+ * Components that measure themselves relayout after they have rendered – the tabs bar of the stacked header decides
+ * on its scroll affordances that way, and at 200% font size that decision changes the height of the page. Screenshot
+ * comparison is stable per capture, but the height a run settles on has to be stable across runs, so the capture
+ * waits for two consecutive frames reporting the same height.
+ */
+export const waitForStableLayout = async (page: Page): Promise<void> => {
+  await page.waitForFunction(
+    () =>
+      new Promise<boolean>((resolve) => {
+        const height = document.documentElement.scrollHeight;
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => resolve(document.documentElement.scrollHeight === height))
+        );
+      })
+  );
+};
+
+/**
+ * Applies the color scheme the way the storefront does: an example sets none on `<html>`, so one built for the dark
+ * scheme as well – `colorSchemes` of its meta – gets `scheme-light-dark` there, and follows `prefersColorScheme`. Any
+ * other example stays light, as it does in the storefront.
+ */
+const applyColorSchemeOfStorefront = async (page: Page, url: string): Promise<void> => {
+  const examplePath = new URL(url).pathname.slice(examplesPath.length).replace(/\/$/, '');
+  const example: PageExample | undefined = (pageExamples as Record<string, PageExample>)[examplePath];
+  if (!example) {
+    throw new Error(`[examples] "${examplePath}" is not part of the package export – run build:projects`);
+  }
+  if (!hasDarkScheme(example)) {
+    return;
+  }
+
+  // An init script, like the direction below: the components read the scheme when they upgrade.
+  await page.addInitScript(() => {
+    const setScheme = () => document.documentElement.classList.add('scheme-light-dark');
+
+    if (document.documentElement) {
+      setScheme();
+    } else {
+      document.addEventListener('DOMContentLoaded', setScheme, { once: true });
+    }
+  });
+};
+
+/**
+ * Opens an example page and brings it into the state a screenshot may be taken in.
+ *
+ * The page is laid out on the viewport of the device its project emulates – see `playwright.config.ts`.
+ *
+ * The order matters: everything emulated has to be in place before the navigation, so the page is rendered once and
+ * with the final conditions – a scheme or a font size applied afterwards would relayout what has already been
+ * measured by the components.
+ */
+export const setupExamplePage = async (
+  page: Page,
+  url: string,
+  options: ExampleScenarioOptions = {}
+): Promise<void> => {
+  const { forcedColorsEnabled, prefersColorScheme, rtl } = options;
+
+  await disableMotion(page);
+
+  // Reduced motion is not a variant, it is a precondition of every capture: it stops the autoplaying hero video and
+  // the transitions of the components, both of which would otherwise be timing dependent.
+  await page.emulateMedia({
+    forcedColors: forcedColorsEnabled ? 'active' : 'none',
+    colorScheme: prefersColorScheme ?? 'light',
+    reducedMotion: 'reduce',
+  });
+
+  await applyColorSchemeOfStorefront(page, url);
+
+  if (rtl) {
+    // An init script rather than an evaluation after the load: the components read the direction when they upgrade.
+    await page.addInitScript(() => {
+      const setDirection = () => document.documentElement.setAttribute('dir', 'rtl');
+
+      if (document.documentElement) {
+        setDirection();
+      } else {
+        document.addEventListener('DOMContentLoaded', setDirection, { once: true });
+      }
+    });
+  }
+
+  await page.goto(url);
+
+  await waitForComponentsHydrated(page);
+  await waitForFonts(page);
+  // A lazily loaded image below the fold only starts loading once it is scrolled near, so it would never complete –
+  // while a full page capture shows it. Switching it to eager is what scrolling through the page would do.
+  await page.evaluate(() => {
+    for (const image of document.querySelectorAll<HTMLImageElement>('img[loading="lazy"]')) {
+      image.loading = 'eager';
+    }
+  });
+  await page.waitForFunction(() => Array.from(document.images).every((image) => image.complete));
+  await freezeVideos(page);
+  await blurActiveElement(page);
+  await remeasureComponents(page);
+  await waitForStableLayout(page);
+};
+
+/**
+ * A page of a chromium whose default font size is 200% – 32px, and 48px for monospace: the browser setting a user
+ * changes for larger text, which scales everything in `rem` and `em`, media queries included.
+ *
+ * It is a preference of the browser profile rather than `Page.setFontSizes` over CDP: chromium restores the font sizes
+ * of its preferences whenever an emulation changes, and a capture beyond the viewport changes one – the text of a full
+ * page screenshot would be back at 100% in a layout still at 200%. A preference is what it restores, so it holds.
+ *
+ * The profile needs the full chromium in its new headless mode – the headless shell reads no preferences – and a
+ * persistent context of its own, configured like the context of the project. Close it with the returned function.
+ */
+export const launchPageWithFontSize200 = async (
+  playwright: PlaywrightWorkerArgs['playwright'],
+  testInfo: TestInfo
+): Promise<{ page: Page; close: () => Promise<void> }> => {
+  const userDataDir = await mkdtemp(join(tmpdir(), 'pds-examples-fs200-'));
+  await mkdir(join(userDataDir, 'Default'));
+  await writeFile(
+    join(userDataDir, 'Default', 'Preferences'),
+    JSON.stringify({ webkit: { webprefs: { default_font_size: 32, default_fixed_font_size: 48 } } })
+  );
+
+  const { viewport, deviceScaleFactor, userAgent, isMobile, hasTouch } = testInfo.project.use;
+  const context = await playwright.chromium.launchPersistentContext(userDataDir, {
+    channel: 'chromium',
+    viewport,
+    deviceScaleFactor,
+    userAgent,
+    isMobile,
+    hasTouch,
+  });
+
+  return {
+    page: context.pages()[0] ?? (await context.newPage()),
+    close: async () => {
+      await context.close();
+      await rm(userDataDir, { recursive: true, force: true });
+    },
+  };
+};
