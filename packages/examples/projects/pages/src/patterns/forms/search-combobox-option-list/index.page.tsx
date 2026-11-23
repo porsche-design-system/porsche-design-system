@@ -37,6 +37,7 @@ export const meta: ExampleMeta = {
   title: 'Search: Combobox option list',
   description:
     'A search field filters a list of selectable options inside a popover. Focus stays in the field: the arrow keys move a highlight through the matches, and Enter or a click writes the highlighted option into the field. Searching for a dealer by city is used here as an integration example, and the pattern applies to any searchable option list.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**

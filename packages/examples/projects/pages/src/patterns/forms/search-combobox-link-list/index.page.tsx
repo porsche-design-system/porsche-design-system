@@ -33,6 +33,7 @@ export const meta: ExampleMeta = {
   title: 'Search: Combobox link list',
   description:
     'A search field filters a list of navigation links inside a popover. Focus stays in the field: the arrow keys move a highlight through the matches, and Enter or a click opens the highlighted page. Searching for a dealer page by city is used here as an integration example, and the pattern applies whenever search results link to dedicated pages.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**

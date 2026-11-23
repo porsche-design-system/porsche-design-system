@@ -303,8 +303,8 @@ export const Footer = () => {
  * Page footer, `simple`: nothing but the legal information every footer closes with – for a page that is a destination
  * of its own, like a landing page linked from a mailing, where the site navigation would lead away from it.
  */
-export const SimpleFooter = () => (
-  <footer class="grid-template py-fluid-lg bg-canvas">
+export const SimpleFooter = ({ class: className }: { class?: string } = {}) => (
+  <footer class={['grid-template py-fluid-lg bg-canvas', className].filter(Boolean).join(' ')}>
     <ConsumptionInformation />
     <Imprint />
   </footer>

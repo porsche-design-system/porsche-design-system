@@ -8,7 +8,7 @@ import type { ComponentDocsMeta } from '@/models/meta';
 export const linkMeta = {
   introduction: IntroductionDescription,
   configurator: 'components/link/default',
-  examples: ['components/link/framework-routing', 'components/link/icon'],
+  examples: ['components/link/framework-routing', 'components/link/icon', 'components/link/cover'],
   usage: Usage,
   accessibility: {
     overview: AccessibilityOverview,

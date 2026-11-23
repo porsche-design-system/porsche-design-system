@@ -3,6 +3,7 @@ import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementId,
+  getActiveElementTagName,
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
@@ -157,6 +158,18 @@ test('should provide functionality to focus & blur the custom element', async ({
   expect(await linkHasFocus()).toBe(false);
 });
 
+skipInBrowsers(['webkit', 'firefox'], () => {
+  test('should render the focus ring for an empty href', async ({ page }) => {
+    await setContentWithDesignSystem(page, `<p-link onclick="return false;" href="">Some label</p-link>`);
+
+    const link = getLink(page);
+    expect(await getElementStyle(link, 'outlineStyle'), 'initially').toBe('none');
+
+    await page.keyboard.press('Tab');
+    expect(await getElementStyle(link, 'outlineStyle'), 'after tab').toBe('solid');
+  });
+});
+
 test.describe('slotted anchor', () => {
   test('should have the same width as host', async ({ page }) => {
     await initLink(page, { useSlottedAnchor: true });
@@ -168,6 +181,109 @@ test.describe('slotted anchor', () => {
     expect(hostWidthInPx).toBe('500px');
     expect(slottedAnchorWidthInPx).toBe('500px');
   });
+});
+
+test.describe('cover', () => {
+  const cardWidth = 400;
+  const cardHeight = 300;
+  const coverModes = ['href', 'empty href', 'slotted anchor'] as const;
+
+  const getCard = (page: Page) => page.locator('#card');
+  const getSecondaryAction = (page: Page) => page.locator('#secondary');
+
+  const initCoverLink = (
+    page: Page,
+    mode: (typeof coverModes)[number],
+    opts?: { hideLabel?: boolean }
+  ): Promise<void> => {
+    const { hideLabel = false } = opts || {};
+    const attributes = `cover${hideLabel ? ' hide-label="true" icon="arrow-right"' : ''}`;
+
+    return setContentWithDesignSystem(
+      page,
+      `
+      <div id="card" style="position: relative; box-sizing: border-box; width: ${cardWidth}px; height: ${cardHeight}px; padding: 24px; --p-link-cover-radius: 16px;">
+        <p>Some text</p>
+        <button type="button" id="secondary" style="position: relative; z-index: 2;">Some secondary action</button>
+        ${
+          mode === 'slotted anchor'
+            ? `<p-link ${attributes}><a onclick="return false;" href="">Some label</a></p-link>`
+            : `<p-link ${attributes} onclick="return false;" href="${mode === 'href' ? '#' : ''}">Some label</p-link>`
+        }
+      </div>`
+    );
+  };
+
+  for (const mode of coverModes) {
+    test.describe(mode, () => {
+      for (const hideLabel of [false, true]) {
+        test(`should be clickable on the whole area of its positioned ancestor for hideLabel: ${hideLabel}`, async ({
+          page,
+        }) => {
+          await initCoverLink(page, mode, { hideLabel });
+
+          const link = getLink(page);
+          const cardBox = await getCard(page).boundingBox();
+          const hostBox = await getHost(page).boundingBox();
+          if (!cardBox || !hostBox) throw new Error('card or p-link not rendered');
+
+          // center of the right edge, which is neither part of the visible link nor of the rounded corners
+          const x = cardBox.x + cardBox.width - 4;
+          const y = cardBox.y + cardBox.height / 2;
+          expect(x, 'click position is outside the visible link').toBeGreaterThan(hostBox.x + hostBox.width);
+
+          await addEventListener(link, 'click');
+          await page.mouse.click(x, y);
+
+          expect((await getEventSummary(link, 'click')).counter).toBe(1);
+        });
+      }
+
+      test('should keep an interactive element placed above it operable', async ({ page }) => {
+        await initCoverLink(page, mode);
+
+        const link = getLink(page);
+        const secondaryAction = getSecondaryAction(page);
+        await addEventListener(link, 'click');
+        await addEventListener(secondaryAction, 'click');
+
+        await secondaryAction.click();
+
+        expect((await getEventSummary(secondaryAction, 'click')).counter, 'secondary action clicks').toBe(1);
+        expect((await getEventSummary(link, 'click')).counter, 'link clicks').toBe(0);
+      });
+
+      skipInBrowsers(['webkit', 'firefox'], () => {
+        test('should render the focus ring around its positioned ancestor and be operable by keyboard', async ({
+          page,
+        }) => {
+          await initCoverLink(page, mode);
+
+          const link = getLink(page);
+          await addEventListener(link, 'click');
+
+          expect(await getElementStyle(link, 'outlineStyle', { pseudo: '::before' }), 'initially').toBe('none');
+
+          await page.keyboard.press('Tab');
+          expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('secondary');
+          expect(await getElementStyle(link, 'outlineStyle', { pseudo: '::before' }), 'after 1st tab').toBe('none');
+
+          await page.keyboard.press('Tab');
+          expect(await getActiveElementTagName(page), 'activeElementTagName after 2nd tab').toBe(
+            mode === 'slotted anchor' ? 'A' : 'P-LINK'
+          );
+          expect(await getElementStyle(link, 'outlineStyle'), 'outline of link after 2nd tab').toBe('none');
+          expect(await getElementStyle(link, 'outlineStyle', { pseudo: '::before' }), 'after 2nd tab').toBe('solid');
+          expect(await getElementStyle(link, 'width', { pseudo: '::before' })).toBe(`${cardWidth}px`);
+          expect(await getElementStyle(link, 'height', { pseudo: '::before' })).toBe(`${cardHeight}px`);
+          expect(await getElementStyle(link, 'borderTopLeftRadius', { pseudo: '::before' })).toBe('16px');
+
+          await page.keyboard.press('Enter');
+          expect((await getEventSummary(link, 'click')).counter).toBe(1);
+        });
+      });
+    });
+  }
 });
 
 test.describe('lifecycle', () => {

@@ -15,7 +15,19 @@ export type ExampleMeta = {
   title: string;
   /** What the example shows and when to use it, as plain text – no markup, no links. */
   description: string;
+  /**
+   * The color schemes the example is built for – `['light']` when left out. An example sets no scheme on `<html>`,
+   * since that is the decision of the application it is copied into, so it renders light on its own. One that works
+   * in both declares `['light', 'dark']`: the storefront then sets the scheme its visitor chose on the `<html>` of the
+   * example, and the VRT and a11y suites capture it in the dark scheme as well.
+   */
+  colorSchemes?: ExampleColorScheme[];
 };
+
+/** A color scheme an example is built for. */
+export type ExampleColorScheme = 'light' | 'dark';
+
+const exampleColorSchemes: readonly ExampleColorScheme[] = ['light', 'dark'];
 
 /**
  * An example in the shape every project of `packages/examples` exports, which the catalogue of
@@ -38,13 +50,15 @@ export type PageExample<Id extends string = string> = {
   files: Record<string, string>;
   /** Where its built page is served, relative to the root of a site: `/examples/patterns/header/overlay/index.html`. */
   url: string;
+  /** The color schemes it is built for, as its meta declares them – left out for the light scheme only. */
+  colorSchemes?: ExampleColorScheme[];
 };
 
 const isFilledString = (value: unknown): value is string => typeof value === 'string' && value.trim() !== '';
 
 /** The `meta` export of a page, checked – a missing or empty title or description fails the build. */
 export const assertExampleMeta = (meta: unknown, page: string): ExampleMeta => {
-  const { title, description } = (meta ?? {}) as Partial<ExampleMeta>;
+  const { title, description, colorSchemes } = (meta ?? {}) as Partial<ExampleMeta>;
 
   if (!isFilledString(title) || !isFilledString(description)) {
     throw new Error(`[examples] "${page}" needs to export \`meta\` with a title and a description`);
@@ -52,6 +66,25 @@ export const assertExampleMeta = (meta: unknown, page: string): ExampleMeta => {
   if (/[<>]/.test(`${title}${description}`)) {
     throw new Error(`[examples] the meta of "${page}" is plain text – it may not contain markup`);
   }
+  if (
+    colorSchemes !== undefined &&
+    (!Array.isArray(colorSchemes) ||
+      colorSchemes.length === 0 ||
+      new Set(colorSchemes).size !== colorSchemes.length ||
+      !colorSchemes.every((scheme) => exampleColorSchemes.includes(scheme)))
+  ) {
+    throw new Error(
+      `[examples] the color schemes of "${page}" are a list of distinct ${exampleColorSchemes.map((scheme) => `"${scheme}"`).join(' and ')}`
+    );
+  }
 
-  return { title: title.trim(), description: description.trim() };
+  return {
+    title: title.trim(),
+    description: description.trim(),
+    ...(colorSchemes && { colorSchemes: exampleColorSchemes.filter((scheme) => colorSchemes.includes(scheme)) }),
+  };
 };
+
+/** Whether an example is built for the dark scheme as well – the storefront and the test suites then apply it. */
+export const hasDarkScheme = ({ colorSchemes }: Pick<ExampleMeta, 'colorSchemes'>): boolean =>
+  !!colorSchemes?.includes('dark');
