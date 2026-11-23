@@ -7,6 +7,7 @@ export const meta: ExampleMeta = {
   title: 'Personal details form',
   description:
     'A personal details and address form combining contact information, an international phone number split into country code and national number, and a structured postal address.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**

@@ -7,6 +7,7 @@ export const meta: ExampleMeta = {
   title: 'Contact form',
   description:
     'A contact inquiry form combining optional call preferences, a free-text message, service checkboxes, personal details and legal consent.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**

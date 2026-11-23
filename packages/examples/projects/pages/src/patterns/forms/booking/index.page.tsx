@@ -8,6 +8,7 @@ export const meta: ExampleMeta = {
   title: 'Booking form',
   description:
     'A three-step test drive booking flow with a horizontal stepper: date and time selection, personal details, and a confirmation summary with optional promotion code.',
+  colorSchemes: ['light', 'dark'],
 };
 
 const timeSlots = [
