@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { hasDescription } from './hasDescription';
 
 const description = 'Some description';

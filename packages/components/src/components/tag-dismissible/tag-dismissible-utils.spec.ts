@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES } from './tag-dismissible-utils';
 
 describe('TAG_DISMISSIBLE_ARIA_ATTRIBUTES', () => {

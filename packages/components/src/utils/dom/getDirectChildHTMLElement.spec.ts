@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import { getDirectChildHTMLElement } from './getDirectChildHTMLElement';
 import * as getHTMLElementUtils from './getHTMLElement';
 import * as transformSelectorToDirectChildSelectorUtils from './transformSelectorToDirectChildSelector';

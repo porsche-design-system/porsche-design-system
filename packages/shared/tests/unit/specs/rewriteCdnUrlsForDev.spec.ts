@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { rewriteCdnUrlsForDev } from '../../../src/utils/rewriteCdnUrlsForDev';
 
 it.each([

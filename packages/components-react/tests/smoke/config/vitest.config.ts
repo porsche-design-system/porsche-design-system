@@ -1,7 +1,11 @@
-import { defineConfig } from 'vitest/config';
+import { vitestConfig } from '@porsche-design-system/testing/vitest';
+import { defineConfig, mergeConfig } from 'vitest/config';
 
-export default defineConfig({
-  test: {
-    include: ['**/tests/smoke/specs/*.smoke.{ts,tsx}'],
-  },
-});
+export default mergeConfig(
+  vitestConfig,
+  defineConfig({
+    test: {
+      include: ['**/tests/smoke/specs/*.smoke.{ts,tsx}'],
+    },
+  })
+);

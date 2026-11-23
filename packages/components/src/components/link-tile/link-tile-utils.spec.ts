@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { sharedTilePropTypes } from './link-tile-utils';
 
 describe('sharedTilePropTypes', () => {

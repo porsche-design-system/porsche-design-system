@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { removeAttribute } from './removeAttribute';
 
 it('should remove attribute', () => {

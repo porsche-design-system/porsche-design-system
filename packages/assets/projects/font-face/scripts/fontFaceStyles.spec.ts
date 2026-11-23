@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { cdnUrlMap, getMinifiedPorscheNextFontFaceCss, unicodeRangeMap } from './fontFaceStyles';
 
 it('should contain correct values for unicodeRangeMap', () => {

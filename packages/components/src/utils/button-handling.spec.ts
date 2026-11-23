@@ -1,4 +1,4 @@
-import { type Mock, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import type { ButtonType } from '../types';
 import { handleButtonEvent, improveButtonHandlingForCustomElement } from './button-handling';
 

@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { getAttribute } from './getAttribute';
 
 it('should return attribute value', () => {

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { runDefaultActionUnlessPrevented } from './runDefaultActionUnlessPrevented';
 
 describe('runDefaultActionUnlessPrevented', () => {

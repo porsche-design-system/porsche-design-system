@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { FRAMEWORKS, TAG_NAMES } from '@porsche-design-system/shared';
 import { resolveExamplePayload } from '@porsche-design-system/story-generator';
+import { describe, expect, it } from 'vitest';
 import { assertExampleFolders, readDescription, toExampleId } from '../../../../../lib/build';
 import { componentOf, getExampleIdError } from '../../../../../lib/ids';
 import type { StoryExampleMeta } from '../../../lib/meta';

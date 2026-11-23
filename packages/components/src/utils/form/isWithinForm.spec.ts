@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import * as getClosestHTMLElementUtils from '../dom/getClosestHTMLElement';
 import { isWithinForm } from './isWithinForm';
 

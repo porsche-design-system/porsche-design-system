@@ -1,4 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
+import { describe, expect, it } from 'vitest';
 import { isElementOfKind } from './isElementOfKind';
 
 const combinations: [boolean, TagName, TagName][] = [
