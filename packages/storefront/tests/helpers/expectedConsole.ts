@@ -39,6 +39,7 @@ export const expectedConsoleByUrl: Record<string, RegExp[]> = {
   '/patterns/forms/': [/was preloaded using link preload but not used within a few seconds/],
   '/patterns/header/': [/was preloaded using link preload but not used within a few seconds/],
   '/patterns/popover/': [/was preloaded using link preload but not used within a few seconds/],
+  '/patterns/tile/': [/was preloaded using link preload but not used within a few seconds/],
   '/templates/admin-panel/': [/was preloaded using link preload but not used within a few seconds/],
   '/templates/landing-page/': [/was preloaded using link preload but not used within a few seconds/],
 };

@@ -115,6 +115,7 @@ export const meta: ExampleMeta = {
   title: 'Popover: Feature tour',
   description:
     'On first visit, a sequence of popovers guides the user through the key areas of the interface one step at a time ("Step 2 of 4", Back / Next / Skip), each anchored to the element it describes. Only a single step is open at once.',
+  colorSchemes: ['light', 'dark'],
 };
 
 /**

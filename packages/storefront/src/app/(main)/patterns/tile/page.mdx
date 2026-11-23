@@ -1,0 +1,121 @@
+import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import { Example } from '@/components/mdx/examples/Example';
+import { SubsectionHeading } from '@/components/mdx/structure/SubsectionHeading';
+import image from '@porsche-design-system/examples/patterns/tile/image';
+import video from '@porsche-design-system/examples/patterns/tile/video';
+import callToAction from '@porsche-design-system/examples/patterns/tile/call-to-action';
+import modelTeaser from '@porsche-design-system/examples/patterns/tile/model-teaser';
+import category from '@porsche-design-system/examples/patterns/tile/category';
+import modelNavigation from '@porsche-design-system/examples/patterns/tile/model-navigation';
+import modelSelection from '@porsche-design-system/examples/patterns/tile/model-selection';
+import product from '@porsche-design-system/examples/patterns/tile/product';
+import equipment from '@porsche-design-system/examples/patterns/tile/equipment';
+import equipmentStacked from '@porsche-design-system/examples/patterns/tile/equipment-stacked';
+import disclosure from '@porsche-design-system/examples/patterns/tile/disclosure';
+import vehicleListing from '@porsche-design-system/examples/patterns/tile/vehicle-listing';
+
+export const metadata = {
+  title: 'Tile - Patterns',
+  description:
+    'Learn how to build navigation tiles and content tiles for Porsche web applications with HTML and Tailwind CSS.',
+};
+
+# Tile
+
+<TableOfContents headings={['Navigation Tiles', 'Content Tiles']} />
+
+Tiles group the content of a single item – a model, a category, a product or a feature – in an area of its own. They
+vary too much in layout, media and interaction to be covered by a single component, so these patterns show their common
+use cases, built with HTML, Tailwind CSS and the components of the Porsche Design System. Start from the pattern closest
+to your use case and adapt it – the comments in its code explain why it is built the way it is.
+
+The two groups below differ in how a reader reaches what they offer. Hovering anywhere on a navigation tile reaches at
+least one link, so the whole tile is clickable. A content tile presents its content in a container, and what a reader
+can do with it – open a page, press a button, read on – sits in its elements rather than in the surface as a whole.
+Within each group, the patterns are ordered by what a reader can do with them rather than by what they show, and a
+variant follows the pattern it is built from. Where the photograph sits is visible in every example below; whether the
+whole area is one link is not, and it is the decision that shapes the markup, the focus order and what a screen reader
+announces.
+
+## Navigation Tiles
+
+Every tile below opens one page, and the whole of it is the clickable area. Two forms get it there.
+
+<SubsectionHeading>Image</SubsectionHeading>
+
+The first group shows a link, and a `p-link` with `cover` opens the page: the link is part of the tile and its clickable
+area is stretched over the whole of it, which also draws the focus indicator around the tile. Use this form wherever the
+tile shows a link anyway.
+
+<Example example={image} />
+
+<SubsectionHeading>Video</SubsectionHeading>
+
+<Example example={video} />
+
+<SubsectionHeading>Call to Action</SubsectionHeading>
+
+<Example example={callToAction} />
+
+<SubsectionHeading>Model Teaser</SubsectionHeading>
+
+<Example example={modelTeaser} />
+
+<SubsectionHeading>Category</SubsectionHeading>
+
+The category tile reuses the cover-link form of the Image tile above: the heading and the link sit at the top, and the
+cut-out product image fills the rest of the tile up to its edges.
+
+<Example example={category} />
+
+<SubsectionHeading>Model Navigation</SubsectionHeading>
+
+The next three tiles open a page as well, but show no link. An anchor of their own spans the tile, and its text is for
+screen readers only – the heading names the subject in the design, the anchor names it for assistive technology. Use
+this form where a visible link would be one element too many.
+
+<Example example={modelNavigation} />
+
+<SubsectionHeading>Model Selection</SubsectionHeading>
+
+<Example example={modelSelection} />
+
+<SubsectionHeading>Product</SubsectionHeading>
+
+<Example example={product} />
+
+## Content Tiles
+
+A content tile shows its content in a container, and what a reader can do with it sits in its elements rather than in
+the surface as a whole – no link spans a content tile the way it spans a navigation tile above.
+
+<SubsectionHeading>Equipment</SubsectionHeading>
+
+The first three tiles open nothing, and what they offer instead differs. This one carries the single action of its
+subject, a button, because an equipment option is something to add rather than a page to visit. Its photograph takes two
+thirds of a wide tile and the description the rest, which is why the two stack once the tile is narrow – whatever the
+width of the window.
+
+<Example example={equipment} />
+
+<SubsectionHeading>Equipment Stacked</SubsectionHeading>
+
+This one only describes. It is the equipment tile above with its two panels stacked rather than beside one another, for
+a column too narrow for the two halves, and it carries no action.
+
+<Example example={equipmentStacked} />
+
+<SubsectionHeading>Disclosure</SubsectionHeading>
+
+This one reveals more of itself on demand: its heading is the summary of an accordion that holds the details, and the
+photograph behind the text dims while they are open. Nothing leaves the tile, so nothing has to be a link.
+
+<Example example={disclosure} />
+
+<SubsectionHeading>Vehicle Listing</SubsectionHeading>
+
+The last tile opens pages again, but through its elements rather than as a whole. It carries several controls of its own
+– a popover, a link to the technical data and two actions – so no link could span it, and it does not react to hover as
+a whole either. The heading names the vehicle, the actions open it.
+
+<Example example={vehicleListing} />

@@ -1,5 +1,5 @@
 import type { FrameworkExampleId } from '@porsche-design-system/examples-framework';
-import type { PageExampleId } from '@porsche-design-system/examples-pages';
+import type { ExampleColorScheme, PageExampleId } from '@porsche-design-system/examples-pages';
 import type { AccessibilityExampleId, StoryExampleId } from '@porsche-design-system/examples-stories';
 import type { Framework, TagName } from '@porsche-design-system/shared';
 
@@ -44,6 +44,8 @@ export type PageExample<Id extends PageExampleId = PageExampleId> = ExampleBase<
   files: Record<string, string>;
   /** Where its built page is served, relative to the root of a site and without its base path. */
   url: string;
+  /** The color schemes it is built for – left out for the light scheme only, which every page is built for. */
+  colorSchemes?: ExampleColorScheme[];
 };
 
 /** An anti-pattern and its recommendation, as snippets. */

@@ -7,6 +7,7 @@ import { createElement, type FunctionComponent } from 'preact';
 import { render } from 'preact-render-to-string';
 import prettier from 'prettier';
 import type { Plugin } from 'vite';
+import { renderComments, wrapComments } from './comment.ts';
 import { linkStylesForDev } from './entries.ts';
 import type { ExampleMeta } from './meta.ts';
 import { categories, type PageLocation, resolvePageLocation } from './projects.ts';
@@ -105,16 +106,19 @@ export const normalizeClassAttributes = (html: string): string =>
  * `embeddedLanguageFormatting: 'off'` keeps the `<Script>` elements as they are written, so `extractScripts()` gives
  * them back unchanged; the build formats the generated `main.js` as a whole – see `formatScriptEntry()`.
  *
- * Class attributes are normalized first – see `normalizeClassAttributes()`. The doctype is followed by
- * `exampleNote`.
+ * The comments of the `Comment` partial become HTML comments first – see `renderComments()` – then class attributes
+ * are normalized – see `normalizeClassAttributes()`. The doctype is followed by `exampleNote`. Once formatted, comments
+ * exceeding the line length are broken into lines – see `wrapComments()`.
  */
 export const renderPage = async (Page: FunctionComponent): Promise<string> =>
-  prettier.format(normalizeClassAttributes(`${doctype}${exampleNote}${render(createElement(Page, {}))}`), {
-    parser: 'html',
-    printWidth: 120,
-    htmlWhitespaceSensitivity: 'ignore',
-    embeddedLanguageFormatting: 'off',
-  });
+  prettier
+    .format(normalizeClassAttributes(renderComments(`${doctype}${exampleNote}${render(createElement(Page, {}))}`)), {
+      parser: 'html',
+      printWidth: 120,
+      htmlWhitespaceSensitivity: 'ignore',
+      embeddedLanguageFormatting: 'off',
+    })
+    .then(wrapComments);
 
 /**
  * Every page of the source tree, in a stable order – found by its file name rather than listed anywhere, so a new
