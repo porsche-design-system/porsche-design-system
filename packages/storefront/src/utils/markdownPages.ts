@@ -3,9 +3,9 @@ import { findPages, type PageSource } from '@porsche-design-system/docs-componen
 import { type Category, getPath, sitemap } from '../sitemap';
 
 /**
- * The Storefront's tree (`src/sitemap.ts`) is the one structure every output derives from: a page or tab flagged with
- * `markdown: true` is written as Markdown next to its HTML and into the skills, under its category, as part of its
- * sitemap page (`docs/docs-components-design.md`).
+ * The Storefront's tree (`src/sitemap.ts`) is the one structure the Markdown derives from: a page or tab flagged with
+ * `markdown: true` is written as Markdown next to its HTML and listed in `llms.txt` under its category
+ * (`docs/docs-components-design.md`).
  */
 
 const APP_DIR = path.resolve(__dirname, '../app');
@@ -38,7 +38,7 @@ export const getStorefrontPages = (): { routes: string[]; markdownPages: PageSou
           file,
           place: {
             category: { route: toRoute(getPath(categoryKey)), title: category.name, description: category.description },
-            reference: { route: toRoute(getPath(categoryKey, pageKey)), title: page.name },
+            sitemapPage: { route: toRoute(getPath(categoryKey, pageKey)), title: page.name },
             tab,
           },
         });

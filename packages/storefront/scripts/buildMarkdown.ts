@@ -14,8 +14,9 @@ import { getStorefrontPages } from '../src/utils/markdownPages';
 
 /**
  * Writes the Storefront's Markdown into the static export, next to its HTML, so agents can read the Storefront. Where
- * each page lands, how it is linked and how `llms.txt` words its sections all come from `markdownMap`. Runs after
- * `next build`, which has to have created `dist/` (#4142). A link to a route that does not exist fails the build.
+ * each page lands and how it is linked come from `markdownMap`, the sections of `llms.txt` from the sitemap's
+ * categories. Runs after `next build`, which has to have created `dist/` (#4142). A link to a route that does not exist
+ * fails the build.
  */
 
 const INTRODUCTION = '> Design tokens, web components and framework wrappers for building Porsche web applications.';
@@ -82,7 +83,7 @@ const buildMarkdown = async (): Promise<void> => {
       write(fileOf(page), pageToMarkdown(page, framework, site, resolve));
     }
 
-    const { title, description } = markdownMap.category(page);
+    const { title, description } = page.place.category;
     const section = sections.get(title) ?? { description, entries: [] };
     section.entries.push(llmsEntry(page));
     sections.set(title, section);

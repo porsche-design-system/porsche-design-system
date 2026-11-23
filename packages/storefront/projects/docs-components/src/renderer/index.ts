@@ -5,16 +5,8 @@ import { serializeMarkdown } from './render';
 export type { MarkdownComponentOf, MarkdownContext, MarkdownOptions, MarkdownRenderer } from './define';
 export { defineMarkdownComponent } from './define';
 export type { PageMetadata } from './mdx';
-export type { Location, OutputFile, OutputMap, OutputMapDefinition } from './outputs';
-export {
-  defineOutputMap,
-  htmlLink,
-  mapLinks,
-  matchesRoute,
-  outputFiles,
-  outputFileToMarkdown,
-  relativeHref,
-} from './outputs';
+export type { Location, OutputMap } from './outputs';
+export { htmlLink, mapLinks } from './outputs';
 export type {
   LinkResolver,
   LinkSource,
@@ -26,7 +18,7 @@ export type {
   RouteSource,
   Site,
 } from './pages';
-export { collectPages, createSite, findPages, headingAnchor, pageTitle, pageToMarkdown } from './pages';
+export { collectPages, createSite, findPages, pageTitle, pageToMarkdown } from './pages';
 export { renderToMarkdown, renderToMdast, serializeMarkdown } from './render';
 
 /** Imports an MDX file and renders it to Markdown for one framework, leaving its links as they are. */

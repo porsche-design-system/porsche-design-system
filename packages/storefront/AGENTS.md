@@ -133,33 +133,33 @@ Storefront, and the skills generator turns the same routes into references or St
 ### MDX components
 
 Every component MDX imports lives in `src/components/mdx/`, in a topic folder by how pages use it (`structure`,
-`content`, `framework`, `playground`, `examples`, `reference`, `widgets`), one folder per component. MDX imports
-it from that folder: `import { Notification } from '@/components/mdx/content/Notification';`. The
+`content`, `framework`, `playground`, `examples`, `reference`, `widgets`), one folder per component. MDX imports it from
+that folder: `import { Notification } from '@/components/mdx/content/Notification';`. The
 [`README.md`](src/components/mdx/README.md) is the inventory: what each component is for, its planned Markdown output
-and its dependencies on the Storefront. It is the migration list for the Markdown of the Storefront and the skills
-(#4142), see [Markdown for agents](#markdown-for-agents).
+and its dependencies on the Storefront. It is the migration list for the Storefront's Markdown (#4142), see
+[Markdown for agents](#markdown-for-agents).
 
 - A new component gets a folder in its topic with a module of the same name, an `index.ts` and a row in the inventory.
   `tests/unit/specs/mdxComponents.spec.ts` checks them, and that a new Storefront dependency is added on purpose.
 - Write Markdown wherever it can express something: links, inline code, bold. Use an MDX component instead of a PDS
-  component or raw HTML, e.g. `DependencyList` instead of a row of `PTag`s. `tests/unit/specs/mdxPages.spec.ts`
-  checks this, unused imports, tables of contents (from two `##` sections) and notification heading levels.
-- Framework-aware content (`FrameworkCodeBlock`, `FrameworkLink`, `FrameworkName`, `Notification` with
-  `frameworks`) is resolved for every framework on the server; `framework/FrameworkContent` renders the selected one.
+  component or raw HTML, e.g. `DependencyList` instead of a row of `PTag`s. `tests/unit/specs/mdxPages.spec.ts` checks
+  this, unused imports, tables of contents (from two `##` sections) and notification heading levels.
+- Framework-aware content (`FrameworkCodeBlock`, `FrameworkLink`, `FrameworkName`, `Notification` with `frameworks`) is
+  resolved for every framework on the server; `framework/FrameworkContent` renders the selected one.
 
 ### Markdown for agents
 
-A page or tab flagged with `markdown: true` in `src/sitemap.ts` is also written as Markdown: next to its HTML with an
-entry in `llms.txt` (`npm run build:markdown`, the `postbuild` of the Storefront), and into the knowledge skills
-(`build:skills`). The design is in [`docs/docs-components-design.md`](../../docs/docs-components-design.md).
+A page or tab flagged with `markdown: true` in `src/sitemap.ts` is also written as Markdown, next to its HTML with an
+entry in `llms.txt` (`npm run build:markdown`, the `postbuild` of the Storefront). The knowledge skills don't read it
+yet. The design is in [`docs/docs-components-design.md`](../../docs/docs-components-design.md).
 
 - Every component the page uses needs a Markdown implementation, `<Name>.markdown.ts` in its folder (see the
   [inventory](src/components/mdx/README.md)). The build fails for one without, naming it and its line.
-- A page written for one framework declares it, `export const framework = 'react';`, and reaches only that framework's
-  Markdown and skill. Other pages get one variant per framework where their Markdown differs.
+- A page written for one framework declares it, `export const framework = 'react';`, and gets one Markdown file for that
+  framework. Other pages get one variant per framework where their Markdown differs.
 - Every root-relative link must target a route; the Markdown build fails for one that doesn't.
 - `projects/docs-components` is the engine: the Markdown JSX runtime, the Node hooks that compile MDX and resolve a
-  component folder to its Markdown implementation, the page manifest and the output maps. Its tests run with
+  component folder to its Markdown implementation, the page manifest and link resolution. Its tests run with
   `npm run test:unit:docs-components`.
 
 ## File Structure
@@ -195,8 +195,8 @@ fails when the meta and the configurator or examples page differ.
 
 - The configurator's story is `packages/examples/projects/stories/src/components/{component}/default/story.ts`; an
   example's story, title and description are `story.ts`, `meta.ts` (`{ title }`) and `example.mdx` in
-  `packages/examples/projects/stories/src/components/{component}/{slug}/`. Its id, `components/{component}/{slug}`,
-  goes into the meta's `examples`, and `npm run build:examples:projects` makes it importable.
+  `packages/examples/projects/stories/src/components/{component}/{slug}/`. Its id, `components/{component}/{slug}`, goes
+  into the meta's `examples`, and `npm run build:examples:projects` makes it importable.
 - Add `'use client';` at the top because storefront stories power interactive playgrounds.
 - Export `Story<'p-component'>` objects for configurator-ready examples. `Story`, `SlotStories`, `ElementConfig` and the
   accessibility example types come from `@porsche-design-system/story-generator` (in
@@ -221,9 +221,9 @@ import componentDefault from '@porsche-design-system/examples/components/compone
 
 - Keep `export const metadata = { ... }` in the page.
 - Keep the page heading with `ComponentStatus`.
-- The configurator takes the default story with its slot stories (and a controlled variant of both, if exported); for
-  a component without a declarative default (e.g. `p-toast`), the default is a framework example, which it shows with
-  its code. The meta's `configurator` is the same id, for the skill.
+- The configurator takes the default story with its slot stories (and a controlled variant of both, if exported); for a
+  component without a declarative default (e.g. `p-toast`), the default is a framework example, which it shows with its
+  code. The meta's `configurator` is the same id, for the skill.
 
 ### Examples page recipe
 
@@ -251,8 +251,8 @@ import customLogic from '@porsche-design-system/examples/components/component/cu
   `TableOfContents` from the `##` headings.
 - Import every example the page shows on its own: a page loads the stories and previews it imports, and only those.
 - Prefer a story (`packages/examples/projects/stories`). Write a framework example only for custom logic, by adding its
-  `meta.ts` (and its `example.mdx`) to `packages/examples/projects/framework/src/<id>/` and generating the project
-  (see its [`AGENTS.md`](../examples/projects/framework/AGENTS.md)).
+  `meta.ts` (and its `example.mdx`) to `packages/examples/projects/framework/src/<id>/` and generating the project (see
+  its [`AGENTS.md`](../examples/projects/framework/AGENTS.md)).
 - Preserve `metadata` and `ComponentStatus` imports on the page.
 - Add `TableOfContents` when the page contains multiple example sections.
 - Keep example copy and generated markup accessible by default: meaningful headings, visible focus, keyboard support,
@@ -287,19 +287,19 @@ It documents expected testing stages:
 
 When adding or updating accessibility documentation in the storefront:
 
-| Topic                          | Guidance                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Central vs component**       | Cross-cutting integration mistakes live on the [Do's and Don'ts](/must-know/accessibility/dos-and-donts) page. Each component Accessibility tab includes its own do/don't list and examples, even when content overlaps.                                                                                                                                                                                                      |
-| **Usage vs Accessibility**     | The Usage tab is for design/UX guidance. The Accessibility tab is for keyboard, ARIA, and technical integration.                                                                                                                                                                                                                                                                                                              |
-| **Code examples**              | Use vanilla-js web component markup (`<p-button>`, kebab-case attributes). Pass ARIA via `aria="{ 'aria-label': '...' }"`.                                                                                                                                                                                                                                                                                                    |
-| **Page structure**             | Keep conceptual guidance in `overview.mdx` under `## Development considerations`, including `### Common do's and don'ts` bullet rules. Anti-pattern/recommended pairs live in `packages/examples/projects/stories`, next to the stories (`components/<component>/accessibility/<slug>`), not in MDX.                                                                                                                                                                                                          |
-| **Do/don't examples**          | Pair each actionable do/don't with an `antiPattern`/`recommended` example pair. Include host-vs-`aria` prop examples for interactive components.                                                                                                                                                                                                                                                                              |
-| **Story-driven examples**      | Put each pair in `packages/examples/projects/stories/src/components/<component>/accessibility/<kebab-case-name>/example.ts`. Export one `<metadataKey>A11yExample` object that `satisfies AccessibilityExample`. Host-level `aria-*` attributes belong in `properties` (e.g. `'aria-haspopup': 'dialog'`). Imperative examples must use a complete cross-framework `ExampleMarkupSample`. |
-| **Snippet, not runnable file** | Accessibility pairs render as bare markup — no HTML document, component shell or SFC blocks — so the anti-pattern and the recommendation stay diffable at a glance. Keep the two sides structurally identical apart from the accessibility difference being taught. |
-| **Naming**                     | Directory is kebab-case and makes the id, `components/<component>/accessibility/<directory>`; the export is its lower-camelCase form plus `A11yExample`. Preserve word boundaries: `icon-only-…` → `iconOnlyButtonWithoutAccessibleNameA11yExample`, not `icononly-…`. The `name` of the example is its title. |
-| **Page composition**           | `page.mdx` renders `<meta.accessibility.overview />`, then `<A11yIntegrationExamples examples={meta.accessibility.examples} />` (which owns the `## Integration examples` H2), then `<meta.accessibility.tests />`. Every H2 listed in `<TableOfContents>` must exist in `overview.mdx`/`tests.mdx` in the same order. Each pair renders one framework selector driving both of its snippets. |
+| Topic                          | Guidance                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Central vs component**       | Cross-cutting integration mistakes live on the [Do's and Don'ts](/must-know/accessibility/dos-and-donts) page. Each component Accessibility tab includes its own do/don't list and examples, even when content overlaps.                                                                                                                                                                                                  |
+| **Usage vs Accessibility**     | The Usage tab is for design/UX guidance. The Accessibility tab is for keyboard, ARIA, and technical integration.                                                                                                                                                                                                                                                                                                          |
+| **Code examples**              | Use vanilla-js web component markup (`<p-button>`, kebab-case attributes). Pass ARIA via `aria="{ 'aria-label': '...' }"`.                                                                                                                                                                                                                                                                                                |
+| **Page structure**             | Keep conceptual guidance in `overview.mdx` under `## Development considerations`, including `### Common do's and don'ts` bullet rules. Anti-pattern/recommended pairs live in `packages/examples/projects/stories`, next to the stories (`components/<component>/accessibility/<slug>`), not in MDX.                                                                                                                      |
+| **Do/don't examples**          | Pair each actionable do/don't with an `antiPattern`/`recommended` example pair. Include host-vs-`aria` prop examples for interactive components.                                                                                                                                                                                                                                                                          |
+| **Story-driven examples**      | Put each pair in `packages/examples/projects/stories/src/components/<component>/accessibility/<kebab-case-name>/example.ts`. Export one `<metadataKey>A11yExample` object that `satisfies AccessibilityExample`. Host-level `aria-*` attributes belong in `properties` (e.g. `'aria-haspopup': 'dialog'`). Imperative examples must use a complete cross-framework `ExampleMarkupSample`.                                 |
+| **Snippet, not runnable file** | Accessibility pairs render as bare markup — no HTML document, component shell or SFC blocks — so the anti-pattern and the recommendation stay diffable at a glance. Keep the two sides structurally identical apart from the accessibility difference being taught.                                                                                                                                                       |
+| **Naming**                     | Directory is kebab-case and makes the id, `components/<component>/accessibility/<directory>`; the export is its lower-camelCase form plus `A11yExample`. Preserve word boundaries: `icon-only-…` → `iconOnlyButtonWithoutAccessibleNameA11yExample`, not `icononly-…`. The `name` of the example is its title.                                                                                                            |
+| **Page composition**           | `page.mdx` renders `<meta.accessibility.overview />`, then `<A11yIntegrationExamples examples={meta.accessibility.examples} />` (which owns the `## Integration examples` H2), then `<meta.accessibility.tests />`. Every H2 listed in `<TableOfContents>` must exist in `overview.mdx`/`tests.mdx` in the same order. Each pair renders one framework selector driving both of its snippets.                             |
 | **Comments in snippets**       | Comments are a first-class node: return `{ comment: 'text' }` from the generator (top level or among `children`). It is emitted per framework — `<!-- text -->` for vanilla-js/Angular/Vue, `{/* text */}` for React — so each snippet is valid in the language its code fence claims. Never write a comment as a raw string; multiline strings are rejected outright, so imperative code needs an `ExampleMarkupSample`. |
-| **When to add do/don't**       | Prioritize high-integration-risk components: interactive controls, forms, overlays, and keyboard-heavy widgets (carousel, tabs).                                                                                                                                                                                                                                                                                              |
+| **When to add do/don't**       | Prioritize high-integration-risk components: interactive controls, forms, overlays, and keyboard-heavy widgets (carousel, tabs).                                                                                                                                                                                                                                                                                          |
 
 Example in MDX:
 
@@ -342,7 +342,8 @@ export const checkboxMeta = {
 } satisfies ComponentDocsMeta<'p-checkbox'>;
 ```
 
-Define the complete pair in `packages/examples/projects/stories/src/components/checkbox/accessibility/hidden-label-without-accessible-name/example.ts`:
+Define the complete pair in
+`packages/examples/projects/stories/src/components/checkbox/accessibility/hidden-label-without-accessible-name/example.ts`:
 
 ```ts
 import type { AccessibilityExample } from '@porsche-design-system/story-generator';

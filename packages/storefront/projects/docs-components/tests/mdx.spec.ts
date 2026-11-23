@@ -6,13 +6,13 @@ import { describe, expect, it } from 'vitest';
 const packageRoot = path.resolve(import.meta.dirname, '..');
 
 /**
- * Renders a fixture the way the skill and Storefront builds do: in Node, with the hooks, within a small site of fixture
+ * Renders a fixture the way the Storefront's Markdown build does: in Node, with the hooks, within a small site of fixture
  * pages (see `fixtures/render.ts`).
  */
-const renderFixture = async (fixture: string, destination: 'web' | 'skill' = 'web') => {
+const renderFixture = async (fixture: string) => {
   const { stdout } = await promisify(execFile)(
     process.execPath,
-    ['--import', 'tsx', '--import', './src/renderer/register.mjs', 'tests/fixtures/render.ts', fixture, destination],
+    ['--import', 'tsx', '--import', './src/renderer/register.mjs', 'tests/fixtures/render.ts', fixture],
     { cwd: packageRoot }
   );
   return JSON.parse(stdout);
@@ -78,25 +78,6 @@ describe('links', () => {
         '- [Independent](/v4/page.md)',
         '- [Without Markdown](/v4/partials/introduction/)',
         '- [Dynamic](/v4/components/button/)',
-        '- [External](https://react.dev)',
-        '- [Anchor](#links)',
-        '',
-      ].join('\n')
-    );
-  });
-
-  it('point to skill references, or to the exact-version Storefront outside the skill', async () => {
-    const { files } = await renderFixture('links', 'skill');
-
-    expect(files['links.md']).toBe(
-      [
-        '# Links',
-        '',
-        '- [Specific](./specific.md)',
-        '- [Switchable](./switchable.md#usage)',
-        '- [Independent](./page.md)',
-        '- [Without Markdown](https://designsystem.porsche.com/v4.8.0/partials/introduction/)',
-        '- [Dynamic](https://designsystem.porsche.com/v4.8.0/components/button/)',
         '- [External](https://react.dev)',
         '- [Anchor](#links)',
         '',

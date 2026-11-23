@@ -2,9 +2,8 @@ import type { Framework } from '@porsche-design-system/shared/models';
 import type { RootContent } from 'mdast';
 
 /**
- * Rendering depends only on the framework. Where the Markdown is read (the Storefront or a skill) changes only where
- * its links point, so links keep their Storefront routes here and are resolved per destination afterwards
- * (`pageToMarkdown`).
+ * Rendering depends only on the framework. Where the Markdown is read changes only where its links point, so links keep
+ * their Storefront routes here and are resolved per destination afterwards (`pageToMarkdown`).
  */
 export type MarkdownOptions = {
   framework: Framework;

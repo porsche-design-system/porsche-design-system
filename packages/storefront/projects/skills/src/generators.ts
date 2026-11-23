@@ -1,7 +1,6 @@
 import { generateAuditDeprecationsSkill } from './audit-deprecations/generate';
 import type { ComponentDocsMetaMap } from './knowledge/components/reference';
 import { generateKnowledgeSkill } from './knowledge/generate';
-import type { StorefrontPages } from './knowledge/pages';
 import type { SkillId } from './registry';
 import type { SkillGenerator } from './shared/generation';
 
@@ -20,8 +19,6 @@ import type { SkillGenerator } from './shared/generation';
 export type StorefrontInputs = {
   /** The storefront's `componentDocsMeta` — every documented component's MDX prose and examples. */
   docsMeta: ComponentDocsMetaMap;
-  /** The Storefront pages rendered as Markdown (`scripts/collect-pages.ts`), with what their links resolve against. */
-  storefrontPages: StorefrontPages;
 };
 
 /**

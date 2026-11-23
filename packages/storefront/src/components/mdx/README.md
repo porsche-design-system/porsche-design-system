@@ -1,8 +1,8 @@
 # MDX components
 
-Every component MDX imports, grouped by how pages use them, one folder each. This is the migration list for the Markdown
-of the Storefront and the skills (#4142): a folder gets a Markdown implementation next to its React one, which the
-Markdown build of `@porsche-design-system/docs-components` resolves the folder to, see
+Every component MDX imports, grouped by how pages use them, one folder each. This is the migration list for the
+Storefront's Markdown (#4142): a folder gets a Markdown implementation next to its React one, which the Markdown build
+of `@porsche-design-system/docs-components` resolves the folder to, see
 [`docs-components-design.md`](../../../../../docs/docs-components-design.md).
 
 ## Rules

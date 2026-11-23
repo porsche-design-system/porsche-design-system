@@ -11,8 +11,8 @@ import { capitalCase } from 'change-case';
  */
 
 /**
- * `markdown`: written as Markdown next to its HTML and into the skills (`src/utils/markdownPages.ts`). Set once every
- * component the page uses has a Markdown implementation (`docs/docs-components-design.md`).
+ * `markdown`: written as Markdown next to its HTML and listed in `llms.txt` (`src/utils/markdownPages.ts`). Set once
+ * every component the page uses has a Markdown implementation (`docs/docs-components-design.md`).
  */
 export type Tab = { name: string; markdown?: boolean };
 
@@ -27,7 +27,7 @@ export type Page = {
 
 export type Category = {
   name: string;
-  /** What the category is for, for its section in `llms.txt` and in the skills' `SKILL.md`. */
+  /** What the category is for, for its section in `llms.txt`. */
   description?: string;
   pages: Record<string, Page>;
 };

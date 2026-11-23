@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { FRAMEWORKS, type Framework, isFramework } from '@porsche-design-system/shared/models';
-import { slug } from 'github-slugger';
 import type { Nodes, Root } from 'mdast';
 import { importMdx, type PageMetadata, renderMdxModule } from './mdx';
 import { serializeMarkdown } from './render';
@@ -17,13 +16,13 @@ export type RouteSource = { route: string; file: string };
 
 /**
  * Where a page sits in the Storefront's tree (`src/sitemap.ts`), which every output derives its structure from.
- * - `category`: the top-level section, e.g. Developing; an output map may word its section differently.
- * - `reference`: the sitemap page. A skill writes one reference per sitemap page, with its tabs as sections.
+ * - `category`: the top-level section, e.g. Developing, which groups the pages in `llms.txt`.
+ * - `sitemapPage`: the sitemap page, e.g. React; for a tab, the page it belongs to.
  * - `tab`: the tab's title within that page; none for a page without tabs.
  */
 export type PagePlace = {
   category: { route: string; title: string; description?: string };
-  reference: { route: string; title: string };
+  sitemapPage: { route: string; title: string };
   tab?: string;
 };
 
@@ -151,13 +150,7 @@ const forEachLink = (node: Nodes, visit: (node: { url: string }) => void): void 
 
 /** A page's title: its sitemap page's, followed by the tab's, e.g. `React: Getting Started`. */
 export const pageTitle = ({ place }: Page): string =>
-  place.tab ? `${place.reference.title}: ${place.tab}` : place.reference.title;
-
-/**
- * The anchor Markdown readers give a heading, as GitHub does: `Unsupported APIs` → `unsupported-apis`. The Storefront
- * derives its heading IDs the same way (`getHeadingAnchorId`), so a section has one anchor in every output.
- */
-export const headingAnchor = (heading: string): string => slug(heading);
+  place.tab ? `${place.sitemapPage.title}: ${place.tab}` : place.sitemapPage.title;
 
 /**
  * A page's tree for one destination, with each Storefront route in its links resolved. Fails for a link to a route

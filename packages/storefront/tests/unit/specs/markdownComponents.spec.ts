@@ -4,7 +4,7 @@ import { DependencyList } from '@/components/mdx/content/DependencyList/Dependen
 import { Notification } from '@/components/mdx/content/Notification/Notification.markdown';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents/TableOfContents.markdown';
 
-/** The Markdown implementations of the MDX components, which the Markdown of the Storefront and the skills render. */
+/** The Markdown implementations of the MDX components, which the Storefront's Markdown renders. */
 
 const react = { framework: 'react' } as const;
 

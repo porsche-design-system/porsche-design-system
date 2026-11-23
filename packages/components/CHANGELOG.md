@@ -33,10 +33,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   a no-video variant ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
 - `Knowledge Skill`: simple footer pattern with the legal information only, next to the extended footer
   ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
-- `Knowledge Skill`: setup guides for the framework of each skill – React, Next.js and React Router in
-  `pds-knowledge-react`, Vanilla JS and Astro in `pds-knowledge-js`, Angular in `pds-knowledge-angular` and Vue in
-  `pds-knowledge-vue` – with the dependency versions they are based on, listed in a new "Frameworks" section of
-  `SKILL.md` ([#4777](https://github.com/porsche-design-system/porsche-design-system/pull/4777))
 
 ### Changed
 
