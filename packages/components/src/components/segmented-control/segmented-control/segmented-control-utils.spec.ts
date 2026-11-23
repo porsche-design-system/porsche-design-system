@@ -1,5 +1,5 @@
 import * as stencilCore from '@stencil/core';
-import { vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { ICON_SIZE, LABEL_FONT } from '../segmented-control-item/segmented-control-item-styles';
 import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';

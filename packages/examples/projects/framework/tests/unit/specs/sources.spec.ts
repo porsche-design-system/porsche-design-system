@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { sourceFiles, toFrameworkMarkup, toPreview } from '../../../lib/sources';
 
 describe('sourceFiles()', () => {

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { FORM_FIELD_ARIA_ATTRIBUTES } from './form-field-aria-attribute';
 
 describe('FORM_FIELD_ARIA_ATTRIBUTES', () => {

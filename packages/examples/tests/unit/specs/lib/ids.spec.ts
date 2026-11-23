@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { assertExampleId, componentOf, type ExampleIdKind, getExampleIdError } from '../../../../lib/ids';
 
 describe('getExampleIdError()', () => {

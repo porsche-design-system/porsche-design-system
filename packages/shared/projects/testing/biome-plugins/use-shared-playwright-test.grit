@@ -1,0 +1,28 @@
+// Fails a named, default or namespace import of test from '@playwright/test', a re-export of it and a require of it.
+// A default import needs its default_specifier field, because without it the pattern also matches named imports.
+language js
+
+or {
+  JsImportNamedClause(named_specifiers = $specifiers, source = $source) where {
+    $source <: r"['\"]@playwright/test['\"]",
+    $specifiers <: r"(?s).*\btest\b.*",
+    register_diagnostic(span = $specifiers, message = "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard.")
+  },
+  JsImportDefaultClause(default_specifier = $default, source = $source) where {
+    $default <: JsDefaultImportSpecifier(),
+    $source <: r"['\"]@playwright/test['\"]",
+    register_diagnostic(span = $source, message = "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard.")
+  },
+  JsImportNamespaceClause(source = $source) where {
+    $source <: r"['\"]@playwright/test['\"]",
+    register_diagnostic(span = $source, message = "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard.")
+  },
+  JsExportNamedFromClause(source = $source) where {
+    $source <: r"['\"]@playwright/test['\"]",
+    register_diagnostic(span = $source, message = "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard.")
+  },
+  `require($source)` where {
+    $source <: r"['\"]@playwright/test['\"]",
+    register_diagnostic(span = $source, message = "Import test from '@porsche-design-system/testing/playwright', which adds request routing and the console guard.")
+  }
+}

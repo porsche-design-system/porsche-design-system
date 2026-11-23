@@ -4,7 +4,7 @@ import { componentsReady } from '@porsche-design-system/components-js';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { sync as globbySync } from 'fast-glob';
-import { vi } from 'vitest';
+import { vi, it, expect } from 'vitest';
 import { WHITELISTED_TAG_NAMES, tagNameMarkup } from '../helper';
 
 it('should have one unit test per component', () => {

@@ -1,4 +1,5 @@
 import type { FrameworkMarkup } from '@porsche-design-system/shared';
+import { describe, expect, it } from 'vitest';
 import { type ExampleMarkupSample, resolveExamplePayload } from '../../../src';
 import {
   ariaOnComponentHostVsAriaPropA11yExample,

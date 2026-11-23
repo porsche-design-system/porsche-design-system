@@ -1,6 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as globby from 'fast-glob';
+import { describe, expect, it } from 'vitest';
 import type { BreakpointValue, BreakpointValues } from './breakpoint-customizable';
 import { isTruthyForAnyBreakpoint, parseJSON, parseJSONBoolean } from './breakpoint-customizable';
 

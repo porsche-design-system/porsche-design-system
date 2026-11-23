@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { attributeMutationMap, observeAttributes, unobserveAttributes } from './attribute-observer';
 
 describe('observeAttributes()', () => {

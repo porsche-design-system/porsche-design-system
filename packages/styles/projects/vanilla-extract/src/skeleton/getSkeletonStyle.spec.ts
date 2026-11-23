@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { getSkeletonStyle } from './getSkeletonStyle';
 import * as fromSkeleton from './index';
 import { skeletonKeyframes } from './index';
