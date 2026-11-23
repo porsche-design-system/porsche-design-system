@@ -2,6 +2,7 @@ import { componentsReady } from '@porsche-design-system/components-js';
 import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import userEvent from '@testing-library/user-event';
+import { expect, it } from 'vitest';
 
 const getMarkup = (): string => {
   return `<p-button>Button 1</p-button>`;

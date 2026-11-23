@@ -3,6 +3,7 @@ import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case';
 import { createElement, type ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { describe, expect, it } from 'vitest';
 import type { HTMLTagOrComponent, Story } from '../../../src';
 import { StoryPreview } from '../../../src/react';
 

@@ -1,5 +1,5 @@
 import * as stencilCore from '@stencil/core';
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { SegmentedControlItem } from './segmented-control-item';
 
 describe('render', () => {

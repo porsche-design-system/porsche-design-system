@@ -1,3 +1,4 @@
+import { describe, it } from 'vitest';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 import { getComponentCss } from './link-tile-product-styles';
 

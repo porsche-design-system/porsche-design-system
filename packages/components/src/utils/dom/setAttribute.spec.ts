@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { setAttribute } from './setAttribute';
 
 it('should set attribute value', () => {

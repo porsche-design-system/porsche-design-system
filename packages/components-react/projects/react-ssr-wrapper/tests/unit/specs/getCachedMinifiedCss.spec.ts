@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   getCachedMinifiedCss,
   MAX_ENTRIES_PER_STYLE_FUNCTION,

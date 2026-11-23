@@ -1,4 +1,5 @@
 import { TAG_NAMES } from '@porsche-design-system/shared';
+import { describe, expect, it } from 'vitest';
 import { getExampleIdError } from '../../../lib/ids';
 import { exampleList } from '../../../src/catalogue';
 import type { ExampleKind } from '../../../src/types';

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { supportsOverlayTransition } from './supportsOverlayTransition';
 
 // Mocks CSS.supports per query so we can simulate Chromium (both true), Firefox (allow-discrete only) and Safari (none).

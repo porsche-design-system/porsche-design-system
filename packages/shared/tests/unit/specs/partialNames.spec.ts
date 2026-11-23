@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { PARTIAL_NAMES } from '../../../src';
 
 it('should match snapshot', () => {

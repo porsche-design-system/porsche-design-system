@@ -1,20 +1,17 @@
 import { resolve } from 'node:path';
-import { configDefaults, defineConfig } from 'vitest/config';
+import { vitestConfig } from '@porsche-design-system/testing/vitest';
+import { defineConfig, mergeConfig } from 'vitest/config';
 
-export default defineConfig({
-  test: {
-    root: resolve(__dirname, '../../../'),
-    include: ['**/*.spec.ts'],
-    // The projects below `projects/` are workspaces of their own, with their own tests.
-    exclude: [...configDefaults.exclude, 'projects/**'],
-    globals: true,
-    // Vitest 5 truncates interpolated values in `test.each` titles at 40 chars, which hides the
-    // values that distinguish cases and collapses distinct snapshot keys into one. 0 disables it.
-    taskTitleValueFormatTruncate: 0,
-    environment: 'jsdom',
-    setupFiles: './tests/unit/config/vitest.setup.ts',
-    typecheck: {
-      tsconfig: './tsconfig.test.json',
+export default mergeConfig(
+  vitestConfig,
+  defineConfig({
+    test: {
+      environment: 'jsdom',
+      root: resolve(__dirname, '../../../'),
+      include: ['**/*.spec.ts'],
+      // The projects below `projects/` are workspaces of their own, with their own tests.
+      exclude: ['projects/**'],
+      setupFiles: './tests/unit/config/vitest.setup.ts',
     },
-  },
-});
+  })
+);

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { hasVisibleIcon } from './button-link-pure-utils';
 
 describe('hasVisibleIcon()', () => {
