@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { inputPasswordMeta } from '@/app/(main)/components/input-password/input-password.meta';
+import inputPasswordDefault from '@porsche-design-system/examples/components/input-password/default';
 
 export const metadata = {
   title: 'Input Password: Configurator - Components',
@@ -12,8 +13,4 @@ export const metadata = {
 
 <inputPasswordMeta.introduction />
 
-<Configurator
-  tagName="p-input-password"
-  story={inputPasswordMeta.configurator.story}
-  slotStories={inputPasswordMeta.configurator.slotStories}
-/>
+<Configurator example={inputPasswordDefault} />

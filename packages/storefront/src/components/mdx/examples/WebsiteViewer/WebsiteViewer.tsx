@@ -8,11 +8,14 @@ import {
   type TabsBarUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 // Types only: the package exports every example, and a client component is handed the one it shows.
-import type { Example } from '@porsche-design-system/examples';
-import { openExampleInStackblitz } from '@porsche-design-system/stackblitz';
-import { useState } from 'react';
+import type { PageExample } from '@porsche-design-system/examples';
+import { COLOR_SCHEMES } from '@porsche-design-system/shared';
+import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { DocsLink } from '@/components/common/DocsLink';
 import { useResizeHandle } from '@/hooks/useResizeHandle';
+import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
+import { followsStorefrontColorScheme, withColorScheme } from '@/utils/exampleColorScheme';
 import { withMediaOrigin } from '@/utils/exampleMediaOrigin';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 import { CodeBlock, type CodeLanguage } from '../../elements/CodeBlock';
@@ -20,9 +23,9 @@ import { CodeBlock, type CodeLanguage } from '../../elements/CodeBlock';
 type ExampleProps = {
   /**
    * A pattern or template of `@porsche-design-system/examples`, with its media below the slug of this deployment –
-   * rendered by `ExampleViewer`. Its title names the iframe, its files are shown as code and opened in StackBlitz.
+   * rendered by `Example`. Its title names the iframe, its files are shown as code and opened in StackBlitz.
    */
-  example: Example;
+  example: PageExample;
   /** The URL this deployment serves the built page at, from `public/examples/`. */
   src: string;
   /** Where this deployment serves the media of the examples, slug included. */
@@ -52,17 +55,27 @@ const codeFiles: { file: string; name: string; language: CodeLanguage }[] = [
   { file: 'main.js', name: 'JS', language: 'js' },
 ];
 
-/** Opens an example in StackBlitz, with its media pointing at this deployment. */
-const OpenExampleInStackblitz = ({ example, mediaPath }: Pick<ExampleProps, 'example' | 'mediaPath'>) => (
-  <PButtonPure
-    type="button"
-    iconSource="assets/icon-stackblitz.svg"
-    onClick={() => openExampleInStackblitz(withMediaOrigin(example, window.location.origin, mediaPath))}
-    aria={{ 'aria-description': 'Opens in a new tab' }}
-  >
-    Open in StackBlitz
-  </PButtonPure>
-);
+/** Opens an example in StackBlitz, with its media pointing at this deployment and in the scheme of the storefront. */
+const OpenExampleInStackblitz = ({ example, mediaPath }: Pick<ExampleProps, 'example' | 'mediaPath'>) => {
+  const { storefrontColorScheme } = useStorefrontColorScheme();
+
+  return (
+    <PButtonPure
+      type="button"
+      iconSource="assets/icon-stackblitz.svg"
+      onClick={() => {
+        const { title, description, files } = withColorScheme(
+          withMediaOrigin(example, window.location.origin, mediaPath),
+          storefrontColorScheme
+        );
+        openInStackblitz({ title, description, files, openFile: 'index.html' });
+      }}
+      aria={{ 'aria-description': 'Opens in a new tab' }}
+    >
+      Open in StackBlitz
+    </PButtonPure>
+  );
+};
 
 /** Sizes the preview and the code alike, so switching between them does not move the page. */
 const VIEW_HEIGHT = 'h-150 max-h-[80vh]';
@@ -85,13 +98,30 @@ export const WebsiteViewer = (props: WebsiteViewerProps) => {
     : `${GITHUB_PAGES_BASE}/v${localPorscheDesignSystemMajorVersion}/${props.viewPath}`;
 
   const { trackRef, width, setWidth, isResizing, handleProps } = useResizeHandle({ minWidth: MIN_WIDTH });
+
+  // An example sets no color scheme on its `<html>`, since that is the decision of the application it is copied into,
+  // so its code shows none. One built for the dark scheme as well gets the scheme of the storefront instead, set from
+  // here – the iframe shares the origin of the storefront. Applied on load, and again whenever the scheme changes.
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const { storefrontColorScheme } = useStorefrontColorScheme();
+  const hasDarkScheme = isExample && followsStorefrontColorScheme(props.example);
+  const applyColorScheme = useCallback(() => {
+    const root = iframeRef.current?.contentDocument?.documentElement;
+    if (!hasDarkScheme || !root) {
+      return;
+    }
+    root.classList.remove(...COLOR_SCHEMES);
+    root.classList.add(storefrontColorScheme);
+  }, [hasDarkScheme, storefrontColorScheme]);
+
+  useEffect(applyColorScheme, [applyColorScheme]);
   // 0 is the preview, every other tab one of `codeFiles`.
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const codeFile = activeTabIndex > 0 ? codeFiles[activeTabIndex - 1] : null;
 
   // From the example rather than `useId()`, whose ids differ between the server render and the client here – the
   // `aria-labelledby` set on a tab change would then miss the ids the tabs were rendered with.
-  const id = isExample ? `example-${props.example.path.replaceAll('/', '-')}` : '';
+  const id = isExample ? `example-${props.example.id.replaceAll('/', '-')}` : '';
   const previewTabId = `${id}-preview-tab`;
   const previewPanelId = `${id}-preview`;
   const codeTabId = (name: string) => `${id}-${name}-tab`;
@@ -108,6 +138,8 @@ export const WebsiteViewer = (props: WebsiteViewerProps) => {
           <span className="h-10 w-1.5 rounded-full bg-contrast-medium transition-colors group-hover:bg-contrast-high group-focus-visible:outline outline-focus outline-offset-2" />
         </div>
         <iframe
+          ref={iframeRef}
+          onLoad={applyColorScheme}
           // While resizing, disable the iframe's pointer events so it doesn't swallow the drag.
           className={`w-full h-full rounded-3xl shadow-high border border-[light-dark(transparent,var(--color-contrast-lower))] ${isResizing ? 'pointer-events-none' : 'pointer-events-auto'}`}
           title={title}

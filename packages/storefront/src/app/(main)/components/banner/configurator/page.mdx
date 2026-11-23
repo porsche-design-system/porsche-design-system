@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { bannerMeta } from '@/app/(main)/components/banner/banner.meta';
+import bannerDefault from '@porsche-design-system/examples/components/banner/default';
 
 export const metadata = {
   title: 'Banner: Configurator - Components',
@@ -12,5 +13,5 @@ export const metadata = {
 
 <bannerMeta.introduction />
 
-<Configurator tagName="p-banner" story={bannerMeta.configurator.story} />
+<Configurator example={bannerDefault} />
 

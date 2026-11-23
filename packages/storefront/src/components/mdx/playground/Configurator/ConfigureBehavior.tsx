@@ -15,7 +15,7 @@ type ConfigureBehaviorProps = {
 export const ConfigureBehavior = ({ mode, onUpdateMode }: ConfigureBehaviorProps) => {
   return (
     <>
-      <PHeading slot="summary" tag="h2" size="small" weight="semibold">
+      <PHeading slot="summary" tag="h2" size="sm" weight="semibold">
         Behavior
       </PHeading>
       <div className="flex flex-col gap-fluid-sm">

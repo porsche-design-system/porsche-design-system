@@ -84,7 +84,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                 open={openSections[path]}
                 onUpdate={handleAccordionUpdate(path)}
               >
-                <PHeading slot="summary" tag="h4" size="small" weight="semibold">
+                <PHeading slot="summary" tag="h4" size="sm" weight="semibold">
                   {category.name}
                 </PHeading>
                 {Object.entries(category.pages).map(([pageKey, page]: [string, Page]) => {
@@ -124,7 +124,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
         >
           brand.porsche.com
         </PLinkPure>
-        <PText size="xx-small" color="contrast-medium">
+        <PText size="2xs" color="contrast-medium">
           © {new Date().getFullYear()} Dr. Ing. h.c. F. Porsche AG.
           <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>

@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { scrollerMeta } from '@/app/(main)/components/scroller/scroller.meta';
+import scrollerDefault from '@porsche-design-system/examples/components/scroller/default';
 
 export const metadata = {
   title: 'Scroller: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <scrollerMeta.introduction />
 
-<Configurator tagName="p-scroller" story={scrollerMeta.configurator.story} />
+<Configurator example={scrollerDefault} />

@@ -13,7 +13,7 @@ export const TableOfContents = ({ headings }: TableOfContentsProps) => {
 
   return (
     <>
-      <PHeading className="mt-fluid-lg" size="medium" tag="h2">
+      <PHeading className="mt-fluid-lg" size="md" tag="h2">
         Table of Contents
       </PHeading>
       <ul className="toc mt-fluid-sm mb-fluid-lg">

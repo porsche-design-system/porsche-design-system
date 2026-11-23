@@ -104,7 +104,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </DocsLink>
 
       <PBanner open={isOutdatedVersionBannerOpen} onDismiss={() => setIsIsOutdatedVersionBannerOpen(false)}>
-        <div slot="description" className="flex flex-col gap-fluid-xs">
+        <div className="flex flex-col gap-fluid-xs">
           You are currently viewing an earlier release of the Porsche Design System.
           {/* A plain anchor, not `next/link`: the latest release is another deployment, and `next/link` would prefix the
               basePath of this one. A root-absolute href is resolved against the current origin, unaffected by
@@ -162,7 +162,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </div>
       <div slot="sidebar-end" className="flex flex-col gap-fluid-sm">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">
-          <PHeading size="small" tag="h2" weight="semibold">
+          <PHeading size="sm" tag="h2" weight="semibold">
             Global settings
           </PHeading>
           <ThemeSelect

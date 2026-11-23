@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { paginationMeta } from '@/app/(main)/components/pagination/pagination.meta';
+import paginationDefault from '@porsche-design-system/examples/components/pagination/default';
 
 export const metadata = {
   title: 'Pagination: Configurator - Components',
@@ -12,5 +13,5 @@ export const metadata = {
 
 <paginationMeta.introduction />
 
-<Configurator tagName="p-pagination" story={paginationMeta.configurator.story} />
+<Configurator example={paginationDefault} />
 

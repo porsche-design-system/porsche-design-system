@@ -33,6 +33,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   a no-video variant ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
 - `Knowledge Skill`: simple footer pattern with the legal information only, next to the extended footer
   ([#4782](https://github.com/porsche-design-system/porsche-design-system/pull/4782))
+- `Link`: prop `cover` stretches the clickable area of the link over its nearest positioned ancestor, e.g. a card, so
+  the whole area navigates without a second, hidden link
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+- `Link`: CSS variable `--p-link-cover-radius` sets the corner radius of the clickable area and the focus ring of a link
+  with `cover`, e.g. to match the corners of the card it covers
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+- `Knowledge Skill`: tile patterns – common use cases of a tile (model selection and navigation, categories, video,
+  product, vehicle listing, features, call to action and teasers) built with HTML and Tailwind CSS, with their
+  description, the components they use and their complete markup and script
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
 
 ### Changed
 
@@ -41,6 +51,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: instructs the agent to load `references/components/<tag>/accessibility.md` before generating a
   component and to load the `accessible-frontend` APM skill for page-level WCAG 2.2 AA and EN 301 549 composition when
   installed ([#4584](https://github.com/porsche-design-system/porsche-design-system/pull/4584))
+- `Knowledge Skill`: the references of the patterns and templates name the color schemes they are built for, and the
+  conventions state that an example leaves the color scheme of `<html>` to the application
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+- `Accordion`: the shadow root no longer uses `delegatesFocus`. `focus()` and `blur()` on `p-accordion` still reach the
+  summary, except when called from an isolated context such as Playwright's `locator.focus()` – call them through
+  `locator.evaluate()` or on the summary there.
+  ([#4870](https://github.com/porsche-design-system/porsche-design-system/pull/4870))
 
 ### Fixed
 
@@ -60,6 +77,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Pin Code`: pressing `Enter` submitted the form without clicking its submit button, so the button's `name` and `value`
   were missing and a disabled submit button didn't prevent the submission
   ([#4833](https://github.com/porsche-design-system/porsche-design-system/pull/4833))
+- `Accordion`: a click on static text inside the content of an open accordion moved focus to the summary, which in
+  Chrome and Safari scrolled the page back to the top of the accordion. In Safari a click on a slotted `<button>` did
+  the same. ([#4870](https://github.com/porsche-design-system/porsche-design-system/pull/4870))
+- `Knowledge Skill`: the `p-link-pure` reference listed the example of a framework router with active state without its
+  code, and the `p-input-search` reference cut its guidance on combobox use after the first sentence; both are now shown
+  in full ([#4800](https://github.com/porsche-design-system/porsche-design-system/pull/4800))
+- `Link`: a link with an empty `href` had no focus ring
+  ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
 
 ## [4.10.1] - 2026-10-23
 

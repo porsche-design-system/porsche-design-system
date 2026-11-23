@@ -8,7 +8,9 @@ export default mergeConfig(
     test: {
       environment: 'jsdom',
       root: resolve(__dirname, '../../../'),
-      include: ['**/*.spec.ts', '!**/projects/**'],
+      include: ['**/*.spec.ts'],
+      // The projects below `projects/` are workspaces of their own, with their own tests.
+      exclude: ['projects/**'],
       setupFiles: './tests/unit/config/vitest.setup.ts',
     },
   })

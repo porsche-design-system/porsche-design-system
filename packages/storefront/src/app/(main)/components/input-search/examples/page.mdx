@@ -1,8 +1,9 @@
+import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
-import { ComponentExample } from '@/components/mdx/playground/ComponentExample';
-import { ComponentStory } from '@/components/mdx/playground/ComponentStory';
 import { inputSearchMeta } from '@/app/(main)/components/input-search/input-search.meta';
+import form from '@porsche-design-system/examples/components/input-search/form';
+import slots from '@porsche-design-system/examples/components/input-search/slots';
 
 export const metadata = {
   title: 'Input Search: Examples - Components',
@@ -11,26 +12,16 @@ export const metadata = {
 
 # Input Search <ComponentStatus tagName="p-input-search"></ComponentStatus>
 
-<TableOfContents
-  headings={[
-    inputSearchMeta.examples.form.name,
-    inputSearchMeta.examples.slots.name,
-    inputSearchMeta.examples.ariaCombobox.name,
-  ]}
-/>
+<TableOfContents headings={[form.title, slots.title, inputSearchMeta.notes.ariaCombobox.name]} />
 
-## {inputSearchMeta.examples.form.name}
+## {form.title}
 
-<inputSearchMeta.examples.form.description />
+<Example example={form} />
 
-<ComponentExample codeSample={inputSearchMeta.examples.form.example} />
+## {slots.title}
 
-## {inputSearchMeta.examples.slots.name}
+<Example example={slots} />
 
-<inputSearchMeta.examples.slots.description />
+## {inputSearchMeta.notes.ariaCombobox.name}
 
-<ComponentStory story={inputSearchMeta.examples.slots.story} />
-
-## {inputSearchMeta.examples.ariaCombobox.name}
-
-<inputSearchMeta.examples.ariaCombobox.description />
+<inputSearchMeta.notes.ariaCombobox.description />

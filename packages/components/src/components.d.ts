@@ -1953,6 +1953,11 @@ export namespace Components {
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
+          * Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a card, which also renders the focus ring around it. Its corners follow `--p-link-cover-radius`. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via `position: relative; z-index: 2`.
+          * @default false
+         */
+        "cover"?: boolean;
+        /**
           * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
@@ -6389,6 +6394,11 @@ declare namespace LocalJSX {
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
+          * Stretches the clickable area of the link over its nearest positioned ancestor, e.g. a card, which also renders the focus ring around it. Its corners follow `--p-link-cover-radius`. Content within that area is covered, so independent interactive elements have to be placed above it, e.g. via `position: relative; z-index: 2`.
+          * @default false
+         */
+        "cover"?: boolean;
+        /**
           * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
@@ -8197,6 +8207,7 @@ declare namespace LocalJSX {
         "rel": string;
         "hideLabel": string;
         "compact": string;
+        "cover": boolean;
         "aria": SelectedAriaAttributes<LinkAriaAttribute>;
     }
     interface PLinkPureAttributes {

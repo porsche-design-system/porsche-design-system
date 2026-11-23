@@ -38,3 +38,45 @@ describe('summary click', () => {
     expect(stopPropagationSpy).toHaveBeenCalled();
   });
 });
+
+describe('connectedCallback', () => {
+  it('should forward host.focus() including its options to the summary', () => {
+    const component = initComponent();
+    const summary = document.createElement('summary');
+    component['summary'] = summary;
+    const focusSpy = vi.spyOn(summary, 'focus');
+    const options: FocusOptions = { preventScroll: true };
+
+    component.connectedCallback();
+    component.host.focus(options);
+
+    expect(focusSpy).toHaveBeenCalledWith(options);
+
+    component.disconnectedCallback();
+  });
+
+  it('should forward host.blur() to the summary', () => {
+    const component = initComponent();
+    const summary = document.createElement('summary');
+    component['summary'] = summary;
+    const blurSpy = vi.spyOn(summary, 'blur');
+
+    component.connectedCallback();
+    component.host.blur();
+
+    expect(blurSpy).toHaveBeenCalledTimes(1);
+
+    component.disconnectedCallback();
+  });
+
+  it('should not throw on host.focus() and host.blur() before the summary is rendered', () => {
+    const component = initComponent();
+
+    component.connectedCallback();
+
+    expect(() => component.host.focus()).not.toThrow();
+    expect(() => component.host.blur()).not.toThrow();
+
+    component.disconnectedCallback();
+  });
+});

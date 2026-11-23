@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { modelSignatureMeta } from '@/app/(main)/components/model-signature/model-signature.meta';
+import modelSignatureDefault from '@porsche-design-system/examples/components/model-signature/default';
 
 export const metadata = {
   title: 'Model Signature: Configurator - Components',
@@ -12,4 +13,4 @@ export const metadata = {
 
 <modelSignatureMeta.introduction />
 
-<Configurator tagName="p-model-signature" story={modelSignatureMeta.configurator.story} />
+<Configurator example={modelSignatureDefault} />

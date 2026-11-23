@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { Configurator } from '@/components/mdx/playground/Configurator';
 import { dividerMeta } from '@/app/(main)/components/divider/divider.meta';
+import dividerDefault from '@porsche-design-system/examples/components/divider/default';
 
 export const metadata = {
   title: 'Divider: Configurator - Components',
@@ -12,5 +13,5 @@ export const metadata = {
 
 <dividerMeta.introduction />
 
-<Configurator tagName="p-divider" story={dividerMeta.configurator.story} />
+<Configurator example={dividerDefault} />
 
