@@ -510,6 +510,25 @@ test.describe('focus state', () => {
     await expect(inputTime).toBeFocused();
   });
 
+  // unlike the text inputs, the segmented field was not affected by #3891, this keeps it that way
+  test('should keep focus and keyboard editing when label is clicked multiple times', async ({ page }) => {
+    await initInputTime(page, { props: { name: 'some-name', label: 'Some label', value: '10:30' } });
+    const label = getLabel(page);
+    const inputTime = getInputTime(page);
+
+    // which segment ArrowUp increments differs per browser, so only a change of the value is asserted
+    await label.click();
+    await page.keyboard.press('ArrowUp');
+    await expect(inputTime).not.toHaveValue('10:30');
+    const valueAfterFirstClick = await inputTime.inputValue();
+
+    await label.click();
+    await expect(inputTime).toBeFocused();
+
+    await page.keyboard.press('ArrowUp');
+    await expect(inputTime).not.toHaveValue(valueAfterFirstClick);
+  });
+
   test('should focus input-time when host is focused', async ({ page }) => {
     await initInputTime(page);
     const host = getHost(page);

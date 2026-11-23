@@ -503,6 +503,25 @@ test.describe('focus state', () => {
     await expect(inputEmail).toBeFocused();
   });
 
+  // WebKit selects the whole value when the label is clicked again, so Backspace clears it instead of one character
+  skipInBrowsers(['webkit'], () => {
+    test('should keep focus and caret when label is clicked multiple times', async ({ page }) => {
+      await initInputEmail(page, { props: { name: 'some-name', label: 'Some label' } });
+      const label = getLabel(page);
+      const inputEmail = getInputEmail(page);
+
+      await label.click();
+      await page.keyboard.type('hello');
+      await expect(inputEmail).toHaveValue('hello');
+
+      await label.click();
+      await expect(inputEmail).toBeFocused();
+
+      await page.keyboard.press('Backspace');
+      await expect(inputEmail).toHaveValue('hell');
+    });
+  });
+
   test('should focus input-email when host is focused', async ({ page }) => {
     await initInputEmail(page);
     const host = getHost(page);
