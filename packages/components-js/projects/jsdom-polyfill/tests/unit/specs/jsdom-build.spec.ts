@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { expect, it } from 'vitest';
 
 const readJsdomBuild = (): string => {
   const componentsJsEntry = require.resolve('@porsche-design-system/components-js');

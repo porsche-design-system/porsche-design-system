@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { FRAMEWORKS } from '@porsche-design-system/shared';
+import { describe, expect, it } from 'vitest';
 import { assertExampleId } from '../../../../../lib/ids';
 import type { FrameworkExampleMeta } from '../../../lib/meta';
 import { exampleAppPaths, sourceFiles } from '../../../lib/sources';

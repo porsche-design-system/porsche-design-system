@@ -1,6 +1,7 @@
 import { Example } from '@/components/mdx/examples/Example';
 import { ComponentStatus } from '@/components/mdx/structure/ComponentStatus';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents';
+import cover from '@porsche-design-system/examples/components/link/cover';
 import frameworkRouting from '@porsche-design-system/examples/components/link/framework-routing';
 import icon from '@porsche-design-system/examples/components/link/icon';
 
@@ -11,7 +12,7 @@ export const metadata = {
 
 # Link <ComponentStatus tagName="p-link"></ComponentStatus>
 
-<TableOfContents headings={[frameworkRouting.title, icon.title]} />
+<TableOfContents headings={[frameworkRouting.title, icon.title, cover.title]} />
 
 ## {frameworkRouting.title}
 
@@ -20,3 +21,7 @@ export const metadata = {
 ## {icon.title}
 
 <Example example={icon} />
+
+## {cover.title}
+
+<Example example={cover} />

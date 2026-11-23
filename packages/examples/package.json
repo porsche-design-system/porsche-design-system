@@ -55,6 +55,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/story-generator": "0.0.0",
+    "@porsche-design-system/testing": "0.0.0",
     "@types/mdx": "^2.0.14",
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",

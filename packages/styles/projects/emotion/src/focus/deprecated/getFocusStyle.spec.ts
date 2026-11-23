@@ -1,5 +1,6 @@
 import { getFocusStyle } from './getFocusStyle';
 import * as fromFocus from './';
+import { describe, it, expect } from 'vitest';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromFocus).length).toBe(1);

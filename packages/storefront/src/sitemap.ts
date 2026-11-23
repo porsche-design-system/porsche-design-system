@@ -252,6 +252,7 @@ export const sitemap = {
     pages: {
       header: { name: 'Header' },
       footer: { name: 'Footer' },
+      tile: { name: 'Tile' },
       popover: { name: 'Popover' },
       feedback: { name: 'Feedback' },
       forms: { name: 'Forms' },

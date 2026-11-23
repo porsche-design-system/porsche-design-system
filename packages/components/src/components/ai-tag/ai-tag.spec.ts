@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as attachComponentCssModule from '../../utils/jss';
 import { AiTag } from './ai-tag';
 

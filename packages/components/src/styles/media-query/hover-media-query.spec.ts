@@ -1,4 +1,5 @@
 import type { JssStyle } from 'jss';
+import { expect, it } from 'vitest';
 import { hoverMediaQuery } from './hover-media-query';
 
 it('should return style wrapped in @media(hover: hover) query', () => {

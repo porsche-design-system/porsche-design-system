@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { hasAttribute } from './hasAttribute';
 
 it('should return true if attribute exists', () => {

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { AriaAttributes } from '../../types';
 import * as jsonUtils from '../json';
 import { parseAndGetAriaAttributes, setAriaAttributes, setAriaIDREF } from './a11y';

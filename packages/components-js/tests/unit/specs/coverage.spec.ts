@@ -1,6 +1,7 @@
 import { testCoverage } from '@porsche-design-system/testing';
 import * as fs from 'fs';
 import * as path from 'path';
+import { describe, expect, it, test } from 'vitest';
 import {
   a11yTreeSnapshotAllowlist,
   components,

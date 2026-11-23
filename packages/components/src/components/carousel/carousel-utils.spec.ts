@@ -1,5 +1,5 @@
 import type { Splide } from '@splidejs/splide';
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as carouselUtils from './carousel-utils';
 
 describe('getSplideBreakpoints()', () => {

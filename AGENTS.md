@@ -167,6 +167,10 @@ does. That adds no duplicate work, because CI runs the individual `build:*` step
 | VRT       | `./docker.sh npm run test:vrt:components-js` | **Must use Docker** for consistent screenshots |
 | A11Y      | `npm run test:a11y:components-js`            | Axe-core + a11y tree snapshots                 |
 
+Every Vitest config merges `vitestConfig` from `@porsche-design-system/testing/vitest`, whose console guard fails
+undeclared `console.warn`, `console.error` and jsdom errors. See
+[`packages/shared/projects/testing/AGENTS.md`](packages/shared/projects/testing/AGENTS.md).
+
 **Every Playwright spec and test helper imports `test` from `@porsche-design-system/testing/playwright`, never from
 `@playwright/test`.** It adds request routing and the console guard, and `npm run lint` fails on the wrong import. See
 "The shared Playwright `test`" in
@@ -216,6 +220,8 @@ writing or requesting an entry.
 ## Branches and Commits
 
 - Work on an issue happens in the branch `issue/<number>`, e.g. `issue/4867`.
+- An agent working for a developer commits at its own discretion, without asking first: once a change is complete and
+  validated, one commit per concern.
 - A commit subject is `type(scope): description | <initials> | #<issue>`, e.g.
   `docs(storefront): name Vitest on the Vue testing page | rk | #4844`.
   - `type` is one of `feat`, `fix`, `docs`, `test`, `refactor`, `chore`, `ci`, `build`, `perf` or `revert`.

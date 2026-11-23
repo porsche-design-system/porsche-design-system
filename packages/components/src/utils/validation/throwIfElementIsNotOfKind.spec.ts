@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import * as paramCaseToCamelCaseUtils from '../paramCaseToCamelCase';
 import type { PrefixedTagNames } from '../tag-name';
 import * as getPrefixedTagNamesUtils from '../tag-name';

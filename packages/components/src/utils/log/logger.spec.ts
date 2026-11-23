@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { consoleError, consoleWarn, throwException } from './logger';
 
 const messagePrefix = '[Porsche Design System]';

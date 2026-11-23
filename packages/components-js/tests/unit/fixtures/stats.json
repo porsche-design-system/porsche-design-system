@@ -16,8 +16,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 10028,
-    "gzipSize": 4057
+    "size": 10833,
+    "gzipSize": 4287
   },
   {
     "chunkShortName": "button-pure",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "link",
-    "size": 7624,
-    "gzipSize": 3200
+    "size": 8684,
+    "gzipSize": 3522
   },
   {
     "chunkShortName": "link-pure",

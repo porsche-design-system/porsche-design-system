@@ -21,6 +21,7 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/testing": "0.0.0",
     "ag-grid-community": "36.2.0",
     "ag-stack": "36.2.0",
     "typescript": "^6.0.3"

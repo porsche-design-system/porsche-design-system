@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { StepperHorizontalItem } from './stepper-horizontal-item';
 import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 

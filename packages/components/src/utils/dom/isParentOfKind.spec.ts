@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import { isParentOfKind } from './isParentOfKind';
 
 it('should return true if parent tag matches', () => {

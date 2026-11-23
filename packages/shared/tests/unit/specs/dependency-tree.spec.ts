@@ -1,5 +1,6 @@
 // @ts-ignore
 import madge from 'madge';
+import { expect, it } from 'vitest';
 
 it('should have no regression for dependency tree', async () => {
   const entrypoint = require.resolve('@porsche-design-system/shared');

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import {
   ACCORDION_ALIGN_MARKERS,
   ACCORDION_HEADINGS_DEPRECATED,

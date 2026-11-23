@@ -1,5 +1,6 @@
 import { renderToMarkdown } from '@porsche-design-system/docs-components/markdown';
 import { Fragment, jsx } from '@porsche-design-system/docs-components/markdown/jsx-runtime';
+import { describe, expect, it } from 'vitest';
 import { DependencyList } from '@/components/mdx/content/DependencyList/DependencyList.markdown';
 import { Notification } from '@/components/mdx/content/Notification/Notification.markdown';
 import { TableOfContents } from '@/components/mdx/structure/TableOfContents/TableOfContents.markdown';

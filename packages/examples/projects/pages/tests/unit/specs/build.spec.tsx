@@ -5,6 +5,7 @@ import { createElement } from 'preact';
 import { render } from 'preact-render-to-string';
 import { compile } from 'tailwindcss';
 import { describe, expect, it } from 'vitest';
+import { assertCommentText, commentTag, renderComments, wrapComments } from '../../../lib/comment.ts';
 import {
   dedent,
   exampleBanner,
@@ -27,7 +28,7 @@ import {
   renderPage,
   resolvePagePath,
 } from '../../../lib/jsx.ts';
-import { assertExampleMeta, type PageExample } from '../../../lib/meta.ts';
+import { assertExampleMeta, hasDarkScheme, type PageExample } from '../../../lib/meta.ts';
 import {
   categories,
   examplesPath,
@@ -39,8 +40,30 @@ import {
 } from '../../../lib/projects.ts';
 import { readVersions, srcDir } from '../../../lib/shared.ts';
 import { TemplatePage } from '../../../src/_layouts/TemplatePage.tsx';
+import { Comment } from '../../../src/_partials/Comment.tsx';
 import LandingPage from '../../../src/templates/landing-page/index.page.tsx';
 import { countOccurrences, examplePages } from '../helpers/index.ts';
+
+/**
+ * The stylesheet Tailwind compiles for every token of a text, in every shape its extractor could cut the token into –
+ * a word that reads like a utility (`static`, `block`, `hidden`, `table`, …) would change it.
+ */
+const getUtilitiesOf = async (text: string): Promise<string> => {
+  const require = createRequire(import.meta.url);
+  const compiler = await compile('@import "tailwindcss";', {
+    base: import.meta.dirname,
+    loadStylesheet: async (id, base) => {
+      const file = id.startsWith('.') ? path.resolve(base, id) : require.resolve(`${id}/index.css`);
+      return { path: file, base: path.dirname(file), content: fs.readFileSync(file, 'utf8') };
+    },
+  });
+  const candidates = text
+    .split(/\s+/)
+    .flatMap((token) => [token, ...token.split(/[^\w-]+/), ...token.split(/[^\w:/.()-]+/)])
+    .filter(Boolean);
+
+  return compiler.build([...new Set(candidates)]);
+};
 
 /**
  * The build pipeline: how a URL maps to a page, how a page becomes a project, what that project and its StackBlitz
@@ -244,7 +267,7 @@ describe('package export', () => {
   const module = getExportModule({ 'patterns/footer': footer, 'templates/landing-page': { ...footer, id: 'x' } });
 
   it('should re-export the types of lib/meta.ts, and type every example by its path', () => {
-    expect(module).toContain("export type { ExampleMeta, PageExample } from '../lib/meta.ts';");
+    expect(module).toContain("export type { ExampleColorScheme, ExampleMeta, PageExample } from '../lib/meta.ts';");
     expect(module).toContain("export type PageExampleId =\n  | 'patterns/footer'\n  | 'templates/landing-page';");
     expect(module).toContain('export const pageExamples: { readonly [Id in PageExampleId]: PageExample<Id> } = {');
   });
@@ -294,6 +317,27 @@ describe('meta', () => {
     expect(() => assertExampleMeta({ title: 'Footer', description: 'A <b>footer</b>.' }, 'patterns/footer')).toThrow(
       'plain text'
     );
+  });
+
+  it('should leave the color schemes out when the page does not declare them, and keep them in a stable order', () => {
+    expect(assertExampleMeta({ title: 'Footer', description: 'A footer.' }, 'patterns/footer')).not.toHaveProperty(
+      'colorSchemes'
+    );
+    expect(
+      assertExampleMeta({ title: 'Tile', description: 'A tile.', colorSchemes: ['dark', 'light'] }, 'patterns/tile')
+    ).toEqual({ title: 'Tile', description: 'A tile.', colorSchemes: ['light', 'dark'] });
+  });
+
+  it.each([[[]], [['light', 'light']], [['dim']], ['dark']])('should fail for the color schemes %o', (colorSchemes) => {
+    expect(() => assertExampleMeta({ title: 'Tile', description: 'A tile.', colorSchemes }, 'patterns/tile')).toThrow(
+      'the color schemes of "patterns/tile"'
+    );
+  });
+
+  it('should apply the dark scheme only to an example built for it', () => {
+    expect(hasDarkScheme({})).toBe(false);
+    expect(hasDarkScheme({ colorSchemes: ['light'] })).toBe(false);
+    expect(hasDarkScheme({ colorSchemes: ['light', 'dark'] })).toBe(true);
   });
 
   it('should be exported by every page, with a title of its own', async () => {
@@ -487,21 +531,127 @@ describe('renderPage()', () => {
   // every shape Tailwind's extractor could cut it into, is compiled here – a word that reads like a utility (`static`,
   // `block`, `hidden`, `table`, …) would change the stylesheet.
   it('should keep the note free of anything Tailwind reads as a utility', async () => {
-    const require = createRequire(import.meta.url);
-    const compiler = await compile('@import "tailwindcss";', {
-      base: import.meta.dirname,
-      loadStylesheet: async (id, base) => {
-        const file = id.startsWith('.') ? path.resolve(base, id) : require.resolve(`${id}/index.css`);
-        return { path: file, base: path.dirname(file), content: fs.readFileSync(file, 'utf8') };
-      },
-    });
-    const candidates = exampleNote
-      .split(/\s+/)
-      .flatMap((token) => [token, ...token.split(/[^\w-]+/), ...token.split(/[^\w:/.()-]+/)])
-      .filter(Boolean);
-    const withoutNote = compiler.build([]);
+    expect(await getUtilitiesOf(exampleNote)).toBe(await getUtilitiesOf(''));
+  });
 
-    expect(compiler.build([...new Set(candidates)])).toBe(withoutNote);
+  // The same holds for the comments of the `Comment` partial, which reach the `index.html` of the example as well.
+  it.each(examplePages)(
+    'should keep the comments of %s free of anything Tailwind reads as a utility',
+    async (_, Page) => {
+      const html = await renderPage(Page);
+      const comments = [...html.matchAll(/<!--([\s\S]*?)-->/g)]
+        .map(([, text]) => text)
+        .filter((text) => text !== exampleNote.slice(4, -3));
+
+      expect(await getUtilitiesOf(comments.join(' '))).toBe(await getUtilitiesOf(''));
+    }
+  );
+
+  it('should render the Comment partial as an HTML comment', async () => {
+    const html = await renderPage(() => (
+      <TemplatePage meta={{ title: 'Comment', description: 'Comment check' }}>
+        <main id="main">
+          <Comment>Why the heading is here.</Comment>
+          <h1>Comment</h1>
+        </main>
+      </TemplatePage>
+    ));
+
+    expect(html).toMatch(/\n {6}<!-- Why the heading is here\. -->\n {6}<h1>Comment<\/h1>/);
+    expect(html).not.toContain(commentTag);
+  });
+
+  it('should reject a comment text that is no valid comment or would change the markup', () => {
+    for (const text of ['', ' ', 'a -- b', 'a --> b', '-a', 'a-', 'a <b>', 'a & b']) {
+      expect(() => assertCommentText(text), text).toThrow();
+    }
+    expect(() => assertCommentText('A comment, with punctuation: e.g. 24 pixels – fine.')).not.toThrow();
+  });
+
+  it('should turn the elements of the Comment partial into HTML comments', () => {
+    expect(renderComments(`<div><${commentTag}> Some text </${commentTag}><p>a</p></div>`)).toBe(
+      '<div><!-- Some text --><p>a</p></div>'
+    );
+  });
+
+  it('should give a reason once per page, where it first applies', () => {
+    const tile = `<${commentTag}>Why the tile is built this way.</${commentTag}><li></li>`;
+    const other = `<${commentTag}>Another reason.</${commentTag}><p></p>`;
+
+    // A page showing a partial more than once repeats its markup, not the reasons for it – and a later page starts
+    // anew, since every page is read on its own.
+    expect(renderComments(`<ul>${tile}${tile}${other}${tile}</ul>`)).toBe(
+      '<ul><!-- Why the tile is built this way. --><li></li><li></li><!-- Another reason. --><p></p><li></li></ul>'
+    );
+    expect(renderComments(tile)).toBe('<!-- Why the tile is built this way. --><li></li>');
+  });
+
+  it('should render reasons following one another as one comment, leaving out those the page has given', () => {
+    const comment = (text: string) => `<${commentTag}>${text}</${commentTag}>`;
+
+    expect(renderComments(`${comment('One.')}${comment('Two.')}\n  ${comment('Three.')}<p></p>`)).toBe(
+      '<!-- One.\nTwo.\nThree. --><p></p>'
+    );
+    // What follows the last of them stays as it is, whitespace included.
+    expect(renderComments(`${comment('One.')}${comment('Two.')} <p></p>`)).toBe('<!-- One.\nTwo. --> <p></p>');
+    expect(
+      renderComments(`${comment('One.')}<p></p>${comment('One.')}${comment('Two.')}${comment('Two.')}<p></p>`)
+    ).toBe('<!-- One. --><p></p><!-- Two. --><p></p>');
+    expect(renderComments(`${comment('One.')}<p></p>${comment('One.')}${comment('One.')}<p></p>`)).toBe(
+      '<!-- One. --><p></p><p></p>'
+    );
+  });
+
+  it('should list the reasons of a comment holding several, each broken at the line length', () => {
+    const long = Array.from({ length: 30 }, (_, index) => `word${index}`).join(' ');
+    const lines = wrapComments(`    <!-- Short.\n${long}\nLast. -->\n    <p></p>`).split('\n');
+
+    expect(lines[0]).toBe('    <!--');
+    expect(lines[1]).toBe('      - Short.');
+    expect(lines[2].startsWith('      - word0 ')).toBe(true);
+    expect(lines.slice(3, -3).every((line) => line.startsWith('        word') && line.length <= 120)).toBe(true);
+    expect(lines.slice(2, -3).join(' ').replace(/\s+/g, ' ').trim()).toBe(`- ${long}`);
+    expect(lines.slice(-3)).toEqual(['      - Last.', '    -->', '    <p></p>']);
+  });
+
+  it('should leave a comment alone that it did not render on a line of its own', () => {
+    const html = '    <!-- One. --> <p>a</p>\n    <!-- Two. -->\n<!--\n  A note.\n-->';
+
+    expect(wrapComments(html)).toBe(html);
+  });
+
+  it('should render the Comment partials before an element as one comment', async () => {
+    const html = await renderPage(() => (
+      <TemplatePage meta={{ title: 'Comment', description: 'Comment check' }}>
+        <main id="main">
+          <Comment>Why the heading is here.</Comment>
+          <Comment>Why it is the first.</Comment>
+          <h1>Comment</h1>
+        </main>
+      </TemplatePage>
+    ));
+
+    expect(html).toContain(
+      [
+        '      <!--',
+        '        - Why the heading is here.',
+        '        - Why it is the first.',
+        '      -->',
+        '      <h1>',
+      ].join('\n')
+    );
+  });
+
+  it('should break a comment exceeding the line length into lines of its own, keeping its indentation', () => {
+    const text = Array.from({ length: 30 }, (_, index) => `word${index}`).join(' ');
+    const wrapped = wrapComments(`    <!-- ${text} -->\n    <!-- Short. -->`);
+    const lines = wrapped.split('\n');
+
+    expect(lines[0]).toBe('    <!--');
+    expect(lines.at(-1)).toBe('    <!-- Short. -->');
+    expect(lines.at(-2)).toBe('    -->');
+    expect(lines.slice(1, -2).every((line) => line.startsWith('      word') && line.length <= 120)).toBe(true);
+    expect(lines.slice(1, -2).join(' ').replace(/\s+/g, ' ').trim()).toBe(text);
   });
 
   it('should format the output instead of emitting a single line', async () => {
