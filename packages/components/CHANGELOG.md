@@ -58,6 +58,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   summary, except when called from an isolated context such as Playwright's `locator.focus()` – call them through
   `locator.evaluate()` or on the summary there.
   ([#4870](https://github.com/porsche-design-system/porsche-design-system/pull/4870))
+- `Checkbox`, `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
+  `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Multi Select`, `Pin Code`, `Radio Group`, `Select`,
+  `Textarea`: the text of the label, including content in the `label` slot, can no longer be selected in Chromium
+  browsers and Firefox. For `Radio Group` this applies to the labels of its options, not to the label of the group. The
+  description and the message stay selectable.
+  ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
 
 ### Fixed
 
@@ -85,6 +91,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   in full ([#4800](https://github.com/porsche-design-system/porsche-design-system/pull/4800))
 - `Link`: a link with an empty `href` had no focus ring
   ([#4773](https://github.com/porsche-design-system/porsche-design-system/pull/4773))
+- `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`, `Input Url`, `Textarea`:
+  the caret disappeared and keys such as `Backspace` had no effect after the label was clicked more than once in
+  Chromium browsers ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
 
 ## [4.10.1] - 2026-10-23
 
@@ -129,7 +138,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Knowledge Skill`: links to Storefront pages the skill doesn't include led to an error page instead of the
   documentation; they now open the Storefront of the skill's version
   ([#4781](https://github.com/porsche-design-system/porsche-design-system/pull/4781))
-- `Button`, `Drilldown`, `Link`, `Multi Select`, `Segmented Control`, `Select`, `Tabs`, `Tabs Bar`: colors could lose contrast in high contrast mode, including hover, highlighted and selected states.
+- `Button`, `Drilldown`, `Link`, `Multi Select`, `Segmented Control`, `Select`, `Tabs`, `Tabs Bar`: colors could lose
+  contrast in high contrast mode, including hover, highlighted and selected states.
   ([#4775](https://github.com/porsche-design-system/porsche-design-system/pull/4775))
 - `Multi Select Option`: slotted content only took up the width of its own content, so it could not fill the option,
   e.g. with `w-full`, and right-aligned elements were not aligned to the right edge
@@ -152,8 +162,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Pin Code`: Support for `ArrowLeft`/`ArrowRight` keyboard navigation.
   ([#4690](https://github.com/porsche-design-system/porsche-design-system/pull/4690))
-- `Ai Tag`: Arabic, Japanese and Korean translations, plus region-specific Chinese translations for `zh-CN`,
-  `zh-HK` and `zh-TW`, replacing the English fallback.
+- `Ai Tag`: Arabic, Japanese and Korean translations, plus region-specific Chinese translations for `zh-CN`, `zh-HK` and
+  `zh-TW`, replacing the English fallback.
   ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
 - `Checkbox`, `Input Date`, `Input Email`, `Input Month`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`,
   `Input Text`, `Input Time`, `Input Url`, `Input Week`, `Multi Select`, `Select`, `Switch`, `Textarea`: `aria` prop to
@@ -181,10 +191,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   being moved in the DOM (disconnected and reconnected)
   ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
 - `Select`, `Multi Select`: an option added inside an `Optgroup` was not marked as selected when it matched the
-  currently set value
-  ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
-- `Stepper Horizontal`: the page scrolled vertically at initial render in Firefox and Safari when the stepper was
-  below the fold and the current step required a horizontal scroll
+  currently set value ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
+- `Stepper Horizontal`: the page scrolled vertically at initial render in Firefox and Safari when the stepper was below
+  the fold and the current step required a horizontal scroll
   ([#4732](https://github.com/porsche-design-system/porsche-design-system/pull/4732))
 - `Radio Group Option`, `Multi Select Option`, `Segmented Control Item`: stayed empty when `value` was set only after
   the component had rendered, e.g. by an Angular property binding after navigating back to a route. A missing `value` no
@@ -294,8 +303,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   slide left an empty slot and a surplus pagination bullet behind.
   ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 - `Carousel`: changing `slides-per-page` at runtime had no effect. Slide widths and the pagination kept the value the
-  carousel was initialised with.
-  ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
+  carousel was initialised with. ([#4686](https://github.com/porsche-design-system/porsche-design-system/pull/4686))
 
 ## [4.6.0] - 2026-08-20
 
