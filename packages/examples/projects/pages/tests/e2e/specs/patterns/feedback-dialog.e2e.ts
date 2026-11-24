@@ -10,6 +10,9 @@ import { getExampleUrl, setupExamplePage } from '../../helpers/index.ts';
 
 const url = getExampleUrl('patterns-feedback-dialog');
 
+// p-modal emits motionHiddenEnd only from a transitionend, which a 0s transition never fires.
+test.use({ motion: 'on' });
+
 test('loads without reporting an error', async ({ page }) => {
   await setupExamplePage(page, url);
 
