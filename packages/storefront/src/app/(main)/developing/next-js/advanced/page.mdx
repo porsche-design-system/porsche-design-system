@@ -38,6 +38,11 @@ On the server, the behavior differs: Relevant markup and styles are rendered int
 browsers convert to a real Shadow DOM without JavaScript. This handles the initial render efficiently. Once the client
 code loads and executes, the Porsche Design System components initialize as usual.
 
+The props that differ from their default are also passed in a `data-ssr-props` attribute. A component that initializes
+before React hydrates, e.g. when it is streamed in through a Suspense boundary or registered early by the
+[Loader Script](/partials/loader-script), renders with these props instead of its defaults. The attribute is removed
+once the component or React has applied the props.
+
 **Important:** Ensure dead code elimination is enabled for the client build to prevent server-side code from leaking
 into the browser bundle.
 
