@@ -3,7 +3,6 @@ import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { SelectedAriaAttributes, SheetAriaAttribute } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import {
-  type Options,
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -38,8 +37,7 @@ const initBasicSheet = (
     disableCloseButton?: boolean;
     markupBefore?: string;
     markupAfter?: string;
-  },
-  options?: Options
+  }
 ): Promise<void> => {
   const {
     isOpen = true,
@@ -61,8 +59,7 @@ const initBasicSheet = (
     `${markupBefore ? markupBefore : ''}<p-sheet ${attributes}>
   ${hasSlottedHeader ? '<div slot="header"><h2>Some Heading</h2><a href="#">some anchor</a></div>' : ''}
   ${content}
-</p-sheet>${markupAfter ? markupAfter : ''}`,
-    options
+</p-sheet>${markupAfter ? markupAfter : ''}`
   );
 };
 
@@ -650,13 +647,10 @@ test.describe('slotted header', () => {
 });
 
 test.describe('events', () => {
+  test.use({ motion: 'on' });
   skipInBrowsers(['firefox', 'webkit']);
   test('should call motionVisibleEnd event when opening transition is finished', async ({ page }) => {
-    await initBasicSheet(
-      page,
-      { isOpen: false },
-      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
-    );
+    await initBasicSheet(page, { isOpen: false });
     const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
@@ -672,11 +666,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
   });
   test('should call motionHiddenEnd event when closing transition is finished', async ({ page }) => {
-    await initBasicSheet(
-      page,
-      { isOpen: true },
-      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
-    );
+    await initBasicSheet(page, { isOpen: true });
     const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');

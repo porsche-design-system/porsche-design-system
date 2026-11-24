@@ -16,6 +16,7 @@ export default defineConfig<TestOptions>({
   use: {
     ...playwrightConfigE2E.use,
     externalRequests: false,
+    motion: 'on',
   },
   projects: [
     {

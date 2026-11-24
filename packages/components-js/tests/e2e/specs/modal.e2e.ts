@@ -12,7 +12,6 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
-  type Options,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -39,8 +38,7 @@ const initBasicModal = (
     dismissButton?: boolean;
     markupBefore?: string;
     markupAfter?: string;
-  },
-  options?: Options
+  }
 ): Promise<void> => {
   const {
     isOpen = true,
@@ -64,8 +62,7 @@ const initBasicModal = (
   ${hasSlottedHeader ? '<div slot="header"><h2>Some Heading <a href="https://porsche.com">Some link</a></h2> <p>Some header content</p></div>' : ''}
   ${content}
   ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
-</p-modal>${markupAfter ? markupAfter : ''}`,
-    options
+</p-modal>${markupAfter ? markupAfter : ''}`
   );
 };
 
@@ -776,13 +773,10 @@ test.describe('after dynamic slot change', () => {
 });
 
 test.describe('events', () => {
+  test.use({ motion: 'on' });
   skipInBrowsers(['firefox', 'webkit']);
   test('should call motionVisibleEnd event when opening transition is finished', async ({ page }) => {
-    await initBasicModal(
-      page,
-      { isOpen: false },
-      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
-    );
+    await initBasicModal(page, { isOpen: false });
     const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
@@ -798,11 +792,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
   });
   test('should call motionHiddenEnd event when closing transition is finished', async ({ page }) => {
-    await initBasicModal(
-      page,
-      { isOpen: true },
-      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
-    );
+    await initBasicModal(page, { isOpen: true });
     const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
