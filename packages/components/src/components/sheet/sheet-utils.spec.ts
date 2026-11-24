@@ -196,6 +196,12 @@ describe('createSheetSwipeController', () => {
     return event;
   };
 
+  const dispatchTransitionEnd = (target: HTMLElement, propertyName: string): void => {
+    const event = new Event('transitionend', { bubbles: true });
+    Object.defineProperty(event, 'propertyName', { value: propertyName });
+    target.dispatchEvent(event);
+  };
+
   const dispatchPointer = (
     type: 'pointerdown' | 'pointermove' | 'pointerup' | 'pointercancel',
     clientY: number,
@@ -535,6 +541,43 @@ describe('createSheetSwipeController', () => {
     dispatchTouchOn(sheet, 'touchend', 260);
 
     expect(onSwipeDismiss).not.toHaveBeenCalled();
+  });
+
+  it('should drop the glide-out transform once the closed sheet has glided out, on a reopen and on destroy', () => {
+    const swipeClosed = (): void => {
+      dispatchTouchOn(sheet, 'touchstart', 100);
+      advanceTime(80);
+      dispatchTouchOn(sheet, 'touchmove', 260);
+      dispatchTouchOn(sheet, 'touchend', 260);
+      openState = false;
+      controller.sync();
+      expect(sheet.style.transform).toBe('translate3d(0, 100%, 0)');
+    };
+
+    // Only the transform transition of the sheet itself ends the glide-out
+    swipeClosed();
+    dispatchTransitionEnd(sheet, 'opacity');
+    dispatchTransitionEnd(swipeHandle, 'transform');
+    expect(sheet.style.transform).toBe('translate3d(0, 100%, 0)');
+    dispatchTransitionEnd(sheet, 'transform');
+    expect(sheet.style.transform).toBe('');
+
+    // Reopened before the glide-out has ended
+    openState = true;
+    controller.sync();
+    swipeClosed();
+    openState = true;
+    controller.sync();
+    expect(sheet.style.transform).toBe('');
+    sheet.style.transform = 'none';
+    dispatchTransitionEnd(sheet, 'transform');
+    expect(sheet.style.transform).toBe('none');
+
+    // Disconnected before the glide-out has ended
+    sheet.style.transform = '';
+    swipeClosed();
+    controller.destroy();
+    expect(sheet.style.transform).toBe('');
   });
 
   it('should keep the glide-out styles when swipeHandle is disabled after a swipe dismiss closed the sheet', () => {

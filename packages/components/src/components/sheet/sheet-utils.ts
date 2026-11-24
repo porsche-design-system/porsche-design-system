@@ -175,6 +175,7 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
   let vetoFrame = 0;
   let suppressHandleClick = false;
   let isRecovering = false;
+  let glideOut: AbortController | undefined;
 
   const clearSwipeStyles = (): void => {
     const sheet = getSheet();
@@ -193,6 +194,28 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
   const recoverSwipeStyles = (): void => {
     isRecovering ||= !!getDialog()?.style.backgroundColor;
     clearSwipeStyles();
+  };
+
+  const endGlideOut = (): void => {
+    glideOut?.abort();
+    glideOut = undefined;
+  };
+
+  /** Glides the closing sheet out from its drag position instead of jumping back to the closed offset of the stylesheet. */
+  const glideOutSheet = (sheet: HTMLDivElement): void => {
+    sheet.style.transform = 'translate3d(0, 100%, 0)';
+    glideOut = new AbortController();
+    sheet.addEventListener(
+      'transitionend',
+      (event) => {
+        if (event.target === sheet && event.propertyName === 'transform') {
+          endGlideOut();
+          // The inline style outranks the stylesheet, so it would be where the next open transition starts from.
+          sheet.style.transform = '';
+        }
+      },
+      { signal: glideOut.signal }
+    );
   };
 
   const resetGesture = (): void => {
@@ -410,6 +433,7 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
     }
     if (open && !wasOpen) {
       pendingSwipeDismiss = false;
+      endGlideOut();
       clearSwipeStyles();
     } else if (!open && wasOpen) {
       cancelAnimationFrame(vetoFrame);
@@ -418,7 +442,7 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
       // transition so `motionHiddenEnd` fires.
       const sheet = getSheet();
       if (pendingSwipeDismiss && sheet) {
-        sheet.style.transform = 'translate3d(0, 100%, 0)';
+        glideOutSheet(sheet);
       }
       pendingSwipeDismiss = false;
     }
@@ -428,6 +452,8 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
 
   const destroy = (): void => {
     detachListeners();
+    endGlideOut();
+    clearSwipeStyles();
     cancelAnimationFrame(vetoFrame);
     pendingSwipeDismiss = false;
     suppressHandleClick = false;

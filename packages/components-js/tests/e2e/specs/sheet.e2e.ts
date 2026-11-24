@@ -830,6 +830,36 @@ test.describe('swipe handle', () => {
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
   });
 
+  test('should drop the glide-out transform of a swipe dismiss once the sheet is closed, so the next open starts from the closed offset', async ({
+    page,
+  }) => {
+    const host = await enableSwipeHandle(page, true, undefined, {
+      injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>',
+    });
+    await waitForSheetTransition();
+    await host.evaluate((el: HTMLElement & { open: boolean }) => {
+      el.addEventListener('dismiss', () => {
+        el.open = false;
+      });
+    });
+    const handleBox = await getSwipeHandle(page).boundingBox();
+    if (!handleBox) {
+      throw new Error('swipe handle has no box');
+    }
+    const hx = handleBox.x + handleBox.width / 2;
+    const hy = handleBox.y + handleBox.height / 2;
+    await page.mouse.move(hx, hy);
+    await page.mouse.down();
+    await page.mouse.move(hx, hy + 220, { steps: 5 });
+    await page.mouse.up();
+    await waitForStencilLifecycle(page);
+    await waitForSheetTransition();
+
+    expect((await getEventSummary(host, 'dismiss')).details).toEqual([{ reason: 'swipe' }]);
+    await expect(host).toHaveJSProperty('open', false);
+    await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
+  });
+
   test('should not emit motionVisibleEnd again when the backdrop transitions back after a snap-back', async ({
     page,
   }) => {
