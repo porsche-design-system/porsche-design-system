@@ -119,6 +119,8 @@ is not a target: port the change to `packages/components-vue/src/pages/` by hand
 - A page URL is `/<page>` with the query parameters `scheme`, `dir`, `scale`, `transition`, `animation` and `iframe`
   (`main.js`). `transition` and `animation` default to `none`, which sets `--p-transition-duration` and
   `--p-animation-duration` to `0s` and keeps screenshots stable. Pass `transitioned` or `animated` only to test motion.
+  The shared Playwright `test` overrides this rule, so a test that needs motion sets the `motion: 'on'` option as well
+  as the parameter, without which `main.js` still writes `0s`.
 - Slugs matching `/^[a-z-]+-example/` load from `src/examples/`, everything else from `src/pages/`. Inline `<script>`
   tags run through indirect `eval`.
 
