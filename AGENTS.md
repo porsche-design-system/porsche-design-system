@@ -172,8 +172,8 @@ undeclared `console.warn`, `console.error` and jsdom errors. See
 [`packages/shared/projects/testing/AGENTS.md`](packages/shared/projects/testing/AGENTS.md).
 
 **Every Playwright spec and test helper imports `test` from `@porsche-design-system/testing/playwright`, never from
-`@playwright/test`.** It adds request routing and the console guard, and `npm run lint` fails on the wrong import. See
-"The shared Playwright `test`" in
+`@playwright/test`.** It adds request routing, the console guard and the motion switch, and `npm run lint` fails on the
+wrong import. See "The shared Playwright `test`" in
 [`packages/shared/projects/testing/AGENTS.md`](packages/shared/projects/testing/AGENTS.md).
 
 Key test files:

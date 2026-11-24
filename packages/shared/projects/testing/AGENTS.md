@@ -20,7 +20,7 @@ src/
 ├── axe.ts                      # `./axe`: createAxeTest, built on the shared test
 ├── playwright/
 │   ├── index.ts                # `./playwright`: the shared test, expect and the helpers more than one package uses
-│   ├── test.ts                 # test: Playwright's test plus the request routing and console guard fixtures
+│   ├── test.ts                 # test: Playwright's test plus the request routing, console guard and motion switch fixtures
 │   ├── externalRequests.ts     # resolveExternalRequest: the routing outcome of one request
 │   ├── consoleGuard.ts         # which console messages and page errors fail a test
 │   └── harnessPageConsole.ts   # messages the components-js harness pages log on purpose
@@ -150,9 +150,11 @@ fails on a request to that origin.
   and `--p-animation-duration` to `0s` on `:root`. `'on'` leaves the components' own durations in place. Both set
   `--p-temporary-spinner-stroke-dasharray: 40` and `--p-temporary-toast-skip-timeout: true`. The rule is a stylesheet
   the fixture adopts on every document of the context through an init script, not markup in the page's HTML. Adopted
-  stylesheets come after the document's own, so it beats a page's own `:root` rule of the same specificity. A page's
-  rule cannot switch motion back on. Only the `motion` option can, in `test.use` or in a suite config's `use`. The smoke
-  suite config sets `'on'`.
+  stylesheets come after the document's own, so it beats a page's own `:root` rule of the same specificity and
+  importance. It loses to an inline `style` on `<html>`, to an `!important` declaration, and to a declaration on an
+  element below `:root`, which overrides the inherited value for that element's subtree, as `toast.e2e.ts` does on
+  `p-toast`. Switch motion on with the `motion` option, in `test.use` or in a suite config's `use`. The smoke suite
+  config sets `'on'`.
 
 ### Declaring expected console messages
 
