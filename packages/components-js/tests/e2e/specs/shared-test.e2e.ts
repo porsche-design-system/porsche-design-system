@@ -1,4 +1,6 @@
+import type { Frame, Page } from '@playwright/test';
 import { expect, test } from '@porsche-design-system/testing/playwright';
+import { setContentWithDesignSystem } from '../helpers';
 
 const fetchText = (url: string) => fetch(url).then((response) => response.text());
 
@@ -110,6 +112,73 @@ test.describe('request routing', () => {
       const img = page.locator('img');
       await expect(img).toHaveAttribute('data-event', 'error');
       expect(await img.evaluate((el: HTMLImageElement) => el.naturalWidth)).toBe(0);
+    });
+  });
+});
+
+test.describe('motion', () => {
+  const readVariables = (page: Page | Frame) =>
+    page.evaluate(() => {
+      const style = getComputedStyle(document.documentElement);
+      return [
+        '--p-transition-duration',
+        '--p-animation-duration',
+        '--p-temporary-spinner-stroke-dasharray',
+        '--p-temporary-toast-skip-timeout',
+      ].map((name) => style.getPropertyValue(name).trim());
+    });
+  const off = ['0s', '0s', '40', 'true'];
+  const on = ['', '', '40', 'true'];
+  const blank = 'data:text/html,<!DOCTYPE html><title>t</title>';
+
+  test('is off after goto', async ({ page }) => {
+    await page.goto(blank);
+    expect(await readVariables(page)).toEqual(off);
+  });
+
+  test('is off after setContent', async ({ page }) => {
+    await page.setContent('<p>x</p>');
+    expect(await readVariables(page)).toEqual(off);
+  });
+
+  test('is off after setContentWithDesignSystem', async ({ page }) => {
+    await setContentWithDesignSystem(page, '<p-button>x</p-button>');
+    expect(await readVariables(page)).toEqual(off);
+  });
+
+  test('stays off after a second navigation', async ({ page }) => {
+    await page.goto(blank);
+    await page.goto(blank);
+    expect(await readVariables(page)).toEqual(off);
+  });
+
+  test('is off on a second page of the context', async ({ context }) => {
+    const second = await context.newPage();
+    await second.setContent('<p>x</p>');
+    expect(await readVariables(second)).toEqual(off);
+  });
+
+  test('is off inside an iframe', async ({ page }) => {
+    await page.setContent('<iframe srcdoc="<p>x</p>"></iframe>');
+    expect(await readVariables(page.frames()[1])).toEqual(off);
+  });
+
+  test.describe('switched on', () => {
+    test.use({ motion: 'on' });
+
+    test('is on after goto', async ({ page }) => {
+      await page.goto(blank);
+      expect(await readVariables(page)).toEqual(on);
+    });
+
+    test('is on after setContent', async ({ page }) => {
+      await page.setContent('<p>x</p>');
+      expect(await readVariables(page)).toEqual(on);
+    });
+
+    test('is on after setContentWithDesignSystem', async ({ page }) => {
+      await setContentWithDesignSystem(page, '<p-button>x</p-button>');
+      expect(await readVariables(page)).toEqual(on);
     });
   });
 });
