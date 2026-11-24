@@ -157,6 +157,7 @@ export class Sheet {
               type="button"
               ref={(el) => (this.swipeHandleButton = el)}
               tabIndex={this.dismissButton ? -1 : undefined}
+              aria-hidden={this.dismissButton ? 'true' : undefined}
               onClick={this.onDismissButtonClick}
             >
               <span>Dismiss sheet</span>

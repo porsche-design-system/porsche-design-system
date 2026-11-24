@@ -722,12 +722,14 @@ test.describe('swipe handle', () => {
     expect(summary.details).toEqual([{ reason: 'dismiss-button' }]);
   });
 
-  test('should keep the handle out of tab order while the dismiss button is shown and use it as the keyboard close control otherwise', async ({
+  test('should keep the handle out of the tab order and the accessibility tree while the dismiss button is shown and use it as the close control otherwise', async ({
     page,
   }) => {
     const host = await enableSwipeHandle(page, false);
     const handle = getSwipeHandle(page);
     await expect(handle).not.toHaveAttribute('tabindex');
+    await expect(handle).not.toHaveAttribute('aria-hidden');
+    await expect(page.getByRole('button', { name: 'Dismiss sheet' })).toHaveCount(1);
 
     await handle.focus();
     await page.keyboard.press('Enter');
@@ -738,6 +740,8 @@ test.describe('swipe handle', () => {
     await setProperty(host, 'dismissButton', true);
     await waitForStencilLifecycle(page);
     await expect(handle).toHaveAttribute('tabindex', '-1');
+    await expect(handle).toHaveAttribute('aria-hidden', 'true');
+    await expect(page.getByRole('button', { name: 'Dismiss sheet' })).toHaveCount(1);
   });
 
   test('should close with Escape when the dismiss button is hidden and the swipe handle is shown', async ({ page }) => {
