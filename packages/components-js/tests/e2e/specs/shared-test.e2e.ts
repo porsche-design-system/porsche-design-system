@@ -1,6 +1,6 @@
 import type { Frame, Page } from '@playwright/test';
 import { expect, test } from '@porsche-design-system/testing/playwright';
-import { setContentWithDesignSystem } from '../helpers';
+import { setContentWithDesignSystem, waitForAnimationsFinished } from '../helpers';
 
 const fetchText = (url: string) => fetch(url).then((response) => response.text());
 
@@ -180,5 +180,88 @@ test.describe('motion', () => {
       await setContentWithDesignSystem(page, '<p-button>x</p-button>');
       expect(await readVariables(page)).toEqual(on);
     });
+  });
+});
+
+test.describe('waitForAnimationsFinished', () => {
+  test.use({ motion: 'on' });
+  test.setTimeout(10_000);
+
+  const shadowBox =
+    '<style>.box { width: 10px; transition: width .3s } .wide { width: 200px }</style><div class="box"></div>';
+  const host = (page: Page) => page.locator('#host');
+  const readBoxStyle = (page: Page, property: 'width' | 'opacity') =>
+    page.locator('.box').evaluate((el, property) => getComputedStyle(el)[property], property);
+
+  test.beforeEach(async ({ page }) => {
+    await page.setContent('<div id="host"></div>');
+  });
+
+  test('waits for a transition inside a shadow root', async ({ page }) => {
+    await page.evaluate((html) => {
+      const root = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      const box = root.querySelector('.box')!;
+      // Reading the style first gives the transition a start value.
+      getComputedStyle(box).width;
+      box.classList.add('wide');
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
+    expect(await readBoxStyle(page, 'width')).toBe('200px');
+  });
+
+  test('waits for a transition inside a nested shadow root', async ({ page }) => {
+    await page.evaluate((html) => {
+      const outer = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      outer.innerHTML = '<div></div>';
+      const root = outer.querySelector('div')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      const box = root.querySelector('.box')!;
+      getComputedStyle(box).width;
+      box.classList.add('wide');
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
+    expect(await readBoxStyle(page, 'width')).toBe('200px');
+  });
+
+  test('waits for an animation that starts when the first one ends', async ({ page }) => {
+    await page.evaluate((html) => {
+      const root = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      const box = root.querySelector('.box')!;
+      box.addEventListener('transitionend', () => {
+        box.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' });
+      });
+      getComputedStyle(box).width;
+      box.classList.add('wide');
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
+    expect(await readBoxStyle(page, 'opacity')).toBe('0');
+  });
+
+  test('returns when nothing runs', async ({ page }) => {
+    await page.evaluate(() => {
+      document.querySelector('#host')!.innerHTML = '<p>x</p>';
+    });
+    await waitForAnimationsFinished(host(page));
+  });
+
+  test('does not hang on an infinite animation', async ({ page }) => {
+    await page.evaluate((html) => {
+      const root = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      root.querySelector('.box')!.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 100, iterations: Infinity });
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
+  });
+
+  test('does not throw on a cancelled animation', async ({ page }) => {
+    await page.evaluate((html) => {
+      const root = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      const a = root.querySelector('.box')!.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 1000 });
+      setTimeout(() => a.cancel(), 300);
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
   });
 });
