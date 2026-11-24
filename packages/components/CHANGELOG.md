@@ -47,6 +47,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
 - `Knowledge Skill`: contact form, personal details form and booking form patterns
   ([#4846](https://github.com/porsche-design-system/porsche-design-system/pull/4846))
+- `Sheet`: `swipe-handle` prop to show a dismiss handle and enable downward drag-to-close when content is scrolled to
+  the top. ([#4866](https://github.com/porsche-design-system/porsche-design-system/pull/4866))
+- `Sheet`: `dismiss` event detail `reason` can be `'swipe'` for swipe or drag dismissal.
+  ([#4866](https://github.com/porsche-design-system/porsche-design-system/pull/4866))
 
 ### Changed
 
@@ -98,6 +102,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`, `Input Url`, `Textarea`:
   the caret disappeared and keys such as `Backspace` had no effect after the label was clicked more than once in
   Chromium browsers ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
+- `Flyout`, `Modal`, `Sheet`: `motionVisibleEnd` was emitted again whenever a `background-color` transition ended on an
+  element inside the dialog, e.g. after hovering the dismiss button
+  ([#4866](https://github.com/porsche-design-system/porsche-design-system/pull/4866))
 - **React SSR**: components from `@porsche-design-system/components-react/ssr` that started before React hydrated, e.g.
   when streamed in through a Suspense boundary or registered early by `getLoaderScript()`, rendered their default props
   until hydration, e.g. a `PButton` with `variant="secondary"` flashed as primary. The server-rendered markup now passes

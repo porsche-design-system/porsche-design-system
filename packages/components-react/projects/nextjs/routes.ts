@@ -756,6 +756,14 @@ const generatedRoutes = {
     "path": "/sheet-scrolled",
     "name": "SheetScrolled"
   },
+  "sheetSwipeHandle": {
+    "path": "/sheet-swipe-handle",
+    "name": "SheetSwipeHandle"
+  },
+  "sheetSwipeHandleNoDismiss": {
+    "path": "/sheet-swipe-handle-no-dismiss",
+    "name": "SheetSwipeHandleNoDismiss"
+  },
   "sheetWithoutDismissButton": {
     "path": "/sheet-without-dismiss-button",
     "name": "SheetWithoutDismissButton"
