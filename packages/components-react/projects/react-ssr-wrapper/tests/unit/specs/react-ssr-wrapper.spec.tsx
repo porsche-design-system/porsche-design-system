@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 import { kebabCase, pascalCase } from 'change-case';
 import Link from 'next/link';
 import { type JSX } from 'react';
+import { renderToString } from 'react-dom/server';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import * as fromComponents from '../../../src/lib/components';
 import * as minifyCssUtils from '../../../src/minifyCss';
@@ -174,5 +175,45 @@ describe('manual test cases', () => {
     }
 
     expect(hasTestCaseForEveryTagNameWithInternalProp).toBeTruthy();
+  });
+});
+
+describe('ssr props', () => {
+  const getSsrProps = (jsx: JSX.Element): string | null => {
+    const container = document.createElement('div');
+    container.innerHTML = renderToString(<PorscheDesignSystemProvider>{jsx}</PorscheDesignSystemProvider>);
+    return container.querySelector('p-button')!.getAttribute('data-ssr-props');
+  };
+
+  it('should serialize props that differ from their default on the server', () => {
+    const ssrProps = getSsrProps(
+      <fromComponents.PButton
+        variant="secondary"
+        compact={{ base: true, m: false }}
+        aria={{ 'aria-label': 'Some label' }}
+      >
+        Some label
+      </fromComponents.PButton>
+    );
+
+    expect(JSON.parse(ssrProps!)).toEqual({
+      variant: 'secondary',
+      compact: { base: true, m: false },
+      aria: { 'aria-label': 'Some label' },
+    });
+  });
+
+  it('should not render data-ssr-props on the server when every prop has its default', () => {
+    expect(getSsrProps(<fromComponents.PButton variant="primary">Some label</fromComponents.PButton>)).toBe(null);
+  });
+
+  it('should remove data-ssr-props once the props are synced on the client', () => {
+    const { container } = render(
+      <PorscheDesignSystemProvider>
+        <fromComponents.PButton variant="secondary">Some label</fromComponents.PButton>
+      </PorscheDesignSystemProvider>
+    );
+
+    expect(container.querySelector('p-button')!.hasAttribute('data-ssr-props')).toBe(false);
   });
 });

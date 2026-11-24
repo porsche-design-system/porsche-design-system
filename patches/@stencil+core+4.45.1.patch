@@ -12,7 +12,7 @@ index 4562415..80835ed 100644
                  void 0,
                  []
 diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
-index b79941e..3ed6480 100644
+index b79941e..7354dbe 100644
 --- a/node_modules/@stencil/core/internal/client/index.js
 +++ b/node_modules/@stencil/core/internal/client/index.js
 @@ -397,6 +397,13 @@ function createShadowRoot(cmpMeta) {
@@ -58,3 +58,28 @@ index b79941e..3ed6480 100644
                if (!self.shadowRoot) {
                  createShadowRoot.call(self, cmpMeta);
                } else {
+@@ -4353,6 +4375,24 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
+           if (!hostRef) {
+             return;
+           }
++
++          //========= PDS PATCH START
++          // Applies the props serialized by the React SSR wrapper before the first render, so a component that starts
++          // before React hydrates doesn't render its defaults. Only declared props are applied.
++          const ssrProps = this.getAttribute('data-ssr-props');
++          if (ssrProps !== null) {
++            this.removeAttribute('data-ssr-props');
++            try {
++              for (const [propName, value] of Object.entries(JSON.parse(ssrProps))) {
++                const member = cmpMeta.$members$[propName];
++                if (member && member[0] & 31 /* Prop */) {
++                  this[propName] = value;
++                }
++              }
++            } catch (e) {}
++          }
++          //========= PDS PATCH END
++
+           if (!this.hasRegisteredEventListeners) {
+             this.hasRegisteredEventListeners = true;
+             addHostEventListeners(this, hostRef, cmpMeta.$listeners$, false);

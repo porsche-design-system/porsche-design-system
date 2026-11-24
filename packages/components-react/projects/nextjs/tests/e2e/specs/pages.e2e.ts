@@ -15,6 +15,8 @@ const pageConsole: Record<string, RegExp[]> = {
   '/modal': harnessPageConsole.modal,
   '/modal-footer-scrolled': harnessPageConsole.modal,
   '/overview-components': harnessPageConsole['overview-components'],
+  // TODO: Remove once the SSR streaming issue is fixed (#4162)
+  '/streaming-props': [/A second declarative shadow root cannot be created on a host/],
 };
 
 for (const pageUrl of pageUrls) {

@@ -14,6 +14,10 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
       ssrComponentName.replace('DSR', '')
     )}';`;
 
+    if (extendedProps.some(({ isEvent }) => !isEvent)) {
+      imports += `\nimport { SSR_PROPS_ATTRIBUTE, serializeSsrProps } from '../../serializeSsrProps';`;
+    }
+
     return imports;
   }
 
@@ -48,12 +52,30 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
       ? `...${JSON.stringify(componentMeta.hostAttributes)},\n            `
       : '';
 
+    // the web component applies the serialized props before its first render, the wrapper removes them on hydration
+    const ssrPropsAttribute = propsToSync.length
+      ? `[SSR_PROPS_ATTRIBUTE]: serializeSsrProps(
+              { ${propsToSync.map(({ key }) => key).join(', ')} },
+              { ${propsToSync
+                .filter(({ defaultValue }) => defaultValue !== undefined)
+                .map(({ key, defaultValue }) => `${key}: ${defaultValue}`)
+                .join(', ')} }
+            ),\n            `
+      : '';
+
+    if (propsToSync.length) {
+      tweakedComponent = tweakedComponent.replace(
+        /useBrowserLayoutEffect\(\(\) => \{\n/,
+        `$&      elementRef.current?.removeAttribute(SSR_PROPS_ATTRIBUTE);\n`
+      );
+    }
+
     tweakedComponent = tweakedComponent.replace(
       /\.\.\.rest,\n/,
       `$&      // @ts-ignore
       ...(!process.browser
         ? {
-            ${hostAttributes}children: (
+            ${hostAttributes}${ssrPropsAttribute}children: (
               <${this.getSsrComponentName(component)}
                 {...{ ${spreadProps} }}
               />

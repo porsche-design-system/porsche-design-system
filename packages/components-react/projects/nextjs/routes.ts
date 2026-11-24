@@ -886,6 +886,10 @@ export const sitemap = {
     path: '/streaming',
     name: 'Streaming Test Page',
   },
+  streamingProps: {
+    path: '/streaming-props',
+    name: 'Streaming Props Test Page',
+  },
 };
 
 export const routes = Object.values(sitemap).sort((a, b) => a.name.localeCompare(b.name));
