@@ -39,4 +39,12 @@ describe('serializeSsrProps()', () => {
   it('should leave out functions', () => {
     expect(serializeSsrProps({ variant: 'secondary', callback: () => {} }, {})).toBe('{"variant":"secondary"}');
   });
+
+  it('should return undefined instead of throwing when the props cannot be serialized', () => {
+    const circular: Record<string, unknown> = {};
+    circular.self = circular;
+
+    expect(serializeSsrProps({ variant: 'secondary', aria: circular }, {})).toBe(undefined);
+    expect(serializeSsrProps({ value: BigInt(1) }, {})).toBe(undefined);
+  });
 });

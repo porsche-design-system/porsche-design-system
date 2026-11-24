@@ -17,5 +17,14 @@ export const serializeSsrProps = (
     )
   );
 
-  return Object.keys(ssrProps).length ? JSON.stringify(ssrProps) : undefined;
+  if (!Object.keys(ssrProps).length) {
+    return undefined;
+  }
+
+  try {
+    return JSON.stringify(ssrProps);
+  } catch {
+    // e.g. a circular object, the component then renders its defaults until React syncs its props
+    return undefined;
+  }
 };
