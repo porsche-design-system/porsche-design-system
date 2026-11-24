@@ -450,6 +450,7 @@ jobs:
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
+      - run: npm run test:unit:docs-components
       - run: npm run test:unit:storefront
   storefront-e2e:
     name: 'Storefront E2E'

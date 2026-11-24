@@ -110,6 +110,36 @@ describe('MDX components', () => {
     ).toEqual([]);
   });
 
+  it('have their Markdown implementation as <Name>.markdown.ts, typed against the React one and free of runtime imports', () => {
+    const invalid = componentFolders.flatMap((folder) => {
+      const name = path.basename(folder);
+      return readDir(folder)
+        .filter((entry) => entry.isFile() && entry.name.includes('.markdown.'))
+        .flatMap(({ name: file }) => {
+          const source = fs.readFileSync(path.join(mdxComponentsDir, folder, file), 'utf8');
+          const runtimeImports = Array.from(
+            source.matchAll(/^import (?!type )[^;]* from '([^']+)';/gm),
+            ([, from]) => from
+          );
+          return [
+            ...(file === `${name}.markdown.ts` ? [] : [`${folder}/${file}: name it ${name}.markdown.ts`]),
+            ...(source.includes(`: MarkdownComponentOf<typeof React${name}> = defineMarkdownComponent(`) &&
+            source.includes(`import type { ${name} as React${name} } from './${name}';`)
+              ? []
+              : [`${folder}/${file}: type it as MarkdownComponentOf<typeof React${name}>, imported from './${name}'`]),
+            ...runtimeImports
+              .filter((from) => from !== '@porsche-design-system/docs-components/markdown')
+              .map((from) => `${folder}/${file}: imports ${from} at runtime`),
+          ];
+        });
+    });
+
+    expect(
+      invalid,
+      'The Markdown build resolves a folder to its Markdown implementation and never loads the React one or the wrapper.'
+    ).toEqual([]);
+  });
+
   it('are all used by MDX', () => {
     const usedFolders = new Set(componentImports.map(({ source }) => source.replace('@/components/mdx/', '')));
 

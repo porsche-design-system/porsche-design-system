@@ -1,4 +1,5 @@
 import createMDX from '@next/mdx';
+import { remarkPlugins } from '@porsche-design-system/docs-components/mdx-options';
 import type { NextConfig } from 'next';
 import { getBasePath } from '@/utils/getBasePath';
 
@@ -16,6 +17,7 @@ const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // These packages export raw TypeScript, so the storefront build compiles them (and `next dev` reloads them on change).
   transpilePackages: [
+    '@porsche-design-system/docs-components',
     '@porsche-design-system/examples',
     '@porsche-design-system/examples-framework',
     '@porsche-design-system/examples-pages',
@@ -38,10 +40,10 @@ const nextConfig: NextConfig = {
   },
 };
 
+// Shared with the Markdown build of `@porsche-design-system/docs-components`, so both outputs parse a page the same way.
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: ['remark-gfm'],
+    remarkPlugins,
   },
 });
 

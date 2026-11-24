@@ -1,9 +1,9 @@
 # MDX components
 
 Every component MDX imports, grouped by how pages use them, one folder each. This is the migration list for the
-dual-target registry of #4142 (`docs-components`): a folder moves there as a whole and gets a Markdown implementation
-next to its React one, see
-[`docs-components-design.md`](https://github.com/porsche-design-system/porsche-design-system/blob/issue/4142/docs/docs-components-design.md).
+Storefront's Markdown (#4142): a folder gets a Markdown implementation next to its React one, which the Markdown build
+of `@porsche-design-system/docs-components` resolves the folder to, see
+[`docs-components-design.md`](../../../../../docs/docs-components-design.md).
 
 ## Rules
 
@@ -12,15 +12,22 @@ next to its React one, see
 - A folder holds the component and the modules only it uses, such as its client part. A module several components of a
   topic use sits next to their folders, e.g. `framework/FrameworkContent.tsx`. `elements/` holds what Markdown syntax
   renders to, which `mdx-components.tsx` takes from `elements/mdxComponents.tsx`. MDX imports neither.
-- Inside this folder, imports are relative. An `@/…` import is a dependency on the Storefront, which the registry has to
-  take along or replace. The tables below name them, and `STOREFRONT_DEPENDENCIES` in the spec lists the allowed ones.
-- `tests/unit/specs/mdxComponents.spec.ts` checks the imports, the folders, this inventory and the Storefront
-  dependencies. `tests/unit/specs/mdxPages.spec.ts` checks the pages: no unused imports, no PDS components, Markdown
-  instead of HTML, tables of contents and notification heading levels.
+- Inside this folder, imports are relative. An `@/…` import is a dependency on the Storefront. The tables below name
+  them, and `STOREFRONT_DEPENDENCIES` in the spec lists the allowed ones.
+- A component's Markdown implementation is `<Name>.markdown.ts` in its folder, typed as
+  `MarkdownComponentOf<typeof React<Name>>` against the React one, and imports nothing at runtime but
+  `@porsche-design-system/docs-components/markdown`. The Markdown build resolves the folder to it and never loads the
+  React implementation. A page flagged with `markdown: true` in `src/sitemap.ts` fails that build for a component
+  without one, naming it and its line.
+- `tests/unit/specs/mdxComponents.spec.ts` checks the imports, the folders, the Markdown implementations, this inventory
+  and the Storefront dependencies; `tests/unit/specs/markdownComponents.spec.ts` the Markdown they render.
+  `tests/unit/specs/mdxPages.spec.ts` checks the pages: no unused imports, no PDS components, Markdown instead of HTML,
+  tables of contents and notification heading levels.
 
 ## Inventory
 
-The Markdown column is the output planned in the design. _Proposed_ marks components the design doesn't cover yet.
+The Markdown column is the output planned in the design; **Implemented** marks the components that have it. _Proposed_
+marks components the design doesn't cover yet.
 
 ### `elements/` What Markdown syntax renders to
 
@@ -33,24 +40,24 @@ The Markdown column is the output planned in the design. _Proposed_ marks compon
 
 ### `structure/` Page structure
 
-| Component           | Purpose                                                                           | Markdown                                                | Storefront dependencies          |
-| ------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------- |
-| `TableOfContents`   | Links to the `##` sections of a page, and to the `SubsectionHeading`s below them. | Nothing; the headings provide the structure.            | `DocsLink`, `getHeadingAnchorId` |
-| `SubsectionHeading` | A `###` heading with an anchor, for a table of contents to link to.               | `###`.                                                  | –                                |
-| `ComponentStatus`   | Marks a deprecated or experimental component next to its heading.                 | `**Status:** …`, only when the component is not stable. | –                                |
+| Component           | Purpose                                                                           | Markdown                                                      | Storefront dependencies          |
+| ------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
+| `TableOfContents`   | Links to the `##` sections of a page, and to the `SubsectionHeading`s below them. | **Implemented:** nothing; the headings provide the structure. | `DocsLink`, `getHeadingAnchorId` |
+| `SubsectionHeading` | A `###` heading with an anchor, for a table of contents to link to.               | `###`.                                                        | –                                |
+| `ComponentStatus`   | Marks a deprecated or experimental component next to its heading.                 | `**Status:** …`, only when the component is not stable.       | –                                |
 
 ### `content/` Building blocks for prose
 
-| Component        | Purpose                                                                          | Markdown                                                                         | Storefront dependencies                       |
-| ---------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------- |
-| `Notification`   | A notice with a heading. `frameworks` shows it only for the frameworks it names. | A blockquote with the heading in bold; with `frameworks`, only in their outputs. | `useStorefrontFramework` (`FrameworkContent`) |
-| `ContentCallout` | A highlighted aside, e.g. a shortcut above the regular instructions.             | _Proposed:_ a blockquote with the title in bold.                                 | –                                             |
-| `ContentTabs`    | Alternative variants of the same step, e.g. installation methods.                | Every tab in order, each under its own heading.                                  | –                                             |
-| `PromptBox`      | A prompt for an AI agent, with a copy button.                                    | The prompt as a code block.                                                      | –                                             |
-| `Code`           | Inline code that doesn't wrap, or a value that isn't selectable.                 | _Proposed:_ inline code.                                                         | –                                             |
-| `DependencyList` | The dependencies a guide is based on, e.g. `react@19`.                           | A list of `name@version`.                                                        | –                                             |
-| `DownloadList`   | Files in `public/` to download.                                                  | _Proposed:_ a list of links to the files.                                        | –                                             |
-| `Flag`           | A decorative flag in front of a heading, e.g. the script of a pangram.           | Nothing; the text names what it stands for.                                      | –                                             |
+| Component        | Purpose                                                                          | Markdown                                                                                          | Storefront dependencies                       |
+| ---------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| `Notification`   | A notice with a heading. `frameworks` shows it only for the frameworks it names. | **Implemented:** a blockquote with the heading in bold; with `frameworks`, only in their outputs. | `useStorefrontFramework` (`FrameworkContent`) |
+| `ContentCallout` | A highlighted aside, e.g. a shortcut above the regular instructions.             | _Proposed:_ a blockquote with the title in bold.                                                  | –                                             |
+| `ContentTabs`    | Alternative variants of the same step, e.g. installation methods.                | Every tab in order, each under its own heading.                                                   | –                                             |
+| `PromptBox`      | A prompt for an AI agent, with a copy button.                                    | The prompt as a code block.                                                                       | –                                             |
+| `Code`           | Inline code that doesn't wrap, or a value that isn't selectable.                 | _Proposed:_ inline code.                                                                          | –                                             |
+| `DependencyList` | The dependencies a guide is based on, e.g. `react@19`.                           | **Implemented:** a list of `name@version`.                                                        | –                                             |
+| `DownloadList`   | Files in `public/` to download.                                                  | _Proposed:_ a list of links to the files.                                                         | –                                             |
+| `Flag`           | A decorative flag in front of a heading, e.g. the script of a pangram.           | Nothing; the text names what it stands for.                                                       | –                                             |
 
 ### `framework/` Content that follows the selected framework
 

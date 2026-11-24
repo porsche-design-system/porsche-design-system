@@ -1,0 +1,26 @@
+import type { Framework } from '@porsche-design-system/shared/models';
+import { importMdx, renderMdxModule } from './mdx';
+import { serializeMarkdown } from './render';
+
+export type { MarkdownComponentOf, MarkdownContext, MarkdownOptions, MarkdownRenderer } from './define';
+export { defineMarkdownComponent } from './define';
+export type { PageMetadata } from './mdx';
+export type { Location, OutputMap } from './outputs';
+export { htmlLink, mapLinks } from './outputs';
+export type {
+  LinkResolver,
+  LinkSource,
+  LinkTarget,
+  Page,
+  PageKind,
+  PagePlace,
+  PageSource,
+  RouteSource,
+  Site,
+} from './pages';
+export { collectPages, createSite, findPages, pageTitle, pageToMarkdown } from './pages';
+export { renderToMarkdown, renderToMdast, serializeMarkdown } from './render';
+
+/** Imports an MDX file and renders it to Markdown for one framework, leaving its links as they are. */
+export const renderMdxFileToMarkdown = async (file: string, framework: Framework): Promise<string> =>
+  serializeMarkdown(renderMdxModule(file, await importMdx(file), framework));
