@@ -154,7 +154,9 @@ fails on a request to that origin.
   importance. It loses to an inline `style` on `<html>`, to an `!important` declaration, and to a declaration on an
   element below `:root`, which overrides the inherited value for that element's subtree, as `toast.e2e.ts` does on
   `p-toast`. Switch motion on with the `motion` option, in `test.use` or in a suite config's `use`. The smoke suite
-  config sets `'on'`.
+  config sets `'on'`. The Biome plugin `biome-plugins/use-motion-option.grit` fails `npm run lint` when a spec or test
+  helper names either variable in a string or template literal. `biome.json` exempts `shared-test.e2e.ts`, whose tests
+  read the variables, and `toast.e2e.ts`.
 
 ### Declaring expected console messages
 
