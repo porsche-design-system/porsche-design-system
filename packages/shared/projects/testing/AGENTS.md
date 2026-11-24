@@ -91,10 +91,10 @@ cannot fail that file. `console.log` is not guarded.
 ## The shared Playwright `test`
 
 Every Playwright spec and test helper imports `test` from `@porsche-design-system/testing/playwright`, never from
-`@playwright/test`. It adds two automatic fixtures, both attached to the test's browser context: request routing and the
-console guard. The Biome plugin `biome-plugins/use-shared-playwright-test.grit` fails `npm run lint` on a named, default
-or namespace import of it from `@playwright/test`, on a re-export and on a `require`, smoke suite included. `biome.json`
-attaches it to the spec and helper globs and to every storefront file.
+`@playwright/test`. It adds three automatic fixtures, all attached to the test's browser context: request routing, the
+console guard and the motion switch. The Biome plugin `biome-plugins/use-shared-playwright-test.grit` fails
+`npm run lint` on a named, default or namespace import of it from `@playwright/test`, on a re-export and on a `require`,
+smoke suite included. `biome.json` attaches it to the spec and helper globs and to every storefront file.
 
 **The rule reaches a new directory of Playwright specs or test helpers without an edit to `biome.json`.**
 `linter.includes` excludes five packages from linting (`assets`, `components-angular`, `components-js`,
@@ -119,9 +119,9 @@ Each request gets exactly one outcome, checked in this order (`resolveExternalRe
 with that list when the test ends. It does not go through the console guard, because each browser logs an abort
 differently. A request the test needs gets an entry in `stubs` or `allowedOrigins`.
 
-### The two options
+### The three options
 
-Both are Playwright options, set in the suite config's `use` or with `test.use`:
+All three are Playwright options, set in the suite config's `use` or with `test.use`:
 
 ```ts
 // packages/components-js/tests/e2e/config/playwright.config.ts
@@ -146,6 +146,13 @@ fails on a request to that origin.
 - `expectedConsole` (`RegExp[]`, default `[]`) lists what the test expects. A pattern is tested against the message text
   followed by a space and its source URL. Uncaught page errors can be declared too, and a pattern is then tested against
   the error message.
+- `motion` (`'off' | 'on'`, default `'off'`) decides whether components animate. `'off'` sets `--p-transition-duration`
+  and `--p-animation-duration` to `0s` on `:root`. `'on'` leaves the components' own durations in place. Both set
+  `--p-temporary-spinner-stroke-dasharray: 40` and `--p-temporary-toast-skip-timeout: true`. The rule is a stylesheet
+  the fixture adopts on every document of the context through an init script, not markup in the page's HTML. Adopted
+  stylesheets come after the document's own, so it beats a page's own `:root` rule of the same specificity. A page's
+  rule cannot switch motion back on. Only the `motion` option can, in `test.use` or in a suite config's `use`. The smoke
+  suite config sets `'on'`.
 
 ### Declaring expected console messages
 
@@ -172,8 +179,8 @@ fails on a request to that origin.
 - **A spec's own `page.route` or `context.route` wins over the fixture.** Inside a catch-all spec route, call
   `route.fallback()` for the requests the spec does not answer itself, which hands them to the fixture.
   `route.continue()` sends them straight to the network.
-- **`browser.newContext()` bypasses both fixtures.** They are attached to the test's `context`, so a context a spec
-  creates itself is neither routed nor guarded.
+- **`browser.newContext()` bypasses all three fixtures.** They are attached to the test's `context`, so a context a spec
+  creates itself is not routed, not guarded and keeps its motion.
 
 ## `normalizeCssNamespace` ships in a published bundle
 
