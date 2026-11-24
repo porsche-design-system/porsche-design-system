@@ -122,6 +122,9 @@ export const getComponentCss = (
         ...hoverMediaQuery({
           '&:hover::before': {
             background: ref(colorContrastHigh),
+            ...forcedColorsMediaQuery({
+              background: 'ButtonText',
+            }),
           },
         }),
         '&:focus-visible': getFocusBaseStyles(-2),

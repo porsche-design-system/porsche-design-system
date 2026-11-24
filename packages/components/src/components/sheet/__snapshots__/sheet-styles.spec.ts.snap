@@ -413,6 +413,12 @@ dialog::backdrop {
   .swipe-handle:hover::before {
     background: var(--p-color-contrast-high);
   }
+@media(forced-colors:active) {
+    .swipe-handle:hover::before {
+      background: ButtonText;
+    }
+}
+
 }
 "
 `;
@@ -627,6 +633,12 @@ dialog::backdrop {
   .swipe-handle:hover::before {
     background: var(--p-color-contrast-high);
   }
+@media(forced-colors:active) {
+    .swipe-handle:hover::before {
+      background: ButtonText;
+    }
+}
+
 }
 "
 `;
