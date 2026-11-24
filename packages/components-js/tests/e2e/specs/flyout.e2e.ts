@@ -17,10 +17,10 @@ import {
   setProperty,
   skipInBrowsers,
   sleep,
+  waitForAnimationsFinished,
   waitForStencilLifecycle,
 } from '../helpers';
 
-const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 const flyoutMinWidth = 320;
 
 const getHost = (page: Page) => page.locator('p-flyout');
@@ -30,7 +30,7 @@ const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss');
 const getBody = (page: Page) => page.locator('body');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
-const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
+const waitForFlyoutTransition = (page: Page) => waitForAnimationsFinished(getHost(page));
 const waitForSlotChange = () => sleep();
 
 const initBasicFlyout = (
@@ -157,7 +157,7 @@ test('should be visible after opened', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
   await openFlyout(page);
 
-  await waitForFlyoutTransition();
+  await waitForFlyoutTransition(page);
 
   expect(await getFlyoutVisibility(page)).toBe('visible');
 });
@@ -920,7 +920,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await openFlyout(page);
-    await waitForFlyoutTransition();
+    await waitForFlyoutTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
@@ -936,7 +936,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await dismissFlyout(page);
-    await waitForFlyoutTransition();
+    await waitForFlyoutTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);

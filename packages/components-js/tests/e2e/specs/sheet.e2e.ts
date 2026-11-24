@@ -15,17 +15,15 @@ import {
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
-  sleep,
+  waitForAnimationsFinished,
   waitForStencilLifecycle,
 } from '../helpers';
-
-const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 
 const getHost = (page: Page) => page.locator('p-sheet');
 const getHeader = (page: Page) => page.locator('p-sheet slot[name="header"]');
 const getDialog = (page: Page) => page.locator('p-sheet dialog');
 const getDismissButton = (page: Page) => page.locator('p-sheet .dismiss');
-const waitForSheetTransition = async () => sleep(CSS_TRANSITION_DURATION);
+const waitForSheetTransition = (page: Page) => waitForAnimationsFinished(getHost(page));
 
 const initBasicSheet = (
   page: Page,
@@ -337,8 +335,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
 
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
-      // TODO: why is timeout needed? transition durations should be overwritten with 0s
-      await sleep(CSS_TRANSITION_DURATION);
+      await waitForSheetTransition(page);
 
       // transition delay for visibility
 
@@ -660,7 +657,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await openSheet(page);
-    await waitForSheetTransition();
+    await waitForSheetTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
@@ -676,7 +673,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await dismissSheet(page);
-    await waitForSheetTransition();
+    await waitForSheetTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);

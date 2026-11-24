@@ -15,17 +15,15 @@ import {
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
-  sleep,
+  waitForAnimationsFinished,
   waitForStencilLifecycle,
 } from '../helpers';
-
-const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 
 const getHost = (page: Page) => page.locator('p-modal');
 const getHeader = (page: Page) => page.locator('p-modal slot[name="header"]');
 const getModal = (page: Page) => page.locator('p-modal dialog');
 const getDismissButton = (page: Page) => page.locator('p-modal .dismiss');
-const waitForModalTransition = async () => sleep(CSS_TRANSITION_DURATION);
+const waitForModalTransition = (page: Page) => waitForAnimationsFinished(getHost(page));
 
 const initBasicModal = (
   page: Page,
@@ -786,7 +784,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await openModal(page);
-    await waitForModalTransition();
+    await waitForModalTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
@@ -802,7 +800,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await dismissModal(page);
-    await waitForModalTransition();
+    await waitForModalTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
