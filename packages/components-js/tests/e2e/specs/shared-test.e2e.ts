@@ -22,6 +22,7 @@ test.describe('console guard', () => {
         throw new Error('boom');
       })
     );
+    // Lets the page timer throw before the console guard checks for errors
     await page.waitForTimeout(50);
   });
 

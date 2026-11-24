@@ -1071,9 +1071,9 @@ test.describe('keyboard behavior', () => {
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[valueIndex]);
 
+      // Select clears its search string 500ms after the last key press
       await sleep(500);
 
-      // Wait for searchString timeout
       await buttonElement.press('B');
       await waitForStencilLifecycle(page);
 
@@ -1087,9 +1087,9 @@ test.describe('keyboard behavior', () => {
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[valueIndex + 2]);
 
+      // Select clears its search string 500ms after the last key press
       await sleep(500);
 
-      // Wait for searchString timeout
       await buttonElement.press('D');
       await buttonElement.press('e');
       await buttonElement.press('n');
@@ -1098,9 +1098,9 @@ test.describe('keyboard behavior', () => {
         testValues.find((val) => val.startsWith('Den'))
       );
 
+      // Select clears its search string 500ms after the last key press
       await sleep(500);
 
-      // Wait for searchString timeout
       await buttonElement.press('A');
       await waitForStencilLifecycle(page);
 

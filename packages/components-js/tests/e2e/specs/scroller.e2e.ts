@@ -107,6 +107,7 @@ test.describe('scroll indicator', () => {
 
     // Scroll to the very end
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
+    // The indicators update from an IntersectionObserver callback
     await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
@@ -121,12 +122,14 @@ test.describe('scroll indicator', () => {
 
     // Scroll to the middle first
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth / 2, behavior: 'instant' }));
+    // The indicators update from an IntersectionObserver callback
     await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
 
     // Scroll back to start
     await scrollArea.evaluate((el) => el.scrollTo({ left: 0, behavior: 'instant' }));
+    // The indicators update from an IntersectionObserver callback
     await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
@@ -177,6 +180,7 @@ test.describe('scroll indicator', () => {
 
     // Programmatically scroll to end
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
+    // The indicators update from an IntersectionObserver callback
     await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
@@ -184,6 +188,7 @@ test.describe('scroll indicator', () => {
 
     // Programmatically scroll back to start
     await scrollArea.evaluate((el) => el.scrollTo({ left: 0, behavior: 'instant' }));
+    // The indicators update from an IntersectionObserver callback
     await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
