@@ -29,9 +29,23 @@ export const test = base.extend<TestOptions & { requestRouting: void; consoleGua
     async ({ context, motion }, use) => {
       const durations = motion === 'off' ? '--p-transition-duration: 0s; --p-animation-duration: 0s;' : '';
       await context.addInitScript((rule) => {
-        const sheet = new CSSStyleSheet();
-        sheet.replaceSync(rule);
-        document.adoptedStyleSheets.push(sheet);
+        const adopt = () => {
+          const sheet = new CSSStyleSheet();
+          sheet.replaceSync(rule);
+          document.adoptedStyleSheets.push(sheet);
+        };
+        adopt();
+        const initialDocument = document;
+        // Firefox runs this on an iframe's empty first document, then swaps in the real one under the same window.
+        window.addEventListener(
+          'DOMContentLoaded',
+          () => {
+            if (document !== initialDocument) {
+              adopt();
+            }
+          },
+          { once: true }
+        );
       }, `:root { ${durations} --p-temporary-spinner-stroke-dasharray: 40; --p-temporary-toast-skip-timeout: true; }`);
       await use();
     },
