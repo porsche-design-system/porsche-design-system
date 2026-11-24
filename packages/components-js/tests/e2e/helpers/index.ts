@@ -1,3 +1,4 @@
+export * from './animations';
 export * from './playwright-helper';
 export * from './scroller';
 export * from './sleep';
