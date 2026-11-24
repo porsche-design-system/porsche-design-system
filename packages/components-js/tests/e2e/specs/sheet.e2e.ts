@@ -1,7 +1,7 @@
 import { type Locator, type Page } from '@playwright/test';
-import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { SelectedAriaAttributes, SheetAriaAttribute } from '@porsche-design-system/components';
 import { assertDefined } from '@porsche-design-system/testing/assert-defined';
+import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -928,6 +928,32 @@ test.describe('swipe handle', () => {
         });
         const locked = await dragSheet(page, 220);
         await locked.release();
+        expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+      });
+
+      test('should leave a two-finger gesture such as pinch zoom to the browser', async ({ page }) => {
+        const host = await enableSwipeHandle(page);
+        const box = await getSheetPanel(page).boundingBox();
+        if (!box) {
+          throw new Error('sheet panel has no box');
+        }
+        const x = box.x + box.width / 2;
+        const y = box.y + box.height / 2;
+        const pinch = (distance: number) => [
+          { x: x - 40, y: y + distance, id: 0 },
+          { x: x + 40, y: y - distance, id: 1 },
+        ];
+        const session = await page.context().newCDPSession(page);
+        await session.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: pinch(0) });
+        for (const distance of [10, 30, 60, 90]) {
+          await session.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: pinch(distance) });
+        }
+
+        await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
+        await expect(page.locator('p-sheet dialog')).toHaveJSProperty('style.backgroundColor', '');
+
+        await session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+        await waitForStencilLifecycle(page);
         expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
       });
 

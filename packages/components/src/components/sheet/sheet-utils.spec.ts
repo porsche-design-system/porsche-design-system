@@ -177,11 +177,20 @@ describe('createSheetSwipeController', () => {
     target: HTMLElement,
     type: 'touchstart' | 'touchmove' | 'touchend' | 'touchcancel',
     clientY: number,
-    cancelable = true
+    cancelable = true,
+    hasSecondFinger = false
   ): Event => {
     const event = new Event(type, { bubbles: true, cancelable, composed: true });
-    Object.defineProperty(event, 'changedTouches', {
-      value: [{ identifier: 1, clientX: 20, clientY }],
+    const touch = { identifier: 1, clientX: 20, clientY };
+    const isLifted = type === 'touchend' || type === 'touchcancel';
+    Object.defineProperties(event, {
+      changedTouches: { value: [touch] },
+      touches: {
+        value: [
+          ...(isLifted ? [] : [touch]),
+          ...(hasSecondFinger ? [{ identifier: 2, clientX: 80, clientY: 100 }] : []),
+        ],
+      },
     });
     target.dispatchEvent(event);
     return event;
@@ -492,6 +501,40 @@ describe('createSheetSwipeController', () => {
     controller.sync();
     expect(sheet.style.transform).toBe('');
     expect(dialog.style.backgroundColor).toBe('');
+  });
+
+  it('should leave a multi-touch gesture such as pinch zoom to the browser and snap back a drag that a second finger joins', () => {
+    // A second finger joins before the drag has started
+    dispatchTouchOn(sheet, 'touchstart', 100);
+    advanceTime(50);
+    const pinch = dispatchTouchOn(sheet, 'touchmove', 220, true, true);
+    expect(pinch.defaultPrevented).toBe(false);
+    expect(sheet.style.transform).toBe('');
+
+    // The gesture is over, so the first finger does not pick it up again once it is alone
+    const move = dispatchTouchOn(sheet, 'touchmove', 260);
+    expect(move.defaultPrevented).toBe(false);
+    expect(sheet.style.transform).toBe('');
+    dispatchTouchOn(sheet, 'touchend', 260);
+
+    // A second finger joins mid-drag
+    dispatchTouchOn(sheet, 'touchstart', 100);
+    advanceTime(50);
+    dispatchTouchOn(sheet, 'touchmove', 260);
+    expect(sheet.style.transform).toBe('translate3d(0, 160px, 0)');
+    dispatchTouchOn(sheet, 'touchstart', 100, true, true);
+    expect(sheet.style.transform).toBe('');
+    expect(dialog.style.backgroundColor).toBe('');
+    dispatchTouchOn(sheet, 'touchend', 260);
+
+    // Both fingers are down from the start
+    dispatchTouchOn(sheet, 'touchstart', 100, true, true);
+    advanceTime(50);
+    dispatchTouchOn(sheet, 'touchmove', 260);
+    expect(sheet.style.transform).toBe('');
+    dispatchTouchOn(sheet, 'touchend', 260);
+
+    expect(onSwipeDismiss).not.toHaveBeenCalled();
   });
 
   it('should keep the glide-out styles when swipeHandle is disabled after a swipe dismiss closed the sheet', () => {

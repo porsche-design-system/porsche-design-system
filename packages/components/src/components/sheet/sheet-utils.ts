@@ -285,7 +285,21 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
   const trackedTouch = (event: TouchEvent): Touch | undefined =>
     Array.from(event.changedTouches).find((touch) => touch.identifier === touchId);
 
+  /** A second finger makes it a multi-touch gesture such as pinch zoom, which stays with the browser. */
+  const yieldsToMultiTouch = (event: TouchEvent): boolean => {
+    if (event.touches.length < 2) {
+      return false;
+    }
+    if (touchId !== null) {
+      finishGesture(true);
+    }
+    return true;
+  };
+
   const onTouchStart = (event: TouchEvent): void => {
+    if (yieldsToMultiTouch(event)) {
+      return;
+    }
     const touch = event.changedTouches[0];
     const dialog = getDialog();
     if (touch && dialog && canBeginGesture() && !hasExcludedSwipeTarget(event.composedPath(), dialog)) {
@@ -295,6 +309,9 @@ export const createSheetSwipeController = (options: SheetSwipeControllerOptions)
   };
 
   const onTouchMove = (event: TouchEvent): void => {
+    if (yieldsToMultiTouch(event)) {
+      return;
+    }
     const touch = trackedTouch(event);
     if (touch) {
       moveGesture(event, touch.clientX, touch.clientY);
