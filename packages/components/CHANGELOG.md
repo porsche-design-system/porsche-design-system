@@ -102,6 +102,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`, `Input Url`, `Textarea`:
   the caret disappeared and keys such as `Backspace` had no effect after the label was clicked more than once in
   Chromium browsers ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
+- `Flyout`, `Modal`, `Sheet`: `motionVisibleEnd` was emitted again whenever a `background-color` transition ended on an
+  element inside the dialog, e.g. after hovering the dismiss button
+  ([#4866](https://github.com/porsche-design-system/porsche-design-system/pull/4866))
 
 ## [4.10.1] - 2026-10-23
 
