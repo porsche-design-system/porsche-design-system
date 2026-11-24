@@ -1,29 +1,13 @@
 import console from 'node:console'; // workaround for nicer logs
-import * as fs from 'node:fs';
-import * as path from 'node:path';
 import type { Locator, Page } from '@playwright/test';
 import { schemes } from '@porsche-design-system/testing';
 import { getInternalUrls } from '../../e2e/helpers/sitemap';
 import { expectedConsoleByUrl } from '../../helpers/expectedConsole';
 import { expect, test } from '../helpers/axe-helper';
 
-// style overrides for css variables
-const styleOverrides = fs.readFileSync(
-  path.resolve(require.resolve('@porsche-design-system/shared'), '../css/styles.css'),
-  'utf8'
-);
-const [, rootStyles] = /(:root {[\s\S]+?})/.exec(styleOverrides) || [];
-
 const gotoUrl = async (page: Page, url: string): Promise<void> => {
   await page.goto(url, { waitUntil: 'load' });
   await page.waitForLoadState();
-
-  // inject style overrides for css variables
-  await page.evaluate((styles) => {
-    const styleEl = document.createElement('style');
-    styleEl.innerText = styles;
-    document.head.append(styleEl);
-  }, rootStyles);
 
   await page.evaluate(() =>
     (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
@@ -36,12 +20,6 @@ const enableDarkMode = async (page: Page, themeSelect: Locator): Promise<void> =
   await dark.click();
   await expect(page.locator('html')).toHaveClass(/dark/);
 };
-
-test('should have successfully extracted :root styles', () => {
-  expect(rootStyles).toContain(':root');
-  expect(rootStyles).toContain('--p-transition-duration: 0s');
-  expect(rootStyles).toContain('--p-animation-duration: 0s');
-});
 
 test.describe('storefront pages', () => {
   const allUrls = getInternalUrls();
