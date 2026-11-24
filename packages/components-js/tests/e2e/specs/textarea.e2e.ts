@@ -20,6 +20,7 @@ const getHost = (page: Page) => page.locator('p-textarea');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getTextarea = (page: Page) => page.locator('p-textarea textarea');
 const getLabel = (page: Page) => page.locator('p-textarea label');
+const getSlottedLabelLink = (page: Page) => page.locator('p-textarea [slot="label"] a');
 const getCounter = (page: Page) => page.locator('p-textarea .counter');
 const getCounterAria = (page: Page) => page.locator('p-textarea span.sr-only[aria-live="polite"]');
 const getForm = (page: Page) => page.locator('form');
@@ -461,6 +462,41 @@ test.describe('focus state', () => {
     await label.click();
     await waitForStencilLifecycle(page);
     await expect(textarea).toBeFocused();
+  });
+
+  // WebKit moves the caret to the start of the value when the label is clicked again, so Backspace deletes nothing
+  skipInBrowsers(['webkit'], () => {
+    test('should keep focus and caret when label is clicked multiple times', async ({ page }) => {
+      await initTextarea(page, { props: { name: 'some-name', label: 'Some label' } });
+      const label = getLabel(page);
+      const textarea = getTextarea(page);
+
+      await label.click();
+      await page.keyboard.type('hello');
+      await expect(textarea).toHaveValue('hello');
+
+      await label.click();
+      await expect(textarea).toBeFocused();
+
+      await page.keyboard.press('Backspace');
+      await expect(textarea).toHaveValue('hell');
+    });
+  });
+
+  // WebKit does not focus a link when it is clicked
+  skipInBrowsers(['webkit'], () => {
+    test('should focus link slotted into label when it is clicked while textarea is focused', async ({ page }) => {
+      await initTextarea(page, { props: { name: 'some-name' }, useSlottedLabel: true });
+      const textarea = getTextarea(page);
+      const link = getSlottedLabelLink(page);
+
+      await textarea.click();
+      await expect(textarea).toBeFocused();
+
+      await link.click();
+      await expect(link).toBeFocused();
+      await expect(textarea).not.toBeFocused();
+    });
   });
 
   skipInBrowsers(['webkit'], () => {

@@ -124,6 +124,7 @@ src/
 │   ├── Script.tsx                # <script type="module"> with unescaped code – all behaviour goes through it
 │   ├── Comment.tsx               # an HTML comment in the markup – why the element after it is built that way
 │   ├── HeroVideo.tsx             # autoplaying hero video with its pause control and the script operating both
+│   ├── FormValidation.tsx        # validates every `<form novalidate>` of a page, on leaving a field and on submit
 │   ├── tile/                     # the tiles a page renders – every `*Tile.tsx` here, and nothing else
 │   │   ├── CategoryTile.tsx, …   # one partial per tile, placed by its page
 │   │   └── blocks/               # what the tiles are built from, never rendered by a page: GradientMedia,
@@ -148,7 +149,10 @@ src/
 │   ├── tile/                     # index.page.tsx each – the use cases of a tile, each rendered by its partial
 │   │   ├── model-selection/      # … one folder per use case: anchor or covering `p-link`, hover via `group-hover:`
 │   │   └── …                     # category, video, product, …; light and dark, tile fixes its scheme only if needed
-│   ├── forms/                    # index.page.tsx each – combobox patterns built on `p-input-search` and `p-popover`
+│   ├── forms/                    # index.page.tsx each – forms sharing `FormValidation`, and combobox patterns
+│   │   ├── contact/              # an inquiry: call preferences, a message, services, personal details and consent
+│   │   ├── personal-details/     # contact information and a billing address, a `p-fieldset` each, with a reset
+│   │   ├── booking/              # three steps on `p-stepper-horizontal`, each validated before the next opens
 │   │   ├── search-combobox-option-list/ # filters a listbox of options and writes the choice into the field
 │   │   └── search-combobox-link-list/   # filters a dialog of links and navigates to the chosen page
 │   ├── popover/                  # index.page.tsx each – the behaviour is per example
@@ -414,9 +418,10 @@ reaches through interaction**.
   `<script type="module">` with the code unescaped – a plain `<script>{code}</script>` would reach the browser as
   `&amp;&amp;`, because Preact escapes the text of every element. The behaviour of an example goes to the end of its
   page; behaviour a partial needs wherever it is rendered goes into the partial (`MainNav` wires up its drilldown,
-  `HeroVideo` its pause control, `FeedbackForm` its flow), so a page gets it by rendering the partial – there is no
-  detection rule to keep in sync, and two pages sharing a partial do not duplicate its behaviour. Start every script
-  with a comment saying what it does: the build names a script by its first line.
+  `HeroVideo` its pause control, `FeedbackForm` its flow, `FormValidation` the validation of every form of the page), so
+  a page gets it by rendering the partial – there is no detection rule to keep in sync, and two pages sharing a partial
+  do not duplicate its behaviour. Start every script with a comment saying what it does: the build names a script by its
+  first line.
 - **A page does not reach into the script of a partial.** In dev every `<Script>` is a module of its own, so a page
   cannot call a function a partial's script declares – it would work once built, where they share a scope, and fail in
   dev. What differs between the pages rendering a partial is a prop instead, and what the partial has to react to it

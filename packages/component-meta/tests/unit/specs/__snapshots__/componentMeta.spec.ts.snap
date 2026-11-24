@@ -3029,6 +3029,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-fieldset": {
+    "cssVariablesMeta": {
+      "--p-fieldset-label-mb": {
+        "defaultValue": "16px",
+        "description": "Bottom margin of the fieldset label. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration \`--p-fieldset-label-mb: var(--p-spacing-static-sm)\`, the Tailwind CSS arbitrary property \`[--p-fieldset-label-mb:var(--spacing-static-sm)]\` or the equivalent SCSS/JS token.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,

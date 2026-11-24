@@ -95,6 +95,7 @@ src/
 │   ├── Head.tsx
 │   ├── Script.tsx            # `<script type="module">` with the behaviour of a page or a partial
 │   ├── HeroVideo.tsx         # autoplaying hero video with its pause control and behaviour
+│   ├── FormValidation.tsx    # validates every `<form novalidate>` of a page, on leaving a field and on submit
 │   ├── header/               # the header, split into the blocks its variants share
 │   │   ├── Header.tsx        # composes the blocks: overlay and stacked variants
 │   │   ├── HeaderBar.tsx     # the three-column row both variants are built from
@@ -111,6 +112,7 @@ src/
 ├── patterns/
 │   ├── feedback/{inline,dialog}/index.page.tsx
 │   ├── footer/index.page.tsx
+│   ├── forms/{contact,personal-details,booking}/index.page.tsx
 │   ├── forms/{search-combobox-option-list,search-combobox-link-list}/index.page.tsx
 │   ├── header/{overlay,stacked}/index.page.tsx
 │   └── popover/{local-market-switch,priority-navigation,feature-tour}/index.page.tsx
