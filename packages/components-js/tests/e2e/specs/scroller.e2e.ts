@@ -266,7 +266,6 @@ test.describe('scroll behavior', () => {
     // Programmatically invoke a prev scroll by clicking the prev indicator area
     // Since prev is hidden at start, scroll via JS and then go back
     await scrollArea.evaluate((el) => el.scrollBy({ left: -100, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
     // scrollLeft should not go below 0
     expect(await getScrollLeft(scrollArea)).toBe(0);
@@ -278,13 +277,11 @@ test.describe('scroll behavior', () => {
 
     // Scroll to the very end
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
     const scrollLeftAtEnd = await getScrollLeft(scrollArea);
 
     // Try to scroll further right
     await scrollArea.evaluate((el) => el.scrollBy({ left: 200, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
     // scrollLeft should not increase beyond max
     expect(await getScrollLeft(scrollArea)).toBe(scrollLeftAtEnd);
@@ -311,8 +308,6 @@ test.describe('scrollToPosition', () => {
     await initScroller(page, { amount: 8, isWrapped: true, scrollToPosition: { scrollPosition: 100 } });
     const scrollArea = getScrollArea(page);
 
-    await sleep(CSS_ANIMATION_DURATION);
-
     expect(await getScrollLeft(scrollArea)).toBe(100);
   });
 
@@ -325,7 +320,6 @@ test.describe('scrollToPosition', () => {
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 150, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toBe(150);
   });
@@ -337,13 +331,11 @@ test.describe('scrollToPosition', () => {
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 50, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toBe(50);
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 200, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toBe(200);
   });
@@ -353,12 +345,10 @@ test.describe('scrollToPosition', () => {
     const host = getHost(page);
     const scrollArea = getScrollArea(page);
 
-    await sleep(CSS_ANIMATION_DURATION);
     expect(await getScrollLeft(scrollArea)).toBe(100);
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 0, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toBe(0);
   });
@@ -371,7 +361,6 @@ test.describe('scrollToPosition', () => {
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 50, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     // scrollLeft should remain 0 since content does not overflow and componentShouldUpdate prevents update
     expect(await getScrollLeft(scrollArea)).toBe(0);

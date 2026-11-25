@@ -16,7 +16,6 @@ import {
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
-  sleep,
   waitForAnimationsFinished,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -31,7 +30,6 @@ const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss')
 const getBody = (page: Page) => page.locator('body');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
 const waitForFlyoutTransition = (page: Page) => waitForAnimationsFinished(getHost(page));
-const waitForSlotChange = () => sleep();
 
 const initBasicFlyout = (
   page: Page,
@@ -470,7 +468,6 @@ test.describe('after content change', () => {
     await host.evaluate((el) => {
       el.innerHTML = '';
     });
-    await waitForSlotChange();
 
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused(page, 'after slot change');
@@ -493,7 +490,6 @@ test.describe('after content change', () => {
       button.id = 'btn-new';
       el.append(button);
     });
-    await waitForSlotChange();
     await expectDialogAndThenDismissButtonToBeFocused(page, 'after button appended');
 
     await page.keyboard.press('Tab');
