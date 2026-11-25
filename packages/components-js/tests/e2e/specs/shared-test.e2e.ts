@@ -1,6 +1,6 @@
 import type { Frame, Page } from '@playwright/test';
 import { expect, test } from '@porsche-design-system/testing/playwright';
-import { setContentWithDesignSystem, waitForAnimationsFinished } from '../helpers';
+import { setContentWithDesignSystem, waitForAnimationsFinished, waitForScrollEnd } from '../helpers';
 
 const fetchText = (url: string) => fetch(url).then((response) => response.text());
 
@@ -263,5 +263,52 @@ test.describe('waitForAnimationsFinished', () => {
       setTimeout(() => a.cancel(), 300);
     }, shadowBox);
     await waitForAnimationsFinished(host(page));
+  });
+});
+
+test.describe('waitForScrollEnd', () => {
+  test.setTimeout(10_000);
+
+  const area = (page: Page) => page.locator('#area');
+  const readScrollLeft = (page: Page) => area(page).evaluate((el) => el.scrollLeft);
+
+  test.beforeEach(async ({ page }) => {
+    await page.setContent(
+      '<div id="area" style="width: 100px; overflow-x: auto"><div style="width: 3000px; height: 10px"></div></div>'
+    );
+  });
+
+  test('waits for a smooth scroll that the action starts', async ({ page }) => {
+    await waitForScrollEnd(area(page), () =>
+      area(page).evaluate((el) => {
+        // Chrome reports the end position to the next Playwright call before the glide has ended.
+        el.addEventListener('scrollend', () => el.setAttribute('data-ended', ''), { once: true });
+        el.scrollTo({ left: 2000, behavior: 'smooth' });
+      })
+    );
+    expect(await area(page).getAttribute('data-ended')).toBe('');
+    expect(await readScrollLeft(page)).toBe(2000);
+  });
+
+  test('returns for a scroll that ends inside the action', async ({ page }) => {
+    const start = Date.now();
+    await waitForScrollEnd(
+      area(page),
+      () =>
+        area(page).evaluate(
+          (el) =>
+            new Promise((resolve) => {
+              el.addEventListener('scrollend', resolve, { once: true });
+              el.scrollTo({ left: 2000, behavior: 'smooth' });
+            })
+        ),
+      5000
+    );
+    expect(Date.now() - start).toBeLessThan(5000);
+  });
+
+  test('returns after the timeout when the action does not scroll', async ({ page }) => {
+    await waitForScrollEnd(area(page), () => Promise.resolve(), 200);
+    expect(await readScrollLeft(page)).toBe(0);
   });
 });
