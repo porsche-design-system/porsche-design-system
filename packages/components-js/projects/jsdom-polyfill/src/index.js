@@ -53,6 +53,6 @@ document.porscheDesignSystem = {
 
 // workaround for WebComponentManager not working in jsdom because of missing <script type="module"> support
 // see: https://github.com/jsdom/jsdom/issues/2475
-require('./lib/loader.cjs').defineCustomElements(); // this is executed synchronous since stencil v4
+require('./lib/loader.cjs').defineCustomElements(); // executed synchronously, see the `await` removed in rollup.config.js
 
 window.PDS_SKIP_FETCH = false;

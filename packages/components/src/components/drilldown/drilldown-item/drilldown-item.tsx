@@ -31,7 +31,7 @@ const propTypes: PropTypes<typeof DrilldownItem> = {
  */
 @Component({
   tag: 'p-drilldown-item',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class DrilldownItem {
   @Element() public host!: HTMLElement;

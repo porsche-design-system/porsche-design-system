@@ -272,11 +272,18 @@ describe('chunk content', () => {
   describe('host hidden', () => {
     const colorSchemeRegEx = /\[hidden].*?:.*?{display:.*?none.*?}/i;
 
+    // Rolldown keeps what every component uses in one shared chunk, which is part of the core chunk,
+    // instead of a copy in the chunk of each component as Rollup did
+    it('should contain host hidden style in core chunk', () => {
+      const content = getChunkContent(chunkFileNames.find(isCoreChunk)!);
+      expect(content).toMatch(colorSchemeRegEx);
+    });
+
     it.each(chunkFileNames.filter((x) => !isCoreChunk(x)))(
-      'should contain host hidden style in %s',
+      'should not contain a copy of host hidden style in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
-        expect(content).toMatch(colorSchemeRegEx);
+        expect(content).not.toMatch(colorSchemeRegEx);
       }
     );
   });

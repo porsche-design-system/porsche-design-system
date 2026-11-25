@@ -1,10 +1,19 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  h,
+  type JSX,
+  Prop,
+} from '@stencil/core';
 import type { PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   parseJSONAttribute,
   unobserveBreakpointChange,
   validateProps,
@@ -37,7 +46,7 @@ const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
  */
 @Component({
   tag: 'p-pagination',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class Pagination {
   @Element() public host!: HTMLElement;
@@ -65,8 +74,8 @@ export class Pagination {
   /** Emitted when the user navigates to a different page, carrying the new `activePage` index in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<PaginationUpdateEventDetail>;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public disconnectedCallback(): void {

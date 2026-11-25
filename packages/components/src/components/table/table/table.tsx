@@ -17,7 +17,7 @@ const propTypes: PropTypes<typeof Table> = {
  */
 @Component({
   tag: 'p-table',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Table {
   @Element() public host!: HTMLElement;

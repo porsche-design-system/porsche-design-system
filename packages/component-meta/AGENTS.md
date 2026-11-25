@@ -41,6 +41,7 @@ npm run test:unit:component-meta
 - Extraction is based on source analysis and documented patterns such as `@slot`, `@css-variable`, and `@controlled`.
 - Preserve existing docblock and source conventions unless the task explicitly updates the metadata format.
 - Be careful with regex- and `eval`-based parsing in generation scripts; small syntax changes in component source can have broad downstream effects.
+- The generator `require()`s component source, which imports `@stencil/core`. Stencil 5 is ESM only and exports nothing for `require`, so the script runs with `--conditions=import` (see `build:generateComponentMeta`), which lets Node load the ESM build.
 
 ## Testing Expectations
 

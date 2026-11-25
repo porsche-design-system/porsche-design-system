@@ -1,6 +1,6 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, hasAnyPropValueChanged, validateProps } from '../../utils';
 import { getComponentCss } from './divider-styles';
 import { DIVIDER_COLORS, DIVIDER_DIRECTIONS, type DividerColor, type DividerDirection } from './divider-utils';
 
@@ -11,7 +11,7 @@ const propTypes: PropTypes<typeof Divider> = {
 
 @Component({
   tag: 'p-divider',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Divider {
   @Element() public host!: HTMLElement;
@@ -22,8 +22,8 @@ export class Divider {
   /** Sets the orientation of the divider to `horizontal` or `vertical`. Supports responsive breakpoint values. */
   @Prop() public direction?: BreakpointCustomizable<DividerDirection> = 'horizontal';
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

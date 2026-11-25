@@ -25,6 +25,12 @@ export default [
       inlineDynamicImports: true,
     },
     plugins: [
+      // Stencil puts the path of a component's chunk together at runtime, with a suffix to retry a failed import,
+      // which the dynamic-import-vars plugin below can't resolve to the files in src/lib
+      modify({
+        find: /`\$\{MODULE_IMPORT_PREFIX}\$\{entryFile}`/,
+        replace: () => '`./${bundleId}.entry.js`',
+      }),
       dynamicImportVars({
         include: ['src/**/*.js'],
       }),
@@ -55,12 +61,12 @@ export default [
         replace: (_, $1, $2) => `${$1}${$2}`,
       }),
       /* TODO: There should be a better solution for this
-       * This is necessary since stencil made the appGlobals function async.
-       * Following error is produced without the replacement: (plugin commonjs--resolver) RollupError: Expression expected
+       * Stencil awaits the global script before it defines the components. Without the await they are defined
+       * synchronously when the polyfill is required, which src/index.js relies on.
        * Other solutions to switch to vite or to use the ESM build directly didn't work eiter due to problems with the dynamic imports
        */
       modify({
-        find: /await (appGlobals)/,
+        find: /await (require_runtime\.globalScripts)/,
         replace: (_, $1) => `${$1}`,
       }),
       // inject actual version so that componentsReady works

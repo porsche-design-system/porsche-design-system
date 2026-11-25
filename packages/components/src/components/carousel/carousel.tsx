@@ -2,6 +2,7 @@ import { gridGap, motionEasingBase } from '@porsche-design-system/emotion';
 import { Splide } from '@splidejs/splide';
 import {
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -19,10 +20,10 @@ import {
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasDescription,
   hasHeading,
   hasNamedSlot,
-  hasPropValueChanged,
   observeBreakpointChange,
   observeChildren,
   parseAndGetAriaAttributes,
@@ -102,7 +103,7 @@ const propTypes: PropTypes<typeof Carousel> = {
  */
 @Component({
   tag: 'p-carousel',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Carousel {
   @Element() public host!: HTMLElement;
@@ -237,12 +238,9 @@ export class Carousel {
     this.observeBreakpointChange();
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof Carousel>
-  ): boolean {
-    return propName !== 'activeSlideIndex' && hasPropValueChanged(newVal, oldVal); // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
+    return hasAnyPropValueChanged(changes, ['activeSlideIndex']);
   }
 
   public componentDidLoad(): void {

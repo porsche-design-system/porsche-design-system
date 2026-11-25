@@ -20,7 +20,7 @@ const propTypes: PropTypes<typeof MultiSelectOption> = {
  */
 @Component({
   tag: 'p-multi-select-option',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class MultiSelectOption {
   @Element() public host!: HTMLElement & MultiSelectOptionInternalHTMLProps;

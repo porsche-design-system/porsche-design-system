@@ -1,6 +1,6 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, hasAnyPropValueChanged, validateProps } from '../../utils';
 import { getComponentCss } from './text-styles';
 import {
   getTextTagType,
@@ -33,7 +33,7 @@ const propTypes: PropTypes<typeof Text> = {
  */
 @Component({
   tag: 'p-text',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Text {
   @Element() public host!: HTMLElement;
@@ -59,8 +59,8 @@ export class Text {
   /** Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content. */
   @Prop() public ellipsis?: boolean = false;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

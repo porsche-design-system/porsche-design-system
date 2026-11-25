@@ -1,12 +1,22 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  type JSX,
+  Prop,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   createTopLayerController,
   getSlotTextContent,
+  hasAnyPropValueChanged,
   hasNamedSlot,
-  hasPropValueChanged,
   observeChildren,
   type TopLayerController,
   unobserveChildren,
@@ -44,7 +54,7 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
  */
 @Component({
   tag: 'p-banner',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Banner {
   @Element() public host!: HTMLElement;
@@ -114,8 +124,8 @@ export class Banner {
     unobserveChildren(this.host);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentDidRender(): void {

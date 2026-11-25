@@ -1,21 +1,21 @@
+import { Component, type ComponentShouldUpdateChanges, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
-import {
-  type CrestAriaAttribute,
-  type CrestTarget,
-  buildCrestImgSrc,
-  buildCrestSrcSet,
-  crestSize,
-} from './crest-utils';
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './crest-styles';
+import {
+  buildCrestImgSrc,
+  buildCrestSrcSet,
+  type CrestAriaAttribute,
+  type CrestTarget,
+  crestSize,
+} from './crest-utils';
 
 const propTypes: PropTypes<typeof Crest> = {
   href: AllowedTypes.string,
@@ -27,7 +27,7 @@ const { width, height } = crestSize;
 
 @Component({
   tag: 'p-crest',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class Crest {
   @Element() public host!: HTMLElement;
@@ -41,8 +41,8 @@ export class Crest {
   /** Sets ARIA attributes on the anchor element to improve accessibility when the crest is used as a link. */
   @Prop() public aria?: SelectedAriaAttributes<CrestAriaAttribute>;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

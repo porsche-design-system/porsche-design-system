@@ -1,14 +1,25 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  h,
+  type JSX,
+  Prop,
+  Watch,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasDescription,
   hasLabel,
   hasMessage,
-  hasPropValueChanged,
   implicitSubmit,
   setAriaIDREF,
   validateProps,
@@ -62,8 +73,7 @@ const propTypes: PropTypes<typeof PinCode> = {
  */
 @Component({
   tag: 'p-pin-code',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class PinCode {
   @Element() public host!: HTMLElement;
@@ -162,8 +172,8 @@ export class PinCode {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public formResetCallback(): void {

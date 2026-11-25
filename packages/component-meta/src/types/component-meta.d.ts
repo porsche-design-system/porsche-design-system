@@ -6,6 +6,7 @@ type PropOptions = {
   attribute?: string | null;
   mutable?: boolean;
   reflect?: boolean;
+  serialize?: 'json';
 };
 
 export type PropMeta = {

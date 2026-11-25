@@ -12,7 +12,7 @@ const propTypes: PropTypes<typeof TableCell> = {
  */
 @Component({
   tag: 'p-table-cell',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class TableCell {
   @Element() public host!: HTMLElement;

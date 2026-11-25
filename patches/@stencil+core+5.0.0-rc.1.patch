@@ -1,0 +1,109 @@
+diff --git a/node_modules/@stencil/core/dist/compiler-C_Y38j4m.mjs b/node_modules/@stencil/core/dist/compiler-C_Y38j4m.mjs
+index b83011e..5365edf 100644
+--- a/node_modules/@stencil/core/dist/compiler-C_Y38j4m.mjs
++++ b/node_modules/@stencil/core/dist/compiler-C_Y38j4m.mjs
+@@ -2478,7 +2478,7 @@ const HOST_REF_ARG = "hostRef";
+ */
+ function createLazyAttachInternalsBinding(cmp) {
+ 	if (!cmp?.attachInternalsMemberName) return [];
+-	const statements = [ts.factory.createIfStatement(hostRefElementInternalsPropAccess(), ts.factory.createBlock([ts.factory.createExpressionStatement(ts.factory.createBinaryExpression(ts.factory.createPropertyAccessExpression(ts.factory.createThis(), ts.factory.createIdentifier(cmp.attachInternalsMemberName)), ts.factory.createToken(ts.SyntaxKind.EqualsToken), hostRefElementInternalsPropAccess()))], true), ts.factory.createBlock([ts.factory.createExpressionStatement(ts.factory.createBinaryExpression(ts.factory.createPropertyAccessExpression(ts.factory.createThis(), ts.factory.createIdentifier(cmp.attachInternalsMemberName)), ts.factory.createToken(ts.SyntaxKind.EqualsToken), ts.factory.createCallExpression(ts.factory.createPropertyAccessExpression(ts.factory.createPropertyAccessExpression(ts.factory.createIdentifier(HOST_REF_ARG), ts.factory.createIdentifier("$hostElement$")), ts.factory.createIdentifier("attachInternals")), void 0, []))), ts.factory.createExpressionStatement(ts.factory.createBinaryExpression(hostRefElementInternalsPropAccess(), ts.factory.createToken(ts.SyntaxKind.EqualsToken), ts.factory.createPropertyAccessExpression(ts.factory.createThis(), ts.factory.createIdentifier(cmp.attachInternalsMemberName))))], true))];
++	const statements = [ts.factory.createIfStatement(hostRefElementInternalsPropAccess(), ts.factory.createBlock([ts.factory.createExpressionStatement(ts.factory.createBinaryExpression(ts.factory.createPropertyAccessExpression(ts.factory.createThis(), ts.factory.createIdentifier(cmp.attachInternalsMemberName)), ts.factory.createToken(ts.SyntaxKind.EqualsToken), hostRefElementInternalsPropAccess()))], true), ts.factory.createBlock([ts.factory.createExpressionStatement(ts.factory.createBinaryExpression(ts.factory.createPropertyAccessExpression(ts.factory.createThis(), ts.factory.createIdentifier(cmp.attachInternalsMemberName)), ts.factory.createToken(ts.SyntaxKind.EqualsToken), ts.factory.createCallExpression(ts.factory.createPropertyAccessExpression(ts.factory.createPropertyAccessExpression(ts.factory.createIdentifier(HOST_REF_ARG), ts.factory.createIdentifier("$hostElement$")), ts.factory.createIdentifier("attachInternals?.")), void 0, []))), ts.factory.createExpressionStatement(ts.factory.createBinaryExpression(hostRefElementInternalsPropAccess(), ts.factory.createToken(ts.SyntaxKind.EqualsToken), ts.factory.createPropertyAccessExpression(ts.factory.createThis(), ts.factory.createIdentifier(cmp.attachInternalsMemberName))))], true))];
+ 	if (cmp.attachInternalsCustomStates?.length > 0) {
+ 		for (const customState of cmp.attachInternalsCustomStates) if (customState.initialValue) statements.push(createStatesAddCall$1(cmp.attachInternalsMemberName, customState.name));
+ 	}
+diff --git a/node_modules/@stencil/core/dist/runtime/client/runtime.js b/node_modules/@stencil/core/dist/runtime/client/runtime.js
+index 17d781d..0b4c2f7 100644
+--- a/node_modules/@stencil/core/dist/runtime/client/runtime.js
++++ b/node_modules/@stencil/core/dist/runtime/client/runtime.js
+@@ -2958,6 +2958,14 @@ const dispatchHooks = (hostRef, isInitialLoad) => {
+ 			hostRef.$queuedPropChanges$ = void 0;
+ 			if (safeCall(instance, "componentShouldUpdate", changes, elm) === false) {
+ 				hostRef.$flags$ &= ~HOST_FLAGS.isQueuedForUpdate;
++				//========= PDS PATCH START
++				// scheduleUpdate() already made the ancestor wait for this component. Without releasing it here, the ancestor
++				// never finishes its own update, so its componentDidRender and componentDidUpdate are never called.
++				if (BUILD$1.asyncLoading && hostRef.$onRenderResolve$) {
++					hostRef.$onRenderResolve$();
++					hostRef.$onRenderResolve$ = void 0;
++				}
++				//========= PDS PATCH END
+ 				return;
+ 			}
+ 		}
+@@ -3022,6 +3030,12 @@ const updateComponent = (hostRef, instance, isInitialLoad) => {
+ 	if (BUILD$1.style && isInitialLoad) attachStyles(hostRef);
+ 	const endRender = createTime("render", hostRef.$cmpMeta$.$tagName$);
+ 	if (BUILD$1.isDev) hostRef.$flags$ |= HOST_FLAGS.devOnRender;
++	//========= PDS PATCH START
++	if (elm.hasDSR) {
++		elm.shadowRoot.innerHTML = "";
++		elm.hasDSR = false;
++	}
++	//========= PDS PATCH END
+ 	if (BUILD$1.hydrateServerSide) return callRender(hostRef, instance, elm, isInitialLoad).then(() => {
+ 		afterRender(hostRef, elm, rc, isInitialLoad, endRender, endUpdate);
+ 	});
+@@ -4343,7 +4357,11 @@ const parsePropertyValue = (propValue, propType) => {
+ 		/**
+ 		* ensure this value is of the correct prop type
+ 		*/
+-		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "" || !!propValue;
++		//========= PDS PATCH START
++		// Stencil 5 treats every value of a boolean attribute as true, like native elements. Props that default to true
++		// (e.g. `gradient` of p-link-tile) can only be turned off in markup with `="false"`, so it stays false as in Stencil 4.
++		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "false" ? false : propValue === "" || !!propValue;
++		//========= PDS PATCH END
+ 		/**
+ 		* force it to be a number
+ 		*/
+@@ -4613,8 +4631,9 @@ const proxyComponent = (Cstr, cmpMeta, flags) => {
+ 					if (BUILD$1.reflect && propMemberFlags & MEMBER_FLAGS.ReflectAttr && propMemberFlags & MEMBER_FLAGS.Any && !isComplexType(this[propName]) && reflectedAttrValue(this[propName]) === newValue) return;
+ 					const isSpuriousBooleanRemoval = isBooleanTarget && newValue === null && this[propName] === void 0;
+ 					if (isBooleanTarget) {
+-						if (BUILD$1.isDev && newValue === "false") consoleDevWarn(`<${cmpMeta.$tagName$} ${attrName}="false">: boolean attributes are true when present, regardless of value. Remove the attribute or set the "${propName}" property to false instead.`);
+-						newValue = newValue !== null;
++						//========= PDS PATCH START
++						newValue = newValue !== null && newValue !== "false";
++						//========= PDS PATCH END
+ 					}
+ 					const propDesc = Object.getOwnPropertyDescriptor(prototype, propName);
+ 					const isUnchanged = newValue === this[propName] || newValue == null && this[propName] == null;
+@@ -5181,7 +5200,16 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+ 			if (BUILD$1.shadowReferenceTarget) cmpMeta.$referenceTarget$ = compactMeta[7];
+ 			const tagName = transformTag(cmpMeta.$tagName$);
+ 			const attachShadowRoot = (elm) => {
+-				if (cmpMeta.$flags$ & CMP_FLAGS.shadowDomEncapsulation && !(cmpMeta.$flags$ & CMP_FLAGS.shadowNeedsScopedCss) && !getShadowRoot(elm)) createShadowRoot.call(elm, cmpMeta);
++				//========= PDS PATCH START
++				// A shadow root that exists before Stencil attached one was rendered on the server (DSR component).
++				// `hasDSR` is undefined until that is known, since this runs in the constructor and on every connect.
++				if (cmpMeta.$flags$ & CMP_FLAGS.shadowDomEncapsulation && !(cmpMeta.$flags$ & CMP_FLAGS.shadowNeedsScopedCss)) {
++					if (!getShadowRoot(elm)) {
++						createShadowRoot.call(elm, cmpMeta);
++						elm.hasDSR = false;
++					} else if (elm.hasDSR === void 0) elm.hasDSR = true;
++				}
++				//========= PDS PATCH END
+ 			};
+ 			const HostElement = class extends HTMLElement {
+ 				["s-p"];
+@@ -5198,6 +5226,20 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+ 					if (!hostRef) return;
+ 					if (BUILD$1.hydrateClientSide && deferUntilParsed(this)) return;
+ 					if (BUILD$1.shadowDom) attachShadowRoot(this);
++					//========= PDS PATCH START
++					// Applies the props serialized by the React SSR wrapper before the first render, so a component that starts
++					// before React hydrates doesn't render its defaults. Only declared props are applied.
++					const ssrProps = this.getAttribute("data-ssr-props");
++					if (ssrProps !== null) {
++						this.removeAttribute("data-ssr-props");
++						try {
++							for (const [propName, value] of Object.entries(JSON.parse(ssrProps))) {
++								const member = cmpMeta.$members$[propName];
++								if (member && member[0] & MEMBER_FLAGS.Prop) this[propName] = value;
++							}
++						} catch {}
++					}
++					//========= PDS PATCH END
+ 					/**
+ 					* The `connectedCallback` lifecycle event can potentially be fired multiple times
+ 					* if the element is removed from the DOM and re-inserted. This is not a common use case,

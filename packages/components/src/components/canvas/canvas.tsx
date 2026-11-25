@@ -25,7 +25,7 @@ const propTypes: PropTypes<typeof Canvas> = {
  */
 @Component({
   tag: 'p-canvas',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Canvas {
   @Element() public host!: HTMLElement;

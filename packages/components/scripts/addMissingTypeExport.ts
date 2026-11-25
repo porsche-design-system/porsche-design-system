@@ -9,10 +9,21 @@ const addMissingHTMLStencilElementExport = (): void => {
   const fileName = 'dist/types/components.d.ts';
   const filePath = path.resolve(rootDirectory, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf8');
+  // Stencil 5 imports its own types from '@stencil/core/runtime' here, which would leave the bundle with an import of
+  // a package our consumers don't have. The types are part of the generated './stencil-public-runtime' as well.
+  let newFileContent = fileContent.replace(/from ["']@stencil\/core\/runtime["']/g, "from './stencil-public-runtime'");
 
-  if (!fileContent.includes(missingExport)) {
-    fs.writeFileSync(filePath, `${fileContent}${missingExport}`);
+  if (newFileContent.includes('@stencil/core/runtime')) {
+    throw new Error(`Failed replacing the import of '@stencil/core/runtime' in '${fileName}'.`);
+  }
+
+  if (!newFileContent.includes(missingExport)) {
+    newFileContent += missingExport;
     console.log(`Added to '${fileName}': ${missingExport}`);
+  }
+
+  if (newFileContent !== fileContent) {
+    fs.writeFileSync(filePath, newFileContent);
   }
 };
 

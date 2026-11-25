@@ -28,7 +28,7 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
  */
 @Component({
   tag: 'p-radio-group-option',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class RadioGroupOption {
   @Element() public host!: HTMLElement & RadioGroupOptionInternalHTMLProps;

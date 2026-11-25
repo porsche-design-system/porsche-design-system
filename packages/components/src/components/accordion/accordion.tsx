@@ -1,10 +1,20 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  type JSX,
+  Prop,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  hasAnyPropValueChanged,
   hasNamedSlot,
-  hasPropValueChanged,
   observeChildren,
   unobserveChildren,
   validateProps,
@@ -47,7 +57,7 @@ const propTypes: PropTypes<typeof Accordion> = {
   tag: 'p-accordion',
   // No `delegatesFocus`: it would also move focus to the summary, and scroll it into view, whenever a click lands on
   // slotted content that takes no focus itself. Programmatic focus is forwarded in `connectedCallback()` instead.
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Accordion {
   @Element() public host!: HTMLElement;
@@ -116,8 +126,8 @@ export class Accordion {
     unobserveChildren(this.host);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

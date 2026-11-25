@@ -17,7 +17,7 @@ export * from './form';
 export * from './getCDNBaseURL';
 export * from './getNamedSlot';
 export * from './has-document';
-export { hasPropValueChanged } from './has-prop-value-changed';
+export { hasAnyPropValueChanged, hasPropValueChanged } from './has-prop-value-changed';
 export * from './has-window';
 export * from './input-utils';
 export * from './is-click-outside';
