@@ -72,6 +72,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   browsers and Firefox. For `Radio Group` this applies to the labels of its options, not to the label of the group. The
   description and the message stay selectable.
   ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
+- **Shadow DOM**: a component that is created while the document is still loading, by the HTML parser or with
+  `document.createElement()`, gets its `shadowRoot` when it is connected instead of when it is created. Read
+  `shadowRoot` once the element is in the document.
+  ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
 
 ### Fixed
 
@@ -110,6 +114,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   until hydration, e.g. a `PButton` with `variant="secondary"` flashed as primary. The server-rendered markup now passes
   these props in a `data-ssr-props` attribute.
   ([#4875](https://github.com/porsche-design-system/porsche-design-system/pull/4875))
+- **React SSR**: components from `@porsche-design-system/components-react/ssr` that were streamed in after the
+  components had loaded, e.g. through a Suspense boundary of Next.js, lost their server-rendered Declarative Shadow DOM:
+  the browser logged `A second declarative shadow root cannot be created on a host`, and React threw a hydration error
+  when such a component had element children. The server-rendered markup now marks these components with a `data-dsr`
+  attribute. ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
 
 ## [4.10.1] - 2026-10-23
 
