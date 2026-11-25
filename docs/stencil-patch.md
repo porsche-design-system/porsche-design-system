@@ -1,6 +1,6 @@
 # Stencil Patch
 
-We currently have one Stencil patch-package file with six patch sections in place, applied using
+We currently have one Stencil patch-package file with five patch sections in place, applied using
 [`patch-package`](https://www.npmjs.com/package/patch-package). The patch file is located in the `patches/` folder and
 is applied automatically when installing via a `postinstall` script.
 
@@ -10,38 +10,19 @@ Every section in the runtime is wrapped in `//========= PDS PATCH START` and `//
 
 | Patched file                                                | Sections                                                                  |
 | ----------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `node_modules/@stencil/core/dist/compiler-<hash>.mjs`       | attachInternals                                                           |
 | `node_modules/@stencil/core/dist/runtime/client/runtime.js` | SSR, SSR props, SSR streaming, boolean attribute, `componentShouldUpdate` |
 
 `runtime.js` is the runtime Stencil bundles into the `loader-bundle` and `www` output targets; `lazy.js` next to it is
 only used with `externalRuntime`.
 
-The clonable shadow root patch of Stencil 4 is gone: Stencil 5 supports it natively, and every component sets
+Two patches of Stencil 4 are gone. The `attachInternals?.()` patch kept form components from throwing in browsers
+without the `ElementInternals` API. No environment we support needs it: the browsers we support and the jsdom we require
+have the API, and Safari before 16.4, which lacks it, can't parse the core chunk anyway. The clonable shadow root patch
+is not needed, because Stencil 5 supports it natively, and every component sets
 `encapsulation: { type: 'shadow', clonable: true }`. The declarative counterpart for server rendered components lives in
 `packages/components/scripts/generateDSRComponents.ts`, which emits `shadowrootclonable="true"` on the DSR `<template>`.
 
 ## Patches
-
-### attachInternals patch
-
-Patches files: `node_modules/@stencil/core/dist/compiler-<hash>.mjs`
-
-The patch changes the `attachInternals` call to be called optionally with `?.` in order to avoid errors in browsers not
-supporting the `ElementInternals` API. `packages/components-js/tests/unit/specs/element-internals.spec.ts` fails without
-it.
-
-Check where the attachInternals call of the lazy build is created (`hostRef.$hostElement$.attachInternals()`) and add
-the optional chaining operator `?.` to it. The patch should look like this:
-
-```diff
-- ts.factory.createIdentifier("$hostElement$")), ts.factory.createIdentifier("attachInternals")), void 0, [])
-+ ts.factory.createIdentifier("$hostElement$")), ts.factory.createIdentifier("attachInternals?.")), void 0, [])
-```
-
-Every browser we support has the `ElementInternals` API. The patch only matters for Safari 14.1 to 16.3, which lack it
-but can still parse our core chunk: with the patch, form components work there without form association, without it they
-throw. Whether to drop the section and its test is an open decision in
-[#4888](https://github.com/porsche-design-system/porsche-design-system/issues/4888).
 
 ### SSR patch
 
