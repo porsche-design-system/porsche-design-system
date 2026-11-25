@@ -1,8 +1,8 @@
-diff --git a/node_modules/@stencil/core/dist/compiler-C_Y38j4m.mjs b/node_modules/@stencil/core/dist/compiler-C_Y38j4m.mjs
-index b83011e..5365edf 100644
---- a/node_modules/@stencil/core/dist/compiler-C_Y38j4m.mjs
-+++ b/node_modules/@stencil/core/dist/compiler-C_Y38j4m.mjs
-@@ -2478,7 +2478,7 @@ const HOST_REF_ARG = "hostRef";
+diff --git a/node_modules/@stencil/core/dist/compiler-JKsb5iht.mjs b/node_modules/@stencil/core/dist/compiler-JKsb5iht.mjs
+index 0e87be1..7791981 100644
+--- a/node_modules/@stencil/core/dist/compiler-JKsb5iht.mjs
++++ b/node_modules/@stencil/core/dist/compiler-JKsb5iht.mjs
+@@ -2530,7 +2530,7 @@ const HOST_REF_ARG = "hostRef";
  */
  function createLazyAttachInternalsBinding(cmp) {
  	if (!cmp?.attachInternalsMemberName) return [];
@@ -12,10 +12,23 @@ index b83011e..5365edf 100644
  		for (const customState of cmp.attachInternalsCustomStates) if (customState.initialValue) statements.push(createStatesAddCall$1(cmp.attachInternalsMemberName, customState.name));
  	}
 diff --git a/node_modules/@stencil/core/dist/runtime/client/runtime.js b/node_modules/@stencil/core/dist/runtime/client/runtime.js
-index 17d781d..53bc073 100644
+index 191c645..f2854d8 100644
 --- a/node_modules/@stencil/core/dist/runtime/client/runtime.js
 +++ b/node_modules/@stencil/core/dist/runtime/client/runtime.js
-@@ -2958,6 +2958,14 @@ const dispatchHooks = (hostRef, isInitialLoad) => {
+@@ -1823,7 +1823,11 @@ const parsePropertyValue = (propValue, propType) => {
+ 		/**
+ 		* ensure this value is of the correct prop type
+ 		*/
+-		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "" || !!propValue;
++		//========= PDS PATCH START
++		// Stencil 5 treats every value of a boolean attribute as true, like native elements. Props that default to true
++		// (e.g. `gradient` of p-link-tile) can only be turned off in markup with `="false"`, so it stays false as in Stencil 4.
++		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "false" ? false : propValue === "" || !!propValue;
++		//========= PDS PATCH END
+ 		/**
+ 		* force it to be a number
+ 		*/
+@@ -2997,6 +3001,14 @@ const dispatchHooks = (hostRef, isInitialLoad) => {
  			hostRef.$queuedPropChanges$ = void 0;
  			if (safeCall(instance, "componentShouldUpdate", changes, elm) === false) {
  				hostRef.$flags$ &= ~HOST_FLAGS.isQueuedForUpdate;
@@ -30,7 +43,7 @@ index 17d781d..53bc073 100644
  				return;
  			}
  		}
-@@ -3022,6 +3030,12 @@ const updateComponent = (hostRef, instance, isInitialLoad) => {
+@@ -3061,6 +3073,12 @@ const updateComponent = (hostRef, instance, isInitialLoad) => {
  	if (BUILD$1.style && isInitialLoad) attachStyles(hostRef);
  	const endRender = createTime("render", hostRef.$cmpMeta$.$tagName$);
  	if (BUILD$1.isDev) hostRef.$flags$ |= HOST_FLAGS.devOnRender;
@@ -43,20 +56,7 @@ index 17d781d..53bc073 100644
  	if (BUILD$1.hydrateServerSide) return callRender(hostRef, instance, elm, isInitialLoad).then(() => {
  		afterRender(hostRef, elm, rc, isInitialLoad, endRender, endUpdate);
  	});
-@@ -4343,7 +4357,11 @@ const parsePropertyValue = (propValue, propType) => {
- 		/**
- 		* ensure this value is of the correct prop type
- 		*/
--		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "" || !!propValue;
-+		//========= PDS PATCH START
-+		// Stencil 5 treats every value of a boolean attribute as true, like native elements. Props that default to true
-+		// (e.g. `gradient` of p-link-tile) can only be turned off in markup with `="false"`, so it stays false as in Stencil 4.
-+		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "false" ? false : propValue === "" || !!propValue;
-+		//========= PDS PATCH END
- 		/**
- 		* force it to be a number
- 		*/
-@@ -4613,8 +4631,9 @@ const proxyComponent = (Cstr, cmpMeta, flags) => {
+@@ -4650,8 +4668,9 @@ const proxyComponent = (Cstr, cmpMeta, flags) => {
  					if (BUILD$1.reflect && propMemberFlags & MEMBER_FLAGS.ReflectAttr && propMemberFlags & MEMBER_FLAGS.Any && !isComplexType(this[propName]) && reflectedAttrValue(this[propName]) === newValue) return;
  					const isSpuriousBooleanRemoval = isBooleanTarget && newValue === null && this[propName] === void 0;
  					if (isBooleanTarget) {
@@ -68,7 +68,7 @@ index 17d781d..53bc073 100644
  					}
  					const propDesc = Object.getOwnPropertyDescriptor(prototype, propName);
  					const isUnchanged = newValue === this[propName] || newValue == null && this[propName] == null;
-@@ -4990,7 +5009,12 @@ const flush = () => {
+@@ -5030,7 +5049,12 @@ const flush = () => {
  * @param elm the host element
  * @returns `true` if the element's subtree may be incomplete
  */
@@ -82,7 +82,7 @@ index 17d781d..53bc073 100644
  /**
  * Holds back `elm`'s `connectedCallback` while it's an SSR host the parser hasn't finished
  * with, or one nested inside such a host. Its shadow root is attached once its own subtree
-@@ -5000,7 +5024,9 @@ const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!e
+@@ -5040,7 +5064,9 @@ const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!e
  */
  const deferUntilParsed = (elm) => {
  	if (pending.has(elm)) return true;
@@ -93,7 +93,7 @@ index 17d781d..53bc073 100644
  	const parsed = isParsed(elm);
  	if (parsed && !hasPendingAncestor(elm)) return false;
  	if (parsed) elm.__attachShadow?.();
-@@ -5181,7 +5207,16 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5224,7 +5250,16 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  			if (BUILD$1.shadowReferenceTarget) cmpMeta.$referenceTarget$ = compactMeta[7];
  			const tagName = transformTag(cmpMeta.$tagName$);
  			const attachShadowRoot = (elm) => {
@@ -111,7 +111,7 @@ index 17d781d..53bc073 100644
  			};
  			const HostElement = class extends HTMLElement {
  				["s-p"];
-@@ -5191,13 +5226,34 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5234,13 +5269,34 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  					super(self);
  					self = this;
  					registerHost(self, cmpMeta);
@@ -148,7 +148,7 @@ index 17d781d..53bc073 100644
  					/**
  					* The `connectedCallback` lifecycle event can potentially be fired multiple times
  					* if the element is removed from the DOM and re-inserted. This is not a common use case,
-@@ -5258,9 +5314,11 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5301,9 +5357,11 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  					if (BUILD$1.slotTextContent) patchTextContent(HostElement.prototype);
  				}
  			}

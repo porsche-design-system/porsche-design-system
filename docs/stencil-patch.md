@@ -4,7 +4,7 @@ We currently have one Stencil patch-package file with six patch sections in plac
 [`patch-package`](https://www.npmjs.com/package/patch-package). The patch file is located in the `patches/` folder and
 is applied automatically when installing via a `postinstall` script.
 
-Stencil version used when this document was last updated: `5.0.0-rc.1`
+Stencil version used when this document was last updated: `5.0.0-rc.9`
 
 Every section in the runtime is wrapped in `//========= PDS PATCH START` and `//========= PDS PATCH END`.
 
@@ -210,7 +210,10 @@ section can be removed once it is fixed there.
 2. If the patch fails, you need to check what changed in the stencil update and how to adjust the patch.
 3. Adjust the files mentioned above with the patch and run `npx patch-package @stencil/core` to create a new patch file.
    The new patch file should be placed in the `patches/` folder and committed to the repository. The patch will be
-   automatically applied with every install.
+   automatically applied with every install. `patch-package` installs a clean copy of Stencil to compare against, so for
+   a version that is still inside the
+   [release-age cooldown](dependencies.md#release-age-cooldown-supply-chain-protection) it fails without a message. Once
+   the exception is agreed, run it as `npm_config_min_release_age=0 npx patch-package @stencil/core`.
 4. Build `components` and `components-js` and check that the sections made it into the build, since Stencil removes code
    behind build flags: `grep -c "hasDSR\|data-ssr-props\|data-dsr" packages/components/dist/esm/runtime-*.js` prints a
    count for each of them.
