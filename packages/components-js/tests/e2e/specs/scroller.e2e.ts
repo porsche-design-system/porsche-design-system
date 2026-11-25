@@ -2,14 +2,13 @@ import { type Locator, type Page } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
 import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
-  CSS_ANIMATION_DURATION,
   getElementStyle,
   getLifecycleStatus,
   getOffsetWidth,
   getScrollLeft,
   setContentWithDesignSystem,
   setProperty,
-  sleep,
+  waitForScrollEnd,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -50,9 +49,10 @@ const getScrollIndicators = async (page: Page) => {
   return { prevButton, nextButton };
 };
 const clickElement = async (page: Page, el: Locator) => {
-  await el.click();
-  await waitForStencilLifecycle(page);
-  await sleep(CSS_ANIMATION_DURATION);
+  await waitForScrollEnd(getScrollArea(page), async () => {
+    await el.click();
+    await waitForStencilLifecycle(page);
+  });
 };
 
 const addNewButton = async (page: Page) => {
@@ -107,11 +107,10 @@ test.describe('scroll indicator', () => {
 
     // Scroll to the very end
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
-    // The indicators update from an IntersectionObserver callback
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
+    // The indicators update from a later IntersectionObserver callback, so the check retries instead of sleeping.
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
   });
 
   test('should update indicators when scrolling back to the start', async ({ page }) => {
@@ -122,18 +121,14 @@ test.describe('scroll indicator', () => {
 
     // Scroll to the middle first
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth / 2, behavior: 'instant' }));
-    // The indicators update from an IntersectionObserver callback
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('visible');
 
     // Scroll back to start
     await scrollArea.evaluate((el) => el.scrollTo({ left: 0, behavior: 'instant' }));
-    // The indicators update from an IntersectionObserver callback
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 
   test('should show next indicator after dynamically adding content that causes overflow', async ({ page }) => {
@@ -146,9 +141,8 @@ test.describe('scroll indicator', () => {
     await addNewButton(page);
     await addNewButton(page);
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 
   test('should hide both indicators when scroller has no children', async ({ page }) => {
@@ -180,19 +174,15 @@ test.describe('scroll indicator', () => {
 
     // Programmatically scroll to end
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
-    // The indicators update from an IntersectionObserver callback
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
 
     // Programmatically scroll back to start
     await scrollArea.evaluate((el) => el.scrollTo({ left: 0, behavior: 'instant' }));
-    // The indicators update from an IntersectionObserver callback
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 });
 
@@ -371,11 +361,9 @@ test.describe('scrollToPosition', () => {
     const prevIndicator = getPrevIndicator(page);
     const nextIndicator = getNextIndicator(page);
 
-    await sleep(CSS_ANIMATION_DURATION);
-
     // After scrolling to 100, both indicators should be visible (middle of scroll)
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 });
 
