@@ -4,7 +4,6 @@ import { assertDefined } from '@porsche-design-system/testing/assert-defined';
 import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
   addEventListener,
-  CSS_ANIMATION_DURATION,
   getAttribute,
   getElementStyle,
   getEventSummary,
@@ -16,7 +15,7 @@ import {
   reattachElementToParent,
   setContentWithDesignSystem,
   setProperty,
-  sleep,
+  waitForScrollEnd,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -78,8 +77,6 @@ const getAllButtons = (page: Page) => page.locator('button[role="tab"]').all();
 const getScrollArea = (page: Page) => page.locator('p-tabs-bar p-scroller .scroll');
 const getBar = (page: Page) => page.locator('p-tabs-bar .bar');
 const getBarWidth = async (page: Page): Promise<string> => getElementStyle(getBar(page), 'width');
-
-const waitForAnimation = () => sleep(CSS_ANIMATION_DURATION);
 
 test('should work with nested or translated markup', async ({ page }) => {
   const content = `
@@ -483,9 +480,10 @@ test.describe('tab visibility', () => {
     expect(await isTabInView(page, 7)).toBe(false);
 
     const host = getHost(page);
-    await setProperty(host, 'activeTabIndex', 7);
-    await waitForStencilLifecycle(page);
-    await waitForAnimation();
+    await waitForScrollEnd(getScrollArea(page), async () => {
+      await setProperty(host, 'activeTabIndex', 7);
+      await waitForStencilLifecycle(page);
+    });
 
     expect(await isTabInView(page, 7)).toBe(true);
   });
@@ -518,17 +516,18 @@ test.describe('tab visibility', () => {
     expect(await isTabInView(page, 7)).toBe(true);
 
     // add multiple tabs after the active one, causing a re-evaluation of the scroll position
-    await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
-      if (!tabsBar) throw new Error('p-tabs-bar not found');
-      for (let i = 0; i < 5; i++) {
-        const tab = document.createElement('button');
-        tab.innerText = `New Tab ${i + 1}`;
-        tabsBar.append(tab);
-      }
+    await waitForScrollEnd(getScrollArea(page), async () => {
+      await page.evaluate(() => {
+        const tabsBar = document.querySelector('p-tabs-bar');
+        if (!tabsBar) throw new Error('p-tabs-bar not found');
+        for (let i = 0; i < 5; i++) {
+          const tab = document.createElement('button');
+          tab.innerText = `New Tab ${i + 1}`;
+          tabsBar.append(tab);
+        }
+      });
+      await waitForStencilLifecycle(page);
     });
-    await waitForStencilLifecycle(page);
-    await waitForAnimation();
 
     // activeTabIndex is still 7, onSlotChange should keep it scrolled into view
     expect(await isTabInView(page, 7)).toBe(true);
@@ -544,7 +543,6 @@ test.describe('tab visibility', () => {
       isWrapped: true,
       beforeMarkup: '<div style="height: 200vh"></div>',
     });
-    await waitForAnimation();
 
     // active tab is centered horizontally within scroller
     await expect.poll(() => isTabInView(page, 7)).toBe(true);
@@ -561,14 +559,12 @@ test.describe('tab visibility', () => {
       isWrapped: true,
       beforeMarkup: '<div style="height: 200vh"></div>',
     });
-    await waitForAnimation();
 
     // baseline: page is at top
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 
     const host = getHost(page);
-    await setProperty(host, 'activeTabIndex', 7);
-    await waitForAnimation();
+    await waitForScrollEnd(getScrollArea(page), () => setProperty(host, 'activeTabIndex', 7));
 
     // active tab is centered horizontally within scroller
     await expect.poll(() => isTabInView(page, 7)).toBe(true);
@@ -587,7 +583,6 @@ test.describe('tab visibility', () => {
       activeTabIndex: 29,
       beforeMarkup: '<div style="height: 200vh"></div>',
     });
-    await waitForAnimation();
 
     // active tab is centered horizontally within scroller
     await expect.poll(() => isTabInView(page, 29)).toBe(true);
@@ -603,14 +598,12 @@ test.describe('tab visibility', () => {
       activeTabIndex: 0,
       beforeMarkup: '<div style="height: 200vh"></div>',
     });
-    await waitForAnimation();
 
     // baseline: page is at top
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 
     const host = getHost(page);
-    await setProperty(host, 'activeTabIndex', 29);
-    await waitForAnimation();
+    await waitForScrollEnd(getScrollArea(page), () => setProperty(host, 'activeTabIndex', 29));
 
     // active tab is centered horizontally within scroller
     await expect.poll(() => isTabInView(page, 29)).toBe(true);
