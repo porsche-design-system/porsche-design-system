@@ -4,7 +4,7 @@ We currently have one Stencil patch-package file with six patch sections in plac
 [`patch-package`](https://www.npmjs.com/package/patch-package). The patch file is located in the `patches/` folder and
 is applied automatically when installing via a `postinstall` script.
 
-Stencil version used when this document was last updated: `5.0.0-rc.9`
+Stencil version used when this document was last updated: `5.0.0-rc.10`
 
 Every section in the runtime is wrapped in `//========= PDS PATCH START` and `//========= PDS PATCH END`.
 

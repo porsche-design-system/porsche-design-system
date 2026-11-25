@@ -1,7 +1,7 @@
-diff --git a/node_modules/@stencil/core/dist/compiler-JKsb5iht.mjs b/node_modules/@stencil/core/dist/compiler-JKsb5iht.mjs
+diff --git a/node_modules/@stencil/core/dist/compiler-ChKFuRry.mjs b/node_modules/@stencil/core/dist/compiler-ChKFuRry.mjs
 index 0e87be1..7791981 100644
---- a/node_modules/@stencil/core/dist/compiler-JKsb5iht.mjs
-+++ b/node_modules/@stencil/core/dist/compiler-JKsb5iht.mjs
+--- a/node_modules/@stencil/core/dist/compiler-ChKFuRry.mjs
++++ b/node_modules/@stencil/core/dist/compiler-ChKFuRry.mjs
 @@ -2530,7 +2530,7 @@ const HOST_REF_ARG = "hostRef";
  */
  function createLazyAttachInternalsBinding(cmp) {

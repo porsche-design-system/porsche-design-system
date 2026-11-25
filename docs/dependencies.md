@@ -420,9 +420,9 @@ places that must be kept in sync when adding a new entry:
   [Strict peer dependency resolution](#strict-peer-dependency-resolution)). `syncpack` scans `overrides` too, so without
   this entry every update round would offer to bump it independently and reintroduce duplicated Playwright type
   definitions. Bump it **only together with** `@playwright/test`.
-- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+5.0.0-rc.9.patch`) targets this exact
-  version. Bumping it breaks `patch-package` on `postinstall`. Its packages `@stencil/cli`, `@stencil/dev-server` and
-  `@stencil/mock-doc` are dependencies of `@stencil/core` with the same exact version, so they follow it.
+- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+5.0.0-rc.10.patch`) targets this
+  exact version. Bumping it breaks `patch-package` on `postinstall`. Its packages `@stencil/cli`, `@stencil/dev-server`
+  and `@stencil/mock-doc` are dependencies of `@stencil/core` with the same exact version, so they follow it.
 - `@axe-core/playwright` – pinned to `~4.13.0` (and with it `axe-core`). `axe-core` 4.14 evaluates semi-transparent
   colors and reports `contrast-medium` text on `surface` (4.38:1) on nearly every storefront page, plus a dark-scheme
   finding in the `table` fixture of `components-js`. Fixing them needs a design decision, tracked in
