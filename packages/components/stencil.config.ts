@@ -50,7 +50,8 @@ export const config: Config = {
     // emit lifecycle events like componentWillLoad, didLoad, willUpdate, didUpdate only in dev build for e2e tests
     ...(isDevBuild && { lifecycleDOMEvents: true }),
     // Opt-in in Stencil 4, on by default in Stencil 5. It adds one import per component to the runtime, and the
-    // CommonJS build then calls a helper that doesn't exist (`_interopNamespace`), which breaks the jsdom-polyfill.
+    // CommonJS build then calls a helper that doesn't exist (`_interopNamespace`), which breaks the jsdom-polyfill:
+    // https://github.com/stenciljs/core/issues/7040
     enableImportInjection: false,
   },
 };

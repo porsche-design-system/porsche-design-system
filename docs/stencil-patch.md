@@ -38,8 +38,10 @@ the optional chaining operator `?.` to it. The patch should look like this:
 + ts.factory.createIdentifier("$hostElement$")), ts.factory.createIdentifier("attachInternals?.")), void 0, [])
 ```
 
-Stencil 5 only supports browsers that have the `ElementInternals` API (Chrome and Edge 94+, Firefox 93+, Safari 16.4+),
-so this section and its test can be removed once that is confirmed for our supported browsers.
+Every browser we support has the `ElementInternals` API. The patch only matters for Safari 14.1 to 16.3, which lack it
+but can still parse our core chunk: with the patch, form components work there without form association, without it they
+throw. Whether to drop the section and its test is an open decision in
+[#4888](https://github.com/porsche-design-system/porsche-design-system/issues/4888).
 
 ### SSR patch
 
@@ -162,9 +164,10 @@ boundaries.
 
 ### boolean attribute patch
 
-Stencil 5 treats a boolean attribute as `true` whatever its value, like native elements, so
-`<p-link-tile gradient="false">` would turn the gradient on. Props that default to `true` can only be turned off in
-markup with `="false"`, so the patch keeps the behavior of Stencil 4 in two places:
+Stencil 5 treats a boolean attribute as `true` whatever its value, like native elements, so `<p-modal open="false">`
+would be an open modal. Props that default to `true`, e.g. `dismiss-button` of `p-modal`, can only be turned off in
+markup with `="false"`, so the patch keeps the behavior of Stencil 4 in two places. It goes with the next major version,
+see [#4887](https://github.com/porsche-design-system/porsche-design-system/issues/4887).
 
 `parsePropertyValue`, which coerces a value set as property:
 
@@ -186,18 +189,20 @@ markup with `="false"`, so the patch keeps the behavior of Stencil 4 in two plac
 Stencil 4 called `componentShouldUpdate` when a prop or state was set, and only queued an update when it returned
 `true`. Stencil 5 queues the update first and calls `componentShouldUpdate` once per render cycle, in `dispatchHooks`,
 with every change. Our components return `false` whenever a prop is set to an equal value, e.g. an `aria` object a
-parent passes on every render, which uncovers two bugs. Both are still present on Stencil's `v5` branch when this was
-written and should be reported upstream; the section can be removed once they are fixed there.
+parent passes on every render, which uncovers two bugs. Both are reported upstream with a minimal reproduction; the
+section can be removed once they are fixed there, see
+[#4888](https://github.com/porsche-design-system/porsche-design-system/issues/4888).
 
-**The ancestor is never released.** `scheduleUpdate` has already made the ancestor component wait for the update. When
-`componentShouldUpdate` returns `false`, Stencil returns without releasing it, so the ancestor never finishes its own
-update: its `componentDidRender` and `componentDidUpdate` are never called. This happened to `p-carousel`, `p-drilldown`
-and `p-input-password`.
+**The ancestor is never released** ([stenciljs/core#7038](https://github.com/stenciljs/core/issues/7038)).
+`scheduleUpdate` has already made the ancestor component wait for the update. When `componentShouldUpdate` returns
+`false`, Stencil returns without releasing it, so the ancestor never finishes its own update: its `componentDidRender`
+and `componentDidUpdate` are never called. This happened to `p-carousel`, `p-drilldown` and `p-input-password`.
 
-**A forced update is lost.** `forceUpdate()` does nothing when an update is queued already, and that queued update is
-dropped when `componentShouldUpdate` returns `false` for the props that changed in the same cycle. `p-drilldown` forces
-an update when an item gets its `identifier`; with an update queued at the same time that changed nothing, it never
-validated its `activeIdentifier` again. The patch marks the update as forced in `forceUpdate`:
+**A forced update is lost** ([stenciljs/core#7039](https://github.com/stenciljs/core/issues/7039)). `forceUpdate()` does
+nothing when an update is queued already, and that queued update is dropped when `componentShouldUpdate` returns `false`
+for the props that changed in the same cycle. `p-drilldown` forces an update when an item gets its `identifier`; with an
+update queued at the same time that changed nothing, it never validated its `activeIdentifier` again. The patch marks
+the update as forced in `forceUpdate`:
 
 ```diff
 - if (isConnected && (hostRef.$flags$ & (HOST_FLAGS.hasRendered | HOST_FLAGS.isQueuedForUpdate)) === HOST_FLAGS.hasRendered) scheduleUpdate(hostRef, false);

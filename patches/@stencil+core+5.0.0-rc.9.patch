@@ -12,7 +12,7 @@ index 0e87be1..7791981 100644
  		for (const customState of cmp.attachInternalsCustomStates) if (customState.initialValue) statements.push(createStatesAddCall$1(cmp.attachInternalsMemberName, customState.name));
  	}
 diff --git a/node_modules/@stencil/core/dist/runtime/client/runtime.js b/node_modules/@stencil/core/dist/runtime/client/runtime.js
-index 191c645..47ddf11 100644
+index 191c645..6ae4b31 100644
 --- a/node_modules/@stencil/core/dist/runtime/client/runtime.js
 +++ b/node_modules/@stencil/core/dist/runtime/client/runtime.js
 @@ -1823,7 +1823,11 @@ const parsePropertyValue = (propValue, propType) => {
@@ -22,7 +22,7 @@ index 191c645..47ddf11 100644
 -		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "" || !!propValue;
 +		//========= PDS PATCH START
 +		// Stencil 5 treats every value of a boolean attribute as true, like native elements. Props that default to true
-+		// (e.g. `gradient` of p-link-tile) can only be turned off in markup with `="false"`, so it stays false as in Stencil 4.
++		// (e.g. `dismiss-button` of p-modal) can only be turned off in markup with `="false"`, so it stays false as in Stencil 4.
 +		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "false" ? false : propValue === "" || !!propValue;
 +		//========= PDS PATCH END
  		/**
