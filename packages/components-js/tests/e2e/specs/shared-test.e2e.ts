@@ -185,7 +185,6 @@ test.describe('motion', () => {
 });
 
 test.describe('waitForAnimationsFinished', () => {
-  test.use({ motion: 'on' });
   test.setTimeout(10_000);
 
   const shadowBox =
