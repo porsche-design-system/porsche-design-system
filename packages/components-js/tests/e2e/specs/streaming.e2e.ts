@@ -12,9 +12,14 @@ const templateStart = '<template shadowrootmode="open"><span id="server-rendered
 const templateEnd = ' rendered</span></template>';
 const hostEnd = 'Some label</p-button>';
 
+// WebKit on Linux reads the first 512 bytes to detect the content type before it starts the document, so the first
+// chunk has to be longer than that
+const sniffingBufferPadding = `<!-- ${'.'.repeat(2048)} -->`;
+
 const shell = `<!DOCTYPE html>
 <html>
   <head>
+    ${sniffingBufferPadding}
     <base href="http://localhost:8575">
     <script src="http://localhost:8575/index.js"></script>
   </head>
