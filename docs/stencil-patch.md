@@ -170,7 +170,7 @@ see [#4887](https://github.com/porsche-design-system/porsche-design-system/issue
 Stencil 4 called `componentShouldUpdate` when a prop or state was set, and only queued an update when it returned
 `true`. Stencil 5 queues the update first and calls `componentShouldUpdate` once per render cycle, in `dispatchHooks`,
 with every change. Our components return `false` whenever a prop is set to an equal value, e.g. an `aria` object a
-parent passes on every render, which uncovers two bugs. Both are reported upstream with a minimal reproduction; the
+parent passes on every render, which uncovers three bugs. All are reported upstream with a minimal reproduction; the
 section can be removed once they are fixed there, see
 [#4888](https://github.com/porsche-design-system/porsche-design-system/issues/4888).
 
@@ -216,6 +216,25 @@ and handles both bugs in `dispatchHooks`:
 `packages/components-js/tests/e2e/specs/drilldown.e2e.ts` covers the forced update
 (`should log an error when an update that changes nothing is queued while the last identifier is set`).
 
+**The old value is the wrong one** ([stenciljs/core#7042](https://github.com/stenciljs/core/issues/7042)). Stencil
+collects every change since the last render in `setValue` and keeps the `oldVal` of the first one with `??`, which also
+skips an `oldVal` of `undefined` or `null`. A prop that was not set at the last render and is then set twice to equal
+objects, e.g. `aria` by two renders of a React application within one frame, is compared with the first of the two
+objects, `componentShouldUpdate` returns `false`, and the prop is never rendered. The patch checks for the entry instead
+of its value:
+
+```diff
+  changes[propName] = {
+    newVal,
+-   oldVal: changes[propName]?.oldVal ?? oldVal
++   oldVal: propName in changes ? changes[propName].oldVal : oldVal
+  };
+```
+
+`packages/components-js/tests/e2e/specs/button.e2e.ts` covers it
+(`should render an object prop that is set twice to equal objects before the next render`). The same line exists for
+signals in `src/runtime/signals.ts`, which is not part of our build.
+
 ## How to update
 
 1. After updating stencil and installing the dependencies, the patch will either be applied successfully or fail with a
@@ -228,5 +247,5 @@ and handles both bugs in `dispatchHooks`:
    [release-age cooldown](dependencies.md#release-age-cooldown-supply-chain-protection) it fails without a message. Once
    the exception is agreed, run it as `npm_config_min_release_age=0 npx patch-package @stencil/core`.
 4. Build `components` and `components-js` and check that the sections made it into the build, since Stencil removes code
-   behind build flags: `grep -c "hasDSR\|data-ssr-props\|data-dsr" packages/components/dist/esm/runtime-*.js` prints a
-   count for each of them.
+   behind build flags. Each of these has to print a count above 0:
+   `for s in hasDSR data-ssr-props data-dsr isUpdateForced '=== "false"' 'in changes'; do grep -c "$s" packages/components/dist/esm/runtime-*.js; done`
