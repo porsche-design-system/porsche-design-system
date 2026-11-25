@@ -898,6 +898,10 @@ export const sitemap = {
     path: '/streaming-props',
     name: 'Streaming Props Test Page',
   },
+  streamingChildren: {
+    path: '/streaming-children',
+    name: 'Streaming Children Test Page',
+  },
   loaderScriptProps: {
     path: '/loader-script-props',
     name: 'Loader Script Props Test Page',

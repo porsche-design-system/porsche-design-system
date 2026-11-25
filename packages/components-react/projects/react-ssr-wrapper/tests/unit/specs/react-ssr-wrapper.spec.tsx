@@ -217,3 +217,32 @@ describe('ssr props', () => {
     expect(container.querySelector('p-button')!.hasAttribute('data-ssr-props')).toBe(false);
   });
 });
+
+describe('server marker', () => {
+  const renderOnServer = (jsx: JSX.Element): HTMLElement => {
+    const container = document.createElement('div');
+    container.innerHTML = renderToString(<PorscheDesignSystemProvider>{jsx}</PorscheDesignSystemProvider>);
+    return container;
+  };
+
+  it('should mark a component as server rendered on the server', () => {
+    const container = renderOnServer(<fromComponents.PButton variant="secondary">Some label</fromComponents.PButton>);
+
+    expect(container.querySelector('p-button')!.getAttribute('data-dsr')).toBe('');
+  });
+
+  it('should mark a component as server rendered when every prop has its default', () => {
+    const container = renderOnServer(<fromComponents.PButton>Some label</fromComponents.PButton>);
+    const host = container.querySelector('p-button')!;
+
+    expect(host.hasAttribute('data-ssr-props')).toBe(false);
+    expect(host.getAttribute('data-dsr')).toBe('');
+  });
+
+  it('should mark the components within the declarative shadow root as server rendered', () => {
+    const container = renderOnServer(<fromComponents.PButton loading={true}>Some label</fromComponents.PButton>);
+    const template = container.querySelector('p-button > template') as HTMLTemplateElement;
+
+    expect(template.content.querySelector('p-spinner')!.getAttribute('data-dsr')).toBe('');
+  });
+});

@@ -70,11 +70,14 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
       );
     }
 
+    // `data-dsr` is rendered on the server only (`data-ssr` on the client too): it tells the web component to wait
+    // until the parser has attached the declarative shadow root, which matters when the markup is streamed
     tweakedComponent = tweakedComponent.replace(
       /\.\.\.rest,\n/,
       `$&      // @ts-ignore
       ...(!process.browser
         ? {
+            'data-dsr': '',
             ${hostAttributes}${ssrPropsAttribute}children: (
               <${this.getSsrComponentName(component)}
                 {...{ ${spreadProps} }}

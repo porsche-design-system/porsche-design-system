@@ -1,6 +1,6 @@
 # Stencil Patch
 
-We currently have one Stencil patch-package file with five patch sections in place, applied using
+We currently have one Stencil patch-package file with six patch sections in place, applied using
 [`patch-package`](https://www.npmjs.com/package/patch-package). The patch file is located in the `patches/` folder and
 is applied automatically when installing via a `postinstall` script.
 
@@ -8,10 +8,10 @@ Stencil version used when this document was last updated: `5.0.0-rc.1`
 
 Every section in the runtime is wrapped in `//========= PDS PATCH START` and `//========= PDS PATCH END`.
 
-| Patched file                                                | Sections                                                   |
-| ----------------------------------------------------------- | ---------------------------------------------------------- |
-| `node_modules/@stencil/core/dist/compiler-<hash>.mjs`       | attachInternals                                            |
-| `node_modules/@stencil/core/dist/runtime/client/runtime.js` | SSR, SSR props, boolean attribute, `componentShouldUpdate` |
+| Patched file                                                | Sections                                                                  |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `node_modules/@stencil/core/dist/compiler-<hash>.mjs`       | attachInternals                                                           |
+| `node_modules/@stencil/core/dist/runtime/client/runtime.js` | SSR, SSR props, SSR streaming, boolean attribute, `componentShouldUpdate` |
 
 `runtime.js` is the runtime Stencil bundles into the `loader-bundle` and `www` output targets; `lazy.js` next to it is
 only used with `externalRuntime`.
@@ -48,9 +48,9 @@ client. In order to avoid having duplicate contents in the shadowRoot from serve
 need to clear the shadowRoot before the client rendering.
 
 A shadow root that exists before Stencil attaches one was rendered on the server. This is detected in `attachShadowRoot`
-of `bootstrapLazy`, which Stencil calls in the constructor and on every connect. `hasDSR` stays `undefined` until that
-is known, so a shadow root Stencil created itself is never mistaken for a server rendered one when the host connects
-again.
+of `bootstrapLazy`, which Stencil calls in the constructor, on every connect and when it releases a held host (see
+[SSR streaming patch](#ssr-streaming-patch)). `hasDSR` stays `undefined` until that is known, so a shadow root Stencil
+created itself is never mistaken for a server rendered one when the host connects again.
 
 ```diff
 - if (cmpMeta.$flags$ & CMP_FLAGS.shadowDomEncapsulation && !(cmpMeta.$flags$ & CMP_FLAGS.shadowNeedsScopedCss) && !getShadowRoot(elm)) createShadowRoot.call(elm, cmpMeta);
@@ -81,11 +81,11 @@ boundary or registered by the loader script, would render its default props unti
 serializes the props that differ from their default as JSON into a `data-ssr-props` attribute on the server (see
 `packages/components-react/projects/react-ssr-wrapper/src/serializeSsrProps.ts`).
 
-This needs to be added in the lazy host's `connectedCallback` in `bootstrapLazy`, after the host got its shadow root, so
-the props are set before the component initializes and renders for the first time. Only declared props are applied,
-invalid JSON is ignored, and the attribute is removed so the props are applied only once. The wrapper's layout effect
-removes the attribute as well, so a component that starts after hydration never applies outdated server props over the
-synced ones.
+This needs to be added in the lazy host's `connectedCallback` in `bootstrapLazy`, after the host was released by the
+parse gate (`deferUntilParsed`) and got its shadow root, so the props are set before the component initializes and
+renders for the first time. Only declared props are applied, invalid JSON is ignored, and the attribute is removed so
+the props are applied only once. The wrapper's layout effect removes the attribute as well, so a component that starts
+after hydration never applies outdated server props over the synced ones.
 
 ```diff
 + const ssrProps = this.getAttribute("data-ssr-props");
@@ -99,6 +99,66 @@ synced ones.
 +   } catch {}
 + }
 ```
+
+### SSR streaming patch
+
+When server markup is streamed after the components were defined (a Suspense boundary of Next.js, or any page that
+registers the components before the markup), the parser creates each host with its definition at hand: it runs the
+constructor and `connectedCallback` before it has read the host's `<template shadowrootmode>`. A shadow root attached at
+that point makes the browser reject the declarative one
+(`A second declarative shadow root cannot be created on a host`), the `<template>` stays in the light DOM and breaks
+React's hydration ([#4162](https://github.com/porsche-design-system/porsche-design-system/issues/4162)).
+
+Stencil 5 solves this with a parse gate (`src/runtime/parse-gate.ts`,
+[stenciljs/core#7005](https://github.com/stenciljs/core/pull/7005)): a parser-created host gets no shadow root in the
+constructor, and a server rendered host is held until the parser has finished its subtree — the host or one of its
+ancestors has a next sibling, or the document is no longer loading. A `MutationObserver` re-checks the held hosts,
+`DOMContentLoaded` releases the rest, and nested hosts are released parent-first.
+
+Two things keep the gate from working for PDS out of the box, and the patch changes both:
+
+1. The gate is only compiled into builds with an `ssr` output target (`BUILD.hydrateClientSide`), which would also make
+   Stencil hydrate the server markup. Our server markup comes from the DSR components and has no hydration markers, so
+   it still has to be cleared and rendered again (see [SSR patch](#ssr-patch)). The patch removes the
+   `BUILD$1.hydrateClientSide` condition at the three places `bootstrapLazy` uses the gate, and nowhere else:
+
+   ```diff
+   - if (BUILD$1.shadowDom && !(BUILD$1.hydrateClientSide && mayStillBeParsing(self))) attachShadowRoot(self);
+   + if (BUILD$1.shadowDom && !mayStillBeParsing(self)) attachShadowRoot(self);
+   ```
+
+   ```diff
+   - if (BUILD$1.hydrateClientSide && deferUntilParsed(this)) return;
+   + if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && deferUntilParsed(this)) return;
+   ```
+
+   ```diff
+   - if (BUILD$1.hydrateClientSide && BUILD$1.shadowDom) HostElement.prototype.__attachShadow = function() {
+   + if (BUILD$1.shadowDom) HostElement.prototype.__attachShadow = function() {
+   ```
+
+   The `hasConnected` check is ours: a host that has started once is never held again, e.g. when React moves a streamed
+   boundary into place while the document is still loading.
+
+2. Stencil only holds hosts with its own `s-id` attribute. The React SSR wrapper marks the hosts it renders on the
+   server with `data-dsr` (`packages/components/scripts/wrapper-generator/NextJsReactWrapperGenerator.ts`). `data-ssr`
+   can't be the marker, because the client renders it too, and `data-ssr-props` is left out when every prop has its
+   default.
+
+   ```diff
+   + const isServerRendered = (elm) => elm.hasAttribute("s-id") || elm.hasAttribute("data-dsr");
+   - const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!elm.parentNode || elm.hasAttribute("s-id") && !isParsed(elm));
+   + const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!elm.parentNode || isServerRendered(elm) && !isParsed(elm));
+   ```
+
+   ```diff
+   - if (!win.document || !elm.hasAttribute("s-id")) return false;
+   + if (!win.document || !isServerRendered(elm)) return false;
+   ```
+
+`packages/components-js/tests/e2e/specs/streaming.e2e.ts` streams a document in chunks and covers the gate in every
+browser; `packages/components-react/projects/nextjs/tests/e2e/specs/streaming.e2e.ts` covers it with Suspense
+boundaries.
 
 ### boolean attribute patch
 
@@ -152,5 +212,5 @@ section can be removed once it is fixed there.
    The new patch file should be placed in the `patches/` folder and committed to the repository. The patch will be
    automatically applied with every install.
 4. Build `components` and `components-js` and check that the sections made it into the build, since Stencil removes code
-   behind build flags: `grep -c "hasDSR\|data-ssr-props" packages/components/dist/esm/runtime-*.js` prints a count for
-   each of them.
+   behind build flags: `grep -c "hasDSR\|data-ssr-props\|data-dsr" packages/components/dist/esm/runtime-*.js` prints a
+   count for each of them.
