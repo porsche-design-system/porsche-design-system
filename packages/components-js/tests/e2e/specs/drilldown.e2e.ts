@@ -616,26 +616,25 @@ test.describe('second level', () => {
   });
 
   skipInBrowsers(['webkit'], () => {
-    test.fixme(
-      'should show correct second level when drilldown-item with currently activeIdentifier is added',
-      async ({ page }) => {
-        await initBasicDrilldown(page, { open: true, activeIdentifier: 'item-4' });
-        const host = getHost(page);
-        await waitForStencilLifecycle(page);
+    test.fixme('should show correct second level when drilldown-item with currently activeIdentifier is added', async ({
+      page,
+    }) => {
+      await initBasicDrilldown(page, { open: true, activeIdentifier: 'item-4' });
+      const host = getHost(page);
+      await waitForStencilLifecycle(page);
 
-        await host.evaluate((el) => {
-          const newItem = document.createElement('p-drilldown-item');
-          newItem.setAttribute('identifier', 'item-4');
-          el.appendChild(newItem);
-        });
+      await host.evaluate((el) => {
+        const newItem = document.createElement('p-drilldown-item');
+        newItem.setAttribute('identifier', 'item-4');
+        el.appendChild(newItem);
+      });
 
-        await waitForStencilLifecycle(page);
-        await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
-        await expect(getDrilldownItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
-        await expect(getDrilldownItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
-        await expect(getDrilldownItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
-      }
-    );
+      await waitForStencilLifecycle(page);
+      await expect(getDrilldownItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
+      await expect(getDrilldownItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
+    });
   });
 });
 
@@ -987,6 +986,40 @@ test.describe('item identifier set after initial render', () => {
       await waitForStencilLifecycle(page);
 
       // console events can arrive after the lifecycle in WebKit
+      await expect
+        .poll(async () =>
+          (await page.consoleMessages())
+            .filter((message) => message.type() === 'error')
+            .map((message) => message.text())
+        )
+        .toEqual([
+          expect.stringContaining("Invalid value 'item-3' supplied to p-drilldown for property 'activeIdentifier'"),
+        ]);
+    });
+
+    test('should log an error when an update that changes nothing is queued while the last identifier is set', async ({
+      page,
+    }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-drilldown open active-identifier="item-3">
+  <p-drilldown-item identifier="item-1" label="Item 1"></p-drilldown-item>
+  <p-drilldown-item label="Item 2"></p-drilldown-item>
+</p-drilldown>`
+      );
+      const host = page.locator('p-drilldown');
+      await setProperty(host, 'aria', { 'aria-label': 'Some label' });
+      await waitForStencilLifecycle(page);
+
+      // Stencil asks componentShouldUpdate when it gets to a queued update, and an equal value makes it return false.
+      // The update the drilldown forces for the new identifier is queued at the same time and must not be lost with it.
+      await page.evaluate(() => {
+        const [, item] = Array.from(document.querySelectorAll('p-drilldown-item'));
+        (document.querySelector('p-drilldown') as HTMLPDrilldownElement).aria = { 'aria-label': 'Some label' };
+        (item as HTMLPDrilldownItemElement).identifier = 'item-2';
+      });
+      await waitForStencilLifecycle(page);
+
       await expect
         .poll(async () =>
           (await page.consoleMessages())

@@ -183,25 +183,52 @@ markup with `="false"`, so the patch keeps the behavior of Stencil 4 in two plac
 
 ### componentShouldUpdate patch
 
-Stencil 5 calls `componentShouldUpdate` once per render cycle, in `dispatchHooks`, after `scheduleUpdate` made the
-ancestor component wait for the update. When it returns `false`, Stencil returns without releasing the ancestor, which
-then never finishes its own update: its `componentDidRender` and `componentDidUpdate` are never called. Our components
-return `false` whenever a prop is set to an equal value, e.g. an `aria` object a parent passes on every render, so this
-happened to `p-carousel`, `p-drilldown` and `p-input-password`.
+Stencil 4 called `componentShouldUpdate` when a prop or state was set, and only queued an update when it returned
+`true`. Stencil 5 queues the update first and calls `componentShouldUpdate` once per render cycle, in `dispatchHooks`,
+with every change. Our components return `false` whenever a prop is set to an equal value, e.g. an `aria` object a
+parent passes on every render, which uncovers two bugs. Both are still present on Stencil's `v5` branch when this was
+written and should be reported upstream; the section can be removed once they are fixed there.
+
+**The ancestor is never released.** `scheduleUpdate` has already made the ancestor component wait for the update. When
+`componentShouldUpdate` returns `false`, Stencil returns without releasing it, so the ancestor never finishes its own
+update: its `componentDidRender` and `componentDidUpdate` are never called. This happened to `p-carousel`, `p-drilldown`
+and `p-input-password`.
+
+**A forced update is lost.** `forceUpdate()` does nothing when an update is queued already, and that queued update is
+dropped when `componentShouldUpdate` returns `false` for the props that changed in the same cycle. `p-drilldown` forces
+an update when an item gets its `identifier`; with an update queued at the same time that changed nothing, it never
+validated its `activeIdentifier` again. The patch marks the update as forced in `forceUpdate`:
 
 ```diff
-  if (safeCall(instance, "componentShouldUpdate", changes, elm) === false) {
-    hostRef.$flags$ &= ~HOST_FLAGS.isQueuedForUpdate;
-+   if (BUILD$1.asyncLoading && hostRef.$onRenderResolve$) {
-+     hostRef.$onRenderResolve$();
-+     hostRef.$onRenderResolve$ = void 0;
-+   }
-    return;
+- if (isConnected && (hostRef.$flags$ & (HOST_FLAGS.hasRendered | HOST_FLAGS.isQueuedForUpdate)) === HOST_FLAGS.hasRendered) scheduleUpdate(hostRef, false);
++ if (isConnected && hostRef.$flags$ & HOST_FLAGS.hasRendered) {
++   hostRef.$isUpdateForced$ = true;
++   if (!(hostRef.$flags$ & HOST_FLAGS.isQueuedForUpdate)) scheduleUpdate(hostRef, false);
++ }
+```
+
+and handles both bugs in `dispatchHooks`:
+
+```diff
++ const isUpdateForced = hostRef.$isUpdateForced$;
++ hostRef.$isUpdateForced$ = false;
+  if (BUILD$1.updatable && hostRef.$queuedPropChanges$) {
+    const changes = hostRef.$queuedPropChanges$;
+    hostRef.$queuedPropChanges$ = void 0;
+-   if (safeCall(instance, "componentShouldUpdate", changes, elm) === false) {
++   if (safeCall(instance, "componentShouldUpdate", changes, elm) === false && !isUpdateForced) {
+      hostRef.$flags$ &= ~HOST_FLAGS.isQueuedForUpdate;
++     if (BUILD$1.asyncLoading && hostRef.$onRenderResolve$) {
++       hostRef.$onRenderResolve$();
++       hostRef.$onRenderResolve$ = void 0;
++     }
+      return;
+    }
   }
 ```
 
-This is a bug in Stencil (still present on its `v5` branch when this was written) and should be reported upstream; the
-section can be removed once it is fixed there.
+`packages/components-js/tests/e2e/specs/drilldown.e2e.ts` covers the forced update
+(`should log an error when an update that changes nothing is queued while the last identifier is set`).
 
 ## How to update
 
