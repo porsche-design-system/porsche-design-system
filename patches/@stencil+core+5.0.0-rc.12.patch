@@ -1,5 +1,5 @@
 diff --git a/node_modules/@stencil/core/dist/runtime/client/runtime.js b/node_modules/@stencil/core/dist/runtime/client/runtime.js
-index afff174..b3e7e02 100644
+index afff174..e85f87c 100644
 --- a/node_modules/@stencil/core/dist/runtime/client/runtime.js
 +++ b/node_modules/@stencil/core/dist/runtime/client/runtime.js
 @@ -1827,7 +1827,11 @@ const parsePropertyValue = (propValue, propType) => {
@@ -40,7 +40,22 @@ index afff174..b3e7e02 100644
  					}
  					const propDesc = Object.getOwnPropertyDescriptor(prototype, propName);
  					const isUnchanged = newValue === this[propName] || newValue == null && this[propName] == null;
-@@ -5040,7 +5051,12 @@ const flush = () => {
+@@ -5015,6 +5026,14 @@ const parentOf = (node) => node.parentNode ?? (node.nodeType === NODE_TYPE.Docum
+ */
+ const isParsed = (elm) => {
+ 	if (win.document.readyState !== "loading") return true;
++	//========= PDS PATCH START
++	// SSR streaming patch: a following sibling doesn't prove that the parser is done with the host when a script inserted
++	// it, e.g. a portal container or the core chunk our loader appends to the body. The host then started too early and
++	// lost its declarative shadow root, or kept server markup that arrived later (https://github.com/stenciljs/core/issues/7049).
++	// The React SSR wrapper ends every declarative shadow root with a marker, so a host it rendered also has to have that.
++	// Check whether this is still needed once Stencil has fixed the issue.
++	if (elm.hasAttribute("data-dsr") && !elm.shadowRoot?.lastElementChild?.hasAttribute("data-dsr-end")) return false;
++	//========= PDS PATCH END
+ 	for (let n = elm; n; n = parentOf(n)) if (n.nextSibling) return true;
+ 	return false;
+ };
+@@ -5040,7 +5059,12 @@ const flush = () => {
  * @param elm the host element
  * @returns `true` if the element's subtree may be incomplete
  */
@@ -54,7 +69,7 @@ index afff174..b3e7e02 100644
  /**
  * Holds back `elm`'s `connectedCallback` while it's an SSR host the parser hasn't finished
  * with, or one nested inside such a host. Its shadow root is attached once its own subtree
-@@ -5050,7 +5066,9 @@ const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!e
+@@ -5050,7 +5074,9 @@ const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!e
  */
  const deferUntilParsed = (elm) => {
  	if (pending.has(elm)) return true;
@@ -65,7 +80,7 @@ index afff174..b3e7e02 100644
  	const parsed = isParsed(elm);
  	if (parsed && !hasPendingAncestor(elm)) return false;
  	if (parsed) elm.__attachShadow?.();
-@@ -5234,7 +5252,16 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5234,7 +5260,16 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  			if (BUILD$1.shadowReferenceTarget) cmpMeta.$referenceTarget$ = compactMeta[7];
  			const tagName = transformTag(cmpMeta.$tagName$);
  			const attachShadowRoot = (elm) => {
@@ -83,7 +98,7 @@ index afff174..b3e7e02 100644
  			};
  			const HostElement = class extends HTMLElement {
  				["s-p"];
-@@ -5244,13 +5271,34 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5244,13 +5279,37 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  					super(self);
  					self = this;
  					registerHost(self, cmpMeta);
@@ -101,6 +116,9 @@ index afff174..b3e7e02 100644
 +					//========= PDS PATCH START
 +					// A host that has started once is never held again, e.g. when React moves a streamed boundary into place.
 +					if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && deferUntilParsed(this)) return;
++					// The marker is only needed until the host starts. A clone of a started host has no end marker in its
++					// shadow root anymore, and would be held until the document is parsed if it still had the attribute.
++					this.removeAttribute("data-dsr");
 +					//========= PDS PATCH END
  					if (BUILD$1.shadowDom) attachShadowRoot(this);
 +					//========= PDS PATCH START
@@ -120,7 +138,7 @@ index afff174..b3e7e02 100644
  					/**
  					* The `connectedCallback` lifecycle event can potentially be fired multiple times
  					* if the element is removed from the DOM and re-inserted. This is not a common use case,
-@@ -5311,9 +5359,11 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5311,9 +5370,11 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  					if (BUILD$1.slotTextContent) patchTextContent(HostElement.prototype);
  				}
  			}

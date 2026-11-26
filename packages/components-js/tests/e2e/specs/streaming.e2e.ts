@@ -2,21 +2,23 @@ import { createServer, type Server, type ServerResponse } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { type Page } from '@playwright/test';
 import { expect, test } from '@porsche-design-system/testing/playwright';
+import { sleep } from '../helpers';
 
 // A server rendered host as the React SSR wrapper writes it: marked with `data-dsr`, its shadow DOM in a declarative
-// shadow root. When the markup is streamed after the components were defined, the parser creates the host with its
-// definition at hand, before it has read the `<template>`. The patched Stencil runtime then holds the host until the
-// parser is done with it (see patches/@stencil+core+*.patch and #4162).
+// shadow root that ends with a marker. When the markup is streamed after the components were defined, the parser
+// creates the host with its definition at hand, before it has read the `<template>`. The patched Stencil runtime then
+// holds the host until the parser is done with it (see patches/@stencil+core+*.patch and #4162).
 const hostStart = `<p-button id="host" data-ssr data-dsr data-ssr-props='{"variant":"secondary"}'>`;
 const templateStart = '<template shadowrootmode="open"><span id="server-rendered">Server';
-const templateEnd = ' rendered</span></template>';
+const shadowRootEndMarker = '<template data-dsr-end></template>';
+const templateEnd = ` rendered</span>${shadowRootEndMarker}</template>`;
 const hostEnd = 'Some label</p-button>';
 
 // WebKit on Linux reads the first 512 bytes to detect the content type before it starts the document, so the first
 // chunk has to be longer than that
 const sniffingBufferPadding = `<!-- ${'.'.repeat(2048)} -->`;
 
-const shell = `<!DOCTYPE html>
+const getShell = ({ loadComponents }: { loadComponents: boolean }): string => `<!DOCTYPE html>
 <html>
   <head>
     ${sniffingBufferPadding}
@@ -25,7 +27,7 @@ const shell = `<!DOCTYPE html>
   </head>
   <body>
     <script>
-      porscheDesignSystem.load();
+      ${loadComponents ? 'porscheDesignSystem.load();' : ''}
       window.firstRenderVariants = {};
       window.addEventListener('stencil_componentDidLoad', (e) => {
         const host = e.composedPath()[0];
@@ -33,6 +35,8 @@ const shell = `<!DOCTYPE html>
       });
     </script>
     <p id="shell">Shell</p>`;
+
+const shell = getShell({ loadComponents: true });
 
 type StreamedDocument = { url: string; sendNextChunk: () => Promise<void> };
 
@@ -113,6 +117,20 @@ const isRenderedByStencil = (page: Page, id = 'host'): Promise<boolean> =>
 const getFirstRenderVariant = (page: Page, id = 'host'): Promise<string | undefined> =>
   page.evaluate((id) => (window as any).firstRenderVariants[id], id);
 
+// What a portal, a toast container or a script loader does while the document is still streamed. The node becomes
+// the next sibling of an ancestor of every host the parser is inside of.
+const appendNodeToBody = (page: Page): Promise<void> =>
+  page.evaluate(() => {
+    document.body.append(document.createElement('div'));
+  });
+
+const getServerNodesInShadowRoot = (page: Page, id = 'host'): Promise<string[]> =>
+  page.evaluate(
+    (id) =>
+      Array.from(document.getElementById(id)!.shadowRoot!.querySelectorAll('[id^="server-rendered"]'), (el) => el.id),
+    id
+  );
+
 test.describe('server rendered host streamed after the components are defined', () => {
   test('should keep the declarative shadow root while the template is streamed and render once the host is parsed', async ({
     page,
@@ -171,7 +189,7 @@ test.describe('server rendered host streamed after the components are defined', 
   test('should render a server rendered host nested in the light DOM of another one', async ({ page }) => {
     const { url, sendNextChunk } = await streamDocument([
       shell,
-      `<p-fieldset id="parent" data-ssr data-dsr><template shadowrootmode="open"><span id="server-rendered">Server rendered</span><slot></slot></template>${hostStart}${templateStart}`,
+      `<p-fieldset id="parent" data-ssr data-dsr><template shadowrootmode="open"><span id="server-rendered">Server rendered</span><slot></slot>${shadowRootEndMarker}</template>${hostStart}${templateStart}`,
       `${templateEnd}${hostEnd}</p-fieldset><p id="after">After</p>`,
       '</body></html>',
     ]);
@@ -188,6 +206,123 @@ test.describe('server rendered host streamed after the components are defined', 
       .toMatchObject({ hasServerMarkup: false, hasShadowRoot: true, hasLeftoverTemplate: false });
     expect(await getHostState(page)).toMatchObject({ hasLeftoverTemplate: false });
     expect(await getFirstRenderVariant(page), 'first render variant').toBe('secondary');
+
+    await sendNextChunk();
+  });
+});
+
+// The parser is done with a host once the host or one of its ancestors has a next sibling. A script can insert such a
+// sibling while the parser is still inside the host, so the end marker of the declarative shadow root has to be there
+// as well (https://github.com/stenciljs/core/issues/7049).
+test.describe('node inserted by a script while a server rendered host is streamed', () => {
+  test('should keep waiting for the declarative shadow root when the node is inserted before it', async ({ page }) => {
+    const { url, sendNextChunk } = await streamDocument([
+      `${shell}<main>`,
+      // the chunk ends after the opening tag of the host
+      hostStart,
+      templateStart,
+      `${templateEnd}${hostEnd}</main><p id="after">After</p>`,
+      '</body></html>',
+    ]);
+    await gotoShell(page, url);
+
+    await sendNextChunk();
+    await expect.poll(() => getHostState(page)).toMatchObject({ hasShadowRoot: false });
+    await appendNodeToBody(page);
+    // a host that starts attaches its shadow root right away, and the parser can't attach the declarative one anymore
+    expect(await getHostState(page)).toMatchObject({ hasShadowRoot: false });
+
+    await sendNextChunk();
+    await expect
+      .poll(() => getHostState(page))
+      .toMatchObject({ hasServerMarkup: true, serverText: 'Server', hasLeftoverTemplate: false });
+
+    await sendNextChunk();
+    await expect.poll(() => isRenderedByStencil(page)).toBe(true);
+    expect(await page.evaluate(() => document.readyState)).toBe('loading');
+    expect(await getHostState(page)).toMatchObject({ hasShadowRoot: true, hasLeftoverTemplate: false });
+    expect(await getFirstRenderVariant(page), 'first render variant').toBe('secondary');
+
+    await sendNextChunk();
+  });
+
+  test('should not start while the declarative shadow root is streamed', async ({ page }) => {
+    const { url, sendNextChunk } = await streamDocument([
+      `${shell}<main>`,
+      // the chunk ends between two nodes of the declarative shadow root
+      `${hostStart}<template shadowrootmode="open"><span id="server-rendered">Server rendered</span>`,
+      `<span id="server-rendered-late">Late</span>${shadowRootEndMarker}</template>${hostEnd}</main><p id="after">After</p>`,
+      '</body></html>',
+    ]);
+    await gotoShell(page, url);
+
+    await sendNextChunk();
+    await expect.poll(() => getHostState(page)).toMatchObject({ hasServerMarkup: true });
+    await appendNodeToBody(page);
+    // time for a host that started by mistake to render
+    await sleep(500);
+    expect(await getFirstRenderVariant(page), 'has not started').toBeUndefined();
+    expect(await getServerNodesInShadowRoot(page)).toEqual(['server-rendered']);
+
+    await sendNextChunk();
+    await expect.poll(() => isRenderedByStencil(page)).toBe(true);
+    // the parser would add the late node to a shadow root the component has rendered already
+    expect(await getServerNodesInShadowRoot(page)).toEqual([]);
+    expect(await getFirstRenderVariant(page), 'first render variant').toBe('secondary');
+
+    await sendNextChunk();
+  });
+
+  test('should keep waiting for the declarative shadow root when the components are loaded before it', async ({
+    page,
+  }) => {
+    const { url, sendNextChunk } = await streamDocument([
+      `${getShell({ loadComponents: false })}<main>`,
+      hostStart,
+      `${templateStart}${templateEnd}${hostEnd}</main><p id="after">After</p>`,
+      '</body></html>',
+    ]);
+    await page.goto(url, { waitUntil: 'commit' });
+    await expect.poll(() => page.evaluate(() => 'porscheDesignSystem' in window)).toBe(true);
+
+    await sendNextChunk();
+    await expect.poll(() => getHostState(page)).toMatchObject({ hasShadowRoot: false });
+    await page.evaluate(() => (window as any).porscheDesignSystem.load());
+    await expect.poll(() => page.evaluate(() => !!customElements.get('p-button'))).toBe(true);
+    // the loader has appended the script of the core chunk to the body, which is what releases the host by mistake
+    expect(await page.evaluate(() => document.querySelector('main')!.nextElementSibling?.localName)).toBe('script');
+    expect(await getHostState(page)).toMatchObject({ hasShadowRoot: false });
+
+    await sendNextChunk();
+    await expect.poll(() => isRenderedByStencil(page)).toBe(true);
+    expect(await getHostState(page)).toMatchObject({ hasShadowRoot: true, hasLeftoverTemplate: false });
+    expect(await getFirstRenderVariant(page), 'first render variant').toBe('secondary');
+
+    await sendNextChunk();
+  });
+});
+
+test.describe('clone of a server rendered host that has started', () => {
+  test('should start while the document is still streamed', async ({ page }) => {
+    const { url, sendNextChunk } = await streamDocument([
+      shell,
+      `${hostStart}${templateStart}${templateEnd}${hostEnd}<p id="after">After</p>`,
+      '</body></html>',
+    ]);
+    await gotoShell(page, url);
+
+    await sendNextChunk();
+    await expect.poll(() => isRenderedByStencil(page)).toBe(true);
+    // the marker is gone, so that a clone, whose shadow root has no end marker, isn't held until the document is parsed
+    await expect(page.locator('#host')).not.toHaveAttribute('data-dsr');
+
+    await page.evaluate(() => {
+      const clone = document.getElementById('host')!.cloneNode(true) as HTMLElement;
+      clone.id = 'clone';
+      document.body.append(clone);
+    });
+    await expect.poll(() => getFirstRenderVariant(page, 'clone')).toBeDefined();
+    expect(await page.evaluate(() => document.readyState)).toBe('loading');
 
     await sendNextChunk();
   });

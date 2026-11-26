@@ -85,8 +85,17 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
 
   // a shadow root created by the html parser takes its clonable flag from the template and cannot be
   // changed afterwards, so ssr rendered components stay unclonable without this attribute
-  for (const template of container.querySelectorAll('template')) {
+  for (const template of container.querySelectorAll('template[shadowrootmode]')) {
     expect(template.getAttribute('shadowrootclonable')).toBe('true');
+  }
+
+  // the web component only starts once this marker is in its shadow root, so every host that is marked as server
+  // rendered needs a declarative shadow root that ends with it
+  const serverRenderedHosts = container.querySelectorAll('[data-dsr]');
+  expect(serverRenderedHosts.length).toBeGreaterThan(0);
+  for (const host of serverRenderedHosts) {
+    const template = host.querySelector(':scope > template[shadowrootmode]');
+    expect(template?.lastElementChild?.getAttribute('data-dsr-end'), host.tagName).toBe('');
   }
 
   expect(container.firstElementChild).toMatchSnapshot();
@@ -244,5 +253,20 @@ describe('server marker', () => {
     const template = container.querySelector('p-button > template') as HTMLTemplateElement;
 
     expect(template.content.querySelector('p-spinner')!.getAttribute('data-dsr')).toBe('');
+  });
+
+  it('should end the declarative shadow root with a marker, also the one of a component within it', () => {
+    const container = renderOnServer(<fromComponents.PButton loading={true}>Some label</fromComponents.PButton>);
+    const template = container.querySelector('p-button > template') as HTMLTemplateElement;
+    const spinnerTemplate = template.content.querySelector('p-spinner > template') as HTMLTemplateElement;
+
+    expect(template.content.lastElementChild!.outerHTML).toBe('<template data-dsr-end=""></template>');
+    expect(spinnerTemplate.content.lastElementChild!.outerHTML).toBe('<template data-dsr-end=""></template>');
+  });
+
+  it('should not render the marker in the light DOM', () => {
+    const container = renderOnServer(<fromComponents.PButton>Some label</fromComponents.PButton>);
+
+    expect(container.querySelector('p-button')!.querySelector(':scope > [data-dsr-end]')).toBe(null);
   });
 });

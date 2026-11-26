@@ -154,6 +154,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         <template shadowroot="open" shadowrootmode="open" shadowrootclonable="true"${delegatesFocusProp}>
           <style dangerouslySetInnerHTML={{ __html: style }} />
           ${g1.trim().replace(/\n/g, '$&    ')}
+          {/* Has to stay the last node: it tells the web component that the parser has read the whole declarative shadow root. */}
+          <template data-dsr-end="" />
         </template>${children}
       </>
     );`;

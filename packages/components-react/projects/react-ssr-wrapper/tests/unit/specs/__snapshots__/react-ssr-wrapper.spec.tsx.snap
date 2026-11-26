@@ -321,6 +321,9 @@ img {
               src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-icon>
       </button>
@@ -554,6 +557,9 @@ img {
                       src="http://localhost:3001/icons/search.3f0f1ce.svg"
                       width="24"
                     />
+                    <template
+                      data-dsr-end=""
+                    />
                   </template>
                 </p-icon>
                 <input
@@ -716,6 +722,9 @@ img {
                             src="http://localhost:3001/icons/close.eec3c5d.svg"
                             width="24"
                           />
+                          <template
+                            data-dsr-end=""
+                          />
                         </template>
                       </p-icon>
                       <span
@@ -728,6 +737,9 @@ img {
                       class="loading"
                       id="loading"
                       role="status"
+                    />
+                    <template
+                      data-dsr-end=""
                     />
                   </template>
                   Clear field
@@ -747,6 +759,9 @@ img {
                 role="status"
               />
             </div>
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-input-search>
         <div
@@ -788,6 +803,9 @@ img {
         role="alert"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   <p-multi-select-option
     data-dsr=""
@@ -891,6 +909,9 @@ slot {
         />
         <slot />
       </div>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Option A
   </p-multi-select-option>
@@ -996,6 +1017,9 @@ slot {
         />
         <slot />
       </div>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Option B
   </p-multi-select-option>
@@ -1101,6 +1125,9 @@ slot {
         />
         <slot />
       </div>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Option C
   </p-multi-select-option>
@@ -1206,6 +1233,9 @@ slot {
         />
         <slot />
       </div>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Option D
   </p-multi-select-option>
@@ -1311,6 +1341,9 @@ slot {
         />
         <slot />
       </div>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Option E
   </p-multi-select-option>
@@ -1416,6 +1449,9 @@ slot {
         />
         <slot />
       </div>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Option F
   </p-multi-select-option>
@@ -1612,6 +1648,9 @@ input:focus-visible {
         role="status"
       />
     </fieldset>
+    <template
+      data-dsr-end=""
+    />
   </template>
 </p-pin-code>
 `;
@@ -1720,6 +1759,9 @@ slot:not([name]) {
         role="alert"
       />
     </fieldset>
+    <template
+      data-dsr-end=""
+    />
   </template>
   <p-segmented-control-item
     data-dsr=""
@@ -1779,6 +1821,9 @@ span {
       >
         <slot />
       </button>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Item 1
   </p-segmented-control-item>
@@ -1848,6 +1893,9 @@ span {
       >
         <slot />
       </button>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Item 2
   </p-segmented-control-item>
@@ -2027,9 +2075,15 @@ slot {
             />
           </div>
         </div>
+        <template
+          data-dsr-end=""
+        />
       </template>
       <slot />
     </p-scroller>
+    <template
+      data-dsr-end=""
+    />
   </template>
   <p-stepper-horizontal-item
     data-dsr=""
@@ -2167,6 +2221,9 @@ button:focus-visible {
         />
         <slot />
       </button>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Item 1
   </p-stepper-horizontal-item>
@@ -2306,6 +2363,9 @@ button:focus-visible {
         />
         <slot />
       </button>
+      <template
+        data-dsr-end=""
+      />
     </template>
     Item 2
   </p-stepper-horizontal-item>
@@ -2548,12 +2608,18 @@ slot {
             />
           </div>
         </div>
+        <template
+          data-dsr-end=""
+        />
       </template>
       <slot />
       <span
         class="bar"
       />
     </p-scroller>
+    <template
+      data-dsr-end=""
+    />
   </template>
   <a
     href="#"
@@ -2828,12 +2894,18 @@ slot {
                 />
               </div>
             </div>
+            <template
+              data-dsr-end=""
+            />
           </template>
           <slot />
           <span
             class="bar"
           />
         </p-scroller>
+        <template
+          data-dsr-end=""
+        />
       </template>
       <button
         type="button"
@@ -2847,6 +2919,9 @@ slot {
       </button>
     </p-tabs-bar>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   <p-tabs-item
     data-dsr=""
@@ -2878,6 +2953,9 @@ slot {
 
       </style>
       <slot />
+      <template
+        data-dsr-end=""
+      />
     </template>
   </p-tabs-item>
   <p-tabs-item
@@ -2911,6 +2989,9 @@ slot {
 
       </style>
       <slot />
+      <template
+        data-dsr-end=""
+      />
     </template>
   </p-tabs-item>
 </p-tabs>
@@ -2956,6 +3037,9 @@ ol,ul {
     <ol>
       <slot />
     </ol>
+    <template
+      data-dsr-end=""
+    />
   </template>
   <p-text-list-item
     data-dsr=""
@@ -2992,6 +3076,9 @@ slot {
 }
       </style>
       <slot />
+      <template
+        data-dsr-end=""
+      />
     </template>
     Item 1
   </p-text-list-item>
@@ -3030,6 +3117,9 @@ slot {
 }
       </style>
       <slot />
+      <template
+        data-dsr-end=""
+      />
     </template>
     Item 2
   </p-text-list-item>
@@ -3206,6 +3296,9 @@ exports[`should render dsr component for PAccordion 1`] = `
         <slot />
       </div>
     </details>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-accordion>
@@ -3268,6 +3361,9 @@ div::before {
     <div>
       AI-generated
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
 </p-ai-tag>
 `;
@@ -3450,6 +3546,9 @@ slot:not([name]),slot[name="description"],p {
         </button>
       </div>
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-banner>
@@ -3566,6 +3665,9 @@ exports[`should render dsr component for PButton 1`] = `
       class="loading"
       id="loading"
       role="status"
+    />
+    <template
+      data-dsr-end=""
     />
   </template>
   Some child
@@ -3725,6 +3827,9 @@ img:dir(rtl) {
             src="http://localhost:3001/icons/arrow-right.872716b.svg"
             width="24"
           />
+          <template
+            data-dsr-end=""
+          />
         </template>
       </p-icon>
       <span
@@ -3737,6 +3842,9 @@ img:dir(rtl) {
       class="loading"
       id="loading"
       role="status"
+    />
+    <template
+      data-dsr-end=""
     />
   </template>
   Some child
@@ -3989,10 +4097,16 @@ p {
               id="loading"
               role="status"
             />
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-button>
       </div>
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-button-tile>
@@ -4484,6 +4598,9 @@ img {
                       src="http://localhost:3001/icons/sidebar.8e43896.svg"
                       width="24"
                     />
+                    <template
+                      data-dsr-end=""
+                    />
                   </template>
                 </p-icon>
                 <span
@@ -4496,6 +4613,9 @@ img {
                 class="loading"
                 id="loading"
                 role="status"
+              />
+              <template
+                data-dsr-end=""
               />
             </template>
             Open
@@ -4579,6 +4699,9 @@ img {
                 width="30"
               />
             </picture>
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-crest>
         <p-wordmark
@@ -4650,6 +4773,9 @@ svg {
                 d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z"
               />
             </svg>
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-wordmark>
         <div
@@ -4829,6 +4955,9 @@ img {
                       src="http://localhost:3001/icons/sidebar.8e43896.svg"
                       width="24"
                     />
+                    <template
+                      data-dsr-end=""
+                    />
                   </template>
                 </p-icon>
                 <span
@@ -4841,6 +4970,9 @@ img {
                 class="loading"
                 id="loading"
                 role="status"
+              />
+              <template
+                data-dsr-end=""
               />
             </template>
             Open
@@ -4857,6 +4989,9 @@ img {
         <slot />
       </main>
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-canvas>
@@ -5026,6 +5161,9 @@ exports[`should render dsr component for PCarousel 1`] = `
       aria-atomic="true"
       aria-live="polite"
       class="slide-status"
+    />
+    <template
+      data-dsr-end=""
     />
   </template>
   <div>
@@ -5240,6 +5378,9 @@ input:checked::before {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-checkbox>
@@ -5319,6 +5460,9 @@ img {
         width="30"
       />
     </picture>
+    <template
+      data-dsr-end=""
+    />
   </template>
 </p-crest>
 `;
@@ -5357,6 +5501,9 @@ exports[`should render dsr component for PDisplay 1`] = `
     >
       <slot />
     </h1>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-display>
@@ -5394,6 +5541,9 @@ hr {
 
     </style>
     <hr />
+    <template
+      data-dsr-end=""
+    />
   </template>
 </p-divider>
 `;
@@ -5753,6 +5903,9 @@ img:dir(rtl) {
                     src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
                     width="24"
                   />
+                  <template
+                    data-dsr-end=""
+                  />
                 </template>
               </p-icon>
               <span
@@ -5765,6 +5918,9 @@ img:dir(rtl) {
               class="loading"
               id="loading"
               role="status"
+            />
+            <template
+              data-dsr-end=""
             />
           </template>
           Back
@@ -5928,6 +6084,9 @@ img {
                     src="http://localhost:3001/icons/close.eec3c5d.svg"
                     width="24"
                   />
+                  <template
+                    data-dsr-end=""
+                  />
                 </template>
               </p-icon>
               <span
@@ -5940,6 +6099,9 @@ img {
               class="loading"
               id="loading"
               role="status"
+            />
+            <template
+              data-dsr-end=""
             />
           </template>
           Dismiss drilldown
@@ -6103,6 +6265,9 @@ img {
                     src="http://localhost:3001/icons/close.eec3c5d.svg"
                     width="24"
                   />
+                  <template
+                    data-dsr-end=""
+                  />
                 </template>
               </p-icon>
               <span
@@ -6116,6 +6281,9 @@ img {
               id="loading"
               role="status"
             />
+            <template
+              data-dsr-end=""
+            />
           </template>
           Dismiss drilldown
         </p-button>
@@ -6126,6 +6294,9 @@ img {
         </div>
       </div>
     </dialog>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-drilldown>
@@ -6379,6 +6550,9 @@ img:dir(rtl) {
                 src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                 width="24"
               />
+              <template
+                data-dsr-end=""
+              />
             </template>
           </p-icon>
           <span
@@ -6391,6 +6565,9 @@ img:dir(rtl) {
           class="loading"
           id="loading"
           role="status"
+        />
+        <template
+          data-dsr-end=""
         />
       </template>
     </p-button-pure>
@@ -6562,6 +6739,9 @@ img:dir(rtl) {
                 src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
                 width="24"
               />
+              <template
+                data-dsr-end=""
+              />
             </template>
           </p-icon>
           <span
@@ -6575,6 +6755,9 @@ img:dir(rtl) {
           id="loading"
           role="status"
         />
+        <template
+          data-dsr-end=""
+        />
       </template>
     </p-button-pure>
     <h2 />
@@ -6587,6 +6770,9 @@ img:dir(rtl) {
         <slot />
       </div>
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-drilldown-item>
@@ -6643,6 +6829,9 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
 
     </style>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-drilldown-link>
@@ -6695,6 +6884,9 @@ fieldset {
         role="alert"
       />
     </fieldset>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-fieldset>
@@ -6739,6 +6931,9 @@ img {
       loading="lazy"
       src="http://localhost:3001/flags/de.b575e11.svg"
       width="24"
+    />
+    <template
+      data-dsr-end=""
     />
   </template>
 </p-flag>
@@ -6943,6 +7138,9 @@ dialog::backdrop {
         </div>
       </div>
     </dialog>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-flyout>
@@ -6983,6 +7181,9 @@ exports[`should render dsr component for PHeading 1`] = `
     >
       <slot />
     </h2>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-heading>
@@ -7039,6 +7240,9 @@ img:dir(rtl) {
       loading="lazy"
       src="http://localhost:3001/icons/arrow-right.872716b.svg"
       width="24"
+    />
+    <template
+      data-dsr-end=""
     />
   </template>
 </p-icon>
@@ -7185,6 +7389,9 @@ slot:not([name]),slot[name="description"],p {
         </span>
       </button>
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-inline-notification>
@@ -7376,6 +7583,9 @@ input::-webkit-calendar-picker-indicator {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-date>
@@ -7562,6 +7772,9 @@ input {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-email>
@@ -7754,6 +7967,9 @@ input::-webkit-calendar-picker-indicator {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-month>
@@ -7942,6 +8158,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-number>
@@ -8125,6 +8344,9 @@ input {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-password>
@@ -8311,6 +8533,9 @@ input::-webkit-search-cancel-button {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-search>
@@ -8497,6 +8722,9 @@ input {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-tel>
@@ -8680,6 +8908,9 @@ input {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-text>
@@ -8871,6 +9102,9 @@ input::-webkit-calendar-picker-indicator {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-time>
@@ -9057,6 +9291,9 @@ input {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-url>
@@ -9249,6 +9486,9 @@ input::-webkit-calendar-picker-indicator {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-input-week>
@@ -9358,6 +9598,9 @@ exports[`should render dsr component for PLink 1`] = `
         <slot />
       </span>
     </span>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-link>
@@ -9518,6 +9761,9 @@ img:dir(rtl) {
             src="http://localhost:3001/icons/arrow-right.872716b.svg"
             width="24"
           />
+          <template
+            data-dsr-end=""
+          />
         </template>
       </p-icon>
       <span
@@ -9526,6 +9772,9 @@ img:dir(rtl) {
         <slot />
       </span>
     </span>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-link-pure>
@@ -9773,10 +10022,16 @@ p {
                 <slot />
               </span>
             </span>
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-link>
       </div>
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-link-tile>
@@ -10062,6 +10317,9 @@ img {
                     src="http://localhost:3001/icons/heart.9a5962e.svg"
                     width="24"
                   />
+                  <template
+                    data-dsr-end=""
+                  />
                 </template>
               </p-icon>
               <span
@@ -10074,6 +10332,9 @@ img {
               class="loading"
               id="loading"
               role="status"
+            />
+            <template
+              data-dsr-end=""
             />
           </template>
           Add to wishlist
@@ -10088,6 +10349,9 @@ img {
         class="wrapper"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-link-tile-product>
@@ -10286,6 +10550,9 @@ dialog::backdrop {
         </div>
       </div>
     </dialog>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-modal>
@@ -10339,6 +10606,9 @@ img {
     <img
       alt="911"
       src="http://localhost:3001/model-signatures/911.b68f913.svg"
+    />
+    <template
+      data-dsr-end=""
     />
   </template>
   Some child
@@ -10666,6 +10936,9 @@ img {
               src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-icon>
       </button>
@@ -10899,6 +11172,9 @@ img {
                       src="http://localhost:3001/icons/search.3f0f1ce.svg"
                       width="24"
                     />
+                    <template
+                      data-dsr-end=""
+                    />
                   </template>
                 </p-icon>
                 <input
@@ -11061,6 +11337,9 @@ img {
                             src="http://localhost:3001/icons/close.eec3c5d.svg"
                             width="24"
                           />
+                          <template
+                            data-dsr-end=""
+                          />
                         </template>
                       </p-icon>
                       <span
@@ -11073,6 +11352,9 @@ img {
                       class="loading"
                       id="loading"
                       role="status"
+                    />
+                    <template
+                      data-dsr-end=""
                     />
                   </template>
                   Clear field
@@ -11092,6 +11374,9 @@ img {
                 role="status"
               />
             </div>
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-input-search>
         <div
@@ -11133,6 +11418,9 @@ img {
         role="alert"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-multi-select>
@@ -11241,6 +11529,9 @@ slot {
       />
       <slot />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-multi-select-option>
@@ -11286,6 +11577,9 @@ exports[`should render dsr component for POptgroup 1`] = `
       />
       <slot />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-optgroup>
@@ -11468,6 +11762,9 @@ img:dir(rtl) {
                   src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
                   width="24"
                 />
+                <template
+                  data-dsr-end=""
+                />
               </template>
             </p-icon>
           </span>
@@ -11544,12 +11841,18 @@ img:dir(rtl) {
                   src="http://localhost:3001/icons/arrow-right.872716b.svg"
                   width="24"
                 />
+                <template
+                  data-dsr-end=""
+                />
               </template>
             </p-icon>
           </span>
         </li>
       </ul>
     </nav>
+    <template
+      data-dsr-end=""
+    />
   </template>
 </p-pagination>
 `;
@@ -11740,6 +12043,9 @@ input:focus-visible {
         role="status"
       />
     </fieldset>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-pin-code>
@@ -11897,6 +12203,9 @@ button::after {
       />
       <slot />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-popover>
@@ -12044,6 +12353,9 @@ slot[name="label-after"]::slotted(*) {
         role="status"
       />
     </fieldset>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-radio-group>
@@ -12210,6 +12522,9 @@ input:checked::before {
         role="status"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-radio-group-option>
@@ -12361,6 +12676,9 @@ slot {
         />
       </div>
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-scroller>
@@ -12470,6 +12788,9 @@ slot:not([name]) {
         role="alert"
       />
     </fieldset>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-segmented-control>
@@ -12541,6 +12862,9 @@ span {
     >
       <slot />
     </button>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-segmented-control-item>
@@ -12874,6 +13198,9 @@ img {
               src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-icon>
       </button>
@@ -12901,6 +13228,9 @@ img {
         role="alert"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-select>
@@ -12980,6 +13310,9 @@ exports[`should render dsr component for PSelectOption 1`] = `
     >
       <slot />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-select-option>
@@ -13180,6 +13513,9 @@ dialog::backdrop {
         </div>
       </div>
     </dialog>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-sheet>
@@ -13296,6 +13632,9 @@ exports[`should render dsr component for PSpinner 1`] = `
         />
       </svg>
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
 </p-spinner>
 `;
@@ -13473,9 +13812,15 @@ slot {
             />
           </div>
         </div>
+        <template
+          data-dsr-end=""
+        />
       </template>
       <slot />
     </p-scroller>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-stepper-horizontal>
@@ -13618,6 +13963,9 @@ button:focus-visible {
       />
       <slot />
     </button>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-stepper-horizontal-item>
@@ -13756,6 +14104,9 @@ label {
       class="loading"
       id="loading"
       role="status"
+    />
+    <template
+      data-dsr-end=""
     />
   </template>
   Some child
@@ -13960,6 +14311,9 @@ slot {
             />
           </div>
         </div>
+        <template
+          data-dsr-end=""
+        />
       </template>
       <div
         class="table"
@@ -13968,6 +14322,9 @@ slot {
         <slot />
       </div>
     </p-scroller>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-table>
@@ -13993,6 +14350,9 @@ exports[`should render dsr component for PTableBody 1`] = `
 }
     </style>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-table-body>
@@ -14022,6 +14382,9 @@ exports[`should render dsr component for PTableCell 1`] = `
 }
     </style>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-table-cell>
@@ -14053,6 +14416,9 @@ exports[`should render dsr component for PTableHead 1`] = `
 }
     </style>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-table-head>
@@ -14087,6 +14453,9 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
     <span>
       <slot />
     </span>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-table-head-cell>
@@ -14112,6 +14481,9 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 }
     </style>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-table-head-row>
@@ -14145,6 +14517,9 @@ exports[`should render dsr component for PTableRow 1`] = `
 
     </style>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-table-row>
@@ -14410,12 +14785,18 @@ slot {
                 />
               </div>
             </div>
+            <template
+              data-dsr-end=""
+            />
           </template>
           <slot />
           <span
             class="bar"
           />
         </p-scroller>
+        <template
+          data-dsr-end=""
+        />
       </template>
       <button
         type="button"
@@ -14424,6 +14805,9 @@ slot {
       </button>
     </p-tabs-bar>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   <p-tabs-item
     label="TabItem"
@@ -14658,12 +15042,18 @@ slot {
             />
           </div>
         </div>
+        <template
+          data-dsr-end=""
+        />
       </template>
       <slot />
       <span
         class="bar"
       />
     </p-scroller>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-tabs-bar>
@@ -14700,6 +15090,9 @@ exports[`should render dsr component for PTabsItem 1`] = `
 
     </style>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-tabs-item>
@@ -14776,6 +15169,9 @@ span {
     <span>
       <slot />
     </span>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-tag>
@@ -14918,10 +15314,16 @@ img {
               src="http://localhost:3001/icons/close.eec3c5d.svg"
               width="24"
             />
+            <template
+              data-dsr-end=""
+            />
           </template>
         </p-icon>
       </span>
     </button>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-tag-dismissible>
@@ -14962,6 +15364,9 @@ exports[`should render dsr component for PText 1`] = `
     >
       <slot />
     </p>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-text>
@@ -15004,6 +15409,9 @@ ol,ul {
     <ul>
       <slot />
     </ul>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-text-list>
@@ -15045,6 +15453,9 @@ slot {
 }
     </style>
     <slot />
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-text-list-item>
@@ -15193,6 +15604,9 @@ textarea:focus {
         role="alert"
       />
     </div>
+    <template
+      data-dsr-end=""
+    />
   </template>
   Some child
 </p-textarea>
@@ -15217,6 +15631,9 @@ exports[`should render dsr component for PToast 1`] = `
   z-index: 999999 !important;
 }
     </style>
+    <template
+      data-dsr-end=""
+    />
   </template>
 </p-toast>
 `;
@@ -15297,6 +15714,9 @@ svg {
         d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z"
       />
     </svg>
+    <template
+      data-dsr-end=""
+    />
   </template>
 </p-wordmark>
 `;

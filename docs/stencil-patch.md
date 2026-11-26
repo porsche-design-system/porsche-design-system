@@ -107,7 +107,7 @@ constructor, and a server rendered host is held until the parser has finished it
 ancestors has a next sibling, or the document is no longer loading. A `MutationObserver` re-checks the held hosts,
 `DOMContentLoaded` releases the rest, and nested hosts are released parent-first.
 
-Two things keep the gate from working for PDS out of the box, and the patch changes both:
+Three things keep the gate from working for PDS out of the box, and the patch changes all of them:
 
 1. The gate is only compiled into builds with an `ssr` output target (`BUILD.hydrateClientSide`), which would also make
    Stencil hydrate the server markup. Our server markup comes from the DSR components and has no hydration markers, so
@@ -148,9 +148,50 @@ Two things keep the gate from working for PDS out of the box, and the patch chan
    + if (!win.document || !isServerRendered(elm)) return false;
    ```
 
+3. A next sibling only proves that the parser has finished a host when the parser inserted it. A script can insert one
+   while the parser is still inside the host, e.g. a portal container that is appended to the body, or the `<script>` of
+   the core chunk, which our own loader appends to the body. Stencil then releases the host too early
+   ([stenciljs/core#7049](https://github.com/stenciljs/core/issues/7049)). Before the parser has read the host's
+   `<template>`, that brings back the error and the hydration problem this section is about. While the parser is inside
+   the `<template>`, the component renders, and the parser adds the rest of the server markup to the rendered shadow
+   root.
+
+   The DSR components therefore end their declarative shadow root with a marker, `<template data-dsr-end>`
+   (`packages/components/scripts/generateDSRComponents.ts`), and a host with `data-dsr` is only parsed once the marker
+   is the last element of its shadow root. Scripts of a page can't add it by accident, and nothing follows it in the
+   shadow root. The check of Stencil stays in place after it, so a host still waits for its light DOM whenever no script
+   interferes:
+
+   ```diff
+     const isParsed = (elm) => {
+       if (win.document.readyState !== "loading") return true;
+   +   if (elm.hasAttribute("data-dsr") && !elm.shadowRoot?.lastElementChild?.hasAttribute("data-dsr-end")) return false;
+       for (let n = elm; n; n = parentOf(n)) if (n.nextSibling) return true;
+       return false;
+     };
+   ```
+
+   The component removes `data-dsr` when it starts. A clone of a started host has a shadow root without the marker,
+   because the component has rendered it, and would be held until the document is parsed if it still had the attribute:
+
+   ```diff
+     if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && deferUntilParsed(this)) return;
+   + this.removeAttribute("data-dsr");
+   ```
+
+   **Check this part again once Stencil has fixed
+   [stenciljs/core#7049](https://github.com/stenciljs/core/issues/7049).** Stencil can only fix it for the markup of its
+   own server rendering, so our marker most likely stays, but the two checks have to keep working together. The tests
+   named below fail when they don't. See
+   [#4888](https://github.com/porsche-design-system/porsche-design-system/issues/4888).
+
 `packages/components-js/tests/e2e/specs/streaming.e2e.ts` streams a document in chunks and covers the gate in every
-browser; `packages/components-react/projects/nextjs/tests/e2e/specs/streaming.e2e.ts` covers it with Suspense
-boundaries.
+browser, including a node that a script inserts before and inside the `<template>`, the components being loaded while a
+host is parsed, and the clone of a started host.
+`packages/components-react/projects/nextjs/tests/e2e/specs/streaming.e2e.ts` covers it with Suspense boundaries, and
+holds a streamed response in the middle of a host to check that React hydrates it when a script inserts a node
+meanwhile. The unit tests of the React SSR wrapper check that every server rendered host ends its declarative shadow
+root with the marker.
 
 ### boolean attribute patch
 
@@ -187,4 +228,4 @@ see [#4887](https://github.com/porsche-design-system/porsche-design-system/issue
    the exception is agreed, run it as `npm_config_min_release_age=0 npx patch-package @stencil/core`.
 4. Build `components` and `components-js` and check that the sections made it into the build, since Stencil removes code
    behind build flags. Each of these has to print a count above 0:
-   `for s in hasDSR data-ssr-props data-dsr '=== "false"'; do grep -c "$s" packages/components/dist/esm/runtime-*.js; done`
+   `for s in hasDSR data-ssr-props data-dsr data-dsr-end '=== "false"'; do grep -c "$s" packages/components/dist/esm/runtime-*.js; done`
