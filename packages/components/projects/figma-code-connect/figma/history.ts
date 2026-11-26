@@ -2,7 +2,7 @@ import { bareName, type Definition, propertyId, type Resolution, type Unresolved
 
 // Places the properties no rule places by reading the library's earlier versions. A BOOLEAN, TEXT, INSTANCE_SWAP or
 // SLOT key keeps its `#<id>` through a rename; a VARIANT has none and is paired by its options with the PDS name that
-// vanished in the step it appeared. Rationale: docs/figma-code-connect.md.
+// vanished in the step it appeared. See: docs/figma-code-connect.md.
 
 export type Version = { id: string; created_at: string };
 type Definitions = Record<string, Definition>;

@@ -1,7 +1,7 @@
 {
   "p-accordion": ["sticky"],
   "p-ai-tag": ["locale"],
-  "p-banner": ["description", "open", "position"],
+  "p-banner": ["description", "heading", "open", "position"],
   "p-button": ["iconSource", "type"],
   "p-button-pure": ["color=inherit", "iconSource", "size", "type"],
   "p-button-tile": ["disabled", "iconSource", "loading", "size=inherit", "slot-default", "type"],
@@ -24,7 +24,7 @@
   "p-flyout": ["disableBackdropClick", "footerBehavior", "open"],
   "p-heading": ["align", "color=inherit", "ellipsis", "hyphens", "size=inherit"],
   "p-icon": ["component-set"],
-  "p-inline-notification": ["description"],
+  "p-inline-notification": ["description", "heading"],
   "p-input-date": ["autoComplete", "max", "min", "step"],
   "p-input-email": ["autoComplete", "maxLength", "minLength", "multiple", "pattern"],
   "p-input-month": ["autoComplete", "max", "min", "step"],

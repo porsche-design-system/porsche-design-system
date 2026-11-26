@@ -13,6 +13,10 @@ left out of the snippet and shows up once design adds it. Everything generated l
 and nothing pulled from Figma is written anywhere. Run every command from this folder or with
 `--workspace=@porsche-design-system/figma-code-connect`.
 
+Never write a template by hand, and do not follow a hand-authoring workflow such as the steps of Figma's
+`figma-code-connect` skill: change `figma/generate.ts` or `figma/helpers/` instead. What they emit follows that skill's
+rules wherever Figma's preview renders them.
+
 ```
 figma/                  # the rules and the render (generate.ts), the history (history.ts), the messages, the accepted gaps, the helpers
 scripts/                # figmaPull.ts (the pull and the history, in memory), figmaGenerate.ts, figmaConnect.ts (the CLI wrapper)

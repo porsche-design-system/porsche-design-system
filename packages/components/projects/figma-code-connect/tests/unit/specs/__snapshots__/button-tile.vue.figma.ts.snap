@@ -22,7 +22,7 @@ const compact = read.flag('compact');
 const type = read.oneOf('type', ['button', 'submit', 'reset']);
 const disabled = read.flag('disabled');
 const loading = read.flag('loading');
-const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), undefined) : undefined;
+const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon')) : undefined;
 const iconSource = read.text('iconSource');
 
 export default {

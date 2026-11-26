@@ -93,7 +93,7 @@ jobs:
           **Follow the runbook exactly:** [`docs/runbooks/dependency-updates-agent.md`](__RUNBOOK_URL__)
 
           Key guardrails (see the runbook for the full list):
-          - Skip fully held-back deps (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). Update Angular via `ng update` per the runbook (step 3), not syncpack.
+          - Skip fully held-back deps (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`, `@figma/code-connect`). Update Angular via `ng update` per the runbook (step 3), not syncpack.
           - Never run `npm audit fix`, `--legacy-peer-deps` or `--force`.
           - Don't hand-edit `package.json` versions or `package-lock.json`; use `syncpack` / `npm install`.
           - Don't bypass the 7-day release-age cooldown (`.npmrc` `min-release-age`, `.syncpackrc.json` `minimumReleaseAge`); withheld versions land in next week's run.

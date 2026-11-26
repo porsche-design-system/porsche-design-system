@@ -1,6 +1,6 @@
 // Prints the Slack payload that tells design what to change in Figma, or nothing when no line is for design.
 // Runs under bare `node` in .github/actions/notify-slack-figma-change: no dependencies, only erasable TypeScript.
-// Rationale: docs/figma-code-connect.md.
+// See: docs/figma-code-connect.md.
 import { existsSync, readFileSync } from 'node:fs';
 import { libraryUrl } from '../packages/components/projects/figma-code-connect/figma/library.ts';
 import { CHANGE, LIBRARY_CHANGE } from '../packages/components/projects/figma-code-connect/figma/messages.ts';

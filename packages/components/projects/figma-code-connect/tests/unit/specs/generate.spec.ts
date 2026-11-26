@@ -97,14 +97,14 @@ describe('generate: templates', () => {
     expect(template(result, 'button')).toContain(`\${disabled ? ' disabled="true"' : ''}`);
   });
 
-  it('falls back to the icon an icon swap starts with, behind its fig<Prop> gate', () => {
+  it('reads the swapped icon from its record alone, behind its fig<Prop> gate', () => {
     const icons = { '5:6': 'globe' };
     const tag = template(
       run([set('tag', { 'icon#1:4': { type: 'INSTANCE_SWAP', defaultValue: '5:6' } })], { icons }),
       'tag'
     );
     expect(tag).toContain(
-      "const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon'), 'globe') : undefined;"
+      "const icon = read.has('icon') && (!read.has('figIcon') || read.flag('figIcon')) ? iconOf(instance.getInstanceSwap('icon')) : undefined;"
     );
   });
 

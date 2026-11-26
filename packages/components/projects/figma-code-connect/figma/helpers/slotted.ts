@@ -1,6 +1,6 @@
 /// <reference types="@figma/code-connect/figma-types-no-require" />
 
-import type { ResultSection } from 'figma';
+import type { InstanceHandle, ResultSection } from 'figma';
 import figma from 'figma';
 import { escapeText } from './escape';
 
@@ -15,15 +15,26 @@ const assigned = (example: ResultSection[], pdsSlot: string): ResultSection[] =>
       : section
   );
 
+/** An instance's text layers, joined. */
+const textOf = (node: InstanceHandle): string =>
+  node
+    .findLayers((n) => n.type === 'TEXT')
+    .flatMap((n) => (n.type === 'TEXT' ? [n.textContent] : []))
+    .join('');
+
 /**
  * A slot's content: its instances with a record, then its text layers (`__containingSlotName__`, marked internal).
  * `pdsSlot` names a named slot: only an element carrying `slot="…"` lands in one, so each instance carries it on its
- * own tag and each text layer goes into a `<span>` carrying it.
+ * own tag and each text layer goes into a `<span>` carrying it. In a `label` slot a `p-text` instance prints as its text.
  */
-export const slotted = (slot: ReturnType<typeof instance.getSlot>, name: string, pdsSlot = '') => {
+export const slotted = (slot: ReturnType<typeof instance.getSlot>, name: string, pdsSlot = '', label = false) => {
   const content = [
     ...(slot?.connectedInstances.map((c) =>
-      pdsSlot ? assigned(c.executeTemplate().example, pdsSlot) : c.executeTemplate().example
+      label && c.codeConnectId() === 'p-text'
+        ? figma.code`${escapeText(textOf(c))}`
+        : pdsSlot
+          ? assigned(c.executeTemplate().example, pdsSlot)
+          : c.executeTemplate().example
     ) ?? []),
     ...instance
       .findLayers((n) => n.type === 'TEXT' && n.__containingSlotName__ === name)

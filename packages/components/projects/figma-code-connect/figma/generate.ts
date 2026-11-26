@@ -13,7 +13,7 @@ import {
 } from './snapshot';
 
 // Renders every generated file from one pull and the accepted gaps, and reports where Figma differs from code.
-// Rationale: docs/figma-code-connect.md.
+// See: docs/figma-code-connect.md.
 
 type Label = {
   suffix: string;
@@ -457,12 +457,11 @@ const importsEntry = (label: Label, tag: TagName, docs: string, setup: string): 
   return line.length <= 120 ? [line] : ['  imports: [', ...imports.map((i) => `    ${i},`), '  ],'];
 };
 
-/** The code that reads one PDS prop, and its attribute; `swapDefault` names the icon an icon swap starts with. */
+/** The code that reads one PDS prop, and its attribute. */
 const fragment = (
   mapping: Exclude<PropertyMapping, { kind: 'slot' }>,
   variable: string,
-  label: Label,
-  swapDefault: string | undefined
+  label: Label
 ): { read: string; attr: string } => {
   const value = `\${${variable}}`;
   const ifSet = (attr: string): string => `\${${variable} ? \` ${attr}\` : ''}`;
@@ -507,23 +506,39 @@ const fragment = (
       };
     case 'icon': {
       const gate = `fig${pascalCase(mapping.prop)}`;
-      const fallback = swapDefault ? literal(swapDefault) : 'undefined';
       return {
-        read: `const ${variable} = read.has('${mapping.prop}') && (!read.has('${gate}') || read.flag('${gate}')) ? iconOf(instance.getInstanceSwap('${mapping.prop}'), ${fallback}) : undefined;`,
+        read: `const ${variable} = read.has('${mapping.prop}') && (!read.has('${gate}') || read.flag('${gate}')) ? iconOf(instance.getInstanceSwap('${mapping.prop}')) : undefined;`,
         attr: ifSet(label.attr(mapping.prop, value)),
       };
     }
   }
 };
 
+// Their default slot holds only a label, so a slotted p-text prints as its text. Its own color would override the label's.
+const labelSlotTags: TagName[] = [
+  'p-button',
+  'p-button-pure',
+  'p-drilldown-link',
+  'p-link',
+  'p-link-pure',
+  'p-multi-select-option',
+  'p-segmented-control-item',
+  'p-select-option',
+  'p-stepper-horizontal-item',
+  'p-switch',
+  'p-tag',
+  'p-tag-dismissible',
+];
+
 /**
- * A slot's content through figma/helpers/slotted.ts: a slot interpolated directly renders a React `<SlotDefault />`.
+ * A slot's content through figma/helpers/slotted.ts: a slot interpolated directly renders a "cannot be rendered" comment.
  * The default slot falls back to text, because most simple components draw it as a TEXT property.
  */
-const slotContent = (figma: string): string => {
+const slotContent = (figma: string, tag: TagName): string => {
   const slot = pdsSlotName(figma);
+  const label = labelSlotTags.includes(tag) ? `, '', true` : '';
   return slot === ''
-    ? `\${read.isSlot('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}') : escapeText(read.text('${figma}') ?? '')}`
+    ? `\${read.isSlot('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}'${label}) : escapeText(read.text('${figma}') ?? '')}`
     : `\${read.has('${figma}') ? slotted(instance.getSlot('${figma}'), '${figma}', '${slot}') : ''}`;
 };
 
@@ -545,7 +560,6 @@ const render = (
   context: Context
 ): string => {
   const source = context.docsApiUrl(tag);
-  const defs = definitions(component);
   // variables are named after the PDS prop or slot they read
   const variables = mappings.map((m) => [m, camelCase(m.kind === 'slot' ? m.figma : m.prop)] as const);
   const names = variables.map(([, v]) => v);
@@ -553,18 +567,13 @@ const render = (
     context.errors.push(
       `${tag}: two properties map to the same variable "${name}" — rename one of the PDS props or slots behind it`
     );
-  const fragments = variables.flatMap(([m, v]) => {
-    if (m.kind === 'slot') return [];
-    const swap = defs[m.prop];
-    const swapDefault = swap?.type === 'INSTANCE_SWAP' ? context.icons[String(swap.defaultValue)] : undefined;
-    return [fragment(m, v, label, swapDefault)];
-  });
+  const fragments = variables.flatMap(([m, v]) => (m.kind === 'slot' ? [] : [fragment(m, v, label)]));
   const attributes = fragments.map((f) => f.attr).join('');
   // named slots first, default content last
   const children = mappings
     .flatMap((m) => (m.kind === 'slot' ? [m.figma] : []))
     .sort((a, b) => Number(pdsSlotName(a) === '') - Number(pdsSlotName(b) === ''))
-    .map((figma) => slotContent(figma))
+    .map((figma) => slotContent(figma, tag))
     .join('');
   const tagName = label.tagName(tag);
   return [
