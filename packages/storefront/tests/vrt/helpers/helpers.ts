@@ -27,8 +27,6 @@ export const closeSidebars = async (page: Page) => {
 export const resetAnimations = async (page: Page) => {
   // Reset animations
   await page.evaluate(() => {
-    document.documentElement.style.setProperty('--p-animation-duration', '0s');
-    document.documentElement.style.setProperty('--p-transition-duration', '0s');
     const animations = document.querySelectorAll('[data-animation=fade-in-up]');
     animations.forEach((animation) => {
       (animation as HTMLElement).style.opacity = '1';

@@ -65,8 +65,6 @@ const addMessage = async (page: Page, message?: Partial<ToastMessage>): Promise<
 };
 
 const waitForToastTimeout = async (page: Page): Promise<void> => {
-  await sleep(TOAST_TIMEOUT_DURATION_OVERRIDE);
-
   await waitForAnimationFinish();
   await waitForStencilLifecycle(page);
 };

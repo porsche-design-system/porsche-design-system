@@ -1,4 +1,6 @@
+import type { Frame, Page } from '@playwright/test';
 import { expect, test } from '@porsche-design-system/testing/playwright';
+import { setContentWithDesignSystem, waitForAnimationsFinished, waitForScrollEnd } from '../helpers';
 
 const fetchText = (url: string) => fetch(url).then((response) => response.text());
 
@@ -20,6 +22,7 @@ test.describe('console guard', () => {
         throw new Error('boom');
       })
     );
+    // Lets the page timer throw before the console guard checks for errors
     await page.waitForTimeout(50);
   });
 
@@ -111,5 +114,201 @@ test.describe('request routing', () => {
       await expect(img).toHaveAttribute('data-event', 'error');
       expect(await img.evaluate((el: HTMLImageElement) => el.naturalWidth)).toBe(0);
     });
+  });
+});
+
+test.describe('motion', () => {
+  const readVariables = (page: Page | Frame) =>
+    page.evaluate(() => {
+      const style = getComputedStyle(document.documentElement);
+      return [
+        '--p-transition-duration',
+        '--p-animation-duration',
+        '--p-temporary-spinner-stroke-dasharray',
+        '--p-temporary-toast-skip-timeout',
+      ].map((name) => style.getPropertyValue(name).trim());
+    });
+  const off = ['0s', '0s', '40', 'true'];
+  const on = ['', '', '40', 'true'];
+  const blank = 'data:text/html,<!DOCTYPE html><title>t</title>';
+
+  test('is off after goto', async ({ page }) => {
+    await page.goto(blank);
+    expect(await readVariables(page)).toEqual(off);
+  });
+
+  test('is off after setContent', async ({ page }) => {
+    await page.setContent('<p>x</p>');
+    expect(await readVariables(page)).toEqual(off);
+  });
+
+  test('is off after setContentWithDesignSystem', async ({ page }) => {
+    await setContentWithDesignSystem(page, '<p-button>x</p-button>');
+    expect(await readVariables(page)).toEqual(off);
+  });
+
+  test('stays off after a second navigation', async ({ page }) => {
+    await page.goto(blank);
+    await page.goto(blank);
+    expect(await readVariables(page)).toEqual(off);
+  });
+
+  test('is off on a second page of the context', async ({ context }) => {
+    const second = await context.newPage();
+    await second.setContent('<p>x</p>');
+    expect(await readVariables(second)).toEqual(off);
+  });
+
+  test('is off inside an iframe', async ({ page }) => {
+    await page.setContent('<iframe srcdoc="<p>x</p>"></iframe>');
+    expect(await readVariables(page.frames()[1])).toEqual(off);
+  });
+
+  test.describe('switched on', () => {
+    test.use({ motion: 'on' });
+
+    test('is on after goto', async ({ page }) => {
+      await page.goto(blank);
+      expect(await readVariables(page)).toEqual(on);
+    });
+
+    test('is on after setContent', async ({ page }) => {
+      await page.setContent('<p>x</p>');
+      expect(await readVariables(page)).toEqual(on);
+    });
+
+    test('is on after setContentWithDesignSystem', async ({ page }) => {
+      await setContentWithDesignSystem(page, '<p-button>x</p-button>');
+      expect(await readVariables(page)).toEqual(on);
+    });
+  });
+});
+
+test.describe('waitForAnimationsFinished', () => {
+  test.setTimeout(10_000);
+
+  const shadowBox =
+    '<style>.box { width: 10px; transition: width .3s } .wide { width: 200px }</style><div class="box"></div>';
+  const host = (page: Page) => page.locator('#host');
+  const readBoxStyle = (page: Page, property: 'width' | 'opacity') =>
+    page.locator('.box').evaluate((el, property) => getComputedStyle(el)[property], property);
+
+  test.beforeEach(async ({ page }) => {
+    await page.setContent('<div id="host"></div>');
+  });
+
+  test('waits for a transition inside a shadow root', async ({ page }) => {
+    await page.evaluate((html) => {
+      const root = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      const box = root.querySelector('.box')!;
+      // Reading the style first gives the transition a start value.
+      getComputedStyle(box).width;
+      box.classList.add('wide');
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
+    expect(await readBoxStyle(page, 'width')).toBe('200px');
+  });
+
+  test('waits for a transition inside a nested shadow root', async ({ page }) => {
+    await page.evaluate((html) => {
+      const outer = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      outer.innerHTML = '<div></div>';
+      const root = outer.querySelector('div')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      const box = root.querySelector('.box')!;
+      getComputedStyle(box).width;
+      box.classList.add('wide');
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
+    expect(await readBoxStyle(page, 'width')).toBe('200px');
+  });
+
+  test('waits for an animation that starts when the first one ends', async ({ page }) => {
+    await page.evaluate((html) => {
+      const root = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      const box = root.querySelector('.box')!;
+      box.addEventListener('transitionend', () => {
+        box.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' });
+      });
+      getComputedStyle(box).width;
+      box.classList.add('wide');
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
+    expect(await readBoxStyle(page, 'opacity')).toBe('0');
+  });
+
+  test('returns when nothing runs', async ({ page }) => {
+    await page.evaluate(() => {
+      document.querySelector('#host')!.innerHTML = '<p>x</p>';
+    });
+    await waitForAnimationsFinished(host(page));
+  });
+
+  test('does not hang on an infinite animation', async ({ page }) => {
+    await page.evaluate((html) => {
+      const root = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      root.querySelector('.box')!.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 100, iterations: Infinity });
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
+  });
+
+  test('does not throw on a cancelled animation', async ({ page }) => {
+    await page.evaluate((html) => {
+      const root = document.querySelector('#host')!.attachShadow({ mode: 'open' });
+      root.innerHTML = html;
+      const a = root.querySelector('.box')!.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 1000 });
+      setTimeout(() => a.cancel(), 300);
+    }, shadowBox);
+    await waitForAnimationsFinished(host(page));
+  });
+});
+
+test.describe('waitForScrollEnd', () => {
+  test.setTimeout(10_000);
+
+  const area = (page: Page) => page.locator('#area');
+  const readScrollLeft = (page: Page) => area(page).evaluate((el) => el.scrollLeft);
+
+  test.beforeEach(async ({ page }) => {
+    await page.setContent(
+      '<div id="area" style="width: 100px; overflow-x: auto"><div style="width: 3000px; height: 10px"></div></div>'
+    );
+  });
+
+  test('waits for a smooth scroll that the action starts', async ({ page }) => {
+    await waitForScrollEnd(area(page), () =>
+      area(page).evaluate((el) => {
+        // Chrome reports the end position to the next Playwright call before the glide has ended.
+        el.addEventListener('scrollend', () => el.setAttribute('data-ended', ''), { once: true });
+        el.scrollTo({ left: 2000, behavior: 'smooth' });
+      })
+    );
+    expect(await area(page).getAttribute('data-ended')).toBe('');
+    expect(await readScrollLeft(page)).toBe(2000);
+  });
+
+  test('returns for a scroll that ends inside the action', async ({ page }) => {
+    const start = Date.now();
+    await waitForScrollEnd(
+      area(page),
+      () =>
+        area(page).evaluate(
+          (el) =>
+            new Promise((resolve) => {
+              el.addEventListener('scrollend', resolve, { once: true });
+              el.scrollTo({ left: 2000, behavior: 'smooth' });
+            })
+        ),
+      5000
+    );
+    expect(Date.now() - start).toBeLessThan(5000);
+  });
+
+  test('returns after the timeout when the action does not scroll', async ({ page }) => {
+    await waitForScrollEnd(area(page), () => Promise.resolve(), 200);
+    expect(await readScrollLeft(page)).toBe(0);
   });
 });

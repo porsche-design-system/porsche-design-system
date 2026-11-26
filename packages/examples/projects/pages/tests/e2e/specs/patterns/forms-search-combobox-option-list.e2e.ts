@@ -9,6 +9,8 @@ import { getExampleUrl, isOpen, setupExamplePage } from '../../helpers/index.ts'
 
 const url = getExampleUrl('patterns-forms-search-combobox-option-list');
 
+test.use({ motion: 'on' });
+
 const popover = (page: Page) => page.locator('#dealer-search-popover');
 const submitPopover = (page: Page) => page.locator('#dealer-search-popover-button');
 const field = (page: Page) => page.locator('#dealer-search input');

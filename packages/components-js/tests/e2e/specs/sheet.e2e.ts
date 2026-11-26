@@ -12,21 +12,18 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
-  type Options,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
-  sleep,
+  waitForAnimationsFinished,
   waitForStencilLifecycle,
 } from '../helpers';
-
-const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 
 const getHost = (page: Page) => page.locator('p-sheet');
 const getHeader = (page: Page) => page.locator('p-sheet slot[name="header"]');
 const getDialog = (page: Page) => page.locator('p-sheet dialog');
 const getDismissButton = (page: Page) => page.locator('p-sheet .dismiss');
-const waitForSheetTransition = async () => sleep(CSS_TRANSITION_DURATION);
+const waitForSheetTransition = (page: Page) => waitForAnimationsFinished(getHost(page));
 
 const initBasicSheet = (
   page: Page,
@@ -38,8 +35,7 @@ const initBasicSheet = (
     disableCloseButton?: boolean;
     markupBefore?: string;
     markupAfter?: string;
-  },
-  options?: Options
+  }
 ): Promise<void> => {
   const {
     isOpen = true,
@@ -61,8 +57,7 @@ const initBasicSheet = (
     `${markupBefore ? markupBefore : ''}<p-sheet ${attributes}>
   ${hasSlottedHeader ? '<div slot="header"><h2>Some Heading</h2><a href="#">some anchor</a></div>' : ''}
   ${content}
-</p-sheet>${markupAfter ? markupAfter : ''}`,
-    options
+</p-sheet>${markupAfter ? markupAfter : ''}`
   );
 };
 
@@ -340,8 +335,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
 
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
-      // TODO: why is timeout needed? transition durations should be overwritten with 0s
-      await sleep(CSS_TRANSITION_DURATION);
+      await waitForSheetTransition(page);
 
       // transition delay for visibility
 
@@ -650,13 +644,10 @@ test.describe('slotted header', () => {
 });
 
 test.describe('events', () => {
+  test.use({ motion: 'on' });
   skipInBrowsers(['firefox', 'webkit']);
   test('should call motionVisibleEnd event when opening transition is finished', async ({ page }) => {
-    await initBasicSheet(
-      page,
-      { isOpen: false },
-      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
-    );
+    await initBasicSheet(page, { isOpen: false });
     const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
@@ -666,17 +657,13 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await openSheet(page);
-    await waitForSheetTransition();
+    await waitForSheetTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
   });
   test('should call motionHiddenEnd event when closing transition is finished', async ({ page }) => {
-    await initBasicSheet(
-      page,
-      { isOpen: true },
-      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
-    );
+    await initBasicSheet(page, { isOpen: true });
     const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
@@ -686,7 +673,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await dismissSheet(page);
-    await waitForSheetTransition();
+    await waitForSheetTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
@@ -700,10 +687,9 @@ test.describe('swipe handle', () => {
   const enableSwipeHandle = async (
     page: Page,
     dismissButton = true,
-    content = '<div style="height: 240px">Some Content</div>',
-    options?: Options
+    content = '<div style="height: 240px">Some Content</div>'
   ) => {
-    await initBasicSheet(page, { content }, options);
+    await initBasicSheet(page, { content });
     const host = getHost(page);
     await setProperty(host, 'swipeHandle', true);
     await setProperty(host, 'dismissButton', dismissButton);
@@ -834,65 +820,65 @@ test.describe('swipe handle', () => {
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
   });
 
-  test('should drop the glide-out transform of a swipe dismiss once the sheet is closed, so the next open starts from the closed offset', async ({
-    page,
-  }) => {
-    const host = await enableSwipeHandle(page, true, undefined, {
-      injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>',
-    });
-    await waitForSheetTransition();
-    await host.evaluate((el: HTMLElement & { open: boolean }) => {
-      el.addEventListener('dismiss', () => {
-        el.open = false;
+  test.describe('with motion', () => {
+    test.use({ motion: 'on' });
+
+    test('should drop the glide-out transform of a swipe dismiss once the sheet is closed, so the next open starts from the closed offset', async ({
+      page,
+    }) => {
+      const host = await enableSwipeHandle(page);
+      await waitForSheetTransition(page);
+      await host.evaluate((el: HTMLElement & { open: boolean }) => {
+        el.addEventListener('dismiss', () => {
+          el.open = false;
+        });
       });
+      const handleBox = await getSwipeHandle(page).boundingBox();
+      if (!handleBox) {
+        throw new Error('swipe handle has no box');
+      }
+      const hx = handleBox.x + handleBox.width / 2;
+      const hy = handleBox.y + handleBox.height / 2;
+      await page.mouse.move(hx, hy);
+      await page.mouse.down();
+      await page.mouse.move(hx, hy + 220, { steps: 5 });
+      await page.mouse.up();
+      await waitForStencilLifecycle(page);
+      await waitForSheetTransition(page);
+
+      expect((await getEventSummary(host, 'dismiss')).details).toEqual([{ reason: 'swipe' }]);
+      await expect(host).toHaveJSProperty('open', false);
+      await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
     });
-    const handleBox = await getSwipeHandle(page).boundingBox();
-    if (!handleBox) {
-      throw new Error('swipe handle has no box');
-    }
-    const hx = handleBox.x + handleBox.width / 2;
-    const hy = handleBox.y + handleBox.height / 2;
-    await page.mouse.move(hx, hy);
-    await page.mouse.down();
-    await page.mouse.move(hx, hy + 220, { steps: 5 });
-    await page.mouse.up();
-    await waitForStencilLifecycle(page);
-    await waitForSheetTransition();
 
-    expect((await getEventSummary(host, 'dismiss')).details).toEqual([{ reason: 'swipe' }]);
-    await expect(host).toHaveJSProperty('open', false);
-    await expect(getSheetPanel(page)).toHaveJSProperty('style.transform', '');
-  });
+    test('should not emit motionVisibleEnd again when the backdrop transitions back after a snap-back', async ({
+      page,
+    }) => {
+      const host = await enableSwipeHandle(page);
+      await waitForSheetTransition(page);
+      await addEventListener(host, 'motionVisibleEnd');
+      const handleBox = await getSwipeHandle(page).boundingBox();
+      if (!handleBox) {
+        throw new Error('swipe handle has no box');
+      }
+      const hx = handleBox.x + handleBox.width / 2;
+      const hy = handleBox.y + handleBox.height / 2;
+      await page.mouse.move(hx, hy);
+      await page.mouse.down();
+      await page.mouse.move(hx, hy + 16, { steps: 4 });
+      await page.mouse.up();
+      await waitForSheetTransition(page);
 
-  test('should not emit motionVisibleEnd again when the backdrop transitions back after a snap-back', async ({
-    page,
-  }) => {
-    const host = await enableSwipeHandle(page, true, undefined, {
-      injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>',
+      await expect(page.locator('p-sheet dialog')).toHaveJSProperty('style.backgroundColor', '');
+      expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
+
+      await setProperty(host, 'open', false);
+      await waitForStencilLifecycle(page);
+      await setProperty(host, 'open', true);
+      await waitForStencilLifecycle(page);
+      await waitForSheetTransition(page);
+      expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
     });
-    await waitForSheetTransition();
-    await addEventListener(host, 'motionVisibleEnd');
-    const handleBox = await getSwipeHandle(page).boundingBox();
-    if (!handleBox) {
-      throw new Error('swipe handle has no box');
-    }
-    const hx = handleBox.x + handleBox.width / 2;
-    const hy = handleBox.y + handleBox.height / 2;
-    await page.mouse.move(hx, hy);
-    await page.mouse.down();
-    await page.mouse.move(hx, hy + 16, { steps: 4 });
-    await page.mouse.up();
-    await waitForSheetTransition();
-
-    await expect(page.locator('p-sheet dialog')).toHaveJSProperty('style.backgroundColor', '');
-    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
-
-    await setProperty(host, 'open', false);
-    await waitForStencilLifecycle(page);
-    await setProperty(host, 'open', true);
-    await waitForStencilLifecycle(page);
-    await waitForSheetTransition();
-    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
   });
 
   skipInBrowsers(['firefox', 'webkit'], () => {
@@ -913,27 +899,29 @@ test.describe('swipe handle', () => {
         };
       };
 
-      test('should fade the backdrop while dragging, dismiss on a downward swipe, and still emit motionHiddenEnd', async ({
-        page,
-      }) => {
-        const host = await enableSwipeHandle(page, false, '<div style="height: 240px">Some Content</div>', {
-          injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>',
+      test.describe('with motion', () => {
+        test.use({ motion: 'on' });
+
+        test('should fade the backdrop while dragging, dismiss on a downward swipe, and still emit motionHiddenEnd', async ({
+          page,
+        }) => {
+          const host = await enableSwipeHandle(page, false);
+          await addEventListener(host, 'motionHiddenEnd');
+          const drag = await dragSheet(page, 220);
+          const background = await page
+            .locator('p-sheet dialog')
+            .evaluate((dialog: HTMLElement) => dialog.style.backgroundColor);
+
+          expect(background).toContain('color-mix');
+          await drag.release();
+          await waitForStencilLifecycle(page);
+
+          expect((await getEventSummary(host, 'dismiss')).details).toEqual([{ reason: 'swipe' }]);
+
+          await dismissSheet(page);
+          await waitForSheetTransition(page);
+          expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
         });
-        await addEventListener(host, 'motionHiddenEnd');
-        const drag = await dragSheet(page, 220);
-        const background = await page
-          .locator('p-sheet dialog')
-          .evaluate((dialog: HTMLElement) => dialog.style.backgroundColor);
-
-        expect(background).toContain('color-mix');
-        await drag.release();
-        await waitForStencilLifecycle(page);
-
-        expect((await getEventSummary(host, 'dismiss')).details).toEqual([{ reason: 'swipe' }]);
-
-        await dismissSheet(page);
-        await waitForSheetTransition();
-        expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
       });
 
       test('should snap the sheet and the backdrop back when the drag is too short', async ({ page }) => {

@@ -218,6 +218,19 @@
       "plugins": ["./packages/shared/projects/testing/biome-plugins/use-shared-playwright-test.grit"]
     },
     {
+      "includes": [
+        "**/*.e2e.ts",
+        "**/*.a11y.ts",
+        "**/*.vrt.ts",
+        "**/*.smoke.ts",
+        "packages/**/tests/**/helpers/**/*.ts",
+        "!packages/shared/projects/testing/**",
+        "!packages/components-js/tests/e2e/specs/shared-test.e2e.ts",
+        "!packages/components-js/tests/e2e/specs/toast.e2e.ts"
+      ],
+      "plugins": ["./packages/shared/projects/testing/biome-plugins/use-motion-option.grit"]
+    },
+    {
       "includes": ["packages/storefront/**/*.{ts,tsx}", "!packages/storefront/src/components/common/DocsLink.tsx"],
       "plugins": ["./packages/shared/projects/testing/biome-plugins/use-shared-playwright-test.grit"],
       "linter": {

@@ -2,7 +2,6 @@ import { expect, test } from '@porsche-design-system/testing/playwright';
 import type { Page } from 'playwright';
 import {
   addEventListener,
-  CSS_ANIMATION_DURATION,
   getEventSummary,
   getLifecycleStatus,
   getOffsetLeft,
@@ -12,7 +11,7 @@ import {
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
-  sleep,
+  waitForScrollEnd,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -168,10 +167,11 @@ test.describe('invalid state set after initial render', () => {
       await waitForStencilLifecycle(page);
       const didUpdateCount = (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'] ?? 0;
 
-      await setProperty(item2, 'state', 'complete');
-      await setProperty(item9, 'state', 'current');
-      await waitForStencilLifecycle(page);
-      await sleep(CSS_ANIMATION_DURATION);
+      await waitForScrollEnd(getScrollArea(page), async () => {
+        await setProperty(item2, 'state', 'complete');
+        await setProperty(item9, 'state', 'current');
+        await waitForStencilLifecycle(page);
+      });
 
       await expect
         .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
@@ -205,10 +205,11 @@ test.describe('invalid state set after initial render', () => {
       await waitForStencilLifecycle(page);
       const didUpdateCount = (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'] ?? 0;
 
-      await setProperty(item2, 'state', 'complete');
-      await setProperty(item9, 'state', 'current');
-      await waitForStencilLifecycle(page);
-      await sleep(CSS_ANIMATION_DURATION);
+      await waitForScrollEnd(getScrollArea(page), async () => {
+        await setProperty(item2, 'state', 'complete');
+        await setProperty(item9, 'state', 'current');
+        await waitForStencilLifecycle(page);
+      });
 
       await expect
         .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
@@ -267,7 +268,6 @@ test.describe('scrolling', () => {
 
     await item5.click();
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     // After clicking item5, it should be scrolled into view
     expect(await isElementVisibleInScrollArea(page, item5)).toBe(true);
@@ -279,10 +279,11 @@ test.describe('scrolling', () => {
     const [item1, , , , item5] = await getStepItems(page);
     const scrollArea = getScrollArea(page);
 
-    await setProperty(item1, 'state', 'complete');
-    await setProperty(item5, 'state', 'current');
-    await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
+    await waitForScrollEnd(scrollArea, async () => {
+      await setProperty(item1, 'state', 'complete');
+      await setProperty(item5, 'state', 'current');
+      await waitForStencilLifecycle(page);
+    });
 
     // item5 should be scrolled into view
     expect(await isElementVisibleInScrollArea(page, item5)).toBe(true);
@@ -301,7 +302,6 @@ test.describe('scrolling', () => {
       host.removeChild(firstChild);
     });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     // After removal, current step (originally index 4, now index 3) should still be visible
     const scrollArea = getScrollArea(page);
@@ -319,14 +319,14 @@ test.describe('scrolling', () => {
       host.appendChild(newStepperHorizontalItem);
     });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     const [item1, , , , , item6] = await getStepItems(page);
 
-    await setProperty(item1, 'state', 'complete');
-    await setProperty(item6, 'state', 'current');
-    await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
+    await waitForScrollEnd(getScrollArea(page), async () => {
+      await setProperty(item1, 'state', 'complete');
+      await setProperty(item6, 'state', 'current');
+      await waitForStencilLifecycle(page);
+    });
 
     // item6 should be scrolled into view
     expect(await isElementVisibleInScrollArea(page, item6)).toBe(true);
@@ -346,14 +346,14 @@ test.describe('scrolling', () => {
       host.appendChild(newStepperHorizontalItem);
     });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     const [item1, , , , , item6] = await getStepItems(page);
 
-    await setProperty(item1, 'state', 'complete');
-    await setProperty(item6, 'state', 'current');
-    await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
+    await waitForScrollEnd(getScrollArea(page), async () => {
+      await setProperty(item1, 'state', 'complete');
+      await setProperty(item6, 'state', 'current');
+      await waitForStencilLifecycle(page);
+    });
 
     // item6 should be scrolled into view
     expect(await isElementVisibleInScrollArea(page, item6)).toBe(true);
@@ -375,14 +375,14 @@ test.describe('scrolling', () => {
       }
     });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     const [item1, , , , , item6] = await getStepItems(page);
 
-    await setProperty(item1, 'state', 'complete');
-    await setProperty(item6, 'state', 'current');
-    await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
+    await waitForScrollEnd(getScrollArea(page), async () => {
+      await setProperty(item1, 'state', 'complete');
+      await setProperty(item6, 'state', 'current');
+      await waitForStencilLifecycle(page);
+    });
 
     // item6 is scrolled into view only if the appended steps were registered
     expect(await isElementVisibleInScrollArea(page, item6)).toBe(true);
@@ -398,7 +398,6 @@ test.describe('scrolling', () => {
       isWrapped: true,
       beforeMarkup: '<div style="height: 200vh"></div>',
     });
-    await sleep(CSS_ANIMATION_DURATION);
 
     const items = await getStepItems(page);
     // current step is visible horizontally within the scroll area

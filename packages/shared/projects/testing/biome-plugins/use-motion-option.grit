@@ -1,0 +1,13 @@
+// Fails a string literal or template chunk that names the motion variables in a spec or test helper.
+language js
+
+or {
+  JsStringLiteralExpression() as $literal where {
+    $literal <: r"(?s).*--p-(?:transition|animation)-duration.*",
+    register_diagnostic(span = $literal, message = "Set motion with test.use or a suite config instead, because the shared test's stylesheet overrides the page's :root rule.")
+  },
+  JsTemplateChunkElement() as $chunk where {
+    $chunk <: r"(?s).*--p-(?:transition|animation)-duration.*",
+    register_diagnostic(span = $chunk, message = "Set motion with test.use or a suite config instead, because the shared test's stylesheet overrides the page's :root rule.")
+  }
+}

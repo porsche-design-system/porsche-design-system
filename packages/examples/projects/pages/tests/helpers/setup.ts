@@ -34,31 +34,6 @@ export type ExampleScenarioOptions = {
 };
 
 /**
- * Switches the transitions and animations of the components off, like the other VRT suites of the monorepo do through
- * the `:root` block of `packages/shared/src/css/styles.css`.
- *
- * Reduced motion alone does not: the canvas of the admin panel opens its sidebar on load, and its
- * `grid-template-columns` transition could still be running when a high contrast capture was taken, which left the
- * application title in the sidebar header missing in some runs. Injected when the document has been parsed and before
- * the deferred page script runs, so the sidebar opens without a transition in the first place.
- */
-const disableMotion = async (page: Page): Promise<void> => {
-  await page.addInitScript(() => {
-    const inject = () => {
-      const style = document.createElement('style');
-      style.textContent = ':root{--p-transition-duration:0s;--p-animation-duration:0s}';
-      document.head.append(style);
-    };
-
-    if (document.head) {
-      inject();
-    } else {
-      document.addEventListener('readystatechange', inject, { once: true });
-    }
-  });
-};
-
-/**
  * Parks every video on its poster frame.
  *
  * `prefers-reduced-motion` already makes the hero video of an example stop itself (see `src/_partials/HeroVideo.tsx`),
@@ -198,10 +173,8 @@ export const setupExamplePage = async (
 ): Promise<void> => {
   const { forcedColorsEnabled, prefersColorScheme, rtl } = options;
 
-  await disableMotion(page);
-
-  // Reduced motion is not a variant, it is a precondition of every capture: it stops the autoplaying hero video and
-  // the transitions of the components, both of which would otherwise be timing dependent.
+  // Reduced motion is not a variant, it is a precondition of every capture. It stops the autoplaying hero video, which
+  // would otherwise be timing dependent.
   await page.emulateMedia({
     forcedColors: forcedColorsEnabled ? 'active' : 'none',
     colorScheme: prefersColorScheme ?? 'light',

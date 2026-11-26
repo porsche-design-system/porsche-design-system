@@ -2,14 +2,13 @@ import { type Locator, type Page } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
 import { expect, test } from '@porsche-design-system/testing/playwright';
 import {
-  CSS_ANIMATION_DURATION,
   getElementStyle,
   getLifecycleStatus,
   getOffsetWidth,
   getScrollLeft,
   setContentWithDesignSystem,
   setProperty,
-  sleep,
+  waitForScrollEnd,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -50,9 +49,10 @@ const getScrollIndicators = async (page: Page) => {
   return { prevButton, nextButton };
 };
 const clickElement = async (page: Page, el: Locator) => {
-  await el.click();
-  await waitForStencilLifecycle(page);
-  await sleep(CSS_ANIMATION_DURATION);
+  await waitForScrollEnd(getScrollArea(page), async () => {
+    await el.click();
+    await waitForStencilLifecycle(page);
+  });
 };
 
 const addNewButton = async (page: Page) => {
@@ -107,10 +107,10 @@ test.describe('scroll indicator', () => {
 
     // Scroll to the very end
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
+    // The indicators update from a later IntersectionObserver callback, so the check retries instead of sleeping.
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
   });
 
   test('should update indicators when scrolling back to the start', async ({ page }) => {
@@ -121,16 +121,14 @@ test.describe('scroll indicator', () => {
 
     // Scroll to the middle first
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth / 2, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('visible');
 
     // Scroll back to start
     await scrollArea.evaluate((el) => el.scrollTo({ left: 0, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 
   test('should show next indicator after dynamically adding content that causes overflow', async ({ page }) => {
@@ -143,9 +141,8 @@ test.describe('scroll indicator', () => {
     await addNewButton(page);
     await addNewButton(page);
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 
   test('should hide both indicators when scroller has no children', async ({ page }) => {
@@ -177,17 +174,15 @@ test.describe('scroll indicator', () => {
 
     // Programmatically scroll to end
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('hidden');
 
     // Programmatically scroll back to start
     await scrollArea.evaluate((el) => el.scrollTo({ left: 0, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('hidden');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 });
 
@@ -261,7 +256,6 @@ test.describe('scroll behavior', () => {
     // Programmatically invoke a prev scroll by clicking the prev indicator area
     // Since prev is hidden at start, scroll via JS and then go back
     await scrollArea.evaluate((el) => el.scrollBy({ left: -100, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
     // scrollLeft should not go below 0
     expect(await getScrollLeft(scrollArea)).toBe(0);
@@ -273,13 +267,11 @@ test.describe('scroll behavior', () => {
 
     // Scroll to the very end
     await scrollArea.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
     const scrollLeftAtEnd = await getScrollLeft(scrollArea);
 
     // Try to scroll further right
     await scrollArea.evaluate((el) => el.scrollBy({ left: 200, behavior: 'instant' }));
-    await sleep(CSS_ANIMATION_DURATION);
 
     // scrollLeft should not increase beyond max
     expect(await getScrollLeft(scrollArea)).toBe(scrollLeftAtEnd);
@@ -306,8 +298,6 @@ test.describe('scrollToPosition', () => {
     await initScroller(page, { amount: 8, isWrapped: true, scrollToPosition: { scrollPosition: 100 } });
     const scrollArea = getScrollArea(page);
 
-    await sleep(CSS_ANIMATION_DURATION);
-
     expect(await getScrollLeft(scrollArea)).toBe(100);
   });
 
@@ -320,7 +310,6 @@ test.describe('scrollToPosition', () => {
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 150, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toBe(150);
   });
@@ -332,13 +321,11 @@ test.describe('scrollToPosition', () => {
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 50, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toBe(50);
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 200, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toBe(200);
   });
@@ -348,12 +335,10 @@ test.describe('scrollToPosition', () => {
     const host = getHost(page);
     const scrollArea = getScrollArea(page);
 
-    await sleep(CSS_ANIMATION_DURATION);
     expect(await getScrollLeft(scrollArea)).toBe(100);
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 0, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toBe(0);
   });
@@ -366,7 +351,6 @@ test.describe('scrollToPosition', () => {
 
     await setProperty(host, 'scrollToPosition', { scrollPosition: 50, isSmooth: false });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
 
     // scrollLeft should remain 0 since content does not overflow and componentShouldUpdate prevents update
     expect(await getScrollLeft(scrollArea)).toBe(0);
@@ -377,11 +361,9 @@ test.describe('scrollToPosition', () => {
     const prevIndicator = getPrevIndicator(page);
     const nextIndicator = getNextIndicator(page);
 
-    await sleep(CSS_ANIMATION_DURATION);
-
     // After scrolling to 100, both indicators should be visible (middle of scroll)
-    expect(await getElementStyle(prevIndicator, 'visibility')).toBe('visible');
-    expect(await getElementStyle(nextIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(prevIndicator, 'visibility')).toBe('visible');
+    await expect.poll(() => getElementStyle(nextIndicator, 'visibility')).toBe('visible');
   });
 });
 

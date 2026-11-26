@@ -17,11 +17,9 @@ import {
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
-  sleep,
+  waitForAnimationsFinished,
   waitForStencilLifecycle,
 } from '../helpers';
-
-const CSS_TRANSITION_DURATION = 600;
 
 const getHost = (page: Page) => page.locator('p-drilldown');
 const getDrilldownDialog = (page: Page) => page.locator('p-drilldown dialog');
@@ -34,7 +32,7 @@ const getDrilldownItemScroller = (page: Page, identifier: string) =>
   page.locator(`p-drilldown-item[identifier="${identifier}"] .scroller`);
 const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
 
-const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
+const waitForFlyoutTransition = (page: Page) => waitForAnimationsFinished(getHost(page));
 
 const initBasicDrilldown = (
   page: Page,
@@ -117,7 +115,7 @@ test('should be visible after opened', async ({ page }) => {
   const host = getHost(page);
   await setProperty(host, 'open', true);
 
-  await waitForFlyoutTransition();
+  await waitForFlyoutTransition(page);
 
   expect(await getDrilldownDialogVisibility(page)).toBe('visible');
 });
@@ -945,7 +943,7 @@ test.describe('item identifier set after initial render', () => {
       (item as HTMLPDrilldownItemElement).identifier = 'item-1-2';
     });
     await waitForStencilLifecycle(page);
-    await sleep(CSS_TRANSITION_DURATION);
+    await waitForFlyoutTransition(page);
 
     await expect(nestedItem).toHaveJSProperty('secondary', true);
     await expect(parentItem).toHaveJSProperty('primary', true);

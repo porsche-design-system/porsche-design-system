@@ -13,15 +13,13 @@ import {
   getEventSummary,
   getHTMLAttributes,
   getLifecycleStatus,
-  type Options,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
-  sleep,
+  waitForAnimationsFinished,
   waitForStencilLifecycle,
 } from '../helpers';
 
-const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 const flyoutMinWidth = 320;
 
 const getHost = (page: Page) => page.locator('p-flyout');
@@ -31,8 +29,7 @@ const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss');
 const getBody = (page: Page) => page.locator('body');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
-const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
-const waitForSlotChange = () => sleep();
+const waitForFlyoutTransition = (page: Page) => waitForAnimationsFinished(getHost(page));
 
 const initBasicFlyout = (
   page: Page,
@@ -48,8 +45,7 @@ const initBasicFlyout = (
   other?: {
     markupBefore?: string;
     markupAfter?: string;
-  },
-  options?: Options
+  }
 ): Promise<void> => {
   const { header = '', content = '<p>Some Content</p>', footer = '', subFooter = '' } = flyoutSlots || {};
   const { markupBefore = '', markupAfter = '' } = other || {};
@@ -59,11 +55,7 @@ const initBasicFlyout = (
   ${[header, content, footer, subFooter].filter(Boolean).join('\n  ')}
 </p-flyout>`;
 
-  return setContentWithDesignSystem(
-    page,
-    [markupBefore, flyoutMarkup, markupAfter].filter(Boolean).join('\n'),
-    options
-  );
+  return setContentWithDesignSystem(page, [markupBefore, flyoutMarkup, markupAfter].filter(Boolean).join('\n'));
 };
 
 const initAdvancedFlyout = async (page: Page) => {
@@ -163,7 +155,7 @@ test('should be visible after opened', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
   await openFlyout(page);
 
-  await waitForFlyoutTransition();
+  await waitForFlyoutTransition(page);
 
   expect(await getFlyoutVisibility(page)).toBe('visible');
 });
@@ -476,7 +468,6 @@ test.describe('after content change', () => {
     await host.evaluate((el) => {
       el.innerHTML = '';
     });
-    await waitForSlotChange();
 
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused(page, 'after slot change');
@@ -499,7 +490,6 @@ test.describe('after content change', () => {
       button.id = 'btn-new';
       el.append(button);
     });
-    await waitForSlotChange();
     await expectDialogAndThenDismissButtonToBeFocused(page, 'after button appended');
 
     await page.keyboard.press('Tab');
@@ -913,15 +903,10 @@ test.describe('after dynamic slot change', () => {
 });
 
 test.describe('events', () => {
+  test.use({ motion: 'on' });
   skipInBrowsers(['firefox', 'webkit']);
   test('should call motionVisibleEnd event when opening transition is finished', async ({ page }) => {
-    await initBasicFlyout(
-      page,
-      { open: false },
-      {},
-      {},
-      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
-    );
+    await initBasicFlyout(page, { open: false });
     const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
@@ -931,19 +916,13 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await openFlyout(page);
-    await waitForFlyoutTransition();
+    await waitForFlyoutTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
   });
   test('should call motionHiddenEnd event when closing transition is finished', async ({ page }) => {
-    await initBasicFlyout(
-      page,
-      { open: true },
-      {},
-      {},
-      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
-    );
+    await initBasicFlyout(page, { open: true });
     const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
@@ -953,7 +932,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await dismissFlyout(page);
-    await waitForFlyoutTransition();
+    await waitForFlyoutTransition(page);
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);

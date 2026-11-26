@@ -17,11 +17,40 @@ export type TestOptions = {
   externalRequests: ExternalRequestsOptions | false;
   /** Console errors, warnings and page errors the test expects. Default `[]`. */
   expectedConsole: RegExp[];
+  /** 'on' leaves the components' own transition and animation durations in place. Default 'off'. */
+  motion: 'off' | 'on';
 };
 
-export const test = base.extend<TestOptions & { requestRouting: void; consoleGuard: void }>({
+export const test = base.extend<TestOptions & { requestRouting: void; consoleGuard: void; motionSwitch: void }>({
   externalRequests: [{}, { option: true }],
   expectedConsole: [[], { option: true }],
+  motion: ['off', { option: true }],
+  motionSwitch: [
+    async ({ context, motion }, use) => {
+      const durations = motion === 'off' ? '--p-transition-duration: 0s; --p-animation-duration: 0s;' : '';
+      await context.addInitScript((rule) => {
+        const adopt = () => {
+          const sheet = new CSSStyleSheet();
+          sheet.replaceSync(rule);
+          document.adoptedStyleSheets.push(sheet);
+        };
+        adopt();
+        const initialDocument = document;
+        // Firefox runs this on an iframe's empty first document, then swaps in the real one under the same window.
+        window.addEventListener(
+          'DOMContentLoaded',
+          () => {
+            if (document !== initialDocument) {
+              adopt();
+            }
+          },
+          { once: true }
+        );
+      }, `:root { ${durations} --p-temporary-spinner-stroke-dasharray: 40; --p-temporary-toast-skip-timeout: true; }`);
+      await use();
+    },
+    { auto: true },
+  ],
   requestRouting: [
     async ({ context, externalRequests }, use) => {
       const abortedUrls: string[] = [];

@@ -44,9 +44,8 @@ test.describe('with v3.7.0 loaded', () => {
     expect(porscheDesignSystem['3.7.0']).toBeDefined();
     expect(porscheDesignSystem['3.7.0'].prefixes).toEqual(prefixes);
 
+    // Version validation warns from a 3000ms timer
     await sleep(VERSION_VALIDATION_TIMEOUT);
-
-    // Wait until version validation
 
     const versionWarning = (await page.consoleMessages()).find(
       (message) => message.type() === 'warning' && message.text().includes('Multiple different versions')
