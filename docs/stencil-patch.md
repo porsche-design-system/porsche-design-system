@@ -1,16 +1,16 @@
 # Stencil Patch
 
-We currently have one Stencil patch-package file with five patch sections in place, applied using
+We currently have one Stencil patch-package file with four patch sections in place, applied using
 [`patch-package`](https://www.npmjs.com/package/patch-package). The patch file is located in the `patches/` folder and
 is applied automatically when installing via a `postinstall` script.
 
-Stencil version used when this document was last updated: `5.0.0-rc.10`
+Stencil version used when this document was last updated: `5.0.0-rc.12`
 
 Every section in the runtime is wrapped in `//========= PDS PATCH START` and `//========= PDS PATCH END`.
 
-| Patched file                                                | Sections                                                                  |
-| ----------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `node_modules/@stencil/core/dist/runtime/client/runtime.js` | SSR, SSR props, SSR streaming, boolean attribute, `componentShouldUpdate` |
+| Patched file                                                | Sections                                         |
+| ----------------------------------------------------------- | ------------------------------------------------ |
+| `node_modules/@stencil/core/dist/runtime/client/runtime.js` | SSR, SSR props, SSR streaming, boolean attribute |
 
 `runtime.js` is the runtime Stencil bundles into the `loader-bundle` and `www` output targets; `lazy.js` next to it is
 only used with `externalRuntime`.
@@ -21,6 +21,15 @@ have the API, and Safari before 16.4, which lacks it, can't parse the core chunk
 is not needed, because Stencil 5 supports it natively, and every component sets
 `encapsulation: { type: 'shadow', clonable: true }`. The declarative counterpart for server rendered components lives in
 `packages/components/scripts/generateDSRComponents.ts`, which emits `shadowrootclonable="true"` on the DSR `<template>`.
+
+Up to `5.0.0-rc.10` the patch also fixed three bugs around `componentShouldUpdate`, which Stencil 5 calls once per
+render cycle instead of for every prop. Stencil fixed them in `5.0.0-rc.11`
+([stenciljs/core#7038](https://github.com/stenciljs/core/issues/7038),
+[stenciljs/core#7039](https://github.com/stenciljs/core/issues/7039),
+[stenciljs/core#7042](https://github.com/stenciljs/core/issues/7042)). The tests we added for them stay:
+`should log an error when an update that changes nothing is queued while the last identifier is set` in
+`packages/components-js/tests/e2e/specs/drilldown.e2e.ts` and
+`should render an object prop that is set twice to equal objects before the next render` in `button.e2e.ts`.
 
 ## Patches
 
@@ -165,76 +174,6 @@ see [#4887](https://github.com/porsche-design-system/porsche-design-system/issue
 + newValue = newValue !== null && newValue !== "false";
 ```
 
-### componentShouldUpdate patch
-
-Stencil 4 called `componentShouldUpdate` when a prop or state was set, and only queued an update when it returned
-`true`. Stencil 5 queues the update first and calls `componentShouldUpdate` once per render cycle, in `dispatchHooks`,
-with every change. Our components return `false` whenever a prop is set to an equal value, e.g. an `aria` object a
-parent passes on every render, which uncovers three bugs. All are reported upstream with a minimal reproduction; the
-section can be removed once they are fixed there, see
-[#4888](https://github.com/porsche-design-system/porsche-design-system/issues/4888).
-
-**The ancestor is never released** ([stenciljs/core#7038](https://github.com/stenciljs/core/issues/7038)).
-`scheduleUpdate` has already made the ancestor component wait for the update. When `componentShouldUpdate` returns
-`false`, Stencil returns without releasing it, so the ancestor never finishes its own update: its `componentDidRender`
-and `componentDidUpdate` are never called. This happened to `p-carousel`, `p-drilldown` and `p-input-password`.
-
-**A forced update is lost** ([stenciljs/core#7039](https://github.com/stenciljs/core/issues/7039)). `forceUpdate()` does
-nothing when an update is queued already, and that queued update is dropped when `componentShouldUpdate` returns `false`
-for the props that changed in the same cycle. `p-drilldown` forces an update when an item gets its `identifier`; with an
-update queued at the same time that changed nothing, it never validated its `activeIdentifier` again. The patch marks
-the update as forced in `forceUpdate`:
-
-```diff
-- if (isConnected && (hostRef.$flags$ & (HOST_FLAGS.hasRendered | HOST_FLAGS.isQueuedForUpdate)) === HOST_FLAGS.hasRendered) scheduleUpdate(hostRef, false);
-+ if (isConnected && hostRef.$flags$ & HOST_FLAGS.hasRendered) {
-+   hostRef.$isUpdateForced$ = true;
-+   if (!(hostRef.$flags$ & HOST_FLAGS.isQueuedForUpdate)) scheduleUpdate(hostRef, false);
-+ }
-```
-
-and handles both bugs in `dispatchHooks`:
-
-```diff
-+ const isUpdateForced = hostRef.$isUpdateForced$;
-+ hostRef.$isUpdateForced$ = false;
-  if (BUILD$1.updatable && hostRef.$queuedPropChanges$) {
-    const changes = hostRef.$queuedPropChanges$;
-    hostRef.$queuedPropChanges$ = void 0;
--   if (safeCall(instance, "componentShouldUpdate", changes, elm) === false) {
-+   if (safeCall(instance, "componentShouldUpdate", changes, elm) === false && !isUpdateForced) {
-      hostRef.$flags$ &= ~HOST_FLAGS.isQueuedForUpdate;
-+     if (BUILD$1.asyncLoading && hostRef.$onRenderResolve$) {
-+       hostRef.$onRenderResolve$();
-+       hostRef.$onRenderResolve$ = void 0;
-+     }
-      return;
-    }
-  }
-```
-
-`packages/components-js/tests/e2e/specs/drilldown.e2e.ts` covers the forced update
-(`should log an error when an update that changes nothing is queued while the last identifier is set`).
-
-**The old value is the wrong one** ([stenciljs/core#7042](https://github.com/stenciljs/core/issues/7042)). Stencil
-collects every change since the last render in `setValue` and keeps the `oldVal` of the first one with `??`, which also
-skips an `oldVal` of `undefined` or `null`. A prop that was not set at the last render and is then set twice to equal
-objects, e.g. `aria` by two renders of a React application within one frame, is compared with the first of the two
-objects, `componentShouldUpdate` returns `false`, and the prop is never rendered. The patch checks for the entry instead
-of its value:
-
-```diff
-  changes[propName] = {
-    newVal,
--   oldVal: changes[propName]?.oldVal ?? oldVal
-+   oldVal: propName in changes ? changes[propName].oldVal : oldVal
-  };
-```
-
-`packages/components-js/tests/e2e/specs/button.e2e.ts` covers it
-(`should render an object prop that is set twice to equal objects before the next render`). The same line exists for
-signals in `src/runtime/signals.ts`, which is not part of our build.
-
 ## How to update
 
 1. After updating stencil and installing the dependencies, the patch will either be applied successfully or fail with a
@@ -248,4 +187,4 @@ signals in `src/runtime/signals.ts`, which is not part of our build.
    the exception is agreed, run it as `npm_config_min_release_age=0 npx patch-package @stencil/core`.
 4. Build `components` and `components-js` and check that the sections made it into the build, since Stencil removes code
    behind build flags. Each of these has to print a count above 0:
-   `for s in hasDSR data-ssr-props data-dsr isUpdateForced '=== "false"' 'in changes'; do grep -c "$s" packages/components/dist/esm/runtime-*.js; done`
+   `for s in hasDSR data-ssr-props data-dsr '=== "false"'; do grep -c "$s" packages/components/dist/esm/runtime-*.js; done`

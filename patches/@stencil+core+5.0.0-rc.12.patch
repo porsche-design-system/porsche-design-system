@@ -1,8 +1,8 @@
 diff --git a/node_modules/@stencil/core/dist/runtime/client/runtime.js b/node_modules/@stencil/core/dist/runtime/client/runtime.js
-index 191c645..a372615 100644
+index afff174..b3e7e02 100644
 --- a/node_modules/@stencil/core/dist/runtime/client/runtime.js
 +++ b/node_modules/@stencil/core/dist/runtime/client/runtime.js
-@@ -1823,7 +1823,11 @@ const parsePropertyValue = (propValue, propType) => {
+@@ -1827,7 +1827,11 @@ const parsePropertyValue = (propValue, propType) => {
  		/**
  		* ensure this value is of the correct prop type
  		*/
@@ -15,37 +15,7 @@ index 191c645..a372615 100644
  		/**
  		* force it to be a number
  		*/
-@@ -2992,13 +2996,28 @@ const dispatchHooks = (hostRef, isInitialLoad) => {
- 		if (BUILD$1.lifecycleDOMEvents) emitLifecycleEvent(elm, "componentWillLoad");
- 		maybePromise = safeCall(instance, "componentWillLoad", void 0, elm);
- 	} else {
-+		//========= PDS PATCH START
-+		// Stencil decides in this place whether a queued update happens, where Stencil 4 decided it when a prop was set.
-+		// Without this, a forceUpdate() is lost whenever componentShouldUpdate returns false for the props that changed
-+		// in the same cycle.
-+		const isUpdateForced = hostRef.$isUpdateForced$;
-+		hostRef.$isUpdateForced$ = false;
-+		//========= PDS PATCH END
- 		if (BUILD$1.updatable && hostRef.$queuedPropChanges$) {
- 			const changes = hostRef.$queuedPropChanges$;
- 			hostRef.$queuedPropChanges$ = void 0;
--			if (safeCall(instance, "componentShouldUpdate", changes, elm) === false) {
-+			//========= PDS PATCH START
-+			if (safeCall(instance, "componentShouldUpdate", changes, elm) === false && !isUpdateForced) {
- 				hostRef.$flags$ &= ~HOST_FLAGS.isQueuedForUpdate;
-+				// scheduleUpdate() already made the ancestor wait for this component. Without releasing it here, the ancestor
-+				// never finishes its own update, so its componentDidRender and componentDidUpdate are never called.
-+				if (BUILD$1.asyncLoading && hostRef.$onRenderResolve$) {
-+					hostRef.$onRenderResolve$();
-+					hostRef.$onRenderResolve$ = void 0;
-+				}
- 				return;
- 			}
-+			//========= PDS PATCH END
- 		}
- 		if (BUILD$1.lifecycleDOMEvents) emitLifecycleEvent(elm, "componentWillUpdate");
- 		maybePromise = safeCall(instance, "componentWillUpdate", void 0, elm);
-@@ -3061,6 +3080,12 @@ const updateComponent = (hostRef, instance, isInitialLoad) => {
+@@ -3077,6 +3081,12 @@ const updateComponent = (hostRef, instance, isInitialLoad) => {
  	if (BUILD$1.style && isInitialLoad) attachStyles(hostRef);
  	const endRender = createTime("render", hostRef.$cmpMeta$.$tagName$);
  	if (BUILD$1.isDev) hostRef.$flags$ |= HOST_FLAGS.devOnRender;
@@ -58,37 +28,7 @@ index 191c645..a372615 100644
  	if (BUILD$1.hydrateServerSide) return callRender(hostRef, instance, elm, isInitialLoad).then(() => {
  		afterRender(hostRef, elm, rc, isInitialLoad, endRender, endUpdate);
  	});
-@@ -3185,7 +3210,14 @@ const forceUpdate = (ref) => {
- 	if (BUILD$1.updatable && (Build.isBrowser || Build.isTesting)) {
- 		const hostRef = getHostRef(ref);
- 		const isConnected = hostRef?.$hostElement$?.isConnected;
--		if (isConnected && (hostRef.$flags$ & (HOST_FLAGS.hasRendered | HOST_FLAGS.isQueuedForUpdate)) === HOST_FLAGS.hasRendered) scheduleUpdate(hostRef, false);
-+		//========= PDS PATCH START
-+		// Marks the update as forced, also when one is queued already, so dispatchHooks() doesn't let
-+		// componentShouldUpdate turn it down.
-+		if (isConnected && hostRef.$flags$ & HOST_FLAGS.hasRendered) {
-+			hostRef.$isUpdateForced$ = true;
-+			if (!(hostRef.$flags$ & HOST_FLAGS.isQueuedForUpdate)) scheduleUpdate(hostRef, false);
-+		}
-+		//========= PDS PATCH END
- 		return isConnected;
- 	}
- 	return false;
-@@ -3347,7 +3379,12 @@ const setValue = (ref, propName, newVal, cmpMeta) => {
- 				const changes = hostRef.$queuedPropChanges$ ||= {};
- 				changes[propName] = {
- 					newVal,
--					oldVal: changes[propName]?.oldVal ?? oldVal
-+					//========= PDS PATCH START
-+					// componentShouldUpdate patch: `?? oldVal` took the previous value of this cycle for the rendered one whenever
-+					// the rendered one was undefined or null. A prop that is set twice to equal objects was then never rendered,
-+					// because the two objects were compared with each other.
-+					oldVal: propName in changes ? changes[propName].oldVal : oldVal
-+					//========= PDS PATCH END
- 				};
- 			}
- 			if (!(flags & HOST_FLAGS.isQueuedForUpdate)) scheduleUpdate(hostRef, false);
-@@ -4650,8 +4687,9 @@ const proxyComponent = (Cstr, cmpMeta, flags) => {
+@@ -4663,8 +4673,9 @@ const proxyComponent = (Cstr, cmpMeta, flags) => {
  					if (BUILD$1.reflect && propMemberFlags & MEMBER_FLAGS.ReflectAttr && propMemberFlags & MEMBER_FLAGS.Any && !isComplexType(this[propName]) && reflectedAttrValue(this[propName]) === newValue) return;
  					const isSpuriousBooleanRemoval = isBooleanTarget && newValue === null && this[propName] === void 0;
  					if (isBooleanTarget) {
@@ -100,7 +40,7 @@ index 191c645..a372615 100644
  					}
  					const propDesc = Object.getOwnPropertyDescriptor(prototype, propName);
  					const isUnchanged = newValue === this[propName] || newValue == null && this[propName] == null;
-@@ -5030,7 +5068,12 @@ const flush = () => {
+@@ -5040,7 +5051,12 @@ const flush = () => {
  * @param elm the host element
  * @returns `true` if the element's subtree may be incomplete
  */
@@ -114,7 +54,7 @@ index 191c645..a372615 100644
  /**
  * Holds back `elm`'s `connectedCallback` while it's an SSR host the parser hasn't finished
  * with, or one nested inside such a host. Its shadow root is attached once its own subtree
-@@ -5040,7 +5083,9 @@ const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!e
+@@ -5050,7 +5066,9 @@ const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!e
  */
  const deferUntilParsed = (elm) => {
  	if (pending.has(elm)) return true;
@@ -125,7 +65,7 @@ index 191c645..a372615 100644
  	const parsed = isParsed(elm);
  	if (parsed && !hasPendingAncestor(elm)) return false;
  	if (parsed) elm.__attachShadow?.();
-@@ -5224,7 +5269,16 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5234,7 +5252,16 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  			if (BUILD$1.shadowReferenceTarget) cmpMeta.$referenceTarget$ = compactMeta[7];
  			const tagName = transformTag(cmpMeta.$tagName$);
  			const attachShadowRoot = (elm) => {
@@ -143,7 +83,7 @@ index 191c645..a372615 100644
  			};
  			const HostElement = class extends HTMLElement {
  				["s-p"];
-@@ -5234,13 +5288,34 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5244,13 +5271,34 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  					super(self);
  					self = this;
  					registerHost(self, cmpMeta);
@@ -180,7 +120,7 @@ index 191c645..a372615 100644
  					/**
  					* The `connectedCallback` lifecycle event can potentially be fired multiple times
  					* if the element is removed from the DOM and re-inserted. This is not a common use case,
-@@ -5301,9 +5376,11 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5311,9 +5359,11 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  					if (BUILD$1.slotTextContent) patchTextContent(HostElement.prototype);
  				}
  			}
