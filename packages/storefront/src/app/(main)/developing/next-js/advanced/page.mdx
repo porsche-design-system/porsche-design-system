@@ -47,6 +47,10 @@ Streaming is supported: a component that is streamed in through a Suspense bound
 waits until the browser has parsed its markup, so its Declarative Shadow DOM stays in place until the component renders.
 Server rendered components carry a `data-dsr` attribute for this.
 
+The server rendered markup is replaced, not reused, when a component initializes. What a user did with it before is not
+carried over: text typed into a form field is lost and the field loses the keyboard focus. A slow connection or a
+streamed response makes the time in which this can happen longer.
+
 **Important:** Ensure dead code elimination is enabled for the client build to prevent server-side code from leaking
 into the browser bundle.
 
