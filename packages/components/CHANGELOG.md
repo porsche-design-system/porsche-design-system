@@ -14,6 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- **React SSR**: components from `@porsche-design-system/components-react/ssr` that started before React hydrated, e.g.
+  when streamed in through a Suspense boundary or registered early by `getLoaderScript()`, rendered their default props
+  until hydration, e.g. a `PButton` with `variant="secondary"` flashed as primary. The server-rendered markup now passes
+  these props in a `data-ssr-props` attribute.
+  ([#4875](https://github.com/porsche-design-system/porsche-design-system/pull/4875))
+
 ## [4.11.0] - 2026-11-26
 
 ## [4.11.0-rc.0] - 2026-11-25
@@ -109,11 +117,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Flyout`, `Modal`, `Sheet`: `motionVisibleEnd` was emitted again whenever a `background-color` transition ended on an
   element inside the dialog, e.g. after hovering the dismiss button
   ([#4866](https://github.com/porsche-design-system/porsche-design-system/pull/4866))
-- **React SSR**: components from `@porsche-design-system/components-react/ssr` that started before React hydrated, e.g.
-  when streamed in through a Suspense boundary or registered early by `getLoaderScript()`, rendered their default props
-  until hydration, e.g. a `PButton` with `variant="secondary"` flashed as primary. The server-rendered markup now passes
-  these props in a `data-ssr-props` attribute.
-  ([#4875](https://github.com/porsche-design-system/porsche-design-system/pull/4875))
 
 ## [4.10.1] - 2026-10-23
 
