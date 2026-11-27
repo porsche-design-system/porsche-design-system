@@ -14,6 +14,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- **Shadow DOM**: a component that is created while the document is still loading, by the HTML parser or with
+  `document.createElement()`, gets its `shadowRoot` when it is connected instead of when it is created. Read
+  `shadowRoot` once the element is in the document.
+  ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
+
+### Fixed
+
+- **React SSR**: components from `@porsche-design-system/components-react/ssr` that started before React hydrated, e.g.
+  when streamed in through a Suspense boundary or registered early by `getLoaderScript()`, rendered their default props
+  until hydration, e.g. a `PButton` with `variant="secondary"` flashed as primary. The server-rendered markup now passes
+  these props in a `data-ssr-props` attribute.
+  ([#4875](https://github.com/porsche-design-system/porsche-design-system/pull/4875))
+- **React SSR**: components from `@porsche-design-system/components-react/ssr` that were streamed in after the
+  components had loaded, e.g. through a Suspense boundary of Next.js, lost their server-rendered Declarative Shadow DOM:
+  the browser logged `A second declarative shadow root cannot be created on a host`, and React threw a hydration error
+  when such a component had element children. The server-rendered markup now marks these components with a `data-dsr`
+  attribute, which is removed when they initialize or React hydrates them, and ends them with a `<!--dsr-end-->` comment
+  within a `<frame>` element, whose tags browsers drop.
+  ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
+
+## [4.11.0] - 2026-11-26
+
+## [4.11.0-rc.0] - 2026-11-25
+
 ### Added
 
 - `Knowledge Skill`: two form search patterns – search combobox option list (combobox with a listbox of choices) and
@@ -72,10 +98,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   browsers and Firefox. For `Radio Group` this applies to the labels of its options, not to the label of the group. The
   description and the message stay selectable.
   ([#4854](https://github.com/porsche-design-system/porsche-design-system/pull/4854))
-- **Shadow DOM**: a component that is created while the document is still loading, by the HTML parser or with
-  `document.createElement()`, gets its `shadowRoot` when it is connected instead of when it is created. Read
-  `shadowRoot` once the element is in the document.
-  ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
 
 ### Fixed
 
@@ -109,18 +131,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Flyout`, `Modal`, `Sheet`: `motionVisibleEnd` was emitted again whenever a `background-color` transition ended on an
   element inside the dialog, e.g. after hovering the dismiss button
   ([#4866](https://github.com/porsche-design-system/porsche-design-system/pull/4866))
-- **React SSR**: components from `@porsche-design-system/components-react/ssr` that started before React hydrated, e.g.
-  when streamed in through a Suspense boundary or registered early by `getLoaderScript()`, rendered their default props
-  until hydration, e.g. a `PButton` with `variant="secondary"` flashed as primary. The server-rendered markup now passes
-  these props in a `data-ssr-props` attribute.
-  ([#4875](https://github.com/porsche-design-system/porsche-design-system/pull/4875))
-- **React SSR**: components from `@porsche-design-system/components-react/ssr` that were streamed in after the
-  components had loaded, e.g. through a Suspense boundary of Next.js, lost their server-rendered Declarative Shadow DOM:
-  the browser logged `A second declarative shadow root cannot be created on a host`, and React threw a hydration error
-  when such a component had element children. The server-rendered markup now marks these components with a `data-dsr`
-  attribute, which is removed when they initialize or React hydrates them, and ends them with a `<!--dsr-end-->` comment
-  within a `<frame>` element, whose tags browsers drop.
-  ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
 
 ## [4.10.1] - 2026-10-23
 
