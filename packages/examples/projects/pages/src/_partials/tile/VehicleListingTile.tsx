@@ -97,7 +97,7 @@ export const VehicleListingTile = ({
               Two groups rather than one run of text: each stays whole, so the line only ever wraps between them – never
               inside the financing example, and never between it and the popover that belongs to it.
             </Comment>
-            <p-text color="contrast-low">
+            <p-text color="contrast-medium">
               <span class="whitespace-nowrap">{price} |</span>{' '}
               <span class="inline-flex items-center gap-static-xs whitespace-nowrap">
                 {financing}
