@@ -59,8 +59,10 @@ tools:
     # a member nor a collaborator: the agent could read neither their report nor their earlier ones when it looks for
     # duplicates. That is about half of the bug reports.
     min-integrity: none
-  # The report is untrusted text, so the shell is limited to reading.
-  bash: [cat, find, grep, head, ls, rg, tail, wc]
+  # The report is untrusted text, so the agent gets only the commands it needs to read the checkout. This list is no
+  # security boundary: the compiler adds `gh` and a few more, and `rg --pre` can run other programs. What limits a
+  # manipulated agent is the read-only job token and the firewall (`network.allowed: []`).
+  bash: [cat, grep, head, ls, rg, tail, wc]
 
 safe-outputs:
   staged: true
@@ -140,7 +142,8 @@ Then add only the sections that apply:
 - **Missing information**: the questions the reporter should answer, as a short list.
 - **Related issues**: issue numbers, each with a few words on how it relates.
 - **Probable cause**: the files and lines as `path:line`, and how that code leads to the reported behaviour.
-- **Suggested fix**: the direction a fix should take and the behaviour a test should pin down.
+- **Suggested fix**: the direction a fix should take and the behaviour a test should pin down. If the cause is a pattern
+  that could recur elsewhere, name it and say whether a lint rule or a test across components could catch it.
 
 Leave the decisions to the maintainers: do not promise a fix or a date, do not ask for the issue to be closed, and do
 not mention anyone but the reporter. Links to other sites may be removed from the comment, so refer to files by path and
@@ -162,3 +165,6 @@ Skip a label when you are not sure.
 ## When there is nothing to triage
 
 When the issue is empty, is spam or is no bug report at all, call `noop` with a one-line reason and write no comment.
+
+Do the same when the issue was triaged before, which happens when its type is set to Bug a second time: it then already
+has a comment by the `github-actions` bot that opens with one of the assessments above.

@@ -109,11 +109,13 @@ gh api repos/<owner>/<repo>/git/ref/tags/<tag> --jq '.object'   # type "tag" →
 
 The one exception is an agentic workflow's `.github/workflows/*.lock.yml`. `gh aw compile` generates it from the `.md`
 file next to it and writes the pins itself, so Dependabot skips these files (`exclude-paths` in
-`.github/dependabot.yml`). To update their pins, upgrade the compiler to a release that has passed the cooldown and
-compile again:
+`.github/dependabot.yml`). To update their pins, install a compiler release that has passed the cooldown, pinned to its
+version, and compile again. `gh extension upgrade aw` would take the latest release, and `--force` does not re-pin an
+installed extension, so remove it first:
 
 ```bash
-gh extension upgrade aw && gh aw compile
+gh extension remove aw
+gh extension install github/gh-aw --pin vX.Y.Z && gh aw compile
 ```
 
 ## Release-age cooldown (supply-chain protection)
