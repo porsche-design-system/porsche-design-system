@@ -54,7 +54,7 @@ Server rendered components carry a `data-dsr` attribute for this until they init
 with a `<!--dsr-end-->` comment, which tells the component that all of its markup has arrived. React can't render a
 comment, so the server markup contains it within a `<frame>` element, whose tags browsers drop when they parse the
 markup. An HTML validator reports these tags as stray. Don't remove comments from the server markup: components without
-the comment only initialize once the document is parsed.
+the comment only initialize once React has hydrated them or the document is parsed.
 
 The server rendered markup is replaced, not reused, when a component initializes. What a user did with it before is not
 carried over: text typed into a form field is lost and the field loses the keyboard focus. A slow connection or a

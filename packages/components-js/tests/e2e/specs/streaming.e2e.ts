@@ -214,6 +214,32 @@ test.describe('server rendered host streamed after the components are defined', 
     expect(await getFirstRenderVariant(page), 'first render variant').toBe('secondary');
   });
 
+  test('should render a complete host in a shadow root while the document is still streamed, with nothing after it', async ({
+    page,
+  }) => {
+    const { url, sendNextChunk } = await streamDocument([
+      shell,
+      // e.g. the declarative shadow root of a component of the application. What the parser adds within a shadow root
+      // is no mutation of the document, so nothing else tells that the end marker has arrived
+      // (https://github.com/stenciljs/core/issues/7058).
+      `<div id="outer"><template shadowrootmode="open">${hostStart}${templateStart}${templateEnd}${hostEnd}`,
+      '</template></div></body></html>',
+    ]);
+    await gotoShell(page, url);
+    const isRenderedByStencilInShadowRoot = (): Promise<boolean> =>
+      page.evaluate(() => {
+        const host = document.getElementById('outer')?.shadowRoot?.getElementById('host');
+        return !!host?.shadowRoot?.querySelector('button') && !host.shadowRoot.querySelector('#server-rendered');
+      });
+
+    await sendNextChunk();
+    await expect.poll(isRenderedByStencilInShadowRoot).toBe(true);
+    expect(await page.evaluate(() => document.readyState)).toBe('loading');
+    expect(await getFirstRenderVariant(page), 'first render variant').toBe('secondary');
+
+    await sendNextChunk();
+  });
+
   test('should render a server rendered host nested in the light DOM of another one', async ({ page }) => {
     const { url, sendNextChunk } = await streamDocument([
       shell,
@@ -422,6 +448,30 @@ test.describe('server rendered host that React has hydrated before the component
       await sendNextChunk();
     });
   }
+
+  test('should start a host that is held without end marker once React has hydrated it', async ({ page }) => {
+    const { url, sendNextChunk } = await streamDocument([
+      shell,
+      // e.g. when something between the server and the browser removes comments: the components are loaded and hold
+      // the host until the document is parsed
+      `${hostStart + templateStart + templateEnd}Some label</p-button><p id="after">After</p>`,
+      '</body></html>',
+    ]);
+    await gotoShell(page, url);
+
+    await sendNextChunk();
+    await expect.poll(() => getHostState(page)).toMatchObject({ hasServerMarkup: true });
+    await sleep(500);
+    expect(await isRenderedByStencil(page)).toBe(false);
+
+    // what the React SSR wrapper does once React has hydrated the host, it changes nothing else in the document
+    await page.evaluate(() => document.getElementById('host')!.removeAttribute('data-dsr'));
+    await expect.poll(() => isRenderedByStencil(page)).toBe(true);
+    expect(await page.evaluate(() => document.readyState)).toBe('loading');
+    expect(await getHostState(page)).toMatchObject({ hasShadowRoot: true, hasLeftoverTemplate: false });
+
+    await sendNextChunk();
+  });
 
   test('should start while the document is still streamed, although React has replaced its children', async ({
     page,

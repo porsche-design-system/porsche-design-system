@@ -136,7 +136,7 @@ declarative shadow root, with half of it, or without its children
 ([stenciljs/core#7049](https://github.com/stenciljs/core/issues/7049)). The last case is the hardest to see: a
 `p-input-text` that starts before its slotted label has arrived never renders the label, and has no accessible name.
 
-Three things keep the gate from working for PDS out of the box, and the patch changes all of them:
+Four things keep the gate from working for PDS out of the box, and the patch changes all of them:
 
 1. The gate is only compiled into builds with an `ssr` output target (`BUILD.hydrateClientSide`), which would also make
    Stencil hydrate the server markup. Our server markup comes from the DSR components and has no hydration markers, so
@@ -220,18 +220,34 @@ Three things keep the gate from working for PDS out of the box, and the patch ch
    + if (!isServerRendered(elm)) return true;
    ```
 
+4. The gate looks at its held hosts again when a node is added below `document`. That misses two things, so the patch
+   also observes every held host itself, its children and its `data-dsr` attribute:
+   - What the parser adds within a shadow root is no mutation of the document. A host in a declarative shadow root that
+     no held host owns, e.g. of a component of the application, stayed held after its end marker had arrived, until
+     something else changed the document or the document was parsed. This is a gap in Stencil
+     ([stenciljs/core#7058](https://github.com/stenciljs/core/issues/7058)); the part of the patch that observes the
+     children can go once it is fixed there.
+   - The wrapper removing `data-dsr` (point 3) changes no node. A host that was already held, because it has no end
+     marker, stayed held although React had hydrated it.
+
+   ```diff
+     pending.add(elm);
+     if (!observer) { … }
+   + observer.observe(elm, { childList: true, attributeFilter: ["data-dsr"] });
+   ```
+
 Something between the server and the browser that removes comments from the markup takes the end markers with it. The
-components then start when the document is parsed, as they do for a host without marker.
+components then start when React has hydrated them or the document is parsed, as they do for a host without marker.
 
 `packages/components-js/tests/e2e/specs/streaming.e2e.ts` streams a document in chunks and covers the gate in every
 browser: a node that a script inserts before the `<template>`, inside it and before the children, the components being
-loaded while a host is parsed, a host without end marker, a host React has hydrated or changed before the components are
-loaded, and the clone of a started host. `packages/components-react/projects/nextjs/tests/e2e/specs/streaming.e2e.ts`
-covers it with Suspense boundaries, and holds a streamed response in the middle of a host to check, with a script
-inserting a node meanwhile, that React hydrates the host and that an input gets its slotted label. Its `pages.e2e.ts`
-checks on every page that no marker of the server is left once the components have started. The unit tests of the React
-SSR wrapper check that every server rendered host ends with the marker, and that the HTML parser turns it into a
-comment.
+loaded while a host is parsed, a host without end marker, a host in a shadow root that is not its own, a host React has
+hydrated or changed before the components are loaded or while it is held, and the clone of a started host.
+`packages/components-react/projects/nextjs/tests/e2e/specs/streaming.e2e.ts` covers it with Suspense boundaries, and
+holds a streamed response in the middle of a host to check, with a script inserting a node meanwhile, that React
+hydrates the host and that an input gets its slotted label. Its `pages.e2e.ts` checks on every page that no marker of
+the server is left once the components have started. The unit tests of the React SSR wrapper check that every server
+rendered host ends with the marker, and that the HTML parser turns it into a comment.
 
 ### boolean attribute patch
 
