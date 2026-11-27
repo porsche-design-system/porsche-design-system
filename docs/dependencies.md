@@ -107,6 +107,17 @@ When you add an action, resolve the tag to its commit (for annotated tags, deref
 gh api repos/<owner>/<repo>/git/ref/tags/<tag> --jq '.object'   # type "tag" → gh api repos/<owner>/<repo>/git/tags/<sha> --jq '.object.sha'
 ```
 
+The one exception is an agentic workflow's `.github/workflows/*.lock.yml`. `gh aw compile` generates it from the `.md`
+file next to it and writes the pins itself, so Dependabot skips these files (`exclude-paths` in
+`.github/dependabot.yml`). To update their pins, install a compiler release that has passed the cooldown, pinned to its
+version, and compile again. `gh extension upgrade aw` would take the latest release, and `--force` does not re-pin an
+installed extension, so remove it first:
+
+```bash
+gh extension remove aw
+gh extension install github/gh-aw --pin vX.Y.Z && gh aw compile
+```
+
 ## Release-age cooldown (supply-chain protection)
 
 The npm worm campaigns of autumn 2025 ("Shai-Hulud" and its successors) all followed the same pattern: a stolen
