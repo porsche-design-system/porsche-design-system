@@ -13,6 +13,11 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
     imports += `\nimport { ${ssrComponentName} } from '../dsr-components/${kebabCase(
       ssrComponentName.replace('DSR', '')
     )}';`;
+    // the ref is synced by syncHydratedRef, see generateComponent
+    imports = imports.replace(
+      "import { syncRef } from '../../utils';",
+      "import { syncHydratedRef } from '../../syncHydratedRef';"
+    );
 
     if (extendedProps.some(({ isEvent }) => !isEvent)) {
       imports += `\nimport { SSR_PROPS_ATTRIBUTE, serializeSsrProps } from '../../serializeSsrProps';`;
@@ -70,8 +75,14 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
       );
     }
 
+    // React may change the children of the host once it has hydrated it, so the web component must not wait any longer
+    tweakedComponent = tweakedComponent.replace(
+      'ref: syncRef(elementRef, ref)',
+      'ref: syncHydratedRef(elementRef, ref)'
+    );
+
     // `data-dsr` is rendered on the server only (`data-ssr` on the client too): it tells the web component to wait
-    // until the parser has attached the declarative shadow root, which matters when the markup is streamed
+    // until the parser has read the host with all its children, which matters when the markup is streamed
     tweakedComponent = tweakedComponent.replace(
       /\.\.\.rest,\n/,
       `$&      // @ts-ignore

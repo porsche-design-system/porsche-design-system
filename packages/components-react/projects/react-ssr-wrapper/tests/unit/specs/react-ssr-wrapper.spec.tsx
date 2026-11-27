@@ -1,18 +1,34 @@
 import { getComponentMeta, type SlotMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import { kebabCase, pascalCase } from 'change-case';
 import Link from 'next/link';
 import { type JSX } from 'react';
+import { hydrateRoot, type Root } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import * as fromComponents from '../../../src/lib/components';
 import * as minifyCssUtils from '../../../src/minifyCss';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
 
+// what the server writes as the last child of a component, see generateDSRComponents.ts
+const endMarker = '<frame><!--dsr-end--></frame>';
+
+// These specs render what the wrappers render on the server with React's client renderer. Unlike the server renderer,
+// it reports that the HTML parser drops the tags of the end marker, which is what the marker relies on. It also
+// attaches the refs, so the wrappers remove `data-dsr` as they do once React has hydrated a component.
+const isEndMarkerNestingError = (args: unknown[]): boolean => args.includes('<frame>');
+
 beforeEach(() => {
   // skip minifyCss for snapshots
   vi.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
+
+  const consoleError = console.error;
+  vi.spyOn(console, 'error').mockImplementation((...args) => {
+    if (!isEndMarkerNestingError(args)) {
+      consoleError(...args);
+    }
+  });
 });
 
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
@@ -76,7 +92,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
     };
   }
 
-  const consoleSpy = vi.spyOn(console, 'error');
+  const consoleSpy = vi.mocked(console.error);
   const { container } = render(
     <PorscheDesignSystemProvider>
       <Component {...props} />
@@ -89,17 +105,17 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
     expect(template.getAttribute('shadowrootclonable')).toBe('true');
   }
 
-  // the web component only starts once this marker is in its shadow root, so every host that is marked as server
-  // rendered needs a declarative shadow root that ends with it
-  const serverRenderedHosts = container.querySelectorAll('[data-dsr]');
+  // the web component only starts once it has read this marker, so every host the server renders has to end with it
+  const serverRenderedHosts = container.querySelectorAll('[data-ssr]');
   expect(serverRenderedHosts.length).toBeGreaterThan(0);
   for (const host of serverRenderedHosts) {
-    const template = host.querySelector(':scope > template[shadowrootmode]');
-    expect(template?.lastElementChild?.getAttribute('data-dsr-end'), host.tagName).toBe('');
+    expect(host.lastElementChild?.localName, host.tagName).toBe('frame');
+    expect(host.lastElementChild?.firstChild?.nodeValue, host.tagName).toBe('dsr-end');
   }
 
   expect(container.firstElementChild).toMatchSnapshot();
-  expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
+  // detect react jsx errors/warnings
+  expect(consoleSpy.mock.calls.filter((args) => !isEndMarkerNestingError(args))).toEqual([]);
 });
 
 describe('manual test cases', () => {
@@ -228,6 +244,7 @@ describe('ssr props', () => {
 });
 
 describe('server marker', () => {
+
   const renderOnServer = (jsx: JSX.Element): HTMLElement => {
     const container = document.createElement('div');
     container.innerHTML = renderToString(<PorscheDesignSystemProvider>{jsx}</PorscheDesignSystemProvider>);
@@ -255,18 +272,78 @@ describe('server marker', () => {
     expect(template.content.querySelector('p-spinner')!.getAttribute('data-dsr')).toBe('');
   });
 
-  it('should end the declarative shadow root with a marker, also the one of a component within it', () => {
-    const container = renderOnServer(<fromComponents.PButton loading={true}>Some label</fromComponents.PButton>);
-    const template = container.querySelector('p-button > template') as HTMLTemplateElement;
-    const spinnerTemplate = template.content.querySelector('p-spinner > template') as HTMLTemplateElement;
+  it('should write the end marker after the children of a component', () => {
+    const html = renderToString(
+      <PorscheDesignSystemProvider>
+        <fromComponents.PButton>
+          <span>Some label</span>
+        </fromComponents.PButton>
+      </PorscheDesignSystemProvider>
+    );
 
-    expect(template.content.lastElementChild!.outerHTML).toBe('<template data-dsr-end=""></template>');
-    expect(spinnerTemplate.content.lastElementChild!.outerHTML).toBe('<template data-dsr-end=""></template>');
+    expect(html.endsWith(`</template><span>Some label</span>${endMarker}</p-button>`)).toBe(true);
   });
 
-  it('should not render the marker in the light DOM', () => {
-    const container = renderOnServer(<fromComponents.PButton>Some label</fromComponents.PButton>);
+  // the HTML parser drops the tags of the stray frame element, as a browser does
+  it('should end a component, and a component within its declarative shadow root, with a comment once parsed', () => {
+    const container = renderOnServer(
+      <fromComponents.PButton loading={true}>
+        <span>Some label</span>
+      </fromComponents.PButton>
+    );
+    const host = container.querySelector('p-button')!;
+    const template = host.querySelector(':scope > template') as HTMLTemplateElement;
+    const spinner = template.content.querySelector('p-spinner')!;
 
-    expect(container.querySelector('p-button')!.querySelector(':scope > [data-dsr-end]')).toBe(null);
+    for (const { lastChild } of [host, spinner]) {
+      expect(lastChild!.nodeType).toBe(Node.COMMENT_NODE);
+      expect(lastChild!.nodeValue).toBe('dsr-end');
+    }
+    expect(container.querySelector('frame')).toBe(null);
+    expect(template.content.querySelector('frame')).toBe(null);
+    expect(Array.from(host.children, ({ localName }) => localName)).toEqual(['template', 'span']);
+  });
+
+  it('should end a component without children with the marker', () => {
+    const container = renderOnServer(<fromComponents.PIcon />);
+
+    expect(container.querySelector('p-icon')!.lastChild!.nodeValue).toBe('dsr-end');
+  });
+
+  it('should no longer mark a component as server rendered once React has hydrated it', async () => {
+    const container = renderOnServer(
+      <fromComponents.PButton>
+        <span>Some label</span>
+      </fromComponents.PButton>
+    );
+    document.body.append(container);
+    // the browser attaches the declarative shadow root, the template is not a child of the host
+    container.querySelector('p-button > template')!.remove();
+    const host = container.querySelector('p-button')!;
+    const consoleSpy = vi.mocked(console.error);
+
+    // the wrapper renders what it renders in the browser
+    (process as any).browser = true;
+    let root: Root;
+    await act(async () => {
+      root = hydrateRoot(
+        container,
+        <PorscheDesignSystemProvider>
+          <fromComponents.PButton>
+            <span>Some label</span>
+          </fromComponents.PButton>
+        </PorscheDesignSystemProvider>
+      );
+    });
+
+    // React has kept the server rendered host and ignores the comment
+    expect(container.querySelector('p-button')).toBe(host);
+    expect(host.hasAttribute('data-dsr')).toBe(false);
+    expect(host.lastChild!.nodeValue).toBe('dsr-end');
+    expect(consoleSpy).not.toHaveBeenCalled();
+
+    await act(async () => root.unmount());
+    delete (process as any).browser;
+    container.remove();
   });
 });

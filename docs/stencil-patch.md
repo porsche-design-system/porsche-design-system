@@ -4,7 +4,7 @@ We currently have one Stencil patch-package file with four patch sections in pla
 [`patch-package`](https://www.npmjs.com/package/patch-package). The patch file is located in the `patches/` folder and
 is applied automatically when installing via a `postinstall` script.
 
-Stencil version used when this document was last updated: `5.0.0-rc.12`
+Stencil version used when this document was last updated: `5.0.0-rc.14`
 
 Every section in the runtime is wrapped in `//========= PDS PATCH START` and `//========= PDS PATCH END`.
 
@@ -103,9 +103,18 @@ React's hydration ([#4162](https://github.com/porsche-design-system/porsche-desi
 
 Stencil 5 solves this with a parse gate (`src/runtime/parse-gate.ts`,
 [stenciljs/core#7005](https://github.com/stenciljs/core/pull/7005)): a parser-created host gets no shadow root in the
-constructor, and a server rendered host is held until the parser has finished its subtree — the host or one of its
-ancestors has a next sibling, or the document is no longer loading. A `MutationObserver` re-checks the held hosts,
-`DOMContentLoaded` releases the rest, and nested hosts are released parent-first.
+constructor, and a server rendered host is held until the parser has read it with all its children. Since
+[stenciljs/core#7052](https://github.com/stenciljs/core/pull/7052) the server tells where a host ends: it writes a
+comment as the last child of the host, and the gate waits for that comment. A host without one is held until the
+document is no longer loading. A `MutationObserver` re-checks the held hosts, `DOMContentLoaded` releases the rest, and
+nested hosts are released parent-first.
+
+Before that, the gate took a next sibling of the host or of one of its ancestors for the end of the host. A script can
+insert such a sibling while the parser is still inside the host, e.g. a portal container that is appended to the body,
+or the `<script>` of the core chunk, which our own loader appends to the body. The host then started without its
+declarative shadow root, with half of it, or without its children
+([stenciljs/core#7049](https://github.com/stenciljs/core/issues/7049)). The last case is the hardest to see: a
+`p-input-text` that starts before its slotted label has arrived never renders the label, and has no accessible name.
 
 Three things keep the gate from working for PDS out of the box, and the patch changes all of them:
 
@@ -132,10 +141,11 @@ Three things keep the gate from working for PDS out of the box, and the patch ch
    The `hasConnected` check is ours: a host that has started once is never held again, e.g. when React moves a streamed
    boundary into place while the document is still loading.
 
-2. Stencil only holds hosts with its own `s-id` attribute. The React SSR wrapper marks the hosts it renders on the
-   server with `data-dsr` (`packages/components/scripts/wrapper-generator/NextJsReactWrapperGenerator.ts`). `data-ssr`
-   can't be the marker, because the client renders it too, and `data-ssr-props` is left out when every prop has its
-   default.
+2. Stencil only holds hosts with its own `s-id` attribute, and waits for its own comment, `<!--e.{s-id}-->`. The React
+   SSR wrapper marks the hosts it renders on the server with `data-dsr`
+   (`packages/components/scripts/wrapper-generator/NextJsReactWrapperGenerator.ts`), and the DSR components end them
+   with `<!--dsr-end-->` (`packages/components/scripts/generateDSRComponents.ts`). `data-ssr` can't be the marker,
+   because the client renders it too, and `data-ssr-props` is left out when every prop has its default.
 
    ```diff
    + const isServerRendered = (elm) => elm.hasAttribute("s-id") || elm.hasAttribute("data-dsr");
@@ -148,50 +158,51 @@ Three things keep the gate from working for PDS out of the box, and the patch ch
    + if (!win.document || !isServerRendered(elm)) return false;
    ```
 
-3. A next sibling only proves that the parser has finished a host when the parser inserted it. A script can insert one
-   while the parser is still inside the host, e.g. a portal container that is appended to the body, or the `<script>` of
-   the core chunk, which our own loader appends to the body. Stencil then releases the host too early
-   ([stenciljs/core#7049](https://github.com/stenciljs/core/issues/7049)). Before the parser has read the host's
-   `<template>`, that brings back the error and the hydration problem this section is about. While the parser is inside
-   the `<template>`, the component renders, and the parser adds the rest of the server markup to the rendered shadow
-   root.
-
-   The DSR components therefore end their declarative shadow root with a marker, `<template data-dsr-end>`
-   (`packages/components/scripts/generateDSRComponents.ts`), and a host with `data-dsr` is only parsed once the marker
-   is the last element of its shadow root. Scripts of a page can't add it by accident, and nothing follows it in the
-   shadow root. The check of Stencil stays in place after it, so a host still waits for its light DOM whenever no script
-   interferes:
-
    ```diff
-     const isParsed = (elm) => {
-       if (win.document.readyState !== "loading") return true;
-   +   if (elm.hasAttribute("data-dsr") && !elm.shadowRoot?.lastElementChild?.hasAttribute("data-dsr-end")) return false;
-       for (let n = elm; n; n = parentOf(n)) if (n.nextSibling) return true;
-       return false;
-     };
+   - return n?.nodeType === NODE_TYPE.CommentNode && n.nodeValue === `e.${elm.getAttribute("s-id")}` && !!parsedHosts.add(elm);
+   + return n?.nodeType === NODE_TYPE.CommentNode && n.nodeValue === (elm.hasAttribute("data-dsr") ? "dsr-end" : `e.${elm.getAttribute("s-id")}`) && !!parsedHosts.add(elm);
    ```
 
-   The component removes `data-dsr` when it starts. A clone of a started host has a shadow root without the marker,
-   because the component has rendered it, and would be held until the document is parsed if it still had the attribute:
+   React can't render a comment. The DSR components write it into a `<frame>` element with `dangerouslySetInnerHTML`:
+   the HTML parser drops the tags of a `<frame>` outside of a `<frameset>` and keeps what is in it, so the browser only
+   gets the comment. That holds wherever a component can be, also in a table cell and in the declarative shadow root of
+   another component, which other tags the parser drops don't. React's server renderers don't check the nesting; its
+   client renderer does, which only shows in the unit tests of the React SSR wrapper, where it renders what the server
+   renders. React's hydration skips comments that are not its own.
+
+   The component removes `data-dsr` and the comment when it starts. A clone of a started host has no comment anymore,
+   and would be held until the document is parsed if it still had the attribute:
 
    ```diff
      if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && deferUntilParsed(this)) return;
-   + this.removeAttribute("data-dsr");
+   + if (this.hasAttribute("data-dsr")) {
+   +   this.removeAttribute("data-dsr");
+   +   if (this.lastChild?.nodeType === NODE_TYPE.CommentNode && this.lastChild.nodeValue === "dsr-end") this.lastChild.remove();
+   + }
    ```
 
-   **Check this part again once Stencil has fixed
-   [stenciljs/core#7049](https://github.com/stenciljs/core/issues/7049).** Stencil can only fix it for the markup of its
-   own server rendering, so our marker most likely stays, but the two checks have to keep working together. The tests
-   named below fail when they don't. See
-   [#4888](https://github.com/porsche-design-system/porsche-design-system/issues/4888).
+3. The children of our hosts belong to React. Once React has hydrated a host, it may replace its children, the comment
+   included, before the components are loaded: a label that changes in an effect is enough. Such a host would be held
+   until the document is parsed, which takes as long as the response is streamed. React only hydrates markup that is
+   complete, so the wrapper removes `data-dsr` when React attaches the ref of the host
+   (`packages/components-react/projects/react-ssr-wrapper/src/syncHydratedRef.ts`), and the gate lets a host pass that
+   is no longer marked:
+
+   ```diff
+     if (parsedHosts.has(elm) || win.document.readyState !== "loading") return true;
+   + if (!isServerRendered(elm)) return true;
+   ```
+
+Something between the server and the browser that removes comments from the markup takes the end markers with it. The
+components then start when the document is parsed, as they do for a host without marker.
 
 `packages/components-js/tests/e2e/specs/streaming.e2e.ts` streams a document in chunks and covers the gate in every
-browser, including a node that a script inserts before and inside the `<template>`, the components being loaded while a
-host is parsed, and the clone of a started host.
-`packages/components-react/projects/nextjs/tests/e2e/specs/streaming.e2e.ts` covers it with Suspense boundaries, and
-holds a streamed response in the middle of a host to check that React hydrates it when a script inserts a node
-meanwhile. The unit tests of the React SSR wrapper check that every server rendered host ends its declarative shadow
-root with the marker.
+browser: a node that a script inserts before the `<template>`, inside it and before the children, the components being
+loaded while a host is parsed, a host without end marker, a host React has changed before the components are loaded, and
+the clone of a started host. `packages/components-react/projects/nextjs/tests/e2e/specs/streaming.e2e.ts` covers it with
+Suspense boundaries, and holds a streamed response in the middle of a host to check, with a script inserting a node
+meanwhile, that React hydrates the host and that an input gets its slotted label. The unit tests of the React SSR
+wrapper check that every server rendered host ends with the marker, and that the HTML parser turns it into a comment.
 
 ### boolean attribute patch
 
@@ -228,4 +239,4 @@ see [#4887](https://github.com/porsche-design-system/porsche-design-system/issue
    the exception is agreed, run it as `npm_config_min_release_age=0 npx patch-package @stencil/core`.
 4. Build `components` and `components-js` and check that the sections made it into the build, since Stencil removes code
    behind build flags. Each of these has to print a count above 0:
-   `for s in hasDSR data-ssr-props data-dsr data-dsr-end '=== "false"'; do grep -c "$s" packages/components/dist/esm/runtime-*.js; done`
+   `for s in hasDSR data-ssr-props data-dsr dsr-end '=== "false"'; do grep -c "$s" packages/components/dist/esm/runtime-*.js; done`

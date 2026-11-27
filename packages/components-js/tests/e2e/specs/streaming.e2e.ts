@@ -5,14 +5,16 @@ import { expect, test } from '@porsche-design-system/testing/playwright';
 import { sleep } from '../helpers';
 
 // A server rendered host as the React SSR wrapper writes it: marked with `data-dsr`, its shadow DOM in a declarative
-// shadow root that ends with a marker. When the markup is streamed after the components were defined, the parser
-// creates the host with its definition at hand, before it has read the `<template>`. The patched Stencil runtime then
-// holds the host until the parser is done with it (see patches/@stencil+core+*.patch and #4162).
+// shadow root, and an end marker after its children. When the markup is streamed after the components were defined,
+// the parser creates the host with its definition at hand, before it has read the `<template>` and the children. The
+// patched Stencil runtime then holds the host until the parser has read the end marker (see
+// patches/@stencil+core+*.patch and #4162).
 const hostStart = `<p-button id="host" data-ssr data-dsr data-ssr-props='{"variant":"secondary"}'>`;
 const templateStart = '<template shadowrootmode="open"><span id="server-rendered">Server';
-const shadowRootEndMarker = '<template data-dsr-end></template>';
-const templateEnd = ` rendered</span>${shadowRootEndMarker}</template>`;
-const hostEnd = 'Some label</p-button>';
+const templateEnd = ' rendered</span></template>';
+// React can't render a comment, so the wrapper writes it into a stray frame element, whose tags the HTML parser drops
+const endMarker = '<frame><!--dsr-end--></frame>';
+const hostEnd = `Some label${endMarker}</p-button>`;
 
 // WebKit on Linux reads the first 512 bytes to detect the content type before it starts the document, so the first
 // chunk has to be longer than that
@@ -124,6 +126,9 @@ const appendNodeToBody = (page: Page): Promise<void> =>
     document.body.append(document.createElement('div'));
   });
 
+const getChildNodes = (page: Page, id = 'host'): Promise<string[]> =>
+  page.evaluate((id) => Array.from(document.getElementById(id)!.childNodes, ({ nodeName }) => nodeName), id);
+
 const getServerNodesInShadowRoot = (page: Page, id = 'host'): Promise<string[]> =>
   page.evaluate(
     (id) =>
@@ -165,12 +170,35 @@ test.describe('server rendered host streamed after the components are defined', 
     expect(await isRenderedByStencil(page)).toBe(true);
   });
 
-  test('should render a host at the very end of the document once the document is parsed', async ({ page }) => {
+  test('should render a complete host while the document is still streamed, with nothing after it', async ({
+    page,
+  }) => {
     const { url, sendNextChunk } = await streamDocument([
       shell,
-      // nothing follows the host, so only the end of the document tells that it is complete
+      // the end marker tells that the host is complete, nothing has to follow it
       hostStart + templateStart + templateEnd + hostEnd,
       '',
+    ]);
+    await gotoShell(page, url);
+
+    await sendNextChunk();
+    await expect.poll(() => isRenderedByStencil(page)).toBe(true);
+    expect(await page.evaluate(() => document.readyState)).toBe('loading');
+    expect(await getHostState(page)).toMatchObject({ hasShadowRoot: true, hasLeftoverTemplate: false });
+    expect(await getFirstRenderVariant(page), 'first render variant').toBe('secondary');
+    // the markers of the server are gone, and the parser has left no frame element behind
+    await expect(page.locator('#host')).not.toHaveAttribute('data-dsr');
+    expect(await getChildNodes(page)).toEqual(['#text']);
+
+    await sendNextChunk();
+  });
+
+  test('should render a host without end marker once the document is parsed', async ({ page }) => {
+    const { url, sendNextChunk } = await streamDocument([
+      shell,
+      // e.g. when something between the server and the browser removes comments
+      `${hostStart + templateStart + templateEnd}Some label</p-button><p id="after">After</p>`,
+      '</body></html>',
     ]);
     await gotoShell(page, url);
 
@@ -178,19 +206,19 @@ test.describe('server rendered host streamed after the components are defined', 
     await expect
       .poll(() => getHostState(page))
       .toMatchObject({ hasServerMarkup: true, serverText: 'Server rendered', hasLeftoverTemplate: false });
+    await sleep(500);
     expect(await isRenderedByStencil(page)).toBe(false);
 
     await sendNextChunk();
     await expect.poll(() => isRenderedByStencil(page)).toBe(true);
-    expect(await getHostState(page)).toMatchObject({ hasShadowRoot: true, hasLeftoverTemplate: false });
     expect(await getFirstRenderVariant(page), 'first render variant').toBe('secondary');
   });
 
   test('should render a server rendered host nested in the light DOM of another one', async ({ page }) => {
     const { url, sendNextChunk } = await streamDocument([
       shell,
-      `<p-fieldset id="parent" data-ssr data-dsr><template shadowrootmode="open"><span id="server-rendered">Server rendered</span><slot></slot>${shadowRootEndMarker}</template>${hostStart}${templateStart}`,
-      `${templateEnd}${hostEnd}</p-fieldset><p id="after">After</p>`,
+      `<p-fieldset id="parent" data-ssr data-dsr><template shadowrootmode="open"><span id="server-rendered">Server rendered</span><slot></slot></template>${hostStart}${templateStart}`,
+      `${templateEnd}${hostEnd}${endMarker}</p-fieldset><p id="after">After</p>`,
       '</body></html>',
     ]);
     await gotoShell(page, url);
@@ -211,9 +239,9 @@ test.describe('server rendered host streamed after the components are defined', 
   });
 });
 
-// The parser is done with a host once the host or one of its ancestors has a next sibling. A script can insert such a
-// sibling while the parser is still inside the host, so the end marker of the declarative shadow root has to be there
-// as well (https://github.com/stenciljs/core/issues/7049).
+// A next sibling of the host or of one of its ancestors doesn't tell that the parser is done with the host: a script
+// can insert one while the parser is still inside the host. Only the end marker does
+// (https://github.com/stenciljs/core/issues/7049).
 test.describe('node inserted by a script while a server rendered host is streamed', () => {
   test('should keep waiting for the declarative shadow root when the node is inserted before it', async ({ page }) => {
     const { url, sendNextChunk } = await streamDocument([
@@ -251,7 +279,7 @@ test.describe('node inserted by a script while a server rendered host is streame
       `${shell}<main>`,
       // the chunk ends between two nodes of the declarative shadow root
       `${hostStart}<template shadowrootmode="open"><span id="server-rendered">Server rendered</span>`,
-      `<span id="server-rendered-late">Late</span>${shadowRootEndMarker}</template>${hostEnd}</main><p id="after">After</p>`,
+      `<span id="server-rendered-late">Late</span></template>${hostEnd}</main><p id="after">After</p>`,
       '</body></html>',
     ]);
     await gotoShell(page, url);
@@ -269,6 +297,33 @@ test.describe('node inserted by a script while a server rendered host is streame
     // the parser would add the late node to a shadow root the component has rendered already
     expect(await getServerNodesInShadowRoot(page)).toEqual([]);
     expect(await getFirstRenderVariant(page), 'first render variant').toBe('secondary');
+
+    await sendNextChunk();
+  });
+
+  test('should not start before its children are streamed', async ({ page }) => {
+    const { url, sendNextChunk } = await streamDocument([
+      `${shell}<main>`,
+      // the chunk ends after the declarative shadow root, before the slotted label
+      `<p-input-text id="host" data-ssr data-dsr data-ssr-props='{"name":"field"}'><template shadowrootmode="open"><span id="server-rendered">Server rendered</span></template>`,
+      `<span slot="label">Search</span>${endMarker}</p-input-text></main><p id="after">After</p>`,
+      '</body></html>',
+    ]);
+    await gotoShell(page, url);
+    const host = page.locator('#host');
+
+    await sendNextChunk();
+    await expect.poll(() => getHostState(page)).toMatchObject({ hasServerMarkup: true });
+    await appendNodeToBody(page);
+    // time for a host that started by mistake to render
+    await sleep(500);
+    await expect(host).not.toHaveClass(/hydrated/);
+    expect(await getServerNodesInShadowRoot(page)).toEqual(['server-rendered']);
+
+    await sendNextChunk();
+    await expect(host).toHaveClass(/hydrated/);
+    // a component that starts without its label never renders it, which leaves the input without accessible name
+    await expect(page.getByRole('textbox', { name: 'Search' })).toBeVisible();
 
     await sendNextChunk();
   });
@@ -313,8 +368,9 @@ test.describe('clone of a server rendered host that has started', () => {
 
     await sendNextChunk();
     await expect.poll(() => isRenderedByStencil(page)).toBe(true);
-    // the marker is gone, so that a clone, whose shadow root has no end marker, isn't held until the document is parsed
+    // the markers are gone, so that a clone, which has no end marker, isn't held until the document is parsed
     await expect(page.locator('#host')).not.toHaveAttribute('data-dsr');
+    expect(await getChildNodes(page)).toEqual(['#text']);
 
     await page.evaluate(() => {
       const clone = document.getElementById('host')!.cloneNode(true) as HTMLElement;
@@ -323,6 +379,37 @@ test.describe('clone of a server rendered host that has started', () => {
     });
     await expect.poll(() => getFirstRenderVariant(page, 'clone')).toBeDefined();
     expect(await page.evaluate(() => document.readyState)).toBe('loading');
+
+    await sendNextChunk();
+  });
+});
+
+test.describe('server rendered host that React has hydrated before the components are loaded', () => {
+  test('should start while the document is still streamed, although React has replaced its children', async ({
+    page,
+  }) => {
+    const { url, sendNextChunk } = await streamDocument([
+      getShell({ loadComponents: false }),
+      `${hostStart}${templateStart}${templateEnd}${hostEnd}<p id="after">After</p>`,
+      '</body></html>',
+    ]);
+    await page.goto(url, { waitUntil: 'commit' });
+    await expect.poll(() => page.evaluate(() => 'porscheDesignSystem' in window)).toBe(true);
+
+    await sendNextChunk();
+    await expect.poll(() => getHostState(page)).toMatchObject({ hasServerMarkup: true, serverText: 'Server rendered' });
+    await page.evaluate(() => {
+      const host = document.getElementById('host')!;
+      // what the React SSR wrapper does once React has hydrated the host,
+      host.removeAttribute('data-dsr');
+      // and what React does when the component gets another label right after, which removes the end marker
+      host.textContent = 'Another label';
+      (window as any).porscheDesignSystem.load();
+    });
+
+    await expect.poll(() => isRenderedByStencil(page)).toBe(true);
+    expect(await page.evaluate(() => document.readyState)).toBe('loading');
+    await expect(page.locator('#host')).toHaveText('Another label');
 
     await sendNextChunk();
   });

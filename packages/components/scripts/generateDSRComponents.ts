@@ -154,9 +154,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         <template shadowroot="open" shadowrootmode="open" shadowrootclonable="true"${delegatesFocusProp}>
           <style dangerouslySetInnerHTML={{ __html: style }} />
           ${g1.trim().replace(/\n/g, '$&    ')}
-          {/* Has to stay the last node: it tells the web component that the parser has read the whole declarative shadow root. */}
-          <template data-dsr-end="" />
         </template>${children}
+        {/* Has to stay the last node of the host: it tells the web component that the parser has read the host with
+            all its children, which matters when the markup is streamed. React can't render a comment, but the HTML
+            parser drops the tags of a stray frame element and keeps what is in it. */}
+        {/* @ts-ignore */}
+        <frame dangerouslySetInnerHTML={{ __html: '<!--dsr-end-->' }} />
       </>
     );`;
           });

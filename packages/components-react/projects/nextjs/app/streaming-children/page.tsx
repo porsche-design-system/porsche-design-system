@@ -1,4 +1,4 @@
-import { PButton, PText } from '@porsche-design-system/components-react/ssr';
+import { PButton, PInputText, PText } from '@porsche-design-system/components-react/ssr';
 import { headers } from 'next/headers';
 import { Suspense } from 'react';
 
@@ -16,6 +16,10 @@ const StreamedComponents = async () => {
       <PText id="streamed-text">
         <strong>Streamed</strong> <em>text</em>
       </PText>
+      {/* a slotted child the component has to find when it starts: without the label, the input has no accessible name */}
+      <PInputText id="streamed-input" name="search">
+        <span slot="label">Search</span>
+      </PInputText>
     </>
   );
 };

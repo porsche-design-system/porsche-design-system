@@ -118,8 +118,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   components had loaded, e.g. through a Suspense boundary of Next.js, lost their server-rendered Declarative Shadow DOM:
   the browser logged `A second declarative shadow root cannot be created on a host`, and React threw a hydration error
   when such a component had element children. The server-rendered markup now marks these components with a `data-dsr`
-  attribute, which they remove when they initialize, and ends their Declarative Shadow DOM with an empty
-  `<template data-dsr-end>`. ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
+  attribute, which is removed when they initialize or React hydrates them, and ends them with a `<!--dsr-end-->` comment
+  within a `<frame>` element, whose tags browsers drop.
+  ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
 
 ## [4.10.1] - 2026-10-23
 

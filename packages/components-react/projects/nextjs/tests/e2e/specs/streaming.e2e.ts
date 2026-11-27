@@ -17,7 +17,7 @@ const getLeftoverTemplates = (page: Page): Promise<string[]> =>
 
 // Remembers the elements the parser created for the streamed hosts. React replaces them when it has to render the
 // boundary again on the client after a hydration error.
-const streamedHostIds = ['streamed-button', 'streamed-text'];
+const streamedHostIds = ['streamed-button', 'streamed-text', 'streamed-input'];
 const trackParsedHosts = (page: Page) =>
   page.addInitScript((ids) => {
     const parsedHosts: Record<string, Element> = ((window as any).parsedHosts = {});
@@ -39,12 +39,13 @@ const getHostsKeptByReact = (page: Page): Promise<string[]> =>
 
 type HeldDocument = { url: string; isHeld: Promise<void>; release: () => void; close: () => Promise<void> };
 
-// Proxies the app and holds the streamed document back between the opening tag of a host and its `<template>`, the way
-// a network does when a chunk of the response ends there, until the test releases it.
-const holdDocumentAfterOpeningTag = async (
+// Proxies the app and holds the streamed document back inside a host, right before the given markup, the way a
+// network does when a chunk of the response ends there, until the test releases it.
+const holdDocumentInHost = async (
   baseURL: string,
   path: string,
-  openingTag: string
+  openingTag: string,
+  before: string
 ): Promise<HeldDocument> => {
   const { hostname, port } = new URL(baseURL);
   let release!: () => void;
@@ -81,8 +82,8 @@ const holdDocumentAfterOpeningTag = async (
           }
           pendingHtml += html;
           const hostIndex = pendingHtml.indexOf(openingTag);
-          const templateIndex = hostIndex === -1 ? -1 : pendingHtml.indexOf('<template', hostIndex);
-          if (templateIndex === -1) {
+          const holdIndex = hostIndex === -1 ? -1 : pendingHtml.indexOf(before, hostIndex);
+          if (holdIndex === -1) {
             // passes on everything but the host, or the end of the chunk when the opening tag may go on in the next one
             const partialTagLength = Array.from(openingTag, (_, i) => openingTag.length - 1 - i).find((length) =>
               pendingHtml.endsWith(openingTag.slice(0, length))
@@ -92,8 +93,8 @@ const holdDocumentAfterOpeningTag = async (
             pendingHtml = pendingHtml.slice(sentUntil);
             return;
           }
-          res.write(pendingHtml.slice(0, templateIndex));
-          const heldHtml = pendingHtml.slice(templateIndex);
+          res.write(pendingHtml.slice(0, holdIndex));
+          const heldHtml = pendingHtml.slice(holdIndex);
           hold();
           rest = isReleased.then(() => void res.write(heldHtml));
         });
@@ -136,6 +137,7 @@ test('should hydrate streamed components with element children', async ({ page }
   await expect(button).toHaveJSProperty('variant', 'secondary');
   await expect(button.locator('#streamed-button-label')).toHaveText('Streamed button');
   await expect(page.locator('#streamed-text')).toHaveText('Streamed text');
+  await expect(page.getByRole('textbox', { name: 'Search' })).toBeVisible();
   expect(await getLeftoverTemplates(page)).toEqual([]);
 
   // React kept the server rendered hosts instead of rendering the boundary again on the client
@@ -143,16 +145,22 @@ test('should hydrate streamed components with element children', async ({ page }
 });
 
 // A portal container, a toast or a script loader appends its node to the body. While the parser is inside a streamed
-// host, that node is a next sibling of an ancestor of the host, which Stencil takes for the parser being done with the
-// host (https://github.com/stenciljs/core/issues/7049). The host must wait for the end of its declarative shadow root.
-test('should hydrate a streamed component when a script appends a node to the body while it is parsed', async ({
+// host, that node is a next sibling of an ancestor of the host, which Stencil used to take for the parser being done
+// with the host (https://github.com/stenciljs/core/issues/7049). The host has to wait for its end marker.
+const appendNodeToBody = (page: Page): Promise<void> =>
+  page.evaluate(() => {
+    document.body.append(document.createElement('div'));
+  });
+
+test('should hydrate a streamed component when a script appends a node to the body before its declarative shadow root', async ({
   page,
   baseURL,
 }) => {
-  const heldDocument = await holdDocumentAfterOpeningTag(
+  const heldDocument = await holdDocumentInHost(
     baseURL!,
     '/streaming-children',
-    '<p-button id="streamed-button"'
+    '<p-button id="streamed-button"',
+    '<template'
   );
   await trackParsedHosts(page);
 
@@ -164,9 +172,7 @@ test('should hydrate a streamed component when a script appends a node to the bo
     // the shell has loaded the components while the boundary was pending
     expect(await page.evaluate(() => !!customElements.get('p-button'))).toBe(true);
 
-    await page.evaluate(() => {
-      document.body.append(document.createElement('div'));
-    });
+    await appendNodeToBody(page);
     // a host that starts attaches its shadow root right away, and the parser can't attach the declarative one anymore
     expect(await button.evaluate((host) => !!host.shadowRoot)).toBe(false);
 
@@ -177,6 +183,44 @@ test('should hydrate a streamed component when a script appends a node to the bo
     await expect(button).toHaveJSProperty('variant', 'secondary');
     await expect(button.locator('#streamed-button-label')).toHaveText('Streamed button');
     expect(await getLeftoverTemplates(page)).toEqual([]);
+    expect(await getHostsKeptByReact(page)).toEqual(streamedHostIds);
+  } finally {
+    await heldDocument.close();
+  }
+});
+
+test('should give a streamed input its slotted label when a script appends a node to the body before the label', async ({
+  page,
+  baseURL,
+}) => {
+  const heldDocument = await holdDocumentInHost(
+    baseURL!,
+    '/streaming-children',
+    '<p-input-text id="streamed-input"',
+    '<span slot="label"'
+  );
+  await trackParsedHosts(page);
+
+  try {
+    await page.goto(heldDocument.url, { waitUntil: 'commit' });
+    await heldDocument.isHeld;
+    const input = page.locator('#streamed-input');
+    await expect(input).toBeAttached();
+    expect(await page.evaluate(() => !!customElements.get('p-input-text'))).toBe(true);
+    // the declarative shadow root is there, the label is not
+    expect(await input.evaluate((host) => [!!host.shadowRoot, host.children.length])).toEqual([true, 0]);
+
+    await appendNodeToBody(page);
+    // time for a host that started by mistake to render
+    await page.waitForTimeout(500);
+    await expect(input).not.toHaveClass(/hydrated/);
+
+    heldDocument.release();
+    await page.waitForLoadState('load');
+    await waitForComponentsReady(page);
+
+    // a component that starts without its label never renders it, which leaves the input without accessible name
+    await expect(page.getByRole('textbox', { name: 'Search' })).toBeVisible();
     expect(await getHostsKeptByReact(page)).toEqual(streamedHostIds);
   } finally {
     await heldDocument.close();
