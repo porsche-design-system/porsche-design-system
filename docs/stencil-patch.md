@@ -79,14 +79,28 @@ renders for the first time. Only declared props are applied, invalid JSON is ign
 the props are applied only once. The wrapper's layout effect removes the attribute as well, so a component that starts
 after hydration never applies outdated server props over the synced ones.
 
+The attribute sets props an HTML sanitizer can't check: it keeps `data-*` attributes, but only validates the value of
+attributes like `href`. So an app that renders sanitized user content with `p-*` elements must not get the props of that
+content applied:
+
+- **Only the markup of the server is trusted.** The props are applied if the host has a declarative shadow root
+  (`hasDSR`, set by the SSR patch), which only the parser of a document attaches; markup a script inserts with
+  `innerHTML` or `insertAdjacentHTML` never gets one. The parse gate holds a streamed host until its shadow root is
+  parsed, so this also holds for a host that is streamed in while its component is already defined.
+- **A script URL is never applied.** A string that starts with `javascript:` or `vbscript:`, ignoring the whitespace and
+  control characters a browser ignores, is left to React, which sets the prop on hydration as before.
+
+Untrusted markup the server itself embeds with a declarative shadow root still passes the first check, and so does
+markup a script inserts with `setHTMLUnsafe()`. Keeping that out of the page is up to the app.
+
 ```diff
 + const ssrProps = this.getAttribute("data-ssr-props");
 + if (ssrProps !== null) {
 +   this.removeAttribute("data-ssr-props");
-+   try {
++   if (this.hasDSR) try {
 +     for (const [propName, value] of Object.entries(JSON.parse(ssrProps))) {
 +       const member = cmpMeta.$members$[propName];
-+       if (member && member[0] & MEMBER_FLAGS.Prop) this[propName] = value;
++       if (member && member[0] & MEMBER_FLAGS.Prop && !(typeof value === "string" && /^(java|vb)script:/i.test(value.replace(/[\u0000-\u0020]/g, "")))) this[propName] = value;
 +     }
 +   } catch {}
 + }
