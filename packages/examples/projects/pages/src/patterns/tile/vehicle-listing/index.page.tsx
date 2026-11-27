@@ -20,9 +20,10 @@ const Page = () => (
   <PatternPage meta={meta} background="surface" centered>
     <main id="main" class="grid-template py-fluid-lg">
       <VehicleListingTile
-        class="col-basic justify-self-center w-full max-w-[400px]"
+        class="col-basic justify-self-center w-full max-w-[460px]"
         model="718 Cayman GTS 4.0"
-        price="From €103,500.00 incl. VAT or e.g. €1,256.94 / month"
+        price="From €103,500.00 incl. VAT"
+        financing="e.g. €1,256.94 / month"
         priceInfo="The price includes VAT and country-specific equipment. The rate is an example and depends on the term, the deposit and the final instalment."
         year="2027"
         properties={['Petrol', 'Rear-wheel drive', 'Manual']}

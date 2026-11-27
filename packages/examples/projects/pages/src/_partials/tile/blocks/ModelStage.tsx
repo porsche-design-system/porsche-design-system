@@ -26,6 +26,6 @@ export const ModelStage = ({ class: width, model, signature, image }: ModelStage
       safe-zone={false}
     ></p-model-signature>
     <Comment>{tileComments.modelImage}</Comment>
-    <ZoomImage class="[grid-area:1/1] z-1 w-full" alt="" {...image} />
+    <ZoomImage class="[grid-area:1/1] z-1 w-full origin-bottom mt-static-md sm:mt-static-lg" alt="" {...image} />
   </div>
 );

@@ -8,14 +8,14 @@ type VehicleFigure = { value: string; term: string };
 const Figure = ({ value, term }: VehicleFigure) => (
   // Reversed, so that the term still comes first in the markup. Packed to the end of that axis, which is the top, so
   // that the figures of a row align however long their terms are.
-  <div class="flex flex-col-reverse justify-end gap-static-xs">
+  <div class="flex flex-col-reverse justify-end">
     <dt>
       <p-text tag="span" size="xs" color="contrast-medium">
         {term}
       </p-text>
     </dt>
     <dd>
-      <p-text tag="span" size="md" weight="semibold">
+      <p-text tag="span" size="md">
         {value}
       </p-text>
     </dd>
@@ -28,6 +28,8 @@ type VehicleListingTileProps = TilePlacement & {
   tag?: TileHeadingTag;
   /** The line below the heading, which the popover explains. */
   price: string;
+  /** The financing example next to the price, kept together with the popover so neither strands alone when the line wraps. */
+  financing: string;
   /** What the popover says about the price. */
   priceInfo: string;
   /** The model year, set apart from the other properties. */
@@ -56,6 +58,7 @@ export const VehicleListingTile = ({
   model,
   tag = 'h2',
   price,
+  financing,
   priceInfo,
   year,
   properties,
@@ -69,39 +72,59 @@ export const VehicleListingTile = ({
       No link covers the tile: it would lie over its four controls. The heading names the vehicle, the actions open it.
     </Comment>
     <Root class={joinClasses(placement, 'grid gap-fluid-md rounded-3xl bg-canvas p-fluid-md')}>
-      <Comment>{tileComments.modelImage}</Comment>
-      <Comment>Cut out against the tile, so no box has to be clipped around it.</Comment>
-      <Comment>{tileComments.vehicleWidth}</Comment>
-      <img class="justify-self-center w-4/5" src={image.src} alt="" width={image.width} height={image.height} />
-      <div class="grid gap-fluid-sm">
-        <div class="grid gap-static-xs">
-          <p-heading tag={tag} size="lg">
-            {model}
-          </p-heading>
-          <Comment>The popover sits in the line it explains, so it is reached right after the price.</Comment>
-          <p-text color="contrast-medium">
-            {price}
-            {'\u00a0'}
-            <p-popover aria="{ 'aria-label': 'More information about the price' }">{priceInfo}</p-popover>
-          </p-text>
-        </div>
-        <Comment>A list, so the number of properties is announced before the first is read.</Comment>
-        <ul class="flex flex-wrap gap-static-xs">
-          <li>
-            <p-tag variant="primary">{year}</p-tag>
-          </li>
-          {properties.map((property) => (
-            <li key={property}>
-              <p-tag>{property}</p-tag>
+      <Comment>
+        The image and the model block share a fixed gap of their own, independent of the fluid gap between the rows
+        below – the viewport-driven range of that gap would otherwise read as either too tight or too loose here.
+      </Comment>
+      <div class="grid gap-static-lg">
+        <Comment>{tileComments.modelImage}</Comment>
+        <Comment>Cut out against the tile, so no box has to be clipped around it.</Comment>
+        <Comment>{tileComments.vehicleWidth}</Comment>
+        <img
+          class="justify-self-center w-11/12 mt-static-md"
+          src={image.src}
+          alt=""
+          width={image.width}
+          height={image.height}
+        />
+        <div class="grid gap-fluid-sm">
+          <div class="grid gap-static-xs">
+            <p-heading tag={tag} size="lg">
+              {model}
+            </p-heading>
+            <Comment>The popover sits in the line it explains, so it is reached right after the price.</Comment>
+            <Comment>
+              Two groups rather than one run of text: each stays whole, so the line only ever wraps between them – never
+              inside the financing example, and never between it and the popover that belongs to it.
+            </Comment>
+            <p-text color="contrast-low">
+              <span class="whitespace-nowrap">{price} |</span>{' '}
+              <span class="inline-flex items-center gap-static-xs whitespace-nowrap">
+                {financing}
+                <p-popover aria="{ 'aria-label': 'More information about the price' }">{priceInfo}</p-popover>
+              </span>
+            </p-text>
+          </div>
+          <Comment>A list, so the number of properties is announced before the first is read.</Comment>
+          <ul class="flex flex-wrap gap-static-xs">
+            <li>
+              <p-tag variant="primary" compact={true}>
+                {year}
+              </p-tag>
             </li>
-          ))}
-        </ul>
+            {properties.map((property) => (
+              <li key={property}>
+                <p-tag compact={true}>{property}</p-tag>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <Comment>
         A description list, so that every value is read with its term. The term comes first in the markup and is shown
         below its value.
       </Comment>
-      <dl class="grid grid-cols-2 gap-fluid-md">
+      <dl class="grid grid-cols-1 sm:grid-cols-2 gap-static-md">
         {figures.map((figure) => (
           <Figure key={figure.term} {...figure} />
         ))}
@@ -119,16 +142,19 @@ export const VehicleListingTile = ({
             Technical data and standard equipment
           </a>
         </p-link-pure>
-        <p-link variant="primary">
-          <a href={links.discover} aria-label={`Discover the ${model}`}>
-            Discover
-          </a>
-        </p-link>
-        <p-link variant="secondary">
-          <a href={links.configure} aria-label={`Configure the ${model}`}>
-            Configure
-          </a>
-        </p-link>
+        <Comment>The two actions share a tighter gap of their own, apart from the link above them.</Comment>
+        <div class="grid gap-static-sm">
+          <p-link variant="primary">
+            <a href={links.discover} aria-label={`Discover the ${model}`}>
+              Discover
+            </a>
+          </p-link>
+          <p-link variant="secondary">
+            <a href={links.configure} aria-label={`Configure the ${model}`}>
+              Configure
+            </a>
+          </p-link>
+        </div>
       </div>
       <p-text size="2xs" color="contrast-medium" align="center">
         {consumption}
