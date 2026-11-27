@@ -65,6 +65,17 @@ export const VideoTile = ({
           ))}
         </video>
       </GradientMedia>
+      <Comment>{tileComments.coverLink}</Comment>
+      <p-link
+        class="col-start-1 row-start-1 self-start justify-self-end mt-fluid-md me-fluid-md"
+        variant="secondary"
+        icon="arrow-up-right"
+        hide-label="true"
+        compact="true"
+        cover={true}
+      >
+        <a href={href}>{heading}</a>
+      </p-link>
       <div class="col-start-1 row-start-2 flex flex-wrap items-center gap-fluid-sm p-fluid-md">
         <p-heading tag={tag} size="md">
           {heading}
@@ -85,10 +96,6 @@ export const VideoTile = ({
         >
           Play video
         </p-button>
-        <Comment>{tileComments.coverLink}</Comment>
-        <p-link variant="secondary" icon="arrow-up-right" hide-label="true" compact="true" cover={true}>
-          <a href={href}>{heading}</a>
-        </p-link>
       </div>
     </Root>
     <Script>{

@@ -68,7 +68,7 @@ export const ModelTeaserTile = ({
         </p-text>
       </div>
       <Comment>Stacked at full width in a narrow tile, where two buttons side by side would not fit.</Comment>
-      <div class="flex flex-col w-full gap-static-md @xs:w-auto @xs:flex-row @xs:flex-wrap @xs:justify-center">
+      <div class="flex flex-col w-full gap-static-sm @xs:w-auto @xs:flex-row @xs:flex-wrap @xs:justify-center">
         <Comment>{tileComments.coverLink}</Comment>
         <p-link variant="primary" cover={true}>
           <a href={link.href}>{link.label}</a>

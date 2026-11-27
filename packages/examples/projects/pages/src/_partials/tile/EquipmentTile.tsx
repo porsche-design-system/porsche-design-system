@@ -14,11 +14,13 @@ const variants = {
     frame: '@lg:flex-row @lg:gap-0',
     photograph: '@lg:w-1/2 @2xl:w-2/3',
     ratio: 'aspect-5/4',
+    heading: { size: 'sm', weight: 'semibold' },
   },
   stacked: {
     frame: undefined,
     photograph: undefined,
     ratio: 'aspect-9/4',
+    heading: { size: 'lg', weight: undefined },
   },
 } as const;
 
@@ -57,7 +59,7 @@ export const EquipmentTile = ({
   image,
 }: EquipmentTileProps) => {
   const isAdaptive = variant === 'adaptive';
-  const { frame, photograph, ratio } = variants[variant];
+  const { frame, photograph, ratio, heading: headingStyle } = variants[variant];
   const frameClass = joinClasses('flex flex-col gap-static-sm rounded-3xl bg-surface p-static-sm', frame);
 
   const frameComments = (
@@ -100,8 +102,8 @@ export const EquipmentTile = ({
         </Comment>
       )}
       <div class="flex grow flex-col gap-fluid-md p-fluid-md">
-        <div class="grid gap-static-md">
-          <p-heading tag={tag} size="lg">
+        <div class="grid gap-static-sm">
+          <p-heading tag={tag} size={headingStyle.size} weight={headingStyle.weight}>
             {heading}
           </p-heading>
           <p-text color="contrast-medium">{text}</p-text>
