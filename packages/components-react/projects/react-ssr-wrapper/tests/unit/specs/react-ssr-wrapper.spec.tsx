@@ -244,7 +244,6 @@ describe('ssr props', () => {
 });
 
 describe('server marker', () => {
-
   const renderOnServer = (jsx: JSX.Element): HTMLElement => {
     const container = document.createElement('div');
     container.innerHTML = renderToString(<PorscheDesignSystemProvider>{jsx}</PorscheDesignSystemProvider>);
@@ -336,9 +335,10 @@ describe('server marker', () => {
       );
     });
 
-    // React has kept the server rendered host and ignores the comment
+    // React has kept the server rendered host
     expect(container.querySelector('p-button')).toBe(host);
     expect(host.hasAttribute('data-dsr')).toBe(false);
+    // React ignores the comment and leaves it in place, the web component removes it when it starts
     expect(host.lastChild!.nodeValue).toBe('dsr-end');
     expect(consoleSpy).not.toHaveBeenCalled();
 

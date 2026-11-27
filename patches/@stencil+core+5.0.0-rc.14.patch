@@ -1,5 +1,5 @@
 diff --git a/node_modules/@stencil/core/dist/runtime/client/runtime.js b/node_modules/@stencil/core/dist/runtime/client/runtime.js
-index 14e8992..d0fd39d 100644
+index 14e8992..30d678a 100644
 --- a/node_modules/@stencil/core/dist/runtime/client/runtime.js
 +++ b/node_modules/@stencil/core/dist/runtime/client/runtime.js
 @@ -1827,7 +1827,11 @@ const parsePropertyValue = (propValue, propType) => {
@@ -103,7 +103,7 @@ index 14e8992..d0fd39d 100644
  			};
  			const HostElement = class extends HTMLElement {
  				["s-p"];
-@@ -5251,13 +5287,40 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5251,13 +5287,47 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  					super(self);
  					self = this;
  					registerHost(self, cmpMeta);
@@ -123,9 +123,16 @@ index 14e8992..d0fd39d 100644
 +					if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && deferUntilParsed(this)) return;
 +					// The markers of the server are only needed until the host starts. A clone of a started host has no end
 +					// marker anymore, and would be held until the document is parsed if it still had the attribute.
-+					if (this.hasAttribute("data-dsr")) {
-+						this.removeAttribute("data-dsr");
-+						if (this.lastChild?.nodeType === NODE_TYPE.CommentNode && this.lastChild.nodeValue === "dsr-end") this.lastChild.remove();
++					this.removeAttribute("data-dsr");
++					// The end marker has to go whether or not the host is still marked: React removes `data-dsr` when it hydrates
++					// the host, which usually happens before the components are loaded, and may have added children after the
++					// marker since. A component that reads its children must not find the marker among them. Only a host of the
++					// React SSR wrapper (`data-ssr`) can have one.
++					if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && this.hasAttribute("data-ssr")) {
++						for (let n = this.lastChild; n; n = n.previousSibling) if (n.nodeType === NODE_TYPE.CommentNode && n.nodeValue === "dsr-end") {
++							n.remove();
++							break;
++						}
 +					}
 +					//========= PDS PATCH END
  					if (BUILD$1.shadowDom) attachShadowRoot(this);
@@ -146,7 +153,7 @@ index 14e8992..d0fd39d 100644
  					/**
  					* The `connectedCallback` lifecycle event can potentially be fired multiple times
  					* if the element is removed from the DOM and re-inserted. This is not a common use case,
-@@ -5318,9 +5381,11 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -5318,9 +5388,11 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
  					if (BUILD$1.slotTextContent) patchTextContent(HostElement.prototype);
  				}
  			}

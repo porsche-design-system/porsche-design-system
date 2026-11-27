@@ -385,6 +385,44 @@ test.describe('clone of a server rendered host that has started', () => {
 });
 
 test.describe('server rendered host that React has hydrated before the components are loaded', () => {
+  // the usual order in an application: the provider loads the components in an effect, after React has hydrated
+  for (const { name, addChild, childNodes } of [
+    { name: 'that React has not changed', addChild: false, childNodes: [] },
+    { name: 'that React has added a child to', addChild: true, childNodes: ['SPAN'] },
+  ]) {
+    test(`should remove the end marker from a host ${name}`, async ({ page }) => {
+      const { url, sendNextChunk } = await streamDocument([
+        getShell({ loadComponents: false }),
+        // without children, like an icon only item: a component that reads its children must not find the marker
+        `${hostStart}${templateStart}${templateEnd}${endMarker}</p-button><p id="after">After</p>`,
+        '</body></html>',
+      ]);
+      await page.goto(url, { waitUntil: 'commit' });
+      await expect.poll(() => page.evaluate(() => 'porscheDesignSystem' in window)).toBe(true);
+
+      await sendNextChunk();
+      await expect.poll(() => getHostState(page)).toMatchObject({ hasServerMarkup: true });
+      expect(await getChildNodes(page)).toEqual(['#comment']);
+      await page.evaluate((addChild) => {
+        const host = document.getElementById('host')!;
+        // what the React SSR wrapper does once React has hydrated the host, React itself leaves the comment alone
+        host.removeAttribute('data-dsr');
+        if (addChild) {
+          host.append(document.createElement('span'));
+        }
+        (window as any).porscheDesignSystem.load();
+      }, addChild);
+
+      await expect.poll(() => isRenderedByStencil(page)).toBe(true);
+      expect(await getChildNodes(page)).toEqual(childNodes);
+      expect(await page.evaluate(() => document.getElementById('host')!.innerHTML)).toBe(
+        addChild ? '<span></span>' : ''
+      );
+
+      await sendNextChunk();
+    });
+  }
+
   test('should start while the document is still streamed, although React has replaced its children', async ({
     page,
   }) => {

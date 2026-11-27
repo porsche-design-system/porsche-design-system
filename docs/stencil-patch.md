@@ -171,13 +171,19 @@ Three things keep the gate from working for PDS out of the box, and the patch ch
    renders. React's hydration skips comments that are not its own.
 
    The component removes `data-dsr` and the comment when it starts. A clone of a started host has no comment anymore,
-   and would be held until the document is parsed if it still had the attribute:
+   and would be held until the document is parsed if it still had the attribute. The comment has to go whether or not
+   the host is still marked, see point 3, and wherever it is among the children: a component that reads its children, as
+   `p-segmented-control-item` does to tell whether it only has an icon, must not find it. Only a host of the React SSR
+   wrapper (`data-ssr`) is searched, once:
 
    ```diff
      if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && deferUntilParsed(this)) return;
-   + if (this.hasAttribute("data-dsr")) {
-   +   this.removeAttribute("data-dsr");
-   +   if (this.lastChild?.nodeType === NODE_TYPE.CommentNode && this.lastChild.nodeValue === "dsr-end") this.lastChild.remove();
+   + this.removeAttribute("data-dsr");
+   + if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && this.hasAttribute("data-ssr")) {
+   +   for (let n = this.lastChild; n; n = n.previousSibling) if (n.nodeType === NODE_TYPE.CommentNode && n.nodeValue === "dsr-end") {
+   +     n.remove();
+   +     break;
+   +   }
    + }
    ```
 
@@ -186,7 +192,8 @@ Three things keep the gate from working for PDS out of the box, and the patch ch
    until the document is parsed, which takes as long as the response is streamed. React only hydrates markup that is
    complete, so the wrapper removes `data-dsr` when React attaches the ref of the host
    (`packages/components-react/projects/react-ssr-wrapper/src/syncHydratedRef.ts`), and the gate lets a host pass that
-   is no longer marked:
+   is no longer marked. This is the usual order in an application, where the provider loads the components in an effect.
+   React leaves the comment in place and may add children after it; the component removes it when it starts.
 
    ```diff
      if (parsedHosts.has(elm) || win.document.readyState !== "loading") return true;
@@ -198,11 +205,13 @@ components then start when the document is parsed, as they do for a host without
 
 `packages/components-js/tests/e2e/specs/streaming.e2e.ts` streams a document in chunks and covers the gate in every
 browser: a node that a script inserts before the `<template>`, inside it and before the children, the components being
-loaded while a host is parsed, a host without end marker, a host React has changed before the components are loaded, and
-the clone of a started host. `packages/components-react/projects/nextjs/tests/e2e/specs/streaming.e2e.ts` covers it with
-Suspense boundaries, and holds a streamed response in the middle of a host to check, with a script inserting a node
-meanwhile, that React hydrates the host and that an input gets its slotted label. The unit tests of the React SSR
-wrapper check that every server rendered host ends with the marker, and that the HTML parser turns it into a comment.
+loaded while a host is parsed, a host without end marker, a host React has hydrated or changed before the components are
+loaded, and the clone of a started host. `packages/components-react/projects/nextjs/tests/e2e/specs/streaming.e2e.ts`
+covers it with Suspense boundaries, and holds a streamed response in the middle of a host to check, with a script
+inserting a node meanwhile, that React hydrates the host and that an input gets its slotted label. Its `pages.e2e.ts`
+checks on every page that no marker of the server is left once the components have started. The unit tests of the React
+SSR wrapper check that every server rendered host ends with the marker, and that the HTML parser turns it into a
+comment.
 
 ### boolean attribute patch
 
