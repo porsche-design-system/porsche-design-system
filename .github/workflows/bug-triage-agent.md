@@ -39,8 +39,14 @@ engine: copilot
 model: claude-fable-5.2
 strict: true
 
-# Per-run budget in AI Credits (1 AIC = 0.01 USD); 1000 is the default. Tune it with `gh aw logs bug-triage-agent`.
-max-ai-credits: 1000
+# Budgets in AI Credits (1 AIC = 0.01 USD). The first run used 84 for the triage and 74 for the scan of its output;
+# `gh aw logs bug-triage-agent` shows what later runs use.
+#
+# Per run, for the triage itself; the default is 1000. The scan has its own budget of 400.
+max-ai-credits: 300
+# For all runs of this workflow within 24 hours, whoever triggers them; the default is 5000. Once it is reached, bug
+# reports are not triaged until earlier runs have left the window.
+max-daily-ai-credits: 2000
 
 # Anyone can open an issue, so cap what one account without write access can trigger per hour.
 user-rate-limit:
