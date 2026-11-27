@@ -17,9 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Changed
 
 - **Shadow DOM**: a component that is created while the document is still loading, by the HTML parser or with
-  `document.createElement()`, gets its `shadowRoot` when it is connected instead of when it is created. Read
-  `shadowRoot` once the element is in the document.
+  `document.createElement()`, gets its `shadowRoot` when it is connected instead of when it is created, so `shadowRoot`
+  is `null` until then. Read `shadowRoot` once the element is in the document.
   ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
+- **Web Components**: reflected properties such as `name` and `form` update their host attribute immediately instead of
+  with the next render ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
 
 ### Fixed
 
