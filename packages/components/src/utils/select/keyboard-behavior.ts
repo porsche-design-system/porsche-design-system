@@ -1,4 +1,4 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { HTMLStencilElement } from '@stencil/core/runtime';
 import type { MultiSelectAction } from './getMultiSelectActionFromKeyboardEvent';
 import type { SelectAction } from './getSelectActionFromKeyboardEvent';
 

@@ -1,9 +1,9 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   throwIfParentIsNotOfKind,
@@ -28,7 +28,7 @@ const propTypes: PropTypes<typeof DrilldownLink> = {
  */
 @Component({
   tag: 'p-drilldown-link',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class DrilldownLink {
   @Element() public host!: HTMLElement;
@@ -55,8 +55,8 @@ export class DrilldownLink {
     throwIfParentIsNotOfKind(this.host, ['p-drilldown', 'p-drilldown-item']);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

@@ -1,12 +1,12 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, SelectedAriaRole } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  hasAnyPropValueChanged,
   hasLabel,
   hasMessage,
-  hasPropValueChanged,
   validateProps,
 } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -39,7 +39,7 @@ const propTypes: PropTypes<typeof Fieldset> = {
  */
 @Component({
   tag: 'p-fieldset',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Fieldset {
   @Element() public host!: HTMLElement;
@@ -62,8 +62,8 @@ export class Fieldset {
   /** Overrides the ARIA role on the fieldset — use `radiogroup` when grouping radio buttons. */
   @Prop() public aria?: SelectedAriaRole<'radiogroup'>;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

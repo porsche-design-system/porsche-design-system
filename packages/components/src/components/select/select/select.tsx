@@ -2,6 +2,7 @@ import { autoUpdate } from '@floating-ui/dom';
 import {
   AttachInternals,
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -29,11 +30,11 @@ import {
   getNextOptionToHighlight,
   getPrefixedTagNames,
   getSelectActionFromKeyboardEvent,
+  hasAnyPropValueChanged,
   hasDescription,
   hasLabel,
   hasMessage,
   hasNamedSlot,
-  hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
   isUsableOption,
@@ -97,8 +98,7 @@ const propTypes: PropTypes<typeof Select> = {
  */
 @Component({
   tag: 'p-select',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class Select {
   @Element() public host!: HTMLElement;
@@ -311,8 +311,8 @@ export class Select {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public formDisabledCallback(disabled: boolean): void {

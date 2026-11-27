@@ -1,6 +1,8 @@
-import { bundles } from '@porsche-design-system/shared';
 import replace from '@rollup/plugin-replace';
 import type { Config } from '@stencil/core';
+// Stencil 5 loads this config as ESM, where the barrel of @porsche-design-system/shared can't be loaded (its jss
+// import has no ESM build), so the bundles come from their own module.
+import { bundles } from '../shared/src/bundles';
 import { version } from './package.json';
 
 const isDevBuild = process.env.PDS_IS_STAGING === '1';
@@ -10,10 +12,13 @@ export const config: Config = {
   taskQueue: 'async',
   invisiblePrehydration: false, // done manually
   outputTargets: [
-    { type: 'dist' },
+    // `dir` keeps the layout of Stencil 4 (`dist/esm`, `dist/cjs`, …) the build scripts and components-js rely on,
+    // and the jsdom-polyfill needs the CommonJS build.
+    { type: 'loader-bundle', dir: 'dist', cjs: true },
+    // the readmes are no longer generated on their own, build:cleanReadmes turns them into the *.props.md files
+    { type: 'docs-readme' },
     {
       type: 'www',
-      serviceWorker: null,
       copy: [
         {
           src: './favicon.ico',
@@ -28,7 +33,7 @@ export const config: Config = {
   ],
   bundles,
   enableCache: true,
-  rollupPlugins: {
+  rolldownPlugins: {
     after: [
       replace({
         preventAssignment: true,
@@ -41,9 +46,11 @@ export const config: Config = {
     ],
   },
   globalScript: 'src/setup.ts',
-  extras: {
+  compat: {
     // emit lifecycle events like componentWillLoad, didLoad, willUpdate, didUpdate only in dev build for e2e tests
     ...(isDevBuild && { lifecycleDOMEvents: true }),
-    tagNameTransform: true,
+    // Opt-in in Stencil 4, on by default in Stencil 5. It adds one import per component to the runtime, so it stays
+    // off as with Stencil 4.
+    enableImportInjection: false,
   },
 };

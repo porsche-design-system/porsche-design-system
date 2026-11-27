@@ -1,9 +1,9 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
@@ -35,7 +35,7 @@ const propTypes: PropTypes<typeof Display> = {
  */
 @Component({
   tag: 'p-display',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Display {
   @Element() public host!: HTMLElement;
@@ -55,8 +55,8 @@ export class Display {
   /** Truncates the text with an ellipsis when it overflows the container on a single line. */
   @Prop() public ellipsis?: boolean = false;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

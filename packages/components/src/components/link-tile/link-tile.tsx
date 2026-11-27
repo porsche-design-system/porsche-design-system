@@ -1,4 +1,4 @@
-import { Component, Element, h, type JSX, Prop, State } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop, State } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
@@ -6,8 +6,8 @@ import {
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasNamedSlot,
-  hasPropValueChanged,
   type ITileProps,
   LINK_ARIA_ATTRIBUTES,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
@@ -43,7 +43,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
  */
 @Component({
   tag: 'p-link-tile',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class LinkTile implements ITileProps {
   @Element() public host!: HTMLElement;
@@ -98,8 +98,8 @@ export class LinkTile implements ITileProps {
     this.updateSlotObserver();
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

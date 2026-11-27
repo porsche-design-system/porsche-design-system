@@ -1,6 +1,7 @@
 import {
   AttachInternals,
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -17,9 +18,9 @@ import {
   FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasLabel,
   hasMessage,
-  hasPropValueChanged,
   isDisabledOrLoading,
   parseAndGetAriaAttributes,
   setAriaIDREF,
@@ -60,8 +61,7 @@ const propTypes: PropTypes<typeof Checkbox> = {
  */
 @Component({
   tag: 'p-checkbox',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class Checkbox {
   @Element() public host!: HTMLElement;
@@ -146,8 +146,8 @@ export class Checkbox {
     this.externalLabel = this.host.closest('label');
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentWillLoad(): void {

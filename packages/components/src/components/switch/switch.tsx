@@ -1,4 +1,15 @@
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Listen, Prop } from '@stencil/core';
+import {
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  Host,
+  h,
+  type JSX,
+  Listen,
+  Prop,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   ALIGN_LABELS,
@@ -6,7 +17,7 @@ import {
   attachComponentCss,
   FORM_FIELD_ARIA_ATTRIBUTES,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   isDisabledOrLoading,
   validateProps,
 } from '../../utils';
@@ -37,7 +48,7 @@ const propTypes: PropTypes<typeof Switch> = {
  */
 @Component({
   tag: 'p-switch',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class Switch {
   @Element() public host!: HTMLElement;
@@ -92,8 +103,8 @@ export class Switch {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

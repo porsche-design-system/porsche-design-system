@@ -1,12 +1,22 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  type JSX,
+  Prop,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   createTopLayerController,
   getSlotTextContent,
+  hasAnyPropValueChanged,
   hasNamedSlot,
-  hasPropValueChanged,
   isDialogBackdropTarget,
   observeChildren,
   onCancelDialog,
@@ -61,7 +71,7 @@ const propTypes: PropTypes<typeof Flyout> = {
  */
 @Component({
   tag: 'p-flyout',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Flyout {
   @Element() public host!: HTMLElement;
@@ -116,8 +126,8 @@ export class Flyout {
     hide: () => this.dialog?.close(),
   });
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public connectedCallback(): void {

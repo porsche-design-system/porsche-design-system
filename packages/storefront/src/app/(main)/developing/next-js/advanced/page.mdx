@@ -48,6 +48,18 @@ e.g. sanitized user content set with `innerHTML`, and never applies a `javascrip
 `data-*` attributes by default, so if your server embeds HTML from an untrusted source into the page, remove
 `data-ssr-props` from that HTML.
 
+Streaming is supported: a component that is streamed in through a Suspense boundary after the components were loaded
+waits until the browser has parsed its markup, so its Declarative Shadow DOM stays in place until the component renders.
+Server rendered components carry a `data-dsr` attribute for this until they initialize or React hydrates them, and end
+with a `<!--dsr-end-->` comment, which tells the component that all of its markup has arrived. React can't render a
+comment, so the server markup contains it within a `<frame>` element, whose tags browsers drop when they parse the
+markup. An HTML validator reports these tags as stray. Don't remove comments from the server markup: components without
+the comment only initialize once the document is parsed.
+
+The server rendered markup is replaced, not reused, when a component initializes. What a user did with it before is not
+carried over: text typed into a form field is lost and the field loses the keyboard focus. A slow connection or a
+streamed response makes the time in which this can happen longer.
+
 **Important:** Ensure dead code elimination is enabled for the client build to prevent server-side code from leaking
 into the browser bundle.
 

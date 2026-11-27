@@ -1,9 +1,9 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../utils';
@@ -25,7 +25,7 @@ const propTypes: PropTypes<typeof Spinner> = {
 
 @Component({
   tag: 'p-spinner',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Spinner {
   @Element() public host!: HTMLElement;
@@ -39,8 +39,8 @@ export class Spinner {
   /** Sets ARIA attributes on the spinner's live region element; use `aria-label` to provide a descriptive loading message for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttribute>;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

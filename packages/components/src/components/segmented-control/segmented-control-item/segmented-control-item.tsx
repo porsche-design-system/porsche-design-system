@@ -1,10 +1,10 @@
-import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   isElementOfKind,
   throwIfParentIsNotOfKind,
   updateParent,
@@ -33,7 +33,7 @@ const propTypes: PropTypes<typeof SegmentedControlItem> = {
  */
 @Component({
   tag: 'p-segmented-control-item',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class SegmentedControlItem {
   @Element() public host!: HTMLElement & SegmentedControlItemInternalHTMLProps;
@@ -70,8 +70,8 @@ export class SegmentedControlItem {
     updateParent(this.host);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public connectedCallback(): void {

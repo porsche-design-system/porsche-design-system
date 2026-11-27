@@ -7,7 +7,7 @@ import { getComponentCss } from './text-list-item-styles';
  */
 @Component({
   tag: 'p-text-list-item',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class TextListItem {
   @Element() public host!: HTMLElement;

@@ -1,10 +1,10 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../utils';
@@ -22,7 +22,7 @@ const propTypes: PropTypes<typeof TagDismissible> = {
  */
 @Component({
   tag: 'p-tag-dismissible',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class TagDismissible {
   @Element() public host!: HTMLElement;
@@ -36,8 +36,8 @@ export class TagDismissible {
   /** Reduces the tag's padding and height for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

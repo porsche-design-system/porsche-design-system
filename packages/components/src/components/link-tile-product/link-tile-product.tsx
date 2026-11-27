@@ -1,4 +1,14 @@
-import { Component, Element, Event, type EventEmitter, Fragment, h, type JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  Fragment,
+  h,
+  type JSX,
+  Prop,
+} from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
@@ -6,7 +16,7 @@ import {
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   throwIfInvalidLinkTileProductUsage,
   validateProps,
 } from '../../utils';
@@ -44,7 +54,7 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
  */
 @Component({
   tag: 'p-link-tile-product',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class LinkTileProduct {
   @Element() public host!: HTMLElement;
@@ -90,8 +100,8 @@ export class LinkTileProduct {
     throwIfInvalidLinkTileProductUsage(this.host, this.href);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

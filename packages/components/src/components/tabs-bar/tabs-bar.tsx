@@ -1,10 +1,22 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  h,
+  type JSX,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getOnlyChildrenOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasPropValueChanged,
   isShadowRootParentOfKind,
   parseAndGetAriaAttributes,
@@ -46,7 +58,7 @@ const propTypes: PropTypes<typeof TabsBar> = {
  */
 @Component({
   tag: 'p-tabs-bar',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class TabsBar {
   @Element() public host!: HTMLElement;
@@ -98,8 +110,8 @@ export class TabsBar {
     this.resizeObserver?.disconnect();
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentWillLoad(): void {

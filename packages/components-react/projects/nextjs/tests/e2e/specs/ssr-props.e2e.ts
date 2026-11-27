@@ -18,12 +18,6 @@ const getFirstRenderVariant = (page: Page, id: string) =>
   page.evaluate((id) => (window as any).firstRenderVariants[id], id);
 
 test.describe('streaming', () => {
-  test.use({
-    expectedConsole: async ({ expectedConsole }, use) =>
-      // TODO: Remove once the SSR streaming issue is fixed (#4162)
-      use([...expectedConsole, /A second declarative shadow root cannot be created on a host/]),
-  });
-
   test('should render a streamed component with its props from the first render', async ({ page }) => {
     // the streamed button starts as soon as it is parsed, before React hydrates it and syncs its props
     await trackFirstRenderVariants(page);

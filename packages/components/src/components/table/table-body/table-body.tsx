@@ -7,7 +7,7 @@ import { getComponentCss } from './table-body-styles';
  */
 @Component({
   tag: 'p-table-body',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class TableBody {
   @Element() public host!: HTMLElement;

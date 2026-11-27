@@ -1,3 +1,5 @@
+import type { ComponentShouldUpdateChanges } from '@stencil/core';
+
 const isSameArray = (a: readonly unknown[], b: readonly unknown[]): boolean =>
   a.length === b.length && a.every((val, i) => val === b[i]);
 
@@ -20,3 +22,10 @@ export const hasPropValueChanged = (newVal: unknown, oldVal: unknown): boolean =
     })
   );
 };
+
+// Stencil calls componentShouldUpdate once per render cycle with every prop and state that changed since the last
+// render, so the component has to update as soon as one of them actually differs.
+export const hasAnyPropValueChanged = (changes: ComponentShouldUpdateChanges, ignoredProps: string[] = []): boolean =>
+  Object.entries(changes).some(
+    ([propName, { newVal, oldVal }]) => !ignoredProps.includes(propName) && hasPropValueChanged(newVal, oldVal)
+  );

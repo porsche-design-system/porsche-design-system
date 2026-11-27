@@ -19,7 +19,7 @@ const propTypes: PropTypes<typeof ToastItem> = {
 
 @Component({
   tag: 'p-toast-item',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class ToastItem {
   @Element() public host!: HTMLElement;

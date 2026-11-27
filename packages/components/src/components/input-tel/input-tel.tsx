@@ -1,4 +1,15 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  h,
+  type JSX,
+  Prop,
+  Watch,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
@@ -6,7 +17,7 @@ import {
   FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   implicitSubmit,
   syncFormState,
   validateProps,
@@ -54,8 +65,7 @@ const propTypes: PropTypes<typeof InputTel> = {
  */
 @Component({
   tag: 'p-input-tel',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class InputTel {
   @Element() public host!: HTMLElement;
@@ -177,8 +187,8 @@ export class InputTel {
     this.value = state;
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentDidRender(): void {

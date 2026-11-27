@@ -31,7 +31,6 @@ export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizabl
   const dimension = ref(cssVarSize, ref(leadingNormal));
   const strokeDasharray = '69'; // C = 2πR
   const animationDuration = ref(cssVariableAnimationDuration, ref(durationXl));
-  const strokeDasharrayVar = ref('--p-temporary-spinner-stroke-dasharray', strokeDasharray); // override needed for VRT to visualize both circles
 
   return getCss({
     '@global': {
@@ -96,7 +95,8 @@ export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizabl
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray
-              : strokeDasharrayVar,
+              : // override needed for VRT to visualize both circles; called here, so the production build drops the call
+                ref('--p-temporary-spinner-stroke-dasharray', strokeDasharray),
           strokeLinecap: 'round',
           animation: `dash ${animationDuration} steps(50) infinite`,
         },

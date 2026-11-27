@@ -1,9 +1,9 @@
-import { Component, Element, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   parseAndGetAriaAttributes,
   parseJSONAttribute,
   validateProps,
@@ -36,7 +36,7 @@ const propTypes: PropTypes<typeof Scroller> = {
  */
 @Component({
   tag: 'p-scroller',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Scroller {
   @Element() public host!: HTMLElement;
@@ -94,14 +94,11 @@ export class Scroller {
     }
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof Scroller>
-  ): boolean {
-    return (
-      !(propName === 'scrollToPosition' && !isScrollable(this.isIndicatorPrevVisible, this.isIndicatorNextVisible)) && // should only update if scrollable
-      hasPropValueChanged(newVal, oldVal)
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    // scrollToPosition should only update if scrollable
+    return hasAnyPropValueChanged(
+      changes,
+      isScrollable(this.isIndicatorPrevVisible, this.isIndicatorNextVisible) ? [] : ['scrollToPosition']
     );
   }
 

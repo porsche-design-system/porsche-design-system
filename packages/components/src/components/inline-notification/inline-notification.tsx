@@ -39,7 +39,7 @@ const propTypes: PropTypes<typeof InlineNotification> = {
  */
 @Component({
   tag: 'p-inline-notification',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class InlineNotification {
   @Element() public host!: HTMLElement;

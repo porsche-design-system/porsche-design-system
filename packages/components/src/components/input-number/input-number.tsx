@@ -1,6 +1,7 @@
 import {
   AttachInternals,
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -17,7 +18,7 @@ import {
   FORM_FIELD_ARIA_ATTRIBUTES,
   FORM_STATES,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   implicitSubmit,
   syncFormState,
   validateProps,
@@ -65,8 +66,7 @@ const propTypes: PropTypes<typeof InputNumber> = {
  */
 @Component({
   tag: 'p-input-number',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class InputNumber {
   @Element() public host!: HTMLElement;
@@ -188,8 +188,8 @@ export class InputNumber {
     this.value = state;
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentDidRender(): void {

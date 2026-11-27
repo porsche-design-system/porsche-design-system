@@ -1,6 +1,7 @@
 import {
   AttachInternals,
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -17,10 +18,10 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasDescription,
   hasLabel,
   hasMessage,
-  hasPropValueChanged,
   observeChildren,
   setAriaIDREF,
   unobserveChildren,
@@ -68,8 +69,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
  */
 @Component({
   tag: 'p-segmented-control',
-  shadow: true,
-  formAssociated: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
@@ -176,8 +176,8 @@ export class SegmentedControl {
     this.setFormValue();
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public disconnectedCallback(): void {

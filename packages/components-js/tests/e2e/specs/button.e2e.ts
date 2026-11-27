@@ -548,4 +548,19 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
   });
+
+  test('should render an object prop that is set twice to equal objects before the next render', async ({ page }) => {
+    await initButton(page);
+
+    // Stencil hands componentShouldUpdate every change since the last render. The second object has to be compared
+    // with the rendered value, which is undefined, and not with the first object, or the update is skipped.
+    await page.evaluate(() => {
+      const host = document.querySelector('p-button') as HTMLPButtonElement;
+      host.aria = { 'aria-expanded': true };
+      host.aria = { 'aria-expanded': true };
+    });
+    await waitForStencilLifecycle(page);
+
+    await expect(getButton(page)).toHaveAttribute('aria-expanded', 'true');
+  });
 });

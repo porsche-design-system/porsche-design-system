@@ -17,7 +17,7 @@ const propTypes: PropTypes<typeof AiTag> = {
 
 @Component({
   tag: 'p-ai-tag',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class AiTag {
   @Element() public host!: HTMLElement;
