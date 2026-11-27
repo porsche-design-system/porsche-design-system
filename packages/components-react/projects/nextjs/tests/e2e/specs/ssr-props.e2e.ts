@@ -1,6 +1,6 @@
 import { type Page } from '@playwright/test';
 import { expect, test } from '@porsche-design-system/testing/playwright';
-import { goto } from '../helpers';
+import { goto, waitForComponentsReady } from '../helpers';
 
 // Records the variant each button had when Stencil finished its first render, keyed by the button's id.
 const trackFirstRenderVariants = (page: Page) =>
@@ -47,5 +47,34 @@ test.describe('loader script', () => {
     await expect(host).toHaveJSProperty('variant', 'secondary');
     await expect.poll(() => getFirstRenderVariant(page, 'loader-script-button')).toBe('secondary');
     await expect(host).not.toHaveAttribute('data-ssr-props');
+  });
+});
+
+test.describe('hydration before registration', () => {
+  test('should render a component that is registered after React has changed its props with the new props', async ({
+    page,
+  }) => {
+    // holds the components back until React has hydrated the page and changed the variant
+    let registerComponents!: () => void;
+    const canRegisterComponents = new Promise<void>((resolve) => (registerComponents = resolve));
+    await page.route(/\/porsche-design-system\.v[^/]+\.js$/, async (route) => {
+      await canRegisterComponents;
+      await route.continue();
+    });
+    await trackFirstRenderVariants(page);
+    await page.goto('/hydrated-props', { waitUntil: 'commit' });
+    const host = page.locator('#hydrated-button');
+
+    // the wrapper removes the props of the server once React has hydrated the component,
+    // so that the component can't apply them over what React has set since
+    await expect(host).not.toHaveAttribute('data-ssr-props');
+    await page.locator('#change-variant').click();
+    await expect(host).toHaveJSProperty('variant', 'primary');
+    expect(await page.evaluate(() => !!customElements.get('p-button'))).toBe(false);
+
+    registerComponents();
+    await waitForComponentsReady(page, { atLeastOne: true });
+    await expect.poll(() => getFirstRenderVariant(page, 'hydrated-button')).toBe('primary');
+    await expect(host).toHaveJSProperty('variant', 'primary');
   });
 });

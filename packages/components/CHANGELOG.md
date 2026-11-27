@@ -25,8 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - **React SSR**: components from `@porsche-design-system/components-react/ssr` that started before React hydrated, e.g.
   when streamed in through a Suspense boundary or registered early by `getLoaderScript()`, rendered their default props
-  until hydration, e.g. a `PButton` with `variant="secondary"` flashed as primary. The server-rendered markup now passes
-  these props in a `data-ssr-props` attribute.
+  until hydration, e.g. a `PButton` with `variant="secondary"` flashed as primary
   ([#4875](https://github.com/porsche-design-system/porsche-design-system/pull/4875))
 - **React SSR**: components from `@porsche-design-system/components-react/ssr` that were streamed in after the
   components had loaded, e.g. through a Suspense boundary of Next.js, lost their server-rendered Declarative Shadow DOM:
