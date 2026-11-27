@@ -36,7 +36,7 @@ permissions:
   copilot-requests: write
 
 engine: copilot
-model: claude-opus-5.5
+model: claude-fable-5.2
 strict: true
 
 # Per-run budget in AI Credits (1 AIC = 0.01 USD); 1000 is the default. Tune it with `gh aw logs bug-triage-agent`.
