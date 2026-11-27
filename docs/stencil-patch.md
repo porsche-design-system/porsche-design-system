@@ -66,18 +66,39 @@ applied, invalid JSON is ignored, and the attribute is removed so the props are 
 effect removes the attribute as well, so a component that starts after hydration never applies outdated server props
 over the synced ones.
 
+The attribute sets props an HTML sanitizer can't check: it keeps `data-*` attributes, but only validates the value of
+attributes like `href`. So an app that renders sanitized user content with `p-*` elements must not get the props of that
+content applied:
+
+- **Only the markup of the server is trusted.** The props are applied if the host has a declarative shadow root
+  (`hasDSR`, set by the SSR patch), which only the parser of a document attaches; markup a script inserts with
+  `innerHTML` or `insertAdjacentHTML` never gets one. A host that is streamed in while its component is already defined
+  is constructed before the parser reaches its shadow root, so `document.readyState === 'loading'` vouches for it
+  instead. `loading` alone is not enough: the loader script registers the components when the document is `interactive`.
+- **A script URL is never applied.** A string that starts with `javascript:` or `vbscript:`, ignoring the whitespace and
+  control characters a browser ignores, is left to React, which sets the prop on hydration as before.
+
+Markup a script inserts synchronously while the document is loading still passes the first check, and so does untrusted
+markup the server itself embeds with a declarative shadow root. Keeping that out of the page is up to the app.
+
 ```diff
 + const ssrProps = this.getAttribute('data-ssr-props');
 + if (ssrProps !== null) {
 +   this.removeAttribute('data-ssr-props');
-+   try {
-+     for (const [propName, value] of Object.entries(JSON.parse(ssrProps))) {
-+       const member = cmpMeta.$members$[propName];
-+       if (member && member[0] & 31 /* Prop */) {
-+         this[propName] = value;
++   if (this.hasDSR || document.readyState === 'loading') {
++     try {
++       for (const [propName, value] of Object.entries(JSON.parse(ssrProps))) {
++         const member = cmpMeta.$members$[propName];
++         if (
++           member &&
++           member[0] & 31 /* Prop */ &&
++           !(typeof value === 'string' && /^(java|vb)script:/i.test(value.replace(/[\u0000-\u0020]/g, '')))
++         ) {
++           this[propName] = value;
++         }
 +       }
-+     }
-+   } catch (e) {}
++     } catch (e) {}
++   }
 + }
 ```
 
