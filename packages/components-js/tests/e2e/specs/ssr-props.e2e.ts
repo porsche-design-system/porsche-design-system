@@ -97,6 +97,17 @@ test('should not apply a script URL', async ({ page }) => {
   await expect(page.locator('#url a')).toHaveAttribute('href', 'https://porsche.com');
 });
 
+test('should apply a text value that starts like a script URL', async ({ page }) => {
+  // only the props that end up in the `href` of a link are checked for a script URL
+  await setContentWithDesignSystem(
+    page,
+    serverRendered('p-input-search', `name="query" ${ssrProps({ value: 'JavaScript: The Good Parts' })}`, '')
+  );
+
+  await expect(page.locator('p-input-search')).toHaveJSProperty('value', 'JavaScript: The Good Parts');
+  await expect(page.locator('p-input-search input')).toHaveValue('JavaScript: The Good Parts');
+});
+
 test('should only apply declared props', async ({ page }) => {
   await setContentWithDesignSystem(
     page,

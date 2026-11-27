@@ -87,11 +87,17 @@ content applied:
   (`hasDSR`, set by the SSR patch), which only the parser of a document attaches; markup a script inserts with
   `innerHTML` or `insertAdjacentHTML` never gets one. The parse gate holds a streamed host until its shadow root is
   parsed, so this also holds for a host that is streamed in while its component is already defined.
-- **A script URL is never applied.** A string that starts with `javascript:` or `vbscript:`, ignoring the whitespace and
-  control characters a browser ignores, is left to React, which sets the prop on hydration as before.
+- **A script URL is never applied to a link.** For the props that end up in the `href` of a link, `href` and the
+  `skipLinkTarget` of the carousel, a string that starts with `javascript:` or `vbscript:`, ignoring the whitespace and
+  control characters a browser ignores, is left to React, which sets the prop on hydration as before. Every other prop
+  keeps such a string: the value of a search field may be `JavaScript: The Good Parts`. A prop that is rendered into an
+  `href` has to be added here, which `packages/components/src/components/hrefProps.spec.ts` checks.
 
-Untrusted markup the server itself embeds with a declarative shadow root still passes the first check, and so does
-markup a script inserts with `setHTMLUnsafe()`. Keeping that out of the page is up to the app.
+A declarative shadow root is no proof that the markup came from the server. Untrusted markup the server itself embeds
+with one passes the first check, and so does markup a script inserts with `setHTMLUnsafe()` or with `setHTML()`, the
+sanitizer of the browser, which attaches declarative shadow roots and, depending on its configuration, keeps `data-*`
+attributes on the elements it allows. So `data-ssr-props` has to be removed from all untrusted HTML, which is up to the
+app and is what the Next.js page of the storefront tells consumers.
 
 ```diff
 + const ssrProps = this.getAttribute("data-ssr-props");
@@ -100,7 +106,7 @@ markup a script inserts with `setHTMLUnsafe()`. Keeping that out of the page is 
 +   if (this.hasDSR) try {
 +     for (const [propName, value] of Object.entries(JSON.parse(ssrProps))) {
 +       const member = cmpMeta.$members$[propName];
-+       if (member && member[0] & MEMBER_FLAGS.Prop && !(typeof value === "string" && /^(java|vb)script:/i.test(value.replace(/[\u0000-\u0020]/g, "")))) this[propName] = value;
++       if (member && member[0] & MEMBER_FLAGS.Prop && !((propName === "href" || propName === "skipLinkTarget") && typeof value === "string" && /^(java|vb)script:/i.test(value.replace(/[\u0000-\u0020]/g, "")))) this[propName] = value;
 +     }
 +   } catch {}
 + }

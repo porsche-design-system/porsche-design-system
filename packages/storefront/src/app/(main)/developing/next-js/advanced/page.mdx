@@ -43,10 +43,10 @@ before React hydrates, e.g. when it is streamed in through a Suspense boundary o
 [Loader Script](/partials/loader-script), renders with these props instead of its defaults. The attribute is removed
 once the component or React has applied the props.
 
-The attribute is only read from the markup your server rendered. A component ignores it in markup that a script inserts,
-e.g. sanitized user content set with `innerHTML`, and never applies a `javascript:` URL from it. An HTML sanitizer keeps
-`data-*` attributes by default, so if your server embeds HTML from an untrusted source into the page, remove
-`data-ssr-props` from that HTML.
+The attribute sets props directly, and an HTML sanitizer keeps `data-*` attributes by default without checking what is
+in them. If you render HTML from an untrusted source, e.g. user content, remove `data-ssr-props` from it, wherever it is
+rendered: on the server or in the browser. As a safeguard, a component ignores the attribute in markup that is inserted
+with `innerHTML`, and never applies a `javascript:` URL from it to a link.
 
 Streaming is supported: a component that is streamed in through a Suspense boundary after the components were loaded
 waits until the browser has parsed its markup, so its Declarative Shadow DOM stays in place until the component renders.
