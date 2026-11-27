@@ -30,10 +30,22 @@ describe('serializeSsrProps()', () => {
     expect(JSON.parse(serializeSsrProps(props, { disabled: false, hideLabel: false }) as string)).toEqual(props);
   });
 
-  it('should serialize object props even when they deep-equal their default', () => {
-    expect(serializeSsrProps({ hideLabel: { base: false } }, { hideLabel: { base: false } })).toBe(
-      '{"hideLabel":{"base":false}}'
-    );
+  it('should leave out object and array props that equal their default without being the same object', () => {
+    expect(
+      serializeSsrProps(
+        { intl: { root: 'Pagination', prev: 'Previous page' }, value: [], position: { base: 'top', s: 'bottom' } },
+        { intl: { root: 'Pagination', prev: 'Previous page' }, value: [], position: { base: 'top', s: 'bottom' } }
+      )
+    ).toBe(undefined);
+  });
+
+  it('should serialize object and array props that differ from their default', () => {
+    expect(
+      serializeSsrProps(
+        { intl: { root: 'Seiten', prev: 'Previous page' }, value: ['a'], hideLabel: { base: false } },
+        { intl: { root: 'Pagination', prev: 'Previous page' }, value: [], hideLabel: false }
+      )
+    ).toBe('{"intl":{"root":"Seiten","prev":"Previous page"},"value":["a"],"hideLabel":{"base":false}}');
   });
 
   it('should leave out functions', () => {
