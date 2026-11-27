@@ -1,6 +1,7 @@
 import {
   AttachInternals,
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -17,10 +18,10 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasDescription,
   hasLabel,
   hasMessage,
-  hasPropValueChanged,
   setAriaIDREF,
   throwIfElementIsNotOfKind,
   validateProps,
@@ -70,8 +71,7 @@ const propTypes: PropTypes<typeof RadioGroup> = {
  */
 @Component({
   tag: 'p-radio-group',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class RadioGroup {
   @Element() public host!: HTMLElement;
@@ -221,8 +221,8 @@ export class RadioGroup {
     this.value = state;
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentDidLoad(): void {

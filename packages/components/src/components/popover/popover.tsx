@@ -1,6 +1,7 @@
 import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
 import {
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -17,8 +18,8 @@ import {
   AllowedTypes,
   attachComponentCss,
   createTopLayerController,
+  hasAnyPropValueChanged,
   hasNamedSlot,
-  hasPropValueChanged,
   isClickOutside,
   observeChildren,
   parseAndGetAriaAttributes,
@@ -64,7 +65,7 @@ const propTypes: PropTypes<typeof Popover> = {
 //   `dismiss` and the consumer flips `open`. See `isControlled` / `effectiveOpen` for how the two are reconciled.
 @Component({
   tag: 'p-popover',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Popover {
   @Element() public host!: HTMLElement;
@@ -221,8 +222,8 @@ export class Popover {
     unobserveChildren(this.host);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

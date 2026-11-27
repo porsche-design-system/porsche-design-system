@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { hasPropValueChanged } from './has-prop-value-changed';
+import { hasAnyPropValueChanged, hasPropValueChanged } from './has-prop-value-changed';
 
 describe('hasPropValueChanged()', () => {
   const data: { val1: unknown; val2: unknown; result: boolean }[] = [
@@ -90,4 +90,38 @@ describe('hasPropValueChanged()', () => {
       expect(hasPropValueChanged(val1, val2)).toEqual(result);
     }
   );
+});
+
+describe('hasAnyPropValueChanged()', () => {
+  it('should return false if no prop changed', () => {
+    expect(hasAnyPropValueChanged({})).toBe(false);
+  });
+
+  it('should return false if every prop kept its value', () => {
+    expect(
+      hasAnyPropValueChanged({
+        aria: { newVal: { 'aria-label': 'a' }, oldVal: { 'aria-label': 'a' } },
+        size: { newVal: 'small', oldVal: 'small' },
+      })
+    ).toBe(false);
+  });
+
+  it('should return true if one of the props changed its value', () => {
+    expect(
+      hasAnyPropValueChanged({
+        aria: { newVal: { 'aria-label': 'a' }, oldVal: { 'aria-label': 'a' } },
+        size: { newVal: 'small', oldVal: 'medium' },
+      })
+    ).toBe(true);
+  });
+
+  it('should ignore the changes of ignored props', () => {
+    expect(hasAnyPropValueChanged({ size: { newVal: 'small', oldVal: 'medium' } }, ['size'])).toBe(false);
+    expect(
+      hasAnyPropValueChanged(
+        { size: { newVal: 'small', oldVal: 'medium' }, compact: { newVal: true, oldVal: false } },
+        ['size']
+      )
+    ).toBe(true);
+  });
 });

@@ -22,7 +22,7 @@ const propTypes: PropTypes<typeof Tag> = {
  */
 @Component({
   tag: 'p-tag',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Tag {
   @Element() public host!: HTMLElement;

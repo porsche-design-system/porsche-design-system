@@ -28,7 +28,7 @@ const propTypes: PropTypes<typeof ModelSignature> = {
  */
 @Component({
   tag: 'p-model-signature',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class ModelSignature {
   @Element() public host!: HTMLElement;

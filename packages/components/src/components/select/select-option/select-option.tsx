@@ -22,7 +22,7 @@ const propTypes: PropTypes<typeof SelectOption> = {
  */
 @Component({
   tag: 'p-select-option',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;

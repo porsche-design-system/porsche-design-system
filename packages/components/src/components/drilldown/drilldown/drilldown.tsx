@@ -1,6 +1,7 @@
 import { breakpointS } from '@porsche-design-system/emotion';
 import {
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -18,7 +19,7 @@ import {
   attachComponentCss,
   getHTMLElementOfKind,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   parseAndGetAriaAttributes,
   setScrollLock,
   validateProps,
@@ -51,7 +52,7 @@ const propTypes: PropTypes<typeof Drilldown> = {
  */
 @Component({
   tag: 'p-drilldown',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Drilldown {
   @Element() public host!: HTMLElement;
@@ -125,8 +126,8 @@ export class Drilldown {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentDidRender(): void {

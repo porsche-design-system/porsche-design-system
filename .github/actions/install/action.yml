@@ -32,7 +32,8 @@ runs:
       id: cache-node_modules
       with:
         path: '**/node_modules'
-        key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+        # patches/ is part of the key, because patch-package only applies a changed patch on a fresh install
+        key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json', 'patches/**') }}
     - name: 'Install node_modules'
       if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit != 'true'
       run: npm ci

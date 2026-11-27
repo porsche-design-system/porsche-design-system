@@ -1,9 +1,9 @@
-import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   validateProps,
@@ -20,7 +20,7 @@ const propTypes: PropTypes<typeof Wordmark> = {
 
 @Component({
   tag: 'p-wordmark',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class Wordmark {
   @Element() public host!: HTMLElement;
@@ -37,8 +37,8 @@ export class Wordmark {
   /** Sets ARIA attributes on the anchor element to improve accessibility when the wordmark is used as a link. */
   @Prop() public aria?: SelectedAriaAttributes<WordmarkAriaAttribute>;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

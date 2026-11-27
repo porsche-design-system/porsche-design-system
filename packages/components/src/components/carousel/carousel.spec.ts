@@ -662,18 +662,29 @@ describe('active slide control', () => {
   it('should not re-render when only activeSlideIndex changes', () => {
     const component = new Carousel();
 
-    expect(component.componentShouldUpdate(2, 0, 'activeSlideIndex')).toBe(false);
+    expect(component.componentShouldUpdate({ activeSlideIndex: { newVal: 2, oldVal: 0 } })).toBe(false);
   });
 
   it('should re-render when another prop changes value', () => {
     const component = new Carousel();
 
-    expect(component.componentShouldUpdate('medium', 'x-large', 'headingSize')).toBe(true);
+    expect(component.componentShouldUpdate({ headingSize: { newVal: 'medium', oldVal: 'x-large' } })).toBe(true);
+  });
+
+  it('should re-render when another prop changes together with activeSlideIndex', () => {
+    const component = new Carousel();
+
+    expect(
+      component.componentShouldUpdate({
+        activeSlideIndex: { newVal: 2, oldVal: 0 },
+        headingSize: { newVal: 'medium', oldVal: 'x-large' },
+      })
+    ).toBe(true);
   });
 
   it('should not re-render when another prop keeps the same value', () => {
     const component = new Carousel();
 
-    expect(component.componentShouldUpdate('medium', 'medium', 'headingSize')).toBe(false);
+    expect(component.componentShouldUpdate({ headingSize: { newVal: 'medium', oldVal: 'medium' } })).toBe(false);
   });
 });

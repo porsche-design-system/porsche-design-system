@@ -13,7 +13,7 @@ const propTypes: PropTypes<typeof TextList> = {
  */
 @Component({
   tag: 'p-text-list',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class TextList {
   @Element() public host!: HTMLElement;

@@ -1,10 +1,10 @@
 import { FLAGS_MANIFEST } from '@porsche-design-system/assets';
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, FlagName, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../utils';
@@ -19,7 +19,7 @@ const propTypes: PropTypes<typeof Flag> = {
 
 @Component({
   tag: 'p-flag',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Flag {
   @Element() public host!: HTMLElement;
@@ -33,8 +33,8 @@ export class Flag {
   /** A map of ARIA attributes to enhance the flag's accessibility. For example, use `{ 'aria-label': 'German flag' }` to provide a descriptive label for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<FlagAriaAttribute>;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

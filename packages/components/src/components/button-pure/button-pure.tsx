@@ -1,4 +1,15 @@
-import { AttachInternals, Component, Element, Host, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Host,
+  h,
+  type JSX,
+  Listen,
+  Prop,
+  Watch,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   ALIGN_LABELS,
@@ -7,7 +18,7 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
@@ -52,8 +63,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
  */
 @Component({
   tag: 'p-button-pure',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class ButtonPure {
   @Element() public host!: HTMLElement;
@@ -158,8 +168,8 @@ export class ButtonPure {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentDidLoad(): void {

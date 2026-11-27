@@ -14,6 +14,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- **Shadow DOM**: a component that is created while the document is still loading, by the HTML parser or with
+  `document.createElement()`, gets its `shadowRoot` when it is connected instead of when it is created, so `shadowRoot`
+  is `null` until then. Read `shadowRoot` once the element is in the document.
+  ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
+- **Web Components**: reflected properties such as `name` and `form` update their host attribute immediately instead of
+  with the next render ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
+
+### Fixed
+
+- **React SSR**: components from `@porsche-design-system/components-react/ssr` that started before React hydrated, e.g.
+  when streamed in through a Suspense boundary or registered early by `getLoaderScript()`, rendered their default props
+  until hydration, e.g. a `PButton` with `variant="secondary"` flashed as primary
+  ([#4875](https://github.com/porsche-design-system/porsche-design-system/pull/4875))
+- **React SSR**: components from `@porsche-design-system/components-react/ssr` that were streamed in after the
+  components had loaded, e.g. through a Suspense boundary of Next.js, lost their server-rendered Declarative Shadow DOM:
+  the browser logged `A second declarative shadow root cannot be created on a host`, and React threw a hydration error
+  when such a component had element children
+  ([#4877](https://github.com/porsche-design-system/porsche-design-system/pull/4877))
+
 ## [4.11.0] - 2026-11-26
 
 ## [4.11.0-rc.0] - 2026-11-25

@@ -2,6 +2,7 @@ import { autoUpdate } from '@floating-ui/dom';
 import {
   AttachInternals,
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -30,11 +31,11 @@ import {
   getMultiSelectActionFromKeyboardEvent,
   getNextOptionToHighlight,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasDescription,
   hasLabel,
   hasMessage,
   hasNamedSlot,
-  hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
   isUsableOption,
@@ -102,8 +103,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
  */
 @Component({
   tag: 'p-multi-select',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class MultiSelect {
   @Element() public host!: HTMLElement;
@@ -320,8 +320,8 @@ export class MultiSelect {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public formDisabledCallback(disabled: boolean): void {
@@ -375,13 +375,7 @@ export class MultiSelect {
           role="combobox"
           id={buttonId}
           tabIndex={0}
-          {...getComboboxAriaAttributes(
-            this.isOpen,
-            this.required,
-            selectMessageId,
-            selectDescriptionId,
-            listboxId
-          )}
+          {...getComboboxAriaAttributes(this.isOpen, this.required, selectMessageId, selectDescriptionId, listboxId)}
           disabled={this.disabled}
           onClick={this.onComboClick}
           onBlur={this.onComboBlur}

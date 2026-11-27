@@ -18,7 +18,7 @@ const propTypes: PropTypes<typeof TabsItem> = {
  */
 @Component({
   tag: 'p-tabs-item',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class TabsItem {
   @Element() public host!: HTMLElement;

@@ -1,4 +1,15 @@
-import { AttachInternals, Component, Element, Host, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Host,
+  h,
+  type JSX,
+  Listen,
+  Prop,
+  Watch,
+} from '@stencil/core';
 import type {
   BreakpointCustomizable,
   ButtonAriaAttribute,
@@ -12,7 +23,7 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
@@ -43,8 +54,7 @@ const propTypes: PropTypes<typeof Button> = {
  */
 @Component({
   tag: 'p-button',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class Button {
   @Element() public host!: HTMLElement;
@@ -136,8 +146,8 @@ export class Button {
     this.syncCustomStates();
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentDidLoad(): void {

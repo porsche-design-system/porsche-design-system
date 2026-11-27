@@ -1,4 +1,4 @@
-import { Component, Element, h, type JSX, Listen, Prop, State } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Listen, Prop, State } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type {
   BreakpointCustomizable,
@@ -14,8 +14,8 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasNamedSlot,
-  hasPropValueChanged,
   type ITileProps,
   isDisabledOrLoading,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
@@ -52,7 +52,7 @@ const propTypes: PropTypes<typeof ButtonTile> = {
  */
 @Component({
   tag: 'p-button-tile',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class ButtonTile implements ITileProps {
   @Element() public host!: HTMLElement;
@@ -117,8 +117,8 @@ export class ButtonTile implements ITileProps {
     this.updateSlotObserver();
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

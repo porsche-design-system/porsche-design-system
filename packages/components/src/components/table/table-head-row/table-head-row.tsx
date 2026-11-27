@@ -7,7 +7,7 @@ import { getComponentCss } from './table-head-row-styles';
  */
 @Component({
   tag: 'p-table-head-row',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class TableHeadRow {
   @Element() public host!: HTMLElement;

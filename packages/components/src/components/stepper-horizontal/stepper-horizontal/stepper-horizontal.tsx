@@ -1,9 +1,20 @@
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  Host,
+  h,
+  type JSX,
+  Prop,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasAnyPropValueChanged,
   hasPropValueChanged,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
@@ -29,7 +40,7 @@ const propTypes: PropTypes<typeof StepperHorizontal> = {
  */
 @Component({
   tag: 'p-stepper-horizontal',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class StepperHorizontal {
   @Element() public host!: HTMLElement;
@@ -48,8 +59,8 @@ export class StepperHorizontal {
     this.resizeObserver?.disconnect();
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentWillLoad(): void {

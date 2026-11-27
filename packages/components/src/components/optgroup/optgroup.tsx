@@ -14,7 +14,7 @@ const propTypes: PropTypes<typeof Optgroup> = {
  */
 @Component({
   tag: 'p-optgroup',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Optgroup {
   @Element() public host!: HTMLElement;

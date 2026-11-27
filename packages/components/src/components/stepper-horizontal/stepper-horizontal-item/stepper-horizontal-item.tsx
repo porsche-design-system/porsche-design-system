@@ -28,7 +28,7 @@ const propTypes: PropTypes<typeof StepperHorizontalItem> = {
  */
 @Component({
   tag: 'p-stepper-horizontal-item',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class StepperHorizontalItem {
   @Element() public host!: HTMLElement;

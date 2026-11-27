@@ -166,19 +166,19 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
 describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
   const component = componentFactory(tagName);
 
-  it('should call hasPropValueChanged() with correct parameters via componentShouldUpdate and return its result', () => {
+  it('should call hasAnyPropValueChanged() with the changes via componentShouldUpdate and return its result', () => {
     const spy = vi
-      .spyOn(hasPropValueChangedUtils, 'hasPropValueChanged')
+      .spyOn(hasPropValueChangedUtils, 'hasAnyPropValueChanged')
       .mockReturnValueOnce(true)
       .mockReturnValueOnce(false);
 
-    const result1 = component.componentShouldUpdate('newVal', 'oldVal', 'propOrStateName');
-    expect(result1).toBe(true);
-    expect(spy).toHaveBeenCalledWith('newVal', 'oldVal');
+    const changes1 = { propOrStateName: { newVal: 'newVal', oldVal: 'oldVal' } };
+    expect(component.componentShouldUpdate(changes1)).toBe(true);
+    expect(spy.mock.calls[0][0]).toBe(changes1);
 
-    const result2 = component.componentShouldUpdate('sameVal', 'sameVal', 'propOrStateName');
-    expect(result2).toBe(false);
-    expect(spy).toHaveBeenCalledWith('sameVal', 'sameVal');
+    const changes2 = { propOrStateName: { newVal: 'sameVal', oldVal: 'sameVal' } };
+    expect(component.componentShouldUpdate(changes2)).toBe(false);
+    expect(spy.mock.calls[1][0]).toBe(changes2);
   });
 });
 

@@ -1,0 +1,189 @@
+diff --git a/node_modules/@stencil/core/dist/runtime/client/runtime.js b/node_modules/@stencil/core/dist/runtime/client/runtime.js
+index 14e8992..c9fef70 100644
+--- a/node_modules/@stencil/core/dist/runtime/client/runtime.js
++++ b/node_modules/@stencil/core/dist/runtime/client/runtime.js
+@@ -1827,7 +1827,11 @@ const parsePropertyValue = (propValue, propType) => {
+ 		/**
+ 		* ensure this value is of the correct prop type
+ 		*/
+-		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "" || !!propValue;
++		//========= PDS PATCH START
++		// Stencil 5 treats every value of a boolean attribute as true, like native elements. Props that default to true
++		// (e.g. `dismiss-button` of p-modal) can only be turned off in markup with `="false"`, so it stays false as in Stencil 4.
++		if (BUILD$1.propBoolean && propType & MEMBER_FLAGS.Boolean) return propValue === "false" ? false : propValue === "" || !!propValue;
++		//========= PDS PATCH END
+ 		/**
+ 		* force it to be a number
+ 		*/
+@@ -3078,6 +3082,12 @@ const updateComponent = (hostRef, instance, isInitialLoad) => {
+ 	if (BUILD$1.style && isInitialLoad) attachStyles(hostRef);
+ 	const endRender = createTime("render", hostRef.$cmpMeta$.$tagName$);
+ 	if (BUILD$1.isDev) hostRef.$flags$ |= HOST_FLAGS.devOnRender;
++	//========= PDS PATCH START
++	if (elm.hasDSR) {
++		elm.shadowRoot.innerHTML = "";
++		elm.hasDSR = false;
++	}
++	//========= PDS PATCH END
+ 	if (BUILD$1.hydrateServerSide) return callRender(hostRef, instance, elm, isInitialLoad).then(() => {
+ 		afterRender(hostRef, elm, rc, isInitialLoad, endRender, endUpdate);
+ 	});
+@@ -4664,8 +4674,9 @@ const proxyComponent = (Cstr, cmpMeta, flags) => {
+ 					if (BUILD$1.reflect && propMemberFlags & MEMBER_FLAGS.ReflectAttr && propMemberFlags & MEMBER_FLAGS.Any && !isComplexType(this[propName]) && reflectedAttrValue(this[propName]) === newValue) return;
+ 					const isSpuriousBooleanRemoval = isBooleanTarget && newValue === null && this[propName] === void 0;
+ 					if (isBooleanTarget) {
+-						if (BUILD$1.isDev && newValue === "false") consoleDevWarn(`<${cmpMeta.$tagName$} ${attrName}="false">: boolean attributes are true when present, regardless of value. Remove the attribute or set the "${propName}" property to false instead.`);
+-						newValue = newValue !== null;
++						//========= PDS PATCH START
++						newValue = newValue !== null && newValue !== "false";
++						//========= PDS PATCH END
+ 					}
+ 					const propDesc = Object.getOwnPropertyDescriptor(prototype, propName);
+ 					const isUnchanged = newValue === this[propName] || newValue == null && this[propName] == null;
+@@ -5021,9 +5032,18 @@ const parentOf = (node) => node.parentNode ?? (node.nodeType === NODE_TYPE.Docum
+ */
+ const isParsed = (elm) => {
+ 	if (parsedHosts.has(elm) || win.document.readyState !== "loading") return true;
++	//========= PDS PATCH START
++	// SSR streaming patch: the React SSR wrapper removes `data-dsr` once React has hydrated the host. React only hydrates
++	// markup that is complete, and may have changed the children since, the end marker included.
++	if (!isServerRendered(elm)) return true;
++	//========= PDS PATCH END
+ 	let n = elm.lastChild;
+ 	if (n?.nodeType === NODE_TYPE.TextNode) n = n.previousSibling;
+-	return n?.nodeType === NODE_TYPE.CommentNode && n.nodeValue === `e.${elm.getAttribute("s-id")}` && !!parsedHosts.add(elm);
++	//========= PDS PATCH START
++	// SSR streaming patch: the React SSR wrapper ends a host it renders on the server with a `dsr-end` comment, as
++	// Stencil's own server rendering ends its hosts with `e.{s-id}`.
++	return n?.nodeType === NODE_TYPE.CommentNode && n.nodeValue === (elm.hasAttribute("data-dsr") ? "dsr-end" : `e.${elm.getAttribute("s-id")}`) && !!parsedHosts.add(elm);
++	//========= PDS PATCH END
+ };
+ const hasPendingAncestor = (elm) => {
+ 	for (let n = parentOf(elm); n; n = parentOf(n)) if (pending.has(n)) return true;
+@@ -5047,7 +5067,12 @@ const flush = () => {
+ * @param elm the host element
+ * @returns `true` if the element's subtree may be incomplete
+ */
+-const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!elm.parentNode || elm.hasAttribute("s-id") && !isParsed(elm));
++//========= PDS PATCH START
++// Stencil only holds the hosts its own server rendering marks with `s-id`. The React SSR wrapper marks the hosts it
++// renders on the server with `data-dsr`, so they are held too until the parser has read them with all their children.
++const isServerRendered = (elm) => elm.hasAttribute("s-id") || elm.hasAttribute("data-dsr");
++const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!elm.parentNode || isServerRendered(elm) && !isParsed(elm));
++//========= PDS PATCH END
+ /**
+ * Holds back `elm`'s `connectedCallback` while it's an SSR host the parser hasn't finished
+ * with, or one nested inside such a host. Its shadow root is attached once its own subtree
+@@ -5057,7 +5082,9 @@ const mayStillBeParsing = (elm) => win.document?.readyState === "loading" && (!e
+ */
+ const deferUntilParsed = (elm) => {
+ 	if (pending.has(elm)) return true;
+-	if (!win.document || !elm.hasAttribute("s-id")) return false;
++	//========= PDS PATCH START
++	if (!win.document || !isServerRendered(elm)) return false;
++	//========= PDS PATCH END
+ 	const parsed = isParsed(elm);
+ 	if (parsed && !hasPendingAncestor(elm)) return false;
+ 	if (parsed) elm.__attachShadow?.();
+@@ -5070,6 +5097,15 @@ const deferUntilParsed = (elm) => {
+ 		});
+ 		win.document.addEventListener("DOMContentLoaded", flush, { once: true });
+ 	}
++	//========= PDS PATCH START
++	// SSR streaming patch: the observer of the document doesn't see what the parser adds within a shadow root, so the
++	// end marker of a host in there went unnoticed until something else changed the document (stenciljs/core#7058).
++	// It doesn't see either that the React SSR wrapper removes `data-dsr` when React has hydrated the host.
++	observer.observe(elm, {
++		childList: true,
++		attributeFilter: ["data-dsr"]
++	});
++	//========= PDS PATCH END
+ 	return true;
+ };
+ //#endregion
+@@ -5241,7 +5277,16 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+ 			if (BUILD$1.shadowReferenceTarget) cmpMeta.$referenceTarget$ = compactMeta[7];
+ 			const tagName = transformTag(cmpMeta.$tagName$);
+ 			const attachShadowRoot = (elm) => {
+-				if (cmpMeta.$flags$ & CMP_FLAGS.shadowDomEncapsulation && !(cmpMeta.$flags$ & CMP_FLAGS.shadowNeedsScopedCss) && !getShadowRoot(elm)) createShadowRoot.call(elm, cmpMeta);
++				//========= PDS PATCH START
++				// A shadow root that exists before Stencil attached one was rendered on the server (DSR component).
++				// `hasDSR` is undefined until that is known, since this runs in the constructor and on every connect.
++				if (cmpMeta.$flags$ & CMP_FLAGS.shadowDomEncapsulation && !(cmpMeta.$flags$ & CMP_FLAGS.shadowNeedsScopedCss)) {
++					if (!getShadowRoot(elm)) {
++						createShadowRoot.call(elm, cmpMeta);
++						elm.hasDSR = false;
++					} else if (elm.hasDSR === void 0) elm.hasDSR = true;
++				}
++				//========= PDS PATCH END
+ 			};
+ 			const HostElement = class extends HTMLElement {
+ 				["s-p"];
+@@ -5251,13 +5296,52 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+ 					super(self);
+ 					self = this;
+ 					registerHost(self, cmpMeta);
+-					if (BUILD$1.shadowDom && !(BUILD$1.hydrateClientSide && mayStillBeParsing(self))) attachShadowRoot(self);
++					//========= PDS PATCH START
++					// Stencil only compiles its parse gate into builds with an `ssr` output target (BUILD.hydrateClientSide),
++					// which would also hydrate the server markup. PDS renders it again instead, so only the gate is enabled.
++					if (BUILD$1.shadowDom && !mayStillBeParsing(self)) attachShadowRoot(self);
++					//========= PDS PATCH END
+ 				}
+ 				connectedCallback() {
+ 					const hostRef = getHostRef(this);
+ 					if (!hostRef) return;
+-					if (BUILD$1.hydrateClientSide && deferUntilParsed(this)) return;
++					//========= PDS PATCH START
++					// A host that has started once is never held again, e.g. when React moves a streamed boundary into place.
++					if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && deferUntilParsed(this)) return;
++					// The markers of the server are only needed until the host starts. A clone of a started host has no end
++					// marker anymore, and would be held until the document is parsed if it still had the attribute.
++					this.removeAttribute("data-dsr");
++					// The end marker has to go whether or not the host is still marked: React removes `data-dsr` when it hydrates
++					// the host, which usually happens before the components are loaded, and may have added children after the
++					// marker since. A component that reads its children must not find the marker among them. Only a host of the
++					// React SSR wrapper (`data-ssr`) can have one.
++					if (!(hostRef.$flags$ & HOST_FLAGS.hasConnected) && this.hasAttribute("data-ssr")) {
++						for (let n = this.lastChild; n; n = n.previousSibling) if (n.nodeType === NODE_TYPE.CommentNode && n.nodeValue === "dsr-end") {
++							n.remove();
++							break;
++						}
++					}
++					//========= PDS PATCH END
+ 					if (BUILD$1.shadowDom) attachShadowRoot(this);
++					//========= PDS PATCH START
++					// Applies the props serialized by the React SSR wrapper before the first render, so a component that starts
++					// before React hydrates doesn't render its defaults. Only declared props are applied.
++					const ssrProps = this.getAttribute("data-ssr-props");
++					if (ssrProps !== null) {
++						this.removeAttribute("data-ssr-props");
++						// The attribute is only trusted in the markup of the server, since it sets props an HTML sanitizer can't
++						// check. Only the parser of the document attaches a declarative shadow root (`hasDSR`), markup a script
++						// inserts with `innerHTML` never gets one. A streamed host is held by the parse gate until it has one.
++						if (this.hasDSR) try {
++							for (const [propName, value] of Object.entries(JSON.parse(ssrProps))) {
++								const member = cmpMeta.$members$[propName];
++								// A script URL is never applied to a prop that ends up in the `href` of a link, a sanitizer would have
++								// removed it from an attribute like `href`. Other props keep it, e.g. the value of a search field.
++								if (member && member[0] & MEMBER_FLAGS.Prop && !((propName === "href" || propName === "skipLinkTarget") && typeof value === "string" && /^(java|vb)script:/i.test(value.replace(/[\u0000-\u0020]/g, "")))) this[propName] = value;
++							}
++						} catch {}
++					}
++					//========= PDS PATCH END
+ 					/**
+ 					* The `connectedCallback` lifecycle event can potentially be fired multiple times
+ 					* if the element is removed from the DOM and re-inserted. This is not a common use case,
+@@ -5318,9 +5402,11 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
+ 					if (BUILD$1.slotTextContent) patchTextContent(HostElement.prototype);
+ 				}
+ 			}
+-			if (BUILD$1.hydrateClientSide && BUILD$1.shadowDom) HostElement.prototype.__attachShadow = function() {
++			//========= PDS PATCH START
++			if (BUILD$1.shadowDom) HostElement.prototype.__attachShadow = function() {
+ 				attachShadowRoot(this);
+ 			};
++			//========= PDS PATCH END
+ 			if (BUILD$1.formAssociated && cmpMeta.$flags$ & CMP_FLAGS.formAssociated) HostElement.formAssociated = true;
+ 			if (BUILD$1.hotModuleReplacement) HostElement.prototype["s-hmr"] = function(hmrVersionId) {
+ 				hmrStart(this, cmpMeta, hmrVersionId);

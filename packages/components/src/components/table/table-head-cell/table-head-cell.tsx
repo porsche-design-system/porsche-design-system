@@ -1,10 +1,10 @@
-import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -33,7 +33,7 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
  */
 @Component({
   tag: 'p-table-head-cell',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class TableHeadCell {
   @Element() public host!: HTMLElement;
@@ -52,8 +52,8 @@ export class TableHeadCell {
     throwIfElementHasAttribute(this.host, 'sort');
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

@@ -13,6 +13,15 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
     imports += `\nimport { ${ssrComponentName} } from '../dsr-components/${kebabCase(
       ssrComponentName.replace('DSR', '')
     )}';`;
+    // the ref is synced by syncHydratedRef, see generateComponent
+    imports = imports.replace(
+      "import { syncRef } from '../../utils';",
+      "import { syncHydratedRef } from '../../syncHydratedRef';"
+    );
+
+    if (extendedProps.some(({ isEvent }) => !isEvent)) {
+      imports += `\nimport { SSR_PROPS_ATTRIBUTE, serializeSsrProps } from '../../serializeSsrProps';`;
+    }
 
     return imports;
   }
@@ -48,12 +57,39 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
       ? `...${JSON.stringify(componentMeta.hostAttributes)},\n            `
       : '';
 
+    // the web component applies the serialized props before its first render, the wrapper removes them on hydration
+    const ssrPropsAttribute = propsToSync.length
+      ? `[SSR_PROPS_ATTRIBUTE]: serializeSsrProps(
+              { ${propsToSync.map(({ key }) => key).join(', ')} },
+              { ${propsToSync
+                .filter(({ defaultValue }) => defaultValue !== undefined)
+                .map(({ key, defaultValue }) => `${key}: ${defaultValue}`)
+                .join(', ')} }
+            ),\n            `
+      : '';
+
+    if (propsToSync.length) {
+      tweakedComponent = tweakedComponent.replace(
+        /useBrowserLayoutEffect\(\(\) => \{\n/,
+        `$&      elementRef.current?.removeAttribute(SSR_PROPS_ATTRIBUTE);\n`
+      );
+    }
+
+    // React may change the children of the host once it has hydrated it, so the web component must not wait any longer
+    tweakedComponent = tweakedComponent.replace(
+      'ref: syncRef(elementRef, ref)',
+      'ref: syncHydratedRef(elementRef, ref)'
+    );
+
+    // `data-dsr` is rendered on the server only (`data-ssr` on the client too): it tells the web component to wait
+    // until the parser has read the host with all its children, which matters when the markup is streamed
     tweakedComponent = tweakedComponent.replace(
       /\.\.\.rest,\n/,
       `$&      // @ts-ignore
       ...(!process.browser
         ? {
-            ${hostAttributes}children: (
+            'data-dsr': '',
+            ${hostAttributes}${ssrPropsAttribute}children: (
               <${this.getSsrComponentName(component)}
                 {...{ ${spreadProps} }}
               />

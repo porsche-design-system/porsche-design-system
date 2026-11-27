@@ -1,4 +1,4 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type {
   BreakpointCustomizable,
   LinkAriaAttribute,
@@ -10,7 +10,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   hasVisibleIcon,
   isSsrHydration,
   LINK_ARIA_ATTRIBUTES,
@@ -40,7 +40,7 @@ const propTypes: PropTypes<typeof Link> = {
  */
 @Component({
   tag: 'p-link',
-  shadow: { delegatesFocus: true },
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class Link {
   @Element() public host!: HTMLElement;
@@ -86,8 +86,8 @@ export class Link {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

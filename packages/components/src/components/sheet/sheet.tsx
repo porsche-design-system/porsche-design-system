@@ -1,12 +1,21 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  type ComponentShouldUpdateChanges,
+  Element,
+  Event,
+  type EventEmitter,
+  h,
+  type JSX,
+  Prop,
+} from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   createTopLayerController,
   getSlotTextContent,
+  hasAnyPropValueChanged,
   hasNamedSlot,
-  hasPropValueChanged,
   isDialogBackdropTarget,
   onCancelDialog,
   onClickDialog,
@@ -49,7 +58,7 @@ const propTypes: PropTypes<typeof Sheet> = {
  */
 @Component({
   tag: 'p-sheet',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Sheet {
   @Element() public host!: HTMLElement;
@@ -105,8 +114,8 @@ export class Sheet {
     onSwipeDismiss: () => this.dismissDialog('swipe'),
   });
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentWillRender(): void {

@@ -799,19 +799,19 @@ describe('componentShouldUpdate()', () => {
   it('should return false when new and old values are the same', () => {
     const component = initComponent();
 
-    expect(component.componentShouldUpdate('value', 'value')).toBe(false);
+    expect(component.componentShouldUpdate({ size: { newVal: 'value', oldVal: 'value' } })).toBe(false);
   });
 
   it('should return true when new and old values differ', () => {
     const component = initComponent();
 
-    expect(component.componentShouldUpdate('new', 'old')).toBe(true);
+    expect(component.componentShouldUpdate({ size: { newVal: 'new', oldVal: 'old' } })).toBe(true);
   });
 
   it('should return false when both values are undefined', () => {
     const component = initComponent();
 
-    expect(component.componentShouldUpdate(undefined, undefined)).toBe(false);
+    expect(component.componentShouldUpdate({ size: { newVal: undefined, oldVal: undefined } })).toBe(false);
   });
 });
 

@@ -1,6 +1,6 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, hasAnyPropValueChanged, validateProps } from '../../utils';
 import { getComponentCss } from './heading-styles';
 import {
   getHeadingTagType,
@@ -33,7 +33,7 @@ const propTypes: PropTypes<typeof Heading> = {
  */
 @Component({
   tag: 'p-heading',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Heading {
   @Element() public host!: HTMLElement;
@@ -59,8 +59,8 @@ export class Heading {
   /** Truncates the text with an ellipsis when it overflows the container on a single line. Cannot be combined with multi-line content. */
   @Prop() public ellipsis?: boolean = false;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

@@ -4,8 +4,8 @@
  *
  * This is experimental and a progressive enhancement:
  * - Custom states can't be expressed during SSR, they are only applied once the component hydrates.
- * - Browsers without `ElementInternals` (`internals` is `undefined` due to our Stencil patch) or without
- *   `CustomStateSet` support simply don't get the state, the component keeps working as before.
+ * - Environments without `CustomStateSet` support, e.g. jsdom, simply don't get the state, the component keeps
+ *   working as before.
  * - Chromium < 125, Safari < 17.4 and Firefox < 126 only support the legacy dashed ident syntax (`--foo`)
  *   and throw for plain idents, therefore we fall back to the dashed ident.
  */

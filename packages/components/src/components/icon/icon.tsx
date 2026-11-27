@@ -1,10 +1,10 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, type ComponentShouldUpdateChanges, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, IconName, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../utils';
@@ -29,7 +29,7 @@ const propTypes: PropTypes<typeof Icon> = {
 
 @Component({
   tag: 'p-icon',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Icon {
   @Element() public host!: HTMLElement;
@@ -49,8 +49,8 @@ export class Icon {
   /** Sets ARIA attributes on the icon — use `aria-label` to make the icon meaningful to screen readers when it conveys information. */
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public render(): JSX.Element {

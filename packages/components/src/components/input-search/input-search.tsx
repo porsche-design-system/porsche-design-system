@@ -1,6 +1,7 @@
 import {
   AttachInternals,
   Component,
+  type ComponentShouldUpdateChanges,
   Element,
   Event,
   type EventEmitter,
@@ -16,7 +17,7 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
-  hasPropValueChanged,
+  hasAnyPropValueChanged,
   implicitSubmit,
   syncAriaElements,
   syncFormState,
@@ -66,8 +67,7 @@ const propTypes: PropTypes<typeof InputSearch> = {
  */
 @Component({
   tag: 'p-input-search',
-  shadow: { delegatesFocus: true },
-  formAssociated: true,
+  encapsulation: { type: 'shadow', delegatesFocus: true, clonable: true },
 })
 export class InputSearch {
   @Element() public host!: HTMLElement;
@@ -193,8 +193,8 @@ export class InputSearch {
     this.value = state;
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(changes: ComponentShouldUpdateChanges): boolean {
+    return hasAnyPropValueChanged(changes);
   }
 
   public componentDidRender(): void {

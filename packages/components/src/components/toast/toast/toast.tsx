@@ -5,7 +5,7 @@ import { getComponentCss, toastCloseClassName } from './toast-styles';
 
 @Component({
   tag: 'p-toast',
-  shadow: true,
+  encapsulation: { type: 'shadow', clonable: true },
 })
 export class Toast {
   @Element() public host!: HTMLElement;
